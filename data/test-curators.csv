@@ -1,0 +1,4 @@
+name,playlist_name,genre,followers,email,compatibility,social_instagram,social_twitter,website,curator_type
+Test Curator 1,Test Playlist 1,Rock,1000,test1@example.com,80,@test1_ig,@test1_tw,https://www.test1.com,Artist
+Test Curator 2,Test Playlist 2,Electronic,2000,test2@example.com,85,@test2_ig,@test2_tw,https://www.test2.com,Radio Station
+Test Curator 3,Test Playlist 3,Jazz,1500,test3@example.com,90,@test3_ig,@test3_tw,https://www.test3.com,Podcast

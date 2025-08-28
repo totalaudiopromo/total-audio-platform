@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free SEO Tools Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .search-section {
+            margin-bottom: 40px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .search-button {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .search-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .results-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .result-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #e1e5e9;
+        }
+
+        .result-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .keyword-list {
+            list-style: none;
+        }
+
+        .keyword-item {
+            background: white;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            font-size: 14px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #667eea;
+        }
+
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c33;
+        }
+
+        .success {
+            background: #efe;
+            color: #363;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #363;
+        }
+
+        .api-status {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .status-item {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Free SEO Tools Test</h1>
+            <p>Testing the free SEO tools implementation with Google APIs</p>
+        </div>
+
+        <div class="content">
+            <div class="search-section">
+                <div class="search-box">
+                    <input type="text" id="keywordInput" class="search-input" placeholder="Enter a keyword (e.g., music promotion)" value="music promotion">
+                    <button onclick="searchKeywords()" class="search-button" id="searchButton">🔍 Search</button>
+                </div>
+
+                <div class="api-status" id="apiStatus">
+                    <div class="status-item status-success">✅ API Running</div>
+                    <div class="status-item status-success">💰 Zero Cost</div>
+                    <div class="status-item status-success">⚡ Real-time</div>
+                </div>
+            </div>
+
+            <div id="results" style="display: none;">
+                <div class="stats" id="stats"></div>
+                <div class="results-section" id="resultsSection"></div>
+            </div>
+
+            <div id="loading" class="loading" style="display: none;">
+                <h3>🔍 Analyzing keywords...</h3>
+                <p>Fetching data from Google APIs</p>
+            </div>
+
+            <div id="error" class="error" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3003/api';
+
+        async function checkApiHealth() {
+            try {
+                const response = await fetch(`${API_BASE}/health`);
+                const data = await response.json();
+                console.log('API Health:', data);
+                return data.success;
+            } catch (error) {
+                console.error('API Health Check Failed:', error);
+                return false;
+            }
+        }
+
+        async function searchKeywords() {
+            const keyword = document.getElementById('keywordInput').value.trim();
+            if (!keyword) return;
+
+            const searchButton = document.getElementById('searchButton');
+            const loading = document.getElementById('loading');
+            const results = document.getElementById('results');
+            const error = document.getElementById('error');
+
+            // Show loading
+            searchButton.disabled = true;
+            loading.style.display = 'block';
+            results.style.display = 'none';
+            error.style.display = 'none';
+
+            try {
+                // Check API health first
+                const isHealthy = await checkApiHealth();
+                if (!isHealthy) {
+                    throw new Error('API is not responding. Make sure the server is running on port 3003.');
+                }
+
+                // Get comprehensive research
+                const response = await fetch(`${API_BASE}/research/${encodeURIComponent(keyword)}`);
+                const data = await response.json();
+
+                if (!data.success) {
+                    throw new Error(data.error || 'Failed to fetch data');
+                }
+
+                displayResults(data);
+
+            } catch (err) {
+                console.error('Search failed:', err);
+                error.style.display = 'block';
+                error.textContent = `Error: ${err.message}`;
+            } finally {
+                loading.style.display = 'none';
+                searchButton.disabled = false;
+            }
+        }
+
+        function displayResults(data) {
+            const results = document.getElementById('results');
+            const stats = document.getElementById('stats');
+            const resultsSection = document.getElementById('resultsSection');
+
+            // Display stats
+            stats.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${data.summary.totalSuggestions}</div>
+                    <div class="stat-label">Suggestions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${data.summary.totalQuestions}</div>
+                    <div class="stat-label">Questions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${data.summary.totalLongTail}</div>
+                    <div class="stat-label">Long-tail</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${data.summary.totalUnique}</div>
+                    <div class="stat-label">Total Unique</div>
+                </div>
+            `;
+
+            // Display results
+            resultsSection.innerHTML = `
+                <div class="result-card">
+                    <h3>🔍 Keyword Suggestions</h3>
+                    <ul class="keyword-list">
+                        ${data.data.suggestions.map(keyword => `<li class="keyword-item">${keyword}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="result-card">
+                    <h3>❓ Question-based Keywords</h3>
+                    <ul class="keyword-list">
+                        ${data.data.questions.map(keyword => `<li class="keyword-item">${keyword}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="result-card">
+                    <h3>📈 Long-tail Variations</h3>
+                    <ul class="keyword-list">
+                        ${data.data.longTailVariations.map(keyword => `<li class="keyword-item">${keyword}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="result-card">
+                    <h3>🎯 All Keywords</h3>
+                    <ul class="keyword-list">
+                        ${data.data.allKeywords.map(keyword => `<li class="keyword-item">${keyword}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+
+            results.style.display = 'block';
+        }
+
+        // Auto-search on page load
+        window.onload = function() {
+            setTimeout(() => {
+                searchKeywords();
+            }, 1000);
+        };
+
+        // Enter key support
+        document.getElementById('keywordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchKeywords();
+            }
+        });
+    </script>
+</body>
+</html> 

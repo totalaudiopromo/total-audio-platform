@@ -1,0 +1,291 @@
+name: Newsjacking Monitor - Economy Mode
+on:
+  schedule:
+    # RSS monitoring every 30 minutes during UK business hours (9 AM - 6 PM, Mon-Fri)
+    - cron: '0,30 9-17 * * 1-5'  # Every 30 minutes, 9 AM - 5:30 PM, weekdays
+    # Daily summary at 9 AM UK time Monday-Friday  
+    - cron: '0 9 * * 1-5'         # 9 AM weekdays
+    # Weekly performance report Monday 9 AM
+    - cron: '0 9 * * 1'           # Monday 9 AM
+  
+  # Manual trigger for testing
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Operation mode'
+        required: true
+        default: 'scan'
+        type: choice
+        options:
+        - scan
+        - summary
+        - test
+      
+      force_ai:
+        description: 'Force AI generation (ignores budget limits)'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  TZ: Europe/London
+  ECONOMY_MODE: true
+  GITHUB_ACTIONS_RUNNER: true
+
+jobs:
+  # Cost tracking and budget check (runs first)
+  budget-check:
+    runs-on: ubuntu-latest
+    outputs:
+      can_proceed: ${{ steps.check.outputs.can_proceed }}
+      ai_budget_remaining: ${{ steps.check.outputs.ai_budget_remaining }}
+      current_usage: ${{ steps.check.outputs.current_usage }}
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        npm ci
+        npm run install:all
+    
+    - name: Check current usage and budget
+      id: check
+      env:
+        NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        USAGE_TRACKING_DB: ${{ secrets.NOTION_USAGE_TRACKING_DB }}
+      run: |
+        node scripts/economy/check-budget.js
+    
+    - name: Budget status notification
+      if: steps.check.outputs.can_proceed == 'false'
+      env:
+        SMTP_USER: ${{ secrets.SMTP_USER }}
+        SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+      run: |
+        node scripts/economy/send-budget-alert.js "${{ steps.check.outputs.current_usage }}"
+
+  # RSS Feed monitoring (main job)
+  rss-monitor:
+    runs-on: ubuntu-latest
+    needs: budget-check
+    if: needs.budget-check.outputs.can_proceed == 'true' || github.event.inputs.mode == 'test'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        npm ci
+        npm run install:all
+    
+    - name: Load environment configuration
+      run: |
+        cp .env.economy .env
+        echo "Economy mode configuration loaded"
+    
+    - name: Check if in business hours
+      id: business_hours
+      run: |
+        current_hour=$(date +%H)
+        current_day=$(date +%u)  # 1=Monday, 7=Sunday
+        
+        if [ "$current_day" -gt 5 ]; then
+          echo "is_business_hours=false" >> $GITHUB_OUTPUT
+          echo "reason=weekend" >> $GITHUB_OUTPUT
+        elif [ "$current_hour" -lt 9 ] || [ "$current_hour" -gt 17 ]; then
+          echo "is_business_hours=false" >> $GITHUB_OUTPUT
+          echo "reason=outside_hours" >> $GITHUB_OUTPUT
+        else
+          echo "is_business_hours=true" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Skip if outside business hours
+      if: steps.business_hours.outputs.is_business_hours == 'false' && github.event.inputs.mode != 'test'
+      run: |
+        echo "Skipping scan - ${{ steps.business_hours.outputs.reason }}"
+        echo "Current time: $(date)"
+        echo "Business hours: Monday-Friday, 9 AM - 6 PM UK time"
+        exit 0
+    
+    - name: Scan RSS feeds for opportunities
+      id: scan
+      env:
+        NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+        NOTION_OPPORTUNITIES_DB: ${{ secrets.NOTION_OPPORTUNITIES_DB }}
+        NOTION_USAGE_TRACKING_DB: ${{ secrets.NOTION_USAGE_TRACKING_DB }}
+        AI_BUDGET_REMAINING: ${{ needs.budget-check.outputs.ai_budget_remaining }}
+        ECONOMY_MODE: true
+        GITHUB_ACTIONS_MODE: true
+      run: |
+        node scripts/economy/rss-scanner.js
+    
+    - name: Generate AI content for high-value opportunities
+      if: steps.scan.outputs.high_value_count > 0 && needs.budget-check.outputs.ai_budget_remaining > 0
+      env:
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+        NOTION_OPPORTUNITIES_DB: ${{ secrets.NOTION_OPPORTUNITIES_DB }}
+        OPPORTUNITIES_JSON: ${{ steps.scan.outputs.high_value_opportunities }}
+        FORCE_AI: ${{ github.event.inputs.force_ai }}
+      run: |
+        node scripts/economy/ai-content-generator.js
+    
+    - name: Generate template-based content for medium opportunities
+      if: steps.scan.outputs.medium_value_count > 0
+      env:
+        NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+        NOTION_CONTENT_TEMPLATES_DB: ${{ secrets.NOTION_CONTENT_TEMPLATES_DB }}
+        NOTION_OPPORTUNITIES_DB: ${{ secrets.NOTION_OPPORTUNITIES_DB }}
+        OPPORTUNITIES_JSON: ${{ steps.scan.outputs.medium_value_opportunities }}
+      run: |
+        node scripts/economy/template-content-generator.js
+    
+    - name: Update usage tracking
+      env:
+        NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+        NOTION_USAGE_TRACKING_DB: ${{ secrets.NOTION_USAGE_TRACKING_DB }}
+        SCAN_RESULTS: ${{ steps.scan.outputs.summary }}
+      run: |
+        node scripts/economy/update-usage-tracking.js
+    
+    - name: Send critical alerts
+      if: steps.scan.outputs.critical_count > 0
+      env:
+        SMTP_USER: ${{ secrets.SMTP_USER }}
+        SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+        CRITICAL_OPPORTUNITIES: ${{ steps.scan.outputs.critical_opportunities }}
+      run: |
+        node scripts/economy/send-critical-alerts.js
+
+  # Daily summary report
+  daily-summary:
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 9 * * 1-5' || github.event.inputs.mode == 'summary'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        npm ci
+        npm run install:all
+    
+    - name: Generate daily performance report
+      env:
+        NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+        NOTION_USAGE_TRACKING_DB: ${{ secrets.NOTION_USAGE_TRACKING_DB }}
+        NOTION_OPPORTUNITIES_DB: ${{ secrets.NOTION_OPPORTUNITIES_DB }}
+      run: |
+        node scripts/economy/daily-summary.js
+    
+    - name: Send daily summary email
+      env:
+        SMTP_USER: ${{ secrets.SMTP_USER }}
+        SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+      run: |
+        node scripts/economy/send-daily-summary.js
+
+  # Weekly performance and ROI analysis
+  weekly-analysis:
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 9 * * 1' || github.event.inputs.mode == 'weekly'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        npm ci
+        npm run install:all
+    
+    - name: Generate weekly ROI analysis
+      env:
+        NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+        NOTION_USAGE_TRACKING_DB: ${{ secrets.NOTION_USAGE_TRACKING_DB }}
+        NOTION_OPPORTUNITIES_DB: ${{ secrets.NOTION_OPPORTUNITIES_DB }}
+        KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+      run: |
+        node scripts/economy/weekly-roi-analysis.js
+    
+    - name: Check scaling recommendations
+      env:
+        NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+        CURRENT_MONTH_REVENUE: ${{ secrets.CURRENT_MONTH_REVENUE }}
+      run: |
+        node scripts/economy/scaling-recommendations.js
+    
+    - name: Send weekly performance report
+      env:
+        SMTP_USER: ${{ secrets.SMTP_USER }}
+        SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+      run: |
+        node scripts/economy/send-weekly-report.js
+
+  # Emergency monitoring (always runs, minimal resource usage)
+  emergency-monitor:
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Check for emergency situations
+      env:
+        NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        NOTION_USAGE_TRACKING_DB: ${{ secrets.NOTION_USAGE_TRACKING_DB }}
+      run: |
+        node scripts/economy/emergency-monitor.js
+    
+    - name: Emergency shutdown if needed
+      if: failure()
+      env:
+        SMTP_USER: ${{ secrets.SMTP_USER }}
+        SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+      run: |
+        node scripts/economy/emergency-shutdown.js
