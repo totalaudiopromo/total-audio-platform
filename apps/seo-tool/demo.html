@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Audio Tool - Total Audio Promo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 4px solid #000;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+            font-size: 20px;
+        }
+
+        .logo-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1f2937;
+        }
+
+        .beta-badge {
+            background: #fef3c7;
+            color: #92400e;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-link {
+            color: #374151;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #f59e0b;
+        }
+
+        .nav-button {
+            border: 2px solid #d1d5db;
+            color: #374151;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-button:hover {
+            background: #f9fafb;
+        }
+
+        .cta-button {
+            background: #fbbf24;
+            color: #000;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+            transition: all 0.2s;
+        }
+
+        .cta-button:hover {
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+            transform: translate(-1px, -1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 96px 0;
+            text-align: center;
+        }
+
+        .hero-badge {
+            background: #fef3c7;
+            color: #92400e;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            font-size: 18px;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+            margin-bottom: 32px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            font-weight: 900;
+            color: #1f2937;
+            margin-bottom: 32px;
+            line-height: 1.1;
+        }
+
+        .hero-highlight {
+            color: #f59e0b;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: #6b7280;
+            margin-bottom: 48px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: bold;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 64px;
+            flex-wrap: wrap;
+        }
+
+        .hero-cta {
+            background: #fbbf24;
+            color: #000;
+            font-weight: bold;
+            padding: 24px 32px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-size: 18px;
+            box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-cta:hover {
+            box-shadow: 12px 12px 0px 0px rgba(0,0,0,1);
+            transform: translate(-1px, -1px);
+        }
+
+        .hero-secondary {
+            border: 2px solid #d1d5db;
+            color: #374151;
+            background: white;
+            padding: 24px 32px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+            transition: all 0.2s;
+        }
+
+        .hero-secondary:hover {
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+            transform: translate(-1px, -1px);
+        }
+
+        /* Search Section */
+        .search-section {
+            background: white;
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 12px 12px 0px 0px rgba(0,0,0,1);
+            border: 4px solid #000;
+            margin-bottom: 64px;
+        }
+
+        .search-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1f2937;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .search-subtitle {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 32px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 16px;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 16px 20px;
+            border: 2px solid #d1d5db;
+            border-radius: 12px;
+            font-size: 16px;
+            background: white;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+
+        .search-button {
+            background: #fbbf24;
+            color: #000;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+            transition: all 0.2s;
+        }
+
+        .search-button:hover:not(:disabled) {
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+            transform: translate(-1px, -1px);
+        }
+
+        .search-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 48px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border: 4px solid #d1d5db;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+            transition: all 0.2s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 12px 12px 0px 0px rgba(0,0,0,1);
+            transform: translate(-1px, -1px);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .feature-description {
+            color: #6b7280;
+            font-weight: bold;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 48px;
+            display: none;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #e5e7eb;
+            border-top: 4px solid #f59e0b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 24px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading h3 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .loading p {
+            color: #6b7280;
+            font-weight: bold;
+        }
+
+        /* Error */
+        .error {
+            background: #fef2f2;
+            border: 2px solid #fecaca;
+            color: #dc2626;
+            padding: 16px;
+            border-radius: 12px;
+            margin: 24px 0;
+            display: none;
+            font-weight: bold;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        /* Results */
+        .results {
+            display: none;
+            margin-top: 48px;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .results-card {
+            background: white;
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 12px 12px 0px 0px rgba(0,0,0,1);
+            border: 4px solid #000;
+            margin-bottom: 48px;
+        }
+
+        .results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+
+        .results-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1f2937;
+        }
+
+        .results-domain {
+            color: #6b7280;
+            font-weight: bold;
+        }
+
+        .success-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #059669;
+            font-weight: bold;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 4px solid #d1d5db;
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 900;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-weight: bold;
+        }
+
+        /* Keyword Sections */
+        .keyword-section {
+            margin: 32px 0;
+        }
+
+        .keyword-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1f2937;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .keyword-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .keyword-tag {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            color: #92400e;
+        }
+
+        /* Brand Info */
+        .brand-info {
+            background: white;
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 12px 12px 0px 0px rgba(0,0,0,1);
+            border: 4px solid #000;
+            text-align: center;
+            margin-top: 64px;
+        }
+
+        .brand-info h2 {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1f2937;
+            margin-bottom: 24px;
+        }
+
+        .brand-info p {
+            color: #6b7280;
+            font-weight: bold;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">🎵</div>
+                    <div class="logo-text">
+                        <span class="logo-title">SEO Audio Tool</span>
+                        <span class="beta-badge">Beta</span>
+                    </div>
+                </div>
+                <nav class="nav-links">
+                    <a href="#" class="nav-link">Pricing</a>
+                    <a href="#" class="nav-link">How It Works</a>
+                    <a href="#" class="nav-link">FAQ</a>
+                    <a href="#" class="nav-button">Sign In</a>
+                    <a href="#" class="cta-button">Get Started</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-badge">
+                ⚡ AI-Powered SEO Analysis
+            </div>
+            <h1 class="hero-title">
+                Stop Wasting <span class="hero-highlight">15 Hours a Week</span><br>
+                Researching SEO Keywords
+            </h1>
+            <p class="hero-subtitle">
+                Get instant access to audio-specific SEO recommendations with AI-powered keyword analysis that gets 3x more organic traffic
+            </p>
+            <div class="hero-buttons">
+                <a href="#search" class="hero-cta">
+                    🚀 Analyze Your Website - Get Keywords in Minutes
+                </a>
+                <a href="#" class="hero-secondary">
+                    Start Free Trial - No Credit Card Required
+                </a>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section id="search" class="search-section">
+            <h2 class="search-title">🔍 Analyze Your Audio Website</h2>
+            <p class="search-subtitle">Enter your domain to get audio-specific SEO recommendations</p>
+            
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="domainInput" 
+                    class="search-input" 
+                    placeholder="Enter your website (e.g., mymusic.com, mypodcast.com)"
+                    value="musicpromotion.com"
+                >
+                <button id="analyzeBtn" class="search-button">🚀 Analyze SEO</button>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3 class="feature-title">Music SEO</h3>
+                    <p class="feature-description">Optimize for music promotion, distribution, and discovery</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎙️</div>
+                    <h3 class="feature-title">Podcast SEO</h3>
+                    <p class="feature-description">Boost podcast visibility and audience growth</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎧</div>
+                    <h3 class="feature-title">Audio Content</h3>
+                    <p class="feature-description">Optimize sound design, production, and audio services</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading -->
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <h3>🔍 Analyzing your audio website...</h3>
+            <p>Fetching real-time SEO data from Google APIs</p>
+        </div>
+
+        <!-- Error -->
+        <div id="error" class="error">
+            <strong>Error:</strong> <span id="errorMessage"></span>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="results">
+            <div class="results-card">
+                <div class="results-header">
+                    <div>
+                        <h2 class="results-title">📊 SEO Analysis Results</h2>
+                        <p class="results-domain">Domain: <strong id="resultDomain"></strong></p>
+                    </div>
+                    <div class="success-badge">
+                        ✅ Analysis Complete
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalKeywords">0</div>
+                        <div class="stat-label">Total Keywords</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalQuestions">0</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalLongTail">0</div>
+                        <div class="stat-label">Long-tail</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalSuggestions">0</div>
+                        <div class="stat-label">Suggestions</div>
+                    </div>
+                </div>
+
+                <!-- Audio-Specific Keywords -->
+                <div class="keyword-section">
+                    <h3 class="keyword-title">🎵 Music Keywords</h3>
+                    <div class="keyword-grid" id="musicKeywords"></div>
+                </div>
+
+                <div class="keyword-section">
+                    <h3 class="keyword-title">🎙️ Podcast Keywords</h3>
+                    <div class="keyword-grid" id="podcastKeywords"></div>
+                </div>
+
+                <div class="keyword-section">
+                    <h3 class="keyword-title">🎧 Audio Keywords</h3>
+                    <div class="keyword-grid" id="audioKeywords"></div>
+                </div>
+
+                <div class="keyword-section">
+                    <h3 class="keyword-title">🎯 All Optimized Keywords</h3>
+                    <div class="keyword-grid" id="allKeywords"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Brand Info -->
+        <div class="brand-info">
+            <h2>🌟 Why Choose SEO Audio Tool?</h2>
+            <p>
+                <strong>Zero Cost:</strong> Uses free Google APIs instead of expensive SEO tools<br>
+                <strong>Audio-Focused:</strong> Specifically designed for music and audio websites<br>
+                <strong>Real-time Data:</strong> Live results from Google's search suggestions<br>
+                <strong>Professional Results:</strong> Industry-specific keyword recommendations
+            </p>
+            <p><strong>Perfect for:</strong> Music artists, podcast hosts, audio professionals, music labels, and audio service providers</p>
+        </div>
+    </div>
+
+    <script>
+        // Audio-specific keyword categories
+        const AUDIO_KEYWORDS = {
+            music: [
+                'music promotion', 'music marketing', 'music distribution', 'music licensing',
+                'music streaming', 'music publishing', 'music production', 'music recording',
+                'music mastering', 'music mixing', 'music composition', 'music arrangement'
+            ],
+            podcast: [
+                'podcast SEO', 'podcast marketing', 'podcast hosting', 'podcast distribution',
+                'podcast promotion', 'podcast analytics', 'podcast monetization', 'podcast equipment',
+                'podcast editing', 'podcast recording', 'podcast interviews', 'podcast branding'
+            ],
+            audio: [
+                'audio content', 'audio production', 'audio editing', 'audio mastering',
+                'audio equipment', 'audio software', 'audio engineering', 'audio design',
+                'audio branding', 'audio marketing', 'audio streaming', 'audio quality'
+            ]
+        };
+
+        // Get Google suggestions
+        async function getGoogleSuggestions(query) {
+            try {
+                const response = await fetch(`https://suggestqueries.google.com/complete/search?client=firefox&q=${encodeURIComponent(query)}`);
+                const data = await response.json();
+                return data[1] || [];
+            } catch (error) {
+                console.error('Google suggestions failed:', error);
+                return [];
+            }
+        }
+
+        // Get question-based keywords
+        async function getQuestionKeywords(keyword) {
+            const questionWords = ['what', 'how', 'why', 'when', 'where', 'which', 'who'];
+            const questions = [];
+            
+            for (const questionWord of questionWords) {
+                try {
+                    const response = await fetch(`https://suggestqueries.google.com/complete/search?client=firefox&q=${encodeURIComponent(`${questionWord} ${keyword}`)}`);
+                    const data = await response.json();
+                    const suggestions = data[1] || [];
+                    questions.push(...suggestions.slice(0, 2));
+                } catch (error) {
+                    console.error(`Failed to get suggestions for "${questionWord} ${keyword}"`);
+                }
+            }
+            
+            return questions;
+        }
+
+        // Generate long-tail variations
+        function generateLongTailVariations(keyword) {
+            const modifiers = [
+                'best', 'top', 'guide', 'review', '2024', 'free', 'online', 'services',
+                'companies', 'software', 'tools', 'platforms', 'solutions', 'experts'
+            ];
+            
+            const variations = [];
+            
+            for (const modifier of modifiers) {
+                variations.push(`${keyword} ${modifier}`);
+                variations.push(`${modifier} ${keyword}`);
+            }
+            
+            return variations;
+        }
+
+        // Get audio-specific keywords based on domain
+        function getAudioSpecificKeywords(domain) {
+            const domainLower = domain.toLowerCase();
+            
+            let musicKeywords = [];
+            let podcastKeywords = [];
+            let audioKeywords = [];
+            
+            if (domainLower.includes('music') || domainLower.includes('song') || domainLower.includes('artist')) {
+                musicKeywords = AUDIO_KEYWORDS.music.slice(0, 8);
+            }
+            
+            if (domainLower.includes('podcast') || domainLower.includes('episode') || domainLower.includes('show')) {
+                podcastKeywords = AUDIO_KEYWORDS.podcast.slice(0, 8);
+            }
+            
+            if (domainLower.includes('audio') || domainLower.includes('sound') || domainLower.includes('recording')) {
+                audioKeywords = AUDIO_KEYWORDS.audio.slice(0, 8);
+            }
+            
+            // If no specific category detected, provide a mix
+            if (musicKeywords.length === 0 && podcastKeywords.length === 0 && audioKeywords.length === 0) {
+                musicKeywords = AUDIO_KEYWORDS.music.slice(0, 6);
+                podcastKeywords = AUDIO_KEYWORDS.podcast.slice(0, 6);
+                audioKeywords = AUDIO_KEYWORDS.audio.slice(0, 6);
+            }
+            
+            return { musicKeywords, podcastKeywords, audioKeywords };
+        }
+
+        // Display results
+        function displayResults(analysis) {
+            document.getElementById('resultDomain').textContent = analysis.domain;
+            document.getElementById('totalKeywords').textContent = analysis.summary.totalKeywords;
+            document.getElementById('totalQuestions').textContent = analysis.summary.totalQuestions;
+            document.getElementById('totalLongTail').textContent = analysis.summary.totalLongTail;
+            document.getElementById('totalSuggestions').textContent = analysis.summary.totalSuggestions;
+
+            // Display keywords
+            function displayKeywordSection(containerId, keywords) {
+                const container = document.getElementById(containerId);
+                container.innerHTML = keywords.map(keyword => 
+                    `<div class="keyword-tag">${keyword}</div>`
+                ).join('');
+            }
+
+            displayKeywordSection('musicKeywords', analysis.audioSpecific.musicKeywords);
+            displayKeywordSection('podcastKeywords', analysis.audioSpecific.podcastKeywords);
+            displayKeywordSection('audioKeywords', analysis.audioSpecific.audioKeywords);
+            displayKeywordSection('allKeywords', analysis.keywords.slice(0, 20));
+
+            document.getElementById('results').classList.add('show');
+        }
+
+        // Main analysis function
+        async function analyzeDomain() {
+            const domain = document.getElementById('domainInput').value.trim();
+            if (!domain) return;
+
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const loading = document.getElementById('loading');
+            const results = document.getElementById('results');
+            const error = document.getElementById('error');
+
+            // Show loading
+            analyzeBtn.disabled = true;
+            loading.classList.add('show');
+            results.classList.remove('show');
+            error.classList.remove('show');
+
+            try {
+                // Clean domain
+                const cleanDomain = domain.replace(/^https?:\/\//, '').replace(/\/$/, '');
+                
+                // Get basic suggestions
+                const suggestions = await getGoogleSuggestions(cleanDomain);
+                
+                // Get question-based keywords
+                const questions = await getQuestionKeywords(cleanDomain);
+                
+                // Generate long-tail variations
+                const longTail = generateLongTailVariations(cleanDomain);
+                
+                // Get audio-specific keywords
+                const audioSpecific = getAudioSpecificKeywords(cleanDomain);
+                
+                // Combine all keywords
+                const allKeywords = [
+                    cleanDomain,
+                    ...suggestions,
+                    ...questions,
+                    ...longTail,
+                    ...audioSpecific.musicKeywords,
+                    ...audioSpecific.podcastKeywords,
+                    ...audioSpecific.audioKeywords
+                ];
+                
+                // Remove duplicates and limit
+                const uniqueKeywords = [...new Set(allKeywords)].slice(0, 50);
+                
+                const analysis = {
+                    domain: cleanDomain,
+                    keywords: uniqueKeywords,
+                    questions: questions.slice(0, 10),
+                    longTail: longTail.slice(0, 15),
+                    suggestions: suggestions.slice(0, 10),
+                    summary: {
+                        totalKeywords: uniqueKeywords.length,
+                        totalQuestions: questions.length,
+                        totalLongTail: longTail.length,
+                        totalSuggestions: suggestions.length
+                    },
+                    audioSpecific
+                };
+                
+                displayResults(analysis);
+
+            } catch (err) {
+                console.error('Analysis failed:', err);
+                document.getElementById('errorMessage').textContent = err.message || 'Failed to analyze domain. Please try again.';
+                error.classList.add('show');
+            } finally {
+                loading.classList.remove('show');
+                analyzeBtn.disabled = false;
+            }
+        }
+
+        // Event listeners
+        document.getElementById('analyzeBtn').addEventListener('click', analyzeDomain);
+        document.getElementById('domainInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                analyzeDomain();
+            }
+        });
+
+        // Auto-analyze on page load
+        window.addEventListener('load', function() {
+            setTimeout(analyzeDomain, 1000);
+        });
+    </script>
+</body>
+</html> 

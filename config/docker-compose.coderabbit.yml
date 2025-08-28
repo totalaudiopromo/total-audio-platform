@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  coderabbit:
+    image: coderabbitai/coderabbit:latest
+    container_name: coderabbit
+    restart: unless-stopped
+    environment:
+      - GITHUB_APP_ID=${GITHUB_APP_ID}
+      - GITHUB_PRIVATE_KEY=${GITHUB_PRIVATE_KEY}
+      - GITHUB_WEBHOOK_SECRET=${GITHUB_WEBHOOK_SECRET}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
+      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - NODE_ENV=production
+    ports:
+      - "3001:3000"
+    volumes:
+      - coderabbit_data:/app/data
+    networks:
+      - coderabbit_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: coderabbit_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - coderabbit_network
+
+volumes:
+  coderabbit_data:
+  redis_data:
+
+networks:
+  coderabbit_network:
+    driver: bridge 

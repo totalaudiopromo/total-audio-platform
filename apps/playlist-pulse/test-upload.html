@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .upload-area {
+            border: 2px dashed rgba(255,255,255,0.3);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .file-input {
+            display: none;
+        }
+        .upload-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .upload-button:hover {
+            transform: scale(1.05);
+        }
+        .file-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: none;
+        }
+        .error {
+            color: #ff6b6b;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>File Upload Test</h1>
+    <div class="upload-area">
+        <h3>Test File Upload</h3>
+        <p>Click the button below to test file selection</p>
+        <input type="file" id="fileInput" class="file-input" accept="audio/*">
+        <button onclick="document.getElementById('fileInput').click()" class="upload-button">
+            Choose File
+        </button>
+        <div id="fileInfo" class="file-info">
+            <h4>Selected File:</h4>
+            <p id="fileName"></p>
+            <p id="fileSize"></p>
+            <p id="fileType"></p>
+        </div>
+        <div id="error" class="error"></div>
+    </div>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const fileInfo = document.getElementById('fileInfo');
+            const error = document.getElementById('error');
+            
+            if (file) {
+                // Validate file type
+                const audioTypes = ['audio/mp3', 'audio/mpeg', 'audio/wav', 'audio/flac', 'audio/aac', 'audio/ogg', 'audio/m4a'];
+                if (!audioTypes.includes(file.type)) {
+                    error.textContent = 'Please select a valid audio file (MP3, WAV, FLAC, AAC, OGG, M4A)';
+                    fileInfo.style.display = 'none';
+                    return;
+                }
+                
+                // Validate file size (50MB max)
+                if (file.size > 50 * 1024 * 1024) {
+                    error.textContent = 'File size must be less than 50MB';
+                    fileInfo.style.display = 'none';
+                    return;
+                }
+                
+                error.textContent = '';
+                fileInfo.style.display = 'block';
+                document.getElementById('fileName').textContent = `Name: ${file.name}`;
+                document.getElementById('fileSize').textContent = `Size: ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+                document.getElementById('fileType').textContent = `Type: ${file.type}`;
+                
+                console.log('File selected:', file.name, file.size, file.type);
+            }
+        });
+    </script>
+</body>
+</html> 

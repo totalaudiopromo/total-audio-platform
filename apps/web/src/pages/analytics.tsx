@@ -1,0 +1,434 @@
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+
+interface AnalyticsData {
+  totalContacts: number;
+  activeCampaigns: number;
+  avgResponseRate: number;
+  totalEmailsSent: number;
+  totalOpens: number;
+  totalReplies: number;
+  monthlyData: {
+    month: string;
+    emailsSent: number;
+    opens: number;
+    replies: number;
+    responseRate: number;
+  }[];
+  topPerformingCampaigns: {
+    name: string;
+    responseRate: number;
+    totalContacts: number;
+    replies: number;
+  }[];
+  contactEngagement: {
+    category: string;
+    count: number;
+    engagementRate: number;
+  }[];
+}
+
+const sampleData: AnalyticsData = {
+  totalContacts: 1250,
+  activeCampaigns: 4,
+  avgResponseRate: 24,
+  totalEmailsSent: 3200,
+  totalOpens: 1920,
+  totalReplies: 768,
+  monthlyData: [
+    { month: 'Jan', emailsSent: 450, opens: 270, replies: 108, responseRate: 24 },
+    { month: 'Feb', emailsSent: 520, opens: 312, replies: 125, responseRate: 24 },
+    { month: 'Mar', emailsSent: 480, opens: 288, replies: 115, responseRate: 24 },
+    { month: 'Apr', emailsSent: 600, opens: 360, replies: 144, responseRate: 24 },
+    { month: 'May', emailsSent: 550, opens: 330, replies: 132, responseRate: 24 },
+    { month: 'Jun', emailsSent: 700, opens: 420, replies: 168, responseRate: 24 },
+  ],
+  topPerformingCampaigns: [
+    { name: 'Spring Release Campaign', responseRate: 31, totalContacts: 150, replies: 46 },
+    { name: 'Radio Promo - New Single', responseRate: 28, totalContacts: 75, replies: 21 },
+    { name: 'Social Media Influencer Outreach', responseRate: 25, totalContacts: 50, replies: 12 },
+    { name: 'Press Release - Album Launch', responseRate: 22, totalContacts: 200, replies: 44 },
+  ],
+  contactEngagement: [
+    { category: 'Electronic Music Journalists', count: 450, engagementRate: 28 },
+    { category: 'Radio DJs & Programmers', count: 300, engagementRate: 32 },
+    { category: 'Music Publications', count: 250, engagementRate: 18 },
+    { category: 'Music Influencers', count: 150, engagementRate: 35 },
+    { category: 'Bloggers', count: 100, engagementRate: 22 },
+  ]
+};
+
+export default function AnalyticsPage() {
+  const [analytics, setAnalytics] = useState<any>(null);
+  const [gmailData, setGmailData] = useState<any>(null);
+  const [selectedCampaign, setSelectedCampaign] = useState<string>('');
+  const [campaigns, setCampaigns] = useState<any[]>([]);
+  const [selectedPeriod, setSelectedPeriod] = useState('6months');
+
+  useEffect(() => {
+    fetchAnalytics();
+  }, []);
+
+  const fetchAnalytics = async () => {
+    try {
+      const response = await fetch('/api/analytics', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        setAnalytics(data);
+      }
+    } catch (error) {
+      console.error('Failed to fetch analytics:', error);
+    }
+  };
+
+  const fetchGmailAnalytics = async (campaignId: string) => {
+    try {
+      const response = await fetch(`/api/gmail/analytics/${campaignId}`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        setGmailData(data);
+      }
+    } catch (error) {
+      console.error('Failed to fetch Gmail analytics:', error);
+    }
+  };
+
+  const getEngagementColor = (rate: number) => {
+    if (rate >= 30) return 'text-green-600';
+    if (rate >= 20) return 'text-blue-600';
+    if (rate >= 10) return 'text-yellow-600';
+    return 'text-red-600';
+  };
+
+  const getResponseRateColor = (rate: number) => {
+    if (rate >= 25) return 'bg-green-100 text-green-800 border-green-200';
+    if (rate >= 15) return 'bg-blue-100 text-blue-800 border-blue-200';
+    if (rate >= 10) return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+    return 'bg-red-100 text-red-800 border-red-200';
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      {/* Header */}
+      <div className="bg-white/90 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-20 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                <Image src="/assets/totalaudiopromo-dog-logo.jpg" alt="Total Audio Promo Logo" width={40} height={40} className="rounded-lg shadow-sm" />
+                <span className="text-lg font-bold text-gray-700">Total Audio Promo</span>
+              </Link>
+              <div className="h-6 w-px bg-gray-300"></div>
+              <div>
+                <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent">
+                  Analytics
+                </h1>
+                <p className="text-gray-600 text-sm">
+                  Track your PR campaign performance and insights
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-6">
+              <nav className="flex items-center gap-6">
+                <Link href="/dashboard" className="text-gray-600 hover:text-gray-900 font-medium">Dashboard</Link>
+                <Link href="/contacts" className="text-gray-600 hover:text-gray-900 font-medium">Contacts</Link>
+                <Link href="/campaigns" className="text-gray-600 hover:text-gray-900 font-medium">Campaigns</Link>
+                <Link href="/analytics" className="text-gray-600 hover:text-gray-900 font-medium">Reports</Link>
+                <Link href="/integrations" className="text-gray-600 hover:text-gray-900 font-medium">Integrations</Link>
+              </nav>
+              <div className="flex items-center gap-4">
+                <select
+                  className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white/90 backdrop-blur-sm text-sm"
+                  value={selectedPeriod}
+                  onChange={(e) => setSelectedPeriod(e.target.value)}
+                >
+                  <option value="7days">Last 7 days</option>
+                  <option value="30days">Last 30 days</option>
+                  <option value="3months">Last 3 months</option>
+                  <option value="6months">Last 6 months</option>
+                  <option value="1year">Last year</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {/* Navigation Button */}
+        <div className="mb-6">
+          <Link href="/dashboard" className="bg-gray-900 text-white rounded-lg px-6 py-2 text-md font-semibold shadow hover:bg-gray-800 transition-all">← Back to Dashboard</Link>
+        </div>
+        {/* Key Metrics */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/50 p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Total Contacts</p>
+                <p className="text-2xl font-bold text-gray-900">{analytics?.totalContacts || sampleData.totalContacts.toLocaleString()}</p>
+                <p className="text-xs text-green-600">+12% from last month</p>
+              </div>
+              <div className="text-3xl">👥</div>
+            </div>
+          </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/50 p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Avg Response Rate</p>
+                <p className="text-2xl font-bold text-gray-900">{analytics?.avgResponseRate || sampleData.avgResponseRate}%</p>
+                <p className="text-xs text-green-600">+3% from last month</p>
+              </div>
+              <div className="text-3xl">📊</div>
+            </div>
+          </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/50 p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Emails Sent</p>
+                <p className="text-2xl font-bold text-gray-900">{analytics?.totalEmailsSent || sampleData.totalEmailsSent.toLocaleString()}</p>
+                <p className="text-xs text-blue-600">This period</p>
+              </div>
+              <div className="text-3xl">📧</div>
+            </div>
+          </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/50 p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Total Replies</p>
+                <p className="text-2xl font-bold text-gray-900">{analytics?.totalReplies || sampleData.totalReplies.toLocaleString()}</p>
+                <p className="text-xs text-green-600">+18% from last month</p>
+              </div>
+              <div className="text-3xl">💬</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Charts Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          {/* Monthly Performance Chart */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200/50 p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Monthly Performance</h3>
+            <div className="space-y-4">
+              {analytics?.monthlyData || sampleData.monthlyData.map((month, index) => (
+                <div key={month.month} className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 text-sm font-medium text-gray-600">{month.month}</div>
+                    <div className="flex-1 bg-gray-200 rounded-full h-2">
+                      <div 
+                        className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${(month.responseRate / 40) * 100}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className="text-sm font-semibold text-gray-900">{month.responseRate}%</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Engagement Rate by Category */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200/50 p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Engagement by Category</h3>
+            <div className="space-y-4">
+              {analytics?.contactEngagement || sampleData.contactEngagement.map((category, index) => (
+                <div key={category.category} className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-32 text-sm text-gray-600 truncate">{category.category}</div>
+                    <div className="flex-1 bg-gray-200 rounded-full h-2">
+                      <div 
+                        className="bg-green-600 h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${(category.engagementRate / 40) * 100}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className={`text-sm font-semibold ${getEngagementColor(category.engagementRate)}`}>
+                    {category.engagementRate}%
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Top Performing Campaigns */}
+        <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200/50 p-6 mb-8">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Top Performing Campaigns</h3>
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200/50">
+              <thead className="bg-gray-50/90 backdrop-blur-sm">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Campaign
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Response Rate
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Total Contacts
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Replies
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Performance
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white/70 backdrop-blur-sm divide-y divide-gray-200/30">
+                {analytics?.topPerformingCampaigns || sampleData.topPerformingCampaigns.map((campaign, index) => (
+                  <tr 
+                    key={campaign.name} 
+                    className={`hover:bg-blue-50/60 transition-all duration-200 ${
+                      index % 2 === 0 ? 'bg-white/40' : 'bg-gray-50/40'
+                    }`}
+                  >
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm font-semibold text-gray-900">{campaign.name}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${getResponseRateColor(campaign.responseRate)}`}>
+                        {campaign.responseRate}%
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-700">{campaign.totalContacts}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-700">{campaign.replies}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1 bg-gray-200 rounded-full h-2">
+                          <div 
+                            className="bg-green-600 h-2 rounded-full"
+                            style={{ width: `${(campaign.responseRate / 35) * 100}%` }}
+                          ></div>
+                        </div>
+                        <span className="text-xs text-gray-500">{campaign.responseRate}%</span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Insights */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200/50 p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Insights</h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">📈</div>
+                <div>
+                  <p className="text-sm font-medium text-gray-900">Response rates are up 15% this quarter</p>
+                  <p className="text-xs text-gray-500">Your personalized approach is working well</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">🎯</div>
+                <div>
+                  <p className="text-sm font-medium text-gray-900">Music Influencers have the highest engagement</p>
+                  <p className="text-xs text-gray-500">35% response rate vs 24% average</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">⏰</div>
+                <div>
+                  <p className="text-sm font-medium text-gray-900">Best sending time: Tuesday 10-11 AM</p>
+                  <p className="text-xs text-gray-500">28% higher open rates during this window</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200/50 p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Recommendations</h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">🚀</div>
+                <div>
+                  <p className="text-sm font-medium text-gray-900">Scale up Music Influencer outreach</p>
+                  <p className="text-xs text-gray-500">High engagement rate suggests strong potential</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">📝</div>
+                <div>
+                  <p className="text-sm font-medium text-gray-900">Optimize subject lines for Radio DJs</p>
+                  <p className="text-xs text-gray-500">Lower engagement suggests room for improvement</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">🔄</div>
+                <div>
+                  <p className="text-sm font-medium text-gray-900">Test Tuesday morning sends</p>
+                  <p className="text-xs text-gray-500">Timing optimization could boost overall performance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Gmail Integration Analytics */}
+        <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/50 p-6 mb-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">Gmail Reply Analytics</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="bg-blue-50 rounded-lg p-4">
+              <div className="text-2xl font-bold text-blue-600">
+                {gmailData?.totalReplies || 0}
+              </div>
+              <div className="text-sm text-blue-600">Total Replies</div>
+            </div>
+            <div className="bg-green-50 rounded-lg p-4">
+              <div className="text-2xl font-bold text-green-600">
+                {gmailData?.replyRate?.toFixed(1) || 0}%
+              </div>
+              <div className="text-sm text-green-600">Reply Rate</div>
+            </div>
+            <div className="bg-purple-50 rounded-lg p-4">
+              <div className="text-2xl font-bold text-purple-600">
+                {gmailData?.averageResponseTime || 0}h
+              </div>
+              <div className="text-sm text-purple-600">Avg Response Time</div>
+            </div>
+          </div>
+
+          {gmailData?.recentReplies && (
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-3">Recent Replies</h3>
+              <div className="space-y-2">
+                {gmailData.recentReplies.slice(0, 5).map((reply: any, index: number) => (
+                  <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div>
+                      <p className="font-medium text-gray-900">{reply.from}</p>
+                      <p className="text-sm text-gray-600">{reply.subject}</p>
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      {new Date(reply.date).toLocaleDateString()}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+} 

@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+.next/
+dist/
+build/
+**/node_modules/
+**/.next/
+**/dist/
+**/build/
+
+# Logs
+logs/
+*.log
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large data files
+data/
+*.json.bak
+duplicate-backup-*.json
+
+# Cache and temporary build files
+**/.next/
+**/node_modules/
+**/.cache/
+**/coverage/
+**/.nyc_output/
+**/playwright-report/
+**/test-results/
+
+# Test results
+test-results/
+playwright-report/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Package lock files (keep package.json)
+package-lock.json
+yarn.lock
+
+# Docker volumes
+docker-volumes/
+
+# Backup files
+*.backup
+*.bak 

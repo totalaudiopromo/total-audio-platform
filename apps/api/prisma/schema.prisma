@@ -1,0 +1,299 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         UserRole @default(ARTIST)
+  agencyId     String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  agency       Agency?        @relation(fields: [agencyId], references: [id])
+  ownedAgency  Agency?        @relation("AgencyOwner")
+  campaigns    Campaign[]
+  artists      Artist[]
+  integrations Integration[]
+  subscription Subscription?
+  reports      Report[]
+
+  @@map("users")
+}
+
+model Agency {
+  id        String   @id @default(cuid())
+  name      String
+  ownerId   String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  owner     User     @relation("AgencyOwner", fields: [ownerId], references: [id])
+  users     User[]
+  artists   Artist[]
+  campaigns Campaign[]
+  branding  AgencyBranding?
+
+  @@map("agencies")
+}
+
+model AgencyBranding {
+  id             String  @id @default(cuid())
+  agencyId       String  @unique
+  isWhiteLabel   Boolean @default(false)
+  logo           String?
+  primaryColor   String?
+  secondaryColor String?
+  domain         String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  agency Agency @relation(fields: [agencyId], references: [id])
+
+  @@map("agency_branding")
+}
+
+model Artist {
+  id           String   @id @default(cuid())
+  name         String
+  email        String?
+  userId       String?
+  agencyId     String?
+  genre        String?
+  spotifyUrl   String?
+  instagramUrl String?
+  websiteUrl   String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user      User?      @relation(fields: [userId], references: [id])
+  agency    Agency?    @relation(fields: [agencyId], references: [id])
+  campaigns Campaign[]
+
+  @@map("artists")
+}
+
+model Campaign {
+  id             String         @id @default(cuid())
+  name           String
+  artistId       String
+  userId         String
+  agencyId       String?
+  status         CampaignStatus @default(DRAFT)
+  type           CampaignType   @default(EMAIL)
+  startDate      DateTime
+  endDate        DateTime?
+  targetAudience String?
+  budget         Decimal?
+  goals          String[]
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  artist         Artist           @relation(fields: [artistId], references: [id])
+  user           User             @relation(fields: [userId], references: [id])
+  agency         Agency?          @relation(fields: [agencyId], references: [id])
+  emailCampaigns EmailCampaign[]
+  interactions   Interaction[]
+  reports        Report[]
+
+  @@map("campaigns")
+}
+
+model Contact {
+  id               String        @id @default(cuid())
+  name             String
+  email            String        @unique
+  company          String?
+  role             String?
+  genre            String?
+  location         String?
+  status           ContactStatus @default(ACTIVE)
+  tags             String[]
+  lastContactedAt  DateTime?
+  responseRate     Float?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  interactions Interaction[]
+
+  @@map("contacts")
+}
+
+model EmailCampaign {
+  id                  String                @id @default(cuid())
+  campaignId          String
+  mailchimpCampaignId String?
+  subject             String
+  content             String
+  recipientCount      Int                   @default(0)
+  sentAt              DateTime?
+  status              EmailCampaignStatus   @default(DRAFT)
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+
+  campaign   Campaign                @relation(fields: [campaignId], references: [id])
+  analytics  EmailCampaignAnalytics?
+
+  @@map("email_campaigns")
+}
+
+model EmailCampaignAnalytics {
+  id               String @id @default(cuid())
+  emailCampaignId  String @unique
+  opens            Int    @default(0)
+  clicks           Int    @default(0)
+  replies          Int    @default(0)
+  bounces          Int    @default(0)
+  unsubscribes     Int    @default(0)
+  openRate         Float  @default(0)
+  clickRate        Float  @default(0)
+  replyRate        Float  @default(0)
+  updatedAt        DateTime @updatedAt
+
+  emailCampaign EmailCampaign @relation(fields: [emailCampaignId], references: [id])
+
+  @@map("email_campaign_analytics")
+}
+
+model Interaction {
+  id         String          @id @default(cuid())
+  campaignId String
+  contactId  String
+  type       InteractionType
+  details    Json?
+  timestamp  DateTime        @default(now())
+  createdAt  DateTime        @default(now())
+
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+  contact  Contact  @relation(fields: [contactId], references: [id])
+
+  @@map("interactions")
+}
+
+model Report {
+  id              String     @id @default(cuid())
+  campaignId      String
+  generatedBy     String
+  type            ReportType
+  content         String
+  insights        String[]
+  recommendations String[]
+  createdAt       DateTime   @default(now())
+
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+  user     User     @relation(fields: [generatedBy], references: [id])
+
+  @@map("reports")
+}
+
+model Integration {
+  id         String            @id @default(cuid())
+  userId     String
+  type       IntegrationType
+  config     Json
+  status     IntegrationStatus @default(DISCONNECTED)
+  lastSyncAt DateTime?
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId, type])
+  @@map("integrations")
+}
+
+model Subscription {
+  id                String           @id @default(cuid())
+  userId            String           @unique
+  tier              SubscriptionTier
+  status            SubscriptionStatus @default(ACTIVE)
+  monthlyPrice      Decimal
+  setupFee          Decimal
+  currentPeriodEnd  DateTime
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("subscriptions")
+}
+
+enum UserRole {
+  ARTIST
+  AGENCY
+  ADMIN
+}
+
+enum CampaignStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  COMPLETED
+}
+
+enum CampaignType {
+  EMAIL
+  SOCIAL
+  RADIO
+  MIXED
+}
+
+enum ContactStatus {
+  ACTIVE
+  INACTIVE
+  BOUNCED
+  UNSUBSCRIBED
+}
+
+enum EmailCampaignStatus {
+  DRAFT
+  SENDING
+  SENT
+  FAILED
+}
+
+enum InteractionType {
+  EMAIL_SENT
+  EMAIL_OPENED
+  EMAIL_CLICKED
+  EMAIL_REPLIED
+  EMAIL_BOUNCED
+}
+
+enum ReportType {
+  WEEKLY
+  MONTHLY
+  CAMPAIGN_SUMMARY
+}
+
+enum IntegrationType {
+  AIRTABLE
+  MAILCHIMP
+  GMAIL
+  MAKE
+}
+
+enum IntegrationStatus {
+  CONNECTED
+  DISCONNECTED
+  ERROR
+}
+
+enum SubscriptionTier {
+  ARTIST
+  AGENCY
+  WHITE_LABEL
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  EXPIRED
+}
