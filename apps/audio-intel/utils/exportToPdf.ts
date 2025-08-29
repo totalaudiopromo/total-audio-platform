@@ -52,18 +52,30 @@ interface WhiteLabelConfig {
   primaryColor?: string;
 }
 
-// Premium design constants
+// Audio Intel Brand Design Constants
 const DESIGN = {
-  primaryColor: [30, 136, 229] as [number, number, number], // Blue
+  primaryColor: [37, 99, 235] as [number, number, number], // Audio Intel Blue (#2563eb)
   secondaryColor: [245, 247, 250] as [number, number, number], // Light gray
-  accentColor: [255, 193, 7] as [number, number, number], // Gold
-  textDark: [33, 37, 41] as [number, number, number],
-  textLight: [108, 117, 125] as [number, number, number],
-  borderColor: [222, 226, 230] as [number, number, number],
-  successColor: [40, 167, 69] as [number, number, number],
-  warningColor: [255, 193, 7] as [number, number, number],
-  dangerColor: [220, 53, 69] as [number, number, number]
+  accentColor: [139, 69, 19] as [number, number, number], // Audio Intel Gold accent
+  audioIntelBlue: [37, 99, 235] as [number, number, number], // Main brand blue
+  audioIntelPurple: [147, 51, 234] as [number, number, number], // Brand purple (#9333ea)
+  textDark: [15, 23, 42] as [number, number, number], // Slate 900
+  textLight: [71, 85, 105] as [number, number, number], // Slate 600  
+  borderColor: [226, 232, 240] as [number, number, number], // Slate 200
+  successColor: [34, 197, 94] as [number, number, number], // Green for High confidence
+  warningColor: [251, 146, 60] as [number, number, number], // Orange for Medium confidence  
+  dangerColor: [239, 68, 68] as [number, number, number], // Red for Low confidence
+  gradientStart: [37, 99, 235] as [number, number, number], // Blue
+  gradientEnd: [147, 51, 234] as [number, number, number] // Purple
 };
+
+// Helper function to extract domain from email
+function extractDomainFromEmail(email: string): string {
+  if (!email) return 'Unknown';
+  const domain = email.split('@')[1];
+  if (!domain) return 'Unknown';
+  return domain.split('.')[0].charAt(0).toUpperCase() + domain.split('.')[0].slice(1);
+}
 
 // Helper function to get display name with fallback
 function getDisplayName(contact: EnrichedContact): string {
@@ -98,43 +110,54 @@ function getConfidenceColor(confidence: string): [number, number, number] {
   }
 }
 
-// Helper function to add premium header
+// Helper function to add Audio Intel branded header
 function addPremiumHeader(doc: jsPDF, title: string, subtitle?: string, whiteLabel?: WhiteLabelConfig): void {
   const companyName = whiteLabel?.companyName || 'Audio Intel';
-  const primaryColor = whiteLabel?.primaryColor ? hexToRgb(whiteLabel.primaryColor) : DESIGN.primaryColor;
+  const primaryColor = whiteLabel?.primaryColor ? hexToRgb(whiteLabel.primaryColor) : DESIGN.audioIntelBlue;
   
-  // Add gradient-like header background
-  doc.setFillColor(primaryColor[0], primaryColor[1], primaryColor[2]);
-  doc.rect(0, 0, 210, 40, 'F');
+  // Create clean gray header background to match intel.totalaudiopromo.com
+  doc.setFillColor(243, 244, 246); // Gray-100
+  doc.rect(0, 0, 210, 45, 'F');
   
-  // Add subtle pattern overlay
-  doc.setFillColor(255, 255, 255);
-  for (let i = 0; i < 210; i += 10) {
-    doc.rect(i, 0, 5, 40, 'F');
-  }
+  // Add subtle border
+  doc.setDrawColor(209, 213, 219); // Gray-300
+  doc.setLineWidth(0.5);
+  doc.line(0, 45, 210, 45);
   
-  // Company name
+  // Add Total Audio Promo branding
+  doc.setFillColor(37, 99, 235); // Audio Intel blue
+  doc.roundedRect(18, 12, 16, 16, 3, 3, 'F');
   doc.setTextColor(255, 255, 255);
-  doc.setFontSize(12);
+  doc.setFontSize(8);
   doc.setFont('helvetica', 'bold');
-  doc.text(companyName, 20, 15);
+  doc.text('TAP', 21, 21);
+  doc.setFontSize(6);
+  doc.text('AUDIO', 19.5, 24);
+  doc.text('INTEL', 20, 26.5);
   
-  // Title
-  doc.setFontSize(20);
+  // Company name with tagline - dark text on light background
+  doc.setTextColor(15, 23, 42); // Slate-900
+  doc.setFontSize(16);
   doc.setFont('helvetica', 'bold');
-  doc.text(title, 20, 30);
+  doc.text('Total Audio Promo', 40, 18);
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(71, 85, 105); // Slate-600
+  doc.text('AI-Powered Music Industry Intelligence Platform', 40, 25);
+  
+  // Title - blue text to match brand
+  doc.setFontSize(22);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(37, 99, 235); // Blue-600
+  doc.text(title, 20, 38);
   
   // Subtitle
   if (subtitle) {
     doc.setFontSize(10);
     doc.setFont('helvetica', 'normal');
-    doc.setTextColor(255, 255, 255);
-    doc.text(subtitle, 20, 38);
+    doc.setTextColor(71, 85, 105); // Slate-600
+    doc.text(subtitle, 20, 43);
   }
-  
-  // Add decorative accent
-  doc.setFillColor(DESIGN.accentColor[0], DESIGN.accentColor[1], DESIGN.accentColor[2]);
-  doc.rect(0, 40, 210, 2, 'F');
 }
 
 // Helper function to add premium footer
@@ -155,9 +178,9 @@ function addPremiumFooter(doc: jsPDF, whiteLabel?: WhiteLabelConfig): void {
     doc.setTextColor(DESIGN.textLight[0], DESIGN.textLight[1], DESIGN.textLight[2]);
     
     doc.text(`Page ${i} of ${pageCount}`, 20, 290);
-    doc.text(`${companyName} - Professional Contact Intelligence`, 120, 290);
+    doc.text(`${companyName} - Music Industry Intelligence Report`, 120, 290);
     doc.text(`Generated: ${new Date().toLocaleDateString()}`, 20, 295);
-    doc.text('Powered by AI', 120, 295);
+    doc.text('Powered by Total Audio Promo', 120, 295);
   }
 }
 
@@ -301,18 +324,19 @@ export function exportContactsToPdf(
   doc.setTextColor(DESIGN.textLight[0], DESIGN.textLight[1], DESIGN.textLight[2]);
   doc.text(`Generated on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`, 20, 60);
   
-  // Contacts table with premium styling
+  // Contacts summary table with premium styling
   const contactsData = contacts.map(contact => [
     getDisplayName(contact),
     contact.email,
     contact.researchConfidence || 'Low',
-    new Date(contact.lastResearched).toLocaleDateString()
+    contact.platform || extractDomainFromEmail(contact.email),
+    contact.company || 'Unknown'
   ]);
   
   const finalY = createPremiumTable(
     doc, 
     contactsData, 
-    ['Name', 'Email', 'Confidence', 'Last Researched'], 
+    ['Name', 'Email', 'Confidence', 'Platform', 'Company'], 
     75, 
     whiteLabel
   );
@@ -344,16 +368,31 @@ export function exportContactsToPdf(
     
     currentY += 20;
     
-    // Intelligence content
+    // Intelligence content with better formatting
     doc.setFontSize(10);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(DESIGN.textDark[0], DESIGN.textDark[1], DESIGN.textDark[2]);
     
-    const intelligenceText = contact.contactIntelligence || 'No intelligence available for this contact.';
-    const intelligenceLines = doc.splitTextToSize(intelligenceText, 160);
+    let intelligenceText = contact.contactIntelligence;
     
+    // If no specific intelligence, create basic analysis from available data
+    if (!intelligenceText || intelligenceText.trim() === '' || intelligenceText === 'No intelligence available for this contact.') {
+      const domain = contact.email ? contact.email.split('@')[1] : '';
+      const platform = contact.platform || extractDomainFromEmail(contact.email);
+      const confidence = contact.researchConfidence || 'Low';
+      
+      intelligenceText = `Platform: ${platform}\nDomain Analysis: ${domain}\nContact Type: Music Industry Professional\nResearch Confidence: ${confidence}\nRecommendation: ${confidence === 'High' ? 'Priority contact - verified music industry connection' : confidence === 'Medium' ? 'Good potential - verify before outreach' : 'Requires additional research before contact'}`;
+    }
+    
+    // Clean up and format the intelligence text
+    intelligenceText = intelligenceText
+      .replace(/🎵|📍|📧|🎧|💡|✅/g, '') // Remove emojis
+      .replace(/\n\s*\n/g, '\n') // Remove double line breaks
+      .trim();
+    
+    const intelligenceLines = doc.splitTextToSize(intelligenceText, 160);
     doc.text(intelligenceLines, 25, currentY);
-    currentY += (intelligenceLines.length * 5) + 15;
+    currentY += (intelligenceLines.length * 4) + 15;
     
     // Add subtle separator
     if (index < contacts.length - 1) {

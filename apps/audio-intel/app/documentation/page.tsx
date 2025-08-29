@@ -27,14 +27,12 @@ import {
   Instagram,
   MessageCircle
 } from "lucide-react"
-import { TextureOverlay, TextureBackground, TextureCard } from "@/components/ui/texture-overlay"
 
 export default function DocumentationPage() {
   const [activeTab, setActiveTab] = useState('getting-started')
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <TextureBackground textureType="paper" textureVariant={1} className="min-h-screen">
         <div className="container mx-auto px-4 py-8">
           {/* Header */}
           <div className="text-center mb-8">
@@ -102,7 +100,7 @@ export default function DocumentationPage() {
 
             {/* Getting Started Tab */}
             <TabsContent value="getting-started" className="space-y-8">
-              <TextureCard textureType="paper" textureVariant={1} rotation={0} className="p-8">
+              <Card className="p-8">
                 <div className="text-center mb-8">
                   <h2 className="text-4xl font-black text-gray-900 mb-4">
                     Getting Started with Audio Intel
@@ -178,12 +176,12 @@ export default function DocumentationPage() {
                     </div>
                   </div>
                 </div>
-              </TextureCard>
+              </Card>
             </TabsContent>
 
             {/* Contact Enrichment Tab */}
             <TabsContent value="contact-enrichment" className="space-y-8">
-              <TextureCard textureType="paper" textureVariant={2} rotation={0} className="p-8">
+              <Card className="p-8">
                 <div className="text-center mb-8">
                   <h2 className="text-4xl font-black text-gray-900 mb-4">
                     Contact Enrichment Guide
@@ -272,12 +270,12 @@ export default function DocumentationPage() {
                     </div>
                   </div>
                 </div>
-              </TextureCard>
+              </Card>
             </TabsContent>
 
             {/* Platform Search Tab */}
             <TabsContent value="platform-search" className="space-y-8">
-              <TextureCard textureType="paper" textureVariant={3} rotation={0} className="p-8">
+              <Card className="p-8">
                 <div className="text-center mb-8">
                   <h2 className="text-4xl font-black text-gray-900 mb-4">
                     Platform Search Documentation
@@ -354,12 +352,12 @@ export default function DocumentationPage() {
                     </div>
                   </div>
                 </div>
-              </TextureCard>
+              </Card>
             </TabsContent>
 
             {/* AI Agents Tab */}
             <TabsContent value="ai-agents" className="space-y-8">
-              <TextureCard textureType="paper" textureVariant={4} rotation={0} className="p-8">
+              <Card className="p-8">
                 <div className="text-center mb-8">
                   <h2 className="text-4xl font-black text-gray-900 mb-4">
                     AI Agents Documentation
@@ -427,12 +425,12 @@ export default function DocumentationPage() {
                     </div>
                   </div>
                 </div>
-              </TextureCard>
+              </Card>
             </TabsContent>
 
             {/* API Reference Tab */}
             <TabsContent value="api" className="space-y-8">
-              <TextureCard textureType="paper" textureVariant={5} rotation={0} className="p-8">
+              <Card className="p-8">
                 <div className="text-center mb-8">
                   <h2 className="text-4xl font-black text-gray-900 mb-4">
                     API Reference
@@ -517,7 +515,7 @@ export default function DocumentationPage() {
                     </div>
                   </div>
                 </div>
-              </TextureCard>
+              </Card>
             </TabsContent>
           </Tabs>
 
@@ -542,7 +540,6 @@ export default function DocumentationPage() {
             </div>
           </div>
         </div>
-      </TextureBackground>
     </div>
   )
 } 

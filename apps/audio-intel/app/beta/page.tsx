@@ -26,13 +26,18 @@ import Link from "next/link"
 
 export default function BetaAccessPage() {
   const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [company, setCompany] = useState('')
+  const [role, setRole] = useState('')
+  const [experience, setExperience] = useState('')
+  const [howDidYouHear, setHowDidYouHear] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
   const handleBetaSignup = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!email || !name) return
+    if (!email || !firstName) return
     
     setIsSubmitting(true)
     try {
@@ -42,12 +47,17 @@ export default function BetaAccessPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: email,
-          first_name: name,
+          first_name: firstName,
           form_id: '8440957',
-          tags: ['beta_user', 'free_trial', 'lifetime_discount_eligible'],
+          tags: ['beta_user', 'free_trial', 'lifetime_discount_eligible', 'beta-page-signup'],
           fields: {
+            last_name: lastName,
+            company: company,
+            role: role,
+            experience: experience,
+            how_did_you_hear: howDidYouHear,
             industry_role: 'beta_trial_user',
-            lead_source: 'free_beta_access',
+            lead_source: 'beta_page',
             signup_date: new Date().toISOString(),
             trial_start_date: new Date().toISOString(),
             trial_end_date: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
@@ -106,7 +116,7 @@ export default function BetaAccessPage() {
           <Button
             size="lg"
             className="bg-blue-600 hover:bg-blue-700 text-white font-black text-lg px-8 py-4 rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-            onClick={() => window.location.href = '/upload'}
+            onClick={() => window.location.href = '/demo'}
           >
             Start Using Audio Intel
           </Button>
@@ -121,15 +131,13 @@ export default function BetaAccessPage() {
       <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         <div className="container flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <Image 
-                src="/t-a-p-new dog logo.png" 
-                alt="Total Audio Promo Logo" 
-                width={32} 
-                height={32}
-                className="rounded-lg"
-              />
-            </div>
+            <Image 
+              src="/images/total_audio_promo_logo_trans.png" 
+              alt="Total Audio Promo Logo" 
+              width={40} 
+              height={40}
+              className=""
+            />
             <div className="flex items-center space-x-2">
               <span className="text-3xl font-black text-gray-900">Audio Intel</span>
               <Badge variant="secondary" className="bg-blue-100 text-blue-800 font-bold">Beta</Badge>
@@ -268,34 +276,118 @@ export default function BetaAccessPage() {
             
             <CardContent>
               <form onSubmit={handleBetaSignup} className="space-y-6">
-                <div>
-                  <Label htmlFor="name" className="text-lg font-black text-gray-900">
-                    Your Name
-                  </Label>
-                  <Input
-                    id="name"
-                    type="text"
-                    placeholder="e.g. John Smith"
-                    className="h-12 text-base border-2 border-gray-300 mt-2"
-                    required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="firstName" className="text-lg font-black text-gray-900">
+                      First Name *
+                    </Label>
+                    <Input
+                      id="firstName"
+                      type="text"
+                      placeholder="Phoebe"
+                      className="h-12 text-base border-2 border-gray-300 mt-2"
+                      required
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="lastName" className="text-lg font-black text-gray-900">
+                      Last Name
+                    </Label>
+                    <Input
+                      id="lastName"
+                      type="text"
+                      placeholder="Bridgers"
+                      className="h-12 text-base border-2 border-gray-300 mt-2"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
+                  </div>
                 </div>
                 
                 <div>
                   <Label htmlFor="email" className="text-lg font-black text-gray-900">
-                    Email Address
+                    Email Address *
                   </Label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="e.g. john@musicagency.com"
+                    placeholder="boss@springsteen.com"
                     className="h-12 text-base border-2 border-gray-300 mt-2"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="company" className="text-lg font-black text-gray-900">
+                      Company/Label
+                    </Label>
+                    <Input
+                      id="company"
+                      type="text"
+                      placeholder="Dead Oceans Records"
+                      className="h-12 text-base border-2 border-gray-300 mt-2"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="role" className="text-lg font-black text-gray-900">
+                      Role
+                    </Label>
+                    <Input
+                      id="role"
+                      type="text"
+                      placeholder="Artist, Producer, Label Manager..."
+                      className="h-12 text-base border-2 border-gray-300 mt-2"
+                      value={role}
+                      onChange={(e) => setRole(e.target.value)}
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <Label htmlFor="experience" className="text-lg font-black text-gray-900">
+                    Experience Level
+                  </Label>
+                  <select
+                    id="experience"
+                    className="w-full h-12 text-base border-2 border-gray-300 rounded-md px-3 py-2 bg-white mt-2"
+                    value={experience}
+                    onChange={(e) => setExperience(e.target.value)}
+                  >
+                    <option value="">Select your experience level</option>
+                    <option value="first-release">Working on my first release</option>
+                    <option value="few-releases">Released a few tracks/albums</option>
+                    <option value="experienced">Experienced with promotion</option>
+                    <option value="professional">Industry professional</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <Label htmlFor="howDidYouHear" className="text-lg font-black text-gray-900">
+                    How did you hear about Audio Intel?
+                  </Label>
+                  <select
+                    id="howDidYouHear"
+                    className="w-full h-12 text-base border-2 border-gray-300 rounded-md px-3 py-2 bg-white mt-2"
+                    value={howDidYouHear}
+                    onChange={(e) => setHowDidYouHear(e.target.value)}
+                  >
+                    <option value="">How did you discover us?</option>
+                    <option value="chris-told-me">Chris Schofield told me personally</option>
+                    <option value="social-media">Social media (Instagram, Twitter, etc.)</option>
+                    <option value="google-search">Google search</option>
+                    <option value="friend-recommendation">Friend/colleague recommended it</option>
+                    <option value="industry-event">Met at industry event/conference</option>
+                    <option value="reddit-forum">Reddit or music forum</option>
+                    <option value="podcast-interview">Heard Chris on a podcast</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
 
                 <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6">
@@ -346,14 +438,9 @@ export default function BetaAccessPage() {
             Now I'm sharing it with fellow music industry professionals."
           </p>
           <div className="flex items-center justify-center gap-4">
+            {/* TODO: Replace with actual founder photo */}
             <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-500 rounded-full flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <Image 
-                src="/t-a-p-new dog logo.png" 
-                alt="Total Audio Promo Logo" 
-                width={48} 
-                height={48}
-                className="rounded-full"
-              />
+              <span className="text-white font-black text-lg">CS</span>
             </div>
             <div className="text-left">
               <div className="font-black text-gray-900">Chris Schofield</div>

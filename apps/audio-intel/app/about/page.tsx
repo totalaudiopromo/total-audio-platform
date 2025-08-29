@@ -23,12 +23,10 @@ import {
   MessageCircle,
   CheckCircle
 } from "lucide-react"
-import { TextureOverlay, TextureBackground, TextureCard } from "@/components/ui/texture-overlay"
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <TextureBackground textureType="paper" textureVariant={1} className="min-h-screen">
         <div className="container mx-auto px-4 py-8">
           {/* Hero Section */}
           <div className="text-center mb-16">
@@ -47,7 +45,7 @@ export default function AboutPage() {
 
           {/* Mission Section */}
           <div className="mb-16">
-            <TextureCard textureType="paper" textureVariant={2} rotation={0} className="p-12">
+            <Card className="p-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
                   <h2 className="text-4xl font-black text-gray-900 mb-6">
@@ -96,7 +94,7 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-            </TextureCard>
+            </Card>
           </div>
 
           {/* Values Section */}
@@ -110,36 +108,36 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <TextureCard textureType="paper" textureVariant={3} rotation={-1} className="p-8 text-center">
+              <Card className="p-8 text-center">
                 <Heart className="w-16 h-16 text-red-500 mx-auto mb-6" />
                 <h3 className="text-2xl font-black text-gray-900 mb-4">Artist-First</h3>
                 <p className="text-gray-600">
                   Every decision we make starts with the question: "How does this help independent artists succeed?"
                   We're not building tools for labels - we're building tools for the artists who are changing music.
                 </p>
-              </TextureCard>
-              <TextureCard textureType="paper" textureVariant={4} rotation={1} className="p-8 text-center">
+              </Card>
+              <Card className="p-8 text-center">
                 <Shield className="w-16 h-16 text-blue-500 mx-auto mb-6" />
                 <h3 className="text-2xl font-black text-gray-900 mb-4">Transparency</h3>
                 <p className="text-gray-600">
                   No hidden fees, no complex pricing, no surprises. We believe in honest, 
                   straightforward relationships with our users. What you see is what you get.
                 </p>
-              </TextureCard>
-              <TextureCard textureType="paper" textureVariant={5} rotation={-1} className="p-8 text-center">
+              </Card>
+              <Card className="p-8 text-center">
                 <TrendingUp className="w-16 h-16 text-green-500 mx-auto mb-6" />
                 <h3 className="text-2xl font-black text-gray-900 mb-4">Innovation</h3>
                 <p className="text-gray-600">
                   We're constantly pushing the boundaries of what's possible with AI and 
                   music industry intelligence. The tools we build today are just the beginning.
                 </p>
-              </TextureCard>
+              </Card>
             </div>
           </div>
 
           {/* Team Section */}
           <div className="mb-16">
-            <TextureCard textureType="paper" textureVariant={1} rotation={0} className="p-12">
+            <Card className="p-12">
               <div className="text-center mb-12">
                 <h2 className="text-4xl font-black text-gray-900 mb-4">
                   Powered by Total Audio Promo
@@ -195,7 +193,7 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-            </TextureCard>
+            </Card>
           </div>
 
           {/* Technology Section */}
@@ -234,7 +232,7 @@ export default function AboutPage() {
 
           {/* CTA Section */}
           <div className="mb-16">
-            <TextureCard textureType="paper" textureVariant={6} rotation={0} className="p-12 text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+            <Card className="p-12 text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white">
               <h2 className="text-4xl font-black mb-6">
                 Ready to Transform Your Music Career?
               </h2>
@@ -252,7 +250,7 @@ export default function AboutPage() {
                   Contact Sales
                 </Button>
               </div>
-            </TextureCard>
+            </Card>
           </div>
 
           {/* Footer */}
@@ -272,7 +270,6 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </TextureBackground>
     </div>
   )
 } 

@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Audio Intel – AI-Powered Music Industry Contact Enrichment | Total Audio Promo',
-  description: 'Stop wasting 15 hours a week researching music contacts. Instantly enrich your email lists with AI-powered insights for playlist curators, radio DJs, and music bloggers. Try Audio Intel for free.',
+  title: 'Audio Intel – AI-Powered Music Industry Intelligence | Founded by Music Industry Veteran',
+  description: 'From 15 years in music PR to AI innovation. Transform chaos into intelligence with our founder-built platform for playlist curators, radio DJs, and music industry professionals.',
   openGraph: {
     title: 'Audio Intel – AI-Powered Music Industry Contact Enrichment',
     description: 'Transform your music PR workflow. Get submission guidelines, contact preferences, and pitch-ready insights for the music industry.',

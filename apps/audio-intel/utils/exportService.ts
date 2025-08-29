@@ -230,10 +230,22 @@ export class ProfessionalExportService {
           break;
 
         case 'pdf':
-          exportContactsToPdf(validContacts as any, options.filename || 'audio-intel-contacts.pdf', options.whiteLabel);
+          // Map ContactData to the format expected by exportContactsToPdf
+          const pdfContacts = validContacts.map(contact => ({
+            name: contact.name,
+            email: contact.email,
+            contactIntelligence: contact.contactIntelligence || (contact as any).intelligence || 'No intelligence available',
+            researchConfidence: contact.researchConfidence || (contact as any).confidence || 'Low',
+            lastResearched: contact.lastResearched || new Date().toISOString(),
+            platform: contact.platform,
+            role: contact.role,
+            company: contact.company
+          }));
+          
+          exportContactsToPdf(pdfContacts as any, options.filename || 'audio-intel-contacts.pdf', options.whiteLabel);
           result = {
             success: true,
-            message: `Successfully exported ${validContacts.length} contacts to PDF`
+            message: `Successfully exported ${validContacts.length} contacts to PDF with intelligence data`
           };
           break;
 

@@ -33,11 +33,9 @@ import {
   Music,
   Radio,
   Newspaper,
-  ExternalLink,
-  Palette
+  ExternalLink
 } from "lucide-react"
 import { AudioCharacter } from "@/components/ui/audio-character"
-import { TextureBackground } from "@/components/ui/texture-overlay"
 // import { RealTimeMetrics } from "@/components/ui/real-time-metrics"
 import Image from "next/image"
 import Link from "next/link"
@@ -81,12 +79,16 @@ export default function AudioIntelLanding() {
   const [demoResult, setDemoResult] = useState<string>('');
   const [demoError, setDemoError] = useState<string>('');
 
-  // Texture toggle state
-  const [textureEnabled, setTextureEnabled] = useState<boolean>(false);
 
-  // Newsletter signup state
-  const [newsletterEmail, setNewsletterEmail] = useState<string>('');
-  const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState<boolean>(false);
+  // Beta signup state
+  const [betaEmail, setBetaEmail] = useState<string>('');
+  const [betaFirstName, setBetaFirstName] = useState<string>('');
+  const [betaLastName, setBetaLastName] = useState<string>('');
+  const [betaCompany, setBetaCompany] = useState<string>('');
+  const [betaRole, setBetaRole] = useState<string>('');
+  const [betaExperience, setBetaExperience] = useState<string>('');
+  const [betaInterest, setBetaInterest] = useState<string>('');
+  const [isBetaSubmitting, setIsBetaSubmitting] = useState<boolean>(false);
 
   // Track user engagement
   const trackEngagement = async (action: string, data: any = {}) => {
@@ -130,81 +132,80 @@ export default function AudioIntelLanding() {
         setDemoResult(enriched);
       } else {
         // Fallback showcase if API key not configured
-        setDemoResult('🎵 BBC Radio 1 | National Station \n📍 UK National Coverage \n📧 Email: musicteam@bbc.co.uk \n🎧 Focus: New UK artists \n💡 Tip: Include streaming numbers and radio edit');
+        setDemoResult('• BBC Radio 1 | National Station \n• UK National Coverage \n• Email: musicteam@bbc.co.uk \n• Focus: New UK artists \n• Tip: Include streaming numbers and radio edit');
       }
     } catch (e: any) {
       setDemoError('Live demo temporarily unavailable. Showing a representative example.');
-      setDemoResult('🎵 BBC Radio 1 | National Station \n📍 UK National Coverage \n📧 Email: musicteam@bbc.co.uk \n🎧 Focus: New UK artists \n💡 Tip: Include streaming numbers and radio edit');
+      setDemoResult('• BBC Radio 1 | National Station \n• UK National Coverage \n• Email: musicteam@bbc.co.uk \n• Focus: New UK artists \n• Tip: Include streaming numbers and radio edit');
     } finally {
       setDemoLoading(false);
     }
   }
 
-  async function handleNewsletterSignup(e: React.FormEvent) {
+  async function handleBetaSignup(e: React.FormEvent) {
     e.preventDefault();
-    if (!newsletterEmail) return;
+    if (!betaEmail || !betaFirstName) return;
     
-    setIsNewsletterSubmitting(true);
+    setIsBetaSubmitting(true);
     try {
-      const res = await fetch('/api/newsletter/subscribe', {
+      const res = await fetch('/api/convertkit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: newsletterEmail,
-          source: 'homepage'
+          email: betaEmail,
+          first_name: betaFirstName,
+          tags: ['beta-tester', 'audio-intel-beta'],
+          fields: {
+            last_name: betaLastName,
+            company: betaCompany,
+            role: betaRole,
+            experience: betaExperience,
+            interest: betaInterest,
+            signup_source: 'landing_page'
+          }
         }),
       });
       
       if (res.ok) {
         const result = await res.json();
-        setNewsletterEmail('');
-        trackEngagement('newsletter_signup_success', { email: newsletterEmail, source: 'homepage' });
-        alert('Thanks for subscribing! You\'ll receive weekly insights on music promotion and industry trends.');
+        setBetaEmail('');
+        setBetaFirstName('');
+        setBetaLastName('');
+        setBetaCompany('');
+        setBetaRole('');
+        setBetaExperience('');
+        setBetaInterest('');
+        trackEngagement('beta_signup_success', { email: betaEmail, source: 'landing_page' });
+        alert('🎉 Welcome to the Audio Intel beta! Check your email for immediate access instructions and your personalized testing guide.');
       } else {
         const error = await res.json();
-        throw new Error(error.error || 'Subscription failed');
+        throw new Error(error.error || 'Beta signup failed');
       }
     } catch (error: any) {
-      console.error('Newsletter signup error:', error);
-      alert(error.message || 'Subscription failed. Please try again or contact support.');
+      console.error('Beta signup error:', error);
+      alert(error.message || 'Beta signup failed. Please try again or contact support.');
     } finally {
-      setIsNewsletterSubmitting(false);
+      setIsBetaSubmitting(false);
     }
   }
   
   return (
     <div className="min-h-screen bg-[#f8f9fa]">
-      {textureEnabled && (
-        <TextureBackground textureType="paper" opacity={0.05} className="fixed inset-0 pointer-events-none z-0" />
-      )}
       {/* Header */}
-      <header className={`sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative ${textureEnabled ? 'texture-enabled' : ''}`}>
-        {textureEnabled && (
-          <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-        )}
+      <header className={`sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative`}>
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center space-x-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <Image 
-                src="/t-a-p-new dog logo.png" 
-                alt="Total Audio Promo Logo" 
-                width={36} 
-                height={36}
-                className="rounded-lg"
-              />
-            </div>
+            <Image 
+              src="/images/total_audio_promo_logo_trans.png" 
+              alt="Total Audio Promo Logo" 
+              width={40} 
+              height={40}
+              className=""
+            />
             <div className="flex items-center space-x-2">
               <span className="text-3xl font-black text-gray-900">Audio Intel</span>
               <Badge variant="secondary" className="bg-blue-100 text-blue-800 font-bold">Beta</Badge>
             </div>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="font-bold border-2 flex items-center gap-2 md:hidden"
-              onClick={() => setTextureEnabled(!textureEnabled)}
-            >
-              <Palette className="w-4 h-4" />
-            </Button>
           </div>
           
           <nav className="hidden md:flex items-center space-x-6">
@@ -246,10 +247,7 @@ export default function AudioIntelLanding() {
       </header>
 
       {/* Cross-Promotion Banner */}
-      <section className={`w-full px-4 py-8 bg-gradient-to-r from-yellow-50 to-yellow-100 border-b-4 border-yellow-300 relative ${textureEnabled ? 'texture-enabled' : ''}`}>
-        {textureEnabled && (
-          <TextureBackground textureType="grain" opacity={0.1} className="absolute inset-0 pointer-events-none" />
-        )}
+      <section className={`w-full px-4 py-8 bg-gradient-to-r from-yellow-50 to-yellow-100 border-b-4 border-yellow-300 relative`}>
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4">
@@ -270,26 +268,32 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* Hero Section */}
-      <section className={`container px-4 py-24 mx-auto text-center relative ${textureEnabled ? 'texture-enabled' : ''}`}>
-        {textureEnabled && (
-          <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-        )}
+      <section className={`container px-4 py-24 mx-auto text-center relative`}>
         <div className="max-w-4xl mx-auto">
-          {textureEnabled && (
-            <div className="absolute top-4 right-4 w-16 h-16 audio-character opacity-20 pointer-events-none" />
-          )}
           <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-8 leading-tight">
             Drop Your Chaos Here
             <span className="block text-blue-600">Transform Messy Spreadsheets Instantly</span>
           </h1>
           
-          <p className="text-2xl text-gray-600 mb-6 max-w-2xl mx-auto leading-relaxed font-medium">
-            Built by sadact's Chris Schofield - former Network Programs Manager at Decadance UK
-          </p>
-          
-          <p className="text-lg text-blue-600 mb-12 max-w-2xl mx-auto leading-relaxed font-bold">
-            Working musician who felt your spreadsheet pain and built the solution
-          </p>
+          <div className="max-w-4xl mx-auto mb-12">
+            <p className="text-2xl text-gray-600 mb-6 leading-relaxed font-medium">
+              Built by <span className="font-bold text-gray-900">sadact</span> - Brighton-based electronic producer and radio promoter who lives this daily
+            </p>
+            
+            <p className="text-lg text-blue-600 mb-6 leading-relaxed font-bold">
+              "I got tired of spending 15 hours researching contacts manually for every release. <span className="text-gray-900">There had to be a better way."</span>
+            </p>
+            
+            <p className="text-base text-gray-700 leading-relaxed mb-4">
+              Transform basic contact lists into music industry intelligence with AI-powered enrichment. 
+              Get playlist curators, radio DJs, and music bloggers with submission guidelines, contact preferences, and pitch-ready insights.
+            </p>
+            
+            <p className="text-base text-blue-700 leading-relaxed font-medium">
+              Built by a Brighton producer who lives this daily - radio promotion, electronic music releases, and the endless grind of contact research. 
+              This is the tool I wish I had when I started promoting my tracks.
+            </p>
+          </div>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
             <Link href="/pricing?plan=professional&billing=monthly">
@@ -311,10 +315,7 @@ export default function AudioIntelLanding() {
           </div>
           
           {/* Instant Product Demo */}
-          <div className={`max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg border border-gray-200 relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-            {textureEnabled && (
-              <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-            )}
+          <div className={`max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg border border-gray-200 relative overflow-hidden`}>
             <div className="grid lg:grid-cols-2 gap-8 items-start">
               {/* Demo input */}
               <div>
@@ -373,10 +374,7 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* Core Features Section */}
-      <section id="features" className={`py-24 px-4 bg-gradient-to-br from-blue-50 to-purple-50 relative ${textureEnabled ? 'texture-enabled' : ''}`}>
-        {textureEnabled && (
-          <TextureBackground textureType="grain" opacity={0.05} className="absolute inset-0 pointer-events-none" />
-        )}
+      <section id="features" className={`py-24 px-4 bg-gradient-to-br from-blue-50 to-purple-50 relative`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">
@@ -391,14 +389,11 @@ export default function AudioIntelLanding() {
             {/* Left Column - Core Features */}
             <div className="space-y-8">
               {/* Email Validation - NEW FEATURE */}
-              <div className={`bg-white p-8 rounded-2xl border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-                {textureEnabled && (
-                  <TextureBackground textureType="paper" opacity={0.03} className="absolute inset-0 pointer-events-none" />
-                )}
+              <div className={`bg-white p-8 rounded-2xl border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden`}>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <div className={`w-8 h-8 ${textureEnabled ? 'icon-headphones' : ''}`}>
-                      {!textureEnabled && <Shield className="w-8 h-8 text-white" />}
+                    <div className="w-8 h-8">
+                      <Shield className="w-8 h-8 text-white" />
                     </div>
                   </div>
                   <div>
@@ -420,14 +415,11 @@ export default function AudioIntelLanding() {
               </div>
 
               {/* Contact Enrichment */}
-              <div className={`bg-white p-8 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-                {textureEnabled && (
-                  <TextureBackground textureType="paper" opacity={0.03} className="absolute inset-0 pointer-events-none" />
-                )}
+              <div className={`bg-white p-8 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden`}>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <div className={`w-8 h-8 ${textureEnabled ? 'icon-contact' : ''}`}>
-                      {!textureEnabled && <Users className="w-8 h-8 text-white" />}
+                    <div className="w-8 h-8">
+                      <Users className="w-8 h-8 text-white" />
                     </div>
                   </div>
                   <div>
@@ -447,14 +439,11 @@ export default function AudioIntelLanding() {
               </div>
 
               {/* Platform Search */}
-              <div className={`bg-white p-8 rounded-2xl border-4 border-purple-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-                {textureEnabled && (
-                  <TextureBackground textureType="paper" opacity={0.03} className="absolute inset-0 pointer-events-none" />
-                )}
+              <div className={`bg-white p-8 rounded-2xl border-4 border-purple-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden`}>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <div className={`w-8 h-8 ${textureEnabled ? 'icon-search' : ''}`}>
-                      {!textureEnabled && <Search className="w-8 h-8 text-white" />}
+                    <div className="w-8 h-8">
+                      <Search className="w-8 h-8 text-white" />
                     </div>
                   </div>
                   <div>
@@ -477,14 +466,11 @@ export default function AudioIntelLanding() {
             {/* Right Column - Additional Features */}
             <div className="space-y-8">
               {/* AI Agents */}
-              <div className={`bg-white p-8 rounded-2xl border-4 border-yellow-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-                {textureEnabled && (
-                  <TextureBackground textureType="paper" opacity={0.03} className="absolute inset-0 pointer-events-none" />
-                )}
+              <div className={`bg-white p-8 rounded-2xl border-4 border-yellow-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden`}>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <div className={`w-8 h-8 ${textureEnabled ? 'icon-settings' : ''}`}>
-                      {!textureEnabled && <Zap className="w-8 h-8 text-white" />}
+                    <div className="w-8 h-8">
+                      <Zap className="w-8 h-8 text-white" />
                     </div>
                   </div>
                   <div>
@@ -504,14 +490,11 @@ export default function AudioIntelLanding() {
               </div>
 
               {/* Analytics Dashboard */}
-              <div className={`bg-white p-8 rounded-2xl border-4 border-red-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-                {textureEnabled && (
-                  <TextureBackground textureType="paper" opacity={0.03} className="absolute inset-0 pointer-events-none" />
-                )}
+              <div className={`bg-white p-8 rounded-2xl border-4 border-red-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden`}>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <div className={`w-8 h-8 ${textureEnabled ? 'icon-analytics' : ''}`}>
-                      {!textureEnabled && <BarChart3 className="w-8 h-8 text-white" />}
+                    <div className="w-8 h-8">
+                      <BarChart3 className="w-8 h-8 text-white" />
                     </div>
                   </div>
                   <div>
@@ -531,14 +514,11 @@ export default function AudioIntelLanding() {
               </div>
 
               {/* Export System */}
-              <div className={`bg-white p-8 rounded-2xl border-4 border-indigo-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-                {textureEnabled && (
-                  <TextureBackground textureType="paper" opacity={0.03} className="absolute inset-0 pointer-events-none" />
-                )}
+              <div className={`bg-white p-8 rounded-2xl border-4 border-indigo-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden`}>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 bg-indigo-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <div className={`w-8 h-8 ${textureEnabled ? 'icon-audio-wave' : ''}`}>
-                      {!textureEnabled && <Download className="w-8 h-8 text-white" />}
+                    <div className="w-8 h-8">
+                      <Download className="w-8 h-8 text-white" />
                     </div>
                   </div>
                   <div>
@@ -560,10 +540,7 @@ export default function AudioIntelLanding() {
           </div>
 
           {/* Value Proposition */}
-          <div className={`mt-16 text-center relative ${textureEnabled ? 'texture-enabled' : ''}`}>
-            {textureEnabled && (
-              <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-            )}
+          <div className={`mt-16 text-center relative`}>
             <div className="bg-gradient-to-r from-green-500 to-blue-500 p-8 rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               <h3 className="text-3xl font-black text-white mb-4">
                 Premium Email Validation - Better Than ZeroBounce
@@ -584,14 +561,8 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* Stats Section */}
-      <section className={`py-24 px-4 relative ${textureEnabled ? 'texture-enabled' : ''}`}>
-        {textureEnabled && (
-          <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-        )}
+      <section className={`py-24 px-4 relative`}>
         <div className="max-w-7xl mx-auto">
-          {textureEnabled && (
-            <div className="absolute top-8 right-8 w-12 h-12 audio-character-working opacity-15 pointer-events-none" />
-          )}
           <div className="text-center mb-20">
             <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8 drop-shadow-[3px_3px_0px_rgba(0,0,0,0.15)]">
               Used daily by working music professionals
@@ -606,10 +577,7 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* Problem Section */}
-      <section id="problem" className={`py-24 px-4 relative ${textureEnabled ? 'texture-enabled' : ''}`}>
-        {textureEnabled && (
-          <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-        )}
+      <section id="problem" className={`py-24 px-4 relative`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8 drop-shadow-[3px_3px_0px_rgba(0,0,0,0.15)]">
@@ -661,10 +629,7 @@ export default function AudioIntelLanding() {
               </div>
             </div>
 
-            <div className={`bg-white p-12 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-              {textureEnabled && (
-                <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-              )}
+            <div className={`bg-white p-12 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden`}>
               <div className="text-center">
                 <div className="w-24 h-24 bg-red-500 rounded-full flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mx-auto mb-8">
                   <Headphones className="w-12 h-12 text-white" />
@@ -683,10 +648,7 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* Solution Section */}
-      <section id="solution" className={`py-24 px-4 bg-white relative ${textureEnabled ? 'texture-enabled' : ''}`}>
-        {textureEnabled && (
-          <TextureBackground textureType="grain" opacity={0.03} className="absolute inset-0 pointer-events-none" />
-        )}
+      <section id="solution" className={`py-24 px-4 bg-white relative`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">
@@ -695,13 +657,10 @@ export default function AudioIntelLanding() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-12">
-            <div className={`bg-gray-50 p-10 text-center rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-              {textureEnabled && (
-                <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-              )}
+            <div className={`bg-gray-50 p-10 text-center rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden`}>
               <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mx-auto mb-8 group-hover:scale-110 transition-transform duration-200">
-                <div className={`w-10 h-10 ${textureEnabled ? 'icon-contact' : ''}`}>
-                  {!textureEnabled && <Zap className="w-10 h-10 text-white" />}
+                <div className="w-10 h-10">
+                  <Zap className="w-10 h-10 text-white" />
                 </div>
               </div>
               <h3 className="text-2xl font-black text-gray-900 mb-6">Instant Enrichment</h3>
@@ -711,13 +670,10 @@ export default function AudioIntelLanding() {
               </p>
             </div>
 
-            <div className={`bg-gray-50 p-10 text-center rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-              {textureEnabled && (
-                <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-              )}
+            <div className={`bg-gray-50 p-10 text-center rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden`}>
               <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mx-auto mb-8 group-hover:scale-110 transition-transform duration-200">
-                <div className={`w-10 h-10 ${textureEnabled ? 'icon-search' : ''}`}>
-                  {!textureEnabled && <Target className="w-10 h-10 text-white" />}
+                <div className="w-10 h-10">
+                  <Target className="w-10 h-10 text-white" />
                 </div>
               </div>
               <h3 className="text-2xl font-black text-gray-900 mb-6">Verified Intelligence</h3>
@@ -727,13 +683,10 @@ export default function AudioIntelLanding() {
               </p>
             </div>
 
-            <div className={`bg-gray-50 p-10 text-center rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-              {textureEnabled && (
-                <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-              )}
+            <div className={`bg-gray-50 p-10 text-center rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden`}>
               <div className="w-20 h-20 bg-purple-500 rounded-full flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mx-auto mb-8 group-hover:scale-110 transition-transform duration-200">
-                <div className={`w-10 h-10 ${textureEnabled ? 'icon-headphones' : ''}`}>
-                  {!textureEnabled && <Users className="w-10 h-10 text-white" />}
+                <div className="w-10 h-10">
+                  <Users className="w-10 h-10 text-white" />
                 </div>
               </div>
               <h3 className="text-2xl font-black text-gray-900 mb-6">Industry Focus</h3>
@@ -747,14 +700,11 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* Intelligent Parsing Section */}
-      <section className={`py-24 px-4 bg-gradient-to-br from-blue-50 to-purple-50 relative ${textureEnabled ? 'texture-enabled' : ''}`}>
-        {textureEnabled && (
-          <TextureBackground textureType="luma" opacity={0.05} className="absolute inset-0 pointer-events-none" />
-        )}
+      <section className={`py-24 px-4 bg-gradient-to-br from-blue-50 to-purple-50 relative`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">
-              ✨ Intelligent Parsing - Our Secret Weapon
+              Intelligent Parsing - Our Secret Weapon
             </h2>
             <p className="text-2xl font-bold text-gray-700 max-w-4xl mx-auto">
               While other tools require perfectly formatted data, Audio Intel thrives on messy spreadsheets. 
@@ -813,14 +763,11 @@ export default function AudioIntelLanding() {
               </div>
             </div>
 
-            <div className={`bg-white p-8 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-              {textureEnabled && (
-                <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-              )}
+            <div className={`bg-white p-8 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden`}>
               <h3 className="text-2xl font-black text-gray-900 mb-6 text-center">Example: Before & After</h3>
               <div className="space-y-6">
                 <div>
-                  <h4 className="font-black text-gray-900 mb-3">📥 Your Messy Data:</h4>
+                  <h4 className="font-black text-gray-900 mb-3">Your Messy Data:</h4>
                   <div className="bg-gray-100 p-4 rounded-lg font-mono text-sm">
                     <div>"John Smith", "john@bbc.co.uk"</div>
                     <div>sarah@spotify.com</div>
@@ -832,12 +779,12 @@ export default function AudioIntelLanding() {
                   <ArrowRight className="w-8 h-8 text-blue-500 mx-auto" />
                 </div>
                 <div>
-                  <h4 className="font-black text-gray-900 mb-3">📤 Clean, Enriched Data:</h4>
+                  <h4 className="font-black text-gray-900 mb-3">Clean, Enriched Data:</h4>
                   <div className="bg-green-100 p-4 rounded-lg font-mono text-sm">
-                    <div>✅ John Smith | john@bbc.co.uk | BBC Radio | High Confidence</div>
-                    <div>✅ Sarah Johnson | sarah@spotify.com | Spotify Curator | High Confidence</div>
-                    <div>✅ Mike Davis | mike@radio1.com | Radio 1 DJ | High Confidence</div>
-                    <div>✅ Emma Wilson | emma@musicblog.com | Music Blogger | High Confidence</div>
+                    <div>• John Smith | john@bbc.co.uk | BBC Radio | High Confidence</div>
+                    <div>• Sarah Johnson | sarah@spotify.com | Spotify Curator | High Confidence</div>
+                    <div>• Mike Davis | mike@radio1.com | Radio 1 DJ | High Confidence</div>
+                    <div>• Emma Wilson | emma@musicblog.com | Music Blogger | High Confidence</div>
                   </div>
                 </div>
               </div>
@@ -847,10 +794,7 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className={`py-24 px-4 relative ${textureEnabled ? 'texture-enabled' : ''}`}>
-        {textureEnabled && (
-          <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-        )}
+      <section id="pricing" className={`py-24 px-4 relative`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">Simple, Transparent Pricing</h2>
@@ -859,7 +803,62 @@ export default function AudioIntelLanding() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-4 gap-8">
+            {/* Beta Free */}
+            <div className="bg-gradient-to-br from-green-50 to-white p-10 rounded-2xl border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative">
+              <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-600 to-green-500 rounded-full px-8 py-3 font-black text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                FREE BETA
+              </Badge>
+
+              <div className="text-center mb-10 mt-6">
+                <h3 className="text-3xl font-black text-gray-900 mb-6">Beta</h3>
+                <div className="text-6xl font-black text-gray-900 mb-6">
+                  FREE<span className="text-2xl text-gray-600">/beta</span>
+                </div>
+              </div>
+
+              <ul className="space-y-5 mb-10">
+                <li className="flex items-center gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <Check className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="font-black text-lg">100 contact enrichments</span>
+                </li>
+                <li className="flex items-center gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <Check className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="font-black text-lg">FREE Email Validation</span>
+                </li>
+                <li className="flex items-center gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <Check className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="font-black text-lg">All AI research features</span>
+                </li>
+                <li className="flex items-center gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <Check className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="font-black text-lg">Export to CSV, Excel</span>
+                </li>
+                <li className="flex items-center gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <Check className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="font-black text-lg">Beta tester support</span>
+                </li>
+              </ul>
+
+              <Link href="/pricing?plan=beta">
+                <Button 
+                  className="w-full rounded-2xl font-black text-xl py-6 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-600 hover:to-green-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+                >
+                  Start Free Beta
+                </Button>
+              </Link>
+            </div>
+
             {/* Starter */}
             <div className="bg-white p-10 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
               <div className="text-center mb-10">
@@ -880,7 +879,7 @@ export default function AudioIntelLanding() {
                   <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">✅ FREE Email Validation</span>
+                  <span className="font-black text-lg">• FREE Email Validation</span>
                 </li>
                 <li className="flex items-center gap-4">
                   <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
@@ -935,7 +934,7 @@ export default function AudioIntelLanding() {
                   <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">✅ FREE Email Validation</span>
+                  <span className="font-black text-lg">• FREE Email Validation</span>
                 </li>
                 <li className="flex items-center gap-4">
                   <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
@@ -1015,14 +1014,8 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* CTA Section */}
-      <section className={`py-24 px-4 bg-white relative ${textureEnabled ? 'texture-enabled' : ''}`}>
-        {textureEnabled && (
-          <TextureBackground textureType="grain" opacity={0.05} className="absolute inset-0 pointer-events-none" />
-        )}
+      <section className={`py-24 px-4 bg-white relative`}>
         <div className="max-w-5xl mx-auto text-center">
-          {textureEnabled && (
-            <div className="absolute top-8 right-8 w-12 h-12 audio-character-success opacity-15 pointer-events-none" />
-          )}
           <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">
             Ready to Transform Your Music Promotion?
           </h2>
@@ -1061,50 +1054,133 @@ export default function AudioIntelLanding() {
             <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-green-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
               <Mail className="w-8 h-8 text-white" />
             </div>
-            <h2 className="text-3xl font-black text-gray-900 mb-4">
-              Stay in the Loop with Audio Intel
+            <h2 className="text-4xl font-black text-gray-900 mb-6">
+              Join the Audio Intel Beta
             </h2>
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Get weekly insights on music promotion, industry trends, and exclusive tips from our AI agents. 
-              No spam, just valuable content to grow your music career.
+              Get free access to Audio Intel during the testing phase. No credit card required, 
+              no payment requests. Your feedback shapes the final product.
             </p>
             
-            <form onSubmit={handleNewsletterSignup} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input
-                type="email"
-                placeholder="your@email.com"
-                className="flex-1 border-2 border-gray-300 shadow-sm focus:border-blue-500"
-                required
-                value={newsletterEmail}
-                onChange={(e) => setNewsletterEmail(e.target.value)}
-              />
+            <form onSubmit={handleBetaSignup} className="max-w-2xl mx-auto space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="firstName" className="text-left block mb-2 font-bold">First Name *</Label>
+                  <Input
+                    id="firstName"
+                    type="text"
+                    placeholder="Chris"
+                    className="border-2 border-gray-300 shadow-sm focus:border-blue-500"
+                    required
+                    value={betaFirstName}
+                    onChange={(e) => setBetaFirstName(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="lastName" className="text-left block mb-2 font-bold">Last Name</Label>
+                  <Input
+                    id="lastName"
+                    type="text"
+                    placeholder="Schofield"
+                    className="border-2 border-gray-300 shadow-sm focus:border-blue-500"
+                    value={betaLastName}
+                    onChange={(e) => setBetaLastName(e.target.value)}
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <Label htmlFor="email" className="text-left block mb-2 font-bold">Email Address *</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="chris@example.com"
+                  className="border-2 border-gray-300 shadow-sm focus:border-blue-500"
+                  required
+                  value={betaEmail}
+                  onChange={(e) => setBetaEmail(e.target.value)}
+                />
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="company" className="text-left block mb-2 font-bold">Company/Label</Label>
+                  <Input
+                    id="company"
+                    type="text"
+                    placeholder="Total Audio Promo"
+                    className="border-2 border-gray-300 shadow-sm focus:border-blue-500"
+                    value={betaCompany}
+                    onChange={(e) => setBetaCompany(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="role" className="text-left block mb-2 font-bold">Role</Label>
+                  <Input
+                    id="role"
+                    type="text"
+                    placeholder="Producer, Label Manager, Artist..."
+                    className="border-2 border-gray-300 shadow-sm focus:border-blue-500"
+                    value={betaRole}
+                    onChange={(e) => setBetaRole(e.target.value)}
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <Label htmlFor="experience" className="text-left block mb-2 font-bold">Experience Level</Label>
+                <select
+                  id="experience"
+                  className="w-full border-2 border-gray-300 shadow-sm focus:border-blue-500 rounded-md px-3 py-2 bg-white"
+                  value={betaExperience}
+                  onChange={(e) => setBetaExperience(e.target.value)}
+                >
+                  <option value="">Select your experience level</option>
+                  <option value="beginner">New to music promotion</option>
+                  <option value="intermediate">Some promotion experience</option>
+                  <option value="experienced">Experienced promoter</option>
+                  <option value="professional">Industry professional</option>
+                </select>
+              </div>
+              
+              <div>
+                <Label htmlFor="interest" className="text-left block mb-2 font-bold">What interests you most?</Label>
+                <select
+                  id="interest"
+                  className="w-full border-2 border-gray-300 shadow-sm focus:border-blue-500 rounded-md px-3 py-2 bg-white"
+                  value={betaInterest}
+                  onChange={(e) => setBetaInterest(e.target.value)}
+                >
+                  <option value="">Select your main interest</option>
+                  <option value="contact-enrichment">Contact enrichment & research</option>
+                  <option value="email-validation">Email validation</option>
+                  <option value="automation">Campaign automation</option>
+                  <option value="analytics">Analytics & reporting</option>
+                  <option value="all-features">All features</option>
+                </select>
+              </div>
+              
               <Button 
                 type="submit"
-                disabled={isNewsletterSubmitting}
-                className="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white font-bold px-6 py-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all disabled:opacity-50"
+                disabled={isBetaSubmitting}
+                className="w-full bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white font-bold px-8 py-4 text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all disabled:opacity-50"
               >
-                {isNewsletterSubmitting ? 'Subscribing...' : 'Subscribe'}
+                {isBetaSubmitting ? 'Joining Beta...' : 'Join Beta - Free Access'}
               </Button>
             </form>
             
             <p className="text-sm text-gray-500 mt-4">
-              Join 500+ music professionals getting weekly insights. Unsubscribe anytime.
+              ✓ Free beta access  ✓ No credit card required  ✓ Cancel anytime
             </p>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className={`py-16 px-4 bg-gray-900 text-white relative ${textureEnabled ? 'texture-enabled' : ''}`}>
-        {textureEnabled && (
-          <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-        )}
+      <footer className={`py-16 px-4 bg-gray-900 text-white relative`}>
         <div className="max-w-7xl mx-auto">
           {/* Cross-Promotion Section */}
-          <div className={`mb-8 p-6 bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 border border-yellow-400/20 rounded-xl relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-            {textureEnabled && (
-              <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-            )}
+          <div className={`mb-8 p-6 bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 border border-yellow-400/20 rounded-xl relative overflow-hidden`}>
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-4">
                 <div className="bg-yellow-400 rounded-full p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -1124,20 +1200,15 @@ export default function AudioIntelLanding() {
 
           <div className="grid lg:grid-cols-4 gap-12">
             <div>
-              <div className={`relative overflow-hidden ${textureEnabled ? 'texture-enabled' : ''}`}>
-                {textureEnabled && (
-                  <TextureBackground textureType="paper" opacity={0.02} className="absolute inset-0 pointer-events-none" />
-                )}
+              <div className={`relative overflow-hidden`}>
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <Image 
-                      src="/t-a-p-new dog logo.png" 
-                      alt="Total Audio Promo Logo" 
-                      width={44} 
-                      height={44}
-                      className="rounded-lg"
-                    />
-                  </div>
+                  <Image 
+                    src="/images/total_audio_promo_logo_trans.png" 
+                    alt="Total Audio Promo Logo" 
+                    width={48} 
+                    height={48}
+                    className=""
+                  />
                   <span className="text-2xl font-black">Audio Intel</span>
                 </div>
                 <p className="text-lg font-bold text-gray-300 mb-8">
