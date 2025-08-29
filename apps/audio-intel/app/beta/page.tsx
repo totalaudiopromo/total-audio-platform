@@ -36,58 +36,65 @@ export default function BetaAccessPage() {
   const [submitted, setSubmitted] = useState(false)
 
   const handleBetaSignup = async (e: React.FormEvent) => {
+    console.log('🚀 Form handler called!')
     e.preventDefault()
-    if (!email || !firstName) return
+    e.stopPropagation()
+    
+    if (!email || !firstName) {
+      alert('Please fill in your email and first name')
+      return false
+    }
     
     setIsSubmitting(true)
+    
     try {
-      // Direct ConvertKit signup for free beta access
-      const res = await fetch('/api/convertkit', {
+      console.log('📝 Submitting form data:', { email, firstName, lastName })
+      
+      const response = await fetch('/api/convertkit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
-          email: email,
+          email,
           first_name: firstName,
-          form_id: '8440957',
+          last_name: lastName,
+          form_id: '8440957', // Beta access form
           tags: ['beta_user', 'free_trial', 'lifetime_discount_eligible', 'beta-page-signup'],
           fields: {
-            last_name: lastName,
-            company: company,
-            role: role,
-            experience: experience,
-            how_did_you_hear: howDidYouHear,
-            industry_role: 'beta_trial_user',
-            lead_source: 'beta_page',
-            signup_date: new Date().toISOString(),
-            trial_start_date: new Date().toISOString(),
-            trial_end_date: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
-            is_beta: 'true',
-            access_type: 'free_trial'
+            company: company || '',
+            role: role || '',
+            experience: experience || '',
+            how_did_you_hear: howDidYouHear || '',
+            signup_page: 'beta-access-page',
+            signup_timestamp: new Date().toISOString()
           }
-        }),
+        })
       })
       
-      if (res.ok) {
+      const result = await response.json()
+      
+      if (result.success) {
+        console.log('✅ Successfully subscribed to ConvertKit:', result)
         setSubmitted(true)
-        // Track successful beta signup
-        if (typeof window !== 'undefined' && (window as any).gtag) {
-          (window as any).gtag('event', 'free_beta_signup_success', {
-            email,
-            source: 'free_beta_access'
-          })
-        }
       } else {
-        throw new Error('Signup failed')
+        console.error('❌ ConvertKit API error:', result.error)
+        alert(`Signup failed: ${result.error}. Please try again or contact support.`)
       }
     } catch (error) {
-      console.error('Beta signup error:', error)
-      alert('Something went wrong. Please try again or contact info@totalaudiopromo.com')
+      console.error('❌ Network error:', error)
+      alert('Network error. Please check your connection and try again.')
     } finally {
       setIsSubmitting(false)
     }
+    
+    return false
   }
 
+  console.log('Current submitted state:', submitted)
+  
   if (submitted) {
+    console.log('🎉 Rendering success page because submitted = true')
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center p-4">
         <Card className="max-w-2xl w-full text-center p-8 border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
@@ -156,11 +163,9 @@ export default function BetaAccessPage() {
       <section className="container px-4 py-24 mx-auto">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <Crown className="w-8 h-8 text-yellow-500" />
             <Badge className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white font-black text-lg px-6 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               EXCLUSIVE BETA ACCESS
             </Badge>
-            <Crown className="w-8 h-8 text-yellow-500" />
           </div>
           
           <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-8 leading-tight">
@@ -313,7 +318,7 @@ export default function BetaAccessPage() {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="boss@springsteen.com"
+                    placeholder="theboss@springsteen.com"
                     className="h-12 text-base border-2 border-gray-300 mt-2"
                     required
                     value={email}
@@ -329,7 +334,7 @@ export default function BetaAccessPage() {
                     <Input
                       id="company"
                       type="text"
-                      placeholder="Dead Oceans Records"
+                      placeholder="Rinse FM"
                       className="h-12 text-base border-2 border-gray-300 mt-2"
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
@@ -438,10 +443,13 @@ export default function BetaAccessPage() {
             Now I'm sharing it with fellow music industry professionals."
           </p>
           <div className="flex items-center justify-center gap-4">
-            {/* TODO: Replace with actual founder photo */}
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-500 rounded-full flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <span className="text-white font-black text-lg">CS</span>
-            </div>
+            <Image 
+              src="/images/chris-schofield-founder-photo.jpg" 
+              alt="Chris Schofield - Founder of Total Audio Promo" 
+              width={80} 
+              height={80}
+              className="rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] object-cover aspect-square"
+            />
             <div className="text-left">
               <div className="font-black text-gray-900">Chris Schofield</div>
               <div className="font-bold text-gray-600">Founder, Total Audio Promo</div>
