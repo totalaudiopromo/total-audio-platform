@@ -45,36 +45,43 @@ export async function POST(req: NextRequest) {
     if (tags.length > 0 && result.subscription?.subscriber?.id) {
       const subscriberId = result.subscription.subscriber.id;
       
+      // Map tag names to their IDs from Kit
+      const tagIdMap = {
+        'beta_user': '9942888',
+        'free_trial': '9961566',
+        'lifetime_discount_eligible': '9890548',
+        'beta-page-signup': '10182442'
+      };
+
       for (const tag of tags) {
         try {
-          // First, try to tag the subscriber (this will create the tag if it doesn't exist)
-          const tagResponse = await fetch(`https://api.convertkit.com/v3/tags`, {
+          const tagId = tagIdMap[tag as keyof typeof tagIdMap];
+          if (!tagId) {
+            console.warn(`❌ Unknown tag: ${tag} - skipping`);
+            continue;
+          }
+
+          // Use the correct ConvertKit API endpoint with tag ID
+          const tagResponse = await fetch(`https://api.convertkit.com/v3/tags/${tagId}/subscribe`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              api_key: CONVERTKIT_API_KEY,
-              tag: {
-                name: tag,
-                email: email
-              }
+              api_secret: CONVERTKIT_API_SECRET,
+              email: email
             })
           });
           
-          const tagResult = await tagResponse.text();
-          
           if (tagResponse.ok) {
-            console.log(`Successfully tagged ${email} with: ${tag}`);
-          } else if (tagResult.includes("already been taken")) {
-            // Tag exists, try to associate it with the subscriber using tag ID
-            console.log(`Tag ${tag} already exists, attempting to associate with subscriber`);
-            // This is expected for existing tags and doesn't indicate failure
+            const tagResult = await tagResponse.json();
+            console.log(`✅ Successfully tagged ${email} with: ${tag} (ID: ${tagId})`, tagResult);
           } else {
-            console.warn(`Failed to tag ${email} with: ${tag} - ${tagResult}`);
+            const errorText = await tagResponse.text();
+            console.warn(`❌ Failed to tag ${email} with: ${tag} (ID: ${tagId}) - ${errorText}`);
           }
         } catch (tagError) {
-          console.warn(`Error tagging ${email} with ${tag}:`, tagError);
+          console.warn(`❌ Error tagging ${email} with ${tag}:`, tagError);
         }
       }
     }
@@ -83,68 +90,8 @@ export async function POST(req: NextRequest) {
     // The form subscription above should trigger any automated sequences you have set up
     console.log(`Form subscription completed for ${email} - automated sequences will trigger if configured`)
 
-    // Send immediate welcome email with authentic sadact positioning
-    try {
-      console.log(`Sending welcome email to ${email}...`);
-      
-      const welcomeEmailContent = `Hi ${first_name || 'there'},
-
-Thanks for signing up to test Audio Intel during the beta phase.
-
-ABOUT THE BETA:
-• Completely free access to all features during testing period
-• No credit card required, no payment requests
-• Built specifically for music industry professionals
-• Your honest feedback shapes the final product
-
-WHAT YOU'RE TESTING:
-Audio Intel automates the contact research that used to take me hours when promoting electronic releases. Instead of juggling Groover, SubmitHub, Spotify for Artists, and endless spreadsheets, everything happens in one place.
-
-HOW TO TEST:
-1. Go to: intel.totalaudiopromo.com/demo
-2. Upload any contact list (CSV, Excel, or manual entry)
-3. Watch the AI research and enrich your contacts
-4. Test the genre matching, email finding, and demographic filters
-5. Export your enhanced contact lists
-
-YOUR FEEDBACK MATTERS:
-This tool exists because I got tired of spending entire weekends researching radio contacts for single releases. As someone working in Brighton's electronic music scene, I knew there had to be a better way.
-
-Questions or issues? Just reply to this email.
-
-Start testing → intel.totalaudiopromo.com/demo
-
-Built by sadact
-Brighton electronic producer who got tired of juggling 8+ tools just to promote one release
-Former Network Programmes Manager at Decadance UK and current radio promoter`;
-
-      const emailResponse = await fetch('https://api.convertkit.com/v3/broadcasts', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          api_secret: CONVERTKIT_API_SECRET,
-          subject: "Welcome to Audio Intel Beta - Free Testing Access",
-          content: welcomeEmailContent,
-          description: `Beta welcome for ${email}`,
-          public: false,
-          send_at: new Date().toISOString(),
-          subscriber_query: {
-            "email": email
-          }
-        })
-      });
-      
-      if (emailResponse.ok) {
-        const emailResult = await emailResponse.json();
-        console.log(`✅ Welcome email sent to ${email} (Broadcast ID: ${emailResult.broadcast?.id})`);
-      } else {
-        console.warn(`⚠️ Welcome email failed for ${email}`);
-      }
-    } catch (emailError) {
-      console.warn('Welcome email error:', emailError);
-    }
+    // Email sending disabled - Kit automation handles welcome sequence
+    console.log(`✅ Subscriber added to Kit, automation will handle welcome emails via beta_user tag`)
 
     return NextResponse.json({ 
       success: true, 

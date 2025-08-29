@@ -176,7 +176,7 @@ export default function AudioIntelLanding() {
         setBetaExperience('');
         setBetaInterest('');
         trackEngagement('beta_signup_success', { email: betaEmail, source: 'landing_page' });
-        alert('🎉 Welcome to the Audio Intel beta! Check your email for immediate access instructions and your personalized testing guide.');
+        alert('🎉 Welcome to the Audio Intel beta! Check your email for immediate access instructions and your personalised testing guide.');
       } else {
         const error = await res.json();
         throw new Error(error.error || 'Beta signup failed');
@@ -230,7 +230,7 @@ export default function AudioIntelLanding() {
             )}
 
             <Link href="/signin">
-              <Button variant="outline" size="sm" className="font-bold border-2">
+              <Button variant="outline" size="sm" className="font-bold border-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 Sign In
               </Button>
             </Link>
@@ -268,7 +268,7 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* Hero Section */}
-      <section className={`container px-4 py-24 mx-auto text-center relative`}>
+      <section className={`container px-4 py-16 mx-auto text-center relative`}>
         <div className="max-w-4xl mx-auto">
           <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-8 leading-tight">
             Drop Your Chaos Here
@@ -281,17 +281,12 @@ export default function AudioIntelLanding() {
             </p>
             
             <p className="text-lg text-blue-600 mb-6 leading-relaxed font-bold">
-              "I got tired of spending 15 hours researching contacts manually for every release. <span className="text-gray-900">There had to be a better way."</span>
+              "After years of manual contact research eating into my creative time, I built the tool I wished existed."
             </p>
             
-            <p className="text-base text-gray-700 leading-relaxed mb-4">
+            <p className="text-base text-gray-700 leading-relaxed">
               Transform basic contact lists into music industry intelligence with AI-powered enrichment. 
               Get playlist curators, radio DJs, and music bloggers with submission guidelines, contact preferences, and pitch-ready insights.
-            </p>
-            
-            <p className="text-base text-blue-700 leading-relaxed font-medium">
-              Built by a Brighton producer who lives this daily - radio promotion, electronic music releases, and the endless grind of contact research. 
-              This is the tool I wish I had when I started promoting my tracks.
             </p>
           </div>
           
@@ -299,7 +294,7 @@ export default function AudioIntelLanding() {
             <Link href="/pricing?plan=professional&billing=monthly">
               <Button 
                 size="lg" 
-                className="bg-blue-600 hover:bg-blue-700 text-lg px-12 py-4 font-bold rounded-xl transition-colors"
+                className="bg-blue-600 hover:bg-blue-700 text-lg px-12 py-4 font-bold rounded-xl transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
               >
                 Drop Your Chaos Here
               </Button>
@@ -307,7 +302,7 @@ export default function AudioIntelLanding() {
             <Button 
               variant="outline" 
               size="lg" 
-              className="text-lg px-12 py-4 font-medium border-2 rounded-xl hover:bg-gray-50 transition-colors"
+              className="text-lg px-12 py-4 font-medium border-2 rounded-xl hover:bg-gray-50 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
               onClick={() => document.getElementById('solution')?.scrollIntoView({ behavior: 'smooth' })}
             >
               See why industry professionals choose Audio Intel
@@ -338,7 +333,7 @@ export default function AudioIntelLanding() {
                 <p className="mt-3 text-sm text-gray-500">No upload needed. One click demo using real enrichment pipeline.</p>
                 <div className="mt-6 text-left">
                   <Link href="/upload">
-                    <Button variant="outline" className="font-bold">
+                    <Button variant="outline" className="font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                       Upload a sample CSV →
                     </Button>
                   </Link>
@@ -474,18 +469,18 @@ export default function AudioIntelLanding() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-black text-gray-900 drop-shadow-[2px_2px_0px_rgba(0,0,0,0.1)]">AI Strategy Agents</h3>
+                    <h3 className="text-2xl font-black text-gray-900">Advanced Analytics</h3>
                     <Badge className="bg-yellow-500 text-white font-black tracking-wide text-xs shadow-[2px_2px_0px_rgba(0,0,0,0.2)]">INTELLIGENCE</Badge>
                   </div>
                 </div>
                 <p className="text-lg font-bold text-gray-700 mb-4">
-                  Get strategic advice from specialised AI agents for music promotion and contact management. Built by someone who's been in the trenches of radio promotion for years.
+                  Track your enrichment performance with real-time analytics and comprehensive reporting. Monitor success rates, platform breakdowns, and processing metrics.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary" className="bg-yellow-50 text-yellow-700">Music Industry Expert</Badge>
-                  <Badge variant="secondary" className="bg-yellow-50 text-yellow-700">PR Strategy</Badge>
-                  <Badge variant="secondary" className="bg-yellow-50 text-yellow-700">Campaign Planning</Badge>
-                  <Badge variant="secondary" className="bg-yellow-50 text-yellow-700">Performance Analysis</Badge>
+                  <Badge variant="secondary" className="bg-yellow-50 text-yellow-700">Real-time Metrics</Badge>
+                  <Badge variant="secondary" className="bg-yellow-50 text-yellow-700">Success Tracking</Badge>
+                  <Badge variant="secondary" className="bg-yellow-50 text-yellow-700">Platform Analytics</Badge>
+                  <Badge variant="secondary" className="bg-yellow-50 text-yellow-700">Performance Reports</Badge>
                 </div>
               </div>
 
@@ -564,7 +559,7 @@ export default function AudioIntelLanding() {
       <section className={`py-24 px-4 relative`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8 drop-shadow-[3px_3px_0px_rgba(0,0,0,0.15)]">
+            <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">
               Used daily by working music professionals
             </h2>
             <p className="text-xl font-bold text-blue-600 mb-8">
@@ -580,7 +575,7 @@ export default function AudioIntelLanding() {
       <section id="problem" className={`py-24 px-4 relative`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8 drop-shadow-[3px_3px_0px_rgba(0,0,0,0.15)]">
+            <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">
               The Problem: Contact Research is Broken
             </h2>
           </div>
@@ -1163,7 +1158,7 @@ export default function AudioIntelLanding() {
               <Button 
                 type="submit"
                 disabled={isBetaSubmitting}
-                className="w-full bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white font-bold px-8 py-4 text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all disabled:opacity-50"
+                className="w-full bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white font-bold px-8 py-4 text-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all disabled:opacity-50"
               >
                 {isBetaSubmitting ? 'Joining Beta...' : 'Join Beta - Free Access'}
               </Button>
@@ -1177,7 +1172,7 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* Footer */}
-      <footer className={`py-16 px-4 bg-gray-900 text-white relative`}>
+      <footer className={`py-12 px-4 bg-gray-900 text-white relative`}>
         <div className="max-w-7xl mx-auto">
           {/* Cross-Promotion Section */}
           <div className={`mb-8 p-6 bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 border border-yellow-400/20 rounded-xl relative overflow-hidden`}>
@@ -1198,16 +1193,16 @@ export default function AudioIntelLanding() {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-4 gap-12">
+          <div className="grid lg:grid-cols-4 gap-8">
             <div>
               <div className={`relative overflow-hidden`}>
                 <div className="flex items-center gap-4 mb-8">
                   <Image 
                     src="/images/total_audio_promo_logo_trans.png" 
                     alt="Total Audio Promo Logo" 
-                    width={48} 
-                    height={48}
-                    className=""
+                    width={64} 
+                    height={64}
+                    className="bg-white rounded-lg p-2"
                   />
                   <span className="text-2xl font-black">Audio Intel</span>
                 </div>
@@ -1254,7 +1249,7 @@ export default function AudioIntelLanding() {
                 </li>
                 <li>
                   <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    Contact Us
+                    Contact Support
                   </a>
                 </li>
                 <li>
@@ -1293,31 +1288,11 @@ export default function AudioIntelLanding() {
               </ul>
             </div>
 
-            <div>
-              <h3 className="text-xl font-black mb-6">Company</h3>
-              <ul className="space-y-4">
-                <li>
-                  <a href="https://totalaudiopromo.com/about" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    About Total Audio Promo
-                  </a>
-                </li>
-                <li>
-                  <a href="https://totalaudiopromo.com/blog" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
 
           <div className="border-t border-gray-800 mt-12 pt-8 text-center">
             <p className="text-gray-400 font-bold">
-              © 2025 Audio Intel - Powered By Total Audio Promo
+              © 2025 Audio Intel - Powered By <a href="https://totalaudiopromo.com" className="text-gray-300 hover:text-white transition-colors underline">Total Audio Promo</a>
             </p>
           </div>
         </div>
