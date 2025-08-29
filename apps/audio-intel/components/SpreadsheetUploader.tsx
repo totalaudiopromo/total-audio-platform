@@ -646,8 +646,8 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
         />
         
         <div className="space-y-4">
-          <div className="mx-auto w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center shadow-brutal">
-            <Upload className="w-10 h-10 text-white" />
+          <div className="mx-auto w-20 h-20 bg-white rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
+            <Upload className="w-10 h-10 text-black" />
           </div>
           
           <div>
