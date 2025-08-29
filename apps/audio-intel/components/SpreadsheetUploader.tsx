@@ -662,7 +662,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
           
           {/* Total Audio Promo Mascot Transformation Journey - Intel Brand */}
           <div className="flex items-center justify-center gap-12 mb-10 p-10 bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 rounded-3xl border-2 border-dashed" style={{ borderColor: '#1E88E5' }}>
-            <div className="text-center bg-white rounded-2xl p-6 shadow-xl border-4 w-64" style={{ borderColor: '#dc2626' }}>
+            <div className="text-center bg-white rounded-2xl p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-4 border-red-500 w-64">
               <div className="mb-4">
                 <img 
                   src="/assets/loading-states/chaos-overwhelmed.png" 
@@ -687,7 +687,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
               <p className="text-sm text-gray-600 font-medium">Transform</p>
             </div>
             
-            <div className="text-center bg-white rounded-2xl p-6 shadow-xl border-4 w-64" style={{ borderColor: '#1E88E5' }}>
+            <div className="text-center bg-white rounded-2xl p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-4 border-blue-500 w-64">
               <div className="mb-4">
                 <img 
                   src="/assets/loading-states/processing-organizing.png" 
@@ -712,7 +712,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
               <p className="text-sm text-gray-600 font-medium">Result</p>
             </div>
             
-            <div className="text-center bg-white rounded-2xl p-6 shadow-xl border-4 w-64" style={{ borderColor: '#059669' }}>
+            <div className="text-center bg-white rounded-2xl p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-4 border-green-500 w-64">
               <div className="mb-4">
                 <img 
                   src="/assets/loading-states/intelligence-complete.png" 
@@ -735,7 +735,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
           
           <div className="flex flex-wrap gap-3 justify-center mb-4">
             <Badge variant="secondary" className="bg-green-100 text-green-800 px-4 py-2 text-base font-bold">
-              Authentic Character Journey
+              Professional Contact Processing
             </Badge>
             <Badge variant="secondary" className="bg-blue-100 text-blue-800 px-4 py-2 text-base font-bold">
               Music Industry Intelligence
@@ -746,7 +746,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
           </div>
           
           <p className="text-lg text-gray-500 font-bold">
-            CSV, Excel files • Multiple files at once • Same quality as single contact enrichment
+            CSV, Excel files • Multiple files at once • Professional contact intelligence
           </p>
         </div>
       </CardContent>
