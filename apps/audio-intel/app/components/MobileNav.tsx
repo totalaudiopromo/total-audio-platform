@@ -60,9 +60,7 @@ export default function MobileNav() {
     <nav className="fixed top-0 left-0 w-full z-40 md:hidden" aria-label="Mobile Navigation">
       <div className="flex items-center justify-between px-4 py-3 bg-white border-b border-gray-200 shadow-sm">
         <Link href="/" className="flex items-center gap-3">
-          <div className="bg-gradient-to-br from-[#1E88E5] to-blue-500 rounded-full p-2">
-            <Image src="/dog-logo.png" alt="Audio Intel Logo" width={32} height={32} className="w-8 h-8" priority />
-          </div>
+          <Image src="/images/total_audio_promo_logo_trans.png" alt="Total Audio Promo Mascot" width={40} height={40} className="w-10 h-10" priority />
           <span className="font-bold text-gray-900 text-lg">Audio Intel</span>
         </Link>
         <button

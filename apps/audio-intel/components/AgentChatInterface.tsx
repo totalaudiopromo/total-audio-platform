@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Bot, TrendingUp, Edit, BarChart3, Mail, Target } from 'lucide-react';
 
 interface ChatMessage {
   id: string;
@@ -43,12 +44,12 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
 
   const getWelcomeMessage = (type: 'orchestrator' | 'marketing' | 'content' | 'performance' | 'newsletter' | 'competitive'): string => {
     const messages = {
-      orchestrator: "🤖 **Orchestrator Agent Online** - I control all 5 sub-agents. Ask me about strategy, coordination, or agent performance. I can deploy, pause, or modify any agent on command.",
-      marketing: "📈 **Marketing Agent Ready** - I monitor Reddit, track email performance, and identify beta prospects 24/7. Currently scanning 5 music subreddits every 4 hours.",
-      content: "📝 **Content Agent Active** - I generate daily content ideas, social posts, and blog topics. I've already created 12 weeks of newsletter content.",
-      performance: "📊 **Performance Agent Monitoring** - I track all KPIs, analyze trends, and generate alerts. Current focus: 1,000 beta user goal progress.",
-      newsletter: "📧 **Newsletter Agent Standing By** - I manage weekly newsletter automation, subscriber segmentation, and email sequences. Next send: Tuesday 9am.",
-      competitive: "🎯 **Competitive Intel Agent Deployed** - I monitor Muck Rack, Cision, and competitor mentions across Reddit and social media. Weekly competitive reports generated."
+      orchestrator: "**Orchestrator Agent Online** - I control all 5 sub-agents. Ask me about strategy, coordination, or agent performance. I can deploy, pause, or modify any agent on command.",
+      marketing: "**Marketing Agent Ready** - I monitor Reddit, track email performance, and identify beta prospects 24/7. Currently scanning 5 music subreddits every 4 hours.",
+      content: "**Content Agent Active** - I generate daily content ideas, social posts, and blog topics. I've already created 12 weeks of newsletter content.",
+      performance: "**Performance Agent Monitoring** - I track all KPIs, analyze trends, and generate alerts. Current focus: 1,000 beta user goal progress.",
+      newsletter: "**Newsletter Agent Standing By** - I manage weekly newsletter automation, subscriber segmentation, and email sequences. Next send: Tuesday 9am.",
+      competitive: "**Competitive Intel Agent Deployed** - I monitor Muck Rack, Cision, and competitor mentions across Reddit and social media. Weekly competitive reports generated."
     };
     return messages[type] || "Agent online and ready for commands.";
   };
@@ -57,37 +58,37 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
     const personalities = {
       orchestrator: {
         name: "Commander",
-        emoji: "🤖",
+        icon: "bot",
         color: "text-purple-600",
         bgColor: "bg-purple-50"
       },
       marketing: {
         name: "Scout",
-        emoji: "📈", 
+        icon: "trending-up", 
         color: "text-blue-600",
         bgColor: "bg-blue-50"
       },
       content: {
         name: "Creator",
-        emoji: "📝",
+        icon: "edit",
         color: "text-green-600", 
         bgColor: "bg-green-50"
       },
       performance: {
         name: "Analyst",
-        emoji: "📊",
+        icon: "bar-chart-3",
         color: "text-orange-600",
         bgColor: "bg-orange-50"
       },
       newsletter: {
         name: "Communicator", 
-        emoji: "📧",
+        icon: "mail",
         color: "text-indigo-600",
         bgColor: "bg-indigo-50"
       },
       competitive: {
         name: "Intel",
-        emoji: "🎯",
+        icon: "target",
         color: "text-red-600",
         bgColor: "bg-red-50"
       }
@@ -169,11 +170,30 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
 
   const personality = getAgentPersonality(agentType);
 
+  const renderIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'bot':
+        return <Bot className="w-6 h-6" />;
+      case 'trending-up':
+        return <TrendingUp className="w-6 h-6" />;
+      case 'edit':
+        return <Edit className="w-6 h-6" />;
+      case 'bar-chart-3':
+        return <BarChart3 className="w-6 h-6" />;
+      case 'mail':
+        return <Mail className="w-6 h-6" />;
+      case 'target':
+        return <Target className="w-6 h-6" />;
+      default:
+        return <span>•</span>;
+    }
+  };
+
   return (
     <Card className="h-[600px] flex flex-col">
       <CardHeader className={`${personality.bgColor} border-b`}>
         <CardTitle className="flex items-center gap-2">
-          <span className="text-2xl">{personality.emoji}</span>
+          <span className="text-2xl">{renderIcon(personality.icon)}</span>
           <span className={personality.color}>{personality.name} Agent</span>
           <div className="ml-auto flex items-center">
             <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>

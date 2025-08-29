@@ -13,12 +13,12 @@ export async function POST(request: NextRequest) {
     const orchestrationResults = {
       timestamp: new Date().toISOString(),
       agents_status_checked: 0,
-      performance_alerts: [],
-      optimization_actions: [],
-      emergency_responses: [],
+      performance_alerts: [] as string[],
+      optimization_actions: [] as string[],
+      emergency_responses: [] as string[],
       daily_summary: '',
-      recommendations: [],
-      next_priority_tasks: []
+      recommendations: [] as string[],
+      next_priority_tasks: [] as string[]
     };
 
     // Agent Performance Check

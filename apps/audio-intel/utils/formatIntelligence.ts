@@ -10,11 +10,11 @@ export function formatContactIntelligence(data: {
   updated?: string;
 }): string {
   return [
-    `🎵 ${data.name || ''}${data.format ? ' | ' + data.format : ''}`,
-    `📍 ${data.location || ''}${data.audience ? ' | ' + data.audience : ''}`,
-    data.contactMethod ? `📧 ${data.contactMethod}` : '',
-    data.focus ? `🎧 Focus: ${data.focus}` : '',
-    data.tip ? `💡 Tip: ${data.tip}` : '',
-    `✅ Research Confidence: ${data.confidence || 'High'}${data.updated ? ' | Updated: ' + data.updated : ''}`,
+    `${data.name || ''}${data.format ? ' | ' + data.format : ''}`,
+    `Location: ${data.location || ''}${data.audience ? ' | ' + data.audience : ''}`,
+    data.contactMethod ? `Contact: ${data.contactMethod}` : '',
+    data.focus ? `Focus: ${data.focus}` : '',
+    data.tip ? `Tip: ${data.tip}` : '',
+    `Confidence: ${data.confidence || 'High'}${data.updated ? ' | Updated: ' + data.updated : ''}`,
   ].filter(Boolean).join('\n');
 } 

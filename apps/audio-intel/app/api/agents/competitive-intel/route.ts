@@ -18,8 +18,8 @@ export async function POST(request: NextRequest) {
       marketing_campaigns_tracked: 0,
       social_mentions_analyzed: 0,
       threat_level: 'Low',
-      opportunity_alerts: [],
-      strategic_insights: []
+      opportunity_alerts: [] as string[],
+      strategic_insights: [] as string[]
     };
 
     // Competitor monitoring targets

@@ -14,11 +14,11 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
       report_period: 'Last 7 days',
       overall_performance: 0,
-      agent_performances: {},
-      key_metrics: {},
-      growth_indicators: {},
-      alert_summary: {},
-      strategic_recommendations: []
+      agent_performances: {} as any,
+      key_metrics: {} as any,
+      growth_indicators: {} as any,
+      alert_summary: {} as any,
+      strategic_recommendations: [] as string[]
     };
 
     // Agent Performance Analysis

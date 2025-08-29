@@ -2,6 +2,144 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Audio Intel Loading States Animations */
+@layer components {
+  /* Gentle vertical movement for all characters */
+  .loading-character {
+    animation: gentle-bob 2s ease-in-out infinite;
+  }
+
+  @keyframes gentle-bob {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+  }
+
+  /* Specific typing motion for processing state */
+  .processing-character {
+    animation: typing-motion 1.5s ease-in-out infinite;
+  }
+
+  @keyframes typing-motion {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-1deg); }
+    75% { transform: rotate(1deg); }
+  }
+
+  /* Success celebration bounce */
+  .success-character {
+    animation: success-bounce 0.6s ease-out infinite alternate;
+  }
+
+  @keyframes success-bounce {
+    0% { transform: translateY(0px) scale(1); }
+    100% { transform: translateY(-5px) scale(1.02); }
+  }
+
+  /* Error head shake */
+  .error-character {
+    animation: error-shake 0.5s ease-in-out infinite;
+  }
+
+  @keyframes error-shake {
+    0%, 100% { transform: translateX(0px); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+  }
+
+  /* Progress bar shine animation */
+  .progress-bar {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+    animation: progress-shine 2s linear infinite;
+  }
+
+  @keyframes progress-shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(400%); }
+  }
+
+  /* Loading container styling */
+  .loading-container {
+    @apply flex flex-col items-center justify-center p-6 space-y-4;
+  }
+
+  .loading-character {
+    @apply w-24 h-24 object-contain;
+  }
+
+  .status-message {
+    @apply text-center text-sm font-medium text-gray-600;
+  }
+
+  /* Dynamic action animations for vinyl throw character */
+  .action-character {
+    animation: dynamic-throw 1.2s ease-out infinite;
+  }
+
+  @keyframes dynamic-throw {
+    0% { transform: translateX(0px) rotate(0deg); }
+    30% { transform: translateX(10px) rotate(5deg); }
+    60% { transform: translateX(5px) rotate(-2deg); }
+    100% { transform: translateX(0px) rotate(0deg); }
+  }
+
+  .export-character {
+    animation: export-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes export-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .launch-character {
+    animation: launch-energy 0.8s ease-out infinite alternate;
+  }
+
+  @keyframes launch-energy {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-8px) rotate(3deg); }
+  }
+
+  /* Action container styling */
+  .action-container {
+    @apply flex flex-col items-center justify-center p-6 space-y-4 text-center;
+  }
+
+  .action-container h3 {
+    @apply text-xl font-bold text-gray-900;
+  }
+
+  .action-container p {
+    @apply text-gray-600 max-w-sm;
+  }
+
+  /* Responsive behavior */
+  @media (max-width: 768px) {
+    .loading-character {
+      @apply w-20 h-20;
+    }
+    
+    .loading-container {
+      @apply p-4 space-y-3;
+    }
+
+    .action-container {
+      @apply p-4 space-y-3;
+    }
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -85,495 +223,9 @@
 }
 
 @layer components {
-  /* Enhanced Texture Base Classes */
-  .texture-base {
-    @apply relative overflow-hidden;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    will-change: transform;
-  }
-
-  .texture-overlay {
-    @apply absolute inset-0 pointer-events-none;
-    mix-blend-mode: overlay;
-    opacity: 0.15;
-  }
-
-  /* Texture Shadow Classes */
-  .shadow-texture-soft {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
-
-  .shadow-texture-elevated {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
-  }
-
-  .shadow-texture-floating {
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.16), 0 8px 24px rgba(0, 0, 0, 0.12);
-  }
-
-  /* Texture Animation Classes */
-  @keyframes texture-float {
-    0%, 100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-8px) rotate(0.5deg);
-    }
-  }
-
-  @keyframes texture-entrance {
-    0% {
-      opacity: 0;
-      transform: translateY(20px) scale(0.95);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0px) scale(1);
-    }
-  }
-
-  .animate-texture-float {
-    animation: texture-float 6s ease-in-out infinite;
-  }
-
-    .animate-texture-entrance {
-    animation: texture-entrance 0.6s ease-out forwards;
-  }
-
-  /* CSS-only Texture Patterns */
-  .texture-paper-css {
-    background-image: 
-      radial-gradient(circle at 25% 25%, rgba(0,0,0,0.02) 1px, transparent 1px),
-      radial-gradient(circle at 75% 75%, rgba(0,0,0,0.02) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-
-  .texture-grain-css {
-    background-image: 
-      linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%),
-      linear-gradient(-45deg, rgba(0,0,0,0.03) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.03) 75%),
-      linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.03) 75%);
-    background-size: 4px 4px;
-    background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
-  }
-
-  .texture-luma-css {
-    background-image: 
-      linear-gradient(90deg, rgba(0,0,0,0.01) 1px, transparent 1px),
-      linear-gradient(0deg, rgba(0,0,0,0.01) 1px);
-    background-size: 10px 10px;
-  }
-
-  /* Enhanced PostCraft Styles */
-  .postcraft-container {
-    @apply relative overflow-hidden;
-    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.9) 100%);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-  }
-
-  .postcraft-shadow-soft {
-    box-shadow: 
-      0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-
-  .postcraft-shadow-elevated {
-    box-shadow: 
-      0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05),
-      0 0 0 1px rgba(255, 255, 255, 0.05),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-
-  .postcraft-shadow-floating {
-    box-shadow: 
-      0 20px 25px -5px rgba(0, 0, 0, 0.1),
-      0 10px 10px -5px rgba(0, 0, 0, 0.04),
-      0 0 0 1px rgba(255, 255, 255, 0.05),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  }
-
-  .texture-multiply {
-    @apply absolute inset-0 pointer-events-none;
-    mix-blend-mode: multiply;
-    opacity: 0.1;
-    transition: opacity 0.3s ease;
-  }
-
-  .texture-soft-light {
-    @apply absolute inset-0 pointer-events-none;
-    mix-blend-mode: soft-light;
-    opacity: 0.2;
-    transition: opacity 0.3s ease;
-  }
-
-  .texture-screen {
-    @apply absolute inset-0 pointer-events-none;
-    mix-blend-mode: screen;
-    opacity: 0.08;
-    transition: opacity 0.3s ease;
-  }
-
-  .texture-color-dodge {
-    @apply absolute inset-0 pointer-events-none;
-    mix-blend-mode: color-dodge;
-    opacity: 0.05;
-    transition: opacity 0.3s ease;
-  }
-
-  /* Paper Texture Classes with Multiple Variants */
-  .texture-paper {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_81.jpg');
-  }
-
-  .texture-paper-2 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_82.jpg');
-  }
-
-  .texture-paper-3 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_83.jpg');
-  }
-
-  .texture-paper-4 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_84.jpg');
-  }
-
-  .texture-paper-5 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_85.jpg');
-  }
-
-  .texture-paper-6 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_71.jpg');
-  }
-
-  .texture-paper-7 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_66.jpg');
-  }
-
-  .texture-paper-8 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_63.jpg');
-  }
-
-  /* Grain Texture Classes */
-  .texture-grain {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_52.jpg');
-  }
-
-  .texture-grain-2 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_53.jpg');
-  }
-
-  .texture-grain-3 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_54.jpg');
-  }
-
-  .texture-grain-4 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_55.jpg');
-  }
-
-  .texture-grain-5 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_60.jpg');
-  }
-
-  .texture-grain-6 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_MagazineTexture_8K_62.jpg');
-  }
-
-  /* Luma Gradient Classes */
-  .texture-luma {
-    @apply texture-base;
-    background-image: url('/textures/DRS_4K_Luma Gradient_01.jpg');
-  }
-
-  .texture-luma-2 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_4K_Luma Gradient_02.jpg');
-  }
-
-  .texture-luma-3 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_4K_Luma Gradient_03.jpg');
-  }
-
-  .texture-luma-4 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_4K_Luma Gradient_04.jpg');
-  }
-
-  .texture-luma-5 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_4K_Luma Gradient_05.jpg');
-  }
-
-  .texture-luma-6 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_4K_Luma Gradient_06.jpg');
-  }
-
-  .texture-luma-7 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_4K_Luma Gradient_07.jpg');
-  }
-
-  .texture-luma-8 {
-    @apply texture-base;
-    background-image: url('/textures/DRS_4K_Luma Gradient_08.jpg');
-  }
-
-  /* Enhanced Texture Card Components */
-  .texture-card {
-    @apply relative bg-white rounded-xl shadow-texture-soft transition-all duration-500 ease-out;
-    transform: rotate(0deg);
-    will-change: transform, box-shadow;
-  }
-
-  .texture-card:hover {
-    @apply shadow-texture-elevated;
-    transform: translateY(-8px) rotate(1deg);
-  }
-
-  .texture-card-floating {
-    @apply texture-card animate-texture-float;
-  }
-
-  .texture-card-entrance {
-    @apply texture-card animate-texture-entrance;
-  }
-
-  .texture-card-hover {
-    @apply texture-card hover:animate-texture-hover;
-  }
-
-  .texture-card-staggered {
-    @apply texture-card-entrance;
-  }
-
-  .texture-card-staggered:nth-child(1) { animation-delay: 0ms; }
-  .texture-card-staggered:nth-child(2) { animation-delay: 100ms; }
-  .texture-card-staggered:nth-child(3) { animation-delay: 200ms; }
-  .texture-card-staggered:nth-child(4) { animation-delay: 300ms; }
-  .texture-card-staggered:nth-child(5) { animation-delay: 400ms; }
-  .texture-card-staggered:nth-child(6) { animation-delay: 500ms; }
-
-  /* Enhanced Texture Section Components */
-  .texture-section {
-    @apply relative py-20 px-4;
-  }
-
-  .texture-section-bg {
-    @apply absolute inset-0 texture-overlay;
-  }
-
-  .texture-hero {
-    @apply texture-section;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  }
-
-  .texture-hero::before {
-    content: '';
-    @apply absolute inset-0 texture-overlay;
-    background-image: url('/textures/DRS_MagazineTexture_8K_81.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.08;
-  }
-
-  .texture-hero::after {
-    content: '';
-    @apply absolute inset-0;
-    background: linear-gradient(135deg, rgba(59, 74, 198, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
-    mix-blend-mode: soft-light;
-  }
-
-  /* Enhanced Texture Button Components */
-  .texture-btn {
-    @apply relative inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-brand-blue rounded-lg shadow-texture-soft transition-all duration-300 ease-out hover:shadow-texture-elevated hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:ring-offset-2 overflow-hidden;
-    will-change: transform, box-shadow;
-  }
-
-  .texture-btn::before {
-    content: '';
-    @apply absolute inset-0 texture-overlay;
-    background-image: url('/textures/DRS_MagazineTexture_8K_52.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.1;
-    transition: opacity 0.3s ease;
-  }
-
-  .texture-btn:hover::before {
-    opacity: 0.15;
-  }
-
-  .texture-btn::after {
-    content: '';
-    @apply absolute inset-0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .texture-btn:hover::after {
-    opacity: 1;
-  }
-
-  /* Enhanced Texture Pricing Cards */
-  .texture-pricing-card {
-    @apply texture-card-entrance relative bg-white rounded-2xl p-8 shadow-texture-soft transition-all duration-500 ease-out;
-    transform: rotate(0deg);
-    will-change: transform, box-shadow;
-  }
-
-  .texture-pricing-card:nth-child(1) {
-    @apply texture-paper;
-    transform: rotate(-1deg);
-  }
-
-  .texture-pricing-card:nth-child(2) {
-    @apply texture-paper-2;
-    transform: rotate(1deg);
-  }
-
-  .texture-pricing-card:nth-child(3) {
-    @apply texture-paper-3;
-    transform: rotate(-0.5deg);
-  }
-
-  .texture-pricing-card:nth-child(4) {
-    @apply texture-paper-4;
-    transform: rotate(0.5deg);
-  }
-
-  .texture-pricing-card:hover {
-    @apply shadow-texture-floating;
-    transform: translateY(-12px) rotate(0deg) scale(1.02);
-  }
-
-  .texture-pricing-card::before {
-    content: '';
-    @apply absolute inset-0 rounded-2xl;
-    background: linear-gradient(135deg, rgba(59, 74, 198, 0.02) 0%, rgba(255, 215, 0, 0.02) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .texture-pricing-card:hover::before {
-    opacity: 1;
-  }
-
-  /* Enhanced Texture Feature Cards */
-  .texture-feature-card {
-    @apply texture-card-entrance relative bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-texture-soft transition-all duration-500 ease-out;
-    will-change: transform, box-shadow, background-color;
-  }
-
-  .texture-feature-card:nth-child(odd) {
-    @apply texture-grain;
-  }
-
-  .texture-feature-card:nth-child(even) {
-    @apply texture-grain-2;
-  }
-
-  .texture-feature-card:nth-child(3n) {
-    @apply texture-grain-3;
-  }
-
-  .texture-feature-card:nth-child(4n) {
-    @apply texture-grain-4;
-  }
-
-  .texture-feature-card:nth-child(5n) {
-    @apply texture-grain-5;
-  }
-
-  .texture-feature-card:nth-child(6n) {
-    @apply texture-grain-6;
-  }
-
-  .texture-feature-card:hover {
-    @apply shadow-texture-elevated bg-white/95;
-    transform: translateY(-6px) rotate(0.5deg);
-  }
-
-  .texture-feature-card::before {
-    content: '';
-    @apply absolute inset-0 rounded-xl;
-    background: linear-gradient(135deg, rgba(59, 74, 198, 0.03) 0%, rgba(255, 215, 0, 0.03) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .texture-feature-card:hover::before {
-    opacity: 1;
-  }
-
-  /* Texture Navigation Components */
-  .texture-nav {
-    @apply relative bg-white/95 backdrop-blur-md border-b border-gray-200/50;
-  }
-
-  .texture-nav::before {
-    content: '';
-    @apply absolute inset-0 texture-overlay;
-    background-image: url('/textures/DRS_MagazineTexture_8K_52.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.05;
-  }
-
-  /* Texture Footer Components */
-  .texture-footer {
-    @apply relative bg-gray-50;
-  }
-
-  .texture-footer::before {
-    content: '';
-    @apply absolute inset-0 texture-overlay;
-    background-image: url('/textures/DRS_MagazineTexture_8K_81.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.03;
-  }
-
-  /* Texture Form Components */
-  .texture-input {
-    @apply relative bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all duration-200;
-  }
-
-  .texture-input::before {
-    content: '';
-    @apply absolute inset-0 rounded-lg texture-overlay;
-    background-image: url('/textures/DRS_MagazineTexture_8K_52.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.02;
-    pointer-events: none;
-  }
-
-  /* Original Components with Texture Enhancements */
-  .btn-primary {
-    @apply texture-btn;
+  /* Audio Intel Brand Gradient */
+  .audio-gradient {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 50%, #d1d5db 100%);
   }
 
   .btn-primary::before {
@@ -614,7 +266,7 @@
   }
 
   .postcraft-card {
-    @apply texture-feature-card;
+    @apply bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg transition-all duration-500 ease-out;
   }
 
   .postcraft-card:hover {
@@ -624,16 +276,6 @@
   .postcraft-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-
-@layer utilities {
-  .postcraft-shadow-soft {
-    @apply shadow-texture-soft;
-  }
-
-  .postcraft-shadow-elevated {
-    @apply shadow-texture-elevated;
-  }
-}
 
 @layer utilities {
   .hover-lift {
@@ -686,170 +328,6 @@
     backdrop-filter: blur(24px);
   }
 
-  /* Enhanced Texture Utility Classes */
-  .texture-blend-overlay {
-    mix-blend-mode: overlay;
-  }
-
-  .texture-blend-multiply {
-    mix-blend-mode: multiply;
-  }
-
-  .texture-blend-soft-light {
-    mix-blend-mode: soft-light;
-  }
-
-  .texture-blend-screen {
-    mix-blend-mode: screen;
-  }
-
-  .texture-blend-color-dodge {
-    mix-blend-mode: color-dodge;
-  }
-
-  .texture-opacity-02 {
-    opacity: 0.02;
-  }
-
-  .texture-opacity-03 {
-    opacity: 0.03;
-  }
-
-  .texture-opacity-05 {
-    opacity: 0.05;
-  }
-
-  .texture-opacity-08 {
-    opacity: 0.08;
-  }
-
-  .texture-opacity-10 {
-    opacity: 0.1;
-  }
-
-  .texture-opacity-15 {
-    opacity: 0.15;
-  }
-
-  .texture-opacity-20 {
-    opacity: 0.2;
-  }
-
-  /* Enhanced Texture Rotation Utilities */
-  .texture-rotate-1 {
-    transform: rotate(1deg);
-  }
-
-  .texture-rotate-2 {
-    transform: rotate(2deg);
-  }
-
-  .texture-rotate-3 {
-    transform: rotate(3deg);
-  }
-
-  .texture-rotate-neg-1 {
-    transform: rotate(-1deg);
-  }
-
-  .texture-rotate-neg-2 {
-    transform: rotate(-2deg);
-  }
-
-  .texture-rotate-neg-3 {
-    transform: rotate(-3deg);
-  }
-
-  /* Enhanced Texture Animation Delays */
-  .texture-delay-100 {
-    animation-delay: 100ms;
-  }
-
-  .texture-delay-200 {
-    animation-delay: 200ms;
-  }
-
-  .texture-delay-300 {
-    animation-delay: 300ms;
-  }
-
-  .texture-delay-400 {
-    animation-delay: 400ms;
-  }
-
-  .texture-delay-500 {
-    animation-delay: 500ms;
-  }
-
-  .texture-delay-600 {
-    animation-delay: 600ms;
-  }
-
-  .texture-delay-700 {
-    animation-delay: 700ms;
-  }
-
-  .texture-delay-800 {
-    animation-delay: 800ms;
-  }
-
-  /* Texture Responsive Utilities */
-  .texture-mobile-optimized {
-    background-size: 200% auto;
-  }
-
-  .texture-tablet-optimized {
-    background-size: 150% auto;
-  }
-
-  @media (min-width: 768px) {
-    .texture-mobile-optimized {
-      background-size: cover;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .texture-tablet-optimized {
-      background-size: cover;
-    }
-  }
-
-  /* Texture Performance Optimizations */
-  .texture-gpu-accelerated {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-  }
-
-  .texture-will-change {
-    will-change: transform, opacity;
-  }
-
-  /* Texture Loading States */
-  .texture-loading {
-    @apply relative;
-  }
-
-  .texture-loading::after {
-    content: '';
-    @apply absolute inset-0 bg-gray-200 animate-pulse;
-  }
-
-  /* Texture Accessibility */
-  .texture-reduced-motion {
-    animation: none !important;
-    transition: none !important;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .texture-card,
-    .texture-pricing-card,
-    .texture-feature-card,
-    .texture-btn {
-      animation: none !important;
-      transition: none !important;
-    }
-  }
 }
 
 /* Custom scrollbar styles */
@@ -912,23 +390,6 @@ select:focus-visible {
     @apply px-4 py-2 text-sm;
   }
 
-  /* Mobile texture optimizations */
-  .texture-card {
-    transform: rotate(0deg) !important;
-  }
-
-  .texture-pricing-card {
-    transform: rotate(0deg) !important;
-  }
-
-  .texture-feature-card {
-    transform: rotate(0deg) !important;
-  }
-
-  /* Mobile texture performance */
-  .texture-mobile-optimized {
-    background-size: 200% auto;
-  }
 }
 
 @media (max-width: 640px) {
@@ -963,4 +424,240 @@ select:focus-visible {
   .btn-primary {
     @apply px-6 py-3 text-base;
   }
+}
+
+/* Agent Visualization System Animations */
+@layer components {
+  /* Agent Status Pulse Animation */
+  @keyframes agent-pulse {
+    0%, 100% { 
+      opacity: 1; 
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.7; 
+      transform: scale(1.05);
+    }
+  }
+
+  .agent-pulse {
+    animation: agent-pulse 2s ease-in-out infinite;
+  }
+
+  /* Agent Status Spin Animation */
+  @keyframes agent-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .agent-spin {
+    animation: agent-spin 1s linear infinite;
+  }
+
+  /* Agent Status Bounce Animation */
+  @keyframes agent-bounce {
+    0%, 100% { 
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    50% { 
+      transform: translateY(-8px) scale(1.1);
+      opacity: 0.8;
+    }
+  }
+
+  .agent-bounce {
+    animation: agent-bounce 0.6s ease-out;
+  }
+
+  /* Agent Status Shake Animation */
+  @keyframes agent-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+
+  .agent-shake {
+    animation: agent-shake 0.5s ease-in-out;
+  }
+
+  /* Agent Status Flash Animation */
+  @keyframes agent-flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .agent-flash {
+    animation: agent-flash 1s ease-in-out infinite;
+  }
+
+  /* Agent Card Hover Glow */
+  @keyframes agent-glow {
+    0%, 100% { 
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    50% { 
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+    }
+  }
+
+  .agent-glow {
+    animation: agent-glow 2s ease-in-out infinite;
+  }
+
+  /* Agent Progress Animation */
+  @keyframes agent-progress {
+    0% { width: 0%; }
+    100% { width: var(--progress-width, 100%); }
+  }
+
+  .agent-progress-bar {
+    animation: agent-progress 1s ease-out forwards;
+  }
+
+  /* Agent Status Indicator Styles */
+  .agent-status-dot {
+    @apply w-3 h-3 rounded-full transition-all duration-300;
+  }
+
+  .agent-status-dot.idle {
+    @apply bg-gray-400;
+  }
+
+  .agent-status-dot.active {
+    @apply bg-green-500;
+    animation: agent-pulse 2s infinite;
+  }
+
+  .agent-status-dot.processing {
+    @apply bg-blue-500;
+    animation: agent-pulse 1s infinite;
+  }
+
+  .agent-status-dot.completed {
+    @apply bg-green-500;
+    animation: agent-bounce 0.6s ease-out;
+  }
+
+  .agent-status-dot.error {
+    @apply bg-red-500;
+    animation: agent-flash 1s infinite;
+  }
+
+  .agent-status-dot.warning {
+    @apply bg-yellow-500;
+    animation: agent-pulse 1.5s infinite;
+  }
+
+  /* Agent Card Animations */
+  .agent-card {
+    @apply transition-all duration-300 ease-out;
+    transform-origin: center;
+  }
+
+  .agent-card:hover {
+    @apply transform scale-105;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .agent-card.priority-critical {
+    animation: agent-glow 2s infinite;
+    border-color: #F44336 !important;
+  }
+
+  .agent-card.priority-high {
+    border-width: 2px;
+    border-color: #FF9800;
+  }
+
+  .agent-card.priority-medium {
+    border-width: 1px;
+    border-color: #2196F3;
+  }
+
+  .agent-card.priority-low {
+    border-width: 1px;
+    border-color: #9E9E9E;
+  }
+
+  /* Agent Workflow Progress */
+  .agent-workflow-step {
+    @apply relative transition-all duration-500 ease-out;
+  }
+
+  .agent-workflow-step.pending {
+    @apply opacity-50;
+  }
+
+  .agent-workflow-step.active {
+    @apply transform scale-105;
+    animation: agent-glow 2s infinite;
+  }
+
+  .agent-workflow-step.completed {
+    @apply opacity-100;
+  }
+
+  .agent-workflow-step.error {
+    animation: agent-shake 0.5s ease-in-out;
+  }
+
+  /* Agent Activity Monitor */
+  .agent-monitor {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .agent-monitor.collapsed {
+    @apply transform scale-95 opacity-80;
+  }
+
+  .agent-monitor.expanded {
+    @apply transform scale-100 opacity-100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Agent Log Entry Animation */
+  @keyframes agent-log-entry {
+    0% { 
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    100% { 
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .agent-log-entry {
+    animation: agent-log-entry 0.5s ease-out forwards;
+  }
+
+  /* Responsive Agent Animations */
+  @media (max-width: 768px) {
+    .agent-card:hover {
+      transform: scale(1.02);
+    }
+    
+    .agent-workflow-step.active {
+      transform: scale(1.02);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .agent-pulse,
+    .agent-spin,
+    .agent-bounce,
+    .agent-shake,
+    .agent-flash,
+    .agent-glow {
+      animation: none !important;
+    }
+    
+    .agent-card,
+    .agent-workflow-step,
+    .agent-monitor {
+      transition: none !important;
+    }
+  }
+}
 }

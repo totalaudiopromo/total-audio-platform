@@ -140,7 +140,7 @@ export default function EmailValidator() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <span className="text-2xl">📧</span>
+            <span className="text-2xl">•</span>
             Email Validation
           </CardTitle>
           <CardDescription>
@@ -291,7 +291,7 @@ jane@company.com
                 {results.valid.map((result, index) => (
                   <div key={index} className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
                     <div className="flex items-center gap-2">
-                      <span className="text-green-600">✓</span>
+                      <span className="text-green-600">•</span>
                       <span className="font-mono">{result.email}</span>
                     </div>
                     <div className="flex gap-2 flex-wrap">

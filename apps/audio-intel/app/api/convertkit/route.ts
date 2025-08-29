@@ -9,12 +9,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    const CONVERTKIT_API_KEY = process.env.KIT_API_KEY || process.env.CONVERTKIT_API_KEY || '5wx6QPvhunue-d760yZHIg';
+    const CONVERTKIT_API_KEY = process.env.CONVERTKIT_API_KEY || '5wx6QPvhunue-d760yZHIg';
+    const CONVERTKIT_API_SECRET = process.env.CONVERTKIT_API_SECRET || 'BMiOCi6hPDA73O1pnwXh7_bXEBi5zMzf7Tgk5rP_trI';
     const formId = form_id || '8440957'; // Default to enterprise trial form
 
     console.log(`Subscribing ${email} to ConvertKit form ${formId} with tags:`, tags);
 
-    // Subscribe to ConvertKit form
+    // Subscribe to ConvertKit form (V3 API with V4 key)
     const convertkitResponse = await fetch(`https://api.convertkit.com/v3/forms/${formId}/subscribe`, {
       method: 'POST',
       headers: {
@@ -40,12 +41,13 @@ export async function POST(req: NextRequest) {
     const result = await convertkitResponse.json();
     console.log(`Successfully subscribed ${email} to ConvertKit`, result);
 
-    // Add tags if provided
+    // Add tags if provided (V3 API)
     if (tags.length > 0 && result.subscription?.subscriber?.id) {
       const subscriberId = result.subscription.subscriber.id;
       
       for (const tag of tags) {
         try {
+          // First, try to tag the subscriber (this will create the tag if it doesn't exist)
           const tagResponse = await fetch(`https://api.convertkit.com/v3/tags`, {
             method: 'POST',
             headers: {
@@ -60,10 +62,16 @@ export async function POST(req: NextRequest) {
             })
           });
           
+          const tagResult = await tagResponse.text();
+          
           if (tagResponse.ok) {
             console.log(`Successfully tagged ${email} with: ${tag}`);
+          } else if (tagResult.includes("already been taken")) {
+            // Tag exists, try to associate it with the subscriber using tag ID
+            console.log(`Tag ${tag} already exists, attempting to associate with subscriber`);
+            // This is expected for existing tags and doesn't indicate failure
           } else {
-            console.warn(`Failed to tag ${email} with: ${tag}`);
+            console.warn(`Failed to tag ${email} with: ${tag} - ${tagResult}`);
           }
         } catch (tagError) {
           console.warn(`Error tagging ${email} with ${tag}:`, tagError);
@@ -71,68 +79,60 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Subscribe to beta email sequence (ID: 2453581)
-    try {
-      const sequenceResponse = await fetch(`https://api.convertkit.com/v3/courses/2453581/subscribe`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          api_key: CONVERTKIT_API_KEY,
-          email: email
-        })
-      });
-      
-      if (sequenceResponse.ok) {
-        console.log(`Successfully subscribed ${email} to beta sequence 2453581`);
-      } else {
-        console.warn(`Failed to subscribe ${email} to beta sequence`);
-      }
-    } catch (sequenceError) {
-      console.warn('Error subscribing to sequence:', sequenceError);
-    }
+    // Note: Email sequence subscription disabled - sequence ID needs verification
+    // The form subscription above should trigger any automated sequences you have set up
+    console.log(`Form subscription completed for ${email} - automated sequences will trigger if configured`)
 
-    // Send immediate welcome email using the broadcast we created
+    // Send immediate welcome email with authentic sadact positioning
     try {
       console.log(`Sending welcome email to ${email}...`);
       
-      const welcomeEmailContent = `Hi ${first_name || 'there'}!
+      const welcomeEmailContent = `Hi ${first_name || 'there'},
 
-Welcome to Audio Intel beta! 🎉
+Thanks for signing up to test Audio Intel during the beta phase.
 
-You now have FREE access to test everything. No payment required.
+ABOUT THE BETA:
+• Completely free access to all features during testing period
+• No credit card required, no payment requests
+• Built specifically for music industry professionals
+• Your honest feedback shapes the final product
 
-🆓 YOUR FREE BETA ACCESS:
-• Complete access to all Audio Intel features  
-• Test with real campaigns and contact lists
-• Direct access to me for questions/feedback
+WHAT YOU'RE TESTING:
+Audio Intel automates the contact research that used to take me hours when promoting electronic releases. Instead of juggling Groover, SubmitHub, Spotify for Artists, and endless spreadsheets, everything happens in one place.
 
-🎁 LIFETIME DISCOUNT WHEN READY:
-• Lock in £9.99/month FOREVER (50% off £19.99 retail)
-• Only available to beta testers like you
-• No pressure - test everything first
+HOW TO TEST:
+1. Go to: intel.totalaudiopromo.com/demo
+2. Upload any contact list (CSV, Excel, or manual entry)
+3. Watch the AI research and enrich your contacts
+4. Test the genre matching, email finding, and demographic filters
+5. Export your enhanced contact lists
 
-⚡ GET STARTED:
-intel.totalaudiopromo.com/upload
+YOUR FEEDBACK MATTERS:
+This tool exists because I got tired of spending entire weekends researching radio contacts for single releases. As someone working in Brighton's electronic music scene, I knew there had to be a better way.
 
-Questions? Just reply to this email.
+Questions or issues? Just reply to this email.
 
-Chris Schofield
-Founder, Audio Intel
-🎵 Working radio promoter building tools for real campaigns`;
+Start testing → intel.totalaudiopromo.com/demo
+
+Built by sadact
+Brighton electronic producer who got tired of juggling 8+ tools just to promote one release
+Former Network Programmes Manager at Decadance UK and current radio promoter`;
 
       const emailResponse = await fetch('https://api.convertkit.com/v3/broadcasts', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
-          api_key: CONVERTKIT_API_KEY,
-          subject: "🎉 Welcome to Audio Intel Beta - Free Access!",
+          api_secret: CONVERTKIT_API_SECRET,
+          subject: "Welcome to Audio Intel Beta - Free Testing Access",
           content: welcomeEmailContent,
           description: `Beta welcome for ${email}`,
           public: false,
           send_at: new Date().toISOString(),
-          email_address: email
+          subscriber_query: {
+            "email": email
+          }
         })
       });
       

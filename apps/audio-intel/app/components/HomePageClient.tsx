@@ -347,7 +347,7 @@ export default function HomePageClient() {
         <div className="max-w-3xl mx-auto z-10">
           <div className="flex justify-center mb-8">
             <div className="bg-white rounded-full p-2 drop-shadow-lg inline-block dark:bg-white dark:rounded-full dark:p-2">
-              <Image src="/dog-logo.png" alt="Audio Intel Logo" width={160} height={80} style={{ height: 80, width: 'auto' }} className="drop-shadow-lg" priority />
+              <Image src="/images/total_audio_promo_logo_trans.png" alt="Total Audio Promo Mascot" width={160} height={80} style={{ height: 80, width: 'auto' }} className="drop-shadow-lg" priority />
             </div>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight dark:text-white break-words">
@@ -388,22 +388,22 @@ export default function HomePageClient() {
             <div className="bg-white bg-opacity-20 rounded-xl p-6 flex flex-col items-center shadow-lg min-w-0 w-full sm:w-auto dark:bg-white dark:bg-opacity-20">
               <span className="text-xs uppercase tracking-wider text-white/70 mb-2">After</span>
               <div className="bg-white text-[#312e81] font-mono px-4 py-2 rounded-lg text-base shadow-inner whitespace-pre text-left dark:bg-white dark:text-[#312e81] break-words">
-                🎵 BBC Radio 1 | National Public Service{"\n"}
-                📍 UK National Coverage | High Reach{"\n"}
-                📧 Email: Weekday mornings preferred{"\n"}
-                🎧 Focus: New UK artists, breaking acts{"\n"}
-                💡 Tip: Include streaming numbers + press quote{"\n"}
-                ✅ Research Confidence: High
+                • BBC Radio 1 | National Public Service{"\n"}
+                • UK National Coverage | High Reach{"\n"}
+                • Email: Weekday mornings preferred{"\n"}
+                • Focus: New UK artists, breaking acts{"\n"}
+                • Tip: Include streaming numbers + press quote{"\n"}
+                • Research Confidence: High
               </div>
             </div>
             {/* Dog mascot floating near the transformation */}
             <div className="bg-white rounded-full p-2 border-4 border-[#6366f1] absolute -right-10 sm:right-[-60px] top-1/2 -translate-y-1/2 drop-shadow-xl z-10 dark:bg-white hidden sm:block" style={{boxShadow:'0 8px 32px rgba(49,46,129,0.15)'}}>
-              <Image src="/dog-logo.png" alt="Audio Intel dog mascot logo" width={80} height={80} className="w-20 h-20" />
+              <Image src="/images/total_audio_promo_logo_trans.png" alt="Total Audio Promo Mascot" width={80} height={80} className="w-20 h-20" />
             </div>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
             <span className="flex items-center gap-2 text-white/90">
-              <img src="/dog-logo.png" alt="Mascot" className="w-6 h-6 rounded-full bg-white mr-1" />
+              <img src="/images/total_audio_promo_logo_trans.png" alt="Mascot" className="w-6 h-6 rounded-full bg-white mr-1" />
               Trusted by Music Industry Professionals
             </span>
           </div>
@@ -523,12 +523,12 @@ export default function HomePageClient() {
           <div className="bg-white rounded-xl p-6 shadow-lg min-w-0 w-full sm:w-auto dark:bg-white">
             <span className="text-xs uppercase tracking-wider text-[#818cf8] mb-2">After</span>
             <div className="bg-[#f1f5f9] text-[#312e81] font-mono px-4 py-2 rounded-lg text-base shadow-inner whitespace-pre text-left dark:bg-[#f1f5f9] dark:text-[#312e81] break-words">
-              🎵 BBC Radio 1 | National Public Service{"\n"}
-              📍 UK National Coverage | High Reach{"\n"}
-              📧 Email: Weekday mornings preferred{"\n"}
-              🎧 Focus: New UK artists, breaking acts{"\n"}
-              💡 Tip: Include streaming numbers + press quote{"\n"}
-              ✅ Research Confidence: High
+              • BBC Radio 1 | National Public Service{"\n"}
+              • UK National Coverage | High Reach{"\n"}
+              • Email: Weekday mornings preferred{"\n"}
+              • Focus: New UK artists, breaking acts{"\n"}
+              • Tip: Include streaming numbers + press quote{"\n"}
+              • Research Confidence: High
             </div>
           </div>
         </div>
@@ -983,7 +983,7 @@ export default function HomePageClient() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="bg-[#6366f1] rounded-full p-2">
-                  <Image src="/dog-logo.png" alt="Audio Intel Logo" width={24} height={24} style={{ height: 24, width: 'auto' }} />
+                  <Image src="/images/total_audio_promo_logo_trans.png" alt="Total Audio Promo Mascot" width={24} height={24} style={{ height: 24, width: 'auto' }} />
                 </div>
                 <span className="text-xl font-bold text-[#312e81] dark:text-white">Audio Intel</span>
               </div>
