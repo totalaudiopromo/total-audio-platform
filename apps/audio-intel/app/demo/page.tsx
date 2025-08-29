@@ -16,9 +16,7 @@ import {
 } from "lucide-react"
 import SpreadsheetUploader, { EnhancedSpreadsheetUploader } from "@/components/SpreadsheetUploader"
 import { ProfessionalExportService } from "@/utils/exportService"
-import LoadingStateDemo from "../components/LoadingStateDemo"
 import ContactLoadingState from "../components/ContactLoadingState"
-import AgentOrchestrator from "@/components/AgentOrchestrator"
 
 interface Contact {
   name: string
@@ -117,20 +115,20 @@ export default function SimpleAudioIntelDemo() {
         </div>
 
         {/* Enhanced Workflow Progress Dashboard */}
-        <div className="mb-8 bg-gradient-to-br from-slate-50 to-stone-50 rounded-2xl border-2 border-slate-200 shadow-lg p-8">
+        <div className="mb-8 bg-white rounded-2xl border-4 border-gray-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8">
           <div className="text-center mb-6">
-            <h2 className="text-3xl font-black text-slate-800 mb-2">Your Audio Intel Workflow</h2>
-            <p className="text-slate-600">Professional contact intelligence in three simple steps</p>
+            <h2 className="text-3xl font-black text-gray-900 mb-2">Your Audio Intel Workflow</h2>
+            <p className="text-gray-600 font-bold">Professional contact intelligence in three simple steps</p>
           </div>
           
           <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-12">
             {/* Step 1: Process & Enrich */}
-            <div className={`flex flex-col lg:flex-row items-center gap-4 p-6 rounded-xl transition-all duration-300 ${
+            <div className={`flex flex-col lg:flex-row items-center gap-4 p-6 rounded-xl transition-all duration-300 border-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
               activeTab === 'process' 
-                ? 'bg-blue-100 border-2 border-blue-300 shadow-md scale-105' 
+                ? 'bg-blue-100 border-blue-500 scale-105' 
                 : hasEnrichedData 
-                ? 'bg-green-100 border-2 border-green-300 shadow-md'
-                : 'bg-white border border-slate-200 hover:shadow-md'
+                ? 'bg-green-100 border-green-500'
+                : 'bg-white border-gray-300 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
             }`}>
               <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold transition-all duration-300 ${
                 hasEnrichedData 
@@ -170,12 +168,12 @@ export default function SimpleAudioIntelDemo() {
             </div>
 
             {/* Step 2: Analytics & Export */}
-            <div className={`flex flex-col lg:flex-row items-center gap-4 p-6 rounded-xl transition-all duration-300 ${
+            <div className={`flex flex-col lg:flex-row items-center gap-4 p-6 rounded-xl transition-all duration-300 border-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
               activeTab === 'analytics' && hasEnrichedData
-                ? 'bg-blue-100 border-2 border-blue-300 shadow-md scale-105'
+                ? 'bg-blue-100 border-blue-500 scale-105'
                 : hasEnrichedData
-                ? 'bg-white border border-slate-200 hover:shadow-md cursor-pointer'
-                : 'bg-slate-50 border border-slate-200 opacity-60'
+                ? 'bg-white border-gray-300 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] cursor-pointer'
+                : 'bg-gray-50 border-gray-200 opacity-60'
             }`}>
               <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold transition-all duration-300 ${
                 activeTab === 'analytics' && hasEnrichedData
@@ -242,27 +240,27 @@ export default function SimpleAudioIntelDemo() {
 
           {/* Combined Processing & Enrichment Tab */}
           <TabsContent value="process" className="space-y-8">
-            <Card className="border-0 bg-gradient-to-br from-slate-50 to-stone-50 shadow-2xl">
-              <CardHeader className="text-center pb-8">
-                <CardTitle className="text-4xl md:text-5xl font-black text-slate-800 mb-6 tracking-tight">
+            <div className="bg-white p-8 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
+              <div className="text-center pb-8">
+                <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight">
                   Drop Your Chaos Here
-                </CardTitle>
-                <CardDescription className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                </h2>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                   Transform unorganised spreadsheets into actionable music industry intelligence with our automated processing pipeline.
-                </CardDescription>
+                </p>
                 
                 <div className="grid md:grid-cols-2 gap-4 mt-8 max-w-4xl mx-auto">
-                  <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-                    <div className="text-slate-700 font-semibold mb-2">• Intelligent Processing</div>
-                    <p className="text-sm text-slate-600">Upload → Clean → Deduplicate → Enrich → Export</p>
+                  <div className="bg-gray-50 border-2 border-gray-300 rounded-xl p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <div className="text-gray-900 font-black mb-2">• Intelligent Processing</div>
+                    <p className="text-sm text-gray-700 font-bold">Upload → Clean → Deduplicate → Enrich → Export</p>
                   </div>
-                  <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-                    <div className="text-slate-700 font-semibold mb-2"><Target className="w-4 h-4 inline mr-2" />Cost-Effective Intelligence</div>
-                    <p className="text-sm text-slate-600">7x more affordable than traditional research methods</p>
+                  <div className="bg-gray-50 border-2 border-gray-300 rounded-xl p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <div className="text-gray-900 font-black mb-2"><Target className="w-4 h-4 inline mr-2" />Cost-Effective Intelligence</div>
+                    <p className="text-sm text-gray-700 font-bold">7x more affordable than traditional research methods</p>
                   </div>
                 </div>
-              </CardHeader>
-            </Card>
+              </div>
+            </div>
             <EnhancedSpreadsheetUploader 
               onDataEnriched={(enrichedData) => {
                 setEnrichmentResults(enrichedData)
@@ -270,45 +268,40 @@ export default function SimpleAudioIntelDemo() {
                 setActiveTab('analytics')
               }}
             />
-            
-            {/* Loading States Demo - Always Visible */}
-            <div className="mt-12">
-              <LoadingStateDemo />
-            </div>
           </TabsContent>
 
           {/* Analytics Tab */}
           <TabsContent value="analytics" className="space-y-8">
             {!canAccessAnalytics ? (
-              <Card className="border-2 border-yellow-300 bg-yellow-50">
-                <CardHeader className="text-center">
-                  <CardTitle className="text-2xl font-black text-gray-900">
+              <div className="border-4 border-yellow-500 bg-yellow-50 rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8">
+                <div className="text-center">
+                  <h3 className="text-2xl font-black text-gray-900 mb-4">
                     Analytics Unavailable
-                  </CardTitle>
-                  <CardDescription className="text-lg text-gray-600">
+                  </h3>
+                  <p className="text-lg text-gray-700 font-bold mb-6">
                     Complete Step 1 (Process & Enrich) first by uploading your spreadsheets
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-center">
+                  </p>
+                </div>
+                <div className="text-center">
                   <Button 
                     onClick={() => setActiveTab('process')}
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-6 py-3"
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-6 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                   >
                     Go to Process & Enrich
                   </Button>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ) : (
-            <Card>
-              <CardHeader className="text-center">
-                <CardTitle className="text-3xl font-black text-gray-900">
+            <div className="bg-white rounded-2xl border-4 border-purple-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-black text-gray-900 mb-4">
                   Contact Intelligence Analytics
-                </CardTitle>
-                <CardDescription className="text-xl text-gray-600">
+                </h3>
+                <p className="text-xl text-gray-600 font-bold">
                   Insights and analytics from your contact enrichment campaigns
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
+                </p>
+              </div>
+              <div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                   <div className="text-center p-6 bg-blue-50 rounded-lg">
                     <div className="text-3xl font-black text-blue-600 mb-2">{enrichmentResults.length}</div>
@@ -335,9 +328,9 @@ export default function SimpleAudioIntelDemo() {
                 </div>
 
                 {/* Professional Export Section */}
-                <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-6 mb-8">
+                <div className="bg-gray-50 rounded-2xl border-4 border-green-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-8">
                   <h3 className="text-2xl font-black text-gray-900 mb-4">Professional Export Options</h3>
-                  <p className="text-gray-700 mb-6">
+                  <p className="text-gray-700 font-bold mb-6">
                     Export your enriched contacts in professional formats for your PR campaigns, client deliverables, and team collaboration.
                   </p>
                   
@@ -355,7 +348,7 @@ export default function SimpleAudioIntelDemo() {
                     <Button
                       onClick={() => handleExport('csv')}
                       disabled={isExporting}
-                      className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg flex items-center justify-center gap-2"
+                      className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                     >
                       <FileSpreadsheet className="w-5 h-5" />
                       Export CSV
@@ -365,7 +358,7 @@ export default function SimpleAudioIntelDemo() {
                     <Button
                       onClick={() => handleExport('excel')}
                       disabled={isExporting}
-                      className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg flex items-center justify-center gap-2"
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                     >
                       <FileSpreadsheet className="w-5 h-5" />
                       Export Excel
@@ -375,7 +368,7 @@ export default function SimpleAudioIntelDemo() {
                     <Button
                       onClick={() => handleExport('pdf')}
                       disabled={isExporting}
-                      className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg flex items-center justify-center gap-2"
+                      className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                     >
                       <FileSpreadsheet className="w-5 h-5" />
                       Export PDF
@@ -530,12 +523,8 @@ export default function SimpleAudioIntelDemo() {
                   </div>
                 )}
 
-                {/* Loading States Demo Section */}
-                <div className="mt-12">
-                  <LoadingStateDemo />
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
             )}
           </TabsContent>
         </Tabs>
