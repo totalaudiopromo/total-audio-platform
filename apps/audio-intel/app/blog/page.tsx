@@ -1,0 +1,226 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Music Industry Insights & Contact Enrichment Guides | Audio Intel Blog",
+  description: "Industry guides on music promotion, contact enrichment, and campaign strategies. Written by working radio promoters with 5+ years experience.",
+  keywords: "music promotion blog, contact enrichment guides, radio promotion tips, playlist submission strategies"
+};
+
+const blogPosts = [
+  {
+    slug: "music-contact-enrichment-guide",
+    title: "What is Music Contact Enrichment? Complete Guide (2024)",
+    excerpt: "Right, so after spending 5+ years manually researching music industry contacts and wasting literally thousands of hours, I built the tool I wished existed. Here's everything you need to know about music contact enrichment.",
+    author: "Chris Schofield",
+    date: "2024-08-30",
+    readTime: "8 min read",
+    category: "Contact Enrichment",
+    featured: true
+  }
+  // Future blog posts will be added here
+];
+
+export default function BlogIndex() {
+  const featuredPost = blogPosts.find(post => post.featured);
+  const otherPosts = blogPosts.filter(post => !post.featured);
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+              <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white font-black">
+                AI
+              </div>
+              <span className="text-xl font-black text-gray-900">Audio Intel</span>
+            </Link>
+            
+            <nav className="flex items-center gap-6">
+              <Link href="/" className="text-gray-600 hover:text-gray-900 font-semibold">
+                Home
+              </Link>
+              <Link href="/demo" className="text-gray-600 hover:text-gray-900 font-semibold">
+                Demo
+              </Link>
+              <Link href="/pricing" className="bg-blue-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-600 transition-colors">
+                Try Free
+              </Link>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-4 py-12">
+        
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+            Music Industry Insights
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Industry guides on contact enrichment, music promotion strategies, and campaign optimization. 
+            Written by working radio promoters with real-world experience.
+          </p>
+        </div>
+
+        {/* Featured Post */}
+        {featuredPost && (
+          <div className="mb-16">
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+              <div className="p-8 md:p-12">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-bold">
+                    {featuredPost.category}
+                  </span>
+                  <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-bold">
+                    Featured
+                  </span>
+                </div>
+                
+                <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+                  <Link 
+                    href={`/blog/${featuredPost.slug}`}
+                    className="hover:text-blue-600 transition-colors"
+                  >
+                    {featuredPost.title}
+                  </Link>
+                </h2>
+                
+                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                  {featuredPost.excerpt}
+                </p>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4 text-sm text-gray-500">
+                    <span className="font-semibold">{featuredPost.author}</span>
+                    <span>•</span>
+                    <span>{new Date(featuredPost.date).toLocaleDateString('en-GB', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}</span>
+                    <span>•</span>
+                    <span>{featuredPost.readTime}</span>
+                  </div>
+                  
+                  <Link
+                    href={`/blog/${featuredPost.slug}`}
+                    className="bg-blue-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-600 transition-colors"
+                  >
+                    Read Guide →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Other Posts */}
+        {otherPosts.length > 0 && (
+          <div className="mb-16">
+            <h2 className="text-3xl font-black text-gray-900 mb-8">More Guides</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {otherPosts.map((post) => (
+                <article key={post.slug} className="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs font-semibold">
+                        {post.category}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                      <Link 
+                        href={`/blog/${post.slug}`}
+                        className="hover:text-blue-600 transition-colors"
+                      >
+                        {post.title}
+                      </Link>
+                    </h3>
+                    
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                      {post.excerpt.length > 120 ? `${post.excerpt.substring(0, 120)}...` : post.excerpt}
+                    </p>
+                    
+                    <div className="flex items-center justify-between text-xs text-gray-500">
+                      <span>{post.author}</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Newsletter CTA */}
+        <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 text-center text-white">
+          <h2 className="text-2xl md:text-3xl font-black mb-4">
+            Get Music Promotion Insights
+          </h2>
+          <p className="text-lg mb-6 text-blue-100">
+            Industry tips, contact enrichment strategies, and campaign insights from working radio promoters.
+          </p>
+          <Link
+            href="/#beta-signup"
+            className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors inline-block"
+          >
+            Join Audio Intel Beta
+          </Link>
+        </div>
+        
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12 mt-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-black text-sm">
+                  AI
+                </div>
+                <span className="font-black text-lg">Audio Intel</span>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Contact enrichment for the music industry. Built by working radio promoters.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="font-bold mb-4">Product</h3>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><Link href="/" className="hover:text-white transition-colors">Features</Link></li>
+                <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
+                <li><Link href="/demo" className="hover:text-white transition-colors">Demo</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-bold mb-4">Resources</h3>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
+                <li><Link href="/blog/music-contact-enrichment-guide" className="hover:text-white transition-colors">Contact Enrichment Guide</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-bold mb-4">Company</h3>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><a href="mailto:chris@totalaudiopromo.com" className="hover:text-white transition-colors">Contact</a></li>
+                <li><a href="https://totalaudiopromo.com" className="hover:text-white transition-colors">Total Audio Promo</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+            <p>© 2024 Audio Intel - Part of Total Audio Promo</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
