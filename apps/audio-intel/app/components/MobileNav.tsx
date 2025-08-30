@@ -57,7 +57,7 @@ export default function MobileNav() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-40 md:hidden" aria-label="Mobile Navigation">
+    <nav className="fixed top-0 left-0 w-full z-50 md:hidden" aria-label="Mobile Navigation">
       <div className="flex items-center justify-between px-4 py-3 bg-white border-b border-gray-200 shadow-sm">
         <Link href="/" className="flex items-center gap-3">
           <Image src="/images/total_audio_promo_logo_trans.png" alt="Total Audio Promo Mascot" width={40} height={40} className="w-10 h-10" priority />
@@ -76,7 +76,7 @@ export default function MobileNav() {
       {/* Overlay */}
       {open && (
         <div 
-          className="fixed inset-0 bg-black/40 z-50 backdrop-blur-sm transition-opacity animate-in fade-in duration-300" 
+          className="fixed inset-0 bg-black/40 z-[100] backdrop-blur-sm transition-opacity animate-in fade-in duration-300" 
           aria-hidden 
           onClick={() => setOpen(false)} 
         />
@@ -85,7 +85,7 @@ export default function MobileNav() {
       {/* Slide-in menu */}
       <div
         ref={menuRef}
-        className={`fixed top-0 right-0 h-full w-full max-w-xs bg-white border-l border-gray-200 text-gray-900 shadow-2xl z-[60] transform transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'} flex flex-col overflow-x-hidden`}
+        className={`fixed top-0 right-0 h-full w-full max-w-xs bg-white border-l border-gray-200 text-gray-900 shadow-2xl z-[110] transform transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'} flex flex-col overflow-hidden`}
         style={{ willChange: 'transform' }}
         aria-modal={open}
         role="dialog"
@@ -102,28 +102,28 @@ export default function MobileNav() {
           </button>
         </div>
         
-        <div className="flex flex-col gap-2 px-4 py-6 flex-1">
+        <div className="flex flex-col gap-3 px-4 py-6 flex-1 overflow-y-auto">
           {navLinks.slice(0, 3).map(link => (
             <button
               key={link.href}
-              className="py-3 px-4 rounded-xl text-base font-semibold hover:bg-gray-100 transition-all duration-300 text-left w-full focus:outline-none text-gray-900 min-h-[44px] bg-gray-50 border border-gray-200"
-              style={{ minHeight: 44 }}
+              className="py-4 px-4 rounded-xl text-base font-semibold hover:bg-gray-100 transition-all duration-300 text-left w-full focus:outline-none text-gray-900 min-h-[56px] bg-gray-50 border border-gray-200 flex items-center"
+              style={{ minHeight: 56, wordWrap: 'break-word', whiteSpace: 'normal' }}
               onClick={() => handleNavClick(link.href)}
               aria-label={link.label}
             >
-              {link.label}
+              <span className="block w-full">{link.label}</span>
             </button>
           ))}
         </div>
         
         <div className="px-4 pb-6">
           <button
-            className="block w-full text-center py-3 rounded-xl font-bold text-white bg-[#1E88E5] hover:bg-blue-600 transition-all duration-300 focus:outline-none min-h-[44px]"
-            style={{ minHeight: 44 }}
+            className="flex items-center justify-center w-full text-center py-4 rounded-xl font-bold text-white bg-[#1E88E5] hover:bg-blue-600 transition-all duration-300 focus:outline-none min-h-[56px]"
+            style={{ minHeight: 56 }}
             onClick={() => handleNavClick('signup')}
             aria-label="Start Free Trial"
           >
-            Start Free Trial
+            <span>Start Free Trial</span>
           </button>
         </div>
       </div>
