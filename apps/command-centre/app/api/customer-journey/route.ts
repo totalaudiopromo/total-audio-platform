@@ -151,8 +151,8 @@ function generateMockCustomerJourneys(): CustomerJourney[] {
     }
     
     const totalValue = touchPoints.reduce((sum, tp) => sum + tp.value, 0);
-    const uniqueChannels = [...new Set(touchPoints.map(tp => tp.channel))];
-    const uniqueCampaigns = [...new Set(touchPoints.map(tp => tp.campaign).filter(Boolean))];
+    const uniqueChannels = Array.from(new Set(touchPoints.map(tp => tp.channel)));
+    const uniqueCampaigns = Array.from(new Set(touchPoints.map(tp => tp.campaign).filter((campaign): campaign is string => Boolean(campaign))));
     
     const signupTouchPoint = touchPoints.find(tp => tp.conversionEvents.includes('signup') || tp.conversionEvents.includes('email-signup'));
     const trialTouchPoint = touchPoints.find(tp => tp.conversionEvents.includes('trial-start'));
@@ -183,7 +183,7 @@ function generateMockCustomerJourneys(): CustomerJourney[] {
       behaviorPatterns: {
         preferredChannels: uniqueChannels.slice(0, 2),
         peakActivityTimes: ['09:00-12:00', '14:00-17:00'],
-        contentPreferences: [...new Set(touchPoints.map(tp => tp.content).filter(Boolean))].slice(0, 3),
+        contentPreferences: Array.from(new Set(touchPoints.map(tp => tp.content).filter((content): content is string => Boolean(content)))).slice(0, 3),
         deviceUsage: {
           desktop: Math.round(Math.random() * 60 + 20),
           mobile: Math.round(Math.random() * 50 + 20),

@@ -57,7 +57,7 @@ export async function GET() {
     
     // Calculate real metrics
     const totalProjects = projects.length;
-    const completedProjects = projects.filter(project => {
+    const completedProjects = projects.filter((project: any) => {
       const status = project.properties?.Status?.select?.name || 
                    project.properties?.status?.select?.name ||
                    project.properties?.Done?.checkbox;
@@ -65,7 +65,7 @@ export async function GET() {
     }).length;
     
     const totalTasks = tasks.length;
-    const completedTasks = tasks.filter(task => {
+    const completedTasks = tasks.filter((task: any) => {
       const status = task.properties?.Status?.select?.name ||
                     task.properties?.status?.select?.name ||
                     task.properties?.Done?.checkbox;

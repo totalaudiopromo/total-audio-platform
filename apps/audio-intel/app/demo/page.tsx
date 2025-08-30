@@ -17,6 +17,7 @@ import {
 import SpreadsheetUploader, { EnhancedSpreadsheetUploader } from "@/components/SpreadsheetUploader"
 import { ProfessionalExportService } from "@/utils/exportService"
 import ContactLoadingState from "../components/ContactLoadingState"
+import BetaTrialStatus from "@/components/BetaTrialStatus"
 
 interface Contact {
   name: string
@@ -33,6 +34,41 @@ export default function SimpleAudioIntelDemo() {
   const [hasEnrichedData, setHasEnrichedData] = useState(false)
   const [isExporting, setIsExporting] = useState(false)
   const [exportProgress, setExportProgress] = useState<string>('')
+  const [userEmail, setUserEmail] = useState<string>('')
+  const [betaTrialStatus, setBetaTrialStatus] = useState<any>(null)
+  
+  // Get user email from localStorage or URL params (from beta signup)
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const emailParam = urlParams.get('email')
+    const storedEmail = localStorage.getItem('beta_user_email')
+    
+    const email = emailParam || storedEmail
+    if (email) {
+      setUserEmail(email)
+      localStorage.setItem('beta_user_email', email)
+      
+      // Check beta trial status
+      checkBetaStatus(email)
+    }
+  }, [])
+  
+  const checkBetaStatus = async (email: string) => {
+    try {
+      const response = await fetch(`/api/beta-status?email=${encodeURIComponent(email)}`)
+      const data = await response.json()
+      if (data.success) {
+        setBetaTrialStatus(data.betaStatus)
+      }
+    } catch (error) {
+      console.error('Error checking beta status:', error)
+    }
+  }
+  
+  const handleUpgradeClick = () => {
+    // Redirect to Stripe checkout with 50% lifetime discount
+    window.location.href = '/api/checkout?plan=beta_founder&email=' + encodeURIComponent(userEmail)
+  }
   
   // Disable analytics tab until enrichment is complete
   const canAccessAnalytics = hasEnrichedData
@@ -114,6 +150,44 @@ export default function SimpleAudioIntelDemo() {
           </div>
         </div>
 
+        {/* Beta Trial Status */}
+        {userEmail && betaTrialStatus && (
+          <BetaTrialStatus
+            userEmail={userEmail}
+            signupTimestamp={betaTrialStatus.signupDate}
+            onUpgradeClick={handleUpgradeClick}
+          />
+        )}
+        
+        {/* Block access if trial expired */}
+        {betaTrialStatus?.hasExpired && (
+          <div className="max-w-4xl mx-auto">
+            <Card className="border-4 border-red-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] mb-8">
+              <CardContent className="p-12 text-center">
+                <h2 className="text-3xl font-black text-red-900 mb-4">
+                  🔒 Free Trial Expired
+                </h2>
+                <p className="text-xl font-bold text-red-800 mb-6">
+                  Your 14-day free trial has ended. Upgrade now to continue using Audio Intel with your exclusive 50% lifetime discount!
+                </p>
+                <Button
+                  onClick={handleUpgradeClick}
+                  size="lg"
+                  className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-black text-xl px-8 py-4 rounded-xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                >
+                  Unlock Audio Intel - £9.99/month Forever
+                </Button>
+              </CardContent>
+            </Card>
+            <div style={{ filter: 'blur(5px)', pointerEvents: 'none' }}>
+              {/* Demo content will be blurred when trial expired */}
+            </div>
+          </div>
+        )}
+        
+        {/* Main Demo Content - only show if trial is active */}
+        {(!betaTrialStatus || !betaTrialStatus.hasExpired) && (
+        <>
         {/* Enhanced Workflow Progress Dashboard */}
         <div className="mb-8 bg-white rounded-2xl border-4 border-gray-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8">
           <div className="text-center mb-6">
@@ -528,6 +602,10 @@ export default function SimpleAudioIntelDemo() {
             )}
           </TabsContent>
         </Tabs>
+        
+        </>
+        )}  {/* End of conditional for trial active content */}
+        
       </div>
     </div>
   )

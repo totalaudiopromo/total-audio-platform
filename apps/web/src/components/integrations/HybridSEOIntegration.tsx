@@ -464,7 +464,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
           </form>
 
           {/* Tabs */}
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-6">
+          <Tabs defaultValue={activeTab} className="mt-6">
             <TabsList className="grid w-full grid-cols-5">
               <TabsTrigger value="analysis">Analysis</TabsTrigger>
               <TabsTrigger value="keywords">Keywords</TabsTrigger>

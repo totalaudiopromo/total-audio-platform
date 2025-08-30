@@ -147,8 +147,24 @@ async function processContactBatch(
         // Optimized research prompt for faster processing
         const prompt = `Research this music industry contact: ${name} (${email}). Extract: 1) Station/Platform name 2) Format/Focus 3) Coverage area 4) Best contact method 5) Submission preferences. Format as: 🎵 [Station] | [Format] 📍 [Coverage] 📧 [Contact method] 🎧 [Focus] 💡 [Key tip] ✅ High confidence`;
         
-        // Call Perplexity with caching
-        const perplexityResp = await runPerplexityResearch(prompt, cacheKey);
+        // BETA COST CONTROL: Only use Perplexity for high-value contacts
+        const shouldUsePerplexity = (
+          email.includes('@bbc.') || 
+          email.includes('spotify') || 
+          email.includes('radio') ||
+          email.includes('@nme.') ||
+          email.includes('pitchfork') ||
+          Math.random() < 0.1  // 10% sample for demo purposes
+        );
+        
+        let perplexityResp;
+        if (shouldUsePerplexity && process.env.NODE_ENV === 'production') {
+          // Only call expensive API in production for select contacts
+          perplexityResp = await runPerplexityResearch(prompt, cacheKey);
+        } else {
+          // Use fallback logic for beta users
+          perplexityResp = { content: '', confidence: 'Medium', error: 'Beta mode - using cached intelligence' };
+        }
         
         let intelligence = perplexityResp.content;
         let confidence = perplexityResp.confidence;

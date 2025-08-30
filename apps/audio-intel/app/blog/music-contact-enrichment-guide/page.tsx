@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "What is Music Contact Enrichment? Complete Guide (2024) | Audio Intel",
+  title: "What is Music Contact Enrichment? Complete Guide (2025) | Audio Intel",
   description: "Right, so after 5+ years in radio promotion, I've learned the hard way that basic contact lists are useless. Here's how contact enrichment transforms music promotion results.",
   keywords: "music contact enrichment, contact enrichment tools, music industry contacts, playlist curator contacts, radio DJ contacts",
   openGraph: {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Music Contact Enrichment: Complete Industry Guide (2024)",
+    title: "Music Contact Enrichment: Complete Industry Guide (2025)",
     description: "Built by a working radio promoter - everything you need to know about contact enrichment for the music industry.",
   }
 };
@@ -21,7 +22,7 @@ export default function MusicContactEnrichmentGuide() {
     <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
-          What is Music Contact Enrichment? Complete Guide (2024)
+          What is Music Contact Enrichment? Complete Guide (2025)
         </h1>
         
         <div className="flex items-center gap-4 mb-8 text-gray-600">
@@ -40,40 +41,40 @@ export default function MusicContactEnrichmentGuide() {
         </div>
       </header>
 
-      <div className="prose prose-lg max-w-none">
+      <div className="space-y-8">
         
-        <h2 id="what-is-contact-enrichment">What Actually is Contact Enrichment?</h2>
+        <h2 id="what-is-contact-enrichment" className="text-3xl font-black text-gray-900 mb-6 mt-12">What Actually is Contact Enrichment?</h2>
         
-        <p>
+        <p className="text-gray-700 leading-relaxed mb-6 text-lg">
           Contact enrichment is the process of taking your basic email list (you know, the one with just names and emails) 
           and transforming it into proper actionable intelligence that actually helps you get heard.
         </p>
         
-        <p>
-          Think about it - you've got <code>john@bbc.co.uk</code> in your spreadsheet. Great. But what does John actually cover? 
+        <p className="text-gray-700 leading-relaxed mb-6 text-lg">
+          Think about it - you've got <code className="bg-gray-100 px-2 py-1 rounded text-sm font-mono">john@bbc.co.uk</code> in your spreadsheet. Great. But what does John actually cover? 
           How does he prefer to receive music? What genres does he focus on? When did he last update his submission guidelines?
         </p>
         
-        <p>
-          <strong>That's where music contact enrichment comes in.</strong>
+        <p className="text-gray-700 leading-relaxed mb-6 text-lg">
+          <strong className="text-gray-900 font-bold">That's where music contact enrichment comes in.</strong>
         </p>
         
-        <p>
+        <p className="text-gray-700 leading-relaxed mb-6 text-lg">
           Instead of spending 3 hours researching each contact manually (yes, I've timed it), contact enrichment tools 
           automatically gather that intelligence for you. One email address becomes:
         </p>
         
-        <ul>
-          <li>Contact preferences and submission guidelines</li>
-          <li>Coverage areas and genre focus</li>
-          <li>Recent playlist additions or show features</li>
-          <li>Best times and methods to reach them</li>
-          <li>Social media activity and engagement patterns</li>
+        <ul className="text-gray-700 mb-6 space-y-2 pl-6">
+          <li className="list-disc">Contact preferences and submission guidelines</li>
+          <li className="list-disc">Coverage areas and genre focus</li>
+          <li className="list-disc">Recent playlist additions or show features</li>
+          <li className="list-disc">Best times and methods to reach them</li>
+          <li className="list-disc">Social media activity and engagement patterns</li>
         </ul>
         
-        <h2 id="contact-enrichment-vs-databases">Contact Enrichment vs Contact Databases - The Critical Difference</h2>
+        <h2 id="contact-enrichment-vs-databases" className="text-3xl font-black text-gray-900 mb-6 mt-12">Contact Enrichment vs Contact Databases - The Critical Difference</h2>
         
-        <p>
+        <p className="text-gray-700 leading-relaxed mb-6 text-lg">
           Right, so this confused me for ages when I first started. Let me clear this up because it's properly important:
         </p>
         
@@ -341,7 +342,7 @@ export default function MusicContactEnrichmentGuide() {
           <li><strong>Ignoring the guidelines</strong> - Enriched data is only valuable if you actually follow it</li>
           <li><strong>One-time use mentality</strong> - Contacts and preferences change, re-enrich quarterly</li>
           <li><strong>Still sending generic pitches</strong> - Enrichment enables personalisation - bloody use it!</li>
-        </ol>
+        </ul>
         
         <h3>Try Audio Intel (Free Beta)</h3>
         
@@ -391,21 +392,54 @@ export default function MusicContactEnrichmentGuide() {
         
         <hr className="my-12" />
         
-        <div className="bg-gray-50 p-6 rounded-lg">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white font-black text-xl">
-              CS
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 p-8 rounded-xl">
+          <div className="flex flex-col md:flex-row items-start gap-6">
+            <div className="flex-shrink-0">
+              <Image 
+                src="/images/chris-schofield-founder-photo.jpg" 
+                alt="Chris Schofield - Audio Intel Founder" 
+                width={120} 
+                height={120} 
+                className="rounded-full border-4 border-white shadow-lg object-cover aspect-square"
+              />
             </div>
-            <div>
-              <h3 className="font-bold text-lg">Chris Schofield</h3>
-              <p className="text-gray-600">Radio Promoter & Audio Intel Founder</p>
+            <div className="flex-1">
+              <div className="mb-4">
+                <h3 className="font-black text-2xl text-gray-900 mb-2">Chris Schofield</h3>
+                <div className="flex flex-wrap items-center gap-3 text-sm">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-semibold">
+                    Radio Promoter
+                  </span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-semibold">
+                    Audio Intel Founder
+                  </span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">
+                    Music Producer (sadact)
+                  </span>
+                </div>
+              </div>
+              <p className="text-gray-700 text-lg leading-relaxed mb-4">
+                5+ years promoting music for indie artists and labels across the UK. Built Audio Intel after wasting 
+                literally thousands of hours on manual contact research - because there had to be a better way.
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                As an electronic music producer myself (sadact), I understand the artist struggle firsthand. 
+                If this guide helped you, I'd genuinely appreciate if you gave the tool a try - it's exactly what 
+                I wished existed when I started promoting music.
+              </p>
+              <div className="mt-6">
+                <a 
+                  href="https://intel.totalaudiopromo.com" 
+                  className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"
+                >
+                  Try Audio Intel Free Beta
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-          <p className="text-gray-700">
-            5+ years promoting music for indie artists and labels. Built Audio Intel after wasting thousands of hours 
-            on manual contact research. Electronic music producer (sadact) who understands the artist struggle firsthand. 
-            If this helped, would appreciate if you gave the tool a try.
-          </p>
         </div>
         
       </div>

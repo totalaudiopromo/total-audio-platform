@@ -1,0 +1,75 @@
+# Node modules and dependencies
+node_modules/
+**/node_modules/
+
+# Build directories
+.next/
+**/.next/
+build/
+**/build/
+dist/
+**/dist/
+
+# Cache directories
+.cache/
+**/.cache/
+.turbo/
+**/.turbo/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+**/coverage/
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Parcel-bundler cache (https://parceljs.org/)
+.cache
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
+
+# Package lock files (keep root only)
+apps/*/package-lock.json

@@ -1,0 +1,284 @@
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+import Image from 'next/image';
+
+interface BetaUser {
+  id: string;
+  email: string;
+  name: string;
+  location: {
+    city: string;
+    country: string;
+    lat: number;
+    lng: number;
+  };
+  signupDate: string;
+  lastActive: string;
+  status: 'active' | 'trial_expired' | 'converted';
+  feedback?: string;
+}
+
+// Mock beta user data with accurate locations
+const mockBetaUsers: BetaUser[] = [
+  {
+    id: '1',
+    email: 'artist@example.com',
+    name: 'Sarah M.',
+    location: { city: 'London', country: 'UK', lat: 51.5074, lng: -0.1278 },
+    signupDate: '2024-08-25',
+    lastActive: '2024-08-30',
+    status: 'active',
+    feedback: 'Amazing tool! Saved me hours of manual contact research.'
+  },
+  {
+    id: '2',
+    email: 'producer@studio.com',
+    name: 'Mike T.',
+    location: { city: 'Brighton', country: 'UK', lat: 50.8225, lng: -0.1372 },
+    signupDate: '2024-08-26',
+    lastActive: '2024-08-30',
+    status: 'active'
+  },
+  {
+    id: '3',
+    email: 'label@music.com',
+    name: 'Emma K.',
+    location: { city: 'Berlin', country: 'Germany', lat: 52.5200, lng: 13.4050 },
+    signupDate: '2024-08-24',
+    lastActive: '2024-08-29',
+    status: 'trial_expired'
+  },
+  {
+    id: '4',
+    email: 'indie@artist.com',
+    name: 'Alex R.',
+    location: { city: 'Los Angeles', country: 'USA', lat: 34.0522, lng: -118.2437 },
+    signupDate: '2024-08-23',
+    lastActive: '2024-08-30',
+    status: 'converted',
+    feedback: 'Best investment I\'ve made for my music career!'
+  },
+  {
+    id: '5',
+    email: 'dj@radio.com',
+    name: 'Jordan P.',
+    location: { city: 'Manchester', country: 'UK', lat: 53.4808, lng: -2.2426 },
+    signupDate: '2024-08-27',
+    lastActive: '2024-08-30',
+    status: 'active'
+  },
+  {
+    id: '6',
+    email: 'musician@band.com',
+    name: 'Taylor S.',
+    location: { city: 'Sydney', country: 'Australia', lat: -33.8688, lng: 151.2093 },
+    signupDate: '2024-08-28',
+    lastActive: '2024-08-30',
+    status: 'active',
+    feedback: 'The AI enrichment is incredibly accurate. Love it!'
+  }
+];
+
+export default function BetaDashboard() {
+  const [betaUsers, setBetaUsers] = useState<BetaUser[]>(mockBetaUsers);
+  const [selectedUser, setSelectedUser] = useState<BetaUser | null>(null);
+
+  const stats = {
+    total: betaUsers.length,
+    active: betaUsers.filter(u => u.status === 'active').length,
+    converted: betaUsers.filter(u => u.status === 'converted').length,
+    expired: betaUsers.filter(u => u.status === 'trial_expired').length
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'active': return 'bg-green-100 text-green-800 border-green-500';
+      case 'converted': return 'bg-blue-100 text-blue-800 border-blue-500';
+      case 'trial_expired': return 'bg-red-100 text-red-800 border-red-500';
+      default: return 'bg-gray-100 text-gray-800 border-gray-500';
+    }
+  };
+
+  return (
+    <>
+      <Head>
+        <title>Beta Dashboard - Total Audio Promo</title>
+        <meta name="description" content="Beta user analytics and feedback dashboard" />
+      </Head>
+
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+        {/* Header */}
+        <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="container flex h-16 items-center justify-between">
+            <Link href="/" className="flex items-center space-x-4">
+              <Image 
+                src="/images/total_audio_promo_logo_trans.png" 
+                alt="Total Audio Promo Logo" 
+                width={40} 
+                height={40}
+                className=""
+              />
+              <span className="text-3xl font-black text-gray-900">Beta Dashboard</span>
+            </Link>
+            
+            <nav className="flex items-center space-x-6">
+              <Link href="/" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
+                Home
+              </Link>
+              <Link href="https://intel.totalaudiopromo.com" className="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 transition-colors">
+                Audio Intel
+              </Link>
+            </nav>
+          </div>
+        </header>
+
+        {/* Main Content */}
+        <div className="container px-4 py-8 mx-auto">
+          {/* Stats Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div className="bg-white p-6 rounded-2xl border-4 border-blue-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="text-3xl font-black text-blue-600 mb-2">{stats.total}</div>
+              <div className="text-lg font-bold text-gray-700">Total Beta Users</div>
+            </div>
+            <div className="bg-white p-6 rounded-2xl border-4 border-green-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="text-3xl font-black text-green-600 mb-2">{stats.active}</div>
+              <div className="text-lg font-bold text-gray-700">Active Trials</div>
+            </div>
+            <div className="bg-white p-6 rounded-2xl border-4 border-purple-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="text-3xl font-black text-purple-600 mb-2">{stats.converted}</div>
+              <div className="text-lg font-bold text-gray-700">Converted to Paid</div>
+            </div>
+            <div className="bg-white p-6 rounded-2xl border-4 border-red-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="text-3xl font-black text-red-600 mb-2">{stats.expired}</div>
+              <div className="text-lg font-bold text-gray-700">Trial Expired</div>
+            </div>
+          </div>
+
+          {/* World Map */}
+          <div className="bg-white p-8 rounded-2xl border-4 border-gray-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mb-8">
+            <h2 className="text-3xl font-black text-gray-900 mb-6">Global Beta Users</h2>
+            <div className="relative bg-gradient-to-br from-blue-100 to-green-100 rounded-xl p-8 min-h-96">
+              {/* Simple World Map Representation */}
+              <div className="text-center">
+                <div className="text-6xl mb-4">🌍</div>
+                <h3 className="text-2xl font-black text-gray-700 mb-4">Beta Users Worldwide</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {betaUsers.map((user) => (
+                    <div
+                      key={user.id}
+                      className={`p-4 rounded-xl border-2 cursor-pointer transition-all hover:scale-105 ${getStatusColor(user.status)}`}
+                      onClick={() => setSelectedUser(user)}
+                    >
+                      <div className="font-bold">{user.location.city}</div>
+                      <div className="text-sm">{user.location.country}</div>
+                      <div className="text-xs capitalize mt-1">{user.status.replace('_', ' ')}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* User Details */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* User List */}
+            <div className="bg-white p-8 rounded-2xl border-4 border-gray-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="text-2xl font-black text-gray-900 mb-6">Beta Users</h3>
+              <div className="space-y-4">
+                {betaUsers.map((user) => (
+                  <div
+                    key={user.id}
+                    className={`p-4 rounded-xl border-2 cursor-pointer transition-all hover:scale-102 ${
+                      selectedUser?.id === user.id ? 'border-blue-500 bg-blue-50' : getStatusColor(user.status)
+                    }`}
+                    onClick={() => setSelectedUser(user)}
+                  >
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <div className="font-bold text-gray-900">{user.name}</div>
+                        <div className="text-sm text-gray-600">{user.location.city}, {user.location.country}</div>
+                        <div className="text-xs text-gray-500">Signed up: {new Date(user.signupDate).toLocaleDateString()}</div>
+                      </div>
+                      <div className={`px-2 py-1 rounded-lg text-xs font-bold ${getStatusColor(user.status)}`}>
+                        {user.status.replace('_', ' ').toUpperCase()}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Selected User Details */}
+            <div className="bg-white p-8 rounded-2xl border-4 border-gray-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="text-2xl font-black text-gray-900 mb-6">User Details</h3>
+              {selectedUser ? (
+                <div className="space-y-4">
+                  <div>
+                    <label className="font-bold text-gray-700">Name:</label>
+                    <div className="text-gray-900">{selectedUser.name}</div>
+                  </div>
+                  <div>
+                    <label className="font-bold text-gray-700">Location:</label>
+                    <div className="text-gray-900">{selectedUser.location.city}, {selectedUser.location.country}</div>
+                  </div>
+                  <div>
+                    <label className="font-bold text-gray-700">Signup Date:</label>
+                    <div className="text-gray-900">{new Date(selectedUser.signupDate).toLocaleDateString()}</div>
+                  </div>
+                  <div>
+                    <label className="font-bold text-gray-700">Last Active:</label>
+                    <div className="text-gray-900">{new Date(selectedUser.lastActive).toLocaleDateString()}</div>
+                  </div>
+                  <div>
+                    <label className="font-bold text-gray-700">Status:</label>
+                    <div className={`inline-block px-3 py-1 rounded-lg text-sm font-bold ${getStatusColor(selectedUser.status)}`}>
+                      {selectedUser.status.replace('_', ' ').toUpperCase()}
+                    </div>
+                  </div>
+                  {selectedUser.feedback && (
+                    <div>
+                      <label className="font-bold text-gray-700">Feedback:</label>
+                      <div className="text-gray-900 bg-gray-50 p-4 rounded-lg border-2 border-gray-200 mt-2">
+                        "{selectedUser.feedback}"
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-gray-500 text-center py-8">
+                  Select a user from the list to view details
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Beta Feedback Section */}
+          <div className="mt-8 bg-white p-8 rounded-2xl border-4 border-yellow-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <h3 className="text-2xl font-black text-gray-900 mb-6">Beta Feedback Strategy</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-yellow-50 p-6 rounded-xl border-2 border-yellow-300">
+                <h4 className="font-black text-yellow-800 mb-3">📧 Email Surveys</h4>
+                <p className="text-sm font-bold text-yellow-700">
+                  Automated feedback emails at day 7 and day 13 of trial
+                </p>
+              </div>
+              <div className="bg-blue-50 p-6 rounded-xl border-2 border-blue-300">
+                <h4 className="font-black text-blue-800 mb-3">💬 In-App Feedback</h4>
+                <p className="text-sm font-bold text-blue-700">
+                  Feedback widget in Audio Intel for real-time insights
+                </p>
+              </div>
+              <div className="bg-green-50 p-6 rounded-xl border-2 border-green-300">
+                <h4 className="font-black text-green-800 mb-3">📞 User Interviews</h4>
+                <p className="text-sm font-bold text-green-700">
+                  Schedule 15-min calls with converted users for deep insights
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

@@ -4,30 +4,37 @@ This repository contains a comprehensive music promotion and audio intelligence 
 
 ## 📁 Project Structure
 
-### 🚀 Projects
-All applications and services are organized in the `projects/` directory:
+### 🚀 Applications 
+All applications are organized in the `apps/` directory:
 
-#### Web Applications (`projects/web-apps/`)
-- **audio-intel-live/** - Audio intelligence and analysis platform
-- **frontend/** - Main web application frontend
-- **playlist-pulse-live/** - Playlist management and analytics platform
+#### Web Applications (`apps/`)
+- **audio-intel/** - Audio intelligence platform (intel.totalaudiopromo.com)
+- **web/** - Main landing page (totalaudiopromo.com) 
+- **playlist-pulse/** - Playlist management platform (pulse.totalaudiopromo.com)
+- **command-centre/** - Internal business dashboard (command.totalaudiopromo.com)
 
-#### Mobile Applications (`projects/mobile-apps/`)
-- **mobile-app/** - React Native mobile application
+#### Backend Services (`apps/`)
+- **api/** - Main backend API and database services
 
-#### Backend Services (`projects/backend-services/`)
-- **backend/** - Main backend API and services
+#### Mobile Applications (`apps/`)
+- **mobile/** - React Native mobile application
 
-#### AI Agents (`projects/ai-agents/`)
-- **agents/** - AI agent implementations
-- **ai-agents/** - AI agent configurations and strategies
-- **ai-agents-private/** - Private AI agent configurations
+#### Additional Tools (`apps/`)
+- **seo-tool/** - SEO optimization tools
+- **voice-echo/** - Voice-based content generation
 
-#### Tools (`projects/tools/`)
-- **sadact_workflow_tools/** - Audio workflow automation tools
-- **scripts/** - Utility scripts
-- **shared/** - Shared components and utilities
-- **src/** - Source code utilities
+### 🌐 **Deployment Status**
+
+#### Production Domains
+- ✅ **intel.totalaudiopromo.com** - Audio Intel (deployed)
+- 🚧 **totalaudiopromo.com** - Main landing page (needs custom domain setup)
+- 🚧 **pulse.totalaudiopromo.com** - Playlist Pulse (needs deployment)
+- 🚧 **command.totalaudiopromo.com** - Command Centre (needs custom domain setup)
+
+#### Vercel Projects
+- **audio-intel** - intel.totalaudiopromo.com
+- **web** - Main landing page with mobile optimizations
+- **command-centre** - Internal dashboard with mobile optimizations
 
 ### 📚 Documentation (`docs/`)
 - **setup/** - Setup and installation guides
@@ -60,34 +67,70 @@ All applications and services are organized in the `projects/` directory:
 
 ### Development Setup
 1. Clone the repository
-2. Install dependencies for each project:
+2. Install all dependencies using the monorepo setup:
    ```bash
-   # Web applications
-   cd projects/web-apps/audio-intel-live && npm install
-   cd ../frontend && npm install
-   cd ../playlist-pulse-live && npm install
-   
-   # Backend services
-   cd ../../backend-services/backend && npm install
-   
-   # Mobile app
-   cd ../../mobile-apps/mobile-app && npm install
+   npm install
    ```
 
 3. Set up environment variables:
    ```bash
-   cp config/coderabbit.env.template config/.env
+   cp .env.example .env
    # Edit .env with your configuration
    ```
 
 4. Start development servers:
    ```bash
-   # Start backend
-   cd projects/backend-services/backend && npm run dev
+   # Start all apps
+   npm run dev
    
-   # Start web applications
-   cd ../../web-apps/audio-intel-live && npm run dev
+   # Or start individual apps:
+   npm run dev:audio-intel      # Audio Intel platform
+   npm run dev:web             # Main landing page
+   npm run dev:playlist-pulse  # Playlist Pulse platform
+   npm run dev:command-centre  # Command Centre dashboard
+   npm run dev:backend         # API backend
    ```
+
+## 🚀 Deployment
+
+### Vercel Deployment Commands
+```bash
+# Deploy individual apps to production
+cd apps/audio-intel && vercel --prod
+cd apps/web && vercel --prod  
+cd apps/playlist-pulse && vercel --prod
+cd apps/command-centre && vercel --prod
+```
+
+### Domain Configuration
+Each app requires custom domain setup in Vercel dashboard:
+- **audio-intel** → intel.totalaudiopromo.com (✅ configured)
+- **web** → totalaudiopromo.com (🚧 needs setup)
+- **playlist-pulse** → pulse.totalaudiopromo.com (🚧 needs setup)
+- **command-centre** → command.totalaudiopromo.com (🚧 needs setup)
+
+### Mobile Optimizations
+All apps include comprehensive mobile optimizations:
+- Touch-friendly UI (44px minimum touch targets)
+- Responsive grid layouts
+- Mobile-first CSS with proper media queries
+- Optimized typography hierarchy for small screens
+- Prevention of horizontal scrolling
+
+### Build and Test Commands
+```bash
+# Build all apps
+npm run build
+
+# Run tests
+npm run test
+
+# Type checking
+npm run typecheck
+
+# Linting
+npm run lint
+```
 
 ## 🔧 Development Workflow
 

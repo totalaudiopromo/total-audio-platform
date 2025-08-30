@@ -50,22 +50,26 @@ export default function DocumentationPage() {
           {/* Quick Navigation */}
           <div className="mb-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <Card className="p-4 text-center hover:shadow-lg transition-all cursor-pointer bg-gradient-to-br from-blue-50 to-blue-100">
+              <Card 
+                className="p-4 text-center hover:shadow-lg transition-all cursor-pointer bg-gradient-to-br from-blue-50 to-blue-100"
+                onClick={() => setActiveTab('getting-started')}
+              >
                 <BookOpen className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                 <h3 className="font-bold text-gray-900">Getting Started</h3>
                 <p className="text-sm text-gray-600">Quick setup guide</p>
               </Card>
-              <Card className="p-4 text-center hover:shadow-lg transition-all cursor-pointer bg-gradient-to-br from-green-50 to-green-100">
+              <Card 
+                className="p-4 text-center hover:shadow-lg transition-all cursor-pointer bg-gradient-to-br from-green-50 to-green-100"
+                onClick={() => setActiveTab('api')}
+              >
                 <Code className="w-8 h-8 text-green-600 mx-auto mb-2" />
                 <h3 className="font-bold text-gray-900">API Reference</h3>
                 <p className="text-sm text-gray-600">Technical documentation</p>
               </Card>
-              <Card className="p-4 text-center hover:shadow-lg transition-all cursor-pointer bg-gradient-to-br from-purple-50 to-purple-100">
-                <Zap className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-                <h3 className="font-bold text-gray-900">AI Agents</h3>
-                <p className="text-sm text-gray-600">Agent capabilities</p>
-              </Card>
-              <Card className="p-4 text-center hover:shadow-lg transition-all cursor-pointer bg-gradient-to-br from-orange-50 to-orange-100">
+              <Card 
+                className="p-4 text-center hover:shadow-lg transition-all cursor-pointer bg-gradient-to-br from-orange-50 to-orange-100"
+                onClick={() => setActiveTab('api')}
+              >
                 <TrendingUp className="w-8 h-8 text-orange-600 mx-auto mb-2" />
                 <h3 className="font-bold text-gray-900">Analytics</h3>
                 <p className="text-sm text-gray-600">Data insights</p>
@@ -75,7 +79,7 @@ export default function DocumentationPage() {
 
           {/* Main Documentation */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-5 mb-8">
+            <TabsList className="grid w-full grid-cols-4 mb-8">
               <TabsTrigger value="getting-started" className="text-sm font-bold">
                 <BookOpen className="w-4 h-4 mr-2" />
                 Getting Started
@@ -87,10 +91,6 @@ export default function DocumentationPage() {
               <TabsTrigger value="platform-search" className="text-sm font-bold">
                 <Search className="w-4 h-4 mr-2" />
                 Platform Search
-              </TabsTrigger>
-              <TabsTrigger value="ai-agents" className="text-sm font-bold">
-                <Zap className="w-4 h-4 mr-2" />
-                AI Agents
               </TabsTrigger>
               <TabsTrigger value="api" className="text-sm font-bold">
                 <Code className="w-4 h-4 mr-2" />
@@ -355,78 +355,6 @@ export default function DocumentationPage() {
               </Card>
             </TabsContent>
 
-            {/* AI Agents Tab */}
-            <TabsContent value="ai-agents" className="space-y-8">
-              <Card className="p-8">
-                <div className="text-center mb-8">
-                  <h2 className="text-4xl font-black text-gray-900 mb-4">
-                    AI Agents Documentation
-                  </h2>
-                  <p className="text-xl font-bold text-gray-700">
-                    Specialized AI agents for music industry strategy and insights
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-2xl font-black text-gray-900 mb-4">🤖 Available Agents</h3>
-                    <div className="space-y-4">
-                      <div className="p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200">
-                        <h4 className="font-bold text-blue-900 mb-2">Music Industry Strategist</h4>
-                        <p className="text-sm text-blue-800 mb-2">Strategic planning and industry insights</p>
-                        <div className="flex flex-wrap gap-1">
-                          <Badge variant="secondary" className="bg-blue-200 text-blue-800 text-xs">Strategy</Badge>
-                          <Badge variant="secondary" className="bg-blue-200 text-blue-800 text-xs">Planning</Badge>
-                          <Badge variant="secondary" className="bg-blue-200 text-blue-800 text-xs">Insights</Badge>
-                        </div>
-                      </div>
-                      <div className="p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-lg border border-green-200">
-                        <h4 className="font-bold text-green-900 mb-2">Music Marketing Mastermind</h4>
-                        <p className="text-sm text-green-800 mb-2">Marketing strategy and campaign planning</p>
-                        <div className="flex flex-wrap gap-1">
-                          <Badge variant="secondary" className="bg-green-200 text-green-800 text-xs">Marketing</Badge>
-                          <Badge variant="secondary" className="bg-green-200 text-green-800 text-xs">Campaigns</Badge>
-                          <Badge variant="secondary" className="bg-green-200 text-green-800 text-xs">Strategy</Badge>
-                        </div>
-                      </div>
-                      <div className="p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg border border-purple-200">
-                        <h4 className="font-bold text-purple-900 mb-2">Growth Hacking Optimizer</h4>
-                        <p className="text-sm text-purple-800 mb-2">Growth strategies and optimization</p>
-                        <div className="flex flex-wrap gap-1">
-                          <Badge variant="secondary" className="bg-purple-200 text-purple-800 text-xs">Growth</Badge>
-                          <Badge variant="secondary" className="bg-purple-200 text-purple-800 text-xs">Optimization</Badge>
-                          <Badge variant="secondary" className="bg-purple-200 text-purple-800 text-xs">Hacking</Badge>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-black text-gray-900 mb-4">💬 Agent Interactions</h3>
-                    <div className="space-y-4">
-                      <div className="p-4 bg-gray-50 rounded-lg">
-                        <h4 className="font-bold text-gray-900 mb-2">Query Types</h4>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Strategic planning questions</li>
-                          <li>• Marketing campaign advice</li>
-                          <li>• Industry trend analysis</li>
-                          <li>• Growth strategy recommendations</li>
-                        </ul>
-                      </div>
-                      <div className="p-4 bg-gray-50 rounded-lg">
-                        <h4 className="font-bold text-gray-900 mb-2">Response Format</h4>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Detailed analysis and insights</li>
-                          <li>• Actionable recommendations</li>
-                          <li>• Next steps and follow-up actions</li>
-                          <li>• Industry-specific context</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </TabsContent>
 
             {/* API Reference Tab */}
             <TabsContent value="api" className="space-y-8">

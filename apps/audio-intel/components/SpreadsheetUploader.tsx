@@ -4,6 +4,7 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
+import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -757,7 +758,21 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
     <Card className="border-2 border-blue-500 bg-gradient-to-br from-blue-50 to-purple-50">
       <CardContent className="p-12">
         <div className="text-center space-y-8">
-          <div className="text-8xl animate-pulse">🎧</div>
+          <div className="flex justify-center animate-pulse">
+            <Image
+              src="/assets/loading-states/processing-contacts.png"
+              alt="Audio mascot processing your contacts"
+              width={200}
+              height={200}
+              className="w-48 h-48"
+              priority
+              style={{ objectFit: 'contain' }}
+              onError={(e) => {
+                const target = e.target as HTMLImageElement
+                target.src = '/images/audio-mascot.svg'
+              }}
+            />
+          </div>
           
           <div>
             <h3 className="text-4xl font-black text-gray-900 mb-4">

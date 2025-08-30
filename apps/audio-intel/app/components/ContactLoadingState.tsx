@@ -63,10 +63,11 @@ const ContactLoadingState: React.FC<ContactLoadingStateProps> = ({ state, progre
         <Image
           src={config.image}
           alt={config.alt}
-          width={128}
-          height={128}
-          className={`${config.cssClass} w-32 h-32`}
+          width={isActionState ? 200 : 160}
+          height={isActionState ? 200 : 160}
+          className={`${config.cssClass} ${isActionState ? 'w-48 h-48' : 'w-40 h-40'}`}
           priority
+          style={{ objectFit: 'contain', objectPosition: 'center' }}
           // Fallback to main logo if loading state images aren't available yet
           onError={(e) => {
             const target = e.target as HTMLImageElement

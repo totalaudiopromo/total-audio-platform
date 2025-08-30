@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 const navLinks = [
   { href: 'features', label: 'Features' },
+  { href: '/blog', label: 'Blog', isRoute: true },
   { href: 'pricing', label: 'Pricing' },
   { href: 'demo', label: 'Live Demo' },
   { href: 'signup', label: 'Start Free Trial' },
@@ -51,8 +52,10 @@ export default function MobileNav() {
   }, [open]);
 
   // Close on link click
-  const handleNavClick = (id: string) => {
-    scrollToSection(id);
+  const handleNavClick = (id: string, isRoute?: boolean) => {
+    if (!isRoute) {
+      scrollToSection(id);
+    }
     setOpen(false);
   };
 
@@ -103,16 +106,29 @@ export default function MobileNav() {
         </div>
         
         <div className="flex flex-col gap-3 px-4 py-6 flex-1 overflow-y-auto">
-          {navLinks.slice(0, 3).map(link => (
-            <button
-              key={link.href}
-              className="py-4 px-4 rounded-xl text-base font-semibold hover:bg-gray-100 transition-all duration-300 text-left w-full focus:outline-none text-gray-900 min-h-[56px] bg-gray-50 border border-gray-200 flex items-center"
-              style={{ minHeight: 56, wordWrap: 'break-word', whiteSpace: 'normal' }}
-              onClick={() => handleNavClick(link.href)}
-              aria-label={link.label}
-            >
-              <span className="block w-full">{link.label}</span>
-            </button>
+          {navLinks.slice(0, 4).map(link => (
+            link.isRoute ? (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="py-4 px-4 rounded-xl text-base font-semibold hover:bg-gray-100 transition-all duration-300 text-left w-full focus:outline-none text-gray-900 min-h-[56px] bg-gray-50 border border-gray-200 flex items-center"
+                style={{ minHeight: 56, wordWrap: 'break-word', whiteSpace: 'normal' }}
+                onClick={() => setOpen(false)}
+                aria-label={link.label}
+              >
+                <span className="block w-full">{link.label}</span>
+              </Link>
+            ) : (
+              <button
+                key={link.href}
+                className="py-4 px-4 rounded-xl text-base font-semibold hover:bg-gray-100 transition-all duration-300 text-left w-full focus:outline-none text-gray-900 min-h-[56px] bg-gray-50 border border-gray-200 flex items-center"
+                style={{ minHeight: 56, wordWrap: 'break-word', whiteSpace: 'normal' }}
+                onClick={() => handleNavClick(link.href, link.isRoute)}
+                aria-label={link.label}
+              >
+                <span className="block w-full">{link.label}</span>
+              </button>
+            )
           ))}
         </div>
         
