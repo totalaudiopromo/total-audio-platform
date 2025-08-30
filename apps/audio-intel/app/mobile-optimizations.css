@@ -1,0 +1,503 @@
+/* 📱 AUDIO INTEL MOBILE-FIRST OPTIMIZATIONS */
+
+/* =============================================================================
+   MOBILE-FIRST BASE STYLES
+   ============================================================================= */
+
+/* Ensure all text is readable on mobile */
+body {
+  font-size: 16px; /* Base font size for better readability */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =============================================================================
+   MOBILE HEADER & NAVIGATION
+   ============================================================================= */
+
+.mobile-header {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.mobile-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mobile-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-logo-text {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #1a202c;
+  letter-spacing: -0.025em;
+}
+
+.mobile-beta-badge {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* =============================================================================
+   MOBILE HERO SECTION
+   ============================================================================= */
+
+.mobile-hero {
+  padding: 2rem 1rem;
+  text-align: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.mobile-hero-title {
+  font-size: 2rem !important; /* Smaller than desktop */
+  font-weight: 900;
+  color: #1a202c;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+}
+
+.mobile-hero-subtitle {
+  font-size: 1rem !important;
+  color: #4a5568;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+
+/* =============================================================================
+   MOBILE BUTTONS & CTAs
+   ============================================================================= */
+
+.mobile-cta-button {
+  width: 100%;
+  padding: 1rem 1.5rem !important;
+  font-size: 1.125rem !important;
+  font-weight: 700;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  border: none;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  transition: all 0.2s ease;
+  min-height: 56px; /* Minimum touch target */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.mobile-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+}
+
+.mobile-secondary-button {
+  width: 100%;
+  padding: 1rem 1.5rem !important;
+  font-size: 1rem !important;
+  font-weight: 600;
+  border-radius: 12px;
+  background: white;
+  color: #374151;
+  border: 2px solid #e5e7eb;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.mobile-secondary-button:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+/* =============================================================================
+   MOBILE CARDS & PRICING
+   ============================================================================= */
+
+.mobile-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid #000;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: none;
+}
+
+.mobile-pricing-card {
+  background: white;
+  border-radius: 24px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border: 3px solid #000;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.mobile-pricing-title {
+  font-size: 1.5rem !important;
+  font-weight: 900;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-pricing-price {
+  font-size: 2.5rem !important;
+  font-weight: 900;
+  color: #1a202c;
+  margin-bottom: 1rem;
+}
+
+.mobile-pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.mobile-pricing-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.4;
+}
+
+.mobile-pricing-features .check-icon {
+  width: 20px;
+  height: 20px;
+  background: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+/* =============================================================================
+   MOBILE FORMS & INPUTS
+   ============================================================================= */
+
+.mobile-form {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.mobile-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background: white;
+  margin-bottom: 1rem;
+  min-height: 56px;
+  transition: border-color 0.2s ease;
+}
+
+.mobile-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.mobile-input-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+/* =============================================================================
+   MOBILE DEMO SECTION
+   ============================================================================= */
+
+.mobile-demo-section {
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  padding: 2rem 1rem;
+  border-radius: 24px;
+  margin: 2rem 0;
+  border: 2px solid #0ea5e9;
+}
+
+.mobile-demo-title {
+  font-size: 1.5rem !important;
+  font-weight: 900;
+  color: #0c4a6e;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.mobile-demo-result {
+  background: white;
+  border: 2px solid #0ea5e9;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  font-family: monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+/* =============================================================================
+   MOBILE FEATURE HIGHLIGHTS
+   ============================================================================= */
+
+.mobile-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.mobile-feature-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 2px solid #e5e7eb;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.mobile-feature-card:hover {
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+}
+
+.mobile-feature-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.mobile-feature-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-feature-description {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* =============================================================================
+   MOBILE TESTIMONIALS
+   ============================================================================= */
+
+.mobile-testimonial {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 2px solid #f59e0b;
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.mobile-testimonial-text {
+  font-size: 1rem;
+  font-style: italic;
+  color: #92400e;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.mobile-testimonial-author {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #78350f;
+}
+
+/* =============================================================================
+   MOBILE FOOTER
+   ============================================================================= */
+
+.mobile-footer {
+  background: #1a202c;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.mobile-footer-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.mobile-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.mobile-footer-link {
+  color: #cbd5e1;
+  font-size: 0.875rem;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.mobile-footer-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.mobile-footer-copyright {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #374151;
+}
+
+/* =============================================================================
+   MOBILE RESPONSIVE UTILITIES
+   ============================================================================= */
+
+.mobile-hidden {
+  display: none !important;
+}
+
+.mobile-visible {
+  display: block !important;
+}
+
+.mobile-flex {
+  display: flex !important;
+}
+
+.mobile-grid {
+  display: grid !important;
+}
+
+.mobile-text-center {
+  text-align: center !important;
+}
+
+.mobile-text-left {
+  text-align: left !important;
+}
+
+.mobile-w-full {
+  width: 100% !important;
+}
+
+.mobile-mb-4 {
+  margin-bottom: 1rem !important;
+}
+
+.mobile-mb-8 {
+  margin-bottom: 2rem !important;
+}
+
+.mobile-p-4 {
+  padding: 1rem !important;
+}
+
+.mobile-px-4 {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.mobile-py-8 {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+/* =============================================================================
+   MOBILE MEDIA QUERIES
+   ============================================================================= */
+
+/* Mobile First: Base styles above apply to mobile */
+/* Tablet and up overrides */
+@media (min-width: 768px) {
+  .mobile-hero-title {
+    font-size: 3rem !important;
+  }
+  
+  .mobile-hero-subtitle {
+    font-size: 1.25rem !important;
+  }
+  
+  .mobile-cta-button,
+  .mobile-secondary-button {
+    width: auto;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  
+  .mobile-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .mobile-pricing-card {
+    max-width: 400px;
+    margin: 0 auto 2rem auto;
+  }
+}
+
+/* Desktop overrides */
+@media (min-width: 1024px) {
+  .mobile-feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .mobile-hero {
+    padding: 4rem 2rem;
+  }
+  
+  .mobile-hero-title {
+    font-size: 4rem !important;
+  }
+}

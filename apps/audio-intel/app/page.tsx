@@ -192,9 +192,9 @@ export default function AudioIntelLanding() {
   return (
     <div className="min-h-screen bg-[#f8f9fa]">
       {/* Header */}
-      <header className={`sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative`}>
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center space-x-4">
+      <header className={`audio-intel-header sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative`}>
+        <div className="audio-intel-container container flex h-16 items-center justify-between">
+          <div className="audio-intel-logo-container flex items-center space-x-4">
             <Image 
               src="/images/total_audio_promo_logo_trans.png" 
               alt="Total Audio Promo Logo" 
@@ -203,28 +203,28 @@ export default function AudioIntelLanding() {
               className=""
             />
             <div className="flex items-center space-x-2">
-              <span className="text-3xl font-black text-gray-900">Audio Intel</span>
+              <span className="audio-intel-logo-text text-3xl font-black text-gray-900">Audio Intel</span>
               <Badge variant="secondary" className="bg-blue-100 text-blue-800 font-bold">Beta</Badge>
             </div>
           </div>
           
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="audio-intel-nav hidden md:flex items-center space-x-6">
             <div className="flex items-center gap-2 text-sm font-bold text-gray-500 cursor-not-allowed">
               <Music className="w-4 h-4" />
               <span>Playlist Pulse</span>
               <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full font-medium">Coming Soon</span>
             </div>
-            <a href="#features" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
+            <a href="#features" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
               Features
             </a>
-            <a href="#pricing" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
+            <a href="#pricing" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
               Pricing
             </a>
-            <Link href="/studio" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
+            <Link href="/studio" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
               Progress Dashboard
             </Link>
             {process.env.NEXT_PUBLIC_ENABLE_SEO_ANALYSIS === 'true' && (
-              <Link href="/seo-analysis" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
+              <Link href="/seo-analysis" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
                 SEO Analysis
               </Link>
             )}
@@ -236,7 +236,7 @@ export default function AudioIntelLanding() {
             </Link>
             <Button 
               size="sm" 
-              className="bg-blue-600 hover:bg-blue-700 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+              className="audio-intel-nav-button bg-blue-600 hover:bg-blue-700 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
               onClick={handlePricingNavigation}
               disabled={isLoading}
             >
@@ -247,8 +247,8 @@ export default function AudioIntelLanding() {
       </header>
 
       {/* Cross-Promotion Banner */}
-      <section className={`w-full px-4 py-8 bg-gradient-to-r from-yellow-50 to-yellow-100 border-b-4 border-yellow-300 relative`}>
-        <div className="max-w-6xl mx-auto">
+      <section className={`audio-intel-banner w-full px-4 py-8 bg-gradient-to-r from-yellow-50 to-yellow-100 border-b-4 border-yellow-300 relative`}>
+        <div className="audio-intel-container max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4">
               <div className="bg-yellow-400 rounded-full p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -268,8 +268,8 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* Hero Section */}
-      <section className={`container px-4 py-16 mx-auto text-center relative`}>
-        <div className="max-w-4xl mx-auto">
+      <section className={`audio-intel-hero container px-4 py-16 mx-auto text-center relative`}>
+        <div className="audio-intel-container max-w-4xl mx-auto">
           <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-8 leading-tight">
             Drop Your Chaos Here
             <span className="block text-blue-600">Transform Messy Spreadsheets Instantly</span>
@@ -290,11 +290,11 @@ export default function AudioIntelLanding() {
             </p>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+          <div className="audio-intel-hero-buttons flex flex-col sm:flex-row gap-6 justify-center mb-16">
             <Link href="/pricing?plan=professional&billing=monthly">
               <Button 
                 size="lg" 
-                className="bg-blue-600 hover:bg-blue-700 text-lg px-12 py-4 font-bold rounded-xl transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                className="audio-intel-hero-button bg-blue-600 hover:bg-blue-700 text-lg px-12 py-4 font-bold rounded-xl transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
               >
                 Drop Your Chaos Here
               </Button>
@@ -302,7 +302,7 @@ export default function AudioIntelLanding() {
             <Button 
               variant="outline" 
               size="lg" 
-              className="text-lg px-12 py-4 font-medium border-2 rounded-xl hover:bg-gray-50 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+              className="audio-intel-hero-button text-lg px-12 py-4 font-medium border-2 rounded-xl hover:bg-gray-50 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
               onClick={() => document.getElementById('solution')?.scrollIntoView({ behavior: 'smooth' })}
             >
               See why industry professionals choose Audio Intel
