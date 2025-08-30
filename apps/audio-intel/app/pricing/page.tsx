@@ -116,11 +116,11 @@ function PricingContent() {
             <Link href="/" className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <Image 
-                  src="/t-a-p-new dog logo.png" 
+                  src="/images/total_audio_promo_logo_trans.png" 
                   alt="Total Audio Promo Logo" 
                   width={32} 
                   height={32}
-                  className="rounded-lg"
+                  className="rounded-lg bg-white p-1"
                 />
               </div>
               <div className="flex items-center space-x-2">
@@ -185,7 +185,53 @@ function PricingContent() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8 items-stretch justify-items-center max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-6 items-stretch justify-items-center max-w-none mx-auto">
+            {/* Free Beta */}
+            <div className="bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative flex flex-col h-full w-full max-w-sm">
+              <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-600 to-green-500 rounded-full px-6 py-2 font-black text-sm text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                FREE BETA
+              </Badge>
+
+              <div className="text-center mb-8 mt-6">
+                <h3 className="text-2xl font-black text-gray-900 mb-4">Free Beta</h3>
+                <div className="text-5xl font-black text-gray-900 mb-4">
+                  £0<span className="text-xl text-gray-600">/mo</span>
+                </div>
+              </div>
+
+              <ul className="space-y-4 mb-8 flex-1">
+                <li className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <Check className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="font-bold text-sm">25 contact enrichments</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <Check className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="font-bold text-sm">All AI research features</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <Check className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="font-bold text-sm">Export to CSV</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <Check className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="font-bold text-sm">Beta testing access</span>
+                </li>
+              </ul>
+
+              <Link href="/demo">
+                <Button className="w-full rounded-xl font-black text-lg py-4 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-600 hover:to-green-600 text-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
+                  Start Free Beta
+                </Button>
+              </Link>
+            </div>
             {/* Starter */}
             <div className="bg-white p-10 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all flex flex-col h-full w-full max-w-sm">
               <div className="text-center mb-10">
@@ -232,13 +278,13 @@ function PricingContent() {
               </ul>
 
               <Button 
-                className="w-full rounded-2xl font-black text-xl py-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all bg-white hover:bg-gray-50 text-black border-4 border-gray-300"
+                className="w-full rounded-2xl font-black text-lg py-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all bg-white hover:bg-gray-50 text-black border-4 border-gray-300"
                 onClick={() => handleCheckout('starter', 'monthly')}
                 disabled={isLoading === 'starter'}
                 type="button"
                 data-testid="btn-start-starter"
               >
-                {isLoading === 'starter' ? 'Loading...' : `Start ${trialDays.starter}-Day Free Trial`}
+                {isLoading === 'starter' ? 'Loading...' : `${trialDays.starter}-Day Free Trial`}
               </Button>
             </div>
 
@@ -292,13 +338,13 @@ function PricingContent() {
               </ul>
 
               <Button 
-                className="w-full rounded-2xl font-black text-xl py-6 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+                className="w-full rounded-2xl font-black text-lg py-6 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
                 onClick={() => handleCheckout('professional', 'monthly')}
                 disabled={isLoading === 'professional'}
                 type="button"
                 data-testid="btn-start-professional"
               >
-                {isLoading === 'professional' ? 'Loading...' : `Start ${trialDays.professional}-Day Free Trial`}
+                {isLoading === 'professional' ? 'Loading...' : `${trialDays.professional}-Day Free Trial`}
               </Button>
             </div>
 
@@ -366,13 +412,13 @@ function PricingContent() {
               </ul>
 
               <Button 
-                className="w-full rounded-2xl font-black text-xl py-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all bg-white hover:bg-gray-50 text-black border-4 border-gray-300"
+                className="w-full rounded-2xl font-black text-lg py-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all bg-white hover:bg-gray-50 text-black border-4 border-gray-300"
                 onClick={() => handleCheckout('agency', 'monthly')}
                 disabled={isLoading === 'agency'}
                 type="button"
                 data-testid="btn-start-agency"
               >
-                {isLoading === 'agency' ? 'Loading...' : `Start ${trialDays.agency}-Day Free Trial`}
+                {isLoading === 'agency' ? 'Loading...' : `${trialDays.agency}-Day Free Trial`}
               </Button>
             </div>
 
@@ -444,37 +490,17 @@ function PricingContent() {
               </ul>
 
               <Button 
-                className="w-full rounded-2xl font-black text-xl py-6 bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-600 hover:to-purple-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+                className="w-full rounded-2xl font-black text-lg py-6 bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-600 hover:to-purple-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
                 onClick={() => handleCheckout('enterprise', 'monthly')}
                 disabled={isLoading === 'enterprise'}
                 type="button"
                 data-testid="btn-start-enterprise"
               >
-                {isLoading === 'enterprise' ? 'Loading...' : `Start ${trialDays.enterprise}-Day Free Trial`}
+                {isLoading === 'enterprise' ? 'Loading...' : `${trialDays.enterprise}-Day Free Trial`}
               </Button>
             </div>
           </div>
 
-          {/* Value Proposition */}
-          <div className="mt-16 text-center">
-            <div className="bg-gradient-to-r from-green-500 to-blue-500 p-8 rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-              <h3 className="text-3xl font-black text-white mb-4">
-                Premium Email Validation - Better Than ZeroBounce
-              </h3>
-              <p className="text-xl font-bold text-white/90 mb-6">
-                Professional-grade validation with SMTP testing, spam trap detection, and reputation scoring. 
-                Save £15-50/month while getting superior results.
-              </p>
-              <Button
-                size="lg"
-                className="bg-white text-black font-black text-lg px-8 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
-                onClick={() => handleCheckout('professional', 'monthly')}
-                disabled={isLoading === 'professional'}
-              >
-                {isLoading === 'professional' ? 'Loading...' : 'Try Premium Validation FREE'}
-              </Button>
-            </div>
-          </div>
         </div>
       </section>
 

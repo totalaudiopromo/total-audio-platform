@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Music Industry Insights & Contact Enrichment Guides | Audio Intel Blog",
@@ -10,16 +11,60 @@ export const metadata: Metadata = {
 const blogPosts = [
   {
     slug: "music-contact-enrichment-guide",
-    title: "What is Music Contact Enrichment? Complete Guide (2024)",
+    title: "What is Music Contact Enrichment? Complete Guide (2025)",
     excerpt: "Right, so after spending 5+ years manually researching music industry contacts and wasting literally thousands of hours, I built the tool I wished existed. Here's everything you need to know about music contact enrichment.",
     author: "Chris Schofield",
-    date: "2024-08-30",
+    date: "2025-08-30",
     readTime: "8 min read",
     category: "Contact Enrichment",
     featured: true
+  },
+  {
+    slug: "radio-promotion-tips",
+    title: "Radio Promotion Tips That Actually Work in 2025",
+    excerpt: "5+ years of radio promotion experience distilled into actionable tips. Learn what actually works for getting airplay in 2025 from a working radio promoter.",
+    author: "Chris Schofield",
+    date: "2025-08-30",
+    readTime: "6 min read",
+    category: "Radio Promotion",
+    featured: false
+  },
+  {
+    slug: "playlist-promotion-mistakes",
+    title: "5 Playlist Promotion Mistakes Killing Your Music Career",
+    excerpt: "Stop making these deadly playlist promotion mistakes. Learn what actually works from someone who's seen hundreds of failed campaigns.",
+    author: "Chris Schofield",
+    date: "2025-08-30",
+    readTime: "7 min read",
+    category: "Playlist Promotion",
+    featured: false
+  },
+  {
+    slug: "music-industry-contacts",
+    title: "How to Find Music Industry Contacts (Without Wasting Hours)",
+    excerpt: "Stop wasting hours hunting for music industry contacts. Learn the exact methods working promoters use to find radio DJs, playlist curators, and music bloggers.",
+    author: "Chris Schofield",
+    date: "2025-08-30",
+    readTime: "9 min read",
+    category: "Contact Research",
+    featured: false
   }
-  // Future blog posts will be added here
 ];
+
+function getCategoryBadgeClasses(category: string) {
+  switch (category) {
+    case "Contact Enrichment":
+      return "bg-blue-100 text-blue-800";
+    case "Radio Promotion":
+      return "bg-green-100 text-green-800";
+    case "Playlist Promotion":
+      return "bg-purple-100 text-purple-800";
+    case "Contact Research":
+      return "bg-orange-100 text-orange-800";
+    default:
+      return "bg-gray-100 text-gray-800";
+  }
+}
 
 export default function BlogIndex() {
   const featuredPost = blogPosts.find(post => post.featured);
@@ -32,15 +77,22 @@ export default function BlogIndex() {
         <div className="max-w-6xl mx-auto px-4 py-8">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white font-black">
-                AI
-              </div>
+              <Image 
+                src="/images/total_audio_promo_logo_trans.png" 
+                alt="Total Audio Promo Logo" 
+                width={40} 
+                height={40} 
+                className="w-10 h-10" 
+              />
               <span className="text-xl font-black text-gray-900">Audio Intel</span>
             </Link>
             
             <nav className="flex items-center gap-6">
               <Link href="/" className="text-gray-600 hover:text-gray-900 font-semibold">
                 Home
+              </Link>
+              <Link href="/blog" className="text-blue-600 font-semibold">
+                Blog
               </Link>
               <Link href="/demo" className="text-gray-600 hover:text-gray-900 font-semibold">
                 Demo
@@ -72,7 +124,7 @@ export default function BlogIndex() {
             <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
               <div className="p-8 md:p-12">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-bold">
+                  <span className={`${getCategoryBadgeClasses(featuredPost.category)} px-3 py-1 rounded-full text-sm font-bold`}>
                     {featuredPost.category}
                   </span>
                   <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-bold">
@@ -127,7 +179,7 @@ export default function BlogIndex() {
                 <article key={post.slug} className="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs font-semibold">
+                      <span className={`${getCategoryBadgeClasses(post.category)} px-2 py-1 rounded text-xs font-semibold`}>
                         {post.category}
                       </span>
                     </div>
@@ -165,7 +217,7 @@ export default function BlogIndex() {
             Industry tips, contact enrichment strategies, and campaign insights from working radio promoters.
           </p>
           <Link
-            href="/#beta-signup"
+            href="/beta"
             className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors inline-block"
           >
             Join Audio Intel Beta
@@ -180,9 +232,13 @@ export default function BlogIndex() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-black text-sm">
-                  AI
-                </div>
+                <Image 
+                  src="/images/total_audio_promo_logo_trans.png" 
+                  alt="Total Audio Promo Logo" 
+                  width={32} 
+                  height={32} 
+                  className="w-8 h-8" 
+                />
                 <span className="font-black text-lg">Audio Intel</span>
               </div>
               <p className="text-gray-400 text-sm">
@@ -217,7 +273,7 @@ export default function BlogIndex() {
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-            <p>© 2024 Audio Intel - Part of Total Audio Promo</p>
+            <p>© 2025 Audio Intel - Part of Total Audio Promo</p>
           </div>
         </div>
       </footer>

@@ -306,13 +306,13 @@ function calculateCLVPrediction(customer: CustomerProfile): CLVPrediction {
         customer.networkValue.influenceScore > 60 ? 'Strong industry influence' : null,
         customer.behavioralMetrics.productAdoption > 70 ? 'Advanced feature adoption' : null,
         customer.financialHistory.upgradeHistory.length > 0 ? 'Historical upgrade behavior' : null
-      ].filter(Boolean),
+      ].filter(Boolean) as string[],
       topRiskIndicators: [
         customer.financialHistory.churnRisk > 60 ? 'High churn risk score' : null,
         customer.behavioralMetrics.supportInteractions > 3 ? 'High support dependency' : null,
         customer.behavioralMetrics.loginFrequency < 5 ? 'Low platform engagement' : null,
         customer.currentTier === 'free' && customer.behavioralMetrics.engagementScore < 40 ? 'Low free user engagement' : null
-      ].filter(Boolean),
+      ].filter(Boolean) as string[],
       behavioralTrends: [
         customer.behavioralMetrics.featureUsage.emailValidation > 300 ? 'Heavy email validation usage' : 'Light email validation usage',
         customer.behavioralMetrics.featureUsage.apiCalls > 500 ? 'API power user' : 'Standard API usage',

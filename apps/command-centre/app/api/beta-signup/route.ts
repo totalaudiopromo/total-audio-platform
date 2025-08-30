@@ -144,7 +144,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: false,
       error: 'Signup failed. Please try again.',
-      details: error.message
+      details: error instanceof Error ? error.message : 'Unknown error occurred'
     }, { status: 500 });
   }
 }

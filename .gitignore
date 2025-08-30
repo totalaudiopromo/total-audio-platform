@@ -144,3 +144,4 @@ coverage/
 
 # Exclude specific large files
 duplicate-backup-*.json
+.vercel

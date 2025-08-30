@@ -254,7 +254,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
             return (
               <g key={index}>
                 {/* Pulse animation for active locations */}
-                {cluster.users.some(u => u.status === 'active') && (
+                {cluster.users.some((u: BetaUser) => u.status === 'active') && (
                   <circle
                     cx={cluster.coordinates.x}
                     cy={cluster.coordinates.y}
@@ -311,10 +311,10 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
           .sort((a, b) => b.users.length - a.users.length)
           .slice(0, 6)
           .map((cluster, index) => {
-            const totalEngagement = cluster.users.reduce((sum, user) => 
+            const totalEngagement = cluster.users.reduce((sum: number, user: BetaUser) => 
               sum + user.engagement.contactsEnriched, 0
             );
-            const activeUsers = cluster.users.filter(u => u.status === 'active').length;
+            const activeUsers = cluster.users.filter((u: BetaUser) => u.status === 'active').length;
             
             return (
               <div

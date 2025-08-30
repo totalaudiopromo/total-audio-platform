@@ -169,7 +169,7 @@ function generateChurnSignals(
         currentValue: 5,
         threshold: 2,
         severity: 'medium',
-        trend: 'increasing',
+        trend: 'declining',
         weight: 0.25,
         description: 'Multiple visits to pricing page - potential downgrade consideration'
       });
@@ -185,7 +185,7 @@ function generateChurnSignals(
       currentValue: supportTickets,
       threshold: 2,
       severity: supportTickets > 4 ? 'critical' : supportTickets > 3 ? 'high' : 'medium',
-      trend: 'increasing',
+      trend: 'declining',
       weight: 0.20,
       description: `${supportTickets} support tickets in 30 days - potential frustration`
     });

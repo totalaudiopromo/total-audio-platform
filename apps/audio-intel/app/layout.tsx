@@ -51,9 +51,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Audio Intel - Total Audio Promo</title>
-        <link rel="icon" href="/t-a-p-new dog logo.png" sizes="any" />
-        <link rel="icon" href="/t-a-p-new dog logo.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/t-a-p-new dog logo.png" />
+        <link rel="icon" href="/images/total_audio_promo_logo_trans.png" sizes="any" />
+        <link rel="icon" href="/images/total_audio_promo_logo_trans.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/images/total_audio_promo_logo_trans.png" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{

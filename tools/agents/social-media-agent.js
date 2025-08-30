@@ -97,6 +97,17 @@ class SocialMediaAgent {
         engagementFeatures: ['likes', 'comments', 'shares', 'reactions'],
         connected: false
       },
+      bluesky: {
+        name: 'Blue Sky',
+        apiVersion: 'v1',
+        contentTypes: ['post', 'reply', 'repost', 'quote_post'],
+        maxCaptionLength: 300,
+        maxHashtags: 5,
+        optimalPostTimes: ['10:00', '14:00', '18:00'],
+        audiencePeakDays: ['Monday', 'Tuesday', 'Wednesday'],
+        engagementFeatures: ['likes', 'reposts', 'replies', 'follows'],
+        connected: false
+      },
       youtube: {
         name: 'YouTube',
         apiVersion: 'v3',

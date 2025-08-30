@@ -1,0 +1,47 @@
+ M CLAUDE.md
+ M apps/api/package.json
+ M apps/audio-intel/app/api/agents/competitive-intel/route.ts
+ M apps/audio-intel/app/api/agents/orchestrator/route.ts
+ M apps/audio-intel/app/api/agents/performance-report/route.ts
+ M apps/audio-intel/app/components/HomePageClient.tsx
+ M apps/audio-intel/app/components/MobileNav.tsx
+ M apps/audio-intel/app/components/ProgressBarWithDog.tsx
+ M apps/audio-intel/app/demo/page.tsx
+ M apps/audio-intel/app/globals.css
+ M apps/audio-intel/app/layout.tsx
+ M apps/audio-intel/app/page.tsx
+ M apps/audio-intel/components/SpreadsheetUploader.tsx
+ M apps/audio-intel/utils/exportService.ts
+ M apps/audio-intel/utils/exportToPdf.ts
+ M apps/audio-intel/utils/formatIntelligence.ts
+ M package-lock.json
+ M package.json
+?? CLAUDE_CODE_SESSION_CONTEXT.md
+?? QUICK_CONTEXT_RECOVERY.md
+?? apps/api/prisma/migrations/
+?? apps/audio-intel/app/agent-dashboard/
+?? apps/audio-intel/app/agent-demo/
+?? apps/audio-intel/app/api/agents/route.ts
+?? apps/audio-intel/app/api/enrich-claude/
+?? apps/audio-intel/app/components/ContactLoadingState.tsx
+?? apps/audio-intel/app/components/LoadingStateDemo.tsx
+?? apps/audio-intel/components/AgentActivityMonitor.tsx
+?? apps/audio-intel/components/AgentCommandCenter.tsx
+?? apps/audio-intel/components/AgentLoadingState.tsx
+?? apps/audio-intel/components/AgentOrchestrator.tsx
+?? apps/audio-intel/components/AgentStatusWidget.tsx
+?? apps/audio-intel/components/AgentVisualizationDashboard.tsx
+?? apps/audio-intel/components/ui/enhanced-demo-components.tsx
+?? apps/audio-intel/docs/AGENT_VISUALIZATION_SYSTEM.md
+?? apps/audio-intel/lib/agent-color-system.ts
+?? apps/audio-intel/lib/brand-system.ts
+?? apps/audio-intel/scripts/ui-workflow-automation.js
+?? apps/landing-page/
+?? preserve-context.sh
+?? session-snapshots/
+?? tools/agents/agent-dashboard.js
+?? tools/agents/agent-manager.js
+?? tools/agents/audio-intel-content-agent.js
+?? tools/agents/memory-persistence-agent.js
+?? tools/agents/orchestrator.sh
+?? tools/agents/sprint-week-orchestrator.js

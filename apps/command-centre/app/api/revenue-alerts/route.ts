@@ -382,16 +382,14 @@ export async function GET() {
     
     const data: AlertsSystem = {
       alerts,
-      summary: {
-        ...summary,
-        alertFrequency: summary.alertFrequency,
-        resolutionRate: summary.resolutionRate,
-        averageResponseTime: summary.averageResponseTime
-      },
+      summary,
       trends: {
-        alertFrequency: summary.alertFrequency,
-        resolutionRate: summary.resolutionRate,
-        averageResponseTime: summary.averageResponseTime
+        alertFrequency: Array.from({ length: 7 }, (_, i) => ({
+          date: new Date(Date.now() - i * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+          count: Math.floor(Math.random() * 10) + 5
+        })).reverse(),
+        resolutionRate: Math.round(Math.random() * 30 + 70), // 70-100%
+        averageResponseTime: Math.round(Math.random() * 8 + 2) // 2-10 hours
       },
       automatedActions
     };

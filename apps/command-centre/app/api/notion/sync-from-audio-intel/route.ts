@@ -13,7 +13,7 @@ export async function POST() {
         console.log('✅ Successfully fetched live data from Audio Intel');
       }
     } catch (error) {
-      console.log('⚠️ Audio Intel not available:', error.message);
+      console.log('⚠️ Audio Intel not available:', error instanceof Error ? error.message : 'Unknown error');
     }
     
     // Get current system status from Audio Intel
@@ -25,7 +25,7 @@ export async function POST() {
         console.log('✅ Successfully fetched system status from Audio Intel');
       }
     } catch (error) {
-      console.log('⚠️ Audio Intel status not available:', error.message);
+      console.log('⚠️ Audio Intel status not available:', error instanceof Error ? error.message : 'Unknown error');
     }
     
     // Prepare real business data for Notion
@@ -84,7 +84,7 @@ export async function POST() {
       return NextResponse.json({
         success: false,
         error: 'Sync to Notion failed',
-        details: error.message,
+        details: error instanceof Error ? error.message : 'Unknown error',
         dataAttempted: realBusinessData
       }, { status: 500 });
     }
@@ -95,7 +95,7 @@ export async function POST() {
     return NextResponse.json({
       success: false,
       error: 'Real-time sync failed',
-      details: error.message
+      details: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 });
   }
 }
@@ -125,7 +125,7 @@ export async function GET() {
   } catch (error) {
     return NextResponse.json({
       error: 'Failed to check sync status',
-      details: error.message
+      details: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 });
   }
 }

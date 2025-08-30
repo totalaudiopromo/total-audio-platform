@@ -151,7 +151,7 @@ export async function GET() {
       uptime: '0%',
       lastUpdated: new Date().toISOString(),
       source: 'error-fallback',
-      error: error.message
+      error: error instanceof Error ? error.message : 'Unknown error occurred'
     }, { status: 500 });
   }
 }
@@ -253,7 +253,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('💥 Error updating Notion business metrics:', error);
     return NextResponse.json(
-      { error: 'Internal server error', details: error.message },
+      { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error occurred' },
       { status: 500 }
     );
   }

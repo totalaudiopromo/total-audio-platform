@@ -1,0 +1,101 @@
+{
+  "name": "total-audio-promo",
+  "version": "1.0.0",
+  "description": "Semi-automated music promotion service for independent artists and PR agencies",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:audio-intel\" \"npm run dev:playlist-pulse\" \"npm run dev:backend\"",
+    "dev:audio-intel": "cd apps/audio-intel && npm run dev",
+    "dev:playlist-pulse": "cd apps/playlist-pulse && npm run dev",
+    "dev:backend": "cd apps/api && npm run dev",
+    "dev:all": "concurrently \"npm run dev:audio-intel\" \"npm run dev:playlist-pulse\" \"npm run dev:backend\" \"npm run dev:mobile\"",
+    "dev:mobile": "cd apps/mobile && npm run dev",
+    "build": "npm run build:audio-intel && npm run build:playlist-pulse && npm run build:backend",
+    "build:audio-intel": "cd apps/audio-intel && npm run build",
+    "build:playlist-pulse": "cd apps/playlist-pulse && npm run build",
+    "build:backend": "cd apps/api && npm run build",
+    "lint": "npm run lint:audio-intel && npm run lint:playlist-pulse && npm run lint:backend",
+    "lint:audio-intel": "cd apps/audio-intel && npm run lint",
+    "lint:playlist-pulse": "cd apps/playlist-pulse && npm run lint",
+    "lint:backend": "cd apps/api && npm run lint",
+    "test": "npm run test:audio-intel && npm run test:playlist-pulse && npm run test:backend",
+    "test:audio-intel": "cd apps/audio-intel && npm run test",
+    "test:playlist-pulse": "cd apps/playlist-pulse && npm run test",
+    "test:backend": "cd apps/api && npm run test",
+    "typecheck": "npm run typecheck:audio-intel && npm run typecheck:playlist-pulse && npm run typecheck:backend",
+    "typecheck:audio-intel": "cd apps/audio-intel && npm run typecheck",
+    "typecheck:playlist-pulse": "cd apps/playlist-pulse && npm run typecheck",
+    "typecheck:backend": "cd apps/api && npm run typecheck",
+    "db:migrate": "cd apps/api && npm run db:migrate",
+    "db:seed": "cd apps/api && npm run db:seed",
+    "db:reset": "cd apps/api && npm run db:reset",
+    "agents:setup": "node tools/agents/setup.js",
+    "agents:check": "node tools/agents/setup.js check",
+    "agents:test": "node tools/agents/setup.js test",
+    "agents:health": "node tools/agents/orchestrator.js health",
+    "agents:workflows": "node tools/agents/orchestrator.js workflows",
+    "agents:maintenance": "node tools/agents/orchestrator.js maintenance",
+    "agents:music-tech": "node tools/agents/music-tech-agent.js",
+    "agents:music-analyze": "node tools/agents/music-tech-agent.js analyze",
+    "agents:music-search": "node tools/agents/music-tech-agent.js search",
+    "agents:music-performance": "node tools/agents/music-tech-agent.js performance",
+    "agents:music-recommendations": "node tools/agents/music-tech-agent.js recommendations",
+    "preserve-context": "bash preserve-context.sh",
+    "restore-context": "node tools/agents/memory-persistence-agent.js load && echo 'Context restored! Read CLAUDE_CODE_SESSION_CONTEXT.md for current state'",
+    "memory:save": "node tools/agents/memory-persistence-agent.js save",
+    "memory:load": "node tools/agents/memory-persistence-agent.js load",
+    "memory:summary": "node tools/agents/memory-persistence-agent.js summary",
+    "status": "echo '=== Total Audio Promo Development Status ===' && echo 'Audio Intel Live: http://localhost:3000' && echo 'Playlist Pulse Live: http://localhost:3001' && echo 'Audio Intel Live (secondary): http://localhost:3002' && echo 'Audio Intel Live (tertiary): http://localhost:3003' && echo 'Backend Services: http://localhost:3004' && echo '============================================'",
+    "clean": "npm run clean:node_modules && npm run clean:build",
+    "clean:node_modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "clean:build": "find . -name '.next' -type d -prune -exec rm -rf '{}' + && find . -name 'dist' -type d -prune -exec rm -rf '{}' +",
+    "install:all": "npm install && npm run install:workspaces",
+    "install:workspaces": "npm run install:audio-intel && npm run install:playlist-pulse && npm run install:backend",
+    "install:audio-intel": "cd apps/audio-intel && npm install",
+    "install:playlist-pulse": "cd apps/playlist-pulse && npm install",
+    "install:backend": "cd apps/api && npm install"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.8.1",
+    "concurrently": "^8.2.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "keywords": [
+    "music",
+    "promotion",
+    "pr",
+    "agencies",
+    "artists",
+    "automation",
+    "mailchimp",
+    "airtable",
+    "multi-tenant"
+  ],
+  "author": "Total Audio Promo",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@headlessui/react": "^2.2.5",
+    "@next/third-parties": "^15.4.4",
+    "@prisma/client": "^5.22.0",
+    "@types/node": "^24.0.15",
+    "axios": "^1.10.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

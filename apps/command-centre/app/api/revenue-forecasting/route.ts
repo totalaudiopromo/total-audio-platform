@@ -226,13 +226,13 @@ function generateRevenueForecasts(
         marketTrends[i]?.competitorActivity > 7 ? 'High competitor activity detected' : null,
         contentImpact < 10 ? 'Content performance showing slower growth' : null,
         conversionPatterns.retention.monthlyChurnRate > 5 ? 'Churn rate above industry average' : null
-      ].filter(Boolean),
+      ].filter((factor): factor is string => Boolean(factor)),
       opportunityFactors: [
         contentImpact > 30 ? 'Strong content performance creating growth acceleration' : null,
         conversionPatterns.tierUpgrades.trend > 20 ? 'High upgrade momentum indicates pricing power' : null,
         marketTrends[i]?.digitalToolsAdoption > 20 ? 'Market adoption trends favour digital tools' : null,
         seasonalityImpact > 1.2 ? 'Seasonal factors provide revenue boost opportunity' : null
-      ].filter(Boolean)
+      ].filter((factor): factor is string => Boolean(factor))
     };
   });
 }

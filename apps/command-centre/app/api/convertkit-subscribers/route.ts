@@ -14,6 +14,38 @@ interface KitSubscriber {
   }>;
 }
 
+interface BetaUser {
+  id: string;
+  email: string;
+  name?: string;
+  app: 'audio-intel' | 'playlist-pulse' | 'command-centre' | 'web';
+  status: 'active' | 'idle' | 'offline';
+  firstVisit: string;
+  lastSeen: string;
+  sessionCount: number;
+  features: string[];
+  location: {
+    country: string;
+    city: string;
+    countryCode: string;
+    coordinates: {
+      lat: number;
+      lng: number;
+    };
+  };
+  device: {
+    type: 'desktop' | 'mobile' | 'tablet';
+    browser: string;
+    os: string;
+  };
+  engagement: {
+    contactsEnriched: number;
+    emailsValidated: number;
+    exportsGenerated: number;
+    timeSpent: number;
+  };
+}
+
 export async function GET() {
   try {
     console.log('📊 Fetching real ConvertKit subscribers...');
@@ -47,7 +79,7 @@ export async function GET() {
     const subscribers = subscriptions.map((sub: any) => sub.subscriber).filter(Boolean);
     
     // Filter and transform subscribers for our beta tracker format
-    const betaUsers = subscribers
+    const betaUsers: BetaUser[] = subscribers
       .filter((sub: any) => sub.email_address)
       .slice(0, 20) // Limit to 20 most recent
       .map((sub: any, index: number) => {
