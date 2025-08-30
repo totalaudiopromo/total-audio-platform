@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./mobile-optimizations.css";
+import "./beta-mobile.css";
+import "./home-mobile.css";
 import React from 'react';
 import ClientLayout from './components/ClientLayout';
 
@@ -51,15 +54,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/t-a-p-new dog logo.png" sizes="any" />
         <link rel="icon" href="/t-a-p-new dog logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/t-a-p-new dog logo.png" />
-        {/* Google Analytics (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8JF92KJN9"></script>
+        {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-J8JF92KJN9');
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-WZNJWDKH');
             `,
           }}
         />
@@ -67,6 +70,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className="relative min-h-screen font-sans overflow-x-hidden"
       >
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZNJWDKH"
+                  height="0" width="0" style={{display:'none',visibility:'hidden'}}></iframe>
+        </noscript>
         <ClientLayout>
           {children}
         </ClientLayout>
