@@ -269,92 +269,9 @@ export default function DocumentationPage() {
               </Card>
             </TabsContent>
 
-            {/* Platform Search Tab */}
-            <TabsContent value="platform-search" className="space-y-8">
-              <Card className="p-8">
-                <div className="text-center mb-8">
-                  <h2 className="text-4xl font-black text-gray-900 mb-4">
-                    Platform Search Documentation
-                  </h2>
-                  <p className="text-xl font-bold text-gray-700">
-                    Discover music industry contacts across multiple platforms
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-2xl font-black text-gray-900 mb-4">🔍 Supported Platforms</h3>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3 p-3 bg-red-50 rounded-lg border border-red-200">
-                        <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
-                          <span className="text-white font-bold">R</span>
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-gray-900">Reddit</h4>
-                          <p className="text-sm text-gray-600">Music communities and subreddits</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3 p-3 bg-pink-50 rounded-lg border border-pink-200">
-                        <div className="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center">
-                          <Instagram className="w-5 h-5 text-white" />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-gray-900">Instagram</h4>
-                          <p className="text-sm text-gray-600">Music influencers and curators</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
-                        <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                          <Headphones className="w-5 h-5 text-white" />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-gray-900">Spotify</h4>
-                          <p className="text-sm text-gray-600">Playlist curators and artists</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                        <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-                          <MessageCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-gray-900">Discord</h4>
-                          <p className="text-sm text-gray-600">Music communities and servers</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-black text-gray-900 mb-4">🎯 Search Strategies</h3>
-                    <div className="space-y-4">
-                      <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200">
-                        <h4 className="font-bold text-gray-900 mb-2">Keyword Optimization</h4>
-                        <p className="text-sm text-gray-600 mb-2">Use specific terms like:</p>
-                        <div className="flex flex-wrap gap-2">
-                          <Badge variant="secondary" className="bg-blue-100 text-blue-800">playlist curator</Badge>
-                          <Badge variant="secondary" className="bg-green-100 text-green-800">music blogger</Badge>
-                          <Badge variant="secondary" className="bg-purple-100 text-purple-800">radio dj</Badge>
-                          <Badge variant="secondary" className="bg-orange-100 text-orange-800">music journalist</Badge>
-                        </div>
-                      </div>
-                      <div className="p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border border-green-200">
-                        <h4 className="font-bold text-gray-900 mb-2">Platform-Specific Terms</h4>
-                        <p className="text-sm text-gray-600">Different platforms use different terminology for the same roles.</p>
-                      </div>
-                      <div className="p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-200">
-                        <h4 className="font-bold text-gray-900 mb-2">Filtering Results</h4>
-                        <p className="text-sm text-gray-600">Use platform filters to focus on the most relevant results for your needs.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </TabsContent>
-
-
             {/* API Reference Tab */}
             <TabsContent value="api" className="space-y-8">
-              <Card className="p-8">
+              <Card className="p-8 border-2 border-black">
                 <div className="text-center mb-8">
                   <h2 className="text-4xl font-black text-gray-900 mb-4">
                     API Reference
