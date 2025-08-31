@@ -14,9 +14,11 @@ export default function SignIn() {
         {/* Header */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white font-black text-xl">
-              AI
-            </div>
+            <img 
+              src="/images/total_audio_promo_logo_trans.png" 
+              alt="Total Audio Promo Logo" 
+              className="w-12 h-12"
+            />
             <span className="text-2xl font-black text-gray-900">Audio Intel</span>
           </Link>
         </div>
@@ -40,7 +42,7 @@ export default function SignIn() {
                   Audio Intel is currently in free beta. If you've signed up for beta access, 
                   you can start using the platform immediately - no login required!
                 </p>
-                <Link href="/upload">
+                <Link href="/demo">
                   <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold">
                     Try Audio Intel Beta →
                   </Button>
@@ -64,7 +66,7 @@ export default function SignIn() {
 
           {/* Quick Actions */}
           <div className="space-y-3">
-            <Link href="/upload" className="block">
+            <Link href="/demo" className="block">
               <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold">
                 Upload & Enrich Contacts
               </Button>

@@ -456,30 +456,6 @@ export default function SimpleAudioIntelDemo() {
                     <p><strong>PDF:</strong> Professional report with Audio Intel branding for client deliverables</p>
                   </div>
 
-                  {/* Fun mascot element for export actions */}
-                  <div className="mt-6 flex items-center justify-center">
-                    <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl border border-purple-200">
-                      <img 
-                        src="/assets/loading-states/vinyl-throw-action.png" 
-                        alt="Total Audio Promo mascot throwing vinyl record - ready for action!" 
-                        className="w-24 h-24 rounded-xl animate-bounce"
-                        style={{ 
-                          filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
-                          imageRendering: 'crisp-edges',
-                          objectFit: 'cover',
-                          animationDuration: '2s'
-                        }}
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement
-                          target.src = '/images/total_audio_promo_logo_trans.png'
-                        }}
-                      />
-                      <div className="text-center">
-                        <p className="text-lg font-bold text-purple-700">Ready to throw your contacts into action!</p>
-                        <p className="text-sm text-purple-600">Your Total Audio Promo mascot is here to make exports fun and professional</p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
                 {/* Results Display */}

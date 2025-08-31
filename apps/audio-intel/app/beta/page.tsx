@@ -168,6 +168,17 @@ export default function BetaAccessPage() {
             </Badge>
           </div>
           
+          {/* Enlarged logo for beta page */}
+          <div className="mb-12">
+            <Image 
+              src="/images/total_audio_promo_logo_trans.png" 
+              alt="Total Audio Promo - Music Industry Intelligence" 
+              width={180} 
+              height={180}
+              className="mx-auto mb-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] rounded-xl bg-white p-3"
+            />
+          </div>
+          
           <h1 className="beta-hero-title text-6xl md:text-8xl font-black text-gray-900 mb-8 leading-tight">
             Try Audio Intel
             <span className="block text-blue-600">Free Beta</span>
@@ -199,9 +210,13 @@ export default function BetaAccessPage() {
             <div className="space-y-6">
               <div className="beta-benefit-card bg-white p-8 rounded-2xl border-4 border-yellow-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <div className="beta-benefit-icon-container flex items-center gap-4 mb-6">
-                  <div className="beta-benefit-icon w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <Gift className="w-8 h-8 text-white" />
-                  </div>
+                  <Image 
+                    src="/assets/loading-states/success-complete.png"
+                    alt="Success - 50% lifetime discount exclusive offer"
+                    width={80}
+                    height={80}
+                    className=""
+                  />
                   <div>
                     <h3 className="beta-benefit-title text-2xl font-black text-gray-900">50% Lifetime Discount</h3>
                     <Badge className="bg-yellow-500 text-white font-black">EXCLUSIVE</Badge>
@@ -215,9 +230,13 @@ export default function BetaAccessPage() {
 
               <div className="beta-benefit-card bg-white p-8 rounded-2xl border-4 border-blue-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <div className="beta-benefit-icon-container flex items-center gap-4 mb-6">
-                  <div className="beta-benefit-icon w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <Users className="w-8 h-8 text-white" />
-                  </div>
+                  <Image 
+                    src="/assets/loading-states/vinyl-throw-action.png"
+                    alt="Direct founder access - personalized support"
+                    width={80}
+                    height={80}
+                    className=""
+                  />
                   <div>
                     <h3 className="beta-benefit-title text-2xl font-black text-gray-900">Direct Founder Access</h3>
                     <Badge className="bg-blue-500 text-white font-black">VIP</Badge>
@@ -234,9 +253,13 @@ export default function BetaAccessPage() {
             <div className="space-y-6">
               <div className="beta-benefit-card bg-white p-8 rounded-2xl border-4 border-green-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <div className="beta-benefit-icon-container flex items-center gap-4 mb-6">
-                  <div className="beta-benefit-icon w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <Sparkles className="w-8 h-8 text-white" />
-                  </div>
+                  <Image 
+                    src="/assets/loading-states/analyzing-data.png"
+                    alt="Early access to features - first to test new tools"
+                    width={80}
+                    height={80}
+                    className=""
+                  />
                   <div>
                     <h3 className="beta-benefit-title text-2xl font-black text-gray-900">Early Access to Features</h3>
                     <Badge className="bg-green-500 text-white font-black">FIRST</Badge>
@@ -250,9 +273,13 @@ export default function BetaAccessPage() {
 
               <div className="beta-benefit-card bg-white p-8 rounded-2xl border-4 border-purple-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <div className="beta-benefit-icon-container flex items-center gap-4 mb-6">
-                  <div className="beta-benefit-icon w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <Star className="w-8 h-8 text-white" />
-                  </div>
+                  <Image 
+                    src="/assets/loading-states/intelligence-complete.png"
+                    alt="Beta founder recognition - legacy status"
+                    width={80}
+                    height={80}
+                    className=""
+                  />
                   <div>
                     <h3 className="beta-benefit-title text-2xl font-black text-gray-900">Beta Founder Recognition</h3>
                     <Badge className="bg-purple-500 text-white font-black">LEGACY</Badge>
@@ -271,6 +298,16 @@ export default function BetaAccessPage() {
         <div className="max-w-2xl mx-auto">
           <Card className="beta-form-card p-12 border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
             <CardHeader className="text-center pb-8">
+              {/* Processing/organizing PNG for signup form */}
+              <div className="mb-6">
+                <Image 
+                  src="/assets/loading-states/processing-organizing.png"
+                  alt="Processing and organizing your beta access - getting everything ready"
+                  width={120}
+                  height={120}
+                  className="mx-auto"
+                />
+              </div>
               <CardTitle className="beta-form-title text-3xl font-black text-gray-900">
                 Get Free Beta Access
               </CardTitle>

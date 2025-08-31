@@ -36,7 +36,7 @@ import {
   ExternalLink
 } from "lucide-react"
 import { AudioCharacter } from "@/components/ui/audio-character"
-// import { RealTimeMetrics } from "@/components/ui/real-time-metrics"
+import { RealTimeMetrics } from "@/components/ui/real-time-metrics"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -220,7 +220,7 @@ export default function AudioIntelLanding() {
             <a href="#pricing" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
               Pricing
             </a>
-            <Link href="/studio" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
+            <Link href="/progress-dashboard" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
               Progress Dashboard
             </Link>
             {process.env.NEXT_PUBLIC_ENABLE_SEO_ANALYSIS === 'true' && (
@@ -270,6 +270,17 @@ export default function AudioIntelLanding() {
       {/* Hero Section */}
       <section className={`audio-intel-hero container px-4 py-16 mx-auto text-center relative`}>
         <div className="audio-intel-container max-w-4xl mx-auto">
+          {/* Total Audio Promo Logo in Hero - TRANSPARENT PNG ONLY - MOBILE RESPONSIVE */}
+          <div className="mb-12">
+            <Image 
+              src="/images/total_audio_promo_logo_trans.png" 
+              alt="Total Audio Promo - Music Industry Intelligence" 
+              width={240} 
+              height={240}
+              className="mx-auto mb-6 w-60 h-60 sm:w-48 sm:h-48 xs:w-40 xs:h-40"
+            />
+          </div>
+          
           <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-8 leading-tight">
             Drop Your Chaos Here
             <span className="block text-blue-600">Transform Messy Spreadsheets Instantly</span>
@@ -332,7 +343,7 @@ export default function AudioIntelLanding() {
                 </div>
                 <p className="mt-3 text-sm text-gray-500">No upload needed. One click demo using real enrichment pipeline.</p>
                 <div className="mt-6 text-left">
-                  <Link href="/upload">
+                  <Link href="/demo">
                     <Button variant="outline" className="font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                       Upload a sample CSV →
                     </Button>
@@ -538,10 +549,10 @@ export default function AudioIntelLanding() {
           <div className={`mt-16 text-center relative`}>
             <div className="bg-gradient-to-r from-green-500 to-blue-500 p-8 rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               <h3 className="text-3xl font-black text-white mb-4">
-                Premium Email Validation - Better Than ZeroBounce
+                Premium Email Validation
               </h3>
               <p className="text-xl font-bold text-white/90 mb-6">
-                Professional-grade validation tested on real radio promotion campaigns. SMTP testing, spam trap detection, and reputation scoring. Save £15-50/month while getting superior results from someone who actually uses it.
+                Professional-grade validation tested on real radio promotion campaigns. SMTP testing, spam trap detection, and reputation scoring. Built by someone who uses it daily on real campaigns.
               </p>
             <Button
               size="lg"
@@ -565,9 +576,20 @@ export default function AudioIntelLanding() {
             <p className="text-xl font-bold text-blue-600 mb-8">
               Live metrics from real campaigns - updated every 30 seconds
             </p>
+            
+            {/* Dog throwing vinyl - REDUCED PADDING */}
+            <div className="mb-8">
+              <Image 
+                src="/assets/loading-states/vinyl-throw-action.png"
+                alt="Audio mascot throwing vinyl records - representing active music promotion in motion"
+                width={350}
+                height={350}
+                className="mx-auto -my-4"
+              />
+            </div>
           </div>
 
-          {/* <RealTimeMetrics /> */}
+          <RealTimeMetrics />
         </div>
       </section>
 
@@ -626,9 +648,14 @@ export default function AudioIntelLanding() {
 
             <div className={`bg-white p-12 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden`}>
               <div className="text-center">
-                <div className="w-24 h-24 bg-red-500 rounded-full flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mx-auto mb-8">
-                  <Headphones className="w-12 h-12 text-white" />
-                </div>
+                {/* ENLARGED chaos overwhelmed PNG as main feature - MOBILE RESPONSIVE */}
+                <Image 
+                  src="/assets/loading-states/chaos-overwhelmed.png"
+                  alt="Artist overwhelmed by chaotic contact research - papers everywhere, disorganized workflow"
+                  width={400}
+                  height={400}
+                  className="mx-auto mb-8 w-96 h-96 sm:w-72 sm:h-72 xs:w-60 xs:h-60"
+                />
                 <h3 className="text-3xl font-black text-gray-900 mb-6">The Reality</h3>
                 <p className="text-xl font-bold text-gray-700 mb-8">
                   Most artists and labels waste countless hours on manual research that could be automated with AI
@@ -653,11 +680,13 @@ export default function AudioIntelLanding() {
 
           <div className="grid lg:grid-cols-3 gap-12">
             <div className={`bg-gray-50 p-10 text-center rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden`}>
-              <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mx-auto mb-8 group-hover:scale-110 transition-transform duration-200">
-                <div className="w-10 h-10">
-                  <Zap className="w-10 h-10 text-white" />
-                </div>
-              </div>
+              <Image 
+                src="/assets/loading-states/analyzing-data.png"
+                alt="AI analyzing contact data - instant enrichment in progress"
+                width={200}
+                height={200}
+                className="mx-auto mb-8 w-50 h-50 sm:w-40 sm:h-40"
+              />
               <h3 className="text-2xl font-black text-gray-900 mb-6">Instant Enrichment</h3>
               <p className="text-lg font-bold text-gray-700">
                 Upload your basic email list and get back detailed intelligence including submission guidelines, contact
@@ -666,11 +695,13 @@ export default function AudioIntelLanding() {
             </div>
 
             <div className={`bg-gray-50 p-10 text-center rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden`}>
-              <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mx-auto mb-8 group-hover:scale-110 transition-transform duration-200">
-                <div className="w-10 h-10">
-                  <Target className="w-10 h-10 text-white" />
-                </div>
-              </div>
+              <Image 
+                src="/assets/loading-states/success-complete.png"
+                alt="Success state - verified intelligence complete with high confidence"
+                width={200}
+                height={200}
+                className="mx-auto mb-8 w-50 h-50 sm:w-40 sm:h-40"
+              />
               <h3 className="text-2xl font-black text-gray-900 mb-6">Verified Intelligence</h3>
               <p className="text-lg font-bold text-gray-700">
                 90% accuracy through cross-referenced data from multiple sources, continuously updated to ensure you
@@ -679,11 +710,13 @@ export default function AudioIntelLanding() {
             </div>
 
             <div className={`bg-gray-50 p-10 text-center rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden`}>
-              <div className="w-20 h-20 bg-purple-500 rounded-full flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mx-auto mb-8 group-hover:scale-110 transition-transform duration-200">
-                <div className="w-10 h-10">
-                  <Users className="w-10 h-10 text-white" />
-                </div>
-              </div>
+              <Image 
+                src="/assets/loading-states/intelligence-complete.png"
+                alt="Industry-focused intelligence complete - music professionals ready"
+                width={200}
+                height={200}
+                className="mx-auto mb-8 w-50 h-50 sm:w-40 sm:h-40"
+              />
               <h3 className="text-2xl font-black text-gray-900 mb-6">Industry Focus</h3>
               <p className="text-lg font-bold text-gray-700">
                 Specialised in music industry contacts - playlist curators, radio DJs, music bloggers, and journalists
@@ -709,6 +742,15 @@ export default function AudioIntelLanding() {
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
+              <div className="mb-8">
+                <Image 
+                  src="/assets/loading-states/processing-contacts.png"
+                  alt="Processing contacts - intelligent parsing in action"
+                  width={280}
+                  height={280}
+                  className="mx-auto mb-6 w-70 h-70 sm:w-56 sm:h-56"
+                />
+              </div>
               <h3 className="text-3xl font-black text-gray-900 mb-8">What Makes Us Different</h3>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">

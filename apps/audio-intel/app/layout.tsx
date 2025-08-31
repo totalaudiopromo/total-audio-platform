@@ -20,14 +20,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Audio Intel – AI-Powered Music Industry Intelligence | Founded by Music Industry Veteran',
   description: 'From 15 years in music PR to AI innovation. Transform chaos into intelligence with our founder-built platform for playlist curators, radio DJs, and music industry professionals.',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico'
+  },
   openGraph: {
     title: 'Audio Intel – AI-Powered Music Industry Contact Enrichment',
     description: 'Transform your music PR workflow. Get submission guidelines, contact preferences, and pitch-ready insights for the music industry.',
-    url: 'https://audiointel.com',
+    url: 'https://intel.totalaudiopromo.com',
     siteName: 'Audio Intel - Total Audio Promo',
     images: [
       {
-        url: '/t-a-p-new dog logo.png',
+        url: '/images/total_audio_promo_logo_trans.png',
         width: 512,
         height: 512,
         alt: 'Total Audio Promo Logo',
@@ -50,9 +55,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Audio Intel - Total Audio Promo</title>
-        <link rel="icon" href="/images/total_audio_promo_logo_trans.png" sizes="any" />
-        <link rel="icon" href="/images/total_audio_promo_logo_trans.png" type="image/png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/images/total_audio_promo_logo_trans.png" />
         {/* Google Tag Manager */}
         <script

@@ -237,7 +237,7 @@ export default function BlogIndex() {
                   alt="Total Audio Promo Logo" 
                   width={32} 
                   height={32} 
-                  className="w-8 h-8" 
+                  className="w-8 h-8 bg-white rounded p-1" 
                 />
                 <span className="font-black text-lg">Audio Intel</span>
               </div>
