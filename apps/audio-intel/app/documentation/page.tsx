@@ -49,9 +49,9 @@ export default function DocumentationPage() {
 
           {/* Quick Navigation */}
           <div className="mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Card 
-                className="p-4 text-center hover:shadow-lg transition-all cursor-pointer bg-gradient-to-br from-blue-50 to-blue-100"
+                className="p-4 text-center hover:shadow-lg transition-all cursor-pointer border-2 border-black bg-white"
                 onClick={() => setActiveTab('getting-started')}
               >
                 <BookOpen className="w-8 h-8 text-blue-600 mx-auto mb-2" />
@@ -59,27 +59,27 @@ export default function DocumentationPage() {
                 <p className="text-sm text-gray-600">Quick setup guide</p>
               </Card>
               <Card 
-                className="p-4 text-center hover:shadow-lg transition-all cursor-pointer bg-gradient-to-br from-green-50 to-green-100"
-                onClick={() => setActiveTab('api')}
+                className="p-4 text-center hover:shadow-lg transition-all cursor-pointer border-2 border-black bg-white"
+                onClick={() => setActiveTab('contact-enrichment')}
               >
-                <Code className="w-8 h-8 text-green-600 mx-auto mb-2" />
-                <h3 className="font-bold text-gray-900">API Reference</h3>
-                <p className="text-sm text-gray-600">Technical documentation</p>
+                <Users className="w-8 h-8 text-green-600 mx-auto mb-2" />
+                <h3 className="font-bold text-gray-900">Contact Enrichment</h3>
+                <p className="text-sm text-gray-600">AI-powered enrichment</p>
               </Card>
               <Card 
-                className="p-4 text-center hover:shadow-lg transition-all cursor-pointer bg-gradient-to-br from-orange-50 to-orange-100"
+                className="p-4 text-center hover:shadow-lg transition-all cursor-pointer border-2 border-black bg-white"
                 onClick={() => setActiveTab('api')}
               >
-                <TrendingUp className="w-8 h-8 text-orange-600 mx-auto mb-2" />
-                <h3 className="font-bold text-gray-900">Analytics</h3>
-                <p className="text-sm text-gray-600">Data insights</p>
+                <Code className="w-8 h-8 text-purple-600 mx-auto mb-2" />
+                <h3 className="font-bold text-gray-900">API Reference</h3>
+                <p className="text-sm text-gray-600">Technical documentation</p>
               </Card>
             </div>
           </div>
 
           {/* Main Documentation */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-8">
+            <TabsList className="grid w-full grid-cols-3 mb-8">
               <TabsTrigger value="getting-started" className="text-sm font-bold">
                 <BookOpen className="w-4 h-4 mr-2" />
                 Getting Started
@@ -87,10 +87,6 @@ export default function DocumentationPage() {
               <TabsTrigger value="contact-enrichment" className="text-sm font-bold">
                 <Users className="w-4 h-4 mr-2" />
                 Contact Enrichment
-              </TabsTrigger>
-              <TabsTrigger value="platform-search" className="text-sm font-bold">
-                <Search className="w-4 h-4 mr-2" />
-                Platform Search
               </TabsTrigger>
               <TabsTrigger value="api" className="text-sm font-bold">
                 <Code className="w-4 h-4 mr-2" />
@@ -100,7 +96,7 @@ export default function DocumentationPage() {
 
             {/* Getting Started Tab */}
             <TabsContent value="getting-started" className="space-y-8">
-              <Card className="p-8">
+              <Card className="p-8 border-2 border-black">
                 <div className="text-center mb-8">
                   <h2 className="text-4xl font-black text-gray-900 mb-4">
                     Getting Started with Audio Intel
@@ -112,7 +108,7 @@ export default function DocumentationPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <h3 className="text-2xl font-black text-gray-900 mb-4">🚀 Quick Start Guide</h3>
+                    <h3 className="text-2xl font-black text-gray-900 mb-4">Quick Start Guide</h3>
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
                         <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
@@ -139,7 +135,7 @@ export default function DocumentationPage() {
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-black text-gray-900 mb-4">✨ Key Features</h3>
+                    <h3 className="text-2xl font-black text-gray-900 mb-4">Key Features</h3>
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <CheckCircle className="w-5 h-5 text-green-500" />
@@ -168,7 +164,7 @@ export default function DocumentationPage() {
                     </div>
 
                     <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                      <h4 className="font-bold text-blue-900 mb-2">💡 Pro Tip</h4>
+                      <h4 className="font-bold text-blue-900 mb-2">Pro Tip</h4>
                       <p className="text-blue-800 text-sm">
                         Start with our free tier to process 10 contacts and see the power of Audio Intel in action. 
                         No credit card required!
@@ -181,7 +177,7 @@ export default function DocumentationPage() {
 
             {/* Contact Enrichment Tab */}
             <TabsContent value="contact-enrichment" className="space-y-8">
-              <Card className="p-8">
+              <Card className="p-8 border-2 border-black">
                 <div className="text-center mb-8">
                   <h2 className="text-4xl font-black text-gray-900 mb-4">
                     Contact Enrichment Guide
@@ -193,7 +189,7 @@ export default function DocumentationPage() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                   <div>
-                    <h3 className="text-2xl font-black text-gray-900 mb-4">📁 File Formats</h3>
+                    <h3 className="text-2xl font-black text-gray-900 mb-4">File Formats</h3>
                     <div className="space-y-3">
                       <div className="p-3 bg-gray-50 rounded-lg">
                         <h4 className="font-bold text-gray-900">CSV Files</h4>
@@ -211,7 +207,7 @@ export default function DocumentationPage() {
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-black text-gray-900 mb-4">🔧 Intelligent Parsing</h3>
+                    <h3 className="text-2xl font-black text-gray-900 mb-4">Intelligent Parsing</h3>
                     <div className="space-y-3">
                       <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
                         <h4 className="font-bold text-blue-900">Auto-Detection</h4>
@@ -229,7 +225,7 @@ export default function DocumentationPage() {
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-black text-gray-900 mb-4">🎯 Enrichment Data</h3>
+                    <h3 className="text-2xl font-black text-gray-900 mb-4">Enrichment Data</h3>
                     <div className="space-y-3">
                       <div className="p-3 bg-orange-50 rounded-lg border border-orange-200">
                         <h4 className="font-bold text-orange-900">Contact Intelligence</h4>
@@ -248,10 +244,10 @@ export default function DocumentationPage() {
                 </div>
 
                 <div className="mt-8 p-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white">
-                  <h3 className="text-2xl font-black mb-4">💡 Best Practices</h3>
+                  <h3 className="text-2xl font-black mb-4">Best Practices</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <h4 className="font-bold mb-2">✅ Do's</h4>
+                      <h4 className="font-bold mb-2">Do's</h4>
                       <ul className="text-sm space-y-1">
                         <li>• Include both name and email when possible</li>
                         <li>• Use consistent formatting across your list</li>
@@ -260,7 +256,7 @@ export default function DocumentationPage() {
                       </ul>
                     </div>
                     <div>
-                      <h4 className="font-bold mb-2">❌ Don'ts</h4>
+                      <h4 className="font-bold mb-2">Don'ts</h4>
                       <ul className="text-sm space-y-1">
                         <li>• Don't worry about perfect formatting</li>
                         <li>• Don't manually clean data first</li>
