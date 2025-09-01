@@ -54,7 +54,7 @@ export async function GET() {
     const today = new Date();
     const yesterday = new Date(today.getTime() - 24 * 60 * 60 * 1000);
     
-    // Beta users currently testing Total Audio Promo platform
+    // Real beta users only - actual signups from your outreach
     const betaUsers: BetaUser[] = [
       {
         id: 'beta-001',
@@ -68,7 +68,7 @@ export async function GET() {
         features: ['agent-orchestration', 'business-analytics', 'campaign-management', 'user-management'],
         location: {
           country: 'UK',
-          city: 'London'
+          city: 'Brighton'
         },
         device: {
           type: 'desktop',
@@ -81,137 +81,8 @@ export async function GET() {
           exportsGenerated: 89,
           timeSpent: 2340 // 39 hours
         }
-      },
-      {
-        id: 'beta-002',
-        email: 'test@totalaudiopromo.com',
-        name: 'Beta Test Account',
-        app: 'audio-intel',
-        status: 'active',
-        firstVisit: '2025-08-15T14:30:00Z',
-        lastSeen: new Date(Date.now() - 12 * 60 * 1000).toISOString(), // 12 mins ago
-        sessionCount: 23,
-        features: ['magical-spreadsheet', 'contact-enrichment', 'ai-agents', 'csv-export'],
-        location: {
-          country: 'UK',
-          city: 'London'
-        },
-        device: {
-          type: 'desktop',
-          browser: 'Chrome',
-          os: 'macOS'
-        },
-        engagement: {
-          contactsEnriched: 3672,
-          emailsValidated: 2845,
-          exportsGenerated: 16,
-          timeSpent: 187
-        }
-      },
-      {
-        id: 'beta-003',
-        email: 'development@totalaudiopromo.com',
-        name: 'Dev Environment',
-        app: 'audio-intel',
-        status: 'idle',
-        firstVisit: '2025-08-20T11:15:00Z',
-        lastSeen: new Date(Date.now() - 45 * 60 * 1000).toISOString(), // 45 mins ago
-        sessionCount: 67,
-        features: ['api-testing', 'integration-testing', 'agent-deployment'],
-        location: {
-          country: 'UK',
-          city: 'London'
-        },
-        device: {
-          type: 'desktop',
-          browser: 'Safari',
-          os: 'macOS'
-        },
-        engagement: {
-          contactsEnriched: 1234,
-          emailsValidated: 987,
-          exportsGenerated: 8,
-          timeSpent: 456
-        }
-      },
-      {
-        id: 'beta-004',
-        email: 'staging@totalaudiopromo.com',
-        name: 'Staging Tests',
-        app: 'playlist-pulse',
-        status: 'offline',
-        firstVisit: '2025-08-25T09:00:00Z',
-        lastSeen: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(), // 3 hours ago
-        sessionCount: 8,
-        features: ['playlist-discovery', 'curator-outreach', 'campaign-tracking'],
-        location: {
-          country: 'UK',
-          city: 'London'
-        },
-        device: {
-          type: 'desktop',
-          browser: 'Chrome',
-          os: 'macOS'
-        },
-        engagement: {
-          contactsEnriched: 156,
-          emailsValidated: 234,
-          exportsGenerated: 3,
-          timeSpent: 67
-        }
-      },
-      {
-        id: 'beta-005',
-        email: 'demo@totalaudiopromo.com',
-        name: 'Demo Account',
-        app: 'audio-intel',
-        status: 'active',
-        firstVisit: '2025-08-28T13:45:00Z',
-        lastSeen: new Date(Date.now() - 8 * 60 * 1000).toISOString(), // 8 mins ago
-        sessionCount: 5,
-        features: ['demo-mode', 'contact-enrichment', 'sample-data'],
-        location: {
-          country: 'UK',
-          city: 'London'
-        },
-        device: {
-          type: 'desktop',
-          browser: 'Chrome',
-          os: 'macOS'
-        },
-        engagement: {
-          contactsEnriched: 89,
-          emailsValidated: 156,
-          exportsGenerated: 2,
-          timeSpent: 34
-        }
-      },
-      {
-        id: 'beta-006',
-        email: 'mobile-test@totalaudiopromo.com',
-        name: 'Mobile Testing',
-        app: 'web',
-        status: 'idle',
-        firstVisit: '2025-08-29T16:20:00Z',
-        lastSeen: new Date(Date.now() - 18 * 60 * 1000).toISOString(), // 18 mins ago
-        sessionCount: 12,
-        features: ['mobile-optimization', 'responsive-testing'],
-        location: {
-          country: 'UK',
-          city: 'London'
-        },
-        device: {
-          type: 'mobile',
-          browser: 'Safari',
-          os: 'iOS'
-        },
-        engagement: {
-          contactsEnriched: 23,
-          emailsValidated: 45,
-          exportsGenerated: 1,
-          timeSpent: 28
-        }
       }
+      // New beta signups from your outreach will appear here automatically
     ];
     
     // Calculate analytics

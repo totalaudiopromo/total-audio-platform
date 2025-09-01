@@ -56,6 +56,32 @@ export async function GET() {
       throw new Error('ConvertKit API secret not configured');
     }
 
+    // First, try to get real user location data from our tracking system
+    let realLocationData = new Map();
+    try {
+      const locationResponse = await fetch('http://localhost:3005/api/user-location');
+      if (locationResponse.ok) {
+        const locationData = await locationResponse.json();
+        if (locationData.success && locationData.clusters) {
+          locationData.clusters.forEach((cluster: any) => {
+            cluster.users.forEach((user: any) => {
+              realLocationData.set(user.email, {
+                country: cluster.location.country,
+                city: cluster.location.city,
+                countryCode: cluster.location.countryCode,
+                coordinates: {
+                  lat: cluster.location.coordinates.lat,
+                  lng: cluster.location.coordinates.lng
+                }
+              });
+            });
+          });
+        }
+      }
+    } catch (locationError) {
+      console.log('Could not fetch real location data, using fallbacks');
+    }
+
     // Try to fetch subscribers by beta_user tag (Tag ID: 9942888)
     const BETA_USER_TAG_ID = '9942888';
     const response = await fetch(`https://api.convertkit.com/v3/tags/${BETA_USER_TAG_ID}/subscriptions?api_secret=${CONVERTKIT_API_SECRET}`, {
@@ -129,25 +155,23 @@ export async function GET() {
         const exportsGenerated = Math.floor(contactsEnriched / 50) + Math.floor(Math.random() * 5);
         const timeSpent = Math.floor(contactsEnriched / 10) + Math.floor(Math.random() * 30);
 
-        // Generate realistic global locations for music industry professionals
-        const locations = [
-          { country: 'United Kingdom', city: 'London', code: 'GB', lat: 51.5074, lng: -0.1278 },
-          { country: 'United Kingdom', city: 'Manchester', code: 'GB', lat: 53.4808, lng: -2.2426 },
-          { country: 'United Kingdom', city: 'Birmingham', code: 'GB', lat: 52.4862, lng: -1.8904 },
-          { country: 'United Kingdom', city: 'Glasgow', code: 'GB', lat: 55.8642, lng: -4.2518 },
-          { country: 'United States', city: 'Los Angeles', code: 'US', lat: 34.0522, lng: -118.2437 },
-          { country: 'United States', city: 'New York', code: 'US', lat: 40.7128, lng: -74.0060 },
-          { country: 'United States', city: 'Nashville', code: 'US', lat: 36.1627, lng: -86.7816 },
-          { country: 'Canada', city: 'Toronto', code: 'CA', lat: 43.6532, lng: -79.3832 },
-          { country: 'Germany', city: 'Berlin', code: 'DE', lat: 52.5200, lng: 13.4050 },
-          { country: 'Netherlands', city: 'Amsterdam', code: 'NL', lat: 52.3676, lng: 4.9041 },
-          { country: 'Australia', city: 'Sydney', code: 'AU', lat: -33.8688, lng: 151.2093 },
-          { country: 'Sweden', city: 'Stockholm', code: 'SE', lat: 59.3293, lng: 18.0686 },
-          { country: 'France', city: 'Paris', code: 'FR', lat: 48.8566, lng: 2.3522 },
-          { country: 'Spain', city: 'Barcelona', code: 'ES', lat: 41.3851, lng: 2.1734 }
-        ];
+        // Check if we have real location data for this user
+        const realLocation = realLocationData.get(sub.email_address);
+        
+        // Only include users with real location data - no placeholder locations
+        if (!realLocation) {
+          console.log(`❌ No real location data for ${sub.email_address}, skipping user`);
+          return null;
+        }
 
-        const selectedLocation = locations[index % locations.length];
+        const selectedLocation = {
+          country: realLocation.country,
+          city: realLocation.city,
+          code: realLocation.countryCode,
+          lat: realLocation.coordinates.lat,
+          lng: realLocation.coordinates.lng
+        };
+        console.log(`✅ Using real location for ${sub.email_address}: ${realLocation.city}, ${realLocation.country}`);
 
         return {
           id: sub.id.toString(),
@@ -186,7 +210,8 @@ export async function GET() {
             timeSpent
           }
         };
-      });
+      })
+      .filter(Boolean); // Remove null entries (users without real location data)
 
     console.log(`✅ Retrieved ${betaUsers.length} real beta users from ConvertKit`);
 
