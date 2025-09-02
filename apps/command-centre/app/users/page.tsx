@@ -98,10 +98,78 @@ export default function UserManagementPage() {
     }
   };
 
-  const updateUserStatus = (userId: string, newStatus: User['status']) => {
-    setUsers(prev => prev.map(user => 
-      user.id === userId ? { ...user, status: newStatus } : user
-    ));
+  const updateUserStatus = async (userId: string, newStatus: User['status']) => {
+    try {
+      const response = await fetch('/api/users/update', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId,
+          updates: { status: newStatus }
+        })
+      });
+
+      if (response.ok) {
+        setUsers(prev => prev.map(user => 
+          user.id === userId ? { ...user, status: newStatus } : user
+        ));
+        alert(`✅ User status updated to ${newStatus}`);
+      } else {
+        const error = await response.json();
+        alert(`❌ Failed to update user: ${error.error}`);
+      }
+    } catch (error) {
+      console.error('Failed to update user status:', error);
+      alert('❌ Failed to update user status');
+    }
+  };
+
+  const updateUserRole = async (userId: string, newRole: User['role']) => {
+    try {
+      const response = await fetch('/api/users/update', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId,
+          updates: { role: newRole }
+        })
+      });
+
+      if (response.ok) {
+        setUsers(prev => prev.map(user => 
+          user.id === userId ? { ...user, role: newRole } : user
+        ));
+        alert(`✅ User role updated to ${newRole}`);
+      } else {
+        const error = await response.json();
+        alert(`❌ Failed to update user: ${error.error}`);
+      }
+    } catch (error) {
+      console.error('Failed to update user role:', error);
+      alert('❌ Failed to update user role');
+    }
+  };
+
+  const performUserAction = async (action: string, userId: string, data?: any) => {
+    try {
+      const response = await fetch('/api/users/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action, userId, ...data })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        alert(`✅ ${result.message}`);
+        if (action === 'suspend') updateUserStatus(userId, 'suspended');
+        if (action === 'activate') updateUserStatus(userId, 'active');
+      } else {
+        alert(`❌ ${result.error}`);
+      }
+    } catch (error) {
+      console.error('Failed to perform user action:', error);
+      alert('❌ Action failed');
+    }
   };
 
   const filteredUsers = filterStatus === 'all' 
@@ -388,7 +456,7 @@ export default function UserManagementPage() {
                 <button
                   onClick={() => setSelectedUser(user)}
                   style={{
-                    background: '#dc2626',
+                    background: '#3b82f6',
                     color: 'white',
                     border: 'none',
                     borderRadius: '8px',
@@ -435,6 +503,40 @@ export default function UserManagementPage() {
                     Activate
                   </button>
                 )}
+                
+                <select
+                  value={user.role}
+                  onChange={(e) => updateUserRole(user.id, e.target.value as User['role'])}
+                  style={{
+                    background: 'white',
+                    border: '1px solid #d1d5db',
+                    borderRadius: '8px',
+                    padding: '0.5rem',
+                    fontSize: '0.875rem',
+                    fontWeight: '600',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <option value="beta-user">Beta User</option>
+                  <option value="admin">Admin</option>
+                  <option value="support">Support</option>
+                </select>
+
+                <button
+                  onClick={() => performUserAction('reset-usage', user.id)}
+                  style={{
+                    background: 'transparent',
+                    color: '#f59e0b',
+                    border: '1px solid #f59e0b',
+                    borderRadius: '8px',
+                    padding: '0.5rem 1rem',
+                    fontSize: '0.875rem',
+                    fontWeight: '600',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Reset Usage
+                </button>
               </div>
             </div>
           );

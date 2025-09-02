@@ -32,6 +32,7 @@ export default function BetaAccessPage() {
   const [role, setRole] = useState('')
   const [experience, setExperience] = useState('')
   const [howDidYouHear, setHowDidYouHear] = useState('')
+  const [newsletterOptIn, setNewsletterOptIn] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
@@ -60,14 +61,17 @@ export default function BetaAccessPage() {
           first_name: firstName,
           last_name: lastName,
           form_id: '8440957', // Beta access form
-          tags: ['beta_user', 'free_trial', 'lifetime_discount_eligible', 'beta-page-signup'],
+          tags: newsletterOptIn 
+            ? ['beta_user', 'free_trial', 'lifetime_discount_eligible', 'beta-page-signup', 'newsletter_unsigned_advantage']
+            : ['beta_user', 'free_trial', 'lifetime_discount_eligible', 'beta-page-signup'],
           fields: {
             company: company || '',
             role: role || '',
             experience: experience || '',
             how_did_you_hear: howDidYouHear || '',
             signup_page: 'beta-access-page',
-            signup_timestamp: new Date().toISOString()
+            signup_timestamp: new Date().toISOString(),
+            newsletter_opt_in: newsletterOptIn
           }
         })
       })
@@ -105,7 +109,7 @@ export default function BetaAccessPage() {
             Welcome to Audio Intel Beta! 🎉
           </h1>
           <p className="beta-success-description text-xl font-bold text-gray-700 mb-6">
-            You're in! Check your email for your free beta access details. Try everything for free, then get 50% off forever when you're ready to upgrade.
+            You're in! Check your email for your free beta access details. Try everything for free, then get 50% off your first year when you're ready to upgrade.
           </p>
           <div className="beta-success-perks bg-yellow-100 border-4 border-yellow-400 rounded-xl p-6 mb-6">
             <div className="flex items-center justify-center gap-3 mb-3">
@@ -114,7 +118,7 @@ export default function BetaAccessPage() {
             </div>
             <ul className="text-sm font-bold text-yellow-800 space-y-2">
               <li>✅ Free beta access (no payment required)</li>
-              <li>✅ 50% lifetime discount when you upgrade</li>
+              <li>✅ 50% discount on first year when you upgrade</li>
               <li>✅ Priority feature requests</li>
               <li>✅ Direct access to the founder</li>
               <li>✅ Beta tester badge and recognition</li>
@@ -191,10 +195,10 @@ export default function BetaAccessPage() {
           
           <div className="beta-hero-cta bg-gradient-to-r from-green-500 to-blue-500 p-8 rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mb-12">
             <h3 className="text-3xl font-black text-white mb-4">
-              Try Free → Then £9.99/month Forever
+              Try Free → Then £19.99/month
             </h3>
             <p className="text-xl font-bold text-white/90 mb-6">
-              Test everything free during beta, then lock in 50% lifetime discount (normally £19.99/month).
+              Test everything free during beta, then upgrade to Professional at £19.99/month when ready.
             </p>
           </div>
         </div>
@@ -223,8 +227,8 @@ export default function BetaAccessPage() {
                   </div>
                 </div>
                 <p className="beta-benefit-description text-lg font-bold text-gray-700">
-                  Try everything free during beta. When you're ready to upgrade, 
-                  lock in £9.99/month forever (50% off the £19.99 retail price).
+                  Try everything free during beta. When you're ready to upgrade to Professional, 
+                  get 50% off your first year (£9.99/month for 12 months, then £19.99/month).
                 </p>
               </div>
 
@@ -312,7 +316,7 @@ export default function BetaAccessPage() {
                 Get Free Beta Access
               </CardTitle>
               <CardDescription className="beta-form-description text-lg font-bold text-gray-600">
-                Try Audio Intel completely free, then get 50% off forever when you're ready
+                Try Audio Intel completely free, then get 50% off your first year when you're ready
               </CardDescription>
             </CardHeader>
             
@@ -361,6 +365,26 @@ export default function BetaAccessPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
+                </div>
+                
+                <div className="beta-newsletter-field bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4">
+                  <div className="flex items-start space-x-3">
+                    <input
+                      type="checkbox"
+                      id="newsletter"
+                      className="mt-1 h-4 w-4 text-blue-600 border-2 border-gray-300 rounded"
+                      checked={newsletterOptIn}
+                      onChange={(e) => setNewsletterOptIn(e.target.checked)}
+                    />
+                    <div className="flex-1">
+                      <Label htmlFor="newsletter" className="text-sm font-black text-yellow-900 cursor-pointer">
+                        Weekly Newsletter: The Unsigned Advantage
+                      </Label>
+                      <p className="text-xs font-bold text-yellow-800 mt-1">
+                        Get insider tips for indie artists juggling day jobs and £50 budgets. Unsubscribe anytime.
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 
                 <div className="beta-form-grid grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -437,7 +461,7 @@ export default function BetaAccessPage() {
                   <ul className="space-y-2 text-sm font-bold text-blue-800">
                     <li>✅ Immediate free access to Audio Intel</li>
                     <li>✅ Test everything during beta (no payment required)</li>
-                    <li>✅ 50% lifetime discount when you upgrade (£9.99/month forever)</li>
+                    <li>✅ 50% discount on first year when you upgrade (£9.99/month for 12 months)</li>
                     <li>✅ Priority support and direct founder access</li>
                     <li>✅ Early access to new features</li>
                     <li>✅ Founding beta user recognition</li>

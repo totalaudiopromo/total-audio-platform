@@ -50,7 +50,8 @@ export async function POST(req: NextRequest) {
         'beta_user': '9942888',
         'free_trial': '9961566',
         'lifetime_discount_eligible': '9890548',
-        'beta-page-signup': '10182442'
+        'beta-page-signup': '10182442',
+        'newsletter_unsigned_advantage': '10182443' // The Unsigned Advantage newsletter tag
       };
 
       for (const tag of tags) {

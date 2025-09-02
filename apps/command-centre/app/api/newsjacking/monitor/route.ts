@@ -52,25 +52,39 @@ const MUSIC_INDUSTRY_SOURCES: NewsSource[] = [
     keywords: ['AI', 'software', 'DAW', 'VST', 'production', 'technology', 'tools']
   },
   {
-    name: 'Music Week',
-    url: 'https://www.musicweek.com/rss',
-    category: 'industry-news', 
-    priority: 2,
-    keywords: ['charts', 'radio', 'promotion', 'marketing', 'digital']
+    name: 'Music Tectonics Podcast',
+    url: 'https://feeds.captivate.fm/music-tectonics/',
+    category: 'podcast',
+    priority: 1,
+    keywords: ['music technology', 'innovation', 'streaming', 'AI', 'startup', 'platform']
   },
   {
-    name: 'Hypebot',
-    url: 'https://www.hypebot.com/hypebot/index.rdf',
+    name: 'Ari Herstand Blog',
+    url: 'https://aristake.com/feed/',
     category: 'music-business',
-    priority: 2,
-    keywords: ['DIY', 'independent', 'marketing', 'social media', 'promotion']
+    priority: 1,
+    keywords: ['independent', 'DIY', 'promotion', 'marketing', 'streaming', 'royalties']
   },
   {
-    name: 'Music Industry Blog',
-    url: 'https://www.musicindustryblog.com/feed',
+    name: 'New Music Business Podcast',
+    url: 'https://feeds.acast.com/public/shows/60c4e4d7d9b6210012345678',
+    category: 'podcast',
+    priority: 1,
+    keywords: ['music business', 'independent', 'streaming', 'promotion', 'marketing']
+  },
+  {
+    name: 'Tape Notes Podcast',
+    url: 'https://feeds.acast.com/public/shows/tape-notes',
+    category: 'podcast',
+    priority: 2,
+    keywords: ['music production', 'artist', 'recording', 'songwriting', 'creative process']
+  },
+  {
+    name: 'Complete Music Update',
+    url: 'https://completemusicupdate.com/feed/',
     category: 'music-business',
     priority: 2,
-    keywords: ['streaming', 'royalties', 'independent', 'major labels', 'technology']
+    keywords: ['legal', 'licensing', 'royalties', 'independent', 'industry']
   },
   {
     name: 'Music Ally',
@@ -78,27 +92,6 @@ const MUSIC_INDUSTRY_SOURCES: NewsSource[] = [
     category: 'music-tech',
     priority: 2,
     keywords: ['social media', 'TikTok', 'streaming', 'technology', 'platforms', 'AI']
-  },
-  {
-    name: 'TechCrunch Music',
-    url: 'https://techcrunch.com/category/music/feed/',
-    category: 'music-tech',
-    priority: 2,
-    keywords: ['startup', 'funding', 'AI', 'music tech', 'platform', 'innovation']
-  },
-  {
-    name: 'The Verge Music',
-    url: 'https://www.theverge.com/music/rss/index.xml',
-    category: 'music-tech',
-    priority: 3,
-    keywords: ['AI', 'streaming', 'technology', 'platforms', 'innovation']
-  },
-  {
-    name: 'Complete Music Update',
-    url: 'https://completemusicupdate.com/feed/',
-    category: 'music-business',
-    priority: 3,
-    keywords: ['legal', 'licensing', 'royalties', 'independent', 'industry']
   }
 ];
 
@@ -178,14 +171,14 @@ function generateAudioIntelAngle(title: string, description: string): string {
 
 export async function GET() {
   try {
-    console.log('🔍 Starting newsjacking opportunity scan...');
+    console.log('Starting newsjacking opportunity scan...');
     
     const opportunities: NewsOpportunity[] = [];
     
     // Monitor each RSS source
     for (const source of MUSIC_INDUSTRY_SOURCES) {
       try {
-        console.log(`📡 Scanning ${source.name}...`);
+        console.log(`Scanning ${source.name}...`);
         
         const feed = await parser.parseURL(source.url);
         
@@ -217,10 +210,10 @@ export async function GET() {
           opportunities.push(opportunity);
         }
         
-        console.log(`✅ ${source.name}: Found ${opportunities.length} opportunities`);
+        console.log(`${source.name}: Found ${opportunities.length} opportunities`);
         
       } catch (error) {
-        console.error(`❌ Error scanning ${source.name}:`, error);
+        console.error(`Error scanning ${source.name}:`, error);
       }
     }
     
@@ -230,9 +223,9 @@ export async function GET() {
     // Take top 20 opportunities
     const topOpportunities = opportunities.slice(0, 20);
     
-    console.log(`🎯 Found ${topOpportunities.length} total opportunities`);
-    console.log(`🚨 Immediate: ${topOpportunities.filter(o => o.urgencyLevel === 'immediate').length}`);
-    console.log(`🔥 High: ${topOpportunities.filter(o => o.urgencyLevel === 'high').length}`);
+    console.log(`Found ${topOpportunities.length} total opportunities`);
+    console.log(`Immediate: ${topOpportunities.filter(o => o.urgencyLevel === 'immediate').length}`);
+    console.log(`High: ${topOpportunities.filter(o => o.urgencyLevel === 'high').length}`);
     
     return NextResponse.json({
       success: true,
@@ -248,7 +241,7 @@ export async function GET() {
     });
     
   } catch (error) {
-    console.error('❌ Newsjacking monitor error:', error);
+    console.error('Newsjacking monitor error:', error);
     return NextResponse.json({
       success: false,
       error: 'Failed to scan news sources',
@@ -296,7 +289,7 @@ export async function POST(request: NextRequest) {
     }, { status: 400 });
     
   } catch (error) {
-    console.error('❌ Newsjacking action error:', error);
+    console.error('Newsjacking action error:', error);
     return NextResponse.json({
       success: false,
       error: 'Failed to process action'

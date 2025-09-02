@@ -23,6 +23,7 @@ const RadioPromoAgent = require('./radio-promo-agent');
 const ContentGenerationAgent = require('./content-generation-agent');
 const AnalyticsAgent = require('./analytics-agent');
 const SocialMediaAgent = require('./social-media-agent');
+const BetaUserAcquisitionAgent = require('./beta-user-acquisition-agent');
 
 class AgentOrchestrator {
   constructor() {
@@ -37,7 +38,8 @@ class AgentOrchestrator {
       radioPromo: new RadioPromoAgent(),
       contentGeneration: new ContentGenerationAgent(),
       analytics: new AnalyticsAgent(),
-      socialMedia: new SocialMediaAgent()
+      socialMedia: new SocialMediaAgent(),
+      betaUserAcquisition: new BetaUserAcquisitionAgent()
     };
     this.workflows = new Map();
     this.isInitialized = false;
@@ -268,6 +270,21 @@ class AgentOrchestrator {
         { agent: 'socialMedia', action: 'executeInfluencerOutreach' },
         { agent: 'analytics', action: 'generateRealTimeDashboard' },
         { agent: 'analytics', action: 'analyzeCampaignPerformance' }
+      ]
+    });
+
+    // Beta user acquisition workflow
+    this.workflows.set('beta-user-acquisition', {
+      description: 'Comprehensive beta user acquisition strategy and execution',
+      steps: [
+        { agent: 'betaUserAcquisition', action: 'createBetaAcquisitionStrategy' },
+        { agent: 'betaUserAcquisition', action: 'analyzeTargetMarkets' },
+        { agent: 'betaUserAcquisition', action: 'generateOutreachCampaigns' },
+        { agent: 'betaUserAcquisition', action: 'optimizeConversionFunnels' },
+        { agent: 'betaUserAcquisition', action: 'createContentStrategy' },
+        { agent: 'betaUserAcquisition', action: 'executeInfluencerOutreach' },
+        { agent: 'betaUserAcquisition', action: 'trackBetaMetrics' },
+        { agent: 'betaUserAcquisition', action: 'generateBetaReports' }
       ]
     });
 

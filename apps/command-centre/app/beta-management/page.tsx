@@ -115,29 +115,33 @@ export default function BetaManagementPage() {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         setIsSubmitted(true);
-        await fetch('/api/beta-tracker', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            userId: `beta-${Date.now()}`,
-            email: formData.email,
-            app: 'beta-signup',
-            action: 'signup',
-            timestamp: new Date().toISOString()
-          }),
+        
+        // Clear form
+        setFormData({
+          name: '',
+          email: '',
+          role: 'independent-artist',
+          interests: [],
+          referralSource: '',
+          currentTools: '',
+          goals: ''
         });
+
+        // Show success message
+        alert(`✅ ${result.message}`);
+        
         // Refresh beta data
         fetchBetaData();
       } else {
-        throw new Error('Signup failed');
+        throw new Error(result.error || 'Signup failed');
       }
     } catch (error) {
       console.error('Beta signup error:', error);
-      alert('Signup failed. Please try again.');
+      alert(`❌ ${error instanceof Error ? error.message : 'Signup failed. Please try again.'}`);
     } finally {
       setIsSubmitting(false);
     }

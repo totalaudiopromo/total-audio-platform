@@ -653,6 +653,89 @@ export default function CommandCentreDashboard() {
               </div>
             </div>
           </div>
+
+          {/* Newsjacking System */}
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.9)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '20px',
+            padding: '2rem',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            boxShadow: '0 25px 50px rgba(249, 115, 22, 0.15)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '-50%',
+              right: '-50%',
+              width: '200%',
+              height: '200%',
+              background: 'linear-gradient(45deg, transparent, rgba(249, 115, 22, 0.03))',
+              transform: 'rotate(45deg)'
+            }}></div>
+            <div style={{ position: 'relative' }}>
+              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+                <div style={{
+                  width: '56px',
+                  height: '56px',
+                  background: 'linear-gradient(135deg, #f97316, #ea580c)',
+                  borderRadius: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginRight: '1rem'
+                }}>
+                  <svg width="28" height="28" fill="white" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15" stroke="currentColor" fill="none"/>
+                  </svg>
+                </div>
+                <div>
+                  <p style={{ 
+                    fontSize: '0.875rem', 
+                    fontWeight: '700', 
+                    color: '#6b7280',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    margin: '0 0 0.25rem 0'
+                  }}>
+                    Newsjacking Content
+                  </p>
+                  <p style={{ 
+                    fontSize: '2.5rem', 
+                    fontWeight: '900', 
+                    color: '#1a202c',
+                    margin: 0,
+                    letterSpacing: '-0.025em'
+                  }}>
+                    2
+                  </p>
+                </div>
+              </div>
+              <div style={{
+                padding: '0.75rem 1rem',
+                background: 'rgba(249, 115, 22, 0.1)',
+                borderRadius: '12px',
+                border: '1px solid rgba(249, 115, 22, 0.2)'
+              }}>
+                <span style={{ 
+                  color: '#ea580c', 
+                  fontSize: '0.875rem', 
+                  fontWeight: '700'
+                }}>
+                  Pending Review
+                </span>
+                <span style={{ 
+                  color: '#6b7280', 
+                  fontSize: '0.875rem', 
+                  marginLeft: '0.5rem',
+                  fontWeight: '500'
+                }}>
+                  Awaiting approval
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Beta User Tracking */}
@@ -1234,6 +1317,58 @@ export default function CommandCentreDashboard() {
                 fontWeight: '500'
               }}>
                 Manage beta users and new signups
+              </p>
+            </button>
+
+            {/* Newsjacking Content Review */}
+            <button 
+              onClick={() => window.location.href = '/newsjacking'}
+              style={{
+                background: 'linear-gradient(135deg, #fed7aa, #fdba74)',
+                border: '2px solid #f97316',
+                borderRadius: '16px',
+                padding: '2rem',
+                textAlign: 'left',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                boxShadow: '0 10px 25px rgba(249, 115, 22, 0.15)',
+                minHeight: '140px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
+              }}
+            >
+              <div>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  background: '#f97316',
+                  borderRadius: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '1rem'
+                }}>
+                  <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15" stroke="currentColor" fill="none"/>
+                  </svg>
+                </div>
+                <h4 style={{ 
+                  fontWeight: '900', 
+                  color: '#c2410c', 
+                  fontSize: '1.125rem',
+                  margin: '0 0 0.5rem 0'
+                }}>
+                  📰 Newsjacking Review
+                </h4>
+              </div>
+              <p style={{ 
+                fontSize: '0.875rem', 
+                color: '#ea580c', 
+                margin: 0,
+                fontWeight: '500'
+              }}>
+                Review AI-generated content from trending stories
               </p>
             </button>
 

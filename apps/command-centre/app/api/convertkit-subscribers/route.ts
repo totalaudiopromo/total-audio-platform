@@ -48,7 +48,7 @@ interface BetaUser {
 
 export async function GET() {
   try {
-    console.log('📊 Fetching real ConvertKit subscribers...');
+    console.log('Fetching real ConvertKit subscribers...');
     
     const CONVERTKIT_API_SECRET = process.env.CONVERTKIT_API_SECRET || 'BMiOCi6hPDA73O1pnwXh7_bXEBi5zMzf7Tgk5rP_trI';
     
@@ -93,7 +93,7 @@ export async function GET() {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('❌ ConvertKit API error details:', errorText);
+      console.error('ConvertKit API error details:', errorText);
       throw new Error(`ConvertKit API error: ${response.status} - ${errorText}`);
     }
 
@@ -160,7 +160,7 @@ export async function GET() {
         
         // Only include users with real location data - no placeholder locations
         if (!realLocation) {
-          console.log(`❌ No real location data for ${sub.email_address}, skipping user`);
+          console.log(`No real location data for ${sub.email_address}, skipping user`);
           return null;
         }
 
@@ -171,7 +171,7 @@ export async function GET() {
           lat: realLocation.coordinates.lat,
           lng: realLocation.coordinates.lng
         };
-        console.log(`✅ Using real location for ${sub.email_address}: ${realLocation.city}, ${realLocation.country}`);
+        console.log(`Using real location for ${sub.email_address}: ${realLocation.city}, ${realLocation.country}`);
 
         return {
           id: sub.id.toString(),
@@ -213,7 +213,7 @@ export async function GET() {
       })
       .filter(Boolean); // Remove null entries (users without real location data)
 
-    console.log(`✅ Retrieved ${betaUsers.length} real beta users from ConvertKit`);
+    console.log(`Retrieved ${betaUsers.length} real beta users from ConvertKit`);
 
     // Calculate analytics
     const totalUsers = betaUsers.length;
@@ -278,7 +278,7 @@ export async function GET() {
     });
 
   } catch (error) {
-    console.error('❌ ConvertKit subscribers fetch error:', error);
+    console.error('ConvertKit subscribers fetch error:', error);
     
     return NextResponse.json({
       totalUsers: 0,

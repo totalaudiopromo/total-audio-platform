@@ -109,10 +109,11 @@ export default function SocialPostingPage() {
         setContent('');
         setHashtags([]);
         setSelectedTemplate(null);
+        setScheduledTime('');
         fetchScheduledPosts();
         setTimeout(() => setShowSuccess(false), 3000);
       } else {
-        alert('Failed to schedule post: ' + data.error);
+        alert('Failed to schedule post: ' + (data.error || 'Unknown error'));
       }
     } catch (error) {
       console.error('Scheduling failed:', error);
@@ -122,24 +123,12 @@ export default function SocialPostingPage() {
     }
   };
 
-  const getCharacterCount = (platform: string) => {
-    const limits: Record<string, number> = {
-      twitter: 280,
-      linkedin: 1300,
-      bluesky: 300,
-      threads: 500,
-      facebook: 63206
-    };
-    return limits[platform] || 280;
-  };
-
   return (
     <div style={{
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
     }}>
-      {/* Header */}
       <header style={{
         background: 'rgba(255, 255, 255, 0.95)',
         backdropFilter: 'blur(10px)',
@@ -167,7 +156,9 @@ export default function SocialPostingPage() {
               alignItems: 'center',
               justifyContent: 'center'
             }}>
-              <span style={{ color: 'white', fontSize: '1.5rem' }}>📱</span>
+              <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                <path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              </svg>
             </div>
             <div>
               <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0, color: '#1a202c' }}>
@@ -179,25 +170,26 @@ export default function SocialPostingPage() {
             </div>
           </div>
           
-          <button 
-            onClick={() => window.location.href = '/'}
-            style={{
-              background: '#f7fafc',
-              border: '1px solid #e2e8f0',
-              borderRadius: '8px',
-              padding: '0.5rem 1rem',
-              color: '#4a5568',
-              cursor: 'pointer',
-              fontSize: '0.875rem',
-              fontWeight: '500'
-            }}
-          >
-            ← Back to Dashboard
-          </button>
+          <div style={{ display: 'flex', gap: '0.75rem' }}>
+            <button 
+              onClick={() => window.location.href = '/'}
+              style={{
+                background: '#f7fafc',
+                border: '1px solid #e2e8f0',
+                borderRadius: '8px',
+                padding: '0.5rem 1rem',
+                color: '#4a5568',
+                cursor: 'pointer',
+                fontSize: '0.875rem',
+                fontWeight: '500'
+              }}
+            >
+              ← Back to Dashboard
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* Success Message */}
       {showSuccess && (
         <div style={{
           position: 'fixed',
@@ -221,40 +213,173 @@ export default function SocialPostingPage() {
         flexDirection: 'column',
         gap: '2rem'
       }}>
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.9)',
-          backdropFilter: 'blur(10px)',
-          borderRadius: '16px',
-          padding: '1.5rem',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
-        }}>
-          <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1a202c' }}>
-            🚀 Social Posting Integration Complete
-          </h2>
-          <p style={{ color: '#6b7280', marginBottom: '1rem' }}>
-            The SaaS Marketing Agent has been successfully integrated into this social posting interface with:
-          </p>
-          <ul style={{ color: '#6b7280', paddingLeft: '1.5rem' }}>
-            <li>✅ Tab navigation system (Manual, SaaS Agent, Approval Queue)</li>
-            <li>✅ UK timezone automation for optimal posting times</li>
-            <li>✅ Content approval workflow with visual status indicators</li>
-            <li>✅ Real-time notifications for pending approvals</li>
-            <li>✅ Product selection for multiple SaaS products</li>
-            <li>✅ One-click generation for LinkedIn, Twitter, blogs, and calendars</li>
-            <li>✅ Fixed JSON parsing in SaaS marketing API</li>
-            <li>✅ Automated content scheduling upon approval</li>
-          </ul>
+        <div style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: '2rem' }}>
           <div style={{
-            background: '#e6fffa',
-            border: '1px solid #4fd1c7',
-            borderRadius: '8px',
-            padding: '1rem',
-            marginTop: '1rem'
+            background: 'rgba(255, 255, 255, 0.9)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '16px',
+            padding: '1.5rem',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+            height: 'fit-content'
           }}>
-            <p style={{ color: '#047857', fontWeight: '600', margin: 0 }}>
-              ✨ Ready to use! The integrated SaaS marketing agent can now generate authentic content for all your products with UK-optimized scheduling.
-            </p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1a202c' }}>
+              Templates
+            </h3>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.75rem',
+              maxHeight: '500px',
+              overflowY: 'auto'
+            }}>
+              {templates.map((template) => (
+                <div
+                  key={template.id}
+                  onClick={() => handleTemplateSelect(template)}
+                  style={{
+                    background: selectedTemplate?.id === template.id ? '#ebf8ff' : 'white',
+                    border: selectedTemplate?.id === template.id ? '2px solid #4299e1' : '1px solid #e2e8f0',
+                    borderRadius: '8px',
+                    padding: '1rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s'
+                  }}
+                >
+                  <h4 style={{ fontWeight: '600', fontSize: '0.875rem', color: '#1a202c', margin: '0 0 0.5rem 0' }}>
+                    {template.name}
+                  </h4>
+                  <p style={{ fontSize: '0.75rem', color: '#718096', marginBottom: '0.5rem' }}>
+                    {template.content.substring(0, 100)}...
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div style={{
+              background: 'rgba(255, 255, 255, 0.9)',
+              backdropFilter: 'blur(10px)',
+              borderRadius: '16px',
+              padding: '1.5rem',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
+            }}>
+              <h3 style={{ fontSize: '1.125rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1a202c' }}>
+                Select Platforms
+              </h3>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                gap: '0.75rem'
+              }}>
+                {PLATFORMS.map((platform) => (
+                  <label
+                    key={platform.id}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      padding: '1rem',
+                      border: selectedPlatforms.includes(platform.id) ? '2px solid #4299e1' : '1px solid #e2e8f0',
+                      borderRadius: '8px',
+                      cursor: 'pointer',
+                      background: selectedPlatforms.includes(platform.id) ? '#ebf8ff' : 'white',
+                      minHeight: '60px'
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedPlatforms.includes(platform.id)}
+                      onChange={() => handlePlatformToggle(platform.id)}
+                      style={{ display: 'none' }}
+                    />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <span style={{ fontSize: '1.125rem' }}>{platform.icon}</span>
+                      <span style={{ fontWeight: '500', fontSize: '0.875rem', color: '#1a202c' }}>
+                        {platform.name}
+                      </span>
+                    </div>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div style={{
+              background: 'rgba(255, 255, 255, 0.9)',
+              backdropFilter: 'blur(10px)',
+              borderRadius: '16px',
+              padding: '1.5rem',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
+            }}>
+              <h3 style={{ fontSize: '1.125rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1a202c' }}>
+                Post Content
+              </h3>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div>
+                  <label style={{ fontSize: '0.875rem', fontWeight: '500', color: '#4a5568', marginBottom: '0.5rem', display: 'block' }}>
+                    Content
+                  </label>
+                  <textarea
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder="Write your post content here..."
+                    rows={6}
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      border: '1px solid #e2e8f0',
+                      borderRadius: '8px',
+                      fontSize: '0.875rem',
+                      resize: 'vertical',
+                      minHeight: '150px',
+                      fontFamily: 'inherit'
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ fontSize: '0.875rem', fontWeight: '500', color: '#4a5568', marginBottom: '0.5rem', display: 'block' }}>
+                    Schedule Time (optional)
+                  </label>
+                  <input
+                    type="datetime-local"
+                    value={scheduledTime}
+                    onChange={(e) => setScheduledTime(e.target.value)}
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      border: '1px solid #e2e8f0',
+                      borderRadius: '8px',
+                      fontSize: '0.875rem'
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <button
+                onClick={handleSchedulePost}
+                disabled={isLoading || !content.trim() || selectedPlatforms.length === 0}
+                style={{
+                  width: '100%',
+                  background: isLoading || !content.trim() || selectedPlatforms.length === 0 ? '#a0aec0' : 'linear-gradient(135deg, #4299e1, #667eea)',
+                  color: 'white',
+                  fontWeight: '700',
+                  padding: '1rem 1.5rem',
+                  border: 'none',
+                  borderRadius: '12px',
+                  cursor: isLoading || !content.trim() || selectedPlatforms.length === 0 ? 'not-allowed' : 'pointer',
+                  fontSize: '1rem',
+                  minHeight: '60px'
+                }}
+              >
+                {isLoading ? 'Scheduling...' : `${scheduledTime ? 'Schedule' : 'Post Now'} to ${selectedPlatforms.length} Platform${selectedPlatforms.length > 1 ? 's' : ''}`}
+              </button>
+            </div>
           </div>
         </div>
       </main>

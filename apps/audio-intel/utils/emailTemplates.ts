@@ -38,51 +38,41 @@ export function generateContactExportEmail(data: EmailTemplateData): string {
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎵 Your Enriched Contacts Are Ready</h1>
-            <p>Professional contact intelligence delivered to your inbox</p>
+            <h1>🎵 Your Contact Enrichment is Done!</h1>
+            <p>Ready for your campaign</p>
         </div>
         
         <div class="content">
-            <p>Hi ${userName || 'there'},</p>
+            <p>Hiya ${userName || 'there'}!</p>
             
-            <p>Great news! Your contact enrichment is complete and ready for download.</p>
+            <p>Your contact enrichment is done. <strong>${contactsCount?.toLocaleString() || 'N/A'} contacts</strong> analysed and ready for your campaign.</p>
+            
+            <p>The data's attached as <strong>your chosen format</strong> - should have everything you need to pitch like you actually know these people.</p>
             
             <div class="stats">
-                <h3>📊 Export Summary</h3>
-                <p><strong>Contacts Processed:</strong> ${contactsCount?.toLocaleString() || 'N/A'}</p>
-                <p><strong>Export Type:</strong> Enriched Contact Intelligence</p>
-                <p><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
+                <h3>📋 What You're Getting</h3>
+                <p><strong>Contacts:</strong> ${contactsCount?.toLocaleString() || 'N/A'} fully enriched</p>
+                <p><strong>Intelligence:</strong> Genres, submission preferences, recent activity</p>
+                <p><strong>Validation:</strong> All emails checked for deliverability</p>
             </div>
             
             ${customMessage ? `<p><em>${customMessage}</em></p>` : ''}
             
-            <p>Your enriched contacts include:</p>
-            <ul>
-                <li>🎯 Professional contact intelligence</li>
-                <li>📧 Verified email addresses</li>
-                <li>🎵 Music industry context</li>
-                <li>📊 Research confidence scores</li>
-                <li>⏰ Last research timestamps</li>
-            </ul>
-            
-            <div style="text-align: center;">
-                <a href="${downloadUrl || '#'}" class="button">📥 Download Your Contacts</a>
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="${downloadUrl || '#'}" class="button">📥 Download Your Data</a>
             </div>
             
-            <p><strong>Next Steps:</strong></p>
-            <ol>
-                <li>Download your enriched contacts</li>
-                <li>Import into your CRM or email system</li>
-                <li>Start your targeted outreach campaigns</li>
-                <li>Track your results and optimize</li>
-            </ol>
+            <p>Any issues with the export, just ping the chatbot and we'll sort it.</p>
             
-            <p>Need help with your outreach strategy? Our team is here to support your music promotion success.</p>
+            <p><strong>Good luck with the campaign!</strong></p>
+            
+            <p>Chris</p>
+            <p style="color: #666; font-size: 14px; margin-top: 5px;">Audio Intel</p>
         </div>
         
         <div class="footer">
-            <p>Powered by ${companyName} | Professional Music Industry Intelligence</p>
-            <p>Questions? Reply to this email or contact our support team.</p>
+            <p>Built by ${companyName} | Music Industry Intelligence That Actually Works</p>
+            <p>Questions? Hit reply or use the chatbot on the site.</p>
         </div>
     </div>
 </body>

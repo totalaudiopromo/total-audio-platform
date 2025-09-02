@@ -1133,7 +1133,7 @@ export class ProfessionalExportService {
             customMessage: data.customMessage,
             whiteLabel: data.whiteLabel
           });
-          subject = `${data.whiteLabel.companyName || 'Audio Intel'} - Contact Export (${data.contactsCount} contacts)`;
+          subject = `Your ${data.contactsCount} enriched contacts are ready! 🎵`;
           break;
 
         case 'analytics':

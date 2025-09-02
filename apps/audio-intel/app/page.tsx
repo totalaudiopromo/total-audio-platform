@@ -37,6 +37,8 @@ import {
 } from "lucide-react"
 import { AudioCharacter } from "@/components/ui/audio-character"
 import { RealTimeMetrics } from "@/components/ui/real-time-metrics"
+import LocationTracker from "./components/LocationTracker"
+import LiveChatBot from "./components/LiveChatBot"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -191,6 +193,9 @@ export default function AudioIntelLanding() {
   
   return (
     <div className="min-h-screen bg-[#f8f9fa]">
+      <LocationTracker page="home" />
+      {betaEmail && <LocationTracker email={betaEmail} page="beta-signup" />}
+      
       {/* Header */}
       <header className={`audio-intel-header sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative`}>
         <div className="audio-intel-container container flex h-16 items-center justify-between">
@@ -282,8 +287,12 @@ export default function AudioIntelLanding() {
           </div>
           
           <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-8 leading-tight">
-            Drop Your Chaos Here
-            <span className="block text-blue-600">Transform Messy Spreadsheets Instantly</span>
+            <span className="hidden md:block">Don't Let Manual Research</span>
+            <span className="block md:hidden">Stop Manual Research</span>
+            <span className="block text-blue-600">
+              <span className="hidden md:inline">Kill Your Music Career</span>
+              <span className="md:hidden">Killing Your Career</span>
+            </span>
           </h1>
           
           <div className="max-w-4xl mx-auto mb-12">
@@ -376,6 +385,33 @@ export default function AudioIntelLanding() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Stats Section - MOVED UP for immediate credibility */}
+      <section className={`py-16 px-4 relative bg-gradient-to-br from-gray-50 to-blue-50`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6">
+              Used daily by working music professionals
+            </h2>
+            <p className="text-xl font-bold text-blue-600 mb-8">
+              Live metrics from real campaigns - updated every 30 seconds
+            </p>
+            
+            {/* Dog throwing vinyl - REDUCED PADDING */}
+            <div className="mb-8">
+              <Image 
+                src="/assets/loading-states/vinyl-throw-action.png"
+                alt="Audio mascot throwing vinyl records - representing active music promotion in motion"
+                width={350}
+                height={350}
+                className="mx-auto -my-4"
+              />
+            </div>
+          </div>
+
+          <RealTimeMetrics />
         </div>
       </section>
 
@@ -485,7 +521,7 @@ export default function AudioIntelLanding() {
                   </div>
                 </div>
                 <p className="text-lg font-bold text-gray-700 mb-4">
-                  Track your enrichment performance with real-time analytics and comprehensive reporting. Monitor success rates, platform breakdowns, and processing metrics.
+                  Know exactly how your campaigns perform with real-time success tracking. See which contacts convert, which platforms deliver best results, and where to focus your efforts next.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="secondary" className="bg-yellow-50 text-yellow-700">Real-time Metrics</Badge>
@@ -509,7 +545,7 @@ export default function AudioIntelLanding() {
                   </div>
                 </div>
                 <p className="text-lg font-bold text-gray-700 mb-4">
-                  Track campaign performance, contact engagement, and export detailed reports. Real metrics from real campaigns, not inflated numbers.
+                  Stop guessing what works. Get clear insights into which contacts open your emails, which platforms drive the best response rates, and how to improve your pitch success.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="secondary" className="bg-red-50 text-red-700">Performance Metrics</Badge>
@@ -533,7 +569,7 @@ export default function AudioIntelLanding() {
                   </div>
                 </div>
                 <p className="text-lg font-bold text-gray-700 mb-4">
-                  Export enriched contacts in multiple formats with email delivery and CRM integration. Built for the workflow of working music professionals, not enterprise sales teams.
+                  Get your enriched contacts exactly how you need them - CSV for spreadsheets, direct email delivery, or seamlessly integrate with your existing CRM. No tech headaches, just the data you need.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="secondary" className="bg-indigo-50 text-indigo-700">CSV/Excel Export</Badge>
@@ -566,32 +602,6 @@ export default function AudioIntelLanding() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className={`py-24 px-4 relative`}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">
-              Used daily by working music professionals
-            </h2>
-            <p className="text-xl font-bold text-blue-600 mb-8">
-              Live metrics from real campaigns - updated every 30 seconds
-            </p>
-            
-            {/* Dog throwing vinyl - REDUCED PADDING */}
-            <div className="mb-8">
-              <Image 
-                src="/assets/loading-states/vinyl-throw-action.png"
-                alt="Audio mascot throwing vinyl records - representing active music promotion in motion"
-                width={350}
-                height={350}
-                className="mx-auto -my-4"
-              />
-            </div>
-          </div>
-
-          <RealTimeMetrics />
-        </div>
-      </section>
 
       {/* Problem Section */}
       <section id="problem" className={`py-24 px-4 relative`}>
@@ -679,7 +689,7 @@ export default function AudioIntelLanding() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-12">
-            <div className={`bg-gray-50 p-10 text-center rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden`}>
+            <div className={`bg-gradient-to-br from-blue-50 to-blue-100 p-10 text-center rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden`}>
               <Image 
                 src="/assets/loading-states/analyzing-data.png"
                 alt="AI analyzing contact data - instant enrichment in progress"
@@ -689,12 +699,11 @@ export default function AudioIntelLanding() {
               />
               <h3 className="text-2xl font-black text-gray-900 mb-6">Instant Enrichment</h3>
               <p className="text-lg font-bold text-gray-700">
-                Upload your basic email list and get back detailed intelligence including submission guidelines, contact
-                preferences, and pitch-ready insights in seconds. Tested on real radio promotion campaigns.
+                Turn basic contact lists into pitch-ready intelligence in seconds. Get submission guidelines, contact preferences, and everything you need to land your music in the right hands.
               </p>
             </div>
 
-            <div className={`bg-gray-50 p-10 text-center rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden`}>
+            <div className={`bg-gradient-to-br from-green-50 to-green-100 p-10 text-center rounded-2xl border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden`}>
               <Image 
                 src="/assets/loading-states/success-complete.png"
                 alt="Success state - verified intelligence complete with high confidence"
@@ -704,12 +713,11 @@ export default function AudioIntelLanding() {
               />
               <h3 className="text-2xl font-black text-gray-900 mb-6">Verified Intelligence</h3>
               <p className="text-lg font-bold text-gray-700">
-                90% accuracy through cross-referenced data from multiple sources, continuously updated to ensure you
-                have the most current contact information. Real data from real campaigns.
+                Never waste time on dead contacts again. 90% accuracy guarantee means you'll actually reach the people who can help your music career, not outdated email addresses.
               </p>
             </div>
 
-            <div className={`bg-gray-50 p-10 text-center rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden`}>
+            <div className={`bg-gradient-to-br from-purple-50 to-purple-100 p-10 text-center rounded-2xl border-4 border-purple-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative overflow-hidden`}>
               <Image 
                 src="/assets/loading-states/intelligence-complete.png"
                 alt="Industry-focused intelligence complete - music professionals ready"
@@ -719,9 +727,72 @@ export default function AudioIntelLanding() {
               />
               <h3 className="text-2xl font-black text-gray-900 mb-6">Industry Focus</h3>
               <p className="text-lg font-bold text-gray-700">
-                Specialised in music industry contacts - playlist curators, radio DJs, music bloggers, and journalists
-                from major platforms and independent outlets. Built by someone who works in this industry.
+                Stop pitching to the wrong people. Get targeted contacts for playlist curators, radio DJs, music bloggers, and journalists who actually cover your genre and style.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Guarantees Section */}
+      <section className={`py-24 px-4 bg-gradient-to-br from-green-50 to-blue-50 relative`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">
+              Our Guarantees
+            </h2>
+            <p className="text-2xl font-bold text-gray-700 max-w-4xl mx-auto">
+              We stake our reputation on the quality of our intelligence. Built by someone who uses it daily.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-12">
+            <div className={`bg-white p-10 text-center rounded-2xl border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden`}>
+              <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <span className="text-4xl font-black text-white">90%</span>
+              </div>
+              <h3 className="text-2xl font-black text-gray-900 mb-6">Data Accuracy Guarantee</h3>
+              <p className="text-lg font-bold text-gray-700 mb-6">
+                90% minimum accuracy on all contact enrichments. Tested on 500+ real radio promotion campaigns. 
+                If we don't hit this mark, we'll refund the difference.
+              </p>
+              <div className="bg-green-100 p-4 rounded-lg border-2 border-green-200">
+                <p className="text-sm font-bold text-green-800">
+                  "I use this tool daily on my own campaigns. I won't sell you anything I wouldn't use myself." - Chris
+                </p>
+              </div>
+            </div>
+
+            <div className={`bg-white p-10 text-center rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden`}>
+              <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <Clock className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-black text-gray-900 mb-6">Processing Time Promise</h3>
+              <p className="text-lg font-bold text-gray-700 mb-6">
+                Beta: 2-3 minutes maximum. Professional: 60 seconds or less. Agency: Instant processing. 
+                If we're slower, your next enrichment is free.
+              </p>
+              <div className="bg-blue-100 p-4 rounded-lg border-2 border-blue-200">
+                <p className="text-sm font-bold text-blue-800">
+                  No waiting around when you could be pitching your music to the right people.
+                </p>
+              </div>
+            </div>
+
+            <div className={`bg-white p-10 text-center rounded-2xl border-4 border-purple-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative overflow-hidden`}>
+              <div className="w-20 h-20 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <Shield className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-black text-gray-900 mb-6">No Bullsh*t Guarantee</h3>
+              <p className="text-lg font-bold text-gray-700 mb-6">
+                No hidden fees, no card details during beta, no premium feature lockouts. 
+                What you see is what you get. Cancel anytime with one email.
+              </p>
+              <div className="bg-purple-100 p-4 rounded-lg border-2 border-purple-200">
+                <p className="text-sm font-bold text-purple-800">
+                  Built by someone who hates deceptive pricing as much as you do.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -816,12 +887,28 @@ export default function AudioIntelLanding() {
                   <ArrowRight className="w-8 h-8 text-blue-500 mx-auto" />
                 </div>
                 <div>
-                  <h4 className="font-black text-gray-900 mb-3">Clean, Enriched Data:</h4>
-                  <div className="bg-green-100 p-4 rounded-lg font-mono text-sm">
-                    <div>• John Smith | john@bbc.co.uk | BBC Radio | High Confidence</div>
-                    <div>• Sarah Johnson | sarah@spotify.com | Spotify Curator | High Confidence</div>
-                    <div>• Mike Davis | mike@radio1.com | Radio 1 DJ | High Confidence</div>
-                    <div>• Emma Wilson | emma@musicblog.com | Music Blogger | High Confidence</div>
+                  <h4 className="font-black text-gray-900 mb-3">Clean, Enriched Data with Full Intelligence:</h4>
+                  <div className="bg-green-100 p-4 rounded-lg font-mono text-xs leading-relaxed">
+                    <div className="mb-3 pb-3 border-b border-green-300">
+                      <div className="font-bold">• John Smith | john@bbc.co.uk | BBC Radio 2</div>
+                      <div className="text-green-700 ml-2">↳ Role: Music Producer | Genres: Pop, Rock | Submission: demos@bbc.co.uk</div>
+                      <div className="text-green-700 ml-2">↳ Best Contact: Tuesdays 10-12pm | Prefers: MP3 + Brief | Confidence: 94%</div>
+                    </div>
+                    <div className="mb-3 pb-3 border-b border-green-300">
+                      <div className="font-bold">• Sarah Johnson | sarah@spotify.com | Spotify Editorial</div>
+                      <div className="text-green-700 ml-2">↳ Role: Playlist Curator | Focus: Indie Folk, Acoustic | 2.3M followers</div>
+                      <div className="text-green-700 ml-2">↳ Submission Guidelines: Via Spotify for Artists only | Confidence: 91%</div>
+                    </div>
+                    <div className="mb-3 pb-3 border-b border-green-300">
+                      <div className="font-bold">• Mike Davis | mike@radio1.com | BBC Radio 1</div>
+                      <div className="text-green-700 ml-2">↳ Role: Evening Show DJ | Genres: Electronic, House | Live: 7-10pm</div>
+                      <div className="text-green-700 ml-2">↳ Contact Via: PA assistant | Prefers: Email + SoundCloud | Confidence: 96%</div>
+                    </div>
+                    <div>
+                      <div className="font-bold">• Emma Wilson | emma@musicblog.com | The Music Insider</div>
+                      <div className="text-green-700 ml-2">↳ Role: Senior Writer | Coverage: Album reviews, interviews | 150k monthly</div>
+                      <div className="text-green-700 ml-2">↳ Pitch Style: Personal story angle preferred | Response rate: High | Confidence: 88%</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -835,57 +922,97 @@ export default function AudioIntelLanding() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">Simple, Transparent Pricing</h2>
-            <p className="text-2xl font-bold text-gray-700 max-w-4xl mx-auto">
+            <p className="text-2xl font-bold text-gray-700 max-w-4xl mx-auto mb-8">
               Choose the plan that fits your music promotion needs. All plans include our core AI enrichment features.
             </p>
+            
+            {/* Risk Reversal / Guarantee */}
+            <div className="max-w-3xl mx-auto bg-gradient-to-r from-yellow-50 to-amber-50 border-2 border-amber-200 rounded-xl p-6 mb-8">
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <div className="w-6 h-6 bg-amber-500 rounded-full flex items-center justify-center">
+                    <span className="text-white font-black text-sm">✓</span>
+                  </div>
+                  <h3 className="text-xl font-black text-amber-900">90% Data Accuracy Guarantee</h3>
+                </div>
+                <p className="text-base font-bold text-amber-800">
+                  Wrong intel doesn't count towards your monthly limit - we only charge for contacts that actually help your campaigns
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="grid lg:grid-cols-4 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
             {/* Beta Free */}
             <div className="bg-gradient-to-br from-green-50 to-white p-10 rounded-2xl border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative">
               <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-600 to-green-500 rounded-full px-8 py-3 font-black text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                FREE BETA
+                TRY THE REAL THING
               </Badge>
 
               <div className="text-center mb-10 mt-6">
-                <h3 className="text-3xl font-black text-gray-900 mb-6">Beta</h3>
+                <h3 className="text-3xl font-black text-gray-900 mb-6">FREE BETA</h3>
                 <div className="text-6xl font-black text-gray-900 mb-6">
                   FREE<span className="text-2xl text-gray-600">/beta</span>
                 </div>
+                <p className="text-lg font-bold text-gray-700 mb-4">No card needed, no tricks</p>
               </div>
 
               <ul className="space-y-5 mb-10">
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">100 contact enrichments</span>
+                  <div>
+                    <span className="font-black text-lg block">100 contact enrichments</span>
+                    <span className="text-sm text-gray-600">Proper campaigns, not just a tease</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">FREE Email Validation</span>
+                  <div>
+                    <span className="font-black text-lg block">All the AI research features</span>
+                    <span className="text-sm text-gray-600">We're not holding anything back</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">All AI research features</span>
+                  <div>
+                    <span className="font-black text-lg block">Email validation included</span>
+                    <span className="text-sm text-gray-600">Stops you looking daft with bounced emails</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">Export to CSV, Excel</span>
+                  <div>
+                    <span className="font-black text-lg block">Results in 2-3 minutes</span>
+                    <span className="text-sm text-gray-600">Time for a brew whilst it works</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">Beta tester support</span>
+                  <div>
+                    <span className="font-black text-lg block">Help us get it right</span>
+                    <span className="text-sm text-gray-600">Your feedback shapes the final product</span>
+                  </div>
                 </li>
               </ul>
+              
+              <div className="bg-green-100 p-4 rounded-lg mb-6 border-2 border-green-200">
+                <p className="text-sm font-bold text-green-800 text-center italic">
+                  "Proper beta access - test everything whilst we polish the rough edges"
+                </p>
+                <p className="text-xs text-green-700 text-center mt-2">
+                  <strong>Support:</strong> Audio chatbot support - standard response times
+                </p>
+              </div>
 
               <Link href="/pricing?plan=beta">
                 <Button 
@@ -896,108 +1023,95 @@ export default function AudioIntelLanding() {
               </Link>
             </div>
 
-            {/* Starter */}
-            <div className="bg-white p-10 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
-              <div className="text-center mb-10">
-                <h3 className="text-3xl font-black text-gray-900 mb-6">Starter</h3>
-                               <div className="text-6xl font-black text-gray-900 mb-6">
-                   £9.99<span className="text-2xl text-gray-600">/mo</span>
-                 </div>
-              </div>
-
-              <ul className="space-y-5 mb-10">
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                    <Check className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="font-black text-lg">50 contact enrichments per month</span>
-                </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                    <Check className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="font-black text-lg">• FREE Email Validation</span>
-                </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                    <Check className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="font-black text-lg">All AI research features</span>
-                </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                    <Check className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="font-black text-lg">Export to CSV, Excel</span>
-                </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                    <Check className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="font-black text-lg">Email support</span>
-                </li>
-              </ul>
-
-            <Link href="/pricing">
-              <Button 
-                className="w-full rounded-2xl font-black text-xl py-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all bg-white hover:bg-gray-50 text-black border-4 border-gray-300"
-              >
-                Start Free Trial
-              </Button>
-            </Link>
-            </div>
-
             {/* Professional - Most Popular */}
-            <div className="bg-gradient-to-br from-blue-50 to-white p-10 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative">
+            <div className="bg-gradient-to-br from-blue-50 to-white p-10 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative transform scale-105 ring-4 ring-blue-200 ring-opacity-50">
               <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full px-8 py-3 font-black text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 MOST POPULAR
               </Badge>
 
               <div className="text-center mb-10 mt-6">
-                <h3 className="text-3xl font-black text-gray-900 mb-6">Professional</h3>
-                                 <div className="text-6xl font-black text-gray-900 mb-6">
+                <h3 className="text-3xl font-black text-gray-900 mb-6">PROFESSIONAL</h3>
+                <h4 className="text-xl font-bold text-blue-600 mb-4">"Get Ahead of the Queue"</h4>
+                <div className="text-6xl font-black text-gray-900 mb-6">
                    £19.99<span className="text-2xl text-gray-600">/mo</span>
-                 </div>
+                </div>
+                <p className="text-sm font-bold text-gray-700">67p/day - what you spend on coffee</p>
               </div>
 
               <ul className="space-y-5 mb-10">
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">200 contact enrichments per month</span>
+                  <div>
+                    <span className="font-black text-lg block">200 contact enrichments</span>
+                    <span className="text-sm text-gray-600">Scale up without the stress</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">• FREE Email Validation</span>
+                  <div>
+                    <span className="font-black text-lg block">Skip the queue</span>
+                    <span className="text-sm text-gray-600">60-second processing vs 2-3 minute wait</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">Priority processing</span>
+                  <div>
+                    <span className="font-black text-lg block">Professional exports</span>
+                    <span className="text-sm text-gray-600">PDF reports, Excel files, email delivery</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">Advanced export options</span>
+                  <div>
+                    <span className="font-black text-lg block">Better analytics</span>
+                    <span className="text-sm text-gray-600">See which campaigns actually work</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">CRM integrations</span>
+                  <div>
+                    <span className="font-black text-lg block">Batch uploads</span>
+                    <span className="text-sm text-gray-600">Chuck multiple files at it simultaneously</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
+                    <Check className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <span className="font-black text-lg block">Priority Audio chat</span>
+                    <span className="text-sm text-gray-600">Faster responses for urgent questions</span>
+                  </div>
                 </li>
               </ul>
+              
+              <div className="bg-blue-100 p-4 rounded-lg mb-6 border-2 border-blue-200">
+                <p className="text-sm font-bold text-blue-800 text-center">
+                  <strong>Perfect for:</strong> Independent artists and small labels who need results yesterday
+                </p>
+                <p className="text-xs text-blue-700 text-center mt-2 italic">
+                  "Stop waiting around when you could be pitching"
+                </p>
+                <p className="text-xs text-blue-700 text-center mt-2">
+                  <strong>Support:</strong> Priority Audio chat support - faster response times for paid users
+                </p>
+              </div>
 
             <Link href="/pricing">
               <Button 
                 className="w-full rounded-2xl font-black text-xl py-6 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
               >
-                Start Free Trial
+                Skip The Queue Today
               </Button>
             </Link>
             </div>
@@ -1005,44 +1119,88 @@ export default function AudioIntelLanding() {
             {/* Agency */}
             <div className="bg-white p-10 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
               <div className="text-center mb-10">
-                <h3 className="text-3xl font-black text-gray-900 mb-6">Agency</h3>
-                                 <div className="text-6xl font-black text-gray-900 mb-6">
+                <h3 className="text-3xl font-black text-gray-900 mb-6">AGENCY</h3>
+                <h4 className="text-xl font-bold text-purple-600 mb-4">"White-Label Everything"</h4>
+                <div className="text-6xl font-black text-gray-900 mb-6">
                    £39.99<span className="text-2xl text-gray-600">/mo</span>
-                 </div>
+                </div>
+                <p className="text-sm font-bold text-gray-700">Pays for itself if you retain one extra client</p>
               </div>
 
               <ul className="space-y-5 mb-10">
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">500 contact enrichments per month</span>
+                  <div>
+                    <span className="font-black text-lg block">500 contact enrichments</span>
+                    <span className="text-sm text-gray-600">Handle multiple artists without breaking</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">Fastest processing</span>
+                  <div>
+                    <span className="font-black text-lg block">Instant processing</span>
+                    <span className="text-sm text-gray-600">No waiting around for urgent campaigns</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">White-label exports</span>
+                  <div>
+                    <span className="font-black text-lg block">Your branding on everything</span>
+                    <span className="text-sm text-gray-600">Clients think you're the intelligence source</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-black text-lg">Phone + email support</span>
+                  <div>
+                    <span className="font-black text-lg block">Client-ready reports</span>
+                    <span className="text-sm text-gray-600">They'll actually want to keep these PDFs</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
+                    <Check className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <span className="font-black text-lg block">Full analytics dashboard</span>
+                    <span className="text-sm text-gray-600">Prove your campaigns work</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
+                    <Check className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <span className="font-black text-lg block">Priority Audio chatbot support</span>
+                    <span className="text-sm text-gray-600">Fastest responses when you need answers quickly</span>
+                  </div>
                 </li>
               </ul>
+              
+              <div className="bg-purple-100 p-4 rounded-lg mb-6 border-2 border-purple-200">
+                <p className="text-sm font-bold text-purple-800 text-center">
+                  <strong>Perfect for:</strong> PR agencies and labels juggling multiple artists
+                </p>
+                <p className="text-xs text-purple-700 text-center mt-2 italic">
+                  "Clients pay you premium rates for 'insider knowledge' - we won't tell them it's just better tools"
+                </p>
+                <p className="text-xs text-purple-700 text-center mt-2">
+                  <strong>Support:</strong> Premium Audio chatbot support - prioritised responses
+                </p>
+              </div>
 
               <Link href="/pricing">
                 <Button 
                   className="w-full rounded-2xl font-black text-xl py-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all bg-white hover:bg-gray-50 text-black border-4 border-gray-300"
                 >
-                  Start Free Trial
+                  White-Label Your Intelligence
                 </Button>
               </Link>
             </div>
@@ -1060,23 +1218,14 @@ export default function AudioIntelLanding() {
             Join hundreds of artists and labels who've already saved 15+ hours per week with AI-powered contact
             intelligence. Built by someone who uses it daily in real campaigns.
           </p>
-          <div className="flex flex-col sm:flex-row gap-8 justify-center">
+          <div className="flex justify-center">
              <Button
               size="lg"
               className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-600 text-white rounded-2xl px-12 py-8 text-2xl font-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
               onClick={() => window.location.href = '/pricing'}
             >
               <Play className="w-8 h-8 mr-4" />
-              Try the tool I use daily
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-2xl border-4 border-gray-300 px-12 py-8 text-2xl font-black hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all bg-white"
-              onClick={() => window.location.href = 'mailto:info@totalaudiopromo.com?subject=Audio Intel Demo Request&body=Hi, I would like to schedule a demo of Audio Intel. Please let me know your availability.'}
-            >
-              See why industry professionals choose Audio Intel
-              <ArrowRight className="w-8 h-8 ml-4" />
+              Try the tool I use daily - FREE
             </Button>
           </div>
         </div>
@@ -1213,6 +1362,9 @@ export default function AudioIntelLanding() {
         </div>
       </section>
 
+      {/* Live Chat Bot */}
+      <LiveChatBot userTier="free" />
+      
       {/* Footer */}
       <footer className={`py-12 px-4 bg-gray-900 text-white relative`}>
         <div className="max-w-7xl mx-auto">

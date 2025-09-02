@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-interface BetaSignup {
+interface BetaSignupData {
   name: string;
   email: string;
   role: 'independent-artist' | 'pr-agency' | 'label' | 'other';
@@ -8,187 +8,106 @@ interface BetaSignup {
   referralSource: string;
   currentTools: string;
   goals: string;
-  timestamp: string;
+  company?: string;
+  website?: string;
 }
 
-// In production, this would save to your database
-// For now, we'll log and store in memory/Notion
-export async function POST(request: Request) {
+// In-memory storage for demo (in production, this would use a database)
+const betaSignups: (BetaSignupData & { id: string; signupDate: string; status: 'pending' | 'approved' | 'rejected' })[] = [];
+
+export async function POST(request: NextRequest) {
   try {
-    const signupData: BetaSignup = await request.json();
+    const signupData: BetaSignupData = await request.json();
+
+    // Validate required fields
+    const required = ['name', 'email', 'role', 'referralSource', 'goals'];
+    const missing = required.filter(field => !signupData[field as keyof BetaSignupData]);
     
-    // Add timestamp
-    const betaUser = {
-      ...signupData,
-      timestamp: new Date().toISOString(),
-      status: 'pending',
-      id: `beta-${Date.now()}`
-    };
-    
-    console.log('🎉 New beta signup:', {
-      name: betaUser.name,
-      email: betaUser.email,
-      role: betaUser.role,
-      interests: betaUser.interests.length
-    });
-    
-    // In production, you would:
-    // 1. Save to database
-    // 2. Send welcome email
-    // 3. Add to ConvertKit/Mailchimp
-    // 4. Create user account
-    // 5. Send Slack/Discord notification
-    
-    // For now, simulate successful signup
-    const welcomeEmail = {
-      to: betaUser.email,
-      subject: '🚀 Welcome to Total Audio Promo Beta!',
-      content: `
-        Hi ${betaUser.name}!
-        
-        Thanks for joining our beta program! Here's what happens next:
-        
-        🎵 AUDIO INTEL BETA ACCESS:
-        → Visit: http://localhost:3001
-        → Start enriching contacts immediately
-        → 100 contact enrichments per month
-        → 200 email validations per month
-        → 10 CSV exports per month
-        
-        🎛️ COMMAND CENTRE:
-        → Visit: http://localhost:3000
-        → Monitor your progress
-        → Real-time beta analytics
-        
-        🤝 DIRECT SUPPORT:
-        → Email: info@totalaudiopromo.com
-        → We respond within 2 hours
-        → Your feedback shapes the product
-        
-        Ready to transform your music promotion?
-        
-        Best,
-        The Total Audio Promo Team
-      `
-    };
-    
-    // Simulate email sending
-    console.log('📧 Welcome email queued:', welcomeEmail.subject);
-    
-    // Add to beta tracking
-    try {
-      await fetch('http://localhost:3000/api/beta-tracker', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userId: betaUser.id,
-          email: betaUser.email,
-          name: betaUser.name,
-          app: 'beta-signup',
-          action: 'signup_completed',
-          timestamp: betaUser.timestamp,
-          metadata: {
-            role: betaUser.role,
-            interests: betaUser.interests,
-            currentTools: betaUser.currentTools
-          }
-        }),
-      });
-    } catch (trackingError) {
-      console.error('Beta tracking error:', trackingError);
+    if (missing.length > 0) {
+      return NextResponse.json(
+        { error: `Missing required fields: ${missing.join(', ')}` },
+        { status: 400 }
+      );
     }
-    
-    // In production, save to Notion for tracking
-    const notionData = {
-      Name: betaUser.name,
-      Email: betaUser.email,
-      Role: betaUser.role,
-      Interests: betaUser.interests.join(', '),
-      'Current Tools': betaUser.currentTools,
-      Goals: betaUser.goals,
-      'Signup Date': betaUser.timestamp,
-      Status: 'Active Beta User'
+
+    // Check for duplicate email
+    const existingSignup = betaSignups.find(signup => signup.email === signupData.email);
+    if (existingSignup) {
+      return NextResponse.json(
+        { error: 'This email is already registered for beta access' },
+        { status: 409 }
+      );
+    }
+
+    // Create new beta signup
+    const newSignup = {
+      id: `beta_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      ...signupData,
+      signupDate: new Date().toISOString(),
+      status: 'pending' as const
     };
-    
-    console.log('📊 Beta user data ready for Notion:', {
-      email: notionData.Email,
-      role: notionData.Role,
-      interests: notionData.Interests.split(', ').length
+
+    betaSignups.push(newSignup);
+
+    // Log the signup
+    console.log(`[${new Date().toISOString()}] New beta signup:`, {
+      id: newSignup.id,
+      email: newSignup.email,
+      role: newSignup.role,
+      source: newSignup.referralSource
     });
-    
+
     return NextResponse.json({
       success: true,
-      message: 'Welcome to the beta!',
-      userId: betaUser.id,
-      accessLinks: {
-        audioIntel: 'http://localhost:3001',
-        commandCentre: 'http://localhost:3000'
-      },
-      betaLimits: {
-        contactEnrichments: 100,
-        emailValidations: 200,
-        csvExports: 10,
-        period: 'monthly'
-      },
-      welcomeEmail: {
-        sent: true,
-        to: betaUser.email
+      signupId: newSignup.id,
+      message: 'Beta signup successful! You will receive an email with next steps.',
+      data: {
+        id: newSignup.id,
+        email: newSignup.email,
+        status: newSignup.status,
+        signupDate: newSignup.signupDate
       }
     });
-    
+
   } catch (error) {
-    console.error('❌ Beta signup error:', error);
-    
-    return NextResponse.json({
-      success: false,
-      error: 'Signup failed. Please try again.',
-      details: error instanceof Error ? error.message : 'Unknown error occurred'
-    }, { status: 500 });
+    console.error('Beta signup error:', error);
+    return NextResponse.json(
+      { error: 'Failed to process beta signup' },
+      { status: 500 }
+    );
   }
 }
 
-// GET endpoint to list beta signups (for admin)
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    // In production, this would fetch from your database
-    // For now, return sample data
+    const { searchParams } = new URL(request.url);
+    const status = searchParams.get('status');
     
-    const betaSignups = [
-      {
-        id: 'beta-001',
-        name: 'Sarah Mitchell',
-        email: 'sarah@independentartist.com',
-        role: 'independent-artist',
-        interests: ['contact-enrichment', 'playlist-discovery'],
-        signupDate: '2025-08-10T10:30:00Z',
-        status: 'active'
-      },
-      {
-        id: 'beta-002', 
-        name: 'Mike Thompson',
-        email: 'mike@musicpr.co.uk',
-        role: 'pr-agency',
-        interests: ['multi-client-tools', 'api-integrations'],
-        signupDate: '2025-08-12T14:15:00Z',
-        status: 'active'
+    let filteredSignups = betaSignups;
+    if (status && ['pending', 'approved', 'rejected'].includes(status)) {
+      filteredSignups = betaSignups.filter(signup => signup.status === status);
+    }
+
+    // Sort by signup date (newest first)
+    filteredSignups.sort((a, b) => new Date(b.signupDate).getTime() - new Date(a.signupDate).getTime());
+
+    return NextResponse.json({
+      success: true,
+      signups: filteredSignups,
+      total: filteredSignups.length,
+      stats: {
+        pending: betaSignups.filter(s => s.status === 'pending').length,
+        approved: betaSignups.filter(s => s.status === 'approved').length,
+        rejected: betaSignups.filter(s => s.status === 'rejected').length,
+        total: betaSignups.length
       }
-    ];
-    
-    return NextResponse.json({
-      totalSignups: betaSignups.length,
-      signups: betaSignups,
-      lastUpdated: new Date().toISOString()
     });
-    
+
   } catch (error) {
-    console.error('❌ Error fetching beta signups:', error);
-    
-    return NextResponse.json({
-      error: 'Failed to fetch beta signups',
-      totalSignups: 0,
-      signups: []
-    }, { status: 500 });
+    console.error('Failed to fetch beta signups:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch beta signups' },
+      { status: 500 }
+    );
   }
 }

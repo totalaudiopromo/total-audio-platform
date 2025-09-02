@@ -101,9 +101,41 @@ export default function ReportsPage() {
     }, 3000);
   };
 
-  const downloadReport = (reportId: string) => {
-    // In production, this would trigger a real download
-    alert(`Downloading report: ${reportId}`);
+  const downloadReport = async (reportId: string, format: 'csv' | 'json' = 'csv') => {
+    try {
+      const response = await fetch('/api/reports/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reportId, format })
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        alert(`Failed to generate report: ${error.error}`);
+        return;
+      }
+
+      // Get filename from response headers
+      const contentDisposition = response.headers.get('Content-Disposition');
+      const filename = contentDisposition 
+        ? contentDisposition.split('filename=')[1].replace(/"/g, '')
+        : `${reportId}-report.${format}`;
+
+      // Create download
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+
+    } catch (error) {
+      console.error('Download failed:', error);
+      alert('Failed to download report');
+    }
   };
 
   const filteredReports = selectedType === 'all' 
@@ -334,22 +366,40 @@ export default function ReportsPage() {
                 </button>
                 
                 {report.status === 'ready' && (
-                  <button
-                    onClick={() => downloadReport(report.id)}
-                    style={{
-                      background: 'transparent',
-                      color: '#047857',
-                      border: '2px solid #047857',
-                      borderRadius: '8px',
-                      padding: '0.75rem 1rem',
-                      fontSize: '0.875rem',
-                      fontWeight: '600',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s'
-                    }}
-                  >
-                    Download
-                  </button>
+                  <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <button
+                      onClick={() => downloadReport(report.id, 'csv')}
+                      style={{
+                        background: 'transparent',
+                        color: '#047857',
+                        border: '2px solid #047857',
+                        borderRadius: '8px',
+                        padding: '0.75rem 1rem',
+                        fontSize: '0.875rem',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s'
+                      }}
+                    >
+                      📊 CSV
+                    </button>
+                    <button
+                      onClick={() => downloadReport(report.id, 'json')}
+                      style={{
+                        background: '#047857',
+                        color: 'white',
+                        border: '2px solid #047857',
+                        borderRadius: '8px',
+                        padding: '0.75rem 1rem',
+                        fontSize: '0.875rem',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s'
+                      }}
+                    >
+                      📋 JSON
+                    </button>
+                  </div>
                 )}
               </div>
             </div>

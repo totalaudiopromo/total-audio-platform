@@ -29,6 +29,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate scheduled time if provided
+    let postDate = new Date();
+    if (scheduledTime) {
+      const scheduleDate = new Date(scheduledTime);
+      if (isNaN(scheduleDate.getTime())) {
+        return NextResponse.json(
+          { error: 'Invalid scheduled time format' },
+          { status: 400 }
+        );
+      }
+      if (scheduleDate <= new Date()) {
+        return NextResponse.json(
+          { error: 'Scheduled time must be in the future' },
+          { status: 400 }
+        );
+      }
+      postDate = scheduleDate;
+    }
+
     // Generate platform-specific content
     const platformPosts = await Promise.all(
       platforms.map(async (platform) => {
@@ -37,8 +56,8 @@ export async function POST(request: NextRequest) {
           platform,
           content: optimizedContent,
           media: media || [],
-          scheduledTime: scheduledTime ? new Date(scheduledTime) : new Date(),
-          status: 'scheduled'
+          scheduledTime: postDate,
+          status: scheduledTime ? 'scheduled' : 'posted'
         };
       })
     );
@@ -68,7 +87,9 @@ export async function POST(request: NextRequest) {
         content: p.content,
         scheduledTime: p.scheduledTime
       })),
-      message: `Post scheduled for ${platforms.length} platform(s)`
+      message: scheduledTime ? 
+        `Post scheduled for ${platforms.length} platform(s) at ${postDate.toLocaleString()}` :
+        `Post published immediately to ${platforms.length} platform(s)`
     });
 
   } catch (error) {

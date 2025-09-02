@@ -64,7 +64,7 @@ let contentStore: GeneratedContent[] = [];
 
 export async function GET() {
   try {
-    console.log('📊 Loading newsjacking content...');
+    console.log('Loading newsjacking content...');
     
     // Try to get real opportunities from the monitor
     let opportunities: any[] = [];
@@ -73,10 +73,10 @@ export async function GET() {
       if (monitorResponse.ok) {
         const monitorData = await monitorResponse.json();
         opportunities = monitorData.opportunities || [];
-        console.log(`✅ Loaded ${opportunities.length} real opportunities`);
+        console.log(`Loaded ${opportunities.length} real opportunities`);
       }
     } catch (error) {
-      console.log('📡 Monitor not available, using existing content');
+      console.log('Monitor not available, using existing content');
     }
     
     // Convert opportunities to content format

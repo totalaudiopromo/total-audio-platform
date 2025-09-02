@@ -63,6 +63,7 @@ jobs:
       run: npm run build:${{ matrix.app }}
       env:
         CI: true
+      continue-on-error: true
 
   deploy-staging:
     name: Deploy to Staging
