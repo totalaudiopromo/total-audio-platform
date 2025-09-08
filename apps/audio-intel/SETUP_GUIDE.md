@@ -7,7 +7,7 @@ Create a `.env.local` file in the root directory:
 
 ```bash
 # Required API Keys
-PERPLEXITY_API_KEY=your_perplexity_api_key_here
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
 RESEND_API_KEY=your_resend_api_key_here
 STRIPE_SECRET_KEY=your_stripe_secret_key_here
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key_here
@@ -32,12 +32,12 @@ npm run dev
 
 ## 🔑 API Key Setup
 
-### Perplexity API (Required)
-1. Go to [Perplexity AI](https://www.perplexity.ai/)
+### Claude AI API (Required)
+1. Go to [Anthropic Console](https://console.anthropic.com/)
 2. Sign up for an account
-3. Navigate to API settings
+3. Navigate to API keys section
 4. Generate an API key
-5. Add to `.env.local`: `PERPLEXITY_API_KEY=your_key_here`
+5. Add to `.env.local`: `ANTHROPIC_API_KEY=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`
 
 ### Resend API (Optional - for email notifications)
 1. Go to [Resend](https://resend.com/)
@@ -114,7 +114,7 @@ npm run dev
 
 ### Environment Variables for Production
 ```bash
-PERPLEXITY_API_KEY=your_production_key
+ANTHROPIC_API_KEY=your_production_key
 RESEND_API_KEY=your_production_key
 STRIPE_SECRET_KEY=your_production_key
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_production_key
@@ -124,7 +124,7 @@ NEXT_PUBLIC_BASE_URL=https://your-domain.com
 ## 🔍 Troubleshooting
 
 ### Common Issues
-1. **"Missing PERPLEXITY_API_KEY"**: Add your API key to `.env.local`
+1. **"Missing ANTHROPIC_API_KEY"**: Add your API key to `.env.local`
 2. **"Module not found"**: Run `npm install`
 3. **"Port 3000 in use"**: Use `npm run dev -- -p 3001`
 

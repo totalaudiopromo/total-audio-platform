@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import axios from 'axios';
+import Anthropic from '@anthropic-ai/sdk';
 
-const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
-const PERPLEXITY_API_URL = 'https://api.perplexity.ai/chat/completions';
-const PERPLEXITY_MODEL = 'sonar';
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+const anthropic = new Anthropic({
+  apiKey: ANTHROPIC_API_KEY,
+});
 
 interface AgentRequest {
   agentType: 'music-industry-strategist' | 'music-marketing-mastermind' | 'growth-hacking-optimizer' | 'viral-content-automation' | 'radio-promo-agent' | 'social-media-agent' | 'content-generation-agent' | 'analytics-agent';
@@ -43,23 +44,14 @@ Format your response as:
 - Risk Assessment: [Potential challenges and mitigation]`;
 
   try {
-    const response = await axios.post(
-      PERPLEXITY_API_URL,
-      {
-        model: PERPLEXITY_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 1500,
-        temperature: 0.3,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${PERPLEXITY_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await anthropic.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 1500,
+      temperature: 0.3,
+      messages: [{ role: 'user', content: prompt }]
+    });
 
-    const content = (response.data as any)?.choices?.[0]?.message?.content || '';
+    const content = response.content[0].type === 'text' ? response.content[0].text : '';
     
     return {
       success: true,
@@ -100,23 +92,14 @@ Format your response as:
 - Growth Tactics: [Audience growth strategies]`;
 
   try {
-    const response = await axios.post(
-      PERPLEXITY_API_URL,
-      {
-        model: PERPLEXITY_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 1500,
-        temperature: 0.3,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${PERPLEXITY_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await anthropic.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 1500,
+      temperature: 0.3,
+      messages: [{ role: 'user', content: prompt }]
+    });
 
-    const content = (response.data as any)?.choices?.[0]?.message?.content || '';
+    const content = response.content[0].type === 'text' ? response.content[0].text : '';
     
     return {
       success: true,
@@ -157,23 +140,14 @@ Format your response as:
 - Growth Metrics: [Key metrics to track]`;
 
   try {
-    const response = await axios.post(
-      PERPLEXITY_API_URL,
-      {
-        model: PERPLEXITY_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 1500,
-        temperature: 0.3,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${PERPLEXITY_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await anthropic.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 1500,
+      temperature: 0.3,
+      messages: [{ role: 'user', content: prompt }]
+    });
 
-    const content = (response.data as any)?.choices?.[0]?.message?.content || '';
+    const content = response.content[0].type === 'text' ? response.content[0].text : '';
     
     return {
       success: true,
@@ -214,23 +188,14 @@ Format your response as:
 - Automation Tips: [Tools and processes]`;
 
   try {
-    const response = await axios.post(
-      PERPLEXITY_API_URL,
-      {
-        model: PERPLEXITY_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 1500,
-        temperature: 0.3,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${PERPLEXITY_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await anthropic.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 1500,
+      temperature: 0.3,
+      messages: [{ role: 'user', content: prompt }]
+    });
 
-    const content = (response.data as any)?.choices?.[0]?.message?.content || '';
+    const content = response.content[0].type === 'text' ? response.content[0].text : '';
     
     return {
       success: true,
@@ -271,23 +236,14 @@ Format your response as:
 - Success Metrics: [How to measure success]`;
 
   try {
-    const response = await axios.post(
-      PERPLEXITY_API_URL,
-      {
-        model: PERPLEXITY_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 1500,
-        temperature: 0.3,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${PERPLEXITY_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await anthropic.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 1500,
+      temperature: 0.3,
+      messages: [{ role: 'user', content: prompt }]
+    });
 
-    const content = (response.data as any)?.choices?.[0]?.message?.content || '';
+    const content = response.content[0].type === 'text' ? response.content[0].text : '';
     
     return {
       success: true,
@@ -328,23 +284,14 @@ Format your response as:
 - Performance Optimization: [Analytics and improvement]`;
 
   try {
-    const response = await axios.post(
-      PERPLEXITY_API_URL,
-      {
-        model: PERPLEXITY_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 1500,
-        temperature: 0.3,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${PERPLEXITY_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await anthropic.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 1500,
+      temperature: 0.3,
+      messages: [{ role: 'user', content: prompt }]
+    });
 
-    const content = (response.data as any)?.choices?.[0]?.message?.content || '';
+    const content = response.content[0].type === 'text' ? response.content[0].text : '';
     
     return {
       success: true,
@@ -385,23 +332,14 @@ Format your response as:
 - Performance Tips: [How to optimize content]`;
 
   try {
-    const response = await axios.post(
-      PERPLEXITY_API_URL,
-      {
-        model: PERPLEXITY_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 1500,
-        temperature: 0.3,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${PERPLEXITY_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await anthropic.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 1500,
+      temperature: 0.3,
+      messages: [{ role: 'user', content: prompt }]
+    });
 
-    const content = (response.data as any)?.choices?.[0]?.message?.content || '';
+    const content = response.content[0].type === 'text' ? response.content[0].text : '';
     
     return {
       success: true,
@@ -442,23 +380,14 @@ Format your response as:
 - Actionable Recommendations: [Data-driven next steps]`;
 
   try {
-    const response = await axios.post(
-      PERPLEXITY_API_URL,
-      {
-        model: PERPLEXITY_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 1500,
-        temperature: 0.3,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${PERPLEXITY_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await anthropic.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 1500,
+      temperature: 0.3,
+      messages: [{ role: 'user', content: prompt }]
+    });
 
-    const content = (response.data as any)?.choices?.[0]?.message?.content || '';
+    const content = response.content[0].type === 'text' ? response.content[0].text : '';
     
     return {
       success: true,
@@ -521,7 +450,7 @@ export async function POST(req: NextRequest) {
       }, { status: 400 });
     }
 
-    if (!PERPLEXITY_API_KEY) {
+    if (!ANTHROPIC_API_KEY) {
       return NextResponse.json({ 
         success: false, 
         error: 'AI Agent API not configured' 
