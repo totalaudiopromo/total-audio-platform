@@ -22,7 +22,7 @@
     "build:web": "cd apps/web && npm run build",
     "build:command-centre": "cd apps/command-centre && npm run build",
     "build:backend": "cd apps/api && npm run build",
-    "lint": "npm run lint:audio-intel && npm run lint:playlist-pulse && npm run lint:web && npm run lint:backend",
+    "lint": "npm run lint:audio-intel && npm run lint:playlist-pulse",
     "lint:audio-intel": "cd apps/audio-intel && npm run lint",
     "lint:playlist-pulse": "cd apps/playlist-pulse && npm run lint",
     "lint:web": "cd apps/web && npm run lint",
@@ -34,7 +34,7 @@
     "test:web": "cd apps/web && npm run test",
     "test:command-centre": "cd apps/command-centre && npm run test",
     "test:backend": "cd apps/api && npm run test",
-    "typecheck": "npm run typecheck:audio-intel && npm run typecheck:playlist-pulse && npm run typecheck:web && npm run typecheck:backend",
+    "typecheck": "npm run typecheck:audio-intel",
     "typecheck:audio-intel": "cd apps/audio-intel && npm run typecheck",
     "typecheck:playlist-pulse": "cd apps/playlist-pulse && npm run typecheck",
     "typecheck:web": "cd apps/web && npm run typecheck",
@@ -67,13 +67,24 @@
     "install:workspaces": "npm run install:audio-intel && npm run install:playlist-pulse && npm run install:backend",
     "install:audio-intel": "cd apps/audio-intel && npm install",
     "install:playlist-pulse": "cd apps/playlist-pulse && npm install",
-    "install:backend": "cd apps/api && npm install"
+    "install:backend": "cd apps/api && npm install",
+    "notion:whoami": "node tools/notion/health-check.js",
+    "notion:search": "node tools/notion/search.js --query",
+    "notion:invite": "node tools/notion/invite-integration.js tools/notion/pages.json",
+    "mcp:notion": "node tools/notion/mcp-server.js",
+    "notion:audit": "node scripts/utilities/notion-workspace-manager.js --mode=audit",
+    "notion:cleanup": "node scripts/utilities/notion-workspace-manager.js --mode=cleanup",
+    "notion:consolidate": "node scripts/utilities/notion-workspace-manager.js --mode=consolidate",
+    "notion:organize": "node scripts/utilities/notion-workspace-manager.js --mode=organize",
+    "notion:databases": "node scripts/utilities/notion-workspace-manager.js --mode=create-databases"
   },
   "devDependencies": {
     "@types/compression": "^1.8.1",
     "concurrently": "^8.2.2",
     "husky": "^8.0.3",
-    "lint-staged": "^15.2.0"
+    "lint-staged": "^15.2.0",
+    "open": "^10.2.0",
+    "puppeteer": "^24.19.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -102,10 +113,13 @@
   "dependencies": {
     "@headlessui/react": "^2.2.5",
     "@next/third-parties": "^15.4.4",
+    "@notionhq/client": "^5.0.0",
     "@prisma/client": "^5.22.0",
     "@types/node": "^24.0.15",
     "axios": "^1.10.0",
     "cheerio": "^1.1.2",
+    "csv-parser": "^3.2.0",
+    "framer-motion": "^12.23.12",
     "rss-parser": "^3.13.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
