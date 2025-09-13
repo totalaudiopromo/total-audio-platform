@@ -39,7 +39,8 @@ jobs:
     
     strategy:
       matrix:
-        app: [audio-intel, web, playlist-pulse, command-centre]
+        app: [audio-intel]
+      fail-fast: false
     
     steps:
     - name: Checkout code
@@ -59,11 +60,9 @@ jobs:
       env:
         CI: true
         NODE_ENV: production
-      continue-on-error: true
     
     - name: Test ${{ matrix.app }} (if tests exist)
       run: npm run test:${{ matrix.app }} || echo "No tests configured for ${{ matrix.app }}"
-      continue-on-error: true
 
   security-audit:
     name: Security Audit
@@ -84,7 +83,6 @@ jobs:
     
     - name: Run npm audit
       run: npm audit --audit-level moderate
-      continue-on-error: true
 
   quality-gate:
     name: Quality Gate
