@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -61,10 +62,12 @@ export default function AboutPage() {
                     that works for independent musicians.
                   </p>
                   <div className="flex gap-4">
-                    <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold">
-                      <Sparkles className="w-5 h-5 mr-2" />
-                      Try Audio Intel Free
-                    </Button>
+                    <Link href="/beta">
+                      <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold">
+                        <Sparkles className="w-5 h-5 mr-2" />
+                        Try Audio Intel Free
+                      </Button>
+                    </Link>
                     <Button variant="outline" className="border-2 border-gray-300 hover:bg-gray-50 font-bold">
                       <Mail className="w-5 h-5 mr-2" />
                       Contact Us

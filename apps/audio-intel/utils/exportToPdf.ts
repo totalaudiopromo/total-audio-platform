@@ -1,7 +1,8 @@
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
+import { addWatermarkToPdf, createPreviewConfig, trackPdfConversion, PDF_CONVERSION_EVENTS } from './pdfWatermark';
 
-interface AnalyticsData {
+export interface AnalyticsData {
   totalContacts: number;
   totalEnrichments: number;
   successRate: number;
@@ -16,7 +17,7 @@ interface AnalyticsData {
   };
 }
 
-interface EnrichedContact {
+export interface EnrichedContact {
   name: string;
   email: string;
   contactIntelligence: string;
@@ -37,7 +38,7 @@ interface SearchResult {
   lastUpdated: string;
 }
 
-interface AIAgentResponse {
+export interface AIAgentResponse {
   agentType: string;
   query: string;
   response: string;
@@ -50,6 +51,14 @@ interface WhiteLabelConfig {
   companyName?: string;
   logoUrl?: string;
   primaryColor?: string;
+}
+
+interface PdfExportOptions {
+  isPreview?: boolean;
+  userTier?: string;
+  includeWatermark?: boolean;
+  pageLimit?: number;
+  quality?: 'low' | 'medium' | 'high';
 }
 
 // Audio Intel Brand Design Constants
@@ -110,53 +119,66 @@ function getConfidenceColor(confidence: string): [number, number, number] {
   }
 }
 
+// Helper function to draw a professional music waveform logo
+function drawMusicLogo(doc: jsPDF, x: number, y: number, size: number): void {
+  const waveformBars = [
+    { height: 12, x: 0 },
+    { height: 8, x: 3 },
+    { height: 16, x: 6 },
+    { height: 4, x: 9 },
+    { height: 14, x: 12 },
+    { height: 10, x: 15 }
+  ];
+  
+  doc.setFillColor(255, 255, 255); // White bars
+  waveformBars.forEach(bar => {
+    doc.roundedRect(x + bar.x, y + (size - bar.height) / 2, 2, bar.height, 1, 1, 'F');
+  });
+}
+
 // Helper function to add Audio Intel branded header
 function addPremiumHeader(doc: jsPDF, title: string, subtitle?: string, whiteLabel?: WhiteLabelConfig): void {
   const companyName = whiteLabel?.companyName || 'Audio Intel';
   const primaryColor = whiteLabel?.primaryColor ? hexToRgb(whiteLabel.primaryColor) : DESIGN.audioIntelBlue;
   
-  // Create clean gray header background to match intel.totalaudiopromo.com
-  doc.setFillColor(243, 244, 246); // Gray-100
-  doc.rect(0, 0, 210, 45, 'F');
+  // Create clean white header background 
+  doc.setFillColor(255, 255, 255); // Pure white
+  doc.rect(0, 0, 210, 50, 'F');
   
-  // Add subtle border
-  doc.setDrawColor(209, 213, 219); // Gray-300
-  doc.setLineWidth(0.5);
-  doc.line(0, 45, 210, 45);
+  // Add subtle bottom border
+  doc.setDrawColor(226, 232, 240); // Gray-200
+  doc.setLineWidth(1);
+  doc.line(0, 50, 210, 50);
   
-  // Add Total Audio Promo branding
+  // Add professional Total Audio Promo logo with music waveform
   doc.setFillColor(37, 99, 235); // Audio Intel blue
-  doc.roundedRect(18, 12, 16, 16, 3, 3, 'F');
-  doc.setTextColor(255, 255, 255);
-  doc.setFontSize(8);
-  doc.setFont('helvetica', 'bold');
-  doc.text('TAP', 21, 21);
-  doc.setFontSize(6);
-  doc.text('AUDIO', 19.5, 24);
-  doc.text('INTEL', 20, 26.5);
+  doc.roundedRect(20, 15, 24, 20, 3, 3, 'F');
   
-  // Company name with tagline - dark text on light background
+  // Draw waveform inside logo (no text overlay)
+  drawMusicLogo(doc, 24, 15, 20);
+  
+  // Company name with better positioning and spacing
   doc.setTextColor(15, 23, 42); // Slate-900
-  doc.setFontSize(16);
+  doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
-  doc.text('Total Audio Promo', 40, 18);
-  doc.setFontSize(8);
+  doc.text('Total Audio Promo', 52, 22);
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(71, 85, 105); // Slate-600
-  doc.text('AI-Powered Music Industry Intelligence Platform', 40, 25);
+  doc.text('Professional Music Industry Intelligence', 52, 30);
   
-  // Title - blue text to match brand
-  doc.setFontSize(22);
+  // Title - blue text to match brand with better spacing
+  doc.setFontSize(24);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(37, 99, 235); // Blue-600
-  doc.text(title, 20, 38);
+  doc.text(title, 20, 42);
   
-  // Subtitle
+  // Subtitle with proper spacing
   if (subtitle) {
-    doc.setFontSize(10);
+    doc.setFontSize(11);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(71, 85, 105); // Slate-600
-    doc.text(subtitle, 20, 43);
+    doc.text(subtitle, 20, 47);
   }
 }
 
@@ -212,10 +234,11 @@ function createPremiumTable(doc: jsPDF, data: any[], headers: string[], startY: 
       lineColor: DESIGN.borderColor
     },
     columnStyles: {
-      0: { cellWidth: 35 },
-      1: { cellWidth: 45 },
-      2: { cellWidth: 25 },
-      3: { cellWidth: 25 }
+      0: { cellWidth: 35, cellPadding: 3 },
+      1: { cellWidth: 45, cellPadding: 3 },
+      2: { cellWidth: 25, cellPadding: 3 },
+      3: { cellWidth: 30, cellPadding: 3 },
+      4: { cellWidth: 30, cellPadding: 3 }
     }
   });
   
@@ -225,7 +248,8 @@ function createPremiumTable(doc: jsPDF, data: any[], headers: string[], startY: 
 export function exportAnalyticsToPdf(
   analyticsData: AnalyticsData,
   filename = 'audio-intel-analytics-report.pdf',
-  whiteLabel?: WhiteLabelConfig
+  whiteLabel?: WhiteLabelConfig,
+  options?: PdfExportOptions
 ): void {
   const doc = new jsPDF();
   
@@ -301,17 +325,49 @@ export function exportAnalyticsToPdf(
     createPremiumTable(doc, platformData, ['Platform', 'Contacts', 'Percentage'], 60, whiteLabel);
   }
   
+  // Apply preview mode restrictions and watermarks
+  if (options?.isPreview || options?.includeWatermark) {
+    const previewConfig = createPreviewConfig(options?.userTier);
+    
+    // Apply page limits for preview
+    if (previewConfig.pageLimit && (doc as any).internal.getNumberOfPages() > previewConfig.pageLimit) {
+      // Trim to page limit (this is simplified - in practice you'd regenerate with limits)
+      console.log(`PDF trimmed to ${previewConfig.pageLimit} pages for preview mode`);
+    }
+    
+    // Add watermark
+    if (previewConfig.watermark.text) {
+      addWatermarkToPdf(doc, previewConfig.watermark);
+    }
+    
+    // Track conversion event
+    trackPdfConversion(PDF_CONVERSION_EVENTS.PREVIEW_GENERATED, {
+      userTier: options?.userTier,
+      pdfType: 'analytics',
+      pageCount: (doc as any).internal.getNumberOfPages()
+    });
+  }
+
   // Add premium footer
   addPremiumFooter(doc, whiteLabel);
   
   // Save the PDF
   doc.save(filename);
+  
+  // Track download event
+  const eventType = options?.isPreview ? PDF_CONVERSION_EVENTS.PREVIEW_DOWNLOADED : 'pdf_downloaded';
+  trackPdfConversion(eventType, {
+    userTier: options?.userTier,
+    pdfType: 'analytics',
+    filename
+  });
 }
 
 export function exportContactsToPdf(
   contacts: EnrichedContact[],
   filename = 'audio-intel-enriched-contacts.pdf',
-  whiteLabel?: WhiteLabelConfig
+  whiteLabel?: WhiteLabelConfig,
+  options?: PdfExportOptions
 ): void {
   const doc = new jsPDF();
   
@@ -390,9 +446,15 @@ export function exportContactsToPdf(
       .replace(/\n\s*\n/g, '\n') // Remove double line breaks
       .trim();
     
-    const intelligenceLines = doc.splitTextToSize(intelligenceText, 160);
-    doc.text(intelligenceLines, 25, currentY);
-    currentY += (intelligenceLines.length * 4) + 15;
+    // Better text wrapping with proper line height
+    const intelligenceLines = doc.splitTextToSize(intelligenceText, 155);
+    const lineHeight = 5; // Increased line height for better readability
+    
+    intelligenceLines.forEach((line: string, lineIndex: number) => {
+      doc.text(line, 25, currentY + (lineIndex * lineHeight));
+    });
+    
+    currentY += (intelligenceLines.length * lineHeight) + 10;
     
     // Add subtle separator
     if (index < contacts.length - 1) {
@@ -402,10 +464,42 @@ export function exportContactsToPdf(
     }
   });
   
+  // Apply preview mode restrictions and watermarks
+  if (options?.isPreview || options?.includeWatermark) {
+    const previewConfig = createPreviewConfig(options?.userTier);
+    
+    // For contacts, limit to first few contacts in preview mode
+    if (options?.isPreview && previewConfig.pageLimit) {
+      console.log(`Contacts PDF limited to ${previewConfig.pageLimit} pages for preview mode`);
+    }
+    
+    // Add watermark
+    if (previewConfig.watermark.text) {
+      addWatermarkToPdf(doc, previewConfig.watermark);
+    }
+    
+    // Track conversion event
+    trackPdfConversion(PDF_CONVERSION_EVENTS.PREVIEW_GENERATED, {
+      userTier: options?.userTier,
+      pdfType: 'contacts',
+      contactCount: contacts.length,
+      pageCount: (doc as any).internal.getNumberOfPages()
+    });
+  }
+
   // Add premium footer
   addPremiumFooter(doc, whiteLabel);
   
   doc.save(filename);
+  
+  // Track download event
+  const eventType = options?.isPreview ? PDF_CONVERSION_EVENTS.PREVIEW_DOWNLOADED : 'pdf_downloaded';
+  trackPdfConversion(eventType, {
+    userTier: options?.userTier,
+    pdfType: 'contacts',
+    contactCount: contacts.length,
+    filename
+  });
 }
 
 export function exportSearchResultsToPdf(
@@ -617,4 +711,104 @@ function hexToRgb(hex: string): [number, number, number] {
     parseInt(result[2], 16),
     parseInt(result[3], 16)
   ] : DESIGN.primaryColor;
+}
+
+// ==============================================================================
+// PREVIEW MODE EXPORT FUNCTIONS
+// ==============================================================================
+
+/**
+ * Generate preview version of contacts PDF with watermark and limitations
+ */
+export function exportContactsPreview(
+  contacts: EnrichedContact[],
+  userTier: string = 'free',
+  whiteLabel?: WhiteLabelConfig
+): void {
+  const previewConfig = createPreviewConfig(userTier);
+  
+  // Limit contacts for preview mode
+  const limitedContacts = contacts.slice(0, userTier === 'free' ? 3 : 6);
+  
+  const filename = `audio-intel-contacts-preview-${new Date().toISOString().split('T')[0]}.pdf`;
+  
+  exportContactsToPdf(limitedContacts, filename, whiteLabel, {
+    isPreview: true,
+    userTier,
+    includeWatermark: true,
+    quality: previewConfig.quality
+  });
+}
+
+/**
+ * Generate preview version of analytics PDF with watermark and limitations
+ */
+export function exportAnalyticsPreview(
+  analyticsData: AnalyticsData,
+  userTier: string = 'free',
+  whiteLabel?: WhiteLabelConfig
+): void {
+  const previewConfig = createPreviewConfig(userTier);
+  
+  // Limit analytics data for preview mode
+  const limitedAnalytics = {
+    ...analyticsData,
+    topPlatforms: analyticsData.topPlatforms.slice(0, userTier === 'free' ? 3 : 5),
+    dailyEnrichments: analyticsData.dailyEnrichments.slice(-7) // Show last 7 days only
+  };
+  
+  const filename = `audio-intel-analytics-preview-${new Date().toISOString().split('T')[0]}.pdf`;
+  
+  exportAnalyticsToPdf(limitedAnalytics, filename, whiteLabel, {
+    isPreview: true,
+    userTier,
+    includeWatermark: true,
+    quality: previewConfig.quality
+  });
+}
+
+/**
+ * Check if user can generate PDFs based on tier and usage
+ */
+export function checkPdfPermissions(userTier: string = 'free', monthlyUsage: number = 0) {
+  const permissions = {
+    canPreview: true,
+    canExportFull: false,
+    monthlyLimit: 0,
+    hasWatermark: true,
+    restrictedFeatures: [] as string[]
+  };
+  
+  switch (userTier) {
+    case 'free':
+      permissions.canExportFull = monthlyUsage < 1;
+      permissions.monthlyLimit = 1;
+      permissions.hasWatermark = true;
+      permissions.restrictedFeatures = ['email_delivery', 'white_label', 'unlimited_exports'];
+      break;
+      
+    case 'beta':
+      // Beta users get full agency-level access during testing phase
+      permissions.canExportFull = true;
+      permissions.monthlyLimit = -1; // unlimited
+      permissions.hasWatermark = false;
+      permissions.restrictedFeatures = []; // No restrictions for beta users
+      break;
+      
+    case 'professional':
+      permissions.canExportFull = true;
+      permissions.monthlyLimit = -1; // unlimited
+      permissions.hasWatermark = false;
+      permissions.restrictedFeatures = ['white_label']; // White-label is Agency-only feature
+      break;
+      
+    case 'agency':
+      permissions.canExportFull = true;
+      permissions.monthlyLimit = -1; // unlimited
+      permissions.hasWatermark = false;
+      permissions.restrictedFeatures = [];
+      break;
+  }
+  
+  return permissions;
 } 

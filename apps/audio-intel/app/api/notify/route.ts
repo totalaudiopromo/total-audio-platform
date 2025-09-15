@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_build');
+function getResend() {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return null;
+  try { return new Resend(key); } catch { return null; }
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,6 +20,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const resend = getResend();
+    if (!resend) {
+      return NextResponse.json(
+        { error: 'Email service not configured (RESEND_API_KEY missing)' },
+        { status: 503 }
+      );
+    }
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: 'Audio Intel <exports@totalaudiopromo.com>',

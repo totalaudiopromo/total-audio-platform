@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import ExportButtons from '../../components/ExportButtons';
+import PdfExportProgressive from '../../components/ui/pdf-export-progressive';
 import { ContactData, AnalyticsData, SearchResultsData, AIAgentData, ExportProgress } from '../../utils/exportService';
 import { Activity, CheckCircle, AlertCircle, Zap, Users, BarChart3, Search, Brain, Mail, Settings } from 'lucide-react';
 
@@ -19,6 +20,8 @@ export default function ExportDemoPage() {
     metadata?: any;
   }>>([]);
   const [currentProgress, setCurrentProgress] = useState<ExportProgress | null>(null);
+  const [userTier, setUserTier] = useState<'free' | 'professional' | 'agency'>('free');
+  const [monthlyPdfUsage] = useState(0);
 
   // Enhanced sample data with metadata
   const sampleContacts: ContactData[] = [
@@ -238,8 +241,8 @@ export default function ExportDemoPage() {
 
         {/* Configuration Panel */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Configuration</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">Demo Configuration</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 User Name
@@ -263,6 +266,20 @@ export default function ExportDemoPage() {
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter company name"
               />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                User Tier (Demo)
+              </label>
+              <select
+                value={userTier}
+                onChange={(e) => setUserTier(e.target.value as 'free' | 'professional' | 'agency')}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="free">Free Tier</option>
+                <option value="professional">Professional</option>
+                <option value="agency">Agency</option>
+              </select>
             </div>
           </div>
         </div>
@@ -349,17 +366,31 @@ export default function ExportDemoPage() {
           </div>
         )}
 
-        {/* Export System */}
-        <ExportButtons
+        {/* Progressive PDF Export System */}
+        <PdfExportProgressive
           contacts={sampleContacts}
           analytics={sampleAnalytics}
-          searchResults={sampleSearchResults}
-          aiAgentReport={sampleAIAgentReport}
-          userName={userName}
+          userTier={userTier}
+          monthlyPdfUsage={monthlyPdfUsage}
           whiteLabel={whiteLabelConfig}
-          onExportComplete={handleExportComplete}
-          onProgress={handleProgress}
+          onUpgradeClick={() => window.open('/pricing', '_blank')}
         />
+
+        {/* Original Export System */}
+        <div className="mt-8">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Legacy Export System (All Formats)</h3>
+          <ExportButtons
+            contacts={sampleContacts}
+            analytics={sampleAnalytics}
+            searchResults={sampleSearchResults}
+            aiAgentReport={sampleAIAgentReport}
+            userName={userName}
+            whiteLabel={whiteLabelConfig}
+            userTier={userTier}
+            onExportComplete={handleExportComplete}
+            onProgress={handleProgress}
+          />
+        </div>
 
         {/* Export History */}
         {exportHistory.length > 0 && (

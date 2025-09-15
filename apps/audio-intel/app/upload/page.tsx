@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import FileUpload from '../components/FileUpload';
 import ProgressBarWithDog from '../components/ProgressBarWithDog';
 import ExportButtons from '../components/ExportButtons';
+import { ErrorMessage, SuccessMessage } from '@/components/ErrorMessage';
+import { getUserFriendlyError } from '@/utils/errorMessages';
+import { trackFileUpload, trackEnrichmentStart, trackEnrichmentComplete, trackExport, trackFunnelProgression, trackPageView, trackError } from '@/utils/analytics';
 
 interface Contact {
   name: string;
@@ -10,20 +13,46 @@ interface Contact {
 }
 
 function parseCsv(text: string): Contact[] {
-  // Simple CSV parser for name/email columns
-  const lines = text.split(/\r?\n/).filter(Boolean);
+  // Enhanced CSV parser with better debugging
+  const lines = text.split(/\r?\n/).filter(line => line.trim());
   if (!lines.length) return [];
+  
   const [header, ...rows] = lines;
-  const headers = header.split(',').map(h => h.trim().toLowerCase());
+  console.log('CSV Debug - Total lines:', lines.length);
+  console.log('CSV Debug - Header:', header);
+  
+  // Try different delimiters
+  let delimiter = ',';
+  if (header.includes(';')) delimiter = ';';
+  if (header.includes('\t')) delimiter = '\t';
+  
+  const headers = header.split(delimiter).map(h => h.trim().toLowerCase().replace(/['"]/g, ''));
+  console.log('CSV Debug - Headers found:', headers);
+  console.log('CSV Debug - Using delimiter:', delimiter);
+  
   const nameIdx = headers.findIndex(h => h.includes('name'));
-  const emailIdx = headers.findIndex(h => h.includes('email'));
-  return rows.map(row => {
-    const cols = row.split(',');
-    return {
-      name: cols[nameIdx] || '',
-      email: cols[emailIdx] || '',
+  const emailIdx = headers.findIndex(h => h.includes('email') || h.includes('mail'));
+  
+  console.log('CSV Debug - Name column index:', nameIdx);
+  console.log('CSV Debug - Email column index:', emailIdx);
+  
+  const contacts = rows.map((row, idx) => {
+    const cols = row.split(delimiter).map(col => col.trim().replace(/['"]/g, ''));
+    const contact = {
+      name: nameIdx >= 0 ? cols[nameIdx] || '' : `Contact ${idx + 1}`,
+      email: emailIdx >= 0 ? cols[emailIdx] || '' : '',
     };
-  }).filter(c => c.email);
+    return contact;
+  });
+  
+  const withEmails = contacts.filter(c => c.email && c.email.includes('@'));
+  const withoutEmails = contacts.length - withEmails.length;
+  
+  console.log('CSV Debug - Total parsed:', contacts.length);
+  console.log('CSV Debug - With valid emails:', withEmails.length);
+  console.log('CSV Debug - Without emails:', withoutEmails);
+  
+  return withEmails;
 }
 
 // --- Analytics Utility ---
@@ -37,18 +66,7 @@ function trackEvent(event: string, data: Record<string, any> = {}) {
     body: JSON.stringify({ event, data: { ...data, timestamp: new Date().toISOString() } }),
   });
 }
-function trackFileUpload(fileType: string, contactCount: number) {
-  trackEvent('file_upload', { fileType, contactCount });
-}
-function trackEnrichment(contactCount: number, processingTime: number) {
-  trackEvent('enrichment_completed', { contactCount, processingTime });
-}
-function trackExport(format: string, enrichedCount: number) {
-  trackEvent('export', { format, enrichedCount });
-}
-function trackError(errorType: string, details: string) {
-  trackEvent('error', { errorType, details });
-}
+// Tracking functions are now imported from analytics utils
 
 export default function UploadPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -58,6 +76,7 @@ export default function UploadPage() {
   const [progress, setProgress] = useState(0);
   const [enriched, setEnriched] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [errorContext, setErrorContext] = useState<any>(null);
   const [userEmail, setUserEmail] = useState('');
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [notifyStatus, setNotifyStatus] = useState<string | null>(null);
@@ -84,6 +103,10 @@ export default function UploadPage() {
 
   // Load presets and last selection
   useEffect(() => {
+    // Track page view
+    trackPageView('upload', 'Upload Contacts');
+    trackFunnelProgression('FILE_UPLOAD', { page: 'upload' });
+    
     try {
       const raw = localStorage.getItem('audio-intel:export-presets');
       if (raw) {
@@ -119,15 +142,63 @@ export default function UploadPage() {
   const handleFile = (f: File) => {
     setFile(f);
     setError(null);
+    setErrorContext(null);
+    
+    // Check file size (max 10MB)
+    if (f.size > 10 * 1024 * 1024) {
+      setErrorContext({
+        operation: 'upload',
+        errorType: 'FILE_TOO_LARGE',
+        details: { size: f.size, maxSize: 10 * 1024 * 1024 }
+      });
+      return;
+    }
+    
+    // Check file type
+    const allowedTypes = ['text/csv', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'text/plain'];
+    if (!allowedTypes.includes(f.type) && !f.name.match(/\.(csv|xlsx|xls|txt)$/i)) {
+      setErrorContext({
+        operation: 'upload',
+        errorType: 'INVALID_FORMAT',
+        details: { type: f.type, name: f.name }
+      });
+      return;
+    }
+    
     const reader = new FileReader();
     reader.onload = e => {
-      const text = e.target?.result as string;
-      const parsed = parseCsv(text);
-      setContacts(parsed);
-      setPreview(parsed.slice(0, 5));
-      trackFileUpload(f.type, parsed.length);
+      try {
+        const text = e.target?.result as string;
+        const parsed = parseCsv(text);
+        
+        if (parsed.length === 0) {
+          setErrorContext({
+            operation: 'upload',
+            errorType: 'NO_EMAILS_FOUND',
+            details: { fileType: f.type, content: text.substring(0, 200) }
+          });
+          return;
+        }
+        
+        setContacts(parsed);
+        setPreview(parsed.slice(0, 5));
+        trackFileUpload(f.type, parsed.length, f.size);
+        trackFunnelProgression('FILE_UPLOAD', { fileType: f.type, contactCount: parsed.length });
+      } catch (parseError) {
+        setErrorContext({
+          operation: 'upload',
+          errorType: 'PARSE_ERROR',
+          details: { error: parseError, fileType: f.type }
+        });
+      }
     };
-    reader.onerror = () => setError('Failed to read file');
+    reader.onerror = () => {
+      setErrorContext({
+        operation: 'upload',
+        errorType: 'INVALID_FORMAT',
+        details: { error: 'File read failed' }
+      });
+    };
     reader.readAsText(f);
   };
 
@@ -138,13 +209,18 @@ export default function UploadPage() {
     setError(null);
     setEmailSubmitted(!!userEmail);
     setNotifyStatus(null);
+    
+    // Track enrichment start
+    trackEnrichmentStart(contacts.length, userEmail);
+    trackFunnelProgression('ENRICHMENT_START', { contactCount: contacts.length, userEmail });
+    
     try {
       // Batch in groups of 5 for progress demo (can adjust as needed)
       const batchSize = 5;
       let results: any[] = [];
       for (let i = 0; i < contacts.length; i += batchSize) {
         const batch = contacts.slice(i, i + batchSize);
-        const res = await fetch('/api/enrich', {
+        const res = await fetch('/api/enrich-claude', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ contacts: batch }),
@@ -155,6 +231,13 @@ export default function UploadPage() {
         setProgress(Math.min(results.length, contacts.length));
       }
       setEnriched(results);
+      
+      // Track enrichment completion
+      const processingTime = (Date.now() - Date.now()) / 1000; // Calculate actual processing time
+      const successRate = results.filter(r => r.confidence !== 'Low' && !r.errors).length / results.length * 100;
+      trackEnrichmentComplete(results.length, processingTime, successRate);
+      trackFunnelProgression('ENRICHMENT_COMPLETE', { contactCount: results.length, successRate });
+      
       // Save results for download
       let downloadUrl = '';
       try {
@@ -185,9 +268,20 @@ export default function UploadPage() {
           setNotifyStatus('Failed to send notification email: ' + (err.message || 'Unknown error'));
         }
       }
-      trackEnrichment(results.length, 0); // Placeholder for processing time
     } catch (e: any) {
-      setError(e.message || 'Enrichment failed');
+      // Determine error type based on error message
+      let errorType = 'API_ERROR';
+      if (e.message?.includes('rate limit') || e.message?.includes('too many')) {
+        errorType = 'RATE_LIMITED';
+      } else if (e.message?.includes('email') || e.message?.includes('invalid')) {
+        errorType = 'INVALID_EMAILS';
+      }
+      
+      setErrorContext({
+        operation: 'enrichment',
+        errorType,
+        details: { error: e.message, contacts: contacts.length }
+      });
       trackError('enrichment_failed', e.message || 'Unknown error');
     } finally {
       setEnriching(false);
@@ -212,7 +306,24 @@ export default function UploadPage() {
         <div className="text-xs text-gray-500 mt-1">We'll email you when your results are ready. (Optional)</div>
       </div>
       <FileUpload onFile={handleFile} />
-      {error && <div className="text-red-600 mt-4">{error}</div>}
+      {errorContext && (
+        <ErrorMessage 
+          context={errorContext} 
+          onRetry={() => {
+            setErrorContext(null);
+            setError(null);
+          }}
+          onDismiss={() => {
+            setErrorContext(null);
+            setError(null);
+          }}
+        />
+      )}
+      {error && !errorContext && (
+        <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4 mb-4">
+          <div className="text-red-800 font-bold">{error}</div>
+        </div>
+      )}
       {preview.length > 0 && (
         <div className="mt-6">
           <h2 className="font-semibold mb-2">Preview (first 5 contacts):</h2>
@@ -248,6 +359,10 @@ export default function UploadPage() {
       )}
       {enriched.length > 0 && (
         <div className="mt-10">
+          <SuccessMessage 
+            message={`Successfully enriched ${enriched.length} contact${enriched.length !== 1 ? 's' : ''}!`}
+            details="Your contacts are ready for export. Choose your preferred format below."
+          />
           {emailSubmitted && (
             <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded text-blue-700">
               We will email you at <span className="font-semibold">{userEmail}</span> when your results are ready.
@@ -264,7 +379,7 @@ export default function UploadPage() {
               enriched={enriched.map(({ name, email, contactIntelligence, researchConfidence, lastResearched, platform, role, company }) => ({ 
                 name, email, contactIntelligence, researchConfidence, lastResearched, platform, role, company 
               }))}
-              onExport={() => trackExport(formatPreference, enriched.length)}
+              onExport={() => trackExport(formatPreference, enriched.length, selectedFields)}
               fields={selectedFields}
               columns={columnMap.filter(c => selectedFields.includes(mapKeyToLabel(c.key)))}
               formatPreference={formatPreference}

@@ -1,0 +1,108 @@
+# AUDIO INTEL - CURSOR DEVELOPMENT RULES
+
+## 🎯 REVENUE-FIRST DEVELOPMENT
+
+**Audio Intel is THE business priority.** Every line of code must justify itself through customer acquisition or revenue generation.
+
+### Core Product
+- **Function**: Contact enrichment for music industry professionals
+- **Market**: UK alternative to expensive US tools (SubmitHub £200-500+/month)
+- **Pricing**: £19.99/month Pro, £39.99/month Agency
+- **Status**: Pre-revenue, targeting first £500/month
+
+## 🛠️ TECHNICAL STANDARDS
+
+### Code Quality
+- **TypeScript**: Strict mode, no `any` types ever
+- **Components**: Functional with hooks, follow existing patterns
+- **Styling**: Tailwind CSS with shadcn/ui components
+- **Performance**: Mobile-first, fast loading, responsive design
+- **Error Handling**: Graceful failures, user-friendly messages
+
+### UK Context Always
+- **Currency**: £GBP for all pricing/financial components
+- **Spelling**: British spelling (organisation, colour, realise)
+- **Content**: Music industry terminology, UK market focus
+- **Data**: GDPR compliant, UK-focused validation
+
+### Architecture Patterns
+- **File Structure**: Group by feature, follow existing patterns
+- **API Routes**: RESTful design, proper error codes
+- **Database**: Prisma with proper relations and types
+- **Payments**: Stripe integration with webhook handling
+- **External APIs**: Perplexity for contact enrichment
+
+## 🚨 CRITICAL RULES
+
+### Must Do
+- ✅ Test complete user journey: signup → upload → results → payment
+- ✅ Mobile responsive design (family man working on laptop)
+- ✅ Real music industry data structures and validation
+- ✅ Stripe subscription flow with proper error handling
+- ✅ CSV processing with various formats and edge cases
+
+### Never Do
+- ❌ Build features without revenue justification
+- ❌ Add V2 features until V1 generates £500/month
+- ❌ Use generic business terminology (use music industry specific)
+- ❌ Break existing user workflows
+- ❌ Create performance bottlenecks
+
+### Development Focus
+- **Primary**: Customer acquisition features
+- **Secondary**: User experience optimization
+- **Forbidden**: Nice-to-have features, experimental additions
+
+## 🎵 USER CONTEXT
+
+### Target Users
+- **Independent artists**: Running their own radio campaigns
+- **Small PR agencies**: Managing multiple client campaigns
+- **Record labels**: A&R and playlist submission research
+
+### Real Use Cases
+- Upload email list from spreadsheet
+- Get enhanced contact data with roles, companies, social links
+- Export results for immediate use in campaigns
+- Track usage and manage subscription
+
+### Pain Points Being Solved
+- Hours of manual contact research → Minutes of automated enrichment
+- Expensive US tools → Affordable UK alternative
+- Scattered contact info → Organized, actionable intelligence
+
+## 📋 DEVELOPMENT WORKFLOW
+
+### Before Coding
+1. Check if feature directly drives revenue THIS WEEK
+2. Review existing components and patterns to reuse
+3. Verify all dependencies exist in package.json
+4. Ensure mobile-responsive design approach
+
+### While Coding
+- Follow existing TypeScript patterns and interfaces
+- Use Tailwind classes consistently with design system
+- Test on mobile viewport (Chris works on laptop with limited space)
+- Handle loading states and error scenarios gracefully
+
+### After Coding
+- Test complete user journey end-to-end
+- Verify Stripe integration works correctly
+- Check CSV processing with various file formats
+- Ensure UK spelling and £GBP currency throughout
+
+## 🎯 SUCCESS METRICS
+
+### Technical Quality
+- Fast load times and responsive design
+- Zero TypeScript errors or warnings
+- Proper error handling and user feedback
+- Consistent design system usage
+
+### Business Impact
+- Seamless signup to payment conversion
+- Reliable contact enrichment processing
+- Clear value demonstration to users
+- Direct path from feature to subscription
+
+**Remember**: Chris is a real producer using this tool for actual radio campaigns. Build something he'd genuinely pay for and recommend to industry contacts.

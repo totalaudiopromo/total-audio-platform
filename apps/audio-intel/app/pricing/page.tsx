@@ -261,7 +261,7 @@ function PricingContent() {
                 </p>
               </div>
 
-              <Link href="/demo">
+              <Link href="/beta">
                 <Button className="w-full rounded-2xl font-black text-xl py-6 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-600 hover:to-green-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
                   Start Free Beta
                 </Button>

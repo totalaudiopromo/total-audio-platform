@@ -53,7 +53,10 @@ export default function MobileNav() {
 
   // Close on link click
   const handleNavClick = (id: string, isRoute?: boolean) => {
-    if (!isRoute) {
+    if (id === 'signup') {
+      // Special handling for beta signup
+      window.location.href = '/beta';
+    } else if (!isRoute) {
       scrollToSection(id);
     }
     setOpen(false);

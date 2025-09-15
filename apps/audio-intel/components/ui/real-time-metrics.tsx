@@ -192,20 +192,20 @@ export function RealTimeMetrics() {
   return (
     <div className="grid lg:grid-cols-2 gap-8">
       {/* Live Metrics */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {metrics.map((metric, index) => (
           <Card key={index} className="bg-white border-2 border-gray-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <metric.icon className={`w-8 h-8 ${metric.color}`} />
+            <CardContent className="p-4 md:p-6">
+              <div className="flex items-center justify-between mb-3 md:mb-4">
+                <metric.icon className={`w-6 h-6 md:w-8 md:h-8 ${metric.color}`} />
                 <Badge variant="secondary" className="text-xs font-bold">LIVE</Badge>
               </div>
-              <div className="text-3xl font-black text-gray-900 mb-2">
+              <div className="text-2xl md:text-3xl font-black text-gray-900 mb-1 md:mb-2">
                 {metric.label.includes('Time') ? `${metric.value}s` : 
                  metric.label.includes('Rate') ? `${metric.value}%` : 
                  metric.value.toLocaleString()}
               </div>
-              <p className="text-sm font-bold text-gray-600">{metric.label}</p>
+              <p className="text-xs md:text-sm font-bold text-gray-600 break-words">{metric.label}</p>
               <p className="text-xs font-medium text-green-600 mt-1">{metric.change}</p>
             </CardContent>
           </Card>
@@ -214,30 +214,30 @@ export function RealTimeMetrics() {
 
       {/* Live Activity Feed */}
       <Card className="bg-white border-2 border-gray-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-        <CardHeader className="pb-4">
+        <CardHeader className="pb-3 md:pb-4">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-xl font-black text-gray-900">Live Activity</CardTitle>
+            <CardTitle className="text-lg md:text-xl font-black text-gray-900">Live Activity</CardTitle>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
               <span className="text-xs font-bold text-green-600">REAL-TIME</span>
             </div>
           </div>
         </CardHeader>
-        <CardContent className="space-y-3 max-h-96 overflow-y-auto">
+        <CardContent className="space-y-2 md:space-y-3 max-h-80 md:max-h-96 overflow-y-auto">
           {recentActivity.map((activity) => (
-            <div key={activity.id} className="flex items-start gap-3 p-3 rounded-lg bg-gray-50">
-              <div className={`w-8 h-8 ${getActivityColor(activity.type)} rounded-full flex items-center justify-center text-white flex-shrink-0`}>
+            <div key={activity.id} className="flex items-start gap-2 md:gap-3 p-2 md:p-3 rounded-lg bg-gray-50">
+              <div className={`w-6 h-6 md:w-8 md:h-8 ${getActivityColor(activity.type)} rounded-full flex items-center justify-center text-white flex-shrink-0`}>
                 {getActivityIcon(activity.type)}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-bold text-gray-900">
+                <p className="text-xs md:text-sm font-bold text-gray-900">
                   {getActivityLabel(activity.type)}
                 </p>
-                <p className="text-sm text-gray-600 truncate">
+                <p className="text-xs md:text-sm text-gray-600 break-words">
                   {activity.data.contact}
                 </p>
                 {activity.data.platform && (
-                  <p className="text-xs text-blue-600 font-medium">
+                  <p className="text-xs text-blue-600 font-medium break-words">
                     {activity.data.platform}
                   </p>
                 )}
@@ -247,7 +247,7 @@ export function RealTimeMetrics() {
                   </Badge>
                 )}
               </div>
-              <span className="text-xs text-gray-500 whitespace-nowrap">
+              <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">
                 {Math.floor((Date.now() - activity.timestamp.getTime()) / 1000)}s ago
               </span>
             </div>

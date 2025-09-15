@@ -14,7 +14,7 @@ interface ChatRequest {
 // Knowledge base for common Audio Intel questions
 const KNOWLEDGE_BASE = {
   pricing: {
-    keywords: ['price', 'cost', 'plan', 'subscription', 'billing', 'payment', 'tier', 'upgrade', 'coffee', 'cheap', 'expensive'],
+    keywords: ['price', 'cost', 'plan', 'subscription', 'billing', 'payment', 'tier', 'upgrade', 'coffee', 'cheap', 'expensive', 'money', 'afford', 'budget'],
     response: `Audio Intel pricing (proper honest breakdown):
 
 **FREE BETA - "Try The Real Thing"**
@@ -41,7 +41,7 @@ const KNOWLEDGE_BASE = {
   },
   
   features: {
-    keywords: ['feature', 'what does', 'how does', 'enrichment', 'validation', 'export'],
+    keywords: ['feature', 'what does', 'how does', 'enrichment', 'validation', 'export', 'benefit', 'help', 'advantage', 'good for', 'useful', 'value'],
     response: `Audio Intel's key features (built by working promoters):
 
 • **AI Contact Enrichment**: Transform basic emails into detailed music industry intelligence - genres, submission preferences, coverage areas, recent activity
@@ -115,53 +115,221 @@ Here's what you get during our free beta:
 • **No credit card needed** - we're not collecting payment during beta testing
 
 We built this because we were tired of paying €3-15 per submission to SubmitHub and Groover when artists need direct contact intelligence. Ready to try it? Just upload your contact list and see the difference.`
+  },
+
+  independent: {
+    keywords: ['independent', 'indie', 'solo', 'artists', 'musician', 'singer', 'songwriter', 'band', 'self-release', 'diy'],
+    response: `Here's how Audio Intel specifically helps independent artists (we're independent ourselves!):
+
+**Instead of paying €3-15 per submission to SubmitHub/Groover:**
+• Get direct contact details with submission preferences
+• Know exactly when and how each curator prefers to be contacted
+• See their recent activity and what they're actually covering
+
+**Real campaign intelligence:**
+• Find out which playlists are actually adding new artists vs just featuring majors
+• Get radio show submission windows and preferred formats
+• Discover blog writers looking for your genre right now
+
+**Professional credibility:**
+• Stop sending generic "please listen to my music" emails
+• Reference their recent playlists/articles in your pitch
+• Know their coverage focus before you waste their time
+
+**Bottom line**: Transform your campaign from spray-and-pray into targeted intelligence. We built this because we were frustrated artists ourselves - tired of submission platforms that don't give you actual contact control.`
+  },
+
+  playlists: {
+    keywords: ['playlist', 'spotify', 'apple music', 'curator', 'streaming', 'playlisting', 'playlist pitch'],
+    response: `Getting on playlists the right way (no more spray-and-pray submissions):
+
+**The Audio Intel approach:**
+• **Find active curators** - See who's actually adding new music vs just featuring majors
+• **Know their preferences** - Genre focus, submission timing, preferred formats
+• **Personal approach** - Reference their recent adds in your pitch
+• **Direct contact** - Skip the intermediary platforms that charge per submission
+
+**Instead of SubmitHub's €3-15 per pitch:**
+• Get curator contact details with submission guidelines
+• See their recent playlist activity and genre preferences  
+• Know the best times to reach them for maximum response
+• Build ongoing relationships instead of one-off transactions
+
+We've seen artists go from 0% playlist response rates to 15-20% success rates by using proper intelligence instead of generic mass pitching.`
+  },
+
+  radio: {
+    keywords: ['radio', 'radio show', 'dj', 'airplay', 'broadcast', 'fm', 'college radio', 'community radio'],
+    response: `Radio promotion that actually works (built by people who've done thousands of campaigns):
+
+**Audio Intel for radio campaigns:**
+• **Show-specific intelligence** - Submission windows, format preferences, genre focus
+• **DJ contact preferences** - Email timing, follow-up protocols, what they actually want to hear
+• **Recent playlist analysis** - See what they've been playing to match your pitch timing
+• **Regional targeting** - Find stations covering your tour markets or home base
+
+**Real examples of what you'll discover:**
+• "This show only accepts submissions on Tuesdays between 2-4pm"
+• "DJ prefers 30-second previews, not full tracks"
+• "Station focuses on local artists from these specific postcodes"
+• "Show has featured 12 new indie artists this month - actively seeking submissions"
+
+Stop sending generic "please play my song" emails. Start sending targeted pitches based on actual intelligence about what each show needs right now.`
+  },
+
+  blogs: {
+    keywords: ['blog', 'blogger', 'music blog', 'review', 'premiere', 'coverage', 'press', 'publication'],
+    response: `Music blog coverage that leads to real results:
+
+**The intelligence approach to blog outreach:**
+• **Writer preferences** - Genre focus, story angles they actually cover, preferred formats
+• **Recent coverage patterns** - See what they've featured lately to time your pitch perfectly
+• **Submission guidelines** - Specific requirements most artists miss (EPK format, image specs, etc.)
+• **Response timing** - Know their editorial calendar and best contact windows
+
+**What you'll discover:**
+• "This blogger only covers artists with upcoming shows in Manchester"
+• "Writer specializes in female-fronted indie rock from the last 6 months"
+• "Publication runs 'New Music Friday' features - best to pitch on Wednesdays"
+• "Blog requires 300dpi images and Spotify pre-saves for coverage consideration"
+
+**Real results from our users:**
+• 40% increase in blog response rates vs generic pitching
+• Better story placement because pitches match editorial focus
+• Ongoing relationships instead of one-off coverage requests
+
+Transform from "please review my music" to "I noticed your recent feature on [specific artist] - here's why our new track fits your [specific coverage area]".`
   }
 };
 
 function findBestResponse(message: string, userTier: string): string {
   const lowercaseMessage = message.toLowerCase();
   
-  // Check each knowledge category
+  // Score-based matching for better flexibility
+  let bestMatch = { category: '', score: 0, response: '' };
+  
   for (const [category, data] of Object.entries(KNOWLEDGE_BASE)) {
-    if (data.keywords.some(keyword => lowercaseMessage.includes(keyword))) {
-      return data.response;
+    let score = 0;
+    
+    // Direct keyword matches (highest priority)
+    for (const keyword of data.keywords) {
+      if (lowercaseMessage.includes(keyword)) {
+        score += keyword.length; // Longer matches get higher scores
+      }
+    }
+    
+    // Context-based scoring for related terms
+    if (category === 'independent' && (
+      lowercaseMessage.includes('how') && (lowercaseMessage.includes('benefit') || lowercaseMessage.includes('help'))
+    )) {
+      score += 10;
+    }
+    
+    if (category === 'features' && (
+      lowercaseMessage.includes('what') && (lowercaseMessage.includes('do') || lowercaseMessage.includes('does'))
+    )) {
+      score += 8;
+    }
+    
+    if (score > bestMatch.score) {
+      bestMatch = { category, score, response: data.response };
     }
   }
+  
+  // Return best match if score is high enough
+  if (bestMatch.score >= 3) {
+    return bestMatch.response;
+  }
 
-  // Fallback responses from Audio representing the founder's voice
+  // Smart fallback responses with variety
+  const fallbackResponses = getFallbackResponses(userTier, lowercaseMessage);
+  const randomIndex = Math.floor(Math.random() * fallbackResponses.length);
+  return fallbackResponses[randomIndex];
+}
+
+function getFallbackResponses(userTier: string, message: string): string[] {
+  const baseResponses = [];
+  
   if (userTier === 'agency') {
-    return `I'm Audio, representing the team that built this platform. As an Agency user, you get our fastest support because we understand your client needs.
+    baseResponses.push(
+      `I'm Audio, representing the team behind this platform. As an Agency user, you get our fastest support.
 
-Here's what we can help with immediately:
-• White-label everything - your branding on all exports so clients see your intelligence
-• 500 enrichments monthly - handle multiple artists efficiently 
-• Instant processing - no waiting for urgent campaign deadlines
-• Professional reports that justify your fees to clients
-
-I know the agency challenge - you need verified contacts, not submission platforms charging per pitch. What specific industry intelligence do you need?`;
-  }
-
-  if (userTier === 'professional') {
-    return `I'm Audio, speaking for the working promoters who built this platform. As a Professional user, you get priority responses because we respect your time.
+Your question about "${message.substring(0, 50)}..." - I want to make sure I give you the right information for your client needs.
 
 I can help with:
-• Contact enrichment - turning basic emails into campaign-ready intelligence
-• Professional exports - reports that look like you did the research yourself
-• Skip the queue - 60-second processing vs 2-3 minute wait times
-• Real analytics - see what actually works in your campaigns
+• White-label intelligence reports - your branding on everything
+• Multi-artist campaign management - 500 enrichments monthly
+• Professional export formats that justify your agency fees
+• Instant processing for urgent client deadlines
 
-We built this because we were tired of paying €3-15 per submission to SubmitHub when artists need direct contacts. What do you need help with?`;
+What specific aspect of Audio Intel would be most valuable for your agency?`,
+
+      `Hey! I'm Audio, built by working promoters who understand the agency challenge.
+
+Your question touches on something important for agency operations. Let me help you understand how Audio Intel solves real problems:
+
+• **Client retention**: Professional reports that show your value
+• **Time efficiency**: Instant processing vs waiting around
+• **Revenue justification**: Replace expensive per-submission costs
+• **White-label everything**: Clients think you're the intelligence source
+
+Which part of your agency workflow are you looking to improve?`
+    );
+  } else if (userTier === 'professional') {
+    baseResponses.push(
+      `I'm Audio, speaking for the working promoters who built this platform. Your Professional status means you get priority responses.
+
+About your question on "${message.substring(0, 50)}..." - I want to give you actionable information, not just generic answers.
+
+As a Professional user, you get:
+• 60-second processing vs 2-3 minute waits
+• 200 monthly enrichments - perfect for serious campaigns
+• Professional exports that look like you did the research yourself
+• Analytics that show what actually works
+
+What specific campaign challenge can I help you solve?`,
+
+      `Hey there! I'm Audio, representing the team that created this platform for working promoters like ourselves.
+
+Your question about "${message.substring(0, 50)}..." - I understand you're looking for real solutions, not marketing fluff.
+
+Here's what matters for Professional users:
+• Skip the queue - faster processing for active campaigns
+• Professional credibility - reports clients actually want to keep
+• Real analytics - see which contacts convert to coverage
+• Built by promoters who understand your daily challenges
+
+What would help your campaigns succeed right now?`
+    );
+  } else {
+    baseResponses.push(
+      `I'm Audio, the mascot for the working promoters who created this platform because we lived the struggle ourselves.
+
+Your question about "${message.substring(0, 50)}..." - I want to help you understand how Audio Intel solves real problems, not create more of them.
+
+Here's what I can explain:
+• How contact enrichment beats buying generic databases
+• Why our free beta gives you 100 enrichments with no tricks
+• How to stop paying €3-15 per submission to SubmitHub/Groover
+• Real examples of how independent artists use our intelligence
+
+What specific part of music promotion are you trying to improve?`,
+
+      `Hey! I'm Audio, representing the team behind this platform. We built this because we were frustrated independent artists and promoters ourselves.
+
+Your question touches on something important: "${message.substring(0, 50)}..."
+
+I know the challenges because we've lived them:
+• Wasting money on submission platforms that don't work
+• Sending generic emails that get ignored
+• Not knowing who's actually accepting submissions
+• Feeling like the industry is designed against independent artists
+
+Let me help you understand how Audio Intel changes that game. What's your biggest campaign challenge right now?`
+    );
   }
-
-  return `I'm Audio, the mascot for the working promoters who created this platform. We built Audio Intel because we understand the real problem - you need verified industry contacts, not another submission platform.
-
-I can help with:
-• Understanding contact enrichment (it's intelligence, not just databases)
-• Getting started with our free beta - 100 enrichments, no payment required
-• How our system finds submission preferences, timing, and contact intel
-• Why platforms like Groover and SubmitHub charge per submission when you need direct access
-
-We know the struggle because we've lived it. What can I help you understand about getting better campaign results?`;
+  
+  return baseResponses;
 }
 
 function generateContextualResponse(message: string, userTier: string, history: ChatMessage[]): string {

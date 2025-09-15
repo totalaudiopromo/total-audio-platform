@@ -42,7 +42,7 @@ export default function SignIn() {
                   Audio Intel is currently in free beta. If you've signed up for beta access, 
                   you can start using the platform immediately - no login required!
                 </p>
-                <Link href="/demo">
+                <Link href="/beta">
                   <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold">
                     Try Audio Intel Beta →
                   </Button>

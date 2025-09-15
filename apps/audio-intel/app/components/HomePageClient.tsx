@@ -199,7 +199,7 @@ export default function HomePageClient() {
       let enrichedResults: any[] = [];
       for (let i = 0; i < contacts.length; i++) {
         setProgress(i);
-        const resp = await fetch("/api/enrich", {
+        const resp = await fetch("/api/enrich-claude", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ contacts: [contacts[i]] }),

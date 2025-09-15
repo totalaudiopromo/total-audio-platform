@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getEnv } from '@/lib/env';
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,8 +10,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    const CONVERTKIT_API_KEY = process.env.CONVERTKIT_API_KEY || '5wx6QPvhunue-d760yZHIg';
-    const CONVERTKIT_API_SECRET = process.env.CONVERTKIT_API_SECRET || 'BMiOCi6hPDA73O1pnwXh7_bXEBi5zMzf7Tgk5rP_trI';
+    const CONVERTKIT_API_KEY = getEnv('CONVERTKIT_API_KEY', { requiredInProd: false });
+    const CONVERTKIT_API_SECRET = getEnv('CONVERTKIT_API_SECRET', { requiredInProd: false });
+    if (!CONVERTKIT_API_KEY || !CONVERTKIT_API_SECRET) {
+      console.warn('ConvertKit keys are not configured');
+      return NextResponse.json({ error: 'ConvertKit not configured' }, { status: 500 });
+    }
     const formId = form_id || '8440957'; // Default to enterprise trial form
 
     console.log(`Subscribing ${email} to ConvertKit form ${formId} with tags:`, tags);

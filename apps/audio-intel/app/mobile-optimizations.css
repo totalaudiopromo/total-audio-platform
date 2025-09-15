@@ -402,6 +402,170 @@ body {
 }
 
 /* =============================================================================
+   TARGETED MOBILE FIXES FOR SPECIFIC AUDIO INTEL ISSUES
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Fix burger menu z-index issues */
+  nav[aria-label="Mobile Navigation"] {
+    z-index: 1000 !important;
+  }
+  
+  nav[aria-label="Mobile Navigation"] [role="dialog"] {
+    z-index: 1100 !important;
+  }
+  
+  nav[aria-label="Mobile Navigation"] .fixed.inset-0 {
+    z-index: 1050 !important;
+  }
+  
+  /* Fix pricing cards being cut off - target specific pricing section */
+  .py-16.px-4 .grid.grid-cols-1.md\\:grid-cols-2.gap-8,
+  .py-20.px-4 .grid.grid-cols-1.md\\:grid-cols-2.gap-8 {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 0 !important;
+    margin: 0 1rem !important;
+  }
+  
+  /* Fix individual pricing cards */
+  .py-16.px-4 .bg-white.p-8.rounded-2xl.border-4,
+  .py-20.px-4 .bg-white.p-8.rounded-2xl.border-4 {
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 1.5rem !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Fix buttons that overflow right side */
+  .bg-gradient-to-r.from-blue-600.to-blue-500,
+  .bg-gradient-to-r.from-green-600.to-green-500 {
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Fix sections with text overflow under Drop Your Chaos */
+  .py-16.px-4 .bg-white.rounded-2xl.p-8.shadow-lg.border,
+  .py-20.px-4 .bg-white.rounded-2xl.p-8.shadow-lg.border {
+    padding: 1.5rem !important;
+    margin: 0 !important;
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  
+  /* Fix container width issues */
+  .max-w-5xl.mx-auto,
+  .max-w-4xl.mx-auto,
+  .max-w-7xl.mx-auto {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    width: calc(100% - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+  
+  /* Fix Coming Soon card cutoff */
+  .bg-gradient-to-r.from-blue-50.to-green-50,
+  .bg-gradient-to-r.from-yellow-50.to-orange-50 {
+    padding: 1rem !important;
+    margin: 0 1rem !important;
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    box-sizing: border-box !important;
+  }
+  
+  .bg-gradient-to-r.from-blue-50.to-green-50 .bg-white.rounded-2xl,
+  .bg-gradient-to-r.from-yellow-50.to-orange-50 .bg-white.rounded-2xl {
+    padding: 1rem !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Fix Coming Soon Q2 2025 button */
+  .bg-yellow-400,
+  .bg-orange-400 {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.875rem !important;
+    width: auto !important;
+    max-width: 100% !important;
+    white-space: nowrap !important;
+  }
+  
+  /* Fix logo/image display issues */
+  .w-10.h-10 img,
+  img[width="40"][height="40"] {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: contain !important;
+  }
+  
+  /* Fix Reality card image aspect ratio */
+  img[alt*="Reality"],
+  img[alt*="mascot"],
+  img[alt*="dog"],
+  img[alt*="vinyl"] {
+    width: auto !important;
+    height: auto !important;
+    max-width: 280px !important;
+    max-height: 280px !important;
+    object-fit: contain !important;
+    aspect-ratio: 1 / 1 !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+  
+  /* Fix pricing cards to fit screen properly */
+  .grid.grid-cols-1.md\\:grid-cols-2.gap-8 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    padding: 0 1rem !important;
+    margin: 0 !important;
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+  }
+  
+  .grid.grid-cols-1.md\\:grid-cols-2.gap-8 > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Fix Try Premium Validation Free text */
+  button[class*="bg-gradient"]:contains("Try Premium"),
+  a[class*="bg-gradient"]:contains("Try Premium") {
+    font-size: 0.875rem !important;
+    padding: 0.75rem 1rem !important;
+    white-space: normal !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    word-wrap: break-word !important;
+  }
+  
+  /* Fix Real-time metrics cards being cut off */
+  .grid.lg\\:grid-cols-2 .grid.grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+/* =============================================================================
    MOBILE RESPONSIVE UTILITIES
    ============================================================================= */
 

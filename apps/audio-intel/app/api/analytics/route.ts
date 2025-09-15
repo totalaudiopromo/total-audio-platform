@@ -15,6 +15,25 @@ interface AnalyticsData {
     cacheHitRate: number;
     errorRate: number;
   };
+  // Enhanced tracking
+  conversionFunnel: Array<{ step: string; count: number; conversion_rate: number }>;
+  userEngagement: {
+    pageViews: number;
+    fileUploads: number;
+    demoRuns: number;
+    betaSignups: number;
+    exports: number;
+    errors: number;
+  };
+  events: Array<{
+    event: string;
+    category: string;
+    action: string;
+    label?: string;
+    value?: number;
+    timestamp: string;
+    custom_parameters?: Record<string, any>;
+  }>;
 }
 
 let analyticsData: AnalyticsData = {
@@ -30,7 +49,28 @@ let analyticsData: AnalyticsData = {
     averageProcessingTime: 0,
     cacheHitRate: 0,
     errorRate: 0
-  }
+  },
+  conversionFunnel: [
+    { step: 'landing_page', count: 0, conversion_rate: 100 },
+    { step: 'demo_interaction', count: 0, conversion_rate: 0 },
+    { step: 'beta_signup', count: 0, conversion_rate: 0 },
+    { step: 'file_upload', count: 0, conversion_rate: 0 },
+    { step: 'enrichment_start', count: 0, conversion_rate: 0 },
+    { step: 'enrichment_complete', count: 0, conversion_rate: 0 },
+    { step: 'export', count: 0, conversion_rate: 0 },
+    { step: 'pricing_view', count: 0, conversion_rate: 0 },
+    { step: 'checkout_start', count: 0, conversion_rate: 0 },
+    { step: 'purchase', count: 0, conversion_rate: 0 }
+  ],
+  userEngagement: {
+    pageViews: 0,
+    fileUploads: 0,
+    demoRuns: 0,
+    betaSignups: 0,
+    exports: 0,
+    errors: 0
+  },
+  events: []
 };
 
 // Update analytics when enrichment occurs
@@ -105,22 +145,65 @@ function updateEnrichmentAnalytics(enrichedContacts: any[], processingTime: numb
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { event, data } = body;
+    const { event, category, action, label, value, custom_parameters, timestamp } = body;
+
+    // Store the event
+    const eventData = {
+      event: event || 'unknown',
+      category: category || 'general',
+      action: action || 'unknown',
+      label,
+      value,
+      timestamp: timestamp || new Date().toISOString(),
+      custom_parameters
+    };
+    
+    analyticsData.events.unshift(eventData);
+    analyticsData.events = analyticsData.events.slice(0, 1000); // Keep last 1000 events
 
     // Log the analytics event
-    console.log('Analytics Event:', {
-      event,
-      data,
-      timestamp: new Date().toISOString(),
-      userAgent: request.headers.get('user-agent'),
-      referer: request.headers.get('referer'),
-    });
+    console.log('Analytics Event:', eventData);
 
-    // Handle different analytics events
+    // Update engagement metrics
+    switch (event) {
+      case 'page_view':
+        analyticsData.userEngagement.pageViews++;
+        break;
+      case 'file_upload':
+        analyticsData.userEngagement.fileUploads++;
+        break;
+      case 'demo_run':
+        analyticsData.userEngagement.demoRuns++;
+        break;
+      case 'beta_signup':
+        analyticsData.userEngagement.betaSignups++;
+        break;
+      case 'export':
+        analyticsData.userEngagement.exports++;
+        break;
+      case 'error':
+        analyticsData.userEngagement.errors++;
+        break;
+    }
+
+    // Update conversion funnel
+    if (custom_parameters?.funnel_step) {
+      const funnelStep = analyticsData.conversionFunnel.find(step => step.step === custom_parameters.funnel_step);
+      if (funnelStep) {
+        funnelStep.count++;
+        // Calculate conversion rate
+        const previousStep = analyticsData.conversionFunnel[analyticsData.conversionFunnel.indexOf(funnelStep) - 1];
+        if (previousStep) {
+          funnelStep.conversion_rate = (funnelStep.count / previousStep.count) * 100;
+        }
+      }
+    }
+
+    // Handle legacy events for backward compatibility
     switch (event) {
       case 'contact_enrichment':
-        if (data.enrichedContacts && data.processingTime) {
-          updateEnrichmentAnalytics(data.enrichedContacts, data.processingTime);
+        if (custom_parameters?.enrichedContacts && custom_parameters?.processingTime) {
+          updateEnrichmentAnalytics(custom_parameters.enrichedContacts, custom_parameters.processingTime);
         }
         break;
         
@@ -128,7 +211,7 @@ export async function POST(request: NextRequest) {
         analyticsData.recentActivity.unshift({
           timestamp: new Date().toISOString(),
           action: 'Export Download',
-          details: `Downloaded ${data.contactsCount || 0} contacts as ${data.format || 'CSV'}`
+          details: `Downloaded ${custom_parameters?.enriched_count || 0} contacts as ${custom_parameters?.export_format || 'CSV'}`
         });
         break;
         
@@ -136,7 +219,7 @@ export async function POST(request: NextRequest) {
         analyticsData.recentActivity.unshift({
           timestamp: new Date().toISOString(),
           action: 'Export Email',
-          details: `Sent ${data.contactsCount || 0} contacts via email`
+          details: `Sent ${custom_parameters?.enriched_count || 0} contacts via email`
         });
         break;
         
@@ -144,7 +227,7 @@ export async function POST(request: NextRequest) {
         analyticsData.recentActivity.unshift({
           timestamp: new Date().toISOString(),
           action: 'Platform Search',
-          details: `Searched ${data.platforms?.join(', ') || 'all platforms'} for "${data.query}"`
+          details: `Searched ${custom_parameters?.platforms?.join(', ') || 'all platforms'} for "${custom_parameters?.query || ''}"`
         });
         break;
         
@@ -152,7 +235,7 @@ export async function POST(request: NextRequest) {
         analyticsData.recentActivity.unshift({
           timestamp: new Date().toISOString(),
           action: 'Cross Promotion',
-          details: `Clicked on ${data.tool || 'unknown tool'} promotion`
+          details: `Clicked on ${custom_parameters?.tool || 'unknown tool'} promotion`
         });
         break;
     }

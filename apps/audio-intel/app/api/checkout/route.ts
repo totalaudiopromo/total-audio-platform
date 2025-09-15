@@ -105,7 +105,8 @@ export async function POST(req: NextRequest) {
     try {
       console.log(`Subscribing ${email} to ConvertKit before checkout...`);
       
-      const CONVERTKIT_API_KEY = process.env.KIT_API_KEY || process.env.CONVERTKIT_API_KEY || '5wx6QPvhunue-d760yZHIg';
+      const { getEnv } = await import('@/lib/env');
+      const CONVERTKIT_API_KEY = getEnv('KIT_API_KEY', { requiredInProd: false }) || getEnv('CONVERTKIT_API_KEY', { requiredInProd: false });
       const formId = '8440957'; // Enterprise trial form ID for 'hero' form type
       
       // Determine user type (beta users get special tagging)
@@ -113,6 +114,7 @@ export async function POST(req: NextRequest) {
       const userRole = isBetaUser ? 'beta_trial_user' : 'trial_user';
       
       // Direct ConvertKit API call instead of internal HTTP request
+      if (CONVERTKIT_API_KEY) {
       const convertkitResponse = await fetch(`https://api.convertkit.com/v3/forms/${formId}/subscribe`, {
         method: 'POST',
         headers: {
@@ -160,6 +162,9 @@ export async function POST(req: NextRequest) {
       } else {
         const errorText = await convertkitResponse.text();
         console.warn(`ConvertKit subscription failed for ${email}:`, errorText);
+      }
+      } else {
+        console.warn('ConvertKit API key not set; skipping pre-checkout subscription');
       }
     } catch (convertkitError) {
       console.error('ConvertKit subscription error:', convertkitError);

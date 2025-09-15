@@ -1,53 +1,65 @@
-# Audio Intel Pricing Update
+# Audio Intel Pricing Structure - Current (2025)
 
 ## Overview
-Updated pricing structure to better support independent artists and make the tool more accessible for the music industry.
+Current pricing structure aligned with "The Unsigned Advantage" strategy and beta launch approach.
 
-## New Pricing Structure (Effective: August 2024)
+## Current Pricing Structure (Live on intel.totalaudiopromo.com)
 
-### Starter Plan - £9.99/month
-- **Target**: Independent artists and small labels
+### Free Beta Access
+- **Target**: All users during beta phase
 - **Features**:
-  - 50 contact enrichments per month
+  - Unlimited contact enrichments during beta
   - All AI research features
-  - Export to CSV, Excel
-  - Email support
-- **Previous Price**: £19/month
-- **Savings**: 47% reduction
+  - Export to CSV, Excel, PDF
+  - Direct founder access
+  - Priority support
+- **Price**: FREE during beta period
+- **Duration**: Beta phase (no end date specified)
 
 ### Professional Plan - £19.99/month
-- **Target**: Growing artists and small agencies
+- **Target**: Independent artists and small agencies
 - **Features**:
   - 200 contact enrichments per month
-  - Priority processing
-  - Advanced export options
-  - CRM integrations
-- **Previous Price**: £39/month
-- **Savings**: 49% reduction
+  - Priority processing (60-second vs 2-3 minute wait)
+  - Professional exports (PDF reports, Excel files)
+  - Better analytics and reporting
+  - Batch uploads
+  - Priority Audio chatbot support
+- **Beta Tester Discount**: 50% off first year (£9.99/month for 12 months)
+- **Regular Price**: £19.99/month after first year
 
 ### Agency Plan - £39.99/month
-- **Target**: PR agencies and large labels
+- **Target**: PR agencies and labels
 - **Features**:
   - 500 contact enrichments per month
-  - Fastest processing
-  - White-label exports
-  - Phone + email support
-- **Previous Price**: £79/month
-- **Savings**: 49% reduction
+  - Instant processing
+  - White-label branding on exports
+  - Client-ready reports
+  - Full analytics dashboard
+  - Priority Audio support
+- **Price**: £39.99/month
 
-## Rationale for Price Reduction
+## Beta Strategy & "The Unsigned Advantage" Alignment
 
-### Supporting Independent Artists
-- **Accessibility**: Lower barrier to entry for emerging artists
-- **Value Proposition**: More affordable than manual research costs
-- **Market Positioning**: Competitive with other indie-focused tools
+### Free Beta Access Strategy
+- **No Barrier to Entry**: Completely free access during beta phase
+- **Value Demonstration**: Users experience full platform before committing
+- **Community Building**: Beta testers become advocates and provide feedback
+- **Newsletter Integration**: Beta signups automatically join "The Unsigned Advantage"
 
-### Market Analysis
-- **Independent Artists**: Typically have budgets of £50-200/month for tools
-- **Small Labels**: Looking for cost-effective solutions
-- **Competition**: Aligns with similar AI tools in the market
+### Beta Tester Benefits
+- **50% Lifetime Discount**: £9.99/month for first year (vs £19.99 regular)
+- **Direct Founder Access**: Personal relationship with Chris Schofield
+- **Priority Feature Requests**: Shape the product's development
+- **Founding Beta User Recognition**: Permanent status in the platform
 
-### Business Impact
+### Market Positioning
+- **Independent Artists**: Free access removes all barriers
+- **Small Labels**: Professional features at accessible pricing
+- **PR Agencies**: White-label options for client work
+- **UK-First Approach**: British pricing, local market focus
+
+## Business Impact
 - **Volume Strategy**: Lower prices may increase adoption
 - **Customer Acquisition**: More accessible for target market
 - **Revenue Optimization**: Balance between accessibility and sustainability

@@ -222,6 +222,29 @@ async function processContactBatch(
 }
 
 export async function POST(req: NextRequest) {
+  // Forward to the improved Claude API endpoint for better performance and cost
+  try {
+    const body = await req.json();
+    
+    const response = await fetch(`${req.nextUrl.origin}/api/enrich-claude`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+    
+    const data = await response.json();
+    return NextResponse.json(data, { status: response.status });
+    
+  } catch (error) {
+    console.error('Error forwarding to Claude API:', error);
+    // Fall back to original Perplexity logic if Claude fails
+    return originalPerplexityHandler(req);
+  }
+}
+
+async function originalPerplexityHandler(req: NextRequest) {
   const start = Date.now();
   
   try {
@@ -292,5 +315,14 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET() {
-  return new Response('This endpoint only supports POST requests.', { status: 405 });
+  return NextResponse.json({
+    message: 'Audio Intel Contact Enrichment API',
+    method: 'POST',
+    description: 'Send contact data for AI-powered enrichment',
+    example: {
+      contacts: [
+        { email: 'john@example.com', name: 'John Smith' }
+      ]
+    }
+  });
 } 

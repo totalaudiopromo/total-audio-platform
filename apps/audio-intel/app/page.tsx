@@ -10,30 +10,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { 
   Mail, 
   Users, 
-  Target, 
   Zap, 
   Check, 
   Play, 
   ArrowRight, 
-  Star, 
   Clock, 
-  TrendingUp,
-  FileText,
-  Globe,
-  Phone,
-  MapPin,
-  Calendar,
   Search,
-  Upload,
   Download,
-  Settings,
   BarChart3,
   Shield,
-  Headphones,
-  Music,
-  Radio,
-  Newspaper,
-  ExternalLink
+  Music
 } from "lucide-react"
 import { AudioCharacter } from "@/components/ui/audio-character"
 import { RealTimeMetrics } from "@/components/ui/real-time-metrics"
@@ -42,38 +28,8 @@ import LiveChatBot from "./components/LiveChatBot"
 import Image from "next/image"
 import Link from "next/link"
 
-// Track cross-promotion clicks with error handling
-function trackCrossPromotionClick(target: string, location: string) {
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('event', 'cross_promotion_click', {
-      target,
-      location,
-      timestamp: new Date().toISOString()
-    });
-  }
-  
-  // Non-blocking analytics call with error handling
-  fetch('/api/analytics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-      event: 'cross_promotion_click', 
-      data: { 
-        tool: target,
-        location,
-        timestamp: new Date().toISOString(),
-        page: 'audio_intel_landing'
-      } 
-    }),
-  }).catch(error => {
-    // Silently log analytics errors to avoid disrupting UX
-    console.warn('Analytics tracking failed:', error);
-  });
-}
 
 export default function AudioIntelLanding() {
-  // Add state management for better UX
-  const [isLoading, setIsLoading] = useState(false);
   
   // Instant demo state
   const [demoEmail, setDemoEmail] = useState<string>('john@bbc.co.uk');
@@ -92,18 +48,12 @@ export default function AudioIntelLanding() {
   const [betaInterest, setBetaInterest] = useState<string>('');
   const [isBetaSubmitting, setIsBetaSubmitting] = useState<boolean>(false);
 
-  // Track user engagement
-  const trackEngagement = async (action: string, data: any = {}) => {
-    try {
-      await fetch('/api/analytics/engagement', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action, data })
-      });
-    } catch (error) {
-      // Silently fail - don't interrupt user experience
-      console.error('Failed to track engagement:', error);
-    }
+  const trackEngagement = (action: string, data: any = {}) => {
+    fetch('/api/analytics/engagement', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action, data })
+    }).catch(() => {});
   };
 
   // Track page view on mount
@@ -112,7 +62,6 @@ export default function AudioIntelLanding() {
   }, []);
 
   const handlePricingNavigation = () => {
-    setIsLoading(true);
     trackEngagement('pricing_button_click', { location: 'hero_section' });
     window.location.href = '/pricing';
   };
@@ -123,7 +72,7 @@ export default function AudioIntelLanding() {
     setDemoLoading(true);
     trackEngagement('demo_run', { email: demoEmail });
     try {
-      const res = await fetch('/api/enrich', {
+      const res = await fetch('/api/enrich-claude', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ contacts: [{ email: demoEmail }] }),
@@ -243,9 +192,8 @@ export default function AudioIntelLanding() {
               size="sm" 
               className="audio-intel-nav-button bg-blue-600 hover:bg-blue-700 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
               onClick={handlePricingNavigation}
-              disabled={isLoading}
             >
-              {isLoading ? 'Loading...' : 'Get Started'}
+              Get Started
             </Button>
           </nav>
         </div>
@@ -297,16 +245,11 @@ export default function AudioIntelLanding() {
           
           <div className="max-w-4xl mx-auto mb-12">
             <p className="text-2xl text-gray-600 mb-6 leading-relaxed font-medium">
-              Built by <span className="font-bold text-gray-900">sadact</span> - Brighton-based electronic producer and radio promoter who lives this daily
+              Built by a Brighton producer who hated wasting weekends researching radio contacts.
             </p>
             
-            <p className="text-lg text-blue-600 mb-6 leading-relaxed font-bold">
-              "After years of manual contact research eating into my creative time, I built the tool I wished existed."
-            </p>
-            
-            <p className="text-base text-gray-700 leading-relaxed">
-              Transform basic contact lists into music industry intelligence with AI-powered enrichment. 
-              Get playlist curators, radio DJs, and music bloggers with submission guidelines, contact preferences, and pitch-ready insights.
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Audio Intel uses AI to turn email addresses into detailed music industry profiles - submission guidelines, contact preferences, and pitch-ready insights for playlist curators, radio DJs, and music bloggers.
             </p>
           </div>
           
@@ -661,7 +604,7 @@ export default function AudioIntelLanding() {
                 {/* ENLARGED chaos overwhelmed PNG as main feature - MOBILE RESPONSIVE */}
                 <Image 
                   src="/assets/loading-states/chaos-overwhelmed.png"
-                  alt="Artist overwhelmed by chaotic contact research - papers everywhere, disorganized workflow"
+                  alt="Artist overwhelmed by chaotic contact research - papers everywhere, disorganised workflow"
                   width={400}
                   height={400}
                   className="mx-auto mb-8 w-96 h-96 sm:w-72 sm:h-72 xs:w-60 xs:h-60"
@@ -1014,7 +957,7 @@ export default function AudioIntelLanding() {
                 </p>
               </div>
 
-              <Link href="/pricing?plan=beta">
+              <Link href="/beta">
                 <Button 
                   className="w-full rounded-2xl font-black text-xl py-6 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-600 hover:to-green-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
                 >

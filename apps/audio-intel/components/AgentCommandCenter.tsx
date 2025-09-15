@@ -4,7 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { agentColorUtils, AGENT_CATEGORIES, AGENT_STATUS_STATES, AGENT_COLOR_THEMES } from '../lib/agent-color-system';
 import AgentStatusWidget from './AgentStatusWidget';
 import AgentLoadingState from './AgentLoadingState';
-import { CheckCircle, AlertTriangle, AlertCircle, BarChart3, Gamepad2, Rocket, Sparkles, ContactRound, Mail, TrendingUp } from 'lucide-react';
+import { CheckCircle, AlertTriangle, AlertCircle, BarChart3, Gamepad2, Rocket, Sparkles, ContactRound, Mail, TrendingUp, Calendar, Clock, Share2, Smartphone } from 'lucide-react';
+import SocialMediaScheduler from './SocialMediaScheduler';
+import UKSocialMediaHub from './UKSocialMediaHub';
 
 interface CommandCenterProps {
   title?: string;
@@ -81,7 +83,17 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
       performance: 99,
       currentTask: 'Monitoring all system metrics',
       priority: 'critical' as const
-    }
+    },
+           {
+             id: '7',
+             name: 'UK Social Media Hub',
+             type: 'uk-social-hub',
+             status: 'active' as const,
+             category: 'Growth & Marketing',
+             performance: 95,
+             currentTask: 'Managing 16 posts across 5 platforms',
+             priority: 'high' as const
+           }
   ]);
 
   // System health calculation
@@ -372,6 +384,11 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
             </div>
           )}
         </div>
+
+               {/* UK Social Media Hub */}
+               <div className="border-t border-gray-200 pt-6 mt-6">
+                 <UKSocialMediaHub compact={compactMode} />
+               </div>
 
         {/* System Stats */}
         <div className="border-t border-gray-200 pt-6 mt-6">

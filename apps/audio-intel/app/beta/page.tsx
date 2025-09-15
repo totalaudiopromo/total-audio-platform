@@ -35,14 +35,30 @@ export default function BetaAccessPage() {
   const [newsletterOptIn, setNewsletterOptIn] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState<string>('')
+  const [fieldErrors, setFieldErrors] = useState<{[key: string]: string}>({})
 
   const handleBetaSignup = async (e: React.FormEvent) => {
     console.log('🚀 Form handler called!')
     e.preventDefault()
     e.stopPropagation()
     
-    if (!email || !firstName) {
-      alert('Please fill in your email and first name')
+    // Reset errors
+    setError('')
+    setFieldErrors({})
+    
+    // Validate required fields
+    const errors: {[key: string]: string} = {}
+    if (!email) errors.email = 'Email is required'
+    if (!firstName) errors.firstName = 'First name is required'
+    
+    // Email format validation
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = 'Please enter a valid email address'
+    }
+    
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors)
       return false
     }
     
@@ -83,11 +99,11 @@ export default function BetaAccessPage() {
         setSubmitted(true)
       } else {
         console.error('❌ ConvertKit API error:', result.error)
-        alert(`Signup failed: ${result.error}. Please try again or contact support.`)
+        setError(`Signup failed: ${result.error}. Please try again or contact support.`)
       }
     } catch (error) {
       console.error('❌ Network error:', error)
-      alert('Network error. Please check your connection and try again.')
+      setError('Network error. Please check your connection and try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -187,8 +203,12 @@ export default function BetaAccessPage() {
             Try Audio Intel
             <span className="block text-blue-600">Free Beta</span>
           </h1>
+
+          <p className="beta-hero-description text-2xl text-blue-600 mb-4 max-w-3xl mx-auto leading-relaxed font-bold">
+            AI-powered contact research tool that turns email addresses into detailed music industry profiles
+          </p>
           
-          <p className="beta-hero-description text-2xl text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed font-medium">
+          <p className="beta-hero-description text-xl text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed font-medium">
             Test Audio Intel completely free. No payment required. 
             <strong> When you love it, get 50% off forever</strong> as a founding beta user.
           </p>
@@ -200,6 +220,73 @@ export default function BetaAccessPage() {
             <p className="text-xl font-bold text-white/90 mb-6">
               Test everything free during beta, then upgrade to Professional at £19.99/month when ready.
             </p>
+          </div>
+        </div>
+
+        {/* What You'll Be Testing */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <h2 className="beta-section-title text-4xl font-black text-gray-900 text-center mb-12">
+            What You'll Be Testing
+          </h2>
+          
+          <div className="bg-white p-8 rounded-2xl border-4 border-gray-300 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mb-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <Target className="w-8 h-8 text-blue-600" />
+                  <h3 className="text-2xl font-black text-gray-900">Core Features</h3>
+                </div>
+                <ul className="space-y-3 text-lg font-bold text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                    <span>AI contact enrichment from email addresses</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                    <span>Submission guidelines & contact preferences</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                    <span>Spreadsheet upload & bulk processing</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                    <span>Export enriched data to CSV/Excel</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <Zap className="w-8 h-8 text-purple-600" />
+                  <h3 className="text-2xl font-black text-gray-900">Beta Access Includes</h3>
+                </div>
+                <ul className="space-y-3 text-lg font-bold text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                    <span>Full platform access during beta</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                    <span>Unlimited contact enrichment</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                    <span>Direct feedback channel to founder</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                    <span>Priority support & feature requests</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="mt-8 p-6 bg-blue-50 rounded-xl border-2 border-blue-200">
+              <p className="text-lg font-bold text-blue-800 text-center">
+                <strong>Perfect for:</strong> Radio promoters, playlist curators, music bloggers, label managers, and independent artists who spend hours researching industry contacts
+              </p>
+            </div>
           </div>
         </div>
 
@@ -306,7 +393,7 @@ export default function BetaAccessPage() {
               <div className="mb-6">
                 <Image 
                   src="/assets/loading-states/processing-organizing.png"
-                  alt="Processing and organizing your beta access - getting everything ready"
+                  alt="Processing and organising your beta access - getting everything ready"
                   width={120}
                   height={120}
                   className="mx-auto"
@@ -331,11 +418,14 @@ export default function BetaAccessPage() {
                       id="firstName"
                       type="text"
                       placeholder="Phoebe"
-                      className="beta-form-input h-12 text-base border-2 border-gray-300 mt-2"
+                      className={`beta-form-input h-12 text-base border-2 mt-2 ${fieldErrors.firstName ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
                       required
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
                     />
+                    {fieldErrors.firstName && (
+                      <p className="text-red-600 text-sm font-bold mt-1">{fieldErrors.firstName}</p>
+                    )}
                   </div>
                   <div className="beta-form-field">
                     <Label htmlFor="lastName" className="beta-form-label text-lg font-black text-gray-900">
@@ -360,11 +450,14 @@ export default function BetaAccessPage() {
                     id="email"
                     type="email"
                     placeholder="theboss@springsteen.com"
-                    className="beta-form-input h-12 text-base border-2 border-gray-300 mt-2"
+                    className={`beta-form-input h-12 text-base border-2 mt-2 ${fieldErrors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
+                  {fieldErrors.email && (
+                    <p className="text-red-600 text-sm font-bold mt-1">{fieldErrors.email}</p>
+                  )}
                 </div>
                 
                 <div className="beta-newsletter-field bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4">
@@ -467,6 +560,17 @@ export default function BetaAccessPage() {
                     <li>✅ Founding beta user recognition</li>
                   </ul>
                 </div>
+
+                {error && (
+                  <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-white text-sm font-bold">!</span>
+                      </div>
+                      <p className="text-red-700 font-bold">{error}</p>
+                    </div>
+                  </div>
+                )}
 
                 <Button
                   type="submit"

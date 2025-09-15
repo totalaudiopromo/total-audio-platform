@@ -312,7 +312,7 @@ export default function SpreadsheetUploader({ onDataProcessed, onStartEnrichment
         <div className="text-center space-y-8">
           <img 
             src="/assets/loading-states/processing-organizing.png" 
-            alt="Total Audio Promo mascot organizing your data" 
+            alt="Total Audio Promo mascot organising your data" 
             className="w-24 h-24 mx-auto object-contain animate-pulse"
             onError={(e) => {
               const target = e.target as HTMLImageElement
@@ -533,6 +533,14 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
       // Step 5: AI Enrichment with Claude API (Much cheaper and better than Perplexity!)
       setState(prev => ({ ...prev, progress: 95, magicStep: 'Using Total Audio Promo AI to enrich contacts...' }));
       
+      // DEBUG: Log contact counts at each stage
+      console.log('🔍 DEBUG: Pipeline results:', {
+        totalProcessedContacts: results.processedContacts.length,
+        summaryTotalContacts: results.summary.totalContacts,
+        duplicatesFound: results.summary.duplicatesFound,
+        duplicatesRemoved: results.summary.duplicatesRemoved
+      });
+
       // Prepare contacts for Claude API enrichment
       const contactsForEnrichment = results.processedContacts.map(contact => ({
         name: contact.name,
@@ -540,6 +548,8 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
         company: getCompanyFromEmail(contact.email || ''),
         role: getRoleFromEmail(contact.email || '', getCompanyFromEmail(contact.email || ''))
       }));
+      
+      console.log('🔍 DEBUG: Contacts prepared for enrichment:', contactsForEnrichment.length);
 
       // Call Claude API for enrichment with real-time progress tracking
       const enrichmentResponse = await fetch('/api/enrich-claude', {

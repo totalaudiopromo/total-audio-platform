@@ -303,7 +303,7 @@ export default function DocumentationPage() {
                     <h3 className="text-2xl font-black text-gray-900 mb-4">📡 Endpoints</h3>
                     <div className="space-y-4">
                       <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                        <h4 className="font-bold text-blue-900 mb-2">POST /api/enrich</h4>
+                        <h4 className="font-bold text-blue-900 mb-2">POST /api/enrich-claude</h4>
                         <p className="text-sm text-blue-800 mb-2">Enrich contact list with AI intelligence</p>
                         <div className="text-xs text-gray-600">
                           Rate limit: 100 requests/hour
@@ -333,7 +333,7 @@ export default function DocumentationPage() {
                     <div>
                       <h4 className="font-bold mb-2">JavaScript/Node.js</h4>
                       <div className="bg-gray-800 p-4 rounded font-mono text-sm">
-                        <div className="text-blue-400">const response = await fetch(&apos;/api/enrich&apos;, {'{'}</div>
+                        <div className="text-blue-400">const response = await fetch(&apos;/api/enrich-claude&apos;, {'{'}</div>
                         <div className="text-gray-300 ml-4">method: &apos;POST&apos;,</div>
                         <div className="text-gray-300 ml-4">headers: {'{'}</div>
                         <div className="text-gray-300 ml-8">&apos;Authorization&apos;: &apos;Bearer YOUR_API_KEY&apos;,</div>

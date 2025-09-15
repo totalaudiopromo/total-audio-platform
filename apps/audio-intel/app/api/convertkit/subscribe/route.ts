@@ -4,9 +4,10 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { getEnv } from '@/lib/env';
 
-const CONVERTKIT_API_KEY = process.env.CONVERTKIT_API_KEY || '5wx6QPvhunue-d760yZHIg';
-const CONVERTKIT_API_SECRET = process.env.CONVERTKIT_API_SECRET || 'BMiOCi6hPDA73O1pnwXh7_bXEBi5zMzf7Tgk5rP_trI';
+const CONVERTKIT_API_KEY = getEnv('CONVERTKIT_API_KEY', { requiredInProd: false });
+const CONVERTKIT_API_SECRET = getEnv('CONVERTKIT_API_SECRET', { requiredInProd: false });
 
 interface SubscribeRequest {
   subscriber: {

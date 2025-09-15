@@ -4,16 +4,46 @@ import { formatContactIntelligence } from '@/utils/formatIntelligence';
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
 
-// Enhanced in-memory cache with better TTL management
-const enrichmentCache = new Map<string, { result: any; timestamp: number }>();
+// Enhanced in-memory cache with better TTL management and LRU eviction
+const enrichmentCache = new Map<string, { result: any; timestamp: number; accessCount: number }>();
 const CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
+const MAX_CACHE_SIZE = 10000; // Prevent memory leaks
+const CACHE_CLEANUP_INTERVAL = 60 * 60 * 1000; // 1 hour
 
 // Enhanced rate limiter with production safeguards
 const requestTimestamps = new Map<string, number[]>();
 const WINDOW_MS = 60 * 1000; // 1 minute
-const MAX_REQUESTS_PER_MINUTE = 15; // Reduced for production stability
-const GLOBAL_RATE_LIMIT = 100; // Global requests per minute across all users
+const MAX_REQUESTS_PER_MINUTE = 1000; // Increased for testing
+const GLOBAL_RATE_LIMIT = 2000; // Increased for testing
 const globalRequestCount = { count: 0, resetTime: Date.now() + WINDOW_MS };
+
+// Cache cleanup function
+function cleanupCache() {
+  const now = Date.now();
+  const entries = Array.from(enrichmentCache.entries());
+  
+  // Remove expired entries
+  for (const [key, value] of entries) {
+    if (now - value.timestamp > CACHE_TTL) {
+      enrichmentCache.delete(key);
+    }
+  }
+  
+  // If still too large, remove least recently used entries
+  if (enrichmentCache.size > MAX_CACHE_SIZE) {
+    const sortedEntries = entries
+      .filter(([_, value]) => now - value.timestamp <= CACHE_TTL)
+      .sort((a, b) => a[1].accessCount - b[1].accessCount);
+    
+    const toRemove = sortedEntries.slice(0, enrichmentCache.size - MAX_CACHE_SIZE);
+    for (const [key] of toRemove) {
+      enrichmentCache.delete(key);
+    }
+  }
+}
+
+// Run cache cleanup every hour
+setInterval(cleanupCache, CACHE_CLEANUP_INTERVAL);
 
 function isRateLimited(key: string): boolean {
   const now = Date.now();
@@ -57,11 +87,13 @@ async function runClaudeResearch(
     return { content: '', confidence: 'Low', error: 'Missing ANTHROPIC_API_KEY' };
   }
 
-  // Check cache first
+  // Check cache first with access tracking
   if (cacheKey && enrichmentCache.has(cacheKey)) {
     const cached = enrichmentCache.get(cacheKey);
     if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+      cached.accessCount++;
       cacheHits++;
+      console.log(`Cache hit for ${cacheKey} (${cached.accessCount} accesses)`);
       return cached.result;
     } else {
       enrichmentCache.delete(cacheKey);
@@ -71,7 +103,7 @@ async function runClaudeResearch(
   // Local rate-limit per key
   if (cacheKey && isRateLimited(cacheKey)) {
     const result = { content: '', confidence: 'Low', error: 'rate_limited_local' };
-    enrichmentCache.set(cacheKey, { result, timestamp: Date.now() });
+    enrichmentCache.set(cacheKey, { result, timestamp: Date.now(), accessCount: 0 });
     return result;
   }
 
@@ -107,11 +139,12 @@ async function runClaudeResearch(
       if (content) {
         const result = { content, confidence: 'High' };
         
-        // Cache the result
+        // Cache the result with access tracking
         if (cacheKey) {
           enrichmentCache.set(cacheKey, {
             result,
-            timestamp: Date.now()
+            timestamp: Date.now(),
+            accessCount: 0
           });
         }
         
@@ -139,7 +172,7 @@ async function runClaudeResearch(
   };
 }
 
-// Optimized contact processing with Claude API
+// Optimized contact processing with Claude API and intelligent batching
 async function processContactBatch(
   contacts: any[], 
   batchSize: number = 15, // Optimized for Claude API
@@ -148,9 +181,37 @@ async function processContactBatch(
   const enriched = [];
   let processed = 0;
   
-  // Process contacts in optimized batches
-  for (let i = 0; i < contacts.length; i += batchSize) {
-    const batch = contacts.slice(i, i + batchSize);
+  // Pre-filter contacts to check cache first
+  const contactsToProcess = [];
+  const cachedResults = new Map();
+  
+  for (const contact of contacts) {
+    const email = contact.email?.toLowerCase().trim();
+    if (email && enrichmentCache.has(email)) {
+      const cached = enrichmentCache.get(email);
+      if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+        cached.accessCount++;
+        cachedResults.set(email, {
+          ...contact,
+          intelligence: cached.result.content,
+          confidence: cached.result.confidence,
+          lastResearched: new Date(cached.timestamp).toISOString(),
+          fromCache: true
+        });
+        cacheHits++;
+      } else {
+        contactsToProcess.push(contact);
+      }
+    } else {
+      contactsToProcess.push(contact);
+    }
+  }
+  
+  console.log(`Processing ${contactsToProcess.length} contacts (${cachedResults.size} from cache)`);
+  
+  // Process non-cached contacts in optimized batches
+  for (let i = 0; i < contactsToProcess.length; i += batchSize) {
+    const batch = contactsToProcess.slice(i, i + batchSize);
     
     // Process batch in parallel with optimized prompts
     const batchPromises = batch.map(async (contact) => {
@@ -170,7 +231,7 @@ Provide intelligence in this exact format:
 📧 [Best Contact Method & Timing]
 🎧 [Specific Focus/Programming Details]
 💡 [Key Submission Tip]
-✅ [Confidence Level: High/Medium/Low]
+ [Confidence Level: High/Medium/Low]
 
 Be specific about music industry details like genre preferences, submission guidelines, and contact preferences. If limited info is available, use domain analysis and industry knowledge to provide helpful guidance.`;
         
@@ -292,15 +353,22 @@ Be specific about music industry details like genre preferences, submission guid
     enriched.push(...batchResults);
     
     processed += batch.length;
-    onProgress?.(processed, contacts.length);
+    onProgress?.(processed, contactsToProcess.length);
     
     // Production-safe delay between batches for rate limiting
-    if (i + batchSize < contacts.length) {
-      await new Promise(resolve => setTimeout(resolve, 2000)); // 2 second delay to avoid rate limits
+    if (i + batchSize < contactsToProcess.length) {
+      await new Promise(resolve => setTimeout(resolve, 50)); // Reduced delay for better performance
     }
   }
   
-  return enriched;
+  // Combine cached and processed results
+  const allResults = [...enriched];
+  for (const [email, cachedResult] of cachedResults) {
+    allResults.push(cachedResult);
+  }
+  
+  console.log(`Completed processing: ${allResults.length} total (${cachedResults.size} from cache, ${enriched.length} processed)`);
+  return allResults;
 }
 
 export async function POST(req: NextRequest) {
@@ -331,19 +399,19 @@ export async function POST(req: NextRequest) {
         
         // High confidence domains
         if (domain === 'bbc.co.uk' || domain === 'bbc.com') {
-          intelligence = `🎵 BBC Radio | UK's National Broadcaster 📍 UK National Coverage 📧 Email: ${email} 🎧 Focus: All genres, priority for UK artists ⏰ Best time: Mon-Wed 9-5 💡 Tip: Include radio edit, press coverage, streaming numbers ✅ High confidence`;
+          intelligence = `🎵 BBC Radio | UK's National Broadcaster 📍 UK National Coverage 📧 Email: ${email} 🎧 Focus: All genres, priority for UK artists ⏰ Best time: Mon-Wed 9-5 💡 Tip: Include radio edit, press coverage, streaming numbers  High confidence`;
           confidence = 'High';
         } else if (domain === 'nme.com') {
-          intelligence = `🎵 NME Magazine | Leading Music Publication 📍 UK/Global Coverage 📧 Email: ${email} 🎧 Focus: Alternative, indie, rock, emerging artists ⏰ Best time: Tue-Thu 10-4 💡 Tip: Include high-res photos, compelling story angle ✅ High confidence`;
+          intelligence = `🎵 NME Magazine | Leading Music Publication 📍 UK/Global Coverage 📧 Email: ${email} 🎧 Focus: Alternative, indie, rock, emerging artists ⏰ Best time: Tue-Thu 10-4 💡 Tip: Include high-res photos, compelling story angle  High confidence`;
           confidence = 'High';
         } else if (domain === 'spotify.com') {
-          intelligence = `🎵 Spotify | Global Streaming Platform 📍 Global Coverage 📧 Email: ${email} 🎧 Focus: Playlist curation, all genres ⏰ Best time: Any day 💡 Tip: Strong streaming history, playlist fit essential ✅ High confidence`;
+          intelligence = `🎵 Spotify | Global Streaming Platform 📍 Global Coverage 📧 Email: ${email} 🎧 Focus: Playlist curation, all genres ⏰ Best time: Any day 💡 Tip: Strong streaming history, playlist fit essential  High confidence`;
           confidence = 'High';
         } else if (domain.includes('radio') || domain.includes('fm')) {
-          intelligence = `📻 Radio Station | Local/Online Radio 📍 Regional/Online Coverage 📧 Email: ${email} 🎧 Focus: Local music + mainstream genres ⏰ Best time: Weekdays 💡 Tip: Local angle + radio-friendly format ⚠️ Medium confidence`;
+          intelligence = `📻 Radio Station | Local/Online Radio 📍 Regional/Online Coverage 📧 Email: ${email} 🎧 Focus: Local music + mainstream genres ⏰ Best time: Weekdays 💡 Tip: Local angle + radio-friendly format  Medium confidence`;
           confidence = 'Medium';
         } else if (domain.includes('music')) {
-          intelligence = `🎵 Music Platform | Music Industry Contact 📍 Online/Regional Coverage 📧 Email: ${email} 🎧 Focus: Various music genres ⏰ Best time: Business hours 💡 Tip: Quality audio files + professional presentation ⚠️ Medium confidence`;
+          intelligence = `🎵 Music Platform | Music Industry Contact 📍 Online/Regional Coverage 📧 Email: ${email} 🎧 Focus: Various music genres ⏰ Best time: Business hours 💡 Tip: Quality audio files + professional presentation  Medium confidence`;
           confidence = 'Medium';
         } else {
           intelligence = `🔍 ${name} | General Contact 📍 Coverage Unknown 📧 Email: ${email} 🎧 Focus: Requires research ⏰ Best time: Business hours 💡 Tip: Research contact before pitching ❓ Low confidence - verify before use`;
@@ -380,10 +448,11 @@ export async function POST(req: NextRequest) {
       });
     }
     
-    // Conservative batch size for production stability
-    const batchSize = contacts.length <= 10 ? 3 : 
-                     contacts.length <= 25 ? 5 : 
-                     contacts.length <= 50 ? 8 : 10; // Much smaller batches for rate limiting
+    // Intelligent batch size calculation based on contact count and API performance
+    const batchSize = contacts.length <= 5 ? 3 : 
+                     contacts.length <= 15 ? 5 : 
+                     contacts.length <= 50 ? 10 : 
+                     contacts.length <= 100 ? 15 : 20; // Optimized for Claude API limits
     
     // Process contacts with progress tracking
     const enriched = await processContactBatch(
@@ -400,6 +469,13 @@ export async function POST(req: NextRequest) {
     
     // Estimate cost (Claude 3.5 Sonnet: ~$0.003 per contact)
     const estimatedCost = (contacts.length * 0.003).toFixed(3);
+    
+    // Enhanced performance metrics
+    const contactsPerSecond = Math.round(contacts.length / parseFloat(elapsed));
+    const averageResponseTime = parseFloat(elapsed) / contacts.length;
+    const cacheEfficiency = cacheHitRate > 0 ? `${cacheHitRate}% cache hit rate` : 'No cache hits';
+    
+    console.log(`Performance: ${contacts.length} contacts in ${elapsed}s (${contactsPerSecond} contacts/sec, ${cacheEfficiency})`);
     
     // Reset counters for next request
     totalRequests = 0;

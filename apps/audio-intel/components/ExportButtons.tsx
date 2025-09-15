@@ -11,6 +11,7 @@ import {
   AIAgentData,
   ExportProgress 
 } from '../utils/exportService';
+import { trackExport, trackFunnelProgression } from '../utils/analytics';
 
 interface ExportButtonsProps {
   contacts?: ContactData[];
@@ -135,6 +136,15 @@ export default function ExportButtons({
       }
 
       setLastExportResult(result);
+      
+      // Track export analytics
+      if (result.success) {
+        const contactCount = contacts?.length || 0;
+        const fields = ['name', 'email', 'contactIntelligence']; // Default fields for tracking
+        trackExport(exportFormat, contactCount, fields);
+        trackFunnelProgression('EXPORT', { format: exportFormat, contactCount, type });
+      }
+      
       onExportComplete?.(result);
 
     } catch (error) {

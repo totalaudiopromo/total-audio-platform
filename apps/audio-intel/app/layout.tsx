@@ -19,15 +19,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Audio Intel – AI-Powered Music Industry Intelligence | Founded by Music Industry Veteran',
-  description: 'From 15 years in music PR to AI innovation. Transform chaos into intelligence with our founder-built platform for playlist curators, radio DJs, and music industry professionals.',
+  description: 'Stop wasting 15 hours a week researching music contacts. Audio Intel uses AI to turn emails into detailed industry profiles instantly.',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
-    apple: '/favicon.ico'
+    apple: '/apple-touch-icon.png'
   },
   openGraph: {
     title: 'Audio Intel – AI-Powered Music Industry Contact Enrichment',
-    description: 'Transform your music PR workflow. Get submission guidelines, contact preferences, and pitch-ready insights for the music industry.',
+    description: 'Stop wasting 15 hours a week researching music contacts. Audio Intel uses AI to turn emails into detailed industry profiles instantly.',
     url: 'https://intel.totalaudiopromo.com',
     siteName: 'Audio Intel - Total Audio Promo',
     images: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Audio Intel – AI-Powered Music Industry Contact Enrichment',
     description: 'Stop wasting 15 hours a week researching music contacts. Instantly enrich your email lists with AI-powered insights for playlist curators, radio DJs, and music bloggers.',
-    images: ['/t-a-p-new dog logo.png'],
+    images: ['/images/total_audio_promo_logo_trans.png'],
     site: '@totalaudiopromo',
   },
 };
@@ -55,10 +55,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/images/total_audio_promo_logo_trans.png" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{

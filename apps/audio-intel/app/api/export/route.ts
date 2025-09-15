@@ -6,7 +6,11 @@ import { generateContactExportEmail, generateAnalyticsExportEmail, generateSearc
 import nodemailer from 'nodemailer';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_build');
+function getResend() {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return null;
+  try { return new Resend(key); } catch { return null; }
+}
 
 interface ExportRequest {
   type: 'contacts' | 'analytics' | 'search-results';
@@ -318,7 +322,8 @@ async function sendExportEmail(params: {
   }
 
   // Use Resend for email delivery
-  if (process.env.RESEND_API_KEY) {
+  const resend = getResend();
+  if (resend) {
     await resend.emails.send({
       from: emailConfig.from,
       to: recipientEmail,
