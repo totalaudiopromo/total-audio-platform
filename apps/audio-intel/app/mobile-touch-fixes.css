@@ -1,0 +1,278 @@
+/* 📱 MOBILE TOUCH TARGET FIXES - Revenue Critical */
+
+/* =============================================================================
+   MINIMUM TOUCH TARGET ENFORCEMENT (44px Apple/Google guidelines)
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Ensure ALL interactive elements meet minimum touch standards */
+  button,
+  a,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  .btn,
+  [role="button"],
+  [onclick] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    touch-action: manipulation !important;
+
+    /* Ensure padding for better touch area */
+    padding: 12px 16px !important;
+
+    /* Improve visual feedback */
+    transition: all 0.15s ease !important;
+  }
+
+  /* Special handling for text-only buttons */
+  button[class*="text-"],
+  a[class*="text-"] {
+    padding: 12px 20px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Fix for icon-only buttons */
+  button[class*="w-6"],
+  button[class*="w-8"],
+  button[class*="w-10"],
+  .hamburger-menu,
+  .mobile-menu-toggle {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 8px !important;
+  }
+
+  /* Primary CTA buttons - make them prominent */
+  button[class*="bg-blue"],
+  button[class*="bg-green"],
+  button[class*="bg-gradient"],
+  .cta-button,
+  .primary-button {
+    min-height: 56px !important;
+    padding: 16px 24px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+
+    /* Ensure full width on mobile for key CTAs */
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 8px auto !important;
+    display: block !important;
+  }
+
+  /* Form elements need proper touch targets */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="file"],
+  select,
+  textarea {
+    min-height: 48px !important;
+    padding: 12px 16px !important;
+    font-size: 16px !important; /* Prevent zoom on iOS */
+    border-radius: 8px !important;
+    touch-action: manipulation !important;
+  }
+
+  /* File upload buttons need special attention */
+  input[type="file"] {
+    min-height: 56px !important;
+    padding: 16px !important;
+  }
+
+  /* Navigation items */
+  nav a,
+  .nav-link,
+  .menu-item {
+    min-height: 44px !important;
+    padding: 12px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* Dropdown triggers */
+  .dropdown-toggle,
+  select {
+    min-height: 48px !important;
+    padding: 12px 16px !important;
+  }
+
+  /* Special handling for the main "Drop Your Chaos" CTA */
+  button:contains("Drop Your Chaos"),
+  button[class*="chaos"],
+  .upload-cta {
+    min-height: 64px !important;
+    padding: 20px 32px !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 16px auto !important;
+    display: block !important;
+
+    /* Improve contrast and visibility */
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+    color: white !important;
+    border: 3px solid #1e40af !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3) !important;
+  }
+
+  /* Pricing cards CTAs */
+  .pricing-card button,
+  .plan-button {
+    min-height: 56px !important;
+    width: 100% !important;
+    padding: 16px 24px !important;
+    margin-top: 16px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+  }
+
+  /* Social proof and testimonial buttons */
+  .testimonial-cta,
+  .social-cta {
+    min-height: 48px !important;
+    padding: 14px 20px !important;
+  }
+
+  /* Footer links */
+  footer a {
+    min-height: 44px !important;
+    padding: 12px 8px !important;
+    display: inline-block !important;
+  }
+
+  /* Improve touch feedback */
+  button:active,
+  a:active,
+  [role="button"]:active {
+    transform: scale(0.98) !important;
+    opacity: 0.9 !important;
+  }
+
+  /* Ensure proper spacing between touch targets */
+  button + button,
+  a + a,
+  .btn + .btn {
+    margin-top: 8px !important;
+  }
+
+  /* Fix for overlapping elements */
+  .touch-target {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* Accessibility improvements for touch */
+  button:focus,
+  a:focus,
+  input:focus,
+  select:focus {
+    outline: 3px solid #3b82f6 !important;
+    outline-offset: 2px !important;
+  }
+
+  /* Remove hover effects that don't work on mobile */
+  @media (hover: none) {
+    button:hover,
+    a:hover {
+      transform: none !important;
+    }
+  }
+}
+
+/* =============================================================================
+   SPECIFIC AUDIO INTEL MOBILE FIXES
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Fix the demo/upload button that was too small */
+  .demo-button,
+  .upload-demo-button,
+  button[class*="Try"],
+  button[class*="Demo"] {
+    min-height: 56px !important;
+    width: 100% !important;
+    padding: 16px 24px !important;
+    font-size: 16px !important;
+    margin: 12px 0 !important;
+  }
+
+  /* Newsletter signup button */
+  .newsletter-submit,
+  button[type="submit"] {
+    min-height: 52px !important;
+    width: 100% !important;
+    padding: 16px 24px !important;
+    margin-top: 16px !important;
+  }
+
+  /* Beta signup buttons */
+  .beta-cta,
+  .signup-button,
+  a[href*="beta"] {
+    min-height: 56px !important;
+    padding: 16px 24px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    display: block !important;
+    text-align: center !important;
+    margin: 12px 0 !important;
+  }
+
+  /* Mobile menu hamburger */
+  .hamburger,
+  .menu-toggle,
+  button[aria-label*="menu"] {
+    min-width: 48px !important;
+    min-height: 48px !important;
+    padding: 12px !important;
+  }
+
+  /* Ensure payment buttons are prominent */
+  .stripe-button,
+  .payment-button,
+  button[class*="pay"],
+  button[class*="subscribe"] {
+    min-height: 64px !important;
+    width: 100% !important;
+    padding: 20px 24px !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    margin: 20px 0 !important;
+  }
+}
+
+/* =============================================================================
+   PERFORMANCE OPTIMIZATIONS FOR MOBILE
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Reduce animations on mobile for better performance */
+  * {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.15s !important;
+  }
+
+  /* Improve scrolling performance */
+  body {
+    -webkit-overflow-scrolling: touch !important;
+    scroll-behavior: smooth !important;
+  }
+
+  /* Optimize images on mobile */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+}
