@@ -114,295 +114,315 @@ export default function AdvancedAnalyticsPage() {
 
   if (loading) {
     return (
-      <div style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-      }}>
-        <div style={{ textAlign: 'center', color: 'white' }}>
-          <div style={{
-            width: '48px',
-            height: '48px',
-            border: '4px solid rgba(255,255,255,0.3)',
-            borderTop: '4px solid white',
-            borderRadius: '50%',
-            animation: 'spin 1s linear infinite',
-            margin: '0 auto 1rem'
-          }}></div>
-          <p>Loading Advanced Analytics...</p>
+        <div className="tap-loading">
+          <div className="tap-spinner"></div>
+          <h2 className="tap-heading-2">Loading Advanced Analytics...</h2>
+          <p className="tap-text-lg">Preparing your analytics dashboard</p>
         </div>
-      </div>
     );
   }
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      padding: '2rem'
-    }}>
-      {/* Header */}
-      <div style={{
-        background: 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(20px)',
-        borderRadius: '20px',
-        padding: '2rem',
-        marginBottom: '2rem',
-        boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)'
-      }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-          <div>
-            <h1 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#1a202c', margin: '0 0 0.5rem 0' }}>
-              Advanced Analytics
+      <div className="tap-section">
+          {/* Beautiful Header */}
+          <div className="tap-text-center tap-mb-8">
+            <h1 className="tap-heading-1 tap-mb-4">
+              📊 Advanced Analytics
             </h1>
-            <p style={{ color: '#6b7280', margin: 0 }}>
+            <p className="tap-text-lg tap-mb-6">
               Deep insights into Audio Intel performance and business metrics
             </p>
-          </div>
-          <button 
-            onClick={() => window.history.back()}
-            style={{
-              background: '#4299e1',
-              color: 'white',
-              border: 'none',
-              borderRadius: '12px',
-              padding: '0.75rem 1.5rem',
-              cursor: 'pointer',
-              fontWeight: '600'
-            }}
-          >
-            ← Back to Dashboard
-          </button>
-        </div>
-
-        {/* Timeframe Selector */}
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          {['7d', '30d', '90d', '1y'].map((period) => (
-            <button
-              key={period}
-              onClick={() => setTimeframe(period)}
-              style={{
-                background: timeframe === period ? '#4299e1' : 'transparent',
-                color: timeframe === period ? 'white' : '#6b7280',
-                border: '1px solid #d1d5db',
-                borderRadius: '8px',
-                padding: '0.5rem 1rem',
-                cursor: 'pointer',
-                fontSize: '0.875rem',
-                fontWeight: '500'
-              }}
-            >
-              {period}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Analytics Grid */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-        gap: '2rem'
-      }}>
-        {/* Revenue Analytics */}
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(20px)',
-          borderRadius: '20px',
-          padding: '2rem',
-          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)'
-        }}>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#1a202c', marginBottom: '1.5rem' }}>
-            Revenue Analytics
-          </h3>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
-            <div>
-              <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.25rem 0' }}>Current Revenue</p>
-              <p style={{ fontSize: '2rem', fontWeight: '900', color: '#059669', margin: 0 }}>
-                £{analytics?.revenue.totalRevenue.toLocaleString() || '0'}
-              </p>
-            </div>
-            <div>
-              <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.25rem 0' }}>Monthly Target</p>
-              <p style={{ fontSize: '2rem', fontWeight: '900', color: '#dc2626', margin: 0 }}>
-                £{analytics?.revenue.projectedMonthly.toLocaleString()}
-              </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button
+                onClick={() => window.history.back()}
+                className="flex items-center space-x-2 px-6 py-3 bg-white/80 backdrop-blur-sm border border-white/20 rounded-2xl hover:bg-white/90 transition-all duration-300 shadow-sm hover:shadow-md"
+              >
+                <span className="text-2xl">←</span>
+                <span className="font-medium text-gray-700">Back to Dashboard</span>
+              </button>
+              <a
+                href="/analytics/mermaid"
+                className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                <span className="text-2xl">📊</span>
+                <span className="font-medium">Mermaid Flow Diagrams</span>
+              </a>
             </div>
           </div>
-          
-          <div>
-            <h4 style={{ fontSize: '1rem', fontWeight: '600', color: '#374151', marginBottom: '1rem' }}>
-              Revenue by Source (Beta Phase)
-            </h4>
-            {analytics?.revenue.revenueBySource.map((source, index) => (
-              <div key={index} style={{ marginBottom: '0.75rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                  <span style={{ fontSize: '0.875rem', color: '#6b7280' }}>{source.name}</span>
-                  <span style={{ fontSize: '0.875rem', fontWeight: '600' }}>£{source.value}</span>
+
+          {/* Modern Timeframe Selector */}
+          <div className="bg-white/60 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/20">
+            <div className="text-center mb-4">
+              <h2 className="text-xl font-bold text-gray-900">Time Period</h2>
+            </div>
+            <div className="flex flex-wrap justify-center gap-3">
+              {['7d', '30d', '90d', '1y'].map((period) => (
+                <button
+                  key={period}
+                  onClick={() => setTimeframe(period)}
+                  className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 ${
+                    timeframe === period 
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-xl scale-105' 
+                      : 'bg-white/80 text-gray-700 border border-gray-200 hover:bg-white hover:shadow-lg hover:scale-105'
+                  }`}
+                >
+                  {period === '7d' ? 'Last 7 Days' : period === '30d' ? 'Last 30 Days' : period === '90d' ? 'Last 3 Months' : 'Last Year'}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Beautiful Analytics Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Revenue Analytics */}
+            <div className="bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-lg border border-white/20">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">💰 Revenue Analytics</h2>
+                <p className="text-gray-600">Beta phase revenue tracking and projections</p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-100/50">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 bg-emerald-500/10 rounded-xl">
+                      <div className="text-2xl">💰</div>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-emerald-700 mb-1">
+                    £{analytics?.revenue?.totalRevenue?.toLocaleString() || '0'}
+                  </div>
+                  <div className="text-sm text-emerald-600 font-medium">Current Revenue</div>
+                  <div className="text-xs text-emerald-500 mt-2">
+                    Beta Phase - Pre-launch
+                  </div>
                 </div>
-                <div style={{
-                  width: '100%',
-                  height: '6px',
-                  background: '#e5e7eb',
-                  borderRadius: '3px',
-                  overflow: 'hidden'
-                }}>
-                  <div style={{
-                    width: `${source.percentage}%`,
-                    height: '100%',
-                    background: `hsl(${index * 60}, 70%, 50%)`,
-                    borderRadius: '3px'
-                  }}></div>
+
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100/50">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 bg-blue-500/10 rounded-xl">
+                      <div className="text-2xl">🎯</div>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-blue-700 mb-1">
+                    £{analytics?.revenue?.projectedMonthly?.toLocaleString() || '0'}
+                  </div>
+                  <div className="text-sm text-blue-600 font-medium">Monthly Target</div>
+                  <div className="text-xs text-blue-500 mt-2">
+                    Q4 2024 Goal
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* User Analytics */}
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(20px)',
-          borderRadius: '20px',
-          padding: '2rem',
-          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)'
-        }}>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#1a202c', marginBottom: '1.5rem' }}>
-            User Analytics
-          </h3>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
-            <div>
-              <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.25rem 0' }}>Total Users</p>
-              <p style={{ fontSize: '2rem', fontWeight: '900', color: '#3b82f6', margin: 0 }}>
-                {analytics?.users.totalUsers}
-              </p>
-            </div>
-            <div>
-              <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.25rem 0' }}>Active Users</p>
-              <p style={{ fontSize: '2rem', fontWeight: '900', color: '#059669', margin: 0 }}>
-                {analytics?.users.activeUsers}
-              </p>
-            </div>
-            <div>
-              <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.25rem 0' }}>Retention Rate</p>
-              <p style={{ fontSize: '1.5rem', fontWeight: '700', color: '#059669', margin: 0 }}>
-                {analytics?.users.retentionRate}%
-              </p>
-            </div>
-            <div>
-              <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.25rem 0' }}>Churn Rate</p>
-              <p style={{ fontSize: '1.5rem', fontWeight: '700', color: '#dc2626', margin: 0 }}>
-                {analytics?.users.churnRate}%
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Product Usage Analytics */}
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(20px)',
-          borderRadius: '20px',
-          padding: '2rem',
-          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)'
-        }}>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#1a202c', marginBottom: '1.5rem' }}>
-            Product Usage
-          </h3>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
-            <div>
-              <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.25rem 0' }}>Contacts Enriched</p>
-              <p style={{ fontSize: '1.5rem', fontWeight: '900', color: '#8b5cf6', margin: 0 }}>
-                {analytics?.product.contactsEnriched.toLocaleString()}
-              </p>
-            </div>
-            <div>
-              <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.25rem 0' }}>Emails Validated</p>
-              <p style={{ fontSize: '1.5rem', fontWeight: '900', color: '#059669', margin: 0 }}>
-                {analytics?.product.emailsValidated.toLocaleString()}
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h4 style={{ fontSize: '1rem', fontWeight: '600', color: '#374151', marginBottom: '1rem' }}>
-              Feature Usage
-            </h4>
-            {analytics?.product.featureUsage.map((feature, index) => (
-              <div key={index} style={{ marginBottom: '0.75rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                  <span style={{ fontSize: '0.875rem', color: '#6b7280' }}>{feature.feature}</span>
-                  <span style={{ fontSize: '0.875rem', fontWeight: '600' }}>{feature.usage}%</span>
-                </div>
-                <div style={{
-                  width: '100%',
-                  height: '6px',
-                  background: '#e5e7eb',
-                  borderRadius: '3px',
-                  overflow: 'hidden'
-                }}>
-                  <div style={{
-                    width: `${feature.usage}%`,
-                    height: '100%',
-                    background: '#8b5cf6',
-                    borderRadius: '3px'
-                  }}></div>
+              
+              <div className="bg-gradient-to-br from-white/50 to-gray-50/50 backdrop-blur-sm rounded-2xl p-6 border border-white/30">
+                <h4 className="text-lg font-bold text-gray-900 mb-6 text-center">
+                  Revenue Sources (Projected)
+                </h4>
+                <div className="space-y-4">
+                  {analytics?.revenue?.revenueBySource?.map((source, index) => (
+                    <div key={index}>
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="font-semibold text-gray-700">{source.name}</span>
+                        <span className="font-bold text-gray-900">£{source.value}</span>
+                      </div>
+                      <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full rounded-full transition-all duration-1000 ease-out"
+                          style={{
+                            width: `${source.percentage}%`,
+                            background: `linear-gradient(90deg, hsl(${index * 120}, 70%, 60%), hsl(${index * 120 + 30}, 70%, 50%))`
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* User Analytics */}
+            <div className="bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-lg border border-white/20">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">👥 User Analytics</h2>
+                <p className="text-gray-600">Beta user growth and engagement metrics</p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 bg-blue-500/10 rounded-xl">
+                      <div className="text-2xl">👥</div>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-blue-700 mb-1">
+                    {analytics?.users?.totalUsers || 0}
+                  </div>
+                  <div className="text-sm text-blue-600 font-medium">Total Beta Users</div>
+                  <div className="text-xs text-blue-500 mt-2">From ConvertKit</div>
+                </div>
+
+                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 bg-emerald-500/10 rounded-xl">
+                      <div className="text-2xl">✅</div>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-emerald-700 mb-1">
+                    {analytics?.users?.activeUsers || 0}
+                  </div>
+                  <div className="text-sm text-emerald-600 font-medium">Active Users</div>
+                  <div className="text-xs text-emerald-500 mt-2">Currently engaged</div>
+                </div>
+
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 bg-green-500/10 rounded-xl">
+                      <div className="text-2xl">📈</div>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-green-700 mb-1">
+                    {analytics?.users?.retentionRate || 0}%
+                  </div>
+                  <div className="text-sm text-green-600 font-medium">Retention Rate</div>
+                  <div className="text-xs text-green-500 mt-2">Excellent retention</div>
+                </div>
+
+                <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-6 border border-orange-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 bg-orange-500/10 rounded-xl">
+                      <div className="text-2xl">📉</div>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-orange-700 mb-1">
+                    {analytics?.users?.churnRate || 0}%
+                  </div>
+                  <div className="text-sm text-orange-600 font-medium">Churn Rate</div>
+                  <div className="text-xs text-orange-500 mt-2">Beta phase metric</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Product Usage Analytics */}
+            <div className="bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-lg border border-white/20">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">🎯 Product Usage</h2>
+                <p className="text-gray-600">Audio Intel platform performance metrics</p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl p-6 border border-violet-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 bg-violet-500/10 rounded-xl">
+                      <div className="text-2xl">🎯</div>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-violet-700 mb-1">
+                    {analytics?.product?.contactsEnriched?.toLocaleString() || '0'}
+                  </div>
+                  <div className="text-sm text-violet-600 font-medium">Contacts Enriched</div>
+                  <div className="text-xs text-violet-500 mt-2">Real processing data</div>
+                </div>
+
+                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 bg-emerald-500/10 rounded-xl">
+                      <div className="text-2xl">✉️</div>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-emerald-700 mb-1">
+                    {analytics?.product?.emailsValidated?.toLocaleString() || '0'}
+                  </div>
+                  <div className="text-sm text-emerald-600 font-medium">Emails Validated</div>
+                  <div className="text-xs text-emerald-500 mt-2">High accuracy rate</div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-white/50 to-gray-50/50 backdrop-blur-sm rounded-2xl p-6 border border-white/30">
+                <h4 className="text-lg font-bold text-gray-900 mb-6 text-center">Feature Usage Analytics</h4>
+                <div className="space-y-4">
+                  {analytics?.product?.featureUsage?.map((feature, index) => (
+                    <div key={index}>
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="font-semibold text-gray-700">{feature.feature}</span>
+                        <span className="font-bold text-violet-600">{feature.usage}%</span>
+                      </div>
+                      <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full rounded-full transition-all duration-1000 ease-out"
+                          style={{
+                            width: `${feature.usage}%`,
+                            background: 'linear-gradient(90deg, #8b5cf6, #a855f7)'
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* System Performance */}
+            <div className="bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-lg border border-white/20">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">⚡ System Performance</h2>
+                <p className="text-gray-600">Real-time system health and performance</p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 bg-green-500/10 rounded-xl">
+                      <div className="text-2xl">🟢</div>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-green-700 mb-1">
+                    {analytics?.performance?.systemUptime || 0}%
+                  </div>
+                  <div className="text-sm text-green-600 font-medium">System Uptime</div>
+                  <div className="text-xs text-green-500 mt-2">Excellent reliability</div>
+                </div>
+
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 bg-blue-500/10 rounded-xl">
+                      <div className="text-2xl">⚡</div>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-blue-700 mb-1">
+                    {analytics?.performance?.averageResponseTime || 0}ms
+                  </div>
+                  <div className="text-sm text-blue-600 font-medium">Avg Response Time</div>
+                  <div className="text-xs text-blue-500 mt-2">Lightning fast</div>
+                </div>
+
+                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 bg-emerald-500/10 rounded-xl">
+                      <div className="text-2xl">✅</div>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-emerald-700 mb-1">
+                    {analytics?.product?.successRate || 0}%
+                  </div>
+                  <div className="text-sm text-emerald-600 font-medium">Success Rate</div>
+                  <div className="text-xs text-emerald-500 mt-2">Industry leading</div>
+                </div>
+
+                <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 bg-amber-500/10 rounded-xl">
+                      <div className="text-2xl">⏱️</div>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-amber-700 mb-1">
+                    {analytics?.product?.avgProcessingTime || 0}s
+                  </div>
+                  <div className="text-sm text-amber-600 font-medium">Processing Time</div>
+                  <div className="text-xs text-amber-500 mt-2">Optimized speed</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* System Performance */}
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(20px)',
-          borderRadius: '20px',
-          padding: '2rem',
-          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)'
-        }}>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#1a202c', marginBottom: '1.5rem' }}>
-            System Performance
-          </h3>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-            <div>
-              <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.25rem 0' }}>Uptime</p>
-              <p style={{ fontSize: '1.5rem', fontWeight: '900', color: '#059669', margin: 0 }}>
-                {analytics?.performance.systemUptime}%
-              </p>
-            </div>
-            <div>
-              <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.25rem 0' }}>Avg Response</p>
-              <p style={{ fontSize: '1.5rem', fontWeight: '900', color: '#3b82f6', margin: 0 }}>
-                {analytics?.performance.averageResponseTime}ms
-              </p>
-            </div>
-            <div>
-              <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.25rem 0' }}>Success Rate</p>
-              <p style={{ fontSize: '1.5rem', fontWeight: '900', color: '#059669', margin: 0 }}>
-                {analytics?.product.successRate}%
-              </p>
-            </div>
-            <div>
-              <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.25rem 0' }}>Processing Time</p>
-              <p style={{ fontSize: '1.5rem', fontWeight: '900', color: '#f59e0b', margin: 0 }}>
-                {analytics?.product.avgProcessingTime}s
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <style jsx>{`
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      `}</style>
-    </div>
-  );
+      
+    );
 }
