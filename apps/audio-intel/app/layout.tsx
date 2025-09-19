@@ -23,7 +23,10 @@ export const metadata: Metadata = {
   title: 'Audio Intel – AI-Powered Music Industry Intelligence | Founded by Music Industry Veteran',
   description: 'Stop wasting 15 hours a week researching music contacts. Audio Intel uses AI to turn emails into detailed industry profiles instantly.',
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/images/total_audio_promo_logo_trans.png', sizes: '512x512', type: 'image/png' }
+    ],
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png'
   },
@@ -34,10 +37,10 @@ export const metadata: Metadata = {
     siteName: 'Audio Intel - Total Audio Promo',
     images: [
       {
-        url: '/images/total_audio_promo_logo_trans.png',
-        width: 512,
-        height: 512,
-        alt: 'Total Audio Promo Logo',
+        url: 'https://intel.totalaudiopromo.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Audio Intel - AI-Powered Music Industry Contact Enrichment',
       },
     ],
     locale: 'en_GB',
@@ -47,8 +50,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Audio Intel – AI-Powered Music Industry Contact Enrichment',
     description: 'Stop wasting 15 hours a week researching music contacts. Instantly enrich your email lists with AI-powered insights for playlist curators, radio DJs, and music bloggers.',
-    images: ['/images/total_audio_promo_logo_trans.png'],
+    images: ['https://intel.totalaudiopromo.com/og-image.jpg'],
     site: '@totalaudiopromo',
+    creator: '@totalaudiopromo',
   },
 };
 
