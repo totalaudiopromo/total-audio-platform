@@ -1,0 +1,61 @@
+# DISABLED - This workflow was causing repeated failures and email spam
+# To re-enable: Remove .disabled extension and ensure all scraper dependencies exist
+
+name: Automated Contact Intelligence Scraper
+
+on:
+  # Scheduled runs - DISABLED
+  # schedule:
+  #   # Daily BBC scraping at 6 AM UTC (7 AM BST)
+  #   - cron: '0 6 * * *'
+  #   # Weekly radio station scraping on Mondays at 8 AM UTC
+  #   - cron: '0 8 * * 1'
+  #   # Monthly blog scraping on the 1st at 10 AM UTC
+  #   - cron: '0 10 1 * *'
+
+  # Manual trigger only
+  workflow_dispatch:
+    inputs:
+      scraper_type:
+        description: 'Type of scraper to run'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - bbc
+          - radio
+          - blogs
+      force_update:
+        description: 'Force database update even if no new contacts'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  scrape-contacts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    strategy:
+      matrix:
+        node-version: [18]
+
+    steps:
+      - name: Workflow Disabled Notice
+        run: |
+          echo "⚠️ This workflow has been disabled due to repeated failures"
+          echo "Check if the following files exist before re-enabling:"
+          echo "- lib/scrapers/bbc-scraper.js"
+          echo "- lib/scrapers/radio-scraper.js"
+          echo "- lib/scrapers/blog-scraper.js"
+          echo "- lib/automation/contact-processor.js"
+          echo "- lib/automation/intelligence-updater.js"
+          exit 1
+
+      # Rest of original workflow commented out to prevent accidental execution
+      # - name: Checkout repository
+      #   uses: actions/checkout@v4
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     fetch-depth: 1
