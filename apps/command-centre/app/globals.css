@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Total Audio Promo Brand System */
+@import './total-audio-brand.css';
+/* Scoped design systems used by existing pages */
+@import './intel-design.css';
+@import './postcraft-design.css';
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -55,592 +61,115 @@
   body {
     @apply bg-white text-gray-900;
   }
+
+  /* Global Link Normalisation - Intel Brand Style */
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  a:hover {
+    color: #3b82f6; /* Intel blue */
+    text-decoration: none;
+  }
+
+  a:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Ensure tap-nav links follow brand styling */
+  .tap-nav-link {
+    color: #6b7280;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .tap-nav-link:hover {
+    color: #3b82f6;
+    text-decoration: none;
+  }
+
+  .tap-nav-link.active {
+    color: #3b82f6;
+    text-decoration: none;
+  }
+
+  /* Override any default link styles that might be interfering */
+  .tap-nav a,
+  .tap-nav a:visited,
+  .tap-nav a:active {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Ensure consistent button styling */
+  button {
+    font-family: inherit;
+  }
+
+  /* Remove any default button styles that might interfere */
+  button:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
 }
 
 @layer components {
-  /* Enhanced Texture Base Classes */
-  .texture-base {
-    @apply relative overflow-hidden;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    will-change: transform;
+  /* Clean, simple card system */
+  .tap-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
   }
 
-  .texture-overlay {
-    @apply absolute inset-0 pointer-events-none;
-    mix-blend-mode: overlay;
-    opacity: 0.15;
+  .tap-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
   }
 
-  /* Texture Shadow Classes */
-  .shadow-texture-soft {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
-
-  .shadow-texture-elevated {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
-  }
-
-  .shadow-texture-floating {
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.16), 0 8px 24px rgba(0, 0, 0, 0.12);
-  }
-
-  /* Enhanced Typography - Bold, Personality-Driven Text */
-  .text-bold-personality {
-    font-weight: 800;
-    color: #4A5568;
-    letter-spacing: -0.025em;
-  }
-
-  .text-bold-personality-lg {
-    font-weight: 900;
-    color: #4A5568;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-  }
-
-  /* Distinctive Shadows - Cards with Personality */
-  .shadow-personality {
-    box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 0.8);
-  }
-
-  .shadow-personality-lg {
-    box-shadow: 12px 12px 0px 0px rgba(0, 0, 0, 0.9);
-  }
-
-  .shadow-personality-xl {
-    box-shadow: 16px 16px 0px 0px rgba(0, 0, 0, 1);
-  }
-
-  .shadow-personality-hover {
-    transition: all 0.3s ease;
-  }
-
-  .shadow-personality-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 12px 16px 0px 0px rgba(0, 0, 0, 0.9);
-  }
-
-  /* Enhanced Card Styles */
-  .card-personality {
-    @apply bg-white rounded-xl p-6 shadow-personality shadow-personality-hover;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .card-personality-lg {
-    @apply bg-white rounded-2xl p-8 shadow-personality-lg shadow-personality-hover;
-    border: 3px solid rgba(0, 0, 0, 0.15);
-  }
-
-  /* KPI Card Enhancement */
-  .kpi-card {
-    @apply card-personality;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
-  }
-
-  .kpi-card:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.95) 100%);
-  }
-
-  /* Dashboard Header Enhancement */
-  .dashboard-header {
-    @apply shadow-personality;
-  }
-
-  .dashboard-title {
-    @apply text-bold-personality-lg;
-  }
-
-  /* Button Enhancement */
-  .btn-personality {
-    @apply font-black px-6 py-3 rounded-xl transition-all duration-300;
-    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.8);
-  }
-
-  .btn-personality:hover {
-    transform: translateY(-2px);
-    box-shadow: 6px 8px 0px 0px rgba(0, 0, 0, 0.9);
-  }
-
-  .btn-personality:active {
-    transform: translateY(0);
-    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.8);
-  }
-
-  /* Additional missing classes */
-  .dashboard-card {
-    @apply bg-white rounded-xl p-6 shadow-texture-soft hover:shadow-texture-elevated transition-all duration-200;
-  }
-
-  .metric-card {
-    @apply bg-white rounded-lg p-4 shadow-texture-soft;
-  }
-
-  .nav-tab {
-    @apply transition-all duration-200;
-  }
-
-  .nav-tab.active {
-    @apply bg-blue-600 text-white;
-  }
-
-  /* Enhanced PostCraft Styles */
-  .postcraft-container {
-    @apply relative overflow-hidden;
-    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.9) 100%);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .postcraft-shadow-soft {
-    box-shadow: 
-      0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-
-  /* Loading Spinner Animation */
-  .animate-spin {
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  /* Mobile Optimization */
-  @media (max-width: 768px) {
-    .mobile-stack {
-      flex-direction: column;
-    }
-    
-    .mobile-full {
-      width: 100%;
-    }
-    
-    .mobile-text-sm {
-      font-size: 0.875rem;
-    }
-    
-    .mobile-p-4 {
-      padding: 1rem;
-    }
-    
-    .mobile-gap-4 {
-      gap: 1rem;
-    }
-  }
-
-  /* Progress Bar Animations */
-  .progress-bar {
-    transition: width 0.5s ease-in-out;
-  }
-
-  .progress-bar-animate {
-    animation: progressFill 2s ease-out;
-  }
-
-  @keyframes progressFill {
-    from {
-      width: 0%;
-    }
-    to {
-      width: var(--target-width);
-    }
-  }
-
-  /* Live Status Pulse */
-  .live-pulse {
-    animation: livePulse 2s ease-in-out infinite;
-  }
-
-  @keyframes livePulse {
-    0%, 100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.7;
-      transform: scale(1.1);
-    }
-  }
-
-  /* Metric Counter Animation */
-  .metric-counter {
-    transition: all 0.3s ease;
-  }
-
-  .metric-counter:hover {
-    transform: scale(1.05);
-    color: #1d4ed8;
+  /* AppShell helpers */
+  .app-shell-sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-weight: 500;
   }
 }
 
-/* Mobile-first responsive design */
+/* Simple, clean styles */
 .dashboard-grid {
   display: grid;
-  gap: 24px;
-  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-@media (min-width: 768px) {
-  .dashboard-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .dashboard-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Mobile navigation */
-.nav-tabs {
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-/* Improved layout spacing */
-.dashboard-header {
-  @apply shadow-sm;
-}
-
-.dashboard-title {
-  @apply leading-tight;
-}
-
-/* Better tab styling */
-.nav-tab {
-  @apply whitespace-nowrap;
-}
-
-.nav-tab.active {
-  @apply font-semibold;
-}
-
-/* Improved card layouts */
-.kpi-card {
-  @apply p-6 bg-white rounded-xl border border-gray-200 shadow-personality hover:shadow-personality-hover transition-all duration-200;
-}
-
-.card-personality-lg {
-  @apply p-8 bg-white rounded-xl border border-gray-200 shadow-personality-lg hover:shadow-personality-hover transition-all duration-200;
-}
-
-/* Better spacing for content sections */
-.content-section {
-  @apply space-y-6;
-}
-
-/* Improved button layouts */
-.btn-personality {
-  @apply inline-flex items-center justify-center px-4 py-2 font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-personality hover:shadow-personality-hover transition-all duration-200;
-}
-
-/* Mobile optimization */
 @media (max-width: 768px) {
-  .mobile-stack {
-    @apply flex-col space-y-4;
-  }
-  
-  .mobile-full {
-    @apply w-full;
-  }
-  
-  .mobile-text-sm {
-    @apply text-sm;
-  }
-  
-  .mobile-p-4 {
-    @apply p-4;
-  }
-  
-  .mobile-gap-4 {
-    @apply gap-4;
-  }
-  
   .dashboard-grid {
-    @apply gap-4;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
   
-  .kpi-card {
-    @apply p-4;
+  /* Mobile overlay fixes */
+  body.mobile-sidebar-closed {
+    overflow-x: hidden;
   }
   
-  .card-personality-lg {
-    @apply p-6;
+  /* Ensure content is accessible when sidebar is closed */
+  .mobile-content-accessible {
+    position: relative;
+    z-index: 1;
+    background: transparent;
   }
   
-  .btn-personality {
-    @apply px-4 py-2 text-sm;
-  }
-}
-
-/* Animation keyframes */
-@keyframes animate-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin {
-  animation: animate-spin 1s linear infinite;
-}
-
-/* Premium Polish Features */
-
-/* Enhanced accessibility */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Focus states for keyboard navigation */
-.btn-personality:focus,
-.nav-tab:focus,
-button:focus {
-  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
-}
-
-/* Enhanced micro-interactions */
-.kpi-card {
-  @apply transform transition-all duration-300 ease-out;
-}
-
-.kpi-card:hover {
-  @apply transform -translate-y-1 shadow-personality-hover;
-}
-
-.metric-counter {
-  @apply transition-all duration-300 ease-out;
-}
-
-.metric-counter:hover {
-  @apply transform scale-110;
-}
-
-/* Smooth loading animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* Enhanced progress bars */
-.progress-bar {
-  @apply relative overflow-hidden bg-gray-200 rounded-full;
-  height: 8px;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  border-radius: inherit;
-  transition: width 0.8s ease-in-out;
-  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
-}
-
-.progress-bar-fill.audio-intel {
-  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
-}
-
-.progress-bar-fill.playlist-pulse {
-  background: linear-gradient(90deg, #22c55e, #16a34a);
-}
-
-.progress-bar-fill.voice-echo {
-  background: linear-gradient(90deg, #f59e0b, #d97706);
-}
-
-.progress-bar::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* Premium toast notifications */
-.toast-enter {
-  animation: toastSlideIn 0.3s ease-out;
-}
-
-.toast-exit {
-  animation: toastSlideOut 0.3s ease-in;
-}
-
-@keyframes toastSlideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes toastSlideOut {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-/* Enhanced modal animations */
-.modal-enter {
-  animation: modalFadeIn 0.2s ease-out;
-}
-
-.modal-exit {
-  animation: modalFadeOut 0.2s ease-in;
-}
-
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes modalFadeOut {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-}
-
-/* Premium button states */
-.btn-personality {
-  @apply relative overflow-hidden;
-}
-
-.btn-personality::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s, height 0.3s;
-}
-
-.btn-personality:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-/* Enhanced card interactions */
-.card-personality-lg {
-  @apply transform transition-all duration-300 ease-out;
-}
-
-.card-personality-lg:hover {
-  @apply transform -translate-y-1 shadow-personality-hover;
-}
-
-/* Premium loading states */
-.skeleton {
-  @apply animate-pulse bg-gray-200 rounded;
-}
-
-.skeleton-text {
-  @apply h-4 bg-gray-200 rounded;
-}
-
-.skeleton-title {
-  @apply h-6 bg-gray-200 rounded w-3/4;
-}
-
-.skeleton-avatar {
-  @apply w-12 h-12 bg-gray-200 rounded-full;
-}
-
-/* Enhanced accessibility for screen readers */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .kpi-card {
-    @apply border-2 border-gray-900;
-  }
-  
-  .btn-personality {
-    @apply border-2 border-current;
-  }
-}
-
-/* Print styles */
-@media print {
-  .dashboard-header,
-  .nav-tabs,
-  .btn-personality,
-  .modal {
-    @apply hidden;
-  }
-  
-  .kpi-card {
-    @apply border border-gray-900 shadow-none;
+  /* Prevent overlay from blocking content */
+  .mobile-overlay-blocking {
+    display: none !important;
   }
 }
