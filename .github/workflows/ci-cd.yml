@@ -51,7 +51,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel]
+        app: [audio-intel, command-centre]
     
     steps:
     - uses: actions/checkout@v4
@@ -83,7 +83,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel]
+        app: [audio-intel, command-centre]
     
     steps:
     - uses: actions/checkout@v4
@@ -115,7 +115,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel]
+        app: [audio-intel, command-centre]
     
     steps:
     - uses: actions/checkout@v4
