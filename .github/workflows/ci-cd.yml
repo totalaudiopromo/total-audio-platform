@@ -103,7 +103,7 @@ jobs:
         vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-        VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}
+        VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || (matrix.app == 'command-centre' && secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE) }}
 
   deploy-production:
     name: Deploy to Production
@@ -135,7 +135,7 @@ jobs:
         vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-        VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}
+        VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || (matrix.app == 'command-centre' && secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE) }}
 
   security:
     name: Security Audit
