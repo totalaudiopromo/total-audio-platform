@@ -76,7 +76,9 @@
     "notion:cleanup": "node scripts/utilities/notion-workspace-manager.js --mode=cleanup",
     "notion:consolidate": "node scripts/utilities/notion-workspace-manager.js --mode=consolidate",
     "notion:organize": "node scripts/utilities/notion-workspace-manager.js --mode=organize",
-    "notion:databases": "node scripts/utilities/notion-workspace-manager.js --mode=create-databases"
+    "notion:databases": "node scripts/utilities/notion-workspace-manager.js --mode=create-databases",
+    "audio-intel:setup": "bash scripts/setup-audio-intel-enrichment.sh",
+    "audio-intel:enrich": "node scripts/enrich-contacts-with-audio-intel.js"
   },
   "devDependencies": {
     "@types/compression": "^1.8.1",

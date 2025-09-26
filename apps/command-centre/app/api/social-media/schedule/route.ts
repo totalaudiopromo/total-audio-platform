@@ -77,7 +77,32 @@ export async function POST(request: NextRequest) {
     };
 
     // Log the scheduled post
-    console.log('Social media post scheduled:', scheduledPost);
+    console.log('📅 Scheduled Post:', {
+      id: scheduleId,
+      platforms: platforms,
+      content: content.substring(0, 100) + '...',
+      scheduledTime: postDate.toISOString()
+    });
+
+    // For Bluesky, try to post directly
+    if (platforms.includes('bluesky')) {
+      try {
+        const blueskyResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/social-media/bluesky`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            content: platformPosts.find(p => p.platform === 'bluesky')?.content || content,
+            scheduledTime: postDate.toISOString()
+          })
+        });
+        
+        if (blueskyResponse.ok) {
+          console.log('✅ Bluesky post scheduled successfully');
+        }
+      } catch (error) {
+        console.warn('⚠️ Failed to schedule Bluesky post:', error);
+      }
+    }
 
     return NextResponse.json({
       success: true,

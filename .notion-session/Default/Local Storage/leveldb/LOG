@@ -1,0 +1,32 @@
+2025/09/07-18:43:13.757 9b063 Reusing MANIFEST /Users/chrisschofield/workspace/active/total-audio-platform/.notion-session/Default/Local Storage/leveldb/MANIFEST-000001
+2025/09/07-18:43:13.760 9b063 Recovering log #6
+2025/09/07-18:43:13.760 9b063 Reusing old log /Users/chrisschofield/workspace/active/total-audio-platform/.notion-session/Default/Local Storage/leveldb/000006.log 
+2025/09/07-18:43:21.850 9b066 Level-0 table #10: started
+2025/09/07-18:43:21.857 9b066 Level-0 table #10: 533456 bytes OK
+2025/09/07-18:43:21.859 9b066 Delete type=0 #6
+2025/09/07-18:44:13.766 9b066 Level-0 table #12: started
+2025/09/07-18:44:13.772 9b066 Level-0 table #12: 539858 bytes OK
+2025/09/07-18:44:13.775 9b066 Delete type=0 #9
+2025/09/07-18:45:15.514 9b066 Level-0 table #14: started
+2025/09/07-18:45:15.523 9b066 Level-0 table #14: 600253 bytes OK
+2025/09/07-18:45:15.525 9b066 Delete type=0 #11
+2025/09/07-18:46:15.513 9b066 Level-0 table #16: started
+2025/09/07-18:46:15.549 9b066 Level-0 table #16: 516402 bytes OK
+2025/09/07-18:46:15.551 9b066 Delete type=0 #13
+2025/09/07-18:46:15.553 9b066 Compacting 4@0 + 1@1 files
+2025/09/07-18:46:15.566 9b066 Generated table #17@0: 143 keys, 769568 bytes
+2025/09/07-18:46:15.566 9b066 Compacted 4@0 + 1@1 files => 769568 bytes
+2025/09/07-18:46:15.568 9b066 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/09/07-18:46:15.570 9b066 Delete type=2 #14
+2025/09/07-18:46:15.570 9b066 Delete type=2 #16
+2025/09/07-18:46:15.570 9b066 Delete type=2 #7
+2025/09/07-18:46:15.570 9b066 Delete type=2 #12
+2025/09/07-18:46:15.570 9b066 Delete type=2 #10
+2025/09/07-18:47:15.516 9b066 Level-0 table #19: started
+2025/09/07-18:47:15.524 9b066 Level-0 table #19: 558720 bytes OK
+2025/09/07-18:47:15.529 9b066 Delete type=0 #15
+2025/09/07-18:47:46.985 9b063 Level-0 table #21: started
+2025/09/07-18:47:46.990 9b1b0 Current memtable full; waiting...
+2025/09/07-18:47:47.015 9b063 Level-0 table #21: 590291 bytes OK
+2025/09/07-18:47:47.020 9b063 Delete type=0 #18
+2025/09/07-18:47:47.024 9b063 Level-0 table #23: started

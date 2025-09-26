@@ -1,8 +1,26 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { 
+  Users, 
+  Search, 
+  Filter, 
+  Download, 
+  UserCheck, 
+  Mail, 
+  Eye, 
+  TrendingUp,
+  Clock,
+  Globe,
+  Smartphone,
+  Monitor,
+  RefreshCw,
+  Star,
+  Activity,
+  BarChart3
+} from 'lucide-react';
 import BetaUserMap from '../components/BetaUserMap';
+import Image from 'next/image';
 
 interface BetaSignup {
   name: string;
@@ -21,6 +39,7 @@ interface BetaUser {
   app: string;
   status: 'active' | 'idle' | 'offline';
   lastSeen: string;
+  firstVisit?: string;
   location: {
     country: string;
     city: string;
@@ -30,6 +49,8 @@ interface BetaUser {
       lng: number;
     };
   };
+  sessionCount?: number;
+  features?: string[];
   engagement: {
     contactsEnriched: number;
     emailsValidated: number;
@@ -53,9 +74,13 @@ interface BetaTrackingData {
 }
 
 export default function BetaManagementPage() {
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'signup'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'users' | 'analytics' | 'signup'>('dashboard');
   const [betaData, setBetaData] = useState<BetaTrackingData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterStatus, setFilterStatus] = useState<'all' | 'active' | 'idle' | 'offline'>('all');
+  const [filterApp, setFilterApp] = useState<'all' | 'audio-intel' | 'playlist-pulse' | 'command-centre' | 'web'>('all');
+  const [selectedUser, setSelectedUser] = useState<BetaUser | null>(null);
   const [formData, setFormData] = useState<BetaSignup>({
     name: '',
     email: '',
@@ -100,6 +125,79 @@ export default function BetaManagementPage() {
         ? prev.interests.filter(i => i !== interest)
         : [...prev.interests, interest]
     }));
+  };
+
+  // Filter and search functions
+  const filteredUsers = betaData?.users.filter(user => {
+    const matchesSearch = !searchTerm || 
+      user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (user.name && user.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      user.location.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.location.country.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const matchesStatus = filterStatus === 'all' || user.status === filterStatus;
+    const matchesApp = filterApp === 'all' || user.app === filterApp;
+    
+    return matchesSearch && matchesStatus && matchesApp;
+  }) || [];
+
+  const exportUserData = () => {
+    if (!betaData?.users.length) return;
+    
+    const csvData = betaData.users.map(user => ({
+      name: user.name || '',
+      email: user.email,
+      app: user.app,
+      status: user.status,
+      'first_visit': user.firstVisit,
+      'last_seen': user.lastSeen,
+      'session_count': user.sessionCount || 0,
+      'contacts_enriched': user.engagement.contactsEnriched,
+      'emails_validated': user.engagement.emailsValidated,
+      'time_spent_minutes': user.engagement.timeSpent,
+      country: user.location.country,
+      city: user.location.city,
+      device_type: (user as any).device?.type || 'unknown',
+      browser: (user as any).device?.browser || 'unknown',
+      features: (user.features || []).join(', ')
+    }));
+
+    const csv = [
+      Object.keys(csvData[0]).join(','),
+      ...csvData.map(row => Object.values(row).map(value => `"${value}"`).join(','))
+    ].join('\n');
+
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `beta-users-${new Date().toISOString().split('T')[0]}.csv`;
+    a.click();
+    window.URL.revokeObjectURL(url);
+  };
+
+  const getUserEngagementScore = (user: BetaUser) => {
+    const sessionScore = Math.min((user.sessionCount || 0) * 2, 30);
+    const contactScore = Math.min(user.engagement.contactsEnriched / 10, 30);
+    const timeScore = Math.min(user.engagement.timeSpent / 5, 25);
+    const recentActivityScore = user.status === 'active' ? 15 : user.status === 'idle' ? 10 : 0;
+    
+    return Math.round(sessionScore + contactScore + timeScore + recentActivityScore);
+  };
+
+  const contactUser = (user: BetaUser) => {
+    const subject = `Audio Intel Beta - How's your experience going?`;
+    const body = `Hi ${user.name || user.email.split('@')[0]},
+
+I hope you're enjoying Audio Intel! I noticed you've enriched ${user.engagement.contactsEnriched} contacts so far.
+
+Is there anything I can help you with to get even more value from the platform?
+
+Best regards,
+Chris
+Total Audio Promo`;
+    
+    window.open(`mailto:${user.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -255,38 +353,34 @@ export default function BetaManagementPage() {
           
           {/* Tab Navigation */}
           <div style={{ display: 'flex', gap: '0.5rem', background: '#f1f5f9', borderRadius: '12px', padding: '0.25rem' }}>
-            <button
-              onClick={() => setActiveTab('dashboard')}
-              style={{
-                padding: '0.75rem 1.5rem',
-                borderRadius: '8px',
-                border: 'none',
-                background: activeTab === 'dashboard' ? '#3b82f6' : 'transparent',
-                color: activeTab === 'dashboard' ? 'white' : '#64748b',
-                fontWeight: '600',
-                fontSize: '0.875rem',
-                cursor: 'pointer',
-                transition: 'all 0.2s'
-              }}
-            >
-              Dashboard
-            </button>
-            <button
-              onClick={() => setActiveTab('signup')}
-              style={{
-                padding: '0.75rem 1.5rem',
-                borderRadius: '8px',
-                border: 'none',
-                background: activeTab === 'signup' ? '#3b82f6' : 'transparent',
-                color: activeTab === 'signup' ? 'white' : '#64748b',
-                fontWeight: '600',
-                fontSize: '0.875rem',
-                cursor: 'pointer',
-                transition: 'all 0.2s'
-              }}
-            >
-              New Signup
-            </button>
+            {[
+              { key: 'dashboard', label: 'Overview', icon: BarChart3 },
+              { key: 'users', label: 'User Management', icon: Users },
+              { key: 'analytics', label: 'Analytics', icon: TrendingUp },
+              { key: 'signup', label: 'Add User', icon: UserCheck }
+            ].map(tab => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key as any)}
+                style={{
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '8px',
+                  border: 'none',
+                  background: activeTab === tab.key ? '#3b82f6' : 'transparent',
+                  color: activeTab === tab.key ? 'white' : '#64748b',
+                  fontWeight: '600',
+                  fontSize: '0.875rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}
+              >
+                <tab.icon size={16} />
+                {tab.label}
+              </button>
+            ))}
           </div>
         </div>
       </header>
@@ -297,7 +391,300 @@ export default function BetaManagementPage() {
         margin: '0 auto',
         padding: '2rem 1.5rem'
       }}>
-        {activeTab === 'dashboard' ? (
+        {activeTab === 'users' ? (
+          /* Enhanced User Management */
+          <div className="intel-page">
+            <div className="intel-container">
+              {/* Search and Filter Controls */}
+              <div className="intel-card" style={{ marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+                    <h2 style={{ fontSize: '1.5rem', fontWeight: '700', margin: 0 }}>
+                      User Management ({filteredUsers.length} users)
+                    </h2>
+                    <div style={{ display: 'flex', gap: '0.75rem' }}>
+                      <button
+                        onClick={exportUserData}
+                        className="intel-button-secondary"
+                        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                      >
+                        <Download size={16} />
+                        Export CSV
+                      </button>
+                      <button
+                        onClick={fetchBetaData}
+                        className="intel-button"
+                        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                      >
+                        <RefreshCw size={16} />
+                        Refresh
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Search and Filters */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
+                    <div style={{ position: 'relative' }}>
+                      <Search size={20} style={{ position: 'absolute', left: '0.75rem', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af' }} />
+                      <input
+                        type="text"
+                        placeholder="Search users..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        style={{
+                          width: '100%',
+                          padding: '0.75rem 0.75rem 0.75rem 2.5rem',
+                          border: '1px solid #d1d5db',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.875rem'
+                        }}
+                      />
+                    </div>
+                    
+                    <select
+                      value={filterStatus}
+                      onChange={(e) => setFilterStatus(e.target.value as any)}
+                      style={{
+                        padding: '0.75rem',
+                        border: '1px solid #d1d5db',
+                        borderRadius: '0.5rem',
+                        fontSize: '0.875rem'
+                      }}
+                    >
+                      <option value="all">All Status</option>
+                      <option value="active">Active</option>
+                      <option value="idle">Idle</option>
+                      <option value="offline">Offline</option>
+                    </select>
+                    
+                    <select
+                      value={filterApp}
+                      onChange={(e) => setFilterApp(e.target.value as any)}
+                      style={{
+                        padding: '0.75rem',
+                        border: '1px solid #d1d5db',
+                        borderRadius: '0.5rem',
+                        fontSize: '0.875rem'
+                      }}
+                    >
+                      <option value="all">All Apps</option>
+                      <option value="audio-intel">Audio Intel</option>
+                      <option value="playlist-pulse">Playlist Pulse</option>
+                      <option value="command-centre">Command Centre</option>
+                      <option value="web">Web</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              {/* Enhanced User List */}
+              <div className="intel-grid intel-grid-1" style={{ gap: '1rem' }}>
+                {filteredUsers.map(user => (
+                  <div key={user.id} className="intel-card" style={{ padding: '1.5rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+                          <h3 style={{ fontSize: '1.125rem', fontWeight: '600', margin: 0 }}>
+                            {user.name || user.email.split('@')[0]}
+                          </h3>
+                          <span className="intel-badge intel-badge-blue">
+                            {getUserEngagementScore(user)}% engagement
+                          </span>
+                        </div>
+                        <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.5rem 0' }}>
+                          {user.email}
+                        </p>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                          <div style={{
+                            width: '8px',
+                            height: '8px',
+                            borderRadius: '50%',
+                            background: user.status === 'active' ? '#10b981' : user.status === 'idle' ? '#f59e0b' : '#9ca3af'
+                          }}></div>
+                          <span style={{
+                            fontSize: '0.75rem',
+                            fontWeight: '600',
+                            color: user.status === 'active' ? '#047857' : user.status === 'idle' ? '#d97706' : '#6b7280',
+                            textTransform: 'capitalize'
+                          }}>
+                            {user.status}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      {/* Quick Actions */}
+                      <div style={{ display: 'flex', gap: '0.5rem' }}>
+                        <button
+                          onClick={() => contactUser(user)}
+                          style={{
+                            padding: '0.5rem',
+                            border: '1px solid #d1d5db',
+                            borderRadius: '0.375rem',
+                            background: 'white',
+                            cursor: 'pointer',
+                            color: '#6b7280'
+                          }}
+                          title="Contact user"
+                        >
+                          <Mail size={14} />
+                        </button>
+                        <button
+                          onClick={() => setSelectedUser(user)}
+                          style={{
+                            padding: '0.5rem',
+                            border: '1px solid #d1d5db',
+                            borderRadius: '0.375rem',
+                            background: 'white',
+                            cursor: 'pointer',
+                            color: '#6b7280'
+                          }}
+                          title="View details"
+                        >
+                          <Eye size={14} />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* User Stats Grid */}
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#3b82f6' }}>
+                          {user.engagement.contactsEnriched}
+                        </div>
+                        <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Contacts</div>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#10b981' }}>
+                          {user.engagement.emailsValidated}
+                        </div>
+                        <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Validated</div>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#8b5cf6' }}>
+                          {user.sessionCount}
+                        </div>
+                        <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Sessions</div>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#f59e0b' }}>
+                          {user.engagement.timeSpent}m
+                        </div>
+                        <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Time</div>
+                      </div>
+                    </div>
+
+                    {/* User Info */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem', color: '#6b7280' }}>
+                      <span>
+                        <Globe size={12} style={{ display: 'inline', marginRight: '0.25rem' }} />
+                        {user.location.city}, {user.location.countryCode}
+                      </span>
+                      <span>
+                        {(user as any).device?.type === 'desktop' ? <Monitor size={12} /> : <Smartphone size={12} />}
+                        <span style={{ marginLeft: '0.25rem' }}>{(user as any).device?.browser || 'unknown'}</span>
+                      </span>
+                      <span>
+                        <Clock size={12} style={{ display: 'inline', marginRight: '0.25rem' }} />
+                        {new Date(user.lastSeen).toLocaleDateString()}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : activeTab === 'analytics' ? (
+          /* Analytics Tab */
+          <div className="intel-page">
+            <div className="intel-container">
+              <div className="intel-card">
+                <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1.5rem' }}>
+                  User Analytics & Insights
+                </h2>
+                
+                {betaData?.analytics && (
+                  <div className="intel-grid intel-grid-2" style={{ marginBottom: '2rem' }}>
+                    <div>
+                      <h3 style={{ fontSize: '1.125rem', fontWeight: '600', marginBottom: '1rem' }}>Top Features</h3>
+                      {betaData.analytics.topFeatures.map(feature => (
+                        <div key={feature.feature} style={{ marginBottom: '0.75rem' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
+                            <span style={{ fontSize: '0.875rem', textTransform: 'capitalize' }}>
+                              {feature.feature.replace('-', ' ')}
+                            </span>
+                            <span style={{ fontSize: '0.875rem', fontWeight: '600' }}>
+                              {feature.usage} users
+                            </span>
+                          </div>
+                          <div style={{ height: '4px', background: '#e5e7eb', borderRadius: '2px' }}>
+                            <div style={{
+                              height: '100%',
+                              background: '#3b82f6',
+                              borderRadius: '2px',
+                              width: `${(feature.usage / betaData.totalUsers) * 100}%`
+                            }}></div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <div>
+                      <h3 style={{ fontSize: '1.125rem', fontWeight: '600', marginBottom: '1rem' }}>Device Breakdown</h3>
+                      {Object.entries(((betaData.analytics as any).deviceBreakdown || {}) as Record<string, number>).map(([device, count]) => (
+                        <div key={device} style={{ marginBottom: '0.75rem' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
+                            <span style={{ fontSize: '0.875rem', textTransform: 'capitalize' }}>{device}</span>
+                            <span style={{ fontSize: '0.875rem', fontWeight: '600' }}>{count} users</span>
+                          </div>
+                          <div style={{ height: '4px', background: '#e5e7eb', borderRadius: '2px' }}>
+                            <div style={{
+                              height: '100%',
+                              background: '#10b981',
+                              borderRadius: '2px',
+                              width: `${(count / betaData.totalUsers) * 100}%`
+                            }}></div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                <div className="intel-metrics">
+                  <div className="intel-metric">
+                    <div className="intel-metric-header">
+                      <div className="intel-metric-icon" style={{ background: '#dbeafe', color: '#1e40af' }}>
+                        <Activity size={20} />
+                      </div>
+                    </div>
+                    <div className="intel-metric-value">{betaData?.analytics?.engagementMetrics.avgSessionTime || 0}min</div>
+                    <div className="intel-metric-label">Avg Session Time</div>
+                  </div>
+                  
+                  <div className="intel-metric">
+                    <div className="intel-metric-header">
+                      <div className="intel-metric-icon" style={{ background: '#d1fae5', color: '#065f46' }}>
+                        <Star size={20} />
+                      </div>
+                    </div>
+                    <div className="intel-metric-value">{betaData?.analytics?.engagementMetrics.avgContactsPerUser || 0}</div>
+                    <div className="intel-metric-label">Avg Contacts Per User</div>
+                  </div>
+                  
+                  <div className="intel-metric">
+                    <div className="intel-metric-header">
+                      <div className="intel-metric-icon" style={{ background: '#fef3c7', color: '#92400e' }}>
+                        <TrendingUp size={20} />
+                      </div>
+                    </div>
+                    <div className="intel-metric-value">{betaData?.analytics?.engagementMetrics.conversionRate || 0}%</div>
+                    <div className="intel-metric-label">Conversion Rate</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : activeTab === 'dashboard' ? (
           /* Beta Dashboard */
           <div>
             {/* Beta User Tracking */}

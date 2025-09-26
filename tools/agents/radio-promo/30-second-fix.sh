@@ -1,0 +1,32 @@
+#!/bin/bash
+
+echo "🚀 30-Second OAuth Fix - Just Add One Redirect URI"
+echo "================================================="
+echo ""
+echo "Your OAuth Client ID is already configured!"
+echo "You just need to add ONE redirect URI to make it work."
+echo ""
+echo "Opening the EXACT page you need..."
+
+# Open the OAuth credentials page
+open "https://console.cloud.google.com/apis/credentials?project=gleaming-realm-471715-p3"
+
+echo ""
+echo "📋 ONLY DO THIS:"
+echo ""
+echo "1. Find your OAuth 2.0 Client ID:"
+echo "   309298460159-4gcfsvpup4og77r0mifta91s8f651875.apps.googleusercontent.com"
+echo ""
+echo "2. Click the EDIT icon (pencil) next to it"
+echo ""
+echo "3. Scroll down to 'Authorized redirect URIs'"
+echo ""
+echo "4. Click '+ ADD URI' and add this EXACT text:"
+echo "   http://localhost:3000/callback"
+echo ""
+echo "5. Click 'SAVE'"
+echo ""
+echo "That's it! Takes 30 seconds."
+echo ""
+echo "6. Then run: node oauth-server.js"
+echo ""

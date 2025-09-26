@@ -75,7 +75,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
           margin: '0 0 1rem 0',
           letterSpacing: '-0.025em'
         }}>
-          🗺️ Global Beta User Map
+          Global Beta User Map
         </h3>
         <p style={{ color: '#6b7280', fontSize: '1rem' }}>
           Loading user location data... This map will show where your beta users are located worldwide.
@@ -123,7 +123,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
           margin: 0,
           letterSpacing: '-0.025em'
         }}>
-          🗺️ Global Beta User Distribution
+          Global Beta User Distribution
         </h3>
         
         {/* Legend */}

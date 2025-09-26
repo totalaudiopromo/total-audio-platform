@@ -624,12 +624,11 @@ export async function POST(req: NextRequest) {
       }, { status: 400 });
     }
 
-    if (!PERPLEXITY_API_KEY) {
-      return NextResponse.json({ 
-        success: false, 
-        error: 'Search API not configured' 
-      }, { status: 500 });
-    }
+    // Perplexity integration temporarily disabled
+    return NextResponse.json({ 
+      success: false, 
+      error: 'Multi-platform search is temporarily unavailable. Please use contact enrichment instead.' 
+    }, { status: 503 });
 
     const allResults: SearchResult[] = [];
     const searchPromises: Promise<SearchResult[]>[] = [];

@@ -17,43 +17,52 @@ const navItems: NavItem[] = [
     id: 'dashboard',
     label: 'Dashboard',
     href: '/',
-    icon: '📊',
+    icon: 'BarChart3',
     description: 'Business overview and metrics'
   },
   {
     id: 'analytics',
     label: 'Analytics',
     href: '/analytics',
-    icon: '📈',
+    icon: 'TrendingUp',
     description: 'Deep dive into business metrics',
     status: 'active'
   },
   {
-    id: 'social-posting',
-    label: 'Social Media',
-    href: '/social-posting',
-    icon: '📱',
-    description: 'Schedule posts across platforms'
+    id: 'radio-promo',
+    label: 'Radio Promo',
+    href: '/radio-promo',
+    icon: 'Radio',
+    description: 'Liberty Music PR workflow verification',
+    status: 'new'
+  },
+  {
+    id: 'social-media-hub',
+    label: 'Social Media Hub',
+    href: '/social-media-hub',
+    icon: 'Share',
+    description: 'Multi-platform content creation and scheduling',
+    status: 'new'
   },
   {
     id: 'reports',
     label: 'Reports',
     href: '/reports',
-    icon: '📋',
+    icon: 'FileText',
     description: 'Business intelligence reports'
   },
   {
     id: 'users',
     label: 'Users',
     href: '/users',
-    icon: '👥',
+    icon: 'Users',
     description: 'User management and permissions'
   },
   {
     id: 'beta-management',
     label: 'Beta Management',
     href: '/beta-management',
-    icon: '🧪',
+    icon: 'FlaskConical',
     description: 'Manage beta users and signups',
     status: 'beta'
   },
@@ -61,14 +70,14 @@ const navItems: NavItem[] = [
     id: 'newsjacking',
     label: 'Content Review',
     href: '/newsjacking',
-    icon: '📰',
+    icon: 'Newspaper',
     description: 'Review AI-generated content'
   },
   {
     id: 'marketing',
     label: 'Marketing Agent',
     href: '/marketing',
-    icon: '🤖',
+    icon: 'Bot',
     description: 'Automated content generation',
     status: 'new'
   }
@@ -96,39 +105,47 @@ export default function Navigation({ children }: NavigationProps) {
   };
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', background: '#f8fafc' }}>
       {/* Sidebar */}
       <div style={{
-        width: isCollapsed ? '80px' : '280px',
-        background: 'linear-gradient(180deg, #1e293b 0%, #334155 100%)',
+        width: isCollapsed ? '100px' : '320px',
+        background: 'white',
         transition: 'width 0.3s ease',
         position: 'fixed',
         height: '100vh',
         zIndex: 1000,
-        boxShadow: '4px 0 12px rgba(0, 0, 0, 0.15)'
+        border: '4px solid #2563eb',
+        borderRadius: '0 24px 24px 0',
+        boxShadow: '12px 12px 0px 0px rgba(0, 0, 0, 1)',
+        margin: '1rem 0 1rem 1rem'
       }}>
         {/* Header */}
         <div style={{
-          padding: '1.5rem 1rem',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          padding: '2rem 1.5rem',
+          borderBottom: '3px solid #e5e7eb',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+          borderRadius: '0 20px 0 0',
+          margin: '-4px -4px 0 -4px'
         }}>
           {!isCollapsed && (
             <div>
               <h1 style={{
                 color: 'white',
-                fontSize: '1.25rem',
-                fontWeight: 'bold',
-                margin: 0
+                fontSize: '1.5rem',
+                fontWeight: '800',
+                margin: 0,
+                textShadow: '2px 2px 0px rgba(0,0,0,0.3)'
               }}>
                 Command Centre
               </h1>
               <p style={{
-                color: 'rgba(255, 255, 255, 0.7)',
+                color: 'rgba(255, 255, 255, 0.9)',
                 fontSize: '0.875rem',
-                margin: '0.25rem 0 0 0'
+                margin: '0.25rem 0 0 0',
+                fontWeight: '600'
               }}>
                 Total Audio Platform
               </p>
@@ -138,24 +155,32 @@ export default function Navigation({ children }: NavigationProps) {
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
             style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              border: 'none',
-              borderRadius: '8px',
-              padding: '0.5rem',
-              color: 'white',
+              background: 'white',
+              border: '3px solid rgba(0, 0, 0, 1)',
+              borderRadius: '12px',
+              padding: '0.75rem',
+              color: '#2563eb',
               cursor: 'pointer',
               fontSize: '1.2rem',
-              transition: 'background 0.2s'
+              fontWeight: 'bold',
+              transition: 'all 0.2s',
+              boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 1)'
             }}
-            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)'}
-            onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translate(-2px, -2px)';
+              e.currentTarget.style.boxShadow = '6px 6px 0px 0px rgba(0, 0, 0, 1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translate(0px, 0px)';
+              e.currentTarget.style.boxShadow = '4px 4px 0px 0px rgba(0, 0, 0, 1)';
+            }}
           >
             {isCollapsed ? '→' : '←'}
           </button>
         </div>
 
         {/* Navigation Items */}
-        <nav style={{ padding: '1rem 0' }}>
+        <nav style={{ padding: '1.5rem 1rem' }}>
           {navItems.map((item) => {
             const active = isActive(item.href);
             return (
@@ -165,27 +190,33 @@ export default function Navigation({ children }: NavigationProps) {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  padding: isCollapsed ? '1rem' : '0.875rem 1rem',
-                  margin: '0.25rem 0.5rem',
-                  borderRadius: '12px',
+                  padding: isCollapsed ? '1.25rem 0.5rem' : '1.25rem 1.5rem',
+                  margin: '0.75rem 0',
+                  borderRadius: '16px',
                   textDecoration: 'none',
-                  color: active ? 'white' : 'rgba(255, 255, 255, 0.8)',
-                  background: active ? 'rgba(59, 130, 246, 0.2)' : 'transparent',
-                  border: active ? '1px solid rgba(59, 130, 246, 0.3)' : '1px solid transparent',
+                  color: active ? '#1d4ed8' : '#374151',
+                  background: active ? '#dbeafe' : 'white',
+                  border: active ? '4px solid #2563eb' : '3px solid #e5e7eb',
+                  boxShadow: active ? '8px 8px 0px 0px rgba(37, 99, 235, 0.3)' : '6px 6px 0px 0px rgba(229, 231, 235, 0.8)',
                   transition: 'all 0.2s ease',
                   position: 'relative',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  fontWeight: active ? '700' : '600'
                 }}
                 onMouseOver={(e) => {
                   if (!active) {
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                    e.currentTarget.style.color = 'white';
+                    e.currentTarget.style.background = '#f3f4f6';
+                    e.currentTarget.style.color = '#1f2937';
+                    e.currentTarget.style.transform = 'translate(-2px, -2px)';
+                    e.currentTarget.style.boxShadow = '8px 8px 0px 0px rgba(229, 231, 235, 1)';
                   }
                 }}
                 onMouseOut={(e) => {
                   if (!active) {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
+                    e.currentTarget.style.background = 'white';
+                    e.currentTarget.style.color = '#374151';
+                    e.currentTarget.style.transform = 'translate(0px, 0px)';
+                    e.currentTarget.style.boxShadow = '6px 6px 0px 0px rgba(229, 231, 235, 0.8)';
                   }
                 }}
               >
@@ -193,54 +224,50 @@ export default function Navigation({ children }: NavigationProps) {
                 {item.status && (
                   <div style={{
                     position: 'absolute',
-                    top: '8px',
-                    right: '8px',
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    background: getStatusColor(item.status)
-                  }} />
+                    top: '12px',
+                    right: '12px',
+                    padding: '4px 8px',
+                    borderRadius: '8px',
+                    background: getStatusColor(item.status),
+                    border: '2px solid rgba(0, 0, 0, 0.8)',
+                    fontSize: '0.65rem',
+                    fontWeight: '700',
+                    color: 'white',
+                    textTransform: 'uppercase',
+                    boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.8)'
+                  }}>
+                    {item.status}
+                  </div>
                 )}
 
-                <span style={{ 
-                  fontSize: '1.5rem', 
-                  marginRight: isCollapsed ? '0' : '0.75rem',
-                  minWidth: '24px',
-                  textAlign: 'center'
+                <div style={{ 
+                  fontSize: '2rem', 
+                  marginRight: isCollapsed ? '0' : '1rem',
+                  minWidth: '32px',
+                  textAlign: 'center',
+                  filter: 'drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2))'
                 }}>
                   {item.icon}
-                </span>
+                </div>
                 
                 {!isCollapsed && (
                   <div style={{ flex: 1 }}>
                     <div style={{
-                      fontWeight: active ? '600' : '500',
-                      fontSize: '0.875rem',
+                      fontWeight: active ? '800' : '700',
+                      fontSize: '1rem',
                       marginBottom: '0.25rem'
                     }}>
                       {item.label}
                     </div>
                     <div style={{
-                      fontSize: '0.75rem',
-                      color: 'rgba(255, 255, 255, 0.6)',
-                      lineHeight: '1.2'
+                      fontSize: '0.8rem',
+                      color: active ? '#1e40af' : '#6b7280',
+                      lineHeight: '1.3',
+                      fontWeight: '500'
                     }}>
                       {item.description}
                     </div>
                   </div>
-                )}
-
-                {/* Active Indicator */}
-                {active && (
-                  <div style={{
-                    position: 'absolute',
-                    left: '0',
-                    top: '0',
-                    bottom: '0',
-                    width: '3px',
-                    background: '#3b82f6',
-                    borderRadius: '0 3px 3px 0'
-                  }} />
                 )}
               </a>
             );
@@ -251,37 +278,49 @@ export default function Navigation({ children }: NavigationProps) {
         {!isCollapsed && (
           <div style={{
             position: 'absolute',
-            bottom: '1rem',
-            left: '1rem',
-            right: '1rem'
+            bottom: '1.5rem',
+            left: '1.5rem',
+            right: '1.5rem'
           }}>
             <div style={{
-              background: 'rgba(255, 255, 255, 0.05)',
-              borderRadius: '12px',
-              padding: '1rem',
-              border: '1px solid rgba(255, 255, 255, 0.1)'
+              background: 'white',
+              borderRadius: '16px',
+              padding: '1.5rem',
+              border: '3px solid #e5e7eb',
+              boxShadow: '8px 8px 0px 0px rgba(0, 0, 0, 0.1)'
             }}>
               <h3 style={{
-                color: 'white',
-                fontSize: '0.875rem',
-                fontWeight: '600',
-                margin: '0 0 0.75rem 0'
+                color: '#1f2937',
+                fontSize: '1rem',
+                fontWeight: '800',
+                margin: '0 0 1rem 0',
+                textShadow: '1px 1px 0px rgba(0,0,0,0.1)'
               }}>
                 Quick Actions
               </h3>
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <button
                   onClick={() => window.location.href = '/system-restart'}
                   style={{
-                    background: 'rgba(239, 68, 68, 0.1)',
-                    border: '1px solid rgba(239, 68, 68, 0.2)',
-                    borderRadius: '8px',
-                    padding: '0.5rem',
-                    color: '#fca5a5',
+                    background: '#fee2e2',
+                    border: '3px solid #ef4444',
+                    borderRadius: '12px',
+                    padding: '0.75rem 1rem',
+                    color: '#dc2626',
                     cursor: 'pointer',
-                    fontSize: '0.75rem',
-                    fontWeight: '500'
+                    fontSize: '0.875rem',
+                    fontWeight: '700',
+                    boxShadow: '4px 4px 0px 0px rgba(239, 68, 68, 0.3)',
+                    transition: 'all 0.2s'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = 'translate(-2px, -2px)';
+                    e.currentTarget.style.boxShadow = '6px 6px 0px 0px rgba(239, 68, 68, 0.5)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = 'translate(0px, 0px)';
+                    e.currentTarget.style.boxShadow = '4px 4px 0px 0px rgba(239, 68, 68, 0.3)';
                   }}
                 >
                   🔄 Restart Services
@@ -290,14 +329,24 @@ export default function Navigation({ children }: NavigationProps) {
                 <button
                   onClick={() => window.location.href = '/social-posting'}
                   style={{
-                    background: 'rgba(34, 197, 94, 0.1)',
-                    border: '1px solid rgba(34, 197, 94, 0.2)',
-                    borderRadius: '8px',
-                    padding: '0.5rem',
-                    color: '#86efac',
+                    background: '#dcfce7',
+                    border: '3px solid #22c55e',
+                    borderRadius: '12px',
+                    padding: '0.75rem 1rem',
+                    color: '#16a34a',
                     cursor: 'pointer',
-                    fontSize: '0.75rem',
-                    fontWeight: '500'
+                    fontSize: '0.875rem',
+                    fontWeight: '700',
+                    boxShadow: '4px 4px 0px 0px rgba(34, 197, 94, 0.3)',
+                    transition: 'all 0.2s'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = 'translate(-2px, -2px)';
+                    e.currentTarget.style.boxShadow = '6px 6px 0px 0px rgba(34, 197, 94, 0.5)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = 'translate(0px, 0px)';
+                    e.currentTarget.style.boxShadow = '4px 4px 0px 0px rgba(34, 197, 94, 0.3)';
                   }}
                 >
                   📱 Quick Post
@@ -310,10 +359,12 @@ export default function Navigation({ children }: NavigationProps) {
 
       {/* Main Content */}
       <div style={{
-        marginLeft: isCollapsed ? '80px' : '280px',
+        marginLeft: isCollapsed ? '120px' : '340px',
         flex: 1,
         transition: 'margin-left 0.3s ease',
-        minHeight: '100vh'
+        minHeight: '100vh',
+        padding: '2rem',
+        background: '#f8fafc'
       }}>
         {children}
       </div>

@@ -71,10 +71,10 @@ function generateMockContentData(): ContentPiece[] {
   const channels = ['Organic Search', 'Social Media', 'Email', 'Direct', 'Referral', 'Paid Social'];
   const titles = [
     "How to Get Your Music on Spotify Playlists: Complete Guide",
-    "Top 10 Music PR Companies in 2024",
+    "Top 10 Music PR Companies in 2025",
     "Email Validation for Musicians: Why It Matters",
     "Case Study: How One Artist Got 1M Streams",
-    "The Future of Music Marketing in 2024",
+    "The Future of Music Marketing in 2025",
     "Building Your Email List as an Independent Artist",
     "Music Industry Contacts: Quality vs Quantity",
     "Social Media Strategy for Musicians",

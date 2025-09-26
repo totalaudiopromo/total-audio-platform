@@ -1,0 +1,87 @@
+# TOTAL AUDIO PROMO - CURSOR DEVELOPMENT RULES
+
+## 🎯 BUSINESS CONTEXT
+
+You are working on **Total Audio Promo**, a UK-focused music promotion SaaS ecosystem. Follow Chris's authentic voice and development practices:
+
+- **Voice**: British casual-professional ("Right, so...", "tbh", "if you get a sec")
+- **Industry**: 5+ years radio promotion, producer (sadact), real tools for real work
+- **Tech Stack**: Next.js, TypeScript, Tailwind CSS, Vercel, Stripe
+- **Focus**: Audio Intel (contact enrichment tool), UK alternative to expensive US tools
+
+## 🛠️ DEVELOPMENT STANDARDS
+
+### Code Style
+- **TypeScript**: Strict mode, proper typing always
+- **Components**: Functional components with hooks
+- **Styling**: Tailwind CSS with consistent design system
+- **File Structure**: Follow existing patterns, group by feature
+- **No Comments**: Code should be self-documenting unless absolutely necessary
+
+### UK Market Focus
+- **Currency**: £GBP default for all pricing/financial components
+- **Spelling**: British spelling (organisation, colour, realise)
+- **Data**: GDPR compliant, UK-focused validation
+- **Content**: Music industry terminology and UK market context
+
+### Performance & Quality
+- **Mobile-First**: Responsive design, works on all devices
+- **Type Safety**: No `any` types, proper interfaces/types
+- **Error Handling**: Graceful error states, user-friendly messages
+- **Loading States**: Proper loading indicators, no flash of unstyled content
+- **Accessibility**: Semantic HTML, proper ARIA labels
+
+### Business Logic
+- **Revenue Focus**: Audio Intel is THE priority product
+- **User Journey**: Seamless signup → upload → results → payment flow
+- **Real Data**: Build for actual music industry contacts and workflows
+- **Solopreneur Constraints**: Simple, maintainable architecture
+
+## 🎵 CURRENT PRIORITIES
+
+### Audio Intel (PRIMARY PRODUCT)
+- Contact enrichment tool for music industry professionals
+- Perplexity API integration for contact research
+- Stripe subscription management (£19.99/month Pro, £39.99/month Agency)
+- User upload/results workflow optimization
+
+### Development Commands
+```bash
+# Main development
+cd /Users/chrisschofield/workspace/active/total-audio-platform
+npm run dev:audio-intel       # Start Audio Intel (port 3000)
+npm run build:audio-intel     # Build for production  
+npm run typecheck:audio-intel # TypeScript validation
+npm run lint:audio-intel      # Code quality checks
+```
+
+## 🚨 CRITICAL RULES
+
+### What TO Do
+- Build features that drive revenue THIS WEEK
+- Test complete user journey (signup → upload → results → payment)
+- Use existing patterns and components from the codebase
+- British spelling and £GBP currency always
+- Mobile-responsive, TypeScript strict, no `any` types
+
+### What NOT To Do
+- ❌ No new features without revenue justification
+- ❌ No V2 features until V1 generates £500/month
+- ❌ No Google Drive integration (Notion only)
+- ❌ No generic business advice or corporate speak
+- ❌ No forced casual grammar or marketing jargon
+
+### Error Prevention
+- Always check if libraries/frameworks exist in package.json before using
+- Follow existing component patterns and naming conventions
+- Test user flows, especially payment/subscription processes
+- Validate with real music industry data structures
+
+## 🎯 SUCCESS METRICS
+
+- **User Experience**: Seamless contact enrichment workflow
+- **Performance**: Fast loading, responsive design
+- **Revenue**: Direct path from feature to subscription conversion
+- **Maintenance**: Clean, self-documenting code
+
+**Remember**: Audio Intel is THE business priority. Build features that help Chris get first paying customers, not experimental or nice-to-have features.

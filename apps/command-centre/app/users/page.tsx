@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Users, User, Shield, Activity, BarChart3, MapPin, Calendar, Mail, Filter } from 'lucide-react';
 
 interface User {
   id: string;
@@ -197,25 +198,22 @@ export default function UserManagementPage() {
 
   if (loading) {
     return (
-      <div style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #7c2d12 0%, #dc2626 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-      }}>
-        <div style={{ textAlign: 'center', color: 'white' }}>
-          <div style={{
-            width: '48px',
-            height: '48px',
-            border: '4px solid rgba(255,255,255,0.3)',
-            borderTop: '4px solid white',
-            borderRadius: '50%',
-            animation: 'spin 1s linear infinite',
-            margin: '0 auto 1rem'
-          }}></div>
-          <p>Loading User Management...</p>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-sm border border-white/20">
+            <div className="flex items-center justify-center h-64">
+              <div className="text-center">
+                <div className="animate-pulse">
+                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-600 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                    <Users className="w-8 h-8 text-white animate-pulse" />
+                  </div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                    Loading User Management...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

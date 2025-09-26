@@ -6,6 +6,7 @@ import {
   generateInstagramSlides, 
   generateInstagramCaption 
 } from '../content-generators';
+import { addToApprovalQueue } from '../approval/route';
 
 interface GeneratedContent {
   id: string;
@@ -134,6 +135,10 @@ export async function GET() {
           voiceScore: Math.min(opportunity.relevanceScore + 0.2, 1.0),
           confidence: opportunity.relevanceScore
         };
+        
+        // Add to approval queue for workflow
+        addToApprovalQueue(content);
+        
         return content;
       });
     }

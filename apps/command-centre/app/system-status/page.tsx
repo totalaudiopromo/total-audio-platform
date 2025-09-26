@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Activity, Wifi, WifiOff, AlertTriangle, RefreshCw, CheckCircle, Server, Globe } from 'lucide-react';
 
 interface ServiceStatus {
   name: string;
@@ -119,187 +120,151 @@ export default function SystemStatusPage() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'online': return { bg: '#d1fae5', text: '#047857', border: '#10b981' };
-      case 'warning': return { bg: '#fef3c7', text: '#d97706', border: '#f59e0b' };
-      case 'offline': return { bg: '#fed7d7', text: '#c53030', border: '#f56565' };
-      default: return { bg: '#f3f4f6', text: '#374151', border: '#9ca3af' };
+      case 'online': return 'bg-green-100 text-green-800 border-green-200';
+      case 'warning': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      case 'offline': return 'bg-red-100 text-red-800 border-red-200';
+      default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
 
   const getOverallStatusColor = () => {
     switch (overallStatus) {
-      case 'operational': return { bg: '#d1fae5', text: '#047857' };
-      case 'degraded': return { bg: '#fef3c7', text: '#d97706' };
-      case 'down': return { bg: '#fed7d7', text: '#c53030' };
-      default: return { bg: '#f3f4f6', text: '#374151' };
+      case 'operational': return 'bg-green-100 text-green-800';
+      case 'degraded': return 'bg-yellow-100 text-yellow-800';
+      case 'down': return 'bg-red-100 text-red-800';
+      default: return 'bg-gray-100 text-gray-800';
     }
   };
 
   if (loading) {
     return (
-      <div style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'white',
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-      }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{
-            width: '48px',
-            height: '48px',
-            border: '4px solid rgba(255,255,255,0.3)',
-            borderTop: '4px solid white',
-            borderRadius: '50%',
-            animation: 'spin 1s linear infinite',
-            margin: '0 auto 1rem'
-          }}></div>
-          <p>Checking system status...</p>
+      <div className="flex items-center justify-center h-64">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Checking System Status</h2>
+          <p className="text-gray-600">Monitoring all Audio Intel services...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      padding: '2rem'
-    }}>
-      {/* Overall Status */}
-      <div style={{
-        background: 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(20px)',
-        borderRadius: '20px',
-        padding: '2rem',
-        marginBottom: '2rem',
-        boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)',
-        textAlign: 'center'
-      }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#1a202c', margin: '0 0 1rem 0' }}>
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="text-center">
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">
           System Status
         </h1>
-        
-        <div style={{
-          display: 'inline-block',
-          padding: '1rem 2rem',
-          borderRadius: '50px',
-          background: getOverallStatusColor().bg,
-          color: getOverallStatusColor().text,
-          fontSize: '1.5rem',
-          fontWeight: 'bold',
-          textTransform: 'capitalize',
-          marginBottom: '1rem'
-        }}>
-          {overallStatus === 'operational' ? '🟢' : overallStatus === 'degraded' ? '🟡' : '🔴'} {overallStatus}
+        <p className="text-lg text-gray-600 mb-6">
+          Real-time monitoring of all Audio Intel services
+        </p>
+        <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium ${getOverallStatusColor()}`}>
+          <div className={`w-2 h-2 rounded-full mr-2 ${
+            overallStatus === 'operational' ? 'bg-green-500' :
+            overallStatus === 'degraded' ? 'bg-yellow-500' :
+            'bg-red-500'
+          }`}></div>
+          {overallStatus === 'operational' ? 'All Systems Operational' :
+           overallStatus === 'degraded' ? 'Some Services Degraded' :
+           'System Issues Detected'}
+        </div>
+      </div>
+
+      {/* Overall Status Card */}
+      <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200 text-center">
+        <div className="flex items-center justify-center mb-6">
+          {overallStatus === 'operational' ? (
+            <CheckCircle className="w-16 h-16 text-green-500" />
+          ) : overallStatus === 'degraded' ? (
+            <AlertTriangle className="w-16 h-16 text-yellow-500" />
+          ) : (
+            <WifiOff className="w-16 h-16 text-red-500" />
+          )}
         </div>
         
-        <p style={{ color: '#6b7280', margin: 0 }}>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4 capitalize">
+          {overallStatus}
+        </h2>
+        
+        <p className="text-gray-600">
           Last updated: {new Date().toLocaleString()}
         </p>
       </div>
 
       {/* Services Grid */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-        gap: '1.5rem',
-        marginBottom: '2rem'
-      }}>
-        {services.map((service) => {
-          const statusColors = getStatusColor(service.status);
-          
-          return (
-            <div key={service.name} style={{
-              background: 'rgba(255, 255, 255, 0.95)',
-              backdropFilter: 'blur(20px)',
-              borderRadius: '20px',
-              padding: '1.5rem',
-              boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)',
-              border: `2px solid ${statusColors.border}20`
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#1a202c', margin: 0 }}>
-                  {service.name}
-                </h3>
+      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+        <div className="mb-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Service Status</h2>
+          <p className="text-gray-600">Individual service monitoring and management</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service) => {
+            const getStatusIcon = (status: string) => {
+              switch (status) {
+                case 'online': return <Wifi className="w-5 h-5 text-green-600" />;
+                case 'warning': return <AlertTriangle className="w-5 h-5 text-yellow-600" />;
+                case 'offline': return <WifiOff className="w-5 h-5 text-red-600" />;
+                default: return <Server className="w-5 h-5 text-gray-600" />;
+              }
+            };
+            
+            return (
+              <div key={service.name} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                    <Globe className="w-5 h-5 text-gray-600" />
+                    {service.name}
+                  </h3>
+                  
+                  <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(service.status)}`}>
+                    {getStatusIcon(service.status)}
+                    {service.status.toUpperCase()}
+                  </div>
+                </div>
                 
-                <div style={{
-                  background: statusColors.bg,
-                  color: statusColors.text,
-                  padding: '0.5rem 1rem',
-                  borderRadius: '20px',
-                  fontSize: '0.875rem',
-                  fontWeight: '600',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em'
-                }}>
-                  {service.status}
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-gray-900">{service.uptime}</div>
+                    <div className="text-sm text-gray-600">Uptime</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-gray-900">{service.responseTime}</div>
+                    <div className="text-sm text-gray-600">Response</div>
+                  </div>
                 </div>
-              </div>
-              
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-                <div>
-                  <div style={{ fontSize: '0.875rem', color: '#6b7280', marginBottom: '0.25rem' }}>Uptime</div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1a202c' }}>{service.uptime}</div>
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.875rem', color: '#6b7280', marginBottom: '0.25rem' }}>Response</div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1a202c' }}>{service.responseTime}</div>
-                </div>
-              </div>
-              
-              <div style={{ fontSize: '0.75rem', color: '#9ca3af', marginBottom: '1rem' }}>
-                Last check: {new Date(service.lastCheck).toLocaleString()}
-              </div>
-              
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <button
-                  onClick={() => handleRestart(service.name)}
-                  style={{
-                    background: service.status === 'offline' ? '#ef4444' : 'transparent',
-                    color: service.status === 'offline' ? 'white' : '#ef4444',
-                    border: '2px solid #ef4444',
-                    borderRadius: '8px',
-                    padding: '0.5rem 1rem',
-                    fontSize: '0.875rem',
-                    fontWeight: '600',
-                    cursor: 'pointer',
-                    flex: 1
-                  }}
-                >
-                  🔄 Restart
-                </button>
                 
-                <button
-                  onClick={fetchSystemStatus}
-                  style={{
-                    background: 'transparent',
-                    color: '#3b82f6',
-                    border: '2px solid #3b82f6',
-                    borderRadius: '8px',
-                    padding: '0.5rem 1rem',
-                    fontSize: '0.875rem',
-                    fontWeight: '600',
-                    cursor: 'pointer'
-                  }}
-                >
-                  ✅ Test
-                </button>
+                <div className="text-xs text-gray-500 mb-4 flex items-center gap-1">
+                  <Activity className="w-3 h-3" />
+                  Last check: {new Date(service.lastCheck).toLocaleTimeString()}
+                </div>
+                
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleRestart(service.name)}
+                    className={`flex-1 px-3 py-2 rounded-lg font-medium text-sm flex items-center justify-center gap-2 transition-colors ${
+                      service.status === 'offline' 
+                        ? 'bg-red-600 text-white hover:bg-red-700' 
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    <RefreshCw className="w-4 h-4" />
+                    Restart
+                  </button>
+                  
+                  <button
+                    onClick={fetchSystemStatus}
+                    className="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                  >
+                    <CheckCircle className="w-4 h-4" />
+                    Test
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-
-      <style jsx>{`
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      `}</style>
     </div>
   );
 }

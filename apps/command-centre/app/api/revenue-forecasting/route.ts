@@ -86,7 +86,7 @@ interface ForecastingModel {
 function generateMarketTrends(): MarketTrend[] {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
   return months.map((month, i) => ({
-    period: `2024-${month}`,
+    period: `2025-${month}`,
     musicIndustryGrowth: 8.5 + Math.sin(i * 0.5) * 2, // 6.5% - 10.5%
     digitalToolsAdoption: 15 + i * 2.5, // Growing adoption
     competitorActivity: 6 + Math.sin(i * 0.3) * 2, // Fluctuating competition
@@ -206,7 +206,7 @@ function generateRevenueForecasts(
     );
     
     return {
-      period: `2024-${month.substring(0, 3)}`,
+      period: `2025-${month.substring(0, 3)}`,
       predictedRevenue,
       confidence: Math.min(95, Math.max(60, confidence)),
       components: {

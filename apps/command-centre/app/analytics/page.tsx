@@ -123,11 +123,11 @@ export default function AdvancedAnalyticsPage() {
   }
 
   return (
-      <div className="tap-section">
+      <div className="tap-section postcraft-prose space-y-6">
           {/* Beautiful Header */}
           <div className="tap-text-center tap-mb-8">
             <h1 className="tap-heading-1 tap-mb-4">
-              📊 Advanced Analytics
+              Advanced Analytics
             </h1>
             <p className="tap-text-lg tap-mb-6">
               Deep insights into Audio Intel performance and business metrics
@@ -137,21 +137,14 @@ export default function AdvancedAnalyticsPage() {
                 onClick={() => window.history.back()}
                 className="flex items-center space-x-2 px-6 py-3 bg-white/80 backdrop-blur-sm border border-white/20 rounded-2xl hover:bg-white/90 transition-all duration-300 shadow-sm hover:shadow-md"
               >
-                <span className="text-2xl">←</span>
+                <span aria-hidden>{""}</span>
                 <span className="font-medium text-gray-700">Back to Dashboard</span>
               </button>
-              <a
-                href="/analytics/mermaid"
-                className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                <span className="text-2xl">📊</span>
-                <span className="font-medium">Mermaid Flow Diagrams</span>
-              </a>
             </div>
           </div>
 
           {/* Modern Timeframe Selector */}
-          <div className="bg-white/60 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/20">
+          <div className="intel-card">
             <div className="text-center mb-4">
               <h2 className="text-xl font-bold text-gray-900">Time Period</h2>
             </div>
@@ -175,18 +168,16 @@ export default function AdvancedAnalyticsPage() {
           {/* Beautiful Analytics Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Revenue Analytics */}
-            <div className="bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-lg border border-white/20">
+            <div className="intel-card">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">💰 Revenue Analytics</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Revenue Analytics</h2>
                 <p className="text-gray-600">Beta phase revenue tracking and projections</p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-100/50">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-emerald-500/10 rounded-xl">
-                      <div className="text-2xl">💰</div>
-                    </div>
+                    <div className="p-3 bg-emerald-500/10 rounded-xl" />
                   </div>
                   <div className="text-3xl font-bold text-emerald-700 mb-1">
                     £{analytics?.revenue?.totalRevenue?.toLocaleString() || '0'}
@@ -199,16 +190,14 @@ export default function AdvancedAnalyticsPage() {
 
                 <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100/50">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-blue-500/10 rounded-xl">
-                      <div className="text-2xl">🎯</div>
-                    </div>
+                    <div className="p-3 bg-blue-500/10 rounded-xl" />
                   </div>
                   <div className="text-3xl font-bold text-blue-700 mb-1">
                     £{analytics?.revenue?.projectedMonthly?.toLocaleString() || '0'}
                   </div>
                   <div className="text-sm text-blue-600 font-medium">Monthly Target</div>
                   <div className="text-xs text-blue-500 mt-2">
-                    Q4 2024 Goal
+                    Q4 2025 Goal
                   </div>
                 </div>
               </div>
@@ -240,18 +229,16 @@ export default function AdvancedAnalyticsPage() {
             </div>
 
             {/* User Analytics */}
-            <div className="bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-lg border border-white/20">
+            <div className="intel-card">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">👥 User Analytics</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">User Analytics</h2>
                 <p className="text-gray-600">Beta user growth and engagement metrics</p>
               </div>
               
               <div className="grid grid-cols-2 gap-6">
                 <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-blue-500/10 rounded-xl">
-                      <div className="text-2xl">👥</div>
-                    </div>
+                    <div className="p-3 bg-blue-500/10 rounded-xl" />
                   </div>
                   <div className="text-3xl font-bold text-blue-700 mb-1">
                     {analytics?.users?.totalUsers || 0}
@@ -262,9 +249,7 @@ export default function AdvancedAnalyticsPage() {
 
                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-emerald-500/10 rounded-xl">
-                      <div className="text-2xl">✅</div>
-                    </div>
+                    <div className="p-3 bg-emerald-500/10 rounded-xl" />
                   </div>
                   <div className="text-3xl font-bold text-emerald-700 mb-1">
                     {analytics?.users?.activeUsers || 0}
@@ -275,9 +260,7 @@ export default function AdvancedAnalyticsPage() {
 
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-green-500/10 rounded-xl">
-                      <div className="text-2xl">📈</div>
-                    </div>
+                    <div className="p-3 bg-green-500/10 rounded-xl" />
                   </div>
                   <div className="text-3xl font-bold text-green-700 mb-1">
                     {analytics?.users?.retentionRate || 0}%
@@ -288,9 +271,7 @@ export default function AdvancedAnalyticsPage() {
 
                 <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-6 border border-orange-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-orange-500/10 rounded-xl">
-                      <div className="text-2xl">📉</div>
-                    </div>
+                    <div className="p-3 bg-orange-500/10 rounded-xl" />
                   </div>
                   <div className="text-3xl font-bold text-orange-700 mb-1">
                     {analytics?.users?.churnRate || 0}%
@@ -302,18 +283,16 @@ export default function AdvancedAnalyticsPage() {
             </div>
 
             {/* Product Usage Analytics */}
-            <div className="bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-lg border border-white/20">
+            <div className="intel-card">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">🎯 Product Usage</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Product Usage</h2>
                 <p className="text-gray-600">Audio Intel platform performance metrics</p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl p-6 border border-violet-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-violet-500/10 rounded-xl">
-                      <div className="text-2xl">🎯</div>
-                    </div>
+                    <div className="p-3 bg-violet-500/10 rounded-xl" />
                   </div>
                   <div className="text-3xl font-bold text-violet-700 mb-1">
                     {analytics?.product?.contactsEnriched?.toLocaleString() || '0'}
@@ -324,9 +303,7 @@ export default function AdvancedAnalyticsPage() {
 
                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-emerald-500/10 rounded-xl">
-                      <div className="text-2xl">✉️</div>
-                    </div>
+                    <div className="p-3 bg-emerald-500/10 rounded-xl" />
                   </div>
                   <div className="text-3xl font-bold text-emerald-700 mb-1">
                     {analytics?.product?.emailsValidated?.toLocaleString() || '0'}
@@ -363,16 +340,14 @@ export default function AdvancedAnalyticsPage() {
             {/* System Performance */}
             <div className="bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-lg border border-white/20">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">⚡ System Performance</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">System Performance</h2>
                 <p className="text-gray-600">Real-time system health and performance</p>
               </div>
               
               <div className="grid grid-cols-2 gap-6">
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-green-500/10 rounded-xl">
-                      <div className="text-2xl">🟢</div>
-                    </div>
+                    <div className="p-3 bg-green-500/10 rounded-xl" />
                   </div>
                   <div className="text-3xl font-bold text-green-700 mb-1">
                     {analytics?.performance?.systemUptime || 0}%
@@ -383,9 +358,7 @@ export default function AdvancedAnalyticsPage() {
 
                 <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-blue-500/10 rounded-xl">
-                      <div className="text-2xl">⚡</div>
-                    </div>
+                    <div className="p-3 bg-blue-500/10 rounded-xl" />
                   </div>
                   <div className="text-3xl font-bold text-blue-700 mb-1">
                     {analytics?.performance?.averageResponseTime || 0}ms
@@ -396,9 +369,7 @@ export default function AdvancedAnalyticsPage() {
 
                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-emerald-500/10 rounded-xl">
-                      <div className="text-2xl">✅</div>
-                    </div>
+                    <div className="p-3 bg-emerald-500/10 rounded-xl" />
                   </div>
                   <div className="text-3xl font-bold text-emerald-700 mb-1">
                     {analytics?.product?.successRate || 0}%
@@ -409,9 +380,7 @@ export default function AdvancedAnalyticsPage() {
 
                 <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-100/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-amber-500/10 rounded-xl">
-                      <div className="text-2xl">⏱️</div>
-                    </div>
+                    <div className="p-3 bg-amber-500/10 rounded-xl" />
                   </div>
                   <div className="text-3xl font-bold text-amber-700 mb-1">
                     {analytics?.product?.avgProcessingTime || 0}s

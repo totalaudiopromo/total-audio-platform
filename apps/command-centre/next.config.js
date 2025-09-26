@@ -5,6 +5,15 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true
+  },
+  async redirects() {
+    return [
+      {
+        source: '/marketing',
+        destination: '/social-media-hub',
+        permanent: false,
+      },
+    ];
   }
 }
 

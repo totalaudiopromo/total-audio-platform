@@ -189,3 +189,34 @@ Logs are stored in `logs/` directory:
 ---
 
 **Note**: This structure is designed for easy navigation and development. Each project maintains its own dependencies and configurations while sharing common utilities and documentation. 
+
+## WARM API quick test and DNS flush
+
+If the WARM API host doesn’t resolve or auth fails unexpectedly:
+
+1) Flush macOS DNS cache and retry
+
+```bash
+sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+```
+
+2) Test reachability (POST-only route will 404/400 on HEAD/GET, that’s fine):
+
+```bash
+curl -i https://public-api.warmmusic.net/api/v1/auth/exchange
+```
+
+3) Auth test via Node
+
+```bash
+export WARM_API_EMAIL='promo@totalaudiopromo.com'
+export WARM_API_PASSWORD='<password>'
+export WARM_API_BASE_URL='https://public-api.warmmusic.net/api/v1'
+node tools/agents/radio-promo/test-warm-auth.js
+```
+
+4) Plays sample (auth + GET /plays):
+
+```bash
+node tools/agents/radio-promo/test-warm-plays.js
+```

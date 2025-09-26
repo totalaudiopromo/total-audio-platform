@@ -1,0 +1,871 @@
+/* AUDIO INTEL DESIGN SYSTEM - CLEAN & SIMPLE */
+/* Based on intel.totalaudiopromo.com aesthetic */
+
+/* Core Variables */
+:root {
+  --intel-blue: #3b82f6;
+  --intel-purple: #8b5cf6;
+  --intel-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --intel-gray-50: #f9fafb;
+  --intel-gray-100: #f3f4f6;
+  --intel-gray-200: #e5e7eb;
+  --intel-gray-300: #d1d5db;
+  --intel-gray-400: #9ca3af;
+  --intel-gray-500: #6b7280;
+  --intel-gray-600: #4b5563;
+  --intel-gray-700: #374151;
+  --intel-gray-800: #1f2937;
+  --intel-gray-900: #111827;
+  --intel-white: #ffffff;
+  --intel-green: #10b981;
+  --intel-red: #ef4444;
+  --intel-orange: #f59e0b;
+}
+
+/* Clean Typography */
+.intel-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--intel-gray-50);
+  color: var(--intel-gray-900);
+  line-height: 1.6;
+}
+
+/* Header Styles */
+.intel-header {
+  background: var(--intel-white);
+  border-bottom: 1px solid var(--intel-gray-200);
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.intel-header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.intel-header-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* BRAND CARD STYLE (matches Audio Intel marketing cards) */
+.intel-card,
+.postcraft-card {
+  background: var(--intel-white);
+  border-radius: 1rem;
+  border: 4px solid #000000;
+  box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.intel-card:hover,
+.postcraft-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 12px 12px 0px 0px rgba(0,0,0,1);
+}
+
+.intel-card h1, .intel-card h2, .postcraft-card h1, .postcraft-card h2 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--intel-gray-900);
+}
+
+.intel-card h3, .postcraft-card h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--intel-gray-900);
+}
+
+.intel-header-icon {
+  width: 3rem;
+  height: 3rem;
+  background: var(--intel-gradient);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.intel-header h1 {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: var(--intel-gray-900);
+  margin: 0;
+}
+
+.intel-header p {
+  font-size: 1rem;
+  color: var(--intel-gray-600);
+  margin: 0.25rem 0 0 0;
+  font-weight: 500;
+}
+
+/* Status Indicators */
+.intel-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.intel-status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--intel-green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+/* Cards */
+.intel-card {
+  background: var(--intel-white);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--intel-gray-200);
+  transition: all 0.2s ease;
+}
+
+.intel-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Metrics Cards */
+.intel-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.intel-metric {
+  background: var(--intel-white);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--intel-gray-200);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.intel-metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: between;
+  margin-bottom: 1rem;
+}
+
+.intel-metric-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.intel-metric-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--intel-gray-900);
+  margin-bottom: 0.25rem;
+}
+
+.intel-metric-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--intel-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+/* Buttons */
+.intel-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--intel-gradient);
+  color: var(--intel-white);
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.intel-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.intel-button-secondary {
+  background: var(--intel-white);
+  color: var(--intel-gray-700);
+  border: 1px solid var(--intel-gray-300);
+}
+
+.intel-button-secondary:hover {
+  background: var(--intel-gray-50);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Content Container */
+.intel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Simple Grid */
+.intel-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.intel-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.intel-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.intel-grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Loading States */
+.intel-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+}
+
+.intel-spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 3px solid var(--intel-gray-200);
+  border-top: 3px solid var(--intel-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+/* Error States */
+.intel-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  background: var(--intel-white);
+  border-radius: 1rem;
+  padding: 3rem;
+  border: 1px solid var(--intel-gray-200);
+}
+
+.intel-error-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.intel-error h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--intel-gray-900);
+  margin-bottom: 0.5rem;
+}
+
+.intel-error p {
+  color: var(--intel-gray-600);
+  margin-bottom: 2rem;
+}
+
+/* Badge/Tag Styles */
+.intel-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+}
+
+.intel-badge-green {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.intel-badge-blue {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.intel-badge-red {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.intel-badge-orange {
+  background: #fed7aa;
+  color: #9a3412;
+}
+
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Navigation Sidebar Enhancement */
+.clean-sidebar {
+  background: var(--intel-white);
+  border-right: 1px solid var(--intel-gray-200);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  width: 16rem;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 40;
+}
+
+.clean-sidebar-header {
+  padding: 2rem 1.5rem;
+  border-bottom: 1px solid var(--intel-gray-200);
+}
+
+.clean-sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.clean-sidebar-logo-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--intel-gradient);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.clean-sidebar-logo-text h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--intel-gray-900);
+  margin: 0;
+}
+
+.clean-sidebar-logo-text p {
+  font-size: 0.875rem;
+  color: var(--intel-gray-500);
+  margin: 0;
+}
+
+.clean-nav-section {
+  padding: 1rem 0;
+}
+
+.clean-nav-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--intel-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.clean-sidebar-footer {
+  padding: 1.5rem;
+  border-top: 1px solid var(--intel-gray-200);
+}
+
+.clean-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--intel-gray-600);
+}
+
+.clean-status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--intel-green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.clean-sidebar .nav-links a {
+  display: flex;
+  align-items: center;
+  padding: 0.875rem 1.5rem;
+  color: var(--intel-gray-700);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  margin: 0.25rem 0.75rem;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.clean-sidebar .nav-links a:hover {
+  background: var(--intel-gray-50);
+  color: var(--intel-blue);
+  transform: translateX(2px);
+}
+
+.clean-sidebar .nav-links a.active {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  color: var(--intel-blue);
+  border-left-color: var(--intel-blue);
+  font-weight: 600;
+}
+
+.clean-sidebar .nav-links a svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+/* Enhanced Card System */
+.intel-card {
+  background: var(--intel-white);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--intel-gray-200);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.intel-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+  border-color: var(--intel-gray-300);
+}
+
+.intel-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--intel-gradient);
+  border-radius: 1rem 1rem 0 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.intel-card:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced Typography Hierarchy */
+.intel-card h1, .intel-card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--intel-gray-900);
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+}
+
+.intel-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--intel-gray-900);
+  margin-bottom: 0.75rem;
+}
+
+.intel-card p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--intel-gray-600);
+  margin-bottom: 1rem;
+}
+
+/* Enhanced Metrics with Better Spacing */
+.intel-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.intel-metric {
+  background: var(--intel-white);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid var(--intel-gray-200);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.intel-metric:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.intel-metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.intel-metric-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.intel-metric-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--intel-gray-900);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+}
+
+.intel-metric-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--intel-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Loading States with Better Animation */
+.intel-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  background: var(--intel-white);
+  border-radius: 1rem;
+  border: 1px solid var(--intel-gray-200);
+}
+
+.intel-spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 3px solid var(--intel-gray-200);
+  border-top: 3px solid var(--intel-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+}
+
+/* Enhanced Container Layout */
+.intel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.intel-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--intel-gray-50);
+  color: var(--intel-gray-900);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Micro-interactions and Loading States */
+.intel-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: var(--intel-gradient);
+  color: var(--intel-white);
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+.intel-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+.intel-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design - Mobile First */
+@media (max-width: 768px) {
+  .intel-container {
+    padding: 0 1rem;
+  }
+  
+  .intel-header {
+    padding: 1.5rem 0;
+  }
+  
+  .intel-header-content {
+    padding: 0 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .intel-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .intel-card {
+    padding: 1.5rem;
+  }
+  
+  .intel-metric {
+    padding: 1.5rem;
+  }
+  
+  .intel-metric-value {
+    font-size: 2rem;
+  }
+  
+  .intel-metrics {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .intel-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .intel-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .intel-container {
+    padding: 0 0.75rem;
+  }
+  
+  .intel-card {
+    padding: 1rem;
+  }
+  
+  .intel-metric {
+    padding: 1rem;
+  }
+  
+  .intel-header-content {
+    padding: 0 0.75rem;
+  }
+}
+
+/* Mobile Navigation Styles */
+.mobile-header {
+  background: var(--intel-white);
+  border-bottom: 1px solid var(--intel-gray-200);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.mobile-menu-button {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--intel-gray-50);
+  border: 1px solid var(--intel-gray-200);
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-button:hover {
+  background: var(--intel-gray-100);
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20rem;
+  height: 100vh;
+  background: var(--intel-white);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  overflow-y: auto;
+}
+
+.mobile-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  color: var(--intel-gray-700);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid var(--intel-gray-100);
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-item:hover {
+  background: var(--intel-gray-50);
+  color: var(--intel-blue);
+}
+
+.mobile-menu-item.active {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  color: var(--intel-blue);
+  font-weight: 600;
+}
+
+.mobile-badge {
+  background: var(--intel-orange);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.mobile-fab {
+  position: fixed;
+  bottom: 5rem;
+  right: 1rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: var(--intel-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  z-index: 20;
+  transition: all 0.3s ease;
+}
+
+.mobile-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--intel-white);
+  border-top: 1px solid var(--intel-gray-200);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 30;
+}
+
+.mobile-bottom-nav-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.75rem 0;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-item:hover {
+  background: var(--intel-gray-50);
+}
+
+.mobile-nav-item.active {
+  background: var(--intel-gray-50);
+}
+
+/* Fix data display issues */
+.intel-metric-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--intel-gray-900);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+
+.intel-metric-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--intel-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+/* Ensure proper spacing for metrics */
+.intel-metric {
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.intel-metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}

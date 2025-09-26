@@ -267,5 +267,5 @@ export class NotionSocialMediaSync {
 // Export singleton instance
 export const notionSync = new NotionSocialMediaSync(
   process.env.NOTION_API_KEY || '',
-  '2660a35b21ed8162baeaf8afbf100b2e' // Your CONTENT & BRAND page ID
+  (process.env.NOTION_CONTENT_PAGE_ID || '2660a35b21ed8162baeaf8afbf100b2e')
 );

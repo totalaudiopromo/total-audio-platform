@@ -50,10 +50,22 @@ export async function GET() {
   try {
     console.log('Fetching real ConvertKit subscribers...');
     
-    const CONVERTKIT_API_SECRET = process.env.CONVERTKIT_API_SECRET || 'BMiOCi6hPDA73O1pnwXh7_bXEBi5zMzf7Tgk5rP_trI';
+    const CONVERTKIT_API_SECRET = process.env.CONVERTKIT_API_SECRET;
     
     if (!CONVERTKIT_API_SECRET) {
-      throw new Error('ConvertKit API secret not configured');
+      return NextResponse.json({
+        totalUsers: 0,
+        activeUsers: 0,
+        newUsersToday: 0,
+        users: [],
+        analytics: {
+          topFeatures: [],
+          deviceBreakdown: {},
+          appUsage: {},
+          engagementMetrics: { avgSessionTime: 0, avgContactsPerUser: 0, conversionRate: 0 }
+        },
+        source: 'convertkit-missing-secret'
+      });
     }
 
     // First, try to get real user location data from our tracking system
@@ -113,15 +125,8 @@ export async function GET() {
         const now = new Date();
         const minutesAgo = Math.floor((now.getTime() - createdDate.getTime()) / (1000 * 60));
         
-        // Simulate realistic last seen times based on signup date
-        let lastSeenOffset;
-        if (minutesAgo < 60) {
-          lastSeenOffset = Math.floor(Math.random() * 10); // 0-10 mins ago
-        } else if (minutesAgo < 1440) { // less than 24 hours
-          lastSeenOffset = Math.floor(Math.random() * 60); // 0-60 mins ago  
-        } else {
-          lastSeenOffset = Math.floor(Math.random() * 180); // 0-3 hours ago
-        }
+        // Estimate last seen conservatively from created date (no random)
+        const lastSeenOffset = Math.min(minutesAgo, 180);
 
         const lastSeen = new Date(now.getTime() - lastSeenOffset * 60 * 1000);
         
@@ -135,25 +140,16 @@ export async function GET() {
           status = 'offline';
         }
 
-        // Determine app based on email domain or default to audio-intel
-        let app: 'audio-intel' | 'playlist-pulse' | 'command-centre' | 'web' = 'audio-intel';
-        if (sub.email_address.includes('@totalaudiopromo.com')) {
-          app = 'command-centre';
-        } else if (index % 4 === 1) {
-          app = 'playlist-pulse';
-        } else if (index % 4 === 2) {
-          app = 'web';
-        }
+        // Determine app based on email domain (no randomness)
+        const app: 'audio-intel' | 'playlist-pulse' | 'command-centre' | 'web' =
+          sub.email_address.includes('@totalaudiopromo.com') ? 'command-centre' : 'audio-intel';
 
         // Generate realistic engagement metrics based on how long they've been signed up
         const daysSignedUp = Math.max(1, Math.floor(minutesAgo / 1440));
-        const baseEngagement = Math.floor(Math.random() * 50) + 10; // 10-60 base
-        const timeMultiplier = Math.min(daysSignedUp * 0.5, 10); // Max 10x multiplier
-
-        const contactsEnriched = Math.floor(baseEngagement * timeMultiplier);
-        const emailsValidated = Math.floor(contactsEnriched * (0.6 + Math.random() * 0.4));
-        const exportsGenerated = Math.floor(contactsEnriched / 50) + Math.floor(Math.random() * 5);
-        const timeSpent = Math.floor(contactsEnriched / 10) + Math.floor(Math.random() * 30);
+        const contactsEnriched = 0;
+        const emailsValidated = 0;
+        const exportsGenerated = 0;
+        const timeSpent = 0;
 
         // Check if we have real location data for this user
         const realLocation = realLocationData.get(sub.email_address);
@@ -168,8 +164,8 @@ export async function GET() {
           country: realLocation.country,
           city: realLocation.city,
           code: realLocation.countryCode,
-          lat: realLocation.coordinates.lat,
-          lng: realLocation.coordinates.lng
+          lat: Number(realLocation.coordinates.lat),
+          lng: Number(realLocation.coordinates.lng)
         };
         console.log(`Using real location for ${sub.email_address}: ${realLocation.city}, ${realLocation.country}`);
 
@@ -177,15 +173,13 @@ export async function GET() {
           id: sub.id.toString(),
           email: sub.email_address,
           name: [sub.first_name, sub.last_name].filter(Boolean).join(' ') || undefined,
-          app,
+          app: app as 'audio-intel' | 'playlist-pulse' | 'command-centre' | 'web',
           status,
           firstVisit: sub.created_at,
           lastSeen: lastSeen.toISOString(),
           sessionCount: Math.floor(daysSignedUp * 1.5) + Math.floor(Math.random() * 10) + 1,
           features: app === 'audio-intel' 
             ? ['contact-enrichment', 'email-validation', 'csv-export', 'magical-spreadsheet']
-            : app === 'playlist-pulse' 
-            ? ['playlist-search', 'curator-matching', 'campaign-tracking']
             : app === 'command-centre'
             ? ['agent-orchestration', 'business-analytics', 'user-management']
             : ['mobile-optimization', 'responsive-testing'],

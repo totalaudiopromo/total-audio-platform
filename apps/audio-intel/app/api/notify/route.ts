@@ -20,35 +20,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const resend = getResend();
-    if (!resend) {
-      return NextResponse.json(
-        { error: 'Email service not configured (RESEND_API_KEY missing)' },
-        { status: 503 }
-      );
-    }
-    // Send email using Resend
-    const { data, error } = await resend.emails.send({
-      from: 'Audio Intel <exports@totalaudiopromo.com>',
-      to: [to],
-      subject,
-      html,
-      attachments: attachments || undefined,
-    });
-
-    if (error) {
-      console.error('Resend error:', error);
-      return NextResponse.json(
-        { error: 'Failed to send email', details: error },
-        { status: 500 }
-      );
-    }
-
+    // Email service temporarily disabled
     return NextResponse.json({
-      success: true,
-      messageId: data?.id,
-      message: 'Email sent successfully'
-    });
+      success: false,
+      error: 'Email service is temporarily unavailable. Please contact support directly.'
+    }, { status: 503 });
 
   } catch (error) {
     console.error('Email API error:', error);

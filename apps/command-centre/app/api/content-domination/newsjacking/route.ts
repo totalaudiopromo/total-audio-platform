@@ -40,7 +40,7 @@ const getMockOpportunities = (): NewsjackingOpportunity[] => [
       },
       {
         platform: 'linkedin',
-        content: 'Industry Alert: Spotify\'s Algorithm Shift Changes Everything for Music Promotion\n\nThe streaming giant\'s new focus on engagement metrics over raw play counts represents a fundamental shift in how independent artists should approach playlist pitching.\n\nKey implications:\n• Contact quality > quantity\n• Relationship building is paramount\n• Data organization becomes critical\n\nThis is exactly why we built Audio Intel. When you can transform 10+ chaotic Excel files into organized contact databases in minutes, you can spend your time where it matters: building authentic relationships with curators and industry professionals.\n\nThe artists who adapt to this engagement-focused approach will dominate 2024 and beyond.',
+        content: 'Industry Alert: Spotify\'s Algorithm Shift Changes Everything for Music Promotion\n\nThe streaming giant\'s new focus on engagement metrics over raw play counts represents a fundamental shift in how independent artists should approach playlist pitching.\n\nKey implications:\n• Contact quality > quantity\n• Relationship building is paramount\n• Data organization becomes critical\n\nThis is exactly why we built Audio Intel. When you can transform 10+ chaotic Excel files into organized contact databases in minutes, you can spend your time where it matters: building authentic relationships with curators and industry professionals.\n\nThe artists who adapt to this engagement-focused approach will dominate 2025 and beyond.',
         hashtags: ['MusicIndustry', 'SpotifyPlaylist', 'AudioIntel', 'MusicPromotion'],
         estimatedReach: 8000
       }

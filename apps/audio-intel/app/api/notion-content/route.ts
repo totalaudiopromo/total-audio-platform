@@ -242,20 +242,18 @@ Stop competing. Start executing.
 
 export async function GET(request: NextRequest) {
   try {
-    console.log('📱 Getting authentic social media content...');
+    console.log('📱 Content API requested...');
     
+    // Notion integration temporarily disabled
     return NextResponse.json({
-      success: true,
-      message: 'Authentic content loaded successfully',
-      posts: AUTHENTIC_CONTENT,
-      totalPosts: AUTHENTIC_CONTENT.length,
-      loadedAt: new Date().toISOString()
-    });
+      success: false,
+      error: 'Content management is temporarily unavailable. Please use other features.'
+    }, { status: 503 });
 
   } catch (error) {
-    console.error('❌ Failed to load authentic content:', error);
+    console.error('❌ Failed to load content:', error);
     return NextResponse.json({
-      error: 'Failed to load authentic content',
+      error: 'Failed to load content',
       details: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 });
   }
