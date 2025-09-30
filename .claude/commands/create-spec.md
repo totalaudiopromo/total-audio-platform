@@ -1,6 +1,9 @@
-# Create Spec
-
-Create a detailed spec for a new feature with technical specifications and task breakdown
-
-Refer to the instructions located in this file:
-@.agent-os/instructions/core/create-spec.md
+---
+name: create-spec
+description: Generate a detailed feature specification with technical requirements and acceptance criteria.
+arguments:
+  - name: feature
+    description: Short description of the feature or improvement to plan.
+    required: true
+---
+@include .agent-os/instructions/core/create-spec.md

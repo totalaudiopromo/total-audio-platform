@@ -14,7 +14,7 @@ The audit script analyzes your Airtable contact data to identify:
 
 ### Step 1: Get Your Airtable Credentials
 
-1. **API Key**: Go to https://airtable.com/account and create an API key
+1. **API Key**: Go to <https://airtable.com/account> and create an API key
 2. **Base ID**: Find your base ID in the URL: `https://airtable.com/appXXXXXXXXXXXXXX`
 3. **Table IDs**: Find table IDs in the URL when viewing a table: `https://airtable.com/appXXXXXXXXXXXXXX/tblYYYYYYYYYYYYYY`
 
@@ -46,34 +46,40 @@ node test-audit.js
 ## 📋 What You'll Get
 
 ### Summary Report
+
 - Total number of records analyzed
 - Count of duplicates found
 - Count of incomplete records
 - Count of inconsistent records
 
 ### Field Analysis
+
 - Data coverage percentage for each field
 - Number of unique values
 - Number of missing values
 - Sample data from each field
 
 ### Duplicate Detection
+
 - Records with identical email addresses
 - Records with same names but different emails
 - Cross-references between duplicate records
 
 ### Completeness Analysis
+
 - Records missing required fields (Email, Name)
 - Records missing important fields (Company, Role, Genre, Location)
 - Completeness score for each record
 
 ### Consistency Analysis
+
 - Invalid email formats
 - Inconsistent phone number formats
 - Unexpected data types in fields
 - Formatting inconsistencies
 
 ### Recommendations
+
 - Specific actions to improve data quality
 - Validation rules to implement
 - Process improvements for data entry

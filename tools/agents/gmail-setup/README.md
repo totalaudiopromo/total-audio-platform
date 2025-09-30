@@ -5,10 +5,12 @@
 Your Gmail organisation system is ready! Just need to set colours manually:
 
 ### 1. Open Gmail Settings
-- Go to https://mail.google.com
+
+- Go to <https://mail.google.com>
 - Click gear icon (⚙️) → "See all settings" → "Labels" tab
 
 ### 2. Set These Colours
+
 - **Active Campaigns** → 🟢 Green
 - **Needs Action** → 🔵 Blue
 - **Station Feedback** → 🟠 Orange
@@ -17,7 +19,9 @@ Your Gmail organisation system is ready! Just need to set colours manually:
 - **Agent** → 🟣 Purple
 
 ### 3. Done!
+
 Your emails will now auto-organise by colour:
+
 - Green = current work
 - Blue = needs your response
 - Orange = station replies

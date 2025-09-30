@@ -12,9 +12,10 @@ const path = require('path');
 
 class StationDiscovery {
   constructor() {
-    this.claudeApiKey = process.env.CLAUDE_API_KEY;
+    this.claudeApiKey = process.env.ANTHROPIC_API_KEY || process.env.CLAUDE_API_KEY;
     this.firecrawlApiKey = process.env.FIRECRAWL_API_KEY;
     this.claudeBaseUrl = 'https://api.anthropic.com/v1/messages';
+    this.anthropicModel = process.env.ANTHROPIC_MODEL;
     this.firecrawlBaseUrl = 'https://api.firecrawl.dev/v1';
     
     // Discovery cache to avoid duplicate research
@@ -302,7 +303,7 @@ If any field is not available, use null. Be concise and accurate.`;
           'anthropic-version': '2023-06-01'
         },
         body: JSON.stringify({
-          model: 'claude-3-5-sonnet-20241022',
+          model: this.anthropicModel,
           max_tokens: 4000,
           messages: [{
             role: 'user',
@@ -312,7 +313,9 @@ If any field is not available, use null. Be concise and accurate.`;
       });
       
       if (!response.ok) {
-        throw new Error(`Claude API error: ${response.status}`);
+        const data = await response.json().catch(() => ({}));
+        const detail = data?.error?.message || data?.message || '';
+        throw new Error(`Claude API error: ${response.status}${detail ? ` - ${detail}` : ''}`);
       }
       
       const data = await response.json();

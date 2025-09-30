@@ -5,18 +5,21 @@ A comprehensive export solution for Audio Intel that provides one-click export c
 ## Features
 
 ### 🚀 One-Click Export
+
 - **Multiple Formats**: CSV, Excel, and PDF exports
 - **Batch Operations**: Export multiple data types simultaneously
 - **Professional Templates**: Agency-ready email templates
 - **White-Label Support**: Custom branding for agencies
 
 ### 📊 Export Types
+
 1. **Contact Exports**: Enriched contact intelligence with research data
 2. **Analytics Reports**: Performance metrics and insights
 3. **Search Results**: Curated music industry contacts
 4. **Batch Exports**: Multiple data types in one operation
 
 ### 📧 Email Delivery
+
 - **Automated Delivery**: Professional email templates
 - **Custom Messaging**: Personalized export emails
 - **Attachment Support**: Files delivered via email
@@ -55,6 +58,7 @@ const exportService = new ProfessionalExportService({
 ### ProfessionalExportService
 
 #### Constructor
+
 ```typescript
 new ProfessionalExportService(whiteLabelConfig?: {
   companyName?: string;
@@ -66,6 +70,7 @@ new ProfessionalExportService(whiteLabelConfig?: {
 #### Methods
 
 ##### exportContacts()
+
 ```typescript
 async exportContacts(
   contacts: ContactData[],
@@ -75,6 +80,7 @@ async exportContacts(
 ```
 
 ##### exportAnalytics()
+
 ```typescript
 async exportAnalytics(
   analyticsData: AnalyticsData,
@@ -84,6 +90,7 @@ async exportAnalytics(
 ```
 
 ##### exportSearchResults()
+
 ```typescript
 async exportSearchResults(
   searchData: SearchResultsData,
@@ -93,6 +100,7 @@ async exportSearchResults(
 ```
 
 ##### batchExport()
+
 ```typescript
 async batchExport(
   data: {
@@ -128,6 +136,7 @@ interface ExportOptions {
 ## Data Interfaces
 
 ### ContactData
+
 ```typescript
 interface ContactData {
   name: string;
@@ -142,6 +151,7 @@ interface ContactData {
 ```
 
 ### AnalyticsData
+
 ```typescript
 interface AnalyticsData {
   totalContacts: number;
@@ -160,6 +170,7 @@ interface AnalyticsData {
 ```
 
 ### SearchResultsData
+
 ```typescript
 interface SearchResultsData {
   query: string;
@@ -200,6 +211,7 @@ The system includes three professional email templates:
 3. **Search Results Email**: For search result deliveries
 
 ### Template Features
+
 - Responsive design
 - Professional branding
 - Custom messaging support
@@ -209,18 +221,21 @@ The system includes three professional email templates:
 ## File Formats
 
 ### CSV Export
+
 - Comma-separated values
 - UTF-8 encoding
 - Proper escaping for special characters
 - All contact fields included
 
 ### Excel Export
+
 - Multiple worksheets for analytics
 - Formatted columns
 - Professional styling
 - Auto-sized columns
 
 ### PDF Export
+
 - Professional layout
 - Charts and tables
 - Branded headers and footers
@@ -247,6 +262,7 @@ Visit `/export-demo` to see the complete export system in action with sample dat
 ### White-Label Setup
 
 1. **Configure Branding**:
+
    ```typescript
    const whiteLabelConfig = {
      companyName: "Your Agency Name",
@@ -310,6 +326,7 @@ The export system includes comprehensive error handling:
 ### Debug Mode
 
 Enable debug logging by setting:
+
 ```typescript
 console.log('Export debug:', { data, options, result });
 ```

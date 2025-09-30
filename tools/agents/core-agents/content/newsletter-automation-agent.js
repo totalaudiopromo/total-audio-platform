@@ -42,8 +42,8 @@ class NewsletterAutomationAgent {
 
     // ConvertKit API configuration
     this.convertKitConfig = {
-      apiKey: process.env.CONVERTKIT_API_KEY || '5wx6QPvhunue-d760yZHIg',
-      apiSecret: process.env.CONVERTKIT_API_SECRET || 'BMiOCi6hPDA73O1pnwXh7_bXEBi5zMzf7Tgk5rP_trI',
+      apiKey: process.env.CONVERTKIT_API_KEY || 'PLACEHOLDER_CONVERTKIT_KEY',
+      apiSecret: process.env.CONVERTKIT_API_SECRET || 'PLACEHOLDER_CONVERTKIT_SECRET',
       weekendWarriorFormId: '8440957', // From beta signup form
       newsletterSequenceId: '2453581' // Main newsletter sequence
     };

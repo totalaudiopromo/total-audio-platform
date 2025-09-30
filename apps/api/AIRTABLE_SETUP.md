@@ -17,17 +17,20 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'your-actual-contacts-table-id-here';
 ## 🔑 How to Get Your Airtable Credentials
 
 ### API Key
-1. Go to https://airtable.com/account
+
+1. Go to <https://airtable.com/account>
 2. Click "API" in the left sidebar
 3. Click "Create new API key"
 4. Copy the generated key
 
 ### Base ID
+
 1. Open your Airtable base
 2. Look at the URL: `https://airtable.com/appXXXXXXXXXXXXXX`
 3. Copy the part after `/app/` (the X's)
 
 ### Table IDs
+
 1. Open a table in your base
 2. Look at the URL: `https://airtable.com/appXXXXXXXXXXXXXX/tblYYYYYYYYYYYYY`
 3. Copy the part after `/tbl/` (the Y's)

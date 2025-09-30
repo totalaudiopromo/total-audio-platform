@@ -17,13 +17,16 @@ Your Gmail is now automatically organised with a clean, colour-coded system desi
 ## How It Works
 
 ### Automatic Filtering
+
 - **New Campaign Assignment**: When you're CC'd on R4/R6 campaigns → Gets "Active Campaigns" + "Needs Action" labels
 - **Station Auto-Responses**: Out of office emails → Gets "Station Auto-Responses" label (hidden from main view)
 - **Real Station Feedback**: Genuine station responses → Gets "Station Feedback" label (marked important)
 - **Weekly Releases**: Team coordination → Gets "Agent" label
 
 ### Colour Coding
+
 Set these colours manually in Gmail settings:
+
 - Green: Active Campaigns
 - Blue: Needs Action
 - Orange: Station Feedback
@@ -33,12 +36,15 @@ Set these colours manually in Gmail settings:
 - Purple: Agent
 
 ### Daily Workflow
+
 1. **Morning**: Check blue labels (Needs Action) for new assignments
 2. **Throughout day**: Orange labels (Station Feedback) for station responses
 3. **Ongoing**: Green labels (Active Campaigns) show all your current work
 
 ### Radio Promo Agent Integration
+
 Your agent can now:
+
 - Find active campaigns: `gmail.searchActiveCampaigns()`
 - Find urgent tasks: `gmail.searchCampaignsNeedingAction()`
 - Find station responses: `gmail.searchStationFeedback()`
@@ -47,10 +53,12 @@ Your agent can now:
 ## Manual Setup Required
 
 ### Set Label Colours
+
 1. Go to Gmail Settings → Labels
 2. Set colours for each label as noted above
 
 ### Optional: Automatic Archiving
+
 Add these filters manually in Gmail Settings → Filters:
 
 1. **Auto-Complete Filter**:

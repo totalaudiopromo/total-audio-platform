@@ -39,6 +39,7 @@ node test-contact-enrichment.js
 ```
 
 This will:
+
 - Analyze your radio contacts (limited to 10 for testing)
 - Show what data would be extracted
 - Display a preview report
@@ -55,6 +56,7 @@ node test-contact-enrichment-live.js 100
 ```
 
 This will:
+
 - Scrape radio station websites
 - Extract contact information
 - Update your Airtable records
@@ -65,11 +67,13 @@ This will:
 For each UK radio station, the system extracts:
 
 ### Station Information
+
 - **Format**: Public Service (BBC) vs Commercial
 - **Genres**: Music genres played by the station
 - **Market**: National, Regional, or Local
 
 ### Contact Information
+
 - **DJ Names**: Presenter names and shows
 - **Submission Guidelines**: How to submit music
 - **Contact Forms**: Submission portals and forms
@@ -92,30 +96,36 @@ Additional: BBC Music team contacts
 ## 🏢 Supported UK Radio Stations
 
 ### BBC National Stations
+
 - BBC Radio 1, 2, 3, 4, 6 Music
 - BBC Radio Scotland, Wales, Ulster
 - BBC Local Radio stations
 
 ### Commercial Major Networks
+
 - Capital FM, Heart, Kiss FM
 - Smooth Radio, Magic
 - LBC, Virgin Radio
 
 ### Regional Commercial Stations
+
 - Key 103, BRMB, Radio City
 - Various local commercial stations
 
 ## ⚙️ Configuration Options
 
 ### Rate Limiting
+
 The system includes built-in rate limiting (1 second between requests) to avoid overwhelming websites.
 
 ### Error Handling
+
 - Graceful handling of failed scrapes
 - Detailed error logging
 - Continues processing even if some stations fail
 
 ### Batch Processing
+
 - Processes records in batches of 10 (Airtable limit)
 - Progress reporting for large datasets
 
@@ -134,21 +144,27 @@ Based on your 210+ radio contacts:
 ### Common Issues
 
 1. **Firecrawl API Key Missing**
+
    ```
    ❌ ERROR: Please set your FIRECRAWL_API_KEY environment variable
    ```
-   Solution: Get API key from https://firecrawl.dev
+
+   Solution: Get API key from <https://firecrawl.dev>
 
 2. **Rate Limiting**
+
    ```
    Firecrawl API error: 429 Too Many Requests
    ```
+
    Solution: The system includes rate limiting, but you can increase delays if needed
 
 3. **Unknown Domains**
+
    ```
    Skipping example.com - no known radio station mapping
    ```
+
    Solution: Add new station mappings to the `ukRadioStations` array
 
 ### Adding New Stations
@@ -175,16 +191,19 @@ To add support for new radio stations, edit `src/services/airtableContactEnrichm
 ## 🎯 Use Cases
 
 ### Music Promotion
+
 - Target specific genres and formats
 - Follow submission guidelines
 - Contact the right DJs and shows
 
 ### Campaign Planning
+
 - Identify BBC vs Commercial opportunities
 - Plan regional vs national campaigns
 - Use social media for additional outreach
 
 ### Contact Management
+
 - Enhanced Airtable records
 - Better segmentation and filtering
 - Improved outreach success rates

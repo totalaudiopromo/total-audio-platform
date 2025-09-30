@@ -7,11 +7,13 @@ This guide provides comprehensive instructions for integrating the texture pack 
 ## Available Textures
 
 ### Paper Textures (Magazine Textures)
+
 - **Primary Use**: Cards, sections, hero areas
 - **Files**: `DRS_MagazineTexture_8K_*.jpg` (14 variants)
 - **Characteristics**: High-resolution paper/grain textures with organic feel
 
 ### Luma Gradients
+
 - **Primary Use**: Subtle overlays, depth effects, backgrounds
 - **Files**: `DRS_4K_Luma Gradient_*.jpg` (35 variants)
 - **Characteristics**: Soft gradient overlays for depth and atmosphere
@@ -19,6 +21,7 @@ This guide provides comprehensive instructions for integrating the texture pack 
 ## CSS Classes Available
 
 ### Base Texture Classes
+
 ```css
 .texture-base          /* Base texture container */
 .texture-overlay       /* Overlay blend mode */
@@ -29,6 +32,7 @@ This guide provides comprehensive instructions for integrating the texture pack 
 ```
 
 ### Paper Texture Classes
+
 ```css
 .texture-paper         /* Primary paper texture */
 .texture-paper-2       /* Secondary paper texture */
@@ -37,6 +41,7 @@ This guide provides comprehensive instructions for integrating the texture pack 
 ```
 
 ### Grain Texture Classes
+
 ```css
 .texture-grain         /* Primary grain texture */
 .texture-grain-2       /* Secondary grain texture */
@@ -44,6 +49,7 @@ This guide provides comprehensive instructions for integrating the texture pack 
 ```
 
 ### Luma Gradient Classes
+
 ```css
 .texture-luma          /* Primary luma gradient */
 .texture-luma-2        /* Secondary luma gradient */
@@ -51,6 +57,7 @@ This guide provides comprehensive instructions for integrating the texture pack 
 ```
 
 ### Component Classes
+
 ```css
 .texture-card          /* Basic textured card */
 .texture-pricing-card  /* Pricing card with rotation */
@@ -64,6 +71,7 @@ This guide provides comprehensive instructions for integrating the texture pack 
 ## React Components
 
 ### TextureCard Component
+
 ```tsx
 import { TextureCard, TexturePricingCard, TextureFeatureCard } from '@/components/ui/texture-card';
 
@@ -87,6 +95,7 @@ import { TextureCard, TexturePricingCard, TextureFeatureCard } from '@/component
 ```
 
 ### TextureButton Component
+
 ```tsx
 import { TextureButton, TextureGradientButton } from '@/components/ui/texture-button';
 
@@ -111,6 +120,7 @@ import { TextureButton, TextureGradientButton } from '@/components/ui/texture-bu
 ```
 
 ### TextureSection Component
+
 ```tsx
 import { 
   TextureSection, 
@@ -134,6 +144,7 @@ import {
 ## Implementation Examples
 
 ### 1. Hero Section with Texture
+
 ```tsx
 import { TextureHeroSection, TextureContainer } from '@/components/ui/texture-section';
 import { TextureGradientButton } from '@/components/ui/texture-button';
@@ -173,6 +184,7 @@ export default function HeroSection() {
 ```
 
 ### 2. Pricing Cards with Staggered Animation
+
 ```tsx
 import { TexturePricingCard } from '@/components/ui/texture-card';
 import { TextureGrid } from '@/components/ui/texture-section';
@@ -234,6 +246,7 @@ export default function PricingSection() {
 ```
 
 ### 3. Feature Cards with Organic Feel
+
 ```tsx
 import { TextureFeatureCard } from '@/components/ui/texture-card';
 import { TextureGrid } from '@/components/ui/texture-section';
@@ -294,6 +307,7 @@ export default function FeaturesSection() {
 ## Performance Optimizations
 
 ### 1. Texture Loading Strategy
+
 ```tsx
 // Use intersection observer for lazy loading
 import { useEffect, useRef, useState } from 'react';
@@ -329,6 +343,7 @@ export function LazyTextureCard({ texture, children, ...props }) {
 ```
 
 ### 2. Mobile Optimizations
+
 ```css
 /* Mobile-specific texture optimizations */
 @media (max-width: 768px) {
@@ -347,6 +362,7 @@ export function LazyTextureCard({ texture, children, ...props }) {
 ```
 
 ### 3. Accessibility Considerations
+
 ```css
 /* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
@@ -363,24 +379,28 @@ export function LazyTextureCard({ texture, children, ...props }) {
 ## Best Practices
 
 ### 1. Texture Selection
+
 - **Hero sections**: Use paper textures with low opacity (0.05-0.08)
 - **Cards**: Use grain textures for tactile feel
 - **Buttons**: Use subtle grain overlays
 - **Backgrounds**: Use luma gradients for depth
 
 ### 2. Animation Timing
+
 - **Entrance animations**: 0.6-0.8s duration
 - **Hover effects**: 0.2-0.3s duration
 - **Stagger delays**: 100ms intervals
 - **Continuous animations**: 3-8s cycles
 
 ### 3. Rotation Guidelines
+
 - **Pricing cards**: -1° to 1° rotation
 - **Feature cards**: 0.5° rotation on hover
 - **Hero elements**: No rotation
 - **Mobile**: Disable rotations
 
 ### 4. Performance Tips
+
 - Use `will-change` sparingly
 - Implement lazy loading for textures
 - Optimize texture sizes for mobile

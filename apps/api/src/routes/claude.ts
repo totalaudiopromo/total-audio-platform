@@ -14,8 +14,8 @@ router.post('/', async (req, res) => {
     }
 
     const config = {
-      apiKey: process.env.CLAUDE_API_KEY || '',
-      model: 'claude-3-sonnet-20240229',
+      apiKey: process.env.ANTHROPIC_API_KEY || process.env.CLAUDE_API_KEY || '',
+      model: process.env.ANTHROPIC_MODEL || '',
     };
 
     if (!config.apiKey) {

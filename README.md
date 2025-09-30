@@ -1,222 +1,82 @@
-# Total Audio Promo - Project Organization
+# 🎵 Total Audio Platform
 
-This repository contains a comprehensive music promotion and audio intelligence platform with multiple applications and services.
+> Audio Intel contact enrichment SaaS - Customer acquisition phase
 
-## 📁 Project Structure
+## 🎯 Quick Start
 
-### 🚀 Applications 
-All applications are organized in the `apps/` directory:
+**Daily workflow:** `code WEEKLY_FOCUS.md` - Your main priorities and progress tracker
 
-#### Web Applications (`apps/`)
-- **audio-intel/** - Audio intelligence platform (intel.totalaudiopromo.com)
-- **web/** - Main landing page (totalaudiopromo.com) 
-- **playlist-pulse/** - Playlist management platform (pulse.totalaudiopromo.com)
-- **command-centre/** - Internal business dashboard (command.totalaudiopromo.com)
+**Business context:** `code AUDIO_INTEL_CONTEXT.md` - Complete product and customer info
 
-#### Backend Services (`apps/`)
-- **api/** - Main backend API and database services
+**Quick capture:** `code BUSINESS_NOTES.md` - Running log of ideas and feedback
 
-#### Mobile Applications (`apps/`)
-- **mobile/** - React Native mobile application
+## 🚀 Current Focus
 
-#### Additional Tools (`apps/`)
-- **seo-tool/** - SEO optimization tools
-- **voice-echo/** - Voice-based content generation
+- **Phase**: Customer Acquisition (Technical foundation complete)
+- **Target**: First £500/month by November 2025
+- **Priority**: Radio promoter outreach (85% conversion rate)
+- **Product**: Audio Intel - "15 hours → 15 minutes" contact research
 
-### 🌐 **Deployment Status**
+## 📁 Directory Structure
 
-#### Production Domains
-- ✅ **intel.totalaudiopromo.com** - Audio Intel (deployed)
-- 🚧 **totalaudiopromo.com** - Main landing page (needs custom domain setup)
-- 🚧 **pulse.totalaudiopromo.com** - Playlist Pulse (needs deployment)
-- 🚧 **command.totalaudiopromo.com** - Command Centre (needs custom domain setup)
-
-#### Vercel Projects
-- **audio-intel** - intel.totalaudiopromo.com
-- **web** - Main landing page with mobile optimizations
-- **command-centre** - Internal dashboard with mobile optimizations
-
-### 📚 Documentation (`docs/`)
-- **setup/** - Setup and installation guides
-- **architecture/** - System architecture documentation
-- **deployment/** - Deployment guides
-
-### ⚙️ Configuration (`config/`)
-- Docker compose files
-- Environment templates
-- TypeScript configurations
-- Build configurations
-
-### 🧪 Testing (`tests/`)
-- Test files and configurations
-- Test results and reports
-
-### 🏗️ Infrastructure (`infrastructure/`)
-- **deployment/** - Deployment configurations and scripts
-
-### 📊 Data (`data/`)
-- CSV files and data exports
-- Sample data and test datasets
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js (v18+)
-- Docker
-- Git
-
-### Development Setup
-1. Clone the repository
-2. Install all dependencies using the monorepo setup:
-   ```bash
-   npm install
-   ```
-
-3. Set up environment variables:
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
-   ```
-
-4. Start development servers:
-   ```bash
-   # Start all apps
-   npm run dev
-   
-   # Or start individual apps:
-   npm run dev:audio-intel      # Audio Intel platform
-   npm run dev:web             # Main landing page
-   npm run dev:playlist-pulse  # Playlist Pulse platform
-   npm run dev:command-centre  # Command Centre dashboard
-   npm run dev:backend         # API backend
-   ```
-
-## 🚀 Deployment
-
-### Vercel Deployment Commands
-```bash
-# Deploy individual apps to production
-cd apps/audio-intel && vercel --prod
-cd apps/web && vercel --prod  
-cd apps/playlist-pulse && vercel --prod
-cd apps/command-centre && vercel --prod
+```
+total-audio-platform/
+├── WEEKLY_FOCUS.md              # Daily priorities and progress
+├── AUDIO_INTEL_CONTEXT.md       # Complete business context
+├── BUSINESS_NOTES.md            # Running log and ideas
+│
+├── apps/                        # Active applications
+│   ├── audio-intel/            # Primary revenue app
+│   ├── command-centre/         # Personal dashboard
+│   └── web/                    # Marketing site
+│
+├── tools/                       # Development tools
+│   ├── agents/                 # AI agents (31+ active)
+│   ├── scripts/                # Utility scripts
+│   └── workflows/              # Automation
+│
+├── docs/                        # Documentation
+│   ├── setup/                  # Setup guides
+│   └── reference/              # Technical reference
+│
+└── archive/                     # Historical files
 ```
 
-### Domain Configuration
-Each app requires custom domain setup in Vercel dashboard:
-- **audio-intel** → intel.totalaudiopromo.com (✅ configured)
-- **web** → totalaudiopromo.com (🚧 needs setup)
-- **playlist-pulse** → pulse.totalaudiopromo.com (🚧 needs setup)
-- **command-centre** → command.totalaudiopromo.com (🚧 needs setup)
+## 🔧 Development Commands
 
-### Mobile Optimizations
-All apps include comprehensive mobile optimizations:
-- Touch-friendly UI (44px minimum touch targets)
-- Responsive grid layouts
-- Mobile-first CSS with proper media queries
-- Optimized typography hierarchy for small screens
-- Prevention of horizontal scrolling
-
-### Build and Test Commands
 ```bash
-# Build all apps
-npm run build
+# Audio Intel (Primary)
+npm run dev:audio-intel         # Development server
+npm run test:mobile             # Mobile testing
+npm run build:audio-intel       # Production build
 
-# Run tests
-npm run test
+# Newsletter System
+npm run dev:newsletter          # Newsletter dashboard
 
-# Type checking
-npm run typecheck
-
-# Linting
-npm run lint
+# Testing
+npm run test:audio-intel        # Full test suite
+npm run typecheck:audio-intel   # Type checking
 ```
 
-## 🔧 Development Workflow
+## 🤖 AI Agents & Automation
 
-### Adding New Features
-1. Create feature branch from main
-2. Make changes in appropriate project directory
-3. Test thoroughly
-4. Submit pull request
+- **Agent OS**: Integrated development workflows (`/.agent-os/`)
+- **31+ Active Agents**: Customer acquisition and development support (`/tools/agents/`)
+- **MCP Integration**: 14+ servers for workflow automation
 
-### Project-Specific Development
-- **audio-intel-live**: Audio analysis and intelligence features
-- **frontend**: Main web application UI/UX
-- **playlist-pulse-live**: Playlist management features
-- **backend**: API development and database management
-- **mobile-app**: Mobile application development
+## 📊 Business Status
 
-## 📝 Documentation
+- **Customers**: 0 paying → Target: 1 by October 2025
+- **Proven Success**: 100% contact enrichment (BBC Radio 1, Spotify)
+- **Mobile Ready**: 21 UX issues resolved, professional experience
+- **Revenue Model**: FREE/PRO(£19)/AGENCY(£79) validated pricing
 
-- **Setup Guides**: `docs/setup/`
-- **Architecture**: `docs/architecture/`
-- **Deployment**: `docs/deployment/`
+## 🎯 Customer Segments
 
-## 🧪 Testing
-
-All test files are located in `tests/` directory:
-- Unit tests
-- Integration tests
-- E2E tests
-- Test results and reports
-
-## 🚀 Deployment
-
-Deployment configurations are in `infrastructure/deployment/`:
-- Docker configurations
-- CI/CD pipelines
-- Environment setups
-
-## 📊 Monitoring & Logs
-
-Logs are stored in `logs/` directory:
-- Application logs
-- Error logs
-- Performance metrics
-
-## 🤝 Contributing
-
-1. Follow the project structure
-2. Add tests for new features
-3. Update documentation
-4. Follow coding standards
-
-## 📄 License
-
-[Add your license information here]
+1. **Radio Promoters** - 85% conversion (highest priority)
+2. **Solo Artists** - 60% conversion
+3. **PR Agencies** - 70% conversion
 
 ---
 
-**Note**: This structure is designed for easy navigation and development. Each project maintains its own dependencies and configurations while sharing common utilities and documentation. 
-
-## WARM API quick test and DNS flush
-
-If the WARM API host doesn’t resolve or auth fails unexpectedly:
-
-1) Flush macOS DNS cache and retry
-
-```bash
-sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
-```
-
-2) Test reachability (POST-only route will 404/400 on HEAD/GET, that’s fine):
-
-```bash
-curl -i https://public-api.warmmusic.net/api/v1/auth/exchange
-```
-
-3) Auth test via Node
-
-```bash
-export WARM_API_EMAIL='promo@totalaudiopromo.com'
-export WARM_API_PASSWORD='<password>'
-export WARM_API_BASE_URL='https://public-api.warmmusic.net/api/v1'
-node tools/agents/radio-promo/test-warm-auth.js
-```
-
-4) Plays sample (auth + GET /plays):
-
-```bash
-node tools/agents/radio-promo/test-warm-plays.js
-```
+**Built by Chris Schofield** | [Audio Intel](https://intel.totalaudiopromo.com) | Customer acquisition focused

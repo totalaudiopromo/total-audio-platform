@@ -49,6 +49,9 @@
     "agents:health": "node tools/agents/orchestrator.js health",
     "agents:workflows": "node tools/agents/orchestrator.js workflows",
     "agents:maintenance": "node tools/agents/orchestrator.js maintenance",
+    "agents:discord": "node tools/agents/radio-promo/scripts/discord-ai-agent.js",
+    "agents:discord:copilot": "node tools/agents/radio-promo/scripts/discord-copilot.js",
+    "agents:discord:test": "node tools/agents/radio-promo/scripts/test-discord-bot.js",
     "agents:music-tech": "node tools/agents/music-tech-agent.js",
     "agents:music-analyze": "node tools/agents/music-tech-agent.js analyze",
     "agents:music-search": "node tools/agents/music-tech-agent.js search",
@@ -113,7 +116,10 @@
   "author": "Total Audio Promo",
   "license": "UNLICENSED",
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.65.0",
+    "@google-cloud/local-auth": "^3.0.1",
     "@headlessui/react": "^2.2.5",
+    "@modelcontextprotocol/sdk": "^1.18.2",
     "@next/third-parties": "^15.4.4",
     "@notionhq/client": "^5.0.0",
     "@prisma/client": "^5.22.0",
@@ -121,9 +127,12 @@
     "axios": "^1.10.0",
     "cheerio": "^1.1.2",
     "csv-parser": "^3.2.0",
+    "discord.js": "^14.22.1",
     "framer-motion": "^12.23.12",
+    "googleapis": "^161.0.0",
     "rss-parser": "^3.13.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "youtube-transcript": "^1.2.1"
   }
 }

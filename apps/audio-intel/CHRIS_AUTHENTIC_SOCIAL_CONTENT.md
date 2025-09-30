@@ -1,6 +1,7 @@
 # Chris Schofield - Authentic Social Media Content
 
 ## Your Voice & Tone
+
 - Direct, no-nonsense communication
 - Real experience from 5+ years in music PR
 - Honest about the struggles indie artists face
@@ -11,6 +12,7 @@
 ## Twitter Content (Your Voice)
 
 ### Thread 1: The Real Problem
+
 ```
 After 5 years promoting music for indie artists, I was still spending 15+ hours every week researching radio contacts.
 
@@ -41,6 +43,7 @@ Comment "BETA" if you want to try it.
 ```
 
 ### Thread 2: Real Results
+
 ```
 I just tested Audio Intel on 5 real radio contacts.
 
@@ -63,6 +66,7 @@ Comment "BETA" for free access.
 ```
 
 ### Single Post 1: The Time Problem
+
 ```
 Most indie artists waste 15+ hours weekly on contact research.
 
@@ -76,6 +80,7 @@ Stop wasting your weekends on research.
 ```
 
 ### Single Post 2: The Cost Problem
+
 ```
 US tools like Muck Rack cost £200-500+ per month.
 
@@ -91,6 +96,7 @@ The music industry needs tools that work for independent artists.
 ## LinkedIn Content (Your Voice)
 
 ### Post 1: The Industry Problem
+
 ```
 The Hidden Cost of Manual Contact Research in Music Promotion
 
@@ -130,6 +136,7 @@ If you're tired of wasting time on manual research, give it a try: intel.totalau
 ```
 
 ### Post 2: The Pricing Problem
+
 ```
 Why I Built Audio Intel Instead of Using Existing Tools
 
@@ -160,6 +167,7 @@ Built by someone who actually does music promotion, for people who actually do m
 ## Blue Sky Content (Your Voice)
 
 ### Post 1: The Struggle
+
 ```
 Music industry professionals: What's your biggest time-waster in promotion?
 
@@ -182,6 +190,7 @@ What's your experience with contact research?
 ```
 
 ### Post 2: The Solution
+
 ```
 After 5 years in music PR, I was still spending 15+ hours weekly on contact research.
 
@@ -201,6 +210,7 @@ The music industry needs better tools.
 ## Reddit Content (Your Voice)
 
 ### r/WeAreTheMusicMakers Post
+
 ```
 Title: "I automated my radio contact research and saved 15+ hours weekly - here's how"
 
@@ -233,12 +243,14 @@ What's your biggest challenge with music promotion? I'd love to help solve it.
 ## Key Messaging Points
 
 ### Your Story
+
 - 5+ years promoting music for indie artists and labels
 - Built Audio Intel after wasting thousands of hours on manual research
 - Also a music producer (sadact) so understand the artist struggle
 - Tired of overpriced US tools that don't work for UK indie artists
 
 ### The Problem
+
 - 15+ hours weekly wasted on contact research
 - 94% of research time spent on outdated information
 - Only 6% of contacts actually useful
@@ -246,6 +258,7 @@ What's your biggest challenge with music promotion? I'd love to help solve it.
 - US tools cost £200-500+ per month
 
 ### The Solution
+
 - Audio Intel: AI-powered contact enrichment
 - 94% accuracy, 2-minute processing
 - £19.99/month for Professional plan
@@ -253,6 +266,7 @@ What's your biggest challenge with music promotion? I'd love to help solve it.
 - Real results: 95% time reduction, 300% response rate increase
 
 ### Your Voice Characteristics
+
 - Direct, no-nonsense
 - Honest about struggles
 - Practical, actionable advice

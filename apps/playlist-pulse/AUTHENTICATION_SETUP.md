@@ -7,27 +7,29 @@ The authentication system is now working with demo credentials:
 - **Email:** `demo@example.com`
 - **Password:** `password123`
 
-You can test this at: http://localhost:3001/auth/signin
+You can test this at: <http://localhost:3001/auth/signin>
 
 ## 🔧 Current Status
 
 ### ✅ Working:
+
 - Email/password authentication with demo credentials
 - Beautiful sign-in page with glassmorphic design
 - Proper error handling and loading states
 - Session management
 
 ### ⚠️ OAuth Providers (Need Setup):
+
 - Google sign-in (requires OAuth credentials)
 - Apple sign-in (requires OAuth credentials)
 
 ## 🚀 How to Test Authentication
 
-1. **Visit the sign-in page:** http://localhost:3001/auth/signin
+1. **Visit the sign-in page:** <http://localhost:3001/auth/signin>
 2. **Use demo credentials:**
    - Email: `demo@example.com`
    - Password: `password123`
-3. **Test page:** http://localhost:3001/test-auth
+3. **Test page:** <http://localhost:3001/test-auth>
 
 ## 🔑 Setting Up OAuth Providers
 
@@ -82,11 +84,13 @@ APPLE_SECRET=your-apple-secret
 ## 🔍 Troubleshooting
 
 ### If demo credentials don't work:
+
 1. Check server is running: `npm run dev`
 2. Clear browser cache
 3. Check browser console for errors
 
 ### If OAuth doesn't work:
+
 1. Verify environment variables are set
 2. Check OAuth credentials are correct
 3. Ensure redirect URIs match exactly
@@ -94,8 +98,8 @@ APPLE_SECRET=your-apple-secret
 
 ## 📱 Testing
 
-- **Demo Login:** http://localhost:3001/auth/signin
-- **Test Page:** http://localhost:3001/test-auth
-- **Main App:** http://localhost:3001
+- **Demo Login:** <http://localhost:3001/auth/signin>
+- **Test Page:** <http://localhost:3001/test-auth>
+- **Main App:** <http://localhost:3001>
 
 The authentication system is now fully functional with demo credentials! 

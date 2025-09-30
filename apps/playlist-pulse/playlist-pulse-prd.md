@@ -1,6 +1,7 @@
 # Playlist Pulse - Complete Development Package for Cursor
 
 ## 🎯 Executive Summary
+
 **Product:** Playlist Pulse - AI-powered playlist rejection analyzer
 **URL:** pulse.totalaudiopromo.com
 **Purpose:** Help artists understand why they're getting rejected from playlists and find better matches
@@ -10,6 +11,7 @@
 ## 🏗️ Technical Architecture
 
 ### **Frontend Stack**
+
 - **Framework:** Next.js 14 with TypeScript
 - **Styling:** Tailwind CSS
 - **UI Components:** Lucide React icons, Custom components
@@ -19,6 +21,7 @@
 - **Charts:** Recharts for compatibility visualizations
 
 ### **Backend Stack**
+
 - **Runtime:** Node.js with Express
 - **Database:** PostgreSQL with Prisma ORM
 - **File Storage:** AWS S3 for audio files
@@ -27,6 +30,7 @@
 - **API:** RESTful with TypeScript
 
 ### **AI & Audio Analysis**
+
 - **Audio Analysis:** Web Audio API + Spotify Web API
 - **AI Processing:** OpenAI API for insights generation
 - **Playlist Data:** Spotify Web API + custom playlist database
@@ -168,6 +172,7 @@ enum SubscriptionStatus {
 ## 🎵 Audio Analysis Implementation
 
 ### **Core Audio Features to Extract**
+
 ```typescript
 // src/types/audio.ts
 export interface AudioFeatures {
@@ -214,6 +219,7 @@ export interface PlaylistMatch {
 ```
 
 ### **Audio Analysis Service**
+
 ```typescript
 // src/lib/audio-analysis.ts
 import { AudioFeatures } from '@/types/audio';
@@ -412,6 +418,7 @@ export class PlaylistMatchingService {
 ## 🚀 API Routes Implementation
 
 ### **File Upload Route**
+
 ```typescript
 // src/app/api/upload/route.ts
 import { NextRequest, NextResponse } from 'next/server';
@@ -487,6 +494,7 @@ async function queueAnalysisJob(analysisId: string): Promise<void> {
 ```
 
 ### **Analysis Route**
+
 ```typescript
 // src/app/api/analyze/route.ts
 import { NextRequest, NextResponse } from 'next/server';
@@ -555,6 +563,7 @@ export async function POST(request: NextRequest) {
 ## 🎨 Component Implementation
 
 ### **Main Upload Component**
+
 ```typescript
 // src/components/UploadSection.tsx
 'use client';
@@ -686,6 +695,7 @@ STRIPE_WEBHOOK_SECRET="whsec_..."
 ## 🚀 Deployment Instructions
 
 ### **1. Development Setup**
+
 ```bash
 # Clone and setup
 npm install
@@ -697,6 +707,7 @@ npm run dev
 ```
 
 ### **2. Production Deployment (Vercel)**
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -712,6 +723,7 @@ vercel --prod
 ## 📊 Success Metrics & Analytics
 
 ### **Key Metrics to Track**
+
 - **Upload Success Rate:** % of successful file uploads
 - **Analysis Completion Rate:** % of analyses that complete successfully
 - **User Engagement:** Time spent on results page
@@ -719,6 +731,7 @@ vercel --prod
 - **Playlist Match Accuracy:** User feedback on match quality
 
 ### **Analytics Implementation**
+
 ```typescript
 // src/lib/analytics.ts
 export const trackEvent = (event: string, properties: any) => {
@@ -738,12 +751,14 @@ trackEvent('playlist_clicked', { playlistName, compatibilityScore });
 ## 🔄 Integration with Total Audio Promo Ecosystem
 
 ### **Data Sharing**
+
 - Share playlist database with main platform
 - Cross-promote other mini tools
 - Unified user accounts and billing
 - Shared contact database from Audio Intel
 
 ### **Bundle Pricing Strategy**
+
 - Standalone: £19/month
 - With 2 other tools: £39/month (33% discount)
 - Full ecosystem: £89/month (50% discount)
@@ -770,6 +785,7 @@ This comprehensive package includes everything needed to build Playlist Pulse in
 ✅ **Integration guidelines**
 
 **Next Steps:**
+
 1. Create new Next.js project in Cursor
 2. Copy this specification as reference
 3. Implement components one by one

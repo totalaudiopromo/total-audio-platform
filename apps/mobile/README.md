@@ -21,21 +21,25 @@ A React Native mobile application for the Total Audio Promo platform, allowing a
 ### Installation
 
 1. Install dependencies:
+
    ```bash
    npm install
    ```
 
 2. For iOS (macOS only):
+
    ```bash
    cd ios && pod install && cd ..
    ```
 
 3. Start the Metro bundler:
+
    ```bash
    npm start
    ```
 
 4. Run on device/simulator:
+
    ```bash
    # For iOS
    npm run ios

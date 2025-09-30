@@ -5,9 +5,11 @@
 ### Properties:
 
 **Title** (Title)
+
 - The main title/headline for the post
 
 **Platform** (Select)
+
 - Twitter
 - LinkedIn  
 - Blue Sky
@@ -15,6 +17,7 @@
 - Instagram
 
 **Content Type** (Select)
+
 - Thread
 - Single Post
 - Article
@@ -22,27 +25,34 @@
 - Reply
 
 **Status** (Select)
+
 - Draft
 - Scheduled
 - Posted
 - Archived
 
 **Scheduled Date** (Date)
+
 - When to post this content
 
 **Content** (Text)
+
 - The actual post content
 
 **Engagement** (Number)
+
 - Track likes, comments, shares
 
 **Beta Signups** (Number)
+
 - Track how many beta signups this post generated
 
 **Notes** (Text)
+
 - Any additional notes or context
 
 **Tags** (Multi-select)
+
 - Case Study
 - Problem/Solution
 - Behind the Scenes
@@ -53,6 +63,7 @@
 ## Sample Content to Add:
 
 ### Row 1:
+
 - **Title**: "The Real Problem with Contact Research"
 - **Platform**: Twitter
 - **Content Type**: Thread
@@ -61,6 +72,7 @@
 - **Tags**: Problem/Solution, Industry Insight
 
 ### Row 2:
+
 - **Title**: "Real Results from Audio Intel Testing"
 - **Platform**: Twitter
 - **Content Type**: Thread
@@ -69,6 +81,7 @@
 - **Tags**: Case Study, Tool Feature
 
 ### Row 3:
+
 - **Title**: "The Hidden Cost of Manual Contact Research"
 - **Platform**: LinkedIn
 - **Content Type**: Article
@@ -77,6 +90,7 @@
 - **Tags**: Problem/Solution, Industry Insight
 
 ### Row 4:
+
 - **Title**: "Why I Built Audio Intel Instead of Using Existing Tools"
 - **Platform**: LinkedIn
 - **Content Type**: Article
@@ -85,6 +99,7 @@
 - **Tags**: Behind the Scenes, Tool Feature
 
 ### Row 5:
+
 - **Title**: "What's Your Biggest Time-Waster in Promotion?"
 - **Platform**: Blue Sky
 - **Content Type**: Single Post
@@ -93,6 +108,7 @@
 - **Tags**: Problem/Solution, Industry Insight
 
 ### Row 6:
+
 - **Title**: "I Automated My Radio Contact Research"
 - **Platform**: Reddit
 - **Content Type**: Article
@@ -107,6 +123,7 @@ Create a calendar view grouped by "Scheduled Date" to see your posting schedule.
 ## Status Board View:
 
 Create a board view grouped by "Status" to manage your content pipeline:
+
 - Draft
 - Scheduled  
 - Posted
@@ -115,6 +132,7 @@ Create a board view grouped by "Status" to manage your content pipeline:
 ## Platform Views:
 
 Create filtered views for each platform:
+
 - Twitter Content
 - LinkedIn Content
 - Blue Sky Content
@@ -123,6 +141,7 @@ Create filtered views for each platform:
 ## Engagement Tracking:
 
 Add a formula property to calculate engagement rate:
+
 ```
 prop("Engagement") / 100
 ```
@@ -130,6 +149,7 @@ prop("Engagement") / 100
 ## Beta Signup Tracking:
 
 Add a formula property to track conversion rate:
+
 ```
 prop("Beta Signups") / prop("Engagement") * 100
 ```
@@ -137,6 +157,7 @@ prop("Beta Signups") / prop("Engagement") * 100
 ## Weekly Content Planning:
 
 Create a template for weekly content planning:
+
 1. Monday: Industry Insight
 2. Tuesday: Tool Feature
 3. Wednesday: Behind the Scenes
@@ -151,6 +172,7 @@ Use the "Tags" property to identify content that can be repurposed across platfo
 ## Analytics Dashboard:
 
 Create a dashboard with:
+
 - Total posts by platform
 - Engagement by content type
 - Beta signups by post

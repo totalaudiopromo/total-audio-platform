@@ -3,7 +3,7 @@
 ## 🎯 **BUSINESS CONTEXT**
 
 **Primary Goal**: Get first 5 paying customers through optimal mobile experience
-**Live Site**: https://intel.totalaudiopromo.com
+**Live Site**: <https://intel.totalaudiopromo.com>
 **Target Revenue**: £500/month by November 2025
 **Current Status**: Pre-revenue, customer acquisition phase
 
@@ -16,6 +16,7 @@
 ### **Complete User Flow** (Signup → Upload → Results → Payment)
 
 #### **1. Homepage Conversion (Mobile)**
+
 ```bash
 # Test landing page mobile experience
 - Hero section readability on small screens
@@ -28,6 +29,7 @@
 **Test Priority**: HIGH - First impression determines signup rate
 
 #### **2. File Upload Process (Mobile)**
+
 ```bash
 # Critical mobile upload testing
 - CSV file selection interface on mobile browsers
@@ -40,6 +42,7 @@
 **Test Priority**: CRITICAL - Core product functionality
 
 #### **3. Enrichment Results (Mobile)**
+
 ```bash
 # Results display mobile optimization
 - Progress bar visibility during enrichment
@@ -52,6 +55,7 @@
 **Test Priority**: CRITICAL - Value demonstration moment
 
 #### **4. Export & Download (Mobile)**
+
 ```bash
 # Mobile export experience
 - Export button accessibility on mobile
@@ -70,6 +74,7 @@
 ### **Device-Specific Testing Matrix**
 
 #### **iOS Testing**
+
 ```bash
 # iOS-specific mobile issues
 - Safari mobile file upload behavior
@@ -80,6 +85,7 @@
 ```
 
 #### **Android Testing**
+
 ```bash
 # Android-specific mobile issues
 - Chrome mobile file handling
@@ -90,6 +96,7 @@
 ```
 
 #### **Cross-Platform Mobile Issues**
+
 ```bash
 # Universal mobile problems
 - Portrait/landscape orientation handling
@@ -106,6 +113,7 @@
 ### **Critical Performance Metrics**
 
 #### **Page Load Performance**
+
 ```bash
 # Mobile-specific performance tests
 Target: < 3 seconds on 3G connection
@@ -116,6 +124,7 @@ Target: < 3 seconds on 3G connection
 ```
 
 #### **Interaction Performance**
+
 ```bash
 # Mobile interaction responsiveness
 Target: < 100ms touch response time
@@ -132,11 +141,13 @@ Target: < 100ms touch response time
 ### **CSS Framework Testing**
 
 Based on existing mobile CSS files:
+
 - `mobile-optimizations.css`
 - `beta-mobile.css`
 - `home-mobile.css`
 
 #### **Breakpoint Testing**
+
 ```bash
 # Systematic responsive testing
 - Mobile portrait (320px - 480px)
@@ -146,6 +157,7 @@ Based on existing mobile CSS files:
 ```
 
 #### **Component-Specific Mobile Testing**
+
 ```bash
 # Individual component mobile validation
 - Mobile header and navigation
@@ -163,6 +175,7 @@ Based on existing mobile CSS files:
 ### **Accessibility & Usability**
 
 #### **Touch Target Requirements**
+
 ```bash
 # Minimum touch target validation
 - 44px minimum touch target size
@@ -172,6 +185,7 @@ Based on existing mobile CSS files:
 ```
 
 #### **Form Interaction Testing**
+
 ```bash
 # Mobile form usability
 - Input field focus behavior
@@ -188,6 +202,7 @@ Based on existing mobile CSS files:
 ### **Browser Testing Matrix**
 
 #### **iOS Browsers**
+
 ```bash
 - Safari (primary iOS browser)
 - Chrome iOS
@@ -196,6 +211,7 @@ Based on existing mobile CSS files:
 ```
 
 #### **Android Browsers**
+
 ```bash
 - Chrome Android (primary)
 - Samsung Internet
@@ -204,6 +220,7 @@ Based on existing mobile CSS files:
 ```
 
 #### **Device Testing Priority**
+
 ```bash
 # High Priority Devices (UK Market Focus)
 - iPhone 13/14/15 (iOS 15+)
@@ -223,6 +240,7 @@ Based on existing mobile CSS files:
 ### **1. Contact Upload Flow**
 
 #### **Mobile Test Cases**
+
 ```typescript
 // Test Case: CSV Upload on Mobile
 test("Mobile CSV Upload Flow", async () => {
@@ -248,6 +266,7 @@ test("Mobile File Preview Usability", async () => {
 ### **2. Enrichment Process**
 
 #### **Mobile Test Cases**
+
 ```typescript
 // Test Case: Mobile Enrichment Experience
 test("Mobile Enrichment Progress", async () => {
@@ -263,6 +282,7 @@ test("Mobile Enrichment Progress", async () => {
 ### **3. Results & Export**
 
 #### **Mobile Test Cases**
+
 ```typescript
 // Test Case: Mobile Results Display
 test("Mobile Results Table", async () => {
@@ -290,6 +310,7 @@ test("Mobile Export Functionality", async () => {
 ### **Testing Tools Setup**
 
 #### **Automated Mobile Testing**
+
 ```bash
 # Playwright mobile configuration
 npm install @playwright/test
@@ -301,6 +322,7 @@ npm install browserstack-local
 ```
 
 #### **Manual Testing Setup**
+
 ```bash
 # Local mobile testing
 npm install localtunnel
@@ -314,6 +336,7 @@ npm install web-vitals
 ### **Test Environment Setup**
 
 #### **Development Testing**
+
 ```bash
 # Run Audio Intel in mobile testing mode
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel
@@ -324,6 +347,7 @@ npx localtunnel --port 3000 --subdomain audio-intel-test
 ```
 
 #### **Production Testing**
+
 ```bash
 # Test live site on mobile
 Site: https://intel.totalaudiopromo.com
@@ -337,6 +361,7 @@ Site: https://intel.totalaudiopromo.com
 ### **Mobile-Specific Analytics**
 
 #### **Conversion Funnel Metrics**
+
 ```bash
 # Track mobile user behavior
 - Mobile homepage bounce rate
@@ -346,6 +371,7 @@ Site: https://intel.totalaudiopromo.com
 ```
 
 #### **Performance Metrics**
+
 ```bash
 # Mobile performance monitoring
 - Mobile page load times
@@ -355,6 +381,7 @@ Site: https://intel.totalaudiopromo.com
 ```
 
 #### **User Experience Metrics**
+
 ```bash
 # Mobile UX indicators
 - Mobile form abandonment rate
@@ -368,6 +395,7 @@ Site: https://intel.totalaudiopromo.com
 ## 🚀 **EXECUTION PRIORITY**
 
 ### **Phase 1: Critical Revenue Blockers** (Week 1)
+
 ```bash
 1. Complete user journey mobile testing
 2. File upload mobile functionality validation
@@ -376,6 +404,7 @@ Site: https://intel.totalaudiopromo.com
 ```
 
 ### **Phase 2: Experience Optimization** (Week 2)
+
 ```bash
 1. Cross-device compatibility testing
 2. Performance optimization validation
@@ -384,6 +413,7 @@ Site: https://intel.totalaudiopromo.com
 ```
 
 ### **Phase 3: Advanced Mobile Features** (Week 3)
+
 ```bash
 1. Progressive Web App capabilities
 2. Offline functionality testing
@@ -396,12 +426,14 @@ Site: https://intel.totalaudiopromo.com
 ## 🎯 **IMMEDIATE ACTION ITEMS**
 
 ### **Next 48 Hours**
+
 1. **Set up mobile testing environment** with local tunnel
 2. **Test complete user journey** on 2-3 primary mobile devices
 3. **Identify top 3 mobile UX issues** blocking conversions
 4. **Fix critical mobile problems** in next development session
 
 ### **This Week**
+
 1. **Complete cross-device testing** on priority device matrix
 2. **Implement mobile performance monitoring**
 3. **Document mobile-specific user feedback** collection
@@ -412,6 +444,7 @@ Site: https://intel.totalaudiopromo.com
 ## 🔄 **CONTINUOUS MOBILE TESTING**
 
 ### **Weekly Mobile Health Check**
+
 ```bash
 # Automated weekly mobile validation
 1. Run mobile test suite on critical devices
@@ -421,6 +454,7 @@ Site: https://intel.totalaudiopromo.com
 ```
 
 ### **Customer Feedback Integration**
+
 ```bash
 # Mobile-specific user feedback
 1. Track mobile support requests

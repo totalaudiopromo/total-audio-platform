@@ -7,16 +7,19 @@ Right, so I've built you a simple email tracking system that works with **any** 
 ## 🚀 **How It Works**
 
 ### **1. Tracking Pixels (Email Opens)**
+
 - Adds invisible 1x1 pixel to your emails
 - When recipient opens email, pixel loads and tracks the open
 - Works with any email client (Gmail, Outlook, Apple Mail, etc.)
 
 ### **2. Link Tracking (Email Clicks)**
+
 - Converts all links in your email to tracking links
 - When clicked, tracks the click and redirects to original URL
 - Tracks which links get clicked most
 
 ### **3. Analytics Dashboard**
+
 - Real-time open and click rates
 - Contact engagement scoring
 - Campaign performance tracking
@@ -27,6 +30,7 @@ Right, so I've built you a simple email tracking system that works with **any** 
 ### **Step 1: Deploy Tracking Server**
 
 **Option A: Vercel (Recommended)**
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -37,6 +41,7 @@ vercel --prod
 ```
 
 **Option B: Netlify**
+
 ```bash
 # Install Netlify CLI
 npm i -g netlify-cli
@@ -47,6 +52,7 @@ netlify deploy --prod
 ```
 
 **Option C: Any Hosting Service**
+
 - Upload `tracking-server.js` to your hosting
 - Make sure it can run Node.js
 - Set up your domain
@@ -54,6 +60,7 @@ netlify deploy --prod
 ### **Step 2: Update Environment Variables**
 
 Add to your `.env` file:
+
 ```bash
 # Email Tracking
 TRACKING_BASE_URL=https://your-domain.com/track
@@ -69,7 +76,9 @@ node test-email-tracking.js
 ## 📧 **How to Use with Different Email Systems**
 
 ### **Gmail (Manual)**
+
 1. Prepare email with tracking:
+
 ```javascript
 const tracker = new UniversalEmailTracker();
 const trackedEmail = tracker.prepareEmailForTracking(
@@ -85,6 +94,7 @@ const trackedEmail = tracker.prepareEmailForTracking(
 4. Send normally
 
 ### **Gmail (API)**
+
 ```javascript
 // Use Gmail API with tracked content
 const message = {
@@ -94,12 +104,14 @@ gmail.users.messages.send({ userId: 'me', resource: { raw: message } });
 ```
 
 ### **Outlook (Manual)**
+
 1. Prepare email with tracking (same as Gmail)
 2. Copy tracked content
 3. Paste into Outlook (send as HTML)
 4. Send normally
 
 ### **Mailchimp (API)**
+
 ```javascript
 // Use Mailchimp API with tracked content
 const campaign = {
@@ -116,30 +128,35 @@ const campaign = {
 ```
 
 ### **Any Other Email System**
+
 - Just use the tracked content in whatever system you prefer
 - Tracking works automatically once deployed
 
 ## 📊 **What You Get**
 
 ### **Real-time Analytics**
+
 - **Open rates** - Who's opening your emails
 - **Click rates** - Who's clicking your links
 - **Click-through rates** - Engagement quality
 - **Timeline** - When people are engaging
 
 ### **Contact Engagement Scoring**
+
 - **0-100 score** for each contact
 - **Engagement history** across all campaigns
 - **Last engagement** tracking
 - **Campaign performance** per contact
 
 ### **Automated Recommendations**
+
 - **Subject line** suggestions based on open rates
 - **Content** improvements based on click rates
 - **Targeting** advice based on engagement
 - **Success** patterns to replicate
 
 ### **Data Export**
+
 - **CSV export** of all tracking data
 - **Campaign reports** for clients
 - **Contact lists** with engagement scores
@@ -148,6 +165,7 @@ const campaign = {
 ## 🎯 **Example Workflow**
 
 ### **1. Prepare Campaign Email**
+
 ```javascript
 const tracker = new UniversalEmailTracker();
 
@@ -169,11 +187,13 @@ const trackedEmail = tracker.prepareEmailForTracking(
 ```
 
 ### **2. Send Email**
+
 - Copy `trackedEmail.content`
 - Paste into your email system
 - Send as HTML
 
 ### **3. Track Performance**
+
 ```javascript
 // Get campaign stats
 const stats = tracker.getCampaignPerformance('senior-dunce-campaign');
@@ -186,6 +206,7 @@ console.log(`Engagement Score: ${engagement.engagementScore}/100`);
 ```
 
 ### **4. Optimize Future Campaigns**
+
 - Use high-performing subject lines
 - Focus on contacts with high engagement scores
 - Improve content based on click rates
@@ -202,21 +223,25 @@ console.log(`Engagement Score: ${engagement.engagementScore}/100`);
 ## 🚀 **Advanced Features**
 
 ### **A/B Testing**
+
 - Test different subject lines
 - Compare email content
 - Track which performs better
 
 ### **Engagement Scoring**
+
 - Score contacts 0-100 based on engagement
 - Focus on high-value contacts
 - Identify VIP contacts automatically
 
 ### **Automated Follow-ups**
+
 - Trigger follow-ups based on engagement
 - Different approaches for different engagement levels
 - Smart timing based on open patterns
 
 ### **Real-time Alerts**
+
 - Get notified when emails are opened
 - Track high-value contact engagement
 - Monitor campaign performance

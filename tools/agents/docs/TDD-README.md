@@ -26,6 +26,7 @@ Then reload: `source ~/.zshrc`
 ## Usage Examples
 
 ### Normal Workflow
+
 ```bash
 # Monday morning - kids around, 10 minutes free
 plan "contact filtering"
@@ -37,6 +38,7 @@ build "contact filtering"
 ```
 
 ### Emergency Modes
+
 ```bash
 # Kids need attention, planning taking too long
 skip-plan "contact filtering"
@@ -48,6 +50,7 @@ quick "login bug fix"
 ```
 
 ### Status Checking
+
 ```bash
 status
 # Shows:
@@ -59,12 +62,14 @@ status
 ## What Gets Created
 
 ### 4 Planning Agents
+
 - **tdd-ui-planner.js** - Mobile-first wireframes (Audio Intel blue, Playlist Pulse green)
 - **tdd-component-selector.js** - shadcn/ui component selections
 - **tdd-test-writer.js** - Natural language test scenarios  
 - **tdd-implementation-planner.js** - Clear checklists for existing agents
 
 ### Specs Storage (`specs/` directory)
+
 - `ui-wireframes/` - Mobile-first designs
 - `components/` - Component selections
 - `tests/` - Test scenarios
@@ -74,12 +79,14 @@ status
 ## Integration with Existing System
 
 **No Changes To:**
+
 - Your existing 25 agents
 - `orchestrator.sh` 
 - `agent-manager.js`
 - Current workflows
 
 **How It Works:**
+
 1. Planning agents create spec files
 2. `build` command reads specs and calls `orchestrator.sh execute feature-with-tdd-specs`
 3. Your existing agents receive mobile wireframes, component specs, test scenarios, and checklists
@@ -112,19 +119,24 @@ status
 ## Example Feature: "Contact Filtering"
 
 ### Planning Phase (10 minutes, interruptible)
+
 ```bash
 plan "contact filtering" audiointel
 ```
+
 Creates:
+
 - Mobile wireframe with filter chips, search input, results list
 - Component selection: Card, Input, Select, Badge, Button (blue theme)
 - Test scenarios: User searches BBC Radio 1, applies UK region filter
 - Implementation checklist: Database queries, API endpoints, mobile responsive
 
 ### Building Phase (2 hours, focused)
+
 ```bash
 build "contact filtering" audiointel  
 ```
+
 - Reads all specs created during planning
 - Calls `orchestrator.sh execute contact-filtering-with-tdd-specs`
 - Your existing agents (database-agent, contact-agent, etc.) get:

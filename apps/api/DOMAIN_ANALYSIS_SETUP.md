@@ -19,17 +19,20 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'your-actual-contacts-table-id-here';
 ## 🔑 How to Get Your Airtable Credentials
 
 ### API Key
-1. Go to https://airtable.com/account
+
+1. Go to <https://airtable.com/account>
 2. Click "API" in the left sidebar
 3. Click "Create new API key"
 4. Copy the generated key
 
 ### Base ID
+
 1. Open your Airtable base
 2. Look at the URL: `https://airtable.com/appXXXXXXXXXXXXXX`
 3. Copy the part after `/app/` (the X's)
 
 ### Table IDs
+
 1. Open a table in your base
 2. Look at the URL: `https://airtable.com/appXXXXXXXXXXXXXX/tblYYYYYYYYYYYYY`
 3. Copy the part after `/tbl/` (the Y's)
@@ -45,12 +48,14 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'tbl1234567890abcdef';
 ## 🎯 What the Analysis Will Do
 
 ### Company Extraction
+
 - ✅ Extract company names from email domains
 - ✅ Identify music industry platforms automatically
 - ✅ Handle common domain patterns appropriately
 - ✅ Skip personal email domains (gmail, yahoo, etc.)
 
 ### Music Industry Recognition
+
 - 🎵 **Streaming Platforms**: Spotify, Apple Music, YouTube Music, etc.
 - 📻 **Radio Stations**: KCRW, KEXP, NPR, BBC Radio, etc.
 - 📰 **Music Media**: Pitchfork, Rolling Stone, Billboard, NME, etc.
@@ -59,6 +64,7 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'tbl1234567890abcdef';
 - 🎼 **Music Services**: Management, Booking, Studios, etc.
 
 ### Updates Made
+
 - **Company Field**: Extracted company name
 - **Role Field**: Identified company type (Playlist Curator, Radio DJ, etc.)
 - **Notes Field**: Auto-extraction details and reasoning
@@ -66,12 +72,14 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'tbl1234567890abcdef';
 ## 🚀 Run the Analysis
 
 ### Preview Mode (Recommended First)
+
 ```bash
 cd backend
 node test-domain-analysis.js
 ```
 
 ### Live Mode (Apply Changes)
+
 ```bash
 cd backend
 node test-domain-analysis-live.js
@@ -126,6 +134,7 @@ node test-domain-analysis-live.js
 ## 🔧 Customization
 
 You can modify the patterns in `src/services/airtableDomainAnalysis.ts` to:
+
 - Add new music industry domains
 - Adjust confidence levels
 - Change company type classifications
@@ -134,11 +143,13 @@ You can modify the patterns in `src/services/airtableDomainAnalysis.ts` to:
 ## 🆘 Troubleshooting
 
 ### Common Issues
+
 - **"Missing required Airtable environment variables"**: Check your API key, base ID, and table ID
 - **"No records found"**: Verify your table ID is correct
 - **"Permission denied"**: Check your API key permissions
 
 ### Getting Help
+
 1. Check the console output for detailed error messages
 2. Verify your Airtable credentials are correct
 3. Ensure your API key has read/write permissions for the base

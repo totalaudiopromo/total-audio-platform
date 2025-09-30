@@ -1,0 +1,547 @@
+openapi: 3.0.0
+paths:
+  /api/v1/plays:
+    get:
+      parameters:
+        - name: authorization
+          required: true
+          in: header
+          schema:
+            type: string
+        - name: fromDate
+          required: false
+          in: query
+          description: From date in YYYYMMDD format
+          schema:
+            type: string
+        - name: untilDate
+          required: false
+          in: query
+          description: To date in YYYYMMDD format
+          schema:
+            type: string
+        - name: countryCode
+          required: false
+          in: query
+          description: ISO 3166-1 alpha-2 country code
+          schema:
+            type: string
+        - name: cityId
+          required: false
+          in: query
+          description: Internal City ID
+          schema:
+            type: string
+        - name: radioStationId
+          required: false
+          in: query
+          description: Internal Radio station ID
+          schema:
+            type: string
+        - name: artistName
+          required: false
+          in: query
+          description: Artist name
+          schema:
+            type: string
+        - name: monitorId
+          required: false
+          in: query
+          description: Internal ID for the monitored song
+          schema:
+            type: string
+        - name: pageNumber
+          required: false
+          in: query
+          description: Page number
+          schema:
+            type: number
+        - name: pageSize
+          required: false
+          in: query
+          description: Page size
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/PaginatedDto'
+                  - properties:
+                      currentPagesEntities:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/PlaysDto'
+                      currentPageNumber:
+                        type: number
+                      pageSize:
+                        type: number
+                      totalNumberOfEntities:
+                        type: number
+                      hasMore:
+                        type: boolean
+      tags:
+        - plays
+      security:
+        - bearer: []
+  /api/v1/plays/grouped:
+    get:
+      parameters:
+        - name: authorization
+          required: true
+          in: header
+          schema:
+            type: string
+        - name: fromDate
+          required: false
+          in: query
+          description: From date in YYYYMMDD format
+          schema:
+            type: string
+        - name: untilDate
+          required: false
+          in: query
+          description: To date in YYYYMMDD format
+          schema:
+            type: string
+        - name: countryCode
+          required: false
+          in: query
+          description: ISO 3166-1 alpha-2 country code
+          schema:
+            type: string
+        - name: cityId
+          required: false
+          in: query
+          description: Internal City ID
+          schema:
+            type: string
+        - name: radioStationId
+          required: false
+          in: query
+          description: Internal Radio station ID
+          schema:
+            type: string
+        - name: artistName
+          required: false
+          in: query
+          description: Artist name
+          schema:
+            type: string
+        - name: monitorId
+          required: false
+          in: query
+          description: Internal ID for the monitored song
+          schema:
+            type: string
+        - name: pageNumber
+          required: false
+          in: query
+          description: Page number
+          schema:
+            type: number
+        - name: pageSize
+          required: false
+          in: query
+          description: Page size
+          schema:
+            type: number
+        - name: group_by
+          required: true
+          in: query
+          description: Group by enum
+          schema:
+            enum:
+              - SONG
+              - COUNTRY
+              - CHANNEL
+              - DATE
+              - ARTIST
+              - CITY
+              - CONTINENT
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/PaginatedDto'
+                  - properties:
+                      currentPagesEntities:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/PlaysDto'
+                      currentPageNumber:
+                        type: number
+                      pageSize:
+                        type: number
+                      totalNumberOfEntities:
+                        type: number
+                      hasMore:
+                        type: boolean
+      tags:
+        - plays
+      security:
+        - bearer: []
+  /api/v1/analytics/plays-grouped-by-radiostations:
+    get:
+      parameters:
+        - name: authorization
+          required: true
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stream'
+      tags:
+        - analytics
+  /api/v1/radio-stations:
+    get:
+      parameters:
+        - name: authorization
+          required: true
+          in: header
+          schema:
+            type: string
+        - name: isMonitored
+          required: false
+          in: query
+          description: Boolean string value to filter monitored radio stations
+          schema:
+            type: boolean
+        - name: name
+          required: false
+          in: query
+          description: Name of the radio station
+          schema:
+            type: string
+        - name: countryId
+          required: false
+          in: query
+          description: Country ID
+          schema:
+            type: string
+        - name: cityId
+          required: false
+          in: query
+          description: City ID
+          schema:
+            type: string
+        - name: countryCode
+          required: false
+          in: query
+          description: Country code upper case
+          schema:
+            type: string
+        - name: externalIds
+          required: false
+          in: query
+          description: Id of the radio station
+          schema:
+            type: string
+        - name: continentCode
+          required: false
+          in: query
+          description: Continent code, lower case
+          schema:
+            type: string
+        - name: pageNumber
+          required: false
+          in: query
+          description: Page number
+          schema:
+            type: number
+        - name: pageSize
+          required: false
+          in: query
+          description: Page size
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/PaginatedDto'
+                  - properties:
+                      currentPagesEntities:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/RadioStationDto'
+                      currentPageNumber:
+                        type: number
+                      pageSize:
+                        type: number
+                      totalNumberOfEntities:
+                        type: number
+                      hasMore:
+                        type: boolean
+      tags:
+        - radio-stations
+      security:
+        - bearer: []
+  /api/v1/reports/csv:
+    get:
+      parameters:
+        - name: authorization
+          required: true
+          in: header
+          schema:
+            type: string
+        - name: songName
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: fromDate
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: untilDate
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: continentCode
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: countryCode
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: cityId
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: radioStationId
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: artistName
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: monitorId
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: pageNumber
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: pageSize
+          required: false
+          in: query
+          schema:
+            type: number
+      responses:
+        '200':
+          description: CSV report
+      tags:
+        - reports
+      security:
+        - bearer: []
+  /api/v1/monitors:
+    get:
+      parameters:
+        - name: authorization
+          required: true
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+        - monitors
+      security:
+        - bearer: []
+  /api/v1/auth/exchange:
+    post:
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+      tags:
+        - auth
+info:
+  title: Warm Public Api
+  description: |-
+    This API Documentation serves the purpose of guiding developers on how to use the Warm Public API. 
+        Only authorized users can access this API.
+  version: '1.0'
+  contact: {}
+tags: []
+servers:
+  - url: https://public-api.warmmusic.net
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+  schemas:
+    PlaysDto:
+      type: object
+      properties:
+        artistName:
+          type: string
+        songName:
+          type: string
+        isrc:
+          type: string
+        startTime:
+          type: string
+        duration:
+          type: number
+        radioStationName:
+          type: string
+        country:
+          type: object
+          properties:
+            name:
+              type: string
+            isoCode2:
+              type: string
+        city:
+          type: object
+          properties:
+            name:
+              type: string
+            cityId:
+              type: string
+        artist:
+          type: string
+        monitorId:
+          type: string
+        radioStationId:
+          type: string
+    PaginatedDto:
+      type: object
+      properties:
+        currentPagesEntities:
+          type: array
+          items:
+            type: string
+        currentPageNumber:
+          type: number
+        pageSize:
+          type: number
+        totalNumberOfEntities:
+          type: number
+        hasMore:
+          type: boolean
+    RadioStationDto:
+      type: object
+      properties:
+        city:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            externalId:
+              type: string
+        country:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            isoCode2:
+              type: string
+            continent:
+              type: string
+            continentCode:
+              type: string
+        continent:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            continentCode:
+              type: string
+        signal:
+          type: string
+        category:
+          type: string
+        genre:
+          type: string
+        isMonitored:
+          type: boolean
+        createdAt:
+          format: date-time
+          type: string
+        isPending:
+          type: boolean
+        isFavorite:
+          type: boolean
+        audience:
+          type: number
+        name:
+          type: string
+      required:
+        - city
+        - country
+        - continent
+        - signal
+        - category
+        - genre
+        - isMonitored
+        - createdAt
+        - isPending
+        - isFavorite
+        - audience
+        - name
+    LoginDto:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    Stream:
+      type: object
+      properties: {}
+      required:
+        - email
+        - password

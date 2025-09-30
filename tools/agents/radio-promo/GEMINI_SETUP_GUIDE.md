@@ -42,6 +42,7 @@ node test-gemini.js
 ## 🚀 **Usage**
 
 ### **Process Gemini Transcript**
+
 ```bash
 # Process a specific Gemini transcript
 node radio-promo-agent.js process-transcript gemini:transcript-id-123
@@ -51,6 +52,7 @@ node radio-promo-agent.js personal-workflow gemini:transcript-id-123
 ```
 
 ### **What Happens**
+
 1. **Transcript Processing**: Gemini analyzes the transcript content
 2. **Data Extraction**: Pulls out campaign information using AI
 3. **Campaign Creation**: Creates Monday.com campaign
@@ -60,13 +62,16 @@ node radio-promo-agent.js personal-workflow gemini:transcript-id-123
 ## 📊 **How It Works**
 
 ### **Transcript Analysis**
+
 Gemini uses natural language processing to understand:
+
 - "The artist is Sarah Jones" → `artistName: "Sarah Jones"`
 - "Track title is 'Electric Dreams'" → `trackTitle: "Electric Dreams"`
 - "It's a pop track" → `genre: "pop"`
 - "Release date is February 1st" → `releaseDate: "2025-02-01"`
 
 ### **AI-Powered Extraction**
+
 - Understands context and conversation flow
 - Handles different ways of expressing the same information
 - Learns from your conversation patterns
@@ -75,11 +80,13 @@ Gemini uses natural language processing to understand:
 ## 🔍 **Testing**
 
 ### **Test API Connection**
+
 ```bash
 node test-gemini.js
 ```
 
 ### **Test Transcript Processing**
+
 ```bash
 # Test with a sample transcript ID
 node radio-promo-agent.js process-transcript gemini:test-transcript-123
@@ -90,9 +97,11 @@ node radio-promo-agent.js process-transcript gemini:test-transcript-123
 1. **Record Google Meet** with artist
 2. **Get transcript** from Google Meet
 3. **Process with Gemini**:
+
    ```bash
    node radio-promo-agent.js personal-workflow gemini:meeting-transcript-456
    ```
+
 4. **Review extracted data** in the campaign brief
 5. **Approve Monday.com campaign** creation
 6. **Generate press release** automatically
@@ -108,16 +117,19 @@ node radio-promo-agent.js process-transcript gemini:test-transcript-123
 ## 🔧 **Troubleshooting**
 
 ### **API Key Issues**
+
 - Check the key is correct in `.env`
 - Ensure it starts with `AIza...`
 - Verify it's active in Google AI Studio
 
 ### **Transcript Not Found**
+
 - Check the transcript ID is correct
 - Ensure the transcript exists in your Google account
 - Verify you have access to the transcript
 
 ### **Low Extraction Quality**
+
 - Check transcript quality (clear audio, good transcription)
 - Review the conversation content
 - Ensure campaign details are mentioned clearly

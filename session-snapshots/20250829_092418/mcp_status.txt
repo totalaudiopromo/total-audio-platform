@@ -1,3 +1,0 @@
-Checking MCP server health...
-
-puppeteer: npx @modelcontextprotocol/server-puppeteer - ✓ Connected

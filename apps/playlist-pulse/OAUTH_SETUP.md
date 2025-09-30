@@ -45,5 +45,5 @@ APPLE_SECRET=your-apple-client-secret
 ## Notes
 
 - If OAuth credentials are not provided, only email/password authentication will be available
-- The demo account (demo@example.com / password123) will always work
+- The demo account (<demo@example.com> / password123) will always work
 - OAuth providers are automatically enabled when credentials are provided 

@@ -7,6 +7,7 @@ The Airtable Duplicate Removal System is a comprehensive tool designed to safely
 ## 🚀 Features
 
 ### Core Functionality
+
 - **🔍 Duplicate Detection**: Identifies contacts with identical email addresses
 - **📊 Smart Selection**: Keeps the most complete record, or most recent if equally complete
 - **🛡️ Safety First**: Dry-run mode shows what would be deleted before actual removal
@@ -15,6 +16,7 @@ The Airtable Duplicate Removal System is a comprehensive tool designed to safely
 - **⚡ Batch Processing**: Efficiently processes large datasets in batches
 
 ### Safety Measures
+
 - **Dry-Run Mode**: Preview deletions without making changes
 - **Backup Creation**: Automatic backup of all records to be deleted
 - **Confirmation Prompts**: Multiple confirmation steps for live removal
@@ -24,6 +26,7 @@ The Airtable Duplicate Removal System is a comprehensive tool designed to safely
 ## 📋 Requirements
 
 ### Environment Variables
+
 ```bash
 AIRTABLE_API_KEY=your-api-key
 AIRTABLE_BASE_ID=your-base-id
@@ -31,6 +34,7 @@ AIRTABLE_CONTACTS_TABLE_ID=your-contacts-table-id
 ```
 
 ### Dependencies
+
 - `airtable` npm package
 - TypeScript compilation
 - Node.js environment
@@ -47,6 +51,7 @@ node test-duplicate-removal.js
 ```
 
 **Output Example:**
+
 ```
 🚀 Testing Airtable Duplicate Removal Service...
 
@@ -83,6 +88,7 @@ node test-duplicate-removal-live.js
 ```
 
 **Safety Prompts:**
+
 ```
 ⚠️  WARNING: This will permanently delete records from Airtable!
 A backup file has been created with all records that would be deleted.
@@ -95,17 +101,20 @@ Type "DELETE" to confirm permanent deletion: DELETE
 ## 📊 How It Works
 
 ### Duplicate Detection Algorithm
+
 1. **Email Normalization**: Converts all emails to lowercase and trims whitespace
 2. **Grouping**: Groups records by normalized email address
 3. **Filtering**: Identifies groups with more than one record
 
 ### Record Selection Logic
+
 1. **Completeness Scoring**: Calculates percentage of filled important fields
    - Important fields: Name, Company, Role, Genre, Location, Email, Phone, Website, Notes
 2. **Tie Breaking**: If completeness is equal, keeps most recently created record
 3. **Selection**: Keeps the record with highest score, deletes others
 
 ### Completeness Calculation
+
 ```typescript
 const importantFields = [
   'Name', 'Company', 'Role', 'Genre', 'Location', 
@@ -118,6 +127,7 @@ const importantFields = [
 ## 📁 Backup System
 
 ### Backup File Format
+
 Backup files are saved as `duplicate-backup-YYYY-MM-DD.json` with the following structure:
 
 ```json
@@ -137,6 +147,7 @@ Backup files are saved as `duplicate-backup-YYYY-MM-DD.json` with the following 
 ```
 
 ### Restoring from Backup
+
 To restore deleted records, you can use the backup file to recreate records in Airtable:
 
 ```javascript
@@ -159,11 +170,13 @@ backupData.forEach(async (record) => {
 ## 🔧 API Endpoints
 
 ### Dry Run
+
 ```http
 POST /api/airtable-duplicate-removal/dry-run
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -180,11 +193,13 @@ POST /api/airtable-duplicate-removal/dry-run
 ```
 
 ### Live Removal
+
 ```http
 POST /api/airtable-duplicate-removal/remove
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -201,11 +216,13 @@ POST /api/airtable-duplicate-removal/remove
 ```
 
 ### Status Check
+
 ```http
 GET /api/airtable-duplicate-removal/status
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -220,17 +237,20 @@ GET /api/airtable-duplicate-removal/status
 ## ⚠️ Important Notes
 
 ### Before Running
+
 1. **Test with Dry Run**: Always run dry-run mode first
 2. **Review Results**: Carefully review what would be deleted
 3. **Check Backup**: Ensure backup file is created successfully
 4. **Verify Credentials**: Confirm Airtable API access
 
 ### During Execution
+
 1. **Don't Interrupt**: Avoid stopping the process mid-execution
 2. **Monitor Logs**: Watch for any error messages
 3. **Check Progress**: Monitor deletion progress in logs
 
 ### After Completion
+
 1. **Verify Results**: Check Airtable to confirm deletions
 2. **Save Backup**: Keep backup file in safe location
 3. **Review Logs**: Check logs for any issues
@@ -240,22 +260,27 @@ GET /api/airtable-duplicate-removal/status
 ### Common Issues
 
 **"Missing required Airtable environment variables"**
+
 - Ensure all environment variables are set correctly
 - Check API key permissions in Airtable
 
 **"Error accessing Airtable table"**
+
 - Verify table ID is correct
 - Check API key has access to the base
 
 **"No duplicates found"**
+
 - Confirm email field exists in your table
 - Check if emails are properly formatted
 
 **"TypeScript compilation errors"**
+
 - Run `npm install` to ensure dependencies
 - Check TypeScript configuration
 
 ### Error Recovery
+
 1. **Check Backup**: Use backup file to restore if needed
 2. **Review Logs**: Check detailed error messages
 3. **Verify Permissions**: Ensure API key has proper access
@@ -264,11 +289,13 @@ GET /api/airtable-duplicate-removal/status
 ## 📈 Performance
 
 ### Batch Processing
+
 - Processes deletions in batches of 10 records
 - Optimized for Airtable API rate limits
 - Progress logging for large datasets
 
 ### Memory Usage
+
 - Efficient memory management for large datasets
 - Streaming processing for backup files
 - Minimal memory footprint
@@ -276,11 +303,13 @@ GET /api/airtable-duplicate-removal/status
 ## 🔒 Security
 
 ### Data Protection
+
 - No sensitive data logged
 - Secure API key handling
 - Backup file encryption (if needed)
 
 ### Access Control
+
 - API endpoint authentication
 - User-specific service instances
 - Audit logging for all operations
@@ -288,6 +317,7 @@ GET /api/airtable-duplicate-removal/status
 ## 📞 Support
 
 For issues or questions:
+
 1. Check the logs for detailed error messages
 2. Review this documentation
 3. Test with dry-run mode first

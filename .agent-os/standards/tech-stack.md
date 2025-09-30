@@ -4,30 +4,32 @@
 
 Global tech stack defaults for Agent OS projects, overridable in project-specific `.agent-os/product/tech-stack.md`.
 
-- App Framework: Ruby on Rails 8.0+
-- Language: Ruby 3.2+
+- App Framework: Next.js 15+
+- Language: TypeScript 5.0+
 - Primary Database: PostgreSQL 17+
-- ORM: Active Record
-- JavaScript Framework: React latest stable
-- Build Tool: Vite
-- Import Strategy: Node.js modules
+- ORM: Prisma
+- JavaScript Framework: React 18+
+- Build Tool: Next.js built-in
+- Import Strategy: ES modules
 - Package Manager: npm
 - Node Version: 22 LTS
 - CSS Framework: TailwindCSS 4.0+
-- UI Components: Instrumental Components latest
-- UI Installation: Via development gems group
+- UI Components: Custom components + shadcn/ui
 - Font Provider: Google Fonts
-- Font Loading: Self-hosted for performance
+- Font Loading: Next.js font optimization
 - Icons: Lucide React components
-- Application Hosting: Digital Ocean App Platform/Droplets
-- Hosting Region: Primary region based on user base
-- Database Hosting: Digital Ocean Managed PostgreSQL
-- Database Backups: Daily automated
-- Asset Storage: Amazon S3
-- CDN: CloudFront
-- Asset Access: Private with signed URLs
-- CI/CD Platform: GitHub Actions
-- CI/CD Trigger: Push to main/staging branches
-- Tests: Run before deployment
+- Application Hosting: Vercel
+- Hosting Region: Global edge network
+- Database Hosting: Vercel Postgres / Supabase
+- Database Backups: Automated via hosting provider
+- Asset Storage: Vercel Blob / Cloudinary
+- CDN: Vercel Edge Network
+- Asset Access: Public with optimization
+- CI/CD Platform: Vercel Git integration
+- CI/CD Trigger: Push to main branch
+- Tests: Jest + Playwright
 - Production Environment: main branch
-- Staging Environment: staging branch
+- Staging Environment: preview branches
+- Payment Processing: Stripe
+- Email Service: Resend / SendGrid
+- Analytics: Vercel Analytics

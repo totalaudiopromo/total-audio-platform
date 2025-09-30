@@ -7,30 +7,35 @@ The Airtable Data Audit System provides comprehensive analysis of your Airtable 
 ## Features
 
 ### 1. Field Mapping Analysis
+
 - **Data Type Detection**: Identifies all data types used in each field
 - **Usage Statistics**: Shows how many records contain each field
 - **Example Values**: Provides sample data from each field
 - **Field Coverage**: Identifies unused or rarely used fields
 
 ### 2. Duplicate Detection
+
 - **Email Duplicates**: Finds records with identical email addresses
 - **Name Duplicates**: Identifies records with same names but different emails
 - **Cross-Reference**: Links duplicate records for easy review
 - **Duplicate Count**: Provides summary statistics
 
 ### 3. Data Completeness Analysis
+
 - **Required Fields**: Checks for missing essential information
 - **Important Fields**: Identifies missing valuable data
 - **Completeness Score**: Calculates percentage of complete records
 - **Missing Field Tracking**: Lists specific missing fields per record
 
 ### 4. Data Consistency Analysis
+
 - **Format Validation**: Checks email formats, phone numbers, dates
 - **Data Type Consistency**: Identifies mixed data types in same field
 - **Value Length Analysis**: Flags unusually long or short values
 - **Empty String Detection**: Finds empty strings that should be null
 
 ### 5. Automated Recommendations
+
 - **Actionable Insights**: Provides specific recommendations for data cleanup
 - **Priority Ranking**: Suggests which issues to address first
 - **Field Optimization**: Recommends field usage improvements
@@ -38,12 +43,14 @@ The Airtable Data Audit System provides comprehensive analysis of your Airtable 
 ## API Endpoints
 
 ### Full Audit
+
 ```http
 POST /api/airtable-audit/audit
 Authorization: Bearer <token>
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -64,12 +71,14 @@ Authorization: Bearer <token>
 ```
 
 ### Audit Summary
+
 ```http
 GET /api/airtable-audit/summary
 Authorization: Bearer <token>
 ```
 
 ### Specific Sections
+
 ```http
 GET /api/airtable-audit/section/duplicates
 GET /api/airtable-audit/section/incomplete
@@ -81,7 +90,9 @@ Authorization: Bearer <token>
 ## Data Analysis Details
 
 ### Field Analysis
+
 Each field is analyzed for:
+
 - **Data Types**: string, email, date, phone, number, array, boolean, object
 - **Unique Values**: Count of distinct values
 - **Null Count**: Number of empty/null values
@@ -89,16 +100,19 @@ Each field is analyzed for:
 - **Sample Values**: Up to 5 example values
 
 ### Duplicate Detection Logic
+
 1. **Email Duplicates**: Records with identical email addresses
 2. **Name Duplicates**: Records with same name but different emails
 3. **Cross-Reference**: Links related duplicate records
 
 ### Completeness Scoring
+
 - **Required Fields** (Email, Name): 25% penalty each if missing
 - **Important Fields** (Company, Role, Genre, Location): 10% penalty each if missing
 - **Score Range**: 0-100%
 
 ### Consistency Checks
+
 - **Email Format**: Valid email address pattern
 - **Name Length**: 2-100 characters
 - **Empty Strings**: Identifies empty strings that should be null
@@ -107,6 +121,7 @@ Each field is analyzed for:
 ## Usage Examples
 
 ### Running a Full Audit
+
 ```javascript
 const auditService = await AirtableAuditService.getAuditServiceForUser(userId);
 const auditResult = await auditService.performFullAudit();
@@ -116,6 +131,7 @@ console.log(`Found ${auditResult.summary.incompleteCount} incomplete records`);
 ```
 
 ### Checking Specific Issues
+
 ```javascript
 // Check for duplicates only
 const duplicates = auditResult.duplicates;
@@ -133,6 +149,7 @@ Object.entries(auditResult.fieldAnalysis).forEach(([field, analysis]) => {
 ```
 
 ### Using Recommendations
+
 ```javascript
 auditResult.recommendations.forEach(rec => {
   console.log(`Recommendation: ${rec}`);
@@ -142,12 +159,14 @@ auditResult.recommendations.forEach(rec => {
 ## Test Script
 
 Run the audit test script:
+
 ```bash
 cd backend
 node test-audit.js
 ```
 
 This will:
+
 1. Connect to your Airtable base
 2. Perform comprehensive analysis
 3. Display detailed report with emojis and formatting
@@ -156,6 +175,7 @@ This will:
 ## Environment Variables
 
 Required for the audit system:
+
 ```bash
 AIRTABLE_API_KEY=your_api_key
 AIRTABLE_BASE_ID=your_base_id
@@ -200,6 +220,7 @@ AIRTABLE_EMAILS_TABLE_ID=your_emails_table_id
 ### Error Handling
 
 The audit system includes comprehensive error handling:
+
 - Connection failures
 - Invalid data formats
 - Missing required fields

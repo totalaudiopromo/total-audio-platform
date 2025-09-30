@@ -5,6 +5,7 @@ const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const anthropic = new Anthropic({
   apiKey: ANTHROPIC_API_KEY,
 });
+const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL;
 
 interface AgentResponse {
   success: boolean;
@@ -38,7 +39,7 @@ Format your response as:
 
   try {
     const response = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: ANTHROPIC_MODEL!,
       max_tokens: 2000,
       temperature: 0.3,
       messages: [{ role: 'user', content: prompt }]
@@ -86,7 +87,7 @@ Format your response as:
 
   try {
     const response = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: ANTHROPIC_MODEL!,
       max_tokens: 2000,
       temperature: 0.3,
       messages: [{ role: 'user', content: prompt }]
@@ -134,7 +135,7 @@ Format your response as:
 
   try {
     const response = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: ANTHROPIC_MODEL!,
       max_tokens: 2000,
       temperature: 0.3,
       messages: [{ role: 'user', content: prompt }]
@@ -182,7 +183,7 @@ Format your response as:
 
   try {
     const response = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: ANTHROPIC_MODEL!,
       max_tokens: 2000,
       temperature: 0.3,
       messages: [{ role: 'user', content: prompt }]
@@ -230,7 +231,7 @@ Format your response as:
 
   try {
     const response = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: ANTHROPIC_MODEL!,
       max_tokens: 2000,
       temperature: 0.3,
       messages: [{ role: 'user', content: prompt }]

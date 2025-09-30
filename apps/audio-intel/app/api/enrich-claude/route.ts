@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { formatContactIntelligence } from '@/utils/formatIntelligence';
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || 'claude-3-5-sonnet-20241022';
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
 
 // Enhanced in-memory cache with better TTL management and LRU eviction
@@ -117,7 +118,7 @@ async function runClaudeResearch(
           'anthropic-version': '2023-06-01',
         },
         body: JSON.stringify({
-          model: 'claude-3-5-sonnet-20241022',
+          model: ANTHROPIC_MODEL,
           max_tokens: 300, // Optimized for cost
           temperature: 0.1,
           messages: [

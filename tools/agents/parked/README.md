@@ -5,17 +5,20 @@ This directory contains agents that are **dormant** - complete implementations t
 ## Parked Agents
 
 ### 🎵 Music Industry Specialists
+
 - **`music-marketing-mastermind.js`** - Advanced music marketing strategies
 - **`music-industry-strategist.js`** - Industry strategy and positioning
 - **`growth-hacking-optimizer.js`** - Growth optimization and scaling
 - **`viral-content-automation.js`** - Viral content strategies
 
 ### 👥 User Acquisition
+
 - **`beta-user-acquisition-agent.js`** - Beta user acquisition workflows
 
 ## Status: INACTIVE ⏸️
 
 These agents are:
+
 - ✅ **Complete implementations** - Fully functional code
 - ❌ **Not orchestrator-integrated** - Not called by main workflows  
 - ❌ **No system references** - Not used by other agents
@@ -26,11 +29,13 @@ These agents are:
 To reactivate a parked agent:
 
 1. **Move back to main agents directory**:
+
    ```bash
    mv parked/[agent-name].js ./
    ```
 
 2. **Update orchestrator.js**:
+
    ```javascript
    // Uncomment the require and instantiation
    const AgentName = require('./agent-name');
@@ -39,6 +44,7 @@ To reactivate a parked agent:
    ```
 
 3. **Test integration**:
+
    ```bash
    node orchestrator.js health
    ```

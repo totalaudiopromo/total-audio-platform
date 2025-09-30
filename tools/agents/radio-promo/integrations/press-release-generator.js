@@ -443,7 +443,7 @@ Genre: ${artistData.genre}
 Release date: ${artistData.releaseDate}
 Include short intro, artist background, key highlights, and a closing call-to-action for radio programmers. Keep it concise and formatted for email/newsletter.`;
       const res = await anthropic.messages.create({
-        model: 'claude-3-5-sonnet-20241022',
+        model: process.env.ANTHROPIC_MODEL,
         max_tokens: 1200,
         temperature: 0.3,
         messages: [{ role: 'user', content: prompt }]

@@ -1,0 +1,52 @@
+# Weekly Content Calendar Template
+
+## Week of: [DATE]
+
+### Monday - Music Industry Insight Monday (9:00am GMT)
+- **LinkedIn**: [TOPIC] - Professional angle, industry credibility
+- **Blue Sky**: [TOPIC] - Tech innovation angle
+- **Target**: 15+ LinkedIn engagement, 8+ Blue Sky engagement
+- **Status**: [ ] Posted [ ] Scheduled [ ] Draft
+
+### Wednesday - Behind-the-Scenes Wednesday (9:00am GMT)
+- **LinkedIn**: Personal story, building Audio Intel journey
+- **Target**: 20+ engagement (personal stories perform best)
+- **Status**: [ ] Posted [ ] Scheduled [ ] Draft
+
+### Friday - Problem/Solution Friday (12:00pm GMT)
+- **Blue Sky**: Industry tips, time-saving insights
+- **Target**: 10+ engagement, focus on actionable advice
+- **Status**: [ ] Posted [ ] Scheduled [ ] Draft
+
+## Content Bank Ready to Use
+- [ ] 94% automation thread (LinkedIn + Blue Sky)
+- [ ] Personal Audio Intel story (LinkedIn)
+- [ ] vs Groover/SubmitHub comparison (LinkedIn + Blue Sky)
+- [ ] Radio submission timing tips (Blue Sky)
+- [ ] Manual research pain points (LinkedIn)
+
+## UTM Tracking for This Week
+- **LinkedIn**: ?utm_source=linkedin&utm_campaign=week_[DATE]
+- **Blue Sky**: ?utm_source=bluesky&utm_campaign=week_[DATE]
+
+## Success Metrics This Week
+- **LinkedIn**: [ ] 15+ avg engagement, [ ] 5+ intel.totalaudiopromo.com clicks
+- **Blue Sky**: [ ] 8+ avg engagement, [ ] 3+ intel.totalaudiopromo.com clicks
+- **Overall**: [ ] 2+ beta signups, [ ] 8+ website visits from social
+
+## Content Ideas for This Week
+- [ ] [IDEA 1]
+- [ ] [IDEA 2]
+- [ ] [IDEA 3]
+- [ ] [IDEA 4]
+- [ ] [IDEA 5]
+
+## Goals for This Week
+- **LinkedIn**: [ ] X posts, [ ] X comments, [ ] X new connections
+- **Blue Sky**: [ ] X posts, [ ] X replies, [ ] X new followers
+- **Overall**: [ ] X beta signups, [ ] X website visits
+
+## Notes
+- What worked well last week:
+- What to improve this week:
+- New ideas to test:

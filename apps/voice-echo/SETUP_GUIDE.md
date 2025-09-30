@@ -3,6 +3,7 @@
 ## Quick Start (5 minutes)
 
 ### 1. Environment Setup
+
 Create a `.env.local` file in the root directory:
 
 ```bash
@@ -17,22 +18,26 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Start Development Server
+
 ```bash
 npm run dev
 ```
 
 ### 4. Access the Application
-- **Landing Page**: http://localhost:3000
-- **Working Demo**: http://localhost:3000/demo
+
+- **Landing Page**: <http://localhost:3000>
+- **Working Demo**: <http://localhost:3000/demo>
 
 ## 🔑 API Key Setup
 
 ### Perplexity API (Required)
+
 1. Go to [Perplexity AI](https://www.perplexity.ai/)
 2. Sign up for an account
 3. Navigate to API settings
@@ -40,15 +45,18 @@ npm run dev
 5. Add to `.env.local`: `PERPLEXITY_API_KEY=your_key_here`
 
 ### Resend API (Optional - for email notifications)
+
 1. Go to [Resend](https://resend.com/)
 2. Create an account
 3. Generate API key
 4. Add to `.env.local`: `RESEND_API_KEY=your_key_here`
 
 ### Stripe API (Optional - for payments)
+
 1. Go to [Stripe Dashboard](https://dashboard.stripe.com/)
 2. Get your publishable and secret keys
 3. Add to `.env.local`:
+
    ```
    STRIPE_SECRET_KEY=sk_test_...
    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
@@ -57,6 +65,7 @@ npm run dev
 ## 🎯 Current Working Features
 
 ### ✅ Fully Functional
+
 - **Contact Enrichment**: Upload CSV, get AI-powered intelligence
 - **Multi-Platform Search**: Search across 7 platforms simultaneously
 - **AI Agents**: Get strategic music industry advice
@@ -64,6 +73,7 @@ npm run dev
 - **Beautiful UI**: Professional design with Audio brand system
 
 ### 🔧 API Endpoints
+
 - `POST /api/enrich` - Contact enrichment
 - `POST /api/search` - Multi-platform search
 - `POST /api/ai-agent` - AI agent responses
@@ -72,13 +82,15 @@ npm run dev
 ## 🧪 Testing the Demo
 
 ### 1. Contact Enrichment Test
-1. Go to http://localhost:3000/demo
+
+1. Go to <http://localhost:3000/demo>
 2. Click "Contact Enrichment" tab
 3. Upload a CSV with Name,Email columns
 4. Click "Start Enrichment"
 5. Watch AI process contacts in real-time
 
 ### 2. Platform Search Test
+
 1. Click "Platform Search" tab
 2. Enter: "indie rock playlist curators"
 3. Select "All Platforms"
@@ -86,6 +98,7 @@ npm run dev
 5. View results from 7 platforms
 
 ### 3. AI Agent Test
+
 1. Click "AI Agents" tab
 2. Select "Music Industry Strategist"
 3. Ask: "How should I pitch my indie rock EP to radio?"
@@ -94,12 +107,14 @@ npm run dev
 ## 🎨 Design System
 
 ### Audio Brand Integration
+
 - **Audio Character**: AI dog mascot with tool-specific colors
 - **Color System**: Electric blue for Audio Intel
 - **Texture Overlays**: Paper, grain, and luma textures
 - **Typography**: Bold, professional fonts
 
 ### Component Library
+
 - Built with shadcn/ui components
 - Custom Audio character animations
 - Responsive design for all devices
@@ -108,11 +123,13 @@ npm run dev
 ## 🚀 Deployment Ready
 
 ### Vercel Deployment
+
 1. Connect GitHub repository to Vercel
 2. Set environment variables in Vercel dashboard
 3. Deploy automatically on push to main
 
 ### Environment Variables for Production
+
 ```bash
 PERPLEXITY_API_KEY=your_production_key
 RESEND_API_KEY=your_production_key
@@ -124,11 +141,13 @@ NEXT_PUBLIC_BASE_URL=https://your-domain.com
 ## 🔍 Troubleshooting
 
 ### Common Issues
+
 1. **"Missing PERPLEXITY_API_KEY"**: Add your API key to `.env.local`
 2. **"Module not found"**: Run `npm install`
 3. **"Port 3000 in use"**: Use `npm run dev -- -p 3001`
 
 ### Performance Tips
+
 - Contact enrichment: 1.5s delay between requests (rate limiting)
 - Search results: Cached for 1 hour
 - File uploads: Limited to 10MB CSV files
@@ -136,12 +155,14 @@ NEXT_PUBLIC_BASE_URL=https://your-domain.com
 ## 📊 Success Metrics
 
 ### Current Performance
+
 - Contact enrichment accuracy: 94%+
 - API response time: <2 seconds
 - System uptime: 99.9%
 - Contacts processed: 517+ (366 radio contacts)
 
 ### Business Targets
+
 - Launch: 2 weeks from today
 - Revenue goal: £1K MRR Month 1
 - User acquisition: 50 beta users
@@ -150,10 +171,12 @@ NEXT_PUBLIC_BASE_URL=https://your-domain.com
 ## 🎵 Music Industry Context
 
 ### Target Markets
+
 - **Independent Artists** (£50-200/month): Affordable automation
 - **PR Agencies** (£500-2000/month): Scale operations
 
 ### Core Value Proposition
+
 - Eliminate 94% of repetitive research tasks
 - Increase campaign effectiveness by 300%+
 - Provide actionable intelligence for music promotion

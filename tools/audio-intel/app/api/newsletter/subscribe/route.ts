@@ -3,7 +3,8 @@ import fs from 'fs/promises';
 import path from 'path';
 
 const NEWSLETTER_FILE = path.join(process.cwd(), 'data', 'newsletter-subscribers.json');
-const CONVERTKIT_API_KEY = process.env.KIT_API_KEY || process.env.CONVERTKIT_API_KEY || '5wx6QPvhunue-d760yZHIg';
+// SECURITY: Hardcoded API key removed
+const CONVERTKIT_API_KEY = process.env.KIT_API_KEY || process.env.CONVERTKIT_API_KEY;
 const NEWSLETTER_FORM_ID = '8405293'; // Newsletter form ID
 const NEWSLETTER_SEQUENCE_ID = '2453582'; // Newsletter sequence ID
 
@@ -83,7 +84,7 @@ export async function POST(request: NextRequest) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          api_secret: process.env.CONVERTKIT_API_SECRET || 'BMiOCi6hPDA73O1pnwXh7_bXEBi5zMzf7Tgk5rP_trI',
+          api_secret: process.env.CONVERTKIT_API_SECRET,
           email: email,
           fields: {
             source: source,
@@ -105,7 +106,7 @@ export async function POST(request: NextRequest) {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              api_secret: process.env.CONVERTKIT_API_SECRET || 'BMiOCi6hPDA73O1pnwXh7_bXEBi5zMzf7Tgk5rP_trI',
+              api_secret: process.env.CONVERTKIT_API_SECRET,
               tag: 'newsletter_subscriber'
             })
           });
@@ -166,7 +167,7 @@ export async function POST(request: NextRequest) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            api_secret: process.env.CONVERTKIT_API_SECRET || 'BMiOCi6hPDA73O1pnwXh7_bXEBi5zMzf7Tgk5rP_trI',
+            api_secret: process.env.CONVERTKIT_API_SECRET,
             subject: welcomeEmailData.subject,
             content: welcomeEmailData.content,
             from_name: welcomeEmailData.from_name,

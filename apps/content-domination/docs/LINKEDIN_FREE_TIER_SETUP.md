@@ -7,6 +7,7 @@
 You've requested access to these FREE tier LinkedIn permissions:
 
 ### 1. "Share on LinkedIn" (Default Tier) ✅
+
 - **Status**: Default access - automatically approved
 - **Purpose**: Post content to your LinkedIn profile
 - **API**: UGC Posts API (v2/ugcPosts)
@@ -14,6 +15,7 @@ You've requested access to these FREE tier LinkedIn permissions:
 - **Limits**: 5 posts per day (conservative), 50 API calls per hour
 
 ### 2. "Sign In with LinkedIn using OpenID Connect" (Standard Tier) ✅  
+
 - **Status**: Standard access - usually approved within 24-48 hours
 - **Purpose**: Authenticate and get user profile
 - **API**: UserInfo API (v2/userinfo)
@@ -35,7 +37,7 @@ We're specifically NOT using these (which require paid subscriptions):
 ### Step 1: LinkedIn App Configuration
 
 1. **Go to LinkedIn Developer Portal**
-   - Visit: https://www.linkedin.com/developers/apps
+   - Visit: <https://www.linkedin.com/developers/apps>
    - Click "Create app"
 
 2. **App Details**
@@ -46,6 +48,7 @@ We're specifically NOT using these (which require paid subscriptions):
 
 3. **OAuth 2.0 Settings**
    - Redirect URLs:
+
      ```
      http://localhost:3000/auth/linkedin/callback
      https://your-domain.com/auth/linkedin/callback
@@ -92,11 +95,13 @@ LINKEDIN_REQUESTS_PER_HOUR=50
 ## 📊 FREE TIER LIMITS & OPTIMIZATION
 
 ### Rate Limits (Conservative Estimates)
+
 - **API Requests**: 50 per hour (we use <30)
 - **Posts**: 5 per day (we target 2-3)
 - **Profile Requests**: 10 per day (we use 1-2)
 
 ### Our Optimization Strategy
+
 ```javascript
 // 2-second minimum between requests
 LINKEDIN_MIN_REQUEST_INTERVAL=2000
@@ -110,6 +115,7 @@ LINKEDIN_QUEUE_POSTS_WHEN_LIMITED=true
 ```
 
 ### Cost Monitoring
+
 ```bash
 # Check LinkedIn usage
 npm run cost-dashboard
@@ -123,12 +129,14 @@ npm run cost-dashboard
 ## 🎯 POSTING STRATEGY FOR FREE TIER
 
 ### Content Types (All FREE)
+
 1. **Text Posts**: Newsjacking content with automation angles
 2. **Link Shares**: Links to your content with preview
 3. **Industry Commentary**: Thought leadership posts
 4. **Template-Based**: When AI budget is exhausted
 
 ### Posting Schedule
+
 ```bash
 # Business hours only (conserve API calls)
 Monday-Friday: 9 AM - 6 PM UK
@@ -141,6 +149,7 @@ Monthly: ~25-30 posts (well within limits)
 ```
 
 ### Content Quality Controls
+
 ```env
 # Only post high-quality content to maximize free tier ROI
 MIN_LINKEDIN_CONTENT_SCORE=8.0
@@ -151,6 +160,7 @@ AUTO_POST_LINKEDIN_THRESHOLD=9.0  # Very high bar
 ## 🔍 VERIFICATION & TESTING
 
 ### Step 1: Test Connection
+
 ```bash
 npm run test:linkedin
 
@@ -163,6 +173,7 @@ npm run test:linkedin
 ```
 
 ### Step 2: Test Post (Dry Run)
+
 ```bash
 npm run test:linkedin-post
 
@@ -171,6 +182,7 @@ npm run test:linkedin-post
 ```
 
 ### Step 3: Live Test Post
+
 ```bash
 npm run linkedin:test-post
 
@@ -182,6 +194,7 @@ npm run linkedin:test-post
 ## 🚨 TROUBLESHOOTING
 
 ### "Insufficient Permissions" Error
+
 ```bash
 # Check your app's approved products
 # Ensure both products are approved:
@@ -190,6 +203,7 @@ npm run linkedin:test-post
 ```
 
 ### "Rate Limit Exceeded" Error
+
 ```bash
 # Check current usage
 npm run linkedin:status
@@ -199,6 +213,7 @@ npm run linkedin:status
 ```
 
 ### "Invalid Access Token" Error
+
 ```bash
 # Token expired - re-run OAuth
 npm run auth:linkedin
@@ -207,6 +222,7 @@ npm run auth:linkedin
 ```
 
 ### "Application Not Found" Error
+
 ```bash
 # Check your Client ID/Secret in .env
 # Ensure they match your LinkedIn app exactly
@@ -215,18 +231,21 @@ npm run auth:linkedin
 ## 📈 SCALING WITHIN FREE TIER
 
 ### Month 1: Establish Pattern
+
 - 2 posts per day maximum
 - Focus on highest-quality content
 - Manual approval for all posts
 - **Target**: 50 LinkedIn posts, 0 costs
 
 ### Month 2: Optimize Performance  
+
 - Track which content gets best engagement
 - Optimize posting times
 - A/B test content templates
 - **Target**: Increase engagement 20%
 
 ### Month 3: Maximize Free Tier
+
 - 3-4 posts per day (still within limits)
 - Auto-approve highest-scoring content
 - Use AI selectively for best opportunities
@@ -237,18 +256,21 @@ npm run auth:linkedin
 Track these to prove ROI before any paid scaling:
 
 ### Engagement Metrics
+
 - **Likes**: Target 50+ per post
 - **Comments**: Target 5+ per post  
 - **Shares**: Target 2+ per post
 - **Profile Views**: Track weekly growth
 
 ### Business Metrics
+
 - **Email Signups**: From LinkedIn content
 - **Website Clicks**: From LinkedIn links
 - **Audio Intel Mentions**: Brand awareness
 - **Lead Quality**: Track inquiries from LinkedIn
 
 ### Cost Efficiency
+
 - **Cost per Engagement**: £0.00 (free tier)
 - **Cost per Lead**: £0.00 (free tier)
 - **ROI**: Infinite (no costs)

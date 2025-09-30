@@ -94,6 +94,9 @@ class GmailApiIntegration {
         response = await this.gmail.users.messages.list(params);
       } else if (method === 'messages.get') {
         response = await this.gmail.users.messages.get(params);
+      } else if (method === 'users.getProfile') {
+        const profileParams = { userId: params.userId || 'me' };
+        response = await this.gmail.users.getProfile(profileParams);
       } else {
         throw new Error(`Unsupported Gmail API method: ${method}`);
       }
@@ -594,8 +597,18 @@ class GmailApiIntegration {
    */
   async healthCheck() {
     try {
-      // Test with a simple search
-      await this.callGmailAPI('/users/me/profile');
+      if (this.usingDemo && this.demoMode) {
+        return {
+          status: 'demo-mode',
+          service: 'gmail',
+          libertyEmail: this.libertyEmail,
+          usingDemo: true,
+          timestamp: new Date().toISOString()
+        };
+      }
+
+      // Test with a simple profile request
+      await this.callGmailAPI('users.getProfile', { userId: 'me' });
       return {
         status: 'healthy',
         service: 'gmail',
@@ -614,4 +627,3 @@ class GmailApiIntegration {
 }
 
 module.exports = GmailApiIntegration;
-

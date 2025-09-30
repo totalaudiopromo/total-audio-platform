@@ -20,27 +20,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Audio Intel – AI-Powered Music Industry Intelligence | Founded by Music Industry Veteran',
-  description: 'Stop wasting 15 hours a week researching music contacts. Audio Intel uses AI to turn emails into detailed industry profiles instantly.',
+  title: 'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion',
+  description: 'Transform chaotic contact spreadsheets into organised databases in minutes. Built by radio promoters for radio promoters. BBC Radio 1 + Spotify case studies proven.',
+  keywords: 'music promotion, contact enrichment, radio promotion, playlist pitching, music industry contacts, BBC Radio 1, Spotify curators',
+  authors: [{ name: 'Chris Schofield', url: 'https://intel.totalaudiopromo.com' }],
+  creator: 'Chris Schofield',
+  publisher: 'Total Audio Promo',
+  robots: 'index, follow',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
-      { url: '/images/total_audio_promo_logo_trans.png', sizes: '512x512', type: 'image/png' }
+      { url: '/total_audio_promo_logo_trans.png', sizes: '512x512', type: 'image/png' }
     ],
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png'
   },
   openGraph: {
-    title: 'Audio Intel – AI-Powered Music Industry Contact Enrichment',
-    description: 'Stop wasting 15 hours a week researching music contacts. Audio Intel uses AI to turn emails into detailed industry profiles instantly.',
+    title: 'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion',
+    description: 'Transform chaotic contact spreadsheets into organised databases in minutes. Built by radio promoters for radio promoters. BBC Radio 1 + Spotify case studies proven.',
     url: 'https://intel.totalaudiopromo.com',
-    siteName: 'Audio Intel - Total Audio Promo',
+    siteName: 'Audio Intel',
     images: [
       {
         url: 'https://intel.totalaudiopromo.com/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Audio Intel - AI-Powered Music Industry Contact Enrichment',
+        alt: 'Audio Intel - Transform 15 hours of contact research into 15 minutes',
+        type: 'image/jpeg',
       },
     ],
     locale: 'en_GB',
@@ -48,11 +54,22 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Audio Intel – AI-Powered Music Industry Contact Enrichment',
-    description: 'Stop wasting 15 hours a week researching music contacts. Instantly enrich your email lists with AI-powered insights for playlist curators, radio DJs, and music bloggers.',
+    title: 'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment',
+    description: 'Transform chaotic contact spreadsheets into organised databases. BBC Radio 1 + Spotify case studies proven. Built by radio promoters.',
     images: ['https://intel.totalaudiopromo.com/og-image.jpg'],
     site: '@totalaudiopromo',
-    creator: '@totalaudiopromo',
+    creator: '@chrisschouk',
+  },
+  other: {
+    // LinkedIn specific meta tags
+    'linkedin:owner': 'chris-schofield-audio',
+    'article:author': 'Chris Schofield',
+    'article:publisher': 'https://intel.totalaudiopromo.com',
+    // Additional social media optimization
+    'fb:app_id': '1234567890', // Replace with your Facebook App ID if you have one
+    'application-name': 'Audio Intel',
+    'msapplication-TileColor': '#000000',
+    'theme-color': '#000000',
   },
 };
 

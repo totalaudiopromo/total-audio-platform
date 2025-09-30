@@ -3,6 +3,7 @@
 ## Current State Analysis
 
 ### Station Selection Logic
+
 The radio promo agent currently uses a **tiered targeting system** based on:
 
 1. **Tier 1 Commercial** (Critical Priority)
@@ -31,6 +32,7 @@ The radio promo agent currently uses a **tiered targeting system** based on:
    - 30% importance, local reach
 
 ### Current Limitations
+
 - **Static targeting** - no dynamic adjustment based on campaign performance
 - **No contact enrichment** - basic station info only
 - **No relationship tracking** - no history of interactions
@@ -44,6 +46,7 @@ The radio promo agent currently uses a **tiered targeting system** based on:
 #### 1.1 Core Contact Database Structure
 
 **Main Table: Radio Contacts**
+
 ```
 Fields:
 - Contact Name (Single Line Text)
@@ -68,6 +71,7 @@ Fields:
 ```
 
 **Linked Tables:**
+
 - **Campaigns** (linked to contacts)
 - **Interactions** (email opens, responses, plays)
 - **Play History** (from WARM API)
@@ -76,12 +80,14 @@ Fields:
 #### 1.2 Automated Workflows
 
 **When Contact Added:**
+
 1. Auto-enrich with Audio Intel
 2. Categorize by station type
 3. Set initial relationship status
 4. Create follow-up tasks
 
 **When Campaign Created:**
+
 1. Auto-select relevant contacts based on genre
 2. Prioritize by relationship status and response rate
 3. Generate personalized pitch templates
@@ -92,6 +98,7 @@ Fields:
 #### 2.1 Contact Enrichment Pipeline
 
 **Batch Enrichment Process:**
+
 ```javascript
 // Pseudo-code for integration
 async function enrichContacts() {
@@ -115,6 +122,7 @@ async function enrichContacts() {
 ```
 
 **Real-time Enrichment:**
+
 - Enrich contacts as they're added
 - Re-enrich every 3 months for active contacts
 - Update enrichment data when contact responds
@@ -122,6 +130,7 @@ async function enrichContacts() {
 #### 2.2 Enrichment Data Utilization
 
 **Use Audio Intel data to:**
+
 - **Personalize pitches** based on station focus and preferences
 - **Optimize timing** based on show schedules and submission windows
 - **Target genres** that match station's audience
@@ -167,6 +176,7 @@ function calculateStationScore(contact, campaign) {
 #### 3.2 Campaign-Specific Targeting
 
 **For each campaign:**
+
 1. **Analyze track characteristics** (genre, mood, commercial appeal)
 2. **Score all contacts** based on relevance
 3. **Select top 20-30 contacts** for initial outreach
@@ -178,6 +188,7 @@ function calculateStationScore(contact, campaign) {
 #### 4.1 Relationship Tracking
 
 **Track every interaction:**
+
 - Email opens and clicks
 - Response rates and timing
 - Play confirmations from WARM
@@ -185,6 +196,7 @@ function calculateStationScore(contact, campaign) {
 - Meeting requests and calls
 
 **Relationship scoring:**
+
 - Cold: 0-25 points
 - Warm: 26-50 points  
 - Hot: 51-75 points
@@ -193,6 +205,7 @@ function calculateStationScore(contact, campaign) {
 #### 4.2 Success Prediction
 
 **Use historical data to predict:**
+
 - Which contacts are most likely to respond
 - Best times to contact each station
 - Most effective pitch angles
@@ -201,6 +214,7 @@ function calculateStationScore(contact, campaign) {
 #### 4.3 Automated Follow-ups
 
 **Smart follow-up sequences:**
+
 - Day 3: Gentle reminder if no response
 - Day 7: Different angle or additional info
 - Day 14: Final follow-up with alternative approach
@@ -211,6 +225,7 @@ function calculateStationScore(contact, campaign) {
 #### 5.1 Enhanced Station Selection
 
 **Update the radio agent to:**
+
 1. **Query Airtable** for relevant contacts
 2. **Score contacts** using dynamic algorithm
 3. **Generate personalized pitches** using Audio Intel data
@@ -220,6 +235,7 @@ function calculateStationScore(contact, campaign) {
 #### 5.2 Real-time Optimization
 
 **During campaigns:**
+
 - **Monitor response rates** and adjust targeting
 - **Track play confirmations** from WARM API
 - **Update relationship scores** based on success
@@ -228,24 +244,28 @@ function calculateStationScore(contact, campaign) {
 ## 🎯 Implementation Roadmap
 
 ### Week 1-2: Airtable Setup
+
 - [ ] Design contact database structure
 - [ ] Set up automated workflows
 - [ ] Import existing contact data
 - [ ] Test basic functionality
 
 ### Week 3-4: Audio Intel Integration
+
 - [ ] Build enrichment pipeline
 - [ ] Test batch enrichment process
 - [ ] Integrate with Airtable workflows
 - [ ] Validate enrichment quality
 
 ### Week 5-6: Dynamic Targeting
+
 - [ ] Implement scoring algorithm
 - [ ] Build campaign-specific selection
 - [ ] Test with real campaigns
 - [ ] Refine based on results
 
 ### Week 7-8: Advanced Features
+
 - [ ] Add relationship tracking
 - [ ] Implement success prediction
 - [ ] Build automated follow-ups
@@ -254,18 +274,21 @@ function calculateStationScore(contact, campaign) {
 ## 💰 ROI Projections
 
 ### Time Savings
+
 - **Contact research**: 15 hours/week → 2 hours/week (87% reduction)
 - **Pitch personalization**: 10 hours/week → 3 hours/week (70% reduction)
 - **Follow-up management**: 8 hours/week → 2 hours/week (75% reduction)
 - **Total weekly savings**: 33 hours → 7 hours (79% reduction)
 
 ### Revenue Impact
+
 - **Better targeting** = 30% higher response rates
 - **Personalized pitches** = 25% more playlist adds
 - **Relationship tracking** = 40% more repeat success
 - **Automated follow-ups** = 20% more conversions
 
 ### Cost Analysis
+
 - **Airtable Pro**: £8/month per user
 - **Audio Intel**: £19.99/month (Pro plan)
 - **Total monthly cost**: ~£28

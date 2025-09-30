@@ -24,6 +24,8 @@ class TypeformApiIntegration {
     this.baseUrl = 'https://api.typeform.com';
     this.rateLimitDelay = 1000; // 1 second between calls
     this.lastApiCall = 0;
+    this.formCache = new Map();
+    this.maxPagesPerForm = 5;
     
     // READ-ONLY MODE - No writing allowed
     this.readOnlyMode = true;
@@ -51,8 +53,13 @@ class TypeformApiIntegration {
     
     try {
       this.lastApiCall = Date.now();
+      const method = (options.method || 'GET').toUpperCase();
+      if (method !== 'GET') {
+        throw new Error(`Typeform integration is read-only. Attempted ${method} request to ${endpoint}`);
+      }
       
       const response = await fetch(`${this.baseUrl}${endpoint}`, {
+        method,
         headers: {
           'Authorization': `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
@@ -118,6 +125,19 @@ class TypeformApiIntegration {
   }
 
   /**
+   * Retrieve full form definition using simple in-memory cache
+   */
+  async getFormCached(formId) {
+    if (this.formCache.has(formId)) {
+      return this.formCache.get(formId);
+    }
+
+    const form = await this.getForm(formId);
+    this.formCache.set(formId, form);
+    return form;
+  }
+
+  /**
    * Get form responses
    */
   async getFormResponses(formId, limit = 100, offset = 0) {
@@ -128,6 +148,48 @@ class TypeformApiIntegration {
       console.error(`Failed to get responses for form ${formId}:`, error);
       throw error;
     }
+  }
+
+  /**
+   * Get all responses for a form using pagination
+   */
+  async getAllFormResponses(formId, options = {}) {
+    const pageSize = options.pageSize || 100;
+    const maxPages = options.maxPages || this.maxPagesPerForm;
+    const responses = [];
+
+    let before = options.before || null;
+    let page = 0;
+
+    while (page < maxPages) {
+      const params = new URLSearchParams();
+      params.set('page_size', pageSize);
+      if (before) {
+        params.set('before', before);
+      }
+
+      const endpoint = `/forms/${formId}/responses?${params.toString()}`;
+      const response = await this.callTypeformAPI(endpoint);
+      const items = response.items || [];
+
+      responses.push(...items);
+
+      const hasMore = items.length === pageSize && (response.page_count ? (page + 1) < response.page_count : true);
+      if (!hasMore) {
+        break;
+      }
+
+      const lastItem = items[items.length - 1];
+      const nextBefore = lastItem?.token || lastItem?.response_id;
+      if (!nextBefore) {
+        break;
+      }
+
+      before = nextBefore;
+      page += 1;
+    }
+
+    return responses;
   }
 
   /**
@@ -166,11 +228,11 @@ class TypeformApiIntegration {
   /**
    * Process form response for campaign brief
    */
-  async processFormResponseForCampaign(formId, responseId, existingResponse = null) {
+  async processFormResponseForCampaign(formId, responseId, existingResponse = null, existingForm = null) {
     try {
       logger.info(`Processing Typeform response: ${responseId} from form ${formId}`);
 
-      const form = await this.getForm(formId);
+      const form = existingForm || await this.getFormCached(formId);
 
       // Use existing response if provided, otherwise fetch it
       const response = existingResponse || await this.getResponse(formId, responseId);
@@ -185,6 +247,10 @@ class TypeformApiIntegration {
       campaignBrief.responseToken = response.token || responseId;
       campaignBrief.formTitle = form.title || 'Untitled Form';
       campaignBrief.submittedAt = response.submitted_at || new Date().toISOString();
+
+      if (!campaignBrief.data.intakeDate && campaignBrief.submittedAt) {
+        campaignBrief.data.intakeDate = campaignBrief.submittedAt;
+      }
 
       logger.success(`Campaign brief extracted from Typeform response`);
       return campaignBrief;
@@ -395,16 +461,24 @@ class TypeformApiIntegration {
     
     if (answer.text) return answer.text;
     if (answer.choice) return answer.choice.label || answer.choice.other || '';
-    if (answer.choices && Array.isArray(answer.choices)) {
-      return answer.choices.map(choice => choice.label || choice.other || '').join(', ');
+    if (answer.choices) {
+      if (Array.isArray(answer.choices)) {
+        return answer.choices.map(choice => choice.label || choice.other || '').join(', ');
+      }
+      if (Array.isArray(answer.choices.labels)) {
+        return answer.choices.labels.join(', ');
+      }
+      if (answer.choices.label) return answer.choices.label;
+      if (answer.choices.other) return answer.choices.other;
     }
     if (answer.date) return answer.date;
     if (answer.number) return answer.number.toString();
     if (answer.boolean !== undefined) return answer.boolean.toString();
     if (answer.url) return answer.url;
+    if (answer.file_url) return answer.file_url;
     if (answer.email) return answer.email;
     if (answer.phone_number) return answer.phone_number;
-    
+
     return answer.toString();
   }
 
@@ -514,8 +588,8 @@ class TypeformApiIntegration {
         try {
           logger.info(`Searching form: ${form.title} (${form.id})`);
           
-          // Get all responses for this form
-          const responses = await this.getFormResponses(form.id, 100);
+          const fullForm = await this.getFormCached(form.id);
+          const responses = await this.getAllFormResponses(form.id);
           
           // Filter responses that contain the email
           const matchingResponses = responses.filter(response => {
@@ -529,7 +603,7 @@ class TypeformApiIntegration {
             for (const response of matchingResponses) {
               try {
                 const responseId = response.token || response.response_id || response.id;
-                const campaignBrief = await this.processFormResponseForCampaign(form.id, responseId, response);
+                const campaignBrief = await this.processFormResponseForCampaign(form.id, responseId, response, fullForm);
                 campaignBrief.emailMatch = searchEmail;
                 campaignBrief.formTitle = form.title;
                 foundCampaigns.push(campaignBrief);
@@ -599,6 +673,11 @@ class TypeformApiIntegration {
   async findCampaignsByArtist(artistName) {
     try {
       logger.info(`Searching for campaigns by artist: ${artistName}`);
+      const searchName = (artistName || '').trim().toLowerCase();
+      if (!searchName) {
+        logger.warn('Artist name not provided for Typeform search');
+        return [];
+      }
       
       // Get all forms first
       const forms = await this.getRecentForms(50); // Search last 50 forms for better coverage
@@ -611,18 +690,18 @@ class TypeformApiIntegration {
         try {
           logger.info(`Searching form: ${form.title} (${form.id})`);
           
-          // Get all responses for this form
-          const responses = await this.getFormResponses(form.id, 100);
+          const fullForm = await this.getFormCached(form.id);
+          const responses = await this.getAllFormResponses(form.id);
           
           // Search for artist name in responses
           for (const response of responses) {
             try {
               // Process the response to extract campaign data
-              const campaignBrief = await this.processFormResponseForCampaign(form.id, response.token || response.response_id || response.id, response);
+              const campaignBrief = await this.processFormResponseForCampaign(form.id, response.token || response.response_id || response.id, response, fullForm);
               
               // Check if this response contains the artist name
-              const artist = campaignBrief.data.artistName || '';
-              if (artist.toLowerCase().includes(artistName.toLowerCase())) {
+              const artist = (campaignBrief.data.artistName || '').toLowerCase();
+              if (artist.includes(searchName)) {
                 campaignBrief.artistMatch = artistName;
                 campaignBrief.formTitle = form.title;
                 foundCampaigns.push(campaignBrief);
@@ -652,20 +731,26 @@ class TypeformApiIntegration {
   async findCampaignsByArtistFast(artistName) {
     try {
       logger.info(`Fast search for campaigns by artist: ${artistName}`);
+      const searchName = (artistName || '').trim().toLowerCase();
+      if (!searchName) {
+        logger.warn('Artist name not provided for fast Typeform search');
+        return [];
+      }
       
       const forms = await this.getRecentForms(30); // Search last 30 forms for speed
       const foundCampaigns = [];
       
       for (const form of forms) {
         try {
-          const responses = await this.getFormResponses(form.id, 50); // Limit responses per form
+          const fullForm = await this.getFormCached(form.id);
+          const responses = await this.getAllFormResponses(form.id, { pageSize: 50, maxPages: this.maxPagesPerForm });
           
           for (const response of responses) {
             // Quick text search in response answers
-            if (this.responseContainsArtistName(response, artistName)) {
+            if (this.responseContainsArtistName(response, searchName)) {
               try {
                 // Only process if we found a match
-                const campaignBrief = await this.processFormResponseForCampaign(form.id, response.token || response.response_id || response.id, response);
+                const campaignBrief = await this.processFormResponseForCampaign(form.id, response.token || response.response_id || response.id, response, fullForm);
                 campaignBrief.artistMatch = artistName;
                 campaignBrief.formTitle = form.title;
                 foundCampaigns.push(campaignBrief);
@@ -691,15 +776,16 @@ class TypeformApiIntegration {
   /**
    * Check if a form response contains the specified artist name
    */
-  responseContainsArtistName(response, artistName) {
+  responseContainsArtistName(response, searchName) {
     if (!response.answers) return false;
-    
-    const searchName = artistName.toLowerCase();
     
     // Search through all answers for artist name
     for (const answer of Object.values(response.answers)) {
-      const answerText = this.extractAnswerValue(answer).toLowerCase();
-      if (answerText.includes(searchName)) {
+      const answerText = this.extractAnswerValue(answer);
+      if (typeof answerText !== 'string') {
+        continue;
+      }
+      if (answerText.toLowerCase().includes(searchName)) {
         return true;
       }
     }

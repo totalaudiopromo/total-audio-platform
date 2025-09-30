@@ -92,7 +92,7 @@ async function testTypeformReadOnly() {
     console.log(`✅ READ-ONLY mode confirmed - no data written`);
     
     console.log('\n🎯 What the agent found:');
-    console.log('1. All campaigns where you were tagged/mentioned');
+    console.log('1. All campaigns where your Liberty email appears or artist name matches');
     console.log('2. Recent campaigns from the last 30 days');
     console.log('3. Artist names, track titles, and genres');
     console.log('4. Campaign submission dates and form details');
@@ -106,7 +106,7 @@ async function testTypeformReadOnly() {
     
     console.log('\n🔒 Security:');
     console.log('✅ READ-ONLY mode - no data written to Typeform');
-    console.log('✅ Only searches for your email address');
+    console.log('✅ Searches using your Liberty email and artist names only');
     console.log('✅ No modifications to existing data');
     console.log('✅ Safe for company data');
     
@@ -122,4 +122,3 @@ async function testTypeformReadOnly() {
 
 // Run the test
 testTypeformReadOnly();
-

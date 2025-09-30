@@ -1,0 +1,1 @@
+# 📚 Research - Software Industry MOATS

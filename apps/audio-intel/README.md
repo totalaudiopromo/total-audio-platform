@@ -7,6 +7,7 @@ Audio Intel is a comprehensive web application that transforms basic email lists
 ### Core Functionality
 
 #### 1. **FREE Email Validation** 🆕
+
 - **DNS MX Record Checking** - Verify domains can actually receive emails
 - **Disposable Email Detection** - Identify temporary/fake email addresses  
 - **Free Email Provider Classification** - Distinguish business vs personal emails
@@ -17,6 +18,7 @@ Audio Intel is a comprehensive web application that transforms basic email lists
 - **Cost Savings** - Save £15-50/month on email validation services
 
 #### 2. **AI-Powered Contact Enrichment**
+
 - Upload CSV files with basic contact information (Name, Email)
 - AI analyzes each contact and provides detailed intelligence including:
   - Station/Platform information
@@ -29,6 +31,7 @@ Audio Intel is a comprehensive web application that transforms basic email lists
 - Real-time processing with progress indicators
 
 #### 3. **Multi-Platform Contact Search**
+
 Search for music industry contacts across 7 major platforms:
 
 - **Reddit**: Music communities, subreddits, moderators
@@ -40,6 +43,7 @@ Search for music industry contacts across 7 major platforms:
 - **LinkedIn**: Music industry professionals, companies, networking groups
 
 #### 4. **AI-Powered Music Industry Agents**
+
 Get strategic advice from specialized AI agents:
 
 - **Music Industry Strategist**: Industry positioning, label strategy, networking
@@ -52,6 +56,7 @@ Get strategic advice from specialized AI agents:
 - **Analytics Agent**: Performance analysis, KPIs, data-driven decisions
 
 #### 5. **Analytics Dashboard**
+
 - Track enrichment performance
 - Monitor search results across platforms
 - View success rates and confidence levels
@@ -61,6 +66,7 @@ Get strategic advice from specialized AI agents:
 ### Technical Features
 
 #### **Modern UI/UX**
+
 - Beautiful, responsive design with texture overlays
 - Smooth animations and transitions
 - Mobile-optimized interface
@@ -68,12 +74,14 @@ Get strategic advice from specialized AI agents:
 - Dark/light mode support
 
 #### **AI Integration**
+
 - Perplexity AI API integration for intelligent search
 - Real-time contact enrichment
 - Multi-agent AI system for strategic advice
 - Fallback data for demo purposes
 
 #### **Performance**
+
 - Fast loading times
 - Optimized image assets
 - Efficient API calls
@@ -119,6 +127,7 @@ audio-intel-live/
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js 18+ 
 - npm or yarn
 - Perplexity AI API key
@@ -126,18 +135,21 @@ audio-intel-live/
 ### Installation
 
 1. **Clone the repository**
+
 ```bash
 git clone <repository-url>
 cd audio-intel-live
 ```
 
 2. **Install dependencies**
+
 ```bash
 npm install
 ```
 
 3. **Set up environment variables**
 Create a `.env.local` file with:
+
 ```env
 PERPLEXITY_API_KEY=your_perplexity_api_key
 RESEND_API_KEY=your_resend_api_key
@@ -146,6 +158,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
 ```
 
 4. **Run the development server**
+
 ```bash
 npm run dev
 ```
@@ -156,6 +169,7 @@ Navigate to `http://localhost:3000`
 ## 🎯 Usage
 
 ### Contact Enrichment
+
 1. Navigate to the demo page (`/demo`)
 2. Upload a CSV file with Name and Email columns
 3. Click "Start Enrichment" to process contacts
@@ -163,6 +177,7 @@ Navigate to `http://localhost:3000`
 5. Export results to CSV
 
 ### Platform Search
+
 1. Go to the "Platform Search" tab
 2. Enter your search query (e.g., "indie rock playlist curators")
 3. Select specific platforms or search all
@@ -170,6 +185,7 @@ Navigate to `http://localhost:3000`
 5. Click "Visit" to open contact pages
 
 ### AI Agents
+
 1. Select an AI agent based on your needs
 2. Ask specific questions about your music career
 3. Receive strategic advice, recommendations, and next steps
@@ -178,20 +194,25 @@ Navigate to `http://localhost:3000`
 ## 🔧 API Endpoints
 
 ### Contact Enrichment
+
 - `POST /api/enrich` - Enrich contact list with AI intelligence
 
 ### Multi-Platform Search
+
 - `POST /api/search` - Search across 7 platforms for music industry contacts
 
 ### AI Agents
+
 - `POST /api/ai-agent` - Get strategic advice from specialized AI agents
 
 ### Analytics
+
 - `POST /api/analytics` - Track user interactions and events
 
 ## 🎨 Design System
 
 The application uses a custom design system with:
+
 - **Texture Overlays**: Paper, grain, and luma textures for visual depth
 - **Color Palette**: Blue gradient primary colors with supporting grays
 - **Typography**: Bold, readable fonts with proper hierarchy

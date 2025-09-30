@@ -1,6 +1,7 @@
 # 🚨 CRITICAL: Notion Integration Recovery & Prevention Plan
 
 ## Current Issue Analysis
+
 **Problem**: Notion MCP server constantly disconnects/becomes unauthorized despite correct API keys
 **Impact**: CRITICAL - blocks all project management and documentation workflows
 **Root Cause**: MCP server configuration instability + API token handling issues
@@ -10,7 +11,8 @@
 ## 🔧 IMMEDIATE FIX PROTOCOL
 
 ### Step 1: Verify Integration in Notion
-1. Go to: https://www.notion.so/my-integrations
+
+1. Go to: <https://www.notion.so/my-integrations>
 2. Find "Claude Code Integration" 
 3. **Copy the EXACT token** (starts with `ntn_`)
 4. Verify it has these permissions:
@@ -21,6 +23,7 @@
    - ✅ Insert comments
 
 ### Step 2: Fresh MCP Configuration
+
 ```bash
 # Remove existing broken connection
 claude mcp remove notion
@@ -33,13 +36,16 @@ claude mcp list
 ```
 
 ### Step 3: Test Connection
+
 ```bash
 # Should return your user info, not 401 error
 # Test via Claude Code interface
 ```
 
 ### Step 4: Share Critical Pages
+
 **MUST SHARE** these pages with the integration:
+
 - [ ] Sprint tracking workspace
 - [ ] Beta user acquisition docs  
 - [ ] Project roadmap
@@ -51,6 +57,7 @@ claude mcp list
 ## 🛡️ PREVENTION SYSTEM
 
 ### 1. Daily Integration Health Check
+
 **Location**: `/tools/agents/notion-health-check.js`
 
 ```javascript
@@ -81,10 +88,12 @@ checkNotionHealth();
 ```
 
 ### 2. Environment Variable Backup System
+
 **Create**: `.env.notion-backup` with current working tokens
 **Update**: Every time you get a working connection
 
 ### 3. MCP Server Monitoring
+
 **Location**: `/tools/agents/mcp-monitor.sh`
 
 ```bash
@@ -113,6 +122,7 @@ fi
 ```
 
 ### 4. Backup Documentation System
+
 **Always maintain local copies** of critical docs that can be synced to Notion:
 
 - `sprint-tracking.md` 
@@ -125,12 +135,14 @@ fi
 ## 🚀 WORKFLOW INTEGRATION
 
 ### Morning Startup Routine
+
 1. **Run health check**: `node tools/agents/notion-health-check.js`
 2. **If broken**: Run recovery protocol
 3. **Test with actual operation**: Create/update a test page
 4. **Only then**: Proceed with critical work
 
 ### End of Day Backup
+
 1. **Export critical data** from Notion to local markdown
 2. **Commit to git** as backup
 3. **Verify tomorrow's startup** will work
@@ -140,16 +152,19 @@ fi
 ## 🎯 ALTERNATIVE SOLUTIONS
 
 ### Backup System 1: Local-First with Notion Sync
+
 - **Primary**: Work in local markdown files
 - **Secondary**: Auto-sync to Notion when connection works
 - **Benefit**: Never blocked by integration issues
 
 ### Backup System 2: Obsidian Integration
+
 - **Setup**: Obsidian vault in project folder
 - **Sync**: Manual or automated sync to Notion
 - **Benefit**: Local-first, always available
 
 ### Backup System 3: Git-Based Project Management
+
 - **Issues**: GitHub Issues for tracking
 - **Docs**: Markdown files in repo
 - **Sync**: GitHub Actions to sync with Notion
@@ -176,11 +191,13 @@ When Notion breaks (again):
 **If integration keeps breaking weekly:**
 
 ### Switch to Hybrid System
+
 1. **Critical tracking**: Local markdown + Git
 2. **Nice-to-have**: Notion when it works
 3. **Sync script**: Push local updates to Notion when possible
 
 ### Benefits:
+
 - ✅ Never blocked by integration issues
 - ✅ Full version control of all tracking
 - ✅ Works offline
@@ -200,9 +217,10 @@ When Notion breaks (again):
 ## 📞 EMERGENCY CONTACTS
 
 **When all else fails:**
-- Claude Code Discord: https://discord.gg/claude
-- Notion Support: https://www.notion.so/help
-- MCP Documentation: https://docs.anthropic.com/claude/docs/mcp
+
+- Claude Code Discord: <https://discord.gg/claude>
+- Notion Support: <https://www.notion.so/help>
+- MCP Documentation: <https://docs.anthropic.com/claude/docs/mcp>
 
 ---
 

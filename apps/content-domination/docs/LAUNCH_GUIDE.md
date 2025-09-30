@@ -11,12 +11,14 @@ This guide will take you from zero to having a fully operational Content Dominat
 ## 📋 Pre-Launch Checklist
 
 ### 1. Environment Setup
+
 - [ ] `.env` file created from `.env.example`
 - [ ] All API credentials configured
 - [ ] Database connections tested
 - [ ] Security secrets generated
 
 ### 2. API Integrations  
+
 - [ ] Twitter API v2 with Elevated access
 - [ ] LinkedIn OAuth completed
 - [ ] Notion databases created and shared
@@ -24,6 +26,7 @@ This guide will take you from zero to having a fully operational Content Dominat
 - [ ] Kit.com forms and sequences configured
 
 ### 3. System Validation
+
 - [ ] All setup verification tests passed
 - [ ] RSS feeds accessible
 - [ ] Alert systems configured
@@ -68,6 +71,7 @@ npm run verify-setup
 ```
 
 This will check:
+
 - All environment variables
 - API connectivity  
 - Database access
@@ -84,6 +88,7 @@ npm run test:newsjacking
 ```
 
 This performs a dry run to verify:
+
 - News detection works
 - Content generation functions
 - Notion integration saves data
@@ -97,6 +102,7 @@ npm run start
 ```
 
 Or for background process:
+
 ```bash
 # Start in background with logging
 nohup npm run start > monitoring.log 2>&1 &
@@ -154,6 +160,7 @@ When you run `npm run start`, you'll see a live dashboard showing:
 Configure these in your `.env`:
 
 **Email Alerts** (via SMTP):
+
 ```env
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
@@ -163,11 +170,13 @@ ALERT_EMAIL=chris@totalaudiopromo.com
 ```
 
 **Slack Alerts**:
+
 ```env
 SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
 ```
 
 **Custom Webhooks**:
+
 ```env
 WEBHOOK_ALERT_URL=https://your-webhook-endpoint.com/alerts
 WEBHOOK_SECRET=your_secure_webhook_secret
@@ -231,17 +240,20 @@ NEWSJACKING_RESPONSE_TARGET=30  # minutes
 ### Resource Management
 
 **CPU & Memory**:
+
 - RSS scanning: ~50MB RAM
 - Content generation: ~200MB RAM (peak)
 - Background monitoring: ~30MB RAM
 
 **API Rate Limits**:
+
 - Twitter: 300 tweets/3 hours
 - LinkedIn: 100 requests/hour
 - Claude: Based on your plan
 - Notion: 3 requests/second
 
 **Storage**:
+
 - Notion databases handle all content storage
 - Local logs: ~10MB/day (rotated weekly)
 
@@ -252,6 +264,7 @@ NEWSJACKING_RESPONSE_TARGET=30  # minutes
 ### Common Issues
 
 **"RSS feeds not accessible"**
+
 ```bash
 # Check internet connection and DNS
 ping musicbusinessworldwide.com
@@ -267,18 +280,21 @@ parser.parseURL('https://www.musicbusinessworldwide.com/feed/')
 ```
 
 **"Claude API rate limited"**
+
 - Check usage in Anthropic console
 - Increase billing limits
 - Switch to Claude-3-Sonnet for lower costs
 - Implement content batching
 
 **"LinkedIn access token expired"**
+
 ```bash
 # Re-run OAuth flow
 npm run auth:linkedin
 ```
 
 **"Notion database not accessible"**
+
 - Verify integration permissions
 - Check database IDs in .env
 - Ensure integration is shared with databases
@@ -403,6 +419,7 @@ AUTO_APPROVAL_THRESHOLD=0.9  # Conservative initially
 Your Content Domination System with Newsjacker 3000 is now configured and ready for production use.
 
 **Next Commands:**
+
 ```bash
 # Final verification
 npm run verify-setup
@@ -412,6 +429,7 @@ npm run start
 ```
 
 **Watch for**: 
+
 - Real-time opportunity detection
 - Automated content generation
 - Instant critical alerts

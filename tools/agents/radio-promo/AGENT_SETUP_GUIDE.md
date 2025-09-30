@@ -3,12 +3,14 @@
 ## **Current Setup: Liberty Music PR Agent** ✅
 
 ### **What This Agent Does**
+
 - **Purpose**: Personal assistant for your Liberty Music PR work
 - **Gmail**: Connected to `chrisschofield@libertymusicpr.com`
 - **Monday.com**: Only edits board `2443582331` (your Liberty board)
 - **Focus**: Radio promotion campaigns, press releases, artist management
 
 ### **Liberty Agent Features**
+
 - ✅ **Campaign Discovery**: Gmail+Typeform cross-referencing
 - ✅ **Press Release Generation**: With artist assets from Typeform
 - ✅ **Monday.com Integration**: Campaign board management
@@ -19,12 +21,14 @@
 ## **Future Setup: Total Audio Promo Agent** 🚀
 
 ### **What This Agent Will Do**
+
 - **Purpose**: Business operations for Total Audio Promo
 - **Gmail**: Connected to your Total Audio Promo email
 - **Monday.com**: Your Total Audio Promo boards
 - **Focus**: SaaS operations, Audio Intel, business development
 
 ### **Total Audio Promo Agent Features** (Planned)
+
 - 🎯 **Audio Intel Management**: Contact enrichment workflows
 - 🎯 **Customer Support**: Ticket management and responses
 - 🎯 **Business Analytics**: Revenue tracking and metrics
@@ -34,12 +38,14 @@
 ## **Current Liberty Agent Status** ✅
 
 ### **Fully Working**
+
 ```bash
 # Test the agent
 MONDAY_API_KEY=eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjU2MDQxOTk1MSwiYWFpIjoxMSwidWlkIjoxNzkyMDMyNCwiaWFkIjoiMjAyNS0wOS0xMFQxMzozODoyMC44MzVaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6ODI0MjgzLCJyZ24iOiJ1c2UxIn0.iSTCqKmzpJxhPxfh9zkAPFIe0dgnhBbrhl8V7Azf1Gw node ../radio-promo-agent.js --help
 ```
 
 ### **Available Commands**
+
 ```bash
 # Process transcripts
 node ../radio-promo-agent.js process-transcript gemini:transcript-id
@@ -64,12 +70,15 @@ node ../radio-promo-agent.js analyze-mailchimp
 ## **MCP Integration Status** ✅
 
 ### **Current MCPs**
+
 - ✅ **Notion MCP**: Project management
 - ✅ **Puppeteer MCP**: Web automation
 - ✅ **Google Services MCP**: Gmail, Drive, Calendar (custom)
 
 ### **MCP Setup for Liberty Agent**
+
 1. **Run OAuth Flow**:
+
    ```bash
    node simple-gmail-oauth.js
    ```
@@ -87,6 +96,7 @@ node ../radio-promo-agent.js analyze-mailchimp
 ## **Next Steps for Total Audio Promo Agent**
 
 ### **Phase 1: Duplicate Liberty Agent**
+
 ```bash
 # Copy Liberty agent structure
 cp -r radio-promo/ total-audio-promo-agent/
@@ -99,12 +109,14 @@ cd total-audio-promo-agent/
 ```
 
 ### **Phase 2: Customize for Total Audio Promo**
+
 - **Gmail**: Connect to your Total Audio Promo email
 - **Monday.com**: Connect to your Total Audio Promo boards
 - **Templates**: Update for Audio Intel, SaaS operations
 - **Workflows**: Focus on business operations, not radio promotion
 
 ### **Phase 3: Add Total Audio Promo Features**
+
 - **Audio Intel Integration**: Contact enrichment workflows
 - **Customer Support**: Ticket management
 - **Business Analytics**: Revenue and metrics tracking
@@ -113,6 +125,7 @@ cd total-audio-promo-agent/
 ## **Agent Separation Strategy**
 
 ### **Liberty Music PR Agent** (Current)
+
 - **Location**: `/tools/agents/radio-promo/`
 - **Purpose**: Personal Liberty Music PR work
 - **Gmail**: `chrisschofield@libertymusicpr.com`
@@ -120,6 +133,7 @@ cd total-audio-promo-agent/
 - **Focus**: Radio promotion, press releases, artist management
 
 ### **Total Audio Promo Agent** (Future)
+
 - **Location**: `/tools/agents/total-audio-promo/`
 - **Purpose**: Total Audio Promo business operations
 - **Gmail**: Your Total Audio Promo email
@@ -144,7 +158,7 @@ cd total-audio-promo-agent/
 **For Total Audio Promo agent, we can duplicate the Liberty agent and customize it for your business operations.**
 
 **Would you like me to:**
+
 1. **Test the Liberty agent** with your Monday.com API key?
 2. **Start building the Total Audio Promo agent** based on the Liberty agent?
 3. **Set up the MCP integration** for Gmail/Drive/Calendar?
-

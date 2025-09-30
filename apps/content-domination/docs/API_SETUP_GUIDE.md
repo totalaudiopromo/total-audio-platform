@@ -3,6 +3,7 @@
 ## 🚀 Quick Start
 
 1. Copy the environment template:
+
 ```bash
 cp .env.example .env
 ```
@@ -15,18 +16,19 @@ cp .env.example .env
 ## 📱 Twitter API v2 Setup
 
 ### Prerequisites
+
 - Twitter Developer Account
 - Elevated Access (for v2 API features)
 
 ### Step-by-Step Configuration
 
 1. **Create a Twitter Developer Account**
-   - Go to https://developer.twitter.com
+   - Go to <https://developer.twitter.com>
    - Apply for developer access
    - Select "Professional" or "Academic" based on your use case
 
 2. **Create a New App**
-   - Navigate to https://developer.twitter.com/en/portal/dashboard
+   - Navigate to <https://developer.twitter.com/en/portal/dashboard>
    - Click "Create Project"
    - Name it: "Total Audio Promo Content System"
    - Select use case: "Making a bot" or "Exploring the API"
@@ -52,11 +54,13 @@ cp .env.example .env
      - Client Secret → `TWITTER_CLIENT_SECRET`
 
 ### Required Permissions
+
 - Read and write
 - Direct message (optional)
 - Email address (optional)
 
 ### Rate Limits
+
 - 300 tweets per 3-hour window
 - 1000 requests per 24-hour window for search
 
@@ -65,13 +69,14 @@ cp .env.example .env
 ## 💼 LinkedIn API Setup
 
 ### Prerequisites
+
 - LinkedIn account
 - Company page (recommended)
 
 ### Step-by-Step Configuration
 
 1. **Create LinkedIn App**
-   - Go to https://www.linkedin.com/developers/apps
+   - Go to <https://www.linkedin.com/developers/apps>
    - Click "Create app"
    - App name: "Total Audio Promo Automation"
    - LinkedIn Page: Select your company page
@@ -81,10 +86,12 @@ cp .env.example .env
 2. **Configure OAuth 2.0**
    - In app settings, go to "Auth" tab
    - Add redirect URLs:
+
      ```
      http://localhost:3000/auth/linkedin/callback
      https://your-domain.com/auth/linkedin/callback
      ```
+
    - Note your credentials:
      - Client ID → `LINKEDIN_CLIENT_ID`
      - Client Secret → `LINKEDIN_CLIENT_SECRET`
@@ -97,24 +104,29 @@ cp .env.example .env
    - Wait for approval (usually 1-2 business days)
 
 4. **Generate Access Token**
+
    ```bash
    # Use the provided OAuth flow script
    npm run auth:linkedin
    ```
+
    - Follow the browser prompts
    - Save the generated tokens:
      - Access Token → `LINKEDIN_ACCESS_TOKEN`
      - Refresh Token → `LINKEDIN_REFRESH_TOKEN`
 
 5. **Get Your Person URN**
+
    ```bash
    # After authentication, run:
    curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
         https://api.linkedin.com/v2/me
    ```
+
    - Find your person URN → `LINKEDIN_PERSON_URN`
 
 ### Permissions Required
+
 - w_member_social (posting)
 - r_liteprofile (profile access)
 - r_emailaddress (optional)
@@ -124,13 +136,14 @@ cp .env.example .env
 ## 📝 Notion API Setup
 
 ### Prerequisites
+
 - Notion workspace
 - Admin access to workspace
 
 ### Step-by-Step Configuration
 
 1. **Create Notion Integration**
-   - Go to https://www.notion.so/my-integrations
+   - Go to <https://www.notion.so/my-integrations>
    - Click "New integration"
    - Name: "Content Domination System"
    - Select your workspace
@@ -214,13 +227,14 @@ cp .env.example .env
 ## 🤖 Claude API (Anthropic) Setup
 
 ### Prerequisites
+
 - Anthropic account
 - Credit card for billing
 
 ### Step-by-Step Configuration
 
 1. **Create Anthropic Account**
-   - Go to https://console.anthropic.com
+   - Go to <https://console.anthropic.com>
    - Sign up with email
    - Verify email address
 
@@ -230,7 +244,7 @@ cp .env.example .env
    - Set usage limits (recommended: $100/month initially)
 
 3. **Generate API Key**
-   - Navigate to https://console.anthropic.com/account/keys
+   - Navigate to <https://console.anthropic.com/account/keys>
    - Click "Create Key"
    - Name: "Content Domination System"
    - Copy the key → `ANTHROPIC_API_KEY`
@@ -242,6 +256,7 @@ cp .env.example .env
    - Temperature: 0.7 (balanced creativity)
 
 ### Usage Considerations
+
 - Claude-3-Opus: ~$15/million input tokens, $75/million output tokens
 - Claude-3-Sonnet: ~$3/million input tokens, $15/million output tokens
 - Monitor usage in console dashboard
@@ -251,6 +266,7 @@ cp .env.example .env
 ## 📧 Kit.com (ConvertKit) Setup
 
 ### Prerequisites
+
 - ConvertKit/Kit.com account
 - At least one form created
 - Email sequence configured
@@ -258,9 +274,9 @@ cp .env.example .env
 ### Step-by-Step Configuration
 
 1. **Get API Credentials**
-   - Log into https://app.kit.com
+   - Log into <https://app.kit.com>
    - Go to Settings → Advanced → API
-   - Or direct link: https://app.kit.com/account_settings/developer
+   - Or direct link: <https://app.kit.com/account_settings/developer>
    - Copy credentials:
      - API Key → `KIT_API_KEY`
      - API Secret → `KIT_API_SECRET`
@@ -316,7 +332,7 @@ HYPEBOT_RSS_URL=https://www.hypebot.com/feed
 ### Spotify for Artists API
 
 1. **Create Spotify App**
-   - Go to https://developer.spotify.com/dashboard
+   - Go to <https://developer.spotify.com/dashboard>
    - Create app: "Content Automation"
    - Note credentials:
      - Client ID → `SPOTIFY_CLIENT_ID`
@@ -328,6 +344,7 @@ HYPEBOT_RSS_URL=https://www.hypebot.com/feed
 ### Premium News Sources (Optional)
 
 For Music Week and other premium sources:
+
 - Contact for API access
 - Usually requires paid subscription
 - Enhanced data quality and exclusivity
@@ -364,7 +381,7 @@ openssl rand -hex 24
 
 ### Instagram API (via Facebook)
 
-1. Create Facebook App at https://developers.facebook.com
+1. Create Facebook App at <https://developers.facebook.com>
 2. Add Instagram Basic Display product
 3. Configure OAuth Redirect URIs
 4. Generate long-lived access token
@@ -372,12 +389,14 @@ openssl rand -hex 24
 ### Monitoring Services
 
 **Sentry** (Error Tracking)
-- Sign up at https://sentry.io
+
+- Sign up at <https://sentry.io>
 - Create project
 - Copy DSN → `SENTRY_DSN`
 
 **Mixpanel** (Analytics)
-- Sign up at https://mixpanel.com
+
+- Sign up at <https://mixpanel.com>
 - Get project token → `MIXPANEL_TOKEN`
 
 ---
@@ -391,6 +410,7 @@ npm run verify-setup
 ```
 
 This will check:
+
 - [ ] All required environment variables are set
 - [ ] API credentials are valid
 - [ ] Notion databases are accessible
@@ -434,11 +454,11 @@ This will check:
 
 ## 📞 Support Contacts
 
-- Twitter API: https://developer.twitter.com/en/support
-- LinkedIn: https://www.linkedin.com/help/linkedin
-- Notion: https://www.notion.so/help
-- Anthropic: support@anthropic.com
-- Kit.com: https://help.kit.com
+- Twitter API: <https://developer.twitter.com/en/support>
+- LinkedIn: <https://www.linkedin.com/help/linkedin>
+- Notion: <https://www.notion.so/help>
+- Anthropic: <support@anthropic.com>
+- Kit.com: <https://help.kit.com>
 
 ---
 

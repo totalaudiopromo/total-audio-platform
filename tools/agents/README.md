@@ -18,20 +18,24 @@ node gmail-liberty-setup.js setup
 ### Core Active Agents
 
 **`core-agents/radio-promo/`** - Radio promotion workflow
+
 - `radio-promo-agent.js` - Main radio promotion agent
 - `campaign-agent.js` - Campaign management
 
 **`core-agents/content/`** - Content generation and automation
+
 - Content generation agents
 - Newsletter automation
 - Social media agents
 
 **`core-agents/business/`** - Business and analytics
+
 - Analytics agents
 - Agency management
 - SaaS marketing tools
 
 **`core-agents/technical/`** - Technical utilities
+
 - Database agents
 - Contact management
 - Dashboard tools
@@ -39,21 +43,25 @@ node gmail-liberty-setup.js setup
 ### Support Systems
 
 **`gmail-setup/`** - Gmail organisation system
+
 - Automated label and filter setup
 - Radio promo workflow integration
 - Colour coding and automation
 
 **`radio-promo/`** - Radio promotion data and integrations
+
 - Station databases
 - API integrations
 - Email templates
 
 **`utilities/`** - Development utilities
+
 - Notion integration tools
 - Memory persistence
 - Health checks
 
 **`docs/`** - Documentation
+
 - Setup guides
 - Usage instructions
 - Integration documentation

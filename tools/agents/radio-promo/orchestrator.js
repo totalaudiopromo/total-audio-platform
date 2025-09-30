@@ -36,6 +36,7 @@ const PressGenerator = require('./integrations/press-generator');
 const CampaignScheduler = require('./integrations/campaign-scheduler');
 const RealTimeMonitor = require('./integrations/real-time-monitor');
 const AutoFollowupSystem = require('./integrations/auto-followup-system');
+const GmailTypeformMatcher = require('./integrations/gmail-typeform-matcher');
 
 // Configuration imports
 const LibertyTemplates = require('./config/liberty-templates');
@@ -106,7 +107,7 @@ class LibertyRadioPromoOrchestrator extends EventEmitter {
     // Campaign state management
     this.campaigns = new Map();
     this.activeWorkflows = new Map();
-    
+
     // Agent system
     this.agents = {
       intelligence: null,
@@ -141,9 +142,20 @@ class LibertyRadioPromoOrchestrator extends EventEmitter {
       warmApiEnabled: true,
       googleChatWebhook: process.env.GOOGLE_CHAT_WEBHOOK,
       dashboardPort: process.env.DASHBOARD_PORT || 3008,
-      logLevel: process.env.LOG_LEVEL || 'info'
+      logLevel: process.env.LOG_LEVEL || 'info',
+      gmailDailySyncHour: parseInt(process.env.GMAIL_DAILY_SYNC_HOUR || '9', 10),
+      gmailDailySyncMinute: parseInt(process.env.GMAIL_DAILY_SYNC_MINUTE || '0', 10),
+      gmailDailySyncEnabled: process.env.GMAIL_DAILY_SYNC_DISABLED !== 'true',
+      amazingRadioWebhook: process.env.AMAZING_RADIO_WEBHOOK_URL,
+      wigwamRadioWebhook: process.env.WIGWAM_RADIO_WEBHOOK_URL,
+      amazingRadioUsername: process.env.AMAZING_RADIO_USERNAME,
+      amazingRadioPassword: process.env.AMAZING_RADIO_PASSWORD,
+      wigwamUsername: process.env.WIGWAM_USERNAME,
+      wigwamPassword: process.env.WIGWAM_PASSWORD,
+      europeanIndieEmail: process.env.EUROPEAN_INDIE_MUSIC_EMAIL,
+      europeanIndiePaymentUrl: process.env.EUROPEAN_INDIE_MUSIC_PAYMENT_URL
     };
-    
+
     // Liberty workflow definitions
     this.workflows = {
       'complete-campaign': {
@@ -208,6 +220,13 @@ class LibertyRadioPromoOrchestrator extends EventEmitter {
       fallbackMethods: new Map(),
       criticalOperations: ['warm-api-calls', 'client-deliverables', 'payment-processing']
     };
+
+    // Integration helpers
+    this.gmailMatcher = new GmailTypeformMatcher();
+    this.timers = {
+      gmailDailyTimeout: null,
+      gmailDailyInterval: null
+    };
   }
 
   /**
@@ -234,7 +253,10 @@ class LibertyRadioPromoOrchestrator extends EventEmitter {
       
       // Load existing campaigns
       await this.loadCampaignState();
-      
+
+      // Schedule daily Gmail -> Typeform sync
+      this.scheduleDailyGmailSync();
+
       logger.success('Liberty Radio Promo Orchestrator initialized successfully');
       logger.info(`Dashboard available at: http://localhost:${this.config.dashboardPort}`);
       
@@ -325,6 +347,59 @@ class LibertyRadioPromoOrchestrator extends EventEmitter {
     
     const activeAgents = Object.values(this.agents).filter(agent => agent !== null).length;
     logger.info(`Agent initialization complete: ${activeAgents}/6 agents active`);
+  }
+
+  /**
+   * Schedule daily Gmail/Typeform sync at configured time (defaults 09:00)
+   */
+  scheduleDailyGmailSync() {
+    if (!this.config.gmailDailySyncEnabled) {
+      logger.info('Daily Gmail sync disabled via configuration');
+      return;
+    }
+
+    const hour = Number.isFinite(this.config.gmailDailySyncHour) ? this.config.gmailDailySyncHour : 9;
+    const minute = Number.isFinite(this.config.gmailDailySyncMinute) ? this.config.gmailDailySyncMinute : 0;
+
+    const scheduleNextRun = () => {
+      if (this.timers.gmailDailyInterval) {
+        clearInterval(this.timers.gmailDailyInterval);
+        this.timers.gmailDailyInterval = null;
+      }
+      if (this.timers.gmailDailyTimeout) {
+        clearTimeout(this.timers.gmailDailyTimeout);
+        this.timers.gmailDailyTimeout = null;
+      }
+
+      const now = new Date();
+      const nextRun = new Date(now);
+      nextRun.setHours(hour, minute, 0, 0);
+      if (nextRun <= now) {
+        nextRun.setDate(nextRun.getDate() + 1);
+      }
+
+      const delay = nextRun.getTime() - now.getTime();
+      logger.info(`Scheduling daily Gmail sync at ${nextRun.toISOString()}`);
+
+      this.timers.gmailDailyTimeout = setTimeout(() => {
+        this.runDailyGmailSync();
+        this.timers.gmailDailyInterval = setInterval(() => {
+          this.runDailyGmailSync();
+        }, 24 * 60 * 60 * 1000);
+      }, delay);
+    };
+
+    scheduleNextRun();
+  }
+
+  async runDailyGmailSync() {
+    try {
+      logger.info('📬 Running daily Gmail → Typeform campaign sync');
+      const results = await this.gmailMatcher.findLibertyCampaigns();
+      logger.success(`Daily Gmail sync completed. Matched campaigns: ${results.totalMatches}`);
+    } catch (error) {
+      logger.error('Daily Gmail sync failed:', error);
+    }
   }
 
   /**

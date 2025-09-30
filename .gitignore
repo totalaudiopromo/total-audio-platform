@@ -145,3 +145,9 @@ coverage/
 # Exclude specific large files
 duplicate-backup-*.json
 .vercel
+
+# Browser automation sessions
+.notion-session/
+
+# Cleanup and old files
+archive/cleanup-temp/

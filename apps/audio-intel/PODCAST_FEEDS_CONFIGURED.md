@@ -51,6 +51,7 @@ Based on your request, here are the RSS feeds for the podcasts you want to monit
 ## **🚀 Quick Setup**
 
 ### **Step 1: Add to Environment Variables**
+
 Add this to your `.env.local`:
 
 ```bash
@@ -59,6 +60,7 @@ MONITORED_PODCAST_FEEDS=https://rss.com/podcasts/a-new-vibe/,https://blog.hubspo
 ```
 
 ### **Step 2: Test the System**
+
 ```bash
 # Test with confirmed feeds
 curl -X POST http://localhost:3001/api/podcast-monitor \
@@ -67,6 +69,7 @@ curl -X POST http://localhost:3001/api/podcast-monitor \
 ```
 
 ### **Step 3: Test Newsjacker Integration**
+
 ```bash
 curl http://localhost:3001/api/newsjacker
 ```
@@ -74,41 +77,48 @@ curl http://localhost:3001/api/newsjacker
 ## **🔧 Finding Missing RSS Feeds**
 
 ### **Method 1: Apple Podcasts**
-1. Go to https://podcasts.apple.com
+
+1. Go to <https://podcasts.apple.com>
 2. Search for the podcast name
 3. Click on the podcast
 4. Look for "RSS" link or right-click → "Copy Link"
 5. Convert Apple Podcasts URL to RSS format
 
 ### **Method 2: Podcast Website**
+
 1. Visit the podcast's official website
 2. Look for RSS icon or "Subscribe" section
 3. Copy the RSS feed URL
 
 ### **Method 3: Podcast Directories**
-- **Podcast Republic**: https://podcastrepublic.net
-- **Podcast Addict**: https://podcastaddict.com
-- **Overcast**: https://overcast.fm
+
+- **Podcast Republic**: <https://podcastrepublic.net>
+- **Podcast Addict**: <https://podcastaddict.com>
+- **Overcast**: <https://overcast.fm>
 
 ## **📊 Expected Content Types**
 
 ### **High-Relevance Episodes** (Music Industry + AI/Tech)
+
 - Music Tectonics
 - The New Music Business Podcast
 - A New Vibe (when discussing music tech)
 
 ### **Medium-Relevance Episodes** (Business + AI/Tech)
+
 - My First Million
 - Startups for the Rest of Us
 - The Start-Up Ideas Podcast
 
 ### **High-Relevance Episodes** (Pure AI/Tech)
+
 - The Next Wave
 - Marketing Against the Grain (AI marketing tools)
 
 ## **🎯 Content Strategy**
 
 ### **What to Look For**
+
 - **AI Tools**: New AI platforms and features
 - **Music Tech**: Technology affecting music industry
 - **Marketing Automation**: AI-powered marketing tools
@@ -116,6 +126,7 @@ curl http://localhost:3001/api/newsjacker
 - **Industry Insights**: Expert opinions on tech trends
 
 ### **Newsletter Integration**
+
 - **Weekly Roundup**: Top insights from all podcasts
 - **Tool Spotlights**: New AI tools mentioned
 - **Industry Analysis**: Expert takes on music tech
@@ -138,7 +149,3 @@ curl http://localhost:3001/api/newsjacker
 - **Use demo system** for testing while finding real feeds
 
 Ready to start monitoring these podcasts for AI and tech insights! 🎵
-
-
-
-

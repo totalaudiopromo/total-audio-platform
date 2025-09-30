@@ -9,24 +9,28 @@ Voice Echo learns your authentic voice from your best social media posts, then g
 ## ✨ Key Features
 
 ### Voice Training
+
 - **Upload Interface**: Upload 10-15 example social media posts via file or text paste
 - **Platform Tagging**: Tag which platform each example came from for better optimization
 - **AI Analysis**: Claude API integration to analyze writing patterns, tone, style, and personality
 - **Voice Profile**: Create comprehensive voice profile for each user
 
 ### Content Generation
+
 - **Simple Input**: "What's happening with your music?"
 - **Platform Multi-Select**: X, Instagram, Threads, TikTok
 - **Content Types**: Discovery, Craft, Proof (music content trinity)
 - **Instant Generation**: Platform-optimized posts in your authentic voice
 
 ### Platform Optimization
+
 - **X/Twitter**: 280 character limit, thread support, music industry hashtags
 - **Instagram**: Visual-first captions, story format, carousel posts, music-focused hashtags
 - **Threads**: Instagram-style but text-focused, no hashtags, conversational tone
 - **TikTok**: Video captions, trending sounds integration, viral format optimization
 
 ### Quality Metrics
+
 - **Authenticity Score**: How well the content matches your voice (95%+ target)
 - **Engagement Potential**: Predicted engagement based on platform optimization
 - **Character Count**: Platform-specific character limits
@@ -45,6 +49,7 @@ Voice Echo learns your authentic voice from your best social media posts, then g
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js 18+
 - npm or yarn
 - PostgreSQL database
@@ -52,21 +57,25 @@ Voice Echo learns your authentic voice from your best social media posts, then g
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    cd apps/voice-echo
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cp .env.example .env.local
    ```
    
    Required environment variables:
+
    ```
    DATABASE_URL=postgresql://...
    CLAUDE_API_KEY=your_claude_api_key
@@ -75,17 +84,20 @@ Voice Echo learns your authentic voice from your best social media posts, then g
    ```
 
 4. **Set up the database**
+
    ```bash
    npx prisma generate
    npx prisma db push
    ```
 
 5. **Run the development server**
+
    ```bash
    npm run dev
    ```
 
 6. **Open your browser**
+
    ```
    http://localhost:3000
    ```
@@ -125,9 +137,11 @@ Voice Echo uses the exact same design system as Audio Intel for pixel-perfect co
 ## 🔧 API Endpoints
 
 ### POST /api/generate-content
+
 Generates platform-optimized content based on user input and voice profile.
 
 **Request Body:**
+
 ```json
 {
   "musicContext": "Just released my new single",
@@ -142,6 +156,7 @@ Generates platform-optimized content based on user input and voice profile.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -163,24 +178,28 @@ Generates platform-optimized content based on user input and voice profile.
 ## 🎵 Platform-Specific Features
 
 ### X/Twitter
+
 - 280 character limit optimization
 - Thread creation support
 - Music industry hashtags (#NewMusic, #UKArtist, #LiveMusic)
 - Engagement-focused formatting
 
 ### Instagram
+
 - Visual-first caption approach
 - Behind-the-scenes storytelling
 - Story format optimization
 - Music-focused hashtag strategy
 
 ### Threads
+
 - Conversational tone preservation
 - No hashtag optimization
 - Authentic voice emphasis
 - Text-focused content
 
 ### TikTok
+
 - Short, punchy captions
 - Trend awareness integration
 - Music discovery optimization
@@ -203,11 +222,13 @@ Generates platform-optimized content based on user input and voice profile.
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
+
 1. Connect your GitHub repository to Vercel
 2. Set environment variables in Vercel dashboard
 3. Deploy automatically on push to main branch
 
 ### Environment Variables
+
 ```
 DATABASE_URL=postgresql://...
 CLAUDE_API_KEY=your_claude_api_key

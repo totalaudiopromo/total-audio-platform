@@ -5,6 +5,7 @@
 Your radio promo agent is now a **complete, intelligent system** that transforms a 15-20 hour manual workflow into 45 minutes of automated excellence. Here's everything that's been built:
 
 ### **🤖 Core Agents**
+
 - **Intelligence Agent** - Google Meet + Gemini processing
 - **Project Agent** - Monday.com campaign automation  
 - **Email Agent** - Liberty template generation + Mailchimp
@@ -14,6 +15,7 @@ Your radio promo agent is now a **complete, intelligent system** that transforms
 - **Follow-up Agent** - Automated follow-up sequences
 
 ### **🔧 Advanced Integrations**
+
 - **Success Prediction Engine** - Predict campaign success before launching
 - **Auto Response Handler** - Handle email responses automatically
 - **Social Intelligence** - Monitor social media for opportunities
@@ -24,6 +26,7 @@ Your radio promo agent is now a **complete, intelligent system** that transforms
 - **Email Tracking** - Open and click tracking
 
 ### **📊 Dashboards & Reporting**
+
 - **Real-time Monitoring Dashboard** - Live play alerts and analytics
 - **Client Reporting Dashboard** - Professional reports for clients
 - **Campaign Analytics** - Comprehensive performance tracking
@@ -31,12 +34,14 @@ Your radio promo agent is now a **complete, intelligent system** that transforms
 ## 🚀 **Quick Start (5 Minutes)**
 
 ### **1. Test the Complete System**
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/radio-promo
 node test-complete-system.js
 ```
 
 ### **2. Start the Dashboards**
+
 ```bash
 # Real-time monitoring dashboard
 node dashboard/monitoring-dashboard.js
@@ -48,6 +53,7 @@ node dashboard/client-dashboard.js
 ```
 
 ### **3. Test Individual Features**
+
 ```bash
 # Test real-time monitoring
 node test-real-time-monitoring.js
@@ -62,6 +68,7 @@ node test-auto-followup.js
 ## 🔧 **Full Setup Guide**
 
 ### **Prerequisites**
+
 - Node.js 18+
 - WARM API credentials
 - Gmail OAuth setup
@@ -69,7 +76,9 @@ node test-auto-followup.js
 - Mailchimp API access
 
 ### **Environment Variables**
+
 Create `.env` file with:
+
 ```bash
 # WARM API
 WARM_API_TOKEN=your_warm_token_here
@@ -96,6 +105,7 @@ ALERT_EMAIL=your_email@domain.com
 ```
 
 ### **Installation**
+
 ```bash
 # Install dependencies
 npm install
@@ -113,6 +123,7 @@ chmod +x dashboard/*.js
 ## 🎵 **How to Use the Complete System**
 
 ### **1. Start a New Campaign**
+
 ```javascript
 const orchestrator = new LibertyRadioPromoOrchestrator();
 await orchestrator.initialize();
@@ -139,6 +150,7 @@ if (prediction.successProbability > 0.7) {
 ```
 
 ### **2. Monitor Real-time**
+
 ```javascript
 // Start real-time monitoring
 await orchestrator.integrations.realTimeMonitor.startMonitoring(
@@ -151,6 +163,7 @@ await orchestrator.integrations.realTimeMonitor.startMonitoring(
 ```
 
 ### **3. Handle Responses Automatically**
+
 ```javascript
 // Process incoming email responses
 const responseResult = await orchestrator.integrations.autoResponse.processResponse(emailData);
@@ -160,6 +173,7 @@ const responseResult = await orchestrator.integrations.autoResponse.processRespo
 ```
 
 ### **4. Generate Professional Materials**
+
 ```javascript
 // Generate press release
 const pressRelease = await orchestrator.integrations.pressGenerator.generatePressRelease(
@@ -182,6 +196,7 @@ const emailPitch = await orchestrator.integrations.pressGenerator.generateEmailP
 ```
 
 ### **5. Schedule and Track Campaigns**
+
 ```javascript
 // Create campaign timeline
 const timeline = await orchestrator.integrations.campaignScheduler.createCampaignTimeline(
@@ -196,6 +211,7 @@ const progress = orchestrator.integrations.campaignScheduler.getCampaignProgress
 ```
 
 ### **6. Monitor Social Media Opportunities**
+
 ```javascript
 // Get high-priority opportunities
 const opportunities = orchestrator.integrations.socialIntelligence.getHighPriorityOpportunities();
@@ -205,6 +221,7 @@ const opportunities = orchestrator.integrations.socialIntelligence.getHighPriori
 ```
 
 ### **7. Generate Client Reports**
+
 ```javascript
 // Generate professional report
 const report = await orchestrator.dashboard.clientDashboard.generateReport(campaignData.campaignId);
@@ -215,49 +232,56 @@ await orchestrator.dashboard.clientDashboard.exportReport(report.id, 'pdf');
 
 ## 📊 **Dashboard URLs**
 
-- **Real-time Monitoring**: http://localhost:3001
-- **Client Reporting**: http://localhost:3002
+- **Real-time Monitoring**: <http://localhost:3001>
+- **Client Reporting**: <http://localhost:3002>
 - **System Health**: Check console logs
 
 ## 🎯 **Key Features Explained**
 
 ### **Success Prediction Engine**
+
 - Analyzes track characteristics, contact quality, and historical data
 - Predicts campaign success before launching
 - Suggests budget allocation for maximum ROI
 - Provides recommendations for improvement
 
 ### **Auto Response Handler**
+
 - Parses email responses for requests
 - Auto-sends press kits, audio files, and materials
 - Schedules meetings and calls
 - Handles common questions automatically
 
 ### **Social Intelligence**
+
 - Monitors station hashtags (#NewMusicFriday, #SubmitMusic)
 - Tracks DJ and curator social media
 - Finds playlist opportunities
 - Identifies submission calls
 
 ### **Press Generator**
+
 - Creates professional press releases
 - Generates comprehensive media kits
 - Produces email pitches
 - Creates social media content
 
 ### **Campaign Scheduler**
+
 - Coordinates campaign timing
 - Tracks milestones and deadlines
 - Manages follow-up sequences
 - Provides progress reports
 
 ### **Real-time Monitor**
+
 - Monitors WARM API for new plays
 - Sends instant alerts
 - Tracks play history
 - Provides analytics
 
 ### **Auto Follow-up System**
+
 - Smart follow-up sequences
 - Adapts based on response patterns
 - Maintains relationships
@@ -266,18 +290,21 @@ await orchestrator.dashboard.clientDashboard.exportReport(report.id, 'pdf');
 ## 🔧 **Configuration Options**
 
 ### **Follow-up Strategies**
+
 - **Aggressive**: Quick follow-ups (1, 3, 7, 14, 30 days)
 - **Moderate**: Balanced approach (3, 7, 14, 30, 60 days)
 - **Gentle**: Relationship-focused (7, 14, 30, 60, 90 days)
 - **Relationship**: Long-term maintenance (14, 30, 60, 90, 180 days)
 
 ### **Alert Channels**
+
 - Console alerts (always on)
 - Google Chat webhooks
 - Email notifications
 - Custom webhooks
 
 ### **Monitoring Intervals**
+
 - Real-time monitor: 2 minutes (configurable)
 - Social intelligence: 5-15 minutes
 - Follow-up processor: 1 minute
@@ -286,17 +313,20 @@ await orchestrator.dashboard.clientDashboard.exportReport(report.id, 'pdf');
 ## 📈 **Performance Metrics**
 
 ### **Time Savings**
+
 - **Before**: 15-20 hours manual work
 - **After**: 45 minutes + monitoring
 - **Efficiency**: 95% automation
 
 ### **Success Improvements**
+
 - **Prediction accuracy**: 85%+
 - **Response rate**: 30%+ improvement
 - **Follow-up success**: 40%+ improvement
 - **Client satisfaction**: Professional reports
 
 ### **System Reliability**
+
 - **Uptime**: 99.9%
 - **Error handling**: Comprehensive
 - **Data persistence**: Automatic
@@ -327,6 +357,7 @@ await orchestrator.dashboard.clientDashboard.exportReport(report.id, 'pdf');
    - Monitor memory usage
 
 ### **Health Checks**
+
 ```bash
 # Check system health
 node -e "require('./orchestrator.js').healthCheck()"
@@ -340,6 +371,7 @@ node test-auto-followup.js
 ## 🎉 **Success Stories**
 
 ### **What This System Achieves**
+
 - **95% automation** of radio promo workflow
 - **15-20 hours** reduced to **45 minutes**
 - **Professional reports** for clients
@@ -350,6 +382,7 @@ node test-auto-followup.js
 - **Automatic response handling**
 
 ### **Client Benefits**
+
 - **Faster results** - 45 minutes vs 15-20 hours
 - **Better targeting** - AI-powered contact selection
 - **Higher success rates** - Smart follow-ups

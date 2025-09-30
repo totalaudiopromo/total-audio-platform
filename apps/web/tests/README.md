@@ -5,6 +5,7 @@ This directory contains comprehensive end-to-end tests for the Total Audio Promo
 ## 🧪 Test Coverage
 
 ### Core Page Tests
+
 - **`dashboard.spec.ts`** - Dashboard functionality and real-time updates
 - **`integrations.spec.ts`** - Integration management and connectivity
 - **`campaigns.spec.ts`** - Campaign creation and management
@@ -15,6 +16,7 @@ This directory contains comprehensive end-to-end tests for the Total Audio Promo
 ## 🚀 Running Tests
 
 ### Quick Start
+
 ```bash
 # Run all tests
 npm test
@@ -33,6 +35,7 @@ npm run test:report
 ```
 
 ### Browser-Specific Tests
+
 ```bash
 # Run tests in specific browsers
 npx playwright test --project=chromium
@@ -45,6 +48,7 @@ npx playwright test --project="Mobile Safari"
 ```
 
 ### Test Filtering
+
 ```bash
 # Run specific test file
 npx playwright test dashboard.spec.ts
@@ -59,6 +63,7 @@ npx playwright test tests/dashboard.spec.ts
 ## 📊 Test Features
 
 ### What We Test
+
 - ✅ **Page Loading** - All pages load without errors
 - ✅ **Navigation** - Cross-page navigation works correctly
 - ✅ **Responsive Design** - Mobile and desktop layouts
@@ -69,6 +74,7 @@ npx playwright test tests/dashboard.spec.ts
 - ✅ **Accessibility** - Basic accessibility checks
 
 ### Browser Support
+
 - **Desktop**: Chrome, Firefox, Safari
 - **Mobile**: Chrome Mobile, Safari Mobile
 - **Headless**: All tests run headless by default
@@ -76,6 +82,7 @@ npx playwright test tests/dashboard.spec.ts
 ## 🔧 Configuration
 
 ### Playwright Config (`playwright.config.ts`)
+
 - **Base URL**: `http://localhost:3000`
 - **Test Directory**: `./tests`
 - **Parallel Execution**: Enabled
@@ -85,6 +92,7 @@ npx playwright test tests/dashboard.spec.ts
 - **Traces**: On first retry
 
 ### Web Server
+
 - **Command**: `npm run dev`
 - **URL**: `http://localhost:3000`
 - **Timeout**: 120 seconds
@@ -93,6 +101,7 @@ npx playwright test tests/dashboard.spec.ts
 ## 📝 Test Structure
 
 ### Test Organization
+
 ```
 tests/
 ├── dashboard.spec.ts      # Dashboard functionality
@@ -104,6 +113,7 @@ tests/
 ```
 
 ### Test Patterns
+
 - **BeforeEach**: Navigate to page under test
 - **Assertions**: Check for expected elements and behavior
 - **Conditional Tests**: Handle dynamic content gracefully
@@ -113,6 +123,7 @@ tests/
 ## 🎯 Test Scenarios
 
 ### Dashboard Tests
+
 - Page loading and navigation
 - Real-time data display
 - Stats cards and metrics
@@ -121,6 +132,7 @@ tests/
 - Accessibility features
 
 ### Integration Tests
+
 - All integration cards display
 - Status indicators work
 - Category filtering
@@ -129,6 +141,7 @@ tests/
 - Mobile layout
 
 ### Campaign Tests
+
 - Campaign management interface
 - Create campaign flow
 - Campaign filtering and search
@@ -137,6 +150,7 @@ tests/
 - Navigation between pages
 
 ### Analytics Tests
+
 - Analytics dashboard loading
 - Performance metrics display
 - Charts and graphs
@@ -145,6 +159,7 @@ tests/
 - Mobile layout
 
 ### Contact Tests
+
 - Contact management interface
 - Add contact flow
 - Contact filtering and search
@@ -153,6 +168,7 @@ tests/
 - Mobile responsiveness
 
 ### Navigation Tests
+
 - Cross-page navigation
 - Browser back/forward
 - Direct URL access
@@ -163,22 +179,27 @@ tests/
 ## 🐛 Debugging Tests
 
 ### Debug Mode
+
 ```bash
 npm run test:debug
 ```
+
 - Opens browser in headed mode
 - Pauses on breakpoints
 - Step-through debugging
 
 ### UI Mode
+
 ```bash
 npm run test:ui
 ```
+
 - Interactive test runner
 - Real-time test execution
 - Visual test results
 
 ### Screenshots and Videos
+
 - **Location**: `test-results/`
 - **Screenshots**: On test failure
 - **Videos**: On test failure
@@ -187,6 +208,7 @@ npm run test:ui
 ## 📈 Continuous Integration
 
 ### GitHub Actions (Recommended)
+
 ```yaml
 name: Playwright Tests
 on: [push, pull_request]
@@ -211,6 +233,7 @@ jobs:
 ## 🎯 Best Practices
 
 ### Test Writing
+
 - Use descriptive test names
 - Test one thing per test
 - Handle dynamic content gracefully
@@ -218,6 +241,7 @@ jobs:
 - Test error scenarios
 
 ### Maintenance
+
 - Keep tests independent
 - Use page objects for complex flows
 - Regular test updates with UI changes
@@ -227,12 +251,14 @@ jobs:
 ## 🔍 Troubleshooting
 
 ### Common Issues
+
 1. **Tests failing on CI**: Check browser installation
 2. **Flaky tests**: Add wait conditions
 3. **Selector issues**: Use more robust selectors
 4. **Performance**: Optimize test execution
 
 ### Debug Commands
+
 ```bash
 # Install browsers
 npx playwright install

@@ -20,10 +20,20 @@ class MondayApiIntegration {
     // Google Drive integration (will be set by agent)
     this.driveAPI = null;
     this.campaignsFolderId = process.env.LIBERTY_CAMPAIGNS_FOLDER_ID || 'YOUR_CAMPAIGNS_FOLDER_ID';
+    this.allowedGroupKeywords = (process.env.MONDAY_ALLOWED_GROUP_KEYWORDS || "Chris's Radio").split(',').map(keyword => keyword.trim()).filter(Boolean);
     
     if (!this.apiKey) {
       throw new Error('MONDAY_API_KEY environment variable is required');
     }
+  }
+
+  isAllowedGroupTitle(title = '') {
+    if (this.allowedGroupKeywords.length === 0) {
+      return true;
+    }
+
+    const normalizedTitle = title.toLowerCase();
+    return this.allowedGroupKeywords.some(keyword => normalizedTitle.includes(keyword.toLowerCase()));
   }
 
   /**
@@ -120,7 +130,8 @@ class MondayApiIntegration {
     try {
       // First, try to find existing group
       const boardStructure = await this.getLibertyBoardStructure();
-      const existingGroup = boardStructure.groups.find(group => 
+      const allowedGroups = boardStructure.groups.filter(group => this.isAllowedGroupTitle(group.title));
+      const existingGroup = allowedGroups.find(group => 
         group.title.toLowerCase().includes(campaignTitle.toLowerCase()) ||
         campaignTitle.toLowerCase().includes(group.title.toLowerCase())
       );
@@ -145,7 +156,7 @@ class MondayApiIntegration {
       
       const result = await this.callMondayAPI(createGroupQuery, {
         boardId: this.protectedBoardId,
-        groupName: campaignTitle
+        groupName: this.ensureAllowedGroupName(campaignTitle)
       });
       
       console.log(`✅ Created new group: ${result.create_group.title}`);
@@ -311,6 +322,9 @@ class MondayApiIntegration {
       // Flatten all items from all groups and add group info
       const allItems = [];
       groups.forEach(group => {
+        if (!this.isAllowedGroupTitle(group.title)) {
+          return;
+        }
         group.items_page.items.forEach(item => {
           allItems.push({
             ...item,
@@ -334,9 +348,14 @@ class MondayApiIntegration {
     const campaignTitle = `${campaignData.artistName} - ${campaignData.trackName}`;
     
     // Calculate timeline dates
-    const releaseDate = new Date(campaignData.releaseDate);
-    const campaignStartDate = new Date(releaseDate);
-    campaignStartDate.setDate(releaseDate.getDate() - (campaignData.campaignType === '6-week' ? 42 : 28));
+    const releaseDate = this.parseDateInput(
+      campaignData.releaseDate ||
+      campaignData.release_date ||
+      campaignData.trackReleaseDate ||
+      campaignData.track_release_date
+    ) || new Date();
+    const campaignStartDate = this.getCampaignStartDate(campaignData, releaseDate);
+    const campaignEndDate = this.getCampaignEndDate(campaignData, releaseDate);
     
     // Create Monday.com item with timeline and proper group
     const query = `
@@ -363,11 +382,11 @@ class MondayApiIntegration {
       columnValues: JSON.stringify({
         status: { label: "Working on it" }, // Status column - "Working on it"
         timeline: {
-          from: campaignStartDate.toISOString().split('T')[0],
-          to: releaseDate.toISOString().split('T')[0]
+          from: this.formatDateForMonday(campaignStartDate),
+          to: this.formatDateForMonday(campaignEndDate)
         },
         status8: { label: "Liberty" }, // Source column - set to Liberty
-        date4: { date: campaignData.releaseDate }, // Release Date column
+        date4: { date: this.formatDateForMonday(releaseDate) }, // Release Date column
         link: "" // Report Link column - will be updated later
       })
     };
@@ -397,11 +416,153 @@ class MondayApiIntegration {
         driveFolder: driveFolder,
         campaignTitle: campaignTitle,
         startDate: campaignStartDate,
+        endDate: campaignEndDate,
         releaseDate: releaseDate
       };
     } catch (error) {
       console.error('Failed to create Liberty campaign:', error);
       throw error;
+    }
+  }
+
+  ensureAllowedGroupName(desiredName) {
+    if (this.isAllowedGroupTitle(desiredName)) {
+      return desiredName;
+    }
+
+    if (this.allowedGroupKeywords.length === 0) {
+      return desiredName;
+    }
+
+    const prefix = this.allowedGroupKeywords[0];
+    return `${prefix} - ${desiredName}`;
+  }
+
+  parseDateInput(value) {
+    if (!value) return null;
+    if (value instanceof Date && !Number.isNaN(value.getTime())) {
+      return value;
+    }
+
+    if (typeof value === 'number') {
+      const fromNumber = new Date(value);
+      return Number.isNaN(fromNumber.getTime()) ? null : fromNumber;
+    }
+
+    if (typeof value === 'string') {
+      const trimmed = value.trim();
+      if (!trimmed) return null;
+
+      // Replace common separators
+      const normalized = trimmed.replace(/\./g, '-').replace(/\//g, '-');
+      const parsed = new Date(normalized);
+      if (!Number.isNaN(parsed.getTime())) {
+        return parsed;
+      }
+
+      // Attempt DD-MM-YYYY fallback
+      const parts = normalized.split('-');
+      if (parts.length === 3) {
+        const [first, second, third] = parts.map(Number);
+        if (!Number.isNaN(first) && !Number.isNaN(second) && !Number.isNaN(third)) {
+          // If third looks like year, handle both day-month-year and year-month-day
+          if (third > 1900) {
+            const candidate = new Date(third, second - 1, first);
+            if (!Number.isNaN(candidate.getTime())) {
+              return candidate;
+            }
+          } else if (first > 1900) {
+            const candidate = new Date(first, second - 1, third);
+            if (!Number.isNaN(candidate.getTime())) {
+              return candidate;
+            }
+          }
+        }
+      }
+    }
+
+    return null;
+  }
+
+  getCampaignStartDate(campaignData, releaseDate) {
+    const potentialFields = [
+      'campaignStartDate',
+      'campaign_start_date',
+      'startDate',
+      'start_date',
+      'kickoffDate',
+      'kickoff_date',
+      'intakeDate',
+      'intake_date',
+      'submittedAt'
+    ];
+
+    for (const field of potentialFields) {
+      if (campaignData[field]) {
+        const parsed = this.parseDateInput(campaignData[field]);
+        if (parsed) {
+          return parsed;
+        }
+      }
+    }
+
+    // Fallback: 6-week or 4-week campaign before release
+    const start = new Date(releaseDate);
+    const days = (campaignData.campaignType && campaignData.campaignType.toLowerCase().includes('6')) ? 42 : 28;
+    start.setDate(releaseDate.getDate() - days);
+    return start;
+  }
+
+  getCampaignEndDate(campaignData, releaseDate) {
+    const potentialFields = [
+      'campaignEndDate',
+      'campaign_end_date',
+      'endDate',
+      'end_date',
+      'wrapDate',
+      'wrap_date'
+    ];
+
+    for (const field of potentialFields) {
+      if (campaignData[field]) {
+        const parsed = this.parseDateInput(campaignData[field]);
+        if (parsed) {
+          return parsed;
+        }
+      }
+    }
+
+    // Default: one week after release
+    const end = new Date(releaseDate);
+    end.setDate(releaseDate.getDate() + 7);
+    return end;
+  }
+
+  formatDateForMonday(date) {
+    if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+      return new Date().toISOString().split('T')[0];
+    }
+    return date.toISOString().split('T')[0];
+  }
+
+  async updateWeeklyReportLink(itemId, reportUrl, label = 'Latest WARM Report') {
+    if (!reportUrl) {
+      console.warn('⚠️ No report URL provided, skipping Monday.com link update');
+      return false;
+    }
+
+    try {
+      await this.updateCampaignProgress(itemId, {
+        link: {
+          url: reportUrl,
+          text: label
+        }
+      });
+      console.log(`✅ Monday.com report link updated for item ${itemId}`);
+      return true;
+    } catch (error) {
+      console.error('Failed to update Monday.com report link:', error);
+      return false;
     }
   }
 
@@ -534,4 +695,3 @@ class MondayApiIntegration {
 }
 
 module.exports = MondayApiIntegration;
-

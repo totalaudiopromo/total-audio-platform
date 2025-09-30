@@ -1,4 +1,15 @@
-import { WeeklyIntelligence } from './weeklyMusicAgent';
+// Temporarily disabled import for build fix
+// import { WeeklyIntelligence } from './weeklyMusicAgent';
+
+// Temporary interface definition for build fix
+export interface WeeklyIntelligence {
+  weekNumber: number;
+  issueNumber: number;
+  articles: any[];
+  sources: string[];
+  totalArticles: number;
+  weeklyInsight?: string;
+}
 
 export interface ConvertKitCampaign {
   id: string;

@@ -3,11 +3,13 @@
 ## ✅ **What's Fully Set Up and Working**
 
 ### **1. Core Agent System** ✅
+
 - **Radio Promo Agent**: Main orchestrator with all workflow methods
 - **Multi-Agent Architecture**: Intelligence, Project, Email, Radio, Analytics, Coverage agents
 - **Liberty-Specific Configuration**: Templates, radio stations, WARM config
 
 ### **2. API Integrations** ✅
+
 - **Monday.com**: Campaign board management (CRITICAL: Only edits board 2443582331)
 - **Otter.ai**: Transcript processing from Downloads folder
 - **Typeform**: READ-ONLY campaign data extraction
@@ -16,11 +18,13 @@
 - **Google Chat**: READ-ONLY intelligence gathering from team channels
 
 ### **3. Smart Campaign Discovery** ✅
+
 - **Gmail+Typeform Matcher**: Cross-references Gmail threads with Typeform responses
 - **Artist Asset Extraction**: Press photos, bio, socials, website from Typeform
 - **Press Release Generator**: Complete press releases with all artist assets
 
 ### **4. MCP Integration** ✅
+
 - **Google Services MCP**: Gmail, Drive, Calendar through Model Context Protocol
 - **Notion MCP**: Project management integration
 - **Puppeteer MCP**: Web automation
@@ -28,6 +32,7 @@
 ## 🔧 **What Needs Setup (Environment Variables)**
 
 ### **Required Environment Variables**
+
 ```bash
 # Monday.com (CRITICAL - for campaign board management)
 MONDAY_API_KEY=your_monday_api_key
@@ -51,6 +56,7 @@ WARM_API_KEY=your_warm_api_key
 ## 🚀 **Complete Workflow - Ready to Use**
 
 ### **Step 1: Process Campaign Brief**
+
 ```bash
 # From Google Meet transcript
 node radio-promo-agent.js process-transcript gemini:transcript-id
@@ -63,6 +69,7 @@ node radio-promo-agent.js process-transcript otter:file-id
 ```
 
 ### **Step 2: Find Campaign Data**
+
 ```bash
 # Find campaigns by cross-referencing Gmail+Typeform
 node radio-promo-agent.js find-liberty-campaigns-gmail
@@ -75,6 +82,7 @@ node radio-promo-agent.js recent-liberty-campaigns-gmail 30
 ```
 
 ### **Step 3: Generate Press Release**
+
 ```bash
 # Generate press release with all artist assets
 node radio-promo-agent.js generate-press-release "Artist Name"
@@ -84,12 +92,14 @@ node radio-promo-agent.js generate-recent-press-releases 30
 ```
 
 ### **Step 4: Create Monday.com Campaign**
+
 ```bash
 # Create campaign in Monday.com (CRITICAL: Only board 2443582331)
 node radio-promo-agent.js create-campaign "Artist Name" "Track Title"
 ```
 
 ### **Step 5: Intelligence Gathering**
+
 ```bash
 # Monitor Google Chat channels for campaign intelligence
 node radio-promo-agent.js gather-intelligence
@@ -101,26 +111,31 @@ node radio-promo-agent.js analyze-mailchimp
 ## 🎯 **Complete Liberty Music PR Workflow**
 
 ### **1. Artist Call → Campaign Brief**
+
 - **Input**: Google Meet transcript (via Gemini) or Otter.ai file
 - **Output**: Structured campaign brief with artist, track, genre, budget, targets
 - **Command**: `process-transcript gemini:transcript-id`
 
 ### **2. Campaign Discovery → Artist Assets**
+
 - **Input**: Gmail threads + Typeform responses
 - **Output**: Matched campaigns with press photos, bio, socials, website
 - **Command**: `find-liberty-campaigns-gmail`
 
 ### **3. Press Release Generation**
+
 - **Input**: Artist assets from Typeform + campaign data
 - **Output**: Complete HTML press release with all assets
 - **Command**: `generate-press-release "Artist Name"`
 
 ### **4. Monday.com Campaign Creation**
+
 - **Input**: Campaign brief + press release
 - **Output**: New campaign in Monday.com board 2443582331
 - **Command**: `create-campaign "Artist Name" "Track Title"`
 
 ### **5. Intelligence Gathering**
+
 - **Input**: Google Chat channels, Mailchimp campaigns
 - **Output**: Campaign insights, success patterns, contact intelligence
 - **Command**: `gather-intelligence`
@@ -128,12 +143,14 @@ node radio-promo-agent.js analyze-mailchimp
 ## 🔒 **Security & Safety**
 
 ### **READ-ONLY Integrations**
+
 - ✅ **Typeform**: Only reads campaign data, never writes
 - ✅ **Google Chat**: Only reads team channels, never posts
 - ✅ **Gmail**: Only searches for campaign emails
 - ✅ **Google Drive**: Only searches for files
 
 ### **WRITE-ONLY Integrations**
+
 - ✅ **Monday.com**: Only writes to board 2443582331 (your specific board)
 - ✅ **Mailchimp**: Only creates draft campaigns for your approval
 
@@ -161,4 +178,3 @@ node radio-promo-agent.js analyze-mailchimp
 3. **Add MCP server to Claude Desktop** (see MCP_SETUP_GUIDE.md)
 
 **Then you can start using the complete workflow immediately!**
-

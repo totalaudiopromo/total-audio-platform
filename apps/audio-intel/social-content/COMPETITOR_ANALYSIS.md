@@ -3,6 +3,7 @@
 ## Direct Competitors
 
 ### SubmitHub
+
 - **Pricing**: $3+ per pitch
 - **Content Focus**: Playlist submission success stories
 - **Tone**: Professional, results-focused
@@ -11,6 +12,7 @@
 - **Weaknesses**: Expensive per submission, no contact ownership
 
 ### Groover
+
 - **Pricing**: €29/month for submissions
 - **Content Focus**: European market, indie artist success
 - **Tone**: Supportive, community-focused
@@ -19,6 +21,7 @@
 - **Weaknesses**: Gatekeeper model, limited control
 
 ### Playlist Push
+
 - **Pricing**: £149+ campaigns
 - **Content Focus**: Campaign results, playlist placements
 - **Tone**: Professional, agency-focused
@@ -29,6 +32,7 @@
 ## Indirect Competitors
 
 ### Spotify for Artists
+
 - **Content Focus**: Artist tools, playlist insights
 - **Tone**: Educational, platform-focused
 - **Platforms**: Twitter, LinkedIn, Instagram
@@ -36,6 +40,7 @@
 - **Weaknesses**: No contact research, limited promotion tools
 
 ### Music Gateway
+
 - **Content Focus**: Music industry opportunities
 - **Tone**: Professional, opportunity-focused
 - **Platforms**: LinkedIn, Twitter, Facebook
@@ -45,6 +50,7 @@
 ## Content Opportunities
 
 ### What They're Missing
+
 1. **Contact ownership** - They don't give you the contacts
 2. **UK focus** - Most are US-centric
 3. **Affordable pricing** - All are expensive
@@ -52,6 +58,7 @@
 5. **Time savings** - They don't address research time
 
 ### Content Angles to Exploit
+
 1. **"Stop paying per submission"** - Direct cost comparison
 2. **"Own your contacts"** - Contact ownership benefits
 3. **"UK music industry focus"** - Local market advantage
@@ -59,6 +66,7 @@
 5. **"Built by a producer"** - Authentic industry experience
 
 ### Messaging Opportunities
+
 - **Cost comparison**: "£19.99/month vs €3+ per pitch"
 - **Time savings**: "2 minutes vs 15+ hours weekly"
 - **Contact ownership**: "Keep your contacts forever"
@@ -68,18 +76,21 @@
 ## Social Media Strategy vs Competitors
 
 ### LinkedIn
+
 - **Focus**: Professional case studies and ROI
 - **Differentiate**: Cost savings and time efficiency
 - **Target**: PR agencies and labels
 - **Content**: Success stories, industry insights
 
 ### X (Twitter)
+
 - **Focus**: Quick tips and industry commentary
 - **Differentiate**: Direct, no-bullshit approach
 - **Target**: Independent artists
 - **Content**: Threads, quick insights, community engagement
 
 ### Blue Sky
+
 - **Focus**: Tech innovation and efficiency
 - **Differentiate**: AI-powered automation
 - **Target**: Tech-savvy early adopters
@@ -88,6 +99,7 @@
 ## Monitoring Competitors
 
 ### What to Track
+
 - **Content themes** they're posting about
 - **Engagement rates** on their posts
 - **New features** they're promoting
@@ -95,6 +107,7 @@
 - **Partnerships** or collaborations
 
 ### Tools to Use
+
 - **LinkedIn**: Follow their company pages
 - **X**: Create lists of competitor accounts
 - **Blue Sky**: Follow their profiles
@@ -103,6 +116,7 @@
 ## Content Differentiation Strategy
 
 ### Unique Positioning
+
 1. **"Built by a producer"** - Authentic industry experience
 2. **"UK-focused"** - Local market advantage
 3. **"Contact ownership"** - Keep your contacts forever
@@ -110,6 +124,7 @@
 5. **"Time-saving"** - 2 minutes vs 15+ hours
 
 ### Content Themes to Own
+
 1. **"Stop wasting your weekends"** - Time waste problem
 2. **"94% of research is wasted"** - Efficiency focus
 3. **"Built for indie artists"** - Target audience focus
@@ -119,12 +134,14 @@
 ## Quick Response Strategy
 
 ### When Competitors Post
+
 - **Don't directly respond** to their posts
 - **Create your own content** addressing the same topic
 - **Use your unique angle** and positioning
 - **Focus on your advantages** over their approach
 
 ### Content Ideas from Competitor Posts
+
 - **"While others charge per submission..."**
 - **"While others act as gatekeepers..."**
 - **"While others focus on US markets..."**

@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 interface ClaudeConfig {
   apiKey: string;
-  model: string;
+  model?: string;
 }
 
 export class ClaudeService {
@@ -23,7 +23,7 @@ export class ClaudeService {
   async generateResponse(prompt: string): Promise<string> {
     try {
       const message = await this.anthropic.messages.create({
-        model: this.config.model || 'claude-3-sonnet-20240229',
+        model: this.config.model || process.env.ANTHROPIC_MODEL!,
         max_tokens: 1000,
         messages: [
           {
@@ -71,7 +71,7 @@ export class ClaudeService {
       const prompt = this.buildReportPrompt(campaignData, reportType);
 
       const message = await this.anthropic.messages.create({
-        model: this.config.model || 'claude-3-sonnet-20240229',
+        model: this.config.model || process.env.ANTHROPIC_MODEL!,
         max_tokens: 4000,
         messages: [
           {
@@ -248,7 +248,7 @@ Format as HTML email content with proper styling.
 `;
 
       const message = await this.anthropic.messages.create({
-        model: this.config.model || 'claude-3-sonnet-20240229',
+        model: this.config.model || process.env.ANTHROPIC_MODEL!,
         max_tokens: 2000,
         messages: [
           {
@@ -289,7 +289,7 @@ Format as HTML email content with proper styling.
       const prompt = this.buildEngagementPrompt(interactionData);
 
       const message = await this.anthropic.messages.create({
-        model: this.config.model || 'claude-3-sonnet-20240229',
+        model: this.config.model || process.env.ANTHROPIC_MODEL || 'claude-3-5-sonnet-20241022',
         max_tokens: 1500,
         messages: [
           {
@@ -397,7 +397,7 @@ Format as JSON:
     try {
       const config = {
         apiKey: process.env.ANTHROPIC_API_KEY!,
-        model: 'claude-3-sonnet-20240229',
+        model: process.env.ANTHROPIC_MODEL,
       };
 
       return new ClaudeService(config);

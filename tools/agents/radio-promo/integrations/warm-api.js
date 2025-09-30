@@ -20,7 +20,9 @@ class WarmusicAPI {
       logger.info(`🔗 WARM API configured with token authentication`);
       // Parse token expiry from JWT
       try {
-        const payload = JSON.parse(atob(this.token.split('.')[1]));
+        const payloadSegment = this.token.split('.')[1];
+        const decodedPayload = Buffer.from(payloadSegment, 'base64').toString('utf8');
+        const payload = JSON.parse(decodedPayload);
         this.tokenExpiry = payload.exp * 1000; // Convert to milliseconds
         logger.info(`🎫 Token expires: ${new Date(this.tokenExpiry).toISOString()}`);
       } catch (error) {
@@ -39,12 +41,14 @@ class WarmusicAPI {
         logger.info('🔐 Using existing WARM API token...');
         logger.info(`🎫 Token: ${this.token.substring(0, 20)}...`);
         logger.info(`⏰ Token expires: ${new Date(this.tokenExpiry).toISOString()}`);
-        
+
         // Check if token is still valid
         if (Date.now() >= this.tokenExpiry) {
           throw new Error('Token expired. Please get a new token from WARM dashboard.');
         }
-        
+
+        this.warnIfTokenExpiring();
+
         return this.token;
       }
       
@@ -86,10 +90,26 @@ class WarmusicAPI {
       
       logger.info('✅ WARM API authentication successful');
       logger.info(`🎫 Token received: ${this.token.substring(0, 20)}...`);
+      this.warnIfTokenExpiring();
       return this.token;
     } catch (error) {
       logger.error('❌ WARM API authentication failed:', error);
       throw error;
+    }
+  }
+
+  warnIfTokenExpiring() {
+    if (!this.tokenExpiry) {
+      return;
+    }
+
+    const timeRemaining = this.tokenExpiry - Date.now();
+    const oneDay = 24 * 60 * 60 * 1000;
+    if (timeRemaining <= 0) {
+      logger.error('⚠️ WARM token has expired. Generate a new token in the WARM dashboard.');
+    } else if (timeRemaining < oneDay) {
+      const hours = Math.round(timeRemaining / (60 * 60 * 1000));
+      logger.warn(`⚠️ WARM token expires in ~${hours} hours. Refresh it soon to avoid outages.`);
     }
   }
 

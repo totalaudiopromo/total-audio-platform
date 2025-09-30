@@ -1,7 +1,7 @@
 const { AirtableDomainAnalysis } = require('./dist/services/airtableDomainAnalysis');
 
 // Use the same credentials as the working duplicate removal script
-process.env.AIRTABLE_API_KEY = 'patOohG8Gg008SKWj.fd0e179e09416b65e61ae4fc97b29136a79f769809446aadbccebebcd060f6e1';
+process.env.AIRTABLE_API_KEY = 'PLACEHOLDER_AIRTABLE_KEY';
 process.env.AIRTABLE_BASE_ID = 'appx7uTQWRH8cIC20';
 process.env.AIRTABLE_CONTACTS_TABLE_ID = 'tblcZnUsB4Swyjcip';
 

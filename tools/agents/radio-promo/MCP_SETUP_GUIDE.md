@@ -11,22 +11,26 @@
 ## **Current MCP Status**
 
 ### ✅ **Working MCPs**
+
 - **Puppeteer MCP** - Web automation
 - **Notion MCP** - Project management
 - **Google Services MCP** - Gmail, Drive, Calendar (custom)
 
 ### ❌ **Failed MCPs**
+
 - **GitHub MCP** - Connection failed
 
 ## **Google Services MCP Setup**
 
 ### **Step 1: OAuth Authentication**
+
 ```bash
 # Run the OAuth flow to get access tokens
 node simple-gmail-oauth.js
 ```
 
 **What this does:**
+
 - Opens browser for Google OAuth
 - Grants access to Gmail, Drive, and Calendar
 - Saves tokens for MCP server
@@ -54,16 +58,19 @@ node simple-gmail-oauth.js
 Once added to Claude Desktop, you can ask Claude to:
 
 **Gmail Operations:**
+
 - "Search Gmail for campaign emails from artists"
 - "Extract artist information from Gmail threads"
 - "Find emails about specific campaigns"
 
 **Google Drive Operations:**
+
 - "Search Google Drive for press photos"
 - "Find artist assets in Drive"
 - "List recent campaign files"
 
 **Google Calendar Operations:**
+
 - "List upcoming campaign events"
 - "Create a new campaign timeline event"
 - "Schedule press release dates"
@@ -71,21 +78,25 @@ Once added to Claude Desktop, you can ask Claude to:
 ## **Available MCP Tools**
 
 ### **Gmail Tools**
+
 - `gmail_search_emails` - Search for campaign emails
 - `gmail_get_message` - Get full message content
 - `gmail_extract_artist_info` - Extract artist details from threads
 
 ### **Google Drive Tools**
+
 - `drive_search_files` - Search for files
 - `drive_list_files` - List recent files
 
 ### **Google Calendar Tools**
+
 - `calendar_list_events` - List upcoming events
 - `calendar_create_event` - Create new events
 
 ## **Benefits Over Custom APIs**
 
 ### **Before (Custom APIs)**
+
 ```javascript
 // Complex OAuth handling
 const oAuth2Client = new google.auth.OAuth2(...);
@@ -96,6 +107,7 @@ await oAuth2Client.getToken(code);
 ```
 
 ### **After (MCP)**
+
 ```javascript
 // Simple MCP call
 await mcp.callTool('gmail_search_emails', {
@@ -116,16 +128,19 @@ await mcp.callTool('gmail_search_emails', {
 ## **Troubleshooting**
 
 ### **OAuth Issues**
+
 - Make sure Gmail API is enabled in Google Cloud Console
 - Check that redirect URI is set to `urn:ietf:wg:oauth:2.0:oob`
 - Verify credentials file is in the right location
 
 ### **MCP Connection Issues**
+
 - Check file paths in Claude Desktop config
 - Verify Node.js is available in PATH
 - Check that gmail-token.json exists
 
 ### **Permission Issues**
+
 - Ensure OAuth scopes include Gmail, Drive, and Calendar
 - Check that your Google account has access to these services
 
@@ -139,4 +154,3 @@ await mcp.callTool('gmail_search_emails', {
 ---
 
 **Ready to set up? Run `node simple-gmail-oauth.js` to get started!**
-

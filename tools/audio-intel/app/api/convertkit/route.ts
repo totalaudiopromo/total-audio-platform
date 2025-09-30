@@ -14,7 +14,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    const CONVERTKIT_API_KEY = process.env.KIT_API_KEY || process.env.CONVERTKIT_API_KEY || '5wx6QPvhunue-d760yZHIg';
+    // SECURITY: Hardcoded API key removed
+    const CONVERTKIT_API_KEY = process.env.KIT_API_KEY || process.env.CONVERTKIT_API_KEY;
     const formId = form_id || '8440957';
 
     console.log(`🔄 Processing beta signup for ${email}...`);
