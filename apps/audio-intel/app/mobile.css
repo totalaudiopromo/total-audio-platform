@@ -1,0 +1,1234 @@
+/* 📱 AUDIO INTEL MOBILE STYLES - CONSOLIDATED
+ * =============================================================================
+ * Single source of truth for all mobile CSS
+ * Replaces: mobile-optimizations.css, mobile-ux-fixes.css, mobile-touch-fixes.css,
+ *           beta-mobile.css, home-mobile.css
+ * =============================================================================
+ */
+
+/* =============================================================================
+   1. BASE MOBILE STYLES & LAYOUT
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Prevent horizontal scrolling - CRITICAL FIX */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  /* Ensure all elements respect viewport width */
+  * {
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  /* Base typography for readability */
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Container padding reset */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Fix all text containers to prevent overflow */
+  .card,
+  .box,
+  .content-box,
+  div[class*="bg-"] {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    overflow: hidden;
+  }
+
+  /* Typography improvements */
+  h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  p, span, div {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Section spacing */
+  .section,
+  section {
+    padding: 2rem 1rem;
+    margin: 0;
+  }
+}
+
+/* =============================================================================
+   2. HEADER & NAVIGATION
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Mobile header */
+  .mobile-header,
+  .beta-header,
+  .audio-intel-header {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  /* Fix header container that causes scroll bar */
+  header,
+  .header,
+  nav {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  .header-container,
+  .nav-container {
+    width: calc(100vw - 2rem);
+    max-width: calc(100vw - 2rem);
+    margin: 0 1rem;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Logo container */
+  .mobile-logo-container,
+  .beta-logo-container,
+  .audio-intel-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .mobile-logo,
+  .logo-container {
+    max-width: calc(100vw - 4rem);
+    overflow: hidden;
+  }
+
+  .mobile-logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-logo-text,
+  .beta-logo-text,
+  .audio-intel-logo-text {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #1a202c;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  /* Beta badge */
+  .mobile-beta-badge {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Navigation items */
+  nav a,
+  .nav-link,
+  .menu-item {
+    min-height: 44px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Burger menu z-index fix */
+  nav[aria-label="Mobile Navigation"] {
+    z-index: 1000;
+  }
+
+  nav[aria-label="Mobile Navigation"] [role="dialog"] {
+    z-index: 1100;
+  }
+
+  nav[aria-label="Mobile Navigation"] .fixed.inset-0 {
+    z-index: 1050;
+  }
+
+  /* Mobile menu hamburger */
+  .hamburger,
+  .menu-toggle,
+  .mobile-menu-toggle,
+  button[aria-label*="menu"] {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 12px;
+  }
+}
+
+/* =============================================================================
+   3. HERO SECTIONS
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .mobile-hero,
+  .beta-hero,
+  .audio-intel-hero,
+  .hero,
+  .hero-section {
+    padding: 2rem 1rem;
+    text-align: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  }
+
+  .mobile-hero-title,
+  .hero h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #1a202c;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.025em;
+    padding: 0 0.5rem;
+  }
+
+  .beta-hero h1,
+  .audio-intel-hero h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .mobile-hero-subtitle,
+  .hero p {
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .beta-hero-cta {
+    padding: 2rem 1rem;
+    margin: 1.5rem 0;
+    border-radius: 20px;
+  }
+
+  .beta-hero-cta h3 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+}
+
+/* =============================================================================
+   4. BUTTONS & CTAs - TOUCH TARGET OPTIMIZED
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Minimum touch target enforcement (44px Apple/Google guidelines) */
+  button,
+  a,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  .btn,
+  [role="button"],
+  [onclick] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+    padding: 12px 16px;
+    transition: all 0.15s ease;
+  }
+
+  /* Primary CTA buttons */
+  .mobile-cta-button,
+  .beta-submit-button,
+  .audio-intel-hero-button,
+  button[class*="bg-blue"],
+  button[class*="bg-green"],
+  button[class*="bg-gradient"],
+  .cta-button,
+  .primary-button {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    border: none;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+    transition: all 0.2s ease;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 320px;
+    margin: 8px auto;
+  }
+
+  .mobile-cta-button:hover,
+  button[class*="bg-gradient"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+  }
+
+  /* Secondary buttons */
+  .mobile-secondary-button {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    background: white;
+    color: #374151;
+    border: 2px solid #e5e7eb;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-secondary-button:hover {
+    border-color: #3b82f6;
+    color: #3b82f6;
+  }
+
+  /* Special handling for main "Drop Your Chaos" CTA */
+  button:contains("Drop Your Chaos"),
+  button[class*="chaos"],
+  .upload-cta {
+    min-height: 64px;
+    padding: 20px 32px;
+    font-size: 18px;
+    font-weight: 700;
+    width: 100%;
+    max-width: 280px;
+    margin: 16px auto;
+    display: block;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    border: 3px solid #1e40af;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  }
+
+  /* Payment buttons - extra prominent */
+  .stripe-button,
+  .payment-button,
+  button[class*="pay"],
+  button[class*="subscribe"] {
+    min-height: 64px;
+    width: 100%;
+    padding: 20px 24px;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 20px 0;
+  }
+
+  /* Touch feedback */
+  button:active,
+  a:active,
+  [role="button"]:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+
+  /* Button spacing */
+  button + button,
+  a + a,
+  .btn + .btn {
+    margin-top: 8px;
+  }
+
+  /* Accessibility improvements for touch */
+  button:focus,
+  a:focus,
+  input:focus,
+  select:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+  }
+
+  /* Text-only buttons */
+  button[class*="text-"],
+  a[class*="text-"] {
+    padding: 12px 20px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Icon-only buttons */
+  button[class*="w-6"],
+  button[class*="w-8"],
+  button[class*="w-10"] {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+  }
+}
+
+/* =============================================================================
+   5. FORMS & INPUTS
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .mobile-form,
+  .beta-form-card {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 2rem 1.5rem;
+    border-radius: 24px;
+  }
+
+  .mobile-input,
+  .beta-form-input,
+  .audio-intel-newsletter-input,
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem; /* Prevent zoom on iOS */
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    background: white;
+    margin-bottom: 1rem;
+    min-height: 48px;
+    transition: border-color 0.2s ease;
+    touch-action: manipulation;
+  }
+
+  .mobile-input:focus,
+  .beta-form-input:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .mobile-input-label,
+  .beta-form-label,
+  .audio-intel-newsletter-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+  }
+
+  /* File upload buttons */
+  input[type="file"] {
+    min-height: 56px;
+    padding: 16px;
+  }
+
+  /* Dropdown triggers */
+  .dropdown-toggle,
+  select,
+  .beta-form-select {
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+
+  /* Form grid layouts */
+  .beta-form-grid,
+  .audio-intel-newsletter-form .grid {
+    display: block;
+    gap: 1rem;
+  }
+
+  .beta-form-field,
+  .audio-intel-newsletter-field {
+    margin-bottom: 1rem;
+  }
+}
+
+/* =============================================================================
+   6. CARDS & PRICING
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Base card styles */
+  .mobile-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid #000;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Pricing section container fix */
+  .pricing-section,
+  .plans-section,
+  .audio-intel-pricing {
+    padding: 2rem 1rem;
+    margin: 0;
+  }
+
+  /* Fix pricing grid to single column */
+  .pricing-grid,
+  .plans-grid,
+  .audio-intel-pricing-grid,
+  .grid.grid-cols-1.md\\:grid-cols-2 {
+    display: block;
+    grid-template-columns: none;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Individual pricing cards */
+  .mobile-pricing-card,
+  .pricing-card,
+  .plan-card,
+  .audio-intel-pricing-card,
+  .bg-white.p-8.rounded-2xl.border-4 {
+    width: calc(100vw - 2rem);
+    max-width: calc(100vw - 2rem);
+    margin: 0 auto 1.5rem auto;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border: 3px solid #000;
+    text-align: center;
+    position: relative;
+  }
+
+  .mobile-pricing-title,
+  .pricing-card h3,
+  .audio-intel-pricing-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #1a202c;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .mobile-pricing-price,
+  .pricing-card .price,
+  .audio-intel-pricing-price {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #1a202c;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .mobile-pricing-features,
+  .pricing-features,
+  .plan-features,
+  .audio-intel-pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    text-align: left;
+  }
+
+  .mobile-pricing-features li,
+  .pricing-features li,
+  .audio-intel-pricing-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    color: #374151;
+    line-height: 1.4;
+    padding: 0.25rem 0;
+  }
+
+  .mobile-pricing-features .check-icon {
+    width: 20px;
+    height: 20px;
+    background: #10b981;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  /* Pricing buttons */
+  .pricing-card button,
+  .plan-button,
+  .audio-intel-pricing-button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    min-height: 48px;
+    height: 56px;
+  }
+
+  /* Fix pricing cards being cut off - target specific sections */
+  .py-16.px-4 .grid.grid-cols-1.md\\:grid-cols-2.gap-8,
+  .py-20.px-4 .grid.grid-cols-1.md\\:grid-cols-2.gap-8 {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0 1rem;
+  }
+
+  .py-16.px-4 .bg-white.p-8.rounded-2xl.border-4,
+  .py-20.px-4 .bg-white.p-8.rounded-2xl.border-4 {
+    width: calc(100vw - 2rem);
+    max-width: calc(100vw - 2rem);
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+}
+
+/* =============================================================================
+   7. FEATURE CARDS & GRIDS
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .mobile-feature-grid,
+  .beta-benefits-grid,
+  .audio-intel-features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .mobile-feature-card,
+  .beta-benefit-card,
+  .audio-intel-feature-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    border: 2px solid #e5e7eb;
+    text-align: center;
+    transition: all 0.2s ease;
+    margin-bottom: 2rem;
+  }
+
+  .mobile-feature-card:hover,
+  .audio-intel-feature-card:hover {
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+  }
+
+  .mobile-feature-icon,
+  .beta-benefit-icon,
+  .audio-intel-feature-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  .mobile-feature-title,
+  .beta-benefit-title,
+  .audio-intel-feature-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .mobile-feature-description,
+  .beta-benefit-description,
+  .audio-intel-feature-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* =============================================================================
+   8. DEMO SECTIONS
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .mobile-demo-section,
+  .audio-intel-demo,
+  .demo-section {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    padding: 2rem 1rem;
+    border-radius: 24px;
+    margin: 2rem 0;
+    border: 2px solid #0ea5e9;
+  }
+
+  .mobile-demo-title,
+  .audio-intel-demo h3 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #0c4a6e;
+    text-align: center;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .mobile-demo-result,
+  .audio-intel-demo-result {
+    background: white;
+    border: 2px solid #0ea5e9;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    font-family: monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    min-height: 200px;
+  }
+
+  .audio-intel-demo .grid {
+    display: block;
+    gap: 2rem;
+  }
+
+  .audio-intel-demo input {
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  .audio-intel-demo button {
+    height: 48px;
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+/* =============================================================================
+   9. TESTIMONIALS & SOCIAL PROOF
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .mobile-testimonial,
+  .testimonial-section,
+  .beta-social-proof {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border: 2px solid #f59e0b;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  .mobile-testimonial-text {
+    font-size: 1rem;
+    font-style: italic;
+    color: #92400e;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .mobile-testimonial-author {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #78350f;
+  }
+
+  .testimonial-section h2,
+  .user-section h2 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .testimonial-section p,
+  .user-section p {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .beta-founder-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .beta-founder-photo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+  }
+}
+
+/* =============================================================================
+   10. IMAGES & MEDIA
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Fix dog/mascot image aspect ratio */
+  img[alt*="dog"],
+  img[alt*="mascot"],
+  img[alt*="Reality"],
+  img[alt*="vinyl"],
+  img[src*="dog"],
+  img[src*="mascot"],
+  .mascot-image,
+  .character-image {
+    width: auto;
+    height: auto;
+    max-width: 250px;
+    max-height: 250px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    object-position: center;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  /* Fix logo/image display issues */
+  .w-10.h-10 img,
+  img[width="40"][height="40"] {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  /* Mascot containers */
+  .mascot-container,
+  .character-container,
+  .image-container {
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* General image optimization */
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Images in cards */
+  .card img,
+  .testimonial img,
+  .feature img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    aspect-ratio: auto;
+  }
+}
+
+/* =============================================================================
+   11. CHAT WIDGET FIX
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Make chat widget smaller, not full width */
+  .chat-widget,
+  .chat-button,
+  .intercom-launcher,
+  [class*="chat"],
+  .support-widget {
+    width: auto;
+    max-width: 200px;
+    min-width: 120px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    left: auto;
+    padding: 12px 20px;
+    border-radius: 25px;
+    z-index: 1000;
+  }
+
+  /* Green chat bar fix */
+  .green-chat-bar,
+  div[style*="background: green"],
+  div[style*="background-color: green"] {
+    width: auto;
+    max-width: 180px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    left: auto;
+    border-radius: 25px;
+    padding: 10px 16px;
+  }
+}
+
+/* =============================================================================
+   12. FOOTER
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .mobile-footer,
+  .audio-intel-footer,
+  footer {
+    background: #1a202c;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 4rem;
+  }
+
+  .mobile-footer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .mobile-footer-link,
+  footer a {
+    color: #cbd5e1;
+    font-size: 0.875rem;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    min-height: 44px;
+  }
+
+  .mobile-footer-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .mobile-footer-copyright {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #374151;
+  }
+
+  .audio-intel-footer-grid {
+    display: block;
+    gap: 2rem;
+  }
+
+  .audio-intel-footer-section {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
+
+/* =============================================================================
+   13. CONTAINER & LAYOUT FIXES
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Fix container width issues */
+  .max-w-5xl.mx-auto,
+  .max-w-4xl.mx-auto,
+  .max-w-7xl.mx-auto {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: calc(100% - 2rem);
+    max-width: calc(100vw - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  /* Fix sections with text overflow */
+  .py-16.px-4 .bg-white.rounded-2xl.p-8.shadow-lg.border,
+  .py-20.px-4 .bg-white.rounded-2xl.p-8.shadow-lg.border {
+    padding: 1.5rem;
+    margin: 0;
+    width: calc(100vw - 2rem);
+    max-width: calc(100vw - 2rem);
+    box-sizing: border-box;
+  }
+
+  /* Fix demo/content boxes */
+  .demo-container,
+  .content-card,
+  .info-box {
+    padding: 1rem;
+    margin: 0.5rem;
+    width: calc(100vw - 3rem);
+    max-width: calc(100vw - 3rem);
+    box-sizing: border-box;
+  }
+
+  /* Fix Coming Soon cards */
+  .bg-gradient-to-r.from-blue-50.to-green-50,
+  .bg-gradient-to-r.from-yellow-50.to-orange-50 {
+    padding: 1rem;
+    margin: 0 1rem;
+    width: calc(100vw - 2rem);
+    max-width: calc(100vw - 2rem);
+    box-sizing: border-box;
+  }
+
+  /* Fix buttons that overflow */
+  .bg-gradient-to-r.from-blue-600.to-blue-500,
+  .bg-gradient-to-r.from-green-600.to-green-500 {
+    width: calc(100vw - 2rem);
+    max-width: calc(100vw - 2rem);
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Fix Real-time metrics cards */
+  .grid.lg\\:grid-cols-2 .grid.grid-cols-2 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* =============================================================================
+   14. PERFORMANCE OPTIMIZATIONS
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  /* Reduce animations for better performance */
+  * {
+    animation-duration: 0.2s;
+    transition-duration: 0.15s;
+  }
+
+  /* Improve tap highlight */
+  * {
+    -webkit-tap-highlight-color: rgba(59, 130, 246, 0.3);
+  }
+}
+
+/* =============================================================================
+   15. UTILITY CLASSES
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+
+  .mobile-visible {
+    display: block;
+  }
+
+  .mobile-flex {
+    display: flex;
+  }
+
+  .mobile-grid {
+    display: grid;
+  }
+
+  .mobile-text-center {
+    text-align: center;
+  }
+
+  .mobile-text-left {
+    text-align: left;
+  }
+
+  .mobile-w-full {
+    width: 100%;
+  }
+
+  .mobile-mb-4 {
+    margin-bottom: 1rem;
+  }
+
+  .mobile-mb-8 {
+    margin-bottom: 2rem;
+  }
+
+  .mobile-p-4 {
+    padding: 1rem;
+  }
+
+  .mobile-px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .mobile-py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* =============================================================================
+   16. TABLET BREAKPOINT (768px - 1024px)
+   ============================================================================= */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .mobile-hero-title {
+    font-size: 3rem;
+  }
+
+  .mobile-hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .mobile-cta-button,
+  .mobile-secondary-button {
+    width: auto;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .mobile-feature-grid,
+  .beta-benefits-grid,
+  .audio-intel-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mobile-pricing-card {
+    max-width: 400px;
+    margin: 0 auto 2rem auto;
+  }
+
+  .beta-hero h1,
+  .audio-intel-hero h1 {
+    font-size: 4rem;
+  }
+
+  .beta-form-grid,
+  .audio-intel-pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .beta-form-card {
+    padding: 3rem;
+  }
+}
+
+/* =============================================================================
+   17. DESKTOP BREAKPOINT (1024px+)
+   ============================================================================= */
+
+@media (min-width: 1024px) {
+  .mobile-feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .mobile-hero {
+    padding: 4rem 2rem;
+  }
+
+  .mobile-hero-title {
+    font-size: 4rem;
+  }
+}
+
+/* =============================================================================
+   18. ACCESSIBILITY IMPROVEMENTS
+   ============================================================================= */
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .beta-submit-button,
+  .audio-intel-feature-card,
+  .audio-intel-pricing-card,
+  .audio-intel-solution-card {
+    transition: none;
+  }
+
+  .beta-submit-button:hover,
+  .audio-intel-feature-card:hover,
+  .audio-intel-pricing-card:hover,
+  .audio-intel-solution-card:hover {
+    transform: none;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .beta-form-input,
+  .beta-form-select,
+  .audio-intel-feature-card,
+  .audio-intel-pricing-card {
+    border-width: 3px;
+    border-color: #000;
+  }
+
+  .beta-form-input:focus,
+  .beta-form-select:focus {
+    border-color: #0000ff;
+    box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.3);
+  }
+
+  .audio-intel-hero-button,
+  .audio-intel-pricing-button {
+    border-width: 3px;
+    border-color: #000;
+  }
+}
+
+/* Remove hover effects on touch devices */
+@media (hover: none) {
+  button:hover,
+  a:hover {
+    transform: none;
+  }
+}
+
+/* =============================================================================
+   END OF CONSOLIDATED MOBILE STYLES
+   ============================================================================= */

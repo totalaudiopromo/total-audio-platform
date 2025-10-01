@@ -36,7 +36,7 @@ export default defineConfig({
 
   // Local server setup
   webServer: {
-    command: 'npm run dev:audio-intel',
+    command: 'npm run dev',
     port: 3000,
     reuseExistingServer: !process.env.CI,
   },

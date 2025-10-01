@@ -5,8 +5,10 @@
 
 const { test, expect, devices } = require('@playwright/test');
 
+// Configure mobile device at top level
+test.use({ ...devices['iPhone 13'] });
+
 test.describe('Critical Mobile Issues Check', () => {
-  test.use({ ...devices['iPhone 13'] });
 
   test('Homepage loads and CTA is accessible', async ({ page }) => {
     await page.goto('/');

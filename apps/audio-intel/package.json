@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"No tests configured for audio-intel\" && exit 0"
+    "test": "echo \"No tests configured for audio-intel\" && exit 0",
+    "test:mobile": "playwright test tests/mobile/",
+    "test:mobile:quick": "playwright test tests/mobile/quick-mobile-check.test.js",
+    "test:mobile:headed": "playwright test tests/mobile/ --headed",
+    "test:mobile:report": "playwright show-report reports/mobile"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.30.1",

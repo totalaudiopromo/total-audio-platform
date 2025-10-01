@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import "./mobile-optimizations.css";
-import "./beta-mobile.css";
-import "./home-mobile.css";
-import "./mobile-touch-fixes.css";
-import "./mobile-ux-fixes.css";
+import "./mobile.css";
 import React from 'react';
 import ClientLayout from './components/ClientLayout';
 

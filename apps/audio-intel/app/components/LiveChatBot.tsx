@@ -34,6 +34,18 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
     scrollToBottom();
   }, [messages]);
 
+  // Lock body scroll on mobile when chat is open
+  useEffect(() => {
+    if (isOpen && window.innerWidth < 640) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       // Add welcome message when chat opens
@@ -112,9 +124,9 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
       {/* Chat Toggle Button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-16 h-16 rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all font-black text-white ${
-          userTier === 'agency' 
-            ? 'bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600' 
+        className={`fixed bottom-6 right-6 z-50 w-16 h-16 md:w-20 md:h-20 rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all font-black text-white ${
+          userTier === 'agency'
+            ? 'bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600'
             : userTier === 'professional'
             ? 'bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600'
             : 'bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600'
@@ -125,7 +137,7 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-24 right-6 z-40 w-96 h-[500px] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] rounded-2xl bg-white">
+        <Card className="fixed bottom-24 right-6 z-40 w-[calc(100vw-3rem)] sm:w-96 max-w-md h-[500px] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] rounded-2xl bg-white">
           <CardHeader className={`${
             userTier === 'agency' 
               ? 'bg-gradient-to-r from-purple-600 to-purple-500' 
@@ -229,14 +241,14 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask Audio about contact enrichment, pricing, or platform features..."
-                  className="flex-1 border-2 border-black rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold"
+                  className="flex-1 h-14 sm:h-12 text-base sm:text-sm border-2 border-black rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold"
                   disabled={isLoading}
                 />
                 <Button
                   onClick={handleSendMessage}
                   disabled={!inputValue.trim() || isLoading}
                   size="sm"
-                  className={`border-2 border-black rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all font-black text-white ${
+                  className={`h-14 sm:h-12 px-4 border-2 border-black rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all font-black text-white ${
                     userTier === 'agency' 
                       ? 'bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600' 
                       : userTier === 'professional'
