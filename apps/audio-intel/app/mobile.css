@@ -120,6 +120,13 @@
     display: none;
   }
 
+  /* HIDE Playlist Pulse banner completely on mobile - too distracting */
+  .audio-intel-banner,
+  section.audio-intel-banner,
+  .bg-gradient-to-r.from-yellow-50.to-orange-50 {
+    display: none !important;
+  }
+
   /* Fix header container that causes scroll bar */
   header,
   .header,
@@ -589,28 +596,28 @@
     max-width: 100%;
   }
 
-  /* Individual pricing cards */
+  /* Individual pricing cards - PROPER SPACING */
   .mobile-pricing-card,
   .pricing-card,
   .plan-card,
   .audio-intel-pricing-card,
   .bg-white.p-8.rounded-2xl.border-4 {
-    width: calc(100vw - 3rem);
-    max-width: calc(100vw - 3rem);
-    margin: 0 auto 1.5rem auto;
-    padding: 1.25rem;
-    box-sizing: border-box;
-    overflow: hidden;
-    word-wrap: break-word;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    border: 2px solid #e5e7eb;
-    text-align: center;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    margin: 0 auto 2rem auto !important;
+    padding: 1.5rem !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    word-wrap: break-word !important;
+    background: white !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+    border: 2px solid #e5e7eb !important;
+    text-align: center !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 
   .mobile-pricing-title,
@@ -728,50 +735,45 @@
    ============================================================================= */
 
 @media (max-width: 768px) {
-  /* Fix the lg:grid-cols-2 feature cards grid - CENTER THEM */
+  /* Fix the lg:grid-cols-2 feature cards grid - FORCE CENTER WITH MARGINS */
   .grid.lg\\:grid-cols-2,
   section > .grid.lg\\:grid-cols-2,
   div > .grid.lg\\:grid-cols-2 {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
+    display: block !important;
     width: 100% !important;
-    padding: 0 !important;
-    gap: 1rem !important;
+    padding: 0 1rem !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
   }
 
-  /* Fix individual feature cards columns (Email Validation, AI Contact, etc.) */
+  /* Fix individual feature cards columns - CENTER WITH AUTO MARGINS */
   .grid.lg\\:grid-cols-2 > div,
   .grid.lg\\:grid-cols-2 > .space-y-8 {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 auto !important;
-    padding: 0 0.75rem !important;
+    padding: 0 !important;
     box-sizing: border-box !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
   }
 
-  /* Fix individual card styling within space-y-8 containers */
+  /* Fix individual card styling within space-y-8 containers - CENTER EACH CARD */
   .grid.lg\\:grid-cols-2 .space-y-8 > div {
     width: 100% !important;
     max-width: 100% !important;
-    margin: 0 0 1rem 0 !important;
+    margin: 0 auto 1rem auto !important;
+    padding: 0 !important;
     box-sizing: border-box !important;
   }
 
-  /* Ensure card content doesn't overflow */
-  .grid.lg\\:grid-cols-2 .space-y-8 {
-    width: 100% !important;
-  }
-
-  /* Fix card inner content */
+  /* Fix card inner content - REMOVE ALL SIDE PADDING/MARGINS */
   .grid.lg\\:grid-cols-2 .bg-white {
     width: 100% !important;
+    max-width: 100% !important;
     padding: 1rem !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
     box-sizing: border-box !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   /* Fix the title text wrapping */
@@ -971,14 +973,16 @@
    ============================================================================= */
 
 @media (max-width: 768px) {
-  /* Dog/vinyl image - CROP with object-fit */
+  /* Dog/vinyl image - AGGRESSIVE CROP */
   img[alt*="Dog"],
-  img[alt*="vinyl"] {
-    width: 200px !important;
-    height: 200px !important;
+  img[alt*="vinyl"],
+  img[alt*="dog"],
+  img[src*="dog"] {
+    width: 140px !important;
+    height: 140px !important;
     object-fit: cover !important;
     object-position: center !important;
-    margin: 0 auto !important;
+    margin: 0.25rem auto !important;
     padding: 0 !important;
     border-radius: 1rem !important;
   }
@@ -1268,14 +1272,28 @@
     box-sizing: border-box;
   }
 
-  /* Fix Coming Soon cards */
-  .bg-gradient-to-r.from-blue-50.to-green-50,
-  .bg-gradient-to-r.from-yellow-50.to-orange-50 {
-    padding: 1rem;
-    margin: 0 1rem;
-    width: calc(100vw - 2rem);
-    max-width: calc(100vw - 2rem);
-    box-sizing: border-box;
+  /* Fix "Join the Audio Intel Beta" section - CENTER IT */
+  .bg-gradient-to-r.from-blue-50.to-green-50 {
+    padding: 1rem !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .bg-gradient-to-r.from-blue-50.to-green-50 .bg-white {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 1.5rem !important;
+    box-sizing: border-box !important;
+  }
+
+  .bg-gradient-to-r.from-blue-50.to-green-50 .max-w-4xl {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
   }
 
   /* Fix buttons that overflow */
