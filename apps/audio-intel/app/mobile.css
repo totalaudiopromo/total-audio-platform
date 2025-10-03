@@ -93,6 +93,11 @@
     z-index: 100;
   }
 
+  /* Hide page header on mobile - MobileNav component already provides navigation */
+  .audio-intel-header {
+    display: none;
+  }
+
   /* Hide cross-promotion banner on mobile to reduce header clutter */
   .audio-intel-banner {
     display: none;
