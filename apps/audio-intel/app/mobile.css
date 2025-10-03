@@ -93,6 +93,11 @@
     z-index: 100;
   }
 
+  /* Hide cross-promotion banner on mobile to reduce header clutter */
+  .audio-intel-banner {
+    display: none;
+  }
+
   /* Fix header container that causes scroll bar */
   header,
   .header,
