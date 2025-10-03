@@ -65,8 +65,13 @@
   /* Section spacing */
   .section,
   section {
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
     margin: 0;
+  }
+
+  /* Consistent vertical rhythm */
+  section + section {
+    margin-top: 1.5rem;
   }
 }
 
@@ -204,28 +209,29 @@
 
   .mobile-hero-title,
   .hero h1 {
-    font-size: 2rem;
-    font-weight: 900;
+    font-size: 1.75rem;
+    font-weight: 800;
     color: #1a202c;
-    line-height: 1.2;
+    line-height: 1.25;
     margin-bottom: 1rem;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
     padding: 0 0.5rem;
   }
 
   .beta-hero h1,
   .audio-intel-hero h1 {
-    font-size: 2.5rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
   }
 
   .mobile-hero-subtitle,
   .hero p {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     color: #4a5568;
-    line-height: 1.5;
-    margin-bottom: 2rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
     max-width: 100%;
     padding: 0 0.5rem;
   }
@@ -233,11 +239,12 @@
   .beta-hero-cta {
     padding: 2rem 1rem;
     margin: 1.5rem 0;
-    border-radius: 20px;
+    border-radius: 16px;
   }
 
   .beta-hero-cta h3 {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
+    font-weight: 700;
     line-height: 1.3;
     margin-bottom: 1rem;
   }
@@ -486,13 +493,15 @@
   /* Base card styles */
   .mobile-card {
     background: white;
-    border-radius: 20px;
-    padding: 1.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 2px solid #000;
+    border-radius: 16px;
+    padding: 1.25rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e5e7eb;
     margin-bottom: 1rem;
     width: 100%;
     max-width: none;
+    overflow: hidden;
+    word-wrap: break-word;
   }
 
   /* Pricing section container fix */
@@ -524,13 +533,14 @@
     width: calc(100vw - 2rem);
     max-width: calc(100vw - 2rem);
     margin: 0 auto 1.5rem auto;
-    padding: 1.5rem;
+    padding: 1.25rem;
     box-sizing: border-box;
     overflow: hidden;
+    word-wrap: break-word;
     background: white;
-    border-radius: 24px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    border: 3px solid #000;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e5e7eb;
     text-align: center;
     position: relative;
   }
@@ -538,8 +548,8 @@
   .mobile-pricing-title,
   .pricing-card h3,
   .audio-intel-pricing-title {
-    font-size: 1.5rem;
-    font-weight: 900;
+    font-size: 1.375rem;
+    font-weight: 700;
     color: #1a202c;
     margin-bottom: 0.5rem;
     line-height: 1.3;
@@ -548,8 +558,8 @@
   .mobile-pricing-price,
   .pricing-card .price,
   .audio-intel-pricing-price {
-    font-size: 2.5rem;
-    font-weight: 900;
+    font-size: 2.25rem;
+    font-weight: 800;
     color: #1a202c;
     margin-bottom: 1rem;
     line-height: 1.2;
@@ -572,9 +582,9 @@
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 0.75rem;
-    font-size: 0.95rem;
-    color: #374151;
-    line-height: 1.4;
+    font-size: 0.875rem;
+    color: #4b5563;
+    line-height: 1.5;
     padding: 0.25rem 0;
   }
 
@@ -640,12 +650,12 @@
   .beta-benefit-card,
   .audio-intel-feature-card {
     background: white;
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 1.5rem;
     border: 2px solid #e5e7eb;
     text-align: center;
     transition: all 0.2s ease;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .mobile-feature-card:hover,
@@ -874,36 +884,64 @@
    ============================================================================= */
 
 @media (max-width: 768px) {
-  /* Make chat widget smaller, not full width */
+  /* Circular FAB chat button (PostCraft style) */
   .chat-widget,
   .chat-button,
   .intercom-launcher,
   [class*="chat"],
   .support-widget {
-    width: auto;
-    max-width: 200px;
-    min-width: 120px;
+    width: 56px;
+    height: 56px;
     position: fixed;
     bottom: 20px;
     right: 20px;
     left: auto;
-    padding: 12px 20px;
-    border-radius: 25px;
+    padding: 0;
+    border-radius: 50%;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #10b981;
+    color: white;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  /* Green chat bar fix */
+  .chat-widget:hover,
+  .chat-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .chat-widget:active,
+  .chat-button:active {
+    transform: scale(0.95);
+  }
+
+  /* Hide chat text on mobile */
+  .chat-widget span:not(.icon),
+  .chat-button span:not(.icon) {
+    display: none;
+  }
+
+  /* Green chat bar fix - convert to FAB */
   .green-chat-bar,
   div[style*="background: green"],
   div[style*="background-color: green"] {
-    width: auto;
-    max-width: 180px;
+    width: 56px;
+    height: 56px;
     position: fixed;
     bottom: 20px;
     right: 20px;
     left: auto;
-    border-radius: 25px;
-    padding: 10px 16px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 }
 
