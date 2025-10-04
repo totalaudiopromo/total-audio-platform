@@ -1,6 +1,18 @@
 import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 import { enrichCampaignWithIntelligence, type Campaign } from '@/lib/intelligence';
+import { appendFile } from 'node:fs/promises';
+
+async function logDebug(event: string, payload: unknown) {
+  try {
+    await appendFile(
+      '/tmp/tracker-campaign-debug.log',
+      `${new Date().toISOString()} ${event} ${JSON.stringify(payload)}\n`
+    );
+  } catch (error) {
+    console.error('Failed to write debug log', error);
+  }
+}
 
 export async function GET() {
   const supabase = await createClient();
@@ -51,7 +63,7 @@ export async function POST(request: Request) {
 
   const body = await request.json();
 
-  console.log('Creating campaign:', { user_id: user.id, body });
+  await logDebug('campaign:create:start', { user_id: user.id, body });
 
   const { data, error } = await supabase
     .from('campaigns')
@@ -74,10 +86,12 @@ export async function POST(request: Request) {
     .single();
 
   if (error) {
+    await logDebug('campaign:create:error', { error });
     console.error('Campaign creation error:', error);
     return NextResponse.json({ error: error.message, details: error }, { status: 500 });
   }
 
+  await logDebug('campaign:create:success', { data });
   console.log('Campaign created successfully:', data);
   return NextResponse.json(data);
 }

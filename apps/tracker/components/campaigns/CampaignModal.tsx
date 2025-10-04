@@ -39,13 +39,38 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) throw new Error('Failed to save campaign');
+      if (!response.ok) {
+        let errorMessage = 'Failed to save campaign';
+
+        try {
+          const errorBody = await response.json();
+          if (typeof errorBody?.error === 'string') {
+            errorMessage = errorBody.error;
+          }
+
+          console.error('Campaign save failed', {
+            status: response.status,
+            error: errorBody,
+          });
+        } catch (jsonError) {
+          console.error('Campaign save failed with non-JSON response', {
+            status: response.status,
+            jsonError,
+          });
+        }
+
+        throw new Error(errorMessage);
+      }
 
       onClose();
       router.refresh();
     } catch (error) {
       console.error('Error saving campaign:', error);
-      alert('Failed to save campaign');
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert('Failed to save campaign');
+      }
     } finally {
       setLoading(false);
     }
