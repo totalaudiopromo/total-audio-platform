@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Tracker - Stop Wasting Time on Campaign Tracking',
-    description: 'AI campaign intelligence for working music promoters. Track campaigns, get insights, and know exactly what's working.',
+    description: 'AI campaign intelligence for working music promoters. Track campaigns, get insights, and know exactly what is working.',
     url: 'https://tracker.totalaudiopromo.com',
     siteName: 'Tracker',
     locale: 'en_GB',

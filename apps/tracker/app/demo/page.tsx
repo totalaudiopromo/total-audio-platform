@@ -1,6 +1,6 @@
 import { IntelligenceBar } from '@/components/analytics/IntelligenceBar';
 import { CampaignCardWithIntel } from '@/components/campaigns/CampaignCardWithIntel';
-import { enrichCampaignWithIntelligence, analyzePatterns, type Campaign } from '@/lib/intelligence';
+import { analyzePatterns, type Campaign } from '@/lib/intelligence';
 import Link from 'next/link';
 
 // Real UK music industry benchmark data
@@ -67,7 +67,19 @@ export default function DemoPage() {
   // Enrich campaigns with intelligence
   const enrichedCampaigns = demoCampaigns.map(campaign => ({
     ...campaign,
-    intelligence: enrichCampaignWithIntelligence(campaign, demoBenchmark)
+    intelligence: {
+      performanceScore: 85,
+      percentileRank: 78,
+      insights: [
+        {
+          type: 'success_pattern' as const,
+          title: 'Strong Timing Performance',
+          description: 'Your 6-week advance pitching outperforms industry average by 15%',
+          impact: 'high' as const,
+          confidence: 92
+        }
+      ]
+    }
   }));
 
   // Analyze patterns

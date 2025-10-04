@@ -215,14 +215,14 @@ export default function AudioIntelLanding() {
       <section className="audio-intel-hero w-full">
         <div className="audio-intel-container max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
           {/* Total Audio Promo Logo in Hero - TRANSPARENT PNG ONLY - MOBILE RESPONSIVE */}
-          <div className="mb-6 sm:mb-8 md:mb-12 overflow-hidden" style={{ maxHeight: '200px' }}>
+          <div className="mb-4 sm:mb-6 md:mb-12 overflow-hidden" style={{ maxHeight: '200px' }}>
             <Image
               src="/images/total_audio_promo_logo_trans.png"
               alt="Total Audio Promo - Music Industry Intelligence"
               width={200}
               height={200}
               className="mx-auto w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 object-cover object-center"
-              style={{ objectPosition: 'center 35%' }}
+              style={{ objectPosition: 'center 25%' }}
             />
           </div>
 
@@ -1347,8 +1347,8 @@ export default function AudioIntelLanding() {
 
             <div className="grid gap-6 sm:gap-10 grid-cols-2 w-full">
               <div className="col-span-1">
-                <h3 className="text-base sm:text-xl font-black mb-4 sm:mb-6">Product</h3>
-                <ul className="space-y-4">
+                <h3 className="text-base sm:text-xl font-black mb-3 sm:mb-6">Product</h3>
+                <ul className="space-y-2 sm:space-y-3">
                   <li>
                     <a href="#features" className="text-gray-300 hover:text-white font-bold transition-colors">
                       Features
@@ -1373,8 +1373,8 @@ export default function AudioIntelLanding() {
               </div>
 
               <div className="col-span-1">
-                <h3 className="text-base sm:text-xl font-black mb-4 sm:mb-6">Support</h3>
-                <ul className="space-y-4">
+                <h3 className="text-base sm:text-xl font-black mb-3 sm:mb-6">Support</h3>
+                <ul className="space-y-2 sm:space-y-3">
                   <li>
                     <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors">
                       Help Center
@@ -1399,8 +1399,8 @@ export default function AudioIntelLanding() {
               </div>
 
               <div className="col-span-2 mt-4">
-                <h3 className="text-base sm:text-xl font-black mb-4 sm:mb-6">Legal</h3>
-                <ul className="space-y-4">
+                <h3 className="text-base sm:text-xl font-black mb-3 sm:mb-6">Legal</h3>
+                <ul className="space-y-2 sm:space-y-3">
                   <li>
                     <a href="https://totalaudiopromo.com/privacy" className="text-gray-300 hover:text-white font-bold transition-colors">
                       Privacy Policy
