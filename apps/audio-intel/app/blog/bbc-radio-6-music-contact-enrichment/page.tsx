@@ -220,6 +220,269 @@ export default function BbcRadio6MusicContactEnrichment() {
           <p className="text-sm text-gray-500">Pulled from internal beta feedback, March 2025.</p>
         </section>
 
+        <section id="understanding-6-music" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Understanding BBC Radio 6 Music&apos;s Structure</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            BBC Radio 6 Music operates as the UK&apos;s alternative and indie music station with a completely different culture from Radio 1. Understanding this structure is critical for indie artists targeting airplay.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mt-8">Album-Focused vs Singles-Focused Programming</h3>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Unlike Radio 1&apos;s singles-heavy rotation, BBC Radio 6 Music champions album tracks and deep cuts. Presenters play full albums during "Breakfast Album" slots, feature extended album sessions, and prioritise artistic depth over commercial appeal. This means pitching single tracks requires different context than Radio 1 campaigns.
+          </p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Audio Intel identifies which presenters favour album-based artists versus those who champion emerging singles. Steve Lamacq focuses on new indie releases across formats, while Mary Anne Hobbs prefers experimental album projects. The enrichment process matches your release format to appropriate shows automatically.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mt-8">2025 Schedule Changes Impact Everything</h3>
+          <p className="text-base text-gray-700 leading-relaxed">
+            February 2025 brought massive presenter shuffles: Nick Grimshaw to breakfast, Lauren Laverne to mid-mornings, Steve Lamacq reduced to Mondays only. Most online contact databases still reflect the 2024 schedule, meaning pitches hit wrong time slots or inactive shows.
+          </p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            During enrichment, Audio Intel cross-references current BBC schedule data, recent broadcast logs, and presenter social updates. The case study flagged three outdated show assignments from the original contact list and provided current presenter schedules accurate to February 2025.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mt-8">Multiple Submission Pathways for Different Artist Tiers</h3>
+          <p className="text-base text-gray-700 leading-relaxed">
+            BBC Radio 6 Music maintains three submission routes: BBC Introducing Uploader for unsigned/emerging artists, Fresh On The Net for independent releases, and direct presenter contact for established acts. The enrichment process identifies which route applies based on artist tier and previous BBC airplay history.
+          </p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            For this campaign, the indie rock band qualified for BBC Introducing due to no previous BBC plays. The enrichment report highlighted Huw Stephens as primary BBC Introducing contact and Steve Lamacq for direct pitching if Introducing placement succeeds.
+          </p>
+        </section>
+
+        <section id="common-mistakes" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">5 BBC Radio 6 Music Pitching Mistakes That Kill Indie Campaigns</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            After running dozens of BBC Radio 6 Music campaigns for indie artists, these are the mistakes that come up repeatedly. Audio Intel prevents most of them automatically.
+          </p>
+
+          <div className="space-y-6">
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 1: Using Outdated 2024 Presenter Schedules</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                February 2025 schedule changes made most online resources obsolete. Pitching Steve Lamacq on Wednesday afternoons (his old slot) means your email never gets heard because he only broadcasts Mondays now. Audio Intel verifies current schedules during enrichment so pitches hit active time slots.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 2: Pitching Singles Like Radio 1</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                BBC Radio 6 Music values album context and artistic narrative over commercial singles. Pitching a single without mentioning the album, influences, or creative process signals you do not understand the station culture. The enrichment process identifies presenters who champion your specific indie sub-genre.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 3: Ignoring BBC Introducing as Primary Route</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                For unsigned and emerging indie artists, BBC Introducing Uploader is the official first step. Direct presenter pitches without Introducing validation often get ignored. Audio Intel flags artist tier and recommends appropriate submission pathway during enrichment.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 4: Genre Mismatch Between Artist and Presenter</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Pitching electronic experimental music to Steve Lamacq (guitar indie specialist) or indie rock to Mary Anne Hobbs (electronic/experimental champion) wastes everyone&apos;s time. Audio Intel scores genre fit automatically and highlights best-match presenters for your sound.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 5: No Follow-Up Strategy After Initial Pitch</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                BBC Radio 6 Music presenters receive hundreds of pitches monthly. A single email rarely works for emerging artists. Audio Intel suggests follow-up timing based on show schedules, presenter reply patterns, and campaign momentum indicators.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="beyond-6-music" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Beyond BBC Radio 6 Music: Scaling the Same Workflow</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            The enrichment process works identically for BBC Radio 1, BBC Radio 2, commercial alternative stations, and streaming platforms. Once you prove the workflow on 6 Music, you can scale across the entire UK indie promotion landscape.
+          </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">BBC Radio 1 Specialist Shows</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Radio 1 specialist programming (Jack Saunders, Annie Mac&apos;s replacement) targets younger demographics than 6 Music but similar indie/alternative focus. The enrichment process identifies crossover opportunities and submission timing for both stations.
+              </p>
+              <a href="/blog/bbc-radio-1-contact-enrichment" className="text-blue-600 font-semibold hover:underline">
+                Read the BBC Radio 1 case study →
+              </a>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">BBC Radio 2 Alternative Programming</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Radio 2 specialist shows (Jo Whiley, Dermot O&apos;Leary) bridge mainstream and alternative. The enrichment workflow identifies which indie artists fit Radio 2&apos;s more accessible alternative programming alongside 6 Music pitches.
+              </p>
+              <a href="/blog/bbc-radio-2-contact-enrichment" className="text-blue-600 font-semibold hover:underline">
+                See the Radio 2 enrichment guide →
+              </a>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Spotify Editorial Playlists</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Indie List UK, Fresh Finds UK, and genre-specific Spotify editorial playlists complement BBC Radio 6 Music campaigns. The enrichment process provides submission timing and metadata optimisation for streaming alongside radio promotion.
+              </p>
+              <a href="/blog/spotify-editorial-playlist-contacts" className="text-blue-600 font-semibold hover:underline">
+                Read the Spotify editorial workflow →
+              </a>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Commercial Alternative Radio</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Absolute Radio, Kerrang, and regional alternative stations offer additional UK indie promotion routes. The enrichment process maps commercial radio structures and identifies regional vs national decision makers for indie artists.
+              </p>
+              <a href="/blog/kerrang-radio-contact-enrichment" className="text-blue-600 font-semibold hover:underline">
+                See the commercial radio guide →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Frequently Asked Questions</h2>
+
+          <div className="space-y-4">
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                Do I need email addresses to use Audio Intel for BBC Radio 6 Music contacts?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  Yes. Audio Intel is a contact enrichment tool, not a contact discovery tool. You need basic presenter names and email addresses to start the enrichment process. These can come from BBC website searches, LinkedIn profiles, previous campaign records, or industry databases.
+                </p>
+                <p>
+                  The enrichment process then verifies those contacts are current (post-February 2025 schedule changes), adds show assignments, identifies genre preferences, and flags submission routes. This prevents pitching outdated presenters or wrong shows.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                How accurate are the genre match scores for BBC Radio 6 Music shows?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  The enrichment process analyses recent playlists, show descriptions, and presenter social feeds to score genre fit. For indie rock artists, Steve Lamacq typically scores 90+ percent match while Mary Anne Hobbs (electronic/experimental) scores lower unless your sound has electronic elements.
+                </p>
+                <p>
+                  Genre scoring helps prioritise which presenters to pitch first, avoiding the common mistake of mass-pitching every 6 Music show regardless of fit.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                Should unsigned indie artists use BBC Introducing or direct presenter contact?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  For unsigned and emerging artists with no previous BBC airplay, BBC Introducing Uploader is the official first step. Huw Stephens champions BBC Introducing on 6 Music, and successful Introducing plays open doors to specialist presenter contact.
+                </p>
+                <p>
+                  Audio Intel identifies artist tier during enrichment and recommends submission pathway. If you have previous BBC plays or established press coverage, direct presenter contact becomes viable alongside Introducing.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                How often do BBC Radio 6 Music presenter schedules change?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  Major schedule overhauls happen yearly or bi-yearly. February 2025 brought significant changes (Nick Grimshaw to breakfast, Steve Lamacq reduced to Mondays). Smaller show time adjustments happen quarterly.
+                </p>
+                <p>
+                  Audio Intel cross-references current BBC schedule data during enrichment so presenter assignments reflect real broadcast schedules, not cached data from months ago.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                What file formats does Audio Intel accept for BBC Radio 6 Music contact lists?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  Upload contacts as CSV files with columns for presenter name, email address, and optional fields like show name, genre, or previous notes. The platform handles common formatting variations automatically.
+                </p>
+                <p>
+                  After enrichment, export results as CSV for your email marketing tool or as PDF summaries for artist/manager reporting with genre match scores and submission recommendations.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                Does this work for BBC Radio 1 and other BBC stations?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  Yes. The enrichment workflow is identical for BBC Radio 1 specialist shows, BBC Radio 2 alternative programming, BBC Radio 1Xtra urban music, and regional BBC stations. Upload your existing contact emails, tag the campaign with the target station, and the enrichment process scopes appropriate sources.
+                </p>
+                <p>
+                  Each BBC network has different submission cultures and genre preferences. The enrichment process adapts automatically based on station context you provide.
+                </p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section id="getting-started" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">How to Start Your Own BBC Radio 6 Music Campaign</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            If you have BBC Radio 6 Music contact data in spreadsheets, old emails, or are starting from scratch with presenter names from Google, you can run the same enrichment workflow today. Here is the step-by-step process.
+          </p>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 space-y-6">
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 1: Gather Your Existing Contacts</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Collect every BBC Radio 6 Music presenter name and email address you can find from previous campaigns, BBC website searches, LinkedIn profiles, or industry databases. Even partial or outdated data works - the enrichment process validates and updates everything.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 2: Format as CSV</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Create a CSV file with at minimum presenter name and email address columns. Optional fields like show name, genre preference, or previous campaign notes help enrichment but are not required. Save the file and prepare for upload.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 3: Upload to Audio Intel</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Log into Audio Intel, start a new enrichment campaign, and upload your CSV. Tag the campaign as BBC Radio 6 Music so the platform knows to scope indie/alternative-focused intelligence and current 2025 schedule data.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 4: Review Enriched Results</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Enrichment typically completes in under two minutes. Review the genre match scores (85+ percent is strong fit), check flagged outdated presenters, and confirm submission routes (BBC Introducing vs direct contact) match your artist tier.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 5: Export and Execute</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Export the enriched contact list as CSV for your email marketing platform, or download the PDF summary to share with artists/managers. The enriched data includes current show schedules, genre match scores, and submission pathway recommendations.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section id="cta" className="space-y-6">
           <h2 className="text-3xl font-black text-gray-900">Ready to Stop Guessing BBC Radio 6 Music Contacts?</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
@@ -242,6 +505,66 @@ export default function BbcRadio6MusicContactEnrichment() {
         </section>
       </div>
     </article>
+
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Do I need email addresses to use Audio Intel for BBC Radio 6 Music contacts?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Audio Intel is a contact enrichment tool, not a contact discovery tool. You need basic presenter names and email addresses to start the enrichment process. The enrichment process then verifies those contacts are current (post-February 2025 schedule changes), adds show assignments, identifies genre preferences, and flags submission routes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How accurate are the genre match scores for BBC Radio 6 Music shows?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The enrichment process analyses recent playlists, show descriptions, and presenter social feeds to score genre fit. For indie rock artists, Steve Lamacq typically scores 90+ percent match while Mary Anne Hobbs (electronic/experimental) scores lower unless your sound has electronic elements. Genre scoring helps prioritise which presenters to pitch first."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Should unsigned indie artists use BBC Introducing or direct presenter contact?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For unsigned and emerging artists with no previous BBC airplay, BBC Introducing Uploader is the official first step. Huw Stephens champions BBC Introducing on 6 Music, and successful Introducing plays open doors to specialist presenter contact. Audio Intel identifies artist tier during enrichment and recommends submission pathway."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How often do BBC Radio 6 Music presenter schedules change?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Major schedule overhauls happen yearly or bi-yearly. February 2025 brought significant changes (Nick Grimshaw to breakfast, Steve Lamacq reduced to Mondays). Smaller show time adjustments happen quarterly. Audio Intel cross-references current BBC schedule data during enrichment so presenter assignments reflect real broadcast schedules."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What file formats does Audio Intel accept for BBC Radio 6 Music contact lists?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Upload contacts as CSV files with columns for presenter name, email address, and optional fields like show name, genre, or previous notes. The platform handles common formatting variations automatically. After enrichment, export results as CSV for your email marketing tool or as PDF summaries for artist/manager reporting."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does this work for BBC Radio 1 and other BBC stations?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The enrichment workflow is identical for BBC Radio 1 specialist shows, BBC Radio 2 alternative programming, BBC Radio 1Xtra urban music, and regional BBC stations. Each BBC network has different submission cultures and genre preferences. The enrichment process adapts automatically based on station context you provide."
+              }
+            }
+          ]
+        })
+      }}
+    />
     </PSEOPageWrapper>
   );
 }
