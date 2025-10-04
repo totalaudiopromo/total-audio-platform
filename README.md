@@ -17,6 +17,22 @@
 - **Priority**: Radio promoter outreach (85% conversion rate)
 - **Product**: Audio Intel - "15 hours → 15 minutes" contact research
 
+## 🤖 Automated Documentation
+
+Keep your codebase professionally organized:
+
+```bash
+# Organize all documentation across all apps
+npm run organize-docs
+
+# Preview changes (dry-run)
+npm run organize-docs:dry-run
+```
+
+The script automatically categorizes and organizes `.md` files into proper `docs/` structure.
+
+**Full guide:** [`PROJECT_STRUCTURE.md`](./PROJECT_STRUCTURE.md)
+
 ## 📁 Directory Structure
 
 ```

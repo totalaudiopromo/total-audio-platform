@@ -17,6 +17,19 @@ build/
 .env.development.local
 .env.test.local
 .env.production.local
+.env.vault
+*.env
+*.env.*
+
+# Credentials and secrets
+*credentials.json
+*secret*
+*key*
+*.pem
+*.p12
+*.pfx
+*gmail-credentials*
+*oauth*
 
 # IDE and editor files
 .vscode/
