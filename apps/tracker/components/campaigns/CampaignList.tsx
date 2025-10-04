@@ -9,10 +9,11 @@ interface Campaign {
   id: string;
   name: string;
   platform: string;
+  genre: string;
   start_date: string;
   budget: number;
-  target_metric: number;
-  actual_metric: number;
+  target_reach: number;
+  actual_reach: number;
   status: string;
   notes?: string;
 }
@@ -55,8 +56,8 @@ export function CampaignList({ campaigns }: { campaigns: Campaign[] }) {
     <>
       <div className="space-y-3">
         {campaigns.map((campaign) => {
-          const roi = campaign.actual_metric > 0 && campaign.target_metric > 0
-            ? ((campaign.actual_metric - campaign.target_metric) / campaign.target_metric) * 100
+          const roi = campaign.actual_reach > 0 && campaign.target_reach > 0
+            ? ((campaign.actual_reach - campaign.target_reach) / campaign.target_reach) * 100
             : 0;
 
           return (
@@ -81,8 +82,8 @@ export function CampaignList({ campaigns }: { campaigns: Campaign[] }) {
                 <div className="flex gap-4 text-sm text-slate-600">
                   <span>Started: {format(new Date(campaign.start_date), 'MMM d, yyyy')}</span>
                   <span>Budget: £{campaign.budget}</span>
-                  <span>Target: {campaign.target_metric.toLocaleString()}</span>
-                  {campaign.actual_metric > 0 && (
+                  <span>Target: {campaign.target_reach.toLocaleString()}</span>
+                  {campaign.actual_reach > 0 && (
                     <span className={roi >= 0 ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
                       ROI: {roi >= 0 ? '+' : ''}{roi.toFixed(0)}%
                     </span>

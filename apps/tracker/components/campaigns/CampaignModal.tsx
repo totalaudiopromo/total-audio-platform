@@ -14,7 +14,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: campaign?.name || '',
-    platform: campaign?.platform || 'radio',
+    platform: campaign?.platform || 'BBC Radio',
     genre: campaign?.genre || 'Electronic',
     start_date: campaign?.start_date || new Date().toISOString().split('T')[0],
     budget: campaign?.budget || '',
@@ -83,10 +83,11 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
                 onChange={(e) => setFormData({ ...formData, platform: e.target.value })}
                 className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
-                <option value="radio">Radio</option>
-                <option value="playlist">Playlist</option>
-                <option value="blog">Blog</option>
-                <option value="pr">PR</option>
+                <option value="BBC Radio">BBC Radio</option>
+                <option value="Commercial Radio">Commercial Radio</option>
+                <option value="Playlists">Playlists</option>
+                <option value="Blog">Blog</option>
+                <option value="PR">PR</option>
               </select>
             </div>
 

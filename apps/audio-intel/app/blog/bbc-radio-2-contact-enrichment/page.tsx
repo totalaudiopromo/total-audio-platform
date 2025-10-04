@@ -108,11 +108,11 @@ export default function BbcRadio2ContactEnrichment() {
         <section id="audio-intel-workflow" className="space-y-6">
           <h2 className="text-3xl font-black text-gray-900">How the Audio Intel Workflow Rebuilt the Strategy</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            The enrichment run started with basic Radio 2 information and fundamental demographic question: is this the right station for my music? Audio Intel did the heavy lifting.
+            The enrichment run started with basic contact information: I found BBC Radio 2's general contact emails from BBC website and added station name with pop/rock genre to my CSV. Audio Intel enriched with demographic analysis and answered: is this the right station for my music?
           </p>
           <ol className="list-decimal pl-6 space-y-4 text-base text-gray-700 leading-relaxed">
             <li>
-              <strong className="text-gray-900">Upload basic station info:</strong> Input &quot;BBC Radio 2&quot; and &quot;pop/rock&quot; into Audio Intel enrichment tool.
+              <strong className="text-gray-900">Upload CSV with basic contacts:</strong> CSV included station name (BBC Radio 2), general BBC contact emails from website, and target genre (pop/rock).
             </li>
             <li>
               <strong className="text-gray-900">Demographic analysis:</strong> Platform flagged 35-54 core audience (82% over 35) vs Radio 1&apos;s youth focus. Genre-match scoring provided to determine if music fits mainstream Radio 2 format or better suited to Radio 1/6 Music.

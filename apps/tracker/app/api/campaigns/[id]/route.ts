@@ -44,10 +44,12 @@ export async function PUT(
     .update({
       name: body.name,
       platform: body.platform,
+      genre: body.genre,
       start_date: body.start_date,
-      budget: body.budget,
-      target_metric: body.target_metric,
-      actual_metric: body.actual_metric || 0,
+      end_date: body.end_date || null,
+      budget: parseFloat(body.budget) || 0,
+      target_reach: parseInt(body.target_reach) || 0,
+      actual_reach: parseInt(body.actual_reach) || 0,
       notes: body.notes || null,
       status: body.status || 'active',
     })

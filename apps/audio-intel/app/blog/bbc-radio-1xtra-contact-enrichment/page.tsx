@@ -108,14 +108,14 @@ export default function BbcRadio1XtraContactEnrichment() {
         <section id="audio-intel-workflow" className="space-y-6">
           <h2 className="text-3xl font-black text-gray-900">How the Audio Intel Workflow Rebuilt the Campaign</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            The enrichment run started with basic 1Xtra information: station name, urban music genre, incomplete presenter details. Audio Intel did the heavy lifting.
+            The enrichment run started with basic contact information: I found BBC Radio 1Xtra's general contact emails from BBC website searches and added them to a CSV with station name and grime/UK rap genre tags. Audio Intel enriched with current presenter assignments and submission requirements.
           </p>
           <ol className="list-decimal pl-6 space-y-4 text-base text-gray-700 leading-relaxed">
             <li>
-              <strong className="text-gray-900">Upload basic station info:</strong> Input &quot;BBC Radio 1Xtra&quot; and &quot;grime/UK rap&quot; into Audio Intel enrichment tool.
+              <strong className="text-gray-900">Upload CSV with basic contacts:</strong> CSV included station name (BBC Radio 1Xtra), general BBC contact emails from website, and target genre (grime/UK rap).
             </li>
             <li>
-              <strong className="text-gray-900">Presenter-to-genre matching:</strong> Platform identified Kenny Allstar&apos;s Rap Show (Fridays/Saturdays) as primary target for UK rap/grime, with DJ Target (Monday-Thursday/Saturday multi-genre) as secondary option.
+              <strong className="text-gray-900">Presenter-to-genre matching:</strong> Platform identified Kenny Allstar&apos;s Rap Show (Fridays/Saturdays) as primary target for UK rap/grime, with DJ Target (Monday-Thursday/Saturday multi-genre) as secondary option, and revealed BBC Introducing Uploader as ONLY submission route.
             </li>
             <li>
               <strong className="text-gray-900">Critical requirements flagged:</strong> CLEAN VERSIONS ONLY requirement highlighted in red. BBC Introducing Uploader route clearly marked as ONLY submission method (no direct presenter contact).

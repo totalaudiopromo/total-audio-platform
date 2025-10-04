@@ -108,11 +108,11 @@ export default function KerrangRadioContactEnrichment() {
         <section id="audio-intel-workflow" className="space-y-6">
           <h2 className="text-3xl font-black text-gray-900">How the Audio Intel Workflow Rebuilt the Campaign</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            The enrichment run started with basic Kerrang information: station name, rock/metal genre match, incomplete presenter details. Audio Intel did the heavy lifting.
+            The enrichment run started with basic contact information: I found Kerrang Radio's general email from their website and added station name with metal/rock genre to my CSV. Audio Intel enriched with critical submission policy details that saved hours of wasted outreach.
           </p>
           <ol className="list-decimal pl-6 space-y-4 text-base text-gray-700 leading-relaxed">
             <li>
-              <strong className="text-gray-900">Upload basic station info:</strong> Input &quot;Kerrang Radio&quot; and &quot;metal/rock&quot; into Audio Intel enrichment tool.
+              <strong className="text-gray-900">Upload CSV with basic contacts:</strong> CSV included station name (Kerrang Radio), general contact email from website, and target genre (metal/rock).
             </li>
             <li>
               <strong className="text-gray-900">Enrichment and policy discovery:</strong> Platform crawled official Kerrang sources, Bauer Media information, Alex Baker&apos;s Fresh Blood show details, and critically discovered email deletion policy buried in submission guidelines.

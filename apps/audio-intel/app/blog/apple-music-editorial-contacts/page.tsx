@@ -109,11 +109,11 @@ export default function AppleMusicEditorialContacts() {
         <section id="audio-intel-workflow" className="space-y-6">
           <h2 className="text-3xl font-black text-gray-900">How the Audio Intel Workflow Rebuilt the Strategy</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            The enrichment run started with basic Apple Music assumptions (direct pitching like Spotify). Audio Intel corrected the fundamental misunderstanding.
+            The enrichment run started with basic contact information: I had general Apple Music contact emails and distributor contacts in my CSV with "playlist submission" notes. Audio Intel corrected my fundamental misunderstanding about how Apple Music actually works.
           </p>
           <ol className="list-decimal pl-6 space-y-4 text-base text-gray-700 leading-relaxed">
             <li>
-              <strong className="text-gray-900">Upload basic platform info:</strong> Input &quot;Apple Music editorial&quot; and &quot;playlist submission&quot; into Audio Intel enrichment tool.
+              <strong className="text-gray-900">Upload CSV with basic contacts:</strong> CSV included Apple Music general contacts, distributor emails, and "playlist submission" intent notes.
             </li>
             <li>
               <strong className="text-gray-900">Critical difference flagged:</strong> Platform immediately highlighted NO direct artist portal, distributor-only access. Spotify comparison provided to clarify fundamental difference.

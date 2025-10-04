@@ -97,11 +97,11 @@ export default function SpotifyEditorialPlaylistContacts() {
         <section id="audio-intel-workflow" className="space-y-6">
           <h2 className="text-3xl font-black text-gray-900">How the Audio Intel Workflow Rebuilt the Campaign</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            The enrichment run started with a basic playlist list: Spotify playlist URLs from manual searches, no curator information, no editorial vs independent classification. Audio Intel did the heavy lifting.
+            The enrichment run started with basic playlist curator contacts: I'd manually researched 30 Spotify playlists, found curator emails/Instagram handles where possible, and added them to a CSV with playlist URLs. Audio Intel enriched these contacts with submission preferences and classified editorial vs independent playlists.
           </p>
           <ol className="list-decimal pl-6 space-y-4 text-base text-gray-700 leading-relaxed">
             <li>
-              <strong className="text-gray-900">Upload playlist URLs:</strong> I uploaded a CSV with 30 Spotify playlist URLs (mix of editorial and independent). The parser automatically classified editorial vs independent and flagged playlists requiring curator contact discovery.
+              <strong className="text-gray-900">Upload CSV with curator contacts:</strong> CSV included playlist curator names, email addresses (where found), Instagram handles, and Spotify playlist URLs for context.
             </li>
             <li>
               <strong className="text-gray-900">Editorial classification and enrichment:</strong> The platform identified 8 editorial playlists (no curator contact needed - Spotify for Artists pitch only) and 22 independent playlists (curator contact required). For editorial playlists, it provided submission timing recommendations and metadata optimisation guidance.

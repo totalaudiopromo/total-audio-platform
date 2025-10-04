@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { CampaignList } from '@/components/campaigns/CampaignList';
 import { AddCampaignButton } from '@/components/campaigns/AddCampaignButton';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 export default async function HomePage() {
@@ -23,10 +24,10 @@ export default async function HomePage() {
     // Calculate simple stats
     const activeCampaigns = campaigns.filter(c => c.status === 'active').length;
     const totalSpend = campaigns.reduce((sum, c) => sum + (parseFloat(c.budget) || 0), 0);
-    const campaignsWithResults = campaigns.filter(c => c.actual_metric > 0 && c.budget > 0);
+    const campaignsWithResults = campaigns.filter(c => c.actual_reach > 0 && c.budget > 0);
     const avgROI = campaignsWithResults.length > 0
       ? campaignsWithResults.reduce((sum, c) => {
-          const roi = ((c.actual_metric - c.target_metric) / c.target_metric) * 100;
+          const roi = ((c.actual_reach - c.target_reach) / c.target_reach) * 100;
           return sum + roi;
         }, 0) / campaignsWithResults.length
       : 0;
@@ -35,7 +36,7 @@ export default async function HomePage() {
       { title: 'Total Campaigns', value: campaigns.length.toString() },
       { title: 'Active', value: activeCampaigns.toString() },
       { title: 'Total Spend', value: `£${totalSpend.toFixed(0)}` },
-      { title: 'Avg ROI', value: `${avgROI > 0 ? '+' : ''}${avgROI.toFixed(0)}%` },
+      { title: 'Results vs Target', value: `${avgROI > 0 ? '+' : ''}${avgROI.toFixed(0)}%` },
     ];
 
     return (
@@ -94,8 +95,14 @@ export default async function HomePage() {
       <nav className="border-b border-gray-200 bg-white sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">🎵</span>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/total_audio_promo_logo_trans.png"
+                alt="Total Audio Promo"
+                width={32}
+                height={32}
+                className="object-contain"
+              />
               <h1 className="text-xl font-bold text-gray-900">
                 Tracker
               </h1>

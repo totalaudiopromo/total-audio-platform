@@ -108,14 +108,14 @@ export default function AbsoluteRadioContactEnrichment() {
         <section id="audio-intel-workflow" className="space-y-6">
           <h2 className="text-3xl font-black text-gray-900">How the Audio Intel Workflow Rebuilt the Campaign</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            The enrichment run started with basic Absolute Radio information: station name, rough genre match, incomplete contact details. Audio Intel did the heavy lifting.
+            The enrichment run started with basic contact information: I found Absolute Radio's general email from their website, added station name and alternative rock genre to my CSV. Audio Intel enriched it with current submission requirements and show details.
           </p>
           <ol className="list-decimal pl-6 space-y-4 text-base text-gray-700 leading-relaxed">
             <li>
-              <strong className="text-gray-900">Upload basic station info:</strong> Input &quot;Absolute Radio&quot; and &quot;alternative rock&quot; into Audio Intel enrichment tool.
+              <strong className="text-gray-900">Upload CSV with basic contacts:</strong> CSV included station name (Absolute Radio), general contact email from website, and target genre (alternative rock).
             </li>
             <li>
-              <strong className="text-gray-900">Enrichment and verification:</strong> Platform crawled official Absolute Radio sources, Bauer Media information, Sunday Night Music Club show details, and submission guidelines to build complete contact intelligence.
+              <strong className="text-gray-900">Enrichment and verification:</strong> Platform verified the correct submission email (selfreleased@absoluteradio.co.uk), crawled official sources for Sunday Night Music Club show details, and identified critical submission requirements.
             </li>
             <li>
               <strong className="text-gray-900">Critical requirements flagged:</strong> Web-link ONLY requirement (Dropbox/SoundCloud, NOT attachments) highlighted in red. Brief info requirement noted. ONE track per month selection reality clarified.

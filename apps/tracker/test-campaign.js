@@ -1,7 +1,7 @@
 // Test campaign creation with correct schema
 const testCampaign = {
   name: 'BBC Radio 1 - Test Campaign',
-  platform: 'radio',
+  platform: 'BBC Radio',
   genre: 'Electronic',
   start_date: '2025-10-04',
   budget: 450,
@@ -15,11 +15,11 @@ console.log(JSON.stringify(testCampaign, null, 2));
 
 // This matches the database schema:
 // - name ✓
-// - platform ✓ (radio, playlist, blog, pr)
-// - genre ✓ (Electronic, Indie, etc.)
+// - platform ✓ (BBC Radio, Commercial Radio, Playlists, Blog, PR)
+// - genre ✓ (Electronic, Indie, Jazz, Pop, Rock, Hip-Hop, R&B, Country, Other)
 // - start_date ✓
-// - budget ✓
-// - target_reach ✓ (instead of target_metric)
-// - actual_reach ✓ (instead of actual_metric)
-// - status ✓
-// - NO notes field ✓
+// - budget ✓ (DECIMAL - will be converted via parseFloat in API)
+// - target_reach ✓ (INTEGER - will be converted via parseInt in API)
+// - actual_reach ✓ (INTEGER - will be converted via parseInt in API)
+// - status ✓ (active or completed)
+// - notes field optional ✓

@@ -111,9 +111,7 @@ export default function BbcRadio1ContactEnrichment() {
           </p>
           <ol className="list-decimal pl-6 space-y-4 text-base text-gray-700 leading-relaxed">
             <li>
-              <strong className="text-gray-900">Upload anything:</strong> I dragged the original CSV, a Notion export, and two
-              screenshots into the uploader. The parser picked out email patterns, social handles, and job titles without extra
-              prep.
+              <strong className="text-gray-900">Upload CSV with contacts:</strong> I uploaded a CSV containing BBC Radio 1 presenter names and email addresses I'd collected from LinkedIn, BBC website searches, and industry databases. The enrichment process verified these emails and added current show assignments and submission preferences.
             </li>
             <li>
               <strong className="text-gray-900">Enrichment and cross-checking:</strong> The platform crawled BBC programme pages,

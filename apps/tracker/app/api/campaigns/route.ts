@@ -63,9 +63,10 @@ export async function POST(request: Request) {
         genre: body.genre,
         start_date: body.start_date,
         end_date: body.end_date || null,
-        budget: body.budget || 0,
-        target_reach: body.target_reach || 0,
-        actual_reach: body.actual_reach || 0,
+        budget: parseFloat(body.budget) || 0,
+        target_reach: parseInt(body.target_reach) || 0,
+        actual_reach: parseInt(body.actual_reach) || 0,
+        notes: body.notes || null,
         status: 'active',
       },
     ])
