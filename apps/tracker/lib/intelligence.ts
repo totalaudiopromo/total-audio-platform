@@ -1,263 +1,573 @@
-/**
- * Campaign Intelligence Engine
- * Provides benchmarking, insights, and ROI analysis
- */
+// ============================================================================
+// TOTAL AUDIO TRACKER - Intelligence Engine
+// Pattern recognition, performance scoring, and insight generation
+// ============================================================================
 
-export interface Campaign {
-  id: string;
-  name: string;
-  platform: string;
-  genre: string;
-  budget: number;
-  start_date: string;
-  end_date?: string;
-  target_reach: number;
-  actual_reach: number;
-  status: string;
-}
+import type {
+  Campaign,
+  Benchmark,
+  Pattern,
+  InsightType,
+  CampaignPrediction,
+  IntelligenceAnalysis,
+} from './types/tracker';
 
-export interface Benchmark {
-  platform: string;
-  genre: string;
-  avg_success_rate: number;
-  avg_cost_per_result: number;
-  best_day: string;
-  best_month: string;
-  optimal_budget_min: number;
-  optimal_budget_max: number;
-}
-
-export interface CampaignIntelligence {
-  successRate: number;
-  costPerResult: number;
-  performanceVsAvg: number;
-  performanceLabel: string;
-  percentile: number;
-  costEfficiency: number;
-  costEfficiencyLabel: string;
-  insights: string[];
-  recommendations: string[];
-}
+// ============================================================================
+// PERFORMANCE SCORING
+// ============================================================================
 
 /**
- * Calculate success rate as percentage
+ * Calculate performance score vs industry benchmarks
+ * Returns 0-100 score where 50 = average, >50 = above average
  */
-export function calculateSuccessRate(campaign: Campaign): number {
-  if (campaign.target_reach === 0) return 0;
-  return (campaign.actual_reach / campaign.target_reach) * 100;
-}
-
-/**
- * Calculate cost per result
- */
-export function calculateCostPerResult(campaign: Campaign): number {
-  if (campaign.actual_reach === 0) return 0;
-  return campaign.budget / campaign.actual_reach;
-}
-
-/**
- * Compare campaign performance to benchmark
- */
-export function comparePerformance(
+export function calculatePerformanceScore(
   campaign: Campaign,
-  benchmark: Benchmark
+  benchmark: Benchmark | null
 ): number {
-  const campaignRate = calculateSuccessRate(campaign);
-  const benchmarkRate = benchmark.avg_success_rate;
+  if (!benchmark || campaign.target_reach === 0) {
+    return 50; // Default to average if no benchmark
+  }
 
-  if (benchmarkRate === 0) return 0;
-  return ((campaignRate - benchmarkRate) / benchmarkRate) * 100;
+  const successRateDiff =
+    (campaign.success_rate - benchmark.avg_success_rate) /
+    benchmark.avg_success_rate;
+
+  let costEfficiency = 0;
+  if (campaign.cost_per_result > 0) {
+    costEfficiency =
+      (benchmark.avg_cost_per_result - campaign.cost_per_result) /
+      benchmark.avg_cost_per_result;
+  }
+
+  const score = 50 + successRateDiff * 25 + costEfficiency * 25;
+  return Math.max(0, Math.min(100, Math.round(score)));
 }
 
 /**
- * Compare cost efficiency to benchmark
+ * Calculate percentile rank based on performance score
  */
-export function compareCostEfficiency(
-  campaign: Campaign,
-  benchmark: Benchmark
-): number {
-  const campaignCost = calculateCostPerResult(campaign);
-  const benchmarkCost = benchmark.avg_cost_per_result;
-
-  if (benchmarkCost === 0) return 0;
-  // Negative is good (spending less than average)
-  return ((campaignCost - benchmarkCost) / benchmarkCost) * 100;
+export function calculatePercentileRank(performanceScore: number): number {
+  if (performanceScore >= 80) return 90; // Top 10%
+  if (performanceScore >= 70) return 80; // Top 20%
+  if (performanceScore >= 60) return 70; // Top 30%
+  if (performanceScore >= 50) return 50; // Average
+  if (performanceScore >= 40) return 30; // Below average
+  return 20; // Bottom 20%
 }
 
-/**
- * Calculate percentile ranking
- */
-export function calculatePercentile(
-  campaign: Campaign,
-  benchmark: Benchmark
-): number {
-  const performance = comparePerformance(campaign, benchmark);
-
-  // Simple percentile calculation
-  // 0% performance = 50th percentile
-  // +50% performance = 90th percentile
-  // -50% performance = 10th percentile
-  const percentile = 50 + (performance / 2);
-  return Math.max(10, Math.min(90, Math.round(percentile)));
-}
+// ============================================================================
+// INSIGHT GENERATION
+// ============================================================================
 
 /**
- * Generate full intelligence report for a campaign
+ * Generate human-readable insights from campaign data
  */
-export function enrichCampaignWithIntelligence(
+export function generateCampaignInsights(
   campaign: Campaign,
-  benchmark: Benchmark
-): CampaignIntelligence {
-  const successRate = calculateSuccessRate(campaign);
-  const costPerResult = calculateCostPerResult(campaign);
-  const performanceVsAvg = comparePerformance(campaign, benchmark);
-  const costEfficiency = compareCostEfficiency(campaign, benchmark);
-  const percentile = calculatePercentile(campaign, benchmark);
-
-  // Generate insights
+  benchmark: Benchmark | null
+): string[] {
   const insights: string[] = [];
-  const recommendations: string[] = [];
 
-  // Performance insight
-  if (performanceVsAvg > 20) {
-    insights.push(`Exceptional performance - ${Math.round(performanceVsAvg)}% above average`);
-  } else if (performanceVsAvg > 0) {
-    insights.push(`Above average performance (+${Math.round(performanceVsAvg)}%)`);
-  } else if (performanceVsAvg < -20) {
-    insights.push(`Below average performance (${Math.round(performanceVsAvg)}%)`);
-    recommendations.push('Consider reviewing your pitch strategy');
+  if (!benchmark) {
+    return [
+      'Complete your campaign details to get personalized insights and industry comparisons.',
+    ];
   }
 
-  // Cost efficiency insight
-  if (costEfficiency < -20) {
-    insights.push(`Excellent ROI - spending ${Math.abs(Math.round(costEfficiency))}% less than average`);
-  } else if (costEfficiency > 20) {
-    insights.push(`Higher cost per result than average (+${Math.round(costEfficiency)}%)`);
-    recommendations.push('Review budget allocation for better efficiency');
-  }
+  // Performance comparison
+  const performanceDiff =
+    ((campaign.success_rate - benchmark.avg_success_rate) /
+      benchmark.avg_success_rate) *
+    100;
 
-  // Budget sweet spot
-  if (
-    campaign.budget >= benchmark.optimal_budget_min &&
-    campaign.budget <= benchmark.optimal_budget_max
-  ) {
-    insights.push(`Budget in optimal range (£${benchmark.optimal_budget_min}-£${benchmark.optimal_budget_max})`);
-  } else if (campaign.budget < benchmark.optimal_budget_min) {
-    recommendations.push(
-      `Consider increasing budget to £${benchmark.optimal_budget_min}-£${benchmark.optimal_budget_max} for optimal results`
+  if (performanceDiff > 20) {
+    insights.push(
+      `🎉 Outstanding! Your campaign performed ${Math.round(performanceDiff)}% better than industry average`
+    );
+  } else if (performanceDiff > 0) {
+    insights.push(
+      `✨ Good work! Your campaign beat industry average by ${Math.round(performanceDiff)}%`
+    );
+  } else if (performanceDiff < -20) {
+    insights.push(
+      `⚠️ Below average performance. Consider reviewing your approach or targeting`
     );
   }
 
-  // Success rate feedback
-  if (successRate < benchmark.avg_success_rate * 0.5) {
-    recommendations.push('Low conversion rate - consider targeting more relevant contacts');
-  } else if (successRate > benchmark.avg_success_rate * 1.5) {
-    recommendations.push('Great targeting! This campaign format is working well');
+  // Cost efficiency
+  if (campaign.cost_per_result > 0) {
+    const costSavings =
+      benchmark.avg_cost_per_result - campaign.cost_per_result;
+    if (costSavings > 0) {
+      insights.push(
+        `💰 You saved £${Math.round(costSavings)} per result vs industry average`
+      );
+    } else if (costSavings < -30) {
+      insights.push(
+        `📊 Cost per result is £${Math.abs(Math.round(costSavings))} above average - room for optimization`
+      );
+    }
   }
 
+  // Success rate analysis
+  if (campaign.success_rate > 30) {
+    insights.push(
+      `🎯 Excellent ${Math.round(campaign.success_rate)}% success rate - top 20% performance`
+    );
+  } else if (campaign.success_rate > benchmark.avg_success_rate) {
+    insights.push(
+      `👍 Solid ${Math.round(campaign.success_rate)}% success rate - above average`
+    );
+  }
+
+  // Budget efficiency
+  if (
+    benchmark.optimal_budget_min &&
+    benchmark.optimal_budget_max &&
+    campaign.budget >= benchmark.optimal_budget_min &&
+    campaign.budget <= benchmark.optimal_budget_max
+  ) {
+    insights.push(
+      `✅ Your budget of £${campaign.budget} is in the optimal range for ${campaign.platform}`
+    );
+  }
+
+  // Completion status
+  if (campaign.status === 'completed' && campaign.actual_reach > 0) {
+    const roi = (campaign.actual_reach / campaign.budget) * 100;
+    insights.push(
+      `📈 Campaign completed with ${campaign.actual_reach} results (${roi.toFixed(1)} results per £100 spent)`
+    );
+  }
+
+  return insights.length > 0
+    ? insights
+    : [
+        'Start tracking results to unlock intelligent insights about your campaign performance.',
+      ];
+}
+
+// ============================================================================
+// PATTERN RECOGNITION
+// ============================================================================
+
+/**
+ * Analyze patterns across user's campaigns
+ */
+export function analyzePatterns(campaigns: Campaign[]): Pattern[] {
+  const patterns: Pattern[] = [];
+
+  if (campaigns.length < 3) {
+    return [
+      {
+        type: 'recommendation',
+        message:
+          'Complete more campaigns to unlock personalized pattern recognition',
+        confidence: 100,
+      },
+    ];
+  }
+
+  // Filter campaigns with results
+  const completedCampaigns = campaigns.filter(
+    (c) => c.actual_reach > 0 && c.target_reach > 0
+  );
+
+  if (completedCampaigns.length === 0) {
+    return patterns;
+  }
+
+  // Genre performance analysis
+  const genrePerformance = analyzeGenrePerformance(completedCampaigns);
+  if (genrePerformance) {
+    patterns.push(genrePerformance);
+  }
+
+  // Platform effectiveness
+  const platformPerformance = analyzePlatformPerformance(completedCampaigns);
+  if (platformPerformance) {
+    patterns.push(platformPerformance);
+  }
+
+  // Budget optimization
+  const budgetPattern = analyzeBudgetEfficiency(completedCampaigns);
+  if (budgetPattern) {
+    patterns.push(budgetPattern);
+  }
+
+  // Overall success trends
+  const overallSuccess = analyzeOverallSuccess(completedCampaigns);
+  if (overallSuccess) {
+    patterns.push(overallSuccess);
+  }
+
+  return patterns;
+}
+
+/**
+ * Analyze genre performance
+ */
+function analyzeGenrePerformance(campaigns: Campaign[]): Pattern | null {
+  const genreStats = new Map<
+    string,
+    { successRate: number; count: number; avgCost: number }
+  >();
+
+  campaigns.forEach((c) => {
+    if (!c.genre) return;
+
+    const existing = genreStats.get(c.genre) || {
+      successRate: 0,
+      count: 0,
+      avgCost: 0,
+    };
+    existing.successRate += c.success_rate;
+    existing.avgCost += c.cost_per_result;
+    existing.count += 1;
+    genreStats.set(c.genre, existing);
+  });
+
+  let bestGenre: {
+    genre: string;
+    successRate: number;
+    avgCost: number;
+  } | null = null;
+
+  genreStats.forEach((stats, genre) => {
+    const avgSuccessRate = stats.successRate / stats.count;
+    const avgCost = stats.avgCost / stats.count;
+
+    if (stats.count >= 2 && avgSuccessRate > 25) {
+      if (
+        !bestGenre ||
+        avgSuccessRate > bestGenre.successRate
+      ) {
+        bestGenre = {
+          genre,
+          successRate: avgSuccessRate,
+          avgCost,
+        };
+      }
+    }
+  });
+
+  if (!bestGenre) return null;
+
+  const avgOverall =
+    campaigns.reduce((sum, c) => sum + c.success_rate, 0) / campaigns.length;
+  const multiplier = bestGenre.successRate / avgOverall;
+
   return {
-    successRate: Math.round(successRate * 10) / 10,
-    costPerResult: Math.round(costPerResult * 100) / 100,
-    performanceVsAvg: Math.round(performanceVsAvg * 10) / 10,
-    performanceLabel: performanceVsAvg > 0
-      ? `${Math.abs(Math.round(performanceVsAvg))}% above average`
-      : `${Math.abs(Math.round(performanceVsAvg))}% below average`,
-    percentile,
-    costEfficiency: Math.round(costEfficiency * 10) / 10,
-    costEfficiencyLabel: costEfficiency < 0
-      ? `£${Math.abs(Math.round(costEfficiency))} below average`
-      : `£${Math.round(costEfficiency)} above average`,
-    insights,
-    recommendations
+    type: 'genre_performance',
+    message: `Your ${bestGenre.genre} tracks perform ${multiplier.toFixed(1)}x better than your average (${Math.round(bestGenre.successRate)}% success rate)`,
+    confidence: 85,
+    metadata: {
+      genre: bestGenre.genre,
+      successRate: Math.round(bestGenre.successRate),
+      multiplier: multiplier,
+    },
   };
 }
 
 /**
- * Analyze patterns across multiple campaigns
+ * Analyze platform effectiveness
  */
-export interface PatternAnalysis {
-  bestGenre?: { genre: string; successRate: number };
-  bestPlatform?: { platform: string; successRate: number };
-  optimalBudgetRange?: { min: number; max: number };
-  totalCampaigns: number;
-  avgSuccessRate: number;
-  totalSpent: number;
-  totalReach: number;
+function analyzePlatformPerformance(campaigns: Campaign[]): Pattern | null {
+  const platformStats = new Map<
+    string,
+    { successRate: number; count: number }
+  >();
+
+  campaigns.forEach((c) => {
+    if (!c.platform) return;
+
+    const existing = platformStats.get(c.platform) || {
+      successRate: 0,
+      count: 0,
+    };
+    existing.successRate += c.success_rate;
+    existing.count += 1;
+    platformStats.set(c.platform, existing);
+  });
+
+  let bestPlatform: { platform: string; successRate: number } | null = null;
+
+  platformStats.forEach((stats, platform) => {
+    const avgSuccessRate = stats.successRate / stats.count;
+
+    if (
+      stats.count >= 2 &&
+      (!bestPlatform || avgSuccessRate > bestPlatform.successRate)
+    ) {
+      bestPlatform = {
+        platform,
+        successRate: avgSuccessRate,
+      };
+    }
+  });
+
+  if (!bestPlatform) return null;
+
+  return {
+    type: 'platform_effectiveness',
+    message: `${bestPlatform.platform} campaigns show ${Math.round(bestPlatform.successRate)}% success rate - your most effective platform`,
+    confidence: 90,
+    metadata: {
+      platform: bestPlatform.platform,
+      successRate: Math.round(bestPlatform.successRate),
+    },
+  };
 }
 
-export function analyzePatterns(campaigns: Campaign[]): PatternAnalysis {
-  if (campaigns.length === 0) {
+/**
+ * Analyze budget efficiency
+ */
+function analyzeBudgetEfficiency(campaigns: Campaign[]): Pattern | null {
+  const campaignsWithBudget = campaigns.filter(
+    (c) => c.budget > 0 && c.actual_reach > 0
+  );
+
+  if (campaignsWithBudget.length < 3) return null;
+
+  // Calculate ROI (results per £100)
+  const budgetRanges = campaignsWithBudget.map((c) => ({
+    budget: c.budget,
+    roi: (c.actual_reach / c.budget) * 100,
+  }));
+
+  // Find sweet spot
+  budgetRanges.sort((a, b) => b.roi - a.roi);
+  const topPerformers = budgetRanges.slice(0, Math.ceil(budgetRanges.length / 3));
+
+  const avgBudget =
+    topPerformers.reduce((sum, b) => sum + b.budget, 0) / topPerformers.length;
+  const minBudget = Math.floor(avgBudget * 0.8);
+  const maxBudget = Math.ceil(avgBudget * 1.2);
+
+  return {
+    type: 'budget_optimization',
+    message: `Your optimal budget range is £${minBudget}-£${maxBudget} based on your most efficient campaigns`,
+    confidence: 75,
+    metadata: {
+      budgetRange: {
+        min: minBudget,
+        max: maxBudget,
+      },
+    },
+  };
+}
+
+/**
+ * Analyze overall success trends
+ */
+function analyzeOverallSuccess(campaigns: Campaign[]): Pattern | null {
+  const avgSuccessRate =
+    campaigns.reduce((sum, c) => sum + c.success_rate, 0) / campaigns.length;
+
+  if (avgSuccessRate > 30) {
     return {
-      totalCampaigns: 0,
-      avgSuccessRate: 0,
-      totalSpent: 0,
-      totalReach: 0
+      type: 'success',
+      message: `Excellent overall performance! Your campaigns average ${Math.round(avgSuccessRate)}% success rate`,
+      confidence: 100,
+      metadata: {
+        successRate: Math.round(avgSuccessRate),
+      },
+    };
+  } else if (avgSuccessRate > 20) {
+    return {
+      type: 'pattern',
+      message: `Solid ${Math.round(avgSuccessRate)}% average success rate across your campaigns`,
+      confidence: 85,
+      metadata: {
+        successRate: Math.round(avgSuccessRate),
+      },
     };
   }
 
-  // Calculate totals
-  const totalSpent = campaigns.reduce((sum, c) => sum + c.budget, 0);
-  const totalReach = campaigns.reduce((sum, c) => sum + c.actual_reach, 0);
-  const avgSuccessRate = campaigns.reduce((sum, c) =>
-    sum + calculateSuccessRate(c), 0
-  ) / campaigns.length;
+  return null;
+}
 
-  // Find best genre
-  const genreStats = new Map<string, { total: number; success: number }>();
-  campaigns.forEach(c => {
-    const current = genreStats.get(c.genre) || { total: 0, success: 0 };
-    genreStats.set(c.genre, {
-      total: current.total + c.target_reach,
-      success: current.success + c.actual_reach
-    });
-  });
+// ============================================================================
+// CAMPAIGN PREDICTIONS
+// ============================================================================
 
-  let bestGenre: { genre: string; successRate: number } | undefined;
-  genreStats.forEach((stats, genre) => {
-    const rate = (stats.success / stats.total) * 100;
-    if (!bestGenre || rate > bestGenre.successRate) {
-      bestGenre = { genre, successRate: rate };
+/**
+ * Predict campaign performance before starting
+ */
+export function predictCampaignPerformance(
+  formData: Partial<Campaign>,
+  benchmark: Benchmark | null,
+  userHistory: Campaign[]
+): CampaignPrediction {
+  if (!benchmark) {
+    return {
+      expected_success_rate: { min: 15, max: 35 },
+      typical_cost_per_result: { min: 50, max: 150 },
+      avg_response_time: 7,
+      recommendations: [
+        'Complete platform and genre details for accurate predictions',
+      ],
+      confidence: 30,
+    };
+  }
+
+  // Base prediction on benchmark
+  const baseSuccessRate = benchmark.avg_success_rate;
+  const baseCostPerResult = benchmark.avg_cost_per_result;
+
+  // Adjust based on user history for same platform/genre
+  const relevantHistory = userHistory.filter(
+    (c) =>
+      c.platform === formData.platform &&
+      c.genre === formData.genre &&
+      c.actual_reach > 0
+  );
+
+  let adjustedSuccessRate = baseSuccessRate;
+  let adjustedCostPerResult = baseCostPerResult;
+
+  if (relevantHistory.length > 0) {
+    const avgUserSuccess =
+      relevantHistory.reduce((sum, c) => sum + c.success_rate, 0) /
+      relevantHistory.length;
+    const avgUserCost =
+      relevantHistory.reduce((sum, c) => sum + c.cost_per_result, 0) /
+      relevantHistory.length;
+
+    // Blend user history (60%) with benchmark (40%)
+    adjustedSuccessRate = avgUserSuccess * 0.6 + baseSuccessRate * 0.4;
+    adjustedCostPerResult = avgUserCost * 0.6 + baseCostPerResult * 0.4;
+  }
+
+  const recommendations: string[] = [];
+
+  // Budget recommendations
+  if (formData.budget && benchmark.optimal_budget_min && benchmark.optimal_budget_max) {
+    if (formData.budget < benchmark.optimal_budget_min) {
+      recommendations.push(
+        `Consider increasing budget to £${benchmark.optimal_budget_min} for better results`
+      );
+    } else if (formData.budget > benchmark.optimal_budget_max) {
+      recommendations.push(
+        `Budget above optimal range - diminishing returns likely beyond £${benchmark.optimal_budget_max}`
+      );
+    } else {
+      recommendations.push(
+        `Budget is in optimal range for ${formData.platform}`
+      );
     }
-  });
+  }
 
-  // Find best platform
-  const platformStats = new Map<string, { total: number; success: number }>();
-  campaigns.forEach(c => {
-    const current = platformStats.get(c.platform) || { total: 0, success: 0 };
-    platformStats.set(c.platform, {
-      total: current.total + c.target_reach,
-      success: current.success + c.actual_reach
-    });
-  });
+  // Genre-specific advice
+  if (formData.genre && baseSuccessRate > 30) {
+    recommendations.push(
+      `${formData.genre} music shows strong ${Math.round(baseSuccessRate)}% success rate on ${formData.platform}`
+    );
+  }
 
-  let bestPlatform: { platform: string; successRate: number } | undefined;
-  platformStats.forEach((stats, platform) => {
-    const rate = (stats.success / stats.total) * 100;
-    if (!bestPlatform || rate > bestPlatform.successRate) {
-      bestPlatform = { platform, successRate: rate };
-    }
-  });
-
-  // Find optimal budget range
-  const successfulCampaigns = campaigns
-    .filter(c => calculateSuccessRate(c) > avgSuccessRate)
-    .map(c => c.budget)
-    .sort((a, b) => a - b);
-
-  const optimalBudgetRange = successfulCampaigns.length > 0
-    ? {
-        min: Math.round(successfulCampaigns[0]),
-        max: Math.round(successfulCampaigns[successfulCampaigns.length - 1])
-      }
-    : undefined;
+  // Timing advice
+  if (benchmark.best_day) {
+    recommendations.push(
+      `Best submission day: ${benchmark.best_day} (based on industry data)`
+    );
+  }
 
   return {
-    bestGenre,
-    bestPlatform,
-    optimalBudgetRange,
-    totalCampaigns: campaigns.length,
-    avgSuccessRate: Math.round(avgSuccessRate * 10) / 10,
-    totalSpent,
-    totalReach
+    expected_success_rate: {
+      min: Math.round(adjustedSuccessRate * 0.8),
+      max: Math.round(adjustedSuccessRate * 1.2),
+    },
+    typical_cost_per_result: {
+      min: Math.round(adjustedCostPerResult * 0.8),
+      max: Math.round(adjustedCostPerResult * 1.2),
+    },
+    avg_response_time: benchmark.avg_response_time || 7,
+    recommendations,
+    confidence: relevantHistory.length > 0 ? 85 : 70,
+  };
+}
+
+// ============================================================================
+// COMPREHENSIVE INTELLIGENCE ANALYSIS
+// ============================================================================
+
+/**
+ * Full intelligence analysis for dashboard
+ */
+export function generateIntelligenceAnalysis(
+  campaigns: Campaign[],
+  benchmarks: Map<string, Benchmark>
+): IntelligenceAnalysis {
+  const patterns = analyzePatterns(campaigns);
+
+  const recommendations: string[] = [];
+  const warnings: string[] = [];
+
+  // Overall performance calculation
+  let totalPerformance = 0;
+  let campaignsWithBenchmarks = 0;
+
+  campaigns.forEach((campaign) => {
+    if (campaign.platform && campaign.genre) {
+      const key = `${campaign.platform}-${campaign.genre}`;
+      const benchmark = benchmarks.get(key);
+      if (benchmark) {
+        totalPerformance += calculatePerformanceScore(campaign, benchmark);
+        campaignsWithBenchmarks++;
+      }
+    }
+  });
+
+  const overall_performance =
+    campaignsWithBenchmarks > 0
+      ? Math.round(totalPerformance / campaignsWithBenchmarks)
+      : 50;
+
+  // Generate recommendations from patterns
+  patterns.forEach((pattern) => {
+    if (pattern.type === 'genre_performance' && pattern.metadata?.genre) {
+      recommendations.push(
+        `Focus future campaigns on ${pattern.metadata.genre} music for best results`
+      );
+    }
+
+    if (pattern.type === 'platform_effectiveness' && pattern.metadata?.platform) {
+      recommendations.push(
+        `${pattern.metadata.platform} shows strongest performance for your campaigns`
+      );
+    }
+
+    if (pattern.type === 'budget_optimization' && pattern.metadata?.budgetRange) {
+      recommendations.push(
+        `Optimal budget: £${pattern.metadata.budgetRange.min}-£${pattern.metadata.budgetRange.max}`
+      );
+    }
+  });
+
+  // Check for warnings
+  const recentCampaigns = campaigns.slice(-5);
+  const recentAvgSuccess =
+    recentCampaigns.length > 0
+      ? recentCampaigns.reduce((sum, c) => sum + c.success_rate, 0) /
+        recentCampaigns.length
+      : 0;
+
+  if (recentAvgSuccess < 15 && recentCampaigns.length >= 3) {
+    warnings.push(
+      'Recent campaigns showing lower than average success rates - consider reviewing strategy'
+    );
+  }
+
+  return {
+    patterns,
+    recommendations,
+    warnings,
+    overall_performance,
+    best_genre: patterns.find((p) => p.type === 'genre_performance')?.metadata
+      ?.genre,
+    best_platform: patterns.find((p) => p.type === 'platform_effectiveness')
+      ?.metadata?.platform,
+    optimal_budget: patterns.find((p) => p.type === 'budget_optimization')
+      ?.metadata?.budgetRange,
   };
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface CampaignModalProps {
@@ -9,19 +9,46 @@ interface CampaignModalProps {
   campaign?: any;
 }
 
+const PLATFORMS = ['BBC Radio', 'Commercial Radio', 'Playlists', 'Blogs', 'Social', 'PR'];
+const GENRES = ['Electronic', 'Indie', 'Jazz', 'Pop', 'Rock', 'Hip-Hop', 'R&B', 'Country', 'Folk', 'Classical', 'Other'];
+
 export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: campaign?.name || '',
+    artist_name: campaign?.artist_name || '',
     platform: campaign?.platform || 'BBC Radio',
     genre: campaign?.genre || 'Electronic',
     start_date: campaign?.start_date || new Date().toISOString().split('T')[0],
     budget: campaign?.budget || '',
     target_reach: campaign?.target_reach || '',
+    target_type: campaign?.target_type || '',
     actual_reach: campaign?.actual_reach || '',
     status: campaign?.status || 'active',
+    notes: campaign?.notes || '',
   });
+
+  // Reset form when modal closes
+  useEffect(() => {
+    if (!isOpen) {
+      if (!campaign) {
+        setFormData({
+          name: '',
+          artist_name: '',
+          platform: 'BBC Radio',
+          genre: 'Electronic',
+          start_date: new Date().toISOString().split('T')[0],
+          budget: '',
+          target_reach: '',
+          target_type: '',
+          actual_reach: '',
+          status: 'active',
+          notes: '',
+        });
+      }
+    }
+  }, [isOpen, campaign]);
 
   if (!isOpen) return null;
 
@@ -41,24 +68,14 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
 
       if (!response.ok) {
         let errorMessage = 'Failed to save campaign';
-
         try {
           const errorBody = await response.json();
           if (typeof errorBody?.error === 'string') {
             errorMessage = errorBody.error;
           }
-
-          console.error('Campaign save failed', {
-            status: response.status,
-            error: errorBody,
-          });
         } catch (jsonError) {
-          console.error('Campaign save failed with non-JSON response', {
-            status: response.status,
-            jsonError,
-          });
+          console.error('Non-JSON error response');
         }
-
         throw new Error(errorMessage);
       }
 
@@ -77,84 +94,98 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          {campaign ? 'Edit Campaign' : 'New Campaign'}
-        </h2>
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 overflow-y-auto">
+      <div className="bg-white rounded-2xl border-4 border-black shadow-brutal-xl max-w-3xl w-full my-8">
+        {/* Header */}
+        <div className="bg-blue-600 px-6 md:px-8 py-6 border-b-4 border-black rounded-t-xl">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-black text-white">
+                {campaign ? 'Edit Campaign' : 'Create New Campaign'}
+              </h2>
+              <p className="text-sm font-bold text-blue-100 mt-1">
+                {campaign ? 'Update your campaign details' : 'Track your music promotion campaign'}
+              </p>
+            </div>
+            <button
+              onClick={onClose}
+              className="text-white hover:text-blue-100 transition-colors text-2xl font-black leading-none"
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
+        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-6">
+          {/* Campaign Name */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
-              Campaign Name
+            <label className="block text-sm font-black text-gray-900 mb-2 uppercase tracking-wider">
+              Campaign Name *
             </label>
             <input
               type="text"
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               placeholder="Summer Radio Push"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          {/* Artist Name */}
+          <div>
+            <label className="block text-sm font-black text-gray-900 mb-2 uppercase tracking-wider">
+              Artist/Band Name
+            </label>
+            <input
+              type="text"
+              value={formData.artist_name}
+              onChange={(e) => setFormData({ ...formData, artist_name: e.target.value })}
+              className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+              placeholder="The Audio Dogs"
+            />
+          </div>
+
+          {/* Platform & Genre Row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                Platform
+              <label className="block text-sm font-black text-gray-900 mb-2 uppercase tracking-wider">
+                Platform *
               </label>
               <select
                 value={formData.platform}
                 onChange={(e) => setFormData({ ...formData, platform: e.target.value })}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white"
               >
-                <option value="BBC Radio">BBC Radio</option>
-                <option value="Commercial Radio">Commercial Radio</option>
-                <option value="Playlists">Playlists</option>
-                <option value="Blog">Blog</option>
-                <option value="PR">PR</option>
+                {PLATFORMS.map((platform) => (
+                  <option key={platform} value={platform}>{platform}</option>
+                ))}
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                Genre
+              <label className="block text-sm font-black text-gray-900 mb-2 uppercase tracking-wider">
+                Genre *
               </label>
               <select
                 value={formData.genre}
                 onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white"
               >
-                <option value="Electronic">Electronic</option>
-                <option value="Indie">Indie</option>
-                <option value="Jazz">Jazz</option>
-                <option value="Pop">Pop</option>
-                <option value="Rock">Rock</option>
-                <option value="Hip-Hop">Hip-Hop</option>
-                <option value="R&B">R&B</option>
-                <option value="Country">Country</option>
-                <option value="Other">Other</option>
+                {GENRES.map((genre) => (
+                  <option key={genre} value={genre}>{genre}</option>
+                ))}
               </select>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          {/* Budget & Start Date Row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                Start Date
-              </label>
-              <input
-                type="date"
-                required
-                value={formData.start_date}
-                onChange={(e) => setFormData({ ...formData, start_date: e.target.value })}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                Budget (£)
+              <label className="block text-sm font-black text-gray-900 mb-2 uppercase tracking-wider">
+                Budget (£) *
               </label>
               <input
                 type="number"
@@ -163,16 +194,43 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
                 step="0.01"
                 value={formData.budget}
                 onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 placeholder="500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-black text-gray-900 mb-2 uppercase tracking-wider">
+                Start Date *
+              </label>
+              <input
+                type="date"
+                required
+                value={formData.start_date}
+                onChange={(e) => setFormData({ ...formData, start_date: e.target.value })}
+                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          {/* Target Type & Target Reach Row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                Target Reach
+              <label className="block text-sm font-black text-gray-900 mb-2 uppercase tracking-wider">
+                Target Type
+              </label>
+              <input
+                type="text"
+                value={formData.target_type}
+                onChange={(e) => setFormData({ ...formData, target_type: e.target.value })}
+                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                placeholder="Radio Stations / Playlists / Blogs"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-black text-gray-900 mb-2 uppercase tracking-wider">
+                Target Reach *
               </label>
               <input
                 type="number"
@@ -180,40 +238,60 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
                 min="0"
                 value={formData.target_reach}
                 onChange={(e) => setFormData({ ...formData, target_reach: e.target.value })}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 placeholder="20"
               />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                Actual Reach (optional)
-              </label>
-              <input
-                type="number"
-                min="0"
-                value={formData.actual_reach}
-                onChange={(e) => setFormData({ ...formData, actual_reach: e.target.value })}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="0"
-              />
+              <p className="text-xs font-bold text-gray-600 mt-1">How many contacts will you pitch to?</p>
             </div>
           </div>
 
-          <div className="flex gap-3 pt-4">
+          {/* Actual Reach (for updates) */}
+          <div>
+            <label className="block text-sm font-black text-gray-900 mb-2 uppercase tracking-wider">
+              Actual Reach (Results)
+            </label>
+            <input
+              type="number"
+              min="0"
+              value={formData.actual_reach}
+              onChange={(e) => setFormData({ ...formData, actual_reach: e.target.value })}
+              className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+              placeholder="0"
+            />
+            <p className="text-xs font-bold text-gray-600 mt-1">
+              How many positive responses did you get? Update this as results come in.
+            </p>
+          </div>
+
+          {/* Notes */}
+          <div>
+            <label className="block text-sm font-black text-gray-900 mb-2 uppercase tracking-wider">
+              Campaign Notes
+            </label>
+            <textarea
+              value={formData.notes}
+              onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+              rows={4}
+              className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] resize-none"
+              placeholder="Track progress, contacts pitched, special notes..."
+            />
+          </div>
+
+          {/* Form Actions */}
+          <div className="flex flex-col-reverse sm:flex-row gap-3 pt-6 border-t-4 border-gray-200">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-6 py-2.5 border border-slate-300 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-colors"
+              className="flex-1 px-6 py-3.5 border-4 border-black text-gray-900 rounded-xl font-black hover:bg-gray-50 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-base"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 px-6 py-2.5 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50"
+              className="flex-1 px-6 py-3.5 bg-blue-600 text-white rounded-xl font-black hover:bg-blue-700 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-base"
             >
-              {loading ? 'Saving...' : campaign ? 'Update' : 'Create'}
+              {loading ? 'Saving...' : campaign ? 'Update Campaign' : 'Create Campaign'}
             </button>
           </div>
         </form>

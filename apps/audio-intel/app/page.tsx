@@ -179,11 +179,6 @@ export default function AudioIntelLanding() {
           </div>
           
           <nav className="audio-intel-nav hidden md:flex items-center gap-6">
-            <div className="flex items-center gap-2 text-sm font-bold text-gray-500 cursor-not-allowed">
-              <Music className="w-4 h-4" />
-              <span>Playlist Pulse</span>
-              <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full font-medium">Coming Soon</span>
-            </div>
             <a href="#features" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors duration-300">
               Features
             </a>
@@ -215,26 +210,6 @@ export default function AudioIntelLanding() {
         </div>
       </header>
 
-      {/* Cross-Promotion Banner */}
-      <section className="audio-intel-banner w-full bg-gradient-to-r from-yellow-50 to-yellow-100 border-b-4 border-yellow-300">
-        <div className="audio-intel-container max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
-              <div className="bg-yellow-400 rounded-2xl p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
-                <Music className="w-6 h-6 text-white [animation:none]" />
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-black text-gray-900 leading-tight tracking-tight mb-2">Need playlist promotion? Playlist Pulse is coming soon!</h3>
-                <p className="text-sm sm:text-base text-gray-700 font-bold leading-relaxed">Get ready for instant access to 50,000+ verified playlist curators with AI-powered pitch generation</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 bg-yellow-400 text-black font-bold px-6 py-3 rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
-              <span className="text-sm sm:text-base">Coming Soon</span>
-              <span className="text-xs bg-yellow-600 text-white px-2 py-1 rounded-full">Q2 2025</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Hero Section */}
       <section className="audio-intel-hero w-full">
@@ -366,7 +341,8 @@ export default function AudioIntelLanding() {
                 alt="Audio mascot throwing vinyl records - representing active music promotion in motion"
                 width={350}
                 height={350}
-                className="mx-auto -my-4"
+                className="mx-auto h-auto w-full max-w-[220px] rounded-2xl object-cover object-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:max-w-[260px]"
+                style={{ objectFit: 'cover' }}
               />
             </div>
           </div>
@@ -1162,9 +1138,10 @@ export default function AudioIntelLanding() {
 
               <Link href="/pricing">
                 <Button
-                  className="w-full rounded-2xl font-black text-lg sm:text-xl py-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all bg-white hover:bg-gray-50 text-black border-4 border-gray-300 min-h-[60px] whitespace-normal leading-tight"
+                  className="w-full rounded-2xl font-black text-base sm:text-lg py-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all bg-white hover:bg-gray-50 text-black border-4 border-gray-300 min-h-[60px] whitespace-normal leading-tight"
                 >
-                  White-Label Your Intelligence
+                  <span className="hidden sm:inline">White-Label Your Intelligence</span>
+                  <span className="sm:hidden">Get Agency Plan</span>
                 </Button>
               </Link>
             </div>
@@ -1333,120 +1310,106 @@ export default function AudioIntelLanding() {
       {/* Footer */}
       <footer className={`py-12 px-4 bg-gray-900 text-white relative`}>
         <div className="max-w-7xl mx-auto">
-          {/* Cross-Promotion Section */}
-          <div className={`mb-8 p-6 bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 border border-yellow-400/20 rounded-xl relative overflow-hidden`}>
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-4">
-                <div className="bg-yellow-400 rounded-full p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                  <Music className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-black text-white">Need playlist promotion?</h3>
-                  <p className="text-white/80 font-bold">Playlist Pulse is coming soon - our sister tool for AI-powered playlist curator discovery and pitch generation</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <span>Coming Soon</span>
-                <span className="text-xs bg-yellow-600 text-white px-2 py-1 rounded-full">Q2 2025</span>
-              </div>
-            </div>
-          </div>
 
-          <div className="grid lg:grid-cols-4 gap-8">
-            <div>
-              <div className={`relative overflow-hidden`}>
-                <div className="flex items-center gap-4 mb-8">
-                  <Image 
-                    src="/images/total_audio_promo_logo_trans.png" 
-                    alt="Total Audio Promo Logo" 
-                    width={64} 
-                    height={64}
-                    className="bg-white rounded-lg p-2"
-                  />
-                  <span className="text-2xl font-black">Audio Intel</span>
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div className="space-y-8">
+              <div className="flex items-center gap-4">
+                <Image 
+                  src="/images/total_audio_promo_logo_trans.png" 
+                  alt="Total Audio Promo Logo" 
+                  width={64} 
+                  height={64}
+                  className="bg-white rounded-lg p-2"
+                />
+                <div>
+                  <span className="text-2xl font-black block">Audio Intel</span>
+                  <span className="text-sm font-semibold text-white/70 uppercase tracking-[0.2em]">Powered by Total Audio Promo</span>
                 </div>
-                <p className="text-lg font-bold text-gray-300 mb-8">
-                  AI-powered contact intelligence for the music industry. Transform basic email lists into detailed
-                  contact insights. Powered by Total Audio Promo.
+              </div>
+              <p className="text-lg font-bold text-gray-300">
+                AI contact intelligence for working music promoters. Upload spreadsheets, validate emails, and receive
+                enriched media profiles with context that helps you pitch faster.
+              </p>
+              <div className="flex flex-col gap-3 text-gray-400">
+                <p className="font-bold text-white/80 uppercase tracking-wider text-xs">Quick contact</p>
+                <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white transition-colors font-semibold">
+                  info@totalaudiopromo.com
+                </a>
+                <p className="text-sm">
+                  Manchester, UK · Built by radio promoters for artists, labels, and PR teams.
                 </p>
               </div>
             </div>
 
-            <div>
-              <h3 className="text-xl font-black mb-6">Product</h3>
-              <ul className="space-y-4">
-                <li>
-                  <a href="#features" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a href="#pricing" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    Pricing
-                  </a>
-                </li>
-                <li>
-                  <a href="/demo" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    Demo
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    API Access
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <div className="grid gap-10 sm:grid-cols-2">
+              <div>
+                <h3 className="text-xl font-black mb-6">Product</h3>
+                <ul className="space-y-4">
+                  <li>
+                    <a href="#features" className="text-gray-300 hover:text-white font-bold transition-colors">
+                      Features
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#pricing" className="text-gray-300 hover:text-white font-bold transition-colors">
+                      Pricing
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/demo" className="text-gray-300 hover:text-white font-bold transition-colors">
+                      Demo
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/beta" className="text-gray-300 hover:text-white font-bold transition-colors">
+                      Beta Access
+                    </a>
+                  </li>
+                </ul>
+              </div>
 
-            <div>
-              <h3 className="text-xl font-black mb-6">Support</h3>
-              <ul className="space-y-4">
-                <li>
-                  <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    Help Center
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    Contact Support
-                  </a>
-                </li>
-                <li>
-                  <a href="/documentation" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    Documentation
-                  </a>
-                </li>
-              </ul>
-            </div>
+              <div>
+                <h3 className="text-xl font-black mb-6">Support</h3>
+                <ul className="space-y-4">
+                  <li>
+                    <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors">
+                      Help Center
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/documentation" className="text-gray-300 hover:text-white font-bold transition-colors">
+                      Documentation
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://intel.totalaudiopromo.com/faq" className="text-gray-300 hover:text-white font-bold transition-colors">
+                      FAQs
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto:support@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors">
+                      Support Email
+                    </a>
+                  </li>
+                </ul>
+              </div>
 
-            <div>
-              <h3 className="text-xl font-black mb-6">Our Ecosystem</h3>
-              <ul className="space-y-4">
-                <li>
-                  <div className="flex items-center gap-2 text-gray-400 cursor-not-allowed">
-                    <Music className="w-4 h-4" />
-                    <span>Playlist Pulse</span>
-                    <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full font-medium">Coming Soon</span>
-                  </div>
-                </li>
-                <li>
-                  <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    Contact Support
-                  </a>
-                </li>
-                <li>
-                  <a href="https://totalaudiopromo.com/privacy" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="https://totalaudiopromo.com/terms" className="text-gray-300 hover:text-white font-bold transition-colors">
-                    Terms of Service
-                  </a>
-                </li>
-              </ul>
+              <div className="sm:col-span-2">
+                <h3 className="text-xl font-black mb-6">Legal</h3>
+                <ul className="space-y-4">
+                  <li>
+                    <a href="https://totalaudiopromo.com/privacy" className="text-gray-300 hover:text-white font-bold transition-colors">
+                      Privacy Policy
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://totalaudiopromo.com/terms" className="text-gray-300 hover:text-white font-bold transition-colors">
+                      Terms of Service
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-
           </div>
 
           <div className="border-t border-gray-800 mt-12 pt-8 text-center">
@@ -1459,4 +1422,3 @@ export default function AudioIntelLanding() {
     </div>
   )
 }
-

@@ -12,7 +12,7 @@ export default defineConfig({
     ['json', { outputFile: './reports/mobile/results.json' }]
   ],
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://127.0.0.1:3010',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure'
@@ -36,8 +36,8 @@ export default defineConfig({
 
   // Local server setup
   webServer: {
-    command: 'npm run dev',
-    port: 3000,
+    command: 'npm run dev:tests',
+    port: 3010,
     reuseExistingServer: !process.env.CI,
   },
 });

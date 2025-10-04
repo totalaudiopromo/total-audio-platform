@@ -3,8 +3,9 @@ import { NextResponse } from 'next/server';
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
+  const params = await context.params;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -28,8 +29,9 @@ export async function GET(
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
+  const params = await context.params;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -41,6 +43,7 @@ export async function PUT(
 
   const payload: Record<string, unknown> = {
     name: body.name,
+    artist_name: body.artist_name || body.artist || body.name || 'Unknown Artist',
   };
 
   if (body.platform) payload.platform = body.platform;
@@ -65,7 +68,7 @@ export async function PUT(
   }
 
   const removedColumns = new Set<string>();
-  const requiredColumns = new Set(['name']);
+  const requiredColumns = new Set(['name', 'artist_name']);
 
   while (true) {
     const { data, error } = await supabase
@@ -101,8 +104,9 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
+  const params = await context.params;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 

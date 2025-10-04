@@ -7,11 +7,11 @@ import { useState } from 'react';
 import { Menu } from 'lucide-react';
 
 const links = [
-  { href: '/', label: 'Overview' },
+  { href: '/', label: 'Home' },
   { href: '/pricing', label: 'Pricing' },
-  { href: '/success', label: 'Success Page' },
-  { href: '/profile', label: 'Profile', requiresAuth: true },
-  { href: '/settings', label: 'Settings', requiresAuth: true },
+  { href: '/dashboard', label: 'Dashboard', requiresAuth: true },
+  { href: '/pitch/history', label: 'History', requiresAuth: true },
+  { href: '/pitch/contacts', label: 'Contacts', requiresAuth: true },
 ];
 
 export function SiteHeader() {
@@ -19,7 +19,7 @@ export function SiteHeader() {
   const { data: session, status } = useSession();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const handleSignIn = () => signIn(undefined, { callbackUrl: '/profile' });
+  const handleSignIn = () => signIn(undefined, { callbackUrl: '/dashboard' });
   const handleSignOut = () => signOut({ callbackUrl: '/' });
 
   const availableLinks = links.filter(link => !link.requiresAuth || session);
@@ -37,9 +37,9 @@ export function SiteHeader() {
             <Menu className="h-5 w-5" />
           </button>
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-sm font-semibold uppercase tracking-[0.32em] text-white/60">Total Audio Promo</span>
-            <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white/70">
-              TAP Studio
+            <span className="text-sm font-semibold uppercase tracking-[0.32em] text-white/60">Pitch Generator</span>
+            <span className="rounded-full bg-gradient-to-r from-brand-iris to-brand-magenta px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+              TAP
             </span>
           </Link>
         </div>

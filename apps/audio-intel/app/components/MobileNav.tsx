@@ -64,14 +64,14 @@ export default function MobileNav() {
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 md:hidden" aria-label="Mobile Navigation">
-      <div className="flex items-center justify-between px-4 py-3 bg-white border-b border-gray-200 shadow-sm">
+      <div className="flex items-center justify-between px-4 py-3 bg-white border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         <Link href="/" className="flex items-center gap-3">
           <Image src="/images/total_audio_promo_logo_trans.png" alt="Total Audio Promo Mascot" width={40} height={40} className="w-10 h-10" priority />
-          <span className="font-bold text-gray-900 text-lg">Audio Intel</span>
+          <span className="font-black text-gray-900 text-xl tracking-tight">Audio Intel</span>
         </Link>
         <button
           aria-label="Open menu"
-          className="text-gray-700 focus:outline-none flex items-center justify-center bg-gray-100 border border-gray-200 rounded-lg p-2 hover:bg-gray-200 transition-colors"
+          className="text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 focus:outline-none flex items-center justify-center border-2 border-black rounded-xl p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all font-black"
           style={{ minWidth: 44, minHeight: 44 }}
           onClick={() => setOpen(true)}
         >
@@ -91,20 +91,20 @@ export default function MobileNav() {
       {/* Slide-in menu */}
       <div
         ref={menuRef}
-        className={`fixed top-0 right-0 h-full w-full max-w-xs bg-white border-l border-gray-200 text-gray-900 shadow-2xl z-[110] transform transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'} flex flex-col overflow-hidden`}
+        className={`fixed top-0 right-0 h-full w-[85vw] max-w-sm bg-white border-l-4 border-black shadow-[-8px_0_16px_rgba(0,0,0,0.2)] z-[110] transform transition-transform duration-300 ease-in-out flex flex-col ${open ? 'translate-x-0' : 'translate-x-full'}`}
         style={{ willChange: 'transform' }}
         aria-modal={open}
         role="dialog"
       >
-        <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200">
-          <span className="font-bold text-lg">Menu</span>
+        <div className="flex items-center justify-between px-4 py-4 border-b-4 border-black bg-gradient-to-r from-blue-50 to-white">
+          <span className="font-black text-xl text-gray-900 tracking-tight">Menu</span>
           <button
             aria-label="Close menu"
-            className="text-gray-700 focus:outline-none flex items-center justify-center bg-gray-100 border border-gray-200 rounded-lg p-2 hover:bg-gray-200 transition-colors"
+            className="text-white bg-red-500 hover:bg-red-600 focus:outline-none flex items-center justify-center border-2 border-black rounded-xl p-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all font-black"
             style={{ minWidth: 44, minHeight: 44 }}
             onClick={() => setOpen(false)}
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
         </div>
         
@@ -114,8 +114,8 @@ export default function MobileNav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="py-4 px-4 rounded-xl text-base font-semibold hover:bg-gray-100 transition-all duration-300 text-left w-full focus:outline-none text-gray-900 min-h-[56px] bg-gray-50 border border-gray-200 flex items-center"
-                style={{ minHeight: 56, wordWrap: 'break-word', whiteSpace: 'normal' }}
+                className="py-4 px-4 rounded-xl text-base font-bold hover:bg-blue-50 transition-all duration-200 text-left w-full focus:outline-none text-gray-900 min-h-[56px] bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 flex items-center"
+                style={{ minHeight: 56 }}
                 onClick={() => setOpen(false)}
                 aria-label={link.label}
               >
@@ -124,8 +124,8 @@ export default function MobileNav() {
             ) : (
               <button
                 key={link.href}
-                className="py-4 px-4 rounded-xl text-base font-semibold hover:bg-gray-100 transition-all duration-300 text-left w-full focus:outline-none text-gray-900 min-h-[56px] bg-gray-50 border border-gray-200 flex items-center"
-                style={{ minHeight: 56, wordWrap: 'break-word', whiteSpace: 'normal' }}
+                className="py-4 px-4 rounded-xl text-base font-bold hover:bg-blue-50 transition-all duration-200 text-left w-full focus:outline-none text-gray-900 min-h-[56px] bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 flex items-center"
+                style={{ minHeight: 56 }}
                 onClick={() => handleNavClick(link.href, link.isRoute)}
                 aria-label={link.label}
               >
@@ -135,14 +135,14 @@ export default function MobileNav() {
           ))}
         </div>
         
-        <div className="px-4 pb-6">
+        <div className="px-4 pb-6 border-t-2 border-black pt-4 bg-gradient-to-r from-green-50 to-white">
           <button
-            className="flex items-center justify-center w-full text-center py-4 rounded-xl font-bold text-white bg-[#1E88E5] hover:bg-blue-600 transition-all duration-300 focus:outline-none min-h-[56px]"
+            className="flex items-center justify-center w-full text-center py-4 rounded-xl font-black text-white bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 transition-all duration-200 focus:outline-none min-h-[56px] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5"
             style={{ minHeight: 56 }}
             onClick={() => handleNavClick('signup')}
             aria-label="Start Free Trial"
           >
-            <span>Start Free Trial</span>
+            <span>Start Free Beta</span>
           </button>
         </div>
       </div>

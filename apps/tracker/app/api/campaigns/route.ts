@@ -1,21 +1,20 @@
+// ============================================================================
+// CAMPAIGN API ROUTES - With PRD Intelligence
+// GET: List campaigns with intelligence metrics
+// POST: Create new campaign
+// ============================================================================
+
 import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
-import { enrichCampaignWithIntelligence, type Campaign } from '@/lib/intelligence';
-import { appendFile } from 'node:fs/promises';
+import {
+  generateCampaignInsights,
+  analyzePatterns,
+} from '@/lib/intelligence';
+import type { Campaign, Benchmark, CreateCampaignPayload } from '@/lib/types/tracker';
 
-type CampaignInsertPayload = Record<string, unknown>;
-
-async function logDebug(event: string, payload: unknown) {
-  try {
-    await appendFile(
-      '/tmp/tracker-campaign-debug.log',
-      `${new Date().toISOString()} ${event} ${JSON.stringify(payload)}\n`
-    );
-  } catch (error) {
-    console.error('Failed to write debug log', error);
-  }
-}
-
+// ============================================================================
+// GET /api/campaigns - List all campaigns with intelligence
+// ============================================================================
 export async function GET() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -24,37 +23,92 @@ export async function GET() {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { data: campaigns, error } = await supabase
+  // Fetch campaigns
+  const { data: campaigns, error: campaignsError } = await supabase
     .from('campaigns')
     .select('*')
     .eq('user_id', user.id)
     .order('created_at', { ascending: false });
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  if (campaignsError) {
+    return NextResponse.json(
+      { error: campaignsError.message },
+      { status: 500 }
+    );
   }
 
-  // Enrich campaigns with intelligence
+  // Fetch benchmarks for intelligence
   const { data: benchmarks } = await supabase
     .from('benchmarks')
     .select('*');
 
-  const enrichedCampaigns = campaigns?.map(campaign => {
-    const benchmark = benchmarks?.find(
-      b => b.platform === campaign.platform && b.genre === campaign.genre
-    );
-
-    if (benchmark && campaign.actual_reach > 0) {
-      const intelligence = enrichCampaignWithIntelligence(campaign as Campaign, benchmark);
-      return { ...campaign, intelligence };
-    }
-
-    return campaign;
+  const benchmarkMap = new Map<string, Benchmark>();
+  benchmarks?.forEach((b) => {
+    benchmarkMap.set(`${b.platform}-${b.genre}`, b as Benchmark);
   });
 
-  return NextResponse.json(enrichedCampaigns);
+  // Enrich campaigns with insights
+  const enrichedCampaigns = (campaigns || []).map((campaign) => {
+    const typedCampaign = campaign as Campaign;
+
+    if (typedCampaign.platform && typedCampaign.genre) {
+      const key = `${typedCampaign.platform}-${typedCampaign.genre}`;
+      const benchmark = benchmarkMap.get(key);
+
+      const insights = generateCampaignInsights(typedCampaign, benchmark || null);
+
+      return {
+        ...typedCampaign,
+        insights,
+      };
+    }
+
+    return typedCampaign;
+  });
+
+  // Generate patterns across all campaigns
+  const patterns = analyzePatterns(enrichedCampaigns as Campaign[]);
+
+  // Calculate dashboard metrics
+  const totalCampaigns = enrichedCampaigns.length;
+  const activeCampaigns = enrichedCampaigns.filter(
+    (c) => c.status === 'active'
+  ).length;
+  const completedCampaigns = enrichedCampaigns.filter(
+    (c) => c.status === 'completed'
+  ).length;
+  const totalSpend = enrichedCampaigns.reduce(
+    (sum, c) => sum + (c.budget || 0),
+    0
+  );
+
+  const campaignsWithResults = enrichedCampaigns.filter(
+    (c) => c.actual_reach > 0 && c.target_reach > 0
+  );
+
+  const avgSuccessRate = campaignsWithResults.length > 0
+    ? campaignsWithResults.reduce((sum, c) => sum + c.success_rate, 0) /
+      campaignsWithResults.length
+    : 0;
+
+  const metrics = {
+    total_campaigns: totalCampaigns,
+    active_campaigns: activeCampaigns,
+    completed_campaigns: completedCampaigns,
+    total_spend: totalSpend,
+    avg_success_rate: Math.round(avgSuccessRate * 10) / 10,
+  };
+
+  return NextResponse.json({
+    campaigns: enrichedCampaigns,
+    patterns,
+    metrics,
+  });
 }
 
+// ============================================================================
+// POST /api/campaigns - Create new campaign
+// ============================================================================
 export async function POST(request: Request) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -65,68 +119,84 @@ export async function POST(request: Request) {
 
   const body = await request.json();
 
-  await logDebug('campaign:create:start', { user_id: user.id, body });
+  // Validate required fields
+  if (!body.name) {
+    return NextResponse.json(
+      { error: 'Campaign name is required' },
+      { status: 400 }
+    );
+  }
 
-  const payload: CampaignInsertPayload = {
+  // Build campaign payload
+  const payload: Record<string, unknown> = {
     user_id: user.id,
     name: body.name,
-    status: 'active',
+    status: body.status || 'planning',
   };
 
+  // Optional fields
+  if (body.artist_name) payload.artist_name = body.artist_name;
   if (body.platform) payload.platform = body.platform;
   if (body.genre) payload.genre = body.genre;
+  if (body.target_type) payload.target_type = body.target_type;
+  if (body.notes) payload.notes = body.notes;
+
+  // Dates
   if (body.start_date) payload.start_date = body.start_date;
   if (body.end_date) payload.end_date = body.end_date;
 
+  // Numbers
   if (body.budget !== undefined && body.budget !== '') {
     const budget = Number(body.budget);
-    if (!Number.isNaN(budget)) payload.budget = budget;
+    if (!isNaN(budget)) payload.budget = budget;
   }
 
   if (body.target_reach !== undefined && body.target_reach !== '') {
-    const targetReach = Number.parseInt(body.target_reach, 10);
-    if (!Number.isNaN(targetReach)) payload.target_reach = targetReach;
+    const targetReach = Number(body.target_reach);
+    if (!isNaN(targetReach)) payload.target_reach = targetReach;
   }
 
   if (body.actual_reach !== undefined && body.actual_reach !== '') {
-    const actualReach = Number.parseInt(body.actual_reach, 10);
-    if (!Number.isNaN(actualReach)) payload.actual_reach = actualReach;
+    const actualReach = Number(body.actual_reach);
+    if (!isNaN(actualReach)) payload.actual_reach = actualReach;
   }
 
-  const removedColumns = new Set<string>();
-  const requiredColumns = new Set(['user_id', 'name']);
+  // Optional metric fields
+  if (body.streams) payload.streams = Number(body.streams);
+  if (body.saves) payload.saves = Number(body.saves);
+  if (body.social_engagement) payload.social_engagement = Number(body.social_engagement);
 
-  while (true) {
-    const { data, error } = await supabase
-      .from('campaigns')
-      .insert([payload])
-      .select()
+  // Insert campaign
+  const { data, error } = await supabase
+    .from('campaigns')
+    .insert([payload])
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Campaign creation error:', error);
+    return NextResponse.json(
+      { error: error.message, details: error },
+      { status: 500 }
+    );
+  }
+
+  // Enrich with intelligence
+  if (data.platform && data.genre) {
+    const { data: benchmark } = await supabase
+      .from('benchmarks')
+      .select('*')
+      .eq('platform', data.platform)
+      .eq('genre', data.genre)
       .single();
 
-    if (!error) {
-      await logDebug('campaign:create:success', { data, removedColumns: Array.from(removedColumns) });
-      console.log('Campaign created successfully:', data);
-      return NextResponse.json(data);
-    }
+    const insights = generateCampaignInsights(data as Campaign, benchmark);
 
-    const missingColumnMatch = error.message?.match(/'([^']+)' column/);
-    const missingColumn = missingColumnMatch?.[1];
-
-    if (
-      missingColumn &&
-      missingColumn in payload &&
-      !removedColumns.has(missingColumn) &&
-      !requiredColumns.has(missingColumn)
-    ) {
-      removedColumns.add(missingColumn);
-      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-      delete payload[missingColumn];
-      await logDebug('campaign:create:retry', { missingColumn, payload });
-      continue;
-    }
-
-    await logDebug('campaign:create:error', { error, removedColumns: Array.from(removedColumns) });
-    console.error('Campaign creation error:', error);
-    return NextResponse.json({ error: error.message, details: error }, { status: 500 });
+    return NextResponse.json({
+      ...data,
+      insights,
+    });
   }
+
+  return NextResponse.json(data);
 }

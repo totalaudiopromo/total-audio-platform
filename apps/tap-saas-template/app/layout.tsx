@@ -9,8 +9,8 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-display' });
 
 export const metadata: Metadata = {
-  title: 'TAP SaaS Template',
-  description: 'Postcraft-inspired SaaS starter for Total Audio Promo micro tools.',
+  title: 'Pitch Generator - AI-Powered Music PR Pitches',
+  description: 'Write 50 personalized music PR pitches in 20 minutes. AI that sounds human, powered by your contact data.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

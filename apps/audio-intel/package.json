@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:tests": "next dev --hostname 127.0.0.1 --port 3010",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -60,7 +61,8 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/stripe": "^8.0.416",
-    "eslint": "^9.36.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^15.4.2",
     "localtunnel": "^2.0.2",
     "tailwindcss": "^3.4.17",
     "tsx": "^4.20.6",

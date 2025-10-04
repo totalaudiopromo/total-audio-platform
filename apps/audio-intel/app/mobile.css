@@ -605,9 +605,9 @@
     width: calc(100vw - 2rem) !important;
     max-width: calc(100vw - 2rem) !important;
     margin: 0 auto 2rem auto !important;
-    padding: 1.5rem !important;
+    padding: 1.5rem 1rem !important;
     box-sizing: border-box !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     word-wrap: break-word !important;
     background: white !important;
     border-radius: 16px !important;
@@ -618,6 +618,17 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
+  }
+
+  /* Pricing card feature lists - better spacing */
+  .pricing-card ul,
+  .plan-card ul {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .pricing-card li,
+  .plan-card li {
+    margin-bottom: 1rem !important;
   }
 
   .mobile-pricing-title,
@@ -685,17 +696,17 @@
   .bg-gradient-to-r.from-purple-600 {
     width: 100% !important;
     max-width: 100% !important;
-    margin: 1rem auto 0 auto !important;
-    padding: 1rem 0.75rem !important;
-    font-size: 0.875rem !important;
-    min-height: 52px !important;
+    margin: 1.5rem auto 0 auto !important;
+    padding: 1.25rem 1rem !important;
+    font-size: 1rem !important;
+    min-height: 56px !important;
     height: auto !important;
     white-space: normal !important;
     word-wrap: break-word !important;
-    line-height: 1.4 !important;
+    line-height: 1.5 !important;
     box-sizing: border-box !important;
     display: flex !important;
-    flex-direction: column !important;
+    flex-direction: row !important;
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
@@ -1156,14 +1167,14 @@
   /* Footer - TRUE TWO-COLUMN LAYOUT */
   footer .grid.lg\\:grid-cols-2 {
     display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.5rem !important;
     padding: 0 !important;
   }
 
   footer .grid.sm\\:grid-cols-2 {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
   }
 
   footer .grid.lg\\:grid-cols-2 > div {
