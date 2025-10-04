@@ -66,7 +66,6 @@ export async function POST(request: Request) {
         budget: body.budget || 0,
         target_reach: body.target_reach || 0,
         actual_reach: body.actual_reach || 0,
-        notes: body.notes || null,
         status: 'active',
       },
     ])

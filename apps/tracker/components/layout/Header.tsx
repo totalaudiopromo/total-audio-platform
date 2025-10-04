@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { UserCircleIcon, BellIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import { createClient } from '@/lib/supabase/client';
 
@@ -28,9 +29,16 @@ export function Header({ userName }: { userName: string }) {
   return (
     <header className="sticky top-0 z-30 bg-white border-b-2 border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <div>
+        <div className="flex items-center gap-3">
+          <Image
+            src="/total_audio_promo_logo_trans.png"
+            alt="Total Audio Promo"
+            width={32}
+            height={32}
+            className="object-contain"
+          />
           <h1 className="text-xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Total Audio Tracker
+            Tracker
           </h1>
         </div>
 
