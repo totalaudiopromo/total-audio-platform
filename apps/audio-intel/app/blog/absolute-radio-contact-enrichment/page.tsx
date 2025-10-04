@@ -226,6 +226,193 @@ export default function AbsoluteRadioContactEnrichment() {
           <p className="text-sm text-gray-500">Pulled from internal beta feedback, October 2025.</p>
         </section>
 
+        <section id="understanding-absolute" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Understanding Absolute Radio Structure</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Absolute Radio targets 25-44 demographic with alternative/indie/rock mainstream music (&quot;Coldplay to Foo Fighters&quot; range). Independent artists waste hours discovering critical submission requirements. Here is the structure breakdown.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mt-8">Sunday Night Music Club vs Main Playlist Route</h3>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Sunday Night Music Club (Danielle Perry) is the official self-released artist route via selfreleased@absoluteradio.co.uk. Main daytime playlist (Dave Berry breakfast, Jason Manford Sunday morning) requires professional radio plugging or Music Club success first. Self-released artists must start with Sunday Night Music Club - targeting daytime presenters wastes time without track record.
+          </p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Audio Intel flags Sunday Night Music Club as starting point for self-released artists and clarifies Dave Berry breakfast route is for established artists or professional campaigns. Artists often target wrong presenter (breakfast show instead of Music Club) missing the actual self-released artist pathway entirely.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mt-8">Web-Link ONLY Requirement (No Attachments)</h3>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Sunday Night Music Club requires web-link submissions via Dropbox or SoundCloud - NOT audio file attachments. First submission with MP3 attachment creates email delivery issues and likely gets rejected. Brief artist and track information required (detailed bios not necessary for Music Club consideration).
+          </p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Artists discover web-link requirement AFTER first attachment rejection. Audio Intel highlights web-link ONLY requirement in red during enrichment preventing format mistakes. The correct submission format (Dropbox/SoundCloud link + brief info) is clarified immediately saving rejected submission attempts.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mt-8">Bauer Media Network (Same as Kerrang, KISS FM)</h3>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Absolute Radio is part of Bauer Media UK network (same ownership as Kerrang Radio and KISS FM). Understanding network structure helps artists target related stations. Alternative/indie mainstream (Absolute) vs specialist rock/metal (Kerrang) vs urban/dance (KISS) requires different music approaches.
+          </p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Audio Intel maps Bauer Media network structure during enrichment. Artists with alternative/indie get Absolute priority, rock/metal get Kerrang suggestions, urban/dance get KISS recommendations. This prevents wasted submissions to wrong network stations when genre mismatch clear from start.
+          </p>
+        </section>
+
+        <section id="common-mistakes" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">5 Absolute Radio Pitching Mistakes That Kill Indie Campaigns</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            After running dozens of Absolute Radio campaigns for alternative/indie artists, these are the mistakes that come up repeatedly. Audio Intel prevents most of them automatically.
+          </p>
+
+          <div className="space-y-6">
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 1: Sending Audio File Attachment Instead of Web-Link</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Sunday Night Music Club requires web-link ONLY (Dropbox/SoundCloud) - NOT MP3 attachments. First submission with audio file attachment creates delivery issues and likely gets rejected. Artists discover web-link requirement after wasted submission. Audio Intel highlights web-link requirement in red during enrichment preventing attachment mistakes.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 2: Targeting Dave Berry Breakfast Instead of Sunday Night Music Club</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Dave Berry&apos;s breakfast show appears to be flagship programme but Sunday Night Music Club is the actual self-released artist route. Daytime playlist requires professional plugging or Music Club success. Unsigned artists waste hours targeting wrong presenter when Music Club is the correct starting point. Audio Intel clarifies self-released route immediately.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 3: Missing selfreleased@absoluteradio.co.uk Email Address</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                The selfreleased@absoluteradio.co.uk email exists but is not prominently displayed on main website. Artists waste hours searching for Sunday Night Music Club contact before finding buried email address. Audio Intel provides verified submission email immediately preventing search frustration.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 4: Submitting Heavy Rock/Metal When Absolute Targets Mainstream Alternative</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Absolute Radio describes format as &quot;Coldplay to Foo Fighters&quot; - mainstream alternative/indie/rock without heavy metal edge. Artists submit rock/metal better suited to Kerrang Radio when genre mismatch clear from format description. Audio Intel provides genre-match scoring preventing mainstream alternative submissions for heavy music.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 5: Expecting Multiple Track Features When ONE per Month Reality</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Sunday Night Music Club features ONE track per month from self-released submissions. Artists expect immediate responses or multiple track features without understanding competitive selection reality. Audio Intel clarifies ONE track monthly selection preventing unrealistic expectations.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="beyond-absolute" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Beyond Absolute Radio</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Absolute Radio targets mainstream alternative/indie/rock (25-44 demographic). If your music appeals to different audiences, consider these alternatives:
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <a href="/blog/kerrang-radio-contact-enrichment" className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-blue-500 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Kerrang Radio Contact Enrichment</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Rock/metal/punk specialists. Same Bauer Media network as Absolute. Better fit for heavier genres with metal edge. Alex Baker&apos;s Fresh Blood for unsigned artists.
+              </p>
+              <span className="text-blue-600 font-semibold">Read more →</span>
+            </a>
+
+            <a href="/blog/bbc-radio-6-music-contact-enrichment" className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-blue-500 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">BBC Radio 6 Music Contact Enrichment</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Alternative/indie/rock specialists with album-focused programming. National BBC station with 35+ demographic. Better fit for non-mainstream alternative without commercial crossover requirement.
+              </p>
+              <span className="text-blue-600 font-semibold">Read more →</span>
+            </a>
+
+            <a href="/blog/bbc-radio-2-contact-enrichment" className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-blue-500 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">BBC Radio 2 Contact Enrichment</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Mainstream pop/rock/soul for 35-54 demographic. UK&apos;s most popular station (12.6 million weekly listeners). Better fit for mainstream crossover with older demographic appeal.
+              </p>
+              <span className="text-blue-600 font-semibold">Read more →</span>
+            </a>
+
+            <a href="/blog/spotify-editorial-playlist-contacts" className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-blue-500 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Spotify Editorial Playlist Contacts</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Streaming platform alternative to radio. 28-day submission window, genre-specific playlists. Better fit for artists prioritizing streaming over traditional radio.
+              </p>
+              <span className="text-blue-600 font-semibold">Read more →</span>
+            </a>
+          </div>
+        </section>
+
+        <section id="faq" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Frequently Asked Questions</h2>
+
+          <details className="bg-white border border-gray-200 rounded-xl p-6">
+            <summary className="text-xl font-bold text-gray-900 cursor-pointer">What is the correct email address for Absolute Radio&apos;s Sunday Night Music Club?</summary>
+            <p className="text-base text-gray-700 leading-relaxed mt-4">
+              selfreleased@absoluteradio.co.uk is the official submission email for Sunday Night Music Club (Danielle Perry). This email is not prominently displayed on the main Absolute Radio website but Audio Intel provides it during enrichment preventing hours of searching. Web-link ONLY submissions (Dropbox/SoundCloud) with brief artist and track information.
+            </p>
+          </details>
+
+          <details className="bg-white border border-gray-200 rounded-xl p-6">
+            <summary className="text-xl font-bold text-gray-900 cursor-pointer">Why does Absolute Radio require web-link instead of audio file attachments?</summary>
+            <p className="text-base text-gray-700 leading-relaxed mt-4">
+              Web-link submissions (Dropbox or SoundCloud) prevent email delivery issues from large audio file attachments. MP3 attachments create inbox problems and likely get rejected. Audio Intel highlights web-link ONLY requirement during enrichment preventing first submission format mistakes. Upload best quality audio to Dropbox/SoundCloud and send link with brief info.
+            </p>
+          </details>
+
+          <details className="bg-white border border-gray-200 rounded-xl p-6">
+            <summary className="text-xl font-bold text-gray-900 cursor-pointer">Can self-released artists submit directly to Dave Berry&apos;s breakfast show?</summary>
+            <p className="text-base text-gray-700 leading-relaxed mt-4">
+              No. Dave Berry&apos;s breakfast show requires professional radio plugging or Sunday Night Music Club success first. Self-released artists must start with Sunday Night Music Club (Danielle Perry) as the official unsigned artist route. Music Club success provides track record for daytime playlist consideration.
+            </p>
+          </details>
+
+          <details className="bg-white border border-gray-200 rounded-xl p-6">
+            <summary className="text-xl font-bold text-gray-900 cursor-pointer">How does Audio Intel determine if my music fits Absolute Radio&apos;s &quot;Coldplay to Foo Fighters&quot; format?</summary>
+            <p className="text-base text-gray-700 leading-relaxed mt-4">
+              Audio Intel analyzes your genre, artist biography, and track metadata to provide genre-match scoring. Absolute Radio targets mainstream alternative/indie/rock (25-44 demographic) without heavy metal edge. Rock/metal better suits Kerrang Radio, non-mainstream alternative better suits BBC 6 Music. The system flags genre mismatch preventing wasted submissions.
+            </p>
+          </details>
+
+          <details className="bg-white border border-gray-200 rounded-xl p-6">
+            <summary className="text-xl font-bold text-gray-900 cursor-pointer">Is Absolute Radio part of a larger network?</summary>
+            <p className="text-base text-gray-700 leading-relaxed mt-4">
+              Yes. Absolute Radio is part of Bauer Media UK network (same ownership as Kerrang Radio and KISS FM). Understanding network structure helps artists target related stations. Alternative/indie mainstream (Absolute) vs specialist rock/metal (Kerrang) vs urban/dance (KISS) requires different music approaches. Audio Intel maps Bauer network structure during enrichment.
+            </p>
+          </details>
+
+          <details className="bg-white border border-gray-200 rounded-xl p-6">
+            <summary className="text-xl font-bold text-gray-900 cursor-pointer">How many tracks does Sunday Night Music Club feature per month?</summary>
+            <p className="text-base text-gray-700 leading-relaxed mt-4">
+              ONE track per month is featured from self-released submissions. Danielle Perry reviews many submissions but competitive selection means limited featured tracks monthly. Artists should understand realistic expectations - not immediate responses or multiple track features. Audio Intel clarifies competitive selection process during enrichment.
+            </p>
+          </details>
+        </section>
+
+        <section id="getting-started" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Getting Started with Absolute Radio Contact Enrichment</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Ready to stop wasting submissions and target Sunday Night Music Club correctly? Here is exactly how to use Audio Intel for Absolute Radio.
+          </p>
+
+          <ol className="list-decimal pl-6 space-y-4 text-base text-gray-700 leading-relaxed">
+            <li>
+              <strong className="text-gray-900">Gather your basic contacts:</strong> Create a CSV with station name (Absolute Radio), general contact email from website (will be enriched with selfreleased@ email), and your target genre (alternative/indie/rock).
+            </li>
+            <li>
+              <strong className="text-gray-900">Upload to Audio Intel:</strong> Drop your CSV into the enrichment tool. Processing takes 2 minutes for complete Absolute Radio intelligence including web-link requirement and submission email.
+            </li>
+            <li>
+              <strong className="text-gray-900">Review format requirements:</strong> Check red-highlighted web-link ONLY requirement (Dropbox/SoundCloud, NOT attachments). Note selfreleased@absoluteradio.co.uk as official Sunday Night Music Club email.
+            </li>
+            <li>
+              <strong className="text-gray-900">Confirm genre match:</strong> Review genre-match scoring. Mainstream alternative/indie (&quot;Coldplay to Foo Fighters&quot;) suits Absolute. Heavy rock/metal better suits Kerrang. Non-mainstream alternative better suits BBC 6 Music.
+            </li>
+            <li>
+              <strong className="text-gray-900">Submit via selfreleased@ email:</strong> Upload best quality audio to Dropbox/SoundCloud, write brief artist and track info, email web-link to selfreleased@absoluteradio.co.uk, and understand ONE track monthly selection reality.
+            </li>
+          </ol>
+        </section>
+
         <section id="cta" className="space-y-6">
           <h2 className="text-3xl font-black text-gray-900">Ready to Stop Guessing Absolute Radio Requirements?</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
@@ -247,6 +434,66 @@ export default function AbsoluteRadioContactEnrichment() {
           </div>
         </section>
       </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the correct email address for Absolute Radio's Sunday Night Music Club?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "selfreleased@absoluteradio.co.uk is the official submission email for Sunday Night Music Club (Danielle Perry). This email is not prominently displayed on the main Absolute Radio website but Audio Intel provides it during enrichment preventing hours of searching. Web-link ONLY submissions (Dropbox/SoundCloud) with brief artist and track information."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does Absolute Radio require web-link instead of audio file attachments?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Web-link submissions (Dropbox or SoundCloud) prevent email delivery issues from large audio file attachments. MP3 attachments create inbox problems and likely get rejected. Audio Intel highlights web-link ONLY requirement during enrichment preventing first submission format mistakes. Upload best quality audio to Dropbox/SoundCloud and send link with brief info."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can self-released artists submit directly to Dave Berry's breakfast show?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Dave Berry's breakfast show requires professional radio plugging or Sunday Night Music Club success first. Self-released artists must start with Sunday Night Music Club (Danielle Perry) as the official unsigned artist route. Music Club success provides track record for daytime playlist consideration."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does Audio Intel determine if my music fits Absolute Radio's 'Coldplay to Foo Fighters' format?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Audio Intel analyzes your genre, artist biography, and track metadata to provide genre-match scoring. Absolute Radio targets mainstream alternative/indie/rock (25-44 demographic) without heavy metal edge. Rock/metal better suits Kerrang Radio, non-mainstream alternative better suits BBC 6 Music. The system flags genre mismatch preventing wasted submissions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is Absolute Radio part of a larger network?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Absolute Radio is part of Bauer Media UK network (same ownership as Kerrang Radio and KISS FM). Understanding network structure helps artists target related stations. Alternative/indie mainstream (Absolute) vs specialist rock/metal (Kerrang) vs urban/dance (KISS) requires different music approaches. Audio Intel maps Bauer network structure during enrichment."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How many tracks does Sunday Night Music Club feature per month?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "ONE track per month is featured from self-released submissions. Danielle Perry reviews many submissions but competitive selection means limited featured tracks monthly. Artists should understand realistic expectations - not immediate responses or multiple track features. Audio Intel clarifies competitive selection process during enrichment."
+                }
+              }
+            ]
+          })
+        }}
+      />
     </article>
     </PSEOPageWrapper>
   );
