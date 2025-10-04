@@ -44,13 +44,20 @@ export default function DashboardPage() {
       // In production, you'd have a proper user_id from your auth system
       const userId = session?.user?.email || '';
 
-      // Get stats
-      const { data: pitches, error } = await supabase
-        .from('pitches')
-        .select('*')
-        .eq('user_id', userId);
+      // Use API route instead of direct Supabase call
+      const response = await fetch('/api/stats');
+      if (!response.ok) throw new Error('Failed to fetch stats');
+      
+      const data = await response.json();
+      setStats(data.stats);
 
-      if (error) throw error;
+      // Get recent pitches
+      const pitchesResponse = await fetch('/api/pitches?limit=5');
+      if (!pitchesResponse.ok) throw new Error('Failed to fetch recent pitches');
+      
+      const pitchesData = await pitchesResponse.json();
+      setRecentPitches(pitchesData.pitches || []);
+      return;
 
       const totalPitches = pitches?.length || 0;
       const sentPitches = pitches?.filter(p => p.status !== 'draft').length || 0;
