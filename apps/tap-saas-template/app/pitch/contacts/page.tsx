@@ -39,7 +39,7 @@ export default function ContactsPage() {
     try {
       const userId = session?.user?.email || '';
       const { data, error } = await supabase
-        .from('contacts')
+        .from('intel_contacts')
         .select('*')
         .eq('user_id', userId)
         .order('name');
@@ -64,7 +64,7 @@ export default function ContactsPage() {
         .filter(tag => tag.length > 0);
 
       const { error } = await supabase
-        .from('contacts')
+        .from('intel_contacts')
         .insert({
           user_id: userId,
           name: formData.name,
@@ -102,7 +102,7 @@ export default function ContactsPage() {
 
     try {
       const { error } = await supabase
-        .from('contacts')
+        .from('intel_contacts')
         .delete()
         .eq('id', contactId);
 

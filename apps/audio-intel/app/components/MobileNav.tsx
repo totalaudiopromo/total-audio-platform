@@ -94,9 +94,9 @@ export default function MobileNav() {
       aria-label="Mobile Navigation"
     >
       <div className="flex items-center justify-between px-4 py-3 bg-white border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-        <Link href="/" className="flex items-center gap-3">
-          <Image src="/images/total_audio_promo_logo_trans.png" alt="Total Audio Promo Mascot" width={40} height={40} className="w-10 h-10" priority />
-          <span className="font-black text-gray-900 text-xl tracking-tight">Audio Intel</span>
+        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+          <Image src="/images/total_audio_promo_logo_trans.png" alt="Total Audio Promo Mascot" width={36} height={36} className="w-9 h-9 flex-shrink-0" priority />
+          <span className="font-black text-gray-900 text-lg tracking-tight whitespace-nowrap">Audio Intel</span>
         </Link>
         <button
           aria-label="Open menu"
@@ -120,7 +120,7 @@ export default function MobileNav() {
       {/* Slide-in menu */}
       <div
         ref={menuRef}
-        className={`fixed top-0 right-0 h-full w-[240px] bg-white border-l-4 border-black shadow-[-8px_0_16px_rgba(0,0,0,0.2)] z-[110] transform transition-transform duration-300 ease-in-out flex flex-col ${open ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed top-0 right-0 h-full w-[200px] bg-white border-l-4 border-black shadow-[-8px_0_16px_rgba(0,0,0,0.2)] z-[110] transform transition-transform duration-300 ease-in-out flex flex-col ${open ? 'translate-x-0' : 'translate-x-full'}`}
         style={{ willChange: 'transform' }}
         aria-modal={open}
         role="dialog"

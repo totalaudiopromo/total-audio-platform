@@ -118,7 +118,7 @@ export default function HomePage() {
           <div className="flex-1 space-y-3">
             <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500">How It Works</p>
             <h2 className="text-3xl font-semibold">Three steps to perfect pitches</h2>
-            <p className="text-sm text-white/70">
+            <p className="text-sm text-gray-600">
               No learning curve. No complicated setup. Just pick a contact, add your track info, 
               and let AI do the heavy lifting.
             </p>
@@ -146,7 +146,7 @@ export default function HomePage() {
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500">Built by Music PR Pros</p>
           <h2 className="mt-4 text-3xl font-semibold">Proven templates from 500+ campaigns</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-white/70">
+          <p className="mx-auto mt-4 max-w-2xl text-gray-600">
             Our templates are based on real pitches that got results for BBC Radio, Amazing Radio, 
             blogs, and playlists. We know what works because we've done it hundreds of times.
           </p>

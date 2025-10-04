@@ -88,12 +88,12 @@ export default function DashboardPage() {
 
   function getStatusColor(status: string) {
     switch (status) {
-      case 'draft': return 'bg-white/10 text-white/60';
+      case 'draft': return 'bg-gray-100 text-gray-600';
       case 'sent': return 'bg-brand-iris/20 text-brand-iris';
       case 'replied': return 'bg-success/20 text-success';
       case 'success': return 'bg-success/30 text-success';
-      case 'no_reply': return 'bg-white/5 text-white/40';
-      default: return 'bg-white/10 text-white/60';
+      case 'no_reply': return 'bg-gray-50 text-gray-400';
+      default: return 'bg-gray-100 text-gray-600';
     }
   }
 

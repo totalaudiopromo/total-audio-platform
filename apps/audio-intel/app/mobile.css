@@ -94,6 +94,16 @@
     overflow-wrap: break-word;
   }
 
+  /* Hero and all section paragraphs - PREVENT TEXT CUTOFF */
+  section > div > p,
+  section p {
+    max-width: 100% !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+  }
+
   /* Section spacing */
   .section,
   section {
@@ -1188,47 +1198,59 @@
     font-size: 0.875rem !important;
   }
 
-  /* Footer - TRUE TWO-COLUMN LAYOUT - MORE AGGRESSIVE */
+  /* Footer - PROFESSIONAL SINGLE COLUMN LAYOUT */
+  footer {
+    padding: 2rem 1rem !important;
+  }
+
   footer .grid {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 1rem !important;
-    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    align-items: flex-start !important;
   }
 
   footer .space-y-8 {
-    display: contents !important;
-  }
-
-  footer .grid.lg\\:grid-cols-2 > div {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
     width: 100% !important;
-    box-sizing: border-box !important;
   }
 
-  footer .grid.lg\\:grid-cols-2 h3 {
-    font-size: 1rem !important;
+  footer .grid > * {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  footer h3 {
+    font-size: 1.125rem !important;
+    font-weight: 800 !important;
     margin-bottom: 0.75rem !important;
+    color: #fff !important;
   }
 
-  footer .grid.lg\\:grid-cols-2 > div:first-child p {
+  footer p {
     font-size: 0.875rem !important;
     line-height: 1.6 !important;
+    margin-bottom: 1rem !important;
   }
 
-  footer .grid.lg\\:grid-cols-2 > div:first-child .flex {
-    align-items: center !important;
-    gap: 0.75rem !important;
+  footer ul {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
   }
 
-  footer .grid.lg\\:grid-cols-2 > div:last-child ul {
-    margin-bottom: 0 !important;
+  footer ul li a {
+    font-size: 0.875rem !important;
+    padding: 0.25rem 0 !important;
   }
 
-  .mobile-footer-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    text-align: center;
+  /* Footer sections spacing */
+  footer .grid.sm\\:grid-cols-2 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
   }
 
   .mobile-footer-links {

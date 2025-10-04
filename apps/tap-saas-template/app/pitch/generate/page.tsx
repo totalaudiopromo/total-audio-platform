@@ -68,7 +68,7 @@ export default function GeneratePitchPage() {
     try {
       const userId = session?.user?.email || '';
       const { data, error } = await supabase
-        .from('contacts')
+        .from('intel_contacts')
         .select('*')
         .eq('user_id', userId)
         .order('name');

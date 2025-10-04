@@ -19,7 +19,7 @@ const blogPosts = [
   {
     slug: "spotify-playlist-campaign-tracking",
     title: "Spotify Playlist Campaign Tracking: Real Benchmarks for 2025",
-    excerpt: "Stop guessing if your Spotify campaigns are working. See industry benchmarks, success rates by genre, and exactly what metrics matter for playlist campaigns.",
+    excerpt: "Stop guessing if your Spotify campaigns are working. See industry benchmarks (18-28% by genre), success rates, and exactly what metrics matter for playlist campaigns.",
     author: "Chris Schofield",
     date: "2025-10-05",
     readTime: "8 min read",
@@ -29,7 +29,7 @@ const blogPosts = [
   {
     slug: "bbc-radio-1-campaign-tracking",
     title: "BBC Radio 1 Campaign Tracking: Industry Benchmarks & Success Rates",
-    excerpt: "Track your BBC Radio 1 campaigns properly. Get industry benchmarks, success rates by genre, and AI-powered insights showing exactly what works.",
+    excerpt: "Track your BBC Radio 1 campaigns properly. Get industry benchmarks (11-18% specialist shows), success rates by show type, and AI-powered insights showing exactly what works.",
     author: "Chris Schofield",
     date: "2025-10-05",
     readTime: "10 min read",
@@ -39,11 +39,21 @@ const blogPosts = [
   {
     slug: "music-pr-campaign-analytics",
     title: "Music PR Campaign Analytics: Stop Wasting Time on Guesswork",
-    excerpt: "Measure your music PR campaigns properly. Learn what success rates to expect, how to track blog coverage, and which metrics actually matter.",
+    excerpt: "Measure your music PR campaigns properly. Learn what response rates to expect (8-16% by blog tier), how to track blog coverage, and which metrics actually matter.",
     author: "Chris Schofield",
     date: "2025-10-05",
-    readTime: "7 min read",
+    readTime: "9 min read",
     category: "PR Tracking",
+    featured: false
+  },
+  {
+    slug: "apple-music-playlist-analytics",
+    title: "Apple Music Playlist Analytics: Track Campaign Success Rates",
+    excerpt: "Track your Apple Music campaigns properly. Get editorial benchmarks (6-12% success), algorithmic playlist insights (40-60% reach), and AI-powered campaign intelligence.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "8 min read",
+    category: "Playlist Tracking",
     featured: false
   }
 ];
