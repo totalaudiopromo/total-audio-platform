@@ -66,26 +66,10 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       boxShadow: {
+        // Postcraft-style hard offset shadows (defined in globals.css)
+        // Keep soft shadows available for edge cases only
         elevated: '0 24px 60px -30px rgba(76, 92, 246, 0.55)',
         panel: '0 18px 42px -22px rgba(24, 28, 47, 0.65)',
-      },
-      backgroundImage: {
-        'postcraft-grid': 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)',
-        'postcraft-iris': 'conic-gradient(from 180deg at 50% 50%, rgba(76,92,246,0.12), rgba(201,84,247,0.12), rgba(76,92,246,0.12))',
-      },
-      animation: {
-        float: 'float 8s ease-in-out infinite',
-        pulseGlow: 'pulseGlow 4s ease-in-out infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translate3d(0, 0, 0)' },
-          '50%': { transform: 'translate3d(0, -6px, 0)' },
-        },
-        pulseGlow: {
-          '0%, 100%': { opacity: 0.2 },
-          '50%': { opacity: 0.45 },
-        },
       },
     },
   },

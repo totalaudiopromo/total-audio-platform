@@ -1,15 +1,27 @@
 # TAP SaaS Template
 
-Core concept: reuse the Audio Intel architecture to ship micro-tools fast—now with the Postcraft styling system and OAuth guard baked in.
+## ⚠️ THIS IS A TEMPLATE - DO NOT MODIFY DIRECTLY
 
-## Includes
+This is your clean, reusable starting point for all TAP mini-tools. **Duplicate this directory for each new tool** - never modify the template directly.
 
-- Postcraft-inspired Tailwind setup matching `intel.totalaudiopromo.com`
-- Global marketing hero, feature grid, CTA blocks, and footer in the shared layout
-- Stripe checkout route with safe dev fallback and success screen
-- Protected profile + settings areas enforced by middleware with an `/unauthorized` fallback
-- Credentials + Google provider stubs ready for OAuth
-- Next.js App Router + TypeScript + Tailwind hooks ready
+👉 **Read first:** [`TEMPLATE_USAGE.md`](./TEMPLATE_USAGE.md) - Complete duplication workflow  
+🎨 **Design standards:** [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) - Postcraft aesthetic guide
+
+---
+
+## Core Concept
+
+Reuse this architecture to ship micro-tools fast—Postcraft styling system, OAuth, and Stripe checkout baked in.
+
+## What's Included
+
+- Clean Postcraft design system (bold borders, offset shadows, no gradients)
+- Global marketing pages (hero, pricing, CTA blocks)
+- Stripe checkout with safe dev fallback
+- NextAuth with credentials + Google OAuth ready
+- Protected routes via middleware
+- Next.js App Router + TypeScript + Tailwind
+- UK spelling throughout
 
 ## Quick start
 
@@ -44,24 +56,36 @@ STRIPE_PRICE_AGENCY_ANNUAL=price_...
 - Visit `/auth/signin` to use the demo credentials or trigger Google OAuth once keys are set
 - `/profile` and `/settings` are guarded via `middleware.ts`
 
-## New Tool Checklist
+## Creating a New Tool
 
-1. `node ../../scripts/clone-tap-template.js new-app-name` (or duplicate manually without the `.next` / `node_modules` folders)
-2. Update marketing copy in `app/page.tsx` and CTA links
-3. Rename product references and update pricing copy in `app/pricing/page.tsx`
-4. Add your core feature modules inside the protected area (new routes under `/profile` or additional guarded routes)
-5. Configure Stripe products/prices and OAuth provider keys, then deploy
+### Quick Method
+```bash
+cd apps/
+cp -r tap-saas-template your-new-tool
+cd your-new-tool
+# Update package.json, branding, colours
+```
+
+### Complete Checklist
+See [`TEMPLATE_USAGE.md`](./TEMPLATE_USAGE.md) for the full step-by-step guide, including:
+- How to duplicate without overwriting the template
+- What files to customise
+- Brand colour updates
+- Database schema setup
+- Deployment strategy
 
 ## Automation helpers
 
 - `scripts/bootstrap-tap-template.sh` — bootstraps dependencies and ensures `.env.local` exists (pass a custom path if the template lives elsewhere)
 - `node scripts/clone-tap-template.js <app-name>` — duplicate the template, scrub build artifacts, and rename metadata/package fields
 
-## Styling system
+## Design System
 
-- `tailwind.config.ts` mirrors the Audio Intel palette with Postcraft gradients & glassmorphism helpers
-- `app/globals.css` defines the background gradients, glass panel class, CTA buttons, and typography
-- Shared navigation/footer live in `components/SiteHeader.tsx` and `components/SiteFooter.tsx`
+- **Clean Postcraft aesthetic:** Bold borders, offset shadows, solid colours (no gradients!)
+- `app/globals.css` defines `.glass-panel`, `.cta-button`, `.subtle-button`, `.badge-postcraft`
+- `tailwind.config.ts` has brand colours for each tool
+- See [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) for complete component reference
+- Shared navigation/footer in `components/SiteHeader.tsx` and `components/SiteFooter.tsx`
 
 ## Auth notes
 
