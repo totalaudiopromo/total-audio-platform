@@ -4,6 +4,9 @@
   "private": true,
   "description": "Total Audio Promo - Music Industry Tools Platform",
   "scripts": {
+    "security:audit": "npm audit --audit-level moderate",
+    "security:scan": "export PATH=\"$HOME/bin:$PATH\" && git-secrets --scan",
+    "security:check": "npm run security:audit && npm run security:scan",
     "organize-docs": "node scripts/organize-docs.js",
     "organize-docs:dry-run": "node scripts/organize-docs.js --dry-run",
     "organize-docs:verbose": "node scripts/organize-docs.js --verbose",
