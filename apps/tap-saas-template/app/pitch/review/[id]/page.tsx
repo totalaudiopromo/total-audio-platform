@@ -169,11 +169,11 @@ export default function ReviewPitchPage() {
                 </div>
                 <h1 className="text-2xl font-bold">Pitch Generated!</h1>
               </div>
-              <p className="mt-3 text-lg text-white/70">
-                For <span className="font-semibold text-white">{pitch.contact_name}</span>
-                {pitch.contact_outlet && <span className="text-white/50"> at {pitch.contact_outlet}</span>}
+              <p className="mt-3 text-lg text-gray-900/70">
+                For <span className="font-semibold text-gray-900">{pitch.contact_name}</span>
+                {pitch.contact_outlet && <span className="text-gray-900/50"> at {pitch.contact_outlet}</span>}
               </p>
-              <p className="mt-1 text-sm text-white/50">
+              <p className="mt-1 text-sm text-gray-900/50">
                 "{pitch.track_title}" by {pitch.artist_name}
               </p>
             </div>
@@ -186,7 +186,7 @@ export default function ReviewPitchPage() {
 
         {/* Subject Line Options */}
         <div className="mb-8">
-          <label className="block text-sm font-semibold text-white/90">
+          <label className="block text-sm font-semibold text-gray-900/90">
             Subject Line (select one)
           </label>
           <div className="mt-3 space-y-2">
@@ -197,8 +197,8 @@ export default function ReviewPitchPage() {
                 onClick={() => setSelectedSubject(key)}
                 className={`w-full rounded-xl border px-4 py-3 text-left transition ${
                   selectedSubject === key
-                    ? 'border-brand-iris bg-brand-iris/10 text-white'
-                    : 'border-white/20 bg-white/5 text-white/70 hover:border-white/30'
+                    ? 'border-brand-iris bg-brand-iris/10 text-gray-900'
+                    : 'border-gray-300 bg-gray-50 text-gray-900/70 hover:border-white/30'
                 }`}
               >
                 {value}
@@ -210,7 +210,7 @@ export default function ReviewPitchPage() {
         {/* Pitch Body */}
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <label className="block text-sm font-semibold text-white/90">
+            <label className="block text-sm font-semibold text-gray-900/90">
               Pitch Body
             </label>
             <button
@@ -227,11 +227,11 @@ export default function ReviewPitchPage() {
               value={editedBody}
               onChange={(e) => setEditedBody(e.target.value)}
               rows={12}
-              className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-4 font-mono text-sm text-white transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-4 font-mono text-sm text-gray-900 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
             />
           ) : (
-            <div className="rounded-xl border border-white/20 bg-white/5 px-6 py-6">
-              <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-white/90">
+            <div className="rounded-xl border border-gray-300 bg-gray-50 px-6 py-6">
+              <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-gray-900/90">
                 {pitch.pitch_body}
               </pre>
             </div>
@@ -244,7 +244,7 @@ export default function ReviewPitchPage() {
             <Clock className="h-5 w-5 text-brand-amber" />
             <div>
               <p className="text-sm font-medium text-brand-amber">Best time to send</p>
-              <p className="text-sm text-white/70">{pitch.suggested_send_time}</p>
+              <p className="text-sm text-gray-900/70">{pitch.suggested_send_time}</p>
             </div>
           </div>
         )}
@@ -296,7 +296,7 @@ export default function ReviewPitchPage() {
       {/* Next Steps */}
       <div className="mt-8 glass-panel px-8 py-6">
         <h3 className="text-lg font-semibold">What's next?</h3>
-        <ul className="mt-4 space-y-3 text-sm text-white/70">
+        <ul className="mt-4 space-y-3 text-sm text-gray-900/70">
           <li className="flex items-start gap-3">
             <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-iris/20 text-xs font-semibold text-brand-iris">1</span>
             <span>Copy this pitch and paste it into your email client</span>

@@ -136,30 +136,30 @@ export default function PitchHistoryPage() {
         {/* Header */}
         <div className="mb-8 border-b border-white/10 pb-6">
           <h1 className="text-3xl font-bold">Pitch History</h1>
-          <p className="mt-2 text-white/60">All your generated pitches</p>
+          <p className="mt-2 text-gray-900/60">All your generated pitches</p>
         </div>
 
         {/* Filters */}
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           {/* Search */}
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
+            <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-900/40" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by contact, artist, or track..."
-              className="w-full rounded-xl border border-white/20 bg-white/5 py-2.5 pl-11 pr-4 text-sm text-white placeholder:text-white/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="w-full rounded-xl border border-gray-300 bg-gray-50 py-2.5 pl-11 pr-4 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
             />
           </div>
 
           {/* Status Filter */}
           <div className="flex items-center gap-3">
-            <Filter className="h-4 w-4 text-white/40" />
+            <Filter className="h-4 w-4 text-gray-900/40" />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="rounded-xl border border-white/20 bg-white/5 px-4 py-2.5 text-sm text-white transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="rounded-xl border border-gray-300 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
             >
               <option value="all" className="bg-card text-foreground">All Status</option>
               <option value="draft" className="bg-card text-foreground">Draft</option>
@@ -172,14 +172,14 @@ export default function PitchHistoryPage() {
         </div>
 
         {/* Results Count */}
-        <p className="mb-4 text-sm text-white/50">
+        <p className="mb-4 text-sm text-gray-900/50">
           Showing {filteredPitches.length} of {pitches.length} pitches
         </p>
 
         {/* Pitches List */}
         {filteredPitches.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-white/20 bg-white/5 px-8 py-12 text-center">
-            <p className="text-white/60">No pitches found</p>
+          <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-8 py-12 text-center">
+            <p className="text-gray-900/60">No pitches found</p>
             <Link href="/pitch/generate" className="cta-button mt-6 inline-flex">
               Generate Your First Pitch
             </Link>
@@ -189,7 +189,7 @@ export default function PitchHistoryPage() {
             {filteredPitches.map((pitch) => (
               <div
                 key={pitch.id}
-                className="group rounded-2xl border border-white/10 bg-white/5 px-6 py-5 transition hover:border-white/20 hover:bg-white/[0.07]"
+                className="group rounded-2xl border border-white/10 bg-gray-50 px-6 py-5 transition hover:border-gray-300 hover:bg-white/[0.07]"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0 flex-1">
@@ -197,12 +197,12 @@ export default function PitchHistoryPage() {
                       <h3 className="truncate font-semibold">{pitch.contact_name}</h3>
                       {pitch.contact_outlet && (
                         <>
-                          <span className="text-white/30">•</span>
-                          <span className="truncate text-sm text-white/60">{pitch.contact_outlet}</span>
+                          <span className="text-gray-900/30">•</span>
+                          <span className="truncate text-sm text-gray-900/60">{pitch.contact_outlet}</span>
                         </>
                       )}
                     </div>
-                    <p className="mt-1 truncate text-sm text-white/70">
+                    <p className="mt-1 truncate text-sm text-gray-900/70">
                       "{pitch.track_title}" by {pitch.artist_name}
                     </p>
                     <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -217,7 +217,7 @@ export default function PitchHistoryPage() {
                         <option value="success" className="bg-card text-foreground">Success</option>
                         <option value="no_reply" className="bg-card text-foreground">No Reply</option>
                       </select>
-                      <span className="text-xs text-white/50">
+                      <span className="text-xs text-gray-900/50">
                         {new Date(pitch.created_at!).toLocaleDateString('en-GB')}
                       </span>
                     </div>

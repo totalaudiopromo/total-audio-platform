@@ -215,13 +215,14 @@ export default function AudioIntelLanding() {
       <section className="audio-intel-hero w-full">
         <div className="audio-intel-container max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
           {/* Total Audio Promo Logo in Hero - TRANSPARENT PNG ONLY - MOBILE RESPONSIVE */}
-          <div className="mb-12">
+          <div className="mb-6 sm:mb-8 md:mb-12 overflow-hidden" style={{ maxHeight: '200px' }}>
             <Image
               src="/images/total_audio_promo_logo_trans.png"
               alt="Total Audio Promo - Music Industry Intelligence"
               width={200}
               height={200}
-              className="mx-auto w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52"
+              className="mx-auto w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 object-cover object-center"
+              style={{ objectPosition: 'center 35%' }}
             />
           </div>
 
@@ -751,7 +752,7 @@ export default function AudioIntelLanding() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-16 items-center max-w-full mx-auto" style={{ maxWidth: '100%' }}>
             <div>
               <div className="mb-8">
                 <Image 
@@ -811,7 +812,7 @@ export default function AudioIntelLanding() {
               </div>
             </div>
 
-            <div className={`bg-white p-8 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden`}>
+            <div className={`bg-white p-8 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden w-full mx-auto`} style={{ maxWidth: 'calc(100vw - 2rem)' }}>
               <h3 className="text-2xl font-black text-gray-900 mb-6 text-center">Example: Before & After</h3>
               <div className="space-y-6">
                 <div>
@@ -1344,8 +1345,8 @@ export default function AudioIntelLanding() {
               </div>
             </div>
 
-            <div className="grid gap-10 sm:grid-cols-2">
-              <div>
+            <div className="grid gap-10 grid-cols-2 w-full">
+              <div className="col-span-2 sm:col-span-1">
                 <h3 className="text-xl font-black mb-6">Product</h3>
                 <ul className="space-y-4">
                   <li>
@@ -1371,7 +1372,7 @@ export default function AudioIntelLanding() {
                 </ul>
               </div>
 
-              <div>
+              <div className="col-span-2 sm:col-span-1">
                 <h3 className="text-xl font-black mb-6">Support</h3>
                 <ul className="space-y-4">
                   <li>
@@ -1397,7 +1398,7 @@ export default function AudioIntelLanding() {
                 </ul>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="col-span-2">
                 <h3 className="text-xl font-black mb-6">Legal</h3>
                 <ul className="space-y-4">
                   <li>

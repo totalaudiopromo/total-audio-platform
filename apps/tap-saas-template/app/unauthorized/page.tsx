@@ -7,7 +7,7 @@ export default function UnauthorizedPage() {
       <div className="glass-panel px-6 py-12 sm:px-10">
         <span className="badge-postcraft">Access required</span>
         <h1 className="mt-6 text-3xl font-semibold">Sign in to continue</h1>
-        <p className="mt-3 text-sm text-white/70">
+        <p className="mt-3 text-sm text-gray-900/70">
           This area is reserved for authenticated users. Connect with the demo credentials or your OAuth provider to explore the dashboard experience.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">

@@ -72,7 +72,7 @@ export default function TemplatesPage() {
         {/* Header */}
         <div className="mb-8 border-b border-white/10 pb-6">
           <h1 className="text-3xl font-bold">Template Library</h1>
-          <p className="mt-2 text-white/60">
+          <p className="mt-2 text-gray-900/60">
             Genre-specific templates from 500+ successful campaigns
           </p>
         </div>
@@ -84,8 +84,8 @@ export default function TemplatesPage() {
               onClick={() => setSelectedGenre('all')}
               className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                 selectedGenre === 'all'
-                  ? 'bg-brand-iris text-white'
-                  : 'bg-white/10 text-white/70 hover:bg-white/15'
+                  ? 'bg-brand-iris text-gray-900'
+                  : 'bg-gray-100 text-gray-900/70 hover:bg-white/15'
               }`}
             >
               All Genres
@@ -96,8 +96,8 @@ export default function TemplatesPage() {
                 onClick={() => setSelectedGenre(genre)}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                   selectedGenre === genre
-                    ? 'bg-brand-iris text-white'
-                    : 'bg-white/10 text-white/70 hover:bg-white/15'
+                    ? 'bg-brand-iris text-gray-900'
+                    : 'bg-gray-100 text-gray-900/70 hover:bg-white/15'
                 }`}
               >
                 {genre.charAt(0).toUpperCase() + genre.slice(1)}
@@ -111,7 +111,7 @@ export default function TemplatesPage() {
           {filteredTemplates.map((template) => (
             <div
               key={template.id}
-              className="rounded-2xl border border-white/10 bg-white/5 px-6 py-6 transition hover:border-white/20 hover:bg-white/[0.07]"
+              className="rounded-2xl border border-white/10 bg-gray-50 px-6 py-6 transition hover:border-gray-300 hover:bg-white/[0.07]"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex gap-4">
@@ -120,18 +120,18 @@ export default function TemplatesPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold">{template.name}</h3>
-                    <p className="mt-1 text-sm text-white/60">{template.description}</p>
+                    <p className="mt-1 text-sm text-gray-900/60">{template.description}</p>
                     
                     {/* Stats */}
                     <div className="mt-4 flex flex-wrap gap-4 text-sm">
                       <div className="flex items-center gap-2">
                         <TrendingUp className="h-4 w-4 text-brand-iris" />
-                        <span className="text-white/70">
+                        <span className="text-gray-900/70">
                           {template.success_rate?.toFixed(0)}% success rate
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-white/70">
+                        <span className="text-gray-900/70">
                           Used {template.times_used || 0} times
                         </span>
                       </div>
@@ -142,8 +142,8 @@ export default function TemplatesPage() {
                       <summary className="cursor-pointer text-sm font-medium text-brand-iris hover:text-brand-iris/80">
                         View template structure
                       </summary>
-                      <div className="mt-3 rounded-lg border border-white/10 bg-white/5 p-4">
-                        <pre className="whitespace-pre-wrap font-mono text-xs text-white/70">
+                      <div className="mt-3 rounded-lg border border-white/10 bg-gray-50 p-4">
+                        <pre className="whitespace-pre-wrap font-mono text-xs text-gray-900/70">
                           {template.template_body}
                         </pre>
                       </div>
@@ -158,7 +158,7 @@ export default function TemplatesPage() {
         {/* Info Box */}
         <div className="mt-8 rounded-2xl border border-brand-amber/30 bg-brand-amber/10 px-6 py-6">
           <h3 className="font-semibold text-brand-amber">How templates work</h3>
-          <p className="mt-2 text-sm text-white/70">
+          <p className="mt-2 text-sm text-gray-900/70">
             These templates are used as a foundation when you generate pitches. The AI adapts them 
             with your contact's information, your artist details, and your key hook to create 
             personalized pitches that sound natural and human.

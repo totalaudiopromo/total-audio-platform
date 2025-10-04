@@ -6,7 +6,7 @@ export default function SuccessPage() {
       <div className="glass-panel px-6 py-12 sm:px-10">
         <span className="badge-postcraft">Checkout complete</span>
         <h1 className="mt-6 text-3xl font-semibold">Thanks for activating your workspace</h1>
-        <p className="mt-3 text-sm text-white/70">
+        <p className="mt-3 text-sm text-gray-900/70">
           Use this screen to confirm the subscription, share next steps, or drop onboarding links. The API route redirects here automatically when Stripe is configured—or immediately in dev mode so the flow works without keys.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">

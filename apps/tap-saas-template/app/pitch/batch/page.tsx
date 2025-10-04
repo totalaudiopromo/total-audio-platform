@@ -34,13 +34,13 @@ export default function BatchModePage() {
           <Zap className="h-12 w-12 text-brand-magenta" />
         </div>
         <h1 className="mt-6 text-3xl font-bold">Batch Mode</h1>
-        <p className="mx-auto mt-4 max-w-lg text-lg text-white/60">
+        <p className="mx-auto mt-4 max-w-lg text-lg text-gray-900/60">
           Coming soon! Generate personalized pitches for 20+ contacts at once and save hours on 
           every campaign.
         </p>
-        <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 px-6 py-6 text-left">
+        <div className="mt-8 rounded-2xl border border-white/10 bg-gray-50 px-6 py-6 text-left">
           <h3 className="font-semibold">What you'll be able to do:</h3>
-          <ul className="mt-4 space-y-2 text-sm text-white/70">
+          <ul className="mt-4 space-y-2 text-sm text-gray-900/70">
             <li className="flex items-start gap-3">
               <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-iris" />
               <span>Select multiple contacts from your list</span>

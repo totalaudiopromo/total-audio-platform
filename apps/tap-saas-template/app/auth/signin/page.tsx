@@ -40,13 +40,13 @@ export default function SignInPage() {
       <div className="glass-panel px-6 py-10 sm:px-10">
         <span className="badge-postcraft">Authentication</span>
         <h1 className="mt-6 text-3xl font-semibold">Sign in to the template workspace</h1>
-        <p className="mt-3 text-sm text-white/70">
+        <p className="mt-3 text-sm text-gray-900/70">
           Credentials are provided for local exploration. Swap them out once you wire in OAuth keys.
         </p>
 
         <form className="mt-8 space-y-5" onSubmit={handleCredentials}>
           <div className="space-y-2">
-            <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.35em] text-white/40">
+            <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-900/40">
               Email
             </label>
             <input
@@ -54,14 +54,14 @@ export default function SignInPage() {
               type="email"
               value={email}
               onChange={event => setEmail(event.target.value)}
-              className="w-full rounded-full border border-white/20 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
+              className="w-full rounded-full border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-900/40 focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
               autoComplete="email"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="password" className="text-xs font-semibold uppercase tracking-[0.35em] text-white/40">
+            <label htmlFor="password" className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-900/40">
               Password
             </label>
             <input
@@ -69,11 +69,11 @@ export default function SignInPage() {
               type="password"
               value={password}
               onChange={event => setPassword(event.target.value)}
-              className="w-full rounded-full border border-white/20 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
+              className="w-full rounded-full border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-900/40 focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
               autoComplete="current-password"
               required
             />
-            <p className="text-xs text-white/40">Default demo password: <code className="bg-white/10 px-1.5 py-0.5">buildfast</code></p>
+            <p className="text-xs text-gray-900/40">Default demo password: <code className="bg-gray-100 px-1.5 py-0.5">buildfast</code></p>
           </div>
 
           <button
@@ -85,7 +85,7 @@ export default function SignInPage() {
           </button>
         </form>
 
-        <div className="mt-6 text-center text-xs text-white/50">
+        <div className="mt-6 text-center text-xs text-gray-900/50">
           <p>Prefer OAuth?</p>
           <button
             onClick={() => signIn('google', { callbackUrl })}

@@ -140,7 +140,7 @@ export default function ContactsPage() {
         <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-6">
           <div>
             <h1 className="text-3xl font-bold">Contacts</h1>
-            <p className="mt-2 text-white/60">Manage your media contacts</p>
+            <p className="mt-2 text-gray-900/60">Manage your media contacts</p>
           </div>
           <button
             onClick={() => setShowAddForm(!showAddForm)}
@@ -158,7 +158,7 @@ export default function ContactsPage() {
             <form onSubmit={handleAddContact} className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-white/80">
+                  <label className="block text-sm font-medium text-gray-900/80">
                     Name <span className="text-danger">*</span>
                   </label>
                   <input
@@ -167,11 +167,11 @@ export default function ContactsPage() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Sarah Johnson"
-                    className="mt-1.5 w-full rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-white/80">
+                  <label className="block text-sm font-medium text-gray-900/80">
                     Role
                   </label>
                   <input
@@ -179,11 +179,11 @@ export default function ContactsPage() {
                     value={formData.role}
                     onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                     placeholder="e.g. Producer"
-                    className="mt-1.5 w-full rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-white/80">
+                  <label className="block text-sm font-medium text-gray-900/80">
                     Outlet
                   </label>
                   <input
@@ -191,11 +191,11 @@ export default function ContactsPage() {
                     value={formData.outlet}
                     onChange={(e) => setFormData({ ...formData, outlet: e.target.value })}
                     placeholder="e.g. BBC Radio 6 Music"
-                    className="mt-1.5 w-full rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-white/80">
+                  <label className="block text-sm font-medium text-gray-900/80">
                     Email
                   </label>
                   <input
@@ -203,12 +203,12 @@ export default function ContactsPage() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="contact@example.com"
-                    className="mt-1.5 w-full rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-white/80">
+                <label className="block text-sm font-medium text-gray-900/80">
                   Genre Tags (comma separated)
                 </label>
                 <input
@@ -216,11 +216,11 @@ export default function ContactsPage() {
                   value={formData.genre_tags}
                   onChange={(e) => setFormData({ ...formData, genre_tags: e.target.value })}
                   placeholder="e.g. indie, folk, alternative"
-                  className="mt-1.5 w-full rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-white/80">
+                <label className="block text-sm font-medium text-gray-900/80">
                   Notes
                 </label>
                 <textarea
@@ -228,11 +228,11 @@ export default function ContactsPage() {
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                   rows={2}
                   placeholder="e.g. Replies on Tuesdays, loves touring artists"
-                  className="mt-1.5 w-full rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-white/80">
+                <label className="block text-sm font-medium text-gray-900/80">
                   Preferred Tone
                 </label>
                 <div className="mt-2 flex gap-2">
@@ -244,7 +244,7 @@ export default function ContactsPage() {
                       className={`rounded-lg px-4 py-2 text-sm transition ${
                         formData.preferred_tone === tone
                           ? 'bg-brand-iris/20 text-brand-iris'
-                          : 'bg-white/10 text-white/70 hover:bg-white/15'
+                          : 'bg-gray-100 text-gray-900/70 hover:bg-white/15'
                       }`}
                     >
                       {tone.charAt(0).toUpperCase() + tone.slice(1)}
@@ -271,10 +271,10 @@ export default function ContactsPage() {
 
         {/* Contacts List */}
         {contacts.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-white/20 bg-white/5 px-8 py-12 text-center">
-            <UserPlus className="mx-auto h-12 w-12 text-white/30" />
-            <h3 className="mt-4 text-lg font-semibold text-white/70">No contacts yet</h3>
-            <p className="mt-2 text-sm text-white/50">
+          <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-8 py-12 text-center">
+            <UserPlus className="mx-auto h-12 w-12 text-gray-900/30" />
+            <h3 className="mt-4 text-lg font-semibold text-gray-900/70">No contacts yet</h3>
+            <p className="mt-2 text-sm text-gray-900/50">
               Add your first media contact to start generating personalized pitches
             </p>
           </div>
@@ -283,19 +283,19 @@ export default function ContactsPage() {
             {contacts.map((contact) => (
               <div
                 key={contact.id}
-                className="group rounded-2xl border border-white/10 bg-white/5 px-6 py-5 transition hover:border-white/20 hover:bg-white/[0.07]"
+                className="group rounded-2xl border border-white/10 bg-gray-50 px-6 py-5 transition hover:border-gray-300 hover:bg-white/[0.07]"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-3">
                       <h3 className="font-semibold">{contact.name}</h3>
-                      {contact.role && <span className="text-sm text-white/60">{contact.role}</span>}
+                      {contact.role && <span className="text-sm text-gray-900/60">{contact.role}</span>}
                     </div>
                     {contact.outlet && (
-                      <p className="mt-1 text-sm text-white/70">{contact.outlet}</p>
+                      <p className="mt-1 text-sm text-gray-900/70">{contact.outlet}</p>
                     )}
                     {contact.email && (
-                      <p className="mt-1 text-sm text-white/50">{contact.email}</p>
+                      <p className="mt-1 text-sm text-gray-900/50">{contact.email}</p>
                     )}
                     {contact.genre_tags && contact.genre_tags.length > 0 && (
                       <div className="mt-3 flex flex-wrap gap-2">
@@ -307,7 +307,7 @@ export default function ContactsPage() {
                       </div>
                     )}
                     {contact.notes && (
-                      <p className="mt-2 text-sm text-white/50 italic">{contact.notes}</p>
+                      <p className="mt-2 text-sm text-gray-900/50 italic">{contact.notes}</p>
                     )}
                   </div>
                   <button
