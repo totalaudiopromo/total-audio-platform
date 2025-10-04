@@ -257,6 +257,266 @@ export default function BbcRadio1XtraContactEnrichment() {
           <p className="text-sm text-gray-500">Pulled from internal beta feedback, October 2025.</p>
         </section>
 
+        <section id="understanding-1xtra" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Understanding BBC Radio 1Xtra&apos;s Structure</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            BBC Radio 1Xtra operates as the UK&apos;s only national urban music station with specialist programming for grime, hip-hop, Afrobeats, R&B, and dancehall. Understanding the genre-to-presenter mapping is critical for UK urban artists.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mt-8">Specialist Shows vs General Urban Programming</h3>
+          <p className="text-base text-gray-700 leading-relaxed">
+            1Xtra splits between specialist genre shows (Kenny Allstar rap, Eddie Kadi Afrobeats, Chuckie R&B) and general urban programming (Nadia Jae breakfast, Remi Burgz drivetime). Specialist shows champion specific urban sub-genres while general shows play broader urban hits. As an emerging artist, target specialist shows first.
+          </p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Audio Intel maps your genre to appropriate specialist shows during enrichment. UK rap/grime artists score 95+ percent match with Kenny Allstar, Afrobeats artists match Eddie Kadi, R&B matches Chuckie. Generic "urban music" tags reduce match accuracy.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mt-8">BBC Introducing Uploader: The ONLY Submission Route</h3>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Unlike regional stations or commercial radio, BBC Radio 1Xtra does NOT accept direct presenter contact, email demos, or social media submissions. BBC Introducing Uploader is the official and ONLY route. Artists waste hours searching for direct contact methods that do not exist.
+          </p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            The enrichment process flags this critical requirement immediately. During this case study, the system highlighted "BBC Introducing Uploader ONLY - no direct presenter contact" in red, saving the artist from weeks of futile direct pitching attempts.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mt-8">Clean Versions ONLY Requirement</h3>
+          <p className="text-base text-gray-700 leading-relaxed">
+            BBC broadcast standards apply to all submissions including urban music. Explicit lyrics, profanity, and offensive content are immediately rejected. UK grime and drill artists commonly miss this requirement because it is buried in BBC Introducing guidelines rather than prominently displayed.
+          </p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Audio Intel surfaces this requirement during enrichment with clear flagging. For the grime artist in this case study, the system warned "CLEAN VERSIONS ONLY - explicit content violates BBC standards" before submission, preventing an instant rejection.
+          </p>
+        </section>
+
+        <section id="common-mistakes" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">5 BBC Radio 1Xtra Pitching Mistakes That Kill Urban Music Campaigns</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            After running dozens of UK urban radio campaigns, these are the mistakes that come up repeatedly for 1Xtra. Audio Intel prevents most of them automatically.
+          </p>
+
+          <div className="space-y-6">
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 1: Submitting Explicit Versions</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                UK grime, drill, and rap tracks often contain explicit lyrics. BBC broadcast standards reject ALL explicit content. First-time artists commonly upload uncensored versions and receive instant rejection with no second chance. Audio Intel flags clean version requirement before submission.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 2: Searching for Direct Presenter Contact</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Artists waste hours searching LinkedIn, Instagram, and email databases for Kenny Allstar or Eddie Kadi direct contact. BBC Radio 1Xtra does NOT accept direct submissions. BBC Introducing Uploader is the ONLY route. Audio Intel highlights this immediately during enrichment.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 3: Genre Mismatch Between Artist and Specialist Show</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Pitching Afrobeats to Kenny Allstar (rap specialist) or UK drill to Eddie Kadi (Afrobeats specialist) signals you do not understand the station structure. Audio Intel scores presenter-to-genre fit automatically and highlights best-match shows for your sound.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 4: Confusing Radio 1 and 1Xtra Submission Routes</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                BBC Radio 1 has different submission pathways from 1Xtra. Both use BBC Introducing but Radio 1 specialist shows sometimes accept direct pitches for established artists. 1Xtra does NOT. The enrichment process clarifies station-specific submission rules.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 5: No Regional BBC Introducing Strategy</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                BBC Introducing uses regional teams to review submissions first, then forwards exceptional tracks to national stations. Understanding your regional BBC Introducing team improves 1Xtra placement odds. Audio Intel identifies regional pathway during enrichment.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="beyond-1xtra" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Beyond BBC Radio 1Xtra: Scaling the Same Workflow</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            The enrichment process works identically for BBC Radio 1 specialist shows, local urban stations, and streaming platforms. Once you prove the workflow on 1Xtra, you can scale across the entire UK urban promotion landscape.
+          </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">BBC Radio 1 Hip-Hop/Urban Shows</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Radio 1 has crossover urban programming (Charlie Sloth replacement, Jack Saunders occasionally). The enrichment process identifies Radio 1 vs 1Xtra specialist show differences and submission timing for both stations.
+              </p>
+              <a href="/blog/bbc-radio-1-contact-enrichment" className="text-blue-600 font-semibold hover:underline">
+                Read the BBC Radio 1 case study →
+              </a>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">BBC Local Radio Urban Shows</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Local BBC stations (London, Manchester, Birmingham) have urban music programming with easier access than national 1Xtra. The enrichment workflow identifies local specialist shows and direct presenter contact options for regional campaigns.
+              </p>
+              <a href="/blog/bbc-radio-6-music-contact-enrichment" className="text-blue-600 font-semibold hover:underline">
+                See BBC local radio strategies →
+              </a>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Spotify UK Hip-Hop/Rap Playlists</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Rap UK, Who We Be, and The Plug are Spotify editorial playlists for UK urban music. The enrichment process provides submission timing and metadata optimisation for streaming alongside radio promotion.
+              </p>
+              <a href="/blog/spotify-editorial-playlist-contacts" className="text-blue-600 font-semibold hover:underline">
+                Read the Spotify editorial workflow →
+              </a>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Commercial Urban Stations</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Kiss FM, Capital Xtra, and regional commercial urban stations offer additional UK promotion routes. The enrichment process maps commercial radio structures and identifies playlist submission pathways for urban artists.
+              </p>
+              <a href="/blog/music-industry-contacts" className="text-blue-600 font-semibold hover:underline">
+                See commercial radio contact guide →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Frequently Asked Questions</h2>
+
+          <div className="space-y-4">
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                Can I submit explicit versions to BBC Radio 1Xtra?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  No. BBC broadcast standards apply to all submissions including urban music. Explicit lyrics, profanity, and offensive content are immediately rejected. UK grime, drill, and rap tracks must be clean censored versions for BBC consideration.
+                </p>
+                <p>
+                  Audio Intel flags this clean version requirement during enrichment so artists prepare appropriate versions before submission. The requirement is buried in BBC Introducing guidelines and commonly missed.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                Can I contact Kenny Allstar or Eddie Kadi directly?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  No. BBC Radio 1Xtra does NOT accept direct presenter contact, email demos, or social media submissions. BBC Introducing Uploader is the official and ONLY route for all artists regardless of tier or previous achievements.
+                </p>
+                <p>
+                  Audio Intel highlights this critical requirement during enrichment, preventing artists from wasting hours searching for non-existent direct contact methods.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                How does presenter-to-genre matching work for 1Xtra?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  The enrichment process analyses your genre tags and matches to specialist shows: Kenny Allstar (UK rap/grime), Eddie Kadi (Afrobeats), Chuckie (R&B), Seani B (Dancehall), DJ Target (multi-genre). Genre fit scoring ranges from 90-98 percent for specialist matches.
+                </p>
+                <p>
+                  Generic "urban music" or "hip-hop" tags reduce match accuracy. Specific sub-genre tags (grime, Afrobeats, UK drill) improve presenter matching and submission success rates.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                What is the BBC Introducing regional forwarding process?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  BBC Introducing uses regional teams (London, Manchester, Birmingham, etc.) to review submissions first. Exceptional tracks get forwarded to national stations like 1Xtra. Understanding your regional team improves national placement odds.
+                </p>
+                <p>
+                  Audio Intel identifies your regional BBC Introducing pathway during enrichment based on location tags. London-based artists route through BBC London Introducing, Manchester through BBC Manchester, etc.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                Does this work for BBC Radio 1 and other BBC stations?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  Yes. The enrichment workflow is identical for BBC Radio 1 specialist shows, BBC Radio 6 Music alternative programming, BBC Radio 2, and regional BBC stations. Each BBC network has different submission cultures and requirements. The enrichment process adapts automatically based on station context.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                What file formats does BBC Introducing Uploader accept?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  BBC Introducing Uploader accepts MP3, WAV, FLAC, and AIFF formats with maximum 10MB file size for MP3 or 30MB for lossless formats. Upload limit is 2 tracks per month with 6-month review guarantee.
+                </p>
+                <p>
+                  Audio Intel provides BBC Introducing technical requirements during enrichment so artists prepare appropriate file formats before submission.
+                </p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section id="getting-started" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">How to Start Your BBC Radio 1Xtra Campaign</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            If you are a UK urban artist targeting 1Xtra for the first time, follow this step-by-step workflow to avoid common mistakes and improve placement odds.
+          </p>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 space-y-6">
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 1: Prepare Clean Versions</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Before ANY research or submission, create clean censored versions of all tracks. BBC broadcast standards reject explicit content immediately. UK grime, drill, and rap artists must censor profanity, offensive lyrics, and explicit references.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 2: Identify Specialist Show Match</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Upload your genre information to Audio Intel for presenter-to-genre matching. UK rap/grime matches Kenny Allstar, Afrobeats matches Eddie Kadi, R&B matches Chuckie. Generic "urban" tags reduce match accuracy.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 3: Register with BBC Introducing</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Create BBC Introducing Uploader account with regional team (London, Manchester, Birmingham based on location). BBC Introducing is the ONLY submission route - no direct presenter contact exists for 1Xtra.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 4: Upload via BBC Introducing</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Upload clean version via BBC Introducing Uploader with complete artist bio, genre tags, and track description. Upload limit is 2 tracks per month. Regional team reviews first, forwards exceptional tracks to national 1Xtra.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 5: Monitor Regional and National Response</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Track BBC Introducing regional response first (6-month review guarantee). If forwarded to 1Xtra, monitor specialist show playlists (Kenny Allstar Rap Show, Eddie Kadi Afrobeats) for placement. Regional plays improve national placement odds.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section id="cta" className="space-y-6">
           <h2 className="text-3xl font-black text-gray-900">Ready to Stop Guessing BBC Radio 1Xtra Specialist Shows?</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
@@ -279,6 +539,66 @@ export default function BbcRadio1XtraContactEnrichment() {
         </section>
       </div>
     </article>
+
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Can I submit explicit versions to BBC Radio 1Xtra?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. BBC broadcast standards apply to all submissions including urban music. Explicit lyrics, profanity, and offensive content are immediately rejected. UK grime, drill, and rap tracks must be clean censored versions for BBC consideration. Audio Intel flags this clean version requirement during enrichment."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I contact Kenny Allstar or Eddie Kadi directly?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. BBC Radio 1Xtra does NOT accept direct presenter contact, email demos, or social media submissions. BBC Introducing Uploader is the official and ONLY route for all artists regardless of tier or previous achievements. Audio Intel highlights this critical requirement during enrichment."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does presenter-to-genre matching work for 1Xtra?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The enrichment process analyses your genre tags and matches to specialist shows: Kenny Allstar (UK rap/grime), Eddie Kadi (Afrobeats), Chuckie (R&B), Seani B (Dancehall), DJ Target (multi-genre). Genre fit scoring ranges from 90-98 percent for specialist matches. Specific sub-genre tags improve presenter matching and submission success rates."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the BBC Introducing regional forwarding process?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "BBC Introducing uses regional teams (London, Manchester, Birmingham, etc.) to review submissions first. Exceptional tracks get forwarded to national stations like 1Xtra. Audio Intel identifies your regional BBC Introducing pathway during enrichment based on location tags."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does this work for BBC Radio 1 and other BBC stations?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The enrichment workflow is identical for BBC Radio 1 specialist shows, BBC Radio 6 Music alternative programming, BBC Radio 2, and regional BBC stations. Each BBC network has different submission cultures and requirements. The enrichment process adapts automatically based on station context."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What file formats does BBC Introducing Uploader accept?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "BBC Introducing Uploader accepts MP3, WAV, FLAC, and AIFF formats with maximum 10MB file size for MP3 or 30MB for lossless formats. Upload limit is 2 tracks per month with 6-month review guarantee. Audio Intel provides BBC Introducing technical requirements during enrichment."
+              }
+            }
+          ]
+        })
+      }}
+    />
     </PSEOPageWrapper>
   );
 }
