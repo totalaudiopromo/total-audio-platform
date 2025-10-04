@@ -2,9 +2,9 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    // Connect to real Audio Intel system running on port 3001
-    const audioIntelBaseUrl = 'http://localhost:3001';
-    
+    // Connect to Audio Intel production system
+    const audioIntelBaseUrl = process.env.AUDIO_INTEL_API_URL || 'https://intel.totalaudiopromo.com';
+
     // Fetch real data from Audio Intel APIs
     const [statusResponse, analyticsResponse, enrichResponse] = await Promise.all([
       fetch(`${audioIntelBaseUrl}/api/status`).catch(() => null),
