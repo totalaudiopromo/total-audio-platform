@@ -1,7 +1,54 @@
+import type { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'Tracker - AI Campaign Intelligence for Music Promoters | Total Audio Promo',
+  description: 'Stop wasting 15 hours a week on campaign tracking. Get AI-powered intelligence, industry benchmarks, and pattern recognition for radio, playlist, blog, and PR campaigns. £19/month.',
+  keywords: 'music campaign tracking, radio promotion analytics, playlist campaign tracking, music PR tracking, campaign intelligence, music promotion benchmarks',
+  authors: [{ name: 'Total Audio Promo' }],
+  alternates: {
+    canonical: 'https://tracker.totalaudiopromo.com',
+    languages: {
+      'en-GB': 'https://tracker.totalaudiopromo.com',
+    }
+  },
+  openGraph: {
+    title: 'Tracker - Stop Wasting Time on Campaign Tracking',
+    description: 'AI campaign intelligence for working music promoters. Track campaigns, get insights, and know exactly what's working.',
+    url: 'https://tracker.totalaudiopromo.com',
+    siteName: 'Tracker',
+    locale: 'en_GB',
+    type: 'website',
+    images: [
+      {
+        url: '/images/total_audio_promo_logo_trans.png',
+        width: 1200,
+        height: 630,
+        alt: 'Tracker - Campaign Intelligence Platform',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tracker - AI Campaign Intelligence for Music Promoters',
+    description: 'Stop wasting weekends in spreadsheets. Get instant campaign intelligence with AI-powered benchmarks.',
+    images: ['/images/total_audio_promo_logo_trans.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default async function HomePage() {
   const supabase = await createClient();

@@ -25,20 +25,20 @@ export function SiteHeader() {
   const availableLinks = links.filter(link => !link.requiresAuth || session);
 
   return (
-    <header className="mx-auto w-full max-w-6xl px-4 pt-8 sm:px-8 lg:px-0">
-      <div className="glass-panel flex items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <header className="sticky top-0 z-50 w-full border-b-4 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-8">
         <div className="flex items-center gap-4">
           <button
             type="button"
-            className="rounded-full border border-white/15 p-2 text-white/70 transition hover:border-white/40 hover:text-white sm:hidden"
+            className="rounded-lg border-2 border-black bg-white p-2 text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:hidden"
             aria-label="Toggle navigation"
             onClick={() => setMobileOpen(prev => !prev)}
           >
             <Menu className="h-5 w-5" />
           </button>
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-sm font-semibold uppercase tracking-[0.32em] text-white/60">Pitch Generator</span>
-            <span className="rounded-full bg-gradient-to-r from-brand-iris to-brand-magenta px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+            <span className="text-lg font-bold tracking-tight text-black">Pitch Generator</span>
+            <span className="rounded-full border-2 border-black bg-blue-500 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
               TAP
             </span>
           </Link>
@@ -51,10 +51,10 @@ export function SiteHeader() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                className={`rounded-lg px-4 py-2 text-sm font-semibold transition ${
                   isActive
-                    ? 'bg-white/15 text-white'
-                    : 'text-white/70 hover:bg-white/10 hover:text-white'
+                    ? 'bg-gray-900 text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                    : 'text-gray-700 hover:bg-gray-100'
                 }`}
               >
                 {link.label}
@@ -68,8 +68,8 @@ export function SiteHeader() {
             <div className="h-8 w-16 animate-pulse rounded-full bg-white/10" />
           ) : session ? (
             <>
-              <span className="hidden text-sm font-medium text-white/60 sm:inline">{session.user?.name ?? session.user?.email}</span>
-              <button onClick={handleSignOut} className="subtle-button">Sign out</button>
+              <span className="hidden text-sm font-medium text-gray-700 sm:inline">{session.user?.name ?? session.user?.email}</span>
+              <button onClick={handleSignOut} className="subtle-button text-xs">Sign out</button>
             </>
           ) : (
             <button onClick={handleSignIn} className="cta-button">Sign in</button>
@@ -78,24 +78,26 @@ export function SiteHeader() {
       </div>
 
       {mobileOpen && (
-        <nav className="glass-panel mt-3 flex flex-col gap-1 p-3 sm:hidden">
-          {availableLinks.map(link => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className={`rounded-2xl px-4 py-3 text-sm font-medium transition ${
-                  isActive
-                    ? 'bg-white/15 text-white'
-                    : 'text-white/70 hover:bg-white/10 hover:text-white'
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
+        <nav className="border-b-4 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:hidden">
+          <div className="flex flex-col gap-2">
+            {availableLinks.map(link => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`rounded-lg px-4 py-3 text-sm font-semibold transition ${
+                    isActive
+                      ? 'bg-gray-900 text-white'
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </div>
         </nav>
       )}
     </header>

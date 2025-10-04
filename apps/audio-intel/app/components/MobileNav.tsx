@@ -71,11 +71,11 @@ export default function MobileNav() {
         </Link>
         <button
           aria-label="Open menu"
-          className="text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 focus:outline-none flex items-center justify-center border-2 border-black rounded-xl p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all font-black"
-          style={{ minWidth: 44, minHeight: 44 }}
+          className="text-white bg-blue-600 hover:bg-blue-700 focus:outline-none flex items-center justify-center border-2 border-black rounded-lg p-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all"
+          style={{ minWidth: 40, minHeight: 40 }}
           onClick={() => setOpen(true)}
         >
-          <Menu className="w-6 h-6" />
+          <Menu className="w-5 h-5" />
         </button>
       </div>
       

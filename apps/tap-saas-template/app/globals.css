@@ -25,13 +25,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    background-image: 
-      radial-gradient(circle at 10% 10%, rgba(76, 92, 246, 0.25), transparent 45%),
-      radial-gradient(circle at 90% 20%, rgba(201, 84, 247, 0.22), transparent 50%),
-      radial-gradient(circle at 50% 90%, rgba(255, 200, 87, 0.18), transparent 55%),
-      linear-gradient(130deg, rgba(18, 22, 37, 0.95), rgba(13, 17, 27, 0.95));
-    background-attachment: fixed;
+    @apply bg-white text-gray-900 antialiased;
   }
 
   * {
@@ -39,24 +33,25 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply text-white tracking-tight;
+    @apply text-gray-900 tracking-tight font-bold;
   }
 }
 
 @layer components {
+  /* Postcraft-inspired card like Audio Intel */
   .glass-panel {
-    @apply rounded-3xl border border-white/10 bg-white/5 shadow-panel backdrop-blur-xl;
+    @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1;
   }
 
   .badge-postcraft {
-    @apply inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-wide text-white/80;
+    @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-yellow-300 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
   }
 
   .cta-button {
-    @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-secondary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-elevated transition hover:from-primary/90 hover:to-secondary/90 hover:shadow-lg;
+    @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-blue-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 active:scale-95;
   }
 
   .subtle-button {
-    @apply inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white/70 transition hover:border-white/30 hover:text-white;
+    @apply inline-flex items-center justify-center rounded-xl border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5;
   }
 }
