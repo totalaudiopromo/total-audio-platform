@@ -238,6 +238,269 @@ export default function SpotifyEditorialPlaylistContacts() {
           <p className="text-sm text-gray-500">Pulled from internal beta feedback, April 2025.</p>
         </section>
 
+        <section id="understanding-spotify" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Understanding Spotify&apos;s Editorial Playlist Structure</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Spotify's playlist ecosystem splits into editorial (Spotify-curated), algorithmic (personalised), and independent (user-curated). Understanding which playlists you can actually pitch makes the difference between wasted time and real placements.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mt-8">Editorial vs Algorithmic vs Independent</h3>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Editorial playlists (New Music Friday UK, Fresh Finds UK, Rap UK) are human-curated by Spotify staff. You pitch these via Spotify for Artists only, no curator contact available. Algorithmic playlists (Discover Weekly, Release Radar) are personalised per listener, you cannot pitch them directly. Independent playlists are user-curated and contactable via social media or submission forms.
+          </p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Audio Intel classifies playlists automatically during enrichment. For editorial playlists, it provides Spotify for Artists submission timing and metadata recommendations. For independent playlists, it discovers curator contact information for direct outreach.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mt-8">The 28-Day Submission Window (2025 Update)</h3>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Official Spotify documentation says "submit at least 7 days before release" but this is misleading. Editorial teams work on a 28-day cycle for serious consideration. Submissions closer to release date get less attention, often none at all.
+          </p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            The enrichment process includes submission timing recommendations based on playlist tier. Flagship playlists (New Music Friday UK, Hot Hits UK) need 28+ days. Second-tier playlists (Fresh Finds UK, Indie List UK) work on 21+ days. Genre-specific playlists (Rap UK, Electronic Rising) accept 14+ days if metadata is strong.
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-900 mt-8">Metadata Optimisation for Editorial Consideration</h3>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Spotify for Artists pitch form requires genre, mood, instrumentation, language, culture tags, 500-character song story, promotional plans, and similar artists references. Missing fields reduce editorial consideration significantly.
+          </p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            During enrichment, Audio Intel analyses your target playlists and provides metadata recommendations. For example, pitching Rap UK requires UK urban culture tags, grime or drill mood tags, and similar artists from the UK scene. Generic metadata gets ignored.
+          </p>
+        </section>
+
+        <section id="common-mistakes" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">5 Spotify Editorial Pitching Mistakes That Kill Placements</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            After running dozens of Spotify campaigns for independent artists, these are the mistakes that come up repeatedly. Audio Intel prevents most of them automatically.
+          </p>
+
+          <div className="space-y-6">
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 1: Submitting 7 Days Before Release Instead of 28 Days</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Spotify's official documentation is vague about the real editorial cycle. Artists submit 7 days before release thinking they met the requirement, but editorial teams work 28+ days in advance for serious playlists. Audio Intel surfaces the real submission timeline based on playlist tier and genre.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 2: Pitching Algorithmic Playlists Directly</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Discover Weekly and Release Radar are algorithmic, personalised per listener. You cannot pitch them via Spotify for Artists. The enrichment process classifies playlists automatically so you focus only on editorial and independent playlists where direct pitching works.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 3: Incomplete Metadata in Spotify for Artists Pitch</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Missing genre tags, mood selectors, or the 500-character song story reduces editorial consideration. Editorial teams see hundreds of pitches weekly. Incomplete metadata signals lack of professionalism. Audio Intel provides metadata optimisation recommendations based on target playlist requirements.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 4: No Backup Independent Playlist Strategy</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Relying only on Spotify editorial is risky. Rejection rates are high and you get zero feedback. Independent playlist curators provide backup strategy with faster turnaround and direct communication. The enrichment process discovers independent curator contacts automatically.
+              </p>
+            </div>
+
+            <div className="bg-white border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Mistake 5: Targeting Playlists Outside Your Genre</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Pitching electronic music to indie rock playlists wastes time and damages credibility with editorial teams. Genre fit matters more than playlist follower count. Audio Intel matches your sound to appropriate playlists during enrichment based on genre, mood, and instrumentation analysis.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="beyond-spotify" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Beyond Spotify: Scaling the Same Workflow</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            The enrichment process works identically for Apple Music editorial, YouTube Music playlists, and radio promotion. Once you prove the workflow on Spotify, you can scale to other platforms using the same contact enrichment approach.
+          </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Apple Music Editorial</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Apple Music editorial operates similarly to Spotify with human curators managing flagship playlists. The enrichment process identifies Apple Music curator contacts (where available) and provides submission timing recommendations for New Music Daily and genre-specific playlists.
+              </p>
+              <a href="/blog/apple-music-editorial-contacts" className="text-blue-600 font-semibold hover:underline">
+                Read the Apple Music editorial guide →
+              </a>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">BBC Radio 1 Specialist Shows</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Radio promotion requires different contact research but the enrichment workflow is identical. Upload BBC Radio 1 producer emails, get verified contacts with show assignments, submission preferences, and timing recommendations.
+              </p>
+              <a href="/blog/bbc-radio-1-contact-enrichment" className="text-blue-600 font-semibold hover:underline">
+                See how it works for radio promotion →
+              </a>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">BBC Radio 6 Music</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Alternative and album-focused radio programming. Different submission culture from Spotify playlists but the enrichment process provides presenter contacts, show preferences, and timing windows identically.
+              </p>
+              <a href="/blog/bbc-radio-6-music-contact-enrichment" className="text-blue-600 font-semibold hover:underline">
+                Read the BBC 6 Music enrichment guide →
+              </a>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Independent Playlist Curators</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-3">
+                Thousands of independent curators run Spotify playlists with 10K+ followers. The enrichment process discovers curator contacts via Instagram, Twitter, SubmitHub, and submission forms for direct outreach.
+              </p>
+              <a href="/blog/music-industry-contacts" className="text-blue-600 font-semibold hover:underline">
+                See the independent curator discovery workflow →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">Frequently Asked Questions</h2>
+
+          <div className="space-y-4">
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                Do I need curator email addresses to use Audio Intel for Spotify playlists?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  For editorial playlists (New Music Friday UK, Fresh Finds UK), no curator contact exists - you pitch via Spotify for Artists only. Audio Intel provides editorial classification, submission timing, and metadata recommendations for these playlists.
+                </p>
+                <p>
+                  For independent playlists (user-curated), Audio Intel enriches your existing curator contacts (from social media searches, SubmitHub, etc.) with submission preferences and contact verification. The platform is a contact enrichment tool, not a contact discovery tool.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                How accurate is the editorial vs independent playlist classification?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  The enrichment process achieves 94-98 percent accuracy on editorial vs independent classification by analysing playlist owner, curation patterns, and Spotify's official editorial playlist registry. Anything below 90 percent confidence gets flagged for manual review.
+                </p>
+                <p>
+                  Classification updates automatically as Spotify changes playlist curation. For example, if an independent playlist becomes Spotify editorial, the enrichment process catches this during re-validation.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                When should I submit to Spotify for Artists for editorial consideration?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  For flagship editorial playlists (New Music Friday UK, Hot Hits UK), submit 28+ days before release for serious consideration. For second-tier playlists (Fresh Finds UK, Indie List UK), 21+ days works. Genre-specific playlists accept 14+ days if metadata is strong.
+                </p>
+                <p>
+                  Official Spotify documentation says "minimum 7 days" but editorial teams work on longer cycles. Audio Intel provides submission timing recommendations based on playlist tier and genre during enrichment.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                What metadata fields matter most for Spotify editorial consideration?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  Genre selection (up to 3 genres), mood and instrumentation tags, and the 500-character song story are most critical. Editorial teams are genre specialists - accurate genre tags help playlist matching. The song story should explain track context, inspiration, and why it matters.
+                </p>
+                <p>
+                  Promotional plans and similar artists references also matter for editorial decision-making. Audio Intel provides metadata optimisation recommendations based on target playlist requirements during enrichment.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                Can I pitch the same track to multiple Spotify editorial playlists?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  Yes, but only one pitch per release via Spotify for Artists. You select your top playlist target in the pitch form. Editorial teams consider placement across all relevant playlists internally, so selecting "New Music Friday UK" might result in placement on "Fresh Finds UK" instead.
+                </p>
+                <p>
+                  Audio Intel helps you select the best target playlist based on genre fit, your artist tier (emerging vs established), and historical playlist placement patterns.
+                </p>
+              </div>
+            </details>
+
+            <details className="bg-white border border-gray-200 rounded-xl p-6 group">
+              <summary className="text-xl font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                Does this work for Apple Music and YouTube Music playlists too?
+                <span className="text-2xl group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-4 text-base text-gray-700 leading-relaxed space-y-3">
+                <p>
+                  Yes. The enrichment workflow is identical for Apple Music editorial playlists and YouTube Music curator contacts. Upload your existing curator emails or platform submission contacts, tag the campaign with the target platform, and the enrichment process provides submission timing and metadata recommendations.
+                </p>
+                <p>
+                  Apple Music and YouTube Music have different editorial structures from Spotify, but the contact enrichment approach works the same way across all streaming platforms.
+                </p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section id="getting-started" className="space-y-6">
+          <h2 className="text-3xl font-black text-gray-900">How to Start Your Own Spotify Editorial Campaign</h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            If you have Spotify playlist URLs, curator contacts from social media, or SubmitHub profiles sitting in spreadsheets, you can run the same enrichment workflow today. Here is the step-by-step process.
+          </p>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 space-y-6">
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 1: Gather Your Playlist Targets</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Search Spotify for genre-specific playlists, save URLs from New Music Friday UK and Fresh Finds UK, and include independent playlists as backup. Collect curator emails from Instagram bios, Twitter profiles, or SubmitHub where available.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 2: Format as CSV</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Create a CSV file with playlist name, curator name (if known), curator email (if found), and Spotify playlist URL. Optional fields like genre, follower count, or previous notes help enrichment but are not required.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 3: Upload to Audio Intel</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Log into Audio Intel, start a new enrichment campaign, and upload your CSV. Tag the campaign as Spotify editorial so the platform classifies editorial vs independent playlists and provides appropriate submission strategies.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 4: Review Enriched Results</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Enrichment typically completes in under two minutes. Review the editorial classification, prioritise official Spotify playlists for Spotify for Artists pitch (28+ days before release), and identify independent playlists requiring curator outreach.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Step 5: Execute Submission Strategy</h3>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Submit to Spotify for Artists 28+ days before release with optimised metadata. Reach out to independent curators 14-21 days before release with personalised pitches. Export the CSV for your CRM and download the PDF summary to share with management or label.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section id="cta" className="space-y-6">
           <h2 className="text-3xl font-black text-gray-900">Ready to Stop Guessing Spotify Editorial Strategy?</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
@@ -260,6 +523,66 @@ export default function SpotifyEditorialPlaylistContacts() {
         </section>
       </div>
     </article>
+
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Do I need curator email addresses to use Audio Intel for Spotify playlists?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For editorial playlists (New Music Friday UK, Fresh Finds UK), no curator contact exists - you pitch via Spotify for Artists only. Audio Intel provides editorial classification, submission timing, and metadata recommendations for these playlists. For independent playlists (user-curated), Audio Intel enriches your existing curator contacts with submission preferences and contact verification."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How accurate is the editorial vs independent playlist classification?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The enrichment process achieves 94-98 percent accuracy on editorial vs independent classification by analysing playlist owner, curation patterns, and Spotify's official editorial playlist registry. Anything below 90 percent confidence gets flagged for manual review. Classification updates automatically as Spotify changes playlist curation."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "When should I submit to Spotify for Artists for editorial consideration?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For flagship editorial playlists (New Music Friday UK, Hot Hits UK), submit 28+ days before release for serious consideration. For second-tier playlists (Fresh Finds UK, Indie List UK), 21+ days works. Genre-specific playlists accept 14+ days if metadata is strong. Official Spotify documentation says minimum 7 days but editorial teams work on longer cycles."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What metadata fields matter most for Spotify editorial consideration?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Genre selection (up to 3 genres), mood and instrumentation tags, and the 500-character song story are most critical. Editorial teams are genre specialists - accurate genre tags help playlist matching. The song story should explain track context, inspiration, and why it matters. Promotional plans and similar artists references also matter for editorial decision-making."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I pitch the same track to multiple Spotify editorial playlists?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, but only one pitch per release via Spotify for Artists. You select your top playlist target in the pitch form. Editorial teams consider placement across all relevant playlists internally, so selecting New Music Friday UK might result in placement on Fresh Finds UK instead. Audio Intel helps you select the best target playlist based on genre fit, your artist tier, and historical placement patterns."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does this work for Apple Music and YouTube Music playlists too?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The enrichment workflow is identical for Apple Music editorial playlists and YouTube Music curator contacts. Upload your existing curator emails or platform submission contacts, tag the campaign with the target platform, and the enrichment process provides submission timing and metadata recommendations. Apple Music and YouTube Music have different editorial structures from Spotify, but the contact enrichment approach works the same way across all streaming platforms."
+              }
+            }
+          ]
+        })
+      }}
+    />
     </PSEOPageWrapper>
   );
 }
