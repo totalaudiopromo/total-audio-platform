@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { trackPageView } from "@/utils/analytics"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -25,6 +26,16 @@ import Image from "next/image"
 import Link from "next/link"
 
 export default function BetaAccessPage() {
+  // Track page view
+  useEffect(() => {
+    trackPageView('beta-access', {
+      page_type: 'marketing',
+      page_title: 'Beta Access - Audio Intel',
+      referrer: document.referrer || 'direct',
+      utm_source: new URLSearchParams(window.location.search).get('utm_source') || undefined,
+    });
+  }, []);
+
   const [email, setEmail] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')

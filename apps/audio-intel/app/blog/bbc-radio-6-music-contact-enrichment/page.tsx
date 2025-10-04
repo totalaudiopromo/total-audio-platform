@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PSEOPageWrapper } from "@/app/components/PSEOPageWrapper";
 
 export const metadata: Metadata = {
   title: "BBC Radio 6 Music Contact Enrichment Case Study | Audio Intel",
@@ -22,7 +23,8 @@ export const metadata: Metadata = {
 
 export default function BbcRadio6MusicContactEnrichment() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-12">
+    <PSEOPageWrapper pageName="bbc-radio-6-music-contact-enrichment" topic="bbc-6-music" searchVolume={800} tier={1}>
+      <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
           BBC Radio 6 Music Contact Enrichment: From 16 Hours to 2 Minutes
@@ -240,5 +242,6 @@ export default function BbcRadio6MusicContactEnrichment() {
         </section>
       </div>
     </article>
+    </PSEOPageWrapper>
   );
 }

@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Image from "next/image"
 import Link from "next/link"
+import { trackPageView } from "@/utils/analytics"
 
 // Track analytics events
 function trackAnalyticsEvent(event: string, data: any) {
@@ -27,6 +28,16 @@ function PricingContent() {
   const [email, setEmail] = useState('');
   const searchParams = useSearchParams();
   const router = useRouter();
+
+  // Track page view
+  useEffect(() => {
+    trackPageView('pricing', {
+      page_type: 'product',
+      page_title: document.title,
+      referrer: document.referrer || 'direct',
+      utm_source: new URLSearchParams(window.location.search).get('utm_source') || undefined,
+    });
+  }, []);
   
   // Trial lengths surfaced in UI (mirrors server defaults; can be overridden with public envs)
   const trialDays = {

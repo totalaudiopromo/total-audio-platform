@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PSEOPageWrapper } from "@/app/components/PSEOPageWrapper";
 
 export const metadata: Metadata = {
   title: "Apple Music Editorial Playlist Contacts | Audio Intel",
@@ -34,7 +35,8 @@ DATA VERIFICATION:
 
 export default function AppleMusicEditorialContacts() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-12">
+    <PSEOPageWrapper pageName="apple-music-editorial-contacts" topic="apple-music-editorial" searchVolume={1500} tier={1}>
+      <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
           Apple Music Editorial Contacts: The Distributor Route Breakdown
@@ -318,5 +320,6 @@ export default function AppleMusicEditorialContacts() {
         </section>
       </div>
     </article>
+    </PSEOPageWrapper>
   );
 }

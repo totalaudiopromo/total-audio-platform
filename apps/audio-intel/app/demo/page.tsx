@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
+import {
   FileSpreadsheet,
   TrendingUp,
   Loader2,
@@ -18,6 +18,7 @@ import SpreadsheetUploader, { EnhancedSpreadsheetUploader } from "@/components/S
 import { ProfessionalExportService } from "@/utils/exportService"
 import ContactLoadingState from "../components/ContactLoadingState"
 import BetaTrialStatus from "@/components/BetaTrialStatus"
+import { trackPageView } from "@/utils/analytics"
 
 interface Contact {
   name: string
@@ -36,18 +37,26 @@ export default function SimpleAudioIntelDemo() {
   const [exportProgress, setExportProgress] = useState<string>('')
   const [userEmail, setUserEmail] = useState<string>('')
   const [betaTrialStatus, setBetaTrialStatus] = useState<any>(null)
-  
+
   // Get user email from localStorage or URL params (from beta signup)
   useEffect(() => {
+    // Track page view
+    trackPageView('demo', {
+      page_type: 'product',
+      page_title: document.title,
+      referrer: document.referrer || 'direct',
+      utm_source: new URLSearchParams(window.location.search).get('utm_source') || undefined,
+    });
+
     const urlParams = new URLSearchParams(window.location.search)
     const emailParam = urlParams.get('email')
     const storedEmail = localStorage.getItem('beta_user_email')
-    
+
     const email = emailParam || storedEmail
     if (email) {
       setUserEmail(email)
       localStorage.setItem('beta_user_email', email)
-      
+
       // Check beta trial status
       checkBetaStatus(email)
     }

@@ -39,30 +39,64 @@ export async function PUT(
 
   const body = await request.json();
 
-  const { data, error } = await supabase
-    .from('campaigns')
-    .update({
-      name: body.name,
-      platform: body.platform,
-      genre: body.genre,
-      start_date: body.start_date,
-      end_date: body.end_date || null,
-      budget: parseFloat(body.budget) || 0,
-      target_reach: parseInt(body.target_reach) || 0,
-      actual_reach: parseInt(body.actual_reach) || 0,
-      notes: body.notes || null,
-      status: body.status || 'active',
-    })
-    .eq('id', params.id)
-    .eq('user_id', user.id)
-    .select()
-    .single();
+  const payload: Record<string, unknown> = {
+    name: body.name,
+  };
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  if (body.platform) payload.platform = body.platform;
+  if (body.genre) payload.genre = body.genre;
+  if (body.start_date) payload.start_date = body.start_date;
+  payload.end_date = body.end_date || null;
+  payload.status = body.status || 'active';
+
+  if (body.budget !== undefined && body.budget !== '') {
+    const budget = Number(body.budget);
+    if (!Number.isNaN(budget)) payload.budget = budget;
   }
 
-  return NextResponse.json(data);
+  if (body.target_reach !== undefined && body.target_reach !== '') {
+    const targetReach = Number.parseInt(body.target_reach, 10);
+    if (!Number.isNaN(targetReach)) payload.target_reach = targetReach;
+  }
+
+  if (body.actual_reach !== undefined && body.actual_reach !== '') {
+    const actualReach = Number.parseInt(body.actual_reach, 10);
+    if (!Number.isNaN(actualReach)) payload.actual_reach = actualReach;
+  }
+
+  const removedColumns = new Set<string>();
+  const requiredColumns = new Set(['name']);
+
+  while (true) {
+    const { data, error } = await supabase
+      .from('campaigns')
+      .update(payload)
+      .eq('id', params.id)
+      .eq('user_id', user.id)
+      .select()
+      .single();
+
+    if (!error) {
+      return NextResponse.json(data);
+    }
+
+    const missingColumnMatch = error.message?.match(/'([^']+)' column/);
+    const missingColumn = missingColumnMatch?.[1];
+
+    if (
+      missingColumn &&
+      missingColumn in payload &&
+      !removedColumns.has(missingColumn) &&
+      !requiredColumns.has(missingColumn)
+    ) {
+      removedColumns.add(missingColumn);
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+      delete payload[missingColumn];
+      continue;
+    }
+
+    return NextResponse.json({ error: error.message, details: error, removedColumns: Array.from(removedColumns) }, { status: 500 });
+  }
 }
 
 export async function DELETE(

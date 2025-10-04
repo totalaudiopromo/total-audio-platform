@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PSEOPageWrapper } from "@/app/components/PSEOPageWrapper";
 
 export const metadata: Metadata = {
   title: "Spotify Editorial Playlist Contacts & Submission Guide | Audio Intel",
@@ -22,7 +23,8 @@ export const metadata: Metadata = {
 
 export default function SpotifyEditorialPlaylistContacts() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-12">
+    <PSEOPageWrapper pageName="spotify-editorial-playlist-contacts" topic="spotify-editorial" searchVolume={2000} tier={1}>
+      <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
           Spotify Editorial Playlist Contacts: From 12 Hours to 2 Minutes
@@ -258,5 +260,6 @@ export default function SpotifyEditorialPlaylistContacts() {
         </section>
       </div>
     </article>
+    </PSEOPageWrapper>
   );
 }

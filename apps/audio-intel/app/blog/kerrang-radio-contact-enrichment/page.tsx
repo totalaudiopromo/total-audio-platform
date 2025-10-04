@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PSEOPageWrapper } from "@/app/components/PSEOPageWrapper";
 
 export const metadata: Metadata = {
   title: "Kerrang Radio Contact Enrichment Case Study | Audio Intel",
@@ -33,7 +34,8 @@ DATA VERIFICATION:
 
 export default function KerrangRadioContactEnrichment() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-12">
+    <PSEOPageWrapper pageName="kerrang-radio-contact-enrichment" topic="kerrang-radio" searchVolume={350} tier={2}>
+      <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
           Kerrang Radio Contact Enrichment: From 10 Hours to 2 Minutes
@@ -246,5 +248,6 @@ export default function KerrangRadioContactEnrichment() {
         </section>
       </div>
     </article>
+    </PSEOPageWrapper>
   );
 }
