@@ -55,6 +55,36 @@ const blogPosts = [
     readTime: "8 min read",
     category: "Playlist Tracking",
     featured: false
+  },
+  {
+    slug: "bbc-radio-6-music-campaign-analytics",
+    title: "BBC Radio 6 Music Campaign Analytics: Track Alternative Radio Success",
+    excerpt: "Track BBC Radio 6 Music campaigns with industry benchmarks. See real success rates (8-14% specialist shows), optimal timing, and AI insights for alternative/indie radio promotion.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "9 min read",
+    category: "Radio Tracking",
+    featured: false
+  },
+  {
+    slug: "bbc-introducing-campaign-tracking",
+    title: "BBC Introducing Campaign Tracking: Track Unsigned Artist Success",
+    excerpt: "Track BBC Introducing campaigns with industry benchmarks. See real success rates (8-12% regional), optimal timing, and AI insights for unsigned artist radio promotion.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "8 min read",
+    category: "Radio Tracking",
+    featured: false
+  },
+  {
+    slug: "community-radio-promotion-tracking",
+    title: "Community Radio Promotion Tracking: Local Radio Campaign Analytics",
+    excerpt: "Track community radio campaigns with industry benchmarks. See real success rates (18-24% local radio), optimal timing, and AI insights for local radio promotion.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "7 min read",
+    category: "Radio Tracking",
+    featured: false
   }
 ];
 

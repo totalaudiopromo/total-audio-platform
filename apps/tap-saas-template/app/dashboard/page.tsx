@@ -59,27 +59,6 @@ export default function DashboardPage() {
       setRecentPitches(pitchesData.pitches || []);
       return;
 
-      const totalPitches = pitches?.length || 0;
-      const sentPitches = pitches?.filter(p => p.status !== 'draft').length || 0;
-      const replies = pitches?.filter(p => p.response_received || p.status === 'replied' || p.status === 'success').length || 0;
-      const successRate = sentPitches > 0 ? (replies / sentPitches) * 100 : 0;
-
-      setStats({
-        totalPitches,
-        sentPitches,
-        replies,
-        successRate,
-      });
-
-      // Get recent pitches
-      const { data: recent } = await supabase
-        .from('pitches')
-        .select('*')
-        .eq('user_id', userId)
-        .order('created_at', { ascending: false })
-        .limit(5);
-
-      setRecentPitches(recent || []);
     } catch (error) {
       console.error('Error loading dashboard data:', error);
     } finally {

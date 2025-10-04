@@ -34,15 +34,11 @@ export default function PitchHistoryPage() {
 
   async function loadPitches() {
     try {
-      const userId = session?.user?.email || '';
-      const { data, error } = await supabase
-        .from('pitches')
-        .select('*')
-        .eq('user_id', userId)
-        .order('created_at', { ascending: false });
-
-      if (error) throw error;
-      setPitches(data || []);
+      const response = await fetch('/api/pitches');
+      if (!response.ok) throw new Error('Failed to fetch pitches');
+      
+      const data = await response.json();
+      setPitches(data.pitches || []);
     } catch (error) {
       console.error('Error loading pitches:', error);
     } finally {

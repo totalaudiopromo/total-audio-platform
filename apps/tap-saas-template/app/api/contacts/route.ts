@@ -9,6 +9,7 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    const userId = (session.user as any).email || 'demo-user';
     const { searchParams } = new URL(req.url);
     const search = searchParams.get('search') || '';
     const limit = parseInt(searchParams.get('limit') || '50');
@@ -17,6 +18,7 @@ export async function GET(req: Request) {
     let query = supabaseAdmin
       .from('intel_contacts')
       .select('*', { count: 'exact' })
+      .eq('user_id', userId)
       .order('name', { ascending: true })
       .range(offset, offset + limit - 1);
 
