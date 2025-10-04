@@ -44,7 +44,7 @@ TYPEFORM_API_KEY=tfp_FNjg2X7QkW3MkWqY5xr2pCL9ADyTjEKExmgvbhoAvrd3_3mPGrSWR3HxkHn
 MAILCHIMP_API_KEY=b0f629921e6d1f85c4549c63dee5b9b2-us13
 
 # Google Gemini (for transcript processing)
-GOOGLE_GEMINI_API_KEY=AIzaSyDSAJ9ncfPysyOptcnTT21M13mabbnUj3o
+GOOGLE_GEMINI_API_KEY=AIzaSy[REDACTED]
 
 # Google Chat (for intelligence gathering)
 GOOGLE_CHAT_WEBHOOK_URL=your_webhook_url

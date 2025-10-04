@@ -11,7 +11,7 @@ const { google } = require('googleapis');
 async function testGoogleApiKey() {
   console.log('🔑 Testing Google API Key...\n');
   
-  const apiKey = 'AIzaSyDSAJ9ncfPysyOptcnTT21M13mabbnUj3o';
+  const apiKey = 'AIzaSy[REDACTED]';
   
   try {
     // Test Gmail API with API key (this won't work for Gmail)
