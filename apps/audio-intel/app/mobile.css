@@ -977,7 +977,9 @@
   img[alt*="Dog"],
   img[alt*="vinyl"],
   img[alt*="dog"],
-  img[src*="dog"] {
+  img[alt*="mascot"],
+  img[src*="dog"],
+  img[src*="mascot"] {
     width: 140px !important;
     height: 140px !important;
     object-fit: cover !important;
@@ -1152,33 +1154,40 @@
   }
 
   /* Footer - TRUE TWO-COLUMN LAYOUT */
-  footer .grid.lg\\:grid-cols-4 {
+  footer .grid.lg\\:grid-cols-2 {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 2rem 1rem !important;
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
     padding: 0 !important;
   }
 
-  /* Footer column sizing */
-  footer .grid.lg\\:grid-cols-4 > div {
+  footer .grid.sm\\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  footer .grid.lg\\:grid-cols-2 > div {
     width: 100% !important;
     box-sizing: border-box !important;
   }
 
-  /* Footer headings */
-  footer .grid.lg\\:grid-cols-4 h3 {
+  footer .grid.lg\\:grid-cols-2 h3 {
     font-size: 1rem !important;
     margin-bottom: 0.75rem !important;
   }
 
-  /* Footer logo section spans both columns */
-  footer .grid.lg\\:grid-cols-4 > div:first-child {
-    grid-column: span 2 !important;
+  footer .grid.lg\\:grid-cols-2 > div:first-child p {
+    font-size: 0.875rem !important;
+    line-height: 1.6 !important;
   }
 
-  footer .grid.lg\\:grid-cols-4 > div:first-child p {
-    font-size: 0.875rem !important;
-    line-height: 1.5 !important;
+  footer .grid.lg\\:grid-cols-2 > div:first-child .flex {
+    align-items: center !important;
+    gap: 0.75rem !important;
+  }
+
+  footer .grid.lg\\:grid-cols-2 > div:last-child ul {
+    margin-bottom: 0 !important;
   }
 
   .mobile-footer-title {
