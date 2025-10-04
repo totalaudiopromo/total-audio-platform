@@ -149,19 +149,19 @@ export default function SpotifyPlaylistCampaignTracking() {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-green-50 rounded border border-green-200">
                     <span className="font-bold">6-8 weeks before release:</span>
-                    <span className="text-green-600 font-black">32% success (BEST)</span>
+                    <span className="text-green-600 font-black">18% success (BEST)</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">4 weeks before release:</span>
-                    <span className="text-blue-600 font-black">26% success</span>
+                    <span className="text-blue-600 font-black">14% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">2 weeks before release:</span>
-                    <span className="text-yellow-600 font-black">18% success</span>
+                    <span className="text-yellow-600 font-black">10% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-red-50 rounded border border-red-200">
                     <span className="font-bold">Week of release:</span>
-                    <span className="text-red-600 font-black">9% success (WORST)</span>
+                    <span className="text-red-600 font-black">5% success (WORST)</span>
                   </div>
                 </div>
               </div>

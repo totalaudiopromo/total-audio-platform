@@ -798,7 +798,7 @@ export default async function HomePage() {
               </div>
             </div>
 
-            <div className="grid gap-10 sm:grid-cols-2">
+            <div className="grid gap-10 sm:grid-cols-3">
               <div>
                 <h3 className="text-xl font-black mb-6">Product</h3>
                 <ul className="space-y-4">
@@ -821,6 +821,20 @@ export default async function HomePage() {
                     <Link href="/signup" className="text-gray-300 hover:text-white font-bold transition-colors">
                       Sign Up
                     </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-black mb-6">More Tools</h3>
+                <ul className="space-y-4">
+                  <li>
+                    <a href="https://totalaudiopromo.com/audio-intel" className="text-gray-300 hover:text-white font-bold transition-colors">
+                      Audio Intel
+                    </a>
+                  </li>
+                  <li>
+                    <span className="text-gray-400 text-sm">Find contacts & enrich data</span>
                   </li>
                 </ul>
               </div>

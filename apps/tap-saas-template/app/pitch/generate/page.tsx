@@ -159,7 +159,7 @@ export default function GeneratePitchPage() {
             </div>
             <div>
               <h1 className="text-3xl font-bold">Generate Pitch</h1>
-              <p className="mt-1 text-white/60">Create a personalized pitch in 30 seconds</p>
+              <p className="mt-1 text-gray-600">Create a personalised pitch in 30 seconds</p>
             </div>
           </div>
         </div>
@@ -167,35 +167,35 @@ export default function GeneratePitchPage() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Contact Selection */}
           <div>
-            <label className="block text-sm font-semibold text-white/90">
-              Contact <span className="text-danger">*</span>
+            <label className="block text-sm font-semibold text-gray-900">
+              Contact <span className="text-red-600">*</span>
             </label>
             <select
               required
               value={formData.contactId}
               onChange={(e) => handleContactChange(e.target.value)}
-              className="mt-2 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             >
-              <option value="" className="bg-card text-foreground">Select a contact...</option>
+              <option value="">Select a contact...</option>
               {contacts.map((contact) => (
-                <option key={contact.id} value={contact.id} className="bg-card text-foreground">
+                <option key={contact.id} value={contact.id}>
                   {contact.name} {contact.outlet ? `- ${contact.outlet}` : ''}
                 </option>
               ))}
             </select>
             {contacts.length === 0 && (
-              <p className="mt-2 text-xs text-white/50">
+              <p className="mt-2 text-xs text-gray-500">
                 No contacts yet.{' '}
-                <Link href="/pitch/contacts" className="text-brand-iris hover:underline">
+                <Link href="/pitch/contacts" className="text-blue-600 hover:underline">
                   Add your first contact
                 </Link>
               </p>
             )}
             {selectedContact && (
-              <div className="mt-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm">
-                <p className="text-white/70">
+              <div className="mt-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm">
+                <p className="text-gray-600">
                   {selectedContact.role && <span className="font-medium">{selectedContact.role}</span>}
-                  {selectedContact.outlet && <span className="text-white/50"> at {selectedContact.outlet}</span>}
+                  {selectedContact.outlet && <span className="text-gray-500"> at {selectedContact.outlet}</span>}
                 </p>
                 {selectedContact.genre_tags && selectedContact.genre_tags.length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-2">
@@ -212,7 +212,7 @@ export default function GeneratePitchPage() {
 
           {/* Artist Name */}
           <div>
-            <label className="block text-sm font-semibold text-white/90">
+            <label className="block text-sm font-semibold text-gray-900">
               Artist Name <span className="text-danger">*</span>
             </label>
             <input
@@ -221,13 +221,13 @@ export default function GeneratePitchPage() {
               value={formData.artistName}
               onChange={(e) => setFormData({ ...formData, artistName: e.target.value })}
               placeholder="e.g. The Midnight Sons"
-              className="mt-2 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             />
           </div>
 
           {/* Track Title */}
           <div>
-            <label className="block text-sm font-semibold text-white/90">
+            <label className="block text-sm font-semibold text-gray-900">
               Track Title <span className="text-danger">*</span>
             </label>
             <input
@@ -236,20 +236,20 @@ export default function GeneratePitchPage() {
               value={formData.trackTitle}
               onChange={(e) => setFormData({ ...formData, trackTitle: e.target.value })}
               placeholder="e.g. Northern Lights"
-              className="mt-2 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             />
           </div>
 
           {/* Genre */}
           <div>
-            <label className="block text-sm font-semibold text-white/90">
+            <label className="block text-sm font-semibold text-gray-900">
               Genre <span className="text-danger">*</span>
             </label>
             <select
               required
               value={formData.genre}
               onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
-              className="mt-2 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             >
               {GENRES.map((genre) => (
                 <option key={genre} value={genre} className="bg-card text-foreground">
@@ -261,7 +261,7 @@ export default function GeneratePitchPage() {
 
           {/* Release Date */}
           <div>
-            <label className="block text-sm font-semibold text-white/90">
+            <label className="block text-sm font-semibold text-gray-900">
               Release Date <span className="text-danger">*</span>
             </label>
             <input
@@ -269,13 +269,13 @@ export default function GeneratePitchPage() {
               required
               value={formData.releaseDate}
               onChange={(e) => setFormData({ ...formData, releaseDate: e.target.value })}
-              className="mt-2 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             />
           </div>
 
           {/* Key Hook */}
           <div>
-            <label className="block text-sm font-semibold text-white/90">
+            <label className="block text-sm font-semibold text-gray-900">
               What makes this track special? <span className="text-danger">*</span>
             </label>
             <textarea
@@ -284,16 +284,16 @@ export default function GeneratePitchPage() {
               onChange={(e) => setFormData({ ...formData, keyHook: e.target.value.slice(0, hookMaxLength) })}
               rows={4}
               placeholder="e.g. Intimate indie-folk about finding home after years of touring. Think Laura Marling meets Phoebe Bridgers - sparse production, honest lyrics, gorgeous harmonies."
-              className="mt-2 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             />
-            <p className="mt-2 text-xs text-white/50">
+            <p className="mt-2 text-xs text-gray-500">
               {hookCharCount} / {hookMaxLength} characters
             </p>
           </div>
 
           {/* Track Link */}
           <div>
-            <label className="block text-sm font-semibold text-white/90">
+            <label className="block text-sm font-semibold text-gray-900">
               Link (Spotify/SoundCloud)
             </label>
             <input
@@ -301,13 +301,13 @@ export default function GeneratePitchPage() {
               value={formData.trackLink}
               onChange={(e) => setFormData({ ...formData, trackLink: e.target.value })}
               placeholder="https://open.spotify.com/track/..."
-              className="mt-2 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             />
           </div>
 
           {/* Tone Selector */}
           <div>
-            <label className="block text-sm font-semibold text-white/90">
+            <label className="block text-sm font-semibold text-gray-900">
               Tone
             </label>
             <div className="mt-3 flex gap-3">
@@ -319,7 +319,7 @@ export default function GeneratePitchPage() {
                   className={`flex-1 rounded-xl border px-4 py-3 text-sm font-medium transition ${
                     formData.tone === tone
                       ? 'border-brand-iris bg-brand-iris/20 text-brand-iris'
-                      : 'border-white/20 bg-white/5 text-white/70 hover:border-white/30'
+                      : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
                   }`}
                 >
                   {tone.charAt(0).toUpperCase() + tone.slice(1)}

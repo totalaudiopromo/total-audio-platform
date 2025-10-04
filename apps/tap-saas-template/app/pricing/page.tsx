@@ -86,15 +86,15 @@ export default function PricingPage() {
       <header className="glass-panel px-6 py-10 sm:px-10">
         <span className="badge-postcraft">Pricing preview · Stripe ready</span>
         <h1 className="mt-6 text-3xl font-semibold">Pick a launch plan</h1>
-        <p className="mt-4 max-w-2xl text-sm text-white/70">
+        <p className="mt-4 max-w-2xl text-sm text-gray-600">
           These tiers map to the Stripe price IDs referenced in the checkout API. Swap the copy and price points to align with your latest experiment, then plug in the IDs from your Stripe dashboard.
         </p>
-        <div className="mt-6 inline-flex items-center rounded-full border border-white/15 p-1 text-xs text-white/60">
+        <div className="mt-6 inline-flex items-center rounded-full border border-gray-300 p-1 text-xs text-gray-600">
           <button
             type="button"
             onClick={() => setBilling('monthly')}
             className={`rounded-full px-4 py-2 font-semibold transition ${
-              billing === 'monthly' ? 'bg-white/20 text-white shadow-sm' : 'text-white/60'
+              billing === 'monthly' ? 'bg-blue-500 text-white shadow-sm' : 'text-gray-600'
             }`}
           >
             Monthly billing
@@ -103,7 +103,7 @@ export default function PricingPage() {
             type="button"
             onClick={() => setBilling('annual')}
             className={`rounded-full px-4 py-2 font-semibold transition ${
-              billing === 'annual' ? 'bg-white/20 text-white shadow-sm' : 'text-white/60'
+              billing === 'annual' ? 'bg-blue-500 text-white shadow-sm' : 'text-gray-600'
             }`}
           >
             Annual billing (save 2 months)
@@ -127,14 +127,14 @@ export default function PricingPage() {
               <div className="flex flex-col gap-4 px-6 py-8">
                 <div className="flex items-center justify-between">
                   <h2 className="text-2xl font-semibold">{plan.name}</h2>
-                  <span className="text-sm font-medium text-white/50">{billing === 'monthly' ? 'Monthly' : 'Annual'} plan</span>
+                  <span className="text-sm font-medium text-gray-500">{billing === 'monthly' ? 'Monthly' : 'Annual'} plan</span>
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-bold text-white">{formatPrice(price)}</span>
-                  <span className="text-sm text-white/50">/{billing === 'monthly' ? 'mo' : 'yr'}</span>
+                  <span className="text-4xl font-bold text-gray-900">{formatPrice(price)}</span>
+                  <span className="text-sm text-gray-500">/{billing === 'monthly' ? 'mo' : 'yr'}</span>
                 </div>
-                <p className="text-sm text-white/70">{plan.blurb}</p>
-                <ul className="space-y-2 text-sm text-white/70">
+                <p className="text-sm text-gray-600">{plan.blurb}</p>
+                <ul className="space-y-2 text-sm text-gray-600">
                   {plan.features.map(feature => (
                     <li key={feature} className="flex items-center gap-2">
                       <span className="h-2 w-2 rounded-full bg-brand-iris" aria-hidden />
