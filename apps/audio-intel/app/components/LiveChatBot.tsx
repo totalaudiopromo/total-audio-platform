@@ -52,7 +52,7 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
       const welcomeMessage: Message = {
         id: '1',
         type: 'bot',
-        content: "Hey, I'm Audio. I'm here to help ya with anything you need.",
+        content: "Hi! I'm here to help. Ask me anything about Audio Intel.",
         timestamp: new Date()
       };
       setMessages([welcomeMessage]);
