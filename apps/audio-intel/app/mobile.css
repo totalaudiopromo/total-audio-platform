@@ -71,6 +71,19 @@
     max-width: calc(100vw - 2rem) !important;
   }
 
+  /* Before & After Card - FORCE CENTER ALIGNMENT */
+  section .grid > div.bg-white {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  section .grid > div > div > div {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
   /* Fix all text containers to prevent overflow */
   .card,
   .box,
@@ -1198,21 +1211,21 @@
     font-size: 0.875rem !important;
   }
 
-  /* Footer - PROFESSIONAL SINGLE COLUMN LAYOUT */
+  /* Footer - PROFESSIONAL TWO COLUMN LAYOUT */
   footer {
     padding: 2rem 1rem !important;
   }
 
-  footer .grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 2rem !important;
-    align-items: flex-start !important;
+  footer .grid.lg\\:grid-cols-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem 1.5rem !important;
+    align-items: start !important;
   }
 
   footer .space-y-8 {
-    display: flex !important;
-    flex-direction: column !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
     width: 100% !important;
   }
@@ -1223,34 +1236,40 @@
   }
 
   footer h3 {
-    font-size: 1.125rem !important;
+    font-size: 1rem !important;
     font-weight: 800 !important;
-    margin-bottom: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
     color: #fff !important;
   }
 
   footer p {
-    font-size: 0.875rem !important;
-    line-height: 1.6 !important;
-    margin-bottom: 1rem !important;
+    font-size: 0.8rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.75rem !important;
   }
 
   footer ul {
     display: flex !important;
     flex-direction: column !important;
-    gap: 0.5rem !important;
+    gap: 0.375rem !important;
   }
 
   footer ul li a {
-    font-size: 0.875rem !important;
+    font-size: 0.8rem !important;
     padding: 0.25rem 0 !important;
   }
 
-  /* Footer sections spacing */
+  /* Footer second column - Product & Support in grid */
   footer .grid.sm\\:grid-cols-2 {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1.5rem !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+    grid-column: 1 / -1 !important;
+  }
+
+  /* Contact info - span both columns */
+  footer .space-y-8 > div:first-child {
+    grid-column: 1 / -1 !important;
   }
 
   .mobile-footer-links {

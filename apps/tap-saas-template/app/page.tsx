@@ -49,7 +49,7 @@ export default function HomePage() {
           <div className="flex-1 space-y-6">
             <span className="badge-postcraft">Pitch Generator · Total Audio Promo</span>
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              Write 50 personalized pitches in
+              Write 50 personalised pitches in
               <span className="block text-blue-600">
                 20 minutes
               </span>

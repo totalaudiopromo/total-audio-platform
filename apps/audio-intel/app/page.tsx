@@ -596,13 +596,16 @@ export default function AudioIntelLanding() {
             <div className={`bg-white p-12 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden`}>
               <div className="text-center">
                 {/* ENLARGED chaos overwhelmed PNG as main feature - MOBILE RESPONSIVE */}
-                <Image 
-                  src="/assets/loading-states/chaos-overwhelmed.png"
-                  alt="Artist overwhelmed by chaotic contact research - papers everywhere, disorganised workflow"
-                  width={400}
-                  height={400}
-                  className="mx-auto mb-8 w-96 h-96 sm:w-72 sm:h-72 xs:w-60 xs:h-60"
-                />
+                <div className="w-full max-w-sm mx-auto mb-8 h-64 sm:h-72 overflow-hidden rounded-xl">
+                  <Image 
+                    src="/assets/loading-states/chaos-overwhelmed.png"
+                    alt="Artist overwhelmed by chaotic contact research - papers everywhere, disorganised workflow"
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-cover object-center"
+                    style={{ objectPosition: 'center 40%' }}
+                  />
+                </div>
                 <h3 className="text-3xl font-black text-gray-900 mb-6">The Reality</h3>
                 <p className="text-xl font-bold text-gray-700 mb-8">
                   Most artists and labels waste countless hours on manual research that could be automated with AI
@@ -1336,7 +1339,7 @@ export default function AudioIntelLanding() {
                   info@totalaudiopromo.com
                 </a>
                 <p className="text-sm">
-                  Manchester, UK · Built by radio promoters for artists, labels, and PR teams.
+                  Brighton, UK · Built by radio promoters for artists, labels, and PR teams.
                 </p>
               </div>
             </div>
