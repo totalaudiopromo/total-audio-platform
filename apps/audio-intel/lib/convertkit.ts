@@ -7,8 +7,8 @@
 import { getEnv } from '@/lib/env';
 
 interface ConvertKitConfig {
-  apiKey: string;
-  apiSecret?: string;
+  apiKey: string | null;
+  apiSecret?: string | null;
 }
 
 interface SubscriptionData {

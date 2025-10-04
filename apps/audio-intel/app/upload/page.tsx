@@ -104,12 +104,7 @@ export default function UploadPage() {
   // Load presets and last selection
   useEffect(() => {
     // Track page view
-    trackPageView('upload', {
-      page_type: 'product',
-      page_title: document.title,
-      referrer: document.referrer || 'direct',
-      utm_source: new URLSearchParams(window.location.search).get('utm_source') || undefined,
-    });
+    trackPageView('upload', document.title);
     trackFunnelProgression('FILE_UPLOAD', { page: 'upload' });
     
     try {

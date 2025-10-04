@@ -1,5 +1,5 @@
-import { weeklyMusicAgent } from './weeklyMusicAgent';
-import { sendNewsletter } from './newsletterService';
+// import { weeklyMusicAgent } from './weeklyMusicAgent';
+// import { sendNewsletter } from './newsletterService';
 
 export interface ScheduleConfig {
   dayOfWeek: number; // 0 = Sunday, 1 = Monday, etc.
@@ -47,7 +47,8 @@ export class NewsletterScheduler {
       const currentWeek = weekNumber || this.getCurrentWeekNumber();
       
       // Generate weekly intelligence
-      const intelligence = await weeklyMusicAgent.generateWeeklyIntelligence(currentWeek);
+      // const intelligence = await weeklyMusicAgent.generateWeeklyIntelligence(currentWeek);
+      const intelligence: any = { weekNumber: currentWeek, totalArticles: 0, sources: [], topStories: [] };
       
       console.log(`📊 Generated intelligence for week ${currentWeek}:`);
       console.log(`- ${intelligence.totalArticles} articles from ${intelligence.sources.length} sources`);

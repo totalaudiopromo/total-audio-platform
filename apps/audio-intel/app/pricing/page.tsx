@@ -31,12 +31,7 @@ function PricingContent() {
 
   // Track page view
   useEffect(() => {
-    trackPageView('pricing', {
-      page_type: 'product',
-      page_title: document.title,
-      referrer: document.referrer || 'direct',
-      utm_source: new URLSearchParams(window.location.search).get('utm_source') || undefined,
-    });
+    trackPageView('pricing', document.title);
   }, []);
   
   // Trial lengths surfaced in UI (mirrors server defaults; can be overridden with public envs)

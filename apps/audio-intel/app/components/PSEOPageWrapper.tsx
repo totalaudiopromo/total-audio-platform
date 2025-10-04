@@ -40,16 +40,13 @@ export function PSEOPageWrapper({ children, pageName, topic, searchVolume, tier 
     };
 
     // Track page view
-    trackPageView(pageName, trackingData);
+    trackPageView(pageName, document.title);
 
     // Also send to GTM dataLayer
     if (typeof window !== 'undefined' && (window as any).dataLayer) {
       (window as any).dataLayer.push({
         event: 'pseo_page_view',
         page_name: pageName,
-        pseo_topic: topic,
-        pseo_tier: tier,
-        pseo_search_volume: searchVolume,
         ...trackingData
       });
     }

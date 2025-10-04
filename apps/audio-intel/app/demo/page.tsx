@@ -41,12 +41,7 @@ export default function SimpleAudioIntelDemo() {
   // Get user email from localStorage or URL params (from beta signup)
   useEffect(() => {
     // Track page view
-    trackPageView('demo', {
-      page_type: 'product',
-      page_title: document.title,
-      referrer: document.referrer || 'direct',
-      utm_source: new URLSearchParams(window.location.search).get('utm_source') || undefined,
-    });
+    trackPageView('demo', document.title);
 
     const urlParams = new URLSearchParams(window.location.search)
     const emailParam = urlParams.get('email')

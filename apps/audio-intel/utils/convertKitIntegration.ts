@@ -9,6 +9,10 @@ export interface WeeklyIntelligence {
   sources: string[];
   totalArticles: number;
   weeklyInsight?: string;
+  topStories: any[];
+  quickTip?: string;
+  toolPromotion?: string;
+  communityQuestion?: string;
 }
 
 export interface ConvertKitCampaign {

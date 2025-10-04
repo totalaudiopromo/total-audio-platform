@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   title: "Music Industry Insights & Contact Enrichment Guides | Audio Intel Blog",
   description: "Industry guides on music promotion, contact enrichment, and campaign strategies. Written by working radio promoters with 5+ years experience.",
   keywords: "music promotion blog, contact enrichment guides, radio promotion tips, playlist submission strategies",
-  alternates: { canonical: 'https://intel.totalaudiopromo.com/blog' },
-  openGraph: { url: 'https://intel.totalaudiopromo.com/blog' },
   alternates: {
+    canonical: 'https://intel.totalaudiopromo.com/blog',
     languages: {
       'en-GB': 'https://intel.totalaudiopromo.com/blog',
     }
-  }
+  },
+  openGraph: { url: 'https://intel.totalaudiopromo.com/blog' }
 };
 
 const blogPosts = [

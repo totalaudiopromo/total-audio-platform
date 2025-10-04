@@ -260,21 +260,21 @@ export class NewsletterResearchEngine {
   }
 
   private generateIndustryInsight(theme: any): string {
-    const insights = {
+    const insights: Record<string, string> = {
       'The Hidden Cost of Manual Research': '94% of research time is wasted on outdated information',
       'Building Your Music Industry Network': 'Strategic relationships are worth 10x more than cold outreach',
       'AI Tools That Actually Work': 'AI is democratising enterprise-level tools for independent artists',
       'The £50 Budget Challenge': 'Smart strategy beats big budgets every time'
     };
-    
-    return insights[theme.theme] || 'The music industry is evolving faster than ever';
+
+    return insights[theme.theme as string] || 'The music industry is evolving faster than ever';
   }
 
   private generateOriginalArticle(theme: any): NewsletterArticle {
     return {
       title: `How to ${theme.focus}`,
       excerpt: `A practical guide to ${theme.focus.toLowerCase()} for independent artists working with limited budgets.`,
-      category: 'original',
+      category: 'industry' as const,
       readTime: '4 min read',
       source: 'original'
     };
@@ -310,36 +310,36 @@ export class NewsletterResearchEngine {
   }
 
   private generateSuccessStory(theme: any): string {
-    const stories = {
+    const stories: Record<string, string> = {
       'The Hidden Cost of Manual Research': 'Sarah reduced her research time from 25 hours to 2 minutes',
       'Building Your Music Industry Network': 'Tom built a network of 50+ industry contacts in 3 months',
       'AI Tools That Actually Work': 'Lisa increased her response rates by 300% using AI-powered outreach',
       'The £50 Budget Challenge': 'Mike generated £2,000 in revenue with a £50 promotion budget'
     };
-    
-    return stories[theme.theme] || 'Independent artists are achieving remarkable results';
+
+    return stories[theme.theme as string] || 'Independent artists are achieving remarkable results';
   }
 
   private generateQuickTip(theme: any): string {
-    const tips = {
+    const tips: Record<string, string> = {
       'The Hidden Cost of Manual Research': 'Use AI tools to automate contact research and focus on relationship building',
       'Building Your Music Industry Network': 'Start conversations by sharing valuable insights, not asking for favours',
       'AI Tools That Actually Work': 'Test AI tools with small campaigns before committing to full implementation',
       'The £50 Budget Challenge': 'Focus on one platform and master it before expanding to others'
     };
-    
-    return tips[theme.theme] || 'Focus on what moves the needle for your music career';
+
+    return tips[theme.theme as string] || 'Focus on what moves the needle for your music career';
   }
 
   private generateCommunityQuestion(theme: any): string {
-    const questions = {
+    const questions: Record<string, string> = {
       'The Hidden Cost of Manual Research': 'What\'s your biggest time-waster in music promotion?',
       'Building Your Music Industry Network': 'How do you approach building relationships in the music industry?',
       'AI Tools That Actually Work': 'Which AI tools have made the biggest difference to your music career?',
       'The £50 Budget Challenge': 'How do you maximise impact with a limited promotion budget?'
     };
-    
-    return questions[theme.theme] || 'What\'s your biggest challenge as an independent artist?';
+
+    return questions[theme.theme as string] || 'What\'s your biggest challenge as an independent artist?';
   }
 }
 

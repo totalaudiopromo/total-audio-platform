@@ -118,14 +118,14 @@ export class UndergroundContentFetcher {
         if (title && link) {
           const article: UndergroundArticle = {
             title: this.cleanText(title),
-            description: this.cleanText(description) || '',
+            description: this.cleanText(description || '') || '',
             url: link,
             publishedAt: pubDate || new Date().toISOString(),
             source: source.name,
-            category: this.categorizeContent(title, description, source.focus),
-            relevanceScore: this.calculateRelevanceScore(title, description, source),
+            category: this.categorizeContent(title, description || '', source.focus),
+            relevanceScore: this.calculateRelevanceScore(title, description || '', source.focus),
             excerpt: this.generateExcerpt(description || title),
-            tags: this.extractTags(title, description, source.focus)
+            tags: this.extractTags(title, description || '', source.focus)
           };
 
           articles.push(article);

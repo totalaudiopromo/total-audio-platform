@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
         quickTip: intelligence.quickTip,
         communityQuestion: intelligence.communityQuestion,
         topStories: intelligence.newsArticles || [],
-        sources: (intelligence.newsArticles || []).map(a => a.source).filter(Boolean),
+        sources: (intelligence.newsArticles || []).map((a: any) => a.source).filter(Boolean),
         totalArticles: intelligence.newsArticles?.length || 0
       }
     });

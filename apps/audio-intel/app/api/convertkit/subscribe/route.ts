@@ -13,7 +13,7 @@ interface SubscribeRequest {
     tags: string[];
     fields: Record<string, any>;
   };
-  form_type: 'hero' | 'pricing' | 'demo' | 'content';
+  form_type: 'hero' | 'pricing' | 'demo' | 'newsletter' | 'beta';
 }
 
 export async function POST(request: NextRequest) {

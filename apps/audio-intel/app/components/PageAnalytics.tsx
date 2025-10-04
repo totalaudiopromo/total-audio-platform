@@ -37,14 +37,13 @@ export function PageAnalytics({ pageName, pageType = 'landing', customData = {} 
     };
 
     // Track page view
-    trackPageView(pageName, trackingData);
+    trackPageView(pageName, document.title);
 
     // Also send to GTM dataLayer if available
     if (typeof window !== 'undefined' && (window as any).dataLayer) {
       (window as any).dataLayer.push({
         event: 'page_view',
         page_name: pageName,
-        page_type: pageType,
         ...trackingData
       });
     }

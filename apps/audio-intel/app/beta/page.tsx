@@ -28,12 +28,7 @@ import Link from "next/link"
 export default function BetaAccessPage() {
   // Track page view
   useEffect(() => {
-    trackPageView('beta-access', {
-      page_type: 'marketing',
-      page_title: 'Beta Access - Audio Intel',
-      referrer: document.referrer || 'direct',
-      utm_source: new URLSearchParams(window.location.search).get('utm_source') || undefined,
-    });
+    trackPageView('beta-access', 'Beta Access - Audio Intel');
   }, []);
 
   const [email, setEmail] = useState('')
