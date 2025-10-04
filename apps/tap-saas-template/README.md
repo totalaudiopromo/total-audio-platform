@@ -99,10 +99,29 @@ See [`TEMPLATE_USAGE.md`](./TEMPLATE_USAGE.md) for the full step-by-step guide, 
 - `app/api/checkout/route.ts` handles price lookup via env vars
 - When Stripe keys are missing the handler redirects straight to `/success` so you can demo the UX immediately
 
-## What to strip when templating from Intel
+## Documentation
 
-- Audio analysis logic, file handling, Intel dashboards, audio DB tables
-- Any agent-specific configuration you don’t need for the tool you are cloning
+### Core Documentation (Root Level)
+- **[TEMPLATE_USAGE.md](./TEMPLATE_USAGE.md)** - How to duplicate and customise this template
+- **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)** - Complete Postcraft aesthetic guide
+- **[QUICKSTART.md](./QUICKSTART.md)** - Development setup guide
+
+### Additional Documentation (`/docs/`)
+- **[docs/README.md](./docs/README.md)** - Complete documentation index
+- **Setup Guides:** Auth setup, configuration, integrations
+- **Reference:** Technical specs, feature docs
+- **Status Reports:** Historical completion notes (archive)
+
+**Browse all docs:** [`/docs/`](./docs/)
+
+## Tool-Specific Customisation
+
+When you duplicate this template, remove/replace:
+- Pitch Generator specific routes (`app/pitch/`)
+- Pitch-specific API routes (`app/api/pitch/`, `app/api/pitches/`)
+- Pitch database tables (keep auth tables)
+- Tool name references throughout
+- Update brand colour from blue to your tool's colour
 
 ## Notes
 
