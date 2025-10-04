@@ -50,7 +50,7 @@ export default function HomePage() {
             <span className="badge-postcraft">Pitch Generator · Total Audio Promo</span>
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
               Write 50 personalized pitches in
-              <span className="block bg-gradient-to-r from-brand-iris via-brand-magenta to-brand-amber bg-clip-text text-transparent">
+              <span className="block text-blue-600">
                 20 minutes
               </span>
             </h1>
@@ -68,8 +68,7 @@ export default function HomePage() {
           </div>
           <div className="flex-1">
             <div className="relative">
-              <div className="absolute -inset-6 rounded-[32px] bg-gradient-to-br from-brand-iris/35 via-brand-magenta/25 to-brand-amber/25 blur-2xl" aria-hidden />
-              <div className="relative glass-panel px-8 py-10">
+              <div className="glass-panel px-8 py-10">
                 <p className="text-xs font-semibold uppercase tracking-[0.5em] text-white/50">The Problem</p>
                 <h2 className="mt-4 text-2xl font-bold">Stop wasting time on pitches</h2>
                 <ul className="mt-6 space-y-4 text-sm text-white/70">
@@ -128,7 +127,7 @@ export default function HomePage() {
             <ol className="space-y-4">
               {howItWorks.map((step) => (
                 <li key={step.step} className="glass-panel flex items-start gap-4 px-5 py-5 sm:px-6">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-brand-iris to-brand-magenta text-sm font-semibold text-white">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-black bg-blue-500 text-sm font-bold text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                     {step.step}
                   </span>
                   <div>
