@@ -143,7 +143,7 @@ export default function PricingPage() {
                   ))}
                 </ul>
                 {isActive && (
-                  <span className="self-start rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
+                  <span className="self-start rounded-full bg-blue-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">
                     Selected
                   </span>
                 )}
@@ -161,7 +161,7 @@ export default function PricingPage() {
         }}
       >
         <div className="w-full max-w-md space-y-2">
-          <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.35em] text-white/45">
+          <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-600">
             Checkout email
           </label>
           <input
@@ -171,9 +171,9 @@ export default function PricingPage() {
             onChange={event => setEmail(event.target.value)}
             placeholder="you@example.com"
             required
-            className="w-full rounded-full border border-white/20 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
           />
-          <p className="text-xs text-white/40">Prefilled with the signed-in account when available.</p>
+          <p className="text-xs text-gray-500">Prefilled with the signed-in account when available.</p>
         </div>
         <div className="flex w-full flex-col items-start gap-3 sm:w-auto sm:flex-row sm:items-center">
           <button
@@ -183,7 +183,7 @@ export default function PricingPage() {
           >
             {status === 'loading' ? 'Redirecting…' : 'Proceed to checkout'}
           </button>
-          <span className="text-xs text-white/40">Stripe session will redirect to the success screen.</span>
+          <span className="text-xs text-gray-500">Stripe session will redirect to the success screen.</span>
         </div>
       </form>
 

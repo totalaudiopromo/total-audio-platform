@@ -1348,24 +1348,24 @@ export default function AudioIntelLanding() {
             <div className="grid gap-6 sm:gap-10 grid-cols-2 w-full">
               <div className="col-span-1">
                 <h3 className="text-base sm:text-xl font-black mb-3 sm:mb-6">Product</h3>
-                <ul className="space-y-2 sm:space-y-3">
+                <ul className="flex flex-col gap-2 sm:gap-3">
                   <li>
-                    <a href="#features" className="text-gray-300 hover:text-white font-bold transition-colors">
+                    <a href="#features" className="text-gray-300 hover:text-white font-bold transition-colors block">
                       Features
                     </a>
                   </li>
                   <li>
-                    <a href="#pricing" className="text-gray-300 hover:text-white font-bold transition-colors">
+                    <a href="#pricing" className="text-gray-300 hover:text-white font-bold transition-colors block">
                       Pricing
                     </a>
                   </li>
                   <li>
-                    <a href="/demo" className="text-gray-300 hover:text-white font-bold transition-colors">
+                    <a href="/demo" className="text-gray-300 hover:text-white font-bold transition-colors block">
                       Demo
                     </a>
                   </li>
                   <li>
-                    <a href="/beta" className="text-gray-300 hover:text-white font-bold transition-colors">
+                    <a href="/beta" className="text-gray-300 hover:text-white font-bold transition-colors block">
                       Beta Access
                     </a>
                   </li>
@@ -1374,24 +1374,24 @@ export default function AudioIntelLanding() {
 
               <div className="col-span-1">
                 <h3 className="text-base sm:text-xl font-black mb-3 sm:mb-6">Support</h3>
-                <ul className="space-y-2 sm:space-y-3">
+                <ul className="flex flex-col gap-2 sm:gap-3">
                   <li>
-                    <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors">
+                    <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors block">
                       Help Center
                     </a>
                   </li>
                   <li>
-                    <a href="/documentation" className="text-gray-300 hover:text-white font-bold transition-colors">
+                    <a href="/documentation" className="text-gray-300 hover:text-white font-bold transition-colors block">
                       Documentation
                     </a>
                   </li>
                   <li>
-                    <a href="https://intel.totalaudiopromo.com/faq" className="text-gray-300 hover:text-white font-bold transition-colors">
+                    <a href="https://intel.totalaudiopromo.com/faq" className="text-gray-300 hover:text-white font-bold transition-colors block">
                       FAQs
                     </a>
                   </li>
                   <li>
-                    <a href="mailto:support@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors">
+                    <a href="mailto:support@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors block">
                       Support Email
                     </a>
                   </li>
@@ -1400,14 +1400,14 @@ export default function AudioIntelLanding() {
 
               <div className="col-span-2 mt-4">
                 <h3 className="text-base sm:text-xl font-black mb-3 sm:mb-6">Legal</h3>
-                <ul className="space-y-2 sm:space-y-3">
+                <ul className="flex flex-col gap-2 sm:gap-3">
                   <li>
-                    <a href="https://totalaudiopromo.com/privacy" className="text-gray-300 hover:text-white font-bold transition-colors">
+                    <a href="https://totalaudiopromo.com/privacy" className="text-gray-300 hover:text-white font-bold transition-colors block">
                       Privacy Policy
                     </a>
                   </li>
                   <li>
-                    <a href="https://totalaudiopromo.com/terms" className="text-gray-300 hover:text-white font-bold transition-colors">
+                    <a href="https://totalaudiopromo.com/terms" className="text-gray-300 hover:text-white font-bold transition-colors block">
                       Terms of Service
                     </a>
                   </li>

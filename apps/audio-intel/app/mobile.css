@@ -1277,25 +1277,24 @@
     margin-bottom: 0.75rem !important;
   }
 
+  /* Footer links - CONSISTENT SPACING */
   footer ul {
     display: flex !important;
     flex-direction: column !important;
     gap: 0.5rem !important;
   }
 
+  footer ul li {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
   footer ul li a {
     font-size: 0.75rem !important;
-    padding: 0.25rem 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
     display: block !important;
-    line-height: 1.3 !important;
-  }
-
-  footer ul {
-    gap: 0.375rem !important;
-  }
-
-  footer .space-y-4 {
-    gap: 0.5rem !important;
+    line-height: 1.4 !important;
   }
 
   .mobile-footer-links {

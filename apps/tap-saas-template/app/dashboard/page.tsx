@@ -116,7 +116,7 @@ export default function DashboardPage() {
           <div>
             <span className="badge-postcraft">Pitch Generator</span>
             <h1 className="mt-3 text-3xl font-bold">
-              Welcome back, <span className="bg-gradient-to-r from-brand-iris to-brand-magenta bg-clip-text text-transparent">{session.user?.name || 'there'}</span>
+              Welcome back, <span className="text-blue-600">{session.user?.name || 'there'}</span>
             </h1>
             <p className="mt-2 text-gray-900/60">
               Write personalized pitches in seconds, not hours

@@ -106,7 +106,7 @@ export default function HomePage() {
                 <Icon className={`h-6 w-6 text-${feature.color}`} />
               </div>
               <h3 className="mt-4 text-xl font-semibold">{feature.title}</h3>
-              <p className="mt-3 text-sm text-white/70">{feature.description}</p>
+              <p className="mt-3 text-sm text-gray-600">{feature.description}</p>
             </div>
           );
         })}
