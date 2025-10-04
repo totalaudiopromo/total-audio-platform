@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "test:e2e": "node tests/e2e/auth.test.js"
@@ -15,6 +15,7 @@
     "@hookform/resolvers": "^5.2.2",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.58.0",
+    "@swc/helpers": "^0.5.17",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "4.1.0",
@@ -29,17 +30,21 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/postcss": "^4.1.14",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "dotenv": "^17.2.3",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
+    "postcss": "^8.4.31",
     "prettier": "^3.6.2",
     "puppeteer": "^24.22.3",
-    "tailwindcss": "^4",
+    "tailwindcss": "^4.1.13",
     "typescript": "^5"
   }
 }

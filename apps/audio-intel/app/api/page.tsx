@@ -18,6 +18,8 @@ import {
 export const metadata: Metadata = {
   title: "API Documentation | Audio Intel",
   description: "Integrate Audio Intel's contact enrichment API into your applications. RESTful API for music industry intelligence.",
+  alternates: { canonical: 'https://intel.totalaudiopromo.com/api' },
+  openGraph: { url: 'https://intel.totalaudiopromo.com/api' }
 }
 
 export default function APIPage() {

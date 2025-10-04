@@ -2,7 +2,7 @@ import Stripe from 'stripe';
 import { createClient } from '@/lib/supabase/server';
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-06-20',
+  apiVersion: '2025-08-27.basil',
 });
 
 export async function getOrCreateCustomerId(userId: string, email?: string | null): Promise<string> {
@@ -22,6 +22,8 @@ export async function getOrCreateCustomerId(userId: string, email?: string | nul
   if (insertErr) throw insertErr;
   return customer.id;
 }
+
+
 
 
 

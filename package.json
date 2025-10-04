@@ -119,6 +119,7 @@
     "@anthropic-ai/sdk": "^0.65.0",
     "@google-cloud/local-auth": "^3.0.1",
     "@headlessui/react": "^2.2.5",
+    "@hookform/resolvers": "^5.2.2",
     "@modelcontextprotocol/sdk": "^1.18.2",
     "@next/third-parties": "^15.4.4",
     "@notionhq/client": "^5.0.0",
@@ -131,8 +132,10 @@
     "framer-motion": "^12.23.12",
     "googleapis": "^161.0.0",
     "rss-parser": "^3.13.0",
+    "server-only": "^0.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
-    "youtube-transcript": "^1.2.1"
+    "youtube-transcript": "^1.2.1",
+    "zod": "^4.1.11"
   }
 }

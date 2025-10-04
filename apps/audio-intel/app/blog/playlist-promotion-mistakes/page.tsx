@@ -5,10 +5,12 @@ export const metadata: Metadata = {
   title: "5 Playlist Promotion Mistakes Killing Your Music Career | Audio Intel",
   description: "Stop making these deadly playlist promotion mistakes. Learn what actually works from someone who's seen hundreds of failed campaigns.",
   keywords: "playlist promotion mistakes, spotify playlist submission, music playlist promotion, playlist curator contacts, music promotion errors",
+  alternates: { canonical: 'https://intel.totalaudiopromo.com/blog/playlist-promotion-mistakes' },
   openGraph: {
+    url: 'https://intel.totalaudiopromo.com/blog/playlist-promotion-mistakes',
     title: "5 Playlist Promotion Mistakes That Are Killing Your Music Career",
     description: "These common playlist promotion mistakes are sabotaging your music career. Here's how to fix them.",
-    images: ["/images/playlist-mistakes-guide.png"],
+    images: [{ url: "/images/playlist-mistakes-guide.png", alt: "Playlist promotion mistakes guide cover" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -20,6 +22,28 @@ export const metadata: Metadata = {
 export default function PlaylistPromotionMistakes() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: "5 Playlist Promotion Mistakes Killing Your Music Career",
+            description: "Stop making these deadly playlist promotion mistakes.",
+            image: ["https://intel.totalaudiopromo.com/images/playlist-mistakes-guide.png"],
+            author: { "@type": "Person", name: "Chris Schofield" },
+            publisher: { "@type": "Organization", name: "Total Audio Promo" },
+            datePublished: "2025-08-30",
+            dateModified: "2025-08-30",
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://intel.totalaudiopromo.com/blog/playlist-promotion-mistakes"
+            },
+            inLanguage: "en-GB"
+          })
+        }}
+      />
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
           5 Playlist Promotion Mistakes Killing Your Music Career

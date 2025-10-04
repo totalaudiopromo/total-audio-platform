@@ -1,3 +1,5 @@
+'use server';
+
 import { createClient } from '@/lib/supabase/server';
 import type { CampaignActivity } from '@/lib/types';
 
@@ -66,6 +68,8 @@ export async function deleteActivity(id: string): Promise<void> {
     .eq('id', id);
   if (error) throw error;
 }
+
+
 
 
 

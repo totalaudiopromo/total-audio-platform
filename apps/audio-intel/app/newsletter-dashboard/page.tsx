@@ -63,6 +63,9 @@ export default function NewsletterDashboard() {
   const [campaignId, setCampaignId] = useState<string | null>(null)
   const [isCreatingDraft, setIsCreatingDraft] = useState(false)
   const [isSendingDraft, setIsSendingDraft] = useState(false)
+  const [isBulkScheduling, setIsBulkScheduling] = useState(false)
+  const [bulkStartWeek, setBulkStartWeek] = useState<number>(1)
+  const [bulkCount, setBulkCount] = useState<number>(6)
 
   // Load dashboard data
   useEffect(() => {
@@ -225,6 +228,28 @@ export default function NewsletterDashboard() {
       alert('Error sending ConvertKit draft. Please try again.')
     } finally {
       setIsSendingDraft(false)
+    }
+  }
+
+  const bulkScheduleDrafts = async () => {
+    setIsBulkScheduling(true)
+    try {
+      const response = await fetch('/api/newsletter/bulk-schedule', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ startWeek: bulkStartWeek, count: bulkCount })
+      })
+      const result = await response.json()
+      if (result.success) {
+        alert(`Queued ${result.queued} drafts successfully.`)
+      } else {
+        alert(`Bulk schedule failed: ${result.error || 'Unknown error'}`)
+      }
+    } catch (error) {
+      console.error('Bulk schedule error:', error)
+      alert('Bulk schedule failed. Please try again.')
+    } finally {
+      setIsBulkScheduling(false)
     }
   }
 
@@ -504,6 +529,34 @@ export default function NewsletterDashboard() {
                 <p className="text-xs text-gray-500 mt-2 text-center">
                   Newsletter will be sent to all subscribers with the "newsletter_unsigned_advantage" tag
                 </p>
+
+                <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div>
+                    <Label htmlFor="bulkStartWeek">Start week</Label>
+                    <Input
+                      id="bulkStartWeek"
+                      type="number"
+                      value={bulkStartWeek}
+                      onChange={(e) => setBulkStartWeek(parseInt(e.target.value || '1'))}
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="bulkCount">How many weeks</Label>
+                    <Input
+                      id="bulkCount"
+                      type="number"
+                      value={bulkCount}
+                      onChange={(e) => setBulkCount(parseInt(e.target.value || '6'))}
+                      className="mt-1"
+                    />
+                  </div>
+                  <div className="flex items-end">
+                    <Button onClick={bulkScheduleDrafts} disabled={isBulkScheduling} className="w-full">
+                      {isBulkScheduling ? 'Queuing drafts…' : 'Queue Drafts'}
+                    </Button>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>

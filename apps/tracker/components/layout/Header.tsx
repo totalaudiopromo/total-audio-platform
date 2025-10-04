@@ -1,29 +1,71 @@
 'use client';
 
-import { UserCircleIcon, BellIcon } from '@heroicons/react/24/outline';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { UserCircleIcon, BellIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
+import { createClient } from '@/lib/supabase/client';
 
 export function Header({ userName }: { userName: string }) {
-  return (
-    <header className="sticky top-0 z-30 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800">
-      <div className="px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-end gap-4">
-        <button className="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors relative">
-          <BellIcon className="w-5 h-5 text-slate-600 dark:text-slate-400" />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-600 rounded-full"></span>
-        </button>
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const router = useRouter();
+  const supabase = createClient();
 
-        <div className="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-slate-700">
-          <div className="text-right hidden sm:block">
-            <p className="text-sm font-semibold text-slate-900 dark:text-white">{userName}</p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">Pro Plan</p>
-          </div>
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-            <UserCircleIcon className="w-6 h-6 text-white" />
-          </div>
+  const handleSignOut = async () => {
+    setIsLoggingOut(true);
+    try {
+      await supabase.auth.signOut();
+      router.push('/');
+      router.refresh();
+    } catch (error) {
+      console.error('Error signing out:', error);
+    } finally {
+      setIsLoggingOut(false);
+      setShowDropdown(false);
+    }
+  };
+
+  return (
+    <header className="sticky top-0 z-30 bg-white border-b-2 border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div>
+          <h1 className="text-xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Total Audio Tracker
+          </h1>
+        </div>
+
+        <div className="relative">
+          <button
+            onClick={() => setShowDropdown(!showDropdown)}
+            className="flex items-center gap-3 hover:bg-slate-50 rounded-xl transition-all p-2"
+          >
+            <span className="text-sm font-semibold text-slate-700 hidden sm:block">
+              {userName}
+            </span>
+            <div className="w-9 h-9 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+              <UserCircleIcon className="w-5 h-5 text-white" />
+            </div>
+          </button>
+
+          {showDropdown && (
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border-2 border-slate-200 py-1">
+              <button
+                onClick={handleSignOut}
+                disabled={isLoggingOut}
+                className="w-full px-4 py-2.5 text-left text-sm font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2 disabled:opacity-50"
+              >
+                <ArrowRightOnRectangleIcon className="w-4 h-4" />
+                {isLoggingOut ? 'Signing out...' : 'Sign out'}
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </header>
   );
 }
+
+
 
 
 

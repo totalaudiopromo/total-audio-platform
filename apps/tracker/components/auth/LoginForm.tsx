@@ -42,7 +42,7 @@ export function LoginForm() {
       if (error) {
         setError(error.message);
       } else {
-        router.push('/dashboard');
+        router.push('/');
         router.refresh();
       }
     } catch (err) {
@@ -92,9 +92,18 @@ export function LoginForm() {
         )}
       </div>
 
+      <div className="flex items-center justify-end mb-4">
+        <a
+          href="/reset-password"
+          className="text-sm text-blue-600 hover:text-blue-700 transition-colors"
+        >
+          Forgot password?
+        </a>
+      </div>
+
       <Button
         type="submit"
-        className="w-full"
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white"
         disabled={isLoading}
       >
         {isLoading ? 'Signing in...' : 'Sign in'}

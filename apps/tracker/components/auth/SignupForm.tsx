@@ -52,7 +52,7 @@ export function SignupForm() {
       if (error) {
         setError(error.message);
       } else {
-        router.push('/dashboard');
+        router.push('/');
         router.refresh();
       }
     } catch (err) {
@@ -136,7 +136,7 @@ export function SignupForm() {
 
       <Button
         type="submit"
-        className="w-full"
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white"
         disabled={isLoading}
       >
         {isLoading ? 'Creating account...' : 'Create account'}

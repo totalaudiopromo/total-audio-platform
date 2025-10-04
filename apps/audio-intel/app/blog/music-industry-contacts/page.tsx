@@ -5,10 +5,12 @@ export const metadata: Metadata = {
   title: "How to Find Music Industry Contacts (Without Wasting Hours) | Audio Intel",
   description: "Stop wasting hours hunting for music industry contacts. Learn the exact methods working promoters use to find radio DJs, playlist curators, and music bloggers.",
   keywords: "music industry contacts, find radio DJ contacts, playlist curator emails, music blogger contacts, contact research tools",
+  alternates: { canonical: 'https://intel.totalaudiopromo.com/blog/music-industry-contacts' },
   openGraph: {
+    url: 'https://intel.totalaudiopromo.com/blog/music-industry-contacts',
     title: "How to Find Music Industry Contacts (The Smart Way)",
     description: "The exact methods working promoters use to find quality music industry contacts without wasting hours.",
-    images: ["/images/music-contacts-guide.png"],
+    images: [{ url: "/images/music-contacts-guide.png", alt: "Music industry contacts guide cover" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -20,6 +22,28 @@ export const metadata: Metadata = {
 export default function MusicIndustryContacts() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: "How to Find Music Industry Contacts (Without Wasting Hours)",
+            description: "Stop wasting hours hunting for music industry contacts.",
+            image: ["https://intel.totalaudiopromo.com/images/music-contacts-guide.png"],
+            author: { "@type": "Person", name: "Chris Schofield" },
+            publisher: { "@type": "Organization", name: "Total Audio Promo" },
+            datePublished: "2025-08-30",
+            dateModified: "2025-08-30",
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://intel.totalaudiopromo.com/blog/music-industry-contacts"
+            },
+            inLanguage: "en-GB"
+          })
+        }}
+      />
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
           How to Find Music Industry Contacts (Without Wasting Hours)

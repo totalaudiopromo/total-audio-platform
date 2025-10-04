@@ -5,10 +5,12 @@ export const metadata: Metadata = {
   title: "What is Music Contact Enrichment? Complete Guide (2025) | Audio Intel",
   description: "Right, so after 5+ years in radio promotion, I've learned the hard way that basic contact lists are useless. Here's how contact enrichment transforms music promotion results.",
   keywords: "music contact enrichment, contact enrichment tools, music industry contacts, playlist curator contacts, radio DJ contacts",
+  alternates: { canonical: 'https://intel.totalaudiopromo.com/blog/music-contact-enrichment-guide' },
   openGraph: {
+    url: 'https://intel.totalaudiopromo.com/blog/music-contact-enrichment-guide',
     title: "What is Music Contact Enrichment? Complete Guide by Industry Pro",
     description: "From someone who's wasted thousands of hours researching contacts manually - here's what music contact enrichment actually is and why it matters.",
-    images: ["/images/contact-enrichment-guide.png"],
+    images: [{ url: "/images/contact-enrichment-guide.png", alt: "Music contact enrichment guide cover" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -20,6 +22,28 @@ export const metadata: Metadata = {
 export default function MusicContactEnrichmentGuide() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: "What is Music Contact Enrichment? Complete Guide (2025)",
+            description: "What music contact enrichment actually is and why it matters.",
+            image: ["https://intel.totalaudiopromo.com/images/contact-enrichment-guide.png"],
+            author: { "@type": "Person", name: "Chris Schofield" },
+            publisher: { "@type": "Organization", name: "Total Audio Promo" },
+            datePublished: "2025-08-30",
+            dateModified: "2025-08-30",
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://intel.totalaudiopromo.com/blog/music-contact-enrichment-guide"
+            },
+            inLanguage: "en-GB"
+          })
+        }}
+      />
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
           What is Music Contact Enrichment? Complete Guide (2025)

@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-// import { weeklyMusicAgent } from '@/utils/weeklyMusicAgent';
 
 // This endpoint can be called by Vercel Cron Jobs, GitHub Actions, or any cron service
 export async function GET(request: NextRequest) {
@@ -11,17 +10,30 @@ export async function GET(request: NextRequest) {
 
     console.log(`🤖 Weekly Newsletter Cron: Running for week ${weekNumber}`);
 
-    // TODO: Implement weekly intelligence generation
-    const result = {
+    // Call the weekly-agent endpoint internally to generate content and create a draft/preview
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.VERCEL_URL || 'http://localhost:3000';
+    const url = `${String(baseUrl).startsWith('http') ? baseUrl : `https://${baseUrl}`}/api/newsletter/weekly-agent`;
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ weekNumber, createDraft, sendDraft: autoSend })
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      return NextResponse.json({ success: false, error: `Weekly agent failed: ${text}` }, { status: 500 });
+    }
+
+    const data = await res.json();
+
+    return NextResponse.json({
       success: true,
-      message: `Weekly newsletter cron endpoint called for week ${weekNumber}`,
       weekNumber,
       createDraft,
       autoSend,
-      note: 'Newsletter system temporarily disabled for build fix'
-    };
-
-    return NextResponse.json(result);
+      weeklyAgent: data
+    });
 
   } catch (error) {
     console.error('Error in weekly newsletter cron:', error);
@@ -40,6 +52,9 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   return GET(request);
 }
+
+
+
 
 
 

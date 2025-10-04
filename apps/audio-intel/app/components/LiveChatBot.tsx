@@ -120,7 +120,7 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
   };
 
   return (
-    <>
+    <div className="hidden md:block">
       {/* Chat Toggle Button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
@@ -271,6 +271,6 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
           </CardContent>
         </Card>
       )}
-    </>
+    </div>
   );
 }

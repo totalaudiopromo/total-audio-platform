@@ -1,57 +1,197 @@
 "use client";
-import { useState } from 'react';
+
+import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
+
+const plans = [
+  {
+    id: 'professional' as const,
+    name: 'Professional',
+    monthly: 39,
+    annual: 390,
+    blurb: 'Designed for indie promoters launching new audio products.',
+    features: [
+      'Unlimited campaign dashboards',
+      'Automated PDF export patterns',
+      'Access to Postcraft component kit',
+    ],
+  },
+  {
+    id: 'agency' as const,
+    name: 'Agency',
+    monthly: 79,
+    annual: 790,
+    blurb: 'Perfect for studios and agencies shipping client-ready experiences.',
+    features: [
+      'Everything in Professional',
+      'Multi-brand theme presets',
+      'Priority async support',
+    ],
+  },
+];
+
+const formatPrice = (value: number) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(value);
+
+type BillingCycle = 'monthly' | 'annual';
+
+type CheckoutState = 'idle' | 'loading' | 'error';
 
 export default function PricingPage() {
+  const { data: session } = useSession();
+  const [billing, setBilling] = useState<BillingCycle>('monthly');
+  const [selectedPlan, setSelectedPlan] = useState<typeof plans[number]['id']>('professional');
   const [email, setEmail] = useState('');
-  const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly');
-  const [tier, setTier] = useState<'professional' | 'agency'>('professional');
-  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<CheckoutState>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const checkout = async () => {
-    setLoading(true);
+  useEffect(() => {
+    if (session?.user?.email) {
+      setEmail(session.user.email);
+    }
+  }, [session?.user?.email]);
+
+
+  const handleCheckout = async () => {
+    setStatus('loading');
+    setErrorMessage(null);
     try {
-      const res = await fetch('/api/checkout', {
+      const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, tier, billing }),
+        body: JSON.stringify({ email, tier: selectedPlan, billing }),
       });
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert(data.error || 'Checkout failed');
+
+      if (!response.ok) {
+        const payload = await response.json().catch(() => ({}));
+        throw new Error(payload?.error ?? 'Checkout failed');
       }
-    } catch (e: any) {
-      alert(e?.message || 'Checkout error');
+
+      const payload = await response.json();
+      if (payload?.url) {
+        window.location.href = payload.url as string;
+        return;
+      }
+
+      throw new Error('Checkout URL missing from response');
+    } catch (error: any) {
+      setErrorMessage(error?.message ?? 'Checkout failed');
+      setStatus('error');
     } finally {
-      setLoading(false);
+      setStatus(prev => (prev === 'loading' ? 'idle' : prev));
     }
   };
 
   return (
-    <main style={{ padding: 24 }}>
-      <h1 style={{ fontSize: 24, fontWeight: 800 }}>Pricing</h1>
-      <div style={{ marginTop: 16 }}>
-        <label>
-          Email
-          <input value={email} onChange={e => setEmail(e.target.value)} style={{ marginLeft: 8 }} />
-        </label>
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
+      <header className="glass-panel px-6 py-10 sm:px-10">
+        <span className="badge-postcraft">Pricing preview · Stripe ready</span>
+        <h1 className="mt-6 text-3xl font-semibold">Pick a launch plan</h1>
+        <p className="mt-4 max-w-2xl text-sm text-white/70">
+          These tiers map to the Stripe price IDs referenced in the checkout API. Swap the copy and price points to align with your latest experiment, then plug in the IDs from your Stripe dashboard.
+        </p>
+        <div className="mt-6 inline-flex items-center rounded-full border border-white/15 p-1 text-xs text-white/60">
+          <button
+            type="button"
+            onClick={() => setBilling('monthly')}
+            className={`rounded-full px-4 py-2 font-semibold transition ${
+              billing === 'monthly' ? 'bg-white/20 text-white shadow-sm' : 'text-white/60'
+            }`}
+          >
+            Monthly billing
+          </button>
+          <button
+            type="button"
+            onClick={() => setBilling('annual')}
+            className={`rounded-full px-4 py-2 font-semibold transition ${
+              billing === 'annual' ? 'bg-white/20 text-white shadow-sm' : 'text-white/60'
+            }`}
+          >
+            Annual billing (save 2 months)
+          </button>
+        </div>
+      </header>
+
+      <div className="grid gap-6 md:grid-cols-2">
+        {plans.map(plan => {
+          const isActive = plan.id === selectedPlan;
+          const price = billing === 'monthly' ? plan.monthly : plan.annual;
+          return (
+            <button
+              key={plan.id}
+              type="button"
+              onClick={() => setSelectedPlan(plan.id)}
+              className={`glass-panel text-left transition focus-visible:outline-none ${
+                isActive ? 'ring-2 ring-offset-0 ring-primary/70' : 'hover:border-white/25'
+              }`}
+            >
+              <div className="flex flex-col gap-4 px-6 py-8">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-semibold">{plan.name}</h2>
+                  <span className="text-sm font-medium text-white/50">{billing === 'monthly' ? 'Monthly' : 'Annual'} plan</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-bold text-white">{formatPrice(price)}</span>
+                  <span className="text-sm text-white/50">/{billing === 'monthly' ? 'mo' : 'yr'}</span>
+                </div>
+                <p className="text-sm text-white/70">{plan.blurb}</p>
+                <ul className="space-y-2 text-sm text-white/70">
+                  {plan.features.map(feature => (
+                    <li key={feature} className="flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-brand-iris" aria-hidden />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                {isActive && (
+                  <span className="self-start rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
+                    Selected
+                  </span>
+                )}
+              </div>
+            </button>
+          );
+        })}
       </div>
-      <div style={{ marginTop: 12 }}>
-        <button onClick={() => setBilling('monthly')} disabled={billing==='monthly'}>Monthly</button>
-        <button onClick={() => setBilling('annual')} disabled={billing==='annual'} style={{ marginLeft: 8 }}>Annual</button>
-      </div>
-      <div style={{ marginTop: 12 }}>
-        <button onClick={() => setTier('professional')} disabled={tier==='professional'}>Professional</button>
-        <button onClick={() => setTier('agency')} disabled={tier==='agency'} style={{ marginLeft: 8 }}>Agency</button>
-      </div>
-      <div style={{ marginTop: 16 }}>
-        <button onClick={checkout} disabled={loading || !email}>
-          {loading ? 'Redirecting...' : 'Proceed to Checkout'}
-        </button>
-      </div>
-    </main>
+
+      <form
+        className="glass-panel flex flex-col gap-6 px-6 py-8 sm:flex-row sm:items-end sm:justify-between sm:px-8"
+        onSubmit={event => {
+          event.preventDefault();
+          void handleCheckout();
+        }}
+      >
+        <div className="w-full max-w-md space-y-2">
+          <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.35em] text-white/45">
+            Checkout email
+          </label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={event => setEmail(event.target.value)}
+            placeholder="you@example.com"
+            required
+            className="w-full rounded-full border border-white/20 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
+          />
+          <p className="text-xs text-white/40">Prefilled with the signed-in account when available.</p>
+        </div>
+        <div className="flex w-full flex-col items-start gap-3 sm:w-auto sm:flex-row sm:items-center">
+          <button
+            type="submit"
+            disabled={status === 'loading'}
+            className="cta-button min-w-[190px] justify-center"
+          >
+            {status === 'loading' ? 'Redirecting…' : 'Proceed to checkout'}
+          </button>
+          <span className="text-xs text-white/40">Stripe session will redirect to the success screen.</span>
+        </div>
+      </form>
+
+      {status === 'error' && errorMessage && (
+        <div className="glass-panel border-danger/40 bg-danger/10 px-6 py-4 text-sm text-danger">
+          {errorMessage}
+        </div>
+      )}
+    </div>
   );
 }
-
-

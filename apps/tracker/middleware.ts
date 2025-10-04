@@ -34,26 +34,24 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Protected routes that require authentication
-  const protectedRoutes = ['/dashboard', '/campaigns', '/analytics', '/contacts', '/settings'];
-  const isProtectedRoute = protectedRoutes.some(route =>
-    request.nextUrl.pathname.startsWith(route)
-  );
+  // Public routes that don't require authentication
+  const publicRoutes = ['/', '/login', '/signup'];
+  const isPublicRoute = publicRoutes.includes(request.nextUrl.pathname);
 
-  // Auth routes that should redirect if already authenticated
+  // Auth routes
   const authRoutes = ['/login', '/signup'];
   const isAuthRoute = authRoutes.includes(request.nextUrl.pathname);
 
-  // Redirect to login if accessing protected route without authentication
-  if (isProtectedRoute && !user) {
+  // Redirect authenticated users from auth pages to homepage
+  if (isAuthRoute && user) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
+
+  // Require auth for all non-public routes
+  if (!isPublicRoute && !user) {
     const redirectUrl = new URL('/login', request.url);
     redirectUrl.searchParams.set('redirectedFrom', request.nextUrl.pathname);
     return NextResponse.redirect(redirectUrl);
-  }
-
-  // Redirect to dashboard if accessing auth routes while authenticated
-  if (isAuthRoute && user) {
-    return NextResponse.redirect(new URL('/dashboard', request.url));
   }
 
   return supabaseResponse;

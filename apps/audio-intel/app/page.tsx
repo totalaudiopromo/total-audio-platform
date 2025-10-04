@@ -142,55 +142,71 @@ export default function AudioIntelLanding() {
   
   return (
     <div className="min-h-screen bg-[#f8f9fa]">
+      {/* FAQ JSON-LD for Homepage */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              { "@type": "Question", name: "What is Audio Intel?", acceptedAnswer: { "@type": "Answer", text: "An AI contact enrichment tool for music promotion that turns emails into pitch-ready intelligence for playlist curators, radio DJs, and music bloggers." } },
+              { "@type": "Question", name: "Who is it for?", acceptedAnswer: { "@type": "Answer", text: "Independent artists, small PR agencies, and labels in the UK and beyond." } },
+              { "@type": "Question", name: "How much does it cost?", acceptedAnswer: { "@type": "Answer", text: "Free beta; Professional £19.99/mo; Agency £39.99/mo." } }
+            ]
+          })
+        }}
+      />
       <LocationTracker page="home" />
       {betaEmail && <LocationTracker email={betaEmail} page="beta-signup" />}
       
       {/* Header */}
-      <header className={`audio-intel-header sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative`}>
-        <div className="audio-intel-container container flex h-16 items-center justify-between">
-          <div className="audio-intel-logo-container flex items-center space-x-4">
-            <Image 
-              src="/images/total_audio_promo_logo_trans.png" 
-              alt="Total Audio Promo Logo" 
-              width={40} 
+      <header className="audio-intel-header sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <div className="audio-intel-container max-w-7xl mx-auto px-4 sm:px-6 flex h-16 items-center justify-between">
+          <div className="audio-intel-logo-container flex items-center gap-3">
+            <Image
+              src="/images/total_audio_promo_logo_trans.png"
+              alt="Total Audio Promo Logo"
+              width={40}
               height={40}
-              className=""
+              className="flex-shrink-0"
             />
-            <div className="flex items-center space-x-2">
-              <span className="audio-intel-logo-text text-3xl font-black text-gray-900">Audio Intel</span>
-              <Badge variant="secondary" className="bg-blue-100 text-blue-800 font-bold">Beta</Badge>
+            <div className="flex items-center gap-2">
+              <span className="audio-intel-logo-text text-xl sm:text-2xl md:text-3xl font-black text-gray-900 tracking-tight">Audio Intel</span>
+              <Badge variant="secondary" className="bg-blue-100 text-blue-800 font-bold text-xs">Beta</Badge>
             </div>
           </div>
           
-          <nav className="audio-intel-nav hidden md:flex items-center space-x-6">
+          <nav className="audio-intel-nav hidden md:flex items-center gap-6">
             <div className="flex items-center gap-2 text-sm font-bold text-gray-500 cursor-not-allowed">
               <Music className="w-4 h-4" />
               <span>Playlist Pulse</span>
               <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full font-medium">Coming Soon</span>
             </div>
-            <a href="#features" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
+            <a href="#features" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors duration-300">
               Features
             </a>
-            <a href="#pricing" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
+            <a href="#pricing" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors duration-300">
               Pricing
             </a>
-            <Link href="/progress-dashboard" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
+            <Link href="/progress-dashboard" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors duration-300">
               Progress Dashboard
             </Link>
             {process.env.NEXT_PUBLIC_ENABLE_SEO_ANALYSIS === 'true' && (
-              <Link href="/seo-analysis" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
+              <Link href="/seo-analysis" className="audio-intel-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors duration-300">
                 SEO Analysis
               </Link>
             )}
 
             <Link href="/signin">
-              <Button variant="outline" size="sm" className="font-bold border-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+              <Button variant="outline" size="sm" className="font-bold border-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] min-h-[40px] active:scale-95 transition-transform duration-150">
                 Sign In
               </Button>
             </Link>
-            <Button 
-              size="sm" 
-              className="audio-intel-nav-button bg-blue-600 hover:bg-blue-700 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+            <Button
+              size="sm"
+              className="audio-intel-nav-button bg-blue-600 hover:bg-blue-700 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] min-h-[40px] active:scale-95 transition-all duration-150"
               onClick={handlePricingNavigation}
             >
               Get Started
@@ -200,20 +216,20 @@ export default function AudioIntelLanding() {
       </header>
 
       {/* Cross-Promotion Banner */}
-      <section className={`audio-intel-banner w-full px-4 py-8 bg-gradient-to-r from-yellow-50 to-yellow-100 border-b-4 border-yellow-300 relative`}>
-        <div className="audio-intel-container max-w-6xl mx-auto">
+      <section className="audio-intel-banner w-full bg-gradient-to-r from-yellow-50 to-yellow-100 border-b-4 border-yellow-300">
+        <div className="audio-intel-container max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
-              <div className="bg-yellow-400 rounded-full p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
+              <div className="bg-yellow-400 rounded-2xl p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
                 <Music className="w-6 h-6 text-white [animation:none]" />
               </div>
               <div>
-                <h3 className="text-xl font-black text-gray-900">Need playlist promotion? Playlist Pulse is coming soon!</h3>
-                <p className="text-gray-700 font-bold">Get ready for instant access to 50,000+ verified playlist curators with AI-powered pitch generation</p>
+                <h3 className="text-lg sm:text-xl font-black text-gray-900 leading-tight tracking-tight mb-2">Need playlist promotion? Playlist Pulse is coming soon!</h3>
+                <p className="text-sm sm:text-base text-gray-700 font-bold leading-relaxed">Get ready for instant access to 50,000+ verified playlist curators with AI-powered pitch generation</p>
               </div>
             </div>
-            <div className="flex items-center gap-2 bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <span>Coming Soon</span>
+            <div className="flex items-center gap-2 bg-yellow-400 text-black font-bold px-6 py-3 rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
+              <span className="text-sm sm:text-base">Coming Soon</span>
               <span className="text-xs bg-yellow-600 text-white px-2 py-1 rounded-full">Q2 2025</span>
             </div>
           </div>
@@ -221,54 +237,55 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* Hero Section */}
-      <section className={`audio-intel-hero container px-4 py-16 mx-auto text-center relative`}>
-        <div className="audio-intel-container max-w-4xl mx-auto">
+      <section className="audio-intel-hero w-full">
+        <div className="audio-intel-container max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
           {/* Total Audio Promo Logo in Hero - TRANSPARENT PNG ONLY - MOBILE RESPONSIVE */}
           <div className="mb-12">
-            <Image 
-              src="/images/total_audio_promo_logo_trans.png" 
-              alt="Total Audio Promo - Music Industry Intelligence" 
-              width={240} 
-              height={240}
-              className="mx-auto mb-6 w-60 h-60 sm:w-48 sm:h-48 xs:w-40 xs:h-40"
+            <Image
+              src="/images/total_audio_promo_logo_trans.png"
+              alt="Total Audio Promo - Music Industry Intelligence"
+              width={200}
+              height={200}
+              className="mx-auto w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52"
             />
           </div>
-          
-          <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-8 leading-tight">
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight tracking-tight px-4">
             <span className="hidden md:block">Don't Let Manual Research</span>
             <span className="block md:hidden">Stop Manual Research</span>
-            <span className="block text-blue-600">
+            <span className="block text-blue-600 mt-2">
               <span className="hidden md:inline">Kill Your Music Career</span>
               <span className="md:hidden">Killing Your Career</span>
             </span>
           </h1>
-          
-          <div className="max-w-4xl mx-auto mb-12">
-            <p className="text-2xl text-gray-600 mb-6 leading-relaxed font-medium">
+
+          <div className="max-w-3xl mx-auto mb-12 px-4">
+            <p className="text-xl sm:text-2xl text-gray-600 mb-6 leading-relaxed font-medium tracking-tight">
               Built by a Brighton producer who hated wasting weekends researching radio contacts.
             </p>
-            
-            <p className="text-lg text-gray-700 leading-relaxed">
+
+            <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
               Audio Intel uses AI to turn email addresses into detailed music industry profiles - submission guidelines, contact preferences, and pitch-ready insights for playlist curators, radio DJs, and music bloggers.
             </p>
           </div>
           
-          <div className="audio-intel-hero-buttons flex flex-col sm:flex-row gap-6 justify-center mb-16">
-            <Link href="/pricing?plan=professional&billing=monthly">
-              <Button 
-                size="lg" 
-                className="audio-intel-hero-button bg-blue-600 hover:bg-blue-700 text-lg px-12 py-4 font-bold rounded-xl transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          <div className="audio-intel-hero-buttons flex flex-col sm:flex-row gap-4 justify-center mb-16 px-4">
+            <Link href="/pricing?plan=professional&billing=monthly" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                className="audio-intel-hero-button w-full bg-blue-600 hover:bg-blue-700 text-base sm:text-lg px-8 sm:px-12 font-bold rounded-2xl transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] min-h-[54px] active:scale-95 leading-tight"
               >
                 Drop Your Chaos Here
               </Button>
             </Link>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="audio-intel-hero-button text-lg px-12 py-4 font-medium border-2 rounded-xl hover:bg-gray-50 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+            <Button
+              variant="outline"
+              size="lg"
+              className="audio-intel-hero-button w-full sm:w-auto text-base sm:text-lg px-8 sm:px-12 font-medium border-2 rounded-2xl hover:bg-gray-50 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] min-h-[54px] active:scale-95 leading-tight"
               onClick={() => document.getElementById('solution')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              See why industry professionals choose Audio Intel
+              <span className="hidden sm:inline">See why industry professionals choose Audio Intel</span>
+              <span className="sm:hidden">Why Industry Pros Choose Us</span>
             </Button>
           </div>
           
@@ -360,7 +377,7 @@ export default function AudioIntelLanding() {
 
       {/* Core Features Section */}
       <section id="features" className={`py-24 px-4 bg-gradient-to-br from-blue-50 to-purple-50 relative`}>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">
               Complete Contact Management Platform
@@ -370,7 +387,7 @@ export default function AudioIntelLanding() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Left Column - Core Features */}
             <div className="space-y-8">
               {/* Email Validation - NEW FEATURE */}
@@ -535,10 +552,11 @@ export default function AudioIntelLanding() {
               </p>
             <Button
               size="lg"
-              className="bg-white text-black font-black text-lg px-8 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+              className="bg-white text-black font-black text-base sm:text-lg px-6 sm:px-8 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all min-h-[56px] whitespace-normal leading-tight"
               onClick={() => window.location.href = '/pricing'}
             >
-              Try Premium Validation FREE
+              <span className="hidden sm:inline">Try Premium Validation FREE</span>
+              <span className="sm:hidden">Try FREE</span>
             </Button>
             </div>
           </div>
@@ -861,11 +879,11 @@ export default function AudioIntelLanding() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className={`py-24 px-4 relative`}>
+      <section id="pricing" className={`py-24 px-4 sm:px-6 relative`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">Simple, Transparent Pricing</h2>
-            <p className="text-2xl font-bold text-gray-700 max-w-4xl mx-auto mb-8">
+            <p className="text-xl sm:text-2xl font-bold text-gray-700 max-w-4xl mx-auto mb-8">
               Choose the plan that fits your music promotion needs. All plans include our core AI enrichment features.
             </p>
             
@@ -885,17 +903,18 @@ export default function AudioIntelLanding() {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {/* Beta Free */}
-            <div className="bg-gradient-to-br from-green-50 to-white p-10 rounded-2xl border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative">
+            <div className="bg-gradient-to-br from-green-50 to-white p-6 sm:p-10 rounded-2xl border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative mx-auto w-full max-w-md lg:max-w-none">
               <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-600 to-green-500 rounded-full px-8 py-3 font-black text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 TRY THE REAL THING
               </Badge>
 
               <div className="text-center mb-10 mt-6">
                 <h3 className="text-3xl font-black text-gray-900 mb-6">FREE BETA</h3>
-                <div className="text-6xl font-black text-gray-900 mb-6">
-                  FREE<span className="text-2xl text-gray-600">/beta</span>
+                <div className="mb-6">
+                  <span className="text-6xl font-black text-gray-900 whitespace-nowrap">FREE</span>
+                  <span className="text-2xl text-gray-600">/beta</span>
                 </div>
                 <p className="text-lg font-bold text-gray-700 mb-4">No card needed, no tricks</p>
               </div>
@@ -958,8 +977,8 @@ export default function AudioIntelLanding() {
               </div>
 
               <Link href="/beta">
-                <Button 
-                  className="w-full rounded-2xl font-black text-xl py-6 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-600 hover:to-green-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+                <Button
+                  className="w-full rounded-2xl font-black text-lg sm:text-xl py-6 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-600 hover:to-green-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all min-h-[60px] whitespace-normal leading-tight"
                 >
                   Start Free Beta
                 </Button>
@@ -967,7 +986,7 @@ export default function AudioIntelLanding() {
             </div>
 
             {/* Professional - Most Popular */}
-            <div className="bg-gradient-to-br from-blue-50 to-white p-10 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative transform scale-105 ring-4 ring-blue-200 ring-opacity-50">
+            <div className="bg-gradient-to-br from-blue-50 to-white p-6 sm:p-10 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative transform lg:scale-105 ring-4 ring-blue-200 ring-opacity-50 mx-auto w-full max-w-md lg:max-w-none">
               <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full px-8 py-3 font-black text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 MOST POPULAR
               </Badge>
@@ -975,8 +994,9 @@ export default function AudioIntelLanding() {
               <div className="text-center mb-10 mt-6">
                 <h3 className="text-3xl font-black text-gray-900 mb-6">PROFESSIONAL</h3>
                 <h4 className="text-xl font-bold text-blue-600 mb-4">"Get Ahead of the Queue"</h4>
-                <div className="text-6xl font-black text-gray-900 mb-6">
-                   £19.99<span className="text-2xl text-gray-600">/mo</span>
+                <div className="mb-6 flex items-baseline justify-center gap-1">
+                  <span className="text-5xl sm:text-6xl font-black text-gray-900 whitespace-nowrap">£19.99</span>
+                  <span className="text-2xl text-gray-600">/mo</span>
                 </div>
                 <p className="text-sm font-bold text-gray-700">67p/day - what you spend on coffee</p>
               </div>
@@ -1051,8 +1071,8 @@ export default function AudioIntelLanding() {
               </div>
 
             <Link href="/pricing">
-              <Button 
-                className="w-full rounded-2xl font-black text-xl py-6 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+              <Button
+                className="w-full rounded-2xl font-black text-lg sm:text-xl py-6 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all min-h-[60px] whitespace-normal leading-tight"
               >
                 Skip The Queue Today
               </Button>
@@ -1060,12 +1080,13 @@ export default function AudioIntelLanding() {
             </div>
 
             {/* Agency */}
-            <div className="bg-white p-10 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
+            <div className="bg-white p-6 sm:p-10 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all mx-auto w-full max-w-md lg:max-w-none">
               <div className="text-center mb-10">
                 <h3 className="text-3xl font-black text-gray-900 mb-6">AGENCY</h3>
                 <h4 className="text-xl font-bold text-purple-600 mb-4">"White-Label Everything"</h4>
-                <div className="text-6xl font-black text-gray-900 mb-6">
-                   £39.99<span className="text-2xl text-gray-600">/mo</span>
+                <div className="mb-6 flex items-baseline justify-center gap-1">
+                  <span className="text-5xl sm:text-6xl font-black text-gray-900 whitespace-nowrap">£39.99</span>
+                  <span className="text-2xl text-gray-600">/mo</span>
                 </div>
                 <p className="text-sm font-bold text-gray-700">Pays for itself if you retain one extra client</p>
               </div>
@@ -1140,8 +1161,8 @@ export default function AudioIntelLanding() {
               </div>
 
               <Link href="/pricing">
-                <Button 
-                  className="w-full rounded-2xl font-black text-xl py-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all bg-white hover:bg-gray-50 text-black border-4 border-gray-300"
+                <Button
+                  className="w-full rounded-2xl font-black text-lg sm:text-xl py-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all bg-white hover:bg-gray-50 text-black border-4 border-gray-300 min-h-[60px] whitespace-normal leading-tight"
                 >
                   White-Label Your Intelligence
                 </Button>
@@ -1161,14 +1182,15 @@ export default function AudioIntelLanding() {
             Join hundreds of artists and labels who've already saved 15+ hours per week with AI-powered contact
             intelligence. Built by someone who uses it daily in real campaigns.
           </p>
-          <div className="flex justify-center">
+          <div className="flex justify-center px-4">
              <Button
               size="lg"
-              className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-600 text-white rounded-2xl px-12 py-8 text-2xl font-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+              className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-600 text-white rounded-2xl px-8 sm:px-12 py-6 sm:py-8 text-lg sm:text-2xl font-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all w-full sm:w-auto min-h-[64px] whitespace-normal leading-tight"
               onClick={() => window.location.href = '/pricing'}
             >
-              <Play className="w-8 h-8 mr-4" />
-              Try the tool I use daily - FREE
+              <Play className="w-6 h-6 sm:w-8 sm:h-8 mr-3 sm:mr-4 flex-shrink-0" />
+              <span className="hidden sm:inline">Try the tool I use daily - FREE</span>
+              <span className="sm:hidden">Try FREE</span>
             </Button>
           </div>
         </div>

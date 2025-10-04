@@ -1,16 +1,20 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: 'Tracker - Music Campaign Management',
-  description: 'Professional music campaign tracking and analytics for independent artists and labels.',
-  keywords: ['music', 'campaign', 'tracking', 'analytics', 'independent artists', 'music marketing'],
+  title: "Total Audio Tracker – Simple Campaign Tracking",
+  description: "Simple campaign tracking for indie artists and radio promoters. Stop using spreadsheets.",
 };
 
 export default function RootLayout({
@@ -19,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
+      <body className="relative min-h-screen font-sans overflow-x-hidden">
         {children}
       </body>
     </html>

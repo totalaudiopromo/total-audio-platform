@@ -1,328 +1,253 @@
-'use client';
-
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import { CampaignList } from '@/components/campaigns/CampaignList';
+import { AddCampaignButton } from '@/components/campaigns/AddCampaignButton';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { AuthButton } from '@/components/auth/AuthButton';
-import { 
-  ChartBarIcon, 
-  PlayIcon, 
-  SpeakerWaveIcon,
-  DocumentTextIcon,
-  UserGroupIcon,
-  ClockIcon
-} from '@heroicons/react/24/outline';
 
-export default function Home() {
+export default async function HomePage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  // If authenticated, show dashboard
+  if (user) {
+    const { data: campaigns = [], error } = await supabase
+      .from('campaigns')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching campaigns:', error);
+    }
+
+    // Calculate simple stats
+    const activeCampaigns = campaigns.filter(c => c.status === 'active').length;
+    const totalSpend = campaigns.reduce((sum, c) => sum + (parseFloat(c.budget) || 0), 0);
+    const campaignsWithResults = campaigns.filter(c => c.actual_metric > 0 && c.budget > 0);
+    const avgROI = campaignsWithResults.length > 0
+      ? campaignsWithResults.reduce((sum, c) => {
+          const roi = ((c.actual_metric - c.target_metric) / c.target_metric) * 100;
+          return sum + roi;
+        }, 0) / campaignsWithResults.length
+      : 0;
+
+    const stats = [
+      { title: 'Total Campaigns', value: campaigns.length.toString() },
+      { title: 'Active', value: activeCampaigns.toString() },
+      { title: 'Total Spend', value: `£${totalSpend.toFixed(0)}` },
+      { title: 'Avg ROI', value: `${avgROI > 0 ? '+' : ''}${avgROI.toFixed(0)}%` },
+    ];
+
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+        <header className="sticky top-0 z-30 bg-white border-b-2 border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <h1 className="text-xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Total Audio Tracker
+            </h1>
+            <form action="/api/auth/signout" method="post">
+              <button
+                type="submit"
+                className="text-sm font-semibold text-slate-700 hover:text-slate-900"
+              >
+                Sign out
+              </button>
+            </form>
+          </div>
+        </header>
+
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="space-y-8">
+            <div className="flex items-center justify-between">
+              <h2 className="text-3xl font-black text-slate-900">Campaign Tracker</h2>
+              <AddCampaignButton />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {stats.map((stat) => (
+                <div
+                  key={stat.title}
+                  className="bg-white rounded-2xl p-6 shadow-sm border-2 border-slate-200 hover:shadow-lg hover:border-blue-300 transition-all"
+                >
+                  <p className="text-sm font-medium text-slate-600 mb-2">{stat.title}</p>
+                  <p className="text-3xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    {stat.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border-2 border-slate-200 p-8">
+              <h3 className="text-2xl font-black text-slate-900 mb-6">Campaigns</h3>
+              <CampaignList campaigns={campaigns} />
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // If not authenticated, show landing page
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      {/* Navigation */}
-      <nav className="border-b border-slate-200/50 bg-white/70 backdrop-blur-md sticky top-0 z-50">
+    <div className="min-h-screen bg-gray-50">
+      {/* Header matching Intel exactly */}
+      <nav className="border-b border-gray-200 bg-white sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
-                <PlayIcon className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Tracker</span>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">🎵</span>
+              <h1 className="text-xl font-bold text-gray-900">
+                Tracker
+              </h1>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
-                Features
-              </a>
-              <a href="#pricing" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
-                Pricing
-              </a>
-              <AuthButton />
+            <div className="flex items-center gap-4">
+              <Link href="/login" className="text-sm font-medium text-gray-700 hover:text-gray-900">
+                Sign in
+              </Link>
+              <Link
+                href="/signup"
+                className="px-5 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors text-sm"
+              >
+                Get Started
+              </Link>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 mb-6">
-            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Used by 500+ Independent Artists & PR Agencies
-            </span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-6 leading-tight">
-            Stop Tracking Campaigns
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Hero section - clean and simple like Intel */}
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            Don't Let Manual Tracking
             <br />
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              In Spreadsheets
-            </span>
+            <span className="text-blue-600">Kill Your Music Career</span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Real-time campaign analytics across Spotify, radio, and social media.
-            Built for indie artists and PR agencies who need professional insights without the chaos.
+          <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
+            Built by a Brighton producer who hated wasting weekends tracking campaigns.
+            <br />
+            Tracker uses AI to show you what's actually working.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button
-              size="lg"
-              className="text-lg px-8 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
-              onClick={() => window.location.href = '/signup'}
+          <div className="flex gap-4 justify-center">
+            <Link
+              href="/signup"
+              className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
             >
-              Start Free Trial
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 py-6 border-2 border-slate-300 hover:border-slate-400 hover:bg-slate-50 transition-all"
+              Track Your First Campaign
+            </Link>
+            <Link
+              href="/demo"
+              className="px-8 py-3 bg-white text-gray-900 rounded-lg font-semibold border border-gray-300 hover:border-gray-400 transition-colors"
             >
-              Watch Demo
-            </Button>
+              See How It Works
+            </Link>
           </div>
-          <p className="text-sm text-slate-500">
-            No credit card required • 14-day free trial • Setup in under 2 minutes
+          <p className="text-sm text-gray-500 mt-4">
+            Free for 3 campaigns • £19/month for unlimited
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div id="features" className="mt-32">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
-              Professional Campaign Tracking
-              <br />
-              <span className="text-2xl md:text-3xl font-bold text-slate-600">Without The Spreadsheet Chaos</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Everything indie artists and PR agencies need to track campaigns like the pros.
-              No more scattered Excel files or lost data.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-lg hover:border-blue-200 transition-all group">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <ChartBarIcon className="w-7 h-7 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                Real-Time Analytics
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                Watch your campaign metrics update live across streaming platforms, social media, and radio.
-                No more waiting days for spreadsheet updates.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-lg hover:border-purple-200 transition-all group">
-              <div className="w-14 h-14 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <SpeakerWaveIcon className="w-7 h-7 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                Multi-Platform Tracking
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                Spotify, Apple Music, YouTube, Instagram, TikTok, and radio plays—all in one dashboard.
-                Finally, see the complete picture.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-lg hover:border-blue-200 transition-all group">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <DocumentTextIcon className="w-7 h-7 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                Professional Reports
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                Generate label-ready reports in seconds with custom branding.
-                Impress managers and stakeholders with polished insights.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-lg hover:border-purple-200 transition-all group">
-              <div className="w-14 h-14 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <UserGroupIcon className="w-7 h-7 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                Team Collaboration
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                Share campaigns, assign roles, and stay aligned with your team.
-                Perfect for PR agencies managing multiple artists.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-lg hover:border-blue-200 transition-all group">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <ClockIcon className="w-7 h-7 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                Time-Saving Automation
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                Auto-collect data, generate reports, and set up smart alerts.
-                Spend less time tracking, more time creating.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-lg hover:border-purple-200 transition-all group">
-              <div className="w-14 h-14 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <PlayIcon className="w-7 h-7 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                Release Tracking
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                Track every release from pre-save to post-campaign with granular metrics.
-                Understand what works and replicate success.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Pricing Section */}
-        <div id="pricing" className="mt-32">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
-              Simple, Transparent Pricing
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Choose the plan that fits your needs. All plans include a 14-day free trial.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Free Tier */}
-            <div className="bg-white rounded-2xl p-8 shadow-sm border-2 border-slate-200 hover:border-blue-300 transition-all">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Starter</h3>
-                <div className="mb-4">
-                  <span className="text-5xl font-black text-slate-900">Free</span>
-                </div>
-                <p className="text-slate-600">Perfect for testing the waters</p>
-              </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start">
-                  <ChartBarIcon className="w-5 h-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">1 active campaign</span>
-                </li>
-                <li className="flex items-start">
-                  <ChartBarIcon className="w-5 h-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Basic analytics</span>
-                </li>
-                <li className="flex items-start">
-                  <ChartBarIcon className="w-5 h-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">5 tracked platforms</span>
-                </li>
-              </ul>
-              <Button variant="outline" className="w-full" size="lg" onClick={() => window.location.href = '/signup'}>
-                Get Started
-              </Button>
-            </div>
-
-            {/* Pro Tier */}
-            <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 shadow-xl border-2 border-transparent relative transform scale-105">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                <span className="bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-sm font-bold">
-                  MOST POPULAR
-                </span>
-              </div>
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-white mb-2">Pro</h3>
-                <div className="mb-4">
-                  <span className="text-5xl font-black text-white">£19</span>
-                  <span className="text-white/80">/month</span>
-                </div>
-                <p className="text-white/90">For serious indie artists</p>
-              </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start">
-                  <ChartBarIcon className="w-5 h-5 text-white mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-white">10 active campaigns</span>
-                </li>
-                <li className="flex items-start">
-                  <ChartBarIcon className="w-5 h-5 text-white mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-white">Advanced analytics & reports</span>
-                </li>
-                <li className="flex items-start">
-                  <ChartBarIcon className="w-5 h-5 text-white mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-white">Unlimited platforms</span>
-                </li>
-                <li className="flex items-start">
-                  <ChartBarIcon className="w-5 h-5 text-white mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-white">Priority support</span>
-                </li>
-              </ul>
-              <Button className="w-full bg-white text-blue-600 hover:bg-slate-50" size="lg" onClick={() => window.location.href = '/signup'}>
-                Start Free Trial
-              </Button>
-            </div>
-
-            {/* Agency Tier */}
-            <div className="bg-white rounded-2xl p-8 shadow-sm border-2 border-slate-200 hover:border-purple-300 transition-all">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Agency</h3>
-                <div className="mb-4">
-                  <span className="text-5xl font-black text-slate-900">£79</span>
-                  <span className="text-slate-600">/month</span>
-                </div>
-                <p className="text-slate-600">For PR agencies & labels</p>
-              </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start">
-                  <ChartBarIcon className="w-5 h-5 text-purple-600 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Unlimited campaigns</span>
-                </li>
-                <li className="flex items-start">
-                  <ChartBarIcon className="w-5 h-5 text-purple-600 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Team collaboration tools</span>
-                </li>
-                <li className="flex items-start">
-                  <ChartBarIcon className="w-5 h-5 text-purple-600 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">White-label reports</span>
-                </li>
-                <li className="flex items-start">
-                  <ChartBarIcon className="w-5 h-5 text-purple-600 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Dedicated account manager</span>
-                </li>
-              </ul>
-              <Button variant="outline" className="w-full" size="lg" onClick={() => window.location.href = '/signup'}>
-                Get Started
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="mt-32 text-center bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-16 shadow-2xl">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Stop Drowning In Spreadsheets
+        {/* Live stats cards - matching Intel's card design exactly */}
+        <div className="max-w-5xl mx-auto mb-20">
+          <h2 className="text-center text-3xl font-bold text-gray-900 mb-8">
+            Used daily by working music professionals
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Join 500+ indie artists and PR agencies tracking campaigns with professional tools.
-            Setup takes under 2 minutes.
+          <p className="text-center text-blue-600 font-medium mb-8">
+            Live metrics from real campaigns - updated every 30 seconds
           </p>
-          <Button
-            size="lg"
-            className="text-lg px-10 py-6 bg-white text-blue-600 hover:bg-slate-50 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1"
-            onClick={() => window.location.href = '/signup'}
-          >
-            Start Your Free Trial
-          </Button>
-          <p className="text-sm text-white/80 mt-6">
-            No credit card required • 14-day free trial • Cancel anytime
-          </p>
+
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="bg-white rounded-lg p-6 border-2 border-gray-200 hover:border-blue-200 transition-colors">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-blue-600 text-2xl">👥</span>
+                <span className="text-xs font-semibold text-gray-500 bg-gray-100 px-2 py-1 rounded">LIVE</span>
+              </div>
+              <p className="text-3xl font-bold text-gray-900 mb-1">427</p>
+              <p className="text-sm text-gray-600 mb-2">Campaigns Tracked Today</p>
+              <p className="text-xs text-green-600 font-medium">+34 in last hour</p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 border-2 border-gray-200 hover:border-blue-200 transition-colors">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-blue-600 text-2xl">⚡</span>
+                <span className="text-xs font-semibold text-gray-500 bg-gray-100 px-2 py-1 rounded">LIVE</span>
+              </div>
+              <p className="text-3xl font-bold text-gray-900 mb-1">127</p>
+              <p className="text-sm text-gray-600 mb-2">Active Campaigns</p>
+              <p className="text-xs text-green-600 font-medium">+18 this week</p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 border-2 border-gray-200 hover:border-blue-200 transition-colors">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-blue-600 text-2xl">⏱️</span>
+                <span className="text-xs font-semibold text-gray-500 bg-gray-100 px-2 py-1 rounded">LIVE</span>
+              </div>
+              <p className="text-3xl font-bold text-gray-900 mb-1">2.8m</p>
+              <p className="text-sm text-gray-600 mb-2">Avg Processing Time</p>
+              <p className="text-xs text-green-600 font-medium">-0.3s vs yesterday</p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 border-2 border-gray-200 hover:border-blue-200 transition-colors">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-blue-600 text-2xl">📈</span>
+                <span className="text-xs font-semibold text-gray-500 bg-gray-100 px-2 py-1 rounded">LIVE</span>
+              </div>
+              <p className="text-3xl font-bold text-gray-900 mb-1">86%</p>
+              <p className="text-sm text-gray-600 mb-2">Success Rate</p>
+              <p className="text-xs text-green-600 font-medium">+3.2% this month</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Demo card - Intel style */}
+        <div className="max-w-5xl mx-auto mb-20 bg-white rounded-xl border-2 border-gray-200 p-8">
+          <div className="flex items-start gap-8">
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-blue-600 mb-2">TRY IT NOW</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                See your campaign intelligence instantly
+              </h3>
+              <p className="text-gray-600 mb-6">
+                No upload needed. One click demo using real intelligence pipeline.
+              </p>
+              <Link
+                href="/demo"
+                className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700"
+              >
+                View Live Demo →
+              </Link>
+            </div>
+            <div className="flex-1 bg-blue-50 rounded-lg p-6 border border-blue-100">
+              <p className="text-sm text-gray-600 mb-2">Result appears here. Try the demo to see enriched intel.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Feature cards - matching Intel exactly */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <div className="text-3xl mb-4">🎯</div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Track Everything</h3>
+            <p className="text-gray-600 leading-relaxed">
+              Radio, playlists, blogs, PR. See your success rate vs industry benchmarks instantly. No spreadsheets.
+            </p>
+          </div>
+          <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <div className="text-3xl mb-4">🧠</div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Get Intelligence</h3>
+            <p className="text-gray-600 leading-relaxed">
+              Discover your best-performing genres, platforms, and budget ranges. Let your data teach you what works.
+            </p>
+          </div>
+          <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <div className="text-3xl mb-4">🚀</div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Make Decisions</h3>
+            <p className="text-gray-600 leading-relaxed">
+              Get actionable recommendations based on your patterns and industry data. Know what to do next.
+            </p>
+          </div>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12 mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <PlayIcon className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold">Tracker</span>
-            </div>
-            <div className="text-sm text-slate-400">
-              © 2024 Tracker. Built for the music industry.
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

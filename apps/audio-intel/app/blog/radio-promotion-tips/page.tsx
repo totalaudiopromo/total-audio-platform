@@ -5,10 +5,12 @@ export const metadata: Metadata = {
   title: "Radio Promotion Tips That Actually Work in 2025 | Audio Intel",
   description: "5+ years of radio promotion experience distilled into actionable tips. Learn what actually works for getting airplay in 2025 from a working radio promoter.",
   keywords: "radio promotion tips, get radio airplay, radio DJ contacts, music promotion strategies, radio submission tips",
+  alternates: { canonical: 'https://intel.totalaudiopromo.com/blog/radio-promotion-tips' },
   openGraph: {
+    url: 'https://intel.totalaudiopromo.com/blog/radio-promotion-tips',
     title: "Radio Promotion Tips That Actually Work (From 5+ Years Experience)",
     description: "Stop wasting time on radio promotion that doesn't work. Here's what actually gets you airplay in 2025.",
-    images: ["/images/radio-promotion-guide.png"],
+    images: [{ url: "/images/radio-promotion-guide.png", alt: "Radio promotion tips guide cover" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -20,6 +22,28 @@ export const metadata: Metadata = {
 export default function RadioPromotionTips() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: "Radio Promotion Tips That Actually Work in 2025",
+            description: "5+ years of radio promotion experience distilled into actionable tips.",
+            image: ["https://intel.totalaudiopromo.com/images/radio-promotion-guide.png"],
+            author: { "@type": "Person", name: "Chris Schofield" },
+            publisher: { "@type": "Organization", name: "Total Audio Promo" },
+            datePublished: "2025-08-30",
+            dateModified: "2025-08-30",
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://intel.totalaudiopromo.com/blog/radio-promotion-tips"
+            },
+            inLanguage: "en-GB"
+          })
+        }}
+      />
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
           Radio Promotion Tips That Actually Work in 2025

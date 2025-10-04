@@ -62,11 +62,15 @@ export const metadata: Metadata = {
     'article:author': 'Chris Schofield',
     'article:publisher': 'https://intel.totalaudiopromo.com',
     // Additional social media optimization
-    'fb:app_id': '1234567890', // Replace with your Facebook App ID if you have one
     'application-name': 'Audio Intel',
     'msapplication-TileColor': '#000000',
     'theme-color': '#000000',
   },
+  alternates: {
+    languages: {
+      'en-GB': 'https://intel.totalaudiopromo.com',
+    }
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -74,8 +78,48 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Search Engine Verification */}
+        <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || ''} />
+        <meta name="msvalidate.01" content={process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || ''} />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        {/* JSON-LD: Organization */}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Total Audio Promo",
+              url: "https://intel.totalaudiopromo.com",
+              logo: "https://intel.totalaudiopromo.com/images/total_audio_promo_logo_trans.png",
+              sameAs: [
+                "https://x.com/totalaudiopromo",
+                "https://www.linkedin.com/company/total-audio-promo"
+              ]
+            })
+          }}
+        />
+        {/* JSON-LD: WebSite */}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Audio Intel",
+              url: "https://intel.totalaudiopromo.com",
+              inLanguage: "en-GB",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://intel.totalaudiopromo.com/search?q={query}",
+                "query-input": "required name=query"
+              }
+            })
+          }}
+        />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{

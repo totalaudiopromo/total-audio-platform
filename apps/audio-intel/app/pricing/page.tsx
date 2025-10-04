@@ -557,6 +557,39 @@ function PricingContent() {
           </div>
         </div>
       )}
+      
+      {/* FAQ Section */}
+      <section className="py-24 px-4 bg-gradient-to-br from-white to-blue-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6">Frequently Asked Questions</h2>
+            <p className="text-lg font-bold text-gray-700 max-w-3xl mx-auto">Straight answers in plain English. No corporate waffle.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="text-2xl font-black text-gray-900 mb-3">Do you offer a free trial?</h3>
+              <p className="text-lg font-bold text-gray-700">Yes. Professional and Agency plans include a free trial. You won't be charged until the trial ends and you can cancel any time.</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="text-2xl font-black text-gray-900 mb-3">What currency do you charge in?</h3>
+              <p className="text-lg font-bold text-gray-700">All prices are in £GBP. VAT may apply depending on your location.</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl border-4 border-purple-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="text-2xl font-black text-gray-900 mb-3">Can I cancel any time?</h3>
+              <p className="text-lg font-bold text-gray-700">Yes. There are no contracts. Cancel any time from your account or by emailing support.</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl border-4 border-yellow-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="text-2xl font-black text-gray-900 mb-3">What does the 90% data accuracy guarantee mean?</h3>
+              <p className="text-lg font-bold text-gray-700">We only count accurate enrichments towards your monthly limit. If something is wrong, it doesn't count.</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl border-4 border-indigo-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:col-span-2">
+              <h3 className="text-2xl font-black text-gray-900 mb-3">Who is Audio Intel for?</h3>
+              <p className="text-lg font-bold text-gray-700">Independent artists, small PR agencies, and labels who need reliable music industry contact intelligence without the £500+/mo enterprise nonsense.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
@@ -564,6 +597,97 @@ function PricingContent() {
 export default function PricingPage() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
+      {/* Metadata for Pricing page */}
+      <head>
+        <title>Pricing | Audio Intel – Contact Enrichment for Music Promotion</title>
+        <meta name="description" content="Simple pricing in £GBP for independent artists, PR agencies, and labels. Free beta, Professional £19.99/mo, Agency £39.99/mo." />
+        <meta property="og:url" content="https://intel.totalaudiopromo.com/pricing" />
+      </head>
+      {/* JSON-LD: SoftwareApplication/Product for Audio Intel */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "Audio Intel",
+            operatingSystem: "Web",
+            applicationCategory: "BusinessApplication",
+            offers: [
+              {
+                "@type": "Offer",
+                priceCurrency: "GBP",
+                price: "19.99",
+                category: "professional",
+                url: "https://intel.totalaudiopromo.com/pricing"
+              },
+              {
+                "@type": "Offer",
+                priceCurrency: "GBP",
+                price: "39.99",
+                category: "agency",
+                url: "https://intel.totalaudiopromo.com/pricing"
+              }
+            ],
+            publisher: { "@type": "Organization", name: "Total Audio Promo" },
+            inLanguage: "en-GB"
+          })
+        }}
+      />
+      {/* JSON-LD: FAQPage for Pricing */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Do you offer a free trial?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. Professional and Agency plans include a free trial. You won't be charged until the trial ends and you can cancel any time."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "What currency do you charge in?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "All prices are in £GBP. VAT may apply depending on your location."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Can I cancel any time?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. There are no contracts. Cancel any time from your account or by emailing support."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "What does the 90% data accuracy guarantee mean?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We only count accurate enrichments towards your monthly limit. If something is wrong, it doesn't count."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Who is Audio Intel for?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Independent artists, small PR agencies, and labels who need reliable music industry contact intelligence."
+                }
+              }
+            ]
+          })
+        }}
+      />
       <PricingContent />
     </Suspense>
   );

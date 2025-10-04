@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 230 53% 6%;
+    --foreground: 210 40% 96%;
+    --card: 230 44% 9%;
+    --card-foreground: 210 40% 96%;
+    --popover: 230 44% 10%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 235 87% 68%;
+    --primary-foreground: 222 100% 97%;
+    --secondary: 283 78% 67%;
+    --secondary-foreground: 220 44% 96%;
+    --muted: 226 28% 22%;
+    --muted-foreground: 224 24% 75%;
+    --accent: 47 96% 64%;
+    --accent-foreground: 229 54% 11%;
+    --border: 225 24% 18%;
+    --input: 225 24% 18%;
+    --ring: 235 87% 68%;
+    --radius: 0.85rem;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image: 
+      radial-gradient(circle at 10% 10%, rgba(76, 92, 246, 0.25), transparent 45%),
+      radial-gradient(circle at 90% 20%, rgba(201, 84, 247, 0.22), transparent 50%),
+      radial-gradient(circle at 50% 90%, rgba(255, 200, 87, 0.18), transparent 55%),
+      linear-gradient(130deg, rgba(18, 22, 37, 0.95), rgba(13, 17, 27, 0.95));
+    background-attachment: fixed;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-white tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply rounded-3xl border border-white/10 bg-white/5 shadow-panel backdrop-blur-xl;
+  }
+
+  .badge-postcraft {
+    @apply inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-wide text-white/80;
+  }
+
+  .cta-button {
+    @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-secondary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-elevated transition hover:from-primary/90 hover:to-secondary/90 hover:shadow-lg;
+  }
+
+  .subtle-button {
+    @apply inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white/70 transition hover:border-white/30 hover:text-white;
+  }
+}

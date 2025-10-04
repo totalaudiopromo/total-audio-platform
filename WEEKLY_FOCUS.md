@@ -95,9 +95,21 @@
 
 *What to carry forward or focus on next*
 
-- [ ] Follow up with prospects from this week's outreach
-- [ ] Optimise demo process based on first calls
-- [ ] Scale outreach based on conversion data
+> DESSA pilot: tag tasks with the primary step they reinforce. Leave the tag empty if it never earns its keep.
+
+- [ ] Follow up with prospects from this week's outreach *(S₂ — Speed up)*
+- [ ] Optimise demo process based on first calls *(S₁ — Simplify)*
+- [ ] Scale outreach based on conversion data *(A — Automate once stable)*
+
+## 🧭 DESSA Pilot Checklist
+
+*Use this block to test the framework safely. Skip any item that creates drag.*
+
+- [ ] **Define** (`D`): Capture next week's single measurable target → ☐
+- [ ] **Eliminate** (`E`): List any task you're pausing or deleting → ☐
+- [ ] **Simplify** (`S₁`): Note the workflow to streamline (demo, onboarding, outreach) → ☐
+- [ ] **Speed up** (`S₂`): Decide one feedback loop to shorten (e.g., 24h follow-ups) → ☐
+- [ ] **Automate** (`A`): Choose the repeatable win to systemise after two successful loops → ☐
 
 ---
 
