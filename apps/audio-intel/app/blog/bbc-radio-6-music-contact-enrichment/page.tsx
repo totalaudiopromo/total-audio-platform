@@ -101,7 +101,7 @@ export default function BbcRadio6MusicContactEnrichment() {
           </p>
           <ol className="list-decimal pl-6 space-y-4 text-base text-gray-700 leading-relaxed">
             <li>
-              <strong className="text-gray-900">Upload anything:</strong> I uploaded a CSV with presenter names and show titles (some outdated from pre-2025 schedule changes). The parser matched current assignments and flagged presenters who had moved shows.
+              <strong className="text-gray-900">Upload basic contact list:</strong> I uploaded a CSV with presenter names, email addresses, and show titles (some outdated from pre-2025 schedule changes). The enrichment process verified current assignments and flagged presenters who had moved shows.
             </li>
             <li>
               <strong className="text-gray-900">Enrichment and cross-checking:</strong> The platform crawled official BBC schedule pages, presenter social feeds, and recent playlist data. It matched genre preferences to each show and highlighted best-fit options for indie rock artists.
