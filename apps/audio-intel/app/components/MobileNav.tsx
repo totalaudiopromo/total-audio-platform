@@ -25,7 +25,33 @@ function scrollToSection(id: string) {
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  // Auto-hide header on scroll down
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show header when scrolling up, hide when scrolling down
+      // Always show at top of page
+      if (currentScrollY < 10) {
+        setIsHeaderVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down & past 100px
+        setIsHeaderVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up
+        setIsHeaderVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   // Close on outside click
   useEffect(() => {
@@ -63,7 +89,10 @@ export default function MobileNav() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 md:hidden" aria-label="Mobile Navigation">
+    <nav 
+      className={`fixed top-0 left-0 w-full z-50 md:hidden transition-transform duration-300 ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}
+      aria-label="Mobile Navigation"
+    >
       <div className="flex items-center justify-between px-4 py-3 bg-white border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         <Link href="/" className="flex items-center gap-3">
           <Image src="/images/total_audio_promo_logo_trans.png" alt="Total Audio Promo Mascot" width={40} height={40} className="w-10 h-10" priority />

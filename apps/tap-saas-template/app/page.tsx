@@ -54,7 +54,7 @@ export default function HomePage() {
                 20 minutes
               </span>
             </h1>
-            <p className="max-w-xl text-base text-white/70 sm:text-lg">
+            <p className="max-w-xl text-base text-gray-600 sm:text-lg">
               Pitch Generator uses AI + your contact data to write professional music PR pitches 
               that actually get responses. No more staring at blank emails.
             </p>
@@ -62,16 +62,16 @@ export default function HomePage() {
               <Link href="/auth/signin" className="cta-button">Start free trial →</Link>
               <Link href="#how-it-works" className="subtle-button">See how it works</Link>
             </div>
-            <p className="text-sm text-white/50">
+            <p className="text-sm text-gray-500">
               ⚡ Generate unlimited pitches • 🎯 Built for indie artists & PR agencies
             </p>
           </div>
           <div className="flex-1">
             <div className="relative">
               <div className="glass-panel px-8 py-10">
-                <p className="text-xs font-semibold uppercase tracking-[0.5em] text-white/50">The Problem</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.5em] text-gray-500">The Problem</p>
                 <h2 className="mt-4 text-2xl font-bold">Stop wasting time on pitches</h2>
-                <ul className="mt-6 space-y-4 text-sm text-white/70">
+                <ul className="mt-6 space-y-4 text-sm text-gray-600">
                   <li className="flex items-start gap-3">
                     <span className="mt-1 h-2.5 w-2.5 rounded-full bg-danger" />
                     <span>5+ hours per campaign writing personalized pitches</span>
@@ -116,7 +116,7 @@ export default function HomePage() {
       <section id="how-it-works" className="glass-panel px-6 py-10 sm:px-10">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
           <div className="flex-1 space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.45em] text-white/40">How It Works</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500">How It Works</p>
             <h2 className="text-3xl font-semibold">Three steps to perfect pitches</h2>
             <p className="text-sm text-white/70">
               No learning curve. No complicated setup. Just pick a contact, add your track info, 
@@ -131,8 +131,8 @@ export default function HomePage() {
                     {step.step}
                   </span>
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/40">{step.title}</p>
-                    <p className="mt-1 text-sm text-white/70">{step.description}</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">{step.title}</p>
+                  <p className="mt-1 text-sm text-gray-600">{step.description}</p>
                   </div>
                 </li>
               ))}
@@ -144,7 +144,7 @@ export default function HomePage() {
       {/* Social Proof */}
       <section className="glass-panel px-6 py-10 sm:px-10">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.45em] text-white/40">Built by Music PR Pros</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500">Built by Music PR Pros</p>
           <h2 className="mt-4 text-3xl font-semibold">Proven templates from 500+ campaigns</h2>
           <p className="mx-auto mt-4 max-w-2xl text-white/70">
             Our templates are based on real pitches that got results for BBC Radio, Amazing Radio, 
@@ -158,9 +158,9 @@ export default function HomePage() {
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-2xl font-semibold">Ready to stop wasting hours on pitches?</h2>
-            <p className="mt-2 max-w-xl text-sm text-white/70">
-              Start your 7-day free trial. Generate unlimited pitches. No credit card required.
-            </p>
+          <p className="mt-2 max-w-xl text-sm text-gray-600">
+            Start your 7-day free trial. Generate unlimited pitches. No credit card required.
+          </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <Link href="/auth/signin" className="cta-button">Start free trial →</Link>

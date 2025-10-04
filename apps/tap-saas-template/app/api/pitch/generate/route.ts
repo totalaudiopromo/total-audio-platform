@@ -1,115 +1,118 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { supabaseAdmin } from '@/lib/supabase';
 import { generatePitch } from '@/lib/openai';
 
-export async function POST(request: NextRequest) {
+export async function POST(req: Request) {
   try {
     const session = await getServerSession();
-
-    if (!session || !session.user?.email) {
+    if (!session?.user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await request.json();
+    const body = await req.json();
     const {
       contactId,
-      contact,
       artistName,
       trackTitle,
       genre,
+      spotifyUrl,
       releaseDate,
-      keyHook,
-      trackLink,
-      tone,
+      keyHooks,
+      templateId,
     } = body;
 
     // Validate required fields
-    if (!contactId || !artistName || !trackTitle || !genre || !keyHook) {
+    if (!contactId || !artistName || !trackTitle) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Missing required fields: contactId, artistName, trackTitle' },
         { status: 400 }
       );
     }
 
-    // Get template for genre if exists
-    const { data: templates } = await supabaseAdmin
-      .from('pitch_templates')
+    // Fetch contact details
+    const { data: contact, error: contactError } = await supabaseAdmin
+      .from('intel_contacts')
       .select('*')
-      .eq('genre', genre)
-      .eq('is_system', true)
-      .limit(1);
+      .eq('id', contactId)
+      .single();
 
-    const template = templates?.[0];
+    if (contactError || !contact) {
+      return NextResponse.json(
+        { error: 'Contact not found' },
+        { status: 404 }
+      );
+    }
 
-    // Generate pitch using OpenAI
-    const result = await generatePitch({
+    // Fetch template if provided
+    let template = null;
+    if (templateId) {
+      const { data: templateData } = await supabaseAdmin
+        .from('pitch_templates')
+        .select('*')
+        .eq('id', templateId)
+        .single();
+      template = templateData;
+    }
+
+    // Generate pitch using AI
+    const userId = (session.user as any).id || 'demo-user';
+    
+    const pitchResponse = await generatePitch({
       contactName: contact.name,
-      contactOutlet: contact.outlet,
-      contactRole: contact.role,
-      contactGenreTags: contact.genre_tags,
-      lastContact: contact.last_contact,
-      contactNotes: contact.notes,
-      preferredTone: contact.preferred_tone,
+      contactRole: contact.role || '',
+      contactOutlet: contact.outlet || '',
       artistName,
       trackTitle,
-      genre,
-      releaseDate,
-      keyHook,
-      trackLink,
-      tone,
-      template: template?.template_body,
+      genre: genre || '',
+      releaseDate: releaseDate || '',
+      keyHooks: keyHooks || '',
+      spotifyUrl: spotifyUrl || '',
+      templateBody: template?.body || '',
     });
 
-    // Save pitch to database
-    const userId = session.user.email;
-    const { data: pitch, error } = await supabaseAdmin
+    // Save to database
+    const { data: pitch, error: pitchError } = await supabaseAdmin
       .from('pitches')
       .insert({
         user_id: userId,
         contact_id: contactId,
-        contact_name: contact.name,
-        contact_outlet: contact.outlet,
         artist_name: artistName,
         track_title: trackTitle,
-        genre,
+        subject_line: pitchResponse.subjectLine,
+        body: pitchResponse.body,
+        genre: genre || null,
+        spotify_url: spotifyUrl || null,
         release_date: releaseDate || null,
-        key_hook: keyHook,
-        track_link: trackLink || null,
-        tone,
-        pitch_body: result.pitchBody,
-        subject_line: result.subjectLines.option2, // Use middle option as default
-        subject_line_options: result.subjectLines,
-        suggested_send_time: result.suggestedSendTime,
         status: 'draft',
+        template_id: templateId || null,
       })
       .select()
       .single();
 
-    if (error) {
-      console.error('Error saving pitch:', error);
-      throw error;
-    }
-
-    // Update template usage count if template was used
-    if (template) {
-      await supabaseAdmin
-        .from('pitch_templates')
-        .update({ times_used: (template.times_used || 0) + 1 })
-        .eq('id', template.id);
+    if (pitchError) {
+      console.error('Error saving pitch:', pitchError);
+      return NextResponse.json(
+        { error: 'Failed to save pitch' },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({
-      success: true,
-      pitchId: pitch.id,
-      pitch,
+      pitch: {
+        id: pitch.id,
+        subjectLine: pitch.subject_line,
+        body: pitch.body,
+        contactName: contact.name,
+        artistName: pitch.artist_name,
+        trackTitle: pitch.track_title,
+      },
     });
-  } catch (error) {
-    console.error('Error in generate pitch API:', error);
+  } catch (error: any) {
+    console.error('Pitch generation error:', error);
     return NextResponse.json(
-      { error: 'Failed to generate pitch' },
+      { error: error.message || 'Failed to generate pitch' },
       { status: 500 }
     );
   }
 }
-

@@ -40,6 +40,37 @@
     padding-right: 1rem;
   }
 
+  /* System Cards & Feature Sections - Force Single Column & Center */
+  section .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 2rem !important;
+    width: 100% !important;
+  }
+
+  section .grid > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Ensure feature cards are centered */
+  section .space-y-8,
+  section [class*="space-y"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  section .space-y-8 > *,
+  section [class*="space-y"] > * {
+    width: 100% !important;
+    max-width: calc(100vw - 2rem) !important;
+  }
+
   /* Fix all text containers to prevent overflow */
   .card,
   .box,
