@@ -1056,29 +1056,22 @@
    ============================================================================= */
 
 @media (max-width: 768px) {
-  /* Circular FAB chat button (PostCraft style) */
-  .chat-widget,
-  .chat-button,
-  .intercom-launcher,
-  [class*="chat"],
-  .support-widget {
-    width: 56px;
-    height: 56px;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    left: auto;
-    padding: 0;
-    border-radius: 50%;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    background: #10b981;
-    color: white;
-    border: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* Compact square chat button */
+  button[class*="fixed"][class*="bottom-"][class*="right-"] {
+    width: 48px !important;
+    height: 48px !important;
+    position: fixed !important;
+    bottom: 16px !important;
+    right: 16px !important;
+    left: auto !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    max-width: 48px !important;
+    min-width: 48px !important;
   }
 
   .chat-widget:hover,
@@ -1164,17 +1157,16 @@
     font-size: 0.875rem !important;
   }
 
-  /* Footer - TRUE TWO-COLUMN LAYOUT */
-  footer .grid.lg\\:grid-cols-2 {
+  /* Footer - TRUE TWO-COLUMN LAYOUT - MORE AGGRESSIVE */
+  footer .grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 1.5rem !important;
+    gap: 1rem !important;
     padding: 0 !important;
   }
 
-  footer .grid.sm\\:grid-cols-2 {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 1rem !important;
+  footer .space-y-8 {
+    display: contents !important;
   }
 
   footer .grid.lg\\:grid-cols-2 > div {

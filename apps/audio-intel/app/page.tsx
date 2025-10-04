@@ -962,7 +962,7 @@ export default function AudioIntelLanding() {
             </div>
 
             {/* Professional - Most Popular */}
-            <div className="bg-gradient-to-br from-blue-50 to-white p-6 sm:p-10 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative transform lg:scale-105 ring-4 ring-blue-200 ring-opacity-50 mx-auto w-full max-w-md lg:max-w-none">
+            <div className="bg-gradient-to-br from-blue-50 to-white p-6 sm:p-10 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative mx-auto w-full max-w-md lg:max-w-none">
               <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full px-8 py-3 font-black text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 MOST POPULAR
               </Badge>

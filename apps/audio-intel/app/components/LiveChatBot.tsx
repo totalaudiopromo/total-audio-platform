@@ -120,156 +120,101 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
   };
 
   return (
-    <div>
+    <div className="fixed bottom-4 right-4 z-50">
       {/* Chat Toggle Button */}
-      <Button
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 md:w-16 md:h-16 rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all font-black text-white ${
+        className={`w-12 h-12 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all font-black text-white flex items-center justify-center ${
           userTier === 'agency'
-            ? 'bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600'
+            ? 'bg-purple-600 hover:bg-purple-700'
             : userTier === 'professional'
-            ? 'bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600'
-            : 'bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600'
+            ? 'bg-blue-600 hover:bg-blue-700'
+            : 'bg-green-600 hover:bg-green-700'
         }`}
       >
-        {isOpen ? <X className="w-7 h-7" /> : <MessageCircle className="w-7 h-7" />}
-      </Button>
+        {isOpen ? <X className="w-5 h-5" /> : <MessageCircle className="w-5 h-5" />}
+      </button>
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-24 right-6 z-40 w-[calc(100vw-3rem)] sm:w-96 max-w-md h-[500px] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] rounded-2xl bg-white">
-          <CardHeader className={`${
+        <div className="fixed bottom-20 right-4 z-40 w-[calc(100vw-2rem)] sm:w-80 max-w-sm h-[380px] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-xl bg-white flex flex-col">
+          <div className={`${
             userTier === 'agency' 
-              ? 'bg-gradient-to-r from-purple-600 to-purple-500' 
+              ? 'bg-purple-600' 
               : userTier === 'professional'
-              ? 'bg-gradient-to-r from-blue-600 to-blue-500'
-              : 'bg-gradient-to-r from-green-600 to-green-500'
-          } text-white rounded-t-xl border-4 border-black border-b-0`}>
-            <CardTitle className="flex items-center gap-3 text-lg font-black">
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)] bg-white">
-                <Image 
-                  src="/assets/loading-states/analyzing-data.png" 
-                  alt="Audio mascot analyzing data" 
-                  width={40} 
-                  height={40}
-                  className="w-full h-full object-cover"
-                />
+              ? 'bg-blue-600'
+              : 'bg-green-600'
+          } text-white rounded-t-lg px-3 py-2 border-b-2 border-black`}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <MessageCircle className="w-5 h-5" />
+                <span className="font-bold text-sm">Audio Support</span>
               </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span>Audio</span>
-                  {userTier === 'agency' && (
-                    <span className="text-xs bg-black/20 px-2 py-1 rounded-full font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]">VIP TREATMENT</span>
-                  )}
-                  {userTier === 'professional' && (
-                    <span className="text-xs bg-black/20 px-2 py-1 rounded-full font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]">PRIORITY</span>
-                  )}
-                </div>
-                <span className="text-xs text-white/80 font-normal">Built by working promoters</span>
-              </div>
-            </CardTitle>
-          </CardHeader>
-          
-          <CardContent className="p-0 flex flex-col h-[420px]">
-            {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
-              {messages.map((message) => (
-                <div
-                  key={message.id}
-                  className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-                >
-                  <div
-                    className={`max-w-[80%] px-3 py-2 border-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
-                      message.type === 'user'
-                        ? 'bg-blue-500 text-white border-black rounded-2xl'
-                        : 'bg-gray-100 text-gray-900 border-black rounded-2xl'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 mb-1">
-                      {message.type === 'bot' ? (
-                        <div className="w-4 h-4 rounded-full overflow-hidden bg-white">
-                          <Image 
-                            src="/assets/loading-states/analyzing-data.png" 
-                            alt="Audio" 
-                            width={16} 
-                            height={16}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <User className="w-4 h-4 text-white" />
-                      )}
-                      <span className={`text-xs ${
-                        message.type === 'user' ? 'text-blue-100' : 'text-gray-500'
-                      }`}>
-                        {message.timestamp.toLocaleTimeString([], { 
-                          hour: '2-digit', 
-                          minute: '2-digit' 
-                        })}
-                      </span>
-                    </div>
-                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-                  </div>
-                </div>
-              ))}
-              {isLoading && (
-                <div className="flex justify-start">
-                  <div className="bg-gray-100 rounded-2xl px-3 py-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 rounded-full overflow-hidden bg-white animate-pulse">
-                        <Image 
-                          src="/assets/loading-states/analyzing-data.png" 
-                          alt="Audio thinking" 
-                          width={16} 
-                          height={16}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <span className="text-sm text-gray-600 font-medium">Audio is checking the platform knowledge base...</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-              <div ref={messagesEndRef} />
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-white hover:bg-white/20 rounded p-1 transition-colors"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
-
-            {/* Input Area */}
-            <div className="border-t-4 border-black p-4 bg-gray-50">
-              <div className="flex gap-2">
-                <Input
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Ask Audio about contact enrichment, pricing, or platform features..."
-                  className="flex-1 h-14 sm:h-12 text-base sm:text-sm border-2 border-black rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold"
-                  disabled={isLoading}
-                />
-                <Button
-                  onClick={handleSendMessage}
-                  disabled={!inputValue.trim() || isLoading}
-                  size="sm"
-                  className={`h-14 sm:h-12 px-4 border-2 border-black rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all font-black text-white ${
-                    userTier === 'agency' 
-                      ? 'bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600' 
-                      : userTier === 'professional'
-                      ? 'bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600'
-                      : 'bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600'
+          </div>
+          
+          {/* Messages Area */}
+          <div className="flex-1 overflow-y-auto p-3 space-y-3 bg-gray-50">
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+              >
+                <div
+                  className={`max-w-[85%] px-3 py-2 rounded-xl ${
+                    message.type === 'user'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-white text-gray-900 border-2 border-gray-200'
                   }`}
                 >
-                  <Send className="w-4 h-4" />
-                </Button>
+                  <p className="text-sm">{message.content}</p>
+                </div>
               </div>
-              <p className="text-xs text-gray-500 mt-2 text-center">
-                {userTier === 'agency' 
-                  ? "Agency priority support - fastest response times for platform questions"
-                  : userTier === 'professional'
-                  ? "Professional support - priority responses typically under 1 minute" 
-                  : "Standard support - responses within 5 minutes during business hours"
-                }
-              </p>
+            ))}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-white rounded-xl px-3 py-2 border-2 border-gray-200">
+                  <span className="text-sm text-gray-600">Audio is typing...</span>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Input Area */}
+          <div className="border-t-2 border-gray-200 p-2 bg-gray-50">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Type a message..."
+                className="flex-1 h-9 px-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 bg-white"
+                disabled={isLoading}
+              />
+              <button
+                onClick={handleSendMessage}
+                disabled={!inputValue.trim() || isLoading}
+                className={`h-9 px-3 rounded-lg font-bold text-white text-sm ${
+                  userTier === 'agency' 
+                    ? 'bg-purple-600 hover:bg-purple-700' 
+                    : userTier === 'professional'
+                    ? 'bg-blue-600 hover:bg-blue-700'
+                    : 'bg-green-600 hover:bg-green-700'
+                } disabled:opacity-50 disabled:cursor-not-allowed transition-colors`}
+              >
+                <Send className="w-4 h-4" />
+              </button>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       )}
     </div>
   );

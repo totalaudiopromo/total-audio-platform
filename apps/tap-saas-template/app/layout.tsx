@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/components/AuthProvider';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-display' });
+const geistSans = Geist({ subsets: ['latin'], variable: '--font-sans' });
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
 export const metadata: Metadata = {
   title: 'Pitch Generator - AI-Powered Music PR Pitches',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="bg-background">
-      <body className={`${inter.variable} ${playfair.variable} font-sans min-h-screen`}> 
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans min-h-screen`}> 
         <AuthProvider>
           <div className="relative min-h-screen overflow-hidden">
             <div className="pointer-events-none absolute inset-0 bg-postcraft-grid [background-size:22px_22px] opacity-40"></div>

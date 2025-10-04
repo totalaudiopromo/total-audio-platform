@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "test:e2e": "node tests/e2e/auth.test.js",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report reports",
     "check:tailwind": "node scripts/check-tailwind.js"
   },
   "dependencies": {
@@ -31,6 +35,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.55.1",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.1.14",
     "@types/node": "^20",

@@ -14,7 +14,7 @@ export default async function HomePage() {
 
   // Not authenticated - show landing page
   return (
-    <div className="min-h-screen bg-[#f8f9fa]">
+    <div className="min-h-screen bg-[#f8f9fa] overflow-x-hidden">
       {/* Header - Audio Intel brutalist style */}
       <header className="sticky top-0 z-50 w-full border-b-4 border-black bg-white shadow-brutal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex h-16 items-center justify-between">
@@ -534,11 +534,12 @@ export default async function HomePage() {
 
               <div className="text-center mb-10 mt-6">
                 <h3 className="text-3xl font-black text-gray-900 mb-6">PROFESSIONAL</h3>
+                <h4 className="text-xl font-bold text-purple-600 mb-4">"Get Ahead of the Queue"</h4>
                 <div className="mb-6 flex items-baseline justify-center gap-1">
-                  <span className="text-5xl sm:text-6xl font-black text-gray-900">£19</span>
+                  <span className="text-5xl sm:text-6xl font-black text-gray-900 whitespace-nowrap">£19</span>
                   <span className="text-2xl text-gray-600">/mo</span>
                 </div>
-                <p className="text-sm font-bold text-gray-700">63p/day - less than a coffee</p>
+                <p className="text-sm font-bold text-gray-700">63p/day - what you spend on coffee</p>
               </div>
 
               <ul className="space-y-5 mb-10">
@@ -560,8 +561,8 @@ export default async function HomePage() {
                     </svg>
                   </div>
                   <div>
-                    <span className="font-black text-lg block">Advanced analytics</span>
-                    <span className="text-sm text-gray-600">Deep insights into patterns</span>
+                    <span className="font-black text-lg block">Better analytics</span>
+                    <span className="text-sm text-gray-600">See which campaigns actually work</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
@@ -571,8 +572,8 @@ export default async function HomePage() {
                     </svg>
                   </div>
                   <div>
-                    <span className="font-black text-lg block">Export reports</span>
-                    <span className="text-sm text-gray-600">PDF and CSV exports</span>
+                    <span className="font-black text-lg block">Professional exports</span>
+                    <span className="text-sm text-gray-600">PDF reports and CSV files</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
@@ -583,14 +584,26 @@ export default async function HomePage() {
                   </div>
                   <div>
                     <span className="font-black text-lg block">Priority support</span>
-                    <span className="text-sm text-gray-600">Faster response times</span>
+                    <span className="text-sm text-gray-600">Faster responses for urgent questions</span>
                   </div>
                 </li>
               </ul>
+              
+              <div className="bg-purple-100 p-4 rounded-lg mb-6 border-2 border-purple-200">
+                <p className="text-sm font-bold text-purple-800 text-center">
+                  <strong>Perfect for:</strong> Independent artists and small labels who need results yesterday
+                </p>
+                <p className="text-xs text-purple-700 text-center mt-2 italic">
+                  "Stop waiting around when you could be tracking campaigns"
+                </p>
+                <p className="text-xs text-purple-700 text-center mt-2">
+                  <strong>Support:</strong> Priority support - faster response times for paid users
+                </p>
+              </div>
 
               <Link href="/signup">
                 <button className="w-full rounded-2xl font-black text-lg sm:text-xl py-6 bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-600 hover:to-purple-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all min-h-[60px]">
-                  Start Pro Trial
+                  Skip The Queue Today
                 </button>
               </Link>
             </div>
@@ -599,11 +612,12 @@ export default async function HomePage() {
             <div className="bg-white p-6 sm:p-10 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all mx-auto w-full max-w-md lg:max-w-none">
               <div className="text-center mb-10">
                 <h3 className="text-3xl font-black text-gray-900 mb-6">AGENCY</h3>
+                <h4 className="text-xl font-bold text-purple-600 mb-4">"White-Label Everything"</h4>
                 <div className="mb-6 flex items-baseline justify-center gap-1">
-                  <span className="text-5xl sm:text-6xl font-black text-gray-900">£49</span>
+                  <span className="text-5xl sm:text-6xl font-black text-gray-900 whitespace-nowrap">£49</span>
                   <span className="text-2xl text-gray-600">/mo</span>
                 </div>
-                <p className="text-sm font-bold text-gray-700">For labels and PR agencies</p>
+                <p className="text-sm font-bold text-gray-700">Pays for itself if you retain one extra client</p>
               </div>
 
               <ul className="space-y-5 mb-10">
@@ -615,7 +629,7 @@ export default async function HomePage() {
                   </div>
                   <div>
                     <span className="font-black text-lg block">Multi-artist tracking</span>
-                    <span className="text-sm text-gray-600">Manage your whole roster</span>
+                    <span className="text-sm text-gray-600">Handle your whole roster without breaking</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
@@ -625,8 +639,8 @@ export default async function HomePage() {
                     </svg>
                   </div>
                   <div>
-                    <span className="font-black text-lg block">Team collaboration</span>
-                    <span className="text-sm text-gray-600">Multiple user accounts</span>
+                    <span className="font-black text-lg block">Your branding on everything</span>
+                    <span className="text-sm text-gray-600">Clients think you're the intelligence source</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
@@ -636,8 +650,8 @@ export default async function HomePage() {
                     </svg>
                   </div>
                   <div>
-                    <span className="font-black text-lg block">White-label reports</span>
-                    <span className="text-sm text-gray-600">Your branding on exports</span>
+                    <span className="font-black text-lg block">Client-ready reports</span>
+                    <span className="text-sm text-gray-600">They'll actually want to keep these PDFs</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
@@ -647,15 +661,38 @@ export default async function HomePage() {
                     </svg>
                   </div>
                   <div>
-                    <span className="font-black text-lg block">Dedicated support</span>
-                    <span className="text-sm text-gray-600">Direct line to the team</span>
+                    <span className="font-black text-lg block">Full analytics dashboard</span>
+                    <span className="text-sm text-gray-600">Prove your campaigns work</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="font-black text-lg block">Priority support</span>
+                    <span className="text-sm text-gray-600">Fastest responses when you need answers quickly</span>
                   </div>
                 </li>
               </ul>
+              
+              <div className="bg-purple-100 p-4 rounded-lg mb-6 border-2 border-purple-200">
+                <p className="text-sm font-bold text-purple-800 text-center">
+                  <strong>Perfect for:</strong> PR agencies and labels juggling multiple artists
+                </p>
+                <p className="text-xs text-purple-700 text-center mt-2 italic">
+                  "Clients pay you premium rates for 'insider knowledge' - we won't tell them it's just better tools"
+                </p>
+                <p className="text-xs text-purple-700 text-center mt-2">
+                  <strong>Support:</strong> Premium support - prioritised responses
+                </p>
+              </div>
 
               <Link href="/signup">
                 <button className="w-full rounded-2xl font-black text-lg sm:text-xl py-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all bg-white hover:bg-gray-50 text-black border-4 border-gray-300 min-h-[60px]">
-                  Start Agency Trial
+                  White-Label Your Intelligence
                 </button>
               </Link>
             </div>
@@ -709,7 +746,7 @@ export default async function HomePage() {
                   info@totalaudiopromo.com
                 </a>
                 <p className="text-sm">
-                  Manchester, UK · Built by music promoters for artists, labels, and PR teams.
+                  Brighton, UK · Built by music promoters for artists, labels, and PR teams.
                 </p>
               </div>
             </div>
@@ -766,7 +803,7 @@ export default async function HomePage() {
 
           <div className="border-t border-gray-800 mt-12 pt-8 text-center">
             <p className="text-gray-400 font-bold">
-              © 2025 Tracker - Powered By <a href="https://totalaudiopromo.com" className="text-gray-300 hover:text-white transition-colors underline">Total Audio Promo</a>
+              © 2025 Tracker by <a href="https://totalaudiopromo.com" className="text-gray-300 hover:text-white transition-colors underline">Total Audio Promo</a>
             </p>
           </div>
         </div>
