@@ -85,6 +85,106 @@ const blogPosts = [
     readTime: "7 min read",
     category: "Radio Tracking",
     featured: false
+  },
+  {
+    slug: "commercial-radio-campaign-tracking",
+    title: "Commercial Radio Campaign Tracking: Industry Benchmarks & Success Rates (2025)",
+    excerpt: "Track commercial radio campaigns with AI-powered insights. Get industry benchmarks, success rates by station type, and actionable intelligence for commercial radio promotion.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "9 min read",
+    category: "Radio Tracking",
+    featured: false
+  },
+  {
+    slug: "blog-campaign-analytics-for-musicians",
+    title: "Blog Campaign Analytics for Musicians: Track Blog Outreach Success (2025)",
+    excerpt: "Track your blog outreach campaigns with AI-powered analytics. Get industry benchmarks for blog response rates, coverage tracking, and actionable insights for music blog promotion.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "11 min read",
+    category: "PR Tracking",
+    featured: false
+  },
+  {
+    slug: "deezer-playlist-campaign-tracking",
+    title: "Deezer Playlist Campaign Tracking: Track Your Deezer Promotion Success (2025)",
+    excerpt: "Track your Deezer playlist campaigns with AI-powered analytics. Get industry benchmarks for Deezer promotion, playlist placement rates, and actionable insights for better results.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "8 min read",
+    category: "Playlist Tracking",
+    featured: false
+  },
+  {
+    slug: "tiktok-music-campaign-tracking",
+    title: "TikTok Music Campaign Tracking: Track Your TikTok Promotion Success (2025)",
+    excerpt: "Track your TikTok music campaigns with AI-powered analytics. Get industry benchmarks for TikTok promotion, viral tracking, and actionable insights for better TikTok music marketing.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "10 min read",
+    category: "Social Media Tracking",
+    featured: false
+  },
+  {
+    slug: "instagram-music-campaign-tracking",
+    title: "Instagram Music Campaign Tracking: Track Your Instagram Promotion Success (2025)",
+    excerpt: "Track your Instagram music campaigns with AI-powered analytics. Get industry benchmarks for Instagram promotion, story tracking, and actionable insights for better Instagram music marketing.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "9 min read",
+    category: "Social Media Tracking",
+    featured: false
+  },
+  {
+    slug: "youtube-music-campaign-tracking",
+    title: "YouTube Music Campaign Tracking: Track Your YouTube Promotion Success (2025)",
+    excerpt: "Track your YouTube music campaigns with AI-powered analytics. Get industry benchmarks for YouTube promotion, video performance tracking, and actionable insights for better YouTube music marketing.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "9 min read",
+    category: "Social Media Tracking",
+    featured: false
+  },
+  {
+    slug: "facebook-music-campaign-tracking",
+    title: "Facebook Music Campaign Tracking: Track Your Facebook Promotion Success (2025)",
+    excerpt: "Track your Facebook music campaigns with AI-powered analytics. Get industry benchmarks for Facebook promotion, ad performance tracking, and actionable insights for better Facebook music marketing.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "8 min read",
+    category: "Social Media Tracking",
+    featured: false
+  },
+  {
+    slug: "twitter-music-campaign-tracking",
+    title: "Twitter Music Campaign Tracking: Track Your Twitter Promotion Success (2025)",
+    excerpt: "Track your Twitter music campaigns with AI-powered analytics. Get industry benchmarks for Twitter promotion, tweet performance tracking, and actionable insights for better Twitter music marketing.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "7 min read",
+    category: "Social Media Tracking",
+    featured: false
+  },
+  {
+    slug: "soundcloud-campaign-tracking",
+    title: "SoundCloud Campaign Tracking: Track Your SoundCloud Promotion Success (2025)",
+    excerpt: "Track your SoundCloud campaigns with AI-powered analytics. Get industry benchmarks for SoundCloud promotion, track performance tracking, and actionable insights for better SoundCloud music marketing.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "8 min read",
+    category: "Social Media Tracking",
+    featured: false
+  },
+  {
+    slug: "bandcamp-campaign-tracking",
+    title: "Bandcamp Campaign Tracking: Track Your Bandcamp Promotion Success (2025)",
+    excerpt: "Track your Bandcamp campaigns with AI-powered analytics. Get industry benchmarks for Bandcamp promotion, album sales tracking, and actionable insights for better Bandcamp music marketing.",
+    author: "Chris Schofield",
+    date: "2025-10-05",
+    readTime: "7 min read",
+    category: "Social Media Tracking",
+    featured: false
   }
 ];
 
@@ -100,6 +200,8 @@ function getCategoryBadgeClasses(category: string) {
       return "bg-blue-100 text-blue-800";
     case "Case Study":
       return "bg-yellow-100 text-yellow-800";
+    case "Social Media Tracking":
+      return "bg-pink-100 text-pink-800";
     default:
       return "bg-gray-100 text-gray-800";
   }

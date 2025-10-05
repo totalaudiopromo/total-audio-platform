@@ -227,11 +227,13 @@ function analyzeGenrePerformance(campaigns: Campaign[]): Pattern | null {
     genreStats.set(c.genre, existing);
   });
 
-  let bestGenre: {
+  type GenreStats = {
     genre: string;
     successRate: number;
     avgCost: number;
-  } | null = null;
+  };
+
+  let bestGenre: GenreStats | undefined;
 
   genreStats.forEach((stats, genre) => {
     const avgSuccessRate = stats.successRate / stats.count;
@@ -290,7 +292,8 @@ function analyzePlatformPerformance(campaigns: Campaign[]): Pattern | null {
     platformStats.set(c.platform, existing);
   });
 
-  let bestPlatform: { platform: string; successRate: number } | null = null;
+  type PlatformStats = { platform: string; successRate: number };
+  let bestPlatform: PlatformStats | undefined;
 
   platformStats.forEach((stats, platform) => {
     const avgSuccessRate = stats.successRate / stats.count;

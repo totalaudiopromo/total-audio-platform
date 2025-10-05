@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Campaign } from '@/lib/types/tracker';
 import { CampaignModal } from './CampaignModal';
+import { CampaignIntelligence } from './CampaignIntelligence';
 
 interface CampaignWithInsights extends Campaign {
   insights?: string[];
@@ -144,6 +145,16 @@ export function CampaignCardWithIntel({ campaign }: { campaign: CampaignWithInsi
             <p className="text-xs font-bold text-gray-600">
               Update actual reach to see performance insights and benchmarks
             </p>
+          </div>
+        )}
+
+        {/* AI Campaign Intelligence */}
+        {hasResults && (
+          <div className="mt-6">
+            <CampaignIntelligence
+              campaignId={campaign.id}
+              campaignName={campaign.name}
+            />
           </div>
         )}
 

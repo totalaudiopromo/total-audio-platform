@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 230 53% 6%;
+    --foreground: 210 40% 96%;
+    --card: 230 44% 9%;
+    --card-foreground: 210 40% 96%;
+    --popover: 230 44% 10%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 235 87% 68%;
+    --primary-foreground: 222 100% 97%;
+    --secondary: 283 78% 67%;
+    --secondary-foreground: 220 44% 96%;
+    --muted: 226 28% 22%;
+    --muted-foreground: 224 24% 75%;
+    --accent: 47 96% 64%;
+    --accent-foreground: 229 54% 11%;
+    --border: 225 24% 18%;
+    --input: 225 24% 18%;
+    --ring: 235 87% 68%;
+    --radius: 0.85rem;
+  }
+
+  body {
+    @apply bg-white text-gray-900 antialiased;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-gray-900 tracking-tight font-bold;
+  }
+}
+
+@layer components {
+  /* Postcraft-inspired card like Audio Intel */
+  .glass-panel {
+    @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1;
+  }
+
+  .badge-postcraft {
+    @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-yellow-300 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
+  }
+
+  .cta-button {
+    @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-blue-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 active:scale-95;
+  }
+
+  .subtle-button {
+    @apply inline-flex items-center justify-center rounded-xl border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5;
+  }
+}

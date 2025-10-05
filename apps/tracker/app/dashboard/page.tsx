@@ -3,6 +3,8 @@ import { redirect } from 'next/navigation';
 import { IntelligenceBar } from '@/components/intelligence/IntelligenceBar';
 import { CampaignCardWithIntel } from '@/components/campaigns/CampaignCardWithIntel';
 import { DashboardClient } from '@/components/dashboard/DashboardClient';
+import { ExportButton } from '@/components/dashboard/ExportButton';
+import { AudioIntelImport } from '@/components/AudioIntelImport';
 import { analyzePatterns, generateCampaignInsights } from '@/lib/intelligence';
 import type { Campaign, Benchmark } from '@/lib/types/tracker';
 
@@ -98,6 +100,11 @@ export default async function DashboardPage() {
           </p>
         </div>
 
+        {/* Audio Intel Import */}
+        <div className="mb-8">
+          <AudioIntelImport />
+        </div>
+
         {/* Intelligence Bar (Unique Value) */}
         {patterns.length > 0 && (
           <div className="mb-8">
@@ -145,12 +152,15 @@ export default async function DashboardPage() {
               <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-1">Your Campaigns</h2>
               <p className="text-sm font-bold text-gray-600">Track, analyse, and improve your results</p>
             </div>
-            <button
-              id="new-campaign-trigger"
-              className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-base whitespace-nowrap w-full sm:w-auto text-center"
-            >
-              + New Campaign
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+              <ExportButton />
+              <button
+                id="new-campaign-trigger"
+                className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-base whitespace-nowrap w-full sm:w-auto text-center"
+              >
+                + New Campaign
+              </button>
+            </div>
           </div>
 
           {campaignsError && (

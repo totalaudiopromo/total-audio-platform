@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ToolSwitcher } from '@/components/ToolSwitcher';
 
 const navLinks = [
   { href: 'features', label: 'Features' },
@@ -98,14 +99,19 @@ export default function MobileNav() {
           <Image src="/images/total_audio_promo_logo_trans.png" alt="Total Audio Promo Mascot" width={36} height={36} className="w-9 h-9 flex-shrink-0" priority />
           <span className="font-black text-gray-900 text-lg tracking-tight whitespace-nowrap">Audio Intel</span>
         </Link>
-        <button
-          aria-label="Open menu"
-          className="text-white bg-blue-600 hover:bg-blue-700 focus:outline-none flex items-center justify-center border-2 border-black rounded-lg p-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all"
-          style={{ minWidth: 40, minHeight: 40 }}
-          onClick={() => setOpen(true)}
-        >
-          <Menu className="w-5 h-5" />
-        </button>
+        <div className="flex items-center gap-2">
+          <div className="hidden sm:block">
+            <ToolSwitcher />
+          </div>
+          <button
+            aria-label="Open menu"
+            className="text-white bg-blue-600 hover:bg-blue-700 focus:outline-none flex items-center justify-center border-2 border-black rounded-lg p-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all"
+            style={{ minWidth: 40, minHeight: 40 }}
+            onClick={() => setOpen(true)}
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+        </div>
       </div>
       
       {/* Overlay */}

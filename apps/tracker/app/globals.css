@@ -50,3 +50,20 @@ body {
 .border-brutal-2 {
   border: 2px solid #000000;
 }
+
+/* Pitch Generator refined glass-panel components */
+.glass-panel {
+  @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1;
+}
+
+.cta-button {
+  @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-blue-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 active:scale-95;
+}
+
+.subtle-button {
+  @apply inline-flex items-center justify-center rounded-xl border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5;
+}
+
+.badge-postcraft {
+  @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-yellow-300 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
+}

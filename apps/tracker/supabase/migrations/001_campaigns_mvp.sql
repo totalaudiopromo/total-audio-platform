@@ -19,6 +19,12 @@ CREATE TABLE IF NOT EXISTS campaigns (
 -- Enable RLS
 ALTER TABLE campaigns ENABLE ROW LEVEL SECURITY;
 
+-- Drop existing policies if they exist (to avoid conflicts)
+DROP POLICY IF EXISTS "Users can view own campaigns" ON campaigns;
+DROP POLICY IF EXISTS "Users can create campaigns" ON campaigns;
+DROP POLICY IF EXISTS "Users can update own campaigns" ON campaigns;
+DROP POLICY IF EXISTS "Users can delete own campaigns" ON campaigns;
+
 -- Users can only see their own campaigns
 CREATE POLICY "Users can view own campaigns" ON campaigns
   FOR SELECT USING (auth.uid() = user_id);
@@ -41,6 +47,7 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
+DROP TRIGGER IF EXISTS update_campaigns_updated_at ON campaigns;
 CREATE TRIGGER update_campaigns_updated_at
   BEFORE UPDATE ON campaigns
   FOR EACH ROW
