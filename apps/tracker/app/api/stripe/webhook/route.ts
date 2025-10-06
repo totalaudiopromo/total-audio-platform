@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 
 export const runtime = 'nodejs';
 
+export const dynamic = 'force-dynamic';
 export async function POST(request: Request) {
   const sig = request.headers.get('stripe-signature');
   if (!sig) return NextResponse.json({ error: 'Missing signature' }, { status: 400 });

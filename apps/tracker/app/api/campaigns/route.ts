@@ -15,6 +15,7 @@ import type { Campaign, Benchmark, CreateCampaignPayload } from '@/lib/types/tra
 // ============================================================================
 // GET /api/campaigns - List all campaigns with intelligence
 // ============================================================================
+export const dynamic = 'force-dynamic';
 export async function GET() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -109,6 +110,7 @@ export async function GET() {
 // ============================================================================
 // POST /api/campaigns - Create new campaign
 // ============================================================================
+export const dynamic = 'force-dynamic';
 export async function POST(request: Request) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
