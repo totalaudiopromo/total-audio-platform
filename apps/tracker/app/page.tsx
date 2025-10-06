@@ -76,7 +76,16 @@ export default async function HomePage() {
       <section className="glass-panel overflow-hidden px-6 py-16 sm:px-10 sm:py-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
           <div className="flex-1 space-y-6">
-            <span className="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800">Campaign Tracker · Total Audio Promo</span>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/audio-mascot.svg"
+                alt="Tracker Mascot"
+                width={48}
+                height={48}
+                className="flex-shrink-0"
+              />
+              <span className="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800">Campaign Tracker · Total Audio Promo</span>
+            </div>
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
               Stop wasting 15 hours a week
               <span className="block text-purple-600">
