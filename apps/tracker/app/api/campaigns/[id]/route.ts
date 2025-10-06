@@ -28,7 +28,6 @@ export async function GET(
   return NextResponse.json(data);
 }
 
-export const dynamic = 'force-dynamic';
 export async function PUT(
   request: Request,
   context: { params: Promise<{ id: string }> }
@@ -104,7 +103,6 @@ export async function PUT(
   }
 }
 
-export const dynamic = 'force-dynamic';
 export async function DELETE(
   request: Request,
   context: { params: Promise<{ id: string }> }
