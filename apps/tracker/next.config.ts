@@ -13,14 +13,6 @@ const nextConfig: NextConfig = {
   generateBuildId: async () => {
     return 'build-' + Date.now();
   },
-  // Externalize Anthropic SDK to prevent build-time bundling
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.externals = config.externals || [];
-      config.externals.push('@anthropic-ai/sdk');
-    }
-    return config;
-  },
 };
 
 export default nextConfig;
