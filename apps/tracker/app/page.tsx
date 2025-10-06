@@ -69,14 +69,6 @@ const features = [
 ];
 
 export default async function HomePage() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-
-  // If authenticated, redirect to dashboard
-  if (user) {
-    redirect('/dashboard');
-  }
-
   // Not authenticated - show landing page
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
