@@ -96,7 +96,7 @@ export default async function HomePage() {
               Built by a Brighton producer who hated spreadsheet hell.
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <Link href="/auth/signin" className="cta-button">Start free trial →</Link>
+              <Link href="/signup" className="cta-button">Start free trial →</Link>
               <Link href="#how-it-works" className="subtle-button">See how it works</Link>
             </div>
             <p className="text-sm text-gray-500">
@@ -219,7 +219,7 @@ export default async function HomePage() {
           </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <Link href="/auth/signin" className="cta-button">Start free trial →</Link>
+            <Link href="/signup" className="cta-button">Start free trial →</Link>
             <Link href="/pricing" className="subtle-button">View pricing</Link>
           </div>
         </div>
