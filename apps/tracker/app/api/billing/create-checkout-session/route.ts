@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { stripe, getOrCreateCustomerId } from '@/lib/stripe';
 import { createClient } from '@/lib/supabase/server';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: Request) {
   try {
     const { priceId, success_url, cancel_url } = await request.json();
