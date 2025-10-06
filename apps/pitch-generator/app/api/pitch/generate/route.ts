@@ -92,9 +92,13 @@ export async function POST(req: Request) {
         key_hook: keyHook,
         track_link: trackLink || null,
         tone: tone || 'professional',
-        pitch_body: pitchResponse.body,
-        subject_line: pitchResponse.subjectLine,
-        subject_line_options: pitchResponse.subjectLineOptions || null,
+        pitch_body: pitchResponse.pitchBody,
+        subject_line: pitchResponse.subjectLines?.[0] || 'New Track',
+        subject_line_options: pitchResponse.subjectLines ? {
+          option1: pitchResponse.subjectLines[0],
+          option2: pitchResponse.subjectLines[1] || pitchResponse.subjectLines[0],
+          option3: pitchResponse.subjectLines[2] || pitchResponse.subjectLines[0],
+        } : null,
         suggested_send_time: sendTimeSuggestion ? `${sendTimeSuggestion.time} - ${sendTimeSuggestion.reason}` : null,
         status: 'draft',
       })
