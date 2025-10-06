@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import Anthropic from '@anthropic-ai/sdk';
 
 // Force dynamic rendering to prevent build-time execution
 export const dynamic = 'force-dynamic';
@@ -83,7 +82,8 @@ IMPORTANT:
 - If success_rate is high, celebrate it but push them to level up
 - Reference real UK music industry targets (BBC Radio 1, Amazing Radio, Spotify UK playlists, etc.)`;
 
-    // Initialize Anthropic client right before use
+    // Dynamic import Anthropic to prevent build-time bundling issues
+    const Anthropic = (await import('@anthropic-ai/sdk')).default;
     const anthropic = new Anthropic({
       apiKey: process.env.ANTHROPIC_API_KEY || '',
     });
