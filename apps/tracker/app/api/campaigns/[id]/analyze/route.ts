@@ -12,12 +12,6 @@ export async function POST(
 ) {
   const { id } = await params;
   try {
-    // Initialize Anthropic client at runtime
-    // Use placeholder during build (Vercel doesn't have API key at build time)
-    const anthropic = new Anthropic({
-      apiKey: process.env.ANTHROPIC_API_KEY || 'placeholder-key-for-build',
-    });
-
     const supabase = await createClient();
 
     // Get current user
@@ -88,6 +82,11 @@ IMPORTANT:
 - If actual_reach is 0, address why and what to do differently
 - If success_rate is high, celebrate it but push them to level up
 - Reference real UK music industry targets (BBC Radio 1, Amazing Radio, Spotify UK playlists, etc.)`;
+
+    // Initialize Anthropic client right before use
+    const anthropic = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY || '',
+    });
 
     // Call Claude API
     const message = await anthropic.messages.create({
