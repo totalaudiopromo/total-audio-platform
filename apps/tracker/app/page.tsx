@@ -78,10 +78,10 @@ export default async function HomePage() {
           <div className="flex-1 space-y-6">
             <div className="flex items-center gap-3">
               <Image
-                src="/images/audio-mascot.svg"
-                alt="Tracker Mascot"
-                width={48}
-                height={48}
+                src="/images/tracker-mascot.png"
+                alt="Tracker Detective Mascot"
+                width={64}
+                height={64}
                 className="flex-shrink-0"
               />
               <span className="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800">Campaign Tracker · Total Audio Promo</span>
