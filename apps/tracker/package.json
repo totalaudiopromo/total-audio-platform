@@ -15,7 +15,6 @@
     "check:tailwind": "node scripts/check-tailwind.js"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.40.0",
     "@headlessui/react": "^2.2.9",
     "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.2.2",
