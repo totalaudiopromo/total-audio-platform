@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "node scripts/check-tailwind.js && next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "next lint",
     "test:e2e": "node tests/e2e/auth.test.js",
     "test": "playwright test",
     "test:headed": "playwright test --headed",
