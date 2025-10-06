@@ -14,7 +14,7 @@ export function SiteFooter() {
           </div>
 
           {/* Links Section */}
-          <div className="grid grid-cols-2 gap-8 sm:gap-12">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-12">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Product</p>
               <ul className="mt-3 space-y-2">
@@ -63,6 +63,27 @@ export function SiteFooter() {
                   >
                     Total Audio Promo
                   </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Newsletter</p>
+              <ul className="mt-3 space-y-2">
+                <li>
+                  <a
+                    href="https://totalaudiopromo.com/newsletter"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-purple-600 transition hover:text-purple-700"
+                  >
+                    The Unsigned Advantage
+                  </a>
+                </li>
+                <li>
+                  <p className="text-xs text-gray-500">
+                    Weekly insights for independent artists
+                  </p>
                 </li>
               </ul>
             </div>
