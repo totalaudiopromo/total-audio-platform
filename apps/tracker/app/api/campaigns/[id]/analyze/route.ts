@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import Anthropic from '@anthropic-ai/sdk';
 
+// Force dynamic rendering to prevent build-time execution
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 export async function POST(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
