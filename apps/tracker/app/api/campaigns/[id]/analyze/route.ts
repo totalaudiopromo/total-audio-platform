@@ -13,8 +13,9 @@ export async function POST(
   const { id } = await params;
   try {
     // Initialize Anthropic client at runtime
+    // Use placeholder during build (Vercel doesn't have API key at build time)
     const anthropic = new Anthropic({
-      apiKey: process.env.ANTHROPIC_API_KEY,
+      apiKey: process.env.ANTHROPIC_API_KEY || 'placeholder-key-for-build',
     });
 
     const supabase = await createClient();
