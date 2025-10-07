@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Plus, Zap, Send, MessageCircle, TrendingUp, Loader2 } from 'lucide-react';
 import { supabase, type Pitch } from '@/lib/supabase';
+import { NewsletterSignup } from '@/components/NewsletterSignup';
 
 interface DashboardStats {
   totalPitches: number;
@@ -143,56 +144,97 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Stats Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="glass-panel px-6 py-6">
-          <div className="flex items-start justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Total Pitches</p>
-              <p className="mt-3 text-3xl font-bold">{stats.totalPitches}</p>
+      {/* Empty State - Show when no pitches */}
+      {stats.totalPitches === 0 ? (
+        <div className="glass-panel px-8 py-12">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-iris/10">
+              <Zap className="h-8 w-8 text-brand-iris" />
             </div>
-            <div className="rounded-full bg-brand-iris/20 p-3">
-              <Zap className="h-5 w-5 text-brand-iris" />
+            <h2 className="mt-6 text-2xl font-bold">Generate Your First Pitch</h2>
+            <p className="mt-3 text-gray-900/60">
+              Start creating professional, personalised pitches in seconds. Our AI helps you write
+              pitches that sound like you, matched to each contact's preferences.
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <Link href="/pitch/generate" className="cta-button flex items-center gap-2">
+                <Plus className="h-4 w-4" />
+                Generate Your First Pitch
+              </Link>
+              <Link href="/pitch/templates" className="subtle-button">
+                Browse Templates
+              </Link>
+            </div>
+            <div className="mt-8 grid gap-4 text-left sm:grid-cols-3">
+              <div className="rounded-xl border border-white/10 bg-gray-50 px-4 py-4">
+                <div className="text-2xl font-bold text-brand-iris">6</div>
+                <p className="mt-1 text-xs text-gray-900/60">Proven templates from real campaigns</p>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-gray-50 px-4 py-4">
+                <div className="text-2xl font-bold text-brand-magenta">3</div>
+                <p className="mt-1 text-xs text-gray-900/60">Subject line variations per pitch</p>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-gray-50 px-4 py-4">
+                <div className="text-2xl font-bold text-success">2min</div>
+                <p className="mt-1 text-xs text-gray-900/60">Average time to generate a pitch</p>
+              </div>
             </div>
           </div>
         </div>
+      ) : (
+        <>
+          {/* Stats Grid */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="glass-panel px-6 py-6">
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Total Pitches</p>
+                  <p className="mt-3 text-3xl font-bold">{stats.totalPitches}</p>
+                </div>
+                <div className="rounded-full bg-brand-iris/20 p-3">
+                  <Zap className="h-5 w-5 text-brand-iris" />
+                </div>
+              </div>
+            </div>
 
-        <div className="glass-panel px-6 py-6">
-          <div className="flex items-start justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Sent</p>
-              <p className="mt-3 text-3xl font-bold">{stats.sentPitches}</p>
+            <div className="glass-panel px-6 py-6">
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Sent</p>
+                  <p className="mt-3 text-3xl font-bold">{stats.sentPitches}</p>
+                </div>
+                <div className="rounded-full bg-brand-magenta/20 p-3">
+                  <Send className="h-5 w-5 text-brand-magenta" />
+                </div>
+              </div>
             </div>
-            <div className="rounded-full bg-brand-magenta/20 p-3">
-              <Send className="h-5 w-5 text-brand-magenta" />
-            </div>
-          </div>
-        </div>
 
-        <div className="glass-panel px-6 py-6">
-          <div className="flex items-start justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Replies</p>
-              <p className="mt-3 text-3xl font-bold">{stats.replies}</p>
+            <div className="glass-panel px-6 py-6">
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Replies</p>
+                  <p className="mt-3 text-3xl font-bold">{stats.replies}</p>
+                </div>
+                <div className="rounded-full bg-success/20 p-3">
+                  <MessageCircle className="h-5 w-5 text-success" />
+                </div>
+              </div>
             </div>
-            <div className="rounded-full bg-success/20 p-3">
-              <MessageCircle className="h-5 w-5 text-success" />
-            </div>
-          </div>
-        </div>
 
-        <div className="glass-panel px-6 py-6">
-          <div className="flex items-start justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Response Rate</p>
-              <p className="mt-3 text-3xl font-bold">{(stats.successRate || 0).toFixed(1)}%</p>
-            </div>
-            <div className="rounded-full bg-brand-amber/20 p-3">
-              <TrendingUp className="h-5 w-5 text-brand-amber" />
+            <div className="glass-panel px-6 py-6">
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Response Rate</p>
+                  <p className="mt-3 text-3xl font-bold">{(stats.successRate || 0).toFixed(1)}%</p>
+                </div>
+                <div className="rounded-full bg-brand-amber/20 p-3">
+                  <TrendingUp className="h-5 w-5 text-brand-amber" />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
 
       {/* Recent Pitches */}
       <div className="glass-panel px-8 py-8">
@@ -267,6 +309,13 @@ export default function DashboardPage() {
           </div>
         )}
       </div>
+
+      {/* Newsletter Signup */}
+      <NewsletterSignup
+        variant="card"
+        title="Get The Unsigned Advantage Newsletter"
+        description="Weekly music industry insights, radio promotion tips, and exclusive tools to help independent artists break through. Join 100+ artists and promoters."
+      />
 
       {/* Quick Links */}
       <div className="grid gap-6 sm:grid-cols-2">

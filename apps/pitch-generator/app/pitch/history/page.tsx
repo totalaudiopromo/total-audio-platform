@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Filter, Search, Loader2, Copy } from 'lucide-react';
 import { supabase, type Pitch } from '@/lib/supabase';
+import PitchStatusToggle from '@/components/PitchStatusToggle';
 
 export default function PitchHistoryPage() {
   const { data: session, status } = useSession();
@@ -75,25 +76,9 @@ export default function PitchHistoryPage() {
     alert('Pitch copied to clipboard!');
   }
 
-  async function handleUpdateStatus(pitchId: string, newStatus: string) {
-    try {
-      const { error } = await supabase
-        .from('pitches')
-        .update({ 
-          status: newStatus,
-          ...(newStatus === 'sent' && { sent_at: new Date().toISOString() }),
-          ...(newStatus === 'replied' && { response_received: true, replied_at: new Date().toISOString() }),
-        })
-        .eq('id', pitchId);
-
-      if (error) throw error;
-      
-      // Reload pitches
-      loadPitches();
-    } catch (error) {
-      console.error('Error updating pitch status:', error);
-      alert('Failed to update pitch status');
-    }
+  function handleStatusChange(newStatus: 'draft' | 'sent' | 'replied' | 'success') {
+    // Reload pitches to reflect updated status
+    loadPitches();
   }
 
   function getStatusColor(status: string) {
@@ -201,18 +186,12 @@ export default function PitchHistoryPage() {
                     <p className="mt-1 truncate text-sm text-gray-900/70">
                       "{pitch.track_title}" by {pitch.artist_name}
                     </p>
-                    <div className="mt-3 flex flex-wrap items-center gap-2">
-                      <select
-                        value={pitch.status}
-                        onChange={(e) => handleUpdateStatus(pitch.id, e.target.value)}
-                        className={`rounded-full border-0 px-3 py-1 text-xs font-medium ${getStatusColor(pitch.status)}`}
-                      >
-                        <option value="draft" className="bg-card text-foreground">Draft</option>
-                        <option value="sent" className="bg-card text-foreground">Sent</option>
-                        <option value="replied" className="bg-card text-foreground">Replied</option>
-                        <option value="success" className="bg-card text-foreground">Success</option>
-                        <option value="no_reply" className="bg-card text-foreground">No Reply</option>
-                      </select>
+                    <div className="mt-3 flex flex-wrap items-center gap-3">
+                      <PitchStatusToggle
+                        pitchId={pitch.id}
+                        currentStatus={pitch.status as 'draft' | 'sent' | 'replied' | 'success'}
+                        onStatusChange={handleStatusChange}
+                      />
                       <span className="text-xs text-gray-900/50">
                         {new Date(pitch.created_at!).toLocaleDateString('en-GB')}
                       </span>

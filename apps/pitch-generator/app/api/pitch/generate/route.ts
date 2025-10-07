@@ -67,14 +67,18 @@ export async function POST(req: Request) {
       contactName: contact.name,
       contactRole: contact.role || '',
       contactOutlet: contact.outlet || '',
+      contactGenreTags: contact.genre_tags || [],
+      lastContact: contact.last_contact || undefined,
+      contactNotes: contact.notes || undefined,
+      preferredTone: contact.preferred_tone || undefined,
       artistName,
       trackTitle,
       genre: genre || '',
       releaseDate: releaseDate || '',
-      keyHooks: keyHook || '',
-      spotifyUrl: trackLink || '',
-      tone: tone || contact.preferred_tone || 'professional',
-      voiceProfile: voiceProfile || undefined,
+      keyHook: keyHook || '',
+      trackLink: trackLink || '',
+      tone: (tone || contact.preferred_tone || 'professional') as 'casual' | 'professional' | 'enthusiastic',
+      voiceProfile: voiceProfile || null,
     });
 
     // Save to database
@@ -93,12 +97,8 @@ export async function POST(req: Request) {
         track_link: trackLink || null,
         tone: tone || 'professional',
         pitch_body: pitchResponse.pitchBody,
-        subject_line: pitchResponse.subjectLines?.[0] || 'New Track',
-        subject_line_options: pitchResponse.subjectLines ? {
-          option1: pitchResponse.subjectLines[0],
-          option2: pitchResponse.subjectLines[1] || pitchResponse.subjectLines[0],
-          option3: pitchResponse.subjectLines[2] || pitchResponse.subjectLines[0],
-        } : null,
+        subject_line: pitchResponse.subjectLines?.option1 || 'New Track',
+        subject_line_options: pitchResponse.subjectLines || null,
         suggested_send_time: sendTimeSuggestion ? `${sendTimeSuggestion.time} - ${sendTimeSuggestion.reason}` : null,
         status: 'draft',
       })

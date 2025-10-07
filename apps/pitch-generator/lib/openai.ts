@@ -4,6 +4,16 @@ const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
+interface VoiceProfile {
+  voice_background?: string;
+  voice_style?: string;
+  voice_typical_opener?: string;
+  voice_approach?: string;
+  voice_differentiator?: string;
+  voice_achievements?: string;
+  voice_context_notes?: string;
+}
+
 interface GeneratePitchParams {
   contactName: string;
   contactOutlet?: string;
@@ -20,6 +30,7 @@ interface GeneratePitchParams {
   trackLink?: string;
   tone: 'casual' | 'professional' | 'enthusiastic';
   template?: string;
+  voiceProfile?: VoiceProfile | null;
 }
 
 export async function generatePitch(params: GeneratePitchParams) {
@@ -39,6 +50,7 @@ export async function generatePitch(params: GeneratePitchParams) {
     trackLink,
     tone,
     template,
+    voiceProfile,
   } = params;
 
   // Build context string
@@ -61,7 +73,11 @@ export async function generatePitch(params: GeneratePitchParams) {
 CONTEXT ABOUT CONTACT:
 ${contextString || 'No additional context available.'}
 
-ARTIST INFORMATION:
+${voiceProfile && (voiceProfile.voice_background || voiceProfile.voice_style || voiceProfile.voice_typical_opener || voiceProfile.voice_approach) ? `VOICE PROFILE (Match this writing style):
+${voiceProfile.voice_background ? `- Background: ${voiceProfile.voice_background}\n` : ''}${voiceProfile.voice_style ? `- Writing Style: ${voiceProfile.voice_style}\n` : ''}${voiceProfile.voice_typical_opener ? `- Typical Opener: ${voiceProfile.voice_typical_opener}\n` : ''}${voiceProfile.voice_approach ? `- Approach: ${voiceProfile.voice_approach}\n` : ''}${voiceProfile.voice_differentiator ? `- What Makes Me Different: ${voiceProfile.voice_differentiator}\n` : ''}${voiceProfile.voice_achievements ? `- Key Achievements to Reference: ${voiceProfile.voice_achievements}\n` : ''}${voiceProfile.voice_context_notes ? `- Context Notes: ${voiceProfile.voice_context_notes}\n` : ''}
+IMPORTANT: Write in this person's natural voice while maintaining professionalism and the UK music industry tone.
+
+` : ''}ARTIST INFORMATION:
 - Artist: ${artistName}
 - Track: "${trackTitle}"
 - Genre: ${genre}
@@ -72,6 +88,14 @@ ${trackLink ? `- Track Link: ${trackLink}` : ''}
 TONE REQUESTED: ${tone}
 
 ${template ? `TEMPLATE STRUCTURE TO FOLLOW:\n${template}\n\n` : ''}
+
+CRITICAL GENRE/STYLE MATCHING RULES:
+- The "Key Hook" description contains important stylistic and era context
+- If the Key Hook references specific genres, time periods, or scenes (e.g., "UK garage boom of 1999", "Detroit techno", "Bristol sound"), your musical comparisons MUST align with that context
+- NEVER compare to artists from completely different genres or eras
+- If the Key Hook mentions a specific year/era, reference artists or sounds from that same period
+- If the Key Hook describes a specific scene/genre (e.g., UK garage, drum & bass, house), ONLY reference artists from that genre
+- When in doubt about making artist comparisons, describe the sound directly rather than risk an inappropriate comparison
 
 WRITING RULES:
 1. Write in a ${tone} tone that sounds natural and human
@@ -84,6 +108,8 @@ WRITING RULES:
 8. End with a clear, simple call-to-action
 9. If there was a last contact date, acknowledge it naturally ("Hope you've been well since...")
 10. Match the contact's genre preferences in your language
+11. PAY ATTENTION to the Key Hook's genre/era context - use it to inform all musical references
+12. If making artist comparisons, ensure they match the genre/era described in the Key Hook
 
 Generate:
 1. ONE pitch email body (just the body text, no subject line)
