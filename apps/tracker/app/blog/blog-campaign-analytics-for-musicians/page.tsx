@@ -84,7 +84,7 @@ export default function BlogCampaignAnalyticsPage() {
               <li><strong>Mainstream Music Blogs:</strong> Pitchfork, Stereogum, Consequence of Sound - massive reach, highly competitive</li>
               <li><strong>Genre-Specific Blogs:</strong> Dancing Astronaut (electronic), MetalSucks (metal) - engaged audiences, easier access</li>
               <li><strong>Regional Blogs:</strong> Local music blogs and city-specific publications - community focus, local support</li>
-              <li><strong>Niche Blogs:</strong> Highly specialized blogs for specific sub-genres or scenes - passionate audiences</li>
+              <li><strong>Niche Blogs:</strong> Highly specialised blogs for specific sub-genres or scenes - passionate audiences</li>
               <li><strong>Artist-Run Blogs:</strong> Blogs created by musicians themselves - peer-to-peer promotion</li>
             </ul>
             <h3 className="text-2xl font-bold text-gray-900 mt-8">Why Blog Campaign Tracking Matters</h3>
@@ -130,7 +130,7 @@ export default function BlogCampaignAnalyticsPage() {
               <div className="bg-white p-6 rounded-xl border-4 border-yellow-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Tier 3: Regional & Niche Blogs</h3>
                 <p className="text-base text-gray-700 leading-relaxed mb-4">
-                  Local music blogs and highly specialized niche publications.
+                  Local music blogs and highly specialised niche publications.
                 </p>
                 <ul className="list-disc pl-4 space-y-1 text-sm text-gray-600">
                   <li>1k-10k monthly visitors</li>

@@ -15,6 +15,7 @@
     "check:tailwind": "node scripts/check-tailwind.js"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.65.0",
     "@headlessui/react": "^2.2.9",
     "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.2.2",
@@ -26,6 +27,7 @@
     "date-fns": "4.1.0",
     "lucide-react": "^0.469.0",
     "next": "15.5.4",
+    "papaparse": "^5.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-hook-form": "^7.63.0",
@@ -42,6 +44,7 @@
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.1.14",
     "@types/node": "^20",
+    "@types/papaparse": "^5.3.16",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",

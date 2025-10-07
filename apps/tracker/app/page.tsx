@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Tracker - AI Campaign Intelligence for Music Promoters | Total Audio Promo',
-  description: 'Stop wasting 15 hours a week on campaign tracking. Get AI-powered intelligence, industry benchmarks, and pattern recognition for radio, playlist, blog, and PR campaigns. £19/month.',
+  title: 'Tracker - Campaign Tracking for Radio, Playlists, and Press | Beta',
+  description: 'Standalone campaign tracking with AI-powered insights and industry benchmarks. Track responses, compare performance, and see what works. Beta access available.',
   keywords: 'music campaign tracking, radio promotion analytics, playlist campaign tracking, music PR tracking, campaign intelligence, music promotion benchmarks',
   authors: [{ name: 'Total Audio Promo' }],
   alternates: {
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
     }
   },
   openGraph: {
-    title: 'Tracker - Stop Wasting Time on Campaign Tracking',
-    description: 'AI campaign intelligence for working music promoters. Track campaigns, get insights, and know exactly what is working.',
+    title: 'Tracker - Campaign Tracking for Radio, Playlists, and Press',
+    description: 'Standalone campaign tracking with AI insights and industry benchmarks. Beta access available.',
     url: 'https://tracker.totalaudiopromo.com',
     siteName: 'Tracker',
     locale: 'en_GB',
@@ -27,14 +27,14 @@ export const metadata: Metadata = {
         url: '/images/total_audio_promo_logo_trans.png',
         width: 1200,
         height: 630,
-        alt: 'Tracker - Campaign Intelligence Platform',
+        alt: 'Tracker - Campaign Tracking Platform',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tracker - AI Campaign Intelligence for Music Promoters',
-    description: 'Stop wasting weekends in spreadsheets. Get instant campaign intelligence with AI-powered benchmarks.',
+    title: 'Tracker - Campaign Tracking for Radio, Playlists, and Press',
+    description: 'Track responses, compare to benchmarks, and get AI insights on what works. Beta access.',
     images: ['/images/total_audio_promo_logo_trans.png'],
   },
   robots: {
@@ -77,31 +77,25 @@ export default async function HomePage() {
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
           <div className="flex-1 space-y-6">
             <div className="flex items-center gap-3">
-              <Image
-                src="/images/tracker-mascot.png"
-                alt="Tracker Detective Mascot"
-                width={64}
-                height={64}
-                className="flex-shrink-0"
-              />
-              <span className="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800">Campaign Tracker · Total Audio Promo</span>
+              <span className="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800">BETA</span>
+              <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">Campaign Tracker</span>
             </div>
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              Stop wasting 15 hours a week
+              Campaign tracking for
               <span className="block text-purple-600">
-                on campaign tracking
+                radio, playlists, and press
               </span>
             </h1>
             <p className="max-w-xl text-base text-gray-600 sm:text-lg">
-              Tracker gives you AI-powered campaign intelligence, industry benchmarks, and pattern recognition.
-              Built by a Brighton producer who hated spreadsheet hell.
+              Track responses, compare to industry benchmarks, and get AI insights on what's working.
+              Standalone campaign intelligence for music promoters.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <Link href="/signup" className="cta-button">Start free trial →</Link>
               <Link href="#how-it-works" className="subtle-button">See how it works</Link>
             </div>
             <p className="text-sm text-gray-500">
-              For artists, labels, and promoters tracking radio, playlist, blog, and PR campaigns
+              No integrations required. Manual campaign tracking with intelligent benchmarks.
             </p>
           </div>
           <div className="flex-1">
@@ -197,14 +191,14 @@ export default async function HomePage() {
             />
           </div>
           <div className="flex-1">
-            <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500">Built by Someone Who Actually Does This</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500">Built by a Working Music Promoter</p>
             <h2 className="mt-4 text-3xl font-semibold">
-              Tracking campaigns shouldn't feel like a punishment.
+              Simple campaign tracking with intelligent benchmarks.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-gray-600 lg:mx-0">
-              I'm Chris – producer (sadact) and I've run radio campaigns for 5 years.
-              Spending 15+ hours a week in spreadsheets tracking results was soul-destroying.
-              Tracker is what I wish I'd had from day one.
+              I'm Chris – I've run radio promotion campaigns for 5 years.
+              Most tracking tools are either too complex or too simple.
+              Tracker finds the middle ground: manual tracking with AI-powered insights.
             </p>
           </div>
         </div>
@@ -214,9 +208,9 @@ export default async function HomePage() {
       <section className="glass-panel px-6 py-10 sm:px-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-2xl font-semibold">Ready to stop wasting 15 hours a week?</h2>
+            <h2 className="text-2xl font-semibold">Ready to track your campaigns properly?</h2>
           <p className="mt-2 max-w-xl text-sm text-gray-600">
-            Start free with 3 campaigns. Upgrade when you need more. No credit card required.
+            Beta access available. Track campaigns, get benchmarks, and see what's actually working.
           </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">

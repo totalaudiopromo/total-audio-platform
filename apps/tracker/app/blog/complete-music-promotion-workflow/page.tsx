@@ -89,7 +89,7 @@ export default function CompleteWorkflowGuide() {
           <section className="mb-12">
             <h2 className="text-3xl font-black text-gray-900 mb-6">The Professional Workflow</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
-              Total Audio Promo breaks music promotion into three focused steps, each with a specialized tool:
+              Total Audio Promo breaks music promotion into three focused steps, each with a specialised tool:
             </p>
 
             {/* Step 1: Audio Intel */}

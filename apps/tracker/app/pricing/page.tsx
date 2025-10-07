@@ -2,12 +2,12 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Pricing - Tracker | AI Campaign Intelligence for Music Promoters',
-  description: 'Simple, transparent pricing for campaign tracking. Start free with 3 campaigns, upgrade to unlimited for £19/month. No credit card required. Cancel anytime.',
+  title: 'Pricing - Tracker | Standalone Campaign Tracking',
+  description: 'Simple pricing for standalone campaign tracking. Free for 3 campaigns, £19/month for unlimited. Beta access available.',
   keywords: 'music campaign tracking pricing, radio promotion analytics cost, playlist tracking price, music PR tracking software',
   openGraph: {
-    title: 'Tracker Pricing - Start Free, Upgrade When Ready',
-    description: 'Free plan includes 3 campaigns. Professional plan £19/month for unlimited campaigns. Agency plan £49/month.',
+    title: 'Tracker Pricing - Standalone Campaign Tracking',
+    description: 'Free plan includes 3 campaigns. Professional plan £19/month for unlimited. Agency plan £79/month.',
     url: 'https://tracker.totalaudiopromo.com/pricing',
     siteName: 'Tracker',
     locale: 'en_GB',
@@ -23,28 +23,28 @@ export const metadata: Metadata = {
 
 const plans = [
   {
-    name: 'Free Starter',
+    name: 'Free',
     price: 'FREE',
     period: '',
     description: 'Perfect for testing Tracker with your first campaigns',
     features: [
-      '3 campaigns to start',
+      '3 campaigns included',
       'All AI intelligence features',
-      'Industry benchmarks included',
+      'Industry benchmarks',
       'Campaign Intelligence AI',
       'Standard support',
     ],
     cta: 'Start Free',
     href: '/auth/signin',
     highlighted: false,
-    badge: 'START FREE',
+    badge: 'BETA',
     badgeColor: 'green',
   },
   {
     name: 'Professional',
     price: '£19',
     period: '/month',
-    description: 'For working promoters who need unlimited tracking',
+    description: 'For working promoters who need unlimited campaign tracking',
     features: [
       'Unlimited campaigns',
       'All AI intelligence features',
@@ -53,7 +53,7 @@ const plans = [
       'Professional exports (PDF/CSV)',
       'Priority support',
     ],
-    cta: 'Get Started',
+    cta: 'Get Professional',
     href: '/auth/signin',
     highlighted: true,
     badge: 'MOST POPULAR',
@@ -61,15 +61,15 @@ const plans = [
   },
   {
     name: 'Agency',
-    price: '£49',
+    price: '£79',
     period: '/month',
-    description: 'Multi-artist tracking with white-label reports',
+    description: 'For agencies managing multiple artists and client campaigns',
     features: [
-      'Unlimited campaigns',
+      'Everything in Professional',
       'Multi-artist tracking',
       'White-label branding',
       'Client-ready reports',
-      'Campaign Intelligence AI',
+      'Team collaboration',
       'Premium support',
     ],
     cta: 'Contact Sales',
@@ -89,13 +89,13 @@ export default function PricingPage() {
           Simple, Transparent Pricing
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-gray-600 sm:text-xl">
-          Choose the plan that fits your campaign tracking needs.
-          All plans include AI intelligence features.
+          Standalone campaign tracking with AI-powered insights and industry benchmarks.
+          Start free, upgrade when you need unlimited campaigns.
         </p>
       </div>
 
       {/* Pricing Cards */}
-      <div className="grid gap-8 lg:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-3 lg:grid-cols-3">
         {plans.map((plan) => (
           <div
             key={plan.name}
@@ -124,12 +124,19 @@ export default function PricingPage() {
             <h2 className="mb-2 text-2xl font-bold">{plan.name}</h2>
 
             {/* Price */}
-            <div className="mb-4 flex items-baseline gap-1">
+            <div className="mb-2 flex items-baseline gap-1">
               <span className="text-5xl font-black">{plan.price}</span>
               {plan.period && (
                 <span className="text-xl text-gray-600">{plan.period}</span>
               )}
             </div>
+
+            {/* Save Amount */}
+            {'saveAmount' in plan && (
+              <p className="mb-2 text-sm font-bold text-green-600">
+                {plan.saveAmount}
+              </p>
+            )}
 
             {/* Description */}
             <p className="mb-8 text-sm text-gray-600">{plan.description}</p>

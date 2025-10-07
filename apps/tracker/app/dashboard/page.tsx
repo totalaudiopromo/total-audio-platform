@@ -4,6 +4,7 @@ import { IntelligenceBar } from '@/components/intelligence/IntelligenceBar';
 import { CampaignCardWithIntel } from '@/components/campaigns/CampaignCardWithIntel';
 import { DashboardClient } from '@/components/dashboard/DashboardClient';
 import { ExportButton } from '@/components/dashboard/ExportButton';
+import { ImportButton } from '@/components/dashboard/ImportButton';
 import { AudioIntelImport } from '@/components/AudioIntelImport';
 import { analyzePatterns, generateCampaignInsights } from '@/lib/intelligence';
 import type { Campaign, Benchmark } from '@/lib/types/tracker';
@@ -71,7 +72,7 @@ export default async function DashboardPage() {
     <DashboardClient>
     <div className="min-h-screen bg-[#f8f9fa]">
       {/* Header - Audio Intel brutalist style */}
-      <header className="sticky top-0 z-50 w-full border-b-4 border-black bg-white shadow-brutal">
+      <header className="w-full border-b-4 border-black bg-white shadow-brutal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex h-16 items-center justify-between">
           <div className="flex items-center gap-3">
             <h1 className="text-2xl font-black text-gray-900 tracking-tight">
@@ -153,6 +154,7 @@ export default async function DashboardPage() {
               <p className="text-sm font-bold text-gray-600">Track, analyse, and improve your results</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+              <ImportButton />
               <ExportButton />
               <button
                 id="new-campaign-trigger"
