@@ -288,8 +288,67 @@ export default function UploadPage() {
     }
   };
 
+  const handleSendToPitch = async (contact: any) => {
+    try {
+      // Parse the contactIntelligence field to extract structured data
+      const intelligence = contact.contactIntelligence || '';
+
+      // Extract outlet (first line with 🎵 emoji)
+      const outletMatch = intelligence.match(/🎵\s*([^\n|]+)/);
+      const outlet = outletMatch ? outletMatch[1].trim() : '';
+
+      // Extract role (look for common role keywords)
+      const roleMatch = intelligence.match(/(presenter|producer|editor|curator|director|manager|host|dj)/i);
+      const role = roleMatch ? roleMatch[1] : '';
+
+      // Extract genres (look for genre mentions or music format)
+      const genreMatch = intelligence.match(/🎧\s*([^\n]+)/);
+      const genres = genreMatch ? genreMatch[1].trim() : '';
+
+      // Use the full intelligence as notes
+      const notes = intelligence;
+
+      // Create the data structure for clipboard
+      const clipboardData = {
+        source: "intel",
+        contacts: [{
+          name: contact.name,
+          outlet: outlet,
+          role: role,
+          genres: genres,
+          notes: notes,
+          email: contact.email
+        }]
+      };
+
+      // Copy to clipboard
+      await navigator.clipboard.writeText(JSON.stringify(clipboardData));
+
+      // Show success notification
+      setNotifyStatus('Contact copied! Opening Pitch Generator...');
+
+      // Open Pitch Generator with import flag
+      window.open('https://pitch.totalaudiopromo.com/generate?import=clipboard', '_blank');
+
+      // Clear notification after 3 seconds
+      setTimeout(() => setNotifyStatus(null), 3000);
+
+    } catch (error) {
+      console.error('Error sending to Pitch Generator:', error);
+      setNotifyStatus('Failed to copy contact data. Please try again.');
+      setTimeout(() => setNotifyStatus(null), 3000);
+    }
+  };
+
   return (
     <div className="max-w-3xl mx-auto py-10 px-4">
+      {/* Toast Notification */}
+      {notifyStatus && !emailSubmitted && (
+        <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black font-bold animate-slide-in">
+          {notifyStatus}
+        </div>
+      )}
+
       <h1 className="text-3xl font-bold mb-6 text-center">Upload Contacts for Organisation</h1>
       <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 mb-6">
         <p className="text-sm text-blue-900 font-medium">
@@ -404,6 +463,7 @@ export default function UploadPage() {
                   <th className="border px-2 py-1">Name</th>
                   <th className="border px-2 py-1">Email</th>
                   <th className="border px-2 py-1">Contact Intelligence</th>
+                  <th className="border px-2 py-1">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -413,6 +473,14 @@ export default function UploadPage() {
                     <td className="border px-2 py-1 align-top">{c.email}</td>
                     <td className="border px-2 py-1 whitespace-pre-line align-top" style={{ maxWidth: 400 }}>
                       {c.contactIntelligence}
+                    </td>
+                    <td className="border px-2 py-1 align-top">
+                      <button
+                        onClick={() => handleSendToPitch(c)}
+                        className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all text-xs whitespace-nowrap"
+                      >
+                        → Pitch
+                      </button>
                     </td>
                   </tr>
                 ))}
