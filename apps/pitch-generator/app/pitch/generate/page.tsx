@@ -41,6 +41,7 @@ export default function GeneratePitchPage() {
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+  const [importNotification, setImportNotification] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({
     contactId: '',
     artistName: '',
@@ -61,6 +62,86 @@ export default function GeneratePitchPage() {
   useEffect(() => {
     if (session?.user?.email) {
       loadContacts();
+    }
+  }, [session]);
+
+  // Detect clipboard import from Audio Intel
+  useEffect(() => {
+    async function handleClipboardImport() {
+      // Check if URL has import=clipboard parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      if (!urlParams.has('import') || urlParams.get('import') !== 'clipboard') {
+        return;
+      }
+
+      try {
+        // Read clipboard data
+        const clipboardText = await navigator.clipboard.readText();
+        const clipboardData = JSON.parse(clipboardText);
+
+        // Validate structure
+        if (!clipboardData.source || clipboardData.source !== 'intel' || !clipboardData.contacts || !Array.isArray(clipboardData.contacts)) {
+          setImportNotification('Invalid clipboard data format');
+          setTimeout(() => setImportNotification(null), 3000);
+          return;
+        }
+
+        const importedContact = clipboardData.contacts[0];
+        if (!importedContact) {
+          setImportNotification('No contact data found in clipboard');
+          setTimeout(() => setImportNotification(null), 3000);
+          return;
+        }
+
+        // Create new contact in Supabase
+        const userId = session?.user?.email || '';
+        const { data: newContact, error } = await supabase
+          .from('contacts')
+          .insert({
+            user_id: userId,
+            name: importedContact.name || '',
+            email: importedContact.email || '',
+            outlet: importedContact.outlet || '',
+            role: importedContact.role || '',
+            genre_tags: importedContact.genres ? importedContact.genres.split(',').map((g: string) => g.trim()) : [],
+            notes: importedContact.notes || '',
+          })
+          .select()
+          .single();
+
+        if (error) {
+          console.error('Error creating contact:', error);
+          setImportNotification('Failed to import contact');
+          setTimeout(() => setImportNotification(null), 3000);
+          return;
+        }
+
+        // Reload contacts to include the new one
+        await loadContacts();
+
+        // Auto-select the imported contact
+        setSelectedContact(newContact);
+        setFormData(prev => ({
+          ...prev,
+          contactId: newContact.id,
+          tone: newContact.preferred_tone || 'professional',
+        }));
+
+        // Show success notification
+        setImportNotification(`Contact "${importedContact.name}" imported from Audio Intel!`);
+        setTimeout(() => setImportNotification(null), 4000);
+
+        // Clean up URL
+        window.history.replaceState({}, '', '/pitch/generate');
+      } catch (error) {
+        console.error('Error importing from clipboard:', error);
+        setImportNotification('Failed to read clipboard data');
+        setTimeout(() => setImportNotification(null), 3000);
+      }
+    }
+
+    if (session?.user?.email) {
+      handleClipboardImport();
     }
   }, [session]);
 
@@ -144,6 +225,13 @@ export default function GeneratePitchPage() {
 
   return (
     <div className="mx-auto w-full max-w-3xl">
+      {/* Toast Notification */}
+      {importNotification && (
+        <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black font-bold max-w-md">
+          {importNotification}
+        </div>
+      )}
+
       <div className="mb-6">
         <Link href="/dashboard" className="subtle-button inline-flex items-center gap-2 text-sm">
           <ArrowLeft className="h-4 w-4" />
