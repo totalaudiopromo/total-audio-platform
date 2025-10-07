@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Papa from 'papaparse';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 interface CampaignImportRow {
   name: string;
@@ -26,7 +26,6 @@ interface ImportResult {
 
 export default function ImportCampaignsPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
   const [importing, setImporting] = useState(false);
