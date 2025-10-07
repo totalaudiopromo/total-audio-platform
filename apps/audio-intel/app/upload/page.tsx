@@ -290,7 +290,12 @@ export default function UploadPage() {
 
   return (
     <div className="max-w-3xl mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold mb-6 text-center">Upload Contacts for Enrichment</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Upload Contacts for Organisation</h1>
+      <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 mb-6">
+        <p className="text-sm text-blue-900 font-medium">
+          <strong>How Audio Intel Works:</strong> Upload your existing contacts and we'll add AI-generated context notes to help organise your database. This is AI-generated reference information based on available data, not verified contact details. Always verify important information before pitching.
+        </p>
+      </div>
       <div className="mb-6">
         <label className="block font-semibold mb-1" htmlFor="user-email">
           Email (optional)
@@ -359,10 +364,15 @@ export default function UploadPage() {
       )}
       {enriched.length > 0 && (
         <div className="mt-10">
-          <SuccessMessage 
-            message={`Successfully enriched ${enriched.length} contact${enriched.length !== 1 ? 's' : ''}!`}
-            details="Your contacts are ready for export. Choose your preferred format below."
+          <SuccessMessage
+            message={`Successfully organised ${enriched.length} contact${enriched.length !== 1 ? 's' : ''}!`}
+            details="Your contacts are ready for export with AI-generated context notes. Choose your preferred format below."
           />
+          <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded">
+            <p className="text-sm text-amber-900">
+              <strong>Important:</strong> The information below is AI-generated context based on available data. It's designed to help you organise and remember your contacts, not as verified contact details. Always verify important information before pitching.
+            </p>
+          </div>
           {emailSubmitted && (
             <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded text-blue-700">
               We will email you at <span className="font-semibold">{userEmail}</span> when your results are ready.

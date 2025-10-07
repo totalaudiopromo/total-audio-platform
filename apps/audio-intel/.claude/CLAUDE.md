@@ -5,10 +5,11 @@
 **Audio Intel** is THE revenue generator for Total Audio Promo. Everything here must directly support getting first paying customers.
 
 ### Core Function
-- **Contact enrichment tool** for music industry professionals
-- Transform basic email lists into actionable music industry intelligence
+- **Contact enrichment service** for music industry professionals
+- Upload contact lists, get back AI-powered research, export to CSV/Excel
+- On-demand enrichment - no database, no CRM, just intelligence you export and use anywhere
 - UK alternative to expensive US tools (SubmitHub £200-500+/month)
-- **Pricing**: Free Beta → £19.99/month Pro → £39.99/month Agency
+- **Pricing**: Free Beta → £19/month Complete Bundle → £79/month Agency
 
 ### Current Status
 - **Live Site**: https://intel.totalaudiopromo.com

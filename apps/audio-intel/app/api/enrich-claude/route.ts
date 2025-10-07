@@ -223,18 +223,18 @@ async function processContactBatch(
         // Create cache key based on email
         const cacheKey = email.toLowerCase().trim();
         
-        // Optimized research prompt for Claude API
-        const prompt = `Research this music industry contact for promotion purposes: ${name} (${email}).
+        // Optimized context generation prompt for Claude API
+        const prompt = `Generate helpful organisational context for this music industry contact to help organise contact databases: ${name} (${email}).
 
-Provide intelligence in this exact format:
+Provide AI-generated reference notes in this exact format:
 🎵 [Station/Platform Name] | [Music Format/Genre Focus]
-📍 [Coverage Area/Location] 
-📧 [Best Contact Method & Timing]
-🎧 [Specific Focus/Programming Details]
-💡 [Key Submission Tip]
+📍 [Coverage Area/Location]
+📧 [Contact Method Suggestions]
+🎧 [Programming Focus/Genre Preferences]
+💡 [Approach Suggestions]
  [Confidence Level: High/Medium/Low]
 
-Be specific about music industry details like genre preferences, submission guidelines, and contact preferences. If limited info is available, use domain analysis and industry knowledge to provide helpful guidance.`;
+Note: Generate helpful reference notes based on available information. This is AI-generated context to help organise and remember contacts, not verified data. Use domain analysis and music industry knowledge to provide useful organisational context.`;
         
         // Call Claude with caching
         const claudeResp = await runClaudeResearch(prompt, cacheKey);

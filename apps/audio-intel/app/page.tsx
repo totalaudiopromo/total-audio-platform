@@ -407,7 +407,7 @@ export default function AudioIntelLanding() {
                   </div>
                 </div>
                 <p className="text-lg font-bold text-gray-700 mb-4">
-                  Contact enrichment tested on 500+ real radio promotion campaigns. Transform basic email lists into detailed music industry intelligence with AI-powered research that stops the 3-hour contact research sessions.
+                  Enrich any contact list with AI-powered music industry research. Upload emails, get back detailed intelligence with submission guidelines, contact preferences, and pitch tips. Export to CSV/Excel and use anywhere.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="secondary" className="bg-blue-50 text-blue-700">Submission Guidelines</Badge>

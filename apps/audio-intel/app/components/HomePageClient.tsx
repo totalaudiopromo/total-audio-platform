@@ -39,8 +39,8 @@ const testimonials = [
 
 const faqs = [
   {
-    q: "How accurate is the contact intelligence?",
-    a: "We use a combination of AI, public data, and manual verification to ensure 90%+ accuracy. Each profile includes a research confidence score.",
+    q: "What kind of context does Audio Intel add?",
+    a: "Audio Intel uses AI to generate helpful reference notes based on available information - like platform type, genre focus, and pitching suggestions. This is AI-generated context to help organise your contacts, not verified data. Always verify important details before pitching.",
   },
   {
     q: "What music industry contacts can you enrich?",
@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: "Can I export to my existing CRM?",
-    a: "Absolutely. Export to CSV, Excel, or Airtable and import into any CRM or spreadsheet.",
+    a: "Absolutely. Export enriched contacts to CSV or Excel and import into any CRM or spreadsheet system you use.",
   },
   {
     q: "Is my data secure and GDPR compliant?",
@@ -351,10 +351,10 @@ export default function HomePageClient() {
             </div>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight dark:text-white break-words">
-            Audio Intel: Stop Wasting <span className="text-[#a5b4fc] dark:text-brand-blue">15 Hours a Week</span> <br className="hidden sm:block" /> Researching Music Contacts
+            Audio Intel: Turn <span className="text-[#a5b4fc] dark:text-brand-blue">Messy Contact Spreadsheets</span> <br className="hidden sm:block" /> Into Organised Databases
           </h1>
           <p className="text-lg sm:text-xl max-w-2xl mx-auto mb-8 text-white/90 break-words">
-            Transform basic email lists into music industry intelligence with AI-powered contact enrichment. Get playlist curators, radio DJs, and music bloggers with submission guidelines, contact preferences, and pitch-ready insights.
+            AI-powered contact organisation that adds helpful context and reference notes to your existing contacts. Upload messy lists, get back clean data with AI-generated context notes. Export to CSV/Excel and use anywhere.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <button
@@ -502,12 +502,12 @@ export default function HomePageClient() {
       <section className="w-full px-4 sm:px-6 lg:px-8 py-16 bg-white flex flex-col items-center max-w-screen-xl mx-auto overflow-x-hidden">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-[#312e81] text-center dark:text-white break-words">What You Get With Every Contact</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl w-full">
-          <Feature icon={<User className="w-8 h-8 text-[#6366f1]" aria-label="User icon" />} title="Music Industry Classification" desc="Radio DJ, Playlist Curator, Music Blogger, A&R, Festival Booker" />
-          <Feature icon={<Mail className="w-8 h-8 text-[#6366f1]" aria-label="Mail icon" />} title="Contact Intelligence" desc="Submission guidelines, preferred contact methods, best timing" />
-          <Feature icon={<Headphones className="w-8 h-8 text-[#6366f1]" aria-label="Headphones icon" />} title="Music Taste Analysis" desc="Recent playlist adds, genres covered, artist preferences" />
-          <Feature icon={<Briefcase className="w-8 h-8 text-[#6366f1]" aria-label="Briefcase icon" />} title="Professional Details" desc="Station format, publication reach, follower counts" />
-          <Feature icon={<Award className="w-8 h-8 text-[#6366f1]" aria-label="Award icon" />} title="Pitch Optimization" desc="Personalized approach suggestions and conversation starters" />
-          <Feature icon={<Download className="w-8 h-8 text-[#6366f1]" aria-label="Download icon" />} title="Export Anywhere" desc="CSV, Excel, Airtable - works with any CRM or spreadsheet" />
+          <Feature icon={<User className="w-8 h-8 text-[#6366f1]" aria-label="User icon" />} title="Contact Organisation" desc="Clean formatting with role classification and platform categorisation" />
+          <Feature icon={<Mail className="w-8 h-8 text-[#6366f1]" aria-label="Mail icon" />} title="AI-Generated Reference Notes" desc="Helpful context suggestions based on available information" />
+          <Feature icon={<Headphones className="w-8 h-8 text-[#6366f1]" aria-label="Headphones icon" />} title="Genre Context" desc="AI suggestions for genre focus and music preferences" />
+          <Feature icon={<Briefcase className="w-8 h-8 text-[#6366f1]" aria-label="Briefcase icon" />} title="Spreadsheet Cleanup" desc="Standardised formatting ready for CRM import" />
+          <Feature icon={<Award className="w-8 h-8 text-[#6366f1]" aria-label="Award icon" />} title="Pitching Reminders" desc="AI-generated approach suggestions and conversation starters" />
+          <Feature icon={<Download className="w-8 h-8 text-[#6366f1]" aria-label="Download icon" />} title="Export Anywhere" desc="Export to CSV, Excel, or PDF - use with any CRM system" />
         </div>
       </section>
 
@@ -533,11 +533,11 @@ export default function HomePageClient() {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-[#312e81] text-lg font-semibold dark:text-white">
-          <span>3x higher pitch response rates</span>
+          <span>Clean, organised contact data in minutes</span>
           <span className="hidden sm:inline">•</span>
-          <span>15 hours saved per week</span>
+          <span>15 hours saved per week on spreadsheet cleanup</span>
           <span className="hidden sm:inline">•</span>
-          <span>90% data accuracy</span>
+          <span>AI-generated reference notes for every contact</span>
         </div>
       </section>
 
@@ -545,10 +545,10 @@ export default function HomePageClient() {
       <section className="w-full px-4 sm:px-6 lg:px-8 py-16 bg-white flex flex-col items-center dark:bg-gray-900 max-w-screen-xl mx-auto overflow-x-hidden">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-[#312e81] text-center dark:text-white break-words">Trusted by Music Industry Professionals</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl w-full mb-8">
-          <StatCard stat="517+ Contacts Enriched" subtext="Real radio DJs, playlist curators, and music bloggers" />
-          <StatCard stat="210+ Radio Stations" subtext="BBC, commercial, and independent stations mapped" />
-          <StatCard stat="90% Data Accuracy" subtext="Verified contact intelligence you can trust" />
-          <StatCard stat="15 Hours Saved" subtext="Average time saved per week on contact research" />
+          <StatCard stat="517+ Contacts Organised" subtext="Radio DJs, playlist curators, and music bloggers" />
+          <StatCard stat="210+ Radio Stations" subtext="BBC, commercial, and independent contacts cleaned" />
+          <StatCard stat="Clean Data Export" subtext="CSV, Excel, PDF - ready for any CRM" />
+          <StatCard stat="15 Hours Saved" subtext="Average time saved per week on spreadsheet organisation" />
         </div>
         {/* Company logos as social proof */}
         <div className="flex flex-wrap gap-6 justify-center items-center opacity-60">
@@ -988,7 +988,7 @@ export default function HomePageClient() {
                 <span className="text-xl font-bold text-[#312e81] dark:text-white">Audio Intel</span>
               </div>
               <p className="text-[#312e81]/80 dark:text-white/80 mb-4">
-                AI-powered music industry contact enrichment. Transform basic email lists into actionable intelligence.
+                AI-powered music industry contact enrichment. Upload emails, get back detailed research, export anywhere.
               </p>
               <div className="flex items-center gap-4 text-sm text-[#312e81]/60 dark:text-white/60">
                 <span>© 2024 Total Audio Promo</span>
