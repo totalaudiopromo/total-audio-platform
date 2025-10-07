@@ -191,6 +191,15 @@ export default function PitchHistoryPage() {
                         pitchId={pitch.id}
                         currentStatus={pitch.status as 'draft' | 'sent' | 'replied' | 'success'}
                         onStatusChange={handleStatusChange}
+                        pitchData={{
+                          contactName: pitch.contact_name,
+                          contactEmail: pitch.contact_email,
+                          contactOutlet: pitch.contact_outlet || '',
+                          artistName: pitch.artist_name,
+                          trackTitle: pitch.track_title,
+                          pitchBody: pitch.pitch_body,
+                          subjectLine: pitch.subject_line,
+                        }}
                       />
                       <span className="text-xs text-gray-900/50">
                         {new Date(pitch.created_at!).toLocaleDateString('en-GB')}
