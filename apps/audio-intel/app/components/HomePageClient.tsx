@@ -309,6 +309,9 @@ export default function HomePageClient() {
                 <a href="#features" className="text-gray-700 hover:text-black font-bold text-lg transition-colors">
                   Features
                 </a>
+                <Link href="/blog" className="text-gray-700 hover:text-black font-bold text-lg transition-colors">
+                  Blog
+                </Link>
                 <a href="#pricing" className="text-gray-700 hover:text-black font-bold text-lg transition-colors">
                   Pricing
                 </a>
@@ -1001,6 +1004,7 @@ export default function HomePageClient() {
               <h4 className="font-bold text-[#312e81] dark:text-white mb-4">Product</h4>
               <ul className="space-y-2 text-[#312e81]/80 dark:text-white/80">
                 <li><a href="#features" className="hover:text-[#6366f1] dark:hover:text-brand-blue transition-colors">Features</a></li>
+                <li><Link href="/blog" className="hover:text-[#6366f1] dark:hover:text-brand-blue transition-colors">Blog</Link></li>
                 <li><a href="#pricing" className="hover:text-[#6366f1] dark:hover:text-brand-blue transition-colors">Pricing</a></li>
                 <li><a href="#demo" className="hover:text-[#6366f1] dark:hover:text-brand-blue transition-colors">Live Demo</a></li>
                 <li><a href="#signup" className="hover:text-[#6366f1] dark:hover:text-brand-blue transition-colors">Start Free Trial</a></li>
