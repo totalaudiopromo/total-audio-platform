@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Papa from 'papaparse';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 interface CampaignImportRow {
   name: string;
@@ -26,11 +26,78 @@ interface ImportResult {
 
 export default function ImportCampaignsPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
   const [importing, setImporting] = useState(false);
   const [result, setResult] = useState<ImportResult | null>(null);
   const [preview, setPreview] = useState<CampaignImportRow[]>([]);
+  const [notification, setNotification] = useState<string | null>(null);
+
+  // Detect clipboard import from Pitch Generator
+  useEffect(() => {
+    async function handleClipboardImport() {
+      const source = searchParams.get('source');
+      if (source !== 'clipboard') return;
+
+      try {
+        // Read clipboard data
+        const clipboardText = await navigator.clipboard.readText();
+        const clipboardData = JSON.parse(clipboardText);
+
+        // Validate structure
+        if (!clipboardData.source || clipboardData.source !== 'pitch' || !clipboardData.campaign) {
+          setNotification('Invalid clipboard data format');
+          setTimeout(() => setNotification(null), 3000);
+          return;
+        }
+
+        const campaign = clipboardData.campaign;
+
+        // Import the campaign directly via API
+        setImporting(true);
+        const response = await fetch('/api/campaigns/import', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            campaigns: [{
+              name: campaign.name,
+              artist_name: campaign.artist,
+              platform: campaign.contacts?.[0]?.outlet || 'Pitch Generator',
+              status: 'active',
+              start_date: new Date().toISOString().split('T')[0],
+              notes: `Imported from Pitch Generator\nContact: ${campaign.contacts?.[0]?.name || ''}\nEmail: ${campaign.contacts?.[0]?.email || ''}\nPitch: ${campaign.contacts?.[0]?.pitchBody?.substring(0, 200) || ''}...`,
+            }]
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Import failed');
+        }
+
+        const importResult = await response.json();
+
+        // Show success notification
+        setNotification(`Campaign "${campaign.name}" imported from Pitch Generator!`);
+        setResult(importResult);
+
+        // Clean up URL
+        window.history.replaceState({}, '', '/dashboard/import');
+
+        // Clear notification after delay
+        setTimeout(() => setNotification(null), 4000);
+
+      } catch (error) {
+        console.error('Error importing from clipboard:', error);
+        setNotification('Failed to import campaign from clipboard');
+        setTimeout(() => setNotification(null), 3000);
+      } finally {
+        setImporting(false);
+      }
+    }
+
+    handleClipboardImport();
+  }, [searchParams]);
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -115,6 +182,13 @@ Commercial Radio - Kiss FM Push,sadact,Commercial Radio,Electronic,2025-03-01,,8
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4">
+      {/* Toast Notification */}
+      {notification && (
+        <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black font-bold max-w-md">
+          {notification}
+        </div>
+      )}
+
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">
