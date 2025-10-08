@@ -159,34 +159,9 @@ export default function BetaAccessPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
-      {/* Header */}
-      <header className="beta-header sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-        <div className="beta-container container flex h-16 items-center justify-between">
-          <Link href="/" className="beta-logo-container flex items-center space-x-4">
-            <Image 
-              src="/images/total_audio_promo_logo_trans.png" 
-              alt="Total Audio Promo Logo" 
-              width={40} 
-              height={40}
-              className=""
-            />
-            <div className="flex items-center space-x-2">
-              <span className="beta-logo-text text-3xl font-black text-gray-900">Audio Intel</span>
-              <Badge variant="secondary" className="beta-badge bg-blue-100 text-blue-800 font-bold">Beta</Badge>
-            </div>
-          </Link>
-          
-          <nav className="flex items-center space-x-6">
-            <Link href="/" className="beta-nav-link text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
-              Back to Home
-            </Link>
-          </nav>
-        </div>
-      </header>
-
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
       {/* Hero Section */}
-      <section className="beta-hero container px-4 py-24 mx-auto">
+      <section className="glass-panel px-6 py-16 sm:px-10">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Badge className="beta-exclusive-badge bg-gradient-to-r from-yellow-400 to-yellow-500 text-white font-black text-lg px-6 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -229,13 +204,15 @@ export default function BetaAccessPage() {
           </div>
         </div>
 
-        {/* What You'll Be Testing */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <h2 className="beta-section-title text-4xl font-black text-gray-900 text-center mb-12">
-            What You'll Be Testing
-          </h2>
-          
-          <div className="glass-panel border-gray-300 mb-8">
+      </section>
+
+      {/* What You'll Be Testing */}
+      <section className="glass-panel px-6 py-12 sm:px-10">
+        <h2 className="text-3xl font-bold text-center mb-8 sm:text-4xl">
+          What You'll Be Testing
+        </h2>
+
+        <div>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <div className="flex items-center gap-3 mb-4">
@@ -287,20 +264,20 @@ export default function BetaAccessPage() {
                 </ul>
               </div>
             </div>
-            
+
             <div className="mt-8 p-6 bg-blue-50 rounded-xl border-2 border-blue-200">
               <p className="text-lg font-bold text-blue-800 text-center">
                 <strong>Perfect for:</strong> Radio promoters, playlist curators, music bloggers, label managers, and independent artists who spend hours researching industry contacts
               </p>
             </div>
           </div>
-        </div>
+      </section>
 
-        {/* Beta Benefits */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <h2 className="beta-section-title text-4xl font-black text-gray-900 text-center mb-12">
-            Why Join as a Beta Founder?
-          </h2>
+      {/* Beta Benefits */}
+      <section className="glass-panel px-6 py-12 sm:px-10">
+        <h2 className="text-3xl font-bold text-center mb-8 sm:text-4xl">
+          Why Join as a Beta Founder?
+        </h2>
           
           <div className="beta-benefits-grid grid lg:grid-cols-2 gap-8">
             {/* Left Column */}
@@ -389,11 +366,12 @@ export default function BetaAccessPage() {
               </div>
             </div>
           </div>
-        </div>
+      </section>
 
-        {/* Signup Form */}
+      {/* Signup Form */}
+      <section className="glass-panel px-6 py-12 sm:px-10">
         <div className="max-w-2xl mx-auto">
-          <Card className="beta-form-card p-12 border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+          <Card className="beta-form-card p-8 sm:p-12 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <CardHeader className="text-center pb-8">
               {/* Processing/organizing PNG for signup form */}
               <div className="mb-6">
@@ -602,9 +580,11 @@ export default function BetaAccessPage() {
             </CardContent>
           </Card>
         </div>
+      </section>
 
-        {/* Social Proof */}
-        <div className="beta-social-proof max-w-4xl mx-auto mt-16 text-center">
+      {/* Social Proof */}
+      <section className="glass-panel px-6 py-10 sm:px-10">
+        <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-2xl font-black text-gray-900 mb-8">
             Built by a Working Radio Promoter
           </h3>
@@ -627,18 +607,18 @@ export default function BetaAccessPage() {
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Limited Time Notice */}
-        <div className="max-w-2xl mx-auto mt-16">
-          <div className="beta-limited-notice bg-gradient-to-r from-red-500 to-orange-500 p-8 rounded-2xl text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-            <h3 className="text-2xl font-black text-white mb-4">
-              ⏰ Limited Beta Spots Available
-            </h3>
-            <p className="text-lg font-bold text-white/90">
-              We're accepting a limited number of free beta users to ensure quality support. 
-              The 50% lifetime discount is only available for beta testers who decide to upgrade.
-            </p>
-          </div>
+      {/* Limited Time Notice */}
+      <section className="glass-panel border-red-500 bg-gradient-to-r from-red-50 to-orange-50 px-6 py-10 sm:px-10">
+        <div className="max-w-2xl mx-auto text-center">
+          <h3 className="text-3xl font-bold text-gray-900 mb-4">
+            ⏰ Limited Beta Spots Available
+          </h3>
+          <p className="text-lg text-gray-700">
+            We're accepting a limited number of free beta users to ensure quality support.
+            The 50% lifetime discount is only available for beta testers who decide to upgrade.
+          </p>
         </div>
       </section>
     </div>
