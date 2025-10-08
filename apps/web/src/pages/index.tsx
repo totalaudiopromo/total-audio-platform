@@ -71,69 +71,71 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section - Founder-Led */}
       <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50 py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="w-24 h-24 rounded-2xl flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mx-auto mb-8 border-4 border-black overflow-hidden bg-white">
-              <Image
-                src="/images/total_audio_promo_logo_trans.png"
-                alt="Total Audio Promo Logo"
-                width={96}
-                height={96}
-                className="object-contain w-full h-full"
-              />
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
-              Stop juggling 8+ tools to promote one release
-            </h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Total Audio Promo is the AI-first music promotion suite built by sadact, a Brighton producer who got tired of the platform chaos. One ecosystem, multiple specialised tools, all designed by someone who actually uses them.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <div className="glass-panel">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
+          <div className="glass-panel p-8 md:p-12">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left: Founder Photo & Story */}
+              <div>
+                <div className="flex items-start gap-6 mb-8">
+                  <Image
+                    src="/images/chris-schofield-founder-photo.jpg"
+                    alt="Chris Schofield - Founder"
+                    width={120}
+                    height={120}
+                    className="rounded-2xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex-shrink-0"
+                  />
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500 mb-2">Built by a Working Radio Promoter</p>
+                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+                      I got tired of juggling 8 tools that didn't talk to each other
+                    </h1>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Save Time</h3>
-                <p className="text-sm text-gray-600">Minutes, not hours on contact research</p>
+
+                <div className="space-y-4 text-gray-700 mb-8">
+                  <p className="text-lg">
+                    I'm Chris – I've been promoting music to BBC Radio 1, 6 Music, and Spotify playlists for 5+ years.
+                    Every campaign meant switching between Muck Rack, Google Sheets, email clients, CRM tools... you know the drill.
+                  </p>
+                  <p className="text-base">
+                    So I built Total Audio Promo: an ecosystem of tools that actually work together.
+                    Each one solves a specific problem I was facing. No bloat, no features I don't use, just the workflow that actually works.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-4">
+                  <a href="#ecosystem" className="cta-button text-base px-8 py-3">
+                    See how it works →
+                  </a>
+                  <a href="https://intel.totalaudiopromo.com/beta" className="subtle-button text-base px-8 py-3">
+                    Try Audio Intel free
+                  </a>
+                </div>
+              </div>
+
+              {/* Right: The Problem Illustration */}
+              <div className="flex flex-col items-center justify-center">
+                <Image
+                  src="/images/chaos-overwhelmed.png"
+                  alt="Overwhelmed by tool chaos"
+                  width={350}
+                  height={350}
+                  className="drop-shadow-2xl mb-6"
+                />
+                <div className="bg-red-50 border-2 border-red-600 rounded-lg p-4 max-w-md">
+                  <p className="text-sm font-bold text-red-900 mb-2">The old way:</p>
+                  <ul className="text-xs text-gray-700 space-y-1">
+                    <li>• Muck Rack for research (£79/month)</li>
+                    <li>• ChatGPT for pitches (£16/month)</li>
+                    <li>• HubSpot for tracking (£38/month)</li>
+                    <li>• Google Sheets for organisation (free but chaotic)</li>
+                    <li>• 15+ hours per campaign switching between them all</li>
+                  </ul>
+                </div>
               </div>
             </div>
-
-            <div className="glass-panel">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Industry Focus</h3>
-                <p className="text-sm text-gray-600">Built specifically for music promotion</p>
-              </div>
-            </div>
-
-            <div className="glass-panel">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Industry Pro</h3>
-                <p className="text-sm text-gray-600">By a working radio promoter</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <a href="/#products" className="cta-button text-lg px-12 py-4">
-              Explore Our Tools →
-            </a>
           </div>
         </div>
       </section>
@@ -239,13 +241,207 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* The Ecosystem - How It Works */}
+      <section id="ecosystem" className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 rounded-full border-2 border-blue-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-6">
+              <span className="text-sm font-bold uppercase tracking-wider text-blue-600">The Workflow That Actually Works</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Three tools that talk to each other
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Built the way I actually run campaigns. Each tool solves one problem really well, then hands off to the next.
+            </p>
+          </div>
+
+          {/* Workflow Steps */}
+          <div className="space-y-8 mb-16">
+            {/* Step 1: Audio Intel */}
+            <div className="glass-panel p-8 md:p-10">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                      1
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900">Audio Intel</h3>
+                  </div>
+                  <p className="text-lg text-gray-700 mb-4">
+                    <strong>Find and verify contacts in 15 minutes</strong> instead of wasting your evening on Google.
+                  </p>
+                  <ul className="space-y-2 text-gray-600 mb-6">
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span>Upload emails from any source (spreadsheets, Muck Rack exports, scraped from blogs)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span>AI enriches each contact with role, platform, submission guidelines, pitch preferences</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span>Email validation filters out dead addresses before you waste time pitching</span>
+                    </li>
+                  </ul>
+                  <div className="bg-blue-50 border-2 border-blue-600 rounded-lg p-4">
+                    <p className="text-sm font-bold text-blue-900">
+                      Real result: Enriched 47 BBC Radio contacts in 12 minutes. Used to take me an entire afternoon.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex justify-center">
+                  <Image
+                    src="/images/success-complete.png"
+                    alt="Audio Intel enrichment complete"
+                    width={300}
+                    height={300}
+                    className="drop-shadow-2xl"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Arrow */}
+            <div className="flex justify-center">
+              <div className="text-4xl text-gray-400">↓</div>
+            </div>
+
+            {/* Step 2: Pitch Generator */}
+            <div className="glass-panel p-8 md:p-10 bg-gradient-to-br from-purple-50 to-white">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="flex justify-center lg:order-1">
+                  <Image
+                    src="/images/vinyl-throw-action.png"
+                    alt="Pitch Generator in action"
+                    width={300}
+                    height={300}
+                    className="drop-shadow-2xl"
+                  />
+                </div>
+                <div className="lg:order-2">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                      2
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900">Pitch Generator</h3>
+                  </div>
+                  <p className="text-lg text-gray-700 mb-4">
+                    <strong>Write 50 personalised pitches in 20 minutes</strong> using the contact intelligence from Audio Intel.
+                  </p>
+                  <ul className="space-y-2 text-gray-600 mb-6">
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span>Import enriched contacts directly from Audio Intel (or add manually)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span>AI generates pitches that reference each contact's specific submission guidelines</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span>Batch generate 10-50 pitches at once, copy all to Gmail with one click</span>
+                    </li>
+                  </ul>
+                  <div className="bg-purple-50 border-2 border-purple-600 rounded-lg p-4">
+                    <p className="text-sm font-bold text-purple-900">
+                      Real result: 14-18% response rate from BBC Radio 1 specialist shows (vs 2% for bulk emails).
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Arrow */}
+            <div className="flex justify-center">
+              <div className="text-4xl text-gray-400">↓</div>
+            </div>
+
+            {/* Step 3: Tracker (Coming Soon) */}
+            <div className="glass-panel p-8 md:p-10 bg-gradient-to-br from-amber-50 to-white opacity-75 relative">
+              <div className="absolute top-4 right-4">
+                <div className="inline-flex items-center rounded-full border-2 border-amber-600 bg-amber-400 px-3 py-1 text-xs font-bold uppercase tracking-wider text-black">
+                  Coming Soon
+                </div>
+              </div>
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                      3
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900">Campaign Tracker</h3>
+                  </div>
+                  <p className="text-lg text-gray-700 mb-4">
+                    <strong>Track what actually works</strong> across all your campaigns with automatic response detection.
+                  </p>
+                  <ul className="space-y-2 text-gray-600 mb-6">
+                    <li className="flex items-start gap-2">
+                      <span className="text-gray-400 mt-1">○</span>
+                      <span className="text-gray-500">See which contacts opened, replied, or ignored your pitches</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-gray-400 mt-1">○</span>
+                      <span className="text-gray-500">Compare response rates by platform, genre, time sent</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-gray-400 mt-1">○</span>
+                      <span className="text-gray-500">Build a history of what works for YOUR music</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="flex justify-center opacity-50">
+                  <div className="w-[300px] h-[300px] bg-gray-200 rounded-2xl border-4 border-black flex items-center justify-center">
+                    <p className="text-gray-500 font-bold text-xl">Preview Coming Soon</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="py-16 bg-gradient-to-br from-green-50 to-emerald-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="glass-panel p-10">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Proven with real campaigns
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                These aren't theoretical numbers. These are real metrics from 300+ pitches sent across 15 campaigns (2020-2025).
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white rounded-xl border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <div className="text-4xl font-black text-blue-600 mb-2">100%</div>
+                <p className="font-bold text-gray-900 mb-2">Enrichment Success Rate</p>
+                <p className="text-sm text-gray-600">Tested with BBC Radio 1, Spotify, major playlist curators</p>
+              </div>
+              <div className="bg-white rounded-xl border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <div className="text-4xl font-black text-green-600 mb-2">15 hours → 15 min</div>
+                <p className="font-bold text-gray-900 mb-2">Time Saved Per Campaign</p>
+                <p className="text-sm text-gray-600">Average across 6 campaigns with 50+ contacts each</p>
+              </div>
+              <div className="bg-white rounded-xl border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <div className="text-4xl font-black text-purple-600 mb-2">14-18%</div>
+                <p className="font-bold text-gray-900 mb-2">BBC Radio 1 Response Rate</p>
+                <p className="text-sm text-gray-600">120 specialist show pitches (vs 2% for bulk emails)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Products Section */}
       <section id="products" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Or Choose Individual Tools</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Choose your starting point</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Each tool works standalone. But the Pro Bundle gives you everything for the price of Intel alone.
+              Each tool works standalone. But the Pro Bundle gives you the complete workflow for the price of Intel alone.
             </p>
           </div>
 

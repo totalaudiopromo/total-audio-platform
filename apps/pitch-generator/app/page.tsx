@@ -246,6 +246,38 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Founder Story / Social Proof */}
+      <section className="glass-panel px-6 py-10 sm:px-10">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
+          <div className="flex-shrink-0">
+            <Image
+              src="/images/chris-schofield-founder.jpg"
+              alt="Chris Schofield, Founder of Total Audio Promo"
+              width={200}
+              height={200}
+              className="rounded-2xl shadow-lg"
+            />
+          </div>
+          <div className="flex-1">
+            <p className="text-xs font-semibold uppercase tracking-[0.5em] text-gray-500">Built by someone who actually does this</p>
+            <h2 className="mt-4 text-2xl font-bold">Why I built Pitch Generator</h2>
+            <p className="mt-4 text-gray-600">
+              I'm Chris Schofield, a producer (sadact) and radio promoter with 5+ years pitching to BBC Radio 1, 6 Music, and indie labels.
+              I was spending 5+ hours per campaign writing personalised pitches, and ChatGPT couldn't help because it didn't know my contacts.
+            </p>
+            <p className="mt-3 text-gray-600">
+              So I built Pitch Generator to solve my own problem: AI that actually knows who you're pitching to, writes in your voice,
+              and saves hours of copy-pasting. I use it for every campaign I run.
+            </p>
+            <div className="mt-6 rounded-lg border border-brand-iris/30 bg-brand-iris/10 px-4 py-3">
+              <p className="text-sm font-medium text-brand-iris">
+                If you hate writing pitches as much as I did, this tool will save you hours every week.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="glass-panel px-6 py-10 sm:px-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">

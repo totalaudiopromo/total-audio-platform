@@ -33,9 +33,9 @@ export default function ProfilePage() {
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-6">
       <header className="glass-panel px-6 py-8">
         <span className="badge-postcraft">Signed in</span>
-        <h1 className="mt-6 text-3xl font-semibold">Founder workspace</h1>
+        <h1 className="mt-6 text-3xl font-semibold">Your Profile</h1>
         <p className="mt-3 text-sm text-gray-900/70">
-          This area is intentionally lightweight so you can inject tool-specific modules. The layout, typography, and guard logic are provided—you decide what data or insights belong here.
+          Manage your account settings, voice profile, and subscription
         </p>
       </header>
 
@@ -54,19 +54,25 @@ export default function ProfilePage() {
           </dl>
         </div>
         <div className="glass-panel px-6 py-8">
-          <h2 className="text-xl font-semibold">Next steps</h2>
-          <ul className="mt-4 space-y-3 text-sm text-gray-900/70">
-            <li className="rounded-2xl bg-gray-50 px-4 py-3">Replace this copy with your tool’s onboarding checklist.</li>
-            <li className="rounded-2xl bg-gray-50 px-4 py-3">Drop cards, charts, or tables here with your product data.</li>
-            <li className="rounded-2xl bg-gray-50 px-4 py-3">Hook into your API routes using the authenticated session.</li>
-          </ul>
+          <h2 className="text-xl font-semibold">Quick Actions</h2>
+          <div className="mt-4 space-y-3">
+            <a href="/profile/voice" className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100">
+              <span className="font-semibold text-gray-900">Set up voice profile</span> · Teach AI to write in your authentic voice
+            </a>
+            <a href="/pitch/generate" className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100">
+              <span className="font-semibold text-gray-900">Generate a pitch</span> · Create personalised pitches in seconds
+            </a>
+            <a href="/pitch/contacts" className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100">
+              <span className="font-semibold text-gray-900">Manage contacts</span> · Build your database of radio, press, and playlist contacts
+            </a>
+          </div>
         </div>
       </section>
 
       <div className="glass-panel flex flex-col gap-4 px-6 py-6 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-gray-900/40">Session details</p>
-          <p className="mt-1 text-xs text-gray-900/60">Token strategy: JWT · Provider: {session.user?.name ? 'OAuth / credentials hybrid' : 'Credentials'}</p>
+          <p className="mt-1 text-xs text-gray-900/60">Authenticated via NextAuth · Secure session active</p>
         </div>
         <button onClick={() => signOut({ callbackUrl: '/' })} className="subtle-button">
           Sign out
