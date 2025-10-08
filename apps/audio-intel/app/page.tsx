@@ -75,17 +75,13 @@ export default function HomePage() {
         {/* Hero */}
         <section className="glass-panel overflow-hidden px-6 py-16 sm:px-10 sm:py-20">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
-            <div className="flex-1 space-y-6">
-              <div className="mb-6">
-                <Image
-                  src="/images/total_audio_promo_logo_trans.png"
-                  alt="Total Audio Promo"
-                  width={120}
-                  height={120}
-                  className="mb-4"
-                />
-              </div>
-              <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800">Audio Intel · Total Audio Promo</span>
+            <div className="flex-1 space-y-5">
+              <Image
+                src="/images/total_audio_promo_logo_trans.png"
+                alt="Total Audio Promo"
+                width={100}
+                height={100}
+              />
               <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
                 Turn chaotic spreadsheets into
                 <span className="block text-blue-600">
@@ -313,23 +309,23 @@ export default function HomePage() {
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-blue-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <span className="text-sm font-bold uppercase tracking-wider text-blue-600">Built By Someone Who Uses It</span>
               </div>
-              <h2 className="mb-4 text-3xl font-bold sm:text-4xl">This is my main tool</h2>
+              <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Built for real campaigns, not demos</h2>
               <p className="mb-6 text-lg text-gray-700">
-                I built Audio Intel because I was spending entire weekends researching contacts for radio campaigns.
-                BBC Radio 1, 1Xtra, 6 Music - every campaign meant hours of manual research.
+                I was wasting entire weekends researching contacts for radio campaigns. BBC Radio 1, 1Xtra, 6 Music - every campaign meant 15+ hours of manual research.
+                So I built this.
               </p>
               <ul className="space-y-4 text-gray-700">
                 <li className="flex items-start gap-3">
                   <Check className="mt-1 h-6 w-6 flex-shrink-0 text-green-600" />
-                  <span><strong>Validated with real contacts</strong> - BBC Radio 1, Spotify editorial, major playlist curators</span>
+                  <span><strong>Tested with real contacts</strong> - BBC Radio 1, Spotify editorial, major playlist curators</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="mt-1 h-6 w-6 flex-shrink-0 text-green-600" />
-                  <span><strong>Export to use anywhere</strong> - this isn't a CRM, it's intelligence you own</span>
+                  <span><strong>Export to use anywhere</strong> - this isn't a CRM prison, it's intelligence you own</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="mt-1 h-6 w-6 flex-shrink-0 text-green-600" />
-                  <span><strong>UK focus</strong> - built for UK music industry, 80% cheaper than US alternatives</span>
+                  <span><strong>UK-focused pricing</strong> - 80% cheaper than US tools, built for our market</span>
                 </li>
               </ul>
             </div>
@@ -340,7 +336,7 @@ export default function HomePage() {
         <section className="glass-panel px-6 py-12 sm:px-10">
           <div className="text-center">
             <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Simple pricing</h2>
-            <p className="mb-12 text-gray-600">Try free, then £19/month for unlimited enrichment</p>
+            <p className="mb-12 text-gray-600">Test it free, then choose what works for you</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {/* Free */}
@@ -352,14 +348,15 @@ export default function HomePage() {
                 <div className="text-5xl font-black">FREE</div>
                 <p className="mt-2 text-sm text-gray-600">Beta access</p>
               </div>
+              <p className="mb-6 text-sm text-gray-700">Test with 10 contacts. See if it works for your workflow.</p>
               <ul className="mb-8 space-y-3">
                 <li className="flex items-start gap-2">
                   <Check className="mt-1 h-5 w-5 flex-shrink-0 text-green-600" />
-                  <span className="text-sm">10 enrichments to test</span>
+                  <span className="text-sm">10 enrichments</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="mt-1 h-5 w-5 flex-shrink-0 text-green-600" />
-                  <span className="text-sm">Email validation included</span>
+                  <span className="text-sm">Email validation</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="mt-1 h-5 w-5 flex-shrink-0 text-green-600" />
@@ -374,12 +371,13 @@ export default function HomePage() {
             {/* Professional */}
             <div className="glass-panel border-blue-500 bg-gradient-to-br from-blue-50 to-white p-8 ring-4 ring-blue-200">
               <div className="mb-4 inline-flex rounded-full border-2 border-blue-600 bg-blue-500 px-4 py-1 text-xs font-bold uppercase text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                Most popular
+                What I use
               </div>
               <div className="mb-6">
                 <div className="text-5xl font-black">£19</div>
                 <p className="mt-2 text-sm text-gray-600">/month</p>
               </div>
+              <p className="mb-6 text-sm text-gray-700">For artists and promoters running actual campaigns.</p>
               <ul className="mb-8 space-y-3">
                 <li className="flex items-start gap-2">
                   <Check className="mt-1 h-5 w-5 flex-shrink-0 text-blue-600" />
@@ -395,7 +393,7 @@ export default function HomePage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="mt-1 h-5 w-5 flex-shrink-0 text-blue-600" />
-                  <span className="text-sm">Priority support</span>
+                  <span className="text-sm">Direct support</span>
                 </li>
               </ul>
               <Link href="/pricing?plan=professional&billing=monthly" className="cta-button w-full">
@@ -406,16 +404,17 @@ export default function HomePage() {
             {/* Agency */}
             <div className="glass-panel bg-white p-8">
               <div className="mb-4 inline-flex rounded-full border-2 border-black bg-gray-100 px-4 py-1 text-xs font-bold uppercase text-gray-800">
-                For agencies
+                For teams
               </div>
               <div className="mb-6">
                 <div className="text-5xl font-black">£79</div>
                 <p className="mt-2 text-sm text-gray-600">/month</p>
               </div>
+              <p className="mb-6 text-sm text-gray-700">PR agencies running multiple client campaigns.</p>
               <ul className="mb-8 space-y-3">
                 <li className="flex items-start gap-2">
                   <Check className="mt-1 h-5 w-5 flex-shrink-0 text-gray-900" />
-                  <span className="text-sm">Everything in Professional</span>
+                  <span className="text-sm">Everything in Pro</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="mt-1 h-5 w-5 flex-shrink-0 text-gray-900" />
