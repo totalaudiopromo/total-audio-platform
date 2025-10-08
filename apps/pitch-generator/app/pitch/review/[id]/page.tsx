@@ -243,8 +243,8 @@ export default function ReviewPitchPage() {
         <div className="mt-8">
           <PitchAnalyser
             pitchBody={editing ? editedBody : pitch.pitch_body}
-            subjectLine={pitch.subject_line_options?.[selectedSubject as keyof typeof pitch.subject_line_options] || pitch.subject_line}
-            contactType={pitch.contact_outlet || 'General'}
+            contactName={pitch.contact_name}
+            tone={pitch.tone}
           />
         </div>
 

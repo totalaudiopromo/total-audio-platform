@@ -11,25 +11,43 @@ const plans = [
     annual: 0,
     blurb: 'Try Pitch Generator with your first campaign. Perfect for testing the quality.',
     features: [
-      '10 pitches per month',
+      '5 pitches per month',
       'All pitch templates (radio, blog, playlist)',
-      'Audio Intel contact sync',
-      'Copy-to-clipboard functionality',
+      'Contact database integration',
+      'Voice profile customisation',
       'Email support (48-hour response)',
     ],
   },
   {
-    id: 'professional' as const,
-    name: 'Professional',
-    monthly: 39,
-    annual: 390,
-    blurb: 'For independent artists and solo promoters running 5-10 campaigns per year.',
+    id: 'bundle' as const,
+    name: 'Complete Workflow Bundle',
+    monthly: 19,
+    annual: 190,
+    blurb: 'Intel + Pitch Generator + Tracker — Complete promotion workflow at one low price.',
+    badge: 'BEST VALUE',
+    highlighted: true,
+    saveAmount: 'Save £27/month',
     features: [
-      'Generate unlimited personalised pitches',
-      'Sync contacts from Audio Intel database',
-      'All campaign templates (radio, blog, playlist, press)',
-      'Copy-to-clipboard for quick sending',
-      'Email support within 24 hours',
+      'Audio Intel: Unlimited contact enrichment',
+      'Pitch Generator: Unlimited AI pitches',
+      'Tracker: Unlimited campaign tracking',
+      'Full AI intelligence suite',
+      'Save 45+ hours per campaign',
+      'Priority support across all tools',
+    ],
+  },
+  {
+    id: 'professional' as const,
+    name: 'PRO',
+    monthly: 12,
+    annual: 120,
+    blurb: 'Pitch Generator only — For artists who only need pitch generation.',
+    features: [
+      'Unlimited pitch generation',
+      '3 subject line variations per pitch',
+      'Voice profile customisation',
+      'Contact database integration',
+      'Priority support (24-hour response)',
     ],
   },
   {
@@ -37,14 +55,14 @@ const plans = [
     name: 'Agency',
     monthly: 79,
     annual: 790,
-    blurb: 'For PR agencies and managers juggling multiple artists simultaneously.',
+    blurb: 'Complete Bundle + agency features for PR firms and managers.',
     features: [
-      'Everything in Professional',
-      'Team collaboration (up to 5 users)',
-      'Custom pitch templates and brand voice',
-      'Bulk pitch generation for 50+ contacts at once',
-      'Priority email support (4-hour response)',
-      'Campaign performance tracking',
+      'Everything in Complete Bundle',
+      'Bulk pitch generation',
+      'Multi-artist tracking',
+      'White-label branding',
+      'Team collaboration',
+      'Priority support (4-hour response)',
     ],
   },
 ];
@@ -212,6 +230,85 @@ export default function PricingPage() {
           {errorMessage}
         </div>
       )}
+
+      {/* FAQ Section */}
+      <div className="glass-panel px-6 py-10 sm:px-10">
+        <h2 className="text-3xl font-black text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+        <div className="grid gap-6 md:grid-cols-2 max-w-5xl mx-auto">
+          <div className="space-y-3">
+            <h3 className="text-lg font-bold text-gray-900">How is this different from ChatGPT?</h3>
+            <p className="text-sm text-gray-600">
+              ChatGPT doesn't know your contacts or industry benchmarks. Pitch Generator pulls from your contact database (via Audio Intel)
+              and uses proven templates with real success rates from BBC Radio 1, Spotify, and blog campaigns. It's like ChatGPT but trained
+              on 5 years of actual pitch data.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-bold text-gray-900">How is this different from hiring a radio plugger?</h3>
+            <p className="text-sm text-gray-600">
+              Radio pluggers charge £400-£1,500 per campaign and still write pitches manually. Pitch Generator gives you the same personalised
+              pitch quality for £14/month. You still need to send them yourself, but you save 15 hours and hundreds of pounds per campaign.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-bold text-gray-900">Can I cancel anytime?</h3>
+            <p className="text-sm text-gray-600">
+              Yes. Cancel anytime from your account settings. No questions asked, no cancellation fees. Your subscription ends at the end of
+              your billing period and you keep access until then.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-bold text-gray-900">What if the pitches don't sound good?</h3>
+            <p className="text-sm text-gray-600">
+              Try the free tier first (5 pitches/month). Generate a few pitches and see the quality before paying. Every pitch includes 3 subject
+              line variations and you can regenerate unlimited times until it sounds right. If you're not happy after trying PRO, we'll refund
+              your first month.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-bold text-gray-900">Do I need Audio Intel to use this?</h3>
+            <p className="text-sm text-gray-600">
+              No. You can add contacts directly in Pitch Generator. Audio Intel just makes it faster by auto-enriching contact details
+              (outlet type, preferred tone, last contact date). But you can absolutely use Pitch Generator standalone.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-bold text-gray-900">What response rates should I expect?</h3>
+            <p className="text-sm text-gray-600">
+              BBC Radio 1 specialist shows: 14-18% (vs 2% for generic pitches). Spotify playlists: 18-28% with good genre fit. Music blogs: 12-18%
+              with story angle. These are real benchmarks from 500+ pitches over 5 years. Your results depend on your music quality and targeting.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-bold text-gray-900">Is there a free trial?</h3>
+            <p className="text-sm text-gray-600">
+              Yes - the free tier gives you 5 pitches per month forever. No credit card required. Test the quality, try different contacts,
+              and upgrade to PRO when you need more volume.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-bold text-gray-900">Can I get a refund if I don't like it?</h3>
+            <p className="text-sm text-gray-600">
+              Yes. If you're not happy with PRO or Agency within your first month, email us and we'll refund you. No hassle, no questions.
+              We'd rather you try it risk-free than not try it at all.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-sm text-gray-600 mb-4">Still have questions?</p>
+          <a href="mailto:info@totalaudiopromo.com" className="subtle-button inline-flex">
+            Email us: info@totalaudiopromo.com
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

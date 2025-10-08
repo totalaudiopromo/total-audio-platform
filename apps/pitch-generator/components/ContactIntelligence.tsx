@@ -25,7 +25,7 @@ export function ContactIntelligence({
   responseRate = 0,
   notes,
 }: ContactIntelligenceProps) {
-  const [timesSince LastContact, setTimesSinceLastContact] = useState<string>('');
+  const [timesSinceLastContact, setTimesSinceLastContact] = useState<string>('');
 
   useEffect(() => {
     if (lastContact) {

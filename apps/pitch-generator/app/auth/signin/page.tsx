@@ -1,10 +1,10 @@
 "use client";
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 
-export default function SignInPage() {
+function SignInForm() {
   const searchParams = useSearchParams();
   const error = searchParams.get('error');
   const callbackUrl = searchParams.get('callbackUrl') ?? '/profile';
@@ -103,5 +103,13 @@ export default function SignInPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense fallback={<div className="mx-auto w-full max-w-lg"><div className="glass-panel px-6 py-10 sm:px-10">Loading...</div></div>}>
+      <SignInForm />
+    </Suspense>
   );
 }

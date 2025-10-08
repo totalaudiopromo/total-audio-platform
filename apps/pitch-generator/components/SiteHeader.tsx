@@ -11,6 +11,7 @@ import { ToolSwitcher } from './ToolSwitcher';
 const links = [
   { href: '/', label: 'Home' },
   { href: '/pricing', label: 'Pricing' },
+  { href: '/blog', label: 'Blog' },
   { href: '/dashboard', label: 'Dashboard', requiresAuth: true },
   { href: '/pitch/history', label: 'History', requiresAuth: true },
   { href: '/pitch/contacts', label: 'Contacts', requiresAuth: true },

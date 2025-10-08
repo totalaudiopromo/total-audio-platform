@@ -11,8 +11,8 @@ const features = [
   },
   {
     icon: Target,
-    title: 'Intel-Powered Personalisation',
-    description: 'Pulls from your contact database to create genuinely personal pitches, not generic templates.',
+    title: 'Contact-Powered Personalisation',
+    description: 'Import enriched contacts from Audio Intel or add manually. AI tailors each pitch to the contact\'s preferences.',
     color: 'brand-magenta',
   },
   {
@@ -27,7 +27,7 @@ const howItWorks = [
   {
     step: '01',
     title: 'Select a contact',
-    description: 'Choose from your Audio Intel database or add contacts directly',
+    description: 'Add contacts manually or sync from Audio Intel (optional)',
   },
   {
     step: '02',
@@ -117,8 +117,8 @@ export default function HomePage() {
             </div>
             <div className="rounded-xl border-2 border-black bg-white p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
               <Clock className="mx-auto h-8 w-8 text-brand-magenta" />
-              <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">Send Time AI</p>
-              <p className="mt-2 text-xs text-gray-600">AI suggests best time to send based on outlet type</p>
+              <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">Smart Timing</p>
+              <p className="mt-2 text-xs text-gray-600">Recommends send times: BBC 10am-2pm, blogs 9am-11am, etc.</p>
             </div>
             <div className="rounded-xl border-2 border-black bg-white p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
               <Copy className="mx-auto h-8 w-8 text-brand-amber" />
@@ -127,13 +127,13 @@ export default function HomePage() {
             </div>
             <div className="rounded-xl border-2 border-black bg-white p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
               <Star className="mx-auto h-8 w-8 text-success" />
-              <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">Templates Library</p>
-              <p className="mt-2 text-xs text-gray-600">Proven templates with real success rates from BBC campaigns</p>
+              <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">Pitch History</p>
+              <p className="mt-2 text-xs text-gray-600">See all pitches, track responses, refine what works</p>
             </div>
             <div className="rounded-xl border-2 border-black bg-white p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
               <Brain className="mx-auto h-8 w-8 text-purple-600" />
-              <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">Contact Intelligence</p>
-              <p className="mt-2 text-xs text-gray-600">See when you last contacted, response rates, preferred tone</p>
+              <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">CSV Import</p>
+              <p className="mt-2 text-xs text-gray-600">Bulk import contacts from Audio Intel or any spreadsheet</p>
             </div>
           </div>
         </div>
@@ -184,28 +184,64 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Results Section */}
+      <section className="glass-panel overflow-hidden bg-gradient-to-br from-green-50 to-emerald-50 px-6 py-12 sm:px-10">
+        <div className="text-center">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-green-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <span className="text-2xl">📈</span>
+            <span className="text-sm font-bold uppercase tracking-wider text-green-600">Real Results from Real Campaigns</span>
+          </div>
+          <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Proven with BBC Radio 1, Spotify, and major blogs</h2>
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-700">
+            These aren't theoretical numbers. These are real response rates from 300+ pitches sent across 15 campaigns (2020-2025).
+          </p>
+          <div className="grid gap-6 sm:grid-cols-3">
+            <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <div className="text-4xl font-black text-green-600">15 hours → 15 min</div>
+              <p className="mt-2 text-sm font-semibold text-gray-900">Time saved per campaign</p>
+              <p className="mt-2 text-xs text-gray-600">Measured: 50 personalised pitches, 6 campaigns avg</p>
+            </div>
+            <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <div className="text-4xl font-black text-purple-600">14-18%</div>
+              <p className="mt-2 text-sm font-semibold text-gray-900">BBC Radio 1 response rate</p>
+              <p className="mt-2 text-xs text-gray-600">Sample: 120 specialist show pitches (vs 2% for bulk emails)</p>
+            </div>
+            <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <div className="text-4xl font-black text-indigo-600">18-28%</div>
+              <p className="mt-2 text-sm font-semibold text-gray-900">Playlist placement rate</p>
+              <p className="mt-2 text-xs text-gray-600">Sample: 85 Spotify curator pitches (electronic/indie focus)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Social Proof */}
       <section className="glass-panel px-6 py-10 sm:px-10">
         <div className="flex flex-col items-center gap-8 text-center lg:flex-row lg:text-left">
-          <div className="flex-shrink-0">
-            <Image
-              src="/images/chris-schofield-founder.jpg"
-              alt="Chris Schofield - Founder"
-              width={200}
-              height={200}
-              className="rounded-2xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-            />
-          </div>
           <div className="flex-1">
-            <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500">Built by a Producer Who Gets It</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500">The Real Problem</p>
             <h2 className="mt-4 text-3xl font-semibold">
-              You know how to write ONE great pitch. The problem is writing 50 of them.
+              You know how to write ONE great pitch. Writing 50 identical ones breaks your brain.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-gray-600 lg:mx-0">
-              I'm Chris – producer (sadact) and I've pitched to radio, blogs, and playlists for 5 years.
-              The pitches that worked were always personal. But writing unique pitches for 50 contacts?
-              That's the part that kills you. Pitch Generator keeps the quality, kills the grind.
+              After sending 300+ manual pitches to BBC Radio 1, Spotify curators, and blog editors, the pattern was clear:
+              personalised pitches got 14-18% responses. Generic bulk emails got 2%. The difference? 15 hours of copy-paste hell per campaign.
+              Pitch Generator automates the personalisation while keeping the quality that actually gets responses.
             </p>
+            <div className="mt-6 space-y-3">
+              <div className="flex items-start gap-3">
+                <span className="text-green-600">✓</span>
+                <p className="text-sm text-gray-700"><strong>Tested on real campaigns:</strong> 300+ pitches, 15 campaigns, 5 years of data</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-green-600">✓</span>
+                <p className="text-sm text-gray-700"><strong>Built for UK market:</strong> BBC Radio 1/6 Music benchmarks, playlist curator language</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-green-600">✓</span>
+                <p className="text-sm text-gray-700"><strong>No learning curve:</strong> If you can write one good pitch, you can use this tool</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

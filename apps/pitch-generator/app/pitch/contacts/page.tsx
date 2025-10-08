@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Plus, UserPlus, Loader2, Trash2, RefreshCw } from 'lucide-react';
+import { ArrowLeft, Plus, UserPlus, Loader2, Trash2, Upload } from 'lucide-react';
 import { supabase, type Contact } from '@/lib/supabase';
 
 export default function ContactsPage() {
@@ -13,7 +13,7 @@ export default function ContactsPage() {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [syncing, setSyncing] = useState(false);
+  const [importing, setImporting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     role: '',
@@ -115,26 +115,75 @@ export default function ContactsPage() {
     }
   }
 
-  async function handleSyncFromAudioIntel() {
-    setSyncing(true);
+  async function handleImportCSV(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setImporting(true);
     try {
-      const response = await fetch('/api/contacts/sync', {
-        method: 'POST',
-      });
+      const text = await file.text();
+      const lines = text.split('\n').filter(line => line.trim());
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to sync contacts');
+      if (lines.length === 0) {
+        throw new Error('CSV file is empty');
       }
 
-      alert(data.message);
+      // Parse header row
+      const headers = lines[0].toLowerCase().split(',').map(h => h.trim());
+      const nameIdx = headers.findIndex(h => h.includes('name'));
+      const emailIdx = headers.findIndex(h => h.includes('email'));
+      const outletIdx = headers.findIndex(h => h.includes('outlet') || h.includes('station') || h.includes('publication'));
+      const roleIdx = headers.findIndex(h => h.includes('role') || h.includes('title'));
+      const genreIdx = headers.findIndex(h => h.includes('genre'));
+
+      if (nameIdx === -1) {
+        throw new Error('CSV must include a "name" column');
+      }
+
+      // Parse data rows
+      const contactsToImport = [];
+      for (let i = 1; i < lines.length; i++) {
+        const values = lines[i].split(',').map(v => v.trim().replace(/^["']|["']$/g, ''));
+
+        const name = values[nameIdx];
+        if (!name) continue;
+
+        const genreTags = genreIdx !== -1 && values[genreIdx]
+          ? values[genreIdx].split(';').map(g => g.trim()).filter(Boolean)
+          : [];
+
+        contactsToImport.push({
+          user_id: session?.user?.email || '',
+          name,
+          email: emailIdx !== -1 ? values[emailIdx] || null : null,
+          outlet: outletIdx !== -1 ? values[outletIdx] || null : null,
+          role: roleIdx !== -1 ? values[roleIdx] || null : null,
+          genre_tags: genreTags.length > 0 ? genreTags : null,
+          preferred_tone: 'professional' as const,
+        });
+      }
+
+      if (contactsToImport.length === 0) {
+        throw new Error('No valid contacts found in CSV');
+      }
+
+      // Batch insert
+      const { error } = await supabase
+        .from('contacts')
+        .insert(contactsToImport);
+
+      if (error) throw error;
+
+      alert(`Successfully imported ${contactsToImport.length} contacts`);
       loadContacts();
+
+      // Reset file input
+      e.target.value = '';
     } catch (error: any) {
-      console.error('Error syncing contacts:', error);
-      alert(error.message || 'Failed to sync contacts from Audio Intel');
+      console.error('Error importing CSV:', error);
+      alert(error.message || 'Failed to import CSV');
     } finally {
-      setSyncing(false);
+      setImporting(false);
     }
   }
 
@@ -161,27 +210,46 @@ export default function ContactsPage() {
 
       <div className="glass-panel px-8 py-10">
         {/* Header */}
-        <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-6">
-          <div>
-            <h1 className="text-3xl font-bold">Contacts</h1>
-            <p className="mt-2 text-gray-900/60">Manage your media contacts</p>
+        <div className="mb-8 border-b border-white/10 pb-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold">Contacts</h1>
+              <p className="mt-2 text-gray-900/60">Add contacts manually or import from CSV</p>
+            </div>
+            <div className="flex gap-3">
+              <label className={`subtle-button flex cursor-pointer items-center gap-2 ${importing ? 'opacity-50' : ''}`}>
+                {importing ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Importing...
+                  </>
+                ) : (
+                  <>
+                    <Upload className="h-4 w-4" />
+                    Import CSV
+                  </>
+                )}
+                <input
+                  type="file"
+                  accept=".csv"
+                  onChange={handleImportCSV}
+                  disabled={importing}
+                  className="hidden"
+                />
+              </label>
+              <button
+                onClick={() => setShowAddForm(!showAddForm)}
+                className="cta-button flex items-center gap-2"
+              >
+                <Plus className="h-4 w-4" />
+                Add Contact
+              </button>
+            </div>
           </div>
-          <div className="flex gap-3">
-            <button
-              onClick={handleSyncFromAudioIntel}
-              disabled={syncing}
-              className="subtle-button flex items-center gap-2"
-            >
-              <RefreshCw className={`h-4 w-4 ${syncing ? 'animate-spin' : ''}`} />
-              {syncing ? 'Syncing...' : 'Sync from Audio Intel'}
-            </button>
-            <button
-              onClick={() => setShowAddForm(!showAddForm)}
-              className="cta-button flex items-center gap-2"
-            >
-              <Plus className="h-4 w-4" />
-              Add Contact
-            </button>
+          <div className="mt-4 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3">
+            <p className="text-sm text-blue-900">
+              <strong>💡 Pro tip:</strong> Use Audio Intel to enrich your contacts first, then export as CSV and import here for best results.
+            </p>
           </div>
         </div>
 

@@ -4,8 +4,9 @@ import { supabaseAdmin } from '@/lib/supabase';
 
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const session = await getServerSession();
     if (!session?.user) {
@@ -17,7 +18,7 @@ export async function GET(
     const { data: pitch, error } = await supabaseAdmin
       .from('pitches')
       .select('*, intel_contacts(*)')
-      .eq('id', params.id)
+      .eq('id', id)
       .eq('user_id', userId)
       .single();
 
@@ -37,8 +38,9 @@ export async function GET(
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const session = await getServerSession();
     if (!session?.user) {
@@ -57,7 +59,7 @@ export async function PATCH(
     const { data: pitch, error } = await supabaseAdmin
       .from('pitches')
       .update(updates)
-      .eq('id', params.id)
+      .eq('id', id)
       .eq('user_id', userId)
       .select()
       .single();
@@ -81,9 +83,10 @@ export async function PATCH(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  try {
+  const { id } = await params;
+  try{
     const session = await getServerSession();
     if (!session?.user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -94,7 +97,7 @@ export async function DELETE(
     const { error } = await supabaseAdmin
       .from('pitches')
       .delete()
-      .eq('id', params.id)
+      .eq('id', id)
       .eq('user_id', userId);
 
     if (error) {

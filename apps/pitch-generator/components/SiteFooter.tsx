@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { NewsletterSignup } from './NewsletterSignup';
 
 export function SiteFooter() {
   return (
@@ -11,6 +12,17 @@ export function SiteFooter() {
             <p className="mt-2 max-w-xs text-sm text-gray-600">
               AI-powered music PR pitches that get responses. Built by Total Audio Promo.
             </p>
+          </div>
+
+          {/* Newsletter Section */}
+          <div className="flex-1">
+            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Newsletter</p>
+            <p className="mt-2 text-sm text-gray-600">
+              The Unsigned Advantage - Weekly insights
+            </p>
+            <div className="mt-3">
+              <NewsletterSignup variant="inline" placeholder="your@email.com" />
+            </div>
           </div>
 
           {/* Links Section */}

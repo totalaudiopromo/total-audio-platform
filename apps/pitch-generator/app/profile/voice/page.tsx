@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Sparkles, Save, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Sparkles, Save, CheckCircle, Zap, FileText, Loader2 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 
 interface VoiceProfile {
@@ -17,12 +17,34 @@ interface VoiceProfile {
   voice_context_notes: string;
 }
 
+interface VoiceAnalysis {
+  voice_background: string;
+  voice_style: string;
+  voice_achievements: string;
+  voice_approach: string;
+  voice_differentiator: string;
+  voice_typical_opener: string;
+  metadata: {
+    tone_preference: string;
+    formality_score: number;
+    personality_traits: string[];
+    strengths: string[];
+    suggestions: string[];
+  };
+}
+
+type SetupStep = 'method' | 'quick' | 'guided' | 'results';
+
 export default function VoiceProfilePage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [analyzing, setAnalyzing] = useState(false);
+  const [currentStep, setCurrentStep] = useState<SetupStep>('method');
+  const [sampleText, setSampleText] = useState('');
+  const [analysis, setAnalysis] = useState<VoiceAnalysis | null>(null);
   const [profile, setProfile] = useState<VoiceProfile>({
     voice_background: '',
     voice_style: '',
@@ -58,7 +80,8 @@ export default function VoiceProfilePage() {
         throw error;
       }
 
-      if (data) {
+      if (data && data.voice_profile_completed) {
+        // User has completed profile, show guided form
         setProfile({
           voice_background: data.voice_background || '',
           voice_style: data.voice_style || '',
@@ -68,11 +91,53 @@ export default function VoiceProfilePage() {
           voice_typical_opener: data.voice_typical_opener || '',
           voice_context_notes: data.voice_context_notes || '',
         });
+        setCurrentStep('guided');
       }
     } catch (error) {
       console.error('Error loading voice profile:', error);
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function handleAnalyzeText() {
+    if (sampleText.trim().length < 50) {
+      alert('Please provide at least 50 characters of text to analyse');
+      return;
+    }
+
+    setAnalyzing(true);
+    try {
+      const response = await fetch('/api/voice/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sampleText }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to analyse text');
+      }
+
+      const data = await response.json();
+      setAnalysis(data.analysis);
+
+      // Pre-fill profile with analysis
+      setProfile({
+        voice_background: data.analysis.voice_background,
+        voice_style: data.analysis.voice_style,
+        voice_achievements: data.analysis.voice_achievements,
+        voice_approach: data.analysis.voice_approach,
+        voice_differentiator: data.analysis.voice_differentiator,
+        voice_typical_opener: data.analysis.voice_typical_opener,
+        voice_context_notes: '',
+      });
+
+      setCurrentStep('results');
+    } catch (error) {
+      console.error('Error analysing text:', error);
+      alert('Failed to analyse text. Please try again.');
+    } finally {
+      setAnalyzing(false);
     }
   }
 
@@ -119,13 +184,408 @@ export default function VoiceProfilePage() {
     return null;
   }
 
+  // Method Selection Screen
+  if (currentStep === 'method') {
+    return (
+      <div className="mx-auto w-full max-w-4xl">
+        <div className="mb-6">
+          <Link href="/profile" className="subtle-button inline-flex items-center gap-2 text-sm">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Profile
+          </Link>
+        </div>
+
+        <div className="glass-panel px-8 py-10">
+          <div className="mb-8 text-center">
+            <Sparkles className="mx-auto h-12 w-12 text-brand-iris" />
+            <h1 className="mt-4 text-3xl font-bold">Create Your Voice Profile</h1>
+            <p className="mt-3 text-gray-900/60 max-w-2xl mx-auto">
+              Help AI write pitches that sound exactly like you. Choose how you'd like to set up your profile:
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
+            {/* Quick Setup */}
+            <button
+              onClick={() => setCurrentStep('quick')}
+              className="group rounded-2xl border-2 border-white/10 bg-gray-50 p-6 text-left transition hover:border-brand-iris hover:bg-white/[0.07]"
+            >
+              <Zap className="h-8 w-8 text-brand-iris" />
+              <h3 className="mt-4 text-xl font-bold">Quick Setup</h3>
+              <p className="mt-2 text-sm text-gray-900/60">
+                Paste a pitch or email you've written. AI analyses your style and auto-fills your profile.
+              </p>
+              <div className="mt-4 flex items-center gap-2 text-sm text-brand-iris">
+                <span className="font-semibold">~2 minutes</span>
+                <span className="text-gray-900/30">•</span>
+                <span>Recommended</span>
+              </div>
+            </button>
+
+            {/* Guided Setup */}
+            <button
+              onClick={() => setCurrentStep('guided')}
+              className="group rounded-2xl border-2 border-white/10 bg-gray-50 p-6 text-left transition hover:border-brand-magenta hover:bg-white/[0.07]"
+            >
+              <FileText className="h-8 w-8 text-brand-magenta" />
+              <h3 className="mt-4 text-xl font-bold">Guided Setup</h3>
+              <p className="mt-2 text-sm text-gray-900/60">
+                Answer 7 strategic questions about your background, style, and approach.
+              </p>
+              <div className="mt-4 flex items-center gap-2 text-sm text-brand-magenta">
+                <span className="font-semibold">~5 minutes</span>
+                <span className="text-gray-900/30">•</span>
+                <span>More detailed</span>
+              </div>
+            </button>
+          </div>
+
+          {/* Stats */}
+          <div className="mt-8 rounded-xl border border-brand-iris/30 bg-brand-iris/5 p-6 max-w-3xl mx-auto">
+            <h4 className="font-semibold text-brand-iris text-center">Why Voice Profiles Matter</h4>
+            <div className="mt-4 grid gap-4 sm:grid-cols-3 text-center">
+              <div>
+                <div className="text-2xl font-bold">3-5%</div>
+                <p className="mt-1 text-xs text-gray-900/60">Response rate with generic AI pitches</p>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-success">15-20%</div>
+                <p className="mt-1 text-xs text-gray-900/60">Response rate with personalised voice</p>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-brand-magenta">4x</div>
+                <p className="mt-1 text-xs text-gray-900/60">Improvement in engagement</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Quick Setup Screen
+  if (currentStep === 'quick') {
+    return (
+      <div className="mx-auto w-full max-w-4xl">
+        <div className="mb-6">
+          <button
+            onClick={() => setCurrentStep('method')}
+            className="subtle-button inline-flex items-center gap-2 text-sm"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Method Selection
+          </button>
+        </div>
+
+        <div className="glass-panel px-8 py-10">
+          <div className="mb-8 border-b border-white/10 pb-6">
+            <div className="flex items-start justify-between">
+              <div>
+                <h1 className="text-3xl font-bold">Quick Setup</h1>
+                <p className="mt-2 text-gray-900/60">
+                  Paste a pitch or email you've written - AI will analyse your writing style
+                </p>
+              </div>
+              <Zap className="h-8 w-8 text-brand-iris" />
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-900/80 mb-2">
+                Paste Your Writing Sample
+                <span className="ml-2 text-xs font-normal text-gray-900/50">
+                  (Minimum 50 characters - the more you provide, the better the analysis)
+                </span>
+              </label>
+              <textarea
+                value={sampleText}
+                onChange={(e) => setSampleText(e.target.value)}
+                rows={12}
+                placeholder="Paste a pitch email, promotional message, or any professional communication you've written. For example:
+
+Hi Sarah,
+
+Hope you've been well since we last spoke! I wanted to send you a new track from my project sadact that I think would really suit your show...
+
+The more text you provide, the better I can understand your natural writing style and voice."
+                className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              />
+              <p className="mt-2 text-xs text-gray-900/50">
+                {sampleText.length} characters {sampleText.length < 50 && `(${50 - sampleText.length} more needed)`}
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-white/10 bg-gray-50 p-4">
+              <h4 className="text-sm font-semibold">What AI Will Analyse:</h4>
+              <ul className="mt-2 space-y-1 text-xs text-gray-900/70">
+                <li>• Writing style (formal vs casual, sentence structure)</li>
+                <li>• Communication patterns (how you open, close, transition)</li>
+                <li>• Personality markers (credibility, authenticity, energy)</li>
+                <li>• Tone preference and formality level</li>
+                <li>• Unique traits that make your voice distinctive</li>
+              </ul>
+            </div>
+
+            <button
+              onClick={handleAnalyzeText}
+              disabled={analyzing || sampleText.trim().length < 50}
+              className="cta-button flex items-center gap-2 w-full justify-center"
+            >
+              {analyzing ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  Analysing Your Writing Style...
+                </>
+              ) : (
+                <>
+                  <Sparkles className="h-4 w-4" />
+                  Analyse My Writing Style
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Results Screen (after AI analysis)
+  if (currentStep === 'results' && analysis) {
+    return (
+      <div className="mx-auto w-full max-w-4xl">
+        <div className="mb-6">
+          <button
+            onClick={() => setCurrentStep('quick')}
+            className="subtle-button inline-flex items-center gap-2 text-sm"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Text Input
+          </button>
+        </div>
+
+        <form onSubmit={handleSave} className="space-y-6">
+          {/* Analysis Results Header */}
+          <div className="glass-panel px-8 py-6">
+            <div className="flex items-start justify-between">
+              <div>
+                <h1 className="text-2xl font-bold">Your Voice Analysis</h1>
+                <p className="mt-2 text-sm text-gray-900/60">
+                  Review and refine the AI's analysis of your writing style
+                </p>
+              </div>
+              <CheckCircle className="h-8 w-8 text-success" />
+            </div>
+
+            {/* Voice Insights */}
+            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+              {/* Formality Score */}
+              <div className="rounded-xl border border-white/10 bg-gray-50 p-4">
+                <p className="text-xs text-gray-900/60">Formality Level</p>
+                <div className="mt-2 flex items-center gap-3">
+                  <div className="flex-1 h-2 rounded-full bg-gray-200 overflow-hidden">
+                    <div
+                      className="h-full bg-brand-iris transition-all"
+                      style={{ width: `${(analysis.metadata.formality_score / 10) * 100}%` }}
+                    />
+                  </div>
+                  <span className="text-sm font-bold">{analysis.metadata.formality_score}/10</span>
+                </div>
+                <p className="mt-1 text-xs text-gray-900/50">
+                  {analysis.metadata.formality_score <= 3 ? 'Very casual' :
+                   analysis.metadata.formality_score <= 6 ? 'Balanced' : 'Professional'}
+                </p>
+              </div>
+
+              {/* Tone Preference */}
+              <div className="rounded-xl border border-white/10 bg-gray-50 p-4">
+                <p className="text-xs text-gray-900/60">Tone Preference</p>
+                <p className="mt-2 text-lg font-bold capitalize">{analysis.metadata.tone_preference}</p>
+              </div>
+
+              {/* Personality Traits */}
+              <div className="rounded-xl border border-white/10 bg-gray-50 p-4">
+                <p className="text-xs text-gray-900/60">Personality Traits</p>
+                <div className="mt-2 flex flex-wrap gap-1">
+                  {analysis.metadata.personality_traits.slice(0, 3).map((trait, i) => (
+                    <span key={i} className="rounded-full bg-brand-iris/20 px-2 py-0.5 text-xs text-brand-iris">
+                      {trait}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Strengths & Suggestions */}
+            {(analysis.metadata.strengths.length > 0 || analysis.metadata.suggestions.length > 0) && (
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {analysis.metadata.strengths.length > 0 && (
+                  <div className="rounded-xl border border-success/30 bg-success/5 p-4">
+                    <p className="text-xs font-semibold text-success">Your Strengths</p>
+                    <ul className="mt-2 space-y-1">
+                      {analysis.metadata.strengths.map((strength, i) => (
+                        <li key={i} className="text-xs text-gray-900/70">• {strength}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {analysis.metadata.suggestions.length > 0 && (
+                  <div className="rounded-xl border border-brand-magenta/30 bg-brand-magenta/5 p-4">
+                    <p className="text-xs font-semibold text-brand-magenta">Suggestions</p>
+                    <ul className="mt-2 space-y-1">
+                      {analysis.metadata.suggestions.map((suggestion, i) => (
+                        <li key={i} className="text-xs text-gray-900/70">• {suggestion}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Editable Profile Fields */}
+          <div className="glass-panel px-8 py-8">
+            <h2 className="text-xl font-bold mb-6">Review & Refine Your Profile</h2>
+
+            <div className="space-y-6">
+              {/* Background */}
+              <div>
+                <label className="block text-sm font-medium text-gray-900/80">
+                  Your Background in Music
+                </label>
+                <textarea
+                  value={profile.voice_background}
+                  onChange={(e) => setProfile({ ...profile, voice_background: e.target.value })}
+                  rows={3}
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                />
+              </div>
+
+              {/* Style */}
+              <div>
+                <label className="block text-sm font-medium text-gray-900/80">
+                  Your Pitching Style
+                </label>
+                <textarea
+                  value={profile.voice_style}
+                  onChange={(e) => setProfile({ ...profile, voice_style: e.target.value })}
+                  rows={2}
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                />
+              </div>
+
+              {/* Achievements */}
+              <div>
+                <label className="block text-sm font-medium text-gray-900/80">
+                  Your Biggest Wins
+                </label>
+                <textarea
+                  value={profile.voice_achievements}
+                  onChange={(e) => setProfile({ ...profile, voice_achievements: e.target.value })}
+                  rows={2}
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                />
+              </div>
+
+              {/* Approach */}
+              <div>
+                <label className="block text-sm font-medium text-gray-900/80">
+                  What Makes Your Approach Different
+                </label>
+                <textarea
+                  value={profile.voice_approach}
+                  onChange={(e) => setProfile({ ...profile, voice_approach: e.target.value })}
+                  rows={2}
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                />
+              </div>
+
+              {/* Differentiator */}
+              <div>
+                <label className="block text-sm font-medium text-gray-900/80">
+                  What Makes You Unique
+                </label>
+                <textarea
+                  value={profile.voice_differentiator}
+                  onChange={(e) => setProfile({ ...profile, voice_differentiator: e.target.value })}
+                  rows={2}
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                />
+              </div>
+
+              {/* Typical Opener */}
+              <div>
+                <label className="block text-sm font-medium text-gray-900/80">
+                  Your Typical Opening Style
+                </label>
+                <textarea
+                  value={profile.voice_typical_opener}
+                  onChange={(e) => setProfile({ ...profile, voice_typical_opener: e.target.value })}
+                  rows={2}
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                />
+              </div>
+
+              {/* Context Notes */}
+              <div>
+                <label className="block text-sm font-medium text-gray-900/80">
+                  Additional Context (Optional)
+                </label>
+                <textarea
+                  value={profile.voice_context_notes}
+                  onChange={(e) => setProfile({ ...profile, voice_context_notes: e.target.value })}
+                  rows={2}
+                  placeholder="Any other context about you that might help..."
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                />
+              </div>
+            </div>
+
+            {/* Save Button */}
+            <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
+              <p className="text-sm text-gray-900/60">
+                This information stays private and is only used to generate your pitches
+              </p>
+              <button
+                type="submit"
+                disabled={saving}
+                className="cta-button flex items-center gap-2"
+              >
+                {saved ? (
+                  <>
+                    <CheckCircle className="h-4 w-4" />
+                    Saved!
+                  </>
+                ) : saving ? (
+                  <>
+                    <Sparkles className="h-4 w-4 animate-spin" />
+                    Saving...
+                  </>
+                ) : (
+                  <>
+                    <Save className="h-4 w-4" />
+                    Save Voice Profile
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    );
+  }
+
+  // Guided Setup Screen (default/fallback)
   return (
     <div className="mx-auto w-full max-w-4xl">
       <div className="mb-6">
-        <Link href="/profile" className="subtle-button inline-flex items-center gap-2 text-sm">
+        <button
+          onClick={() => setCurrentStep('method')}
+          className="subtle-button inline-flex items-center gap-2 text-sm"
+        >
           <ArrowLeft className="h-4 w-4" />
-          Back to Profile
-        </Link>
+          Back to Method Selection
+        </button>
       </div>
 
       <form onSubmit={handleSave} className="glass-panel px-8 py-10">
