@@ -341,34 +341,35 @@ export default function UploadPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto py-10 px-4">
+    <div className="max-w-4xl mx-auto py-10 px-4">
       {/* Toast Notification */}
       {notifyStatus && !emailSubmitted && (
-        <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black font-bold animate-slide-in">
+        <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-3 rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-4 border-black font-bold animate-slide-in">
           {notifyStatus}
         </div>
       )}
 
-      <h1 className="text-3xl font-bold mb-6 text-center">Upload Contacts for Organisation</h1>
-      <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 mb-6">
-        <p className="text-sm text-blue-900 font-medium">
-          <strong>How Audio Intel Works:</strong> Upload your existing contacts and we'll add AI-generated context notes to help organise your database. This is AI-generated reference information based on available data, not verified contact details. Always verify important information before pitching.
-        </p>
-      </div>
-      <div className="mb-6">
-        <label className="block font-semibold mb-1" htmlFor="user-email">
-          Email (optional)
-        </label>
-        <input
-          id="user-email"
-          type="email"
-          className="w-full border rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Enter your email to get notified when results are ready"
-          value={userEmail}
-          onChange={e => setUserEmail(e.target.value)}
-        />
-        <div className="text-xs text-gray-500 mt-1">We'll email you when your results are ready. (Optional)</div>
-      </div>
+      <div className="glass-panel mb-8">
+        <h1 className="text-4xl font-black mb-4 text-center">Upload Contacts for Organisation</h1>
+        <div className="glass-panel border-blue-500 bg-gradient-to-br from-blue-50 to-white mb-6">
+          <p className="text-sm text-blue-900 font-bold">
+            <strong className="text-base">How Audio Intel Works:</strong> Upload your existing contacts and we'll add AI-generated context notes to help organise your database. This is AI-generated reference information based on available data, not verified contact details. Always verify important information before pitching.
+          </p>
+        </div>
+        <div className="mb-6">
+          <label className="block font-black text-lg mb-2" htmlFor="user-email">
+            Email (optional)
+          </label>
+          <input
+            id="user-email"
+            type="email"
+            className="w-full border-2 border-black rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-4 focus:ring-blue-500 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+            placeholder="Enter your email to get notified when results are ready"
+            value={userEmail}
+            onChange={e => setUserEmail(e.target.value)}
+          />
+          <div className="text-sm text-gray-600 mt-2 font-medium">We'll email you when your results are ready. (Optional)</div>
+        </div>
       <FileUpload onFile={handleFile} />
       {errorContext && (
         <ErrorMessage 
@@ -389,26 +390,28 @@ export default function UploadPage() {
         </div>
       )}
       {preview.length > 0 && (
-        <div className="mt-6">
-          <h2 className="font-semibold mb-2">Preview (first 5 contacts):</h2>
-          <table className="w-full border text-sm mb-4">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="border px-2 py-1">Name</th>
-                <th className="border px-2 py-1">Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              {preview.map((c, i) => (
-                <tr key={i}>
-                  <td className="border px-2 py-1">{c.name}</td>
-                  <td className="border px-2 py-1">{c.email}</td>
+        <div className="mt-6 glass-panel border-green-500 bg-gradient-to-br from-green-50 to-white">
+          <h2 className="font-black text-xl mb-4">Preview (first 5 contacts):</h2>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full border-2 border-black text-sm">
+              <thead>
+                <tr className="bg-gradient-to-r from-gray-100 to-gray-50">
+                  <th className="border-2 border-black px-4 py-3 font-black text-left">Name</th>
+                  <th className="border-2 border-black px-4 py-3 font-black text-left">Email</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {preview.map((c, i) => (
+                  <tr key={i} className="hover:bg-green-50">
+                    <td className="border-2 border-black px-4 py-2 font-medium">{c.name}</td>
+                    <td className="border-2 border-black px-4 py-2 font-medium">{c.email}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           <button
-            className="bg-blue-600 text-white px-6 py-2 rounded font-semibold disabled:opacity-50"
+            className="cta-button w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={enriching || contacts.length === 0}
             onClick={handleEnrich}
           >
@@ -416,27 +419,30 @@ export default function UploadPage() {
           </button>
         </div>
       )}
+      </div>
       {enriching && (
         <div className="mt-8">
           <ProgressBarWithDog current={progress} total={contacts.length} />
         </div>
       )}
       {enriched.length > 0 && (
-        <div className="mt-10">
+        <div className="mt-10 glass-panel">
           <SuccessMessage
             message={`Successfully organised ${enriched.length} contact${enriched.length !== 1 ? 's' : ''}!`}
             details="Your contacts are ready for export with AI-generated context notes. Choose your preferred format below."
           />
-          <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded">
-            <p className="text-sm text-amber-900">
-              <strong>Important:</strong> The information below is AI-generated context based on available data. It's designed to help you organise and remember your contacts, not as verified contact details. Always verify important information before pitching.
+          <div className="mb-6 glass-panel border-amber-500 bg-gradient-to-br from-amber-50 to-white">
+            <p className="text-sm text-amber-900 font-bold">
+              <strong className="text-base">Important:</strong> The information below is AI-generated context based on available data. It's designed to help you organise and remember your contacts, not as verified contact details. Always verify important information before pitching.
             </p>
           </div>
           {emailSubmitted && (
-            <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded text-blue-700">
-              We will email you at <span className="font-semibold">{userEmail}</span> when your results are ready.
+            <div className="mb-6 glass-panel border-blue-500 bg-gradient-to-br from-blue-50 to-white">
+              <p className="text-blue-900 font-bold">
+                We will email you at <span className="font-black">{userEmail}</span> when your results are ready.
+              </p>
               {notifyStatus && (
-                <div className="mt-2 text-sm text-green-700">{notifyStatus}</div>
+                <div className="mt-2 text-sm text-green-700 font-medium">{notifyStatus}</div>
               )}
             </div>
           )}
@@ -457,27 +463,27 @@ export default function UploadPage() {
             />
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full border text-sm">
+            <table className="w-full border-4 border-black text-sm shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="border px-2 py-1">Name</th>
-                  <th className="border px-2 py-1">Email</th>
-                  <th className="border px-2 py-1">Contact Intelligence</th>
-                  <th className="border px-2 py-1">Actions</th>
+                <tr className="bg-gradient-to-r from-purple-100 to-blue-100">
+                  <th className="border-2 border-black px-4 py-3 font-black text-left">Name</th>
+                  <th className="border-2 border-black px-4 py-3 font-black text-left">Email</th>
+                  <th className="border-2 border-black px-4 py-3 font-black text-left">Contact Intelligence</th>
+                  <th className="border-2 border-black px-4 py-3 font-black text-left">Actions</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="bg-white">
                 {enriched.map((c, i) => (
-                  <tr key={i}>
-                    <td className="border px-2 py-1 align-top">{c.name}</td>
-                    <td className="border px-2 py-1 align-top">{c.email}</td>
-                    <td className="border px-2 py-1 whitespace-pre-line align-top" style={{ maxWidth: 400 }}>
+                  <tr key={i} className="hover:bg-blue-50 transition-colors">
+                    <td className="border-2 border-black px-4 py-3 align-top font-medium">{c.name}</td>
+                    <td className="border-2 border-black px-4 py-3 align-top font-medium">{c.email}</td>
+                    <td className="border-2 border-black px-4 py-3 whitespace-pre-line align-top font-medium" style={{ maxWidth: 400 }}>
                       {c.contactIntelligence}
                     </td>
-                    <td className="border px-2 py-1 align-top">
+                    <td className="border-2 border-black px-4 py-3 align-top">
                       <button
                         onClick={() => handleSendToPitch(c)}
-                        className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all text-xs whitespace-nowrap"
+                        className="bg-yellow-500 hover:bg-yellow-600 text-black font-black px-4 py-2 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-xs whitespace-nowrap"
                       >
                         → Pitch
                       </button>
@@ -491,64 +497,69 @@ export default function UploadPage() {
       )}
       {/* Export Preferences */}
       {enriched.length > 0 && (
-        <div className="mt-8 p-4 bg-gray-50 border border-gray-200 rounded-md">
-          <h3 className="font-semibold mb-3">Export Preferences</h3>
-          <div className="grid md:grid-cols-2 gap-4">
+        <div className="mt-8 glass-panel border-purple-500 bg-gradient-to-br from-purple-50 to-white">
+          <h3 className="font-black text-2xl mb-6">Export Preferences</h3>
+          <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <div className="font-medium text-sm mb-2">Fields to include</div>
-              <div className="grid grid-cols-2 gap-2 text-sm">
+              <div className="font-black text-lg mb-3">Fields to include</div>
+              <div className="grid grid-cols-2 gap-3">
                 {[ 'Name','Email','Contact Intelligence','Research Confidence','Last Researched','Platform','Role','Company' ].map(f => (
-                  <label key={f} className="flex items-center gap-2">
-                    <input type="checkbox" className="rounded border-gray-300" checked={selectedFields.includes(f)} onChange={(e) => {
+                  <label key={f} className="flex items-center gap-2 font-medium cursor-pointer hover:text-blue-600 transition-colors">
+                    <input type="checkbox" className="rounded border-2 border-black w-4 h-4" checked={selectedFields.includes(f)} onChange={(e) => {
                       setSelectedFields(prev => e.target.checked ? [...prev, f] : prev.filter(v => v !== f));
                     }} />
-                    {f}
+                    <span className="text-sm">{f}</span>
                   </label>
                 ))}
               </div>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div>
-                <div className="font-medium text-sm mb-1">Format</div>
-                <select value={formatPreference} onChange={(e) => setFormatPreference(e.target.value as any)} className="border rounded px-2 py-1 text-sm">
+                <div className="font-black text-lg mb-2">Format</div>
+                <select value={formatPreference} onChange={(e) => setFormatPreference(e.target.value as any)} className="w-full border-2 border-black rounded-xl px-4 py-2 font-medium shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:ring-4 focus:ring-blue-500">
                   <option value="csv">CSV</option>
                   <option value="excel">Excel</option>
                   <option value="pdf">PDF</option>
                 </select>
               </div>
-              <div className="flex items-center gap-2">
-                <label className="text-sm">Delimiter</label>
-                <select value={delimiter} onChange={(e) => setDelimiter(e.target.value as any)} className="border rounded px-2 py-1 text-sm">
+              <div>
+                <label className="font-black text-lg mb-2 block">Delimiter</label>
+                <select value={delimiter} onChange={(e) => setDelimiter(e.target.value as any)} className="w-full border-2 border-black rounded-xl px-4 py-2 font-medium shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:ring-4 focus:ring-blue-500">
                   <option value=",">Comma (,)</option>
                   <option value=";">Semicolon (;)</option>
                   <option value="\t">Tab</option>
                 </select>
               </div>
-              <label className="flex items-center gap-2 text-sm">
-                <input type="checkbox" className="rounded border-gray-300" checked={includeHeaders} onChange={(e) => setIncludeHeaders(e.target.checked)} />
-                Include headers row
+              <label className="flex items-center gap-3 font-medium cursor-pointer hover:text-blue-600 transition-colors">
+                <input type="checkbox" className="rounded border-2 border-black w-4 h-4" checked={includeHeaders} onChange={(e) => setIncludeHeaders(e.target.checked)} />
+                <span>Include headers row</span>
               </label>
             </div>
           </div>
-          <div className="mt-4">
-            <div className="font-medium text-sm mb-2">Per-contact field mapping</div>
-            <div className="grid md:grid-cols-2 gap-3">
+          <div className="mt-6 pt-6 border-t-2 border-black">
+            <div className="font-black text-lg mb-4">Per-contact field mapping</div>
+            <div className="grid md:grid-cols-2 gap-4">
               {columnMap.map((c, idx) => (
-                <div key={c.key} className="flex items-center gap-2">
-                  <span className="text-xs text-gray-500 w-36">{c.key}</span>
+                <div key={c.key} className="flex items-center gap-3">
+                  <span className="text-sm text-gray-600 w-40 font-medium">{c.key}</span>
                   <input
                     value={c.header}
                     onChange={(e) => setColumnMap(prev => prev.map((p,i)=> i===idx ? { ...p, header: e.target.value } : p))}
-                    className="flex-1 border rounded px-2 py-1 text-sm"
+                    className="flex-1 border-2 border-black rounded-xl px-3 py-2 text-sm font-medium shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:ring-4 focus:ring-blue-500"
                   />
                 </div>
               ))}
             </div>
           </div>
-          <div className="mt-4 flex items-center gap-2">
-            <input value={presetName} onChange={(e)=>setPresetName(e.target.value)} placeholder="Preset name" className="border rounded px-2 py-1 text-sm"/>
+          <div className="mt-6 pt-6 border-t-2 border-black flex flex-col sm:flex-row items-start sm:items-center gap-3">
+            <input
+              value={presetName}
+              onChange={(e)=>setPresetName(e.target.value)}
+              placeholder="Preset name"
+              className="flex-1 w-full sm:w-auto border-2 border-black rounded-xl px-4 py-2 text-sm font-medium shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:ring-4 focus:ring-blue-500"
+            />
             <button
-              className="text-sm px-3 py-1 bg-blue-600 text-white rounded"
+              className="subtle-button whitespace-nowrap"
               onClick={() => {
                 if (!presetName.trim()) return;
                 const newPreset = { name: presetName.trim(), fields: selectedFields, columns: columnMap, format: formatPreference, delimiter, includeHeaders };
@@ -560,16 +571,19 @@ export default function UploadPage() {
               }}
             >Save preset</button>
             {presets.length > 0 && (
-              <select className="text-sm border rounded px-2 py-1" onChange={(e)=>{
-                const p = presets.find(x => x.name === e.target.value);
-                if (!p) return;
-                setSelectedFields(p.fields);
-                setColumnMap(p.columns);
-                setFormatPreference(p.format);
-                setDelimiter(p.delimiter);
-                setIncludeHeaders(p.includeHeaders);
-                try { localStorage.setItem('audio-intel:export-last', JSON.stringify({ ...p, formatPreference: p.format })); } catch {}
-              }}>
+              <select
+                className="border-2 border-black rounded-xl px-4 py-2 text-sm font-medium shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:ring-4 focus:ring-blue-500"
+                onChange={(e)=>{
+                  const p = presets.find(x => x.name === e.target.value);
+                  if (!p) return;
+                  setSelectedFields(p.fields);
+                  setColumnMap(p.columns);
+                  setFormatPreference(p.format);
+                  setDelimiter(p.delimiter);
+                  setIncludeHeaders(p.includeHeaders);
+                  try { localStorage.setItem('audio-intel:export-last', JSON.stringify({ ...p, formatPreference: p.format })); } catch {}
+                }}
+              >
                 <option value="">Load preset…</option>
                 {presets.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
               </select>

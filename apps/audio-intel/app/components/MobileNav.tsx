@@ -90,8 +90,8 @@ export default function MobileNav() {
   };
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 w-full z-50 md:hidden transition-transform duration-300 ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}
+    <nav
+      className={`sticky top-0 left-0 w-full z-50 transition-transform duration-300 ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}
       aria-label="Mobile Navigation"
     >
       <div className="flex items-center justify-between px-4 py-3 bg-white border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">

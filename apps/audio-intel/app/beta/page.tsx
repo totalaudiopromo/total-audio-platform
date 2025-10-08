@@ -235,7 +235,7 @@ export default function BetaAccessPage() {
             What You'll Be Testing
           </h2>
           
-          <div className="bg-white p-8 rounded-2xl border-4 border-gray-300 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <div className="glass-panel border-gray-300 mb-8">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <div className="flex items-center gap-3 mb-4">
@@ -305,7 +305,7 @@ export default function BetaAccessPage() {
           <div className="beta-benefits-grid grid lg:grid-cols-2 gap-8">
             {/* Left Column */}
             <div className="space-y-6">
-              <div className="beta-benefit-card bg-white p-8 rounded-2xl border-4 border-yellow-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="glass-panel border-yellow-500">
                 <div className="beta-benefit-icon-container flex items-center gap-4 mb-6">
                   <Image 
                     src="/assets/loading-states/success-complete.png"
@@ -325,7 +325,7 @@ export default function BetaAccessPage() {
                 </p>
               </div>
 
-              <div className="beta-benefit-card bg-white p-8 rounded-2xl border-4 border-blue-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="glass-panel border-blue-500">
                 <div className="beta-benefit-icon-container flex items-center gap-4 mb-6">
                   <Image 
                     src="/assets/loading-states/vinyl-throw-action.png"
@@ -348,7 +348,7 @@ export default function BetaAccessPage() {
 
             {/* Right Column */}
             <div className="space-y-6">
-              <div className="beta-benefit-card bg-white p-8 rounded-2xl border-4 border-green-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="glass-panel border-green-500">
                 <div className="beta-benefit-icon-container flex items-center gap-4 mb-6">
                   <Image 
                     src="/assets/loading-states/analyzing-data.png"
@@ -368,7 +368,7 @@ export default function BetaAccessPage() {
                 </p>
               </div>
 
-              <div className="beta-benefit-card bg-white p-8 rounded-2xl border-4 border-purple-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="glass-panel border-purple-500">
                 <div className="beta-benefit-icon-container flex items-center gap-4 mb-6">
                   <Image 
                     src="/assets/loading-states/intelligence-complete.png"

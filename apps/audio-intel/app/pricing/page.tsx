@@ -153,29 +153,6 @@ function PricingContent() {
         </div>
       </header>
 
-      {/* Complete Workflow Banner */}
-      <section className="w-full px-4 py-8 bg-gradient-to-r from-purple-50 to-purple-100 border-b-4 border-purple-300">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
-              <div className="bg-purple-600 rounded-full p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <Music className="w-6 h-6 text-white [animation:none]" />
-              </div>
-              <div>
-                <h3 className="text-xl font-black text-gray-900">Complete Workflow Bundle — Intel + Pitch + Tracker</h3>
-                <p className="text-gray-700 font-bold">Get all three tools for £19/month. Save £27/month vs separate subscriptions.</p>
-              </div>
-            </div>
-            <Link
-              href="#pricing"
-              className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3 rounded-lg transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1"
-            >
-              <span>View Bundle Pricing</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Pricing Section */}
       <section id="pricing" className="py-24 px-4">
         <div className="max-w-none mx-auto px-4">
@@ -189,9 +166,9 @@ function PricingContent() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-4 gap-8 max-w-none mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {/* Free Beta */}
-            <div className="bg-gradient-to-br from-green-50 to-white p-10 rounded-2xl border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative flex flex-col h-full">
+            <div className="glass-panel border-green-500 bg-gradient-to-br from-green-50 to-white p-10 relative flex flex-col h-full">
               <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-600 to-green-500 rounded-full px-8 py-3 font-black text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 TRY THE REAL THING
               </Badge>
@@ -274,103 +251,19 @@ function PricingContent() {
               </Link>
             </div>
 
-            {/* Complete Workflow Bundle - BEST VALUE */}
-            <div className="bg-gradient-to-br from-purple-50 to-white p-10 rounded-2xl border-4 border-purple-600 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative flex flex-col h-full transform scale-105 ring-4 ring-purple-200 ring-opacity-50">
-              <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-600 to-purple-500 rounded-full px-8 py-3 font-black text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                BEST VALUE
-              </Badge>
-
-              <div className="text-center mb-10 mt-6">
-                <h3 className="text-3xl font-black text-gray-900 mb-6">Complete Workflow Bundle</h3>
-                <h4 className="text-xl font-bold text-purple-600 mb-4">Intel + Pitch + Tracker</h4>
-                <div className="text-6xl font-black text-gray-900 mb-2">
-                  £19<span className="text-2xl text-gray-600">/mo</span>
-                </div>
-                <p className="text-sm font-bold text-green-600 mb-4">Save £27/month vs separate tools</p>
-                <p className="text-sm font-bold text-gray-700">Complete promotion workflow in one subscription</p>
-              </div>
-
-              <ul className="space-y-5 mb-10 flex-1">
-                <li className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <span className="font-black text-lg block">Audio Intel: Unlimited enrichment</span>
-                    <span className="text-sm text-gray-600">Research contacts in 15 minutes, not 15 hours</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <span className="font-black text-lg block">Pitch Generator: Unlimited AI pitches</span>
-                    <span className="text-sm text-gray-600">Generate personalised pitches in 10 minutes</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <span className="font-black text-lg block">Tracker: Unlimited campaigns</span>
-                    <span className="text-sm text-gray-600">Track results and optimise future campaigns</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <span className="font-black text-lg block">Save 45+ hours per campaign</span>
-                    <span className="text-sm text-gray-600">Complete workflow from research to results</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <span className="font-black text-lg block">Priority support across all tools</span>
-                    <span className="text-sm text-gray-600">Fast responses when you need help</span>
-                  </div>
-                </li>
-              </ul>
-
-              <div className="bg-purple-100 p-4 rounded-lg mb-6 border-2 border-purple-200">
-                <p className="text-sm font-bold text-purple-800 text-center">
-                  <strong>Perfect for:</strong> Independent artists who want the complete promotion toolkit
-                </p>
-                <p className="text-xs text-purple-700 text-center mt-2 italic">
-                  "Same price as Intel alone - get Pitch Generator and Tracker included"
-                </p>
-              </div>
-
-              <Button
-                className="w-full rounded-2xl font-black text-xl py-6 bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-600 hover:to-purple-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
-                onClick={() => handleCheckout('professional', 'monthly')}
-                disabled={isLoading === 'professional'}
-                type="button"
-                data-testid="btn-start-bundle"
-              >
-                {isLoading === 'professional' ? 'Loading...' : 'Get Complete Bundle'}
-              </Button>
-            </div>
-
-            {/* Professional - Intel Only */}
-            <div className="bg-gradient-to-br from-blue-50 to-white p-10 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all relative flex flex-col h-full">
+            {/* Professional */}
+            <div className="glass-panel border-blue-500 bg-gradient-to-br from-blue-50 to-white p-10 relative flex flex-col h-full">
               <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full px-8 py-3 font-black text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                INTEL ONLY
+                MOST POPULAR
               </Badge>
 
               <div className="text-center mb-10 mt-6">
                 <h3 className="text-3xl font-black text-gray-900 mb-6">Professional</h3>
-                <h4 className="text-xl font-bold text-blue-600 mb-4">Audio Intel Only</h4>
+                <h4 className="text-xl font-bold text-blue-600 mb-4">For Working Music Professionals</h4>
                 <div className="text-6xl font-black text-gray-900 mb-6">
                   £19<span className="text-2xl text-gray-600">/mo</span>
                 </div>
-                <p className="text-sm font-bold text-gray-700">Just contact enrichment - no bundle</p>
+                <p className="text-sm font-bold text-gray-700">Professional contact enrichment and intelligence</p>
               </div>
 
               <ul className="space-y-5 mb-10 flex-1">
@@ -451,10 +344,10 @@ function PricingContent() {
             </div>
 
             {/* Agency */}
-            <div className="bg-white p-10 rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all flex flex-col h-full">
+            <div className="glass-panel flex flex-col h-full">
               <div className="text-center mb-10">
                 <h3 className="text-3xl font-black text-gray-900 mb-6">Agency</h3>
-                <h4 className="text-xl font-bold text-gray-600 mb-4">Complete Bundle + Agency Features</h4>
+                <h4 className="text-xl font-bold text-gray-600 mb-4">For Agencies & Labels</h4>
                 <div className="text-6xl font-black text-gray-900 mb-6">
                   £79<span className="text-2xl text-gray-600">/mo</span>
                 </div>
@@ -467,8 +360,8 @@ function PricingContent() {
                     <Check className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <span className="font-black text-lg block">Everything in Complete Bundle</span>
-                    <span className="text-sm text-gray-600">Intel + Pitch Generator + Tracker unlimited</span>
+                    <span className="font-black text-lg block">Everything in Professional</span>
+                    <span className="text-sm text-gray-600">Plus agency-specific features</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
