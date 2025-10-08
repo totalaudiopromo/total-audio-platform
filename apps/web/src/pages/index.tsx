@@ -72,9 +72,9 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section - Founder-Led */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50 py-20">
+      <section className="relative overflow-hidden bg-white py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="glass-panel p-8 md:p-12">
+          <div className="glass-panel px-6 py-12 sm:px-10 sm:py-16">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left: Founder Photo & Story */}
               <div>
@@ -97,7 +97,7 @@ export default function HomePage() {
                 <div className="space-y-4 text-gray-700 mb-8">
                   <p className="text-lg">
                     I'm Chris – I've been promoting music to BBC Radio 1, 6 Music, and Spotify playlists for 5+ years.
-                    Every campaign meant switching between Muck Rack, Google Sheets, email clients, CRM tools... you know the drill.
+                    Every campaign meant switching between SubmitHub, Groover, ChatGPT, Excel spreadsheets... you know the drill.
                   </p>
                   <p className="text-base">
                     So I built Total Audio Promo: an ecosystem of tools that actually work together.
@@ -127,11 +127,11 @@ export default function HomePage() {
                 <div className="bg-red-50 border-2 border-red-600 rounded-lg p-4 max-w-md">
                   <p className="text-sm font-bold text-red-900 mb-2">The old way:</p>
                   <ul className="text-xs text-gray-700 space-y-1">
-                    <li>• Muck Rack for research (£79/month)</li>
-                    <li>• ChatGPT for pitches (£16/month)</li>
-                    <li>• HubSpot for tracking (£38/month)</li>
-                    <li>• Google Sheets for organisation (free but chaotic)</li>
-                    <li>• 15+ hours per campaign switching between them all</li>
+                    <li>• SubmitHub/Groover for submissions (£3+ per pitch)</li>
+                    <li>• ChatGPT for writing pitches (£16/month)</li>
+                    <li>• Excel/Google Sheets for tracking (chaotic mess)</li>
+                    <li>• Manual contact research (15+ hours per campaign)</li>
+                    <li>• No way to track what actually works</li>
                   </ul>
                 </div>
               </div>
@@ -141,9 +141,9 @@ export default function HomePage() {
       </section>
 
       {/* Pro Bundle CTA */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+      <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="glass-panel p-10 md:p-12">
+          <div className="glass-panel px-6 py-12 sm:px-10">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               {/* Left: Illustration */}
               <div className="flex items-center justify-center">
@@ -242,9 +242,9 @@ export default function HomePage() {
       </section>
 
       {/* The Ecosystem - How It Works */}
-      <section id="ecosystem" className="py-20 bg-white">
+      <section id="ecosystem" className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border-2 border-blue-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-6">
               <span className="text-sm font-bold uppercase tracking-wider text-blue-600">The Workflow That Actually Works</span>
             </div>
@@ -257,9 +257,9 @@ export default function HomePage() {
           </div>
 
           {/* Workflow Steps */}
-          <div className="space-y-8 mb-16">
+          <div className="space-y-10">
             {/* Step 1: Audio Intel */}
-            <div className="glass-panel p-8 md:p-10">
+            <div className="glass-panel px-6 py-10 sm:px-10">
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
@@ -309,7 +309,7 @@ export default function HomePage() {
             </div>
 
             {/* Step 2: Pitch Generator */}
-            <div className="glass-panel p-8 md:p-10 bg-gradient-to-br from-purple-50 to-white">
+            <div className="glass-panel px-6 py-10 sm:px-10 bg-gradient-to-br from-purple-50 to-white">
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="flex justify-center lg:order-1">
                   <Image
@@ -358,11 +358,11 @@ export default function HomePage() {
               <div className="text-4xl text-gray-400">↓</div>
             </div>
 
-            {/* Step 3: Tracker (Coming Soon) */}
-            <div className="glass-panel p-8 md:p-10 bg-gradient-to-br from-amber-50 to-white opacity-75 relative">
+            {/* Step 3: Tracker (Beta) */}
+            <div className="glass-panel px-6 py-10 sm:px-10 bg-gradient-to-br from-amber-50 to-white relative">
               <div className="absolute top-4 right-4">
                 <div className="inline-flex items-center rounded-full border-2 border-amber-600 bg-amber-400 px-3 py-1 text-xs font-bold uppercase tracking-wider text-black">
-                  Coming Soon
+                  Beta Access
                 </div>
               </div>
               <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -374,27 +374,36 @@ export default function HomePage() {
                     <h3 className="text-2xl font-bold text-gray-900">Campaign Tracker</h3>
                   </div>
                   <p className="text-lg text-gray-700 mb-4">
-                    <strong>Track what actually works</strong> across all your campaigns with automatic response detection.
+                    <strong>Know exactly what's working</strong> with AI-powered campaign intelligence and industry benchmarks.
                   </p>
                   <ul className="space-y-2 text-gray-600 mb-6">
                     <li className="flex items-start gap-2">
-                      <span className="text-gray-400 mt-1">○</span>
-                      <span className="text-gray-500">See which contacts opened, replied, or ignored your pitches</span>
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span>AI campaign autopsy - what worked, what didn't, what to do next</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-gray-400 mt-1">○</span>
-                      <span className="text-gray-500">Compare response rates by platform, genre, time sent</span>
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span>Compare your results against BBC Radio 1, Spotify, blog benchmarks</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-gray-400 mt-1">○</span>
-                      <span className="text-gray-500">Build a history of what works for YOUR music</span>
+                      <span className="text-green-600 mt-1">✓</span>
+                      <span>Track responses across all platforms - radio, playlists, press</span>
                     </li>
                   </ul>
-                </div>
-                <div className="flex justify-center opacity-50">
-                  <div className="w-[300px] h-[300px] bg-gray-200 rounded-2xl border-4 border-black flex items-center justify-center">
-                    <p className="text-gray-500 font-bold text-xl">Preview Coming Soon</p>
+                  <div className="bg-amber-50 border-2 border-amber-600 rounded-lg p-4">
+                    <p className="text-sm font-bold text-amber-900">
+                      Real result: "14% response rate - above industry average. Focus on 6 Music next."
+                    </p>
                   </div>
+                </div>
+                <div className="flex justify-center">
+                  <Image
+                    src="/images/analyzing-data.png"
+                    alt="Campaign Intelligence - analyzing data"
+                    width={300}
+                    height={300}
+                    className="drop-shadow-2xl"
+                  />
                 </div>
               </div>
             </div>
@@ -403,9 +412,9 @@ export default function HomePage() {
       </section>
 
       {/* Social Proof */}
-      <section className="py-16 bg-gradient-to-br from-green-50 to-emerald-50">
+      <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="glass-panel p-10">
+          <div className="glass-panel px-6 py-10 sm:px-10 bg-gradient-to-br from-green-50 to-white">
             <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Proven with real campaigns
@@ -436,9 +445,9 @@ export default function HomePage() {
       </section>
 
       {/* Products Section */}
-      <section id="products" className="py-20 bg-white">
+      <section id="products" className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Choose your starting point</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Each tool works standalone. But the Pro Bundle gives you the complete workflow for the price of Intel alone.

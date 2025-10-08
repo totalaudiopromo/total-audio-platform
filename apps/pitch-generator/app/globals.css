@@ -25,7 +25,7 @@
   }
 
   body {
-    @apply bg-white text-gray-900 antialiased;
+    @apply bg-gradient-to-br from-purple-50 via-white to-purple-50/50 text-gray-900 antialiased;
   }
 
   * {
@@ -41,14 +41,48 @@
   /* Postcraft-inspired card like Audio Intel */
   .glass-panel {
     @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1;
+    position: relative;
+  }
+
+  .glass-panel::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.12), rgba(168, 85, 247, 0.06));
+    border-radius: 1.25rem;
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .glass-panel:hover::before {
+    opacity: 1;
   }
 
   .badge-postcraft {
-    @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-yellow-300 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
+    @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-purple-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-purple-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
   }
 
   .cta-button {
-    @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-blue-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 active:scale-95;
+    @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-purple-600 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-purple-700 active:scale-95;
+    position: relative;
+  }
+
+  .cta-button::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: radial-gradient(circle at center, rgba(147, 51, 234, 0.25), transparent 70%);
+    border-radius: 1rem;
+    z-index: -1;
+    filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cta-button:hover::before {
+    opacity: 1;
   }
 
   .subtle-button {

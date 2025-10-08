@@ -5,7 +5,6 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Sparkles, Save, CheckCircle, Zap, FileText, Loader2 } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
 
 interface VoiceProfile {
   voice_background: string;
@@ -69,16 +68,12 @@ export default function VoiceProfilePage() {
 
   async function loadVoiceProfile() {
     try {
-      const userId = session?.user?.email || '';
-      const { data, error } = await supabase
-        .from('user_pitch_settings')
-        .select('*')
-        .eq('user_id', userId)
-        .single();
-
-      if (error && error.code !== 'PGRST116') {
-        throw error;
+      const response = await fetch('/api/voice/profile');
+      if (!response.ok) {
+        throw new Error('Failed to load voice profile');
       }
+
+      const { profile: data } = await response.json();
 
       if (data && data.voice_profile_completed) {
         // User has completed profile, show guided form
@@ -147,17 +142,15 @@ export default function VoiceProfilePage() {
     setSaved(false);
 
     try {
-      const userId = session?.user?.email || '';
+      const response = await fetch('/api/voice/profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(profile),
+      });
 
-      const { error } = await supabase
-        .from('user_pitch_settings')
-        .upsert({
-          user_id: userId,
-          ...profile,
-          voice_profile_completed: true,
-        });
-
-      if (error) throw error;
+      if (!response.ok) {
+        throw new Error('Failed to save voice profile');
+      }
 
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);

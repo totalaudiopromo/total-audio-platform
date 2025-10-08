@@ -1,34 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  /* Match Audio Intel brutalist design system */
-  --color-background: #f8f9fa;
+  /* Tracker amber/orange brand colors */
+  --color-background: #fffbeb;
   --color-foreground: #111827;
   --color-card: #ffffff;
   --color-card-foreground: #111827;
   --color-popover: #ffffff;
   --color-popover-foreground: #111827;
-  --color-primary: #2563eb;
+  --color-primary: #f59e0b;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #f1f5f9;
+  --color-secondary: #fef3c7;
   --color-secondary-foreground: #111827;
-  --color-muted: #f1f5f9;
+  --color-muted: #fef3c7;
   --color-muted-foreground: #6b7280;
-  --color-accent: #2563eb;
+  --color-accent: #f59e0b;
   --color-accent-foreground: #ffffff;
   --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
   --color-border: #000000;
   --color-input: #e5e7eb;
-  --color-ring: #2563eb;
+  --color-ring: #f59e0b;
   --radius: 1rem;
 }
 
-/* Audio Intel brutalist styles */
+/* Tracker brutalist styles with amber brand */
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 50%, #fef3c7 100%);
 }
 
 .shadow-brutal {
@@ -51,13 +52,47 @@ body {
   border: 2px solid #000000;
 }
 
-/* Pitch Generator refined glass-panel components */
+/* Tracker amber brand brutalist components */
 .glass-panel {
   @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1;
+  position: relative;
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(251, 191, 36, 0.06));
+  border-radius: 1.25rem;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glass-panel:hover::before {
+  opacity: 1;
 }
 
 .cta-button {
-  @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-blue-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 active:scale-95;
+  @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-amber-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-amber-600 active:scale-95;
+  position: relative;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: radial-gradient(circle at center, rgba(245, 158, 11, 0.25), transparent 70%);
+  border-radius: 1rem;
+  z-index: -1;
+  filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cta-button:hover::before {
+  opacity: 1;
 }
 
 .subtle-button {
@@ -65,5 +100,5 @@ body {
 }
 
 .badge-postcraft {
-  @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-yellow-300 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
+  @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-amber-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-amber-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
 }
