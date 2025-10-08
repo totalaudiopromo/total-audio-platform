@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-[#f8f9fa] text-gray-900 antialiased;
+    @apply bg-gradient-to-br from-blue-50 via-white to-blue-50/50 text-gray-900 antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -15,15 +15,15 @@
 /* Neobrutalist Design System - matching Pitch Generator & Tracker */
 @layer components {
   .glass-panel {
-    @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1;
+    @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(59,130,246,0.15)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(59,130,246,0.25)] hover:-translate-x-1 hover:-translate-y-1;
   }
 
   .badge-postcraft {
-    @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-yellow-300 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
+    @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-blue-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-blue-800 shadow-[2px_2px_0px_0px_rgba(59,130,246,0.3)];
   }
 
   .cta-button {
-    @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-blue-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 active:scale-95;
+    @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(59,130,246,0.3)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(59,130,246,0.5)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-blue-700 active:scale-95;
   }
 
   .subtle-button {

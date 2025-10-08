@@ -200,9 +200,13 @@ export async function POST(req: NextRequest) {
     }
 
     const trialDays = resolveTrialDays(plan);
-    
+
+    // Check if user is beta founder (tagged in ConvertKit during beta signup)
+    const isBetaFounder = isBetaUser; // All current beta users get founder discount
+    const betaFounderCouponId = 'qa5J5GRN'; // 50% off for 12 months
+
     try {
-      const session = await stripe.checkout.sessions.create({
+      const sessionConfig: any = {
         mode: 'subscription',
         customer_email: email,
         line_items: [
@@ -214,7 +218,15 @@ export async function POST(req: NextRequest) {
         subscription_data: trialDays && trialDays > 0 ? { trial_period_days: trialDays } : undefined,
         success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${baseUrl}/pricing`,
-      });
+      };
+
+      // Auto-apply beta founder discount for beta users
+      if (isBetaFounder) {
+        sessionConfig.discounts = [{ coupon: betaFounderCouponId }];
+        console.log(`Applied beta founder discount (50% off first year) for ${email}`);
+      }
+
+      const session = await stripe.checkout.sessions.create(sessionConfig);
 
       return NextResponse.json({ url: session.url });
     } catch (stripeError: any) {
