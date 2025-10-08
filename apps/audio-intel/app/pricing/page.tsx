@@ -112,59 +112,15 @@ function PricingContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f9fa]">
-      {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <Image 
-                  src="/images/total_audio_promo_logo_trans.png" 
-                  alt="Total Audio Promo Logo" 
-                  width={32} 
-                  height={32}
-                  className="rounded-lg bg-white p-1"
-                />
-              </div>
-              <div className="flex items-center space-x-2">
-                <span className="text-3xl font-black text-gray-900">Audio Intel</span>
-                <Badge variant="secondary" className="bg-blue-100 text-blue-800 font-bold">Beta</Badge>
-              </div>
-            </Link>
-          </div>
-          
-          <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
-              <ArrowLeft className="w-4 h-4 mr-2 inline" />
-              Back to Home
-            </Link>
-            <Link 
-              href="https://pulse.totalaudiopromo.com" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-yellow-600 transition-colors"
-            >
-              <Music className="w-4 h-4" />
-              <span>Playlist Pulse</span>
-              <ExternalLink className="w-3 h-3" />
-            </Link>
-          </nav>
-        </div>
-      </header>
-
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
       {/* Pricing Section */}
-      <section id="pricing" className="py-24 px-4">
-        <div className="max-w-none mx-auto px-4">
-          <div className="text-center mb-20">
-            <h1 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">Simple, Transparent Pricing</h1>
-            <p className="text-2xl font-bold text-gray-700 max-w-4xl mx-auto mb-4">
-              Choose the plan that fits your music promotion needs. All plans organise and add context to your existing contacts.
-            </p>
-            <p className="text-lg font-bold text-gray-600 max-w-3xl mx-auto">
-              Upload your contacts, get AI-generated reference notes, export clean data to CSV/Excel. Manage your organised contacts in your own system.
-            </p>
-          </div>
+      <section id="pricing" className="glass-panel px-6 py-12 sm:px-10">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Simple pricing</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Test it free, then choose what works for you. All plans include contact enrichment, email validation, and CSV export.
+          </p>
+        </div>
 
           <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {/* Free Beta */}
@@ -259,11 +215,12 @@ function PricingContent() {
 
               <div className="text-center mb-10 mt-6">
                 <h3 className="text-3xl font-black text-gray-900 mb-6">Professional</h3>
-                <h4 className="text-xl font-bold text-blue-600 mb-4">For Working Music Professionals</h4>
-                <div className="text-6xl font-black text-gray-900 mb-6">
+                <h4 className="text-xl font-bold text-blue-600 mb-4">For artists and promoters running campaigns</h4>
+                <div className="text-6xl font-black text-gray-900 mb-2">
                   £19<span className="text-2xl text-gray-600">/mo</span>
                 </div>
-                <p className="text-sm font-bold text-gray-700">Professional contact enrichment and intelligence</p>
+                <p className="text-sm font-bold text-green-600 mb-2">Beta founders: £9.99/mo first year</p>
+                <p className="text-sm text-gray-600">14-day free trial included</p>
               </div>
 
               <ul className="space-y-5 mb-10 flex-1">
@@ -347,11 +304,12 @@ function PricingContent() {
             <div className="glass-panel flex flex-col h-full">
               <div className="text-center mb-10">
                 <h3 className="text-3xl font-black text-gray-900 mb-6">Agency</h3>
-                <h4 className="text-xl font-bold text-gray-600 mb-4">For Agencies & Labels</h4>
-                <div className="text-6xl font-black text-gray-900 mb-6">
+                <h4 className="text-xl font-bold text-gray-600 mb-4">PR agencies running multiple client campaigns</h4>
+                <div className="text-6xl font-black text-gray-900 mb-2">
                   £79<span className="text-2xl text-gray-600">/mo</span>
                 </div>
-                <p className="text-sm font-bold text-gray-700">Pays for itself with one extra client retained</p>
+                <p className="text-sm font-bold text-green-600 mb-2">Beta founders: £39.50/mo first year</p>
+                <p className="text-sm text-gray-600">14-day free trial included</p>
               </div>
 
               <ul className="space-y-5 mb-10 flex-1">
