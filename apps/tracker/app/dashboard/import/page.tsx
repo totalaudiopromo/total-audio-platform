@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Papa from 'papaparse';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 interface CampaignImportRow {
   name: string;
@@ -26,6 +26,7 @@ interface ImportResult {
 
 export default function ImportCampaignsPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
   const [importing, setImporting] = useState(false);
@@ -36,7 +37,7 @@ export default function ImportCampaignsPage() {
   // Detect clipboard import from Pitch Generator
   useEffect(() => {
     async function handleClipboardImport() {
-      const source = searchParams.get('source');
+      const source = searchParams?.get('source');
       if (source !== 'clipboard') return;
 
       try {
