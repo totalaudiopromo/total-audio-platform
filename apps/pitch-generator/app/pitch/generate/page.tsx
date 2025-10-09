@@ -42,6 +42,7 @@ export default function GeneratePitchPage() {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
   const [importNotification, setImportNotification] = useState<string | null>(null);
+  const [voiceProfileActive, setVoiceProfileActive] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     contactId: '',
     artistName: '',
@@ -62,8 +63,21 @@ export default function GeneratePitchPage() {
   useEffect(() => {
     if (session?.user?.email) {
       loadContacts();
+      checkVoiceProfile();
     }
   }, [session]);
+
+  async function checkVoiceProfile() {
+    try {
+      const response = await fetch('/api/voice/profile');
+      const result = await response.json();
+      if (result.success && result.profile?.voice_profile_completed) {
+        setVoiceProfileActive(true);
+      }
+    } catch (error) {
+      console.error('Error checking voice profile:', error);
+    }
+  }
 
   // Detect clipboard import from Audio Intel
   useEffect(() => {
@@ -241,15 +255,28 @@ export default function GeneratePitchPage() {
 
       <div className="glass-panel px-8 py-10">
         <div className="mb-8">
-          <div className="flex items-center gap-3">
-            <div className="rounded-full bg-brand-iris/20 p-3">
-              <Sparkles className="h-6 w-6 text-brand-iris" />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="rounded-full bg-brand-iris/20 p-3">
+                <Sparkles className="h-6 w-6 text-brand-iris" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold">Generate Pitch</h1>
+                <p className="mt-1 text-gray-600">Create a personalised pitch in 30 seconds</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-3xl font-bold">Generate Pitch</h1>
-              <p className="mt-1 text-gray-600">Create a personalised pitch in 30 seconds</p>
-            </div>
+            {voiceProfileActive && (
+              <div className="flex items-center gap-2 rounded-xl bg-success/10 px-4 py-2 border border-success/30">
+                <Sparkles className="h-4 w-4 text-success" />
+                <span className="text-sm font-semibold text-success">Voice Profile Active</span>
+              </div>
+            )}
           </div>
+          {voiceProfileActive && (
+            <div className="mt-4 rounded-lg border border-success/30 bg-success/5 px-4 py-3 text-sm text-gray-900/80">
+              ✨ <strong>Your authentic voice is enabled.</strong> This pitch will be written in your natural writing style.
+            </div>
+          )}
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">

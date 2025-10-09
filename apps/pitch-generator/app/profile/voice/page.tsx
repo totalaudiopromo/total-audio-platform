@@ -69,11 +69,21 @@ export default function VoiceProfilePage() {
   async function loadVoiceProfile() {
     try {
       const response = await fetch('/api/voice/profile');
+      const result = await response.json();
+
+      // Check if migration is required
+      if (result.migrationRequired) {
+        console.error('Database migration required:', result.instructions);
+        alert(result.instructions.message + '\n\n' + result.instructions.steps.join('\n'));
+        setLoading(false);
+        return;
+      }
+
       if (!response.ok) {
         throw new Error('Failed to load voice profile');
       }
 
-      const { profile: data } = await response.json();
+      const { profile: data } = result;
 
       if (data && data.voice_profile_completed) {
         // User has completed profile, show guided form
@@ -148,12 +158,29 @@ export default function VoiceProfilePage() {
         body: JSON.stringify(profile),
       });
 
+      const result = await response.json();
+
+      // Check if migration is required
+      if (result.migrationRequired) {
+        console.error('Database migration required:', result.instructions);
+        alert(
+          `❌ ${result.instructions.message}\n\n` +
+          result.instructions.steps.join('\n') +
+          `\n\n📋 SQL to run:\n${result.instructions.sql}`
+        );
+        setSaving(false);
+        return;
+      }
+
       if (!response.ok) {
-        throw new Error('Failed to save voice profile');
+        throw new Error(result.error || 'Failed to save voice profile');
       }
 
       setSaved(true);
-      setTimeout(() => setSaved(false), 3000);
+      // Redirect to profile page after successful save
+      setTimeout(() => {
+        router.push('/profile');
+      }, 1500);
     } catch (error) {
       console.error('Error saving voice profile:', error);
       alert('Failed to save voice profile. Please try again.');

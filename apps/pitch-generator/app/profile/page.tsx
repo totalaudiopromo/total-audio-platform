@@ -1,9 +1,33 @@
 "use client";
 
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+import { CheckCircle, Sparkles } from 'lucide-react';
 
 export default function ProfilePage() {
   const { data: session, status } = useSession();
+  const [voiceProfileComplete, setVoiceProfileComplete] = useState(false);
+  const [loadingVoiceStatus, setLoadingVoiceStatus] = useState(true);
+
+  useEffect(() => {
+    if (session?.user?.email) {
+      checkVoiceProfileStatus();
+    }
+  }, [session]);
+
+  async function checkVoiceProfileStatus() {
+    try {
+      const response = await fetch('/api/voice/profile');
+      const result = await response.json();
+      if (result.success && result.profile?.voice_profile_completed) {
+        setVoiceProfileComplete(true);
+      }
+    } catch (error) {
+      console.error('Error checking voice profile:', error);
+    } finally {
+      setLoadingVoiceStatus(false);
+    }
+  }
 
   if (status === 'loading') {
     return (
@@ -54,18 +78,50 @@ export default function ProfilePage() {
           </dl>
         </div>
         <div className="glass-panel px-6 py-8">
-          <h2 className="text-xl font-semibold">Quick Actions</h2>
-          <div className="mt-4 space-y-3">
-            <a href="/profile/voice" className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100">
-              <span className="font-semibold text-gray-900">Set up voice profile</span> · Teach AI to write in your authentic voice
-            </a>
-            <a href="/pitch/generate" className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100">
-              <span className="font-semibold text-gray-900">Generate a pitch</span> · Create personalised pitches in seconds
-            </a>
-            <a href="/pitch/contacts" className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100">
-              <span className="font-semibold text-gray-900">Manage contacts</span> · Build your database of radio, press, and playlist contacts
-            </a>
-          </div>
+          <h2 className="text-xl font-semibold">Voice Profile</h2>
+          {loadingVoiceStatus ? (
+            <div className="mt-4 animate-pulse text-sm text-gray-900/50">
+              Checking voice profile status...
+            </div>
+          ) : voiceProfileComplete ? (
+            <div className="mt-4 space-y-3">
+              <div className="flex items-center gap-2 text-sm text-success">
+                <CheckCircle className="h-5 w-5" />
+                <span className="font-semibold">Voice profile active</span>
+              </div>
+              <p className="text-sm text-gray-900/70">
+                Your pitches will now be written in your authentic voice
+              </p>
+              <a href="/profile/voice" className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100">
+                <span className="font-semibold text-gray-900">Edit voice profile</span> · Update your writing style and preferences
+              </a>
+            </div>
+          ) : (
+            <div className="mt-4 space-y-3">
+              <div className="flex items-center gap-2 text-sm text-brand-iris">
+                <Sparkles className="h-5 w-5" />
+                <span className="font-semibold">Voice profile not set up</span>
+              </div>
+              <p className="text-sm text-gray-900/70">
+                Set up your voice profile to make AI pitches sound like you wrote them
+              </p>
+              <a href="/profile/voice" className="block rounded-2xl bg-brand-iris/10 px-4 py-3 text-sm transition hover:bg-brand-iris/20 border-2 border-brand-iris/30">
+                <span className="font-semibold text-brand-iris">Set up voice profile</span> · Takes 2-5 minutes
+              </a>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="glass-panel px-6 py-8">
+        <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
+        <div className="grid gap-3 md:grid-cols-2">
+          <a href="/pitch/generate" className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100">
+            <span className="font-semibold text-gray-900">Generate a pitch</span> · Create personalised pitches in seconds
+          </a>
+          <a href="/pitch/contacts" className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100">
+            <span className="font-semibold text-gray-900">Manage contacts</span> · Build your database of radio, press, and playlist contacts
+          </a>
         </div>
       </section>
 
