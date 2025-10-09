@@ -202,6 +202,7 @@ export async function POST(req: NextRequest) {
     const trialDays = resolveTrialDays(plan);
 
     // Check if user is beta founder (tagged in ConvertKit during beta signup)
+    const isBetaUser = true; // All current users are beta users during beta phase
     const isBetaFounder = isBetaUser; // All current beta users get founder discount
     const betaFounderCouponId = 'qa5J5GRN'; // 50% off for 12 months
 
