@@ -285,7 +285,7 @@ function PricingContent() {
                   <strong>Perfect for:</strong> Independent artists and small labels who need results yesterday
                 </p>
                 <p className="text-xs text-blue-700 text-center mt-2 italic">
-                  \"Stop waiting around when you could be pitching\"
+                  "Stop waiting around when you could be pitching"
                 </p>
               </div>
 
