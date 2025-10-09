@@ -4,6 +4,10 @@
   "private": true,
   "description": "Total Audio Promo - Music Industry Tools Platform",
   "scripts": {
+    "lint": "npm run lint --workspace=apps/audio-intel",
+    "typecheck": "npm run typecheck --workspace=apps/audio-intel",
+    "build:audio-intel": "npm run build --workspace=apps/audio-intel",
+    "test:audio-intel": "npm run test --workspace=apps/audio-intel",
     "security:audit": "npm audit --audit-level moderate",
     "security:scan": "export PATH=\"$HOME/bin:$PATH\" && git-secrets --scan",
     "security:check": "npm run security:audit && npm run security:scan",

@@ -418,8 +418,6 @@ function PricingContent() {
               </div>
             </div>
           </div>
-
-        </div>
       </section>
 
       {/* Email Collection Modal */}
