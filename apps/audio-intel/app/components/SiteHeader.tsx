@@ -19,8 +19,8 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b-4 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-8">
-        <div className="flex items-center gap-4">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
+        <div className="flex items-center gap-3">
           <button
             type="button"
             className="rounded-lg border-2 border-black bg-white p-2 text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:hidden"
@@ -29,18 +29,17 @@ export function SiteHeader() {
           >
             <Menu className="h-5 w-5" />
           </button>
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-2">
             <Image
               src="/images/total_audio_promo_logo_trans.png"
               alt="Total Audio Promo"
-              width={40}
-              height={40}
-              className="h-10 w-auto"
+              width={32}
+              height={32}
+              className="h-8 w-8 object-contain"
             />
-            <div className="flex flex-col">
-              <span className="text-lg font-bold leading-tight tracking-tight text-black">Audio Intel</span>
-              <span className="text-xs text-gray-500">by Total Audio Promo</span>
-            </div>
+            <h1 className="text-lg font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent sm:text-xl">
+              Audio Intel
+            </h1>
           </Link>
         </div>
 

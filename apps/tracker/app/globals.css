@@ -29,7 +29,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 50%, #fef3c7 100%);
+  background: #ffffff;
 }
 
 .shadow-brutal {
@@ -54,45 +54,23 @@ body {
 
 /* Tracker amber brand brutalist components */
 .glass-panel {
-  @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1;
+  @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-amber-50/30;
   position: relative;
 }
 
 .glass-panel::before {
   content: '';
   position: absolute;
-  inset: -8px;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(251, 191, 36, 0.06));
-  border-radius: 1.25rem;
+  inset: -40px;
+  background: radial-gradient(circle 400px at center, rgba(245, 158, 11, 0.06), transparent 70%);
+  border-radius: 2rem;
   z-index: -1;
-  filter: blur(8px);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.glass-panel:hover::before {
-  opacity: 1;
+  filter: blur(40px);
+  pointer-events: none;
 }
 
 .cta-button {
   @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-amber-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-amber-600 active:scale-95;
-  position: relative;
-}
-
-.cta-button::before {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  background: radial-gradient(circle at center, rgba(245, 158, 11, 0.25), transparent 70%);
-  border-radius: 1rem;
-  z-index: -1;
-  filter: blur(6px);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.cta-button:hover::before {
-  opacity: 1;
 }
 
 .subtle-button {

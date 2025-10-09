@@ -1,0 +1,29 @@
+{
+  "name": "@total-audio/shared-utils",
+  "version": "1.0.0",
+  "description": "Shared utilities for Total Audio Promo platform - logging, cost tracking, retry logic, alerts",
+  "main": "index.js",
+  "exports": {
+    "./agent-logger": "./agent-logger.js",
+    "./cost-tracker": "./cost-tracker.js",
+    "./retry-wrapper": "./retry-wrapper.js",
+    "./email-alerts": "./email-alerts.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "total-audio",
+    "utilities",
+    "logging",
+    "cost-tracking",
+    "retry",
+    "alerts"
+  ],
+  "author": "Total Audio Promo",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  }
+}

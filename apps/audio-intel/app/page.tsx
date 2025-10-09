@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Sparkles, Zap, Clock, Target, Shield, Users, Database, Check, Download, BarChart3, Search } from 'lucide-react';
+import { SiteFooter } from './components/SiteFooter';
 
 const features = [
   {
@@ -479,111 +480,7 @@ export default function HomePage() {
         </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid gap-12 lg:grid-cols-2">
-            <div className="space-y-8">
-              <div className="flex items-center gap-4">
-                <Image
-                  src="/images/total_audio_promo_logo_trans.png"
-                  alt="Total Audio Promo Logo"
-                  width={64}
-                  height={64}
-                  className="bg-white rounded-lg p-2"
-                />
-                <div>
-                  <span className="text-2xl font-black block">Audio Intel</span>
-                  <span className="text-sm font-semibold text-white/70 uppercase tracking-[0.2em]">Powered by Total Audio Promo</span>
-                </div>
-              </div>
-              <p className="text-lg font-bold text-gray-300">
-                AI contact intelligence for working music promoters. Upload spreadsheets, validate emails, and receive
-                enriched media profiles with context that helps you pitch faster.
-              </p>
-              <div className="flex flex-col gap-3 text-gray-400">
-                <p className="font-bold text-white/80 uppercase tracking-wider text-xs">Quick contact</p>
-                <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white transition-colors font-semibold">
-                  info@totalaudiopromo.com
-                </a>
-                <p className="text-sm">
-                  Brighton, UK · Built by radio promoters for artists, labels, and PR teams.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid gap-6 sm:gap-10 grid-cols-2 w-full">
-              <div className="col-span-1">
-                <h3 className="text-base sm:text-xl font-black mb-3 sm:mb-6">Product</h3>
-                <ul className="flex flex-col gap-2 sm:gap-3">
-                  <li>
-                    <a href="#features" className="text-gray-300 hover:text-white font-bold transition-colors block">
-                      Features
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#pricing" className="text-gray-300 hover:text-white font-bold transition-colors block">
-                      Pricing
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/demo" className="text-gray-300 hover:text-white font-bold transition-colors block">
-                      Demo
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/beta" className="text-gray-300 hover:text-white font-bold transition-colors block">
-                      Beta Access
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="col-span-1">
-                <h3 className="text-base sm:text-xl font-black mb-3 sm:mb-6">Support</h3>
-                <ul className="flex flex-col gap-2 sm:gap-3">
-                  <li>
-                    <a href="mailto:info@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors block">
-                      Help Center
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/documentation" className="text-gray-300 hover:text-white font-bold transition-colors block">
-                      Documentation
-                    </a>
-                  </li>
-                  <li>
-                    <a href="mailto:support@totalaudiopromo.com" className="text-gray-300 hover:text-white font-bold transition-colors block">
-                      Support Email
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="col-span-2 mt-4">
-                <h3 className="text-base sm:text-xl font-black mb-3 sm:mb-6">Legal</h3>
-                <ul className="flex flex-col gap-2 sm:gap-3">
-                  <li>
-                    <a href="https://totalaudiopromo.com/privacy" className="text-gray-300 hover:text-white font-bold transition-colors block">
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://totalaudiopromo.com/terms" className="text-gray-300 hover:text-white font-bold transition-colors block">
-                      Terms of Service
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-            <p className="text-gray-400 font-bold">
-              © 2025 Audio Intel - Powered By <a href="https://totalaudiopromo.com" className="text-gray-300 hover:text-white transition-colors underline">Total Audio Promo</a>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
