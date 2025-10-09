@@ -73,24 +73,33 @@ export function SiteHeader() {
 
       {mobileOpen && (
         <nav className="border-b-4 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:hidden">
-          <div className="flex flex-col gap-2">
-            {links.map(link => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`rounded-lg px-4 py-3 text-sm font-semibold transition ${
-                    isActive
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+          <div className="flex flex-col gap-3">
+            {/* Tool Switcher on Mobile */}
+            <div className="border-b border-gray-200 pb-3">
+              <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Switch Tool</p>
+              <ToolSwitcher />
+            </div>
+
+            {/* Navigation Links */}
+            <div className="flex flex-col gap-2">
+              {links.map(link => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`rounded-lg px-4 py-3 text-sm font-semibold transition ${
+                      isActive
+                        ? 'bg-gray-900 text-white'
+                        : 'text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </nav>
       )}
