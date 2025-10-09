@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, Suspense } from 'react';
 import Papa from 'papaparse';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -24,7 +24,7 @@ interface ImportResult {
   errors: string[];
 }
 
-export default function ImportCampaignsPage() {
+function ImportCampaignsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -444,5 +444,14 @@ Commercial Radio - Kiss FM Push,sadact,Commercial Radio,Electronic,2025-03-01,,8
         </div>
       </div>
     </div>
+  );
+}
+
+
+export default function ImportCampaignsPageWrapper() {
+  return (
+    <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="text-lg">Loading...</div></div>}>
+      <ImportCampaignsPage />
+    </Suspense>
   );
 }
