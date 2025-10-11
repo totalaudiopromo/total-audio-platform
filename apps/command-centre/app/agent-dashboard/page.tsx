@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import AgentVisualizationDashboard from '../../components/AgentVisualizationDashboard';
-import AgentActivityMonitor from '../../components/AgentActivityMonitor';
+import AgentVisualizationDashboard from '../components/AgentVisualizationDashboard';
+import AgentActivityMonitor from '../components/AgentActivityMonitor';
 
 const AgentDashboardPage: React.FC = () => {
   return (

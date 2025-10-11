@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { agentColorUtils, AGENT_STATUS_STATES } from '../lib/agent-color-system';
+import { agentColorUtils, AGENT_STATUS_STATES } from '@/lib/agent-color-system';
 
 interface AgentStatusWidgetProps {
   agentType: string;

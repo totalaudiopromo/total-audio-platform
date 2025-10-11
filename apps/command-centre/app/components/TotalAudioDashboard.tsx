@@ -38,6 +38,7 @@ interface DashboardCard {
 export default function TotalAudioDashboard() {
   const [metrics, setMetrics] = useState<DashboardMetric[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchDashboardData();
@@ -45,12 +46,22 @@ export default function TotalAudioDashboard() {
 
   const fetchDashboardData = async () => {
     setLoading(true);
+    setError(null);
     try {
-      // Fetch real business metrics
+      // Fetch real business metrics with timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+
       const [businessResponse, audioIntelResponse] = await Promise.all([
-        fetch('/api/business-metrics?timeframe=30d'),
-        fetch('/api/audio-intel-metrics')
+        fetch('/api/business-metrics?timeframe=30d', { signal: controller.signal }),
+        fetch('/api/audio-intel-metrics', { signal: controller.signal })
       ]);
+
+      clearTimeout(timeoutId);
+
+      if (!businessResponse.ok || !audioIntelResponse.ok) {
+        throw new Error('Failed to fetch metrics');
+      }
 
       const businessData = await businessResponse.json();
       const audioIntelData = await audioIntelResponse.json();
@@ -87,8 +98,16 @@ export default function TotalAudioDashboard() {
       ];
 
       setMetrics(dashboardMetrics);
-    } catch (error) {
-      console.error('Failed to fetch dashboard data:', error);
+    } catch (err) {
+      console.error('Failed to fetch dashboard data:', err);
+      setError('Unable to load metrics. Using cached data.');
+      // Set fallback metrics
+      setMetrics([
+        { id: 'beta-users', label: 'Beta Users', value: '--', change: '', changeType: 'neutral' },
+        { id: 'contacts-enriched', label: 'Contacts Enriched', value: '--', change: '', changeType: 'neutral' },
+        { id: 'success-rate', label: 'Success Rate', value: '--', change: '', changeType: 'neutral' },
+        { id: 'projected-mrr', label: 'Projected MRR', value: '£--', change: '', changeType: 'neutral' }
+      ]);
     } finally {
       setLoading(false);
     }
@@ -171,113 +190,159 @@ export default function TotalAudioDashboard() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Loading Command Centre...</h2>
-          <p className="text-gray-600">Preparing your business intelligence dashboard</p>
+      <div className="min-h-screen bg-white">
+        <div className="container mx-auto px-4 py-8 sm:py-12">
+          {/* Skeleton Header */}
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="h-10 sm:h-12 bg-gray-200 rounded-lg w-64 sm:w-80 mx-auto mb-4 animate-pulse"></div>
+            <div className="h-6 bg-gray-200 rounded-lg w-48 sm:w-96 mx-auto mb-6 animate-pulse"></div>
+            <div className="h-8 bg-gray-200 rounded-full w-48 mx-auto animate-pulse"></div>
+          </div>
+
+          {/* Skeleton Metrics */}
+          <div className="mb-8 sm:mb-12">
+            <div className="h-8 bg-gray-200 rounded-lg w-32 mb-6 animate-pulse"></div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="bg-gray-100 p-6 rounded-xl border-4 border-gray-200 h-32 animate-pulse"></div>
+              ))}
+            </div>
+          </div>
+
+          {/* Skeleton Cards */}
+          <div className="mb-8 sm:mb-12">
+            <div className="h-8 bg-gray-200 rounded-lg w-40 mb-6 animate-pulse"></div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="bg-gray-100 p-6 rounded-xl border-4 border-gray-200 h-40 animate-pulse"></div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          Command Centre
-        </h1>
-        <p className="text-lg text-gray-600 mb-6">
-          Your centralised hub for music industry intelligence and automation
-        </p>
-        <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-          <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-          All Systems Operational
-        </div>
-      </div>
-
-      {/* Key Metrics */}
-      <div>
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">Key Metrics</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {metrics.map((metric) => (
-            <div key={metric.id} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">{metric.label}</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">{metric.value}</p>
-                </div>
-                <div className={`flex items-center text-sm font-medium ${
-                  metric.changeType === 'positive' ? 'text-green-600' : 
-                  metric.changeType === 'negative' ? 'text-red-600' : 'text-gray-600'
-                }`}>
-                  {metric.changeType === 'positive' && <ArrowUpRight className="w-4 h-4 mr-1" />}
-                  {metric.changeType === 'negative' && <ArrowDownRight className="w-4 h-4 mr-1" />}
-                  {metric.change}
-                </div>
+    <div className="postcraft-page">
+      <div className="container mx-auto px-4 py-6 sm:py-8 lg:py-12">
+        {/* Error Banner */}
+        {error && (
+          <div className="mb-6 p-4 sm:p-6 bg-yellow-50 border-4 border-yellow-400 rounded-xl shadow-[4px_4px_0px_0px_rgba(234,179,8,1)]">
+            <div className="flex items-start gap-3">
+              <div className="flex-shrink-0 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center mt-0.5">
+                <span className="text-yellow-900 font-black text-sm">!</span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-base sm:text-lg font-black text-yellow-900 mb-1">Connection Issue</h3>
+                <p className="text-sm sm:text-base text-yellow-800 font-medium">{error}</p>
+                <button
+                  onClick={fetchDashboardData}
+                  className="mt-3 inline-flex items-center px-4 py-2 text-sm font-bold bg-yellow-400 text-yellow-900 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all active:translate-x-0 active:translate-y-0 active:shadow-none min-h-[44px]"
+                >
+                  Retry Connection
+                </button>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Quick Actions */}
-      <div>
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">Quick Actions</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {dashboardCards.map((card) => {
-            const Icon = card.icon;
-            
-            return (
-              <Link
-                key={card.id}
-                href={card.href}
-                className="block bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200"
-              >
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-blue-600" />
-                    </div>
-                  </div>
-                  <div className="ml-4 flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{card.title}</h3>
-                    <p className="text-sm text-gray-600 mb-4">{card.description}</p>
-                    <div className="flex items-center">
-                      <div className={`w-2 h-2 rounded-full mr-2 ${
-                        card.status === 'active' ? 'bg-green-400' :
-                        card.status === 'warning' ? 'bg-yellow-400' :
-                        card.status === 'error' ? 'bg-red-400' : 'bg-gray-400'
-                      }`}></div>
-                      <span className="text-sm font-medium text-gray-600 capitalize">{card.status}</span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Recent Activity */}
-      <div>
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">Recent Activity</h2>
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <div className="flex items-center mb-6">
-            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-              <Clock className="w-6 h-6 text-blue-600" />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900">System Status</h3>
-              <p className="text-sm text-gray-600">Last updated 2 minutes ago</p>
-            </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        )}
+
+        {/* Header */}
+        <div className="postcraft-section text-center mb-8 sm:mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+            Command Centre
+          </h1>
+          <p className="text-gray-600 text-lg mb-6">
+            Your centralised hub for music industry intelligence and automation
+          </p>
+          <div className="postcraft-status">
+            <div className="postcraft-status-dot"></div>
+            <span>All Systems Operational</span>
+          </div>
+        </div>
+
+        {/* Key Metrics */}
+        <div className="postcraft-section mb-8">
+          <div className="postcraft-section-header">
+            <h2>Key Metrics</h2>
+          </div>
+          <div className="postcraft-metrics-grid">
+            {metrics.map((metric) => (
+              <div key={metric.id} className="postcraft-metric-card">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <p className="postcraft-metric-label">{metric.label}</p>
+                    <p className="postcraft-metric-value">{metric.value}</p>
+                  </div>
+                  {metric.change && (
+                    <div className={`flex items-center text-xs sm:text-sm font-bold flex-shrink-0 ${
+                      metric.changeType === 'positive' ? 'text-green-600' :
+                      metric.changeType === 'negative' ? 'text-red-600' : 'text-gray-600'
+                    }`}>
+                      {metric.changeType === 'positive' && <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 mr-1" />}
+                      {metric.changeType === 'negative' && <ArrowDownRight className="w-4 h-4 sm:w-5 sm:h-5 mr-1" />}
+                      <span className="whitespace-nowrap">{metric.change}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Quick Actions */}
+        <div className="postcraft-section mb-8">
+          <div className="postcraft-section-header">
+            <h2>Quick Actions</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {dashboardCards.map((card) => {
+              const Icon = card.icon;
+
+              return (
+                <Link
+                  key={card.id}
+                  href={card.href}
+                  className="postcraft-card group"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0">
+                      <div className="postcraft-metric-icon" style={{ background: '#dbeafe' }}>
+                        <Icon className="w-6 h-6 text-blue-900" />
+                      </div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">{card.title}</h3>
+                      <p className="text-sm text-gray-600 mb-4 line-clamp-2">{card.description}</p>
+                      <div className="postcraft-status">
+                        <div className={`postcraft-status-dot ${
+                          card.status === 'active' ? 'bg-green-500' :
+                          card.status === 'warning' ? 'bg-yellow-500' :
+                          card.status === 'error' ? 'bg-red-500' : 'bg-gray-500'
+                        }`}></div>
+                        <span className="capitalize">{card.status}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Recent Activity */}
+        <div className="postcraft-section">
+          <div className="postcraft-section-header">
+            <h2>System Status</h2>
+            <p className="text-sm text-gray-600 mt-2">Last updated 2 minutes ago</p>
+          </div>
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4">
             {['Audio Intel', 'API Services', 'Database', 'Analytics'].map((service) => (
-              <div key={service} className="flex items-center">
-                <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                <span className="text-sm font-medium text-gray-900">{service}</span>
+              <div key={service} className="postcraft-metric-card">
+                <div className="postcraft-status">
+                  <div className="postcraft-status-dot"></div>
+                  <span className="font-semibold">{service}</span>
+                </div>
               </div>
             ))}
           </div>

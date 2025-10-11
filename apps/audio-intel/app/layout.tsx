@@ -23,14 +23,6 @@ export const metadata: Metadata = {
   creator: 'Chris Schofield',
   publisher: 'Total Audio Promo',
   robots: 'index, follow',
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
-      { url: '/total_audio_promo_logo_trans.png', sizes: '512x512', type: 'image/png' }
-    ],
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png'
-  },
   openGraph: {
     title: 'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion',
     description: 'Transform chaotic contact spreadsheets into organised databases in minutes. Built by radio promoters for radio promoters. BBC Radio 1 + Spotify case studies proven.',
@@ -81,8 +73,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Search Engine Verification */}
         <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || ''} />
         <meta name="msvalidate.01" content={process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || ''} />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         {/* JSON-LD: Organization */}
         <script
           type="application/ld+json"

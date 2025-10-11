@@ -45,10 +45,10 @@ class NewsjackingAgent {
     this.newsSources = {
       musicIndustry: [
         {
-          name: 'Music Week',
-          rss: 'https://www.musicweek.com/rss',
+          name: 'Music Business Worldwide',
+          rss: 'https://www.musicbusinessworldwide.com/feed/',
           relevanceWeight: 0.9,
-          category: 'industry'
+          category: 'business'
         },
         {
           name: 'NME',
@@ -63,10 +63,28 @@ class NewsjackingAgent {
           category: 'charts'
         },
         {
-          name: 'Music Business Worldwide',
-          rss: 'https://www.musicbusinessworldwide.com/feed/',
+          name: 'Ari\'s Take (Ari Herstand)',
+          rss: 'https://aristake.com/feed/',
+          relevanceWeight: 0.95,
+          category: 'indie_artist'
+        },
+        {
+          name: 'Complete Music Update (UK)',
+          rss: 'https://completemusicupdate.com/feed/',
           relevanceWeight: 0.9,
-          category: 'business'
+          category: 'uk_industry'
+        },
+        {
+          name: 'DIY Magazine (UK)',
+          rss: 'https://diymag.com/feed',
+          relevanceWeight: 0.85,
+          category: 'uk_indie'
+        },
+        {
+          name: 'Attack Magazine',
+          rss: 'https://www.attackmagazine.com/feed/',
+          relevanceWeight: 0.9,
+          category: 'electronic_production'
         }
       ],
       techTrends: [
@@ -84,6 +102,12 @@ class NewsjackingAgent {
           rss: 'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml',
           relevanceWeight: 0.8,
           category: 'culture'
+        },
+        {
+          name: 'The Line of Best Fit (UK)',
+          rss: 'https://www.thelineofbestfit.com/feed',
+          relevanceWeight: 0.75,
+          category: 'uk_indie_culture'
         }
       ]
     };
@@ -134,7 +158,7 @@ class NewsjackingAgent {
         "Honestly?", "The opportunity", "What everyone's missing", "Here's how to turn this"
       ],
       industryCredibility: [
-        "After 10+ years in radio promotion",
+        "After 5+ years in radio promotion",
         "From my experience working with BBC Radio 1",
         "Having pitched thousands of tracks",
         "As someone who's automated contact research",
@@ -339,9 +363,21 @@ class NewsjackingAgent {
    */
   async identifyUnsignedAngle(story) {
     const text = `${story.title} ${story.content}`.toLowerCase();
-    
-    // Common unsigned advantage patterns
-    if (text.includes('major label') && (text.includes('cuts') || text.includes('problems'))) {
+
+    // Order matters - check most specific patterns first to avoid all stories hitting "ai/tool" pattern
+
+    // Legal/lawsuit angles (indie artists benefit from clarity)
+    if (text.includes('lawsuit') || text.includes('sued') || text.includes('legal')) {
+      return {
+        type: 'legal_clarity',
+        angle: 'Legal battles create clarity on rules - indies who understand the outcome can move strategically',
+        opportunity: 'Strategic positioning advantage',
+        actionable: 'Position yourself on the right side of industry legal shifts'
+      };
+    }
+
+    // Major label problems (business issues, cuts, struggles)
+    if (text.includes('major label') && (text.includes('cuts') || text.includes('problems') || text.includes('struggle') || text.includes('layoff'))) {
       return {
         type: 'major_label_problems',
         angle: 'While major labels struggle with {problem}, independent artists can move faster and be more agile',
@@ -349,8 +385,49 @@ class NewsjackingAgent {
         actionable: 'Position as alternative to struggling major label system'
       };
     }
-    
-    if (text.includes('streaming') && text.includes('algorithm')) {
+
+    // Collaboration and networking opportunities
+    if (text.includes('collab') || text.includes('collaboration') || text.includes('network') || text.includes('community')) {
+      return {
+        type: 'collaboration_opportunities',
+        angle: 'The indie scene thrives on collaboration - opportunities major label artists can\'t access',
+        opportunity: 'Community and partnership advantage',
+        actionable: 'Build strategic collaborations while majors are stuck in contracts'
+      };
+    }
+
+    // Mental health and wellness (indie artist self-care)
+    if (text.includes('mental health') || text.includes('wellness') || text.includes('burnout')) {
+      return {
+        type: 'sustainable_careers',
+        angle: 'Indies can build sustainable careers on their own terms without label pressure',
+        opportunity: 'Creative control and wellbeing',
+        actionable: 'Design your career around your life, not label deadlines'
+      };
+    }
+
+    // Merch and direct-to-fan revenue
+    if (text.includes('merch') || text.includes('merchandise') || text.includes('direct-to-fan') || text.includes('d2f')) {
+      return {
+        type: 'revenue_diversification',
+        angle: 'Indies keep 100% of merch and D2F revenue - majors take huge cuts',
+        opportunity: 'Revenue ownership advantage',
+        actionable: 'Build direct fan relationships and keep what you earn'
+      };
+    }
+
+    // Music education and access to knowledge
+    if (text.includes('education') || text.includes('school') || text.includes('learn') || text.includes('course')) {
+      return {
+        type: 'knowledge_democratization',
+        angle: 'Music industry knowledge is now accessible to everyone - no label needed',
+        opportunity: 'Self-education advantage',
+        actionable: 'Learn industry skills faster than label artists waiting for A&R guidance'
+      };
+    }
+
+    // Streaming platform changes (algorithms, playlists, features)
+    if (text.includes('streaming') && (text.includes('algorithm') || text.includes('spotify') || text.includes('playlist'))) {
       return {
         type: 'platform_changes',
         angle: 'New platform features favor artists who can adapt quickly over those stuck in old systems',
@@ -358,17 +435,30 @@ class NewsjackingAgent {
         actionable: 'Implement new features before major labels catch up'
       };
     }
-    
-    if (text.includes('automation') || text.includes('ai') || text.includes('tool')) {
+
+    // Production tools and studio tech (more specific than general "ai/tool")
+    if ((text.includes('production') || text.includes('studio') || text.includes('mixing') || text.includes('mastering')) &&
+        (text.includes('tool') || text.includes('plugin') || text.includes('software'))) {
       return {
-        type: 'technology_democratization',
-        angle: 'New tools level the playing field - indies can now access what majors pay thousands for',
-        opportunity: 'Technology access equality',
-        actionable: 'Adopt tools faster than established industry players'
+        type: 'production_democratization',
+        angle: 'Professional production tools are now accessible to bedroom producers - the playing field is levelling',
+        opportunity: 'Studio-quality production at home',
+        actionable: 'Master production tools that major label artists pay thousands for'
       };
     }
-    
-    if (text.includes('radio') || text.includes('playlist')) {
+
+    // AI and automation (general tech, check AFTER specific production tools)
+    if (text.includes('automation') || text.includes('ai') || text.includes('artificial intelligence')) {
+      return {
+        type: 'technology_democratization',
+        angle: 'AI tools level the playing field - indies can now automate what majors pay teams for',
+        opportunity: 'Technology access equality',
+        actionable: 'Adopt AI tools faster than established industry players'
+      };
+    }
+
+    // Radio and promotion opportunities
+    if (text.includes('radio') || text.includes('bbc') || text.includes('promotion') || text.includes('playlist pitching')) {
       return {
         type: 'promotion_opportunities',
         angle: 'Changes in promotion landscape create new pathways for independent artists',
@@ -376,8 +466,18 @@ class NewsjackingAgent {
         actionable: 'Build relationships while majors are stuck in old processes'
       };
     }
-    
-    // Default angle
+
+    // Industry age and "making it later" narratives
+    if (text.includes('after 30') || text.includes('late bloomer') || text.includes('older artist')) {
+      return {
+        type: 'age_advantage',
+        angle: 'Success doesn\'t have an age limit - indie artists can build careers on their own timeline',
+        opportunity: 'No label age discrimination',
+        actionable: 'Focus on your craft and audience, not arbitrary age limits'
+      };
+    }
+
+    // Default angle (only if no specific pattern matched)
     return {
       type: 'general_opportunity',
       angle: 'Industry changes create opportunities for artists willing to move fast',

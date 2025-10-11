@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from 'react';
-import { Button } from './ui/button';
+import { NeoButton } from './NeoBrutalistUI';
 import { Instagram, FileText, Mail, Edit, Rocket, Package, Target, AlertTriangle } from 'lucide-react';
 
 interface AgentResult {

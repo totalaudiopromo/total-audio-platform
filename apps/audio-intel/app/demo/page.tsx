@@ -37,6 +37,7 @@ export default function SimpleAudioIntelDemo() {
   const [exportProgress, setExportProgress] = useState<string>('')
   const [userEmail, setUserEmail] = useState<string>('')
   const [betaTrialStatus, setBetaTrialStatus] = useState<any>(null)
+  const [notifyStatus, setNotifyStatus] = useState<string | null>(null)
 
   // Get user email from localStorage or URL params (from beta signup)
   useEffect(() => {
@@ -83,6 +84,59 @@ export default function SimpleAudioIntelDemo() {
     companyName: 'Audio Intel',
     primaryColor: '#2563eb'
   })
+
+  // Send contact to Pitch Generator
+  const handleSendToPitch = async (contact: Contact) => {
+    try {
+      // Parse the intelligence field to extract structured data
+      const intelligence = contact.intelligence || '';
+
+      // Extract outlet (first line with 🎵 emoji)
+      const outletMatch = intelligence.match(/🎵\s*([^\n|]+)/);
+      const outlet = outletMatch ? outletMatch[1].trim() : '';
+
+      // Extract role (look for common role keywords)
+      const roleMatch = intelligence.match(/(presenter|producer|editor|curator|director|manager|host|dj)/i);
+      const role = roleMatch ? roleMatch[1] : '';
+
+      // Extract genres (look for genre mentions or music format)
+      const genreMatch = intelligence.match(/🎧\s*([^\n]+)/);
+      const genres = genreMatch ? genreMatch[1].trim() : '';
+
+      // Use the full intelligence as notes
+      const notes = intelligence;
+
+      // Create the data structure for clipboard
+      const clipboardData = {
+        source: "intel",
+        contacts: [{
+          name: contact.name,
+          outlet: outlet,
+          role: role || contact.role || '',
+          genres: genres,
+          notes: notes,
+          email: contact.email
+        }]
+      };
+
+      // Copy to clipboard
+      await navigator.clipboard.writeText(JSON.stringify(clipboardData));
+
+      // Show success notification
+      setNotifyStatus('Contact copied! Opening Pitch Generator...');
+
+      // Open Pitch Generator with import flag
+      window.open('https://pitch.totalaudiopromo.com/generate?import=clipboard', '_blank');
+
+      // Clear notification after 3 seconds
+      setTimeout(() => setNotifyStatus(null), 3000);
+
+    } catch (error) {
+      console.error('Error sending to Pitch Generator:', error);
+      setNotifyStatus('Failed to copy contact data. Please try again.');
+      setTimeout(() => setNotifyStatus(null), 3000);
+    }
+  }
 
   // Handle professional exports
   const handleExport = async (format: 'csv' | 'excel' | 'pdf') => {
@@ -138,6 +192,13 @@ export default function SimpleAudioIntelDemo() {
 
   return (
     <div className="min-h-screen audio-gradient">
+      {/* Toast Notification */}
+      {notifyStatus && (
+        <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-3 rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-4 border-black font-bold animate-slide-in">
+          {notifyStatus}
+        </div>
+      )}
+
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-12">
@@ -504,7 +565,16 @@ export default function SimpleAudioIntelDemo() {
                                       <div className="font-bold text-gray-900">{contact.name}</div>
                                       <div className="text-blue-600 font-medium">{contact.email}</div>
                                     </div>
-                                    <Badge className="bg-green-500 text-white">High Confidence</Badge>
+                                    <div className="flex items-center gap-2">
+                                      <Badge className="bg-green-500 text-white">High Confidence</Badge>
+                                      <Button
+                                        onClick={() => handleSendToPitch(contact)}
+                                        size="sm"
+                                        className="bg-yellow-500 hover:bg-yellow-600 text-black font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                                      >
+                                        → Pitch
+                                      </Button>
+                                    </div>
                                   </div>
                                   <div className="text-sm text-gray-700">{contact.intelligence}</div>
                                 </div>
@@ -531,7 +601,16 @@ export default function SimpleAudioIntelDemo() {
                                       <div className="font-bold text-gray-900">{contact.name}</div>
                                       <div className="text-blue-600 font-medium">{contact.email}</div>
                                     </div>
-                                    <Badge variant="outline" className="border-yellow-500 text-yellow-700">Medium Confidence</Badge>
+                                    <div className="flex items-center gap-2">
+                                      <Badge variant="outline" className="border-yellow-500 text-yellow-700">Medium Confidence</Badge>
+                                      <Button
+                                        onClick={() => handleSendToPitch(contact)}
+                                        size="sm"
+                                        className="bg-yellow-500 hover:bg-yellow-600 text-black font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                                      >
+                                        → Pitch
+                                      </Button>
+                                    </div>
                                   </div>
                                   <div className="text-sm text-gray-700">{contact.intelligence}</div>
                                 </div>
@@ -564,7 +643,16 @@ export default function SimpleAudioIntelDemo() {
                                       <div className="font-bold text-gray-900">{contact.name}</div>
                                       <div className="text-blue-600 font-medium">{contact.email}</div>
                                     </div>
-                                    <Badge variant="outline" className="border-red-500 text-red-700">Needs Research</Badge>
+                                    <div className="flex items-center gap-2">
+                                      <Badge variant="outline" className="border-red-500 text-red-700">Needs Research</Badge>
+                                      <Button
+                                        onClick={() => handleSendToPitch(contact)}
+                                        size="sm"
+                                        className="bg-yellow-500 hover:bg-yellow-600 text-black font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                                      >
+                                        → Pitch
+                                      </Button>
+                                    </div>
                                   </div>
                                   <div className="text-sm text-gray-600">{contact.intelligence}</div>
                                 </div>

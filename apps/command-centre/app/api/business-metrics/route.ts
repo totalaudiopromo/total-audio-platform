@@ -80,7 +80,7 @@ export async function GET() {
     let stripeChurnRate = 0; // optional, 0 if not computed
     try {
       if (process.env.STRIPE_SECRET) {
-        const stripe = new Stripe(process.env.STRIPE_SECRET as string, { apiVersion: '2025-06-20' });
+        const stripe = new Stripe(process.env.STRIPE_SECRET as string, { apiVersion: '2024-06-20' });
         // Get active subscriptions monthly recurring amount
         const subs = await stripe.subscriptions.list({ status: 'active', expand: ['data.items.price'] });
         let monthlyPence = 0;

@@ -271,23 +271,23 @@ What are you building? Let's connect.`,
   }
 
   return (
-    <div className="space-y-8">
+    <div className="postcraft-container">
       {/* Header */}
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
+      <div className="postcraft-section text-center">
+        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
           Social Media Hub
         </h1>
-        <p className="text-lg text-gray-600 mb-6">
+        <p className="text-gray-600 text-lg mb-6">
           Multi-platform content creation and scheduling
         </p>
-        <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-          <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-          {PLATFORMS.filter(p => p.connected).length} platforms connected
+        <div className="postcraft-status">
+          <div className="postcraft-status-dot"></div>
+          <span>{PLATFORMS.filter(p => p.connected).length} platforms connected</span>
         </div>
       </div>
 
       {/* Tab Navigation */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+      <div className="postcraft-section">
         <div className="flex gap-2 p-1 bg-gray-100 rounded-lg">
           {[
             { key: 'compose', label: 'Compose', icon: Edit },
@@ -298,10 +298,10 @@ What are you building? Let's connect.`,
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key as any)}
-              className={`flex-1 px-4 py-2 rounded-md font-semibold text-sm transition-all flex items-center justify-center gap-2 ${
-                activeTab === tab.key 
-                  ? 'bg-blue-600 text-white shadow-sm' 
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-white'
+              className={`flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all flex items-center justify-center gap-2 ${
+                activeTab === tab.key
+                  ? 'postcraft-button-gradient text-white'
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               <tab.icon size={16} />

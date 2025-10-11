@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { agentColorUtils, AGENT_CATEGORIES, AGENT_STATUS_STATES, AGENT_COLOR_THEMES } from '../lib/agent-color-system';
+import { agentColorUtils, AGENT_CATEGORIES, AGENT_STATUS_STATES, AGENT_COLOR_THEMES } from '@/lib/agent-color-system';
 
 interface Agent {
   id: string;

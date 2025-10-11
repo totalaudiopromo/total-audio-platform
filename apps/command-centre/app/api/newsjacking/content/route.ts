@@ -6,7 +6,7 @@ import {
   generateInstagramSlides, 
   generateInstagramCaption 
 } from '../content-generators';
-import { addToApprovalQueue } from '../approval/route';
+import { addToApprovalQueue } from '@/lib/approval-queue';
 
 interface GeneratedContent {
   id: string;

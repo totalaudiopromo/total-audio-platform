@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getApprovalQueue, setApprovalQueue } from '@/lib/approval-queue';
 
 interface ApprovalAction {
   contentId: string;
@@ -12,24 +13,24 @@ interface ApprovalAction {
 
 // In-memory storage for approvals (would be database in production)
 let approvals: any[] = [];
-let approvalQueue: any[] = [];
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status'); // 'pending', 'approved', 'rejected', 'scheduled'
     const platform = searchParams.get('platform');
-    
+
+    const approvalQueue = getApprovalQueue();
     let filteredQueue = [...approvalQueue];
-    
+
     if (status) {
       filteredQueue = filteredQueue.filter(item => item.status === status);
     }
-    
+
     if (platform) {
       filteredQueue = filteredQueue.filter(item => item.platform === platform);
     }
-    
+
     // Sort by priority (urgent first) and then by created time
     filteredQueue.sort((a, b) => {
       if (a.urgency !== b.urgency) {
@@ -38,7 +39,7 @@ export async function GET(request: NextRequest) {
       }
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
-    
+
     const stats = {
       total: approvalQueue.length,
       pending: approvalQueue.filter(item => item.status === 'pending').length,
@@ -47,7 +48,7 @@ export async function GET(request: NextRequest) {
       scheduled: approvalQueue.filter(item => item.status === 'scheduled').length,
       urgent: approvalQueue.filter(item => item.urgency === 'immediate').length
     };
-    
+
     return NextResponse.json({
       success: true,
       queue: filteredQueue,
@@ -66,26 +67,28 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { action, contentId, platform, approver, scheduledTime, editedContent, rejectionReason } = body;
-    
+
     if (!action || !contentId || !platform || !approver) {
       return NextResponse.json(
         { success: false, error: 'Missing required fields' },
         { status: 400 }
       );
     }
-    
+
+    const approvalQueue = getApprovalQueue();
+
     // Find the content in the queue
-    const queueIndex = approvalQueue.findIndex(item => 
+    const queueIndex = approvalQueue.findIndex(item =>
       item.contentId === contentId && item.platform === platform
     );
-    
+
     if (queueIndex === -1) {
       return NextResponse.json(
         { success: false, error: 'Content not found in approval queue' },
         { status: 404 }
       );
     }
-    
+
     const queueItem = approvalQueue[queueIndex];
     
     // Process the approval action
@@ -184,34 +187,3 @@ async function integrateWithSocialPosting(queueItem: any, approval: ApprovalActi
   }
 }
 
-// Add content to approval queue (called from content generation)
-export async function addToApprovalQueue(contentData: any) {
-  const queueItem = {
-    id: `queue_${Date.now()}_${Math.random().toString(36).substring(7)}`,
-    contentId: contentData.id,
-    platform: 'multi', // Will be split into individual platform items
-    generatedContent: contentData.multiPlatformContent,
-    originalStory: contentData.originalStory,
-    audioIntelAngle: contentData.unsignedAngle?.angle,
-    urgency: contentData.unsignedAngle?.urgency || 'medium',
-    relevanceScore: contentData.originalStory?.relevanceScore || 0,
-    status: 'pending',
-    createdAt: new Date().toISOString(),
-    readyToPost: false
-  };
-  
-  // Create separate queue items for each platform
-  const platforms = ['twitter', 'linkedin', 'instagram'];
-  platforms.forEach(platform => {
-    if (contentData.multiPlatformContent[platform]) {
-      approvalQueue.push({
-        ...queueItem,
-        id: `${queueItem.id}_${platform}`,
-        platform,
-        generatedContent: contentData.multiPlatformContent[platform]
-      });
-    }
-  });
-  
-  return queueItem;
-}

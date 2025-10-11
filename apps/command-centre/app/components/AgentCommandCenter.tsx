@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { agentColorUtils, AGENT_CATEGORIES, AGENT_STATUS_STATES, AGENT_COLOR_THEMES } from '../lib/agent-color-system';
+import { agentColorUtils, AGENT_CATEGORIES, AGENT_STATUS_STATES, AGENT_COLOR_THEMES } from '@/lib/agent-color-system';
 import AgentStatusWidget from './AgentStatusWidget';
 import AgentLoadingState from './AgentLoadingState';
 import { CheckCircle, AlertTriangle, AlertCircle, BarChart3, Gamepad2, Rocket, Sparkles, ContactRound, Mail, TrendingUp, Calendar, Clock, Share2, Smartphone } from 'lucide-react';
-import SocialMediaScheduler from './SocialMediaScheduler';
-import UKSocialMediaHub from './UKSocialMediaHub';
+// import SocialMediaScheduler from './SocialMediaScheduler';
+// import UKSocialMediaHub from './UKSocialMediaHub';
 
 interface CommandCenterProps {
   title?: string;
@@ -385,10 +385,10 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
           )}
         </div>
 
-               {/* UK Social Media Hub */}
-               <div className="border-t border-gray-200 pt-6 mt-6">
+               {/* UK Social Media Hub - Temporarily disabled */}
+               {/* <div className="border-t border-gray-200 pt-6 mt-6">
                  <UKSocialMediaHub compact={compactMode} />
-               </div>
+               </div> */}
 
         {/* System Stats */}
         <div className="border-t border-gray-200 pt-6 mt-6">

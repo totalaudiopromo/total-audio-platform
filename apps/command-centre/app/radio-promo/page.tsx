@@ -4,7 +4,7 @@ import RadioPromoVerificationDashboard from '../components/RadioPromoVerificatio
 
 export default function RadioPromoPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="postcraft-page">
       <RadioPromoVerificationDashboard />
     </div>
   );

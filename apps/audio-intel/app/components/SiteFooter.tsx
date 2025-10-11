@@ -24,13 +24,13 @@ export function SiteFooter() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/upload" className="text-sm text-gray-600 transition hover:text-blue-600">
+                  <Link href="/demo" className="text-sm text-gray-600 transition hover:text-blue-600">
                     Dashboard
                   </Link>
                 </li>
                 <li>
-                  <Link href="/demo" className="text-sm text-gray-600 transition hover:text-blue-600">
-                    Demo
+                  <Link href="/beta" className="text-sm text-gray-600 transition hover:text-blue-600">
+                    Beta Access
                   </Link>
                 </li>
               </ul>

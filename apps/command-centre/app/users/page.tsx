@@ -220,96 +220,57 @@ export default function UserManagementPage() {
   }
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #7c2d12 0%, #dc2626 100%)',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      padding: '2rem'
-    }}>
+    <div className="postcraft-container">
       {/* Header */}
-      <div style={{
-        background: 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(20px)',
-        borderRadius: '20px',
-        padding: '2rem',
-        marginBottom: '2rem',
-        boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)'
-      }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+      <div className="postcraft-section">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
           <div>
-            <h1 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#1a202c', margin: '0 0 0.5rem 0' }}>
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
               User Management
             </h1>
-            <p style={{ color: '#6b7280', margin: 0 }}>
+            <p className="text-gray-600">
               Manage beta users, permissions, and track usage across Audio Intel
             </p>
           </div>
-          <button 
+          <button
             onClick={() => window.history.back()}
-            style={{
-              background: '#dc2626',
-              color: 'white',
-              border: 'none',
-              borderRadius: '12px',
-              padding: '0.75rem 1.5rem',
-              cursor: 'pointer',
-              fontWeight: '600'
-            }}
+            className="postcraft-button"
           >
             ← Back to Dashboard
           </button>
         </div>
 
         {/* Stats Overview */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
-          gap: '1rem',
-          marginBottom: '1.5rem'
-        }}>
-          <div style={{ textAlign: 'center' }}>
-            <p style={{ fontSize: '2rem', fontWeight: '900', color: '#dc2626', margin: 0 }}>
-              {users.length}
-            </p>
-            <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: 0 }}>Total Users</p>
+        <div className="postcraft-metrics-grid mb-6">
+          <div className="postcraft-metric-card text-center">
+            <p className="postcraft-metric-value text-red-600">{users.length}</p>
+            <p className="postcraft-metric-label">Total Users</p>
           </div>
-          <div style={{ textAlign: 'center' }}>
-            <p style={{ fontSize: '2rem', fontWeight: '900', color: '#059669', margin: 0 }}>
-              {users.filter(u => u.status === 'active').length}
-            </p>
-            <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: 0 }}>Active</p>
+          <div className="postcraft-metric-card text-center">
+            <p className="postcraft-metric-value text-green-600">{users.filter(u => u.status === 'active').length}</p>
+            <p className="postcraft-metric-label">Active</p>
           </div>
-          <div style={{ textAlign: 'center' }}>
-            <p style={{ fontSize: '2rem', fontWeight: '900', color: '#d97706', margin: 0 }}>
-              {users.filter(u => u.status === 'inactive').length}
-            </p>
-            <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: 0 }}>Inactive</p>
+          <div className="postcraft-metric-card text-center">
+            <p className="postcraft-metric-value text-yellow-600">{users.filter(u => u.status === 'inactive').length}</p>
+            <p className="postcraft-metric-label">Inactive</p>
           </div>
-          <div style={{ textAlign: 'center' }}>
-            <p style={{ fontSize: '2rem', fontWeight: '900', color: '#3b82f6', margin: 0 }}>
-              {users.reduce((sum, user) => sum + user.usage.contactsEnriched, 0).toLocaleString()}
-            </p>
-            <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: 0 }}>Total Enriched</p>
+          <div className="postcraft-metric-card text-center">
+            <p className="postcraft-metric-value text-blue-600">{users.reduce((sum, user) => sum + user.usage.contactsEnriched, 0).toLocaleString()}</p>
+            <p className="postcraft-metric-label">Total Enriched</p>
           </div>
         </div>
 
         {/* Filter Buttons */}
-        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <div className="flex gap-2 flex-wrap">
           {['all', 'active', 'inactive', 'suspended'].map((status) => (
             <button
               key={status}
               onClick={() => setFilterStatus(status)}
-              style={{
-                background: filterStatus === status ? '#dc2626' : 'transparent',
-                color: filterStatus === status ? 'white' : '#6b7280',
-                border: '1px solid #d1d5db',
-                borderRadius: '8px',
-                padding: '0.5rem 1rem',
-                cursor: 'pointer',
-                fontSize: '0.875rem',
-                fontWeight: '500',
-                textTransform: 'capitalize'
-              }}
+              className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+                filterStatus === status
+                  ? 'postcraft-button-gradient text-white'
+                  : 'postcraft-button'
+              }`}
             >
               {status === 'all' ? `All Users (${users.length})` : `${status} (${users.filter(u => u.status === status).length})`}
             </button>

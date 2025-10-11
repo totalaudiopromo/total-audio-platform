@@ -149,55 +149,57 @@ export default function SystemStatusPage() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="postcraft-container">
       {/* Header */}
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
+      <div className="postcraft-section text-center">
+        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
           System Status
         </h1>
-        <p className="text-lg text-gray-600 mb-6">
+        <p className="text-gray-600 text-lg mb-6">
           Real-time monitoring of all Audio Intel services
         </p>
-        <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium ${getOverallStatusColor()}`}>
-          <div className={`w-2 h-2 rounded-full mr-2 ${
+        <div className="postcraft-status">
+          <div className={`postcraft-status-dot ${
             overallStatus === 'operational' ? 'bg-green-500' :
             overallStatus === 'degraded' ? 'bg-yellow-500' :
             'bg-red-500'
           }`}></div>
-          {overallStatus === 'operational' ? 'All Systems Operational' :
-           overallStatus === 'degraded' ? 'Some Services Degraded' :
-           'System Issues Detected'}
+          <span>
+            {overallStatus === 'operational' ? 'All Systems Operational' :
+             overallStatus === 'degraded' ? 'Some Services Degraded' :
+             'System Issues Detected'}
+          </span>
         </div>
       </div>
 
       {/* Overall Status Card */}
-      <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200 text-center">
+      <div className="postcraft-section text-center">
         <div className="flex items-center justify-center mb-6">
           {overallStatus === 'operational' ? (
-            <CheckCircle className="w-16 h-16 text-green-500" />
+            <CheckCircle className="w-20 h-20 text-green-500" />
           ) : overallStatus === 'degraded' ? (
-            <AlertTriangle className="w-16 h-16 text-yellow-500" />
+            <AlertTriangle className="w-20 h-20 text-yellow-500" />
           ) : (
-            <WifiOff className="w-16 h-16 text-red-500" />
+            <WifiOff className="w-20 h-20 text-red-500" />
           )}
         </div>
-        
+
         <h2 className="text-3xl font-bold text-gray-900 mb-4 capitalize">
           {overallStatus}
         </h2>
-        
+
         <p className="text-gray-600">
           Last updated: {new Date().toLocaleString()}
         </p>
       </div>
 
       {/* Services Grid */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Service Status</h2>
-          <p className="text-gray-600">Individual service monitoring and management</p>
+      <div className="postcraft-section">
+        <div className="postcraft-section-header">
+          <h2>Service Status</h2>
+          <p className="text-gray-600 mt-2">Individual service monitoring and management</p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => {
             const getStatusIcon = (status: string) => {
@@ -208,18 +210,18 @@ export default function SystemStatusPage() {
                 default: return <Server className="w-5 h-5 text-gray-600" />;
               }
             };
-            
+
             return (
-              <div key={service.name} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div key={service.name} className="postcraft-card">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                  <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
                     <Globe className="w-5 h-5 text-gray-600" />
                     {service.name}
                   </h3>
-                  
-                  <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(service.status)}`}>
+
+                  <div className="postcraft-status">
                     {getStatusIcon(service.status)}
-                    {service.status.toUpperCase()}
+                    <span className="uppercase text-xs">{service.status}</span>
                   </div>
                 </div>
                 
@@ -243,18 +245,18 @@ export default function SystemStatusPage() {
                   <button
                     onClick={() => handleRestart(service.name)}
                     className={`flex-1 px-3 py-2 rounded-lg font-medium text-sm flex items-center justify-center gap-2 transition-colors ${
-                      service.status === 'offline' 
-                        ? 'bg-red-600 text-white hover:bg-red-700' 
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      service.status === 'offline'
+                        ? 'bg-red-600 text-white hover:bg-red-700'
+                        : 'postcraft-button'
                     }`}
                   >
                     <RefreshCw className="w-4 h-4" />
                     Restart
                   </button>
-                  
+
                   <button
                     onClick={fetchSystemStatus}
-                    className="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                    className="postcraft-button flex items-center justify-center gap-2"
                   >
                     <CheckCircle className="w-4 h-4" />
                     Test

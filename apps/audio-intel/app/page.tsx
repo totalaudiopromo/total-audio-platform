@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Sparkles, Zap, Clock, Target, Shield, Users, Database, Check, Download, BarChart3, Search } from 'lucide-react';
-import { SiteFooter } from './components/SiteFooter';
 
 const features = [
   {
@@ -48,8 +47,53 @@ const howItWorks = [
   },
 ];
 
+// Liberty-relevant demo contacts
+const libertyDemoContacts = [
+  {
+    email: 'greg.james@bbc.co.uk',
+    name: 'Greg James',
+    role: 'Radio Presenter',
+    platform: 'BBC Radio 1',
+    confidence: 'High',
+    notes: 'BBC Radio 1 Breakfast Show host. Covers house, pop, and electronic music. Peak listening time 6:30-10am. Accepts submissions via official BBC form with 3-week lead time.',
+  },
+  {
+    email: 'danny.howard@bbc.co.uk',
+    name: 'Danny Howard',
+    role: 'Radio Presenter / DJ',
+    platform: 'BBC Radio 1',
+    confidence: 'High',
+    notes: 'BBC Radio 1 Dance presenter. Friday night 7-9pm slot focused on house, techno, and electronic music. Strong support for underground and emerging house producers. Submissions via BBC Music Introducing.',
+  },
+  {
+    email: 'mistajam@bbc.co.uk',
+    name: 'MistaJam',
+    role: 'Radio Presenter',
+    platform: 'BBC Radio 1Xtra',
+    confidence: 'High',
+    notes: 'Now at Capital Xtra but previously BBC. Covers hip-hop, grime, and bass music. Known for championing new artists early. Prefers SoundCloud links and direct email pitches.',
+  },
+  {
+    email: 'editors@spotify.com',
+    name: 'Spotify Editorial Team',
+    role: 'Playlist Curators',
+    platform: 'Spotify',
+    confidence: 'Medium',
+    notes: 'Submit via Spotify for Artists only. Focus on genre-specific playlists: "New Music Friday UK", "Mint", "Hot Hits UK". Requires 4-week lead time before release date.',
+  },
+  {
+    email: 'pete.tong@bbc.co.uk',
+    name: 'Pete Tong',
+    role: 'Radio Presenter / DJ',
+    platform: 'BBC Radio 1',
+    confidence: 'High',
+    notes: 'Legendary BBC Radio 1 dance music presenter. Friday nights 8-10pm. Essential Selection feature for breakthrough house and electronic tracks. Very selective - only send your absolute best work.',
+  },
+];
+
 export default function HomePage() {
-  const [demoEmail, setDemoEmail] = useState('greg.james@bbc.co.uk');
+  const [currentDemoIndex, setCurrentDemoIndex] = useState(0);
+  const [demoEmail, setDemoEmail] = useState(libertyDemoContacts[0].email);
   const [demoLoading, setDemoLoading] = useState(false);
   const [demoResult, setDemoResult] = useState<any>(null);
 
@@ -57,18 +101,22 @@ export default function HomePage() {
     setDemoLoading(true);
     setDemoResult(null);
 
-    // Simulate enrichment
+    // Find the contact from our demo database
+    const contact = libertyDemoContacts.find(c => c.email === demoEmail) || libertyDemoContacts[0];
+
+    // Simulate enrichment with realistic timing
     setTimeout(() => {
-      setDemoResult({
-        name: 'Greg James',
-        email: 'greg.james@bbc.co.uk',
-        role: 'Radio Presenter',
-        platform: 'BBC Radio 1',
-        confidence: 'High',
-        notes: 'BBC Radio 1 Breakfast Show host. One of the most influential presenters in UK radio with a focus on new music and emerging artists.',
-      });
+      setDemoResult(contact);
       setDemoLoading(false);
     }, 2000);
+  };
+
+  // Cycle through demo examples
+  const cycleDemo = () => {
+    const nextIndex = (currentDemoIndex + 1) % libertyDemoContacts.length;
+    setCurrentDemoIndex(nextIndex);
+    setDemoEmail(libertyDemoContacts[nextIndex].email);
+    setDemoResult(null);
   };
 
   return (
@@ -77,12 +125,6 @@ export default function HomePage() {
         <section className="glass-panel overflow-hidden px-6 py-16 sm:px-10 sm:py-20">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
             <div className="flex-1 space-y-5">
-              <Image
-                src="/images/total_audio_promo_logo_trans.png"
-                alt="Total Audio Promo"
-                width={100}
-                height={100}
-              />
               <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
                 Turn chaotic spreadsheets into
                 <span className="block text-blue-600">
@@ -104,40 +146,55 @@ export default function HomePage() {
             <div className="flex-1">
               <div className="relative">
                 <div className="glass-panel bg-gradient-to-br from-blue-50 to-white px-8 py-10">
-                  <p className="text-xs font-semibold uppercase tracking-[0.5em] text-gray-500">Try It Now</p>
-                  <h2 className="mt-4 text-2xl font-bold">Live Demo</h2>
+                  <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-purple-900">
+                    <Sparkles className="w-3 h-3" />
+                    Live Demo
+                  </div>
+                  <h2 className="mt-4 text-2xl font-bold">See It In Action</h2>
                   <div className="mt-6 space-y-4">
                     <div>
-                      <label className="text-sm font-medium text-gray-700">Enter any email:</label>
+                      <label className="text-sm font-medium text-gray-700">Contact Email:</label>
                       <input
                         type="email"
                         value={demoEmail}
                         onChange={(e) => setDemoEmail(e.target.value)}
-                        className="mt-2 w-full rounded-lg border-2 border-gray-300 px-4 py-2 text-sm"
+                        className="mt-2 w-full rounded-lg border-2 border-gray-300 px-4 py-2 text-sm font-medium"
                         placeholder="contact@example.com"
                       />
                     </div>
-                    <button
-                      onClick={handleDemoEnrich}
-                      disabled={demoLoading}
-                      className="cta-button w-full"
-                    >
-                      {demoLoading ? 'Enriching...' : 'Enrich Contact'}
-                    </button>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={handleDemoEnrich}
+                        disabled={demoLoading}
+                        className="cta-button flex-1"
+                      >
+                        {demoLoading ? 'Enriching...' : 'Enrich Contact'}
+                      </button>
+                      <button
+                        onClick={cycleDemo}
+                        disabled={demoLoading}
+                        className="subtle-button"
+                        title="Try different example"
+                      >
+                        Try Another →
+                      </button>
+                    </div>
                     {demoResult && (
                       <div className="mt-4 rounded-lg border-2 border-green-500 bg-green-50 p-4 text-sm">
-                        <p className="font-bold text-green-900">{demoResult.name}</p>
-                        <p className="text-gray-700">{demoResult.role} · {demoResult.platform}</p>
-                        <p className="mt-2 text-xs text-gray-600">{demoResult.notes}</p>
-                        <span className="mt-2 inline-block rounded-full bg-green-500 px-2 py-1 text-xs font-bold text-white">
-                          {demoResult.confidence} Confidence
-                        </span>
+                        <div className="flex justify-between items-start mb-2">
+                          <p className="font-bold text-green-900">{demoResult.name}</p>
+                          <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-bold text-white">
+                            {demoResult.confidence} Confidence
+                          </span>
+                        </div>
+                        <p className="text-gray-700 font-medium">{demoResult.role} · {demoResult.platform}</p>
+                        <p className="mt-3 text-xs text-gray-600 leading-relaxed">{demoResult.notes}</p>
                       </div>
                     )}
                   </div>
-                  <div className="mt-6 rounded-lg border border-blue-600/30 bg-blue-600/10 px-4 py-3">
-                    <p className="text-sm font-medium text-blue-900">
-                      Real enrichment pipeline. Try with BBC Radio 1, Spotify, or any contact.
+                  <div className="mt-6 rounded-lg border border-purple-600/30 bg-purple-600/10 px-4 py-3">
+                    <p className="text-sm font-medium text-purple-900">
+                      <strong>Real data from radio campaigns.</strong> Try BBC Radio 1 DJs, Spotify curators, or your own contacts.
                     </p>
                   </div>
                 </div>
@@ -479,8 +536,6 @@ export default function HomePage() {
           </div>
         </section>
 
-      {/* Footer */}
-      <SiteFooter />
     </div>
   );
 }

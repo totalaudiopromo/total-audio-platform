@@ -58,7 +58,7 @@ const AgentDemoPage: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Agent Selection */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-white rounded-xl shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] p-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Select Your Agent</h2>
             <div className="grid grid-cols-1 gap-3">
               {agents.map((agent) => (
@@ -84,7 +84,7 @@ const AgentDemoPage: React.FC = () => {
           </div>
 
           {/* Chat Interface */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-white rounded-xl shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] p-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Chat with Agent</h2>
             
             {selectedAgent ? (
@@ -132,10 +132,10 @@ const AgentDemoPage: React.FC = () => {
         </div>
 
         {/* Agent Capabilities */}
-        <div className="mt-8 bg-white rounded-xl shadow-lg p-6">
+        <div className="mt-8 bg-white rounded-xl shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] p-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">What These Agents Can Help With</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 border border-gray-200 rounded-lg">
+            <div className="p-4 border-4 border-black rounded-lg">
               <h3 className="font-semibold text-gray-900 mb-2">🎯 User Acquisition</h3>
               <ul className="text-sm text-gray-600 space-y-1">
                 <li>• Lead generation strategies</li>
@@ -144,7 +144,7 @@ const AgentDemoPage: React.FC = () => {
                 <li>• Customer journey mapping</li>
               </ul>
             </div>
-            <div className="p-4 border border-gray-200 rounded-lg">
+            <div className="p-4 border-4 border-black rounded-lg">
               <h3 className="font-semibold text-gray-900 mb-2">📱 Social Content</h3>
               <ul className="text-sm text-gray-600 space-y-1">
                 <li>• Content calendar planning</li>
@@ -153,7 +153,7 @@ const AgentDemoPage: React.FC = () => {
                 <li>• Viral content ideas</li>
               </ul>
             </div>
-            <div className="p-4 border border-gray-200 rounded-lg">
+            <div className="p-4 border-4 border-black rounded-lg">
               <h3 className="font-semibold text-gray-900 mb-2">📧 Email Marketing</h3>
               <ul className="text-sm text-gray-600 space-y-1">
                 <li>• Email sequence design</li>
@@ -162,7 +162,7 @@ const AgentDemoPage: React.FC = () => {
                 <li>• Automation workflows</li>
               </ul>
             </div>
-            <div className="p-4 border border-gray-200 rounded-lg">
+            <div className="p-4 border-4 border-black rounded-lg">
               <h3 className="font-semibold text-gray-900 mb-2">📊 Analytics & Insights</h3>
               <ul className="text-sm text-gray-600 space-y-1">
                 <li>• Performance analysis</li>

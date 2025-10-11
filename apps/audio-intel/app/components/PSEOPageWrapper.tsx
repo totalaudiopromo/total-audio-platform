@@ -75,12 +75,12 @@ export function PSEOPageWrapper({ children, pageName, topic, searchVolume, tier 
     };
 
     // Add click tracking to all CTA links
-    const ctaLinks = document.querySelectorAll('a[href*="/pricing"], a[href*="/upload"], a[href*="/demo"]');
+    const ctaLinks = document.querySelectorAll('a[href*="/pricing"], a[href*="/demo"], a[href*="/beta"]');
     ctaLinks.forEach((link) => {
       const href = link.getAttribute('href') || '';
       const ctaType = href.includes('/pricing') ? 'pricing' :
-                     href.includes('/upload') ? 'upload' :
-                     href.includes('/demo') ? 'demo' : 'other';
+                     href.includes('/demo') ? 'demo' :
+                     href.includes('/beta') ? 'beta' : 'other';
 
       link.addEventListener('click', () => {
         const position = link.closest('section')?.id || 'unknown';

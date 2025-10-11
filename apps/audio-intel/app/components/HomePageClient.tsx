@@ -1007,7 +1007,7 @@ export default function HomePageClient() {
                 <li><Link href="/blog" className="hover:text-[#6366f1] dark:hover:text-brand-blue transition-colors">Blog</Link></li>
                 <li><a href="#pricing" className="hover:text-[#6366f1] dark:hover:text-brand-blue transition-colors">Pricing</a></li>
                 <li><a href="#demo" className="hover:text-[#6366f1] dark:hover:text-brand-blue transition-colors">Live Demo</a></li>
-                <li><a href="#signup" className="hover:text-[#6366f1] dark:hover:text-brand-blue transition-colors">Start Free Trial</a></li>
+                <li><Link href="/beta" className="hover:text-[#6366f1] dark:hover:text-brand-blue transition-colors">Start Free Trial</Link></li>
               </ul>
             </div>
             

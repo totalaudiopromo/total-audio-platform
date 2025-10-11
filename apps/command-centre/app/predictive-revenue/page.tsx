@@ -42,22 +42,24 @@ export default function PredictiveRevenuePage() {
   }
 
   return (
-    <div className="intel-page">
+    <div className="postcraft-container">
       {/* Header */}
-      <div className="intel-header">
-        <div className="intel-header-content">
-          <div className="intel-header-title">
-            <div className="intel-header-icon">
+      <div className="postcraft-section">
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-blue-600">
               <TrendingUp className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1>Predictive Revenue</h1>
-              <p>AI-powered revenue forecasting and analysis</p>
+              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                Predictive Revenue
+              </h1>
+              <p className="text-gray-600">AI-powered revenue forecasting and analysis</p>
             </div>
           </div>
-          
-          <div className="intel-status">
-            <div className="intel-status-dot"></div>
+
+          <div className="postcraft-status">
+            <div className="postcraft-status-dot"></div>
             <span style={{ color: 'var(--intel-gray-600)' }}>Live predictions</span>
           </div>
         </div>

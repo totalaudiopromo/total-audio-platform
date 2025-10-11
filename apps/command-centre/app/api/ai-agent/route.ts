@@ -5,7 +5,7 @@ const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const anthropic = new Anthropic({
   apiKey: ANTHROPIC_API_KEY,
 });
-const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL;
+const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL ?? 'claude-3-5-sonnet-20241022';
 
 interface AgentRequest {
   agentType: 'music-industry-strategist' | 'music-marketing-mastermind' | 'growth-hacking-optimizer' | 'viral-content-automation' | 'radio-promo-agent' | 'social-media-agent' | 'content-generation-agent' | 'analytics-agent';

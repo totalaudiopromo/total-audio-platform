@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { NeoCard } from './NeoBrutalistUI';
 import { Bot, TrendingUp, Edit, BarChart3, Mail, Target } from 'lucide-react';
 
 interface ChatMessage {

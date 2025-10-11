@@ -85,7 +85,7 @@ export function ExitIntentPopup() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/signup"
+                href="/beta"
                 onClick={handleClose}
                 className="flex-1 bg-purple-600 text-white px-8 py-4 rounded-xl font-black hover:bg-purple-700 transition-all text-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
               >

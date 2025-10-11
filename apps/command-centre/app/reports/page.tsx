@@ -175,33 +175,37 @@ export default function ReportsPage() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="postcraft-container">
       {/* Header */}
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
+      <div className="postcraft-section text-center">
+        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
           Business Reports
         </h1>
-        <p className="text-lg text-gray-600">
+        <p className="text-gray-600 text-lg mb-4">
           Generate and download comprehensive business intelligence reports
         </p>
+        <div className="postcraft-status">
+          <div className="postcraft-status-dot"></div>
+          <span>{filteredReports.length} reports available</span>
+        </div>
       </div>
 
       {/* Filter Section */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <div className="flex items-center gap-3 mb-6">
-          <Filter className="w-6 h-6 text-gray-600" />
-          <h2 className="text-xl font-semibold text-gray-900">Filter Reports</h2>
+      <div className="postcraft-section">
+        <div className="postcraft-section-header">
+          <Filter className="w-6 h-6 inline-block mr-2" />
+          <h2 className="inline">Filter Reports</h2>
         </div>
-        
+
         <div className="flex gap-3 flex-wrap">
           {['all', 'business', 'technical', 'user', 'financial'].map((type) => (
             <button
               key={type}
               onClick={() => setSelectedType(type)}
               className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
-                selectedType === type 
-                  ? 'bg-blue-600 text-white' 
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                selectedType === type
+                  ? 'postcraft-button-gradient text-white'
+                  : 'postcraft-button'
               }`}
             >
               {type === 'all' ? 'All Reports' : type.charAt(0).toUpperCase() + type.slice(1)}
@@ -223,28 +227,28 @@ export default function ReportsPage() {
           };
           
           return (
-            <div key={report.id} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+            <div key={report.id} className="postcraft-card">
               {/* Header */}
               <div className="flex justify-between items-start mb-4">
-                <div className={`px-3 py-1 rounded-full text-xs font-medium border ${getTypeColor(report.type)}`}>
+                <div className={`postcraft-metric-badge ${getTypeColor(report.type)}`}>
                   {report.type.toUpperCase()}
                 </div>
-                <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(report.status)}`}>
+                <div className="postcraft-status">
                   {getStatusIcon(report.status)}
-                  <span>{report.status}</span>
+                  <span className="capitalize">{report.status}</span>
                 </div>
               </div>
 
               {/* Content */}
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+              <h3 className="text-lg font-bold text-gray-900 mb-3">
                 {report.title}
               </h3>
-              
+
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                 {report.description}
               </p>
 
-              <div className="bg-gray-50 p-3 rounded-lg mb-6">
+              <div className="bg-gray-50 p-3 rounded-lg mb-6 border border-gray-200">
                 <div className="flex items-center gap-2 text-sm text-gray-700">
                   <Calendar className="w-4 h-4" />
                   <span>Last generated: {new Date(report.lastGenerated).toLocaleDateString('en-GB', {
@@ -263,9 +267,9 @@ export default function ReportsPage() {
                   onClick={() => generateReport(report.id)}
                   disabled={report.status === 'generating'}
                   className={`w-full px-4 py-2 rounded-lg font-medium text-sm flex items-center justify-center gap-2 transition-colors ${
-                    report.status === 'generating' 
-                      ? 'bg-gray-100 text-gray-500 cursor-not-allowed' 
-                      : 'bg-blue-600 text-white hover:bg-blue-700'
+                    report.status === 'generating'
+                      ? 'bg-gray-100 text-gray-500 cursor-not-allowed'
+                      : 'postcraft-button-gradient text-white'
                   }`}
                 >
                   {report.status === 'generating' ? (
@@ -280,19 +284,19 @@ export default function ReportsPage() {
                     </>
                   )}
                 </button>
-                
+
                 {report.status === 'ready' && (
                   <div className="grid grid-cols-2 gap-3">
                     <button
                       onClick={() => downloadReport(report.id, 'csv')}
-                      className="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                      className="postcraft-button flex items-center justify-center gap-2"
                     >
                       <Download className="w-4 h-4" />
                       CSV
                     </button>
                     <button
                       onClick={() => downloadReport(report.id, 'json')}
-                      className="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                      className="postcraft-button flex items-center justify-center gap-2"
                     >
                       <Download className="w-4 h-4" />
                       JSON

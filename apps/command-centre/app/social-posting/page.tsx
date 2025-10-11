@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Share2, Copy, Check, Calendar, TrendingUp, Users, Music, RefreshCw, Filter, Clock, ExternalLink } from 'lucide-react';
+import { Share2, Copy, Check, Calendar, TrendingUp, Users, Music, RefreshCw, Filter } from 'lucide-react';
 
 interface AuthenticPost {
   id: string;
@@ -24,7 +24,6 @@ export default function SocialPostingPage() {
   const [selectedType, setSelectedType] = useState<string>('all');
   const [stats, setStats] = useState<any>(null);
   const [metrics, setMetrics] = useState<any>(null);
-  const [scheduling, setScheduling] = useState<{[key: string]: boolean}>({});
 
   // Load fresh content from API
   const loadContent = async () => {
@@ -136,65 +135,6 @@ export default function SocialPostingPage() {
       setTimeout(() => setCopiedId(null), 2000);
     } catch (err) {
       console.error('Failed to copy content:', err);
-    }
-  };
-
-  const handleSchedule = async (post: AuthenticPost) => {
-    setScheduling(prev => ({ ...prev, [post.id]: true }));
-    
-    try {
-      // For Bluesky, we can potentially post directly
-      if (post.platform === 'bluesky') {
-        const response = await fetch('/api/social-media/schedule', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            platforms: [post.platform],
-            content: post.content,
-            scheduledTime: new Date(Date.now() + 60000).toISOString() // 1 minute from now
-          })
-        });
-        
-        if (response.ok) {
-          alert('Post scheduled successfully! Check your Bluesky account in 1 minute.');
-        } else {
-          throw new Error('Failed to schedule post');
-        }
-      } else {
-        // For other platforms, open scheduling tools with pre-filled content
-        const encodedContent = encodeURIComponent(post.content);
-        const platformUrls = {
-          twitter: `https://twitter.com/compose/tweet?text=${encodedContent}`,
-          linkedin: `https://www.linkedin.com/feed/?shareActive=true&text=${encodedContent}`,
-          instagram: `https://www.instagram.com/`
-        };
-        
-        if (platformUrls[post.platform as keyof typeof platformUrls]) {
-          window.open(platformUrls[post.platform as keyof typeof platformUrls], '_blank');
-        } else {
-          // Fallback to Buffer
-          window.open(`https://buffer.com/app?text=${encodedContent}`, '_blank');
-        }
-      }
-    } catch (error) {
-      console.error('Failed to schedule post:', error);
-      alert('Failed to schedule post. Please try again.');
-    } finally {
-      setScheduling(prev => ({ ...prev, [post.id]: false }));
-    }
-  };
-
-  const handleQuickSchedule = (post: AuthenticPost) => {
-    const encodedContent = encodeURIComponent(post.content);
-    const platformUrls = {
-      twitter: `https://twitter.com/compose/tweet?text=${encodedContent}`,
-      linkedin: `https://www.linkedin.com/feed/?shareActive=true&text=${encodedContent}`,
-      instagram: `https://www.instagram.com/`,
-      bluesky: `https://bsky.app/compose?text=${encodedContent}`
-    };
-    
-    if (platformUrls[post.platform as keyof typeof platformUrls]) {
-      window.open(platformUrls[post.platform as keyof typeof platformUrls], '_blank');
     }
   };
 
@@ -357,52 +297,22 @@ export default function SocialPostingPage() {
                     </span>
                   </div>
                   
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => handleCopy(post.content, post.id)}
-                      className={`postcraft-button ${copiedId === post.id ? 'bg-green-100 text-green-800' : ''}`}
-                    >
-                      {copiedId === post.id ? (
-                        <>
-                          <Check className="w-4 h-4" />
-                          Copied!
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-4 h-4" />
-                          Copy
-                        </>
-                      )}
-                    </button>
-                    
-                    <button
-                      onClick={() => handleQuickSchedule(post)}
-                      className="postcraft-button bg-blue-100 text-blue-800 hover:bg-blue-200"
-                      title="Open in platform to post now"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Post Now
-                    </button>
-                    
-                    <button
-                      onClick={() => handleSchedule(post)}
-                      disabled={scheduling[post.id]}
-                      className={`postcraft-button ${scheduling[post.id] ? 'opacity-60 cursor-not-allowed' : 'bg-purple-100 text-purple-800 hover:bg-purple-200'}`}
-                      title="Schedule for later"
-                    >
-                      {scheduling[post.id] ? (
-                        <>
-                          <RefreshCw className="w-4 h-4 animate-spin" />
-                          Scheduling...
-                        </>
-                      ) : (
-                        <>
-                          <Clock className="w-4 h-4" />
-                          Schedule
-                        </>
-                      )}
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => handleCopy(post.content, post.id)}
+                    className={`postcraft-button ${copiedId === post.id ? 'bg-green-100 text-green-800' : ''}`}
+                  >
+                    {copiedId === post.id ? (
+                      <>
+                        <Check className="w-4 h-4" />
+                        Copied!
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-4 h-4" />
+                        Copy Post
+                      </>
+                    )}
+                  </button>
                 </div>
 
                 {/* Post Content */}
@@ -468,46 +378,8 @@ export default function SocialPostingPage() {
             <p className="mb-3">
               <strong>4. Real Numbers:</strong> Every post includes actual Audio Intel metrics for maximum authenticity.
             </p>
-            <p className="mb-3">
-              <strong>5. High Engagement:</strong> Content optimized for 85-95% engagement rates based on your authentic founder story.
-            </p>
             <p>
-              <strong>6. One-Click Posting:</strong> Use "Post Now" to open platforms with pre-filled content, or "Schedule" for automated posting.
-            </p>
-          </div>
-        </div>
-
-        {/* Scheduling Options */}
-        <div className="postcraft-section">
-          <h3 className="text-lg font-semibold mb-3 text-gray-900">Scheduling Options</h3>
-          <div className="grid md:grid-cols-2 gap-4 text-sm">
-            <div className="bg-blue-50 p-4 rounded-lg">
-              <h4 className="font-semibold text-blue-900 mb-2">🚀 Post Now (Instant)</h4>
-              <p className="text-blue-800 mb-2">Click "Post Now" to open the platform with your content pre-filled:</p>
-              <ul className="text-blue-700 space-y-1">
-                <li>• Twitter/X - Opens compose with your text</li>
-                <li>• LinkedIn - Opens share dialog</li>
-                <li>• Bluesky - Opens compose window</li>
-                <li>• Instagram - Opens Instagram (manual paste)</li>
-              </ul>
-            </div>
-            
-            <div className="bg-purple-50 p-4 rounded-lg">
-              <h4 className="font-semibold text-purple-900 mb-2">⏰ Schedule (Automated)</h4>
-              <p className="text-purple-800 mb-2">Click "Schedule" for automated posting:</p>
-              <ul className="text-purple-700 space-y-1">
-                <li>• Bluesky - Posts automatically in 1 minute</li>
-                <li>• Other platforms - Opens Buffer with content</li>
-                <li>• Free Buffer plan: 3 accounts, 10 posts each</li>
-                <li>• No more copy-pasting!</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="mt-4 p-3 bg-green-50 rounded-lg">
-            <p className="text-green-800 text-sm">
-              <strong>💡 Pro Tip:</strong> For maximum efficiency, use "Post Now" for immediate posts and "Schedule" for content you want to spread out over time. 
-              The system remembers your preferences and optimizes posting times for each platform.
+              <strong>5. High Engagement:</strong> Content optimized for 85-95% engagement rates based on your authentic founder story.
             </p>
           </div>
         </div>

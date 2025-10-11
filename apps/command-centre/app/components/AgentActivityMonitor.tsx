@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { agentColorUtils, AGENT_CATEGORIES } from '../lib/agent-color-system';
+import { agentColorUtils, AGENT_CATEGORIES } from '@/lib/agent-color-system';
 import AgentStatusWidget from './AgentStatusWidget';
 import { AlertTriangle, CheckCircle, Pause } from 'lucide-react';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { agentColorUtils, AGENT_STATUS_STATES } from '../lib/agent-color-system';
+import { agentColorUtils, AGENT_STATUS_STATES } from '@/lib/agent-color-system';
 import { Check, X, Zap, CheckCircle, XCircle, Rocket } from 'lucide-react';
 
 interface LoadingStep {

@@ -15,20 +15,16 @@ import {
   Settings, 
   Menu, 
   X,
-  Zap,
-  Calendar,
-  Bot
+  Zap
 } from 'lucide-react';
 
 const navigationItems = [
   { name: 'Dashboard', href: '/', icon: BarChart3, tool: 'command-centre' },
-  { name: 'AI Agents', href: '/agent-demo', icon: Bot, tool: 'command-centre' },
   { name: 'Analytics', href: '/analytics', icon: TrendingUp, tool: 'audio-intel' },
   { name: 'Business', href: '/business-dashboard', icon: DollarSign, tool: 'success-predict' },
   { name: 'Marketing', href: '/marketing', icon: Share2, tool: 'content-clone' },
   { name: 'Reports', href: '/reports', icon: FileText, tool: 'trend-track' },
   { name: 'Social Hub', href: '/social-media-hub', icon: Share2, tool: 'playlist-pulse' },
-  { name: 'Scheduler', href: '/social-scheduler', icon: Calendar, tool: 'content-clone' },
   { name: 'Newsjacking', href: '/newsjacking', icon: Newspaper, tool: 'release-radar' },
   { name: 'Revenue', href: '/revenue-intelligence', icon: TrendingUp, tool: 'success-predict' },
   { name: 'Beta Users', href: '/beta-management', icon: Users, tool: 'audio-intel' },

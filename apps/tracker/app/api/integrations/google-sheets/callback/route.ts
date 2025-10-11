@@ -28,26 +28,15 @@ export async function GET(request: NextRequest) {
 
     const oauthHandler = new OAuthHandler();
 
-    // Exchange code for tokens
-    const tokens = await oauthHandler.handleCallback('google_sheets', code, state);
-
-    // Get user from session
-    const userId = typeof window !== 'undefined'
-      ? sessionStorage.getItem('oauth_user_google_sheets')
-      : null;
-
-    if (!userId) {
-      return NextResponse.redirect(
-        `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/integrations?error=session_expired`
-      );
-    }
+    // Exchange code for tokens (returns tokens + userId from state)
+    const { tokens, userId } = await oauthHandler.handleCallback('google_sheets', code, state);
 
     // Save connection
     await oauthHandler.saveConnection(userId, 'google_sheets', tokens);
 
-    // Redirect to configuration page
+    // Redirect back to integrations page with success message
     return NextResponse.redirect(
-      `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/integrations/google-sheets/configure`
+      `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/integrations?success=google_sheets_connected`
     );
   } catch (error) {
     console.error('Error handling Google Sheets OAuth callback:', error);

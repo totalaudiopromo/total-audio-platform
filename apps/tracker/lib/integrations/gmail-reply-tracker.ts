@@ -1,0 +1,199 @@
+/**
+ * Gmail Reply Tracking Service
+ * Automatically detects when contacts reply to pitches
+ */
+
+import { google } from 'googleapis';
+import { createClient } from '@/lib/supabase/server';
+import { OAuthHandler } from './oauth-handler';
+
+export class GmailReplyTracker {
+  private oauth = new OAuthHandler();
+  private supabase = createClient();
+
+  /**
+   * Check for replies to tracked emails
+   */
+  async checkForReplies(connectionId: string): Promise<{
+    success: boolean;
+    repliesFound: number;
+    errors: string[];
+  }> {
+    const errors: string[] = [];
+
+    try {
+      // Get connection and access token
+      const accessToken = await this.oauth.getValidAccessToken(connectionId);
+
+      const { data: connection } = await this.supabase
+        .from('integration_connections')
+        .select('*')
+        .eq('id', connectionId)
+        .single();
+
+      if (!connection) {
+        throw new Error('Connection not found');
+      }
+
+      // Get tracked emails that haven't received replies yet
+      const { data: trackedEmails } = await this.supabase
+        .from('gmail_tracked_emails')
+        .select('*')
+        .eq('connection_id', connectionId)
+        .eq('has_reply', false)
+        .order('sent_at', { ascending: false })
+        .limit(100); // Check last 100 unreplied emails
+
+      if (!trackedEmails || trackedEmails.length === 0) {
+        return {
+          success: true,
+          repliesFound: 0,
+          errors: [],
+        };
+      }
+
+      // Initialize Gmail API
+      const auth = new google.auth.OAuth2();
+      auth.setCredentials({ access_token: accessToken });
+
+      const gmail = google.gmail({ version: 'v1', auth });
+
+      let repliesFound = 0;
+
+      // Check each tracked email for replies
+      for (const tracked of trackedEmails) {
+        try {
+          // Get the thread
+          const thread = await gmail.users.threads.get({
+            userId: 'me',
+            id: tracked.gmail_thread_id,
+          });
+
+          const messages = thread.data.messages || [];
+
+          // Check if there are more messages than when we sent (indicates reply)
+          if (messages.length > 1) {
+            // Find the reply message (not sent by user)
+            const replyMessage = messages.find(
+              (msg) => msg.id !== tracked.gmail_message_id
+            );
+
+            if (replyMessage) {
+              // Extract reply details
+              const snippet = replyMessage.snippet || '';
+              const replyDate = replyMessage.internalDate
+                ? new Date(parseInt(replyMessage.internalDate))
+                : new Date();
+
+              // Update tracked email
+              await this.supabase
+                .from('gmail_tracked_emails')
+                .update({
+                  has_reply: true,
+                  reply_received_at: replyDate.toISOString(),
+                  reply_message_id: replyMessage.id,
+                  reply_snippet: snippet,
+                })
+                .eq('id', tracked.id);
+
+              // Update campaign status
+              await this.supabase
+                .from('campaigns')
+                .update({
+                  status: 'replied',
+                  notes: this.supabase.raw(
+                    `COALESCE(notes, '') || '\n\n✉️ Reply received: ' || ?`,
+                    [snippet.substring(0, 200)]
+                  ),
+                })
+                .eq('id', tracked.campaign_id);
+
+              repliesFound++;
+
+              console.log(`Reply detected for campaign ${tracked.campaign_id}`);
+            }
+          }
+
+          // Update last checked time
+          await this.supabase
+            .from('gmail_tracked_emails')
+            .update({ last_checked_at: new Date().toISOString() })
+            .eq('id', tracked.id);
+        } catch (error: any) {
+          errors.push(
+            `Failed to check thread ${tracked.gmail_thread_id}: ${error.message}`
+          );
+        }
+      }
+
+      // Log sync
+      await this.supabase.from('integration_sync_logs').insert({
+        connection_id: connectionId,
+        direction: 'from_external',
+        records_updated: repliesFound,
+        errors: errors.length > 0 ? JSON.stringify(errors) : null,
+        completed_at: new Date().toISOString(),
+      });
+
+      // Update last sync time
+      await this.supabase
+        .from('integration_connections')
+        .update({ last_sync_at: new Date().toISOString() })
+        .eq('id', connectionId);
+
+      return {
+        success: true,
+        repliesFound,
+        errors,
+      };
+    } catch (error: any) {
+      errors.push(error.message);
+      console.error('Error checking Gmail replies:', error);
+
+      // Update connection status
+      await this.supabase
+        .from('integration_connections')
+        .update({
+          status: 'error',
+          error_message: error.message,
+          error_count: this.supabase.raw('error_count + 1'),
+        })
+        .eq('id', connectionId);
+
+      return {
+        success: false,
+        repliesFound: 0,
+        errors,
+      };
+    }
+  }
+
+  /**
+   * Track a sent email for reply detection
+   */
+  async trackEmail(
+    connectionId: string,
+    campaignId: string,
+    emailDetails: {
+      messageId: string;
+      threadId: string;
+      contactEmail: string;
+      subject: string;
+    }
+  ): Promise<void> {
+    try {
+      await this.supabase.from('gmail_tracked_emails').insert({
+        connection_id: connectionId,
+        campaign_id: campaignId,
+        gmail_message_id: emailDetails.messageId,
+        gmail_thread_id: emailDetails.threadId,
+        contact_email: emailDetails.contactEmail,
+        subject: emailDetails.subject,
+        sent_at: new Date().toISOString(),
+      });
+    } catch (error) {
+      console.error('Error tracking email:', error);
+      throw error;
+    }
+  }
+}

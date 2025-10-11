@@ -123,40 +123,37 @@ export default function AdvancedAnalyticsPage() {
   }
 
   return (
-      <div className="tap-section postcraft-prose space-y-6">
-          {/* Beautiful Header */}
-          <div className="tap-text-center tap-mb-8">
-            <h1 className="tap-heading-1 tap-mb-4">
+      <div className="postcraft-container">
+          {/* Header */}
+          <div className="postcraft-section text-center">
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
               Advanced Analytics
             </h1>
-            <p className="tap-text-lg tap-mb-6">
+            <p className="text-gray-600 text-lg mb-6">
               Deep insights into Audio Intel performance and business metrics
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button
-                onClick={() => window.history.back()}
-                className="flex items-center space-x-2 px-6 py-3 bg-white/80 backdrop-blur-sm border border-white/20 rounded-2xl hover:bg-white/90 transition-all duration-300 shadow-sm hover:shadow-md"
-              >
-                <span aria-hidden>{""}</span>
-                <span className="font-medium text-gray-700">Back to Dashboard</span>
-              </button>
-            </div>
+            <button
+              onClick={() => window.history.back()}
+              className="postcraft-button"
+            >
+              ← Back to Dashboard
+            </button>
           </div>
 
-          {/* Modern Timeframe Selector */}
-          <div className="intel-card">
-            <div className="text-center mb-4">
-              <h2 className="text-xl font-bold text-gray-900">Time Period</h2>
+          {/* Timeframe Selector */}
+          <div className="postcraft-section">
+            <div className="postcraft-section-header text-center">
+              <h2>Time Period</h2>
             </div>
             <div className="flex flex-wrap justify-center gap-3">
               {['7d', '30d', '90d', '1y'].map((period) => (
                 <button
                   key={period}
                   onClick={() => setTimeframe(period)}
-                  className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 ${
-                    timeframe === period 
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-xl scale-105' 
-                      : 'bg-white/80 text-gray-700 border border-gray-200 hover:bg-white hover:shadow-lg hover:scale-105'
+                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
+                    timeframe === period
+                      ? 'postcraft-button-gradient text-white'
+                      : 'postcraft-button'
                   }`}
                 >
                   {period === '7d' ? 'Last 7 Days' : period === '30d' ? 'Last 30 Days' : period === '90d' ? 'Last 3 Months' : 'Last Year'}
@@ -165,13 +162,13 @@ export default function AdvancedAnalyticsPage() {
             </div>
           </div>
 
-          {/* Beautiful Analytics Grid */}
+          {/* Analytics Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Revenue Analytics */}
-            <div className="intel-card">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Revenue Analytics</h2>
-                <p className="text-gray-600">Beta phase revenue tracking and projections</p>
+            <div className="postcraft-section">
+              <div className="postcraft-section-header text-center">
+                <h2>Revenue Analytics</h2>
+                <p className="text-gray-600 mt-2">Beta phase revenue tracking and projections</p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -229,10 +226,10 @@ export default function AdvancedAnalyticsPage() {
             </div>
 
             {/* User Analytics */}
-            <div className="intel-card">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">User Analytics</h2>
-                <p className="text-gray-600">Beta user growth and engagement metrics</p>
+            <div className="postcraft-section">
+              <div className="postcraft-section-header text-center">
+                <h2>User Analytics</h2>
+                <p className="text-gray-600 mt-2">Beta user growth and engagement metrics</p>
               </div>
               
               <div className="grid grid-cols-2 gap-6">

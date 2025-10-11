@@ -305,7 +305,7 @@ export default function SocialSchedulerPage() {
                   </div>
                 </div>
                 
-                <div className="bg-gray-50 p-3 rounded border border-gray-200 font-mono text-sm text-gray-800 whitespace-pre-line">
+                <div className="bg-gray-50 p-3 rounded border-4 border-black font-mono text-sm text-gray-800 whitespace-pre-line">
                   {post.content}
                 </div>
                 
