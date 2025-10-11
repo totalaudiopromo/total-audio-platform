@@ -39,13 +39,18 @@ async function applyMigration() {
 
   try {
     // Execute via raw HTTP request to Supabase's SQL endpoint
+    const headers: HeadersInit = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${supabaseServiceKey}`,
+    };
+
+    if (supabaseServiceKey) {
+      headers['apikey'] = supabaseServiceKey;
+    }
+
     const response = await fetch(`${supabaseUrl}/rest/v1/rpc/exec`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': supabaseServiceKey,
-        'Authorization': `Bearer ${supabaseServiceKey}`,
-      },
+      headers,
       body: JSON.stringify({
         query: migrationSQL
       })

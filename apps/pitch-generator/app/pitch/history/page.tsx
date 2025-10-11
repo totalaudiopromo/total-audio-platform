@@ -193,7 +193,7 @@ export default function PitchHistoryPage() {
                         onStatusChange={handleStatusChange}
                         pitchData={{
                           contactName: pitch.contact_name,
-                          contactEmail: pitch.contact_email,
+                          contactEmail: '',
                           contactOutlet: pitch.contact_outlet || '',
                           artistName: pitch.artist_name,
                           trackTitle: pitch.track_title,
