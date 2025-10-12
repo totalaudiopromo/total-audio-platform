@@ -20,6 +20,11 @@ const tools = [
     url: 'https://pitch.totalaudiopromo.com',
     description: 'AI-powered music PR pitches',
   },
+  {
+    name: 'Command Centre',
+    url: 'https://command.totalaudiopromo.com',
+    description: 'Marketing automation & analytics',
+  },
 ];
 
 export function ToolSwitcher() {
