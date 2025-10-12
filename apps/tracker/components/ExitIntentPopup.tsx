@@ -1,37 +1,110 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { X } from 'lucide-react';
 
 export function ExitIntentPopup() {
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
+    // Don't show on dashboard, signup, or login pages
+    if (pathname.startsWith('/dashboard') || pathname === '/signup' || pathname === '/login') {
+      return;
+    }
+
     const hasSeenPopup = sessionStorage.getItem('exitIntentShown');
-    if (hasSeenPopup) {
+    const lastShown = sessionStorage.getItem('exitIntentLastShown');
+    const now = Date.now();
+
+    // Reset if more than 24 hours since last shown
+    if (lastShown && now - parseInt(lastShown) > 24 * 60 * 60 * 1000) {
+      sessionStorage.removeItem('exitIntentShown');
+      sessionStorage.removeItem('exitIntentLastShown');
+    }
+
+    if (hasSeenPopup && lastShown && now - parseInt(lastShown) < 24 * 60 * 60 * 1000) {
       setHasShown(true);
       return;
     }
 
+    // Desktop: mouse leave detection
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0 && !hasShown) {
-        setIsVisible(true);
-        setHasShown(true);
-        sessionStorage.setItem('exitIntentShown', 'true');
+        showPopup();
+      }
+    };
+
+    // Mobile: time-based trigger (30 seconds idle)
+    let idleTimer: NodeJS.Timeout;
+    const handleActivity = () => {
+      clearTimeout(idleTimer);
+      if (!hasShown) {
+        idleTimer = setTimeout(() => {
+          if (!hasShown) showPopup();
+        }, 30000); // 30 seconds
+      }
+    };
+
+    const showPopup = () => {
+      setIsVisible(true);
+      setHasShown(true);
+      sessionStorage.setItem('exitIntentShown', 'true');
+      sessionStorage.setItem('exitIntentLastShown', Date.now().toString());
+
+      // Track event in GTM
+      if (typeof window !== 'undefined' && (window as any).dataLayer) {
+        (window as any).dataLayer.push({
+          event: 'exit_intent_popup_shown',
+          page_path: pathname,
+        });
       }
     };
 
     document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mousemove', handleActivity);
+    document.addEventListener('scroll', handleActivity);
+    document.addEventListener('touchstart', handleActivity);
+
+    // Initial idle timer for mobile
+    if (!hasShown) {
+      idleTimer = setTimeout(() => {
+        if (!hasShown) showPopup();
+      }, 30000);
+    }
 
     return () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('mousemove', handleActivity);
+      document.removeEventListener('scroll', handleActivity);
+      document.removeEventListener('touchstart', handleActivity);
+      clearTimeout(idleTimer);
     };
-  }, [hasShown]);
+  }, [hasShown, pathname]);
 
   const handleClose = () => {
     setIsVisible(false);
+
+    // Track dismissal
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: 'exit_intent_popup_dismissed',
+        page_path: pathname,
+      });
+    }
+  };
+
+  const handleCTAClick = () => {
+    // Track conversion
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: 'exit_intent_popup_converted',
+        page_path: pathname,
+      });
+    }
   };
 
   if (!isVisible) return null;
@@ -86,7 +159,10 @@ export function ExitIntentPopup() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/signup"
-                onClick={handleClose}
+                onClick={() => {
+                  handleCTAClick();
+                  handleClose();
+                }}
                 className="flex-1 bg-purple-600 text-white px-8 py-4 rounded-xl font-black hover:bg-purple-700 transition-all text-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
               >
                 Start Free Tracking Now

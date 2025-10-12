@@ -1,13 +1,24 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { IntelligenceBar } from '@/components/intelligence/IntelligenceBar';
-import { CampaignCardWithIntel } from '@/components/campaigns/CampaignCardWithIntel';
+import { BulkCampaignList } from '@/components/campaigns/BulkCampaignList';
 import { DashboardClient } from '@/components/dashboard/DashboardClient';
 import { ExportButton } from '@/components/dashboard/ExportButton';
 import { ImportButton } from '@/components/dashboard/ImportButton';
 import { AudioIntelImport } from '@/components/AudioIntelImport';
+import { IntegrationSyncStatus } from '@/components/integrations/IntegrationSyncStatus';
+import { IntegrationActivityFeed } from '@/components/integrations/IntegrationActivityFeed';
+import { OnboardingChecklist } from '@/components/dashboard/OnboardingChecklist';
+import { EmailVerificationBanner } from '@/components/auth/EmailVerificationBanner';
 import { analyzePatterns, generateCampaignInsights } from '@/lib/intelligence';
 import type { Campaign, Benchmark } from '@/lib/types/tracker';
+
+type IntegrationSnapshot = {
+  integration_type: 'google_sheets' | 'gmail' | 'airtable' | 'mailchimp' | 'excel';
+  status: 'active' | 'paused' | 'error' | 'disconnected';
+  last_sync_at: string | null;
+  sync_enabled: boolean;
+};
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -28,6 +39,11 @@ export default async function DashboardPage() {
   const { data: benchmarks } = await supabase
     .from('benchmarks')
     .select('*');
+
+  const { data: integrationConnections } = await supabase
+    .from('integration_connections')
+    .select('integration_type, status, last_sync_at, sync_enabled')
+    .eq('user_id', user.id);
 
   const benchmarkMap = new Map<string, Benchmark>();
   benchmarks?.forEach((b) => {
@@ -52,6 +68,13 @@ export default async function DashboardPage() {
     return typedCampaign;
   });
 
+  const integrationSnapshots: IntegrationSnapshot[] = (integrationConnections || []).map((connection) => ({
+    integration_type: connection.integration_type as IntegrationSnapshot['integration_type'],
+    status: connection.status as IntegrationSnapshot['status'],
+    last_sync_at: connection.last_sync_at,
+    sync_enabled: connection.sync_enabled,
+  }));
+
   // Generate patterns across all campaigns
   const patterns = analyzePatterns(enrichedCampaigns as Campaign[]);
 
@@ -67,6 +90,13 @@ export default async function DashboardPage() {
   const overallSuccessRate = campaignsWithResults.length > 0
     ? campaignsWithResults.reduce((sum, c) => sum + c.success_rate, 0) / campaignsWithResults.length
     : 0;
+
+  // Calculate onboarding progress
+  const hasResults = enrichedCampaigns.some((c) => c.actual_reach > 0);
+  const hasIntegrations = integrationSnapshots.some((i) => i.status === 'active');
+
+  // Check email verification status
+  const isEmailVerified = !!user.email_confirmed_at;
 
   return (
     <DashboardClient>
@@ -91,6 +121,11 @@ export default async function DashboardPage() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+        {/* Email Verification Banner */}
+        {!isEmailVerified && user.email && (
+          <EmailVerificationBanner email={user.email} />
+        )}
+
         {/* Hero Message */}
         <div className="mb-8">
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-2">
@@ -101,9 +136,22 @@ export default async function DashboardPage() {
           </p>
         </div>
 
+        {/* Onboarding Checklist (shown for new users) */}
+        <OnboardingChecklist
+          hasCampaigns={enrichedCampaigns.length > 0}
+          hasResults={hasResults}
+          hasIntegrations={hasIntegrations}
+        />
+
         {/* Audio Intel Import */}
         <div className="mb-8">
           <AudioIntelImport />
+        </div>
+
+        {/* Integration Widgets */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-8">
+          <IntegrationSyncStatus />
+          <IntegrationActivityFeed />
         </div>
 
         {/* Intelligence Bar (Unique Value) */}
@@ -172,31 +220,10 @@ export default async function DashboardPage() {
             </div>
           )}
 
-          {enrichedCampaigns.length === 0 && !campaignsError ? (
-            <div className="text-center py-16 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl border-2 border-dashed border-gray-300">
-              <div className="w-24 h-24 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6 border-4 border-blue-300">
-                <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <p className="text-xl font-black text-gray-900 mb-3">No campaigns yet</p>
-              <p className="text-base font-bold text-gray-600 mb-8 max-w-md mx-auto">
-                Create your first campaign to start tracking performance and getting intelligent insights
-              </p>
-              <a
-                href="/dashboard"
-                className="inline-block px-8 py-4 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition-all font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 active:scale-95 text-lg"
-              >
-                Create Your First Campaign
-              </a>
-            </div>
-          ) : (
-            <div className="space-y-6">
-              {enrichedCampaigns.map((campaign: any) => (
-                <CampaignCardWithIntel key={campaign.id} campaign={campaign} />
-              ))}
-            </div>
-          )}
+          <BulkCampaignList
+            campaigns={enrichedCampaigns}
+            integrations={integrationSnapshots}
+          />
         </div>
       </div>
     </div>

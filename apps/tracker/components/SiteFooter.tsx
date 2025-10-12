@@ -68,22 +68,25 @@ export function SiteFooter() {
             </div>
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Newsletter</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Legal</p>
               <ul className="mt-3 space-y-2">
                 <li>
-                  <a
-                    href="https://totalaudiopromo.com/newsletter"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-purple-600 transition hover:text-purple-700"
-                  >
-                    The Unsigned Advantage
-                  </a>
+                  <Link href="/privacy" className="text-sm text-gray-600 transition hover:text-purple-600">
+                    Privacy Policy
+                  </Link>
                 </li>
                 <li>
-                  <p className="text-xs text-gray-500">
-                    Weekly insights for independent artists
-                  </p>
+                  <Link href="/terms" className="text-sm text-gray-600 transition hover:text-purple-600">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="mailto:info@totalaudiopromo.com"
+                    className="text-sm text-gray-600 transition hover:text-purple-600"
+                  >
+                    Contact
+                  </a>
                 </li>
               </ul>
             </div>
