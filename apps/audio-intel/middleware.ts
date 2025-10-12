@@ -2,7 +2,35 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
   const userAgent = request.headers.get('user-agent')?.toLowerCase() || ''
+
+  // Protect test/debug pages in production
+  const testPaths = [
+    '/test',
+    '/test-tailwind',
+    '/simple-test',
+    '/debug-content',
+    '/notion-test',
+    '/notion-social',
+    '/pdf-test',
+    '/pdf-samples',
+    '/social-media-demo',
+    '/social-media-simple',
+    '/uk-social-mobile',
+    '/export-demo',
+    '/progress-dashboard',
+    '/user-acquisition-dashboard',
+    '/newsletter-dashboard',
+    '/podcast-monitor',
+    '/email-preview',
+    '/seo-analysis'
+  ]
+
+  // Redirect test pages in production
+  if (process.env.NODE_ENV === 'production' && testPaths.some(path => pathname.startsWith(path))) {
+    return NextResponse.redirect(new URL('/', request.url))
+  }
 
   // List of social media crawler user agents
   const socialCrawlers = [

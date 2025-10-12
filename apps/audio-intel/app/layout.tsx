@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://intel.totalaudiopromo.com'),
   title: 'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion',
   description: 'Transform chaotic contact spreadsheets into organised databases in minutes. Built by radio promoters for radio promoters. BBC Radio 1 + Spotify case studies proven.',
   keywords: 'music promotion, contact enrichment, radio promotion, playlist pitching, music industry contacts, BBC Radio 1, Spotify curators',

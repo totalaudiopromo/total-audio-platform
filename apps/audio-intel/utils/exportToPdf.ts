@@ -136,112 +136,183 @@ function drawMusicLogo(doc: jsPDF, x: number, y: number, size: number): void {
   });
 }
 
-// Helper function to add Audio Intel branded header
+// Helper function to add Audio Intel branded header with neobrutalist design
 function addPremiumHeader(doc: jsPDF, title: string, subtitle?: string, whiteLabel?: WhiteLabelConfig): void {
   const companyName = whiteLabel?.companyName || 'Audio Intel';
   const primaryColor = whiteLabel?.primaryColor ? hexToRgb(whiteLabel.primaryColor) : DESIGN.audioIntelBlue;
-  
-  // Create clean white header background 
-  doc.setFillColor(255, 255, 255); // Pure white
-  doc.rect(0, 0, 210, 50, 'F');
-  
-  // Add subtle bottom border
-  doc.setDrawColor(226, 232, 240); // Gray-200
-  doc.setLineWidth(1);
-  doc.line(0, 50, 210, 50);
-  
-  // Add professional Total Audio Promo logo with music waveform
-  doc.setFillColor(37, 99, 235); // Audio Intel blue
-  doc.roundedRect(20, 15, 24, 20, 3, 3, 'F');
-  
-  // Draw waveform inside logo (no text overlay)
-  drawMusicLogo(doc, 24, 15, 20);
-  
-  // Company name with better positioning and spacing
-  doc.setTextColor(15, 23, 42); // Slate-900
-  doc.setFontSize(20);
+  const hasCustomLogo = !!whiteLabel?.logoUrl;
+
+  // Neobrutalist header: white background with bold black border
+  doc.setFillColor(255, 255, 255);
+  doc.rect(0, 0, 210, 55, 'F');
+
+  // Bold black border (neobrutalist style)
+  doc.setDrawColor(0, 0, 0);
+  doc.setLineWidth(2);
+  doc.rect(10, 10, 190, 40, 'S');
+
+  // Inner shadow effect with offset line
+  doc.setDrawColor(0, 0, 0);
+  doc.setLineWidth(1.5);
+  doc.rect(12, 12, 190, 40, 'S');
+
+  if (hasCustomLogo && whiteLabel?.logoUrl) {
+    // Custom logo for PRO/AGENCY tiers
+    try {
+      // Logo container with neobrutalist border
+      doc.setFillColor(255, 255, 255);
+      doc.setDrawColor(0, 0, 0);
+      doc.setLineWidth(2);
+      doc.rect(15, 15, 30, 30, 'FD');
+
+      // Try to add the actual logo image (base64 encoded)
+      if (whiteLabel.logoUrl.startsWith('data:image/')) {
+        // Logo is a base64 data URI
+        try {
+          doc.addImage(whiteLabel.logoUrl, 'PNG', 17, 17, 26, 26);
+        } catch (imageError) {
+          console.warn('Failed to load base64 logo image, using initials fallback');
+          // Fallback to company initials
+          doc.setFontSize(20);
+          doc.setFont('helvetica', 'bold');
+          doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+          const initials = companyName.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+          doc.text(initials, 30, 35, { align: 'center' });
+        }
+      } else {
+        // Not a data URI, use company initials
+        doc.setFontSize(20);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+        const initials = companyName.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+        doc.text(initials, 30, 35, { align: 'center' });
+      }
+
+    } catch (error) {
+      console.error('Failed to load custom logo, using default');
+      // Fallback to default logo
+      doc.setFillColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+      doc.rect(15, 15, 30, 30, 'F');
+      drawMusicLogo(doc, 20, 15, 30);
+    }
+  } else {
+    // Default Audio Intel logo with neobrutalist container
+    doc.setFillColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+    doc.rect(15, 15, 30, 30, 'F');
+
+    // Bold border around logo
+    doc.setDrawColor(0, 0, 0);
+    doc.setLineWidth(2);
+    doc.rect(15, 15, 30, 30, 'S');
+
+    // Draw waveform inside logo
+    drawMusicLogo(doc, 20, 15, 30);
+  }
+
+  // Company name - bold and clear
+  doc.setTextColor(0, 0, 0);
+  doc.setFontSize(18);
   doc.setFont('helvetica', 'bold');
-  doc.text('Total Audio Promo', 52, 22);
-  doc.setFontSize(10);
+  doc.text(companyName, 52, 27);
+
+  // Subtitle/tagline
+  doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(71, 85, 105); // Slate-600
-  doc.text('Professional Music Industry Intelligence', 52, 30);
-  
-  // Title - blue text to match brand with better spacing
-  doc.setFontSize(24);
+  doc.setTextColor(100, 100, 100);
+  doc.text('Contact Intelligence Report', 52, 34);
+
+  // Report title - positioned below header box
+  doc.setFontSize(22);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(37, 99, 235); // Blue-600
-  doc.text(title, 20, 42);
-  
-  // Subtitle with proper spacing
+  doc.setTextColor(0, 0, 0);
+  doc.text(title, 20, 65);
+
+  // Subtitle with color accent
   if (subtitle) {
     doc.setFontSize(11);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(71, 85, 105); // Slate-600
-    doc.text(subtitle, 20, 47);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+    doc.text(subtitle, 20, 72);
   }
 }
 
-// Helper function to add premium footer
+// Helper function to add neobrutalist footer
 function addPremiumFooter(doc: jsPDF, whiteLabel?: WhiteLabelConfig): void {
   const companyName = whiteLabel?.companyName || 'Audio Intel';
+  const primaryColor = whiteLabel?.primaryColor ? hexToRgb(whiteLabel.primaryColor) : DESIGN.audioIntelBlue;
   const pageCount = (doc as any).internal.getNumberOfPages();
-  
+
   for (let i = 1; i <= pageCount; i++) {
     doc.setPage(i);
-    
-    // Footer background
-    doc.setFillColor(DESIGN.secondaryColor[0], DESIGN.secondaryColor[1], DESIGN.secondaryColor[2]);
-    doc.rect(0, 280, 210, 20, 'F');
-    
+
+    // Footer with neobrutalist border
+    doc.setFillColor(255, 255, 255);
+    doc.rect(10, 275, 190, 20, 'F');
+
+    // Bold border
+    doc.setDrawColor(0, 0, 0);
+    doc.setLineWidth(2);
+    doc.rect(10, 275, 190, 20, 'S');
+
     // Footer content
     doc.setFontSize(8);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(0, 0, 0);
+
+    doc.text(`Page ${i} of ${pageCount}`, 15, 283);
+    doc.text(`${companyName} - Contact Intelligence`, 80, 283, { align: 'center' });
+
+    // Generated date in brand color
     doc.setFont('helvetica', 'normal');
-    doc.setTextColor(DESIGN.textLight[0], DESIGN.textLight[1], DESIGN.textLight[2]);
-    
-    doc.text(`Page ${i} of ${pageCount}`, 20, 290);
-    doc.text(`${companyName} - Music Industry Intelligence Report`, 120, 290);
-    doc.text(`Generated: ${new Date().toLocaleDateString()}`, 20, 295);
-    doc.text('Powered by Total Audio Promo', 120, 295);
+    doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+    doc.text(`Generated: ${new Date().toLocaleDateString()}`, 15, 290);
+    doc.setTextColor(100, 100, 100);
+    doc.text('Powered by Total Audio Promo', 195, 290, { align: 'right' });
   }
 }
 
-// Helper function to create premium table
+// Helper function to create neobrutalist table
 function createPremiumTable(doc: jsPDF, data: any[], headers: string[], startY: number, whiteLabel?: WhiteLabelConfig): number {
   const primaryColor = whiteLabel?.primaryColor ? hexToRgb(whiteLabel.primaryColor) : DESIGN.primaryColor;
-  
+
   (doc as any).autoTable({
     startY: startY,
     head: [headers],
     body: data,
     theme: 'grid',
-    headStyles: { 
+    headStyles: {
       fillColor: primaryColor,
       textColor: [255, 255, 255],
       fontStyle: 'bold',
-      fontSize: 10
+      fontSize: 10,
+      lineWidth: 2, // Bold borders
+      lineColor: [0, 0, 0]
     },
     bodyStyles: {
       fontSize: 9,
-      textColor: DESIGN.textDark
+      textColor: [0, 0, 0],
+      fontStyle: 'bold',
+      lineWidth: 1.5, // Medium borders
+      lineColor: [0, 0, 0]
     },
     alternateRowStyles: {
-      fillColor: [248, 249, 250]
+      fillColor: [248, 250, 252] // Very light blue-gray
     },
     styles: {
       cellPadding: 6,
-      lineWidth: 0.5,
-      lineColor: DESIGN.borderColor
+      lineWidth: 1.5,
+      lineColor: [0, 0, 0], // Black borders for neobrutalist look
+      halign: 'left'
     },
     columnStyles: {
-      0: { cellWidth: 35, cellPadding: 3 },
-      1: { cellWidth: 45, cellPadding: 3 },
-      2: { cellWidth: 25, cellPadding: 3 },
-      3: { cellWidth: 30, cellPadding: 3 },
-      4: { cellWidth: 30, cellPadding: 3 }
+      0: { cellWidth: 35 },
+      1: { cellWidth: 45 },
+      2: { cellWidth: 25, halign: 'center' },
+      3: { cellWidth: 30, halign: 'center' },
+      4: { cellWidth: 30 }
     }
   });
-  
+
   return (doc as any).lastAutoTable.finalY;
 }
 
@@ -401,28 +472,48 @@ export function exportContactsToPdf(
   let currentY = finalY + 20;
   
   contacts.forEach((contact, index) => {
-    if (currentY > 250) {
+    if (currentY > 245) {
       doc.addPage();
-      addPremiumHeader(doc, 'Contact Intelligence Details', `Page ${Math.floor(index / 3) + 2}`, whiteLabel);
-      currentY = 60;
+      addPremiumHeader(doc, 'Contact Intelligence Details', `Continued - Page ${Math.floor(index / 3) + 2}`, whiteLabel);
+      currentY = 80;
     }
-    
-    // Contact header with background
+
+    // Contact header with neobrutalist box
     const displayName = getDisplayName(contact);
-    doc.setFillColor(DESIGN.secondaryColor[0], DESIGN.secondaryColor[1], DESIGN.secondaryColor[2]);
-    doc.rect(20, currentY - 5, 170, 15, 'F');
-    
-    doc.setFontSize(12);
+    const primaryColor = whiteLabel?.primaryColor ? hexToRgb(whiteLabel.primaryColor) : DESIGN.primaryColor;
+
+    // Neobrutalist contact card
+    doc.setFillColor(255, 255, 255);
+    doc.rect(20, currentY - 5, 170, 18, 'F');
+
+    // Bold border
+    doc.setDrawColor(0, 0, 0);
+    doc.setLineWidth(2);
+    doc.rect(20, currentY - 5, 170, 18, 'S');
+
+    // Contact name
+    doc.setFontSize(11);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(DESIGN.primaryColor[0], DESIGN.primaryColor[1], DESIGN.primaryColor[2]);
-    doc.text(`${displayName} (${contact.email})`, 25, currentY + 3);
-    
-    // Confidence indicator
+    doc.setTextColor(0, 0, 0);
+    doc.text(`${displayName}`, 25, currentY + 2);
+
+    // Email in brand color
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+    doc.text(contact.email, 25, currentY + 8);
+
+    // Confidence badge
     const confidenceColor = getConfidenceColor(contact.researchConfidence || 'Low');
     doc.setFillColor(confidenceColor[0], confidenceColor[1], confidenceColor[2]);
-    doc.circle(175, currentY + 3, 3, 'F');
-    
-    currentY += 20;
+    doc.roundedRect(163, currentY - 2, 22, 10, 2, 2, 'F');
+
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(255, 255, 255);
+    doc.text(contact.researchConfidence || 'Low', 174, currentY + 4, { align: 'center' });
+
+    currentY += 18;
     
     // Intelligence content with better formatting
     doc.setFontSize(10);

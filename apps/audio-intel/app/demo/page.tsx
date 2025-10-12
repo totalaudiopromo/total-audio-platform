@@ -14,6 +14,7 @@ import {
   Sparkles,
   Target
 } from "lucide-react"
+import Link from 'next/link'
 import SpreadsheetUploader, { EnhancedSpreadsheetUploader } from "@/components/SpreadsheetUploader"
 import { ProfessionalExportService } from "@/utils/exportService"
 import ContactLoadingState from "../components/ContactLoadingState"
@@ -38,6 +39,7 @@ export default function SimpleAudioIntelDemo() {
   const [userEmail, setUserEmail] = useState<string>('')
   const [betaTrialStatus, setBetaTrialStatus] = useState<any>(null)
   const [notifyStatus, setNotifyStatus] = useState<string | null>(null)
+  const [isLoadingDemo, setIsLoadingDemo] = useState(false)
 
   // Get user email from localStorage or URL params (from beta signup)
   useEffect(() => {
@@ -85,6 +87,65 @@ export default function SimpleAudioIntelDemo() {
     primaryColor: '#2563eb'
   })
 
+  // Load Liberty demo data
+  const loadLibertyDemoData = () => {
+    setIsLoadingDemo(true)
+    setNotifyStatus('Loading Liberty demo data...')
+
+    // Real industry contacts for demonstration (BBC Radio 1, Spotify, major outlets)
+    const libertyDemoContacts: Contact[] = [
+      {
+        name: 'Jack Saunders',
+        email: 'jack.saunders@bbc.co.uk',
+        company: 'BBC Radio 1',
+        role: 'Presenter',
+        intelligence: '🎵 BBC Radio 1 - UK national broadcaster\n📻 Presenter of "Jack Saunders New Music" show\n🎧 Genres: Alternative, Indie, Rock, Electronic\n⭐ Key tastemaker for breaking new artists in the UK\n📍 Broadcasting House, London\n🎯 Best contact time: Weekday mornings for submissions',
+        confidence: 'High'
+      },
+      {
+        name: 'Nick Grimshaw',
+        email: 'nick.grimshaw@bbc.co.uk',
+        company: 'BBC 6 Music',
+        role: 'Presenter',
+        intelligence: '🎵 BBC 6 Music - National digital radio station\n📻 Presenter specialising in alternative and indie music\n🎧 Genres: Indie, Alternative, Pop, Electronic\n⭐ Former Radio 1 Breakfast Show host, influential tastemaker\n📍 Broadcasting House, London\n🎯 Known for championing new and emerging artists',
+        confidence: 'High'
+      },
+      {
+        name: 'Clara Amfo',
+        email: 'clara.amfo@bbc.co.uk',
+        company: 'BBC Radio 1',
+        role: 'Presenter',
+        intelligence: '🎵 BBC Radio 1\n📻 Mid-morning show presenter\n🎧 Genres: Pop, R&B, Hip-Hop, UK artists\n⭐ Champion of diverse new music\n📍 Broadcasting House, London\n🎯 Focus on emerging UK talent',
+        confidence: 'High'
+      },
+      {
+        name: 'Spotify Editorial',
+        email: 'editorial@spotify.com',
+        company: 'Spotify',
+        role: 'Playlist Curators',
+        intelligence: '🎵 Spotify - Global streaming platform\n📻 Editorial team managing major playlists\n🎧 Genres: All genres, playlist-specific\n⭐ Controls major playlists like New Music Friday UK\n📍 London office + global teams\n🎯 Submit via Spotify for Artists platform',
+        confidence: 'Medium'
+      },
+      {
+        name: 'Huw Stephens',
+        email: 'huw.stephens@bbc.co.uk',
+        company: 'BBC Radio 1',
+        role: 'Presenter',
+        intelligence: '🎵 BBC Radio 1 & 6 Music\n📻 Specialist presenter for new music\n🎧 Genres: Alternative, Indie, Welsh artists\n⭐ Long-standing champion of new music scenes\n📍 Wales & London\n🎯 Covers festivals and breaking artists',
+        confidence: 'High'
+      }
+    ]
+
+    setTimeout(() => {
+      setEnrichmentResults(libertyDemoContacts)
+      setHasEnrichedData(true)
+      setActiveTab('analytics')
+      setIsLoadingDemo(false)
+      setNotifyStatus('Demo data loaded! 5 industry contacts enriched (BBC Radio 1, Spotify).')
+      setTimeout(() => setNotifyStatus(null), 3000)
+    }, 1500) // Simulate loading time
+  }
+
   // Send contact to Pitch Generator
   const handleSendToPitch = async (contact: Contact) => {
     try {
@@ -125,8 +186,8 @@ export default function SimpleAudioIntelDemo() {
       // Show success notification
       setNotifyStatus('Contact copied! Opening Pitch Generator...');
 
-      // Open Pitch Generator with import flag
-      window.open('https://pitch.totalaudiopromo.com/generate?import=clipboard', '_blank');
+      // Open Pitch Generator with import flag - goes directly to pitch generation with contact loaded
+      window.open('https://pitch.totalaudiopromo.com/pitch/generate?import=clipboard', '_blank');
 
       // Clear notification after 3 seconds
       setTimeout(() => setNotifyStatus(null), 3000);
@@ -192,6 +253,31 @@ export default function SimpleAudioIntelDemo() {
 
   return (
     <div className="min-h-screen audio-gradient">
+      {/* Navigation Header */}
+      <div className="sticky top-0 z-50 bg-white border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <img
+              src="/images/total_audio_promo_logo_trans.png"
+              alt="Audio Intel"
+              className="w-10 h-10 object-contain"
+            />
+            <span className="font-black text-xl text-gray-900">Audio Intel</span>
+          </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/pricing" className="hidden sm:inline font-bold text-gray-700 hover:text-blue-600 transition-colors">
+              Pricing
+            </Link>
+            <Link
+              href="/beta"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-black px-4 py-2 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+            >
+              Get Beta Access
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Toast Notification */}
       {notifyStatus && (
         <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-3 rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-4 border-black font-bold animate-slide-in">
@@ -199,22 +285,7 @@ export default function SimpleAudioIntelDemo() {
         </div>
       )}
 
-      <div className="container mx-auto px-4 py-12">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-4 mb-6">
-            <img 
-              src="/images/total_audio_promo_logo_trans.png" 
-              alt="Total Audio Promo Mascot" 
-              className="w-16 h-16 object-contain filter drop-shadow-lg"
-            />
-            <div className="text-left">
-              <h1 className="text-4xl md:text-5xl font-black text-gray-900">Audio Intel</h1>
-              <p className="text-lg text-gray-600 font-medium">Transform Chaos Into Intelligence</p>
-            </div>
-          </div>
-        </div>
-
+      <div className="container mx-auto px-4 py-8">
         {/* Beta Trial Status */}
         {userEmail && betaTrialStatus && (
           <BetaTrialStatus
@@ -257,7 +328,7 @@ export default function SimpleAudioIntelDemo() {
         <div className="mb-8 bg-white rounded-2xl border-4 border-gray-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8">
           <div className="text-center mb-6">
             <h2 className="text-3xl font-black text-gray-900 mb-2">Your Audio Intel Workflow</h2>
-            <p className="text-gray-600 font-bold">Professional contact intelligence in three simple steps</p>
+            <p className="text-gray-600 font-bold">Professional contact intelligence in two simple steps</p>
           </div>
           
           <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-12">
@@ -307,13 +378,19 @@ export default function SimpleAudioIntelDemo() {
             </div>
 
             {/* Step 2: Analytics & Export */}
-            <div className={`flex flex-col lg:flex-row items-center gap-4 p-6 rounded-xl transition-all duration-300 border-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
-              activeTab === 'analytics' && hasEnrichedData
-                ? 'bg-blue-100 border-blue-500 scale-105'
-                : hasEnrichedData
-                ? 'bg-white border-gray-300 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] cursor-pointer'
-                : 'bg-gray-50 border-gray-200 opacity-60'
-            }`}>
+            <div
+              className={`flex flex-col lg:flex-row items-center gap-4 p-6 rounded-xl transition-all duration-300 border-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
+                activeTab === 'analytics' && hasEnrichedData
+                  ? 'bg-blue-100 border-blue-500 scale-105'
+                  : hasEnrichedData
+                  ? 'bg-white border-gray-300 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] cursor-pointer'
+                  : 'bg-gray-50 border-gray-200 opacity-60'
+              }`}
+              onClick={() => hasEnrichedData && setActiveTab('analytics')}
+              role={hasEnrichedData ? "button" : undefined}
+              tabIndex={hasEnrichedData ? 0 : undefined}
+              onKeyPress={(e) => hasEnrichedData && e.key === 'Enter' && setActiveTab('analytics')}
+            >
               <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold transition-all duration-300 ${
                 activeTab === 'analytics' && hasEnrichedData
                   ? 'bg-blue-500 text-white shadow-lg'
@@ -400,7 +477,47 @@ export default function SimpleAudioIntelDemo() {
                 </div>
               </div>
             </div>
-            <EnhancedSpreadsheetUploader 
+
+            {/* Demo Data Loader */}
+            <div className="bg-gradient-to-r from-purple-50 to-blue-50 border-4 border-purple-500 rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-6">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="flex-1">
+                  <h3 className="text-xl font-black text-purple-900 mb-2">
+                    🎯 Quick Demo: Real Industry Contacts
+                  </h3>
+                  <p className="text-sm text-purple-800 font-medium">
+                    Load 5 pre-enriched contacts from BBC Radio 1 and Spotify instantly to see Audio Intel in action. Real emails, real enrichment data.
+                  </p>
+                </div>
+                <Button
+                  onClick={loadLibertyDemoData}
+                  disabled={isLoadingDemo}
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                >
+                  {isLoadingDemo ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin inline" />
+                      Loading...
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="w-4 h-4 mr-2 inline" />
+                      Load Demo Data
+                    </>
+                  )}
+                </Button>
+              </div>
+            </div>
+
+            <div className="text-center my-6">
+              <div className="inline-flex items-center gap-4 text-gray-500 font-bold">
+                <div className="h-px bg-gray-300 flex-1 w-32"></div>
+                <span>OR</span>
+                <div className="h-px bg-gray-300 flex-1 w-32"></div>
+              </div>
+            </div>
+
+            <EnhancedSpreadsheetUploader
               onDataEnriched={(enrichedData) => {
                 setEnrichmentResults(enrichedData)
                 setHasEnrichedData(true)

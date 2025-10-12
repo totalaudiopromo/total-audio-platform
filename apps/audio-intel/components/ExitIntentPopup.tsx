@@ -7,28 +7,61 @@ import { X } from 'lucide-react';
 export function ExitIntentPopup() {
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(false);
+  const [engagementTime, setEngagementTime] = useState(0);
 
   useEffect(() => {
+    // Check if user has already signed up (you'll need to implement this check)
+    const hasSignedUp = sessionStorage.getItem('userSignedUp');
     const hasSeenPopup = sessionStorage.getItem('exitIntentShown');
-    if (hasSeenPopup) {
+
+    if (hasSeenPopup || hasSignedUp) {
       setHasShown(true);
       return;
     }
 
+    // Track engagement time
+    const engagementTimer = setInterval(() => {
+      setEngagementTime(prev => prev + 1);
+    }, 1000);
+
+    // Detect mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    // Don't show exit intent on mobile (doesn't work well)
+    if (isMobile) {
+      setHasShown(true);
+      clearInterval(engagementTimer);
+      return;
+    }
+
     const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !hasShown) {
+      // Only show if:
+      // 1. Mouse leaving from top (not sides/bottom)
+      // 2. User has been engaged for at least 30 seconds
+      // 3. Haven't shown before
+      if (e.clientY <= 0 && !hasShown && engagementTime >= 30) {
         setIsVisible(true);
         setHasShown(true);
         sessionStorage.setItem('exitIntentShown', 'true');
       }
     };
 
+    // ESC key handler
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isVisible) {
+        handleClose();
+      }
+    };
+
     document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('keydown', handleEscKey);
 
     return () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('keydown', handleEscKey);
+      clearInterval(engagementTimer);
     };
-  }, [hasShown]);
+  }, [hasShown, engagementTime, isVisible]);
 
   const handleClose = () => {
     setIsVisible(false);
@@ -41,6 +74,12 @@ export function ExitIntentPopup() {
       <div
         className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9998] animate-in fade-in duration-200"
         onClick={handleClose}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') handleClose();
+        }}
+        aria-label="Close popup overlay"
       />
 
       <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[9999] w-full max-w-2xl mx-4 animate-in zoom-in-95 duration-200">

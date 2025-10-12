@@ -448,8 +448,8 @@ function PricingContent() {
                     {showEmailForm.tier.charAt(0).toUpperCase() + showEmailForm.tier.slice(1)} Plan
                   </h4>
                   <p className="text-gray-600 font-bold">
-                    {showEmailForm.tier === 'professional' && '£19.99/month'}
-                    {showEmailForm.tier === 'agency' && '£39.99/month'}
+                    {showEmailForm.tier === 'professional' && '£19/month'}
+                    {showEmailForm.tier === 'agency' && '£79/month'}
                   </p>
                 </div>
               </div>

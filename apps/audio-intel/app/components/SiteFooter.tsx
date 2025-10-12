@@ -97,9 +97,27 @@ export function SiteFooter() {
 
         {/* Bottom Bar */}
         <div className="mt-8 border-t-2 border-gray-200 pt-6">
-          <div className="flex flex-col gap-2 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between">
-            <p>© {new Date().getFullYear()} Total Audio Promo. Built for music industry professionals.</p>
-            <p className="text-gray-400">Made with focus in the UK</p>
+          <div className="flex flex-col gap-4">
+            {/* Legal Links */}
+            <div className="flex flex-wrap gap-4 text-xs">
+              <Link href="/privacy" className="text-gray-600 hover:text-blue-600 font-medium transition">
+                Privacy Policy
+              </Link>
+              <Link href="/cookies" className="text-gray-600 hover:text-blue-600 font-medium transition">
+                Cookie Policy
+              </Link>
+              <Link href="/terms" className="text-gray-600 hover:text-blue-600 font-medium transition">
+                Terms of Service
+              </Link>
+              <Link href="/contact" className="text-gray-600 hover:text-blue-600 font-medium transition">
+                Contact & Support
+              </Link>
+            </div>
+            {/* Copyright */}
+            <div className="flex flex-col gap-2 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between">
+              <p>© {new Date().getFullYear()} Total Audio Promo Ltd. Built for music industry professionals.</p>
+              <p className="text-gray-400">Made with focus in the UK 🇬🇧</p>
+            </div>
           </div>
         </div>
       </div>
