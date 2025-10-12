@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import type { RealtimeChannel } from '@supabase/supabase-js';
 import { createClient } from '@/lib/supabase/client';
 
 export type IntegrationType = 'google_sheets' | 'gmail' | 'airtable' | 'mailchimp' | 'excel';
@@ -38,18 +39,42 @@ export function useIntegrations() {
     excel: false,
   });
 
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
+  const userIdRef = useRef<string | null>(null);
+  const channelRef = useRef<RealtimeChannel | null>(null);
+  const isMountedRef = useRef(true);
+
+  const resetConnections = useCallback(() => {
+    setConnections({
+      google_sheets: null,
+      gmail: null,
+      airtable: null,
+      mailchimp: null,
+      excel: null,
+    });
+  }, []);
 
   const loadConnections = useCallback(async () => {
+    if (!userIdRef.current) {
+      if (isMountedRef.current) {
+        resetConnections();
+        setLoading(false);
+      }
+      return;
+    }
+
     try {
       const { data, error } = await supabase
         .from('integration_connections')
-        .select('*');
+        .select('*')
+        .eq('user_id', userIdRef.current);
 
       if (error) throw error;
 
-      const mapped: Record<string, Integration> = {};
-      (data || []).forEach((conn: any) => {
+      if (!isMountedRef.current) return;
+
+      const mapped: Partial<Record<IntegrationType, Integration>> = {};
+      (data || []).forEach((conn: Integration) => {
         mapped[conn.integration_type] = conn;
       });
 
@@ -61,35 +86,80 @@ export function useIntegrations() {
         excel: mapped.excel || null,
       });
     } catch (error) {
-      console.error('Error loading integrations:', error);
+      if (isMountedRef.current) {
+        console.error('Error loading integrations:', error);
+      }
     } finally {
-      setLoading(false);
+      if (isMountedRef.current) {
+        setLoading(false);
+      }
     }
-  }, [supabase]);
+  }, [resetConnections, supabase]);
 
   useEffect(() => {
-    loadConnections();
+    let active = true;
+    isMountedRef.current = true;
 
-    // Subscribe to changes
-    const subscription = supabase
-      .channel('integration_connections_changes')
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'integration_connections',
-        },
-        () => {
-          loadConnections();
-        }
-      )
-      .subscribe();
+    const initialize = async () => {
+      setLoading(true);
+
+      const { data: { user }, error } = await supabase.auth.getUser();
+
+      if (!active || !isMountedRef.current) {
+        return;
+      }
+
+      if (error) {
+        console.error('Error fetching user for integrations:', error);
+        resetConnections();
+        setLoading(false);
+        return;
+      }
+
+      if (!user) {
+        resetConnections();
+        setLoading(false);
+        return;
+      }
+
+      userIdRef.current = user.id;
+
+      await loadConnections();
+      if (!active || !isMountedRef.current) {
+        return;
+      }
+
+      const channel = supabase
+        .channel('integration_connections_changes')
+        .on(
+          'postgres_changes',
+          {
+            event: '*',
+            schema: 'public',
+            table: 'integration_connections',
+            filter: `user_id=eq.${user.id}`,
+          },
+          () => {
+            loadConnections();
+          }
+        )
+        .subscribe();
+
+      channelRef.current = channel;
+    };
+
+    initialize();
 
     return () => {
-      subscription.unsubscribe();
+      active = false;
+      isMountedRef.current = false;
+
+      if (channelRef.current) {
+        channelRef.current.unsubscribe();
+        channelRef.current = null;
+      }
     };
-  }, [loadConnections, supabase]);
+  }, [loadConnections, resetConnections, supabase]);
 
   const connect = useCallback(async (type: IntegrationType) => {
     // Redirect to OAuth flow (convert underscore to hyphen for URL)

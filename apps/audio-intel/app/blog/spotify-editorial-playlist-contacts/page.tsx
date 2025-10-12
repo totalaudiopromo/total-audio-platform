@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PSEOPageWrapper } from "@/app/components/PSEOPageWrapper";
+import { BlogStructuredData } from "@/components/BlogStructuredData";
 
 export const metadata: Metadata = {
   title: "Spotify Editorial Playlist Contacts & Submission Guide | Audio Intel",
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
     "Get on Spotify editorial playlists like New Music Friday UK. Real submission workflow from 12 hours of playlist research to 2 minutes of AI enrichment. 28-day submission window strategy included.",
   keywords:
     "spotify playlist contacts, spotify editorial submission, new music friday uk, spotify curator email, get on spotify playlists",
+  alternates: {
+    canonical: 'https://intel.totalaudiopromo.com/blog/spotify-editorial-playlist-contacts'
+  },
   openGraph: {
     title: "Spotify Editorial Playlist Contacts: 12 Hours to 2 Minutes",
     description:
@@ -24,6 +28,7 @@ export const metadata: Metadata = {
 export default function SpotifyEditorialPlaylistContacts() {
   return (
     <PSEOPageWrapper pageName="spotify-editorial-playlist-contacts" topic="spotify-editorial" searchVolume={2000} tier={1}>
+      <BlogStructuredData slug="spotify-editorial-playlist-contacts" />
       <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

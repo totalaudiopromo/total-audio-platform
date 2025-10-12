@@ -106,6 +106,11 @@ export function IntegrationCard({
             </div>
             <div>
               <h3 className="text-xl font-black text-gray-900">{name}</h3>
+              {type === 'excel' && (
+                <div className="inline-block bg-blue-500 text-white text-xs font-black px-3 py-1 rounded-lg border-2 border-black mt-2">
+                  COMING SOON
+                </div>
+              )}
               {isConnected && (
                 <div className="flex items-center gap-2 mt-1">
                   <CheckCircle className="w-4 h-4 text-green-600" />
@@ -185,11 +190,12 @@ export function IntegrationCard({
           </div>
         ) : (
           <button
-            onClick={onConnect}
-            className={`w-full ${colors.button} text-white font-black px-6 py-4 rounded-xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2`}
+            onClick={type === 'excel' ? undefined : onConnect}
+            disabled={type === 'excel'}
+            className={`w-full ${type === 'excel' ? 'bg-gray-400 cursor-not-allowed' : colors.button} text-white font-black px-6 py-4 rounded-xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${type === 'excel' ? '' : 'hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:scale-95'} transition-all flex items-center justify-center gap-2`}
           >
             <ExternalLink className="w-5 h-5" />
-            Connect {name}
+            {type === 'excel' ? 'Coming Soon' : `Connect ${name}`}
           </button>
         )}
       </div>

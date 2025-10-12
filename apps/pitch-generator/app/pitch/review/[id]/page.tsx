@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Copy, CheckCircle2, Edit3, Send, Sparkles, Clock, Loader2 } from 'lucide-react';
+import { ArrowLeft, Copy, CheckCircle2, Edit3, Send, Sparkles, Clock, Loader2, BarChart3 } from 'lucide-react';
 import { supabase, type Pitch } from '@/lib/supabase';
 import { PitchAnalyser } from '@/components/PitchAnalyser';
 
@@ -21,6 +21,8 @@ export default function ReviewPitchPage() {
   const [selectedSubject, setSelectedSubject] = useState('option2');
   const [copied, setCopied] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [sentToTracker, setSentToTracker] = useState(false);
+  const [notification, setNotification] = useState<string | null>(null);
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -125,6 +127,53 @@ export default function ReviewPitchPage() {
     }
   }
 
+  async function handleSendToTracker() {
+    if (!pitch) return;
+
+    try {
+      // Prepare campaign data for Tracker
+      const subject = pitch.subject_line_options?.[selectedSubject as keyof typeof pitch.subject_line_options] || pitch.subject_line;
+      const pitchBody = editing ? editedBody : pitch.pitch_body;
+
+      const clipboardData = {
+        source: 'pitch',
+        campaign: {
+          name: `${pitch.artist_name} - ${pitch.contact_outlet || pitch.contact_name}`,
+          artist: pitch.artist_name,
+          contacts: [{
+            name: pitch.contact_name,
+            outlet: pitch.contact_outlet || '',
+            email: pitch.contact_email || '',
+            subject: subject,
+            pitchBody: pitchBody,
+          }],
+        },
+      };
+
+      // Copy to clipboard
+      await navigator.clipboard.writeText(JSON.stringify(clipboardData));
+
+      // Mark state as sent to tracker
+      setSentToTracker(true);
+
+      // Show success notification
+      setNotification('Campaign copied! Opening Tracker...');
+
+      // Open Tracker import page with clipboard parameter
+      setTimeout(() => {
+        window.open('https://tracker.totalaudiopromo.com/dashboard/import?source=clipboard', '_blank');
+        setNotification('Campaign sent to Tracker! Check the new tab.');
+      }, 500);
+
+      // Clear notification after 5 seconds
+      setTimeout(() => setNotification(null), 5500);
+    } catch (error) {
+      console.error('Error sending to Tracker:', error);
+      setNotification('Failed to copy campaign data. Please try again.');
+      setTimeout(() => setNotification(null), 3000);
+    }
+  }
+
   async function handleRegenerate() {
     const confirmed = confirm('Regenerate this pitch? Your current version will be lost.');
     if (!confirmed) return;
@@ -152,6 +201,13 @@ export default function ReviewPitchPage() {
 
   return (
     <div className="mx-auto w-full max-w-4xl">
+      {/* Toast Notification */}
+      {notification && (
+        <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black font-bold max-w-md animate-in fade-in slide-in-from-top-2">
+          {notification}
+        </div>
+      )}
+
       <div className="mb-6">
         <Link href="/dashboard" className="subtle-button inline-flex items-center gap-2 text-sm">
           <ArrowLeft className="h-4 w-4" />
@@ -298,6 +354,27 @@ export default function ReviewPitchPage() {
                 <Send className="h-4 w-4" />
                 Mark as Sent
               </button>
+              <button
+                onClick={handleSendToTracker}
+                disabled={sentToTracker}
+                className={`font-black px-4 py-2 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex items-center gap-2 ${
+                  sentToTracker
+                    ? 'bg-green-500 text-white cursor-default'
+                    : 'bg-yellow-500 hover:bg-yellow-600 text-black'
+                }`}
+              >
+                {sentToTracker ? (
+                  <>
+                    <CheckCircle2 className="h-4 w-4" />
+                    Sent to Tracker
+                  </>
+                ) : (
+                  <>
+                    <BarChart3 className="h-4 w-4" />
+                    → Track Campaign
+                  </>
+                )}
+              </button>
             </>
           )}
         </div>
@@ -317,7 +394,11 @@ export default function ReviewPitchPage() {
           </li>
           <li className="flex items-start gap-3">
             <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber">3</span>
-            <span>Mark it as sent here so you can track your success rate</span>
+            <span>Click "Track Campaign" to monitor results in Campaign Tracker</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-success/20 text-xs font-semibold text-success">4</span>
+            <span>Mark it as sent here to track your success rate in Pitch Generator</span>
           </li>
         </ul>
       </div>

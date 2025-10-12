@@ -10,6 +10,7 @@ import { OAuthHandler } from './oauth-handler';
 export class GmailReplyTracker {
   private oauth = new OAuthHandler();
   private supabase = createClient();
+  private readonly integrationType = 'gmail';
 
   /**
    * Check for replies to tracked emails
@@ -21,19 +22,22 @@ export class GmailReplyTracker {
   }> {
     const errors: string[] = [];
 
+    let connection: any = null;
+
     try {
       // Get connection and access token
       const accessToken = await this.oauth.getValidAccessToken(connectionId);
 
-      const { data: connection } = await this.supabase
+      const { data: fetchedConnection, error: connError } = await this.supabase
         .from('integration_connections')
         .select('*')
         .eq('id', connectionId)
         .single();
 
-      if (!connection) {
+      if (connError || !fetchedConnection) {
         throw new Error('Connection not found');
       }
+      connection = fetchedConnection;
 
       // Get tracked emails that haven't received replies yet
       const { data: trackedEmails } = await this.supabase
@@ -111,6 +115,20 @@ export class GmailReplyTracker {
               repliesFound++;
 
               console.log(`Reply detected for campaign ${tracked.campaign_id}`);
+
+              await this.logActivity({
+                connectionId,
+                userId: connection.user_id,
+                activityType: 'reply_detected',
+                status: 'success',
+                message: `Reply from ${tracked.contact_email}`,
+                metadata: {
+                  campaign_id: tracked.campaign_id,
+                  contact_email: tracked.contact_email,
+                  reply_received_at: replyDate.toISOString(),
+                  snippet: snippet.substring(0, 200),
+                },
+              });
             }
           }
 
@@ -141,6 +159,20 @@ export class GmailReplyTracker {
         .update({ last_sync_at: new Date().toISOString() })
         .eq('id', connectionId);
 
+      await this.logActivity({
+        connectionId,
+        userId: connection.user_id,
+        activityType: 'reply_scan',
+        status: errors.length > 0 ? 'warning' : 'success',
+        message: repliesFound > 0
+          ? `Detected ${repliesFound} new repl${repliesFound === 1 ? 'y' : 'ies'}`
+          : 'Checked Gmail for replies',
+        metadata: {
+          replies_found: repliesFound,
+          errors: errors.length > 0 ? errors : undefined,
+        },
+      });
+
       return {
         success: true,
         repliesFound,
@@ -159,6 +191,19 @@ export class GmailReplyTracker {
           error_count: this.supabase.raw('error_count + 1'),
         })
         .eq('id', connectionId);
+
+      if (connection?.user_id) {
+        await this.logActivity({
+          connectionId,
+          userId: connection.user_id,
+          activityType: 'reply_scan',
+          status: 'error',
+          message: 'Failed to check Gmail for replies',
+          metadata: {
+            error: error.message,
+          },
+        });
+      }
 
       return {
         success: false,
@@ -194,6 +239,43 @@ export class GmailReplyTracker {
     } catch (error) {
       console.error('Error tracking email:', error);
       throw error;
+    }
+  }
+
+  private async logActivity({
+    connectionId,
+    userId,
+    activityType,
+    status,
+    message,
+    metadata,
+  }: {
+    connectionId: string;
+    userId: string;
+    activityType: 'reply_detected' | 'reply_scan';
+    status: 'success' | 'error' | 'warning';
+    message: string;
+    metadata?: Record<string, any>;
+  }): Promise<void> {
+    try {
+      const sanitizedMetadata = metadata ? { ...metadata } : {};
+
+      if ('errors' in sanitizedMetadata && sanitizedMetadata.errors === undefined) {
+        delete sanitizedMetadata.errors;
+      }
+
+      await this.supabase.from('integration_activity_log').insert({
+        connection_id: connectionId,
+        user_id: userId,
+        integration_type: this.integrationType,
+        activity_type: activityType,
+        status,
+        message,
+        metadata: sanitizedMetadata,
+      });
+    } catch (logError) {
+      const logMessage = logError instanceof Error ? logError.message : String(logError);
+      console.error('Failed to log Gmail integration activity:', logMessage);
     }
   }
 }

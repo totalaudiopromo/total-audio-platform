@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { PSEOPageWrapper } from "@/app/components/PSEOPageWrapper";
+import { BlogStructuredData } from "@/components/BlogStructuredData";
 
 export const metadata: Metadata = {
   title: "BBC Radio 2 Contact Enrichment Case Study | Audio Intel",
   description:
     "BBC Radio 2 contact research takes 12 hours to understand 35-54 demographic targeting. Audio Intel reveals January 2025 schedule changes (Scott Mills breakfast, Trevor Nelson afternoon), specialist evening shows (DJ Spoony garage, Sophie Ellis-Bextor disco), and BBC Introducing route in 2 minutes. 12.6 million weekly listeners.",
+  alternates: {
+    canonical: 'https://intel.totalaudiopromo.com/blog/bbc-radio-2-contact-enrichment'
+  },
   keywords:
     "bbc radio 2 contacts, scott mills breakfast, trevor nelson, dj spoony good groove, sophie ellis-bextor kitchen disco, bbc introducing, audio intel",
   openGraph: {
@@ -35,6 +39,7 @@ DATA VERIFICATION:
 export default function BbcRadio2ContactEnrichment() {
   return (
     <PSEOPageWrapper pageName="bbc-radio-2-contact-enrichment" topic="bbc-radio-2" searchVolume={500} tier={2}>
+      <BlogStructuredData slug="bbc-radio-2-contact-enrichment" />
       <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

@@ -1,16 +1,68 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Campaign } from '@/lib/types/tracker';
 import { CampaignModal } from './CampaignModal';
 import { CampaignIntelligence } from './CampaignIntelligence';
+import { GenerateReportButton } from '@/components/reports/GenerateReportButton';
+import { formatDistanceToNow } from 'date-fns';
+import {
+  FileSpreadsheet,
+  Mail,
+  Grid3x3,
+  Mails,
+  BarChart3,
+  Cable,
+  AlertCircle,
+} from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 interface CampaignWithInsights extends Campaign {
   insights?: string[];
 }
 
-export function CampaignCardWithIntel({ campaign }: { campaign: CampaignWithInsights }) {
+type IntegrationSummary = {
+  integration_type: 'google_sheets' | 'gmail' | 'airtable' | 'mailchimp' | 'excel';
+  status: 'active' | 'paused' | 'error' | 'disconnected';
+  last_sync_at: string | null;
+  sync_enabled: boolean;
+};
+
+interface CampaignCardWithIntelProps {
+  campaign: CampaignWithInsights;
+  integrations?: IntegrationSummary[];
+}
+
+const INTEGRATION_META: Record<IntegrationSummary['integration_type'], { label: string; Icon: LucideIcon; badgeClass: string }> = {
+  google_sheets: {
+    label: 'Google Sheets',
+    Icon: FileSpreadsheet,
+    badgeClass: 'border-green-600 bg-green-50 text-green-800',
+  },
+  gmail: {
+    label: 'Gmail Replies',
+    Icon: Mail,
+    badgeClass: 'border-red-600 bg-red-50 text-red-700',
+  },
+  airtable: {
+    label: 'Airtable',
+    Icon: Grid3x3,
+    badgeClass: 'border-amber-500 bg-amber-50 text-amber-700',
+  },
+  mailchimp: {
+    label: 'Mailchimp',
+    Icon: Mails,
+    badgeClass: 'border-yellow-500 bg-yellow-50 text-yellow-700',
+  },
+  excel: {
+    label: 'Excel Sync',
+    Icon: BarChart3,
+    badgeClass: 'border-emerald-600 bg-emerald-50 text-emerald-700',
+  },
+};
+
+export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignCardWithIntelProps) {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const hasResults = campaign.actual_reach > 0;
@@ -18,6 +70,44 @@ export function CampaignCardWithIntel({ campaign }: { campaign: CampaignWithInsi
 
   // Calculate if campaign is performing well
   const isPerformingWell = campaign.success_rate > 25 || campaign.performance_score > 60;
+
+  const visibleIntegrations = useMemo(() => {
+    return integrations
+      .filter((integration) => integration.status !== 'disconnected')
+      .map((integration) => {
+        const meta = INTEGRATION_META[integration.integration_type] ?? {
+          label: integration.integration_type,
+          Icon: Cable,
+          badgeClass: 'border-gray-500 bg-gray-100 text-gray-700',
+        };
+
+        const statusLabel = integration.status === 'error'
+          ? 'Error'
+          : integration.sync_enabled
+          ? 'Live'
+          : 'Paused';
+
+        const statusBadgeClass = integration.status === 'error'
+          ? 'border-red-600 bg-red-50 text-red-700'
+          : integration.sync_enabled
+          ? meta.badgeClass
+          : 'border-gray-500 bg-gray-100 text-gray-700';
+
+        const lastSynced = integration.last_sync_at
+          ? `Last sync ${formatDistanceToNow(new Date(integration.last_sync_at), { addSuffix: true })}`
+          : 'Never synced yet';
+
+        return {
+          ...integration,
+          label: meta.label,
+          Icon: meta.Icon,
+          statusLabel,
+          badgeClass: statusBadgeClass,
+          lastSynced,
+        };
+      })
+      .sort((a, b) => a.label.localeCompare(b.label));
+  }, [integrations]);
 
   return (
     <>
@@ -53,6 +143,23 @@ export function CampaignCardWithIntel({ campaign }: { campaign: CampaignWithInsi
             <div className="text-3xl font-black text-gray-900">£{campaign.budget}</div>
           </div>
         </div>
+
+        {visibleIntegrations.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2 mb-6 -mt-3">
+            {visibleIntegrations.map((integration) => (
+              <span
+                key={`${campaign.id}-${integration.integration_type}`}
+                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border-2 text-xs font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${integration.badgeClass}`}
+                title={integration.lastSynced}
+              >
+                <integration.Icon className="w-3.5 h-3.5" />
+                <span>{integration.label}</span>
+                <span className="uppercase text-[10px] tracking-wide">{integration.statusLabel}</span>
+                {integration.status === 'error' && <AlertCircle className="w-3 h-3" />}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Results Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 pb-6 border-b-2 border-gray-200">
@@ -160,18 +267,24 @@ export function CampaignCardWithIntel({ campaign }: { campaign: CampaignWithInsi
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-6 border-t-2 border-gray-200">
-          <button 
+          <button
             onClick={() => setIsModalOpen(true)}
             className="flex-1 px-4 py-2.5 bg-blue-600 text-white rounded-xl font-black hover:bg-blue-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-sm"
           >
             Edit Campaign
           </button>
-          <button 
+          <button
             onClick={() => router.push(`/campaigns/${campaign.id}`)}
             className="flex-1 px-4 py-2.5 bg-white text-gray-900 rounded-xl font-bold border-2 border-black hover:bg-gray-50 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-sm"
           >
             View Details
           </button>
+          {hasResults && (
+            <GenerateReportButton
+              campaignId={campaign.id}
+              campaignName={campaign.name}
+            />
+          )}
         </div>
       </div>
 

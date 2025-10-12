@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { IntegrationCard } from '@/components/integrations/IntegrationCard';
+import { IntegrationActivityFeed } from '@/components/integrations/IntegrationActivityFeed';
 import { useIntegrations } from '@/hooks/useIntegrations';
 import { AlertCircle, Zap, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
@@ -67,6 +68,11 @@ export default function IntegrationsPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Activity Feed */}
+        <div className="mb-8">
+          <IntegrationActivityFeed />
         </div>
 
         {/* Integration Cards */}

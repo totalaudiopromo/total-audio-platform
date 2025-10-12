@@ -22,6 +22,7 @@ export interface SheetRow {
 export class GoogleSheetsSync {
   private oauth = new OAuthHandler();
   private supabase = createClient();
+  private readonly integrationType = 'google_sheets';
 
   /**
    * Sync campaigns from Tracker to Google Sheet
@@ -33,20 +34,23 @@ export class GoogleSheetsSync {
   }> {
     const errors: string[] = [];
 
+    let connection: any = null;
+
     try {
       // Get connection and valid access token
       const accessToken = await this.oauth.getValidAccessToken(connectionId);
 
       // Get connection details
-      const { data: connection, error: connError } = await this.supabase
+      const { data: fetchedConnection, error: connError } = await this.supabase
         .from('integration_connections')
         .select('*')
         .eq('id', connectionId)
         .single();
 
-      if (connError || !connection) {
+      if (connError || !fetchedConnection) {
         throw new Error('Connection not found');
       }
+      connection = fetchedConnection;
 
       const { spreadsheet_id, sheet_name = 'Campaigns' } = connection.settings;
 
@@ -128,6 +132,20 @@ export class GoogleSheetsSync {
         .update({ last_sync_at: new Date().toISOString() })
         .eq('id', connectionId);
 
+      await this.logActivity({
+        connectionId,
+        userId: connection.user_id,
+        activityType: 'sync_to_sheet',
+        status: 'success',
+        message: `Synced ${rows.length} campaign${rows.length === 1 ? '' : 's'} to Google Sheets`,
+        metadata: {
+          records_synced: rows.length,
+          spreadsheet_id,
+          sheet_name,
+          campaign_ids: (campaigns || []).map((c: any) => c.id),
+        },
+      });
+
       return {
         success: true,
         recordsUpdated: rows.length,
@@ -147,6 +165,19 @@ export class GoogleSheetsSync {
         })
         .eq('id', connectionId);
 
+      if (connection?.user_id) {
+        await this.logActivity({
+          connectionId,
+          userId: connection.user_id,
+          activityType: 'sync_to_sheet',
+          status: 'error',
+          message: 'Failed to sync campaigns to Google Sheets',
+          metadata: {
+            error: error.message,
+          },
+        });
+      }
+
       return {
         success: false,
         recordsUpdated: 0,
@@ -165,16 +196,19 @@ export class GoogleSheetsSync {
   }> {
     const errors: string[] = [];
 
+    let connection: any = null;
+
     try {
       const accessToken = await this.oauth.getValidAccessToken(connectionId);
 
-      const { data: connection } = await this.supabase
+      const { data: fetchedConnection, error: connError } = await this.supabase
         .from('integration_connections')
         .select('*')
         .eq('id', connectionId)
         .single();
 
-      if (!connection) throw new Error('Connection not found');
+      if (connError || !fetchedConnection) throw new Error('Connection not found');
+      connection = fetchedConnection;
 
       const { spreadsheet_id, sheet_name = 'Campaigns' } = connection.settings;
 
@@ -191,6 +225,7 @@ export class GoogleSheetsSync {
 
       const rows = response.data.values || [];
       let updatedCount = 0;
+      const updatedCampaignIds: string[] = [];
 
       for (const row of rows) {
         const [
@@ -227,6 +262,7 @@ export class GoogleSheetsSync {
 
         if (!error) {
           updatedCount++;
+          updatedCampaignIds.push(trackerId);
         } else {
           errors.push(`Failed to update campaign ${trackerId}: ${error.message}`);
         }
@@ -241,6 +277,28 @@ export class GoogleSheetsSync {
         completed_at: new Date().toISOString(),
       });
 
+      const metadata: Record<string, any> = {
+        records_synced: updatedCount,
+        spreadsheet_id,
+        sheet_name,
+        campaign_ids: updatedCampaignIds,
+      };
+
+      if (errors.length > 0) {
+        metadata.errors = errors;
+      }
+
+      await this.logActivity({
+        connectionId,
+        userId: connection.user_id,
+        activityType: 'sync_from_sheet',
+        status: errors.length > 0 ? 'warning' : 'success',
+        message: errors.length > 0
+          ? `Synced ${updatedCount} campaign${updatedCount === 1 ? '' : 's'} from Google Sheets with warnings`
+          : `Synced ${updatedCount} campaign${updatedCount === 1 ? '' : 's'} from Google Sheets`,
+        metadata,
+      });
+
       return {
         success: errors.length === 0,
         recordsUpdated: updatedCount,
@@ -249,6 +307,19 @@ export class GoogleSheetsSync {
     } catch (error: any) {
       errors.push(error.message);
       console.error('Error syncing from Google Sheets:', error);
+
+      if (connection?.user_id) {
+        await this.logActivity({
+          connectionId,
+          userId: connection.user_id,
+          activityType: 'sync_from_sheet',
+          status: 'error',
+          message: 'Failed to sync changes from Google Sheets',
+          metadata: {
+            error: error.message,
+          },
+        });
+      }
 
       return {
         success: false,
@@ -409,6 +480,37 @@ export class GoogleSheetsSync {
     } catch (error) {
       console.error('Error creating spreadsheet:', error);
       throw error;
+    }
+  }
+
+  private async logActivity({
+    connectionId,
+    userId,
+    activityType,
+    status,
+    message,
+    metadata,
+  }: {
+    connectionId: string;
+    userId: string;
+    activityType: 'sync_to_sheet' | 'sync_from_sheet';
+    status: 'success' | 'error' | 'warning';
+    message: string;
+    metadata?: Record<string, any>;
+  }): Promise<void> {
+    try {
+      await this.supabase.from('integration_activity_log').insert({
+        connection_id: connectionId,
+        user_id: userId,
+        integration_type: this.integrationType,
+        activity_type: activityType,
+        status,
+        message,
+        metadata: metadata || {},
+      });
+    } catch (logError) {
+      const logMessage = logError instanceof Error ? logError.message : String(logError);
+      console.error('Failed to log integration activity:', logMessage);
     }
   }
 }

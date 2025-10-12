@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { PSEOPageWrapper } from "@/app/components/PSEOPageWrapper";
+import { BlogStructuredData } from "@/components/BlogStructuredData";
 
 export const metadata: Metadata = {
   title: "Absolute Radio Contact Enrichment Case Study | Audio Intel",
   description:
     "Manual Absolute Radio contact research takes 10-12 hours. Audio Intel enriches Sunday Night Music Club submission details in 2 minutes with verified requirements: web-link only, no attachments, one track per month featured.",
+  alternates: {
+    canonical: 'https://intel.totalaudiopromo.com/blog/absolute-radio-contact-enrichment'
+  },
   keywords:
     "absolute radio contacts, sunday night music club, absolute radio submission, selfreleased@absoluteradio.co.uk, danielle perry, audio intel",
   openGraph: {
@@ -35,6 +39,7 @@ DATA VERIFICATION:
 export default function AbsoluteRadioContactEnrichment() {
   return (
     <PSEOPageWrapper pageName="absolute-radio-contact-enrichment" topic="absolute-radio" searchVolume={300} tier={2}>
+      <BlogStructuredData slug="absolute-radio-contact-enrichment" />
       <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

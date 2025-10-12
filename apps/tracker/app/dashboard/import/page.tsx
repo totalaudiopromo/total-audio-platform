@@ -84,8 +84,13 @@ function ImportCampaignsPage() {
         // Clean up URL
         window.history.replaceState({}, '', '/dashboard/import');
 
-        // Clear notification after delay
-        setTimeout(() => setNotification(null), 4000);
+        // Clear notification and redirect to dashboard after delay
+        setTimeout(() => {
+          setNotification('Redirecting to dashboard...');
+          setTimeout(() => {
+            router.push('/dashboard');
+          }, 1000);
+        }, 2500);
 
       } catch (error) {
         console.error('Error importing from clipboard:', error);

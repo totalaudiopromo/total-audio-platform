@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { PSEOPageWrapper } from "@/app/components/PSEOPageWrapper";
+import { BlogStructuredData } from "@/components/BlogStructuredData";
 
 export const metadata: Metadata = {
   title: "BBC Radio 6 Music Contact Enrichment Case Study | Audio Intel",
   description:
     "Real BBC Radio 6 Music pitching workflow from 16 hours of manual research to a 2 minute AI enrichment run. Current presenter contacts, submission routes, and proof it works for indie artists.",
+  alternates: {
+    canonical: 'https://intel.totalaudiopromo.com/blog/bbc-radio-6-music-contact-enrichment'
+  },
   keywords:
     "bbc radio 6 music contacts, bbc 6 music submission guidelines, 6 music playlist, indie radio promotion, audio intel review",
   openGraph: {

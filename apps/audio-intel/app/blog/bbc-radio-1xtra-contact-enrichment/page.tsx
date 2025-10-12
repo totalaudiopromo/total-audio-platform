@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { PSEOPageWrapper } from "@/app/components/PSEOPageWrapper";
+import { BlogStructuredData } from "@/components/BlogStructuredData";
 
 export const metadata: Metadata = {
   title: "BBC Radio 1Xtra Contact Enrichment Case Study | Audio Intel",
   description:
     "BBC Radio 1Xtra contact research takes 10-12 hours. Audio Intel reveals verified submission route (BBC Introducing Uploader), presenter-to-genre matching (Kenny Allstar rap, Eddie Kadi Afrobeats, Chuckie R&B), and critical clean version requirement in 2 minutes. 786,000 weekly listeners.",
+  alternates: {
+    canonical: 'https://intel.totalaudiopromo.com/blog/bbc-radio-1xtra-contact-enrichment'
+  },
   keywords:
     "bbc radio 1xtra contacts, kenny allstar, eddie kadi afrobeats, chuckie rb show, dj target, bbc introducing, audio intel",
   openGraph: {
@@ -35,6 +39,7 @@ DATA VERIFICATION:
 export default function BbcRadio1XtraContactEnrichment() {
   return (
     <PSEOPageWrapper pageName="bbc-radio-1xtra-contact-enrichment" topic="bbc-1xtra" searchVolume={600} tier={2}>
+      <BlogStructuredData slug="bbc-radio-1xtra-contact-enrichment" />
       <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

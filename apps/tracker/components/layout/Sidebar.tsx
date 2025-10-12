@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { HomeIcon, RocketLaunchIcon, ChartBarIcon, CogIcon, PlayIcon } from '@heroicons/react/24/outline';
+import { HomeIcon, RocketLaunchIcon, ChartBarIcon, CogIcon, PlayIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -11,6 +11,7 @@ export function Sidebar() {
     { href: '/', label: 'Dashboard', icon: HomeIcon },
     { href: '/campaigns', label: 'Campaigns', icon: RocketLaunchIcon },
     { href: '/analytics', label: 'Analytics', icon: ChartBarIcon },
+    { href: '/dashboard/integrations', label: 'Integrations', icon: ArrowPathIcon },
     { href: '/billing', label: 'Billing', icon: CogIcon },
   ];
 
@@ -68,6 +69,9 @@ export function Sidebar() {
     </aside>
   );
 }
+
+
+
 
 
 

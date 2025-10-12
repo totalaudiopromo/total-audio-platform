@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { PSEOPageWrapper } from "@/app/components/PSEOPageWrapper";
+import { BlogStructuredData } from "@/components/BlogStructuredData";
 
 export const metadata: Metadata = {
   title: "Apple Music Editorial Playlist Contacts | Audio Intel",
   description:
     "Apple Music has NO direct artist pitching like Spotify. Editorial playlisting requires approved distributor with Pitch tool access. Audio Intel reveals verified distributor routes, 10+ day deadlines, and mandatory 2025 requirements in 2 minutes.",
+  alternates: {
+    canonical: 'https://intel.totalaudiopromo.com/blog/apple-music-editorial-contacts'
+  },
   keywords:
     "apple music contacts, apple music editorial, apple music pitch, preferred distributors, new music daily, apple music playlists, audio intel",
   openGraph: {
@@ -36,6 +40,7 @@ DATA VERIFICATION:
 export default function AppleMusicEditorialContacts() {
   return (
     <PSEOPageWrapper pageName="apple-music-editorial-contacts" topic="apple-music-editorial" searchVolume={1500} tier={1}>
+      <BlogStructuredData slug="apple-music-editorial-contacts" />
       <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

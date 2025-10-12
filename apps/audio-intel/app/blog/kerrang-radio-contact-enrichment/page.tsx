@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { PSEOPageWrapper } from "@/app/components/PSEOPageWrapper";
+import { BlogStructuredData } from "@/components/BlogStructuredData";
 
 export const metadata: Metadata = {
   title: "Kerrang Radio Contact Enrichment Case Study | Audio Intel",
   description:
     "Manual Kerrang Radio research takes 10-12 hours. Audio Intel reveals CRITICAL detail in 2 minutes: general emails DELETED, must use Alex Baker's Fresh Blood website. 445,000 weekly listeners, verified submission route.",
+  alternates: {
+    canonical: 'https://intel.totalaudiopromo.com/blog/kerrang-radio-contact-enrichment'
+  },
   keywords:
     "kerrang radio contacts, alex baker fresh blood, kerrang radio submission, loz guest, kerrang unsigned artists, audio intel",
   openGraph: {
@@ -35,6 +39,7 @@ DATA VERIFICATION:
 export default function KerrangRadioContactEnrichment() {
   return (
     <PSEOPageWrapper pageName="kerrang-radio-contact-enrichment" topic="kerrang-radio" searchVolume={350} tier={2}>
+      <BlogStructuredData slug="kerrang-radio-contact-enrichment" />
       <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

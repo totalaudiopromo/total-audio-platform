@@ -282,12 +282,74 @@ async function sendToConvertKit(subject, htmlContent) {
       console.log('  1. Log into https://app.convertkit.com/broadcasts');
       console.log('  2. Review the draft broadcast');
       console.log('  3. Schedule or send immediately\n');
-      return { success: true, broadcastId: response.data.broadcast.id };
+      return { success: true, broadcastId: response.data.broadcast.id, subject: response.data.broadcast.subject };
     }
 
   } catch (error) {
     console.error('\n❌ Failed to create ConvertKit broadcast:', error.response?.data || error.message);
     return { success: false, error: error.message };
+  }
+}
+
+// Send email notification using macOS notification center + optional email
+async function sendEmailNotification(broadcastId, subject) {
+  try {
+    console.log('\n📧 Sending notification...\n');
+
+    const { exec } = require('child_process');
+    const util = require('util');
+    const execPromise = util.promisify(exec);
+
+    // Send macOS desktop notification
+    const notificationTitle = "Newsletter Draft Ready! 📧";
+    const notificationMessage = `"${subject}" is ready for review in ConvertKit`;
+    const notificationCommand = `osascript -e 'display notification "${notificationMessage}" with title "${notificationTitle}" sound name "Glass"'`;
+
+    try {
+      await execPromise(notificationCommand);
+      console.log('✅ Desktop notification sent\n');
+    } catch (error) {
+      console.log('⚠️  Desktop notification failed:', error.message);
+    }
+
+    // Also send email via macOS mail (may require Mail.app to be configured)
+    const emailSubject = `Newsletter Draft Ready: ${subject}`;
+    const emailBody = `Hi Chris,
+
+Your newsletter draft is ready for review! 📧
+
+Newsletter: "${subject}"
+Draft ID: ${broadcastId}
+
+✅ What's included:
+- 3 news stories with your expertise connection
+- sadact authenticity details
+- Tool Philosophy footer
+- Specific tactical actions
+
+🎯 Review and approve:
+https://app.convertkit.com/broadcasts
+
+This should take about 15 minutes. Once reviewed, schedule for Tuesday 9 AM.
+
+Cheers,
+The Unsigned Advantage Bot 🤖`;
+
+    try {
+      const mailCommand = `echo "${emailBody.replace(/"/g, '\\"').replace(/\n/g, '\\n')}" | mail -s "${emailSubject}" promo@totalaudiopromo.com`;
+      await execPromise(mailCommand);
+      console.log('✅ Email sent to promo@totalaudiopromo.com\n');
+    } catch (error) {
+      console.log('⚠️  Email send failed (non-critical):', error.message);
+      console.log('   Desktop notification was sent instead\n');
+    }
+
+    return { success: true };
+
+  } catch (error) {
+    console.log('⚠️  Notification failed (non-critical):', error.message);
+    console.log('   Draft still created in ConvertKit - check dashboard manually\n');
+    return { success: false };
   }
 }
 
@@ -381,8 +443,12 @@ async function main() {
   const result = await sendToConvertKit(subject, htmlContent);
 
   if (result.success) {
+    // Send email notification
+    await sendEmailNotification(result.broadcastId, result.subject);
+
     console.log('\n━'.repeat(80));
-    console.log('\n🎉 SUCCESS! Newsletter draft ready for your review.\n');
+    console.log('\n🎉 SUCCESS! Newsletter draft ready for your review.');
+    console.log('📧 Email notification sent to promo@totalaudiopromo.com\n');
   } else {
     console.log('\n━'.repeat(80));
     console.log('\n❌ Failed to create ConvertKit draft. Check error above.\n');

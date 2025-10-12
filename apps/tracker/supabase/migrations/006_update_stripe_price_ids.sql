@@ -30,3 +30,6 @@ SET stripe_price_id_monthly = 'price_1Ro9zrPqujcPv5fbmjN7bph6',
     stripe_price_id_yearly = 'price_1Ro9yePqujcPv5fb4PBXlwVb'
 WHERE name = 'Agency Enterprise' AND user_type = 'agency';
 
+
+
+
