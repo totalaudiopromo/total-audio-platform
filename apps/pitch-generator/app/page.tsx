@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Sparkles, Zap, Clock, Target, TrendingUp, Copy, Star, Brain } from 'lucide-react';
+import { JsonLd, generateWebsiteJsonLd, generateSoftwareApplicationJsonLd, generateOrganizationJsonLd } from '@/lib/json-ld';
 
 const features = [
   {
@@ -41,9 +42,26 @@ const howItWorks = [
   },
 ];
 
+const websiteJsonLd = generateWebsiteJsonLd();
+const softwareJsonLd = generateSoftwareApplicationJsonLd();
+const organizationJsonLd = generateOrganizationJsonLd({
+  name: "Total Audio Promo",
+  url: "https://totalaudiopromo.com",
+  logo: "https://pitch.totalaudiopromo.com/total_audio_promo_logo_trans.png",
+  description: "AI-powered tools for music industry professionals including contact enrichment, pitch generation, and campaign tracking",
+  sameAs: [
+    "https://twitter.com/totalaudiopromo",
+    "https://linkedin.com/company/total-audio-promo",
+  ],
+});
+
 export default function HomePage() {
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
+    <>
+      <JsonLd data={websiteJsonLd} />
+      <JsonLd data={softwareJsonLd} />
+      <JsonLd data={organizationJsonLd} />
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
       {/* Hero */}
       <section className="glass-panel overflow-hidden px-6 py-16 sm:px-10 sm:py-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
@@ -294,5 +312,6 @@ export default function HomePage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

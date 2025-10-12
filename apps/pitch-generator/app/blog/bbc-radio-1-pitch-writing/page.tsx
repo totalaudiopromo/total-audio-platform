@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from 'next/link';
+import { JsonLd, generateBlogPostJsonLd } from '@/lib/json-ld';
 
 export const metadata: Metadata = {
   title: "BBC Radio 1 Pitch Writing: Industry Benchmarks & Success Rates (2025)",
@@ -17,10 +18,22 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = generateBlogPostJsonLd({
+  title: "BBC Radio 1 Pitch Writing: Industry Benchmarks & Success Rates (2025)",
+  description: "Write BBC Radio 1 pitches that get responses. See real success rates (11-18% by show), proven templates, and AI-powered insights from working radio promoters with Radio 1 experience.",
+  author: "Chris Schofield",
+  publishedDate: "2025-01-15",
+  modifiedDate: "2025-01-15",
+  url: "https://pitch.totalaudiopromo.com/blog/bbc-radio-1-pitch-writing",
+  keywords: ["bbc radio 1", "pitch writing", "radio promotion", "music industry", "radio templates"],
+});
+
 export default function BBCRadio1PitchWriting() {
   return (
-    <article className="min-h-screen bg-gray-50 px-4 py-12">
-      <div className="max-w-4xl mx-auto">
+    <>
+      <JsonLd data={jsonLd} />
+      <article className="min-h-screen bg-gray-50 px-4 py-12">
+        <div className="max-w-4xl mx-auto">
         <header className="mb-12">
           <Link href="/blog" className="text-purple-600 hover:text-purple-700 font-semibold mb-4 inline-block">
             ← Back to Blog
@@ -252,5 +265,6 @@ export default function BBCRadio1PitchWriting() {
         </div>
       </div>
     </article>
+    </>
   );
 }

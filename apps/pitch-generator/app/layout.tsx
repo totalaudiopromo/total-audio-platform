@@ -1,12 +1,20 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import Script from 'next/script';
+import dynamic from 'next/dynamic';
 import './globals.css';
 import { AuthProvider } from '@/components/AuthProvider';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
-import { ExitIntentPopup } from '@/components/ExitIntentPopup';
-import { CookieBanner } from '@/components/CookieBanner';
 import { defaultMetadata } from './metadata';
+
+// Lazy load non-critical components
+const ExitIntentPopup = dynamic(() => import('@/components/ExitIntentPopup').then(mod => ({ default: mod.ExitIntentPopup })), {
+  ssr: false,
+});
+
+const CookieBanner = dynamic(() => import('@/components/CookieBanner').then(mod => ({ default: mod.CookieBanner })), {
+  ssr: false,
+});
 
 const geistSans = Geist({ subsets: ['latin'], variable: '--font-sans' });
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' });

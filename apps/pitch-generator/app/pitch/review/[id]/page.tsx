@@ -4,9 +4,10 @@ import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Copy, CheckCircle2, Edit3, Send, Sparkles, Clock, Loader2, BarChart3 } from 'lucide-react';
+import { ArrowLeft, Copy, CheckCircle2, Edit3, Send, Sparkles, Clock, Loader2, BarChart3, FileDown } from 'lucide-react';
 import { supabase, type Pitch } from '@/lib/supabase';
 import { PitchAnalyser } from '@/components/PitchAnalyser';
+import { exportPitchToPDF, downloadPitchAsHTML } from '@/lib/pdf-export';
 
 export default function ReviewPitchPage() {
   const { data: session, status } = useSession();
@@ -349,6 +350,27 @@ export default function ReviewPitchPage() {
                     Copy to Clipboard
                   </>
                 )}
+              </button>
+              <button
+                onClick={() => {
+                  if (pitch) {
+                    exportPitchToPDF({
+                      artistName: pitch.artist_name || '',
+                      trackTitle: pitch.track_title || '',
+                      contactName: pitch.contact_name || '',
+                      contactOutlet: pitch.contact_outlet || undefined,
+                      subjectLine: pitch.selected_subject_line || pitch.subject_line || '',
+                      pitchBody: pitch.pitch_body || '',
+                      genre: pitch.genre || '',
+                      releaseDate: pitch.release_date || new Date().toISOString(),
+                      createdAt: pitch.created_at,
+                    });
+                  }
+                }}
+                className="subtle-button flex items-center gap-2"
+              >
+                <FileDown className="h-4 w-4" />
+                Export PDF
               </button>
               <button onClick={handleMarkAsSent} className="subtle-button flex items-center gap-2">
                 <Send className="h-4 w-4" />
