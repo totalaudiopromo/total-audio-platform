@@ -5,6 +5,7 @@ import { AuthProvider } from '@/components/AuthProvider';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { ExitIntentPopup } from '@/components/ExitIntentPopup';
+import { CookieBanner } from '@/components/CookieBanner';
 import { defaultMetadata } from './metadata';
 
 const geistSans = Geist({ subsets: ['latin'], variable: '--font-sans' });
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main className="flex-1 px-4 pb-16 pt-10 sm:px-8 lg:px-12 xl:px-16">{children}</main>
             <SiteFooter />
             <ExitIntentPopup />
+            <CookieBanner />
           </div>
         </AuthProvider>
       </body>

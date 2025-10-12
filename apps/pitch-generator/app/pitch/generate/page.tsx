@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Loader2, Sparkles } from 'lucide-react';
 import { supabase, type Contact } from '@/lib/supabase';
+import { trackPitchGenerated, trackContactAdded, trackFormValidationError } from '@/lib/analytics';
 
 interface FormData {
   contactId: string;
@@ -42,6 +43,7 @@ export default function GeneratePitchPage() {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
   const [importNotification, setImportNotification] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [voiceProfileActive, setVoiceProfileActive] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     contactId: '',
@@ -141,6 +143,9 @@ export default function GeneratePitchPage() {
           tone: newContact.preferred_tone || 'professional',
         }));
 
+        // Track contact import
+        trackContactAdded('audio_intel');
+
         // Show success notification
         setImportNotification(`Contact "${importedContact.name}" imported from Audio Intel!`);
         setTimeout(() => setImportNotification(null), 4000);
@@ -188,9 +193,23 @@ export default function GeneratePitchPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    
+
+    // Clear any previous errors
+    setErrorMessage(null);
+
+    // Validate contact selection
     if (!selectedContact) {
-      alert('Please select a contact');
+      trackFormValidationError('pitch_generation', 'contact');
+      setErrorMessage('Please select a contact before generating a pitch');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // Validate key hook minimum length
+    if (formData.keyHook.length < 50) {
+      trackFormValidationError('pitch_generation', 'key_hook');
+      setErrorMessage('Please provide more detail about what makes this track special (minimum 50 characters)');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
@@ -207,23 +226,30 @@ export default function GeneratePitchPage() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to generate pitch');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to generate pitch');
       }
 
       const result = await response.json();
-      
+
+      // Track successful pitch generation
+      trackPitchGenerated(formData.genre, selectedContact.outlet || undefined);
+
       // Redirect to review page with the generated pitch
       router.push(`/pitch/review/${result.pitchId}`);
     } catch (error) {
       console.error('Error generating pitch:', error);
-      alert('Failed to generate pitch. Please try again.');
+      setErrorMessage(error instanceof Error ? error.message : 'Failed to generate pitch. Please try again.');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } finally {
       setLoading(false);
     }
   }
 
   const hookCharCount = formData.keyHook.length;
+  const hookMinLength = 50;
   const hookMaxLength = 500;
+  const hookIsValid = hookCharCount >= hookMinLength && hookCharCount <= hookMaxLength;
 
   if (status === 'loading') {
     return (
@@ -239,10 +265,35 @@ export default function GeneratePitchPage() {
 
   return (
     <div className="mx-auto w-full max-w-3xl">
-      {/* Toast Notification */}
+      {/* Success Notification */}
       {importNotification && (
         <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black font-bold max-w-md">
           {importNotification}
+        </div>
+      )}
+
+      {/* Error Banner */}
+      {errorMessage && (
+        <div className="mb-6 glass-panel border-red-600 bg-red-50 px-6 py-4">
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 rounded-full bg-red-600 p-1">
+              <svg className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-red-900">Error</h3>
+              <p className="mt-1 text-sm text-red-800">{errorMessage}</p>
+            </div>
+            <button
+              onClick={() => setErrorMessage(null)}
+              className="flex-shrink-0 text-red-600 hover:text-red-800 transition"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
         </div>
       )}
 
@@ -358,16 +409,17 @@ export default function GeneratePitchPage() {
           {/* Genre */}
           <div>
             <label className="block text-sm font-semibold text-gray-900">
-              Genre <span className="text-danger">*</span>
+              Genre <span className="text-red-600" title="Required field">*</span>
             </label>
+            <p className="mt-1 text-xs text-gray-600">Select the primary genre that best represents this track</p>
             <select
               required
               value={formData.genre}
               onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="mt-2 w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             >
               {GENRES.map((genre) => (
-                <option key={genre} value={genre} className="bg-card text-foreground">
+                <option key={genre} value={genre} className="bg-white text-gray-900">
                   {genre.charAt(0).toUpperCase() + genre.slice(1)}
                 </option>
               ))}
@@ -391,19 +443,48 @@ export default function GeneratePitchPage() {
           {/* Key Hook */}
           <div>
             <label className="block text-sm font-semibold text-gray-900">
-              What makes this track special? <span className="text-danger">*</span>
+              What makes this track special? <span className="text-red-600" title="Required field">*</span>
             </label>
+            <p className="mt-1 text-xs text-gray-600">
+              Describe the vibe, sound, and story. Include artist comparisons if helpful. (Minimum {hookMinLength} characters)
+            </p>
             <textarea
               required
               value={formData.keyHook}
               onChange={(e) => setFormData({ ...formData, keyHook: e.target.value.slice(0, hookMaxLength) })}
               rows={4}
               placeholder="e.g. Intimate indie-folk about finding home after years of touring. Think Laura Marling meets Phoebe Bridgers - sparse production, honest lyrics, gorgeous harmonies."
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className={`mt-2 w-full rounded-xl border-2 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-2 ${
+                hookCharCount === 0
+                  ? 'border-gray-300 focus:border-blue-500 focus:ring-blue-500/50'
+                  : hookIsValid
+                  ? 'border-green-500 focus:border-green-500 focus:ring-green-500/50'
+                  : 'border-yellow-500 focus:border-yellow-500 focus:ring-yellow-500/50'
+              }`}
             />
-            <p className="mt-2 text-xs text-gray-500">
-              {hookCharCount} / {hookMaxLength} characters
-            </p>
+            <div className="mt-2 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                {hookCharCount > 0 && (
+                  <>
+                    {hookIsValid ? (
+                      <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600">
+                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        Good length
+                      </span>
+                    ) : hookCharCount < hookMinLength ? (
+                      <span className="text-xs font-medium text-yellow-600">
+                        Need {hookMinLength - hookCharCount} more characters
+                      </span>
+                    ) : null}
+                  </>
+                )}
+              </div>
+              <p className={`text-xs ${hookIsValid ? 'text-green-600 font-medium' : 'text-gray-500'}`}>
+                {hookCharCount} / {hookMaxLength} characters
+              </p>
+            </div>
           </div>
 
           {/* Track Link */}

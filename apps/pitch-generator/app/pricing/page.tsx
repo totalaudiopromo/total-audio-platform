@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
+import { trackPricingViewed, trackCheckoutStarted } from '@/lib/analytics';
 
 const plans = [
   {
@@ -87,10 +88,19 @@ export default function PricingPage() {
     }
   }, [session?.user?.email]);
 
+  useEffect(() => {
+    // Track pricing page view
+    trackPricingViewed();
+  }, []);
+
 
   const handleCheckout = async () => {
     setStatus('loading');
     setErrorMessage(null);
+
+    // Track checkout start
+    trackCheckoutStarted(selectedPlan, billing);
+
     try {
       const response = await fetch('/api/checkout', {
         method: 'POST',

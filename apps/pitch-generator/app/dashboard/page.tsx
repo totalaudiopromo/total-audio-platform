@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { Plus, Zap, Send, MessageCircle, TrendingUp, Loader2 } from 'lucide-react';
 import { supabase, type Pitch } from '@/lib/supabase';
 import { NewsletterSignup } from '@/components/NewsletterSignup';
+import { OnboardingChecklist } from '@/components/OnboardingChecklist';
+import { UsageMeter } from '@/components/UsageMeter';
 
 interface DashboardStats {
   totalPitches: number;
@@ -143,6 +145,16 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
+      {/* Onboarding Checklist - Show for new users */}
+      {stats.totalPitches === 0 && session?.user?.email && (
+        <OnboardingChecklist userId={session.user.email} />
+      )}
+
+      {/* Usage Meter - Show for free tier users */}
+      {session?.user?.email && (
+        <UsageMeter userId={session.user.email} />
+      )}
 
       {/* Empty State - Show when no pitches */}
       {stats.totalPitches === 0 ? (

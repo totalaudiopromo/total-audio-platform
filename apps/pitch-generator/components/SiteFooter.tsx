@@ -26,7 +26,7 @@ export function SiteFooter() {
           </div>
 
           {/* Links Section */}
-          <div className="grid grid-cols-2 gap-8 sm:gap-12">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-12">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Product</p>
               <ul className="mt-3 space-y-2">
@@ -38,6 +38,11 @@ export function SiteFooter() {
                 <li>
                   <Link href="/dashboard" className="text-sm text-gray-600 transition hover:text-blue-600">
                     Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="text-sm text-gray-600 transition hover:text-blue-600">
+                    Blog
                   </Link>
                 </li>
               </ul>
@@ -65,6 +70,22 @@ export function SiteFooter() {
                   >
                     Audio Intel
                   </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Legal</p>
+              <ul className="mt-3 space-y-2">
+                <li>
+                  <Link href="/privacy" className="text-sm text-gray-600 transition hover:text-blue-600">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="text-sm text-gray-600 transition hover:text-blue-600">
+                    Terms of Service
+                  </Link>
                 </li>
               </ul>
             </div>
