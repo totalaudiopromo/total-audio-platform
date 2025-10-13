@@ -261,35 +261,38 @@ What are you building? Let's connect.`,
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
+      <div className="postcraft-page flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Loading Social Media Hub...</h2>
-          <p className="text-gray-600">Preparing your content creation tools</p>
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-black border-t-transparent mx-auto mb-4"></div>
+          <h2 className="postcraft-section-title">Loading Social Media Hub...</h2>
+          <p className="postcraft-text">Preparing your content creation tools</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="postcraft-container">
+    <div className="postcraft-page">
       {/* Header */}
-      <div className="postcraft-section text-center">
-        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-          Social Media Hub
-        </h1>
-        <p className="text-gray-600 text-lg mb-6">
-          Multi-platform content creation and scheduling
-        </p>
-        <div className="postcraft-status">
-          <div className="postcraft-status-dot"></div>
-          <span>{PLATFORMS.filter(p => p.connected).length} platforms connected</span>
+      <div className="postcraft-header mb-8">
+        <div className="flex items-center gap-4">
+          <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center border-3 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <Share2 className="w-7 h-7 text-white" />
+          </div>
+          <div>
+            <h1 className="postcraft-title mb-1">Social Media Hub</h1>
+            <p className="postcraft-subtitle">Multi-platform content creation and scheduling</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 mt-4 px-4 py-2 bg-green-100 rounded-xl border-3 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] max-w-fit">
+          <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+          <span className="font-bold text-gray-900">{PLATFORMS.filter(p => p.connected).length} platforms connected</span>
         </div>
       </div>
 
       {/* Tab Navigation */}
-      <div className="postcraft-section">
-        <div className="flex gap-2 p-1 bg-gray-100 rounded-lg">
+      <div className="postcraft-section mb-8">
+        <div className="flex gap-3 flex-wrap">
           {[
             { key: 'compose', label: 'Compose', icon: Edit },
             { key: 'calendar', label: 'Calendar', icon: Calendar },
@@ -299,10 +302,10 @@ What are you building? Let's connect.`,
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key as any)}
-              className={`flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all flex items-center justify-center gap-2 ${
+              className={`postcraft-button flex items-center gap-2 ${
                 activeTab === tab.key
-                  ? 'postcraft-button-gradient text-white'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-black text-white'
+                  : ''
               }`}
             >
               <tab.icon size={16} />
@@ -316,22 +319,22 @@ What are you building? Let's connect.`,
       {activeTab === 'compose' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Composer */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Create Post</h2>
+          <div className="postcraft-card">
+            <h2 className="postcraft-section-title mb-6">Create Post</h2>
             
             {/* Platform Selection */}
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="postcraft-label mb-3">
                 Select Platforms
               </label>
               <div className="grid grid-cols-2 gap-3">
                 {PLATFORMS.map(platform => (
                   <label
                     key={platform.id}
-                    className={`flex items-center gap-3 p-3 rounded-lg border-2 cursor-pointer transition-all ${
+                    className={`flex items-center gap-3 p-3 rounded-xl border-3 cursor-pointer transition-all ${
                       selectedPlatforms.includes(platform.id)
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? 'border-black bg-gray-100 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                        : 'border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
                     } ${!platform.connected ? 'opacity-60 cursor-not-allowed' : ''}`}
                   >
                     <input
@@ -341,12 +344,12 @@ What are you building? Let's connect.`,
                       disabled={!platform.connected}
                       className="hidden"
                     />
-                    <span className={`px-2 py-1 rounded text-sm font-medium ${platform.color}`}>
+                    <span className={`px-2 py-1 rounded text-sm font-bold border-2 border-black ${platform.color}`}>
                       {platform.icon}
                     </span>
                     <div className="flex-1">
-                      <div className="text-sm font-medium">{platform.name}</div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-sm font-bold">{platform.name}</div>
+                      <div className="text-xs text-gray-600 font-medium">
                         {platform.connected ? `${platform.maxChars} chars` : 'Not connected'}
                       </div>
                     </div>
@@ -357,7 +360,7 @@ What are you building? Let's connect.`,
 
             {/* Content Input */}
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="postcraft-label mb-3">
                 Post Content
               </label>
               <textarea
@@ -365,14 +368,14 @@ What are you building? Let's connect.`,
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="Share your authentic insights about the music industry..."
                 rows={8}
-                className="w-full p-4 border border-gray-300 rounded-lg text-sm resize-vertical focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full p-4 border-3 border-black rounded-xl text-sm resize-vertical focus:ring-2 focus:ring-blue-500 focus:border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               />
-              <div className="flex justify-between items-center mt-2 text-xs">
-                <span className={getCharacterCount() > getCharacterLimit() ? 'text-red-600' : 'text-gray-500'}>
+              <div className="flex justify-between items-center mt-2 text-xs font-bold">
+                <span className={getCharacterCount() > getCharacterLimit() ? 'text-red-600' : 'text-gray-600'}>
                   {getCharacterCount()}/{getCharacterLimit()} characters
                 </span>
                 {getCharacterCount() > getCharacterLimit() && (
-                  <span className="text-red-600 font-medium">
+                  <span className="text-red-600">
                     Content too long for selected platforms
                   </span>
                 )}
@@ -381,16 +384,16 @@ What are you building? Let's connect.`,
 
             {/* Scheduling */}
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="postcraft-label mb-3">
                 Schedule (Optional)
               </label>
               <div className="flex gap-3">
                 <button
                   onClick={() => setScheduledTime('')}
-                  className={`flex-1 px-4 py-3 rounded-lg border-2 font-medium text-sm flex items-center justify-center gap-2 transition-all ${
+                  className={`flex-1 postcraft-button flex items-center justify-center gap-2 ${
                     !scheduledTime
-                      ? 'border-blue-500 bg-blue-50 text-blue-700'
-                      : 'border-gray-200 text-gray-700 hover:border-gray-300'
+                      ? 'bg-black text-white'
+                      : ''
                   }`}
                 >
                   <Send size={16} />
@@ -401,7 +404,7 @@ What are you building? Let's connect.`,
                   value={scheduledTime}
                   onChange={(e) => setScheduledTime(e.target.value)}
                   min={new Date().toISOString().slice(0, 16)}
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="flex-1 px-4 py-3 border-3 border-black rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 />
               </div>
             </div>
@@ -410,7 +413,7 @@ What are you building? Let's connect.`,
             <button
               onClick={handleSchedulePost}
               disabled={!content.trim() || selectedPlatforms.length === 0 || getCharacterCount() > getCharacterLimit()}
-              className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-medium text-sm flex items-center justify-center gap-2 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-full postcraft-button bg-gradient-to-br from-blue-600 to-purple-600 text-white flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Clock size={16} />
               {scheduledTime ? 'Schedule Post' : 'Post Now'}
@@ -418,25 +421,25 @@ What are you building? Let's connect.`,
           </div>
 
           {/* Preview */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Preview</h3>
+          <div className="postcraft-card">
+            <h3 className="postcraft-label mb-4">Preview</h3>
             {content ? (
               <div className="space-y-4">
                 {selectedPlatforms.map(platformId => {
                   const platform = PLATFORMS.find(p => p.id === platformId);
                   if (!platform) return null;
-                  
+
                   return (
-                    <div key={platformId} className="border border-gray-200 rounded-lg p-4">
+                    <div key={platformId} className="border-3 border-black rounded-xl p-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className={`px-2 py-1 rounded text-xs font-medium ${platform.color}`}>
+                        <span className={`px-2 py-1 rounded text-xs font-bold border-2 border-black ${platform.color}`}>
                           {platform.icon}
                         </span>
-                        <span className="text-sm font-medium">{platform.name}</span>
+                        <span className="text-sm font-bold">{platform.name}</span>
                       </div>
-                      <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm whitespace-pre-line">
-                        {content.length > platform.maxChars ? 
-                          content.substring(0, platform.maxChars) + '...' : 
+                      <div className="bg-gray-100 border-2 border-black rounded-lg p-3 text-sm whitespace-pre-line">
+                        {content.length > platform.maxChars ?
+                          content.substring(0, platform.maxChars) + '...' :
                           content
                         }
                       </div>
@@ -445,7 +448,7 @@ What are you building? Let's connect.`,
                 })}
               </div>
             ) : (
-              <div className="text-center text-gray-500 py-8">
+              <div className="text-center postcraft-text py-8">
                 Content preview will appear here
               </div>
             )}
@@ -454,35 +457,35 @@ What are you building? Let's connect.`,
       )}
 
       {activeTab === 'templates' && (
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+        <div className="postcraft-card">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold text-gray-900">Content Templates</h2>
-            <span className="text-sm text-gray-600">
+            <h2 className="postcraft-section-title">Content Templates</h2>
+            <span className="postcraft-text">
               {contentTemplates.length} authentic templates
             </span>
           </div>
 
           <div className="space-y-4">
             {contentTemplates.map(template => (
-              <div key={template.id} className="border border-gray-200 rounded-lg p-6">
+              <div key={template.id} className="border-3 border-black rounded-xl p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <h3 className="postcraft-label mb-2">
                       {template.name}
                     </h3>
-                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                      template.category === 'announcement' ? 'bg-blue-100 text-blue-800' :
-                      template.category === 'insight' ? 'bg-green-100 text-green-800' :
-                      template.category === 'personal' ? 'bg-orange-100 text-orange-800' : 'bg-blue-100 text-blue-800'
+                    <span className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black ${
+                      template.category === 'announcement' ? 'bg-blue-500 text-white' :
+                      template.category === 'insight' ? 'bg-green-500 text-white' :
+                      template.category === 'personal' ? 'bg-orange-500 text-white' : 'bg-blue-500 text-white'
                     }`}>
                       {template.category}
                     </span>
                   </div>
-                  
+
                   <div className="flex gap-2">
                     <button
                       onClick={() => copyToClipboard(template.content, template.id)}
-                      className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                      className="p-2 border-3 border-black rounded-lg hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
                       title="Copy content"
                     >
                       {copiedId === template.id ? <Check size={14} /> : <Copy size={14} />}
@@ -492,19 +495,19 @@ What are you building? Let's connect.`,
                         setContent(template.content);
                         setSelectedPlatforms(template.platforms);
                       }}
-                      className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
+                      className="postcraft-button"
                     >
                       Use Template
                     </button>
                   </div>
                 </div>
 
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4 text-sm whitespace-pre-line">
+                <div className="bg-gray-100 border-2 border-black rounded-lg p-4 mb-4 text-sm whitespace-pre-line font-medium">
                   {template.content}
                 </div>
 
                 {template.performance && (
-                  <div className="flex justify-between text-xs text-gray-600">
+                  <div className="flex justify-between text-xs font-bold text-gray-900">
                     <span>{template.performance.avgEngagement}% avg engagement</span>
                     <span>{template.performance.totalReach.toLocaleString()} total reach</span>
                     <span>{template.performance.conversionRate}% conversion</span>
@@ -517,12 +520,12 @@ What are you building? Let's connect.`,
       )}
 
       {activeTab === 'calendar' && (
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+        <div className="postcraft-card">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold text-gray-900">Scheduled Posts</h2>
-            <button 
+            <h2 className="postcraft-section-title">Scheduled Posts</h2>
+            <button
               onClick={fetchData}
-              className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium flex items-center gap-2"
+              className="postcraft-button flex items-center gap-2"
             >
               <RefreshCw size={16} />
               Refresh
@@ -530,41 +533,41 @@ What are you building? Let's connect.`,
           </div>
 
           {scheduledPosts.length === 0 ? (
-            <div className="text-center text-gray-500 py-12">
+            <div className="text-center postcraft-text py-12">
               <Calendar size={48} className="mx-auto mb-4 opacity-50" />
               <p>No scheduled posts</p>
             </div>
           ) : (
             <div className="space-y-4">
               {scheduledPosts.map(post => (
-                <div key={post.id} className="border border-gray-200 rounded-lg p-6">
+                <div key={post.id} className="border-3 border-black rounded-xl p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <div className="flex gap-2 mb-2">
                         {post.platforms.map(platformId => {
                           const platform = PLATFORMS.find(p => p.id === platformId);
                           return platform ? (
-                            <span key={platformId} className={`px-2 py-1 rounded text-xs font-medium ${platform.color}`}>
+                            <span key={platformId} className={`px-2 py-1 rounded text-xs font-bold border-2 border-black ${platform.color}`}>
                               {platform.icon}
                             </span>
                           ) : null;
                         })}
                       </div>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm font-bold text-gray-900">
                         {post.scheduledTime.toLocaleString()}
                       </p>
                     </div>
-                    
-                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                      post.status === 'scheduled' ? 'bg-blue-100 text-blue-800' :
-                      post.status === 'published' ? 'bg-green-100 text-green-800' :
-                      post.status === 'failed' ? 'bg-red-100 text-red-800' : 'bg-orange-100 text-orange-800'
+
+                    <span className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black ${
+                      post.status === 'scheduled' ? 'bg-blue-500 text-white' :
+                      post.status === 'published' ? 'bg-green-500 text-white' :
+                      post.status === 'failed' ? 'bg-red-500 text-white' : 'bg-orange-500 text-white'
                     }`}>
                       {post.status}
                     </span>
                   </div>
 
-                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4 text-sm whitespace-pre-line">
+                  <div className="bg-gray-100 border-2 border-black rounded-lg p-4 mb-4 text-sm whitespace-pre-line font-medium">
                     {post.content}
                   </div>
 
@@ -602,73 +605,57 @@ What are you building? Let's connect.`,
       {activeTab === 'analytics' && (
         <div className="space-y-8">
           {/* Performance Metrics */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                  <TrendingUp className="w-6 h-6 text-green-600" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-gray-900">8.7%</div>
-                  <div className="text-sm text-gray-600">Avg Engagement Rate</div>
-                </div>
+          <div className="postcraft-metrics-grid">
+            <div className="postcraft-metric-card">
+              <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
+                <TrendingUp className="w-6 h-6 text-white" />
               </div>
+              <div className="postcraft-metric-value">8.7%</div>
+              <div className="postcraft-metric-label">Avg Engagement Rate</div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                  <Users className="w-6 h-6 text-blue-600" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-gray-900">34,200</div>
-                  <div className="text-sm text-gray-600">Total Reach</div>
-                </div>
+            <div className="postcraft-metric-card">
+              <div className="postcraft-metric-icon bg-gradient-to-br from-blue-500 to-cyan-500">
+                <Users className="w-6 h-6 text-white" />
               </div>
+              <div className="postcraft-metric-value">34,200</div>
+              <div className="postcraft-metric-label">Total Reach</div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
-                  <Target className="w-6 h-6 text-yellow-600" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-gray-900">23</div>
-                  <div className="text-sm text-gray-600">Audio Intel Signups</div>
-                </div>
+            <div className="postcraft-metric-card">
+              <div className="postcraft-metric-icon bg-gradient-to-br from-yellow-500 to-orange-500">
+                <Target className="w-6 h-6 text-white" />
               </div>
+              <div className="postcraft-metric-value">23</div>
+              <div className="postcraft-metric-label">Audio Intel Signups</div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-4">
-                  <MessageSquare className="w-6 h-6 text-red-600" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-gray-900">11.2%</div>
-                  <div className="text-sm text-gray-600">Conversion Rate</div>
-                </div>
+            <div className="postcraft-metric-card">
+              <div className="postcraft-metric-icon bg-gradient-to-br from-red-500 to-pink-500">
+                <MessageSquare className="w-6 h-6 text-white" />
               </div>
+              <div className="postcraft-metric-value">11.2%</div>
+              <div className="postcraft-metric-label">Conversion Rate</div>
             </div>
           </div>
 
           {/* Top Performing Content */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Top Performing Templates</h2>
+          <div className="postcraft-card">
+            <h2 className="postcraft-section-title mb-6">Top Performing Templates</h2>
             <div className="space-y-4">
               {contentTemplates
                 .filter(t => t.performance)
                 .sort((a, b) => (b.performance?.conversionRate || 0) - (a.performance?.conversionRate || 0))
                 .slice(0, 3)
                 .map(template => (
-                  <div key={template.id} className="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                  <div key={template.id} className="p-4 border-3 border-black rounded-xl bg-gray-100 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                     <div className="flex justify-between items-center mb-2">
-                      <h3 className="font-semibold text-gray-900">{template.name}</h3>
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      <h3 className="postcraft-label">{template.name}</h3>
+                      <span className="inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black bg-green-500 text-white">
                         {template.performance?.conversionRate}% conversion
                       </span>
                     </div>
-                    <div className="flex gap-6 text-sm text-gray-600">
+                    <div className="flex gap-6 text-sm font-bold text-gray-900">
                       <span>{template.performance?.avgEngagement}% engagement</span>
                       <span>{template.performance?.totalReach.toLocaleString()} reach</span>
                     </div>

@@ -162,7 +162,7 @@ export default function SocialPostingPage() {
   const displayPosts = posts.length > 0 ? posts : fallbackPosts;
 
   return (
-    <div className="postcraft-container">
+    <div className="postcraft-page postcraft-container">
       {/* Header */}
       <div className="postcraft-section">
         <div className="postcraft-section-header text-center">

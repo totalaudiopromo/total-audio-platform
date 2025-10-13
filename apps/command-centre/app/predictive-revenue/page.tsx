@@ -27,7 +27,7 @@ export default function PredictiveRevenuePage() {
 
   if (isLoading) {
     return (
-      <div className="intel-page">
+    <div className="postcraft-page intel-page">
         <div className="intel-loading">
           <div className="intel-spinner"></div>
           <h2 style={{ fontSize: '1.25rem', fontWeight: '600', color: 'var(--intel-gray-700)' }}>

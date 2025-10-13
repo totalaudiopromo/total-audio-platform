@@ -164,48 +164,48 @@ export default function ReportsPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
+      <div className="postcraft-page flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Loading Reports...</h2>
-          <p className="text-gray-600">Preparing business intelligence</p>
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-black border-t-transparent mx-auto mb-4"></div>
+          <h2 className="postcraft-section-title">Loading Reports...</h2>
+          <p className="postcraft-text">Preparing business intelligence</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="postcraft-container">
+    <div className="postcraft-page">
       {/* Header */}
-      <div className="postcraft-section text-center">
-        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-          Business Reports
-        </h1>
-        <p className="text-gray-600 text-lg mb-4">
-          Generate and download comprehensive business intelligence reports
-        </p>
-        <div className="postcraft-status">
-          <div className="postcraft-status-dot"></div>
-          <span>{filteredReports.length} reports available</span>
+      <div className="postcraft-header mb-8">
+        <div className="flex items-center gap-4">
+          <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center border-3 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <FileText className="w-7 h-7 text-white" />
+          </div>
+          <div>
+            <h1 className="postcraft-title mb-1">Business Reports</h1>
+            <p className="postcraft-subtitle">Generate and download comprehensive business intelligence reports</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 mt-4 px-4 py-2 bg-blue-100 rounded-xl border-3 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] max-w-fit">
+          <BarChart3 className="w-5 h-5 text-blue-600" />
+          <span className="font-bold text-gray-900">{filteredReports.length} reports available</span>
         </div>
       </div>
 
       {/* Filter Section */}
-      <div className="postcraft-section">
-        <div className="postcraft-section-header">
-          <Filter className="w-6 h-6 inline-block mr-2" />
-          <h2 className="inline">Filter Reports</h2>
-        </div>
+      <div className="postcraft-section mb-8">
+        <h2 className="postcraft-section-title mb-6">Filter Reports</h2>
 
         <div className="flex gap-3 flex-wrap">
           {['all', 'business', 'technical', 'user', 'financial'].map((type) => (
             <button
               key={type}
               onClick={() => setSelectedType(type)}
-              className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+              className={`postcraft-button ${
                 selectedType === type
-                  ? 'postcraft-button-gradient text-white'
-                  : 'postcraft-button'
+                  ? 'bg-black text-white'
+                  : ''
               }`}
             >
               {type === 'all' ? 'All Reports' : type.charAt(0).toUpperCase() + type.slice(1)}
@@ -217,41 +217,53 @@ export default function ReportsPage() {
       {/* Reports Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredReports.map((report) => {
-          const getStatusIcon = (status: string) => {
-            switch (status) {
-              case 'ready': return <BarChart3 className="w-4 h-4 text-green-600" />;
-              case 'generating': return <RefreshCw className="w-4 h-4 text-yellow-600 animate-spin" />;
-              case 'error': return <FileText className="w-4 h-4 text-red-600" />;
-              default: return <FileText className="w-4 h-4 text-gray-600" />;
+          const getTypeColorBadge = (type: string) => {
+            switch (type) {
+              case 'business': return 'bg-blue-500';
+              case 'technical': return 'bg-purple-500';
+              case 'user': return 'bg-green-500';
+              case 'financial': return 'bg-red-500';
+              default: return 'bg-gray-500';
             }
           };
-          
+
+          const getStatusBadge = (status: string) => {
+            switch (status) {
+              case 'ready': return { color: 'bg-green-500', icon: <BarChart3 className="w-4 h-4 text-white" /> };
+              case 'generating': return { color: 'bg-yellow-500', icon: <RefreshCw className="w-4 h-4 text-white animate-spin" /> };
+              case 'error': return { color: 'bg-red-500', icon: <FileText className="w-4 h-4 text-white" /> };
+              default: return { color: 'bg-gray-500', icon: <FileText className="w-4 h-4 text-white" /> };
+            }
+          };
+
+          const statusBadge = getStatusBadge(report.status);
+
           return (
             <div key={report.id} className="postcraft-card">
               {/* Header */}
               <div className="flex justify-between items-start mb-4">
-                <div className={`postcraft-metric-badge ${getTypeColor(report.type)}`}>
+                <div className={`${getTypeColorBadge(report.type)} text-white px-3 py-1 rounded-lg font-bold text-xs border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}>
                   {report.type.toUpperCase()}
                 </div>
-                <div className="postcraft-status">
-                  {getStatusIcon(report.status)}
-                  <span className="capitalize">{report.status}</span>
+                <div className={`${statusBadge.color} px-3 py-1 rounded-lg flex items-center gap-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}>
+                  {statusBadge.icon}
+                  <span className="text-white font-bold text-xs capitalize">{report.status}</span>
                 </div>
               </div>
 
               {/* Content */}
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
+              <h3 className="postcraft-label mb-3">
                 {report.title}
               </h3>
 
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+              <p className="postcraft-text mb-4">
                 {report.description}
               </p>
 
-              <div className="bg-gray-50 p-3 rounded-lg mb-6 border border-gray-200">
-                <div className="flex items-center gap-2 text-sm text-gray-700">
+              <div className="bg-gray-100 p-3 rounded-xl mb-6 border-3 border-black">
+                <div className="flex items-center gap-2 text-sm font-bold text-gray-900">
                   <Calendar className="w-4 h-4" />
-                  <span>Last generated: {new Date(report.lastGenerated).toLocaleDateString('en-GB', {
+                  <span>Last: {new Date(report.lastGenerated).toLocaleDateString('en-GB', {
                     day: 'numeric',
                     month: 'short',
                     year: 'numeric',
@@ -266,10 +278,10 @@ export default function ReportsPage() {
                 <button
                   onClick={() => generateReport(report.id)}
                   disabled={report.status === 'generating'}
-                  className={`w-full px-4 py-2 rounded-lg font-medium text-sm flex items-center justify-center gap-2 transition-colors ${
+                  className={`w-full postcraft-button flex items-center justify-center gap-2 ${
                     report.status === 'generating'
-                      ? 'bg-gray-100 text-gray-500 cursor-not-allowed'
-                      : 'postcraft-button-gradient text-white'
+                      ? 'opacity-50 cursor-not-allowed'
+                      : 'bg-gradient-to-br from-blue-600 to-purple-600 text-white'
                   }`}
                 >
                   {report.status === 'generating' ? (
@@ -310,12 +322,12 @@ export default function ReportsPage() {
       </div>
 
       {filteredReports.length === 0 && (
-        <div className="bg-white p-12 rounded-lg shadow-sm border border-gray-200 text-center">
-          <div className="w-16 h-16 bg-gray-100 rounded-xl mx-auto mb-4 flex items-center justify-center">
-            <FileText className="w-8 h-8 text-gray-400" />
+        <div className="postcraft-card text-center">
+          <div className="w-16 h-16 bg-gray-500 rounded-xl mx-auto mb-4 flex items-center justify-center border-3 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <FileText className="w-8 h-8 text-white" />
           </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">No reports found</h3>
-          <p className="text-gray-600">Try selecting a different filter to see available reports</p>
+          <h3 className="postcraft-section-title mb-2">No reports found</h3>
+          <p className="postcraft-text">Try selecting a different filter to see available reports</p>
         </div>
       )}
     </div>

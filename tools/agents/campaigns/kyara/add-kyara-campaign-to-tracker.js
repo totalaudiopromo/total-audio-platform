@@ -8,17 +8,24 @@
  */
 
 const { createClient } = require('@supabase/supabase-js');
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../../../../apps/tracker/.env.local') });
 
-// Supabase setup (from your tracker app)
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ozgghhnzjfvqlajjyshh.supabase.co';
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+// Supabase setup (from your tracker app .env.local)
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ucncbighzqudaszewjrv.supabase.co';
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 if (!supabaseKey) {
-  console.error('❌ SUPABASE_SERVICE_ROLE_KEY or NEXT_PUBLIC_SUPABASE_ANON_KEY not found in environment');
-  console.log('   Add this to your .env file in apps/tracker/');
+  console.error('❌ SUPABASE_ANON_KEY not found in environment');
+  console.log('   Expected location: apps/tracker/.env.local');
+  console.log('   URL found:', supabaseUrl);
   process.exit(1);
 }
+
+console.log('✅ Loaded Supabase config from apps/tracker/.env.local');
+console.log(`   URL: ${supabaseUrl}`);
+console.log(`   Key: ${supabaseKey.substring(0, 20)}...`);
+console.log('');
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 

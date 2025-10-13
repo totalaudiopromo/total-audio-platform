@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ToolSwitcher } from '@/components/ToolSwitcher';
+import { ToolSwitcher } from '@total-audio/ui';
 
 const navLinks = [
   { href: 'features', label: 'Features' },

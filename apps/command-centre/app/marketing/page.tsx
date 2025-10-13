@@ -68,7 +68,7 @@ export default function SaaSMarketingPage() {
   };
 
   return (
-      <div className="space-y-8">
+    <div className="postcraft-page space-y-8">
         {/* Header */}
         <div className="postcraft-section">
           <div className="postcraft-section-header">

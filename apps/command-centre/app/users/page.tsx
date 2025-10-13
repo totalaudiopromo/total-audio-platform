@@ -198,7 +198,7 @@ export default function UserManagementPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
+    <div className="postcraft-page min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-sm border border-white/20">
             <div className="flex items-center justify-center h-64">

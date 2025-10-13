@@ -27,8 +27,8 @@ export default function NotFound() {
             Oops! Page Not Found
           </h2>
           <p className="text-xl font-bold text-gray-600 mb-8 max-w-lg mx-auto">
-            Our Audio mascot couldn't find what you're looking for. 
-            The page might have been moved, deleted, or never existed.
+            The page you're looking for doesn't exist.
+            It might have been moved, deleted, or the link might be incorrect.
           </p>
         </div>
 
