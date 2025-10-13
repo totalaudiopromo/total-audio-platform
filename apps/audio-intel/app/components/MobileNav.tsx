@@ -101,7 +101,7 @@ export default function MobileNav() {
         </Link>
         <div className="flex items-center gap-2">
           <div className="hidden sm:block">
-            <ToolSwitcher />
+            <ToolSwitcher currentTool="Audio Intel" accentColor="blue" />
           </div>
           <button
             aria-label="Open menu"
