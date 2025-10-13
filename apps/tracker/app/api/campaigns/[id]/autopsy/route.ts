@@ -23,8 +23,9 @@ function extractSection(text: string, sectionName: string): string {
 // ============================================================================
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const resolvedParams = await params;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -36,7 +37,7 @@ export async function GET(
   const { data: intelligence, error } = await supabase
     .from('campaign_intelligence')
     .select('*')
-    .eq('campaign_id', params.id)
+    .eq('campaign_id', resolvedParams.id)
     .eq('user_id', user.id)
     .single();
 
@@ -60,8 +61,9 @@ export async function GET(
 // ============================================================================
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const resolvedParams = await params;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -73,7 +75,7 @@ export async function POST(
   const { data: campaign, error: campaignError } = await supabase
     .from('campaigns')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', resolvedParams.id)
     .eq('user_id', user.id)
     .single();
 
@@ -148,7 +150,7 @@ Provide analysis in this EXACT format:
 Use UK spelling, music industry terminology (BBC Radio 1, 6Music, playlisting, daytime rotation, etc.), and be conversational but professional. No corporate bullshit. Be genuinely helpful.`;
 
   try {
-    console.log('Calling Claude API for campaign:', params.id);
+    console.log('Calling Claude API for campaign:', resolvedParams.id);
 
     // Call Claude API
     const message = await anthropic.messages.create({
@@ -181,7 +183,7 @@ Use UK spelling, music industry terminology (BBC Radio 1, 6Music, playlisting, d
     const { error: saveError } = await supabase
       .from('campaign_intelligence')
       .upsert({
-        campaign_id: params.id,
+        campaign_id: resolvedParams.id,
         user_id: user.id,
         autopsy_text: sections.autopsy,
         next_move: sections.nextMove,

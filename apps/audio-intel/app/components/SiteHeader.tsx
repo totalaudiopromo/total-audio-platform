@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { SiteHeader as SharedSiteHeader } from '@total-audio/ui';
-import { ToolSwitcher } from '@total-audio/ui';
+import { SiteHeader as SharedSiteHeader } from '@/components/shared/SiteHeader';
+import { ToolSwitcher } from '@/components/shared/ToolSwitcher';
 import { UsageStats } from '@/components/UsageStats';
 import { createClient } from '@/lib/supabase/client';
 import { useEffect, useState } from 'react';
