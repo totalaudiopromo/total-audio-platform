@@ -15,7 +15,10 @@
     "test:mobile:headed": "playwright test tests/mobile/ --headed",
     "test:mobile:report": "playwright show-report reports/mobile",
     "pseo:generate": "tsx utils/pseo/generatePages.ts",
-    "pseo:validate": "tsx utils/pseo/generatePages.ts --validate-only --all"
+    "pseo:validate": "tsx utils/pseo/generatePages.ts --validate-only --all",
+    "check-colours": "node scripts/check-brand-colours.js",
+    "fix-colours": "node scripts/fix-brand-colours.js",
+    "prebuild": "npm run check-colours"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.5",
