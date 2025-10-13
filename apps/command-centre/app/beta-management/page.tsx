@@ -247,112 +247,32 @@ Total Audio Promo`;
 
   if (isLoading) {
     return (
-      <div style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #ddd6fe 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-      }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{
-            width: '48px',
-            height: '48px',
-            border: '4px solid #e2e8f0',
-            borderTop: '4px solid #3b82f6',
-            borderRadius: '50%',
-            animation: 'spin 1s linear infinite',
-            margin: '0 auto'
-          }}></div>
-          <p style={{ color: '#64748b', marginTop: '1rem', fontSize: '0.875rem' }}>
-            Loading Beta Management...
-          </p>
+      <div className="postcraft-page flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-black border-t-transparent mx-auto mb-4"></div>
+          <h2 className="postcraft-section-title">Loading Beta Management...</h2>
+          <p className="postcraft-text">Preparing your dashboard</p>
         </div>
-        <style jsx>{`
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-        `}</style>
       </div>
     );
   }
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #ddd6fe 100%)',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-    }}>
+    <div className="postcraft-page">
       {/* Header */}
-      <header style={{
-        background: 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid #e2e8f0',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)'
-      }}>
-        <div style={{
-          maxWidth: '1400px',
-          margin: '0 auto',
-          padding: '1rem 1.5rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: '1rem'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <button
-              onClick={() => window.history.back()}
-              style={{
-                background: '#f1f5f9',
-                border: '1px solid #e2e8f0',
-                borderRadius: '8px',
-                padding: '0.5rem',
-                cursor: 'pointer',
-                color: '#64748b'
-              }}
-            >
-              ← Back
-            </button>
-            <div style={{
-              width: '56px',
-              height: '56px',
-              background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-              borderRadius: '16px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 10px 25px rgba(99, 102, 241, 0.3)'
-            }}>
-              <svg width="28" height="28" fill="white" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="currentColor" fill="none"/>
-              </svg>
+      <div className="postcraft-header mb-8">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-14 h-14 bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl flex items-center justify-center border-3 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <Users className="w-7 h-7 text-white" />
             </div>
             <div>
-              <h1 style={{ 
-                fontSize: '2rem', 
-                fontWeight: '900', 
-                margin: 0, 
-                color: '#1a202c',
-                letterSpacing: '-0.025em'
-              }}>
-                Beta Management
-              </h1>
-              <p style={{ 
-                fontSize: '0.875rem', 
-                color: '#64748b', 
-                margin: 0,
-                fontWeight: '500'
-              }}>
-                Manage Audio Intel beta users and signups
-              </p>
+            <h1 className="postcraft-title mb-1">Beta Management</h1>
+            <p className="postcraft-subtitle">Manage Audio Intel beta users and signups</p>
             </div>
           </div>
           
           {/* Tab Navigation */}
-          <div style={{ display: 'flex', gap: '0.5rem', background: '#f1f5f9', borderRadius: '12px', padding: '0.25rem' }}>
+        <div className="flex flex-wrap gap-3">
             {[
               { key: 'dashboard', label: 'Overview', icon: BarChart3 },
               { key: 'users', label: 'User Management', icon: Users },
@@ -362,20 +282,7 @@ Total Audio Promo`;
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key as any)}
-                style={{
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '8px',
-                  border: 'none',
-                  background: activeTab === tab.key ? '#3b82f6' : 'transparent',
-                  color: activeTab === tab.key ? 'white' : '#64748b',
-                  fontWeight: '600',
-                  fontSize: '0.875rem',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem'
-                }}
+              className={`postcraft-button flex items-center gap-2 ${activeTab === tab.key ? 'bg-black text-white' : ''}`}
               >
                 <tab.icon size={16} />
                 {tab.label}
@@ -383,38 +290,29 @@ Total Audio Promo`;
             ))}
           </div>
         </div>
-      </header>
 
       {/* Main Content */}
-      <main style={{
-        maxWidth: '1400px',
-        margin: '0 auto',
-        padding: '2rem 1.5rem'
-      }}>
+      <div>
         {activeTab === 'users' ? (
           /* Enhanced User Management */
-          <div className="intel-page">
-            <div className="intel-container">
-              {/* Search and Filter Controls */}
-              <div className="intel-card" style={{ marginBottom: '2rem' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-                    <h2 style={{ fontSize: '1.5rem', fontWeight: '700', margin: 0 }}>
+          <div className="postcraft-section mb-8">
+            <div className="postcraft-card">
+              <div className="flex flex-col gap-6">
+                <div className="flex items-center justify-between flex-wrap gap-4">
+                  <h2 className="postcraft-section-title">
                       User Management ({filteredUsers.length} users)
                     </h2>
-                    <div style={{ display: 'flex', gap: '0.75rem' }}>
+                  <div className="flex gap-3">
                       <button
                         onClick={exportUserData}
-                        className="intel-button-secondary"
-                        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                      className="postcraft-button flex items-center gap-2"
                       >
                         <Download size={16} />
                         Export CSV
                       </button>
                       <button
                         onClick={fetchBetaData}
-                        className="intel-button"
-                        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                      className="postcraft-button flex items-center gap-2"
                       >
                         <RefreshCw size={16} />
                         Refresh
@@ -423,33 +321,22 @@ Total Audio Promo`;
                   </div>
                   
                   {/* Search and Filters */}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
-                    <div style={{ position: 'relative' }}>
-                      <Search size={20} style={{ position: 'absolute', left: '0.75rem', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af' }} />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="relative">
+                    <Search size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                       <input
                         type="text"
                         placeholder="Search users..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        style={{
-                          width: '100%',
-                          padding: '0.75rem 0.75rem 0.75rem 2.5rem',
-                          border: '1px solid #d1d5db',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.875rem'
-                        }}
+                      className="w-full pl-10 pr-4 py-2 border-3 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                       />
                     </div>
                     
                     <select
                       value={filterStatus}
                       onChange={(e) => setFilterStatus(e.target.value as any)}
-                      style={{
-                        padding: '0.75rem',
-                        border: '1px solid #d1d5db',
-                        borderRadius: '0.5rem',
-                        fontSize: '0.875rem'
-                      }}
+                    className="px-4 py-2 border-3 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold"
                     >
                       <option value="all">All Status</option>
                       <option value="active">Active</option>
@@ -460,12 +347,7 @@ Total Audio Promo`;
                     <select
                       value={filterApp}
                       onChange={(e) => setFilterApp(e.target.value as any)}
-                      style={{
-                        padding: '0.75rem',
-                        border: '1px solid #d1d5db',
-                        borderRadius: '0.5rem',
-                        fontSize: '0.875rem'
-                      }}
+                    className="px-4 py-2 border-3 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold"
                     >
                       <option value="all">All Apps</option>
                       <option value="audio-intel">Audio Intel</option>
@@ -478,66 +360,45 @@ Total Audio Promo`;
               </div>
 
               {/* Enhanced User List */}
-              <div className="intel-grid intel-grid-1" style={{ gap: '1rem' }}>
+              <div className="grid grid-cols-1 gap-4 mt-6">
                 {filteredUsers.map(user => (
-                  <div key={user.id} className="intel-card" style={{ padding: '1.5rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-                      <div style={{ flex: 1 }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-                          <h3 style={{ fontSize: '1.125rem', fontWeight: '600', margin: 0 }}>
+                  <div key={user.id} className="postcraft-card">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <h3 className="postcraft-label">
                             {user.name || user.email.split('@')[0]}
                           </h3>
-                          <span className="intel-badge intel-badge-blue">
+                          <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold border-2 border-black">
                             {getUserEngagementScore(user)}% engagement
                           </span>
                         </div>
-                        <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0 0 0.5rem 0' }}>
+                        <p className="postcraft-text text-sm mb-2">
                           {user.email}
                         </p>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                          <div style={{
-                            width: '8px',
-                            height: '8px',
-                            borderRadius: '50%',
-                            background: user.status === 'active' ? '#10b981' : user.status === 'idle' ? '#f59e0b' : '#9ca3af'
-                          }}></div>
-                          <span style={{
-                            fontSize: '0.75rem',
-                            fontWeight: '600',
-                            color: user.status === 'active' ? '#047857' : user.status === 'idle' ? '#d97706' : '#6b7280',
-                            textTransform: 'capitalize'
-                          }}>
+                        <div className="flex items-center gap-2">
+                          <div className={`w-2 h-2 rounded-full ${
+                            user.status === 'active' ? 'bg-green-500' : 
+                            user.status === 'idle' ? 'bg-yellow-500' : 'bg-gray-400'
+                          }`}></div>
+                          <span className="text-xs font-bold uppercase">
                             {user.status}
                           </span>
                         </div>
                       </div>
                       
                       {/* Quick Actions */}
-                      <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      <div className="flex gap-2">
                         <button
                           onClick={() => contactUser(user)}
-                          style={{
-                            padding: '0.5rem',
-                            border: '1px solid #d1d5db',
-                            borderRadius: '0.375rem',
-                            background: 'white',
-                            cursor: 'pointer',
-                            color: '#6b7280'
-                          }}
+                          className="postcraft-button p-2"
                           title="Contact user"
                         >
                           <Mail size={14} />
                         </button>
                         <button
                           onClick={() => setSelectedUser(user)}
-                          style={{
-                            padding: '0.5rem',
-                            border: '1px solid #d1d5db',
-                            borderRadius: '0.375rem',
-                            background: 'white',
-                            cursor: 'pointer',
-                            color: '#6b7280'
-                          }}
+                          className="postcraft-button p-2"
                           title="View details"
                         >
                           <Eye size={14} />
@@ -546,45 +407,45 @@ Total Audio Promo`;
                     </div>
 
                     {/* User Stats Grid */}
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
-                      <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#3b82f6' }}>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                      <div className="text-center">
+                        <div className="text-xl font-black text-blue-600">
                           {user.engagement.contactsEnriched}
                         </div>
-                        <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Contacts</div>
+                        <div className="postcraft-text text-xs">Contacts</div>
                       </div>
-                      <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#10b981' }}>
+                      <div className="text-center">
+                        <div className="text-xl font-black text-green-600">
                           {user.engagement.emailsValidated}
                         </div>
-                        <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Validated</div>
+                        <div className="postcraft-text text-xs">Validated</div>
                       </div>
-                      <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#8b5cf6' }}>
+                      <div className="text-center">
+                        <div className="text-xl font-black text-purple-600">
                           {user.sessionCount}
                         </div>
-                        <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Sessions</div>
+                        <div className="postcraft-text text-xs">Sessions</div>
                       </div>
-                      <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#f59e0b' }}>
+                      <div className="text-center">
+                        <div className="text-xl font-black text-orange-600">
                           {user.engagement.timeSpent}m
                         </div>
-                        <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Time</div>
+                        <div className="postcraft-text text-xs">Time</div>
                       </div>
                     </div>
 
                     {/* User Info */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem', color: '#6b7280' }}>
-                      <span>
-                        <Globe size={12} style={{ display: 'inline', marginRight: '0.25rem' }} />
+                    <div className="flex justify-between items-center text-xs postcraft-text">
+                      <span className="flex items-center gap-1">
+                        <Globe size={12} />
                         {user.location.city}, {user.location.countryCode}
                       </span>
-                      <span>
+                      <span className="flex items-center gap-1">
                         {(user as any).device?.type === 'desktop' ? <Monitor size={12} /> : <Smartphone size={12} />}
-                        <span style={{ marginLeft: '0.25rem' }}>{(user as any).device?.browser || 'unknown'}</span>
+                        {(user as any).device?.browser || 'unknown'}
                       </span>
-                      <span>
-                        <Clock size={12} style={{ display: 'inline', marginRight: '0.25rem' }} />
+                      <span className="flex items-center gap-1">
+                        <Clock size={12} />
                         {new Date(user.lastSeen).toLocaleDateString()}
                       </span>
                     </div>
@@ -595,54 +456,49 @@ Total Audio Promo`;
           </div>
         ) : activeTab === 'analytics' ? (
           /* Analytics Tab */
-          <div className="intel-page">
-            <div className="intel-container">
-              <div className="intel-card">
-                <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1.5rem' }}>
+          <div className="postcraft-section">
+            <div className="postcraft-card">
+              <h2 className="postcraft-section-title mb-6">
                   User Analytics & Insights
                 </h2>
                 
                 {betaData?.analytics && (
-                  <div className="intel-grid intel-grid-2" style={{ marginBottom: '2rem' }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div>
-                      <h3 style={{ fontSize: '1.125rem', fontWeight: '600', marginBottom: '1rem' }}>Top Features</h3>
+                    <h3 className="postcraft-label mb-4">Top Features</h3>
                       {betaData.analytics.topFeatures.map(feature => (
-                        <div key={feature.feature} style={{ marginBottom: '0.75rem' }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                            <span style={{ fontSize: '0.875rem', textTransform: 'capitalize' }}>
+                      <div key={feature.feature} className="mb-4">
+                        <div className="flex justify-between mb-1">
+                          <span className="postcraft-text capitalize">
                               {feature.feature.replace('-', ' ')}
                             </span>
-                            <span style={{ fontSize: '0.875rem', fontWeight: '600' }}>
+                          <span className="font-bold text-blue-600">
                               {feature.usage} users
                             </span>
                           </div>
-                          <div style={{ height: '4px', background: '#e5e7eb', borderRadius: '2px' }}>
-                            <div style={{
-                              height: '100%',
-                              background: '#3b82f6',
-                              borderRadius: '2px',
-                              width: `${(feature.usage / betaData.totalUsers) * 100}%`
-                            }}></div>
+                        <div className="h-2 bg-gray-200 rounded-full border-2 border-black overflow-hidden">
+                          <div 
+                            className="h-full bg-blue-500"
+                            style={{ width: `${(feature.usage / betaData.totalUsers) * 100}%` }}
+                          ></div>
                           </div>
                         </div>
                       ))}
                     </div>
                     
                     <div>
-                      <h3 style={{ fontSize: '1.125rem', fontWeight: '600', marginBottom: '1rem' }}>Device Breakdown</h3>
+                    <h3 className="postcraft-label mb-4">Device Breakdown</h3>
                       {Object.entries(((betaData.analytics as any).deviceBreakdown || {}) as Record<string, number>).map(([device, count]) => (
-                        <div key={device} style={{ marginBottom: '0.75rem' }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                            <span style={{ fontSize: '0.875rem', textTransform: 'capitalize' }}>{device}</span>
-                            <span style={{ fontSize: '0.875rem', fontWeight: '600' }}>{count} users</span>
+                      <div key={device} className="mb-4">
+                        <div className="flex justify-between mb-1">
+                          <span className="postcraft-text capitalize">{device}</span>
+                          <span className="font-bold text-green-600">{count} users</span>
                           </div>
-                          <div style={{ height: '4px', background: '#e5e7eb', borderRadius: '2px' }}>
-                            <div style={{
-                              height: '100%',
-                              background: '#10b981',
-                              borderRadius: '2px',
-                              width: `${(count / betaData.totalUsers) * 100}%`
-                            }}></div>
+                        <div className="h-2 bg-gray-200 rounded-full border-2 border-black overflow-hidden">
+                          <div 
+                            className="h-full bg-green-500"
+                            style={{ width: `${(count / betaData.totalUsers) * 100}%` }}
+                          ></div>
                           </div>
                         </div>
                       ))}
@@ -650,317 +506,139 @@ Total Audio Promo`;
                   </div>
                 )}
                 
-                <div className="intel-metrics">
-                  <div className="intel-metric">
-                    <div className="intel-metric-header">
-                      <div className="intel-metric-icon" style={{ background: '#dbeafe', color: '#1e40af' }}>
-                        <Activity size={20} />
+              <div className="postcraft-metrics-grid">
+                <div className="postcraft-metric-card">
+                  <div className="postcraft-metric-icon bg-gradient-to-br from-blue-500 to-cyan-500">
+                    <Activity className="w-6 h-6 text-white" />
                       </div>
-                    </div>
-                    <div className="intel-metric-value">{betaData?.analytics?.engagementMetrics.avgSessionTime || 0}min</div>
-                    <div className="intel-metric-label">Avg Session Time</div>
+                  <div className="postcraft-metric-value">{betaData?.analytics?.engagementMetrics.avgSessionTime || 0}min</div>
+                  <div className="postcraft-metric-label">Avg Session Time</div>
                   </div>
                   
-                  <div className="intel-metric">
-                    <div className="intel-metric-header">
-                      <div className="intel-metric-icon" style={{ background: '#d1fae5', color: '#065f46' }}>
-                        <Star size={20} />
+                <div className="postcraft-metric-card">
+                  <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
+                    <Star className="w-6 h-6 text-white" />
                       </div>
-                    </div>
-                    <div className="intel-metric-value">{betaData?.analytics?.engagementMetrics.avgContactsPerUser || 0}</div>
-                    <div className="intel-metric-label">Avg Contacts Per User</div>
+                  <div className="postcraft-metric-value">{betaData?.analytics?.engagementMetrics.avgContactsPerUser || 0}</div>
+                  <div className="postcraft-metric-label">Avg Contacts Per User</div>
                   </div>
                   
-                  <div className="intel-metric">
-                    <div className="intel-metric-header">
-                      <div className="intel-metric-icon" style={{ background: '#fef3c7', color: '#92400e' }}>
-                        <TrendingUp size={20} />
+                <div className="postcraft-metric-card">
+                  <div className="postcraft-metric-icon bg-gradient-to-br from-orange-500 to-amber-500">
+                    <TrendingUp className="w-6 h-6 text-white" />
                       </div>
-                    </div>
-                    <div className="intel-metric-value">{betaData?.analytics?.engagementMetrics.conversionRate || 0}%</div>
-                    <div className="intel-metric-label">Conversion Rate</div>
-                  </div>
+                  <div className="postcraft-metric-value">{betaData?.analytics?.engagementMetrics.conversionRate || 0}%</div>
+                  <div className="postcraft-metric-label">Conversion Rate</div>
                 </div>
               </div>
             </div>
           </div>
         ) : activeTab === 'dashboard' ? (
           /* Beta Dashboard */
-          <div>
+          <div className="postcraft-section">
             {/* Beta User Tracking */}
             {betaData && (
-              <div style={{
-                background: 'rgba(255, 255, 255, 0.9)',
-                backdropFilter: 'blur(10px)',
-                borderRadius: '24px',
-                padding: '2rem',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                boxShadow: '0 25px 50px rgba(99, 102, 241, 0.15)',
-                marginBottom: '2rem'
-              }}>
-                <h3 style={{ 
-                  fontSize: '1.75rem', 
-                  fontWeight: '900', 
-                  color: '#1a202c', 
-                  marginBottom: '2rem',
-                  letterSpacing: '-0.025em'
-                }}>
+              <div className="postcraft-card mb-8">
+                <h3 className="postcraft-section-title mb-6">
                   Beta User Analytics
                 </h3>
                 
                 {/* Metrics Grid */}
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                  gap: '1.5rem',
-                  marginBottom: '2rem'
-                }}>
-                  <div style={{
-                    background: 'linear-gradient(135deg, #dbeafe, #bfdbfe)',
-                    borderRadius: '16px',
-                    padding: '1.5rem',
-                    border: '1px solid #93c5fd'
-                  }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <div>
-                        <p style={{ 
-                          fontSize: '0.875rem', 
-                          fontWeight: '700', 
-                          color: '#1e40af',
-                          textTransform: 'uppercase',
-                          margin: '0 0 0.5rem 0'
-                        }}>
-                          Total Beta Users
-                        </p>
-                        <p style={{ 
-                          fontSize: '2rem', 
-                          fontWeight: '900', 
-                          color: '#1e3a8a',
-                          margin: 0
-                        }}>
-                          {betaData.totalUsers}
-                        </p>
+                <div className="postcraft-metrics-grid mb-8">
+                  <div className="postcraft-metric-card">
+                    <div className="postcraft-metric-icon bg-gradient-to-br from-blue-500 to-cyan-500">
+                      <Users className="w-6 h-6 text-white" />
                       </div>
-                      <div style={{
-                        width: '40px',
-                        height: '40px',
-                        background: '#3b82f6',
-                        borderRadius: '12px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                      }}>
-                        <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke="currentColor" fill="none"/>
-                        </svg>
-                      </div>
-                    </div>
+                    <div className="postcraft-metric-value">{betaData.totalUsers}</div>
+                    <div className="postcraft-metric-label">Total Beta Users</div>
                   </div>
 
-                  <div style={{
-                    background: 'linear-gradient(135deg, #d1fae5, #a7f3d0)',
-                    borderRadius: '16px',
-                    padding: '1.5rem',
-                    border: '1px solid #6ee7b7'
-                  }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <div>
-                        <p style={{ 
-                          fontSize: '0.875rem', 
-                          fontWeight: '700', 
-                          color: '#047857',
-                          textTransform: 'uppercase',
-                          margin: '0 0 0.5rem 0'
-                        }}>
-                          Active Now
-                        </p>
-                        <p style={{ 
-                          fontSize: '2rem', 
-                          fontWeight: '900', 
-                          color: '#064e3b',
-                          margin: 0
-                        }}>
-                          {betaData.activeUsers}
-                        </p>
+                  <div className="postcraft-metric-card">
+                    <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
+                      <Activity className="w-6 h-6 text-white" />
                       </div>
-                      <div style={{
-                        width: '40px',
-                        height: '40px',
-                        background: '#10b981',
-                        borderRadius: '12px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                      }}>
-                        <div style={{
-                          width: '12px',
-                          height: '12px',
-                          background: 'white',
-                          borderRadius: '50%',
-                          animation: 'pulse 2s infinite'
-                        }}></div>
-                      </div>
-                    </div>
+                    <div className="postcraft-metric-value">{betaData.activeUsers}</div>
+                    <div className="postcraft-metric-label">Active Now</div>
                   </div>
 
-                  <div style={{
-                    background: 'linear-gradient(135deg, #e9d5ff, #ddd6fe)',
-                    borderRadius: '16px',
-                    padding: '1.5rem',
-                    border: '1px solid #c4b5fd'
-                  }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <div>
-                        <p style={{ 
-                          fontSize: '0.875rem', 
-                          fontWeight: '700', 
-                          color: '#7c3aed',
-                          textTransform: 'uppercase',
-                          margin: '0 0 0.5rem 0'
-                        }}>
-                          New Today
-                        </p>
-                        <p style={{ 
-                          fontSize: '2rem', 
-                          fontWeight: '900', 
-                          color: '#581c87',
-                          margin: 0
-                        }}>
-                          {betaData.newToday}
-                        </p>
+                  <div className="postcraft-metric-card">
+                    <div className="postcraft-metric-icon bg-gradient-to-br from-purple-500 to-pink-500">
+                      <TrendingUp className="w-6 h-6 text-white" />
                       </div>
-                      <div style={{
-                        width: '40px',
-                        height: '40px',
-                        background: '#8b5cf6',
-                        borderRadius: '12px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                      }}>
-                        <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" stroke="currentColor" fill="none"/>
-                        </svg>
-                      </div>
-                    </div>
+                    <div className="postcraft-metric-value">{betaData.newToday}</div>
+                    <div className="postcraft-metric-label">New Today</div>
                   </div>
                 </div>
 
                 {/* Global User Map */}
+                <div className="mb-8">
                 <BetaUserMap users={betaData.users} />
+                </div>
 
                 {/* Detailed User List */}
                 {betaData.users && betaData.users.length > 0 && (
-                  <div style={{
-                    background: 'rgba(255, 255, 255, 0.85)',
-                    borderRadius: '20px',
-                    padding: '2rem',
-                    border: '1px solid rgba(255, 255, 255, 0.3)'
-                  }}>
-                    <h4 style={{
-                      fontSize: '1.125rem',
-                      fontWeight: '700',
-                      color: '#1e3a8a',
-                      marginBottom: '1rem'
-                    }}>
+                  <div>
+                    <h4 className="postcraft-label mb-4">
                       Active Beta Users
                     </h4>
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                      gap: '1rem'
-                    }}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                       {betaData.users.map((user: any, index: number) => (
-                        <div key={user.id} style={{
-                          background: user.status === 'active' ? 'linear-gradient(135deg, #d1fae5, #a7f3d0)' : 
-                                     user.status === 'idle' ? 'linear-gradient(135deg, #fef3c7, #fed7aa)' :
-                                     'linear-gradient(135deg, #f3f4f6, #e5e7eb)',
-                          borderRadius: '12px',
-                          padding: '1.5rem',
-                          border: '1px solid ' + (
-                            user.status === 'active' ? '#6ee7b7' :
-                            user.status === 'idle' ? '#fbbf24' : '#d1d5db'
-                          )
-                        }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-                            <div style={{ flex: 1 }}>
-                              <h5 style={{
-                                fontSize: '1rem',
-                                fontWeight: '600',
-                                color: '#1a202c',
-                                margin: '0 0 0.25rem 0'
-                              }}>
+                        <div 
+                          key={user.id} 
+                          className={`postcraft-card ${
+                            user.status === 'active' ? 'bg-green-50' : 
+                            user.status === 'idle' ? 'bg-yellow-50' :
+                            'bg-gray-50'
+                          }`}
+                        >
+                          <div className="flex justify-between items-start mb-4">
+                            <div className="flex-1">
+                              <h5 className="postcraft-label mb-1">
                                 {user.name || user.email.split('@')[0]}
                               </h5>
-                              <p style={{
-                                fontSize: '0.75rem',
-                                color: '#6b7280',
-                                margin: '0 0 0.5rem 0'
-                              }}>
+                              <p className="postcraft-text text-xs mb-2">
                                 {user.email}
                               </p>
-                              <div style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.5rem'
-                              }}>
-                                <div style={{
-                                  width: '8px',
-                                  height: '8px',
-                                  borderRadius: '50%',
-                                  background: user.status === 'active' ? '#10b981' :
-                                             user.status === 'idle' ? '#f59e0b' : '#9ca3af'
-                                }}></div>
-                                <span style={{
-                                  fontSize: '0.75rem',
-                                  fontWeight: '600',
-                                  color: user.status === 'active' ? '#047857' :
-                                         user.status === 'idle' ? '#d97706' : '#6b7280',
-                                  textTransform: 'capitalize'
-                                }}>
+                              <div className="flex items-center gap-2">
+                                <div className={`w-2 h-2 rounded-full ${
+                                  user.status === 'active' ? 'bg-green-500' :
+                                  user.status === 'idle' ? 'bg-yellow-500' : 'bg-gray-400'
+                                }`}></div>
+                                <span className="text-xs font-bold uppercase">
                                   {user.status}
                                 </span>
                               </div>
                             </div>
                           </div>
 
-                          <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: '1fr 1fr',
-                            gap: '0.75rem',
-                            fontSize: '0.75rem'
-                          }}>
+                          <div className="grid grid-cols-2 gap-3 text-xs mb-4">
                             <div>
-                              <span style={{ color: '#6b7280' }}>Contacts:</span>
-                              <div style={{ fontWeight: '600', color: '#8b5cf6' }}>
+                              <span className="postcraft-text">Contacts:</span>
+                              <div className="font-black text-purple-600">
                                 {user.engagement.contactsEnriched.toLocaleString()}
                               </div>
                             </div>
                             <div>
-                              <span style={{ color: '#6b7280' }}>Validated:</span>
-                              <div style={{ fontWeight: '600', color: '#059669' }}>
+                              <span className="postcraft-text">Validated:</span>
+                              <div className="font-black text-green-600">
                                 {user.engagement.emailsValidated.toLocaleString()}
                               </div>
                             </div>
                             <div>
-                              <span style={{ color: '#6b7280' }}>Sessions:</span>
-                              <div style={{ fontWeight: '600', color: '#3b82f6' }}>
+                              <span className="postcraft-text">Sessions:</span>
+                              <div className="font-black text-blue-600">
                                 {user.sessionCount}
                               </div>
                             </div>
                             <div>
-                              <span style={{ color: '#6b7280' }}>Location:</span>
-                              <div style={{ fontWeight: '600', color: '#374151' }}>
+                              <span className="postcraft-text">Location:</span>
+                              <div className="font-bold text-gray-900">
                                 {user.location.city}, {user.location.countryCode}
                               </div>
                             </div>
                           </div>
 
-                          <div style={{
-                            marginTop: '1rem',
-                            fontSize: '0.75rem',
-                            color: '#6b7280'
-                          }}>
+                          <div className="text-xs postcraft-text">
                             Last seen: {new Date(user.lastSeen).toLocaleString('en-GB', {
                               month: 'short',
                               day: 'numeric',
@@ -978,50 +656,23 @@ Total Audio Promo`;
           </div>
         ) : (
           /* Beta Signup Form */
-          <div>
+          <div className="postcraft-section">
             {isSubmitted ? (
-              <div style={{
-                maxWidth: '600px',
-                margin: '0 auto',
-                background: 'rgba(255, 255, 255, 0.95)',
-                borderRadius: '24px',
-                padding: '3rem',
-                textAlign: 'center',
-                boxShadow: '0 25px 50px rgba(0, 0, 0, 0.1)'
-              }}>
-                <div style={{
-                  width: '80px',
-                  height: '80px',
-                  background: 'linear-gradient(135deg, #10b981, #059669)',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 2rem auto',
-                  boxShadow: '0 10px 25px rgba(16, 185, 129, 0.3)'
-                }}>
-                  <svg width="40" height="40" fill="white" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" stroke="currentColor" fill="none"/>
-                  </svg>
+              <div className="max-w-2xl mx-auto">
+                <div className="postcraft-card text-center">
+                  <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 border-3 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <CheckCircle className="w-10 h-10 text-white" />
                 </div>
                 
-                <h2 style={{
-                  fontSize: '2rem',
-                  fontWeight: '900',
-                  color: '#1a202c',
-                  margin: '0 0 1rem 0'
-                }}>
+                  <h2 className="postcraft-title mb-4">
                   Beta User Added Successfully!
                 </h2>
                 
-                <p style={{
-                  fontSize: '1.125rem',
-                  color: '#64748b',
-                  margin: '0 0 2rem 0'
-                }}>
+                  <p className="postcraft-text text-lg mb-8">
                   The new beta user has been added to Audio Intel. They will receive access details shortly.
                 </p>
 
+                  <div className="flex gap-4 justify-center">
                 <button
                   onClick={() => {
                     setIsSubmitted(false);
@@ -1035,90 +686,42 @@ Total Audio Promo`;
                       goals: ''
                     });
                   }}
-                  style={{
-                    background: '#3b82f6',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '12px',
-                    padding: '1rem 2rem',
-                    fontSize: '1rem',
-                    fontWeight: '600',
-                    cursor: 'pointer',
-                    marginRight: '1rem'
-                  }}
+                      className="postcraft-button bg-blue-100 text-blue-800"
                 >
                   Add Another User
                 </button>
 
                 <button
                   onClick={() => setActiveTab('dashboard')}
-                  style={{
-                    background: '#f1f5f9',
-                    color: '#64748b',
-                    border: 'none',
-                    borderRadius: '12px',
-                    padding: '1rem 2rem',
-                    fontSize: '1rem',
-                    fontWeight: '600',
-                    cursor: 'pointer'
-                  }}
+                      className="postcraft-button"
                 >
                   View Dashboard
                 </button>
+                  </div>
+                </div>
               </div>
             ) : (
-              <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-                <div style={{
-                  background: 'rgba(255, 255, 255, 0.95)',
-                  borderRadius: '24px',
-                  padding: '3rem',
-                  boxShadow: '0 25px 50px rgba(0, 0, 0, 0.1)'
-                }}>
-                  <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                    <div style={{
-                      width: '80px',
-                      height: '80px',
-                      background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      margin: '0 auto 2rem auto',
-                      boxShadow: '0 10px 25px rgba(59, 130, 246, 0.3)'
-                    }}>
-                      <Image 
-                        src="/t-a-p-new dog logo.png" 
-                        alt="Total Audio Promo Logo" 
-                        width={50} 
-                        height={50}
-                        className="rounded-lg"
-                      />
+              <div className="max-w-3xl mx-auto">
+                <div className="postcraft-card">
+                  <div className="text-center mb-8">
+                    <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 border-3 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                      <UserCheck className="w-10 h-10 text-white" />
                     </div>
                     
-                    <h2 style={{
-                      fontSize: '2.5rem',
-                      fontWeight: '900',
-                      color: '#1a202c',
-                      margin: '0 0 1rem 0',
-                      letterSpacing: '-0.025em'
-                    }}>
+                    <h2 className="postcraft-title mb-2">
                       Add New Beta User
                     </h2>
                     
-                    <p style={{
-                      fontSize: '1.125rem',
-                      color: '#64748b',
-                      margin: 0
-                    }}>
+                    <p className="postcraft-text text-lg">
                       Manually add a new user to the Audio Intel beta program
                     </p>
                   </div>
 
                   <form onSubmit={handleSubmit}>
                     {/* Basic Info */}
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                       <div>
-                        <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '700', color: '#374151', marginBottom: '0.5rem' }}>
+                        <label className="postcraft-label mb-2 block">
                           Name *
                         </label>
                         <input
@@ -1126,22 +729,13 @@ Total Audio Promo`;
                           required
                           value={formData.name}
                           onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                          style={{
-                            width: '100%',
-                            padding: '0.75rem',
-                            border: '1px solid #d1d5db',
-                            borderRadius: '8px',
-                            fontSize: '1rem',
-                            fontWeight: '500',
-                            color: '#374151',
-                            background: 'white'
-                          }}
+                          className="w-full px-4 py-3 border-3 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold"
                           placeholder="Enter full name"
                         />
                       </div>
                       
                       <div>
-                        <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '700', color: '#374151', marginBottom: '0.5rem' }}>
+                        <label className="postcraft-label mb-2 block">
                           Email *
                         </label>
                         <input
@@ -1149,52 +743,38 @@ Total Audio Promo`;
                           required
                           value={formData.email}
                           onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                          style={{
-                            width: '100%',
-                            padding: '0.75rem',
-                            border: '1px solid #d1d5db',
-                            borderRadius: '8px',
-                            fontSize: '1rem',
-                            fontWeight: '500',
-                            color: '#374151',
-                            background: 'white'
-                          }}
+                          className="w-full px-4 py-3 border-3 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold"
                           placeholder="user@example.com"
                         />
                       </div>
                     </div>
 
                     {/* Role */}
-                    <div style={{ marginBottom: '2rem' }}>
-                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '700', color: '#374151', marginBottom: '1rem' }}>
+                    <div className="mb-8">
+                      <label className="postcraft-label mb-4 block">
                         User Type *
                       </label>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {[
                           { value: 'independent-artist', label: 'Independent Artist' },
                           { value: 'pr-agency', label: 'PR Agency' },
                           { value: 'label', label: 'Record Label' },
                           { value: 'other', label: 'Other' }
                         ].map((role) => (
-                          <label key={role.value} style={{ position: 'relative', cursor: 'pointer' }}>
+                          <label key={role.value} className="cursor-pointer">
                             <input
                               type="radio"
                               name="role"
                               value={role.value}
                               checked={formData.role === role.value}
                               onChange={(e) => setFormData(prev => ({ ...prev, role: e.target.value as any }))}
-                              style={{ display: 'none' }}
+                              className="hidden"
                             />
-                            <div style={{
-                              padding: '1rem',
-                              borderRadius: '12px',
-                              border: '2px solid ' + (formData.role === role.value ? '#3b82f6' : '#e5e7eb'),
-                              background: formData.role === role.value ? '#eff6ff' : 'white',
-                              textAlign: 'center',
-                              fontWeight: '600',
-                              color: formData.role === role.value ? '#1e40af' : '#6b7280',
-                              transition: 'all 0.2s'
-                            }}>
+                            <div className={`px-4 py-3 rounded-xl border-3 border-black text-center font-bold transition-all ${
+                              formData.role === role.value 
+                                ? 'bg-blue-100 text-blue-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]' 
+                                : 'bg-white text-gray-700 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                            }`}>
                               {role.label}
                             </div>
                           </label>
@@ -1203,11 +783,11 @@ Total Audio Promo`;
                     </div>
 
                     {/* Interests */}
-                    <div style={{ marginBottom: '2rem' }}>
-                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '700', color: '#374151', marginBottom: '1rem' }}>
+                    <div className="mb-8">
+                      <label className="postcraft-label mb-4 block">
                         Interested Features (select all that apply)
                       </label>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '0.75rem' }}>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {[
                           'Contact enrichment & data enhancement',
                           'Email validation & verification',
@@ -1216,24 +796,14 @@ Total Audio Promo`;
                           'Multi-client agency dashboard',
                           'CSV export & data management'
                         ].map((interest) => (
-                          <label key={interest} style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.75rem',
-                            padding: '0.75rem',
-                            borderRadius: '8px',
-                            border: '1px solid #e5e7eb',
-                            background: 'white',
-                            cursor: 'pointer',
-                            transition: 'all 0.2s'
-                          }}>
+                          <label key={interest} className="flex items-center gap-3 px-4 py-3 border-2 border-black rounded-xl bg-white cursor-pointer hover:bg-gray-50 transition-colors">
                             <input
                               type="checkbox"
                               checked={formData.interests.includes(interest)}
                               onChange={() => handleInterestToggle(interest)}
-                              style={{ width: '16px', height: '16px' }}
+                              className="w-5 h-5 border-2 border-black rounded"
                             />
-                            <span style={{ fontSize: '0.875rem', fontWeight: '500', color: '#374151' }}>
+                            <span className="postcraft-text font-bold">
                               {interest}
                             </span>
                           </label>
@@ -1242,49 +812,29 @@ Total Audio Promo`;
                     </div>
 
                     {/* Current Tools */}
-                    <div style={{ marginBottom: '2rem' }}>
-                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '700', color: '#374151', marginBottom: '0.5rem' }}>
+                    <div className="mb-8">
+                      <label className="postcraft-label mb-2 block">
                         Current Tools
                       </label>
                       <textarea
                         value={formData.currentTools}
                         onChange={(e) => setFormData(prev => ({ ...prev, currentTools: e.target.value }))}
-                        style={{
-                          width: '100%',
-                          padding: '0.75rem',
-                          border: '1px solid #d1d5db',
-                          borderRadius: '8px',
-                          fontSize: '1rem',
-                          fontWeight: '500',
-                          color: '#374151',
-                          background: 'white',
-                          minHeight: '100px',
-                          resize: 'vertical'
-                        }}
+                        className="w-full px-4 py-3 border-3 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold resize-vertical"
+                        rows={4}
                         placeholder="e.g., SubmitHub, Groover, Chartmetric, Apollo, ZoomInfo, etc."
                       />
                     </div>
 
                     {/* Goals */}
-                    <div style={{ marginBottom: '3rem' }}>
-                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '700', color: '#374151', marginBottom: '0.5rem' }}>
+                    <div className="mb-8">
+                      <label className="postcraft-label mb-2 block">
                         Goals with Audio Intel
                       </label>
                       <textarea
                         value={formData.goals}
                         onChange={(e) => setFormData(prev => ({ ...prev, goals: e.target.value }))}
-                        style={{
-                          width: '100%',
-                          padding: '0.75rem',
-                          border: '1px solid #d1d5db',
-                          borderRadius: '8px',
-                          fontSize: '1rem',
-                          fontWeight: '500',
-                          color: '#374151',
-                          background: 'white',
-                          minHeight: '100px',
-                          resize: 'vertical'
-                        }}
+                        className="w-full px-4 py-3 border-3 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold resize-vertical"
+                        rows={4}
                         placeholder="e.g., Build verified industry contacts, validate email lists, enrich existing contacts with social data..."
                       />
                     </div>
@@ -1293,20 +843,11 @@ Total Audio Promo`;
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      style={{
-                        width: '100%',
-                        background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '12px',
-                        padding: '1rem 2rem',
-                        fontSize: '1.125rem',
-                        fontWeight: '700',
-                        cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                        opacity: isSubmitting ? 0.7 : 1,
-                        boxShadow: '0 10px 25px rgba(59, 130, 246, 0.3)',
-                        transition: 'all 0.2s'
-                      }}
+                      className={`w-full px-8 py-4 rounded-xl border-3 border-black bg-gradient-to-r from-blue-600 to-purple-600 text-white font-black text-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all ${
+                        isSubmitting 
+                          ? 'opacity-50 cursor-not-allowed' 
+                          : 'hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1'
+                      }`}
                     >
                       {isSubmitting ? 'Adding User...' : 'Add Beta User'}
                     </button>
@@ -1316,29 +857,7 @@ Total Audio Promo`;
             )}
           </div>
         )}
-      </main>
-
-      <style jsx>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
-        }
-        
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        
-        button:hover:not(:disabled) {
-          transform: translateY(-2px);
-        }
-        
-        input:focus, textarea:focus {
-          outline: none;
-          border-color: #3b82f6 !important;
-          box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-      `}</style>
+      </div>
     </div>
   );
 }

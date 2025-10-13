@@ -198,148 +198,111 @@ export default function UserManagementPage() {
 
   if (loading) {
     return (
-    <div className="postcraft-page min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-sm border border-white/20">
-            <div className="flex items-center justify-center h-64">
-              <div className="text-center">
-                <div className="animate-pulse">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-600 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                    <Users className="w-8 h-8 text-white animate-pulse" />
-                  </div>
-                  <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                    Loading User Management...
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="postcraft-page flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-black border-t-transparent mx-auto mb-4"></div>
+          <h2 className="postcraft-section-title">Loading User Management...</h2>
+          <p className="postcraft-text">Preparing your dashboard</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="postcraft-container">
+    <div className="postcraft-page">
       {/* Header */}
-      <div className="postcraft-section">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+      <div className="postcraft-header mb-8">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-14 h-14 bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl flex items-center justify-center border-3 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <Users className="w-7 h-7 text-white" />
+          </div>
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-              User Management
-            </h1>
-            <p className="text-gray-600">
-              Manage beta users, permissions, and track usage across Audio Intel
-            </p>
-          </div>
-          <button
-            onClick={() => window.history.back()}
-            className="postcraft-button"
-          >
-            ← Back to Dashboard
-          </button>
-        </div>
-
-        {/* Stats Overview */}
-        <div className="postcraft-metrics-grid mb-6">
-          <div className="postcraft-metric-card text-center">
-            <p className="postcraft-metric-value text-red-600">{users.length}</p>
-            <p className="postcraft-metric-label">Total Users</p>
-          </div>
-          <div className="postcraft-metric-card text-center">
-            <p className="postcraft-metric-value text-green-600">{users.filter(u => u.status === 'active').length}</p>
-            <p className="postcraft-metric-label">Active</p>
-          </div>
-          <div className="postcraft-metric-card text-center">
-            <p className="postcraft-metric-value text-yellow-600">{users.filter(u => u.status === 'inactive').length}</p>
-            <p className="postcraft-metric-label">Inactive</p>
-          </div>
-          <div className="postcraft-metric-card text-center">
-            <p className="postcraft-metric-value text-blue-600">{users.reduce((sum, user) => sum + user.usage.contactsEnriched, 0).toLocaleString()}</p>
-            <p className="postcraft-metric-label">Total Enriched</p>
+            <h1 className="postcraft-title mb-1">User Management</h1>
+            <p className="postcraft-subtitle">Manage beta users, permissions, and track usage across Audio Intel</p>
           </div>
         </div>
+      </div>
 
-        {/* Filter Buttons */}
-        <div className="flex gap-2 flex-wrap">
+      {/* Stats Overview */}
+      <div className="postcraft-section mb-8">
+        <div className="postcraft-metrics-grid">
+          <div className="postcraft-metric-card">
+            <div className="postcraft-metric-icon bg-gradient-to-br from-blue-500 to-cyan-500">
+              <Users className="w-6 h-6 text-white" />
+            </div>
+            <div className="postcraft-metric-value">{users.length}</div>
+            <div className="postcraft-metric-label">Total Users</div>
+          </div>
+          <div className="postcraft-metric-card">
+            <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
+              <Activity className="w-6 h-6 text-white" />
+            </div>
+            <div className="postcraft-metric-value">{users.filter(u => u.status === 'active').length}</div>
+            <div className="postcraft-metric-label">Active</div>
+          </div>
+          <div className="postcraft-metric-card">
+            <div className="postcraft-metric-icon bg-gradient-to-br from-yellow-500 to-orange-500">
+              <User className="w-6 h-6 text-white" />
+            </div>
+            <div className="postcraft-metric-value">{users.filter(u => u.status === 'inactive').length}</div>
+            <div className="postcraft-metric-label">Inactive</div>
+          </div>
+          <div className="postcraft-metric-card">
+            <div className="postcraft-metric-icon bg-gradient-to-br from-purple-500 to-pink-500">
+              <BarChart3 className="w-6 h-6 text-white" />
+            </div>
+            <div className="postcraft-metric-value">{users.reduce((sum, user) => sum + user.usage.contactsEnriched, 0).toLocaleString()}</div>
+            <div className="postcraft-metric-label">Total Enriched</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Filter Buttons */}
+      <div className="postcraft-section mb-8">
+        <h3 className="postcraft-label mb-4">Filter Users</h3>
+        <div className="flex gap-3 flex-wrap">
           {['all', 'active', 'inactive', 'suspended'].map((status) => (
             <button
               key={status}
               onClick={() => setFilterStatus(status)}
-              className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
-                filterStatus === status
-                  ? 'postcraft-button-gradient text-white'
-                  : 'postcraft-button'
-              }`}
+              className={`postcraft-button ${filterStatus === status ? 'bg-black text-white' : ''}`}
             >
-              {status === 'all' ? `All Users (${users.length})` : `${status} (${users.filter(u => u.status === status).length})`}
+              {status === 'all' ? `All Users (${users.length})` : `${status.charAt(0).toUpperCase() + status.slice(1)} (${users.filter(u => u.status === status).length})`}
             </button>
           ))}
         </div>
       </div>
 
       {/* Users Grid */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))',
-        gap: '2rem'
-      }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {filteredUsers.map((user) => {
           const statusColors = getStatusColor(user.status);
           const typeColors = getUserTypeColor(user.userType);
           
           return (
-            <div key={user.id} style={{
-              background: 'rgba(255, 255, 255, 0.95)',
-              backdropFilter: 'blur(20px)',
-              borderRadius: '20px',
-              padding: '2rem',
-              boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)',
-              border: '1px solid rgba(255, 255, 255, 0.2)'
-            }}>
+            <div key={user.id} className="postcraft-card">
               {/* User Header */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-                <div style={{ flex: 1 }}>
-                  <h3 style={{
-                    fontSize: '1.25rem',
-                    fontWeight: '700',
-                    color: '#1a202c',
-                    margin: '0 0 0.25rem 0'
-                  }}>
+              <div className="flex justify-between items-start mb-4">
+                <div className="flex-1">
+                  <h3 className="postcraft-label mb-1">
                     {user.name}
                   </h3>
-                  <p style={{
-                    color: '#6b7280',
-                    fontSize: '0.875rem',
-                    margin: '0 0 0.5rem 0'
-                  }}>
+                  <p className="postcraft-text text-sm mb-2">
                     {user.email}
                   </p>
-                  <div style={{
-                    background: typeColors.bg,
-                    color: typeColors.text,
-                    padding: '0.25rem 0.75rem',
-                    borderRadius: '12px',
-                    fontSize: '0.75rem',
-                    fontWeight: '600',
-                    display: 'inline-block',
-                    textTransform: 'capitalize'
-                  }}>
+                  <span 
+                    className="inline-block px-3 py-1 rounded-full text-xs font-bold border-2 border-black capitalize"
+                    style={{ background: typeColors.bg, color: typeColors.text }}
+                  >
                     {user.userType.replace('_', ' ')}
-                  </div>
+                  </span>
                 </div>
-                <div style={{
-                  background: statusColors.bg,
-                  color: statusColors.text,
-                  padding: '0.25rem 0.75rem',
-                  borderRadius: '12px',
-                  fontSize: '0.75rem',
-                  fontWeight: '600',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em'
-                }}>
+                <span 
+                  className="px-3 py-1 rounded-full text-xs font-bold uppercase border-2 border-black"
+                  style={{ background: statusColors.bg, color: statusColors.text }}
+                >
                   {user.status}
-                </div>
+                </span>
               </div>
 
               {/* Usage Stats */}

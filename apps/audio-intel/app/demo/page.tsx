@@ -1,6 +1,9 @@
 // Simplified demo page - just the essentials
 'use client';
 
+// Force dynamic rendering to ensure middleware auth checks run
+export const dynamic = 'force-dynamic'
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';

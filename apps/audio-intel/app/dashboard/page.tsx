@@ -1,5 +1,8 @@
 'use client'
 
+// Force dynamic rendering to ensure middleware auth checks run
+export const dynamic = 'force-dynamic'
+
 import { useEffect, useState } from 'react'
 import { createClient } from '../../lib/supabase/client'
 import Link from 'next/link'
