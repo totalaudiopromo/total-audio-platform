@@ -52,13 +52,13 @@ export default function DashboardPage() {
   const displayName = user.user_metadata?.full_name || user.email?.split('@')[0] || 'there'
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
       {/* Header with User Menu */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <header className="bg-white border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Audio Intel</h1>
-            <p className="text-sm text-gray-600">Contact Enrichment Dashboard</p>
+            <h1 className="text-3xl font-black text-gray-900">Audio Intel</h1>
+            <p className="text-sm font-bold text-blue-600">Contact Intelligence Dashboard</p>
           </div>
           <UserMenu />
         </div>
@@ -67,88 +67,105 @@ export default function DashboardPage() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Welcome Section */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">
-            Welcome back, {displayName}! 👋
+        <div className="mb-12">
+          <h2 className="text-4xl font-black text-gray-900 mb-3">
+            Welcome back, {displayName}
           </h2>
-          <p className="text-lg text-gray-600">
-            You're successfully signed in. Here's what you can do:
+          <p className="text-lg font-bold text-gray-600">
+            Ready to enrich your contacts and save hours of research time
           </p>
         </div>
 
-        {/* Quick Actions */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          {/* Demo Card */}
+        {/* Quick Actions - Neobrutalist Style */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Start Enrichment Card */}
           <Link href="/demo" className="group">
-            <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all">
-              <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <span className="text-2xl">🎯</span>
-                </div>
-                <span className="text-blue-600 font-medium">Try Now →</span>
+            <div className="bg-white rounded-2xl border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-xl border-4 border-blue-600 bg-blue-50 px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <span className="text-sm font-black uppercase tracking-wider text-blue-600">Start Here</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Try Contact Enrichment
+              <h3 className="text-2xl font-black text-gray-900 mb-3">
+                Enrich Your Contacts
               </h3>
-              <p className="text-gray-600">
-                Upload a CSV or paste contact names to see AI-powered enrichment in action
+              <p className="text-gray-700 font-bold mb-6">
+                Upload your contact list and watch AI transform hours of research into minutes
               </p>
+              <span className="inline-flex items-center gap-2 text-blue-600 font-black group-hover:gap-3 transition-all">
+                Start Enriching
+                <span>→</span>
+              </span>
             </div>
           </Link>
 
-          {/* Pricing Card */}
+          {/* Upgrade Card */}
           <Link href="/pricing" className="group">
-            <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-purple-500 hover:shadow-lg transition-all">
-              <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <span className="text-2xl">💎</span>
-                </div>
-                <span className="text-purple-600 font-medium">View Plans →</span>
+            <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-xl border-4 border-blue-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <span className="text-sm font-black uppercase tracking-wider text-blue-600">Upgrade</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Upgrade Your Plan
+              <h3 className="text-2xl font-black text-gray-900 mb-3">
+                Unlock Unlimited Access
               </h3>
-              <p className="text-gray-600">
-                Get unlimited enrichments and advanced features with Pro or Agency plans
+              <p className="text-gray-700 font-bold mb-6">
+                Get unlimited enrichments, advanced features, and priority support
               </p>
+              <span className="inline-flex items-center gap-2 text-blue-600 font-black group-hover:gap-3 transition-all">
+                View Pricing
+                <span>→</span>
+              </span>
             </div>
           </Link>
         </div>
 
-        {/* Account Info */}
-        <div className="bg-white rounded-lg border-2 border-gray-200 p-6">
-          <h3 className="text-lg font-bold text-gray-900 mb-4">Account Information</h3>
-          <div className="space-y-3">
-            <div>
-              <span className="text-sm font-medium text-gray-600">Email:</span>
-              <p className="text-gray-900">{user.email}</p>
+        {/* Stats Grid */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-white rounded-xl border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-black uppercase tracking-wider text-gray-600">Your Plan</span>
             </div>
-            <div>
-              <span className="text-sm font-medium text-gray-600">Plan:</span>
-              <p className="text-gray-900">Free (10 enrichments/month)</p>
+            <p className="text-3xl font-black text-gray-900">Free</p>
+            <p className="text-sm font-bold text-gray-600 mt-1">10 enrichments/month</p>
+          </div>
+
+          <div className="bg-white rounded-xl border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-black uppercase tracking-wider text-gray-600">Used This Month</span>
             </div>
-            <div>
-              <span className="text-sm font-medium text-gray-600">Member Since:</span>
-              <p className="text-gray-900">
-                {new Date(user.created_at).toLocaleDateString('en-GB', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric'
-                })}
-              </p>
+            <p className="text-3xl font-black text-gray-900">0 / 10</p>
+            <p className="text-sm font-bold text-blue-600 mt-1">All available</p>
+          </div>
+
+          <div className="bg-white rounded-xl border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-black uppercase tracking-wider text-gray-600">Member Since</span>
             </div>
+            <p className="text-xl font-black text-gray-900">
+              {new Date(user.created_at).toLocaleDateString('en-GB', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+              })}
+            </p>
           </div>
         </div>
 
-        {/* Auth Success Message */}
-        <div className="mt-8 bg-green-50 border-2 border-green-200 rounded-lg p-6">
-          <div className="flex items-start gap-3">
-            <span className="text-2xl">✅</span>
-            <div>
-              <h4 className="font-bold text-green-900 mb-1">Authentication Working!</h4>
-              <p className="text-green-700">
-                Your unified authentication is now active. You can sign in once and access all Total Audio tools.
-              </p>
+        {/* Account Details */}
+        <div className="bg-white rounded-2xl border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <h3 className="text-2xl font-black text-gray-900 mb-6">Account Details</h3>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between py-3 border-b-2 border-gray-200">
+              <span className="text-sm font-black uppercase tracking-wider text-gray-600">Email</span>
+              <p className="font-bold text-gray-900">{user.email}</p>
+            </div>
+            <div className="flex items-center justify-between py-3 border-b-2 border-gray-200">
+              <span className="text-sm font-black uppercase tracking-wider text-gray-600">Subscription</span>
+              <p className="font-bold text-gray-900">Free Plan</p>
+            </div>
+            <div className="flex items-center justify-between py-3">
+              <span className="text-sm font-black uppercase tracking-wider text-gray-600">Single Sign-On</span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-green-100 border-2 border-green-600 px-4 py-1.5 text-xs font-black uppercase text-green-800">
+                ✓ Active
+              </span>
             </div>
           </div>
         </div>
