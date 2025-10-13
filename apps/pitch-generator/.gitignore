@@ -1,1 +1,15 @@
 .vercel
+
+# Claude Code settings with sensitive data
+.claude/settings.local.json
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.development
+
+# Secrets
+*.pem
+*.key
+secrets/

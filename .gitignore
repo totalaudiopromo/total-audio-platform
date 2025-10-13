@@ -164,3 +164,7 @@ duplicate-backup-*.json
 
 # Cleanup and old files
 archive/cleanup-temp/
+
+# Claude Code settings (may contain sensitive API keys)
+**/.claude/settings.local.json
+.claude/settings.local.json
