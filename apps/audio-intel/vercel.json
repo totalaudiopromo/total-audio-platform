@@ -1,18 +1,12 @@
 {
-  "installCommand": "cd ../.. && npm install",
-  "buildCommand": "next build",
-  "outputDirectory": ".next",
   "framework": "nextjs",
   "env": {
     "NEXT_PUBLIC_BASE_URL": "https://intel.totalaudiopromo.com"
   },
-  "public": true,
   "functions": {
     "app/api/**": {
       "maxDuration": 30
     }
   },
-  "regions": ["lhr1"],
-  "cleanUrls": true,
-  "trailingSlash": false
+  "regions": ["lhr1"]
 }

@@ -306,67 +306,60 @@ export default function UserManagementPage() {
               </div>
 
               {/* Usage Stats */}
-              <div style={{
-                background: '#f8fafc',
-                borderRadius: '12px',
-                padding: '1rem',
-                marginBottom: '1rem'
-              }}>
-                <h4 style={{ fontSize: '0.875rem', fontWeight: '600', color: '#374151', marginBottom: '0.75rem' }}>
-                  Usage Statistics
-                </h4>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', fontSize: '0.875rem' }}>
+              <div className="bg-gray-50 rounded-xl p-4 border-2 border-black mb-4">
+                <h4 className="postcraft-label mb-3">Usage Statistics</h4>
+                <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
-                    <span style={{ color: '#6b7280' }}>Contacts Enriched:</span>
-                    <span style={{ fontWeight: '600', marginLeft: '0.5rem', color: '#8b5cf6' }}>
+                    <span className="postcraft-text">Contacts Enriched:</span>
+                    <div className="font-black text-purple-600">
                       {user.usage.contactsEnriched.toLocaleString()}
-                    </span>
+                    </div>
                   </div>
                   <div>
-                    <span style={{ color: '#6b7280' }}>Emails Validated:</span>
-                    <span style={{ fontWeight: '600', marginLeft: '0.5rem', color: '#059669' }}>
+                    <span className="postcraft-text">Emails Validated:</span>
+                    <div className="font-black text-green-600">
                       {user.usage.emailsValidated.toLocaleString()}
-                    </span>
+                    </div>
                   </div>
                   <div>
-                    <span style={{ color: '#6b7280' }}>API Calls:</span>
-                    <span style={{ fontWeight: '600', marginLeft: '0.5rem', color: '#3b82f6' }}>
+                    <span className="postcraft-text">API Calls:</span>
+                    <div className="font-black text-blue-600">
                       {user.usage.apiCalls.toLocaleString()}
-                    </span>
+                    </div>
                   </div>
                   <div>
-                    <span style={{ color: '#6b7280' }}>Exports:</span>
-                    <span style={{ fontWeight: '600', marginLeft: '0.5rem', color: '#f59e0b' }}>
+                    <span className="postcraft-text">Exports:</span>
+                    <div className="font-black text-orange-600">
                       {user.usage.exportsDownloaded}
-                    </span>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* User Details */}
-              <div style={{ marginBottom: '1.5rem' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', fontSize: '0.875rem' }}>
+              <div className="mb-4">
+                <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
-                    <span style={{ color: '#6b7280' }}>Signup Date:</span>
-                    <div style={{ fontWeight: '500', color: '#374151' }}>
+                    <span className="postcraft-text">Signup Date:</span>
+                    <div className="font-bold text-gray-900">
                       {new Date(user.signupDate).toLocaleDateString('en-GB')}
                     </div>
                   </div>
                   <div>
-                    <span style={{ color: '#6b7280' }}>Last Active:</span>
-                    <div style={{ fontWeight: '500', color: '#374151' }}>
+                    <span className="postcraft-text">Last Active:</span>
+                    <div className="font-bold text-gray-900">
                       {new Date(user.lastActive).toLocaleDateString('en-GB')}
                     </div>
                   </div>
                   <div>
-                    <span style={{ color: '#6b7280' }}>Location:</span>
-                    <div style={{ fontWeight: '500', color: '#374151' }}>
+                    <span className="postcraft-text">Location:</span>
+                    <div className="font-bold text-gray-900">
                       {user.location}
                     </div>
                   </div>
                   <div>
-                    <span style={{ color: '#6b7280' }}>Tier:</span>
-                    <div style={{ fontWeight: '500', color: '#374151', textTransform: 'capitalize' }}>
+                    <span className="postcraft-text">Tier:</span>
+                    <div className="font-bold text-gray-900 capitalize">
                       {user.tier}
                     </div>
                   </div>
@@ -374,20 +367,10 @@ export default function UserManagementPage() {
               </div>
 
               {/* Actions */}
-              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <div className="flex gap-2 flex-wrap">
                 <button
                   onClick={() => setSelectedUser(user)}
-                  style={{
-                    background: '#3b82f6',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '8px',
-                    padding: '0.5rem 1rem',
-                    fontSize: '0.875rem',
-                    fontWeight: '600',
-                    cursor: 'pointer',
-                    flex: 1
-                  }}
+                  className="postcraft-button flex-1"
                 >
                   View Details
                 </button>
@@ -395,32 +378,14 @@ export default function UserManagementPage() {
                 {user.status === 'active' ? (
                   <button
                     onClick={() => updateUserStatus(user.id, 'suspended')}
-                    style={{
-                      background: 'transparent',
-                      color: '#dc2626',
-                      border: '1px solid #dc2626',
-                      borderRadius: '8px',
-                      padding: '0.5rem 1rem',
-                      fontSize: '0.875rem',
-                      fontWeight: '600',
-                      cursor: 'pointer'
-                    }}
+                    className="postcraft-button bg-red-100 text-red-800 border-red-800"
                   >
                     Suspend
                   </button>
                 ) : (
                   <button
                     onClick={() => updateUserStatus(user.id, 'active')}
-                    style={{
-                      background: 'transparent',
-                      color: '#059669',
-                      border: '1px solid #059669',
-                      borderRadius: '8px',
-                      padding: '0.5rem 1rem',
-                      fontSize: '0.875rem',
-                      fontWeight: '600',
-                      cursor: 'pointer'
-                    }}
+                    className="postcraft-button bg-green-100 text-green-800 border-green-800"
                   >
                     Activate
                   </button>
@@ -429,15 +394,7 @@ export default function UserManagementPage() {
                 <select
                   value={user.role}
                   onChange={(e) => updateUserRole(user.id, e.target.value as User['role'])}
-                  style={{
-                    background: 'white',
-                    border: '1px solid #d1d5db',
-                    borderRadius: '8px',
-                    padding: '0.5rem',
-                    fontSize: '0.875rem',
-                    fontWeight: '600',
-                    cursor: 'pointer'
-                  }}
+                  className="px-3 py-2 border-3 border-black rounded-xl font-bold bg-white"
                 >
                   <option value="beta-user">Beta User</option>
                   <option value="admin">Admin</option>
@@ -446,18 +403,9 @@ export default function UserManagementPage() {
 
                 <button
                   onClick={() => performUserAction('reset-usage', user.id)}
-                  style={{
-                    background: 'transparent',
-                    color: '#f59e0b',
-                    border: '1px solid #f59e0b',
-                    borderRadius: '8px',
-                    padding: '0.5rem 1rem',
-                    fontSize: '0.875rem',
-                    fontWeight: '600',
-                    cursor: 'pointer'
-                  }}
+                  className="postcraft-button bg-yellow-100 text-yellow-800 border-yellow-800"
                 >
-                  Reset Usage
+                  Reset
                 </button>
               </div>
             </div>
@@ -466,15 +414,8 @@ export default function UserManagementPage() {
       </div>
 
       {filteredUsers.length === 0 && (
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(20px)',
-          borderRadius: '20px',
-          padding: '4rem 2rem',
-          textAlign: 'center',
-          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)'
-        }}>
-          <p style={{ color: '#6b7280', fontSize: '1.125rem' }}>
+        <div className="postcraft-card text-center py-16">
+          <p className="postcraft-text text-lg">
             No users found for the selected filter.
           </p>
         </div>
@@ -482,80 +423,87 @@ export default function UserManagementPage() {
 
       {/* User Detail Modal */}
       {selectedUser && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(0, 0, 0, 0.75)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000,
-          padding: '2rem'
-        }}
-        onClick={() => setSelectedUser(null)}
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-8"
+          onClick={() => setSelectedUser(null)}
         >
-          <div style={{
-            background: 'white',
-            borderRadius: '20px',
-            padding: '2rem',
-            maxWidth: '500px',
-            width: '100%',
-            maxHeight: '80vh',
-            overflow: 'auto'
-          }}
-          onClick={(e) => e.stopPropagation()}
+          <div 
+            className="postcraft-card max-w-2xl w-full max-h-[80vh] overflow-auto"
+            onClick={(e) => e.stopPropagation()}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#1a202c', margin: 0 }}>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="postcraft-section-title">
                 {selectedUser.name}
               </h3>
               <button
                 onClick={() => setSelectedUser(null)}
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  fontSize: '1.5rem',
-                  color: '#6b7280',
-                  cursor: 'pointer'
-                }}
+                className="text-4xl text-gray-500 hover:text-black font-bold"
               >
                 ×
               </button>
             </div>
             
-            <div style={{ fontSize: '0.875rem', lineHeight: '1.6' }}>
-              <p><strong>Email:</strong> {selectedUser.email}</p>
-              <p><strong>Role:</strong> {selectedUser.role}</p>
-              <p><strong>User Type:</strong> {selectedUser.userType.replace('_', ' ')}</p>
-              <p><strong>Status:</strong> {selectedUser.status}</p>
-              <p><strong>Tier:</strong> {selectedUser.tier}</p>
-              <p><strong>Location:</strong> {selectedUser.location}</p>
-              <p><strong>Signup Date:</strong> {new Date(selectedUser.signupDate).toLocaleString('en-GB')}</p>
-              <p><strong>Last Active:</strong> {new Date(selectedUser.lastActive).toLocaleString('en-GB')}</p>
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <span className="postcraft-label block mb-1">Email</span>
+                  <p className="postcraft-text">{selectedUser.email}</p>
+                </div>
+                <div>
+                  <span className="postcraft-label block mb-1">Role</span>
+                  <p className="postcraft-text capitalize">{selectedUser.role}</p>
+                </div>
+                <div>
+                  <span className="postcraft-label block mb-1">User Type</span>
+                  <p className="postcraft-text capitalize">{selectedUser.userType.replace('_', ' ')}</p>
+                </div>
+                <div>
+                  <span className="postcraft-label block mb-1">Status</span>
+                  <p className="postcraft-text capitalize">{selectedUser.status}</p>
+                </div>
+                <div>
+                  <span className="postcraft-label block mb-1">Tier</span>
+                  <p className="postcraft-text capitalize">{selectedUser.tier}</p>
+                </div>
+                <div>
+                  <span className="postcraft-label block mb-1">Location</span>
+                  <p className="postcraft-text">{selectedUser.location}</p>
+                </div>
+                <div>
+                  <span className="postcraft-label block mb-1">Signup Date</span>
+                  <p className="postcraft-text">{new Date(selectedUser.signupDate).toLocaleString('en-GB')}</p>
+                </div>
+                <div>
+                  <span className="postcraft-label block mb-1">Last Active</span>
+                  <p className="postcraft-text">{new Date(selectedUser.lastActive).toLocaleString('en-GB')}</p>
+                </div>
+              </div>
               
-              <div style={{ marginTop: '1.5rem' }}>
-                <strong>Usage Details:</strong>
-                <ul style={{ marginTop: '0.5rem' }}>
-                  <li>Contacts Enriched: {selectedUser.usage.contactsEnriched.toLocaleString()}</li>
-                  <li>Emails Validated: {selectedUser.usage.emailsValidated.toLocaleString()}</li>
-                  <li>API Calls: {selectedUser.usage.apiCalls.toLocaleString()}</li>
-                  <li>Exports Downloaded: {selectedUser.usage.exportsDownloaded}</li>
-                </ul>
+              <div className="mt-6 pt-6 border-t-3 border-black">
+                <h4 className="postcraft-label mb-4">Usage Details</h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <span className="postcraft-text">Contacts Enriched</span>
+                    <p className="font-black text-xl text-purple-600">{selectedUser.usage.contactsEnriched.toLocaleString()}</p>
+                  </div>
+                  <div>
+                    <span className="postcraft-text">Emails Validated</span>
+                    <p className="font-black text-xl text-green-600">{selectedUser.usage.emailsValidated.toLocaleString()}</p>
+                  </div>
+                  <div>
+                    <span className="postcraft-text">API Calls</span>
+                    <p className="font-black text-xl text-blue-600">{selectedUser.usage.apiCalls.toLocaleString()}</p>
+                  </div>
+                  <div>
+                    <span className="postcraft-text">Exports Downloaded</span>
+                    <p className="font-black text-xl text-orange-600">{selectedUser.usage.exportsDownloaded}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       )}
-
-      <style jsx>{`
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      `}</style>
     </div>
   );
 }

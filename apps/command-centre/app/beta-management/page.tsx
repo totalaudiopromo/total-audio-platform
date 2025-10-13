@@ -17,7 +17,8 @@ import {
   RefreshCw,
   Star,
   Activity,
-  BarChart3
+  BarChart3,
+  CheckCircle
 } from 'lucide-react';
 import BetaUserMap from '../components/BetaUserMap';
 import Image from 'next/image';
@@ -360,9 +361,9 @@ Total Audio Promo`;
               </div>
 
               {/* Enhanced User List */}
-              <div className="grid grid-cols-1 gap-4 mt-6">
+            <div className="grid grid-cols-1 gap-4 mt-6">
                 {filteredUsers.map(user => (
-                  <div key={user.id} className="postcraft-card">
+                <div key={user.id} className="postcraft-card">
                     <div className="flex justify-between items-start mb-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
@@ -451,7 +452,6 @@ Total Audio Promo`;
                     </div>
                   </div>
                 ))}
-              </div>
             </div>
           </div>
         ) : activeTab === 'analytics' ? (

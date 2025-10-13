@@ -160,6 +160,36 @@ npm run test:unit                # Unit tests
 - **PR Requirements**: Must include mobile testing results
 - **Code Review**: All customer-facing changes require review
 
+## 🚨 VERCEL DEPLOYMENT ISSUE (October 2025)
+
+### Current Problem
+- **Status**: Deployments failing since ~4 days ago
+- **Symptom**: Build errors after 13-14 minutes (previously successful in ~55s)
+- **Root Cause**: Workspace package `@total-audio/ui` dependency issue
+- **Location**: `apps/audio-intel/package.json` line 35: `"@total-audio/ui": "file:../../packages/ui"`
+
+### What Happened
+- When shared components were extracted to `packages/ui` (commit `b598cd3`), a workspace dependency was created
+- This works locally but Vercel's build process struggles with:
+  1. Installing from workspace root (`cd ../.. && npm install`)
+  2. Building the `packages/ui` dependency first
+  3. Then building `audio-intel` that depends on it
+
+### Deployment Timeline
+- **4 days ago**: Last successful deployments (~55s build time)
+- **Since then**: All deployments failing with errors after 13-14min
+- **Recent commits affecting this**:
+  - `b598cd3`: Extract shared UI components to packages/ui (created the issue)
+  - `3dfe10b`: Update Vercel build config to handle monorepo workspace packages
+  - `1eb57eb`: Simplify Vercel build config with workspace root install
+  - `82e34f7`: Use local Supabase client instead of @total-audio/auth package
+
+### Next Steps to Fix
+1. Check if `packages/ui` builds properly in isolation
+2. Review what components are imported from `@total-audio/ui`
+3. Either fix Vercel build process or inline the shared components
+4. Consider whether the shared package is necessary for deployment
+
 ## 🔧 UTILITY FUNCTIONS & PATTERNS
 
 ### Key Helper Functions

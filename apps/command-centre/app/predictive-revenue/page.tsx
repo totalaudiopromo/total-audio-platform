@@ -27,197 +27,131 @@ export default function PredictiveRevenuePage() {
 
   if (isLoading) {
     return (
-    <div className="postcraft-page intel-page">
-        <div className="intel-loading">
-          <div className="intel-spinner"></div>
-          <h2 style={{ fontSize: '1.25rem', fontWeight: '600', color: 'var(--intel-gray-700)' }}>
-            Loading Predictive Revenue...
-          </h2>
-          <p style={{ color: 'var(--intel-gray-500)' }}>
-            Analyzing revenue patterns and generating forecasts
-          </p>
+      <div className="postcraft-page flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-black border-t-transparent mx-auto mb-4"></div>
+          <h2 className="postcraft-section-title">Loading Predictive Revenue...</h2>
+          <p className="postcraft-text">Analyzing revenue patterns and generating forecasts</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="postcraft-container">
+    <div className="postcraft-page">
       {/* Header */}
-      <div className="postcraft-section">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-4">
-            <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-blue-600">
-              <TrendingUp className="w-6 h-6 text-white" />
+      <div className="postcraft-header mb-8">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-blue-600 rounded-xl flex items-center justify-center border-3 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <TrendingUp className="w-7 h-7 text-white" />
+          </div>
+          <div>
+            <h1 className="postcraft-title mb-1">Predictive Revenue</h1>
+            <p className="postcraft-subtitle">AI-powered revenue forecasting and analysis</p>
+          </div>
+        </div>
+
+        <div className="postcraft-status">
+          <div className="postcraft-status-dot"></div>
+          <span>Live predictions</span>
+        </div>
+      </div>
+
+      {/* Key Metrics */}
+      <div className="postcraft-section mb-8">
+        <div className="postcraft-metrics-grid">
+          <div className="postcraft-metric-card">
+            <div className="postcraft-metric-icon bg-gradient-to-br from-blue-500 to-cyan-500">
+              <DollarSign className="w-6 h-6 text-white" />
             </div>
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                Predictive Revenue
-              </h1>
-              <p className="text-gray-600">AI-powered revenue forecasting and analysis</p>
-            </div>
+            <div className="postcraft-metric-value">£{metrics.predictedMRR.toLocaleString()}</div>
+            <div className="postcraft-metric-label">Predicted MRR</div>
           </div>
 
-          <div className="postcraft-status">
-            <div className="postcraft-status-dot"></div>
-            <span style={{ color: 'var(--intel-gray-600)' }}>Live predictions</span>
+          <div className="postcraft-metric-card">
+            <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
+              <CheckCircle className="w-6 h-6 text-white" />
+            </div>
+            <div className="postcraft-metric-value">{metrics.confidenceScore}%</div>
+            <div className="postcraft-metric-label">Confidence Score</div>
+          </div>
+
+          <div className="postcraft-metric-card">
+            <div className="postcraft-metric-icon bg-gradient-to-br from-yellow-500 to-orange-500">
+              <Users className="w-6 h-6 text-white" />
+            </div>
+            <div className="postcraft-metric-value">£{metrics.averageCLV.toLocaleString()}</div>
+            <div className="postcraft-metric-label">Average CLV</div>
+          </div>
+
+          <div className="postcraft-metric-card">
+            <div className="postcraft-metric-icon bg-gradient-to-br from-red-500 to-pink-500">
+              <AlertTriangle className="w-6 h-6 text-white" />
+            </div>
+            <div className="postcraft-metric-value">{metrics.churnRisk}%</div>
+            <div className="postcraft-metric-label">Churn Risk</div>
           </div>
         </div>
       </div>
 
-      <div className="intel-container">
-        {/* Key Metrics */}
-        <div className="intel-metrics">
-          <div className="intel-metric">
-            <div className="intel-metric-header">
-              <div className="intel-metric-icon" style={{ background: '#dbeafe', color: '#1e40af' }}>
-                <DollarSign className="w-5 h-5" />
-              </div>
-            </div>
-            <div className="intel-metric-value">£{metrics.predictedMRR.toLocaleString()}</div>
-            <div className="intel-metric-label">Predicted MRR</div>
-          </div>
-
-          <div className="intel-metric">
-            <div className="intel-metric-header">
-              <div className="intel-metric-icon" style={{ background: '#d1fae5', color: '#065f46' }}>
-                <CheckCircle className="w-5 h-5" />
-              </div>
-            </div>
-            <div className="intel-metric-value">{metrics.confidenceScore}%</div>
-            <div className="intel-metric-label">Confidence Score</div>
-          </div>
-
-          <div className="intel-metric">
-            <div className="intel-metric-header">
-              <div className="intel-metric-icon" style={{ background: '#fef3c7', color: '#92400e' }}>
-                <Users className="w-5 h-5" />
-              </div>
-            </div>
-            <div className="intel-metric-value">£{metrics.averageCLV.toLocaleString()}</div>
-            <div className="intel-metric-label">Average CLV</div>
-          </div>
-
-          <div className="intel-metric">
-            <div className="intel-metric-header">
-              <div className="intel-metric-icon" style={{ background: '#fee2e2', color: '#991b1b' }}>
-                <AlertTriangle className="w-5 h-5" />
-              </div>
-            </div>
-            <div className="intel-metric-value">{metrics.churnRisk}%</div>
-            <div className="intel-metric-label">Churn Risk</div>
-          </div>
-        </div>
-
-        {/* Revenue Forecast */}
-        <div className="intel-card" style={{ marginBottom: '2rem' }}>
-          <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1.5rem', color: 'var(--intel-gray-900)' }}>
+      {/* Revenue Forecast */}
+      <div className="postcraft-section mb-8">
+        <div className="postcraft-card">
+          <h2 className="postcraft-section-title mb-6">
             6-Month Revenue Forecast
           </h2>
           
-          <div className="intel-grid intel-grid-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {forecasts.map((forecast, index) => (
-              <div key={index} style={{
-                padding: '1rem',
-                border: '1px solid var(--intel-gray-200)',
-                borderRadius: '0.5rem',
-                background: 'var(--intel-gray-50)'
-              }}>
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginBottom: '0.5rem'
-                }}>
-                  <h3 style={{ fontSize: '1rem', fontWeight: '600', color: 'var(--intel-gray-900)' }}>
-                    {forecast.month}
-                  </h3>
-                  <span className={`intel-badge ${
-                    forecast.confidence >= 80 ? 'intel-badge-green' :
-                    forecast.confidence >= 70 ? 'intel-badge-blue' : 'intel-badge-orange'
+              <div key={index} className="postcraft-card">
+                <div className="flex justify-between items-center mb-3">
+                  <h3 className="postcraft-label">{forecast.month}</h3>
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold border-2 border-black ${
+                    forecast.confidence >= 80 ? 'bg-green-100 text-green-800' :
+                    forecast.confidence >= 70 ? 'bg-blue-100 text-blue-800' : 'bg-orange-100 text-orange-800'
                   }`}>
                     {forecast.confidence}% confidence
                   </span>
                 </div>
-                <div style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--intel-blue)' }}>
+                <div className="text-3xl font-black text-blue-600">
                   £{forecast.revenue.toLocaleString()}
                 </div>
               </div>
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Revenue Opportunities */}
-        <div className="intel-card">
-          <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1.5rem', color: 'var(--intel-gray-900)' }}>
+      {/* Revenue Opportunities */}
+      <div className="postcraft-section">
+        <div className="postcraft-card">
+          <h2 className="postcraft-section-title mb-6">
             Revenue Opportunities
           </h2>
           
-          <div className="intel-grid intel-grid-3">
-            <div style={{
-              padding: '1.5rem',
-              border: '1px solid var(--intel-gray-200)',
-              borderRadius: '0.75rem',
-              textAlign: 'center',
-              background: 'var(--intel-white)'
-            }}>
-              <div className="intel-metric-icon" style={{ 
-                background: 'var(--intel-gradient)', 
-                color: 'white',
-                margin: '0 auto 1rem auto'
-              }}>
-                <Target className="w-5 h-5" />
+          <div className="postcraft-metrics-grid">
+            <div className="postcraft-metric-card">
+              <div className="postcraft-metric-icon bg-gradient-to-br from-purple-500 to-pink-500">
+                <Target className="w-6 h-6 text-white" />
               </div>
-              <div style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '0.5rem' }}>
-                {metrics.opportunities}
-              </div>
-              <div style={{ fontSize: '0.875rem', color: 'var(--intel-gray-600)' }}>
-                Active Opportunities
-              </div>
+              <div className="postcraft-metric-value">{metrics.opportunities}</div>
+              <div className="postcraft-metric-label">Active Opportunities</div>
             </div>
 
-            <div style={{
-              padding: '1.5rem',
-              border: '1px solid var(--intel-gray-200)',
-              borderRadius: '0.75rem',
-              textAlign: 'center',
-              background: 'var(--intel-white)'
-            }}>
-              <div className="intel-metric-icon" style={{ 
-                background: '#d1fae5', 
-                color: '#065f46',
-                margin: '0 auto 1rem auto'
-              }}>
-                <DollarSign className="w-5 h-5" />
+            <div className="postcraft-metric-card">
+              <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
+                <DollarSign className="w-6 h-6 text-white" />
               </div>
-              <div style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '0.5rem' }}>
-                £{metrics.potentialRevenue.toLocaleString()}
-              </div>
-              <div style={{ fontSize: '0.875rem', color: 'var(--intel-gray-600)' }}>
-                Potential Monthly Revenue
-              </div>
+              <div className="postcraft-metric-value">£{metrics.potentialRevenue.toLocaleString()}</div>
+              <div className="postcraft-metric-label">Potential Monthly Revenue</div>
             </div>
 
-            <div style={{
-              padding: '1.5rem',
-              border: '1px solid var(--intel-gray-200)',
-              borderRadius: '0.75rem',
-              textAlign: 'center',
-              background: 'var(--intel-white)'
-            }}>
-              <div className="intel-metric-icon" style={{ 
-                background: '#fef3c7', 
-                color: '#92400e',
-                margin: '0 auto 1rem auto'
-              }}>
-                <TrendingUp className="w-5 h-5" />
+            <div className="postcraft-metric-card">
+              <div className="postcraft-metric-icon bg-gradient-to-br from-yellow-500 to-amber-500">
+                <TrendingUp className="w-6 h-6 text-white" />
               </div>
-              <div style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '0.5rem' }}>
-                254%
-              </div>
-              <div style={{ fontSize: '0.875rem', color: 'var(--intel-gray-600)' }}>
-                Projected ROI
-              </div>
+              <div className="postcraft-metric-value">254%</div>
+              <div className="postcraft-metric-label">Projected ROI</div>
             </div>
           </div>
         </div>
