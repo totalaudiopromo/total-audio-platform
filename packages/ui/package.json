@@ -1,0 +1,31 @@
+{
+  "name": "@total-audio/ui",
+  "version": "1.0.0",
+  "description": "Shared UI components for Total Audio Promo platform - brutalist design system",
+  "main": "index.js",
+  "exports": {
+    "./SiteHeader": "./components/SiteHeader.tsx",
+    "./SiteFooter": "./components/SiteFooter.tsx",
+    "./ToolSwitcher": "./components/ToolSwitcher.tsx",
+    "./tailwind-brand": "./tailwind/brand-config.js"
+  },
+  "scripts": {
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "total-audio",
+    "ui-components",
+    "brutalist-design",
+    "shared-components"
+  ],
+  "author": "Total Audio Promo",
+  "license": "UNLICENSED",
+  "peerDependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "next": "^15.0.0"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  }
+}
