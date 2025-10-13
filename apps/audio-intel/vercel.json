@@ -1,6 +1,6 @@
 {
-  "installCommand": "cd ../.. && npm install && npm run build --workspace=packages/auth --if-present",
-  "buildCommand": "cd ../.. && npm run build --workspace=apps/audio-intel",
+  "installCommand": "cd ../.. && npm install",
+  "buildCommand": "next build",
   "outputDirectory": ".next",
   "framework": "nextjs",
   "env": {
