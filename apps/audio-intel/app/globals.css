@@ -40,24 +40,7 @@
   }
 
   .cta-button {
-    @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-blue-700 active:scale-95;
-    position: relative;
-  }
-
-  .cta-button::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.2), transparent 70%);
-    border-radius: 1rem;
-    z-index: -1;
-    filter: blur(6px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .cta-button:hover::before {
-    opacity: 1;
+    @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-amber-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-amber-600 active:scale-95;
   }
 
   .subtle-button {
