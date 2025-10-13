@@ -56,7 +56,8 @@ export default function SocialPostingPage() {
     // Auto-refresh every 10 minutes for fresh content
     const interval = setInterval(loadContent, 10 * 60 * 1000);
     return () => clearInterval(interval);
-  }, [selectedPlatform, selectedType]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedPlatform, selectedType]); // loadContent intentionally not in deps
 
   // Static fallback posts for immediate display while loading
   const fallbackPosts: AuthenticPost[] = [

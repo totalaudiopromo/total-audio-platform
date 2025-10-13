@@ -39,7 +39,12 @@ DATA VERIFICATION:
 export default function BbcRadio2ContactEnrichment() {
   return (
     <PSEOPageWrapper pageName="bbc-radio-2-contact-enrichment" topic="bbc-radio-2" searchVolume={500} tier={2}>
-      <BlogStructuredData slug="bbc-radio-2-contact-enrichment" />
+      <BlogStructuredData
+        slug="bbc-radio-2-contact-enrichment"
+        title="BBC Radio 2 Contact Enrichment: From 12 Hours to 2 Minutes"
+        description="BBC Radio 2 contact enrichment guide for mainstream music campaigns. Reach the right presenters and producers."
+        datePublished="2025-01-10"
+      />
       <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

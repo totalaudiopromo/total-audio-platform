@@ -33,7 +33,12 @@ export default function BbcRadio1ContactEnrichment() {
       searchVolume={1200}
       tier={1}
     >
-    <BlogStructuredData slug="bbc-radio-1-contact-enrichment" />
+    <BlogStructuredData
+      slug="bbc-radio-1-contact-enrichment"
+      title="BBC Radio 1 Contact Enrichment: From 18 Hours to 2 Minutes"
+      description="Real BBC Radio 1 pitching workflow from 18 hours of manual research to a 2 minute AI enrichment run. Exact contacts, submission rules, and proof it works."
+      datePublished="2025-01-10"
+    />
     <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

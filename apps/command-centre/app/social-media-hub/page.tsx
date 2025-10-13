@@ -105,7 +105,8 @@ export default function SocialMediaHubPage() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // fetchData intentionally not in deps
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -487,7 +488,10 @@ What are you building? Let's connect.`,
                       {copiedId === template.id ? <Check size={14} /> : <Copy size={14} />}
                     </button>
                     <button
-                      onClick={() => useTemplate(template)}
+                      onClick={() => {
+                        setContent(template.content);
+                        setSelectedPlatforms(template.platforms);
+                      }}
                       className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
                     >
                       Use Template

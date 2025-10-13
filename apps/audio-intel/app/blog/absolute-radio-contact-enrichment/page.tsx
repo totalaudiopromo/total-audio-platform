@@ -39,7 +39,12 @@ DATA VERIFICATION:
 export default function AbsoluteRadioContactEnrichment() {
   return (
     <PSEOPageWrapper pageName="absolute-radio-contact-enrichment" topic="absolute-radio" searchVolume={300} tier={2}>
-      <BlogStructuredData slug="absolute-radio-contact-enrichment" />
+      <BlogStructuredData
+        slug="absolute-radio-contact-enrichment"
+        title="Absolute Radio Contact Enrichment: From 10 Hours to 2 Minutes"
+        description="Manual Absolute Radio contact research takes 10-12 hours. Audio Intel enriches Sunday Night Music Club submission details in 2 minutes with verified requirements: web-link only, no attachments, one track per month featured."
+        datePublished="2025-10-04"
+      />
       <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

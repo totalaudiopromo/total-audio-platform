@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import './postcraft-design.css'
 import AppShell from './components/AppShell'
 import { ToastContainer } from './components/Toast'
 
@@ -50,10 +49,6 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
     creator: '@totalaudiopromo',
   },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f6ab00' },
-    { media: '(prefers-color-scheme: dark)', color: '#f6ab00' }
-  ],
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
@@ -70,6 +65,10 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false, // Prevents zoom on mobile inputs
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f6ab00' },
+    { media: '(prefers-color-scheme: dark)', color: '#f6ab00' }
+  ],
 }
 
 export default function RootLayout({

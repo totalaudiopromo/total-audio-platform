@@ -35,6 +35,12 @@
   --voice-echo: #f59e0b;       /* Orange/Amber */
   --command-centre: #6366f1;   /* Indigo */
 
+  /* Postcraft Variables (alias to main brand) */
+  --postcraft-blue: var(--audio-intel);
+  --postcraft-purple: var(--trend-track);
+  --postcraft-green: var(--playlist-pulse);
+  --postcraft-orange: var(--release-radar);
+
   /* Typography */
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
@@ -58,100 +64,118 @@ body {
 }
 
 /* ========================================
-   AUDIO MASCOT SYSTEM
+   POSTCRAFT-STYLE DASHBOARD COMPONENTS
    ======================================== */
 
-.audio-mascot {
-  position: relative;
-  display: inline-block;
-  transition: all 0.3s ease;
+.postcraft-page {
+  font-family: var(--font-family);
+  background: var(--tap-gray-50);
+  color: var(--tap-gray-900);
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
-.audio-mascot::before {
-  content: '';
-  display: block;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 0.25rem;
-  background: #111827;
-  transition: all 0.3s ease;
+.postcraft-section {
+  margin-bottom: 2rem;
 }
 
-.audio-mascot.activated {
-  transform: scale(1.1);
+.postcraft-section-header {
+  margin-bottom: 1.5rem;
 }
 
-.audio-mascot.activated::before {
-  background: var(--audio-intel);
-  animation: audioBounce 0.6s ease-in-out;
+.postcraft-section-header h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--tap-gray-900);
+  margin-bottom: 0.5rem;
 }
 
-@keyframes audioBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.postcraft-card {
+  background: var(--tap-white);
+  border: 2px solid var(--tap-gray-200);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 
-/* Tool-specific Audio activation */
-.audio-intel .audio-mascot.activated::before {
-  color: var(--audio-intel);
-  text-shadow: 0 0 10px var(--audio-intel);
+.postcraft-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+  border-color: var(--audio-intel);
 }
 
-.playlist-pulse .audio-mascot.activated::before {
-  color: var(--playlist-pulse);
-  text-shadow: 0 0 10px var(--playlist-pulse);
-}
-
-.release-radar .audio-mascot.activated::before {
-  color: var(--release-radar);
-  text-shadow: 0 0 10px var(--release-radar);
-}
-
-.trend-track .audio-mascot.activated::before {
-  color: var(--trend-track);
-  text-shadow: 0 0 10px var(--trend-track);
-}
-
-.content-clone .audio-mascot.activated::before {
-  color: var(--content-clone);
-  text-shadow: 0 0 10px var(--content-clone);
-}
-
-.success-predict .audio-mascot.activated::before {
-  color: var(--success-predict);
-  text-shadow: 0 0 10px var(--success-predict);
-}
-
-/* ========================================
-   LAYOUT SYSTEM
-   ======================================== */
-
-.tap-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.tap-section {
-  margin-bottom: 3rem;
-}
-
-.tap-grid {
+.postcraft-metrics-grid {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.tap-grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-}
-
-.tap-grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-}
-
-.tap-grid-4 {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.postcraft-metric-card {
+  background: var(--tap-white);
+  border: 3px solid var(--tap-black);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  transition: all 0.2s ease;
+}
+
+.postcraft-metric-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.postcraft-metric-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tap-gray-600);
+  margin-bottom: 0.5rem;
+}
+
+.postcraft-metric-value {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--tap-gray-900);
+  line-height: 1;
+}
+
+.postcraft-metric-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--tap-black);
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.postcraft-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.postcraft-status-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: var(--playlist-pulse);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 /* ========================================
@@ -186,39 +210,6 @@ body {
   border-color: var(--tap-gray-300);
 }
 
-/* Tool-specific card activation */
-.tap-card.audio-intel::before {
-  background: var(--audio-intel);
-}
-
-.tap-card.playlist-pulse::before {
-  background: var(--playlist-pulse);
-}
-
-.tap-card.release-radar::before {
-  background: var(--release-radar);
-}
-
-.tap-card.trend-track::before {
-  background: var(--trend-track);
-}
-
-.tap-card.content-clone::before {
-  background: var(--content-clone);
-}
-
-.tap-card.success-predict::before {
-  background: var(--success-predict);
-}
-
-.tap-card.voice-echo::before {
-  background: var(--voice-echo);
-}
-
-.tap-card.command-centre::before {
-  background: var(--command-centre);
-}
-
 /* ========================================
    TYPOGRAPHY SYSTEM
    ======================================== */
@@ -249,41 +240,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.tap-heading-4 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--tap-gray-800);
-  margin-bottom: 0.5rem;
-}
-
-.tap-text-lg {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: var(--tap-gray-700);
-}
-
-.tap-text-base {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--tap-gray-700);
-}
-
-.tap-text-sm {
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: var(--tap-gray-600);
-}
-
-.tap-text-xs {
-  font-size: 0.75rem;
-  line-height: 1.4;
-  color: var(--tap-gray-500);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 600;
-}
-
 /* ========================================
    BUTTON SYSTEM
    ======================================== */
@@ -292,400 +248,55 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
   font-weight: 600;
-  font-size: 0.875rem;
-  line-height: 1;
-  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 0.75rem;
   border: 2px solid transparent;
-  cursor: pointer;
   transition: all 0.2s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.tap-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  cursor: pointer;
+  text-decoration: none;
+  min-height: 44px; /* Touch target size */
 }
 
 .tap-button-primary {
-  background: var(--tap-black);
-  color: var(--tap-white);
-  border-color: var(--tap-black);
-}
-
-.tap-button-primary:hover:not(:disabled) {
-  background: var(--tap-gray-800);
-  border-color: var(--tap-gray-800);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.tap-button-secondary {
-  background: var(--tap-white);
-  color: var(--tap-gray-700);
-  border-color: var(--tap-gray-300);
-}
-
-.tap-button-secondary:hover:not(:disabled) {
-  background: var(--tap-gray-50);
-  border-color: var(--tap-gray-400);
-  transform: translateY(-1px);
-}
-
-/* Tool-specific button colors */
-.tap-button.audio-intel {
   background: var(--audio-intel);
+  color: var(--tap-white);
   border-color: var(--audio-intel);
-  color: var(--tap-white);
 }
 
-.tap-button.playlist-pulse {
-  background: var(--playlist-pulse);
-  border-color: var(--playlist-pulse);
-  color: var(--tap-white);
-}
-
-.tap-button.release-radar {
-  background: var(--release-radar);
-  border-color: var(--release-radar);
-  color: var(--tap-white);
-}
-
-.tap-button.trend-track {
-  background: var(--trend-track);
-  border-color: var(--trend-track);
-  color: var(--tap-white);
-}
-
-.tap-button.content-clone {
-  background: var(--content-clone);
-  border-color: var(--content-clone);
-  color: var(--tap-white);
-}
-
-.tap-button.success-predict {
-  background: var(--success-predict);
-  border-color: var(--success-predict);
-  color: var(--tap-white);
+.tap-button-primary:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
 }
 
 /* ========================================
-   METRIC SYSTEM
+   LAYOUT UTILITIES
    ======================================== */
 
-.tap-metric {
-  text-align: center;
-  padding: 1.5rem;
-}
-
-.tap-metric-value {
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: 1;
-  color: var(--tap-gray-900);
-  margin-bottom: 0.5rem;
-  font-family: var(--font-mono);
-}
-
-.tap-metric-label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--tap-gray-600);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
-}
-
-.tap-metric-change {
-  font-size: 0.75rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
-}
-
-.tap-metric-change.positive {
-  color: var(--playlist-pulse);
-}
-
-.tap-metric-change.negative {
-  color: #ef4444;
-}
-
-.tap-metric-change.neutral {
-  color: var(--tap-gray-500);
-}
-
-/* ========================================
-   STATUS SYSTEM
-   ======================================== */
-
-.tap-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.tap-status-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-.tap-status.active {
-  background: rgba(34, 197, 94, 0.1);
-  color: var(--playlist-pulse);
-}
-
-.tap-status.active .tap-status-dot {
-  background: var(--playlist-pulse);
-}
-
-.tap-status.warning {
-  background: rgba(245, 158, 11, 0.1);
-  color: var(--release-radar);
-}
-
-.tap-status.warning .tap-status-dot {
-  background: var(--release-radar);
-}
-
-.tap-status.error {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-}
-
-.tap-status.error .tap-status-dot {
-  background: #ef4444;
-}
-
-.tap-status.idle {
-  background: rgba(107, 114, 128, 0.1);
-  color: var(--tap-gray-500);
-}
-
-.tap-status.idle .tap-status-dot {
-  background: var(--tap-gray-500);
-  animation: none;
-}
-
-/* ========================================
-   NAVIGATION SYSTEM
-   ======================================== */
-
-.tap-nav {
-  background: var(--tap-white);
-  border-bottom: 2px solid var(--tap-gray-200);
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(10px);
-}
-
-.tap-nav-container {
+.tap-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 0 1.5rem;
 }
 
-.tap-nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-weight: 800;
-  font-size: 1.25rem;
-  color: var(--tap-gray-900);
-  text-decoration: none;
+.tap-grid {
+  display: grid;
+  gap: 1.5rem;
 }
 
-.tap-nav-links {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
+.tap-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 }
 
-.tap-nav-link {
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: var(--tap-gray-600);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  border: 2px solid transparent;
+.tap-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
-.tap-nav-link:hover {
-  color: var(--tap-gray-900);
-  background: var(--tap-gray-50);
+.tap-grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
-
-.tap-nav-link.active {
-  color: var(--audio-intel);
-  background: rgba(59, 130, 246, 0.1);
-  border-color: var(--audio-intel);
-}
-
-/* ========================================
-   LOADING SYSTEM
-   ======================================== */
-
-.tap-loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem;
-  text-align: center;
-}
-
-.tap-spinner {
-  width: 2rem;
-  height: 2rem;
-  border: 3px solid var(--tap-gray-200);
-  border-top: 3px solid var(--audio-intel);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
-
-@media (max-width: 768px) {
-  .tap-container {
-    padding: 0 0.75rem;
-  }
-  
-  .tap-heading-1 {
-    font-size: 2.25rem;
-  }
-  
-  .tap-heading-2 {
-    font-size: 1.875rem;
-  }
-  
-  .tap-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .tap-nav-container {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .tap-nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .tap-metric-value {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .tap-heading-1 {
-    font-size: 1.875rem;
-  }
-  
-  .tap-heading-2 {
-    font-size: 1.5rem;
-  }
-  
-  .tap-card {
-    padding: 1rem;
-  }
-  
-  .tap-button {
-    padding: 0.625rem 1.25rem;
-    font-size: 0.8125rem;
-  }
-}
-
-/* ========================================
-   UTILITY CLASSES
-   ======================================== */
-
-.tap-text-center { text-align: center; }
-.tap-text-left { text-align: left; }
-.tap-text-right { text-align: right; }
-
-.tap-mb-0 { margin-bottom: 0; }
-.tap-mb-1 { margin-bottom: 0.25rem; }
-.tap-mb-2 { margin-bottom: 0.5rem; }
-.tap-mb-3 { margin-bottom: 0.75rem; }
-.tap-mb-4 { margin-bottom: 1rem; }
-.tap-mb-6 { margin-bottom: 1.5rem; }
-.tap-mb-8 { margin-bottom: 2rem; }
-
-.tap-mt-0 { margin-top: 0; }
-.tap-mt-1 { margin-top: 0.25rem; }
-.tap-mt-2 { margin-top: 0.5rem; }
-.tap-mt-3 { margin-top: 0.75rem; }
-.tap-mt-4 { margin-top: 1rem; }
-.tap-mt-6 { margin-top: 1.5rem; }
-.tap-mt-8 { margin-top: 2rem; }
-
-.tap-p-0 { padding: 0; }
-.tap-p-1 { padding: 0.25rem; }
-.tap-p-2 { padding: 0.5rem; }
-.tap-p-3 { padding: 0.75rem; }
-.tap-p-4 { padding: 1rem; }
-.tap-p-6 { padding: 1.5rem; }
-.tap-p-8 { padding: 2rem; }
-
-.tap-rounded { border-radius: 0.5rem; }
-.tap-rounded-lg { border-radius: 0.75rem; }
-.tap-rounded-xl { border-radius: 1rem; }
-
-.tap-shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
-.tap-shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
-.tap-shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
-
-.tap-hidden { display: none; }
-.tap-block { display: block; }
-.tap-inline-block { display: inline-block; }
-.tap-flex { display: flex; }
-.tap-inline-flex { display: inline-flex; }
-.tap-grid { display: grid; }
-
-.tap-items-center { align-items: center; }
-.tap-justify-center { justify-content: center; }
-.tap-justify-between { justify-content: space-between; }
-.tap-gap-1 { gap: 0.25rem; }
-.tap-gap-2 { gap: 0.5rem; }
-.tap-gap-3 { gap: 0.75rem; }
-.tap-gap-4 { gap: 1rem; }
-.tap-gap-6 { gap: 1.5rem; }
-.tap-gap-8 { gap: 2rem; }
 
 /* ========================================
    ACCESSIBILITY
@@ -709,6 +320,35 @@ body {
 }
 
 /* ========================================
+   MOBILE RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .postcraft-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .tap-grid-2,
+  .tap-grid-3,
+  .tap-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .postcraft-metric-value {
+    font-size: 1.875rem;
+  }
+
+  .tap-heading-1 {
+    font-size: 2.25rem;
+  }
+
+  .tap-heading-2 {
+    font-size: 1.875rem;
+  }
+}
+
+/* ========================================
    PRINT STYLES
    ======================================== */
 
@@ -718,19 +358,18 @@ body {
   .tap-loading {
     display: none !important;
   }
-  
-  .tap-card {
+
+  .tap-card,
+  .postcraft-card,
+  .postcraft-metric-card {
     border: 1px solid var(--tap-gray-300) !important;
     box-shadow: none !important;
     break-inside: avoid;
   }
-  
+
   .tap-heading-1,
   .tap-heading-2,
-  .tap-heading-3,
-  .tap-heading-4 {
+  .tap-heading-3 {
     color: var(--tap-black) !important;
   }
 }
-
-

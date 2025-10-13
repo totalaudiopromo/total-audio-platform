@@ -34,6 +34,20 @@ function ImportCampaignsPage() {
   const [preview, setPreview] = useState<CampaignImportRow[]>([]);
   const [notification, setNotification] = useState<string | null>(null);
 
+  // Detect Audio Intel import
+  useEffect(() => {
+    const source = searchParams?.get('source');
+    if (source === 'audio-intel') {
+      const contactsCount = searchParams?.get('contacts');
+      setNotification(
+        contactsCount
+          ? `Ready to import ${contactsCount} enriched contacts from Audio Intel!`
+          : 'Ready to import enriched contacts from Audio Intel!'
+      );
+      setTimeout(() => setNotification(null), 5000);
+    }
+  }, [searchParams]);
+
   // Detect clipboard import from Pitch Generator
   useEffect(() => {
     async function handleClipboardImport() {

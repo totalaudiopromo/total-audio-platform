@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
+import { logger } from '../../../lib/logger';
 
 interface BusinessMetrics {
   revenue: {
@@ -52,7 +53,7 @@ export const dynamic = 'force-dynamic';
 export async function GET() {
   try {
     const currentDate = new Date();
-    console.log('🏢 Loading real business metrics (Audio Intel Beta Phase)...');
+    logger.log('🏢 Loading real business metrics (Audio Intel Beta Phase)...');
     
     // Dynamic metrics that grow realistically over time
     const now = new Date();
@@ -70,7 +71,7 @@ export async function GET() {
         realBetaUsers = data.totalUsers || 4;
       }
     } catch (error) {
-      console.log('Using fallback beta user count');
+      logger.log('Using fallback beta user count');
     }
     
     // Stripe metrics (real data if STRIPE_SECRET set)
@@ -102,7 +103,7 @@ export async function GET() {
         stripeArr = stripeMrr * 12;
       }
     } catch (err) {
-      console.log('Stripe metrics unavailable:', err instanceof Error ? err.message : 'unknown');
+      logger.log('Stripe metrics unavailable:', err instanceof Error ? err.message : 'unknown');
     }
 
     // Calculate realistic metrics that grow daily (for non-Stripe, keep zero if pre-revenue)
@@ -190,7 +191,7 @@ export async function GET() {
       }
     };
 
-    console.log(`[${currentDate.toISOString()}] Real business metrics (Day ${daysInOperation}):`, {
+    logger.log(`[${currentDate.toISOString()}] Real business metrics (Day ${daysInOperation}):`, {
       betaUsers: metrics.customers.total,
       emailsValidated: metrics.product.emailsValidated,
       contactsEnriched: metrics.product.contactsEnriched,
@@ -216,7 +217,7 @@ export async function GET() {
     });
     
   } catch (error) {
-    console.error('Business metrics error:', error);
+    logger.error('Business metrics error:', error);
     return NextResponse.json(
       { error: 'Failed to fetch business metrics' },
       { status: 500 }

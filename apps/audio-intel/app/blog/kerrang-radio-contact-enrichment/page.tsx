@@ -39,7 +39,12 @@ DATA VERIFICATION:
 export default function KerrangRadioContactEnrichment() {
   return (
     <PSEOPageWrapper pageName="kerrang-radio-contact-enrichment" topic="kerrang-radio" searchVolume={350} tier={2}>
-      <BlogStructuredData slug="kerrang-radio-contact-enrichment" />
+      <BlogStructuredData
+        slug="kerrang-radio-contact-enrichment"
+        title="Kerrang Radio Contact Enrichment: From 10 Hours to 2 Minutes"
+        description="Kerrang! Radio contact enrichment for rock and metal music campaigns. Get accurate presenter contact information."
+        datePublished="2025-01-11"
+      />
       <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

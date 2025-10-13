@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { agentColorUtils, AGENT_STATUS_STATES } from '@/lib/agent-color-system';
 import { Check, X, Zap, CheckCircle, XCircle, Rocket } from 'lucide-react';
 
@@ -27,8 +27,8 @@ const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({
   const [currentStep, setCurrentStep] = useState(0);
   const [steps, setSteps] = useState<LoadingStep[]>([]);
 
-  // Define workflows with their agent sequences
-  const workflows = {
+  // Define workflows with their agent sequences (useMemo to prevent recreation)
+  const workflows = useMemo(() => ({
     'contact-processing': [
       {
         id: '1',
@@ -135,7 +135,7 @@ const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({
         duration: 2000
       }
     ]
-  };
+  }), []);
 
   // Initialize steps
   useEffect(() => {
@@ -144,7 +144,7 @@ const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({
       status: 'pending' as const
     }));
     setSteps(workflowSteps);
-  }, [workflow]);
+  }, [workflow, workflows]);
 
   // Process steps sequentially
   useEffect(() => {
@@ -186,7 +186,8 @@ const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({
     };
 
     processStep(0);
-  }, [steps.length]); // Only run when steps are first set
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [steps.length]); // Only run when steps are first set, other deps intentionally omitted
 
   const renderStep = (step: LoadingStep, index: number) => {
     const theme = agentColorUtils.getAgentTheme(step.agentType);

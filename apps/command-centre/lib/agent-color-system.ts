@@ -332,7 +332,7 @@ export const AGENT_CATEGORIES = {
 } as const;
 
 // Export complete system
-export default {
+const agentColorSystem = {
   AGENT_COLOR_THEMES,
   AGENT_STATUS_STATES,
   AGENT_TYPE_MAPPINGS,
@@ -340,3 +340,5 @@ export default {
   AGENT_CATEGORIES,
   agentColorUtils
 };
+
+export default agentColorSystem;

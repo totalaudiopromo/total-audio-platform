@@ -40,7 +40,12 @@ DATA VERIFICATION:
 export default function AppleMusicEditorialContacts() {
   return (
     <PSEOPageWrapper pageName="apple-music-editorial-contacts" topic="apple-music-editorial" searchVolume={1500} tier={1}>
-      <BlogStructuredData slug="apple-music-editorial-contacts" />
+      <BlogStructuredData
+        slug="apple-music-editorial-contacts"
+        title="Apple Music Editorial Contacts: The Distributor Route Breakdown"
+        description="Apple Music has NO direct artist pitching like Spotify. Editorial playlisting requires approved distributor with Pitch tool access. Audio Intel reveals verified distributor routes, 10+ day deadlines, and mandatory 2025 requirements in 2 minutes."
+        datePublished="2025-10-01"
+      />
       <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

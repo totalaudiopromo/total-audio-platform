@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
+import { logger } from '../../../lib/logger';
 
 export async function GET() {
   try {
-    // Connect to real Audio Intel system running on port 3001
-    const audioIntelBaseUrl = 'http://localhost:3001';
+    // Connect to real Audio Intel system
+    const audioIntelBaseUrl = process.env.AUDIO_INTEL_URL || 'https://intel.totalaudiopromo.com';
     
     // Fetch real data from Audio Intel APIs
     const [statusResponse, analyticsResponse, enrichResponse] = await Promise.all([
@@ -60,7 +61,7 @@ export async function GET() {
       }
     };
     
-    console.log(`[${new Date().toISOString()}] Real Audio Intel metrics:`, {
+    logger.log(`[${new Date().toISOString()}] Real Audio Intel metrics:`, {
       systemStatus: realMetrics.systemStatus,
       contactsEnriched: realMetrics.contactsEnriched,
       successRate: realMetrics.successRate,
@@ -75,7 +76,7 @@ export async function GET() {
     });
     
   } catch (error) {
-    console.error('Audio Intel metrics error:', error);
+    logger.error('Audio Intel metrics error:', error);
     
     // Fallback to basic metrics if Audio Intel is not available
     return NextResponse.json({

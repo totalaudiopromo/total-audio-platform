@@ -2,21 +2,23 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  BarChart3, 
-  Users, 
-  TrendingUp, 
-  FileText, 
-  Share2, 
-  Radio, 
-  Newspaper, 
-  DollarSign, 
+import {
+  BarChart3,
+  Users,
+  TrendingUp,
+  FileText,
+  Share2,
+  Radio,
+  Newspaper,
+  DollarSign,
   Settings,
   Activity,
   Clock,
   ArrowUpRight,
-  ArrowDownRight
+  ArrowDownRight,
+  LucideIcon
 } from 'lucide-react';
+import { ErrorBoundary } from './ErrorBoundary';
 
 interface DashboardMetric {
   id: string;
@@ -31,26 +33,31 @@ interface DashboardCard {
   title: string;
   description: string;
   href: string;
-  icon: any;
+  icon: LucideIcon;
   status: 'active' | 'warning' | 'error' | 'idle';
 }
 
 export default function TotalAudioDashboard() {
   const [metrics, setMetrics] = useState<DashboardMetric[]>([]);
   const [loading, setLoading] = useState(true);
+  const [metricsLoading, setMetricsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchDashboardData();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Only run on mount
 
   const fetchDashboardData = async () => {
-    setLoading(true);
+    const isInitialLoad = loading;
+    if (!isInitialLoad) {
+      setMetricsLoading(true); // Show loading indicators for refresh
+    }
     setError(null);
     try {
       // Fetch real business metrics with timeout
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+      const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
 
       const [businessResponse, audioIntelResponse] = await Promise.all([
         fetch('/api/business-metrics?timeframe=30d', { signal: controller.signal }),
@@ -90,7 +97,7 @@ export default function TotalAudioDashboard() {
         },
         {
           id: 'projected-mrr',
-          label: 'Projected MRR',
+          label: 'Projected MRR (Est.)',
           value: businessData.projectedMRR || '£0',
           change: '+15%',
           changeType: 'positive'
@@ -99,7 +106,7 @@ export default function TotalAudioDashboard() {
 
       setMetrics(dashboardMetrics);
     } catch (err) {
-      console.error('Failed to fetch dashboard data:', err);
+      // Error already handled by showing error banner to user
       setError('Unable to load metrics. Using cached data.');
       // Set fallback metrics
       setMetrics([
@@ -110,6 +117,7 @@ export default function TotalAudioDashboard() {
       ]);
     } finally {
       setLoading(false);
+      setMetricsLoading(false);
     }
   };
 
@@ -262,17 +270,26 @@ export default function TotalAudioDashboard() {
         </div>
 
         {/* Key Metrics */}
-        <div className="postcraft-section mb-8">
-          <div className="postcraft-section-header">
-            <h2>Key Metrics</h2>
-          </div>
-          <div className="postcraft-metrics-grid">
-            {metrics.map((metric) => (
+        <ErrorBoundary>
+          <div className="postcraft-section mb-8">
+            <div className="postcraft-section-header">
+              <h2>Key Metrics</h2>
+            </div>
+            <div className="postcraft-metrics-grid">
+              {metrics.map((metric) => (
               <div key={metric.id} className="postcraft-metric-card">
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1 min-w-0">
                     <p className="postcraft-metric-label">{metric.label}</p>
-                    <p className="postcraft-metric-value">{metric.value}</p>
+                    <p className={`postcraft-metric-value ${metricsLoading ? 'opacity-50' : ''}`}>
+                      {metricsLoading ? (
+                        <span className="inline-flex items-center gap-2">
+                          <span className="animate-pulse">...</span>
+                        </span>
+                      ) : (
+                        metric.value
+                      )}
+                    </p>
                   </div>
                   {metric.change && (
                     <div className={`flex items-center text-xs sm:text-sm font-bold flex-shrink-0 ${
@@ -286,12 +303,14 @@ export default function TotalAudioDashboard() {
                   )}
                 </div>
               </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </ErrorBoundary>
 
         {/* Quick Actions */}
-        <div className="postcraft-section mb-8">
+        <ErrorBoundary>
+          <div className="postcraft-section mb-8">
           <div className="postcraft-section-header">
             <h2>Quick Actions</h2>
           </div>
@@ -329,12 +348,14 @@ export default function TotalAudioDashboard() {
             })}
           </div>
         </div>
+        </ErrorBoundary>
 
         {/* Recent Activity */}
-        <div className="postcraft-section">
+        <ErrorBoundary>
+          <div className="postcraft-section">
           <div className="postcraft-section-header">
             <h2>System Status</h2>
-            <p className="text-sm text-gray-600 mt-2">Last updated 2 minutes ago</p>
+            <p className="text-sm text-gray-600 mt-2">Live monitoring</p>
           </div>
           <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4">
             {['Audio Intel', 'API Services', 'Database', 'Analytics'].map((service) => (
@@ -347,6 +368,7 @@ export default function TotalAudioDashboard() {
             ))}
           </div>
         </div>
+        </ErrorBoundary>
       </div>
     </div>
   );

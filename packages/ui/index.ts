@@ -9,10 +9,11 @@
  *   import { getBrandConfig } from '@total-audio/ui/tailwind-brand'
  */
 
-export { SiteHeader } from './components/SiteHeader.tsx';
-export { SiteFooter } from './components/SiteFooter.tsx';
-export { ToolSwitcher } from './components/ToolSwitcher.tsx';
+export { SiteHeader } from './components/SiteHeader';
+export { SiteFooter } from './components/SiteFooter';
+export { ToolSwitcher } from './components/ToolSwitcher';
 
-export type { SiteHeaderProps, SiteHeaderLink } from './components/SiteHeader.tsx';
-export type { SiteFooterProps, SiteFooterLink } from './components/SiteFooter.tsx';
-export type { ToolSwitcherProps } from './components/ToolSwitcher.tsx';
+// Type exports available directly from component files:
+// import type { SiteHeaderProps, SiteHeaderLink } from '@total-audio/ui/SiteHeader';
+// import type { SiteFooterProps, SiteFooterLink } from '@total-audio/ui/SiteFooter';
+// import type { ToolSwitcherProps } from '@total-audio/ui/ToolSwitcher';

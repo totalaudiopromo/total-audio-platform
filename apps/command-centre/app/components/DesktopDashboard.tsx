@@ -151,7 +151,8 @@ export default function DesktopDashboard() {
       clearInterval(interval);
       clearTimeout(timeout);
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // fetchData intentionally not in deps to avoid re-fetching loops
 
   // Never show loading state - always show dashboard with default data
   // if (isLoading && hasAttemptedLoad) {

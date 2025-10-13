@@ -158,4 +158,5 @@ export class SocialMediaManager {
   }
 }
 
-export default new SocialMediaManager();
+const socialMediaManager = new SocialMediaManager();
+export default socialMediaManager;

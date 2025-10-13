@@ -37,10 +37,6 @@ export default function AdvancedAnalyticsPage() {
   const [loading, setLoading] = useState(true);
   const [timeframe, setTimeframe] = useState('30d');
 
-  useEffect(() => {
-    fetchAnalytics();
-  }, [timeframe]);
-
   const fetchAnalytics = async () => {
     setLoading(true);
     try {
@@ -111,6 +107,11 @@ export default function AdvancedAnalyticsPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchAnalytics();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [timeframe]); // Only re-fetch when timeframe changes
 
   if (loading) {
     return (

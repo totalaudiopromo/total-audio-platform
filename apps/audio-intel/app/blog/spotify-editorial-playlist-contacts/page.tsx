@@ -28,7 +28,12 @@ export const metadata: Metadata = {
 export default function SpotifyEditorialPlaylistContacts() {
   return (
     <PSEOPageWrapper pageName="spotify-editorial-playlist-contacts" topic="spotify-editorial" searchVolume={2000} tier={1}>
-      <BlogStructuredData slug="spotify-editorial-playlist-contacts" />
+      <BlogStructuredData
+        slug="spotify-editorial-playlist-contacts"
+        title="Spotify Editorial Playlist Contacts: From 12 Hours to 2 Minutes"
+        description="Complete guide to Spotify editorial playlist contacts and submission process. Increase your chances of playlist placement."
+        datePublished="2025-01-12"
+      />
       <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

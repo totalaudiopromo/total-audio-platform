@@ -193,7 +193,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    // Temporarily disabled due to monorepo hoisting issues
+    // require("tailwindcss-animate")
+  ],
 } satisfies Config
 
 export default config

@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable experimental optimizations
+  experimental: {
+    optimizePackageImports: ['lucide-react']
+  },
   async redirects() {
     return [
       {
@@ -8,7 +12,10 @@ const nextConfig = {
         permanent: false,
       },
     ];
-  }
+  },
+  // Production optimizations
+  poweredByHeader: false,
+  compress: true,
 }
 
 module.exports = nextConfig
