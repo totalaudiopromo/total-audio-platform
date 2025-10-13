@@ -41,7 +41,7 @@ export default function CookiePolicy() {
               <li><strong>Google Analytics (_ga, _gid, _gat)</strong> - Track page views, user behavior, and site performance</li>
               <li><strong>Purpose:</strong> Improve website performance and user experience</li>
               <li><strong>Retention:</strong> Up to 2 years</li>
-              <li><strong>Control:</strong> You can opt out via our cookie banner or <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:underline">Google Analytics Opt-out Browser Add-on</a></li>
+              <li><strong>Control:</strong> You can opt out via our cookie banner or <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Google Analytics Opt-out Browser Add-on</a></li>
             </ul>
 
             <h3 className="text-xl font-bold mb-3">3. Functionality Cookies (Optional)</h3>
@@ -61,7 +61,7 @@ export default function CookiePolicy() {
             <ul className="list-disc pl-6 mb-4 space-y-2">
               <li><strong>Purpose:</strong> Website analytics and performance tracking</li>
               <li><strong>Data Shared:</strong> Anonymized usage data, page views, device information</li>
-              <li><strong>Privacy Policy:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:underline">Google Privacy Policy</a></li>
+              <li><strong>Privacy Policy:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Google Privacy Policy</a></li>
               <li><strong>Opt-out:</strong> Decline via our cookie banner or use Google's opt-out tool</li>
             </ul>
 
@@ -69,7 +69,7 @@ export default function CookiePolicy() {
             <ul className="list-disc pl-6 mb-4 space-y-2">
               <li><strong>Purpose:</strong> Secure payment processing and fraud prevention</li>
               <li><strong>Data Shared:</strong> Payment information (encrypted)</li>
-              <li><strong>Privacy Policy:</strong> <a href="https://stripe.com/gb/privacy" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:underline">Stripe Privacy Policy</a></li>
+              <li><strong>Privacy Policy:</strong> <a href="https://stripe.com/gb/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Stripe Privacy Policy</a></li>
               <li><strong>Note:</strong> These are essential for payment functionality</li>
             </ul>
           </section>
@@ -86,7 +86,7 @@ export default function CookiePolicy() {
               <li><strong>Decline:</strong> Only use essential cookies (analytics disabled)</li>
             </ul>
             <p className="mb-4">
-              To change your preferences later, clear your browser cookies and revisit the site, or contact us at <a href="mailto:privacy@totalaudiopromo.com" className="text-purple-600 hover:underline">privacy@totalaudiopromo.com</a>.
+              To change your preferences later, clear your browser cookies and revisit the site, or contact us at <a href="mailto:privacy@totalaudiopromo.com" className="text-blue-600 hover:underline">privacy@totalaudiopromo.com</a>.
             </p>
 
             <h3 className="text-xl font-bold mb-3">2. Via Your Browser Settings</h3>
@@ -120,8 +120,8 @@ export default function CookiePolicy() {
             <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
             <p className="mb-4">
               If you have questions about our use of cookies:<br />
-              <strong>Email:</strong> <a href="mailto:privacy@totalaudiopromo.com" className="text-purple-600 hover:underline">privacy@totalaudiopromo.com</a><br />
-              <strong>Privacy Policy:</strong> <Link href="/privacy" className="text-purple-600 hover:underline">View our Privacy Policy</Link>
+              <strong>Email:</strong> <a href="mailto:privacy@totalaudiopromo.com" className="text-blue-600 hover:underline">privacy@totalaudiopromo.com</a><br />
+              <strong>Privacy Policy:</strong> <Link href="/privacy" className="text-blue-600 hover:underline">View our Privacy Policy</Link>
             </p>
           </section>
 
@@ -137,10 +137,10 @@ export default function CookiePolicy() {
         </div>
 
         <div className="mt-8 flex gap-4">
-          <Link href="/privacy" className="text-purple-600 font-bold hover:underline">
+          <Link href="/privacy" className="text-blue-600 font-bold hover:underline">
             Privacy Policy →
           </Link>
-          <Link href="/terms" className="text-purple-600 font-bold hover:underline">
+          <Link href="/terms" className="text-blue-600 font-bold hover:underline">
             Terms of Service →
           </Link>
         </div>

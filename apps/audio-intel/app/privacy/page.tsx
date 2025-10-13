@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
             </p>
             <p className="mb-4">
               <strong>Data Controller:</strong> Total Audio Promo Ltd<br />
-              <strong>Contact:</strong> <a href="mailto:privacy@totalaudiopromo.com" className="text-purple-600 hover:underline">privacy@totalaudiopromo.com</a><br />
+              <strong>Contact:</strong> <a href="mailto:privacy@totalaudiopromo.com" className="text-blue-600 hover:underline">privacy@totalaudiopromo.com</a><br />
               <strong>ICO Registration:</strong> [Your ICO Registration Number - apply at ico.org.uk if not registered]
             </p>
           </section>
@@ -43,7 +43,7 @@ export default function PrivacyPolicy() {
             <ul className="list-disc pl-6 mb-4 space-y-2">
               <li><strong>Usage Data:</strong> Pages viewed, features used, time spent</li>
               <li><strong>Device Information:</strong> Browser type, operating system, IP address</li>
-              <li><strong>Cookies:</strong> See our <Link href="/cookies" className="text-purple-600 hover:underline">Cookie Policy</Link> for details</li>
+              <li><strong>Cookies:</strong> See our <Link href="/cookies" className="text-blue-600 hover:underline">Cookie Policy</Link> for details</li>
             </ul>
           </section>
 
@@ -99,7 +99,7 @@ export default function PrivacyPolicy() {
               <li><strong>Right to Withdraw Consent:</strong> Withdraw consent for marketing communications</li>
             </ul>
             <p className="mb-4">
-              To exercise these rights, email us at <a href="mailto:privacy@totalaudiopromo.com" className="text-purple-600 hover:underline">privacy@totalaudiopromo.com</a>. We will respond within 30 days.
+              To exercise these rights, email us at <a href="mailto:privacy@totalaudiopromo.com" className="text-blue-600 hover:underline">privacy@totalaudiopromo.com</a>. We will respond within 30 days.
             </p>
           </section>
 
@@ -144,14 +144,14 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-bold mb-4">11. Contact Us & Complaints</h2>
             <p className="mb-4">
               For privacy-related questions or to exercise your rights:<br />
-              <strong>Email:</strong> <a href="mailto:privacy@totalaudiopromo.com" className="text-purple-600 hover:underline">privacy@totalaudiopromo.com</a><br />
+              <strong>Email:</strong> <a href="mailto:privacy@totalaudiopromo.com" className="text-blue-600 hover:underline">privacy@totalaudiopromo.com</a><br />
               <strong>Address:</strong> [Your Registered UK Address]
             </p>
             <p className="mb-4">
               If you're not satisfied with our response, you have the right to lodge a complaint with the UK Information Commissioner's Office (ICO):
             </p>
             <p className="mb-4">
-              <strong>ICO Website:</strong> <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:underline">ico.org.uk</a><br />
+              <strong>ICO Website:</strong> <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">ico.org.uk</a><br />
               <strong>ICO Helpline:</strong> 0303 123 1113
             </p>
           </section>
@@ -160,16 +160,16 @@ export default function PrivacyPolicy() {
             <h3 className="text-lg font-bold mb-2">Data Protection Officer</h3>
             <p className="text-sm">
               If you have questions about how we process your data, you can contact our Data Protection Officer at:
-              <a href="mailto:dpo@totalaudiopromo.com" className="text-purple-600 hover:underline ml-1">dpo@totalaudiopromo.com</a>
+              <a href="mailto:dpo@totalaudiopromo.com" className="text-blue-600 hover:underline ml-1">dpo@totalaudiopromo.com</a>
             </p>
           </div>
         </div>
 
         <div className="mt-8 flex gap-4">
-          <Link href="/cookies" className="text-purple-600 font-bold hover:underline">
+          <Link href="/cookies" className="text-blue-600 font-bold hover:underline">
             Cookie Policy →
           </Link>
-          <Link href="/terms" className="text-purple-600 font-bold hover:underline">
+          <Link href="/terms" className="text-blue-600 font-bold hover:underline">
             Terms of Service →
           </Link>
         </div>

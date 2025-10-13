@@ -514,7 +514,7 @@ function PricingContent() {
               <h3 className="text-2xl font-black text-gray-900 mb-3">What currency do you charge in?</h3>
               <p className="text-lg font-bold text-gray-700">All prices are in £GBP. VAT may apply depending on your location.</p>
             </div>
-            <div className="bg-white p-8 rounded-2xl border-4 border-purple-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+            <div className="bg-white p-8 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
               <h3 className="text-2xl font-black text-gray-900 mb-3">Can I cancel any time?</h3>
               <p className="text-lg font-bold text-gray-700">Yes. There are no contracts. Cancel any time from your account or by emailing support.</p>
             </div>

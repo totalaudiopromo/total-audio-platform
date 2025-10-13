@@ -717,13 +717,13 @@ export default function SimpleAudioIntelDemo() {
                     <Button
                       onClick={handleSendToTracker}
                       disabled={isExporting}
-                      className="w-full bg-amber-600 hover:bg-amber-700 text-white font-black py-4 px-6 rounded-lg flex items-center justify-center gap-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-lg"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 px-6 rounded-lg flex items-center justify-center gap-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-lg"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                       Send {enrichmentResults.length} Contacts to Tracker
-                      <Badge className="bg-amber-500 text-white ml-2">Direct Import</Badge>
+                      <Badge className="bg-blue-500 text-white ml-2">Direct Import</Badge>
                     </Button>
                     <p className="text-xs text-gray-500 mt-2 text-center">
                       Automatically opens Tracker import page with your enriched contacts ready to import

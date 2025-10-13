@@ -38,7 +38,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             alignItems: "center",
           }}
           buttonStyle={{
-            background: "#7C3AED",
+            background: "#1E88E5",
             color: "white",
             fontSize: "14px",
             fontWeight: "bold",
@@ -84,11 +84,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         >
           <span className="font-bold">We use cookies to improve your experience.</span>{' '}
           Essential cookies are always enabled. By clicking &quot;Accept All Cookies&quot;, you agree to our{' '}
-          <Link href="/cookies" className="underline font-bold hover:text-purple-600">
+          <Link href="/cookies" className="underline font-bold hover:text-blue-600">
             Cookie Policy
           </Link>
           {' '}and{' '}
-          <Link href="/privacy" className="underline font-bold hover:text-purple-600">
+          <Link href="/privacy" className="underline font-bold hover:text-blue-600">
             Privacy Policy
           </Link>.
         </CookieConsent>

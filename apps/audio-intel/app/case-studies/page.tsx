@@ -184,7 +184,7 @@ export default function CaseStudiesPage() {
                   <span className="rounded-full bg-gray-200 px-4 py-1 text-sm font-bold text-gray-700">
                     {study.genre}
                   </span>
-                  <span className="rounded-full bg-purple-200 px-4 py-1 text-sm font-bold text-purple-700">
+                  <span className="rounded-full bg-blue-200 px-4 py-1 text-sm font-bold text-blue-700">
                     {study.campaignType}
                   </span>
                 </div>
@@ -269,7 +269,7 @@ export default function CaseStudiesPage() {
               </div>
 
               {/* Example Contacts */}
-              <div className="glass-panel border-purple-500 bg-gradient-to-br from-purple-50 to-white p-8 mb-8">
+              <div className="glass-panel border-blue-500 bg-gradient-to-br from-blue-50 to-white p-8 mb-8">
                 <h3 className="text-2xl font-black mb-6">Example Enriched Contacts</h3>
                 <div className="space-y-4">
                   {study.contacts.map((contact, i) => (
@@ -287,15 +287,15 @@ export default function CaseStudiesPage() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-6 rounded-lg bg-purple-100 border border-purple-300 p-4">
-                  <p className="text-sm text-purple-900">
+                <div className="mt-6 rounded-lg bg-blue-100 border border-blue-300 p-4">
+                  <p className="text-sm text-blue-900">
                     <strong>Audio Intel provides:</strong> Submission guidelines, pitch timing, genre preferences, contact history, response rates, and current activity status for every contact.
                   </p>
                 </div>
               </div>
 
               {/* Quote */}
-              <div className="glass-panel bg-gradient-to-br from-blue-100 to-purple-100 p-8 text-center">
+              <div className="glass-panel bg-gradient-to-br from-blue-100 to-blue-100 p-8 text-center">
                 <div className="text-6xl text-blue-600 mb-4">"</div>
                 <p className="text-xl font-bold text-gray-900 mb-6 max-w-3xl mx-auto leading-relaxed">
                   {study.quote.text}
