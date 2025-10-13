@@ -10,6 +10,7 @@ import {
   generateCampaignInsights,
   analyzePatterns,
 } from '@/lib/intelligence';
+import { canCreateCampaign, getSubscriptionLimits } from '@/lib/subscription';
 import type { Campaign, Benchmark, CreateCampaignPayload } from '@/lib/types/tracker';
 
 // ============================================================================
@@ -116,6 +117,21 @@ export async function POST(request: Request) {
 
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  // Check subscription limits before creating campaign
+  const canCreate = await canCreateCampaign(user.id);
+  if (!canCreate) {
+    const limits = await getSubscriptionLimits(user.id);
+    return NextResponse.json(
+      {
+        error: 'Campaign limit reached',
+        message: `You've reached your campaign limit of ${limits?.campaignsLimit}. Upgrade your plan to create more campaigns.`,
+        requiresUpgrade: true,
+        limits,
+      },
+      { status: 403 }
+    );
   }
 
   const body = await request.json();

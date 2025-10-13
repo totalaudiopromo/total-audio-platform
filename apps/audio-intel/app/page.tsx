@@ -421,8 +421,8 @@ export default function HomePage() {
                   <span className="text-sm">CSV export</span>
                 </li>
               </ul>
-              <Link href="/beta" className="subtle-button w-full">
-                Get beta access
+              <Link href="/signup" className="subtle-button w-full">
+                Start free beta
               </Link>
             </div>
 
@@ -527,11 +527,11 @@ export default function HomePage() {
             Start with 10 free enrichments. No card required. Built by radio promoters, for radio promoters.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/pricing?plan=professional&billing=monthly" className="cta-button">
-              Start free trial →
+            <Link href="/signup" className="cta-button">
+              Start free beta →
             </Link>
-            <Link href="/demo" className="subtle-button">
-              Try demo first
+            <Link href="/pricing" className="subtle-button">
+              View pricing
             </Link>
           </div>
         </section>

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   eslint: {
@@ -12,6 +13,11 @@ const nextConfig: NextConfig = {
   // Disable static page generation for API routes
   generateBuildId: async () => {
     return 'build-' + Date.now();
+  },
+  webpack: (config) => {
+    // Add root node_modules to module resolution paths for monorepo
+    config.resolve.modules.push(path.resolve(__dirname, "../../node_modules"));
+    return config;
   },
 };
 

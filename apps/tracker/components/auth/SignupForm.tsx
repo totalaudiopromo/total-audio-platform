@@ -39,21 +39,32 @@ export function SignupForm() {
     setError(null);
 
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data: authData, error } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
         options: {
           data: {
             name: data.name,
           },
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
         },
       });
 
       if (error) {
         setError(error.message);
-      } else {
-        router.push('/');
-        router.refresh();
+      } else if (authData?.user) {
+        // Check if email confirmation is required
+        if (authData.user.identities && authData.user.identities.length === 0) {
+          // Email already exists
+          setError('An account with this email already exists. Please sign in instead.');
+        } else if (authData.session) {
+          // User is automatically logged in (email confirmation disabled)
+          router.push('/dashboard');
+          router.refresh();
+        } else {
+          // Email confirmation required
+          router.push('/verify-email?email=' + encodeURIComponent(data.email));
+        }
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again.');

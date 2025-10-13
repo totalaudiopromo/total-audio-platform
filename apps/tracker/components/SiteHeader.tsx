@@ -16,7 +16,7 @@ export function SiteHeader() {
       toolName="Tracker"
       links={links}
       toolSwitcher={<ToolSwitcher currentTool="Tracker" accentColor="amber" />}
-      authComponent={<Link href="/auth/signin" className="cta-button">Sign in</Link>}
+      authComponent={<Link href="/login" className="cta-button">Sign in</Link>}
     />
   );
 }

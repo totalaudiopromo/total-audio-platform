@@ -1,9 +1,36 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { updateSession } from '@/lib/supabase/middleware'
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
   const userAgent = request.headers.get('user-agent')?.toLowerCase() || ''
+
+  // Update Supabase session
+  const { supabaseResponse, user } = await updateSession(request)
+
+  // Protected routes that require authentication
+  const protectedPaths = [
+    '/demo',
+    '/dashboard',
+  ]
+
+  // Protected API routes
+  const protectedAPIPaths = [
+    '/api/enrich',
+    '/api/usage',
+  ]
+
+  // Check if current path needs authentication
+  const needsAuth = protectedPaths.some(path => pathname.startsWith(path)) ||
+                    protectedAPIPaths.some(path => pathname.startsWith(path))
+
+  // Redirect to signin if not authenticated
+  if (needsAuth && !user) {
+    const redirectUrl = new URL('/signin', request.url)
+    redirectUrl.searchParams.set('redirectTo', pathname)
+    return NextResponse.redirect(redirectUrl)
+  }
 
   // Protect test/debug pages in production
   const testPaths = [
@@ -62,11 +89,19 @@ export function middleware(request: NextRequest) {
     return response
   }
 
-  return NextResponse.next()
+  return supabaseResponse
 }
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    /*
+     * Match all request paths except:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - images folder
+     * - public folder files
+     */
+    '/((?!_next/static|_next/image|favicon.ico|images|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 }

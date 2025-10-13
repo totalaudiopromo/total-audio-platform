@@ -35,7 +35,7 @@ const plans = [
       'Standard support',
     ],
     cta: 'Start Free',
-    href: '/auth/signin',
+    href: '/login',
     highlighted: false,
     badge: 'BETA',
     badgeColor: 'green',
@@ -54,7 +54,7 @@ const plans = [
       'Priority support',
     ],
     cta: 'Get Professional',
-    href: '/auth/signin',
+    href: '/login',
     highlighted: true,
     badge: 'MOST POPULAR',
     badgeColor: 'purple',
@@ -223,7 +223,7 @@ export default function PricingPage() {
             Start free with 3 campaigns. No credit card required.
           </p>
           <Link
-            href="/auth/signin"
+            href="/login"
             className="inline-block rounded-xl border-4 border-black bg-purple-600 px-12 py-4 text-lg font-bold text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1"
           >
             Start Free Trial →

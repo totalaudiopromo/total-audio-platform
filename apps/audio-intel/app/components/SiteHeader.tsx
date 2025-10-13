@@ -3,6 +3,10 @@
 import Link from 'next/link';
 import { SiteHeader as SharedSiteHeader } from '@total-audio/ui';
 import { ToolSwitcher } from '@total-audio/ui';
+import { UsageStats } from '@/components/UsageStats';
+import { createClient } from '@/lib/supabase/client';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -11,12 +15,50 @@ const links = [
 ];
 
 export function SiteHeader() {
+  const [user, setUser] = useState<any>(null)
+  const router = useRouter()
+  const supabase = createClient()
+
+  useEffect(() => {
+    // Get initial session
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setUser(user)
+    })
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [])
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    router.push('/')
+    router.refresh()
+  }
+
+  const authComponent = user ? (
+    <div className="flex items-center gap-3">
+      <UsageStats />
+      <button
+        onClick={handleSignOut}
+        className="text-sm font-semibold text-gray-700 hover:text-gray-900"
+      >
+        Sign out
+      </button>
+    </div>
+  ) : (
+    <Link href="/signup" className="cta-button">Start Free Beta</Link>
+  )
+
   return (
     <SharedSiteHeader
       toolName="Audio Intel"
       links={links}
       toolSwitcher={<ToolSwitcher currentTool="Audio Intel" accentColor="blue" />}
-      authComponent={<Link href="/beta" className="cta-button">Sign in</Link>}
+      authComponent={authComponent}
     />
   );
 }

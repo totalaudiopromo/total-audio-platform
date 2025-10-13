@@ -1,27 +1,31 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  /* Tracker amber/orange brand colors */
-  --color-background: #fffbeb;
-  --color-foreground: #111827;
-  --color-card: #ffffff;
-  --color-card-foreground: #111827;
-  --color-popover: #ffffff;
-  --color-popover-foreground: #111827;
-  --color-primary: #f59e0b;
-  --color-primary-foreground: #ffffff;
-  --color-secondary: #fef3c7;
-  --color-secondary-foreground: #111827;
-  --color-muted: #fef3c7;
-  --color-muted-foreground: #6b7280;
-  --color-accent: #f59e0b;
-  --color-accent-foreground: #ffffff;
-  --color-destructive: #ef4444;
-  --color-destructive-foreground: #ffffff;
-  --color-border: #000000;
-  --color-input: #e5e7eb;
-  --color-ring: #f59e0b;
-  --radius: 1rem;
+@layer base {
+  :root {
+    /* Tracker amber/orange brand colors */
+    --color-background: #fffbeb;
+    --color-foreground: #111827;
+    --color-card: #ffffff;
+    --color-card-foreground: #111827;
+    --color-popover: #ffffff;
+    --color-popover-foreground: #111827;
+    --color-primary: #f59e0b;
+    --color-primary-foreground: #ffffff;
+    --color-secondary: #fef3c7;
+    --color-secondary-foreground: #111827;
+    --color-muted: #fef3c7;
+    --color-muted-foreground: #6b7280;
+    --color-accent: #f59e0b;
+    --color-accent-foreground: #ffffff;
+    --color-destructive: #ef4444;
+    --color-destructive-foreground: #ffffff;
+    --color-border: #000000;
+    --color-input: #e5e7eb;
+    --color-ring: #f59e0b;
+    --radius: 1rem;
+  }
 }
 
 /* Tracker brutalist styles with amber brand */
