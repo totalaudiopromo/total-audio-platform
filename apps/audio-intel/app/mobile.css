@@ -756,7 +756,7 @@
   button.bg-gradient-to-r,
   .bg-gradient-to-r.from-green-600,
   .bg-gradient-to-r.from-blue-600,
-  .bg-gradient-to-r.from-purple-600 {
+  .bg-gradient-to-r.from-blue-600 {
     width: 100% !important;
     max-width: 100% !important;
     margin: 1.5rem auto 0 auto !important;

@@ -64,7 +64,7 @@ const LoadingStateDemo: React.FC = () => {
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Current Loading State Display */}
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 min-h-[300px] flex items-center justify-center">
+        <div className="bg-gradient-to-br from-blue-50 to-blue-50 rounded-lg p-6 min-h-[300px] flex items-center justify-center">
           <ContactLoadingState
             state={currentState}
             progress={progress}
@@ -100,7 +100,7 @@ const LoadingStateDemo: React.FC = () => {
             onClick={runFullDemo} 
             disabled={isAnimating}
             size="lg"
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
+            className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700"
           >
             {isAnimating ? 'Running Demo...' : 'Run Full Workflow Demo'}
           </Button>

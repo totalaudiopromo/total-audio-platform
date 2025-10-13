@@ -57,7 +57,7 @@ export function RealTimeMetrics() {
       value: 4.2,
       change: '-0.8s vs yesterday',
       icon: Clock,
-      color: 'text-purple-600'
+      color: 'text-blue-600'
     },
     {
       label: 'Success Rate',
@@ -173,7 +173,7 @@ export function RealTimeMetrics() {
     switch (type) {
       case 'contact_enriched': return 'bg-blue-500'
       case 'campaign_started': return 'bg-green-500'
-      case 'contact_discovered': return 'bg-purple-500'
+      case 'contact_discovered': return 'bg-blue-500'
       case 'email_validated': return 'bg-yellow-500'
       default: return 'bg-gray-500'
     }

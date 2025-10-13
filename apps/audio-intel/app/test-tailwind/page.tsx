@@ -61,7 +61,7 @@ export default function TestTailwindPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8 gradient-text">
           Tailwind CSS Test Page
@@ -119,13 +119,13 @@ export default function TestTailwindPage() {
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-gray-800">Custom Animations</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="animate-bounce-in bg-purple-500 text-white p-4 rounded text-center">
+            <div className="animate-bounce-in bg-blue-500 text-white p-4 rounded text-center">
               Bounce In
             </div>
-            <div className="animate-fade-in bg-pink-500 text-white p-4 rounded text-center">
+            <div className="animate-fade-in bg-blue-500 text-white p-4 rounded text-center">
               Fade In
             </div>
-            <div className="animate-gradient-x bg-gradient-to-r from-blue-500 to-purple-500 text-white p-4 rounded text-center">
+            <div className="animate-gradient-x bg-gradient-to-r from-blue-500 to-blue-500 text-white p-4 rounded text-center">
               Gradient X
             </div>
             <div className="animate-spin-slow bg-orange-500 text-white p-4 rounded text-center">

@@ -77,7 +77,7 @@ export default function AgentOrchestrator() {
       // Workflow result
       return (
         <div className="space-y-6">
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border-2 border-blue-200">
+          <div className="bg-gradient-to-r from-blue-50 to-blue-50 p-6 rounded-xl border-2 border-blue-200">
             <h3 className="text-xl font-bold text-blue-900 mb-2">
               Workflow: {result.workflowName}
             </h3>
@@ -134,7 +134,7 @@ export default function AgentOrchestrator() {
                 {result.platform}
               </span>
               {result.contentType && (
-                <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium capitalize">
+                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium capitalize">
                   {result.contentType}
                 </span>
               )}
@@ -216,7 +216,7 @@ export default function AgentOrchestrator() {
             )}
             {result.engagementPrediction && (
               <div className="text-center">
-                <p className="text-2xl font-bold text-purple-600">{result.engagementPrediction.engagementRate}</p>
+                <p className="text-2xl font-bold text-blue-600">{result.engagementPrediction.engagementRate}</p>
                 <p className="text-sm text-gray-600">Est. Engagement</p>
               </div>
             )}
@@ -248,7 +248,7 @@ export default function AgentOrchestrator() {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 rounded-3xl border-2 border-dashed border-blue-300 p-8 mb-8">
+      <div className="bg-gradient-to-r from-blue-50 via-blue-50 to-blue-50 rounded-3xl border-2 border-dashed border-blue-300 p-8 mb-8">
         <h2 className="text-3xl font-bold text-blue-900 text-center mb-4">
           🤖 Audio Intel Agent Orchestrator
         </h2>
@@ -261,14 +261,14 @@ export default function AgentOrchestrator() {
           <Button
             onClick={() => executeAgent('generate', 'social-instagram')}
             disabled={isGenerating}
-            className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3"
+            className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3"
           >
             <Instagram className="w-4 h-4 inline mr-2" />Instagram Post
           </Button>
           <Button
             onClick={() => executeAgent('generate', 'press-release')}
             disabled={isGenerating}
-            className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold py-3"
+            className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3"
           >
             <FileText className="w-4 h-4 inline mr-2" />Press Release
           </Button>
@@ -293,7 +293,7 @@ export default function AgentOrchestrator() {
           <Button
             onClick={() => executeAgent('workflow', 'social-media-blitz')}
             disabled={isGenerating}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-6 rounded-xl"
+            className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-xl"
           >
             <Rocket className="w-4 h-4 inline mr-2" />Social Media Blitz
             <span className="block text-xs mt-1 opacity-90">All platforms</span>
@@ -301,7 +301,7 @@ export default function AgentOrchestrator() {
           <Button
             onClick={() => executeAgent('workflow', 'press-release-package')}
             disabled={isGenerating}
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-6 rounded-xl"
+            className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-xl"
           >
             <Package className="w-4 h-4 inline mr-2" />Press Package
             <span className="block text-xs mt-1 opacity-90">Complete suite</span>
@@ -309,7 +309,7 @@ export default function AgentOrchestrator() {
           <Button
             onClick={() => executeAgent('workflow', 'audio-intel-content-suite')}
             disabled={isGenerating}
-            className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl"
+            className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-xl"
           >
             <Target className="w-4 h-4 inline mr-2" />Full Content Suite
             <span className="block text-xs mt-1 opacity-90">Everything included</span>

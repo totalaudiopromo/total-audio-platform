@@ -35,7 +35,7 @@ export default function NotFound() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <Link href="/">
-            <Button size="lg" className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-lg px-8 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
+            <Button size="lg" className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-700 text-white font-bold text-lg px-8 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
               <Home className="w-5 h-5 mr-2" />
               Go Home
             </Button>

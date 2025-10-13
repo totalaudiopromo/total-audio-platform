@@ -182,7 +182,7 @@ export default function ExportButtons({
     switch (stage) {
       case 'preparing': return 'text-blue-600';
       case 'processing': return 'text-yellow-600';
-      case 'formatting': return 'text-purple-600';
+      case 'formatting': return 'text-blue-600';
       case 'delivering': return 'text-green-600';
       case 'complete': return 'text-green-600';
       default: return 'text-gray-600';
@@ -290,14 +290,14 @@ export default function ExportButtons({
 
       {/* White Label Options - Agency Tier Only */}
       {userTier === 'agency' && (
-        <div className="mb-4 p-4 bg-purple-50 border border-purple-200 rounded-md">
-          <h4 className="text-sm font-bold text-purple-800 mb-2 flex items-center gap-2">
+        <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-md">
+          <h4 className="text-sm font-bold text-blue-800 mb-2 flex items-center gap-2">
             <Zap className="w-4 h-4" />
             White Label Options (Agency Tier)
           </h4>
           <div className="space-y-3">
             <div>
-              <label className="block text-xs font-medium text-purple-700 mb-1">
+              <label className="block text-xs font-medium text-blue-700 mb-1">
                 Company Name
               </label>
               <input
@@ -305,11 +305,11 @@ export default function ExportButtons({
                 value={whiteLabelConfig.companyName}
                 onChange={(e) => setWhiteLabelConfig({...whiteLabelConfig, companyName: e.target.value})}
                 placeholder="Your company name"
-                className="w-full px-2 py-1 text-sm border border-purple-300 rounded focus:ring-purple-500 focus:border-purple-500"
+                className="w-full px-2 py-1 text-sm border border-blue-300 rounded focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-purple-700 mb-1">
+              <label className="block text-xs font-medium text-blue-700 mb-1">
                 Logo URL
               </label>
               <input
@@ -317,18 +317,18 @@ export default function ExportButtons({
                 value={whiteLabelConfig.logoUrl}
                 onChange={(e) => setWhiteLabelConfig({...whiteLabelConfig, logoUrl: e.target.value})}
                 placeholder="https://your-logo.png"
-                className="w-full px-2 py-1 text-sm border border-purple-300 rounded focus:ring-purple-500 focus:border-purple-500"
+                className="w-full px-2 py-1 text-sm border border-blue-300 rounded focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-purple-700 mb-1">
+              <label className="block text-xs font-medium text-blue-700 mb-1">
                 Primary Color
               </label>
               <input
                 type="color"
                 value={whiteLabelConfig.primaryColor}
                 onChange={(e) => setWhiteLabelConfig({...whiteLabelConfig, primaryColor: e.target.value})}
-                className="w-full h-8 border border-purple-300 rounded"
+                className="w-full h-8 border border-blue-300 rounded"
               />
             </div>
           </div>
@@ -472,11 +472,11 @@ export default function ExportButtons({
           <button
             onClick={() => handleExport('search-results')}
             disabled={isExporting || !hasData}
-            className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Search className="w-6 h-6 text-purple-600" />
-            <span className="font-medium text-purple-900">Export Search Results</span>
-            <span className="text-xs text-purple-700">{searchResults.results.length} results</span>
+            <Search className="w-6 h-6 text-blue-600" />
+            <span className="font-medium text-blue-900">Export Search Results</span>
+            <span className="text-xs text-blue-700">{searchResults.results.length} results</span>
           </button>
         )}
 
@@ -497,11 +497,11 @@ export default function ExportButtons({
           <button
             onClick={() => handleExport('batch')}
             disabled={isExporting}
-            className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br from-indigo-50 to-indigo-100 border border-indigo-200 rounded-lg hover:from-indigo-100 hover:to-indigo-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Download className="w-6 h-6 text-indigo-600" />
-            <span className="font-medium text-indigo-900">Batch Export All</span>
-            <span className="text-xs text-indigo-700">{getDataCount()} items</span>
+            <Download className="w-6 h-6 text-blue-600" />
+            <span className="font-medium text-blue-900">Batch Export All</span>
+            <span className="text-xs text-blue-700">{getDataCount()} items</span>
           </button>
         )}
       </div>

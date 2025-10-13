@@ -59,8 +59,8 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
       orchestrator: {
         name: "Commander",
         icon: "bot",
-        color: "text-purple-600",
-        bgColor: "bg-purple-50"
+        color: "text-blue-600",
+        bgColor: "bg-blue-50"
       },
       marketing: {
         name: "Scout",
@@ -83,8 +83,8 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
       newsletter: {
         name: "Communicator", 
         icon: "mail",
-        color: "text-indigo-600",
-        bgColor: "bg-indigo-50"
+        color: "text-blue-600",
+        bgColor: "bg-blue-50"
       },
       competitive: {
         name: "Intel",

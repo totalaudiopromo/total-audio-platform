@@ -28,8 +28,8 @@ export function UpgradeModal({ open, onOpenChange, reason, enrichmentsUsed, enri
                 <X className="h-6 w-6 text-red-600" />
               </div>
             ) : (
-              <div className="h-12 w-12 rounded-full bg-amber-100 flex items-center justify-center">
-                <TrendingUp className="h-6 w-6 text-amber-600" />
+              <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
+                <TrendingUp className="h-6 w-6 text-blue-600" />
               </div>
             )}
             <div>
@@ -97,9 +97,9 @@ export function UpgradeModal({ open, onOpenChange, reason, enrichmentsUsed, enri
             </div>
 
             {/* Agency */}
-            <div className="border-4 border-black rounded-xl p-6 bg-gradient-to-br from-purple-50 to-blue-50 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="border-4 border-black rounded-xl p-6 bg-gradient-to-br from-blue-50 to-blue-50 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <div className="mb-4">
-                <Badge className="bg-purple-500 text-white mb-2">Best Value</Badge>
+                <Badge className="bg-blue-500 text-white mb-2">Best Value</Badge>
                 <h3 className="text-xl font-black">Agency</h3>
                 <div className="flex items-baseline gap-2 mt-2">
                   <span className="text-3xl font-black">£79</span>
@@ -121,7 +121,7 @@ export function UpgradeModal({ open, onOpenChange, reason, enrichmentsUsed, enri
                 </li>
               </ul>
               <Link href="/pricing?tier=agency" className="block">
-                <Button className="w-full bg-purple-600 hover:bg-purple-700 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                   Upgrade to Agency
                 </Button>
               </Link>

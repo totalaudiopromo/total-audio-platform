@@ -187,7 +187,7 @@ export default function AudioStudio({ onBack }: AudioStudioProps) {
         {/* Desktop-only controls panel */}
         <div className="hidden lg:block w-[300px]">
           <Card className="border-4 border-black rounded-xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-            <div className="bg-gradient-to-br from-pink-500 to-orange-500 p-4 text-white">
+            <div className="bg-gradient-to-br from-blue-500 to-orange-500 p-4 text-white">
               <h3 className="text-xl font-bold">Audio Controls</h3>
             </div>
             <div className="p-4 bg-white">

@@ -241,7 +241,7 @@ export function InteractiveDemoFlow({ onComplete }: DemoFlowProps) {
         )}
 
         {/* Loading State Display */}
-        <div className="min-h-[200px] flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
+        <div className="min-h-[200px] flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6">
           {isRunning ? (
             <ContactLoadingState
               state={steps[currentStep]?.state || 'upload'}

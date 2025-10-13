@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function APIPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         <div className="container flex h-16 items-center justify-between">
@@ -61,7 +61,7 @@ export default function APIPage() {
       <section className="py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
-            <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white font-black text-lg px-6 py-3 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <Badge className="bg-gradient-to-r from-blue-600 to-blue-600 text-white font-black text-lg px-6 py-3 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <Code className="w-5 h-5 mr-2" />
               API Documentation
             </Badge>
@@ -77,7 +77,7 @@ export default function APIPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-lg px-8 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
+            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold text-lg px-8 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
               <Key className="w-5 h-5 mr-2" />
               Get API Key
             </Button>
@@ -157,9 +157,9 @@ export default function APIPage() {
               </CardContent>
             </Card>
 
-            <Card className="border-4 border-purple-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <Card className="border-4 border-blue-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               <CardHeader className="text-center">
-                <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                   <Code className="w-8 h-8 text-white" />
                 </div>
                 <CardTitle className="text-2xl font-black">Developer-Friendly</CardTitle>

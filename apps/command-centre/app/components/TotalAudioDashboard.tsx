@@ -66,12 +66,13 @@ export default function TotalAudioDashboard() {
 
       clearTimeout(timeoutId);
 
-      if (!businessResponse.ok || !audioIntelResponse.ok) {
-        throw new Error('Failed to fetch metrics');
+      if (!businessResponse.ok) {
+        throw new Error('Failed to fetch business metrics');
       }
 
+      // Audio Intel metrics are optional (may be in beta/pre-launch)
       const businessData = await businessResponse.json();
-      const audioIntelData = await audioIntelResponse.json();
+      const audioIntelData = audioIntelResponse.ok ? await audioIntelResponse.json() : null;
 
       const dashboardMetrics: DashboardMetric[] = [
         {

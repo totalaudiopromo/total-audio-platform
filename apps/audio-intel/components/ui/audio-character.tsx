@@ -28,12 +28,12 @@ const toolColors = {
   track: {
     primary: '#9C27B0',
     secondary: '#7B1FA2',
-    gradient: 'from-purple-600 to-purple-500',
+    gradient: 'from-blue-600 to-blue-500',
   },
   clone: {
     primary: '#E91E63',
     secondary: '#C2185B',
-    gradient: 'from-pink-600 to-pink-500',
+    gradient: 'from-blue-600 to-blue-500',
   },
   predict: {
     primary: '#00BCD4',

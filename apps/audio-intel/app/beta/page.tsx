@@ -122,7 +122,7 @@ export default function BetaAccessPage() {
   if (submitted) {
     console.log('🎉 Rendering success page because submitted = true')
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-50 flex items-center justify-center p-4">
         <Card className="beta-success-card max-w-2xl w-full text-center p-8 border-4 border-green-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
           <div className="beta-success-icon w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <Check className="w-12 h-12 text-white" />
@@ -241,7 +241,7 @@ export default function BetaAccessPage() {
               
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <Zap className="w-8 h-8 text-purple-600" />
+                  <Zap className="w-8 h-8 text-blue-600" />
                   <h3 className="text-2xl font-black text-gray-900">Beta Access Includes</h3>
                 </div>
                 <ul className="space-y-3 text-lg font-bold text-gray-700">
@@ -345,7 +345,7 @@ export default function BetaAccessPage() {
                 </p>
               </div>
 
-              <div className="glass-panel border-purple-500">
+              <div className="glass-panel border-blue-500">
                 <div className="beta-benefit-icon-container flex items-center gap-4 mb-6">
                   <Image 
                     src="/assets/loading-states/intelligence-complete.png"
@@ -356,7 +356,7 @@ export default function BetaAccessPage() {
                   />
                   <div>
                     <h3 className="beta-benefit-title text-2xl font-black text-gray-900">Beta Founder Recognition</h3>
-                    <Badge className="bg-purple-500 text-white font-black">LEGACY</Badge>
+                    <Badge className="bg-blue-500 text-white font-black">LEGACY</Badge>
                   </div>
                 </div>
                 <p className="beta-benefit-description text-lg font-bold text-gray-700">
@@ -559,7 +559,7 @@ export default function BetaAccessPage() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="beta-submit-button w-full h-16 text-xl font-black bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+                  className="beta-submit-button w-full h-16 text-xl font-black bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white rounded-xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (

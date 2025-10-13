@@ -75,7 +75,7 @@ function getCategoryBadgeClasses(category: string) {
     case "Radio Promotion":
       return "bg-green-100 text-green-800";
     case "Playlist Promotion":
-      return "bg-purple-100 text-purple-800";
+      return "bg-blue-100 text-blue-800";
     case "Contact Research":
       return "bg-orange-100 text-orange-800";
     case "Case Study":
@@ -283,7 +283,7 @@ export default function BlogIndex() {
         )}
 
         {/* Newsletter CTA */}
-        <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 text-center text-white">
+        <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-8 text-center text-white">
           <h2 className="text-2xl md:text-3xl font-black mb-4">
             Get Music Promotion Insights
           </h2>

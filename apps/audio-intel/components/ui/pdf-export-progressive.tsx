@@ -243,7 +243,7 @@ export default function PdfExportProgressive({
                         setUpgradeContext(monthlyPdfUsage >= permissions.monthlyLimit ? 'monthlyLimit' : 'qualityUpgrade');
                         setShowUpgradeModal(true);
                       }}
-                      className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md hover:from-blue-700 hover:to-purple-700 transition-all text-sm"
+                      className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-blue-600 to-blue-600 text-white rounded-md hover:from-blue-700 hover:to-blue-700 transition-all text-sm"
                     >
                       <Crown className="w-4 h-4" />
                       {monthlyPdfUsage >= permissions.monthlyLimit ? 'Upgrade' : 'Get Full Report'}
@@ -328,7 +328,7 @@ export default function PdfExportProgressive({
 
           {/* Feature Comparison */}
           {userTier === 'free' && (
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-4 mt-6">
+            <div className="bg-gradient-to-r from-blue-50 to-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
               <h4 className="font-medium text-gray-900 mb-3 flex items-center gap-2">
                 <Zap className="w-4 h-4 text-blue-600" />
                 Upgrade for Premium Features
@@ -359,7 +359,7 @@ export default function PdfExportProgressive({
                   setUpgradeContext('qualityUpgrade');
                   setShowUpgradeModal(true);
                 }}
-                className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-md font-medium hover:from-blue-700 hover:to-purple-700 transition-all"
+                className="w-full mt-4 bg-gradient-to-r from-blue-600 to-blue-600 text-white px-4 py-2 rounded-md font-medium hover:from-blue-700 hover:to-blue-700 transition-all"
               >
                 Upgrade to Professional - £19/month
               </button>

@@ -44,7 +44,7 @@ export default function ContactPage() {
           <div className="grid gap-6 sm:grid-cols-2">
             {/* Technical Support */}
             <div className="rounded-lg border-2 border-gray-900 bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <h3 className="mb-3 text-xl font-bold text-purple-600">🛠️ Technical Support</h3>
+              <h3 className="mb-3 text-xl font-bold text-blue-600">🛠️ Technical Support</h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• Upload or enrichment issues</li>
                 <li>• Export problems (CSV/Excel)</li>
@@ -104,7 +104,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="rounded-lg border-2 border-purple-400 bg-purple-50 p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="rounded-lg border-2 border-blue-400 bg-blue-50 p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <h3 className="mb-2 text-lg font-bold text-gray-900">Priority Support (Agency Plan)</h3>
               <p className="text-gray-700">
                 <strong>Within 24 hours</strong> during UK business hours (Monday-Friday, 9am-6pm GMT)
@@ -215,7 +215,7 @@ export default function ContactPage() {
                 href="https://totalaudiopromo.com/newsletter"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block rounded-lg border-2 border-gray-900 bg-purple-100 px-6 py-2 font-bold shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                className="inline-block rounded-lg border-2 border-gray-900 bg-blue-100 px-6 py-2 font-bold shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
               >
                 Subscribe Free
               </a>
@@ -306,7 +306,7 @@ export default function ContactPage() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/beta"
-              className="rounded-lg border-2 border-gray-900 bg-purple-200 px-8 py-3 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+              className="rounded-lg border-2 border-gray-900 bg-blue-200 px-8 py-3 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
             >
               Join Beta (Free)
             </Link>

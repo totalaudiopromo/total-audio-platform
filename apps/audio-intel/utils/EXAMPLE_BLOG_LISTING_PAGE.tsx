@@ -147,7 +147,7 @@ function CaseStudyCard({ study }: { study: EnrichedCaseStudyData }) {
           <span className="px-2 py-1 bg-yellow-50 border border-yellow-200 text-yellow-800 text-xs font-semibold rounded">
             {study.estimatedReadTime} min read
           </span>
-          <span className="px-2 py-1 bg-purple-50 border border-purple-200 text-purple-800 text-xs font-semibold rounded">
+          <span className="px-2 py-1 bg-blue-50 border border-blue-200 text-blue-800 text-xs font-semibold rounded">
             {study.category}
           </span>
         </div>
@@ -344,7 +344,7 @@ export function CaseStudyStats() {
           <div className="text-sm text-gray-600">Monthly Search Volume</div>
         </div>
         <div>
-          <div className="text-3xl font-black text-purple-600 mb-1">{avgReadTime} min</div>
+          <div className="text-3xl font-black text-blue-600 mb-1">{avgReadTime} min</div>
           <div className="text-sm text-gray-600">Average Read Time</div>
         </div>
         <div>

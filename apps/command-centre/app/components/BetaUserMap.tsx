@@ -58,27 +58,18 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
   // If no valid location data, show a message
   if (locationClusters.length === 0) {
     return (
-      <div style={{
-        background: 'rgba(255, 255, 255, 0.9)',
-        backdropFilter: 'blur(10px)',
-        borderRadius: '24px',
-        padding: '2rem',
-        border: '1px solid rgba(255, 255, 255, 0.2)',
-        boxShadow: '0 25px 50px rgba(0, 0, 0, 0.1)',
-        marginBottom: '2rem',
-        textAlign: 'center'
-      }}>
-        <h3 style={{ 
-          fontSize: '1.75rem', 
-          fontWeight: '900', 
-          color: '#1a202c', 
-          margin: '0 0 1rem 0',
-          letterSpacing: '-0.025em'
-        }}>
+      <div className="postcraft-card text-center mb-8">
+        <h3 className="postcraft-section-title mb-4">
           Global Beta User Map
         </h3>
-        <p style={{ color: '#6b7280', fontSize: '1rem' }}>
-          Loading user location data... This map will show where your beta users are located worldwide.
+        <div className="inline-flex items-center gap-3 px-6 py-3 bg-blue-100 rounded-xl border-3 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+          <div className="animate-spin rounded-full h-5 w-5 border-3 border-black border-t-transparent"></div>
+          <p className="postcraft-text font-bold text-gray-900 m-0">
+            Waiting for beta users to generate location data...
+          </p>
+        </div>
+        <p className="postcraft-text mt-4">
+          This map will show where your beta users are located worldwide once they start using Audio Intel.
         </p>
       </div>
     );
@@ -101,28 +92,9 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
   };
 
   return (
-    <div style={{
-      background: 'rgba(255, 255, 255, 0.9)',
-      backdropFilter: 'blur(10px)',
-      borderRadius: '24px',
-      padding: '2rem',
-      border: '1px solid rgba(255, 255, 255, 0.2)',
-      boxShadow: '0 25px 50px rgba(0, 0, 0, 0.1)',
-      marginBottom: '2rem'
-    }}>
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'space-between', 
-        marginBottom: '2rem' 
-      }}>
-        <h3 style={{ 
-          fontSize: '1.75rem', 
-          fontWeight: '900', 
-          color: '#1a202c', 
-          margin: 0,
-          letterSpacing: '-0.025em'
-        }}>
+    <div className="postcraft-card mb-8">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="postcraft-section-title m-0">
           Global Beta User Distribution
         </h3>
         

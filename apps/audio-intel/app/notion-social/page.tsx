@@ -255,11 +255,11 @@ export default function NotionSocial() {
           
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-purple-100 rounded-lg">
-                <TrendingUp className="w-6 h-6 text-purple-600" />
+              <div className="p-2 bg-blue-100 rounded-lg">
+                <TrendingUp className="w-6 h-6 text-blue-600" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-purple-600">Auto</div>
+                <div className="text-2xl font-bold text-blue-600">Auto</div>
                 <div className="text-sm text-gray-600">Sync Mode</div>
               </div>
             </div>

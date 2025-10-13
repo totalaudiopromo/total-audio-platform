@@ -121,7 +121,7 @@ export default function UKSocialMediaHub({ compact = false }: UKSocialMediaHubPr
     const colours = {
       'X (Twitter)': 'bg-black text-white',
       'LinkedIn': 'bg-blue-600 text-white',
-      'Threads': 'bg-purple-600 text-white',
+      'Threads': 'bg-blue-600 text-white',
       'Facebook': 'bg-blue-500 text-white',
       'Blue Sky': 'bg-sky-500 text-white'
     };

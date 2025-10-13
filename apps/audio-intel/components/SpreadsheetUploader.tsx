@@ -264,7 +264,7 @@ export default function SpreadsheetUploader({ onDataProcessed, onStartEnrichment
         />
         
         <div className="space-y-4">
-          <div className="mx-auto w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-brutal">
+          <div className="mx-auto w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-brutal">
             <Upload className="w-8 h-8 text-white" />
           </div>
           
@@ -293,7 +293,7 @@ export default function SpreadsheetUploader({ onDataProcessed, onStartEnrichment
             <Badge variant="secondary" className="bg-blue-100 text-blue-800 px-3 py-1 text-sm font-medium">
               Removes duplicates automatically
             </Badge>
-            <Badge variant="secondary" className="bg-purple-100 text-purple-800 px-3 py-1 text-sm font-medium">
+            <Badge variant="secondary" className="bg-blue-100 text-blue-800 px-3 py-1 text-sm font-medium">
               Fixes formatting issues
             </Badge>
           </div>
@@ -307,7 +307,7 @@ export default function SpreadsheetUploader({ onDataProcessed, onStartEnrichment
   );
 
   const renderProcessingStatus = () => (
-    <Card className="border-2 border-blue-500 bg-gradient-to-br from-blue-50 to-purple-50">
+    <Card className="border-2 border-blue-500 bg-gradient-to-br from-blue-50 to-blue-50">
       <CardContent className="p-10">
         <div className="text-center space-y-8">
           <img 
@@ -390,7 +390,7 @@ export default function SpreadsheetUploader({ onDataProcessed, onStartEnrichment
               <div className="flex gap-4 justify-center">
                 <Button 
                   onClick={onStartEnrichment}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all text-lg"
+                  className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all text-lg"
                 >
                   <Sparkles className="w-5 h-5 mr-2" />
                   Start AI Enrichment
@@ -429,7 +429,7 @@ export default function SpreadsheetUploader({ onDataProcessed, onStartEnrichment
         <p className="text-gray-700 mb-6 text-lg">Don't worry, let's try that again.</p>
         <Button 
           onClick={() => setState(prev => ({ ...prev, error: undefined }))}
-          className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-6 py-2 rounded-lg"
+          className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold px-6 py-2 rounded-lg"
         >
           Try Again
         </Button>
@@ -672,7 +672,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
           </div>
           
           {/* Total Audio Promo Mascot Transformation Journey - Intel Brand */}
-          <div className="flex items-center justify-center gap-12 mb-10 p-10 bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 rounded-3xl border-2 border-dashed" style={{ borderColor: '#1E88E5' }}>
+          <div className="flex items-center justify-center gap-12 mb-10 p-10 bg-gradient-to-r from-blue-50 via-blue-50 to-blue-50 rounded-3xl border-2 border-dashed" style={{ borderColor: '#1E88E5' }}>
             <div className="text-center bg-white rounded-2xl p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-4 border-red-500 w-64">
               <div className="mb-4">
                 <img 
@@ -751,7 +751,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
             <Badge variant="secondary" className="bg-blue-100 text-blue-800 px-4 py-2 text-base font-bold">
               Music Industry Intelligence
             </Badge>
-            <Badge variant="secondary" className="bg-purple-100 text-purple-800 px-4 py-2 text-base font-bold">
+            <Badge variant="secondary" className="bg-blue-100 text-blue-800 px-4 py-2 text-base font-bold">
               Chaos to Organisation
             </Badge>
           </div>
@@ -765,7 +765,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
   );
 
   const renderProcessingStatus = () => (
-    <Card className="border-2 border-blue-500 bg-gradient-to-br from-blue-50 to-purple-50">
+    <Card className="border-2 border-blue-500 bg-gradient-to-br from-blue-50 to-blue-50">
       <CardContent className="p-12">
         <div className="text-center space-y-8">
           <div className="flex justify-center animate-pulse">
@@ -845,7 +845,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
                 <div className="text-base text-gray-600 font-bold">Duplicates Removed</div>
               </div>
               <div className="text-center p-8 bg-white rounded-xl shadow-lg">
-                <div className="text-5xl font-black text-purple-600 mb-3">100%</div>
+                <div className="text-5xl font-black text-blue-600 mb-3">100%</div>
                 <div className="text-base text-gray-600 font-bold">AI Enriched</div>
               </div>
             </div>
@@ -855,7 +855,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
                 From {summary.totalFiles} chaotic {summary.totalFiles === 1 ? 'file' : 'files'} to organized, intelligent contacts ready for your campaigns
               </p>
               
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 mb-6">
+              <div className="bg-gradient-to-r from-blue-50 to-blue-50 rounded-2xl p-6 mb-6">
                 <p className="text-lg text-gray-800 font-bold">
                   Next: Review your enriched contacts in the Analytics tab
                 </p>
@@ -883,7 +883,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
         <p className="text-gray-700 mb-6 text-lg">Don't worry, let's try that again.</p>
         <Button 
           onClick={() => setState(prev => ({ ...prev, error: undefined }))}
-          className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-6 py-2 rounded-lg"
+          className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold px-6 py-2 rounded-lg"
         >
           Try Again
         </Button>

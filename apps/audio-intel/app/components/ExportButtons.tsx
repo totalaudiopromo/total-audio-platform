@@ -94,7 +94,7 @@ export default function ExportButtons({ enriched, onExport, fields, columns, for
         {(formatPreference === 'pdf') && (
           <button
             onClick={() => alert('PDF export coming soon in this flow. Use Professional Export System for PDFs.')}
-            className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 font-semibold shadow w-full"
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold shadow w-full"
           >
             Export as PDF
           </button>

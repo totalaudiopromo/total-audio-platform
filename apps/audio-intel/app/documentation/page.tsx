@@ -32,7 +32,7 @@ export default function DocumentationPage() {
   const [activeTab, setActiveTab] = useState('getting-started')
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
         <div className="container mx-auto px-4 py-8">
           {/* Header */}
           <div className="text-center mb-8">
@@ -70,7 +70,7 @@ export default function DocumentationPage() {
                 className="p-4 text-center hover:shadow-lg transition-all cursor-pointer border-2 border-black bg-white"
                 onClick={() => setActiveTab('api')}
               >
-                <Code className="w-8 h-8 text-purple-600 mx-auto mb-2" />
+                <Code className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                 <h3 className="font-bold text-gray-900">API Reference</h3>
                 <p className="text-sm text-gray-600">Technical documentation</p>
               </Card>
@@ -125,7 +125,7 @@ export default function DocumentationPage() {
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">3</div>
+                        <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">3</div>
                         <div>
                           <h4 className="font-bold text-gray-900">Export & Use</h4>
                           <p className="text-gray-600">Download enriched contacts in multiple formats or integrate directly with your CRM and marketing tools.</p>
@@ -217,9 +217,9 @@ export default function DocumentationPage() {
                         <h4 className="font-bold text-green-900">Data Cleaning</h4>
                         <p className="text-sm text-green-800">Remove quotes, fix spacing, normalize formats</p>
                       </div>
-                      <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
-                        <h4 className="font-bold text-purple-900">Auto-Fix</h4>
-                        <p className="text-sm text-purple-800">Generate missing names, validate emails</p>
+                      <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                        <h4 className="font-bold text-blue-900">Auto-Fix</h4>
+                        <p className="text-sm text-blue-800">Generate missing names, validate emails</p>
                       </div>
                     </div>
                   </div>
@@ -235,15 +235,15 @@ export default function DocumentationPage() {
                         <h4 className="font-bold text-red-900">Research Confidence</h4>
                         <p className="text-sm text-red-800">High, Medium, Low confidence levels</p>
                       </div>
-                      <div className="p-3 bg-indigo-50 rounded-lg border border-indigo-200">
-                        <h4 className="font-bold text-indigo-900">Last Updated</h4>
-                        <p className="text-sm text-indigo-800">Research timestamp and freshness</p>
+                      <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                        <h4 className="font-bold text-blue-900">Last Updated</h4>
+                        <p className="text-sm text-blue-800">Research timestamp and freshness</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-8 p-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white">
+                <div className="mt-8 p-6 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg text-white">
                   <h3 className="text-2xl font-black mb-4">Best Practices</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -316,9 +316,9 @@ export default function DocumentationPage() {
                           Rate limit: 200 requests/hour
                         </div>
                       </div>
-                      <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-                        <h4 className="font-bold text-purple-900 mb-2">POST /api/agents</h4>
-                        <p className="text-sm text-purple-800 mb-2">Query AI agents for insights</p>
+                      <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                        <h4 className="font-bold text-blue-900 mb-2">POST /api/agents</h4>
+                        <p className="text-sm text-blue-800 mb-2">Query AI agents for insights</p>
                         <div className="text-xs text-gray-600">
                           Rate limit: 50 requests/hour
                         </div>

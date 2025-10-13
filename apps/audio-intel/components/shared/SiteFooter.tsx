@@ -30,9 +30,9 @@ const otherTools = [
 ];
 
 const accentHover = {
-  purple: 'hover:text-purple-600',
+  purple: 'hover:text-blue-600',
   blue: 'hover:text-blue-600',
-  amber: 'hover:text-amber-600',
+  amber: 'hover:text-blue-600',
 };
 
 export function SiteFooter({

@@ -147,11 +147,11 @@ export default function FileUpload({ onFile, onAnalytics, fileType = 'csv' }: Fi
           <div className="text-white/80 mb-4">
             <div className="flex items-center justify-center mb-3">
               {fileType === 'audio' ? (
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-blue-400 rounded-2xl flex items-center justify-center animate-bounce-in">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-blue-400 rounded-2xl flex items-center justify-center animate-bounce-in">
                   <Music className="w-8 h-8 text-white" />
                 </div>
               ) : (
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-blue-400 rounded-2xl flex items-center justify-center animate-bounce-in">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-blue-400 rounded-2xl flex items-center justify-center animate-bounce-in">
                   <FileText className="w-8 h-8 text-white" />
                 </div>
               )}

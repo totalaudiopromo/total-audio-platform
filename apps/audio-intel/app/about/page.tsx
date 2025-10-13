@@ -27,7 +27,7 @@ import {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
         <div className="container mx-auto px-4 py-8">
           {/* Hero Section */}
           <div className="text-center mb-16">
@@ -63,7 +63,7 @@ export default function AboutPage() {
                   </p>
                   <div className="flex gap-4">
                     <Link href="/beta">
-                      <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold">
+                      <Button className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold">
                         <Sparkles className="w-5 h-5 mr-2" />
                         Try Audio Intel Free
                       </Button>
@@ -85,8 +85,8 @@ export default function AboutPage() {
                     <div className="text-2xl font-black text-gray-900">500K+</div>
                     <div className="text-sm text-gray-600">Contacts Enriched</div>
                   </div>
-                  <div className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg text-center">
-                    <Zap className="w-12 h-12 text-purple-600 mx-auto mb-3" />
+                  <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg text-center">
+                    <Zap className="w-12 h-12 text-blue-600 mx-auto mb-3" />
                     <div className="text-2xl font-black text-gray-900">95%</div>
                     <div className="text-sm text-gray-600">Success Rate</div>
                   </div>
@@ -220,8 +220,8 @@ export default function AboutPage() {
                 <h3 className="font-bold text-gray-900 mb-2">Multi-Platform Search</h3>
                 <p className="text-sm text-gray-600">Search across Reddit, Instagram, Spotify, Discord, and more</p>
               </Card>
-              <Card className="p-6 text-center hover:shadow-lg transition-all bg-gradient-to-br from-purple-50 to-purple-100">
-                <TrendingUp className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+              <Card className="p-6 text-center hover:shadow-lg transition-all bg-gradient-to-br from-blue-50 to-blue-100">
+                <TrendingUp className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="font-bold text-gray-900 mb-2">Real-Time Analytics</h3>
                 <p className="text-sm text-gray-600">Live data processing and analytics for immediate insights</p>
               </Card>
@@ -235,7 +235,7 @@ export default function AboutPage() {
 
           {/* CTA Section */}
           <div className="mb-16">
-            <Card className="p-12 text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+            <Card className="p-12 text-center bg-gradient-to-r from-blue-500 to-blue-600 text-white">
               <h2 className="text-4xl font-black mb-6">
                 Ready to Transform Your Music Career?
               </h2>

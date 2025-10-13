@@ -109,7 +109,7 @@ export default function PdfSamplesPage() {
           
           <button
             onClick={() => setShowUpgradeModal(true)}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md hover:from-blue-700 hover:to-purple-700 transition-all"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-600 text-white rounded-md hover:from-blue-700 hover:to-blue-700 transition-all"
           >
             <Crown className="w-4 h-4" />
             Generate Professional Version
@@ -199,7 +199,7 @@ export default function PdfSamplesPage() {
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Introduction */}
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 mb-8">
+        <div className="bg-gradient-to-r from-blue-50 to-blue-50 rounded-lg p-6 mb-8">
           <div className="flex items-center gap-3 mb-3">
             <Zap className="w-6 h-6 text-blue-600" />
             <h2 className="text-xl font-semibold text-gray-900">See The Quality Before You Upgrade</h2>
@@ -252,8 +252,8 @@ export default function PdfSamplesPage() {
             description="Intelligent analysis with strategic recommendations and next steps"
             features={PDF_SAMPLES_INFO.aiAgent.features}
             icon={Brain}
-            color="text-purple-600"
-            bgColor="bg-purple-50"
+            color="text-blue-600"
+            bgColor="bg-blue-50"
           />
         </div>
 
@@ -309,7 +309,7 @@ export default function PdfSamplesPage() {
         </div>
 
         {/* CTA Section */}
-        <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-center text-white">
+        <div className="mt-12 bg-gradient-to-r from-blue-600 to-blue-600 rounded-lg p-8 text-center text-white">
           <h3 className="text-2xl font-bold mb-4">Ready for Professional Quality?</h3>
           <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
             Upgrade to Professional for unlimited high-quality PDF reports, email delivery, 

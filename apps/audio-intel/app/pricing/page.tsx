@@ -522,7 +522,7 @@ function PricingContent() {
               <h3 className="text-2xl font-black text-gray-900 mb-3">What does the 90% data accuracy guarantee mean?</h3>
               <p className="text-lg font-bold text-gray-700">We only count accurate enrichments towards your monthly limit. If something is wrong, it doesn't count.</p>
             </div>
-            <div className="bg-white p-8 rounded-2xl border-4 border-indigo-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:col-span-2">
+            <div className="bg-white p-8 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:col-span-2">
               <h3 className="text-2xl font-black text-gray-900 mb-3">Who is Audio Intel for?</h3>
               <p className="text-lg font-bold text-gray-700">Independent artists, small PR agencies, and labels who need reliable music industry contact intelligence without the £500+/mo enterprise nonsense.</p>
             </div>

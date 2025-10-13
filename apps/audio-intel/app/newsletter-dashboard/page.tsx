@@ -323,7 +323,7 @@ export default function NewsletterDashboard() {
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center">
-                <Zap className="h-8 w-8 text-purple-600" />
+                <Zap className="h-8 w-8 text-blue-600" />
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">Click Rate</p>
                   <p className="text-2xl font-bold text-gray-900">{stats.weeklyClickRate}%</p>
@@ -584,9 +584,9 @@ export default function NewsletterDashboard() {
                   <h4 className="font-semibold text-green-900">Sources</h4>
                   <p className="text-2xl font-bold text-green-700">{newsjackerResults.sources?.length || 0}</p>
                 </div>
-                <div className="p-4 bg-purple-50 rounded-lg">
-                  <h4 className="font-semibold text-purple-900">Top Sources</h4>
-                  <p className="text-sm text-purple-700">{newsjackerResults.sources?.slice(0, 3).join(', ') || 'N/A'}</p>
+                <div className="p-4 bg-blue-50 rounded-lg">
+                  <h4 className="font-semibold text-blue-900">Top Sources</h4>
+                  <p className="text-sm text-blue-700">{newsjackerResults.sources?.slice(0, 3).join(', ') || 'N/A'}</p>
                 </div>
               </div>
               

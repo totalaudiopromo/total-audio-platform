@@ -549,20 +549,20 @@ export default function SimpleAudioIntelDemo() {
             </div>
 
             {/* Demo Data Loader */}
-            <div className="bg-gradient-to-r from-purple-50 to-blue-50 border-4 border-purple-500 rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-6">
+            <div className="bg-gradient-to-r from-blue-50 to-blue-50 border-4 border-blue-500 rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-6">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="flex-1">
-                  <h3 className="text-xl font-black text-purple-900 mb-2">
+                  <h3 className="text-xl font-black text-blue-900 mb-2">
                     🎯 Quick Demo: Real Industry Contacts
                   </h3>
-                  <p className="text-sm text-purple-800 font-medium">
+                  <p className="text-sm text-blue-800 font-medium">
                     Load 5 pre-enriched contacts from BBC Radio 1 and Spotify instantly to see Audio Intel in action. Real emails, real enrichment data.
                   </p>
                 </div>
                 <Button
                   onClick={loadLibertyDemoData}
                   disabled={isLoadingDemo}
-                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                  className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                 >
                   {isLoadingDemo ? (
                     <>
@@ -611,14 +611,14 @@ export default function SimpleAudioIntelDemo() {
                 <div className="text-center">
                   <Button 
                     onClick={() => setActiveTab('process')}
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-6 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                    className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold px-6 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                   >
                     Go to Process & Enrich
                   </Button>
                 </div>
               </div>
             ) : (
-            <div className="bg-white rounded-2xl border-4 border-purple-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8">
+            <div className="bg-white rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8">
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-black text-gray-900 mb-4">
                   Contact Intelligence Analytics
@@ -694,11 +694,11 @@ export default function SimpleAudioIntelDemo() {
                     <Button
                       onClick={() => handleExport('pdf')}
                       disabled={isExporting}
-                      className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                     >
                       <FileSpreadsheet className="w-5 h-5" />
                       Export PDF
-                      <Badge className="bg-purple-500 text-white ml-2">Professional</Badge>
+                      <Badge className="bg-blue-500 text-white ml-2">Professional</Badge>
                     </Button>
                   </div>
 

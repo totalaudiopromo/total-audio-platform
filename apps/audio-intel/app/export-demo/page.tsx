@@ -218,7 +218,7 @@ export default function ExportDemoPage() {
     switch (stage) {
       case 'preparing': return 'text-blue-600';
       case 'processing': return 'text-yellow-600';
-      case 'formatting': return 'text-purple-600';
+      case 'formatting': return 'text-blue-600';
       case 'delivering': return 'text-green-600';
       case 'complete': return 'text-green-600';
       default: return 'text-gray-600';
@@ -316,11 +316,11 @@ export default function ExportDemoPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">Search Results</p>
-                <p className="text-2xl font-bold text-purple-600">{sampleSearchResults.results.length}</p>
+                <p className="text-2xl font-bold text-blue-600">{sampleSearchResults.results.length}</p>
                 <p className="text-xs text-gray-500">With metadata</p>
               </div>
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <Search className="w-6 h-6 text-purple-600" />
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Search className="w-6 h-6 text-blue-600" />
               </div>
             </div>
           </div>
@@ -448,7 +448,7 @@ export default function ExportDemoPage() {
             </div>
             <div className="space-y-2">
               <h3 className="font-medium text-gray-900 flex items-center gap-2">
-                <BarChart3 className="w-4 h-4 text-purple-600" />
+                <BarChart3 className="w-4 h-4 text-blue-600" />
                 Multi-Format Export
               </h3>
               <p className="text-sm text-gray-600">
@@ -466,7 +466,7 @@ export default function ExportDemoPage() {
             </div>
             <div className="space-y-2">
               <h3 className="font-medium text-gray-900 flex items-center gap-2">
-                <Settings className="w-4 h-4 text-indigo-600" />
+                <Settings className="w-4 h-4 text-blue-600" />
                 White Label Support
               </h3>
               <p className="text-sm text-gray-600">

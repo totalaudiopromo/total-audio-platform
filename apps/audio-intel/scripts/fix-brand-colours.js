@@ -27,14 +27,37 @@ const REPLACEMENTS = [
   { from: /#A855F7/g, to: '#1E88E5' },
 
   // Amber to Blue (for branding, NOT warnings)
+  { from: /amber-50/g, to: 'blue-50' },
+  { from: /amber-100/g, to: 'blue-100' },
   { from: /amber-600/g, to: 'blue-600' },
   { from: /amber-700/g, to: 'blue-700' },
   { from: /#F59E0B/g, to: '#1E88E5' },
+
+  // Indigo to Blue
+  { from: /indigo-50/g, to: 'blue-50' },
+  { from: /indigo-100/g, to: 'blue-100' },
+  { from: /indigo-200/g, to: 'blue-200' },
+  { from: /indigo-500/g, to: 'blue-500' },
+  { from: /indigo-600/g, to: 'blue-600' },
+  { from: /indigo-700/g, to: 'blue-700' },
+  { from: /indigo-800/g, to: 'blue-800' },
+  { from: /indigo-900/g, to: 'blue-900' },
+
+  // Pink to Blue
+  { from: /pink-50/g, to: 'blue-50' },
+  { from: /pink-500/g, to: 'blue-500' },
+  { from: /pink-600/g, to: 'blue-600' },
+  { from: /pink-700/g, to: 'blue-700' },
 
   // Gradients
   { from: /from-purple-/g, to: 'from-blue-' },
   { from: /to-purple-/g, to: 'to-blue-' },
   { from: /via-purple-/g, to: 'via-blue-' },
+  { from: /from-indigo-/g, to: 'from-blue-' },
+  { from: /to-indigo-/g, to: 'to-blue-' },
+  { from: /via-indigo-/g, to: 'via-blue-' },
+  { from: /from-pink-/g, to: 'from-blue-' },
+  { from: /to-pink-/g, to: 'to-blue-' },
 ];
 
 // Files to skip

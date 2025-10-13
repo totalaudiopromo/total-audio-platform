@@ -214,7 +214,7 @@ export default function RadioPromotionTips() {
         
         <hr className="my-12" />
         
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 p-8 rounded-xl">
+        <div className="bg-gradient-to-r from-blue-50 to-blue-50 border border-blue-200 p-8 rounded-xl">
           <div className="flex flex-col md:flex-row items-start gap-6">
             <div className="flex-shrink-0">
               <Image 
@@ -232,7 +232,7 @@ export default function RadioPromotionTips() {
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-semibold">
                     Radio Promoter
                   </span>
-                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-semibold">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-semibold">
                     Audio Intel Founder
                   </span>
                   <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">

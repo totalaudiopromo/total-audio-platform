@@ -60,9 +60,9 @@ export default function SocialMediaDemo() {
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <BarChart3 className="w-5 h-5 text-purple-600" />
+                <BarChart3 className="w-5 h-5 text-blue-600" />
                 <div>
-                  <div className="text-2xl font-bold text-purple-600">0</div>
+                  <div className="text-2xl font-bold text-blue-600">0</div>
                   <div className="text-sm text-gray-600">Posted Today</div>
                 </div>
               </div>

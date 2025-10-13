@@ -146,7 +146,7 @@ export default function HomePage() {
             <div className="flex-1">
               <div className="relative">
                 <div className="glass-panel bg-gradient-to-br from-blue-50 to-white px-8 py-10">
-                  <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-purple-900">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-100 to-blue-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-900">
                     <Sparkles className="w-3 h-3" />
                     Live Demo
                   </div>
@@ -192,8 +192,8 @@ export default function HomePage() {
                       </div>
                     )}
                   </div>
-                  <div className="mt-6 rounded-lg border border-purple-600/30 bg-purple-600/10 px-4 py-3">
-                    <p className="text-sm font-medium text-purple-900">
+                  <div className="mt-6 rounded-lg border border-blue-600/30 bg-blue-600/10 px-4 py-3">
+                    <p className="text-sm font-medium text-blue-900">
                       <strong>Real data from radio campaigns.</strong> Try BBC Radio 1 DJs, Spotify curators, or your own contacts.
                     </p>
                   </div>
@@ -243,10 +243,10 @@ export default function HomePage() {
         </section>
 
         {/* Key Features Grid */}
-        <section className="glass-panel overflow-hidden bg-gradient-to-br from-purple-50 to-indigo-50 px-6 py-12 sm:px-10">
+        <section className="glass-panel overflow-hidden bg-gradient-to-br from-blue-50 to-blue-50 px-6 py-12 sm:px-10">
           <div className="text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-purple-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <span className="text-sm font-bold uppercase tracking-wider text-purple-600">What Makes Audio Intel Different</span>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-blue-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <span className="text-sm font-bold uppercase tracking-wider text-blue-600">What Makes Audio Intel Different</span>
             </div>
             <h2 className="mb-4 text-3xl font-bold sm:text-4xl">The flagship tool for contact intelligence</h2>
             <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-700">
@@ -263,8 +263,8 @@ export default function HomePage() {
                 <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">AI Enrichment</p>
                 <p className="mt-2 text-xs text-gray-600">Detailed profiles with submission guidelines</p>
               </div>
-              <div className="glass-panel border-purple-500 bg-white p-5">
-                <Target className="mx-auto h-8 w-8 text-purple-600" />
+              <div className="glass-panel border-blue-500 bg-white p-5">
+                <Target className="mx-auto h-8 w-8 text-blue-600" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">Platform Search</p>
                 <p className="mt-2 text-xs text-gray-600">Find contacts by role, genre, platform</p>
               </div>
@@ -343,7 +343,7 @@ export default function HomePage() {
                 <p className="mt-2 text-sm text-gray-600">Down from 15+ hours of manual research per campaign</p>
               </div>
               <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <div className="mb-4 text-4xl font-black text-purple-600">90%</div>
+                <div className="mb-4 text-4xl font-black text-blue-600">90%</div>
                 <p className="font-bold text-gray-900">Data Accuracy Guarantee</p>
                 <p className="mt-2 text-sm text-gray-600">Industry-leading contact intelligence quality</p>
               </div>
@@ -521,7 +521,7 @@ export default function HomePage() {
         </section>
 
         {/* CTA */}
-        <section className="glass-panel border-blue-500 bg-gradient-to-br from-blue-50 to-purple-50 px-6 py-16 text-center sm:px-10">
+        <section className="glass-panel border-blue-500 bg-gradient-to-br from-blue-50 to-blue-50 px-6 py-16 text-center sm:px-10">
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Ready to organise your contacts?</h2>
           <p className="mb-8 text-lg text-gray-600">
             Start with 10 free enrichments. No card required. Built by radio promoters, for radio promoters.

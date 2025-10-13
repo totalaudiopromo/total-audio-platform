@@ -186,14 +186,14 @@ export function AnalyticsDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
+        <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-purple-700">Daily Average</CardTitle>
-            <Zap className="h-4 w-4 text-purple-600" />
+            <CardTitle className="text-sm font-medium text-blue-700">Daily Average</CardTitle>
+            <Zap className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-purple-900">{metrics.averageDailyEnrichments.toFixed(1)}</div>
-            <p className="text-xs text-purple-600 mt-1">
+            <div className="text-2xl font-bold text-blue-900">{metrics.averageDailyEnrichments.toFixed(1)}</div>
+            <p className="text-xs text-blue-600 mt-1">
               Enrichments per day
             </p>
           </CardContent>
@@ -350,7 +350,7 @@ export function AnalyticsDashboard() {
                 <div className="flex-shrink-0">
                   {activity.action.includes('Enrichment') && <Users className="h-4 w-4 text-blue-600" />}
                   {activity.action.includes('Export') && <Download className="h-4 w-4 text-green-600" />}
-                  {activity.action.includes('Search') && <Eye className="h-4 w-4 text-purple-600" />}
+                  {activity.action.includes('Search') && <Eye className="h-4 w-4 text-blue-600" />}
                   {activity.action.includes('Promotion') && <TrendingUp className="h-4 w-4 text-orange-600" />}
                 </div>
                 <div className="flex-1 min-w-0">

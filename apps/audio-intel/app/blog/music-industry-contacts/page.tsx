@@ -57,7 +57,7 @@ export default function MusicIndustryContacts() {
           <span>9 min read</span>
         </div>
         
-        <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-lg">
+        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
           <p className="text-lg text-gray-700 font-medium">
             Right, let's get real. Contact research used to eat up half my promotion time. Here's exactly how I find 
             quality music industry contacts without spending days hunting through outdated databases.
@@ -297,7 +297,7 @@ export default function MusicIndustryContacts() {
         
         <hr className="my-12" />
         
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 p-8 rounded-xl">
+        <div className="bg-gradient-to-r from-blue-50 to-blue-50 border border-blue-200 p-8 rounded-xl">
           <div className="flex flex-col md:flex-row items-start gap-6">
             <div className="flex-shrink-0">
               <Image 
@@ -315,7 +315,7 @@ export default function MusicIndustryContacts() {
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-semibold">
                     Music Promoter
                   </span>
-                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-semibold">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-semibold">
                     Audio Intel Founder
                   </span>
                   <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">

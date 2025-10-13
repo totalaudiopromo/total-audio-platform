@@ -209,7 +209,7 @@ export default function SEOAnalysisPage() {
           <button
             onClick={handleDomainAnalysis}
             disabled={loading}
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 transition-all duration-200"
+            className="w-full bg-gradient-to-r from-blue-600 to-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:from-blue-700 hover:to-blue-700 disabled:opacity-50 transition-all duration-200"
           >
             {loading ? 'Analysing...' : 'Analyse Domain'}
           </button>
@@ -229,8 +229,8 @@ export default function SEOAnalysisPage() {
               <div className="text-3xl font-bold text-green-600">{domainAnalysis.metrics.organicKeywords}</div>
               <div className="text-sm text-gray-600">Organic Keywords</div>
             </div>
-            <div className="text-center p-4 bg-purple-50 rounded-lg">
-              <div className="text-3xl font-bold text-purple-600">{domainAnalysis.metrics.organicTraffic}</div>
+            <div className="text-center p-4 bg-blue-50 rounded-lg">
+              <div className="text-3xl font-bold text-blue-600">{domainAnalysis.metrics.organicTraffic}</div>
               <div className="text-sm text-gray-600">Organic Traffic</div>
             </div>
             <div className="text-center p-4 bg-orange-50 rounded-lg">
@@ -379,7 +379,7 @@ export default function SEOAnalysisPage() {
           <button
             onClick={handleCompetitorAnalysis}
             disabled={loading}
-            className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 px-6 rounded-lg font-medium hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 transition-all duration-200"
+            className="w-full bg-gradient-to-r from-blue-600 to-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:from-blue-700 hover:to-blue-700 disabled:opacity-50 transition-all duration-200"
           >
             {loading ? 'Analysing...' : 'Analyse Competitors'}
           </button>
@@ -510,21 +510,21 @@ export default function SEOAnalysisPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-blue-50">
       {/* Header */}
       <div className="bg-white/90 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-20 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-600 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">AI</span>
                 </div>
                 <span className="text-lg font-bold text-gray-700">Audio Intel Live</span>
               </Link>
               <div className="h-6 w-px bg-gray-300"></div>
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent">
+                <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-blue-900 bg-clip-text text-transparent">
                   SEO Analysis
                 </h1>
                 <p className="text-gray-600 text-sm">

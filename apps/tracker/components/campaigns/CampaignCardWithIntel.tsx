@@ -111,36 +111,39 @@ export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignC
 
   return (
     <>
-      <div className="bg-white border-4 border-black rounded-2xl p-6 md:p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all">
+      <div
+        onClick={() => router.push(`/campaigns/${campaign.id}`)}
+        className="bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-purple-500 hover:shadow-lg transition-all cursor-pointer group"
+      >
         {/* Campaign Header */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
           <div className="flex-1">
-            <h3 className="text-2xl font-black text-gray-900 mb-3">{campaign.name}</h3>
-            <div className="flex flex-wrap items-center gap-3">
+            <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition-colors">{campaign.name}</h3>
+            <div className="flex flex-wrap items-center gap-2">
               {campaign.platform && (
-                <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-black bg-blue-100 text-blue-800 border-2 border-blue-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
                   {campaign.platform}
                 </span>
               )}
               {campaign.genre && (
-                <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-black bg-purple-100 text-purple-800 border-2 border-purple-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-purple-50 text-purple-700 border border-purple-200">
                   {campaign.genre}
                 </span>
               )}
-              <span className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-black border-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
-                campaign.status === 'active' 
-                  ? 'bg-green-100 text-green-800 border-green-800' 
+              <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium ${
+                campaign.status === 'active'
+                  ? 'bg-green-50 text-green-700 border border-green-200'
                   : campaign.status === 'completed'
-                  ? 'bg-gray-100 text-gray-800 border-gray-800'
-                  : 'bg-yellow-100 text-yellow-800 border-yellow-800'
+                  ? 'bg-slate-50 text-slate-700 border border-slate-200'
+                  : 'bg-amber-50 text-amber-700 border border-amber-200'
               }`}>
-                {campaign.status.toUpperCase()}
+                {campaign.status}
               </span>
             </div>
           </div>
           <div className="text-left md:text-right">
-            <div className="text-sm font-black text-gray-500 uppercase tracking-wider mb-1">Budget</div>
-            <div className="text-3xl font-black text-gray-900">£{campaign.budget}</div>
+            <div className="text-sm font-medium text-slate-500 mb-1">Budget</div>
+            <div className="text-2xl font-bold text-slate-900">£{campaign.budget}</div>
           </div>
         </div>
 
@@ -265,26 +268,11 @@ export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignC
           </div>
         )}
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-6 border-t-2 border-gray-200">
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="flex-1 px-4 py-2.5 bg-blue-600 text-white rounded-xl font-black hover:bg-blue-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-sm"
-          >
-            Edit Campaign
-          </button>
-          <button
-            onClick={() => router.push(`/campaigns/${campaign.id}`)}
-            className="flex-1 px-4 py-2.5 bg-white text-gray-900 rounded-xl font-bold border-2 border-black hover:bg-gray-50 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-sm"
-          >
-            View Details
-          </button>
-          {hasResults && (
-            <GenerateReportButton
-              campaignId={campaign.id}
-              campaignName={campaign.name}
-            />
-          )}
+        {/* Quick hint */}
+        <div className="mt-6 pt-4 border-t border-slate-200">
+          <p className="text-sm text-slate-500 group-hover:text-purple-600 transition-colors font-medium">
+            Click to view timeline and add activities →
+          </p>
         </div>
       </div>
 

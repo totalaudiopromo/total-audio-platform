@@ -319,7 +319,7 @@ export default function TermsPage() {
           </section>
 
           {/* Agreement */}
-          <section className="mt-12 rounded-lg border-2 border-purple-400 bg-purple-50 p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <section className="mt-12 rounded-lg border-2 border-blue-400 bg-blue-50 p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <p className="font-bold text-gray-900">
               By using Audio Intel, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
             </p>

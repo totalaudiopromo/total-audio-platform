@@ -258,20 +258,20 @@ jane@company.com
                 </div>
                 <div className="text-xs text-gray-600">Disposable</div>
               </div>
-              <div className="text-center p-3 bg-purple-50 rounded-lg">
-                <div className="text-lg font-bold text-purple-600">
+              <div className="text-center p-3 bg-blue-50 rounded-lg">
+                <div className="text-lg font-bold text-blue-600">
                   {results.summary.roleBased}
                 </div>
                 <div className="text-xs text-gray-600">Role-based</div>
               </div>
-              <div className="text-center p-3 bg-pink-50 rounded-lg">
-                <div className="text-lg font-bold text-pink-600">
+              <div className="text-center p-3 bg-blue-50 rounded-lg">
+                <div className="text-lg font-bold text-blue-600">
                   {results.summary.spamTraps}
                 </div>
                 <div className="text-xs text-gray-600">Spam Traps</div>
               </div>
-              <div className="text-center p-3 bg-indigo-50 rounded-lg">
-                <div className="text-lg font-bold text-indigo-600">
+              <div className="text-center p-3 bg-blue-50 rounded-lg">
+                <div className="text-lg font-bold text-blue-600">
                   {results.summary.catchAll}
                 </div>
                 <div className="text-xs text-gray-600">Catch-all</div>
@@ -308,7 +308,7 @@ jane@company.com
                         <Badge variant="outline">Business</Badge>
                       )}
                       {result.roleBased && (
-                        <Badge variant="outline" className="bg-purple-50 text-purple-700">Role-based</Badge>
+                        <Badge variant="outline" className="bg-blue-50 text-blue-700">Role-based</Badge>
                       )}
                       {result.smtpConnectable && (
                         <Badge variant="outline" className="bg-green-50 text-green-700">SMTP OK</Badge>
@@ -339,7 +339,7 @@ jane@company.com
                             <Badge variant="outline" className="bg-orange-50 text-orange-700">Catch-all</Badge>
                           )}
                           {result.roleBased && (
-                            <Badge variant="outline" className="bg-purple-50 text-purple-700">Role-based</Badge>
+                            <Badge variant="outline" className="bg-blue-50 text-blue-700">Role-based</Badge>
                           )}
                           {result.issues.map((issue, i) => (
                             <Badge key={i} variant="outline" className="text-xs">

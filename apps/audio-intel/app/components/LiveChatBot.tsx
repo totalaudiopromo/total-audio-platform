@@ -126,7 +126,7 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
         onClick={() => setIsOpen(!isOpen)}
         className={`w-12 h-12 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all font-black text-white flex items-center justify-center ${
           userTier === 'agency'
-            ? 'bg-purple-600 hover:bg-purple-700'
+            ? 'bg-blue-600 hover:bg-blue-700'
             : userTier === 'professional'
             ? 'bg-blue-600 hover:bg-blue-700'
             : 'bg-green-600 hover:bg-green-700'
@@ -140,7 +140,7 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
         <div className="fixed bottom-20 right-4 z-40 w-[calc(100vw-2rem)] sm:w-80 max-w-sm h-[380px] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-xl bg-white flex flex-col">
           <div className={`${
             userTier === 'agency' 
-              ? 'bg-purple-600' 
+              ? 'bg-blue-600' 
               : userTier === 'professional'
               ? 'bg-blue-600'
               : 'bg-green-600'
@@ -204,7 +204,7 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
                 disabled={!inputValue.trim() || isLoading}
                 className={`h-9 px-3 rounded-lg font-bold text-white text-sm ${
                   userTier === 'agency' 
-                    ? 'bg-purple-600 hover:bg-purple-700' 
+                    ? 'bg-blue-600 hover:bg-blue-700' 
                     : userTier === 'professional'
                     ? 'bg-blue-600 hover:bg-blue-700'
                     : 'bg-green-600 hover:bg-green-700'
