@@ -17,8 +17,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tracker.totalaudiopromo.com'),
   title: "Total Audio Tracker – Simple Campaign Tracking",
   description: "Simple campaign tracking for indie artists and radio promoters. Stop using spreadsheets.",
+  openGraph: {
+    title: "Total Audio Tracker – Simple Campaign Tracking",
+    description: "Simple campaign tracking for indie artists and radio promoters. Stop using spreadsheets.",
+    url: 'https://tracker.totalaudiopromo.com',
+    siteName: 'Total Audio Tracker',
+    locale: 'en_GB',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
@@ -27,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
+    <html lang="en-GB" className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
       <head>
         {/* Google Tag Manager */}
         <script

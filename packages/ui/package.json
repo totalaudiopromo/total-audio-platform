@@ -2,8 +2,9 @@
   "name": "@total-audio/ui",
   "version": "1.0.0",
   "description": "Shared UI components for Total Audio Promo platform - brutalist design system",
-  "main": "index.js",
+  "main": "index.ts",
   "exports": {
+    ".": "./index.ts",
     "./SiteHeader": "./components/SiteHeader.tsx",
     "./SiteFooter": "./components/SiteFooter.tsx",
     "./ToolSwitcher": "./components/ToolSwitcher.tsx",
@@ -21,9 +22,9 @@
   "author": "Total Audio Promo",
   "license": "UNLICENSED",
   "peerDependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "next": "^15.0.0"
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0",
+    "next": ">=15.0.0"
   },
   "dependencies": {
     "lucide-react": "^0.468.0"
