@@ -37,7 +37,10 @@ export function SiteHeader() {
               height={40}
               className="h-10 w-auto"
             />
-            <span className="text-lg font-bold leading-tight tracking-tight text-black whitespace-nowrap">Audio Intel</span>
+            <div className="flex flex-col">
+              <span className="text-lg font-bold leading-tight tracking-tight text-black">Audio Intel</span>
+              <span className="text-xs text-gray-500">by Total Audio Promo</span>
+            </div>
           </Link>
         </div>
 

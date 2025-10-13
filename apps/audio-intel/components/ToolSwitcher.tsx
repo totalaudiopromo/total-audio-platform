@@ -20,6 +20,11 @@ const tools = [
     url: 'https://tracker.totalaudiopromo.com',
     description: 'Campaign tracking & AI intelligence',
   },
+  {
+    name: 'Command Centre',
+    url: 'https://command.totalaudiopromo.com',
+    description: 'Marketing automation & analytics',
+  },
 ];
 
 export function ToolSwitcher() {

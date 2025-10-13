@@ -147,73 +147,6 @@ const config = {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
         },
-        'texture-float': {
-          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '25%': { transform: 'translateY(-5px) rotate(0.5deg)' },
-          '50%': { transform: 'translateY(-10px) rotate(0deg)' },
-          '75%': { transform: 'translateY(-5px) rotate(-0.5deg)' },
-        },
-        'texture-entrance': {
-          '0%': { 
-            opacity: '0', 
-            transform: 'translateY(30px) rotate(2deg) scale(0.95)' 
-          },
-          '100%': { 
-            opacity: '1', 
-            transform: 'translateY(0px) rotate(0deg) scale(1)' 
-          },
-        },
-        'texture-hover': {
-          '0%': { transform: 'scale(1) rotate(0deg)' },
-          '50%': { transform: 'scale(1.02) rotate(0.5deg)' },
-          '100%': { transform: 'scale(1.05) rotate(1deg)' },
-        },
-        'texture-stagger': {
-          '0%': { 
-            opacity: '0', 
-            transform: 'translateY(20px) rotate(1deg) scale(0.98)' 
-          },
-          '100%': { 
-            opacity: '1', 
-            transform: 'translateY(0px) rotate(0deg) scale(1)' 
-          },
-        },
-        'texture-pulse': {
-          '0%, 100%': { 
-            transform: 'scale(1) rotate(0deg)',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)'
-          },
-          '50%': { 
-            transform: 'scale(1.02) rotate(0.5deg)',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08)'
-          },
-        },
-        'texture-wave': {
-          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '25%': { transform: 'translateY(-3px) rotate(0.3deg)' },
-          '50%': { transform: 'translateY(-6px) rotate(0deg)' },
-          '75%': { transform: 'translateY(-3px) rotate(-0.3deg)' },
-        },
-        'texture-breathe': {
-          '0%, 100%': { 
-            transform: 'scale(1) rotate(0deg)',
-            opacity: '0.8'
-          },
-          '50%': { 
-            transform: 'scale(1.01) rotate(0.2deg)',
-            opacity: '1'
-          },
-        },
-        'texture-shimmer': {
-          '0%': { 
-            backgroundPosition: '-200% 0',
-            opacity: '0.8'
-          },
-          '100%': { 
-            backgroundPosition: '200% 0',
-            opacity: '1'
-          },
-        },
         // Audio character animations
         'color-activate': {
           '0%': { filter: 'grayscale(1)' },
@@ -244,21 +177,12 @@ const config = {
         'spin-slow': 'spin-slow 2s linear infinite',
         'blob': 'blob 7s infinite',
         'float': 'float 6s ease-in-out infinite',
-        'texture-float': 'texture-float 8s ease-in-out infinite',
-        'texture-entrance': 'texture-entrance 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
-        'texture-hover': 'texture-hover 0.3s ease-out',
-        'texture-stagger': 'texture-stagger 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
-        'texture-pulse': 'texture-pulse 3s ease-in-out infinite',
-        'texture-wave': 'texture-wave 4s ease-in-out infinite',
-        'texture-breathe': 'texture-breathe 5s ease-in-out infinite',
-        'texture-shimmer': 'texture-shimmer 2s ease-in-out infinite',
         // Audio character animations
         'color-activate': 'color-activate 0.8s ease-in-out',
         'audio-bounce': 'audio-bounce 0.6s ease-in-out',
         'success-pulse': 'success-pulse 1.2s ease-in-out',
         'celebration-sparkle': 'celebration-sparkle 1.5s ease-in-out',
       },
-      // Enhanced responsive breakpoints for textures
       screens: {
         'xs': '475px',
         'sm': '640px',
@@ -266,9 +190,6 @@ const config = {
         'lg': '1024px',
         'xl': '1280px',
         '2xl': '1536px',
-        'texture-mobile': '480px',
-        'texture-tablet': '768px',
-        'texture-desktop': '1024px',
       },
     },
   },

@@ -1,264 +1,320 @@
-# Audio Intel - AI-Powered Music Industry Contact Intelligence
+# Audio Intel - Contact Enrichment for Music Professionals
 
-Audio Intel is a comprehensive web application that transforms basic email lists into detailed music industry intelligence using AI-powered contact enrichment. The platform helps artists, labels, and music professionals save 15+ hours per week on contact research by providing detailed insights about playlist curators, radio DJs, music bloggers, and industry professionals.
+**Status**: ✅ Production Ready | **Live Site**: https://intel.totalaudiopromo.com
 
-## 🚀 Features
+---
 
-### Core Functionality
+## 🎯 What is Audio Intel?
 
-#### 1. **FREE Email Validation** 🆕
+Audio Intel is a contact enrichment SaaS for UK music industry professionals. Transform chaotic contact spreadsheets into organised, enriched databases in minutes instead of hours.
 
-- **DNS MX Record Checking** - Verify domains can actually receive emails
-- **Disposable Email Detection** - Identify temporary/fake email addresses  
-- **Free Email Provider Classification** - Distinguish business vs personal emails
-- **Format Validation** - Ensure proper email syntax
-- **Confidence Scoring** - High/Medium/Low confidence levels
-- **Batch Processing** - Validate entire email lists at once
-- **CSV Export** - Download validation results with detailed analysis
-- **Cost Savings** - Save £15-50/month on email validation services
+**Core Value**: "15 hours → 15 minutes" contact research time savings
 
-#### 2. **AI-Powered Contact Enrichment**
+---
 
-- Upload CSV files with basic contact information (Name, Email)
-- AI analyzes each contact and provides detailed intelligence including:
-  - Station/Platform information
-  - Coverage areas and audience reach
-  - Contact preferences and submission guidelines
-  - Genre focus and artist types they work with
-  - Strategic tips for effective pitching
-  - Research confidence levels
-- Export enriched data to CSV format
-- Real-time processing with progress indicators
+## 🚀 Quick Start
 
-#### 3. **Multi-Platform Contact Search**
+### Development
+```bash
+# Start development server
+npm run dev:audio-intel
 
-Search for music industry contacts across 7 major platforms:
+# Build for production
+npm run build:audio-intel
 
-- **Reddit**: Music communities, subreddits, moderators
-- **Instagram**: Playlist curators, music bloggers, industry professionals
-- **Spotify**: Playlist curators, official editors, submission opportunities
-- **Discord**: Music industry servers, networking communities
-- **Forums**: Professional music forums, industry discussions
-- **Music Sites**: Industry blogs, review sites, promotion platforms
-- **LinkedIn**: Music industry professionals, companies, networking groups
+# Run tests
+npm run test:audio-intel
 
-#### 4. **AI-Powered Music Industry Agents**
+# TypeScript validation
+npm run typecheck:audio-intel
 
-Get strategic advice from specialized AI agents:
+# Linting
+npm run lint:audio-intel
+```
 
-- **Music Industry Strategist**: Industry positioning, label strategy, networking
-- **Music Marketing Mastermind**: Digital marketing, social media, audience growth
-- **Growth Hacking Optimizer**: Rapid audience growth, viral marketing
-- **Viral Content Automation**: Content creation, distribution, automation
-- **Radio Promotion Agent**: Radio promotion, playlist pitching, broadcast strategy
-- **Social Media Agent**: Platform strategy, community building, engagement
-- **Content Generation Agent**: Content ideation, multi-platform adaptation
-- **Analytics Agent**: Performance analysis, KPIs, data-driven decisions
+### Mobile Testing
+```bash
+# Run mobile test suite (Playwright)
+npm run test:mobile
 
-#### 5. **Analytics Dashboard**
+# Run with browser visible
+npm run test:mobile:headed
+```
 
-- Track enrichment performance
-- Monitor search results across platforms
-- View success rates and confidence levels
-- Platform breakdown analysis
-- Recent activity tracking
+---
 
-### Technical Features
+## 📊 Product Status
 
-#### **Modern UI/UX**
+### ✅ Complete & Production Ready
+- Contact enrichment pipeline (100% success rate)
+- Stripe payment integration (£19/£79 pricing)
+- User authentication and management
+- Mobile-optimised UX (21 issues resolved)
+- Real-time analytics dashboard
+- UK GDPR compliance (cookie banner, Privacy Policy, Terms of Service)
+- SEO foundation (structured data, canonical URLs, sitemap)
+- Newsletter system ("The Unsigned Advantage")
+- Email automation (ConvertKit integration)
 
-- Beautiful, responsive design with texture overlays
-- Smooth animations and transitions
-- Mobile-optimized interface
-- Accessibility features
-- Dark/light mode support
+### 🎯 Current Phase
+**Customer Acquisition** - Technical foundation complete, now focus on first paying customers
 
-#### **AI Integration**
+---
 
-- Perplexity AI API integration for intelligent search
-- Real-time contact enrichment
-- Multi-agent AI system for strategic advice
-- Fallback data for demo purposes
+## 💰 Pricing
 
-#### **Performance**
+- **Free Beta**: 10 enrichments/month
+- **Professional**: £19/month - Unlimited enrichments
+- **Agency**: £79/month - Unlimited enrichments + team features
 
-- Fast loading times
-- Optimized image assets
-- Efficient API calls
-- Rate limiting for external APIs
+---
 
-## 🛠️ Technology Stack
+## 🏗️ Tech Stack
 
-- **Frontend**: Next.js 15, React 19, TypeScript
-- **Styling**: Tailwind CSS, custom texture components
-- **AI**: Perplexity AI API (Sonar model)
-- **UI Components**: Radix UI, Lucide React icons
-- **File Processing**: CSV parsing, Excel export
-- **Deployment**: Vercel-ready
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS + shadcn/ui
+- **Database**: Prisma + PostgreSQL
+- **Payments**: Stripe
+- **Email**: ConvertKit
+- **Enrichment**: Perplexity API
+- **Testing**: Playwright (mobile suite)
+- **Deployment**: Vercel
+
+---
 
 ## 📁 Project Structure
 
 ```
-audio-intel-live/
-├── app/
-│   ├── api/
-│   │   ├── ai-agent/          # AI agent endpoints
-│   │   ├── analytics/         # Analytics tracking
-│   │   ├── enrich/           # Contact enrichment
-│   │   ├── validate-emails/   # Email validation API
-│   │   ├── search/           # Multi-platform search
-│   │   ├── checkout/         # Payment processing
-│   │   ├── download/         # File downloads
-│   │   └── notify/           # Notifications
-│   ├── demo/                 # Interactive demo page
-│   ├── globals.css           # Global styles
-│   └── page.tsx              # Landing page
-├── components/
-│   ├── EmailValidator.tsx     # Email validation UI component
-│   └── ui/                   # Reusable UI components
-├── utils/
-│   ├── emailValidation.ts     # Email validation utilities
-│   └── formatIntelligence.ts # Contact formatting utilities
-├── public/
-│   └── textures/             # Texture image assets
-└── package.json
+apps/audio-intel/
+├── app/                      # Next.js app directory
+│   ├── api/                  # API routes
+│   ├── blog/                 # SEO blog posts (12 case studies)
+│   ├── components/           # React components
+│   ├── demo/                 # Upload/enrichment demo
+│   ├── pricing/              # Pricing page
+│   ├── beta/                 # Beta signup
+│   ├── privacy/              # Privacy Policy
+│   ├── cookies/              # Cookie Policy
+│   ├── terms/                # Terms of Service
+│   ├── contact/              # Contact & Support
+│   └── layout.tsx            # Root layout
+├── components/               # Shared components
+├── lib/                      # Utilities and helpers
+├── public/                   # Static assets
+├── tests/mobile/             # Playwright mobile tests
+├── docs/                     # Documentation
+│   ├── archive/              # Historical docs
+│   ├── pseo/                 # SEO documentation
+│   ├── reference/            # Reference materials
+│   └── LIBERTY_DEMO_GUIDE.md # Demo walkthrough
+├── POST_DEPLOYMENT_CHECKLIST.md # Testing checklist
+└── README.md                 # This file
 ```
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-- Perplexity AI API key
-
-### Installation
-
-1. **Clone the repository**
-
-```bash
-git clone <repository-url>
-cd audio-intel-live
-```
-
-2. **Install dependencies**
-
-```bash
-npm install
-```
-
-3. **Set up environment variables**
-Create a `.env.local` file with:
-
-```env
-PERPLEXITY_API_KEY=your_perplexity_api_key
-RESEND_API_KEY=your_resend_api_key
-STRIPE_SECRET_KEY=your_stripe_secret_key
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
-```
-
-4. **Run the development server**
-
-```bash
-npm run dev
-```
-
-5. **Open your browser**
-Navigate to `http://localhost:3000`
-
-## 🎯 Usage
-
-### Contact Enrichment
-
-1. Navigate to the demo page (`/demo`)
-2. Upload a CSV file with Name and Email columns
-3. Click "Start Enrichment" to process contacts
-4. View detailed intelligence for each contact
-5. Export results to CSV
-
-### Platform Search
-
-1. Go to the "Platform Search" tab
-2. Enter your search query (e.g., "indie rock playlist curators")
-3. Select specific platforms or search all
-4. View results with contact information and relevance scores
-5. Click "Visit" to open contact pages
-
-### AI Agents
-
-1. Select an AI agent based on your needs
-2. Ask specific questions about your music career
-3. Receive strategic advice, recommendations, and next steps
-4. Use insights to improve your music promotion strategy
-
-## 🔧 API Endpoints
-
-### Contact Enrichment
-
-- `POST /api/enrich` - Enrich contact list with AI intelligence
-
-### Multi-Platform Search
-
-- `POST /api/search` - Search across 7 platforms for music industry contacts
-
-### AI Agents
-
-- `POST /api/ai-agent` - Get strategic advice from specialized AI agents
-
-### Analytics
-
-- `POST /api/analytics` - Track user interactions and events
-
-## 🎨 Design System
-
-The application uses a custom design system with:
-
-- **Texture Overlays**: Paper, grain, and luma textures for visual depth
-- **Color Palette**: Blue gradient primary colors with supporting grays
-- **Typography**: Bold, readable fonts with proper hierarchy
-- **Components**: Reusable UI components with consistent styling
-- **Animations**: Smooth transitions and hover effects
-
-## 🔒 Security
-
-- Environment variables for sensitive API keys
-- Input validation and sanitization
-- Rate limiting for external API calls
-- Secure file upload handling
-- HTTPS enforcement in production
-
-## 📊 Performance
-
-- Optimized bundle size
-- Lazy loading for components
-- Efficient API caching
-- Image optimization
-- Responsive design for all devices
-
-## 🚀 Deployment
-
-The application is ready for deployment on Vercel:
-
-1. Connect your GitHub repository to Vercel
-2. Set environment variables in Vercel dashboard
-3. Deploy automatically on push to main branch
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📝 License
-
-This project is licensed under the MIT License.
-
-## 🆘 Support
-
-For support, please contact the development team or create an issue in the repository.
 
 ---
 
-**Audio Intel** - Transforming music industry contact research with AI intelligence.
+## 🧪 Testing
+
+### Mobile Testing Suite (Playwright)
+- **Location**: `tests/mobile/`
+- **Coverage**: 21 UX scenarios verified
+- **Devices**: iPhone SE, iPad, Desktop (1920px)
+- **Status**: ✅ All tests passing
+
+### Manual Testing
+- Follow `POST_DEPLOYMENT_CHECKLIST.md` after deployments
+- Test complete user journey: Signup → Upload → Enrichment → Export
+
+---
+
+## 📈 SEO & Analytics
+
+### Blog Posts (12)
+- BBC Radio 1, 1Xtra, Radio 2, Radio 6 Music case studies
+- Spotify Editorial, Apple Music Editorial guides
+- Kerrang Radio, Absolute Radio contact enrichment
+- Music industry contact research guides
+- All with structured data (JSON-LD) for rich snippets
+
+### Sitemap
+- 19 URLs indexed
+- Auto-generated at `/sitemap.xml`
+- Submitted to Google Search Console
+
+### Analytics
+- Google Analytics 4 integration
+- Conversion tracking for demo signups
+- Exit intent popup optimization
+
+---
+
+## 🔐 Legal Compliance
+
+### UK GDPR Complete ✅
+- Cookie consent banner (react-cookie-consent)
+- Privacy Policy ([/privacy](/privacy))
+- Cookie Policy ([/cookies](/cookies))
+- Terms of Service ([/terms](/terms))
+- Contact & Support ([/contact](/contact))
+
+### Data Protection
+- ICO compliant
+- User rights: Access, rectification, erasure, portability, restriction, objection, automation
+- Data retention: 90 days max for enrichment data
+- Third-party processors documented
+
+---
+
+## 🎨 Design System
+
+### Neo-Brutalist Style
+- **Shadows**: `shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]`
+- **Borders**: `border-2` or `border-4` with `border-gray-900`
+- **Colors**: Purple primary, blue accents
+- **Typography**: Bold headlines, clear hierarchy
+- **Mobile**: Fully responsive, 44px+ touch targets
+
+---
+
+## 🚦 Deployment
+
+### Vercel Auto-Deploy
+- **Branch**: `main` auto-deploys to production
+- **Preview**: All branches get preview URLs
+- **Build Time**: ~2 minutes
+- **Status**: ✅ Zero TypeScript errors, zero ESLint warnings
+
+### Environment Variables Required
+```bash
+# Database
+DATABASE_URL=
+
+# Stripe
+STRIPE_SECRET_KEY=
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+
+# ConvertKit
+CONVERTKIT_API_KEY=
+CONVERTKIT_FORM_ID=
+
+# Perplexity (Enrichment)
+PERPLEXITY_API_KEY=
+
+# Auth
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=
+```
+
+---
+
+## 📚 Documentation
+
+### Active Documentation
+- **README.md** (this file) - Project overview
+- **POST_DEPLOYMENT_CHECKLIST.md** - Testing guide
+- **docs/LIBERTY_DEMO_GUIDE.md** - Demo walkthrough
+
+### Archived Documentation
+- **docs/archive/audit-history/** - Weekly optimization reports
+- **docs/archive/mobile-testing/** - Mobile UX testing results
+- **docs/archive/features/** - Feature implementation docs
+- **docs/archive/marketing/** - Content and acquisition strategies
+
+---
+
+## 🎯 Business Context
+
+### Current Status (October 2025)
+- **Stage**: Customer Acquisition Phase
+- **Revenue**: £0 → Target: £500/month by November 2025
+- **Customers**: 0 paying → Target: 5-10 beta customers
+- **Focus**: Demo calls with radio promoters (85% conversion rate)
+
+### Target Market
+- **Primary**: UK radio promoters (highest conversion)
+- **Secondary**: Independent artists with promotion budgets
+- **Tertiary**: Small PR agencies
+
+### Competitive Advantage
+- UK-focused (vs expensive US tools)
+- Built by actual radio promoter (authentic credibility)
+- 80%+ cost savings vs SubmitHub
+- "15 hours → 15 minutes" proven time savings
+
+---
+
+## 🛠️ Development Guidelines
+
+### Code Standards
+- **TypeScript**: Strict mode, no `any` types
+- **Components**: Function components with interfaces
+- **File Naming**: kebab-case for files, PascalCase for components
+- **Commits**: Conventional commits (`feat:`, `fix:`, `docs:`)
+
+### PR Requirements
+- Zero TypeScript errors
+- Zero ESLint warnings
+- Mobile testing results included
+- All legal pages remain functional
+
+---
+
+## 📞 Support
+
+### Customer Support
+- **Email**: support@totalaudiopromo.com
+- **Response Times**:
+  - Standard (Free/Pro): 48 hours
+  - Priority (Agency): 24 hours
+  - Critical Issues: 4 hours
+
+### Developer Support
+- Check archived documentation in `docs/archive/`
+- Review git commit history for context
+- Contact: Chris Schofield
+
+---
+
+## 🎉 Success Metrics
+
+### Technical Quality
+- ✅ Zero TypeScript errors
+- ✅ Zero ESLint warnings
+- ✅ 100% mobile responsive
+- ✅ Sub-3-second page loads
+
+### Business Metrics (Target)
+- 5-10 paying customers by November 2025
+- £500/month recurring revenue
+- 25+ satisfied customer testimonials
+- Industry recognition in UK music promotion
+
+---
+
+## 🚀 Next Steps
+
+### Immediate (This Week)
+1. Book demo calls with radio promoter prospects
+2. Test complete user journey with real customers
+3. Monitor Google Search Console for SEO improvements
+
+### Short-Term (This Month)
+1. Convert first paying customer
+2. Gather customer feedback
+3. Iterate based on actual usage patterns
+
+### Long-Term (Next Quarter)
+1. Reach £500/month MRR
+2. Build referral system
+3. Expand feature set based on customer demand
+
+---
+
+**Last Updated**: October 12, 2025
+**Build Status**: ✅ Production Ready
+**Next Action**: Customer acquisition (demo calls, case studies, outreach)
+
+---
+
+*Built with ❤️ by Chris Schofield | sadact (producer) | Total Audio Promo*

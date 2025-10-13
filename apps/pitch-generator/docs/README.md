@@ -1,75 +1,26 @@
-# TAP SaaS Template - Documentation
+# Pitch Generator Documentation
 
-All documentation for the TAP SaaS template, organised by category.
+## Current Documentation (Root Level)
 
-## 📁 Documentation Structure
+- **README.md** - Project overview and getting started
+- **PRIORITY_AUDIT_REPORT.md** - Latest audit findings and completed work
 
-### `/setup/` - Setup & Configuration
-Guides for initial setup and configuration:
-- **[AUTH_SETUP.md](./setup/AUTH_SETUP.md)** - NextAuth configuration and OAuth setup
+## Active Documentation
 
-### `/reference/` - Reference Documentation
-Technical references and detailed guides:
-- **[PITCH_GENERATOR_README.md](./reference/PITCH_GENERATOR_README.md)** - Pitch Generator feature documentation
+### Deployment
+- [Deployment Guide](deployment/DEPLOYMENT_GUIDE.md) - Production deployment instructions
+- [Vercel Checklist](deployment/VERCEL_DEPLOYMENT_CHECKLIST.md) - Vercel-specific setup
+- [Stripe Setup](deployment/STRIPE_SETUP.md) - Payment integration guide
 
-### `/status/` - Status Reports (Archive)
-Historical status updates and completion reports:
-- `ALL_WHITE_TEXT_FIXED.md` - Text colour fix report
-- `API_ROUTES_FIXED.md` - API routes fix report
-- `CLAUDE_SETUP_COMPLETE.md` - Claude integration completion
-- `DESIGN_UPDATE_COMPLETE.md` - Design update completion
-- `FIXES_APPLIED.md` - General fixes report
-- `TEXT_COLORS_FIXED.md` - Text colour system update
+### Development
+- [Cross-Browser Testing](development/CROSS_BROWSER_TESTING.md) - Browser compatibility testing
+- [Testing Checklist](development/TESTING_CHECKLIST.md) - QA procedures
+- [Newsletter Integration](development/NEWSLETTER_INTEGRATION.md) - Newsletter system docs
 
-> **Note:** Status files are kept for historical reference but are not actively maintained.
+### Archived
+Historical documentation preserved in `archive/` directory.
 
 ---
 
-## 🎯 Quick Start
-
-For getting started, see the root-level documentation:
-- **[README.md](../README.md)** - Main project overview
-- **[QUICKSTART.md](../QUICKSTART.md)** - Quick start guide
-- **[DESIGN_SYSTEM.md](../DESIGN_SYSTEM.md)** - Complete design system reference
-- **[TEMPLATE_USAGE.md](../TEMPLATE_USAGE.md)** - How to duplicate and use this template
-
----
-
-## 📝 Documentation Standards
-
-When adding new documentation:
-
-1. **Setup guides** → `/docs/setup/`
-   - Configuration files
-   - Environment setup
-   - Integration guides
-
-2. **How-to guides** → `/docs/guides/`
-   - Step-by-step tutorials
-   - Feature usage guides
-   - Best practices
-
-3. **Reference docs** → `/docs/reference/`
-   - API documentation
-   - Technical specifications
-   - Architecture decisions
-
-4. **Status updates** → `/docs/status/`
-   - Completion reports
-   - Migration notes
-   - Historical records
-
----
-
-## 🎨 Design System
-
-The complete design system (Postcraft aesthetic) is documented at the root:
-- **[DESIGN_SYSTEM.md](../DESIGN_SYSTEM.md)**
-
-This covers:
-- Component standards
-- Colour system
-- Typography
-- Layout patterns
-- UK spelling conventions
-
+**Last Updated:** October 2025
+**Maintained By:** Total Audio Promo team
