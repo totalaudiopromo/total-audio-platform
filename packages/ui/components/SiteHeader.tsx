@@ -126,7 +126,7 @@ export function SiteHeader({
             {/* Auth Component on Mobile */}
             {authComponent && (
               <div className="border-t border-gray-200 pt-3 mt-2">
-                <div onClick={() => setMobileOpen(false)}>
+                <div onClick={() => setMobileOpen(false)} className="w-full">
                   {authComponent}
                 </div>
               </div>
