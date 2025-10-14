@@ -5,7 +5,7 @@ import { Input } from '../ui/input';
 import { Badge } from '../ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Alert, AlertDescription } from '../ui/alert';
-import { Loader2, TrendingUp, Search, Users, BarChart3, Globe, Zap } from 'lucide-react';
+// import { Loader2, TrendingUp, Search, Users, BarChart3, Globe, Zap } from 'lucide-react';
 
 interface SEOToolsData {
   trends?: any;
@@ -29,37 +29,37 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
 
   const features = [
     {
-      icon: TrendingUp,
+      icon: '📈',
       title: 'Google Trends',
       description: 'Track keyword trends and interest over time',
       color: 'text-blue-600'
     },
     {
-      icon: Search,
+      icon: '🔍',
       title: 'Keyword Research',
       description: 'Find related keywords and search volume',
       color: 'text-green-600'
     },
     {
-      icon: Users,
+      icon: '👥',
       title: 'Competitor Analysis',
       description: 'Analyze competitor strategies and gaps',
       color: 'text-purple-600'
     },
     {
-      icon: BarChart3,
+      icon: '📊',
       title: 'Domain Analysis',
       description: 'Comprehensive SEO analysis and scoring',
       color: 'text-orange-600'
     },
     {
-      icon: Globe,
+      icon: '🌐',
       title: 'Geographic Interest',
       description: 'See where your keywords are popular',
       color: 'text-red-600'
     },
     {
-      icon: Zap,
+      icon: '⚡',
       title: 'Free & Fast',
       description: 'No API costs, instant results',
       color: 'text-emerald-600'
@@ -299,7 +299,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Zap className="h-5 w-5 text-emerald-600" />
+            <span className="h-5 w-5 text-emerald-600">⚡</span>
             Free SEO Tools Integration
           </CardTitle>
           <CardDescription>
@@ -312,7 +312,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
             {features.map((feature, index) => (
               <div key={index} className="flex items-start gap-3 p-3 rounded-lg border">
-                <feature.icon className={`h-5 w-5 mt-0.5 ${feature.color}`} />
+                 <span className={`h-5 w-5 mt-0.5 ${feature.color}`}>{feature.icon}</span>
                 <div>
                   <h4 className="font-medium text-sm">{feature.title}</h4>
                   <p className="text-xs text-muted-foreground">{feature.description}</p>
@@ -333,7 +333,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
               <Button type="submit" disabled={loading || !inputValue.trim()}>
                 {loading ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    <span className="mr-2 h-4 w-4 animate-spin">⏳</span>
                     Analyzing...
                   </>
                 ) : (
@@ -391,7 +391,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
                   >
                     {loading ? (
                       <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        <span className="mr-2 h-4 w-4 animate-spin">⏳</span>
                         Generating Report...
                       </>
                     ) : (
@@ -407,7 +407,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
           <Card className="mt-6 bg-emerald-50 border-emerald-200">
             <CardContent className="pt-6">
               <div className="flex items-center gap-2 mb-2">
-                <Zap className="h-4 w-4 text-emerald-600" />
+                <span className="h-4 w-4 text-emerald-600">⚡</span>
                 <span className="font-medium text-emerald-800">Cost Savings</span>
               </div>
               <p className="text-sm text-emerald-700">

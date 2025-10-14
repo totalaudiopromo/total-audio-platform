@@ -51,7 +51,8 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, command-centre]
+        app: [audio-intel, command-centre, tracker, web, pitch-generator]
+      fail-fast: false
     
     steps:
     - uses: actions/checkout@v4
@@ -83,7 +84,8 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, command-centre]
+        app: [audio-intel, command-centre, tracker, web, pitch-generator]
+      fail-fast: false
     
     steps:
     - uses: actions/checkout@v4
@@ -103,7 +105,7 @@ jobs:
         vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-        VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || (matrix.app == 'command-centre' && secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE) }}
+        VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || (matrix.app == 'command-centre' && secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE) || (matrix.app == 'tracker' && secrets.VERCEL_PROJECT_ID_TRACKER) || (matrix.app == 'web' && secrets.VERCEL_PROJECT_ID_WEB) || (matrix.app == 'pitch-generator' && secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR) }}
 
   deploy-production:
     name: Deploy to Production
@@ -115,7 +117,8 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, command-centre]
+        app: [audio-intel, command-centre, tracker, web, pitch-generator]
+      fail-fast: false
     
     steps:
     - uses: actions/checkout@v4
@@ -135,7 +138,7 @@ jobs:
         vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-        VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || (matrix.app == 'command-centre' && secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE) }}
+        VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || (matrix.app == 'command-centre' && secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE) || (matrix.app == 'tracker' && secrets.VERCEL_PROJECT_ID_TRACKER) || (matrix.app == 'web' && secrets.VERCEL_PROJECT_ID_WEB) || (matrix.app == 'pitch-generator' && secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR) }}
 
   security:
     name: Security Audit

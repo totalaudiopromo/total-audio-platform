@@ -31,9 +31,12 @@ const FORBIDDEN_COLOURS = {
 const EXCEPTIONS = [
   'node_modules',
   '.next',
+  'docs', // Reference docs intentionally document other brand palettes
   'scripts/check-brand-colours.js',
   'tailwind.config.ts', // Config file that lists all colours
-  'components/shared/ToolSwitcher.tsx', // Tool switcher shows other apps' colours
+  'components/SharedToolSwitcher.tsx', // Shared tool switcher supports other brand palettes
+  'components/SharedSiteFooter.tsx', // Shared footer supports other brand palettes
+  'components/shared', // Legacy shared components that surface other brand colours
 ];
 
 function shouldCheckFile(filePath) {

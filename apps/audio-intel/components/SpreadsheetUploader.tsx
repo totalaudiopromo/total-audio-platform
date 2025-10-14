@@ -3,7 +3,7 @@
 
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useId } from 'react';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -154,6 +154,7 @@ export default function SpreadsheetUploader({ onDataProcessed, onStartEnrichment
     progress: 0,
     magicStep: ''
   });
+  const fileInputId = useId();
 
   // 🟡 UI AGENT: Drag & Drop Handler
   const handleDragOver = useCallback((e: React.DragEvent) => {
@@ -200,6 +201,17 @@ export default function SpreadsheetUploader({ onDataProcessed, onStartEnrichment
     }));
 
     try {
+      // Validate file types first
+      const invalidFiles = files.filter(file => 
+        !file.name.endsWith('.csv') && 
+        !file.name.endsWith('.xlsx') && 
+        !file.name.endsWith('.xls')
+      );
+      
+      if (invalidFiles.length > 0) {
+        throw new Error(`Invalid file type. Please upload CSV or Excel files only.`);
+      }
+
       // Step 1: Understanding your data
       setState(prev => ({ ...prev, progress: 25, magicStep: 'Reading your spreadsheets...' }));
       await new Promise(resolve => setTimeout(resolve, 800));
@@ -248,23 +260,18 @@ export default function SpreadsheetUploader({ onDataProcessed, onStartEnrichment
         : 'border-gray-300 hover:border-gray-400'
     }`}>
       <CardContent 
-        className="p-12 text-center cursor-pointer"
+        className="p-12 text-center cursor-pointer space-y-8"
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        onClick={() => document.getElementById('file-input')?.click()}
+        onClick={(event) => {
+          const target = event.target as HTMLElement;
+          if (target.tagName === 'INPUT' || target.closest('label')) return;
+          document.getElementById(fileInputId)?.click();
+        }}
       >
-        <input
-          id="file-input"
-          type="file"
-          multiple
-          accept=".csv,.xlsx,.xls"
-          onChange={handleFileSelect}
-          className="hidden"
-        />
-        
         <div className="space-y-4">
-          <div className="mx-auto w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-brutal">
+          <div className="mx-auto w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-brutal" aria-hidden="true">
             <Upload className="w-8 h-8 text-white" />
           </div>
           
@@ -286,7 +293,7 @@ export default function SpreadsheetUploader({ onDataProcessed, onStartEnrichment
             />
           </div>
           
-          <div className="flex flex-wrap gap-3 justify-center mb-4">
+          <div className="flex flex-wrap gap-3 justify-center mb-4" aria-hidden="true">
             <Badge variant="secondary" className="bg-green-100 text-green-800 px-3 py-1 text-sm font-medium">
               Detects any column layout
             </Badge>
@@ -300,6 +307,24 @@ export default function SpreadsheetUploader({ onDataProcessed, onStartEnrichment
           
           <p className="text-sm text-gray-500 font-medium">
             CSV, Excel files • Multiple files at once • It just works
+          </p>
+        </div>
+
+        <div className="mx-auto max-w-xl text-left sm:text-center">
+          <label htmlFor={fileInputId} className="block text-base font-semibold text-gray-900">
+            Upload contact spreadsheet
+          </label>
+          <input
+            id={fileInputId}
+            type="file"
+            multiple
+            accept=".csv,.xlsx,.xls"
+            onChange={handleFileSelect}
+            aria-label="Upload contact spreadsheet"
+            className="mt-2 block w-full rounded-2xl border-2 border-dashed border-blue-500 bg-white px-4 py-4 text-base font-semibold text-gray-700 shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 min-h-[56px]"
+          />
+          <p className="mt-2 text-sm text-gray-600">
+            Supported formats: CSV, XLSX, XLS. Tap above to choose files or drag and drop them into this area.
           </p>
         </div>
       </CardContent>
@@ -414,7 +439,7 @@ export default function SpreadsheetUploader({ onDataProcessed, onStartEnrichment
   };
 
   const renderError = () => (
-    <Card className="border-2 border-orange-300 bg-orange-50">
+    <Card className="border-2 border-red-300 bg-red-50">
       <CardContent className="p-8 text-center">
         <img 
           src="/assets/loading-states/error-state.png" 
@@ -467,6 +492,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
     progress: 0,
     magicStep: ''
   });
+  const fileInputId = useId();
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -512,6 +538,17 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
     }));
 
     try {
+      // Validate file types first
+      const invalidFiles = files.filter(file => 
+        !file.name.endsWith('.csv') && 
+        !file.name.endsWith('.xlsx') && 
+        !file.name.endsWith('.xls')
+      );
+      
+      if (invalidFiles.length > 0) {
+        throw new Error(`Invalid file type. Please upload CSV or Excel files only.`);
+      }
+
       // Step 1: Understanding your data
       setState(prev => ({ ...prev, progress: 20, magicStep: 'Detecting columns and patterns...' }));
       await new Promise(resolve => setTimeout(resolve, 800));
@@ -641,23 +678,18 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
         : 'border-gray-300 hover:border-gray-400'
     }`}>
       <CardContent 
-        className="p-12 text-center cursor-pointer"
+        className="p-12 text-center cursor-pointer space-y-8"
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        onClick={() => document.getElementById('enhanced-file-input')?.click()}
+        onClick={(event) => {
+          const target = event.target as HTMLElement;
+          if (target.tagName === 'INPUT' || target.closest('label')) return;
+          document.getElementById(fileInputId)?.click();
+        }}
       >
-        <input
-          id="enhanced-file-input"
-          type="file"
-          multiple
-          accept=".csv,.xlsx,.xls"
-          onChange={handleFileSelect}
-          className="hidden"
-        />
-        
         <div className="space-y-4">
-          <div className="mx-auto w-20 h-20 bg-white rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
+          <div className="mx-auto w-20 h-20 bg-white rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center" aria-hidden="true">
             <Upload className="w-10 h-10 text-black" />
           </div>
           
@@ -744,7 +776,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
             </div>
           </div>
           
-          <div className="flex flex-wrap gap-3 justify-center mb-4">
+          <div className="flex flex-wrap gap-3 justify-center mb-4" aria-hidden="true">
             <Badge variant="secondary" className="bg-green-100 text-green-800 px-4 py-2 text-base font-bold">
               Professional Contact Processing
             </Badge>
@@ -758,6 +790,24 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
           
           <p className="text-lg text-gray-500 font-bold">
             CSV, Excel files • Multiple files at once • Professional contact intelligence
+          </p>
+        </div>
+
+        <div className="mx-auto max-w-xl text-left sm:text-center">
+          <label htmlFor={fileInputId} className="block text-base font-semibold text-gray-900">
+            Upload contact spreadsheet
+          </label>
+          <input
+            id={fileInputId}
+            type="file"
+            multiple
+            accept=".csv,.xlsx,.xls"
+            onChange={handleFileSelect}
+            aria-label="Upload contact spreadsheet"
+            className="mt-2 block w-full rounded-2xl border-2 border-dashed border-blue-500 bg-white px-4 py-4 text-base font-semibold text-gray-700 shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 min-h-[56px]"
+          />
+          <p className="mt-2 text-sm text-gray-600">
+            Supported formats: CSV, XLSX, XLS. Tap above to choose files or drag and drop them into this area.
           </p>
         </div>
       </CardContent>
@@ -868,7 +918,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
   };
 
   const renderError = () => (
-    <Card className="border-2 border-orange-300 bg-orange-50">
+    <Card className="border-2 border-red-300 bg-red-50">
       <CardContent className="p-8 text-center">
         <img 
           src="/assets/loading-states/error-state.png" 

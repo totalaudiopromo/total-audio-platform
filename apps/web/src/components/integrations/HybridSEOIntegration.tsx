@@ -162,7 +162,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-green-600" />
+              <span className="h-5 w-5 text-green-600">✅</span>
               Analysis Results
             </CardTitle>
             <CardDescription>

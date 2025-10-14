@@ -10,7 +10,7 @@ export function SiteFooter() {
         { href: '/dashboard', label: 'Dashboard' },
         { href: '/blog', label: 'Blog' },
       ]}
-      accentColor="purple"
+      accentColor="amber"
     />
   );
 }

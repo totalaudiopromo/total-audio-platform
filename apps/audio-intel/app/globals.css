@@ -10,6 +10,14 @@
   h1, h2, h3, h4, h5, h6 {
     @apply text-gray-900 tracking-tight font-bold;
   }
+
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    @apply min-h-[44px] min-w-[44px];
+  }
 }
 
 /* Neobrutalist Design System - matching Pitch Generator & Tracker */
@@ -40,11 +48,11 @@
   }
 
   .cta-button {
-    @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-blue-700 active:scale-95;
+    @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-blue-700 active:scale-95 min-h-[44px] min-w-[44px] w-full sm:w-auto;
   }
 
   .subtle-button {
-    @apply inline-flex items-center justify-center rounded-xl border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center rounded-xl border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 min-h-[44px] min-w-[44px] w-full sm:w-auto;
   }
 
 /* Audio Intel Loading States Animations */

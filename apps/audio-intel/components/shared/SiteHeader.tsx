@@ -41,7 +41,7 @@ export function SiteHeader({
         <div className="flex items-center gap-4">
           <button
             type="button"
-            className="rounded-lg border-2 border-black bg-white p-2 text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:hidden"
+            className="rounded-lg border-2 border-black bg-white p-2 text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:hidden min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
             aria-label="Toggle navigation"
             onClick={() => setMobileOpen(prev => !prev)}
           >
@@ -69,7 +69,7 @@ export function SiteHeader({
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-lg px-4 py-2 text-sm font-semibold transition ${
+                className={`rounded-lg px-4 py-2 text-sm font-semibold transition min-h-[44px] inline-flex items-center ${
                   isActive
                     ? 'bg-gray-900 text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
                     : 'text-gray-700 hover:bg-gray-100'
@@ -111,7 +111,7 @@ export function SiteHeader({
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`rounded-lg px-4 py-3 text-sm font-semibold transition ${
+                    className={`rounded-lg px-4 py-3 text-sm font-semibold transition min-h-[44px] inline-flex items-center ${
                       isActive
                         ? 'bg-gray-900 text-white'
                         : 'text-gray-700 hover:bg-gray-100'
