@@ -13,6 +13,10 @@ permissions:
   contents: read
   issues: write
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     name: Test & Lint
@@ -33,9 +37,10 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
+        cache-dependency-path: 'package-lock.json'
     
     - name: Install dependencies (root)
-      run: npm install --no-audit --no-fund
+      run: npm ci --no-audit --no-fund
     
     - name: Run linting
       run: npm run lint
@@ -72,9 +77,10 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
+        cache-dependency-path: 'package-lock.json'
     
     - name: Install dependencies (root)
-      run: npm install
+      run: npm ci --no-audit --no-fund
     
     - name: Build ${{ matrix.app }}
       run: npm run build --workspace=${{ matrix.app }}
@@ -100,6 +106,7 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
+        cache-dependency-path: 'package-lock.json'
     
     - name: Install Vercel CLI
       run: npm install -g vercel
@@ -107,22 +114,44 @@ jobs:
     - name: Set Vercel env for ${{ matrix.app }}
       shell: bash
       run: |
-        if [ "${{ matrix.app }}" = "audio-intel" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_AUDIO_INTEL }}" >> $GITHUB_ENV; fi
-        if [ "${{ matrix.app }}" = "command-centre" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" >> $GITHUB_ENV; fi
-        if [ "${{ matrix.app }}" = "tracker" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_TRACKER }}" >> $GITHUB_ENV; fi
-        if [ "${{ matrix.app }}" = "total-audio-promo-frontend" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV; fi
-        if [ "${{ matrix.app }}" = "pitch-generator" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV; fi
+        APP_PATH="${{ matrix.app }}"
+        case "${{ matrix.app }}" in
+          "total-audio-promo-frontend")
+            APP_PATH="web"
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
+            if [ -n "${{ secrets.HEALTHCHECK_URL_WEB }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_WEB }}" >> $GITHUB_ENV; fi
+            ;;
+          "tracker")
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_TRACKER }}" >> $GITHUB_ENV
+            if [ -n "${{ secrets.HEALTHCHECK_URL_TRACKER }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_TRACKER }}" >> $GITHUB_ENV; fi
+            ;;
+          "pitch-generator")
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV
+            if [ -n "${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR }}" >> $GITHUB_ENV; fi
+            ;;
+          *)
+            echo "Unsupported app ${{ matrix.app }}"
+            exit 1
+            ;;
+        esac
+        echo "APP_PATH=$APP_PATH" >> $GITHUB_ENV
         echo "VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }}" >> $GITHUB_ENV
     
     - name: Deploy ${{ matrix.app }} to staging
       run: |
-        # Map workspace to path (web workspace lives at apps/web)
-        APP_PATH=${{ matrix.app }}
-        if [ "${{ matrix.app }}" = "total-audio-promo-frontend" ]; then APP_PATH="web"; fi
         cd apps/$APP_PATH
         vercel --token ${{ secrets.VERCEL_TOKEN }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+    
+    - name: Verify health endpoint for ${{ matrix.app }}
+      if: env.HEALTHCHECK_URL != ''
+      run: |
+        curl --fail --retry 3 --retry-delay 5 "$HEALTHCHECK_URL"
+    
+    - name: Skip health verification (no URL configured)
+      if: env.HEALTHCHECK_URL == ''
+      run: echo "No health check URL configured for ${{ matrix.app }}; skipping verification."
 
   deploy-production:
     name: Deploy to Production
@@ -145,6 +174,7 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
+        cache-dependency-path: 'package-lock.json'
     
     - name: Install Vercel CLI
       run: npm install -g vercel
@@ -152,22 +182,44 @@ jobs:
     - name: Set Vercel env for ${{ matrix.app }}
       shell: bash
       run: |
-        if [ "${{ matrix.app }}" = "audio-intel" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_AUDIO_INTEL }}" >> $GITHUB_ENV; fi
-        if [ "${{ matrix.app }}" = "command-centre" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" >> $GITHUB_ENV; fi
-        if [ "${{ matrix.app }}" = "tracker" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_TRACKER }}" >> $GITHUB_ENV; fi
-        if [ "${{ matrix.app }}" = "total-audio-promo-frontend" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV; fi
-        if [ "${{ matrix.app }}" = "pitch-generator" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV; fi
+        APP_PATH="${{ matrix.app }}"
+        case "${{ matrix.app }}" in
+          "total-audio-promo-frontend")
+            APP_PATH="web"
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
+            if [ -n "${{ secrets.HEALTHCHECK_URL_WEB_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_WEB_PROD }}" >> $GITHUB_ENV; fi
+            ;;
+          "tracker")
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_TRACKER }}" >> $GITHUB_ENV
+            if [ -n "${{ secrets.HEALTHCHECK_URL_TRACKER_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_TRACKER_PROD }}" >> $GITHUB_ENV; fi
+            ;;
+          "pitch-generator")
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV
+            if [ -n "${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR_PROD }}" >> $GITHUB_ENV; fi
+            ;;
+          *)
+            echo "Unsupported app ${{ matrix.app }}"
+            exit 1
+            ;;
+        esac
+        echo "APP_PATH=$APP_PATH" >> $GITHUB_ENV
         echo "VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }}" >> $GITHUB_ENV
     
     - name: Deploy ${{ matrix.app }} to production
       run: |
-        # Map workspace to path (web workspace lives at apps/web)
-        APP_PATH=${{ matrix.app }}
-        if [ "${{ matrix.app }}" = "total-audio-promo-frontend" ]; then APP_PATH="web"; fi
         cd apps/$APP_PATH
         vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+    
+    - name: Verify production health endpoint for ${{ matrix.app }}
+      if: env.HEALTHCHECK_URL != ''
+      run: |
+        curl --fail --retry 3 --retry-delay 5 "$HEALTHCHECK_URL"
+    
+    - name: Skip production health verification (no URL configured)
+      if: env.HEALTHCHECK_URL == ''
+      run: echo "No production health check URL configured for ${{ matrix.app }}; skipping verification."
 
   security:
     name: Security Audit
@@ -181,6 +233,7 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
+        cache-dependency-path: 'package-lock.json'
     
     - name: Install audio dependencies (ALSA)
       run: |
@@ -188,7 +241,7 @@ jobs:
         sudo apt-get install -y libasound2 || sudo apt-get install -y libasound2t64
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci --no-audit --no-fund
 
     - name: Run security audit (informational only)
       run: npm audit || true

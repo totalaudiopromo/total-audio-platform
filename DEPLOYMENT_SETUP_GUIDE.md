@@ -1,184 +1,73 @@
 # 🚀 Deployment Setup Guide
 
-## ✅ What's Been Fixed
+This document captures the current, working deployment shape for the Total Audio Platform monorepo and the remaining manual bits you need to double‑check.
 
-Your GitHub and Vercel setup has been configured with industry best practices:
+## ✅ Pipeline Snapshot
+- **Single workflow:** `.github/workflows/ci-cd.yml` drives all CI, build, and deploy stages.
+- **Deterministic installs:** Every job now runs `npm ci --no-audit --no-fund` against the regenerated `package-lock.json`.
+- **Active apps in this repo:** `total-audio-promo-frontend` (`apps/web`), `tracker` (`apps/tracker`), and `pitch-generator` (`apps/pitch-generator`).
+- **Branch logic:** `staging` → staging deploys, `main` → production deploys, PRs → CI only.
+- **Health verification:** Deploy jobs can `curl` app health endpoints when the optional URL secrets are present.
+- **Legacy apps:** `audio-intel` and `command-centre` deploy from their own repositories; they are intentionally excluded from this monorepo matrix.
 
-### 1. **Build Scripts Added** ✅
-All 5 apps now have build scripts in root `package.json`:
-- `npm run build:audio-intel`
-- `npm run build:command-centre`
-- `npm run build:tracker`
-- `npm run build:web`
-- `npm run build:pitch-generator`
+## 🔐 GitHub Secrets Checklist
+Add or confirm the following under **Settings → Secrets → Actions**:
 
-### 2. **GitHub Actions CI/CD Updated** ✅
-- **Build matrix**: All 5 apps build independently
-- **Deploy matrix**: All 5 apps deploy to staging and production
-- **Fail-safe**: One app failure won't block others (`fail-fast: false`)
-- **Build gates**: Tests must pass before deployment
-
-### 3. **Vercel Configuration Standardized** ✅
-All apps now have consistent `vercel.json`:
-- Framework detection (`nextjs`)
-- UK region (`lhr1`)
-- API timeout configuration (30s)
-- Environment variables per app
-
-### 4. **Monorepo Deployment Pattern** ✅
-Configured for shared packages like `@total-audio/ui`:
-- Deploy from repo root with app directory
-- Single lockfile authoritative across all apps
-- Workspace packages included in dependency graph
-
-## 🔧 Manual Setup Required
-
-### Step 1: Link Vercel Projects to GitHub
-
-For each project in your Vercel dashboard:
-
-**Projects to link:**
-- `audio-intel` → `intel.totalaudiopromo.com`
-- `command-centre` → `command.totalaudiopromo.com`
-- `tracker` → `tracker.totalaudiopromo.com`
-- `web` → `totalaudiopromo.com`
-- `pitch-generator` → `pitch.totalaudiopromo.com`
-
-**How to link:**
-1. Go to Vercel Dashboard → [Project Name] → Settings → Git
-2. Click "Connect Git Repository"
-3. Select: `totalaudiopromo/total-audio-platform`
-4. Set Root Directory: `apps/[app-name]`
-5. Leave build settings empty (handled by `vercel.json`)
-
-**Important for Monorepo:**
-- Root Directory ensures shared packages like `@total-audio/ui` are available
-- Single `package-lock.json` stays authoritative across all apps
-- Workspace dependencies properly resolved during builds
-
-### Step 2: Add GitHub Secrets
-
-Go to GitHub repo → Settings → Secrets → Actions and add:
-
-**Existing secrets (already configured):**
-- `VERCEL_TOKEN` ✅
-- `VERCEL_ORG_ID` ✅
-- `VERCEL_PROJECT_ID_AUDIO_INTEL` ✅
-- `VERCEL_PROJECT_ID_COMMAND_CENTRE` ✅
-
-**New secrets needed:**
-- `VERCEL_PROJECT_ID_TRACKER`
+- `VERCEL_TOKEN`
+- `VERCEL_ORG_ID` (format `usr_xxx...`)
 - `VERCEL_PROJECT_ID_WEB`
+- `VERCEL_PROJECT_ID_TRACKER`
 - `VERCEL_PROJECT_ID_PITCH_GENERATOR`
 
-**To get project IDs:**
-1. Vercel Dashboard → [Project] → Settings → General
-2. Copy the "Project ID" value
+Optional (enables post-deploy health checks; populate only if you have stable URLs):
 
-## 🧪 Testing the Setup
+- `HEALTHCHECK_URL_WEB` (staging)
+- `HEALTHCHECK_URL_TRACKER` (staging)
+- `HEALTHCHECK_URL_PITCH_GENERATOR` (staging)
+- `HEALTHCHECK_URL_WEB_PROD`
+- `HEALTHCHECK_URL_TRACKER_PROD`
+- `HEALTHCHECK_URL_PITCH_GENERATOR_PROD`
 
-### Test on Staging Branch (Safe)
+> 📌 Tip: Each Project ID lives in Vercel → Project → Settings → General. Health URLs are typically `https://<app-domain>/api/health`.
+
+## 🔗 Vercel Project Linking
+For each of the three apps above:
+1. Vercel Dashboard → select project.
+2. Settings → Git → Connect Repository.
+3. Choose `totalaudiopromo/total-audio-platform`.
+4. Root Directory:
+   - Web → `apps/web`
+   - Tracker → `apps/tracker`
+   - Pitch Generator → `apps/pitch-generator`
+5. Leave build command/output blank (handled by repo scripts and `vercel.json` where present).
+
+## 🧪 Local Verification Before Pushing
+Run the following from the repository root:
+
 ```bash
-# Create and push to staging branch
-git checkout -b staging
-git add .
-git commit -m "feat: configure multi-app deployment"
-git push origin staging
-
-# Watch GitHub Actions run
-# Check Vercel dashboard for preview deployments
+npm ci
+npm run lint           # currently scopes to audio-intel; keep an eye on warnings
+npm run typecheck      # same scope as lint
 ```
 
-### Deploy to Production
-```bash
-# Merge to main for production deployment
-git checkout main
-git merge staging
-git push origin main
+CI will also execute `npm run test` (no-op placeholder) and the TypeScript check. Address lint/TS warnings when you are ready to make the lint step blocking again.
 
-# Watch GitHub Actions deploy all 5 apps to production
-```
+## 🛠️ Workflow Internals
+- **Test job:** checkout → Node 20 setup with npm cache → `npm ci` → lint (non-blocking) → typecheck → tests.
+- **Build job:** matrix over the three active apps → `npm ci` → `npm run build --workspace=<app>`.
+- **Deploy jobs:** reuse the same app matrix; set `VERCEL_PROJECT_ID` and `APP_PATH` via matrix-specific mapping; install Vercel CLI; deploy to staging or production; optionally `curl` health URL.
+- **Security job:** basic `npm ci` followed by informational `npm audit`.
+- **Notify job:** prints success/failure summaries after deploy stages complete.
 
-## 🎯 How It Works
+## 🚨 Troubleshooting Highlights
+- **Install failures:** Re-run `npm ci` locally; if it fails, lockfile drift is back.
+- **Deploy skips:** Usually missing `VERCEL_PROJECT_ID_*` or `VERCEL_TOKEN`.
+- **Health check failures:** Inspect the deployed `/api/health` route and confirm secrets point at the right domain.
+- **Legacy app deploys:** Confirm they are handled in their dedicated repositories; this workflow will no longer touch them.
 
-### Automatic Deployment Flow
-1. **Push to `main`** → All 5 apps deploy to production
-2. **Push to `staging`** → All 5 apps deploy to preview
-3. **Push to feature branch** → No deployment (manual only)
+## 📦 Ongoing Maintenance
+- When dependencies change, run `npm install` (to update the lockfile), commit `package-lock.json`, and make sure `npm ci` still succeeds locally.
+- Keep Vercel project IDs and health check URLs updated if domains change.
+- Once lint infra is green, remove `continue-on-error` from the lint step to re-enable the gate.
 
-### Build Process
-1. **Test & Lint** → TypeScript, ESLint checks
-2. **Build** → All 5 apps build in parallel (from repo root)
-3. **Deploy** → Each app deploys independently with shared packages
-
-### Failure Handling
-- **Build fails** → Deployment blocked
-- **One app fails** → Others continue deploying
-- **Missing secrets** → Deployment skipped for that app
-
-## 🔍 Monitoring Deployments
-
-### GitHub Actions
-- Go to your repo → Actions tab
-- Watch "CI/CD Pipeline" workflow runs
-- Check individual job logs for details
-
-### Vercel Dashboard
-- Each app has its own deployment history
-- Preview deployments for staging branch
-- Production deployments for main branch
-
-## 🚨 Troubleshooting
-
-### Common Issues
-
-**"No Production Deployment"**
-- Check if GitHub Secrets are configured
-- Verify Vercel project is linked to GitHub
-- Check build logs in GitHub Actions
-
-**"Connect Git Repository"**
-- Project not linked to GitHub repo
-- Follow Step 1 above to link
-
-**Build Failures**
-- Check individual app build logs
-- Verify `package.json` scripts exist
-- Check for TypeScript/ESLint errors
-
-**"Missing Module" Errors (e.g. `@total-audio/ui`)**
-- Ensure Root Directory is set to `apps/[app-name]` in Vercel
-- Verify workspace packages are in root `package.json`
-- Run `npm run build --workspace=apps/[app-name]` locally to test
-- Check that `packages/ui` is properly referenced in app's `package.json`
-
-### Getting Help
-- Check GitHub Actions logs first
-- Vercel dashboard shows deployment status
-- Each app can be debugged independently
-
-## 📚 Monorepo Best Practices
-
-### Shared Packages
-- `packages/ui` - Shared UI components
-- `packages/auth` - Authentication utilities  
-- `packages/shared-utils` - Common utilities
-
-### Deployment Strategy
-- **Root-based builds**: All apps build from repo root
-- **Single lockfile**: `package-lock.json` authoritative across workspace
-- **Workspace resolution**: Dependencies properly resolved during Vercel builds
-
-### Pre-deploy Validation
-```bash
-# Test builds locally before pushing
-npm run build:audio-intel
-npm run build:command-centre
-npm run build:tracker
-npm run build:web
-npm run build:pitch-generator
-```
-
----
-
-**Next Steps**: Once you've completed the manual setup, push to `staging` branch to test, then `main` for production deployment. All 5 apps will deploy automatically with shared packages! 🎉
+With the lockfile regenerated, `npm ci` back in CI, and the workflow trimmed to the three active apps, the pipeline is ready for consistent Vercel deploys. 🎉

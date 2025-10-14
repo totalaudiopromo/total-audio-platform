@@ -9,6 +9,13 @@ export function ExitIntentPopup() {
   const [hasShown, setHasShown] = useState(false);
 
   useEffect(() => {
+    // Check if user has already dismissed the popup permanently
+    const hasDismissedPermanently = localStorage.getItem('exitIntentDismissed');
+    if (hasDismissedPermanently) {
+      setHasShown(true);
+      return;
+    }
+
     // Check if user has already seen the popup in this session
     const hasSeenPopup = sessionStorage.getItem('exitIntentShown');
     if (hasSeenPopup) {
@@ -16,24 +23,34 @@ export function ExitIntentPopup() {
       return;
     }
 
-    const handleMouseLeave = (e: MouseEvent) => {
-      // Only trigger if mouse is leaving from the top of the page (to address bar/tabs)
-      if (e.clientY <= 0 && !hasShown) {
-        setIsVisible(true);
-        setHasShown(true);
-        sessionStorage.setItem('exitIntentShown', 'true');
-      }
-    };
+    // Only show popup after user has been on page for 30 seconds
+    const timer = setTimeout(() => {
+      const handleMouseLeave = (e: MouseEvent) => {
+        // Only trigger if mouse is leaving from the top of the page (to address bar/tabs)
+        if (e.clientY <= 0 && !hasShown) {
+          setIsVisible(true);
+          setHasShown(true);
+          sessionStorage.setItem('exitIntentShown', 'true');
+        }
+      };
 
-    document.addEventListener('mouseleave', handleMouseLeave);
+      document.addEventListener('mouseleave', handleMouseLeave);
 
-    return () => {
-      document.removeEventListener('mouseleave', handleMouseLeave);
-    };
+      return () => {
+        document.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }, 30000); // 30 second delay
+
+    return () => clearTimeout(timer);
   }, [hasShown]);
 
   const handleClose = () => {
     setIsVisible(false);
+  };
+
+  const handleDismissPermanently = () => {
+    setIsVisible(false);
+    localStorage.setItem('exitIntentDismissed', 'true');
   };
 
   if (!isVisible) return null;
@@ -101,10 +118,10 @@ export function ExitIntentPopup() {
                 Start Free Trial (5 pitches)
               </Link>
               <button
-                onClick={handleClose}
+                onClick={handleDismissPermanently}
                 className="bg-white text-gray-900 border-2 border-black px-6 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
               >
-                No thanks, I'll keep wasting 15 hours
+                No thanks
               </button>
             </div>
 

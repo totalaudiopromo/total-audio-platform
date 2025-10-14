@@ -1,0 +1,43 @@
+VERCEL ENVIRONMENT VARIABLES CHECKLIST
+=======================================
+
+Add these to: Vercel Dashboard → pitch-generator → Settings → Environment Variables
+
+CRITICAL (Add First):
+---------------------
+[ ] ANTHROPIC_API_KEY (from vault)
+[ ] NEXT_PUBLIC_SUPABASE_URL (from vault)
+[ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (from vault)
+[ ] SUPABASE_SERVICE_ROLE_KEY (from vault)
+[ ] NEXTAUTH_SECRET (from vault)
+[ ] NEXTAUTH_URL = https://pitch.totalaudiopromo.com
+
+AUTHENTICATION (Add Second):
+----------------------------
+[ ] GOOGLE_CLIENT_ID (from vault)
+[ ] GOOGLE_CLIENT_SECRET (from vault)
+[ ] DEMO_USER_EMAIL = founder@totalaudiopromo.com
+[ ] DEMO_USER_PASSWORD = buildfast (or from vault)
+
+CONFIGURATION (Add Third):
+--------------------------
+[ ] NEXT_PUBLIC_BASE_URL = https://pitch.totalaudiopromo.com
+
+PAYMENTS (Add Last):
+-------------------
+[ ] STRIPE_SECRET_KEY (from vault)
+[ ] STRIPE_PRICE_PROFESSIONAL_MONTHLY (from vault)
+[ ] STRIPE_PRICE_PROFESSIONAL_ANNUAL (from vault)
+[ ] STRIPE_PRICE_AGENCY_MONTHLY (from vault)
+[ ] STRIPE_PRICE_AGENCY_ANNUAL (from vault)
+
+AFTER ADDING ALL VARIABLES:
+---------------------------
+[ ] Click "Redeploy" in Vercel
+[ ] Test site: https://pitch.totalaudiopromo.com
+[ ] Try signing in
+[ ] Try generating a pitch
+[ ] Check Vercel function logs for errors
+
+DONE!
+

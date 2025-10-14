@@ -1,0 +1,58 @@
+# VERCEL PRODUCTION ENVIRONMENT VARIABLES
+# Copy these to Vercel Dashboard → Settings → Environment Variables
+# Change localhost URLs to production URLs
+
+# ============================================
+# AUTHENTICATION
+# ============================================
+NEXTAUTH_SECRET=7HaN5DRdq3javiY64JPN6gslbxvpYKtnnhWg1q9ZIuM=
+NEXTAUTH_URL=https://pitch.totalaudiopromo.com
+DEMO_USER_EMAIL=founder@totalaudiopromo.com
+DEMO_USER_PASSWORD=buildfast
+
+# ============================================
+# SUPABASE DATABASE
+# ============================================
+NEXT_PUBLIC_SUPABASE_URL=https://ucncbighzqudaszewjrv.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVjbmNiaWdoenF1ZGFzemV3anJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg5MTU2MjEsImV4cCI6MjA3NDQ5MTYyMX0.byAFslDRcX_Peto69Z7jG90CoWnQRaqNGOzhxteAgCI
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVjbmNiaWdoenF1ZGFzemV3anJ2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODkxNTYyMSwiZXhwIjoyMDc0NDkxNjIxfQ.jNbVTjvh7uOGINRPXJ6TFQJuNEbOLuOccVm8nqnlgPE
+
+# ============================================
+# AI PROVIDER (ANTHROPIC/CLAUDE)
+# ============================================
+ANTHROPIC_API_KEY=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
+
+# ============================================
+# STRIPE PAYMENT PROCESSING
+# ============================================
+STRIPE_SECRET_KEY=sk_test_51Ro9faPqujcPv5fbChB8QmyJJJ4TMVhdBem30918ZZLubN84sFfv2zOvBoqbHjpcsYLJHil1teOvm5WlZpwmuM0600V54zUndm
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_51Ro9faPqujcPv5fbiVCF3gju5TH8O9lhg1aRF4j6dlfXsvTOYL2Y2V4UzHZdXxEK99wVB00dCJxHZMPT5JKHwrY600g1fLRciS
+
+# Stripe Price IDs - Professional Plan
+STRIPE_PRICE_PROFESSIONAL_MONTHLY=price_1SFBeuPqujcPv5fbccMC5Aln
+STRIPE_PRICE_PROFESSIONAL_ANNUAL=price_1SFBfIPqujcPv5fbGbGathQe
+
+# Stripe Price IDs - Agency Plan
+STRIPE_PRICE_AGENCY_MONTHLY=price_1SFBgIPqujcPv5fb3WZ7dAeP
+STRIPE_PRICE_AGENCY_ANNUAL=price_1SFBh9PqujcPv5fbM5skKld6
+
+# Stripe Price IDs - Bundle Plan
+STRIPE_PRICE_BUNDLE_MONTHLY=price_1SFz9bPqujcPv5fbx4qYJvm9
+STRIPE_PRICE_BUNDLE_ANNUAL=price_1SFz9cPqujcPv5fbk266qGeh
+NEXT_PUBLIC_STRIPE_PRICE_BUNDLE_MONTHLY=price_1SFz9bPqujcPv5fbx4qYJvm9
+NEXT_PUBLIC_STRIPE_PRICE_BUNDLE_ANNUAL=price_1SFz9cPqujcPv5fbk266qGeh
+
+# Stripe Webhook Secret (for handling payment events)
+STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret_here
+
+# ============================================
+# BASE URL
+# ============================================
+NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
+
+# ============================================
+# OPTIONAL - GOOGLE OAUTH (if you want Google sign-in)
+# ============================================
+# GOOGLE_CLIENT_ID=
+# GOOGLE_CLIENT_SECRET=
+
