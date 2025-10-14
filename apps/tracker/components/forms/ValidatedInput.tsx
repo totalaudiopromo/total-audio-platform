@@ -163,11 +163,11 @@ export function ValidatedInput({
       {/* Suggestions */}
       {showSuggestions && validationResult.suggestions.length > 0 && (
         <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-3 space-y-2 animate-in slide-in-from-top-2">
-          <p className="text-xs font-black text-blue-900 uppercase tracking-wider">
+          <p className="text-xs font-black text-purple-900 uppercase tracking-wider">
             Suggestions:
           </p>
           {validationResult.suggestions.map((suggestion, index) => (
-            <p key={index} className="text-sm font-bold text-blue-700 flex items-start gap-2">
+            <p key={index} className="text-sm font-bold text-purple-700 flex items-start gap-2">
               <HelpCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
               <span>{suggestion}</span>
             </p>

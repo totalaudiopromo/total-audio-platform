@@ -99,52 +99,24 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
         </h3>
         
         {/* Legend */}
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <div style={{
-              width: '12px',
-              height: '12px',
-              background: '#10b981',
-              borderRadius: '50%'
-            }}></div>
-            <span style={{ fontSize: '0.875rem', color: '#6b7280', fontWeight: '600' }}>
-              High Activity
-            </span>
+        <div className="flex gap-4 items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-green-500 rounded-full border-2 border-black"></div>
+            <span className="text-sm font-bold text-gray-700">High Activity</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <div style={{
-              width: '12px',
-              height: '12px',
-              background: '#f59e0b',
-              borderRadius: '50%'
-            }}></div>
-            <span style={{ fontSize: '0.875rem', color: '#6b7280', fontWeight: '600' }}>
-              Moderate Activity
-            </span>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-orange-500 rounded-full border-2 border-black"></div>
+            <span className="text-sm font-bold text-gray-700">Moderate</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <div style={{
-              width: '12px',
-              height: '12px',
-              background: '#6b7280',
-              borderRadius: '50%'
-            }}></div>
-            <span style={{ fontSize: '0.875rem', color: '#6b7280', fontWeight: '600' }}>
-              Low Activity
-            </span>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-gray-500 rounded-full border-2 border-black"></div>
+            <span className="text-sm font-bold text-gray-700">Low Activity</span>
           </div>
         </div>
       </div>
 
       {/* World Map */}
-      <div style={{
-        position: 'relative',
-        background: 'linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%)',
-        borderRadius: '16px',
-        padding: '1rem',
-        border: '2px solid #e0f2fe',
-        overflow: 'hidden'
-      }}>
+      <div className="relative bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-4 border-3 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
         <svg
           viewBox="0 0 800 400"
           style={{
@@ -273,78 +245,45 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
       </div>
 
       {/* Location Statistics */}
-      <div style={{
-        marginTop: '2rem',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-        gap: '1rem'
-      }}>
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {locationClusters
           .sort((a, b) => b.users.length - a.users.length)
           .slice(0, 6)
           .map((cluster, index) => {
-            const totalEngagement = cluster.users.reduce((sum: number, user: BetaUser) => 
+            const totalEngagement = cluster.users.reduce((sum: number, user: BetaUser) =>
               sum + user.engagement.contactsEnriched, 0
             );
             const activeUsers = cluster.users.filter((u: BetaUser) => u.status === 'active').length;
-            
+
             return (
               <div
                 key={index}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.8)',
-                  borderRadius: '12px',
-                  padding: '1rem',
-                  border: '1px solid rgba(255, 255, 255, 0.3)'
-                }}
+                className="bg-white rounded-xl p-4 border-3 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
               >
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  marginBottom: '0.5rem'
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <div style={{
-                      width: '8px',
-                      height: '8px',
-                      background: getClusterColor(cluster.users),
-                      borderRadius: '50%'
-                    }}></div>
-                    <span style={{
-                      fontSize: '0.875rem',
-                      fontWeight: '700',
-                      color: '#1a202c'
-                    }}>
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="w-2 h-2 rounded-full border border-black"
+                      style={{ background: getClusterColor(cluster.users) }}
+                    ></div>
+                    <span className="text-sm font-bold text-gray-900">
                       {cluster.location.city}
                     </span>
                   </div>
-                  <span style={{
-                    fontSize: '0.75rem',
-                    color: '#6b7280',
-                    fontWeight: '600'
-                  }}>
+                  <span className="text-xs text-gray-600 font-bold">
                     {cluster.users.length} user{cluster.users.length !== 1 ? 's' : ''}
                   </span>
                 </div>
-                
-                <div style={{
-                  fontSize: '0.75rem',
-                  color: '#6b7280',
-                  marginBottom: '0.5rem'
-                }}>
+
+                <div className="text-xs text-gray-600 font-bold mb-2">
                   {cluster.location.country}
                 </div>
-                
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  fontSize: '0.75rem'
-                }}>
-                  <span style={{ color: '#10b981', fontWeight: '600' }}>
+
+                <div className="flex justify-between text-xs">
+                  <span className="text-green-600 font-bold">
                     {activeUsers} active
                   </span>
-                  <span style={{ color: '#8b5cf6', fontWeight: '600' }}>
+                  <span className="text-purple-600 font-bold">
                     {totalEngagement.toLocaleString()} contacts
                   </span>
                 </div>

@@ -216,7 +216,7 @@ export function CampaignFilters({
                     onClick={() => togglePlatform(platform)}
                     className={`px-4 py-2 rounded-xl font-bold text-sm transition-all border-2 ${
                       filters.platform.includes(platform)
-                        ? 'bg-blue-600 text-white border-blue-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                        ? 'bg-purple-600 text-white border-purple-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
                         : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'
                     }`}
                   >

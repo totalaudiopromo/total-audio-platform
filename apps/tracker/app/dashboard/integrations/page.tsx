@@ -56,8 +56,8 @@ export default function IntegrationsPage() {
             {/* Info banner */}
             <div className="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 mt-6">
               <div className="flex gap-3">
-                <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                <div className="text-sm text-blue-900">
+                <AlertCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                <div className="text-sm text-purple-900">
                   <p className="font-bold mb-1">How Integrations Work</p>
                   <p className="font-medium">
                     Connect once, and your campaigns automatically sync. Edit in Google Sheets, get

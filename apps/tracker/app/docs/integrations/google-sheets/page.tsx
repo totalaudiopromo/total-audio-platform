@@ -96,7 +96,7 @@ export default function GoogleSheetsGuidePage() {
             <div className="bg-blue-50 border-2 border-blue-300 rounded-xl p-6">
               <h3 className="text-lg font-black text-gray-900 mb-2">Questions?</h3>
               <p className="text-gray-700 font-medium">
-                Email us at <a href="mailto:info@totalaudiopromo.com" className="text-blue-600 hover:underline font-bold">info@totalaudiopromo.com</a>
+                Email us at <a href="mailto:info@totalaudiopromo.com" className="text-purple-600 hover:underline font-bold">info@totalaudiopromo.com</a>
               </p>
             </div>
           </div>

@@ -21,7 +21,19 @@ export const metadata: Metadata = {
   },
 };
 
-const plans = [
+const plans: Array<{
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  cta: string;
+  href: string;
+  highlighted: boolean;
+  badge: string;
+  badgeColor: string;
+  saveAmount?: string;
+}> = [
   {
     name: 'Free',
     price: 'FREE',
@@ -132,7 +144,7 @@ export default function PricingPage() {
             </div>
 
             {/* Save Amount */}
-            {'saveAmount' in plan && (
+            {plan.saveAmount && (
               <p className="mb-2 text-sm font-bold text-green-600">
                 {plan.saveAmount}
               </p>

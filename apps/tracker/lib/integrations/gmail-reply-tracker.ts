@@ -9,8 +9,11 @@ import { OAuthHandler } from './oauth-handler';
 
 export class GmailReplyTracker {
   private oauth = new OAuthHandler();
-  private supabase = createClient();
   private readonly integrationType = 'gmail';
+
+  private async getSupabaseClient() {
+    return await createClient();
+  }
 
   /**
    * Check for replies to tracked emails
@@ -25,10 +28,12 @@ export class GmailReplyTracker {
     let connection: any = null;
 
     try {
+      const supabase = await this.getSupabaseClient();
+
       // Get connection and access token
       const accessToken = await this.oauth.getValidAccessToken(connectionId);
 
-      const { data: fetchedConnection, error: connError } = await this.supabase
+      const { data: fetchedConnection, error: connError } = await supabase
         .from('integration_connections')
         .select('*')
         .eq('id', connectionId)
@@ -40,7 +45,7 @@ export class GmailReplyTracker {
       connection = fetchedConnection;
 
       // Get tracked emails that haven't received replies yet
-      const { data: trackedEmails } = await this.supabase
+      const { data: trackedEmails } = await supabase
         .from('gmail_tracked_emails')
         .select('*')
         .eq('connection_id', connectionId)
@@ -90,7 +95,7 @@ export class GmailReplyTracker {
                 : new Date();
 
               // Update tracked email
-              await this.supabase
+              await supabase
                 .from('gmail_tracked_emails')
                 .update({
                   has_reply: true,
@@ -101,14 +106,14 @@ export class GmailReplyTracker {
                 .eq('id', tracked.id);
 
               // Update campaign status
-              await this.supabase
+              await supabase
                 .from('campaigns')
                 .update({
                   status: 'replied',
-                  notes: this.supabase.raw(
-                    `COALESCE(notes, '') || '\n\n✉️ Reply received: ' || ?`,
-                    [snippet.substring(0, 200)]
-                  ),
+                  notes: supabase.rpc('concat_notes', {
+                    current_notes: '',
+                    new_note: `\n\n✉️ Reply received: ${snippet.substring(0, 200)}`
+                  }),
                 })
                 .eq('id', tracked.campaign_id);
 
@@ -133,7 +138,7 @@ export class GmailReplyTracker {
           }
 
           // Update last checked time
-          await this.supabase
+          await supabase
             .from('gmail_tracked_emails')
             .update({ last_checked_at: new Date().toISOString() })
             .eq('id', tracked.id);
@@ -145,7 +150,7 @@ export class GmailReplyTracker {
       }
 
       // Log sync
-      await this.supabase.from('integration_sync_logs').insert({
+      await supabase.from('integration_sync_logs').insert({
         connection_id: connectionId,
         direction: 'from_external',
         records_updated: repliesFound,
@@ -154,7 +159,7 @@ export class GmailReplyTracker {
       });
 
       // Update last sync time
-      await this.supabase
+      await supabase
         .from('integration_connections')
         .update({ last_sync_at: new Date().toISOString() })
         .eq('id', connectionId);
@@ -182,13 +187,15 @@ export class GmailReplyTracker {
       errors.push(error.message);
       console.error('Error checking Gmail replies:', error);
 
+      const supabaseError = await this.getSupabaseClient();
+
       // Update connection status
-      await this.supabase
+      await supabaseError
         .from('integration_connections')
         .update({
           status: 'error',
           error_message: error.message,
-          error_count: this.supabase.raw('error_count + 1'),
+          error_count: 1,
         })
         .eq('id', connectionId);
 
@@ -227,7 +234,8 @@ export class GmailReplyTracker {
     }
   ): Promise<void> {
     try {
-      await this.supabase.from('gmail_tracked_emails').insert({
+      const supabase = await this.getSupabaseClient();
+      await supabase.from('gmail_tracked_emails').insert({
         connection_id: connectionId,
         campaign_id: campaignId,
         gmail_message_id: emailDetails.messageId,
@@ -258,13 +266,14 @@ export class GmailReplyTracker {
     metadata?: Record<string, any>;
   }): Promise<void> {
     try {
+      const supabase = await this.getSupabaseClient();
       const sanitizedMetadata = metadata ? { ...metadata } : {};
 
       if ('errors' in sanitizedMetadata && sanitizedMetadata.errors === undefined) {
         delete sanitizedMetadata.errors;
       }
 
-      await this.supabase.from('integration_activity_log').insert({
+      await supabase.from('integration_activity_log').insert({
         connection_id: connectionId,
         user_id: userId,
         integration_type: this.integrationType,

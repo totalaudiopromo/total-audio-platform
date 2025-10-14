@@ -224,9 +224,9 @@ Commercial Radio - Kiss FM Push,sadact,Commercial Radio,Electronic,2025-03-01,,8
         </div>
 
         {/* Instructions */}
-        <div className="bg-blue-50 rounded-2xl p-6 border-4 border-blue-500 shadow-brutal mb-6">
+        <div className="bg-blue-50 rounded-2xl p-6 border-4 border-purple-500 shadow-brutal mb-6">
           <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+            <div className="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center">
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -235,25 +235,25 @@ Commercial Radio - Kiss FM Push,sadact,Commercial Radio,Electronic,2025-03-01,,8
               <h3 className="text-xl font-black text-gray-900 mb-3">How to Import</h3>
               <ol className="space-y-2 text-sm font-bold text-gray-800">
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 font-black">1.</span>
+                  <span className="text-purple-600 font-black">1.</span>
                   <span>Download the CSV template below to see the correct format</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 font-black">2.</span>
+                  <span className="text-purple-600 font-black">2.</span>
                   <span>Fill in your campaign data (name is required, everything else is optional)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 font-black">3.</span>
+                  <span className="text-purple-600 font-black">3.</span>
                   <span>Upload your CSV file and review the preview</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 font-black">4.</span>
+                  <span className="text-purple-600 font-black">4.</span>
                   <span>Click "Import Campaigns" to add them to your dashboard</span>
                 </li>
               </ol>
               <button
                 onClick={downloadTemplate}
-                className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-xl font-black hover:bg-blue-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-sm"
+                className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-xl font-black hover:bg-purple-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-sm"
               >
                 Download CSV Template
               </button>

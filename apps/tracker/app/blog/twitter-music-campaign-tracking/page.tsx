@@ -101,7 +101,7 @@ export default function TwitterMusicCampaignTrackingPage() {
             </p>
             
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white p-6 rounded-xl border-4 border-blue-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="bg-white p-6 rounded-xl border-4 border-purple-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Organic Twitter Campaigns</h3>
                 <p className="text-base text-gray-700 leading-relaxed mb-4">
                   Building community and engagement through regular tweeting, live interactions, and trend participation.

@@ -7,7 +7,7 @@ export function CampaignStats({ campaigns }: { campaigns: Campaign[] }) {
   const completed = campaigns.filter(c => c.status === 'completed').length;
 
   const cards = [
-    { label: 'Total Campaigns', value: total, gradient: 'from-blue-500 to-blue-600' },
+    { label: 'Total Campaigns', value: total, gradient: 'from-purple-500 to-purple-600' },
     { label: 'Active', value: active, gradient: 'from-green-500 to-green-600' },
     { label: 'Draft', value: draft, gradient: 'from-yellow-500 to-yellow-600' },
     { label: 'Completed', value: completed, gradient: 'from-purple-500 to-purple-600' },

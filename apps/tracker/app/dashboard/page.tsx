@@ -169,10 +169,10 @@ export default async function DashboardPage() {
             <p className="text-xs font-bold text-gray-600">{completedCampaigns} completed</p>
           </div>
 
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-4 border-blue-500 shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all">
-            <p className="text-sm font-black text-blue-700 mb-2 uppercase tracking-wider">Active Now</p>
-            <p className="text-4xl font-black text-blue-600 mb-1">{activeCampaigns}</p>
-            <p className="text-xs font-bold text-blue-700">campaigns running</p>
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-4 border-purple-500 shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all">
+            <p className="text-sm font-black text-purple-700 mb-2 uppercase tracking-wider">Active Now</p>
+            <p className="text-4xl font-black text-purple-600 mb-1">{activeCampaigns}</p>
+            <p className="text-xs font-bold text-purple-700">campaigns running</p>
           </div>
 
           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 border-4 border-green-500 shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all">
@@ -206,7 +206,7 @@ export default async function DashboardPage() {
               <ExportButton />
               <button
                 id="new-campaign-trigger"
-                className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-base whitespace-nowrap w-full sm:w-auto text-center"
+                className="px-6 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-all font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-base whitespace-nowrap w-full sm:w-auto text-center"
               >
                 + New Campaign
               </button>

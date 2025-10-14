@@ -88,13 +88,13 @@ export function PricingCards({ tiers, currentSubscription, userType }: PricingCa
               key={tier.id}
               className={`relative rounded-2xl border-2 p-8 ${
                 isPro
-                  ? 'border-blue-500 bg-gradient-to-br from-blue-50 to-purple-50 shadow-xl'
+                  ? 'border-purple-500 bg-gradient-to-br from-blue-50 to-purple-50 shadow-xl'
                   : 'border-slate-200 bg-white'
               }`}
             >
               {isPro && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  <span className="bg-gradient-to-r from-purple-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
                     Popular
                   </span>
                 </div>
@@ -141,7 +141,7 @@ export function PricingCards({ tiers, currentSubscription, userType }: PricingCa
                 disabled={isCurrentPlan}
                 className={`w-full ${
                   isPro
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white'
+                    ? 'bg-gradient-to-r from-purple-600 to-purple-600 hover:from-purple-700 hover:to-purple-700 text-white'
                     : 'bg-slate-900 hover:bg-slate-800 text-white'
                 }`}
               >

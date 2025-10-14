@@ -15,8 +15,8 @@ export default function VerifyEmailPage() {
     <div className="mx-auto w-full max-w-2xl">
       <div className="glass-panel px-8 py-12 text-center">
         {/* Icon */}
-        <div className="mx-auto mb-6 w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center border-4 border-blue-500">
-          <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mx-auto mb-6 w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center border-4 border-purple-500">
+          <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
         </div>
@@ -31,15 +31,15 @@ export default function VerifyEmailPage() {
           <h3 className="font-bold text-gray-900 mb-3">Haven't received the email?</h3>
           <ul className="space-y-2 text-sm text-gray-700">
             <li className="flex items-start gap-2">
-              <span className="text-blue-600 font-bold mt-0.5">→</span>
+              <span className="text-purple-600 font-bold mt-0.5">→</span>
               <span>Check your spam or junk folder</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-blue-600 font-bold mt-0.5">→</span>
+              <span className="text-purple-600 font-bold mt-0.5">→</span>
               <span>Make sure you entered the correct email address</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-blue-600 font-bold mt-0.5">→</span>
+              <span className="text-purple-600 font-bold mt-0.5">→</span>
               <span>Wait a few minutes – emails can sometimes be delayed</span>
             </li>
           </ul>

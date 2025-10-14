@@ -1,4 +1,4 @@
-import { SiteFooter as SharedSiteFooter } from '@total-audio/ui';
+import { SiteFooter as SharedSiteFooter } from './SharedSiteFooter';
 
 export function SiteFooter() {
   return (

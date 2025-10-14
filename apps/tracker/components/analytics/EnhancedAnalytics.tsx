@@ -60,9 +60,9 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
     // Trend data (last 90 days)
     const trendData = campaigns
       .filter((c) => c.start_date)
-      .sort((a, b) => new Date(a.start_date).getTime() - new Date(b.start_date).getTime())
+      .sort((a, b) => new Date(a.start_date!).getTime() - new Date(b.start_date!).getTime())
       .reduce((acc, campaign) => {
-        const month = new Date(campaign.start_date).toLocaleDateString('en-GB', {
+        const month = new Date(campaign.start_date!).toLocaleDateString('en-GB', {
           month: 'short',
           year: '2-digit',
         });
@@ -199,17 +199,17 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
             </div>
 
             {/* Cost Per Result */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-4 border-blue-500 shadow-brutal">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-4 border-purple-500 shadow-brutal">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-sm font-black text-blue-700 uppercase tracking-wider">
+                <p className="text-sm font-black text-purple-700 uppercase tracking-wider">
                   Cost/Result
                 </p>
-                <DollarSign className="h-5 w-5 text-blue-600" />
+                <DollarSign className="h-5 w-5 text-purple-600" />
               </div>
-              <p className="text-4xl font-black text-blue-600 mb-1">
+              <p className="text-4xl font-black text-purple-600 mb-1">
                 £{analytics.costPerResult.toFixed(2)}
               </p>
-              <p className="text-xs font-bold text-blue-700">Average cost per reach</p>
+              <p className="text-xs font-bold text-purple-700">Average cost per reach</p>
             </div>
 
             {/* Total Budget */}
@@ -257,8 +257,8 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
                       cx="50%"
                       cy="50%"
                       labelLine={false}
-                      label={({ name, percent }) =>
-                        `${name} (${(percent * 100).toFixed(0)}%)`
+                      label={(props: any) =>
+                        `${props.name} (${(props.percent * 100).toFixed(0)}%)`
                       }
                       outerRadius={100}
                       fill="#8884d8"

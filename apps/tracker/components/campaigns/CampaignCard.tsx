@@ -5,10 +5,10 @@ import { StatusBadge } from '@/components/campaigns/StatusBadge';
 export function CampaignCard({ campaign }: { campaign: Campaign }) {
   return (
     <Link href={`/campaigns/${campaign.id}`}>
-      <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-700 transition-all group cursor-pointer">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg hover:border-blue-300 dark:hover:border-purple-700 transition-all group cursor-pointer">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-purple-600 transition-colors">
               {campaign.name}
             </h3>
             <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">{campaign.artist_name}</p>
@@ -32,7 +32,7 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
               {campaign.platforms.slice(0, 3).map((platform) => (
                 <span
                   key={platform}
-                  className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg text-xs font-medium"
+                  className="px-2 py-1 bg-blue-100 dark:bg-purple-900/30 text-purple-700 dark:text-blue-300 rounded-lg text-xs font-medium"
                 >
                   {platform}
                 </span>
@@ -48,7 +48,7 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
 
         <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
           <div className="flex gap-3">
-            <span className="text-blue-600 dark:text-blue-400 text-sm font-semibold group-hover:underline">
+            <span className="text-purple-600 dark:text-blue-400 text-sm font-semibold group-hover:underline">
               View Details →
             </span>
           </div>

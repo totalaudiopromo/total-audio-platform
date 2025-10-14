@@ -5,8 +5,9 @@ import { CampaignDetailClient } from '@/components/campaigns/CampaignDetailClien
 export default async function CampaignDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -18,7 +19,7 @@ export default async function CampaignDetailPage({
   const { data: campaign, error: campaignError } = await supabase
     .from('campaigns')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .eq('user_id', user.id)
     .single();
 
@@ -30,7 +31,7 @@ export default async function CampaignDetailPage({
   const { data: activities } = await supabase
     .from('campaign_activities')
     .select('*')
-    .eq('campaign_id', params.id)
+    .eq('campaign_id', id)
     .order('activity_date', { ascending: false });
 
   return (

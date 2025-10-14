@@ -89,10 +89,16 @@ export async function GET(request: NextRequest) {
         });
 
         // Update error count
+        const { data: currentConnection } = await supabase
+          .from('integration_connections')
+          .select('error_count')
+          .eq('id', connection.id)
+          .single();
+        
         await supabase
           .from('integration_connections')
           .update({
-            error_count: supabase.raw('error_count + 1'),
+            error_count: (currentConnection?.error_count || 0) + 1,
             error_message: error.message,
           })
           .eq('id', connection.id);

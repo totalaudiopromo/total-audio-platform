@@ -9,7 +9,7 @@ export default async function OverviewStats() {
     {
       label: 'Total Campaigns',
       value: stats.totalCampaigns,
-      gradient: 'from-blue-500 to-blue-600',
+      gradient: 'from-purple-500 to-purple-600',
       showProgress: false,
     },
     {

@@ -37,7 +37,7 @@ export function Header({ userName }: { userName: string }) {
             height={32}
             className="object-contain"
           />
-          <h1 className="text-xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-xl font-black bg-gradient-to-r from-purple-600 to-purple-600 bg-clip-text text-transparent">
             Tracker
           </h1>
         </div>
@@ -50,7 +50,7 @@ export function Header({ userName }: { userName: string }) {
             <span className="text-sm font-semibold text-slate-700 hidden sm:block">
               {userName}
             </span>
-            <div className="w-9 h-9 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+            <div className="w-9 h-9 bg-gradient-to-r from-purple-600 to-purple-600 rounded-lg flex items-center justify-center">
               <UserCircleIcon className="w-5 h-5 text-white" />
             </div>
           </button>

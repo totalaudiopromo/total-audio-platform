@@ -177,12 +177,12 @@ export function CampaignIntelligence({ campaignId, campaignName }: CampaignIntel
   return (
     <div className="space-y-4">
       {/* Campaign Autopsy */}
-      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-4 border-blue-500 shadow-brutal">
+      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-4 border-purple-500 shadow-brutal">
         <div className="flex items-start justify-between mb-4">
           <h3 className="text-xl font-black text-gray-900 uppercase tracking-wider">Campaign Autopsy</h3>
           <button
             onClick={() => copyToClipboard(autopsy.autopsy, 'autopsy')}
-            className="px-3 py-1.5 bg-white/80 hover:bg-white rounded-lg font-bold text-xs transition-colors border-2 border-blue-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
+            className="px-3 py-1.5 bg-white/80 hover:bg-white rounded-lg font-bold text-xs transition-colors border-2 border-purple-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
           >
             {copied === 'autopsy' ? '✓ Copied' : 'Copy'}
           </button>

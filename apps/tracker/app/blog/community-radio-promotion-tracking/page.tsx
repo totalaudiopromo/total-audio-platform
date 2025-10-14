@@ -101,7 +101,7 @@ export default function CommunityRadioPromotionTracking() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">Regional Community Stations:</span>
-                    <span className="text-blue-600 font-black">20% success</span>
+                    <span className="text-purple-600 font-black">20% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
                     <span className="font-bold">University Radio:</span>
@@ -127,7 +127,7 @@ export default function CommunityRadioPromotionTracking() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">BBC Radio 1 (£400 campaign):</span>
-                    <span className="text-blue-600 font-black">2% success = 8 plays</span>
+                    <span className="text-purple-600 font-black">2% success = 8 plays</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
                     <span className="font-bold">Cost per play - Community:</span>
@@ -149,7 +149,7 @@ export default function CommunityRadioPromotionTracking() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">2 weeks before release:</span>
-                    <span className="text-blue-600 font-black">22% success</span>
+                    <span className="text-purple-600 font-black">22% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">Week of release:</span>

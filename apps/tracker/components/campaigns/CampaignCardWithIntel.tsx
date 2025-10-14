@@ -48,7 +48,7 @@ const INTEGRATION_META: Record<IntegrationSummary['integration_type'], { label: 
   airtable: {
     label: 'Airtable',
     Icon: Grid3x3,
-    badgeClass: 'border-amber-500 bg-amber-50 text-amber-700',
+    badgeClass: 'border-purple-500 bg-purple-50 text-purple-700',
   },
   mailchimp: {
     label: 'Mailchimp',
@@ -121,7 +121,7 @@ export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignC
             <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition-colors">{campaign.name}</h3>
             <div className="flex flex-wrap items-center gap-2">
               {campaign.platform && (
-                <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-blue-50 text-purple-700 border border-blue-200">
                   {campaign.platform}
                 </span>
               )}
@@ -135,7 +135,7 @@ export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignC
                   ? 'bg-green-50 text-green-700 border border-green-200'
                   : campaign.status === 'completed'
                   ? 'bg-slate-50 text-slate-700 border border-slate-200'
-                  : 'bg-amber-50 text-amber-700 border border-amber-200'
+                  : 'bg-amber-50 text-purple-700 border border-amber-200'
               }`}>
                 {campaign.status}
               </span>
@@ -224,9 +224,9 @@ export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignC
 
             {/* Insights */}
             {hasInsights && (
-              <div className="bg-blue-50 rounded-xl p-6 border-4 border-blue-500">
+              <div className="bg-blue-50 rounded-xl p-6 border-4 border-purple-500">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
@@ -236,7 +236,7 @@ export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignC
                 <div className="space-y-3">
                   {campaign.insights!.map((insight, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <span className="text-blue-600 font-black mt-0.5">→</span>
+                      <span className="text-purple-600 font-black mt-0.5">→</span>
                       <span className="text-sm font-bold text-gray-800 leading-relaxed">{insight}</span>
                     </div>
                   ))}

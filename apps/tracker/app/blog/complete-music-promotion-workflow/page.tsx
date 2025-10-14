@@ -36,7 +36,7 @@ export default function CompleteWorkflowGuide() {
           {/* Header */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
-              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-bold">
+              <span className="bg-blue-100 text-purple-800 px-3 py-1 rounded-full text-sm font-bold">
                 Workflow Guide
               </span>
               <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-bold">

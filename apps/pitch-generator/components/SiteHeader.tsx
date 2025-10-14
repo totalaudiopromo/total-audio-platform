@@ -1,7 +1,7 @@
 'use client';
 
-import { SiteHeader as SharedSiteHeader } from '@total-audio/ui';
-import { ToolSwitcher } from '@total-audio/ui';
+import { SiteHeader as SharedSiteHeader } from './SharedSiteHeader';
+import { ToolSwitcher } from './SharedToolSwitcher';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
 const links = [

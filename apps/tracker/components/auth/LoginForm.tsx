@@ -103,7 +103,7 @@ export function LoginForm() {
 
       <Button
         type="submit"
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 transition-all"
+        className="w-full bg-purple-600 hover:bg-purple-700 text-white font-black py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 transition-all"
         disabled={isLoading}
       >
         {isLoading ? 'Signing in...' : 'Sign in'}

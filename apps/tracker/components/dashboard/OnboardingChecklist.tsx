@@ -82,7 +82,7 @@ export function OnboardingChecklist({
       <div className="px-6 py-6 sm:px-8 sm:py-8">
         {/* Header */}
         <div className="flex items-start gap-4 mb-6 pr-10">
-          <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-purple-600 to-purple-600 rounded-2xl flex items-center justify-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <Sparkles className="w-7 h-7 text-white" />
           </div>
           <div>
@@ -107,7 +107,7 @@ export function OnboardingChecklist({
           </div>
           <div className="h-3 bg-white rounded-full border-2 border-black overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-500 ease-out"
+              className="h-full bg-gradient-to-r from-purple-600 to-purple-600 transition-all duration-500 ease-out"
               style={{ width: `${(completedCount / totalCount) * 100}%` }}
             />
           </div>

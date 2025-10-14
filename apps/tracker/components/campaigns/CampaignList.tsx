@@ -68,7 +68,7 @@ export function CampaignList({ campaigns }: { campaigns: Campaign[] }) {
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
                   <h3 className="font-bold text-slate-900">{campaign.name}</h3>
-                  <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-lg text-xs font-semibold uppercase">
+                  <span className="px-2 py-1 bg-blue-100 text-purple-700 rounded-lg text-xs font-semibold uppercase">
                     {campaign.platform}
                   </span>
                   <span className={`px-2 py-1 rounded-lg text-xs font-semibold ${
@@ -93,7 +93,7 @@ export function CampaignList({ campaigns }: { campaigns: Campaign[] }) {
               <div className="flex gap-2">
                 <button
                   onClick={() => setEditingCampaign(campaign)}
-                  className="px-4 py-2 text-sm font-semibold text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                  className="px-4 py-2 text-sm font-semibold text-purple-600 hover:bg-blue-50 rounded-lg transition-colors"
                 >
                   Edit
                 </button>

@@ -101,7 +101,7 @@ export default function AppleMusicPlaylistAnalytics() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">Editorial (Genre-specific):</span>
-                    <span className="text-blue-600 font-black">12% success</span>
+                    <span className="text-purple-600 font-black">12% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-green-50 rounded border border-green-200">
                     <span className="font-bold">Algorithmic (New Music Mix, etc):</span>
@@ -153,7 +153,7 @@ export default function AppleMusicPlaylistAnalytics() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">2-3 weeks before release:</span>
-                    <span className="text-blue-600 font-black">8% success</span>
+                    <span className="text-purple-600 font-black">8% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">Week of release:</span>

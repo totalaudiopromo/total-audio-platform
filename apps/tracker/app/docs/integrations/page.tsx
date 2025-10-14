@@ -110,7 +110,7 @@ export default function IntegrationsDocsPage() {
           <div className="mt-8 p-6 bg-blue-50 border-2 border-blue-300 rounded-xl">
             <h3 className="text-lg font-black text-gray-900 mb-2">Need Help?</h3>
             <p className="text-gray-700 font-medium">
-              Email us at <a href="mailto:info@totalaudiopromo.com" className="text-blue-600 hover:underline font-bold">info@totalaudiopromo.com</a> or check our <Link href="/docs" className="text-blue-600 hover:underline font-bold">full documentation</Link>.
+              Email us at <a href="mailto:info@totalaudiopromo.com" className="text-purple-600 hover:underline font-bold">info@totalaudiopromo.com</a> or check our <Link href="/docs" className="text-purple-600 hover:underline font-bold">full documentation</Link>.
             </p>
           </div>
         </div>

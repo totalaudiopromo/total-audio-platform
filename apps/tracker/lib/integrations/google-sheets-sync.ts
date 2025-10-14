@@ -21,8 +21,11 @@ export interface SheetRow {
 
 export class GoogleSheetsSync {
   private oauth = new OAuthHandler();
-  private supabase = createClient();
   private readonly integrationType = 'google_sheets';
+
+  private async getSupabaseClient() {
+    return await createClient();
+  }
 
   /**
    * Sync campaigns from Tracker to Google Sheet
@@ -33,15 +36,16 @@ export class GoogleSheetsSync {
     errors: string[];
   }> {
     const errors: string[] = [];
-
     let connection: any = null;
 
     try {
+      const supabase = await this.getSupabaseClient();
+
       // Get connection and valid access token
       const accessToken = await this.oauth.getValidAccessToken(connectionId);
 
       // Get connection details
-      const { data: fetchedConnection, error: connError } = await this.supabase
+      const { data: fetchedConnection, error: connError } = await supabase
         .from('integration_connections')
         .select('*')
         .eq('id', connectionId)
@@ -65,7 +69,7 @@ export class GoogleSheetsSync {
       const sheets = google.sheets({ version: 'v4', auth });
 
       // Fetch campaigns from Tracker
-      const { data: campaigns, error: campaignsError } = await this.supabase
+      const { data: campaigns, error: campaignsError } = await supabase
         .from('campaigns')
         .select('*')
         .eq('user_id', connection.user_id)
@@ -92,7 +96,7 @@ export class GoogleSheetsSync {
         'Tracker ID', // Hidden column for syncing back
       ];
 
-      const rows = (campaigns || []).map((c) => [
+      const rows = (campaigns || []).map((c: any) => [
         c.name || '',
         c.artist_name || '',
         c.platform || '',
@@ -105,21 +109,18 @@ export class GoogleSheetsSync {
         c.id, // Tracker ID for reference
       ]);
 
-      // Update sheet
+      // Write to sheet
       await sheets.spreadsheets.values.update({
         spreadsheetId: spreadsheet_id,
-        range: `${sheet_name}!A1:J${rows.length + 1}`,
+        range: `${sheet_name}!A1`,
         valueInputOption: 'RAW',
         requestBody: {
           values: [header, ...rows],
         },
       });
 
-      // Format header row
-      await this.formatHeaderRow(sheets, spreadsheet_id, sheet_name);
-
       // Log sync
-      await this.supabase.from('integration_sync_logs').insert({
+      await supabase.from('integration_sync_logs').insert({
         connection_id: connectionId,
         direction: 'to_external',
         records_updated: rows.length,
@@ -127,7 +128,7 @@ export class GoogleSheetsSync {
       });
 
       // Update last sync time
-      await this.supabase
+      await supabase
         .from('integration_connections')
         .update({ last_sync_at: new Date().toISOString() })
         .eq('id', connectionId);
@@ -135,33 +136,34 @@ export class GoogleSheetsSync {
       await this.logActivity({
         connectionId,
         userId: connection.user_id,
-        activityType: 'sync_to_sheet',
+        activityType: 'export',
         status: 'success',
-        message: `Synced ${rows.length} campaign${rows.length === 1 ? '' : 's'} to Google Sheets`,
+        message: `Exported ${rows.length} campaign${rows.length === 1 ? '' : 's'} to Google Sheet`,
         metadata: {
-          records_synced: rows.length,
           spreadsheet_id,
           sheet_name,
-          campaign_ids: (campaigns || []).map((c: any) => c.id),
+          records_count: rows.length,
         },
       });
 
       return {
         success: true,
         recordsUpdated: rows.length,
-        errors,
+        errors: [],
       };
     } catch (error: any) {
       errors.push(error.message);
       console.error('Error syncing to Google Sheets:', error);
 
+      const supabaseError = await this.getSupabaseClient();
+
       // Update connection status
-      await this.supabase
+      await supabaseError
         .from('integration_connections')
         .update({
           status: 'error',
           error_message: error.message,
-          error_count: this.supabase.raw('error_count + 1'),
+          error_count: 1,
         })
         .eq('id', connectionId);
 
@@ -169,9 +171,9 @@ export class GoogleSheetsSync {
         await this.logActivity({
           connectionId,
           userId: connection.user_id,
-          activityType: 'sync_to_sheet',
+          activityType: 'export',
           status: 'error',
-          message: 'Failed to sync campaigns to Google Sheets',
+          message: 'Failed to sync campaigns to Google Sheet',
           metadata: {
             error: error.message,
           },
@@ -187,7 +189,7 @@ export class GoogleSheetsSync {
   }
 
   /**
-   * Sync changes from Google Sheet back to Tracker
+   * Sync campaigns from Google Sheet to Tracker
    */
   async syncFromSheet(connectionId: string): Promise<{
     success: boolean;
@@ -195,131 +197,111 @@ export class GoogleSheetsSync {
     errors: string[];
   }> {
     const errors: string[] = [];
-
     let connection: any = null;
 
     try {
+      const supabase = await this.getSupabaseClient();
+
       const accessToken = await this.oauth.getValidAccessToken(connectionId);
 
-      const { data: fetchedConnection, error: connError } = await this.supabase
+      const { data: fetchedConnection, error: connError } = await supabase
         .from('integration_connections')
         .select('*')
         .eq('id', connectionId)
         .single();
 
-      if (connError || !fetchedConnection) throw new Error('Connection not found');
+      if (connError || !fetchedConnection) {
+        throw new Error('Connection not found');
+      }
       connection = fetchedConnection;
 
       const { spreadsheet_id, sheet_name = 'Campaigns' } = connection.settings;
+
+      if (!spreadsheet_id) {
+        throw new Error('No spreadsheet configured');
+      }
 
       const auth = new google.auth.OAuth2();
       auth.setCredentials({ access_token: accessToken });
 
       const sheets = google.sheets({ version: 'v4', auth });
 
-      // Read sheet data
+      // Read from sheet
       const response = await sheets.spreadsheets.values.get({
         spreadsheetId: spreadsheet_id,
-        range: `${sheet_name}!A2:J1000`, // Skip header, read up to 1000 rows
+        range: `${sheet_name}!A2:J`, // Skip header row
       });
 
       const rows = response.data.values || [];
-      let updatedCount = 0;
-      const updatedCampaignIds: string[] = [];
+      let updated = 0;
 
       for (const row of rows) {
-        const [
-          name,
-          artistName,
-          platform,
-          status,
-          startDate,
-          budget,
-          targetReach,
-          actualReach,
-          notes,
-          trackerId,
-        ] = row;
+        try {
+          const trackerId = row[9]; // Tracker ID column
+          if (!trackerId) continue;
 
-        if (!trackerId) continue; // Skip rows without Tracker ID
+          const { error } = await supabase
+            .from('campaigns')
+            .update({
+              name: row[0],
+              artist_name: row[1],
+              platform: row[2],
+              status: row[3],
+              start_date: row[4],
+              budget: row[5] ? parseFloat(row[5]) : null,
+              target_reach: row[6] ? parseInt(row[6]) : null,
+              actual_reach: row[7] ? parseInt(row[7]) : null,
+              notes: row[8],
+            })
+            .eq('id', trackerId)
+            .eq('user_id', connection.user_id);
 
-        // Update campaign in Tracker
-        const { error } = await this.supabase
-          .from('campaigns')
-          .update({
-            name,
-            artist_name: artistName,
-            platform,
-            status,
-            start_date: startDate,
-            budget: budget ? parseInt(budget) : null,
-            target_reach: targetReach ? parseInt(targetReach) : null,
-            actual_reach: actualReach ? parseInt(actualReach) : null,
-            notes,
-          })
-          .eq('id', trackerId)
-          .eq('user_id', connection.user_id);
-
-        if (!error) {
-          updatedCount++;
-          updatedCampaignIds.push(trackerId);
-        } else {
-          errors.push(`Failed to update campaign ${trackerId}: ${error.message}`);
+          if (error) {
+            errors.push(`Failed to update campaign ${trackerId}: ${error.message}`);
+          } else {
+            updated++;
+          }
+        } catch (error: any) {
+          errors.push(`Row error: ${error.message}`);
         }
       }
 
       // Log sync
-      await this.supabase.from('integration_sync_logs').insert({
+      await supabase.from('integration_sync_logs').insert({
         connection_id: connectionId,
         direction: 'from_external',
-        records_updated: updatedCount,
+        records_updated: updated,
         errors: errors.length > 0 ? JSON.stringify(errors) : null,
         completed_at: new Date().toISOString(),
       });
 
-      const metadata: Record<string, any> = {
-        records_synced: updatedCount,
-        spreadsheet_id,
-        sheet_name,
-        campaign_ids: updatedCampaignIds,
-      };
-
-      if (errors.length > 0) {
-        metadata.errors = errors;
-      }
+      await supabase
+        .from('integration_connections')
+        .update({ last_sync_at: new Date().toISOString() })
+        .eq('id', connectionId);
 
       await this.logActivity({
         connectionId,
         userId: connection.user_id,
-        activityType: 'sync_from_sheet',
+        activityType: 'import',
         status: errors.length > 0 ? 'warning' : 'success',
-        message: errors.length > 0
-          ? `Synced ${updatedCount} campaign${updatedCount === 1 ? '' : 's'} from Google Sheets with warnings`
-          : `Synced ${updatedCount} campaign${updatedCount === 1 ? '' : 's'} from Google Sheets`,
-        metadata,
+        message: `Imported ${updated} campaign${updated === 1 ? '' : 's'} from Google Sheet`,
+        metadata: {
+          spreadsheet_id,
+          sheet_name,
+          records_count: updated,
+          errors: errors.length > 0 ? errors : undefined,
+        },
       });
 
       return {
-        success: errors.length === 0,
-        recordsUpdated: updatedCount,
+        success: true,
+        recordsUpdated: updated,
         errors,
       };
     } catch (error: any) {
       errors.push(error.message);
       console.error('Error syncing from Google Sheets:', error);
-
-      if (connection?.user_id) {
-        await this.logActivity({
-          connectionId,
-          userId: connection.user_id,
-          activityType: 'sync_from_sheet',
-          status: 'error',
-          message: 'Failed to sync changes from Google Sheets',
-          metadata: {
-            error: error.message,
-          },
-        });
-      }
 
       return {
         success: false,
@@ -329,9 +311,6 @@ export class GoogleSheetsSync {
     }
   }
 
-  /**
-   * Ensure sheet exists in spreadsheet
-   */
   private async ensureSheetExists(
     sheets: sheets_v4.Sheets,
     spreadsheetId: string,
@@ -368,121 +347,6 @@ export class GoogleSheetsSync {
     }
   }
 
-  /**
-   * Format header row with bold text and background color
-   */
-  private async formatHeaderRow(
-    sheets: sheets_v4.Sheets,
-    spreadsheetId: string,
-    sheetName: string
-  ): Promise<void> {
-    try {
-      const response = await sheets.spreadsheets.get({
-        spreadsheetId,
-      });
-
-      const sheet = response.data.sheets?.find(
-        (s) => s.properties?.title === sheetName
-      );
-
-      if (!sheet?.properties?.sheetId) return;
-
-      await sheets.spreadsheets.batchUpdate({
-        spreadsheetId,
-        requestBody: {
-          requests: [
-            {
-              repeatCell: {
-                range: {
-                  sheetId: sheet.properties.sheetId,
-                  startRowIndex: 0,
-                  endRowIndex: 1,
-                },
-                cell: {
-                  userEnteredFormat: {
-                    backgroundColor: {
-                      red: 0.6,
-                      green: 0.4,
-                      blue: 0.8,
-                    },
-                    textFormat: {
-                      foregroundColor: {
-                        red: 1,
-                        green: 1,
-                        blue: 1,
-                      },
-                      bold: true,
-                    },
-                  },
-                },
-                fields: 'userEnteredFormat(backgroundColor,textFormat)',
-              },
-            },
-          ],
-        },
-      });
-    } catch (error) {
-      console.error('Error formatting header row:', error);
-      // Don't throw - formatting is optional
-    }
-  }
-
-  /**
-   * List user's spreadsheets
-   */
-  async listSpreadsheets(connectionId: string): Promise<any[]> {
-    try {
-      const accessToken = await this.oauth.getValidAccessToken(connectionId);
-
-      const auth = new google.auth.OAuth2();
-      auth.setCredentials({ access_token: accessToken });
-
-      const drive = google.drive({ version: 'v3', auth });
-
-      const response = await drive.files.list({
-        q: "mimeType='application/vnd.google-apps.spreadsheet' and trashed=false",
-        fields: 'files(id, name, modifiedTime)',
-        orderBy: 'modifiedTime desc',
-        pageSize: 50,
-      });
-
-      return response.data.files || [];
-    } catch (error) {
-      console.error('Error listing spreadsheets:', error);
-      throw error;
-    }
-  }
-
-  /**
-   * Create a new spreadsheet for campaigns
-   */
-  async createSpreadsheet(
-    connectionId: string,
-    title: string = 'Campaign Tracker'
-  ): Promise<string> {
-    try {
-      const accessToken = await this.oauth.getValidAccessToken(connectionId);
-
-      const auth = new google.auth.OAuth2();
-      auth.setCredentials({ access_token: accessToken });
-
-      const sheets = google.sheets({ version: 'v4', auth });
-
-      const response = await sheets.spreadsheets.create({
-        requestBody: {
-          properties: {
-            title,
-          },
-        },
-      });
-
-      return response.data.spreadsheetId || '';
-    } catch (error) {
-      console.error('Error creating spreadsheet:', error);
-      throw error;
-    }
-  }
-
   private async logActivity({
     connectionId,
     userId,
@@ -493,24 +357,31 @@ export class GoogleSheetsSync {
   }: {
     connectionId: string;
     userId: string;
-    activityType: 'sync_to_sheet' | 'sync_from_sheet';
+    activityType: 'export' | 'import';
     status: 'success' | 'error' | 'warning';
     message: string;
     metadata?: Record<string, any>;
   }): Promise<void> {
     try {
-      await this.supabase.from('integration_activity_log').insert({
+      const supabase = await this.getSupabaseClient();
+      const sanitizedMetadata = metadata ? { ...metadata } : {};
+
+      if ('errors' in sanitizedMetadata && sanitizedMetadata.errors === undefined) {
+        delete sanitizedMetadata.errors;
+      }
+
+      await supabase.from('integration_activity_log').insert({
         connection_id: connectionId,
         user_id: userId,
         integration_type: this.integrationType,
         activity_type: activityType,
         status,
         message,
-        metadata: metadata || {},
+        metadata: sanitizedMetadata,
       });
     } catch (logError) {
       const logMessage = logError instanceof Error ? logError.message : String(logError);
-      console.error('Failed to log integration activity:', logMessage);
+      console.error('Failed to log Google Sheets integration activity:', logMessage);
     }
   }
 }
