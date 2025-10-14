@@ -27,8 +27,8 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
     
-    - name: Install dependencies (audio-intel only)
-      run: npm ci --workspace=audio-intel --include-workspace-root
+    - name: Install dependencies (root)
+      run: npm install
     
     - name: Run linting
       run: npm run lint
@@ -58,8 +58,8 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
     
-    - name: Install dependencies for ${{ matrix.app }}
-      run: npm ci --workspace=${{ matrix.app }} --include-workspace-root
+    - name: Install dependencies (root)
+      run: npm install
     
     - name: Build ${{ matrix.app }}
       run: npm run build --workspace=${{ matrix.app }}
