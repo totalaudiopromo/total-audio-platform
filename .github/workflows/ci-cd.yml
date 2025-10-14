@@ -95,7 +95,7 @@ jobs:
         APP_PATH=${{ matrix.app }}
         if [ "${{ matrix.app }}" = "total-audio-promo-frontend" ]; then APP_PATH="web"; fi
         cd apps/$APP_PATH
-        vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }} --yes
+        vercel --token ${{ secrets.VERCEL_TOKEN }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
         VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || (matrix.app == 'command-centre' && secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE) || (matrix.app == 'tracker' && secrets.VERCEL_PROJECT_ID_TRACKER) || (matrix.app == 'total-audio-promo-frontend' && secrets.VERCEL_PROJECT_ID_WEB) || (matrix.app == 'pitch-generator' && secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR) }}
@@ -131,7 +131,7 @@ jobs:
         APP_PATH=${{ matrix.app }}
         if [ "${{ matrix.app }}" = "total-audio-promo-frontend" ]; then APP_PATH="web"; fi
         cd apps/$APP_PATH
-        vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }} --yes
+        vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
         VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || (matrix.app == 'command-centre' && secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE) || (matrix.app == 'tracker' && secrets.VERCEL_PROJECT_ID_TRACKER) || (matrix.app == 'total-audio-promo-frontend' && secrets.VERCEL_PROJECT_ID_WEB) || (matrix.app == 'pitch-generator' && secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR) }}
