@@ -9,7 +9,7 @@
     "build:audio-intel": "npm run build --workspace=apps/audio-intel",
     "build:command-centre": "npm run build --workspace=apps/command-centre",
     "build:tracker": "npm run build --workspace=apps/tracker",
-    "build:web": "npm run build --workspace=apps/web",
+    "build:web": "npm run build --workspace=total-audio-promo-frontend",
     "build:pitch-generator": "npm run build --workspace=apps/pitch-generator",
     "test:audio-intel": "npm run test --workspace=apps/audio-intel",
     "deploy:web": "cd apps/web && vercel --prod",
