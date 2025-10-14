@@ -27,8 +27,8 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
     
-    - name: Install dependencies
-      run: npm ci
+    - name: Install dependencies (audio-intel only)
+      run: npm ci --workspace=audio-intel --include-workspace-root
     
     - name: Run linting
       run: npm run lint
@@ -58,8 +58,8 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
     
-    - name: Install dependencies
-      run: npm ci
+    - name: Install dependencies for ${{ matrix.app }}
+      run: npm ci --workspace=${{ matrix.app }} --include-workspace-root
     
     - name: Build ${{ matrix.app }}
       run: npm run build --workspace=${{ matrix.app }}
@@ -89,6 +89,16 @@ jobs:
     - name: Install Vercel CLI
       run: npm install -g vercel
     
+    - name: Set Vercel env for ${{ matrix.app }}
+      shell: bash
+      run: |
+        if [ "${{ matrix.app }}" = "audio-intel" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_AUDIO_INTEL }}" >> $GITHUB_ENV; fi
+        if [ "${{ matrix.app }}" = "command-centre" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" >> $GITHUB_ENV; fi
+        if [ "${{ matrix.app }}" = "tracker" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_TRACKER }}" >> $GITHUB_ENV; fi
+        if [ "${{ matrix.app }}" = "total-audio-promo-frontend" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV; fi
+        if [ "${{ matrix.app }}" = "pitch-generator" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV; fi
+        echo "VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }}" >> $GITHUB_ENV
+    
     - name: Deploy ${{ matrix.app }} to staging
       run: |
         # Map workspace to path (web workspace lives at apps/web)
@@ -98,7 +108,6 @@ jobs:
         vercel --token ${{ secrets.VERCEL_TOKEN }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-        VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || (matrix.app == 'command-centre' && secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE) || (matrix.app == 'tracker' && secrets.VERCEL_PROJECT_ID_TRACKER) || (matrix.app == 'total-audio-promo-frontend' && secrets.VERCEL_PROJECT_ID_WEB) || (matrix.app == 'pitch-generator' && secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR) }}
 
   deploy-production:
     name: Deploy to Production
@@ -125,6 +134,16 @@ jobs:
     - name: Install Vercel CLI
       run: npm install -g vercel
     
+    - name: Set Vercel env for ${{ matrix.app }}
+      shell: bash
+      run: |
+        if [ "${{ matrix.app }}" = "audio-intel" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_AUDIO_INTEL }}" >> $GITHUB_ENV; fi
+        if [ "${{ matrix.app }}" = "command-centre" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" >> $GITHUB_ENV; fi
+        if [ "${{ matrix.app }}" = "tracker" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_TRACKER }}" >> $GITHUB_ENV; fi
+        if [ "${{ matrix.app }}" = "total-audio-promo-frontend" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV; fi
+        if [ "${{ matrix.app }}" = "pitch-generator" ]; then echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV; fi
+        echo "VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }}" >> $GITHUB_ENV
+    
     - name: Deploy ${{ matrix.app }} to production
       run: |
         # Map workspace to path (web workspace lives at apps/web)
@@ -134,7 +153,6 @@ jobs:
         vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-        VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || (matrix.app == 'command-centre' && secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE) || (matrix.app == 'tracker' && secrets.VERCEL_PROJECT_ID_TRACKER) || (matrix.app == 'total-audio-promo-frontend' && secrets.VERCEL_PROJECT_ID_WEB) || (matrix.app == 'pitch-generator' && secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR) }}
 
   security:
     name: Security Audit
