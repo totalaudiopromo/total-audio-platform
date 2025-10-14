@@ -46,7 +46,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, command-centre, tracker, total-audio-promo-frontend, pitch-generator]
+        app: [total-audio-promo-frontend, tracker, pitch-generator]
       fail-fast: false
     
     steps:
@@ -74,7 +74,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, command-centre, tracker, total-audio-promo-frontend, pitch-generator]
+        app: [total-audio-promo-frontend, tracker, pitch-generator]
       fail-fast: false
     
     steps:
@@ -119,7 +119,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, command-centre, tracker, total-audio-promo-frontend, pitch-generator]
+        app: [total-audio-promo-frontend, tracker, pitch-generator]
       fail-fast: false
     
     steps:
