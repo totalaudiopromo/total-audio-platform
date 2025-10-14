@@ -24,7 +24,11 @@
     "organize-docs:dry-run": "node scripts/organize-docs.js --dry-run",
     "organize-docs:verbose": "node scripts/organize-docs.js --verbose",
     "clean-docs": "node scripts/organize-docs.js",
-    "install-hooks": "chmod +x scripts/pre-commit-organize-docs.sh && ln -sf ../../scripts/pre-commit-organize-docs.sh .git/hooks/pre-commit && echo '✅ Git hooks installed'"
+    "install-hooks": "chmod +x scripts/pre-commit-organize-docs.sh && ln -sf ../../scripts/pre-commit-organize-docs.sh .git/hooks/pre-commit && echo '✅ Git hooks installed'",
+    "validate-env": "node scripts/validate-environment.js",
+    "standardize-deps": "node scripts/standardize-dependencies.js",
+    "create-health-endpoints": "node scripts/create-health-endpoints.js",
+    "enhance-deployment": "npm run create-health-endpoints && npm run validate-env && npm run standardize-deps"
   },
   "keywords": [
     "music",

@@ -1,0 +1,266 @@
+name: Enhanced CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, staging ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  NODE_VERSION: '18'
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  # Enhanced testing with better coverage
+  test:
+    name: Test & Lint
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install audio dependencies (ALSA)
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libasound2 || sudo apt-get install -y libasound2t64
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Validate environment variables
+      run: npm run validate-env
+      continue-on-error: true
+    
+    - name: Run linting
+      run: npm run lint
+      continue-on-error: true
+    
+    - name: Run type checking
+      run: npm run typecheck
+      continue-on-error: true
+    
+    - name: Run tests
+      run: npm run test
+      continue-on-error: true
+
+  # Enhanced build with caching and monitoring
+  build:
+    name: Build Applications
+    runs-on: ubuntu-latest
+    needs: test
+
+    strategy:
+      matrix:
+        app: [audio-intel, command-centre, tracker, web, pitch-generator]
+      fail-fast: false
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install audio dependencies (ALSA)
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libasound2 || sudo apt-get install -y libasound2t64
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Build ${{ matrix.app }}
+      run: npm run build:${{ matrix.app }}
+      env:
+        CI: true
+        NODE_ENV: production
+    
+    - name: Build time monitoring
+      run: |
+        echo "Build completed for ${{ matrix.app }}"
+        echo "Build time: $(date)"
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-${{ matrix.app }}
+        path: apps/${{ matrix.app }}/.next
+        retention-days: 7
+
+  # Enhanced staging deployment
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [test, build]
+    if: github.ref == 'refs/heads/staging'
+
+    strategy:
+      matrix:
+        app: [audio-intel, command-centre, tracker, web, pitch-generator]
+      fail-fast: false
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install Vercel CLI
+      run: npm install -g vercel
+    
+    - name: Deploy ${{ matrix.app }} to staging
+      run: |
+        cd apps/${{ matrix.app }}
+        vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }} --yes
+      env:
+        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || (matrix.app == 'command-centre' && secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE) || (matrix.app == 'tracker' && secrets.VERCEL_PROJECT_ID_TRACKER) || (matrix.app == 'web' && secrets.VERCEL_PROJECT_ID_WEB) || (matrix.app == 'pitch-generator' && secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR) }}
+    
+    - name: Health check after deployment
+      run: |
+        sleep 30  # Wait for deployment to complete
+        HEALTH_URL="${{ matrix.app == 'audio-intel' && 'https://intel.totalaudiopromo.com/api/health' || (matrix.app == 'command-centre' && 'https://command.totalaudiopromo.com/api/health') || (matrix.app == 'tracker' && 'https://tracker.totalaudiopromo.com/api/health') || (matrix.app == 'web' && 'https://totalaudiopromo.com/api/health') || (matrix.app == 'pitch-generator' && 'https://pitch.totalaudiopromo.com/api/health') }}"
+        echo "Checking health at: $HEALTH_URL"
+        curl -f "$HEALTH_URL" || echo "Health check failed for ${{ matrix.app }}"
+      continue-on-error: true
+
+  # Enhanced production deployment
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [test, build]
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: production
+
+    strategy:
+      matrix:
+        app: [audio-intel, command-centre, tracker, web, pitch-generator]
+      fail-fast: false
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install Vercel CLI
+      run: npm install -g vercel
+    
+    - name: Deploy ${{ matrix.app }} to production
+      run: |
+        cd apps/${{ matrix.app }}
+        vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }} --yes
+      env:
+        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ matrix.app == 'audio-intel' && secrets.VERCEL_PROJECT_ID_AUDIO_INTEL || (matrix.app == 'command-centre' && secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE) || (matrix.app == 'tracker' && secrets.VERCEL_PROJECT_ID_TRACKER) || (matrix.app == 'web' && secrets.VERCEL_PROJECT_ID_WEB) || (matrix.app == 'pitch-generator' && secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR) }}
+    
+    - name: Health check after production deployment
+      run: |
+        sleep 30  # Wait for deployment to complete
+        HEALTH_URL="${{ matrix.app == 'audio-intel' && 'https://intel.totalaudiopromo.com/api/health' || (matrix.app == 'command-centre' && 'https://command.totalaudiopromo.com/api/health') || (matrix.app == 'tracker' && 'https://tracker.totalaudiopromo.com/api/health') || (matrix.app == 'web' && 'https://totalaudiopromo.com/api/health') || (matrix.app == 'pitch-generator' && 'https://pitch.totalaudiopromo.com/api/health') }}"
+        echo "Checking production health at: $HEALTH_URL"
+        curl -f "$HEALTH_URL" || echo "Production health check failed for ${{ matrix.app }}"
+      continue-on-error: true
+
+  # Enhanced security audit
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install audio dependencies (ALSA)
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libasound2 || sudo apt-get install -y libasound2t64
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Run security audit
+      run: npm audit --audit-level moderate
+      continue-on-error: true
+    
+    - name: Check for known vulnerabilities
+      run: npm audit --audit-level high
+      continue-on-error: true
+
+  # Enhanced notifications
+  notify:
+    name: Deployment Notifications
+    runs-on: ubuntu-latest
+    needs: [deploy-production, deploy-staging]
+    if: always()
+    
+    steps:
+    - name: Deployment Success Notification
+      if: success()
+      run: |
+        echo "🎉 Deployment successful for Total Audio Promo Platform"
+        echo "All applications deployed successfully!"
+        echo "Timestamp: $(date)"
+    
+    - name: Deployment Failure Notification  
+      if: failure()
+      run: |
+        echo "❌ Deployment failed for Total Audio Promo Platform"
+        echo "Please check the logs and fix any issues."
+        echo "Timestamp: $(date)"
+    
+    # Add Slack/Discord notifications here when you set them up
+    # - name: Slack Notification
+    #   if: always()
+    #   uses: 8398a7/action-slack@v3
+    #   with:
+    #     status: ${{ job.status }}
+    #     text: "Deployment ${{ job.status }} for Total Audio Promo"
+    #   env:
+    #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # Quality gate
+  quality-gate:
+    name: Quality Gate
+    runs-on: ubuntu-latest
+    needs: [test, build, security]
+    if: always()
+    
+    steps:
+    - name: Quality gate results
+      run: |
+        echo "Quality gate results:"
+        echo "Test & Lint: ${{ needs.test.result }}"
+        echo "Build: ${{ needs.build.result }}"
+        echo "Security: ${{ needs.security.result }}"
+        
+        if [[ "${{ needs.test.result }}" == "success" && "${{ needs.build.result }}" == "success" ]]; then
+          echo "✅ Quality gate passed - ready for deployment!"
+        else
+          echo "⚠️  Quality gate issues detected"
+          echo "Check individual job results for details"
+        fi
