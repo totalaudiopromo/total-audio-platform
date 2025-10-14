@@ -36,19 +36,19 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
 
   const features = [
     {
-      icon: TrendingUp,
+      icon: '📈',
       title: 'Intelligent Routing',
       description: 'Automatically chooses the best tool for each analysis',
       color: 'text-blue-600'
     },
     {
-      icon: DollarSign,
+      icon: '💰',
       title: 'Cost Optimization',
       description: 'Minimizes API costs while maximizing data quality',
       color: 'text-green-600'
     },
     {
-      icon: Clock,
+      icon: '⏰',
       title: 'Fast Fallback',
       description: 'Seamlessly switches to free tools when needed',
       color: 'text-purple-600'
@@ -192,7 +192,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
                 <ul className="space-y-1">
                   {analysisData.data.issues.map((issue: string, index: number) => (
                     <li key={index} className="flex items-center gap-2 text-sm">
-                      <XCircle className="h-4 w-4 text-red-500" />
+                      <span className="h-4 w-4 text-red-500">❌</span>
                       {issue}
                     </li>
                   ))}
@@ -214,7 +214,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Search className="h-5 w-5 text-blue-600" />
+              <span className="h-5 w-5 text-blue-600">🔍</span>
               Keyword Research Results
             </CardTitle>
             <CardDescription>
@@ -259,7 +259,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Users className="h-5 w-5 text-purple-600" />
+              <span className="h-5 w-5 text-purple-600">👥</span>
               Competitor Analysis Results
             </CardTitle>
             <CardDescription>
@@ -310,7 +310,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-orange-600" />
+              <span className="h-5 w-5 text-orange-600">📈</span>
               Trends Analysis Results
             </CardTitle>
             <CardDescription>
@@ -344,7 +344,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Zap className="h-5 w-5 text-blue-600" />
+            <span className="h-5 w-5 text-blue-600">⚡</span>
             Hybrid SEO Integration
           </CardTitle>
           <CardDescription>
@@ -357,7 +357,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             {features.map((feature, index) => (
               <div key={index} className="flex items-start gap-3 p-3 rounded-lg border">
-                <feature.icon className={`h-5 w-5 mt-0.5 ${feature.color}`} />
+                <span className={`h-5 w-5 mt-0.5 ${feature.color}`}>{String(feature.icon)}</span>
                 <div>
                   <h4 className="font-medium text-sm">{feature.title}</h4>
                   <p className="text-xs text-muted-foreground">{feature.description}</p>
@@ -527,7 +527,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
           <Card className="mt-6 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
             <CardContent className="pt-6">
               <div className="flex items-center gap-2 mb-2">
-                <Zap className="h-4 w-4 text-blue-600" />
+                <span className="h-4 w-4 text-blue-600">⚡</span>
                 <span className="font-medium text-blue-800">Hybrid Benefits</span>
               </div>
               <p className="text-sm text-blue-700">
