@@ -46,7 +46,7 @@ export default function Error({
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <button
             onClick={reset}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-black text-lg px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 text-white font-black text-lg px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all hover:bg-amber-600"
           >
             <RefreshCw className="w-5 h-5" />
             Try Again
@@ -110,7 +110,7 @@ export default function Error({
                 <br />
                 <span className="text-sm">
                   If the problem persists,{' '}
-                  <a href="mailto:support@totalaudiopromo.com" className="text-blue-600 hover:text-blue-700 font-bold transition-colors">
+                  <a href="mailto:support@totalaudiopromo.com" className="text-amber-600 hover:text-amber-700 font-bold transition-colors">
                     email us
                   </a>
                   {error.digest && ` with error ID: ${error.digest}`}

@@ -35,7 +35,7 @@ export default function BBCRadio1PitchWriting() {
       <article className="min-h-screen bg-gray-50 px-4 py-12">
         <div className="max-w-4xl mx-auto">
         <header className="mb-12">
-          <Link href="/blog" className="text-purple-600 hover:text-purple-700 font-semibold mb-4 inline-block">
+          <Link href="/blog" className="text-amber-600 hover:text-amber-700 font-semibold mb-4 inline-block">
             ← Back to Blog
           </Link>
 
@@ -51,7 +51,7 @@ export default function BBCRadio1PitchWriting() {
             <span>10 min read</span>
           </div>
 
-          <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-lg">
+          <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-lg">
             <p className="text-lg text-gray-800 leading-relaxed">
               After writing over 300 BBC Radio 1 pitches, here's what nobody tells you: your generic "check out my track" pitch? 2% response rate.
               But a proper pitch with genre-specific context, show understanding, and timing intelligence? 14-18% for specialist shows. Here's exactly
@@ -113,9 +113,9 @@ export default function BBCRadio1PitchWriting() {
                 <span className="font-bold">Weeknight Specialist (11pm-1am)</span>
                 <span className="text-green-600 font-black">14-18% average response (TARGET HERE)</span>
               </div>
-              <div className="flex justify-between items-center p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <div className="flex justify-between items-center p-4 bg-amber-50 rounded-lg border border-amber-200">
                 <span className="font-bold">Genre-Specific Shows (e.g. Residency)</span>
-                <span className="text-blue-600 font-black">16-22% with perfect genre fit</span>
+                <span className="text-amber-600 font-black">16-22% with perfect genre fit</span>
               </div>
             </div>
           </section>
@@ -124,8 +124,8 @@ export default function BBCRadio1PitchWriting() {
           <section className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">Proven Pitch Template Structure</h2>
 
-            <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-6 space-y-4">
-              <h3 className="text-xl font-bold text-purple-900">Subject Line (Critical - 3 Variations)</h3>
+            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-6 space-y-4">
+              <h3 className="text-xl font-bold text-amber-900">Subject Line (Critical - 3 Variations)</h3>
               <div className="space-y-2 text-gray-700">
                 <p><strong>Option 1:</strong> "[Genre] [Artist] - [Hook] (Perfect for [Show Name])"</p>
                 <p><strong>Option 2:</strong> "New [Genre]: [Artist] - [Track Title] ([Similar Artist] vibes)"</p>
@@ -133,13 +133,13 @@ export default function BBCRadio1PitchWriting() {
               </div>
             </div>
 
-            <div className="bg-indigo-50 border-2 border-indigo-200 rounded-xl p-6 space-y-4">
-              <h3 className="text-xl font-bold text-indigo-900">Opening (Context Hook)</h3>
+            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-6 space-y-4">
+              <h3 className="text-xl font-bold text-amber-900">Opening (Context Hook)</h3>
               <p className="text-gray-700">
                 Start with show-specific context. Reference a recent play that's similar genre/vibe. Shows you actually listen and understand their
                 programming. Don't just say "I love your show" - be specific about why this track fits.
               </p>
-              <div className="bg-white p-4 rounded border border-indigo-200">
+              <div className="bg-white p-4 rounded border border-amber-200">
                 <p className="text-gray-800 italic">
                   "Heard you playing [Similar Artist] last week - that darker electronica vibe. Our new track '[Track Name]' sits in that same space
                   but with more industrial textures. Think Burial meets Bicep's harder moments."
@@ -175,13 +175,13 @@ export default function BBCRadio1PitchWriting() {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 space-y-4">
-              <h3 className="text-xl font-bold text-blue-900">Close (Easy Access)</h3>
+            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-6 space-y-4">
+              <h3 className="text-xl font-bold text-amber-900">Close (Easy Access)</h3>
               <p className="text-gray-700">
                 Private stream link (not public Spotify), contact details, done. Don't ask for feedback, don't ask for a response timeline.
                 Make it dead easy for them to listen right now.
               </p>
-              <div className="bg-white p-4 rounded border border-blue-200">
+              <div className="bg-white p-4 rounded border border-amber-200">
                 <p className="text-gray-800 italic">
                   "Private stream: [Link]<br/>
                   WAV available on request.<br/>
@@ -229,7 +229,7 @@ export default function BBCRadio1PitchWriting() {
           {/* Tool CTA */}
           <section className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">Generate BBC Radio 1 Pitches in 60 Seconds</h2>
-            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-300 rounded-xl p-8">
+            <div className="bg-gradient-to-br from-amber-50 to-amber-50 border-2 border-amber-300 rounded-xl p-8">
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 Pitch Generator creates show-specific Radio 1 pitches using these exact templates and benchmarks. Input your track details once,
                 get customised pitches for specialist shows with proven 14-18% response rates. Built by radio promoters who've pitched Radio 1 for 5+ years.
@@ -237,13 +237,13 @@ export default function BBCRadio1PitchWriting() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/pitch/generate"
-                  className="bg-purple-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-purple-700 transition-colors text-center shadow-md"
+                  className="bg-amber-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors text-center shadow-md"
                 >
                   Try Free (5 pitches/month) →
                 </Link>
                 <Link
                   href="/pricing"
-                  className="bg-white text-purple-600 border-2 border-purple-600 px-6 py-3 rounded-lg font-bold hover:bg-purple-50 transition-colors text-center"
+                  className="bg-white text-amber-600 border-2 border-amber-600 px-6 py-3 rounded-lg font-bold hover:bg-amber-50 transition-colors text-center"
                 >
                   See Pricing
                 </Link>

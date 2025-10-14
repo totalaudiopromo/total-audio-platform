@@ -3,6 +3,8 @@
  * Helps search engines understand content context
  */
 
+import React from 'react';
+
 export interface BlogPostData {
   title: string;
   description: string;

@@ -185,7 +185,7 @@ export default function ReviewPitchPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-iris" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
       </div>
     );
   }
@@ -255,7 +255,7 @@ export default function ReviewPitchPage() {
                 onClick={() => setSelectedSubject(key)}
                 className={`w-full rounded-xl border px-4 py-3 text-left transition ${
                   selectedSubject === key
-                    ? 'border-brand-iris bg-brand-iris/10 text-gray-900'
+                    ? 'border-brand-amber bg-brand-amber/10 text-gray-900'
                     : 'border-gray-300 bg-gray-50 text-gray-900/70 hover:border-white/30'
                 }`}
               >
@@ -285,7 +285,7 @@ export default function ReviewPitchPage() {
               value={editedBody}
               onChange={(e) => setEditedBody(e.target.value)}
               rows={12}
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-4 font-mono text-sm text-gray-900 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-4 font-mono text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
             />
           ) : (
             <div className="rounded-xl border border-gray-300 bg-gray-50 px-6 py-6">
@@ -407,11 +407,11 @@ export default function ReviewPitchPage() {
         <h3 className="text-lg font-semibold">What's next?</h3>
         <ul className="mt-4 space-y-3 text-sm text-gray-900/70">
           <li className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-iris/20 text-xs font-semibold text-brand-iris">1</span>
+            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber">1</span>
             <span>Copy this pitch and paste it into your email client</span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-magenta/20 text-xs font-semibold text-brand-magenta">2</span>
+            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber">2</span>
             <span>Send it at the suggested time for best response rates</span>
           </li>
           <li className="flex items-start gap-3">

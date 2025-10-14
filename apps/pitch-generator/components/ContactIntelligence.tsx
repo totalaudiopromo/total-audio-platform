@@ -55,7 +55,7 @@ export function ContactIntelligence({
 
   const getResponseRateColor = (rate: number) => {
     if (rate >= 70) return 'text-success';
-    if (rate >= 40) return 'text-brand-iris';
+    if (rate >= 40) return 'text-brand-amber';
     if (rate >= 20) return 'text-brand-amber';
     return 'text-gray-900/60';
   };
@@ -63,9 +63,9 @@ export function ContactIntelligence({
   const getToneColor = (tone: string) => {
     switch (tone) {
       case 'casual':
-        return 'bg-brand-magenta/20 text-brand-magenta';
+        return 'bg-brand-amber/20 text-brand-amber';
       case 'professional':
-        return 'bg-brand-iris/20 text-brand-iris';
+        return 'bg-brand-amber/20 text-brand-amber';
       case 'enthusiastic':
         return 'bg-brand-amber/20 text-brand-amber';
       default:
@@ -74,7 +74,7 @@ export function ContactIntelligence({
   };
 
   return (
-    <div className="rounded-2xl border border-brand-iris/30 bg-brand-iris/5 p-5">
+    <div className="rounded-2xl border border-brand-amber/30 bg-brand-amber/5 p-5">
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
           <h4 className="font-semibold text-gray-900">Contact Intelligence</h4>
@@ -90,7 +90,7 @@ export function ContactIntelligence({
         {/* Last Contacted */}
         {lastContact && (
           <div className="flex items-start gap-3 rounded-lg bg-white/50 px-3 py-2.5">
-            <Clock className="mt-0.5 h-4 w-4 text-brand-iris" />
+            <Clock className="mt-0.5 h-4 w-4 text-brand-amber" />
             <div className="flex-1 min-w-0">
               <p className="text-xs font-medium text-gray-900/60">Last Contacted</p>
               <p className="mt-0.5 text-sm font-semibold">{timesSinceLastContact}</p>
@@ -101,7 +101,7 @@ export function ContactIntelligence({
         {/* Response Rate */}
         {totalInteractions > 0 && (
           <div className="flex items-start gap-3 rounded-lg bg-white/50 px-3 py-2.5">
-            <TrendingUp className="mt-0.5 h-4 w-4 text-brand-iris" />
+            <TrendingUp className="mt-0.5 h-4 w-4 text-brand-amber" />
             <div className="flex-1 min-w-0">
               <p className="text-xs font-medium text-gray-900/60">Response Rate</p>
               <p className={`mt-0.5 text-sm font-semibold ${getResponseRateColor(responseRate)}`}>
@@ -114,7 +114,7 @@ export function ContactIntelligence({
         {/* Total Interactions */}
         {totalInteractions > 0 && (
           <div className="flex items-start gap-3 rounded-lg bg-white/50 px-3 py-2.5">
-            <Mail className="mt-0.5 h-4 w-4 text-brand-iris" />
+            <Mail className="mt-0.5 h-4 w-4 text-brand-amber" />
             <div className="flex-1 min-w-0">
               <p className="text-xs font-medium text-gray-900/60">Total Pitches Sent</p>
               <p className="mt-0.5 text-sm font-semibold">{totalInteractions}</p>
@@ -124,7 +124,7 @@ export function ContactIntelligence({
 
         {/* Preferred Tone */}
         <div className="flex items-start gap-3 rounded-lg bg-white/50 px-3 py-2.5">
-          <MessageCircle className="mt-0.5 h-4 w-4 text-brand-iris" />
+          <MessageCircle className="mt-0.5 h-4 w-4 text-brand-amber" />
           <div className="flex-1 min-w-0">
             <p className="text-xs font-medium text-gray-900/60">Preferred Tone</p>
             <span
@@ -146,8 +146,8 @@ export function ContactIntelligence({
 
       {/* First Contact Indicator */}
       {!lastContact && totalInteractions === 0 && (
-        <div className="mt-3 rounded-lg border border-dashed border-brand-iris/30 bg-white/30 px-3 py-2.5 text-center">
-          <p className="text-xs font-medium text-brand-iris">
+        <div className="mt-3 rounded-lg border border-dashed border-brand-amber/30 bg-white/30 px-3 py-2.5 text-center">
+          <p className="text-xs font-medium text-brand-amber">
             First time pitching to this contact
           </p>
         </div>

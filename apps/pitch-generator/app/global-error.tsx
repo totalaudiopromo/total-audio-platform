@@ -16,10 +16,8 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <html>
-      <body>
-        <div className="min-h-screen bg-white flex items-center justify-center px-4">
-          <div className="max-w-2xl w-full text-center">
+    <div className="min-h-screen bg-white flex items-center justify-center px-4">
+      <div className="max-w-2xl w-full text-center">
 
             {/* Error Icon */}
             <div className="mb-8">
@@ -47,7 +45,7 @@ export default function GlobalError({
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <button
                 onClick={reset}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-black text-lg px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 text-white font-black text-lg px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all hover:bg-amber-600"
               >
                 <RefreshCw className="w-5 h-5" />
                 Reload Page
@@ -72,14 +70,12 @@ export default function GlobalError({
               </p>
               <a
                 href="mailto:support@totalaudiopromo.com"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 text-white font-bold text-lg px-6 py-3 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 text-white font-bold text-lg px-6 py-3 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all hover:bg-amber-600"
               >
                 Email Support
               </a>
             </div>
           </div>
         </div>
-      </body>
-    </html>
   );
 }

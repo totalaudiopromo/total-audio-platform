@@ -190,7 +190,7 @@ export default function ContactsPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-iris" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
       </div>
     );
   }
@@ -246,8 +246,8 @@ export default function ContactsPage() {
               </button>
             </div>
           </div>
-          <div className="mt-4 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3">
-            <p className="text-sm text-blue-900">
+          <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
+            <p className="text-sm text-amber-900">
               <strong>💡 Pro tip:</strong> Use Audio Intel to enrich your contacts first, then export as CSV and import here for best results.
             </p>
           </div>
@@ -255,7 +255,7 @@ export default function ContactsPage() {
 
         {/* Add Contact Form */}
         {showAddForm && (
-          <div className="mb-8 rounded-2xl border border-brand-iris/30 bg-brand-iris/5 p-6">
+          <div className="mb-8 rounded-2xl border border-brand-amber/30 bg-brand-amber/5 p-6">
             <h3 className="mb-4 text-lg font-semibold">Add New Contact</h3>
             <form onSubmit={handleAddContact} className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
@@ -269,7 +269,7 @@ export default function ContactsPage() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Sarah Johnson"
-                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
                 </div>
                 <div>
@@ -281,7 +281,7 @@ export default function ContactsPage() {
                     value={formData.role}
                     onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                     placeholder="e.g. Producer"
-                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
                 </div>
                 <div>
@@ -293,7 +293,7 @@ export default function ContactsPage() {
                     value={formData.outlet}
                     onChange={(e) => setFormData({ ...formData, outlet: e.target.value })}
                     placeholder="e.g. BBC Radio 6 Music"
-                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
                 </div>
                 <div>
@@ -305,7 +305,7 @@ export default function ContactsPage() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="contact@example.com"
-                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
                 </div>
               </div>
@@ -318,7 +318,7 @@ export default function ContactsPage() {
                   value={formData.genre_tags}
                   onChange={(e) => setFormData({ ...formData, genre_tags: e.target.value })}
                   placeholder="e.g. indie, folk, alternative"
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                 />
               </div>
               <div>
@@ -330,7 +330,7 @@ export default function ContactsPage() {
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                   rows={2}
                   placeholder="e.g. Replies on Tuesdays, loves touring artists"
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                 />
               </div>
               <div>
@@ -345,7 +345,7 @@ export default function ContactsPage() {
                       onClick={() => setFormData({ ...formData, preferred_tone: tone })}
                       className={`rounded-lg px-4 py-2 text-sm transition ${
                         formData.preferred_tone === tone
-                          ? 'bg-brand-iris/20 text-brand-iris'
+                          ? 'bg-brand-amber/20 text-brand-amber'
                           : 'bg-gray-100 text-gray-900/70 hover:bg-white/15'
                       }`}
                     >
@@ -402,7 +402,7 @@ export default function ContactsPage() {
                     {contact.genre_tags && contact.genre_tags.length > 0 && (
                       <div className="mt-3 flex flex-wrap gap-2">
                         {contact.genre_tags.map((tag) => (
-                          <span key={tag} className="rounded-full bg-brand-iris/20 px-3 py-1 text-xs text-brand-iris">
+                          <span key={tag} className="rounded-full bg-brand-amber/20 px-3 py-1 text-xs text-brand-amber">
                             {tag}
                           </span>
                         ))}

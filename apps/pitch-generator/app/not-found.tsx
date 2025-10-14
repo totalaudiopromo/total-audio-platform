@@ -21,7 +21,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <Link
             href="/dashboard"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-black text-lg px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 text-white font-black text-lg px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all hover:bg-amber-600"
           >
             <Home className="w-5 h-5" />
             Go to Dashboard
@@ -44,24 +44,24 @@ export default function NotFound() {
 
           <div className="grid sm:grid-cols-2 gap-6">
             <div className="space-y-3 text-left">
-              <Link href="/pitch/generate" className="block text-blue-600 hover:text-blue-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
+              <Link href="/pitch/generate" className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
                 → Generate New Pitch
               </Link>
-              <Link href="/pitch/history" className="block text-blue-600 hover:text-blue-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
+              <Link href="/pitch/history" className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
                 → View Pitch History
               </Link>
-              <Link href="/pitch/templates" className="block text-blue-600 hover:text-blue-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
+              <Link href="/pitch/templates" className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
                 → Browse Templates
               </Link>
             </div>
             <div className="space-y-3 text-left">
-              <Link href="/pricing" className="block text-blue-600 hover:text-blue-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
+              <Link href="/pricing" className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
                 → View Pricing Plans
               </Link>
-              <Link href="/blog" className="block text-blue-600 hover:text-blue-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
+              <Link href="/blog" className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
                 → Read Our Blog
               </Link>
-              <Link href="/" className="block text-blue-600 hover:text-blue-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
+              <Link href="/" className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
                 → Back to Homepage
               </Link>
             </div>
@@ -72,7 +72,7 @@ export default function NotFound() {
         <div className="mt-8 text-center">
           <p className="text-gray-600 font-medium">
             Still can't find what you need?
-            <a href="mailto:support@totalaudiopromo.com" className="text-blue-600 hover:text-blue-700 ml-1 font-bold transition-colors">
+            <a href="mailto:support@totalaudiopromo.com" className="text-amber-600 hover:text-amber-700 ml-1 font-bold transition-colors">
               Contact our support team
             </a>
           </p>

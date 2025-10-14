@@ -48,7 +48,7 @@ export function ExitIntentPopup() {
 
       {/* Popup */}
       <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[9999] w-full max-w-2xl mx-4 animate-in zoom-in-95 duration-200">
-        <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl border-4 border-black shadow-brutal relative">
+        <div className="bg-gradient-to-br from-amber-50 to-amber-50 rounded-2xl border-4 border-black shadow-brutal relative">
           {/* Close button */}
           <button
             onClick={handleClose}
@@ -60,8 +60,8 @@ export function ExitIntentPopup() {
 
           <div className="px-8 py-10 sm:px-12 sm:py-14">
             {/* Badge */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-xl border-4 border-purple-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <span className="text-sm font-black uppercase tracking-[0.2em] text-purple-600">Wait! Before You Go...</span>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-xl border-4 border-amber-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <span className="text-sm font-black uppercase tracking-[0.2em] text-amber-600">Wait! Before You Go...</span>
             </div>
 
             {/* Heading */}
@@ -96,7 +96,7 @@ export function ExitIntentPopup() {
               <Link
                 href="/auth/signin"
                 onClick={handleClose}
-                className="flex-1 bg-purple-600 text-white px-8 py-4 rounded-xl font-black hover:bg-purple-700 transition-all text-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
+                className="flex-1 bg-amber-600 text-white px-8 py-4 rounded-xl font-black hover:bg-amber-700 transition-all text-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
               >
                 Start Free Trial (5 pitches)
               </Link>

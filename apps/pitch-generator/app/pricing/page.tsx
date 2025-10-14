@@ -131,7 +131,7 @@ export default function PricingPage() {
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
       <header className="glass-panel px-6 py-10 sm:px-10">
-        <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800">Simple Pricing · No Hidden Fees</span>
+        <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">Simple Pricing · No Hidden Fees</span>
         <h1 className="mt-6 text-3xl font-semibold">Stop spending hours on pitches. Start at £0.</h1>
         <p className="mt-4 max-w-2xl text-sm text-gray-600">
           Choose a plan based on your campaign volume. All plans include AI-powered pitch generation,
@@ -142,7 +142,7 @@ export default function PricingPage() {
             type="button"
             onClick={() => setBilling('monthly')}
             className={`rounded-full px-4 py-2 font-semibold transition ${
-              billing === 'monthly' ? 'bg-blue-500 text-white shadow-sm' : 'text-gray-600'
+              billing === 'monthly' ? 'bg-amber-500 text-white shadow-sm' : 'text-gray-600'
             }`}
           >
             Monthly billing
@@ -151,7 +151,7 @@ export default function PricingPage() {
             type="button"
             onClick={() => setBilling('annual')}
             className={`rounded-full px-4 py-2 font-semibold transition ${
-              billing === 'annual' ? 'bg-blue-500 text-white shadow-sm' : 'text-gray-600'
+              billing === 'annual' ? 'bg-amber-500 text-white shadow-sm' : 'text-gray-600'
             }`}
           >
             Annual billing (save 2 months)
@@ -185,13 +185,13 @@ export default function PricingPage() {
                 <ul className="space-y-2 text-sm text-gray-600">
                   {plan.features.map(feature => (
                     <li key={feature} className="flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-brand-iris" aria-hidden />
+                      <span className="h-2 w-2 rounded-full bg-brand-amber" aria-hidden />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
                 {isActive && (
-                  <span className="self-start rounded-full bg-blue-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">
+                  <span className="self-start rounded-full bg-amber-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-amber-600">
                     Selected
                   </span>
                 )}
@@ -219,7 +219,7 @@ export default function PricingPage() {
             onChange={event => setEmail(event.target.value)}
             placeholder="you@example.com"
             required
-            className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
           />
           <p className="text-xs text-gray-500">Prefilled with the signed-in account when available.</p>
         </div>

@@ -86,7 +86,7 @@ export default function DashboardPage() {
   function getStatusColor(status: string) {
     switch (status) {
       case 'draft': return 'bg-gray-100 text-gray-600';
-      case 'sent': return 'bg-brand-iris/20 text-brand-iris';
+      case 'sent': return 'bg-brand-amber/20 text-brand-amber';
       case 'replied': return 'bg-success/20 text-success';
       case 'success': return 'bg-success/30 text-success';
       case 'no_reply': return 'bg-gray-50 text-gray-400';
@@ -110,7 +110,7 @@ export default function DashboardPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-iris" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
       </div>
     );
   }
@@ -125,9 +125,9 @@ export default function DashboardPage() {
       <div className="glass-panel px-8 py-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-              <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800">Pitch Generator</span>
+              <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">Pitch Generator</span>
             <h1 className="mt-3 text-3xl font-bold">
-              Welcome back, <span className="text-blue-600">{session.user?.name || 'there'}</span>
+              Welcome back, <span className="text-brand-amber">{session.user?.name || 'there'}</span>
             </h1>
             <p className="mt-2 text-gray-900/60">
               Write personalized pitches in seconds, not hours
@@ -160,8 +160,8 @@ export default function DashboardPage() {
       {stats.totalPitches === 0 ? (
         <div className="glass-panel px-8 py-12">
           <div className="mx-auto max-w-2xl text-center">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-iris/10">
-              <Zap className="h-8 w-8 text-brand-iris" />
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-amber/10">
+              <Zap className="h-8 w-8 text-brand-amber" />
             </div>
             <h2 className="mt-6 text-2xl font-bold">Generate Your First Pitch</h2>
             <p className="mt-3 text-gray-900/60">
@@ -179,11 +179,11 @@ export default function DashboardPage() {
             </div>
             <div className="mt-8 grid gap-4 text-left sm:grid-cols-3">
               <div className="rounded-xl border border-white/10 bg-gray-50 px-4 py-4">
-                <div className="text-2xl font-bold text-brand-iris">6</div>
+                <div className="text-2xl font-bold text-brand-amber">6</div>
                 <p className="mt-1 text-xs text-gray-900/60">Proven templates from real campaigns</p>
               </div>
               <div className="rounded-xl border border-white/10 bg-gray-50 px-4 py-4">
-                <div className="text-2xl font-bold text-brand-magenta">3</div>
+                <div className="text-2xl font-bold text-brand-amber">3</div>
                 <p className="mt-1 text-xs text-gray-900/60">Subject line variations per pitch</p>
               </div>
               <div className="rounded-xl border border-white/10 bg-gray-50 px-4 py-4">
@@ -203,8 +203,8 @@ export default function DashboardPage() {
                   <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Total Pitches</p>
                   <p className="mt-3 text-3xl font-bold">{stats.totalPitches}</p>
                 </div>
-                <div className="rounded-full bg-brand-iris/20 p-3">
-                  <Zap className="h-5 w-5 text-brand-iris" />
+                <div className="rounded-full bg-brand-amber/20 p-3">
+                  <Zap className="h-5 w-5 text-brand-amber" />
                 </div>
               </div>
             </div>
@@ -215,8 +215,8 @@ export default function DashboardPage() {
                   <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Sent</p>
                   <p className="mt-3 text-3xl font-bold">{stats.sentPitches}</p>
                 </div>
-                <div className="rounded-full bg-brand-magenta/20 p-3">
-                  <Send className="h-5 w-5 text-brand-magenta" />
+                <div className="rounded-full bg-brand-amber/20 p-3">
+                  <Send className="h-5 w-5 text-brand-amber" />
                 </div>
               </div>
             </div>
@@ -331,22 +331,22 @@ export default function DashboardPage() {
 
       {/* Quick Links */}
       <div className="grid gap-6 sm:grid-cols-2">
-        <Link href="/pitch/templates" className="glass-panel group px-8 py-8 transition hover:border-brand-iris/50">
+        <Link href="/pitch/templates" className="glass-panel group px-8 py-8 transition hover:border-brand-amber/50">
           <h3 className="text-xl font-semibold">Template Library</h3>
           <p className="mt-2 text-sm text-gray-900/60">
             Browse genre-specific templates from 500+ successful campaigns
           </p>
-          <span className="mt-4 inline-flex text-sm font-medium text-brand-iris transition group-hover:gap-2">
+          <span className="mt-4 inline-flex text-sm font-medium text-brand-amber transition group-hover:gap-2">
             Browse templates →
           </span>
         </Link>
 
-        <Link href="/pitch/contacts" className="glass-panel group px-8 py-8 transition hover:border-brand-magenta/50">
+        <Link href="/pitch/contacts" className="glass-panel group px-8 py-8 transition hover:border-brand-amber/50">
           <h3 className="text-xl font-semibold">Manage Contacts</h3>
           <p className="mt-2 text-sm text-gray-900/60">
             Add and organize your media contacts for personalized pitches
           </p>
-          <span className="mt-4 inline-flex text-sm font-medium text-brand-magenta transition group-hover:gap-2">
+          <span className="mt-4 inline-flex text-sm font-medium text-brand-amber transition group-hover:gap-2">
             View contacts →
           </span>
         </Link>

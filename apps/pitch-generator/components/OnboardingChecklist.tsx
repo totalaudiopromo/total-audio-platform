@@ -102,13 +102,13 @@ export function OnboardingChecklist({ userId }: OnboardingChecklistProps) {
   return (
     <div className="glass-panel relative overflow-hidden">
       {/* Gradient background accent */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-blue-50/50 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 to-amber-50/50 pointer-events-none" />
 
       <div className="relative px-6 py-6 sm:px-8">
         {/* Header */}
         <div className="flex items-start justify-between mb-6">
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-purple-600 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-600 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -141,7 +141,7 @@ export function OnboardingChecklist({ userId }: OnboardingChecklistProps) {
           </div>
           <div className="h-2 bg-gray-200 rounded-full border-2 border-black overflow-hidden">
             <div
-              className="h-full bg-purple-600 transition-all duration-500 ease-out"
+              className="h-full bg-amber-600 transition-all duration-500 ease-out"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>
@@ -165,7 +165,7 @@ export function OnboardingChecklist({ userId }: OnboardingChecklistProps) {
                 className={`block p-4 rounded-xl border-2 transition group ${
                   step.completed
                     ? 'bg-green-50 border-green-600 hover:bg-green-100'
-                    : 'bg-white border-gray-300 hover:border-purple-600 hover:shadow-[2px_2px_0px_0px_rgba(147,51,234,0.3)]'
+                    : 'bg-white border-gray-300 hover:border-amber-600 hover:shadow-[2px_2px_0px_0px_rgba(147,51,234,0.3)]'
                 }`}
               >
                 <div className="flex items-start gap-4">
@@ -174,7 +174,7 @@ export function OnboardingChecklist({ userId }: OnboardingChecklistProps) {
                     {step.completed ? (
                       <CheckCircle2 className="w-6 h-6 text-green-600" />
                     ) : (
-                      <Circle className="w-6 h-6 text-gray-400 group-hover:text-purple-600 transition" />
+                      <Circle className="w-6 h-6 text-gray-400 group-hover:text-amber-600 transition" />
                     )}
                   </div>
 
@@ -203,7 +203,7 @@ export function OnboardingChecklist({ userId }: OnboardingChecklistProps) {
                   {!step.completed && (
                     <div className="flex-shrink-0 mt-1">
                       <svg
-                        className="w-5 h-5 text-gray-400 group-hover:text-purple-600 transition transform group-hover:translate-x-0.5"
+                        className="w-5 h-5 text-gray-400 group-hover:text-amber-600 transition transform group-hover:translate-x-0.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -220,8 +220,8 @@ export function OnboardingChecklist({ userId }: OnboardingChecklistProps) {
 
         {/* CTA Footer */}
         {completedCount === 0 && !isLoading && (
-          <div className="mt-6 p-4 bg-purple-50 rounded-xl border-2 border-purple-200">
-            <p className="text-sm text-purple-900 font-bold">
+          <div className="mt-6 p-4 bg-amber-50 rounded-xl border-2 border-amber-200">
+            <p className="text-sm text-amber-900 font-bold">
               💡 Tip: Start by adding a contact from your existing spreadsheet or database
             </p>
           </div>

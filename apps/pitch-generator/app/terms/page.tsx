@@ -12,7 +12,7 @@ export default function TermsPage() {
     <div className="mx-auto w-full max-w-4xl">
       <div className="glass-panel px-8 py-12">
         <div className="mb-8">
-          <Link href="/" className="text-sm text-blue-600 hover:underline">
+          <Link href="/" className="text-sm text-amber-600 hover:underline">
             ← Back to home
           </Link>
         </div>
@@ -131,7 +131,7 @@ export default function TermsPage() {
             <h3 className="text-xl font-semibold text-gray-900 mt-6 mb-3">5.3 Refunds</h3>
             <p className="text-gray-600 leading-relaxed">
               We offer a 30-day money-back guarantee for first-time PRO and Agency subscribers.
-              To request a refund, email <a href="mailto:billing@totalaudiopromo.com" className="text-blue-600 hover:underline">billing@totalaudiopromo.com</a> within 30 days of your first payment.
+              To request a refund, email <a href="mailto:billing@totalaudiopromo.com" className="text-amber-600 hover:underline">billing@totalaudiopromo.com</a> within 30 days of your first payment.
             </p>
 
             <h3 className="text-xl font-semibold text-gray-900 mt-6 mb-3">5.4 Cancellation</h3>
@@ -225,7 +225,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">10. Data Protection</h2>
             <p className="text-gray-600 leading-relaxed">
-              Your use of the Service is also governed by our <Link href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</Link>.
+              Your use of the Service is also governed by our <Link href="/privacy" className="text-amber-600 hover:underline">Privacy Policy</Link>.
               We comply with GDPR and UK data protection laws.
             </p>
           </section>
@@ -270,7 +270,7 @@ export default function TermsPage() {
               These Terms are governed by the laws of England and Wales. Any disputes will be resolved in the courts of England and Wales.
             </p>
             <p className="text-gray-600 leading-relaxed mt-4">
-              Before initiating legal proceedings, we encourage you to contact us at <a href="mailto:legal@totalaudiopromo.com" className="text-blue-600 hover:underline">legal@totalaudiopromo.com</a> to resolve the issue amicably.
+              Before initiating legal proceedings, we encourage you to contact us at <a href="mailto:legal@totalaudiopromo.com" className="text-amber-600 hover:underline">legal@totalaudiopromo.com</a> to resolve the issue amicably.
             </p>
           </section>
 
@@ -281,7 +281,7 @@ export default function TermsPage() {
               For questions about these Terms:
             </p>
             <p className="text-gray-600 leading-relaxed mt-4">
-              <strong>Email:</strong> <a href="mailto:legal@totalaudiopromo.com" className="text-blue-600 hover:underline">legal@totalaudiopromo.com</a><br />
+              <strong>Email:</strong> <a href="mailto:legal@totalaudiopromo.com" className="text-amber-600 hover:underline">legal@totalaudiopromo.com</a><br />
               <strong>Subject:</strong> Pitch Generator - Terms Inquiry
             </p>
           </section>
@@ -296,7 +296,7 @@ export default function TermsPage() {
         </div>
 
         {/* Footer CTA */}
-        <div className="mt-12 rounded-xl border-2 border-blue-500 bg-blue-50 p-6">
+        <div className="mt-12 rounded-xl border-2 border-amber-500 bg-amber-50 p-6">
           <h3 className="text-lg font-bold text-gray-900 mb-2">Ready to start?</h3>
           <p className="text-sm text-gray-600 mb-4">
             By signing up, you agree to these Terms of Service and our Privacy Policy. Try 5 free pitches, no credit card required.

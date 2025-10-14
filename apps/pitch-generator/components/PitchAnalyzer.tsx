@@ -59,14 +59,14 @@ export function PitchAnalyser({ pitchBody, subjectLine, contactType }: PitchAnal
 
   const getScoreColor = (score: number) => {
     if (score >= 90) return 'text-green-600';
-    if (score >= 75) return 'text-blue-600';
+    if (score >= 75) return 'text-amber-600';
     if (score >= 60) return 'text-amber-600';
     return 'text-red-600';
   };
 
   const getScoreBgColor = (score: number) => {
     if (score >= 90) return 'bg-green-100 border-green-300';
-    if (score >= 75) return 'bg-blue-100 border-blue-300';
+    if (score >= 75) return 'bg-amber-100 border-amber-300';
     if (score >= 60) return 'bg-amber-100 border-amber-300';
     return 'bg-red-100 border-red-300';
   };
@@ -215,17 +215,17 @@ export function PitchAnalyser({ pitchBody, subjectLine, contactType }: PitchAnal
 
           {/* Suggestions */}
           {analysis.suggestions.length > 0 && (
-            <div className="glass-panel bg-blue-50 px-5 py-4">
+            <div className="glass-panel bg-amber-50 px-5 py-4">
               <div className="flex items-center gap-2">
-                <Lightbulb className="h-5 w-5 text-blue-600" />
-                <p className="text-sm font-semibold uppercase tracking-wider text-blue-800">
+                <Lightbulb className="h-5 w-5 text-amber-600" />
+                <p className="text-sm font-semibold uppercase tracking-wider text-amber-800">
                   Actionable Suggestions
                 </p>
               </div>
               <ul className="mt-3 space-y-2">
                 {analysis.suggestions.map((suggestion, index) => (
                   <li key={index} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="mt-1 font-bold text-blue-600">{index + 1}.</span>
+                    <span className="mt-1 font-bold text-amber-600">{index + 1}.</span>
                     <span>{suggestion}</span>
                   </li>
                 ))}

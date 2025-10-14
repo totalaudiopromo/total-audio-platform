@@ -200,7 +200,7 @@ ${p.pitchBody}
   if (status === 'loading') {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-iris" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
       </div>
     );
   }
@@ -242,7 +242,7 @@ ${p.pitchBody}
                     value={formData.artistName}
                     onChange={(e) => setFormData({ ...formData, artistName: e.target.value })}
                     placeholder="e.g. The Midnight Hearts"
-                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
                 </div>
                 <div>
@@ -255,7 +255,7 @@ ${p.pitchBody}
                     value={formData.trackTitle}
                     onChange={(e) => setFormData({ ...formData, trackTitle: e.target.value })}
                     placeholder="e.g. Neon Dreams"
-                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
                 </div>
                 <div>
@@ -266,7 +266,7 @@ ${p.pitchBody}
                     required
                     value={formData.genre}
                     onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
-                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   >
                     {GENRES.map((genre) => (
                       <option key={genre} value={genre}>
@@ -283,7 +283,7 @@ ${p.pitchBody}
                     type="date"
                     value={formData.releaseDate}
                     onChange={(e) => setFormData({ ...formData, releaseDate: e.target.value })}
-                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
                 </div>
               </div>
@@ -296,7 +296,7 @@ ${p.pitchBody}
                   value={formData.trackLink}
                   onChange={(e) => setFormData({ ...formData, trackLink: e.target.value })}
                   placeholder="https://soundcloud.com/..."
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                 />
               </div>
               <div>
@@ -309,7 +309,7 @@ ${p.pitchBody}
                   onChange={(e) => setFormData({ ...formData, keyHook: e.target.value })}
                   rows={3}
                   placeholder="What makes this track special? Why should they care?"
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                 />
               </div>
             </div>
@@ -342,7 +342,7 @@ ${p.pitchBody}
                 <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-8 py-12 text-center">
                   <p className="text-sm text-gray-900/50">
                     No contacts found.{' '}
-                    <Link href="/pitch/contacts" className="text-brand-iris underline">
+                    <Link href="/pitch/contacts" className="text-brand-amber underline">
                       Add contacts first
                     </Link>
                   </p>
@@ -354,7 +354,7 @@ ${p.pitchBody}
                       key={contact.id}
                       className={`cursor-pointer rounded-2xl border-2 bg-gray-50 px-4 py-3 transition ${
                         selectedContactIds.includes(contact.id)
-                          ? 'border-brand-iris bg-brand-iris/5'
+                          ? 'border-brand-amber bg-brand-amber/5'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                     >
@@ -363,7 +363,7 @@ ${p.pitchBody}
                           type="checkbox"
                           checked={selectedContactIds.includes(contact.id)}
                           onChange={() => toggleContact(contact.id)}
-                          className="mt-1 h-4 w-4 rounded border-gray-300 text-brand-iris focus:ring-brand-iris"
+                          className="mt-1 h-4 w-4 rounded border-gray-300 text-brand-amber focus:ring-brand-amber"
                         />
                         <div className="flex-1 min-w-0">
                           <p className="font-semibold text-sm">{contact.name}</p>
@@ -373,7 +373,7 @@ ${p.pitchBody}
                             </p>
                           )}
                           {contact.preferred_tone && (
-                            <p className="mt-1 text-xs text-brand-iris/80">
+                            <p className="mt-1 text-xs text-brand-amber/80">
                               Prefers: {contact.preferred_tone}
                             </p>
                           )}
@@ -411,7 +411,7 @@ ${p.pitchBody}
             {loading && (
               <div className="w-full rounded-full bg-gray-200 h-2">
                 <div
-                  className="bg-brand-iris h-2 rounded-full transition-all duration-300"
+                  className="bg-brand-amber h-2 rounded-full transition-all duration-300"
                   style={{ width: `${currentProgress}%` }}
                 />
               </div>
@@ -461,7 +461,7 @@ ${p.pitchBody}
                       <h3 className="font-semibold text-lg">{pitch.contactName}</h3>
                       <p className="text-sm text-gray-900/60">{pitch.contactOutlet}</p>
                       {pitch.suggestedSendTime && (
-                        <p className="mt-2 flex items-center gap-1.5 text-xs text-brand-iris">
+                        <p className="mt-2 flex items-center gap-1.5 text-xs text-brand-amber">
                           <Clock className="h-3 w-3" />
                           Best send time: {pitch.suggestedSendTime}
                         </p>

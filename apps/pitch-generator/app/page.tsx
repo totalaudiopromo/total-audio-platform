@@ -8,13 +8,13 @@ const features = [
     icon: Sparkles,
     title: 'AI That Sounds Human',
     description: 'No robotic pitches. Our AI writes natural, conversational emails that get responses.',
-    color: 'brand-iris',
+    color: 'brand-amber',
   },
   {
     icon: Target,
     title: 'Contact-Powered Personalisation',
     description: 'Import enriched contacts from Audio Intel or add manually. AI tailors each pitch to the contact\'s preferences.',
-    color: 'brand-magenta',
+    color: 'brand-amber',
   },
   {
     icon: Clock,
@@ -66,10 +66,10 @@ export default function HomePage() {
       <section className="glass-panel overflow-hidden px-6 py-16 sm:px-10 sm:py-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
           <div className="flex-1 space-y-6">
-            <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800">Pitch Generator · Total Audio Promo</span>
+            <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">Pitch Generator · Total Audio Promo</span>
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
               Write 50 personalised pitches in
-              <span className="block text-blue-600">
+              <span className="block text-brand-amber">
                 20 minutes
               </span>
             </h1>
@@ -78,7 +78,7 @@ export default function HomePage() {
               that actually get responses. No more staring at blank emails.
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <Link href="/auth/signin" className="cta-button">Start free trial →</Link>
+              <Link href="/auth/signin" className="cta-button">Get Started</Link>
               <Link href="#how-it-works" className="subtle-button">See how it works</Link>
             </div>
             <p className="text-sm text-gray-500">
@@ -104,8 +104,8 @@ export default function HomePage() {
                     <span>You're copy-pasting templates and they feel impersonal</span>
                   </li>
                 </ul>
-                <div className="mt-6 rounded-lg border border-brand-iris/30 bg-brand-iris/10 px-4 py-3">
-                  <p className="text-sm font-medium text-brand-iris">
+                <div className="mt-6 rounded-lg border border-brand-amber/30 bg-brand-amber/10 px-4 py-3">
+                  <p className="text-sm font-medium text-brand-amber">
                     Pitch Generator fixes all of this in 30 seconds per pitch.
                   </p>
                 </div>
@@ -116,11 +116,11 @@ export default function HomePage() {
       </section>
 
       {/* AI Features Hero Section */}
-      <section className="glass-panel overflow-hidden bg-gradient-to-br from-purple-50 to-indigo-50 px-6 py-12 sm:px-10">
+      <section className="glass-panel overflow-hidden bg-gradient-to-br from-amber-50 to-yellow-50 px-6 py-12 sm:px-10">
         <div className="text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-purple-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-amber-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <span className="text-2xl">⚡</span>
-            <span className="text-sm font-bold uppercase tracking-wider text-purple-600">The Features That Actually Matter</span>
+            <span className="text-sm font-bold uppercase tracking-wider text-amber-600">The Features That Actually Matter</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">The tools that actually save you time</h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-700">
@@ -129,12 +129,12 @@ export default function HomePage() {
           </p>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             <div className="rounded-xl border-2 border-black bg-white p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <Zap className="mx-auto h-8 w-8 text-brand-iris" />
+              <Zap className="mx-auto h-8 w-8 text-brand-amber" />
               <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">Batch Generation</p>
               <p className="mt-2 text-xs text-gray-600">Select 10-50 contacts, generate all pitches in 2 minutes</p>
             </div>
             <div className="rounded-xl border-2 border-black bg-white p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <Clock className="mx-auto h-8 w-8 text-brand-magenta" />
+              <Clock className="mx-auto h-8 w-8 text-brand-amber" />
               <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">Smart Timing</p>
               <p className="mt-2 text-xs text-gray-600">Recommends send times: BBC 10am-2pm, blogs 9am-11am, etc.</p>
             </div>
@@ -149,7 +149,7 @@ export default function HomePage() {
               <p className="mt-2 text-xs text-gray-600">See all pitches, track responses, refine what works</p>
             </div>
             <div className="rounded-xl border-2 border-black bg-white p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <Brain className="mx-auto h-8 w-8 text-purple-600" />
+              <Brain className="mx-auto h-8 w-8 text-amber-600" />
               <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">CSV Import</p>
               <p className="mt-2 text-xs text-gray-600">Bulk import contacts from Audio Intel or any spreadsheet</p>
             </div>
@@ -188,7 +188,7 @@ export default function HomePage() {
             <ol className="space-y-4">
               {howItWorks.map((step) => (
                 <li key={step.step} className="glass-panel flex items-start gap-4 px-5 py-5 sm:px-6">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-black bg-blue-500 text-sm font-bold text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-black bg-brand-amber text-sm font-bold text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                     {step.step}
                   </span>
                   <div>
@@ -220,12 +220,12 @@ export default function HomePage() {
               <p className="mt-2 text-xs text-gray-600">Measured: 50 personalised pitches, 6 campaigns avg</p>
             </div>
             <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-4xl font-black text-purple-600">14-18%</div>
+              <div className="text-4xl font-black text-amber-600">14-18%</div>
               <p className="mt-2 text-sm font-semibold text-gray-900">BBC Radio 1 response rate</p>
               <p className="mt-2 text-xs text-gray-600">Sample: 120 specialist show pitches (vs 2% for bulk emails)</p>
             </div>
             <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-4xl font-black text-indigo-600">18-28%</div>
+              <div className="text-4xl font-black text-amber-800">18-28%</div>
               <p className="mt-2 text-sm font-semibold text-gray-900">Playlist placement rate</p>
               <p className="mt-2 text-xs text-gray-600">Sample: 85 Spotify curator pitches (electronic/indie focus)</p>
             </div>
@@ -287,8 +287,8 @@ export default function HomePage() {
               So I built Pitch Generator to solve my own problem: AI that actually knows who you're pitching to, writes in your voice,
               and saves hours of copy-pasting. I use it for every campaign I run.
             </p>
-            <div className="mt-6 rounded-lg border border-brand-iris/30 bg-brand-iris/10 px-4 py-3">
-              <p className="text-sm font-medium text-brand-iris">
+            <div className="mt-6 rounded-lg border border-brand-amber/30 bg-brand-amber/10 px-4 py-3">
+              <p className="text-sm font-medium text-brand-amber">
                 If you hate writing pitches as much as I did, this tool will save you hours every week.
               </p>
             </div>
@@ -306,7 +306,7 @@ export default function HomePage() {
           </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <Link href="/auth/signin" className="cta-button">Start free trial →</Link>
+            <Link href="/auth/signin" className="cta-button">Get Started</Link>
             <Link href="/pricing" className="subtle-button">View pricing</Link>
           </div>
         </div>

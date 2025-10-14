@@ -120,13 +120,13 @@ const blogPosts = [
 function getCategoryBadgeClasses(category: string) {
   switch (category) {
     case "Playlist Pitching":
-      return "bg-purple-100 text-purple-800";
+      return "bg-amber-100 text-amber-800";
     case "Radio Pitching":
-      return "bg-indigo-100 text-indigo-800";
+      return "bg-amber-100 text-amber-800";
     case "Blog Pitching":
       return "bg-green-100 text-green-800";
     case "PR Pitching":
-      return "bg-blue-100 text-blue-800";
+      return "bg-amber-100 text-amber-800";
     default:
       return "bg-gray-100 text-gray-800";
   }
@@ -153,7 +153,7 @@ export default function BlogIndex() {
         {/* Featured Post */}
         {featuredPost && (
           <div className="mb-16">
-            <div className="bg-white rounded-2xl border-4 border-purple-500 shadow-lg overflow-hidden">
+            <div className="bg-white rounded-2xl border-4 border-amber-500 shadow-lg overflow-hidden">
               <div className="p-8 md:p-12">
                 <div className="flex items-center gap-3 mb-4">
                   <span className={`${getCategoryBadgeClasses(featuredPost.category)} px-3 py-1 rounded-full text-sm font-bold`}>
@@ -167,7 +167,7 @@ export default function BlogIndex() {
                 <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
                   <Link
                     href={`/blog/${featuredPost.slug}`}
-                    className="hover:text-purple-600 transition-colors"
+                    className="hover:text-amber-600 transition-colors"
                   >
                     {featuredPost.title}
                   </Link>
@@ -186,7 +186,7 @@ export default function BlogIndex() {
 
                   <Link
                     href={`/blog/${featuredPost.slug}`}
-                    className="bg-purple-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-purple-700 transition-colors shadow-md"
+                    className="bg-amber-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors shadow-md"
                   >
                     Read Guide →
                   </Link>
@@ -201,7 +201,7 @@ export default function BlogIndex() {
           <h2 className="text-3xl font-black text-gray-900 mb-8">More Guides</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherPosts.map((post) => (
-              <article key={post.slug} className="bg-white rounded-xl border-2 border-gray-200 hover:border-purple-500 hover:shadow-lg transition-all overflow-hidden">
+              <article key={post.slug} className="bg-white rounded-xl border-2 border-gray-200 hover:border-amber-500 hover:shadow-lg transition-all overflow-hidden">
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
                     <span className={`${getCategoryBadgeClasses(post.category)} px-2 py-1 rounded text-xs font-semibold`}>
@@ -212,7 +212,7 @@ export default function BlogIndex() {
                   <h3 className="text-xl font-bold text-gray-900 mb-3">
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="hover:text-purple-600 transition-colors"
+                      className="hover:text-amber-600 transition-colors"
                     >
                       {post.title}
                     </Link>

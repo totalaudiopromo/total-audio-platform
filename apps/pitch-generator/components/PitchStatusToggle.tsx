@@ -30,8 +30,8 @@ export default function PitchStatusToggle({
 
   const statuses = [
     { value: 'draft', label: 'Draft', color: 'bg-gray-100 text-gray-700 hover:bg-gray-200' },
-    { value: 'sent', label: 'Sent', color: 'bg-blue-100 text-blue-700 hover:bg-blue-200' },
-    { value: 'replied', label: 'Replied', color: 'bg-purple-100 text-purple-700 hover:bg-purple-200' },
+    { value: 'sent', label: 'Sent', color: 'bg-amber-100 text-amber-700 hover:bg-amber-200' },
+    { value: 'replied', label: 'Replied', color: 'bg-amber-100 text-amber-700 hover:bg-amber-200' },
     { value: 'success', label: 'Success', color: 'bg-green-100 text-green-700 hover:bg-green-200' },
   ] as const;
 

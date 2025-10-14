@@ -254,7 +254,7 @@ export default function GeneratePitchPage() {
   if (status === 'loading') {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-iris" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
       </div>
     );
   }
@@ -308,8 +308,8 @@ export default function GeneratePitchPage() {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="rounded-full bg-brand-iris/20 p-3">
-                <Sparkles className="h-6 w-6 text-brand-iris" />
+              <div className="rounded-full bg-brand-amber/20 p-3">
+                <Sparkles className="h-6 w-6 text-brand-amber" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold">Generate Pitch</h1>
@@ -340,7 +340,7 @@ export default function GeneratePitchPage() {
               required
               value={formData.contactId}
               onChange={(e) => handleContactChange(e.target.value)}
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             >
               <option value="">Select a contact...</option>
               {contacts.map((contact) => (
@@ -352,7 +352,7 @@ export default function GeneratePitchPage() {
             {contacts.length === 0 && (
               <p className="mt-2 text-xs text-gray-500">
                 No contacts yet.{' '}
-                <Link href="/pitch/contacts" className="text-blue-600 hover:underline">
+                <Link href="/pitch/contacts" className="text-amber-600 hover:underline">
                   Add your first contact
                 </Link>
               </p>
@@ -366,7 +366,7 @@ export default function GeneratePitchPage() {
                 {selectedContact.genre_tags && selectedContact.genre_tags.length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-2">
                     {selectedContact.genre_tags.map((tag) => (
-                      <span key={tag} className="rounded-full bg-brand-iris/20 px-3 py-1 text-xs text-brand-iris">
+                      <span key={tag} className="rounded-full bg-brand-amber/20 px-3 py-1 text-xs text-brand-amber">
                         {tag}
                       </span>
                     ))}
@@ -387,7 +387,7 @@ export default function GeneratePitchPage() {
               value={formData.artistName}
               onChange={(e) => setFormData({ ...formData, artistName: e.target.value })}
               placeholder="e.g. The Midnight Sons"
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
           </div>
 
@@ -402,7 +402,7 @@ export default function GeneratePitchPage() {
               value={formData.trackTitle}
               onChange={(e) => setFormData({ ...formData, trackTitle: e.target.value })}
               placeholder="e.g. Northern Lights"
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
           </div>
 
@@ -416,7 +416,7 @@ export default function GeneratePitchPage() {
               required
               value={formData.genre}
               onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
-              className="mt-2 w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="mt-2 w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             >
               {GENRES.map((genre) => (
                 <option key={genre} value={genre} className="bg-white text-gray-900">
@@ -436,7 +436,7 @@ export default function GeneratePitchPage() {
               required
               value={formData.releaseDate}
               onChange={(e) => setFormData({ ...formData, releaseDate: e.target.value })}
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
           </div>
 
@@ -456,7 +456,7 @@ export default function GeneratePitchPage() {
               placeholder="e.g. Intimate indie-folk about finding home after years of touring. Think Laura Marling meets Phoebe Bridgers - sparse production, honest lyrics, gorgeous harmonies."
               className={`mt-2 w-full rounded-xl border-2 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-2 ${
                 hookCharCount === 0
-                  ? 'border-gray-300 focus:border-blue-500 focus:ring-blue-500/50'
+                  ? 'border-gray-300 focus:border-amber-500 focus:ring-amber-500/50'
                   : hookIsValid
                   ? 'border-green-500 focus:border-green-500 focus:ring-green-500/50'
                   : 'border-yellow-500 focus:border-yellow-500 focus:ring-yellow-500/50'
@@ -497,7 +497,7 @@ export default function GeneratePitchPage() {
               value={formData.trackLink}
               onChange={(e) => setFormData({ ...formData, trackLink: e.target.value })}
               placeholder="https://open.spotify.com/track/..."
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
           </div>
 
@@ -514,7 +514,7 @@ export default function GeneratePitchPage() {
                   onClick={() => setFormData({ ...formData, tone })}
                   className={`flex-1 rounded-xl border px-4 py-3 text-sm font-medium transition ${
                     formData.tone === tone
-                      ? 'border-brand-iris bg-brand-iris/20 text-brand-iris'
+                      ? 'border-brand-amber bg-brand-amber/20 text-brand-amber'
                       : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
                   }`}
                 >

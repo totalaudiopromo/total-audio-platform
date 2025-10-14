@@ -12,7 +12,7 @@ export default function MusicBlogPitchWriting() {
     <article className="min-h-screen bg-gray-50 px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <header className="mb-12">
-          <Link href="/blog" className="text-purple-600 hover:text-purple-700 font-semibold mb-4 inline-block">
+          <Link href="/blog" className="text-amber-600 hover:text-amber-700 font-semibold mb-4 inline-block">
             ← Back to Blog
           </Link>
 
@@ -61,8 +61,8 @@ export default function MusicBlogPitchWriting() {
               Blogs don't want press releases. They want stories their readers care about. Genre fit, timing, and angle matter more than track quality.
             </p>
 
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-blue-900 mb-4">Stories That Get Coverage:</h3>
+            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-amber-900 mb-4">Stories That Get Coverage:</h3>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex gap-3">
                   <span className="text-green-600 font-bold">✓</span>
@@ -91,20 +91,20 @@ export default function MusicBlogPitchWriting() {
           <section className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">Proven Blog Pitch Template</h2>
 
-            <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-6 space-y-4">
-              <h3 className="text-xl font-bold text-purple-900">Subject Line</h3>
+            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-6 space-y-4">
+              <h3 className="text-xl font-bold text-amber-900">Subject Line</h3>
               <div className="space-y-2 text-gray-700">
                 <p><strong>Hook + Artist:</strong> [Unique Angle] - [Artist] new [Genre] track</p>
                 <p className="text-sm italic">Example: "UK garage meets ambient drone - Midnight Rivers' genre-bending new single"</p>
               </div>
             </div>
 
-            <div className="bg-indigo-50 border-2 border-indigo-200 rounded-xl p-6 space-y-4">
-              <h3 className="text-xl font-bold text-indigo-900">Opening (The Hook)</h3>
+            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-6 space-y-4">
+              <h3 className="text-xl font-bold text-amber-900">Opening (The Hook)</h3>
               <p className="text-gray-700">
                 Lead with the story, not the track. What makes this interesting to their readers? Why now? Why this blog specifically?
               </p>
-              <div className="bg-white p-4 rounded border border-indigo-200">
+              <div className="bg-white p-4 rounded border border-amber-200">
                 <p className="text-gray-800 italic">
                   "Brighton's underground techno scene is having a moment. [Artist]'s new track '[Track Name]' captures that raw warehouse energy
                   you covered in your [Recent Article] piece - thought your readers would dig it."
@@ -163,16 +163,16 @@ export default function MusicBlogPitchWriting() {
 
           <section className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">Generate Blog Pitches in 60 Seconds</h2>
-            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-300 rounded-xl p-8">
+            <div className="bg-gradient-to-br from-amber-50 to-amber-50 border-2 border-amber-300 rounded-xl p-8">
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 Pitch Generator creates blog-specific pitches with proven story angles and benchmarks. Input your track details and unique story,
                 get customised pitches for dozens of blogs with 12-18% coverage rates.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/pitch/generate" className="bg-purple-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-purple-700 transition-colors text-center shadow-md">
+                <Link href="/pitch/generate" className="bg-amber-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors text-center shadow-md">
                   Try Free (5 pitches/month) →
                 </Link>
-                <Link href="/pricing" className="bg-white text-purple-600 border-2 border-purple-600 px-6 py-3 rounded-lg font-bold hover:bg-purple-50 transition-colors text-center">
+                <Link href="/pricing" className="bg-white text-amber-600 border-2 border-amber-600 px-6 py-3 rounded-lg font-bold hover:bg-amber-50 transition-colors text-center">
                   See Pricing
                 </Link>
               </div>

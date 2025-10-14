@@ -12,7 +12,7 @@ export default function SpotifyPlaylistPitchTemplates() {
     <article className="min-h-screen bg-gray-50 px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <header className="mb-12">
-          <Link href="/blog" className="text-purple-600 hover:text-purple-700 font-semibold mb-4 inline-block">
+          <Link href="/blog" className="text-amber-600 hover:text-amber-700 font-semibold mb-4 inline-block">
             ← Back to Blog
           </Link>
 
@@ -28,7 +28,7 @@ export default function SpotifyPlaylistPitchTemplates() {
             <span>8 min read</span>
           </div>
 
-          <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-lg">
+          <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-lg">
             <p className="text-lg text-gray-800 leading-relaxed">
               After pitching 500+ tracks to Spotify playlists, here's the reality: generic "please add my track" pitches get 3-5% response rates.
               But a proper genre-specific pitch with streaming context and curator understanding? 18-28% depending on genre fit. Here's exactly how
@@ -88,9 +88,9 @@ export default function SpotifyPlaylistPitchTemplates() {
                 <span className="font-bold">Growing Playlists (10K-50K)</span>
                 <span className="text-green-600 font-black">18-28% with perfect genre fit (TARGET HERE)</span>
               </div>
-              <div className="flex justify-between items-center p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <div className="flex justify-between items-center p-4 bg-amber-50 rounded-lg border border-amber-200">
                 <span className="font-bold">Niche Genre Playlists</span>
-                <span className="text-blue-600 font-black">22-32% when genre matches perfectly</span>
+                <span className="text-amber-600 font-black">22-32% when genre matches perfectly</span>
               </div>
             </div>
           </section>
@@ -98,21 +98,21 @@ export default function SpotifyPlaylistPitchTemplates() {
           <section className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">Proven Playlist Pitch Template</h2>
 
-            <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-6 space-y-4">
-              <h3 className="text-xl font-bold text-purple-900">Subject Line (Critical)</h3>
+            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-6 space-y-4">
+              <h3 className="text-xl font-bold text-amber-900">Subject Line (Critical)</h3>
               <div className="space-y-2 text-gray-700">
                 <p><strong>Perfect for [Playlist Name]:</strong> [Artist] - [Track] ([Similar Artist on Playlist] vibes)</p>
                 <p className="text-sm italic">Example: "Perfect for Chill Beats: Midnight Rivers - Luna (Tom Misch vibes)"</p>
               </div>
             </div>
 
-            <div className="bg-indigo-50 border-2 border-indigo-200 rounded-xl p-6 space-y-4">
-              <h3 className="text-xl font-bold text-indigo-900">Opening (Show You Listen)</h3>
+            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-6 space-y-4">
+              <h3 className="text-xl font-bold text-amber-900">Opening (Show You Listen)</h3>
               <p className="text-gray-700">
                 Reference a specific track on their playlist that's similar to yours. This proves you actually know the playlist and aren't
                 mass submitting.
               </p>
-              <div className="bg-white p-4 rounded border border-indigo-200">
+              <div className="bg-white p-4 rounded border border-amber-200">
                 <p className="text-gray-800 italic">
                   "Love the [Track Name] add on [Playlist Name] - that blend of lo-fi beats with jazz guitar is exactly where our new track
                   '[Your Track]' sits. Think we'd fit perfectly alongside it."
@@ -146,9 +146,9 @@ export default function SpotifyPlaylistPitchTemplates() {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 space-y-4">
-              <h3 className="text-xl font-bold text-blue-900">Close (Make It Easy)</h3>
-              <div className="bg-white p-4 rounded border border-blue-200">
+            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-6 space-y-4">
+              <h3 className="text-xl font-bold text-amber-900">Close (Make It Easy)</h3>
+              <div className="bg-white p-4 rounded border border-amber-200">
                 <p className="text-gray-800 italic">
                   "Spotify link: [Your Track Link]<br/>
                   Would love to be part of [Playlist Name].<br/>
@@ -193,7 +193,7 @@ export default function SpotifyPlaylistPitchTemplates() {
 
           <section className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">Generate Playlist Pitches in 60 Seconds</h2>
-            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-300 rounded-xl p-8">
+            <div className="bg-gradient-to-br from-amber-50 to-amber-50 border-2 border-amber-300 rounded-xl p-8">
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 Pitch Generator creates playlist-specific pitches using these exact templates and benchmarks. Input your track details once,
                 get customised pitches for dozens of playlists with proven 18-28% response rates. Built by promoters who've pitched thousands of playlists.
@@ -201,13 +201,13 @@ export default function SpotifyPlaylistPitchTemplates() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/pitch/generate"
-                  className="bg-purple-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-purple-700 transition-colors text-center shadow-md"
+                  className="bg-amber-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors text-center shadow-md"
                 >
                   Try Free (5 pitches/month) →
                 </Link>
                 <Link
                   href="/pricing"
-                  className="bg-white text-purple-600 border-2 border-purple-600 px-6 py-3 rounded-lg font-bold hover:bg-purple-50 transition-colors text-center"
+                  className="bg-white text-amber-600 border-2 border-amber-600 px-6 py-3 rounded-lg font-bold hover:bg-amber-50 transition-colors text-center"
                 >
                   See Pricing
                 </Link>
@@ -220,17 +220,17 @@ export default function SpotifyPlaylistPitchTemplates() {
               <h3 className="text-xl font-bold text-gray-900 mb-3">Related Guides</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/blog/bbc-radio-1-pitch-writing" className="text-purple-600 hover:text-purple-700 font-semibold">
+                  <Link href="/blog/bbc-radio-1-pitch-writing" className="text-amber-600 hover:text-amber-700 font-semibold">
                     → BBC Radio 1 Pitch Writing: Industry Benchmarks
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog/apple-music-playlist-pitches" className="text-purple-600 hover:text-purple-700 font-semibold">
+                  <Link href="/blog/apple-music-playlist-pitches" className="text-amber-600 hover:text-amber-700 font-semibold">
                     → Apple Music Playlist Pitches: Editorial vs Algorithmic
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog/music-blog-pitch-writing" className="text-purple-600 hover:text-purple-700 font-semibold">
+                  <Link href="/blog/music-blog-pitch-writing" className="text-amber-600 hover:text-amber-700 font-semibold">
                     → Music Blog Pitch Writing: Templates That Get Coverage
                   </Link>
                 </li>

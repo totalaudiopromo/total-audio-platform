@@ -98,15 +98,15 @@ export default function ProfilePage() {
             </div>
           ) : (
             <div className="mt-4 space-y-3">
-              <div className="flex items-center gap-2 text-sm text-brand-iris">
+              <div className="flex items-center gap-2 text-sm text-brand-amber">
                 <Sparkles className="h-5 w-5" />
                 <span className="font-semibold">Voice profile not set up</span>
               </div>
               <p className="text-sm text-gray-900/70">
                 Set up your voice profile to make AI pitches sound like you wrote them
               </p>
-              <a href="/profile/voice" className="block rounded-2xl bg-brand-iris/10 px-4 py-3 text-sm transition hover:bg-brand-iris/20 border-2 border-brand-iris/30">
-                <span className="font-semibold text-brand-iris">Set up voice profile</span> · Takes 2-5 minutes
+              <a href="/profile/voice" className="block rounded-2xl bg-brand-amber/10 px-4 py-3 text-sm transition hover:bg-brand-amber/20 border-2 border-brand-amber/30">
+                <span className="font-semibold text-brand-amber">Set up voice profile</span> · Takes 2-5 minutes
               </a>
             </div>
           )}

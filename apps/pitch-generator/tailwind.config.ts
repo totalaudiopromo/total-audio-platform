@@ -47,9 +47,10 @@ const config: Config = {
           foreground: 'hsl(var(--card-foreground))',
         },
         brand: {
-          iris: '#4C5CF6',
-          magenta: '#C954F7',
-          amber: '#FFC857',
+          amber: '#FFC857', // Primary brand colour - Pitch Generator
+          'amber-dark': '#F59E0B', // amber-500 - Darker amber for text/borders
+          iris: '#4C5CF6', // Secondary - Audio Intel integration
+          magenta: '#C954F7', // Accent - Tracker integration
           charcoal: '#181C2F',
         },
         success: '#3DD68C',

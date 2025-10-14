@@ -73,14 +73,14 @@ export function UsageMeter({ userId, className = '' }: UsageMeterProps) {
         className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ${
           isNearLimit
             ? 'bg-gradient-to-br from-yellow-50/80 to-orange-50/80 opacity-100'
-            : 'bg-gradient-to-br from-blue-50/50 to-purple-50/50 opacity-50'
+            : 'bg-gradient-to-br from-amber-50/50 to-amber-50/50 opacity-50'
         }`}
       />
 
       <div className="relative px-6 py-4">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center gap-2">
-            <Zap className={`h-5 w-5 ${isNearLimit ? 'text-yellow-600' : 'text-brand-iris'}`} />
+            <Zap className={`h-5 w-5 ${isNearLimit ? 'text-yellow-600' : 'text-brand-amber'}`} />
             <div>
               <h3 className="text-sm font-bold text-gray-900">
                 Free Tier Usage
@@ -107,7 +107,7 @@ export function UsageMeter({ userId, className = '' }: UsageMeterProps) {
                   ? 'bg-red-600'
                   : isNearLimit
                   ? 'bg-yellow-500'
-                  : 'bg-gradient-to-r from-purple-600 to-blue-600'
+                  : 'bg-gradient-to-r from-amber-600 to-amber-600'
               }`}
               style={{ width: `${Math.min(percentageUsed, 100)}%` }}
             />
@@ -161,7 +161,7 @@ export function UsageMeter({ userId, className = '' }: UsageMeterProps) {
         {!isNearLimit && (
           <div className="mt-3 text-xs text-gray-600">
             <p>
-              Need more? <Link href="/pricing" onClick={() => trackUpgradeClicked('usage_meter_info', 'professional')} className="text-blue-600 hover:underline font-medium">Upgrade to PRO</Link> for unlimited pitches (£12/month)
+              Need more? <Link href="/pricing" onClick={() => trackUpgradeClicked('usage_meter_info', 'professional')} className="text-amber-600 hover:underline font-medium">Upgrade to PRO</Link> for unlimited pitches (£12/month)
             </p>
           </div>
         )}

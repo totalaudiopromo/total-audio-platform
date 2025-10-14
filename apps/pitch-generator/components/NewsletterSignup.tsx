@@ -69,12 +69,12 @@ export function NewsletterSignup({
           placeholder={placeholder}
           required
           disabled={loading || status === 'success'}
-          className="flex-1 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 disabled:opacity-50"
+          className="flex-1 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 disabled:opacity-50"
         />
         <button
           type="submit"
           disabled={loading || status === 'success'}
-          className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50"
+          className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-700 disabled:opacity-50"
         >
           {status === 'success' ? (
             <><CheckCircle2 className="h-4 w-4" /> Subscribed</>
@@ -104,12 +104,12 @@ export function NewsletterSignup({
               placeholder={placeholder}
               required
               disabled={loading || status === 'success'}
-              className="flex-1 rounded-lg border border-gray-700 bg-gray-800 px-4 py-2 text-sm text-white placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 disabled:opacity-50"
+              className="flex-1 rounded-lg border border-gray-700 bg-gray-800 px-4 py-2 text-sm text-white placeholder:text-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 disabled:opacity-50"
             />
             <button
               type="submit"
               disabled={loading || status === 'success'}
-              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50"
+              className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-700 disabled:opacity-50"
             >
               {status === 'success' ? (
                 <CheckCircle2 className="h-4 w-4" />
@@ -132,8 +132,8 @@ export function NewsletterSignup({
   return (
     <div className="glass-panel p-6">
       <div className="flex items-start gap-4">
-        <div className="rounded-full bg-blue-500/10 p-3">
-          <Mail className="h-6 w-6 text-blue-600" />
+        <div className="rounded-full bg-amber-500/10 p-3">
+          <Mail className="h-6 w-6 text-amber-600" />
         </div>
         <div className="flex-1 space-y-4">
           <div className="space-y-2">
@@ -149,12 +149,12 @@ export function NewsletterSignup({
                 placeholder={placeholder}
                 required
                 disabled={loading || status === 'success'}
-                className="flex-1 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 disabled:opacity-50"
+                className="flex-1 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 disabled:opacity-50"
               />
               <button
                 type="submit"
                 disabled={loading || status === 'success'}
-                className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50"
+                className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-700 disabled:opacity-50"
               >
                 {status === 'success' ? (
                   <><CheckCircle2 className="h-4 w-4" /> Done</>

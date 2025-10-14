@@ -12,7 +12,7 @@ export default function PrivacyPage() {
     <div className="mx-auto w-full max-w-4xl">
       <div className="glass-panel px-8 py-12">
         <div className="mb-8">
-          <Link href="/" className="text-sm text-blue-600 hover:underline">
+          <Link href="/" className="text-sm text-amber-600 hover:underline">
             ← Back to home
           </Link>
         </div>
@@ -142,7 +142,7 @@ export default function PrivacyPage() {
               <li><strong>Restrict Processing:</strong> Limit how we use your data</li>
             </ul>
             <p className="text-gray-600 leading-relaxed mt-4">
-              To exercise your rights, email us at <a href="mailto:privacy@totalaudiopromo.com" className="text-blue-600 hover:underline">privacy@totalaudiopromo.com</a> or use the settings in your dashboard.
+              To exercise your rights, email us at <a href="mailto:privacy@totalaudiopromo.com" className="text-amber-600 hover:underline">privacy@totalaudiopromo.com</a> or use the settings in your dashboard.
             </p>
           </section>
 
@@ -204,7 +204,7 @@ export default function PrivacyPage() {
               For privacy questions or to exercise your rights:
             </p>
             <p className="text-gray-600 leading-relaxed mt-4">
-              <strong>Email:</strong> <a href="mailto:privacy@totalaudiopromo.com" className="text-blue-600 hover:underline">privacy@totalaudiopromo.com</a><br />
+              <strong>Email:</strong> <a href="mailto:privacy@totalaudiopromo.com" className="text-amber-600 hover:underline">privacy@totalaudiopromo.com</a><br />
               <strong>Subject:</strong> Pitch Generator - Privacy Request<br />
               <strong>Response Time:</strong> Within 30 days (as required by GDPR)
             </p>
@@ -217,14 +217,14 @@ export default function PrivacyPage() {
               If you're not satisfied with our response, you have the right to lodge a complaint with the UK Information Commissioner's Office (ICO):
             </p>
             <p className="text-gray-600 leading-relaxed mt-4">
-              <strong>ICO Website:</strong> <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">ico.org.uk</a><br />
+              <strong>ICO Website:</strong> <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline">ico.org.uk</a><br />
               <strong>Phone:</strong> 0303 123 1113
             </p>
           </section>
         </div>
 
         {/* Footer CTA */}
-        <div className="mt-12 rounded-xl border-2 border-blue-500 bg-blue-50 p-6">
+        <div className="mt-12 rounded-xl border-2 border-amber-500 bg-amber-50 p-6">
           <h3 className="text-lg font-bold text-gray-900 mb-2">Questions about your data?</h3>
           <p className="text-sm text-gray-600 mb-4">
             We're committed to transparency. If you have any questions about how we handle your data, we're here to help.

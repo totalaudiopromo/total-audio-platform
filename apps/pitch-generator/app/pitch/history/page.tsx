@@ -84,7 +84,7 @@ export default function PitchHistoryPage() {
   function getStatusColor(status: string) {
     switch (status) {
       case 'draft': return 'bg-gray-100 text-gray-600';
-      case 'sent': return 'bg-brand-iris/20 text-brand-iris';
+      case 'sent': return 'bg-brand-amber/20 text-brand-amber';
       case 'replied': return 'bg-success/20 text-success';
       case 'success': return 'bg-success/30 text-success';
       case 'no_reply': return 'bg-gray-50 text-gray-400';
@@ -95,7 +95,7 @@ export default function PitchHistoryPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-iris" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
       </div>
     );
   }
@@ -130,7 +130,7 @@ export default function PitchHistoryPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by contact, artist, or track..."
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 py-2.5 pl-11 pr-4 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="w-full rounded-xl border border-gray-300 bg-gray-50 py-2.5 pl-11 pr-4 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
             />
           </div>
 
@@ -140,7 +140,7 @@ export default function PitchHistoryPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 transition focus:border-brand-iris focus:outline-none focus:ring-2 focus:ring-brand-iris/50"
+              className="rounded-xl border border-gray-300 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
             >
               <option value="all" className="bg-card text-foreground">All Status</option>
               <option value="draft" className="bg-card text-foreground">Draft</option>

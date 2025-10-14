@@ -49,8 +49,8 @@ export function CookieBanner() {
             <div className="flex flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
               {/* Icon and Text */}
               <div className="flex items-start gap-4 flex-1">
-                <div className="flex-shrink-0 rounded-xl bg-purple-100 p-3 border-2 border-black">
-                  <Cookie className="h-6 w-6 text-purple-600" />
+                <div className="flex-shrink-0 rounded-xl bg-amber-100 p-3 border-2 border-black">
+                  <Cookie className="h-6 w-6 text-amber-600" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-sm font-black text-gray-900 mb-1">
@@ -61,7 +61,7 @@ export function CookieBanner() {
                     We only store essential cookies for authentication and preferences.
                     <a
                       href="/privacy"
-                      className="ml-1 text-blue-600 hover:underline font-medium"
+                      className="ml-1 text-amber-600 hover:underline font-medium"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -81,7 +81,7 @@ export function CookieBanner() {
                 </button>
                 <button
                   onClick={handleAccept}
-                  className="rounded-xl px-6 py-2 text-sm font-black text-white bg-purple-600 hover:bg-purple-700 transition border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
+                  className="rounded-xl px-6 py-2 text-sm font-black text-white bg-amber-600 hover:bg-amber-700 transition border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
                 >
                   Accept
                 </button>

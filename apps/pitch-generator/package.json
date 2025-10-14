@@ -8,7 +8,14 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"No tests configured for tap-saas-template\" && exit 0"
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:production": "TEST_URL=https://pitch.totalaudiopromo.com playwright test",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report test-results/html",
+    "check-colours": "node scripts/check-brand-colours.js",
+    "pre-commit": "npm run check-colours && npm run typecheck"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.65.0",
@@ -22,6 +29,7 @@
     "stripe": "^18.5.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.48.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

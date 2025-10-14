@@ -52,8 +52,8 @@ test.describe('Pitch Generator MVP - Production Tests', () => {
     // Check if on sign-in page or dashboard
     const url = page.url();
     if (url.includes('/auth/signin')) {
-      // Sign-in page should be visible
-      await expect(page.locator('text=/sign in/i')).toBeVisible();
+      // Sign-in page should be visible - use h1 heading instead of generic text
+      await expect(page.locator('h1').filter({ hasText: /sign in/i })).toBeVisible();
       console.log('✓ Dashboard correctly requires authentication');
     } else {
       // If already signed in, check for dashboard
@@ -66,11 +66,11 @@ test.describe('Pitch Generator MVP - Production Tests', () => {
     await page.goto(`${PRODUCTION_URL}/auth/signin`);
     await page.waitForLoadState('networkidle');
 
-    // Check for sign-in elements
-    await expect(page.locator('text=/sign in/i')).toBeVisible();
+    // Check for sign-in heading
+    await expect(page.locator('h1').filter({ hasText: /sign in/i })).toBeVisible();
 
     // Check for Google OAuth button
-    const googleButton = page.locator('text=/google/i');
+    const googleButton = page.getByRole('button', { name: /google/i });
     if (await googleButton.isVisible()) {
       console.log('✓ Google OAuth sign-in available');
     }
@@ -89,7 +89,7 @@ test.describe('Pitch Generator MVP - Production Tests', () => {
     const url = page.url();
     if (url.includes('/auth/signin')) {
       console.log('✓ Pitch generation correctly requires authentication');
-      await expect(page.locator('text=/sign in/i')).toBeVisible();
+      await expect(page.locator('h1').filter({ hasText: /sign in/i })).toBeVisible();
     } else {
       // Check for pitch generation form
       await expect(page.locator('text=/generate/i, text=/pitch/i').first()).toBeVisible();
@@ -103,7 +103,7 @@ test.describe('Pitch Generator MVP - Production Tests', () => {
 
     const url = page.url();
     if (url.includes('/auth/signin')) {
-      await expect(page.locator('text=/sign in/i')).toBeVisible();
+      await expect(page.locator('h1').filter({ hasText: /sign in/i })).toBeVisible();
       console.log('✓ Pitch history correctly requires authentication');
     } else {
       // If authenticated, check for history page
@@ -119,10 +119,11 @@ test.describe('Pitch Generator MVP - Production Tests', () => {
     const url = page.url();
     if (url.includes('/auth/signin')) {
       console.log('✓ Voice profile correctly requires authentication');
-      await expect(page.locator('text=/sign in/i')).toBeVisible();
+      await expect(page.locator('h1').filter({ hasText: /sign in/i })).toBeVisible();
     } else {
-      // Check for voice profile form
-      await expect(page.locator('text=/voice/i, text=/profile/i').first()).toBeVisible();
+      // Check for voice profile heading or form
+      const heading = page.locator('h1, h2').filter({ hasText: /voice|profile/i });
+      await expect(heading.first()).toBeVisible();
       console.log('✓ Voice profile page loaded');
     }
   });
