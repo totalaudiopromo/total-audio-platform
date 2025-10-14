@@ -101,7 +101,10 @@ jobs:
     
     - name: Deploy ${{ matrix.app }} to staging
       run: |
-        cd apps/${{ matrix.app }}
+        # Map workspace to path (web workspace lives at apps/web)
+        APP_PATH=${{ matrix.app }}
+        if [ "${{ matrix.app }}" = "total-audio-promo-frontend" ]; then APP_PATH="web"; fi
+        cd apps/$APP_PATH
         vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -134,7 +137,10 @@ jobs:
     
     - name: Deploy ${{ matrix.app }} to production
       run: |
-        cd apps/${{ matrix.app }}
+        # Map workspace to path (web workspace lives at apps/web)
+        APP_PATH=${{ matrix.app }}
+        if [ "${{ matrix.app }}" = "total-audio-promo-frontend" ]; then APP_PATH="web"; fi
+        cd apps/$APP_PATH
         vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
