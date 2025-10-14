@@ -18,7 +18,9 @@ export async function middleware(request: NextRequest) {
   // Protected API routes
   const protectedAPIPaths = [
     '/api/enrich',
+    '/api/enrich-claude',
     '/api/usage',
+    '/api/checkout',
   ]
 
   // Check if current path needs authentication

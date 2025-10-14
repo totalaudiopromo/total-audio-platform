@@ -50,7 +50,7 @@ export function SiteHeader() {
       </button>
     </div>
   ) : (
-    <Link href="/signup" className="cta-button">Start Free Beta</Link>
+    <Link href="/signin" className="cta-button">Sign in</Link>
   )
 
   return (
