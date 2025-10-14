@@ -4,8 +4,8 @@
   "private": true,
   "description": "Total Audio Promo - Music Industry Tools Platform",
   "scripts": {
-    "lint": "npm run lint --workspace=apps/audio-intel",
-    "typecheck": "npm run typecheck --workspace=apps/audio-intel",
+    "lint": "npm run lint --workspace=audio-intel",
+    "typecheck": "npm run typecheck --workspace=audio-intel",
     "build:audio-intel": "npm run build --workspace=apps/audio-intel",
     "build:command-centre": "npm run build --workspace=apps/command-centre",
     "build:tracker": "npm run build --workspace=apps/tracker",

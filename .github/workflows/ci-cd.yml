@@ -32,8 +32,10 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y libasound2 || sudo apt-get install -y libasound2t64
     
-    - name: Install dependencies
-      run: npm install
+    - name: Install dependencies (root + workspaces)
+      run: |
+        npm ci
+        npm ci --workspaces || npm install --workspaces
     
     - name: Run linting
       run: npm run lint
@@ -68,8 +70,10 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y libasound2 || sudo apt-get install -y libasound2t64
     
-    - name: Install dependencies
-      run: npm install
+    - name: Install dependencies (root + workspaces)
+      run: |
+        npm ci
+        npm ci --workspaces || npm install --workspaces
     
     - name: Build ${{ matrix.app }}
       run: npm run build --workspace=${{ matrix.app }}
