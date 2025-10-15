@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 const links = [
   { href: '/', label: 'Home' },
   { href: '/pricing', label: 'Pricing' },
+  { href: '/blog', label: 'Blog' },
   { href: '/demo', label: 'Dashboard' },
 ];
 
