@@ -30,6 +30,7 @@ build/
 *.pfx
 *gmail-credentials*
 *oauth*
+!apps/**/lib/**/oauth-handler.ts
 
 # IDE and editor files
 .vscode/
