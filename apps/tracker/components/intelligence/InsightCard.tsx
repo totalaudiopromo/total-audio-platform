@@ -21,11 +21,11 @@ export function InsightCard({ insight, className = '' }: InsightCardProps) {
         <div className="mt-3 pt-3 border-t-2 border-gray-200">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-black text-gray-500 uppercase tracking-wider">Confidence</span>
-            <span className="text-xs font-black text-purple-600">{confidence}%</span>
+            <span className="text-xs font-black text-amber-600">{confidence}%</span>
           </div>
           <div className="h-2 bg-gray-100 rounded-full overflow-hidden border-2 border-gray-300">
             <div
-              className="h-full bg-purple-600 rounded-full transition-all"
+              className="h-full bg-amber-600 rounded-full transition-all"
               style={{ width: `${confidence}%` }}
             />
           </div>

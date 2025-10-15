@@ -37,7 +37,7 @@ export function PSEOPageWrapper({ pageName, topic, searchVolume, tier, children 
               <Link href="/demo" className="text-gray-600 hover:text-gray-900 font-semibold hidden sm:inline">
                 Demo
               </Link>
-              <Link href="/signup" className="bg-purple-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-purple-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <Link href="/signup" className="bg-amber-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-amber-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 Try Free
               </Link>
             </nav>

@@ -72,8 +72,8 @@ export function BillingDashboard({
 
           {limits?.isBetaUser && (
             <div className="flex items-center gap-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-              <AlertCircle className="h-5 w-5 text-purple-600" />
-              <p className="text-sm text-purple-800">
+              <AlertCircle className="h-5 w-5 text-amber-600" />
+              <p className="text-sm text-amber-800">
                 You&apos;re a beta user with unlimited access to all features!
               </p>
             </div>

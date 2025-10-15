@@ -46,7 +46,7 @@ export function CookieConsent() {
           <div className="flex items-start justify-between gap-6">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-3">
-                <div className="flex-shrink-0 w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center border-2 border-black">
+                <div className="flex-shrink-0 w-10 h-10 bg-amber-600 rounded-xl flex items-center justify-center border-2 border-black">
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
@@ -62,7 +62,7 @@ export function CookieConsent() {
               <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
                 <button
                   onClick={handleAccept}
-                  className="px-6 py-2.5 bg-purple-600 text-white rounded-xl font-black hover:bg-purple-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-sm"
+                  className="px-6 py-2.5 bg-amber-600 text-white rounded-xl font-black hover:bg-amber-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-sm"
                 >
                   Accept All Cookies
                 </button>
@@ -74,7 +74,7 @@ export function CookieConsent() {
                 </button>
                 <Link
                   href="/privacy"
-                  className="text-sm font-bold text-purple-600 hover:text-purple-700 underline"
+                  className="text-sm font-bold text-amber-600 hover:text-amber-700 underline"
                 >
                   Privacy Policy
                 </Link>

@@ -24,6 +24,8 @@ export default function ReviewPitchPage() {
   const [saving, setSaving] = useState(false);
   const [sentToTracker, setSentToTracker] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
+  const [gmailConnected, setGmailConnected] = useState(false);
+  const [sendingViaGmail, setSendingViaGmail] = useState(false);
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -34,8 +36,19 @@ export default function ReviewPitchPage() {
   useEffect(() => {
     if (session?.user?.email && pitchId) {
       loadPitch();
+      checkGmailStatus();
     }
   }, [session, pitchId]);
+
+  const checkGmailStatus = async () => {
+    try {
+      const response = await fetch('/api/integrations/gmail/status');
+      const data = await response.json();
+      setGmailConnected(data.connected);
+    } catch (error) {
+      console.error('Error checking Gmail status:', error);
+    }
+  };
 
   async function loadPitch() {
     try {
@@ -125,6 +138,44 @@ export default function ReviewPitchPage() {
     } catch (error) {
       console.error('Error updating pitch:', error);
       alert('Failed to update pitch');
+    }
+  }
+
+  async function handleSendViaGmail() {
+    if (!pitch) return;
+
+    const confirmed = confirm(`Send this pitch directly to ${pitch.contact_name} via Gmail?`);
+    if (!confirmed) return;
+
+    setSendingViaGmail(true);
+    try {
+      const subject = pitch.subject_line_options?.[selectedSubject as keyof typeof pitch.subject_line_options] || pitch.subject_line;
+      const pitchBody = editing ? editedBody : pitch.pitch_body;
+
+      const response = await fetch('/api/integrations/gmail/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: pitch.contact_email || `${pitch.contact_name}@example.com`,
+          subject,
+          emailBody: pitchBody,
+          pitchId: pitch.id
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert('Pitch sent successfully via Gmail!');
+        router.push('/dashboard');
+      } else {
+        alert(`Failed to send via Gmail: ${result.error}`);
+      }
+    } catch (error) {
+      console.error('Error sending via Gmail:', error);
+      alert('Failed to send via Gmail. Please try again.');
+    } finally {
+      setSendingViaGmail(false);
     }
   }
 
@@ -372,10 +423,30 @@ export default function ReviewPitchPage() {
                 <FileDown className="h-4 w-4" />
                 Export PDF
               </button>
-              <button onClick={handleMarkAsSent} className="subtle-button flex items-center gap-2">
-                <Send className="h-4 w-4" />
-                Mark as Sent
-              </button>
+              {gmailConnected ? (
+                <button 
+                  onClick={handleSendViaGmail} 
+                  disabled={sendingViaGmail}
+                  className="cta-button flex items-center gap-2 bg-red-600 hover:bg-red-700"
+                >
+                  {sendingViaGmail ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-4 w-4" />
+                      Send via Gmail
+                    </>
+                  )}
+                </button>
+              ) : (
+                <button onClick={handleMarkAsSent} className="subtle-button flex items-center gap-2">
+                  <Send className="h-4 w-4" />
+                  Mark as Sent
+                </button>
+              )}
               <button
                 onClick={handleSendToTracker}
                 disabled={sentToTracker}

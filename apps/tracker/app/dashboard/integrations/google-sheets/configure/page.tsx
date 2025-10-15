@@ -8,11 +8,11 @@ export default function GoogleSheetsConfigurePage() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-blue-50">
       <div className="max-w-4xl mx-auto p-4 sm:p-8">
         <Link
           href="/dashboard/integrations"
-          className="inline-flex items-center gap-2 text-purple-600 font-bold hover:underline mb-6"
+          className="inline-flex items-center gap-2 text-amber-600 font-bold hover:underline mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Integrations
@@ -54,7 +54,7 @@ export default function GoogleSheetsConfigurePage() {
           <div className="flex gap-3">
             <button
               onClick={() => router.push('/dashboard/integrations')}
-              className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-black px-6 py-3 rounded-xl border-2 border-black shadow-brutal hover:translate-y-0.5 transition-all"
+              className="flex-1 bg-amber-600 hover:bg-amber-700 text-white font-black px-6 py-3 rounded-xl border-2 border-black shadow-brutal hover:translate-y-0.5 transition-all"
             >
               Done
             </button>

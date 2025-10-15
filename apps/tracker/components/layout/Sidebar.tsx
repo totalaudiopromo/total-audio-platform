@@ -24,10 +24,10 @@ export function Sidebar() {
     <aside className="fixed inset-y-0 left-0 w-64 border-r border-slate-200/50 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
       <div className="mb-8">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+          <div className="w-10 h-10 bg-gradient-to-br from-amber-600 to-orange-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
             <PlayIcon className="w-6 h-6 text-white" />
           </div>
-          <span className="text-xl font-black bg-gradient-to-r from-purple-600 to-purple-600 bg-clip-text text-transparent">
+          <span className="text-xl font-black bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
             Tracker
           </span>
         </Link>
@@ -43,7 +43,7 @@ export function Sidebar() {
               href={item.href}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
                 active
-                  ? 'bg-gradient-to-r from-purple-600 to-purple-600 text-white shadow-lg'
+                  ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
             >
@@ -55,12 +55,12 @@ export function Sidebar() {
       </nav>
 
       <div className="absolute bottom-6 left-6 right-6">
-        <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-purple-900/20 dark:to-purple-900/20 rounded-xl p-4 border border-blue-200 dark:border-purple-800">
+        <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800">
           <p className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Upgrade to Pro</p>
           <p className="text-xs text-slate-600 dark:text-slate-400 mb-3">Unlock advanced analytics & unlimited campaigns</p>
           <Link
             href="/billing"
-            className="block text-center px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-600 text-white rounded-lg text-sm font-semibold hover:from-purple-700 hover:to-purple-700 transition-all"
+            className="block text-center px-4 py-2 bg-gradient-to-r from-amber-600 to-orange-600 text-white rounded-lg text-sm font-semibold hover:from-amber-700 hover:to-orange-700 transition-all"
           >
             Upgrade Now
           </Link>

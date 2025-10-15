@@ -89,9 +89,9 @@ export function CampaignIntelligence({ campaignId, campaignName }: CampaignIntel
 
   if (loading) {
     return (
-      <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 border-4 border-purple-500 shadow-brutal">
+      <div className="bg-gradient-to-br from-amber-50 to-blue-50 rounded-2xl p-8 border-4 border-amber-500 shadow-brutal">
         <div className="flex items-center justify-center gap-3">
-          <svg className="animate-spin h-8 w-8 text-purple-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <svg className="animate-spin h-8 w-8 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
@@ -130,10 +130,10 @@ export function CampaignIntelligence({ campaignId, campaignName }: CampaignIntel
 
   if (!autopsy) {
     return (
-      <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 border-4 border-purple-500 shadow-brutal">
+      <div className="bg-gradient-to-br from-amber-50 to-blue-50 rounded-2xl p-8 border-4 border-amber-500 shadow-brutal">
         <div className="flex items-start gap-4">
-          <div className="flex-shrink-0 w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center border-2 border-purple-500">
-            <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="flex-shrink-0 w-16 h-16 bg-amber-100 rounded-xl flex items-center justify-center border-2 border-amber-500">
+            <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
             </svg>
           </div>
@@ -163,7 +163,7 @@ export function CampaignIntelligence({ campaignId, campaignName }: CampaignIntel
             <button
               onClick={generateAutopsy}
               disabled={loading}
-              className="px-6 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-all font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 bg-amber-600 text-white rounded-xl hover:bg-amber-700 transition-all font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Analyse This Campaign
             </button>
@@ -177,12 +177,12 @@ export function CampaignIntelligence({ campaignId, campaignName }: CampaignIntel
   return (
     <div className="space-y-4">
       {/* Campaign Autopsy */}
-      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-4 border-purple-500 shadow-brutal">
+      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-4 border-amber-500 shadow-brutal">
         <div className="flex items-start justify-between mb-4">
           <h3 className="text-xl font-black text-gray-900 uppercase tracking-wider">Campaign Autopsy</h3>
           <button
             onClick={() => copyToClipboard(autopsy.autopsy, 'autopsy')}
-            className="px-3 py-1.5 bg-white/80 hover:bg-white rounded-lg font-bold text-xs transition-colors border-2 border-purple-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
+            className="px-3 py-1.5 bg-white/80 hover:bg-white rounded-lg font-bold text-xs transition-colors border-2 border-amber-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
           >
             {copied === 'autopsy' ? '✓ Copied' : 'Copy'}
           </button>
@@ -225,12 +225,12 @@ export function CampaignIntelligence({ campaignId, campaignName }: CampaignIntel
       </div>
 
       {/* Quick Wins */}
-      <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 border-4 border-purple-500 shadow-brutal">
+      <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-6 border-4 border-amber-500 shadow-brutal">
         <div className="flex items-start justify-between mb-4">
           <h3 className="text-xl font-black text-gray-900 uppercase tracking-wider">Quick Wins</h3>
           <button
             onClick={() => copyToClipboard(autopsy.quickWins, 'wins')}
-            className="px-3 py-1.5 bg-white/80 hover:bg-white rounded-lg font-bold text-xs transition-colors border-2 border-purple-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
+            className="px-3 py-1.5 bg-white/80 hover:bg-white rounded-lg font-bold text-xs transition-colors border-2 border-amber-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
           >
             {copied === 'wins' ? '✓ Copied' : 'Copy'}
           </button>

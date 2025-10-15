@@ -69,20 +69,20 @@ export function OnboardingChecklist({
   if (isDismissed || isFullyComplete) return null;
 
   return (
-    <div className="mb-8 bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl border-4 border-purple-500 shadow-brutal relative overflow-hidden">
+    <div className="mb-8 bg-gradient-to-br from-amber-50 to-blue-50 rounded-2xl border-4 border-amber-500 shadow-brutal relative overflow-hidden">
       {/* Dismiss button */}
       <button
         onClick={() => setIsDismissed(true)}
-        className="absolute top-4 right-4 p-2 rounded-lg bg-white border-2 border-purple-300 hover:bg-purple-50 transition-all z-10"
+        className="absolute top-4 right-4 p-2 rounded-lg bg-white border-2 border-amber-300 hover:bg-amber-50 transition-all z-10"
         aria-label="Dismiss checklist"
       >
-        <X className="h-4 w-4 text-purple-700" />
+        <X className="h-4 w-4 text-amber-700" />
       </button>
 
       <div className="px-6 py-6 sm:px-8 sm:py-8">
         {/* Header */}
         <div className="flex items-start gap-4 mb-6 pr-10">
-          <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-purple-600 to-purple-600 rounded-2xl flex items-center justify-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-amber-600 to-amber-600 rounded-2xl flex items-center justify-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <Sparkles className="w-7 h-7 text-white" />
           </div>
           <div>
@@ -101,13 +101,13 @@ export function OnboardingChecklist({
             <span className="text-sm font-black text-gray-900 uppercase tracking-wider">
               Progress: {completedCount}/{totalCount}
             </span>
-            <span className="text-sm font-bold text-purple-600">
+            <span className="text-sm font-bold text-amber-600">
               {Math.round((completedCount / totalCount) * 100)}% Complete
             </span>
           </div>
           <div className="h-3 bg-white rounded-full border-2 border-black overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-purple-600 to-purple-600 transition-all duration-500 ease-out"
+              className="h-full bg-gradient-to-r from-amber-600 to-amber-600 transition-all duration-500 ease-out"
               style={{ width: `${(completedCount / totalCount) * 100}%` }}
             />
           </div>
@@ -121,7 +121,7 @@ export function OnboardingChecklist({
               className={`bg-white rounded-xl border-2 p-4 transition-all ${
                 item.completed
                   ? 'border-green-500 bg-green-50'
-                  : 'border-gray-300 hover:border-purple-400'
+                  : 'border-gray-300 hover:border-amber-400'
               }`}
             >
               <div className="flex items-start gap-4">
@@ -166,7 +166,7 @@ export function OnboardingChecklist({
                           }
                         }
                       }}
-                      className="inline-block px-5 py-2 bg-purple-600 text-white rounded-lg font-bold text-sm hover:bg-purple-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
+                      className="inline-block px-5 py-2 bg-amber-600 text-white rounded-lg font-bold text-sm hover:bg-amber-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
                     >
                       {item.action.label} →
                     </Link>
@@ -179,8 +179,8 @@ export function OnboardingChecklist({
 
         {/* Encouragement Message */}
         {completedCount > 0 && (
-          <div className="mt-6 bg-white rounded-xl border-2 border-purple-300 p-4 text-center">
-            <p className="text-sm font-bold text-purple-900">
+          <div className="mt-6 bg-white rounded-xl border-2 border-amber-300 p-4 text-center">
+            <p className="text-sm font-bold text-amber-900">
               {completedCount === 1 && "🎉 Great start! Keep going to unlock AI insights."}
               {completedCount === 2 && "🚀 Almost there! Complete the final step."}
             </p>

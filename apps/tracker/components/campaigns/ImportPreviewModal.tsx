@@ -181,14 +181,14 @@ PR Campaign,Artist Name,Press,Electronic,800,100,planning`;
             <div className="mb-6 bg-blue-50 rounded-xl p-4 border-2 border-blue-200">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
-                  <h4 className="text-sm font-black text-purple-900 mb-1">Need a template?</h4>
-                  <p className="text-xs font-bold text-purple-700">
+                  <h4 className="text-sm font-black text-amber-900 mb-1">Need a template?</h4>
+                  <p className="text-xs font-bold text-amber-700">
                     Download our sample CSV to see the correct format for imports
                   </p>
                 </div>
                 <button
                   onClick={downloadSampleCSV}
-                  className="flex-shrink-0 px-4 py-2 bg-purple-600 text-white rounded-lg font-bold text-xs hover:bg-purple-700 transition-all flex items-center gap-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5"
+                  className="flex-shrink-0 px-4 py-2 bg-amber-600 text-white rounded-lg font-bold text-xs hover:bg-amber-700 transition-all flex items-center gap-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5"
                 >
                   <Download className="h-4 w-4" />
                   Download Sample
@@ -208,7 +208,7 @@ PR Campaign,Artist Name,Press,Electronic,800,100,planning`;
               <button
                 onClick={onConfirm}
                 disabled={isImporting || validRows.length === 0}
-                className="flex-1 px-6 py-3 bg-purple-600 text-white rounded-xl font-black hover:bg-purple-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 px-6 py-3 bg-amber-600 text-white rounded-xl font-black hover:bg-amber-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isImporting ? (
                   <>

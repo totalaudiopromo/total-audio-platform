@@ -44,7 +44,7 @@ export default function BlogCampaignAnalyticsPage() {
             <span>11 min read</span>
           </div>
 
-          <div className="bg-purple-50 border-l-4 border-purple-400 p-6 rounded-lg">
+          <div className="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg">
             <p className="text-lg text-gray-800 font-medium leading-relaxed">
               Blog outreach is crucial for music promotion, but most artists and labels don't track their campaigns properly. Get AI-powered analytics, industry benchmarks, and actionable insights to optimize your blog outreach and secure more coverage.
             </p>
@@ -56,17 +56,17 @@ export default function BlogCampaignAnalyticsPage() {
           <section id="table-of-contents" className="bg-white p-6 rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <h2 className="text-2xl font-black text-gray-900 mb-4">Table of Contents</h2>
             <ul className="list-disc list-inside space-y-2 text-lg text-gray-700">
-              <li><Link href="#understanding-blog-landscape" className="text-purple-600 hover:underline">Understanding the Music Blog Landscape in 2025</Link></li>
-              <li><Link href="#blog-tiers" className="text-purple-600 hover:underline">Blog Tiers & Targeting Strategy</Link></li>
-              <li><Link href="#common-mistakes" className="text-purple-600 hover:underline">5 Blog Campaign Mistakes Killing Your Results</Link></li>
-              <li><Link href="#tracker-workflow" className="text-purple-600 hover:underline">The Tracker Workflow for Blog Campaigns</Link></li>
-              <li><Link href="#industry-benchmarks" className="text-purple-600 hover:underline">Blog Campaign Industry Benchmarks</Link></li>
-              <li><Link href="#case-study" className="text-purple-600 hover:underline">Case Study: Indie Artist Gets Featured in 25 Blogs</Link></li>
-              <li><Link href="#technical-requirements" className="text-purple-600 hover:underline">Technical Requirements & Best Practices</Link></li>
-              <li><Link href="#timeline-strategy" className="text-purple-600 hover:underline">Optimal Blog Campaign Timeline</Link></li>
-              <li><Link href="#faq" className="text-purple-600 hover:underline">Frequently Asked Questions</Link></li>
-              <li><Link href="#related-guides" className="text-purple-600 hover:underline">Related Campaign Tracking Guides</Link></li>
-              <li><Link href="#get-started" className="text-purple-600 hover:underline">Ready to Track Your Blog Campaigns?</Link></li>
+              <li><Link href="#understanding-blog-landscape" className="text-amber-600 hover:underline">Understanding the Music Blog Landscape in 2025</Link></li>
+              <li><Link href="#blog-tiers" className="text-amber-600 hover:underline">Blog Tiers & Targeting Strategy</Link></li>
+              <li><Link href="#common-mistakes" className="text-amber-600 hover:underline">5 Blog Campaign Mistakes Killing Your Results</Link></li>
+              <li><Link href="#tracker-workflow" className="text-amber-600 hover:underline">The Tracker Workflow for Blog Campaigns</Link></li>
+              <li><Link href="#industry-benchmarks" className="text-amber-600 hover:underline">Blog Campaign Industry Benchmarks</Link></li>
+              <li><Link href="#case-study" className="text-amber-600 hover:underline">Case Study: Indie Artist Gets Featured in 25 Blogs</Link></li>
+              <li><Link href="#technical-requirements" className="text-amber-600 hover:underline">Technical Requirements & Best Practices</Link></li>
+              <li><Link href="#timeline-strategy" className="text-amber-600 hover:underline">Optimal Blog Campaign Timeline</Link></li>
+              <li><Link href="#faq" className="text-amber-600 hover:underline">Frequently Asked Questions</Link></li>
+              <li><Link href="#related-guides" className="text-amber-600 hover:underline">Related Campaign Tracking Guides</Link></li>
+              <li><Link href="#get-started" className="text-amber-600 hover:underline">Ready to Track Your Blog Campaigns?</Link></li>
             </ul>
           </section>
 
@@ -267,7 +267,7 @@ export default function BlogCampaignAnalyticsPage() {
           {/* Case Study */}
           <section id="case-study" className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">Real-World Blog Outreach Success Strategies</h2>
-            <div className="bg-purple-100 border-l-4 border-purple-500 p-6 rounded-r-xl shadow-sm">
+            <div className="bg-amber-100 border-l-4 border-amber-500 p-6 rounded-r-xl shadow-sm">
               <p className="text-lg text-gray-800 leading-relaxed">
                 Successful blog outreach follows proven patterns that any artist can implement with the right tracking and relationship-building approach.
               </p>
@@ -436,7 +436,7 @@ export default function BlogCampaignAnalyticsPage() {
                 <p className="text-base text-gray-700 leading-relaxed mb-3">
                   Learn how to track broader PR campaigns including blogs, magazines, and online publications.
                 </p>
-                <Link href="/blog/music-pr-campaign-analytics" className="text-purple-600 font-semibold hover:underline">
+                <Link href="/blog/music-pr-campaign-analytics" className="text-amber-600 font-semibold hover:underline">
                   Read the PR analytics guide →
                 </Link>
               </div>
@@ -446,7 +446,7 @@ export default function BlogCampaignAnalyticsPage() {
                 <p className="text-base text-gray-700 leading-relaxed mb-3">
                   Combine blog coverage with social media campaigns for maximum impact and reach.
                 </p>
-                <Link href="/blog/instagram-music-campaign-tracking" className="text-purple-600 font-semibold hover:underline">
+                <Link href="/blog/instagram-music-campaign-tracking" className="text-amber-600 font-semibold hover:underline">
                   See the social media workflow →
                 </Link>
               </div>
@@ -462,7 +462,7 @@ export default function BlogCampaignAnalyticsPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 active:scale-95"
+                className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 active:scale-95"
               >
                 Start Tracking Free
               </Link>

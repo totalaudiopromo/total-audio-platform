@@ -129,7 +129,7 @@ export function BulkActionsBar({
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-in slide-in-from-bottom-4 duration-300">
-      <div className="bg-gradient-to-r from-purple-600 to-purple-600 rounded-2xl border-4 border-black shadow-brutal-lg p-4 min-w-[320px] md:min-w-[600px]">
+      <div className="bg-gradient-to-r from-amber-600 to-amber-600 rounded-2xl border-4 border-black shadow-brutal-lg p-4 min-w-[320px] md:min-w-[600px]">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           {/* Selection Info */}
           <div className="flex items-center gap-3">
@@ -160,7 +160,7 @@ export function BulkActionsBar({
             <button
               onClick={handleBulkStatusUpdate}
               disabled={isUpdating || isDeleting || isExporting}
-              className="px-4 py-2 bg-white text-purple-700 rounded-xl font-black text-sm hover:bg-gray-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed border-2 border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 flex items-center gap-2"
+              className="px-4 py-2 bg-white text-amber-700 rounded-xl font-black text-sm hover:bg-gray-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed border-2 border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 flex items-center gap-2"
             >
               {isUpdating ? (
                 <LoadingSpinner size="sm" />
@@ -174,7 +174,7 @@ export function BulkActionsBar({
             <button
               onClick={handleBulkExport}
               disabled={isExporting || isDeleting || isUpdating}
-              className="px-4 py-2 bg-white text-purple-700 rounded-xl font-black text-sm hover:bg-gray-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed border-2 border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 flex items-center gap-2"
+              className="px-4 py-2 bg-white text-amber-700 rounded-xl font-black text-sm hover:bg-gray-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed border-2 border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 flex items-center gap-2"
             >
               {isExporting ? (
                 <LoadingSpinner size="sm" />

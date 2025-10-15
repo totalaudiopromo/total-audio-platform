@@ -44,7 +44,7 @@ export default function YouTubeMusicCampaignTrackingPage() {
             <span>9 min read</span>
           </div>
 
-          <div className="bg-purple-50 border-l-4 border-purple-400 p-6 rounded-lg">
+          <div className="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg">
             <p className="text-lg text-gray-800 font-medium leading-relaxed">
               YouTube remains the world's largest music streaming platform and video discovery engine. Track your YouTube campaigns properly with industry benchmarks, video performance analytics, and AI-powered insights for better music marketing results.
             </p>
@@ -56,17 +56,17 @@ export default function YouTubeMusicCampaignTrackingPage() {
           <section id="table-of-contents" className="bg-white p-6 rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <h2 className="text-2xl font-black text-gray-900 mb-4">Table of Contents</h2>
             <ul className="list-disc list-inside space-y-2 text-lg text-gray-700">
-              <li><Link href="#understanding-youtube" className="text-purple-600 hover:underline">Understanding YouTube's Music Ecosystem in 2025</Link></li>
-              <li><Link href="#content-types" className="text-purple-600 hover:underline">YouTube Content Types & Opportunities</Link></li>
-              <li><Link href="#common-mistakes" className="text-purple-600 hover:underline">5 YouTube Campaign Mistakes</Link></li>
-              <li><Link href="#tracker-workflow" className="text-purple-600 hover:underline">The Tracker Workflow for YouTube</Link></li>
-              <li><Link href="#industry-benchmarks" className="text-purple-600 hover:underline">YouTube Industry Benchmarks</Link></li>
-              <li><Link href="#case-study" className="text-purple-600 hover:underline">Case Study: Indie Artist Reaches 1M YouTube Views</Link></li>
-              <li><Link href="#technical-requirements" className="text-purple-600 hover:underline">Technical Requirements & Best Practices</Link></li>
-              <li><Link href="#timeline-strategy" className="text-purple-600 hover:underline">Optimal YouTube Campaign Timeline</Link></li>
-              <li><Link href="#faq" className="text-purple-600 hover:underline">Frequently Asked Questions</Link></li>
-              <li><Link href="#related-guides" className="text-purple-600 hover:underline">Related Campaign Tracking Guides</Link></li>
-              <li><Link href="#get-started" className="text-purple-600 hover:underline">Ready to Track Your YouTube Campaigns?</Link></li>
+              <li><Link href="#understanding-youtube" className="text-amber-600 hover:underline">Understanding YouTube's Music Ecosystem in 2025</Link></li>
+              <li><Link href="#content-types" className="text-amber-600 hover:underline">YouTube Content Types & Opportunities</Link></li>
+              <li><Link href="#common-mistakes" className="text-amber-600 hover:underline">5 YouTube Campaign Mistakes</Link></li>
+              <li><Link href="#tracker-workflow" className="text-amber-600 hover:underline">The Tracker Workflow for YouTube</Link></li>
+              <li><Link href="#industry-benchmarks" className="text-amber-600 hover:underline">YouTube Industry Benchmarks</Link></li>
+              <li><Link href="#case-study" className="text-amber-600 hover:underline">Case Study: Indie Artist Reaches 1M YouTube Views</Link></li>
+              <li><Link href="#technical-requirements" className="text-amber-600 hover:underline">Technical Requirements & Best Practices</Link></li>
+              <li><Link href="#timeline-strategy" className="text-amber-600 hover:underline">Optimal YouTube Campaign Timeline</Link></li>
+              <li><Link href="#faq" className="text-amber-600 hover:underline">Frequently Asked Questions</Link></li>
+              <li><Link href="#related-guides" className="text-amber-600 hover:underline">Related Campaign Tracking Guides</Link></li>
+              <li><Link href="#get-started" className="text-amber-600 hover:underline">Ready to Track Your YouTube Campaigns?</Link></li>
             </ul>
           </section>
 
@@ -114,7 +114,7 @@ export default function YouTubeMusicCampaignTrackingPage() {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-xl border-4 border-purple-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="bg-white p-6 rounded-xl border-4 border-amber-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Lyric Videos</h3>
                 <p className="text-base text-gray-700 leading-relaxed mb-4">
                   Simple videos featuring song lyrics with minimal visual elements.
@@ -140,7 +140,7 @@ export default function YouTubeMusicCampaignTrackingPage() {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-xl border-4 border-purple-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="bg-white p-6 rounded-xl border-4 border-amber-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">YouTube Shorts</h3>
                 <p className="text-base text-gray-700 leading-relaxed mb-4">
                   Short-form vertical videos optimized for mobile viewing.
@@ -265,7 +265,7 @@ export default function YouTubeMusicCampaignTrackingPage() {
           {/* Case Study */}
           <section id="case-study" className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">Real-World YouTube Success Strategies</h2>
-            <div className="bg-purple-100 border-l-4 border-purple-500 p-6 rounded-r-xl shadow-sm">
+            <div className="bg-amber-100 border-l-4 border-amber-500 p-6 rounded-r-xl shadow-sm">
               <p className="text-lg text-gray-800 leading-relaxed">
                 Successful YouTube music promotion follows proven patterns that any artist can implement with the right tracking and optimisation approach.
               </p>
@@ -429,7 +429,7 @@ export default function YouTubeMusicCampaignTrackingPage() {
                 <p className="text-base text-gray-700 leading-relaxed mb-3">
                   Learn how to track TikTok campaigns alongside YouTube for comprehensive video-based promotion.
                 </p>
-                <Link href="/blog/tiktok-music-campaign-tracking" className="text-purple-600 font-semibold hover:underline">
+                <Link href="/blog/tiktok-music-campaign-tracking" className="text-amber-600 font-semibold hover:underline">
                   Read the TikTok guide →
                 </Link>
               </div>
@@ -439,7 +439,7 @@ export default function YouTubeMusicCampaignTrackingPage() {
                 <p className="text-base text-gray-700 leading-relaxed mb-3">
                   Combine YouTube video promotion with Instagram visual content for maximum social media impact.
                 </p>
-                <Link href="/blog/instagram-music-campaign-tracking" className="text-purple-600 font-semibold hover:underline">
+                <Link href="/blog/instagram-music-campaign-tracking" className="text-amber-600 font-semibold hover:underline">
                   See the Instagram workflow →
                 </Link>
               </div>
@@ -455,7 +455,7 @@ export default function YouTubeMusicCampaignTrackingPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 active:scale-95"
+                className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 active:scale-95"
               >
                 Start Tracking Free
               </Link>

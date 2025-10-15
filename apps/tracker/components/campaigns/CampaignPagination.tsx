@@ -79,7 +79,7 @@ export function CampaignPagination({
             id="items-per-page"
             value={itemsPerPage}
             onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
-            className="px-3 py-1.5 border-2 border-gray-300 rounded-lg font-bold text-sm focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 transition-all bg-white"
+            className="px-3 py-1.5 border-2 border-gray-300 rounded-lg font-bold text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200 transition-all bg-white"
           >
             <option value={10}>10</option>
             <option value={25}>25</option>
@@ -120,7 +120,7 @@ export function CampaignPagination({
               disabled={page === '...'}
               className={`min-w-[40px] h-10 px-3 rounded-lg font-bold text-sm transition-all border-2 ${
                 page === currentPage
-                  ? 'bg-purple-600 text-white border-purple-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  ? 'bg-amber-600 text-white border-amber-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
                   : page === '...'
                   ? 'border-transparent cursor-default'
                   : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400 hover:bg-gray-50'
@@ -132,7 +132,7 @@ export function CampaignPagination({
         </div>
 
         {/* Mobile: Current page indicator */}
-        <div className="sm:hidden px-4 py-2 bg-purple-600 text-white rounded-lg font-bold text-sm border-2 border-purple-800">
+        <div className="sm:hidden px-4 py-2 bg-amber-600 text-white rounded-lg font-bold text-sm border-2 border-amber-800">
           {currentPage} / {totalPages}
         </div>
 

@@ -104,11 +104,11 @@ export default function BBCRadio1CampaignTracking() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">New Music Shows (Jack Saunders):</span>
-                    <span className="text-purple-600 font-black">18% average success</span>
+                    <span className="text-amber-600 font-black">18% average success</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
+                  <div className="flex justify-between items-center p-3 bg-amber-50 rounded">
                     <span className="font-bold">Dance Shows (Danny Howard/Charlie Hedges):</span>
-                    <span className="text-purple-600 font-black">15% average success</span>
+                    <span className="text-amber-600 font-black">15% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">BBC Introducing:</span>
@@ -153,7 +153,7 @@ export default function BBCRadio1CampaignTracking() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">4-6 weeks before release:</span>
-                    <span className="text-purple-600 font-black">12% success</span>
+                    <span className="text-amber-600 font-black">12% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">2-3 weeks before release:</span>

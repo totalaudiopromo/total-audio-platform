@@ -15,8 +15,8 @@ export default function VerifyEmailPage() {
     <div className="mx-auto w-full max-w-2xl">
       <div className="glass-panel px-8 py-12 text-center">
         {/* Icon */}
-        <div className="mx-auto mb-6 w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center border-4 border-purple-500">
-          <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mx-auto mb-6 w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center border-4 border-amber-500">
+          <svg className="w-10 h-10 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
         </div>
@@ -31,15 +31,15 @@ export default function VerifyEmailPage() {
           <h3 className="font-bold text-gray-900 mb-3">Haven't received the email?</h3>
           <ul className="space-y-2 text-sm text-gray-700">
             <li className="flex items-start gap-2">
-              <span className="text-purple-600 font-bold mt-0.5">→</span>
+              <span className="text-amber-600 font-bold mt-0.5">→</span>
               <span>Check your spam or junk folder</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-purple-600 font-bold mt-0.5">→</span>
+              <span className="text-amber-600 font-bold mt-0.5">→</span>
               <span>Make sure you entered the correct email address</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-purple-600 font-bold mt-0.5">→</span>
+              <span className="text-amber-600 font-bold mt-0.5">→</span>
               <span>Wait a few minutes – emails can sometimes be delayed</span>
             </li>
           </ul>
@@ -48,7 +48,7 @@ export default function VerifyEmailPage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/dashboard"
-            className="px-8 py-4 bg-purple-600 text-white rounded-xl font-bold hover:bg-purple-700 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5"
+            className="px-8 py-4 bg-amber-600 text-white rounded-xl font-bold hover:bg-amber-700 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5"
           >
             Go to Dashboard
           </Link>
@@ -64,7 +64,7 @@ export default function VerifyEmailPage() {
 
         <p className="mt-8 text-sm text-gray-600">
           Need help?{' '}
-          <a href="mailto:support@totalaudiopromo.com" className="text-purple-600 font-bold hover:text-purple-700 underline">
+          <a href="mailto:support@totalaudiopromo.com" className="text-amber-600 font-bold hover:text-amber-700 underline">
             Contact support
           </a>
         </p>

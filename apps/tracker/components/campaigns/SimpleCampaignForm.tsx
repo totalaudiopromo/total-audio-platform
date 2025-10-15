@@ -63,7 +63,7 @@ export function SimpleCampaignForm({
           value={formData.name}
           onChange={e => setFormData({ ...formData, name: e.target.value })}
           placeholder="e.g., Bloodshot - Radio Push"
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
         />
       </div>
 
@@ -76,7 +76,7 @@ export function SimpleCampaignForm({
             required
             value={formData.platform}
             onChange={e => setFormData({ ...formData, platform: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
           >
             <option value="">Select platform</option>
             {PLATFORMS.map(p => (
@@ -93,7 +93,7 @@ export function SimpleCampaignForm({
             required
             value={formData.genre}
             onChange={e => setFormData({ ...formData, genre: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
           >
             <option value="">Select genre</option>
             {GENRES.map(g => (
@@ -114,7 +114,7 @@ export function SimpleCampaignForm({
           step="0.01"
           value={formData.budget}
           onChange={e => setFormData({ ...formData, budget: parseFloat(e.target.value) || 0 })}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
         />
       </div>
 
@@ -128,7 +128,7 @@ export function SimpleCampaignForm({
             required
             value={formData.start_date}
             onChange={e => setFormData({ ...formData, start_date: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
           />
         </div>
 
@@ -140,7 +140,7 @@ export function SimpleCampaignForm({
             type="date"
             value={formData.end_date || ''}
             onChange={e => setFormData({ ...formData, end_date: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
           />
         </div>
       </div>
@@ -157,7 +157,7 @@ export function SimpleCampaignForm({
             value={formData.target_reach}
             onChange={e => setFormData({ ...formData, target_reach: parseInt(e.target.value) || 0 })}
             placeholder="e.g., 20 stations"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
           />
           <p className="text-xs text-gray-500 mt-1">How many contacts you're pitching to</p>
         </div>
@@ -172,7 +172,7 @@ export function SimpleCampaignForm({
             value={formData.actual_reach}
             onChange={e => setFormData({ ...formData, actual_reach: parseInt(e.target.value) || 0 })}
             placeholder="e.g., 6 stations"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
           />
           <p className="text-xs text-gray-500 mt-1">How many actually responded/played it</p>
         </div>
@@ -186,7 +186,7 @@ export function SimpleCampaignForm({
           value={formData.notes || ''}
           onChange={e => setFormData({ ...formData, notes: e.target.value })}
           rows={3}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
           placeholder="Any additional details about this campaign"
         />
       </div>
@@ -203,7 +203,7 @@ export function SimpleCampaignForm({
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="bg-purple-600 hover:bg-purple-700 text-white"
+          className="bg-amber-600 hover:bg-amber-700 text-white"
         >
           {isSubmitting ? 'Creating...' : 'Create Campaign'}
         </Button>

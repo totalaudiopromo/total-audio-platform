@@ -63,7 +63,7 @@ export function GenerateReportButton({ campaignId, campaignName }: GenerateRepor
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-2 px-4 py-2.5 bg-purple-600 text-white rounded-xl font-black hover:bg-purple-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-sm"
+        className="flex items-center gap-2 px-4 py-2.5 bg-amber-600 text-white rounded-xl font-black hover:bg-amber-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-sm"
       >
         <FileText className="w-4 h-4" />
         Generate Report
@@ -74,7 +74,7 @@ export function GenerateReportButton({ campaignId, campaignName }: GenerateRepor
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl border-4 border-black shadow-brutal max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             {/* Header */}
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 border-b-4 border-black p-6">
+            <div className="bg-gradient-to-br from-amber-50 to-amber-100 border-b-4 border-black p-6">
               <div className="flex items-start justify-between">
                 <div>
                   <h2 className="text-2xl font-black text-gray-900 mb-2">Generate Campaign Report</h2>
@@ -144,7 +144,7 @@ export function GenerateReportButton({ campaignId, campaignName }: GenerateRepor
                   <button
                     onClick={handleGenerate}
                     disabled={isGenerating}
-                    className="flex-1 px-4 py-3 bg-purple-600 text-white rounded-xl font-black hover:bg-purple-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="flex-1 px-4 py-3 bg-amber-600 text-white rounded-xl font-black hover:bg-amber-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isGenerating ? (
                       <>

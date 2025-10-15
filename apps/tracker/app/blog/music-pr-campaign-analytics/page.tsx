@@ -101,15 +101,15 @@ export default function MusicPRCampaignAnalytics() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">Tier-2 (DIY, So Young, Gigwise):</span>
-                    <span className="text-purple-600 font-black">8% response</span>
+                    <span className="text-amber-600 font-black">8% response</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-green-50 rounded border border-green-200">
                     <span className="font-bold">Tier-3 (Genre blogs, local sites):</span>
                     <span className="text-green-600 font-black">16% response (BEST ROI)</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
+                  <div className="flex justify-between items-center p-3 bg-amber-50 rounded">
                     <span className="font-bold">Podcasts/YouTube Reviews:</span>
-                    <span className="text-purple-600 font-black">12% response</span>
+                    <span className="text-amber-600 font-black">12% response</span>
                   </div>
                 </div>
               </div>
@@ -145,7 +145,7 @@ export default function MusicPRCampaignAnalytics() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">4 weeks before release:</span>
-                    <span className="text-purple-600 font-black">10% response</span>
+                    <span className="text-amber-600 font-black">10% response</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">Week of release:</span>

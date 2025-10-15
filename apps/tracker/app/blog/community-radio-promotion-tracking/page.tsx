@@ -101,11 +101,11 @@ export default function CommunityRadioPromotionTracking() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">Regional Community Stations:</span>
-                    <span className="text-purple-600 font-black">20% success</span>
+                    <span className="text-amber-600 font-black">20% success</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
+                  <div className="flex justify-between items-center p-3 bg-amber-50 rounded">
                     <span className="font-bold">University Radio:</span>
-                    <span className="text-purple-600 font-black">18% success</span>
+                    <span className="text-amber-600 font-black">18% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">Hospital/Community Radio:</span>
@@ -127,11 +127,11 @@ export default function CommunityRadioPromotionTracking() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">BBC Radio 1 (£400 campaign):</span>
-                    <span className="text-purple-600 font-black">2% success = 8 plays</span>
+                    <span className="text-amber-600 font-black">2% success = 8 plays</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
+                  <div className="flex justify-between items-center p-3 bg-amber-50 rounded">
                     <span className="font-bold">Cost per play - Community:</span>
-                    <span className="text-purple-600 font-black">£4.50 per play</span>
+                    <span className="text-amber-600 font-black">£4.50 per play</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-red-50 rounded border border-red-200">
                     <span className="font-bold">Cost per play - Radio 1:</span>
@@ -149,7 +149,7 @@ export default function CommunityRadioPromotionTracking() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">2 weeks before release:</span>
-                    <span className="text-purple-600 font-black">22% success</span>
+                    <span className="text-amber-600 font-black">22% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">Week of release:</span>

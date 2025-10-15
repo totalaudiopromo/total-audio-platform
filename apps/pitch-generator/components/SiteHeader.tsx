@@ -11,6 +11,7 @@ const links = [
   { href: '/dashboard', label: 'Dashboard', requiresAuth: true },
   { href: '/pitch/history', label: 'History', requiresAuth: true },
   { href: '/pitch/contacts', label: 'Contacts', requiresAuth: true },
+  { href: '/dashboard/integrations', label: 'Integrations', requiresAuth: true },
 ];
 
 function AuthComponent() {

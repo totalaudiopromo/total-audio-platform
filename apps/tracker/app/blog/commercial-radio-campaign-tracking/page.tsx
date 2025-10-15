@@ -44,7 +44,7 @@ export default function CommercialRadioCampaignTrackingPage() {
             <span>9 min read</span>
           </div>
 
-          <div className="bg-purple-50 border-l-4 border-purple-400 p-6 rounded-lg">
+          <div className="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg">
             <p className="text-lg text-gray-800 font-medium leading-relaxed">
               Commercial radio remains a powerful force in music promotion. Track your campaigns properly with industry benchmarks, success rates by station type, and AI-powered insights that show exactly what works for commercial radio promotion.
             </p>
@@ -56,17 +56,17 @@ export default function CommercialRadioCampaignTrackingPage() {
           <section id="table-of-contents" className="bg-white p-6 rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <h2 className="text-2xl font-black text-gray-900 mb-4">Table of Contents</h2>
             <ul className="list-disc list-inside space-y-2 text-lg text-gray-700">
-              <li><Link href="#understanding-commercial-radio" className="text-purple-600 hover:underline">Understanding Commercial Radio in 2025</Link></li>
-              <li><Link href="#station-types" className="text-purple-600 hover:underline">Commercial Radio Station Types & Targeting</Link></li>
-              <li><Link href="#common-mistakes" className="text-purple-600 hover:underline">5 Commercial Radio Campaign Mistakes</Link></li>
-              <li><Link href="#tracker-workflow" className="text-purple-600 hover:underline">The Tracker Workflow for Commercial Radio</Link></li>
-              <li><Link href="#industry-benchmarks" className="text-purple-600 hover:underline">Commercial Radio Industry Benchmarks</Link></li>
-              <li><Link href="#case-study" className="text-purple-600 hover:underline">Case Study: Indie Label Gains National Airplay</Link></li>
-              <li><Link href="#technical-requirements" className="text-purple-600 hover:underline">Technical Requirements & Best Practices</Link></li>
-              <li><Link href="#timeline-strategy" className="text-purple-600 hover:underline">Optimal Campaign Timeline</Link></li>
-              <li><Link href="#faq" className="text-purple-600 hover:underline">Frequently Asked Questions</Link></li>
-              <li><Link href="#related-guides" className="text-purple-600 hover:underline">Related Campaign Tracking Guides</Link></li>
-              <li><Link href="#get-started" className="text-purple-600 hover:underline">Ready to Track Your Commercial Radio Campaigns?</Link></li>
+              <li><Link href="#understanding-commercial-radio" className="text-amber-600 hover:underline">Understanding Commercial Radio in 2025</Link></li>
+              <li><Link href="#station-types" className="text-amber-600 hover:underline">Commercial Radio Station Types & Targeting</Link></li>
+              <li><Link href="#common-mistakes" className="text-amber-600 hover:underline">5 Commercial Radio Campaign Mistakes</Link></li>
+              <li><Link href="#tracker-workflow" className="text-amber-600 hover:underline">The Tracker Workflow for Commercial Radio</Link></li>
+              <li><Link href="#industry-benchmarks" className="text-amber-600 hover:underline">Commercial Radio Industry Benchmarks</Link></li>
+              <li><Link href="#case-study" className="text-amber-600 hover:underline">Case Study: Indie Label Gains National Airplay</Link></li>
+              <li><Link href="#technical-requirements" className="text-amber-600 hover:underline">Technical Requirements & Best Practices</Link></li>
+              <li><Link href="#timeline-strategy" className="text-amber-600 hover:underline">Optimal Campaign Timeline</Link></li>
+              <li><Link href="#faq" className="text-amber-600 hover:underline">Frequently Asked Questions</Link></li>
+              <li><Link href="#related-guides" className="text-amber-600 hover:underline">Related Campaign Tracking Guides</Link></li>
+              <li><Link href="#get-started" className="text-amber-600 hover:underline">Ready to Track Your Commercial Radio Campaigns?</Link></li>
             </ul>
           </section>
 
@@ -96,7 +96,7 @@ export default function CommercialRadioCampaignTrackingPage() {
             </p>
             
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white p-6 rounded-xl border-4 border-purple-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="bg-white p-6 rounded-xl border-4 border-amber-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Mainstream Commercial</h3>
                 <p className="text-base text-gray-700 leading-relaxed mb-4">
                   Heart, Capital, Kiss - target broad audiences with current hits and established artists.
@@ -122,7 +122,7 @@ export default function CommercialRadioCampaignTrackingPage() {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-xl border-4 border-purple-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="bg-white p-6 rounded-xl border-4 border-amber-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Regional Commercial</h3>
                 <p className="text-base text-gray-700 leading-relaxed mb-4">
                   Regional stations serving specific areas - often more accessible for local artists.
@@ -259,7 +259,7 @@ export default function CommercialRadioCampaignTrackingPage() {
           {/* Case Study */}
           <section id="case-study" className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">Real-World Commercial Radio Success Strategies</h2>
-            <div className="bg-purple-100 border-l-4 border-purple-500 p-6 rounded-r-xl shadow-sm">
+            <div className="bg-amber-100 border-l-4 border-amber-500 p-6 rounded-r-xl shadow-sm">
               <p className="text-lg text-gray-800 leading-relaxed">
                 Successful commercial radio promotion follows proven patterns that any artist or label can implement with the right tracking and strategic approach.
               </p>
@@ -426,7 +426,7 @@ export default function CommercialRadioCampaignTrackingPage() {
                 <p className="text-base text-gray-700 leading-relaxed mb-3">
                   Learn how to track BBC radio campaigns alongside your commercial radio efforts for comprehensive coverage.
                 </p>
-                <Link href="/blog/bbc-radio-1-campaign-tracking" className="text-purple-600 font-semibold hover:underline">
+                <Link href="/blog/bbc-radio-1-campaign-tracking" className="text-amber-600 font-semibold hover:underline">
                   Read the BBC Radio guide →
                 </Link>
               </div>
@@ -436,7 +436,7 @@ export default function CommercialRadioCampaignTrackingPage() {
                 <p className="text-base text-gray-700 leading-relaxed mb-3">
                   Combine radio promotion with playlist campaigns for maximum reach and impact.
                 </p>
-                <Link href="/blog/spotify-playlist-campaign-tracking" className="text-purple-600 font-semibold hover:underline">
+                <Link href="/blog/spotify-playlist-campaign-tracking" className="text-amber-600 font-semibold hover:underline">
                   See the playlist workflow →
                 </Link>
               </div>
@@ -452,7 +452,7 @@ export default function CommercialRadioCampaignTrackingPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 active:scale-95"
+                className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 active:scale-95"
               >
                 Start Tracking Free
               </Link>

@@ -42,7 +42,7 @@ export default function SpotifyPlaylistCampaignTracking() {
             <span>8 min read</span>
           </div>
 
-          <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-lg">
+          <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-lg">
             <p className="text-lg text-gray-800 font-medium leading-relaxed">
               After tracking over 300 Spotify playlist campaigns, I can tell you: most artists have no idea if their results are good or terrible. 
               Your 18% success rate? That's actually below the 22% industry average for your genre. Here's how to track Spotify campaigns properly 
@@ -96,27 +96,27 @@ export default function SpotifyPlaylistCampaignTracking() {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">Electronic/Dance:</span>
-                    <span className="text-purple-600 font-black">25% average success</span>
+                    <span className="text-amber-600 font-black">25% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">Hip Hop/Rap:</span>
-                    <span className="text-purple-600 font-black">28% average success</span>
+                    <span className="text-amber-600 font-black">28% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">Indie Rock:</span>
-                    <span className="text-purple-600 font-black">18% average success</span>
+                    <span className="text-amber-600 font-black">18% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">Pop:</span>
-                    <span className="text-purple-600 font-black">22% average success</span>
+                    <span className="text-amber-600 font-black">22% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">Metal:</span>
-                    <span className="text-purple-600 font-black">15% average success</span>
+                    <span className="text-amber-600 font-black">15% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">Folk/Acoustic:</span>
-                    <span className="text-purple-600 font-black">14% average success</span>
+                    <span className="text-amber-600 font-black">14% average success</span>
                   </div>
                 </div>
               </div>
@@ -127,19 +127,19 @@ export default function SpotifyPlaylistCampaignTracking() {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">£0-50 (DIY Pitching):</span>
-                    <span className="text-purple-600 font-black">12% average success</span>
+                    <span className="text-amber-600 font-black">12% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">£50-200 (Small Campaign):</span>
-                    <span className="text-purple-600 font-black">19% average success</span>
+                    <span className="text-amber-600 font-black">19% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">£200-500 (Mid Campaign):</span>
-                    <span className="text-purple-600 font-black">24% average success</span>
+                    <span className="text-amber-600 font-black">24% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">£500+ (Large Campaign):</span>
-                    <span className="text-purple-600 font-black">26% average success</span>
+                    <span className="text-amber-600 font-black">26% average success</span>
                   </div>
                 </div>
               </div>
@@ -153,7 +153,7 @@ export default function SpotifyPlaylistCampaignTracking() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">4 weeks before release:</span>
-                    <span className="text-purple-600 font-black">14% success</span>
+                    <span className="text-amber-600 font-black">14% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">2 weeks before release:</span>
@@ -394,34 +394,34 @@ export default function SpotifyPlaylistCampaignTracking() {
               Stop guessing if your Spotify campaigns are working. Get instant industry benchmarks, AI pattern recognition, and know exactly which 
               targeting changes would improve your success rate.
             </p>
-            <div className="bg-purple-50 border-4 border-purple-500 rounded-xl p-8">
+            <div className="bg-amber-50 border-4 border-amber-500 rounded-xl p-8">
               <h3 className="text-2xl font-black text-gray-900 mb-4">What You Get with Tracker</h3>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <span className="text-purple-600 font-black text-xl">✓</span>
+                  <span className="text-amber-600 font-black text-xl">✓</span>
                   <span>Industry benchmark comparison (see your 18% vs 22% genre average immediately)</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-purple-600 font-black text-xl">✓</span>
+                  <span className="text-amber-600 font-black text-xl">✓</span>
                   <span>AI campaign intelligence (spots timing issues, budget misallocation, targeting problems)</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-purple-600 font-black text-xl">✓</span>
+                  <span className="text-amber-600 font-black text-xl">✓</span>
                   <span>Pattern recognition (which playlist sizes and timing deliver best ROI for your genre)</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-purple-600 font-black text-xl">✓</span>
+                  <span className="text-amber-600 font-black text-xl">✓</span>
                   <span>Smart recommendations (actionable suggestions to improve your success rate)</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-purple-600 font-black text-xl">✓</span>
+                  <span className="text-amber-600 font-black text-xl">✓</span>
                   <span>Export-ready reports (PDF summaries proving campaign value to labels/management)</span>
                 </li>
               </ul>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/signup"
-                  className="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+                  className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
                 >
                   Start Tracking Free
                 </Link>

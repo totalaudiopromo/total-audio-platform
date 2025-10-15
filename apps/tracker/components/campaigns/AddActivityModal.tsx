@@ -98,7 +98,7 @@ export function AddActivityModal({
             <select
               value={activityType}
               onChange={(e) => setActivityType(e.target.value)}
-              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
               required
             >
               {ACTIVITY_TYPES.map((type) => (
@@ -118,7 +118,7 @@ export function AddActivityModal({
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="e.g., Initial pitch sent to 15 contacts"
-              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
               required
             />
           </div>
@@ -131,7 +131,7 @@ export function AddActivityModal({
               type="date"
               value={activityDate}
               onChange={(e) => setActivityDate(e.target.value)}
-              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
               required
             />
           </div>
@@ -145,7 +145,7 @@ export function AddActivityModal({
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Additional details about this activity..."
               rows={3}
-              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent resize-none"
             />
           </div>
 
@@ -160,7 +160,7 @@ export function AddActivityModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium disabled:opacity-50"
+              className="flex-1 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium disabled:opacity-50"
             >
               {isSubmitting ? 'Adding...' : 'Add Activity'}
             </button>

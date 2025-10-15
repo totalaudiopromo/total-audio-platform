@@ -100,11 +100,11 @@ export default function BBCIntroducingCampaignTracking() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">Regional Shows (BBC Scotland, Wales, etc):</span>
-                    <span className="text-purple-600 font-black">8% success</span>
+                    <span className="text-amber-600 font-black">8% success</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
+                  <div className="flex justify-between items-center p-3 bg-amber-50 rounded">
                     <span className="font-bold">Local Shows (BBC Radio 1 local):</span>
-                    <span className="text-purple-600 font-black">6% success</span>
+                    <span className="text-amber-600 font-black">6% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">Online Only (BBC Introducing website):</span>
@@ -148,7 +148,7 @@ export default function BBCIntroducingCampaignTracking() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">2-3 weeks before release:</span>
-                    <span className="text-purple-600 font-black">8% success</span>
+                    <span className="text-amber-600 font-black">8% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">Week of release:</span>

@@ -20,7 +20,7 @@ interface BlogSidebarProps {
 
 const categories = [
   { name: 'All Guides', value: 'all', color: 'bg-gray-100 text-gray-800' },
-  { name: 'Playlist Tracking', value: 'Playlist Tracking', color: 'bg-purple-100 text-purple-800' },
+  { name: 'Playlist Tracking', value: 'Playlist Tracking', color: 'bg-amber-100 text-amber-800' },
   { name: 'Radio Tracking', value: 'Radio Tracking', color: 'bg-indigo-100 text-indigo-800' },
   { name: 'PR Tracking', value: 'PR Tracking', color: 'bg-green-100 text-green-800' },
   { name: 'Social Media', value: 'Social Media Tracking', color: 'bg-pink-100 text-pink-800' },
@@ -53,7 +53,7 @@ export default function BlogSidebar({
             placeholder="Search articles..."
             value={searchQuery}
             onChange={(e) => onSearchChange?.(e.target.value)}
-            className="w-full px-4 py-2 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+            className="w-full px-4 py-2 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600"
           />
         </div>
 
@@ -90,7 +90,7 @@ export default function BlogSidebar({
         {(selectedCategory !== 'all' || searchQuery) && (
           <div className="bg-white rounded-xl border-4 border-black shadow-brutal p-4">
             <div className="text-center">
-              <div className="text-3xl font-black text-purple-600 mb-2">
+              <div className="text-3xl font-black text-amber-600 mb-2">
                 {filteredPosts.length}
               </div>
               <p className="text-sm text-gray-600">
@@ -101,14 +101,14 @@ export default function BlogSidebar({
         )}
 
         {/* Quick Links */}
-        <div className="bg-gradient-to-br from-purple-600 to-indigo-600 rounded-xl border-4 border-black shadow-brutal p-4 text-white">
+        <div className="bg-gradient-to-br from-amber-600 to-indigo-600 rounded-xl border-4 border-black shadow-brutal p-4 text-white">
           <h3 className="text-sm font-bold mb-2">Start Tracking</h3>
-          <p className="text-xs text-purple-100 mb-3">
+          <p className="text-xs text-amber-100 mb-3">
             Get AI-powered campaign intelligence.
           </p>
           <Link
             href="/signup"
-            className="block w-full text-center bg-white text-purple-600 px-4 py-2 rounded-lg text-sm font-bold hover:bg-gray-100 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+            className="block w-full text-center bg-white text-amber-600 px-4 py-2 rounded-lg text-sm font-bold hover:bg-gray-100 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           >
             Try Free →
           </Link>

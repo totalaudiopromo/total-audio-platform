@@ -101,15 +101,15 @@ export default function AppleMusicPlaylistAnalytics() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">Editorial (Genre-specific):</span>
-                    <span className="text-purple-600 font-black">12% success</span>
+                    <span className="text-amber-600 font-black">12% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-green-50 rounded border border-green-200">
                     <span className="font-bold">Algorithmic (New Music Mix, etc):</span>
                     <span className="text-green-600 font-black">40-60% reach (BEST)</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
+                  <div className="flex justify-between items-center p-3 bg-amber-50 rounded">
                     <span className="font-bold">Apple Music 1 Radio:</span>
-                    <span className="text-purple-600 font-black">4% success</span>
+                    <span className="text-amber-600 font-black">4% success</span>
                   </div>
                 </div>
               </div>
@@ -153,7 +153,7 @@ export default function AppleMusicPlaylistAnalytics() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">2-3 weeks before release:</span>
-                    <span className="text-purple-600 font-black">8% success</span>
+                    <span className="text-amber-600 font-black">8% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">Week of release:</span>

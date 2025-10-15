@@ -12,14 +12,14 @@ interface CampaignCardIntelProps {
 export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
   const statusColors = {
     planning: 'bg-gray-100 text-gray-700',
-    active: 'bg-purple-100 text-purple-700',
+    active: 'bg-amber-100 text-amber-700',
     completed: 'bg-green-100 text-green-700',
     archived: 'bg-gray-100 text-gray-500',
   };
 
   const performanceColor = (score: number) => {
     if (score >= 70) return 'text-green-600';
-    if (score >= 50) return 'text-purple-600';
+    if (score >= 50) return 'text-amber-600';
     if (score >= 30) return 'text-orange-600';
     return 'text-red-600';
   };
@@ -48,7 +48,7 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
             </span>
           )}
           {campaign.genre && (
-            <span className="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-medium">
+            <span className="px-2 py-1 bg-amber-100 text-amber-700 rounded text-xs font-medium">
               {campaign.genre}
             </span>
           )}
@@ -83,7 +83,7 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
             </div>
             <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-purple-600 rounded-full transition-all"
+                className="h-full bg-amber-600 rounded-full transition-all"
                 style={{ width: `${Math.min(100, (campaign.actual_reach / campaign.target_reach) * 100)}%` }}
               />
             </div>
@@ -91,7 +91,7 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
         )}
 
         {campaign.insights && campaign.insights.length > 0 && (
-          <div className="bg-purple-50 border border-purple-100 rounded-lg p-3">
+          <div className="bg-amber-50 border border-amber-100 rounded-lg p-3">
             <p className="text-sm text-gray-700">{campaign.insights[0]}</p>
           </div>
         )}

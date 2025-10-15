@@ -10,7 +10,7 @@ export function AddCampaignButton() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-purple-600 text-white rounded-xl font-semibold hover:from-purple-700 hover:to-purple-700 shadow-lg transition-all"
+        className="px-6 py-2.5 bg-gradient-to-r from-amber-600 to-amber-600 text-white rounded-xl font-semibold hover:from-amber-700 hover:to-amber-700 shadow-lg transition-all"
       >
         + New Campaign
       </button>

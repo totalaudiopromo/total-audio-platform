@@ -72,7 +72,7 @@ export function ImprovedMobileNav({ userName, onSignOut }: MobileNavProps) {
       >
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b-4 border-black bg-gradient-to-r from-purple-50 to-blue-50">
+          <div className="flex items-center justify-between p-6 border-b-4 border-black bg-gradient-to-r from-amber-50 to-blue-50">
             <div>
               <h2 className="text-xl font-black text-gray-900">Menu</h2>
               {userName && (
@@ -101,7 +101,7 @@ export function ImprovedMobileNav({ userName, onSignOut }: MobileNavProps) {
                       href={item.href}
                       className={`flex items-center gap-4 px-4 py-4 rounded-xl font-bold text-base transition-all border-2 ${
                         isActive
-                          ? 'bg-purple-600 text-white border-purple-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
+                          ? 'bg-amber-600 text-white border-amber-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
                           : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400 hover:bg-gray-50'
                       }`}
                       onClick={() => setIsOpen(false)}

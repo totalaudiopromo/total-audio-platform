@@ -30,7 +30,7 @@ export function SelectableCampaignCard({
           }}
           className={`absolute top-4 left-4 z-10 p-2 rounded-xl transition-all border-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 ${
             isSelected
-              ? 'bg-purple-600 border-purple-800'
+              ? 'bg-amber-600 border-amber-800'
               : 'bg-white border-gray-300 hover:border-gray-400'
           }`}
           aria-label={isSelected ? 'Deselect campaign' : 'Select campaign'}
@@ -44,7 +44,7 @@ export function SelectableCampaignCard({
       )}
 
       {/* Campaign Card */}
-      <div className={`transition-all ${isSelectionMode ? 'pl-16' : ''} ${isSelected ? 'ring-4 ring-purple-500 ring-offset-4' : ''}`}>
+      <div className={`transition-all ${isSelectionMode ? 'pl-16' : ''} ${isSelected ? 'ring-4 ring-amber-500 ring-offset-4' : ''}`}>
         <CampaignCardWithIntel
           campaign={campaign}
           integrations={integrations}

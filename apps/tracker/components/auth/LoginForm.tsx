@@ -68,7 +68,7 @@ export function LoginForm() {
           {...register('email')}
           type="email"
           id="email"
-          className="w-full px-4 py-3 border-2 border-black rounded-xl font-bold focus:outline-none focus:ring-4 focus:ring-purple-500 focus:border-purple-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+          className="w-full px-4 py-3 border-2 border-black rounded-xl font-bold focus:outline-none focus:ring-4 focus:ring-amber-500 focus:border-amber-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           placeholder="Enter your email"
         />
         {errors.email && (
@@ -84,7 +84,7 @@ export function LoginForm() {
           {...register('password')}
           type="password"
           id="password"
-          className="w-full px-4 py-3 border-2 border-black rounded-xl font-bold focus:outline-none focus:ring-4 focus:ring-purple-500 focus:border-purple-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+          className="w-full px-4 py-3 border-2 border-black rounded-xl font-bold focus:outline-none focus:ring-4 focus:ring-amber-500 focus:border-amber-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           placeholder="Enter your password"
         />
         {errors.password && (
@@ -95,7 +95,7 @@ export function LoginForm() {
       <div className="flex items-center justify-end mb-4">
         <a
           href="/reset-password"
-          className="text-sm text-purple-600 hover:text-purple-700 font-black underline transition-colors"
+          className="text-sm text-amber-600 hover:text-amber-700 font-black underline transition-colors"
         >
           Forgot password?
         </a>
@@ -103,7 +103,7 @@ export function LoginForm() {
 
       <Button
         type="submit"
-        className="w-full bg-purple-600 hover:bg-purple-700 text-white font-black py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 transition-all"
+        className="w-full bg-amber-600 hover:bg-amber-700 text-white font-black py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 transition-all"
         disabled={isLoading}
       >
         {isLoading ? 'Signing in...' : 'Sign in'}

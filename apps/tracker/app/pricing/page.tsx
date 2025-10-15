@@ -113,7 +113,7 @@ export default function PricingPage() {
             key={plan.name}
             className={`glass-panel relative px-6 py-10 ${
               plan.highlighted
-                ? 'ring-4 ring-purple-200 ring-opacity-50 lg:scale-105'
+                ? 'ring-4 ring-amber-200 ring-opacity-50 lg:scale-105'
                 : ''
             }`}
           >
@@ -124,7 +124,7 @@ export default function PricingPage() {
                   plan.badgeColor === 'green'
                     ? 'bg-green-500 text-white'
                     : plan.badgeColor === 'purple'
-                    ? 'bg-purple-600 text-white'
+                    ? 'bg-amber-600 text-white'
                     : 'bg-gray-900 text-white'
                 }`}
               >
@@ -184,7 +184,7 @@ export default function PricingPage() {
               href={plan.href}
               className={`block w-full rounded-xl border-4 border-black px-6 py-4 text-center text-lg font-bold transition-all ${
                 plan.highlighted
-                  ? 'bg-purple-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1'
+                  ? 'bg-amber-600 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1'
                   : 'bg-white text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5'
               }`}
             >
@@ -236,7 +236,7 @@ export default function PricingPage() {
           </p>
           <Link
             href="/signup"
-            className="inline-block rounded-xl border-4 border-black bg-purple-600 px-12 py-4 text-lg font-bold text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1"
+            className="inline-block rounded-xl border-4 border-black bg-amber-600 px-12 py-4 text-lg font-bold text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1"
           >
             Start Free Trial →
           </Link>

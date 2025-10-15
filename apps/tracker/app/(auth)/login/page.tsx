@@ -18,7 +18,7 @@ export default function LoginPage() {
           Don't have an account?{' '}
           <Link
             href="/signup"
-            className="font-black text-purple-600 hover:text-purple-700 transition-colors underline"
+            className="font-black text-amber-600 hover:text-amber-700 transition-colors underline"
           >
             Sign up
           </Link>

@@ -150,7 +150,7 @@ export function IntegrationActivityFeed() {
           {activities.map((activity) => (
             <div
               key={activity.id}
-              className="flex items-start gap-3 p-3 rounded-xl border-2 border-gray-200 hover:border-purple-300 transition-colors"
+              className="flex items-start gap-3 p-3 rounded-xl border-2 border-gray-200 hover:border-amber-300 transition-colors"
             >
               {/* Icon */}
               <div className={`flex-shrink-0 p-2 rounded-lg border-2 ${getStatusColor(activity.status)}`}>

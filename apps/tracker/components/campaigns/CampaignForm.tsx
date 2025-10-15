@@ -71,7 +71,7 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
             <div
               className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
                 s === step
-                  ? 'bg-purple-600 text-white'
+                  ? 'bg-amber-600 text-white'
                   : s < step
                   ? 'bg-green-600 text-white'
                   : 'bg-slate-200 text-slate-600'
@@ -91,7 +91,7 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
             <label className="block text-sm font-medium text-slate-700 mb-1">Campaign name *</label>
             <input
               {...register('name')}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-purple-500"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-amber-500"
               placeholder="e.g., Summer Single Release"
             />
             {errors.name && <p className="text-sm text-red-600 mt-1">{errors.name.message}</p>}
@@ -100,7 +100,7 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
             <label className="block text-sm font-medium text-slate-700 mb-1">Artist name *</label>
             <input
               {...register('artist_name')}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-purple-500"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-amber-500"
               placeholder="e.g., The Artist"
             />
             {errors.artist_name && <p className="text-sm text-red-600 mt-1">{errors.artist_name.message}</p>}
@@ -109,7 +109,7 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
             <label className="block text-sm font-medium text-slate-700 mb-1">Release type</label>
             <select
               {...register('release_type')}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-purple-500"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-amber-500"
             >
               <option value="">Select type</option>
               <option value="single">Single</option>
@@ -130,7 +130,7 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
               type="number"
               min="0"
               step="0.01"
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-purple-500"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-amber-500"
               placeholder="0.00"
             />
             {errors.budget && <p className="text-sm text-red-600 mt-1">{errors.budget.message}</p>}
@@ -142,7 +142,7 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
               <input
                 type="date"
                 {...register('start_date')}
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-purple-500"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-amber-500"
               />
             </div>
             <div>
@@ -150,7 +150,7 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
               <input
                 type="date"
                 {...register('end_date')}
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-purple-500"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-amber-500"
               />
               {errors.end_date && <p className="text-sm text-red-600 mt-1">{errors.end_date.message}</p>}
             </div>
@@ -169,7 +169,7 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
                   key={p.id}
                   className={`flex items-center gap-2 p-3 border-2 rounded-lg cursor-pointer transition-all ${
                     selected?.includes(p.id)
-                      ? 'border-purple-600 bg-blue-50'
+                      ? 'border-amber-600 bg-blue-50'
                       : 'border-slate-200 hover:border-slate-300'
                   }`}
                 >
@@ -180,7 +180,7 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
                       if (e.target.checked) setValue('platforms', [...selected, p.id]);
                       else setValue('platforms', selected.filter(v => v !== p.id));
                     }}
-                    className="w-4 h-4 text-purple-600"
+                    className="w-4 h-4 text-amber-600"
                   />
                   <span className="text-sm font-medium">{p.label}</span>
                 </label>
@@ -192,7 +192,7 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
             <label className="block text-sm font-medium text-slate-700 mb-1">Campaign goals (optional)</label>
             <textarea
               {...register('goals')}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-purple-500"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-amber-500"
               rows={4}
               placeholder="e.g., Reach 100k streams in first month, get BBC Radio 1 airplay, secure playlist placements"
             />
@@ -220,7 +220,7 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
             type="button"
             onClick={() => setStep(s => Math.min(3, s + 1))}
             disabled={isSubmitting}
-            className="bg-purple-600 hover:bg-purple-700 text-white"
+            className="bg-amber-600 hover:bg-amber-700 text-white"
           >
             Next →
           </Button>
@@ -228,7 +228,7 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="bg-purple-600 hover:bg-purple-700 text-white"
+            className="bg-amber-600 hover:bg-amber-700 text-white"
           >
             {isSubmitting ? 'Creating campaign...' : 'Create Campaign'}
           </Button>

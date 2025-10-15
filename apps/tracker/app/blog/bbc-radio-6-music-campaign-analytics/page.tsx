@@ -42,7 +42,7 @@ export default function BBCRadio6MusicCampaignAnalytics() {
             <span>9 min read</span>
           </div>
 
-          <div className="bg-blue-50 border-l-4 border-purple-500 p-6 rounded-lg">
+          <div className="bg-blue-50 border-l-4 border-amber-500 p-6 rounded-lg">
             <p className="text-lg text-gray-800 font-medium leading-relaxed">
               After tracking over 150 BBC Radio 6 Music campaigns, here's what nobody tells you: your 10% specialist show success rate? That's actually above 
               the 8% industry average for alternative music. But you're ignoring the daytime shows (2% success) when you should focus on evening specialists 
@@ -104,11 +104,11 @@ export default function BBCRadio6MusicCampaignAnalytics() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">Weekend Shows (Jarvis Cocker, Iggy Pop):</span>
-                    <span className="text-purple-600 font-black">12% success</span>
+                    <span className="text-amber-600 font-black">12% success</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
+                  <div className="flex justify-between items-center p-3 bg-amber-50 rounded">
                     <span className="font-bold">New Music Shows (Steve Lamacq):</span>
-                    <span className="text-purple-600 font-black">10% success</span>
+                    <span className="text-amber-600 font-black">10% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">BBC Introducing (Tom Robinson):</span>
@@ -122,19 +122,19 @@ export default function BBCRadio6MusicCampaignAnalytics() {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">Indie Rock → Evening Specialists:</span>
-                    <span className="text-purple-600 font-black">16% average success</span>
+                    <span className="text-amber-600 font-black">16% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">Alternative → Weekend Shows:</span>
-                    <span className="text-purple-600 font-black">14% average success</span>
+                    <span className="text-amber-600 font-black">14% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">Electronic → New Music Shows:</span>
-                    <span className="text-purple-600 font-black">12% average success</span>
+                    <span className="text-amber-600 font-black">12% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">Folk → BBC Introducing:</span>
-                    <span className="text-purple-600 font-black">10% average success</span>
+                    <span className="text-amber-600 font-black">10% average success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
                     <span className="font-bold">Wrong Genre Match:</span>
@@ -152,7 +152,7 @@ export default function BBCRadio6MusicCampaignAnalytics() {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                     <span className="font-bold">4-5 weeks before release:</span>
-                    <span className="text-purple-600 font-black">9% success</span>
+                    <span className="text-amber-600 font-black">9% success</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
                     <span className="font-bold">2-3 weeks before release:</span>
@@ -393,34 +393,34 @@ export default function BBCRadio6MusicCampaignAnalytics() {
               Stop guessing if your Radio 6 campaigns are working. Get instant industry benchmarks, AI pattern recognition showing show-genre matches, 
               and know exactly which targeting changes would improve your success rate.
             </p>
-            <div className="bg-blue-50 border-4 border-purple-500 rounded-xl p-8">
+            <div className="bg-blue-50 border-4 border-amber-500 rounded-xl p-8">
               <h3 className="text-2xl font-black text-gray-900 mb-4">What You Get with Tracker</h3>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <span className="text-purple-600 font-black text-xl">✓</span>
+                  <span className="text-amber-600 font-black text-xl">✓</span>
                   <span>Industry benchmark comparison (see your 10% vs 8% specialist average instantly)</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-purple-600 font-black text-xl">✓</span>
+                  <span className="text-amber-600 font-black text-xl">✓</span>
                   <span>Show-genre matching (AI flags when you're targeting the wrong Radio 6 shows)</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-purple-600 font-black text-xl">✓</span>
+                  <span className="text-amber-600 font-black text-xl">✓</span>
                   <span>Daytime vs specialist analysis (stop wasting budget on 2% success daytime shows)</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-purple-600 font-black text-xl">✓</span>
+                  <span className="text-amber-600 font-black text-xl">✓</span>
                   <span>Timing optimization (pitch 6-8 weeks out for 12% success vs 3% last-minute)</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-purple-600 font-black text-xl">✓</span>
+                  <span className="text-amber-600 font-black text-xl">✓</span>
                   <span>Export-ready reports (prove Radio 6 campaign value to labels with benchmark data)</span>
                 </li>
               </ul>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/signup"
-                  className="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+                  className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
                 >
                   Start Tracking Free
                 </Link>

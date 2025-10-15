@@ -7,7 +7,7 @@ export function LoadingSpinner({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) {
 
   return (
     <div
-      className={`${sizeClasses[size]} animate-spin rounded-full border-purple-600 border-t-transparent`}
+      className={`${sizeClasses[size]} animate-spin rounded-full border-amber-600 border-t-transparent`}
       role="status"
       aria-label="Loading"
     />

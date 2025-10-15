@@ -68,7 +68,7 @@ export default function TermsPage() {
             <h3 className="mb-3 text-xl font-bold">3.2 Account Security</h3>
             <p className="mb-4 text-gray-700">
               You are responsible for all activities that occur under your account. Notify us immediately of any
-              unauthorised use at <a href="mailto:security@totalaudiopromo.com" className="text-purple-600 underline">security@totalaudiopromo.com</a>.
+              unauthorised use at <a href="mailto:security@totalaudiopromo.com" className="text-amber-600 underline">security@totalaudiopromo.com</a>.
             </p>
           </section>
 
@@ -248,7 +248,7 @@ export default function TermsPage() {
             </p>
             <p className="text-gray-700">
               Before initiating legal proceedings, you agree to first attempt to resolve the dispute by contacting
-              us at <a href="mailto:legal@totalaudiopromo.com" className="text-purple-600 underline">legal@totalaudiopromo.com</a>.
+              us at <a href="mailto:legal@totalaudiopromo.com" className="text-amber-600 underline">legal@totalaudiopromo.com</a>.
             </p>
           </section>
 
@@ -269,8 +269,8 @@ export default function TermsPage() {
             <p className="mb-3 text-gray-700">For questions about these Terms:</p>
             <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
               <p className="font-bold mb-2">Total Audio Promo</p>
-              <p className="text-gray-700">Email: <a href="mailto:legal@totalaudiopromo.com" className="text-purple-600 underline">legal@totalaudiopromo.com</a></p>
-              <p className="text-gray-700">Support: <a href="mailto:info@totalaudiopromo.com" className="text-purple-600 underline">info@totalaudiopromo.com</a></p>
+              <p className="text-gray-700">Email: <a href="mailto:legal@totalaudiopromo.com" className="text-amber-600 underline">legal@totalaudiopromo.com</a></p>
+              <p className="text-gray-700">Support: <a href="mailto:info@totalaudiopromo.com" className="text-amber-600 underline">info@totalaudiopromo.com</a></p>
               <p className="text-gray-700">Location: Brighton, United Kingdom</p>
             </div>
           </section>
@@ -280,7 +280,7 @@ export default function TermsPage() {
         <div className="mt-12 pt-8 border-t-2 border-gray-200">
           <Link
             href="/"
-            className="inline-block px-6 py-3 bg-purple-600 text-white rounded-xl font-bold hover:bg-purple-700 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5"
+            className="inline-block px-6 py-3 bg-amber-600 text-white rounded-xl font-bold hover:bg-amber-700 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5"
           >
             ← Back to Home
           </Link>
