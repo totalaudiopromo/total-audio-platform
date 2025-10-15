@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
   webpack: (config) => {
     // Add root node_modules to module resolution paths for monorepo
     config.resolve.modules.push(path.resolve(__dirname, "../../node_modules"));
+    config.resolve.alias = {
+      ...(config.resolve.alias ?? {}),
+      "@": path.resolve(__dirname),
+    };
     return config;
   },
 };
