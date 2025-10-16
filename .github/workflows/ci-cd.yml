@@ -100,6 +100,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test, build]
     if: github.ref == 'refs/heads/staging'
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: 'https://placeholder.supabase.co'
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: 'supabase-anon-placeholder'
+      SUPABASE_SERVICE_ROLE_KEY: 'service-role-placeholder'
+      STRIPE_SECRET_KEY: 'sk_test_placeholder'
 
     strategy:
       matrix:
@@ -144,11 +149,20 @@ jobs:
         esac
         echo "APP_PATH=$APP_PATH" >> $GITHUB_ENV
         echo "VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }}" >> $GITHUB_ENV
-    
+
+    - name: Install dependencies (root)
+      run: npm ci --no-audit --no-fund
+
+    - name: Build preview bundle for ${{ matrix.app }}
+      run: |
+        cd apps/$APP_PATH
+        vercel pull --yes --environment=preview --token ${{ secrets.VERCEL_TOKEN }}
+        vercel build --token ${{ secrets.VERCEL_TOKEN }}
+
     - name: Deploy ${{ matrix.app }} to staging
       run: |
         cd apps/$APP_PATH
-        vercel --token ${{ secrets.VERCEL_TOKEN }} --yes
+        vercel deploy --prebuilt --token ${{ secrets.VERCEL_TOKEN }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     
@@ -168,6 +182,11 @@ jobs:
     if: github.ref == 'refs/heads/main'
     environment:
       name: production
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: 'https://placeholder.supabase.co'
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: 'supabase-anon-placeholder'
+      SUPABASE_SERVICE_ROLE_KEY: 'service-role-placeholder'
+      STRIPE_SECRET_KEY: 'sk_test_placeholder'
 
     strategy:
       matrix:
@@ -212,11 +231,20 @@ jobs:
         esac
         echo "APP_PATH=$APP_PATH" >> $GITHUB_ENV
         echo "VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }}" >> $GITHUB_ENV
-    
+
+    - name: Install dependencies (root)
+      run: npm ci --no-audit --no-fund
+
+    - name: Build production bundle for ${{ matrix.app }}
+      run: |
+        cd apps/$APP_PATH
+        vercel pull --yes --environment=production --token ${{ secrets.VERCEL_TOKEN }}
+        vercel build --prod --token ${{ secrets.VERCEL_TOKEN }}
+
     - name: Deploy ${{ matrix.app }} to production
       run: |
         cd apps/$APP_PATH
-        vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
+        vercel deploy --prebuilt --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     
