@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
+import { AuthButton } from './AuthButton';
 
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -37,10 +38,10 @@ export function SiteHeader() {
               className="h-10 w-10 object-contain group-hover:scale-105 transition-transform"
             />
             <div className="hidden sm:block">
-              <h1 className="text-lg font-black bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+              <h1 className="text-lg font-black bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
                 Tracker
               </h1>
-              <p className="text-xs text-amber-600 font-bold -mt-1">by Total Audio Promo</p>
+              <p className="text-xs text-teal-600 font-bold -mt-1">by Total Audio Promo</p>
             </div>
           </Link>
 
@@ -50,7 +51,7 @@ export function SiteHeader() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-semibold text-gray-700 hover:text-amber-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all hover:after:w-full"
+                className="text-sm font-semibold text-gray-700 hover:text-teal-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-teal-600 after:transition-all hover:after:w-full"
               >
                 {link.label}
               </Link>
@@ -63,7 +64,7 @@ export function SiteHeader() {
             <div className="hidden sm:block relative">
               <button
                 onClick={() => setToolMenuOpen(!toolMenuOpen)}
-                className="flex items-center gap-1 px-3 py-1.5 rounded-lg border-2 border-amber-400 bg-amber-50 text-xs font-bold text-amber-700 hover:bg-amber-100 transition-colors"
+                className="flex items-center gap-1 px-3 py-1.5 rounded-lg border-2 border-teal-400 bg-teal-50 text-xs font-bold text-teal-700 hover:bg-teal-100 transition-colors"
               >
                 More Tools
                 <ChevronDown className="w-4 h-4" />
@@ -77,7 +78,7 @@ export function SiteHeader() {
                       href={tool.href}
                       className={`block px-4 py-3 text-sm font-bold transition-all ${
                         tool.active
-                          ? 'bg-amber-50 text-amber-700 border-l-4 border-amber-600'
+                          ? 'bg-teal-50 text-teal-700 border-l-4 border-teal-600'
                           : 'text-gray-700 hover:bg-gray-50 border-l-4 border-transparent'
                       }`}
                     >
@@ -88,13 +89,10 @@ export function SiteHeader() {
               )}
             </div>
 
-            {/* Sign In Button */}
-            <Link
-              href="/login"
-              className="hidden sm:inline-flex items-center justify-center rounded-lg border-2 border-black bg-amber-500 px-4 py-2 text-xs font-bold text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all active:scale-95"
-            >
-              Sign In
-            </Link>
+            {/* Auth Button */}
+            <div className="hidden sm:block">
+              <AuthButton variant="desktop" />
+            </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -118,7 +116,7 @@ export function SiteHeader() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded-lg transition-colors"
+                className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
@@ -140,16 +138,8 @@ export function SiteHeader() {
               ))}
             </div>
 
-            {/* Mobile Sign In */}
-            <div className="px-4 pt-4 border-t border-gray-200">
-              <Link
-                href="/login"
-                className="block text-center rounded-lg border-2 border-black bg-amber-500 px-4 py-2 text-sm font-bold text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Sign In
-              </Link>
-            </div>
+            {/* Mobile Auth Button */}
+            <AuthButton variant="mobile" />
           </nav>
         )}
       </div>
