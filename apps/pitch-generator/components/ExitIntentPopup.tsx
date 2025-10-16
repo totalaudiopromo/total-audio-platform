@@ -7,27 +7,32 @@ import { X } from 'lucide-react';
 export function ExitIntentPopup() {
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     // Check if user has already dismissed the popup permanently
     const hasDismissedPermanently = localStorage.getItem('exitIntentDismissed');
-    if (hasDismissedPermanently) {
+    if (hasDismissedPermanently === 'true') {
       setHasShown(true);
+      setIsInitialized(true);
       return;
     }
 
     // Check if user has already seen the popup in this session
     const hasSeenPopup = sessionStorage.getItem('exitIntentShown');
-    if (hasSeenPopup) {
+    if (hasSeenPopup === 'true') {
       setHasShown(true);
+      setIsInitialized(true);
       return;
     }
+
+    setIsInitialized(true);
 
     // Only show popup after user has been on page for 30 seconds
     const timer = setTimeout(() => {
       const handleMouseLeave = (e: MouseEvent) => {
         // Only trigger if mouse is leaving from the top of the page (to address bar/tabs)
-        if (e.clientY <= 0 && !hasShown) {
+        if (e.clientY <= 0 && !hasShown && isInitialized) {
           setIsVisible(true);
           setHasShown(true);
           sessionStorage.setItem('exitIntentShown', 'true');
@@ -42,7 +47,7 @@ export function ExitIntentPopup() {
     }, 30000); // 30 second delay
 
     return () => clearTimeout(timer);
-  }, [hasShown]);
+  }, [hasShown, isInitialized]);
 
   const handleClose = () => {
     setIsVisible(false);
@@ -50,10 +55,13 @@ export function ExitIntentPopup() {
 
   const handleDismissPermanently = () => {
     setIsVisible(false);
+    setHasShown(true);
     localStorage.setItem('exitIntentDismissed', 'true');
+    sessionStorage.setItem('exitIntentShown', 'true');
   };
 
-  if (!isVisible) return null;
+  // Don't render anything if user has permanently dismissed or already seen the popup
+  if (!isInitialized || hasShown || !isVisible) return null;
 
   return (
     <>

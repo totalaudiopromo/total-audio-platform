@@ -27,7 +27,7 @@ export function Header({ userName }: { userName: string }) {
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-white border-b-2 border-slate-200">
+    <header className="sticky top-0 z-30 bg-white border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Image
@@ -37,7 +37,7 @@ export function Header({ userName }: { userName: string }) {
             height={32}
             className="object-contain"
           />
-          <h1 className="text-xl font-black bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+          <h1 className="text-xl font-black text-black">
             Tracker
           </h1>
         </div>
@@ -50,7 +50,7 @@ export function Header({ userName }: { userName: string }) {
             <span className="text-sm font-semibold text-slate-700 hidden sm:block">
               {userName}
             </span>
-            <div className="w-9 h-9 bg-gradient-to-r from-amber-600 to-orange-600 rounded-lg flex items-center justify-center">
+            <div className="w-9 h-9 bg-gradient-to-r from-teal-600 to-cyan-600 rounded-lg flex items-center justify-center">
               <UserCircleIcon className="w-5 h-5 text-white" />
             </div>
           </button>

@@ -13,7 +13,7 @@ export function SiteHeader() {
   const tools = [
     { name: 'Audio Intel', href: 'https://audio-intel.totalaudiopromo.com', color: 'blue' },
     { name: 'Playlist Pulse', href: 'https://playlist-pulse.totalaudiopromo.com', color: 'green' },
-    { name: 'Tracker', href: 'https://tracker.totalaudiopromo.com', color: 'amber', active: true },
+    { name: 'Tracker', href: 'https://tracker.totalaudiopromo.com', color: 'teal', active: true },
     { name: 'Pitch Generator', href: 'https://pitch.totalaudiopromo.com', color: 'purple' },
   ];
 
@@ -25,7 +25,7 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b-2 border-black bg-white">
+    <header className="sticky top-0 z-50 w-full border-b-4 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo & Brand */}
@@ -38,10 +38,10 @@ export function SiteHeader() {
               className="h-10 w-10 object-contain group-hover:scale-105 transition-transform"
             />
             <div className="hidden sm:block">
-              <h1 className="text-lg font-black bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+              <h1 className="text-lg font-black text-black">
                 Tracker
               </h1>
-              <p className="text-xs text-teal-600 font-bold -mt-1">by Total Audio Promo</p>
+              <p className="text-xs text-gray-500 font-bold -mt-1">by Total Audio Promo</p>
             </div>
           </Link>
 

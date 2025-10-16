@@ -37,8 +37,8 @@ export function SiteHeader({
 
   return (
     <header className="sticky top-0 z-50 w-full border-b-4 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-8">
-        <div className="flex items-center gap-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-8">
+        <div className="flex items-center gap-4 min-w-0 flex-shrink-0">
           <button
             type="button"
             className="rounded-lg border-2 border-black bg-white p-2 text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:hidden"
@@ -47,22 +47,22 @@ export function SiteHeader({
           >
             <Menu className="h-5 w-5" />
           </button>
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3 min-w-0">
             <Image
               src={logoPath}
               alt="Total Audio Promo"
               width={40}
               height={40}
-              className="h-10 w-auto"
+              className="h-10 w-auto flex-shrink-0"
             />
-            <div className="flex flex-col">
-              <span className="text-lg font-bold leading-tight tracking-tight text-black">{toolName}</span>
+            <div className="flex flex-col min-w-0">
+              <span className="text-lg font-bold leading-tight tracking-tight text-black truncate">{toolName}</span>
               <span className="text-xs text-gray-500">by Total Audio Promo</span>
             </div>
           </Link>
         </div>
 
-        <nav className="hidden items-center gap-1 sm:flex">
+        <nav className="hidden items-center gap-1 sm:flex flex-shrink-0">
           {links.map(link => {
             const isActive = pathname === link.href;
             return (
@@ -81,7 +81,7 @@ export function SiteHeader({
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3 flex-shrink-0">
           {toolSwitcher && (
             <div className="hidden sm:block">
               {toolSwitcher}
