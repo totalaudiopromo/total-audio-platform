@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Music Industry Insights & Contact Enrichment Guides | Audio Intel Blog",
@@ -91,7 +90,7 @@ export default function BlogIndex() {
   const otherPosts = blogPosts.filter(post => post.slug !== featuredPost?.slug && post.category !== "Case Study");
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -106,43 +105,11 @@ export default function BlogIndex() {
           })
         }}
       />
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <Image 
-                src="/images/total_audio_promo_logo_trans.png" 
-                alt="Total Audio Promo Logo" 
-                width={40} 
-                height={40} 
-                className="w-10 h-10" 
-              />
-              <span className="text-xl font-black text-gray-900">Audio Intel</span>
-            </Link>
-            
-            <nav className="flex items-center gap-6">
-              <Link href="/" className="text-gray-600 hover:text-gray-900 font-semibold">
-                Home
-              </Link>
-              <Link href="/blog" className="text-blue-600 font-semibold">
-                Blog
-              </Link>
-              <Link href="/demo" className="text-gray-600 hover:text-gray-900 font-semibold">
-                Demo
-              </Link>
-              <Link href="/pricing" className="bg-blue-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-600 transition-colors">
-                Try Free
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
 
-      <main className="max-w-6xl mx-auto px-4 py-12">
+      <main className="mx-auto w-full max-w-6xl px-4 pb-16 pt-10 sm:px-8 lg:px-12 xl:px-16">
         
         {/* Hero Section */}
-        <div className="text-center mb-16">
+        <div className="glass-panel text-center mb-10 px-6 py-12 sm:px-10">
           <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
             Music Industry Insights
           </h1>
@@ -161,7 +128,7 @@ export default function BlogIndex() {
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               {caseStudyPosts.map(post => (
-                <article key={post.slug} className="bg-white rounded-2xl shadow-md border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow">
+                <article key={post.slug} className="glass-panel overflow-hidden hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
                   <div className="p-8">
                     <div className="flex items-center gap-3 mb-4">
                       <span className={`${getCategoryBadgeClasses(post.category)} px-3 py-1 rounded-full text-xs font-bold`}>{post.category}</span>
@@ -195,7 +162,7 @@ export default function BlogIndex() {
         {/* Featured Post */}
         {featuredPost && (
           <div className="mb-16">
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+            <div className="glass-panel border-blue-500 overflow-hidden">
               <div className="p-8 md:p-12">
                 <div className="flex items-center gap-3 mb-4">
                   <span className={`${getCategoryBadgeClasses(featuredPost.category)} px-3 py-1 rounded-full text-sm font-bold`}>
@@ -234,7 +201,7 @@ export default function BlogIndex() {
                   
                   <Link
                     href={`/blog/${featuredPost.slug}`}
-                    className="bg-blue-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-600 transition-colors"
+                    className="cta-button"
                   >
                     Read Guide →
                   </Link>
@@ -250,7 +217,7 @@ export default function BlogIndex() {
             <h2 className="text-3xl font-black text-gray-900 mb-8">More Guides</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {otherPosts.map((post) => (
-                <article key={post.slug} className="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+                <article key={post.slug} className="glass-panel overflow-hidden hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
                       <span className={`${getCategoryBadgeClasses(post.category)} px-2 py-1 rounded text-xs font-semibold`}>
@@ -283,75 +250,22 @@ export default function BlogIndex() {
         )}
 
         {/* Newsletter CTA */}
-        <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-8 text-center text-white">
-          <h2 className="text-2xl md:text-3xl font-black mb-4">
+        <div className="glass-panel border-blue-500 bg-gradient-to-br from-blue-50 to-white px-6 py-12 sm:px-10 text-center">
+          <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-4">
             Get Music Promotion Insights
           </h2>
-          <p className="text-lg mb-6 text-blue-100">
+          <p className="text-lg mb-6 text-gray-700">
             Industry tips, contact enrichment strategies, and campaign insights from working radio promoters.
           </p>
           <Link
             href="/beta"
-            className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors inline-block"
+            className="cta-button"
           >
             Join Audio Intel Beta
           </Link>
         </div>
         
       </main>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 mt-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <Image 
-                  src="/images/total_audio_promo_logo_trans.png" 
-                  alt="Total Audio Promo Logo" 
-                  width={32} 
-                  height={32} 
-                  className="w-8 h-8 bg-white rounded p-1" 
-                />
-                <span className="font-black text-lg">Audio Intel</span>
-              </div>
-              <p className="text-gray-400 text-sm">
-                Contact enrichment for the music industry. Built by working radio promoters.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-bold mb-4">Product</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/" className="hover:text-white transition-colors">Features</Link></li>
-                <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
-                <li><Link href="/demo" className="hover:text-white transition-colors">Demo</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-bold mb-4">Resources</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
-                <li><Link href="/blog/music-contact-enrichment-guide" className="hover:text-white transition-colors">Contact Enrichment Guide</Link></li>
-                <li><Link href="/blog/bbc-radio-1-contact-enrichment" className="hover:text-white transition-colors">BBC Radio 1 Case Study</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-bold mb-4">Company</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="mailto:chris@totalaudiopromo.com" className="hover:text-white transition-colors">Contact</a></li>
-                <li><a href="https://totalaudiopromo.com" className="hover:text-white transition-colors">Total Audio Promo</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-            <p>© 2025 Audio Intel - Part of Total Audio Promo</p>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 }
