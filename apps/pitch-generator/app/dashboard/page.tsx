@@ -142,6 +142,10 @@ export default function DashboardPage() {
               <Zap className="h-4 w-4" />
               Batch Mode
             </Link>
+            <Link href="/profile/voice" className="subtle-button flex items-center gap-2">
+              <Sparkles className="h-4 w-4" />
+              Edit Voice
+            </Link>
           </div>
         </div>
       </div>
@@ -309,7 +313,7 @@ export default function DashboardPage() {
                       Copy
                     </button>
                     <Link
-                      href={`/pitch/${pitch.id}`}
+                      href={`/pitch/review/${pitch.id}`}
                       className="subtle-button text-xs"
                     >
                       View
@@ -323,17 +327,19 @@ export default function DashboardPage() {
       </div>
 
       {/* Newsletter Signup */}
-      <NewsletterSignup
-        variant="card"
-        title="Get The Unsigned Advantage Newsletter"
-        description="Weekly music industry insights, radio promotion tips, and exclusive tools to help independent artists break through. Join 100+ artists and promoters."
-      />
+      <div className="px-4 sm:px-0">
+        <NewsletterSignup
+          variant="card"
+          title="Get The Unsigned Advantage Newsletter"
+          description="Weekly music industry insights, radio promotion tips, and exclusive tools to help independent artists break through. Join 100+ artists and promoters."
+        />
+      </div>
 
       {/* Quick Links */}
-      <div className="grid gap-6 sm:grid-cols-2">
-        <Link href="/pitch/templates" className="glass-panel group px-8 py-8 transition hover:border-brand-amber/50">
+      <div className="grid gap-6 sm:grid-cols-2 px-4 sm:px-0">
+        <Link href="/pitch/templates" className="glass-panel group px-6 sm:px-8 py-8 transition hover:border-brand-amber/50">
           <h3 className="text-xl font-semibold">Template Library</h3>
-          <p className="mt-2 text-sm text-gray-900/60">
+          <p className="mt-2 text-sm text-gray-900/60 break-words">
             Browse genre-specific templates from 500+ successful campaigns
           </p>
           <span className="mt-4 inline-flex text-sm font-medium text-brand-amber transition group-hover:gap-2">
@@ -341,9 +347,9 @@ export default function DashboardPage() {
           </span>
         </Link>
 
-        <Link href="/pitch/contacts" className="glass-panel group px-8 py-8 transition hover:border-brand-amber/50">
+        <Link href="/pitch/contacts" className="glass-panel group px-6 sm:px-8 py-8 transition hover:border-brand-amber/50">
           <h3 className="text-xl font-semibold">Manage Contacts</h3>
-          <p className="mt-2 text-sm text-gray-900/60">
+          <p className="mt-2 text-sm text-gray-900/60 break-words">
             Add and organize your media contacts for personalized pitches
           </p>
           <span className="mt-4 inline-flex text-sm font-medium text-brand-amber transition group-hover:gap-2">

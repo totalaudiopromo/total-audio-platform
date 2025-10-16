@@ -57,7 +57,7 @@ export function SiteHeader({
             />
             <div className="flex flex-col">
               <span className="text-lg font-bold leading-tight tracking-tight text-black">{toolName}</span>
-              <span className="text-xs text-gray-500">by Total Audio Promo</span>
+              <span className="hidden sm:inline text-xs text-gray-500">by Total Audio Promo</span>
             </div>
           </Link>
         </div>

@@ -23,6 +23,7 @@ import { ProfessionalExportService } from "@/utils/exportService"
 import ContactLoadingState from "../components/ContactLoadingState"
 import BetaTrialStatus from "@/components/BetaTrialStatus"
 import { trackPageView } from "@/utils/analytics"
+import { SiteHeader } from '../components/SiteHeader'
 
 interface Contact {
   name: string
@@ -324,29 +325,7 @@ export default function SimpleAudioIntelDemo() {
   return (
     <div className="min-h-screen audio-gradient">
       {/* Navigation Header */}
-      <div className="sticky top-0 z-50 bg-white border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <img
-              src="/images/total_audio_promo_logo_trans.png"
-              alt="Audio Intel"
-              className="w-10 h-10 object-contain"
-            />
-            <span className="font-black text-xl text-gray-900">Audio Intel</span>
-          </Link>
-          <div className="flex items-center gap-4">
-            <Link href="/pricing" className="hidden sm:inline font-bold text-gray-700 hover:text-blue-600 transition-colors">
-              Pricing
-            </Link>
-            <Link
-              href="/beta"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-black px-4 py-2 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
-            >
-              Get Beta Access
-            </Link>
-          </div>
-        </div>
-      </div>
+      <SiteHeader />
 
       {/* Toast Notification */}
       {notifyStatus && (

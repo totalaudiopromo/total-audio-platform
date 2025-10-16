@@ -534,6 +534,30 @@ export function exportContactsToPdf(
     // Clean up and format the intelligence text
     intelligenceText = intelligenceText
       .replace(/🎵|📍|📧|🎧|💡|✅/g, '') // Remove emojis
+      .replace(/[\u{1F300}-\u{1F9FF}]/gu, '') // Remove all emojis (extended range)
+      .replace(/[^\x00-\x7F]/g, (char) => {
+        // Replace common special characters with ASCII equivalents
+        const replacements: Record<string, string> = {
+          '\u00D8': 'O', // Ø
+          '\u00D9': 'U', // Ù
+          '\u00F2': 'o', // ò
+          '\u2022': '-', // •
+          '\u25AA': '-', // ▪
+          '\u2192': '->', // →
+          '\u2190': '<-', // ←
+          '\u2191': '^', // ↑
+          '\u2193': 'v', // ↓
+          '\u2713': 'Y', // ✓
+          '\u2717': 'X', // ✗
+          '\u2013': '-', // –
+          '\u2014': '-', // —
+          '\u2018': "'", // '
+          '\u2019': "'", // '
+          '\u201C': '"', // "
+          '\u201D': '"', // "
+        };
+        return replacements[char] || ''; // Remove if no replacement found
+      })
       .replace(/\n\s*\n/g, '\n') // Remove double line breaks
       .trim();
     
