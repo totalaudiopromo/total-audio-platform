@@ -45,3 +45,4 @@ The popup will now:
 - Wait 30 seconds before becoming active
 - Allow permanent dismissal
 - Use less manipulative copy
+

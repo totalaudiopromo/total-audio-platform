@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { useSession } from '@/hooks/useAuth';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Copy, CheckCircle2, Edit3, Send, Sparkles, Clock, Loader2, BarChart3, FileDown } from 'lucide-react';
@@ -227,10 +227,53 @@ export default function ReviewPitchPage() {
   }
 
   async function handleRegenerate() {
-    const confirmed = confirm('Regenerate this pitch? Your current version will be lost.');
+    if (!pitch) return;
+
+    const confirmed = confirm('Regenerate this pitch with the same track and contact details? Your current version will be lost.');
     if (!confirmed) return;
 
-    router.push('/pitch/generate');
+    setLoading(true);
+    try {
+      const response = await fetch('/api/pitch/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contactId: pitch.contact_id,
+          artistName: pitch.artist_name,
+          trackTitle: pitch.track_title,
+          genre: pitch.genre || '',
+          trackLink: pitch.track_link || '',
+          releaseDate: pitch.release_date || '',
+          keyHook: pitch.key_hook || '',
+          tone: pitch.tone || 'professional',
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to regenerate pitch');
+      }
+
+      const data = await response.json();
+
+      // Delete the old pitch
+      await supabase
+        .from('pitches')
+        .delete()
+        .eq('id', pitch.id);
+
+      // Navigate to the new pitch
+      router.push(`/pitch/review/${data.pitchId}`);
+    } catch (error: any) {
+      console.error('Error regenerating pitch:', error);
+      alert(error.message || 'Failed to regenerate pitch');
+      setLoading(false);
+    }
+  }
+
+  function handleApplySuggestions(improvedPitch: string) {
+    setEditedBody(improvedPitch);
+    setEditing(true);
   }
 
   if (status === 'loading' || loading) {
@@ -353,6 +396,7 @@ export default function ReviewPitchPage() {
             pitchBody={editing ? editedBody : pitch.pitch_body}
             contactName={pitch.contact_name}
             tone={pitch.tone}
+            onApplySuggestions={handleApplySuggestions}
           />
         </div>
 

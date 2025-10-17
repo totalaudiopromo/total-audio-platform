@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Liberty Music PR Radio Promo Orchestrator
+ * Dan - Total Audio Agent Orchestrator
  * 
  * Master coordinator for the 6-agent radio promotion system
  * Transforms 15-20 hour manual workflow into 45 minutes + monitoring
@@ -97,10 +97,10 @@ const logger = {
   }
 };
 
-class LibertyRadioPromoOrchestrator extends EventEmitter {
+class Dan extends EventEmitter {
   constructor() {
     super();
-    this.name = 'LibertyRadioPromoOrchestrator';
+    this.name = 'Dan';
     this.version = '1.0.0';
     this.startTime = Date.now();
     
@@ -234,7 +234,7 @@ class LibertyRadioPromoOrchestrator extends EventEmitter {
    */
   async initialize() {
     try {
-      logger.info('🚀 Initializing Liberty Music PR Radio Promo Orchestrator v' + this.version);
+      logger.info('🚀 Initializing Dan - Total Audio Agent Orchestrator v' + this.version);
       
       // Initialize configuration
       await this.loadConfiguration();
@@ -1066,7 +1066,7 @@ class LibertyRadioPromoOrchestrator extends EventEmitter {
 
 // CLI interface
 if (require.main === module) {
-  const orchestrator = new LibertyRadioPromoOrchestrator();
+  const orchestrator = new Dan();
   const command = process.argv[2];
   const args = process.argv.slice(3);
 
@@ -1085,7 +1085,7 @@ if (require.main === module) {
           const transcriptFile = args[1];
           
           if (!transcriptFile && workflowName === 'complete-campaign') {
-            console.log('Usage: node orchestrator.js workflow complete-campaign <transcript-file>');
+            console.log('Usage: node dan.js workflow complete-campaign <transcript-file>');
             return;
           }
           
@@ -1115,9 +1115,9 @@ if (require.main === module) {
           break;
         
         default:
-          console.log('Liberty Music PR Radio Promo Orchestrator v' + orchestrator.version);
+          console.log('Dan - Total Audio Agent Orchestrator v' + orchestrator.version);
           console.log('');
-          console.log('Usage: node orchestrator.js <command> [options]');
+          console.log('Usage: node dan.js <command> [options]');
           console.log('');
           console.log('Commands:');
           console.log('  health                           - System health check');
@@ -1146,4 +1146,4 @@ if (require.main === module) {
   run().catch(console.error);
 }
 
-module.exports = LibertyRadioPromoOrchestrator;
+module.exports = Dan;

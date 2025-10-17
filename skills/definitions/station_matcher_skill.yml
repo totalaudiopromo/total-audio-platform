@@ -1,0 +1,300 @@
+metadata:
+  name: station_matcher_skill
+  version: 1.0.0
+  description: |
+    Matches tracks with relevant UK radio stations using AI-powered analysis of genre,
+    artist profile, and station programming. Built for Liberty Music PR radio campaigns.
+  author: Total Audio Platform
+  created: 2025-10-17
+  updated: 2025-10-17
+  tags:
+    - radio
+    - matching
+    - station
+    - recommendation
+    - liberty
+  category: analytics
+
+inputs:
+  - name: track_info
+    type: object
+    description: Track metadata (artist, title, genre, vibe, tempo, influences)
+    required: true
+
+  - name: artist_profile
+    type: object
+    description: Artist background (previous plays, social proof, career stage)
+    required: false
+
+  - name: max_stations
+    type: number
+    description: Maximum number of station recommendations to return
+    required: false
+    default: 15
+    validation:
+      min: 1
+      max: 50
+
+  - name: priority_level
+    type: string
+    description: Campaign priority (affects station selection strategy)
+    required: false
+    default: high
+    validation:
+      enum:
+        - critical  # BBC Radio 1, major nationals
+        - high      # BBC 6 Music, Amazing Radio, Wigwam
+        - medium    # Community radio, online stations
+        - exploratory  # All possible fits
+
+outputs:
+  - name: station_recommendations
+    type: array
+    description: Ordered list of recommended stations with reasoning
+
+  - name: confidence_scores
+    type: object
+    description: Confidence score for each station match (0-1)
+
+  - name: genre_fit_analysis
+    type: object
+    description: Detailed genre fit breakdown
+
+  - name: alternative_contacts
+    type: array
+    description: Additional contacts if primary list is too conservative
+
+rules:
+  - id: uk_focus
+    description: Prioritise UK stations (BBC, UK community, UK online)
+    priority: critical
+    type: constraint
+
+  - id: genre_accuracy
+    description: Only recommend stations that genuinely fit the genre
+    priority: critical
+    type: constraint
+
+  - id: realistic_targeting
+    description: Don't recommend BBC Radio 1 for bedroom pop with 50 Spotify streams
+    priority: critical
+    type: constraint
+
+  - id: previous_play_leverage
+    description: If track has BBC play, use it as social proof for similar stations
+    priority: high
+    type: best_practice
+
+  - id: show_specific_targeting
+    description: Recommend specific shows/presenters when possible (not just station)
+    priority: high
+    type: best_practice
+
+prompt:
+  system: |
+    You are a UK radio promotion expert with deep knowledge of:
+    - UK radio landscape (national, commercial, community, online)
+    - Station programming and genre specializations
+    - BBC Introducing submission pathways
+    - Community radio ethos and submission preferences
+    - Online radio discovery potential (NTS, Soho, Worldwide FM, etc.)
+
+    YOUR MISSION:
+    Match tracks with radio stations that will ACTUALLY play them. Not fantasy targets.
+
+    STATION CATEGORIES:
+
+    **NATIONAL (BBC)**:
+    - BBC Radio 1: Mainstream pop/electronic (high bar, BBC Introducing pathway)
+    - BBC Radio 2: Adult contemporary, established artists
+    - BBC Radio 6 Music: Alternative, electronic, experimental (realistic for indie artists)
+    - BBC Radio 1Xtra: UK urban, grime, rap, R&B
+    - BBC Asian Network: South Asian music and culture
+
+    **COMMERCIAL**:
+    - Capital FM: Mainstream pop/chart
+    - Heart: Adult contemporary/pop
+    - Kiss: Dance/electronic/urban
+    - Absolute Radio: Rock/alternative
+    - Greatest Hits Radio: Classic hits
+
+    **ONLINE/SPECIALIST**:
+    - Amazing Radio: UK independent artists (HIGHLY RECEPTIVE)
+    - NTS Radio: Experimental/electronic/cutting-edge
+    - Soho Radio: Eclectic/fresh/emerging talent
+    - Worldwide FM: Global sounds/electronic/gilles peterson
+    - Resonance FM: Experimental/art/avant-garde
+    - Totally Radio: Alternative/experimental
+    - Radio Wigwam: Electronic/alternative/emerging artists (HIGHLY RECEPTIVE)
+
+    **COMMUNITY**:
+    - Local community stations (genre-agnostic, support local talent)
+    - University radio (emerging artist friendly)
+    - Hospital radio (wide variety)
+
+    MATCHING RULES:
+    1. BBC Radio 1 = Established artist OR BBC Introducing pathway (not direct pitch)
+    2. BBC 6 Music = Strong indie credentials, some social proof helpful
+    3. Amazing Radio/Wigwam = PERFECT for emerging UK artists (high success rate)
+    4. Community Radio = Genre fit + local connection
+    5. Online Radio = Genre specialists (NTS for electronic, Soho for eclectic)
+
+    REALISTIC TARGETING:
+    - 500 Spotify streams? → Amazing Radio, Wigwam, community radio
+    - 50k streams + BBC Introducing feature? → BBC 6 Music consideration
+    - Major label + radio 1 airplay? → Full national campaign
+
+    NEVER RECOMMEND:
+    - Stations that don't fit the genre
+    - National stations without appropriate social proof
+    - Commercial pop stations for experimental electronic
+    - Stations the artist has no realistic chance with
+
+  user: |
+    Match this track with UK radio stations:
+
+    TRACK INFO:
+    {{track_info}}
+
+    {{#if artist_profile}}
+    ARTIST PROFILE:
+    {{artist_profile}}
+    {{/if}}
+
+    PRIORITY LEVEL: {{priority_level}}
+    MAX STATIONS: {{max_stations}}
+
+    Return JSON:
+    {
+      "station_recommendations": [
+        {
+          "station_name": "Station name",
+          "station_type": "National|Commercial|Online|Community",
+          "contact_type": "BBC Introducing|Direct Email|Submission Form",
+          "priority": "critical|high|medium|low",
+          "genre_fit": 0.0-1.0,
+          "reasoning": "Why this station is a good fit",
+          "specific_shows": ["Show names or presenter names if known"],
+          "submission_notes": "How to approach this station",
+          "expected_timeline": "When they typically respond",
+          "success_likelihood": "high|medium|low"
+        }
+      ],
+      "confidence_scores": {
+        "overall": 0.0-1.0,
+        "genre_accuracy": 0.0-1.0,
+        "career_stage_match": 0.0-1.0
+      },
+      "genre_fit_analysis": {
+        "primary_genre": "detected genre",
+        "secondary_genres": ["additional fits"],
+        "station_categories": ["which types of stations fit best"],
+        "red_flags": ["genres/stations to avoid"]
+      },
+      "alternative_contacts": [
+        {
+          "station_name": "Backup option",
+          "reasoning": "Why this is an alternative"
+        }
+      ],
+      "campaign_strategy": "Brief strategy recommendation based on artist profile"
+    }
+
+  examples:
+    - input:
+        track_info:
+          artist: "sadact"
+          title: "Midnight Drive"
+          genre: "electronic/ambient"
+          vibe: "late-night, introspective, cinematic"
+          tempo: "downtempo"
+          influences: "Boards of Canada, Jon Hopkins, Burial"
+          streams: 50000
+        artist_profile:
+          previous_plays: ["BBC Introducing"]
+          social_proof: "Featured on BBC Introducing, 50k Spotify streams"
+          career_stage: "emerging"
+        priority_level: high
+        max_stations: 15
+
+      output:
+        station_recommendations:
+          - station_name: "BBC Radio 6 Music"
+            station_type: "National"
+            contact_type: "Direct Email"
+            priority: "critical"
+            genre_fit: 0.9
+            reasoning: "Perfect fit for 6 Music's electronic/ambient programming. BBC Introducing feature provides credibility. Similar artists (Jon Hopkins, Burial) regularly played."
+            specific_shows: ["Tom Ravenscroft (late night electronic)", "Mary Anne Hobbs (experimental electronic)"]
+            submission_notes: "Reference BBC Introducing feature, emphasize UK production, mention Boards of Canada/Jon Hopkins influence"
+            expected_timeline: "1-2 weeks for initial response"
+            success_likelihood: "high"
+
+          - station_name: "Amazing Radio"
+            station_type: "Online"
+            contact_type: "Submission Form"
+            priority: "high"
+            genre_fit: 0.95
+            reasoning: "Amazing Radio champions UK independent artists. Electronic/ambient perfect fit. High acceptance rate for quality submissions."
+            specific_shows: ["Amazing Evenings", "Electronic showcase"]
+            submission_notes: "Use their online submission form. Emphasize UK independent credentials. BBC Introducing mention helps."
+            expected_timeline: "3-5 days"
+            success_likelihood: "high"
+
+          - station_name: "NTS Radio"
+            station_type: "Online"
+            contact_type: "Direct Email"
+            priority: "high"
+            genre_fit: 0.88
+            reasoning: "NTS specializes in cutting-edge electronic. Ambient/downtempo fits multiple shows. Stream count demonstrates audience."
+            specific_shows: ["Late night ambient slots", "Electronic experimental shows"]
+            submission_notes: "Target specific presenters with similar taste. Emphasize cinematic/introspective angle."
+            expected_timeline: "1-3 weeks (slower response)"
+            success_likelihood: "medium"
+
+          - station_name: "Radio Wigwam"
+            station_type: "Online"
+            contact_type: "Direct Email"
+            priority: "high"
+            genre_fit: 0.92
+            reasoning: "Wigwam actively supports emerging UK electronic artists. Genre fit excellent. Very receptive to quality submissions."
+            specific_shows: ["Electronic showcase", "Late night sessions"]
+            submission_notes: "Direct email to programming team. Mention BBC Introducing. Emphasize UK electronic scene contribution."
+            expected_timeline: "5-7 days"
+            success_likelihood: "high"
+
+          - station_name: "Resonance FM"
+            station_type: "Community"
+            contact_type: "Direct Email"
+            priority: "medium"
+            genre_fit: 0.85
+            reasoning: "Experimental community station. Ambient/electronic perfect for late-night shows. London-based adds local angle."
+            specific_shows: ["Late night experimental", "Electronic showcase"]
+            submission_notes: "Emphasize experimental/artistic elements. Community radio ethos. UK independent credentials."
+            expected_timeline: "1-2 weeks"
+            success_likelihood: "medium"
+
+        confidence_scores:
+          overall: 0.88
+          genre_accuracy: 0.92
+          career_stage_match: 0.85
+
+        genre_fit_analysis:
+          primary_genre: "electronic/ambient"
+          secondary_genres: ["downtempo", "electronica", "experimental"]
+          station_categories: ["BBC 6 Music type stations", "Electronic specialists (NTS, Wigwam)", "Experimental community radio"]
+          red_flags: ["Commercial pop stations", "BBC Radio 1 (too mainstream)", "Chart-focused stations"]
+
+        alternative_contacts:
+          - station_name: "Soho Radio"
+            reasoning: "Eclectic programming includes electronic. Good for artist discovery."
+          - station_name: "Totally Radio"
+            reasoning: "Alternative/experimental focus. Worth trying if primary targets exhausted."
+
+        campaign_strategy: "BBC Introducing feature + 50k streams = credible for BBC 6 Music and specialist stations. Start with Amazing Radio + Wigwam (high success rate), then BBC 6 Music (target specific shows), then NTS/Resonance. Avoid commercial/pop stations completely."
+
+config:
+  model: claude-3-5-haiku-20241022
+  temperature: 0.4
+  maxTokens: 2500
+  timeout: 15000

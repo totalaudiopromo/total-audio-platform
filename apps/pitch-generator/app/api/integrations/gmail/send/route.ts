@@ -4,12 +4,12 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
+import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
 import { GmailService } from '@/lib/integrations/gmail-service';
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession();
+    const session = await getSupabaseSession();
     if (!session?.user) {
       return NextResponse.json(
         { error: 'Unauthorized' },
@@ -58,3 +58,4 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+

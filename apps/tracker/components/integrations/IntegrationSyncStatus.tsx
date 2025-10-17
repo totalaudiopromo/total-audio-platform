@@ -153,7 +153,7 @@ export function IntegrationSyncStatus() {
           <p className="text-gray-600 font-medium mb-2">No integrations connected</p>
           <Link
             href="/dashboard/integrations"
-            className="inline-block bg-amber-600 hover:bg-amber-700 text-white font-bold px-4 py-2 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all"
+            className="inline-block bg-teal-600 hover:bg-teal-700 text-white font-bold px-4 py-2 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all"
           >
             Connect Integrations
           </Link>
@@ -178,7 +178,7 @@ export function IntegrationSyncStatus() {
         {connections.map((connection) => (
           <div
             key={connection.id}
-            className="flex items-center justify-between p-3 rounded-xl border-2 border-gray-200 hover:border-amber-300 transition-colors"
+            className="flex items-center justify-between p-3 rounded-xl border-2 border-gray-200 hover:border-teal-300 transition-colors"
           >
             <div className="flex items-center gap-3">
               <span className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-lg border border-gray-200">
@@ -223,7 +223,7 @@ export function IntegrationSyncStatus() {
 
       <Link
         href="/dashboard/integrations"
-        className="block text-center mt-4 pt-4 border-t-2 border-gray-200 text-sm font-bold text-amber-600 hover:text-amber-700 transition-colors"
+        className="block text-center mt-4 pt-4 border-t-2 border-gray-200 text-sm font-bold text-teal-600 hover:text-teal-700 transition-colors"
       >
         Manage Integrations →
       </Link>

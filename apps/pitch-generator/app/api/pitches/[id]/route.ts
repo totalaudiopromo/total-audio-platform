@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
+import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
 import { supabaseAdmin } from '@/lib/supabase';
 
 export async function GET(
@@ -8,7 +8,7 @@ export async function GET(
 ) {
   const { id } = await params;
   try {
-    const session = await getServerSession();
+    const session = await getSupabaseSession();
     if (!session?.user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -42,7 +42,7 @@ export async function PATCH(
 ) {
   const { id } = await params;
   try {
-    const session = await getServerSession();
+    const session = await getSupabaseSession();
     if (!session?.user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -87,7 +87,7 @@ export async function DELETE(
 ) {
   const { id } = await params;
   try{
-    const session = await getServerSession();
+    const session = await getSupabaseSession();
     if (!session?.user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }

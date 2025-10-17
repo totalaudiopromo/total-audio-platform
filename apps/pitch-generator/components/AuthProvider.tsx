@@ -1,7 +1,7 @@
 'use client';
 
-import { SessionProvider } from 'next-auth/react';
-
+// Supabase doesn't require a provider wrapper like NextAuth
+// Auth state is managed through cookies and the Supabase client
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  return <SessionProvider>{children}</SessionProvider>;
+  return <>{children}</>;
 }

@@ -1,0 +1,179 @@
+metadata:
+  name: pitch_drafting_skill
+  version: 1.0.0
+  description: |
+    Generates music PR email pitches based on track metadata, contact persona,
+    and artist voice profile. Designed for Total Audio's pitch generation system.
+  author: Total Audio Platform
+  created: 2025-10-17
+  updated: 2025-10-17
+  tags:
+    - pitch
+    - email
+    - pr
+    - music
+  category: pitch_generation
+
+inputs:
+  - name: track_info
+    type: object
+    description: Track metadata including title, artist, genre, key facts
+    required: true
+
+  - name: contact_profile
+    type: object
+    description: Contact information including name, role, outlet, preferences
+    required: true
+
+  - name: artist_voice
+    type: object
+    description: Artist's communication style, tone preferences, and brand guidelines
+    required: false
+    default:
+      tone: professional
+      formality: medium
+      style: authentic
+
+  - name: context
+    type: string
+    description: Additional context or specific angle for the pitch
+    required: false
+    validation:
+      maxLength: 500
+
+outputs:
+  - name: draft_email
+    type: object
+    description: |
+      Generated email draft with subject, body, and optional follow-up suggestions
+
+  - name: tone_score
+    type: number
+    description: Confidence score for tone matching (0-1)
+
+  - name: confidence
+    type: number
+    description: Overall confidence in pitch quality (0-1)
+
+  - name: warnings
+    type: array
+    description: Any warnings or suggestions for improvement
+
+rules:
+  - id: brand_voice_consistency
+    description: Follow artist tone guidelines from brand voice skill
+    priority: critical
+    type: constraint
+
+  - id: no_fabrication
+    description: Never invent contact data, achievements, or relationships
+    priority: critical
+    type: constraint
+
+  - id: length_limit
+    description: Limit draft body to max 150 words for optimal response rate
+    priority: high
+    type: guideline
+
+  - id: uk_spelling
+    description: Always use British English spelling (organised, realise, etc.)
+    priority: high
+    type: constraint
+
+  - id: personalisation
+    description: Include at least one personalised reference to contact's work
+    priority: high
+    type: best_practice
+
+  - id: clear_cta
+    description: Include a clear, low-pressure call to action
+    priority: medium
+    type: best_practice
+
+dependencies:
+  - skillName: brand_voice_skill
+    version: 1.0.0
+    required: false
+
+prompt:
+  system: |
+    You are an expert music PR pitch writer with 5+ years of radio promotion experience.
+    Your pitches get opened and responded to because they're:
+    - Concise (under 150 words)
+    - Authentic (no bullshit or hype)
+    - Personalised (reference the contact's actual work)
+    - Professional but warm (UK music industry tone)
+
+    CRITICAL RULES:
+    - NEVER invent or exaggerate achievements
+    - NEVER use US spelling (it's "organised" not "organized")
+    - NEVER write generic template copy
+    - ALWAYS include a genuine reason why this track suits this contact
+
+  user: |
+    Write a pitch email for this track and contact:
+
+    TRACK INFO:
+    {{track_info}}
+
+    CONTACT:
+    {{contact_profile}}
+
+    ARTIST VOICE GUIDELINES:
+    {{artist_voice}}
+
+    {{#if context}}
+    ADDITIONAL CONTEXT:
+    {{context}}
+    {{/if}}
+
+    Return a JSON object with:
+    {
+      "subject": "Email subject line (5-8 words, specific not generic)",
+      "body": "Email body (max 150 words, personalised, authentic)",
+      "personalisation_note": "What specific personalisation was included",
+      "tone_match": 0.0-1.0,
+      "confidence": 0.0-1.0,
+      "warnings": ["any concerns or suggestions"]
+    }
+
+  examples:
+    - input:
+        track_info:
+          title: "Midnight Drive"
+          artist: "sadact"
+          genre: "electronic/ambient"
+          key_facts: "Featured on BBC Introducing, 50k Spotify streams"
+        contact_profile:
+          name: "Sarah Jones"
+          role: "Producer"
+          outlet: "BBC Radio 6 Music"
+          recent_plays: ["ambient electronic", "UK producers"]
+        artist_voice:
+          tone: "casual-professional"
+          formality: "medium"
+          style: "authentic"
+
+      output:
+        subject: "New ambient track for 6 Music consideration"
+        body: |
+          Hi Sarah,
+
+          Love the ambient electronic features you've been running lately, especially the UK producer spotlight.
+
+          I've just released "Midnight Drive" – a late-night electronic piece that sits somewhere between Boards of Canada and Jon Hopkins. BBC Introducing featured it last month and the response has been solid (50k streams so far).
+
+          Think it could work well for your show if you get a sec to check it out.
+
+          Best,
+          Chris (sadact)
+        personalisation_note: "Referenced Sarah's recent ambient electronic features and UK producer focus"
+        tone_match: 0.92
+        confidence: 0.88
+        warnings: []
+
+config:
+  model: claude-3-5-haiku-20241022
+  temperature: 0.7
+  maxTokens: 500
+  timeout: 10000

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
+import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
 import Anthropic from '@anthropic-ai/sdk';
 
 const anthropic = new Anthropic({
@@ -8,7 +8,7 @@ const anthropic = new Anthropic({
 
 export async function POST(req: Request) {
   try {
-    const session = await getServerSession();
+    const session = await getSupabaseSession();
     if (!session?.user) {
       return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
     }

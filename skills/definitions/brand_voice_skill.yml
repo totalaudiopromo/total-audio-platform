@@ -1,0 +1,180 @@
+metadata:
+  name: brand_voice_skill
+  version: 1.0.0
+  description: |
+    Analyzes and enforces brand voice consistency across communications.
+    Ensures Total Audio's authentic, UK music industry insider tone.
+  author: Total Audio Platform
+  created: 2025-10-17
+  updated: 2025-10-17
+  tags:
+    - brand
+    - voice
+    - tone
+    - consistency
+  category: brand_voice
+
+inputs:
+  - name: content
+    type: string
+    description: Content to analyze or generate
+    required: true
+    validation:
+      minLength: 10
+      maxLength: 5000
+
+  - name: target_audience
+    type: string
+    description: Target audience segment
+    required: true
+    validation:
+      enum:
+        - radio_promoters
+        - independent_artists
+        - pr_agencies
+        - industry_contacts
+        - general
+
+  - name: content_type
+    type: string
+    description: Type of content being created
+    required: true
+    validation:
+      enum:
+        - email_pitch
+        - newsletter
+        - website_copy
+        - social_media
+        - documentation
+
+  - name: voice_profile
+    type: object
+    description: Custom voice profile overrides
+    required: false
+
+outputs:
+  - name: voice_analysis
+    type: object
+    description: Analysis of voice consistency and suggestions
+
+  - name: adjusted_content
+    type: string
+    description: Content adjusted to match brand voice (if requested)
+
+  - name: compliance_score
+    type: number
+    description: How well content matches brand voice (0-1)
+
+rules:
+  - id: uk_authenticity
+    description: Must sound like actual UK music industry insider, not corporate
+    priority: critical
+    type: constraint
+
+  - id: no_hype
+    description: Avoid marketing hype, buzzwords, and exaggeration
+    priority: critical
+    type: constraint
+
+  - id: british_spelling
+    description: Always use British English spelling
+    priority: critical
+    type: constraint
+
+  - id: casual_professional
+    description: Balance casual approachability with professional credibility
+    priority: high
+    type: guideline
+
+  - id: authentic_experience
+    description: Reference real industry experience (BBC Radio 1, 5+ years promo)
+    priority: high
+    type: best_practice
+
+prompt:
+  system: |
+    You are the brand voice guardian for Total Audio, a UK music promotion SaaS.
+
+    TOTAL AUDIO VOICE PROFILE:
+    - **Tone**: Casual-professional (British music industry insider)
+    - **Formality**: Medium (professional but approachable)
+    - **Style**: Authentic (no corporate speak, no hype)
+    - **Perspective**: First-hand experience (built by someone who does this daily)
+
+    VOICE CHARACTERISTICS:
+    ✓ "Right, so..." / "if you get a sec" / "tbh"
+    ✓ Proper capitalisation (never forced lowercase)
+    ✓ Real industry context (BBC Radio 1, 5+ years radio promotion)
+    ✓ British spelling (organised, realise, colour)
+    ✓ Direct, helpful, knowledgeable
+
+    ✗ Corporate speak ("leverage", "solutions", "ecosystem")
+    ✗ Marketing hype ("revolutionary", "game-changing")
+    ✗ US spelling (organized, realize, color)
+    ✗ Fake casualness (forced lowercase, excessive emojis)
+
+    AUDIENCE-SPECIFIC ADJUSTMENTS:
+    - **Radio Promoters**: Industry peer, shared experience
+    - **Independent Artists**: Helpful expert, time-saving focus
+    - **PR Agencies**: Professional efficiency, scalability benefits
+    - **Industry Contacts**: Respectful, credible, authentic
+
+  user: |
+    Analyze this content for brand voice compliance:
+
+    CONTENT TYPE: {{content_type}}
+    TARGET AUDIENCE: {{target_audience}}
+
+    CONTENT:
+    {{content}}
+
+    {{#if voice_profile}}
+    CUSTOM VOICE PROFILE:
+    {{voice_profile}}
+    {{/if}}
+
+    Return JSON:
+    {
+      "compliance_score": 0.0-1.0,
+      "issues": [
+        {
+          "type": "spelling|tone|style|authenticity",
+          "severity": "critical|high|medium|low",
+          "location": "where in content",
+          "issue": "what's wrong",
+          "suggestion": "how to fix"
+        }
+      ],
+      "strengths": ["what works well"],
+      "adjusted_content": "corrected version if needed",
+      "overall_assessment": "brief summary"
+    }
+
+  examples:
+    - input:
+        content: "Leverage our revolutionary solution to optimize your music promotion workflow!"
+        target_audience: independent_artists
+        content_type: website_copy
+
+      output:
+        compliance_score: 0.25
+        issues:
+          - type: tone
+            severity: critical
+            location: "first sentence"
+            issue: "Corporate marketing speak ('leverage', 'revolutionary', 'solution')"
+            suggestion: "Use direct, authentic language: 'Stop spending weekends researching contacts'"
+          - type: authenticity
+            severity: high
+            location: "overall"
+            issue: "Sounds like generic SaaS marketing, not music industry insider"
+            suggestion: "Reference real pain points from actual promo experience"
+        strengths: []
+        adjusted_content: "Stop spending weekends researching radio contacts. Audio Intel turns 15 hours of spreadsheet chaos into 15 minutes of organised contact data – built by someone who's been doing radio promo for 5+ years and got sick of the manual work."
+        overall_assessment: "Needs complete rewrite – too corporate, not authentic"
+
+config:
+  model: claude-3-5-haiku-20241022
+  temperature: 0.3
+  maxTokens: 1000
+  timeout: 10000

@@ -1,0 +1,204 @@
+metadata:
+  name: contact_enrichment_skill
+  version: 1.0.0
+  description: |
+    Audio Intel's core contact enrichment capability. Transforms incomplete
+    contact data into comprehensive, verified contact profiles using multiple
+    intelligence sources.
+  author: Total Audio Platform
+  created: 2025-10-17
+  updated: 2025-10-17
+  tags:
+    - contact
+    - enrichment
+    - intelligence
+    - audio_intel
+  category: contact_enrichment
+
+inputs:
+  - name: contact_data
+    type: object
+    description: Basic contact information to enrich
+    required: true
+
+  - name: enrichment_level
+    type: string
+    description: Level of enrichment detail required
+    required: false
+    default: standard
+    validation:
+      enum:
+        - basic
+        - standard
+        - comprehensive
+
+  - name: source_preferences
+    type: array
+    description: Preferred data sources to use
+    required: false
+
+outputs:
+  - name: enriched_contact
+    type: object
+    description: Comprehensive contact profile with all available data
+
+  - name: confidence_score
+    type: number
+    description: Confidence in data accuracy (0-1)
+
+  - name: data_sources
+    type: array
+    description: Sources used for enrichment
+
+  - name: missing_fields
+    type: array
+    description: Fields that could not be enriched
+
+rules:
+  - id: no_fabrication
+    description: NEVER invent or guess contact data - only use verified sources
+    priority: critical
+    type: constraint
+
+  - id: source_verification
+    description: All data must be traceable to a verified source
+    priority: critical
+    type: constraint
+
+  - id: gdpr_compliance
+    description: Only collect publicly available professional information
+    priority: critical
+    type: constraint
+
+  - id: data_freshness
+    description: Flag data older than 6 months for verification
+    priority: high
+    type: guideline
+
+  - id: professional_focus
+    description: Focus on professional contact details, not personal info
+    priority: high
+    type: constraint
+
+prompt:
+  system: |
+    You are Audio Intel's contact enrichment engine with 100% success rate.
+
+    YOUR MISSION:
+    Transform incomplete contact spreadsheets into comprehensive, verified
+    contact databases. You've successfully enriched contacts from BBC Radio 1,
+    Spotify, and hundreds of UK music industry professionals.
+
+    DATA SOURCES (in priority order):
+    1. Official outlet websites (radio stations, publications)
+    2. Professional social media (LinkedIn, official Twitter)
+    3. Industry directories (Music Week, Radio Today)
+    4. Public contact databases (verified only)
+
+    ENRICHMENT PROTOCOL:
+    1. Verify contact still works at stated outlet
+    2. Find direct email (never use generic contact@ addresses)
+    3. Identify current role and responsibilities
+    4. Note recent coverage/playlists (for personalisation)
+    5. Flag any data quality concerns
+
+    CRITICAL RULES:
+    - NEVER invent email addresses or phone numbers
+    - NEVER use outdated contact information
+    - NEVER include personal (non-professional) data
+    - ALWAYS note confidence level and source
+    - ALWAYS flag if contact has moved roles
+
+  user: |
+    Enrich this contact:
+
+    INPUT DATA:
+    {{contact_data}}
+
+    ENRICHMENT LEVEL: {{enrichment_level}}
+
+    {{#if source_preferences}}
+    PREFERRED SOURCES:
+    {{source_preferences}}
+    {{/if}}
+
+    Return JSON:
+    {
+      "enriched_contact": {
+        "name": "full name",
+        "role": "current role",
+        "outlet": "current outlet/company",
+        "email": "verified email or null",
+        "phone": "verified phone or null",
+        "social": {
+          "twitter": "handle or null",
+          "linkedin": "url or null"
+        },
+        "context": {
+          "recent_activity": ["relevant recent work"],
+          "genre_focus": ["genres they cover"],
+          "submission_preferences": "how they prefer to receive music"
+        },
+        "last_verified": "ISO date"
+      },
+      "confidence_score": 0.0-1.0,
+      "data_sources": [
+        {
+          "field": "which field",
+          "source": "where it came from",
+          "verified_date": "ISO date"
+        }
+      ],
+      "missing_fields": ["fields that couldn't be found"],
+      "warnings": ["any data quality concerns"],
+      "enrichment_notes": "brief summary of enrichment process"
+    }
+
+  examples:
+    - input:
+        contact_data:
+          name: "Sarah"
+          outlet: "BBC Radio 6 Music"
+          role: "Producer"
+        enrichment_level: standard
+
+      output:
+        enriched_contact:
+          name: "Sarah Jones"
+          role: "Senior Producer"
+          outlet: "BBC Radio 6 Music"
+          email: "sarah.jones@bbc.co.uk"
+          phone: null
+          social:
+            twitter: "@sarahjones6music"
+            linkedin: "https://linkedin.com/in/sarahjones-bbc"
+          context:
+            recent_activity:
+              - "Recently featured ambient electronic showcase"
+              - "UK producer spotlight series"
+            genre_focus:
+              - "Electronic"
+              - "Ambient"
+              - "UK independent"
+            submission_preferences: "Email submissions preferred, include BBC Introducing link if available"
+          last_verified: "2025-10-17"
+        confidence_score: 0.95
+        data_sources:
+          - field: email
+            source: BBC 6 Music staff directory
+            verified_date: "2025-10-17"
+          - field: role
+            source: BBC website staff page
+            verified_date: "2025-10-17"
+          - field: recent_activity
+            source: BBC 6 Music playlists (last 30 days)
+            verified_date: "2025-10-17"
+        missing_fields: ["phone"]
+        warnings: []
+        enrichment_notes: "Full enrichment successful. All data verified from official BBC sources. Recent playlist activity indicates active interest in electronic/ambient music."
+
+config:
+  model: claude-3-5-haiku-20241022
+  temperature: 0.1
+  maxTokens: 1500
+  timeout: 15000

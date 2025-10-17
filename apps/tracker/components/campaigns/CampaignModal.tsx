@@ -97,7 +97,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 overflow-y-auto">
       <div className="bg-white rounded-2xl border-4 border-black shadow-brutal-xl max-w-3xl w-full my-8">
         {/* Header */}
-        <div className="bg-amber-600 px-6 md:px-8 py-6 border-b-4 border-black rounded-t-xl">
+        <div className="bg-teal-600 px-6 md:px-8 py-6 border-b-4 border-black rounded-t-xl">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-2xl md:text-3xl font-black text-white">
@@ -129,7 +129,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-amber-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+              className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               placeholder="Summer Radio Push"
             />
           </div>
@@ -143,7 +143,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
               type="text"
               value={formData.artist_name}
               onChange={(e) => setFormData({ ...formData, artist_name: e.target.value })}
-              className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-amber-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+              className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               placeholder="The Audio Dogs"
             />
           </div>
@@ -157,7 +157,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
               <select
                 value={formData.platform}
                 onChange={(e) => setFormData({ ...formData, platform: e.target.value })}
-                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-amber-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white"
+                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white"
               >
                 {PLATFORMS.map((platform) => (
                   <option key={platform} value={platform}>{platform}</option>
@@ -172,7 +172,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
               <select
                 value={formData.genre}
                 onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
-                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-amber-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white"
+                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white"
               >
                 {GENRES.map((genre) => (
                   <option key={genre} value={genre}>{genre}</option>
@@ -194,7 +194,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
                 step="0.01"
                 value={formData.budget}
                 onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-amber-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 placeholder="500"
               />
             </div>
@@ -208,7 +208,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
                 required
                 value={formData.start_date}
                 onChange={(e) => setFormData({ ...formData, start_date: e.target.value })}
-                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-amber-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               />
             </div>
           </div>
@@ -223,7 +223,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
                 type="text"
                 value={formData.target_type}
                 onChange={(e) => setFormData({ ...formData, target_type: e.target.value })}
-                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-amber-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 placeholder="Radio Stations / Playlists / Blogs"
               />
             </div>
@@ -238,7 +238,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
                 min="0"
                 value={formData.target_reach}
                 onChange={(e) => setFormData({ ...formData, target_reach: e.target.value })}
-                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-amber-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 placeholder="20"
               />
               <p className="text-xs font-bold text-gray-600 mt-1">How many contacts will you pitch to?</p>
@@ -255,7 +255,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
               min="0"
               value={formData.actual_reach}
               onChange={(e) => setFormData({ ...formData, actual_reach: e.target.value })}
-              className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-amber-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+              className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               placeholder="0"
             />
             <p className="text-xs font-bold text-gray-600 mt-1">
@@ -272,7 +272,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
               rows={4}
-              className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-amber-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] resize-none"
+              className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] resize-none"
               placeholder="Track progress, contacts pitched, special notes..."
             />
           </div>
@@ -289,7 +289,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 px-6 py-3.5 bg-amber-600 text-white rounded-xl font-black hover:bg-amber-700 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-base"
+              className="flex-1 px-6 py-3.5 bg-teal-600 text-white rounded-xl font-black hover:bg-teal-700 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-base"
             >
               {loading ? 'Saving...' : campaign ? 'Update Campaign' : 'Create Campaign'}
             </button>

@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { useSession } from '@/hooks/useAuth';
 import { useEffect, useState } from 'react';
 import { CheckCircle, Sparkles } from 'lucide-react';
 

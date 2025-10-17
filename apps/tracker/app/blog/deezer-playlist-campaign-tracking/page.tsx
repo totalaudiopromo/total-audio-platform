@@ -44,7 +44,7 @@ export default function DeezerPlaylistCampaignTrackingPage() {
             <span>8 min read</span>
           </div>
 
-          <div className="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg">
+          <div className="bg-teal-50 border-l-4 border-teal-400 p-6 rounded-lg">
             <p className="text-lg text-gray-800 font-medium leading-relaxed">
               Deezer may not be as big as Spotify, but it's a crucial platform in key markets like France, Germany, and Latin America. Track your Deezer campaigns properly with industry benchmarks, placement strategies, and AI-powered insights for better playlist promotion.
             </p>
@@ -56,17 +56,17 @@ export default function DeezerPlaylistCampaignTrackingPage() {
           <section id="table-of-contents" className="bg-white p-6 rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <h2 className="text-2xl font-black text-gray-900 mb-4">Table of Contents</h2>
             <ul className="list-disc list-inside space-y-2 text-lg text-gray-700">
-              <li><Link href="#understanding-deezer" className="text-amber-600 hover:underline">Understanding Deezer's Role in 2025</Link></li>
-              <li><Link href="#playlist-types" className="text-amber-600 hover:underline">Deezer Playlist Types & Opportunities</Link></li>
-              <li><Link href="#common-mistakes" className="text-amber-600 hover:underline">5 Deezer Campaign Mistakes</Link></li>
-              <li><Link href="#tracker-workflow" className="text-amber-600 hover:underline">The Tracker Workflow for Deezer</Link></li>
-              <li><Link href="#industry-benchmarks" className="text-amber-600 hover:underline">Deezer Industry Benchmarks</Link></li>
-              <li><Link href="#case-study" className="text-amber-600 hover:underline">Case Study: French Artist Breaks Through on Deezer</Link></li>
-              <li><Link href="#technical-requirements" className="text-amber-600 hover:underline">Technical Requirements & Best Practices</Link></li>
-              <li><Link href="#timeline-strategy" className="text-amber-600 hover:underline">Optimal Deezer Campaign Timeline</Link></li>
-              <li><Link href="#faq" className="text-amber-600 hover:underline">Frequently Asked Questions</Link></li>
-              <li><Link href="#related-guides" className="text-amber-600 hover:underline">Related Campaign Tracking Guides</Link></li>
-              <li><Link href="#get-started" className="text-amber-600 hover:underline">Ready to Track Your Deezer Campaigns?</Link></li>
+              <li><Link href="#understanding-deezer" className="text-teal-600 hover:underline">Understanding Deezer's Role in 2025</Link></li>
+              <li><Link href="#playlist-types" className="text-teal-600 hover:underline">Deezer Playlist Types & Opportunities</Link></li>
+              <li><Link href="#common-mistakes" className="text-teal-600 hover:underline">5 Deezer Campaign Mistakes</Link></li>
+              <li><Link href="#tracker-workflow" className="text-teal-600 hover:underline">The Tracker Workflow for Deezer</Link></li>
+              <li><Link href="#industry-benchmarks" className="text-teal-600 hover:underline">Deezer Industry Benchmarks</Link></li>
+              <li><Link href="#case-study" className="text-teal-600 hover:underline">Case Study: French Artist Breaks Through on Deezer</Link></li>
+              <li><Link href="#technical-requirements" className="text-teal-600 hover:underline">Technical Requirements & Best Practices</Link></li>
+              <li><Link href="#timeline-strategy" className="text-teal-600 hover:underline">Optimal Deezer Campaign Timeline</Link></li>
+              <li><Link href="#faq" className="text-teal-600 hover:underline">Frequently Asked Questions</Link></li>
+              <li><Link href="#related-guides" className="text-teal-600 hover:underline">Related Campaign Tracking Guides</Link></li>
+              <li><Link href="#get-started" className="text-teal-600 hover:underline">Ready to Track Your Deezer Campaigns?</Link></li>
             </ul>
           </section>
 
@@ -100,7 +100,7 @@ export default function DeezerPlaylistCampaignTrackingPage() {
             </p>
             
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white p-6 rounded-xl border-4 border-amber-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="bg-white p-6 rounded-xl border-4 border-teal-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Deezer Editorial Playlists</h3>
                 <p className="text-base text-gray-700 leading-relaxed mb-4">
                   Curated by Deezer's editorial team - similar to Spotify's editorial playlists but with different regional focus.
@@ -126,7 +126,7 @@ export default function DeezerPlaylistCampaignTrackingPage() {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-xl border-4 border-amber-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="bg-white p-6 rounded-xl border-4 border-teal-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Independent Curator Playlists</h3>
                 <p className="text-base text-gray-700 leading-relaxed mb-4">
                   User-generated playlists that can gain significant followings on Deezer.
@@ -267,7 +267,7 @@ export default function DeezerPlaylistCampaignTrackingPage() {
           {/* Case Study */}
           <section id="case-study" className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">Real-World Deezer Success Strategies</h2>
-            <div className="bg-amber-100 border-l-4 border-amber-500 p-6 rounded-r-xl shadow-sm">
+            <div className="bg-teal-100 border-l-4 border-teal-500 p-6 rounded-r-xl shadow-sm">
               <p className="text-lg text-gray-800 leading-relaxed">
                 Successful Deezer playlist promotion follows proven patterns that any artist can implement with the right tracking and regional-focused approach.
               </p>
@@ -431,7 +431,7 @@ export default function DeezerPlaylistCampaignTrackingPage() {
                 <p className="text-base text-gray-700 leading-relaxed mb-3">
                   Learn how to track Spotify campaigns alongside your Deezer efforts for comprehensive playlist promotion.
                 </p>
-                <Link href="/blog/spotify-playlist-campaign-tracking" className="text-amber-600 font-semibold hover:underline">
+                <Link href="/blog/spotify-playlist-campaign-tracking" className="text-teal-600 font-semibold hover:underline">
                   Read the Spotify guide →
                 </Link>
               </div>
@@ -441,7 +441,7 @@ export default function DeezerPlaylistCampaignTrackingPage() {
                 <p className="text-base text-gray-700 leading-relaxed mb-3">
                   Track Apple Music campaigns to cover all major streaming platforms effectively.
                 </p>
-                <Link href="/blog/apple-music-playlist-analytics" className="text-amber-600 font-semibold hover:underline">
+                <Link href="/blog/apple-music-playlist-analytics" className="text-teal-600 font-semibold hover:underline">
                   See the Apple Music workflow →
                 </Link>
               </div>
@@ -457,7 +457,7 @@ export default function DeezerPlaylistCampaignTrackingPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 active:scale-95"
+                className="inline-flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 active:scale-95"
               >
                 Start Tracking Free
               </Link>

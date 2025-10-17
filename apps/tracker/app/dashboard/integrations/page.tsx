@@ -13,7 +13,7 @@ export default function IntegrationsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-blue-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-blue-50 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-black border-t-amber-600 rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-600 font-bold">Loading integrations...</p>
@@ -25,13 +25,13 @@ export default function IntegrationsPage() {
   const connectedCount = Object.values(connections).filter((c) => c?.status === 'active').length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-blue-50">
       <div className="max-w-6xl mx-auto p-4 sm:p-8">
         {/* Header */}
         <div className="mb-8">
           <Link
             href="/dashboard"
-            className="inline-flex items-center gap-2 text-amber-600 font-bold hover:underline mb-4"
+            className="inline-flex items-center gap-2 text-teal-600 font-bold hover:underline mb-4"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Dashboard
@@ -47,17 +47,17 @@ export default function IntegrationsPage() {
                   Connect your existing tools to automate campaign tracking
                 </p>
               </div>
-              <div className="flex items-center gap-2 bg-amber-100 border-2 border-amber-600 px-4 py-2 rounded-xl">
-                <Zap className="w-5 h-5 text-amber-600" />
-                <span className="font-black text-amber-900">{connectedCount}/5</span>
+              <div className="flex items-center gap-2 bg-teal-100 border-2 border-teal-600 px-4 py-2 rounded-xl">
+                <Zap className="w-5 h-5 text-teal-600" />
+                <span className="font-black text-teal-900">{connectedCount}/5</span>
               </div>
             </div>
 
             {/* Info banner */}
             <div className="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 mt-6">
               <div className="flex gap-3">
-                <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                <div className="text-sm text-amber-900">
+                <AlertCircle className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                <div className="text-sm text-teal-900">
                   <p className="font-bold mb-1">How Integrations Work</p>
                   <p className="font-medium">
                     Connect once, and your campaigns automatically sync. Edit in Google Sheets, get

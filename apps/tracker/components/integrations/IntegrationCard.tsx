@@ -29,7 +29,7 @@ const BRAND_COLORS = {
   },
   airtable: {
     primary: '#FCB400',
-    bg: 'from-yellow-50 to-amber-50',
+    bg: 'from-yellow-50 to-teal-50',
     border: 'border-yellow-500',
     button: 'bg-yellow-600 hover:bg-yellow-700',
   },

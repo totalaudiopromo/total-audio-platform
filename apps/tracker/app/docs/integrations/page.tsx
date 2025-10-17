@@ -3,11 +3,11 @@ import { ArrowLeft, FileText } from 'lucide-react';
 
 export default function IntegrationsDocsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-blue-50">
       <div className="max-w-4xl mx-auto p-4 sm:p-8">
         <Link
           href="/dashboard/integrations"
-          className="inline-flex items-center gap-2 text-amber-600 font-bold hover:underline mb-8"
+          className="inline-flex items-center gap-2 text-teal-600 font-bold hover:underline mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Integrations
@@ -110,7 +110,7 @@ export default function IntegrationsDocsPage() {
           <div className="mt-8 p-6 bg-blue-50 border-2 border-blue-300 rounded-xl">
             <h3 className="text-lg font-black text-gray-900 mb-2">Need Help?</h3>
             <p className="text-gray-700 font-medium">
-              Email us at <a href="mailto:info@totalaudiopromo.com" className="text-amber-600 hover:underline font-bold">info@totalaudiopromo.com</a> or check our <Link href="/docs" className="text-amber-600 hover:underline font-bold">full documentation</Link>.
+              Email us at <a href="mailto:info@totalaudiopromo.com" className="text-teal-600 hover:underline font-bold">info@totalaudiopromo.com</a> or check our <Link href="/docs" className="text-teal-600 hover:underline font-bold">full documentation</Link>.
             </p>
           </div>
         </div>

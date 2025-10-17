@@ -110,7 +110,7 @@ export function CampaignFilters({
             placeholder="Search campaigns, artists, or platforms..."
             value={filters.search}
             onChange={(e) => handleSearchChange(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-xl font-bold focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200 transition-all"
+            className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-xl font-bold focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-all"
           />
           {filters.search && (
             <button
@@ -132,7 +132,7 @@ export function CampaignFilters({
             ];
             setFilters((prev) => ({ ...prev, sortBy, sortOrder }));
           }}
-          className="px-4 py-3 border-2 border-gray-300 rounded-xl font-bold focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200 transition-all bg-white"
+          className="px-4 py-3 border-2 border-gray-300 rounded-xl font-bold focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-all bg-white"
         >
           <option value="date-desc">Newest First</option>
           <option value="date-asc">Oldest First</option>
@@ -149,14 +149,14 @@ export function CampaignFilters({
           onClick={() => setIsExpanded(!isExpanded)}
           className={`px-4 py-3 rounded-xl font-black text-sm transition-all border-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 flex items-center gap-2 whitespace-nowrap ${
             activeFilterCount > 0
-              ? 'bg-amber-600 text-white border-amber-800'
+              ? 'bg-teal-600 text-white border-teal-800'
               : 'bg-white text-gray-700 border-gray-300'
           }`}
         >
           <SlidersHorizontal className="h-4 w-4" />
           Filters
           {activeFilterCount > 0 && (
-            <span className="px-2 py-0.5 bg-white text-amber-600 rounded-full text-xs font-black">
+            <span className="px-2 py-0.5 bg-white text-teal-600 rounded-full text-xs font-black">
               {activeFilterCount}
             </span>
           )}
@@ -170,7 +170,7 @@ export function CampaignFilters({
           {activeFilterCount > 0 && (
             <button
               onClick={clearFilters}
-              className="ml-2 text-amber-600 hover:text-amber-700 underline"
+              className="ml-2 text-teal-600 hover:text-teal-700 underline"
             >
               Clear all filters
             </button>
@@ -193,7 +193,7 @@ export function CampaignFilters({
                   onClick={() => toggleStatus(status)}
                   className={`px-4 py-2 rounded-xl font-bold text-sm transition-all border-2 ${
                     filters.status.includes(status)
-                      ? 'bg-amber-600 text-white border-amber-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                      ? 'bg-teal-600 text-white border-teal-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
                       : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'
                   }`}
                 >
@@ -216,7 +216,7 @@ export function CampaignFilters({
                     onClick={() => togglePlatform(platform)}
                     className={`px-4 py-2 rounded-xl font-bold text-sm transition-all border-2 ${
                       filters.platform.includes(platform)
-                        ? 'bg-amber-600 text-white border-amber-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                        ? 'bg-teal-600 text-white border-teal-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
                         : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'
                     }`}
                   >
@@ -270,7 +270,7 @@ export function CampaignFilters({
                   }
                   className={`px-4 py-2 rounded-xl font-bold text-sm transition-all border-2 ${
                     filters.dateRange === range.value
-                      ? 'bg-amber-600 text-white border-amber-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                      ? 'bg-teal-600 text-white border-teal-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
                       : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'
                   }`}
                 >

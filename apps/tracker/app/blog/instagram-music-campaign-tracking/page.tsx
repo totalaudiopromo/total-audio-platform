@@ -44,7 +44,7 @@ export default function InstagramMusicCampaignTrackingPage() {
             <span>9 min read</span>
           </div>
 
-          <div className="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg">
+          <div className="bg-teal-50 border-l-4 border-teal-400 p-6 rounded-lg">
             <p className="text-lg text-gray-800 font-medium leading-relaxed">
               Instagram remains a powerful platform for music promotion with its diverse content formats and engaged audience. Track your Instagram campaigns properly with industry benchmarks, story analytics, and AI-powered insights for better music marketing results.
             </p>
@@ -56,17 +56,17 @@ export default function InstagramMusicCampaignTrackingPage() {
           <section id="table-of-contents" className="bg-white p-6 rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <h2 className="text-2xl font-black text-gray-900 mb-4">Table of Contents</h2>
             <ul className="list-disc list-inside space-y-2 text-lg text-gray-700">
-              <li><Link href="#understanding-instagram" className="text-amber-600 hover:underline">Understanding Instagram's Music Ecosystem in 2025</Link></li>
-              <li><Link href="#content-formats" className="text-amber-600 hover:underline">Instagram Content Formats & Opportunities</Link></li>
-              <li><Link href="#common-mistakes" className="text-amber-600 hover:underline">5 Instagram Campaign Mistakes</Link></li>
-              <li><Link href="#tracker-workflow" className="text-amber-600 hover:underline">The Tracker Workflow for Instagram</Link></li>
-              <li><Link href="#industry-benchmarks" className="text-amber-600 hover:underline">Instagram Industry Benchmarks</Link></li>
-              <li><Link href="#case-study" className="text-amber-600 hover:underline">Case Study: Indie Artist Builds 50k Instagram Following</Link></li>
-              <li><Link href="#technical-requirements" className="text-amber-600 hover:underline">Technical Requirements & Best Practices</Link></li>
-              <li><Link href="#timeline-strategy" className="text-amber-600 hover:underline">Optimal Instagram Campaign Timeline</Link></li>
-              <li><Link href="#faq" className="text-amber-600 hover:underline">Frequently Asked Questions</Link></li>
-              <li><Link href="#related-guides" className="text-amber-600 hover:underline">Related Campaign Tracking Guides</Link></li>
-              <li><Link href="#get-started" className="text-amber-600 hover:underline">Ready to Track Your Instagram Campaigns?</Link></li>
+              <li><Link href="#understanding-instagram" className="text-teal-600 hover:underline">Understanding Instagram's Music Ecosystem in 2025</Link></li>
+              <li><Link href="#content-formats" className="text-teal-600 hover:underline">Instagram Content Formats & Opportunities</Link></li>
+              <li><Link href="#common-mistakes" className="text-teal-600 hover:underline">5 Instagram Campaign Mistakes</Link></li>
+              <li><Link href="#tracker-workflow" className="text-teal-600 hover:underline">The Tracker Workflow for Instagram</Link></li>
+              <li><Link href="#industry-benchmarks" className="text-teal-600 hover:underline">Instagram Industry Benchmarks</Link></li>
+              <li><Link href="#case-study" className="text-teal-600 hover:underline">Case Study: Indie Artist Builds 50k Instagram Following</Link></li>
+              <li><Link href="#technical-requirements" className="text-teal-600 hover:underline">Technical Requirements & Best Practices</Link></li>
+              <li><Link href="#timeline-strategy" className="text-teal-600 hover:underline">Optimal Instagram Campaign Timeline</Link></li>
+              <li><Link href="#faq" className="text-teal-600 hover:underline">Frequently Asked Questions</Link></li>
+              <li><Link href="#related-guides" className="text-teal-600 hover:underline">Related Campaign Tracking Guides</Link></li>
+              <li><Link href="#get-started" className="text-teal-600 hover:underline">Ready to Track Your Instagram Campaigns?</Link></li>
             </ul>
           </section>
 
@@ -101,7 +101,7 @@ export default function InstagramMusicCampaignTrackingPage() {
             </p>
             
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white p-6 rounded-xl border-4 border-amber-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="bg-white p-6 rounded-xl border-4 border-teal-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Instagram Reels</h3>
                 <p className="text-base text-gray-700 leading-relaxed mb-4">
                   Short-form vertical videos with music integration - Instagram's answer to TikTok.
@@ -114,7 +114,7 @@ export default function InstagramMusicCampaignTrackingPage() {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-xl border-4 border-amber-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="bg-white p-6 rounded-xl border-4 border-teal-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Instagram Stories</h3>
                 <p className="text-base text-gray-700 leading-relaxed mb-4">
                   Temporary 24-hour content with music stickers and interactive features.
@@ -265,7 +265,7 @@ export default function InstagramMusicCampaignTrackingPage() {
           {/* Case Study */}
           <section id="case-study" className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">Real-World Instagram Success Strategies</h2>
-            <div className="bg-amber-100 border-l-4 border-amber-500 p-6 rounded-r-xl shadow-sm">
+            <div className="bg-teal-100 border-l-4 border-teal-500 p-6 rounded-r-xl shadow-sm">
               <p className="text-lg text-gray-800 leading-relaxed">
                 Successful Instagram music promotion follows proven patterns that any artist can implement with the right tracking and optimisation approach.
               </p>
@@ -429,7 +429,7 @@ export default function InstagramMusicCampaignTrackingPage() {
                 <p className="text-base text-gray-700 leading-relaxed mb-3">
                   Learn how to track TikTok campaigns alongside Instagram for comprehensive social media promotion.
                 </p>
-                <Link href="/blog/tiktok-music-campaign-tracking" className="text-amber-600 font-semibold hover:underline">
+                <Link href="/blog/tiktok-music-campaign-tracking" className="text-teal-600 font-semibold hover:underline">
                   Read the TikTok guide →
                 </Link>
               </div>
@@ -439,7 +439,7 @@ export default function InstagramMusicCampaignTrackingPage() {
                 <p className="text-base text-gray-700 leading-relaxed mb-3">
                   Combine Instagram visual promotion with blog content for comprehensive music marketing.
                 </p>
-                <Link href="/blog/blog-campaign-analytics-for-musicians" className="text-amber-600 font-semibold hover:underline">
+                <Link href="/blog/blog-campaign-analytics-for-musicians" className="text-teal-600 font-semibold hover:underline">
                   See the blog workflow →
                 </Link>
               </div>
@@ -455,7 +455,7 @@ export default function InstagramMusicCampaignTrackingPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 active:scale-95"
+                className="inline-flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-black text-base px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 active:scale-95"
               >
                 Start Tracking Free
               </Link>

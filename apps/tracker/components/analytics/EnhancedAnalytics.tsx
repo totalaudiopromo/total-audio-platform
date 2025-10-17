@@ -157,7 +157,7 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
                 onClick={() => setView(tab.value as any)}
                 className={`px-4 py-2 rounded-lg font-bold text-sm transition-all ${
                   view === tab.value
-                    ? 'bg-white text-amber-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                    ? 'bg-white text-teal-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -182,34 +182,34 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* ROI Card */}
-            <div className="bg-gradient-to-br from-amber-50 to-orange-100 rounded-2xl p-6 border-4 border-amber-500 shadow-brutal">
+            <div className="bg-gradient-to-br from-teal-50 to-orange-100 rounded-2xl p-6 border-4 border-teal-500 shadow-brutal">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-sm font-black text-amber-700 uppercase tracking-wider">ROI</p>
+                <p className="text-sm font-black text-teal-700 uppercase tracking-wider">ROI</p>
                 {analytics.roi >= 0 ? (
-                  <TrendingUp className="h-5 w-5 text-amber-600" />
+                  <TrendingUp className="h-5 w-5 text-teal-600" />
                 ) : (
                   <TrendingDown className="h-5 w-5 text-red-600" />
                 )}
               </div>
-              <p className="text-4xl font-black text-amber-600 mb-1">
+              <p className="text-4xl font-black text-teal-600 mb-1">
                 {analytics.roi >= 0 ? '+' : ''}
                 {analytics.roi.toFixed(1)}%
               </p>
-              <p className="text-xs font-bold text-amber-700">Return on investment</p>
+              <p className="text-xs font-bold text-teal-700">Return on investment</p>
             </div>
 
             {/* Cost Per Result */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-4 border-amber-500 shadow-brutal">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-4 border-teal-500 shadow-brutal">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-sm font-black text-amber-700 uppercase tracking-wider">
+                <p className="text-sm font-black text-teal-700 uppercase tracking-wider">
                   Cost/Result
                 </p>
-                <DollarSign className="h-5 w-5 text-amber-600" />
+                <DollarSign className="h-5 w-5 text-teal-600" />
               </div>
-              <p className="text-4xl font-black text-amber-600 mb-1">
+              <p className="text-4xl font-black text-teal-600 mb-1">
                 £{analytics.costPerResult.toFixed(2)}
               </p>
-              <p className="text-xs font-bold text-amber-700">Average cost per reach</p>
+              <p className="text-xs font-bold text-teal-700">Average cost per reach</p>
             </div>
 
             {/* Total Budget */}

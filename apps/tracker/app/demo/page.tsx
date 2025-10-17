@@ -16,7 +16,7 @@ export default function DemoPage() {
               <Link href="/" className="text-gray-600 hover:text-gray-900 font-semibold">
                 Home
               </Link>
-              <Link href="/signup" className="bg-amber-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-amber-700 transition-colors">
+              <Link href="/signup" className="bg-teal-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-700 transition-colors">
                 Try Free
               </Link>
             </div>
@@ -35,7 +35,7 @@ export default function DemoPage() {
           </p>
           <Link 
             href="/signup"
-            className="inline-block bg-amber-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-amber-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+            className="inline-block bg-teal-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-teal-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
           >
             Start Tracking Free
           </Link>

@@ -1,8 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { IntelligenceBar } from '@/components/intelligence/IntelligenceBar';
-import { BulkCampaignList } from '@/components/campaigns/BulkCampaignList';
 import { DashboardClient } from '@/components/dashboard/DashboardClient';
+import { DashboardClientFilters } from '@/components/dashboard/DashboardClientFilters';
 import { ExportButton } from '@/components/dashboard/ExportButton';
 import { ImportButton } from '@/components/dashboard/ImportButton';
 import { AudioIntelImport } from '@/components/AudioIntelImport';
@@ -169,18 +169,18 @@ export default async function DashboardPage() {
             <p className="text-xs font-bold text-gray-600">{completedCampaigns} completed</p>
           </div>
 
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-4 border-amber-500 shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all">
-            <p className="text-sm font-black text-amber-700 mb-2 uppercase tracking-wider">Active Now</p>
-            <p className="text-4xl font-black text-amber-600 mb-1">{activeCampaigns}</p>
-            <p className="text-xs font-bold text-amber-700">campaigns running</p>
+          <div className="bg-[#14B8A6]/5 rounded-2xl p-6 border-4 border-[#14B8A6] shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all">
+            <p className="text-sm font-black text-[#14B8A6] mb-2 uppercase tracking-wider">Active Now</p>
+            <p className="text-4xl font-black text-[#14B8A6] mb-1">{activeCampaigns}</p>
+            <p className="text-xs font-bold text-gray-700">campaigns running</p>
           </div>
 
-          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 border-4 border-green-500 shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all">
-            <p className="text-sm font-black text-green-700 mb-2 uppercase tracking-wider">Success Rate</p>
-            <p className="text-4xl font-black text-green-600 mb-1">
+          <div className="bg-gray-100 rounded-2xl p-6 border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all">
+            <p className="text-sm font-black text-gray-500 mb-2 uppercase tracking-wider">Success Rate</p>
+            <p className="text-4xl font-black text-gray-900 mb-1">
               {Math.round(overallSuccessRate)}%
             </p>
-            <p className="text-xs font-bold text-green-700">
+            <p className="text-xs font-bold text-gray-600">
               vs industry average
             </p>
           </div>
@@ -193,38 +193,31 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      {/* Campaign List */}
+      {/* Campaign List with Agency Filters */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-12">
-        <div className="bg-white rounded-2xl p-6 md:p-8 border-4 border-black shadow-brutal">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-1">Your Campaigns</h2>
-              <p className="text-sm font-bold text-gray-600">Track, analyse, and improve your results</p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-              <ImportButton />
-              <ExportButton />
-              <button
-                id="new-campaign-trigger"
-                className="px-6 py-3 bg-amber-600 text-white rounded-xl hover:bg-amber-700 transition-all font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-base whitespace-nowrap w-full sm:w-auto text-center"
-              >
-                + New Campaign
-              </button>
-            </div>
+        {campaignsError && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <p className="text-sm font-medium text-red-800">Failed to load campaigns</p>
+            <p className="text-sm text-red-600 mt-1">{campaignsError.message}</p>
           </div>
+        )}
 
-          {campaignsError && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-sm font-medium text-red-800">Failed to load campaigns</p>
-              <p className="text-sm text-red-600 mt-1">{campaignsError.message}</p>
-            </div>
-          )}
-
-          <BulkCampaignList
-            campaigns={enrichedCampaigns}
-            integrations={integrationSnapshots}
-          />
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row gap-3 mb-6 w-full sm:w-auto">
+          <ImportButton />
+          <ExportButton />
+          <button
+            id="new-campaign-trigger"
+            className="px-6 py-3 bg-[#14B8A6] text-white rounded-xl hover:bg-[#0F9488] transition-all font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-base whitespace-nowrap w-full sm:w-auto text-center border-2 border-black"
+          >
+            + New Campaign
+          </button>
         </div>
+
+        <DashboardClientFilters
+          initialCampaigns={enrichedCampaigns}
+          integrations={integrationSnapshots}
+        />
       </div>
     </div>
     </DashboardClient>

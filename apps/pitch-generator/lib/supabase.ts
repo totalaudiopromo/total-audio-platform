@@ -45,6 +45,7 @@ export interface Pitch {
   contact_id?: string;
   contact_name: string;
   contact_outlet?: string;
+  contact_email?: string;
   artist_name: string;
   track_title: string;
   genre: string;

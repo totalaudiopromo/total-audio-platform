@@ -113,7 +113,7 @@ export default function PrivacyPage() {
               <li><strong>Right to Withdraw Consent:</strong> For marketing communications</li>
             </ul>
             <p className="text-gray-700 font-bold">
-              To exercise these rights, email us at <a href="mailto:privacy@totalaudiopromo.com" className="text-amber-600 underline">privacy@totalaudiopromo.com</a> or
+              To exercise these rights, email us at <a href="mailto:privacy@totalaudiopromo.com" className="text-teal-600 underline">privacy@totalaudiopromo.com</a> or
               use the data deletion option in your dashboard settings.
             </p>
           </section>
@@ -183,7 +183,7 @@ export default function PrivacyPage() {
             <p className="mb-3 text-gray-700">For privacy-related questions or to exercise your rights:</p>
             <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
               <p className="font-bold mb-2">Total Audio Promo</p>
-              <p className="text-gray-700">Email: <a href="mailto:privacy@totalaudiopromo.com" className="text-amber-600 underline">privacy@totalaudiopromo.com</a></p>
+              <p className="text-gray-700">Email: <a href="mailto:privacy@totalaudiopromo.com" className="text-teal-600 underline">privacy@totalaudiopromo.com</a></p>
               <p className="text-gray-700">Location: Brighton, United Kingdom</p>
             </div>
           </section>
@@ -197,7 +197,7 @@ export default function PrivacyPage() {
             </p>
             <div className="bg-blue-50 rounded-xl p-6 border-2 border-blue-200 mt-4">
               <p className="font-bold mb-2">Information Commissioner's Office (ICO)</p>
-              <p className="text-gray-700">Website: <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" className="text-amber-600 underline">ico.org.uk</a></p>
+              <p className="text-gray-700">Website: <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" className="text-teal-600 underline">ico.org.uk</a></p>
               <p className="text-gray-700">Helpline: 0303 123 1113</p>
             </div>
           </section>
@@ -207,7 +207,7 @@ export default function PrivacyPage() {
         <div className="mt-12 pt-8 border-t-2 border-gray-200">
           <Link
             href="/"
-            className="inline-block px-6 py-3 bg-amber-600 text-white rounded-xl font-bold hover:bg-amber-700 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5"
+            className="inline-block px-6 py-3 bg-teal-600 text-white rounded-xl font-bold hover:bg-teal-700 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5"
           >
             ← Back to Home
           </Link>

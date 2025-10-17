@@ -107,10 +107,10 @@ export default function HomePage() {
 
                 <div className="flex flex-wrap gap-4">
                   <a href="#ecosystem" className="cta-button text-base px-8 py-3">
-                    See how it works →
+                    Show me how it works →
                   </a>
                   <a href="https://intel.totalaudiopromo.com/beta" className="subtle-button text-base px-8 py-3">
-                    Try Audio Intel free
+                    Get my free trial
                   </a>
                 </div>
               </div>
@@ -400,7 +400,7 @@ export default function HomePage() {
               </div>
 
               <a href="https://intel.totalaudiopromo.com/beta" className="cta-button w-full text-center bg-blue-600 hover:bg-blue-700">
-                Start Free Trial
+                Start my free trial
               </a>
             </div>
 
@@ -441,7 +441,7 @@ export default function HomePage() {
               </div>
 
               <a href="https://pitch.totalaudiopromo.com" className="cta-button w-full text-center bg-purple-600 hover:bg-purple-700">
-                Start Free Trial
+                Start my free trial
               </a>
             </div>
 
@@ -482,7 +482,7 @@ export default function HomePage() {
               </div>
 
               <a href="https://track.totalaudiopromo.com" className="cta-button w-full text-center bg-amber-600 hover:bg-amber-700">
-                Start Free Trial
+                Start my free trial
               </a>
             </div>
           </div>

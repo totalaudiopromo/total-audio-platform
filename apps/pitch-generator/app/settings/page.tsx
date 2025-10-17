@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from 'next-auth/react';
+import { useSession } from '@/hooks/useAuth';
 import Link from 'next/link';
 
 const notifications = [

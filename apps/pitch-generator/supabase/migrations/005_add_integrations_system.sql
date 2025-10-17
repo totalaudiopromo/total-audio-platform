@@ -160,3 +160,4 @@ CREATE TRIGGER update_integration_connections_updated_at
 CREATE TRIGGER update_integration_field_mappings_updated_at 
   BEFORE UPDATE ON integration_field_mappings 
   FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+

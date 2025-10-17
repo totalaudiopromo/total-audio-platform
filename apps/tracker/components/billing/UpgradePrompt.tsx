@@ -20,11 +20,11 @@ export function UpgradePrompt({
 }: UpgradePromptProps) {
   if (inline) {
     return (
-      <div className="flex items-center gap-3 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-        <AlertCircle className="h-5 w-5 text-amber-600 flex-shrink-0" />
+      <div className="flex items-center gap-3 p-4 bg-teal-50 border border-teal-200 rounded-lg">
+        <AlertCircle className="h-5 w-5 text-teal-600 flex-shrink-0" />
         <div className="flex-1">
-          <p className="text-sm font-medium text-amber-900">{title}</p>
-          <p className="text-sm text-amber-700">{message}</p>
+          <p className="text-sm font-medium text-teal-900">{title}</p>
+          <p className="text-sm text-teal-700">{message}</p>
         </div>
         <Link href="/billing">
           <Button size="sm" variant="default" className="flex-shrink-0">
@@ -37,15 +37,15 @@ export function UpgradePrompt({
   }
 
   return (
-    <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-100">
+    <Card className="border-2 border-teal-200 bg-gradient-to-br from-teal-50 to-orange-100">
       <CardHeader>
         <div className="flex items-center gap-3">
-          <div className="p-3 bg-amber-100 rounded-lg">
-            <Crown className="h-6 w-6 text-amber-600" />
+          <div className="p-3 bg-teal-100 rounded-lg">
+            <Crown className="h-6 w-6 text-teal-600" />
           </div>
           <div>
             <CardTitle className="text-xl">{title}</CardTitle>
-            <CardDescription className="text-amber-700">{message}</CardDescription>
+            <CardDescription className="text-teal-700">{message}</CardDescription>
           </div>
         </div>
       </CardHeader>
@@ -60,19 +60,19 @@ export function UpgradePrompt({
           <h4 className="font-semibold text-gray-900">Upgrade to unlock:</h4>
           <ul className="space-y-1 text-sm text-gray-700">
             <li className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 bg-amber-600 rounded-full" />
+              <div className="h-1.5 w-1.5 bg-teal-600 rounded-full" />
               Unlimited campaigns
             </li>
             <li className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 bg-amber-600 rounded-full" />
+              <div className="h-1.5 w-1.5 bg-teal-600 rounded-full" />
               Advanced analytics and insights
             </li>
             <li className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 bg-amber-600 rounded-full" />
+              <div className="h-1.5 w-1.5 bg-teal-600 rounded-full" />
               Priority support
             </li>
             <li className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 bg-amber-600 rounded-full" />
+              <div className="h-1.5 w-1.5 bg-teal-600 rounded-full" />
               CSV export and custom reports
             </li>
           </ul>

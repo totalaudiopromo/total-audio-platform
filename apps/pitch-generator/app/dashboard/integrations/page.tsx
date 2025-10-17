@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { useSession } from '@/hooks/useAuth';
 import { CheckCircle, ExternalLink, AlertCircle, Mail, Trash2, Settings } from 'lucide-react';
 
 interface GmailConnection {
@@ -293,3 +293,4 @@ export default function IntegrationsPage() {
     </div>
   );
 }
+

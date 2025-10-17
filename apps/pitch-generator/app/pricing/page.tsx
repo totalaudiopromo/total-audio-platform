@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { useSession } from 'next-auth/react';
+import { useSession } from '@/hooks/useAuth';
 import { trackPricingViewed, trackCheckoutStarted } from '@/lib/analytics';
 
 const plans = [

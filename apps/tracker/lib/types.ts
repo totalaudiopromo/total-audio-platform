@@ -13,6 +13,11 @@ export type Campaign = {
   goals: Record<string, any>;
   created_at: string;
   updated_at: string;
+  // Agency/Multi-client fields
+  client_name?: string | null;
+  client_company?: string | null;
+  client_billing_code?: string | null;
+  client_email?: string | null;
 };
 
 export type ActivityType =
@@ -44,6 +49,21 @@ export type CampaignActivity = {
   response_at: string | null;
   created_at: string;
   updated_at: string;
+};
+
+export type ClientStats = {
+  user_id: string;
+  client_name: string;
+  client_company: string | null;
+  total_campaigns: number;
+  active_campaigns: number;
+  completed_campaigns: number;
+  total_budget: number;
+  spent_budget: number;
+  avg_success_rate: number | null;
+  avg_performance_score: number | null;
+  first_campaign_date: string | null;
+  last_activity_date: string;
 };
 
 

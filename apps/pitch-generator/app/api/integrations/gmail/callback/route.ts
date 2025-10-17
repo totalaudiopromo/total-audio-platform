@@ -4,12 +4,12 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
+import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
 import { OAuthHandler } from '@/lib/integrations/oauth-handler';
 
 export async function GET(request: NextRequest) {
   try {
-    const session = await getServerSession();
+    const session = await getSupabaseSession();
     if (!session?.user) {
       return NextResponse.redirect(new URL('/auth/signin', request.url));
     }
@@ -42,3 +42,4 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(new URL('/dashboard/integrations?error=callback_error', request.url));
   }
 }
+

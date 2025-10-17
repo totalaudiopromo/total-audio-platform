@@ -40,18 +40,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
 
-  // Webpack bundle analyzer (optional - enable when needed)
-  webpack: (config, { isServer }) => {
-    // Only run on client-side builds
-    if (!isServer) {
-      // Tree shaking optimizations
-      config.optimization = {
-        ...config.optimization,
-        usedExports: true,
-        sideEffects: true,
-      };
-    }
-
+  // Webpack configuration
+  webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias ?? {}),
       "@": path.resolve(__dirname),

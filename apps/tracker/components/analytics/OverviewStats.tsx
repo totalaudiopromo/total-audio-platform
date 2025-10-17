@@ -9,7 +9,7 @@ export default async function OverviewStats() {
     {
       label: 'Total Campaigns',
       value: stats.totalCampaigns,
-      gradient: 'from-amber-500 to-orange-600',
+      gradient: 'from-teal-500 to-orange-600',
       showProgress: false,
     },
     {
@@ -29,10 +29,10 @@ export default async function OverviewStats() {
     {
       label: 'Budget Utilisation',
       value: `${budgetPct}%`,
-      gradient: 'from-amber-500 to-orange-600',
+      gradient: 'from-teal-500 to-orange-600',
       showProgress: true,
       progress: budgetPct,
-      progressColor: 'bg-amber-500',
+      progressColor: 'bg-teal-500',
     },
   ];
 

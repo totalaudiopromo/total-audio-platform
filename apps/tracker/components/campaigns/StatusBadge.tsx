@@ -2,7 +2,7 @@ export function StatusBadge({ status }: { status: 'draft' | 'active' | 'paused' 
   const styles: Record<string, string> = {
     draft: 'bg-slate-100 text-slate-700',
     active: 'bg-primary/10 text-primary',
-    paused: 'bg-amber-100 text-amber-700',
+    paused: 'bg-teal-100 text-teal-700',
     completed: 'bg-green-100 text-green-700',
   };
   return (

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Clock, Target, Shield, Users, Database, Check, Download, Search } from 'lucide-react';
 import { HeroDemo } from '@/components/home/HeroDemo';
+import { MobileCtaBar } from '@/components/home/MobileCtaBar';
 
 export const dynamic = 'force-static';
 
@@ -51,7 +52,9 @@ const howItWorks = [
 export default function HomePage() {
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
+    <>
+      <MobileCtaBar />
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
         <HeroDemo />
 
         {/* The Problem - with mascot */}
@@ -279,7 +282,7 @@ export default function HomePage() {
                 </li>
               </ul>
               <Link href="/signup" className="subtle-button w-full">
-                Start free beta
+                Get my free beta access
               </Link>
             </div>
 
@@ -312,7 +315,7 @@ export default function HomePage() {
                 </li>
               </ul>
               <Link href="/pricing?plan=professional&billing=monthly" className="cta-button w-full">
-                Start free trial
+                Start my free trial
               </Link>
             </div>
 
@@ -379,6 +382,52 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* FAQ - Security & Data Concerns */}
+        <section className="glass-panel px-6 py-12 sm:px-10">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold sm:text-4xl">Common questions</h2>
+            <p className="mt-4 text-gray-600">Everything you need to know about Audio Intel</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="mb-3 text-lg font-bold">Is my contact data secure?</h3>
+              <p className="text-sm text-gray-600">
+                Yes. We use bank-level encryption (256-bit AES) for all data at rest and in transit. Your contacts are stored in Supabase's secure infrastructure (SOC 2 Type II certified) with regular backups.
+              </p>
+            </div>
+            <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="mb-3 text-lg font-bold">What happens to my uploaded data?</h3>
+              <p className="text-sm text-gray-600">
+                Your contact lists are private and never shared. We enrich them using AI and public data sources, then you can export and delete them anytime. We don't sell or share your data with third parties.
+              </p>
+            </div>
+            <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="mb-3 text-lg font-bold">Can I delete my data?</h3>
+              <p className="text-sm text-gray-600">
+                Absolutely. You can export your enriched contacts anytime and delete individual contacts or your entire account from settings. We comply with UK GDPR - your data, your control.
+              </p>
+            </div>
+            <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="mb-3 text-lg font-bold">How accurate is the enrichment?</h3>
+              <p className="text-sm text-gray-600">
+                We guarantee 90% data accuracy. Tested with real BBC Radio 1, Spotify, and industry contacts with 100% enrichment success rate. If enrichment fails or data is inaccurate, it doesn't count toward your quota.
+              </p>
+            </div>
+            <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="mb-3 text-lg font-bold">What payment methods do you accept?</h3>
+              <p className="text-sm text-gray-600">
+                We use Stripe for secure payment processing. Accept all major credit/debit cards, Apple Pay, and Google Pay. All transactions are encrypted and PCI DSS compliant.
+              </p>
+            </div>
+            <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="mb-3 text-lg font-bold">Can I cancel anytime?</h3>
+              <p className="text-sm text-gray-600">
+                Yes, cancel anytime from your account settings. No questions asked, no cancellation fees. Your data remains accessible until the end of your billing period, then you can export it.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="glass-panel border-blue-500 bg-gradient-to-br from-blue-50 to-blue-50 px-6 py-16 text-center sm:px-10">
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Ready to organise your contacts?</h2>
@@ -387,14 +436,15 @@ export default function HomePage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/signup" className="cta-button">
-              Start free beta →
+              Get my free beta access →
             </Link>
             <Link href="/pricing" className="subtle-button">
-              View pricing
+              Show me pricing
             </Link>
           </div>
         </section>
 
-    </div>
+      </div>
+    </>
   );
 }

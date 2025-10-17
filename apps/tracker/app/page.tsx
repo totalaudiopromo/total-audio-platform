@@ -77,12 +77,12 @@ export default async function HomePage() {
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
           <div className="flex-1 space-y-6">
             <div className="flex items-center gap-3">
-              <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">BETA</span>
+              <span className="inline-flex items-center rounded-full bg-teal-100 px-3 py-1 text-xs font-medium text-teal-800">BETA</span>
               <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">Campaign Tracker</span>
             </div>
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
               Campaign tracking for
-              <span className="block text-amber-600">
+              <span className="block text-teal-600">
                 radio, playlists, and press
               </span>
             </h1>
@@ -91,8 +91,8 @@ export default async function HomePage() {
               Standalone campaign intelligence for music promoters.
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <Link href="/signup" className="cta-button">Start free trial →</Link>
-              <Link href="#how-it-works" className="subtle-button">See how it works</Link>
+              <Link href="/signup" className="cta-button">Start my free trial →</Link>
+              <Link href="#how-it-works" className="subtle-button">Show me how it works</Link>
             </div>
             <p className="text-sm text-gray-500">
               No integrations required. Manual campaign tracking with intelligent benchmarks.
@@ -117,8 +117,8 @@ export default async function HomePage() {
                     <span>Repeating the same mistakes because you can't see patterns</span>
                   </li>
                 </ul>
-                <div className="mt-6 rounded-lg border border-amber-600/30 bg-amber-600/10 px-4 py-3">
-                  <p className="text-sm font-medium text-amber-600">
+                <div className="mt-6 rounded-lg border border-teal-600/30 bg-teal-600/10 px-4 py-3">
+                  <p className="text-sm font-medium text-teal-600">
                     Tracker fixes all of this with AI-powered campaign intelligence.
                   </p>
                 </div>
@@ -129,11 +129,11 @@ export default async function HomePage() {
       </section>
 
       {/* Campaign Intelligence AI - Hero Feature */}
-      <section className="glass-panel overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50 px-6 py-12 sm:px-10">
+      <section className="glass-panel overflow-hidden bg-gradient-to-br from-teal-50 to-cyan-50 px-6 py-12 sm:px-10">
         <div className="text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-amber-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-teal-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <span className="text-2xl">⚡</span>
-            <span className="text-sm font-bold uppercase tracking-wider text-amber-600">New AI Feature</span>
+            <span className="text-sm font-bold uppercase tracking-wider text-teal-600">New AI Feature</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Campaign Intelligence AI</h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-700">
@@ -165,10 +165,8 @@ export default async function HomePage() {
       <section className="grid gap-6 md:grid-cols-3">
         {features.map((feature) => (
           <div key={feature.title} className="glass-panel h-full px-6 py-8">
-            <div className={`inline-flex items-center gap-2 rounded-full border-2 border-black px-4 py-1.5 text-xs font-bold uppercase tracking-wide shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mb-4 ${
-              feature.color === 'orange' ? 'bg-orange-100 text-orange-800' : 'bg-amber-100 text-amber-800'
-            }`}>
-              {feature.color === 'orange' ? 'DATA' : feature.title.includes('AI') ? 'AI' : 'SPEED'}
+            <div className="inline-flex items-center gap-2 rounded-full border-2 border-black px-4 py-1.5 text-xs font-bold uppercase tracking-wide shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mb-4 bg-teal-100 text-teal-800">
+              {feature.title.includes('AI') ? 'AI' : feature.title.includes('Real-time') ? 'SPEED' : 'DATA'}
             </div>
             <h3 className="mt-4 text-xl font-semibold">{feature.title}</h3>
             <p className="mt-3 text-sm text-gray-600">{feature.description}</p>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { useSession } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Plus, UserPlus, Loader2, Trash2, Upload } from 'lucide-react';
@@ -200,7 +200,7 @@ export default function ContactsPage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-5xl">
+    <div className="mx-auto w-full max-w-5xl overflow-x-hidden px-4 sm:px-0">
       <div className="mb-6">
         <Link href="/dashboard" className="subtle-button inline-flex items-center gap-2 text-sm">
           <ArrowLeft className="h-4 w-4" />

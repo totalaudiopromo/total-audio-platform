@@ -192,13 +192,13 @@ const blogPosts = [
 function getCategoryBadgeClasses(category: string) {
   switch (category) {
     case "Playlist Tracking":
-      return "bg-amber-100 text-amber-800";
+      return "bg-teal-100 text-teal-800";
     case "Radio Tracking":
       return "bg-indigo-100 text-indigo-800";
     case "PR Tracking":
       return "bg-green-100 text-green-800";
     case "Campaign Analytics":
-      return "bg-blue-100 text-amber-800";
+      return "bg-blue-100 text-teal-800";
     case "Case Study":
       return "bg-yellow-100 text-yellow-800";
     case "Social Media Tracking":
@@ -233,13 +233,13 @@ export default function BlogIndex() {
               <Link href="/" className="text-gray-600 hover:text-gray-900 font-semibold">
                 Home
               </Link>
-              <Link href="/blog" className="text-amber-600 font-semibold">
+              <Link href="/blog" className="text-teal-600 font-semibold">
                 Blog
               </Link>
               <Link href="/demo" className="text-gray-600 hover:text-gray-900 font-semibold">
                 Demo
               </Link>
-              <Link href="/signup" className="bg-amber-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-amber-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <Link href="/signup" className="bg-teal-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 Try Free
               </Link>
             </nav>
@@ -271,7 +271,7 @@ export default function BlogIndex() {
             {/* Featured Post */}
             {featuredPost && (
               <div>
-                <div className="bg-white rounded-2xl border-4 border-amber-500 shadow-brutal-lg overflow-hidden">
+                <div className="bg-white rounded-2xl border-4 border-teal-500 shadow-brutal-lg overflow-hidden">
                   <div className="p-8 md:p-12">
                     <div className="flex items-center gap-3 mb-4">
                       <span className={`${getCategoryBadgeClasses(featuredPost.category)} px-3 py-1 rounded-full text-sm font-bold`}>
@@ -285,7 +285,7 @@ export default function BlogIndex() {
                     <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
                       <Link
                         href={`/blog/${featuredPost.slug}`}
-                        className="hover:text-amber-600 transition-colors"
+                        className="hover:text-teal-600 transition-colors"
                       >
                         {featuredPost.title}
                       </Link>
@@ -304,7 +304,7 @@ export default function BlogIndex() {
 
                       <Link
                         href={`/blog/${featuredPost.slug}`}
-                        className="bg-amber-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                        className="bg-teal-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-teal-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                       >
                         Read Guide →
                       </Link>
@@ -330,7 +330,7 @@ export default function BlogIndex() {
                       <h3 className="text-xl font-bold text-gray-900 mb-3">
                         <Link
                           href={`/blog/${post.slug}`}
-                          className="hover:text-amber-600 transition-colors"
+                          className="hover:text-teal-600 transition-colors"
                         >
                           {post.title}
                         </Link>

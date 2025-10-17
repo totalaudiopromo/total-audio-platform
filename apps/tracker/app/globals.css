@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    /* Tracker amber/orange brand colors */
-    --color-background: #fffbeb;
+    /* Tracker teal/cyan brand colors */
+    --color-background: #f0fdfa;
     --color-foreground: #111827;
     --color-card: #ffffff;
     --color-card-foreground: #111827;
     --color-popover: #ffffff;
     --color-popover-foreground: #111827;
-    --color-primary: #f59e0b;
+    --color-primary: #14b8a6;
     --color-primary-foreground: #ffffff;
-    --color-secondary: #fef3c7;
+    --color-secondary: #ccfbf1;
     --color-secondary-foreground: #111827;
-    --color-muted: #fef3c7;
+    --color-muted: #ccfbf1;
     --color-muted-foreground: #6b7280;
-    --color-accent: #f59e0b;
+    --color-accent: #14b8a6;
     --color-accent-foreground: #ffffff;
     --color-destructive: #ef4444;
     --color-destructive-foreground: #ffffff;
     --color-border: #000000;
     --color-input: #e5e7eb;
-    --color-ring: #f59e0b;
+    --color-ring: #14b8a6;
     --radius: 1rem;
   }
 }
@@ -56,9 +56,9 @@ body {
   border: 2px solid #000000;
 }
 
-/* Tracker amber brand brutalist components */
+/* Tracker teal brand brutalist components */
 .glass-panel {
-  @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-amber-50/30;
+  @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-teal-50/30;
   position: relative;
 }
 
@@ -66,7 +66,7 @@ body {
   content: '';
   position: absolute;
   inset: -40px;
-  background: radial-gradient(circle 400px at center, rgba(245, 158, 11, 0.06), transparent 70%);
+  background: radial-gradient(circle 400px at center, rgba(20, 184, 166, 0.06), transparent 70%);
   border-radius: 2rem;
   z-index: -1;
   filter: blur(40px);
@@ -74,7 +74,7 @@ body {
 }
 
 .cta-button {
-  @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-amber-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-amber-600 active:scale-95;
+  @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-teal-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-teal-600 active:scale-95;
 }
 
 .subtle-button {
@@ -82,5 +82,5 @@ body {
 }
 
 .badge-postcraft {
-  @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-amber-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-amber-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
+  @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-teal-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
 }

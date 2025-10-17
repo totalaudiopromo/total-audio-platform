@@ -128,3 +128,52 @@
 - ✅ Builds on Chris's authentic credibility
 
 **Remember**: This is not a tech demo - it's a business tool that needs to generate revenue THIS WEEK. Every feature must justify itself through customer acquisition or retention.
+
+## 🚨 DEPLOYMENT & CI/CD (Updated October 2025)
+
+### GitHub Actions Quota Issue
+- **Problem**: Free GitHub account hit 2,000-minute Actions quota (100% used)
+- **Impact**: All workflow runs get cancelled automatically, keeping checks red
+- **Status**: Won't resolve until GitHub Pro subscription or quota resets
+
+### Current Deployment Workaround (Until GitHub Pro)
+**Skip GitHub Actions entirely** and deploy directly from local machine:
+
+```bash
+# For preview deployments
+cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel
+vercel
+
+# For production deployments
+vercel --prod
+```
+
+**Also applies to other apps:**
+```bash
+# Web app
+cd apps/web && vercel --prod
+
+# Tracker app
+cd apps/tracker && vercel --prod
+
+# Pitch Generator app
+cd apps/pitch-generator && vercel --prod
+```
+
+### Rollback Strategy
+- **Vercel stores every build** in the dashboard
+- **Git still tracks code changes** separately for version control
+- **Rollback from dashboard**: Use Vercel web interface
+- **Rollback from CLI**: `vercel rollback <deployment-url>`
+
+### Important Notes
+- This is a **temporary workaround** until GitHub Pro subscription
+- CI checks will remain red - **ignore them** for now
+- Vercel deployments work perfectly without GitHub Actions
+- Code version control via Git is unaffected
+- Manual deployment gives you direct control over what goes live
+
+### When GitHub Pro is Available
+- Re-enable GitHub Actions workflows
+- Automated CI/CD will resume
+- Keep this workaround documented as backup deployment method

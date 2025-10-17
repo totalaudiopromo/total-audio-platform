@@ -46,7 +46,7 @@ export function CookieConsent() {
           <div className="flex items-start justify-between gap-3 sm:gap-6">
             <div className="flex-1">
               <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-                <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-amber-600 rounded-lg sm:rounded-xl flex items-center justify-center border-2 border-black">
+                <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-teal-600 rounded-lg sm:rounded-xl flex items-center justify-center border-2 border-black">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
@@ -62,7 +62,7 @@ export function CookieConsent() {
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 items-stretch sm:items-center">
                 <button
                   onClick={handleAccept}
-                  className="px-4 sm:px-6 py-2 sm:py-2.5 bg-amber-600 text-white rounded-lg sm:rounded-xl font-black hover:bg-amber-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-xs sm:text-sm"
+                  className="px-4 sm:px-6 py-2 sm:py-2.5 bg-teal-600 text-white rounded-lg sm:rounded-xl font-black hover:bg-teal-700 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 text-xs sm:text-sm"
                 >
                   Accept All
                 </button>
@@ -74,7 +74,7 @@ export function CookieConsent() {
                 </button>
                 <Link
                   href="/privacy"
-                  className="text-xs sm:text-sm font-bold text-amber-600 hover:text-amber-700 underline text-center sm:text-left"
+                  className="text-xs sm:text-sm font-bold text-teal-600 hover:text-teal-700 underline text-center sm:text-left"
                 >
                   Privacy Policy
                 </Link>

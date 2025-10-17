@@ -25,7 +25,7 @@ export default function CompleteWorkflowGuide() {
       {/* Header */}
       <header className="bg-white border-b-4 border-black shadow-brutal">
         <div className="max-w-4xl mx-auto px-4 py-8">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-amber-600 font-bold hover:underline mb-4">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-teal-600 font-bold hover:underline mb-4">
             ← Back to Blog
           </Link>
         </div>
@@ -36,7 +36,7 @@ export default function CompleteWorkflowGuide() {
           {/* Header */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
-              <span className="bg-blue-100 text-amber-800 px-3 py-1 rounded-full text-sm font-bold">
+              <span className="bg-blue-100 text-teal-800 px-3 py-1 rounded-full text-sm font-bold">
                 Workflow Guide
               </span>
               <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-bold">
@@ -93,14 +93,14 @@ export default function CompleteWorkflowGuide() {
             </p>
 
             {/* Step 1: Audio Intel */}
-            <div className="mb-10 bg-gradient-to-br from-amber-50 to-indigo-50 rounded-2xl border-4 border-black shadow-brutal p-8">
+            <div className="mb-10 bg-gradient-to-br from-teal-50 to-indigo-50 rounded-2xl border-4 border-black shadow-brutal p-8">
               <div className="flex items-start gap-4 mb-4">
-                <div className="bg-amber-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-black flex-shrink-0">
+                <div className="bg-teal-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-black flex-shrink-0">
                   1
                 </div>
                 <div>
                   <h3 className="text-2xl font-black text-gray-900 mb-2">Enrich Your Contacts with Audio Intel</h3>
-                  <p className="text-amber-600 font-bold">15 hours → 15 minutes</p>
+                  <p className="text-teal-600 font-bold">15 hours → 15 minutes</p>
                 </div>
               </div>
 
@@ -128,7 +128,7 @@ export default function CompleteWorkflowGuide() {
                 </li>
               </ul>
 
-              <div className="bg-white rounded-lg border-2 border-amber-600 p-4 mb-4">
+              <div className="bg-white rounded-lg border-2 border-teal-600 p-4 mb-4">
                 <p className="font-bold text-gray-900 mb-2">Real Example:</p>
                 <p className="text-sm text-gray-700">
                   "I uploaded 50 BBC Radio contacts. Audio Intel found verified emails for 48 of them,
@@ -141,7 +141,7 @@ export default function CompleteWorkflowGuide() {
                 href="https://intel.totalaudiopromo.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-amber-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                className="inline-flex items-center gap-2 bg-teal-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-teal-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
               >
                 Try Audio Intel Free →
               </Link>
@@ -203,7 +203,7 @@ export default function CompleteWorkflowGuide() {
             </div>
 
             {/* Step 3: Tracker */}
-            <div className="mb-10 bg-gradient-to-br from-indigo-50 to-amber-50 rounded-2xl border-4 border-black shadow-brutal p-8">
+            <div className="mb-10 bg-gradient-to-br from-indigo-50 to-teal-50 rounded-2xl border-4 border-black shadow-brutal p-8">
               <div className="flex items-start gap-4 mb-4">
                 <div className="bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-black flex-shrink-0">
                   3
@@ -325,7 +325,7 @@ export default function CompleteWorkflowGuide() {
           {/* Get Started */}
           <section className="mb-8">
             <h2 className="text-3xl font-black text-gray-900 mb-6">Start Your First Campaign</h2>
-            <div className="bg-gradient-to-r from-amber-600 to-indigo-600 rounded-2xl border-4 border-black shadow-brutal-lg p-8 text-white">
+            <div className="bg-gradient-to-r from-teal-600 to-indigo-600 rounded-2xl border-4 border-black shadow-brutal-lg p-8 text-white">
               <p className="text-xl font-bold mb-4">All three tools are free to start:</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
@@ -346,7 +346,7 @@ export default function CompleteWorkflowGuide() {
                   href="https://intel.totalaudiopromo.com/signup"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white text-amber-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                  className="bg-white text-teal-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                 >
                   Start with Audio Intel →
                 </a>

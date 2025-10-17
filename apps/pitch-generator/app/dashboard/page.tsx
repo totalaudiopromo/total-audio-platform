@@ -1,14 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Plus, Zap, Send, MessageCircle, TrendingUp, Loader2 } from 'lucide-react';
+import { Plus, Zap, Send, MessageCircle, TrendingUp, Loader2, Sparkles } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
 import { supabase, type Pitch } from '@/lib/supabase';
 import { NewsletterSignup } from '@/components/NewsletterSignup';
 import { OnboardingChecklist } from '@/components/OnboardingChecklist';
 import { UsageMeter } from '@/components/UsageMeter';
+import type { User } from '@supabase/supabase-js';
 
 interface DashboardStats {
   totalPitches: number;
@@ -18,8 +19,9 @@ interface DashboardStats {
 }
 
 export default function DashboardPage() {
-  const { data: session, status } = useSession();
   const router = useRouter();
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState<DashboardStats>({
     totalPitches: 0,
     sentPitches: 0,
@@ -27,25 +29,44 @@ export default function DashboardPage() {
     successRate: 0,
   });
   const [recentPitches, setRecentPitches] = useState<Pitch[]>([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/auth/signin');
-    }
-  }, [status, router]);
+    const supabase = createClient();
+
+    // Check current session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
+        router.push('/auth/signin');
+      } else {
+        setUser(session.user);
+      }
+    });
+
+    // Listen for auth changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) {
+        router.push('/auth/signin');
+      } else {
+        setUser(session.user);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [router]);
 
   useEffect(() => {
-    if (session?.user?.email) {
+    if (user?.email) {
       loadDashboardData();
     }
-  }, [session]);
+  }, [user]);
 
   async function loadDashboardData() {
     try {
       // For demo purposes, we'll use email as user_id
       // In production, you'd have a proper user_id from your auth system
-      const userId = session?.user?.email || '';
+      const userId = user?.email || '';
 
       // Use API route instead of direct Supabase call
       const response = await fetch('/api/stats');
@@ -107,16 +128,12 @@ export default function DashboardPage() {
     return `${diffDays}d ago`;
   }
 
-  if (status === 'loading' || loading) {
+  if (loading || !user) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
       </div>
     );
-  }
-
-  if (!session) {
-    return null;
   }
 
   return (
@@ -127,7 +144,7 @@ export default function DashboardPage() {
           <div>
               <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">Pitch Generator</span>
             <h1 className="mt-3 text-3xl font-bold">
-              Welcome back, <span className="text-brand-amber">{session.user?.name || 'there'}</span>
+              Welcome back, <span className="text-brand-amber">{user.user_metadata?.name || user.email?.split('@')[0] || 'there'}</span>
             </h1>
             <p className="mt-2 text-gray-900/60">
               Write personalized pitches in seconds, not hours
@@ -151,13 +168,13 @@ export default function DashboardPage() {
       </div>
 
       {/* Onboarding Checklist - Show for new users */}
-      {stats.totalPitches === 0 && session?.user?.email && (
-        <OnboardingChecklist userId={session.user.email} />
+      {stats.totalPitches === 0 && user?.email && (
+        <OnboardingChecklist userId={user.email} />
       )}
 
       {/* Usage Meter - Show for free tier users */}
-      {session?.user?.email && (
-        <UsageMeter userId={session.user.email} />
+      {user?.email && (
+        <UsageMeter userId={user.email} />
       )}
 
       {/* Empty State - Show when no pitches */}

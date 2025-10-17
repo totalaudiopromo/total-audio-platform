@@ -22,7 +22,7 @@ interface BlogContentProps {
 function getCategoryBadgeClasses(category: string) {
   switch (category) {
     case "Playlist Tracking":
-      return "bg-amber-100 text-amber-800";
+      return "bg-teal-100 text-teal-800";
     case "Radio Tracking":
       return "bg-indigo-100 text-indigo-800";
     case "PR Tracking":
@@ -70,7 +70,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
                 setSelectedCategory('all');
                 setSearchQuery('');
               }}
-              className="mt-4 text-amber-600 font-bold hover:underline"
+              className="mt-4 text-teal-600 font-bold hover:underline"
             >
               Clear filters
             </button>
@@ -80,7 +80,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
             {/* Featured Post */}
             {featuredPost && (
               <div>
-                <div className="bg-white rounded-2xl border-4 border-amber-500 shadow-brutal-lg overflow-hidden">
+                <div className="bg-white rounded-2xl border-4 border-teal-500 shadow-brutal-lg overflow-hidden">
                   <div className="p-8 md:p-12">
                     <div className="flex items-center gap-3 mb-4">
                       <span className={`${getCategoryBadgeClasses(featuredPost.category)} px-3 py-1 rounded-full text-sm font-bold`}>
@@ -94,7 +94,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
                     <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
                       <Link
                         href={`/blog/${featuredPost.slug}`}
-                        className="hover:text-amber-600 transition-colors"
+                        className="hover:text-teal-600 transition-colors"
                       >
                         {featuredPost.title}
                       </Link>
@@ -113,7 +113,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
 
                       <Link
                         href={`/blog/${featuredPost.slug}`}
-                        className="bg-amber-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                        className="bg-teal-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-teal-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                       >
                         Read Guide →
                       </Link>
@@ -142,7 +142,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
                         <h3 className="text-xl font-bold text-gray-900 mb-3">
                           <Link
                             href={`/blog/${post.slug}`}
-                            className="hover:text-amber-600 transition-colors"
+                            className="hover:text-teal-600 transition-colors"
                           >
                             {post.title}
                           </Link>

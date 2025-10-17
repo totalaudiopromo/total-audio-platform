@@ -8,5 +8,11 @@
       "maxDuration": 30
     }
   },
-  "regions": ["lhr1"]
+  "regions": ["lhr1"],
+  "crons": [
+    {
+      "path": "/api/cron/social-posting",
+      "schedule": "0 9,17 * * *"
+    }
+  ]
 }

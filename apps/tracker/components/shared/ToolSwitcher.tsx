@@ -52,9 +52,9 @@ const accentStyles = {
     hover: 'hover:text-blue-600',
   },
   amber: {
-    activeBg: 'bg-amber-100',
-    badge: 'bg-amber-600',
-    hover: 'hover:text-amber-600',
+    activeBg: 'bg-teal-100',
+    badge: 'bg-teal-600',
+    hover: 'hover:text-teal-600',
   },
   teal: {
     activeBg: 'bg-teal-100',
@@ -132,4 +132,5 @@ export function ToolSwitcher({ currentTool, accentColor = 'teal' }: ToolSwitcher
     </div>
   );
 }
+
 

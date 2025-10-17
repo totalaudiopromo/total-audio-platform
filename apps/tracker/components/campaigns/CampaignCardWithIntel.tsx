@@ -48,7 +48,7 @@ const INTEGRATION_META: Record<IntegrationSummary['integration_type'], { label: 
   airtable: {
     label: 'Airtable',
     Icon: Grid3x3,
-    badgeClass: 'border-amber-500 bg-amber-50 text-amber-700',
+    badgeClass: 'border-teal-500 bg-teal-50 text-teal-700',
   },
   mailchimp: {
     label: 'Mailchimp',
@@ -113,12 +113,12 @@ export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignC
     <>
       <div
         onClick={() => router.push(`/campaigns/${campaign.id}`)}
-        className="bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-amber-500 hover:shadow-lg transition-all cursor-pointer group"
+        className="bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-teal-500 hover:shadow-lg transition-all cursor-pointer group"
       >
         {/* Campaign Header */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
           <div className="flex-1">
-            <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">{campaign.name}</h3>
+            <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-teal-600 transition-colors">{campaign.name}</h3>
             <div className="flex flex-wrap items-center gap-2">
               {campaign.platform && (
                 <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
@@ -126,7 +126,7 @@ export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignC
                 </span>
               )}
               {campaign.genre && (
-                <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-amber-50 text-amber-700 border border-amber-200">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-teal-50 text-teal-700 border border-teal-200">
                   {campaign.genre}
                 </span>
               )}
@@ -135,7 +135,7 @@ export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignC
                   ? 'bg-green-50 text-green-700 border border-green-200'
                   : campaign.status === 'completed'
                   ? 'bg-slate-50 text-slate-700 border border-slate-200'
-                  : 'bg-amber-50 text-amber-700 border border-amber-200'
+                  : 'bg-teal-50 text-teal-700 border border-teal-200'
               }`}>
                 {campaign.status}
               </span>
@@ -224,9 +224,9 @@ export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignC
 
             {/* Insights */}
             {hasInsights && (
-              <div className="bg-blue-50 rounded-xl p-6 border-4 border-amber-500">
+              <div className="bg-blue-50 rounded-xl p-6 border-4 border-teal-500">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-amber-600 rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
@@ -236,7 +236,7 @@ export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignC
                 <div className="space-y-3">
                   {campaign.insights!.map((insight, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <span className="text-amber-600 font-black mt-0.5">→</span>
+                      <span className="text-teal-600 font-black mt-0.5">→</span>
                       <span className="text-sm font-bold text-gray-800 leading-relaxed">{insight}</span>
                     </div>
                   ))}
@@ -270,7 +270,7 @@ export function CampaignCardWithIntel({ campaign, integrations = [] }: CampaignC
 
         {/* Quick hint */}
         <div className="mt-6 pt-4 border-t border-slate-200">
-          <p className="text-sm text-slate-500 group-hover:text-amber-600 transition-colors font-medium">
+          <p className="text-sm text-slate-500 group-hover:text-teal-600 transition-colors font-medium">
             Click to view timeline and add activities →
           </p>
         </div>

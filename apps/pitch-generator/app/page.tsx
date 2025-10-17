@@ -78,8 +78,8 @@ export default function HomePage() {
               that actually get responses. No more staring at blank emails.
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <Link href="/auth/signin" className="cta-button">Get Started</Link>
-              <Link href="#how-it-works" className="subtle-button">See how it works</Link>
+              <Link href="/auth/signin" className="cta-button">Generate my first 50 pitches</Link>
+              <Link href="#how-it-works" className="subtle-button">Show me how it works</Link>
             </div>
             <p className="text-sm text-gray-500">
               For artists, managers, and promoters who hate writing the same pitch 50 times
@@ -203,11 +203,11 @@ export default function HomePage() {
       </section>
 
       {/* Results Section */}
-      <section className="glass-panel overflow-hidden bg-gradient-to-br from-green-50 to-emerald-50 px-6 py-12 sm:px-10">
+      <section className="glass-panel overflow-hidden bg-gradient-to-br from-amber-50 to-yellow-50 px-6 py-12 sm:px-10">
         <div className="text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-green-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-amber-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <span className="text-2xl">📈</span>
-            <span className="text-sm font-bold uppercase tracking-wider text-green-600">Real Results from Real Campaigns</span>
+            <span className="text-sm font-bold uppercase tracking-wider text-amber-600">Real Results from Real Campaigns</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Proven with BBC Radio 1, Spotify, and major blogs</h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-700">
@@ -215,7 +215,7 @@ export default function HomePage() {
           </p>
           <div className="grid gap-6 sm:grid-cols-3">
             <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-4xl font-black text-green-600">15 hours → 15 min</div>
+              <div className="text-4xl font-black text-amber-600">15 hours → 15 min</div>
               <p className="mt-2 text-sm font-semibold text-gray-900">Time saved per campaign</p>
               <p className="mt-2 text-xs text-gray-600">Measured: 50 personalised pitches, 6 campaigns avg</p>
             </div>
@@ -225,7 +225,7 @@ export default function HomePage() {
               <p className="mt-2 text-xs text-gray-600">Sample: 120 specialist show pitches (vs 2% for bulk emails)</p>
             </div>
             <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-4xl font-black text-amber-800">18-28%</div>
+              <div className="text-4xl font-black text-amber-600">18-28%</div>
               <p className="mt-2 text-sm font-semibold text-gray-900">Playlist placement rate</p>
               <p className="mt-2 text-xs text-gray-600">Sample: 85 Spotify curator pitches (electronic/indie focus)</p>
             </div>
@@ -306,8 +306,8 @@ export default function HomePage() {
           </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <Link href="/auth/signin" className="cta-button">Get Started</Link>
-            <Link href="/pricing" className="subtle-button">View pricing</Link>
+            <Link href="/auth/signin" className="cta-button">Start my free pitches</Link>
+            <Link href="/pricing" className="subtle-button">Show me pricing</Link>
           </div>
         </div>
       </section>

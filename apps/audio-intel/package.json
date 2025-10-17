@@ -21,6 +21,7 @@
     "prebuild": "npm run check-colours"
   },
   "dependencies": {
+    "@atproto/api": "^0.17.3",
     "@headlessui/react": "^2.2.5",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-collapsible": "^1.1.11",

@@ -108,10 +108,10 @@ export function HeroDemo() {
               href="/pricing?plan=professional&billing=monthly"
               className="cta-button"
             >
-              Start free trial →
+              Get my free trial →
             </Link>
             <Link href="#how-it-works" className="subtle-button">
-              See how it works
+              Show me how it works
             </Link>
           </div>
           <p className="text-sm text-gray-500">

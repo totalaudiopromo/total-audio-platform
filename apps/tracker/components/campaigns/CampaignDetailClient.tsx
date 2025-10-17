@@ -47,10 +47,10 @@ const ACTIVITY_ICONS: Record<string, any> = {
 };
 
 const ACTIVITY_COLORS: Record<string, string> = {
-  email_sent: 'bg-blue-50 border-blue-200 text-amber-700',
+  email_sent: 'bg-blue-50 border-blue-200 text-teal-700',
   response: 'bg-green-50 border-green-200 text-green-700',
-  milestone: 'bg-amber-50 border-amber-200 text-amber-700',
-  planning: 'bg-amber-50 border-amber-200 text-amber-700',
+  milestone: 'bg-teal-50 border-teal-200 text-teal-700',
+  planning: 'bg-teal-50 border-teal-200 text-teal-700',
   completed: 'bg-emerald-50 border-emerald-200 text-emerald-700',
 };
 
@@ -79,7 +79,7 @@ export function CampaignDetailClient({ campaign, activities, userId }: CampaignD
             <div>
               <h1 className="text-3xl font-bold text-slate-900">{campaign.name}</h1>
               <div className="flex items-center gap-4 mt-2">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
                   {campaign.platform}
                 </span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700">
@@ -95,7 +95,7 @@ export function CampaignDetailClient({ campaign, activities, userId }: CampaignD
 
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
+              className="flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium"
             >
               <Plus className="w-4 h-4" />
               Add Activity
@@ -113,7 +113,7 @@ export function CampaignDetailClient({ campaign, activities, userId }: CampaignD
           </div>
           <div className="bg-white rounded-xl border-2 border-slate-200 p-4">
             <p className="text-sm font-medium text-slate-600">Actual Reach</p>
-            <p className="text-2xl font-bold text-amber-600 mt-1">{campaign.actual_reach || 0}</p>
+            <p className="text-2xl font-bold text-teal-600 mt-1">{campaign.actual_reach || 0}</p>
           </div>
           <div className="bg-white rounded-xl border-2 border-slate-200 p-4">
             <p className="text-sm font-medium text-slate-600">Success Rate</p>
