@@ -130,15 +130,15 @@ export function NewsletterSignup({
 
   // Default: card variant
   return (
-    <div className="glass-panel p-6">
-      <div className="flex items-start gap-4">
-        <div className="rounded-full bg-amber-500/10 p-3">
-          <Mail className="h-6 w-6 text-amber-600" />
+    <div className="glass-panel p-4 sm:p-6">
+      <div className="flex items-start gap-3 sm:gap-4">
+        <div className="rounded-full bg-amber-500/10 p-2 sm:p-3 flex-shrink-0">
+          <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600" />
         </div>
-        <div className="flex-1 space-y-4">
+        <div className="flex-1 min-w-0 space-y-4">
           <div className="space-y-2">
-            <h3 className="text-lg font-semibold">{title}</h3>
-            <p className="text-sm text-gray-600">{description}</p>
+            <h3 className="text-base sm:text-lg font-semibold break-words">{title}</h3>
+            <p className="text-xs sm:text-sm text-gray-600 break-words">{description}</p>
           </div>
           <form onSubmit={handleSubmit} className="space-y-3">
             <div className="flex gap-2">
