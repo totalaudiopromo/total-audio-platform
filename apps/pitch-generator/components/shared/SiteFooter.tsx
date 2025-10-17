@@ -14,12 +14,13 @@ export interface SiteFooterProps {
   /** Product-specific links (pricing, dashboard, etc.) */
   productLinks?: SiteFooterLink[];
   /** Accent color for hover effects */
-  accentColor?: 'purple' | 'blue' | 'amber';
+  accentColor?: 'purple' | 'blue' | 'amber' | 'teal';
 }
 
 const defaultProductLinks: SiteFooterLink[] = [
   { href: '/pricing', label: 'Pricing' },
   { href: '/dashboard', label: 'Dashboard' },
+  { href: '/blog', label: 'Blog' },
 ];
 
 const otherTools = [
@@ -33,6 +34,7 @@ const accentHover = {
   purple: 'hover:text-purple-600',
   blue: 'hover:text-blue-600',
   amber: 'hover:text-amber-600',
+  teal: 'hover:text-teal-600',
 };
 
 export function SiteFooter({

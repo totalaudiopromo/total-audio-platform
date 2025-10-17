@@ -10,9 +10,9 @@ import { useRouter } from 'next/navigation';
 
 const links = [
   { href: '/', label: 'Home' },
-  { href: '/pricing', label: 'Pricing' },
+  { href: '/dashboard', label: 'Dashboard' },
   { href: '/blog', label: 'Blog' },
-  { href: '/demo', label: 'Dashboard' },
+  { href: '/pricing', label: 'Pricing' },
 ];
 
 export function SiteHeader() {
