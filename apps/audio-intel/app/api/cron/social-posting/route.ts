@@ -1,7 +1,7 @@
 /**
  * Vercel Cron - Autonomous Social Media Posting
  *
- * Runs twice daily (9am and 6pm UK time)
+ * Runs twice daily (9am and 5pm UK time)
  * Posts to Bluesky according to content calendar
  *
  * Vercel cron configuration in vercel.json
