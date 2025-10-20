@@ -51,23 +51,23 @@ JWT_SECRET="your-super-secret-jwt-key"
 
 ```
 total-audio-promo/
-├── apps/                     # Applications
-│   ├── api/                  # Backend API
-│   ├── web/                  # Main web dashboard
-│   ├── audio-intel/          # Audio intelligence tool
-│   ├── playlist-pulse/       # Playlist curator tool
-│   ├── seo-tool/            # SEO analysis tool
-│   └── mobile/              # Mobile application
-├── packages/                 # Shared packages
-│   └── shared/              # UI components & utilities
-├── tools/                   # Development tools
-│   ├── agents/              # AI agents
-│   ├── scripts/             # Build scripts
-│   └── workflow/            # Workflow automation
-├── docs/                    # Documentation
-├── config/                  # Configuration files
-├── data/                    # Sample data
-└── tests/                   # Test files
+ apps/                     # Applications
+    api/                  # Backend API
+    web/                  # Main web dashboard
+    audio-intel/          # Audio intelligence tool
+    playlist-pulse/       # Playlist curator tool
+    seo-tool/            # SEO analysis tool
+    mobile/              # Mobile application
+ packages/                 # Shared packages
+    shared/              # UI components & utilities
+ tools/                   # Development tools
+    agents/              # AI agents
+    scripts/             # Build scripts
+    workflow/            # Workflow automation
+ docs/                    # Documentation
+ config/                  # Configuration files
+ data/                    # Sample data
+ tests/                   # Test files
 ```
 
 ## Development Commands
@@ -164,10 +164,10 @@ npm run status
 ### **Branch Strategy**
 ```
 main                 # Production-ready code
-├── develop         # Development integration branch
-├── feature/*       # New features
-├── hotfix/*        # Production fixes
-└── release/*       # Release preparation
+ develop         # Development integration branch
+ feature/*       # New features
+ hotfix/*        # Production fixes
+ release/*       # Release preparation
 ```
 
 ### **Commit Convention**

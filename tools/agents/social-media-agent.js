@@ -219,9 +219,9 @@ class SocialMediaAgent {
         };
         
         if (config.connected) {
-          logger.info(`✅ ${config.name} connected successfully`);
+          logger.info(` ${config.name} connected successfully`);
         } else {
-          logger.warn(`❌ ${config.name} connection failed`);
+          logger.warn(` ${config.name} connection failed`);
         }
       } catch (error) {
         logger.error(`Failed to connect to ${config.name}:`, error);
@@ -894,9 +894,9 @@ class SocialMediaAgent {
 
   async generateCaption(campaignData, platform, contentType) {
     const templates = {
-      instagram: `🎵 ${campaignData.title || 'New Music'} by ${campaignData.artist?.name || 'Artist'} 🎵\n\n${contentType === 'teaser' ? 'Coming soon...' : 'Out now!'} What do you think? 👇`,
-      twitter: `New ${campaignData.genre || 'music'} alert! 🔥 ${campaignData.title || 'Track'} by ${campaignData.artist?.name || 'Artist'} is ${['incredible', 'amazing', 'fire'][Math.floor(Math.random() * 3)]}!`,
-      tiktok: `${campaignData.title || 'New track'} vibes 🎶 @${campaignData.artist?.name || 'artist'}`
+      instagram: ` ${campaignData.title || 'New Music'} by ${campaignData.artist?.name || 'Artist'} \n\n${contentType === 'teaser' ? 'Coming soon...' : 'Out now!'} What do you think? `,
+      twitter: `New ${campaignData.genre || 'music'} alert!  ${campaignData.title || 'Track'} by ${campaignData.artist?.name || 'Artist'} is ${['incredible', 'amazing', 'fire'][Math.floor(Math.random() * 3)]}!`,
+      tiktok: `${campaignData.title || 'New track'} vibes  @${campaignData.artist?.name || 'artist'}`
     };
     return templates[platform] || templates.instagram;
   }
@@ -925,9 +925,9 @@ class SocialMediaAgent {
 
   generateCallToAction(campaignData, platform) {
     const ctas = {
-      instagram: 'Link in bio 🔗',
-      twitter: 'Listen now 🎧',
-      tiktok: 'Full song in bio! 🎵',
+      instagram: 'Link in bio ',
+      twitter: 'Listen now ',
+      tiktok: 'Full song in bio! ',
       facebook: 'Stream now on all platforms!'
     };
     return ctas[platform] || 'Check it out!';

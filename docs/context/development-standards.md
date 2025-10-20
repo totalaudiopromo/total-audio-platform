@@ -1,6 +1,6 @@
 # Total Audio Promo - Development Standards
 
-## 🎯 Development Philosophy
+##  Development Philosophy
 
 ### Core Principles
 - **Audio-First Design**: Every component considers the Audio character integration
@@ -16,59 +16,59 @@
 
 ---
 
-## 📁 Project Structure Standards
+##  Project Structure Standards
 
 ### Monorepo Organization
 ```
 total-audio-ecosystem/
-├── apps/
-│   ├── intel/                 # Audio Intel (intel.totalaudiopromo.com)
-│   ├── pulse/                 # Playlist Pulse (pulse.totalaudiopromo.com)
-│   ├── radar/                 # Release Radar (radar.totalaudiopromo.com)
-│   ├── track/                 # Trend Track (track.totalaudiopromo.com)
-│   ├── clone/                 # Content Clone (clone.totalaudiopromo.com)
-│   └── predict/               # Success Predict (predict.totalaudiopromo.com)
-├── packages/
-│   ├── ui/                    # Shared component library
-│   ├── audio-brand/           # Audio character components
-│   ├── config/                # Shared configuration
-│   ├── utils/                 # Utility functions
-│   └── types/                 # TypeScript type definitions
-├── libs/
-│   ├── database/              # Prisma schema and utilities
-│   ├── auth/                  # Authentication logic
-│   └── integrations/          # API integrations
-└── docs/
-    ├── context/               # Claude Code context files
-    ├── api/                   # API documentation
-    └── guides/                # Development guides
+ apps/
+    intel/                 # Audio Intel (intel.totalaudiopromo.com)
+    pulse/                 # Playlist Pulse (pulse.totalaudiopromo.com)
+    radar/                 # Release Radar (radar.totalaudiopromo.com)
+    track/                 # Trend Track (track.totalaudiopromo.com)
+    clone/                 # Content Clone (clone.totalaudiopromo.com)
+    predict/               # Success Predict (predict.totalaudiopromo.com)
+ packages/
+    ui/                    # Shared component library
+    audio-brand/           # Audio character components
+    config/                # Shared configuration
+    utils/                 # Utility functions
+    types/                 # TypeScript type definitions
+ libs/
+    database/              # Prisma schema and utilities
+    auth/                  # Authentication logic
+    integrations/          # API integrations
+ docs/
+     context/               # Claude Code context files
+     api/                   # API documentation
+     guides/                # Development guides
 ```
 
 ### Individual App Structure
 ```
 apps/intel/
-├── src/
-│   ├── app/                   # Next.js App Router
-│   │   ├── (auth)/           # Authentication routes
-│   │   ├── dashboard/        # Main app routes
-│   │   ├── api/              # API endpoints
-│   │   └── globals.css       # Global styles
-│   ├── components/           # App-specific components
-│   │   ├── enrichment/       # Contact enrichment UI
-│   │   ├── contacts/         # Contact management
-│   │   └── analytics/        # Analytics dashboard
-│   ├── hooks/                # Custom React hooks
-│   ├── lib/                  # Utility functions
-│   ├── styles/               # Component styles
-│   └── types/                # App-specific types
-├── public/                   # Static assets
-├── prisma/                   # Database schema
-└── package.json
+ src/
+    app/                   # Next.js App Router
+       (auth)/           # Authentication routes
+       dashboard/        # Main app routes
+       api/              # API endpoints
+       globals.css       # Global styles
+    components/           # App-specific components
+       enrichment/       # Contact enrichment UI
+       contacts/         # Contact management
+       analytics/        # Analytics dashboard
+    hooks/                # Custom React hooks
+    lib/                  # Utility functions
+    styles/               # Component styles
+    types/                # App-specific types
+ public/                   # Static assets
+ prisma/                   # Database schema
+ package.json
 ```
 
 ---
 
-## 🎨 Component Standards
+##  Component Standards
 
 ### Audio Brand Component Architecture
 ```typescript
@@ -94,14 +94,14 @@ interface AudioCharacterProps {
 ### Shared UI Components
 ```typescript
 // packages/ui/src/components/
-├── BrandButton.tsx           # Tool-themed buttons
-├── BrandCard.tsx             # Consistent card layouts
-├── ColorActivation.tsx       # B&W to color transitions
-├── LoadingState.tsx          # Audio-themed loading
-├── SuccessAnimation.tsx      # Celebration animations
-├── NavigationWrapper.tsx     # Cross-tool navigation
-├── DashboardLayout.tsx       # Standard layout
-└── index.ts                  # Export all components
+ BrandButton.tsx           # Tool-themed buttons
+ BrandCard.tsx             # Consistent card layouts
+ ColorActivation.tsx       # B&W to color transitions
+ LoadingState.tsx          # Audio-themed loading
+ SuccessAnimation.tsx      # Celebration animations
+ NavigationWrapper.tsx     # Cross-tool navigation
+ DashboardLayout.tsx       # Standard layout
+ index.ts                  # Export all components
 ```
 
 ### Component Naming Conventions
@@ -160,7 +160,7 @@ export function ComponentName({
 
 ---
 
-## 🎨 Styling Standards
+##  Styling Standards
 
 ### Tailwind CSS Configuration
 ```javascript
@@ -268,7 +268,7 @@ module.exports = {
 
 ---
 
-## 📝 TypeScript Standards
+##  TypeScript Standards
 
 ### Type Organization
 ```typescript
@@ -345,7 +345,7 @@ export interface AudioCharacterState {
 
 ---
 
-## 🧪 Testing Standards
+##  Testing Standards
 
 ### Testing Framework Setup
 ```typescript
@@ -464,7 +464,7 @@ describe('/api/contacts/enrich', () => {
 
 ---
 
-## 🔧 Code Quality Standards
+##  Code Quality Standards
 
 ### ESLint Configuration
 ```json
@@ -535,7 +535,7 @@ describe('/api/contacts/enrich', () => {
 
 ---
 
-## 📊 Performance Standards
+##  Performance Standards
 
 ### Core Web Vitals Targets
 - **Largest Contentful Paint (LCP)**: < 2.5 seconds
@@ -602,7 +602,7 @@ useEffect(() => {
 
 ---
 
-## 🚀 Deployment Standards
+##  Deployment Standards
 
 ### Environment Configuration
 ```bash
@@ -696,7 +696,7 @@ jobs:
 
 ---
 
-## 📋 Code Review Standards
+##  Code Review Standards
 
 ### Pull Request Template
 ```markdown
@@ -746,7 +746,7 @@ Brief description of changes and motivation
 
 ---
 
-## 🔒 Security Standards
+##  Security Standards
 
 ### Input Validation
 ```typescript
@@ -855,7 +855,7 @@ import { env } from '@/lib/env';
 
 ---
 
-## 📱 Mobile Development Standards
+##  Mobile Development Standards
 
 ### Responsive Breakpoints
 ```typescript
@@ -921,7 +921,7 @@ export function useBreakpoint(breakpoint: Breakpoint) {
 
 ---
 
-## 🎯 Accessibility Standards
+##  Accessibility Standards
 
 ### WCAG 2.1 AA Compliance
 ```typescript
@@ -1002,7 +1002,7 @@ export function AudioCharacter({ tool, state, ...props }: AudioCharacterProps) {
 
 ---
 
-## 🔄 State Management Standards
+##  State Management Standards
 
 ### Zustand Store Structure
 ```typescript
@@ -1129,7 +1129,7 @@ export function useContactEnrichment() {
 
 ---
 
-## 📚 Documentation Standards
+##  Documentation Standards
 
 ### Component Documentation
 ```typescript
@@ -1189,7 +1189,7 @@ export async function POST(request: NextRequest) {
 
 ---
 
-## 🎯 Error Handling Standards
+##  Error Handling Standards
 
 ### Global Error Boundary
 ```typescript
@@ -1291,7 +1291,7 @@ export function handleAPIError(error: unknown): NextResponse {
 
 ---
 
-## 🚀 Performance Optimization Standards
+##  Performance Optimization Standards
 
 ### Image Optimization
 ```typescript

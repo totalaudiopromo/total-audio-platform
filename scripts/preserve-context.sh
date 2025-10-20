@@ -3,7 +3,7 @@
 # Context Preservation Script for Claude Code Sessions
 # Run before conversation compacting to save critical state
 
-echo "🧠 Preserving Claude Code Session Context..."
+echo " Preserving Claude Code Session Context..."
 
 # Save current session memory
 node tools/agents/memory-persistence-agent.js save "Audio Intel Development" "Sprint Week Active"
@@ -55,7 +55,7 @@ cat > "$SNAPSHOT_DIR/restore_session.md" << 'EOF'
 - Session memory: tools/agents/session-memory.json
 EOF
 
-echo "✅ Context preserved in: $SNAPSHOT_DIR"
-echo "🔄 Run the following to restore context after compacting:"
+echo " Context preserved in: $SNAPSHOT_DIR"
+echo " Run the following to restore context after compacting:"
 echo "   cat $SNAPSHOT_DIR/restore_session.md"
 echo "   node tools/agents/memory-persistence-agent.js load"

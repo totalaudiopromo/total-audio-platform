@@ -1,24 +1,24 @@
 # Total Audio Promo - Component Standards for Cursor
 
-## 🎨 Audio Brand Component System
+##  Audio Brand Component System
 
 ### Core Component Architecture
 ```typescript
 // Brand-consistent component naming and structure
 packages/
-├── ui/                    # Shared component library
-│   ├── BrandButton.tsx   # Tool-themed buttons
-│   ├── BrandCard.tsx     # Consistent card layouts
-│   ├── LoadingState.tsx  # Audio-themed loading
-│   └── index.ts          # Export all components
-├── audio-brand/          # Audio character components
-│   ├── AudioCharacter.tsx
-│   ├── ColorActivation.tsx
-│   └── SuccessAnimation.tsx
-└── types/                # TypeScript definitions
-    ├── audio.ts
-    ├── user.ts
-    └── index.ts
+ ui/                    # Shared component library
+    BrandButton.tsx   # Tool-themed buttons
+    BrandCard.tsx     # Consistent card layouts
+    LoadingState.tsx  # Audio-themed loading
+    index.ts          # Export all components
+ audio-brand/          # Audio character components
+    AudioCharacter.tsx
+    ColorActivation.tsx
+    SuccessAnimation.tsx
+ types/                # TypeScript definitions
+     audio.ts
+     user.ts
+     index.ts
 ```
 
 ### Component Template Structure
@@ -66,7 +66,7 @@ export function Component({
 }
 ```
 
-## 🎯 Audio Character Integration
+##  Audio Character Integration
 
 ### Character State Management
 ```typescript
@@ -139,7 +139,7 @@ const audioAnimations = {
 };
 ```
 
-## 🎨 Styling Standards
+##  Styling Standards
 
 ### Tailwind Configuration
 ```javascript
@@ -205,7 +205,7 @@ module.exports = {
 }
 ```
 
-## 📝 TypeScript Standards
+##  TypeScript Standards
 
 ### Strict Configuration
 ```json
@@ -253,7 +253,7 @@ export interface User {
 }
 ```
 
-## 🧪 Testing Standards
+##  Testing Standards
 
 ### Component Testing Template
 ```typescript
@@ -310,7 +310,7 @@ describe('/api/contacts/enrich', () => {
 });
 ```
 
-## 🚀 Performance Standards
+##  Performance Standards
 
 ### Core Web Vitals Targets
 - **LCP**: < 2.5 seconds
@@ -329,7 +329,7 @@ const AudioIntelDashboard = dynamic(
 );
 ```
 
-## 🔧 Code Quality
+##  Code Quality
 
 ### ESLint Configuration
 ```json
@@ -353,7 +353,7 @@ const AudioIntelDashboard = dynamic(
 - **kebab-case**: File names (`brand-button.tsx`)
 - **UPPER_SNAKE_CASE**: Constants (`TOOL_COLORS`, `API_ENDPOINTS`)
 
-## 📱 Responsive Design
+##  Responsive Design
 
 ### Breakpoint Strategy
 ```css
@@ -377,7 +377,7 @@ const AudioIntelDashboard = dynamic(
 }
 ```
 
-## 🔒 Security Standards
+##  Security Standards
 
 ### Input Validation
 ```typescript
@@ -393,7 +393,7 @@ export const contactEnrichmentSchema = z.object({
 const validatedData = contactEnrichmentSchema.parse(body);
 ```
 
-## 🎯 Development Workflow
+##  Development Workflow
 
 ### Git Strategy
 ```bash

@@ -2,11 +2,11 @@
 
 Audio Intel is a comprehensive web application that transforms basic email lists into detailed music industry intelligence using AI-powered contact enrichment. The platform helps artists, labels, and music professionals save 15+ hours per week on contact research by providing detailed insights about playlist curators, radio DJs, music bloggers, and industry professionals.
 
-## 🚀 Features
+##  Features
 
 ### Core Functionality
 
-#### 1. **FREE Email Validation** 🆕
+#### 1. **FREE Email Validation** 
 - **DNS MX Record Checking** - Verify domains can actually receive emails
 - **Disposable Email Detection** - Identify temporary/fake email addresses  
 - **Free Email Provider Classification** - Distinguish business vs personal emails
@@ -79,7 +79,7 @@ Get strategic advice from specialized AI agents:
 - Efficient API calls
 - Rate limiting for external APIs
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 - **Frontend**: Next.js 15, React 19, TypeScript
 - **Styling**: Tailwind CSS, custom texture components
@@ -88,35 +88,35 @@ Get strategic advice from specialized AI agents:
 - **File Processing**: CSV parsing, Excel export
 - **Deployment**: Vercel-ready
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 audio-intel-live/
-├── app/
-│   ├── api/
-│   │   ├── ai-agent/          # AI agent endpoints
-│   │   ├── analytics/         # Analytics tracking
-│   │   ├── enrich/           # Contact enrichment
-│   │   ├── validate-emails/   # Email validation API
-│   │   ├── search/           # Multi-platform search
-│   │   ├── checkout/         # Payment processing
-│   │   ├── download/         # File downloads
-│   │   └── notify/           # Notifications
-│   ├── demo/                 # Interactive demo page
-│   ├── globals.css           # Global styles
-│   └── page.tsx              # Landing page
-├── components/
-│   ├── EmailValidator.tsx     # Email validation UI component
-│   └── ui/                   # Reusable UI components
-├── utils/
-│   ├── emailValidation.ts     # Email validation utilities
-│   └── formatIntelligence.ts # Contact formatting utilities
-├── public/
-│   └── textures/             # Texture image assets
-└── package.json
+ app/
+    api/
+       ai-agent/          # AI agent endpoints
+       analytics/         # Analytics tracking
+       enrich/           # Contact enrichment
+       validate-emails/   # Email validation API
+       search/           # Multi-platform search
+       checkout/         # Payment processing
+       download/         # File downloads
+       notify/           # Notifications
+    demo/                 # Interactive demo page
+    globals.css           # Global styles
+    page.tsx              # Landing page
+ components/
+    EmailValidator.tsx     # Email validation UI component
+    ui/                   # Reusable UI components
+ utils/
+    emailValidation.ts     # Email validation utilities
+    formatIntelligence.ts # Contact formatting utilities
+ public/
+    textures/             # Texture image assets
+ package.json
 ```
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
@@ -153,7 +153,7 @@ npm run dev
 5. **Open your browser**
 Navigate to `http://localhost:3000`
 
-## 🎯 Usage
+##  Usage
 
 ### Contact Enrichment
 1. Navigate to the demo page (`/demo`)
@@ -175,7 +175,7 @@ Navigate to `http://localhost:3000`
 3. Receive strategic advice, recommendations, and next steps
 4. Use insights to improve your music promotion strategy
 
-## 🔧 API Endpoints
+##  API Endpoints
 
 ### Contact Enrichment
 - `POST /api/enrich` - Enrich contact list with AI intelligence
@@ -189,7 +189,7 @@ Navigate to `http://localhost:3000`
 ### Analytics
 - `POST /api/analytics` - Track user interactions and events
 
-## 🎨 Design System
+##  Design System
 
 The application uses a custom design system with:
 - **Texture Overlays**: Paper, grain, and luma textures for visual depth
@@ -198,7 +198,7 @@ The application uses a custom design system with:
 - **Components**: Reusable UI components with consistent styling
 - **Animations**: Smooth transitions and hover effects
 
-## 🔒 Security
+##  Security
 
 - Environment variables for sensitive API keys
 - Input validation and sanitization
@@ -206,7 +206,7 @@ The application uses a custom design system with:
 - Secure file upload handling
 - HTTPS enforcement in production
 
-## 📊 Performance
+##  Performance
 
 - Optimized bundle size
 - Lazy loading for components
@@ -214,7 +214,7 @@ The application uses a custom design system with:
 - Image optimization
 - Responsive design for all devices
 
-## 🚀 Deployment
+##  Deployment
 
 The application is ready for deployment on Vercel:
 
@@ -222,7 +222,7 @@ The application is ready for deployment on Vercel:
 2. Set environment variables in Vercel dashboard
 3. Deploy automatically on push to main branch
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -230,11 +230,11 @@ The application is ready for deployment on Vercel:
 4. Test thoroughly
 5. Submit a pull request
 
-## 📝 License
+##  License
 
 This project is licensed under the MIT License.
 
-## 🆘 Support
+##  Support
 
 For support, please contact the development team or create an issue in the repository.
 

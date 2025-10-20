@@ -8,16 +8,16 @@ The AI Agents system provides intelligent automation for music promotion workflo
 ### **Core Components**
 ```
 tools/agents/
-├── orchestrator.js           # Main orchestration engine
-├── setup.js                 # Agent setup and configuration
-├── music-tech-agent.js      # Music technology specialist
-├── growth-hacking-optimizer.js  # Growth optimization
-├── music-industry-strategist.js # Industry strategy
-├── music-marketing-mastermind.js # Marketing automation
-├── viral-content-automation.js  # Content generation
-├── campaign-agent.js        # Campaign management
-├── contact-agent.js         # Contact research
-└── integration-agent.js     # Integration management
+ orchestrator.js           # Main orchestration engine
+ setup.js                 # Agent setup and configuration
+ music-tech-agent.js      # Music technology specialist
+ growth-hacking-optimizer.js  # Growth optimization
+ music-industry-strategist.js # Industry strategy
+ music-marketing-mastermind.js # Marketing automation
+ viral-content-automation.js  # Content generation
+ campaign-agent.js        # Campaign management
+ contact-agent.js         # Contact research
+ integration-agent.js     # Integration management
 ```
 
 ### **Agent Types**

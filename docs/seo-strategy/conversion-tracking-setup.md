@@ -3,7 +3,7 @@
 ## Google Tag Manager Configuration
 
 ### Current Status
-✅ GTM Container: GTM-WZNJWDKH already implemented
+ GTM Container: GTM-WZNJWDKH already implemented
 
 ### Required Custom Events (Add to GTM)
 

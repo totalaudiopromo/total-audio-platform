@@ -1,6 +1,6 @@
 # Total Audio Promo - Quick Reference Guide
 
-## 🚀 Development Commands
+##  Development Commands
 
 ### **Start Services**
 ```bash
@@ -34,7 +34,7 @@ npm run agents:workflows     # Run orchestrator
 npm run agents:test          # Test functionality
 ```
 
-## 🔧 Environment Configuration
+##  Environment Configuration
 
 ### **Required Environment Variables**
 ```env
@@ -60,23 +60,23 @@ GOOGLE_CLIENT_SECRET="your-google-client-secret"
 JWT_SECRET="your-super-secret-jwt-key"
 ```
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 total-audio-promo/
-├── apps/                     # Applications
-│   ├── api/                  # Backend API (port 3004)
-│   ├── web/                  # Main dashboard
-│   ├── audio-intel/          # Audio Intel tool (port 3000)
-│   ├── playlist-pulse/       # Playlist Pulse tool (port 3001)
-│   └── mobile/               # Mobile app
-├── packages/shared/          # Shared components
-├── tools/agents/             # AI agents
-├── docs/                     # Documentation
-└── config/                   # Configuration files
+ apps/                     # Applications
+    api/                  # Backend API (port 3004)
+    web/                  # Main dashboard
+    audio-intel/          # Audio Intel tool (port 3000)
+    playlist-pulse/       # Playlist Pulse tool (port 3001)
+    mobile/               # Mobile app
+ packages/shared/          # Shared components
+ tools/agents/             # AI agents
+ docs/                     # Documentation
+ config/                   # Configuration files
 ```
 
-## 🌐 Service URLs
+##  Service URLs
 
 ### **Development**
 - Audio Intel: http://localhost:3000
@@ -92,7 +92,7 @@ curl http://localhost:3004/health/db           # Database
 curl http://localhost:3004/health/integrations # Third-party services
 ```
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 ### **Authentication**
 ```bash
@@ -131,7 +131,7 @@ POST /api/claude/generate         # Generate content
 POST /api/perplexity/research     # Research contacts
 ```
 
-## 📊 Database Schema
+##  Database Schema
 
 ### **Key Models**
 ```typescript
@@ -166,7 +166,7 @@ Contact {
 }
 ```
 
-## 🤖 AI Agent Commands
+##  AI Agent Commands
 
 ### **Music Technology Agent**
 ```bash
@@ -188,7 +188,7 @@ npm run agents:content-generate    # Generate content
 npm run agents:content-optimize    # Optimize existing
 ```
 
-## 📈 Business Model
+##  Business Model
 
 ### **Pricing Structure**
 - **Artist Plan**: £45/month + £200 setup
@@ -200,7 +200,7 @@ npm run agents:content-optimize    # Optimize existing
 - Customer Lifetime Value (CLV)
 - Monthly Recurring Revenue (MRR)
 
-## 🔍 Troubleshooting
+##  Troubleshooting
 
 ### **Common Issues**
 
@@ -242,7 +242,7 @@ DEBUG=* npm run dev
 DEBUG=app:* npm run dev:backend
 ```
 
-## 📱 Testing
+##  Testing
 
 ### **Test Commands**
 ```bash
@@ -260,7 +260,7 @@ npm run test:playlist-pulse   # Playlist Pulse tests
 npm run test:backend          # Backend tests
 ```
 
-## 🔐 Security
+##  Security
 
 ### **Authentication Flow**
 1. User registers/logs in
@@ -274,7 +274,7 @@ npm run test:backend          # Backend tests
 - Rate limiting implemented
 - HTTPS in production
 
-## 📚 Documentation Quick Links
+##  Documentation Quick Links
 
 ### **Technical Docs**
 - [System Architecture](./SYSTEM_ARCHITECTURE.md)
@@ -290,7 +290,7 @@ npm run test:backend          # Backend tests
 - [AI Agents Guide](./AI_AGENTS_GUIDE.md)
 - [Claude Development Guide](../CLAUDE.md)
 
-## 🆘 Getting Help
+##  Getting Help
 
 ### **Development Issues**
 1. Check [DEVELOPMENT_WORKFLOWS.md](./DEVELOPMENT_WORKFLOWS.md) → Troubleshooting
@@ -310,7 +310,7 @@ npm run logs:backend          # Backend service logs
 
 ---
 
-## 🎯 Daily Workflow Checklist
+##  Daily Workflow Checklist
 
 ### **Development Start**
 - [ ] `npm run dev` to start all services

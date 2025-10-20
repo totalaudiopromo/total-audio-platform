@@ -1,16 +1,16 @@
 # Airtable Data Audit Setup Guide
 
-## 🎯 What the Audit Does
+##  What the Audit Does
 
 The audit script analyzes your Airtable contact data to identify:
 
-1. **📊 Field Mapping Analysis** - Shows data coverage and usage for each field
-2. **🚨 Duplicate Detection** - Finds records with same email or name
-3. **⚠️ Data Completeness** - Flags records missing key information
-4. **🔧 Data Inconsistencies** - Identifies formatting and validation issues
-5. **💡 Recommendations** - Suggests improvements for data quality
+1. ** Field Mapping Analysis** - Shows data coverage and usage for each field
+2. ** Duplicate Detection** - Finds records with same email or name
+3. ** Data Completeness** - Flags records missing key information
+4. ** Data Inconsistencies** - Identifies formatting and validation issues
+5. ** Recommendations** - Suggests improvements for data quality
 
-## 🚀 How to Run the Audit
+##  How to Run the Audit
 
 ### Step 1: Get Your Airtable Credentials
 
@@ -43,7 +43,7 @@ node demo-audit.js
 node test-audit.js
 ```
 
-## 📋 What You'll Get
+##  What You'll Get
 
 ### Summary Report
 - Total number of records analyzed
@@ -78,7 +78,7 @@ node test-audit.js
 - Validation rules to implement
 - Process improvements for data entry
 
-## 🔧 API Endpoint
+##  API Endpoint
 
 You can also run the audit via API:
 
@@ -89,7 +89,7 @@ curl -X POST http://localhost:3001/api/airtable-audit/audit \
   -H "Content-Type: application/json"
 ```
 
-## 📁 Files Created
+##  Files Created
 
 - `src/services/airtableAudit.ts` - Main audit service
 - `src/routes/airtable-audit.ts` - API routes
@@ -97,7 +97,7 @@ curl -X POST http://localhost:3001/api/airtable-audit/audit \
 - `demo-audit.js` - Demo showing sample results
 - `docs/AIRTABLE_AUDIT.md` - Detailed documentation
 
-## 🎯 Next Steps
+##  Next Steps
 
 1. **Set up your credentials** and run the audit
 2. **Review the results** to understand your data quality

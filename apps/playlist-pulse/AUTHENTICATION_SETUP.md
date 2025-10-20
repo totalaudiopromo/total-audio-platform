@@ -1,6 +1,6 @@
 # Authentication Setup Guide
 
-## ✅ Demo Credentials (Working Now)
+##  Demo Credentials (Working Now)
 
 The authentication system is now working with demo credentials:
 
@@ -9,19 +9,19 @@ The authentication system is now working with demo credentials:
 
 You can test this at: http://localhost:3001/auth/signin
 
-## 🔧 Current Status
+##  Current Status
 
-### ✅ Working:
+###  Working:
 - Email/password authentication with demo credentials
 - Beautiful sign-in page with glassmorphic design
 - Proper error handling and loading states
 - Session management
 
-### ⚠️ OAuth Providers (Need Setup):
+###  OAuth Providers (Need Setup):
 - Google sign-in (requires OAuth credentials)
 - Apple sign-in (requires OAuth credentials)
 
-## 🚀 How to Test Authentication
+##  How to Test Authentication
 
 1. **Visit the sign-in page:** http://localhost:3001/auth/signin
 2. **Use demo credentials:**
@@ -29,7 +29,7 @@ You can test this at: http://localhost:3001/auth/signin
    - Password: `password123`
 3. **Test page:** http://localhost:3001/test-auth
 
-## 🔑 Setting Up OAuth Providers
+##  Setting Up OAuth Providers
 
 ### Google OAuth Setup:
 
@@ -70,7 +70,7 @@ APPLE_ID=your-apple-id
 APPLE_SECRET=your-apple-secret
 ```
 
-## 🎨 Features
+##  Features
 
 - **Glassmorphic Design:** Beautiful blur effects and transparency
 - **Responsive:** Works on all devices
@@ -79,7 +79,7 @@ APPLE_SECRET=your-apple-secret
 - **Demo Mode:** Works without OAuth setup
 - **Session Management:** Proper session handling
 
-## 🔍 Troubleshooting
+##  Troubleshooting
 
 ### If demo credentials don't work:
 1. Check server is running: `npm run dev`
@@ -92,7 +92,7 @@ APPLE_SECRET=your-apple-secret
 3. Ensure redirect URIs match exactly
 4. Check server logs for errors
 
-## 📱 Testing
+##  Testing
 
 - **Demo Login:** http://localhost:3001/auth/signin
 - **Test Page:** http://localhost:3001/test-auth

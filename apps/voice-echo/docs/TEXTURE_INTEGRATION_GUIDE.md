@@ -215,7 +215,7 @@ export default function PricingSection() {
             </div>
             <ul className="space-y-3">
               {plan.features.map((feature, i) => (
-                <li key={i} className="text-gray-600">✓ {feature}</li>
+                <li key={i} className="text-gray-600"> {feature}</li>
               ))}
             </ul>
             <TextureButton 
@@ -243,32 +243,32 @@ export default function FeaturesSection() {
     {
       title: 'AI-Powered Analytics',
       description: 'Get deep insights into your audience and campaign performance',
-      icon: '📊'
+      icon: ''
     },
     {
       title: 'Automated Campaigns',
       description: 'Set up and run campaigns automatically with smart optimization',
-      icon: '🤖'
+      icon: ''
     },
     {
       title: 'Multi-Platform Integration',
       description: 'Connect all your social media and streaming platforms',
-      icon: '🔗'
+      icon: ''
     },
     {
       title: 'Real-time Monitoring',
       description: 'Track your campaigns and audience engagement in real-time',
-      icon: '📱'
+      icon: ''
     },
     {
       title: 'Custom Reporting',
       description: 'Generate detailed reports tailored to your needs',
-      icon: '📈'
+      icon: ''
     },
     {
       title: 'Expert Support',
       description: 'Get help from music industry experts when you need it',
-      icon: '🎵'
+      icon: ''
     }
   ];
 

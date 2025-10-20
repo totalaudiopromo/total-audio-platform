@@ -173,9 +173,9 @@ class ContentGenerationAgent {
         achievement: 'FOR IMMEDIATE RELEASE\n\n{artistName} {achievement}\n\n{body}'
       },
       socialMedia: {
-        newRelease: '🎵 NEW MUSIC ALERT! 🎵\n\n{trackTitle} by {artistName} is {emotion}!\n\n{description}\n\n{callToAction}\n\n{hashtags}',
-        behindScenes: '👀 Behind the scenes with {artistName}...\n\n{story}\n\n{question}\n\n{hashtags}',
-        milestone: '🎉 MILESTONE ALERT! 🎉\n\n{achievement}\n\n{gratitude}\n\n{nextSteps}\n\n{hashtags}'
+        newRelease: ' NEW MUSIC ALERT! \n\n{trackTitle} by {artistName} is {emotion}!\n\n{description}\n\n{callToAction}\n\n{hashtags}',
+        behindScenes: ' Behind the scenes with {artistName}...\n\n{story}\n\n{question}\n\n{hashtags}',
+        milestone: ' MILESTONE ALERT! \n\n{achievement}\n\n{gratitude}\n\n{nextSteps}\n\n{hashtags}'
       },
       email: {
         newRelease: 'Subject: {subjectLine}\n\nHey {firstName},\n\n{personalGreeting}\n\n{announcement}\n\n{trackDescription}\n\n{callToAction}\n\n{signature}',
@@ -544,8 +544,8 @@ class ContentGenerationAgent {
 
   async generateSocialText(input, platform, contentType) {
     const templates = {
-      instagram: `🎵 ${input.title || 'New Music'} by ${input.artist?.name || 'Artist'} 🎵\n\n${input.description || 'Amazing new track!'}\n\nWhat do you think? 👇`,
-      twitter: `New drop 🔥 ${input.title || 'Track'} by ${input.artist?.name || 'Artist'} is ${['incredible', 'amazing', 'fire', 'stunning'][Math.floor(Math.random() * 4)]}!`,
+      instagram: ` ${input.title || 'New Music'} by ${input.artist?.name || 'Artist'} \n\n${input.description || 'Amazing new track!'}\n\nWhat do you think? `,
+      twitter: `New drop  ${input.title || 'Track'} by ${input.artist?.name || 'Artist'} is ${['incredible', 'amazing', 'fire', 'stunning'][Math.floor(Math.random() * 4)]}!`,
       facebook: `We're excited to share ${input.title || 'new music'} by ${input.artist?.name || 'Artist'}!\n\n${input.description || 'Check it out and let us know what you think!'}`
     };
     return templates[platform] || templates.instagram;
@@ -563,8 +563,8 @@ class ContentGenerationAgent {
 
   generateCallToAction(input, platform) {
     const ctas = {
-      instagram: 'Link in bio 🔗',
-      twitter: 'Listen now 🎧',
+      instagram: 'Link in bio ',
+      twitter: 'Listen now ',
       facebook: 'Listen and share!'
     };
     return ctas[platform] || 'Check it out!';
@@ -607,7 +607,7 @@ class ContentGenerationAgent {
 
   async generateEmailSubject(input, campaignType) {
     const subjects = {
-      announcement: `🎵 New from ${input.artist?.name || 'Artist'}: ${input.title || 'Latest Release'}`,
+      announcement: ` New from ${input.artist?.name || 'Artist'}: ${input.title || 'Latest Release'}`,
       newsletter: `${input.artist?.name || 'Artist'} Monthly Update - ${new Date().toLocaleDateString('en-US', { month: 'long' })}`,
       promotional: `Don't miss: ${input.title || 'Special Offer'} from ${input.artist?.name || 'Artist'}`
     };
@@ -615,7 +615,7 @@ class ContentGenerationAgent {
   }
 
   async generatePreheader(input) {
-    return `${input.description || 'Exciting news'} - Preview inside 👀`;
+    return `${input.description || 'Exciting news'} - Preview inside `;
   }
 
   async generateEmailBodyHTML(input, campaignType) {

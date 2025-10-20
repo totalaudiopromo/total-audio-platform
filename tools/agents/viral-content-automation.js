@@ -452,21 +452,21 @@ class ViralContentAutomation {
         duration: '15-30s',
         elements: ['Song hook', 'Visual narrative', 'Trending effects'],
         hashtags: [`#${contentData.trackTitle.replace(/\s+/g, '')}`, '#newmusic', '#viral', '#fyp'],
-        description: `${contentData.trackTitle} hits different 🎵 #newmusic #viral`
+        description: `${contentData.trackTitle} hits different  #newmusic #viral`
       },
       behind_the_scenes: {
         concept: 'Studio session or creative process',
         duration: '30-60s',
         elements: ['Recording footage', 'Creative insights', 'Personal moments'],
         hashtags: ['#behindthescenes', '#studio', '#musician', '#creative'],
-        description: 'The magic happens behind the scenes ✨ #studio #creative'
+        description: 'The magic happens behind the scenes  #studio #creative'
       },
       trend_participation: {
         concept: 'Participate in current trending challenge',
         duration: '15-30s',
         elements: ['Trending sound/effect', 'Personal twist', 'Song integration'],
         hashtags: ['#trending', '#challenge', '#music', '#artist'],
-        description: 'Had to try this trend with my new song 😂 #trending'
+        description: 'Had to try this trend with my new song  #trending'
       }
     };
 
@@ -499,21 +499,21 @@ class ViralContentAutomation {
       music_announcement: {
         concept: `${contentData.trackTitle} promotional post`,
         visual: 'Album artwork or artist photo',
-        caption: `${contentData.trackTitle} is out now! What's your favorite line? 🎵`,
+        caption: `${contentData.trackTitle} is out now! What's your favorite line? `,
         hashtags: ['#newmusic', '#artist', '#music', `#${contentData.genre}`],
         engagement: 'Ask fans about favorite lyrics'
       },
       lifestyle_shot: {
         concept: 'Personal moment or daily life',
         visual: 'Candid photo or lifestyle shot',
-        caption: 'Behind the music is just me living life 📸',
+        caption: 'Behind the music is just me living life ',
         hashtags: ['#artist', '#life', '#authentic', '#mood'],
         engagement: 'Share relatable moment'
       },
       behind_scenes_photo: {
         concept: 'Studio or creative process photo',
         visual: 'Studio equipment, instruments, or creative setup',
-        caption: 'This is where the magic happens ✨ Working on something special',
+        caption: 'This is where the magic happens  Working on something special',
         hashtags: ['#studio', '#behindthescenes', '#creative', '#music'],
         engagement: 'Ask about creative process'
       }
@@ -580,7 +580,7 @@ class ViralContentAutomation {
       concept: `${contentData.trackTitle} 60-second preview`,
       duration: '60s',
       elements: ['Song preview', 'Compelling visuals', 'Call-to-action'],
-      title: `${contentData.trackTitle} - New Song Preview! 🎵`,
+      title: `${contentData.trackTitle} - New Song Preview! `,
       description: `Get ready for ${contentData.trackTitle}! Full song available now.`,
       postTime: this.calculateOptimalPostTime('youtube', day, 0),
       priority: 'medium',
@@ -605,12 +605,12 @@ class ViralContentAutomation {
     const type = tweetTypes[index % tweetTypes.length];
     
     const templates = {
-      song_announcement: `${contentData.trackTitle} is out now! 🎵 What do you think?`,
-      personal_thought: 'Random thought: music is the universal language that connects us all 🌍',
-      fan_interaction: 'Love seeing your reactions to the new song! Keep them coming 💙',
+      song_announcement: `${contentData.trackTitle} is out now!  What do you think?`,
+      personal_thought: 'Random thought: music is the universal language that connects us all ',
+      fan_interaction: 'Love seeing your reactions to the new song! Keep them coming ',
       industry_comment: 'The music industry is changing so fast. Exciting times to be an artist!',
-      behind_scenes_update: 'Studio session today was incredible. Can\'t wait to share what we\'re working on 🎤',
-      lyric_share: `"${this.generateSampleLyric(contentData)}" - from ${contentData.trackTitle} 🎵`
+      behind_scenes_update: 'Studio session today was incredible. Can\'t wait to share what we\'re working on ',
+      lyric_share: `"${this.generateSampleLyric(contentData)}" - from ${contentData.trackTitle} `
     };
 
     return {

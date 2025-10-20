@@ -89,8 +89,8 @@ async function getRelatedKeywords(keyword) {
 async function conductKeywordResearch() {
   const results = [];
   
-  console.log('🔍 Starting Keywords Everywhere API research...');
-  console.log(`📊 Researching ${PRIORITY_KEYWORDS.length} priority keywords for Audio Intel\n`);
+  console.log(' Starting Keywords Everywhere API research...');
+  console.log(` Researching ${PRIORITY_KEYWORDS.length} priority keywords for Audio Intel\n`);
   
   for (let i = 0; i < PRIORITY_KEYWORDS.length; i++) {
     const keyword = PRIORITY_KEYWORDS[i];
@@ -110,7 +110,7 @@ async function conductKeywordResearch() {
         priority: calculatePriority(data)
       };
       
-      console.log(`   📈 Volume: ${result.volume} | 💰 CPC: £${result.cpc} | 🎯 Priority: ${result.priority}/10`);
+      console.log(`    Volume: ${result.volume} |  CPC: £${result.cpc} |  Priority: ${result.priority}/10`);
       results.push(result);
     }
     
@@ -121,7 +121,7 @@ async function conductKeywordResearch() {
   // Sort by priority
   results.sort((a, b) => b.priority - a.priority);
   
-  console.log('\n🎯 TOP 10 PRIORITY KEYWORDS FOR AUDIO INTEL:');
+  console.log('\n TOP 10 PRIORITY KEYWORDS FOR AUDIO INTEL:');
   console.log('================================================');
   
   results.slice(0, 10).forEach((result, index) => {
@@ -157,7 +157,7 @@ function calculatePriority(data) {
 
 // Alternative free research methods if API credits run low
 function freeResearchMethods() {
-  console.log('\n🆓 FREE RESEARCH METHODS (NO API NEEDED):');
+  console.log('\n FREE RESEARCH METHODS (NO API NEEDED):');
   console.log('=========================================');
   
   const freeMethods = [
@@ -185,7 +185,7 @@ if (typeof module !== 'undefined' && module.exports) {
 }
 
 // Usage instructions
-console.log('\n📋 USAGE INSTRUCTIONS:');
+console.log('\n USAGE INSTRUCTIONS:');
 console.log('====================');
 console.log('1. Run: node keyword-research-script.js');
 console.log('2. Or copy functions into browser console');
@@ -195,11 +195,11 @@ console.log('4. Use free methods when API credits run low\n');
 // Auto-run if in Node.js environment
 if (typeof window === 'undefined') {
   conductKeywordResearch().then(() => {
-    console.log('\n✅ Keyword research complete!');
-    console.log('💡 Next step: Create content targeting top keywords');
+    console.log('\n Keyword research complete!');
+    console.log(' Next step: Create content targeting top keywords');
     freeResearchMethods();
   }).catch(error => {
-    console.log('❌ API research failed, using free methods:');
+    console.log(' API research failed, using free methods:');
     freeResearchMethods();
   });
 }

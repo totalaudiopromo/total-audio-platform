@@ -1,6 +1,6 @@
 # Total Audio Promo - Master Context for Cursor Development
 
-## 🎯 Project Overview
+##  Project Overview
 
 **Total Audio Promo** is an AI-powered music promotion ecosystem serving two markets:
 - **Independent Artists** (£50-200/month): Emerging talent seeking affordable automation
@@ -8,7 +8,7 @@
 
 **Core Mission**: Eliminate 94% of repetitive tasks in music PR while increasing campaign effectiveness by 300%+.
 
-## 🏗️ Technical Stack
+##  Technical Stack
 
 ```typescript
 // Primary Development Stack
@@ -23,7 +23,7 @@ Deployment: Vercel (Frontend) + Railway (Backend)
 Monitoring: Sentry + PostHog + LogRocket
 ```
 
-## 🚀 Current Development Priority: Audio Intel MVP
+##  Current Development Priority: Audio Intel MVP
 
 **Status**: Week 1 of 2-week MVP sprint
 **Live URL**: intel.totalaudiopromo.com
@@ -65,7 +65,7 @@ POST /api/contacts/enrich
 - Rate Limit: 100 requests/hour (free), 1000/hour (paid)
 ```
 
-## 🎨 Audio Brand System
+##  Audio Brand System
 
 ### Brand Character Integration
 - **Audio (AI Dog Mascot)**: Present across all tools with tool-specific animations
@@ -100,7 +100,7 @@ POST /api/contacts/enrich
 }
 ```
 
-## 🔌 Critical Integrations
+##  Critical Integrations
 
 ### Music Industry APIs
 ```javascript
@@ -132,7 +132,7 @@ Perplexity API: Real-time contact research (LIVE)
 Custom models: Success prediction, audience matching
 ```
 
-## 📊 Current Status & Metrics
+##  Current Status & Metrics
 
 ### Technical Performance
 - Contact enrichment accuracy: 94%+
@@ -146,7 +146,7 @@ Custom models: Success prediction, audience matching
 - User acquisition: 50 beta users (25 indies, 25 agencies)
 - Retention target: 80%+ after 30 days
 
-## 🎯 Development Standards
+##  Development Standards
 
 ### Component Architecture
 ```typescript
@@ -213,7 +213,7 @@ try {
 }
 ```
 
-## 🎵 Music Industry Context
+##  Music Industry Context
 
 ### Understanding the Domain
 - **Playlist Ecosystem**: 4M+ playlists on Spotify; placement = 100K+ streams
@@ -231,7 +231,7 @@ Conversion: Email signups, concert tickets, merchandise sales
 ROI: Streaming revenue, booking fees, sync opportunities
 ```
 
-## 🚨 Critical Development Guidelines
+##  Critical Development Guidelines
 
 ### Performance Requirements
 - Page load times: <3 seconds
@@ -254,7 +254,7 @@ E2E Tests: Critical user journeys (signup, enrichment)
 Performance Tests: Load testing for contact processing
 ```
 
-## 💡 Key Development Reminders
+##  Key Development Reminders
 
 1. **Music-First Design**: Every feature solves real industry problems
 2. **Audio Character Integration**: Brand mascot guides user experience
@@ -264,7 +264,7 @@ Performance Tests: Load testing for contact processing
 
 ---
 
-## 🎊 Current Sprint Goals (Week 1-2)
+##  Current Sprint Goals (Week 1-2)
 
 ### Audio Intel MVP Completion
 - [ ] Contact upload interface (CSV + manual)

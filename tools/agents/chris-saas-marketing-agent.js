@@ -24,9 +24,9 @@ const path = require('path');
 // Simple logger
 const logger = {
   info: (msg, ...args) => console.log(`[SAAS-MARKETING] ${msg}`, ...args),
-  error: (msg, ...args) => console.error(`[SAAS-MARKETING] ❌ ${msg}`, ...args),
-  warn: (msg, ...args) => console.warn(`[SAAS-MARKETING] ⚠️ ${msg}`, ...args),
-  success: (msg, ...args) => console.log(`[SAAS-MARKETING] ✅ ${msg}`, ...args)
+  error: (msg, ...args) => console.error(`[SAAS-MARKETING]  ${msg}`, ...args),
+  warn: (msg, ...args) => console.warn(`[SAAS-MARKETING]  ${msg}`, ...args),
+  success: (msg, ...args) => console.log(`[SAAS-MARKETING]  ${msg}`, ...args)
 };
 
 class ChrisSaaSMarketingAgent {
@@ -304,15 +304,15 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
   generateSocialText(productInfo, platform, contentType) {
     const templates = {
       linkedin: {
-        update: `Just shipped another update to ${productInfo.name} 🚀\n\nAs a full-time postman building SaaS tools, I don't have time for features that don't work.\n\nThis latest update focuses on ${productInfo.keyFeatures[0]} - the #1 request from beta users.\n\nThe result? Users are saving 10+ hours per week.\n\nSometimes the best solutions come from solving your own problems first.\n\n${productInfo.url}/beta`,
+        update: `Just shipped another update to ${productInfo.name} \n\nAs a full-time postman building SaaS tools, I don't have time for features that don't work.\n\nThis latest update focuses on ${productInfo.keyFeatures[0]} - the #1 request from beta users.\n\nThe result? Users are saving 10+ hours per week.\n\nSometimes the best solutions come from solving your own problems first.\n\n${productInfo.url}/beta`,
         
-        story: `Why I built ${productInfo.name} (thread) 🧵\n\n1/ Working full-time as a postman with two kids doesn't leave much time for inefficient tools.\n\n2/ I was spending hours every week on ${productInfo.painPoints[0].toLowerCase()}.\n\n3/ Existing solutions were either too expensive or overcomplicated.\n\n4/ So I built exactly what I needed: ${productInfo.description}\n\n5/ Result: ${productInfo.benefits[0]}\n\nNow in free beta: ${productInfo.url}/beta`
+        story: `Why I built ${productInfo.name} (thread) \n\n1/ Working full-time as a postman with two kids doesn't leave much time for inefficient tools.\n\n2/ I was spending hours every week on ${productInfo.painPoints[0].toLowerCase()}.\n\n3/ Existing solutions were either too expensive or overcomplicated.\n\n4/ So I built exactly what I needed: ${productInfo.description}\n\n5/ Result: ${productInfo.benefits[0]}\n\nNow in free beta: ${productInfo.url}/beta`
       },
       
       twitter: {
-        update: `${productInfo.name} update 🚀\n\n${productInfo.keyFeatures[0]} just got 10x better\n\nBeta users are saving 10+ hours/week\n\nBuilt by someone who actually uses it\n\n${productInfo.url}/beta`,
+        update: `${productInfo.name} update \n\n${productInfo.keyFeatures[0]} just got 10x better\n\nBeta users are saving 10+ hours/week\n\nBuilt by someone who actually uses it\n\n${productInfo.url}/beta`,
         
-        thread: `Why I built ${productInfo.name} 🧵\n\n1/ Full-time postman\n2/ Two small kids\n3/ No time for inefficient tools\n4/ Built exactly what I needed\n5/ Now you can use it too\n\nFree beta: ${productInfo.url}/beta`
+        thread: `Why I built ${productInfo.name} \n\n1/ Full-time postman\n2/ Two small kids\n3/ No time for inefficient tools\n4/ Built exactly what I needed\n5/ Now you can use it too\n\nFree beta: ${productInfo.url}/beta`
       }
     };
 

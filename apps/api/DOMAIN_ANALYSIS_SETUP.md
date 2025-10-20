@@ -1,4 +1,4 @@
-# 🎵 Email Domain Analysis Setup Guide
+#  Email Domain Analysis Setup Guide
 
 ## Quick Setup
 
@@ -16,7 +16,7 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'your-actual-contacts-table-id-here';
 4. **Review the results** and decide if you want to apply the changes
 5. **Run live mode**: `node test-domain-analysis-live.js` (if you want to apply changes)
 
-## 🔑 How to Get Your Airtable Credentials
+##  How to Get Your Airtable Credentials
 
 ### API Key
 1. Go to https://airtable.com/account
@@ -34,7 +34,7 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'your-actual-contacts-table-id-here';
 2. Look at the URL: `https://airtable.com/appXXXXXXXXXXXXXX/tblYYYYYYYYYYYYY`
 3. Copy the part after `/tbl/` (the Y's)
 
-## 📋 Example Configuration
+##  Example Configuration
 
 ```javascript
 process.env.AIRTABLE_API_KEY = 'key1234567890abcdef';
@@ -42,28 +42,28 @@ process.env.AIRTABLE_BASE_ID = 'app1234567890abcdef';
 process.env.AIRTABLE_CONTACTS_TABLE_ID = 'tbl1234567890abcdef';
 ```
 
-## 🎯 What the Analysis Will Do
+##  What the Analysis Will Do
 
 ### Company Extraction
-- ✅ Extract company names from email domains
-- ✅ Identify music industry platforms automatically
-- ✅ Handle common domain patterns appropriately
-- ✅ Skip personal email domains (gmail, yahoo, etc.)
+-  Extract company names from email domains
+-  Identify music industry platforms automatically
+-  Handle common domain patterns appropriately
+-  Skip personal email domains (gmail, yahoo, etc.)
 
 ### Music Industry Recognition
-- 🎵 **Streaming Platforms**: Spotify, Apple Music, YouTube Music, etc.
-- 📻 **Radio Stations**: KCRW, KEXP, NPR, BBC Radio, etc.
-- 📰 **Music Media**: Pitchfork, Rolling Stone, Billboard, NME, etc.
-- 🏢 **Record Labels**: Universal, Sony, Warner, Interscope, etc.
-- 🎪 **Venues & Festivals**: Coachella, Lollapalooza, etc.
-- 🎼 **Music Services**: Management, Booking, Studios, etc.
+-  **Streaming Platforms**: Spotify, Apple Music, YouTube Music, etc.
+-  **Radio Stations**: KCRW, KEXP, NPR, BBC Radio, etc.
+-  **Music Media**: Pitchfork, Rolling Stone, Billboard, NME, etc.
+-  **Record Labels**: Universal, Sony, Warner, Interscope, etc.
+-  **Venues & Festivals**: Coachella, Lollapalooza, etc.
+-  **Music Services**: Management, Booking, Studios, etc.
 
 ### Updates Made
 - **Company Field**: Extracted company name
 - **Role Field**: Identified company type (Playlist Curator, Radio DJ, etc.)
 - **Notes Field**: Auto-extraction details and reasoning
 
-## 🚀 Run the Analysis
+##  Run the Analysis
 
 ### Preview Mode (Recommended First)
 ```bash
@@ -77,19 +77,19 @@ cd backend
 node test-domain-analysis-live.js
 ```
 
-## 📊 Sample Output
+##  Sample Output
 
 ```
-📊 DOMAIN ANALYSIS REPORT
+ DOMAIN ANALYSIS REPORT
 ==================================================
 
-📈 Summary:
+ Summary:
 - Total records: 1,250
 - Analyzed records: 890
 - Records to update: 156
 - Mode: DRY RUN
 
-🏢 Company Types Identified:
+ Company Types Identified:
 ------------------------------
 - Playlist Curator: 45 contacts
 - Music Journalist: 38 contacts
@@ -98,16 +98,16 @@ node test-domain-analysis-live.js
 - Music Blog: 12 contacts
 - Venue Manager: 8 contacts
 
-📝 Sample Updates (first 10):
+ Sample Updates (first 10):
 ------------------------------
-📧 john@spotify.com
+ john@spotify.com
    Domain: spotify.com
    Company: Spotify
    Type: Playlist Curator
    Confidence: 95%
    Reason: Matched pattern: spotify\.com
 
-📧 editor@pitchfork.com
+ editor@pitchfork.com
    Domain: pitchfork.com
    Company: Pitchfork
    Type: Music Journalist
@@ -115,7 +115,7 @@ node test-domain-analysis-live.js
    Reason: Matched pattern: pitchfork\.com
 ```
 
-## ⚠️ Important Notes
+##  Important Notes
 
 1. **Always run preview mode first** to see what changes would be made
 2. **Backup your data** before running live mode
@@ -123,7 +123,7 @@ node test-domain-analysis-live.js
 4. **Personal domains are skipped** (gmail, yahoo, etc.)
 5. **The script is conservative** - only updates records with reasonable confidence
 
-## 🔧 Customization
+##  Customization
 
 You can modify the patterns in `src/services/airtableDomainAnalysis.ts` to:
 - Add new music industry domains
@@ -131,7 +131,7 @@ You can modify the patterns in `src/services/airtableDomainAnalysis.ts` to:
 - Change company type classifications
 - Add new domain patterns
 
-## 🆘 Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 - **"Missing required Airtable environment variables"**: Check your API key, base ID, and table ID

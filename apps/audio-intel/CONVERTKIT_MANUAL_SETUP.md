@@ -1,12 +1,12 @@
-# 🚀 CONVERTKIT MANUAL SETUP - SPRINT WEEK READY
+#  CONVERTKIT MANUAL SETUP - SPRINT WEEK READY
 
-## ⚡ FASTEST DEPLOYMENT (2 Minutes)
+##  FASTEST DEPLOYMENT (2 Minutes)
 
 Since Kit.com API is having issues, here's the exact content to copy-paste into ConvertKit dashboard for immediate deployment.
 
 ---
 
-## 📧 EMAIL 1 (Day 0) - COPY THIS INTO CONVERTKIT
+##  EMAIL 1 (Day 0) - COPY THIS INTO CONVERTKIT
 
 **Email Subject:**
 ```
@@ -49,7 +49,7 @@ Former Network Programmes Manager at Decadance UK and current radio promoter
 
 ---
 
-## 📧 EMAIL 2 (Day 3) - COPY THIS INTO CONVERTKIT
+##  EMAIL 2 (Day 3) - COPY THIS INTO CONVERTKIT
 
 **Email Subject:**
 ```
@@ -94,7 +94,7 @@ Brighton electronic producer and former Decadance UK Network Programmes Manager
 
 ---
 
-## 📧 EMAIL 3 (Day 7) - COPY THIS INTO CONVERTKIT
+##  EMAIL 3 (Day 7) - COPY THIS INTO CONVERTKIT
 
 **Email Subject:**
 ```
@@ -133,7 +133,7 @@ Brighton-based electronic producer and radio promoter
 
 ---
 
-## 📧 EMAIL 4 (Day 14) - COPY THIS INTO CONVERTKIT
+##  EMAIL 4 (Day 14) - COPY THIS INTO CONVERTKIT
 
 **Email Subject:**
 ```
@@ -183,7 +183,7 @@ Former Network Programmes Manager at Decadance UK
 
 ---
 
-## 🚀 CONVERTKIT DASHBOARD SETUP (60 SECONDS)
+##  CONVERTKIT DASHBOARD SETUP (60 SECONDS)
 
 ### **Step 1: Create New Email Sequence**
 1. Go to ConvertKit dashboard → Automations → Visual Automations
@@ -215,7 +215,7 @@ Add these tags to the automation:
 
 ---
 
-## ✅ VERIFICATION CHECKLIST
+##  VERIFICATION CHECKLIST
 
 After setup, verify:
 - [ ] All 4 emails created with correct content
@@ -227,15 +227,15 @@ After setup, verify:
 
 ---
 
-## 🎯 READY FOR SPRINT WEEK
+##  READY FOR SPRINT WEEK
 
 **Your ConvertKit API integration (`/api/convertkit/route.ts`) is already working perfectly.**
 
 **Beta signup at `intel.totalaudiopromo.com/beta` will:**
-1. ✅ Trigger immediate welcome email (already configured)
-2. ✅ Add proper tags (`beta_user`, `free_trial`)
-3. ✅ Enroll in 4-email sequence (once you copy-paste above)
+1.  Trigger immediate welcome email (already configured)
+2.  Add proper tags (`beta_user`, `free_trial`)
+3.  Enroll in 4-email sequence (once you copy-paste above)
 
 **Total setup time: 2 minutes of copy-pasting into ConvertKit dashboard.**
 
-**Sprint Week beta testing is ready to launch! 🚀**
+**Sprint Week beta testing is ready to launch! **
