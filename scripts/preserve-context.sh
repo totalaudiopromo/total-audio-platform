@@ -14,9 +14,8 @@ SNAPSHOT_DIR="session-snapshots/$TIMESTAMP"
 mkdir -p "$SNAPSHOT_DIR"
 
 # Save critical files
-cp CLAUDE_CODE_SESSION_CONTEXT.md "$SNAPSHOT_DIR/"
 cp CLAUDE.md "$SNAPSHOT_DIR/"
-cp BUSINESS_CONTEXT_COMPLETE.md "$SNAPSHOT_DIR/"
+cp docs/BUSINESS_CONTEXT.md "$SNAPSHOT_DIR/"
 cp package.json "$SNAPSHOT_DIR/"
 
 # Save agent states
@@ -51,9 +50,8 @@ cat > "$SNAPSHOT_DIR/restore_session.md" << 'EOF'
 - Plan Mode protocol: PLAN → REVIEW → EXECUTE → TEST → DOCUMENT
 
 ## Current State Files
-- Context: CLAUDE_CODE_SESSION_CONTEXT.md
-- Business priorities: BUSINESS_CONTEXT_COMPLETE.md
-- Technical guide: CLAUDE.md
+- Primary guide: CLAUDE.md (comprehensive project documentation)
+- Business context: docs/BUSINESS_CONTEXT.md
 - Session memory: tools/agents/session-memory.json
 EOF
 
