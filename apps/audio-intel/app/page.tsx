@@ -191,6 +191,11 @@ export default function AudioIntelLanding() {
   
   return (
     <div className="min-h-screen bg-[#f8f9fa]">
+      {/* Vercel Preview Test Banner - Remove after testing */}
+      <div className="bg-blue-600 text-white text-center py-2 px-4 text-sm font-medium">
+        Vercel Preview Deployment Test - Working!
+      </div>
+
       {/* Header */}
       <header className={`audio-intel-header sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative`}>
         <div className="audio-intel-container container flex h-16 items-center justify-between">
