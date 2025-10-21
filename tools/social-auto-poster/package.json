@@ -1,0 +1,25 @@
+{
+  "name": "unified-social-auto-poster",
+  "version": "1.0.0",
+  "description": "Post to LinkedIn, Bluesky, and Threads with one command",
+  "main": "unified-poster.js",
+  "scripts": {
+    "setup": "node setup-wizard.js",
+    "post": "node unified-poster.js post",
+    "start": "node scheduler.js start",
+    "queue": "node scheduler.js queue"
+  },
+  "keywords": [
+    "linkedin",
+    "bluesky",
+    "threads",
+    "social-media",
+    "automation"
+  ],
+  "author": "Total Audio Promo",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "node-cron": "^3.0.3"
+  }
+}

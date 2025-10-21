@@ -1,0 +1,7 @@
+# Keep credentials private
+social-config.json
+scheduled-posts.json
+content-queue.json
+
+# Dependencies
+node_modules/
