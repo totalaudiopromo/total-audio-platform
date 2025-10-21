@@ -69,9 +69,45 @@ npm run db:seed
 npm run db:generate
 ```
 
+### Development Workflow - NO LOCALHOST NEEDED
+
+**IMPORTANT**: Avoid localhost development. Use Vercel preview deployments instead.
+
+**Why**: Localhost is slow, requires puppeteer, and can't be checked by Claude. Vercel previews are instant, shareable, and Claude can check them with WebFetch.
+
+**Recommended Workflow**:
+1. Make changes locally
+2. Git commit and push to feature branch
+3. Vercel auto-deploys (30 seconds) → Gets unique preview URL
+4. Share preview URL with Claude for instant feedback via WebFetch
+5. No localhost, no puppeteer, no waiting
+
+**Example**:
+```bash
+# Make changes, then:
+git commit -m "feat: update pricing page"
+git push origin chris/pricing-update
+
+# Vercel automatically creates:
+# https://audio-intel-git-chris-pricing-update.vercel.app
+
+# Share that URL for instant Claude feedback
+```
+
+**Alternative: Quick Testing During Development**
+```bash
+# Option 1: Vercel Dev (gets public URL)
+cd apps/audio-intel
+vercel dev
+
+# Option 2: ngrok tunnel (if you prefer localhost)
+npm run dev  # Terminal 1
+npx ngrok http 3000  # Terminal 2 - gets public URL
+```
+
 ### Development (Current Monorepo Structure)
 ```bash
-# Start main apps (recommended)
+# Start main apps (recommended - only for local testing)
 npm run dev
 
 # Start individual apps:
