@@ -2,11 +2,11 @@
 
 Voice Echo is an AI-powered content creation tool that learns each musician's authentic voice and creates platform-optimized social media posts. It solves the "AI slop" problem by preserving personality while optimizing for engagement across multiple platforms.
 
-## 🎯 Core Concept
+##  Core Concept
 
 Voice Echo learns your authentic voice from your best social media posts, then generates platform-specific content that sounds exactly like you. It's anti-generic-AI - preserving personality while optimizing for engagement.
 
-## ✨ Key Features
+##  Key Features
 
 ### Voice Training
 - **Upload Interface**: Upload 10-15 example social media posts via file or text paste
@@ -32,7 +32,7 @@ Voice Echo learns your authentic voice from your best social media posts, then g
 - **Character Count**: Platform-specific character limits
 - **Edit & Copy**: Easy editing and copying to clipboard
 
-## 🏗️ Tech Stack
+##  Tech Stack
 
 - **Frontend**: Next.js 14 with TypeScript
 - **Styling**: Tailwind CSS with custom design system
@@ -42,7 +42,7 @@ Voice Echo learns your authentic voice from your best social media posts, then g
 - **Billing**: Stripe integration (£19/month)
 - **Authentication**: Same system as Audio Intel
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - Node.js 18+
@@ -90,30 +90,30 @@ Voice Echo learns your authentic voice from your best social media posts, then g
    http://localhost:3000
    ```
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 apps/voice-echo/
-├── app/
-│   ├── api/
-│   │   └── generate-content/
-│   │       └── route.ts          # Content generation API
-│   ├── voice-training/
-│   │   └── page.tsx              # Voice training interface
-│   ├── content-generation/
-│   │   └── page.tsx              # Content generation dashboard
-│   ├── layout.tsx                # Root layout with metadata
-│   ├── page.tsx                  # Landing page
-│   └── globals.css               # Global styles
-├── components/
-│   └── ui/                       # Reusable UI components
-├── lib/
-│   └── utils.ts                  # Utility functions
-└── prisma/
-    └── schema.prisma             # Database schema
+ app/
+    api/
+       generate-content/
+           route.ts          # Content generation API
+    voice-training/
+       page.tsx              # Voice training interface
+    content-generation/
+       page.tsx              # Content generation dashboard
+    layout.tsx                # Root layout with metadata
+    page.tsx                  # Landing page
+    globals.css               # Global styles
+ components/
+    ui/                       # Reusable UI components
+ lib/
+    utils.ts                  # Utility functions
+ prisma/
+     schema.prisma             # Database schema
 ```
 
-## 🎨 Design System
+##  Design System
 
 Voice Echo uses the exact same design system as Audio Intel for pixel-perfect consistency:
 
@@ -122,7 +122,7 @@ Voice Echo uses the exact same design system as Audio Intel for pixel-perfect co
 - **Components**: Identical button styles, card layouts, spacing, and shadows
 - **Branding**: Total Audio Promo logo and consistent header/footer
 
-## 🔧 API Endpoints
+##  API Endpoints
 
 ### POST /api/generate-content
 Generates platform-optimized content based on user input and voice profile.
@@ -146,10 +146,10 @@ Generates platform-optimized content based on user input and voice profile.
 {
   "success": true,
   "content": {
-    "twitter": "🔥 Just dropped my new track!...",
+    "twitter": " Just dropped my new track!...",
     "instagram": "Behind the scenes of my new track...",
     "threads": "Just dropped my new track!...",
-    "tiktok": "New track just dropped! 🔥..."
+    "tiktok": "New track just dropped! ..."
   },
   "scores": {
     "twitter": { "authenticity": 95, "engagement": 88 },
@@ -160,7 +160,7 @@ Generates platform-optimized content based on user input and voice profile.
 }
 ```
 
-## 🎵 Platform-Specific Features
+##  Platform-Specific Features
 
 ### X/Twitter
 - 280 character limit optimization
@@ -186,21 +186,21 @@ Generates platform-optimized content based on user input and voice profile.
 - Music discovery optimization
 - Viral format considerations
 
-## 💰 Pricing Model
+##  Pricing Model
 
 - **£19/month**: Professional plan with 200 content generations
 - **£19/month**: Starter plan with 50 content generations
 - Same billing system as Audio Intel
 - Usage tracking and upgrade prompts
 
-## 🔒 Security & Privacy
+##  Security & Privacy
 
 - **User Data**: Secure handling of user posts and voice profiles
 - **API Keys**: Secure storage and rotation of Claude API credentials
 - **Content Protection**: Respect copyright and licensing requirements
 - **GDPR Compliance**: Proper data handling for EU users
 
-## 🚀 Deployment
+##  Deployment
 
 ### Vercel (Recommended)
 1. Connect your GitHub repository to Vercel
@@ -217,7 +217,7 @@ NEXTAUTH_SECRET=your_nextauth_secret
 NEXTAUTH_URL=https://voice.totalaudiopromo.com
 ```
 
-## 🧪 Testing
+##  Testing
 
 ```bash
 # Run tests
@@ -230,7 +230,7 @@ npm run test:e2e
 npm run health-check
 ```
 
-## 📈 Analytics & Monitoring
+##  Analytics & Monitoring
 
 - Google Analytics integration
 - Usage tracking per user
@@ -238,7 +238,7 @@ npm run health-check
 - Content generation metrics
 - Voice match accuracy tracking
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -246,14 +246,14 @@ npm run health-check
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📄 License
+##  License
 
 This project is part of the Total Audio Promo ecosystem and follows the same licensing terms.
 
-## 🆘 Support
+##  Support
 
 For support, please contact the Total Audio Promo team or create an issue in the repository.
 
 ---
 
-**Voice Echo**: Your authentic voice, amplified across every platform. 🎵
+**Voice Echo**: Your authentic voice, amplified across every platform. 

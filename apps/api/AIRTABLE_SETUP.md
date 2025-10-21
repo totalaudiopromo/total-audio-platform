@@ -1,4 +1,4 @@
-# 🚀 Airtable Audit Setup Guide
+#  Airtable Audit Setup Guide
 
 ## Quick Setup
 
@@ -14,7 +14,7 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'your-actual-contacts-table-id-here';
 
 3. **Run the audit**: `node test-audit.js`
 
-## 🔑 How to Get Your Airtable Credentials
+##  How to Get Your Airtable Credentials
 
 ### API Key
 1. Go to https://airtable.com/account
@@ -32,7 +32,7 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'your-actual-contacts-table-id-here';
 2. Look at the URL: `https://airtable.com/appXXXXXXXXXXXXXX/tblYYYYYYYYYYYYY`
 3. Copy the part after `/tbl/` (the Y's)
 
-## 📋 Example Configuration
+##  Example Configuration
 
 ```javascript
 process.env.AIRTABLE_API_KEY = 'key1234567890abcdef';
@@ -40,15 +40,15 @@ process.env.AIRTABLE_BASE_ID = 'app1234567890abcdef';
 process.env.AIRTABLE_CONTACTS_TABLE_ID = 'tbl1234567890abcdef';
 ```
 
-## 🎯 What the Audit Will Check
+##  What the Audit Will Check
 
-- ✅ Field coverage and completeness
-- 🚨 Duplicate contacts (same email/name)
-- ⚠️ Missing required information
-- 🔧 Data format inconsistencies
-- 💡 Recommendations for improvement
+-  Field coverage and completeness
+-  Duplicate contacts (same email/name)
+-  Missing required information
+-  Data format inconsistencies
+-  Recommendations for improvement
 
-## 🚀 Run the Audit
+##  Run the Audit
 
 ```bash
 cd backend

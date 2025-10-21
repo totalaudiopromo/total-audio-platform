@@ -3,7 +3,7 @@
 # Context Preservation Script for Claude Code Sessions
 # Run before conversation compacting to save critical state
 
-echo "🧠 Preserving Claude Code Session Context..."
+echo " Preserving Claude Code Session Context..."
 
 # Save current session memory
 node tools/agents/memory-persistence-agent.js save "Audio Intel Development" "Sprint Week Active"
@@ -14,9 +14,8 @@ SNAPSHOT_DIR="session-snapshots/$TIMESTAMP"
 mkdir -p "$SNAPSHOT_DIR"
 
 # Save critical files
-cp CLAUDE_CODE_SESSION_CONTEXT.md "$SNAPSHOT_DIR/"
 cp CLAUDE.md "$SNAPSHOT_DIR/"
-cp BUSINESS_CONTEXT_COMPLETE.md "$SNAPSHOT_DIR/"
+cp docs/BUSINESS_CONTEXT.md "$SNAPSHOT_DIR/"
 cp package.json "$SNAPSHOT_DIR/"
 
 # Save agent states
@@ -51,13 +50,12 @@ cat > "$SNAPSHOT_DIR/restore_session.md" << 'EOF'
 - Plan Mode protocol: PLAN → REVIEW → EXECUTE → TEST → DOCUMENT
 
 ## Current State Files
-- Context: CLAUDE_CODE_SESSION_CONTEXT.md
-- Business priorities: BUSINESS_CONTEXT_COMPLETE.md
-- Technical guide: CLAUDE.md
+- Primary guide: CLAUDE.md (comprehensive project documentation)
+- Business context: docs/BUSINESS_CONTEXT.md
 - Session memory: tools/agents/session-memory.json
 EOF
 
-echo "✅ Context preserved in: $SNAPSHOT_DIR"
-echo "🔄 Run the following to restore context after compacting:"
+echo " Context preserved in: $SNAPSHOT_DIR"
+echo " Run the following to restore context after compacting:"
 echo "   cat $SNAPSHOT_DIR/restore_session.md"
 echo "   node tools/agents/memory-persistence-agent.js load"

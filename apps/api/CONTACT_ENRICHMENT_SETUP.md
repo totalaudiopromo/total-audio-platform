@@ -1,14 +1,14 @@
-# 🎵 Contact Enrichment System Setup
+#  Contact Enrichment System Setup
 
 This system uses Firecrawl to scrape UK radio station websites and extract valuable contact information for your radio DJ contacts in Airtable.
 
-## 📋 Prerequisites
+##  Prerequisites
 
 1. **Firecrawl API Key**: Get a free API key from [https://firecrawl.dev](https://firecrawl.dev)
 2. **Airtable Access**: Your existing Airtable credentials
 3. **Node.js**: Version 14 or higher
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Get Firecrawl API Key
 
@@ -60,7 +60,7 @@ This will:
 - Update your Airtable records
 - Generate a comprehensive report
 
-## 📊 What Data is Extracted
+##  What Data is Extracted
 
 For each UK radio station, the system extracts:
 
@@ -89,7 +89,7 @@ Social Media: @BBCR1, @BBCRadio1
 Additional: BBC Music team contacts
 ```
 
-## 🏢 Supported UK Radio Stations
+##  Supported UK Radio Stations
 
 ### BBC National Stations
 - BBC Radio 1, 2, 3, 4, 6 Music
@@ -105,7 +105,7 @@ Additional: BBC Music team contacts
 - Key 103, BRMB, Radio City
 - Various local commercial stations
 
-## ⚙️ Configuration Options
+##  Configuration Options
 
 ### Rate Limiting
 The system includes built-in rate limiting (1 second between requests) to avoid overwhelming websites.
@@ -119,7 +119,7 @@ The system includes built-in rate limiting (1 second between requests) to avoid 
 - Processes records in batches of 10 (Airtable limit)
 - Progress reporting for large datasets
 
-## 📈 Expected Results
+##  Expected Results
 
 Based on your 210+ radio contacts:
 
@@ -129,13 +129,13 @@ Based on your 210+ radio contacts:
 - **DJ and show information** for targeted outreach
 - **Social media links** for additional contact methods
 
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 
 1. **Firecrawl API Key Missing**
    ```
-   ❌ ERROR: Please set your FIRECRAWL_API_KEY environment variable
+    ERROR: Please set your FIRECRAWL_API_KEY environment variable
    ```
    Solution: Get API key from https://firecrawl.dev
 
@@ -164,7 +164,7 @@ To add support for new radio stations, edit `src/services/airtableContactEnrichm
 }
 ```
 
-## 📋 Scripts Overview
+##  Scripts Overview
 
 | Script | Purpose | Mode |
 |--------|---------|------|
@@ -172,7 +172,7 @@ To add support for new radio stations, edit `src/services/airtableContactEnrichm
 | `test-contact-enrichment.js` | Preview mode (no changes) | Preview |
 | `test-contact-enrichment-live.js` | Live mode (updates Airtable) | Live |
 
-## 🎯 Use Cases
+##  Use Cases
 
 ### Music Promotion
 - Target specific genres and formats
@@ -189,13 +189,13 @@ To add support for new radio stations, edit `src/services/airtableContactEnrichm
 - Better segmentation and filtering
 - Improved outreach success rates
 
-## 💰 Cost Considerations
+##  Cost Considerations
 
 - **Firecrawl**: Free tier available, paid for high volume
 - **Processing Time**: ~1.5 seconds per record (with rate limiting)
 - **API Calls**: One per radio station website
 
-## 🚀 Next Steps
+##  Next Steps
 
 1. **Start with Preview**: Run `node test-contact-enrichment.js`
 2. **Review Results**: Check the preview report

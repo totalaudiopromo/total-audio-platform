@@ -2,7 +2,7 @@
 
 This directory contains comprehensive end-to-end tests for the Total Audio Promo MVP using Playwright.
 
-## 🧪 Test Coverage
+##  Test Coverage
 
 ### Core Page Tests
 - **`dashboard.spec.ts`** - Dashboard functionality and real-time updates
@@ -12,7 +12,7 @@ This directory contains comprehensive end-to-end tests for the Total Audio Promo
 - **`contacts.spec.ts`** - Contact management and CRM functionality
 - **`navigation.spec.ts`** - Cross-page navigation and routing
 
-## 🚀 Running Tests
+##  Running Tests
 
 ### Quick Start
 ```bash
@@ -56,24 +56,24 @@ npx playwright test --grep "should load"
 npx playwright test tests/dashboard.spec.ts
 ```
 
-## 📊 Test Features
+##  Test Features
 
 ### What We Test
-- ✅ **Page Loading** - All pages load without errors
-- ✅ **Navigation** - Cross-page navigation works correctly
-- ✅ **Responsive Design** - Mobile and desktop layouts
-- ✅ **Integration Flows** - Gmail, Claude AI, Perplexity connections
-- ✅ **Real-time Updates** - Dashboard live data and notifications
-- ✅ **User Interactions** - Buttons, forms, and interactive elements
-- ✅ **Error Handling** - Graceful handling of edge cases
-- ✅ **Accessibility** - Basic accessibility checks
+-  **Page Loading** - All pages load without errors
+-  **Navigation** - Cross-page navigation works correctly
+-  **Responsive Design** - Mobile and desktop layouts
+-  **Integration Flows** - Gmail, Claude AI, Perplexity connections
+-  **Real-time Updates** - Dashboard live data and notifications
+-  **User Interactions** - Buttons, forms, and interactive elements
+-  **Error Handling** - Graceful handling of edge cases
+-  **Accessibility** - Basic accessibility checks
 
 ### Browser Support
 - **Desktop**: Chrome, Firefox, Safari
 - **Mobile**: Chrome Mobile, Safari Mobile
 - **Headless**: All tests run headless by default
 
-## 🔧 Configuration
+##  Configuration
 
 ### Playwright Config (`playwright.config.ts`)
 - **Base URL**: `http://localhost:3000`
@@ -90,17 +90,17 @@ npx playwright test tests/dashboard.spec.ts
 - **Timeout**: 120 seconds
 - **Reuse**: Existing server when possible
 
-## 📝 Test Structure
+##  Test Structure
 
 ### Test Organization
 ```
 tests/
-├── dashboard.spec.ts      # Dashboard functionality
-├── integrations.spec.ts   # Integration management
-├── campaigns.spec.ts      # Campaign features
-├── analytics.spec.ts      # Analytics and reporting
-├── contacts.spec.ts       # Contact management
-└── navigation.spec.ts     # Cross-page navigation
+ dashboard.spec.ts      # Dashboard functionality
+ integrations.spec.ts   # Integration management
+ campaigns.spec.ts      # Campaign features
+ analytics.spec.ts      # Analytics and reporting
+ contacts.spec.ts       # Contact management
+ navigation.spec.ts     # Cross-page navigation
 ```
 
 ### Test Patterns
@@ -110,7 +110,7 @@ tests/
 - **Mobile Testing**: Responsive design verification
 - **Error Scenarios**: Edge case handling
 
-## 🎯 Test Scenarios
+##  Test Scenarios
 
 ### Dashboard Tests
 - Page loading and navigation
@@ -160,7 +160,7 @@ tests/
 - Quick action buttons
 - Page state management
 
-## 🐛 Debugging Tests
+##  Debugging Tests
 
 ### Debug Mode
 ```bash
@@ -184,7 +184,7 @@ npm run test:ui
 - **Videos**: On test failure
 - **Traces**: On first retry
 
-## 📈 Continuous Integration
+##  Continuous Integration
 
 ### GitHub Actions (Recommended)
 ```yaml
@@ -208,7 +208,7 @@ jobs:
           path: playwright-report/
 ```
 
-## 🎯 Best Practices
+##  Best Practices
 
 ### Test Writing
 - Use descriptive test names
@@ -224,7 +224,7 @@ jobs:
 - Monitor test flakiness
 - Update selectors when UI changes
 
-## 🔍 Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 1. **Tests failing on CI**: Check browser installation
@@ -247,7 +247,7 @@ npx playwright show-report
 npx playwright test --debug dashboard.spec.ts
 ```
 
-## 📚 Resources
+##  Resources
 
 - [Playwright Documentation](https://playwright.dev/)
 - [Test Best Practices](https://playwright.dev/docs/best-practices)
@@ -256,4 +256,4 @@ npx playwright test --debug dashboard.spec.ts
 
 ---
 
-**Total Audio Promo MVP Testing Suite** 🎧⚙️🐾 
+**Total Audio Promo MVP Testing Suite**  

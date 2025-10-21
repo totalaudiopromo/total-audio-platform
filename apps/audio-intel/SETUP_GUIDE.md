@@ -1,4 +1,4 @@
-# 🚀 Audio Intel MVP Setup Guide
+#  Audio Intel MVP Setup Guide
 
 ## Quick Start (5 minutes)
 
@@ -30,7 +30,7 @@ npm run dev
 - **Landing Page**: http://localhost:3000
 - **Working Demo**: http://localhost:3000/demo
 
-## 🔑 API Key Setup
+##  API Key Setup
 
 ### Perplexity API (Required)
 1. Go to [Perplexity AI](https://www.perplexity.ai/)
@@ -54,22 +54,22 @@ npm run dev
    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
    ```
 
-## 🎯 Current Working Features
+##  Current Working Features
 
-### ✅ Fully Functional
+###  Fully Functional
 - **Contact Enrichment**: Upload CSV, get AI-powered intelligence
 - **Multi-Platform Search**: Search across 7 platforms simultaneously
 - **AI Agents**: Get strategic music industry advice
 - **CSV Export**: Download enriched contact data
 - **Beautiful UI**: Professional design with Audio brand system
 
-### 🔧 API Endpoints
+###  API Endpoints
 - `POST /api/enrich` - Contact enrichment
 - `POST /api/search` - Multi-platform search
 - `POST /api/ai-agent` - AI agent responses
 - `POST /api/analytics` - Usage tracking
 
-## 🧪 Testing the Demo
+##  Testing the Demo
 
 ### 1. Contact Enrichment Test
 1. Go to http://localhost:3000/demo
@@ -91,7 +91,7 @@ npm run dev
 3. Ask: "How should I pitch my indie rock EP to radio?"
 4. Get strategic advice
 
-## 🎨 Design System
+##  Design System
 
 ### Audio Brand Integration
 - **Audio Character**: AI dog mascot with tool-specific colors
@@ -105,7 +105,7 @@ npm run dev
 - Responsive design for all devices
 - Accessibility compliant
 
-## 🚀 Deployment Ready
+##  Deployment Ready
 
 ### Vercel Deployment
 1. Connect GitHub repository to Vercel
@@ -121,7 +121,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_production_key
 NEXT_PUBLIC_BASE_URL=https://your-domain.com
 ```
 
-## 🔍 Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 1. **"Missing PERPLEXITY_API_KEY"**: Add your API key to `.env.local`
@@ -133,7 +133,7 @@ NEXT_PUBLIC_BASE_URL=https://your-domain.com
 - Search results: Cached for 1 hour
 - File uploads: Limited to 10MB CSV files
 
-## 📊 Success Metrics
+##  Success Metrics
 
 ### Current Performance
 - Contact enrichment accuracy: 94%+
@@ -147,7 +147,7 @@ NEXT_PUBLIC_BASE_URL=https://your-domain.com
 - User acquisition: 50 beta users
 - Retention target: 80%+ after 30 days
 
-## 🎵 Music Industry Context
+##  Music Industry Context
 
 ### Target Markets
 - **Independent Artists** (£50-200/month): Affordable automation
@@ -160,6 +160,6 @@ NEXT_PUBLIC_BASE_URL=https://your-domain.com
 
 ---
 
-**Ready to launch!** 🚀
+**Ready to launch!** 
 
 The Audio Intel MVP is fully functional and ready for beta testing. The core features work seamlessly, and the UI is professional enough for both indie artists and agencies. 

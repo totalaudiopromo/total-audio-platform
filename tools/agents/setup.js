@@ -21,7 +21,7 @@ class AgentSetup {
    * Check if environment is properly configured
    */
   async checkEnvironment() {
-    console.log('🔍 Checking environment configuration...\n');
+    console.log(' Checking environment configuration...\n');
     
     const checks = {
       backendEnvFile: this.checkFileExists(this.backendEnvPath),
@@ -59,7 +59,7 @@ class AgentSetup {
     console.log('========================');
     
     Object.entries(checks).forEach(([check, passed]) => {
-      const icon = passed ? '✅' : '❌';
+      const icon = passed ? '' : '';
       const status = passed ? 'PASS' : 'FAIL';
       console.log(`${icon} ${check}: ${status}`);
     });
@@ -68,19 +68,19 @@ class AgentSetup {
 
     // Provide guidance based on results
     if (!checks.backendEnvFile) {
-      console.log('💡 Setup Guidance:');
+      console.log(' Setup Guidance:');
       console.log('   1. Copy .env.example to .env in the backend directory');
       console.log('   2. Configure your database connection and other required variables');
     }
 
     if (!checks.databaseUrl) {
-      console.log('💡 Database Setup:');
+      console.log(' Database Setup:');
       console.log('   - Set DATABASE_URL in backend/.env');
       console.log('   - Example: DATABASE_URL="postgresql://user:password@localhost:5432/totalaudiopromo"');
     }
 
     if (!checks.prismaGenerated) {
-      console.log('💡 Prisma Setup:');
+      console.log(' Prisma Setup:');
       console.log('   - Run: cd backend && npm run db:generate');
     }
   }
@@ -89,7 +89,7 @@ class AgentSetup {
    * Test agent connectivity
    */
   async testAgents() {
-    console.log('🧪 Testing agent connectivity...\n');
+    console.log(' Testing agent connectivity...\n');
     
     const tests = [
       {
@@ -113,7 +113,7 @@ class AgentSetup {
       console.log(`Running: ${test.name}`);
       console.log(`Description: ${test.description}`);
       console.log(`Command: ${test.command}`);
-      console.log('─'.repeat(50));
+      console.log(''.repeat(50));
       
       try {
         const { spawn } = require('child_process');
@@ -127,16 +127,16 @@ class AgentSetup {
           
           child.on('close', (code) => {
             if (code === 0) {
-              console.log(`✅ ${test.name} completed successfully\n`);
+              console.log(` ${test.name} completed successfully\n`);
               resolve();
             } else {
-              console.log(`❌ ${test.name} failed with code ${code}\n`);
+              console.log(` ${test.name} failed with code ${code}\n`);
               reject(new Error(`Test failed with code ${code}`));
             }
           });
         });
       } catch (error) {
-        console.log(`❌ ${test.name} failed:`, error.message, '\n');
+        console.log(` ${test.name} failed:`, error.message, '\n');
       }
     }
   }
@@ -145,7 +145,7 @@ class AgentSetup {
    * Display usage information
    */
   displayUsage() {
-    console.log('📚 Agent System Usage:\n');
+    console.log(' Agent System Usage:\n');
     
     console.log('Available Agents:');
     console.log('================');
@@ -188,7 +188,7 @@ class AgentSetup {
    * Main setup function
    */
   async run(command) {
-    console.log('🚀 Total Audio Promo - Agent Setup\n');
+    console.log(' Total Audio Promo - Agent Setup\n');
     
     switch (command) {
       case 'check':

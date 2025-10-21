@@ -97,6 +97,7 @@ public
 # Temporary folders
 tmp/
 temp/
+session-snapshots/
 
 # Large media files (exclude all DRS textures and large assets)
 **/public/assets/DRS*

@@ -29,7 +29,7 @@ const colors = {
 
 // Agent categories with color coding
 const agents = {
-  '🤖 SPRINT WEEK READY (Database Independent)': {
+  ' SPRINT WEEK READY (Database Independent)': {
     color: colors.green,
     agents: [
       {
@@ -54,7 +54,7 @@ const agents = {
       }
     ]
   },
-  '⚠️  DATABASE DEPENDENT (Needs Prisma Fix)': {
+  '  DATABASE DEPENDENT (Needs Prisma Fix)': {
     color: colors.yellow,
     agents: [
       { name: 'Integration Agent', file: 'integration-agent.js', description: 'Third-party integrations' },
@@ -64,7 +64,7 @@ const agents = {
       { name: 'Database Agent', file: 'database-agent.js', description: 'Database operations' }
     ]
   },
-  '🎯 CONTENT & MARKETING': {
+  ' CONTENT & MARKETING': {
     color: colors.magenta,
     agents: [
       { name: 'Content Generation Agent', file: 'content-generation-agent.js', description: 'Blog posts, press releases' },
@@ -73,7 +73,7 @@ const agents = {
       { name: 'Viral Content Automation', file: 'viral-content-automation.js', description: 'Viral content strategies' }
     ]
   },
-  '🎵 MUSIC INDUSTRY SPECIALISTS': {
+  ' MUSIC INDUSTRY SPECIALISTS': {
     color: colors.cyan,
     agents: [
       { name: 'Music Industry Strategist', file: 'music-industry-strategist.js', description: 'Industry positioning' },
@@ -81,14 +81,14 @@ const agents = {
       { name: 'Music Tech Agent', file: 'music-tech-agent.js', description: 'Technical music operations' }
     ]
   },
-  '🏢 BUSINESS OPERATIONS': {
+  ' BUSINESS OPERATIONS': {
     color: colors.blue,
     agents: [
       { name: 'Agency Agent', file: 'agency-agent.js', description: 'Agency management' },
       { name: 'Growth Hacking Optimizer', file: 'growth-hacking-optimizer.js', description: 'Growth optimization' }
     ]
   },
-  '🔧 SYSTEM COORDINATION': {
+  ' SYSTEM COORDINATION': {
     color: colors.white,
     agents: [
       { name: 'Main Orchestrator', file: 'orchestrator.js', description: 'Multi-agent coordination' },
@@ -100,7 +100,7 @@ const agents = {
 
 function printHeader() {
   console.log(`${colors.bgBlue}${colors.white}${colors.bright}                                                    ${colors.reset}`);
-  console.log(`${colors.bgBlue}${colors.white}${colors.bright}    🚀 TOTAL AUDIO PROMO AGENT DASHBOARD 🚀      ${colors.reset}`);
+  console.log(`${colors.bgBlue}${colors.white}${colors.bright}     TOTAL AUDIO PROMO AGENT DASHBOARD       ${colors.reset}`);
   console.log(`${colors.bgBlue}${colors.white}${colors.bright}                                                    ${colors.reset}`);
   console.log();
   console.log(`${colors.green}Current directory: ${process.cwd()}${colors.reset}`);
@@ -111,10 +111,10 @@ function printHeader() {
 function printAgents() {
   for (const [category, data] of Object.entries(agents)) {
     console.log(`${data.color}${colors.bright}${category}${colors.reset}`);
-    console.log(`${data.color}${'='.repeat(category.replace(/🤖|⚠️|🎯|🎵|🏢|🔧/g, '').length + 2)}${colors.reset}`);
+    console.log(`${data.color}${'='.repeat(category.replace(/|||||/g, '').length + 2)}${colors.reset}`);
     
     data.agents.forEach(agent => {
-      console.log(`  ${data.color}●${colors.reset} ${colors.bright}${agent.name}${colors.reset}`);
+      console.log(`  ${data.color}${colors.reset} ${colors.bright}${agent.name}${colors.reset}`);
       console.log(`    File: ${colors.cyan}${agent.file}${colors.reset}`);
       console.log(`    ${agent.description}`);
       
@@ -198,9 +198,9 @@ async function checkHealth() {
     try {
       console.log(`${colors.yellow}Checking ${agent}...${colors.reset}`);
       await runAgent(agent, 'health');
-      console.log(`${colors.green}✅ ${agent} is healthy${colors.reset}`);
+      console.log(`${colors.green} ${agent} is healthy${colors.reset}`);
     } catch (error) {
-      console.log(`${colors.red}❌ ${agent} failed health check${colors.reset}`);
+      console.log(`${colors.red} ${agent} failed health check${colors.reset}`);
     }
     console.log('---');
   }

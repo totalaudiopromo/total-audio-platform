@@ -1,13 +1,13 @@
 # Playlist Pulse - Complete Development Package for Cursor
 
-## 🎯 Executive Summary
+##  Executive Summary
 **Product:** Playlist Pulse - AI-powered playlist rejection analyzer
 **URL:** pulse.totalaudiopromo.com
 **Purpose:** Help artists understand why they're getting rejected from playlists and find better matches
 **Target Market:** Independent artists, music producers, small labels
 **Pricing:** £19-47/month standalone, drives Total Audio Promo ecosystem adoption
 
-## 🏗️ Technical Architecture
+##  Technical Architecture
 
 ### **Frontend Stack**
 - **Framework:** Next.js 14 with TypeScript
@@ -32,59 +32,59 @@
 - **Playlist Data:** Spotify Web API + custom playlist database
 - **Matching Algorithm:** Custom compatibility scoring system
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 playlist-pulse/
-├── src/
-│   ├── app/                    # Next.js app directory
-│   │   ├── page.tsx           # Main upload page
-│   │   ├── analysis/
-│   │   │   └── [id]/page.tsx  # Analysis results page
-│   │   ├── api/               # API routes
-│   │   │   ├── upload/route.ts
-│   │   │   ├── analyze/route.ts
-│   │   │   └── playlists/route.ts
-│   │   └── layout.tsx         # Root layout
-│   ├── components/
-│   │   ├── ui/                # Reusable UI components
-│   │   │   ├── Button.tsx
-│   │   │   ├── Card.tsx
-│   │   │   ├── ProgressBar.tsx
-│   │   │   └── Modal.tsx
-│   │   ├── UploadSection.tsx  # File upload component
-│   │   ├── AnalysisProgress.tsx
-│   │   ├── TrackAnalysis.tsx  # Audio features display
-│   │   ├── RejectionAnalysis.tsx
-│   │   ├── PlaylistMatches.tsx
-│   │   └── AudioPlayer.tsx
-│   ├── lib/
-│   │   ├── audio-analysis.ts  # Audio processing utilities
-│   │   ├── playlist-matching.ts
-│   │   ├── spotify-api.ts     # Spotify integration
-│   │   ├── db.ts             # Database connection
-│   │   └── utils.ts          # Helper functions
-│   ├── types/
-│   │   ├── audio.ts          # Audio analysis types
-│   │   ├── playlist.ts       # Playlist data types
-│   │   └── api.ts            # API response types
-│   └── hooks/
-│       ├── useAudioAnalysis.ts
-│       ├── usePlaylistMatching.ts
-│       └── useFileUpload.ts
-├── prisma/
-│   ├── schema.prisma         # Database schema
-│   └── migrations/           # Database migrations
-├── public/
-│   ├── icons/               # App icons
-│   └── audio-samples/       # Demo audio files
-├── package.json
-├── tailwind.config.js
-├── tsconfig.json
-└── next.config.js
+ src/
+    app/                    # Next.js app directory
+       page.tsx           # Main upload page
+       analysis/
+          [id]/page.tsx  # Analysis results page
+       api/               # API routes
+          upload/route.ts
+          analyze/route.ts
+          playlists/route.ts
+       layout.tsx         # Root layout
+    components/
+       ui/                # Reusable UI components
+          Button.tsx
+          Card.tsx
+          ProgressBar.tsx
+          Modal.tsx
+       UploadSection.tsx  # File upload component
+       AnalysisProgress.tsx
+       TrackAnalysis.tsx  # Audio features display
+       RejectionAnalysis.tsx
+       PlaylistMatches.tsx
+       AudioPlayer.tsx
+    lib/
+       audio-analysis.ts  # Audio processing utilities
+       playlist-matching.ts
+       spotify-api.ts     # Spotify integration
+       db.ts             # Database connection
+       utils.ts          # Helper functions
+    types/
+       audio.ts          # Audio analysis types
+       playlist.ts       # Playlist data types
+       api.ts            # API response types
+    hooks/
+        useAudioAnalysis.ts
+        usePlaylistMatching.ts
+        useFileUpload.ts
+ prisma/
+    schema.prisma         # Database schema
+    migrations/           # Database migrations
+ public/
+    icons/               # App icons
+    audio-samples/       # Demo audio files
+ package.json
+ tailwind.config.js
+ tsconfig.json
+ next.config.js
 ```
 
-## 🗄️ Database Schema
+##  Database Schema
 
 ```prisma
 // prisma/schema.prisma
@@ -165,7 +165,7 @@ enum SubscriptionStatus {
 }
 ```
 
-## 🎵 Audio Analysis Implementation
+##  Audio Analysis Implementation
 
 ### **Core Audio Features to Extract**
 ```typescript
@@ -294,7 +294,7 @@ export class AudioAnalysisService {
 }
 ```
 
-## 🎯 Playlist Matching Algorithm
+##  Playlist Matching Algorithm
 
 ```typescript
 // src/lib/playlist-matching.ts
@@ -409,7 +409,7 @@ export class PlaylistMatchingService {
 }
 ```
 
-## 🚀 API Routes Implementation
+##  API Routes Implementation
 
 ### **File Upload Route**
 ```typescript
@@ -552,7 +552,7 @@ export async function POST(request: NextRequest) {
 }
 ```
 
-## 🎨 Component Implementation
+##  Component Implementation
 
 ### **Main Upload Component**
 ```typescript
@@ -653,7 +653,7 @@ export const UploadSection: React.FC<UploadSectionProps> = ({ onUploadComplete }
 };
 ```
 
-## 🔧 Environment Variables
+##  Environment Variables
 
 ```bash
 # .env.local
@@ -683,7 +683,7 @@ STRIPE_SECRET_KEY="sk_test_..."
 STRIPE_WEBHOOK_SECRET="whsec_..."
 ```
 
-## 🚀 Deployment Instructions
+##  Deployment Instructions
 
 ### **1. Development Setup**
 ```bash
@@ -709,7 +709,7 @@ vercel --prod
 # Setup Redis (recommend Upstash)
 ```
 
-## 📊 Success Metrics & Analytics
+##  Success Metrics & Analytics
 
 ### **Key Metrics to Track**
 - **Upload Success Rate:** % of successful file uploads
@@ -735,7 +735,7 @@ trackEvent('analysis_completed', { processingTime, matchCount });
 trackEvent('playlist_clicked', { playlistName, compatibilityScore });
 ```
 
-## 🔄 Integration with Total Audio Promo Ecosystem
+##  Integration with Total Audio Promo Ecosystem
 
 ### **Data Sharing**
 - Share playlist database with main platform
@@ -748,7 +748,7 @@ trackEvent('playlist_clicked', { playlistName, compatibilityScore });
 - With 2 other tools: £39/month (33% discount)
 - Full ecosystem: £89/month (50% discount)
 
-## 🎯 Phase 2 Features (Future Development)
+##  Phase 2 Features (Future Development)
 
 1. **Real-time Spotify Integration:** Direct playlist submission
 2. **Curator Contact Database:** Integration with Audio Intel
@@ -758,16 +758,16 @@ trackEvent('playlist_clicked', { playlistName, compatibilityScore });
 
 ---
 
-## 🚀 Ready to Build!
+##  Ready to Build!
 
 This comprehensive package includes everything needed to build Playlist Pulse in Cursor:
 
-✅ **Complete technical specification**
-✅ **Database schema and migrations**  
-✅ **API routes and business logic**
-✅ **Component architecture**
-✅ **Deployment instructions**
-✅ **Integration guidelines**
+ **Complete technical specification**
+ **Database schema and migrations**  
+ **API routes and business logic**
+ **Component architecture**
+ **Deployment instructions**
+ **Integration guidelines**
 
 **Next Steps:**
 1. Create new Next.js project in Cursor

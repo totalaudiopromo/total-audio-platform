@@ -108,8 +108,8 @@ class AgentManager {
       console.log(`${color}${colors.bright}${category.toUpperCase()}:${colors.reset}`);
       
       agents.forEach(agent => {
-        const status = this.runningAgents.has(agent.name) ? '🟢 RUNNING' : '⚪ STOPPED';
-        console.log(`  ${color}●${colors.reset} ${agent.name} - ${agent.description} ${status}`);
+        const status = this.runningAgents.has(agent.name) ? '🟢 RUNNING' : ' STOPPED';
+        console.log(`  ${color}${colors.reset} ${agent.name} - ${agent.description} ${status}`);
         totalAgents++;
       });
       console.log();
@@ -140,10 +140,10 @@ class AgentManager {
 
       childProcess.on('close', (code) => {
         if (code === 0) {
-          console.log(`${colors.green}✅ ${agent.name} completed successfully${colors.reset}`);
+          console.log(`${colors.green} ${agent.name} completed successfully${colors.reset}`);
           resolve(true);
         } else {
-          console.log(`${colors.red}❌ ${agent.name} failed with code ${code}${colors.reset}`);
+          console.log(`${colors.red} ${agent.name} failed with code ${code}${colors.reset}`);
           resolve(false);
         }
       });
@@ -211,7 +211,7 @@ class AgentManager {
    */
   printHeader() {
     console.log(`${colors.bgBlue}${colors.white}${colors.bright}                                                           ${colors.reset}`);
-    console.log(`${colors.bgBlue}${colors.white}${colors.bright}    🚀 TOTAL AUDIO PROMO AGENT MANAGER v2.0 🚀           ${colors.reset}`);
+    console.log(`${colors.bgBlue}${colors.white}${colors.bright}     TOTAL AUDIO PROMO AGENT MANAGER v2.0            ${colors.reset}`);
     console.log(`${colors.bgBlue}${colors.white}${colors.bright}                                                           ${colors.reset}`);
     console.log();
   }
@@ -235,7 +235,7 @@ class AgentManager {
           const success = await this.runAgent(agent.name, 'health');
           if (success) healthyCount++;
         } catch (error) {
-          console.log(`${colors.red}❌ ${agent.name} failed health check${colors.reset}`);
+          console.log(`${colors.red} ${agent.name} failed health check${colors.reset}`);
         }
       }
       console.log();

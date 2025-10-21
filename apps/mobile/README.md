@@ -48,16 +48,16 @@ A React Native mobile application for the Total Audio Promo platform, allowing a
 
 ```
 src/
-├── components/     # Reusable UI components
-├── screens/        # Screen components
-│   ├── DashboardScreen.tsx
-│   ├── CampaignsScreen.tsx
-│   ├── ContactsScreen.tsx
-│   └── AnalyticsScreen.tsx
-├── services/       # API services
-├── utils/          # Utility functions
-├── App.tsx         # Main app component
-└── index.tsx       # App entry point
+ components/     # Reusable UI components
+ screens/        # Screen components
+    DashboardScreen.tsx
+    CampaignsScreen.tsx
+    ContactsScreen.tsx
+    AnalyticsScreen.tsx
+ services/       # API services
+ utils/          # Utility functions
+ App.tsx         # Main app component
+ index.tsx       # App entry point
 ```
 
 ## Development

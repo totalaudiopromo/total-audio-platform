@@ -8,10 +8,10 @@ Total Audio Promo is a comprehensive music promotion platform with multi-tenant 
 ### 1. **Multi-Tenant Structure**
 ```
 Users (Artists, Agency Owners, Admins)
-  ├── Agencies (PR Companies with white-label options)
-  ├── Artists (Independent or agency-managed)
-  ├── Campaigns (Promotion campaigns with analytics)
-  └── Contacts (Industry contacts with engagement tracking)
+   Agencies (PR Companies with white-label options)
+   Artists (Independent or agency-managed)
+   Campaigns (Promotion campaigns with analytics)
+   Contacts (Industry contacts with engagement tracking)
 ```
 
 ### 2. **Database Schema (Prisma)**
@@ -38,37 +38,37 @@ Users (Artists, Agency Owners, Admins)
 #### **Apps (Monorepo)**
 ```
 apps/
-├── api/                    # Backend API (Node.js + Express + Prisma)
-├── web/                    # Main web dashboard (Next.js)
-├── audio-intel/            # Audio intelligence tool (Next.js)
-├── playlist-pulse/         # Playlist curator discovery (Next.js)
-├── seo-tool/              # SEO analysis tool (Next.js)
-└── mobile/                # Mobile app (React Native)
+ api/                    # Backend API (Node.js + Express + Prisma)
+ web/                    # Main web dashboard (Next.js)
+ audio-intel/            # Audio intelligence tool (Next.js)
+ playlist-pulse/         # Playlist curator discovery (Next.js)
+ seo-tool/              # SEO analysis tool (Next.js)
+ mobile/                # Mobile app (React Native)
 ```
 
 #### **Backend Services (`apps/api/src/`)**
 ```
 routes/
-├── auth.ts                # Authentication & authorization
-├── campaigns.ts           # Campaign management
-├── contacts.ts            # Contact management
-├── analytics.ts           # Analytics & reporting
-├── integrations.ts        # Third-party integrations
-├── agencies.ts            # Agency management
-├── artists.ts             # Artist management
-├── billing.ts             # Subscription & billing
-├── reports.ts             # AI-generated reports
-└── webhooks.ts            # Webhook handlers
+ auth.ts                # Authentication & authorization
+ campaigns.ts           # Campaign management
+ contacts.ts            # Contact management
+ analytics.ts           # Analytics & reporting
+ integrations.ts        # Third-party integrations
+ agencies.ts            # Agency management
+ artists.ts             # Artist management
+ billing.ts             # Subscription & billing
+ reports.ts             # AI-generated reports
+ webhooks.ts            # Webhook handlers
 ```
 
 #### **Core Services**
 ```
 services/
-├── airtableContactEnrichment.ts    # Contact data enrichment
-├── airtableDomainAnalysis.ts       # Domain analysis
-├── airtableAudit.ts                # Data quality audits
-├── perplexityContactResearch.ts    # AI-powered research
-└── curatorDiscovery.ts             # Playlist curator discovery
+ airtableContactEnrichment.ts    # Contact data enrichment
+ airtableDomainAnalysis.ts       # Domain analysis
+ airtableAudit.ts                # Data quality audits
+ perplexityContactResearch.ts    # AI-powered research
+ curatorDiscovery.ts             # Playlist curator discovery
 ```
 
 ### 4. **Technology Stack**

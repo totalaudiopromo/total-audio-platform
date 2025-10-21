@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Audio Intel Environment Setup Script
-echo "🚀 Setting up Audio Intel environment..."
+echo " Setting up Audio Intel environment..."
 
 # Check if .env.local already exists
 if [ -f ".env.local" ]; then
-    echo "⚠️  .env.local already exists. Backing up to .env.local.backup"
+    echo "  .env.local already exists. Backing up to .env.local.backup"
     cp .env.local .env.local.backup
 fi
 
@@ -31,13 +31,13 @@ NEXT_PUBLIC_ANALYTICS_ID=your_analytics_id_here
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 EOF
 
-echo "✅ Created .env.local file"
+echo " Created .env.local file"
 echo ""
-echo "📝 Next steps:"
+echo " Next steps:"
 echo "1. Edit .env.local and add your Perplexity API key"
 echo "2. Run: npm install"
 echo "3. Run: npm run dev"
 echo "4. Visit: http://localhost:3000"
 echo ""
-echo "🔑 Get your Perplexity API key at: https://www.perplexity.ai/"
+echo " Get your Perplexity API key at: https://www.perplexity.ai/"
 echo "" 

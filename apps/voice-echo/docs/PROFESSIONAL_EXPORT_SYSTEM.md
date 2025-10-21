@@ -4,19 +4,19 @@ A comprehensive export solution for Audio Intel that provides one-click export c
 
 ## Features
 
-### 🚀 One-Click Export
+###  One-Click Export
 - **Multiple Formats**: CSV, Excel, and PDF exports
 - **Batch Operations**: Export multiple data types simultaneously
 - **Professional Templates**: Agency-ready email templates
 - **White-Label Support**: Custom branding for agencies
 
-### 📊 Export Types
+###  Export Types
 1. **Contact Exports**: Enriched contact intelligence with research data
 2. **Analytics Reports**: Performance metrics and insights
 3. **Search Results**: Curated music industry contacts
 4. **Batch Exports**: Multiple data types in one operation
 
-### 📧 Email Delivery
+###  Email Delivery
 - **Automated Delivery**: Professional email templates
 - **Custom Messaging**: Personalized export emails
 - **Attachment Support**: Files delivered via email

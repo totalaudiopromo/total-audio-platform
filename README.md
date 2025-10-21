@@ -2,9 +2,9 @@
 
 This repository contains a comprehensive music promotion and audio intelligence platform with multiple applications and services.
 
-## 📁 Project Structure
+##  Project Structure
 
-### 🚀 Applications 
+###  Applications 
 All applications are organized in the `apps/` directory:
 
 #### Web Applications (`apps/`)
@@ -23,42 +23,42 @@ All applications are organized in the `apps/` directory:
 - **seo-tool/** - SEO optimization tools
 - **voice-echo/** - Voice-based content generation
 
-### 🌐 **Deployment Status**
+###  **Deployment Status**
 
 #### Production Domains
-- ✅ **intel.totalaudiopromo.com** - Audio Intel (deployed)
-- 🚧 **totalaudiopromo.com** - Main landing page (needs custom domain setup)
-- 🚧 **pulse.totalaudiopromo.com** - Playlist Pulse (needs deployment)
-- 🚧 **command.totalaudiopromo.com** - Command Centre (needs custom domain setup)
+-  **intel.totalaudiopromo.com** - Audio Intel (deployed)
+-  **totalaudiopromo.com** - Main landing page (needs custom domain setup)
+-  **pulse.totalaudiopromo.com** - Playlist Pulse (needs deployment)
+-  **command.totalaudiopromo.com** - Command Centre (needs custom domain setup)
 
 #### Vercel Projects
 - **audio-intel** - intel.totalaudiopromo.com
 - **web** - Main landing page with mobile optimizations
 - **command-centre** - Internal dashboard with mobile optimizations
 
-### 📚 Documentation (`docs/`)
+###  Documentation (`docs/`)
 - **setup/** - Setup and installation guides
 - **architecture/** - System architecture documentation
 - **deployment/** - Deployment guides
 
-### ⚙️ Configuration (`config/`)
+###  Configuration (`config/`)
 - Docker compose files
 - Environment templates
 - TypeScript configurations
 - Build configurations
 
-### 🧪 Testing (`tests/`)
+###  Testing (`tests/`)
 - Test files and configurations
 - Test results and reports
 
-### 🏗️ Infrastructure (`infrastructure/`)
+###  Infrastructure (`infrastructure/`)
 - **deployment/** - Deployment configurations and scripts
 
-### 📊 Data (`data/`)
+###  Data (`data/`)
 - CSV files and data exports
 - Sample data and test datasets
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Node.js (v18+)
@@ -91,7 +91,7 @@ All applications are organized in the `apps/` directory:
    npm run dev:backend         # API backend
    ```
 
-## 🚀 Deployment
+##  Deployment
 
 ### Vercel Deployment Commands
 ```bash
@@ -104,10 +104,10 @@ cd apps/command-centre && vercel --prod
 
 ### Domain Configuration
 Each app requires custom domain setup in Vercel dashboard:
-- **audio-intel** → intel.totalaudiopromo.com (✅ configured)
-- **web** → totalaudiopromo.com (🚧 needs setup)
-- **playlist-pulse** → pulse.totalaudiopromo.com (🚧 needs setup)
-- **command-centre** → command.totalaudiopromo.com (🚧 needs setup)
+- **audio-intel** → intel.totalaudiopromo.com ( configured)
+- **web** → totalaudiopromo.com ( needs setup)
+- **playlist-pulse** → pulse.totalaudiopromo.com ( needs setup)
+- **command-centre** → command.totalaudiopromo.com ( needs setup)
 
 ### Mobile Optimizations
 All apps include comprehensive mobile optimizations:
@@ -132,7 +132,7 @@ npm run typecheck
 npm run lint
 ```
 
-## 🔧 Development Workflow
+##  Development Workflow
 
 ### Adding New Features
 1. Create feature branch from main
@@ -147,13 +147,13 @@ npm run lint
 - **backend**: API development and database management
 - **mobile-app**: Mobile application development
 
-## 📝 Documentation
+##  Documentation
 
 - **Setup Guides**: `docs/setup/`
 - **Architecture**: `docs/architecture/`
 - **Deployment**: `docs/deployment/`
 
-## 🧪 Testing
+##  Testing
 
 All test files are located in `tests/` directory:
 - Unit tests
@@ -161,28 +161,28 @@ All test files are located in `tests/` directory:
 - E2E tests
 - Test results and reports
 
-## 🚀 Deployment
+##  Deployment
 
 Deployment configurations are in `infrastructure/deployment/`:
 - Docker configurations
 - CI/CD pipelines
 - Environment setups
 
-## 📊 Monitoring & Logs
+##  Monitoring & Logs
 
 Logs are stored in `logs/` directory:
 - Application logs
 - Error logs
 - Performance metrics
 
-## 🤝 Contributing
+##  Contributing
 
 1. Follow the project structure
 2. Add tests for new features
 3. Update documentation
 4. Follow coding standards
 
-## 📄 License
+##  License
 
 [Add your license information here]
 
