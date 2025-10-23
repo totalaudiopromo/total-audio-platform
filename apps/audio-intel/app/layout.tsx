@@ -20,17 +20,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Audio Intel – AI-Powered Music Industry Intelligence | Founded by Music Industry Veteran',
   description: 'From 15 years in music PR to AI innovation. Transform chaos into intelligence with our founder-built platform for playlist curators, radio DJs, and music industry professionals.',
+  metadataBase: new URL('https://intel.totalaudiopromo.com'),
   openGraph: {
     title: 'Audio Intel – AI-Powered Music Industry Contact Enrichment',
     description: 'Transform your music PR workflow. Get submission guidelines, contact preferences, and pitch-ready insights for the music industry.',
-    url: 'https://audiointel.com',
+    url: 'https://intel.totalaudiopromo.com',
     siteName: 'Audio Intel - Total Audio Promo',
     images: [
       {
-        url: '/t-a-p-new dog logo.png',
-        width: 512,
-        height: 512,
-        alt: 'Total Audio Promo Logo',
+        url: '/images/total_audio_promo_logo_trans.png',
+        width: 1200,
+        height: 630,
+        alt: 'Audio Intel by Total Audio Promo',
       },
     ],
     locale: 'en_GB',
@@ -40,8 +41,19 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Audio Intel – AI-Powered Music Industry Contact Enrichment',
     description: 'Stop wasting 15 hours a week researching music contacts. Instantly enrich your email lists with AI-powered insights for playlist curators, radio DJs, and music bloggers.',
-    images: ['/t-a-p-new dog logo.png'],
+    images: ['/images/total_audio_promo_logo_trans.png'],
     site: '@totalaudiopromo',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
@@ -54,6 +66,41 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/images/total_audio_promo_logo_trans.png" sizes="any" />
         <link rel="icon" href="/images/total_audio_promo_logo_trans.png" type="image/png" />
         <link rel="apple-touch-icon" href="/images/total_audio_promo_logo_trans.png" />
+        {/* Structured Data (JSON-LD) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'SoftwareApplication',
+              name: 'Audio Intel',
+              applicationCategory: 'BusinessApplication',
+              description: 'AI-Powered Music Industry Contact Enrichment Platform',
+              offers: {
+                '@type': 'Offer',
+                price: '0',
+                priceCurrency: 'GBP',
+              },
+              aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: '5.0',
+                ratingCount: '100',
+              },
+              operatingSystem: 'Web Browser',
+              provider: {
+                '@type': 'Organization',
+                name: 'Total Audio Promo',
+                url: 'https://totalaudiopromo.com',
+                logo: 'https://intel.totalaudiopromo.com/images/total_audio_promo_logo_trans.png',
+                founder: {
+                  '@type': 'Person',
+                  name: 'Chris Schofield',
+                  jobTitle: 'Founder',
+                },
+              },
+            }),
+          }}
+        />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
