@@ -1,0 +1,15 @@
+# Exclude inactive/experimental projects from Vercel deployments
+apps/playlist-pulse/**
+apps/command-centre/**
+
+# Archive directories
+archive/**
+
+# Documentation
+docs/**
+*.md
+
+# Development files
+.vscode/**
+.idea/**
+*.log
