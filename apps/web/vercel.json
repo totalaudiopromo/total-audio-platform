@@ -1,0 +1,14 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm install && npm run build",
+  "installCommand": "npm install",
+  "env": {
+    "NEXT_PUBLIC_BASE_URL": "https://totalaudiopromo.com"
+  },
+  "functions": {
+    "src/pages/api/**": {
+      "maxDuration": 30
+    }
+  },
+  "regions": ["lhr1"]
+}
