@@ -124,66 +124,211 @@ export default function SocialMediaHubPage() {
     const templates: ContentTemplate[] = [
       {
         id: 'template-1',
-        name: 'Audio Intel Problem-Solution',
-        category: 'announcement',
-        content: `Music PR is broken. Here's how I know:
+        name: 'Radio Promoter Pain Point',
+        category: 'insight',
+        content: `Spent 15 hours researching contacts for my last radio campaign.
 
-Spent 3 years watching agencies waste £1000s on bad contact data. 90% of PR pitches go to dead emails.
+BBC Radio 6 Music, local stations, specialist shows - all scattered across emails, LinkedIn, outdated websites.
 
-Built Audio Intel to solve this. Now beta users get 97% delivery rates and 40% faster campaign setup.
+Built Audio Intel because this is broken.
 
-The tool that should have existed years ago.`,
-        platforms: ['twitter', 'linkedin'],
-        performance: {
-          avgEngagement: 8.2,
-          totalReach: 15400,
-          conversionRate: 12.5
-        }
+Upload your messy spreadsheet → get enriched contacts with emails, socials, and recent activity.
+
+15 hours → 15 minutes.
+
+Free trial: intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin']
       },
       {
-        id: 'template-2', 
-        name: 'Beta Update Numbers',
+        id: 'template-2',
+        name: 'Real Problem, Real Solution',
         category: 'announcement',
-        content: `Audio Intel beta update:
+        content: `Why most radio campaigns fail:
 
-• 12,847 emails validated
-• 3,672 contacts enriched  
-• 97.4% delivery rate
-• 4 paying beta customers
+You're pitching dead emails.
 
-Building in public means sharing real numbers.
+That BBC Radio 1 contact left 6 months ago. The email you found is from 2019. The person who replied once never responds again.
 
-Pre-launch but already proving product-market fit.`,
-        platforms: ['twitter'],
-        performance: {
-          avgEngagement: 6.8,
-          totalReach: 8900,
-          conversionRate: 8.3
-        }
+Audio Intel fixes this:
+• Real-time contact validation
+• Social media profiles
+• Recent activity tracking
+• Role verification
+
+Stop wasting pitches on ghosts.
+
+Try it free: intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin', 'threads']
       },
       {
         id: 'template-3',
-        name: 'Building in Public Philosophy', 
+        name: 'Personal Origin Story',
         category: 'personal',
-        content: `Why I'm building Total Audio Promo in public:
+        content: `I've pitched BBC Radio 1 as sadact (my electronic music project).
 
-1. Accountability - can't fake progress when everyone's watching
-2. Feedback loops - customers tell me what they actually need
-3. Authenticity - no marketing BS, just real founder updates
-4. Community - other music tech founders share their experiences
+I know what it's like spending weekends researching contacts instead of making music.
 
-Transparency isn't a marketing strategy. It's how you build trust.
+That's why I built Audio Intel.
 
-What are you building? Let's connect.`,
-        platforms: ['linkedin'],
-        performance: {
-          avgEngagement: 12.1,
-          totalReach: 22300,
-          conversionRate: 15.2
-        }
+Not another submission platform charging £50/pitch. A tool that gives you the contact intelligence to do your own radio promotion properly.
+
+Currently 0 paying customers. Building in public. Would love your feedback if you've ever done radio promotion.
+
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin']
+      },
+      {
+        id: 'template-4',
+        name: 'Case Study Thread',
+        category: 'insight',
+        content: `Tested Audio Intel with a real radio campaign:
+
+Target: 50 UK radio contacts (BBC, community, specialist)
+
+Before:
+• 15+ hours researching
+• 30% email bounce rate
+• Outdated info from 2020-2021
+• No social media links
+
+After Audio Intel:
+• 20 minutes enrichment
+• 8% bounce rate
+• Current roles verified
+• Twitter/LinkedIn for every contact
+
+This is the tool I wish existed 3 years ago.
+
+Free trial: intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'threads']
+      },
+      {
+        id: 'template-5',
+        name: 'Weekend Reality Check',
+        category: 'personal',
+        content: `It's Saturday.
+
+You should be in the studio.
+
+Instead you're:
+• Googling "BBC Radio 6 Music contacts 2025"
+• Checking if that email still works
+• LinkedIn-stalking presenters
+• Building spreadsheets
+
+What if this took 15 minutes instead of 15 hours?
+
+That's Audio Intel. Built by a producer who got sick of this.
+
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'threads']
+      },
+      {
+        id: 'template-6',
+        name: 'LinkedIn Professional Hook',
+        category: 'announcement',
+        content: `After 5 years doing radio promotion, I can tell you the real problem:
+
+It's not that radio gatekeepers don't want new music. It's that 90% of pitches never reach the right person.
+
+Why?
+• Outdated contact databases
+• Generic submission platforms
+• No way to verify current roles
+• Missing social context
+
+Audio Intel solves this with real-time contact enrichment:
+✓ Verify emails still work
+✓ Check current roles
+✓ Get social media profiles
+✓ Track recent activity
+
+If you've ever struggled with radio promotion, I'd love your feedback.
+
+Currently in beta, free to try: intel.totalaudiopromo.com`,
+        platforms: ['linkedin']
+      },
+      {
+        id: 'template-7',
+        name: 'Founder Vulnerability',
+        category: 'personal',
+        content: `Honest founder update:
+
+Audio Intel: 0 paying customers
+Time invested: 6+ months
+Technical status: Production ready
+Problem solved: Definitely (I use it myself)
+
+Why no customers yet?
+
+Because I was building features instead of talking to people.
+
+Changed strategy: Focusing on radio promoters first. 85% interested after demos.
+
+If you do radio promotion and this sounds useful, let's talk. I'll give you lifetime free access for feedback.
+
+DM me or: intel.totalaudiopromo.com`,
+        platforms: ['twitter']
+      },
+      {
+        id: 'template-8',
+        name: 'BBC Radio Case Study',
+        category: 'insight',
+        content: `Real test with BBC Radio contacts:
+
+Took a spreadsheet with 25 "BBC Radio" contacts from 2020-2023.
+
+Audio Intel found:
+• 8 people moved roles
+• 4 email addresses changed
+• 3 no longer at BBC
+• 2 shows cancelled
+• 1 department restructured
+
+Only 7 contacts (28%) were actually current and correct.
+
+This is why your pitches go nowhere.
+
+Want to test your contact list? intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin']
+      },
+      {
+        id: 'template-9',
+        name: 'Industry Pain Point',
+        category: 'insight',
+        content: `The music industry's dirty secret:
+
+Every radio promoter has a spreadsheet of "contacts" they don't trust.
+
+You pitch anyway. Because what else can you do?
+
+But 60-70% of those emails either:
+• Bounce
+• Go to someone who left
+• Hit an unmonitored inbox
+• Reach the wrong department
+
+Audio Intel verifies this in real-time before you hit send.
+
+Stop wasting pitches.
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin', 'threads']
+      },
+      {
+        id: 'template-10',
+        name: 'Short Hook for X',
+        category: 'announcement',
+        content: `Your radio contact spreadsheet is probably 60% wrong.
+
+People move roles. Emails change. Shows get cancelled.
+
+Audio Intel fixes this in 15 minutes.
+
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'threads']
       }
     ];
-    
+
     setContentTemplates(templates);
   };
 
@@ -191,20 +336,20 @@ What are you building? Let's connect.`,
     const posts: ScheduledPost[] = [
       {
         id: 'post-1',
-        platforms: ['twitter', 'linkedin'],
-        content: 'Beta users are processing 1000+ contacts/day with Audio Intel. The manual research that used to take hours now takes minutes.',
+        platforms: ['twitter'],
+        content: 'Spent 15 hours researching contacts for my last radio campaign.\n\nBBC Radio 6 Music, local stations, specialist shows - all scattered across emails, LinkedIn, outdated websites.\n\nBuilt Audio Intel because this is broken.\n\nFree trial: intel.totalaudiopromo.com',
         scheduledTime: new Date(Date.now() + 2 * 60 * 60 * 1000),
-        status: 'scheduled'
+        status: 'draft'
       },
       {
         id: 'post-2',
         platforms: ['linkedin'],
-        content: 'The music industry has a contact data problem. Audio Intel is the solution. Currently in beta with real paying customers.',
+        content: 'After 5 years doing radio promotion, I can tell you the real problem:\n\nIt\'s not that radio gatekeepers don\'t want new music. It\'s that 90% of pitches never reach the right person.\n\nCurrently in beta, free to try: intel.totalaudiopromo.com',
         scheduledTime: new Date(Date.now() + 24 * 60 * 60 * 1000),
-        status: 'scheduled'
+        status: 'draft'
       }
     ];
-    
+
     setScheduledPosts(posts);
   };
 
@@ -604,63 +749,117 @@ What are you building? Let's connect.`,
 
       {activeTab === 'analytics' && (
         <div className="space-y-8">
-          {/* Performance Metrics */}
-          <div className="postcraft-metrics-grid">
-            <div className="postcraft-metric-card">
-              <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
-                <TrendingUp className="w-6 h-6 text-white" />
+          {/* Current Status Banner */}
+          <div className="postcraft-card bg-gradient-to-br from-orange-50 to-yellow-50">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center border-3 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                <Target className="w-6 h-6 text-white" />
               </div>
-              <div className="postcraft-metric-value">8.7%</div>
-              <div className="postcraft-metric-label">Avg Engagement Rate</div>
+              <div className="flex-1">
+                <h2 className="postcraft-section-title mb-2">Customer Acquisition Phase</h2>
+                <p className="postcraft-text mb-4">
+                  Currently: 0 paying customers | Goal: First £500/month by November 2025
+                </p>
+                <div className="grid grid-cols-2 gap-4 text-sm font-bold">
+                  <div>
+                    <span className="text-gray-600">Target Segment:</span>
+                    <span className="ml-2">Radio Promoters (85% interest)</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-600">Product Status:</span>
+                    <span className="ml-2 text-green-600">Production Ready</span>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
 
+          {/* Acquisition Goals */}
+          <div className="postcraft-metrics-grid">
             <div className="postcraft-metric-card">
               <div className="postcraft-metric-icon bg-gradient-to-br from-blue-500 to-cyan-500">
                 <Users className="w-6 h-6 text-white" />
               </div>
-              <div className="postcraft-metric-value">34,200</div>
-              <div className="postcraft-metric-label">Total Reach</div>
+              <div className="postcraft-metric-value">2+</div>
+              <div className="postcraft-metric-label">Demo Calls Target (Weekly)</div>
+            </div>
+
+            <div className="postcraft-metric-card">
+              <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
+                <TrendingUp className="w-6 h-6 text-white" />
+              </div>
+              <div className="postcraft-metric-value">5+</div>
+              <div className="postcraft-metric-label">Beta Signups Target (Weekly)</div>
             </div>
 
             <div className="postcraft-metric-card">
               <div className="postcraft-metric-icon bg-gradient-to-br from-yellow-500 to-orange-500">
                 <Target className="w-6 h-6 text-white" />
               </div>
-              <div className="postcraft-metric-value">23</div>
-              <div className="postcraft-metric-label">Audio Intel Signups</div>
+              <div className="postcraft-metric-value">25+</div>
+              <div className="postcraft-metric-label">Newsletter Subscribers (Monthly)</div>
             </div>
 
             <div className="postcraft-metric-card">
               <div className="postcraft-metric-icon bg-gradient-to-br from-red-500 to-pink-500">
                 <MessageSquare className="w-6 h-6 text-white" />
               </div>
-              <div className="postcraft-metric-value">11.2%</div>
-              <div className="postcraft-metric-label">Conversion Rate</div>
+              <div className="postcraft-metric-value">£500</div>
+              <div className="postcraft-metric-label">MRR Target (November)</div>
             </div>
           </div>
 
-          {/* Top Performing Content */}
+          {/* Content Strategy */}
           <div className="postcraft-card">
-            <h2 className="postcraft-section-title mb-6">Top Performing Templates</h2>
+            <h2 className="postcraft-section-title mb-6">Customer Acquisition Templates</h2>
+            <p className="postcraft-text mb-6">
+              Focus: Radio promoters, solo artists, and PR agencies. All content emphasises real pain points and authentic experience.
+            </p>
             <div className="space-y-4">
-              {contentTemplates
-                .filter(t => t.performance)
-                .sort((a, b) => (b.performance?.conversionRate || 0) - (a.performance?.conversionRate || 0))
-                .slice(0, 3)
-                .map(template => (
-                  <div key={template.id} className="p-4 border-3 border-black rounded-xl bg-gray-100 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                    <div className="flex justify-between items-center mb-2">
-                      <h3 className="postcraft-label">{template.name}</h3>
-                      <span className="inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black bg-green-500 text-white">
-                        {template.performance?.conversionRate}% conversion
-                      </span>
-                    </div>
-                    <div className="flex gap-6 text-sm font-bold text-gray-900">
-                      <span>{template.performance?.avgEngagement}% engagement</span>
-                      <span>{template.performance?.totalReach.toLocaleString()} reach</span>
-                    </div>
+              {contentTemplates.slice(0, 5).map(template => (
+                <div key={template.id} className="p-4 border-3 border-black rounded-xl bg-gray-100 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                  <div className="flex justify-between items-center mb-2">
+                    <h3 className="postcraft-label">{template.name}</h3>
+                    <span className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black ${
+                      template.category === 'insight' ? 'bg-green-500 text-white' :
+                      template.category === 'personal' ? 'bg-orange-500 text-white' : 'bg-blue-500 text-white'
+                    }`}>
+                      {template.category}
+                    </span>
                   </div>
-                ))}
+                  <div className="text-sm font-bold text-gray-900">
+                    Platforms: {template.platforms.map(p => PLATFORMS.find(pl => pl.id === p)?.name).join(', ')}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Conversion Targets */}
+          <div className="postcraft-card">
+            <h2 className="postcraft-section-title mb-6">Target Conversion Rates</h2>
+            <div className="space-y-4">
+              <div className="p-4 border-3 border-black rounded-xl bg-green-50 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-gray-900">Radio Promoters</span>
+                  <span className="px-4 py-2 bg-green-500 text-white font-black rounded-lg border-2 border-black">85%</span>
+                </div>
+                <p className="text-sm text-gray-700 mt-2">Highest priority - proven interest after demos</p>
+              </div>
+              <div className="p-4 border-3 border-black rounded-xl bg-blue-50 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-gray-900">PR Agencies</span>
+                  <span className="px-4 py-2 bg-blue-500 text-white font-black rounded-lg border-2 border-black">70%</span>
+                </div>
+                <p className="text-sm text-gray-700 mt-2">Multi-client processing, agency tier pricing</p>
+              </div>
+              <div className="p-4 border-3 border-black rounded-xl bg-orange-50 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-gray-900">Solo Artists with Budget</span>
+                  <span className="px-4 py-2 bg-orange-500 text-white font-black rounded-lg border-2 border-black">60%</span>
+                </div>
+                <p className="text-sm text-gray-700 mt-2">Free trial → PRO tier conversion focus</p>
+              </div>
             </div>
           </div>
         </div>
