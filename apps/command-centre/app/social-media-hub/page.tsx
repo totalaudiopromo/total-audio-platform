@@ -127,201 +127,107 @@ export default function SocialMediaHubPage() {
         id: 'template-1',
         name: 'Radio Promoter Pain Point',
         category: 'insight',
-        content: `Spent 15 hours researching contacts for my last radio campaign.
+        content: `15 hours researching radio contacts last campaign.
 
-BBC Radio 6 Music, local stations, specialist shows - all scattered across emails, LinkedIn, outdated websites.
+BBC 6, local stations - all scattered.
 
-Built Audio Intel because this is broken.
+Audio Intel: 15 minutes.
 
-Upload your messy spreadsheet → get enriched contacts with emails, socials, and recent activity.
-
-15 hours → 15 minutes.
-
-Free trial: intel.totalaudiopromo.com`,
+intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
         id: 'template-2',
-        name: 'Real Problem, Real Solution',
+        name: 'Dead Emails Problem',
         category: 'announcement',
-        content: `Why most radio campaigns fail:
+        content: `Your radio pitches fail because you're hitting dead emails.
 
-You're pitching dead emails.
+BBC contact left 6 months ago. Email from 2019.
 
-That BBC Radio 1 contact left 6 months ago. The email you found is from 2019. The person who replied once never responds again.
+Audio Intel validates in real-time.
 
-Audio Intel fixes this:
-• Real-time contact validation
-• Social media profiles
-• Recent activity tracking
-• Role verification
-
-Stop wasting pitches on ghosts.
-
-Try it free: intel.totalaudiopromo.com`,
+intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin', 'threads']
       },
       {
         id: 'template-3',
-        name: 'Personal Origin Story',
+        name: 'Personal Origin',
         category: 'personal',
-        content: `I've pitched BBC Radio 1 as sadact (my electronic music project).
+        content: `I've pitched BBC Radio 1 as sadact.
 
-I know what it's like spending weekends researching contacts instead of making music.
+Spent weekends researching instead of making music.
 
-That's why I built Audio Intel.
+Built Audio Intel to fix this.
 
-Not another submission platform charging £50/pitch. A tool that gives you the contact intelligence to do your own radio promotion properly.
-
-Currently 0 paying customers. Building in public. Would love your feedback if you've ever done radio promotion.
+0 customers. Building in public.
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
         id: 'template-4',
-        name: 'Case Study Thread',
+        name: 'BBC Case Study',
         category: 'insight',
-        content: `Tested Audio Intel with a real radio campaign:
+        content: `Tested 25 BBC Radio contacts from 2020-2023:
 
-Target: 50 UK radio contacts (BBC, community, specialist)
+• 8 moved roles
+• 4 emails changed
+• 3 left BBC
+• 2 shows cancelled
 
-Before:
-• 15+ hours researching
-• 30% email bounce rate
-• Outdated info from 2020-2021
-• No social media links
+Only 28% still valid.
 
-After Audio Intel:
-• 20 minutes enrichment
-• 8% bounce rate
-• Current roles verified
-• Twitter/LinkedIn for every contact
+This is why pitches fail.
 
-This is the tool I wish existed 3 years ago.
-
-Free trial: intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin']
       },
       {
         id: 'template-5',
-        name: 'Weekend Reality Check',
+        name: 'Weekend Reality',
         category: 'personal',
-        content: `It's Saturday.
+        content: `It's Saturday. You should be in the studio.
 
-You should be in the studio.
+Instead: Googling "BBC 6 Music contacts 2025"
 
-Instead you're:
-• Googling "BBC Radio 6 Music contacts 2025"
-• Checking if that email still works
-• LinkedIn-stalking presenters
-• Building spreadsheets
-
-What if this took 15 minutes instead of 15 hours?
-
-That's Audio Intel. Built by a producer who got sick of this.
+Audio Intel: 15 minutes instead of 15 hours.
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'threads']
       },
       {
         id: 'template-6',
-        name: 'LinkedIn Professional Hook',
-        category: 'announcement',
-        content: `After 5 years doing radio promotion, I can tell you the real problem:
-
-It's not that radio gatekeepers don't want new music. It's that 90% of pitches never reach the right person.
-
-Why?
-• Outdated contact databases
-• Generic submission platforms
-• No way to verify current roles
-• Missing social context
-
-Audio Intel solves this with real-time contact enrichment:
-✓ Verify emails still work
-✓ Check current roles
-✓ Get social media profiles
-✓ Track recent activity
-
-If you've ever struggled with radio promotion, I'd love your feedback.
-
-Currently in beta, free to try: intel.totalaudiopromo.com`,
-        platforms: ['linkedin']
-      },
-      {
-        id: 'template-7',
-        name: 'Founder Vulnerability',
+        name: 'Founder Honesty',
         category: 'personal',
-        content: `Honest founder update:
+        content: `Audio Intel: 0 customers, 6 months building, production ready.
 
-Audio Intel: 0 paying customers
-Time invested: 6+ months
-Technical status: Production ready
-Problem solved: Definitely (I use it myself)
+Why no customers? Built features instead of talking to people.
 
-Why no customers yet?
+Now: 85% interest from radio promoters after demos.
 
-Because I was building features instead of talking to people.
-
-Changed strategy: Focusing on radio promoters first. 85% interested after demos.
-
-If you do radio promotion and this sounds useful, let's talk. I'll give you lifetime free access for feedback.
-
-DM me or: intel.totalaudiopromo.com`,
+intel.totalaudiopromo.com`,
         platforms: ['twitter']
       },
       {
-        id: 'template-8',
-        name: 'BBC Radio Case Study',
+        id: 'template-7',
+        name: 'Industry Secret',
         category: 'insight',
-        content: `Real test with BBC Radio contacts:
+        content: `Every radio promoter has a spreadsheet of contacts they don't trust.
 
-Took a spreadsheet with 25 "BBC Radio" contacts from 2020-2023.
+60-70% bounce, wrong person, or unmonitored inbox.
 
-Audio Intel found:
-• 8 people moved roles
-• 4 email addresses changed
-• 3 no longer at BBC
-• 2 shows cancelled
-• 1 department restructured
+Audio Intel verifies before you send.
 
-Only 7 contacts (28%) were actually current and correct.
-
-This is why your pitches go nowhere.
-
-Want to test your contact list? intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
-      },
-      {
-        id: 'template-9',
-        name: 'Industry Pain Point',
-        category: 'insight',
-        content: `The music industry's dirty secret:
-
-Every radio promoter has a spreadsheet of "contacts" they don't trust.
-
-You pitch anyway. Because what else can you do?
-
-But 60-70% of those emails either:
-• Bounce
-• Go to someone who left
-• Hit an unmonitored inbox
-• Reach the wrong department
-
-Audio Intel verifies this in real-time before you hit send.
-
-Stop wasting pitches.
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin', 'threads']
       },
       {
-        id: 'template-10',
-        name: 'Short Hook for X',
+        id: 'template-8',
+        name: 'Short Hook',
         category: 'announcement',
-        content: `Your radio contact spreadsheet is probably 60% wrong.
+        content: `Your radio contact spreadsheet is 60% wrong.
 
-People move roles. Emails change. Shows get cancelled.
+People move. Emails change. Shows cancel.
 
 Audio Intel fixes this in 15 minutes.
 
@@ -329,17 +235,14 @@ intel.totalaudiopromo.com`,
         platforms: ['twitter', 'threads']
       },
       {
-        id: 'template-11',
-        name: 'Producer Time Economics',
+        id: 'template-9',
+        name: 'Producer Economics',
         category: 'insight',
         content: `Studio time: £50-100/hour
-Your time as a producer: Priceless
 
-Yet you spend 15+ hours per campaign researching radio contacts?
+15 hours researching radio contacts = £750-1500 wasted
 
-That's £750-1500 of your time (minimum).
-
-Audio Intel does it in 15 minutes for £19/month.
+Audio Intel: £19/month, 15 minutes
 
 The maths is simple.
 
@@ -347,156 +250,101 @@ intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
-        id: 'template-12',
-        name: 'Failed Pitch Autopsy',
+        id: 'template-10',
+        name: 'Failed Pitch Reasons',
         category: 'insight',
-        content: `Why your last radio pitch failed (probably):
+        content: `Why your pitch failed:
 
-❌ Wrong email (person left 8 months ago)
-❌ Wrong show (format changed, no longer accepting music)
-❌ Wrong timing (presenter on sabbatical)
-❌ Wrong person (moved to different station)
+❌ Wrong email (left 8 months ago)
+❌ Wrong show (format changed)
+❌ Wrong timing (on sabbatical)
 
-Audio Intel catches all of this before you hit send.
+Audio Intel catches this before you send.
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'threads']
       },
       {
-        id: 'template-13',
-        name: 'LinkedIn Agency Pitch',
-        category: 'announcement',
-        content: `Music PR agencies: brutal truth.
-
-Your junior staff spend 10-15 hours per campaign researching contacts. That's £250-400 in labour cost per campaign.
-
-Audio Intel: £79/month for unlimited campaigns.
-
-ROI: positive after 1 campaign.
-
-Built this because I was sick of watching agencies waste money on manual research.
-
-If you run a music PR agency, let's talk: intel.totalaudiopromo.com`,
-        platforms: ['linkedin']
-      },
-      {
-        id: 'template-14',
-        name: 'Bluesky Community Hook',
-        category: 'personal',
-        content: `Hey music community 👋
-
-Building Audio Intel (contact enrichment for radio promotion) entirely in public.
-
-Current status: 0 customers, production ready, getting demo interest.
-
-Problem I'm solving: Radio contact databases are 60%+ wrong. People waste weekends on manual research.
-
-Would love feedback from anyone doing radio promotion.
-
-intel.totalaudiopromo.com`,
-        platforms: ['bluesky', 'threads']
-      },
-      {
-        id: 'template-15',
-        name: 'Technical Founder Credibility',
+        id: 'template-11',
+        name: 'Technical Founder',
         category: 'personal',
         content: `I'm not a marketer who built a music tool.
 
 I'm a producer (sadact) who built the tool I needed.
 
-6 months building Audio Intel because I was sick of spending weekends researching radio contacts.
-
-100% contact enrichment success rate. Mobile-first UX. Real-time validation.
-
-Now I just need customers 😅
-
-If you do radio promotion: intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
-      },
-      {
-        id: 'template-16',
-        name: 'Submission Platform Comparison',
-        category: 'insight',
-        content: `Submission platforms: £50 per pitch, they choose the contacts
-Audio Intel: £19/month, you control everything
-
-Submission platforms: Black box process, no visibility
-Audio Intel: You see exactly what you're getting
-
-Submission platforms: Generic pitches to standard lists
-Audio Intel: Your pitches, your strategy, verified contacts
-
-Built for people who want to own their promotion strategy.
+6 months. 100% enrichment rate. 0 customers 😅
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
-        id: 'template-17',
-        name: 'Weekend Warrior Reality',
+        id: 'template-12',
+        name: 'Platform Comparison',
+        category: 'insight',
+        content: `Submission platforms: £50/pitch, they choose contacts
+Audio Intel: £19/month, you control everything
+
+Built for people who want to own their promo strategy.
+
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin']
+      },
+      {
+        id: 'template-13',
+        name: 'Sunday Night Reality',
         category: 'personal',
         content: `Sunday 11pm.
 
-You've spent 6 hours building a contact spreadsheet.
+6 hours building a contact spreadsheet.
 
-Half the emails will bounce.
+Half will bounce. The rest might be outdated.
 
-The other half might be outdated.
-
-Tomorrow you have work.
+Tomorrow: work.
 
 This is why I built Audio Intel.
-
-Because this is absurd.
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'threads']
       },
       {
-        id: 'template-18',
-        name: 'Data Accuracy Deep Dive',
+        id: 'template-14',
+        name: 'Data Accuracy Stats',
         category: 'insight',
-        content: `Tested contact data accuracy across the UK radio industry:
+        content: `UK radio contact data accuracy:
 
-Independent radio promoter lists: 52% accurate
-Paid databases (£200+): 61% accurate
-Free online directories: 38% accurate
-LinkedIn manual search: 71% accurate (but takes 20+ hours)
+Promoter lists: 52%
+Paid databases: 61%
+Online directories: 38%
+LinkedIn manual: 71% (20+ hours)
 
-Audio Intel: 92% accurate in 15 minutes.
-
-This is why your pitches don't land.
-
-intel.totalaudiopromo.com`,
-        platforms: ['linkedin', 'twitter']
-      },
-      {
-        id: 'template-19',
-        name: 'Founder Learning Thread',
-        category: 'personal',
-        content: `What I've learned building Audio Intel:
-
-1. Perfect product ≠ customers (I built features for 6 months before talking to people)
-2. Radio promoters convert at 85% after demos (this is my target market)
-3. Vulnerability works (admitting 0 customers gets more engagement than fake success)
-4. Musicians need this tool but don't know they need it yet
-
-Building in public is terrifying and effective.
+Audio Intel: 92% in 15 minutes
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
-        id: 'template-20',
-        name: 'BBC Radio Restructure Alert',
+        id: 'template-15',
+        name: 'Building in Public',
+        category: 'personal',
+        content: `What I learned building Audio Intel:
+
+1. Perfect product ≠ customers
+2. 85% conversion after demos
+3. Vulnerability > fake success
+4. Building in public works
+
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin']
+      },
+      {
+        id: 'template-16',
+        name: 'BBC Restructure',
         category: 'news',
-        content: `BBC Radio restructured their music programming teams in 2024.
+        content: `BBC Radio restructured music teams in 2024.
 
-If your contact list is from 2023 or earlier, it's probably 50%+ wrong.
+Contact list from 2023? 50%+ wrong.
 
-Presenters moved. Shows changed format. Email addresses updated. Departments restructured.
-
-This is the problem Audio Intel solves.
+Presenters moved. Shows changed. Emails updated.
 
 Don't pitch ghosts.
 
@@ -504,117 +352,85 @@ intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
-        id: 'template-21',
-        name: 'Community Radio Truth',
+        id: 'template-17',
+        name: 'Community Radio',
         category: 'insight',
-        content: `Community radio stations are the best way to break new music.
+        content: `Community radio: best for breaking new music, worst for contact data.
 
-They're also the worst documented.
+Websites from 2018. Generic emails. No info.
 
-Websites from 2018. Generic emails. No presenter names. Random social media.
-
-Spent 8 hours researching 30 community stations last month.
-
-Audio Intel did it in 12 minutes.
-
-This tool exists because community radio deserves better.
+Audio Intel specializes in this.
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'threads']
       },
       {
-        id: 'template-22',
-        name: 'Agency Junior Staff Empowerment',
-        category: 'announcement',
-        content: `Music PR agency owners:
-
-Your junior staff hate contact research. It's tedious, time-consuming, and feels like busywork.
-
-Audio Intel turns 15 hours of grunt work into 15 minutes.
-
-Let them focus on strategy, relationships, and creative pitching instead.
-
-Your team will thank you.
-
-intel.totalaudiopromo.com`,
-        platforms: ['linkedin']
-      },
-      {
-        id: 'template-23',
-        name: 'Email Bounce Rate Reality',
+        id: 'template-18',
+        name: 'Bounce Rate Reality',
         category: 'insight',
-        content: `Your radio campaign email metrics:
+        content: `Radio campaign bounce rates:
 
-30% bounce rate? That's normal (but terrible)
-50% bounce rate? Your list is very outdated
-70% bounce rate? You're wasting everyone's time
+30% = normal (terrible)
+50% = very outdated
+70% = wasting time
 
-Audio Intel gets you to 5-8% bounce rates.
-
-The difference between a campaign that works and one that wastes money.
+Audio Intel: 5-8% bounce rate
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
-        id: 'template-24',
-        name: 'Spotify Contact Validation',
+        id: 'template-19',
+        name: 'Spotify Feature',
         category: 'feature',
-        content: `Just added Spotify playlist curator contact validation to Audio Intel.
+        content: `Just added Spotify playlist curator validation to Audio Intel.
 
-Because Spotify playlist pitching has the same problem as radio:
-• Outdated curator contacts
-• Dead submission emails
-• Curators who moved on
+Same problem as radio: outdated contacts, dead emails.
 
 Verify before you pitch.
 
-Coming soon. Early access: intel.totalaudiopromo.com`,
+Coming soon.
+
+intel.totalaudiopromo.com`,
         platforms: ['twitter', 'threads']
       },
       {
-        id: 'template-25',
-        name: 'ROI Calculator Thread',
+        id: 'template-20',
+        name: 'ROI Calculator',
         category: 'announcement',
-        content: `Audio Intel ROI calculator:
+        content: `Audio Intel ROI:
 
-If you do 1 radio campaign per month:
-• 15 hours manual research × £20/hour = £300
-• Audio Intel: £19/month
-• Savings: £281/month
+1 campaign/month:
+15 hours × £20 = £300
+Audio Intel: £19
 
-If you do 2 campaigns per month:
-• 30 hours × £20/hour = £600
-• Audio Intel: £19/month
-• Savings: £581/month
+Savings: £281/month
 
-The tool pays for itself 15x over.
+Tool pays for itself 15x over.
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
-        id: 'template-26',
-        name: 'Competitor Transparency',
+        id: 'template-21',
+        name: 'Competitor Honesty',
         category: 'personal',
-        content: `Audio Intel vs competitors - honest comparison:
+        content: `Honest comparison:
 
-SubmitHub: Better for algorithmic playlist matching
-RepostExchange: Better for SoundCloud-style sharing
-MusoSoup: Better for budget-constrained artists
+SubmitHub: Better for playlists
+RepostExchange: Better for SoundCloud
+MusoSoup: Better for budgets
 
-Audio Intel: Better if you want to own your radio promotion strategy with verified, real-time contact data.
-
-We're not for everyone. We're for people who want control.
+Audio Intel: For people who want control
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
-        id: 'template-27',
-        name: 'Independent Artist Empowerment',
+        id: 'template-22',
+        name: 'DIY Empowerment',
         category: 'personal',
-        content: `You don't need a PR agency to get radio play.
+        content: `You don't need a PR agency for radio play.
 
 You need:
 ✓ Good music
@@ -622,259 +438,291 @@ You need:
 ✓ Personalised pitches
 ✓ Persistence
 
-Audio Intel handles the "verified contacts" part.
-
-The rest is up to you.
-
-But at least you're pitching real people at real emails.
+Audio Intel handles contacts.
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'threads']
       },
       {
-        id: 'template-28',
-        name: 'LinkedIn Professional Network',
+        id: 'template-23',
+        name: 'Local Radio Gold',
         category: 'insight',
-        content: `5 years in radio promotion taught me:
+        content: `Local radio: massively underrated.
 
-→ Relationships matter (but you can't build them with dead emails)
-→ Persistence works (but not if you're pitching the wrong person)
-→ Quality over quantity (but only if your contacts are accurate)
-→ Follow-up is crucial (but impossible with bounced emails)
+Better response rates. More supportive. Real community.
 
-Audio Intel fixes the foundational problem: knowing who to talk to.
+Problem: contact info is nightmare fuel.
 
-Everything else is on you.
-
-intel.totalaudiopromo.com`,
-        platforms: ['linkedin']
-      },
-      {
-        id: 'template-29',
-        name: 'Local Radio Gold Mine',
-        category: 'insight',
-        content: `Local radio stations are massively underrated.
-
-Better response rates than BBC. More supportive of new artists. Actual community engagement.
-
-The problem? Their contact info is nightmare fuel.
-
-Outdated websites. Generic emails. No clear submission process.
-
-Audio Intel specializes in finding these contacts.
-
-Because local radio matters.
+Audio Intel specializes in this.
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'threads']
       },
       {
-        id: 'template-30',
-        name: 'Building in Public Update',
+        id: 'template-24',
+        name: 'Month 7 Update',
         category: 'personal',
         content: `Month 7 of building Audio Intel:
 
-✅ Product: Production ready
-✅ Tech: 100% enrichment success
-✅ UX: Mobile-first, tested
-✅ Customers: Still 0
+✅ Production ready
+✅ 100% enrichment success
+✅ Mobile-first
+✅ 0 customers
 
-What I'm doing now:
-→ 10 radio promoter demos booked
-→ Focusing on conversion, not features
-→ Sharing everything publicly
+Now: 10 demos booked, focusing on conversion
 
-Building in public is uncomfortable but necessary.
-
-Follow along: intel.totalaudiopromo.com`,
+intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
-        id: 'template-31',
-        name: 'Genre-Specific Station Lists',
+        id: 'template-25',
+        name: 'Genre Filtering',
         category: 'feature',
-        content: `Audio Intel now includes genre-specific station filtering:
+        content: `Audio Intel now has genre-specific filtering:
 
 📻 Electronic/Dance
 📻 Rock/Metal
 📻 Hip Hop/Grime
 📻 Folk/Acoustic
-📻 Jazz/Soul
 
-Upload your contact list → get enriched contacts for stations that actually play your genre.
-
-Stop wasting pitches on irrelevant shows.
+Stop pitching irrelevant shows.
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'threads']
       },
       {
-        id: 'template-32',
-        name: 'Founder Failure Stories',
+        id: 'template-26',
+        name: 'Founder Mistakes',
         category: 'personal',
-        content: `Mistakes I made building Audio Intel:
+        content: `Mistakes building Audio Intel:
 
 ❌ Built features nobody asked for
-❌ Obsessed over perfect UI before talking to customers
-❌ Assumed "if you build it they will come"
-❌ Didn't validate the market first
+❌ Perfect UI before customers
+❌ "Build it they will come"
 
-What I'm doing differently now:
+Now:
 
-✅ Demo first, build second
-✅ Talk to 10 radio promoters per week
-✅ Ship imperfect but useful features
-✅ Track conversion rates religiously
-
-0 customers is a gift. It forces clarity.
+✅ Demo first
+✅ 10 conversations/week
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
-        id: 'template-33',
-        name: 'Radio Presenter Turnover Data',
+        id: 'template-27',
+        name: 'Turnover Stats',
         category: 'insight',
-        content: `BBC Radio presenter turnover rate: ~25% annually
-Commercial radio: ~35% annually
-Community radio: ~40% annually
+        content: `Radio presenter turnover:
 
-Your contact list from 2023? Probably 35%+ wrong.
-From 2022? 50%+ wrong.
-From 2021? Forget it.
+BBC: ~25%/year
+Commercial: ~35%/year
+Community: ~40%/year
 
-Audio Intel checks this in real-time.
+Your 2023 list? 35%+ wrong
 
-Stop pitching people who left 2 years ago.
+Audio Intel checks real-time.
+
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin']
+      },
+      {
+        id: 'template-28',
+        name: 'Budget Reality',
+        category: 'insight',
+        content: `PR agencies cost £1000-3000/campaign.
+
+£19/month for verified contacts is affordable.
+
+Audio Intel: DIY promotion done properly.
+
+No fluff. Just verified contacts.
+
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'threads']
+      },
+      {
+        id: 'template-29',
+        name: 'Social Proof Ask',
+        category: 'personal',
+        content: `If you've struggled with radio promotion, I'd love 10 minutes of your time.
+
+Customer research. No sales pitch.
+
+Lifetime free access for feedback.
+
+DM me
+
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin']
+      },
+      {
+        id: 'template-30',
+        name: 'Email Deliverability',
+        category: 'insight',
+        content: `Deliverability > pitch quality
+
+Perfect pitch + dead email = 0% success
+Average pitch + verified email = possible success
+
+Audio Intel focuses on foundation.
+
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin']
+      },
+      {
+        id: 'template-31',
+        name: 'UK Market Focus',
+        category: 'announcement',
+        content: `Audio Intel is UK-focused because:
+
+→ BBC Radio matters uniquely here
+→ UK community radio is different
+→ I'm UK based, know the landscape
+
+Not for everyone. For UK artists.
+
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin']
+      },
+      {
+        id: 'template-32',
+        name: 'Producer Real Talk',
+        category: 'personal',
+        content: `Your music is ready.
+Your mix is solid.
+Your master is professional.
+
+But your pitch goes to an email from 2021 that bounces.
+
+Audio Intel fills this gap.
+
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'threads']
+      },
+      {
+        id: 'template-33',
+        name: 'Conversion Transparency',
+        category: 'personal',
+        content: `Real conversion rates:
+
+Radio promoters: 85% interested
+Solo artists: 60% potential
+Agencies: 70% interested
+
+Sample: 20 conversations
+Revenue: £0
+
+Building in public.
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
         id: 'template-34',
-        name: 'Artist Budget Reality',
-        category: 'insight',
-        content: `Most independent artists can't afford PR agencies (£1000-3000/campaign).
-
-But they CAN afford:
-• £19/month for contact intelligence
-• Their own time for personalised pitches
-• Building genuine relationships with presenters
-
-Audio Intel is for artists who want to DIY their promotion properly.
-
-No fluff. No middlemen. Just verified contacts.
-
-intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
-      },
-      {
-        id: 'template-35',
-        name: 'Social Proof Request',
+        name: 'Threads Community',
         category: 'personal',
-        content: `Honest request:
+        content: `Who does their own radio promotion?
 
-If you've ever struggled with radio promotion, I'd love 10 minutes of your time.
+Building Audio Intel to solve the contact research nightmare.
 
-I'm doing customer research for Audio Intel (contact enrichment tool).
+0 customers, production ready, getting demos
 
-No sales pitch. Just want to understand if this solves a real problem.
-
-Will give you lifetime free access in exchange for honest feedback.
-
-DM me or: intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
-      },
-      {
-        id: 'template-36',
-        name: 'Threads Community Building',
-        category: 'personal',
-        content: `Who else here does their own radio promotion?
-
-I'm building Audio Intel to solve the contact research nightmare.
-
-Currently: 0 paying customers
-Reality: Production ready, getting demo interest
-
-Looking to connect with:
-→ Independent artists doing DIY PR
-→ Small agencies tired of manual research
-→ Radio promoters who want better tools
-
-Let's talk 👋
+Let's connect 👋
 
 intel.totalaudiopromo.com`,
         platforms: ['threads', 'bluesky']
       },
       {
-        id: 'template-37',
-        name: 'Email Deliverability Science',
+        id: 'template-35',
+        name: 'Pitch Failure Stats',
         category: 'insight',
-        content: `Email deliverability matters more than pitch quality.
+        content: `90% of radio pitches never reach the right person.
 
-Perfect pitch → dead email = 0% success rate
-Average pitch → verified email = possible success
+Not because gatekeepers don't care.
 
-Audio Intel focuses on the foundation: verified, current, working email addresses.
+Because your contact data is wrong.
 
-Because you can't get radio play if your email never arrives.
+Audio Intel fixes this.
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
-        id: 'template-38',
-        name: 'UK Market Specificity',
+        id: 'template-36',
+        name: 'Time Value',
+        category: 'insight',
+        content: `Your time matters.
+
+15 hours researching contacts = £750-1500 as a producer.
+
+Audio Intel: £19/month, 15 minutes.
+
+This should be a no-brainer.
+
+intel.totalaudiopromo.com`,
+        platforms: ['twitter', 'linkedin']
+      },
+      {
+        id: 'template-37',
+        name: 'Agency ROI',
         category: 'announcement',
-        content: `Audio Intel is UK-focused because:
+        content: `Music PR agencies:
 
-→ BBC Radio is uniquely important to UK artists
-→ UK community radio has different structure than US
-→ UK commercial radio has specific submission protocols
-→ I'm based in UK, know the landscape
+Junior staff: 15 hours/campaign = £250-400 labour
+Audio Intel: £79/month unlimited campaigns
 
-Not trying to be everything to everyone.
+ROI positive after 1 campaign.
 
-Just trying to solve radio promotion for UK artists properly.
+intel.totalaudiopromo.com`,
+        platforms: ['linkedin']
+      },
+      {
+        id: 'template-38',
+        name: 'Validation Over Pitch',
+        category: 'insight',
+        content: `Step 1: Verify your contacts
+Step 2: Write great pitches
+
+Most people skip step 1.
+
+That's why 60%+ bounce or go nowhere.
+
+Audio Intel does step 1.
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       },
       {
         id: 'template-39',
-        name: 'Producer-to-Producer Talk',
-        category: 'personal',
-        content: `Producer-to-producer real talk:
+        name: 'Contact List Audit',
+        category: 'feature',
+        content: `Free offer:
 
-Your music is ready.
-Your mix is solid.
-Your master is professional.
+Send me your radio contact list (5-10 contacts).
 
-But your radio pitch goes to an email from 2021 that bounces.
+I'll run it through Audio Intel and show you what's wrong.
 
-This is the gap Audio Intel fills.
-
-Because all the studio work means nothing if you're pitching ghosts.
+DM me or visit:
 
 intel.totalaudiopromo.com`,
         platforms: ['twitter', 'threads']
       },
       {
         id: 'template-40',
-        name: 'Conversion Rate Transparency',
+        name: 'Zero to Hero Story',
         category: 'personal',
-        content: `Current Audio Intel conversion rates (real numbers):
+        content: `From idea to 0 customers in 7 months 😅
 
-Radio promoter demos: 85% interested
-Solo artists: 60% conversion potential
-PR agencies: 70% interest rate
+But:
+✓ 100% enrichment success
+✓ 85% demo conversion
+✓ Production ready
 
-Sample size: 20 conversations
-Revenue: £0 (still pre-launch validation)
+Next: First paying customer
 
-Building in public means sharing real data, not vanity metrics.
+Building in public.
 
-If these numbers interest you: intel.totalaudiopromo.com`,
+intel.totalaudiopromo.com`,
         platforms: ['twitter', 'linkedin']
       }
     ];
