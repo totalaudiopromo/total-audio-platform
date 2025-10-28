@@ -1,9 +1,5 @@
 {
-  "buildCommand": "cd ../.. && npm run build:command-centre",
-  "devCommand": "npm run dev",
-  "installCommand": "cd ../.. && npm install",
   "framework": "nextjs",
-  "outputDirectory": ".next",
   "env": {
     "NEXT_PUBLIC_BASE_URL": "https://command.totalaudiopromo.com",
     "NEXT_PUBLIC_APP_NAME": "Command Centre",
