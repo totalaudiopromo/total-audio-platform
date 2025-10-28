@@ -19,29 +19,14 @@ const fs = require('fs');
 const path = require('path');
 const EventEmitter = require('events');
 
-// Agent imports
-const IntelligenceAgent = require('./agents/intelligence-agent');
-const ProjectAgent = require('./agents/project-agent');
-const EmailAgent = require('./agents/email-agent');
-const RadioAgent = require('./agents/radio-agent');
-const AnalyticsAgent = require('./agents/analytics-agent');
-const CoverageAgent = require('./agents/coverage-agent');
-const FollowupAgent = require('./agents/followup-agent');
+// Total Audio agent registry
+const TotalAudioAgents = require('./config/total-audio-agents');
 
-// Integration imports
-const SuccessPredictionEngine = require('./integrations/success-prediction-engine');
-const AutoResponseHandler = require('./integrations/auto-response-handler');
-const SocialIntelligence = require('./integrations/social-intelligence');
-const PressGenerator = require('./integrations/press-generator');
-const CampaignScheduler = require('./integrations/campaign-scheduler');
-const RealTimeMonitor = require('./integrations/real-time-monitor');
-const AutoFollowupSystem = require('./integrations/auto-followup-system');
-const GmailTypeformMatcher = require('./integrations/gmail-typeform-matcher');
+// Liberty agents loaded lazily to avoid dependency issues
+// They're only needed for Liberty client workflows
 
-// Configuration imports
-const LibertyTemplates = require('./config/liberty-templates');
-const RadioStations = require('./config/radio-stations');
-const WarmConfig = require('./config/warm-config');
+// Liberty integrations loaded lazily
+// Only needed for Liberty client workflows
 
 // Enhanced logger for the orchestrator system
 const logToFile = (level, message, args) => {
@@ -108,15 +93,22 @@ class Dan extends EventEmitter {
     this.campaigns = new Map();
     this.activeWorkflows = new Map();
 
-    // Agent system
+    // Agent system - organized by category
     this.agents = {
-      intelligence: null,
-      project: null,
-      email: null,
-      radio: null,
-      analytics: null,
-      coverage: null
+      // Content agents
+      content: {},
+      // Business agents
+      business: {},
+      // Technical agents
+      technical: {},
+      // Campaign agents
+      campaigns: {},
+      // Liberty client agents (backward compatibility)
+      liberty: {}
     };
+
+    // Flat agent access for backward compatibility
+    this.agentRegistry = {};
     
     // System metrics
     this.metrics = {
@@ -156,8 +148,85 @@ class Dan extends EventEmitter {
       europeanIndiePaymentUrl: process.env.EUROPEAN_INDIE_MUSIC_PAYMENT_URL
     };
 
-    // Liberty workflow definitions
+    // Workflow definitions - Liberty client + Total Audio operations
     this.workflows = {
+      // ============================================
+      // TOTAL AUDIO PROMO WORKFLOWS
+      // ============================================
+
+      'weekly-newsletter': {
+        name: 'Weekly Newsletter Generation',
+        description: 'Generate and distribute "The Unsigned Advantage" newsletter',
+        category: 'content',
+        estimatedTime: 20,
+        steps: [
+          { agent: 'newsjack', action: 'fetchTrends', parallel: false },
+          { agent: 'newsletter', action: 'generateContent', parallel: false },
+          { agent: 'newsletter', action: 'distribute', parallel: false }
+        ],
+        verification: ['content-review', 'distribution-confirmation']
+      },
+
+      'audio-intel-case-study': {
+        name: 'Audio Intel Case Study Creation',
+        description: 'Generate customer case study for Audio Intel marketing',
+        category: 'content',
+        estimatedTime: 15,
+        steps: [
+          { agent: 'analytics', action: 'fetchCustomerMetrics', parallel: false },
+          { agent: 'audioIntel', action: 'generateCaseStudy', parallel: false },
+          {
+            agents: ['social', 'newsletter'],
+            actions: ['schedulePost', 'queueContent'],
+            parallel: true
+          }
+        ],
+        verification: ['case-study-approval']
+      },
+
+      'contact-enrichment-batch': {
+        name: 'Bulk Contact Enrichment',
+        description: 'Enrich batch of contacts for Audio Intel customers',
+        category: 'technical',
+        estimatedTime: 30,
+        steps: [
+          { agent: 'contact', action: 'enrichBatch', parallel: false },
+          { agent: 'database', action: 'updateRecords', parallel: false },
+          { agent: 'analytics', action: 'trackQuality', parallel: false }
+        ],
+        verification: ['quality-check']
+      },
+
+      'social-content-week': {
+        name: 'Weekly Social Content Distribution',
+        description: 'Generate and schedule week of social media content',
+        category: 'content',
+        estimatedTime: 25,
+        steps: [
+          { agent: 'newsjack', action: 'fetchTrends', parallel: false },
+          { agent: 'contentGen', action: 'generateWeeklyPosts', parallel: false },
+          { agent: 'social', action: 'scheduleWeek', parallel: false }
+        ],
+        verification: ['content-calendar-review']
+      },
+
+      'business-analytics-report': {
+        name: 'Monthly Business Analytics',
+        description: 'Generate comprehensive business performance report',
+        category: 'business',
+        estimatedTime: 20,
+        steps: [
+          { agent: 'analytics', action: 'aggregateMonthlyData', parallel: false },
+          { agent: 'analytics', action: 'generateInsights', parallel: false },
+          { agent: 'marketing', action: 'createReport', parallel: false }
+        ],
+        verification: ['metrics-validation']
+      },
+
+      // ============================================
+      // LIBERTY MUSIC PR CLIENT WORKFLOWS
+      // ============================================
+
       'complete-campaign': {
         name: 'Complete Radio Campaign',
         description: 'Full automation of Liberty Music PR radio campaign process',
@@ -221,8 +290,8 @@ class Dan extends EventEmitter {
       criticalOperations: ['warm-api-calls', 'client-deliverables', 'payment-processing']
     };
 
-    // Integration helpers
-    this.gmailMatcher = new GmailTypeformMatcher();
+    // Integration helpers (loaded lazily)
+    this.gmailMatcher = null;
     this.timers = {
       gmailDailyTimeout: null,
       gmailDailyInterval: null
@@ -277,76 +346,108 @@ class Dan extends EventEmitter {
    */
   async loadConfiguration() {
     logger.info('Loading system configuration...');
+
+    // Liberty configurations loaded only when needed
+    this.libertyTemplates = null;
+    this.radioStations = null;
+    this.warmConfig = null;
     
-    // Load Liberty templates
-    this.libertyTemplates = new LibertyTemplates();
-    
-    // Load radio station database
-    this.radioStations = new RadioStations();
-    
-    // Load WARM API configuration
-    this.warmConfig = new WarmConfig();
-    
-    // Verify critical environment variables
-    const requiredEnvVars = [
-      'GEMINI_API_KEY',
-      'MONDAY_API_KEY', 
-      'MAILCHIMP_API_KEY',
-      'WARM_API_KEY',
-      'GOOGLE_CHAT_WEBHOOK'
-    ];
-    
-    const missingVars = requiredEnvVars.filter(env => !process.env[env]);
+    // Check environment variables (warn but don't fail)
+    const recommendedEnvVars = {
+      'ANTHROPIC_API_KEY': 'AI content generation',
+      'CONVERTKIT_API_KEY': 'Newsletter distribution',
+      'NOTION_API_KEY': 'Notion integration',
+      'GEMINI_API_KEY': 'Liberty: Google Meet processing',
+      'MONDAY_API_KEY': 'Liberty: Campaign management',
+      'WARM_API_KEY': 'Liberty: Radio tracking',
+      'GOOGLE_CHAT_WEBHOOK': 'Team notifications'
+    };
+
+    const missingVars = Object.entries(recommendedEnvVars)
+      .filter(([key]) => !process.env[key])
+      .map(([key, desc]) => `${key} (${desc})`);
+
     if (missingVars.length > 0) {
-      logger.warn(`Missing environment variables: ${missingVars.join(', ')}`);
-      logger.warn('Some features may not function properly');
+      logger.warn(`⚠️  Missing optional environment variables:`);
+      missingVars.forEach(varDesc => logger.warn(`   - ${varDesc}`));
+      logger.info('💡 These are optional - agents will work with available credentials');
     }
     
     logger.info('Configuration loaded successfully');
   }
 
   /**
-   * Initialize all 6 agents
+   * Initialize all Total Audio agents dynamically from registry
    */
   async initializeAgents() {
-    logger.info('Initializing agent system...');
-    
-    const agentDefinitions = [
-      { name: 'intelligence', class: IntelligenceAgent, description: 'Google Meet + Gemini processing' },
-      { name: 'project', class: ProjectAgent, description: 'Monday.com campaign automation' },
-      { name: 'email', class: EmailAgent, description: 'Liberty templates + Mailchimp' },
-      { name: 'radio', class: RadioAgent, description: 'Station submission automation' },
-      { name: 'analytics', class: AnalyticsAgent, description: 'WARM API real-time tracking' },
-      { name: 'coverage', class: CoverageAgent, description: 'Professional reporting' }
-    ];
-    
-    for (const { name, class: AgentClass, description } of agentDefinitions) {
-      try {
-        logger.info(`Initializing ${name} agent: ${description}`);
-        
-        this.agents[name] = new AgentClass({
-          orchestrator: this,
-          config: this.config,
-          logger: (msg, ...args) => logger.agent(name, msg, ...args)
-        });
-        
-        const result = await this.agents[name].initialize();
-        
-        if (result) {
-          this.metrics.agentUptime[name] = Date.now();
-          logger.success(`${name} agent initialized successfully`);
-        } else {
-          throw new Error(`${name} agent initialization returned false`);
+    logger.info('Initializing Total Audio agent system...');
+
+    let totalAgents = 0;
+    let activeAgents = 0;
+
+    // Initialize agents from each category
+    for (const [category, agents] of Object.entries(TotalAudioAgents)) {
+      logger.info(`\n📂 Loading ${category} agents...`);
+
+      for (const [agentKey, agentConfig] of Object.entries(agents)) {
+        totalAgents++;
+
+        try {
+          logger.info(`  ├─ ${agentConfig.name}: ${agentConfig.description}`);
+
+          // Try to load the agent class
+          let AgentClass;
+          try {
+            AgentClass = require(agentConfig.path);
+          } catch (requireError) {
+            logger.warn(`  │  ⚠️  Agent file not found or has errors: ${agentConfig.path}`);
+            logger.warn(`  │     ${requireError.message}`);
+            continue;
+          }
+
+          // Initialize the agent
+          const agentInstance = new AgentClass({
+            orchestrator: this,
+            config: this.config,
+            logger: (msg, ...args) => logger.agent(agentKey, msg, ...args)
+          });
+
+          // Try to initialize (some agents may not have initialize method)
+          let initResult = true;
+          if (typeof agentInstance.initialize === 'function') {
+            initResult = await agentInstance.initialize();
+          }
+
+          if (initResult !== false) {
+            // Store in category
+            this.agents[category][agentKey] = agentInstance;
+
+            // Also store in flat registry for easy access
+            this.agentRegistry[agentKey] = agentInstance;
+
+            // Track uptime
+            this.metrics.agentUptime[`${category}.${agentKey}`] = Date.now();
+
+            activeAgents++;
+            logger.success(`  └─ ✓ ${agentConfig.name} ready`);
+          } else {
+            throw new Error(`Agent initialization returned false`);
+          }
+
+        } catch (error) {
+          logger.error(`  └─ ✗ Failed to initialize ${agentConfig.name}:`, error.message);
+          // Continue with other agents - graceful degradation
+          this.agents[category][agentKey] = null;
         }
-      } catch (error) {
-        logger.error(`Failed to initialize ${name} agent:`, error);
-        // Continue with other agents - allow graceful degradation
-        this.agents[name] = null;
       }
     }
-    
-    const activeAgents = Object.values(this.agents).filter(agent => agent !== null).length;
-    logger.info(`Agent initialization complete: ${activeAgents}/6 agents active`);
+
+    logger.info(`\n📊 Agent initialization complete: ${activeAgents}/${totalAgents} agents active`);
+    logger.info(`   Content: ${Object.keys(this.agents.content).length} agents`);
+    logger.info(`   Business: ${Object.keys(this.agents.business).length} agents`);
+    logger.info(`   Technical: ${Object.keys(this.agents.technical).length} agents`);
+    logger.info(`   Campaigns: ${Object.keys(this.agents.campaigns).length} agents`);
+    logger.info(`   Liberty: ${Object.keys(this.agents.liberty).length} agents`);
   }
 
   /**
@@ -395,6 +496,18 @@ class Dan extends EventEmitter {
   async runDailyGmailSync() {
     try {
       logger.info('📬 Running daily Gmail → Typeform campaign sync');
+
+      // Lazy load Gmail matcher if needed
+      if (!this.gmailMatcher) {
+        try {
+          const GmailTypeformMatcher = require('./integrations/gmail-typeform-matcher');
+          this.gmailMatcher = new GmailTypeformMatcher();
+        } catch (err) {
+          logger.warn('Gmail matcher not available:', err.message);
+          return;
+        }
+      }
+
       const results = await this.gmailMatcher.findLibertyCampaigns();
       logger.success(`Daily Gmail sync completed. Matched campaigns: ${results.totalMatches}`);
     } catch (error) {
@@ -670,20 +783,38 @@ class Dan extends EventEmitter {
 
   /**
    * Execute a single agent step
+   * Supports both flat agent names (backward compatibility) and category.agentName format
    */
   async executeSingleStep(step, campaignData) {
     const agentName = step.agent;
     const action = step.action;
-    
-    const agent = this.agents[agentName];
+
+    // First try flat agent registry (new structure)
+    let agent = this.agentRegistry[agentName];
+
+    // Fallback: try old structure for backward compatibility with Liberty workflows
     if (!agent) {
-      throw new Error(`Agent '${agentName}' is not available`);
+      agent = this.agents.liberty?.[agentName];
     }
-    
+
+    // If still not found, search all categories
+    if (!agent) {
+      for (const category of Object.values(this.agents)) {
+        if (typeof category === 'object' && category[agentName]) {
+          agent = category[agentName];
+          break;
+        }
+      }
+    }
+
+    if (!agent) {
+      throw new Error(`Agent '${agentName}' is not available in any category`);
+    }
+
     if (typeof agent[action] !== 'function') {
       throw new Error(`Action '${action}' not found on agent '${agentName}'`);
     }
-    
+
     return await agent[action](campaignData);
   }
 
@@ -1113,7 +1244,43 @@ if (require.main === module) {
         case 'metrics':
           console.log(JSON.stringify(orchestrator.metrics, null, 2));
           break;
-        
+
+        case 'workflows':
+          console.log('\n📋 Available Workflows:\n');
+
+          const categories = {};
+          Object.entries(orchestrator.workflows).forEach(([key, workflow]) => {
+            const cat = workflow.category || 'liberty';
+            if (!categories[cat]) categories[cat] = [];
+            categories[cat].push({ key, ...workflow });
+          });
+
+          Object.entries(categories).forEach(([category, workflows]) => {
+            console.log(`\n${category.toUpperCase()}:`);
+            workflows.forEach(wf => {
+              console.log(`  ${wf.key.padEnd(30)} - ${wf.description} (${wf.estimatedTime}min)`);
+            });
+          });
+          console.log('');
+          break;
+
+        case 'agents':
+          console.log('\n🤖 Agent Registry:\n');
+
+          Object.entries(orchestrator.agents).forEach(([category, agents]) => {
+            const agentCount = Object.keys(agents).length;
+            if (agentCount > 0) {
+              console.log(`\n${category.toUpperCase()} (${agentCount} agents):`);
+              Object.entries(agents).forEach(([key, agent]) => {
+                const status = agent ? '✓' : '✗';
+                const name = agent?.name || key;
+                console.log(`  ${status} ${key.padEnd(20)} - ${name}`);
+              });
+            }
+          });
+          console.log('');
+          break;
+
         default:
           console.log('Dan - Total Audio Agent Orchestrator v' + orchestrator.version);
           console.log('');

@@ -48,8 +48,8 @@ export class LinkedInPostingAgent {
    */
   async authenticate(): Promise<boolean> {
     try {
-      // Verify token by fetching user profile
-      await this.client.get('/v2/me');
+      // Verify token by fetching user info (simpler endpoint that works with basic permissions)
+      await this.client.get('/v2/userinfo');
 
       console.log('[LINKEDIN] ✅ Authenticated successfully');
       return true;

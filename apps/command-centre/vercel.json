@@ -1,0 +1,16 @@
+{
+  "framework": "nextjs",
+  "env": {
+    "NEXT_PUBLIC_BASE_URL": "https://command.totalaudiopromo.com",
+    "NEXT_PUBLIC_APP_NAME": "Command Centre",
+    "NEXT_PUBLIC_APP_DESCRIPTION": "Total Audio Promo Command Centre - Internal Business Dashboard",
+    "NEXTAUTH_URL": "https://command.totalaudiopromo.com",
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "app/api/**": {
+      "maxDuration": 30
+    }
+  },
+  "regions": ["lhr1"]
+}

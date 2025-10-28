@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Add LinkedIn Credentials to Vercel
+# This script adds all LinkedIn environment variables to Vercel
+
+echo "🔐 Adding LinkedIn credentials to Vercel..."
+echo ""
+
+# LinkedIn Client Secret
+echo "Adding LINKEDIN_CLIENT_SECRET..."
+echo "WPL_AP1.frlXgbgIa5bM62VZ.yrVM6g==" | vercel env add LINKEDIN_CLIENT_SECRET production
+echo "WPL_AP1.frlXgbgIa5bM62VZ.yrVM6g==" | vercel env add LINKEDIN_CLIENT_SECRET preview
+echo "WPL_AP1.frlXgbgIa5bM62VZ.yrVM6g==" | vercel env add LINKEDIN_CLIENT_SECRET development
+
+echo ""
+
+# LinkedIn Access Token
+echo "Adding LINKEDIN_ACCESS_TOKEN..."
+echo "AQVMk8QxXFSSbj0RvAgQqFBJNoDtSqz1iofrCKcy8JCDzeP9jmnYmabm3EiHXZ4vDLXlkLZZYyQ0PJiQTL4GqsNEWZ3IaDC8p_nLq-ptRWKDcaJdPRVicnDOR3Ts0qfMoaQon9YoGy2rJNABSZOqRft3zQyy8LhFWixIx0qjWaBZW6WsW52klctuiK1U5lUwI4z54GKXX9gTB4P0Tczkn15asaarnXkOUaGj_x4c7mI0SBWG6GCEGRXBAGpQ4_bdnrtGkellvWkCHHZEjao0yC5O6nncjrDDzhPXd4_OBg_xLM4bxyMS4BvxfszHN7j3RRuZnm4uB8fPkSh1ucTenFnMgcJRWA" | vercel env add LINKEDIN_ACCESS_TOKEN production
+echo "AQVMk8QxXFSSbj0RvAgQqFBJNoDtSqz1iofrCKcy8JCDzeP9jmnYmabm3EiHXZ4vDLXlkLZZYyQ0PJiQTL4GqsNEWZ3IaDC8p_nLq-ptRWKDcaJdPRVicnDOR3Ts0qfMoaQon9YoGy2rJNABSZOqRft3zQyy8LhFWixIx0qjWaBZW6WsW52klctuiK1U5lUwI4z54GKXX9gTB4P0Tczkn15asaarnXkOUaGj_x4c7mI0SBWG6GCEGRXBAGpQ4_bdnrtGkellvWkCHHZEjao0yC5O6nncjrDDzhPXd4_OBg_xLM4bxyMS4BvxfszHN7j3RRuZnm4uB8fPkSh1ucTenFnMgcJRWA" | vercel env add LINKEDIN_ACCESS_TOKEN preview
+echo "AQVMk8QxXFSSbj0RvAgQqFBJNoDtSqz1iofrCKcy8JCDzeP9jmnYmabm3EiHXZ4vDLXlkLZZYyQ0PJiQTL4GqsNEWZ3IaDC8p_nLq-ptRWKDcaJdPRVicnDOR3Ts0qfMoaQon9YoGy2rJNABSZOqRft3zQyy8LhFWixIx0qjWaBZW6WsW52klctuiK1U5lUwI4z54GKXX9gTB4P0Tczkn15asaarnXkOUaGj_x4c7mI0SBWG6GCEGRXBAGpQ4_bdnrtGkellvWkCHHZEjao0yC5O6nncjrDDzhPXd4_OBg_xLM4bxyMS4BvxfszHN7j3RRuZnm4uB8fPkSh1ucTenFnMgcJRWA" | vercel env add LINKEDIN_ACCESS_TOKEN development
+
+echo ""
+echo "✅ Done! LinkedIn credentials added to Vercel."
+echo ""
+echo "Verify with: vercel env ls | grep LINKEDIN"

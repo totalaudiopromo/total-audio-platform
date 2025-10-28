@@ -1,0 +1,37 @@
+# Pitch Generator - AI-Powered Music PR Pitches
+# https://pitch.totalaudiopromo.com
+
+# Allow all search engines
+User-agent: *
+Allow: /
+Allow: /blog
+Allow: /pricing
+
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /pitch/
+Disallow: /profile/
+Disallow: /settings/
+Disallow: /auth/
+
+# Allow LLM crawlers (ChatGPT, Claude, Perplexity, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://pitch.totalaudiopromo.com/sitemap.xml

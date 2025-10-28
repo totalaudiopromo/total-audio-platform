@@ -1,0 +1,18 @@
+{
+  "framework": "nextjs",
+  "env": {
+    "NEXT_PUBLIC_BASE_URL": "https://tracker.totalaudiopromo.com"
+  },
+  "functions": {
+    "app/api/**": {
+      "maxDuration": 30
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/sync-integrations",
+      "schedule": "0 0 * * *"
+    }
+  ],
+  "regions": ["lhr1"]
+}

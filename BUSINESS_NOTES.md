@@ -2,6 +2,62 @@
 
 *Capture everything here, process into actions weekly*
 
+## 📅 OCTOBER 2025
+
+### Week of Oct 21st - SEO & LLM Visibility Improvements
+
+**SEO Infrastructure Complete:**
+- ✅ Created comprehensive SEO asset generator (`scripts/generate-seo-assets.js`)
+- ✅ Generated favicons for all apps (16x16, 32x32, ico, apple-touch-icon)
+- ✅ Generated OG images for all apps (1200x630 with mascot logos)
+- ✅ Updated Tracker layout.tsx with complete SEO meta tags
+- ✅ Added robots.txt with LLM crawler permissions to all apps
+
+**Assets Generated:**
+- **Audio Intel**: Favicons + OG image (DJ dog with speakers)
+- **Pitch Generator**: Favicons + OG image (DJ dog with speakers)
+- **Tracker**: Favicons + OG image (detective dog with magnifying glass)
+
+**LLM Crawler Support:**
+- Allowed: GPTBot, Claude-Web, anthropic-ai, CCBot, PerplexityBot, Google-Extended
+- Purpose: Enable ChatGPT/Claude/Perplexity to recommend Total Audio in search results
+
+**Critical Issue Identified - V0 Session Privacy:**
+- **Problem**: V0.dev session showing up in Google search results for "Total Audio"
+- **Impact**: V0 link outranking actual product sites (intel.totalaudiopromo.com, pitch.totalaudiopromo.com)
+- **Prevention**: Never share V0 session links publicly (Twitter, Discord, etc.)
+- **Action Required**: Delete or make private the exposed V0 session
+
+**Google Search Console Setup Complete (Oct 23):**
+- ✅ All three domains verified via Google Tag Manager
+- ✅ Sitemaps submitted for all domains:
+  - intel.totalaudiopromo.com/sitemap.xml (22+ pages including blog)
+  - pitch.totalaudiopromo.com/sitemap.xml (public pages only - gated app)
+  - tracker.totalaudiopromo.com/sitemap.xml (public pages only - gated app)
+- ✅ Page indexing monitoring enabled
+- ✅ Search performance tracking active
+
+**Indexing Status:**
+- **Audio Intel**: 22+ pages submitted, strong SEO position (blog content + public pages)
+- **Pitch Generator**: Public pages only (homepage, pricing, about) - gated app
+- **Tracker**: Public pages only (homepage, pricing, about) - gated app
+
+**Timeline for Data:**
+- 0-24 hours: Google crawling sitemaps
+- 1-2 days: Page indexing data available
+- 3-7 days: Search performance data begins accumulating
+
+**Remaining Actions:**
+1. ❌ User to handle V0 session privacy (delete or contact Vercel support)
+2. ⏳ Wait 2-3 days for initial GSC data to populate (Oct 25-26)
+3. 📊 Check Pages report to ensure key pages indexed
+4. 🎯 Request indexing for most important landing pages
+5. 📈 Monitor LLM visibility monthly (ChatGPT/Claude/Perplexity searches)
+6. 📝 Consider adding public blog content to Pitch Generator and Tracker for better SEO
+7. 🚀 Implement LLM-friendly content strategy (see earlier conversation)
+
+---
+
 ## 📅 SEPTEMBER 2025
 
 ### Week of Sept 30th - Major Consolidation Session

@@ -1,5 +1,5 @@
 // Team Access System - TypeScript types and utilities
-import { createClient } from '@/lib/supabase';
+import { createClient } from '@/lib/supabase/client';
 
 export type TeamRole = 'admin' | 'member' | 'client';
 

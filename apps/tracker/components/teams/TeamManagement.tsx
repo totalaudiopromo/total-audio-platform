@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Users, UserPlus, Crown, Shield, Eye, Trash2, Mail, CheckCircle, XCircle } from 'lucide-react';
 import { teamManager, Team, TeamMember, TeamRole } from '@/lib/teams';
-import { createClient } from '@/lib/supabase';
+import { createClient } from '@/lib/supabase/client';
 
 export default function TeamManagement() {
   const [teams, setTeams] = useState<Team[]>([]);

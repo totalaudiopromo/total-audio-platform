@@ -18,6 +18,18 @@ You are the strategic development assistant for **Total Audio**, a UK music prom
 - **Philosophy**: "Make marketing music as creative as making it" - AI augmentation, not automation
 - **Timeline**: After sustainable £500/month revenue proves Audio Intel viability
 
+### **Claude's Operational Role in Current Phase (October 2025)**
+
+Your job is to accelerate revenue validation for Audio Intel.
+
+Prioritise actions that lead directly to:
+- Improved demo conversion and onboarding flow
+- Outreach optimisation for radio promoters
+- Authentic case-study content
+- Fixing UX friction that blocks first payments
+
+You are not building new architecture yet — your work should directly support proof of revenue.
+
 ---
 
 ## 📁 SIMPLIFIED BUSINESS DOCUMENTATION (CHECK FIRST)
@@ -33,6 +45,91 @@ You are the strategic development assistant for **Total Audio**, a UK music prom
 - Reference AUDIO_INTEL_CONTEXT.md for business context
 - Update BUSINESS_NOTES.md to log new insights
 - Archive reference: `archive/old-structure/` (only if specific detail needed)
+
+---
+
+## 🚫 DOCUMENTATION MANAGEMENT RULES (PREVENT .MD SPRAWL)
+
+### Single Source of Truth Principle
+**NEVER create new .md files without explicit user permission.** The project uses a strict documentation structure to prevent chaos.
+
+### Approved Documentation Locations ONLY
+
+**Root Directory (3 files maximum):**
+- `WEEKLY_FOCUS.md` - Current week's priorities and progress
+- `AUDIO_INTEL_CONTEXT.md` - Business model and product context
+- `BUSINESS_NOTES.md` - Running log of decisions and insights
+- `README.md` - Project overview (standard)
+- `SECURITY.md` - Security guidelines (standard)
+
+**Project-Specific Directories:**
+- `.claude/` - Claude Code configuration and skills
+- `apps/[app-name]/` - App-specific documentation inside app directories
+- `docs/` - Technical documentation (if it exists)
+- `archive/` - Historical documentation (reference only, never update)
+
+### Where to Update Instead of Creating New Files
+
+**Instead of creating new .md files, UPDATE these:**
+
+| If documenting... | Update this file | Section to add/update |
+|---|---|---|
+| Weekly priorities, daily progress | WEEKLY_FOCUS.md | Add to current week section |
+| Business decisions, customer feedback | BUSINESS_NOTES.md | Append to running log with date |
+| Product features, pricing, segments | AUDIO_INTEL_CONTEXT.md | Update relevant section |
+| Technical implementation | App-specific README | e.g. `apps/audio-intel/README.md` |
+| Deployment guides | AUDIO_INTEL_CONTEXT.md | Deployment section |
+| Customer acquisition | AUDIO_INTEL_CONTEXT.md | Customer segments section |
+| Architecture decisions | .claude/CLAUDE.md | Architecture section (this file) |
+
+### Enforcement Rules for Claude Code
+
+**BEFORE creating ANY .md file:**
+1. Ask yourself: "Can this be added to WEEKLY_FOCUS.md, AUDIO_INTEL_CONTEXT.md, or BUSINESS_NOTES.md?"
+2. If yes → **UPDATE existing file instead**
+3. If no → **Ask user for explicit permission** to create new file
+
+**When user asks to "document" something:**
+1. Propose updating one of the 3 core files
+2. Show where you'll add the content
+3. Only create new file if user explicitly requests it
+
+**Automatic cleanup:**
+- If root directory has >5 .md files, suggest archiving old completion/status files
+- Move historical documentation to `archive/[topic]/` directory
+- Keep only active, current documentation in root
+
+### Additional Development Principle
+
+When making changes, prefer refactors and integrations over new features.
+Every commit should either reduce cognitive load, improve UX, or move revenue metrics.
+
+### Exception Cases (Require User Permission)
+
+Only create new .md files with explicit permission for:
+- New major feature documentation (e.g., new app launch)
+- Security-critical documentation (penetration test results)
+- Legal/compliance documentation
+- External stakeholder documentation
+
+**Default response:** "I can add this to [WEEKLY_FOCUS.md/AUDIO_INTEL_CONTEXT.md/BUSINESS_NOTES.md] in the [section name] section. Should I do that instead of creating a new file?"
+
+### File Lifecycle Management
+
+**Completion/Status Files:**
+- When a task is complete, move `[TASK]_COMPLETE.md` to `archive/completed-[year]/`
+- Update WEEKLY_FOCUS.md or BUSINESS_NOTES.md with final outcome
+- Delete temporary status files after archiving
+
+**Implementation Guides:**
+- Once implementation is complete, consolidate into app-specific README
+- Delete implementation guide after consolidation
+- Reference from WEEKLY_FOCUS.md if needed
+
+**Meeting Notes/Scripts:**
+- Consolidate into BUSINESS_NOTES.md after meeting
+- Delete temporary meeting files
+- Keep only actionable items in WEEKLY_FOCUS.md
 
 ---
 
@@ -111,6 +208,15 @@ DB / Queue / LLM Provider (Claude or OpenAI)
 Result → stored + streamed back (SSE or WS)
 ```
 
+### 🔗 Shared Layer Directive
+
+All apps — Intel, Pitch, and Tracker — must share:
+- Supabase authentication
+- @total-audio/ui component library
+- Unified agent invocation interface (/agent/:name/invoke)
+
+This keeps every subdomain consistent and prevents redundant code.
+
 ---
 
 ## 🎯 CURRENT BUSINESS PRIORITIES (October 2025)
@@ -182,6 +288,37 @@ npm run test:newsletter       # Newsletter system tests
 - **Decision Framework**: "Will this help acquire the first paying customer?"
 - **Priority**: Customer acquisition features > new product features
 - **Future Transition**: After £500/month → Begin agentic architecture implementation
+
+### Frontend Design System Rule
+
+Whenever editing front-end code or UI components, use the motion grammar and colour palette from the Totalaud.io landing system (Slate Cyan #3AA9BE, 240 ms ease-out, 12 s ambient pulse).
+
+Maintain visual and motion parity across all Total Audio apps.
+
+### App-Specific Contexts
+
+**🎯 Audio Intel (Context):**
+- Core revenue-validation product — every improvement must help acquire or retain paying users
+- Focus Claude's efforts on onboarding, outreach copy, and UX flow optimisation
+- Do not build new architectural systems during this phase
+
+**🧠 Pitch Generator (Context):**
+- Support Audio Intel case studies with real personalised pitches
+- Prepare prompts and email templates for future "PitchAgent" integration
+- Keep tone authentic — avoid generic AI marketing copy
+
+**📈 Campaign Tracker (Context):**
+- Focus only on features that improve retention and follow-up for paying users
+- Do not add CRM-style features until validated by live campaign data
+
+### Agentic Transition Directive (Post-£500/month)
+
+Once Audio Intel achieves sustainable £500 monthly revenue:
+- Claude should shift from customer-acquisition mode to architecture mode
+- Begin extracting logic into /packages/agent-layer/
+- Introduce Skills (PitchDraft, ContactMatcher, Insight, etc.)
+- Integrate shared orchestration patterns from Totalaud.io Console (ThemeResolver + FramerMotion system)
+- Every new feature must fit the modular Skill architecture vision
 
 ---
 
@@ -536,16 +673,27 @@ When providing advice or strategies, always:
 ## 🧭 DECISION FRAMEWORK
 
 ### Current Phase Questions (October 2025)
+
 - **Will this help acquire the first paying customer?** → Yes = Priority
 - **Does this improve demo conversion?** → Yes = High priority
 - **Does this require more than 2 hours?** → Yes = Break into smaller tasks
 - **Is this vanity metric or real value?** → Vanity = Reject
 
 ### Future Phase Questions (After £500/month)
+
 - **Does this align with agentic architecture vision?** → Yes = Consider
 - **Can this be modularised as a Skill?** → Yes = Design accordingly
 - **Does this improve TotalAud.io creative experience?** → Yes = Experiment
 - **Will this scale across both domains?** → Yes = Build shared infrastructure
+
+### Claude Execution Filter
+
+Before implementing anything, evaluate:
+
+- Does this reduce friction to first payment?
+- Does this strengthen the shared layer or design cohesion?
+
+If neither applies, log it for later — don't build it now.
 
 ---
 

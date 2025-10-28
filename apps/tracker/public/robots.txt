@@ -1,0 +1,30 @@
+# Total Audio Tracker - Campaign Tracking for Music Promotion
+# https://tracker.totalaudiopromo.com
+
+# Allow all search engines
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /dashboard/
+
+# Allow LLM crawlers (ChatGPT, Claude, Perplexity, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://tracker.totalaudiopromo.com/sitemap.xml

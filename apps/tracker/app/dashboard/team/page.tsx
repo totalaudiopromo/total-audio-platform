@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import TeamManagement from '@/components/teams/TeamManagement';
 import TeamSettings from '@/components/teams/TeamSettings';

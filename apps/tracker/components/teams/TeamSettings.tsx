@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Settings, Palette, Building2, Save, Upload, Eye } from 'lucide-react';
 import { teamManager, Team } from '@/lib/teams';
-import { createClient } from '@/lib/supabase';
+import { createClient } from '@/lib/supabase/client';
 
 export default function TeamSettings() {
   const [team, setTeam] = useState<Team | null>(null);
