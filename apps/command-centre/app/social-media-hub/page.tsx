@@ -102,6 +102,7 @@ export default function SocialMediaHubPage() {
   const [contentTemplates, setContentTemplates] = useState<ContentTemplate[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [templateSeed, setTemplateSeed] = useState(0);
 
   useEffect(() => {
     fetchData();
@@ -1151,65 +1152,115 @@ If these numbers interest you: intel.totalaudiopromo.com`,
       )}
 
       {activeTab === 'templates' && (
-        <div className="postcraft-card">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="postcraft-section-title">Content Templates</h2>
-            <span className="postcraft-text">
-              {contentTemplates.length} authentic templates
-            </span>
-          </div>
-
-          <div className="space-y-4">
-            {contentTemplates.map(template => (
-              <div key={template.id} className="border-3 border-black rounded-xl p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="postcraft-label mb-2">
-                      {template.name}
-                    </h3>
-                    <span className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black ${
-                      template.category === 'announcement' ? 'bg-blue-500 text-white' :
-                      template.category === 'insight' ? 'bg-green-500 text-white' :
-                      template.category === 'personal' ? 'bg-orange-500 text-white' : 'bg-blue-500 text-white'
-                    }`}>
-                      {template.category}
-                    </span>
-                  </div>
-
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => copyToClipboard(template.content, template.id)}
-                      className="p-2 border-3 border-black rounded-lg hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
-                      title="Copy content"
-                    >
-                      {copiedId === template.id ? <Check size={14} /> : <Copy size={14} />}
-                    </button>
-                    <button
-                      onClick={() => {
-                        setContent(template.content);
-                        setSelectedPlatforms(template.platforms);
-                      }}
-                      className="postcraft-button"
-                    >
-                      Use Template
-                    </button>
-                  </div>
-                </div>
-
-                <div className="bg-gray-100 border-2 border-black rounded-lg p-4 mb-4 text-sm whitespace-pre-line font-medium">
-                  {template.content}
-                </div>
-
-                {template.performance && (
-                  <div className="flex justify-between text-xs font-bold text-gray-900">
-                    <span>{template.performance.avgEngagement}% avg engagement</span>
-                    <span>{template.performance.totalReach.toLocaleString()} total reach</span>
-                    <span>{template.performance.conversionRate}% conversion</span>
-                  </div>
-                )}
+        <div className="space-y-6">
+          {/* Refresh Button */}
+          <div className="postcraft-card">
+            <div className="flex justify-between items-center">
+              <div>
+                <h2 className="postcraft-section-title mb-2">Content Templates</h2>
+                <p className="postcraft-text">
+                  {contentTemplates.length} authentic templates • 4 random per platform shown
+                </p>
               </div>
-            ))}
+              <button
+                onClick={() => setTemplateSeed(prev => prev + 1)}
+                className="postcraft-button bg-gradient-to-br from-blue-600 to-purple-600 text-white flex items-center gap-2"
+              >
+                <RefreshCw size={16} />
+                Refresh Templates
+              </button>
+            </div>
           </div>
+
+          {/* Templates by Platform */}
+          {PLATFORMS.filter(p => p.connected).map(platform => {
+            // Get templates for this platform
+            const platformTemplates = contentTemplates.filter(t => t.platforms.includes(platform.id));
+
+            // Shuffle based on seed and take first 4
+            const shuffled = [...platformTemplates].sort((a, b) => {
+              const hashA = (a.id + templateSeed).split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+              const hashB = (b.id + templateSeed).split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+              return hashA - hashB;
+            }).slice(0, 4);
+
+            return (
+              <div key={platform.id} className="postcraft-card">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className={`px-3 py-2 rounded-lg text-sm font-bold border-3 border-black ${platform.color}`}>
+                    {platform.icon}
+                  </span>
+                  <div>
+                    <h3 className="postcraft-label">{platform.name}</h3>
+                    <p className="text-sm font-medium text-gray-600">
+                      {platformTemplates.length} total templates • Showing 4 random
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {shuffled.map(template => (
+                    <div key={template.id} className="border-3 border-black rounded-xl p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-gray-50">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <h4 className="postcraft-label mb-2">
+                            {template.name}
+                          </h4>
+                          <span className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black ${
+                            template.category === 'announcement' ? 'bg-blue-500 text-white' :
+                            template.category === 'insight' ? 'bg-green-500 text-white' :
+                            template.category === 'personal' ? 'bg-orange-500 text-white' :
+                            template.category === 'news' ? 'bg-purple-500 text-white' :
+                            template.category === 'feature' ? 'bg-cyan-500 text-white' : 'bg-blue-500 text-white'
+                          }`}>
+                            {template.category}
+                          </span>
+                        </div>
+
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => copyToClipboard(template.content, template.id)}
+                            className="p-2 border-3 border-black rounded-lg hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all bg-white"
+                            title="Copy content"
+                          >
+                            {copiedId === template.id ? <Check size={16} className="text-green-600" /> : <Copy size={16} />}
+                          </button>
+                          <button
+                            onClick={() => {
+                              setContent(template.content);
+                              setSelectedPlatforms(template.platforms);
+                              setActiveTab('compose');
+                            }}
+                            className="postcraft-button"
+                          >
+                            Use Template
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="bg-white border-2 border-black rounded-lg p-4 text-sm whitespace-pre-line font-medium">
+                        {template.content}
+                      </div>
+
+                      <div className="mt-3 flex items-center gap-2 text-xs font-bold text-gray-600">
+                        <span>Also for:</span>
+                        {template.platforms
+                          .filter(pid => pid !== platform.id)
+                          .map(pid => {
+                            const p = PLATFORMS.find(pl => pl.id === pid);
+                            return p ? (
+                              <span key={pid} className={`px-2 py-1 rounded text-xs font-bold border-2 border-black ${p.color}`}>
+                                {p.icon}
+                              </span>
+                            ) : null;
+                          })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       )}
 
