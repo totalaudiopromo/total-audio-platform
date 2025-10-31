@@ -1025,12 +1025,28 @@ intel.totalaudiopromo.com`,
             // Get templates for this platform
             const platformTemplates = contentTemplates.filter(t => t.platforms.includes(platform.id));
 
+            // Seeded shuffle function
+            const seededShuffle = (array: ContentTemplate[], seed: number) => {
+              const shuffled = [...array];
+              let currentSeed = seed;
+
+              // Simple seeded random number generator
+              const random = () => {
+                currentSeed = (currentSeed * 9301 + 49297) % 233280;
+                return currentSeed / 233280;
+              };
+
+              // Fisher-Yates shuffle with seeded random
+              for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+              }
+
+              return shuffled;
+            };
+
             // Shuffle based on seed and take first 4
-            const shuffled = [...platformTemplates].sort((a, b) => {
-              const hashA = (a.id + templateSeed).split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-              const hashB = (b.id + templateSeed).split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-              return hashA - hashB;
-            }).slice(0, 4);
+            const shuffled = seededShuffle(platformTemplates, templateSeed + platform.id.charCodeAt(0)).slice(0, 4);
 
             return (
               <div key={platform.id} className="postcraft-card">
