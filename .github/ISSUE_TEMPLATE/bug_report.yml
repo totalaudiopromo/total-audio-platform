@@ -54,7 +54,8 @@ body:
     id: environment
     attributes:
       label: Environment details
-      description: Include browser/version, operating system, device, and any other relevant details.
+      description: Include browser/version, oper
+# updated commit message to meet specificationsating system, device, and any other relevant details.
       placeholder: |
         - Browser: Safari 16.4
         - OS: macOS Ventura 13.3
