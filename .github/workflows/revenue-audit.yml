@@ -1,0 +1,219 @@
+name: Daily Revenue Audit
+
+on:
+  schedule:
+    # Run daily at midnight UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      month:
+        description: 'Specific month to audit (YYYY-MM)'
+        required: false
+        type: string
+
+jobs:
+  revenue-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Revenue Audit
+        id: audit
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+        run: |
+          # Determine month to audit
+          if [ -n "${{ github.event.inputs.month }}" ]; then
+            MONTH="${{ github.event.inputs.month }}"
+          else
+            MONTH=$(date +%Y-%m)
+          fi
+
+          echo "Auditing month: $MONTH"
+          echo "month=$MONTH" >> $GITHUB_OUTPUT
+
+          # Run audit script
+          pnpm tsx scripts/revenue-audit.ts --month "$MONTH" --output "reports/revenue/${MONTH}.md"
+
+          # Check if audit failed
+          if [ $? -ne 0 ]; then
+            echo "status=FAILED" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          # Extract status from report
+          if grep -q "Status.*FAIL" "reports/revenue/${MONTH}.md"; then
+            echo "status=FAIL" >> $GITHUB_OUTPUT
+          elif grep -q "Status.*WARNING" "reports/revenue/${MONTH}.md"; then
+            echo "status=WARNING" >> $GITHUB_OUTPUT
+          else
+            echo "status=PASS" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload Audit Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: revenue-audit-${{ steps.audit.outputs.month }}
+          path: reports/revenue/${{ steps.audit.outputs.month }}.md
+          retention-days: 90
+
+      - name: Create GitHub Issue on Failure
+        if: steps.audit.outputs.status == 'FAIL'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const month = '${{ steps.audit.outputs.month }}';
+            const fs = require('fs');
+            const reportPath = `reports/revenue/${month}.md`;
+            const reportContent = fs.readFileSync(reportPath, 'utf8');
+
+            // Extract key metrics from report
+            const revenueMatch = reportContent.match(/Total Revenue.*£([\d.]+).*£([\d.]+).*£([\d.]+)/);
+            const issuesSection = reportContent.match(/## ⚠️ Validation Issues([\s\S]*?)##/);
+
+            const issueBody = `## 🚨 Revenue Audit Failed - ${month}
+
+            **Status**: ❌ FAIL
+
+            ### Summary
+            ${revenueMatch ? `
+            | Metric | Stripe | Database | Δ |
+            |--------|--------|----------|---|
+            | Revenue | £${revenueMatch[1]} | £${revenueMatch[2]} | £${revenueMatch[3]} |
+            ` : 'See full report for details'}
+
+            ### Issues Detected
+            ${issuesSection ? issuesSection[1] : 'Check full report for issue details'}
+
+            ### Action Required
+            1. Review the full audit report (attached as artifact)
+            2. Run backfill script if revenue discrepancy > 5%
+            3. Check Stripe webhook configuration
+            4. Contact affected customers if necessary
+
+            ### Quick Commands
+            \`\`\`bash
+            # Download and review report
+            gh run download ${{ github.run_id }} -n revenue-audit-${month}
+
+            # Run backfill to sync missing payments
+            pnpm tsx scripts/backfill-stripe.ts --days 30
+
+            # Re-run audit after backfill
+            pnpm tsx scripts/revenue-audit.ts --month ${month}
+            \`\`\`
+
+            **Workflow Run**: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            `;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚨 Revenue Audit Failed - ${month}`,
+              body: issueBody,
+              labels: ['revenue-audit', 'critical', 'automated']
+            });
+
+      - name: Create GitHub Issue on Warning
+        if: steps.audit.outputs.status == 'WARNING'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const month = '${{ steps.audit.outputs.month }}';
+            const fs = require('fs');
+            const reportPath = `reports/revenue/${month}.md`;
+            const reportContent = fs.readFileSync(reportPath, 'utf8');
+
+            const issuesSection = reportContent.match(/## ⚠️ Validation Issues([\s\S]*?)##/);
+
+            const issueBody = `## ⚠️ Revenue Audit Warning - ${month}
+
+            **Status**: ⚠️ WARNING
+
+            Minor discrepancies detected in revenue data. Review recommended but not urgent.
+
+            ### Issues Detected
+            ${issuesSection ? issuesSection[1] : 'Check full report for issue details'}
+
+            ### Recommended Actions
+            - Review missing or orphaned payment records
+            - Consider running backfill script for data sync
+            - Monitor next audit for recurring patterns
+
+            **Workflow Run**: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            `;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `⚠️ Revenue Audit Warning - ${month}`,
+              body: issueBody,
+              labels: ['revenue-audit', 'warning', 'automated']
+            });
+
+      - name: Comment on Success
+        if: steps.audit.outputs.status == 'PASS'
+        run: |
+          echo "✅ Revenue audit passed for ${{ steps.audit.outputs.month }}"
+          echo "All revenue data is in sync between Stripe and database."
+
+      - name: Notify Slack on Failure (Optional)
+        if: steps.audit.outputs.status == 'FAIL' && vars.SLACK_WEBHOOK_URL != ''
+        run: |
+          curl -X POST ${{ vars.SLACK_WEBHOOK_URL }} \
+            -H 'Content-Type: application/json' \
+            -d '{
+              "text": "🚨 Revenue Audit Failed",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "🚨 Revenue Audit Failed - ${{ steps.audit.outputs.month }}"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Critical revenue discrepancy detected*\n\nAction required: Review audit report and run backfill script."
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Workflow Run"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }'
