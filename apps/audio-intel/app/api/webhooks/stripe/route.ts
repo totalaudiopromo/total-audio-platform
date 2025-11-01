@@ -92,10 +92,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ received: true, eventId: event.id });
   } catch (error) {
     console.error('❌ Webhook handler error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
@@ -124,8 +121,7 @@ async function handleCheckoutSessionCompleted(event: Stripe.Event) {
 
   // Find user by email or Stripe customer ID
   const userEmail =
-    session.customer_details?.email ||
-    (customer && !customer.deleted ? customer.email : null);
+    session.customer_details?.email || (customer && !customer.deleted ? customer.email : null);
 
   if (!userEmail) {
     console.warn('⚠️ No email found for checkout session:', session.id);
@@ -155,9 +151,7 @@ async function handleCheckoutSessionCompleted(event: Stripe.Event) {
     currency: session.currency || 'gbp',
     status: 'succeeded' as const,
     plan_name: subscription?.items.data[0]?.price.nickname || 'One-time payment',
-    billing_period: subscription
-      ? subscription.items.data[0]?.price.recurring?.interval
-      : null,
+    billing_period: subscription ? subscription.items.data[0]?.price.recurring?.interval : null,
     paid_at: new Date().toISOString(),
   };
 
@@ -187,8 +181,7 @@ async function handlePaymentIntentSucceeded(event: Stripe.Event) {
     : null;
 
   const userEmail =
-    paymentIntent.metadata.user_email ||
-    (customer && !customer.deleted ? customer.email : null);
+    paymentIntent.metadata.user_email || (customer && !customer.deleted ? customer.email : null);
 
   if (!userEmail) {
     console.warn('⚠️ No email found for payment intent:', paymentIntent.id);
@@ -246,8 +239,7 @@ async function handlePaymentIntentFailed(event: Stripe.Event) {
     : null;
 
   const userEmail =
-    paymentIntent.metadata.user_email ||
-    (customer && !customer.deleted ? customer.email : null);
+    paymentIntent.metadata.user_email || (customer && !customer.deleted ? customer.email : null);
 
   if (!userEmail) {
     return;

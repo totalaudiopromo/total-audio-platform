@@ -69,10 +69,7 @@ export async function enrichmentEndpointExample(req: NextRequest) {
       durationMs: Date.now() - startTime,
     });
 
-    return NextResponse.json(
-      { success: false, error: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
 
@@ -110,10 +107,7 @@ export async function exportEndpointExample(req: NextRequest) {
       data: exportData,
     });
   } catch (error: any) {
-    return NextResponse.json(
-      { success: false, error: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
 
@@ -140,10 +134,7 @@ export async function signupEndpointExample(req: NextRequest) {
       user,
     });
   } catch (error: any) {
-    return NextResponse.json(
-      { success: false, error: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
 

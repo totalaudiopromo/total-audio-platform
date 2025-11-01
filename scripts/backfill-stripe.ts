@@ -159,8 +159,7 @@ async function processPaymentIntent(
       : paymentIntent.customer;
 
   const userEmail =
-    paymentIntent.metadata.user_email ||
-    (customer && !customer.deleted ? customer.email : null);
+    paymentIntent.metadata.user_email || (customer && !customer.deleted ? customer.email : null);
 
   if (!userEmail) {
     console.log(`⚠️  Skipping ${paymentIntent.id} - no email found`);
@@ -192,11 +191,16 @@ async function processPaymentIntent(
     status: paymentIntent.status === 'succeeded' ? ('succeeded' as const) : ('failed' as const),
     plan_name: paymentIntent.metadata.plan_name || 'Historical payment',
     billing_period: null,
-    paid_at: paymentIntent.status === 'succeeded' ? new Date(paymentIntent.created * 1000).toISOString() : null,
+    paid_at:
+      paymentIntent.status === 'succeeded'
+        ? new Date(paymentIntent.created * 1000).toISOString()
+        : null,
   };
 
   if (dryRun) {
-    console.log(`🧪 Would insert: ${paymentIntent.id} for ${userEmail} (£${(paymentIntent.amount / 100).toFixed(2)})`);
+    console.log(
+      `🧪 Would insert: ${paymentIntent.id} for ${userEmail} (£${(paymentIntent.amount / 100).toFixed(2)})`
+    );
     return 'success';
   }
 
@@ -210,7 +214,9 @@ async function processPaymentIntent(
     throw new Error(`Database error: ${error.message}`);
   }
 
-  console.log(`✅ Inserted: ${paymentIntent.id} for ${userEmail} (£${(paymentIntent.amount / 100).toFixed(2)})`);
+  console.log(
+    `✅ Inserted: ${paymentIntent.id} for ${userEmail} (£${(paymentIntent.amount / 100).toFixed(2)})`
+  );
   return 'success';
 }
 
@@ -268,7 +274,9 @@ async function processInvoice(
   };
 
   if (dryRun) {
-    console.log(`🧪 Would insert invoice: ${invoice.id} for ${userEmail} (£${(invoice.amount_paid / 100).toFixed(2)})`);
+    console.log(
+      `🧪 Would insert invoice: ${invoice.id} for ${userEmail} (£${(invoice.amount_paid / 100).toFixed(2)})`
+    );
     return 'success';
   }
 
@@ -281,7 +289,9 @@ async function processInvoice(
     throw new Error(`Database error: ${error.message}`);
   }
 
-  console.log(`✅ Inserted invoice: ${invoice.id} for ${userEmail} (£${(invoice.amount_paid / 100).toFixed(2)})`);
+  console.log(
+    `✅ Inserted invoice: ${invoice.id} for ${userEmail} (£${(invoice.amount_paid / 100).toFixed(2)})`
+  );
   return 'success';
 }
 

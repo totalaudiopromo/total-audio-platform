@@ -48,6 +48,7 @@ supabase db diff
 ```
 
 Expected migrations:
+
 - `20251102_metrics.sql` - Events, usage_counters, payments tables
 - `20251102_payments_event_id_constraint.sql` - Idempotency constraint
 
@@ -129,13 +130,13 @@ await trackEnrichmentComplete({
   contactCount: contacts.length,
   successCount: enrichedContacts.length,
   durationMs: Date.now() - startTime,
-  source: 'web_upload'
+  source: 'web_upload',
 });
 
 await incrementUsageCounter({
   userId: user.id,
   date: getTodayDate(),
-  enrichmentsCount: contacts.length
+  enrichmentsCount: contacts.length,
 });
 ```
 
@@ -274,6 +275,7 @@ npx tsx scripts/backfill-stripe.ts --days 30 --dry-run
 ```
 
 Expected output:
+
 ```
 🔄 Starting Stripe payment backfill...
 📅 Period: Last 30 days
@@ -336,30 +338,35 @@ npx tsx scripts/backfill-stripe.ts --days 90
 ### End-to-End Flow Test
 
 1. **User Signup** →
+
    ```bash
    # Check events table for user_signed_up event
    SELECT * FROM events WHERE event_name = 'user_signed_up' AND user_id = '<user-id>';
    ```
 
 2. **Contact Enrichment** →
+
    ```bash
    # Check enrichment_completed event
    # Check usage_counters enrichments_count incremented
    ```
 
 3. **Data Export** →
+
    ```bash
    # Check export_csv_completed event
    # Check usage_counters exports_count incremented
    ```
 
 4. **Payment (via Stripe CLI test event)** →
+
    ```bash
    stripe trigger checkout.session.completed
    # Check payments table for new record
    ```
 
 5. **View Admin Dashboard** →
+
    ```bash
    # Verify all metrics display correctly
    open http://localhost:3000/admin/metrics

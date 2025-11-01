@@ -139,11 +139,13 @@ export default function AdminMetricsPage() {
         {/* Revenue Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-sm font-medium text-gray-500 uppercase">Monthly Recurring Revenue</h3>
-            <p className="text-3xl font-bold text-green-600 mt-2">£{metrics.metrics.revenue.mrr_gbp}</p>
-            <p className="text-sm text-gray-500 mt-1">
-              ARR: £{metrics.metrics.revenue.arr_gbp}
+            <h3 className="text-sm font-medium text-gray-500 uppercase">
+              Monthly Recurring Revenue
+            </h3>
+            <p className="text-3xl font-bold text-green-600 mt-2">
+              £{metrics.metrics.revenue.mrr_gbp}
             </p>
+            <p className="text-sm text-gray-500 mt-1">ARR: £{metrics.metrics.revenue.arr_gbp}</p>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
@@ -178,7 +180,9 @@ export default function AdminMetricsPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-sm font-medium text-gray-500 uppercase">Active Users</h3>
             <p className="text-3xl font-bold text-blue-600 mt-2">{metrics.metrics.users.active}</p>
-            <p className="text-sm text-gray-500 mt-1">{metrics.metrics.users.activeRate} of total</p>
+            <p className="text-sm text-gray-500 mt-1">
+              {metrics.metrics.users.activeRate} of total
+            </p>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
@@ -215,14 +219,18 @@ export default function AdminMetricsPage() {
             </div>
 
             <div>
-              <h3 className="text-sm font-medium text-gray-500 uppercase">Avg Contacts/Enrichment</h3>
+              <h3 className="text-sm font-medium text-gray-500 uppercase">
+                Avg Contacts/Enrichment
+              </h3>
               <p className="text-2xl font-bold text-blue-600 mt-2">
                 {metrics.metrics.enrichments.avgContactsPerEnrichment}
               </p>
             </div>
 
             <div>
-              <h3 className="text-sm font-medium text-gray-500 uppercase">Total Contacts Enriched</h3>
+              <h3 className="text-sm font-medium text-gray-500 uppercase">
+                Total Contacts Enriched
+              </h3>
               <p className="text-2xl font-bold text-purple-600 mt-2">
                 {metrics.metrics.enrichments.totalContactsEnriched}
               </p>
