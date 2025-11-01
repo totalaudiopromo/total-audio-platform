@@ -5,7 +5,8 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server'
+import { cookies } from 'next/headers';
 import { GoogleSheetsSync } from '@/lib/integrations/google-sheets-sync';
 import { GmailReplyTracker } from '@/lib/integrations/gmail-reply-tracker';
 
@@ -24,7 +25,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const supabase = await createClient();
+    const supabase = await createServerClient(cookies());
 
     // Get all active connections that need syncing
     const { data: connections } = await supabase

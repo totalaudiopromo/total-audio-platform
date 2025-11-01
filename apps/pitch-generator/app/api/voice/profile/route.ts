@@ -1,18 +1,19 @@
 import { NextResponse } from 'next/server';
-import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
-import { supabaseAdmin } from '@/lib/supabase';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 
 export async function GET(req: Request) {
   try {
-    const session = await getSupabaseSession();
-    if (!session?.user) {
+    const supabase = await createServerClient(cookies());
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
     }
 
-    const userId = (session.user as any).email || 'demo-user';
+    const userId = user.email || user.id;
 
     // Check if migration is needed by attempting to query
-    const { data, error } = await supabaseAdmin
+    const { data, error } = await (supabase)
       .from('user_pitch_settings')
       .select('*')
       .eq('user_id', userId)
@@ -50,18 +51,19 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   try {
-    const session = await getSupabaseSession();
-    if (!session?.user) {
+    const supabase = await createServerClient(cookies());
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
     }
 
-    const userId = (session.user as any).email || 'demo-user';
+    const userId = user.email || user.id;
     const profile = await req.json();
 
     console.log('Saving voice profile for user:', userId);
 
     // Try direct upsert
-    const { error } = await supabaseAdmin
+    const { error } = await (supabase)
       .from('user_pitch_settings')
       .upsert({
         user_id: userId,

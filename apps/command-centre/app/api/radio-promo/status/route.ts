@@ -291,7 +291,7 @@ export async function POST(request: NextRequest) {
               if (step.id === stepId) {
                 return {
                   ...step,
-                  status: approved ? 'approved' : 'failed' as any,
+                  status: approved ? 'approved' : 'failed',
                   progress: approved ? 100 : 0,
                   message: approved 
                     ? `Approved by user at ${new Date().toISOString()}`

@@ -12,12 +12,12 @@ export async function GET() {
     // List all available agents
     const agents = AgentRegistry.list()
     const manifests = AgentRegistry.getAllManifests()
-    const stats = AgentRegistry.getStats()
+    const stats = AgentRegistry.getStats() as Record<string, any>
 
     const agentInfo = agents.map(name => ({
       name,
       manifest: manifests.get(name),
-      stats: stats[name],
+      stats: stats[name] || null,
     }))
 
     return NextResponse.json({

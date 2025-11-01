@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { stripe, getOrCreateCustomerId } from '@/lib/stripe';
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server'
+import { cookies } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,7 +10,7 @@ export async function POST(request: Request) {
     const { priceId, success_url, cancel_url } = await request.json();
     if (!priceId) return NextResponse.json({ error: 'Missing priceId' }, { status: 400 });
 
-    const supabase = await createClient();
+    const supabase = await createServerClient(cookies());
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthenticated' }, { status: 401 });
 

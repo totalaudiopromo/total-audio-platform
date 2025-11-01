@@ -1,21 +1,22 @@
 import { NextResponse } from 'next/server';
-import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
-import { supabaseAdmin } from '@/lib/supabase';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 
 export async function GET(req: Request) {
   try {
-    const session = await getSupabaseSession();
-    if (!session?.user) {
+    const supabase = await createServerClient(cookies());
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user as any).email || 'demo-user';
+    const userId = user.email || user.id;
     const { searchParams } = new URL(req.url);
     const status = searchParams.get('status');
     const limit = parseInt(searchParams.get('limit') || '20');
     const offset = parseInt(searchParams.get('offset') || '0');
 
-    let query = supabaseAdmin
+    let query = (supabase)
       .from('pitches')
       .select('*', { count: 'exact' })
       .eq('user_id', userId)

@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
 import { stripe, getOrCreateCustomerId } from '@/lib/stripe';
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server'
+import { cookies } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
 export async function POST() {
   try {
-    const supabase = await createClient();
+    const supabase = await createServerClient(cookies());
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthenticated' }, { status: 401 });
     const customerId = await getOrCreateCustomerId(user.id, user.email);

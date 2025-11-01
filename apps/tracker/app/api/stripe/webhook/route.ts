@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server'
+import { cookies } from 'next/headers';
 
 export const runtime = 'nodejs';
 
@@ -17,14 +18,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: `Webhook error: ${err.message}` }, { status: 400 });
   }
 
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
 
   try {
     switch (event.type) {
       case 'customer.subscription.created':
       case 'customer.subscription.updated':
       case 'customer.subscription.deleted': {
-        const sub = event.data.object as any;
+        const sub = event.data.object;
         const stripeSubscriptionId = sub.id as string;
         const customerId = sub.customer as string;
         const status = sub.status as string;

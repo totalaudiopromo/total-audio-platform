@@ -56,7 +56,7 @@ export async function POST(req: Request) {
     }
 
     // Generate pitch using AI
-    const userId = (session.user as any).id || 'demo-user';
+    const userId = (session.user).id || 'demo-user';
     
     const pitchResponse = await generatePitch({
       contactName: contact.name,

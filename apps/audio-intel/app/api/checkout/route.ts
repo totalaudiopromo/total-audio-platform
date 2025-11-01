@@ -4,7 +4,7 @@ import Stripe from 'stripe';
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripe = new Stripe(stripeSecretKey || 'sk_test_placeholder', {
   // @ts-ignore We intentionally pin API version for stability
-  apiVersion: '2023-10-16' as any,
+  apiVersion: '2023-10-16',
 });
 
 type Billing = 'monthly' | 'annual';
@@ -215,7 +215,7 @@ export async function POST(req: NextRequest) {
         ],
         allow_promotion_codes: true,
         // Apple Pay off for now: only 'card'
-        payment_method_types: ['card'] as any,
+        payment_method_types: ['card'],
         subscription_data: trialDays && trialDays > 0 ? { trial_period_days: trialDays } : undefined,
         success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${baseUrl}/pricing`,

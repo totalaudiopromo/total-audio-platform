@@ -3,7 +3,8 @@
 // Bulk import campaigns from spreadsheet data
 // ============================================================================
 
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server'
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 interface CampaignImportRow {
@@ -38,7 +39,7 @@ function isValidDate(dateString: string | undefined): boolean {
 // POST /api/campaigns/import - Bulk import campaigns from CSV
 // ============================================================================
 export async function POST(request: Request) {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {

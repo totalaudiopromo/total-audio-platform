@@ -24,7 +24,9 @@ interface SearchResult {
 async function makePerplexityRequest(prompt: string, retries = 2): Promise<{ content: string; error?: string }> {
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
-      const response = await axios.post(
+      const response = await axios.post<{
+        choices?: Array<{ message?: { content?: string } }>;
+      }>(
         PERPLEXITY_API_URL,
         {
           model: PERPLEXITY_MODEL,
@@ -41,7 +43,7 @@ async function makePerplexityRequest(prompt: string, retries = 2): Promise<{ con
         }
       );
 
-      const content = (response.data as any)?.choices?.[0]?.message?.content || '';
+      const content = response.data?.choices?.[0]?.message?.content || '';
       if (content) {
         return { content };
       }

@@ -28,6 +28,12 @@
       ],
       "@/core/*": [
         "../../src/core/*"
+      ],
+      "@total-audio/core-db": [
+        "../../packages/core-db/src/index.ts"
+      ],
+      "@total-audio/core-db/*": [
+        "../../packages/core-db/src/*"
       ]
     },
     "plugins": [

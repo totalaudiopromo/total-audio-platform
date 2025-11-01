@@ -4,20 +4,20 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
 import { GmailService } from '@/lib/integrations/gmail-service';
 
 export async function GET(request: NextRequest) {
   try {
-    const session = await getSupabaseSession();
-    if (!session?.user) {
+    const supabase = await createServerClient(cookies());
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
       );
     }
 
-    const userId = (session.user as any).email || 'demo-user';
+    const userId = user.email || user.id;
     const gmailService = new GmailService();
     const status = await gmailService.getConnectionStatus(userId);
 

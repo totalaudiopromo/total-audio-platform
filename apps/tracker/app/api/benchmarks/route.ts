@@ -3,12 +3,13 @@
 // GET: Fetch industry benchmark data
 // ============================================================================
 
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server'
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 export async function GET(request: Request) {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
 
   const { searchParams } = new URL(request.url);
   const platform = searchParams.get('platform');

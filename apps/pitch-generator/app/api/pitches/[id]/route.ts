@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
-import { supabaseAdmin } from '@/lib/supabase';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 
 export async function GET(
   req: Request,
@@ -8,14 +8,15 @@ export async function GET(
 ) {
   const { id } = await params;
   try {
-    const session = await getSupabaseSession();
-    if (!session?.user) {
+    const supabase = await createServerClient(cookies());
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user as any).id || 'demo-user';
+    const userId = (session.user).id || 'demo-user';
 
-    const { data: pitch, error } = await supabaseAdmin
+    const { data: pitch, error } = await (supabase)
       .from('pitches')
       .select('*, intel_contacts(*)')
       .eq('id', id)
@@ -42,12 +43,13 @@ export async function PATCH(
 ) {
   const { id } = await params;
   try {
-    const session = await getSupabaseSession();
-    if (!session?.user) {
+    const supabase = await createServerClient(cookies());
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user as any).id || 'demo-user';
+    const userId = (session.user).id || 'demo-user';
     const body = await req.json();
     const { subject_line, body: pitchBody, status } = body;
 
@@ -56,7 +58,7 @@ export async function PATCH(
     if (pitchBody !== undefined) updates.body = pitchBody;
     if (status !== undefined) updates.status = status;
 
-    const { data: pitch, error } = await supabaseAdmin
+    const { data: pitch, error } = await (supabase)
       .from('pitches')
       .update(updates)
       .eq('id', id)
@@ -87,14 +89,15 @@ export async function DELETE(
 ) {
   const { id } = await params;
   try{
-    const session = await getSupabaseSession();
-    if (!session?.user) {
+    const supabase = await createServerClient(cookies());
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user as any).id || 'demo-user';
+    const userId = (session.user).id || 'demo-user';
 
-    const { error } = await supabaseAdmin
+    const { error } = await (supabase)
       .from('pitches')
       .delete()
       .eq('id', id)

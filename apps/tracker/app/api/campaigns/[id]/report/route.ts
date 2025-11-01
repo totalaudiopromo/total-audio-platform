@@ -5,7 +5,8 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server'
+import { cookies } from 'next/headers';
 import { generateCampaignReportPDF, type ReportData } from '@/components/reports/pdf-generator';
 import Anthropic from '@anthropic-ai/sdk';
 
@@ -20,7 +21,7 @@ export async function POST(
     const { id: campaignId } = await params;
     console.log('[Report Generation] Campaign ID:', campaignId);
 
-    const supabase = await createClient();
+    const supabase = await createServerClient(cookies());
 
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {

@@ -1,8 +1,9 @@
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server'
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 export async function POST() {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {

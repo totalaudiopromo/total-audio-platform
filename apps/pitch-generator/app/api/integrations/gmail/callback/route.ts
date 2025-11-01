@@ -4,17 +4,17 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
 import { OAuthHandler } from '@/lib/integrations/oauth-handler';
 
 export async function GET(request: NextRequest) {
   try {
-    const session = await getSupabaseSession();
-    if (!session?.user) {
+    const supabase = await createServerClient(cookies());
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
       return NextResponse.redirect(new URL('/auth/signin', request.url));
     }
 
-    const userId = (session.user as any).email || 'demo-user';
+    const userId = user.email || user.id;
     const { searchParams } = new URL(request.url);
     const code = searchParams.get('code');
     const state = searchParams.get('state');

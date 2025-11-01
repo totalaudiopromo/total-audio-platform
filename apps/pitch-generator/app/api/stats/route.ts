@@ -1,31 +1,32 @@
 import { NextResponse } from 'next/server';
-import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
-import { supabaseAdmin } from '@/lib/supabase';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 
 export async function GET(req: Request) {
   try {
-    const session = await getSupabaseSession();
-    if (!session?.user) {
+    const supabase = await createServerClient(cookies());
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user as any).email || 'demo-user';
+    const userId = user.email || user.id;
 
     // Get total pitches
-    const { count: totalPitches } = await supabaseAdmin
+    const { count: totalPitches } = await (supabase)
       .from('pitches')
       .select('*', { count: 'exact', head: true })
       .eq('user_id', userId);
 
     // Get sent pitches
-    const { count: sentPitches } = await supabaseAdmin
+    const { count: sentPitches } = await (supabase)
       .from('pitches')
       .select('*', { count: 'exact', head: true })
       .eq('user_id', userId)
       .eq('status', 'sent');
 
     // Get draft pitches
-    const { count: draftPitches } = await supabaseAdmin
+    const { count: draftPitches } = await (supabase)
       .from('pitches')
       .select('*', { count: 'exact', head: true })
       .eq('user_id', userId)

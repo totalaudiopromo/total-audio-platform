@@ -1,14 +1,15 @@
 import { NextResponse } from 'next/server';
-import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
-import { supabaseAdmin } from '@/lib/supabase';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 
 export async function PATCH(
   req: Request,
   { params }: { params: { id: string } }
 ) {
   try {
-    const session = await getSupabaseSession();
-    if (!session?.user) {
+    const supabase = await createServerClient(cookies());
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
     }
 
@@ -24,7 +25,7 @@ export async function PATCH(
       );
     }
 
-    const userId = (session.user as any).email || 'demo-user';
+    const userId = user.email || user.id;
 
     // Prepare update data
     const updateData: any = { status };
@@ -35,7 +36,7 @@ export async function PATCH(
     }
 
     // Update pitch status
-    const { data: pitch, error: updateError } = await supabaseAdmin
+    const { data: pitch, error: updateError } = await (supabase)
       .from('pitches')
       .update(updateData)
       .eq('id', pitchId)

@@ -1,18 +1,19 @@
 import { NextResponse } from 'next/server';
-import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
-import { supabaseAdmin } from '@/lib/supabase';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 
 export async function POST(req: Request) {
   try {
-    const session = await getSupabaseSession();
-    if (!session?.user) {
+    const supabase = await createServerClient(cookies());
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
     }
 
-    const userId = (session.user as any).email || 'demo-user';
+    const userId = user.email || user.id;
 
     // Fetch contacts from Audio Intel database (intel_contacts table)
-    const { data: intelContacts, error: fetchError } = await supabaseAdmin
+    const { data: intelContacts, error: fetchError } = await (supabase)
       .from('intel_contacts')
       .select('*')
       .eq('user_id', userId);
@@ -33,7 +34,7 @@ export async function POST(req: Request) {
     }
 
     // Get existing contacts in Pitch Generator to avoid duplicates
-    const { data: existingContacts } = await supabaseAdmin
+    const { data: existingContacts } = await (supabase)
       .from('contacts')
       .select('email, name')
       .eq('user_id', userId);
@@ -73,7 +74,7 @@ export async function POST(req: Request) {
     }));
 
     // Insert contacts into Pitch Generator database
-    const { error: insertError } = await supabaseAdmin
+    const { error: insertError } = await (supabase)
       .from('contacts')
       .insert(contactsToInsert);
 

@@ -4,7 +4,8 @@
 // ============================================================================
 
 import Anthropic from '@anthropic-ai/sdk';
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server'
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 const anthropic = new Anthropic({
@@ -26,7 +27,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const resolvedParams = await params;
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
@@ -64,7 +65,7 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const resolvedParams = await params;
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {

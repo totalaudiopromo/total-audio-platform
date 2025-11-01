@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     // Extract files from form data
     const fileKeys = ['file_0', 'file_1', 'file_2', 'file_3', 'file_4'];
     for (const key of fileKeys) {
-      const value = (formData as any).get(key);
+      const value = (formData).get(key);
       if (value instanceof File) {
         files.push(value);
       }

@@ -12,7 +12,7 @@ export async function GET(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user as any).id || 'demo-user';
+    const userId = (session.user).id || 'demo-user';
 
     const { data: pitch, error } = await supabaseAdmin
       .from('pitches')
@@ -45,7 +45,7 @@ export async function PATCH(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user as any).id || 'demo-user';
+    const userId = (session.user).id || 'demo-user';
     const body = await req.json();
     const { subject_line, body: pitchBody, status } = body;
 
@@ -89,7 +89,7 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user as any).id || 'demo-user';
+    const userId = (session.user).id || 'demo-user';
 
     const { error } = await supabaseAdmin
       .from('pitches')

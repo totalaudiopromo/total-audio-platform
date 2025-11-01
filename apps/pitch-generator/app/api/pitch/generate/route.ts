@@ -1,13 +1,15 @@
 import { NextResponse } from 'next/server';
-import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
-import { supabaseAdmin } from '@/lib/supabase';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 import { generatePitch } from '@/lib/openai';
 import { getSuggestedSendTime } from '@/lib/sendTimeHelper';
 
 export async function POST(req: Request) {
   try {
-    const session = await getSupabaseSession();
-    if (!session?.user) {
+    const supabase = await createServerClient(cookies());
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+    if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
     }
 
@@ -35,7 +37,7 @@ export async function POST(req: Request) {
     // Use provided contact or fetch from database
     let contact = providedContact;
     if (!contact) {
-      const { data: fetchedContact, error: contactError } = await supabaseAdmin
+      const { data: fetchedContact, error: contactError } = await (supabase)
         .from('contacts')
         .select('*')
         .eq('id', contactId)
@@ -54,9 +56,9 @@ export async function POST(req: Request) {
     const sendTimeSuggestion = getSuggestedSendTime(contact.outlet, contact.role);
 
     // Get user's voice profile
-    const userId = (session.user as any).email || 'demo-user';
+    const userId = user.email || user.id;
 
-    const { data: voiceProfile } = await supabaseAdmin
+    const { data: voiceProfile } = await (supabase)
       .from('user_pitch_settings')
       .select('voice_background, voice_style, voice_achievements, voice_approach, voice_differentiator, voice_typical_opener, voice_context_notes')
       .eq('user_id', userId)
@@ -82,7 +84,7 @@ export async function POST(req: Request) {
     });
 
     // Save to database
-    const { data: pitch, error: pitchError } = await supabaseAdmin
+    const { data: pitch, error: pitchError } = await (supabase)
       .from('pitches')
       .insert({
         user_id: userId,

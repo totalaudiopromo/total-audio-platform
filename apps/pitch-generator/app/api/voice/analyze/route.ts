@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getSupabaseSession } from '@/lib/supabase/auth-helpers';
+import { getSupabaseSession } from '@total-audio/core-db/server' // MIGRATED;
 import Anthropic from '@anthropic-ai/sdk';
 
 const anthropic = new Anthropic({

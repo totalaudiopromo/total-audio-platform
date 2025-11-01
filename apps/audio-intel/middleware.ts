@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { updateSession } from '@/lib/supabase/middleware'
+import { updateSession } from '@total-audio/core-db/middleware'
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl

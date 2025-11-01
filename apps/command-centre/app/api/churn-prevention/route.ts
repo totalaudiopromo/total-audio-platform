@@ -407,7 +407,7 @@ function generateAtRiskCustomers(): CustomerRiskProfile[] {
         strategicImportance: Math.round(strategicImportance),
         retentionROI: Math.round(lifetimeValue * 0.8) // 80% of LTV if retained
       },
-      interventionPlan: {} as any, // Will be filled below
+      interventionPlan: {}, // Will be filled below
       historicalPatterns: {
         previousChurnIndicators: signals.slice(0, 2).map(s => s.description),
         seasonalRisk: 30 + Math.random() * 40,

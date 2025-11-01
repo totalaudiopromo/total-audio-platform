@@ -1,9 +1,10 @@
-import { createClient } from '@/lib/supabase/server'
+import { createServerClient } from '@total-audio/core-db/server'
+import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    const supabase = await createClient()
+    const supabase = await createServerClient(cookies())
 
     // Get current user
     const { data: { user }, error: authError } = await supabase.auth.getUser()
@@ -24,13 +25,16 @@ export async function GET() {
       return NextResponse.json({ error: 'Failed to fetch usage data' }, { status: 500 })
     }
 
+    const limit = userData.enrichments_limit || 10; // Default to free tier limit
+    const used = userData.enrichments_used || 0;
+
     return NextResponse.json({
       success: true,
       usage: {
-        used: userData.enrichments_used,
-        limit: userData.enrichments_limit,
-        remaining: userData.enrichments_limit - userData.enrichments_used,
-        percentage: (userData.enrichments_used / userData.enrichments_limit) * 100,
+        used,
+        limit,
+        remaining: limit - used,
+        percentage: (used / limit) * 100,
         tier: userData.subscription_tier,
         betaAccess: userData.beta_access,
       },
@@ -43,7 +47,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const supabase = await createClient()
+    const supabase = await createServerClient(cookies())
 
     // Get current user
     const { data: { user }, error: authError } = await supabase.auth.getUser()
@@ -71,23 +75,27 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Failed to fetch user data' }, { status: 500 })
     }
 
+    const currentUsed = userData.enrichments_used || 0;
+    const currentLimit = userData.enrichments_limit || 10;
+
     // Check if user has exceeded limit
-    if (userData.enrichments_used >= userData.enrichments_limit) {
+    if (currentUsed >= currentLimit) {
       return NextResponse.json({
         error: 'Enrichment limit reached',
         limitReached: true,
-        used: userData.enrichments_used,
-        limit: userData.enrichments_limit,
+        used: currentUsed,
+        limit: currentLimit,
       }, { status: 429 })
     }
 
     // Increment usage count
-    const { error: updateError } = await supabase
+    const updateResult: any = await (supabase)
       .from('users')
       .update({
-        enrichments_used: userData.enrichments_used + contactsCount,
+        enrichments_used: currentUsed + contactsCount,
       })
       .eq('id', user.id)
+    const { error: updateError } = updateResult
 
     if (updateError) {
       console.error('Error updating usage:', updateError)
@@ -95,7 +103,7 @@ export async function POST(request: Request) {
     }
 
     // Log the enrichment
-    const { error: logError } = await supabase
+    const insertResult: any = await (supabase)
       .from('enrichment_logs')
       .insert({
         user_id: user.id,
@@ -105,6 +113,7 @@ export async function POST(request: Request) {
         api_tokens_used: apiTokensUsed,
         api_cost_cents: apiCostCents,
       })
+    const { error: logError } = insertResult
 
     if (logError) {
       console.error('Error logging enrichment:', logError)
@@ -114,9 +123,9 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       usage: {
-        used: userData.enrichments_used + contactsCount,
-        limit: userData.enrichments_limit,
-        remaining: userData.enrichments_limit - (userData.enrichments_used + contactsCount),
+        used: currentUsed + contactsCount,
+        limit: currentLimit,
+        remaining: currentLimit - (currentUsed + contactsCount),
       },
     })
   } catch (error) {
