@@ -24,7 +24,9 @@ export const NeoCard: React.FC<CardProps> = ({ children, className = '', variant
   };
 
   return (
-    <div className={`bg-white rounded-xl border-4 ${variantStyles[variant]} shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 ${className}`}>
+    <div
+      className={`bg-white rounded-xl border-4 ${variantStyles[variant]} shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 ${className}`}
+    >
       {children}
     </div>
   );
@@ -46,7 +48,7 @@ export const NeoMetricCard: React.FC<MetricCardProps> = ({
   icon: Icon,
   change,
   changeType = 'neutral',
-  variant = 'default'
+  variant = 'default',
 }) => {
   const variantStyles = {
     default: 'border-black',
@@ -65,22 +67,31 @@ export const NeoMetricCard: React.FC<MetricCardProps> = ({
   };
 
   return (
-    <div className={`bg-white p-6 rounded-xl border-4 ${variantStyles[variant]} shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5`}>
+    <div
+      className={`bg-white p-6 rounded-xl border-4 ${variantStyles[variant]} shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5`}
+    >
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <p className="text-sm font-bold text-gray-600 uppercase tracking-wide mb-2">{label}</p>
           <p className="text-3xl font-black text-gray-900">{value}</p>
           {change && (
-            <p className={`text-sm font-bold mt-2 ${
-              changeType === 'positive' ? 'text-green-600' :
-              changeType === 'negative' ? 'text-red-600' : 'text-gray-600'
-            }`}>
+            <p
+              className={`text-sm font-bold mt-2 ${
+                changeType === 'positive'
+                  ? 'text-green-600'
+                  : changeType === 'negative'
+                    ? 'text-red-600'
+                    : 'text-gray-600'
+              }`}
+            >
               {change}
             </p>
           )}
         </div>
         {Icon && (
-          <div className={`w-12 h-12 ${iconBgStyles[variant]} rounded-lg border-2 border-black flex items-center justify-center`}>
+          <div
+            className={`w-12 h-12 ${iconBgStyles[variant]} rounded-lg border-2 border-black flex items-center justify-center`}
+          >
             <Icon className="w-6 h-6" />
           </div>
         )}
@@ -107,7 +118,7 @@ export const NeoButton: React.FC<ButtonProps> = ({
   size = 'md',
   disabled = false,
   className = '',
-  type = 'button'
+  type = 'button',
 }) => {
   const variantStyles = {
     primary: 'bg-blue-600 hover:bg-blue-700 text-white',
@@ -141,7 +152,11 @@ interface BadgeProps {
   className?: string;
 }
 
-export const NeoBadge: React.FC<BadgeProps> = ({ children, variant = 'default', className = '' }) => {
+export const NeoBadge: React.FC<BadgeProps> = ({
+  children,
+  variant = 'default',
+  className = '',
+}) => {
   const variantStyles = {
     default: 'bg-gray-100 text-gray-800',
     blue: 'bg-blue-100 text-blue-800',
@@ -152,7 +167,9 @@ export const NeoBadge: React.FC<BadgeProps> = ({ children, variant = 'default', 
   };
 
   return (
-    <span className={`inline-flex items-center gap-2 rounded-full border-2 border-black px-3 py-1 text-xs font-bold uppercase tracking-wide shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${variantStyles[variant]} ${className}`}>
+    <span
+      className={`inline-flex items-center gap-2 rounded-full border-2 border-black px-3 py-1 text-xs font-bold uppercase tracking-wide shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${variantStyles[variant]} ${className}`}
+    >
       {children}
     </span>
   );
@@ -182,13 +199,9 @@ export const NeoSectionHeader: React.FC<SectionHeaderProps> = ({ title, descript
     <div className="mb-8">
       <div className="flex items-center gap-4 mb-2">
         <h2 className="text-3xl font-black text-gray-900">{title}</h2>
-        {badge && (
-          <NeoBadge variant="blue">{badge}</NeoBadge>
-        )}
+        {badge && <NeoBadge variant="blue">{badge}</NeoBadge>}
       </div>
-      {description && (
-        <p className="text-lg text-gray-600 font-medium">{description}</p>
-      )}
+      {description && <p className="text-lg text-gray-600 font-medium">{description}</p>}
     </div>
   );
 };
@@ -211,9 +224,7 @@ export const NeoInput: React.FC<InputProps> = ({ label, error, className = '', .
         className={`w-full px-4 py-2 border-2 border-black rounded-lg font-medium bg-white placeholder-gray-500 focus:outline-none focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all ${error ? 'border-red-500' : ''} ${className}`}
         {...props}
       />
-      {error && (
-        <p className="text-sm font-bold text-red-600">{error}</p>
-      )}
+      {error && <p className="text-sm font-bold text-red-600">{error}</p>}
     </div>
   );
 };
@@ -257,7 +268,12 @@ interface EmptyStateProps {
   };
 }
 
-export const NeoEmptyState: React.FC<EmptyStateProps> = ({ title, description, icon: Icon, action }) => {
+export const NeoEmptyState: React.FC<EmptyStateProps> = ({
+  title,
+  description,
+  icon: Icon,
+  action,
+}) => {
   return (
     <div className="text-center p-12 bg-white rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
       {Icon && (
@@ -267,11 +283,7 @@ export const NeoEmptyState: React.FC<EmptyStateProps> = ({ title, description, i
       )}
       <h3 className="text-2xl font-black text-gray-900 mb-2">{title}</h3>
       <p className="text-gray-600 font-medium mb-6">{description}</p>
-      {action && (
-        <NeoButton onClick={action.onClick}>
-          {action.label}
-        </NeoButton>
-      )}
+      {action && <NeoButton onClick={action.onClick}>{action.label}</NeoButton>}
     </div>
   );
 };

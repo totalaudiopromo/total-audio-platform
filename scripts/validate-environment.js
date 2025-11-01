@@ -5,27 +5,11 @@ const path = require('path');
 
 // Required environment variables for each app
 const requiredEnvVars = {
-  'audio-intel': [
-    'NEXT_PUBLIC_BASE_URL',
-    'PERPLEXITY_API_KEY'
-  ],
-  'command-centre': [
-    'NEXT_PUBLIC_BASE_URL',
-    'NEXTAUTH_URL',
-    'NEXTAUTH_SECRET'
-  ],
-  'tracker': [
-    'NEXT_PUBLIC_BASE_URL',
-    'SUPABASE_URL',
-    'SUPABASE_ANON_KEY'
-  ],
-  'web': [
-    'NEXT_PUBLIC_BASE_URL'
-  ],
-  'pitch-generator': [
-    'NEXT_PUBLIC_BASE_URL',
-    'OPENAI_API_KEY'
-  ]
+  'audio-intel': ['NEXT_PUBLIC_BASE_URL', 'PERPLEXITY_API_KEY'],
+  'command-centre': ['NEXT_PUBLIC_BASE_URL', 'NEXTAUTH_URL', 'NEXTAUTH_SECRET'],
+  tracker: ['NEXT_PUBLIC_BASE_URL', 'SUPABASE_URL', 'SUPABASE_ANON_KEY'],
+  web: ['NEXT_PUBLIC_BASE_URL'],
+  'pitch-generator': ['NEXT_PUBLIC_BASE_URL', 'OPENAI_API_KEY'],
 };
 
 // Apps to validate
@@ -33,24 +17,24 @@ const apps = ['audio-intel', 'command-centre', 'tracker', 'web', 'pitch-generato
 
 function validateEnvironment() {
   console.log('🔍 Validating environment variables...\n');
-  
+
   let allValid = true;
-  
+
   apps.forEach(app => {
     console.log(`📱 Checking ${app}:`);
-    
+
     const envFile = path.join(__dirname, '..', 'apps', app, '.env.local');
     const envProductionFile = path.join(__dirname, '..', 'apps', app, '.env.production');
-    
+
     // Check if .env files exist
     const envExists = fs.existsSync(envFile);
     const envProdExists = fs.existsSync(envProductionFile);
-    
+
     if (!envExists && !envProdExists) {
       console.log(`  ⚠️  No .env files found for ${app}`);
       console.log(`  📝 Create .env.local and .env.production files`);
     }
-    
+
     // Check required variables
     const required = requiredEnvVars[app] || [];
     required.forEach(varName => {
@@ -62,10 +46,10 @@ function validateEnvironment() {
         allValid = false;
       }
     });
-    
+
     console.log('');
   });
-  
+
   if (allValid) {
     console.log('🎉 All environment variables are valid!');
     process.exit(0);

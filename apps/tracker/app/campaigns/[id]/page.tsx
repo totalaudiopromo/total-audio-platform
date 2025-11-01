@@ -1,4 +1,5 @@
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 import { redirect, notFound } from 'next/navigation';
 import { CampaignDetailClient } from '@/components/campaigns/CampaignDetailClient';
 
@@ -8,8 +9,10 @@ export default async function CampaignDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const supabase = await createServerClient(cookies());
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
     redirect('/login');

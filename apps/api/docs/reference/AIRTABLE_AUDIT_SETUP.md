@@ -111,4 +111,4 @@ curl -X POST http://localhost:3001/api/airtable-audit/audit \
 4. **Set up regular audits** to maintain data quality
 5. **Integrate with your workflow** for ongoing monitoring
 
-The audit is designed to be non-destructive - it only analyzes your data and provides recommendations without making any changes to your Airtable base. 
+The audit is designed to be non-destructive - it only analyzes your data and provides recommendations without making any changes to your Airtable base.

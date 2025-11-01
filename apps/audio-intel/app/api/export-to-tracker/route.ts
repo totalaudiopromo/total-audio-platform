@@ -42,27 +42,36 @@ export async function POST(req: NextRequest) {
     const { contacts, campaignName, includeEnrichmentData = true } = body;
 
     if (!contacts || !Array.isArray(contacts) || contacts.length === 0) {
-      return NextResponse.json({
-        success: false,
-        error: 'No contacts provided for export'
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'No contacts provided for export',
+        },
+        { status: 400 }
+      );
     }
 
     // Transform Audio Intel contacts to Tracker format
     const trackerContacts: TrackerContact[] = contacts.map(contact => {
-      const enrichmentNotes = includeEnrichmentData ? [
-        contact.contactIntelligence ? `Intelligence: ${contact.contactIntelligence}` : null,
-        contact.researchConfidence ? `Confidence: ${contact.researchConfidence}` : null,
-        contact.lastResearched ? `Researched: ${contact.lastResearched}` : null,
-        contact.company ? `Company: ${contact.company}` : null,
-      ].filter(Boolean).join('\n') : '';
+      const enrichmentNotes = includeEnrichmentData
+        ? [
+            contact.contactIntelligence ? `Intelligence: ${contact.contactIntelligence}` : null,
+            contact.researchConfidence ? `Confidence: ${contact.researchConfidence}` : null,
+            contact.lastResearched ? `Researched: ${contact.lastResearched}` : null,
+            contact.company ? `Company: ${contact.company}` : null,
+          ]
+            .filter(Boolean)
+            .join('\n')
+        : '';
 
       return {
         name: contact.name || 'Unknown',
         email: contact.email || '',
         outlet: contact.platform || contact.company || 'Unknown',
         role: contact.role || undefined,
-        notes: enrichmentNotes || `Imported from Audio Intel${campaignName ? ` for ${campaignName}` : ''}`,
+        notes:
+          enrichmentNotes ||
+          `Imported from Audio Intel${campaignName ? ` for ${campaignName}` : ''}`,
         status: 'pending',
         contacted_date: undefined,
         response_date: undefined,
@@ -70,7 +79,16 @@ export async function POST(req: NextRequest) {
     });
 
     // Generate CSV format for Tracker
-    const csvHeaders = ['Name', 'Email', 'Outlet', 'Role', 'Status', 'Notes', 'Contacted Date', 'Response Date'];
+    const csvHeaders = [
+      'Name',
+      'Email',
+      'Outlet',
+      'Role',
+      'Status',
+      'Notes',
+      'Contacted Date',
+      'Response Date',
+    ];
     const csvRows = trackerContacts.map(contact => [
       escapeCSV(contact.name),
       escapeCSV(contact.email),
@@ -82,10 +100,7 @@ export async function POST(req: NextRequest) {
       contact.response_date || '',
     ]);
 
-    const csvContent = [
-      csvHeaders.join(','),
-      ...csvRows.map(row => row.join(','))
-    ].join('\n');
+    const csvContent = [csvHeaders.join(','), ...csvRows.map(row => row.join(','))].join('\n');
 
     // Generate filename with timestamp
     const timestamp = new Date().toISOString().split('T')[0];
@@ -104,8 +119,8 @@ export async function POST(req: NextRequest) {
             contactsCount: contacts.length,
             campaignName: campaignName || null,
             includeEnrichmentData,
-          }
-        })
+          },
+        }),
       });
     } catch (analyticsError) {
       console.error('Analytics tracking failed:', analyticsError);
@@ -120,13 +135,15 @@ export async function POST(req: NextRequest) {
       downloadUrl: `data:text/csv;charset=utf-8,${encodeURIComponent(csvContent)}`,
       deepLink: `https://tracker.totalaudiopromo.com/dashboard/import?source=audio-intel&contacts=${trackerContacts.length}`,
     });
-
   } catch (error: any) {
     console.error('Export to Tracker API error:', error);
-    return NextResponse.json({
-      success: false,
-      error: error.message || 'Export processing failed'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message || 'Export processing failed',
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -150,8 +167,11 @@ function slugify(text: string): string {
 }
 
 export async function GET() {
-  return new Response('This endpoint only supports POST requests. Use POST to export contacts to Tracker format.', {
-    status: 405,
-    headers: { 'Content-Type': 'text/plain' }
-  });
+  return new Response(
+    'This endpoint only supports POST requests. Use POST to export contacts to Tracker format.',
+    {
+      status: 405,
+      headers: { 'Content-Type': 'text/plain' },
+    }
+  );
 }

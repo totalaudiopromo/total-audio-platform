@@ -151,12 +151,16 @@ coverage/
 # Large data files
 *.json
 !package.json
-!package-lock.json
+!pnpm-lock.yaml
 !tsconfig.json
 !vercel.json
 !next.config.js
 !tailwind.config.js
 !postcss.config.js
+
+# Ignore npm lock files (using pnpm)
+package-lock.json
+**/package-lock.json
 
 # Exclude specific large files
 duplicate-backup-*.json

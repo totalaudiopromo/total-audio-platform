@@ -43,7 +43,7 @@ A React Native mobile application for the Total Audio Promo platform, allowing a
    ```bash
    # For iOS
    npm run ios
-   
+
    # For Android
    npm run android
    ```
@@ -79,4 +79,4 @@ This mobile app is designed to work with the Total Audio Promo backend API. Make
 1. Follow the existing code style
 2. Test on both iOS and Android
 3. Ensure accessibility compliance
-4. Update documentation as needed 
+4. Update documentation as needed

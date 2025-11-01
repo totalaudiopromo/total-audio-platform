@@ -23,21 +23,22 @@ export function createAgent(): PostingAgent;
 
 ## Feature Comparison
 
-| Feature | BlueSky Agent | Threads Agent |
-|---------|---------------|---------------|
-| **Authentication** | Username/password | OAuth access token |
-| **Protocol** | AT Protocol | Instagram Graph API |
-| **Character Limit** | 300 | 500 |
-| **Posting Method** | Single-step | Two-step (create + publish) |
-| **Rate Limiting** | 1s delay | 2s delay |
-| **Health Check** | Login test | API access test |
-| **Insights** | ❌ Not available | ✅ Views, likes, replies, followers |
-| **Content Mapping** | 8 posts | 10 posts |
-| **Dependencies** | @atproto/api | axios (existing) |
+| Feature             | BlueSky Agent     | Threads Agent                       |
+| ------------------- | ----------------- | ----------------------------------- |
+| **Authentication**  | Username/password | OAuth access token                  |
+| **Protocol**        | AT Protocol       | Instagram Graph API                 |
+| **Character Limit** | 300               | 500                                 |
+| **Posting Method**  | Single-step       | Two-step (create + publish)         |
+| **Rate Limiting**   | 1s delay          | 2s delay                            |
+| **Health Check**    | Login test        | API access test                     |
+| **Insights**        | ❌ Not available  | ✅ Views, likes, replies, followers |
+| **Content Mapping** | 8 posts           | 10 posts                            |
+| **Dependencies**    | @atproto/api      | axios (existing)                    |
 
 ## Implementation Details
 
 ### BlueSky Agent
+
 - **Lines of Code**: 294
 - **API Client**: @atproto/api (external package)
 - **Authentication**: Session-based (login required)
@@ -45,6 +46,7 @@ export function createAgent(): PostingAgent;
 - **Best For**: Tech-savvy audience, decentralised platform
 
 ### Threads Agent
+
 - **Lines of Code**: 571
 - **API Client**: axios (already installed)
 - **Authentication**: Long-lived access token (60 days)
@@ -54,6 +56,7 @@ export function createAgent(): PostingAgent;
 ## Content Strategy
 
 ### BlueSky Posts (8 total)
+
 1. The Time Problem
 2. BBC Radio 1 Test
 3. Regional Radio Opportunity
@@ -66,6 +69,7 @@ export function createAgent(): PostingAgent;
 **Focus**: Concise, tech-focused messaging (300 chars)
 
 ### Threads Posts (10 total)
+
 1. The Real Problem
 2. BBC Radio 1 Success
 3. Regional Radio Strategy
@@ -82,6 +86,7 @@ export function createAgent(): PostingAgent;
 ## Usage Examples
 
 ### BlueSky
+
 ```typescript
 import { createBlueskyAgent } from './lib/bluesky-posting-agent';
 
@@ -91,6 +96,7 @@ const result = await agent.post('Content here (max 300 chars)');
 ```
 
 ### Threads
+
 ```typescript
 import { createThreadsAgent } from './lib/threads-posting-agent';
 
@@ -103,6 +109,7 @@ const result = await agent.post('Content here (max 500 chars)');
 Both agents integrate with `CONTENT_CALENDAR.json`:
 
 ### Calendar Structure
+
 ```json
 {
   "schedule": [
@@ -121,6 +128,7 @@ Both agents integrate with `CONTENT_CALENDAR.json`:
 ```
 
 ### Processing Logic
+
 ```typescript
 // Both agents use same interface
 const agent = createAgent(); // BlueSky or Threads
@@ -157,12 +165,14 @@ Both agents implement identical error handling patterns:
 ## Environment Variables
 
 ### BlueSky
+
 ```bash
 BLUESKY_IDENTIFIER=username.bsky.social
 BLUESKY_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx
 ```
 
 ### Threads
+
 ```bash
 THREADS_USER_ID=123456789
 THREADS_ACCESS_TOKEN=IGQ...
@@ -173,6 +183,7 @@ FACEBOOK_APP_SECRET=abc123
 ## Setup Complexity
 
 ### BlueSky (Simple)
+
 1. Create account on bsky.app
 2. Generate app password
 3. Add credentials to .env
@@ -181,6 +192,7 @@ FACEBOOK_APP_SECRET=abc123
 **Time**: 5 minutes
 
 ### Threads (Complex)
+
 1. Convert Instagram to Professional
 2. Create Meta Developer app
 3. Configure OAuth settings
@@ -195,11 +207,13 @@ FACEBOOK_APP_SECRET=abc123
 ## Maintenance
 
 ### BlueSky
+
 - **Token Expiry**: App passwords don't expire
 - **Rotation**: Optional security best practice
 - **Maintenance**: Minimal
 
 ### Threads
+
 - **Token Expiry**: 60 days (long-lived)
 - **Rotation**: Required before expiration
 - **Maintenance**: Monthly token refresh
@@ -208,11 +222,13 @@ FACEBOOK_APP_SECRET=abc123
 ## Performance
 
 ### BlueSky
+
 - **API Calls**: No strict published limits
 - **Rate Limiting**: 1s between posts (conservative)
 - **Uptime**: Good (decentralised network)
 
 ### Threads
+
 - **API Calls**: 1,000 per hour per user
 - **Publishing**: 250 posts per day
 - **Rate Limiting**: 2s between posts (API guidelines)
@@ -221,11 +237,13 @@ FACEBOOK_APP_SECRET=abc123
 ## Monitoring & Analytics
 
 ### BlueSky
+
 - Post URIs for tracking
 - External analytics required
 - No built-in insights API
 
 ### Threads
+
 - Post IDs for tracking
 - Built-in insights API
 - Metrics: views, likes, replies, reposts, quotes
@@ -234,12 +252,14 @@ FACEBOOK_APP_SECRET=abc123
 ## Recommended Usage
 
 ### BlueSky Best For:
+
 - Tech industry audience
 - Early adopters
 - Decentralised platform advocates
 - Quick setup requirements
 
 ### Threads Best For:
+
 - Broader music industry audience
 - Instagram integration benefits
 - Detailed analytics needs
@@ -266,7 +286,7 @@ async function postToAllPlatforms() {
 
   return {
     bluesky: blueskyResults,
-    threads: threadsResults
+    threads: threadsResults,
   };
 }
 ```
@@ -283,20 +303,21 @@ If switching between platforms:
 
 ## Summary
 
-| Aspect | Winner | Reason |
-|--------|--------|--------|
-| **Setup Speed** | BlueSky | 5 min vs 45 min |
-| **Analytics** | Threads | Built-in insights API |
-| **Maintenance** | BlueSky | No token expiry |
-| **Audience Reach** | Threads | Instagram network |
-| **Rate Limits** | Threads | Clear published limits |
-| **Content Length** | Threads | 500 vs 300 chars |
-| **Setup Complexity** | BlueSky | Simple credentials |
-| **Long-term Cost** | Equal | Both free |
+| Aspect               | Winner  | Reason                 |
+| -------------------- | ------- | ---------------------- |
+| **Setup Speed**      | BlueSky | 5 min vs 45 min        |
+| **Analytics**        | Threads | Built-in insights API  |
+| **Maintenance**      | BlueSky | No token expiry        |
+| **Audience Reach**   | Threads | Instagram network      |
+| **Rate Limits**      | Threads | Clear published limits |
+| **Content Length**   | Threads | 500 vs 300 chars       |
+| **Setup Complexity** | BlueSky | Simple credentials     |
+| **Long-term Cost**   | Equal   | Both free              |
 
 ## Recommendation
 
 **Use Both Platforms**:
+
 - BlueSky for tech-savvy early adopters
 - Threads for broader music industry reach
 - Leverage existing content mapping

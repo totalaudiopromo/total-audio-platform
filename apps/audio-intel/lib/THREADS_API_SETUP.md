@@ -5,6 +5,7 @@ Complete guide for setting up Instagram Threads API integration for Audio Intel 
 ## Overview
 
 The Threads API uses Instagram's Graph API infrastructure. You'll need:
+
 - Meta Developer Account
 - Instagram Professional Account (Creator or Business)
 - Facebook Page connected to Instagram account
@@ -51,6 +52,7 @@ The Threads API uses Instagram's Graph API infrastructure. You'll need:
 
 3. Navigate to **Threads API → Settings**
 4. Add OAuth Redirect URIs:
+
    ```
    https://intel.totalaudiopromo.com/api/auth/threads/callback
    http://localhost:3000/api/auth/threads/callback
@@ -63,6 +65,7 @@ The Threads API uses Instagram's Graph API infrastructure. You'll need:
 ### 4. Get Your Credentials
 
 From **App Settings → Basic**:
+
 - **App ID**: Save this as `FACEBOOK_APP_ID`
 - **App Secret**: Save this as `FACEBOOK_APP_SECRET`
 
@@ -82,6 +85,7 @@ From **App Settings → Basic**:
 #### Method 2: OAuth Flow (Production)
 
 Create authorization URL:
+
 ```
 https://threads.net/oauth/authorize?
   client_id={FACEBOOK_APP_ID}&
@@ -91,6 +95,7 @@ https://threads.net/oauth/authorize?
 ```
 
 Exchange code for token:
+
 ```bash
 curl -X POST "https://graph.threads.net/oauth/access_token" \
   -d "client_id={FACEBOOK_APP_ID}" \
@@ -101,6 +106,7 @@ curl -X POST "https://graph.threads.net/oauth/access_token" \
 ```
 
 Response:
+
 ```json
 {
   "access_token": "short_lived_token_here",
@@ -120,6 +126,7 @@ curl -X GET "https://graph.threads.net/access_token" \
 ```
 
 Response:
+
 ```json
 {
   "access_token": "long_lived_token_here",
@@ -139,6 +146,7 @@ curl -X GET "https://graph.threads.net/v1.0/me" \
 ```
 
 Response:
+
 ```json
 {
   "id": "123456789",
@@ -159,6 +167,7 @@ curl -X GET "https://graph.threads.net/refresh_access_token" \
 ```
 
 Response:
+
 ```json
 {
   "access_token": "refreshed_long_lived_token",
@@ -227,6 +236,7 @@ testThreadsAgent();
 ```
 
 Run test:
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel
 npx tsx scripts/test-threads-agent.ts
@@ -292,6 +302,7 @@ if (insights.success) {
 ## API Rate Limits
 
 **Threads API Rate Limits:**
+
 - **Rate Limit**: 1,000 API calls per hour per user
 - **Publishing**: 250 posts per day per user
 - **Recommended**: 2-3 second delay between posts
@@ -309,21 +320,25 @@ The agent includes built-in rate limiting (2 seconds between posts).
 ### Common Issues
 
 **"Invalid OAuth access token"**
+
 - Token expired (refresh required)
 - Wrong token format
 - Missing permissions
 
 **"User not authorized"**
+
 - Instagram account not Professional
 - Missing Facebook Page connection
 - App not approved for Threads API
 
 **"Rate limit exceeded"**
+
 - Too many API calls
 - Wait and retry
 - Implement exponential backoff
 
 **"Media container creation failed"**
+
 - Text exceeds 500 characters
 - Invalid characters in content
 - Network timeout
@@ -331,12 +346,14 @@ The agent includes built-in rate limiting (2 seconds between posts).
 ### Debug Mode
 
 Enable debug logging:
+
 ```typescript
 // Add to agent initialization
 console.log('[THREADS] Debug mode enabled');
 ```
 
 Check API responses:
+
 ```bash
 curl -X GET "https://graph.threads.net/v1.0/{USER_ID}/threads" \
   -d "fields=id,text,timestamp" \
@@ -367,6 +384,7 @@ curl -X GET "https://graph.threads.net/v1.0/{USER_ID}/threads" \
 ### Cron Job (Production)
 
 Run posting agent every hour:
+
 ```bash
 # crontab -e
 0 * * * * cd /path/to/audio-intel && npx tsx scripts/threads-posting-cron.ts
@@ -394,7 +412,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      results
+      results,
     });
   } catch (error) {
     console.error('Threads posting cron failed:', error);
@@ -407,6 +425,7 @@ export async function GET(request: NextRequest) {
 ```
 
 Configure `vercel.json`:
+
 ```json
 {
   "crons": [
@@ -428,6 +447,7 @@ Configure `vercel.json`:
 ## Support
 
 For issues with this integration:
+
 - Check Vercel logs: `vercel logs`
 - Review Meta Developer dashboard for API errors
 - Test with Graph API Explorer

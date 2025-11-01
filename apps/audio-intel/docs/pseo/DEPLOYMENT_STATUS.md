@@ -11,6 +11,7 @@
 ### Pages Deployed: 8/60 (13.3%) - 80% of Tier 1 Complete!
 
 **Tier 1 - Live Pages** (350-2000 monthly searches):
+
 1. ✅ [BBC Radio 1 Contact Enrichment](/blog/bbc-radio-1-contact-enrichment) - LIVE (1200/mo)
 2. ✅ [BBC Radio 6 Music Contact Enrichment](/blog/bbc-radio-6-music-contact-enrichment) - LIVE (800/mo)
 3. ✅ [Spotify Editorial Playlist Contacts](/blog/spotify-editorial-playlist-contacts) - LIVE (2000/mo)
@@ -20,9 +21,7 @@
 7. ✅ [Kerrang Radio Contact Enrichment](/blog/kerrang-radio-contact-enrichment) - **NEW** (350/mo)
 8. ✅ [Absolute Radio Contact Enrichment](/blog/absolute-radio-contact-enrichment) - **NEW** (350/mo)
 
-**Tier 1 - Needs More Research**:
-9. ⚠️ Capital FM (400/mo) - 78% confidence, no official submission process found
-10. ⚠️ KISS FM (400/mo) - 75% confidence, no official submission process found
+**Tier 1 - Needs More Research**: 9. ⚠️ Capital FM (400/mo) - 78% confidence, no official submission process found 10. ⚠️ KISS FM (400/mo) - 75% confidence, no official submission process found
 
 **Estimated Monthly Search Volume (Live)**: 7,300+ searches (80% of Tier 1 captured!)
 **Estimated Monthly Organic Traffic Goal (Year 1)**: 400-600 visits from these 8 pages
@@ -105,6 +104,7 @@
 ## 🎯 Week-by-Week Plan (Remaining 8 Weeks)
 
 ### Week 2: Complete Tier 1 Research (Oct 7-11)
+
 - [ ] Research Apple Music Editorial (1.5 hours)
 - [ ] Research BBC Radio 1Xtra (1.5 hours)
 - [ ] Research BBC Radio 2 (1.5 hours)
@@ -117,6 +117,7 @@
 **Deliverable**: 7 research files ready for validation
 
 ### Week 3: Generate Remaining Tier 1 Pages (Oct 14-18)
+
 - [ ] Validate all 7 research files (2 hours)
 - [ ] Generate pages with `npm run pseo:generate -- --tier=1` (30 mins)
 - [ ] Manual QA on all 7 pages (2 hours)
@@ -127,7 +128,9 @@
 **Deliverable**: 10/10 Tier 1 pages live
 
 ### Week 4-5: Tier 2 Research (20 pages)
+
 **Medium-volume targets** (300-800 monthly searches each):
+
 - Amazing Radio, NTS Radio, Rinse FM
 - DIY Magazine, Clash Music, The Quietus
 - Resident Advisor, Mixmag, DJ Mag
@@ -137,12 +140,15 @@
 **Deliverable**: 20 research files
 
 ### Week 6-7: Tier 2 Generation
+
 - Validate and generate all Tier 2 pages
 - QA and deploy
 - **Deliverable**: 30/60 pages live
 
 ### Week 8: Tier 3 Research & Generation (30 pages)
+
 **Long-tail targets** (50-300 monthly searches each):
+
 - Regional BBC Introducing stations
 - Underground blogs and zines
 - Niche streaming platforms
@@ -157,6 +163,7 @@
 ### Validation Requirements (Enforced by System)
 
 ✅ **All pages must have**:
+
 - Research file in `docs/pseo/research/[slug]-research.md`
 - Contact verification within 6 months
 - Confidence scores >= 85%
@@ -164,6 +171,7 @@
 - Recent research date (< 6 months old)
 
 ❌ **Pages will NOT generate if**:
+
 - Research file missing
 - Contacts older than 6 months
 - Confidence scores < 85%
@@ -173,6 +181,7 @@
 ### Generated Page Quality Checks
 
 Before marking as "live" in CSV:
+
 - [ ] All presenter names current and accurate
 - [ ] Show titles match official schedules
 - [ ] Submission processes accurate
@@ -189,18 +198,21 @@ Before marking as "live" in CSV:
 ## 📈 Success Metrics (Track Monthly)
 
 ### Traffic Metrics
+
 - Organic traffic per page (Google Analytics)
 - Keyword rankings (Google Search Console)
 - Total programmatic SEO traffic
 - Conversion rate from programmatic pages
 
 ### Business Impact
+
 - Free trial signups from PSEO pages
 - Time on page and engagement
 - Internal link clicks to pricing
 - Return visitor rate
 
 ### Content Quality
+
 - Pages with verification errors
 - Pages requiring updates
 - 404 errors on source URLs
@@ -213,6 +225,7 @@ Before marking as "live" in CSV:
 ### Quick Start Workflow
 
 1. **Add row to CSV**
+
    ```bash
    cd docs/pseo
    # Edit programmatic-pages.csv
@@ -220,23 +233,27 @@ Before marking as "live" in CSV:
    ```
 
 2. **Create research file**
+
    ```bash
    cp RESEARCH_TEMPLATE.md research/[topic-slug]-research.md
    # Fill in all sections with verified data
    ```
 
 3. **Validate research**
+
    ```bash
    npm run pseo:validate
    # Check for validation errors
    ```
 
 4. **Generate page**
+
    ```bash
    npm run pseo:generate -- --slug=[topic-slug]
    ```
 
 5. **Review and test**
+
    ```bash
    npm run dev
    # Visit http://localhost:3000/blog/[topic-slug]

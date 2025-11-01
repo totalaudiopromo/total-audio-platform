@@ -3,6 +3,7 @@
 ## 🎯 TWO DISTINCT BUSINESSES
 
 ### Liberty Music PR
+
 - **Type**: Radio promotion agency (client services)
 - **Google Workspace**: `@libertymusicpr.com`
 - **Purpose**: Client campaigns, station relationships, promotion work
@@ -10,6 +11,7 @@
 - **Use Case**: Train agents on how Liberty operates (for automation/assistance)
 
 ### Total Audio Promo
+
 - **Type**: SaaS platform (Audio Intel product)
 - **Google Workspace**: `@totalaudiopromo.com` / `promo@totalaudiopromo.com`
 - **Purpose**: Customer acquisition, product development, marketing
@@ -19,12 +21,14 @@
 ## 🔧 CURRENT CONFUSION
 
 **Problem**: Mixed credentials between both businesses
+
 - Gmail MCP: Using `promo@totalaudiopromo.com` ✅
 - Calendar/Chat MCPs: Configured for Total Audio but need **Liberty access**
 
 ## ✅ CORRECT SETUP NEEDED
 
 ### For Liberty Music PR Agent Training:
+
 ```
 Email: jodie@libertymusicpr.com (or sam@libertymusicpr.com)
 Google Chat: Liberty workspace channels
@@ -33,6 +37,7 @@ Access: Read-only for agent training
 ```
 
 ### For Total Audio Promo (Current):
+
 ```
 Email: promo@totalaudiopromo.com
 Gmail: Customer acquisition emails
@@ -43,11 +48,13 @@ Access: Already configured ✅
 ## 🔑 CREDENTIALS NEEDED
 
 **Liberty Google Workspace:**
+
 - Which Liberty email should the agent use? (`jodie@` or `sam@` or different?)
 - OAuth for Liberty workspace Chat access
 - Read-only permissions for training data extraction
 
 **Total Audio (Already Have):**
+
 - Gmail: `promo@totalaudiopromo.com` ✅
 - WARM API: Token for play data ⏳ (expired, need refresh)
 
@@ -61,6 +68,7 @@ Access: Already configured ✅
 ---
 
 **Question for Chris:**
+
 - Which Liberty email should the agent use for Google Chat access?
 - Do you have admin access to create OAuth app for Liberty workspace?
 - Or should we use service account for Liberty data access?

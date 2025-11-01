@@ -7,6 +7,7 @@
 ## 🎯 What's Been Built
 
 ### Core Features
+
 - ✅ **Contact Management**: Add, edit, delete contacts with genre preferences
 - ✅ **AI Pitch Generation**: Claude-powered pitch writing with voice customization
 - ✅ **Genre-Aware AI**: Improved prompts prevent style/genre mismatches
@@ -17,6 +18,7 @@
 - ✅ **Mobile Responsive**: Works on all devices
 
 ### Technical Stack
+
 - **Framework**: Next.js 15.4.2 (App Router)
 - **Database**: Supabase PostgreSQL
 - **AI**: Anthropic Claude 3.5 Sonnet
@@ -28,6 +30,7 @@
 ## 📝 Completed Today
 
 ### 1. AI Quality Improvements
+
 - Fixed genre/style matching in AI prompts
 - Added explicit rules to prevent inappropriate artist comparisons
 - Key Hook now properly informs musical references
@@ -36,11 +39,13 @@
 **After**: UK garage track → references UK garage artists ✅
 
 ### 2. Bug Fixes
+
 - Fixed parameter mismatch in pitch generation API (`keyHooks` → `keyHook`)
 - Fixed property mismatch (`spotifyUrl` → `trackLink`)
 - PitchAnalyser component properly configured
 
 ### 3. Stripe Setup Complete
+
 - Created test products in Stripe:
   - **PRO**: £14/month (`price_1SFBeuPqujcPv5fbccMC5Aln`)
   - **AGENCY**: £49/month (`price_1SFBgIPqujcPv5fb3WZ7dAeP`)
@@ -48,6 +53,7 @@
 - Configured all environment variables
 
 ### 4. Deployment Configuration
+
 - Created `vercel.json` for deployment
 - Wrote comprehensive deployment guide (DEPLOYMENT_GUIDE.md)
 - Documented all environment variables
@@ -63,6 +69,7 @@
 ## 🚀 Deployment Steps (Quick Reference)
 
 ### 1. Test Locally
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/pitch-generator
 npm run dev
@@ -71,6 +78,7 @@ npm run dev
 ```
 
 ### 2. Deploy to Vercel
+
 1. Push code to GitHub
 2. Import project in Vercel
 3. Set root directory: `apps/pitch-generator`
@@ -78,6 +86,7 @@ npm run dev
 5. Deploy!
 
 ### 3. Post-Deployment Setup
+
 1. Apply Supabase RLS policies (SQL in DEPLOYMENT_GUIDE.md)
 2. Configure Stripe webhook endpoint
 3. Create live Stripe products
@@ -87,6 +96,7 @@ npm run dev
 ## 🔑 Environment Variables Needed
 
 **Production** (Vercel):
+
 ```env
 # Auth
 NEXTAUTH_URL=https://your-domain.vercel.app

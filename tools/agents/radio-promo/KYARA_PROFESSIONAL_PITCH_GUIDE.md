@@ -8,10 +8,12 @@
 ## 🎯 What You Need for KYARA Campaign
 
 ### 1. **Email Pitch** (Gmail - Plain Text)
+
 For warm contacts (Anika Luna, Claire Mooney)
 
 **Format**: Personal email with inline links
 **Include**:
+
 - Personal message (referencing "Yearn" support)
 - Streaming link (Spotify/SoundCloud pre-save)
 - Download link (WeTransfer/Dropbox for WAV)
@@ -19,6 +21,7 @@ For warm contacts (Anika Luna, Claire Mooney)
 - Cover art (embedded image or link)
 
 **Example structure**:
+
 ```
 Hi Anika,
 
@@ -39,9 +42,11 @@ Chris
 ---
 
 ### 2. **Electronic Press Kit (EPK)** - Professional PDF
+
 For cold contacts or follow-ups
 
 **What to include**:
+
 1. Cover art (full page)
 2. Artist bio (1 page)
 3. Track details
@@ -51,6 +56,7 @@ For cold contacts or follow-ups
 7. High-res photos
 
 **Tools to create**:
+
 - **Canva** (easiest - has EPK templates)
 - **Adobe InDesign** (professional)
 - **Google Slides** → Export as PDF (free)
@@ -62,18 +68,21 @@ For cold contacts or follow-ups
 **For file delivery**, use:
 
 #### WeTransfer (Free - Best for large files)
+
 - Upload WAV files
 - Get download link
 - Lasts 7 days
 - Professional looking
 
 #### Dropbox (Best for ongoing access)
+
 - Create folder with all assets
 - Share link
 - Doesn't expire
 - Can update files
 
 #### Google Drive (Free alternative)
+
 - Share folder or individual files
 - Set to "Anyone with link can view"
 - Track downloads
@@ -87,6 +96,7 @@ For cold contacts or follow-ups
 **Subject**: KYARA - New single for Home & Hosed (following up from "Yearn")
 
 **Body** (Plain text, no HTML):
+
 ```
 Hi Anika,
 
@@ -120,6 +130,7 @@ chrisschofield@libertymusicpr.com
 ```
 
 **Attachments**:
+
 - Cover art JPG (small file, 1-2MB max)
 - Optional: 1-page PDF press sheet
 
@@ -130,36 +141,42 @@ chrisschofield@libertymusicpr.com
 ### Quick Method: Google Slides → PDF
 
 **Page 1: Cover**
+
 - Large cover art
 - Track title
 - Artist name
 - Release date
 
 **Page 2: Artist Bio**
+
 - Photo of KYARA
 - 2-3 paragraph bio
 - Genre/style
 - Key achievements (Triple J support, BBC plays)
 
 **Page 3: Track Info**
+
 - Track name and details
 - Producer credits
 - Lyrics excerpt or meaning
 - Streaming links (with QR codes)
 
 **Page 4: Press/Support**
+
 - Previous radio plays
 - Press quotes
 - Social media stats
 - Contact info
 
 **Page 5: Contact & Download**
+
 - High-res download link
 - Streaming links
 - Contact details
 - Social media handles
 
 ### Export as PDF:
+
 1. File → Download → PDF
 2. Name it: `KYARA - [Track Name] EPK.pdf`
 3. Upload to Dropbox/Drive
@@ -172,17 +189,20 @@ chrisschofield@libertymusicpr.com
 **Create these before pitching**:
 
 ### 1. Spotify Pre-Save
+
 - Use DistroKid/TuneCore pre-save feature
 - Gets email addresses of listeners
 - Professional looking link
 
 ### 2. Private SoundCloud Link
+
 - Upload private track
 - Share secret link for radio only
 - Can track plays
 - Easy streaming for quick listens
 
 ### 3. YouTube Private Link
+
 - Upload with visualizer
 - Set to "Unlisted"
 - Radio can preview easily
@@ -198,22 +218,26 @@ Offer all 3 options - let them choose their preferred platform
 **Before sending pitches, prepare**:
 
 ✅ **Audio Files**:
+
 - [ ] WAV file (high quality, 24-bit preferred)
 - [ ] MP3 file (320kbps backup)
 - [ ] File naming: `KYARA - [Track Name] (Radio Edit).wav`
 
 ✅ **Visual Assets**:
+
 - [ ] Cover art (3000x3000px minimum)
 - [ ] Artist photo (high-res)
 - [ ] Artist photo (web-optimized 1200px)
 
 ✅ **Written Materials**:
+
 - [ ] Artist bio (short - 100 words)
 - [ ] Artist bio (long - 300 words)
 - [ ] Track description (1 paragraph)
 - [ ] Press quotes (if any)
 
 ✅ **Links**:
+
 - [ ] Spotify pre-save link
 - [ ] SoundCloud private link
 - [ ] YouTube unlisted link
@@ -221,6 +245,7 @@ Offer all 3 options - let them choose their preferred platform
 - [ ] EPK PDF link (Dropbox/Drive)
 
 ✅ **Contact Info**:
+
 - [ ] Your email: chrisschofield@libertymusicpr.com
 - [ ] KYARA's socials
 - [ ] Website (if she has one)
@@ -232,17 +257,20 @@ Offer all 3 options - let them choose their preferred platform
 ### 2 Weeks Before Release:
 
 **Step 1**: Prepare all materials
+
 - Get final master WAV from KYARA
 - Get cover art and photos
 - Write bio and track description
 
 **Step 2**: Create hosting
+
 - Upload WAV to WeTransfer
 - Upload to SoundCloud (private)
 - Set up Spotify pre-save
 - Create EPK PDF
 
 **Step 3**: Test all links
+
 - Make sure WAV downloads work
 - Check SoundCloud plays
 - Verify Spotify pre-save works
@@ -251,10 +279,12 @@ Offer all 3 options - let them choose their preferred platform
 ### 1 Week Before Release:
 
 **Step 4**: Send warm pitches (Gmail)
+
 - Anika Luna (Home & Hosed) - Tuesday 10am AEST
 - Claire Mooney (Music Director) - Thursday 10am AEST
 
 **Step 5**: Send cold pitches (Gmail + EPK)
+
 - Other Australian contacts
 - Include EPK PDF as attachment or link
 
@@ -263,6 +293,7 @@ Offer all 3 options - let them choose their preferred platform
 ## ⚠️ What NOT to Do
 
 **Never**:
+
 - ❌ Send Mailchimp campaign links
 - ❌ Use bit.ly or shortened links
 - ❌ Send huge attachments (>10MB)
@@ -272,6 +303,7 @@ Offer all 3 options - let them choose their preferred platform
 - ❌ Follow up more than twice
 
 **Always**:
+
 - ✅ Personal, plain text emails
 - ✅ Professional file hosting
 - ✅ Clear subject lines
@@ -284,6 +316,7 @@ Offer all 3 options - let them choose their preferred platform
 ## 📊 Tracking & Follow-up
 
 **Track in Airtable**:
+
 - Date sent
 - Materials sent (links)
 - Response status
@@ -327,6 +360,7 @@ Chris
 **For KYARA Australian campaign**:
 
 **DO**:
+
 - Gmail personal emails (not Mailchimp)
 - WeTransfer for WAV downloads
 - Simple PDF EPK for cold contacts
@@ -334,18 +368,21 @@ Chris
 - Plain text, conversational tone
 
 **DON'T**:
+
 - Mailchimp campaign links
 - Generic mass emails
 - Overselling/hype
 - Complicated file access
 
 **Priority contacts get**:
+
 - Personal Gmail email
 - Direct streaming links
 - WeTransfer download
 - Reference to "Yearn" support
 
 **Cold contacts get**:
+
 - Personal Gmail email
 - EPK PDF attached/linked
 - Streaming options

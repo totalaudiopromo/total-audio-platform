@@ -69,14 +69,14 @@ const priorityStations = [
     name: 'Amazing Radio',
     priority: 'very_high',
     submissionUrl: 'https://amazingradio.co.uk/submit-music',
-    webhook: 'planned'
+    webhook: 'planned',
   },
   {
-    name: 'Radio Wigwam', 
+    name: 'Radio Wigwam',
     priority: 'very_high',
     submissionUrl: 'https://radiowigwam.com/submit-music',
-    webhook: 'planned'
-  }
+    webhook: 'planned',
+  },
 ];
 ```
 
@@ -91,12 +91,12 @@ const priorityStations = [
 const webhookPlan = {
   amazingRadio: {
     endpoint: 'https://amazingradio.co.uk/webhook/submission-status',
-    events: ['submission_received', 'play_confirmed', 'playlist_added']
+    events: ['submission_received', 'play_confirmed', 'playlist_added'],
   },
   radioWigwam: {
-    endpoint: 'https://radiowigwam.com/webhook/submission-status', 
-    events: ['submission_received', 'play_confirmed', 'playlist_added']
-  }
+    endpoint: 'https://radiowigwam.com/webhook/submission-status',
+    events: ['submission_received', 'play_confirmed', 'playlist_added'],
+  },
 };
 ```
 

@@ -1,22 +1,22 @@
 import { exportToCsv } from './exportToCsv';
 import { exportToExcel } from './exportToExcel';
-import { 
-  exportAnalyticsToPdf, 
-  exportContactsToPdf, 
+import {
+  exportAnalyticsToPdf,
+  exportContactsToPdf,
   exportSearchResultsToPdf,
-  exportAIAgentReportToPdf 
+  exportAIAgentReportToPdf,
 } from './exportToPdf';
-import { 
-  generateContactExportEmail, 
-  generateAnalyticsExportEmail, 
+import {
+  generateContactExportEmail,
+  generateAnalyticsExportEmail,
   generateSearchResultsEmail,
-  generateAIAgentReportEmail
+  generateAIAgentReportEmail,
 } from './emailTemplates';
 
 // Helper function to convert string arrays to CSV format
 function arrayToCsv(data: string[][]): string {
   if (!data.length) return '';
-  
+
   const escape = (val: string | undefined) => {
     if (val == null || val === undefined) return '';
     // Escape quotes by doubling them, wrap in quotes if contains comma, quote, or newline
@@ -25,7 +25,7 @@ function arrayToCsv(data: string[][]): string {
     if (needsQuotes) out = `"${out}"`;
     return out;
   };
-  
+
   const rows = data.map(row => row.map(escape).join(','));
   return rows.join('\r\n');
 }
@@ -35,7 +35,7 @@ function getDisplayName(contact: ContactData): string {
   if (contact.name && contact.name.trim()) {
     return contact.name.trim();
   }
-  
+
   // Extract name from email if available
   if (contact.email) {
     const emailName = contact.email.split('@')[0];
@@ -47,7 +47,7 @@ function getDisplayName(contact: ContactData): string {
         .trim();
     }
   }
-  
+
   return 'Contact Name Unavailable';
 }
 
@@ -173,7 +173,7 @@ export class ProfessionalExportService {
     this.whiteLabelConfig = {
       companyName: whiteLabelConfig?.companyName || 'Audio Intel',
       logoUrl: whiteLabelConfig?.logoUrl,
-      primaryColor: whiteLabelConfig?.primaryColor || '#1E88E5'
+      primaryColor: whiteLabelConfig?.primaryColor || '#1E88E5',
     };
   }
 
@@ -192,7 +192,7 @@ export class ProfessionalExportService {
         total: contacts.length,
         percentage: 0,
         stage: 'preparing',
-        message: 'Preparing contact export...'
+        message: 'Preparing contact export...',
       });
 
       // Validate and prepare data
@@ -206,7 +206,7 @@ export class ProfessionalExportService {
         total: validContacts.length,
         percentage: 50,
         stage: 'processing',
-        message: `Processing ${validContacts.length} contacts...`
+        message: `Processing ${validContacts.length} contacts...`,
       });
 
       let result: { success: boolean; downloadUrl?: string; message: string };
@@ -216,8 +216,12 @@ export class ProfessionalExportService {
           const csvContent = this.contactsToCsv(validContacts, options);
           result = {
             success: true,
-            downloadUrl: this.createDownloadUrl(csvContent, options.filename || 'audio-intel-contacts.csv', 'text/csv'),
-            message: `Successfully exported ${validContacts.length} contacts to CSV`
+            downloadUrl: this.createDownloadUrl(
+              csvContent,
+              options.filename || 'audio-intel-contacts.csv',
+              'text/csv'
+            ),
+            message: `Successfully exported ${validContacts.length} contacts to CSV`,
           };
           break;
 
@@ -225,7 +229,7 @@ export class ProfessionalExportService {
           this.contactsToExcel(validContacts, options.filename || 'audio-intel-contacts.xlsx');
           result = {
             success: true,
-            message: `Successfully exported ${validContacts.length} contacts to Excel`
+            message: `Successfully exported ${validContacts.length} contacts to Excel`,
           };
           break;
 
@@ -234,18 +238,25 @@ export class ProfessionalExportService {
           const pdfContacts = validContacts.map(contact => ({
             name: contact.name,
             email: contact.email,
-            contactIntelligence: contact.contactIntelligence || (contact as any).intelligence || 'No intelligence available',
+            contactIntelligence:
+              contact.contactIntelligence ||
+              (contact as any).intelligence ||
+              'No intelligence available',
             researchConfidence: contact.researchConfidence || (contact as any).confidence || 'Low',
             lastResearched: contact.lastResearched || new Date().toISOString(),
             platform: contact.platform,
             role: contact.role,
-            company: contact.company
+            company: contact.company,
           }));
-          
-          exportContactsToPdf(pdfContacts as any, options.filename || 'audio-intel-contacts.pdf', options.whiteLabel);
+
+          exportContactsToPdf(
+            pdfContacts as any,
+            options.filename || 'audio-intel-contacts.pdf',
+            options.whiteLabel
+          );
           result = {
             success: true,
-            message: `Successfully exported ${validContacts.length} contacts to PDF with intelligence data`
+            message: `Successfully exported ${validContacts.length} contacts to PDF with intelligence data`,
           };
           break;
 
@@ -258,7 +269,7 @@ export class ProfessionalExportService {
         total: validContacts.length,
         percentage: 100,
         stage: 'complete',
-        message: 'Export completed successfully'
+        message: 'Export completed successfully',
       });
 
       // Email delivery if requested
@@ -268,7 +279,7 @@ export class ProfessionalExportService {
           total: validContacts.length,
           percentage: 90,
           stage: 'delivering',
-          message: 'Sending email delivery...'
+          message: 'Sending email delivery...',
         });
 
         await this.sendExportEmail({
@@ -278,7 +289,7 @@ export class ProfessionalExportService {
           contactsCount: validContacts.length,
           downloadUrl: result.downloadUrl,
           customMessage: options.customMessage,
-          whiteLabel: this.whiteLabelConfig
+          whiteLabel: this.whiteLabelConfig,
         });
       }
 
@@ -288,10 +299,9 @@ export class ProfessionalExportService {
           exportedCount: validContacts.length,
           format: options.format,
           timestamp: new Date().toISOString(),
-          user: userName
-        }
+          user: userName,
+        },
       };
-
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Export failed';
       return { success: false, message: errorMessage };
@@ -313,7 +323,7 @@ export class ProfessionalExportService {
         total: 1,
         percentage: 0,
         stage: 'preparing',
-        message: 'Preparing analytics export...'
+        message: 'Preparing analytics export...',
       });
 
       onProgress?.({
@@ -321,7 +331,7 @@ export class ProfessionalExportService {
         total: 1,
         percentage: 50,
         stage: 'processing',
-        message: 'Processing analytics data...'
+        message: 'Processing analytics data...',
       });
 
       let result: { success: boolean; downloadUrl?: string; message: string };
@@ -331,8 +341,12 @@ export class ProfessionalExportService {
           const csvContent = this.analyticsToCsv(analyticsData);
           result = {
             success: true,
-            downloadUrl: this.createDownloadUrl(csvContent, options.filename || 'audio-intel-analytics.csv', 'text/csv'),
-            message: 'Successfully exported analytics to CSV'
+            downloadUrl: this.createDownloadUrl(
+              csvContent,
+              options.filename || 'audio-intel-analytics.csv',
+              'text/csv'
+            ),
+            message: 'Successfully exported analytics to CSV',
           };
           break;
 
@@ -340,15 +354,19 @@ export class ProfessionalExportService {
           this.analyticsToExcel(analyticsData, options.filename || 'audio-intel-analytics.xlsx');
           result = {
             success: true,
-            message: 'Successfully exported analytics to Excel'
+            message: 'Successfully exported analytics to Excel',
           };
           break;
 
         case 'pdf':
-          exportAnalyticsToPdf(analyticsData, options.filename || 'audio-intel-analytics.pdf', options.whiteLabel);
+          exportAnalyticsToPdf(
+            analyticsData,
+            options.filename || 'audio-intel-analytics.pdf',
+            options.whiteLabel
+          );
           result = {
             success: true,
-            message: 'Successfully exported analytics to PDF'
+            message: 'Successfully exported analytics to PDF',
           };
           break;
 
@@ -361,7 +379,7 @@ export class ProfessionalExportService {
         total: 1,
         percentage: 100,
         stage: 'complete',
-        message: 'Analytics export completed'
+        message: 'Analytics export completed',
       });
 
       // Email delivery if requested
@@ -373,7 +391,7 @@ export class ProfessionalExportService {
           analyticsData,
           downloadUrl: result.downloadUrl,
           customMessage: options.customMessage,
-          whiteLabel: this.whiteLabelConfig
+          whiteLabel: this.whiteLabelConfig,
         });
       }
 
@@ -384,10 +402,9 @@ export class ProfessionalExportService {
           successRate: analyticsData.successRate,
           format: options.format,
           timestamp: new Date().toISOString(),
-          user: userName
-        }
+          user: userName,
+        },
       };
-
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Analytics export failed';
       return { success: false, message: errorMessage };
@@ -409,7 +426,7 @@ export class ProfessionalExportService {
         total: searchData.results.length,
         percentage: 0,
         stage: 'preparing',
-        message: 'Preparing search results export...'
+        message: 'Preparing search results export...',
       });
 
       onProgress?.({
@@ -417,7 +434,7 @@ export class ProfessionalExportService {
         total: searchData.results.length,
         percentage: 50,
         stage: 'processing',
-        message: `Processing ${searchData.results.length} search results...`
+        message: `Processing ${searchData.results.length} search results...`,
       });
 
       let result: { success: boolean; downloadUrl?: string; message: string };
@@ -427,24 +444,36 @@ export class ProfessionalExportService {
           const csvContent = this.searchResultsToCsv(searchData);
           result = {
             success: true,
-            downloadUrl: this.createDownloadUrl(csvContent, options.filename || 'audio-intel-search-results.csv', 'text/csv'),
-            message: `Successfully exported ${searchData.results.length} search results to CSV`
+            downloadUrl: this.createDownloadUrl(
+              csvContent,
+              options.filename || 'audio-intel-search-results.csv',
+              'text/csv'
+            ),
+            message: `Successfully exported ${searchData.results.length} search results to CSV`,
           };
           break;
 
         case 'excel':
-          this.searchResultsToExcel(searchData, options.filename || 'audio-intel-search-results.xlsx');
+          this.searchResultsToExcel(
+            searchData,
+            options.filename || 'audio-intel-search-results.xlsx'
+          );
           result = {
             success: true,
-            message: `Successfully exported ${searchData.results.length} search results to Excel`
+            message: `Successfully exported ${searchData.results.length} search results to Excel`,
           };
           break;
 
         case 'pdf':
-          exportSearchResultsToPdf(searchData.results, searchData.query, options.filename || 'audio-intel-search-results.pdf', options.whiteLabel);
+          exportSearchResultsToPdf(
+            searchData.results,
+            searchData.query,
+            options.filename || 'audio-intel-search-results.pdf',
+            options.whiteLabel
+          );
           result = {
             success: true,
-            message: `Successfully exported ${searchData.results.length} search results to PDF`
+            message: `Successfully exported ${searchData.results.length} search results to PDF`,
           };
           break;
 
@@ -457,7 +486,7 @@ export class ProfessionalExportService {
         total: searchData.results.length,
         percentage: 100,
         stage: 'complete',
-        message: 'Search results export completed'
+        message: 'Search results export completed',
       });
 
       // Email delivery if requested
@@ -468,7 +497,7 @@ export class ProfessionalExportService {
           userName,
           downloadUrl: result.downloadUrl,
           customMessage: options.customMessage,
-          whiteLabel: this.whiteLabelConfig
+          whiteLabel: this.whiteLabelConfig,
         });
       }
 
@@ -480,10 +509,9 @@ export class ProfessionalExportService {
           totalFound: searchData.totalFound,
           format: options.format,
           timestamp: new Date().toISOString(),
-          user: userName
-        }
+          user: userName,
+        },
       };
-
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Search results export failed';
       return { success: false, message: errorMessage };
@@ -505,7 +533,7 @@ export class ProfessionalExportService {
         total: 1,
         percentage: 0,
         stage: 'preparing',
-        message: 'Preparing AI agent report export...'
+        message: 'Preparing AI agent report export...',
       });
 
       onProgress?.({
@@ -513,7 +541,7 @@ export class ProfessionalExportService {
         total: 1,
         percentage: 50,
         stage: 'processing',
-        message: 'Processing AI agent report...'
+        message: 'Processing AI agent report...',
       });
 
       let result: { success: boolean; downloadUrl?: string; message: string };
@@ -523,8 +551,12 @@ export class ProfessionalExportService {
           const csvContent = this.aiAgentToCsv(agentData);
           result = {
             success: true,
-            downloadUrl: this.createDownloadUrl(csvContent, options.filename || 'audio-intel-ai-report.csv', 'text/csv'),
-            message: 'Successfully exported AI agent report to CSV'
+            downloadUrl: this.createDownloadUrl(
+              csvContent,
+              options.filename || 'audio-intel-ai-report.csv',
+              'text/csv'
+            ),
+            message: 'Successfully exported AI agent report to CSV',
           };
           break;
 
@@ -532,15 +564,19 @@ export class ProfessionalExportService {
           this.aiAgentToExcel(agentData, options.filename || 'audio-intel-ai-report.xlsx');
           result = {
             success: true,
-            message: 'Successfully exported AI agent report to Excel'
+            message: 'Successfully exported AI agent report to Excel',
           };
           break;
 
         case 'pdf':
-          exportAIAgentReportToPdf(agentData, options.filename || 'audio-intel-ai-report.pdf', options.whiteLabel);
+          exportAIAgentReportToPdf(
+            agentData,
+            options.filename || 'audio-intel-ai-report.pdf',
+            options.whiteLabel
+          );
           result = {
             success: true,
-            message: 'Successfully exported AI agent report to PDF'
+            message: 'Successfully exported AI agent report to PDF',
           };
           break;
 
@@ -553,7 +589,7 @@ export class ProfessionalExportService {
         total: 1,
         percentage: 100,
         stage: 'complete',
-        message: 'AI agent report export completed'
+        message: 'AI agent report export completed',
       });
 
       // Email delivery if requested
@@ -565,7 +601,7 @@ export class ProfessionalExportService {
           agentData,
           downloadUrl: result.downloadUrl,
           customMessage: options.customMessage,
-          whiteLabel: this.whiteLabelConfig
+          whiteLabel: this.whiteLabelConfig,
         });
       }
 
@@ -578,10 +614,9 @@ export class ProfessionalExportService {
           nextStepsCount: agentData.nextSteps?.length || 0,
           format: options.format,
           timestamp: new Date().toISOString(),
-          user: userName
-        }
+          user: userName,
+        },
       };
-
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'AI agent report export failed';
       return { success: false, message: errorMessage };
@@ -603,7 +638,13 @@ export class ProfessionalExportService {
     onProgress?: (progress: ExportProgress) => void
   ): Promise<{
     success: boolean;
-    results: Array<{ type: string; success: boolean; message: string; downloadUrl?: string; metadata?: any }>;
+    results: Array<{
+      type: string;
+      success: boolean;
+      message: string;
+      downloadUrl?: string;
+      metadata?: any;
+    }>;
     summary: {
       totalExports: number;
       successfulExports: number;
@@ -611,7 +652,13 @@ export class ProfessionalExportService {
       totalItems: number;
     };
   }> {
-    const results: Array<{ type: string; success: boolean; message: string; downloadUrl?: string; metadata?: any }> = [];
+    const results: Array<{
+      type: string;
+      success: boolean;
+      message: string;
+      downloadUrl?: string;
+      metadata?: any;
+    }> = [];
     const exportTasks = [];
     let totalItems = 0;
 
@@ -637,7 +684,7 @@ export class ProfessionalExportService {
       return {
         success: false,
         results: [],
-        summary: { totalExports: 0, successfulExports: 0, failedExports: 0, totalItems: 0 }
+        summary: { totalExports: 0, successfulExports: 0, failedExports: 0, totalItems: 0 },
       };
     }
 
@@ -646,19 +693,19 @@ export class ProfessionalExportService {
       total: exportTasks.length,
       percentage: 0,
       stage: 'preparing',
-      message: `Preparing batch export of ${exportTasks.length} data types...`
+      message: `Preparing batch export of ${exportTasks.length} data types...`,
     });
 
     // Process exports with progress tracking
     for (let i = 0; i < exportTasks.length; i++) {
       const task = exportTasks[i];
-      
+
       onProgress?.({
         current: i + 1,
         total: exportTasks.length,
         percentage: ((i + 1) / exportTasks.length) * 100,
         stage: 'processing',
-        message: `Processing ${task.type} export...`
+        message: `Processing ${task.type} export...`,
       });
 
       try {
@@ -671,7 +718,11 @@ export class ProfessionalExportService {
             result = await this.exportAnalytics(task.data as AnalyticsData, options, userName);
             break;
           case 'search-results':
-            result = await this.exportSearchResults(task.data as SearchResultsData, options, userName);
+            result = await this.exportSearchResults(
+              task.data as SearchResultsData,
+              options,
+              userName
+            );
             break;
           case 'ai-agent-report':
             result = await this.exportAIAgentReport(task.data as AIAgentData, options, userName);
@@ -685,7 +736,7 @@ export class ProfessionalExportService {
           success: result.success,
           message: result.message,
           downloadUrl: result.downloadUrl,
-          metadata: result.metadata
+          metadata: result.metadata,
         });
       } catch (error) {
         results.push({
@@ -693,7 +744,7 @@ export class ProfessionalExportService {
           success: false,
           message: error instanceof Error ? error.message : 'Export failed',
           downloadUrl: undefined,
-          metadata: undefined
+          metadata: undefined,
         });
       }
     }
@@ -706,7 +757,7 @@ export class ProfessionalExportService {
       total: exportTasks.length,
       percentage: 100,
       stage: 'complete',
-      message: `Batch export completed: ${successfulExports} successful, ${failedExports} failed`
+      message: `Batch export completed: ${successfulExports} successful, ${failedExports} failed`,
     });
 
     return {
@@ -716,8 +767,8 @@ export class ProfessionalExportService {
         totalExports: exportTasks.length,
         successfulExports,
         failedExports,
-        totalItems
-      }
+        totalItems,
+      },
     };
   }
 
@@ -736,7 +787,7 @@ export class ProfessionalExportService {
       `Error Rate,${analyticsData.performanceMetrics.errorRate.toFixed(1)}%`,
       '',
       'Platform Breakdown',
-      'Platform,Count,Percentage'
+      'Platform,Count,Percentage',
     ];
 
     // Add platform breakdown
@@ -764,7 +815,7 @@ export class ProfessionalExportService {
       'Last Researched',
       'Platform',
       'Role',
-      'Company'
+      'Company',
     ];
 
     if (options.includeMetadata) {
@@ -780,7 +831,7 @@ export class ProfessionalExportService {
         contact.lastResearched ? new Date(contact.lastResearched).toLocaleDateString() : '',
         contact.platform || '',
         contact.role || '',
-        contact.company || ''
+        contact.company || '',
       ];
 
       if (options.includeMetadata && contact.metadata) {
@@ -802,49 +853,60 @@ export class ProfessionalExportService {
    * Enhanced Excel export for contacts with metadata
    */
   private contactsToExcel(contacts: ContactData[], filename: string): void {
-    const workbook = new (require('xlsx')).Workbook();
-    
+    const workbook = new (require('xlsx').Workbook)();
+
     // Main contacts sheet
     const contactsData = contacts.map(contact => ({
-      'Name': getDisplayName(contact),
-      'Email': contact.email,
+      Name: getDisplayName(contact),
+      Email: contact.email,
       'Contact Intelligence': contact.contactIntelligence || '',
       'Research Confidence': contact.researchConfidence || '',
-      'Last Researched': contact.lastResearched ? new Date(contact.lastResearched).toLocaleDateString() : '',
-      'Platform': contact.platform || '',
-      'Role': contact.role || '',
-      'Company': contact.company || '',
-      'Source': contact.metadata?.source || '',
-      'Tags': contact.metadata?.tags?.join(', ') || '',
-      'Notes': contact.metadata?.notes || '',
-      'Priority': contact.metadata?.priority || ''
+      'Last Researched': contact.lastResearched
+        ? new Date(contact.lastResearched).toLocaleDateString()
+        : '',
+      Platform: contact.platform || '',
+      Role: contact.role || '',
+      Company: contact.company || '',
+      Source: contact.metadata?.source || '',
+      Tags: contact.metadata?.tags?.join(', ') || '',
+      Notes: contact.metadata?.notes || '',
+      Priority: contact.metadata?.priority || '',
     }));
 
-    const contactsSheet = (require('xlsx')).utils.json_to_sheet(contactsData);
+    const contactsSheet = require('xlsx').utils.json_to_sheet(contactsData);
     workbook.SheetNames.push('Contacts');
     workbook.Sheets['Contacts'] = contactsSheet;
 
     // Platform summary sheet
     const platformSummary = this.getContactPlatformSummary(contacts);
-    const platformSheet = (require('xlsx')).utils.json_to_sheet(platformSummary);
+    const platformSheet = require('xlsx').utils.json_to_sheet(platformSummary);
     workbook.SheetNames.push('Platform Summary');
     workbook.Sheets['Platform Summary'] = platformSheet;
 
     // Export summary sheet
     const exportSummary = [
-      { 'Metric': 'Total Contacts', 'Value': contacts.length },
-      { 'Metric': 'Export Date', 'Value': new Date().toLocaleDateString() },
-      { 'Metric': 'Export Time', 'Value': new Date().toLocaleTimeString() },
-      { 'Metric': 'High Priority', 'Value': contacts.filter(c => c.metadata?.priority === 'high').length },
-      { 'Metric': 'Medium Priority', 'Value': contacts.filter(c => c.metadata?.priority === 'medium').length },
-      { 'Metric': 'Low Priority', 'Value': contacts.filter(c => c.metadata?.priority === 'low').length }
+      { Metric: 'Total Contacts', Value: contacts.length },
+      { Metric: 'Export Date', Value: new Date().toLocaleDateString() },
+      { Metric: 'Export Time', Value: new Date().toLocaleTimeString() },
+      {
+        Metric: 'High Priority',
+        Value: contacts.filter(c => c.metadata?.priority === 'high').length,
+      },
+      {
+        Metric: 'Medium Priority',
+        Value: contacts.filter(c => c.metadata?.priority === 'medium').length,
+      },
+      {
+        Metric: 'Low Priority',
+        Value: contacts.filter(c => c.metadata?.priority === 'low').length,
+      },
     ];
 
-    const summarySheet = (require('xlsx')).utils.json_to_sheet(exportSummary);
+    const summarySheet = require('xlsx').utils.json_to_sheet(exportSummary);
     workbook.SheetNames.push('Export Summary');
     workbook.Sheets['Export Summary'] = summarySheet;
 
-    (require('xlsx')).writeFile(workbook, filename);
+    require('xlsx').writeFile(workbook, filename);
   }
 
   /**
@@ -861,7 +923,7 @@ export class ProfessionalExportService {
       'Last Updated',
       'Tags',
       'Priority',
-      'Notes'
+      'Notes',
     ];
 
     const rows = searchData.results.map(result => [
@@ -874,7 +936,7 @@ export class ProfessionalExportService {
       result.lastUpdated,
       result.metadata?.tags?.join(', ') || '',
       result.metadata?.priority?.toString() || '',
-      result.metadata?.notes || ''
+      result.metadata?.notes || '',
     ]);
 
     return arrayToCsv([headers, ...rows]);
@@ -895,7 +957,7 @@ export class ProfessionalExportService {
       `Model,${agentData.metadata?.model || 'N/A'}`,
       '',
       'Recommendations',
-      'Recommendation'
+      'Recommendation',
     ];
 
     if (agentData.recommendations) {
@@ -914,122 +976,128 @@ export class ProfessionalExportService {
    * Enhanced Excel export for analytics with charts
    */
   private analyticsToExcel(analyticsData: AnalyticsData, filename: string): void {
-    const workbook = new (require('xlsx')).Workbook();
-    
+    const workbook = new (require('xlsx').Workbook)();
+
     // Main metrics sheet
     const metricsData = [
-      { 'Metric': 'Total Contacts', 'Value': analyticsData.totalContacts },
-      { 'Metric': 'Total Enrichments', 'Value': analyticsData.totalEnrichments },
-      { 'Metric': 'Success Rate', 'Value': `${analyticsData.successRate.toFixed(1)}%` },
-      { 'Metric': 'Average Confidence', 'Value': `${analyticsData.averageConfidence.toFixed(1)}%` },
-      { 'Metric': 'Average Processing Time', 'Value': `${analyticsData.performanceMetrics.averageProcessingTime.toFixed(2)}s` },
-      { 'Metric': 'Cache Hit Rate', 'Value': `${analyticsData.performanceMetrics.cacheHitRate.toFixed(1)}%` },
-      { 'Metric': 'Error Rate', 'Value': `${analyticsData.performanceMetrics.errorRate.toFixed(1)}%` }
+      { Metric: 'Total Contacts', Value: analyticsData.totalContacts },
+      { Metric: 'Total Enrichments', Value: analyticsData.totalEnrichments },
+      { Metric: 'Success Rate', Value: `${analyticsData.successRate.toFixed(1)}%` },
+      { Metric: 'Average Confidence', Value: `${analyticsData.averageConfidence.toFixed(1)}%` },
+      {
+        Metric: 'Average Processing Time',
+        Value: `${analyticsData.performanceMetrics.averageProcessingTime.toFixed(2)}s`,
+      },
+      {
+        Metric: 'Cache Hit Rate',
+        Value: `${analyticsData.performanceMetrics.cacheHitRate.toFixed(1)}%`,
+      },
+      { Metric: 'Error Rate', Value: `${analyticsData.performanceMetrics.errorRate.toFixed(1)}%` },
     ];
 
-    const metricsSheet = (require('xlsx')).utils.json_to_sheet(metricsData);
+    const metricsSheet = require('xlsx').utils.json_to_sheet(metricsData);
     workbook.SheetNames.push('Performance Metrics');
     workbook.Sheets['Performance Metrics'] = metricsSheet;
 
     // Platform breakdown sheet
     const platformData = analyticsData.topPlatforms.map(p => ({
-      'Platform': p.platform,
-      'Count': p.count,
-      'Percentage': `${p.percentage.toFixed(1)}%`
+      Platform: p.platform,
+      Count: p.count,
+      Percentage: `${p.percentage.toFixed(1)}%`,
     }));
 
-    const platformSheet = (require('xlsx')).utils.json_to_sheet(platformData);
+    const platformSheet = require('xlsx').utils.json_to_sheet(platformData);
     workbook.SheetNames.push('Platform Breakdown');
     workbook.Sheets['Platform Breakdown'] = platformSheet;
 
     // Daily activity sheet
     const dailyData = analyticsData.dailyEnrichments.map(d => ({
-      'Date': d.date,
-      'Enrichments': d.count
+      Date: d.date,
+      Enrichments: d.count,
     }));
 
-    const dailySheet = (require('xlsx')).utils.json_to_sheet(dailyData);
+    const dailySheet = require('xlsx').utils.json_to_sheet(dailyData);
     workbook.SheetNames.push('Daily Activity');
     workbook.Sheets['Daily Activity'] = dailySheet;
 
-    (require('xlsx')).writeFile(workbook, filename);
+    require('xlsx').writeFile(workbook, filename);
   }
 
   /**
    * Enhanced Excel export for search results
    */
   private searchResultsToExcel(searchData: SearchResultsData, filename: string): void {
-    const workbook = new (require('xlsx')).Workbook();
-    
+    const workbook = new (require('xlsx').Workbook)();
+
     // Main results sheet
     const resultsData = searchData.results.map(result => ({
-      'Platform': result.platform,
-      'Title': result.title,
-      'Description': result.description,
-      'URL': result.url,
-      'Contact': result.contact || '',
-      'Relevance': result.relevance,
+      Platform: result.platform,
+      Title: result.title,
+      Description: result.description,
+      URL: result.url,
+      Contact: result.contact || '',
+      Relevance: result.relevance,
       'Last Updated': result.lastUpdated,
-      'Tags': result.metadata?.tags?.join(', ') || '',
-      'Priority': result.metadata?.priority || '',
-      'Notes': result.metadata?.notes || ''
+      Tags: result.metadata?.tags?.join(', ') || '',
+      Priority: result.metadata?.priority || '',
+      Notes: result.metadata?.notes || '',
     }));
 
-    const resultsSheet = (require('xlsx')).utils.json_to_sheet(resultsData);
+    const resultsSheet = require('xlsx').utils.json_to_sheet(resultsData);
     workbook.SheetNames.push('Search Results');
     workbook.Sheets['Search Results'] = resultsSheet;
 
     // Search summary sheet
     const summaryData = [
-      { 'Metric': 'Search Query', 'Value': searchData.query },
-      { 'Metric': 'Total Results', 'Value': searchData.results.length },
-      { 'Metric': 'Total Found', 'Value': searchData.totalFound },
-      { 'Metric': 'Search Time', 'Value': `${searchData.searchMetadata?.searchTime || 'N/A'}s` },
-      { 'Metric': 'Confidence', 'Value': `${searchData.searchMetadata?.confidence || 'N/A'}%` }
+      { Metric: 'Search Query', Value: searchData.query },
+      { Metric: 'Total Results', Value: searchData.results.length },
+      { Metric: 'Total Found', Value: searchData.totalFound },
+      { Metric: 'Search Time', Value: `${searchData.searchMetadata?.searchTime || 'N/A'}s` },
+      { Metric: 'Confidence', Value: `${searchData.searchMetadata?.confidence || 'N/A'}%` },
     ];
 
-    const summarySheet = (require('xlsx')).utils.json_to_sheet(summaryData);
+    const summarySheet = require('xlsx').utils.json_to_sheet(summaryData);
     workbook.SheetNames.push('Search Summary');
     workbook.Sheets['Search Summary'] = summarySheet;
 
     // Platform summary
     const platformSummary = this.getSearchResultsPlatformSummary(searchData.results);
-    const platformSheet = (require('xlsx')).utils.json_to_sheet(platformSummary);
+    const platformSheet = require('xlsx').utils.json_to_sheet(platformSummary);
     workbook.SheetNames.push('Platform Summary');
     workbook.Sheets['Platform Summary'] = platformSheet;
 
-    (require('xlsx')).writeFile(workbook, filename);
+    require('xlsx').writeFile(workbook, filename);
   }
 
   /**
    * Enhanced Excel export for AI agent reports
    */
   private aiAgentToExcel(agentData: AIAgentData, filename: string): void {
-    const workbook = new (require('xlsx')).Workbook();
-    
+    const workbook = new (require('xlsx').Workbook)();
+
     // Main report sheet
     const reportData = [
-      { 'Field': 'Agent Type', 'Value': agentData.agentType },
-      { 'Field': 'Query', 'Value': agentData.query },
-      { 'Field': 'Response', 'Value': agentData.response },
-      { 'Field': 'Date Generated', 'Value': agentData.dateGenerated },
-      { 'Field': 'Processing Time', 'Value': `${agentData.metadata?.processingTime || 'N/A'}s` },
-      { 'Field': 'Confidence', 'Value': `${agentData.metadata?.confidence || 'N/A'}%` },
-      { 'Field': 'Model', 'Value': agentData.metadata?.model || 'N/A' }
+      { Field: 'Agent Type', Value: agentData.agentType },
+      { Field: 'Query', Value: agentData.query },
+      { Field: 'Response', Value: agentData.response },
+      { Field: 'Date Generated', Value: agentData.dateGenerated },
+      { Field: 'Processing Time', Value: `${agentData.metadata?.processingTime || 'N/A'}s` },
+      { Field: 'Confidence', Value: `${agentData.metadata?.confidence || 'N/A'}%` },
+      { Field: 'Model', Value: agentData.metadata?.model || 'N/A' },
     ];
 
-    const reportSheet = (require('xlsx')).utils.json_to_sheet(reportData);
+    const reportSheet = require('xlsx').utils.json_to_sheet(reportData);
     workbook.SheetNames.push('AI Agent Report');
     workbook.Sheets['AI Agent Report'] = reportSheet;
 
     // Recommendations sheet
     if (agentData.recommendations && agentData.recommendations.length > 0) {
       const recommendationsData = agentData.recommendations.map((rec, index) => ({
-        'Number': index + 1,
-        'Recommendation': rec
+        Number: index + 1,
+        Recommendation: rec,
       }));
 
-      const recommendationsSheet = (require('xlsx')).utils.json_to_sheet(recommendationsData);
+      const recommendationsSheet = require('xlsx').utils.json_to_sheet(recommendationsData);
       workbook.SheetNames.push('Recommendations');
       workbook.Sheets['Recommendations'] = recommendationsSheet;
     }
@@ -1037,16 +1105,16 @@ export class ProfessionalExportService {
     // Next steps sheet
     if (agentData.nextSteps && agentData.nextSteps.length > 0) {
       const nextStepsData = agentData.nextSteps.map((step, index) => ({
-        'Number': index + 1,
-        'Next Step': step
+        Number: index + 1,
+        'Next Step': step,
       }));
 
-      const nextStepsSheet = (require('xlsx')).utils.json_to_sheet(nextStepsData);
+      const nextStepsSheet = require('xlsx').utils.json_to_sheet(nextStepsData);
       workbook.SheetNames.push('Next Steps');
       workbook.Sheets['Next Steps'] = nextStepsSheet;
     }
 
-    (require('xlsx')).writeFile(workbook, filename);
+    require('xlsx').writeFile(workbook, filename);
   }
 
   /**
@@ -1054,7 +1122,7 @@ export class ProfessionalExportService {
    */
   private getContactPlatformSummary(contacts: ContactData[]) {
     const platformCounts: Record<string, number> = {};
-    
+
     contacts.forEach(contact => {
       if (contact.platform) {
         platformCounts[contact.platform] = (platformCounts[contact.platform] || 0) + 1;
@@ -1062,9 +1130,9 @@ export class ProfessionalExportService {
     });
 
     return Object.entries(platformCounts).map(([platform, count]) => ({
-      'Platform': platform,
-      'Count': count,
-      'Percentage': `${((count / contacts.length) * 100).toFixed(1)}%`
+      Platform: platform,
+      Count: count,
+      Percentage: `${((count / contacts.length) * 100).toFixed(1)}%`,
     }));
   }
 
@@ -1073,15 +1141,15 @@ export class ProfessionalExportService {
    */
   private getSearchResultsPlatformSummary(results: SearchResultsData['results']) {
     const platformCounts: Record<string, number> = {};
-    
+
     results.forEach(result => {
       platformCounts[result.platform] = (platformCounts[result.platform] || 0) + 1;
     });
 
     return Object.entries(platformCounts).map(([platform, count]) => ({
-      'Platform': platform,
-      'Count': count,
-      'Percentage': `${((count / results.length) * 100).toFixed(1)}%`
+      Platform: platform,
+      Count: count,
+      Percentage: `${((count / results.length) * 100).toFixed(1)}%`,
     }));
   }
 
@@ -1091,7 +1159,7 @@ export class ProfessionalExportService {
   private createDownloadUrl(content: string, filename: string, mimeType: string): string {
     const blob = new Blob([content], { type: mimeType });
     const url = URL.createObjectURL(blob);
-    
+
     // Create temporary download link
     const link = document.createElement('a');
     link.href = url;
@@ -1099,10 +1167,10 @@ export class ProfessionalExportService {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
+
     // Clean up URL after a delay
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-    
+
     return url;
   }
 
@@ -1131,7 +1199,7 @@ export class ProfessionalExportService {
             contactsCount: data.contactsCount || 0,
             downloadUrl: data.downloadUrl,
             customMessage: data.customMessage,
-            whiteLabel: data.whiteLabel
+            whiteLabel: data.whiteLabel,
           });
           subject = `Your ${data.contactsCount} enriched contacts are ready! 🎵`;
           break;
@@ -1142,7 +1210,7 @@ export class ProfessionalExportService {
             analyticsData: data.analyticsData!,
             downloadUrl: data.downloadUrl,
             customMessage: data.customMessage,
-            whiteLabel: data.whiteLabel
+            whiteLabel: data.whiteLabel,
           });
           subject = `${data.whiteLabel.companyName || 'Audio Intel'} - Analytics Report`;
           break;
@@ -1152,7 +1220,7 @@ export class ProfessionalExportService {
             userName: data.userName,
             downloadUrl: data.downloadUrl,
             customMessage: data.customMessage,
-            whiteLabel: data.whiteLabel
+            whiteLabel: data.whiteLabel,
           });
           subject = `${data.whiteLabel.companyName || 'Audio Intel'} - Search Results Export`;
           break;
@@ -1163,7 +1231,7 @@ export class ProfessionalExportService {
             agentData: data.agentData!,
             downloadUrl: data.downloadUrl,
             customMessage: data.customMessage,
-            whiteLabel: data.whiteLabel
+            whiteLabel: data.whiteLabel,
           });
           subject = `${data.whiteLabel.companyName || 'Audio Intel'} - AI Agent Report`;
           break;
@@ -1177,9 +1245,8 @@ export class ProfessionalExportService {
       console.log('Email would be sent:', {
         to: data.recipientEmail,
         subject,
-        content: emailContent
+        content: emailContent,
       });
-
     } catch (error) {
       console.error('Failed to send export email:', error);
       throw error;
@@ -1196,4 +1263,4 @@ export const createExportService = (whiteLabelConfig?: {
   primaryColor?: string;
 }) => new ProfessionalExportService(whiteLabelConfig);
 
-export const exportService = new ProfessionalExportService(); 
+export const exportService = new ProfessionalExportService();

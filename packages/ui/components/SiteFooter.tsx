@@ -49,18 +49,25 @@ export function SiteFooter({
         <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
           {/* Brand Section */}
           <div className="flex-1">
-            <p className="text-sm font-bold uppercase tracking-[0.34em] text-gray-900">{toolName}</p>
+            <p className="text-sm font-bold uppercase tracking-[0.34em] text-gray-900">
+              {toolName}
+            </p>
             <p className="mt-2 max-w-xs text-sm text-gray-600">{description}</p>
           </div>
 
           {/* Links Section */}
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-12">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Product</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                Product
+              </p>
               <ul className="mt-3 space-y-2">
                 {productLinks.map(link => (
                   <li key={link.href}>
-                    <Link href={link.href} className={`text-sm text-gray-600 transition ${hoverClass}`}>
+                    <Link
+                      href={link.href}
+                      className={`text-sm text-gray-600 transition ${hoverClass}`}
+                    >
                       {link.label}
                     </Link>
                   </li>
@@ -69,7 +76,9 @@ export function SiteFooter({
             </div>
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Other Tools</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                Other Tools
+              </p>
               <ul className="mt-3 space-y-2">
                 {otherTools.map(tool => (
                   <li key={tool.href}>
@@ -87,7 +96,9 @@ export function SiteFooter({
             </div>
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Newsletter</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                Newsletter
+              </p>
               <ul className="mt-3 space-y-2">
                 <li>
                   <a
@@ -112,22 +123,34 @@ export function SiteFooter({
           <div className="flex flex-col gap-4">
             {/* Legal Links */}
             <div className="flex flex-wrap gap-4 text-xs">
-              <Link href="/privacy" className={`text-gray-600 font-medium transition ${hoverClass}`}>
+              <Link
+                href="/privacy"
+                className={`text-gray-600 font-medium transition ${hoverClass}`}
+              >
                 Privacy Policy
               </Link>
-              <Link href="/cookies" className={`text-gray-600 font-medium transition ${hoverClass}`}>
+              <Link
+                href="/cookies"
+                className={`text-gray-600 font-medium transition ${hoverClass}`}
+              >
                 Cookie Policy
               </Link>
               <Link href="/terms" className={`text-gray-600 font-medium transition ${hoverClass}`}>
                 Terms of Service
               </Link>
-              <Link href="/contact" className={`text-gray-600 font-medium transition ${hoverClass}`}>
+              <Link
+                href="/contact"
+                className={`text-gray-600 font-medium transition ${hoverClass}`}
+              >
                 Contact & Support
               </Link>
             </div>
             {/* Copyright */}
             <div className="flex flex-col gap-2 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between">
-              <p>© {new Date().getFullYear()} Total Audio Promo Ltd. Built for music industry professionals.</p>
+              <p>
+                © {new Date().getFullYear()} Total Audio Promo Ltd. Built for music industry
+                professionals.
+              </p>
               <p className="text-gray-400">Made with focus in the UK 🇬🇧</p>
             </div>
           </div>

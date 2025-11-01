@@ -14,12 +14,12 @@ class RetryWrapper {
   constructor(options = {}) {
     this.defaults = {
       retries: options.retries || 3,
-      baseDelay: options.baseDelay || 1000,  // 1 second
-      maxDelay: options.maxDelay || 30000,   // 30 seconds
-      timeout: options.timeout || 60000,      // 60 seconds
+      baseDelay: options.baseDelay || 1000, // 1 second
+      maxDelay: options.maxDelay || 30000, // 30 seconds
+      timeout: options.timeout || 60000, // 60 seconds
       exponential: options.exponential !== false,
       jitter: options.jitter !== false,
-      ...options
+      ...options,
     };
   }
 
@@ -57,7 +57,9 @@ class RetryWrapper {
         // Calculate delay
         const delay = this.calculateDelay(attempt, baseDelay, maxDelay, exponential, jitter);
 
-        console.log(`[Retry] Attempt ${attempt}/${retries} failed. Retrying in ${delay}ms... (${error.message})`);
+        console.log(
+          `[Retry] Attempt ${attempt}/${retries} failed. Retrying in ${delay}ms... (${error.message})`
+        );
 
         // Wait before retry
         await this.sleep(delay);
@@ -75,7 +77,7 @@ class RetryWrapper {
       fn(),
       new Promise((_, reject) =>
         setTimeout(() => reject(new Error(`Timeout after ${timeoutMs}ms`)), timeoutMs)
-      )
+      ),
     ]);
   }
 
@@ -98,8 +100,8 @@ class RetryWrapper {
 
     // Add jitter to prevent thundering herd
     if (jitter) {
-      const jitterAmount = delay * 0.3;  // 30% jitter
-      delay = delay + (Math.random() * jitterAmount) - (jitterAmount / 2);
+      const jitterAmount = delay * 0.3; // 30% jitter
+      delay = delay + Math.random() * jitterAmount - jitterAmount / 2;
     }
 
     return Math.round(delay);
@@ -110,10 +112,12 @@ class RetryWrapper {
    */
   isRetryable(error) {
     // Network errors - retry
-    if (error.code === 'ECONNRESET' ||
-        error.code === 'ETIMEDOUT' ||
-        error.code === 'ECONNREFUSED' ||
-        error.code === 'ENOTFOUND') {
+    if (
+      error.code === 'ECONNRESET' ||
+      error.code === 'ETIMEDOUT' ||
+      error.code === 'ECONNREFUSED' ||
+      error.code === 'ENOTFOUND'
+    ) {
       return true;
     }
 
@@ -126,11 +130,12 @@ class RetryWrapper {
     }
 
     // API rate limit errors
-    if (error.message && (
-      error.message.includes('rate limit') ||
-      error.message.includes('too many requests') ||
-      error.message.includes('quota exceeded')
-    )) {
+    if (
+      error.message &&
+      (error.message.includes('rate limit') ||
+        error.message.includes('too many requests') ||
+        error.message.includes('quota exceeded'))
+    ) {
       return true;
     }
 
@@ -140,7 +145,12 @@ class RetryWrapper {
     }
 
     // Authentication errors - don't retry (4xx)
-    if (error.response && error.response.status >= 400 && error.response.status < 500 && error.response.status !== 429) {
+    if (
+      error.response &&
+      error.response.status >= 400 &&
+      error.response.status < 500 &&
+      error.response.status !== 429
+    ) {
       return false;
     }
 
@@ -197,7 +207,7 @@ class RetryWrapper {
       errors,
       successCount: results.length,
       errorCount: errors.length,
-      totalCount: items.length
+      totalCount: items.length,
     };
   }
 
@@ -205,14 +215,17 @@ class RetryWrapper {
    * Wrap Anthropic API call with retry
    */
   async anthropicWithRetry(client, params, options = {}) {
-    return await this.retry(async () => {
-      return await client.messages.create(params);
-    }, {
-      retries: 5,
-      baseDelay: 2000,  // 2 seconds
-      maxDelay: 60000,  // 1 minute
-      ...options
-    });
+    return await this.retry(
+      async () => {
+        return await client.messages.create(params);
+      },
+      {
+        retries: 5,
+        baseDelay: 2000, // 2 seconds
+        maxDelay: 60000, // 1 minute
+        ...options,
+      }
+    );
   }
 
   /**
@@ -223,7 +236,7 @@ class RetryWrapper {
       retries: 3,
       baseDelay: 1000,
       maxDelay: 10000,
-      ...options
+      ...options,
     });
   }
 
@@ -235,7 +248,7 @@ class RetryWrapper {
       retries: 3,
       baseDelay: 2000,
       maxDelay: 15000,
-      ...options
+      ...options,
     });
   }
 
@@ -257,25 +270,31 @@ class RetryWrapper {
     // Test 2: Success on third try
     console.log('Test 2: Fail twice, succeed on third try');
     callCount = 0;
-    const result2 = await this.retry(() => {
-      callCount++;
-      if (callCount < 3) {
-        const error = new Error('Temporary failure');
-        error.code = 'ECONNRESET';
-        throw error;
-      }
-      return Promise.resolve('success after retries');
-    }, { retries: 3, baseDelay: 100 });
+    const result2 = await this.retry(
+      () => {
+        callCount++;
+        if (callCount < 3) {
+          const error = new Error('Temporary failure');
+          error.code = 'ECONNRESET';
+          throw error;
+        }
+        return Promise.resolve('success after retries');
+      },
+      { retries: 3, baseDelay: 100 }
+    );
     console.log(`✅ Result: ${result2}, Calls: ${callCount}\n`);
 
     // Test 3: Non-retryable error
     console.log('Test 3: Non-retryable error (authentication)');
     try {
-      await this.retry(() => {
-        const error = new Error('Authentication failed');
-        error.response = { status: 401 };
-        throw error;
-      }, { retries: 3, baseDelay: 100 });
+      await this.retry(
+        () => {
+          const error = new Error('Authentication failed');
+          error.response = { status: 401 };
+          throw error;
+        },
+        { retries: 3, baseDelay: 100 }
+      );
     } catch (error) {
       console.log(`✅ Correctly failed without retry: ${error.message}\n`);
     }
@@ -285,7 +304,7 @@ class RetryWrapper {
     const items = [1, 2, 3, 4, 5];
     const batchResult = await this.batchRetry(
       items,
-      async (item) => {
+      async item => {
         if (item === 3) {
           const error = new Error('Item 3 fails');
           error.response = { status: 400 };
@@ -298,7 +317,7 @@ class RetryWrapper {
     console.log(`✅ Batch result:`, {
       success: batchResult.successCount,
       errors: batchResult.errorCount,
-      results: batchResult.results.map(r => r.result)
+      results: batchResult.results.map(r => r.result),
     });
 
     console.log('\n✅ All retry tests passed!');

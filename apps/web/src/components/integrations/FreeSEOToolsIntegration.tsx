@@ -32,48 +32,48 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
       icon: '📈',
       title: 'Google Trends',
       description: 'Track keyword trends and interest over time',
-      color: 'text-blue-600'
+      color: 'text-blue-600',
     },
     {
       icon: '🔍',
       title: 'Keyword Research',
       description: 'Find related keywords and search volume',
-      color: 'text-green-600'
+      color: 'text-green-600',
     },
     {
       icon: '👥',
       title: 'Competitor Analysis',
       description: 'Analyze competitor strategies and gaps',
-      color: 'text-purple-600'
+      color: 'text-purple-600',
     },
     {
       icon: '📊',
       title: 'Domain Analysis',
       description: 'Comprehensive SEO analysis and scoring',
-      color: 'text-orange-600'
+      color: 'text-orange-600',
     },
     {
       icon: '🌐',
       title: 'Geographic Interest',
       description: 'See where your keywords are popular',
-      color: 'text-red-600'
+      color: 'text-red-600',
     },
     {
       icon: '⚡',
       title: 'Free & Fast',
       description: 'No API costs, instant results',
-      color: 'text-emerald-600'
-    }
+      color: 'text-emerald-600',
+    },
   ];
 
   const fetchData = async (endpoint: string, query: string) => {
     setLoading(true);
     setError(null);
-    
+
     try {
       const response = await fetch(`/api/free-seo-tools/${endpoint}/${encodeURIComponent(query)}`);
       const result = await response.json();
-      
+
       if (result.success) {
         setData(prev => ({ ...prev, [endpoint]: result.data }));
       } else {
@@ -89,9 +89,9 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
-    
+
     setLastQuery(inputValue);
-    
+
     switch (activeTab) {
       case 'trends':
         fetchData('trends', inputValue);
@@ -113,7 +113,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
 
   const renderTrendsData = () => {
     if (!data.trends) return null;
-    
+
     return (
       <div className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -136,7 +136,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
             </CardContent>
           </Card>
         </div>
-        
+
         {data.trends.relatedQueries && data.trends.relatedQueries.length > 0 && (
           <Card>
             <CardHeader>
@@ -145,7 +145,9 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
             <CardContent>
               <div className="flex flex-wrap gap-2">
                 {data.trends.relatedQueries.slice(0, 10).map((query: string, index: number) => (
-                  <Badge key={index} variant="secondary">{query}</Badge>
+                  <Badge key={index} variant="secondary">
+                    {query}
+                  </Badge>
                 ))}
               </div>
             </CardContent>
@@ -157,7 +159,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
 
   const renderKeywordsData = () => {
     if (!data.keywords) return null;
-    
+
     return (
       <div className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -174,7 +176,15 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
                   </div>
                   <div className="flex justify-between">
                     <span className="text-xs text-muted-foreground">Difficulty:</span>
-                    <Badge variant={keyword.difficulty === 'low' ? 'default' : keyword.difficulty === 'medium' ? 'secondary' : 'destructive'}>
+                    <Badge
+                      variant={
+                        keyword.difficulty === 'low'
+                          ? 'default'
+                          : keyword.difficulty === 'medium'
+                            ? 'secondary'
+                            : 'destructive'
+                      }
+                    >
                       {keyword.difficulty}
                     </Badge>
                   </div>
@@ -189,7 +199,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
 
   const renderCompetitorsData = () => {
     if (!data.competitors) return null;
-    
+
     return (
       <div className="space-y-4">
         {data.competitors.map((competitor: any, index: number) => (
@@ -200,7 +210,9 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div>
-                  <div className="text-2xl font-bold">{competitor.estimatedTraffic?.toLocaleString()}</div>
+                  <div className="text-2xl font-bold">
+                    {competitor.estimatedTraffic?.toLocaleString()}
+                  </div>
                   <p className="text-xs text-muted-foreground">Est. Traffic</p>
                 </div>
                 <div>
@@ -212,7 +224,9 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
                   <p className="text-xs text-muted-foreground">Content Gaps</p>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold">{competitor.linkOpportunities?.length || 0}</div>
+                  <div className="text-2xl font-bold">
+                    {competitor.linkOpportunities?.length || 0}
+                  </div>
                   <p className="text-xs text-muted-foreground">Link Opportunities</p>
                 </div>
               </div>
@@ -225,7 +239,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
 
   const renderAnalysisData = () => {
     if (!data.analysis) return null;
-    
+
     return (
       <div className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -237,7 +251,9 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
           </Card>
           <Card>
             <CardContent className="pt-6">
-              <div className="text-2xl font-bold">{data.analysis.metrics?.estimatedTraffic?.toLocaleString()}</div>
+              <div className="text-2xl font-bold">
+                {data.analysis.metrics?.estimatedTraffic?.toLocaleString()}
+              </div>
               <p className="text-xs text-muted-foreground">Est. Traffic</p>
             </CardContent>
           </Card>
@@ -254,7 +270,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
             </CardContent>
           </Card>
         </div>
-        
+
         {data.analysis.issues && data.analysis.issues.length > 0 && (
           <Card>
             <CardHeader>
@@ -272,7 +288,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
             </CardContent>
           </Card>
         )}
-        
+
         {data.analysis.recommendations && data.analysis.recommendations.length > 0 && (
           <Card>
             <CardHeader>
@@ -303,7 +319,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
             Free SEO Tools Integration
           </CardTitle>
           <CardDescription>
-            Access powerful SEO analysis tools without any API costs. Get keyword research, 
+            Access powerful SEO analysis tools without any API costs. Get keyword research,
             competitor analysis, and domain insights using free Google APIs and public data sources.
           </CardDescription>
         </CardHeader>
@@ -312,7 +328,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
             {features.map((feature, index) => (
               <div key={index} className="flex items-start gap-3 p-3 rounded-lg border">
-                 <span className={`h-5 w-5 mt-0.5 ${feature.color}`}>{feature.icon}</span>
+                <span className={`h-5 w-5 mt-0.5 ${feature.color}`}>{feature.icon}</span>
                 <div>
                   <h4 className="font-medium text-sm">{feature.title}</h4>
                   <p className="text-xs text-muted-foreground">{feature.description}</p>
@@ -327,7 +343,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
               <Input
                 placeholder="Enter keyword or domain..."
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={e => setInputValue(e.target.value)}
                 className="flex-1"
               />
               <Button type="submit" disabled={loading || !inputValue.trim()}>
@@ -384,7 +400,7 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button 
+                  <Button
                     onClick={() => fetchData('report', lastQuery || inputValue)}
                     disabled={loading}
                     className="w-full"
@@ -411,9 +427,8 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
                 <span className="font-medium text-emerald-800">Cost Savings</span>
               </div>
               <p className="text-sm text-emerald-700">
-                This integration uses free Google APIs and public data sources, 
-                saving you hundreds of dollars in monthly API costs compared to 
-                paid SEO tools.
+                This integration uses free Google APIs and public data sources, saving you hundreds
+                of dollars in monthly API costs compared to paid SEO tools.
               </p>
             </CardContent>
           </Card>
@@ -421,4 +436,4 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
       </Card>
     </div>
   );
-} 
+}

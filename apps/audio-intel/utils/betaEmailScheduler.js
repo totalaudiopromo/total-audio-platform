@@ -19,11 +19,11 @@ async function scheduleBetaFollowUp(email, firstName, signupDate) {
     { day: 12, broadcastId: '20612628' },
     { day: 14, broadcastId: '20612629' },
   ];
-  
+
   for (const schedule of schedules) {
     const sendDate = new Date(signupDate);
     sendDate.setDate(sendDate.getDate() + schedule.day);
-    
+
     // Schedule email for future sending
     setTimeout(async () => {
       await sendBetaFollowUpEmail(email, firstName, schedule.broadcastId);

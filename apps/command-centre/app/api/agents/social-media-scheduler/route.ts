@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
   try {
     console.log('📱 Starting Social Media Scheduler...');
-    
+
     const results = {
       timestamp: new Date().toISOString(),
       posts_checked: 0,
@@ -45,15 +45,14 @@ export async function POST(request: NextRequest) {
       performance_metrics: {
         engagement_rate: 0,
         posting_consistency: 0,
-        platform_distribution: { x: 0, linkedin: 0, bluesky: 0 }
-      }
+        platform_distribution: { x: 0, linkedin: 0, bluesky: 0 },
+      },
     };
 
     // Check for posts due to be published
     const now = new Date();
-    const duePosts = posts.filter(post => 
-      post.status === 'scheduled' && 
-      new Date(post.scheduledTime) <= now
+    const duePosts = posts.filter(
+      post => post.status === 'scheduled' && new Date(post.scheduledTime) <= now
     );
 
     results.posts_checked = posts.length;
@@ -64,20 +63,20 @@ export async function POST(request: NextRequest) {
       try {
         // In Phase 1: Just log the post (no actual API posting)
         console.log(`📱 Publishing to ${post.platform.toUpperCase()}:`, post.content);
-        
+
         // Simulate posting success/failure
         const success = Math.random() > 0.1; // 90% success rate
-        
+
         if (success) {
           post.status = 'posted';
           post.updatedAt = new Date().toISOString();
           results.posts_posted++;
-          
+
           // Simulate engagement data
           post.engagement = {
             likes: Math.floor(Math.random() * 50) + 5,
             retweets: Math.floor(Math.random() * 20) + 1,
-            comments: Math.floor(Math.random() * 10)
+            comments: Math.floor(Math.random() * 10),
           };
         } else {
           post.status = 'failed';
@@ -104,22 +103,30 @@ export async function POST(request: NextRequest) {
     // Calculate performance metrics
     const postedPosts = posts.filter(post => post.status === 'posted');
     if (postedPosts.length > 0) {
-      const totalEngagement = postedPosts.reduce((sum, post) => 
-        sum + (post.engagement?.likes || 0) + (post.engagement?.retweets || 0) + (post.engagement?.comments || 0), 0
+      const totalEngagement = postedPosts.reduce(
+        (sum, post) =>
+          sum +
+          (post.engagement?.likes || 0) +
+          (post.engagement?.retweets || 0) +
+          (post.engagement?.comments || 0),
+        0
       );
       results.performance_metrics.engagement_rate = totalEngagement / postedPosts.length;
     }
 
     // Platform distribution
-    const platformCounts = posts.reduce((acc, post) => {
-      acc[post.platform] = (acc[post.platform] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const platformCounts = posts.reduce(
+      (acc, post) => {
+        acc[post.platform] = (acc[post.platform] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     results.performance_metrics.platform_distribution = {
       x: platformCounts.x || 0,
       linkedin: platformCounts.linkedin || 0,
-      bluesky: platformCounts.bluesky || 0
+      bluesky: platformCounts.bluesky || 0,
     };
 
     // Simulate Notion sync
@@ -132,15 +139,17 @@ export async function POST(request: NextRequest) {
       agent: 'Social Media Scheduler',
       action: 'Social media scheduling completed',
       results,
-      next_run: 'Every 15 minutes'
+      next_run: 'Every 15 minutes',
     });
-
   } catch (error) {
     console.error('❌ Social Media Scheduler failed:', error);
-    return NextResponse.json({
-      error: 'Social media scheduling failed',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Social media scheduling failed',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -169,22 +178,33 @@ export async function GET() {
       stats: {
         totalPosts: posts.length,
         scheduledPosts: posts.filter(p => p.status === 'scheduled').length,
-        postedToday: posts.filter(p => 
-          p.status === 'posted' && 
-          new Date(p.updatedAt).toDateString() === now.toDateString()
+        postedToday: posts.filter(
+          p => p.status === 'posted' && new Date(p.updatedAt).toDateString() === now.toDateString()
         ).length,
-        engagementRate: posts.filter(p => p.status === 'posted').length > 0 ? 
-          posts.filter(p => p.status === 'posted').reduce((sum, p) => 
-            sum + (p.engagement?.likes || 0) + (p.engagement?.retweets || 0) + (p.engagement?.comments || 0), 0
-          ) / posts.filter(p => p.status === 'posted').length : 0
-      }
+        engagementRate:
+          posts.filter(p => p.status === 'posted').length > 0
+            ? posts
+                .filter(p => p.status === 'posted')
+                .reduce(
+                  (sum, p) =>
+                    sum +
+                    (p.engagement?.likes || 0) +
+                    (p.engagement?.retweets || 0) +
+                    (p.engagement?.comments || 0),
+                  0
+                ) / posts.filter(p => p.status === 'posted').length
+            : 0,
+      },
     });
   } catch (error) {
     console.error('❌ Failed to get social media status:', error);
-    return NextResponse.json({
-      error: 'Failed to get social media status',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Failed to get social media status',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -202,15 +222,15 @@ export async function PUT(request: NextRequest) {
         status: 'scheduled',
         hashtags: post.hashtags || [],
         createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
       };
 
       posts.push(newPost);
-      
+
       return NextResponse.json({
         success: true,
         message: 'Post scheduled successfully',
-        post: newPost
+        post: newPost,
       });
     }
 
@@ -221,11 +241,11 @@ export async function PUT(request: NextRequest) {
       }
 
       posts[postIndex] = { ...posts[postIndex], ...post, updatedAt: new Date().toISOString() };
-      
+
       return NextResponse.json({
         success: true,
         message: 'Post updated successfully',
-        post: posts[postIndex]
+        post: posts[postIndex],
       });
     }
 
@@ -236,20 +256,22 @@ export async function PUT(request: NextRequest) {
       }
 
       posts.splice(postIndex, 1);
-      
+
       return NextResponse.json({
         success: true,
-        message: 'Post deleted successfully'
+        message: 'Post deleted successfully',
       });
     }
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
-
   } catch (error) {
     console.error('❌ Failed to manage post:', error);
-    return NextResponse.json({
-      error: 'Failed to manage post',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Failed to manage post',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }

@@ -38,6 +38,7 @@
    - Alternative/indie programming angle
 
 **Email Content Location**:
+
 ```bash
 node tools/agents/radio-promo/kyara-send-emails.js
 ```
@@ -80,6 +81,7 @@ node tools/agents/radio-promo/kyara-send-emails.js
 **New Link**: https://on.soundcloud.com/1oiblSoRYCp1swzCr3
 
 **Steps**:
+
 1. Login to Mailchimp: https://mailchimp.com
 2. Find KYARA press release campaign
 3. Edit campaign content
@@ -91,22 +93,26 @@ node tools/agents/radio-promo/kyara-send-emails.js
 ## 📋 Immediate Next Steps
 
 ### Priority 1: Triple j Emails (Today)
+
 - [ ] Copy email content from generated output
 - [ ] Send to Anika Luna (Home & Hosed) - **HIGHEST PRIORITY**
 - [ ] Send to Claire Mooney (Music Director)
 - [ ] Send to Abby Butler & Tyrone Pynor
 
 ### Priority 2: UK Radio Submissions (This Week)
+
 - [ ] Submit to Amazing Radio: https://amazingradio.com/submit
 - [ ] Submit to Radio Wigwam: https://radiowigwam.com/submit
 - [ ] Update Mailchimp press release with SoundCloud link
 
 ### Priority 3: Additional UK Outreach (Week 2)
+
 - [ ] Email BBC Radio 6 Music
 - [ ] Email NTS Radio
 - [ ] Email Resonance FM
 
 ### Priority 4: Follow-up (Week 2-3)
+
 - [ ] Follow up with Anika Luna if no response (1 week)
 - [ ] Follow up with Claire Mooney if no response (1 week)
 - [ ] Monitor WARM API for plays
@@ -116,11 +122,13 @@ node tools/agents/radio-promo/kyara-send-emails.js
 ## 🎯 Campaign Success Metrics
 
 ### Target Outcomes:
+
 - **Primary**: Home & Hosed play (follow-up to previous support)
 - **Secondary**: General triple j playlist consideration
 - **Tertiary**: UK alternative radio support (Amazing Radio, Wigwam)
 
 ### Tracking:
+
 - Email responses from triple j team
 - WARM API play tracking
 - Mailchimp campaign open/click rates
@@ -154,11 +162,13 @@ node tools/agents/radio-promo/kyara-send-emails.js
 ## 💡 Key Campaign Angles
 
 ### Triple j Pitch:
+
 - **Home & Hosed**: "Follow-up to successful play by Jaimee Taylor-Neilsen (August 2024)"
 - **Music Director**: "Previous triple j support, strong progression in sound"
 - **Presenters**: "Building momentum in Australian alternative scene"
 
 ### UK Alternative Radio Pitch:
+
 - **Previous Support**: "triple j Home & Hosed play demonstrates indie credibility"
 - **Genre Fit**: "Raw emotional intensity with polished production"
 - **Audience**: "Perfect for alternative/indie programming"
@@ -168,6 +178,7 @@ node tools/agents/radio-promo/kyara-send-emails.js
 ## 🤖 Technical Implementation
 
 ### SDK Features Used:
+
 1. **Prompt Caching**: 80-90% cost reduction on repeated context
 2. **Extended Thinking**: Better campaign strategy generation
 3. **Agentic Loops**: Autonomous multi-step execution
@@ -175,6 +186,7 @@ node tools/agents/radio-promo/kyara-send-emails.js
 5. **Tool Integration**: Monday.com, Gmail, WARM API orchestration
 
 ### Agent Architecture:
+
 - Extends `StreamingAgent` base class
 - 5 specialized tools for campaign execution
 - Cached UK music industry and Liberty PR context
@@ -185,10 +197,12 @@ node tools/agents/radio-promo/kyara-send-emails.js
 ## 📞 Contact Information
 
 **Artist Contact**:
+
 - Name: Marie (KYARA)
 - Email: kyaramusic@outlook.com
 
 **Liberty Music PR**:
+
 - Contact: Chris Schofield
 - Email: chris@libertymusicpr.com
 - Sending Email: chrisschofield@libertymusicpr.com

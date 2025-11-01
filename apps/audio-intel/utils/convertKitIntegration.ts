@@ -41,7 +41,7 @@ export class ConvertKitAgent {
   constructor() {
     this.apiKey = process.env.CONVERTKIT_API_KEY || '';
     this.apiSecret = process.env.CONVERTKIT_API_SECRET || '';
-    
+
     if (!this.apiKey || !this.apiSecret) {
       throw new Error('ConvertKit API credentials not configured');
     }
@@ -68,8 +68,8 @@ export class ConvertKitAgent {
           name: campaignName,
           subject: subject,
           content: content,
-          status: 'draft' // Create as draft, not sent
-        })
+          status: 'draft', // Create as draft, not sent
+        }),
       });
 
       if (!response.ok) {
@@ -78,9 +78,9 @@ export class ConvertKitAgent {
       }
 
       const data = await response.json();
-      
+
       console.log(`✅ ConvertKit draft created: ${data.broadcast.id}`);
-      
+
       return {
         id: data.broadcast.id.toString(),
         name: campaignName,
@@ -88,9 +88,8 @@ export class ConvertKitAgent {
         content: content,
         status: 'draft',
         createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
       };
-
     } catch (error) {
       console.error('Error creating ConvertKit draft:', error);
       throw error;
@@ -100,27 +99,29 @@ export class ConvertKitAgent {
   // Get subscribers with newsletter tag
   async getNewsletterSubscribers(): Promise<ConvertKitSubscriber[]> {
     try {
-      const response = await fetch(`${this.baseUrl}/subscribers?api_secret=${this.apiSecret}&tag_id=10182443`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `${this.baseUrl}/subscribers?api_secret=${this.apiSecret}&tag_id=10182443`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
         }
-      });
+      );
 
       if (!response.ok) {
         throw new Error(`ConvertKit API error: ${response.status}`);
       }
 
       const data = await response.json();
-      
+
       return data.subscribers.map((sub: any) => ({
         id: sub.id.toString(),
         email: sub.email_address,
         firstName: sub.first_name || '',
         tags: sub.tags || [],
-        createdAt: sub.created_at
+        createdAt: sub.created_at,
       }));
-
     } catch (error) {
       console.error('Error fetching subscribers:', error);
       return [];
@@ -128,7 +129,9 @@ export class ConvertKitAgent {
   }
 
   // Send the draft to subscribers
-  async sendNewsletterDraft(campaignId: string): Promise<{ success: boolean; sent: number; error?: string }> {
+  async sendNewsletterDraft(
+    campaignId: string
+  ): Promise<{ success: boolean; sent: number; error?: string }> {
     try {
       console.log(`📤 Sending ConvertKit campaign ${campaignId}...`);
 
@@ -139,8 +142,8 @@ export class ConvertKitAgent {
         },
         body: JSON.stringify({
           api_key: this.apiKey,
-          api_secret: this.apiSecret
-        })
+          api_secret: this.apiSecret,
+        }),
       });
 
       if (!response.ok) {
@@ -149,20 +152,19 @@ export class ConvertKitAgent {
       }
 
       const data = await response.json();
-      
+
       console.log(`✅ Newsletter sent successfully`);
-      
+
       return {
         success: true,
-        sent: data.broadcast.recipients_count || 0
+        sent: data.broadcast.recipients_count || 0,
       };
-
     } catch (error) {
       console.error('Error sending newsletter:', error);
       return {
         success: false,
         sent: 0,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -174,16 +176,16 @@ export class ConvertKitAgent {
       `The Unsigned Advantage #${intelligence.weekNumber}: What's Really Happening`,
       `Week ${intelligence.weekNumber}: Underground Trends + Your Tool Update`,
       `🎧 The Unsigned Advantage #${intelligence.weekNumber}: Real Music Industry Intel`,
-      `Week ${intelligence.weekNumber}: Underground Music News + Practical Tips`
+      `Week ${intelligence.weekNumber}: Underground Music News + Practical Tips`,
     ];
-    
+
     return subjects[intelligence.weekNumber % subjects.length];
   }
 
   // Generate ConvertKit-compatible HTML content
   private generateConvertKitContent(intelligence: WeeklyIntelligence): string {
     const currentDate = new Date().toLocaleDateString('en-GB');
-    
+
     return `
 <!DOCTYPE html>
 <html>
@@ -222,12 +224,17 @@ export class ConvertKitAgent {
     </div>
   </div>
 
-  ${intelligence.topStories.length > 0 ? `
+  ${
+    intelligence.topStories.length > 0
+      ? `
   <div class="section">
     <div class="section-title">What's Happening in Music This Week</div>
     <div class="section-content">
       <p>Here's what caught my attention from the underground music scene this week:</p>
-      ${intelligence.topStories.slice(0, 3).map(article => `
+      ${intelligence.topStories
+        .slice(0, 3)
+        .map(
+          article => `
         <div class="news-item">
           <div class="news-title">${article.title}</div>
           <div class="news-excerpt">${article.excerpt}</div>
@@ -236,10 +243,14 @@ export class ConvertKitAgent {
             ${article.url ? `<a href="${article.url}" target="_blank" class="news-link">Read more →</a>` : ''}
           </div>
         </div>
-      `).join('')}
+      `
+        )
+        .join('')}
     </div>
   </div>
-  ` : ''}
+  `
+      : ''
+  }
 
   <div class="section">
     <div class="section-title">Quick Tip</div>
@@ -285,12 +296,15 @@ export class ConvertKitAgent {
     unsubscribed: number;
   }> {
     try {
-      const response = await fetch(`${this.baseUrl}/broadcasts/${campaignId}?api_secret=${this.apiSecret}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `${this.baseUrl}/broadcasts/${campaignId}?api_secret=${this.apiSecret}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
         }
-      });
+      );
 
       if (!response.ok) {
         throw new Error(`ConvertKit API error: ${response.status}`);
@@ -298,15 +312,14 @@ export class ConvertKitAgent {
 
       const data = await response.json();
       const broadcast = data.broadcast;
-      
+
       return {
         sent: broadcast.recipients_count || 0,
         delivered: broadcast.delivered_count || 0,
         opened: broadcast.open_count || 0,
         clicked: broadcast.click_count || 0,
-        unsubscribed: broadcast.unsubscribe_count || 0
+        unsubscribed: broadcast.unsubscribe_count || 0,
       };
-
     } catch (error) {
       console.error('Error fetching campaign stats:', error);
       return {
@@ -314,11 +327,10 @@ export class ConvertKitAgent {
         delivered: 0,
         opened: 0,
         clicked: 0,
-        unsubscribed: 0
+        unsubscribed: 0,
       };
     }
   }
 }
 
 export const convertKitAgent = new ConvertKitAgent();
-

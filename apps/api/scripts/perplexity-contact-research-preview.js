@@ -2,10 +2,14 @@
 
 require('dotenv').config();
 // Support running as JS or with ts-node
-try { require('ts-node/register'); } catch (e) {}
+try {
+  require('ts-node/register');
+} catch (e) {}
 const { AirtableContactEnrichment } = require('../src/services/airtableContactEnrichment.ts');
 const { PerplexityService } = require('../src/integrations/perplexity/index.ts');
-const { previewPerplexityContactResearch } = require('../src/services/perplexityContactResearch.ts');
+const {
+  previewPerplexityContactResearch,
+} = require('../src/services/perplexityContactResearch.ts');
 
 async function main() {
   // Load config from env
@@ -29,4 +33,4 @@ async function main() {
 main().catch(err => {
   console.error('❌ Error running Perplexity Contact Research Preview:', err);
   process.exit(1);
-}); 
+});

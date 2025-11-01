@@ -18,7 +18,7 @@ const AgentStatusWidget: React.FC<AgentStatusWidgetProps> = ({
   initialStatus = 'idle',
   showDetails = true,
   size = 'md',
-  realTimeUpdates = true
+  realTimeUpdates = true,
 }) => {
   const [status, setStatus] = useState<keyof typeof AGENT_STATUS_STATES>(initialStatus);
   const [lastUpdate, setLastUpdate] = useState(new Date().toLocaleTimeString());
@@ -29,20 +29,20 @@ const AgentStatusWidget: React.FC<AgentStatusWidgetProps> = ({
       container: 'p-2 text-xs',
       indicator: 'w-2 h-2',
       icon: 'text-sm',
-      text: 'text-xs'
+      text: 'text-xs',
     },
     md: {
       container: 'p-3 text-sm',
       indicator: 'w-3 h-3',
       icon: 'text-base',
-      text: 'text-sm'
+      text: 'text-sm',
     },
     lg: {
       container: 'p-4 text-base',
       indicator: 'w-4 h-4',
       icon: 'text-lg',
-      text: 'text-base'
-    }
+      text: 'text-base',
+    },
   };
 
   const config = sizeConfig[size];
@@ -73,9 +73,10 @@ const AgentStatusWidget: React.FC<AgentStatusWidgetProps> = ({
       style={{
         backgroundColor: theme.secondary,
         borderColor: theme.primary,
-        boxShadow: statusIndicator.indicator.animation !== 'none' 
-          ? `0 0 10px ${theme.primary}40` 
-          : `0 2px 8px ${theme.primary}20`
+        boxShadow:
+          statusIndicator.indicator.animation !== 'none'
+            ? `0 0 10px ${theme.primary}40`
+            : `0 2px 8px ${theme.primary}20`,
       }}
     >
       {/* Status Indicator Dot */}
@@ -92,7 +93,7 @@ const AgentStatusWidget: React.FC<AgentStatusWidgetProps> = ({
         <div className={`font-medium truncate ${config.text}`} style={{ color: theme.accent }}>
           {agentName}
         </div>
-        
+
         {showDetails && (
           <div className="flex items-center space-x-2">
             <span className={`opacity-75 ${config.text}`} style={{ color: theme.accent }}>

@@ -4,7 +4,7 @@
 // ============================================================================
 
 import Anthropic from '@anthropic-ai/sdk';
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
@@ -28,7 +28,9 @@ export async function GET(
 ) {
   const resolvedParams = await params;
   const supabase = await createServerClient(cookies());
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -66,7 +68,9 @@ export async function POST(
 ) {
   const resolvedParams = await params;
   const supabase = await createServerClient(cookies());
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -81,10 +85,7 @@ export async function POST(
     .single();
 
   if (campaignError || !campaign) {
-    return NextResponse.json(
-      { error: 'Campaign not found' },
-      { status: 404 }
-    );
+    return NextResponse.json({ error: 'Campaign not found' }, { status: 404 });
   }
 
   // Fetch relevant industry benchmark
@@ -117,20 +118,26 @@ CAMPAIGN DATA:
 - Status: ${campaign.status}
 - Dates: ${campaign.start_date || 'Not set'} to ${campaign.end_date || 'ongoing'}
 
-${benchmark ? `INDUSTRY BENCHMARKS FOR ${campaign.platform} - ${campaign.genre}:
+${
+  benchmark
+    ? `INDUSTRY BENCHMARKS FOR ${campaign.platform} - ${campaign.genre}:
 - Average Success Rate: ${benchmark.avg_success_rate}%
 - Average Cost Per Result: £${Math.round(benchmark.avg_cost_per_result)}
 - Optimal Budget Range: £${benchmark.optimal_budget_min}-£${benchmark.optimal_budget_max}
 - Best Submission Day: ${benchmark.best_day}
 - Best Month: ${benchmark.best_month}
-- Sample Size: ${benchmark.sample_size} campaigns` : 'INDUSTRY BENCHMARKS: Not available for this platform/genre combination'}
+- Sample Size: ${benchmark.sample_size} campaigns`
+    : 'INDUSTRY BENCHMARKS: Not available for this platform/genre combination'
+}
 
 CAMPAIGN NOTES:
 ${campaign.notes || 'No additional notes provided'}
 
-${hasResults ?
-`This campaign has RESULTS to analyze. Compare actual performance vs targets and benchmarks.` :
-`This campaign is PLANNING/IN PROGRESS - provide predictive guidance based on the setup.`}
+${
+  hasResults
+    ? `This campaign has RESULTS to analyze. Compare actual performance vs targets and benchmarks.`
+    : `This campaign is PLANNING/IN PROGRESS - provide predictive guidance based on the setup.`
+}
 
 Provide analysis in this EXACT format:
 
@@ -166,9 +173,8 @@ Use UK spelling, music industry terminology (BBC Radio 1, 6Music, playlisting, d
       ],
     });
 
-    const autopsyText = message.content[0].type === 'text'
-      ? message.content[0].text
-      : '';
+    const autopsyText =
+      message.content[0].type === 'text' ? message.content[0].text : '';
 
     console.log('Claude response received, length:', autopsyText.length);
 
@@ -183,19 +189,22 @@ Use UK spelling, music industry terminology (BBC Radio 1, 6Music, playlisting, d
     // Store in database (upsert - update if exists, insert if not)
     const { error: saveError } = await supabase
       .from('campaign_intelligence')
-      .upsert({
-        campaign_id: resolvedParams.id,
-        user_id: user.id,
-        autopsy_text: sections.autopsy,
-        next_move: sections.nextMove,
-        brutal_honesty: sections.brutalHonesty,
-        quick_wins: sections.quickWins,
-        full_response: autopsyText,
-        generated_at: new Date().toISOString(),
-        model_used: 'claude-sonnet-4-20250514',
-      }, {
-        onConflict: 'campaign_id',
-      });
+      .upsert(
+        {
+          campaign_id: resolvedParams.id,
+          user_id: user.id,
+          autopsy_text: sections.autopsy,
+          next_move: sections.nextMove,
+          brutal_honesty: sections.brutalHonesty,
+          quick_wins: sections.quickWins,
+          full_response: autopsyText,
+          generated_at: new Date().toISOString(),
+          model_used: 'claude-sonnet-4-20250514',
+        },
+        {
+          onConflict: 'campaign_id',
+        }
+      );
 
     if (saveError) {
       console.error('Failed to save autopsy:', saveError);
@@ -208,13 +217,12 @@ Use UK spelling, music industry terminology (BBC Radio 1, 6Music, playlisting, d
       raw: autopsyText,
       generated_at: new Date().toISOString(),
     });
-
   } catch (error: any) {
     console.error('Claude API error:', error);
     return NextResponse.json(
       {
         error: 'Failed to generate autopsy',
-        details: error.message || 'Unknown error'
+        details: error.message || 'Unknown error',
       },
       { status: 500 }
     );

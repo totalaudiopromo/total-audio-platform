@@ -75,26 +75,21 @@ export function ToolSwitcher({ currentTool, accentColor = 'purple' }: ToolSwitch
 
       {isOpen && (
         <>
-          <div
-            className="fixed inset-0 z-40"
-            onClick={() => setIsOpen(false)}
-          />
+          <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
           <div className="absolute right-0 top-full z-50 mt-2 w-80 rounded-xl border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <div className="p-4">
               <p className="mb-4 text-xs font-bold uppercase tracking-wider text-gray-500">
                 Total Audio Tools
               </p>
               <div className="space-y-2">
-                {tools.map((tool) => {
+                {tools.map(tool => {
                   const isActive = tool.name === currentTool;
                   return (
                     <a
                       key={tool.name}
                       href={tool.url}
                       className={`block rounded-lg border-2 border-black p-4 transition ${
-                        isActive
-                          ? styles.activeBg
-                          : 'bg-white hover:bg-gray-50'
+                        isActive ? styles.activeBg : 'bg-white hover:bg-gray-50'
                       }`}
                     >
                       <div className="flex items-start justify-between">
@@ -103,7 +98,9 @@ export function ToolSwitcher({ currentTool, accentColor = 'purple' }: ToolSwitch
                           <p className="mt-1 text-xs text-gray-600">{tool.description}</p>
                         </div>
                         {isActive && (
-                          <span className={`rounded-full ${styles.badge} px-2 py-0.5 text-xs font-bold text-white`}>
+                          <span
+                            className={`rounded-full ${styles.badge} px-2 py-0.5 text-xs font-bold text-white`}
+                          >
                             CURRENT
                           </span>
                         )}

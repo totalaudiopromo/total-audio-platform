@@ -85,7 +85,10 @@ export interface EnrichedCaseStudyData extends CaseStudyData {
  */
 function parseArrayField(value: string): string[] {
   if (!value || value.trim() === '') return [];
-  return value.split(';').map(item => item.trim()).filter(Boolean);
+  return value
+    .split(';')
+    .map(item => item.trim())
+    .filter(Boolean);
 }
 
 /**
@@ -108,18 +111,24 @@ function parseCSVRow(row: string[], headers: string[]): CaseStudyData | null {
 
   // Validate tier is 1-3
   if (isNaN(tier) || tier < 1 || tier > 3) {
-    throw new Error(`Invalid tier value for ${rowData.topic_slug}: ${rowData.tier}. Must be 1, 2, or 3.`);
+    throw new Error(
+      `Invalid tier value for ${rowData.topic_slug}: ${rowData.tier}. Must be 1, 2, or 3.`
+    );
   }
 
   // Validate monthly searches
   if (isNaN(monthlySearchesEst) || monthlySearchesEst < 0) {
-    throw new Error(`Invalid monthly_searches_est for ${rowData.topic_slug}: ${rowData.monthly_searches_est}`);
+    throw new Error(
+      `Invalid monthly_searches_est for ${rowData.topic_slug}: ${rowData.monthly_searches_est}`
+    );
   }
 
   // Validate status
   const status = rowData.status.toLowerCase();
   if (!['live', 'planned', 'draft'].includes(status)) {
-    throw new Error(`Invalid status for ${rowData.topic_slug}: ${rowData.status}. Must be 'live', 'planned', or 'draft'.`);
+    throw new Error(
+      `Invalid status for ${rowData.topic_slug}: ${rowData.status}. Must be 'live', 'planned', or 'draft'.`
+    );
   }
 
   return {
@@ -181,7 +190,9 @@ async function readCSVFile(): Promise<CaseStudyData[]> {
     return caseStudies;
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
-      throw new Error(`CSV file not found at ${csvPath}. Please ensure docs/pseo/programmatic-pages.csv exists.`);
+      throw new Error(
+        `CSV file not found at ${csvPath}. Please ensure docs/pseo/programmatic-pages.csv exists.`
+      );
     }
     throw error;
   }
@@ -229,7 +240,9 @@ export async function getCaseStudyBySlug(slug: string): Promise<EnrichedCaseStud
   const study = allStudies.find(s => s.topicSlug === slug);
 
   if (!study) {
-    throw new Error(`Case study not found for slug: ${slug}. Available slugs: ${allStudies.map(s => s.topicSlug).join(', ')}`);
+    throw new Error(
+      `Case study not found for slug: ${slug}. Available slugs: ${allStudies.map(s => s.topicSlug).join(', ')}`
+    );
   }
 
   return study;
@@ -238,7 +251,9 @@ export async function getCaseStudyBySlug(slug: string): Promise<EnrichedCaseStud
 /**
  * Gets case studies filtered by status
  */
-export async function getCaseStudiesByStatus(status: 'live' | 'planned' | 'draft'): Promise<EnrichedCaseStudyData[]> {
+export async function getCaseStudiesByStatus(
+  status: 'live' | 'planned' | 'draft'
+): Promise<EnrichedCaseStudyData[]> {
   const allStudies = await getAllCaseStudies();
   return allStudies.filter(s => s.status === status);
 }
@@ -275,12 +290,21 @@ export function validateCaseStudy(data: CaseStudyData): { valid: boolean; errors
 
   // Required string fields
   const requiredFields: (keyof CaseStudyData)[] = [
-    'topicSlug', 'pageUrl', 'pageTitle', 'metaDescription',
-    'painPoint', 'solutionAngle', 'ctaPrimary', 'category'
+    'topicSlug',
+    'pageUrl',
+    'pageTitle',
+    'metaDescription',
+    'painPoint',
+    'solutionAngle',
+    'ctaPrimary',
+    'category',
   ];
 
   requiredFields.forEach(field => {
-    if (!data[field] || (typeof data[field] === 'string' && (data[field] as string).trim() === '')) {
+    if (
+      !data[field] ||
+      (typeof data[field] === 'string' && (data[field] as string).trim() === '')
+    ) {
       errors.push(`Missing required field: ${field}`);
     }
   });

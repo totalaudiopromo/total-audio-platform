@@ -5,13 +5,16 @@ Copy these variable names and add them to Vercel with values from your vault.
 ## 🔐 Required for Core Functionality
 
 ### Authentication (NextAuth)
+
 ```
 NEXTAUTH_SECRET
 NEXTAUTH_URL
 ```
+
 **Value for NEXTAUTH_URL:** `https://pitch.totalaudiopromo.com`
 
 ### Supabase Database
+
 ```
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -19,14 +22,17 @@ SUPABASE_SERVICE_ROLE_KEY
 ```
 
 ### AI Provider (Anthropic/Claude) - CRITICAL for pitch generation
+
 ```
 ANTHROPIC_API_KEY
 ```
 
 ### Base URL
+
 ```
 NEXT_PUBLIC_BASE_URL
 ```
+
 **Value:** `https://pitch.totalaudiopromo.com`
 
 ---
@@ -34,21 +40,26 @@ NEXT_PUBLIC_BASE_URL
 ## 🎯 Optional but Recommended
 
 ### Google OAuth (for Google sign-in)
+
 ```
 GOOGLE_CLIENT_ID
 GOOGLE_CLIENT_SECRET
 ```
 
 ### Demo User Credentials (for email/password login)
+
 ```
 DEMO_USER_EMAIL
 DEMO_USER_PASSWORD
 ```
+
 **Suggested values:**
+
 - Email: `founder@totalaudiopromo.com`
 - Password: `buildfast` (or your preferred password)
 
 ### Stripe Payment Processing
+
 ```
 STRIPE_SECRET_KEY
 STRIPE_PRICE_PROFESSIONAL_MONTHLY
@@ -90,6 +101,7 @@ STRIPE_PRICE_AGENCY_ANNUAL=<from-vault>
 ## 🎯 Priority Order
 
 **Add these first (site won't work without them):**
+
 1. ⭐ `ANTHROPIC_API_KEY` - For AI pitch generation
 2. ⭐ `NEXT_PUBLIC_SUPABASE_URL`
 3. ⭐ `NEXT_PUBLIC_SUPABASE_ANON_KEY`
@@ -97,14 +109,9 @@ STRIPE_PRICE_AGENCY_ANNUAL=<from-vault>
 5. ⭐ `NEXTAUTH_SECRET`
 6. ⭐ `NEXTAUTH_URL` = `https://pitch.totalaudiopromo.com`
 
-**Add these second (for full functionality):**
-7. `GOOGLE_CLIENT_ID` + `GOOGLE_CLIENT_SECRET` (Google OAuth)
-8. `DEMO_USER_EMAIL` + `DEMO_USER_PASSWORD` (Demo login)
-9. `NEXT_PUBLIC_BASE_URL` = `https://pitch.totalaudiopromo.com`
+**Add these second (for full functionality):** 7. `GOOGLE_CLIENT_ID` + `GOOGLE_CLIENT_SECRET` (Google OAuth) 8. `DEMO_USER_EMAIL` + `DEMO_USER_PASSWORD` (Demo login) 9. `NEXT_PUBLIC_BASE_URL` = `https://pitch.totalaudiopromo.com`
 
-**Add these last (for payments):**
-10. `STRIPE_SECRET_KEY`
-11. `STRIPE_PRICE_*` (all 4 price IDs)
+**Add these last (for payments):** 10. `STRIPE_SECRET_KEY` 11. `STRIPE_PRICE_*` (all 4 price IDs)
 
 ---
 
@@ -126,6 +133,7 @@ STRIPE_PRICE_AGENCY_ANNUAL=<from-vault>
 ## 🔍 Check Your Vault For These Keys
 
 Look for entries named like:
+
 - `total-audio-supabase-url`
 - `total-audio-supabase-anon-key`
 - `total-audio-supabase-service-key`
@@ -147,4 +155,3 @@ Look for entries named like:
 2. Test the site: https://pitch.totalaudiopromo.com
 3. Try signing in and generating a pitch
 4. Check Vercel function logs for any errors
-

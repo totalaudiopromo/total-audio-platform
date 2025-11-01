@@ -8,6 +8,7 @@
 ## 🎯 YOUR CURRENT SITUATION
 
 **Audio Intel Status**:
+
 - ✅ Technical foundation complete
 - ✅ Mobile experience professional (21 UX issues fixed)
 - ✅ Database working (Neon Postgres, no maintenance)
@@ -16,6 +17,7 @@
 - ✅ Pricing live (£19/£79 tiers)
 
 **What You Need**:
+
 - First paying customers (target: £500/month by Nov 2025)
 - Customer acquisition content
 - Demo booking conversions
@@ -26,12 +28,14 @@
 ## ⚡ CLAUDE MAX PLAN SUPERPOWERS
 
 ### What You Get
+
 - **Priority access** during peak times
 - **5x more usage** than free tier
 - **Early access** to new features
 - **Longer conversations** without hitting limits
 
 ### How to Use It Best
+
 1. **Long development sessions** (your 2-hour max sessions)
 2. **Complex refactoring** (TDD workflow)
 3. **Strategic planning** (customer acquisition)
@@ -57,6 +61,7 @@ npm run dev
 ```
 
 **Ask Claude**:
+
 - "Review WEEKLY_FOCUS.md and suggest today's priorities"
 - "Check Agent OS health and recommend which agents to use today"
 - "What's the fastest path to first paying customer based on current state?"
@@ -64,6 +69,7 @@ npm run dev
 ### Development Session (1-2 hours)
 
 **For New Features**:
+
 ```bash
 # Use TDD workflow
 node unified-launcher.js tdd-plan "feature name" audiointel
@@ -75,6 +81,7 @@ node unified-launcher.js tdd-plan "feature name" audiointel
 ```
 
 **For Customer Acquisition**:
+
 ```bash
 # Use customer acquisition agents
 node unified-launcher.js newsletter generate
@@ -106,6 +113,7 @@ code ../WEEKLY_FOCUS.md
 **Best Time**: Monday morning, quarterly planning
 
 **Ask Claude**:
+
 ```
 "Based on Audio Intel's current state (0 paying customers, £19/£79 pricing,
 100% enrichment success rate, BBC Radio 1 case study), create a 4-week
@@ -119,6 +127,7 @@ customer acquisition plan to hit £500/month by November 2025."
 **Best Time**: Your 2-hour focused development sessions
 
 **Ask Claude**:
+
 ```
 "Using the TDD workflow, build a referral system for Audio Intel that:
 - Tracks referral links
@@ -135,6 +144,7 @@ customer acquisition plan to hit £500/month by November 2025."
 **Best Time**: Content creation days (batch 1 week of content)
 
 **Ask Claude**:
+
 ```
 "Generate a week of customer acquisition content:
 - 5 LinkedIn posts (radio promoter focus)
@@ -153,6 +163,7 @@ and focus on the 85% radio promoter conversion rate."
 **Best Time**: Agent system improvements
 
 **Ask Claude**:
+
 ```
 "Review all 14 agents in Agent OS and:
 1. Identify redundancies
@@ -168,6 +179,7 @@ and focus on the 85% radio promoter conversion rate."
 **Best Time**: When things break (always happens)
 
 **Ask Claude**:
+
 ```
 "Audio Intel contact enrichment is failing for BBC emails. Debug the entire
 pipeline from frontend → API → Perplexity → database and fix all issues."
@@ -180,6 +192,7 @@ pipeline from frontend → API → Perplexity → database and fix all issues."
 **Best Time**: When adding features that need data changes
 
 **Ask Claude**:
+
 ```
 "Add referral tracking to the database:
 1. Design Prisma schema changes
@@ -196,6 +209,7 @@ pipeline from frontend → API → Perplexity → database and fix all issues."
 ## 🎯 WEEKLY CLAUDE MAX PLAN
 
 ### Monday: Strategic Planning
+
 - Review last week's progress
 - Plan this week's priorities
 - Generate content calendar
@@ -204,6 +218,7 @@ pipeline from frontend → API → Perplexity → database and fix all issues."
 **Estimated Usage**: 1 hour session
 
 ### Tuesday-Thursday: Feature Development
+
 - Use TDD workflow for new features
 - Fix bugs and optimize performance
 - Mobile testing and improvements
@@ -212,6 +227,7 @@ pipeline from frontend → API → Perplexity → database and fix all issues."
 **Estimated Usage**: 2 hours per day (6 hours total)
 
 ### Friday: Content & Marketing
+
 - Generate customer acquisition content
 - Create case studies
 - Write cold outreach emails
@@ -256,6 +272,7 @@ Instead of:
 
 Do:
 ✅ Keep same conversation, iterate:
+
 - "Now add commission tracking"
 - "Make it work on mobile"
 - "Add email notifications"
@@ -280,6 +297,7 @@ Instead of:
 
 Do:
 ✅ "Generate 20 cold outreach emails for radio promoters, personalized by:
+
 - Station size (local, regional, national)
 - Genre focus (electronic, indie, mainstream)
 - Previous BBC Radio 1 experience mention"
@@ -291,6 +309,7 @@ Do:
 ## 🎯 YOUR FIRST WEEK WITH MAX PLAN
 
 ### Day 1 (Today): System Mastery
+
 ```
 ✅ Database working (Neon Postgres)
 ✅ Agent OS operational
@@ -306,6 +325,7 @@ Use the existing database schema and make it mobile-first."
 ```
 
 ### Day 2: Content Blitz
+
 ```
 Ask Claude:
 "Generate 2 weeks of customer acquisition content:
@@ -318,6 +338,7 @@ Schedule using Agent OS social-media agent."
 ```
 
 ### Day 3: Demo Optimization
+
 ```
 Ask Claude:
 "Optimize the Audio Intel demo experience:
@@ -330,6 +351,7 @@ Ask Claude:
 ```
 
 ### Day 4: Referral System
+
 ```
 Ask Claude:
 "Build complete referral system using TDD workflow:
@@ -343,6 +365,7 @@ Ask Claude:
 ```
 
 ### Day 5: Week Review & Planning
+
 ```
 Ask Claude:
 "Review this week's progress:
@@ -382,6 +405,7 @@ Plan next week's priorities for customer acquisition."
 **Your Time Value**: £50/day (customer acquisition phase)
 
 **If Claude saves you**:
+
 - 30 minutes per day = £25/day saved
 - 2.5 hours per week = £125/week saved
 - 10 hours per month = £500/month saved
@@ -389,6 +413,7 @@ Plan next week's priorities for customer acquisition."
 **ROI**: 25x return on Max Plan investment
 
 **Best Use**:
+
 - Long development sessions (TDD workflow)
 - Customer acquisition content (batch generation)
 - Strategic planning (weekly/monthly reviews)

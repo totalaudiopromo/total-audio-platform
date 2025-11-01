@@ -3,6 +3,7 @@
 ## Products to Create in Stripe Dashboard
 
 ### 1. Pitch Generator - PRO
+
 - **Product Name**: Pitch Generator PRO
 - **Description**: Unlimited AI-powered pitch generation for solo artists and radio promoters
 - **Pricing**: £14/month recurring
@@ -14,6 +15,7 @@
   - Priority support
 
 ### 2. Pitch Generator - AGENCY
+
 - **Product Name**: Pitch Generator AGENCY
 - **Description**: Unlimited pitch generation with team features for PR agencies
 - **Pricing**: £49/month recurring
@@ -26,6 +28,7 @@
   - Dedicated support
 
 ### 3. Free Tier (No Stripe Product Required)
+
 - **5 pitches/month** - Managed in app database
 - No payment required
 - Great for testing and demos
@@ -57,13 +60,16 @@
 ## Your Current Stripe Keys
 
 From your `.env.local`, you have:
+
 - Test API Key: `sk_test_51Ro9faPqujcPv5fbChB8QmyJJJ4TMVhdBem30918ZZLubN84sFfv2zOvBoqbHjpcsYLJHil1teOvm5WlZpwmuM0600V54zUndm`
 
 You need to also add:
+
 - Your actual Secret Key (for production)
 - Your Publishable Key
 - Webhook Secret (for payment confirmations)
 
 These can be found at:
+
 - https://dashboard.stripe.com/test/apikeys (for test mode)
 - https://dashboard.stripe.com/apikeys (for live mode)

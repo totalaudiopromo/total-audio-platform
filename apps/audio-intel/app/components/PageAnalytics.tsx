@@ -9,18 +9,23 @@ interface PageAnalyticsProps {
   customData?: Record<string, any>;
 }
 
-export function PageAnalytics({ pageName, pageType = 'landing', customData = {} }: PageAnalyticsProps) {
+export function PageAnalytics({
+  pageName,
+  pageType = 'landing',
+  customData = {},
+}: PageAnalyticsProps) {
   useEffect(() => {
     // Get referrer and UTM parameters
     const urlParams = new URLSearchParams(window.location.search);
     const referrer = document.referrer;
 
     // Determine if organic traffic
-    const isOrganic = !referrer ||
-                     referrer.includes('google') ||
-                     referrer.includes('bing') ||
-                     referrer.includes('duckduckgo') ||
-                     referrer.includes('yahoo');
+    const isOrganic =
+      !referrer ||
+      referrer.includes('google') ||
+      referrer.includes('bing') ||
+      referrer.includes('duckduckgo') ||
+      referrer.includes('yahoo');
 
     // Build tracking data
     const trackingData = {
@@ -33,7 +38,7 @@ export function PageAnalytics({ pageName, pageType = 'landing', customData = {} 
       utm_content: urlParams.get('utm_content') || undefined,
       organic: isOrganic,
       device: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 'mobile' : 'desktop',
-      ...customData
+      ...customData,
     };
 
     // Track page view
@@ -44,7 +49,7 @@ export function PageAnalytics({ pageName, pageType = 'landing', customData = {} 
       (window as any).dataLayer.push({
         event: 'page_view',
         page_name: pageName,
-        ...trackingData
+        ...trackingData,
       });
     }
   }, [pageName, pageType, customData]);

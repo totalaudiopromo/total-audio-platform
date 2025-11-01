@@ -3,7 +3,13 @@
 import { useState } from 'react';
 import { SubscriptionDetails, SubscriptionLimits } from '@/lib/subscription';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Check, AlertCircle } from 'lucide-react';
 
@@ -37,7 +43,9 @@ export function BillingDashboard({
   pricingTiers,
   userType,
 }: BillingDashboardProps) {
-  const [billingInterval, setBillingInterval] = useState<'monthly' | 'yearly'>('monthly');
+  const [billingInterval, setBillingInterval] = useState<'monthly' | 'yearly'>(
+    'monthly'
+  );
 
   const currentTier = subscriptionDetails?.subscription_tier || 'free';
   const isActive =
@@ -50,7 +58,9 @@ export function BillingDashboard({
       <Card>
         <CardHeader>
           <CardTitle>Current Subscription</CardTitle>
-          <CardDescription>Your active subscription plan and usage</CardDescription>
+          <CardDescription>
+            Your active subscription plan and usage
+          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
@@ -97,7 +107,9 @@ export function BillingDashboard({
                   width: limits?.isUnlimited
                     ? '100%'
                     : `${Math.min(
-                        ((limits?.campaignsUsed || 0) / (limits?.campaignsLimit || 1)) * 100,
+                        ((limits?.campaignsUsed || 0) /
+                          (limits?.campaignsLimit || 1)) *
+                          100,
                         100
                       )}%`,
                 }}
@@ -105,7 +117,8 @@ export function BillingDashboard({
             </div>
             {limits?.requiresUpgrade && (
               <p className="text-sm text-red-600">
-                You&apos;ve reached your campaign limit. Upgrade to create more campaigns.
+                You&apos;ve reached your campaign limit. Upgrade to create more
+                campaigns.
               </p>
             )}
           </div>
@@ -123,7 +136,9 @@ export function BillingDashboard({
             </span>
             <button
               onClick={() =>
-                setBillingInterval(billingInterval === 'monthly' ? 'yearly' : 'monthly')
+                setBillingInterval(
+                  billingInterval === 'monthly' ? 'yearly' : 'monthly'
+                )
               }
               className="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
               role="switch"
@@ -131,7 +146,9 @@ export function BillingDashboard({
             >
               <span
                 className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                  billingInterval === 'yearly' ? 'translate-x-6' : 'translate-x-1'
+                  billingInterval === 'yearly'
+                    ? 'translate-x-6'
+                    : 'translate-x-1'
                 }`}
               />
             </button>
@@ -144,12 +161,17 @@ export function BillingDashboard({
 
           {/* Pricing Tiers */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pricingTiers.map((tier) => {
+            {pricingTiers.map(tier => {
               const price =
-                billingInterval === 'monthly' ? tier.price_monthly : tier.price_yearly;
+                billingInterval === 'monthly'
+                  ? tier.price_monthly
+                  : tier.price_yearly;
               const monthlyPrice =
-                billingInterval === 'yearly' ? (tier.price_yearly / 12).toFixed(2) : price;
-              const isCurrent = tier.name.toLowerCase().replace(' ', '_') === currentTier;
+                billingInterval === 'yearly'
+                  ? (tier.price_yearly / 12).toFixed(2)
+                  : price;
+              const isCurrent =
+                tier.name.toLowerCase().replace(' ', '_') === currentTier;
 
               return (
                 <Card
@@ -158,13 +180,17 @@ export function BillingDashboard({
                 >
                   {isCurrent && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <Badge className="bg-black text-white">Current Plan</Badge>
+                      <Badge className="bg-black text-white">
+                        Current Plan
+                      </Badge>
                     </div>
                   )}
                   <CardHeader>
                     <CardTitle className="text-xl">{tier.name}</CardTitle>
                     <CardDescription>
-                      <span className="text-3xl font-bold text-black">£{monthlyPrice}</span>
+                      <span className="text-3xl font-bold text-black">
+                        £{monthlyPrice}
+                      </span>
                       <span className="text-gray-600">/month</span>
                       {billingInterval === 'yearly' && (
                         <div className="text-sm mt-1">
@@ -197,11 +223,14 @@ export function BillingDashboard({
                           }
 
                           try {
-                            const res = await fetch('/api/billing/create-checkout-session', {
-                              method: 'POST',
-                              headers: { 'Content-Type': 'application/json' },
-                              body: JSON.stringify({ priceId }),
-                            });
+                            const res = await fetch(
+                              '/api/billing/create-checkout-session',
+                              {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ priceId }),
+                              }
+                            );
 
                             const data = await res.json();
 
@@ -246,15 +275,20 @@ export function BillingDashboard({
         <Card>
           <CardHeader>
             <CardTitle>Manage Subscription</CardTitle>
-            <CardDescription>Update payment method or cancel subscription</CardDescription>
+            <CardDescription>
+              Update payment method or cancel subscription
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <Button
               onClick={async () => {
                 try {
-                  const res = await fetch('/api/billing/create-portal-session', {
-                    method: 'POST',
-                  });
+                  const res = await fetch(
+                    '/api/billing/create-portal-session',
+                    {
+                      method: 'POST',
+                    }
+                  );
 
                   const data = await res.json();
 

@@ -5,20 +5,26 @@ All documentation for the Campaign Tracker app, organised by category.
 ## 📁 Documentation Structure
 
 ### `/setup/` - Setup & Configuration
+
 Guides for deployment and configuration:
+
 - **[DEPLOYMENT_GUIDE.md](./setup/DEPLOYMENT_GUIDE.md)** - Production deployment instructions
 - **[MIGRATION_INSTRUCTIONS.md](./setup/MIGRATION_INSTRUCTIONS.md)** - Database migration guide
 - **[RUN_MIGRATION.md](./setup/RUN_MIGRATION.md)** - Migration execution scripts
 - **[QUICK_DEPLOY.md](./setup/QUICK_DEPLOY.md)** - Fast deployment guide
 
 ### `/reference/` - Reference Documentation
+
 Technical references and specifications:
+
 - **[PSEO_STRATEGY_TRACKER.md](./reference/PSEO_STRATEGY_TRACKER.md)** - PSEO implementation strategy
 - **[TAILWIND_V4_README.md](./reference/TAILWIND_V4_README.md)** - Tailwind v4 configuration notes
 - **[README_PRD.md](./reference/README_PRD.md)** - Product requirements document
 
 ### `/status/` - Status Reports (Archive)
+
 Historical completion reports:
+
 - `AUTH_IMPLEMENTATION_COMPLETE.md` - Auth system completion
 - `AUTH_SETUP_GUIDE.md` - Auth setup documentation
 - `BUILD_COMPLETE.md` - Initial build completion
@@ -32,6 +38,7 @@ Historical completion reports:
 ## 🎯 Quick Start
 
 For getting started, see the root-level documentation:
+
 - **[README.md](../README.md)** - Main project overview
 - **[QUICKSTART.md](../QUICKSTART.md)** - Quick start development guide
 
@@ -90,6 +97,7 @@ When adding new documentation:
 ## 🚀 Development Workflow
 
 1. **Local development:**
+
    ```bash
    npm run dev
    ```
@@ -105,8 +113,8 @@ When adding new documentation:
 ## 🎨 Design System
 
 Tracker inherits the Postcraft aesthetic from the TAP SaaS template:
+
 - Clean black & white foundation
 - Bold borders and offset shadows
 - No gradients or glassmorphism
 - Mobile-first responsive design
-

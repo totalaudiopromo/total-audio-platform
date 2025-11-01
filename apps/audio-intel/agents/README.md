@@ -5,46 +5,54 @@ Production-ready agent system for Audio Intel, Pitch Generator, and Campaign Tra
 ## Quick Start
 
 ```typescript
-import { Agents } from '@/agents'
+import { Agents } from '@/agents';
 
 // Contact enrichment
 const result = await Agents.intel.execute({
   artist: 'Artist Name',
-  genre: 'electronic'
-})
+  genre: 'electronic',
+});
 
 // Pitch generation
 const pitch = await Agents.pitch.execute({
   mode: 'draft',
   artist: 'Artist Name',
-  release: 'Release Title'
-})
+  release: 'Release Title',
+});
 
 // Brand voice checking
 const voiceCheck = await Agents.voiceguard.execute({
   text: 'Your content here',
-  autoFix: true
-})
+  autoFix: true,
+});
 ```
 
 ## Available Agents
 
 ### 🎯 IntelAgent
+
 Contact enrichment and validation
+
 - ContactFinder, LabelMatcher, EnrichmentValidator
 
 ### ✉️ PitchAgent
+
 Pitch drafting and tone validation
+
 - PitchFormatter, ToneChecker, FollowUpWriter
 
 ### 📊 TrackerAgent
+
 Campaign tracking and analytics
+
 - SubmissionLogger, AnalyticsSummariser, ReminderAgent
 
 ### 💡 InsightAgent
+
 Performance insights and recommendations
 
 ### 🛡️ VoiceGuardAgent
+
 Brand voice enforcement ("honest maker" tone)
 
 ## Documentation

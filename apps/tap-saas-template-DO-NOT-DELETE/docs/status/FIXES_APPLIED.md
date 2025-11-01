@@ -3,31 +3,38 @@
 ## 🔧 Issues Fixed
 
 ### 1. **API Errors Fixed**
+
 - ✅ **Dashboard**: Fixed table name from `contacts` → `intel_contacts`
-- ✅ **History**: Fixed table name from `contacts` → `intel_contacts` 
+- ✅ **History**: Fixed table name from `contacts` → `intel_contacts`
 - ✅ **Contacts**: Fixed table name from `contacts` → `intel_contacts`
 - ✅ **Generate**: Fixed table name from `contacts` → `intel_contacts`
 
 ### 2. **Text Colors Fixed**
+
 - ✅ **Dashboard status badges**: Changed from `text-white` to `text-gray-600`
 - ✅ **History status badges**: Changed from `text-white` to `text-gray-600`
 - ✅ **All card text**: Now visible on white background
 
 ### 3. **UK Spelling Applied**
+
 - ✅ **Landing page**: "personalized" → "personalised"
 - ✅ **Feature descriptions**: Updated to British English
 
 ## 🚨 Manual Steps Required
 
 ### 1. **Update Environment Variables**
+
 Edit your `.env.local` file:
+
 ```bash
 NEXTAUTH_URL=http://localhost:3010
 NEXT_PUBLIC_BASE_URL=http://localhost:3010
 ```
 
 ### 2. **Add Demo Data**
+
 Run this SQL in your Supabase dashboard:
+
 ```bash
 psql your_database_url < add-demo-data.sql
 ```

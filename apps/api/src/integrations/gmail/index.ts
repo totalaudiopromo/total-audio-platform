@@ -18,7 +18,7 @@ export class GmailService {
 
   constructor(config: GmailConfig) {
     this.config = config;
-    
+
     const oauth2Client = new google.auth.OAuth2(
       config.clientId,
       config.clientSecret,
@@ -50,7 +50,7 @@ export class GmailService {
         if (!campaign.sentAt) continue;
 
         const query = `subject:"Re: ${campaign.subject}" after:${this.formatDate(campaign.sentAt)}`;
-        
+
         const response = await this.gmail.users.messages.list({
           userId: 'me',
           q: query,
@@ -74,7 +74,7 @@ export class GmailService {
   async getRecentReplies(subject: string, sentAfter: Date): Promise<any[]> {
     try {
       const query = `subject:"Re: ${subject}" after:${this.formatDate(sentAfter)}`;
-      
+
       const response = await this.gmail.users.messages.list({
         userId: 'me',
         q: query,
@@ -82,7 +82,7 @@ export class GmailService {
       });
 
       const replies = [];
-      
+
       if (response.data.messages) {
         for (const message of response.data.messages) {
           const messageDetails = await this.gmail.users.messages.get({
@@ -128,7 +128,7 @@ export class GmailService {
 
       if (fromHeader && subjectHeader) {
         const email = this.extractEmail(fromHeader.value);
-        
+
         const contact = await prisma.contact.findUnique({
           where: { email },
         });
@@ -172,9 +172,8 @@ export class GmailService {
 
       for (const campaign of emailCampaigns) {
         if (campaign.analytics) {
-          const replyRate = campaign.recipientCount > 0 
-            ? (replyCount / campaign.recipientCount) * 100 
-            : 0;
+          const replyRate =
+            campaign.recipientCount > 0 ? (replyCount / campaign.recipientCount) * 100 : 0;
 
           await prisma.emailCampaignAnalytics.update({
             where: { emailCampaignId: campaign.id },
@@ -194,7 +193,7 @@ export class GmailService {
   async sendEmail(to: string, subject: string, content: string): Promise<void> {
     try {
       const message = this.createMessage(to, subject, content);
-      
+
       await this.gmail.users.messages.send({
         userId: 'me',
         requestBody: {
@@ -209,7 +208,11 @@ export class GmailService {
     }
   }
 
-  async sendBulkEmail(recipients: string[], subject: string, content: string): Promise<{
+  async sendBulkEmail(
+    recipients: string[],
+    subject: string,
+    content: string
+  ): Promise<{
     success: string[];
     failed: string[];
   }> {
@@ -254,7 +257,7 @@ export class GmailService {
       });
 
       const emails = [];
-      
+
       if (response.data.messages) {
         for (const message of response.data.messages) {
           const messageDetails = await this.gmail.users.messages.get({
@@ -291,7 +294,7 @@ export class GmailService {
       'MIME-Version: 1.0',
       'Content-Type: text/html; charset=utf-8',
       '',
-      content
+      content,
     ].join('\r\n');
 
     return Buffer.from(message).toString('base64').replace(/\+/g, '-').replace(/\//g, '_');
@@ -299,11 +302,12 @@ export class GmailService {
 
   private extractEmail(fromHeader: string): string {
     const emailMatch = fromHeader ? fromHeader.match(/<(.+?)>/) : null;
-    return emailMatch && emailMatch[1] ? emailMatch[1] : (fromHeader || '');
+    return emailMatch && emailMatch[1] ? emailMatch[1] : fromHeader || '';
   }
 
   private formatDate(date: Date): string {
-    const result = (date && typeof date.toISOString === 'function') ? date.toISOString().split('T')[0] : '';
+    const result =
+      date && typeof date.toISOString === 'function' ? date.toISOString().split('T')[0] : '';
     return result || '';
   }
 

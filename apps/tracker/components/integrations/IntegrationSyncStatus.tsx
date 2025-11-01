@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@total-audio/core-db/client';
 import { formatDistanceToNow } from 'date-fns';
 import {
   RefreshCw,
@@ -32,7 +32,9 @@ export function IntegrationSyncStatus() {
   const supabase = useMemo(() => createClient(), []);
 
   const loadConnections = useCallback(async () => {
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     if (!user) {
       setConnections([]);
       setLoading(false);
@@ -53,7 +55,9 @@ export function IntegrationSyncStatus() {
     }
 
     const typedConnections = (data || []) as Connection[];
-    const filtered = typedConnections.filter((conn) => conn.status !== 'disconnected');
+    const filtered = typedConnections.filter(
+      conn => conn.status !== 'disconnected'
+    );
 
     setConnections(filtered);
     setLoading(false);
@@ -69,7 +73,9 @@ export function IntegrationSyncStatus() {
         return;
       }
 
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
       if (!user || !isMounted) {
         return;
       }
@@ -150,7 +156,9 @@ export function IntegrationSyncStatus() {
         <h3 className="text-lg font-black text-gray-900 mb-3">Integrations</h3>
         <div className="text-center py-6">
           <Zap className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-          <p className="text-gray-600 font-medium mb-2">No integrations connected</p>
+          <p className="text-gray-600 font-medium mb-2">
+            No integrations connected
+          </p>
           <Link
             href="/dashboard/integrations"
             className="inline-block bg-teal-600 hover:bg-teal-700 text-white font-bold px-4 py-2 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all"
@@ -162,7 +170,9 @@ export function IntegrationSyncStatus() {
     );
   }
 
-  const activeCount = connections.filter((conn) => conn.status === 'active').length;
+  const activeCount = connections.filter(
+    conn => conn.status === 'active'
+  ).length;
 
   return (
     <div className="bg-white rounded-2xl border-4 border-black shadow-brutal p-6">
@@ -170,12 +180,14 @@ export function IntegrationSyncStatus() {
         <h3 className="text-lg font-black text-gray-900">Integrations</h3>
         <div className="flex items-center gap-2 bg-green-100 border-2 border-green-500 px-3 py-1 rounded-lg">
           <CheckCircle2 className="w-4 h-4 text-green-600" />
-          <span className="text-sm font-black text-green-900">{activeCount} Active</span>
+          <span className="text-sm font-black text-green-900">
+            {activeCount} Active
+          </span>
         </div>
       </div>
 
       <div className="space-y-2">
-        {connections.map((connection) => (
+        {connections.map(connection => (
           <div
             key={connection.id}
             className="flex items-center justify-between p-3 rounded-xl border-2 border-gray-200 hover:border-teal-300 transition-colors"
@@ -191,7 +203,10 @@ export function IntegrationSyncStatus() {
                 {connection.last_sync_at ? (
                   <p className="text-xs text-gray-600 flex items-center gap-1">
                     <RefreshCw className="w-3 h-3" />
-                    Synced {formatDistanceToNow(new Date(connection.last_sync_at), { addSuffix: true })}
+                    Synced{' '}
+                    {formatDistanceToNow(new Date(connection.last_sync_at), {
+                      addSuffix: true,
+                    })}
                   </p>
                 ) : (
                   <p className="text-xs text-gray-500">Never synced</p>

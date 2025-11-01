@@ -21,7 +21,10 @@ interface SearchResult {
 }
 
 // Enhanced error handling and retry logic
-async function makePerplexityRequest(prompt: string, retries = 2): Promise<{ content: string; error?: string }> {
+async function makePerplexityRequest(
+  prompt: string,
+  retries = 2
+): Promise<{ content: string; error?: string }> {
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
       const response = await axios.post<{
@@ -92,17 +95,17 @@ async function searchReddit(query: string): Promise<SearchResult[]> {
 
   try {
     const { content, error } = await makePerplexityRequest(prompt);
-    
+
     if (error || !content) {
       console.error('Reddit search error:', error);
       return [];
     }
-    
+
     // Parse the response and extract structured data
     const results: SearchResult[] = [];
     const lines = content.split('\n');
     let currentResult: Partial<SearchResult> = {};
-    
+
     for (const line of lines) {
       if (line.includes('Platform:')) {
         if (Object.keys(currentResult).length > 0) {
@@ -123,7 +126,7 @@ async function searchReddit(query: string): Promise<SearchResult[]> {
         currentResult.lastUpdated = line.split('LastUpdated:')[1]?.trim() || 'Recently';
       }
     }
-    
+
     if (Object.keys(currentResult).length > 0) {
       results.push(currentResult as SearchResult);
     }
@@ -176,17 +179,17 @@ async function searchInstagram(query: string): Promise<SearchResult[]> {
 
   try {
     const { content, error } = await makePerplexityRequest(prompt);
-    
+
     if (error || !content) {
       console.error('Instagram search error:', error);
       return [];
     }
-    
+
     // Parse the response and extract structured data
     const results: SearchResult[] = [];
     const lines = content.split('\n');
     let currentResult: Partial<SearchResult> = {};
-    
+
     for (const line of lines) {
       if (line.includes('Platform:')) {
         if (Object.keys(currentResult).length > 0) {
@@ -207,7 +210,7 @@ async function searchInstagram(query: string): Promise<SearchResult[]> {
         currentResult.lastUpdated = line.split('LastUpdated:')[1]?.trim() || 'Recently';
       }
     }
-    
+
     if (Object.keys(currentResult).length > 0) {
       results.push(currentResult as SearchResult);
     }
@@ -255,17 +258,17 @@ async function searchSpotify(query: string): Promise<SearchResult[]> {
 
   try {
     const { content, error } = await makePerplexityRequest(prompt);
-    
+
     if (error || !content) {
       console.error('Spotify search error:', error);
       return [];
     }
-    
+
     // Parse the response and extract structured data
     const results: SearchResult[] = [];
     const lines = content.split('\n');
     let currentResult: Partial<SearchResult> = {};
-    
+
     for (const line of lines) {
       if (line.includes('Platform:')) {
         if (Object.keys(currentResult).length > 0) {
@@ -286,7 +289,7 @@ async function searchSpotify(query: string): Promise<SearchResult[]> {
         currentResult.lastUpdated = line.split('LastUpdated:')[1]?.trim() || 'Recently';
       }
     }
-    
+
     if (Object.keys(currentResult).length > 0) {
       results.push(currentResult as SearchResult);
     }
@@ -334,17 +337,17 @@ async function searchDiscord(query: string): Promise<SearchResult[]> {
 
   try {
     const { content, error } = await makePerplexityRequest(prompt);
-    
+
     if (error || !content) {
       console.error('Discord search error:', error);
       return [];
     }
-    
+
     // Parse the response and extract structured data
     const results: SearchResult[] = [];
     const lines = content.split('\n');
     let currentResult: Partial<SearchResult> = {};
-    
+
     for (const line of lines) {
       if (line.includes('Platform:')) {
         if (Object.keys(currentResult).length > 0) {
@@ -365,7 +368,7 @@ async function searchDiscord(query: string): Promise<SearchResult[]> {
         currentResult.lastUpdated = line.split('LastUpdated:')[1]?.trim() || 'Recently';
       }
     }
-    
+
     if (Object.keys(currentResult).length > 0) {
       results.push(currentResult as SearchResult);
     }
@@ -413,17 +416,17 @@ async function searchForums(query: string): Promise<SearchResult[]> {
 
   try {
     const { content, error } = await makePerplexityRequest(prompt);
-    
+
     if (error || !content) {
       console.error('Forums search error:', error);
       return [];
     }
-    
+
     // Parse the response and extract structured data
     const results: SearchResult[] = [];
     const lines = content.split('\n');
     let currentResult: Partial<SearchResult> = {};
-    
+
     for (const line of lines) {
       if (line.includes('Platform:')) {
         if (Object.keys(currentResult).length > 0) {
@@ -444,7 +447,7 @@ async function searchForums(query: string): Promise<SearchResult[]> {
         currentResult.lastUpdated = line.split('LastUpdated:')[1]?.trim() || 'Recently';
       }
     }
-    
+
     if (Object.keys(currentResult).length > 0) {
       results.push(currentResult as SearchResult);
     }
@@ -492,17 +495,17 @@ async function searchMusicSites(query: string): Promise<SearchResult[]> {
 
   try {
     const { content, error } = await makePerplexityRequest(prompt);
-    
+
     if (error || !content) {
       console.error('Music Sites search error:', error);
       return [];
     }
-    
+
     // Parse the response and extract structured data
     const results: SearchResult[] = [];
     const lines = content.split('\n');
     let currentResult: Partial<SearchResult> = {};
-    
+
     for (const line of lines) {
       if (line.includes('Platform:')) {
         if (Object.keys(currentResult).length > 0) {
@@ -523,7 +526,7 @@ async function searchMusicSites(query: string): Promise<SearchResult[]> {
         currentResult.lastUpdated = line.split('LastUpdated:')[1]?.trim() || 'Recently';
       }
     }
-    
+
     if (Object.keys(currentResult).length > 0) {
       results.push(currentResult as SearchResult);
     }
@@ -571,17 +574,17 @@ async function searchLinkedIn(query: string): Promise<SearchResult[]> {
 
   try {
     const { content, error } = await makePerplexityRequest(prompt);
-    
+
     if (error || !content) {
       console.error('LinkedIn search error:', error);
       return [];
     }
-    
+
     // Parse the response and extract structured data
     const results: SearchResult[] = [];
     const lines = content.split('\n');
     let currentResult: Partial<SearchResult> = {};
-    
+
     for (const line of lines) {
       if (line.includes('Platform:')) {
         if (Object.keys(currentResult).length > 0) {
@@ -602,7 +605,7 @@ async function searchLinkedIn(query: string): Promise<SearchResult[]> {
         currentResult.lastUpdated = line.split('LastUpdated:')[1]?.trim() || 'Recently';
       }
     }
-    
+
     if (Object.keys(currentResult).length > 0) {
       results.push(currentResult as SearchResult);
     }
@@ -620,23 +623,30 @@ export async function POST(req: NextRequest) {
     const { query, platforms = ['all'] } = body;
 
     if (!query || !query.trim()) {
-      return NextResponse.json({ 
-        success: false, 
-        error: 'Query is required' 
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Query is required',
+        },
+        { status: 400 }
+      );
     }
 
     // Perplexity integration temporarily disabled
-    return NextResponse.json({ 
-      success: false, 
-      error: 'Multi-platform search is temporarily unavailable. Please use contact enrichment instead.' 
-    }, { status: 503 });
+    return NextResponse.json(
+      {
+        success: false,
+        error:
+          'Multi-platform search is temporarily unavailable. Please use contact enrichment instead.',
+      },
+      { status: 503 }
+    );
 
     const allResults: SearchResult[] = [];
     const searchPromises: Promise<SearchResult[]>[] = [];
 
     // Determine which platforms to search
-    const platformsToSearch = platforms.includes('all') 
+    const platformsToSearch = platforms.includes('all')
       ? ['reddit', 'instagram', 'spotify', 'discord', 'forums', 'music-sites', 'linkedin']
       : platforms;
 
@@ -664,18 +674,18 @@ export async function POST(req: NextRequest) {
     }
 
     // Execute all searches in parallel with timeout
-    const timeoutPromise = new Promise<SearchResult[]>((resolve) => {
+    const timeoutPromise = new Promise<SearchResult[]>(resolve => {
       setTimeout(() => resolve([]), 25000); // 25 second timeout
     });
 
     const results = await Promise.race([
       Promise.allSettled(searchPromises),
-      timeoutPromise.then(() => Promise.allSettled(searchPromises))
+      timeoutPromise.then(() => Promise.allSettled(searchPromises)),
     ]);
-    
+
     // Combine results from all platforms
     if (Array.isArray(results)) {
-      results.forEach((result) => {
+      results.forEach(result => {
         if (result.status === 'fulfilled') {
           allResults.push(...result.value);
         }
@@ -684,9 +694,11 @@ export async function POST(req: NextRequest) {
 
     // Sort by relevance (High > Medium > Low) and limit total results
     const sortedResults = allResults.sort((a, b) => {
-      const relevanceOrder = { 'High': 3, 'Medium': 2, 'Low': 1 };
-      return (relevanceOrder[b.relevance as keyof typeof relevanceOrder] || 0) - 
-             (relevanceOrder[a.relevance as keyof typeof relevanceOrder] || 0);
+      const relevanceOrder = { High: 3, Medium: 2, Low: 1 };
+      return (
+        (relevanceOrder[b.relevance as keyof typeof relevanceOrder] || 0) -
+        (relevanceOrder[a.relevance as keyof typeof relevanceOrder] || 0)
+      );
     });
 
     return NextResponse.json({
@@ -694,18 +706,20 @@ export async function POST(req: NextRequest) {
       query,
       platforms: platformsToSearch,
       results: sortedResults.slice(0, 24), // Limit to 24 total results
-      totalFound: allResults.length
+      totalFound: allResults.length,
     });
-
   } catch (error: any) {
     console.error('Search API error:', error);
-    return NextResponse.json({ 
-      success: false, 
-      error: error.message || 'Search processing failed' 
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message || 'Search processing failed',
+      },
+      { status: 500 }
+    );
   }
 }
 
 export async function GET() {
   return new Response('This endpoint only supports POST requests.', { status: 405 });
-} 
+}

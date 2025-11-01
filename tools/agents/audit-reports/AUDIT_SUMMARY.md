@@ -1,4 +1,5 @@
 # TOTAL AUDIO AGENT SDK UPGRADE - AUDIT SUMMARY
+
 **Date**: 2 October 2025
 **Status**: Phase 1 Complete - Ready for Implementation
 
@@ -42,6 +43,7 @@
 **Agent Count**: 40+ agents
 **SDK Usage**: Only 10% (4 agents)
 **Missing Features**:
+
 - ❌ No streaming (0 agents)
 - ❌ No prompt caching (0 agents)
 - ❌ No agentic loops (0 agents)
@@ -50,12 +52,14 @@
 - ❌ No cost monitoring (0 agents)
 
 **Cost Analysis**:
+
 - Current: £37.60/month
 - With 3x usage growth: £120-150/month without upgrade
 - With SDK upgrade: £61.50/month (even with 3x usage)
 - **Savings**: £58.50-88.50/month vs non-upgraded
 
 **Performance Gaps**:
+
 - No real-time progress visibility
 - No dashboard integration
 - No health monitoring
@@ -103,6 +107,7 @@
 **Location**: `src/agents/base/StreamingAgent.ts`
 
 **Features**:
+
 - Streaming support with real-time progress events
 - Prompt caching with cache control
 - Agentic loops for autonomous tool use
@@ -112,6 +117,7 @@
 - Usage tracking for cost monitoring
 
 **Usage Example**:
+
 ```typescript
 class ContactEnrichmentAgent extends StreamingAgent {
   constructor() {
@@ -119,15 +125,13 @@ class ContactEnrichmentAgent extends StreamingAgent {
   }
 
   async enrichContact(contactId: string) {
-    return await this.executeAgenticLoop(
-      `Enrich contact ${contactId}`,
-      { maxIterations: 10 }
-    );
+    return await this.executeAgenticLoop(`Enrich contact ${contactId}`, { maxIterations: 10 });
   }
 }
 ```
 
 **Events Emitted**:
+
 - `start` - Agent execution begins
 - `progress` - Text delta progress
 - `complete` - Agent execution complete
@@ -145,12 +149,14 @@ class ContactEnrichmentAgent extends StreamingAgent {
 **Location**: `src/agents/context/CachedContextManager.ts`
 
 **Features**:
+
 - Centralized cached context management
 - 80-90% cost reduction through prompt caching
 - Pre-built contexts for Audio Intel, Total Audio ecosystem, UK music industry
 - Cache statistics tracking
 
 **Available Contexts**:
+
 1. `getAudioIntelContext()` - Product details, pricing, database, metrics
 2. `getTotalAudioEcosystemContext()` - Product portfolio, architecture, strategy
 3. `getUKMusicIndustryContext()` - Radio, press, playlists, industry landscape
@@ -158,11 +164,12 @@ class ContactEnrichmentAgent extends StreamingAgent {
 5. `getBrandVoiceContext()` - Messaging, tone, writing guidelines
 
 **Usage Example**:
+
 ```typescript
 const systemPrompt = [
   CachedContextManager.getAudioIntelContext(),
   CachedContextManager.getUKMusicIndustryContext(),
-  { type: 'text', text: 'Additional agent-specific instructions...' }
+  { type: 'text', text: 'Additional agent-specific instructions...' },
 ];
 ```
 
@@ -173,6 +180,7 @@ const systemPrompt = [
 **Location**: `src/agents/batch/BatchContactProcessor.ts`
 
 **Features**:
+
 - Batch API integration (50% cost savings)
 - Parallel processing (10-15 min vs 50+ min)
 - Event-driven progress tracking
@@ -180,6 +188,7 @@ const systemPrompt = [
 - Cost estimation
 
 **Usage Example**:
+
 ```typescript
 const processor = new BatchContactProcessor();
 
@@ -191,6 +200,7 @@ await processor.enrichContactsBatch(['contact-1', 'contact-2', ...]);
 ```
 
 **Cost Savings**:
+
 - 100 contacts individual: $12
 - 100 contacts batch: $6 (50% savings)
 - Time: 10-15 min vs 50 min
@@ -201,23 +211,24 @@ await processor.enrichContactsBatch(['contact-1', 'contact-2', ...]);
 
 ### Performance Improvements
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| Contact Enrichment | 30s | 12-18s | 40-60% faster |
-| Campaign Planning | 2min | 45s-1min | 50-75% faster |
-| Content Generation | 45s | 20-30s | 40-60% faster |
-| Perceived Performance | Blocking | Real-time | Streaming |
+| Metric                | Before   | After     | Improvement   |
+| --------------------- | -------- | --------- | ------------- |
+| Contact Enrichment    | 30s      | 12-18s    | 40-60% faster |
+| Campaign Planning     | 2min     | 45s-1min  | 50-75% faster |
+| Content Generation    | 45s      | 20-30s    | 40-60% faster |
+| Perceived Performance | Blocking | Real-time | Streaming     |
 
 ### Cost Improvements
 
-| Agent | Current | Upgraded | Savings |
-|-------|---------|----------|---------|
-| Contact Agent | £9.50/mo | £4.30/mo | 55% |
-| Campaign Agent | £4.75/mo | £2.20/mo | 54% |
-| Content Agent | £5.10/mo | £3.30/mo | 35% |
-| Total System | £37.60/mo | £17.92/mo | 52% |
+| Agent          | Current   | Upgraded  | Savings |
+| -------------- | --------- | --------- | ------- |
+| Contact Agent  | £9.50/mo  | £4.30/mo  | 55%     |
+| Campaign Agent | £4.75/mo  | £2.20/mo  | 54%     |
+| Content Agent  | £5.10/mo  | £3.30/mo  | 35%     |
+| Total System   | £37.60/mo | £17.92/mo | 52%     |
 
 **With 3x Usage Growth**:
+
 - Non-upgraded: £120-150/month
 - Upgraded: £61.50/month
 - **Savings**: £58.50-88.50/month (49-59%)
@@ -248,6 +259,7 @@ await processor.enrichContactsBatch(['contact-1', 'contact-2', ...]);
 ### Week 1 Implementation Plan
 
 **Day 1-2: Contact Agent Upgrade**
+
 - Extend `StreamingAgent` base class
 - Implement cached context for 515 UK contacts
 - Add tool definitions (social media search, email validation, enrichment)
@@ -256,6 +268,7 @@ await processor.enrichContactsBatch(['contact-1', 'contact-2', ...]);
 - Test with real BBC Radio 1, Spotify enrichment cases
 
 **Day 2-3: Agent Manager Upgrade**
+
 - Add SDK health monitoring
 - Implement cost tracking system
 - Create event aggregation for all agents
@@ -263,6 +276,7 @@ await processor.enrichContactsBatch(['contact-1', 'contact-2', ...]);
 - Add alert system for budget limits
 
 **Day 3-4: Liberty Radio Promo Agent Upgrade** (NEW)
+
 - Analyze current Liberty agent implementation
 - Extend `StreamingAgent` for radio campaign workflows
 - Implement cached UK radio landscape context
@@ -271,12 +285,14 @@ await processor.enrichContactsBatch(['contact-1', 'contact-2', ...]);
 - Test with Senior Dunce campaign
 
 **Day 4-5: Campaign Agent Upgrade**
+
 - Add extended thinking for strategic planning
 - Implement streaming for campaign creation
 - Cache music industry knowledge
 - Add agentic loops for campaign workflow
 
 **Day 5: Testing & Integration**
+
 - Comprehensive test suite
 - Integration testing across agents
 - Performance benchmarking
@@ -285,16 +301,19 @@ await processor.enrichContactsBatch(['contact-1', 'contact-2', ...]);
 ### Week 2: Deployment & Monitoring
 
 **Day 1-2: Staging Deployment**
+
 - Deploy to staging environment
 - Run parallel with old agents (A/B test)
 - Monitor metrics (performance, cost, errors)
 
 **Day 3-4: Production Rollout**
+
 - Gradual rollout with feature flags
 - Real-time monitoring
 - Customer feedback collection
 
 **Day 5: Week 1 Review**
+
 - Validate cost savings
 - Confirm performance improvements
 - Adjust strategy based on results
@@ -311,8 +330,8 @@ await processor.enrichContactsBatch(['contact-1', 'contact-2', ...]);
 
 ### Rollback Triggers
 
-- >10% performance degradation
-- >20% increase in errors
+- > 10% performance degradation
+- > 20% increase in errors
 - Data integrity issues
 - Customer-facing failures
 
@@ -332,28 +351,31 @@ await processor.enrichContactsBatch(['contact-1', 'contact-2', ...]);
 
 ### Implementation Costs
 
-| Phase | Time | Cost @ £50/hr |
-|-------|------|---------------|
-| Phase 1: Audit (Complete) | 16 hours | £800 |
-| Phase 2: Critical Agents | 24 hours | £1,200 |
-| Phase 3: Content Agents | 20 hours | £1,000 |
-| Phase 4: Integration | 16 hours | £800 |
-| Phase 5: Testing | 12 hours | £600 |
-| **Total** | **88 hours** | **£4,400** |
+| Phase                     | Time         | Cost @ £50/hr |
+| ------------------------- | ------------ | ------------- |
+| Phase 1: Audit (Complete) | 16 hours     | £800          |
+| Phase 2: Critical Agents  | 24 hours     | £1,200        |
+| Phase 3: Content Agents   | 20 hours     | £1,000        |
+| Phase 4: Integration      | 16 hours     | £800          |
+| Phase 5: Testing          | 12 hours     | £600          |
+| **Total**                 | **88 hours** | **£4,400**    |
 
 ### Expected Returns
 
 **Conservative (Current usage)**:
+
 - Monthly savings: £19.68
 - Break-even: 22 months ❌
 
 **Realistic (3x usage growth with SDK)**:
+
 - Monthly savings: £58.50-88.50
 - Additional revenue (streaming UX): £120/month
 - Total monthly value: £178.50-208.50
 - Break-even: 5-8 months ✅
 
 **Aggressive (Full customer acquisition)**:
+
 - Monthly value: £240-270
 - Break-even: 1.6-1.8 months ✅✅
 
@@ -481,6 +503,7 @@ Base classes in `src/agents/`:
 **⏳ Upgrade Liberty Radio Promo Agent** (REQUESTED)
 
 Create upgraded SDK version of Liberty agent with:
+
 - StreamingAgent base class
 - Cached UK radio context
 - Agentic loops for campaign workflow

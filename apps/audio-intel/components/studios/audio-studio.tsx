@@ -1,14 +1,14 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useState, useRef, useEffect } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
+import { useState, useRef, useEffect } from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Slider } from '@/components/ui/slider';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 import {
   Play,
   Pause,
@@ -21,54 +21,58 @@ import {
   Volume2,
   VolumeX,
   ChevronDown,
-} from "lucide-react"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+} from 'lucide-react';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 interface AudioStudioProps {
-  onBack: () => void
+  onBack: () => void;
 }
 
 export default function AudioStudio({ onBack }: AudioStudioProps) {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [volume, setVolume] = useState(75)
-  const [audioFile, setAudioFile] = useState<File | null>(null)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(75);
+  const [audioFile, setAudioFile] = useState<File | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Simulate waveform visualization
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    const width = canvas.width
-    const height = canvas.height
+    const width = canvas.width;
+    const height = canvas.height;
 
-    ctx.clearRect(0, 0, width, height)
-    ctx.fillStyle = "#000"
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = '#000';
 
     // Draw a simulated waveform
-    const barWidth = 3
-    const gap = 2
-    const bars = Math.floor(width / (barWidth + gap))
+    const barWidth = 3;
+    const gap = 2;
+    const bars = Math.floor(width / (barWidth + gap));
 
     for (let i = 0; i < bars; i++) {
       // Generate random heights for the waveform visualization
-      const barHeight = Math.random() * (height * 0.8) + height * 0.1
-      ctx.fillRect(i * (barWidth + gap), (height - barHeight) / 2, barWidth, barHeight)
+      const barHeight = Math.random() * (height * 0.8) + height * 0.1;
+      ctx.fillRect(i * (barWidth + gap), (height - barHeight) / 2, barWidth, barHeight);
     }
-  }, [])
+  }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setAudioFile(e.target.files[0])
+      setAudioFile(e.target.files[0]);
     }
-  }
+  };
 
   return (
     <Card className="border-4 border-black rounded-xl p-4 sm:p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-      <Button variant="outline" className="mb-4 border-2 border-black rounded-xl font-bold" onClick={onBack}>
+      <Button
+        variant="outline"
+        className="mb-4 border-2 border-black rounded-xl font-bold"
+        onClick={onBack}
+      >
         Back to Studios
       </Button>
 
@@ -83,7 +87,9 @@ export default function AudioStudio({ onBack }: AudioStudioProps) {
                 <div>
                   <Music className="mx-auto h-8 w-8 sm:h-10 sm:w-10 mb-2" />
                   <p className="font-bold">{audioFile.name}</p>
-                  <p className="text-sm text-gray-500">{(audioFile.size / (1024 * 1024)).toFixed(2)} MB</p>
+                  <p className="text-sm text-gray-500">
+                    {(audioFile.size / (1024 * 1024)).toFixed(2)} MB
+                  </p>
                 </div>
               ) : (
                 <>
@@ -92,7 +98,7 @@ export default function AudioStudio({ onBack }: AudioStudioProps) {
                   <Button
                     variant="outline"
                     className="border-2 border-black rounded-xl font-bold"
-                    onClick={() => document.getElementById("audio-upload")?.click()}
+                    onClick={() => document.getElementById('audio-upload')?.click()}
                   >
                     <Upload className="h-4 w-4 mr-2" /> Select File
                   </Button>
@@ -111,7 +117,12 @@ export default function AudioStudio({ onBack }: AudioStudioProps) {
           {/* Waveform visualization */}
           <div className="mb-6 bg-white bg-opacity-50 border-4 border-black rounded-xl p-4">
             <div className="bg-white border-2 border-black rounded-lg p-2">
-              <canvas ref={canvasRef} width={800} height={150} className="w-full h-[100px] sm:h-[150px]" />
+              <canvas
+                ref={canvasRef}
+                width={800}
+                height={150}
+                className="w-full h-[100px] sm:h-[150px]"
+              />
             </div>
 
             {/* Playback controls */}
@@ -143,7 +154,11 @@ export default function AudioStudio({ onBack }: AudioStudioProps) {
                   <div className="flex justify-between mb-2">
                     <Label className="font-bold">Volume</Label>
                     <div className="flex items-center">
-                      {volume === 0 ? <VolumeX className="h-4 w-4 mr-2" /> : <Volume2 className="h-4 w-4 mr-2" />}
+                      {volume === 0 ? (
+                        <VolumeX className="h-4 w-4 mr-2" />
+                      ) : (
+                        <Volume2 className="h-4 w-4 mr-2" />
+                      )}
                       <span>{volume}%</span>
                     </div>
                   </div>
@@ -152,7 +167,7 @@ export default function AudioStudio({ onBack }: AudioStudioProps) {
                     max={100}
                     step={1}
                     className="py-4"
-                    onValueChange={(value) => setVolume(value[0])}
+                    onValueChange={value => setVolume(value[0])}
                   />
                 </div>
 
@@ -212,7 +227,11 @@ export default function AudioStudio({ onBack }: AudioStudioProps) {
                     <div className="flex justify-between mb-2">
                       <Label className="font-bold">Volume</Label>
                       <div className="flex items-center">
-                        {volume === 0 ? <VolumeX className="h-4 w-4 mr-2" /> : <Volume2 className="h-4 w-4 mr-2" />}
+                        {volume === 0 ? (
+                          <VolumeX className="h-4 w-4 mr-2" />
+                        ) : (
+                          <Volume2 className="h-4 w-4 mr-2" />
+                        )}
                         <span>{volume}%</span>
                       </div>
                     </div>
@@ -221,7 +240,7 @@ export default function AudioStudio({ onBack }: AudioStudioProps) {
                       max={100}
                       step={1}
                       className="py-4"
-                      onValueChange={(value) => setVolume(value[0])}
+                      onValueChange={value => setVolume(value[0])}
                     />
                   </div>
 
@@ -268,7 +287,10 @@ export default function AudioStudio({ onBack }: AudioStudioProps) {
                 <Button className="w-full bg-black hover:bg-black/80 text-white rounded-xl border-2 border-black font-bold">
                   <Save className="h-4 w-4 mr-2" /> Save Project
                 </Button>
-                <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold">
+                <Button
+                  variant="outline"
+                  className="w-full border-2 border-black rounded-xl font-bold"
+                >
                   <Download className="h-4 w-4 mr-2" /> Export Audio
                 </Button>
               </div>
@@ -277,5 +299,5 @@ export default function AudioStudio({ onBack }: AudioStudioProps) {
         </div>
       </div>
     </Card>
-  )
+  );
 }

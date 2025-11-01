@@ -10,13 +10,20 @@ interface PricingCardsProps {
   userType: 'artist' | 'agency';
 }
 
-export function PricingCards({ tiers, currentSubscription, userType }: PricingCardsProps) {
-  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
+export function PricingCards({
+  tiers,
+  currentSubscription,
+  userType,
+}: PricingCardsProps) {
+  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>(
+    'monthly'
+  );
 
   const handleSubscribe = async (tierId: string, priceId: string | null) => {
     if (!priceId) {
       // Free tier - just redirect to dashboard
-      window.location.href = userType === 'agency' ? '/agency-dashboard' : '/my-campaigns';
+      window.location.href =
+        userType === 'agency' ? '/agency-dashboard' : '/my-campaigns';
       return;
     }
 
@@ -63,7 +70,9 @@ export function PricingCards({ tiers, currentSubscription, userType }: PricingCa
             }`}
           >
             Yearly
-            <span className="ml-2 text-xs text-green-600 font-semibold">Save 20%</span>
+            <span className="ml-2 text-xs text-green-600 font-semibold">
+              Save 20%
+            </span>
           </button>
         </div>
       </div>
@@ -71,7 +80,10 @@ export function PricingCards({ tiers, currentSubscription, userType }: PricingCa
       {/* Pricing Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {tiers.map(tier => {
-          const price = billingPeriod === 'monthly' ? tier.price_monthly : tier.price_yearly;
+          const price =
+            billingPeriod === 'monthly'
+              ? tier.price_monthly
+              : tier.price_yearly;
           const priceId =
             billingPeriod === 'monthly'
               ? tier.stripe_price_id_monthly
@@ -148,23 +160,30 @@ export function PricingCards({ tiers, currentSubscription, userType }: PricingCa
                 {isCurrentPlan
                   ? 'Current Plan'
                   : price === 0
-                  ? 'Get Started Free'
-                  : `Subscribe to ${tier.name}`}
+                    ? 'Get Started Free'
+                    : `Subscribe to ${tier.name}`}
               </Button>
 
               {tier.limits && (
                 <div className="mt-6 pt-6 border-t border-slate-200">
-                  <p className="text-xs text-slate-500 font-medium mb-2">Limits:</p>
+                  <p className="text-xs text-slate-500 font-medium mb-2">
+                    Limits:
+                  </p>
                   <ul className="text-xs text-slate-600 space-y-1">
                     {tier.limits.max_campaigns !== undefined && (
                       <li>
                         Campaigns:{' '}
-                        {tier.limits.max_campaigns === -1 ? 'Unlimited' : tier.limits.max_campaigns}
+                        {tier.limits.max_campaigns === -1
+                          ? 'Unlimited'
+                          : tier.limits.max_campaigns}
                       </li>
                     )}
                     {tier.limits.max_clients !== undefined && (
                       <li>
-                        Clients: {tier.limits.max_clients === -1 ? 'Unlimited' : tier.limits.max_clients}
+                        Clients:{' '}
+                        {tier.limits.max_clients === -1
+                          ? 'Unlimited'
+                          : tier.limits.max_clients}
                       </li>
                     )}
                     {tier.limits.max_team_members !== undefined && (

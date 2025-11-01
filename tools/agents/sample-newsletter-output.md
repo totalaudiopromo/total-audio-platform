@@ -3,6 +3,7 @@
 ## 📊 Test Results (October 9, 2025)
 
 ### RSS Feed Status:
+
 ✅ **Music Business Worldwide** - 10 stories fetched
 ✅ **Billboard** - 10 stories fetched
 ✅ **NME** - 10 stories fetched
@@ -39,6 +40,7 @@
 ### Story: "BandLab viral hit - Tkandz' Now Or Never on Spotify"
 
 **Unsigned Advantage Angle Identified:**
+
 - Type: `platform_changes`
 - Opportunity: Early adoption advantage
 - Core Message: New platform features favor artists who adapt quickly
@@ -74,12 +76,14 @@ Your move: Start positioning yourself to take advantage of this while the majors
 ## 💡 Key Findings:
 
 ### ✅ What's Working:
+
 - **Source quality**: MBW, Billboard, NME, BBC all delivering industry news
 - **Relevance filtering**: System correctly filters out corporate fluff
 - **Voice authenticity**: Uses your actual speaking patterns and experience
 - **Actionable focus**: Every section ends with "Your move"
 
 ### ⚠️ Issues to Fix:
+
 - **Music Week RSS**: 404 error - need to find working feed URL
 - **Threshold too strict**: 0.6 score means some weeks = zero content
   - Recommendation: Lower to 0.5 for more consistent weekly content

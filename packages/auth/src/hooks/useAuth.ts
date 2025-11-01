@@ -3,27 +3,27 @@
  * Provides current user, loading state, and auth methods
  */
 
-'use client'
+'use client';
 
-import { useEffect, useState } from 'react'
-import { createClient } from '../client'
-import type { TotalAudioUser, AuthState } from '../types'
-import type { User } from '@supabase/supabase-js'
+import { useEffect, useState } from 'react';
+import { createClient } from '../client';
+import type { TotalAudioUser, AuthState } from '../types';
+import type { User } from '@supabase/supabase-js';
 
 export function useAuth(): AuthState & {
-  signOut: () => Promise<void>
-  refresh: () => Promise<void>
+  signOut: () => Promise<void>;
+  refresh: () => Promise<void>;
 } {
-  const [user, setUser] = useState<TotalAudioUser | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<Error | null>(null)
+  const [user, setUser] = useState<TotalAudioUser | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
-  const supabase = createClient()
+  const supabase = createClient();
 
   const fetchUserWithProfile = async (authUser: User | null) => {
     if (!authUser) {
-      setUser(null)
-      return
+      setUser(null);
+      return;
     }
 
     try {
@@ -32,22 +32,22 @@ export function useAuth(): AuthState & {
         .from('user_profiles')
         .select('*')
         .eq('id', authUser.id)
-        .single()
+        .single();
 
       if (profileError) {
-        console.error('Error fetching user profile:', profileError)
-        setUser(authUser as TotalAudioUser)
-        return
+        console.error('Error fetching user profile:', profileError);
+        setUser(authUser as TotalAudioUser);
+        return;
       }
 
       // Fetch app permissions
       const { data: permissions, error: permissionsError } = await supabase
         .from('app_permissions')
         .select('*')
-        .eq('user_id', authUser.id)
+        .eq('user_id', authUser.id);
 
       if (permissionsError) {
-        console.error('Error fetching app permissions:', permissionsError)
+        console.error('Error fetching app permissions:', permissionsError);
       }
 
       // Fetch active subscription
@@ -58,10 +58,10 @@ export function useAuth(): AuthState & {
         .eq('status', 'active')
         .order('created_at', { ascending: false })
         .limit(1)
-        .single()
+        .single();
 
       if (subscriptionError && subscriptionError.code !== 'PGRST116') {
-        console.error('Error fetching subscription:', subscriptionError)
+        console.error('Error fetching subscription:', subscriptionError);
       }
 
       setUser({
@@ -69,62 +69,62 @@ export function useAuth(): AuthState & {
         profile: profile || undefined,
         permissions: permissions || undefined,
         subscription: subscription || undefined,
-      } as TotalAudioUser)
+      } as TotalAudioUser);
     } catch (err) {
-      console.error('Error fetching user data:', err)
-      setError(err instanceof Error ? err : new Error('Unknown error'))
-      setUser(authUser as TotalAudioUser)
+      console.error('Error fetching user data:', err);
+      setError(err instanceof Error ? err : new Error('Unknown error'));
+      setUser(authUser as TotalAudioUser);
     }
-  }
+  };
 
   const refresh = async () => {
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
     try {
       const {
         data: { user: authUser },
         error: authError,
-      } = await supabase.auth.getUser()
+      } = await supabase.auth.getUser();
 
-      if (authError) throw authError
+      if (authError) throw authError;
 
-      await fetchUserWithProfile(authUser)
+      await fetchUserWithProfile(authUser);
     } catch (err) {
-      console.error('Error refreshing auth:', err)
-      setError(err instanceof Error ? err : new Error('Unknown error'))
-      setUser(null)
+      console.error('Error refreshing auth:', err);
+      setError(err instanceof Error ? err : new Error('Unknown error'));
+      setUser(null);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const signOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut()
-      if (error) throw error
-      setUser(null)
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      setUser(null);
     } catch (err) {
-      console.error('Error signing out:', err)
-      setError(err instanceof Error ? err : new Error('Unknown error'))
+      console.error('Error signing out:', err);
+      setError(err instanceof Error ? err : new Error('Unknown error'));
     }
-  }
+  };
 
   useEffect(() => {
     // Get initial session
-    refresh()
+    refresh();
 
     // Listen for auth changes
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      await fetchUserWithProfile(session?.user || null)
-      setLoading(false)
-    })
+      await fetchUserWithProfile(session?.user || null);
+      setLoading(false);
+    });
 
     return () => {
-      subscription.unsubscribe()
-    }
-  }, [])
+      subscription.unsubscribe();
+    };
+  }, []);
 
   return {
     user,
@@ -133,5 +133,5 @@ export function useAuth(): AuthState & {
     error,
     signOut,
     refresh,
-  }
+  };
 }

@@ -10,12 +10,15 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const Anthropic = require('@anthropic-ai/sdk');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
 const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY || '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'
+  apiKey:
+    process.env.ANTHROPIC_API_KEY ||
+    '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',
 });
 
 async function fetchAllContacts() {
@@ -29,7 +32,7 @@ async function fetchAllContacts() {
       : `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
 
     const response = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
     });
 
     const data = await response.json();
@@ -88,10 +91,12 @@ ISSUES: [Any data quality concerns or N/A]`;
     const message = await anthropic.messages.create({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 500,
-      messages: [{
-        role: 'user',
-        content: prompt
-      }]
+      messages: [
+        {
+          role: 'user',
+          content: prompt,
+        },
+      ],
     });
 
     const responseText = message.content[0].text;
@@ -119,9 +124,23 @@ ISSUES: [Any data quality concerns or N/A]`;
 
     // Extract genres
     const STANDARD_GENRES = [
-      'Indie', 'Alternative', 'Rock', 'Metal', 'Pop', 'Electronic', 'Dance',
-      'Hip-Hop', 'R&B / Soul', 'Jazz / Funk', 'Folk', 'Blues', 'Reggae',
-      'Punk', 'Pop-Punk', 'Techno', 'All'
+      'Indie',
+      'Alternative',
+      'Rock',
+      'Metal',
+      'Pop',
+      'Electronic',
+      'Dance',
+      'Hip-Hop',
+      'R&B / Soul',
+      'Jazz / Funk',
+      'Folk',
+      'Blues',
+      'Reggae',
+      'Punk',
+      'Pop-Punk',
+      'Techno',
+      'All',
     ];
 
     let extractedGenres = [];
@@ -135,25 +154,43 @@ ISSUES: [Any data quality concerns or N/A]`;
       genresList.forEach(extracted => {
         const lowerExtracted = extracted.toLowerCase();
         if (lowerExtracted.includes('indie')) extractedGenres.push('Indie');
-        if (lowerExtracted.includes('alternative') || lowerExtracted.includes('alt')) extractedGenres.push('Alternative');
-        if (lowerExtracted.includes('rock') && !lowerExtracted.includes('punk')) extractedGenres.push('Rock');
+        if (lowerExtracted.includes('alternative') || lowerExtracted.includes('alt'))
+          extractedGenres.push('Alternative');
+        if (lowerExtracted.includes('rock') && !lowerExtracted.includes('punk'))
+          extractedGenres.push('Rock');
         if (lowerExtracted.includes('metal')) extractedGenres.push('Metal');
-        if (lowerExtracted.includes('pop') && !lowerExtracted.includes('punk')) extractedGenres.push('Pop');
-        if (lowerExtracted.includes('electronic') || lowerExtracted.includes('electro')) extractedGenres.push('Electronic');
-        if (lowerExtracted.includes('dance') || lowerExtracted.includes('edm')) extractedGenres.push('Dance');
-        if (lowerExtracted.includes('hip-hop') || lowerExtracted.includes('hip hop') || lowerExtracted.includes('rap')) extractedGenres.push('Hip-Hop');
-        if (lowerExtracted.includes('r&b') || lowerExtracted.includes('soul')) extractedGenres.push('R&B / Soul');
-        if (lowerExtracted.includes('jazz') || lowerExtracted.includes('funk')) extractedGenres.push('Jazz / Funk');
+        if (lowerExtracted.includes('pop') && !lowerExtracted.includes('punk'))
+          extractedGenres.push('Pop');
+        if (lowerExtracted.includes('electronic') || lowerExtracted.includes('electro'))
+          extractedGenres.push('Electronic');
+        if (lowerExtracted.includes('dance') || lowerExtracted.includes('edm'))
+          extractedGenres.push('Dance');
+        if (
+          lowerExtracted.includes('hip-hop') ||
+          lowerExtracted.includes('hip hop') ||
+          lowerExtracted.includes('rap')
+        )
+          extractedGenres.push('Hip-Hop');
+        if (lowerExtracted.includes('r&b') || lowerExtracted.includes('soul'))
+          extractedGenres.push('R&B / Soul');
+        if (lowerExtracted.includes('jazz') || lowerExtracted.includes('funk'))
+          extractedGenres.push('Jazz / Funk');
         if (lowerExtracted.includes('folk')) extractedGenres.push('Folk');
         if (lowerExtracted.includes('blues')) extractedGenres.push('Blues');
         if (lowerExtracted.includes('reggae')) extractedGenres.push('Reggae');
-        if (lowerExtracted.includes('punk') && !lowerExtracted.includes('pop')) extractedGenres.push('Punk');
+        if (lowerExtracted.includes('punk') && !lowerExtracted.includes('pop'))
+          extractedGenres.push('Punk');
         if (lowerExtracted.includes('pop-punk') || lowerExtracted.includes('pop punk')) {
           extractedGenres = extractedGenres.filter(g => g !== 'Pop' && g !== 'Punk');
           extractedGenres.push('Pop-Punk');
         }
         if (lowerExtracted.includes('techno')) extractedGenres.push('Techno');
-        if (lowerExtracted.includes('all') || lowerExtracted.includes('eclectic') || lowerExtracted.includes('variety')) extractedGenres.push('All');
+        if (
+          lowerExtracted.includes('all') ||
+          lowerExtracted.includes('eclectic') ||
+          lowerExtracted.includes('variety')
+        )
+          extractedGenres.push('All');
       });
     }
 
@@ -161,18 +198,35 @@ ISSUES: [Any data quality concerns or N/A]`;
 
     // Extract region/country
     let region = null;
-    if (responseText.toLowerCase().includes('uk') || responseText.toLowerCase().includes('united kingdom') ||
-        responseText.toLowerCase().includes('england') || responseText.toLowerCase().includes('scotland') ||
-        responseText.toLowerCase().includes('wales') || responseText.toLowerCase().includes('northern ireland')) {
+    if (
+      responseText.toLowerCase().includes('uk') ||
+      responseText.toLowerCase().includes('united kingdom') ||
+      responseText.toLowerCase().includes('england') ||
+      responseText.toLowerCase().includes('scotland') ||
+      responseText.toLowerCase().includes('wales') ||
+      responseText.toLowerCase().includes('northern ireland')
+    ) {
       region = 'UK';
-    } else if (responseText.toLowerCase().includes('australia') || responseText.toLowerCase().includes('australian')) {
+    } else if (
+      responseText.toLowerCase().includes('australia') ||
+      responseText.toLowerCase().includes('australian')
+    ) {
       region = 'Australia';
-    } else if (responseText.toLowerCase().includes('usa') || responseText.toLowerCase().includes('united states') ||
-               responseText.toLowerCase().includes('american')) {
+    } else if (
+      responseText.toLowerCase().includes('usa') ||
+      responseText.toLowerCase().includes('united states') ||
+      responseText.toLowerCase().includes('american')
+    ) {
       region = 'USA';
-    } else if (responseText.toLowerCase().includes('canada') || responseText.toLowerCase().includes('canadian')) {
+    } else if (
+      responseText.toLowerCase().includes('canada') ||
+      responseText.toLowerCase().includes('canadian')
+    ) {
       region = 'Canada';
-    } else if (responseText.toLowerCase().includes('europe') || responseText.toLowerCase().includes('european')) {
+    } else if (
+      responseText.toLowerCase().includes('europe') ||
+      responseText.toLowerCase().includes('european')
+    ) {
       region = 'Europe';
     }
 
@@ -216,9 +270,8 @@ ISSUES: [Any data quality concerns or N/A]`;
       genres: extractedGenres,
       region: region,
       show: showName,
-      lastName: lastName
+      lastName: lastName,
     };
-
   } catch (error) {
     console.error(`   ❌ Enrichment failed: ${error.message}`);
     return null;
@@ -230,7 +283,7 @@ async function updateContactEnrichment(recordId, enrichment, currentFields) {
     const fieldsToUpdate = {
       'Enrichment Quality': enrichment.quality,
       'Enrichment Notes': enrichment.notes,
-      'Last Enriched': new Date().toISOString().split('T')[0]
+      'Last Enriched': new Date().toISOString().split('T')[0],
     };
 
     // Only update station if we extracted one and current is Unknown/missing
@@ -239,7 +292,11 @@ async function updateContactEnrichment(recordId, enrichment, currentFields) {
     }
 
     // Only update genres if we extracted any and current is empty
-    if (enrichment.genres && enrichment.genres.length > 0 && (!currentFields.Genres || currentFields.Genres.length === 0)) {
+    if (
+      enrichment.genres &&
+      enrichment.genres.length > 0 &&
+      (!currentFields.Genres || currentFields.Genres.length === 0)
+    ) {
       fieldsToUpdate.Genres = enrichment.genres;
     }
 
@@ -258,17 +315,14 @@ async function updateContactEnrichment(recordId, enrichment, currentFields) {
       fieldsToUpdate['Last Name'] = enrichment.lastName;
     }
 
-    const response = await fetch(
-      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ fields: fieldsToUpdate })
-      }
-    );
+    const response = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ fields: fieldsToUpdate }),
+    });
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -309,8 +363,8 @@ async function enrichAllContacts() {
     qualityBreakdown: {
       High: 0,
       Medium: 0,
-      Low: 0
-    }
+      Low: 0,
+    },
   };
 
   const enrichments = [];
@@ -319,7 +373,7 @@ async function enrichAllContacts() {
     const contact = unenrichedContacts[i];
     const email = contact.fields.Email || 'no-email';
 
-    console.log(`[${i+1}/${unenrichedContacts.length}] ${email}`);
+    console.log(`[${i + 1}/${unenrichedContacts.length}] ${email}`);
 
     // Enrich with AI
     const enrichment = await enrichContact(contact);
@@ -337,12 +391,12 @@ async function enrichAllContacts() {
         enrichments.push({
           email,
           station: enrichment.station || contact.fields.Station || 'Unknown',
-          quality: enrichment.quality
+          quality: enrichment.quality,
         });
 
         // Show which fields were updated
-        const additionalFields = result.fieldsUpdated.filter(f =>
-          !['Enrichment Quality', 'Enrichment Notes', 'Last Enriched'].includes(f)
+        const additionalFields = result.fieldsUpdated.filter(
+          f => !['Enrichment Quality', 'Enrichment Notes', 'Last Enriched'].includes(f)
         );
         if (additionalFields.length > 0) {
           console.log(`   📝 Also updated: ${additionalFields.join(', ')}`);
@@ -379,12 +433,15 @@ async function enrichAllContacts() {
     enrichments
       .filter(e => e.quality === 'High')
       .forEach((e, i) => {
-        console.log(`${i+1}. ${e.email} (${e.station})`);
+        console.log(`${i + 1}. ${e.email} (${e.station})`);
       });
     console.log('');
   }
 
-  fs.writeFileSync('./ALL_CONTACTS_ENRICHMENT_REPORT.json', JSON.stringify({ stats, enrichments }, null, 2));
+  fs.writeFileSync(
+    './ALL_CONTACTS_ENRICHMENT_REPORT.json',
+    JSON.stringify({ stats, enrichments }, null, 2)
+  );
   console.log('💾 Full report saved: ALL_CONTACTS_ENRICHMENT_REPORT.json\n');
   console.log('✅ Enrichment complete!\n');
 

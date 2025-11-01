@@ -8,7 +8,10 @@ interface SendTimeSuggestion {
   reason: string;
 }
 
-export function getSuggestedSendTime(outlet: string | null, role: string | null): SendTimeSuggestion | null {
+export function getSuggestedSendTime(
+  outlet: string | null,
+  role: string | null
+): SendTimeSuggestion | null {
   const outletLower = (outlet || '').toLowerCase();
   const roleLower = (role || '').toLowerCase();
 
@@ -39,7 +42,11 @@ export function getSuggestedSendTime(outlet: string | null, role: string | null)
   }
 
   // Commercial radio
-  if (outletLower.includes('capital') || outletLower.includes('heart') || outletLower.includes('smooth')) {
+  if (
+    outletLower.includes('capital') ||
+    outletLower.includes('heart') ||
+    outletLower.includes('smooth')
+  ) {
     return {
       time: 'Monday afternoon (2-4pm)',
       reason: 'Commercial stations plan weekly playlists Monday afternoons',
@@ -47,7 +54,11 @@ export function getSuggestedSendTime(outlet: string | null, role: string | null)
   }
 
   // Community/specialist radio
-  if (outletLower.includes('community') || outletLower.includes('hospital') || roleLower.includes('volunteer')) {
+  if (
+    outletLower.includes('community') ||
+    outletLower.includes('hospital') ||
+    roleLower.includes('volunteer')
+  ) {
     return {
       time: 'Evening (6-8pm) or weekend',
       reason: 'Community radio volunteers often check emails after work',
@@ -63,7 +74,11 @@ export function getSuggestedSendTime(outlet: string | null, role: string | null)
   }
 
   // Music blogs
-  if (outletLower.includes('blog') || roleLower.includes('blogger') || roleLower.includes('writer')) {
+  if (
+    outletLower.includes('blog') ||
+    roleLower.includes('blogger') ||
+    roleLower.includes('writer')
+  ) {
     return {
       time: 'Monday afternoon (1-3pm)',
       reason: 'Music bloggers schedule content for the week on Mondays',
@@ -71,7 +86,11 @@ export function getSuggestedSendTime(outlet: string | null, role: string | null)
   }
 
   // Online magazines/publications
-  if (outletLower.includes('magazine') || outletLower.includes('publication') || roleLower.includes('editor')) {
+  if (
+    outletLower.includes('magazine') ||
+    outletLower.includes('publication') ||
+    roleLower.includes('editor')
+  ) {
     return {
       time: 'Tuesday or Wednesday morning (10am-12pm)',
       reason: 'Editorial teams review pitches mid-week mornings',
@@ -79,7 +98,11 @@ export function getSuggestedSendTime(outlet: string | null, role: string | null)
   }
 
   // Playlist curators (Spotify, Apple Music, etc.)
-  if (roleLower.includes('curator') || outletLower.includes('spotify') || outletLower.includes('apple music')) {
+  if (
+    roleLower.includes('curator') ||
+    outletLower.includes('spotify') ||
+    outletLower.includes('apple music')
+  ) {
     return {
       time: 'Monday morning (9-11am)',
       reason: 'Playlist curators refresh playlists start of week',
@@ -87,7 +110,11 @@ export function getSuggestedSendTime(outlet: string | null, role: string | null)
   }
 
   // PR/Marketing contacts
-  if (roleLower.includes('pr') || roleLower.includes('marketing') || roleLower.includes('publicity')) {
+  if (
+    roleLower.includes('pr') ||
+    roleLower.includes('marketing') ||
+    roleLower.includes('publicity')
+  ) {
     return {
       time: 'Tuesday or Thursday morning (9-10am)',
       reason: 'PR professionals check new pitches early week mornings',
@@ -95,7 +122,11 @@ export function getSuggestedSendTime(outlet: string | null, role: string | null)
   }
 
   // Record labels
-  if (outletLower.includes('records') || outletLower.includes('label') || roleLower.includes('a&r')) {
+  if (
+    outletLower.includes('records') ||
+    outletLower.includes('label') ||
+    roleLower.includes('a&r')
+  ) {
     return {
       time: 'Wednesday morning (10am-12pm)',
       reason: 'Label teams review new music mid-week',
@@ -103,7 +134,11 @@ export function getSuggestedSendTime(outlet: string | null, role: string | null)
   }
 
   // Podcast hosts
-  if (outletLower.includes('podcast') || roleLower.includes('podcaster') || roleLower.includes('host')) {
+  if (
+    outletLower.includes('podcast') ||
+    roleLower.includes('podcaster') ||
+    roleLower.includes('host')
+  ) {
     return {
       time: 'Monday or Friday afternoon',
       reason: 'Podcasters plan episodes at start/end of week',
@@ -111,7 +146,11 @@ export function getSuggestedSendTime(outlet: string | null, role: string | null)
   }
 
   // YouTube channels
-  if (outletLower.includes('youtube') || outletLower.includes('channel') || roleLower.includes('youtuber')) {
+  if (
+    outletLower.includes('youtube') ||
+    outletLower.includes('channel') ||
+    roleLower.includes('youtuber')
+  ) {
     return {
       time: 'Sunday evening or Monday morning',
       reason: 'Content creators plan weekly uploads on weekends/Mondays',

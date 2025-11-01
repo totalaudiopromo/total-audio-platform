@@ -22,7 +22,9 @@ export default function IntegrationsPage() {
     );
   }
 
-  const connectedCount = Object.values(connections).filter((c) => c?.status === 'active').length;
+  const connectedCount = Object.values(connections).filter(
+    c => c?.status === 'active'
+  ).length;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-blue-50">
@@ -49,7 +51,9 @@ export default function IntegrationsPage() {
               </div>
               <div className="flex items-center gap-2 bg-teal-100 border-2 border-teal-600 px-4 py-2 rounded-xl">
                 <Zap className="w-5 h-5 text-teal-600" />
-                <span className="font-black text-teal-900">{connectedCount}/5</span>
+                <span className="font-black text-teal-900">
+                  {connectedCount}/5
+                </span>
               </div>
             </div>
 
@@ -60,9 +64,9 @@ export default function IntegrationsPage() {
                 <div className="text-sm text-teal-900">
                   <p className="font-bold mb-1">How Integrations Work</p>
                   <p className="font-medium">
-                    Connect once, and your campaigns automatically sync. Edit in Google Sheets, get
-                    notified of Gmail replies, collaborate in Airtable – all without leaving your
-                    existing workflow.
+                    Connect once, and your campaigns automatically sync. Edit in
+                    Google Sheets, get notified of Gmail replies, collaborate in
+                    Airtable – all without leaving your existing workflow.
                   </p>
                 </div>
               </div>
@@ -84,7 +88,9 @@ export default function IntegrationsPage() {
             connection={connections.google_sheets}
             onConnect={() => connect('google_sheets')}
             onDisconnect={() => disconnect('google_sheets')}
-            onConfigure={() => router.push('/dashboard/integrations/google-sheets/configure')}
+            onConfigure={() =>
+              router.push('/dashboard/integrations/google-sheets/configure')
+            }
           />
 
           <IntegrationCard
@@ -94,7 +100,9 @@ export default function IntegrationsPage() {
             connection={connections.gmail}
             onConnect={() => connect('gmail')}
             onDisconnect={() => disconnect('gmail')}
-            onConfigure={() => router.push('/dashboard/integrations/gmail/configure')}
+            onConfigure={() =>
+              router.push('/dashboard/integrations/gmail/configure')
+            }
           />
 
           <IntegrationCard
@@ -104,7 +112,9 @@ export default function IntegrationsPage() {
             connection={connections.airtable}
             onConnect={() => connect('airtable')}
             onDisconnect={() => disconnect('airtable')}
-            onConfigure={() => router.push('/dashboard/integrations/airtable/configure')}
+            onConfigure={() =>
+              router.push('/dashboard/integrations/airtable/configure')
+            }
           />
 
           <IntegrationCard
@@ -114,7 +124,9 @@ export default function IntegrationsPage() {
             connection={connections.mailchimp}
             onConnect={() => connect('mailchimp')}
             onDisconnect={() => disconnect('mailchimp')}
-            onConfigure={() => router.push('/dashboard/integrations/mailchimp/configure')}
+            onConfigure={() =>
+              router.push('/dashboard/integrations/mailchimp/configure')
+            }
           />
 
           <IntegrationCard
@@ -124,7 +136,9 @@ export default function IntegrationsPage() {
             connection={connections.excel}
             onConnect={() => connect('excel')}
             onDisconnect={() => disconnect('excel')}
-            onConfigure={() => router.push('/dashboard/integrations/excel/configure')}
+            onConfigure={() =>
+              router.push('/dashboard/integrations/excel/configure')
+            }
           />
         </div>
 
@@ -132,7 +146,8 @@ export default function IntegrationsPage() {
         <div className="mt-8 bg-white rounded-2xl border-4 border-black shadow-brutal p-6">
           <h3 className="text-lg font-black text-gray-900 mb-3">Need Help?</h3>
           <p className="text-gray-700 font-medium mb-4">
-            Check out our integration guides for step-by-step setup instructions:
+            Check out our integration guides for step-by-step setup
+            instructions:
           </p>
           <div className="flex flex-wrap gap-3">
             <Link

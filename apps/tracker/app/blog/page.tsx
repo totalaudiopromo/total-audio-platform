@@ -1,210 +1,240 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import BlogSidebar from "@/components/BlogSidebar";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+import BlogSidebar from '@/components/BlogSidebar';
 
 export const metadata: Metadata = {
-  title: "Campaign Tracking Insights & Music Promotion Guides | Tracker Blog",
-  description: "Industry guides on campaign tracking, music promotion benchmarks, and analytics strategies. Written by working radio promoters with 5+ years experience.",
-  keywords: "campaign tracking blog, music promotion guides, radio campaign analytics, playlist tracking tips, campaign benchmarks",
+  title: 'Campaign Tracking Insights & Music Promotion Guides | Tracker Blog',
+  description:
+    'Industry guides on campaign tracking, music promotion benchmarks, and analytics strategies. Written by working radio promoters with 5+ years experience.',
+  keywords:
+    'campaign tracking blog, music promotion guides, radio campaign analytics, playlist tracking tips, campaign benchmarks',
   alternates: {
     canonical: 'https://tracker.totalaudiopromo.com/blog',
     languages: {
       'en-GB': 'https://tracker.totalaudiopromo.com/blog',
-    }
+    },
   },
-  openGraph: { url: 'https://tracker.totalaudiopromo.com/blog' }
+  openGraph: { url: 'https://tracker.totalaudiopromo.com/blog' },
 };
 
 const blogPosts = [
   {
-    slug: "spotify-playlist-campaign-tracking",
-    title: "Spotify Playlist Campaign Tracking: Real Benchmarks for 2025",
-    excerpt: "Stop guessing if your Spotify campaigns are working. See industry benchmarks (18-28% by genre), success rates, and exactly what metrics matter for playlist campaigns.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "8 min read",
-    category: "Playlist Tracking",
-    featured: true
+    slug: 'spotify-playlist-campaign-tracking',
+    title: 'Spotify Playlist Campaign Tracking: Real Benchmarks for 2025',
+    excerpt:
+      'Stop guessing if your Spotify campaigns are working. See industry benchmarks (18-28% by genre), success rates, and exactly what metrics matter for playlist campaigns.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '8 min read',
+    category: 'Playlist Tracking',
+    featured: true,
   },
   {
-    slug: "bbc-radio-1-campaign-tracking",
-    title: "BBC Radio 1 Campaign Tracking: Industry Benchmarks & Success Rates",
-    excerpt: "Track your BBC Radio 1 campaigns properly. Get industry benchmarks (11-18% specialist shows), success rates by show type, and AI-powered insights showing exactly what works.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "10 min read",
-    category: "Radio Tracking",
-    featured: false
+    slug: 'bbc-radio-1-campaign-tracking',
+    title: 'BBC Radio 1 Campaign Tracking: Industry Benchmarks & Success Rates',
+    excerpt:
+      'Track your BBC Radio 1 campaigns properly. Get industry benchmarks (11-18% specialist shows), success rates by show type, and AI-powered insights showing exactly what works.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '10 min read',
+    category: 'Radio Tracking',
+    featured: false,
   },
   {
-    slug: "music-pr-campaign-analytics",
-    title: "Music PR Campaign Analytics: Stop Wasting Time on Guesswork",
-    excerpt: "Measure your music PR campaigns properly. Learn what response rates to expect (8-16% by blog tier), how to track blog coverage, and which metrics actually matter.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "9 min read",
-    category: "PR Tracking",
-    featured: false
+    slug: 'music-pr-campaign-analytics',
+    title: 'Music PR Campaign Analytics: Stop Wasting Time on Guesswork',
+    excerpt:
+      'Measure your music PR campaigns properly. Learn what response rates to expect (8-16% by blog tier), how to track blog coverage, and which metrics actually matter.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '9 min read',
+    category: 'PR Tracking',
+    featured: false,
   },
   {
-    slug: "apple-music-playlist-analytics",
-    title: "Apple Music Playlist Analytics: Track Campaign Success Rates",
-    excerpt: "Track your Apple Music campaigns properly. Get editorial benchmarks (6-12% success), algorithmic playlist insights (40-60% reach), and AI-powered campaign intelligence.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "8 min read",
-    category: "Playlist Tracking",
-    featured: false
+    slug: 'apple-music-playlist-analytics',
+    title: 'Apple Music Playlist Analytics: Track Campaign Success Rates',
+    excerpt:
+      'Track your Apple Music campaigns properly. Get editorial benchmarks (6-12% success), algorithmic playlist insights (40-60% reach), and AI-powered campaign intelligence.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '8 min read',
+    category: 'Playlist Tracking',
+    featured: false,
   },
   {
-    slug: "bbc-radio-6-music-campaign-analytics",
-    title: "BBC Radio 6 Music Campaign Analytics: Track Alternative Radio Success",
-    excerpt: "Track BBC Radio 6 Music campaigns with industry benchmarks. See real success rates (8-14% specialist shows), optimal timing, and AI insights for alternative/indie radio promotion.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "9 min read",
-    category: "Radio Tracking",
-    featured: false
+    slug: 'bbc-radio-6-music-campaign-analytics',
+    title:
+      'BBC Radio 6 Music Campaign Analytics: Track Alternative Radio Success',
+    excerpt:
+      'Track BBC Radio 6 Music campaigns with industry benchmarks. See real success rates (8-14% specialist shows), optimal timing, and AI insights for alternative/indie radio promotion.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '9 min read',
+    category: 'Radio Tracking',
+    featured: false,
   },
   {
-    slug: "bbc-introducing-campaign-tracking",
-    title: "BBC Introducing Campaign Tracking: Track Unsigned Artist Success",
-    excerpt: "Track BBC Introducing campaigns with industry benchmarks. See real success rates (8-12% regional), optimal timing, and AI insights for unsigned artist radio promotion.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "8 min read",
-    category: "Radio Tracking",
-    featured: false
+    slug: 'bbc-introducing-campaign-tracking',
+    title: 'BBC Introducing Campaign Tracking: Track Unsigned Artist Success',
+    excerpt:
+      'Track BBC Introducing campaigns with industry benchmarks. See real success rates (8-12% regional), optimal timing, and AI insights for unsigned artist radio promotion.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '8 min read',
+    category: 'Radio Tracking',
+    featured: false,
   },
   {
-    slug: "community-radio-promotion-tracking",
-    title: "Community Radio Promotion Tracking: Local Radio Campaign Analytics",
-    excerpt: "Track community radio campaigns with industry benchmarks. See real success rates (18-24% local radio), optimal timing, and AI insights for local radio promotion.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "7 min read",
-    category: "Radio Tracking",
-    featured: false
+    slug: 'community-radio-promotion-tracking',
+    title: 'Community Radio Promotion Tracking: Local Radio Campaign Analytics',
+    excerpt:
+      'Track community radio campaigns with industry benchmarks. See real success rates (18-24% local radio), optimal timing, and AI insights for local radio promotion.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '7 min read',
+    category: 'Radio Tracking',
+    featured: false,
   },
   {
-    slug: "commercial-radio-campaign-tracking",
-    title: "Commercial Radio Campaign Tracking: Industry Benchmarks & Success Rates (2025)",
-    excerpt: "Track commercial radio campaigns with AI-powered insights. Get industry benchmarks, success rates by station type, and actionable intelligence for commercial radio promotion.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "9 min read",
-    category: "Radio Tracking",
-    featured: false
+    slug: 'commercial-radio-campaign-tracking',
+    title:
+      'Commercial Radio Campaign Tracking: Industry Benchmarks & Success Rates (2025)',
+    excerpt:
+      'Track commercial radio campaigns with AI-powered insights. Get industry benchmarks, success rates by station type, and actionable intelligence for commercial radio promotion.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '9 min read',
+    category: 'Radio Tracking',
+    featured: false,
   },
   {
-    slug: "blog-campaign-analytics-for-musicians",
-    title: "Blog Campaign Analytics for Musicians: Track Blog Outreach Success (2025)",
-    excerpt: "Track your blog outreach campaigns with AI-powered analytics. Get industry benchmarks for blog response rates, coverage tracking, and actionable insights for music blog promotion.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "11 min read",
-    category: "PR Tracking",
-    featured: false
+    slug: 'blog-campaign-analytics-for-musicians',
+    title:
+      'Blog Campaign Analytics for Musicians: Track Blog Outreach Success (2025)',
+    excerpt:
+      'Track your blog outreach campaigns with AI-powered analytics. Get industry benchmarks for blog response rates, coverage tracking, and actionable insights for music blog promotion.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '11 min read',
+    category: 'PR Tracking',
+    featured: false,
   },
   {
-    slug: "deezer-playlist-campaign-tracking",
-    title: "Deezer Playlist Campaign Tracking: Track Your Deezer Promotion Success (2025)",
-    excerpt: "Track your Deezer playlist campaigns with AI-powered analytics. Get industry benchmarks for Deezer promotion, playlist placement rates, and actionable insights for better results.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "8 min read",
-    category: "Playlist Tracking",
-    featured: false
+    slug: 'deezer-playlist-campaign-tracking',
+    title:
+      'Deezer Playlist Campaign Tracking: Track Your Deezer Promotion Success (2025)',
+    excerpt:
+      'Track your Deezer playlist campaigns with AI-powered analytics. Get industry benchmarks for Deezer promotion, playlist placement rates, and actionable insights for better results.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '8 min read',
+    category: 'Playlist Tracking',
+    featured: false,
   },
   {
-    slug: "tiktok-music-campaign-tracking",
-    title: "TikTok Music Campaign Tracking: Track Your TikTok Promotion Success (2025)",
-    excerpt: "Track your TikTok music campaigns with AI-powered analytics. Get industry benchmarks for TikTok promotion, viral tracking, and actionable insights for better TikTok music marketing.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "10 min read",
-    category: "Social Media Tracking",
-    featured: false
+    slug: 'tiktok-music-campaign-tracking',
+    title:
+      'TikTok Music Campaign Tracking: Track Your TikTok Promotion Success (2025)',
+    excerpt:
+      'Track your TikTok music campaigns with AI-powered analytics. Get industry benchmarks for TikTok promotion, viral tracking, and actionable insights for better TikTok music marketing.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '10 min read',
+    category: 'Social Media Tracking',
+    featured: false,
   },
   {
-    slug: "instagram-music-campaign-tracking",
-    title: "Instagram Music Campaign Tracking: Track Your Instagram Promotion Success (2025)",
-    excerpt: "Track your Instagram music campaigns with AI-powered analytics. Get industry benchmarks for Instagram promotion, story tracking, and actionable insights for better Instagram music marketing.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "9 min read",
-    category: "Social Media Tracking",
-    featured: false
+    slug: 'instagram-music-campaign-tracking',
+    title:
+      'Instagram Music Campaign Tracking: Track Your Instagram Promotion Success (2025)',
+    excerpt:
+      'Track your Instagram music campaigns with AI-powered analytics. Get industry benchmarks for Instagram promotion, story tracking, and actionable insights for better Instagram music marketing.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '9 min read',
+    category: 'Social Media Tracking',
+    featured: false,
   },
   {
-    slug: "youtube-music-campaign-tracking",
-    title: "YouTube Music Campaign Tracking: Track Your YouTube Promotion Success (2025)",
-    excerpt: "Track your YouTube music campaigns with AI-powered analytics. Get industry benchmarks for YouTube promotion, video performance tracking, and actionable insights for better YouTube music marketing.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "9 min read",
-    category: "Social Media Tracking",
-    featured: false
+    slug: 'youtube-music-campaign-tracking',
+    title:
+      'YouTube Music Campaign Tracking: Track Your YouTube Promotion Success (2025)',
+    excerpt:
+      'Track your YouTube music campaigns with AI-powered analytics. Get industry benchmarks for YouTube promotion, video performance tracking, and actionable insights for better YouTube music marketing.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '9 min read',
+    category: 'Social Media Tracking',
+    featured: false,
   },
   {
-    slug: "facebook-music-campaign-tracking",
-    title: "Facebook Music Campaign Tracking: Track Your Facebook Promotion Success (2025)",
-    excerpt: "Track your Facebook music campaigns with AI-powered analytics. Get industry benchmarks for Facebook promotion, ad performance tracking, and actionable insights for better Facebook music marketing.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "8 min read",
-    category: "Social Media Tracking",
-    featured: false
+    slug: 'facebook-music-campaign-tracking',
+    title:
+      'Facebook Music Campaign Tracking: Track Your Facebook Promotion Success (2025)',
+    excerpt:
+      'Track your Facebook music campaigns with AI-powered analytics. Get industry benchmarks for Facebook promotion, ad performance tracking, and actionable insights for better Facebook music marketing.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '8 min read',
+    category: 'Social Media Tracking',
+    featured: false,
   },
   {
-    slug: "twitter-music-campaign-tracking",
-    title: "Twitter Music Campaign Tracking: Track Your Twitter Promotion Success (2025)",
-    excerpt: "Track your Twitter music campaigns with AI-powered analytics. Get industry benchmarks for Twitter promotion, tweet performance tracking, and actionable insights for better Twitter music marketing.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "7 min read",
-    category: "Social Media Tracking",
-    featured: false
+    slug: 'twitter-music-campaign-tracking',
+    title:
+      'Twitter Music Campaign Tracking: Track Your Twitter Promotion Success (2025)',
+    excerpt:
+      'Track your Twitter music campaigns with AI-powered analytics. Get industry benchmarks for Twitter promotion, tweet performance tracking, and actionable insights for better Twitter music marketing.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '7 min read',
+    category: 'Social Media Tracking',
+    featured: false,
   },
   {
-    slug: "soundcloud-campaign-tracking",
-    title: "SoundCloud Campaign Tracking: Track Your SoundCloud Promotion Success (2025)",
-    excerpt: "Track your SoundCloud campaigns with AI-powered analytics. Get industry benchmarks for SoundCloud promotion, track performance tracking, and actionable insights for better SoundCloud music marketing.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "8 min read",
-    category: "Social Media Tracking",
-    featured: false
+    slug: 'soundcloud-campaign-tracking',
+    title:
+      'SoundCloud Campaign Tracking: Track Your SoundCloud Promotion Success (2025)',
+    excerpt:
+      'Track your SoundCloud campaigns with AI-powered analytics. Get industry benchmarks for SoundCloud promotion, track performance tracking, and actionable insights for better SoundCloud music marketing.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '8 min read',
+    category: 'Social Media Tracking',
+    featured: false,
   },
   {
-    slug: "bandcamp-campaign-tracking",
-    title: "Bandcamp Campaign Tracking: Track Your Bandcamp Promotion Success (2025)",
-    excerpt: "Track your Bandcamp campaigns with AI-powered analytics. Get industry benchmarks for Bandcamp promotion, album sales tracking, and actionable insights for better Bandcamp music marketing.",
-    author: "Chris Schofield",
-    date: "2025-10-05",
-    readTime: "7 min read",
-    category: "Social Media Tracking",
-    featured: false
-  }
+    slug: 'bandcamp-campaign-tracking',
+    title:
+      'Bandcamp Campaign Tracking: Track Your Bandcamp Promotion Success (2025)',
+    excerpt:
+      'Track your Bandcamp campaigns with AI-powered analytics. Get industry benchmarks for Bandcamp promotion, album sales tracking, and actionable insights for better Bandcamp music marketing.',
+    author: 'Chris Schofield',
+    date: '2025-10-05',
+    readTime: '7 min read',
+    category: 'Social Media Tracking',
+    featured: false,
+  },
 ];
 
 function getCategoryBadgeClasses(category: string) {
   switch (category) {
-    case "Playlist Tracking":
-      return "bg-teal-100 text-teal-800";
-    case "Radio Tracking":
-      return "bg-indigo-100 text-indigo-800";
-    case "PR Tracking":
-      return "bg-green-100 text-green-800";
-    case "Campaign Analytics":
-      return "bg-blue-100 text-teal-800";
-    case "Case Study":
-      return "bg-yellow-100 text-yellow-800";
-    case "Social Media Tracking":
-      return "bg-pink-100 text-pink-800";
+    case 'Playlist Tracking':
+      return 'bg-teal-100 text-teal-800';
+    case 'Radio Tracking':
+      return 'bg-indigo-100 text-indigo-800';
+    case 'PR Tracking':
+      return 'bg-green-100 text-green-800';
+    case 'Campaign Analytics':
+      return 'bg-blue-100 text-teal-800';
+    case 'Case Study':
+      return 'bg-yellow-100 text-yellow-800';
+    case 'Social Media Tracking':
+      return 'bg-pink-100 text-pink-800';
     default:
-      return "bg-gray-100 text-gray-800";
+      return 'bg-gray-100 text-gray-800';
   }
 }
 
@@ -218,7 +248,10 @@ export default function BlogIndex() {
       <header className="bg-white border-b-4 border-black shadow-brutal">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <Link
+              href="/"
+              className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            >
               <Image
                 src="/images/total_audio_promo_logo_trans.png"
                 alt="Total Audio Promo Logo"
@@ -230,16 +263,25 @@ export default function BlogIndex() {
             </Link>
 
             <nav className="flex items-center gap-6">
-              <Link href="/" className="text-gray-600 hover:text-gray-900 font-semibold">
+              <Link
+                href="/"
+                className="text-gray-600 hover:text-gray-900 font-semibold"
+              >
                 Home
               </Link>
               <Link href="/blog" className="text-teal-600 font-semibold">
                 Blog
               </Link>
-              <Link href="/demo" className="text-gray-600 hover:text-gray-900 font-semibold">
+              <Link
+                href="/demo"
+                className="text-gray-600 hover:text-gray-900 font-semibold"
+              >
                 Demo
               </Link>
-              <Link href="/signup" className="bg-teal-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <Link
+                href="/signup"
+                className="bg-teal-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-700 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+              >
                 Try Free
               </Link>
             </nav>
@@ -254,8 +296,9 @@ export default function BlogIndex() {
             Campaign Tracking Insights
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Industry guides on campaign tracking, benchmarks, and analytics strategies.
-            Written by working radio promoters with real-world campaign data.
+            Industry guides on campaign tracking, benchmarks, and analytics
+            strategies. Written by working radio promoters with real-world
+            campaign data.
           </p>
         </div>
 
@@ -263,7 +306,11 @@ export default function BlogIndex() {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar */}
           <BlogSidebar
-            posts={blogPosts.map(p => ({ slug: p.slug, title: p.title, category: p.category }))}
+            posts={blogPosts.map(p => ({
+              slug: p.slug,
+              title: p.title,
+              category: p.category,
+            }))}
           />
 
           {/* Main Content */}
@@ -274,7 +321,9 @@ export default function BlogIndex() {
                 <div className="bg-white rounded-2xl border-4 border-teal-500 shadow-brutal-lg overflow-hidden">
                   <div className="p-8 md:p-12">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className={`${getCategoryBadgeClasses(featuredPost.category)} px-3 py-1 rounded-full text-sm font-bold`}>
+                      <span
+                        className={`${getCategoryBadgeClasses(featuredPost.category)} px-3 py-1 rounded-full text-sm font-bold`}
+                      >
                         {featuredPost.category}
                       </span>
                       <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-bold">
@@ -297,7 +346,9 @@ export default function BlogIndex() {
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4 text-sm text-gray-500">
-                        <span className="font-semibold">{featuredPost.author}</span>
+                        <span className="font-semibold">
+                          {featuredPost.author}
+                        </span>
                         <span>•</span>
                         <span>{featuredPost.readTime}</span>
                       </div>
@@ -316,13 +367,20 @@ export default function BlogIndex() {
 
             {/* Other Posts */}
             <div>
-              <h2 className="text-3xl font-black text-gray-900 mb-8">More Guides</h2>
+              <h2 className="text-3xl font-black text-gray-900 mb-8">
+                More Guides
+              </h2>
               <div className="grid md:grid-cols-2 gap-6">
-                {otherPosts.map((post) => (
-                  <article key={post.slug} className="bg-white rounded-xl border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all overflow-hidden">
+                {otherPosts.map(post => (
+                  <article
+                    key={post.slug}
+                    className="bg-white rounded-xl border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all overflow-hidden"
+                  >
                     <div className="p-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className={`${getCategoryBadgeClasses(post.category)} px-2 py-1 rounded text-xs font-semibold`}>
+                        <span
+                          className={`${getCategoryBadgeClasses(post.category)} px-2 py-1 rounded text-xs font-semibold`}
+                        >
                           {post.category}
                         </span>
                       </div>
@@ -337,7 +395,9 @@ export default function BlogIndex() {
                       </h3>
 
                       <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                        {post.excerpt.length > 120 ? `${post.excerpt.substring(0, 120)}...` : post.excerpt}
+                        {post.excerpt.length > 120
+                          ? `${post.excerpt.substring(0, 120)}...`
+                          : post.excerpt}
                       </p>
 
                       <div className="flex items-center justify-between text-xs text-gray-500">
@@ -369,32 +429,83 @@ export default function BlogIndex() {
                 <span className="font-black text-lg">Tracker</span>
               </div>
               <p className="text-gray-400 text-sm">
-                Campaign intelligence for the music industry. Built by working radio promoters.
+                Campaign intelligence for the music industry. Built by working
+                radio promoters.
               </p>
             </div>
 
             <div>
               <h3 className="font-bold mb-4">Product</h3>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/" className="hover:text-white transition-colors">Features</Link></li>
-                <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
-                <li><Link href="/demo" className="hover:text-white transition-colors">Demo</Link></li>
+                <li>
+                  <Link href="/" className="hover:text-white transition-colors">
+                    Features
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/pricing"
+                    className="hover:text-white transition-colors"
+                  >
+                    Pricing
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/demo"
+                    className="hover:text-white transition-colors"
+                  >
+                    Demo
+                  </Link>
+                </li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold mb-4">Resources</h3>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
-                <li><a href="https://totalaudiopromo.com/newsletter" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Newsletter</a></li>
+                <li>
+                  <Link
+                    href="/blog"
+                    className="hover:text-white transition-colors"
+                  >
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="https://totalaudiopromo.com/newsletter"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    Newsletter
+                  </a>
+                </li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold mb-4">Company</h3>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="mailto:info@totalaudiopromo.com" className="hover:text-white transition-colors">Contact</a></li>
-                <li><a href="https://intel.totalaudiopromo.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Audio Intel</a></li>
+                <li>
+                  <a
+                    href="mailto:info@totalaudiopromo.com"
+                    className="hover:text-white transition-colors"
+                  >
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://intel.totalaudiopromo.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    Audio Intel
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

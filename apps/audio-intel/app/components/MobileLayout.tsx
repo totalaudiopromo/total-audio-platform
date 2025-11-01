@@ -16,7 +16,7 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
 
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -108,8 +108,8 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
 
           /* Form optimizations */
           .form-input,
-          input[type="text"],
-          input[type="email"],
+          input[type='text'],
+          input[type='email'],
           textarea {
             width: 100% !important;
             padding: 1rem !important;
@@ -187,14 +187,32 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
           }
 
           /* Typography hierarchy */
-          h1 { font-size: 2rem !important; line-height: 1.2 !important; }
-          h2 { font-size: 1.75rem !important; line-height: 1.3 !important; }
-          h3 { font-size: 1.5rem !important; line-height: 1.3 !important; }
-          h4 { font-size: 1.25rem !important; line-height: 1.4 !important; }
-          h5 { font-size: 1.125rem !important; line-height: 1.4 !important; }
-          
-          p { font-size: 1rem !important; line-height: 1.6 !important; }
-          
+          h1 {
+            font-size: 2rem !important;
+            line-height: 1.2 !important;
+          }
+          h2 {
+            font-size: 1.75rem !important;
+            line-height: 1.3 !important;
+          }
+          h3 {
+            font-size: 1.5rem !important;
+            line-height: 1.3 !important;
+          }
+          h4 {
+            font-size: 1.25rem !important;
+            line-height: 1.4 !important;
+          }
+          h5 {
+            font-size: 1.125rem !important;
+            line-height: 1.4 !important;
+          }
+
+          p {
+            font-size: 1rem !important;
+            line-height: 1.6 !important;
+          }
+
           /* Hide desktop-only elements */
           .desktop-only {
             display: none !important;
@@ -282,15 +300,15 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
           .hero-title {
             font-size: 3rem !important;
           }
-          
+
           .hero-subtitle {
             font-size: 1.25rem !important;
           }
-          
+
           .feature-grid {
             grid-template-columns: repeat(2, 1fr) !important;
           }
-          
+
           .cta-button,
           .primary-button {
             width: auto !important;
@@ -298,7 +316,7 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
           }
         }
       `}</style>
-      
+
       {children}
     </div>
   );

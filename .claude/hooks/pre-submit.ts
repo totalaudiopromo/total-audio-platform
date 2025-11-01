@@ -1,0 +1,1 @@
+/Users/chrisschofield/workspace/active/totalaud.io/meta-automation/hooks/pre-submit.ts

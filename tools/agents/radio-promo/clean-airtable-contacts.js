@@ -19,7 +19,7 @@ const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY || 'patH8DF1YEieVCSvo';
 
 async function listBases() {
   const response = await fetch('https://api.airtable.com/v0/meta/bases', {
-    headers: { 'Authorization': `Bearer ${AIRTABLE_API_KEY}` }
+    headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
   });
   const data = await response.json();
   return data.bases || [];
@@ -27,7 +27,7 @@ async function listBases() {
 
 async function listTables(baseId) {
   const response = await fetch(`https://api.airtable.com/v0/meta/bases/${baseId}/tables`, {
-    headers: { 'Authorization': `Bearer ${AIRTABLE_API_KEY}` }
+    headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
   });
   const data = await response.json();
   return data.tables || [];
@@ -36,7 +36,7 @@ async function listTables(baseId) {
 async function getRecords(baseId, tableName) {
   const response = await fetch(
     `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}`,
-    { headers: { 'Authorization': `Bearer ${AIRTABLE_API_KEY}` } }
+    { headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` } }
   );
   const data = await response.json();
   return data.records || [];
@@ -48,10 +48,10 @@ async function updateRecord(baseId, tableName, recordId, fields) {
     {
       method: 'PATCH',
       headers: {
-        'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ fields })
+      body: JSON.stringify({ fields }),
     }
   );
   return response.json();
@@ -100,9 +100,11 @@ function extractFromEnrichment(enrichmentNotes) {
   if (stationMatch) {
     const station = stationMatch[1].trim();
     // Filter out quality indicators
-    if (!station.includes('Contact Quality') &&
-        !station.includes('Contact Analysis') &&
-        station.length < 50) {
+    if (
+      !station.includes('Contact Quality') &&
+      !station.includes('Contact Analysis') &&
+      station.length < 50
+    ) {
       extracted.station = station;
     }
   }
@@ -112,7 +114,7 @@ function extractFromEnrichment(enrichmentNotes) {
     /show[:\s]+([A-Z][^.,(]+)/i,
     /programme[:\s]+([A-Z][^.,(]+)/i,
     /presents[:\s]+([A-Z][^.,(]+)/i,
-    /"([^"]+)"/g  // Quoted show names
+    /"([^"]+)"/g, // Quoted show names
   ];
 
   for (const pattern of showPatterns) {
@@ -128,7 +130,7 @@ function extractFromEnrichment(enrichmentNotes) {
     /Location:\s*([A-Za-z\s]+?)(?:\||Market|Format|$)/,
     /based in\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/i,
     /serving\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?(?:\s+[A-Z][a-z]+)?)/i,
-    /(London|Manchester|Birmingham|Liverpool|Bristol|Scotland|Wales|Ireland|National|California|Central Coast)/
+    /(London|Manchester|Birmingham|Liverpool|Bristol|Scotland|Wales|Ireland|National|California|Central Coast)/,
   ];
 
   for (const pattern of locationPatterns) {
@@ -143,7 +145,7 @@ function extractFromEnrichment(enrichmentNotes) {
   const namePatterns = [
     /contact:\s*([A-Z][a-z]+\s+[A-Z][a-z]+)/,
     /^([A-Z][a-z]+\s+[A-Z][a-z]+)\s*-/,
-    /presenter:\s*([A-Z][a-z]+\s+[A-Z][a-z]+)/i
+    /presenter:\s*([A-Z][a-z]+\s+[A-Z][a-z]+)/i,
   ];
 
   for (const pattern of namePatterns) {
@@ -162,11 +164,12 @@ function extractFromEnrichment(enrichmentNotes) {
 
 function cleanLastName(lastName, firstName, enrichmentNotes, email) {
   // If already has a good last name, keep it
-  if (lastName &&
-      lastName !== 'BBC' &&
-      !lastName.toLowerCase().includes('appears') &&
-      lastName.length > 1 &&
-      lastName !== 'Mansell' // Keep existing good ones
+  if (
+    lastName &&
+    lastName !== 'BBC' &&
+    !lastName.toLowerCase().includes('appears') &&
+    lastName.length > 1 &&
+    lastName !== 'Mansell' // Keep existing good ones
   ) {
     return lastName;
   }
@@ -191,15 +194,16 @@ function cleanLastName(lastName, firstName, enrichmentNotes, email) {
 
 function cleanFirstName(firstName, station, email) {
   // Fix weird first names
-  if (!firstName ||
-      firstName === 'Unknown' ||
-      firstName === '3wk' ||
-      firstName === 'kjbdjakbcf' ||
-      firstName === 'Scrshell' ||
-      firstName === 'Isthisrob' ||
-      firstName === 'Nimoysucks' ||
-      (firstName === 'Doris' && station === 'Unique Expansion Radio')) {
-
+  if (
+    !firstName ||
+    firstName === 'Unknown' ||
+    firstName === '3wk' ||
+    firstName === 'kjbdjakbcf' ||
+    firstName === 'Scrshell' ||
+    firstName === 'Isthisrob' ||
+    firstName === 'Nimoysucks' ||
+    (firstName === 'Doris' && station === 'Unique Expansion Radio')
+  ) {
     // Try to extract from station name
     if (station && !station.includes('Radio') && !station.includes('BBC')) {
       return station;
@@ -221,12 +225,13 @@ function cleanFirstName(firstName, station, email) {
 
 function cleanStationName(station, email, enrichmentNotes) {
   // Fix generic or missing station names
-  if (!station ||
-      station === 'Radio Station' ||
-      station === 'Unknown' ||
-      station === 'BBC Radio' ||
-      station === 'hjkllkhn') {
-
+  if (
+    !station ||
+    station === 'Radio Station' ||
+    station === 'Unknown' ||
+    station === 'BBC Radio' ||
+    station === 'hjkllkhn'
+  ) {
     // Try to extract from enrichment notes
     const enriched = extractFromEnrichment(enrichmentNotes);
     if (enriched.station) {
@@ -247,8 +252,10 @@ function cleanReplyNotes(replyNotes) {
   if (!replyNotes) return replyNotes;
 
   // Remove auto-extracted domain messages
-  if (replyNotes.includes('Auto-extracted from domain:') ||
-      replyNotes.includes('(No specific pattern matched)')) {
+  if (
+    replyNotes.includes('Auto-extracted from domain:') ||
+    replyNotes.includes('(No specific pattern matched)')
+  ) {
     return null; // Clear it
   }
 
@@ -284,11 +291,13 @@ function extractShow(show, enrichmentNotes, replyNotes) {
 
 function extractRegion(region, enrichmentNotes, replyNotes, email) {
   // If already has a good region, keep it
-  if (region &&
-      region !== 'Unknown' &&
-      region !== 'USA' &&
-      !region.includes('m,nm,nb') &&
-      region.length > 1) {
+  if (
+    region &&
+    region !== 'Unknown' &&
+    region !== 'USA' &&
+    !region.includes('m,nm,nb') &&
+    region.length > 1
+  ) {
     return region;
   }
 
@@ -329,10 +338,11 @@ async function cleanUpContacts() {
 
     for (const table of tables) {
       // Look for contact tables
-      if (table.name.toLowerCase().includes('contact') ||
-          table.name.toLowerCase().includes('radio') ||
-          table.name.toLowerCase().includes('station')) {
-
+      if (
+        table.name.toLowerCase().includes('contact') ||
+        table.name.toLowerCase().includes('radio') ||
+        table.name.toLowerCase().includes('station')
+      ) {
         console.log(`  📋 Cleaning table: ${table.name}`);
 
         const records = await getRecords(base.id, table.name);
@@ -414,7 +424,9 @@ async function cleanUpContacts() {
           if (Object.keys(updates).length > 0) {
             try {
               await updateRecord(base.id, table.name, record.id, updates);
-              console.log(`     ✅ Updated: ${fields['First Name'] || 'Unknown'} - ${Object.keys(updates).join(', ')}`);
+              console.log(
+                `     ✅ Updated: ${fields['First Name'] || 'Unknown'} - ${Object.keys(updates).join(', ')}`
+              );
               totalCleaned++;
 
               // Rate limit: 5 requests per second

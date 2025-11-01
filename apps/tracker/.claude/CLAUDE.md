@@ -3,6 +3,7 @@
 ## 🚨 CURRENT DEPLOYMENT SITUATION (October 2025)
 
 ### GitHub Actions Budget Issue
+
 **Status**: Free tier Actions quota exhausted (100% of 2,000 minutes used)
 **Impact**: All GitHub Actions workflows cancel automatically
 **Consequence**: CI checks remain red, automated Vercel deploys blocked
@@ -23,11 +24,13 @@ vercel --prod
 ```
 
 ### Rollback Strategy
+
 - **Vercel Dashboard**: Every build is stored, can rollback via UI
 - **CLI Rollback**: `vercel rollback <deployment-url>`
 - **Git History**: Separate from Vercel deployments, tracks code changes independently
 
 ### When GitHub Pro is Available
+
 - Re-enable GitHub Actions workflows
 - Resume automated CI/CD pipeline
 - Configure new minute quota monitoring
@@ -41,6 +44,7 @@ vercel --prod
 **Tech Stack**: Next.js, TypeScript, Tailwind CSS, Vercel
 
 ### Development Commands
+
 ```bash
 # Development
 npm run dev:tracker           # Start dev server
@@ -54,6 +58,7 @@ npm run test:mobile           # Mobile test suite
 ```
 
 ### Deployment Commands (CURRENT WORKFLOW)
+
 ```bash
 # Manual deployment (use until GitHub Pro)
 cd apps/tracker

@@ -21,6 +21,7 @@ For most radio promoters, it's 15+ hours per campaign. That was my reality until
 **Audio Intel**
 
 Transforms basic contact lists into detailed intelligence:
+
 - Current show information and schedules
 - Submission guidelines (real-time, not 6-month-old data)
 - Genre preferences per presenter
@@ -59,6 +60,7 @@ Chris here - music producer and radio promoter based in Brighton.
 I noticed you work with regional radio stations. Quick question: How do you currently research regional station contacts?
 
 Most promoters I speak with spend 8-12 hours per campaign just finding:
+
 - Current contact details
 - Coverage areas
 - Genre preferences
@@ -73,6 +75,7 @@ That's before you've even started pitching.
 **Audio Intel solution:**
 
 Built specifically to make regional radio research manageable:
+
 - Coverage area and listener demographics
 - Submission windows and preferences
 - Genre focus and programming style
@@ -126,6 +129,7 @@ That's £1,150+ in staff time per campaign at £50/hour. Plus opportunity cost o
 **Audio Intel solution for agencies:**
 
 Transform that 23+ hour process into 5 minutes:
+
 - Upload your contact list (30 seconds)
 - AI enriches with detailed intelligence (2 minutes)
 - Senior staff review enriched data (2 minutes)
@@ -179,6 +183,7 @@ Research cost per person: £9,000/year
 Total for 3-4 staff: £27,000-36,000/year
 
 Plus:
+
 - Opportunity cost of slower campaign turnarounds
 - Quality issues from manual research errors
 - Client dissatisfaction from outdated contact data
@@ -190,16 +195,18 @@ That's exactly what Audio Intel does for established PR agencies.
 **How it works:**
 
 Traditional workflow:
+
 1. Junior staff research contacts (15 hours)
 2. Mid-level staff verify data (8 hours)
 3. Senior staff correct errors (5 hours)
-Total: 28 hours per campaign
+   Total: 28 hours per campaign
 
 Audio Intel workflow:
+
 1. Upload contact list (2 minutes)
 2. AI enriches with intelligence (2 minutes)
 3. Senior staff review and strategise (30 minutes)
-Total: 35 minutes per campaign
+   Total: 35 minutes per campaign
 
 **Time saved: 27.5 hours per campaign**
 
@@ -215,6 +222,7 @@ Total: 35 minutes per campaign
 **Real case study:**
 
 Brighton-based PR agency (8 staff):
+
 - Previous research cost: £32,000/year
 - Audio Intel cost: £948/year (Agency plan)
 - Savings: £31,052/year
@@ -251,6 +259,7 @@ Quick question: How much time are you spending on radio contact research?
 **What I've found with independent artists:**
 
 Weekends spent researching:
+
 - Finding current contact details (4 hours)
 - Understanding submission guidelines (3 hours)
 - Researching genre preferences (3 hours)
@@ -263,17 +272,20 @@ Total: 12+ hours per release
 **Audio Intel solution for independent artists:**
 
 Stop spending weekends on research:
+
 - Upload your contact list (1 minute)
 - Get detailed intelligence (2 minutes)
 - Focus on music creation instead of data entry
 
 **Free plan includes:**
+
 - 10 enrichments per month
 - Basic contact intelligence
 - Submission guidelines
 - Genre preferences
 
 **Paid plan (£19/month):**
+
 - Unlimited enrichments
 - Advanced intelligence
 - Strategic pitching tips
@@ -282,6 +294,7 @@ Stop spending weekends on research:
 **Real example:**
 
 Last release I promoted:
+
 - Manual research: 12 hours over weekend
 - Audio Intel: 2 minutes on Monday morning
 - Extra time for music: 11 hours 58 minutes
@@ -311,19 +324,23 @@ P.S. - Also a producer, so I get the struggle. This tool gives you time back for
 ## Email Outreach Best Practices
 
 ### Timing
+
 - **Best days**: Tuesday, Wednesday (avoid Monday/Friday)
 - **Best times**: 10am-11am or 2pm-3pm UK time
 - **Follow-up**: 3-5 days after initial email
 - **Maximum follow-ups**: 2 (then move on)
 
 ### Subject Line Testing
+
 Alternate between:
+
 - Problem-focused: "Your BBC Radio 1 contact research - 15 hours → 2 minutes"
 - Solution-focused: "Contact research automation for radio promoters"
 - Question-based: "How much time do you spend on contact research?"
 - Specific: "Regional radio research taking too long?"
 
 ### Personalization Variables
+
 - [First Name] - Always use first name
 - [Company Name] - Reference their agency/label
 - [Specific Pain Point] - Research their current challenges
@@ -331,6 +348,7 @@ Alternate between:
 - [Location] - UK-specific references
 
 ### Call-to-Action Priority
+
 1. **Primary**: Book demo call
 2. **Secondary**: Free beta access link
 3. **Tertiary**: Reply with questions
@@ -338,29 +356,34 @@ Alternate between:
 ### Response Handling
 
 **If interested:**
+
 - Book demo within 48 hours
 - Prepare their actual contact list for demo
 - Show real-time enrichment
 - Focus on their specific pain points
 
 **If "not now":**
+
 - Ask permission for follow-up in 3 months
 - Add to newsletter list (with permission)
 - Stay engaged via social content
 
 **If "too expensive":**
+
 - Highlight ROI calculation
 - Offer extended trial period
 - Compare to US alternatives (£200-500/month)
 - Show time savings in hours not features
 
 **If "we have a solution":**
+
 - Ask what they're currently using
 - Identify gaps in their current tool
 - Position as complementary, not replacement
 - Offer side-by-side comparison
 
 ### Success Metrics to Track
+
 - Open rate (target: 35-45%)
 - Reply rate (target: 15-20% for radio promoters)
 - Demo booking rate (target: 8-12%)

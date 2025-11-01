@@ -1,6 +1,6 @@
 # 🎯 RADIO PROMO AGENT - SYSTEM ARCHITECTURE
 
-*Automated radio promotion workflow for Liberty Music PR integration with Total Audio ecosystem*
+_Automated radio promotion workflow for Liberty Music PR integration with Total Audio ecosystem_
 
 ---
 
@@ -74,7 +74,7 @@
 **Use Cases for Radio Promo**:
 
 1. **Amazing Radio Automation**: Browser automation for track uploads
-2. [**Warmusic.net](http://Warmusic.net) Scraping**: Automated play tracking data collection
+2. [\*\*Warmusic.net](http://Warmusic.net) Scraping\*\*: Automated play tracking data collection
 3. **Radio Station Discovery**: Scraping contact databases
 4. **European Network Integration**: Automated email submissions
 
@@ -262,4 +262,4 @@ Artist Submits Form → Webhook → Database Entry → Automation Triggers:
 
 **This system represents the perfect bridge between your current Liberty Music PR operations and the Total Audio ecosystem vision - proving automation value while building the foundation for the complete music promotion platform.**
 
-*Updated: September 2025 | Next Review: Weekly during development phase*
+_Updated: September 2025 | Next Review: Weekly during development phase_

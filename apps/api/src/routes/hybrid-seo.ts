@@ -10,17 +10,21 @@ const hybridSEOService = new HybridSEOService({
   dataForSEOPassword: process.env.DATAFORSEO_PASSWORD || '',
   useDataForSEO: !!process.env.DATAFORSEO_USERNAME,
   useFreeTools: true,
-  fallbackToFree: true
+  fallbackToFree: true,
 });
 
 // Middleware to handle validation errors
-const handleValidationErrors = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+const handleValidationErrors = (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({
       success: false,
       error: 'Validation failed',
-      details: errors.array()
+      details: errors.array(),
     });
   }
   return next();
@@ -39,12 +43,12 @@ router.get('/analyze/:domain', async (req, res) => {
       data: result.data,
       error: result.error,
       cost: result.cost,
-      performance: result.performance
+      performance: result.performance,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -62,12 +66,12 @@ router.get('/keywords/:seedKeyword', async (req, res) => {
       data: result.data,
       error: result.error,
       cost: result.cost,
-      performance: result.performance
+      performance: result.performance,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -85,12 +89,12 @@ router.get('/competitors/:domain', async (req, res) => {
       data: result.data,
       error: result.error,
       cost: result.cost,
-      performance: result.performance
+      performance: result.performance,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -108,12 +112,12 @@ router.get('/serp/:keyword', async (req, res) => {
       data: result.data,
       error: result.error,
       cost: result.cost,
-      performance: result.performance
+      performance: result.performance,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -131,12 +135,12 @@ router.get('/trends/:keyword', async (req, res) => {
       data: result.data,
       error: result.error,
       cost: result.cost,
-      performance: result.performance
+      performance: result.performance,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -154,12 +158,12 @@ router.get('/report/:domain', async (req, res) => {
       data: result.data,
       error: result.error,
       cost: result.cost,
-      performance: result.performance
+      performance: result.performance,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -171,12 +175,12 @@ router.get('/cost-analysis', (req, res) => {
 
     res.json({
       success: true,
-      data: costAnalysis
+      data: costAnalysis,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -188,47 +192,51 @@ router.get('/status', (req, res) => {
 
     res.json({
       success: true,
-      data: status
+      data: status,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
 
 // Configure hybrid service
-router.post('/configure', [
-  body('useDataForSEO').isBoolean().optional(),
-  body('useFreeTools').isBoolean().optional(),
-  body('fallbackToFree').isBoolean().optional(),
-  handleValidationErrors
-], (req: express.Request, res: express.Response) => {
-  try {
-    const { useDataForSEO, useFreeTools, fallbackToFree } = req.body;
+router.post(
+  '/configure',
+  [
+    body('useDataForSEO').isBoolean().optional(),
+    body('useFreeTools').isBoolean().optional(),
+    body('fallbackToFree').isBoolean().optional(),
+    handleValidationErrors,
+  ],
+  (req: express.Request, res: express.Response) => {
+    try {
+      const { useDataForSEO, useFreeTools, fallbackToFree } = req.body;
 
-    // In a real implementation, you would update the service configuration
-    // For now, we'll just return the current configuration
-    const currentConfig = {
-      useDataForSEO: !!process.env.DATAFORSEO_USERNAME,
-      useFreeTools: true,
-      fallbackToFree: true
-    };
+      // In a real implementation, you would update the service configuration
+      // For now, we'll just return the current configuration
+      const currentConfig = {
+        useDataForSEO: !!process.env.DATAFORSEO_USERNAME,
+        useFreeTools: true,
+        fallbackToFree: true,
+      };
 
-    res.json({
-      success: true,
-      message: 'Configuration updated successfully',
-      currentConfig,
-      requestedChanges: { useDataForSEO, useFreeTools, fallbackToFree }
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
-    });
+      res.json({
+        success: true,
+        message: 'Configuration updated successfully',
+        currentConfig,
+        requestedChanges: { useDataForSEO, useFreeTools, fallbackToFree },
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        error: error instanceof Error ? error.message : 'Internal server error',
+      });
+    }
   }
-});
+);
 
 // Compare Data for SEO vs Free Tools
 router.get('/compare/:domain', async (req, res) => {
@@ -245,27 +253,28 @@ router.get('/compare/:domain', async (req, res) => {
         success: dataForSEOResult.source === 'dataforseo',
         cost: dataForSEOResult.cost || 0,
         performance: dataForSEOResult.performance,
-        dataQuality: dataForSEOResult.performance?.dataQuality || 'low'
+        dataQuality: dataForSEOResult.performance?.dataQuality || 'low',
       },
       freeTools: {
         success: freeToolsResult.source === 'free',
         cost: freeToolsResult.cost || 0,
         performance: freeToolsResult.performance,
-        dataQuality: freeToolsResult.performance?.dataQuality || 'low'
+        dataQuality: freeToolsResult.performance?.dataQuality || 'low',
       },
-      recommendation: dataForSEOResult.source === 'dataforseo' 
-        ? 'Use Data for SEO for higher quality data' 
-        : 'Free tools provide sufficient data for basic analysis'
+      recommendation:
+        dataForSEOResult.source === 'dataforseo'
+          ? 'Use Data for SEO for higher quality data'
+          : 'Free tools provide sufficient data for basic analysis',
     };
 
     res.json({
       success: true,
-      data: comparison
+      data: comparison,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -273,14 +282,14 @@ router.get('/compare/:domain', async (req, res) => {
 // Health check endpoint
 router.get('/health', (req, res) => {
   const status = hybridSEOService.getServiceStatus();
-  
+
   res.json({
     success: true,
     message: 'Hybrid SEO service is running',
     timestamp: new Date().toISOString(),
     status,
-    features: status.features
+    features: status.features,
   });
 });
 
-export default router; 
+export default router;

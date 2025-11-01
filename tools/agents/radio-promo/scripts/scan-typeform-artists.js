@@ -24,7 +24,7 @@ const TypeformApiIntegration = require('../integrations/typeform-api');
             artistName: name,
             trackTitle: brief.data?.trackTitle || '',
             genre: brief.data?.genre || '',
-            releaseDate: brief.data?.releaseDate || ''
+            releaseDate: brief.data?.releaseDate || '',
           };
           if (!q || JSON.stringify(row).toLowerCase().includes(q)) {
             results.push(row);
@@ -34,6 +34,7 @@ const TypeformApiIntegration = require('../integrations/typeform-api');
     } catch (_) {}
   }
   console.log(JSON.stringify({ count: results.length, results }, null, 2));
-})().catch(err => { console.error(err.message); process.exit(1); });
-
-
+})().catch(err => {
+  console.error(err.message);
+  process.exit(1);
+});

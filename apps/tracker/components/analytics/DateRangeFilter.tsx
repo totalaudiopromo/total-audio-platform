@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
@@ -31,26 +31,30 @@ export default function DateRangeFilter() {
 
   return (
     <div className="flex flex-wrap gap-2 items-end">
-      <label className="text-sm">Start
-        <input type="date" className="mt-1 border rounded p-2" value={start} onChange={e => setStart(e.target.value)} />
+      <label className="text-sm">
+        Start
+        <input
+          type="date"
+          className="mt-1 border rounded p-2"
+          value={start}
+          onChange={e => setStart(e.target.value)}
+        />
       </label>
-      <label className="text-sm">End
-        <input type="date" className="mt-1 border rounded p-2" value={end} onChange={e => setEnd(e.target.value)} />
+      <label className="text-sm">
+        End
+        <input
+          type="date"
+          className="mt-1 border rounded p-2"
+          value={end}
+          onChange={e => setEnd(e.target.value)}
+        />
       </label>
-      <button className="px-3 py-2 rounded bg-black text-white" onClick={apply}>Apply</button>
-      <button className="px-3 py-2 rounded border" onClick={clear}>Clear</button>
+      <button className="px-3 py-2 rounded bg-black text-white" onClick={apply}>
+        Apply
+      </button>
+      <button className="px-3 py-2 rounded border" onClick={clear}>
+        Clear
+      </button>
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-

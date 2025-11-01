@@ -21,6 +21,7 @@ Fast-track guide to get Threads autonomous posting running in under 30 minutes.
 ```
 
 **Configure OAuth**:
+
 - Add domain: `totalaudiopromo.com`
 - Add redirect: `https://intel.totalaudiopromo.com/api/auth/threads/callback`
 - Enable: `threads_basic`, `threads_content_publish`
@@ -64,6 +65,7 @@ nano .env.local
 ```
 
 Add your values:
+
 ```bash
 THREADS_USER_ID=123456789
 THREADS_ACCESS_TOKEN=IGQ...
@@ -79,6 +81,7 @@ npx tsx scripts/test-threads-agent.ts
 ```
 
 Expected output:
+
 ```
 ✅ Environment variables configured
 ✅ Agent created successfully
@@ -132,12 +135,14 @@ Update `vercel.json`:
 ```
 
 Generate cron secret:
+
 ```bash
 openssl rand -base64 32
 # Add to Vercel as CRON_SECRET
 ```
 
 Commit and deploy:
+
 ```bash
 git add .
 git commit -m "feat: add Threads autonomous posting agent"
@@ -216,6 +221,7 @@ All content pre-mapped from `BLUESKY_THREADS_CONTENT.md`:
 10. ✅ Industry Truth
 
 Each post includes:
+
 - 500 character compliance
 - UTM tracking
 - Call-to-action
@@ -235,16 +241,19 @@ From `CONTENT_CALENDAR.json`:
 ## Troubleshooting
 
 **Health check fails**:
+
 - Verify access token not expired
 - Check Instagram is Professional account
 - Confirm app permissions enabled
 
 **Posts not publishing**:
+
 - Check Vercel cron logs
 - Verify scheduling window (±1 hour)
 - Review content mapping
 
 **Rate limit errors**:
+
 - Check Meta dashboard usage
 - Reduce posting frequency
 - Increase delays
@@ -254,6 +263,7 @@ From `CONTENT_CALENDAR.json`:
 **Access token expires in 60 days**
 
 Set reminder for day 55:
+
 ```bash
 curl -X GET "https://graph.threads.net/refresh_access_token" \
   -d "grant_type=th_refresh_token" \

@@ -1,10 +1,11 @@
 ---
-title: "Content Bank - Authentic Voice (MASTER)"
+title: 'Content Bank - Authentic Voice (MASTER)'
 notion_url: https://www.notion.so/Content-Bank-Authentic-Voice-MASTER-2530a35b21ed81498091e408bf6f5ff6
 exported_at: 2025-09-26T14:32:44.784Z
 ---
 
 # Content Bank - Authentic Voice (MASTER)
+
 _Your authentic voice - properly capitalised, naturally British casual_
 
 ## VOICE CHARACTERISTICS
@@ -406,8 +407,6 @@ What development workflow change had the biggest impact on your productivity?
 - Natural British casual language (not forced)
 
 This content bank represents the definitive authentic voice for all Total Audio Promo content creation and AI training.
-
-
 
 ## AUTHENTIC PERSONAL CONTEXT (From AI Accelerator)
 

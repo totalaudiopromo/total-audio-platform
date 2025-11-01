@@ -32,7 +32,7 @@ export class PuppeteerPlatform implements SocialPlatform {
       const loginUrls = {
         twitter: 'https://twitter.com/login',
         linkedin: 'https://www.linkedin.com/login',
-        facebook: 'https://www.facebook.com/login'
+        facebook: 'https://www.facebook.com/login',
       };
 
       const url = loginUrls[this.name as keyof typeof loginUrls];
@@ -78,7 +78,7 @@ export class PuppeteerPlatform implements SocialPlatform {
     const limits = {
       twitter: 280,
       linkedin: 3000,
-      facebook: 63206
+      facebook: 63206,
     };
 
     const charLimit = limits[this.name as keyof typeof limits] || 280;
@@ -90,8 +90,10 @@ export class PuppeteerPlatform implements SocialPlatform {
     }
 
     // Check for Audio Intel specific content requirements
-    if (!content.text.toLowerCase().includes('audio intel') &&
-        !content.hashtags.some(tag => tag.toLowerCase().includes('audiointel'))) {
+    if (
+      !content.text.toLowerCase().includes('audio intel') &&
+      !content.hashtags.some(tag => tag.toLowerCase().includes('audiointel'))
+    ) {
       warnings.push('Content should mention Audio Intel or include #AudioIntel hashtag');
     }
 
@@ -108,7 +110,7 @@ export class PuppeteerPlatform implements SocialPlatform {
     if (!this.isAuthenticated) {
       return {
         success: false,
-        error: `Not authenticated with ${this.name}`
+        error: `Not authenticated with ${this.name}`,
       };
     }
 
@@ -152,14 +154,14 @@ export class PuppeteerPlatform implements SocialPlatform {
           duplicateCheck: false,
           platformSpecific: {
             platform: this.name,
-            method: 'puppeteer'
-          }
-        }
+            method: 'puppeteer',
+          },
+        },
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -170,7 +172,7 @@ export class PuppeteerPlatform implements SocialPlatform {
       id: `${this.name}_recent_${index}`,
       contentHash: hash,
       platform: this.name,
-      timestamp: new Date(Date.now() - (index * 3600000)).toISOString()
+      timestamp: new Date(Date.now() - index * 3600000).toISOString(),
     }));
   }
 

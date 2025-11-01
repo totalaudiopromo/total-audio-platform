@@ -3,6 +3,7 @@
 ## Visual Evolution: From Generic to Neobrutalist
 
 ### Before (v1.0) - Generic Professional Style
+
 ```
 ┌──────────────────────────────────────┐
 │  🎵                                  │
@@ -20,6 +21,7 @@
 ```
 
 ### After (v2.0) - Neobrutalist Design
+
 ```
 ╔══════════════════════════════════════╗
 ║  ┌──────┐                            ║
@@ -43,6 +45,7 @@
 ### 1. Header Design
 
 **BEFORE:**
+
 - Soft gray borders (1px)
 - Rounded corners (3-5px radius)
 - Default waveform logo only
@@ -50,6 +53,7 @@
 - Pastel colors
 
 **AFTER:**
+
 - Bold black borders (2px) ✓
 - Sharp corners with minimal rounding ✓
 - Custom company logo support ✓
@@ -60,6 +64,7 @@
 ### 2. Logo Support
 
 **BEFORE:**
+
 ```
 ┌─────────┐
 │   🎵    │  Only default waveform
@@ -69,6 +74,7 @@
 ```
 
 **AFTER:**
+
 ```
 ╔═════════╗
 ║  YOUR   ║  PRO: Custom logo + initials
@@ -81,6 +87,7 @@
 ### 3. Tables
 
 **BEFORE:**
+
 ```
 ┌────────┬──────────┬──────────┐
 │ Name   │ Email    │ Confid.  │  Thin borders
@@ -91,6 +98,7 @@
 ```
 
 **AFTER:**
+
 ```
 ╔════════╦══════════╦══════════╗
 ║ Name   ║ Email    ║ Confid.  ║  Bold borders
@@ -104,6 +112,7 @@
 ### 4. Contact Cards
 
 **BEFORE:**
+
 ```
 ┌─────────────────────────────┐
 │ Jack Saunders (jack@bbc...)  ●
@@ -118,6 +127,7 @@
 ```
 
 **AFTER:**
+
 ```
 ╔═════════════════════════════════╗
 ║ Jack Saunders            [HIGH] ║
@@ -138,6 +148,7 @@ Key tastemaker for breaking artists
 ### 5. Footer
 
 **BEFORE:**
+
 ```
 ┌────────────────────────────────┐
 │ Page 1 of 3    Analytics...    │
@@ -149,6 +160,7 @@ Key tastemaker for breaking artists
 ```
 
 **AFTER:**
+
 ```
 ╔════════════════════════════════╗
 ║ Page 1 of 3  YOUR COMPANY      ║
@@ -164,12 +176,14 @@ Key tastemaker for breaking artists
 ## Color Usage Comparison
 
 ### Before (Soft & Subtle)
+
 - **Borders:** #E2E8F0 (Gray-200)
 - **Text:** #475569 (Slate-600)
 - **Backgrounds:** #F8F9FA (Light gray)
 - **Accents:** Soft blues and purples
 
 ### After (Bold & High Contrast)
+
 - **Borders:** #000000 (Pure black) ✓
 - **Text:** #000000 (Pure black) ✓
 - **Backgrounds:** #FFFFFF (Pure white) ✓
@@ -178,12 +192,14 @@ Key tastemaker for breaking artists
 ## Typography Changes
 
 ### Before
+
 - **Headers:** 20pt normal weight
 - **Body:** 9pt normal weight
 - **Tables:** 9pt normal weight
 - **Style:** Subtle and soft
 
 ### After
+
 - **Headers:** 18-22pt bold weight ✓
 - **Body:** 9-11pt bold weight ✓
 - **Tables:** 9-10pt bold weight ✓
@@ -192,12 +208,14 @@ Key tastemaker for breaking artists
 ## Spacing & Layout
 
 ### Before
+
 - Generous padding everywhere
 - Rounded corners (3-5px)
 - Soft transitions between elements
 - Lots of whitespace
 
 ### After
+
 - Precise, consistent padding ✓
 - Minimal corner radius (0-2px) ✓
 - Bold separators between elements ✓
@@ -206,6 +224,7 @@ Key tastemaker for breaking artists
 ## Brand Customization
 
 ### Before (Limited)
+
 ```
 Default Only:
 - Audio Intel logo
@@ -215,6 +234,7 @@ Default Only:
 ```
 
 ### After (Full Customization)
+
 ```
 PRO/AGENCY Tiers:
 - Custom company logo ✓
@@ -227,16 +247,19 @@ PRO/AGENCY Tiers:
 ## File Size Impact
 
 ### Before
+
 - **10 contacts:** ~150KB
 - **50 contacts:** ~450KB
 - **100 contacts:** ~800KB
 
 ### After
+
 - **10 contacts:** ~140KB ✓ (Slightly smaller)
 - **50 contacts:** ~420KB ✓ (More efficient)
 - **100 contacts:** ~750KB ✓ (Optimized)
 
 **Why smaller?**
+
 - Removed emoji rendering
 - Simplified graphics
 - More efficient borders
@@ -245,14 +268,18 @@ PRO/AGENCY Tiers:
 ## User Perception
 
 ### Before
+
 "Looks like a generic export from any SaaS tool"
+
 - ⚠️ Could be from any company
 - ⚠️ Doesn't match web UI style
 - ⚠️ No personalization
 - ⚠️ Forgettable design
 
 ### After
+
 "Professional, branded, and instantly recognizable"
+
 - ✅ Matches Total Audio Promo brand
 - ✅ Consistent with web UI
 - ✅ Client can add their logo
@@ -261,14 +288,18 @@ PRO/AGENCY Tiers:
 ## Competitive Advantage
 
 ### Industry Standard (Competitors)
+
 Most music industry tools export generic PDFs:
+
 - Plain text exports
 - Basic Excel-style tables
 - No branding options
 - Forgettable appearance
 
 ### Audio Intel v2.0 (Us)
+
 Professional client-ready PDFs:
+
 - Beautiful neobrutalist design ✓
 - Custom company branding ✓
 - High-quality presentation ✓
@@ -277,25 +308,30 @@ Professional client-ready PDFs:
 ## Client Use Cases
 
 ### Scenario 1: Radio Promoter (PRO Tier)
+
 **Before:** Generic PDF, adds header manually in Word
 **After:** Professional PDF with their logo, ready to send
 
 ### Scenario 2: PR Agency (AGENCY Tier)
+
 **Before:** Creates custom report in InDesign (2 hours)
 **After:** One-click export with agency branding (30 seconds)
 
 ### Scenario 3: Independent Artist (FREE Tier)
+
 **Before:** Shares messy spreadsheet with contacts
 **After:** Professional Audio Intel branded PDF
 
 ## Migration Path
 
 ### Existing Users
+
 - No action required - automatically get new design ✓
 - Existing exports remain accessible ✓
 - New exports use v2.0 design immediately ✓
 
 ### Tier Upgrades
+
 - FREE → PRO: Upload logo in settings
 - PRO → AGENCY: Same logo, more features
 - Logo persists across all future exports
@@ -303,6 +339,7 @@ Professional client-ready PDFs:
 ## Technical Implementation
 
 ### Code Changes
+
 ```typescript
 // BEFORE: Simple header function
 function addHeader(doc, title) {
@@ -332,6 +369,7 @@ function addPremiumHeader(doc, title, subtitle, whiteLabel) {
 ```
 
 ### Performance Impact
+
 - **Rendering time:** -5% faster (simpler graphics)
 - **File size:** -10% smaller (optimized elements)
 - **Memory usage:** Same (efficient PDF generation)
@@ -339,6 +377,7 @@ function addPremiumHeader(doc, title, subtitle, whiteLabel) {
 ## Success Metrics
 
 ### Target Goals
+
 - [ ] 90%+ users prefer new design over old
 - [ ] 50%+ PRO users upload custom logos within 30 days
 - [ ] 40%+ increase in "professional appearance" feedback
@@ -346,6 +385,7 @@ function addPremiumHeader(doc, title, subtitle, whiteLabel) {
 - [ ] 15%+ increase in PRO tier conversions (logo feature)
 
 ### Early Feedback (First Week)
+
 - "Finally looks professional enough for clients" ✅
 - "Love that I can add my agency logo" ✅
 - "Bold design stands out from generic tools" ✅
@@ -354,24 +394,28 @@ function addPremiumHeader(doc, title, subtitle, whiteLabel) {
 ## Rollout Plan
 
 ### Phase 1: Internal Testing (Week 1)
+
 - ✅ Generate sample PDFs with various content
 - ✅ Test across all tiers (FREE/PRO/AGENCY)
 - ✅ Verify logo upload functionality
 - ✅ Check file size and performance
 
 ### Phase 2: Beta Testing (Week 2)
+
 - [ ] 10 PRO users test custom logo feature
 - [ ] 5 AGENCY users test bulk exports
 - [ ] Collect feedback and iterate
 - [ ] Fix any rendering issues
 
 ### Phase 3: Full Launch (Week 3)
+
 - [ ] Enable for all users automatically
 - [ ] Announcement email with design showcase
 - [ ] Blog post: "New Professional PDF Exports"
 - [ ] Social media visual comparisons
 
 ### Phase 4: Feature Marketing (Week 4)
+
 - [ ] Promote custom logo feature to FREE users
 - [ ] Highlight in PRO tier benefits
 - [ ] Add to sales materials
@@ -380,12 +424,14 @@ function addPremiumHeader(doc, title, subtitle, whiteLabel) {
 ## Documentation Updates
 
 ### User-Facing Docs
+
 - [x] PDF Export Guide (complete)
 - [x] Logo Upload Tutorial (created)
 - [ ] Video walkthrough (pending)
 - [ ] FAQ section (pending)
 
 ### Developer Docs
+
 - [x] Technical API documentation
 - [x] White label configuration guide
 - [x] Color customization examples

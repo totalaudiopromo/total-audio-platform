@@ -28,7 +28,7 @@ export default function IntegrationsPage() {
     try {
       const response = await fetch('/api/integrations/gmail/status');
       const data = await response.json();
-      
+
       if (data.connected && data.connection) {
         setGmailConnection(data.connection);
       } else {
@@ -53,15 +53,17 @@ export default function IntegrationsPage() {
 
   const handleDisconnectGmail = async () => {
     if (!gmailConnection) return;
-    
-    const confirmed = confirm('Are you sure you want to disconnect Gmail? You won\'t be able to send emails directly from Pitch Generator.');
+
+    const confirmed = confirm(
+      "Are you sure you want to disconnect Gmail? You won't be able to send emails directly from Pitch Generator."
+    );
     if (!confirmed) return;
 
     try {
       const response = await fetch('/api/integrations/gmail/disconnect', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ connectionId: gmailConnection.id })
+        body: JSON.stringify({ connectionId: gmailConnection.id }),
       });
 
       if (response.ok) {
@@ -97,7 +99,9 @@ export default function IntegrationsPage() {
         <div className="glass-panel px-6 py-12 sm:px-10">
           <h1 className="text-3xl font-bold mb-4">Integrations</h1>
           <p className="text-gray-600 mb-6">Please sign in to manage your integrations.</p>
-          <a href="/auth/signin" className="cta-button">Sign In</a>
+          <a href="/auth/signin" className="cta-button">
+            Sign In
+          </a>
         </div>
       </div>
     );
@@ -109,7 +113,8 @@ export default function IntegrationsPage() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-4">Integrations</h1>
           <p className="text-gray-600">
-            Connect your favorite tools to streamline your pitch workflow. Send emails directly from Pitch Generator and never miss a reply.
+            Connect your favorite tools to streamline your pitch workflow. Send emails directly from
+            Pitch Generator and never miss a reply.
           </p>
         </div>
 
@@ -121,8 +126,17 @@ export default function IntegrationsPage() {
               <div className="flex items-center gap-4">
                 <div className="flex-shrink-0">
                   <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="#EA4335" />
-                    <path d="M22 6l-10 7L2 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      fill="#EA4335"
+                    />
+                    <path
+                      d="M22 6l-10 7L2 6"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </div>
                 <div>
@@ -154,7 +168,8 @@ export default function IntegrationsPage() {
           {/* Body */}
           <div className="p-6">
             <p className="text-gray-700 font-medium mb-6">
-              Send pitches directly from Pitch Generator and automatically track replies. No more copy-pasting!
+              Send pitches directly from Pitch Generator and automatically track replies. No more
+              copy-pasting!
             </p>
 
             {gmailConnection?.status === 'active' ? (
@@ -180,7 +195,9 @@ export default function IntegrationsPage() {
                 {/* Error message if any */}
                 {gmailConnection.status === 'error' && gmailConnection.error_message && (
                   <div className="bg-red-50 border-2 border-red-300 rounded-xl p-3">
-                    <p className="text-sm text-red-800 font-medium">{gmailConnection.error_message}</p>
+                    <p className="text-sm text-red-800 font-medium">
+                      {gmailConnection.error_message}
+                    </p>
                   </div>
                 )}
 
@@ -206,7 +223,7 @@ export default function IntegrationsPage() {
                     <li>• Professional email formatting</li>
                   </ul>
                 </div>
-                
+
                 <button
                   onClick={handleConnectGmail}
                   disabled={connecting}
@@ -237,7 +254,12 @@ export default function IntegrationsPage() {
               <div className="flex items-center gap-4">
                 <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
                   <rect x="3" y="3" width="18" height="18" rx="2" fill="#0F9D58" />
-                  <path d="M7 8h10M7 12h10M7 16h6" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                  <path
+                    d="M7 8h10M7 12h10M7 16h6"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
                 </svg>
                 <div>
                   <h3 className="text-xl font-black text-gray-900">Google Sheets</h3>
@@ -266,7 +288,12 @@ export default function IntegrationsPage() {
               <div className="flex items-center gap-4">
                 <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
                   <circle cx="12" cy="12" r="9" fill="#FFE01B" />
-                  <path d="M8 10h8M10 14h4" stroke="#241C15" strokeWidth="2" strokeLinecap="round" />
+                  <path
+                    d="M8 10h8M10 14h4"
+                    stroke="#241C15"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
                 </svg>
                 <div>
                   <h3 className="text-xl font-black text-gray-900">Mailchimp</h3>
@@ -293,4 +320,3 @@ export default function IntegrationsPage() {
     </div>
   );
 }
-

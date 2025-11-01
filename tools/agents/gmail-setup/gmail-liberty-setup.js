@@ -31,13 +31,13 @@ class GmailLibertySetup {
 
     // Simplified label structure - colours can be set manually in Gmail
     this.labels = [
-      { name: 'Active Campaigns' },     // Green
+      { name: 'Active Campaigns' }, // Green
       { name: 'Station Auto-Responses' }, // Grey
-      { name: 'Station Feedback' },    // Orange
-      { name: 'Needs Action' },        // Blue
-      { name: 'Completed' },           // Yellow
-      { name: 'Old Campaigns' },       // Red
-      { name: 'Agent' }                // Purple
+      { name: 'Station Feedback' }, // Orange
+      { name: 'Needs Action' }, // Blue
+      { name: 'Completed' }, // Yellow
+      { name: 'Old Campaigns' }, // Red
+      { name: 'Agent' }, // Purple
     ];
 
     // Simplified filter rules - one label per filter to avoid Gmail limits
@@ -47,37 +47,39 @@ class GmailLibertySetup {
         description: 'New Campaign Assignment - Needs Action',
         query: 'cc:chrisschofield@libertymusicpr.com (subject:R4 OR subject:R6) -subject:Re:',
         addLabels: ['Needs Action'],
-        markImportant: true
+        markImportant: true,
       },
 
       // New campaign assignment - active
       {
         description: 'New Campaign Assignment - Active',
         query: 'cc:chrisschofield@libertymusicpr.com (subject:R4 OR subject:R6) -subject:Re:',
-        addLabels: ['Active Campaigns']
+        addLabels: ['Active Campaigns'],
       },
 
       // Station auto-responses
       {
         description: 'Station Auto-Responses',
-        query: '(subject:"out of office" OR subject:"automatic reply" OR subject:"auto-reply" OR subject:"delivery status" OR subject:"will be away" OR subject:"currently away" OR subject:"autoreply") to:chrisschofield@libertymusicpr.com',
-        addLabels: ['Station Auto-Responses']
+        query:
+          '(subject:"out of office" OR subject:"automatic reply" OR subject:"auto-reply" OR subject:"delivery status" OR subject:"will be away" OR subject:"currently away" OR subject:"autoreply") to:chrisschofield@libertymusicpr.com',
+        addLabels: ['Station Auto-Responses'],
       },
 
       // Real station feedback
       {
         description: 'Real Station Feedback',
-        query: '(radio OR station OR presenter OR DJ OR producer) to:chrisschofield@libertymusicpr.com -subject:"out of office" -subject:"automatic reply" -subject:"auto-reply" -subject:"autoreply" -from:libertymusicpr.com',
+        query:
+          '(radio OR station OR presenter OR DJ OR producer) to:chrisschofield@libertymusicpr.com -subject:"out of office" -subject:"automatic reply" -subject:"auto-reply" -subject:"autoreply" -from:libertymusicpr.com',
         addLabels: ['Station Feedback'],
-        markImportant: true
+        markImportant: true,
       },
 
       // Weekly releases coordination
       {
         description: 'Weekly Releases',
         query: 'subject:"weekly releases" from:libertymusicpr.com',
-        addLabels: ['Agent']
-      }
+        addLabels: ['Agent'],
+      },
     ];
   }
 
@@ -94,8 +96,8 @@ class GmailLibertySetup {
           requestBody: {
             name: labelConfig.name,
             labelListVisibility: 'labelShow',
-            messageListVisibility: 'show'
-          }
+            messageListVisibility: 'show',
+          },
         });
         console.log(`✅ Created: ${labelConfig.name}`);
       } catch (error) {
@@ -153,13 +155,13 @@ class GmailLibertySetup {
           userId: 'me',
           requestBody: {
             criteria: {
-              query: rule.query
+              query: rule.query,
             },
             action: {
               addLabelIds: addLabelIds.length > 0 ? addLabelIds : undefined,
-              removeLabelIds: removeLabelIds.length > 0 ? removeLabelIds : undefined
-            }
-          }
+              removeLabelIds: removeLabelIds.length > 0 ? removeLabelIds : undefined,
+            },
+          },
         };
 
         if (rule.markImportant) {
@@ -168,7 +170,6 @@ class GmailLibertySetup {
 
         await this.gmail.users.settings.filters.create(filterRequest);
         console.log(`✅ Created filter: ${rule.description}`);
-
       } catch (error) {
         console.error(`❌ Failed to create filter "${rule.description}":`, error.message);
       }
@@ -217,8 +218,9 @@ class GmailLibertySetup {
       console.log('  🟡 COMPLETED - Finished campaigns (last 30 days)');
       console.log('  🔴 ARCHIVED - Old campaigns for reference');
       console.log('  🟣 AGENT - Processed by your radio promo agent');
-      console.log('\n💡 Campaigns automatically progress: Active → Completed (14 days) → Archived (30 days)');
-
+      console.log(
+        '\n💡 Campaigns automatically progress: Active → Completed (14 days) → Archived (30 days)'
+      );
     } catch (error) {
       console.error('❌ Setup failed:', error);
       throw error;
@@ -249,7 +251,6 @@ class GmailLibertySetup {
         console.log('⚠️  Some labels may be missing');
         return false;
       }
-
     } catch (error) {
       console.error('❌ Test failed:', error);
       return false;
@@ -275,7 +276,6 @@ class GmailLibertySetup {
       (filtersResponse.data.filter || []).forEach((filter, index) => {
         console.log(`  ${index + 1}. ${filter.criteria?.query || 'No query'}`);
       });
-
     } catch (error) {
       console.error('❌ Failed to list setup:', error);
     }
@@ -321,7 +321,6 @@ async function main() {
         console.log('');
         console.log('Example: node gmail-liberty-setup.js setup');
     }
-
   } catch (error) {
     console.error('❌ Command failed:', error.message);
     process.exit(1);

@@ -228,6 +228,7 @@ chrisschofield@libertymusicpr.com
 - [ ] Get artist socials to include
 
 **Send Priority**:
+
 1. **Anika Luna** (Home & Hosed) - SEND TODAY
 2. **Claire Mooney** (Music Director) - Send tomorrow or after Anika response
 3. **Triple R** - Send today/tomorrow
@@ -239,6 +240,7 @@ chrisschofield@libertymusicpr.com
 ## 🎯 Key Messaging Points
 
 **Use in ALL Australian pitches**:
+
 - ✅ Sydney-based artist (LOCAL!)
 - ✅ Triple J Home & Hosed support ("Yearn" in August)
 - ✅ Self-produced in bedroom studio (independent credibility)
@@ -246,6 +248,7 @@ chrisschofield@libertymusicpr.com
 - ✅ Empowerment narrative (relatable story)
 
 **Press Release Quotes to Reference**:
+
 - "Hypnotic electro-pop single that blends sensual atmospheres with raw emotional storytelling"
 - "Entirely self-written, recorded, and produced in her bedroom studio"
 - "One of Australia's most exciting emerging voices"
@@ -255,16 +258,19 @@ chrisschofield@libertymusicpr.com
 ## 📧 Follow-up Strategy
 
 **If Anika Luna responds positively**:
+
 - Send materials immediately
 - Mention in other pitches ("Home & Hosed is supporting this")
 - Ask about timeline for play
 
 **If no response after 3 days**:
+
 - One polite follow-up
 - Keep it brief
 - Reference Sydney local angle
 
 **General follow-up** (if needed after 5 days):
+
 ```
 Hi [Name],
 
@@ -287,6 +293,7 @@ Chris
 ## 💡 Strategic Notes
 
 **Why This Campaign Is Strong**:
+
 1. **Local artist angle** - KYARA is Sydney-based (huge for Australian radio)
 2. **Proven support** - Triple J Home & Hosed has already backed her
 3. **Authentic story** - Bedroom producer, self-sufficient, independent
@@ -294,12 +301,14 @@ Chris
 5. **Relatable narrative** - Empowerment anthem (broad appeal)
 
 **Timing**:
+
 - Release is TODAY (14th October)
 - Send Home & Hosed pitch IMMEDIATELY
 - Follow with others within 24-48 hours
 - Australian radio moves fast - strike while it's fresh
 
 **Success Metrics**:
+
 - Home & Hosed play = HUGE WIN (repeat support)
 - Broader Triple J rotation = Career-changing
 - Melbourne stations (RRR, PBS) = Credibility building

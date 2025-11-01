@@ -38,10 +38,7 @@ export async function GET(req: NextRequest) {
 
     if (error) {
       console.error('Error fetching pitches:', error);
-      return NextResponse.json(
-        { error: 'Failed to fetch usage data' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to fetch usage data' }, { status: 500 });
     }
 
     const currentUsage = pitches?.length || 0;
@@ -57,9 +54,6 @@ export async function GET(req: NextRequest) {
     });
   } catch (error) {
     console.error('Error in usage API:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

@@ -9,6 +9,7 @@
 ## Template 1: "[Genre] Radio Promotion UK - Complete Guide"
 
 ### Variables:
+
 - `{{GENRE}}`: electronic, indie, rock, pop, hip-hop, country, etc.
 - `{{STATION_COUNT}}`: Number of UK stations for genre
 - `{{AVG_RESPONSE_TIME}}`: Typical response timeframes
@@ -17,8 +18,8 @@
 ### SEO Structure:
 
 **Meta Title**: `{{GENRE}} Radio Promotion UK | Get Airplay on {{STATION_COUNT}}+ Stations`
-**Meta Description**: Complete guide to promoting `{{GENRE}}` music on UK radio. `{{STATION_COUNT}}+ targeted stations, proven submission strategies, `{{SUCCESS_RATE}}` placement rate.
-**URL**: `/blog/radio-promotion-uk-{{GENRE}}`
+**Meta Description**: Complete guide to promoting `{{GENRE}}` music on UK radio. `{{STATION_COUNT}}+ targeted stations, proven submission strategies, `{{SUCCESS_RATE}}`placement rate.
+**URL**:`/blog/radio-promotion-uk-{{GENRE}}`
 
 ### Content Template:
 
@@ -58,12 +59,14 @@ This complete guide covers everything you need to promote {{GENRE}} music on UK 
 ### National Stations
 
 **BBC Radio 1**
+
 - {{GENRE}} Programming: [DETAILS]
 - Key Shows: [SHOW_LIST]
 - Submission Process: [GUIDELINES]
 - Response Time: [TIMEFRAME]
 
 **BBC Radio 6 Music**
+
 - {{GENRE}} Programming: [DETAILS]
 - Key Presenters: [NAMES]
 - Submission Guidelines: [GUIDELINES]
@@ -84,21 +87,25 @@ This complete guide covers everything you need to promote {{GENRE}} music on UK 
 Manual research for a {{GENRE}} radio campaign takes 18+ hours:
 
 **Hour 1-4**: Finding {{GENRE}}-appropriate stations
+
 - Researching 300+ UK stations
 - Identifying {{GENRE}} programming
 - Understanding format restrictions
 
 **Hour 5-8**: Contact discovery
+
 - Finding music directors
 - Identifying presenter contacts
 - Verifying email accuracy
 
 **Hour 9-12**: Submission research
+
 - Understanding guidelines per station
 - Tracking submission windows
 - Researching genre preferences
 
 **Hour 13-18**: Data organisation
+
 - Compiling into spreadsheets
 - Cross-referencing information
 - Preparing pitch strategy
@@ -114,18 +121,21 @@ Manual research for a {{GENRE}} radio campaign takes 18+ hours:
 Upload your basic contact list. Audio Intel enriches with:
 
 **Station Intelligence**
+
 - Coverage area and listener demographics
 - {{GENRE}} programming schedule
 - Recent {{GENRE}} additions to playlist
 - Submission preferences for {{GENRE}} tracks
 
 **Contact Intelligence**
+
 - Verified email addresses
 - Genre preferences (specifically {{GENRE}})
 - Preferred submission formats
 - Response time expectations
 
 **Strategic Intelligence**
+
 - Best submission timing for {{GENRE}}
 - Pitch angle recommendations
 - Competition level assessment
@@ -142,6 +152,7 @@ Upload your basic contact list. Audio Intel enriches with:
 Most UK stations have specific {{GENRE}} slots:
 
 **Daytime vs Specialist**
+
 - Daytime: [GENRE_SUBTYPE] {{GENRE}} (commercial focus)
 - Evening: Full {{GENRE}} spectrum
 - Late night: Experimental {{GENRE}}
@@ -153,6 +164,7 @@ Most UK stations have specific {{GENRE}} slots:
 `New {{GENRE}} Release: [ARTIST] - [TRACK] ({{GENRE_SUBTYPE}})`
 
 **Body Structure**:
+
 1. Hook (Why this {{GENRE}} track stands out)
 2. Artist credentials ({{GENRE}}-specific achievements)
 3. Track details (BPM, key, {{GENRE}} subtype)
@@ -171,12 +183,14 @@ Most UK stations have specific {{GENRE}} slots:
 ### Research Approach
 
 **Before Audio Intel**:
+
 - Manual research: 22 hours
 - Contacts found: 38 (incomplete data)
 - Accuracy: ~60%
 - Ready to pitch: Week 4
 
 **With Audio Intel**:
+
 - Processing time: 3 minutes
 - Contacts enriched: 45 (complete data)
 - Accuracy: 94%
@@ -185,21 +199,25 @@ Most UK stations have specific {{GENRE}} slots:
 ### Campaign Results
 
 **Tier 1 Stations** (Perfect {{GENRE}} fit)
+
 - Targeted: 12 stations
 - Responses: 8 (67%)
 - Placements: 6 (50%)
 
 **Tier 2 Stations** (Good {{GENRE}} fit)
+
 - Targeted: 18 stations
 - Responses: 11 (61%)
 - Placements: 8 (44%)
 
 **Tier 3 Stations** (Possible {{GENRE}} fit)
+
 - Targeted: 15 stations
 - Responses: 6 (40%)
 - Placements: 4 (27%)
 
 **Total Results**:
+
 - Response rate: 56% (vs 8-12% industry average)
 - Placements: 18 of 45 (40%)
 - Combined reach: 6.2M listeners
@@ -233,21 +251,25 @@ Most UK stations have specific {{GENRE}} slots:
 ### Seasonal Patterns
 
 **Spring** (March-May)
+
 - Best for: [GENRE_CHARACTERISTICS]
 - Programming focus: [THEMES]
 - Submission windows: [DETAILS]
 
 **Summer** (June-August)
+
 - Best for: [GENRE_CHARACTERISTICS]
 - Festival tie-ins: [OPPORTUNITIES]
 - Programming changes: [NOTES]
 
 **Autumn** (September-November)
+
 - Best for: [GENRE_CHARACTERISTICS]
 - Back-to-school audience: [DEMOGRAPHICS]
 - Programming focus: [THEMES]
 
 **Winter** (December-February)
+
 - Best for: [GENRE_CHARACTERISTICS]
 - Holiday programming: [CONSIDERATIONS]
 - New year opportunities: [DETAILS]
@@ -261,6 +283,7 @@ Most UK stations have specific {{GENRE}} slots:
 Problem: Submitting dark {{GENRE}} to daytime commercial shows
 
 Solution: Understand {{GENRE}} subtype programming
+
 - Commercial {{GENRE}}: Daytime slots
 - Underground {{GENRE}}: Specialist shows
 - Experimental {{GENRE}}: Late night programming
@@ -272,6 +295,7 @@ Audio Intel automatically identifies appropriate {{GENRE}} slots.
 Problem: "Here's my {{GENRE}} track" (gets ignored)
 
 Solution: Reference station's {{GENRE}} programming
+
 - Recent {{GENRE}} playlist additions
 - {{GENRE}} show format and focus
 - Specific {{GENRE}} subtype they favour
@@ -283,6 +307,7 @@ Audio Intel provides this intelligence automatically.
 Problem: Late submissions miss {{GENRE}} programming deadlines
 
 Solution: Track {{GENRE}}-specific windows
+
 - Weekly {{GENRE}} shows have weekly windows
 - Festival season has early deadlines
 - Seasonal {{GENRE}} programming changes
@@ -296,11 +321,13 @@ Audio Intel alerts to submission timing.
 ### Manual Campaign Cost
 
 **DIY Approach**:
+
 - Research time: 18+ hours @ £50/hour = £900
 - Submission time: 12 hours @ £50/hour = £600
 - Total: £1,500 per campaign
 
 **Promoter Services**:
+
 - Basic {{GENRE}} campaign: £800-1,500
 - Comprehensive {{GENRE}} campaign: £2,000-4,000
 - National {{GENRE}} campaign: £5,000+
@@ -308,12 +335,14 @@ Audio Intel alerts to submission timing.
 ### Audio Intel Approach
 
 **Professional Plan**: £19/month
+
 - Unlimited {{GENRE}} station research
 - Automated intelligence gathering
 - Real-time data updates
 - Campaign tools included
 
 **Cost Per Campaign**:
+
 - £19/month ÷ 4 campaigns = £4.75
 - Time saved: 18 hours (£900 value)
 - ROI: 18,837% per campaign
@@ -325,6 +354,7 @@ Audio Intel alerts to submission timing.
 ### Step 1: Identify Target Stations
 
 Use Audio Intel to process:
+
 - National {{GENRE}} programmes
 - Regional {{GENRE}} shows
 - Specialist {{GENRE}} slots
@@ -333,6 +363,7 @@ Use Audio Intel to process:
 ### Step 2: Enrich Contact Data
 
 Upload basic contacts. Audio Intel enriches with:
+
 - {{GENRE}}-specific programming details
 - Submission guidelines per station
 - Genre preference matching
@@ -341,6 +372,7 @@ Upload basic contacts. Audio Intel enriches with:
 ### Step 3: Execute Campaign
 
 Use enriched intelligence to:
+
 - Craft {{GENRE}}-appropriate pitches
 - Time submissions optimally
 - Follow guidelines precisely
@@ -349,6 +381,7 @@ Use enriched intelligence to:
 ### Step 4: Track Results
 
 Monitor:
+
 - Response rates by station type
 - Placement success by {{GENRE}} subtype
 - Geographic coverage achieved
@@ -380,17 +413,20 @@ A: Audio Intel automatically identifies {{GENRE}} programming across all UK stat
 {{GENRE}} radio promotion in UK is highly accessible with proper research:
 
 **Success Factors**:
+
 - Accurate {{GENRE}}-appropriate targeting
 - Station-specific submission guidelines
 - Timing aligned with {{GENRE}} programming
 - Personalised pitches demonstrating research
 
 **Time Reality**:
+
 - Manual research: 18+ hours per campaign
 - Audio Intel: 2 minutes per campaign
 - Time saved: For relationship building and strategy
 
 **Results Achievable**:
+
 - 35-45 station campaign reach
 - 25-35% response rates
 - 15-25 successful placements
@@ -405,6 +441,7 @@ Ready to promote your {{GENRE}} music on UK radio?
 ---
 
 **Related Guides**:
+
 - [How to Get Played on BBC Radio 1 ({{GENRE}} Edition)]
 - [Regional Radio Strategy for {{GENRE}} Artists]
 - [{{GENRE}} Submission Guidelines: Complete Database]
@@ -418,6 +455,7 @@ Chris Schofield is a Brighton-based music producer (sadact) and radio promoter w
 ## Template 2: "Radio Promotion [City/Region] - Local Guide"
 
 ### Variables:
+
 - `{{CITY}}`: London, Manchester, Birmingham, Glasgow, etc.
 - `{{REGION}}`: Greater London, North West, Midlands, Scotland, etc.
 - `{{STATION_COUNT}}`: Number of stations in area
@@ -474,12 +512,14 @@ Chris Schofield is a Brighton-based music producer (sadact) and radio promoter w
 {{CITY}}-based artists have significant advantages:
 
 **Priority Consideration**:
+
 - Most {{REGION}} stations prioritise local artists
 - "{{CITY}} music" programming slots
 - Regional talent showcase opportunities
 - Local event tie-ins
 
 **Relationship Access**:
+
 - Easier to attend station visits
 - Local gig promotion partnerships
 - Face-to-face relationship building
@@ -488,6 +528,7 @@ Chris Schofield is a Brighton-based music producer (sadact) and radio promoter w
 ### Non-{{CITY}} Artists
 
 Can still target {{REGION}} stations by:
+
 - Emphasising any {{CITY}} connections (toured, recorded, etc.)
 - Targeting genre-specific shows (not local-only slots)
 - Demonstrating {{REGION}} audience engagement
@@ -502,16 +543,19 @@ Can still target {{REGION}} stations by:
 Manual research for {{CITY}} radio campaign:
 
 **Hour 1-3**: Station identification
+
 - Researching {{STATION_COUNT}}+ {{REGION}} stations
 - Understanding coverage areas
 - Identifying format types
 
 **Hour 4-6**: Contact discovery
+
 - Finding music directors
 - Researching presenter contacts
 - Understanding submission hierarchies
 
 **Hour 7-9**: Submission intelligence
+
 - Station-specific guidelines
 - Local music policies
 - Recent playlist patterns
@@ -523,6 +567,7 @@ Manual research for {{CITY}} radio campaign:
 Upload {{CITY}} station contacts:
 
 **Enriched Data Includes**:
+
 - Coverage area (specific {{REGION}} postcodes)
 - Local music policies and priorities
 - Submission processes per station
@@ -537,6 +582,7 @@ Upload {{CITY}} station contacts:
 ## {{CITY}} Radio Campaign Case Study
 
 **Artist Profile**:
+
 - Genre: [GENRE]
 - Location: {{CITY}}-based
 - Previous airplay: None
@@ -552,21 +598,25 @@ Upload {{CITY}} station contacts:
 ### Results
 
 **Tier 1 ({{CITY}}-focused local shows)**:
+
 - Stations: 8
 - Responses: 7 (88%)
 - Placements: 6 (75%)
 
 **Tier 2 ({{REGION}} commercial stations)**:
+
 - Stations: 12
 - Responses: 8 (67%)
 - Placements: 5 (42%)
 
 **Tier 3 (Genre-specific shows)**:
+
 - Stations: 6
 - Responses: 4 (67%)
 - Placements: 3 (50%)
 
 **Combined Results**:
+
 - Total reach: {{COMBINED_REACH}} weekly listeners
 - Response rate: 73%
 - Placement rate: 54%
@@ -581,6 +631,7 @@ Upload {{CITY}} station contacts:
 {{REGION}} stations actively support local music:
 
 **{{STATION_NAME}} Introducing**:
+
 - Weekly {{CITY}} artist spotlight
 - Submission: [PROCESS]
 - Selection criteria: [DETAILS]
@@ -590,6 +641,7 @@ Upload {{CITY}} station contacts:
 ### {{CITY}} Events & Promotions
 
 Leverage station events:
+
 - [CITY] Music Week tie-ins
 - Station-sponsored gigs
 - {{REGION}} festival partnerships
@@ -602,6 +654,7 @@ Leverage station events:
 **[CTA Button]** Target {{STATION_COUNT}}+ {{CITY}} Stations Now
 
 Free trial includes:
+
 - All {{REGION}} station contacts
 - {{CITY}}-specific intelligence
 - Local music policy data
@@ -612,6 +665,7 @@ No card required. 10 enrichments free.
 ---
 
 **Related {{CITY}} Guides**:
+
 - [Top {{CITY}} Radio Stations for Independent Artists]
 - [{{REGION}} Music Scene: Complete Promotion Guide]
 - [How to Get Played on {{CITY}} Radio]
@@ -625,6 +679,7 @@ Chris Schofield promotes music to UK radio including {{REGION}} stations. Based 
 ## Template 3: "[Station Type] Submission Guidelines - Complete Database"
 
 ### Variables:
+
 - `{{STATION_TYPE}}`: BBC, Commercial, Community, Student, Online
 - `{{COUNT}}`: Number of stations in type
 - `{{SUBMISSION_COMPLEXITY}}`: Difficulty rating
@@ -643,23 +698,27 @@ Chris Schofield promotes music to UK radio including {{REGION}} stations. Based 
 ### Priority URL Generation (Phase 1: 50 URLs)
 
 **Genre-Based**:
+
 - /blog/radio-promotion-uk-electronic (10 genres × 1 = 10 URLs)
 - /blog/radio-promotion-uk-indie
 - /blog/radio-promotion-uk-rock
 - etc.
 
 **Location-Based**:
+
 - /blog/radio-promotion-london (20 cities × 1 = 20 URLs)
 - /blog/radio-promotion-manchester
 - /blog/radio-promotion-birmingham
 - etc.
 
 **Station-Type Based**:
+
 - /blog/bbc-radio-submission-guidelines-uk (5 types × 1 = 5 URLs)
 - /blog/commercial-radio-submission-guidelines-uk
 - etc.
 
 **Genre + Location Combinations**:
+
 - /blog/electronic-music-radio-london (3 genres × 5 cities = 15 URLs)
 - /blog/indie-music-radio-manchester
 - etc.
@@ -667,12 +726,14 @@ Chris Schofield promotes music to UK radio including {{REGION}} stations. Based 
 ### Content Generation Automation
 
 **Data Sources**:
+
 1. UK radio station database (Ofcom)
 2. Genre classification system
 3. Regional coverage mapping
 4. Historical submission data
 
 **Template Variables from Database**:
+
 - Station counts (live queries)
 - Coverage populations (census data)
 - Genre programming (manual curation)
@@ -681,16 +742,19 @@ Chris Schofield promotes music to UK radio including {{REGION}} stations. Based 
 ### SEO Strategy
 
 **Internal Linking**:
+
 - Genre pages link to relevant location pages
 - Location pages link to genre variations
 - All pages link to Audio Intel product pages
 
 **External Authority**:
+
 - Link to Ofcom station database
 - Reference BBC submission guidelines
 - Cite music industry statistics
 
 **User Intent Optimization**:
+
 - How-to content (submission guides)
 - Research content (station databases)
 - Strategy content (campaign planning)
@@ -701,19 +765,23 @@ Chris Schofield promotes music to UK radio including {{REGION}} stations. Based 
 ## Content Calendar for pSEO
 
 ### Month 1: Foundation (10 URLs)
+
 - Top 5 genres (electronic, indie, rock, pop, hip-hop)
 - Top 5 cities (London, Manchester, Birmingham, Glasgow, Leeds)
 
 ### Month 2: Expansion (20 URLs)
+
 - Next 5 genres
 - Next 10 cities
 - 5 station-type guides
 
 ### Month 3: Combinations (20 URLs)
+
 - Genre + City combinations
 - High-volume keyword targets
 
 ### Ongoing: Updates
+
 - Monthly refresh of statistics
 - Quarterly content audits
 - Seasonal campaign guides

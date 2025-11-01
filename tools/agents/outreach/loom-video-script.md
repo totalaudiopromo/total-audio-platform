@@ -10,6 +10,7 @@
 ## 🎬 Video Structure
 
 ### Opening (5 seconds)
+
 ```
 [Show your face on camera]
 
@@ -18,6 +19,7 @@ BBC Radio 1 contacts for a campaign."
 ```
 
 ### Problem (5 seconds)
+
 ```
 [Screen share: Chaotic Excel spreadsheet with incomplete contact data]
 
@@ -26,6 +28,7 @@ hours of manual research."
 ```
 
 ### Solution Demo (40 seconds)
+
 ```
 [Screen share: Audio Intel dashboard]
 
@@ -50,6 +53,7 @@ to pitch BBC Radio 1."
 ```
 
 ### CTA (10 seconds)
+
 ```
 [Show pricing page]
 
@@ -67,6 +71,7 @@ Try it free at intel.totalaudiopromo.com"
 ## 📋 Recording Checklist
 
 ### Pre-Recording
+
 - [ ] Clean up Audio Intel dashboard (no test data)
 - [ ] Prepare BBC Radio 1 contact CSV (5 contacts, names only)
 - [ ] Test enrichment flow (make sure it works perfectly)
@@ -77,22 +82,26 @@ Try it free at intel.totalaudiopromo.com"
 ### Recording Tools
 
 **Option 1: Loom (Easiest)**
+
 - Free plan: Unlimited 5-min videos
 - Chrome extension or desktop app
 - Automatic transcription
 - Easy sharing links
 
 **Option 2: Screen recording (iOS/Mac)**
+
 - QuickTime Player (Mac): File → New Screen Recording
 - iPhone: Built-in screen recorder
 - Upload to YouTube manually
 
 **Option 3: OBS Studio (Free, professional)**
+
 - More control over layout
 - Better quality
 - Steeper learning curve
 
 ### During Recording
+
 - [ ] Smile when showing your face (authentic, not salesy)
 - [ ] Speak naturally (like talking to a mate, not corporate)
 - [ ] Show REAL enrichment (not fake demo data)
@@ -100,6 +109,7 @@ Try it free at intel.totalaudiopromo.com"
 - [ ] Clear CTA at end ("Try it free: intel.totalaudiopromo.com")
 
 ### Post-Recording
+
 - [ ] Watch it back (does it flow naturally?)
 - [ ] Add YouTube title: "Audio Intel Demo - BBC Radio 1 Contact Research"
 - [ ] Upload as "Unlisted" (not public, only via link)
@@ -112,6 +122,7 @@ Try it free at intel.totalaudiopromo.com"
 ## 🎯 Script Variations (Pick One)
 
 ### Version 1: Time Savings Focus (60 sec)
+
 ```
 [Face cam] "I'm Chris. Last month I spent 15 hours researching contacts
 for a BBC Radio 1 pitch."
@@ -135,6 +146,7 @@ required. Unlimited for £19/month."
 ```
 
 ### Version 2: Problem → Solution (60 sec)
+
 ```
 [Face cam] "If you're a radio promoter, you know this pain..."
 
@@ -156,6 +168,7 @@ socials, validated."
 ```
 
 ### Version 3: Social Proof Heavy (60 sec)
+
 ```
 [Face cam] "I'm Chris. I've pitched to BBC Radio 1, Spotify editorial,
 Radio X using Audio Intel."
@@ -181,24 +194,28 @@ team."
 ## 🎬 Production Tips
 
 ### Audio Quality (Critical)
+
 - Use headphones with built-in mic (AirPods are fine)
 - Record in quiet room
 - Speak clearly but naturally
 - Test audio levels before full recording
 
 ### Visual Quality (Important)
+
 - Good lighting (face camera)
 - Clean desktop (no random windows)
 - Full screen browser (hide bookmarks bar)
 - 1080p resolution minimum
 
 ### Editing (Optional but Recommended)
+
 - Cut long pauses
 - Speed up enrichment progress bar (if it takes 20+ seconds)
 - Add text overlay: "intel.totalaudiopromo.com" at end
 - Background music (optional, keep subtle)
 
 ### Authenticity (Most Important)
+
 - Don't sound like a sales person
 - Talk like you're explaining to a mate
 - Show REAL data (BBC Radio 1 contacts are impressive)
@@ -211,18 +228,21 @@ team."
 ### A/B Test These Versions
 
 **Version A: Short (30 sec)**
+
 - Just enrichment demo
 - No face cam
 - Pure product demo
 - Might convert better for "show me don't tell me" people
 
 **Version B: Long (90 sec)**
+
 - Include your story (sadact, BBC Radio 1 pitch)
 - More social proof
 - Personality-driven
 - Might convert better for "I need to trust you" people
 
 **Version C: Tutorial Style (2 min)**
+
 - Full walkthrough
 - Upload, enrich, export, how to use
 - For people who want complete understanding
@@ -235,6 +255,7 @@ team."
 ## 🔗 Where to Embed This Video
 
 ### Primary Locations
+
 1. **Audio Intel Homepage** (above the fold)
    - Autoplay (muted)
    - "Watch demo" button
@@ -266,17 +287,20 @@ team."
 ## ✅ Success Metrics
 
 ### Video Performance (Track These)
+
 - Views (how many people watch)
 - Watch time (do they finish it?)
 - Click-through rate (do they go to Audio Intel?)
 - Signup rate (do they try free tier?)
 
 ### Good Benchmarks
+
 - 50%+ watch to completion = good hook
 - 30%+ click to Audio Intel = strong CTA
 - 20%+ signup after watching = product-market fit
 
 ### If Metrics Are Low
+
 - Views but no completions → Hook isn't strong enough
 - Completions but no clicks → CTA isn't clear
 - Clicks but no signups → Landing page is broken or free tier isn't appealing
@@ -286,18 +310,21 @@ team."
 ## 🎯 This Weekend's Task
 
 **Saturday (15 minutes):**
+
 - Set up Loom (free account)
 - Prepare BBC Radio 1 contact CSV
 - Test enrichment flow
 - Record Version 2 (problem → solution, 60 sec)
 
 **Sunday (15 minutes):**
+
 - Watch recording
 - Re-record if needed (aim for one take)
 - Upload to YouTube (unlisted)
 - Embed on Audio Intel homepage
 
 **Next Monday:**
+
 - Send first 10 cold emails with video link
 - Track: views, clicks, signups
 - Optimize based on data

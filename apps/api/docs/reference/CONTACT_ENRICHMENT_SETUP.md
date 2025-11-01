@@ -182,11 +182,11 @@ To add support for new radio stations, edit `src/services/airtableContactEnrichm
 
 ## 📋 Scripts Overview
 
-| Script | Purpose | Mode |
-|--------|---------|------|
-| `demo-contact-enrichment.js` | Show how enrichment works | Demo |
-| `test-contact-enrichment.js` | Preview mode (no changes) | Preview |
-| `test-contact-enrichment-live.js` | Live mode (updates Airtable) | Live |
+| Script                            | Purpose                      | Mode    |
+| --------------------------------- | ---------------------------- | ------- |
+| `demo-contact-enrichment.js`      | Show how enrichment works    | Demo    |
+| `test-contact-enrichment.js`      | Preview mode (no changes)    | Preview |
+| `test-contact-enrichment-live.js` | Live mode (updates Airtable) | Live    |
 
 ## 🎯 Use Cases
 
@@ -224,4 +224,4 @@ To add support for new radio stations, edit `src/services/airtableContactEnrichm
 
 ---
 
-**Need Help?** Check the error logs or add new station mappings to expand coverage. 
+**Need Help?** Check the error logs or add new station mappings to expand coverage.

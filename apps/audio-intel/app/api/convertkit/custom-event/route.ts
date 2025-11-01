@@ -24,14 +24,16 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: 'Custom event tracked successfully'
+      message: 'Custom event tracked successfully',
     });
-
   } catch (error) {
     console.error('ConvertKit event tracking error:', error);
-    return NextResponse.json({
-      error: 'Event tracking failed',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Event tracking failed',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }

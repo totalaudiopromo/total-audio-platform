@@ -19,21 +19,23 @@ This sets up 5 automation agents that run automatically with **zero monthly cost
 
 ## 📋 What Gets Automated (All Free)
 
-| Agent | Schedule | Time Saved | Cost |
-|-------|----------|------------|------|
-| **Gmail Autopilot** | Hourly | 2-3 hrs/week | £0 |
-| **Social Calendar** | Weekly Sun 8pm | 5-8 hrs/week | £0 |
-| **Newsletter Gen** | Weekly Mon 9am | 3-4 hrs/week | £0 |
-| **Data Cleanup** | Weekly Sun 11pm | 1-2 hrs/week | £0 |
-| **Station Discovery** | Weekly Tue 9am | 4-6 hrs/week | £0 |
-| **TOTAL** | - | **15-23 hrs/week** | **£0** |
+| Agent                 | Schedule        | Time Saved         | Cost   |
+| --------------------- | --------------- | ------------------ | ------ |
+| **Gmail Autopilot**   | Hourly          | 2-3 hrs/week       | £0     |
+| **Social Calendar**   | Weekly Sun 8pm  | 5-8 hrs/week       | £0     |
+| **Newsletter Gen**    | Weekly Mon 9am  | 3-4 hrs/week       | £0     |
+| **Data Cleanup**      | Weekly Sun 11pm | 1-2 hrs/week       | £0     |
+| **Station Discovery** | Weekly Tue 9am  | 4-6 hrs/week       | £0     |
+| **TOTAL**             | -               | **15-23 hrs/week** | **£0** |
 
 ---
 
 ## 🎯 What Each Agent Does
 
 ### 1. Gmail Autopilot (Hourly)
+
 **Automatically organizes your Gmail:**
+
 - Otter AI emails → Personal Tools folder
 - Gemini emails → Personal Tools folder
 - WARM marketing → Marketing Junk (archived + mark read)
@@ -46,13 +48,16 @@ This sets up 5 automation agents that run automatically with **zero monthly cost
 ---
 
 ### 2. Social Media Calendar (Weekly Sunday 8pm)
+
 **Generates 4-week content calendar:**
+
 - LinkedIn posts
 - Twitter threads
 - Bluesky posts
 - Threads posts
 
 **Outputs**:
+
 - `CONTENT_CALENDAR.csv` → Import to Buffer/Hootsuite
 - `CONTENT_CALENDAR.md` → Human readable schedule
 - `CONTENT_CALENDAR.json` → API integration ready
@@ -63,7 +68,9 @@ This sets up 5 automation agents that run automatically with **zero monthly cost
 ---
 
 ### 3. Newsletter Generator (Weekly Monday 9am)
+
 **Auto-generates "The Unsigned Advantage" newsletter:**
+
 - Fetches music industry news
 - AI-powered content generation
 - Template-based formatting
@@ -75,7 +82,9 @@ This sets up 5 automation agents that run automatically with **zero monthly cost
 ---
 
 ### 4. Data Cleanup (Weekly Sunday 11pm)
+
 **Cleans up Airtable contacts:**
+
 - Removes duplicate contacts
 - Flags invalid emails
 - Archives low-quality entries
@@ -86,7 +95,9 @@ This sets up 5 automation agents that run automatically with **zero monthly cost
 ---
 
 ### 5. Station Discovery (Weekly Tuesday 9am)
+
 **Discovers new radio stations:**
+
 - Queries WARM API for new stations
 - Extracts contact information
 - Identifies station format/genres
@@ -99,15 +110,18 @@ This sets up 5 automation agents that run automatically with **zero monthly cost
 ## ⚠️ What's NOT Automated (Costs Money)
 
 ### Contact Enrichment - MANUAL TRIGGER ONLY
+
 **Cost**: £3 per run (~1000 contacts)
 **Why manual**: You control when to spend money
 
 **When to run**:
+
 - Before big Audio Intel campaigns
 - When you have budget for enrichment
 - Weekly for high-value contacts
 
 **How to run**:
+
 ```bash
 cd ~/workspace/active/total-audio-platform/tools/agents/radio-promo
 node enrich-all-contacts.js
@@ -118,21 +132,25 @@ node enrich-all-contacts.js
 ## 📅 Your New Weekly Schedule
 
 **Monday 9am**:
+
 - Check email: Newsletter draft ready
 - Review draft → Send via ConvertKit
 - Time: 15 minutes (vs 3-4 hours writing)
 
 **Tuesday 9am**:
+
 - Check email: Station discovery report
 - Review findings → Import to Airtable
 - Time: 10 minutes (vs 2-3 hours research)
 
 **Sunday 8pm**:
+
 - Check email: Social calendar ready
 - Download CSV → Upload to Buffer
 - Time: 5 minutes (vs 5-8 hours planning)
 
 **Every Hour**:
+
 - Gmail automatically organized
 - Zero manual work required
 
@@ -143,11 +161,13 @@ node enrich-all-contacts.js
 ## 🔍 Monitoring Your Automation
 
 ### Check Cron Jobs
+
 ```bash
 crontab -l | grep "Total Audio"
 ```
 
 ### View Logs
+
 ```bash
 # All logs
 ls -la ~/.total-audio-logs/
@@ -163,6 +183,7 @@ tail -f ~/.total-audio-logs/newsletter.log
 ```
 
 ### Check Agent Status
+
 ```bash
 # View all status files
 ls -la ~/.total-audio-status/
@@ -178,12 +199,14 @@ cat ~/.total-audio-status/contact-enrichment-status.json | jq
 Want to test agents before setting up cron?
 
 ### Test Gmail Autopilot
+
 ```bash
 cd ~/workspace/active/total-audio-platform/tools/agents/gmail-setup
 node liberty-autopilot.js run
 ```
 
 ### Test Social Calendar
+
 ```bash
 cd ~/workspace/active/total-audio-platform/tools/agents/active
 node social-media-scheduler.js generate
@@ -193,6 +216,7 @@ ls -la ~/workspace/active/total-audio-platform/apps/audio-intel/social-content/C
 ```
 
 ### Test Newsletter
+
 ```bash
 cd ~/workspace/active/total-audio-platform/tools/agents/core-agents/content
 node newsletter-automation-agent.js
@@ -205,6 +229,7 @@ node newsletter-automation-agent.js
 ## 🛠️ Troubleshooting
 
 ### Agent Not Running?
+
 ```bash
 # Check if cron is running
 crontab -l
@@ -214,6 +239,7 @@ tail -50 ~/.total-audio-logs/[agent-name].log
 ```
 
 ### Gmail Autopilot Failing?
+
 ```bash
 # Check OAuth tokens
 ls -la ~/workspace/active/total-audio-platform/tools/agents/radio-promo/gmail-token.json
@@ -224,6 +250,7 @@ cd ~/workspace/active/total-audio-platform/tools/agents
 ```
 
 ### Social Calendar Empty?
+
 ```bash
 # Check content library exists
 ls -la ~/workspace/active/total-audio-platform/apps/audio-intel/social-content/
@@ -238,6 +265,7 @@ node social-media-scheduler.js generate
 ## 📊 Success Metrics
 
 **Week 1** (After Setup):
+
 - ✅ 5 agents running automatically
 - ✅ Gmail organized hourly
 - ✅ Social calendar generated weekly
@@ -246,6 +274,7 @@ node social-media-scheduler.js generate
 - ✅ £0 monthly costs
 
 **Week 4** (Fully Integrated):
+
 - ✅ Zero manual email sorting
 - ✅ Social content pre-planned for month
 - ✅ Newsletter on autopilot
@@ -262,6 +291,7 @@ Once automation is running, build the Command Centre dashboard:
 **Location**: `apps/command-centre/app/agents/page.tsx`
 
 **Shows**:
+
 - Agent status (last run, next run)
 - Time saved this week
 - Automation health
@@ -276,14 +306,18 @@ Once automation is running, build the Command Centre dashboard:
 ## 💡 Pro Tips
 
 ### Optimize Gmail Autopilot
+
 Add your own email patterns:
+
 ```javascript
 // Edit: tools/agents/gmail-setup/liberty-autopilot.js
 // Add custom filters for your workflow
 ```
 
 ### Customize Social Calendar
+
 Update content library:
+
 ```bash
 # Edit content files:
 apps/audio-intel/social-content/RADIO_PROMOTER_LINKEDIN_POSTS.md
@@ -292,7 +326,9 @@ apps/audio-intel/social-content/BLUESKY_THREADS_CONTENT.md
 ```
 
 ### Newsletter Topics
+
 Customize news sources:
+
 ```javascript
 // Edit: tools/agents/core-agents/content/newsletter-automation-agent.js
 // Add your industry sources
@@ -313,6 +349,7 @@ Customize news sources:
 ## 💰 When to Add Paid Automation
 
 **After £500/month recurring revenue**:
+
 - Contact enrichment (daily automated)
 - Platform API integrations (Twitter, LinkedIn)
 - Perplexity for advanced research

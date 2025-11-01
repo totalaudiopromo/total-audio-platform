@@ -16,15 +16,15 @@ export default function DebugContent() {
       console.log('🔄 Testing hybrid content...');
       const response = await fetch('/api/hybrid-content', {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
-      
+
       console.log('Response status:', response.status);
-      
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
-      
+
       const result = await response.json();
       console.log('Hybrid data:', result);
       setData(result);
@@ -54,7 +54,7 @@ export default function DebugContent() {
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-2xl font-bold mb-4">Hybrid Content Debug</h1>
-        
+
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
             <h3 className="text-red-800 font-semibold">Error:</h3>
@@ -67,7 +67,9 @@ export default function DebugContent() {
             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
               <h3 className="text-green-800 font-semibold mb-2">Success!</h3>
               <p className="text-green-700">Found {data.posts?.length || 0} posts</p>
-              <p className="text-green-700">Sources: {data.sources?.notion || 0} Notion, {data.sources?.local || 0} Local</p>
+              <p className="text-green-700">
+                Sources: {data.sources?.notion || 0} Notion, {data.sources?.local || 0} Local
+              </p>
             </div>
 
             {data.posts && data.posts.length > 0 && (
@@ -88,7 +90,10 @@ export default function DebugContent() {
                     </p>
                     <div className="flex flex-wrap gap-1">
                       {post.hashtags.slice(0, 3).map((tag: string, i: number) => (
-                        <span key={i} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                        <span
+                          key={i}
+                          className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"
+                        >
                           {tag}
                         </span>
                       ))}
@@ -96,7 +101,9 @@ export default function DebugContent() {
                   </div>
                 ))}
                 {data.posts.length > 3 && (
-                  <p className="text-sm text-gray-500">... and {data.posts.length - 3} more posts</p>
+                  <p className="text-sm text-gray-500">
+                    ... and {data.posts.length - 3} more posts
+                  </p>
                 )}
               </div>
             )}

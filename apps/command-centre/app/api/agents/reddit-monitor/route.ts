@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   // Verify cron secret
@@ -9,14 +9,14 @@ export async function POST(request: NextRequest) {
 
   try {
     console.log('🤖 Starting Reddit monitoring sweep...');
-    
+
     // Reddit monitoring configuration
     const subreddits = [
       'WeAreTheMusicMakers',
-      'MusicMarketing', 
+      'MusicMarketing',
       'IndieHeads',
       'UKMusic',
-      'MusicProduction'
+      'MusicProduction',
     ];
 
     const results = {
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
       high_value_opportunities: 0,
       responses_generated: 0,
       leads_captured: 0,
-      alerts_sent: 0
+      alerts_sent: 0,
     };
 
     // In a real implementation, this would:
@@ -50,14 +50,16 @@ export async function POST(request: NextRequest) {
       agent: 'Reddit Monitor',
       action: 'Autonomous reddit surveillance completed',
       results,
-      next_run: 'In 4 hours'
+      next_run: 'In 4 hours',
     });
-
   } catch (error) {
     console.error('❌ Reddit monitoring failed:', error);
-    return NextResponse.json({
-      error: 'Reddit monitoring failed',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Reddit monitoring failed',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }

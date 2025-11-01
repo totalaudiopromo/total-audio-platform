@@ -15,11 +15,13 @@
 **Tracker Brand**: PURPLE (#7C3AED, purple-600)
 
 **Violations Summary**:
+
 - **Blue colours** (from Audio Intel): 140 instances
 - **Amber colours** (from Pitch Generator): 2 instances
 - **Affected files**: 93 files across components, pages, and styles
 
 **Critical Files**:
+
 - `tailwind.config.ts` - Blue colours in theme (#1E88E5, #1976D2)
 - `components/layout/Sidebar.tsx` - 7 blue violations
 - `components/layout/Header.tsx` - 2 blue violations
@@ -28,6 +30,7 @@
 - `app/blog/*` - Multiple PSEO pages affected
 
 **Fix Required**:
+
 - Run global find/replace for blue-600 → purple-600
 - Run global find/replace for blue-700 → purple-700
 - Update tailwind.config.ts theme colours
@@ -66,6 +69,7 @@
    - Unknown types not assignable
 
 **Fix Priority**:
+
 1. Fix Supabase client usage (await getSupabaseClient())
 2. Create or install missing UI components
 3. Add proper date validation in analytics
@@ -79,6 +83,7 @@
 **Impact**: Cannot run code quality checks
 
 **Error**:
+
 ```
 Cannot find module 'synckit'
 Require stack: eslint-plugin-prettier/eslint-plugin-prettier.js
@@ -96,11 +101,13 @@ Require stack: eslint-plugin-prettier/eslint-plugin-prettier.js
 **Configuration**: `playwright.config.js`
 
 **Devices Tested**:
+
 - Desktop Chrome
 - iPhone 13 (Mobile Safari)
 - Galaxy S9+ (Mobile Chrome)
 
 **Test Coverage**:
+
 - Landing page user journey (195 lines)
 - Navigation flow tests
 - Accessibility checks
@@ -108,10 +115,12 @@ Require stack: eslint-plugin-prettier/eslint-plugin-prettier.js
 - Responsive layout validation
 
 **Test Files**:
+
 - `tests/user-journey.spec.js` - Comprehensive landing page tests
 - `tests/e2e/auth.test.js` - Authentication flow tests
 
 **Improvements Needed**:
+
 - Add dashboard mobile tests (compare to Audio Intel's 21 UX issues resolved)
 - Add campaign creation mobile tests
 - Add analytics mobile tests
@@ -125,9 +134,11 @@ Require stack: eslint-plugin-prettier/eslint-plugin-prettier.js
 **File**: `vercel.json`
 
 **Current Setup**:
+
 - Cron job configured: `/api/cron/sync-integrations` (every 15 min)
 
 **Missing**:
+
 - Build configuration
 - Environment variable documentation
 - Framework preset specification
@@ -135,6 +146,7 @@ Require stack: eslint-plugin-prettier/eslint-plugin-prettier.js
 
 **Comparison to Audio Intel**:
 Audio Intel has comprehensive vercel.json with:
+
 - Framework preset
 - Build overrides
 - Install command
@@ -151,6 +163,7 @@ Audio Intel has comprehensive vercel.json with:
 **Added to package.json**: `npm run check:colours`
 
 **Features**:
+
 - Validates purple brand colours
 - Detects forbidden blue/amber colours
 - Provides detailed violation reports
@@ -166,6 +179,7 @@ Audio Intel has comprehensive vercel.json with:
 **Status**: Tailwind v4 correctly configured
 
 **Validation**:
+
 - Correct `@import "tailwindcss";` syntax
 - No v3 legacy imports
 - `@theme {}` block present
@@ -249,11 +263,13 @@ Audio Intel has comprehensive vercel.json with:
 **Current Status**: 60% Ready
 
 ### Blockers to Launch:
+
 - ❌ 38 TypeScript errors (deployment blocker)
 - ❌ 142 colour violations (brand consistency)
 - ❌ Missing dependencies (tooling broken)
 
 ### Ready for Launch:
+
 - ✅ Mobile testing infrastructure
 - ✅ Brand validation system
 - ✅ Tailwind v4 configuration
@@ -261,6 +277,7 @@ Audio Intel has comprehensive vercel.json with:
 - ✅ Campaign Intelligence AI
 
 ### Estimated Time to Launch Ready:
+
 **6-8 hours of focused development work**
 
 ---

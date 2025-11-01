@@ -4,7 +4,7 @@
  * Ported from tracker app
  */
 
-import { createClient as createServerClient } from '@/lib/supabase-server';
+import { createClient as createServerClient } from '@total-audio/core-db/server';
 import { nanoid } from 'nanoid';
 import crypto from 'crypto';
 
@@ -13,10 +13,7 @@ export type IntegrationType = 'gmail' | 'google_sheets' | 'mailchimp' | 'airtabl
 // Helper function to generate PKCE code challenge
 function generatePKCE() {
   const codeVerifier = nanoid(64);
-  const codeChallenge = crypto
-    .createHash('sha256')
-    .update(codeVerifier)
-    .digest('base64url');
+  const codeChallenge = crypto.createHash('sha256').update(codeVerifier).digest('base64url');
 
   return { codeVerifier, codeChallenge };
 }
@@ -46,7 +43,7 @@ const OAUTH_CONFIGS: Record<IntegrationType, Partial<OAuthConfig>> = {
     scopes: [
       'https://www.googleapis.com/auth/gmail.send',
       'https://www.googleapis.com/auth/gmail.readonly',
-      'https://www.googleapis.com/auth/gmail.modify'
+      'https://www.googleapis.com/auth/gmail.modify',
     ],
   },
   google_sheets: {
@@ -54,7 +51,7 @@ const OAUTH_CONFIGS: Record<IntegrationType, Partial<OAuthConfig>> = {
     tokenUrl: 'https://oauth2.googleapis.com/token',
     scopes: [
       'https://www.googleapis.com/auth/spreadsheets',
-      'https://www.googleapis.com/auth/drive.file'
+      'https://www.googleapis.com/auth/drive.file',
     ],
   },
   mailchimp: {
@@ -78,23 +75,24 @@ export class OAuthHandler {
   async initiateOAuth(integrationType: IntegrationType, userId: string): Promise<string> {
     const config = this.getOAuthConfig(integrationType);
     const { codeVerifier, codeChallenge } = generatePKCE();
-    
+
     // Generate state token for CSRF protection
     const state = nanoid(32);
-    
+
     // Store state and code verifier in session storage
-    const { error: storeError } = await this.supabase
-      .from('integration_connections')
-      .upsert({
+    const { error: storeError } = await this.supabase.from('integration_connections').upsert(
+      {
         user_id: userId,
         integration_type: integrationType,
         connection_name: `${integrationType}_oauth_temp`,
         access_token: JSON.stringify({ state, codeVerifier }),
         status: 'disconnected',
         created_at: new Date().toISOString(),
-      }, {
-        onConflict: 'user_id,integration_type'
-      });
+      },
+      {
+        onConflict: 'user_id,integration_type',
+      }
+    );
 
     if (storeError) {
       throw new Error(`Failed to store OAuth state: ${storeError.message}`);
@@ -145,13 +143,13 @@ export class OAuthHandler {
       }
 
       const config = this.getOAuthConfig(integrationType);
-      
+
       // Exchange code for tokens
       const tokenResponse = await fetch(config.tokenUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json',
+          Accept: 'application/json',
         },
         body: new URLSearchParams({
           client_id: config.clientId,
@@ -169,28 +167,31 @@ export class OAuthHandler {
       }
 
       const tokens: OAuthTokens = await tokenResponse.json();
-      
+
       // Calculate token expiry
-      const expiresAt = tokens.expires_in 
-        ? new Date(Date.now() + (tokens.expires_in * 1000) - (5 * 60 * 1000)) // 5 min buffer
+      const expiresAt = tokens.expires_in
+        ? new Date(Date.now() + tokens.expires_in * 1000 - 5 * 60 * 1000) // 5 min buffer
         : null;
 
       // Store connection
       const { data: connection, error: storeError } = await this.supabase
         .from('integration_connections')
-        .upsert({
-          user_id: userId,
-          integration_type: integrationType,
-          connection_name: `${integrationType}_connection`,
-          access_token: tokens.access_token,
-          refresh_token: tokens.refresh_token,
-          token_expires_at: expiresAt?.toISOString(),
-          scope: config.scopes,
-          status: 'active',
-          last_sync_at: new Date().toISOString(),
-        }, {
-          onConflict: 'user_id,integration_type'
-        })
+        .upsert(
+          {
+            user_id: userId,
+            integration_type: integrationType,
+            connection_name: `${integrationType}_connection`,
+            access_token: tokens.access_token,
+            refresh_token: tokens.refresh_token,
+            token_expires_at: expiresAt?.toISOString(),
+            scope: config.scopes,
+            status: 'active',
+            last_sync_at: new Date().toISOString(),
+          },
+          {
+            onConflict: 'user_id,integration_type',
+          }
+        )
         .select()
         .single();
 
@@ -209,9 +210,9 @@ export class OAuthHandler {
       return { success: true, connectionId: connection.id };
     } catch (error) {
       console.error('OAuth callback error:', error);
-      return { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Unknown error' 
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -233,7 +234,7 @@ export class OAuthHandler {
     // Check if token is expired or expires soon (5 min buffer)
     const now = new Date();
     const expiresAt = connection.token_expires_at ? new Date(connection.token_expires_at) : null;
-    
+
     if (!expiresAt || now >= expiresAt) {
       // Token is expired, need to refresh
       if (!connection.refresh_token) {
@@ -246,8 +247,8 @@ export class OAuthHandler {
       );
 
       // Update connection with new tokens
-      const newExpiresAt = refreshedTokens.expires_in 
-        ? new Date(Date.now() + (refreshedTokens.expires_in * 1000) - (5 * 60 * 1000))
+      const newExpiresAt = refreshedTokens.expires_in
+        ? new Date(Date.now() + refreshedTokens.expires_in * 1000 - 5 * 60 * 1000)
         : null;
 
       await this.supabase
@@ -274,7 +275,7 @@ export class OAuthHandler {
     refreshToken: string
   ): Promise<OAuthTokens> {
     const config = this.getOAuthConfig(integrationType);
-    
+
     const response = await fetch(config.tokenUrl, {
       method: 'POST',
       headers: {
@@ -306,7 +307,7 @@ export class OAuthHandler {
     }
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    
+
     return {
       clientId: this.getClientId(integrationType),
       clientSecret: this.getClientSecret(integrationType),
@@ -383,4 +384,3 @@ export class OAuthHandler {
     return data || [];
   }
 }
-

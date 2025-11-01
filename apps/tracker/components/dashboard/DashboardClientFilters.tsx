@@ -17,7 +17,10 @@ type CommandResult = {
   message: string;
 };
 
-export function DashboardClientFilters({ initialCampaigns, integrations }: DashboardClientFiltersProps) {
+export function DashboardClientFilters({
+  initialCampaigns,
+  integrations,
+}: DashboardClientFiltersProps) {
   const [campaigns, setCampaigns] = useState<Campaign[]>(initialCampaigns);
   const [selectedClient, setSelectedClient] = useState<string | null>(null);
   const [commandMessage, setCommandMessage] = useState<string | null>(null);
@@ -37,21 +40,21 @@ export function DashboardClientFilters({ initialCampaigns, integrations }: Dashb
     switch (result.type) {
       case 'filter':
         if (result.data.client_name) {
-          const filtered = initialCampaigns.filter((c) =>
-            c.client_name === result.data.client_name
+          const filtered = initialCampaigns.filter(
+            c => c.client_name === result.data.client_name
           );
           setCampaigns(filtered);
           setSelectedClient(result.data.client_name);
         }
         if (result.data.platform) {
-          const filtered = initialCampaigns.filter((c) =>
-            c.platform === result.data.platform
+          const filtered = initialCampaigns.filter(
+            c => c.platform === result.data.platform
           );
           setCampaigns(filtered);
         }
         if (result.data.status) {
-          const filtered = initialCampaigns.filter((c) =>
-            c.status === result.data.status
+          const filtered = initialCampaigns.filter(
+            c => c.status === result.data.status
           );
           setCampaigns(filtered);
         }
@@ -74,10 +77,15 @@ export function DashboardClientFilters({ initialCampaigns, integrations }: Dashb
 
       case 'search':
         // Perform search
-        const searchFiltered = initialCampaigns.filter((c) =>
-          c.name.toLowerCase().includes(result.data.query.toLowerCase()) ||
-          c.artist_name?.toLowerCase().includes(result.data.query.toLowerCase()) ||
-          c.client_name?.toLowerCase().includes(result.data.query.toLowerCase())
+        const searchFiltered = initialCampaigns.filter(
+          c =>
+            c.name.toLowerCase().includes(result.data.query.toLowerCase()) ||
+            c.artist_name
+              ?.toLowerCase()
+              .includes(result.data.query.toLowerCase()) ||
+            c.client_name
+              ?.toLowerCase()
+              .includes(result.data.query.toLowerCase())
         );
         setCampaigns(searchFiltered);
         break;
@@ -92,8 +100,18 @@ export function DashboardClientFilters({ initialCampaigns, integrations }: Dashb
       {/* AI Command Success Message */}
       {commandMessage && (
         <div className="bg-green-50 border-2 border-green-500 rounded-xl p-4 mb-6 flex items-center gap-3 shadow-brutal">
-          <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          <svg
+            className="w-5 h-5 text-green-600 flex-shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 13l4 4L19 7"
+            />
           </svg>
           <p className="font-bold text-green-900">{commandMessage}</p>
         </div>
@@ -119,7 +137,9 @@ export function DashboardClientFilters({ initialCampaigns, integrations }: Dashb
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-1">
-              {selectedClient ? `${selectedClient} Campaigns` : 'Your Campaigns'}
+              {selectedClient
+                ? `${selectedClient} Campaigns`
+                : 'Your Campaigns'}
             </h2>
             <p className="text-sm font-bold text-gray-600">
               {campaigns.length === initialCampaigns.length
@@ -129,10 +149,7 @@ export function DashboardClientFilters({ initialCampaigns, integrations }: Dashb
           </div>
         </div>
 
-        <BulkCampaignList
-          campaigns={campaigns}
-          integrations={integrations}
-        />
+        <BulkCampaignList campaigns={campaigns} integrations={integrations} />
       </div>
     </>
   );

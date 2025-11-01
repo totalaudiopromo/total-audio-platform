@@ -12,6 +12,7 @@ You are working on **Total Audio Promo**, a revolutionary AI-powered music promo
 ## 🏗️ Technical Architecture
 
 ### Primary Stack
+
 ```typescript
 Frontend: Next.js 14 + TypeScript + Tailwind CSS + shadcn/ui
 Backend: Node.js + Express/Fastify + PostgreSQL + Prisma
@@ -23,6 +24,7 @@ Deployment: Vercel (Frontend) + Railway/Render (Backend)
 ```
 
 ### Mobile Development
+
 ```swift
 iOS: SwiftUI + Combine + AVFoundation
 Development: Xcode + Cursor AI integration
@@ -33,34 +35,44 @@ Strategy: VibeCode prototype → Professional development
 ## 🚀 Core Platform Features
 
 ### 1. AI Campaign Builder
+
 **Purpose**: Generate complete 6-8 week promotional campaigns automatically
+
 - Input: Track upload, target audience, budget, timeline
 - Output: Multi-platform campaign with automation rules
 - **Key Integration**: Audio analysis → Genre classification → Strategy generation
 
 ### 2. Smart Release Dashboard
+
 **Purpose**: Central command center for managing multiple releases
+
 - Real-time streaming data from Spotify, Apple Music, SoundCloud
 - Social media metrics aggregation (Instagram, TikTok, Twitter, YouTube)
 - Predictive analytics with success probability scoring
 - **Key Feature**: Multi-client view for PR agencies managing 20+ artists
 
 ### 3. AI Content Studio
+
 **Purpose**: Automated content generation at scale
+
 - Press releases with industry-standard formatting
 - Social media posts optimized per platform
 - Personalized pitch templates for media contacts
 - **Key Integration**: GPT-4 for content + Claude for press releases
 
 ### 4. Cross-Platform Automation
+
 **Purpose**: Eliminate manual posting and updates
+
 - Smart scheduling across all social platforms
 - Content auto-adaptation (sizing, formatting, hashtags)
 - CRM synchronization with Airtable, Notion, Google Sheets
 - **Key Feature**: One-click campaign deployment
 
 ### 5. Unified Analytics Engine
+
 **Purpose**: Cross-platform performance intelligence
+
 - Real-time monitoring of 18+ platforms
 - ROI calculation and campaign effectiveness tracking
 - Automated white-label client reports
@@ -69,6 +81,7 @@ Strategy: VibeCode prototype → Professional development
 ## 🔌 Critical Integrations
 
 ### Music Platforms
+
 ```javascript
 // Essential music platform APIs
 Spotify for Artists API: Stream data, playlist tracking
@@ -79,6 +92,7 @@ YouTube Music API: Video content integration
 ```
 
 ### Social Media Platforms
+
 ```javascript
 // Primary social automation targets
 Instagram Graph API: Stories, posts, reels automation
@@ -89,6 +103,7 @@ Facebook Graph API: Cross-platform integration
 ```
 
 ### Email & CRM Systems
+
 ```javascript
 // Client management and outreach
 Mailchimp API: Email campaign automation
@@ -99,6 +114,7 @@ Google Sheets API: Data export/import
 ```
 
 ### AI & Content Generation
+
 ```python
 # AI service integrations
 OpenAI GPT-4: Content generation, campaign strategy
@@ -110,28 +126,34 @@ Custom ML models: Success prediction, audience matching
 ## 💰 Business Model & User Personas
 
 ### Independent Artists (Primary Target)
+
 **Demographics**: Solo artists, small bands, 18-35 years old
 **Pain Points**:
+
 - Don't know who to pitch their music to
 - Limited time for promotional activities
 - Small budgets requiring maximum ROI
 - Lack of industry connections and expertise
 
 **Features They Need**:
+
 - Smart contact discovery and playlist recommendations
 - Automated social media posting with optimal timing
 - AI-generated press materials and pitch templates
 - Simple analytics dashboard showing growth metrics
 
 ### PR Agencies (High-Value Target)
+
 **Demographics**: Music marketing firms, record labels, management companies
 **Pain Points**:
+
 - 94% of tasks are repetitive and manual
 - Difficult to scale operations without hiring
 - Time-consuming client reporting and campaign tracking
 - Managing multiple artists across different platforms
 
 **Features They Need**:
+
 - Multi-client dashboard with team collaboration
 - White-label reporting for client presentations
 - Bulk campaign management and automation
@@ -140,7 +162,9 @@ Custom ML models: Success prediction, audience matching
 ## 🎯 Development Priorities
 
 ### Phase 1: MVP (Months 1-3)
+
 **Core Infrastructure**:
+
 ```typescript
 // Essential foundation components
 User authentication and subscription billing
@@ -151,13 +175,16 @@ Simple campaign builder with templates
 ```
 
 **Success Metrics**:
+
 - 50 beta users (25 indies, 25 agencies)
 - Basic campaign creation in <10 minutes
 - Successful social media posting automation
 - User retention >70% after 30 days
 
 ### Phase 2: Feature Expansion (Months 4-6)
+
 **Advanced Features**:
+
 ```typescript
 // Scaling and optimization
 AI content generation (press releases, social posts)
@@ -168,13 +195,16 @@ Email marketing integration and automation
 ```
 
 **Success Metrics**:
+
 - 500 active users with 60% paid conversion
 - 3x improvement in pitch response rates
 - Campaign creation time reduced to <5 minutes
 - Platform integrations working at 99%+ reliability
 
 ### Phase 3: Scale (Months 7-12)
+
 **Enterprise Features**:
+
 ```typescript
 // Market domination capabilities
 White-label customization for large agencies
@@ -185,6 +215,7 @@ Mobile app launch (iOS priority, Android follow)
 ```
 
 **Success Metrics**:
+
 - 1,000+ users with enterprise clients
 - £500K+ ARR with strong unit economics
 - Industry recognition and partnership deals
@@ -193,6 +224,7 @@ Mobile app launch (iOS priority, Android follow)
 ## 🔧 Development Guidelines
 
 ### Code Quality Standards
+
 ```typescript
 // TypeScript everywhere with strict type checking
 // React components using composition over inheritance
@@ -203,17 +235,18 @@ Mobile app launch (iOS priority, Android follow)
 // Example: Proper error handling pattern
 export async function createCampaign(data: CampaignData): Promise<Campaign> {
   try {
-    const campaign = await db.campaign.create({ data })
-    await scheduleAutomation(campaign.id)
-    return campaign
+    const campaign = await db.campaign.create({ data });
+    await scheduleAutomation(campaign.id);
+    return campaign;
   } catch (error) {
-    logger.error('Campaign creation failed', { error, data })
-    throw new CampaignCreationError('Failed to create campaign')
+    logger.error('Campaign creation failed', { error, data });
+    throw new CampaignCreationError('Failed to create campaign');
   }
 }
 ```
 
 ### Performance Requirements
+
 - Page load times: <3 seconds on 3G connections
 - API response times: <500ms for 95th percentile
 - Database queries: <100ms for user-facing operations
@@ -221,6 +254,7 @@ export async function createCampaign(data: CampaignData): Promise<Campaign> {
 - Mobile app: 60fps UI with smooth animations
 
 ### Security & Privacy
+
 - GDPR compliance for EU users
 - SOC 2 Type II certification target
 - End-to-end encryption for sensitive data
@@ -230,12 +264,14 @@ export async function createCampaign(data: CampaignData): Promise<Campaign> {
 ## 🎵 Music Industry Context
 
 ### Understanding the Domain
+
 **Playlist Ecosystem**: Spotify has 4+ million playlists; getting featured can mean 100K+ streams
 **TikTok Impact**: 15-30 second clips drive 67% of new music discovery
 **Press Coverage**: Music blogs still crucial for credibility and playlist placement
 **Timing Strategy**: Fridays are global release days; campaigns must build anticipation
 
 ### Industry Pain Points We Solve
+
 1. **Manual Media Lists**: Artists spend hours finding relevant contacts
 2. **Generic Pitches**: 95% of pitches are ignored due to poor targeting
 3. **Platform Fragmentation**: Managing 10+ platforms manually is overwhelming
@@ -243,6 +279,7 @@ export async function createCampaign(data: CampaignData): Promise<Campaign> {
 5. **Expensive Agencies**: Professional PR costs £2000+/month, unaffordable for indies
 
 ### Success Metrics That Matter
+
 ```javascript
 // Key Performance Indicators for music promotion
 Streaming Growth: Monthly listeners, playlist adds, saves
@@ -255,25 +292,30 @@ Financial Impact: Streaming revenue, booking fees, sync opportunities
 ## 🚨 Critical Success Factors
 
 ### Technical Excellence
+
 - **Reliability**: Music releases are time-sensitive; system failures cost careers
 - **Scalability**: Must handle viral content spikes and campaign surges
 - **Integration Stability**: Platform API changes require immediate adaptation
 - **Data Accuracy**: Incorrect analytics undermine strategic decisions
 
 ### Market Understanding
+
 - **Industry Relationships**: Building credibility with music bloggers and playlist curators
 - **Artist Education**: Most musicians don't understand digital marketing
 - **Trend Awareness**: Music industry moves fast; staying current is essential
 - **Pricing Strategy**: Balance accessibility for indies with agency profit margins
 
 ### Competitive Positioning
+
 **Advantages Over Competitors**:
+
 - Music industry specialization vs. generic marketing tools
 - AI-first approach enabling unprecedented automation
 - Unified platform replacing 10+ separate tools
 - Dual market strategy serving both indies and agencies
 
 **Threats to Monitor**:
+
 - Spotify/Apple building competing features
 - Existing agencies adopting similar AI tools
 - Platform policy changes limiting automation
@@ -282,6 +324,7 @@ Financial Impact: Streaming revenue, booking fees, sync opportunities
 ## 📋 Development Workflow
 
 ### Git Strategy
+
 ```bash
 # Branch naming convention
 feature/ai-campaign-builder
@@ -295,6 +338,7 @@ docs: update API integration documentation
 ```
 
 ### Testing Strategy
+
 ```typescript
 // Comprehensive testing approach
 Unit Tests: Business logic and utility functions
@@ -305,6 +349,7 @@ Security Tests: Authentication and data protection
 ```
 
 ### Deployment Pipeline
+
 ```yaml
 # CI/CD workflow
 Development: Feature branches → Staging deployment
@@ -320,6 +365,7 @@ Monitoring: Error tracking → Performance metrics → User analytics
 **Long-term Mission**: Democratize music promotion and artist success
 
 **Impact Metrics**:
+
 - 10,000+ artists using the platform
 - 100M+ streams generated through campaigns
 - 500+ playlist placements per month

@@ -13,9 +13,11 @@
 ## ✅ WHAT AUDIO INTEL ACTUALLY DOES
 
 ### Core Function
+
 **Enriches existing email addresses with current music industry intelligence**
 
 ### User Journey (TRUTHFUL)
+
 1. **User finds basic contact emails** via:
    - Google searches (e.g., "BBC Radio 1 contact email")
    - Station websites (general info@ emails)
@@ -45,16 +47,19 @@
 ## 💡 THE REAL VALUE
 
 ### Time Savings
+
 - **Before**: 10-18 hours manually verifying contacts, checking websites, finding current presenters
 - **After**: 2-15 minutes uploading CSV, waiting for enrichment
 - **Savings**: 15+ hours per campaign
 
 ### Accuracy Improvements
+
 - **Before**: Outdated presenter info, wrong submission routes, missed requirements
 - **After**: Current data (verified within 6 months), correct submission methods, flagged requirements
 - **Result**: Higher response rates, fewer bounced emails, no wasted pitches
 
 ### What Users Actually Save Time On
+
 1. **Verifying emails still work** - stops bounces before sending
 2. **Finding current presenter assignments** - people change shows constantly
 3. **Discovering submission requirements** - buried in FAQ pages/submission guidelines
@@ -65,16 +70,19 @@
 ## 🎯 ACCURATE POSITIONING
 
 ### Who It's For
+
 - **Radio promoters** who have contact lists but need to verify/update them
 - **Independent artists** who've found some emails but need submission intel
 - **PR agencies** who inherited client databases needing current verification
 
 ### What They Must Have First
+
 - Basic email addresses (even if outdated/general)
 - Contact names (even if incomplete)
 - Some indication of station/platform
 
 ### What They Get
+
 - **Verified** current contact information
 - **Enriched** submission requirements and preferences
 - **Updated** presenter assignments and show schedules
@@ -84,21 +92,25 @@
 ## 📊 PROVEN USE CASES
 
 ### 1. Outdated Database Refresh
+
 **Input**: 200 radio contacts from 2023 campaigns (many outdated)
 **Process**: Upload CSV, Audio Intel checks current presenter assignments
 **Output**: 156 still valid, 44 flagged as changed shows, 18 emails bouncing
 
 ### 2. General Email → Specific Route
+
 **Input**: info@absoluteradio.co.uk (general station email)
 **Process**: Audio Intel enriches with submission guidelines
 **Output**: selfreleased@absoluteradio.co.uk (correct email), web-link ONLY requirement, Sunday Night Music Club show details
 
 ### 3. Presenter Change Detection
+
 **Input**: CSV with "Scott Mills, BBC Radio 1, breakfast show"
 **Process**: Audio Intel checks current assignments (Jan 2025)
 **Output**: "Scott Mills moved to BBC Radio 2 breakfast (Jan 2025), Radio 1 breakfast now Greg James"
 
 ### 4. Submission Route Discovery
+
 **Input**: BBC Radio 1Xtra general contact emails
 **Process**: Audio Intel researches submission policies
 **Output**: "BBC Introducing Uploader ONLY - no direct presenter contact accepted, general emails ignored"
@@ -114,15 +126,19 @@
 ## ✅ WHAT WE SHOULD MARKET
 
 ### Hero Headline (CURRENT - ACCURATE)
+
 "Turn email addresses into detailed music industry profiles"
 
 ### Actual Value Prop
+
 "Stop wasting 15+ hours verifying outdated contacts. Upload your basic email list, get current presenter assignments, verified submission routes, and critical requirements in minutes."
 
 ### Real Customer Problem Solved
+
 "I have a spreadsheet of radio contacts from last year's campaign, but I don't know which presenters changed shows, which emails still work, or what the current submission requirements are."
 
 ### NOT What We Should Market
+
 - ❌ "Find any music industry contact instantly"
 - ❌ "Upload anything and get contacts back"
 - ❌ "Discover hidden music industry emails"
@@ -136,6 +152,7 @@
 **Assessment**: ACCURATE - correctly states you need email addresses to start
 
 **Recommendation**: Keep this positioning, emphasize:
+
 1. Enrichment of existing contacts
 2. Verification of outdated databases
 3. Current presenter assignment updates
@@ -145,23 +162,25 @@
 
 ### Reality Check Matrix
 
-| Marketing Claim | Product Reality | Verdict |
-|----------------|-----------------|---------|
-| "Transform email lists into intelligence" | ✅ Enriches CSVs with emails | TRUE |
-| "Upload anything" | ❌ CSV with emails only | FALSE |
-| "Input station name + genre" | ❌ Needs actual email addresses | FALSE |
-| "Upload playlist URLs" | ❌ Needs curator emails | FALSE |
-| "Turn basic emails into detailed profiles" | ✅ Accurate description | TRUE |
-| "Verify outdated contact databases" | ✅ Actually does this | TRUE |
-| "Find current presenter assignments" | ✅ Actually does this | TRUE |
+| Marketing Claim                            | Product Reality                 | Verdict |
+| ------------------------------------------ | ------------------------------- | ------- |
+| "Transform email lists into intelligence"  | ✅ Enriches CSVs with emails    | TRUE    |
+| "Upload anything"                          | ❌ CSV with emails only         | FALSE   |
+| "Input station name + genre"               | ❌ Needs actual email addresses | FALSE   |
+| "Upload playlist URLs"                     | ❌ Needs curator emails         | FALSE   |
+| "Turn basic emails into detailed profiles" | ✅ Accurate description         | TRUE    |
+| "Verify outdated contact databases"        | ✅ Actually does this           | TRUE    |
+| "Find current presenter assignments"       | ✅ Actually does this           | TRUE    |
 
 ## 💭 THE FUNDAMENTAL QUESTION
 
 **"If users need emails to use Intel, what's the value?"**
 
 ### The Answer
+
 Users don't struggle to find **basic** emails (info@station.com, presenter@bbc.co.uk).
 They struggle to:
+
 1. Verify those emails still work
 2. Find the **correct** submission email (not general inbox)
 3. Know current presenter assignments

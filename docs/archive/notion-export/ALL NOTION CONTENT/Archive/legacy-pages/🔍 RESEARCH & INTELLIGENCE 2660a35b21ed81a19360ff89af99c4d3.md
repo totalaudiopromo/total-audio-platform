@@ -1,6 +1,6 @@
 # 🔍 RESEARCH & INTELLIGENCE
 
-*Market research, competitive analysis, and strategic intelligence*
+_Market research, competitive analysis, and strategic intelligence_
 
 ---
 
@@ -99,7 +99,7 @@
 
 ---
 
-*Your strategic intelligence command centre*
+_Your strategic intelligence command centre_
 
 [Knowledge Hub](%F0%9F%94%8D%20RESEARCH%20&%20INTELLIGENCE%202660a35b21ed81a19360ff89af99c4d3/Knowledge%20Hub%202580a35b21ed81fa8c0df6b8af39a3fc.md)
 

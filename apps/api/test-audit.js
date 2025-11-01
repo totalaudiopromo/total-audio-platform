@@ -4,11 +4,16 @@ const path = require('path');
 // ========================================
 // 🚨 REPLACE THESE WITH YOUR ACTUAL AIRTABLE CREDENTIALS
 // ========================================
-process.env.AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY || 'patOohG8Gg008SKWj.fd0e179e09416b65e61ae4fc97b29136a79f769809446aadbccebebcd060f6e1';
+process.env.AIRTABLE_API_KEY =
+  process.env.AIRTABLE_API_KEY ||
+  'patOohG8Gg008SKWj.fd0e179e09416b65e61ae4fc97b29136a79f769809446aadbccebebcd060f6e1';
 process.env.AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appx7uTQWRH8cIC20';
-process.env.AIRTABLE_CONTACTS_TABLE_ID = process.env.AIRTABLE_CONTACTS_TABLE_ID || 'tblcZnUsB4Swyjcip';
-process.env.AIRTABLE_CAMPAIGNS_TABLE_ID = process.env.AIRTABLE_CAMPAIGNS_TABLE_ID || 'tblvRvF1pqpFnixnK';
-process.env.AIRTABLE_INTERACTIONS_TABLE_ID = process.env.AIRTABLE_INTERACTIONS_TABLE_ID || 'tbl0bjeo3ZwpzRQyV';
+process.env.AIRTABLE_CONTACTS_TABLE_ID =
+  process.env.AIRTABLE_CONTACTS_TABLE_ID || 'tblcZnUsB4Swyjcip';
+process.env.AIRTABLE_CAMPAIGNS_TABLE_ID =
+  process.env.AIRTABLE_CAMPAIGNS_TABLE_ID || 'tblvRvF1pqpFnixnK';
+process.env.AIRTABLE_INTERACTIONS_TABLE_ID =
+  process.env.AIRTABLE_INTERACTIONS_TABLE_ID || 'tbl0bjeo3ZwpzRQyV';
 process.env.AIRTABLE_EMAILS_TABLE_ID = process.env.AIRTABLE_EMAILS_TABLE_ID || 'tblodWpE3Bh7XxPID';
 // ========================================
 
@@ -30,7 +35,7 @@ async function testAudit() {
       contactsTableId: mockConfig.contactsTableId,
       // Don't log API keys
     });
-    
+
     // Create a simple test script that can be run with ts-node
     const testScript = `
 import { AirtableAuditService } from './src/services/airtableAudit';
@@ -95,18 +100,17 @@ runAudit();
     const fs = require('fs');
     const testFile = path.join(__dirname, 'temp-audit-test.ts');
     fs.writeFileSync(testFile, testScript);
-    
+
     console.log('Running audit with ts-node...');
-    
+
     // Run the test script with ts-node
-    execSync(`npx ts-node ${testFile}`, { 
+    execSync(`npx ts-node ${testFile}`, {
       stdio: 'inherit',
-      cwd: __dirname 
+      cwd: __dirname,
     });
-    
+
     // Clean up
     fs.unlinkSync(testFile);
-    
   } catch (error) {
     console.error('❌ Test failed:', error.message);
     console.error('Make sure you have:');
@@ -117,4 +121,4 @@ runAudit();
   }
 }
 
-testAudit(); 
+testAudit();

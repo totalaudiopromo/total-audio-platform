@@ -1,15 +1,28 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Download, Mail, FileText, BarChart3, Users, Search, Settings, CheckCircle, AlertCircle, Zap, Brain, Activity } from 'lucide-react';
-import { 
-  ProfessionalExportService, 
-  ExportOptions, 
-  ContactData, 
-  AnalyticsData, 
-  SearchResultsData, 
+import {
+  Download,
+  Mail,
+  FileText,
+  BarChart3,
+  Users,
+  Search,
+  Settings,
+  CheckCircle,
+  AlertCircle,
+  Zap,
+  Brain,
+  Activity,
+} from 'lucide-react';
+import {
+  ProfessionalExportService,
+  ExportOptions,
+  ContactData,
+  AnalyticsData,
+  SearchResultsData,
   AIAgentData,
-  ExportProgress 
+  ExportProgress,
 } from '../utils/exportService';
 import { trackExport, trackFunnelProgression } from '../utils/analytics';
 
@@ -38,7 +51,7 @@ export default function ExportButtons({
   whiteLabel,
   userTier = 'free',
   onExportComplete,
-  onProgress
+  onProgress,
 }: ExportButtonsProps) {
   const [isExporting, setIsExporting] = useState(false);
   const [exportFormat, setExportFormat] = useState<'csv' | 'excel' | 'pdf'>('excel');
@@ -46,18 +59,24 @@ export default function ExportButtons({
   const [recipientEmail, setRecipientEmail] = useState('');
   const [customMessage, setCustomMessage] = useState('');
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
-  const [lastExportResult, setLastExportResult] = useState<{ success: boolean; message: string; metadata?: any } | null>(null);
+  const [lastExportResult, setLastExportResult] = useState<{
+    success: boolean;
+    message: string;
+    metadata?: any;
+  } | null>(null);
   const [customFilename, setCustomFilename] = useState('');
   const [exportProgress, setExportProgress] = useState<ExportProgress | null>(null);
   const [whiteLabelConfig, setWhiteLabelConfig] = useState({
     companyName: whiteLabel?.companyName || '',
     logoUrl: whiteLabel?.logoUrl || '',
-    primaryColor: whiteLabel?.primaryColor || '#1E88E5'
+    primaryColor: whiteLabel?.primaryColor || '#1E88E5',
   });
 
   const exportService = new ProfessionalExportService(whiteLabelConfig);
 
-  const handleExport = async (type: 'contacts' | 'analytics' | 'search-results' | 'ai-agent-report' | 'batch') => {
+  const handleExport = async (
+    type: 'contacts' | 'analytics' | 'search-results' | 'ai-agent-report' | 'batch'
+  ) => {
     setIsExporting(true);
     setLastExportResult(null);
     setExportProgress(null);
@@ -71,7 +90,7 @@ export default function ExportButtons({
         whiteLabel: whiteLabelConfig,
         filename: customFilename || undefined,
         includeMetadata: true,
-        compression: false
+        compression: false,
       };
 
       const progressHandler = (progress: ExportProgress) => {
@@ -93,21 +112,36 @@ export default function ExportButtons({
           if (!analytics) {
             throw new Error('No analytics data available for export');
           }
-          result = await exportService.exportAnalytics(analytics, options, userName, progressHandler);
+          result = await exportService.exportAnalytics(
+            analytics,
+            options,
+            userName,
+            progressHandler
+          );
           break;
 
         case 'search-results':
           if (!searchResults || searchResults.results.length === 0) {
             throw new Error('No search results available for export');
           }
-          result = await exportService.exportSearchResults(searchResults, options, userName, progressHandler);
+          result = await exportService.exportSearchResults(
+            searchResults,
+            options,
+            userName,
+            progressHandler
+          );
           break;
 
         case 'ai-agent-report':
           if (!aiAgentReport) {
             throw new Error('No AI agent report available for export');
           }
-          result = await exportService.exportAIAgentReport(aiAgentReport, options, userName, progressHandler);
+          result = await exportService.exportAIAgentReport(
+            aiAgentReport,
+            options,
+            userName,
+            progressHandler
+          );
           break;
 
         case 'batch':
@@ -121,13 +155,18 @@ export default function ExportButtons({
             throw new Error('No data available for batch export');
           }
 
-          const batchResult = await exportService.batchExport(data, options, userName, progressHandler);
+          const batchResult = await exportService.batchExport(
+            data,
+            options,
+            userName,
+            progressHandler
+          );
           result = {
             success: batchResult.success,
-            message: batchResult.success 
+            message: batchResult.success
               ? `Successfully exported ${batchResult.summary.successfulExports} data types`
               : `Batch export completed with ${batchResult.summary.failedExports} errors`,
-            metadata: batchResult.summary
+            metadata: batchResult.summary,
           };
           break;
 
@@ -136,7 +175,7 @@ export default function ExportButtons({
       }
 
       setLastExportResult(result);
-      
+
       // Track export analytics
       if (result.success) {
         const contactCount = contacts?.length || 0;
@@ -144,9 +183,8 @@ export default function ExportButtons({
         trackExport(exportFormat, contactCount, fields);
         trackFunnelProgression('EXPORT', { format: exportFormat, contactCount, type });
       }
-      
-      onExportComplete?.(result);
 
+      onExportComplete?.(result);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Export failed';
       const result = { success: false, message: errorMessage };
@@ -180,12 +218,18 @@ export default function ExportButtons({
 
   const getProgressColor = (stage: string) => {
     switch (stage) {
-      case 'preparing': return 'text-blue-600';
-      case 'processing': return 'text-yellow-600';
-      case 'formatting': return 'text-blue-600';
-      case 'delivering': return 'text-green-600';
-      case 'complete': return 'text-green-600';
-      default: return 'text-gray-600';
+      case 'preparing':
+        return 'text-blue-600';
+      case 'processing':
+        return 'text-yellow-600';
+      case 'formatting':
+        return 'text-blue-600';
+      case 'delivering':
+        return 'text-green-600';
+      case 'complete':
+        return 'text-green-600';
+      default:
+        return 'text-gray-600';
     }
   };
 
@@ -202,9 +246,7 @@ export default function ExportButtons({
             Export your data in multiple formats with optional email delivery
           </p>
           {getDataTypes().length > 0 && (
-            <p className="text-xs text-gray-500 mt-1">
-              Available: {getDataTypes().join(', ')}
-            </p>
+            <p className="text-xs text-gray-500 mt-1">Available: {getDataTypes().join(', ')}</p>
           )}
         </div>
         <div className="text-right">
@@ -226,7 +268,7 @@ export default function ExportButtons({
             </span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
-            <div 
+            <div
               className="bg-blue-600 h-2 rounded-full transition-all duration-300"
               style={{ width: `${exportProgress.percentage}%` }}
             ></div>
@@ -237,11 +279,13 @@ export default function ExportButtons({
 
       {/* Export Status */}
       {lastExportResult && !exportProgress && (
-        <div className={`mb-4 p-3 rounded-md flex items-center gap-2 ${
-          lastExportResult.success 
-            ? 'bg-green-50 border border-green-200 text-green-800' 
-            : 'bg-red-50 border border-red-200 text-red-800'
-        }`}>
+        <div
+          className={`mb-4 p-3 rounded-md flex items-center gap-2 ${
+            lastExportResult.success
+              ? 'bg-green-50 border border-green-200 text-green-800'
+              : 'bg-red-50 border border-red-200 text-red-800'
+          }`}
+        >
           {lastExportResult.success ? (
             <CheckCircle className="w-4 h-4" />
           ) : (
@@ -261,10 +305,28 @@ export default function ExportButtons({
         </label>
         <div className="flex gap-2">
           {[
-            { value: 'csv', label: 'CSV', icon: FileText, description: 'Simple data export', available: true },
-            { value: 'excel', label: 'Excel', icon: BarChart3, description: 'Multi-sheet reports', available: userTier !== 'free' },
-            { value: 'pdf', label: 'PDF', icon: FileText, description: 'Professional reports', available: userTier !== 'free' }
-          ].map((format) => (
+            {
+              value: 'csv',
+              label: 'CSV',
+              icon: FileText,
+              description: 'Simple data export',
+              available: true,
+            },
+            {
+              value: 'excel',
+              label: 'Excel',
+              icon: BarChart3,
+              description: 'Multi-sheet reports',
+              available: userTier !== 'free',
+            },
+            {
+              value: 'pdf',
+              label: 'PDF',
+              icon: FileText,
+              description: 'Professional reports',
+              available: userTier !== 'free',
+            },
+          ].map(format => (
             <button
               key={format.value}
               onClick={() => format.available && setExportFormat(format.value as any)}
@@ -273,16 +335,14 @@ export default function ExportButtons({
                 !format.available
                   ? 'bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed'
                   : exportFormat === format.value
-                  ? 'bg-blue-100 text-blue-700 border border-blue-300'
-                  : 'bg-gray-50 text-gray-600 border border-gray-200 hover:bg-gray-100'
+                    ? 'bg-blue-100 text-blue-700 border border-blue-300'
+                    : 'bg-gray-50 text-gray-600 border border-gray-200 hover:bg-gray-100'
               }`}
             >
               <format.icon className="w-4 h-4" />
               <span>{format.label}</span>
               <span className="text-xs opacity-75">{format.description}</span>
-              {!format.available && (
-                <span className="text-xs text-red-500">Upgrade required</span>
-              )}
+              {!format.available && <span className="text-xs text-red-500">Upgrade required</span>}
             </button>
           ))}
         </div>
@@ -297,37 +357,37 @@ export default function ExportButtons({
           </h4>
           <div className="space-y-3">
             <div>
-              <label className="block text-xs font-medium text-blue-700 mb-1">
-                Company Name
-              </label>
+              <label className="block text-xs font-medium text-blue-700 mb-1">Company Name</label>
               <input
                 type="text"
                 value={whiteLabelConfig.companyName}
-                onChange={(e) => setWhiteLabelConfig({...whiteLabelConfig, companyName: e.target.value})}
+                onChange={e =>
+                  setWhiteLabelConfig({ ...whiteLabelConfig, companyName: e.target.value })
+                }
                 placeholder="Your company name"
                 className="w-full px-2 py-1 text-sm border border-blue-300 rounded focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-blue-700 mb-1">
-                Logo URL
-              </label>
+              <label className="block text-xs font-medium text-blue-700 mb-1">Logo URL</label>
               <input
                 type="url"
                 value={whiteLabelConfig.logoUrl}
-                onChange={(e) => setWhiteLabelConfig({...whiteLabelConfig, logoUrl: e.target.value})}
+                onChange={e =>
+                  setWhiteLabelConfig({ ...whiteLabelConfig, logoUrl: e.target.value })
+                }
                 placeholder="https://your-logo.png"
                 className="w-full px-2 py-1 text-sm border border-blue-300 rounded focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-blue-700 mb-1">
-                Primary Color
-              </label>
+              <label className="block text-xs font-medium text-blue-700 mb-1">Primary Color</label>
               <input
                 type="color"
                 value={whiteLabelConfig.primaryColor}
-                onChange={(e) => setWhiteLabelConfig({...whiteLabelConfig, primaryColor: e.target.value})}
+                onChange={e =>
+                  setWhiteLabelConfig({ ...whiteLabelConfig, primaryColor: e.target.value })
+                }
                 className="w-full h-8 border border-blue-300 rounded"
               />
             </div>
@@ -341,7 +401,7 @@ export default function ExportButtons({
           <input
             type="checkbox"
             checked={emailDelivery}
-            onChange={(e) => setEmailDelivery(e.target.checked)}
+            onChange={e => setEmailDelivery(e.target.checked)}
             disabled={userTier === 'free'}
             className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 disabled:opacity-50"
           />
@@ -359,13 +419,11 @@ export default function ExportButtons({
       {emailDelivery && (
         <div className="mb-4 space-y-3 p-4 bg-gray-50 rounded-md">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Recipient Email
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Recipient Email</label>
             <input
               type="email"
               value={recipientEmail}
-              onChange={(e) => setRecipientEmail(e.target.value)}
+              onChange={e => setRecipientEmail(e.target.value)}
               placeholder="Enter email address"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
             />
@@ -376,7 +434,7 @@ export default function ExportButtons({
             </label>
             <textarea
               value={customMessage}
-              onChange={(e) => setCustomMessage(e.target.value)}
+              onChange={e => setCustomMessage(e.target.value)}
               placeholder="Add a personal message to your export email..."
               rows={2}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
@@ -400,13 +458,11 @@ export default function ExportButtons({
       {showAdvancedOptions && (
         <div className="mb-4 p-4 bg-gray-50 rounded-md space-y-3">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Custom Filename
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Custom Filename</label>
             <input
               type="text"
               value={customFilename}
-              onChange={(e) => setCustomFilename(e.target.value)}
+              onChange={e => setCustomFilename(e.target.value)}
               placeholder="Leave empty for auto-generated names"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
             />
@@ -420,20 +476,24 @@ export default function ExportButtons({
                 type="text"
                 placeholder="Company Name"
                 value={whiteLabelConfig.companyName}
-                onChange={(e) => setWhiteLabelConfig(prev => ({ ...prev, companyName: e.target.value }))}
+                onChange={e =>
+                  setWhiteLabelConfig(prev => ({ ...prev, companyName: e.target.value }))
+                }
                 className="px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
               <input
                 type="text"
                 placeholder="Logo URL"
                 value={whiteLabelConfig.logoUrl}
-                onChange={(e) => setWhiteLabelConfig(prev => ({ ...prev, logoUrl: e.target.value }))}
+                onChange={e => setWhiteLabelConfig(prev => ({ ...prev, logoUrl: e.target.value }))}
                 className="px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
               <input
                 type="color"
                 value={whiteLabelConfig.primaryColor}
-                onChange={(e) => setWhiteLabelConfig(prev => ({ ...prev, primaryColor: e.target.value }))}
+                onChange={e =>
+                  setWhiteLabelConfig(prev => ({ ...prev, primaryColor: e.target.value }))
+                }
                 className="w-full h-10 border border-gray-300 rounded-md cursor-pointer"
               />
             </div>
@@ -518,7 +578,8 @@ export default function ExportButtons({
       {!hasData && (
         <div className="mt-4 p-4 bg-gray-50 rounded-md text-center">
           <p className="text-gray-600 text-sm">
-            No data available for export. Please load contacts, analytics, search results, or AI agent reports first.
+            No data available for export. Please load contacts, analytics, search results, or AI
+            agent reports first.
           </p>
         </div>
       )}
@@ -571,4 +632,4 @@ export default function ExportButtons({
       </div>
     </div>
   );
-} 
+}

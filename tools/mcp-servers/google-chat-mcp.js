@@ -12,7 +12,10 @@ const { authenticate } = require('@google-cloud/local-auth');
 const path = require('path');
 const fs = require('fs').promises;
 
-const SCOPES = ['https://www.googleapis.com/auth/chat.spaces.readonly', 'https://www.googleapis.com/auth/chat.messages.readonly'];
+const SCOPES = [
+  'https://www.googleapis.com/auth/chat.spaces.readonly',
+  'https://www.googleapis.com/auth/chat.messages.readonly',
+];
 const TOKEN_PATH = path.join(process.env.HOME, '.google-chat-mcp', 'token.json');
 const CREDENTIALS_PATH = path.join(process.env.HOME, '.google-chat-mcp', 'credentials.json');
 
@@ -169,7 +172,7 @@ class GoogleChatMCP {
     }));
 
     // Handle tool calls
-    this.server.setRequestHandler('tools/call', async (request) => {
+    this.server.setRequestHandler('tools/call', async request => {
       const { name, arguments: args } = request.params;
 
       try {
@@ -254,9 +257,10 @@ class GoogleChatMCP {
 
             const messages = response.data.messages || [];
             const query = args.query.toLowerCase();
-            const filtered = messages.filter(msg =>
-              msg.text?.toLowerCase().includes(query) ||
-              msg.sender?.displayName?.toLowerCase().includes(query)
+            const filtered = messages.filter(
+              msg =>
+                msg.text?.toLowerCase().includes(query) ||
+                msg.sender?.displayName?.toLowerCase().includes(query)
             );
 
             const formatted = filtered.map(msg => ({

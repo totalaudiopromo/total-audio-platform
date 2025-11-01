@@ -7,7 +7,7 @@ const logger = {
   info: (msg, ...args) => console.log(`[CALENDAR] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[CALENDAR] ${msg}`, ...args),
   warn: (msg, ...args) => console.warn(`[CALENDAR] ${msg}`, ...args),
-  success: (msg, ...args) => console.log(`✅ [CALENDAR] ${msg}`, ...args)
+  success: (msg, ...args) => console.log(`✅ [CALENDAR] ${msg}`, ...args),
 };
 
 /**
@@ -60,7 +60,7 @@ class GoogleCalendarApiIntegration {
     // Rate limiting
     const now = Date.now();
     const timeSinceLastCall = now - this.lastApiCall;
-    
+
     if (timeSinceLastCall < this.rateLimitDelay) {
       const delay = this.rateLimitDelay - timeSinceLastCall;
       await new Promise(resolve => setTimeout(resolve, delay));
@@ -81,18 +81,16 @@ class GoogleCalendarApiIntegration {
   async listCalendars() {
     try {
       logger.info('Listing available calendars');
-      
-      const response = await this.callCalendarAPI(
-        this.calendar.calendarList.list
-      );
+
+      const response = await this.callCalendarAPI(this.calendar.calendarList.list);
 
       const calendars = response.data.items || [];
       logger.info(`Found ${calendars.length} calendars`);
-      
+
       calendars.forEach(calendar => {
         logger.info(`  📅 ${calendar.summary} (${calendar.id})`);
       });
-      
+
       return calendars;
     } catch (error) {
       logger.error('Failed to list calendars:', error.message);
@@ -105,12 +103,9 @@ class GoogleCalendarApiIntegration {
    */
   async getPrimaryCalendarId() {
     try {
-      const response = await this.callCalendarAPI(
-        this.calendar.calendars.get,
-        {
-          calendarId: 'primary'
-        }
-      );
+      const response = await this.callCalendarAPI(this.calendar.calendars.get, {
+        calendarId: 'primary',
+      });
 
       return response.data.id;
     } catch (error) {
@@ -125,34 +120,31 @@ class GoogleCalendarApiIntegration {
   async createEvent(calendarId, eventData) {
     try {
       logger.info(`Creating calendar event: ${eventData.summary}`);
-      
+
       const event = {
         summary: eventData.summary,
         description: eventData.description || '',
         start: {
           dateTime: eventData.startDateTime,
-          timeZone: 'Europe/London'
+          timeZone: 'Europe/London',
         },
         end: {
           dateTime: eventData.endDateTime,
-          timeZone: 'Europe/London'
+          timeZone: 'Europe/London',
         },
         reminders: {
           useDefault: false,
           overrides: [
             { method: 'email', minutes: 24 * 60 }, // 1 day before
-            { method: 'popup', minutes: 60 } // 1 hour before
-          ]
-        }
+            { method: 'popup', minutes: 60 }, // 1 hour before
+          ],
+        },
       };
 
-      const response = await this.callCalendarAPI(
-        this.calendar.events.insert,
-        {
-          calendarId: calendarId,
-          resource: event
-        }
-      );
+      const response = await this.callCalendarAPI(this.calendar.events.insert, {
+        calendarId: calendarId,
+        resource: event,
+      });
 
       logger.success(`Created event: ${response.data.summary} (ID: ${response.data.id})`);
       return response.data;
@@ -168,7 +160,7 @@ class GoogleCalendarApiIntegration {
   async createCampaignTimeline(artistName, trackName, campaignData) {
     try {
       logger.info(`Creating campaign timeline for ${artistName} - ${trackName}`);
-      
+
       const primaryCalendarId = await this.getPrimaryCalendarId();
       const events = [];
 
@@ -177,19 +169,23 @@ class GoogleCalendarApiIntegration {
         summary: `🎵 Campaign Start: ${artistName} - ${trackName}`,
         description: `Radio promotion campaign begins for ${artistName} - ${trackName}\n\nCampaign Details:\n- Duration: ${campaignData.campaignDuration}\n- Release Date: ${campaignData.releaseDate}\n- Genre: ${campaignData.genre}\n- Budget: ${campaignData.budget}`,
         startDateTime: new Date(campaignData.campaignStartDate).toISOString(),
-        endDateTime: new Date(new Date(campaignData.campaignStartDate).getTime() + 60 * 60 * 1000).toISOString() // 1 hour event
+        endDateTime: new Date(
+          new Date(campaignData.campaignStartDate).getTime() + 60 * 60 * 1000
+        ).toISOString(), // 1 hour event
       });
       events.push(campaignStartEvent);
 
       // Mid-campaign check-in
       const midCampaignDate = new Date(campaignData.campaignStartDate);
-      midCampaignDate.setDate(midCampaignDate.getDate() + Math.floor(campaignData.durationDays / 2));
-      
+      midCampaignDate.setDate(
+        midCampaignDate.getDate() + Math.floor(campaignData.durationDays / 2)
+      );
+
       const midCampaignEvent = await this.createEvent(primaryCalendarId, {
         summary: `📊 Mid-Campaign Check: ${artistName} - ${trackName}`,
         description: `Mid-campaign progress review for ${artistName} - ${trackName}\n\nTasks:\n- Review radio submissions\n- Check WARM API for plays\n- Follow up with stations\n- Update Monday.com progress`,
         startDateTime: midCampaignDate.toISOString(),
-        endDateTime: new Date(midCampaignDate.getTime() + 30 * 60 * 1000).toISOString() // 30 minute event
+        endDateTime: new Date(midCampaignDate.getTime() + 30 * 60 * 1000).toISOString(), // 30 minute event
       });
       events.push(midCampaignEvent);
 
@@ -198,7 +194,9 @@ class GoogleCalendarApiIntegration {
         summary: `🎉 Release Day: ${artistName} - ${trackName}`,
         description: `Official release day for ${artistName} - ${trackName}\n\nTasks:\n- Final radio push\n- Social media announcement\n- Update all platforms\n- Celebrate! 🎉`,
         startDateTime: new Date(campaignData.releaseDate).toISOString(),
-        endDateTime: new Date(new Date(campaignData.releaseDate).getTime() + 2 * 60 * 60 * 1000).toISOString() // 2 hour event
+        endDateTime: new Date(
+          new Date(campaignData.releaseDate).getTime() + 2 * 60 * 60 * 1000
+        ).toISOString(), // 2 hour event
       });
       events.push(releaseEvent);
 
@@ -216,7 +214,7 @@ class GoogleCalendarApiIntegration {
   async createWeeklyReportReminders(artistName, trackName, campaignStartDate, campaignDuration) {
     try {
       logger.info(`Creating weekly report reminders for ${artistName} - ${trackName}`);
-      
+
       const primaryCalendarId = await this.getPrimaryCalendarId();
       const events = [];
       const startDate = new Date(campaignStartDate);
@@ -225,18 +223,18 @@ class GoogleCalendarApiIntegration {
       // Create weekly reminders (every Friday)
       for (let week = 1; week <= Math.ceil(durationDays / 7); week++) {
         const reminderDate = new Date(startDate);
-        reminderDate.setDate(startDate.getDate() + (week * 7) - 3); // Friday of each week
-        
+        reminderDate.setDate(startDate.getDate() + week * 7 - 3); // Friday of each week
+
         // Skip if reminder date is after campaign end
         const campaignEndDate = new Date(startDate);
         campaignEndDate.setDate(startDate.getDate() + durationDays);
-        
+
         if (reminderDate <= campaignEndDate) {
           const reportEvent = await this.createEvent(primaryCalendarId, {
             summary: `📊 Weekly WARM Report: ${artistName} - ${trackName} (Week ${week})`,
             description: `Weekly WARM report generation for ${artistName} - ${trackName}\n\nTasks:\n- Generate WARM API report\n- Update Monday.com with play data\n- Analyze performance metrics\n- Plan next week's outreach`,
             startDateTime: reminderDate.toISOString(),
-            endDateTime: new Date(reminderDate.getTime() + 30 * 60 * 1000).toISOString() // 30 minute event
+            endDateTime: new Date(reminderDate.getTime() + 30 * 60 * 1000).toISOString(), // 30 minute event
           });
           events.push(reportEvent);
         }
@@ -256,26 +254,23 @@ class GoogleCalendarApiIntegration {
   async listUpcomingEvents(calendarId = 'primary', maxResults = 10) {
     try {
       logger.info(`Listing upcoming events from calendar: ${calendarId}`);
-      
-      const response = await this.callCalendarAPI(
-        this.calendar.events.list,
-        {
-          calendarId: calendarId,
-          timeMin: new Date().toISOString(),
-          maxResults: maxResults,
-          singleEvents: true,
-          orderBy: 'startTime'
-        }
-      );
+
+      const response = await this.callCalendarAPI(this.calendar.events.list, {
+        calendarId: calendarId,
+        timeMin: new Date().toISOString(),
+        maxResults: maxResults,
+        singleEvents: true,
+        orderBy: 'startTime',
+      });
 
       const events = response.data.items || [];
       logger.info(`Found ${events.length} upcoming events`);
-      
+
       events.forEach(event => {
         const start = event.start.dateTime || event.start.date;
         logger.info(`  📅 ${event.summary} - ${new Date(start).toLocaleString()}`);
       });
-      
+
       return events;
     } catch (error) {
       logger.error('Failed to list upcoming events:', error.message);
@@ -285,5 +280,3 @@ class GoogleCalendarApiIntegration {
 }
 
 module.exports = GoogleCalendarApiIntegration;
-
-

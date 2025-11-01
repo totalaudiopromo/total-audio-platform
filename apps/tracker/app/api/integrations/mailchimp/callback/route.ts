@@ -26,7 +26,11 @@ export async function GET(request: NextRequest) {
     }
 
     const oauthHandler = new OAuthHandler();
-    const { tokens, userId } = await oauthHandler.handleCallback('mailchimp', code, state);
+    const { tokens, userId } = await oauthHandler.handleCallback(
+      'mailchimp',
+      code,
+      state
+    );
     await oauthHandler.saveConnection(userId, 'mailchimp', tokens);
 
     return NextResponse.redirect(

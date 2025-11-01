@@ -30,7 +30,7 @@ const REDIRECT_URI = 'https://intel.totalaudiopromo.com/auth/threads/callback';
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 function question(query: string): Promise<string> {
@@ -63,7 +63,8 @@ async function getAccessToken() {
   const state = Math.random().toString(36).substring(7);
   const scope = 'threads_basic,threads_content_publish';
 
-  const authUrl = `https://threads.net/oauth/authorize?` +
+  const authUrl =
+    `https://threads.net/oauth/authorize?` +
     `client_id=${APP_ID}&` +
     `redirect_uri=${encodeURIComponent(REDIRECT_URI)}&` +
     `scope=${encodeURIComponent(scope)}&` +
@@ -75,7 +76,9 @@ async function getAccessToken() {
   console.log('');
 
   // Step 2: Get authorization code from user
-  const code = await question('Step 2: After authorization, paste the "code" parameter from the redirect URL: ');
+  const code = await question(
+    'Step 2: After authorization, paste the "code" parameter from the redirect URL: '
+  );
 
   console.log('\nExchanging code for short-lived access token...\n');
 
@@ -83,11 +86,11 @@ async function getAccessToken() {
   try {
     const shortLivedResponse = await fetch(
       `https://graph.threads.net/oauth/access_token?` +
-      `client_id=${APP_ID}&` +
-      `client_secret=${APP_SECRET}&` +
-      `grant_type=authorization_code&` +
-      `redirect_uri=${encodeURIComponent(REDIRECT_URI)}&` +
-      `code=${code.trim()}`
+        `client_id=${APP_ID}&` +
+        `client_secret=${APP_SECRET}&` +
+        `grant_type=authorization_code&` +
+        `redirect_uri=${encodeURIComponent(REDIRECT_URI)}&` +
+        `code=${code.trim()}`
     );
 
     const shortLivedData = await shortLivedResponse.json();
@@ -102,9 +105,9 @@ async function getAccessToken() {
 
       const longLivedResponse = await fetch(
         `https://graph.threads.net/access_token?` +
-        `grant_type=th_exchange_token&` +
-        `client_secret=${APP_SECRET}&` +
-        `access_token=${shortLivedData.access_token}`
+          `grant_type=th_exchange_token&` +
+          `client_secret=${APP_SECRET}&` +
+          `access_token=${shortLivedData.access_token}`
       );
 
       const longLivedData = await longLivedResponse.json();
@@ -114,7 +117,13 @@ async function getAccessToken() {
         console.log('');
         console.log('Access Token:', longLivedData.access_token);
         console.log('User ID:', shortLivedData.user_id);
-        console.log('Token expires in:', longLivedData.expires_in, 'seconds (', Math.floor(longLivedData.expires_in / 86400), 'days )');
+        console.log(
+          'Token expires in:',
+          longLivedData.expires_in,
+          'seconds (',
+          Math.floor(longLivedData.expires_in / 86400),
+          'days )'
+        );
         console.log('');
         console.log('Add these to your .env.local and Vercel environment variables:');
         console.log(`THREADS_USER_ID=${shortLivedData.user_id}`);

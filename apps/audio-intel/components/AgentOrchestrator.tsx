@@ -1,8 +1,17 @@
-"use client";
+'use client';
 
 import { useState, useCallback } from 'react';
 import { Button } from './ui/button';
-import { Instagram, FileText, Mail, Edit, Rocket, Package, Target, AlertTriangle } from 'lucide-react';
+import {
+  Instagram,
+  FileText,
+  Mail,
+  Edit,
+  Rocket,
+  Package,
+  Target,
+  AlertTriangle,
+} from 'lucide-react';
 
 interface AgentResult {
   platform?: string;
@@ -82,16 +91,18 @@ export default function AgentOrchestrator() {
               Workflow: {result.workflowName}
             </h3>
             <p className="text-blue-700 mb-4">
-              Status: <span className="font-semibold">{result.status}</span> • 
-              Duration: <span className="font-semibold">{result.duration}ms</span> • 
-              Steps: <span className="font-semibold">{result.steps.length}</span>
+              Status: <span className="font-semibold">{result.status}</span> • Duration:{' '}
+              <span className="font-semibold">{result.duration}ms</span> • Steps:{' '}
+              <span className="font-semibold">{result.steps.length}</span>
             </p>
-            
+
             <div className="grid gap-4">
               {Object.entries(result.results).map(([key, content]) => (
                 <div key={key} className="bg-white p-4 rounded-lg border border-blue-200">
                   <h4 className="font-semibold text-blue-800 mb-2 capitalize">
-                    {key.replace('content_generateSocialContent', 'Social Media Content').replace('_', ' ')}
+                    {key
+                      .replace('content_generateSocialContent', 'Social Media Content')
+                      .replace('_', ' ')}
                   </h4>
                   {content.platform && (
                     <p className="text-sm text-blue-600 mb-2">
@@ -114,9 +125,7 @@ export default function AgentOrchestrator() {
                     </p>
                   )}
                   {content.characterCount && (
-                    <p className="text-xs text-gray-500">
-                      {content.characterCount} characters
-                    </p>
+                    <p className="text-xs text-gray-500">{content.characterCount} characters</p>
                   )}
                 </div>
               ))}
@@ -140,14 +149,14 @@ export default function AgentOrchestrator() {
               )}
             </div>
           )}
-          
+
           {result.subject && (
             <div className="mb-4">
               <h4 className="font-semibold text-gray-700 mb-2">Subject Line:</h4>
               <p className="text-lg font-medium text-gray-900">{result.subject}</p>
             </div>
           )}
-          
+
           {result.text && (
             <div className="mb-4">
               <h4 className="font-semibold text-gray-700 mb-2">Content:</h4>
@@ -174,27 +183,30 @@ export default function AgentOrchestrator() {
               </div>
             </div>
           )}
-          
+
           {result.hashtags && result.hashtags.length > 0 && (
             <div className="mb-4">
               <h4 className="font-semibold text-gray-700 mb-2">Hashtags:</h4>
               <div className="flex flex-wrap gap-2">
                 {result.hashtags.map((hashtag, index) => (
-                  <span key={index} className="px-2 py-1 bg-blue-100 text-blue-800 rounded-md text-sm">
+                  <span
+                    key={index}
+                    className="px-2 py-1 bg-blue-100 text-blue-800 rounded-md text-sm"
+                  >
                     {hashtag}
                   </span>
                 ))}
               </div>
             </div>
           )}
-          
+
           {result.callToAction && (
             <div className="mb-4">
               <h4 className="font-semibold text-gray-700 mb-2">Call to Action:</h4>
               <p className="text-blue-600 font-medium">{result.callToAction}</p>
             </div>
           )}
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-gray-200">
             {result.characterCount && (
               <div className="text-center">
@@ -210,32 +222,42 @@ export default function AgentOrchestrator() {
             )}
             {result.readabilityScore && (
               <div className="text-center">
-                <p className="text-2xl font-bold text-green-600">{Math.round(result.readabilityScore)}</p>
+                <p className="text-2xl font-bold text-green-600">
+                  {Math.round(result.readabilityScore)}
+                </p>
                 <p className="text-sm text-gray-600">Readability</p>
               </div>
             )}
             {result.engagementPrediction && (
               <div className="text-center">
-                <p className="text-2xl font-bold text-blue-600">{result.engagementPrediction.engagementRate}</p>
+                <p className="text-2xl font-bold text-blue-600">
+                  {result.engagementPrediction.engagementRate}
+                </p>
                 <p className="text-sm text-gray-600">Est. Engagement</p>
               </div>
             )}
           </div>
-          
+
           {result.engagementPrediction && (
             <div className="mt-4 pt-4 border-t border-gray-200">
               <h4 className="font-semibold text-gray-700 mb-2">Engagement Predictions:</h4>
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
-                  <p className="text-lg font-bold text-red-500">{result.engagementPrediction.expectedLikes}</p>
+                  <p className="text-lg font-bold text-red-500">
+                    {result.engagementPrediction.expectedLikes}
+                  </p>
                   <p className="text-sm text-gray-600">Likes</p>
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-green-500">{result.engagementPrediction.expectedShares}</p>
+                  <p className="text-lg font-bold text-green-500">
+                    {result.engagementPrediction.expectedShares}
+                  </p>
                   <p className="text-sm text-gray-600">Shares</p>
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-blue-500">{result.engagementPrediction.expectedComments}</p>
+                  <p className="text-lg font-bold text-blue-500">
+                    {result.engagementPrediction.expectedComments}
+                  </p>
                   <p className="text-sm text-gray-600">Comments</p>
                 </div>
               </div>
@@ -255,7 +277,7 @@ export default function AgentOrchestrator() {
         <p className="text-blue-700 text-center mb-6">
           AI-powered content generation at Sprint Week velocity
         </p>
-        
+
         {/* Quick Actions */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           <Button
@@ -263,28 +285,32 @@ export default function AgentOrchestrator() {
             disabled={isGenerating}
             className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3"
           >
-            <Instagram className="w-4 h-4 inline mr-2" />Instagram Post
+            <Instagram className="w-4 h-4 inline mr-2" />
+            Instagram Post
           </Button>
           <Button
             onClick={() => executeAgent('generate', 'press-release')}
             disabled={isGenerating}
             className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3"
           >
-            <FileText className="w-4 h-4 inline mr-2" />Press Release
+            <FileText className="w-4 h-4 inline mr-2" />
+            Press Release
           </Button>
           <Button
             onClick={() => executeAgent('generate', 'email-campaign')}
             disabled={isGenerating}
             className="bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white font-semibold py-3"
           >
-            <Mail className="w-4 h-4 inline mr-2" />Email Campaign
+            <Mail className="w-4 h-4 inline mr-2" />
+            Email Campaign
           </Button>
           <Button
             onClick={() => executeAgent('generate', 'blog-post')}
             disabled={isGenerating}
             className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-semibold py-3"
           >
-            <Edit className="w-4 h-4 inline mr-2" />Blog Article
+            <Edit className="w-4 h-4 inline mr-2" />
+            Blog Article
           </Button>
         </div>
 
@@ -295,7 +321,8 @@ export default function AgentOrchestrator() {
             disabled={isGenerating}
             className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-xl"
           >
-            <Rocket className="w-4 h-4 inline mr-2" />Social Media Blitz
+            <Rocket className="w-4 h-4 inline mr-2" />
+            Social Media Blitz
             <span className="block text-xs mt-1 opacity-90">All platforms</span>
           </Button>
           <Button
@@ -303,7 +330,8 @@ export default function AgentOrchestrator() {
             disabled={isGenerating}
             className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-xl"
           >
-            <Package className="w-4 h-4 inline mr-2" />Press Package
+            <Package className="w-4 h-4 inline mr-2" />
+            Press Package
             <span className="block text-xs mt-1 opacity-90">Complete suite</span>
           </Button>
           <Button
@@ -311,7 +339,8 @@ export default function AgentOrchestrator() {
             disabled={isGenerating}
             className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-xl"
           >
-            <Target className="w-4 h-4 inline mr-2" />Full Content Suite
+            <Target className="w-4 h-4 inline mr-2" />
+            Full Content Suite
             <span className="block text-xs mt-1 opacity-90">Everything included</span>
           </Button>
         </div>

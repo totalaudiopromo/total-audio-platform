@@ -81,12 +81,7 @@ node test-email-tracking.js
 
 ```javascript
 const tracker = new UniversalEmailTracker();
-const trackedEmail = tracker.prepareEmailForTracking(
-  emailContent,
-  emailId,
-  contactId,
-  campaignId
-);
+const trackedEmail = tracker.prepareEmailForTracking(emailContent, emailId, contactId, campaignId);
 ```
 
 2. Copy the tracked content
@@ -98,7 +93,7 @@ const trackedEmail = tracker.prepareEmailForTracking(
 ```javascript
 // Use Gmail API with tracked content
 const message = {
-  raw: Buffer.from(trackedEmail.content).toString('base64')
+  raw: Buffer.from(trackedEmail.content).toString('base64'),
 };
 gmail.users.messages.send({ userId: 'me', resource: { raw: message } });
 ```
@@ -119,11 +114,11 @@ const campaign = {
   settings: {
     subject_line: 'Your Subject',
     from_name: 'Chris Schofield',
-    reply_to: 'chrisschofield@libertymusicpr.com'
+    reply_to: 'chrisschofield@libertymusicpr.com',
   },
   content: {
-    html: trackedEmail.content
-  }
+    html: trackedEmail.content,
+  },
 };
 ```
 
@@ -214,11 +209,11 @@ console.log(`Engagement Score: ${engagement.engagementScore}/100`);
 
 ## 💰 **Cost Comparison**
 
-| Service | Monthly Cost | Features |
-|---------|-------------|----------|
-| **Mailchimp** | £10-50+ | Basic tracking, limited contacts |
-| **Constant Contact** | £15-45+ | Email marketing, basic analytics |
-| **Our System** | **£0** | Full tracking, unlimited contacts, custom analytics |
+| Service              | Monthly Cost | Features                                            |
+| -------------------- | ------------ | --------------------------------------------------- |
+| **Mailchimp**        | £10-50+      | Basic tracking, limited contacts                    |
+| **Constant Contact** | £15-45+      | Email marketing, basic analytics                    |
+| **Our System**       | **£0**       | Full tracking, unlimited contacts, custom analytics |
 
 ## 🚀 **Advanced Features**
 

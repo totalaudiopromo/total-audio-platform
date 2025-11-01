@@ -73,11 +73,16 @@ export function PitchAnalyser({ pitchBody, subjectLine, contactType }: PitchAnal
 
   const getGradeLabel = (grade: string) => {
     switch (grade) {
-      case 'excellent': return '🔥 Excellent';
-      case 'good': return '✅ Good';
-      case 'needs_work': return '⚠️ Needs Work';
-      case 'poor': return '❌ Needs Major Revision';
-      default: return grade;
+      case 'excellent':
+        return '🔥 Excellent';
+      case 'good':
+        return '✅ Good';
+      case 'needs_work':
+        return '⚠️ Needs Work';
+      case 'poor':
+        return '❌ Needs Major Revision';
+      default:
+        return grade;
     }
   };
 
@@ -140,15 +145,21 @@ export function PitchAnalyser({ pitchBody, subjectLine, contactType }: PitchAnal
               <div className="mt-3 space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Formality:</span>
-                  <span className="font-semibold capitalize">{analysis.toneAnalysis.formality.replace('_', ' ')}</span>
+                  <span className="font-semibold capitalize">
+                    {analysis.toneAnalysis.formality.replace('_', ' ')}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Enthusiasm:</span>
-                  <span className="font-semibold capitalize">{analysis.toneAnalysis.enthusiasm}</span>
+                  <span className="font-semibold capitalize">
+                    {analysis.toneAnalysis.enthusiasm}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Personalisation:</span>
-                  <span className="font-semibold capitalize">{analysis.toneAnalysis.personalisation}</span>
+                  <span className="font-semibold capitalize">
+                    {analysis.toneAnalysis.personalisation}
+                  </span>
                 </div>
               </div>
             </div>
@@ -164,11 +175,15 @@ export function PitchAnalyser({ pitchBody, subjectLine, contactType }: PitchAnal
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Optimal Length:</span>
-                  <span className={`font-semibold ${analysis.lengthAnalysis.isOptimal ? 'text-green-600' : 'text-amber-600'}`}>
+                  <span
+                    className={`font-semibold ${analysis.lengthAnalysis.isOptimal ? 'text-green-600' : 'text-amber-600'}`}
+                  >
                     {analysis.lengthAnalysis.isOptimal ? 'Yes ✓' : 'No ⚠️'}
                   </span>
                 </div>
-                <p className="mt-2 text-xs text-gray-600">{analysis.lengthAnalysis.recommendation}</p>
+                <p className="mt-2 text-xs text-gray-600">
+                  {analysis.lengthAnalysis.recommendation}
+                </p>
               </div>
             </div>
           </div>
@@ -234,10 +249,7 @@ export function PitchAnalyser({ pitchBody, subjectLine, contactType }: PitchAnal
           )}
 
           {/* Analyse Again Button */}
-          <button
-            onClick={() => setAnalysis(null)}
-            className="subtle-button w-full justify-center"
-          >
+          <button onClick={() => setAnalysis(null)} className="subtle-button w-full justify-center">
             Analyse Again
           </button>
         </div>

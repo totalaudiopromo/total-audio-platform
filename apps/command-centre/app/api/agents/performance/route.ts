@@ -38,7 +38,7 @@ const mockPerformanceData: AgentPerformanceMetrics[] = [
     isActive: true,
     lastActivity: '2 minutes ago',
     performanceScore: 92,
-    improvementTrend: 'up'
+    improvementTrend: 'up',
   },
   {
     agentId: 'agent_2',
@@ -54,7 +54,7 @@ const mockPerformanceData: AgentPerformanceMetrics[] = [
     isActive: true,
     lastActivity: '5 minutes ago',
     performanceScore: 96,
-    improvementTrend: 'up'
+    improvementTrend: 'up',
   },
   {
     agentId: 'agent_3',
@@ -70,7 +70,7 @@ const mockPerformanceData: AgentPerformanceMetrics[] = [
     isActive: true,
     lastActivity: '1 minute ago',
     performanceScore: 89,
-    improvementTrend: 'stable'
+    improvementTrend: 'stable',
   },
   {
     agentId: 'agent_4',
@@ -86,8 +86,8 @@ const mockPerformanceData: AgentPerformanceMetrics[] = [
     isActive: false,
     lastActivity: '1 hour ago',
     performanceScore: 85,
-    improvementTrend: 'down'
-  }
+    improvementTrend: 'down',
+  },
 ];
 
 export async function GET(request: NextRequest) {
@@ -99,17 +99,14 @@ export async function GET(request: NextRequest) {
     // If specific agent requested, return just that agent's data
     if (agentId) {
       const agentData = mockPerformanceData.find(agent => agent.agentId === agentId);
-      
+
       if (!agentData) {
-        return NextResponse.json(
-          { success: false, error: 'Agent not found' },
-          { status: 404 }
-        );
+        return NextResponse.json({ success: false, error: 'Agent not found' }, { status: 404 });
       }
 
       return NextResponse.json({
         success: true,
-        data: agentData
+        data: agentData,
       });
     }
 
@@ -125,23 +122,26 @@ export async function GET(request: NextRequest) {
           totalRevenue: mockPerformanceData.reduce((sum, a) => sum + a.revenueGenerated, 0),
           totalTimeSaved: mockPerformanceData.reduce((sum, a) => sum + a.timesSaved, 0),
           averageSuccessRate: Math.round(
-            mockPerformanceData.reduce((sum, a) => sum + a.successRate, 0) / mockPerformanceData.length
+            mockPerformanceData.reduce((sum, a) => sum + a.successRate, 0) /
+              mockPerformanceData.length
           ),
           averageCustomerSatisfaction: parseFloat(
-            (mockPerformanceData.reduce((sum, a) => sum + a.customerSatisfaction, 0) / mockPerformanceData.length).toFixed(1)
-          )
-        }
-      }
+            (
+              mockPerformanceData.reduce((sum, a) => sum + a.customerSatisfaction, 0) /
+              mockPerformanceData.length
+            ).toFixed(1)
+          ),
+        },
+      },
     });
-
   } catch (error) {
     console.error('Agent performance API error:', error);
-    
+
     return NextResponse.json(
-      { 
-        success: false, 
+      {
+        success: false,
         error: 'Failed to fetch agent performance data',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
     );
@@ -175,24 +175,23 @@ export async function POST(request: NextRequest) {
           updatedAgent.customerSatisfaction = value;
           break;
       }
-      
+
       updatedAgent.lastActivity = 'Just now';
     }
 
     return NextResponse.json({
       success: true,
       message: 'Agent performance updated successfully',
-      data: updatedAgent
+      data: updatedAgent,
     });
-
   } catch (error) {
     console.error('Agent performance update error:', error);
-    
+
     return NextResponse.json(
-      { 
-        success: false, 
+      {
+        success: false,
         error: 'Failed to update agent performance',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
     );

@@ -40,7 +40,10 @@ export class ClaudeService {
     }
   }
 
-  async generateCampaignReport(campaignId: string, reportType: 'WEEKLY' | 'MONTHLY' | 'CAMPAIGN_SUMMARY'): Promise<{
+  async generateCampaignReport(
+    campaignId: string,
+    reportType: 'WEEKLY' | 'MONTHLY' | 'CAMPAIGN_SUMMARY'
+  ): Promise<{
     content: string;
     insights: string[];
     recommendations: string[];
@@ -104,10 +107,22 @@ export class ClaudeService {
   }
 
   private prepareCampaignData(campaign: any): any {
-    const totalEmails = campaign.emailCampaigns.reduce((sum: number, ec: any) => sum + ec.recipientCount, 0);
-    const totalOpens = campaign.emailCampaigns.reduce((sum: number, ec: any) => sum + (ec.analytics?.opens || 0), 0);
-    const totalClicks = campaign.emailCampaigns.reduce((sum: number, ec: any) => sum + (ec.analytics?.clicks || 0), 0);
-    const totalReplies = campaign.emailCampaigns.reduce((sum: number, ec: any) => sum + (ec.analytics?.replies || 0), 0);
+    const totalEmails = campaign.emailCampaigns.reduce(
+      (sum: number, ec: any) => sum + ec.recipientCount,
+      0
+    );
+    const totalOpens = campaign.emailCampaigns.reduce(
+      (sum: number, ec: any) => sum + (ec.analytics?.opens || 0),
+      0
+    );
+    const totalClicks = campaign.emailCampaigns.reduce(
+      (sum: number, ec: any) => sum + (ec.analytics?.clicks || 0),
+      0
+    );
+    const totalReplies = campaign.emailCampaigns.reduce(
+      (sum: number, ec: any) => sum + (ec.analytics?.replies || 0),
+      0
+    );
 
     const openRate = totalEmails > 0 ? (totalOpens / totalEmails) * 100 : 0;
     const clickRate = totalEmails > 0 ? (totalClicks / totalEmails) * 100 : 0;
@@ -142,8 +157,9 @@ export class ClaudeService {
   }
 
   private buildReportPrompt(campaignData: any, reportType: string): string {
-    const timeframe = reportType === 'WEEKLY' ? 'week' : reportType === 'MONTHLY' ? 'month' : 'entire campaign';
-    
+    const timeframe =
+      reportType === 'WEEKLY' ? 'week' : reportType === 'MONTHLY' ? 'month' : 'entire campaign';
+
     return `
 You are a music promotion analytics expert. Generate a comprehensive ${reportType.toLowerCase().replace('_', ' ')} report for the following campaign data:
 
@@ -163,19 +179,28 @@ Performance Metrics:
 - Reply Rate: ${campaignData.replyRate.toFixed(2)}%
 
 Email Campaigns:
-${campaignData.emailCampaigns.map((ec: any) => `
+${campaignData.emailCampaigns
+  .map(
+    (ec: any) => `
 - Subject: ${ec.subject}
 - Recipients: ${ec.recipientCount}
 - Sent: ${ec.sentAt}
 - Opens: ${ec.analytics?.opens || 0}
 - Clicks: ${ec.analytics?.clicks || 0}
 - Replies: ${ec.analytics?.replies || 0}
-`).join('')}
+`
+  )
+  .join('')}
 
 Recent Interactions:
-${campaignData.interactions.slice(0, 10).map((i: any) => `
+${campaignData.interactions
+  .slice(0, 10)
+  .map(
+    (i: any) => `
 - ${i.type} from ${i.contact} at ${i.timestamp}
-`).join('')}
+`
+  )
+  .join('')}
 
 Please provide:
 1. A detailed narrative report analyzing the campaign performance for this ${timeframe}

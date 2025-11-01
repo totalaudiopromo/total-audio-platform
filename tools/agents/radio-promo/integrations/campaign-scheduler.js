@@ -2,7 +2,7 @@
 
 /**
  * Campaign Timeline & Scheduling System
- * 
+ *
  * Coordinates campaign timing and scheduling
  * Plans follow-up sequences and campaign milestones
  * Tracks campaign progress and deadlines
@@ -17,11 +17,11 @@ class CampaignScheduler {
     this.schedules = new Map();
     this.milestones = new Map();
     this.deadlines = new Map();
-    
+
     // Data persistence
     this.dataFile = path.join(__dirname, '..', 'data', 'campaign-scheduler.json');
     this.loadData();
-    
+
     // Start scheduler
     this.startScheduler();
   }
@@ -31,29 +31,31 @@ class CampaignScheduler {
    */
   async createCampaignTimeline(campaignData, options = {}) {
     console.log(`📅 Creating timeline for campaign: ${campaignData.campaignId}`);
-    
+
     try {
       const timeline = {
         campaignId: campaignData.campaignId,
         artistName: campaignData.artistName,
         trackTitle: campaignData.trackTitle,
         startDate: campaignData.startDate || new Date().toISOString(),
-        endDate: campaignData.endDate || this.calculateEndDate(campaignData.startDate, options.duration),
+        endDate:
+          campaignData.endDate || this.calculateEndDate(campaignData.startDate, options.duration),
         duration: options.duration || 30, // days
         status: 'active',
         phases: this.generateCampaignPhases(campaignData, options),
         milestones: this.generateMilestones(campaignData, options),
         deadlines: this.generateDeadlines(campaignData, options),
-        createdAt: Date.now()
+        createdAt: Date.now(),
       };
-      
+
       this.campaigns.set(campaignData.campaignId, timeline);
       this.saveData();
-      
-      console.log(`✅ Timeline created with ${timeline.phases.length} phases and ${timeline.milestones.length} milestones`);
-      
+
+      console.log(
+        `✅ Timeline created with ${timeline.phases.length} phases and ${timeline.milestones.length} milestones`
+      );
+
       return timeline;
-      
     } catch (error) {
       console.error('❌ Failed to create campaign timeline:', error.message);
       throw error;
@@ -74,9 +76,9 @@ class CampaignScheduler {
           'Set up tracking systems',
           'Prepare contact lists',
           'Test email templates',
-          'Configure analytics'
+          'Configure analytics',
         ],
-        status: 'pending'
+        status: 'pending',
       },
       {
         name: 'Initial Outreach',
@@ -86,9 +88,9 @@ class CampaignScheduler {
           'Send initial pitches',
           'Follow up on responses',
           'Track engagement',
-          'Adjust strategy based on feedback'
+          'Adjust strategy based on feedback',
         ],
-        status: 'pending'
+        status: 'pending',
       },
       {
         name: 'Follow-up Phase',
@@ -98,9 +100,9 @@ class CampaignScheduler {
           'Execute follow-up sequences',
           'Handle responses automatically',
           'Build relationships',
-          'Monitor social media opportunities'
+          'Monitor social media opportunities',
         ],
-        status: 'pending'
+        status: 'pending',
       },
       {
         name: 'Peak Activity',
@@ -110,9 +112,9 @@ class CampaignScheduler {
           'Intensify follow-ups',
           'Leverage positive responses',
           'Capitalize on momentum',
-          'Monitor play results'
+          'Monitor play results',
         ],
-        status: 'pending'
+        status: 'pending',
       },
       {
         name: 'Maintenance',
@@ -122,12 +124,12 @@ class CampaignScheduler {
           'Maintain relationships',
           'Track and report results',
           'Plan future campaigns',
-          'Gather feedback'
+          'Gather feedback',
         ],
-        status: 'pending'
-      }
+        status: 'pending',
+      },
     ];
-    
+
     return phases;
   }
 
@@ -142,7 +144,7 @@ class CampaignScheduler {
         description: 'Official campaign start',
         dueDate: new Date(campaignData.startDate).toISOString(),
         status: 'pending',
-        priority: 'high'
+        priority: 'high',
       },
       {
         id: `milestone-${campaignData.campaignId}-2`,
@@ -150,7 +152,7 @@ class CampaignScheduler {
         description: 'Reach first 10 contacts',
         dueDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
-        priority: 'high'
+        priority: 'high',
       },
       {
         id: `milestone-${campaignData.campaignId}-3`,
@@ -158,7 +160,7 @@ class CampaignScheduler {
         description: 'Receive first positive response',
         dueDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
-        priority: 'medium'
+        priority: 'medium',
       },
       {
         id: `milestone-${campaignData.campaignId}-4`,
@@ -166,7 +168,7 @@ class CampaignScheduler {
         description: 'Achieve first radio play',
         dueDate: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
-        priority: 'high'
+        priority: 'high',
       },
       {
         id: `milestone-${campaignData.campaignId}-5`,
@@ -174,7 +176,7 @@ class CampaignScheduler {
         description: 'Contact 50% of target list',
         dueDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
-        priority: 'medium'
+        priority: 'medium',
       },
       {
         id: `milestone-${campaignData.campaignId}-6`,
@@ -182,7 +184,7 @@ class CampaignScheduler {
         description: 'Reach campaign midpoint',
         dueDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
-        priority: 'medium'
+        priority: 'medium',
       },
       {
         id: `milestone-${campaignData.campaignId}-7`,
@@ -190,7 +192,7 @@ class CampaignScheduler {
         description: 'Contact entire target list',
         dueDate: new Date(Date.now() + 25 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
-        priority: 'high'
+        priority: 'high',
       },
       {
         id: `milestone-${campaignData.campaignId}-8`,
@@ -198,10 +200,10 @@ class CampaignScheduler {
         description: 'Complete all campaign activities',
         dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
-        priority: 'high'
-      }
+        priority: 'high',
+      },
     ];
-    
+
     return milestones;
   }
 
@@ -217,7 +219,7 @@ class CampaignScheduler {
         dueDate: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
         priority: 'high',
-        type: 'preparation'
+        type: 'preparation',
       },
       {
         id: `deadline-${campaignData.campaignId}-2`,
@@ -226,7 +228,7 @@ class CampaignScheduler {
         dueDate: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
         priority: 'high',
-        type: 'preparation'
+        type: 'preparation',
       },
       {
         id: `deadline-${campaignData.campaignId}-3`,
@@ -235,7 +237,7 @@ class CampaignScheduler {
         dueDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
         priority: 'medium',
-        type: 'execution'
+        type: 'execution',
       },
       {
         id: `deadline-${campaignData.campaignId}-4`,
@@ -244,7 +246,7 @@ class CampaignScheduler {
         dueDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
         priority: 'medium',
-        type: 'review'
+        type: 'review',
       },
       {
         id: `deadline-${campaignData.campaignId}-5`,
@@ -253,7 +255,7 @@ class CampaignScheduler {
         dueDate: new Date(Date.now() + 25 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
         priority: 'high',
-        type: 'execution'
+        type: 'execution',
       },
       {
         id: `deadline-${campaignData.campaignId}-6`,
@@ -262,10 +264,10 @@ class CampaignScheduler {
         dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
         status: 'pending',
         priority: 'high',
-        type: 'reporting'
-      }
+        type: 'reporting',
+      },
     ];
-    
+
     return deadlines;
   }
 
@@ -274,7 +276,7 @@ class CampaignScheduler {
    */
   calculateEndDate(startDate, duration) {
     const start = new Date(startDate);
-    const end = new Date(start.getTime() + (duration * 24 * 60 * 60 * 1000));
+    const end = new Date(start.getTime() + duration * 24 * 60 * 60 * 1000);
     return end.toISOString();
   }
 
@@ -283,7 +285,7 @@ class CampaignScheduler {
    */
   async scheduleTask(taskData) {
     console.log(`⏰ Scheduling task: ${taskData.name}`);
-    
+
     try {
       const task = {
         id: `task-${Date.now()}`,
@@ -295,16 +297,15 @@ class CampaignScheduler {
         status: 'scheduled',
         type: taskData.type || 'general',
         assignedTo: taskData.assignedTo,
-        createdAt: Date.now()
+        createdAt: Date.now(),
       };
-      
+
       this.schedules.set(task.id, task);
       this.saveData();
-      
+
       console.log(`✅ Task scheduled: ${task.name} (${task.dueDate})`);
-      
+
       return task;
-      
     } catch (error) {
       console.error('❌ Failed to schedule task:', error.message);
       throw error;
@@ -319,16 +320,16 @@ class CampaignScheduler {
     if (!milestone) {
       throw new Error(`Milestone not found: ${milestoneId}`);
     }
-    
+
     milestone.status = status;
     milestone.updatedAt = Date.now();
     milestone.notes = notes;
-    
+
     this.milestones.set(milestoneId, milestone);
     this.saveData();
-    
+
     console.log(`📊 Milestone updated: ${milestone.name} - ${status}`);
-    
+
     return milestone;
   }
 
@@ -340,16 +341,16 @@ class CampaignScheduler {
     if (!deadline) {
       throw new Error(`Deadline not found: ${deadlineId}`);
     }
-    
+
     deadline.status = status;
     deadline.updatedAt = Date.now();
     deadline.notes = notes;
-    
+
     this.deadlines.set(deadlineId, deadline);
     this.saveData();
-    
+
     console.log(`⏰ Deadline updated: ${deadline.name} - ${status}`);
-    
+
     return deadline;
   }
 
@@ -365,15 +366,15 @@ class CampaignScheduler {
    */
   getUpcomingDeadlines(days = 7) {
     const now = Date.now();
-    const cutoff = now + (days * 24 * 60 * 60 * 1000);
-    
+    const cutoff = now + days * 24 * 60 * 60 * 1000;
+
     const upcoming = Array.from(this.deadlines.values())
       .filter(deadline => {
         const dueDate = new Date(deadline.dueDate).getTime();
         return dueDate <= cutoff && deadline.status === 'pending';
       })
       .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
-    
+
     return upcoming;
   }
 
@@ -382,25 +383,22 @@ class CampaignScheduler {
    */
   getOverdueItems() {
     const now = Date.now();
-    
+
     const overdue = {
-      milestones: Array.from(this.milestones.values())
-        .filter(milestone => {
-          const dueDate = new Date(milestone.dueDate).getTime();
-          return dueDate < now && milestone.status === 'pending';
-        }),
-      deadlines: Array.from(this.deadlines.values())
-        .filter(deadline => {
-          const dueDate = new Date(deadline.dueDate).getTime();
-          return dueDate < now && deadline.status === 'pending';
-        }),
-      tasks: Array.from(this.schedules.values())
-        .filter(task => {
-          const dueDate = new Date(task.dueDate).getTime();
-          return dueDate < now && task.status === 'scheduled';
-        })
+      milestones: Array.from(this.milestones.values()).filter(milestone => {
+        const dueDate = new Date(milestone.dueDate).getTime();
+        return dueDate < now && milestone.status === 'pending';
+      }),
+      deadlines: Array.from(this.deadlines.values()).filter(deadline => {
+        const dueDate = new Date(deadline.dueDate).getTime();
+        return dueDate < now && deadline.status === 'pending';
+      }),
+      tasks: Array.from(this.schedules.values()).filter(task => {
+        const dueDate = new Date(task.dueDate).getTime();
+        return dueDate < now && task.status === 'scheduled';
+      }),
     };
-    
+
     return overdue;
   }
 
@@ -410,32 +408,31 @@ class CampaignScheduler {
   getCampaignProgress(campaignId) {
     const timeline = this.campaigns.get(campaignId);
     if (!timeline) return null;
-    
-    const milestones = Array.from(this.milestones.values())
-      .filter(m => m.id.includes(campaignId));
-    
-    const deadlines = Array.from(this.deadlines.values())
-      .filter(d => d.id.includes(campaignId));
-    
+
+    const milestones = Array.from(this.milestones.values()).filter(m => m.id.includes(campaignId));
+
+    const deadlines = Array.from(this.deadlines.values()).filter(d => d.id.includes(campaignId));
+
     const completedMilestones = milestones.filter(m => m.status === 'completed').length;
     const completedDeadlines = deadlines.filter(d => d.status === 'completed').length;
-    
+
     const progress = {
       campaignId,
       totalMilestones: milestones.length,
       completedMilestones,
-      milestoneProgress: milestones.length > 0 ? (completedMilestones / milestones.length) * 100 : 0,
+      milestoneProgress:
+        milestones.length > 0 ? (completedMilestones / milestones.length) * 100 : 0,
       totalDeadlines: deadlines.length,
       completedDeadlines,
       deadlineProgress: deadlines.length > 0 ? (completedDeadlines / deadlines.length) * 100 : 0,
       overallProgress: 0,
       status: timeline.status,
-      daysRemaining: this.calculateDaysRemaining(timeline.endDate)
+      daysRemaining: this.calculateDaysRemaining(timeline.endDate),
     };
-    
+
     // Calculate overall progress
     progress.overallProgress = (progress.milestoneProgress + progress.deadlineProgress) / 2;
-    
+
     return progress;
   }
 
@@ -454,17 +451,23 @@ class CampaignScheduler {
    */
   startScheduler() {
     console.log('⏰ Starting campaign scheduler...');
-    
+
     // Check for overdue items every hour
-    setInterval(() => {
-      this.checkOverdueItems();
-    }, 60 * 60 * 1000);
-    
+    setInterval(
+      () => {
+        this.checkOverdueItems();
+      },
+      60 * 60 * 1000
+    );
+
     // Check for upcoming deadlines every 6 hours
-    setInterval(() => {
-      this.checkUpcomingDeadlines();
-    }, 6 * 60 * 60 * 1000);
-    
+    setInterval(
+      () => {
+        this.checkUpcomingDeadlines();
+      },
+      6 * 60 * 60 * 1000
+    );
+
     console.log('✅ Campaign scheduler started');
   }
 
@@ -473,8 +476,9 @@ class CampaignScheduler {
    */
   checkOverdueItems() {
     const overdue = this.getOverdueItems();
-    const totalOverdue = overdue.milestones.length + overdue.deadlines.length + overdue.tasks.length;
-    
+    const totalOverdue =
+      overdue.milestones.length + overdue.deadlines.length + overdue.tasks.length;
+
     if (totalOverdue > 0) {
       console.log(`⚠️  OVERDUE ITEMS ALERT: ${totalOverdue} items overdue`);
       console.log(`   Milestones: ${overdue.milestones.length}`);
@@ -488,7 +492,7 @@ class CampaignScheduler {
    */
   checkUpcomingDeadlines() {
     const upcoming = this.getUpcomingDeadlines(3); // Next 3 days
-    
+
     if (upcoming.length > 0) {
       console.log(`📅 UPCOMING DEADLINES: ${upcoming.length} items due soon`);
       upcoming.forEach(deadline => {
@@ -506,7 +510,7 @@ class CampaignScheduler {
     const milestones = Array.from(this.milestones.values());
     const deadlines = Array.from(this.deadlines.values());
     const tasks = Array.from(this.schedules.values());
-    
+
     const analytics = {
       totalCampaigns: campaigns.length,
       activeCampaigns: campaigns.filter(c => c.status === 'active').length,
@@ -518,9 +522,9 @@ class CampaignScheduler {
       completedTasks: tasks.filter(t => t.status === 'completed').length,
       overdueItems: this.getOverdueItems(),
       upcomingDeadlines: this.getUpcomingDeadlines(7),
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date().toISOString(),
     };
-    
+
     return analytics;
   }
 
@@ -548,15 +552,15 @@ class CampaignScheduler {
       if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
       }
-      
+
       const data = {
         campaigns: Array.from(this.campaigns.entries()),
         schedules: Array.from(this.schedules.entries()),
         milestones: Array.from(this.milestones.entries()),
         deadlines: Array.from(this.deadlines.entries()),
-        lastSaved: Date.now()
+        lastSaved: Date.now(),
       };
-      
+
       fs.writeFileSync(this.dataFile, JSON.stringify(data, null, 2));
     } catch (error) {
       console.error('❌ Failed to save scheduler data:', error.message);
@@ -568,7 +572,7 @@ class CampaignScheduler {
    */
   async healthCheck() {
     const analytics = this.getSchedulerAnalytics();
-    
+
     return {
       status: 'healthy',
       totalCampaigns: analytics.totalCampaigns,
@@ -579,7 +583,7 @@ class CampaignScheduler {
       completedDeadlines: analytics.completedDeadlines,
       overdueItems: analytics.overdueItems,
       upcomingDeadlines: analytics.upcomingDeadlines,
-      lastChecked: new Date().toISOString()
+      lastChecked: new Date().toISOString(),
     };
   }
 }

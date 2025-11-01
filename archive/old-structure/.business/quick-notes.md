@@ -1,28 +1,32 @@
 # 📝 QUICK NOTES & IDEAS
 
-*Daily capture file - dump thoughts here, organize later*
+_Daily capture file - dump thoughts here, organize later_
 
 ## 📅 Today's Captures
 
 ### Ideas
+
 -
 
 ### Feedback Received
+
 -
 
 ### Partnership Opportunities
+
 -
 
 ### Technical Notes
+
 -
 
 ### Customer Insights
--
 
----
+- ***
 
 ## 🔄 Process Later
-*Items that need to be moved to proper docs*
+
+_Items that need to be moved to proper docs_
 
 - [ ]
 - [ ]
@@ -30,4 +34,4 @@
 
 ---
 
-*Quick capture format: Keep it simple, organize weekly*
+_Quick capture format: Keep it simple, organize weekly_

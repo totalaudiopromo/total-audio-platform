@@ -6,25 +6,21 @@
 **Artist Inspiration**
 
 - The Prodigy
-    
-    [Instagram](https://www.instagram.com/pawsaofficial/)
-    
-    - headband
-    - tall
-    - chill dance moves
+  [Instagram](https://www.instagram.com/pawsaofficial/)
+  - headband
+  - tall
+  - chill dance moves
 - The Chemical Brothers
-    
-    [Instagram](https://www.instagram.com/peggygou_/)
-    
-    - tattoos
-    - high fashion
+  [Instagram](https://www.instagram.com/peggygou_/)
+  - tattoos
+  - high fashion
 - Y U QT
-    
-    [Instagram](https://www.instagram.com/johnsummit/)
-    
-    - tequila
-    - baggy pants
-</aside>
+  [Instagram](https://www.instagram.com/johnsummit/)
+
+      - tequila
+      - baggy pants
+
+  </aside>
 
 <aside>
 <img src="https://www.notion.so/icons/view_gray.svg" alt="https://www.notion.so/icons/view_gray.svg" width="40px" />
@@ -32,13 +28,11 @@
 **My Visual Features**
 
 > Sportswear
-> 
 
 > Short Hair
-> 
 
 > Hat
-> 
+
 </aside>
 
 <aside>
@@ -47,13 +41,11 @@
 **My Personality/Interests**
 
 > Born in … 1988, Sowie
-> 
 
 > Moustache
-> 
 
 > Likes footie (Bolton)
-> 
+
 </aside>
 
 <aside>
@@ -63,8 +55,8 @@ Y U QT Artwork
 
 ![Y U QT – Sweet Fantasy.jpeg](Artist%20Vision%20Board%202230a35b21ed81d390aec51cf387aa9c/Y_U_QT__Sweet_Fantasy.jpeg)
 
-> 
-> 
+>
+
 </aside>
 
 <aside>
@@ -81,7 +73,7 @@ Record Ninja
 
 Chilled Dog
 
-![Padure Daniel (1).jpeg](Artist%20Vision%20Board%202230a35b21ed81d390aec51cf387aa9c/Padure_Daniel_(1).jpeg)
+![Padure Daniel (1).jpeg](<Artist%20Vision%20Board%202230a35b21ed81d390aec51cf387aa9c/Padure_Daniel_(1).jpeg>)
 
 </aside>
 
@@ -101,8 +93,8 @@ Land a sync deal
 
 ![republic_of_music_logo.jpeg](Artist%20Vision%20Board%202230a35b21ed81d390aec51cf387aa9c/republic_of_music_logo.jpeg)
 
-> 
-> 
+>
+
 </aside>
 
 <aside>
@@ -112,8 +104,8 @@ Get played on Radio 1 Dance
 
 ![jag.jpg](Artist%20Vision%20Board%202230a35b21ed81d390aec51cf387aa9c/jag.jpg)
 
-> 
-> 
+>
+
 </aside>
 
 <aside>

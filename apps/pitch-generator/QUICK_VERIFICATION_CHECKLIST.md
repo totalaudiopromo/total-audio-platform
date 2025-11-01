@@ -18,14 +18,16 @@ Go to: https://vercel.com/dashboard → Your Project → Settings → Environmen
 Check these are set for **Production**:
 
 #### Required (Core Functionality):
+
 - [ ] `ANTHROPIC_API_KEY` - For AI pitch generation (CRITICAL)
-- [ ] `NEXT_PUBLIC_SUPABASE_URL` 
+- [ ] `NEXT_PUBLIC_SUPABASE_URL`
 - [ ] `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - [ ] `SUPABASE_SERVICE_ROLE_KEY`
 - [ ] `NEXTAUTH_SECRET`
 - [ ] `NEXTAUTH_URL=https://pitch.totalaudiopromo.com`
 
 #### Optional (Enhanced Features):
+
 - [ ] `GOOGLE_CLIENT_ID` - For Google OAuth login
 - [ ] `GOOGLE_CLIENT_SECRET`
 - [ ] `STRIPE_SECRET_KEY` - For payment processing
@@ -69,6 +71,7 @@ Get your key from: https://console.anthropic.com/
 ## ✅ Success Criteria
 
 Your deployment is successful when:
+
 - [x] Site loads at https://pitch.totalaudiopromo.com
 - [x] Users can sign in
 - [x] Templates page shows 6 templates
@@ -80,4 +83,3 @@ Your deployment is successful when:
 **Current Status:** 95% Complete
 **Blocking Item:** Verify ANTHROPIC_API_KEY in Vercel
 **Time to Complete:** ~5 minutes
-

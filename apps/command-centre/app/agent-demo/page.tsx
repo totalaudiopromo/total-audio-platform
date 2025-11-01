@@ -9,14 +9,54 @@ const AgentDemoPage: React.FC = () => {
   const [response, setResponse] = useState<string>('');
 
   const agents = [
-    { id: 'user-acquisition', name: 'User Acquisition Agent', icon: '🎯', description: 'Helps with customer acquisition strategies and campaigns' },
-    { id: 'social-content', name: 'Social Content Agent', icon: '📱', description: 'Creates and optimizes social media content' },
-    { id: 'email-marketing', name: 'Email Marketing Agent', icon: '📧', description: 'Manages email campaigns and automation' },
-    { id: 'analytics', name: 'Analytics Agent', icon: '📊', description: 'Analyzes data and provides insights' },
-    { id: 'content-strategy', name: 'Content Strategy Agent', icon: '📝', description: 'Develops content strategies and calendars' },
-    { id: 'seo-optimization', name: 'SEO Optimization Agent', icon: '🔍', description: 'Optimizes content for search engines' },
-    { id: 'competitor-analysis', name: 'Competitor Analysis Agent', icon: '🔬', description: 'Monitors competitors and market trends' },
-    { id: 'revenue-optimization', name: 'Revenue Optimization Agent', icon: '💰', description: 'Identifies revenue opportunities and optimization' }
+    {
+      id: 'user-acquisition',
+      name: 'User Acquisition Agent',
+      icon: '🎯',
+      description: 'Helps with customer acquisition strategies and campaigns',
+    },
+    {
+      id: 'social-content',
+      name: 'Social Content Agent',
+      icon: '📱',
+      description: 'Creates and optimizes social media content',
+    },
+    {
+      id: 'email-marketing',
+      name: 'Email Marketing Agent',
+      icon: '📧',
+      description: 'Manages email campaigns and automation',
+    },
+    {
+      id: 'analytics',
+      name: 'Analytics Agent',
+      icon: '📊',
+      description: 'Analyzes data and provides insights',
+    },
+    {
+      id: 'content-strategy',
+      name: 'Content Strategy Agent',
+      icon: '📝',
+      description: 'Develops content strategies and calendars',
+    },
+    {
+      id: 'seo-optimization',
+      name: 'SEO Optimization Agent',
+      icon: '🔍',
+      description: 'Optimizes content for search engines',
+    },
+    {
+      id: 'competitor-analysis',
+      name: 'Competitor Analysis Agent',
+      icon: '🔬',
+      description: 'Monitors competitors and market trends',
+    },
+    {
+      id: 'revenue-optimization',
+      name: 'Revenue Optimization Agent',
+      icon: '💰',
+      description: 'Identifies revenue opportunities and optimization',
+    },
   ];
 
   const handleAgentSelect = (agentId: string) => {
@@ -36,8 +76,8 @@ const AgentDemoPage: React.FC = () => {
         body: JSON.stringify({
           agent: selectedAgent,
           message: userInput,
-          context: 'Command Centre personal use'
-        })
+          context: 'Command Centre personal use',
+        }),
       });
 
       const data = await response.json();
@@ -62,7 +102,7 @@ const AgentDemoPage: React.FC = () => {
         <div className="postcraft-section">
           <h2 className="postcraft-section-title mb-6">Select Your Agent</h2>
           <div className="space-y-3">
-            {agents.map((agent) => (
+            {agents.map(agent => (
               <button
                 key={agent.id}
                 onClick={() => handleAgentSelect(agent.id)}
@@ -92,17 +132,16 @@ const AgentDemoPage: React.FC = () => {
             <div className="space-y-6">
               <div className="postcraft-card bg-blue-50 border-blue-500">
                 <p className="postcraft-text">
-                  <strong className="font-black">Selected:</strong> {agents.find(a => a.id === selectedAgent)?.name}
+                  <strong className="font-black">Selected:</strong>{' '}
+                  {agents.find(a => a.id === selectedAgent)?.name}
                 </p>
               </div>
 
               <div>
-                <label className="postcraft-label mb-3">
-                  Your message:
-                </label>
+                <label className="postcraft-label mb-3">Your message:</label>
                 <textarea
                   value={userInput}
-                  onChange={(e) => setUserInput(e.target.value)}
+                  onChange={e => setUserInput(e.target.value)}
                   placeholder="Ask your agent anything..."
                   className="w-full p-4 border-3 border-black rounded-lg focus:ring-4 focus:ring-blue-500 focus:border-blue-500 font-medium transition-all"
                   rows={4}
@@ -126,7 +165,9 @@ const AgentDemoPage: React.FC = () => {
             </div>
           ) : (
             <div className="postcraft-card text-center py-12">
-              <p className="postcraft-text text-gray-500">Select an agent above to start chatting</p>
+              <p className="postcraft-text text-gray-500">
+                Select an agent above to start chatting
+              </p>
             </div>
           )}
         </div>

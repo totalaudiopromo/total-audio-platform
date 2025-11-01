@@ -24,7 +24,7 @@ class CoverageAgent {
     return {
       reportId: 'report_' + Date.now(),
       status: 'generated',
-      sections: ['overview', 'targeting', 'timeline']
+      sections: ['overview', 'targeting', 'timeline'],
     };
   }
 
@@ -34,7 +34,7 @@ class CoverageAgent {
       reportId: 'final_report_' + Date.now(),
       status: 'completed',
       format: 'PDF',
-      pages: 15
+      pages: 15,
     };
   }
 
@@ -43,7 +43,7 @@ class CoverageAgent {
       status: 'healthy',
       agent: this.name,
       version: this.version,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
   }
 

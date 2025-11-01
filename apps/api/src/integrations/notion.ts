@@ -17,11 +17,15 @@ export async function createSocialContentDatabase(parentPageId: string) {
       Platform: { rich_text: {} },
       Content: { rich_text: {} },
       CTA: { rich_text: {} },
-      Status: { select: { options: [
-        { name: 'Draft', color: 'yellow' },
-        { name: 'Scheduled', color: 'blue' },
-        { name: 'Published', color: 'green' },
-      ]}},
+      Status: {
+        select: {
+          options: [
+            { name: 'Draft', color: 'yellow' },
+            { name: 'Scheduled', color: 'blue' },
+            { name: 'Published', color: 'green' },
+          ],
+        },
+      },
     },
   });
 }
@@ -47,4 +51,4 @@ export async function addSocialContentEntry(entry: SocialContentEntry) {
       Status: { select: { name: entry.status || 'Draft' } },
     },
   });
-} 
+}

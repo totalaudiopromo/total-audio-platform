@@ -1,7 +1,14 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { TrendingUp, TrendingDown, DollarSign, Target, BarChart3, Download } from 'lucide-react';
+import {
+  TrendingUp,
+  TrendingDown,
+  DollarSign,
+  Target,
+  BarChart3,
+  Download,
+} from 'lucide-react';
 import type { Campaign } from '@/lib/types/tracker';
 import {
   LineChart,
@@ -24,63 +31,92 @@ interface EnhancedAnalyticsProps {
 }
 
 export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
-  const [timeframe, setTimeframe] = useState<'7d' | '30d' | '90d' | 'all'>('30d');
-  const [view, setView] = useState<'overview' | 'trends' | 'comparison'>('overview');
+  const [timeframe, setTimeframe] = useState<'7d' | '30d' | '90d' | 'all'>(
+    '30d'
+  );
+  const [view, setView] = useState<'overview' | 'trends' | 'comparison'>(
+    'overview'
+  );
 
   // Calculate analytics
   const analytics = useMemo(() => {
-    const completedCampaigns = campaigns.filter((c) => c.status === 'completed');
+    const completedCampaigns = campaigns.filter(c => c.status === 'completed');
     const totalBudget = campaigns.reduce((sum, c) => sum + (c.budget || 0), 0);
-    const totalReach = campaigns.reduce((sum, c) => sum + (c.actual_reach || 0), 0);
+    const totalReach = campaigns.reduce(
+      (sum, c) => sum + (c.actual_reach || 0),
+      0
+    );
     const avgSuccessRate =
       completedCampaigns.length > 0
-        ? completedCampaigns.reduce((sum, c) => sum + c.success_rate, 0) / completedCampaigns.length
+        ? completedCampaigns.reduce((sum, c) => sum + c.success_rate, 0) /
+          completedCampaigns.length
         : 0;
 
     // Cost per result
-    const totalResults = campaigns.reduce((sum, c) => sum + (c.actual_reach || 0), 0);
+    const totalResults = campaigns.reduce(
+      (sum, c) => sum + (c.actual_reach || 0),
+      0
+    );
     const costPerResult = totalResults > 0 ? totalBudget / totalResults : 0;
 
     // ROI calculation (assuming £1 per reach value)
     const totalValue = totalResults; // Simplified: 1 reach = £1 value
-    const roi = totalBudget > 0 ? ((totalValue - totalBudget) / totalBudget) * 100 : 0;
+    const roi =
+      totalBudget > 0 ? ((totalValue - totalBudget) / totalBudget) * 100 : 0;
 
     // Platform breakdown
-    const platformStats = campaigns.reduce((acc, campaign) => {
-      const platform = campaign.platform || 'Unknown';
-      if (!acc[platform]) {
-        acc[platform] = { count: 0, budget: 0, reach: 0 };
-      }
-      acc[platform].count++;
-      acc[platform].budget += campaign.budget || 0;
-      acc[platform].reach += campaign.actual_reach || 0;
-      return acc;
-    }, {} as Record<string, { count: number; budget: number; reach: number }>);
+    const platformStats = campaigns.reduce(
+      (acc, campaign) => {
+        const platform = campaign.platform || 'Unknown';
+        if (!acc[platform]) {
+          acc[platform] = { count: 0, budget: 0, reach: 0 };
+        }
+        acc[platform].count++;
+        acc[platform].budget += campaign.budget || 0;
+        acc[platform].reach += campaign.actual_reach || 0;
+        return acc;
+      },
+      {} as Record<string, { count: number; budget: number; reach: number }>
+    );
 
     // Trend data (last 90 days)
     const trendData = campaigns
-      .filter((c) => c.start_date)
-      .sort((a, b) => new Date(a.start_date!).getTime() - new Date(b.start_date!).getTime())
-      .reduce((acc, campaign) => {
-        const month = new Date(campaign.start_date!).toLocaleDateString('en-GB', {
-          month: 'short',
-          year: '2-digit',
-        });
-        const existing = acc.find((d) => d.month === month);
-        if (existing) {
-          existing.campaigns++;
-          existing.budget += campaign.budget || 0;
-          existing.reach += campaign.actual_reach || 0;
-        } else {
-          acc.push({
-            month,
-            campaigns: 1,
-            budget: campaign.budget || 0,
-            reach: campaign.actual_reach || 0,
-          });
-        }
-        return acc;
-      }, [] as Array<{ month: string; campaigns: number; budget: number; reach: number }>);
+      .filter(c => c.start_date)
+      .sort(
+        (a, b) =>
+          new Date(a.start_date!).getTime() - new Date(b.start_date!).getTime()
+      )
+      .reduce(
+        (acc, campaign) => {
+          const month = new Date(campaign.start_date!).toLocaleDateString(
+            'en-GB',
+            {
+              month: 'short',
+              year: '2-digit',
+            }
+          );
+          const existing = acc.find(d => d.month === month);
+          if (existing) {
+            existing.campaigns++;
+            existing.budget += campaign.budget || 0;
+            existing.reach += campaign.actual_reach || 0;
+          } else {
+            acc.push({
+              month,
+              campaigns: 1,
+              budget: campaign.budget || 0,
+              reach: campaign.actual_reach || 0,
+            });
+          }
+          return acc;
+        },
+        [] as Array<{
+          month: string;
+          campaigns: number;
+          budget: number;
+          reach: number;
+        }>
+      );
 
     return {
       totalBudget,
@@ -97,7 +133,10 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
 
   const exportAnalytics = () => {
     const csvContent = [
-      ['Campaign Tracker Analytics Report', new Date().toLocaleDateString('en-GB')],
+      [
+        'Campaign Tracker Analytics Report',
+        new Date().toLocaleDateString('en-GB'),
+      ],
       [],
       ['Overview Metrics'],
       ['Total Campaigns', analytics.totalCampaigns],
@@ -117,7 +156,7 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
         stats.reach,
       ]),
     ]
-      .map((row) => row.join(','))
+      .map(row => row.join(','))
       .join('\n');
 
     const blob = new Blob([csvContent], { type: 'text/csv' });
@@ -129,7 +168,14 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
     URL.revokeObjectURL(url);
   };
 
-  const COLORS = ['#7c3aed', '#2563eb', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+  const COLORS = [
+    '#7c3aed',
+    '#2563eb',
+    '#10b981',
+    '#f59e0b',
+    '#ef4444',
+    '#8b5cf6',
+  ];
 
   return (
     <div className="space-y-6">
@@ -151,7 +197,7 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
               { value: 'overview', label: 'Overview' },
               { value: 'trends', label: 'Trends' },
               { value: 'comparison', label: 'Compare' },
-            ].map((tab) => (
+            ].map(tab => (
               <button
                 key={tab.value}
                 onClick={() => setView(tab.value as any)}
@@ -184,7 +230,9 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
             {/* ROI Card */}
             <div className="bg-gradient-to-br from-teal-50 to-orange-100 rounded-2xl p-6 border-4 border-teal-500 shadow-brutal">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-sm font-black text-teal-700 uppercase tracking-wider">ROI</p>
+                <p className="text-sm font-black text-teal-700 uppercase tracking-wider">
+                  ROI
+                </p>
                 {analytics.roi >= 0 ? (
                   <TrendingUp className="h-5 w-5 text-teal-600" />
                 ) : (
@@ -195,7 +243,9 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
                 {analytics.roi >= 0 ? '+' : ''}
                 {analytics.roi.toFixed(1)}%
               </p>
-              <p className="text-xs font-bold text-teal-700">Return on investment</p>
+              <p className="text-xs font-bold text-teal-700">
+                Return on investment
+              </p>
             </div>
 
             {/* Cost Per Result */}
@@ -209,7 +259,9 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
               <p className="text-4xl font-black text-teal-600 mb-1">
                 £{analytics.costPerResult.toFixed(2)}
               </p>
-              <p className="text-xs font-bold text-teal-700">Average cost per reach</p>
+              <p className="text-xs font-bold text-teal-700">
+                Average cost per reach
+              </p>
             </div>
 
             {/* Total Budget */}
@@ -223,7 +275,9 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
               <p className="text-4xl font-black text-green-600 mb-1">
                 £{analytics.totalBudget.toLocaleString()}
               </p>
-              <p className="text-xs font-bold text-green-700">Across all campaigns</p>
+              <p className="text-xs font-bold text-green-700">
+                Across all campaigns
+              </p>
             </div>
 
             {/* Total Reach */}
@@ -237,23 +291,29 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
               <p className="text-4xl font-black text-orange-600 mb-1">
                 {analytics.totalReach.toLocaleString()}
               </p>
-              <p className="text-xs font-bold text-orange-700">Combined campaign reach</p>
+              <p className="text-xs font-bold text-orange-700">
+                Combined campaign reach
+              </p>
             </div>
           </div>
 
           {/* Platform Performance */}
           <div className="bg-white rounded-2xl p-6 md:p-8 border-4 border-black shadow-brutal">
-            <h3 className="text-xl font-black text-gray-900 mb-6">Platform Performance</h3>
+            <h3 className="text-xl font-black text-gray-900 mb-6">
+              Platform Performance
+            </h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Pie Chart */}
               <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
-                      data={Object.entries(analytics.platformStats).map(([name, stats]) => ({
-                        name,
-                        value: stats.budget,
-                      }))}
+                      data={Object.entries(analytics.platformStats).map(
+                        ([name, stats]) => ({
+                          name,
+                          value: stats.budget,
+                        })
+                      )}
                       cx="50%"
                       cy="50%"
                       labelLine={false}
@@ -265,12 +325,18 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
                       dataKey="value"
                     >
                       {Object.keys(analytics.platformStats).map((_, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
                       ))}
                     </Pie>
                     <Tooltip
                       formatter={(value: number) => `£${value.toFixed(2)}`}
-                      contentStyle={{ borderRadius: '12px', border: '2px solid black' }}
+                      contentStyle={{
+                        borderRadius: '12px',
+                        border: '2px solid black',
+                      }}
                     />
                   </PieChart>
                 </ResponsiveContainer>
@@ -316,19 +382,34 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
       {/* Trends View */}
       {view === 'trends' && analytics.trendData.length > 0 && (
         <div className="bg-white rounded-2xl p-6 md:p-8 border-4 border-black shadow-brutal">
-          <h3 className="text-xl font-black text-gray-900 mb-6">Campaign Trends</h3>
+          <h3 className="text-xl font-black text-gray-900 mb-6">
+            Campaign Trends
+          </h3>
 
           {/* Budget Trend */}
           <div className="mb-8">
-            <h4 className="text-lg font-black text-gray-700 mb-4">Budget Over Time</h4>
+            <h4 className="text-lg font-black text-gray-700 mb-4">
+              Budget Over Time
+            </h4>
             <div className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={analytics.trendData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="month" stroke="#6b7280" style={{ fontSize: '12px', fontWeight: 'bold' }} />
-                  <YAxis stroke="#6b7280" style={{ fontSize: '12px', fontWeight: 'bold' }} />
+                  <XAxis
+                    dataKey="month"
+                    stroke="#6b7280"
+                    style={{ fontSize: '12px', fontWeight: 'bold' }}
+                  />
+                  <YAxis
+                    stroke="#6b7280"
+                    style={{ fontSize: '12px', fontWeight: 'bold' }}
+                  />
                   <Tooltip
-                    contentStyle={{ borderRadius: '12px', border: '2px solid black', fontWeight: 'bold' }}
+                    contentStyle={{
+                      borderRadius: '12px',
+                      border: '2px solid black',
+                      fontWeight: 'bold',
+                    }}
                     formatter={(value: number) => `£${value.toLocaleString()}`}
                   />
                   <Legend wrapperStyle={{ fontWeight: 'bold' }} />
@@ -347,19 +428,37 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
 
           {/* Reach Trend */}
           <div>
-            <h4 className="text-lg font-black text-gray-700 mb-4">Reach Over Time</h4>
+            <h4 className="text-lg font-black text-gray-700 mb-4">
+              Reach Over Time
+            </h4>
             <div className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={analytics.trendData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="month" stroke="#6b7280" style={{ fontSize: '12px', fontWeight: 'bold' }} />
-                  <YAxis stroke="#6b7280" style={{ fontSize: '12px', fontWeight: 'bold' }} />
+                  <XAxis
+                    dataKey="month"
+                    stroke="#6b7280"
+                    style={{ fontSize: '12px', fontWeight: 'bold' }}
+                  />
+                  <YAxis
+                    stroke="#6b7280"
+                    style={{ fontSize: '12px', fontWeight: 'bold' }}
+                  />
                   <Tooltip
-                    contentStyle={{ borderRadius: '12px', border: '2px solid black', fontWeight: 'bold' }}
+                    contentStyle={{
+                      borderRadius: '12px',
+                      border: '2px solid black',
+                      fontWeight: 'bold',
+                    }}
                     formatter={(value: number) => value.toLocaleString()}
                   />
                   <Legend wrapperStyle={{ fontWeight: 'bold' }} />
-                  <Bar dataKey="reach" fill="#2563eb" name="Reach" radius={[8, 8, 0, 0]} />
+                  <Bar
+                    dataKey="reach"
+                    fill="#2563eb"
+                    name="Reach"
+                    radius={[8, 8, 0, 0]}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -376,22 +475,45 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
           <div className="h-[400px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
-                data={Object.entries(analytics.platformStats).map(([platform, stats]) => ({
-                  platform,
-                  budget: stats.budget,
-                  reach: stats.reach,
-                  campaigns: stats.count,
-                }))}
+                data={Object.entries(analytics.platformStats).map(
+                  ([platform, stats]) => ({
+                    platform,
+                    budget: stats.budget,
+                    reach: stats.reach,
+                    campaigns: stats.count,
+                  })
+                )}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis dataKey="platform" stroke="#6b7280" style={{ fontSize: '12px', fontWeight: 'bold' }} />
-                <YAxis stroke="#6b7280" style={{ fontSize: '12px', fontWeight: 'bold' }} />
+                <XAxis
+                  dataKey="platform"
+                  stroke="#6b7280"
+                  style={{ fontSize: '12px', fontWeight: 'bold' }}
+                />
+                <YAxis
+                  stroke="#6b7280"
+                  style={{ fontSize: '12px', fontWeight: 'bold' }}
+                />
                 <Tooltip
-                  contentStyle={{ borderRadius: '12px', border: '2px solid black', fontWeight: 'bold' }}
+                  contentStyle={{
+                    borderRadius: '12px',
+                    border: '2px solid black',
+                    fontWeight: 'bold',
+                  }}
                 />
                 <Legend wrapperStyle={{ fontWeight: 'bold' }} />
-                <Bar dataKey="budget" fill="#7c3aed" name="Budget (£)" radius={[8, 8, 0, 0]} />
-                <Bar dataKey="reach" fill="#2563eb" name="Reach" radius={[8, 8, 0, 0]} />
+                <Bar
+                  dataKey="budget"
+                  fill="#7c3aed"
+                  name="Budget (£)"
+                  radius={[8, 8, 0, 0]}
+                />
+                <Bar
+                  dataKey="reach"
+                  fill="#2563eb"
+                  name="Reach"
+                  radius={[8, 8, 0, 0]}
+                />
               </BarChart>
             </ResponsiveContainer>
           </div>

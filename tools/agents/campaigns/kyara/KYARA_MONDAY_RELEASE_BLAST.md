@@ -1,4 +1,5 @@
 # KYARA "Bloodshot" - Monday Release Day Email Blast
+
 ## Send Monday 14th October 2025, 7:00am AEST (10pm GMT Sunday)
 
 **Campaign:** KYARA "Bloodshot" Official Release
@@ -11,12 +12,14 @@
 ## 🎯 RELEASE DAY STRATEGY
 
 ### Why Send Sunday Night GMT / Monday Morning AEST:
+
 - **Australian radio:** Arrive Monday morning inbox (perfect timing)
 - **UK radio:** Send late Sunday evening (arrive Monday morning inbox)
 - **Avoid spam filters:** Late Sunday = lower email volume = better deliverability
 - **First thing Monday:** Presenters check email Monday morning before shows
 
 ### Who to Send To:
+
 1. **WARM contacts** (previously engaged) - Priority 1
 2. **Non-responders** from initial pitch - Priority 2
 3. **New targets** from expanded list (20-30 contacts) - Priority 3
@@ -51,6 +54,7 @@
 **Subject:** Quick update - KYARA "Bloodshot" is out today
 
 **Body:**
+
 ```
 Hi [NAME],
 
@@ -81,6 +85,7 @@ chrisschofield@libertymusicpr.com
 **Subject:** KYARA "Bloodshot" OUT TODAY - 85 plays, Amazing Radio support
 
 **Body:**
+
 ```
 Hi [NAME],
 
@@ -111,6 +116,7 @@ Liberty Music PR
 **Subject:** KYARA "Bloodshot" - Sydney artist, out today (Amazing Radio + Triple J)
 
 **Body:**
+
 ```
 Hi [NAME],
 
@@ -142,6 +148,7 @@ chrisschofield@libertymusicpr.com
 **Subject:** Thank you for the KYARA "Bloodshot" support!
 
 **Body:**
+
 ```
 Hi Amazing Radio team,
 
@@ -168,11 +175,13 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 ## 📋 RECIPIENT LIST BREAKDOWN
 
 ### WARM Contacts (5-7 recipients) - Template A:
+
 - Anika Luna (Triple J Home & Hosed) - **TOP PRIORITY**
 - [Any contacts who responded to initial pitch]
 - [Any contacts who opened/clicked but didn't respond]
 
 ### Non-Responders (10-15 recipients) - Template B:
+
 - Claire Mooney (Triple J Music Director)
 - Simon Winkler (Triple R Melbourne)
 - Firas (PBS FM)
@@ -180,6 +189,7 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 - [Other contacts from initial pitch who didn't respond]
 
 ### New Contacts (15-20 recipients) - Template C:
+
 - Danny Howard (BBC Radio 1 Dance)
 - Pete Tong (BBC Radio 1 Essential Selection)
 - Tom Ravenscroft (BBC 6 Music)
@@ -191,6 +201,7 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 - [Additional contacts from KYARA_BLOODSHOT_NEW_CONTACTS.md list]
 
 ### Special Messages (1-2 recipients) - Template D:
+
 - Amazing Radio team
 
 **TOTAL: 30-40 recipients**
@@ -202,12 +213,15 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 ### Timing Breakdown:
 
 **Sunday 13th October, 10:00pm GMT:**
+
 - Send to all UK contacts (arrives Monday morning inbox)
 
 **Monday 14th October, 7:00am AEST:**
+
 - Send to all Australian contacts (arrives Monday morning inbox)
 
 ### Why Split Send Times:
+
 - **Optimise for inbox arrival time** (Monday morning, both regions)
 - **Avoid spam filters** (lower volume at off-peak times)
 - **Appear personal** (not a mass blast sent at generic time)
@@ -223,15 +237,18 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 `KYARA Bloodshot - Release Day Blast (Monday 14 Oct)`
 
 **List Segments:**
+
 - **Segment 1:** WARM contacts (5-7)
 - **Segment 2:** Non-responders (10-15)
 - **Segment 3:** New contacts (15-20)
 
 **Send Schedule:**
+
 - **UK List:** Sunday 13th Oct, 10:00pm GMT
 - **Australian List:** Monday 14th Oct, 7:00am AEST
 
 **Subject Line Test (A/B):**
+
 - **Version A:** `KYARA "Bloodshot" OUT TODAY - 85 plays, Amazing Radio support`
 - **Version B:** `Quick one - KYARA "Bloodshot" is out today`
 
@@ -244,18 +261,21 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 ## 📊 SUCCESS METRICS TO TRACK
 
 ### Email Performance Goals:
+
 - **Open Rate:** 50%+ (release day = higher urgency)
 - **Click Rate:** 30%+ (Spotify/download links)
 - **Response Rate:** 10-15% (higher for WARM, lower for cold)
 - **Bounce Rate:** <2% (clean list)
 
 ### Radio Adds Goals (First Week):
+
 - **3-5 new confirmed adds** (Amazing Radio + 2-4 others)
 - **10+ playlist adds** (community radio, digital platforms)
 - **1-2 BBC plays** (Radio 1 Dance, 6 Music evening)
 - **Triple J breakthrough** (Anika Luna adds to Home & Hosed)
 
 ### Follow-Up Timeline:
+
 - **Tuesday 15th Oct:** Check open/click rates, respond to any replies
 - **Wednesday 16th Oct:** Follow up with high-priority non-openers
 - **Friday 18th Oct:** Pull WARM report (first week post-release)
@@ -268,15 +288,18 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 ### Links to Provide:
 
 **Streaming:**
+
 - **Spotify:** [INSERT KYARA BLOODSHOT SPOTIFY LINK]
 - **Apple Music:** [INSERT APPLE MUSIC LINK]
 - **SoundCloud:** https://on.soundcloud.com/1oiblSoRYCp1swzCr3 (if applicable)
 
 **Download:**
+
 - **WAV (High Quality):** [INSERT WETRANSFER/DROPBOX LINK]
 - **MP3 (Radio Ready):** [INSERT WETRANSFER/DROPBOX LINK]
 
 **Social/Press:**
+
 - **Artist Photo (High Res):** [INSERT LINK]
 - **Cover Art:** [INSERT LINK]
 - **EPK / One Sheet:** [INSERT LINK] (if available)
@@ -305,11 +328,13 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 ### If Sending via Gmail (Not Mailchimp):
 
 Use the existing script:
+
 ```bash
 node tools/agents/campaigns/kyara/create-kyara-gmail-drafts-liberty.js
 ```
 
 **Modify for Release Day:**
+
 - Update subject lines to include "OUT TODAY"
 - Update body templates to include momentum stats (85 plays, Amazing Radio)
 - Add Monday release date references
@@ -332,6 +357,7 @@ node tools/agents/campaigns/kyara/create-kyara-gmail-drafts-liberty.js
 This alone saves me 2-3 hours of manual list management and scheduling. The tool does it all."
 
 **The Value Prop for Dan:**
+
 - **Time savings:** 2-3 hours per release day blast × 20 campaigns/month = 40-60 hours/month
 - **Better targeting:** Timezone optimization + segmentation = higher open rates
 - **Automated tracking:** No manual spreadsheet updates

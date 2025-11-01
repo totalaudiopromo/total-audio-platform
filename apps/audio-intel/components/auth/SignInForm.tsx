@@ -3,47 +3,47 @@
  * Copy this to your app and customise as needed
  */
 
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { createClient } from '../../lib/supabase/client'
+import { useState } from 'react';
+import { createClient } from '@total-audio/core-db/client';
 
 export function SignInForm() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [message, setMessage] = useState<string | null>(null)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
 
-  const supabase = createClient()
+  const supabase = createClient();
 
   const handleSignIn = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError(null)
-    setMessage(null)
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    setMessage(null);
 
     try {
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
-      })
+      });
 
-      if (error) throw error
+      if (error) throw error;
 
       // Redirect will happen via middleware
-      window.location.href = '/dashboard'
+      window.location.href = '/dashboard';
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to sign in')
+      setError(err instanceof Error ? err.message : 'Failed to sign in');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleMagicLink = async () => {
-    setLoading(true)
-    setError(null)
-    setMessage(null)
+    setLoading(true);
+    setError(null);
+    setMessage(null);
 
     try {
       const { error } = await supabase.auth.signInWithOtp({
@@ -51,17 +51,17 @@ export function SignInForm() {
         options: {
           emailRedirectTo: `${window.location.origin}/auth/callback`,
         },
-      })
+      });
 
-      if (error) throw error
+      if (error) throw error;
 
-      setMessage('Check your email for a magic link!')
+      setMessage('Check your email for a magic link!');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to send magic link')
+      setError(err instanceof Error ? err.message : 'Failed to send magic link');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="w-full max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
@@ -76,7 +76,7 @@ export function SignInForm() {
             id="email"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             required
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="you@example.com"
@@ -91,7 +91,7 @@ export function SignInForm() {
             id="password"
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             required
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="••••••••"
@@ -135,5 +135,5 @@ export function SignInForm() {
         </a>
       </p>
     </div>
-  )
+  );
 }

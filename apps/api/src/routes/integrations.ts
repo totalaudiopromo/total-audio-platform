@@ -71,7 +71,14 @@ router.get('/airtable/callback', async (req, res) => {
     return res.json({ access_token, refresh_token, expires_in, state });
   } catch (error) {
     let details = 'Unknown error';
-    if (typeof error === 'object' && error !== null && 'response' in error && error.response && typeof error.response === 'object' && 'data' in error.response) {
+    if (
+      typeof error === 'object' &&
+      error !== null &&
+      'response' in error &&
+      error.response &&
+      typeof error.response === 'object' &&
+      'data' in error.response
+    ) {
       details = (error.response as any).data;
     } else if (error instanceof Error) {
       details = error.message;
@@ -129,10 +136,25 @@ router.get('/google/callback', async (req, res) => {
     // TODO: Get userId from session/auth (for now, just return tokens for testing)
     // In production, associate tokens with the authenticated user in the Integration table
     // await prisma.integration.upsert({ ... });
-    return res.json({ access_token, refresh_token, expires_in, id_token, scope, token_type, state });
+    return res.json({
+      access_token,
+      refresh_token,
+      expires_in,
+      id_token,
+      scope,
+      token_type,
+      state,
+    });
   } catch (error) {
     let details = 'Unknown error';
-    if (typeof error === 'object' && error !== null && 'response' in error && error.response && typeof error.response === 'object' && 'data' in error.response) {
+    if (
+      typeof error === 'object' &&
+      error !== null &&
+      'response' in error &&
+      error.response &&
+      typeof error.response === 'object' &&
+      'data' in error.response
+    ) {
       details = (error.response as any).data;
     } else if (error instanceof Error) {
       details = error.message;
@@ -141,4 +163,4 @@ router.get('/google/callback', async (req, res) => {
   }
 });
 
-export default router; 
+export default router;

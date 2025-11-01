@@ -59,6 +59,7 @@ STRIPE_PRICE_AGENCY_ANNUAL=price_...
 ## Creating a New Tool
 
 ### Quick Method
+
 ```bash
 cd apps/
 cp -r tap-saas-template your-new-tool
@@ -67,7 +68,9 @@ cd your-new-tool
 ```
 
 ### Complete Checklist
+
 See [`TEMPLATE_USAGE.md`](./TEMPLATE_USAGE.md) for the full step-by-step guide, including:
+
 - How to duplicate without overwriting the template
 - What files to customise
 - Brand colour updates
@@ -102,11 +105,13 @@ See [`TEMPLATE_USAGE.md`](./TEMPLATE_USAGE.md) for the full step-by-step guide, 
 ## Documentation
 
 ### Core Documentation (Root Level)
+
 - **[TEMPLATE_USAGE.md](./TEMPLATE_USAGE.md)** - How to duplicate and customise this template
 - **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)** - Complete Postcraft aesthetic guide
 - **[QUICKSTART.md](./QUICKSTART.md)** - Development setup guide
 
 ### Additional Documentation (`/docs/`)
+
 - **[docs/README.md](./docs/README.md)** - Complete documentation index
 - **Setup Guides:** Auth setup, configuration, integrations
 - **Reference:** Technical specs, feature docs
@@ -117,6 +122,7 @@ See [`TEMPLATE_USAGE.md`](./TEMPLATE_USAGE.md) for the full step-by-step guide, 
 ## Tool-Specific Customisation
 
 When you duplicate this template, remove/replace:
+
 - Pitch Generator specific routes (`app/pitch/`)
 - Pitch-specific API routes (`app/api/pitch/`, `app/api/pitches/`)
 - Pitch database tables (keep auth tables)

@@ -9,12 +9,12 @@ import { GmailService } from '@/lib/integrations/gmail-service';
 export async function GET(request: NextRequest) {
   try {
     const supabase = await createServerClient(cookies());
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const userId = user.email || user.id;
@@ -24,10 +24,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(status);
   } catch (error) {
     console.error('Gmail status error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
-

@@ -18,27 +18,32 @@ The contextual workflow integration you described **is already built and functio
 **Location**: `apps/audio-intel/app/upload/page.tsx` (lines 291-341)
 
 **How it works**:
+
 - "→ Pitch" button appears for each enriched contact
 - Copies contact data to clipboard as JSON
 - Opens `pitch.totalaudiopromo.com/generate?import=clipboard`
 - Shows toast notification
 
 **Data Format**:
+
 ```json
 {
   "source": "intel",
-  "contacts": [{
-    "name": "Annie Mac",
-    "outlet": "BBC Radio 1",
-    "role": "Presenter",
-    "genres": "Electronic, Dance",
-    "notes": "Full contact intelligence...",
-    "email": "annie@bbc.co.uk"
-  }]
+  "contacts": [
+    {
+      "name": "Annie Mac",
+      "outlet": "BBC Radio 1",
+      "role": "Presenter",
+      "genres": "Electronic, Dance",
+      "notes": "Full contact intelligence...",
+      "email": "annie@bbc.co.uk"
+    }
+  ]
 }
 ```
 
 **Implementation Details**:
+
 - `handleSendToPitch()` function extracts structured data from AI-generated intelligence
 - Uses `navigator.clipboard.writeText()` for cross-domain data transfer
 - Opens Pitch Generator in new tab with import parameter
@@ -49,6 +54,7 @@ The contextual workflow integration you described **is already built and functio
 **Location**: `apps/pitch-generator/components/PitchStatusToggle.tsx` (lines 71-133)
 
 **How it works**:
+
 - When marking pitch as "Sent", shows modal: "Track this pitch in Tracker?"
 - Two options: "Send & Track" or "Just Mark Sent"
 - Copies campaign data to clipboard
@@ -56,6 +62,7 @@ The contextual workflow integration you described **is already built and functio
 - Shows success notification
 
 **Data Format**:
+
 ```json
 {
   "source": "pitch",
@@ -63,20 +70,23 @@ The contextual workflow integration you described **is already built and functio
     "name": "Artist Name - Track Title",
     "artist": "Artist Name",
     "track": "Track Title",
-    "contacts": [{
-      "name": "Annie Mac",
-      "email": "annie@bbc.co.uk",
-      "outlet": "BBC Radio 1",
-      "status": "sent",
-      "pitchBody": "Full pitch text...",
-      "subjectLine": "Subject line...",
-      "sentDate": "2025-10-08T..."
-    }]
+    "contacts": [
+      {
+        "name": "Annie Mac",
+        "email": "annie@bbc.co.uk",
+        "outlet": "BBC Radio 1",
+        "status": "sent",
+        "pitchBody": "Full pitch text...",
+        "subjectLine": "Subject line...",
+        "sentDate": "2025-10-08T..."
+      }
+    ]
   }
 }
 ```
 
 **Implementation Details**:
+
 - `handleSendAndTrack()` updates pitch status + copies data + redirects
 - Modal UI shows clear choice between tracking and just updating status
 - Campaign automatically created with contact details and pitch preview
@@ -86,6 +96,7 @@ The contextual workflow integration you described **is already built and functio
 **Location**: `apps/pitch-generator/app/pitch/generate/page.tsx` (lines 68-146)
 
 **How it works**:
+
 - Detects `?import=clipboard` URL parameter
 - Reads clipboard data automatically
 - Creates new contact in Supabase
@@ -94,6 +105,7 @@ The contextual workflow integration you described **is already built and functio
 - Cleans up URL
 
 **Implementation Details**:
+
 - Validates clipboard data structure (checks `source === 'intel'`)
 - Creates contact with all enrichment data
 - Reloads contact list to show new contact
@@ -106,6 +118,7 @@ The contextual workflow integration you described **is already built and functio
 **Bug Fixed**: Missing `useSearchParams` import and hook initialization
 
 **How it works**:
+
 - Detects `?source=clipboard` URL parameter
 - Reads clipboard data
 - Creates campaign via `/api/campaigns/import`
@@ -113,6 +126,7 @@ The contextual workflow integration you described **is already built and functio
 - Cleans up URL
 
 **What was fixed**:
+
 ```typescript
 // BEFORE (broken)
 export default function ImportCampaignsPage() {
@@ -142,17 +156,20 @@ export default function ImportCampaignsPage() {
 ## Technical Implementation
 
 ### Clipboard API
+
 - Uses `navigator.clipboard.writeText()` for writing
 - Uses `navigator.clipboard.readText()` for reading
 - JSON format for structured data transfer
 - Cross-domain compatible (different subdomains)
 
 ### URL Parameters
+
 - `?import=clipboard` - Triggers clipboard import
 - `?source=clipboard` - Identifies source for Tracker
 - Clean up with `window.history.replaceState()` after import
 
 ### Error Handling
+
 - Validates clipboard data structure before import
 - Shows user-friendly error messages
 - 3-4 second toast notifications
@@ -161,16 +178,19 @@ export default function ImportCampaignsPage() {
 ## What This Achieves
 
 ### Business Impact
+
 - **Without workflow buttons**: "Oh, three nice tools"
 - **With workflow buttons**: "Holy shit, this is a complete system"
 
 ### Value Proposition
+
 - Zero friction between tools
 - Data flows automatically
 - One-click actions at each step
 - Professional platform integration
 
 ### Pricing Impact
+
 - **Before**: £50/month per tool
 - **After**: £500/month for integrated platform
 

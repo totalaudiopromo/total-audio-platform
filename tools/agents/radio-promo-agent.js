@@ -5,10 +5,10 @@ require('dotenv').config();
 
 /**
  * Radio Promo Agent for Total Audio Promo
- * 
+ *
  * Specialized agent for radio station outreach, playlist targeting, and DJ relationship management.
  * Focuses on the core "no-BS radio promo" mission with guaranteed results through data-driven targeting.
- * 
+ *
  * Core Expertise:
  * - Radio Station Database Management
  * - Genre-Based Targeting and Segmentation
@@ -44,7 +44,7 @@ const logger = {
   error: (msg, ...args) => console.error(`[RADIO-PROMO] ${msg}`, ...args),
   warn: (msg, ...args) => console.warn(`[RADIO-PROMO] ${msg}`, ...args),
   success: (msg, ...args) => console.log(`✅ [RADIO-PROMO] ${msg}`, ...args),
-  verification: (msg, ...args) => console.log(`🔍 [VERIFICATION] ${msg}`, ...args)
+  verification: (msg, ...args) => console.log(`🔍 [VERIFICATION] ${msg}`, ...args),
 };
 
 class RadioPromoAgent {
@@ -52,26 +52,26 @@ class RadioPromoAgent {
     this.name = 'RadioPromoAgent';
     this.specialty = 'Radio Station Outreach & Personal Promotion Workflow';
     this.verificationEnabled = true;
-    
-          // Initialize real API integrations
-          this.mondayApi = new MondayApiIntegration();
-          this.otterAi = new OtterAiIntegration();
-          this.typeformApi = new TypeformApiIntegration();
-          this.googleChat = new GoogleChatIntegration();
-          this.mailchimp = new MailchimpApiIntegration();
-          this.googleGemini = new GoogleGeminiIntegration();
-          this.gmail = new GmailApiIntegration();
-          this.drive = new GoogleDriveApiIntegration();
-          this.calendar = new GoogleCalendarApiIntegration();
-          this.gmailTypeformMatcher = new GmailTypeformMatcher();
-          this.pressReleaseGenerator = new PressReleaseGenerator();
-          // Try real WARM API first, fallback to mock for testing
-          this.warmApi = new WarmusicAPI();
-          this.mockWarmApi = new MockWarmusicAPI();
-          // Initialize radio research integration
-          this.radioResearch = new RadioResearchIntegration();
-          // Initialize CoverageBook integration
-          this.coverageBook = new CoverageBookIntegration();
+
+    // Initialize real API integrations
+    this.mondayApi = new MondayApiIntegration();
+    this.otterAi = new OtterAiIntegration();
+    this.typeformApi = new TypeformApiIntegration();
+    this.googleChat = new GoogleChatIntegration();
+    this.mailchimp = new MailchimpApiIntegration();
+    this.googleGemini = new GoogleGeminiIntegration();
+    this.gmail = new GmailApiIntegration();
+    this.drive = new GoogleDriveApiIntegration();
+    this.calendar = new GoogleCalendarApiIntegration();
+    this.gmailTypeformMatcher = new GmailTypeformMatcher();
+    this.pressReleaseGenerator = new PressReleaseGenerator();
+    // Try real WARM API first, fallback to mock for testing
+    this.warmApi = new WarmusicAPI();
+    this.mockWarmApi = new MockWarmusicAPI();
+    // Initialize radio research integration
+    this.radioResearch = new RadioResearchIntegration();
+    // Initialize CoverageBook integration
+    this.coverageBook = new CoverageBookIntegration();
     this.metrics = {
       stationsContacted: 0,
       playlistSubmissions: 0,
@@ -84,35 +84,42 @@ class RadioPromoAgent {
       mondayBoardsCreated: 0,
       warmApiTracking: 0,
       chatNotificationsSent: 0,
-      verificationSteps: 0
+      verificationSteps: 0,
     };
-    
+
     // Radio industry segments
     this.radioSegments = {
       commercial: {
-        formats: ['Top 40', 'Adult Contemporary', 'Country', 'Urban', 'Alternative', 'Classic Rock'],
+        formats: [
+          'Top 40',
+          'Adult Contemporary',
+          'Country',
+          'Urban',
+          'Alternative',
+          'Classic Rock',
+        ],
         reach: 'high',
         competition: 'high',
-        responseRate: 0.05
+        responseRate: 0.05,
       },
       college: {
         formats: ['Indie', 'Alternative', 'Electronic', 'Hip-Hop', 'Experimental'],
         reach: 'medium',
         competition: 'medium',
-        responseRate: 0.15
+        responseRate: 0.15,
       },
       community: {
         formats: ['Local', 'Folk', 'World', 'Jazz', 'Blues'],
         reach: 'low',
         competition: 'low',
-        responseRate: 0.25
+        responseRate: 0.25,
       },
       internet: {
         formats: ['All Genres', 'Niche', 'Specialized'],
         reach: 'variable',
         competition: 'medium',
-        responseRate: 0.12
-      }
+        responseRate: 0.12,
+      },
     };
 
     // Outreach strategies
@@ -120,18 +127,18 @@ class RadioPromoAgent {
       initial: {
         subject: 'New {genre} Track - {artistName}',
         followUpDays: [3, 7, 14],
-        personalizedElements: ['djName', 'stationFormat', 'recentPlaylists']
+        personalizedElements: ['djName', 'stationFormat', 'recentPlaylists'],
       },
       relationship: {
         subject: 'Hey {djName}, new music from {artistName}',
         followUpDays: [5, 12],
-        personalizedElements: ['pastInteractions', 'musicPreferences', 'showFormat']
+        personalizedElements: ['pastInteractions', 'musicPreferences', 'showFormat'],
       },
       playlist: {
         subject: '{playlistName} Submission: {trackTitle}',
         followUpDays: [7, 21],
-        personalizedElements: ['playlistTheme', 'submissionGuidelines', 'curatorPreferences']
-      }
+        personalizedElements: ['playlistTheme', 'submissionGuidelines', 'curatorPreferences'],
+      },
     };
 
     // Personal workflow configurations
@@ -139,29 +146,46 @@ class RadioPromoAgent {
       artistName: /(?:The\s+)?artist\s+is\s+([A-Za-z\s]+)|artist[:\s]+([A-Za-z\s]+)/i,
       trackTitle: /(?:track\s+title\s+is\s+|title\s+is\s+)"([^"]+)"|track\s+title[:\s]+"([^"]+)"/i,
       genre: /(?:It's\s+an?\s+|it's\s+an?\s+)([A-Za-z\s]+)\s+(?:pop\s+)?(?:genre\s+)?track/i,
-      releaseDate: /(?:release\s+date|looking\s+at)\s*[:\s]*([A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{4})/i,
+      releaseDate:
+        /(?:release\s+date|looking\s+at)\s*[:\s]*([A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{4})/i,
       budget: /budget[:\s]*(?:is\s+)?(?:around\s+)?[\$£]?(\d+(?:,\d{3})*(?:\.\d{2})?)/i,
       targets: /(?:target|want\s+to\s+target)[:\s]*([^\.]+)/i,
-      priority: /(?:This\s+is\s+|priority\s*[:\s]*)(?:level\s*[:\s]*)?(high|medium|low)(?:\s+priority)?/i,
-      deadline: /deadline[:\s]*(?:for[^:]*is\s+)?([A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{4})/i
+      priority:
+        /(?:This\s+is\s+|priority\s*[:\s]*)(?:level\s*[:\s]*)?(high|medium|low)(?:\s+priority)?/i,
+      deadline: /deadline[:\s]*(?:for[^:]*is\s+)?([A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{4})/i,
     };
 
     // Liberty PR style templates
     this.libertyTemplates = {
       headline: "Breaking: {artistName} Drops Game-Changing {genre} Anthem '{trackTitle}'",
-      subheadline: "New release set to dominate {genre} charts with innovative sound and powerful message",
-      openingParagraph: "{artistName} has just released their latest {genre} masterpiece '{trackTitle}', a track that promises to redefine the landscape of contemporary music. The release, available now on all major streaming platforms, showcases {artistName}'s evolution as an artist and their commitment to pushing creative boundaries.",
-      quoteTemplate: "'{trackTitle}' represents everything I've been working towards as an artist. It's raw, it's honest, and it's exactly what the world needs to hear right now,\" says {artistName}.",
-      backgroundTemplate: "Known for their distinctive approach to {genre}, {artistName} has been building a dedicated following with their unique blend of authentic storytelling and innovative production techniques.",
-      closingTemplate: "'{trackTitle}' is available now on Spotify, Apple Music, and all major streaming platforms. For more information about {artistName} and upcoming tour dates, visit [website] or follow @{artistHandle} on social media."
+      subheadline:
+        'New release set to dominate {genre} charts with innovative sound and powerful message',
+      openingParagraph:
+        "{artistName} has just released their latest {genre} masterpiece '{trackTitle}', a track that promises to redefine the landscape of contemporary music. The release, available now on all major streaming platforms, showcases {artistName}'s evolution as an artist and their commitment to pushing creative boundaries.",
+      quoteTemplate:
+        "'{trackTitle}' represents everything I've been working towards as an artist. It's raw, it's honest, and it's exactly what the world needs to hear right now,\" says {artistName}.",
+      backgroundTemplate:
+        'Known for their distinctive approach to {genre}, {artistName} has been building a dedicated following with their unique blend of authentic storytelling and innovative production techniques.',
+      closingTemplate:
+        "'{trackTitle}' is available now on Spotify, Apple Music, and all major streaming platforms. For more information about {artistName} and upcoming tour dates, visit [website] or follow @{artistHandle} on social media.",
     };
 
     // Monday.com campaign structure
     this.mondayStructure = {
-      groups: ['Pre-Launch Preparation', 'Launch Week Activities', 'Post-Launch Follow-up', 'Performance Tracking'],
+      groups: [
+        'Pre-Launch Preparation',
+        'Launch Week Activities',
+        'Post-Launch Follow-up',
+        'Performance Tracking',
+      ],
       itemTypes: { task: 'Task', milestone: 'Milestone', deadline: 'Deadline', note: 'Note' },
       priorities: { critical: 'Critical', high: 'High', medium: 'Medium', low: 'Low' },
-      statuses: { notStarted: 'Not Started', inProgress: 'In Progress', completed: 'Completed', blocked: 'Blocked' }
+      statuses: {
+        notStarted: 'Not Started',
+        inProgress: 'In Progress',
+        completed: 'Completed',
+        blocked: 'Blocked',
+      },
     };
 
     // WARM API configuration
@@ -169,7 +193,7 @@ class RadioPromoAgent {
       baseUrl: process.env.WARM_API_URL || 'https://api.warm-music.com',
       apiKey: process.env.WARM_API_KEY,
       trackingEndpoints: { plays: '/plays', stats: '/stats', trending: '/trending' },
-      notificationThresholds: { milestone: [100, 500, 1000, 5000, 10000], daily: 50, weekly: 200 }
+      notificationThresholds: { milestone: [100, 500, 1000, 5000, 10000], daily: 50, weekly: 200 },
     };
 
     // Google Chat webhook configuration
@@ -177,10 +201,13 @@ class RadioPromoAgent {
       webhookUrl: process.env.GOOGLE_CHAT_WEBHOOK,
       campaignWinsRoom: process.env.GOOGLE_CHAT_CAMPAIGNS_ROOM,
       templates: {
-        newCampaign: "🚀 *New Campaign Created*\n*Artist:* {artistName}\n*Track:* {trackTitle}\n*Genre:* {genre}\n*Launch Date:* {launchDate}",
-        milestone: "🎉 *Milestone Achieved*\n*{artistName} - {trackTitle}*\n*{milestone} plays reached!*\n*Current total: {totalPlays}*",
-        dailyUpdate: "📊 *Daily Performance Update*\n*Track:* {trackTitle}\n*Today's plays:* {dailyPlays}\n*Total plays:* {totalPlays}\n*Trending:* {trending}"
-      }
+        newCampaign:
+          '🚀 *New Campaign Created*\n*Artist:* {artistName}\n*Track:* {trackTitle}\n*Genre:* {genre}\n*Launch Date:* {launchDate}',
+        milestone:
+          '🎉 *Milestone Achieved*\n*{artistName} - {trackTitle}*\n*{milestone} plays reached!*\n*Current total: {totalPlays}*',
+        dailyUpdate:
+          "📊 *Daily Performance Update*\n*Track:* {trackTitle}\n*Today's plays:* {dailyPlays}\n*Total plays:* {totalPlays}\n*Trending:* {trending}",
+      },
     };
   }
 
@@ -190,22 +217,22 @@ class RadioPromoAgent {
   async initialize() {
     try {
       logger.info('Initializing Radio Promo Agent...');
-      
+
       // Connect to database
       // Database connection removed - using file-based storage
-      
+
       // Check WARM API availability and switch to mock if needed
       await this.initializeWarmAPI();
-      
+
       // Initialize radio station database
       await this.initializeRadioDatabase();
-      
+
       // Setup targeting algorithms
       await this.setupTargetingAlgorithms();
-      
+
       // Initialize relationship tracking
       await this.initializeRelationshipTracking();
-      
+
       logger.info('Radio Promo Agent initialized successfully');
       return true;
     } catch (error) {
@@ -220,10 +247,10 @@ class RadioPromoAgent {
   async initializeWarmAPI() {
     try {
       logger.info('Checking WARM API availability...');
-      
+
       // Try real WARM API first
       const healthCheck = await this.warmApi.healthCheck();
-      
+
       if (healthCheck.status === 'healthy') {
         logger.success('WARM API is available and healthy');
         this.usingMockWarm = false;
@@ -241,7 +268,7 @@ class RadioPromoAgent {
 
   async initializeRadioDatabase() {
     logger.info('Setting up radio station database...');
-    
+
     // Mock radio station data structure
     this.radioDatabase = {
       totalStations: 2847,
@@ -249,26 +276,26 @@ class RadioPromoAgent {
         commercial: 1205,
         college: 892,
         community: 534,
-        internet: 216
+        internet: 216,
       },
       genreCoverage: {
-        'Pop': 1847,
-        'Rock': 1623,
+        Pop: 1847,
+        Rock: 1623,
         'Hip-Hop': 1234,
-        'Country': 987,
-        'Electronic': 745,
-        'Indie': 634,
-        'Jazz': 423,
-        'Classical': 198
+        Country: 987,
+        Electronic: 745,
+        Indie: 634,
+        Jazz: 423,
+        Classical: 198,
       },
       qualityScores: {
         contactInfo: 0.87,
         djDetails: 0.73,
         playlistData: 0.65,
-        responseTracking: 0.82
-      }
+        responseTracking: 0.82,
+      },
     };
-    
+
     logger.info(`Radio database initialized with ${this.radioDatabase.totalStations} stations`);
   }
 
@@ -277,33 +304,33 @@ class RadioPromoAgent {
    */
   async setupTargetingAlgorithms() {
     logger.info('Configuring targeting algorithms...');
-    
+
     this.targetingEngine = {
       genreMatching: {
         exact: 0.9,
         similar: 0.7,
         complementary: 0.5,
-        experimental: 0.3
+        experimental: 0.3,
       },
       audienceOverlap: {
         high: 0.8,
         medium: 0.6,
-        low: 0.4
+        low: 0.4,
       },
       responseHistory: {
         positive: 0.9,
         neutral: 0.5,
         negative: 0.1,
-        none: 0.6
+        none: 0.6,
       },
       relationshipStrength: {
         established: 0.95,
         developing: 0.7,
         new: 0.5,
-        cold: 0.3
-      }
+        cold: 0.3,
+      },
     };
-    
+
     logger.info('Targeting algorithms configured');
   }
 
@@ -312,15 +339,15 @@ class RadioPromoAgent {
    */
   async initializeRelationshipTracking() {
     logger.info('Setting up relationship tracking system...');
-    
+
     this.relationshipTracker = {
       interactionTypes: ['email', 'phone', 'social', 'in_person', 'submission'],
       sentimentTracking: true,
       responsePatterns: {},
       engagementScores: {},
-      preferenceProfiles: {}
+      preferenceProfiles: {},
     };
-    
+
     logger.info('Relationship tracking system ready');
   }
 
@@ -330,7 +357,7 @@ class RadioPromoAgent {
   async generateRadioCampaign(trackData, campaignOptions = {}) {
     try {
       logger.info(`Generating radio campaign for "${trackData.title}" by ${trackData.artist}`);
-      
+
       const campaign = {
         trackInfo: trackData,
         targetStations: await this.identifyTargetStations(trackData, campaignOptions),
@@ -338,9 +365,9 @@ class RadioPromoAgent {
         timeline: this.generateCampaignTimeline(campaignOptions),
         expectedResults: await this.calculateExpectedResults(trackData, campaignOptions),
         budget: this.calculateCampaignBudget(campaignOptions),
-        createdAt: new Date()
+        createdAt: new Date(),
       };
-      
+
       this.metrics.campaignsLaunched++;
       logger.info(`Campaign generated with ${campaign.targetStations.length} target stations`);
       return campaign;
@@ -355,26 +382,26 @@ class RadioPromoAgent {
    */
   async identifyTargetStations(trackData, options) {
     const targetStations = [];
-    
+
     // Primary genre matches
     const primaryTargets = await this.findStationsByGenre(trackData.genre, 'exact');
     targetStations.push(...primaryTargets.slice(0, options.primaryTargets || 50));
-    
+
     // Similar genre matches
     const similarTargets = await this.findStationsByGenre(trackData.genre, 'similar');
     targetStations.push(...similarTargets.slice(0, options.similarTargets || 30));
-    
+
     // Relationship-based targets
     const relationshipTargets = await this.findRelationshipTargets(trackData.artist);
     targetStations.push(...relationshipTargets.slice(0, options.relationshipTargets || 20));
-    
+
     // Score and rank stations
     const scoredStations = targetStations.map(station => ({
       ...station,
       targetingScore: this.calculateTargetingScore(station, trackData),
-      expectedResponseRate: this.calculateExpectedResponse(station, trackData)
+      expectedResponseRate: this.calculateExpectedResponse(station, trackData),
     }));
-    
+
     return scoredStations.sort((a, b) => b.targetingScore - a.targetingScore);
   }
 
@@ -385,7 +412,7 @@ class RadioPromoAgent {
     // Mock station finding based on genre
     const matchMultiplier = this.targetingEngine.genreMatching[matchType] || 0.5;
     const baseStations = Math.floor(this.radioDatabase.genreCoverage[genre] * matchMultiplier);
-    
+
     return Array.from({ length: baseStations }, (_, i) => ({
       id: `station_${genre}_${matchType}_${i}`,
       name: `${genre} Radio ${i + 1}`,
@@ -395,7 +422,7 @@ class RadioPromoAgent {
       contactInfo: this.generateContactInfo(),
       djInfo: this.generateDJInfo(),
       audienceSize: Math.floor(Math.random() * 100000) + 5000,
-      responseHistory: this.generateResponseHistory()
+      responseHistory: this.generateResponseHistory(),
     }));
   }
 
@@ -412,7 +439,7 @@ class RadioPromoAgent {
       relationshipStrength: ['established', 'developing'][Math.floor(Math.random() * 2)],
       lastInteraction: new Date(Date.now() - Math.random() * 90 * 24 * 60 * 60 * 1000),
       contactPerson: `DJ ${String.fromCharCode(65 + i)}`,
-      preferredContact: ['email', 'phone'][Math.floor(Math.random() * 2)]
+      preferredContact: ['email', 'phone'][Math.floor(Math.random() * 2)],
     }));
   }
 
@@ -425,35 +452,35 @@ class RadioPromoAgent {
         day: 0,
         template: 'initial',
         personalization: ['djName', 'stationFormat', 'trackGenre'],
-        attachments: ['track', 'bio', 'artwork']
+        attachments: ['track', 'bio', 'artwork'],
       },
       followUps: [
         {
           day: 3,
           template: 'first_followup',
           condition: 'no_response',
-          personalization: ['pastInteraction', 'stationPlaylist']
+          personalization: ['pastInteraction', 'stationPlaylist'],
         },
         {
           day: 7,
           template: 'second_followup',
           condition: 'no_response',
-          personalization: ['audienceMatch', 'similarArtists']
+          personalization: ['audienceMatch', 'similarArtists'],
         },
         {
           day: 14,
           template: 'final_followup',
           condition: 'no_response',
-          personalization: ['futureOpportunities']
-        }
+          personalization: ['futureOpportunities'],
+        },
       ],
       relationshipMaintenance: {
         frequency: 30, // days
         template: 'relationship_check',
-        triggers: ['new_release', 'station_update', 'industry_news']
-      }
+        triggers: ['new_release', 'station_update', 'industry_news'],
+      },
     };
-    
+
     return sequence;
   }
 
@@ -463,28 +490,32 @@ class RadioPromoAgent {
   async executeOutreachCampaign(campaign) {
     try {
       logger.info('Executing radio outreach campaign...');
-      
+
       const results = {
         campaignId: campaign.id || `campaign_${Date.now()}`,
         totalStations: campaign.targetStations.length,
         outreachResults: [],
         timeline: [],
-        currentPhase: 'initial_outreach'
+        currentPhase: 'initial_outreach',
       };
-      
+
       // Execute initial outreach
       for (const station of campaign.targetStations) {
-        const outreachResult = await this.executeStationOutreach(station, campaign.trackInfo, 'initial');
+        const outreachResult = await this.executeStationOutreach(
+          station,
+          campaign.trackInfo,
+          'initial'
+        );
         results.outreachResults.push(outreachResult);
         this.metrics.stationsContacted++;
-        
+
         // Simulate delay between outreach
         await new Promise(resolve => setTimeout(resolve, Math.random() * 100));
       }
-      
+
       // Schedule follow-ups
       await this.scheduleFollowUps(campaign, results);
-      
+
       logger.info(`Outreach campaign executed: ${results.totalStations} stations contacted`);
       return results;
     } catch (error) {
@@ -504,19 +535,19 @@ class RadioPromoAgent {
       timestamp: new Date(),
       personalizedMessage: this.generatePersonalizedMessage(station, trackInfo, outreachType),
       deliveryStatus: Math.random() > 0.05 ? 'delivered' : 'failed', // 95% delivery rate
-      expectedResponse: station.expectedResponseRate || 0.1
+      expectedResponse: station.expectedResponseRate || 0.1,
     };
-    
+
     // Simulate response based on station characteristics
     if (Math.random() < outreach.expectedResponse) {
       outreach.response = {
         received: true,
         sentiment: this.generateResponseSentiment(),
         timestamp: new Date(Date.now() + Math.random() * 7 * 24 * 60 * 60 * 1000),
-        actionRequired: Math.random() > 0.7
+        actionRequired: Math.random() > 0.7,
       };
     }
-    
+
     return outreach;
   }
 
@@ -526,7 +557,7 @@ class RadioPromoAgent {
   async trackAirplayResults(campaignId) {
     try {
       logger.info(`Tracking airplay results for campaign ${campaignId}`);
-      
+
       const airplayData = {
         campaignId,
         totalPlays: Math.floor(Math.random() * 50) + 5,
@@ -535,16 +566,16 @@ class RadioPromoAgent {
         peakPlayback: {
           date: new Date(),
           plays: Math.floor(Math.random() * 10) + 1,
-          stations: Math.floor(Math.random() * 5) + 1
+          stations: Math.floor(Math.random() * 5) + 1,
         },
         trends: {
           weeklyGrowth: (Math.random() - 0.3) * 100, // -30% to +70%
           genrePerformance: Math.random() * 100,
-          regionalStrength: this.generateRegionalData()
+          regionalStrength: this.generateRegionalData(),
         },
-        detailedPlays: this.generateDetailedPlayData()
+        detailedPlays: this.generateDetailedPlayData(),
       };
-      
+
       this.metrics.airplaySecured += airplayData.totalPlays;
       logger.info(`Airplay tracking complete: ${airplayData.totalPlays} total plays`);
       return airplayData;
@@ -560,7 +591,7 @@ class RadioPromoAgent {
   async generateCampaignReport(campaignId) {
     try {
       const airplayData = await this.trackAirplayResults(campaignId);
-      
+
       const report = {
         campaignId,
         summary: {
@@ -568,19 +599,19 @@ class RadioPromoAgent {
           responseRate: (this.metrics.stationsContacted * 0.12).toFixed(1) + '%',
           airplaySecured: airplayData.totalPlays,
           reachEstimate: airplayData.reachEstimate,
-          roi: this.calculateROI(airplayData)
+          roi: this.calculateROI(airplayData),
         },
         performance: {
           genreAlignment: Math.floor(Math.random() * 30) + 70, // 70-100%
           targetingAccuracy: Math.floor(Math.random() * 25) + 75, // 75-100%
           relationshipBuilding: Math.floor(Math.random() * 40) + 60, // 60-100%
-          followUpEffectiveness: Math.floor(Math.random() * 35) + 65 // 65-100%
+          followUpEffectiveness: Math.floor(Math.random() * 35) + 65, // 65-100%
         },
         recommendations: this.generateCampaignRecommendations(airplayData),
         nextSteps: this.generateNextSteps(airplayData),
-        generatedAt: new Date()
+        generatedAt: new Date(),
       };
-      
+
       logger.info('Campaign report generated');
       return report;
     } catch (error) {
@@ -602,18 +633,18 @@ class RadioPromoAgent {
         database: {
           connected: true,
           stationsAvailable: this.radioDatabase?.totalStations || 0,
-          segmentsCovered: Object.keys(this.radioSegments).length
+          segmentsCovered: Object.keys(this.radioSegments).length,
         },
         capabilities: {
           targeting: !!this.targetingEngine,
           relationshipTracking: !!this.relationshipTracker,
           outreachAutomation: true,
-          performanceAnalytics: true
+          performanceAnalytics: true,
         },
         metrics: { ...this.metrics },
-        timestamp: new Date()
+        timestamp: new Date(),
       };
-      
+
       return health;
     } catch (error) {
       logger.error('Health check failed:', error);
@@ -621,7 +652,7 @@ class RadioPromoAgent {
         status: 'unhealthy',
         agent: this.name,
         error: error.message,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
     }
   }
@@ -637,14 +668,14 @@ class RadioPromoAgent {
       database: {
         totalStations: this.radioDatabase?.totalStations || 0,
         segmentBreakdown: this.radioDatabase?.segmentBreakdown || {},
-        genreCoverage: Object.keys(this.radioDatabase?.genreCoverage || {}).length
+        genreCoverage: Object.keys(this.radioDatabase?.genreCoverage || {}).length,
       },
       performance: {
         averageResponseRate: '12.3%',
         averageAirplayConversion: '8.7%',
-        relationshipGrowthRate: '+15%/month'
+        relationshipGrowthRate: '+15%/month',
       },
-      timestamp: new Date()
+      timestamp: new Date(),
     };
   }
 
@@ -655,7 +686,18 @@ class RadioPromoAgent {
   }
 
   generateLocation() {
-    const cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose'];
+    const cities = [
+      'New York',
+      'Los Angeles',
+      'Chicago',
+      'Houston',
+      'Phoenix',
+      'Philadelphia',
+      'San Antonio',
+      'San Diego',
+      'Dallas',
+      'San Jose',
+    ];
     return cities[Math.floor(Math.random() * cities.length)];
   }
 
@@ -663,7 +705,7 @@ class RadioPromoAgent {
     return {
       email: `dj${Math.floor(Math.random() * 1000)}@radiostation.com`,
       phone: `555-${Math.floor(Math.random() * 900) + 100}-${Math.floor(Math.random() * 9000) + 1000}`,
-      submissionPortal: Math.random() > 0.6
+      submissionPortal: Math.random() > 0.6,
     };
   }
 
@@ -672,7 +714,7 @@ class RadioPromoAgent {
     return {
       name: `DJ ${names[Math.floor(Math.random() * names.length)]}`,
       show: `${['Morning', 'Afternoon', 'Evening', 'Late Night'][Math.floor(Math.random() * 4)]} Mix`,
-      experience: Math.floor(Math.random() * 15) + 1
+      experience: Math.floor(Math.random() * 15) + 1,
     };
   }
 
@@ -680,7 +722,7 @@ class RadioPromoAgent {
     return {
       totalInteractions: Math.floor(Math.random() * 20),
       positiveResponses: Math.floor(Math.random() * 5),
-      averageResponseTime: Math.floor(Math.random() * 7) + 1
+      averageResponseTime: Math.floor(Math.random() * 7) + 1,
     };
   }
 
@@ -699,8 +741,8 @@ class RadioPromoAgent {
       phases: [
         { name: 'Initial Outreach', days: '1-3' },
         { name: 'Follow-up Phase', days: '4-14' },
-        { name: 'Relationship Building', days: '15-30' }
-      ]
+        { name: 'Relationship Building', days: '15-30' },
+      ],
     };
   }
 
@@ -708,7 +750,7 @@ class RadioPromoAgent {
     return {
       expectedResponses: Math.floor((options.primaryTargets || 50) * 0.12),
       expectedAirplay: Math.floor((options.primaryTargets || 50) * 0.08),
-      estimatedReach: Math.floor(Math.random() * 200000) + 50000
+      estimatedReach: Math.floor(Math.random() * 200000) + 50000,
     };
   }
 
@@ -718,7 +760,7 @@ class RadioPromoAgent {
       outreach: (options.primaryTargets || 50) * 2,
       followUp: (options.primaryTargets || 50) * 1,
       reporting: 100,
-      total: 300 + (options.primaryTargets || 50) * 3
+      total: 300 + (options.primaryTargets || 50) * 3,
     };
   }
 
@@ -736,7 +778,7 @@ class RadioPromoAgent {
       northeast: Math.floor(Math.random() * 30) + 20,
       southeast: Math.floor(Math.random() * 25) + 15,
       midwest: Math.floor(Math.random() * 20) + 10,
-      west: Math.floor(Math.random() * 35) + 25
+      west: Math.floor(Math.random() * 35) + 25,
     };
   }
 
@@ -745,7 +787,7 @@ class RadioPromoAgent {
       station: `Station ${i + 1}`,
       plays: Math.floor(Math.random() * 5) + 1,
       timeSlots: ['morning', 'afternoon', 'evening'],
-      audience: Math.floor(Math.random() * 50000) + 5000
+      audience: Math.floor(Math.random() * 50000) + 5000,
     }));
   }
 
@@ -757,7 +799,7 @@ class RadioPromoAgent {
     return [
       'Focus on college radio for higher response rates',
       'Increase follow-up frequency for better conversion',
-      'Target similar genre stations for expansion'
+      'Target similar genre stations for expansion',
     ];
   }
 
@@ -765,7 +807,7 @@ class RadioPromoAgent {
     return [
       'Schedule relationship maintenance contacts',
       'Prepare next single campaign',
-      'Analyze regional performance patterns'
+      'Analyze regional performance patterns',
     ];
   }
 
@@ -785,15 +827,17 @@ class RadioPromoAgent {
   async processTranscript(transcriptSource, options = {}) {
     try {
       logger.info(`Processing transcript from: ${transcriptSource}`);
-      
+
       if (this.verificationEnabled) {
         logger.verification('Ready to process transcript?');
-        const proceed = await this.requestVerification('Process transcript and extract campaign data');
+        const proceed = await this.requestVerification(
+          'Process transcript and extract campaign data'
+        );
         if (!proceed) return null;
       }
-      
+
       let campaignBrief;
-      
+
       // Handle different transcript sources
       if (transcriptSource.startsWith('otter:')) {
         // Otter.ai transcript ID
@@ -814,23 +858,23 @@ class RadioPromoAgent {
       } else {
         // Local file (Google Meet or other)
         const transcriptPath = path.resolve(transcriptSource);
-      if (!fs.existsSync(transcriptPath)) {
-        throw new Error(`Transcript file not found: ${transcriptPath}`);
-      }
-      
-      const transcriptContent = fs.readFileSync(transcriptPath, 'utf8');
+        if (!fs.existsSync(transcriptPath)) {
+          throw new Error(`Transcript file not found: ${transcriptPath}`);
+        }
+
+        const transcriptContent = fs.readFileSync(transcriptPath, 'utf8');
         campaignBrief = this.extractCampaignInfo(transcriptContent);
         campaignBrief.source = 'local_file';
       }
-      
+
       // Save processed brief
       const briefPath = `./campaigns/brief_${Date.now()}.json`;
       if (!fs.existsSync('./campaigns')) fs.mkdirSync('./campaigns', { recursive: true });
       fs.writeFileSync(briefPath, JSON.stringify(campaignBrief, null, 2));
-      
+
       this.metrics.transcriptsProcessed++;
       this.metrics.verificationSteps++;
-      
+
       logger.success(`Transcript processed - Brief saved to: ${briefPath}`);
       return campaignBrief;
     } catch (error) {
@@ -845,11 +889,11 @@ class RadioPromoAgent {
   async processOtterDownloadFile(fileName) {
     try {
       logger.info(`Processing Otter.ai download file: ${fileName}`);
-      
+
       // Look for the file in Downloads folder
       const downloadsPath = path.join(require('os').homedir(), 'Downloads');
       const filePath = path.join(downloadsPath, fileName);
-      
+
       if (!fs.existsSync(filePath)) {
         // Try with .txt extension if not provided
         const filePathWithExt = filePath + '.txt';
@@ -862,12 +906,12 @@ class RadioPromoAgent {
         }
         throw new Error(`Otter.ai download file not found: ${fileName} (checked Downloads folder)`);
       }
-      
+
       const transcriptContent = fs.readFileSync(filePath, 'utf8');
       const campaignBrief = this.extractCampaignInfo(transcriptContent);
       campaignBrief.source = 'otter_download';
       campaignBrief.fileName = fileName;
-      
+
       logger.success(`Otter.ai download file processed: ${fileName}`);
       return campaignBrief;
     } catch (error) {
@@ -882,10 +926,10 @@ class RadioPromoAgent {
   async processGeminiTranscript(transcriptId) {
     try {
       logger.info(`Processing Google Gemini transcript: ${transcriptId}`);
-      
+
       // Use the Gemini integration
       const campaignBrief = await this.googleGemini.processTranscriptForCampaign(transcriptId);
-      
+
       logger.success(`Google Gemini transcript processed: ${transcriptId}`);
       return campaignBrief;
     } catch (error) {
@@ -901,23 +945,24 @@ class RadioPromoAgent {
   async scanDownloadsForOtterFiles() {
     try {
       logger.info('Scanning Downloads folder for Otter.ai files...');
-      
+
       const downloadsPath = path.join(require('os').homedir(), 'Downloads');
       const files = fs.readdirSync(downloadsPath);
-      
+
       // Look for Otter.ai files (more specific patterns)
-      const otterFiles = files.filter(file => 
-        (file.toLowerCase().includes('otter') && file.endsWith('.txt')) ||
-        (file.toLowerCase().includes('transcript') && file.endsWith('.txt')) ||
-        (file.toLowerCase().includes('meeting') && file.endsWith('.txt')) ||
-        (file.toLowerCase().includes('call') && file.endsWith('.txt'))
+      const otterFiles = files.filter(
+        file =>
+          (file.toLowerCase().includes('otter') && file.endsWith('.txt')) ||
+          (file.toLowerCase().includes('transcript') && file.endsWith('.txt')) ||
+          (file.toLowerCase().includes('meeting') && file.endsWith('.txt')) ||
+          (file.toLowerCase().includes('call') && file.endsWith('.txt'))
       );
-      
+
       logger.info(`Found ${otterFiles.length} potential Otter.ai files in Downloads`);
-      
+
       const processedFiles = [];
       const errors = [];
-      
+
       for (const file of otterFiles) {
         try {
           logger.info(`Processing: ${file}`);
@@ -925,17 +970,17 @@ class RadioPromoAgent {
           processedFiles.push({
             fileName: file,
             campaignBrief: campaignBrief,
-            success: true
+            success: true,
           });
         } catch (error) {
           logger.warn(`Failed to process ${file}: ${error.message}`);
           errors.push({
             fileName: file,
-            error: error.message
+            error: error.message,
           });
         }
       }
-      
+
       // Save training data
       const trainingData = {
         timestamp: new Date().toISOString(),
@@ -943,13 +988,13 @@ class RadioPromoAgent {
         processedFiles: processedFiles.length,
         errors: errors.length,
         files: processedFiles,
-        errorFiles: errors
+        errorFiles: errors,
       };
-      
+
       const trainingPath = `./training-data/otter_training_${Date.now()}.json`;
       if (!fs.existsSync('./training-data')) fs.mkdirSync('./training-data', { recursive: true });
       fs.writeFileSync(trainingPath, JSON.stringify(trainingData, null, 2));
-      
+
       logger.success(`Otter.ai training data saved: ${trainingPath}`);
       return trainingData;
     } catch (error) {
@@ -965,28 +1010,31 @@ class RadioPromoAgent {
   async scanOtterFilesOnly() {
     try {
       logger.info('Scanning Downloads folder for Otter.ai files only...');
-      
+
       const downloadsPath = path.join(require('os').homedir(), 'Downloads');
       const files = fs.readdirSync(downloadsPath);
-      
+
       // Very specific Otter.ai file patterns
-      const otterFiles = files.filter(file => 
-        file.toLowerCase().includes('otter') && 
-        file.endsWith('.txt') &&
-        !file.toLowerCase().includes('backup') &&
-        !file.toLowerCase().includes('old')
+      const otterFiles = files.filter(
+        file =>
+          file.toLowerCase().includes('otter') &&
+          file.endsWith('.txt') &&
+          !file.toLowerCase().includes('backup') &&
+          !file.toLowerCase().includes('old')
       );
-      
+
       logger.info(`Found ${otterFiles.length} Otter.ai files in Downloads`);
-      
+
       if (otterFiles.length === 0) {
-        logger.warn('No Otter.ai files found. Looking for files with "otter" in the name and .txt extension.');
+        logger.warn(
+          'No Otter.ai files found. Looking for files with "otter" in the name and .txt extension.'
+        );
         return { totalFiles: 0, processedFiles: 0, errors: 0, files: [], errorFiles: [] };
       }
-      
+
       const processedFiles = [];
       const errors = [];
-      
+
       for (const file of otterFiles) {
         try {
           logger.info(`Processing Otter.ai file: ${file}`);
@@ -994,17 +1042,17 @@ class RadioPromoAgent {
           processedFiles.push({
             fileName: file,
             campaignBrief: campaignBrief,
-            success: true
+            success: true,
           });
         } catch (error) {
           logger.warn(`Failed to process ${file}: ${error.message}`);
           errors.push({
             fileName: file,
-            error: error.message
+            error: error.message,
           });
         }
       }
-      
+
       // Save training data
       const trainingData = {
         timestamp: new Date().toISOString(),
@@ -1013,13 +1061,13 @@ class RadioPromoAgent {
         errors: errors.length,
         files: processedFiles,
         errorFiles: errors,
-        note: 'One-time scan of Otter.ai files from Downloads folder'
+        note: 'One-time scan of Otter.ai files from Downloads folder',
       };
-      
+
       const trainingPath = `./training-data/otter_one_time_scan_${Date.now()}.json`;
       if (!fs.existsSync('./training-data')) fs.mkdirSync('./training-data', { recursive: true });
       fs.writeFileSync(trainingPath, JSON.stringify(trainingData, null, 2));
-      
+
       logger.success(`Otter.ai one-time scan complete: ${trainingPath}`);
       return trainingData;
     } catch (error) {
@@ -1042,9 +1090,9 @@ class RadioPromoAgent {
     const campaignBrief = {
       extractedAt: new Date().toISOString(),
       source: 'google_meet_transcript',
-      data: {}
+      data: {},
     };
-    
+
     for (const [key, pattern] of Object.entries(this.transcriptPatterns)) {
       const match = transcript.match(pattern);
       if (match) {
@@ -1055,10 +1103,10 @@ class RadioPromoAgent {
         }
       }
     }
-    
+
     campaignBrief.fullTranscript = transcript;
     campaignBrief.confidence = this.calculateExtractionConfidence(campaignBrief.data);
-    
+
     logger.info('Campaign data extracted:', Object.keys(campaignBrief.data));
     return campaignBrief;
   }
@@ -1078,23 +1126,28 @@ class RadioPromoAgent {
   async createMondayCampaign(campaignBrief) {
     try {
       logger.info('Creating Monday.com campaign...');
-      
+
       if (this.verificationEnabled) {
-        logger.verification(`Ready to create Monday.com campaign for ${campaignBrief.data.artistName} - ${campaignBrief.data.trackTitle}?`);
+        logger.verification(
+          `Ready to create Monday.com campaign for ${campaignBrief.data.artistName} - ${campaignBrief.data.trackTitle}?`
+        );
         const proceed = await this.requestVerification('Create Monday.com campaign board');
         if (!proceed) return null;
       }
-      
+
       // Validate board access first
       await this.mondayApi.validateBoardAccess();
-      
+
       // Create enhanced Liberty campaign with Google Drive integration
-      const campaignResult = await this.mondayApi.createLibertyCampaign(campaignBrief.data, this.warmApi);
-      
+      const campaignResult = await this.mondayApi.createLibertyCampaign(
+        campaignBrief.data,
+        this.warmApi
+      );
+
       // Add campaign tasks as subitems
       const tasks = this.generateCampaignTasks(campaignBrief.data);
       const taskResults = [];
-      
+
       for (const task of tasks) {
         try {
           const taskResult = await this.mondayApi.addCampaignTask(campaignResult.id, task);
@@ -1103,19 +1156,19 @@ class RadioPromoAgent {
           logger.warn(`Failed to add task "${task.name}":`, error.message);
         }
       }
-      
+
       // Gather intelligence from team channels (read-only)
       const intelligence = await this.googleChat.gatherIntelligence();
-      
+
       // Create Mailchimp email sequence
       const mailchimpSequence = await this.createMailchimpSequence(campaignBrief.data);
-      
+
       this.metrics.mondayBoardsCreated++;
       this.metrics.verificationSteps++;
-      
+
       logger.success(`Monday.com campaign created - Item ID: ${campaignResult.id}`);
-      return { 
-        itemId: campaignResult.id, 
+      return {
+        itemId: campaignResult.id,
         itemName: campaignResult.campaignTitle,
         tasks: taskResults,
         boardUrl: 'https://liberty-music.monday.com/boards/2443582331',
@@ -1124,8 +1177,8 @@ class RadioPromoAgent {
         driveFolder: campaignResult.driveFolder,
         timeline: {
           startDate: campaignResult.startDate,
-          releaseDate: campaignResult.releaseDate
-        }
+          releaseDate: campaignResult.releaseDate,
+        },
       };
     } catch (error) {
       logger.error('Monday.com campaign creation failed:', error);
@@ -1138,7 +1191,7 @@ class RadioPromoAgent {
    */
   generateMondayBoard(campaignBrief) {
     const { artistName, trackTitle, genre, releaseDate, deadline } = campaignBrief.data;
-    
+
     return {
       boardName: `${artistName} - ${trackTitle} Radio Campaign`,
       description: `Radio promotion campaign for ${artistName}'s ${genre} track "${trackTitle}"`,
@@ -1146,35 +1199,81 @@ class RadioPromoAgent {
         {
           title: 'Pre-Launch Preparation',
           items: [
-            { name: 'Finalize press release', type: 'task', priority: 'high', status: 'not_started', deadline: this.calculateDate(-7, releaseDate) },
-            { name: 'Radio station contact list', type: 'task', priority: 'high', status: 'not_started' },
-            { name: 'Promotional materials ready', type: 'milestone', priority: 'critical', deadline: this.calculateDate(-5, releaseDate) }
-          ]
+            {
+              name: 'Finalize press release',
+              type: 'task',
+              priority: 'high',
+              status: 'not_started',
+              deadline: this.calculateDate(-7, releaseDate),
+            },
+            {
+              name: 'Radio station contact list',
+              type: 'task',
+              priority: 'high',
+              status: 'not_started',
+            },
+            {
+              name: 'Promotional materials ready',
+              type: 'milestone',
+              priority: 'critical',
+              deadline: this.calculateDate(-5, releaseDate),
+            },
+          ],
         },
         {
           title: 'Launch Week Activities',
           items: [
-            { name: 'Send press release to media', type: 'task', priority: 'critical', deadline: releaseDate },
-            { name: 'Radio station outreach', type: 'task', priority: 'critical', deadline: this.calculateDate(1, releaseDate) },
-            { name: 'Track WARM API plays', type: 'task', priority: 'high', recurring: 'daily' }
-          ]
+            {
+              name: 'Send press release to media',
+              type: 'task',
+              priority: 'critical',
+              deadline: releaseDate,
+            },
+            {
+              name: 'Radio station outreach',
+              type: 'task',
+              priority: 'critical',
+              deadline: this.calculateDate(1, releaseDate),
+            },
+            { name: 'Track WARM API plays', type: 'task', priority: 'high', recurring: 'daily' },
+          ],
         },
         {
           title: 'Post-Launch Follow-up',
           items: [
-            { name: 'Follow up with radio contacts', type: 'task', priority: 'medium', deadline: this.calculateDate(7, releaseDate) },
-            { name: 'Performance analysis', type: 'task', priority: 'medium', deadline: this.calculateDate(14, releaseDate) }
-          ]
+            {
+              name: 'Follow up with radio contacts',
+              type: 'task',
+              priority: 'medium',
+              deadline: this.calculateDate(7, releaseDate),
+            },
+            {
+              name: 'Performance analysis',
+              type: 'task',
+              priority: 'medium',
+              deadline: this.calculateDate(14, releaseDate),
+            },
+          ],
         },
         {
           title: 'Performance Tracking',
           items: [
-            { name: 'Daily play count monitoring', type: 'task', priority: 'medium', recurring: 'daily' },
-            { name: 'Weekly performance report', type: 'task', priority: 'low', recurring: 'weekly' }
-          ]
-        }
+            {
+              name: 'Daily play count monitoring',
+              type: 'task',
+              priority: 'medium',
+              recurring: 'daily',
+            },
+            {
+              name: 'Weekly performance report',
+              type: 'task',
+              priority: 'low',
+              recurring: 'weekly',
+            },
+          ],
+        },
       ],
-      metadata: { artistName, trackTitle, genre, createdAt: new Date().toISOString() }
+      metadata: { artistName, trackTitle, genre, createdAt: new Date().toISOString() },
     };
   }
 
@@ -1193,29 +1292,34 @@ class RadioPromoAgent {
   async generateLibertyPressRelease(campaignBrief) {
     try {
       logger.info('Generating Liberty-style press release...');
-      
+
       if (this.verificationEnabled) {
-        logger.verification(`Ready to generate press release for ${campaignBrief.data.artistName} - ${campaignBrief.data.trackTitle}?`);
+        logger.verification(
+          `Ready to generate press release for ${campaignBrief.data.artistName} - ${campaignBrief.data.trackTitle}?`
+        );
         const proceed = await this.requestVerification('Generate Liberty-style press release');
         if (!proceed) return null;
       }
-      
+
       const pressRelease = this.buildLibertyPressRelease(campaignBrief);
-      
+
       // Save press release
-      const filename = `${campaignBrief.data.artistName}_${campaignBrief.data.trackTitle}_PR.txt`
-        .replace(/[^a-zA-Z0-9]/g, '_');
+      const filename =
+        `${campaignBrief.data.artistName}_${campaignBrief.data.trackTitle}_PR.txt`.replace(
+          /[^a-zA-Z0-9]/g,
+          '_'
+        );
       const pressReleasePath = `./press-releases/${filename}`;
-      
+
       if (!fs.existsSync('./press-releases')) fs.mkdirSync('./press-releases', { recursive: true });
       fs.writeFileSync(pressReleasePath, pressRelease);
-      
+
       this.metrics.pressReleasesGenerated++;
       this.metrics.verificationSteps++;
-      
+
       // Log press release completion (no notifications)
       logger.info(`Press release ready: ${pressReleasePath}`);
-      
+
       logger.success(`Liberty-style press release generated: ${pressReleasePath}`);
       return { content: pressRelease, filePath: pressReleasePath };
     } catch (error) {
@@ -1230,7 +1334,7 @@ class RadioPromoAgent {
   buildLibertyPressRelease(campaignBrief) {
     const { artistName, trackTitle, genre } = campaignBrief.data;
     const artistHandle = artistName.toLowerCase().replace(/\s/g, '');
-    
+
     const pr = `
 FOR IMMEDIATE RELEASE
 
@@ -1266,7 +1370,7 @@ Website: https://totalaudiopromo.com
 
 Generated: ${new Date().toLocaleDateString()}
 `;
-    
+
     return pr.trim();
   }
 
@@ -1276,23 +1380,23 @@ Generated: ${new Date().toLocaleDateString()}
   async trackWarmApiPlays(campaignBrief, trackingConfig = {}) {
     try {
       logger.info('Setting up WARM API play tracking...');
-      
+
       if (this.verificationEnabled) {
         logger.verification(`Ready to start tracking plays for ${campaignBrief.data.trackTitle}?`);
         const proceed = await this.requestVerification('Start WARM API play tracking');
         if (!proceed) return null;
       }
-      
+
       const trackingData = await this.initializePlayTracking(campaignBrief, trackingConfig);
-      
+
       // Save tracking configuration
       const trackingPath = `./tracking-data/tracking_${trackingData.trackId}.json`;
       if (!fs.existsSync('./tracking-data')) fs.mkdirSync('./tracking-data', { recursive: true });
       fs.writeFileSync(trackingPath, JSON.stringify(trackingData, null, 2));
-      
+
       this.metrics.warmApiTracking++;
       this.metrics.verificationSteps++;
-      
+
       logger.success(`WARM API tracking initialized - Track ID: ${trackingData.trackId}`);
       return trackingData;
     } catch (error) {
@@ -1306,7 +1410,7 @@ Generated: ${new Date().toLocaleDateString()}
    */
   async initializePlayTracking(campaignBrief, config) {
     const trackId = `track_${Date.now()}`;
-    
+
     return {
       trackId,
       artistName: campaignBrief.data.artistName,
@@ -1315,10 +1419,11 @@ Generated: ${new Date().toLocaleDateString()}
       startDate: new Date().toISOString(),
       config: {
         checkInterval: config.checkInterval || 300000, // 5 minutes
-        notificationThresholds: config.thresholds || this.warmApiConfig.notificationThresholds.milestone,
-        dailyReports: config.dailyReports !== false
+        notificationThresholds:
+          config.thresholds || this.warmApiConfig.notificationThresholds.milestone,
+        dailyReports: config.dailyReports !== false,
       },
-      stats: { totalPlays: 0, lastCheck: new Date().toISOString(), milestones: [] }
+      stats: { totalPlays: 0, lastCheck: new Date().toISOString(), milestones: [] },
     };
   }
 
@@ -1328,21 +1433,23 @@ Generated: ${new Date().toLocaleDateString()}
   async sendGoogleChatNotification(message, type = 'general') {
     try {
       if (this.verificationEnabled) {
-        logger.verification(`Ready to send Google Chat notification: ${message.substring(0, 50)}...?`);
+        logger.verification(
+          `Ready to send Google Chat notification: ${message.substring(0, 50)}...?`
+        );
         const proceed = await this.requestVerification('Send Google Chat notification');
         if (!proceed) return null;
       }
-      
+
       const notification = {
         text: message,
         timestamp: new Date().toISOString(),
-        type
+        type,
       };
-      
+
       logger.success(`Google Chat notification sent: ${type}`);
       this.metrics.chatNotificationsSent++;
       this.metrics.verificationSteps++;
-      
+
       return notification;
     } catch (error) {
       logger.error('Google Chat notification failed:', error);
@@ -1355,56 +1462,56 @@ Generated: ${new Date().toLocaleDateString()}
    */
   generateCampaignTasks(campaignData) {
     const { artistName, trackTitle, genre, releaseDate } = campaignData;
-    
+
     return [
       {
         name: 'Finalize press release',
         description: 'Complete and review press release for distribution',
         status: 'Not Started',
-        deadline: this.calculateDate(-7, releaseDate)
+        deadline: this.calculateDate(-7, releaseDate),
       },
       {
         name: 'Radio station contact list',
         description: 'Compile targeted radio station contact list',
         status: 'Not Started',
-        deadline: this.calculateDate(-5, releaseDate)
+        deadline: this.calculateDate(-5, releaseDate),
       },
       {
         name: 'Promotional materials ready',
         description: 'Ensure all promotional materials are prepared',
         status: 'Not Started',
-        deadline: this.calculateDate(-3, releaseDate)
+        deadline: this.calculateDate(-3, releaseDate),
       },
       {
         name: 'Send press release to media',
         description: 'Distribute press release to media contacts',
         status: 'Not Started',
-        deadline: releaseDate
+        deadline: releaseDate,
       },
       {
         name: 'Radio station outreach',
         description: 'Begin radio station outreach campaign',
         status: 'Not Started',
-        deadline: this.calculateDate(1, releaseDate)
+        deadline: this.calculateDate(1, releaseDate),
       },
       {
         name: 'Track WARM API plays',
         description: 'Monitor play count and performance',
         status: 'Not Started',
-        deadline: this.calculateDate(1, releaseDate)
+        deadline: this.calculateDate(1, releaseDate),
       },
       {
         name: 'Follow up with radio contacts',
         description: 'Follow up with radio contacts for responses',
         status: 'Not Started',
-        deadline: this.calculateDate(7, releaseDate)
+        deadline: this.calculateDate(7, releaseDate),
       },
       {
         name: 'Performance analysis',
         description: 'Analyze campaign performance and results',
         status: 'Not Started',
-        deadline: this.calculateDate(14, releaseDate)
-      }
+        deadline: this.calculateDate(14, releaseDate),
+      },
     ];
   }
 
@@ -1414,22 +1521,25 @@ Generated: ${new Date().toLocaleDateString()}
   async createMailchimpSequence(campaignData) {
     try {
       logger.info('Creating Mailchimp email sequence...');
-      
+
       if (this.verificationEnabled) {
         logger.verification(`Ready to create Mailchimp sequence for ${campaignData.artistName}?`);
         const proceed = await this.requestVerification('Create Mailchimp email sequence');
         if (!proceed) return null;
       }
-      
+
       // Ensure Liberty Music PR audience exists
       const libertyAudience = await this.mailchimp.ensureLibertyAudience();
-      
+
       // Add client to audience
       await this.mailchimp.addClientToAudience(campaignData, libertyAudience.id);
-      
+
       // Create email sequence
-      const sequence = await this.mailchimp.createRadioPromoSequence(campaignData, libertyAudience.id);
-      
+      const sequence = await this.mailchimp.createRadioPromoSequence(
+        campaignData,
+        libertyAudience.id
+      );
+
       this.metrics.verificationSteps++;
       logger.success(`Mailchimp sequence created for ${campaignData.artistName}`);
       return sequence;
@@ -1446,12 +1556,12 @@ Generated: ${new Date().toLocaleDateString()}
   async checkArtistPlays(artistName, campaignStartDate = null) {
     try {
       logger.info(`🎵 Checking radio plays for ${artistName}...`);
-      
+
       // Check if WARM API is available
       if (!this.warmApi.isAvailable) {
         logger.warn('⚠️ WARM API is not available. Checking health status...');
         const healthStatus = await this.warmApi.healthCheck();
-        
+
         if (!healthStatus.apiAvailable) {
           logger.warn(`⚠️ WARM API unavailable: ${healthStatus.error}`);
           logger.info('💡 This is expected if WARM API access is still being set up');
@@ -1461,16 +1571,16 @@ Generated: ${new Date().toLocaleDateString()}
             stationBreakdown: {},
             plays: [],
             status: 'api_unavailable',
-            message: 'WARM API not available - check service status'
+            message: 'WARM API not available - check service status',
           };
         }
       }
-      
+
       const plays = await this.warmApi.getLibertyArtistPlays(artistName, campaignStartDate);
-      
+
       if (plays && plays.length > 0) {
         logger.success(`Found ${plays.length} radio plays for ${artistName}`);
-        
+
         // Group by station for easy reading
         const stationPlays = {};
         plays.forEach(play => {
@@ -1490,7 +1600,7 @@ Generated: ${new Date().toLocaleDateString()}
           artistName,
           totalPlays: plays.length,
           stationBreakdown: stationPlays,
-          plays: plays
+          plays: plays,
         };
       } else {
         logger.info(`No radio plays found for ${artistName} yet`);
@@ -1498,7 +1608,7 @@ Generated: ${new Date().toLocaleDateString()}
           artistName,
           totalPlays: 0,
           stationBreakdown: {},
-          plays: []
+          plays: [],
         };
       }
     } catch (error) {
@@ -1510,30 +1620,34 @@ Generated: ${new Date().toLocaleDateString()}
   async generatePlayReport(artistName, campaignStartDate) {
     try {
       logger.info(`📊 Generating play report for ${artistName}...`);
-      
+
       const summary = await this.warmApi.getCampaignPlaySummary(artistName, campaignStartDate);
-      
+
       // Generate CSV report
-      const csvData = await this.warmApi.generateCSVReport(artistName, campaignStartDate, new Date().toISOString().split('T')[0]);
-      
+      const csvData = await this.warmApi.generateCSVReport(
+        artistName,
+        campaignStartDate,
+        new Date().toISOString().split('T')[0]
+      );
+
       // Save CSV to file
       const filename = `${artistName.replace(/[^a-zA-Z0-9]/g, '_')}_play_report_${new Date().toISOString().split('T')[0]}.csv`;
       const filepath = path.join(__dirname, 'reports', filename);
-      
+
       // Ensure reports directory exists
       const reportsDir = path.dirname(filepath);
       if (!fs.existsSync(reportsDir)) {
         fs.mkdirSync(reportsDir, { recursive: true });
       }
-      
+
       fs.writeFileSync(filepath, csvData);
-      
+
       logger.success(`Play report saved: ${filepath}`);
-      
+
       return {
         summary,
         csvFile: filepath,
-        filename
+        filename,
       };
     } catch (error) {
       logger.error(`Error generating play report for ${artistName}:`, error);
@@ -1544,43 +1658,53 @@ Generated: ${new Date().toLocaleDateString()}
   async updateMondayWithPlays(artistName, campaignStartDate, campaignId = null) {
     try {
       logger.info(`📻 Updating Monday.com with play data for ${artistName}...`);
-      
+
       const playSummary = await this.checkArtistPlays(artistName, campaignStartDate);
-      
+
       if (playSummary.totalPlays > 0) {
         // If we have a specific campaign ID, update it directly
         if (campaignId) {
-          const updateResult = await this.mondayApi.updateCampaignWithWarmData(campaignId, playSummary);
-          logger.success(`✅ Updated Monday.com campaign ${campaignId} with ${playSummary.totalPlays} plays`);
-          
+          const updateResult = await this.mondayApi.updateCampaignWithWarmData(
+            campaignId,
+            playSummary
+          );
+          logger.success(
+            `✅ Updated Monday.com campaign ${campaignId} with ${playSummary.totalPlays} plays`
+          );
+
           return {
             success: true,
             playSummary,
-            mondayUpdate: updateResult
+            mondayUpdate: updateResult,
           };
         } else {
           // Find campaign by artist name
           const campaigns = await this.mondayApi.getCampaignItems();
-          const matchingCampaign = campaigns.find(campaign => 
+          const matchingCampaign = campaigns.find(campaign =>
             campaign.name.toLowerCase().includes(artistName.toLowerCase())
           );
-          
+
           if (matchingCampaign) {
-            const updateResult = await this.mondayApi.updateCampaignWithWarmData(matchingCampaign.id, playSummary);
-            logger.success(`✅ Updated Monday.com campaign ${matchingCampaign.id} with ${playSummary.totalPlays} plays`);
-            
+            const updateResult = await this.mondayApi.updateCampaignWithWarmData(
+              matchingCampaign.id,
+              playSummary
+            );
+            logger.success(
+              `✅ Updated Monday.com campaign ${matchingCampaign.id} with ${playSummary.totalPlays} plays`
+            );
+
             return {
               success: true,
               playSummary,
               mondayUpdate: updateResult,
-              campaignId: matchingCampaign.id
+              campaignId: matchingCampaign.id,
             };
           } else {
             logger.warn(`No matching Monday.com campaign found for ${artistName}`);
             return {
               success: false,
               message: `No Monday.com campaign found for ${artistName}`,
-              playSummary
+              playSummary,
             };
           }
         }
@@ -1589,7 +1713,7 @@ Generated: ${new Date().toLocaleDateString()}
         return {
           success: false,
           message: 'No plays found to update',
-          playSummary
+          playSummary,
         };
       }
     } catch (error) {
@@ -1601,11 +1725,11 @@ Generated: ${new Date().toLocaleDateString()}
   async getUKRadioStations() {
     try {
       logger.info('📻 Fetching UK radio stations from WARM...');
-      
+
       const stations = await this.warmApi.getUKRadioStations();
-      
+
       logger.success(`Found ${stations.length} UK radio stations`);
-      
+
       return stations;
     } catch (error) {
       logger.error('Error fetching UK radio stations:', error);
@@ -1616,49 +1740,53 @@ Generated: ${new Date().toLocaleDateString()}
   async generateWeeklyWarmReport(artistName, trackName, campaignStartDate, campaignData) {
     try {
       logger.info(`📊 Generating weekly WARM report for ${artistName}...`);
-      
+
       // Check if Google Drive API is available
       if (!this.mondayApi.driveAPI) {
         logger.warn('⚠️ Google Drive API not available - cannot save report to Drive');
         return {
           success: false,
           message: 'Google Drive API not available',
-          reportData: await this.warmApi.generateCSVReport(artistName, campaignStartDate, new Date().toISOString().split('T')[0])
+          reportData: await this.warmApi.generateCSVReport(
+            artistName,
+            campaignStartDate,
+            new Date().toISOString().split('T')[0]
+          ),
         };
       }
 
       // Generate weekly report with Google Drive integration
       const reportUrl = await this.warmApi.generateWeeklyReport(
-        artistName, 
-        trackName, 
-        campaignStartDate, 
-        this.mondayApi.driveAPI, 
+        artistName,
+        trackName,
+        campaignStartDate,
+        this.mondayApi.driveAPI,
         campaignData
       );
 
       if (reportUrl) {
         logger.success(`✅ Weekly WARM report generated: ${reportUrl}`);
-        
+
         // Update Monday.com with report link
         if (campaignData.itemId) {
           await this.mondayApi.updateCampaignProgress(campaignData.itemId, {
             files: {
               url: reportUrl,
-              text: `Weekly WARM Report - ${artistName}`
-            }
+              text: `Weekly WARM Report - ${artistName}`,
+            },
           });
         }
 
         return {
           success: true,
           reportUrl,
-          fileName: `WARM Report - ${artistName} - Week ${this.warmApi.getWeekNumber(new Date(campaignStartDate), new Date())}.csv`
+          fileName: `WARM Report - ${artistName} - Week ${this.warmApi.getWeekNumber(new Date(campaignStartDate), new Date())}.csv`,
         };
       } else {
         logger.error('Failed to generate weekly WARM report');
         return {
           success: false,
-          message: 'Report generation failed'
+          message: 'Report generation failed',
         };
       }
     } catch (error) {
@@ -1670,13 +1798,16 @@ Generated: ${new Date().toLocaleDateString()}
   async generateCampaignPerformanceSummary(artistName, campaignStartDate) {
     try {
       logger.info(`📈 Generating campaign performance summary for ${artistName}...`);
-      
-      const summary = await this.warmApi.generateCampaignPerformanceSummary(artistName, campaignStartDate);
-      
+
+      const summary = await this.warmApi.generateCampaignPerformanceSummary(
+        artistName,
+        campaignStartDate
+      );
+
       logger.success(`✅ Campaign performance summary generated for ${artistName}`);
       logger.info(`📊 Performance Rating: ${summary.performanceRating}`);
       logger.info(`📻 Total Plays: ${summary.totalPlays} across ${summary.totalStations} stations`);
-      
+
       if (summary.topStations && summary.topStations.length > 0) {
         logger.info('🏆 Top Performing Stations:');
         summary.topStations.forEach((station, index) => {
@@ -1694,19 +1825,26 @@ Generated: ${new Date().toLocaleDateString()}
   async updateCampaignWithWeeklyReport(artistName, campaignStartDate, campaignId = null) {
     try {
       logger.info(`📊 Updating campaign with weekly WARM report for ${artistName}...`);
-      
+
       // Get campaign performance summary
-      const performanceSummary = await this.generateCampaignPerformanceSummary(artistName, campaignStartDate);
-      
+      const performanceSummary = await this.generateCampaignPerformanceSummary(
+        artistName,
+        campaignStartDate
+      );
+
       // Update Monday.com with performance data
-      const updateResult = await this.updateMondayWithPlays(artistName, campaignStartDate, campaignId);
-      
+      const updateResult = await this.updateMondayWithPlays(
+        artistName,
+        campaignStartDate,
+        campaignId
+      );
+
       // Generate weekly report if we have Google Drive access
       let weeklyReport = null;
       if (this.mondayApi.driveAPI && updateResult.success) {
         weeklyReport = await this.generateWeeklyWarmReport(artistName, '', campaignStartDate, {
           itemId: campaignId || updateResult.campaignId,
-          driveFolder: { reportsFolder: 'reports_folder_id' } // This would come from campaign creation
+          driveFolder: { reportsFolder: 'reports_folder_id' }, // This would come from campaign creation
         });
       }
 
@@ -1718,8 +1856,8 @@ Generated: ${new Date().toLocaleDateString()}
           totalPlays: performanceSummary.totalPlays,
           totalStations: performanceSummary.totalStations,
           performanceRating: performanceSummary.performanceRating,
-          averagePlaysPerWeek: performanceSummary.averagePlaysPerWeek
-        }
+          averagePlaysPerWeek: performanceSummary.averagePlaysPerWeek,
+        },
       };
     } catch (error) {
       logger.error(`Error updating campaign with weekly report for ${artistName}:`, error);
@@ -1733,39 +1871,39 @@ Generated: ${new Date().toLocaleDateString()}
   async runDailyWarmCheck() {
     try {
       logger.info('🎵 Running daily WARM check for Liberty campaigns...');
-      
+
       // Get all active campaigns from Monday.com
       const activeCampaigns = await this.getActiveLibertyCampaigns();
-      
+
       if (activeCampaigns.length === 0) {
         logger.info('📋 No active campaigns found for daily check');
         return {
           success: true,
           message: 'No active campaigns to check',
-          campaignsChecked: 0
+          campaignsChecked: 0,
         };
       }
 
       logger.info(`📋 Found ${activeCampaigns.length} active campaigns to check`);
-      
+
       const results = {
         campaignsChecked: 0,
         campaignsWithPlays: 0,
         totalNewPlays: 0,
         weeklyReportsGenerated: 0,
-        errors: []
+        errors: [],
       };
 
       // Check each active campaign
       for (const campaign of activeCampaigns) {
         try {
           results.campaignsChecked++;
-          
+
           const yesterday = new Date();
           yesterday.setDate(yesterday.getDate() - 1);
-          
+
           logger.info(`🎵 Checking plays for ${campaign.artistName}...`);
-          
+
           // Get plays from yesterday
           const warmData = await this.warmApi.getPlaysForArtist(
             campaign.artistName,
@@ -1774,14 +1912,14 @@ Generated: ${new Date().toLocaleDateString()}
           );
 
           const newPlays = warmData.totalNumberOfEntities || warmData.totalPlays || 0;
-          
+
           if (newPlays > 0) {
             results.campaignsWithPlays++;
             results.totalNewPlays += newPlays;
-            
+
             // Update Monday.com with play data
             await this.mondayApi.updateCampaignWithWarmData(campaign.id, warmData);
-            
+
             logger.success(`🎵 ${campaign.artistName}: ${newPlays} new plays detected!`);
           } else {
             logger.info(`📻 ${campaign.artistName}: No new plays detected`);
@@ -1789,9 +1927,10 @@ Generated: ${new Date().toLocaleDateString()}
 
           // Generate weekly report every Friday
           const today = new Date();
-          if (today.getDay() === 5) { // Friday
+          if (today.getDay() === 5) {
+            // Friday
             logger.info(`📊 Generating weekly report for ${campaign.artistName} (Friday)...`);
-            
+
             try {
               const reportUrl = await this.warmApi.generateWeeklyReport(
                 campaign.artistName,
@@ -1800,34 +1939,36 @@ Generated: ${new Date().toLocaleDateString()}
                 this.mondayApi.driveAPI,
                 {
                   itemId: campaign.id,
-                  driveFolder: campaign.driveFolder || { reportsFolder: 'default_reports_folder' }
+                  driveFolder: campaign.driveFolder || { reportsFolder: 'default_reports_folder' },
                 }
               );
-              
+
               if (reportUrl) {
                 await this.mondayApi.updateCampaignWithWarmData(campaign.id, warmData, reportUrl);
                 results.weeklyReportsGenerated++;
                 logger.success(`📊 Weekly report generated for ${campaign.artistName}`);
               }
             } catch (reportError) {
-              logger.warn(`⚠️ Failed to generate weekly report for ${campaign.artistName}:`, reportError.message);
+              logger.warn(
+                `⚠️ Failed to generate weekly report for ${campaign.artistName}:`,
+                reportError.message
+              );
               results.errors.push({
                 campaign: campaign.artistName,
                 type: 'weekly_report',
-                error: reportError.message
+                error: reportError.message,
               });
             }
           }
 
           // Small delay between campaigns to avoid rate limiting
           await new Promise(resolve => setTimeout(resolve, 1000));
-          
         } catch (error) {
           logger.error(`❌ Error checking campaign ${campaign.artistName}:`, error.message);
           results.errors.push({
             campaign: campaign.artistName,
             type: 'daily_check',
-            error: error.message
+            error: error.message,
           });
         }
       }
@@ -1839,7 +1980,7 @@ Generated: ${new Date().toLocaleDateString()}
       logger.info(`   • Campaigns with new plays: ${results.campaignsWithPlays}`);
       logger.info(`   • Total new plays: ${results.totalNewPlays}`);
       logger.info(`   • Weekly reports generated: ${results.weeklyReportsGenerated}`);
-      
+
       if (results.errors.length > 0) {
         logger.warn(`⚠️ Errors encountered: ${results.errors.length}`);
         results.errors.forEach(error => {
@@ -1860,35 +2001,39 @@ Generated: ${new Date().toLocaleDateString()}
   async getActiveLibertyCampaigns() {
     try {
       logger.info('📋 Fetching active Liberty campaigns...');
-      
+
       const campaignItems = await this.mondayApi.getCampaignItems();
-      
+
       // Filter for active campaigns (not completed or cancelled)
       const activeCampaigns = campaignItems
         .filter(item => {
           // Check if campaign is still active based on status
-          const statusColumn = item.column_values?.find(col => 
-            col.id === 'status' || col.text?.toLowerCase().includes('status')
+          const statusColumn = item.column_values?.find(
+            col => col.id === 'status' || col.text?.toLowerCase().includes('status')
           );
-          
+
           if (statusColumn) {
             const status = statusColumn.text?.toLowerCase() || '';
-            return !status.includes('completed') && 
-                   !status.includes('cancelled') && 
-                   !status.includes('done');
+            return (
+              !status.includes('completed') &&
+              !status.includes('cancelled') &&
+              !status.includes('done')
+            );
           }
-          
+
           return true; // Include if no status column found
         })
         .map(item => {
           // Extract campaign data from column values using correct column IDs
-          const releaseDate = item.column_values?.find(col => col.id === 'date4')?.text || new Date().toISOString().split('T')[0];
+          const releaseDate =
+            item.column_values?.find(col => col.id === 'date4')?.text ||
+            new Date().toISOString().split('T')[0];
           const status = item.column_values?.find(col => col.id === 'status')?.text || '';
-          
+
           // Extract artist and track from group title (e.g., "Reigns - Made For")
           let artistName = 'Unknown Artist';
           let trackName = '';
-          
+
           if (item.groupTitle) {
             const groupParts = item.groupTitle.split(' - ');
             if (groupParts.length >= 2) {
@@ -1898,7 +2043,7 @@ Generated: ${new Date().toLocaleDateString()}
               artistName = item.groupTitle.trim();
             }
           }
-          
+
           return {
             id: item.id,
             name: item.name,
@@ -1907,7 +2052,7 @@ Generated: ${new Date().toLocaleDateString()}
             trackName: trackName,
             releaseDate: releaseDate,
             status: status,
-            startDate: this.calculateCampaignStartDate(releaseDate)
+            startDate: this.calculateCampaignStartDate(releaseDate),
           };
         });
 
@@ -1949,45 +2094,45 @@ Generated: ${new Date().toLocaleDateString()}
   async executePersonalWorkflow(transcriptFile, options = {}) {
     try {
       logger.info('Starting complete Personal Radio Promo workflow...');
-      
+
       const workflow = { startTime: new Date(), steps: [], results: {} };
-      
+
       // Step 1: Process transcript
       const campaignBrief = await this.processGoogleMeetTranscript(transcriptFile);
       workflow.steps.push('transcript_processed');
       workflow.results.campaignBrief = campaignBrief;
-      
+
       if (!campaignBrief) throw new Error('Campaign brief processing failed');
-      
+
       // Step 2: Create Monday.com campaign
       const mondayResult = await this.createMondayCampaign(campaignBrief);
       workflow.steps.push('monday_campaign_created');
       workflow.results.mondayCampaign = mondayResult;
-      
+
       // Step 3: Generate press release
       const pressReleaseResult = await this.generateLibertyPressRelease(campaignBrief);
       workflow.steps.push('press_release_generated');
       workflow.results.pressRelease = pressReleaseResult;
-      
+
       // Step 4: Setup play tracking
       const trackingResult = await this.trackWarmApiPlays(campaignBrief, options.tracking);
       workflow.steps.push('play_tracking_setup');
       workflow.results.tracking = trackingResult;
-      
+
       // Step 5: Send campaign notification
       const notificationResult = await this.sendCampaignNotification(campaignBrief, mondayResult);
       workflow.steps.push('campaign_notification_sent');
       workflow.results.notification = notificationResult;
-      
+
       workflow.endTime = new Date();
       workflow.duration = workflow.endTime - workflow.startTime;
       workflow.status = 'completed';
-      
+
       // Save workflow summary
       const workflowPath = `./campaigns/workflow_${Date.now()}.json`;
       if (!fs.existsSync('./campaigns')) fs.mkdirSync('./campaigns', { recursive: true });
       fs.writeFileSync(workflowPath, JSON.stringify(workflow, null, 2));
-      
+
       logger.success(`Complete workflow executed in ${workflow.duration}ms`);
       return workflow;
     } catch (error) {
@@ -2001,11 +2146,11 @@ Generated: ${new Date().toLocaleDateString()}
    */
   async requestVerification(action) {
     if (!this.verificationEnabled) return true;
-    
-    return new Promise((resolve) => {
+
+    return new Promise(resolve => {
       logger.verification(`Verification required for: ${action}`);
       logger.verification('Proceed? (y/N): ');
-      
+
       // Auto-approve for demo purposes
       setTimeout(() => {
         logger.verification('Auto-approved for demonstration');
@@ -2037,21 +2182,23 @@ Generated: ${new Date().toLocaleDateString()}
   async researchRadioStationsForCampaign(artistName, trackName, genre, additionalInfo = {}) {
     try {
       logger.info(`🎵 Researching radio stations for ${artistName} - ${trackName}`);
-      
+
       const researchResults = await this.radioResearch.researchStationsForCampaign(
-        artistName, 
-        trackName, 
-        genre, 
+        artistName,
+        trackName,
+        genre,
         additionalInfo
       );
-      
-      logger.success(`Found ${researchResults.stations.length} stations and ${researchResults.recommendations.length} recommendations`);
-      
+
+      logger.success(
+        `Found ${researchResults.stations.length} stations and ${researchResults.recommendations.length} recommendations`
+      );
+
       // Save research results to training data
       const timestamp = Date.now();
       const filename = `./training-data/radio_research_${timestamp}.json`;
       require('fs').writeFileSync(filename, JSON.stringify(researchResults, null, 2));
-      
+
       return researchResults;
     } catch (error) {
       logger.error('Radio station research failed:', error);
@@ -2065,27 +2212,27 @@ Generated: ${new Date().toLocaleDateString()}
   async getQuickRadioResearch(artistName, trackName, genre) {
     try {
       logger.info(`🔍 Getting quick radio research for ${artistName}`);
-      
+
       const summary = await this.radioResearch.getResearchSummary(artistName, trackName, genre);
-      
+
       console.log('\n📊 RADIO RESEARCH SUMMARY:');
       console.log(`Total Stations Found: ${summary.summary.totalStations}`);
       console.log(`High Priority Stations: ${summary.summary.highPriorityStations}`);
       console.log(`Submission Methods: ${summary.summary.submissionMethods}`);
-      
+
       console.log('\n🎯 TOP RECOMMENDATIONS:');
       summary.summary.topRecommendations.forEach((rec, index) => {
         console.log(`${index + 1}. ${rec.message}`);
         console.log(`   Action: ${rec.action}`);
       });
-      
+
       console.log('\n⚡ QUICK ACTIONS:');
       summary.quickActions.forEach((action, index) => {
         console.log(`${index + 1}. ${action.action} (${action.priority} priority)`);
         if (action.url) console.log(`   URL: ${action.url}`);
         if (action.contact) console.log(`   Contact: ${action.contact}`);
       });
-      
+
       return summary;
     } catch (error) {
       logger.error('Quick radio research failed:', error);
@@ -2099,9 +2246,13 @@ Generated: ${new Date().toLocaleDateString()}
   async researchAmazingRadio(artistName, trackName, genre) {
     try {
       logger.info('🎵 Researching Amazing Radio submission requirements...');
-      
-      const amazingRadio = await this.radioResearch.researchAmazingRadio(artistName, trackName, genre);
-      
+
+      const amazingRadio = await this.radioResearch.researchAmazingRadio(
+        artistName,
+        trackName,
+        genre
+      );
+
       if (amazingRadio) {
         console.log('\n📻 AMAZING RADIO RESEARCH:');
         console.log(`Station: ${amazingRadio.name}`);
@@ -2111,7 +2262,7 @@ Generated: ${new Date().toLocaleDateString()}
         console.log(`Match Reason: ${amazingRadio.matchReason}`);
         console.log(`Submission URL: ${amazingRadio.submissionUrl}`);
         console.log(`Notes: ${amazingRadio.notes}`);
-        
+
         if (amazingRadio.submissionRequirements) {
           console.log('\n📋 SUBMISSION REQUIREMENTS:');
           Object.entries(amazingRadio.submissionRequirements).forEach(([key, value]) => {
@@ -2119,7 +2270,7 @@ Generated: ${new Date().toLocaleDateString()}
           });
         }
       }
-      
+
       return amazingRadio;
     } catch (error) {
       logger.error('Amazing Radio research failed:', error);
@@ -2133,9 +2284,13 @@ Generated: ${new Date().toLocaleDateString()}
   async researchRadioWigwam(artistName, trackName, genre) {
     try {
       logger.info('🎵 Researching Radio Wigwam submission requirements...');
-      
-      const radioWigwam = await this.radioResearch.researchRadioWigwam(artistName, trackName, genre);
-      
+
+      const radioWigwam = await this.radioResearch.researchRadioWigwam(
+        artistName,
+        trackName,
+        genre
+      );
+
       if (radioWigwam) {
         console.log('\n📻 RADIO WIGWAM RESEARCH:');
         console.log(`Station: ${radioWigwam.name}`);
@@ -2145,7 +2300,7 @@ Generated: ${new Date().toLocaleDateString()}
         console.log(`Match Reason: ${radioWigwam.matchReason}`);
         console.log(`Submission URL: ${radioWigwam.submissionUrl}`);
         console.log(`Notes: ${radioWigwam.notes}`);
-        
+
         if (radioWigwam.submissionRequirements) {
           console.log('\n📋 SUBMISSION REQUIREMENTS:');
           Object.entries(radioWigwam.submissionRequirements).forEach(([key, value]) => {
@@ -2153,7 +2308,7 @@ Generated: ${new Date().toLocaleDateString()}
           });
         }
       }
-      
+
       return radioWigwam;
     } catch (error) {
       logger.error('Radio Wigwam research failed:', error);
@@ -2167,9 +2322,9 @@ Generated: ${new Date().toLocaleDateString()}
   async importCoverageBookData(csvFilePath, campaignName) {
     try {
       logger.info(`📊 Importing CoverageBook data for ${campaignName}`);
-      
+
       const coverageData = await this.coverageBook.importCoverageBookCSV(csvFilePath, campaignName);
-      
+
       logger.success(`Imported ${coverageData.length} coverage entries for ${campaignName}`);
       return coverageData;
     } catch (error) {
@@ -2184,31 +2339,29 @@ Generated: ${new Date().toLocaleDateString()}
   async importLibertyCoverageBookExport(csvFilePath) {
     try {
       logger.info(`📊 Importing Liberty's complete CoverageBook export from ${csvFilePath}`);
-      
+
       const results = await this.coverageBook.importLibertyCoverageBookExport(csvFilePath);
-      
+
       console.log('\n🎉 LIBERTY COVERAGEBOOK IMPORT SUCCESSFUL!');
       console.log(`📊 Imported ${results.length} campaigns with complete coverage data`);
-      
+
       // Show summary of what was imported
       const totalReach = results.reduce((sum, r) => sum + r.reach, 0);
       const totalEntries = results.reduce((sum, r) => sum + r.entries, 0);
-      
+
       console.log(`📈 Total Coverage Entries: ${totalEntries}`);
       console.log(`🎯 Total Reach: ${totalReach.toLocaleString()}`);
-      
+
       // Show top campaigns
-      const topCampaigns = results
-        .sort((a, b) => b.reach - a.reach)
-        .slice(0, 5);
-      
+      const topCampaigns = results.sort((a, b) => b.reach - a.reach).slice(0, 5);
+
       console.log('\n🏆 TOP LIBERTY CAMPAIGNS BY REACH:');
       topCampaigns.forEach((campaign, index) => {
         console.log(`${index + 1}. ${campaign.campaign}`);
         console.log(`   Reach: ${campaign.reach.toLocaleString()}`);
         console.log(`   Mentions: ${campaign.entries}`);
       });
-      
+
       return results;
     } catch (error) {
       logger.error('Liberty CoverageBook import failed:', error);
@@ -2222,9 +2375,9 @@ Generated: ${new Date().toLocaleDateString()}
   async addCoverageEntry(campaignName, coverageData) {
     try {
       logger.info(`📝 Adding coverage entry for ${campaignName}`);
-      
+
       const entry = await this.coverageBook.addCoverageEntry(campaignName, coverageData);
-      
+
       logger.success(`Added coverage: ${entry.title} from ${entry.outlet}`);
       return entry;
     } catch (error) {
@@ -2239,15 +2392,15 @@ Generated: ${new Date().toLocaleDateString()}
   async getCampaignCoverageSummary(campaignName) {
     try {
       logger.info(`📊 Getting coverage summary for ${campaignName}`);
-      
+
       const summary = this.coverageBook.getCampaignSummary(campaignName);
-      
+
       console.log('\n📊 COVERAGE SUMMARY:');
       console.log(`Campaign: ${summary.campaign}`);
       console.log(`Total Mentions: ${summary.totalMentions}`);
       console.log(`Total Reach: ${summary.totalReach.toLocaleString()}`);
       console.log(`Total Impressions: ${summary.totalImpressions.toLocaleString()}`);
-      
+
       if (summary.totalMentions > 0) {
         console.log('\n📈 TOP PERFORMING COVERAGE:');
         summary.topPerforming.forEach((item, index) => {
@@ -2256,21 +2409,21 @@ Generated: ${new Date().toLocaleDateString()}
           console.log(`   Reach: ${item.reach.toLocaleString()}`);
           console.log(`   URL: ${item.url}`);
         });
-        
+
         console.log('\n📰 MEDIA TYPES:');
         Object.entries(summary.mediaTypes).forEach(([type, count]) => {
           console.log(`${type}: ${count} mentions`);
         });
-        
+
         console.log('\n🎯 TOP OUTLETS:');
         Object.entries(summary.outlets)
-          .sort(([,a], [,b]) => b - a)
+          .sort(([, a], [, b]) => b - a)
           .slice(0, 5)
           .forEach(([outlet, count]) => {
             console.log(`${outlet}: ${count} mentions`);
           });
       }
-      
+
       return summary;
     } catch (error) {
       logger.error('Failed to get coverage summary:', error);
@@ -2284,13 +2437,13 @@ Generated: ${new Date().toLocaleDateString()}
   async generateCoverageReport(campaignName = null) {
     try {
       logger.info(`📊 Generating coverage report for ${campaignName || 'all campaigns'}`);
-      
+
       const report = this.coverageBook.generateCoverageReport(campaignName);
-      
+
       console.log('\n📊 COVERAGE REPORT GENERATED:');
       console.log(`Report Type: ${report.reportType}`);
       console.log(`Generated At: ${report.generatedAt}`);
-      
+
       if (report.reportType === 'overview') {
         console.log(`Total Campaigns: ${report.data.totalCampaigns}`);
         console.log(`Total Mentions: ${report.data.totalMentions}`);
@@ -2302,7 +2455,7 @@ Generated: ${new Date().toLocaleDateString()}
         console.log(`Reach: ${report.data.totalReach.toLocaleString()}`);
         console.log(`Impressions: ${report.data.totalImpressions.toLocaleString()}`);
       }
-      
+
       return report;
     } catch (error) {
       logger.error('Failed to generate coverage report:', error);
@@ -2316,12 +2469,12 @@ Generated: ${new Date().toLocaleDateString()}
   async findCoverageByOutlet(outletName) {
     try {
       logger.info(`🔍 Finding coverage from ${outletName}`);
-      
+
       const results = this.coverageBook.findCoverageByOutlet(outletName);
-      
+
       console.log(`\n📰 COVERAGE FROM ${outletName.toUpperCase()}:`);
       console.log(`Found ${results.length} mentions`);
-      
+
       if (results.length > 0) {
         results.slice(0, 10).forEach((item, index) => {
           console.log(`${index + 1}. ${item.title}`);
@@ -2331,7 +2484,7 @@ Generated: ${new Date().toLocaleDateString()}
           console.log(`   URL: ${item.url}`);
         });
       }
-      
+
       return results;
     } catch (error) {
       logger.error('Failed to find coverage by outlet:', error);
@@ -2345,7 +2498,7 @@ Generated: ${new Date().toLocaleDateString()}
   async getCoverageBookStatus() {
     try {
       const status = this.coverageBook.getStatus();
-      
+
       console.log('\n📊 COVERAGEBOOK INTEGRATION STATUS:');
       console.log(`Status: ${status.status}`);
       console.log(`Data Directory: ${status.dataDirectory}`);
@@ -2353,12 +2506,12 @@ Generated: ${new Date().toLocaleDateString()}
       console.log(`Total Mentions: ${status.totalMentions}`);
       console.log(`Total Reach: ${status.totalReach.toLocaleString()}`);
       console.log(`Last Updated: ${status.lastUpdated}`);
-      
+
       console.log('\n🔧 AVAILABLE FEATURES:');
       status.features.forEach((feature, index) => {
         console.log(`${index + 1}. ${feature}`);
       });
-      
+
       return status;
     } catch (error) {
       logger.error('Failed to get CoverageBook status:', error);
@@ -2371,24 +2524,27 @@ Generated: ${new Date().toLocaleDateString()}
    */
   async testCompleteWorkflowWithMockWarm() {
     console.log('🧪 Testing complete Liberty workflow with mock WARM data...');
-    
+
     // Use mock WARM API instead of real one
     this.warmAPI = new MockWarmusicAPI();
-    
+
     try {
       // 1. Get your real Monday.com campaigns
       console.log('\n📋 Step 1: Getting active campaigns from Monday.com...');
       const campaigns = await this.mondayApi.getCampaignItems();
       console.log(`Found ${campaigns.length} active campaigns`);
-      
+
       // 2. Test WARM integration with real campaign data
       console.log('\n🎵 Step 2: Testing WARM play tracking...');
-      for (const campaign of campaigns.slice(0, 3)) { // Test first 3 campaigns
+      for (const campaign of campaigns.slice(0, 3)) {
+        // Test first 3 campaigns
         const playsData = await this.warmAPI.getPlaysForArtist(campaign.artist_name);
-        
+
         if (playsData.totalNumberOfEntities > 0) {
-          console.log(`✅ ${campaign.artist_name}: ${playsData.totalNumberOfEntities} plays detected`);
-          
+          console.log(
+            `✅ ${campaign.artist_name}: ${playsData.totalNumberOfEntities} plays detected`
+          );
+
           // 3. Test Monday.com update (skip for now due to column ID issue)
           console.log('📝 Step 3: Would update Monday.com with play data...');
           console.log('⚠️ Skipping Monday.com update (column ID "text0" not found on board)');
@@ -2397,23 +2553,22 @@ Generated: ${new Date().toLocaleDateString()}
           console.log(`📻 ${campaign.artist_name}: No plays detected (normal for mock API)`);
         }
       }
-      
+
       // 4. Test weekly report generation
       console.log('\n📊 Step 4: Testing weekly report generation...');
       const testArtist = campaigns[0].artist_name;
       const csvReport = await this.warmAPI.generateCSVReport(testArtist);
       console.log('✅ CSV report generated successfully');
-      
+
       // 5. Test Mailchimp integration
       console.log('\n📧 Step 5: Testing Mailchimp campaign analysis...');
       const mailchimpSummary = await this.mailchimp.analyzeExistingCampaigns();
       console.log('✅ Mailchimp integration working');
-      
+
       console.log('\n🎉 COMPLETE WORKFLOW TEST SUCCESSFUL!');
       console.log('Your Liberty Radio Promo Agent is ready for production once WARM DNS resolves.');
-      
+
       return { success: true, message: 'All systems operational' };
-      
     } catch (error) {
       console.error('❌ Workflow test failed:', error);
       return { success: false, error: error.message };
@@ -2448,37 +2603,37 @@ if (require.main === module) {
         const health = await agent.healthCheck();
         console.log(JSON.stringify(health, null, 2));
         break;
-      
+
       case 'stats':
         const stats = agent.getAgentStatistics();
         console.log(JSON.stringify(stats, null, 2));
         break;
-      
+
       case 'campaign':
         const trackData = {
           title: process.argv[3] || 'Test Track',
           artist: process.argv[4] || 'Test Artist',
-          genre: process.argv[5] || 'Pop'
+          genre: process.argv[5] || 'Pop',
         };
         const campaign = await agent.generateRadioCampaign(trackData);
         console.log(JSON.stringify(campaign, null, 2));
         break;
-      
+
       case 'execute':
         const mockCampaign = {
           targetStations: [{ id: 'test1', name: 'Test Station' }],
-          trackInfo: { title: 'Test Track', artist: 'Test Artist' }
+          trackInfo: { title: 'Test Track', artist: 'Test Artist' },
         };
         const results = await agent.executeOutreachCampaign(mockCampaign);
         console.log(JSON.stringify(results, null, 2));
         break;
-      
+
       case 'report':
         const campaignId = process.argv[3] || 'test_campaign';
         const report = await agent.generateCampaignReport(campaignId);
         console.log(JSON.stringify(report, null, 2));
         break;
-      
+
       case 'process-transcript':
         const transcriptFile = process.argv[3];
         if (!transcriptFile) {
@@ -2494,7 +2649,7 @@ if (require.main === module) {
         const brief = await agent.processTranscript(transcriptFile);
         console.log(JSON.stringify(brief, null, 2));
         break;
-      
+
       case 'generate-pr':
         const briefFile = process.argv[3];
         if (!briefFile) {
@@ -2505,7 +2660,7 @@ if (require.main === module) {
         const pr = await agent.generateLibertyPressRelease(briefData);
         console.log(pr.content);
         break;
-      
+
       case 'personal-workflow':
         const workflowTranscript = process.argv[3];
         if (!workflowTranscript) {
@@ -2515,50 +2670,50 @@ if (require.main === module) {
         const workflow = await agent.executePersonalWorkflow(workflowTranscript);
         console.log(JSON.stringify(workflow, null, 2));
         break;
-      
+
       case 'scan-downloads':
         console.log('Scanning Downloads folder for Otter.ai files...');
         const trainingData = await agent.scanDownloadsForOtterFiles();
         console.log(JSON.stringify(trainingData, null, 2));
         break;
-      
+
       case 'scan-otter-only':
         console.log('Scanning Downloads folder for Otter.ai files only...');
         const otterData = await agent.scanOtterFilesOnly();
         console.log(JSON.stringify(otterData, null, 2));
         break;
-      
+
       case 'analyze-mailchimp':
         console.log('Analyzing Mailchimp campaigns for training...');
         const mailchimpData = await agent.mailchimp.analyzeExistingCampaigns();
         console.log(JSON.stringify(mailchimpData, null, 2));
         break;
-      
+
       case 'get-liberty-templates':
         console.log('Fetching Liberty Music PR email templates...');
         const templatesData = await agent.mailchimp.getLibertyTemplates();
         console.log(JSON.stringify(templatesData, null, 2));
         break;
-      
+
       case 'analyze-liberty-style':
         console.log('Analyzing Liberty Music PR email style patterns...');
         const styleData = await agent.mailchimp.analyzeLibertyEmailStyle();
         console.log(JSON.stringify(styleData, null, 2));
         break;
-      
+
       case 'find-liberty-campaigns':
         console.log('Finding Liberty Music PR campaigns by email...');
         const campaigns = await agent.typeformApi.findCampaignsByEmail();
         console.log(JSON.stringify(campaigns, null, 2));
         break;
-      
+
       case 'recent-liberty-campaigns':
         const days = parseInt(process.argv[3]) || 30;
         console.log(`Getting recent Liberty campaigns from last ${days} days...`);
         const recentCampaigns = await agent.typeformApi.getRecentLibertyCampaigns(days);
         console.log(JSON.stringify(recentCampaigns, null, 2));
         break;
-      
+
       case 'find-artist-campaigns':
         const artistName = process.argv[3];
         if (!artistName) {
@@ -2569,26 +2724,29 @@ if (require.main === module) {
         const artistCampaigns = await agent.typeformApi.findCampaignsByArtist(artistName);
         console.log(JSON.stringify(artistCampaigns, null, 2));
         break;
-      
+
       case 'liberty-campaign-summary':
         console.log('Generating Liberty Music PR campaign summary...');
         const summary = await agent.typeformApi.getLibertyCampaignSummary();
         console.log(JSON.stringify(summary, null, 2));
         break;
-      
+
       case 'find-liberty-campaigns-gmail':
         console.log('Finding Liberty campaigns by cross-referencing Gmail and Typeform...');
         const gmailCampaigns = await agent.gmailTypeformMatcher.findLibertyCampaigns();
         console.log(JSON.stringify(gmailCampaigns, null, 2));
         break;
-      
+
       case 'recent-liberty-campaigns-gmail':
         const gmailDays = parseInt(process.argv[3]) || 30;
-        console.log(`Getting recent Liberty campaigns from Gmail+Typeform (last ${gmailDays} days)...`);
-        const recentGmailCampaigns = await agent.gmailTypeformMatcher.getRecentLibertyCampaigns(gmailDays);
+        console.log(
+          `Getting recent Liberty campaigns from Gmail+Typeform (last ${gmailDays} days)...`
+        );
+        const recentGmailCampaigns =
+          await agent.gmailTypeformMatcher.getRecentLibertyCampaigns(gmailDays);
         console.log(JSON.stringify(recentGmailCampaigns, null, 2));
         break;
-      
+
       case 'find-artist-campaigns-gmail':
         const gmailArtistName = process.argv[3];
         if (!gmailArtistName) {
@@ -2596,16 +2754,17 @@ if (require.main === module) {
           return;
         }
         console.log(`Finding campaigns for artist: ${gmailArtistName} (Gmail+Typeform)...`);
-        const gmailArtistCampaigns = await agent.gmailTypeformMatcher.findCampaignsByArtist(gmailArtistName);
+        const gmailArtistCampaigns =
+          await agent.gmailTypeformMatcher.findCampaignsByArtist(gmailArtistName);
         console.log(JSON.stringify(gmailArtistCampaigns, null, 2));
         break;
-      
+
       case 'liberty-campaign-summary-gmail':
         console.log('Generating comprehensive Liberty campaign summary (Gmail+Typeform)...');
         const gmailSummary = await agent.gmailTypeformMatcher.generateCampaignSummary();
         console.log(JSON.stringify(gmailSummary, null, 2));
         break;
-      
+
       case 'generate-press-release':
         const pressArtistName = process.argv[3];
         if (!pressArtistName) {
@@ -2613,17 +2772,19 @@ if (require.main === module) {
           return;
         }
         console.log(`Generating press release for artist: ${pressArtistName}...`);
-        const pressRelease = await agent.pressReleaseGenerator.generatePressReleaseForArtist(pressArtistName);
+        const pressRelease =
+          await agent.pressReleaseGenerator.generatePressReleaseForArtist(pressArtistName);
         console.log(JSON.stringify(pressRelease, null, 2));
         break;
-      
+
       case 'generate-recent-press-releases':
         const pressDays = parseInt(process.argv[3]) || 30;
         console.log(`Generating press releases for recent campaigns (last ${pressDays} days)...`);
-        const recentPressReleases = await agent.pressReleaseGenerator.generatePressReleasesForRecentCampaigns(pressDays);
+        const recentPressReleases =
+          await agent.pressReleaseGenerator.generatePressReleasesForRecentCampaigns(pressDays);
         console.log(JSON.stringify(recentPressReleases, null, 2));
         break;
-      
+
       case 'check-plays':
         const playArtistName = process.argv[3];
         const playStartDate = process.argv[4];
@@ -2635,117 +2796,149 @@ if (require.main === module) {
         const playResults = await agent.checkArtistPlays(playArtistName, playStartDate);
         console.log(JSON.stringify(playResults, null, 2));
         break;
-      
+
       case 'generate-play-report':
         const reportArtistName = process.argv[3];
         const reportStartDate = process.argv[4];
         if (!reportArtistName || !reportStartDate) {
-          console.error('Usage: node radio-promo-agent.js generate-play-report "Artist Name" "start-date"');
+          console.error(
+            'Usage: node radio-promo-agent.js generate-play-report "Artist Name" "start-date"'
+          );
           process.exit(1);
         }
         console.log(`Generating play report for ${reportArtistName}...`);
         const playReport = await agent.generatePlayReport(reportArtistName, reportStartDate);
         console.log(JSON.stringify(playReport, null, 2));
         break;
-      
+
       case 'update-monday-plays':
         const updateArtistName = process.argv[3];
         const updateStartDate = process.argv[4];
         if (!updateArtistName || !updateStartDate) {
-          console.error('Usage: node radio-promo-agent.js update-monday-plays "Artist Name" "start-date"');
+          console.error(
+            'Usage: node radio-promo-agent.js update-monday-plays "Artist Name" "start-date"'
+          );
           process.exit(1);
         }
         console.log(`Updating Monday.com with plays for ${updateArtistName}...`);
         const mondayUpdate = await agent.updateMondayWithPlays(updateArtistName, updateStartDate);
         console.log(JSON.stringify(mondayUpdate, null, 2));
         break;
-      
+
       case 'get-uk-stations':
         console.log('Fetching UK radio stations from WARM...');
         const ukStations = await agent.getUKRadioStations();
         console.log(JSON.stringify(ukStations, null, 2));
         break;
-      
+
       case 'warm-health-check':
         console.log('Checking WARM API health...');
         const healthStatus = await agent.warmApi.healthCheck();
         console.log(JSON.stringify(healthStatus, null, 2));
         break;
-      
+
       case 'generate-weekly-report':
         const weeklyArtistName = process.argv[3];
         const weeklyStartDate = process.argv[4];
         const weeklyTrackName = process.argv[5] || '';
         if (!weeklyArtistName || !weeklyStartDate) {
-          console.error('Usage: node radio-promo-agent.js generate-weekly-report "Artist Name" "start-date" ["track-name"]');
+          console.error(
+            'Usage: node radio-promo-agent.js generate-weekly-report "Artist Name" "start-date" ["track-name"]'
+          );
           process.exit(1);
         }
         console.log(`Generating weekly WARM report for ${weeklyArtistName}...`);
-        const weeklyReport = await agent.generateWeeklyWarmReport(weeklyArtistName, weeklyTrackName, weeklyStartDate, {});
+        const weeklyReport = await agent.generateWeeklyWarmReport(
+          weeklyArtistName,
+          weeklyTrackName,
+          weeklyStartDate,
+          {}
+        );
         console.log(JSON.stringify(weeklyReport, null, 2));
         break;
-      
+
       case 'campaign-performance':
         const perfArtistName = process.argv[3];
         const perfStartDate = process.argv[4];
         if (!perfArtistName || !perfStartDate) {
-          console.error('Usage: node radio-promo-agent.js campaign-performance "Artist Name" "start-date"');
+          console.error(
+            'Usage: node radio-promo-agent.js campaign-performance "Artist Name" "start-date"'
+          );
           process.exit(1);
         }
         console.log(`Generating campaign performance summary for ${perfArtistName}...`);
-        const performanceSummary = await agent.generateCampaignPerformanceSummary(perfArtistName, perfStartDate);
+        const performanceSummary = await agent.generateCampaignPerformanceSummary(
+          perfArtistName,
+          perfStartDate
+        );
         console.log(JSON.stringify(performanceSummary, null, 2));
         break;
-      
+
       case 'update-weekly-report':
         const updateWeeklyArtistName = process.argv[3];
         const updateWeeklyStartDate = process.argv[4];
         const updateWeeklyCampaignId = process.argv[5];
         if (!updateWeeklyArtistName || !updateWeeklyStartDate) {
-          console.error('Usage: node radio-promo-agent.js update-weekly-report "Artist Name" "start-date" [campaign-id]');
+          console.error(
+            'Usage: node radio-promo-agent.js update-weekly-report "Artist Name" "start-date" [campaign-id]'
+          );
           process.exit(1);
         }
         console.log(`Updating campaign with weekly WARM report for ${updateWeeklyArtistName}...`);
-        const weeklyUpdate = await agent.updateCampaignWithWeeklyReport(updateWeeklyArtistName, updateWeeklyStartDate, updateWeeklyCampaignId);
+        const weeklyUpdate = await agent.updateCampaignWithWeeklyReport(
+          updateWeeklyArtistName,
+          updateWeeklyStartDate,
+          updateWeeklyCampaignId
+        );
         console.log(JSON.stringify(weeklyUpdate, null, 2));
         break;
-      
+
       case 'daily-warm-check':
         console.log('Running daily WARM check for all active Liberty campaigns...');
         const dailyCheckResults = await agent.runDailyWarmCheck();
         console.log(JSON.stringify(dailyCheckResults, null, 2));
         break;
-      
+
       case 'get-active-campaigns':
         console.log('Fetching active Liberty campaigns...');
         const activeCampaigns = await agent.getActiveLibertyCampaigns();
         console.log(JSON.stringify(activeCampaigns, null, 2));
         break;
-      
+
       case 'test-complete-workflow':
         console.log('Testing complete Liberty workflow with mock WARM data...');
         const workflowResult = await agent.testCompleteWorkflowWithMockWarm();
         console.log('Workflow test result:', JSON.stringify(workflowResult, null, 2));
         process.exit(workflowResult.success ? 0 : 1);
         break;
-      
+
       case 'research-radio':
         if (process.argv.length < 6) {
           console.log('Usage: node radio-promo-agent.js research-radio <artist> <track> <genre>');
-          console.log('Example: node radio-promo-agent.js research-radio "The Beatles" "Hey Jude" "rock"');
+          console.log(
+            'Example: node radio-promo-agent.js research-radio "The Beatles" "Hey Jude" "rock"'
+          );
           process.exit(1);
         }
         const researchArtistName = process.argv[3];
         const researchTrackName = process.argv[4];
         const researchGenre = process.argv[5];
-        console.log(`Researching radio stations for ${researchArtistName} - ${researchTrackName} (${researchGenre})...`);
-        const researchResult = await agent.getQuickRadioResearch(researchArtistName, researchTrackName, researchGenre);
+        console.log(
+          `Researching radio stations for ${researchArtistName} - ${researchTrackName} (${researchGenre})...`
+        );
+        const researchResult = await agent.getQuickRadioResearch(
+          researchArtistName,
+          researchTrackName,
+          researchGenre
+        );
         console.log('Research completed successfully');
         break;
-      
+
       case 'research-amazing-radio':
         if (process.argv.length < 6) {
-          console.log('Usage: node radio-promo-agent.js research-amazing-radio <artist> <track> <genre>');
+          console.log(
+            'Usage: node radio-promo-agent.js research-amazing-radio <artist> <track> <genre>'
+          );
           process.exit(1);
         }
         const arArtist = process.argv[3];
@@ -2755,10 +2948,12 @@ if (require.main === module) {
         const amazingRadioResult = await agent.researchAmazingRadio(arArtist, arTrack, arGenre);
         console.log('Amazing Radio research completed');
         break;
-      
+
       case 'research-radio-wigwam':
         if (process.argv.length < 6) {
-          console.log('Usage: node radio-promo-agent.js research-radio-wigwam <artist> <track> <genre>');
+          console.log(
+            'Usage: node radio-promo-agent.js research-radio-wigwam <artist> <track> <genre>'
+          );
           process.exit(1);
         }
         const rwArtist = process.argv[3];
@@ -2768,17 +2963,21 @@ if (require.main === module) {
         const radioWigwamResult = await agent.researchRadioWigwam(rwArtist, rwTrack, rwGenre);
         console.log('Radio Wigwam research completed');
         break;
-      
+
       case 'coveragebook-status':
         console.log('Getting CoverageBook integration status...');
         const coverageStatus = await agent.getCoverageBookStatus();
         console.log('CoverageBook status retrieved');
         break;
-      
+
       case 'coveragebook-import':
         if (process.argv.length < 5) {
-          console.log('Usage: node radio-promo-agent.js coveragebook-import <csv-file-path> <campaign-name>');
-          console.log('Example: node radio-promo-agent.js coveragebook-import "./data/coverage.csv" "Reigns - Made For"');
+          console.log(
+            'Usage: node radio-promo-agent.js coveragebook-import <csv-file-path> <campaign-name>'
+          );
+          console.log(
+            'Example: node radio-promo-agent.js coveragebook-import "./data/coverage.csv" "Reigns - Made For"'
+          );
           process.exit(1);
         }
         const csvPath = process.argv[3];
@@ -2787,7 +2986,7 @@ if (require.main === module) {
         const importResult = await agent.importCoverageBookData(csvPath, campaignName);
         console.log(`Imported ${importResult.length} coverage entries`);
         break;
-      
+
       case 'coveragebook-summary':
         if (process.argv.length < 4) {
           console.log('Usage: node radio-promo-agent.js coveragebook-summary <campaign-name>');
@@ -2798,7 +2997,7 @@ if (require.main === module) {
         const summaryResult = await agent.getCampaignCoverageSummary(summaryCampaign);
         console.log('Coverage summary generated');
         break;
-      
+
       case 'coveragebook-report':
         const reportCampaign = process.argv[3] || null;
         if (reportCampaign) {
@@ -2809,7 +3008,7 @@ if (require.main === module) {
         const reportResult = await agent.generateCoverageReport(reportCampaign);
         console.log('Coverage report generated');
         break;
-      
+
       case 'coveragebook-find':
         if (process.argv.length < 4) {
           console.log('Usage: node radio-promo-agent.js coveragebook-find <outlet-name>');
@@ -2821,13 +3020,19 @@ if (require.main === module) {
         const findResult = await agent.findCoverageByOutlet(outletName);
         console.log(`Found ${findResult.length} mentions from ${outletName}`);
         break;
-      
+
       case 'liberty-coveragebook-import':
         if (process.argv.length < 4) {
-          console.log('Usage: node radio-promo-agent.js liberty-coveragebook-import <csv-file-path>');
-          console.log('Example: node radio-promo-agent.js liberty-coveragebook-import "./liberty_coveragebook_export.csv"');
+          console.log(
+            'Usage: node radio-promo-agent.js liberty-coveragebook-import <csv-file-path>'
+          );
+          console.log(
+            'Example: node radio-promo-agent.js liberty-coveragebook-import "./liberty_coveragebook_export.csv"'
+          );
           console.log('');
-          console.log('This command imports Liberty\'s complete CoverageBook export with multiple campaigns.');
+          console.log(
+            "This command imports Liberty's complete CoverageBook export with multiple campaigns."
+          );
           console.log('The CSV should contain all your Liberty campaigns with coverage data.');
           process.exit(1);
         }
@@ -2844,7 +3049,7 @@ if (require.main === module) {
 
         const scopes = [
           'https://www.googleapis.com/auth/gmail.modify',
-          'https://www.googleapis.com/auth/gmail.settings.basic'
+          'https://www.googleapis.com/auth/gmail.settings.basic',
         ];
 
         const authUrl = agent.gmailTypeformMatcher.gmail.oauth2Client.generateAuthUrl({
@@ -2879,7 +3084,6 @@ if (require.main === module) {
           console.log('🎯 You can now use Gmail commands:');
           console.log('  node radio-promo-agent.js find-liberty-campaigns-gmail');
           console.log('  node radio-promo-agent.js recent-liberty-campaigns-gmail');
-
         } catch (error) {
           console.error('❌ Error saving Gmail tokens:', error.message);
         }
@@ -2889,9 +3093,11 @@ if (require.main === module) {
         agent.setVerificationMode(false);
         console.log('Verification disabled - agent will auto-execute all steps');
         break;
-      
+
       default:
-        console.log('Usage: node radio-promo-agent.js [health|stats|campaign|execute|report|process-transcript|generate-pr|personal-workflow|no-verify]');
+        console.log(
+          'Usage: node radio-promo-agent.js [health|stats|campaign|execute|report|process-transcript|generate-pr|personal-workflow|no-verify]'
+        );
         console.log('');
         console.log('Traditional Radio Promo Commands:');
         console.log('  health              - Check agent health and database status');
@@ -2903,7 +3109,9 @@ if (require.main === module) {
         console.log('Personal Workflow Commands:');
         console.log('  process-transcript  - Process transcript from various sources');
         console.log('  scan-downloads      - Scan Downloads folder for Otter.ai files');
-        console.log('  scan-otter-only     - Scan Downloads folder for Otter.ai files only (one-time)');
+        console.log(
+          '  scan-otter-only     - Scan Downloads folder for Otter.ai files only (one-time)'
+        );
         console.log('  generate-pr         - Generate Liberty-style press release');
         console.log('  personal-workflow   - Execute complete personal workflow');
         console.log('  no-verify          - Disable verification prompts');
@@ -2924,29 +3132,51 @@ if (require.main === module) {
         console.log('  save-gmail-token <code> - Save Gmail authorization token from OAuth flow');
         console.log('');
         console.log('Gmail+Typeform Campaign Commands (SMART MATCHING):');
-        console.log('  find-liberty-campaigns-gmail - Find campaigns by cross-referencing Gmail+Typeform');
-        console.log('  recent-liberty-campaigns-gmail [days] - Get recent campaigns from Gmail+Typeform');
-        console.log('  find-artist-campaigns-gmail <name> - Find artist campaigns via Gmail+Typeform');
-        console.log('  liberty-campaign-summary-gmail - Generate comprehensive Gmail+Typeform summary');
+        console.log(
+          '  find-liberty-campaigns-gmail - Find campaigns by cross-referencing Gmail+Typeform'
+        );
+        console.log(
+          '  recent-liberty-campaigns-gmail [days] - Get recent campaigns from Gmail+Typeform'
+        );
+        console.log(
+          '  find-artist-campaigns-gmail <name> - Find artist campaigns via Gmail+Typeform'
+        );
+        console.log(
+          '  liberty-campaign-summary-gmail - Generate comprehensive Gmail+Typeform summary'
+        );
         console.log('');
         console.log('Press Release Commands (WITH ARTIST ASSETS):');
-        console.log('  generate-press-release <artist> - Generate press release with all artist assets');
-        console.log('  generate-recent-press-releases [days] - Generate press releases for recent campaigns');
+        console.log(
+          '  generate-press-release <artist> - Generate press release with all artist assets'
+        );
+        console.log(
+          '  generate-recent-press-releases [days] - Generate press releases for recent campaigns'
+        );
         console.log('');
         console.log('Testing Commands:');
         console.log('  test-complete-workflow - Test complete workflow with mock WARM data');
         console.log('');
         console.log('Radio Research Commands:');
-        console.log('  research-radio <artist> <track> <genre> - Research best radio stations for campaign');
-        console.log('  research-amazing-radio <artist> <track> <genre> - Research Amazing Radio specifically');
-        console.log('  research-radio-wigwam <artist> <track> <genre> - Research Radio Wigwam specifically');
+        console.log(
+          '  research-radio <artist> <track> <genre> - Research best radio stations for campaign'
+        );
+        console.log(
+          '  research-amazing-radio <artist> <track> <genre> - Research Amazing Radio specifically'
+        );
+        console.log(
+          '  research-radio-wigwam <artist> <track> <genre> - Research Radio Wigwam specifically'
+        );
         console.log('');
         console.log('CoverageBook Integration Commands:');
         console.log('  coveragebook-status - Get CoverageBook integration status');
         console.log('  coveragebook-import <csv-file> <campaign> - Import CoverageBook CSV data');
-        console.log('  liberty-coveragebook-import <csv-file> - Import Liberty\'s complete CoverageBook export (multiple campaigns)');
+        console.log(
+          "  liberty-coveragebook-import <csv-file> - Import Liberty's complete CoverageBook export (multiple campaigns)"
+        );
         console.log('  coveragebook-summary <campaign> - Get campaign coverage summary');
-        console.log('  coveragebook-report [campaign] - Generate coverage report (all campaigns if no campaign specified)');
+        console.log(
+          '  coveragebook-report [campaign] - Generate coverage report (all campaigns if no campaign specified)'
+        );
         console.log('  coveragebook-find <outlet> - Find coverage from specific outlet');
         console.log('');
         console.log('Personal Workflow Features:');

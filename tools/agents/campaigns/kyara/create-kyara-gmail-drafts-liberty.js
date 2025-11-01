@@ -41,7 +41,7 @@ Would love to hear your thoughts. Given she's a Sydney artist with proven Triple
 Best,
 Chris Schofield
 Liberty Music PR
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
   },
   {
     priority: 2,
@@ -74,7 +74,7 @@ Would love to get your thoughts.
 Cheers,
 Chris Schofield
 Liberty Music PR
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
   },
   {
     priority: 3,
@@ -101,7 +101,7 @@ Worth a listen if you get a sec.
 Best,
 Chris Schofield
 Liberty Music PR
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
   },
   {
     priority: 4,
@@ -124,7 +124,7 @@ Worth checking out if you're after new Australian electronic artists.
 
 Cheers,
 Chris
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
   },
   {
     priority: 5,
@@ -148,8 +148,8 @@ Worth a listen if you're after new Sydney talent.
 Best,
 Chris Schofield
 Liberty Music PR
-chrisschofield@libertymusicpr.com`
-  }
+chrisschofield@libertymusicpr.com`,
+  },
 ];
 
 class KyaraGmailDraftCreator {
@@ -161,14 +161,14 @@ class KyaraGmailDraftCreator {
     this.oauth2Client = new google.auth.OAuth2(
       credentials.installed.client_id,
       credentials.installed.client_secret,
-      'urn:ietf:wg:oauth:2.0:oob'  // Out-of-band flow - displays code on Google page
+      'urn:ietf:wg:oauth:2.0:oob' // Out-of-band flow - displays code on Google page
     );
 
     // Gmail API with compose scope for drafts
     this.SCOPES = [
       'https://www.googleapis.com/auth/gmail.compose',
       'https://www.googleapis.com/auth/gmail.modify',
-      'https://www.googleapis.com/auth/gmail.readonly'
+      'https://www.googleapis.com/auth/gmail.readonly',
     ];
 
     this.tokenPath = path.join(__dirname, 'gmail-token.json');
@@ -221,7 +221,7 @@ class KyaraGmailDraftCreator {
     });
 
     return new Promise((resolve, reject) => {
-      rl.question('Enter the authorization code: ', async (code) => {
+      rl.question('Enter the authorization code: ', async code => {
         rl.close();
 
         try {
@@ -253,7 +253,7 @@ class KyaraGmailDraftCreator {
       `Subject: ${subject}`,
       'Content-Type: text/plain; charset=utf-8',
       '',
-      body
+      body,
     ];
 
     const email = emailLines.join('\r\n');
@@ -315,12 +315,11 @@ class KyaraGmailDraftCreator {
             station: draft.station,
             relationship: draft.relationship,
             draftId: result.id,
-            status: 'created'
+            status: 'created',
           });
 
           // Small delay between drafts
           await new Promise(resolve => setTimeout(resolve, 500));
-
         } catch (error) {
           console.log(`❌ Failed: ${error.message}\n`);
           results.push({
@@ -328,7 +327,7 @@ class KyaraGmailDraftCreator {
             name: draft.name,
             to: draft.to,
             status: 'failed',
-            error: error.message
+            error: error.message,
           });
         }
 
@@ -352,7 +351,7 @@ class KyaraGmailDraftCreator {
         console.log('4. Replace [INSERT SPOTIFY LINK] with actual Spotify link');
         console.log('5. Replace [INSERT WETRANSFER LINK] with actual WeTransfer link');
         console.log('6. Review each draft carefully');
-        console.log('7. Send Priority 1 (Anika Luna) FIRST - she\'s WARM');
+        console.log("7. Send Priority 1 (Anika Luna) FIRST - she's WARM");
         console.log('8. Wait for response before sending to Claire Mooney');
         console.log('9. Send others within 24-48 hours');
         console.log('');
@@ -366,21 +365,27 @@ class KyaraGmailDraftCreator {
 
       // Save results
       const resultsFile = path.join(__dirname, 'kyara-gmail-drafts-results.json');
-      fs.writeFileSync(resultsFile, JSON.stringify({
-        campaign: 'KYARA Bloodshot Australian Radio Campaign',
-        artist: 'KYARA',
-        track: 'Bloodshot',
-        releaseDate: '2025-10-14',
-        region: 'Australia',
-        gmailAccount: 'chrisschofield@libertymusicpr.com',
-        createdDate: new Date().toISOString(),
-        results: results
-      }, null, 2));
+      fs.writeFileSync(
+        resultsFile,
+        JSON.stringify(
+          {
+            campaign: 'KYARA Bloodshot Australian Radio Campaign',
+            artist: 'KYARA',
+            track: 'Bloodshot',
+            releaseDate: '2025-10-14',
+            region: 'Australia',
+            gmailAccount: 'chrisschofield@libertymusicpr.com',
+            createdDate: new Date().toISOString(),
+            results: results,
+          },
+          null,
+          2
+        )
+      );
 
       console.log(`✅ Results saved: ${resultsFile}\n`);
 
       return results;
-
     } catch (error) {
       console.error('❌ Failed to create drafts:', error);
       throw error;
@@ -392,7 +397,8 @@ class KyaraGmailDraftCreator {
 if (require.main === module) {
   const creator = new KyaraGmailDraftCreator();
 
-  creator.createAllDrafts()
+  creator
+    .createAllDrafts()
     .then(() => {
       console.log('✅ KYARA Gmail drafts creation complete!\n');
       process.exit(0);

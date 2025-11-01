@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   // Verify cron secret
@@ -9,28 +9,28 @@ export async function POST(request: NextRequest) {
 
   try {
     console.log('📧 Starting automated newsletter generation...');
-    
+
     const results = {
       timestamp: new Date().toISOString(),
       newsletter_generated: false,
       content_sections: 0,
       subscribers_segmented: 0,
       beta_sequences_triggered: 0,
-      engagement_tracked: 0
+      engagement_tracked: 0,
     };
 
     // Check if it's Monday (newsletter day)
     const isMonday = new Date().getDay() === 1;
-    
+
     if (isMonday) {
       // Generate weekly newsletter content
       const newsletterSections = [
         'Music Industry News & Insights',
-        'Audio Intel Feature Updates', 
+        'Audio Intel Feature Updates',
         'Success Stories & Case Studies',
         'Pro Tips for Indie Artists',
         'Upcoming Events & Opportunities',
-        'Community Highlights'
+        'Community Highlights',
       ];
 
       results.newsletter_generated = true;
@@ -50,8 +50,8 @@ export async function POST(request: NextRequest) {
           'Review newsletter content in command center',
           'Send to subscriber segments',
           'Track open rates and engagement',
-          'Prepare next week\'s content themes'
-        ]
+          "Prepare next week's content themes",
+        ],
       });
     } else {
       // Daily newsletter maintenance
@@ -69,16 +69,18 @@ export async function POST(request: NextRequest) {
           'Monitor subscriber engagement',
           'Track beta conversion rates',
           'Prepare content for next newsletter',
-          'Segment subscribers based on behavior'
-        ]
+          'Segment subscribers based on behavior',
+        ],
       });
     }
-
   } catch (error) {
     console.error('Newsletter automation error:', error);
-    return NextResponse.json({ 
-      success: false, 
-      error: 'Newsletter automation failed' 
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'Newsletter automation failed',
+      },
+      { status: 500 }
+    );
   }
 }

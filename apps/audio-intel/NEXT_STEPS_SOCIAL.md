@@ -14,6 +14,7 @@
 ### Step 1: Authorize LinkedIn App
 
 **Authorization URL** (open this in your browser):
+
 ```
 https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=781ioptlbwi0ok&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Flinkedin%2Fcallback&state=bqzng8&scope=openid%20profile%20email%20w_member_social
 ```
@@ -30,12 +31,14 @@ https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=781
 The script running in your terminal (`npx tsx scripts/get-linkedin-token.ts`) is waiting for the code.
 
 Once you paste the code:
+
 - It will exchange it for an access token
 - You'll get a token to add to `.env.local` and Vercel
 
 ### Step 4: Add to Vercel
 
 After getting the token:
+
 ```bash
 # Add to local .env.local (script will show you the exact command)
 # Then add to Vercel:
@@ -51,6 +54,7 @@ vercel env add LINKEDIN_ACCESS_TOKEN
 After LinkedIn is done, you'll need to set up Threads:
 
 ### Requirements Check
+
 - [ ] Do you have a **Business Instagram account**?
 - [ ] Is it connected to a **Facebook Page**?
 - [ ] Do you have access to **Facebook Developer** portal?
@@ -58,6 +62,7 @@ After LinkedIn is done, you'll need to set up Threads:
 If yes to all three → Run: `npx tsx scripts/get-threads-token.ts`
 
 If no:
+
 1. Convert Instagram to business account (Settings → Account type)
 2. Connect to a Facebook Page (Settings → Business)
 3. Create Facebook App at https://developers.facebook.com/apps

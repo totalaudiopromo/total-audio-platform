@@ -16,15 +16,15 @@ export default function NotionTest() {
       console.log('🔄 Testing Notion sync...');
       const response = await fetch('/api/notion-sync', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
-      
+
       console.log('Response status:', response.status);
-      
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
-      
+
       const result = await response.json();
       console.log('Notion data:', result);
       setData(result);
@@ -54,7 +54,7 @@ export default function NotionTest() {
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-2xl font-bold mb-4">Notion Sync Test</h1>
-        
+
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
             <h3 className="text-red-800 font-semibold">Error:</h3>
@@ -82,12 +82,13 @@ export default function NotionTest() {
                         {post.status}
                       </span>
                     </div>
-                    <p className="text-gray-700 text-sm mb-2 line-clamp-3">
-                      {post.content}
-                    </p>
+                    <p className="text-gray-700 text-sm mb-2 line-clamp-3">{post.content}</p>
                     <div className="flex flex-wrap gap-1">
                       {post.hashtags.map((tag: string, i: number) => (
-                        <span key={i} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                        <span
+                          key={i}
+                          className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"
+                        >
                           {tag}
                         </span>
                       ))}

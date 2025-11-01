@@ -30,6 +30,7 @@ I'm writing because she has a new single coming out [INSERT RELEASE DATE], and g
 The new track builds on that electro-pop sound but takes it further - [INSERT 1-2 SENTENCE DESCRIPTION OF NEW TRACK].
 
 Would you be up for a listen? I can send you:
+
 - High-quality WAV
 - Spotify pre-save link
 - Full press kit with artwork and bio
@@ -62,6 +63,7 @@ I'm Chris from Liberty Music PR, reaching out about KYARA's upcoming single.
 Quick context: KYARA's debut single "Yearn" was played on Home & Hosed back in August, and it was a real milestone for her as an artist. The electro-pop sound really connected with the Triple J audience.
 
 Her new track [TRACK NAME] is dropping [DATE], and I think it's ready for broader Triple J rotation beyond Home & Hosed. It's got:
+
 - [KEY FEATURE 1 - e.g., "Infectious electro-pop hook"]
 - [KEY FEATURE 2 - e.g., "Production that sits between Charli XCX and SBTRKT"]
 - [KEY FEATURE 3 - e.g., "Already picking up support from UK stations"]
@@ -78,6 +80,7 @@ chrisschofield@libertymusicpr.com
 ## 🎯 Priority #3: Other Australian Contacts (Cold Pitch)
 
 **Remaining Australian contacts**:
+
 1. simonw@rrr.org.au - Triple R Melbourne (High Quality)
 2. music@kiis1065.com.au - KIIS 106.5 FM (High Quality)
 3. abcradiosydney@abc.net.au - ABC Radio Sydney (High Quality)
@@ -98,6 +101,7 @@ KYARA is an electro-pop artist who's been building momentum both in the UK and A
 Her new single [TRACK NAME] drops [DATE], and I thought it'd be perfect for [SPECIFIC SHOW/TIMESLOT if known]. It's got that crossover appeal - think [ARTIST COMPARISON 1] meets [ARTIST COMPARISON 2].
 
 Would you be up for a listen? Happy to send:
+
 - High-quality WAV
 - Streaming link
 - Full press kit
@@ -114,6 +118,7 @@ chrisschofield@libertymusicpr.com
 ## 📋 Pitch Order & Strategy
 
 ### Week 1: Warm Contact (Triple J)
+
 1. **Anika Luna** (Home & Hosed) - warm follow-up
    - Send 2 weeks before release
    - Reference "Yearn" support
@@ -125,6 +130,7 @@ chrisschofield@libertymusicpr.com
    - Position for playlist rotation
 
 ### Week 2: Cold Australian Contacts
+
 3. **Triple R Melbourne** (simonw@rrr.org.au)
    - Melbourne's premier indie station
    - Reference Triple J support
@@ -146,12 +152,14 @@ chrisschofield@libertymusicpr.com
 ## 🎯 Key Messaging Points
 
 ### For ALL Australian pitches:
+
 - ✅ Triple J Home & Hosed support (August 2024)
 - ✅ Electro-pop sound (fits Australian indie scene)
 - ✅ UK radio support (BBC validation)
 - ✅ Independent artist championing new music
 
 ### What NOT to say:
+
 - ❌ Don't oversell or hype
 - ❌ Don't mention other Australian stations in pitches
 - ❌ Don't send generic "blast" emails
@@ -162,15 +170,18 @@ chrisschofield@libertymusicpr.com
 ## 📧 Follow-up Strategy
 
 **If no response after 5 days**:
+
 - Anika/Claire: Send polite follow-up
 - Other contacts: One follow-up only
 
 **If positive response**:
+
 - Send materials immediately
 - Ask about timeline for play
 - Offer interview/artist quote
 
 **If rejection**:
+
 - Thank them
 - Ask for feedback
 - Keep door open for next release
@@ -180,6 +191,7 @@ chrisschofield@libertymusicpr.com
 ## ✅ Action Checklist
 
 Before sending:
+
 - [ ] Confirm new single name and release date
 - [ ] Prepare artist comparisons for cold pitches
 - [ ] Create high-quality WAV files
@@ -190,6 +202,7 @@ Before sending:
 ---
 
 **Notes**:
+
 - All emails should come from: chrisschofield@libertymusicpr.com
 - Use Gmail (not Mailchimp) for all Australian pitches - these are relationship-building emails
 - Track responses in Airtable

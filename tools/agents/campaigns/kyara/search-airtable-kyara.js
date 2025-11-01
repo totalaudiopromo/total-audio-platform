@@ -20,8 +20,8 @@ async function listBases() {
   try {
     const response = await fetch('https://api.airtable.com/v0/meta/bases', {
       headers: {
-        'Authorization': `Bearer ${AIRTABLE_API_KEY}`
-      }
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+      },
     });
 
     if (!response.ok) {
@@ -40,8 +40,8 @@ async function listTables(baseId) {
   try {
     const response = await fetch(`https://api.airtable.com/v0/meta/bases/${baseId}/tables`, {
       headers: {
-        'Authorization': `Bearer ${AIRTABLE_API_KEY}`
-      }
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+      },
     });
 
     if (!response.ok) {
@@ -58,11 +58,14 @@ async function listTables(baseId) {
 
 async function searchTable(baseId, tableName) {
   try {
-    const response = await fetch(`https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}`, {
-      headers: {
-        'Authorization': `Bearer ${AIRTABLE_API_KEY}`
+    const response = await fetch(
+      `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}`,
+      {
+        headers: {
+          Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        },
       }
-    });
+    );
 
     if (!response.ok) {
       throw new Error(`Failed to search table: ${response.status} ${response.statusText}`);
@@ -85,13 +88,17 @@ function isRelevantContact(record) {
 
   for (const field of genreFields) {
     if (fields[field]) {
-      const genreValue = Array.isArray(fields[field]) ? fields[field].join(' ') : String(fields[field]);
+      const genreValue = Array.isArray(fields[field])
+        ? fields[field].join(' ')
+        : String(fields[field]);
       const genreLower = genreValue.toLowerCase();
 
-      if (genreLower.includes('alternative') ||
-          genreLower.includes('indie') ||
-          genreLower.includes('alt') ||
-          genreLower.includes('rock')) {
+      if (
+        genreLower.includes('alternative') ||
+        genreLower.includes('indie') ||
+        genreLower.includes('alt') ||
+        genreLower.includes('rock')
+      ) {
         hasGenreMatch = true;
         break;
       }
@@ -183,7 +190,7 @@ function extractContactInfo(record) {
     genre,
     stationType,
     relationship,
-    allFields: Object.keys(fields).join(', ')
+    allFields: Object.keys(fields).join(', '),
   };
 }
 
@@ -201,7 +208,7 @@ async function main() {
 
   console.log(`✅ Found ${bases.length} Airtable base(s):\n`);
   bases.forEach((base, i) => {
-    console.log(`   ${i+1}. ${base.name} (${base.id})`);
+    console.log(`   ${i + 1}. ${base.name} (${base.id})`);
   });
   console.log('');
 
@@ -266,7 +273,7 @@ async function main() {
   }
 
   allContacts.forEach((contact, i) => {
-    console.log(`${i+1}. ${contact.name}`);
+    console.log(`${i + 1}. ${contact.name}`);
     console.log(`   Email: ${contact.email}`);
     console.log(`   Genre: ${contact.genre}`);
     if (contact.stationType) console.log(`   Type: ${contact.stationType}`);

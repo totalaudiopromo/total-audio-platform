@@ -2,7 +2,7 @@
 
 /**
  * Contact Agent for Total Audio Promo
- * 
+ *
  * Specialized agent for contact management, enrichment, deduplication, and relationship tracking
  * Handles contact lifecycle from discovery to engagement analysis
  */
@@ -13,7 +13,7 @@ const { PrismaClient } = require('@prisma/client');
 const logger = {
   info: (msg, ...args) => console.log(`[INFO] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[ERROR] ${msg}`, ...args),
-  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args)
+  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args),
 };
 
 class ContactAgent {
@@ -24,7 +24,7 @@ class ContactAgent {
       contactsProcessed: 0,
       contactsEnriched: 0,
       duplicatesRemoved: 0,
-      engagementScored: 0
+      engagementScored: 0,
     };
   }
 
@@ -48,7 +48,7 @@ class ContactAgent {
   async enrichContact(contactId) {
     try {
       const contact = await this.prisma.contact.findUnique({
-        where: { id: contactId }
+        where: { id: contactId },
       });
 
       if (!contact) {
@@ -61,7 +61,7 @@ class ContactAgent {
         socialProfiles: {},
         companyInfo: {},
         personalInfo: {},
-        engagementHistory: {}
+        engagementHistory: {},
       };
 
       // Enrich with social media profiles
@@ -86,8 +86,8 @@ class ContactAgent {
         data: {
           enrichedData: JSON.stringify(enrichmentData),
           enrichedAt: new Date(),
-          isEnriched: true
-        }
+          isEnriched: true,
+        },
       });
 
       this.metrics.contactsEnriched++;
@@ -109,17 +109,16 @@ class ContactAgent {
       linkedin: null,
       twitter: null,
       instagram: null,
-      facebook: null
+      facebook: null,
     };
 
     try {
       // Placeholder for social media profile lookup
       // In real implementation, this would call external APIs
       const name = email.split('@')[0];
-      
+
       profiles.linkedin = `https://linkedin.com/in/${name}`;
       // Additional social profile lookups would go here
-      
     } catch (error) {
       logger.error('Social profile lookup failed:', error);
     }
@@ -139,12 +138,12 @@ class ContactAgent {
         size: null,
         location: null,
         website: null,
-        description: null
+        description: null,
       };
 
       // Placeholder for company data enrichment
       // In real implementation, this would call APIs like Clearbit, ZoomInfo, etc.
-      
+
       return companyInfo;
     } catch (error) {
       logger.error('Company enrichment failed:', error);
@@ -162,12 +161,12 @@ class ContactAgent {
         industry: null,
         companySize: null,
         technology: [],
-        socialPresence: {}
+        socialPresence: {},
       };
 
       // This would integrate with domain analysis services
       // Placeholder for domain analysis logic
-      
+
       return domainInfo;
     } catch (error) {
       logger.error('Domain analysis failed:', error);
@@ -183,13 +182,13 @@ class ContactAgent {
       logger.info('Starting duplicate removal process...');
 
       const whereClause = agencyId ? { agencyId } : {};
-      
+
       // Find potential duplicates based on email
       const duplicateGroups = await this.prisma.contact.groupBy({
         by: ['email'],
         where: whereClause,
         _count: { email: true },
-        having: { email: { _count: { gt: 1 } } }
+        having: { email: { _count: { gt: 1 } } },
       });
 
       let totalRemoved = 0;
@@ -198,9 +197,9 @@ class ContactAgent {
         const duplicates = await this.prisma.contact.findMany({
           where: {
             email: group.email,
-            ...whereClause
+            ...whereClause,
           },
-          orderBy: { updatedAt: 'desc' }
+          orderBy: { updatedAt: 'desc' },
         });
 
         // Keep the most recently updated contact, remove others
@@ -213,14 +212,14 @@ class ContactAgent {
         // Update the kept contact with merged data
         await this.prisma.contact.update({
           where: { id: toKeep.id },
-          data: mergedData
+          data: mergedData,
         });
 
         // Remove duplicates
         await this.prisma.contact.deleteMany({
           where: {
-            id: { in: toRemove.map(c => c.id) }
-          }
+            id: { in: toRemove.map(c => c.id) },
+          },
         });
 
         totalRemoved += toRemove.length;
@@ -233,7 +232,7 @@ class ContactAgent {
       return {
         duplicateGroups: duplicateGroups.length,
         contactsRemoved: totalRemoved,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
     } catch (error) {
       logger.error('Duplicate removal failed:', error);
@@ -247,16 +246,14 @@ class ContactAgent {
   async mergeContactData(primaryContact, duplicates) {
     const mergedData = {
       // Combine tags
-      tags: [...new Set([
-        ...(primaryContact.tags || []),
-        ...duplicates.flatMap(d => d.tags || [])
-      ])],
+      tags: [
+        ...new Set([...(primaryContact.tags || []), ...duplicates.flatMap(d => d.tags || [])]),
+      ],
 
       // Merge notes
-      notes: [
-        primaryContact.notes,
-        ...duplicates.map(d => d.notes).filter(Boolean)
-      ].filter(Boolean).join('\n\n---\n\n'),
+      notes: [primaryContact.notes, ...duplicates.map(d => d.notes).filter(Boolean)]
+        .filter(Boolean)
+        .join('\n\n---\n\n'),
 
       // Keep the most recent engagement date
       lastEngagedAt: [primaryContact.lastEngagedAt, ...duplicates.map(d => d.lastEngagedAt)]
@@ -264,10 +261,16 @@ class ContactAgent {
         .sort((a, b) => new Date(b) - new Date(a))[0],
 
       // Sum interaction counts
-      interactionCount: duplicates.reduce((sum, d) => sum + (d.interactionCount || 0), primaryContact.interactionCount || 0),
+      interactionCount: duplicates.reduce(
+        (sum, d) => sum + (d.interactionCount || 0),
+        primaryContact.interactionCount || 0
+      ),
 
       // Merge enriched data
-      enrichedData: this.mergeEnrichedData(primaryContact.enrichedData, duplicates.map(d => d.enrichedData))
+      enrichedData: this.mergeEnrichedData(
+        primaryContact.enrichedData,
+        duplicates.map(d => d.enrichedData)
+      ),
     };
 
     return mergedData;
@@ -284,7 +287,7 @@ class ContactAgent {
       for (const duplicateData of duplicateDataList) {
         if (duplicateData) {
           const data = JSON.parse(duplicateData);
-          
+
           // Merge social profiles
           if (data.socialProfiles) {
             merged.socialProfiles = { ...merged.socialProfiles, ...data.socialProfiles };
@@ -321,9 +324,9 @@ class ContactAgent {
         include: {
           interactions: {
             orderBy: { createdAt: 'desc' },
-            take: 50 // Last 50 interactions
-          }
-        }
+            take: 50, // Last 50 interactions
+          },
+        },
       });
 
       if (!contact) {
@@ -340,12 +343,14 @@ class ContactAgent {
         emailReplies: 10,
         websiteVisits: 3,
         socialEngagement: 4,
-        recentActivity: 1.5 // Multiplier for recent activity
+        recentActivity: 1.5, // Multiplier for recent activity
       };
 
       // Calculate score based on interactions
       contact.interactions.forEach(interaction => {
-        const daysSince = Math.floor((now - new Date(interaction.createdAt)) / (1000 * 60 * 60 * 24));
+        const daysSince = Math.floor(
+          (now - new Date(interaction.createdAt)) / (1000 * 60 * 60 * 24)
+        );
         const recencyMultiplier = daysSince < 7 ? factors.recentActivity : daysSince < 30 ? 1.2 : 1;
 
         switch (interaction.type) {
@@ -382,12 +387,14 @@ class ContactAgent {
         data: {
           engagementScore: normalizedScore,
           engagementLevel,
-          lastScoredAt: new Date()
-        }
+          lastScoredAt: new Date(),
+        },
       });
 
       this.metrics.engagementScored++;
-      logger.info(`Engagement score calculated for contact ${contactId}: ${normalizedScore} (${engagementLevel})`);
+      logger.info(
+        `Engagement score calculated for contact ${contactId}: ${normalizedScore} (${engagementLevel})`
+      );
 
       return {
         contactId,
@@ -395,10 +402,10 @@ class ContactAgent {
         level: engagementLevel,
         factors: {
           totalInteractions: contact.interactions.length,
-          recentInteractions: contact.interactions.filter(i => 
-            Math.floor((now - new Date(i.createdAt)) / (1000 * 60 * 60 * 24)) < 30
-          ).length
-        }
+          recentInteractions: contact.interactions.filter(
+            i => Math.floor((now - new Date(i.createdAt)) / (1000 * 60 * 60 * 24)) < 30
+          ).length,
+        },
       };
     } catch (error) {
       logger.error(`Engagement scoring failed for contact ${contactId}:`, error);
@@ -417,36 +424,36 @@ class ContactAgent {
         byEngagement: await this.prisma.contact.groupBy({
           by: ['engagementLevel'],
           where: whereClause,
-          _count: { id: true }
+          _count: { id: true },
         }),
 
         byIndustry: await this.prisma.contact.groupBy({
           by: ['industry'],
           where: whereClause,
-          _count: { id: true }
+          _count: { id: true },
         }),
 
         byLocation: await this.prisma.contact.groupBy({
           by: ['location'],
           where: whereClause,
-          _count: { id: true }
+          _count: { id: true },
         }),
 
         recentlyEngaged: await this.prisma.contact.count({
           where: {
             ...whereClause,
             lastEngagedAt: {
-              gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) // Last 30 days
-            }
-          }
+              gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000), // Last 30 days
+            },
+          },
         }),
 
         highValue: await this.prisma.contact.count({
           where: {
             ...whereClause,
-            engagementScore: { gte: 70 }
-          }
-        })
+            engagementScore: { gte: 70 },
+          },
+        }),
       };
 
       logger.info('Contact segmentation completed');
@@ -463,21 +470,21 @@ class ContactAgent {
   async bulkProcessContacts(limit = 100, agencyId = null) {
     try {
       const whereClause = {
-        ...( agencyId ? { agencyId } : {} ),
-        isEnriched: false
+        ...(agencyId ? { agencyId } : {}),
+        isEnriched: false,
       };
 
       const contacts = await this.prisma.contact.findMany({
         where: whereClause,
         take: limit,
-        orderBy: { createdAt: 'asc' }
+        orderBy: { createdAt: 'asc' },
       });
 
       const results = {
         processed: 0,
         enriched: 0,
         scored: 0,
-        errors: 0
+        errors: 0,
       };
 
       for (const contact of contacts) {
@@ -492,7 +499,6 @@ class ContactAgent {
 
           results.processed++;
           this.metrics.contactsProcessed++;
-
         } catch (error) {
           logger.error(`Failed to process contact ${contact.id}:`, error);
           results.errors++;
@@ -514,7 +520,7 @@ class ContactAgent {
     return {
       ...this.metrics,
       uptime: process.uptime(),
-      timestamp: new Date()
+      timestamp: new Date(),
     };
   }
 
@@ -549,13 +555,13 @@ if (require.main === module) {
         const enrichment = await agent.enrichContact(contactId);
         console.log(JSON.stringify(enrichment, null, 2));
         break;
-      
+
       case 'dedupe':
         const agencyId = process.argv[3];
         const deduplication = await agent.removeDuplicates(agencyId);
         console.log(JSON.stringify(deduplication, null, 2));
         break;
-      
+
       case 'score':
         const scoreContactId = process.argv[3];
         if (!scoreContactId) {
@@ -565,25 +571,25 @@ if (require.main === module) {
         const scoring = await agent.calculateEngagementScore(scoreContactId);
         console.log(JSON.stringify(scoring, null, 2));
         break;
-      
+
       case 'segment':
         const segmentAgencyId = process.argv[3];
         const segmentation = await agent.segmentContacts(segmentAgencyId);
         console.log(JSON.stringify(segmentation, null, 2));
         break;
-      
+
       case 'bulk':
         const limit = parseInt(process.argv[3]) || 100;
         const bulkAgencyId = process.argv[4];
         const bulk = await agent.bulkProcessContacts(limit, bulkAgencyId);
         console.log(JSON.stringify(bulk, null, 2));
         break;
-      
+
       case 'stats':
         const stats = agent.getAgentStatistics();
         console.log(JSON.stringify(stats, null, 2));
         break;
-      
+
       default:
         console.log('Usage: node contact-agent.js [enrich|dedupe|score|segment|bulk|stats]');
     }

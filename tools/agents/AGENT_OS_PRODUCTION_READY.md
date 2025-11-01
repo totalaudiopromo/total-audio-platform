@@ -38,6 +38,7 @@ node unified-launcher.js tdd-status
 ## 🎨 AGENT CATEGORIES (Colour-Coded)
 
 ### 🧪 TDD WORKFLOW (Cyan) - Development System
+
 **3 Production Agents** for systematic feature development:
 
 - **tdd-plan** - Plan features with mobile-first TDD methodology
@@ -47,6 +48,7 @@ node unified-launcher.js tdd-status
 **Use When**: Building any new Audio Intel feature
 
 ### 🎯 CUSTOMER ACQUISITION (Green) - Audio Intel Focus
+
 **4 Production Agents** for getting first paying customers:
 
 - **newsletter** - "The Unsigned Advantage" content generation
@@ -57,6 +59,7 @@ node unified-launcher.js tdd-status
 **Use When**: Creating content, marketing campaigns, social media
 
 ### 📊 BUSINESS INTELLIGENCE (Blue)
+
 **2 Agents** for metrics and partnerships:
 
 - **analytics** - Customer acquisition metrics & performance (✓ Production)
@@ -65,6 +68,7 @@ node unified-launcher.js tdd-status
 **Use When**: Tracking conversion rates, analysing customer data
 
 ### ⚙️ TECHNICAL INFRASTRUCTURE (White)
+
 **3 Production Agents** for system operations:
 
 - **contact** - Contact database management
@@ -74,6 +78,7 @@ node unified-launcher.js tdd-status
 **Use When**: Managing data, database operations, system health
 
 ### 📻 RADIO PROMOTION (Magenta) - Personal Use
+
 **1 Production Agent** for Liberty Music PR:
 
 - **radio-promo** - Radio campaign management for personal work
@@ -81,6 +86,7 @@ node unified-launcher.js tdd-status
 **Use When**: Running radio campaigns for Liberty Music PR
 
 ### 🔧 SYSTEM UTILITIES (Yellow)
+
 **1 Production Agent** for setup:
 
 - **gmail-setup** - Gmail automation setup & configuration
@@ -195,6 +201,7 @@ node unified-launcher.js gmail-setup test
 ### Why TDD Workflow?
 
 The TDD system ensures:
+
 - **Mobile-first** design from the start
 - **Professional code quality** with proper tests
 - **Systematic development** not random coding
@@ -209,6 +216,7 @@ node unified-launcher.js tdd-plan "contact filtering" audiointel
 ```
 
 Creates 4 specifications:
+
 - **UI Wireframes** - Mobile-first layouts (320px → desktop)
 - **Component Selection** - shadcn/ui components with Audio Intel blue theme
 - **Test Scenarios** - Natural language business tests
@@ -232,6 +240,7 @@ node unified-launcher.js tdd-status
 ```
 
 Shows:
+
 - Total features tracked
 - Ready to build (planned)
 - In progress (building)
@@ -308,10 +317,11 @@ tools/agents/
 ### Integration Points
 
 **Agent OS Dashboard** → **Unified Launcher** → **14 Production Agents**
-                                           ↓
-                                   **TDD Orchestrator** → **4 TDD Agents**
+↓
+**TDD Orchestrator** → **4 TDD Agents**
 
 All agents designed for:
+
 - Audio Intel customer acquisition
 - Mobile-first development
 - UK market focus (£19-99 pricing)
@@ -324,6 +334,7 @@ All agents designed for:
 ### Audio Intel Context
 
 Every agent understands:
+
 - **Current Phase**: Customer acquisition (foundation complete)
 - **Target Market**: UK independent artists, radio promoters, PR agencies
 - **Pricing**: FREE (10 enrichments), PRO (£19/month), AGENCY (£79/month)
@@ -333,6 +344,7 @@ Every agent understands:
 ### Customer Segments
 
 Agents optimised for:
+
 1. **Radio Promoters** (85% conversion) - Highest priority
 2. **Solo Artists with Budget** (60% conversion)
 3. **Growing PR Agencies** (70% conversion)
@@ -340,6 +352,7 @@ Agents optimised for:
 ### Development Constraints
 
 All agents respect:
+
 - **Session Time**: 2-hour maximum focused sessions
 - **Mobile-First**: All features tested on mobile
 - **Decision Framework**: "Will this help acquire first paying customer?"
@@ -366,10 +379,11 @@ node unified-launcher.js health
 ```
 
 Expect to see:
+
 - ✅ TDD System: Operational
 - ✅ Total Agents: 14
 - ✅ Production Ready: 13
-- ⚠️  Partial/Development: 1 (agency agent)
+- ⚠️ Partial/Development: 1 (agency agent)
 
 ### Quick Validation
 
@@ -392,6 +406,7 @@ node unified-launcher.js tdd-status
 **Symptom**: Agent failures during planning
 
 **Solution**:
+
 ```bash
 # Check TDD agent CLI interfaces match orchestrator
 node active/tdd/tdd-ui-planner.js          # Should show: create, quick, list
@@ -407,6 +422,7 @@ node active/tdd/tdd-implementation-planner.js # Should show: create, quick, list
 **Valid Options**: `audiointel` or `playlistpulse`
 
 **Fix**:
+
 ```bash
 # Correct usage
 node unified-launcher.js tdd-plan "feature" audiointel
@@ -418,6 +434,7 @@ node unified-launcher.js tdd-plan "feature" playlistpulse
 **Symptom**: "Unknown workflow: X"
 
 **Solution**:
+
 ```bash
 # List all available agents
 node unified-launcher.js
@@ -430,6 +447,7 @@ node unified-launcher.js
 **Symptom**: "Total Features: 0"
 
 **Solution**:
+
 ```bash
 # Check status file exists
 ls -la active/specs/status.json
@@ -505,12 +523,14 @@ node unified-launcher.js tdd-status
 ### TDD System Performance
 
 Current Status:
+
 - **Features Planned**: 1
 - **Planning Success Rate**: 100% (4/4 agents succeed)
 - **Product Lines Supported**: 2 (audiointel, playlistpulse)
 - **Spec Generation Time**: <1 second per agent
 
 Previous Issues (FIXED):
+
 - ❌ Command interface mismatches → ✅ Fixed
 - ❌ Invalid product line crashes → ✅ Validation added
 - ❌ 58% agent failure rate → ✅ 100% success rate
@@ -547,12 +567,14 @@ Previous Issues (FIXED):
 ### When to Use TDD Workflow
 
 ✅ **Use TDD for**:
+
 - New customer-facing features
 - Complex UI components
 - Mobile-first development
 - Features affecting conversion rates
 
 ❌ **Skip TDD for**:
+
 - Quick bug fixes
 - Documentation updates
 - Configuration changes
@@ -569,6 +591,7 @@ Previous Issues (FIXED):
 ### Quality Standards
 
 All agents ensure:
+
 - Mobile-first responsive design
 - TypeScript strict mode
 - Professional code quality

@@ -62,11 +62,13 @@ const EURO_INDIE_CONTACT = {
   packagePrice: 10,
   packageName: 'Formula Indie Promotion (1 Slot)',
   purchaseUrl: 'https://euroindiemusic.bigcartel.com/product/formula-indie-promotion-1-slot',
-  submissionInstructions: 'Email Alessandro with MP3 attached (filename: ArtistName-TrackName.mp3) with friendly message'
+  submissionInstructions:
+    'Email Alessandro with MP3 attached (filename: ArtistName-TrackName.mp3) with friendly message',
 };
 ```
 
 **After Purchase Workflow**:
+
 1. Purchase package at: https://euroindiemusic.bigcartel.com/product/formula-indie-promotion-1-slot
 2. Prepare MP3 file with naming: `ArtistName-TrackName.mp3`
 3. Email Alessandro (euroindiemusic@gmail.com) with:

@@ -2,7 +2,7 @@
 
 /**
  * Liberty Music PR Configuration
- * 
+ *
  * Real API keys and settings for production use
  * CRITICAL: Only edit the Liberty board (2443582331)
  */
@@ -12,7 +12,7 @@ module.exports = {
   monday: {
     apiKey: process.env.MONDAY_API_KEY || 'your_monday_api_key_here',
     boardId: '2443582331', // CRITICAL: Only Liberty board
-    boardUrl: 'https://liberty-music.monday.com/boards/2443582331'
+    boardUrl: 'https://liberty-music.monday.com/boards/2443582331',
   },
 
   // Mailchimp Integration (Liberty API)
@@ -31,15 +31,15 @@ module.exports = {
         state: 'England',
         zip: 'SW1A 1AA',
         country: 'GB',
-        phone: '+44 7XXX XXXXXX'
+        phone: '+44 7XXX XXXXXX',
       },
       campaignDefaults: {
         from_name: 'Liberty Music PR',
         from_email: 'chris@libertymusicpr.com',
         subject: 'Liberty Music PR Campaign Update',
-        language: 'en'
-      }
-    }
+        language: 'en',
+      },
+    },
   },
 
   // Google Chat Integration
@@ -49,26 +49,26 @@ module.exports = {
     channels: {
       campaigns: 'campaigns',
       wins: 'success-shout-outs',
-      radio: 'radio-superstars'
-    }
+      radio: 'radio-superstars',
+    },
   },
 
   // Otter.ai Integration
   otterAi: {
     apiKey: process.env.OTTER_AI_API_KEY || 'your_otter_ai_api_key_here',
-    baseUrl: 'https://otter.ai/api/v1'
+    baseUrl: 'https://otter.ai/api/v1',
   },
 
   // Typeform Integration
   typeform: {
     apiKey: process.env.TYPEFORM_API_KEY || 'your_typeform_api_key_here',
-    baseUrl: 'https://api.typeform.com/v1'
+    baseUrl: 'https://api.typeform.com/v1',
   },
 
   // WARM API Integration (when available)
   warm: {
     apiKey: process.env.WARM_API_KEY || 'your_warm_api_key_here',
-    baseUrl: 'https://api.warm-music.com'
+    baseUrl: 'https://api.warm-music.com',
   },
 
   // Liberty-specific settings
@@ -77,13 +77,13 @@ module.exports = {
     contactEmail: 'chris@libertymusicpr.com',
     website: 'https://libertymusicpr.com',
     phone: '+44 7XXX XXXXXX',
-    
+
     // Campaign settings
     campaignDefaults: {
       duration: 30, // days
       followUpDays: [3, 7, 14, 21],
       milestones: [100, 500, 1000, 5000, 10000], // plays
-      priorityLevels: ['Critical', 'High', 'Medium', 'Low']
+      priorityLevels: ['Critical', 'High', 'Medium', 'Low'],
     },
 
     // Email templates
@@ -91,7 +91,7 @@ module.exports = {
       campaignAnnouncement: 'liberty_campaign_announcement',
       followUp: 'liberty_follow_up',
       milestone: 'liberty_milestone_achievement',
-      win: 'liberty_campaign_win'
+      win: 'liberty_campaign_win',
     },
 
     // Radio station targets
@@ -99,8 +99,8 @@ module.exports = {
       bbc: ['BBC Radio 1', 'BBC Radio 2', 'BBC Radio 6 Music', 'BBC Introducing'],
       commercial: ['Capital FM', 'Heart', 'Kiss', 'Absolute Radio'],
       specialist: ['Amazing Radio', 'Wigwam Radio', 'Soho Radio', 'Resonance FM'],
-      community: ['Local community stations', 'University radio', 'Hospital radio']
-    }
+      community: ['Local community stations', 'University radio', 'Hospital radio'],
+    },
   },
 
   // Safety settings
@@ -113,8 +113,7 @@ module.exports = {
       mailchimp: 1000, // 1 second
       otter: 2000, // 2 seconds
       typeform: 1000, // 1 second
-      googleChat: 1000 // 1 second
-    }
-  }
+      googleChat: 1000, // 1 second
+    },
+  },
 };
-

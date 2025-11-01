@@ -11,13 +11,8 @@ const Dialog = ({ open, onOpenChange, children }: DialogProps) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div 
-        className="fixed inset-0 bg-black bg-opacity-50" 
-        onClick={() => onOpenChange(false)}
-      />
-      <div className="relative bg-white rounded-lg shadow-lg max-w-md w-full mx-4">
-        {children}
-      </div>
+      <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => onOpenChange(false)} />
+      <div className="relative bg-white rounded-lg shadow-lg max-w-md w-full mx-4">{children}</div>
     </div>
   );
 };
@@ -28,11 +23,7 @@ interface DialogContentProps {
 }
 
 const DialogContent = ({ children, className = '' }: DialogContentProps) => {
-  return (
-    <div className={`p-6 ${className}`}>
-      {children}
-    </div>
-  );
+  return <div className={`p-6 ${className}`}>{children}</div>;
 };
 
 interface DialogHeaderProps {
@@ -40,11 +31,7 @@ interface DialogHeaderProps {
 }
 
 const DialogHeader = ({ children }: DialogHeaderProps) => {
-  return (
-    <div className="flex flex-col space-y-1.5 text-center sm:text-left mb-4">
-      {children}
-    </div>
-  );
+  return <div className="flex flex-col space-y-1.5 text-center sm:text-left mb-4">{children}</div>;
 };
 
 interface DialogTitleProps {
@@ -52,11 +39,7 @@ interface DialogTitleProps {
 }
 
 const DialogTitle = ({ children }: DialogTitleProps) => {
-  return (
-    <h2 className="text-lg font-semibold leading-none tracking-tight">
-      {children}
-    </h2>
-  );
+  return <h2 className="text-lg font-semibold leading-none tracking-tight">{children}</h2>;
 };
 
 interface DialogDescriptionProps {
@@ -64,11 +47,7 @@ interface DialogDescriptionProps {
 }
 
 const DialogDescription = ({ children }: DialogDescriptionProps) => {
-  return (
-    <p className="text-sm text-gray-500">
-      {children}
-    </p>
-  );
+  return <p className="text-sm text-gray-500">{children}</p>;
 };
 
 interface DialogFooterProps {
@@ -83,4 +62,4 @@ const DialogFooter = ({ children }: DialogFooterProps) => {
   );
 };
 
-export { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter }; 
+export { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter };

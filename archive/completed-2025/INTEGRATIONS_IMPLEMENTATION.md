@@ -5,24 +5,29 @@
 I've built the complete foundation for the integrations system. Here's what's ready:
 
 ### 1. Database Schema ✅
+
 **File**: `apps/tracker/supabase/migrations/013_integrations_system.sql`
 
 **Tables Created**:
+
 - `integration_connections` - OAuth credentials and settings
 - `integration_sync_logs` - Audit trail of all syncs
 - `integration_field_mappings` - Custom field mappings
 - `gmail_tracked_emails` - Email reply tracking
 
 **Features**:
+
 - Row Level Security (RLS) enabled
 - Indexes for performance
 - CSRF protection with state tokens
 - Automatic timestamp updates
 
 ### 2. OAuth Infrastructure ✅
+
 **File**: `apps/tracker/lib/integrations/oauth-handler.ts`
 
 **Capabilities**:
+
 - Reusable OAuth flow for all providers
 - Automatic token refresh
 - CSRF protection with state validation
@@ -30,6 +35,7 @@ I've built the complete foundation for the integrations system. Here's what's re
 - Support for: Google Sheets, Gmail, Airtable, Mailchimp
 
 **Key Methods**:
+
 ```typescript
 const oauth = new OAuthHandler();
 
@@ -47,11 +53,14 @@ const accessToken = await oauth.getValidAccessToken(connectionId);
 ```
 
 ### 3. API Routes ✅
+
 **Files Created**:
+
 - `apps/tracker/app/api/integrations/google-sheets/connect/route.ts`
 - `apps/tracker/app/api/integrations/google-sheets/callback/route.ts`
 
 **Pattern** (reusable for all integrations):
+
 ```
 GET /api/integrations/{integration_type}/connect
     → Initiates OAuth flow
@@ -73,6 +82,7 @@ DELETE /api/integrations/{integration_type}/disconnect
 Create these files:
 
 #### 1. Integrations Dashboard Page
+
 **File**: `apps/tracker/app/dashboard/integrations/page.tsx`
 
 ```typescript
@@ -138,6 +148,7 @@ export default function IntegrationsPage() {
 ```
 
 #### 2. Integration Card Component
+
 **File**: `apps/tracker/components/integrations/IntegrationCard.tsx`
 
 ```typescript
@@ -215,6 +226,7 @@ export function IntegrationCard({
 ```
 
 #### 3. useIntegrations Hook
+
 **File**: `apps/tracker/hooks/useIntegrations.ts`
 
 ```typescript
@@ -234,14 +246,15 @@ export function useIntegrations() {
   }, []);
 
   async function loadConnections() {
-    const { data } = await supabase
-      .from('integration_connections')
-      .select('*');
+    const { data } = await supabase.from('integration_connections').select('*');
 
-    const mapped = (data || []).reduce((acc, conn) => {
-      acc[conn.integration_type] = conn;
-      return acc;
-    }, {} as Record<string, any>);
+    const mapped = (data || []).reduce(
+      (acc, conn) => {
+        acc[conn.integration_type] = conn;
+        return acc;
+      },
+      {} as Record<string, any>
+    );
 
     setConnections(mapped);
     setLoading(false);
@@ -257,7 +270,7 @@ export function useIntegrations() {
       .from('integration_connections')
       .update({
         status: 'disconnected',
-        sync_enabled: false
+        sync_enabled: false,
       })
       .eq('integration_type', type);
 
@@ -271,7 +284,7 @@ export function useIntegrations() {
     loading,
     connect,
     disconnect,
-    reload: loadConnections
+    reload: loadConnections,
   };
 }
 ```
@@ -295,7 +308,7 @@ export class GoogleSheetsSync {
     // Initialize Google Sheets API
     const sheets = google.sheets({
       version: 'v4',
-      auth: accessToken
+      auth: accessToken,
     });
 
     // Get connection settings (spreadsheet ID, sheet name)
@@ -329,8 +342,8 @@ export class GoogleSheetsSync {
       range: `${sheet_name}!A2:Z${rows.length + 1}`,
       valueInputOption: 'RAW',
       requestBody: {
-        values: rows
-      }
+        values: rows,
+      },
     });
 
     // Log sync
@@ -338,7 +351,7 @@ export class GoogleSheetsSync {
       connection_id: connectionId,
       direction: 'to_external',
       records_updated: rows.length,
-      completed_at: new Date().toISOString()
+      completed_at: new Date().toISOString(),
     });
   }
 }
@@ -371,7 +384,7 @@ export class GmailReplyTracker {
           .from('gmail_tracked_emails')
           .update({
             has_reply: true,
-            reply_received_at: new Date().toISOString()
+            reply_received_at: new Date().toISOString(),
           })
           .eq('id', tracked.id);
 
@@ -455,12 +468,15 @@ export async function GET(request: Request) {
 ```
 
 Add to `vercel.json`:
+
 ```json
 {
-  "crons": [{
-    "path": "/api/cron/sync-integrations",
-    "schedule": "*/15 * * * *"
-  }]
+  "crons": [
+    {
+      "path": "/api/cron/sync-integrations",
+      "schedule": "*/15 * * * *"
+    }
+  ]
 }
 ```
 
@@ -476,6 +492,7 @@ Add to `vercel.json`:
 ## What's Built vs What's Left
 
 ### ✅ Complete
+
 - Database schema with RLS
 - OAuth infrastructure
 - API routes pattern
@@ -483,6 +500,7 @@ Add to `vercel.json`:
 - Security (CSRF, encryption)
 
 ### 🔨 In Progress (You Can Complete)
+
 - UI components (2-3 hours)
 - Google Sheets sync logic (3-4 hours)
 - Gmail reply tracking (2-3 hours)
@@ -498,6 +516,7 @@ Add to `vercel.json`:
 **With integrations**: "Holy shit, my spreadsheet updates itself, Gmail replies automatically update status, my VA sees everything in Airtable. This is a complete system."
 
 **Pricing Impact**:
+
 - Free: 1 integration, manual sync → drives upgrades
 - Pro £19: 3 integrations, auto-sync → compelling value
 - Agency £79: Unlimited, real-time → professional solution

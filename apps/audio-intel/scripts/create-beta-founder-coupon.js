@@ -29,8 +29,8 @@ async function createBetaFounderCoupon() {
       metadata: {
         description: 'Beta founder exclusive - 50% off for first 12 months',
         campaign: 'beta-launch-2025',
-        applies_to: 'all-plans'
-      }
+        applies_to: 'all-plans',
+      },
     });
 
     console.log('✅ Coupon created successfully!');
@@ -46,8 +46,8 @@ async function createBetaFounderCoupon() {
       max_redemptions: 1000, // Limit to first 1000 beta users
       metadata: {
         campaign: 'beta-launch-2025',
-        description: 'Beta founder early access discount'
-      }
+        description: 'Beta founder early access discount',
+      },
     });
 
     console.log('\n✅ Promotion code created!');

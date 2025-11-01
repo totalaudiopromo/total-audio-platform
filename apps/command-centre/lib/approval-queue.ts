@@ -24,7 +24,7 @@ export async function addToApprovalQueue(contentData: any) {
     relevanceScore: contentData.originalStory?.relevanceScore || 0,
     status: 'pending',
     createdAt: new Date().toISOString(),
-    readyToPost: false
+    readyToPost: false,
   };
 
   // Create separate queue items for each platform
@@ -35,7 +35,7 @@ export async function addToApprovalQueue(contentData: any) {
         ...queueItem,
         id: `${queueItem.id}_${platform}`,
         platform,
-        generatedContent: contentData.multiPlatformContent[platform]
+        generatedContent: contentData.multiPlatformContent[platform],
       });
     }
   });

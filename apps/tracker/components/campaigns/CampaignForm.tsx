@@ -13,12 +13,12 @@ const schema = z
     release_type: z.enum(['single', 'EP', 'album']).optional().nullable(),
     budget: z
       .string()
-      .refine(v => !isNaN(Number(v)) && Number(v) >= 0, 'Budget must be a positive number'),
+      .refine(
+        v => !isNaN(Number(v)) && Number(v) >= 0,
+        'Budget must be a positive number'
+      ),
     start_date: z.string().optional().nullable(),
-    end_date: z
-      .string()
-      .optional()
-      .nullable(),
+    end_date: z.string().optional().nullable(),
     platforms: z.array(z.string()).min(1, 'Select at least one platform'),
     goals: z.string().optional().nullable(),
   })
@@ -43,7 +43,11 @@ const PLATFORMS = [
   { id: 'playlists', label: 'Playlists' },
 ];
 
-export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Promise<void> | void }) {
+export function CampaignForm({
+  onSubmit,
+}: {
+  onSubmit: (values: FormData) => Promise<void> | void;
+}) {
   const [step, setStep] = useState(1);
   const {
     register,
@@ -73,40 +77,58 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
                 s === step
                   ? 'bg-teal-600 text-white'
                   : s < step
-                  ? 'bg-green-600 text-white'
-                  : 'bg-slate-200 text-slate-600'
+                    ? 'bg-green-600 text-white'
+                    : 'bg-slate-200 text-slate-600'
               }`}
             >
               {s < step ? '✓' : s}
             </div>
-            {s < 3 && <div className={`flex-1 h-1 mx-2 ${s < step ? 'bg-green-600' : 'bg-slate-200'}`} />}
+            {s < 3 && (
+              <div
+                className={`flex-1 h-1 mx-2 ${s < step ? 'bg-green-600' : 'bg-slate-200'}`}
+              />
+            )}
           </div>
         ))}
       </div>
 
       {step === 1 && (
         <div className="space-y-4">
-          <h3 className="text-xl font-bold text-slate-900 mb-4">Campaign Basics</h3>
+          <h3 className="text-xl font-bold text-slate-900 mb-4">
+            Campaign Basics
+          </h3>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Campaign name *</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">
+              Campaign name *
+            </label>
             <input
               {...register('name')}
               className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-teal-500"
               placeholder="e.g., Summer Single Release"
             />
-            {errors.name && <p className="text-sm text-red-600 mt-1">{errors.name.message}</p>}
+            {errors.name && (
+              <p className="text-sm text-red-600 mt-1">{errors.name.message}</p>
+            )}
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Artist name *</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">
+              Artist name *
+            </label>
             <input
               {...register('artist_name')}
               className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-teal-500"
               placeholder="e.g., The Artist"
             />
-            {errors.artist_name && <p className="text-sm text-red-600 mt-1">{errors.artist_name.message}</p>}
+            {errors.artist_name && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.artist_name.message}
+              </p>
+            )}
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Release type</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">
+              Release type
+            </label>
             <select
               {...register('release_type')}
               className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-teal-500"
@@ -122,9 +144,13 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
 
       {step === 2 && (
         <div className="space-y-4">
-          <h3 className="text-xl font-bold text-slate-900 mb-4">Budget & Timeline</h3>
+          <h3 className="text-xl font-bold text-slate-900 mb-4">
+            Budget & Timeline
+          </h3>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Budget (£) *</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">
+              Budget (£) *
+            </label>
             <input
               {...register('budget')}
               type="number"
@@ -133,12 +159,20 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
               className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-teal-500"
               placeholder="0.00"
             />
-            {errors.budget && <p className="text-sm text-red-600 mt-1">{errors.budget.message}</p>}
-            <p className="text-xs text-slate-500 mt-1">Total budget for this campaign</p>
+            {errors.budget && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.budget.message}
+              </p>
+            )}
+            <p className="text-xs text-slate-500 mt-1">
+              Total budget for this campaign
+            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Start date</label>
+              <label className="block text-sm font-medium text-slate-700 mb-1">
+                Start date
+              </label>
               <input
                 type="date"
                 {...register('start_date')}
@@ -146,13 +180,19 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">End date</label>
+              <label className="block text-sm font-medium text-slate-700 mb-1">
+                End date
+              </label>
               <input
                 type="date"
                 {...register('end_date')}
                 className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-teal-500"
               />
-              {errors.end_date && <p className="text-sm text-red-600 mt-1">{errors.end_date.message}</p>}
+              {errors.end_date && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.end_date.message}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -160,9 +200,13 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
 
       {step === 3 && (
         <div className="space-y-4">
-          <h3 className="text-xl font-bold text-slate-900 mb-4">Platforms & Goals</h3>
+          <h3 className="text-xl font-bold text-slate-900 mb-4">
+            Platforms & Goals
+          </h3>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">Select platforms *</label>
+            <label className="block text-sm font-medium text-slate-700 mb-2">
+              Select platforms *
+            </label>
             <div className="grid grid-cols-2 gap-3">
               {PLATFORMS.map(p => (
                 <label
@@ -177,8 +221,13 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
                     type="checkbox"
                     checked={selected?.includes(p.id)}
                     onChange={e => {
-                      if (e.target.checked) setValue('platforms', [...selected, p.id]);
-                      else setValue('platforms', selected.filter(v => v !== p.id));
+                      if (e.target.checked)
+                        setValue('platforms', [...selected, p.id]);
+                      else
+                        setValue(
+                          'platforms',
+                          selected.filter(v => v !== p.id)
+                        );
                     }}
                     className="w-4 h-4 text-teal-600"
                   />
@@ -186,17 +235,25 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
                 </label>
               ))}
             </div>
-            {errors.platforms && <p className="text-sm text-red-600 mt-1">{errors.platforms.message as string}</p>}
+            {errors.platforms && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.platforms.message as string}
+              </p>
+            )}
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Campaign goals (optional)</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">
+              Campaign goals (optional)
+            </label>
             <textarea
               {...register('goals')}
               className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-teal-500"
               rows={4}
               placeholder="e.g., Reach 100k streams in first month, get BBC Radio 1 airplay, secure playlist placements"
             />
-            <p className="text-xs text-slate-500 mt-1">Describe what you want to achieve with this campaign</p>
+            <p className="text-xs text-slate-500 mt-1">
+              Describe what you want to achieve with this campaign
+            </p>
           </div>
         </div>
       )}
@@ -237,7 +294,3 @@ export function CampaignForm({ onSubmit }: { onSubmit: (values: FormData) => Pro
     </form>
   );
 }
-
-
-
-

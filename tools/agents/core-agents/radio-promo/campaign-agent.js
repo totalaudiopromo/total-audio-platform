@@ -2,7 +2,7 @@
 
 /**
  * Campaign Agent for Total Audio Promo
- * 
+ *
  * Specialized agent for campaign management, analytics tracking, and performance optimization
  * Handles campaign lifecycle, automated reporting, and A/B testing
  */
@@ -13,7 +13,7 @@ const { PrismaClient } = require('@prisma/client');
 const logger = {
   info: (msg, ...args) => console.log(`[INFO] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[ERROR] ${msg}`, ...args),
-  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args)
+  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args),
 };
 
 const IntegrationAgent = require('./integration-agent-real');
@@ -26,7 +26,7 @@ class CampaignAgent {
     this.metrics = {
       campaignsProcessed: 0,
       reportsGenerated: 0,
-      optimizationsApplied: 0
+      optimizationsApplied: 0,
     };
   }
 
@@ -51,7 +51,7 @@ class CampaignAgent {
   async createCampaign(campaignData) {
     try {
       logger.info('Creating new campaign...');
-      
+
       const campaign = await this.prisma.campaign.create({
         data: {
           ...campaignData,
@@ -62,19 +62,19 @@ class CampaignAgent {
               opens: 0,
               clicks: 0,
               replies: 0,
-              bounces: 0
-            }
-          }
+              bounces: 0,
+            },
+          },
         },
         include: {
           artist: true,
-          metrics: true
-        }
+          metrics: true,
+        },
       });
 
       // Set up campaign tracking
       await this.setupCampaignTracking(campaign.id);
-      
+
       logger.info(`Campaign created: ${campaign.id}`);
       return campaign;
     } catch (error) {
@@ -89,10 +89,10 @@ class CampaignAgent {
   async launchCampaign(campaignId) {
     try {
       logger.info(`Launching campaign ${campaignId}...`);
-      
+
       const campaign = await this.prisma.campaign.findUnique({
         where: { id: campaignId },
-        include: { artist: true, emailCampaigns: true }
+        include: { artist: true, emailCampaigns: true },
       });
 
       if (!campaign) {
@@ -102,17 +102,17 @@ class CampaignAgent {
       // Update campaign status
       await this.prisma.campaign.update({
         where: { id: campaignId },
-        data: { 
+        data: {
           status: 'active',
-          launchedAt: new Date()
-        }
+          launchedAt: new Date(),
+        },
       });
 
       // Launch on each platform
       const results = {
         mailchimp: null,
         airtable: null,
-        gmail: null
+        gmail: null,
       };
 
       // Create Mailchimp campaign
@@ -122,7 +122,7 @@ class CampaignAgent {
             campaignId,
             subject: campaign.title,
             content: campaign.content,
-            listId: campaign.mailchimpListId
+            listId: campaign.mailchimpListId,
           });
         } catch (error) {
           logger.error('Mailchimp launch failed:', error);
@@ -152,7 +152,7 @@ class CampaignAgent {
 
       this.metrics.campaignsProcessed++;
       logger.info(`Campaign ${campaignId} launched successfully`);
-      
+
       return { campaign, results };
     } catch (error) {
       logger.error('Campaign launch failed:', error);
@@ -167,13 +167,13 @@ class CampaignAgent {
     try {
       // Create tracking URLs
       const trackingUrls = await this.generateTrackingUrls(campaignId);
-      
+
       // Set up webhooks for real-time updates
       await this.setupWebhooks(campaignId);
-      
+
       // Initialize analytics collection
       await this.initializeAnalytics(campaignId);
-      
+
       logger.info(`Tracking setup completed for campaign ${campaignId}`);
       return { trackingUrls, webhooks: true, analytics: true };
     } catch (error) {
@@ -187,11 +187,11 @@ class CampaignAgent {
    */
   async generateTrackingUrls(campaignId) {
     const baseUrl = process.env.APP_URL || 'https://totalaudiopromo.com';
-    
+
     return {
       open: `${baseUrl}/track/open/${campaignId}`,
       click: `${baseUrl}/track/click/${campaignId}`,
-      unsubscribe: `${baseUrl}/track/unsubscribe/${campaignId}`
+      unsubscribe: `${baseUrl}/track/unsubscribe/${campaignId}`,
     };
   }
 
@@ -217,10 +217,10 @@ class CampaignAgent {
         replies: 0,
         bounces: 0,
         unsubscribes: 0,
-        lastUpdated: new Date()
-      }
+        lastUpdated: new Date(),
+      },
     });
-    
+
     return true;
   }
 
@@ -240,17 +240,17 @@ class CampaignAgent {
     try {
       const updateData = {
         [metricType]: { increment: value },
-        lastUpdated: new Date()
+        lastUpdated: new Date(),
       };
 
       const updated = await this.prisma.campaignMetrics.update({
         where: { campaignId },
-        data: updateData
+        data: updateData,
       });
 
       // Check for optimization opportunities
       await this.checkOptimizationOpportunities(campaignId, updated);
-      
+
       return updated;
     } catch (error) {
       logger.error('Metrics update failed:', error);
@@ -263,7 +263,7 @@ class CampaignAgent {
    */
   async checkOptimizationOpportunities(campaignId, metrics) {
     const optimizations = [];
-    
+
     // Low open rate optimization
     if (metrics.opens < 100 && metrics.opens > 0) {
       const openRate = (metrics.opens / 1000) * 100; // Assuming 1000 sent
@@ -271,33 +271,33 @@ class CampaignAgent {
         optimizations.push({
           type: 'subject_line',
           recommendation: 'Consider A/B testing different subject lines',
-          priority: 'high'
+          priority: 'high',
         });
       }
     }
-    
+
     // Low click rate optimization
     if (metrics.clicks < metrics.opens * 0.1) {
       optimizations.push({
         type: 'content',
         recommendation: 'Improve call-to-action and content engagement',
-        priority: 'medium'
+        priority: 'medium',
       });
     }
-    
+
     // High bounce rate optimization
     if (metrics.bounces > metrics.opens * 0.05) {
       optimizations.push({
         type: 'list_hygiene',
         recommendation: 'Clean email list to reduce bounce rate',
-        priority: 'high'
+        priority: 'high',
       });
     }
-    
+
     if (optimizations.length > 0) {
       await this.applyOptimizations(campaignId, optimizations);
     }
-    
+
     return optimizations;
   }
 
@@ -318,7 +318,7 @@ class CampaignAgent {
             await this.cleanEmailList(campaignId);
             break;
         }
-        
+
         this.metrics.optimizationsApplied++;
         logger.info(`Applied ${optimization.type} optimization to campaign ${campaignId}`);
       } catch (error) {
@@ -332,11 +332,12 @@ class CampaignAgent {
    */
   async optimizeSubjectLine(campaignId) {
     // Generate alternative subject lines with Claude AI
-    const alternatives = await this.integrationAgent.services.claude.generateSubjectLines(campaignId);
-    
+    const alternatives =
+      await this.integrationAgent.services.claude.generateSubjectLines(campaignId);
+
     // Set up A/B test
     await this.setupABTest(campaignId, 'subject_line', alternatives);
-    
+
     return alternatives;
   }
 
@@ -346,10 +347,11 @@ class CampaignAgent {
   async optimizeContent(campaignId) {
     // Analyze current content performance
     const analysis = await this.integrationAgent.services.claude.analyzeCampaignContent(campaignId);
-    
+
     // Generate improved content suggestions
-    const suggestions = await this.integrationAgent.services.claude.generateContentSuggestions(analysis);
-    
+    const suggestions =
+      await this.integrationAgent.services.claude.generateContentSuggestions(analysis);
+
     return suggestions;
   }
 
@@ -359,25 +361,23 @@ class CampaignAgent {
   async cleanEmailList(campaignId) {
     const campaign = await this.prisma.campaign.findUnique({
       where: { id: campaignId },
-      include: { contacts: true }
+      include: { contacts: true },
     });
-    
+
     // Remove contacts that have bounced multiple times
-    const bouncedContacts = campaign.contacts.filter(contact => 
-      contact.bounceCount > 2
-    );
-    
+    const bouncedContacts = campaign.contacts.filter(contact => contact.bounceCount > 2);
+
     if (bouncedContacts.length > 0) {
       await this.prisma.contact.updateMany({
         where: {
-          id: { in: bouncedContacts.map(c => c.id) }
+          id: { in: bouncedContacts.map(c => c.id) },
         },
-        data: { status: 'bounced' }
+        data: { status: 'bounced' },
       });
-      
+
       logger.info(`Cleaned ${bouncedContacts.length} bounced contacts from campaign ${campaignId}`);
     }
-    
+
     return { cleaned: bouncedContacts.length };
   }
 
@@ -391,10 +391,10 @@ class CampaignAgent {
         testType,
         variations: JSON.stringify(variations),
         status: 'active',
-        startDate: new Date()
-      }
+        startDate: new Date(),
+      },
     });
-    
+
     logger.info(`A/B test created for campaign ${campaignId}: ${testType}`);
     return abTest;
   }
@@ -405,34 +405,34 @@ class CampaignAgent {
   async generateCampaignReport(campaignId) {
     try {
       logger.info(`Generating report for campaign ${campaignId}...`);
-      
+
       const campaign = await this.prisma.campaign.findUnique({
         where: { id: campaignId },
         include: {
           metrics: true,
           artist: true,
           emailCampaigns: true,
-          abTests: true
-        }
+          abTests: true,
+        },
       });
-      
+
       if (!campaign) {
         throw new Error(`Campaign ${campaignId} not found`);
       }
-      
+
       // Gather data from all integrations
       const integrationData = await this.integrationAgent.gatherCampaignData(campaignId);
-      
+
       // Generate AI-powered insights
       const insights = await this.integrationAgent.generateCampaignReport(campaignId);
-      
+
       const report = {
         campaign: {
           id: campaign.id,
           title: campaign.title,
           status: campaign.status,
           launchedAt: campaign.launchedAt,
-          artist: campaign.artist.name
+          artist: campaign.artist.name,
         },
         metrics: campaign.metrics,
         performance: this.calculatePerformanceMetrics(campaign.metrics),
@@ -440,12 +440,12 @@ class CampaignAgent {
         insights,
         abTests: campaign.abTests,
         recommendations: await this.generateRecommendations(campaign),
-        generatedAt: new Date()
+        generatedAt: new Date(),
       };
-      
+
       this.metrics.reportsGenerated++;
       logger.info(`Report generated for campaign ${campaignId}`);
-      
+
       return report;
     } catch (error) {
       logger.error('Report generation failed:', error);
@@ -458,14 +458,14 @@ class CampaignAgent {
    */
   calculatePerformanceMetrics(metrics) {
     const sent = 1000; // This would come from actual sent count
-    
+
     return {
-      openRate: metrics.opens / sent * 100,
-      clickRate: metrics.clicks / metrics.opens * 100,
-      replyRate: metrics.replies / metrics.opens * 100,
-      bounceRate: metrics.bounces / sent * 100,
-      unsubscribeRate: metrics.unsubscribes / sent * 100,
-      engagement: (metrics.opens + metrics.clicks + metrics.replies) / sent * 100
+      openRate: (metrics.opens / sent) * 100,
+      clickRate: (metrics.clicks / metrics.opens) * 100,
+      replyRate: (metrics.replies / metrics.opens) * 100,
+      bounceRate: (metrics.bounces / sent) * 100,
+      unsubscribeRate: (metrics.unsubscribes / sent) * 100,
+      engagement: ((metrics.opens + metrics.clicks + metrics.replies) / sent) * 100,
     };
   }
 
@@ -477,7 +477,7 @@ class CampaignAgent {
     return [
       'Consider testing different send times for better open rates',
       'Personalize subject lines based on contact segments',
-      'A/B test call-to-action buttons for improved click rates'
+      'A/B test call-to-action buttons for improved click rates',
     ];
   }
 
@@ -488,7 +488,7 @@ class CampaignAgent {
     return {
       ...this.metrics,
       uptime: process.uptime(),
-      timestamp: new Date()
+      timestamp: new Date(),
     };
   }
 
@@ -523,7 +523,7 @@ if (require.main === module) {
         const launch = await agent.launchCampaign(campaignId);
         console.log(JSON.stringify(launch, null, 2));
         break;
-      
+
       case 'report':
         const reportCampaignId = process.argv[3];
         if (!reportCampaignId) {
@@ -533,7 +533,7 @@ if (require.main === module) {
         const report = await agent.generateCampaignReport(reportCampaignId);
         console.log(JSON.stringify(report, null, 2));
         break;
-      
+
       case 'optimize':
         const optimizeCampaignId = process.argv[3];
         if (!optimizeCampaignId) {
@@ -541,17 +541,20 @@ if (require.main === module) {
           return;
         }
         const metrics = await agent.prisma.campaignMetrics.findUnique({
-          where: { campaignId: optimizeCampaignId }
+          where: { campaignId: optimizeCampaignId },
         });
-        const optimizations = await agent.checkOptimizationOpportunities(optimizeCampaignId, metrics);
+        const optimizations = await agent.checkOptimizationOpportunities(
+          optimizeCampaignId,
+          metrics
+        );
         console.log(JSON.stringify(optimizations, null, 2));
         break;
-      
+
       case 'stats':
         const stats = agent.getAgentStatistics();
         console.log(JSON.stringify(stats, null, 2));
         break;
-      
+
       default:
         console.log('Usage: node campaign-agent.js [launch|report|optimize|stats]');
     }

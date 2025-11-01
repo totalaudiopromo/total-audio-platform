@@ -38,30 +38,34 @@ The Total Audio Agent Layer is a modular, production-ready system that handles b
 **Purpose**: Discover and validate music industry contacts for campaigns
 
 **Capabilities**:
+
 - Contact discovery (radio, press, labels)
 - Label matching based on genre/release
 - Enrichment quality validation
 - Confidence scoring
 
 **Sub-Agents**:
+
 - **ContactFinder**: Searches contact database and enriches with external APIs
 - **LabelMatcher**: Matches releases to appropriate record labels
 - **EnrichmentValidator**: Validates enrichment quality and provides recommendations
 
 **Example Usage**:
+
 ```typescript
 const result = await Agents.intel.execute({
   artist: 'sadact',
   release: 'New Single',
   genre: 'house',
   region: 'UK',
-  includeLabels: true
-})
+  includeLabels: true,
+});
 
 // Returns: contacts, labels, validation, quality score
 ```
 
 **API Endpoint**:
+
 ```bash
 POST /api/agents?name=intel
 {
@@ -78,17 +82,20 @@ POST /api/agents?name=intel
 **Purpose**: Generate personalised pitches and follow-ups with brand voice enforcement
 
 **Capabilities**:
+
 - Professional pitch formatting
 - Brand tone validation
 - Follow-up generation with timing rules
 - Corporate speak detection
 
 **Sub-Agents**:
+
 - **PitchFormatter**: Structures professional pitch emails with personalisation
 - **ToneChecker**: Validates "honest maker" brand voice, flags corporate speak
 - **FollowUpWriter**: Generates polite follow-ups with appropriate timing
 
 **Example Usage**:
+
 ```typescript
 // Draft new pitch
 const result = await Agents.pitch.execute({
@@ -98,8 +105,8 @@ const result = await Agents.pitch.execute({
   contactName: 'John',
   contactOrganisation: 'BBC Radio 6 Music',
   genre: 'electronic',
-  strictToneCheck: true
-})
+  strictToneCheck: true,
+});
 
 // Generate follow-up
 const followUp = await Agents.pitch.execute({
@@ -107,11 +114,12 @@ const followUp = await Agents.pitch.execute({
   artist: 'Artist Name',
   release: 'Release Title',
   originalPitchDate: '2025-01-01',
-  followUpNumber: 1
-})
+  followUpNumber: 1,
+});
 ```
 
 **API Endpoint**:
+
 ```bash
 POST /api/agents?name=pitch
 {
@@ -129,17 +137,20 @@ POST /api/agents?name=pitch
 **Purpose**: Log campaign submissions and generate performance analytics
 
 **Capabilities**:
+
 - Submission logging
 - Campaign analytics generation
 - Follow-up reminders
 - Status tracking
 
 **Sub-Agents**:
+
 - **SubmissionLogger**: Records submissions and tracks status changes
 - **AnalyticsSummariser**: Generates campaign performance summaries
 - **ReminderAgent**: Suggests follow-up timing based on submission age
 
 **Example Usage**:
+
 ```typescript
 // Log submission
 await Agents.tracker.execute({
@@ -150,24 +161,25 @@ await Agents.tracker.execute({
     contactName: 'John Smith',
     contactOrganisation: 'BBC Radio 6 Music',
     submissionDate: new Date().toISOString(),
-    pitchType: 'initial'
-  }
-})
+    pitchType: 'initial',
+  },
+});
 
 // Get analytics
 const analytics = await Agents.tracker.execute({
   mode: 'analytics',
-  campaignId: 'campaign-123'
-})
+  campaignId: 'campaign-123',
+});
 
 // Check reminders
 const reminders = await Agents.tracker.execute({
   mode: 'reminders',
-  campaignId: 'campaign-123'
-})
+  campaignId: 'campaign-123',
+});
 ```
 
 **API Endpoint**:
+
 ```bash
 POST /api/agents?name=tracker
 {
@@ -183,6 +195,7 @@ POST /api/agents?name=tracker
 **Purpose**: Analyse campaign data and provide actionable recommendations
 
 **Capabilities**:
+
 - Performance analysis
 - Engagement insights
 - Conversion tracking
@@ -190,17 +203,19 @@ POST /api/agents?name=tracker
 - Recommendation generation
 
 **Example Usage**:
+
 ```typescript
 const insights = await Agents.insight.execute({
   campaignId: 'campaign-123',
   includeComparison: true,
-  includeRecommendations: true
-})
+  includeRecommendations: true,
+});
 
 // Returns: insights, recommendations, comparison, summary
 ```
 
 **API Endpoint**:
+
 ```bash
 POST /api/agents?name=insight
 {
@@ -216,6 +231,7 @@ POST /api/agents?name=insight
 **Purpose**: Ensure all content matches Total Audio's authentic "honest maker" tone
 
 **Capabilities**:
+
 - Tone validation
 - Corporate speak detection
 - AI buzzword flagging
@@ -223,18 +239,20 @@ POST /api/agents?name=insight
 - Auto-fix suggestions
 
 **Example Usage**:
+
 ```typescript
 const result = await Agents.voiceguard.execute({
   text: "I'm sharing my new release with you...",
   contentType: 'pitch',
   strictMode: false,
-  autoFix: true
-})
+  autoFix: true,
+});
 
 // Returns: passed, score, issues, recommendations, fixedText
 ```
 
 **API Endpoint**:
+
 ```bash
 POST /api/agents?name=voiceguard
 {
@@ -254,20 +272,20 @@ The `AgentRegistry` manages all agents and provides discovery, health checks, an
 
 ```typescript
 // List all agents
-AgentRegistry.list() // ['intel', 'pitch', 'tracker', 'insight', 'voiceguard']
+AgentRegistry.list(); // ['intel', 'pitch', 'tracker', 'insight', 'voiceguard']
 
 // Get agent instance
-const agent = AgentRegistry.get('intel')
+const agent = AgentRegistry.get('intel');
 
 // Get agent manifest
-const manifest = AgentRegistry.getManifest('intel')
+const manifest = AgentRegistry.getManifest('intel');
 
 // Get agent stats
-const stats = AgentRegistry.getStats('intel')
+const stats = AgentRegistry.getStats('intel');
 // Returns: { name, version, runs, success, failures, successRate, avgLatency }
 
 // Health check
-const health = await AgentRegistry.healthCheck()
+const health = await AgentRegistry.healthCheck();
 // Returns: { healthy: boolean, agents: {...} }
 ```
 
@@ -276,11 +294,13 @@ const health = await AgentRegistry.healthCheck()
 ## API Endpoints
 
 ### 1. List All Agents
+
 ```bash
 GET /api/agents
 ```
 
 **Response**:
+
 ```json
 {
   "agents": [
@@ -295,6 +315,7 @@ GET /api/agents
 ```
 
 ### 2. Invoke Agent
+
 ```bash
 POST /api/agents?name=<agent_name>
 {
@@ -303,6 +324,7 @@ POST /api/agents?name=<agent_name>
 ```
 
 **Response**:
+
 ```json
 {
   "success": true,
@@ -315,11 +337,13 @@ POST /api/agents?name=<agent_name>
 ```
 
 ### 3. Health Check
+
 ```bash
 GET /api/agents/health
 ```
 
 **Response**:
+
 ```json
 {
   "healthy": true,
@@ -332,11 +356,13 @@ GET /api/agents/health
 ```
 
 ### 4. Agent Statistics
+
 ```bash
 GET /api/agents/stats?name=intel
 ```
 
 **Response**:
+
 ```json
 {
   "name": "IntelAgent",
@@ -386,11 +412,13 @@ group by agent_name;
 ## Testing
 
 ### Run Test Suite
+
 ```bash
 npm run test:agents
 ```
 
 ### Test Coverage
+
 - AgentRegistry discovery and management
 - All 5 agents with various payloads
 - Sub-agent functionality
@@ -399,18 +427,19 @@ npm run test:agents
 - Health checks
 
 ### Example Test
+
 ```typescript
 it('should execute IntelAgent successfully', async () => {
-  const agent = new IntelAgent()
+  const agent = new IntelAgent();
   const result = await agent.execute({
     artist: 'Test Artist',
-    genre: 'electronic'
-  })
+    genre: 'electronic',
+  });
 
-  expect(result.success).toBe(true)
-  expect(result.data.contacts).toBeDefined()
-  expect(result.metrics.latency_ms).toBeGreaterThan(0)
-})
+  expect(result.success).toBe(true);
+  expect(result.data.contacts).toBeDefined();
+  expect(result.metrics.latency_ms).toBeGreaterThan(0);
+});
 ```
 
 ---
@@ -445,6 +474,7 @@ VoiceGuardAgent (no dependencies)
 ### Adding a New Agent
 
 1. **Create agent directory structure**:
+
 ```bash
 agents/
 └── myagent/
@@ -455,6 +485,7 @@ agents/
 ```
 
 2. **Extend BaseAgent**:
+
 ```typescript
 import { BaseAgent } from '../core/BaseAgent'
 import type { AgentPayload, AgentResult } from '../core/AgentTypes'
@@ -475,6 +506,7 @@ export class MyAgent extends BaseAgent {
 ```
 
 3. **Register in AgentRegistry**:
+
 ```typescript
 // In AgentRegistry.ts
 import { MyAgent } from '../myagent/MyAgent'
@@ -486,6 +518,7 @@ static init() {
 ```
 
 4. **Create tests**:
+
 ```typescript
 describe('MyAgent', () => {
   it('should execute successfully', async () => {
@@ -501,12 +534,14 @@ describe('MyAgent', () => {
 ## Performance Considerations
 
 ### Metrics Tracked
+
 - **Execution latency**: Time taken for agent to complete
 - **Success rate**: Percentage of successful executions
 - **Run count**: Total number of executions
 - **Error frequency**: Number of failures over time
 
 ### Optimisation Guidelines
+
 - Keep agent logic focused and modular
 - Use sub-agents for independent operations
 - Implement caching for expensive operations
@@ -518,21 +553,25 @@ describe('MyAgent', () => {
 ## Security & Best Practices
 
 ### Authentication
+
 - All API endpoints should require authentication
 - Use Supabase RLS policies for data access
 - Validate user permissions before agent execution
 
 ### Input Validation
+
 - Validate all payload parameters
 - Sanitise user input before processing
 - Return clear error messages for invalid input
 
 ### Error Handling
+
 - All errors are caught and returned in standardised format
 - Never expose internal implementation details
 - Log errors for debugging without exposing to users
 
 ### British Spelling
+
 - All agent content uses British English (organised, realise, colour)
 - Brand voice enforced by VoiceGuardAgent
 
@@ -541,6 +580,7 @@ describe('MyAgent', () => {
 ## Monitoring & Observability
 
 ### Supabase Queries
+
 ```sql
 -- Agent performance over time
 select
@@ -574,6 +614,7 @@ limit 50;
 ## Roadmap
 
 ### Completed
+
 ✅ Core agent framework (BaseAgent, AgentRegistry)
 ✅ All 5 production agents (Intel, Pitch, Tracker, Insight, VoiceGuard)
 ✅ Sub-agent architecture
@@ -583,6 +624,7 @@ limit 50;
 ✅ Documentation
 
 ### Next Steps
+
 - [ ] WebSocket support for real-time agent updates
 - [ ] Agent orchestration (chaining multiple agents)
 - [ ] Agent metrics dashboard UI
@@ -595,6 +637,7 @@ limit 50;
 ## Support
 
 For questions or issues with the Agent Layer:
+
 1. Check this documentation first
 2. Review test suite for examples
 3. Check agent manifests for capabilities

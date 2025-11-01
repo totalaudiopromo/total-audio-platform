@@ -4,23 +4,34 @@
   "private": true,
   "description": "Total Audio Promo - Music Industry Tools Platform",
   "scripts": {
-    "lint": "npm run lint --workspace=audio-intel",
-    "typecheck": "npm run typecheck --workspace=audio-intel",
-    "build:audio-intel": "npm run build --workspace=apps/audio-intel",
-    "build:command-centre": "npm run build --workspace=apps/command-centre",
-    "build:tracker": "npm run build --workspace=apps/tracker",
-    "build:web": "npm run build --workspace=total-audio-promo-frontend",
-    "build:pitch-generator": "npm run build --workspace=apps/pitch-generator",
+    "setup": "bash scripts/setup.sh",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
+    "lint": "pnpm --filter audio-intel lint",
+    "lint:all": "pnpm -r --parallel lint",
+    "lint:fix": "pnpm -r --parallel lint -- --fix",
+    "typecheck": "pnpm --filter audio-intel typecheck",
+    "typecheck:all": "pnpm -r --parallel typecheck",
+    "build:audio-intel": "pnpm --filter audio-intel build",
+    "build:command-centre": "pnpm --filter command-centre build",
+    "build:tracker": "pnpm --filter tracker build",
+    "build:web": "pnpm --filter total-audio-promo-frontend build",
+    "build:pitch-generator": "pnpm --filter pitch-generator build",
+    "build:all": "pnpm -r build",
     "test": "echo 'No root tests; see app workspaces' && exit 0",
-    "test:audio-intel": "npm run test --workspace=apps/audio-intel",
+    "test:audio-intel": "pnpm --filter audio-intel test",
+    "test:all": "pnpm -r test",
+    "dev:all": "pnpm -r --parallel dev",
     "deploy:web": "cd apps/web && vercel --prod",
     "deploy:audio-intel": "cd apps/audio-intel && vercel --prod",
     "deploy:pitch": "cd apps/pitch-generator && vercel --prod",
     "deploy:tracker": "cd apps/tracker && vercel --prod",
-    "deploy:all": "npm run deploy:web && npm run deploy:audio-intel && npm run deploy:pitch && npm run deploy:tracker",
-    "security:audit": "npm audit --audit-level moderate",
+    "deploy:all": "pnpm run deploy:web && pnpm run deploy:audio-intel && pnpm run deploy:pitch && pnpm run deploy:tracker",
+    "clean": "rm -rf apps/*/.next apps/*/node_modules/.cache apps/*/dist",
+    "reset": "pnpm run clean && rm -rf node_modules apps/*/node_modules && pnpm install",
+    "security:audit": "pnpm audit --audit-level moderate",
     "security:scan": "export PATH=\"$HOME/bin:$PATH\" && git-secrets --scan",
-    "security:check": "npm run security:audit && npm run security:scan",
+    "security:check": "pnpm run security:audit && pnpm run security:scan",
     "organize-docs": "node scripts/organize-docs.js",
     "organize-docs:dry-run": "node scripts/organize-docs.js --dry-run",
     "organize-docs:verbose": "node scripts/organize-docs.js --verbose",
@@ -29,7 +40,10 @@
     "validate-env": "node scripts/validate-environment.js",
     "standardize-deps": "node scripts/standardize-dependencies.js",
     "create-health-endpoints": "node scripts/create-health-endpoints.js",
-    "enhance-deployment": "npm run create-health-endpoints && npm run validate-env && npm run standardize-deps"
+    "enhance-deployment": "pnpm run create-health-endpoints && pnpm run validate-env && pnpm run standardize-deps",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm run build:all && changeset publish"
   },
   "keywords": [
     "music",
@@ -39,18 +53,32 @@
   ],
   "author": "Total Audio Promo",
   "license": "UNLICENSED",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "resolutions": {
-    "next": "15.3.0"
+  "pnpm": {
+    "overrides": {
+      "next": "15.3.0",
+      "react": "19.1.0",
+      "react-dom": "19.1.0",
+      "typescript": "5.7.2",
+      "@supabase/supabase-js": "2.75.0",
+      "@supabase/ssr": "0.7.0",
+      "@anthropic-ai/sdk": "0.65.0",
+      "stripe": "18.5.0",
+      "axios": "^1.12.2",
+      "lucide-react": "^0.542.0",
+      "tailwindcss": "^3.4.18",
+      "xmlhttprequest-ssl": ">=1.6.2",
+      "socket.io-parser": ">=3.3.3",
+      "form-data": ">=2.5.4",
+      "cookie": ">=0.7.0",
+      "debug": ">=4.3.7"
+    }
   },
   "dependencies": {
     "styled-jsx": "^5.1.7",
     "tailwindcss": "^3.4.18"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.7",
     "sharp": "^0.34.4"
   }
 }

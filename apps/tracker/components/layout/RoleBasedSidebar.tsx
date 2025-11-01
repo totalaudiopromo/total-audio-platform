@@ -35,7 +35,11 @@ export function RoleBasedSidebar({ userType }: RoleBasedSidebarProps) {
   ];
 
   const bothNavItems = [
-    { href: '/agency-dashboard', label: 'Agency Dashboard', icon: BriefcaseIcon },
+    {
+      href: '/agency-dashboard',
+      label: 'Agency Dashboard',
+      icon: BriefcaseIcon,
+    },
     { href: '/my-campaigns', label: 'My Campaigns', icon: FolderIcon },
     { href: '/clients', label: 'Clients', icon: UsersIcon },
     { href: '/campaigns', label: 'All Campaigns', icon: RocketLaunchIcon },
@@ -44,7 +48,11 @@ export function RoleBasedSidebar({ userType }: RoleBasedSidebarProps) {
   ];
 
   const navItems =
-    userType === 'artist' ? artistNavItems : userType === 'agency' ? agencyNavItems : bothNavItems;
+    userType === 'artist'
+      ? artistNavItems
+      : userType === 'agency'
+        ? agencyNavItems
+        : bothNavItems;
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -66,7 +74,9 @@ export function RoleBasedSidebar({ userType }: RoleBasedSidebarProps) {
 
       {/* User Type Badge */}
       <div className="mb-4 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-        <div className="text-xs font-medium text-slate-500 dark:text-slate-400">Account Type</div>
+        <div className="text-xs font-medium text-slate-500 dark:text-slate-400">
+          Account Type
+        </div>
         <div className="text-sm font-semibold text-slate-900 dark:text-white capitalize">
           {userType === 'both' ? 'Artist & Agency' : userType}
         </div>

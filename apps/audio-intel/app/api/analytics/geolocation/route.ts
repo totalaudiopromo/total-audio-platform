@@ -47,16 +47,19 @@ export async function POST(request: NextRequest) {
         // Use ip-api.com for free IP geolocation (100 requests/minute free tier)
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 3000);
-        
-        const geoResponse = await fetch(`http://ip-api.com/json/${ip}?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,org,as,query`, {
-          signal: controller.signal
-        });
-        
+
+        const geoResponse = await fetch(
+          `http://ip-api.com/json/${ip}?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,org,as,query`,
+          {
+            signal: controller.signal,
+          }
+        );
+
         clearTimeout(timeoutId);
 
         if (geoResponse.ok) {
           const geoData = await geoResponse.json();
-          
+
           if (geoData.status === 'success') {
             locationData = {
               ip: geoData.query,
@@ -70,9 +73,9 @@ export async function POST(request: NextRequest) {
               lon: geoData.lon,
               timezone: geoData.timezone,
               org: geoData.org,
-              as: geoData.as
+              as: geoData.as,
             };
-            
+
             console.log(`✅ Geolocation success: ${geoData.city}, ${geoData.country}`);
           } else {
             console.log(`❌ Geolocation failed: ${geoData.message}`);
@@ -90,7 +93,7 @@ export async function POST(request: NextRequest) {
         city: 'Brighton',
         lat: 50.8225,
         lon: -0.1372,
-        timezone: 'Europe/London'
+        timezone: 'Europe/London',
       };
       console.log('🏠 Using localhost default: Brighton, UK');
     }
@@ -102,7 +105,7 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
       page,
       location: locationData,
-      email
+      email,
     };
 
     userSessions.set(sessionId, session);
@@ -110,16 +113,19 @@ export async function POST(request: NextRequest) {
     // Also send to Command Centre if this is a beta user interaction
     if (email) {
       try {
-        await fetch(`${process.env.COMMAND_CENTRE_URL || 'http://localhost:3005'}/api/user-location`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email,
-            location: locationData,
-            timestamp: session.timestamp,
-            source: 'audio-intel'
-          })
-        });
+        await fetch(
+          `${process.env.COMMAND_CENTRE_URL || 'http://localhost:3005'}/api/user-location`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email,
+              location: locationData,
+              timestamp: session.timestamp,
+              source: 'audio-intel',
+            }),
+          }
+        );
       } catch (syncError) {
         console.error('Failed to sync location to Command Centre:', syncError);
       }
@@ -128,47 +134,46 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       location: locationData,
-      message: 'Location tracked successfully'
+      message: 'Location tracked successfully',
     });
-
   } catch (error) {
     console.error('Geolocation tracking error:', error);
-    return NextResponse.json(
-      { error: 'Failed to track location' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to track location' }, { status: 500 });
   }
 }
 
 export async function GET(request: NextRequest) {
   // Return aggregated location data for analytics
   const sessions = Array.from(userSessions.values());
-  
-  const locationStats = sessions.reduce((acc, session) => {
-    if (!session.location?.city) return acc;
-    
-    const key = `${session.location.city}, ${session.location.country}`;
-    if (!acc[key]) {
-      acc[key] = {
-        city: session.location.city,
-        country: session.location.country,
-        countryCode: session.location.countryCode,
-        coordinates: {
-          lat: session.location.lat || 0,
-          lng: session.location.lon || 0
-        },
-        users: [],
-        count: 0
-      };
-    }
-    
-    acc[key].count++;
-    if (session.email && !acc[key].users.includes(session.email)) {
-      acc[key].users.push(session.email);
-    }
-    
-    return acc;
-  }, {} as Record<string, any>);
+
+  const locationStats = sessions.reduce(
+    (acc, session) => {
+      if (!session.location?.city) return acc;
+
+      const key = `${session.location.city}, ${session.location.country}`;
+      if (!acc[key]) {
+        acc[key] = {
+          city: session.location.city,
+          country: session.location.country,
+          countryCode: session.location.countryCode,
+          coordinates: {
+            lat: session.location.lat || 0,
+            lng: session.location.lon || 0,
+          },
+          users: [],
+          count: 0,
+        };
+      }
+
+      acc[key].count++;
+      if (session.email && !acc[key].users.includes(session.email)) {
+        acc[key].users.push(session.email);
+      }
+
+      return acc;
+    },
+    {} as Record<string, any>
+  );
 
   return NextResponse.json({
     totalSessions: sessions.length,
@@ -179,7 +184,7 @@ export async function GET(request: NextRequest) {
       city: s.location?.city,
       country: s.location?.country,
       page: s.page,
-      hasEmail: !!s.email
-    }))
+      hasEmail: !!s.email,
+    })),
   });
 }

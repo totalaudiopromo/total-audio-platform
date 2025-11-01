@@ -18,10 +18,12 @@ This system autonomously posts to Bluesky, Twitter/X, LinkedIn, and Threads twic
 **Status**: Already configured and tested successfully
 
 Environment variables set:
+
 - `BLUESKY_IDENTIFIER=chrisschouk.bsky.social`
 - `BLUESKY_APP_PASSWORD=7vdl-l7hi-ckwj-ma3h` (app password, not main password)
 
 **Test command**:
+
 ```bash
 npx tsx scripts/test-bluesky.ts
 ```
@@ -31,16 +33,19 @@ npx tsx scripts/test-bluesky.ts
 ### 2. LinkedIn ❌ (NEEDS SETUP)
 
 **Requirements**:
+
 - LinkedIn Developer App with posting permissions
 - OAuth 2.0 authentication
 
 **Current credentials** (from your previous setup):
+
 - `LINKEDIN_CLIENT_ID=781ioptlbwi0ok`
 - `LINKEDIN_CLIENT_SECRET=WPL_AP1.frlXgbgIa5bM62VZ.yrVM6g==`
 
 **Setup steps**:
 
 1. **Get Access Token** (run this script):
+
    ```bash
    npx tsx scripts/get-linkedin-token.ts
    ```
@@ -54,6 +59,7 @@ npx tsx scripts/test-bluesky.ts
    - Script will exchange it for an access token
 
 3. **Add to environment variables**:
+
    ```bash
    # Local (.env.local)
    LINKEDIN_ACCESS_TOKEN=<token from script>
@@ -77,6 +83,7 @@ npx tsx scripts/test-bluesky.ts
 ### 3. Threads (Instagram) ❌ (NEEDS SETUP)
 
 **Requirements**:
+
 - Business Instagram account
 - Instagram account connected to a Facebook Page
 - Facebook Developer App with Threads API
@@ -98,6 +105,7 @@ npx tsx scripts/test-bluesky.ts
      ```
 
 3. **Get Access Token** (run this script):
+
    ```bash
    npx tsx scripts/get-threads-token.ts
    ```
@@ -111,6 +119,7 @@ npx tsx scripts/test-bluesky.ts
    - Script will exchange for a long-lived access token (60 days)
 
 5. **Add to environment variables**:
+
    ```bash
    # Local (.env.local)
    THREADS_USER_ID=<user id from script>
@@ -128,17 +137,20 @@ npx tsx scripts/test-bluesky.ts
 ### 4. Twitter/X ✅ (CHECK STATUS)
 
 **Environment variables to check**:
+
 - `TWITTER_API_KEY`
 - `TWITTER_API_SECRET`
 - `TWITTER_ACCESS_TOKEN`
 - `TWITTER_ACCESS_SECRET`
 
 **Test if configured**:
+
 ```bash
 vercel env ls | grep TWITTER
 ```
 
 If not configured, you'll need to:
+
 1. Go to https://developer.twitter.com/en/portal/dashboard
 2. Create or use existing app
 3. Generate access tokens with "Read and Write" permissions
@@ -196,6 +208,7 @@ The cron job is configured in `vercel.json`:
 ```
 
 This runs at:
+
 - 9:00 AM UK time (morning post)
 - 5:00 PM UK time (afternoon post)
 
@@ -206,6 +219,7 @@ This runs at:
 ### "Credentials not configured" error
 
 Check that environment variables are set:
+
 ```bash
 # Local
 cat .env.local | grep -E "BLUESKY|LINKEDIN|THREADS|TWITTER"
@@ -219,15 +233,18 @@ vercel env ls
 Platform-specific issues:
 
 **Bluesky**:
+
 - Check app password is correct (not main password)
 - Regenerate app password if needed: https://bsky.app/settings/app-passwords
 
 **LinkedIn**:
+
 - Check access token hasn't expired (60 days)
 - Verify app has `w_member_social` permission
 - Check redirect URI matches exactly
 
 **Threads**:
+
 - Check Instagram account is business account
 - Verify account is connected to Facebook Page
 - Check access token hasn't expired (60 days)
@@ -236,6 +253,7 @@ Platform-specific issues:
 ### Posts not going out at scheduled times
 
 1. Check Vercel cron is configured:
+
    ```bash
    vercel inspect <deployment-url>
    ```
@@ -260,6 +278,7 @@ Set calendar reminders to refresh OAuth tokens:
 - **Bluesky**: App passwords don't expire (unless revoked)
 
 To refresh:
+
 ```bash
 # LinkedIn
 npx tsx scripts/get-linkedin-token.ts
@@ -277,6 +296,7 @@ vercel env add THREADS_ACCESS_TOKEN
 Content is managed in `/apps/audio-intel/social-content/CONTENT_CALENDAR.json`
 
 Each post includes:
+
 - `platform`: Which platform to post to
 - `title`: Post title (maps to content in agent files)
 - `scheduledTime`: When to post (ISO 8601 format)

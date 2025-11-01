@@ -8,7 +8,8 @@
 
 const fetch = require('node-fetch');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -30,8 +31,8 @@ async function deleteInvalidContact() {
       {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${AIRTABLE_API_KEY}`
-        }
+          Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        },
       }
     );
 
@@ -50,7 +51,6 @@ async function deleteInvalidContact() {
     console.log('   Total contacts: 517 → 516\n');
 
     return { success: true, deletedId: INVALID_CONTACT_ID };
-
   } catch (error) {
     console.error('❌ Failed to delete contact:', error.message);
     return { success: false, error: error.message };

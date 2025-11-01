@@ -46,7 +46,9 @@ interface SERPData {
 }
 
 export default function DataForSEOIntegration({ className = '' }: DataForSEOIntegrationProps) {
-  const [activeTab, setActiveTab] = useState<'domain' | 'keywords' | 'competitors' | 'serp'>('domain');
+  const [activeTab, setActiveTab] = useState<'domain' | 'keywords' | 'competitors' | 'serp'>(
+    'domain'
+  );
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
@@ -80,7 +82,7 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
 
     try {
       const response = await dataForSEOApi.analyzeDomain(domain);
-      
+
       if (response.success) {
         setDomainAnalysis(response.analysis);
         setResults(response.analysis);
@@ -105,7 +107,7 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
 
     try {
       const response = await dataForSEOApi.researchKeywords(seedKeyword, keywordLocation);
-      
+
       if (response.success) {
         setKeywords(response.keywords);
         setResults(response.keywords);
@@ -130,7 +132,7 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
 
     try {
       const response = await dataForSEOApi.analyzeCompetitors(competitorDomain);
-      
+
       if (response.success) {
         setCompetitors(response.competitors);
         setResults(response.competitors);
@@ -155,7 +157,7 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
 
     try {
       const response = await dataForSEOApi.getSERPResults(serpKeyword, serpLocation);
-      
+
       if (response.success) {
         setSerpResults(response.results);
         setResults(response.results);
@@ -172,18 +174,16 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
   const renderDomainAnalysis = () => (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Domain to Analyze
-        </label>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Domain to Analyze</label>
         <input
           type="text"
           value={domain}
-          onChange={(e) => setDomain(e.target.value)}
+          onChange={e => setDomain(e.target.value)}
           placeholder="e.g., example.com"
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      
+
       <button
         onClick={handleDomainAnalysis}
         disabled={loading}
@@ -196,25 +196,31 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
         <div className="mt-6 space-y-4">
           <div className="bg-white p-4 rounded-lg border">
             <h3 className="text-lg font-semibold mb-3">SEO Analysis for {domainAnalysis.domain}</h3>
-            
+
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-blue-600">{domainAnalysis.score}/100</div>
                 <div className="text-sm text-gray-600">SEO Score</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-600">{domainAnalysis.metrics.organicKeywords}</div>
+                <div className="text-2xl font-bold text-green-600">
+                  {domainAnalysis.metrics.organicKeywords}
+                </div>
                 <div className="text-sm text-gray-600">Organic Keywords</div>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600">{domainAnalysis.metrics.organicTraffic}</div>
+                <div className="text-2xl font-bold text-purple-600">
+                  {domainAnalysis.metrics.organicTraffic}
+                </div>
                 <div className="text-sm text-gray-600">Organic Traffic</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-orange-600">{domainAnalysis.metrics.domainAuthority}</div>
+                <div className="text-2xl font-bold text-orange-600">
+                  {domainAnalysis.metrics.domainAuthority}
+                </div>
                 <div className="text-sm text-gray-600">Domain Authority</div>
               </div>
             </div>
@@ -224,7 +230,9 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
                 <h4 className="font-semibold text-red-600 mb-2">Issues Found:</h4>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   {domainAnalysis.issues.map((issue, index) => (
-                    <li key={index} className="text-red-600">{issue}</li>
+                    <li key={index} className="text-red-600">
+                      {issue}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -235,7 +243,9 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
                 <h4 className="font-semibold text-green-600 mb-2">Recommendations:</h4>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   {domainAnalysis.recommendations.map((rec, index) => (
-                    <li key={index} className="text-green-600">{rec}</li>
+                    <li key={index} className="text-green-600">
+                      {rec}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -249,31 +259,27 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
   const renderKeywordResearch = () => (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Seed Keyword
-        </label>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Seed Keyword</label>
         <input
           type="text"
           value={seedKeyword}
-          onChange={(e) => setSeedKeyword(e.target.value)}
+          onChange={e => setSeedKeyword(e.target.value)}
           placeholder="e.g., music promotion"
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      
+
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Location (optional)
-        </label>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Location (optional)</label>
         <input
           type="text"
           value={keywordLocation}
-          onChange={(e) => setKeywordLocation(e.target.value)}
+          onChange={e => setKeywordLocation(e.target.value)}
           placeholder="e.g., US, UK, CA"
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      
+
       <button
         onClick={handleKeywordResearch}
         disabled={loading}
@@ -337,12 +343,12 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
         <input
           type="text"
           value={competitorDomain}
-          onChange={(e) => setCompetitorDomain(e.target.value)}
+          onChange={e => setCompetitorDomain(e.target.value)}
           placeholder="e.g., example.com"
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      
+
       <button
         onClick={handleCompetitorAnalysis}
         disabled={loading}
@@ -412,25 +418,23 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
         <input
           type="text"
           value={serpKeyword}
-          onChange={(e) => setSerpKeyword(e.target.value)}
+          onChange={e => setSerpKeyword(e.target.value)}
           placeholder="e.g., music promotion services"
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      
+
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Location (optional)
-        </label>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Location (optional)</label>
         <input
           type="text"
           value={serpLocation}
-          onChange={(e) => setSerpLocation(e.target.value)}
+          onChange={e => setSerpLocation(e.target.value)}
           placeholder="e.g., US, UK, CA"
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      
+
       <button
         onClick={handleSERPResults}
         disabled={loading}
@@ -474,7 +478,8 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Data for SEO Integration</h2>
         <p className="text-gray-600">
-          Analyze domains, research keywords, analyze competitors, and get SERP results using Data for SEO.
+          Analyze domains, research keywords, analyze competitors, and get SERP results using Data
+          for SEO.
         </p>
       </div>
 
@@ -491,8 +496,8 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
               { id: 'domain', label: 'Domain Analysis' },
               { id: 'keywords', label: 'Keyword Research' },
               { id: 'competitors', label: 'Competitor Analysis' },
-              { id: 'serp', label: 'SERP Results' }
-            ].map((tab) => (
+              { id: 'serp', label: 'SERP Results' },
+            ].map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
@@ -517,4 +522,4 @@ export default function DataForSEOIntegration({ className = '' }: DataForSEOInte
       </div>
     </div>
   );
-} 
+}

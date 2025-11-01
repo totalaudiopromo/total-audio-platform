@@ -28,7 +28,7 @@ async function main() {
     ...contactsData.hot,
     ...contactsData.warm,
     ...contactsData.cold,
-    ...contactsData.other
+    ...contactsData.other,
   ];
 
   console.log(`✅ Loaded ${allContacts.length} contacts from Airtable\n`);
@@ -52,7 +52,7 @@ async function main() {
     added: [],
     updated: [],
     skipped: [],
-    errors: []
+    errors: [],
   };
 
   console.log('📧 Adding contacts to Mailchimp...\n');
@@ -72,11 +72,7 @@ async function main() {
       const lastName = lastNameParts.join(' ');
 
       // Build tags for this contact
-      const tags = [
-        'KYARA-Campaign',
-        'Alternative-Indie',
-        'Radio-Contact'
-      ];
+      const tags = ['KYARA-Campaign', 'Alternative-Indie', 'Radio-Contact'];
 
       // Add genre tags
       if (contact.genre) {
@@ -110,7 +106,7 @@ async function main() {
         email: contact.email,
         firstName: firstName || 'Radio',
         lastName: lastName || 'Contact',
-        tags: tags
+        tags: tags,
       };
 
       try {
@@ -135,7 +131,6 @@ async function main() {
 
       // Rate limiting - 1 second delay between contacts
       await new Promise(resolve => setTimeout(resolve, 1000));
-
     } catch (error) {
       console.log(`   ❌ Error: ${error.message}\n`);
       results.errors.push({ email: contact.email, error: error.message });

@@ -53,16 +53,27 @@ export function CookieConsent() {
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-3">
                 <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center border-2 border-black">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
                   </svg>
                 </div>
                 <h3 className="text-xl font-black text-gray-900">Cookie & Privacy Notice</h3>
               </div>
 
               <p className="text-sm font-bold text-gray-700 leading-relaxed mb-4">
-                We use essential cookies to keep you signed in and analytics cookies to understand how you use Audio Intel.
-                We don't sell your data or use intrusive tracking. You can change your preferences anytime in settings.
+                We use essential cookies to keep you signed in and analytics cookies to understand
+                how you use Audio Intel. We don't sell your data or use intrusive tracking. You can
+                change your preferences anytime in settings.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
@@ -100,4 +111,3 @@ export function CookieConsent() {
     </div>
   );
 }
-

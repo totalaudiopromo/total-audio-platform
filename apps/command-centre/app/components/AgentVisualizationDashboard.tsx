@@ -1,7 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { agentColorUtils, AGENT_CATEGORIES, AGENT_STATUS_STATES, AGENT_COLOR_THEMES } from '@/lib/agent-color-system';
+import {
+  agentColorUtils,
+  AGENT_CATEGORIES,
+  AGENT_STATUS_STATES,
+  AGENT_COLOR_THEMES,
+} from '@/lib/agent-color-system';
 
 interface Agent {
   id: string;
@@ -35,7 +40,7 @@ const AgentVisualizationDashboard: React.FC = () => {
       currentTask: 'Scanning WeAreTheMusicMakers for opportunities',
       priority: 'high',
       performance: 92,
-      category: 'Growth & Marketing'
+      category: 'Growth & Marketing',
     },
     {
       id: '2',
@@ -46,7 +51,7 @@ const AgentVisualizationDashboard: React.FC = () => {
       currentTask: 'Processing 1,247 contacts for industry intelligence',
       priority: 'critical',
       performance: 88,
-      category: 'Data & Analytics'
+      category: 'Data & Analytics',
     },
     {
       id: '3',
@@ -57,7 +62,7 @@ const AgentVisualizationDashboard: React.FC = () => {
       currentTask: 'Sent 340 personalised follow-up emails',
       priority: 'medium',
       performance: 94,
-      category: 'Growth & Marketing'
+      category: 'Growth & Marketing',
     },
     {
       id: '4',
@@ -67,7 +72,7 @@ const AgentVisualizationDashboard: React.FC = () => {
       lastActivity: '1 hour ago',
       priority: 'low',
       performance: 85,
-      category: 'Music Industry'
+      category: 'Music Industry',
     },
     {
       id: '5',
@@ -78,7 +83,7 @@ const AgentVisualizationDashboard: React.FC = () => {
       currentTask: 'Detected inconsistent colour usage in UI components',
       priority: 'high',
       performance: 76,
-      category: 'System Operations'
+      category: 'System Operations',
     },
     {
       id: '6',
@@ -89,8 +94,8 @@ const AgentVisualizationDashboard: React.FC = () => {
       currentTask: 'Monitoring system performance across all agents',
       priority: 'critical',
       performance: 98,
-      category: 'System Operations'
-    }
+      category: 'System Operations',
+    },
   ]);
 
   const [logs, setLogs] = useState<AgentLogEntry[]>([]);
@@ -103,40 +108,50 @@ const AgentVisualizationDashboard: React.FC = () => {
 
     const interval = setInterval(() => {
       // Randomly update agent statuses
-      setAgents(prev => prev.map(agent => {
-        const shouldUpdate = Math.random() > 0.7;
-        if (!shouldUpdate) return agent;
+      setAgents(prev =>
+        prev.map(agent => {
+          const shouldUpdate = Math.random() > 0.7;
+          if (!shouldUpdate) return agent;
 
-        const statuses = Object.keys(AGENT_STATUS_STATES) as (keyof typeof AGENT_STATUS_STATES)[];
-        const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-        
-        // Add log entry for status change
-        if (randomStatus !== agent.status) {
-          const logEntry = agentColorUtils.generateLogEntry(
-            agent.type,
-            `Status changed from ${agent.status} to ${randomStatus}`,
-            randomStatus === 'error' ? 'error' : randomStatus === 'warning' ? 'warning' : 'info'
-          );
-          
-          setLogs(prev => [{
-            id: Date.now().toString(),
-            ...logEntry
-          }, ...prev].slice(0, 50));
-        }
+          const statuses = Object.keys(AGENT_STATUS_STATES) as (keyof typeof AGENT_STATUS_STATES)[];
+          const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
 
-        return {
-          ...agent,
-          status: randomStatus,
-          lastActivity: 'Just now',
-          performance: Math.max(60, Math.min(100, agent.performance + (Math.random() - 0.5) * 10))
-        };
-      }));
+          // Add log entry for status change
+          if (randomStatus !== agent.status) {
+            const logEntry = agentColorUtils.generateLogEntry(
+              agent.type,
+              `Status changed from ${agent.status} to ${randomStatus}`,
+              randomStatus === 'error' ? 'error' : randomStatus === 'warning' ? 'warning' : 'info'
+            );
+
+            setLogs(prev =>
+              [
+                {
+                  id: Date.now().toString(),
+                  ...logEntry,
+                },
+                ...prev,
+              ].slice(0, 50)
+            );
+          }
+
+          return {
+            ...agent,
+            status: randomStatus,
+            lastActivity: 'Just now',
+            performance: Math.max(
+              60,
+              Math.min(100, agent.performance + (Math.random() - 0.5) * 10)
+            ),
+          };
+        })
+      );
     }, 3000);
 
     return () => clearInterval(interval);
   }, [realTimeUpdates]);
 
-  const filteredAgents = selectedCategory 
+  const filteredAgents = selectedCategory
     ? agents.filter(agent => agent.category === selectedCategory)
     : agents;
 
@@ -152,11 +167,11 @@ const AgentVisualizationDashboard: React.FC = () => {
         style={{
           ...styling.cardStyle,
           border: priorityStyle.border,
-          boxShadow: `${styling.cardStyle.boxShadow}, ${priorityStyle.glow}`
+          boxShadow: `${styling.cardStyle.boxShadow}, ${priorityStyle.glow}`,
         }}
       >
         {/* Priority Badge */}
-        <div 
+        <div
           className="absolute -top-2 -right-2 px-2 py-1 rounded-full text-xs font-bold text-white"
           style={{ backgroundColor: priorityStyle.badgeColor }}
         >
@@ -166,7 +181,7 @@ const AgentVisualizationDashboard: React.FC = () => {
         {/* Agent Header */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center space-x-3">
-            <div 
+            <div
               className="flex items-center justify-center w-8 h-8 rounded-full"
               style={{ backgroundColor: styling.secondaryColor }}
             >
@@ -193,14 +208,12 @@ const AgentVisualizationDashboard: React.FC = () => {
             <span>Performance</span>
             <span>{agent.performance}%</span>
           </div>
-          <div 
-            className="w-full bg-black/20 rounded-full h-2"
-          >
+          <div className="w-full bg-black/20 rounded-full h-2">
             <div
               className="h-2 rounded-full transition-all duration-500"
               style={{
                 width: `${agent.performance}%`,
-                backgroundColor: styling.textColor
+                backgroundColor: styling.textColor,
               }}
             />
           </div>
@@ -219,7 +232,10 @@ const AgentVisualizationDashboard: React.FC = () => {
         )}
 
         {/* Status Message */}
-        <div className="flex items-center justify-between text-sm" style={{ color: styling.textColor }}>
+        <div
+          className="flex items-center justify-between text-sm"
+          style={{ color: styling.textColor }}
+        >
           <span>{statusIndicator.message}</span>
           <span className="opacity-70">{agent.lastActivity}</span>
         </div>
@@ -231,36 +247,34 @@ const AgentVisualizationDashboard: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-4xl font-black text-gray-900 mb-2">
-          🤖 Agent Visualization System
-        </h1>
+        <h1 className="text-4xl font-black text-gray-900 mb-2">🤖 Agent Visualization System</h1>
         <p className="text-lg text-gray-600">
           Real-time monitoring of all Total Audio Promo agents during Sprint Week
         </p>
-        
+
         {/* Controls */}
         <div className="flex items-center space-x-4 mt-4">
           <button
             onClick={() => setRealTimeUpdates(!realTimeUpdates)}
             className={`px-4 py-2 rounded-lg font-bold transition-all ${
-              realTimeUpdates 
-                ? 'bg-green-500 text-white' 
-                : 'bg-gray-300 text-gray-700'
+              realTimeUpdates ? 'bg-green-500 text-white' : 'bg-gray-300 text-gray-700'
             }`}
           >
             {realTimeUpdates ? '🔴 Live Updates ON' : '⏸️ Live Updates OFF'}
           </button>
-          
+
           <div className="flex items-center space-x-2">
             <span className="text-sm font-medium text-gray-700">Filter by Category:</span>
             <select
               value={selectedCategory || ''}
-              onChange={(e) => setSelectedCategory(e.target.value || null)}
+              onChange={e => setSelectedCategory(e.target.value || null)}
               className="px-3 py-2 rounded-lg border border-gray-300 text-sm"
             >
               <option value="">All Categories</option>
               {Object.keys(AGENT_CATEGORIES).map(category => (
-                <option key={category} value={category}>{category}</option>
+                <option key={category} value={category}>
+                  {category}
+                </option>
               ))}
             </select>
           </div>
@@ -272,18 +286,18 @@ const AgentVisualizationDashboard: React.FC = () => {
         {Object.entries(AGENT_CATEGORIES).map(([category, config]) => {
           const categoryAgents = agents.filter(agent => agent.category === category);
           const activeCount = categoryAgents.filter(agent => agent.status === 'active').length;
-          
+
           return (
             <div
               key={category}
               className={`p-4 rounded-xl cursor-pointer transition-all duration-300 ${
-                selectedCategory === category 
-                  ? 'ring-4 ring-blue-500 transform scale-105' 
+                selectedCategory === category
+                  ? 'ring-4 ring-blue-500 transform scale-105'
                   : 'hover:scale-102'
               }`}
-              style={{ 
+              style={{
                 backgroundColor: config.color + '20',
-                border: `2px solid ${config.color}`
+                border: `2px solid ${config.color}`,
               }}
               onClick={() => setSelectedCategory(selectedCategory === category ? null : category)}
             >
@@ -316,7 +330,7 @@ const AgentVisualizationDashboard: React.FC = () => {
               className="p-3 rounded-lg border-2"
               style={{
                 background: theme.background,
-                borderColor: theme.primary
+                borderColor: theme.primary,
               }}
             >
               <div className="flex items-center space-x-2 mb-1">
@@ -340,12 +354,8 @@ const AgentVisualizationDashboard: React.FC = () => {
           {logs.length === 0 ? (
             <p className="text-gray-500 text-center py-4">No activity logs yet...</p>
           ) : (
-            logs.map((log) => (
-              <div
-                key={log.id}
-                className="p-3 rounded-lg"
-                style={log.styling}
-              >
+            logs.map(log => (
+              <div key={log.id} className="p-3 rounded-lg" style={log.styling}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <div

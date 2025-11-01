@@ -222,16 +222,19 @@ apps/audio-intel/
 ## 🎯 Recommended Reading Order
 
 ### Quick Start (15 minutes)
+
 1. `OVERNIGHT_BUILD_SUMMARY.md` - What happened
 2. `VERCEL_ENV_VARS_CHECKLIST.md` - What you need
 3. Let Bluesky post first (already configured)
 
 ### Full Setup (75 minutes)
+
 4. `TWITTER_QUICK_START.md` - Add Twitter (15 min)
 5. `LINKEDIN_OAUTH_SETUP.md` - Add LinkedIn (30 min)
 6. `THREADS_QUICK_START.md` - Add Threads (30 min)
 
 ### Deep Dive (Optional)
+
 7. `MULTI_PLATFORM_SOCIAL_POSTING_COMPLETE.md` - Full system docs
 8. `AGENT_COMPARISON.md` - Platform comparison
 9. Individual agent summaries for technical details
@@ -248,6 +251,7 @@ apps/audio-intel/
 **Example Files:** 2 usage examples
 
 **Content Ready:**
+
 - 9 Bluesky posts
 - 43 Twitter tweets (6 threads)
 - 10 LinkedIn posts

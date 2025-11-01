@@ -35,17 +35,24 @@ export class AirtableDuplicateRemoval {
   private calculateCompleteness(record: Airtable.Record<any>): number {
     const fields = record.fields;
     const importantFields = [
-      'Name', 'Company', 'Role', 'Genre', 'Location', 
-      'Email', 'Phone', 'Website', 'Notes'
+      'Name',
+      'Company',
+      'Role',
+      'Genre',
+      'Location',
+      'Email',
+      'Phone',
+      'Website',
+      'Notes',
     ];
-    
+
     let filledFields = 0;
     importantFields.forEach(field => {
       if (fields[field] && fields[field].toString().trim() !== '') {
         filledFields++;
       }
     });
-    
+
     return filledFields / importantFields.length;
   }
 
@@ -54,7 +61,7 @@ export class AirtableDuplicateRemoval {
    */
   private async findDuplicateEmails(): Promise<Map<string, Airtable.Record<any>[]>> {
     logger.info('🔍 Scanning for duplicate email addresses...');
-    
+
     const records = await this.base(this.config.contactsTableId)
       .select({
         maxRecords: 10000,
@@ -62,7 +69,7 @@ export class AirtableDuplicateRemoval {
       .all();
 
     const emailGroups = new Map<string, Airtable.Record<any>[]>();
-    
+
     records.forEach(record => {
       const email = record.fields.Email?.toString().toLowerCase().trim();
       if (email && email !== '') {
@@ -97,7 +104,7 @@ export class AirtableDuplicateRemoval {
     const recordsWithScores = records.map(record => ({
       record,
       completeness: this.calculateCompleteness(record),
-      created: record._rawJson.createdTime
+      created: record._rawJson.createdTime,
     }));
 
     // Sort by completeness (descending), then by creation date (descending)
@@ -110,17 +117,18 @@ export class AirtableDuplicateRemoval {
 
     const keepRecord = recordsWithScores[0]?.record;
     const deleteRecords = recordsWithScores.slice(1).map(r => r.record);
-    
+
     if (!keepRecord || recordsWithScores.length < 2) {
       throw new Error('Invalid record selection');
     }
-    
+
     const firstRecord = recordsWithScores[0];
     const secondRecord = recordsWithScores[1];
-    
-    const reason = (firstRecord?.completeness || 0) > (secondRecord?.completeness || 0)
-      ? `Most complete record (${Math.round((firstRecord?.completeness || 0) * 100)}% vs ${Math.round((secondRecord?.completeness || 0) * 100)}%)`
-      : `Most recently created (${new Date(firstRecord?.created || '').toLocaleDateString()})`;
+
+    const reason =
+      (firstRecord?.completeness || 0) > (secondRecord?.completeness || 0)
+        ? `Most complete record (${Math.round((firstRecord?.completeness || 0) * 100)}% vs ${Math.round((secondRecord?.completeness || 0) * 100)}%)`
+        : `Most recently created (${new Date(firstRecord?.created || '').toLocaleDateString()})`;
 
     return { keepRecord, deleteRecords, reason };
   }
@@ -130,7 +138,7 @@ export class AirtableDuplicateRemoval {
    */
   private createBackupData(duplicateGroups: DuplicateGroup[]): any[] {
     const backupData: any[] = [];
-    
+
     duplicateGroups.forEach(group => {
       group.deleteRecords.forEach(record => {
         backupData.push({
@@ -138,11 +146,11 @@ export class AirtableDuplicateRemoval {
           recordId: record.id,
           fields: record.fields,
           deletedAt: new Date().toISOString(),
-          reason: `Duplicate of ${group.keepRecord.id} (${group.reason})`
+          reason: `Duplicate of ${group.keepRecord.id} (${group.reason})`,
         });
       });
     });
-    
+
     return backupData;
   }
 
@@ -151,11 +159,11 @@ export class AirtableDuplicateRemoval {
    */
   private async deleteRecords(records: Airtable.Record<any>[]): Promise<void> {
     const batchSize = 10; // Airtable recommends batching deletes
-    
+
     for (let i = 0; i < records.length; i += batchSize) {
       const batch = records.slice(i, i + batchSize);
       const recordIds = batch.map(record => record.id);
-      
+
       try {
         await this.base(this.config.contactsTableId).destroy(recordIds);
         logger.info(`🗑️ Deleted batch ${Math.floor(i / batchSize) + 1}: ${batch.length} records`);
@@ -172,13 +180,13 @@ export class AirtableDuplicateRemoval {
   async removeDuplicates(dryRun: boolean = true): Promise<RemovalResult> {
     const startTime = Date.now();
     const errors: string[] = [];
-    
+
     try {
       logger.info(`🚀 Starting duplicate removal (${dryRun ? 'DRY RUN' : 'LIVE'})...`);
-      
+
       // Find duplicates
       const duplicateGroups = await this.findDuplicateEmails();
-      
+
       if (duplicateGroups.size === 0) {
         logger.info('✅ No duplicates found!');
         return {
@@ -187,7 +195,7 @@ export class AirtableDuplicateRemoval {
           backupData: [],
           duplicateGroups: [],
           dryRun,
-          errors: []
+          errors: [],
         };
       }
 
@@ -197,23 +205,25 @@ export class AirtableDuplicateRemoval {
 
       duplicateGroups.forEach((records, email) => {
         const { keepRecord, deleteRecords, reason } = this.selectRecordToKeep(records);
-        
+
         processedGroups.push({
           email,
           records,
           keepRecord,
           deleteRecords,
-          reason
+          reason,
         });
-        
+
         totalRecordsToDelete += deleteRecords.length;
-        
-        logger.info(`📧 ${email}: Keeping ${keepRecord.id}, deleting ${deleteRecords.length} duplicates (${reason})`);
+
+        logger.info(
+          `📧 ${email}: Keeping ${keepRecord.id}, deleting ${deleteRecords.length} duplicates (${reason})`
+        );
       });
 
       // Create backup data
       const backupData = this.createBackupData(processedGroups);
-      
+
       // Save backup to file
       const backupFilename = `duplicate-backup-${new Date().toISOString().split('T')[0]}.json`;
       const fs = require('fs');
@@ -238,21 +248,20 @@ export class AirtableDuplicateRemoval {
         backupData,
         duplicateGroups: processedGroups,
         dryRun,
-        errors
+        errors,
       };
-
     } catch (error) {
       const errorMsg = `❌ Error during duplicate removal: ${error}`;
       logger.error(errorMsg);
       errors.push(errorMsg);
-      
+
       return {
         totalDuplicates: 0,
         recordsToDelete: 0,
         backupData: [],
         duplicateGroups: [],
         dryRun,
-        errors
+        errors,
       };
     }
   }
@@ -271,4 +280,4 @@ export class AirtableDuplicateRemoval {
 
     return new AirtableDuplicateRemoval(apiKey, baseId, contactsTableId);
   }
-} 
+}

@@ -181,9 +181,11 @@ export function OnboardingChecklist({ userId }: OnboardingChecklistProps) {
                   {/* Step Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <h3 className={`text-sm font-bold ${
-                        step.completed ? 'text-green-900' : 'text-gray-900'
-                      }`}>
+                      <h3
+                        className={`text-sm font-bold ${
+                          step.completed ? 'text-green-900' : 'text-gray-900'
+                        }`}
+                      >
                         {step.title}
                       </h3>
                       {step.completed && (
@@ -192,9 +194,11 @@ export function OnboardingChecklist({ userId }: OnboardingChecklistProps) {
                         </span>
                       )}
                     </div>
-                    <p className={`text-sm mt-0.5 ${
-                      step.completed ? 'text-green-700' : 'text-gray-600'
-                    }`}>
+                    <p
+                      className={`text-sm mt-0.5 ${
+                        step.completed ? 'text-green-700' : 'text-gray-600'
+                      }`}
+                    >
                       {step.description}
                     </p>
                   </div>
@@ -208,7 +212,12 @@ export function OnboardingChecklist({ userId }: OnboardingChecklistProps) {
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
                       </svg>
                     </div>
                   )}

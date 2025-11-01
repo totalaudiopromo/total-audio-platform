@@ -157,9 +157,7 @@ Always return JSON with:
       {
         input: {
           command: 'Create campaign for Architects BBC Radio 1',
-          campaigns: [
-            { client_name: 'Architects', platform: 'BBC Radio', status: 'completed' },
-          ],
+          campaigns: [{ client_name: 'Architects', platform: 'BBC Radio', status: 'completed' }],
         },
         output: {
           action: 'create',

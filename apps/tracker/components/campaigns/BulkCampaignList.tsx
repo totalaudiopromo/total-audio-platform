@@ -12,19 +12,22 @@ interface BulkCampaignListProps {
   integrations?: any[];
 }
 
-export function BulkCampaignList({ campaigns, integrations = [] }: BulkCampaignListProps) {
+export function BulkCampaignList({
+  campaigns,
+  integrations = [],
+}: BulkCampaignListProps) {
   const router = useRouter();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [isSelectionMode, setIsSelectionMode] = useState(false);
 
   const handleToggleSelect = useCallback((id: string) => {
-    setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
+    setSelectedIds(prev =>
+      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
     );
   }, []);
 
   const handleSelectAll = useCallback(() => {
-    setSelectedIds(campaigns.map((c) => c.id));
+    setSelectedIds(campaigns.map(c => c.id));
   }, [campaigns]);
 
   const handleDeselectAll = useCallback(() => {
@@ -57,13 +60,26 @@ export function BulkCampaignList({ campaigns, integrations = [] }: BulkCampaignL
     return (
       <div className="text-center py-16">
         <div className="w-20 h-20 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg className="w-10 h-10 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          <svg
+            className="w-10 h-10 text-teal-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+            />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-slate-900 mb-2">No campaigns yet</h3>
+        <h3 className="text-xl font-bold text-slate-900 mb-2">
+          No campaigns yet
+        </h3>
         <p className="text-sm text-slate-600 mb-6 max-w-md mx-auto">
-          Click the "+ New Campaign" button above to create your first campaign and start tracking your radio, playlist, or press outreach.
+          Click the "+ New Campaign" button above to create your first campaign
+          and start tracking your radio, playlist, or press outreach.
         </p>
       </div>
     );
@@ -86,7 +102,7 @@ export function BulkCampaignList({ campaigns, integrations = [] }: BulkCampaignL
 
       {/* Campaign Cards */}
       <div className="space-y-6">
-        {campaigns.map((campaign) => (
+        {campaigns.map(campaign => (
           <SelectableCampaignCard
             key={campaign.id}
             campaign={campaign}

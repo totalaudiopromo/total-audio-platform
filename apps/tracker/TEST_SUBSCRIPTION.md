@@ -3,6 +3,7 @@
 ## Quick Setup (5 minutes)
 
 ### ✅ Step 1: Apply Migration
+
 1. Open: https://supabase.com/dashboard/project/mjfhegawkusjlkcgfevp/sql
 2. Copy contents of `supabase/migrations/018_subscription_enforcement.sql`
 3. Paste and click **"Run"**
@@ -15,6 +16,7 @@
    **Expected**: 4 rows returned
 
 ### ✅ Step 2: Mark Yourself as Beta User
+
 1. Find your user ID:
    ```sql
    SELECT id, email FROM auth.users WHERE email = 'your-email@example.com';
@@ -30,6 +32,7 @@
    **Expected**: `true`
 
 ### ✅ Step 3: Test Beta User Can Create Unlimited Campaigns
+
 1. Sign in to: https://tracker.totalaudiopromo.com
 2. Create 5+ campaigns (should all succeed)
 3. Visit: https://tracker.totalaudiopromo.com/billing
@@ -43,6 +46,7 @@
 ### Test A: Free User Limits
 
 **Setup:**
+
 1. Create new test account at `/signup`
 2. Get new user ID from database:
    ```sql
@@ -50,6 +54,7 @@
    ```
 
 **Test Steps:**
+
 1. ✅ Create Campaign #1 → **Success**
 2. ✅ Create Campaign #2 → **Success**
 3. ✅ Create Campaign #3 → **Success**
@@ -61,6 +66,7 @@
 5. ✅ Visit `/billing` → Should show upgrade options
 
 **Verify in Database:**
+
 ```sql
 SELECT
   subscription_status,  -- Should be 'free'
@@ -78,11 +84,13 @@ WHERE id = 'TEST_USER_UUID';
 **Using your beta user account:**
 
 **Test Steps:**
+
 1. ✅ Create 10+ campaigns → All succeed
 2. ✅ Visit `/billing` → Beta badge shown
 3. ✅ No limit warnings or upgrade prompts
 
 **Verify in Database:**
+
 ```sql
 SELECT can_create_campaign('YOUR_UUID') as can_create;  -- Should return true
 ```
@@ -92,11 +100,13 @@ SELECT can_create_campaign('YOUR_UUID') as can_create;  -- Should return true
 ### Test C: Stripe Integration (Test Mode)
 
 **Prerequisites:**
+
 1. Stripe account in Test Mode
 2. Created products with Price IDs
 3. Updated `pricing_tiers` table with Price IDs
 
 **Test Steps:**
+
 1. ✅ Sign in as free test user (3 campaigns already created)
 2. ✅ Visit `/billing`
 3. ✅ Click **"Upgrade to Pro"**
@@ -112,6 +122,7 @@ SELECT can_create_campaign('YOUR_UUID') as can_create;  -- Should return true
 10. ✅ Create 10 more campaigns → All succeed
 
 **Verify in Database:**
+
 ```sql
 -- Check subscription created
 SELECT status, plan_type FROM subscriptions WHERE user_id = 'TEST_USER_UUID';
@@ -128,6 +139,7 @@ FROM user_profiles WHERE id = 'TEST_USER_UUID';
 ### Test D: Billing Portal
 
 **Test Steps:**
+
 1. ✅ Sign in as paid user (from Test C)
 2. ✅ Visit `/billing`
 3. ✅ Click **"Manage Billing in Stripe"**
@@ -146,6 +158,7 @@ FROM user_profiles WHERE id = 'TEST_USER_UUID';
 ## Quick Verification Queries
 
 ### Check All Users' Status
+
 ```sql
 SELECT
   au.email,
@@ -160,6 +173,7 @@ GROUP BY au.email, up.subscription_tier, up.campaigns_limit, up.is_beta_user;
 ```
 
 ### Test Function Directly
+
 ```sql
 -- Check if user can create campaign
 SELECT
@@ -170,6 +184,7 @@ SELECT
 ```
 
 ### Get Subscription Details
+
 ```sql
 SELECT * FROM get_user_subscription_details('USER_UUID');
 ```
@@ -179,7 +194,9 @@ SELECT * FROM get_user_subscription_details('USER_UUID');
 ## Common Issues & Solutions
 
 ### ❌ Issue: Campaign creation still allows unlimited for free users
+
 **Check:**
+
 ```sql
 -- Verify API is calling the check
 SELECT can_create_campaign('USER_UUID');
@@ -187,17 +204,23 @@ SELECT can_create_campaign('USER_UUID');
 -- Check current count
 SELECT COUNT(*) FROM campaigns WHERE user_id = 'USER_UUID' AND deleted_at IS NULL;
 ```
+
 **Solution:** Ensure migration applied and app restarted
 
 ### ❌ Issue: Beta user seeing limits
+
 **Check:**
+
 ```sql
 SELECT is_beta_user FROM user_profiles WHERE id = 'USER_UUID';
 ```
+
 **Solution:** Run the UPDATE query to set `is_beta_user = true`
 
 ### ❌ Issue: Stripe checkout not working
+
 **Check:**
+
 1. Price IDs configured? `SELECT stripe_price_id_monthly FROM pricing_tiers WHERE name = 'Pro';`
 2. Environment variable set? `STRIPE_SECRET_KEY`
 3. Test mode enabled in Stripe Dashboard
@@ -207,6 +230,7 @@ SELECT is_beta_user FROM user_profiles WHERE id = 'USER_UUID';
 ## Reset Scripts (For repeated testing)
 
 ### Reset User to Free Tier
+
 ```sql
 UPDATE user_profiles
 SET
@@ -218,11 +242,13 @@ WHERE id = 'USER_UUID';
 ```
 
 ### Delete Test Campaigns
+
 ```sql
 DELETE FROM campaigns WHERE user_id = 'USER_UUID';
 ```
 
 ### Delete Test Subscription
+
 ```sql
 DELETE FROM subscriptions WHERE user_id = 'USER_UUID';
 ```

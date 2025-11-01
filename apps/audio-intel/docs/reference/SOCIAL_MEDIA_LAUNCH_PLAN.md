@@ -19,7 +19,7 @@ Takes your basic email list and transforms it into detailed intelligence
 
 2/ Real results from testing:
 • BBC Radio 1 contacts: ✅ Enriched
-• Spotify playlist curators: ✅ Enriched  
+• Spotify playlist curators: ✅ Enriched
 • Regional radio stations: ✅ Enriched
 • Industry professionals: ✅ Enriched
 

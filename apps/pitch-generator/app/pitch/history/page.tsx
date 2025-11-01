@@ -5,7 +5,8 @@ import { useSession } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Filter, Search, Loader2, Copy } from 'lucide-react';
-import { supabase, type Pitch } from '@/lib/supabase';
+import { createClient } from '@total-audio/core-db/client';
+import type { Pitch } from '@/lib/types';
 import PitchStatusToggle from '@/components/PitchStatusToggle';
 
 export default function PitchHistoryPage() {
@@ -37,7 +38,7 @@ export default function PitchHistoryPage() {
     try {
       const response = await fetch('/api/pitches');
       if (!response.ok) throw new Error('Failed to fetch pitches');
-      
+
       const data = await response.json();
       setPitches(data.pitches || []);
     } catch (error) {
@@ -83,12 +84,18 @@ export default function PitchHistoryPage() {
 
   function getStatusColor(status: string) {
     switch (status) {
-      case 'draft': return 'bg-gray-100 text-gray-600';
-      case 'sent': return 'bg-brand-amber/20 text-brand-amber';
-      case 'replied': return 'bg-success/20 text-success';
-      case 'success': return 'bg-success/30 text-success';
-      case 'no_reply': return 'bg-gray-50 text-gray-400';
-      default: return 'bg-gray-100 text-gray-600';
+      case 'draft':
+        return 'bg-gray-100 text-gray-600';
+      case 'sent':
+        return 'bg-brand-amber/20 text-brand-amber';
+      case 'replied':
+        return 'bg-success/20 text-success';
+      case 'success':
+        return 'bg-success/30 text-success';
+      case 'no_reply':
+        return 'bg-gray-50 text-gray-400';
+      default:
+        return 'bg-gray-100 text-gray-600';
     }
   }
 
@@ -128,7 +135,7 @@ export default function PitchHistoryPage() {
             <input
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={e => setSearchQuery(e.target.value)}
               placeholder="Search by contact, artist, or track..."
               className="w-full rounded-xl border border-gray-300 bg-gray-50 py-2.5 pl-11 pr-4 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
             />
@@ -139,15 +146,27 @@ export default function PitchHistoryPage() {
             <Filter className="h-4 w-4 text-gray-900/40" />
             <select
               value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
+              onChange={e => setStatusFilter(e.target.value)}
               className="rounded-xl border border-gray-300 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
             >
-              <option value="all" className="bg-card text-foreground">All Status</option>
-              <option value="draft" className="bg-card text-foreground">Draft</option>
-              <option value="sent" className="bg-card text-foreground">Sent</option>
-              <option value="replied" className="bg-card text-foreground">Replied</option>
-              <option value="success" className="bg-card text-foreground">Success</option>
-              <option value="no_reply" className="bg-card text-foreground">No Reply</option>
+              <option value="all" className="bg-card text-foreground">
+                All Status
+              </option>
+              <option value="draft" className="bg-card text-foreground">
+                Draft
+              </option>
+              <option value="sent" className="bg-card text-foreground">
+                Sent
+              </option>
+              <option value="replied" className="bg-card text-foreground">
+                Replied
+              </option>
+              <option value="success" className="bg-card text-foreground">
+                Success
+              </option>
+              <option value="no_reply" className="bg-card text-foreground">
+                No Reply
+              </option>
             </select>
           </div>
         </div>
@@ -167,7 +186,7 @@ export default function PitchHistoryPage() {
           </div>
         ) : (
           <div className="space-y-3">
-            {filteredPitches.map((pitch) => (
+            {filteredPitches.map(pitch => (
               <div
                 key={pitch.id}
                 className="group rounded-2xl border border-white/10 bg-gray-50 px-6 py-5 transition hover:border-gray-300 hover:bg-white/[0.07]"
@@ -179,7 +198,9 @@ export default function PitchHistoryPage() {
                       {pitch.contact_outlet && (
                         <>
                           <span className="text-gray-900/30">•</span>
-                          <span className="truncate text-sm text-gray-900/60">{pitch.contact_outlet}</span>
+                          <span className="truncate text-sm text-gray-900/60">
+                            {pitch.contact_outlet}
+                          </span>
                         </>
                       )}
                     </div>
@@ -214,10 +235,7 @@ export default function PitchHistoryPage() {
                       <Copy className="h-3 w-3" />
                       Copy
                     </button>
-                    <Link
-                      href={`/pitch/review/${pitch.id}`}
-                      className="subtle-button text-xs"
-                    >
+                    <Link href={`/pitch/review/${pitch.id}`} className="subtle-button text-xs">
                       View
                     </Link>
                   </div>
@@ -230,4 +248,3 @@ export default function PitchHistoryPage() {
     </div>
   );
 }
-

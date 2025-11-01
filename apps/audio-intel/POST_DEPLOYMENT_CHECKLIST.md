@@ -8,6 +8,7 @@
 ## Quick Verification (5 minutes)
 
 ### 1. Legal Pages
+
 - [ ] **Terms of Service**: Visit https://intel.totalaudiopromo.com/terms
   - Page loads without errors
   - Neo-brutalist design renders correctly
@@ -20,12 +21,14 @@
   - Social media links work
 
 ### 2. Footer Links (All Pages)
+
 - [ ] Visit homepage: https://intel.totalaudiopromo.com
 - [ ] Scroll to footer
 - [ ] Verify legal links appear: Privacy Policy, Cookie Policy, Terms of Service, Contact & Support
 - [ ] Click each link to confirm they work
 
 ### 3. Mobile Testing (Quick)
+
 - [ ] Open https://intel.totalaudiopromo.com/terms on mobile
 - [ ] Open https://intel.totalaudiopromo.com/contact on mobile
 - [ ] Verify responsive design looks good
@@ -35,14 +38,17 @@
 ## SEO Verification (10 minutes)
 
 ### 1. Structured Data Validation
+
 Use Google Rich Results Test: https://search.google.com/test/rich-results
 
 **Test These URLs**:
+
 1. [ ] https://intel.totalaudiopromo.com/blog/bbc-radio-1-contact-enrichment
 2. [ ] https://intel.totalaudiopromo.com/blog/spotify-editorial-playlist-contacts
 3. [ ] https://intel.totalaudiopromo.com/blog/bbc-radio-6-music-contact-enrichment
 
 **Expected Results**:
+
 - ✅ Valid BlogPosting structured data
 - ✅ Author: Chris Schofield
 - ✅ Publisher: Total Audio Promo
@@ -50,14 +56,20 @@ Use Google Rich Results Test: https://search.google.com/test/rich-results
 - ✅ Image URL present
 
 ### 2. Canonical URL Check
+
 View page source for any blog post:
+
 - [ ] Right-click → View Page Source
 - [ ] Search for `<link rel="canonical"`
 - [ ] Verify URL format: `https://intel.totalaudiopromo.com/blog/[slug]`
 
 Example:
+
 ```html
-<link rel="canonical" href="https://intel.totalaudiopromo.com/blog/bbc-radio-1-contact-enrichment"/>
+<link
+  rel="canonical"
+  href="https://intel.totalaudiopromo.com/blog/bbc-radio-1-contact-enrichment"
+/>
 ```
 
 ---
@@ -65,9 +77,11 @@ Example:
 ## Detailed Testing (30 minutes)
 
 ### Terms of Service Page
+
 **URL**: https://intel.totalaudiopromo.com/terms
 
 **Desktop Testing**:
+
 - [ ] Page loads in < 3 seconds
 - [ ] All 15 sections render correctly
 - [ ] Glass panel design displays properly
@@ -76,6 +90,7 @@ Example:
 - [ ] No console errors
 
 **Mobile Testing (iPhone/Android)**:
+
 - [ ] Page is readable without zooming
 - [ ] Text size is appropriate
 - [ ] Buttons are tappable (not too small)
@@ -83,6 +98,7 @@ Example:
 - [ ] Legal links are easily clickable
 
 **Content Verification**:
+
 - [ ] Last Updated date shows current date
 - [ ] Company name: Total Audio Promo Ltd
 - [ ] Support email: support@totalaudiopromo.com
@@ -93,9 +109,11 @@ Example:
 ---
 
 ### Contact & Support Page
+
 **URL**: https://intel.totalaudiopromo.com/contact
 
 **Desktop Testing**:
+
 - [ ] Page loads in < 3 seconds
 - [ ] Email link works: support@totalaudiopromo.com
 - [ ] Newsletter link opens: https://totalaudiopromo.com/newsletter
@@ -107,6 +125,7 @@ Example:
 - [ ] No console errors
 
 **Mobile Testing**:
+
 - [ ] Page is fully responsive
 - [ ] Email link opens mail app
 - [ ] Cards stack vertically on mobile
@@ -114,6 +133,7 @@ Example:
 - [ ] Footer legal links work
 
 **Content Verification**:
+
 - [ ] Support email: support@totalaudiopromo.com
 - [ ] Response times mentioned:
   - Standard: 48 hours (Free/Pro)
@@ -126,7 +146,9 @@ Example:
 ---
 
 ### Blog Post Structured Data
+
 **Test URLs**:
+
 1. https://intel.totalaudiopromo.com/blog/bbc-radio-1-contact-enrichment
 2. https://intel.totalaudiopromo.com/blog/spotify-editorial-playlist-contacts
 3. https://intel.totalaudiopromo.com/blog/bbc-radio-1xtra-contact-enrichment
@@ -137,6 +159,7 @@ Example:
 8. https://intel.totalaudiopromo.com/blog/absolute-radio-contact-enrichment
 
 **For Each URL**:
+
 - [ ] Page loads correctly
 - [ ] View page source (Right-click → View Page Source)
 - [ ] Search for `<script type="application/ld+json">`
@@ -149,6 +172,7 @@ Example:
   - "inLanguage": "en-GB"
 
 **Google Rich Results Test**:
+
 - [ ] Visit: https://search.google.com/test/rich-results
 - [ ] Paste blog post URL
 - [ ] Click "Test URL"
@@ -158,7 +182,9 @@ Example:
 ---
 
 ### Canonical URLs
+
 **Test on All 8 Blog Posts**:
+
 - [ ] View page source
 - [ ] Search for `<link rel="canonical"`
 - [ ] Verify format: `https://intel.totalaudiopromo.com/blog/[slug]`
@@ -170,11 +196,14 @@ Example:
 ## Performance Testing
 
 ### Google PageSpeed Insights
+
 **Test URLs**:
+
 1. [ ] https://intel.totalaudiopromo.com/terms
 2. [ ] https://intel.totalaudiopromo.com/contact
 
 **Expected Scores**:
+
 - Desktop: 90+ (Green)
 - Mobile: 80+ (Green/Yellow)
 
@@ -185,6 +214,7 @@ Example:
 ## SEO Monitoring Setup (15 minutes)
 
 ### Google Search Console
+
 1. [ ] Log in to Google Search Console
 2. [ ] Add property: intel.totalaudiopromo.com (if not already added)
 3. [ ] Submit sitemap: https://intel.totalaudiopromo.com/sitemap.xml
@@ -195,6 +225,7 @@ Example:
    - All 8 blog posts with new structured data
 
 ### Google Analytics
+
 1. [ ] Log in to Google Analytics
 2. [ ] Verify tracking code is active on new pages
 3. [ ] Check real-time users on /terms and /contact
@@ -206,11 +237,11 @@ Example:
 
 **Found Issues**: Document any problems here
 
-| Issue | URL | Severity | Status |
-|-------|-----|----------|--------|
-| Example: Link broken | /terms | High | Fixed |
-|       |     |          |        |
-|       |     |          |        |
+| Issue                | URL    | Severity | Status |
+| -------------------- | ------ | -------- | ------ |
+| Example: Link broken | /terms | High     | Fixed  |
+|                      |        |          |        |
+|                      |        |          |        |
 
 ---
 
@@ -219,17 +250,20 @@ Example:
 All boxes checked = Successful deployment ✅
 
 **Critical (Must Fix Immediately)**:
+
 - [ ] Terms of Service page loads without errors
 - [ ] Contact page loads without errors
 - [ ] Footer legal links work on all pages
 - [ ] No 404 errors on new pages
 
 **High Priority (Fix Within 24 Hours)**:
+
 - [ ] Structured data validates with Google Rich Results Test
 - [ ] Canonical URLs present on all blog posts
 - [ ] Mobile experience is responsive
 
 **Medium Priority (Fix Within 1 Week)**:
+
 - [ ] PageSpeed scores above 80
 - [ ] Google Search Console shows no errors
 - [ ] All external links work (newsletter, social media)
@@ -239,16 +273,19 @@ All boxes checked = Successful deployment ✅
 ## Next Steps After Testing
 
 ### Immediate (Today)
+
 - [ ] Complete this checklist
 - [ ] Fix any critical issues found
 - [ ] Submit sitemap to Google Search Console
 
 ### This Week
+
 - [ ] Monitor Google Search Console for crawl errors
 - [ ] Check Google Analytics for traffic to new pages
 - [ ] Test on additional devices (iPad, different browsers)
 
 ### This Month
+
 - [ ] Monitor rich snippet appearances in Google search
 - [ ] Track organic traffic trends
 - [ ] Review customer support email volume
@@ -261,8 +298,8 @@ All boxes checked = Successful deployment ✅
 **Issues Found**: [Fill in during testing]
 **Time to Complete Checklist**: [Fill in when done]
 
-**Completed By**: ___________
-**Date**: ___________
+**Completed By**: \***\*\_\_\_\*\***
+**Date**: \***\*\_\_\_\*\***
 
 ---
 

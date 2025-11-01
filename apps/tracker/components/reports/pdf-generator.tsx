@@ -5,7 +5,15 @@
  */
 
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet, Image, pdf } from '@react-pdf/renderer';
+import {
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  pdf,
+} from '@react-pdf/renderer';
 import { format } from 'date-fns';
 
 interface ReportData {
@@ -42,129 +50,130 @@ interface ReportData {
 }
 
 // PDF Styles
-const createStyles = (brandColor: string) => StyleSheet.create({
-  page: {
-    padding: 40,
-    fontSize: 11,
-    fontFamily: 'Helvetica',
-    backgroundColor: '#ffffff',
-  },
-  header: {
-    marginBottom: 30,
-    paddingBottom: 20,
-    borderBottomWidth: 3,
-    borderBottomColor: brandColor,
-  },
-  logo: {
-    width: 120,
-    height: 40,
-    marginBottom: 10,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: brandColor,
-    marginBottom: 5,
-  },
-  subtitle: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 3,
-  },
-  section: {
-    marginBottom: 20,
-  },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: brandColor,
-    marginBottom: 10,
-    paddingBottom: 5,
-    borderBottomWidth: 1,
-    borderBottomColor: '#e5e5e5',
-  },
-  text: {
-    fontSize: 11,
-    color: '#333',
-    lineHeight: 1.6,
-    marginBottom: 8,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 8,
-  },
-  label: {
-    fontSize: 10,
-    color: '#666',
-    fontWeight: 'bold',
-  },
-  value: {
-    fontSize: 11,
-    color: '#333',
-  },
-  metricBox: {
-    backgroundColor: '#f8f9fa',
-    padding: 15,
-    borderRadius: 5,
-    marginBottom: 10,
-    borderLeftWidth: 4,
-    borderLeftColor: brandColor,
-  },
-  metricLabel: {
-    fontSize: 9,
-    color: '#666',
-    textTransform: 'uppercase',
-    marginBottom: 5,
-  },
-  metricValue: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: brandColor,
-  },
-  activity: {
-    marginBottom: 10,
-    paddingLeft: 15,
-    borderLeftWidth: 2,
-    borderLeftColor: '#e5e5e5',
-  },
-  activityDate: {
-    fontSize: 9,
-    color: '#999',
-    marginBottom: 3,
-  },
-  activityText: {
-    fontSize: 10,
-    color: '#333',
-  },
-  footer: {
-    position: 'absolute',
-    bottom: 30,
-    left: 40,
-    right: 40,
-    textAlign: 'center',
-    fontSize: 9,
-    color: '#999',
-    borderTopWidth: 1,
-    borderTopColor: '#e5e5e5',
-    paddingTop: 10,
-  },
-  flexRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  flexRowWithMargin: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 10,
-  },
-  halfWidth: {
-    width: '48%',
-  },
-  footerText: {
-    marginTop: 5,
-  },
-});
+const createStyles = (brandColor: string) =>
+  StyleSheet.create({
+    page: {
+      padding: 40,
+      fontSize: 11,
+      fontFamily: 'Helvetica',
+      backgroundColor: '#ffffff',
+    },
+    header: {
+      marginBottom: 30,
+      paddingBottom: 20,
+      borderBottomWidth: 3,
+      borderBottomColor: brandColor,
+    },
+    logo: {
+      width: 120,
+      height: 40,
+      marginBottom: 10,
+    },
+    title: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      color: brandColor,
+      marginBottom: 5,
+    },
+    subtitle: {
+      fontSize: 14,
+      color: '#666',
+      marginBottom: 3,
+    },
+    section: {
+      marginBottom: 20,
+    },
+    sectionTitle: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: brandColor,
+      marginBottom: 10,
+      paddingBottom: 5,
+      borderBottomWidth: 1,
+      borderBottomColor: '#e5e5e5',
+    },
+    text: {
+      fontSize: 11,
+      color: '#333',
+      lineHeight: 1.6,
+      marginBottom: 8,
+    },
+    row: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 8,
+    },
+    label: {
+      fontSize: 10,
+      color: '#666',
+      fontWeight: 'bold',
+    },
+    value: {
+      fontSize: 11,
+      color: '#333',
+    },
+    metricBox: {
+      backgroundColor: '#f8f9fa',
+      padding: 15,
+      borderRadius: 5,
+      marginBottom: 10,
+      borderLeftWidth: 4,
+      borderLeftColor: brandColor,
+    },
+    metricLabel: {
+      fontSize: 9,
+      color: '#666',
+      textTransform: 'uppercase',
+      marginBottom: 5,
+    },
+    metricValue: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: brandColor,
+    },
+    activity: {
+      marginBottom: 10,
+      paddingLeft: 15,
+      borderLeftWidth: 2,
+      borderLeftColor: '#e5e5e5',
+    },
+    activityDate: {
+      fontSize: 9,
+      color: '#999',
+      marginBottom: 3,
+    },
+    activityText: {
+      fontSize: 10,
+      color: '#333',
+    },
+    footer: {
+      position: 'absolute',
+      bottom: 30,
+      left: 40,
+      right: 40,
+      textAlign: 'center',
+      fontSize: 9,
+      color: '#999',
+      borderTopWidth: 1,
+      borderTopColor: '#e5e5e5',
+      paddingTop: 10,
+    },
+    flexRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    flexRowWithMargin: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginTop: 10,
+    },
+    halfWidth: {
+      width: '48%',
+    },
+    footerText: {
+      marginTop: 5,
+    },
+  });
 
 // PDF Document Component
 const CampaignReportPDF: React.FC<{ data: ReportData }> = ({ data }) => {
@@ -204,13 +213,17 @@ const CampaignReportPDF: React.FC<{ data: ReportData }> = ({ data }) => {
             <View style={styles.halfWidth}>
               <View style={styles.metricBox}>
                 <Text style={styles.metricLabel}>Target Reach</Text>
-                <Text style={styles.metricValue}>{campaign.target_reach || 0}</Text>
+                <Text style={styles.metricValue}>
+                  {campaign.target_reach || 0}
+                </Text>
               </View>
             </View>
             <View style={styles.halfWidth}>
               <View style={styles.metricBox}>
                 <Text style={styles.metricLabel}>Actual Reach</Text>
-                <Text style={styles.metricValue}>{campaign.actual_reach || 0}</Text>
+                <Text style={styles.metricValue}>
+                  {campaign.actual_reach || 0}
+                </Text>
               </View>
             </View>
           </View>
@@ -221,7 +234,9 @@ const CampaignReportPDF: React.FC<{ data: ReportData }> = ({ data }) => {
                 <View style={styles.halfWidth}>
                   <View style={styles.metricBox}>
                     <Text style={styles.metricLabel}>Success Rate</Text>
-                    <Text style={styles.metricValue}>{(metrics.response_rate * 100).toFixed(0)}%</Text>
+                    <Text style={styles.metricValue}>
+                      {(metrics.response_rate * 100).toFixed(0)}%
+                    </Text>
                   </View>
                 </View>
               )}
@@ -229,7 +244,9 @@ const CampaignReportPDF: React.FC<{ data: ReportData }> = ({ data }) => {
                 <View style={styles.halfWidth}>
                   <View style={styles.metricBox}>
                     <Text style={styles.metricLabel}>Cost Per Result</Text>
-                    <Text style={styles.metricValue}>£{metrics.cost_per_result.toFixed(2)}</Text>
+                    <Text style={styles.metricValue}>
+                      £{metrics.cost_per_result.toFixed(2)}
+                    </Text>
                   </View>
                 </View>
               )}
@@ -295,12 +312,8 @@ const CampaignReportPDF: React.FC<{ data: ReportData }> = ({ data }) => {
 
         {/* Footer */}
         <View style={styles.footer}>
-          {template.company_name && (
-            <Text>{template.company_name}</Text>
-          )}
-          {template.contact_email && (
-            <Text>{template.contact_email}</Text>
-          )}
+          {template.company_name && <Text>{template.company_name}</Text>}
+          {template.contact_email && <Text>{template.contact_email}</Text>}
           <Text style={styles.footerText}>
             Generated by Tracker • {format(new Date(), 'dd MMMM yyyy')}
           </Text>
@@ -313,7 +326,9 @@ const CampaignReportPDF: React.FC<{ data: ReportData }> = ({ data }) => {
 /**
  * Generate PDF blob from report data
  */
-export async function generateCampaignReportPDF(data: ReportData): Promise<Blob> {
+export async function generateCampaignReportPDF(
+  data: ReportData
+): Promise<Blob> {
   const doc = <CampaignReportPDF data={data} />;
   const blob = await pdf(doc).toBlob();
   return blob;
@@ -322,7 +337,9 @@ export async function generateCampaignReportPDF(data: ReportData): Promise<Blob>
 /**
  * Generate PDF and return base64 string (for storage)
  */
-export async function generateCampaignReportBase64(data: ReportData): Promise<string> {
+export async function generateCampaignReportBase64(
+  data: ReportData
+): Promise<string> {
   const blob = await generateCampaignReportPDF(data);
   const buffer = await blob.arrayBuffer();
   return Buffer.from(buffer).toString('base64');

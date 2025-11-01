@@ -26,23 +26,19 @@ const App = () => {
           },
         }}
       >
-        <Stack.Screen 
-          name="Dashboard" 
+        <Stack.Screen
+          name="Dashboard"
           component={DashboardScreen}
           options={{ title: 'Total Audio Promo' }}
         />
-        <Stack.Screen 
-          name="Campaigns" 
+        <Stack.Screen
+          name="Campaigns"
           component={CampaignsScreen}
           options={{ title: 'Campaigns' }}
         />
-        <Stack.Screen 
-          name="Contacts" 
-          component={ContactsScreen}
-          options={{ title: 'Contacts' }}
-        />
-        <Stack.Screen 
-          name="Analytics" 
+        <Stack.Screen name="Contacts" component={ContactsScreen} options={{ title: 'Contacts' }} />
+        <Stack.Screen
+          name="Analytics"
           component={AnalyticsScreen}
           options={{ title: 'Analytics' }}
         />

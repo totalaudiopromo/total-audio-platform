@@ -68,10 +68,7 @@ export function measureComponentRender(componentName: string) {
 /**
  * Measure API call duration
  */
-export async function measureApiCall<T>(
-  name: string,
-  apiCall: () => Promise<T>
-): Promise<T> {
+export async function measureApiCall<T>(name: string, apiCall: () => Promise<T>): Promise<T> {
   const start = performance.now();
 
   try {

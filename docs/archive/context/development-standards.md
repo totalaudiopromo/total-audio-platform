@@ -3,12 +3,14 @@
 ## 🎯 Development Philosophy
 
 ### Core Principles
+
 - **Audio-First Design**: Every component considers the Audio character integration
 - **Speed Without Compromise**: Rapid development while maintaining professional quality
 - **Ecosystem Thinking**: Components work across all tools, not just single implementations
 - **User Experience Excellence**: Every interaction delights and drives results
 
 ### AI-Powered Development Workflow
+
 - **Claude Code**: Primary IDE for architectural decisions and complex features
 - **Cursor**: Targeted improvements, refactoring, and specific component work
 - **V0**: Rapid UI prototyping and design iteration
@@ -19,6 +21,7 @@
 ## 📁 Project Structure Standards
 
 ### Monorepo Organization
+
 ```
 total-audio-ecosystem/
 ├── apps/
@@ -45,6 +48,7 @@ total-audio-ecosystem/
 ```
 
 ### Individual App Structure
+
 ```
 apps/intel/
 ├── src/
@@ -71,6 +75,7 @@ apps/intel/
 ## 🎨 Component Standards
 
 ### Audio Brand Component Architecture
+
 ```typescript
 // packages/audio-brand/src/AudioCharacter.tsx
 interface AudioCharacterProps {
@@ -83,15 +88,16 @@ interface AudioCharacterProps {
 }
 
 // Usage Example
-<AudioCharacter 
-  tool="intel" 
-  state="working" 
-  size="md" 
+<AudioCharacter
+  tool="intel"
+  state="working"
+  size="md"
   position="header"
 />
 ```
 
 ### Shared UI Components
+
 ```typescript
 // packages/ui/src/components/
 ├── BrandButton.tsx           # Tool-themed buttons
@@ -105,12 +111,14 @@ interface AudioCharacterProps {
 ```
 
 ### Component Naming Conventions
+
 - **PascalCase** for component names: `AudioCharacter`, `BrandButton`
 - **camelCase** for props and functions: `onClick`, `handleSubmit`
 - **kebab-case** for file names when multiple words: `brand-button.tsx`
 - **UPPER_SNAKE_CASE** for constants: `TOOL_COLORS`, `ANIMATION_DURATION`
 
 ### Component Structure Template
+
 ```typescript
 import React from 'react';
 import { cn } from '@/lib/utils';
@@ -125,15 +133,15 @@ interface ComponentNameProps {
   className?: string;
 }
 
-export function ComponentName({ 
+export function ComponentName({
   variant = 'default',
   size = 'md',
   children,
   className,
-  ...props 
+  ...props
 }: ComponentNameProps) {
   return (
-    <div 
+    <div
       className={cn(
         // Base styles
         'relative rounded-lg border',
@@ -163,6 +171,7 @@ export function ComponentName({
 ## 🎨 Styling Standards
 
 ### Tailwind CSS Configuration
+
 ```javascript
 // tailwind.config.js
 module.exports = {
@@ -218,6 +227,7 @@ module.exports = {
 ```
 
 ### CSS Organization
+
 ```css
 /* globals.css structure */
 @tailwind base;
@@ -229,10 +239,12 @@ module.exports = {
   * {
     @apply border-border;
   }
-  
+
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 }
 
@@ -241,18 +253,18 @@ module.exports = {
   .audio-card {
     @apply rounded-lg border bg-white p-6 shadow-sm;
   }
-  
+
   .tool-button {
     @apply inline-flex items-center justify-center rounded-md px-4 py-2 
            text-sm font-medium transition-colors focus-visible:outline-none 
            focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50;
   }
-  
+
   .color-activation {
     @apply transition-all duration-[800ms] ease-in-out;
     filter: grayscale(1);
   }
-  
+
   .color-activation.active {
     filter: grayscale(0);
   }
@@ -271,6 +283,7 @@ module.exports = {
 ## 📝 TypeScript Standards
 
 ### Type Organization
+
 ```typescript
 // packages/types/src/index.ts
 export * from './user';
@@ -279,12 +292,12 @@ export * from './analytics';
 export * from './api';
 
 // packages/types/src/tools.ts
-export type ToolType = 
-  | 'audio-intel' 
-  | 'playlist-pulse' 
-  | 'release-radar' 
-  | 'trend-track' 
-  | 'content-clone' 
+export type ToolType =
+  | 'audio-intel'
+  | 'playlist-pulse'
+  | 'release-radar'
+  | 'trend-track'
+  | 'content-clone'
   | 'success-predict';
 
 export interface Tool {
@@ -307,6 +320,7 @@ export interface AudioCharacterState {
 ```
 
 ### Strict TypeScript Configuration
+
 ```json
 // tsconfig.json
 {
@@ -348,6 +362,7 @@ export interface AudioCharacterState {
 ## 🧪 Testing Standards
 
 ### Testing Framework Setup
+
 ```typescript
 // jest.config.js
 module.exports = {
@@ -357,15 +372,8 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@total-audio/(.*)$': '<rootDir>/../../packages/$1/src',
   },
-  testMatch: [
-    '**/__tests__/**/*.(ts|tsx)',
-    '**/*.(test|spec).(ts|tsx)',
-  ],
-  collectCoverageFrom: [
-    'src/**/*.(ts|tsx)',
-    '!src/**/*.d.ts',
-    '!src/test/**/*',
-  ],
+  testMatch: ['**/__tests__/**/*.(ts|tsx)', '**/*.(test|spec).(ts|tsx)'],
+  collectCoverageFrom: ['src/**/*.(ts|tsx)', '!src/**/*.d.ts', '!src/test/**/*'],
   coverageThreshold: {
     global: {
       branches: 80,
@@ -378,6 +386,7 @@ module.exports = {
 ```
 
 ### Component Testing Template
+
 ```typescript
 // src/components/__tests__/AudioCharacter.test.tsx
 import { render, screen } from '@testing-library/react';
@@ -393,18 +402,18 @@ describe('AudioCharacter', () => {
 
   it('renders with correct tool styling', () => {
     render(<AudioCharacter {...defaultProps} />);
-    
+
     const character = screen.getByTestId('audio-character');
     expect(character).toHaveClass('tool-intel');
   });
 
   it('activates color on state change', () => {
     const { rerender } = render(<AudioCharacter {...defaultProps} />);
-    
+
     rerender(
       <AudioCharacter {...defaultProps} state="working" />
     );
-    
+
     const character = screen.getByTestId('audio-character');
     expect(character).toHaveClass('color-activation', 'active');
   });
@@ -412,11 +421,11 @@ describe('AudioCharacter', () => {
   it('handles click events', async () => {
     const handleClick = jest.fn();
     const user = userEvent.setup();
-    
+
     render(
       <AudioCharacter {...defaultProps} onClick={handleClick} />
     );
-    
+
     await user.click(screen.getByTestId('audio-character'));
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
@@ -424,6 +433,7 @@ describe('AudioCharacter', () => {
 ```
 
 ### API Testing Template
+
 ```typescript
 // src/app/api/__tests__/contacts.test.ts
 import { POST } from '../contacts/enrich/route';
@@ -467,14 +477,11 @@ describe('/api/contacts/enrich', () => {
 ## 🔧 Code Quality Standards
 
 ### ESLint Configuration
+
 ```json
 // .eslintrc.json
 {
-  "extends": [
-    "next/core-web-vitals",
-    "@typescript-eslint/recommended",
-    "prettier"
-  ],
+  "extends": ["next/core-web-vitals", "@typescript-eslint/recommended", "prettier"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "rules": {
@@ -498,6 +505,7 @@ describe('/api/contacts/enrich', () => {
 ```
 
 ### Prettier Configuration
+
 ```json
 // .prettierrc
 {
@@ -512,17 +520,13 @@ describe('/api/contacts/enrich', () => {
 ```
 
 ### Pre-commit Hooks
+
 ```json
 // package.json
 {
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{md,json}": [
-      "prettier --write"
-    ]
+    "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
+    "*.{md,json}": ["prettier --write"]
   },
   "husky": {
     "hooks": {
@@ -538,11 +542,13 @@ describe('/api/contacts/enrich', () => {
 ## 📊 Performance Standards
 
 ### Core Web Vitals Targets
+
 - **Largest Contentful Paint (LCP)**: < 2.5 seconds
-- **First Input Delay (FID)**: < 100 milliseconds  
+- **First Input Delay (FID)**: < 100 milliseconds
 - **Cumulative Layout Shift (CLS)**: < 0.1
 
 ### Bundle Size Limits
+
 ```javascript
 // next.config.js
 module.exports = {
@@ -553,7 +559,7 @@ module.exports = {
     if (!isServer) {
       config.resolve.fallback.fs = false;
     }
-    
+
     // Bundle analyzer
     if (process.env.ANALYZE === 'true') {
       const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -564,13 +570,14 @@ module.exports = {
         })
       );
     }
-    
+
     return config;
   },
 };
 ```
 
 ### Performance Monitoring
+
 ```typescript
 // lib/analytics.ts
 export function trackPerformance(metricName: string, value: number) {
@@ -586,16 +593,16 @@ export function trackPerformance(metricName: string, value: number) {
 
 // Usage in components
 useEffect(() => {
-  const observer = new PerformanceObserver((list) => {
+  const observer = new PerformanceObserver(list => {
     for (const entry of list.getEntries()) {
       if (entry.entryType === 'largest-contentful-paint') {
         trackPerformance('lcp', entry.startTime);
       }
     }
   });
-  
+
   observer.observe({ entryTypes: ['largest-contentful-paint'] });
-  
+
   return () => observer.disconnect();
 }, []);
 ```
@@ -605,6 +612,7 @@ useEffect(() => {
 ## 🚀 Deployment Standards
 
 ### Environment Configuration
+
 ```bash
 # .env.example
 # Database
@@ -630,6 +638,7 @@ PLAYLIST_PULSE_CONFIG=""
 ```
 
 ### GitHub Actions Workflow
+
 ```yaml
 # .github/workflows/deploy.yml
 name: Deploy to Production
@@ -646,22 +655,22 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Run TypeScript checks
         run: npm run type-check
-      
+
       - name: Run linting
         run: npm run lint
-      
+
       - name: Run tests
         run: npm run test:ci
-      
+
       - name: Build application
         run: npm run build
-      
+
       - name: Run bundle analysis
         run: npm run analyze
 
@@ -671,7 +680,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v20
         with:
@@ -679,12 +688,12 @@ jobs:
           vercel-org-id: ${{ secrets.ORG_ID }}
           vercel-project-id: ${{ secrets.PROJECT_ID }}
           vercel-args: '--prod'
-      
+
       - name: Run post-deployment tests
         run: npm run test:e2e
         env:
           TEST_URL: ${{ steps.deploy.outputs.preview-url }}
-      
+
       - name: Notify team
         uses: 8398a7/action-slack@v3
         with:
@@ -699,37 +708,45 @@ jobs:
 ## 📋 Code Review Standards
 
 ### Pull Request Template
+
 ```markdown
 ## Summary
+
 Brief description of changes and motivation
 
 ## Changes Made
+
 - [ ] Feature implementation
 - [ ] Bug fixes
 - [ ] Performance improvements
 - [ ] Documentation updates
 
 ## Audio Character Integration
+
 - [ ] Character state properly managed
 - [ ] Color activation working correctly
 - [ ] Animations smooth and professional
 - [ ] Tool-specific poses implemented
 
 ## Testing
+
 - [ ] Unit tests added/updated
 - [ ] Integration tests passing
 - [ ] Manual testing completed
 - [ ] Performance impact assessed
 
 ## Screenshots/Videos
+
 [Include screenshots of Audio character states and animations]
 
 ## Deployment Notes
+
 - [ ] Environment variables updated
 - [ ] Database migrations included
 - [ ] Third-party service changes noted
 
 ## Checklist
+
 - [ ] Code follows style guidelines
 - [ ] Self-review completed
 - [ ] Tests pass locally
@@ -737,6 +754,7 @@ Brief description of changes and motivation
 ```
 
 ### Review Criteria
+
 1. **Audio Brand Consistency**: Does the code maintain Audio character integration standards?
 2. **Cross-Tool Compatibility**: Will this work across all tools in the ecosystem?
 3. **Performance Impact**: Does this maintain our Core Web Vitals targets?
@@ -749,6 +767,7 @@ Brief description of changes and motivation
 ## 🔒 Security Standards
 
 ### Input Validation
+
 ```typescript
 // lib/validation.ts
 import { z } from 'zod';
@@ -773,7 +792,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const validatedData = contactEnrichmentSchema.parse(body);
-    
+
     // Process validated data...
   } catch (error) {
     if (error instanceof z.ZodError) {
@@ -788,6 +807,7 @@ export async function POST(request: NextRequest) {
 ```
 
 ### Rate Limiting Implementation
+
 ```typescript
 // lib/rate-limit.ts
 import { redis } from './redis';
@@ -798,19 +818,16 @@ interface RateLimitConfig {
   keyGenerator: (request: NextRequest) => string;
 }
 
-export async function rateLimit(
-  request: NextRequest,
-  config: RateLimitConfig
-): Promise<boolean> {
+export async function rateLimit(request: NextRequest, config: RateLimitConfig): Promise<boolean> {
   const key = config.keyGenerator(request);
   const windowKey = `rate_limit:${key}:${Math.floor(Date.now() / config.windowMs)}`;
-  
+
   const current = await redis.incr(windowKey);
-  
+
   if (current === 1) {
     await redis.expire(windowKey, Math.ceil(config.windowMs / 1000));
   }
-  
+
   return current <= config.maxRequests;
 }
 
@@ -819,21 +836,19 @@ export async function middleware(request: NextRequest) {
   const isAllowed = await rateLimit(request, {
     windowMs: 60 * 1000, // 1 minute
     maxRequests: 100,
-    keyGenerator: (req) => req.ip || 'anonymous',
+    keyGenerator: req => req.ip || 'anonymous',
   });
-  
+
   if (!isAllowed) {
-    return NextResponse.json(
-      { error: 'Rate limit exceeded' },
-      { status: 429 }
-    );
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
   }
-  
+
   return NextResponse.next();
 }
 ```
 
 ### Environment Security
+
 ```typescript
 // lib/env.ts
 import { z } from 'zod';
@@ -858,13 +873,14 @@ import { env } from '@/lib/env';
 ## 📱 Mobile Development Standards
 
 ### Responsive Breakpoints
+
 ```typescript
 // lib/breakpoints.ts
 export const breakpoints = {
-  sm: 640,   // Mobile
-  md: 768,   // Tablet
-  lg: 1024,  // Desktop
-  xl: 1280,  // Large desktop
+  sm: 640, // Mobile
+  md: 768, // Tablet
+  lg: 1024, // Desktop
+  xl: 1280, // Large desktop
   '2xl': 1536, // Extra large desktop
 } as const;
 
@@ -873,26 +889,27 @@ export type Breakpoint = keyof typeof breakpoints;
 // Custom hook for responsive behavior
 export function useBreakpoint(breakpoint: Breakpoint) {
   const [matches, setMatches] = useState(false);
-  
+
   useEffect(() => {
     const query = `(min-width: ${breakpoints[breakpoint]}px)`;
     const mediaQuery = window.matchMedia(query);
-    
+
     setMatches(mediaQuery.matches);
-    
+
     const handler = (event: MediaQueryListEvent) => {
       setMatches(event.matches);
     };
-    
+
     mediaQuery.addEventListener('change', handler);
     return () => mediaQuery.removeEventListener('change', handler);
   }, [breakpoint]);
-  
+
   return matches;
 }
 ```
 
 ### Touch-Friendly Interactions
+
 ```css
 /* Mobile-specific styles */
 @media (max-width: 768px) {
@@ -900,20 +917,22 @@ export function useBreakpoint(breakpoint: Breakpoint) {
     /* Larger touch target */
     min-width: 44px;
     min-height: 44px;
-    
+
     /* Touch feedback */
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
   }
-  
+
   .tool-button {
     /* Minimum 44px touch target */
     min-height: 44px;
     padding: 12px 16px;
   }
-  
+
   /* Prevent zoom on input focus */
-  input, select, textarea {
+  input,
+  select,
+  textarea {
     font-size: 16px;
   }
 }
@@ -924,6 +943,7 @@ export function useBreakpoint(breakpoint: Breakpoint) {
 ## 🎯 Accessibility Standards
 
 ### WCAG 2.1 AA Compliance
+
 ```typescript
 // components/AccessibleButton.tsx
 interface AccessibleButtonProps {
@@ -954,9 +974,9 @@ export function AccessibleButton({
         'disabled:pointer-events-none disabled:opacity-50',
         // Color variants with WCAG AA contrast
         {
-          'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500': 
+          'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500':
             variant === 'primary',
-          'bg-gray-100 text-gray-900 hover:bg-gray-200 focus-visible:ring-gray-500': 
+          'bg-gray-100 text-gray-900 hover:bg-gray-200 focus-visible:ring-gray-500':
             variant === 'secondary',
         }
       )}
@@ -968,6 +988,7 @@ export function AccessibleButton({
 ```
 
 ### Screen Reader Support
+
 ```typescript
 // Audio character with accessibility
 export function AudioCharacter({ tool, state, ...props }: AudioCharacterProps) {
@@ -983,7 +1004,7 @@ export function AudioCharacter({ tool, state, ...props }: AudioCharacterProps) {
         return `Audio assistant for ${tool}`;
     }
   };
-  
+
   return (
     <div
       role="img"
@@ -1005,6 +1026,7 @@ export function AudioCharacter({ tool, state, ...props }: AudioCharacterProps) {
 ## 🔄 State Management Standards
 
 ### Zustand Store Structure
+
 ```typescript
 // stores/audio-store.ts
 import { create } from 'zustand';
@@ -1014,11 +1036,11 @@ interface AudioState {
   // Character state
   currentTool: ToolType;
   characterState: AudioCharacterState;
-  
+
   // User interaction
   isInteracting: boolean;
   lastInteraction: Date | null;
-  
+
   // Actions
   setTool: (tool: ToolType) => void;
   updateCharacterState: (state: Partial<AudioCharacterState>) => void;
@@ -1040,10 +1062,10 @@ export const useAudioStore = create<AudioState>()(
       },
       isInteracting: false,
       lastInteraction: null,
-      
+
       // Actions
-      setTool: (tool) => 
-        set((state) => ({
+      setTool: tool =>
+        set(state => ({
           currentTool: tool,
           characterState: {
             ...state.characterState,
@@ -1051,32 +1073,32 @@ export const useAudioStore = create<AudioState>()(
             activity: 'idle',
           },
         })),
-      
-      updateCharacterState: (newState) =>
-        set((state) => ({
+
+      updateCharacterState: newState =>
+        set(state => ({
           characterState: {
             ...state.characterState,
             ...newState,
           },
         })),
-      
+
       triggerCelebration: () => {
-        set((state) => ({
+        set(state => ({
           characterState: {
             ...state.characterState,
             activity: 'celebration',
             colorActivation: true,
           },
         }));
-        
+
         // Auto-reset after animation
         setTimeout(() => {
           get().resetToIdle();
         }, 2000);
       },
-      
+
       resetToIdle: () =>
-        set((state) => ({
+        set(state => ({
           characterState: {
             ...state.characterState,
             activity: 'idle',
@@ -1091,6 +1113,7 @@ export const useAudioStore = create<AudioState>()(
 ```
 
 ### React Query Integration
+
 ```typescript
 // hooks/use-contact-enrichment.ts
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -1099,24 +1122,24 @@ import { useAudioStore } from '@/stores/audio-store';
 export function useContactEnrichment() {
   const queryClient = useQueryClient();
   const { updateCharacterState, triggerCelebration } = useAudioStore();
-  
+
   return useMutation({
     mutationFn: async (email: string) => {
       updateCharacterState({ activity: 'working', colorActivation: true });
-      
+
       const response = await fetch('/api/contacts/enrich', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
-      
+
       if (!response.ok) {
         throw new Error('Enrichment failed');
       }
-      
+
       return response.json();
     },
-    onSuccess: (data) => {
+    onSuccess: data => {
       triggerCelebration();
       queryClient.invalidateQueries({ queryKey: ['contacts'] });
     },
@@ -1132,21 +1155,22 @@ export function useContactEnrichment() {
 ## 📚 Documentation Standards
 
 ### Component Documentation
-```typescript
+
+````typescript
 /**
  * AudioCharacter - The brand mascot that guides users through Total Audio tools
- * 
+ *
  * Features:
  * - Tool-specific poses and animations
  * - Color activation based on user interactions
  * - Accessibility support with screen reader announcements
  * - Responsive sizing across devices
- * 
+ *
  * @example
  * ```tsx
- * <AudioCharacter 
- *   tool="intel" 
- *   state="working" 
+ * <AudioCharacter
+ *   tool="intel"
+ *   state="working"
  *   size="md"
  *   onClick={() => showHelp()}
  * />
@@ -1155,20 +1179,21 @@ export function useContactEnrichment() {
 export function AudioCharacter(props: AudioCharacterProps) {
   // Implementation...
 }
-```
+````
 
 ### API Documentation
-```typescript
+
+````typescript
 /**
  * POST /api/contacts/enrich
- * 
+ *
  * Enriches contact information using AI and external data sources
- * 
+ *
  * @param email - Contact email address (required)
  * @param name - Contact name (optional)
- * 
+ *
  * @returns EnrichedContact object with social profiles and preferences
- * 
+ *
  * @example
  * ```typescript
  * const response = await fetch('/api/contacts/enrich', {
@@ -1176,7 +1201,7 @@ export function AudioCharacter(props: AudioCharacterProps) {
  *   body: JSON.stringify({ email: 'curator@example.com' })
  * });
  * ```
- * 
+ *
  * Rate Limits:
  * - Free tier: 10 requests/day
  * - Pro tier: 100 requests/day
@@ -1185,13 +1210,14 @@ export function AudioCharacter(props: AudioCharacterProps) {
 export async function POST(request: NextRequest) {
   // Implementation...
 }
-```
+````
 
 ---
 
 ## 🎯 Error Handling Standards
 
 ### Global Error Boundary
+
 ```typescript
 // components/ErrorBoundary.tsx
 import { AudioCharacter } from '@total-audio/audio-brand';
@@ -1209,28 +1235,28 @@ export class ErrorBoundary extends Component<
     super(props);
     this.state = { hasError: false };
   }
-  
+
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return { hasError: true, error };
   }
-  
+
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
-    
+
     // Send to error tracking service
     if (process.env.NODE_ENV === 'production') {
       // Sentry.captureException(error, { contexts: { errorInfo } });
     }
   }
-  
+
   render() {
     if (this.state.hasError) {
       return (
         <div className="flex min-h-screen flex-col items-center justify-center p-8">
-          <AudioCharacter 
-            tool="audio-intel" 
-            state="idle" 
-            size="lg" 
+          <AudioCharacter
+            tool="audio-intel"
+            state="idle"
+            size="lg"
           />
           <h1 className="mt-6 text-2xl font-bold">Something went wrong</h1>
           <p className="mt-2 text-gray-600">
@@ -1245,13 +1271,14 @@ export class ErrorBoundary extends Component<
         </div>
       );
     }
-    
+
     return this.props.children;
   }
 }
 ```
 
 ### API Error Handling
+
 ```typescript
 // lib/api-error.ts
 export class APIError extends Error {
@@ -1272,20 +1299,17 @@ export function handleAPIError(error: unknown): NextResponse {
       { status: error.statusCode }
     );
   }
-  
+
   if (error instanceof z.ZodError) {
     return NextResponse.json(
       { error: 'Validation failed', details: error.errors },
       { status: 400 }
     );
   }
-  
+
   console.error('Unexpected API error:', error);
-  
-  return NextResponse.json(
-    { error: 'Internal server error' },
-    { status: 500 }
-  );
+
+  return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
 }
 ```
 
@@ -1294,6 +1318,7 @@ export function handleAPIError(error: unknown): NextResponse {
 ## 🚀 Performance Optimization Standards
 
 ### Image Optimization
+
 ```typescript
 // components/OptimizedImage.tsx
 import Image from 'next/image';
@@ -1332,25 +1357,26 @@ export function OptimizedImage({
 ```
 
 ### Code Splitting Strategy
+
 ```typescript
 // Dynamic imports for tool-specific components
 const AudioIntelDashboard = dynamic(
   () => import('@/components/audio-intel/Dashboard'),
-  { 
+  {
     loading: () => <DashboardSkeleton />,
-    ssr: false 
+    ssr: false
   }
 );
 
 const PlaylistPulseDashboard = dynamic(
   () => import('@/components/playlist-pulse/Dashboard'),
-  { 
+  {
     loading: () => <DashboardSkeleton />,
-    ssr: false 
+    ssr: false
   }
 );
 ```
 
 ---
 
-*These development standards ensure consistent, high-quality code across the entire Total Audio ecosystem while maintaining the Audio brand experience and optimal performance.*
+_These development standards ensure consistent, high-quality code across the entire Total Audio ecosystem while maintaining the Audio brand experience and optimal performance._

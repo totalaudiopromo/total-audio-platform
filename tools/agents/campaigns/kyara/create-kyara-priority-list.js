@@ -13,7 +13,8 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -31,7 +32,7 @@ async function fetchAllContacts() {
       : `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
 
     const response = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
     });
 
     const data = await response.json();
@@ -74,7 +75,7 @@ function scoreContact(contact) {
   return {
     score,
     contact: fields,
-    recordId: contact.id
+    recordId: contact.id,
   };
 }
 
@@ -85,10 +86,8 @@ async function createPriorityList() {
   const contacts = await fetchAllContacts();
 
   // Filter out contacts without emails or enrichment
-  const validContacts = contacts.filter(c =>
-    c.fields.Email &&
-    c.fields.Email !== 'no-email' &&
-    c.fields['Enrichment Notes']
+  const validContacts = contacts.filter(
+    c => c.fields.Email && c.fields.Email !== 'no-email' && c.fields['Enrichment Notes']
   );
 
   console.log(`📊 Valid contacts for KYARA: ${validContacts.length}/${contacts.length}\n`);
@@ -108,7 +107,9 @@ async function createPriorityList() {
   console.log(`   Tier 1 (High Priority):   ${tier1.length} contacts (Score 60+)`);
   console.log(`   Tier 2 (Medium Priority): ${tier2.length} contacts (Score 40-59)`);
   console.log(`   Tier 3 (Low Priority):    ${tier3.length} contacts (Score 20-39)`);
-  console.log(`   Not Recommended:          ${scored.filter(s => s.score < 20).length} contacts (Score <20)\n`);
+  console.log(
+    `   Not Recommended:          ${scored.filter(s => s.score < 20).length} contacts (Score <20)\n`
+  );
 
   // Generate Markdown report
   let markdown = `# KYARA Campaign - Priority Contact List

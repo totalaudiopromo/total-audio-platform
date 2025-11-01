@@ -103,8 +103,8 @@ class VerifiedSocialAutomation {
     const verificationResults = await this.socialManager.verifyAllContent(content, platforms);
 
     // Check for any issues
-    const hasErrors = verificationResults.some(result =>
-      !result.valid || result.duplicateDetected || result.warnings.length > 0
+    const hasErrors = verificationResults.some(
+      result => !result.valid || result.duplicateDetected || result.warnings.length > 0
     );
 
     if (hasErrors) {
@@ -122,7 +122,7 @@ class VerifiedSocialAutomation {
       content,
       contentHash,
       verificationResults,
-      hasErrors
+      hasErrors,
     };
   }
 
@@ -180,19 +180,20 @@ class VerifiedSocialAutomation {
           template: template.name,
           platforms: successfulPosts.map(p => p.platform),
           timestamp: new Date().toISOString(),
-          hash: verification.contentHash
+          hash: verification.contentHash,
         });
         await this.saveContentHistory();
       }
 
-      await this.log(`Posted successfully to ${successfulPosts.length}/${platforms.length} platforms`);
+      await this.log(
+        `Posted successfully to ${successfulPosts.length}/${platforms.length} platforms`
+      );
 
       return {
         success: successfulPosts.length > 0,
         results,
-        contentHash: verification.contentHash
+        contentHash: verification.contentHash,
       };
-
     } catch (error) {
       await this.log(`Posting failed: ${error.message}`, 'ERROR');
       return { success: false, error: error.message };
@@ -219,7 +220,7 @@ class VerifiedSocialAutomation {
     const schedule = [
       { time: '09:00', platforms: ['twitter', 'linkedin'], category: 'case-study' },
       { time: '13:00', platforms: ['linkedin', 'bluesky'], category: 'industry-insight' },
-      { time: '17:00', platforms: ['twitter', 'bluesky'], category: 'feature' }
+      { time: '17:00', platforms: ['twitter', 'bluesky'], category: 'feature' },
     ];
 
     for (const slot of schedule) {

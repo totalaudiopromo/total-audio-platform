@@ -5,8 +5,9 @@ This project uses **Tailwind CSS v4** (not v3).
 ## Critical Rules
 
 ### ✅ CORRECT globals.css syntax:
+
 ```css
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-background: #ffffff;
@@ -16,11 +17,12 @@ This project uses **Tailwind CSS v4** (not v3).
 ```
 
 ### ❌ WRONG - DO NOT USE (v3 syntax):
+
 ```css
 /* These will break the build */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 @layer base {
   /* ... */
@@ -40,6 +42,7 @@ This project uses **Tailwind CSS v4** (not v3).
 3. Restart dev server
 
 ## Package versions (package.json):
+
 - `tailwindcss`: `^4.1.13`
 - `@tailwindcss/postcss`: `^4.1.14`
 - `next`: `15.5.4`

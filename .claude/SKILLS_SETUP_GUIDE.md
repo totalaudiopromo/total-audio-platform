@@ -85,31 +85,37 @@ Close and reopen Claude Code to load new skills.
 ### 🔥 Install First (This Week)
 
 #### 1. Skill Creator
+
 **Why:** Create custom skills for both projects
 **Repo:** https://github.com/obra/superpowers
 **Path:** `skills/skill-creator/`
 
 **First Custom Skills to Create:**
+
 - `audio-intel-mobile-validator`: Enforces 21 mobile UX standards
 - `two-hour-session-scope`: Validates work fits in 2-hour window
 - `experimental-sandbox-guard`: Prevents production code in totalaud.io
 
 #### 2. Changelog Generator
+
 **Why:** Customer trust + demo call prep
 **Repo:** https://github.com/ComposioHQ/awesome-claude-skills
 **Path:** `changelog-generator/`
 
 **Use Cases:**
+
 - Generate Audio Intel release notes for customers
 - Track feature implementations for investor updates
 - Document experimental learnings in totalaud.io
 
 #### 3. Systematic Debugging
+
 **Why:** Prevents 2-hour sessions turning into rabbit holes
 **Repo:** https://github.com/obra/superpowers
 **Path:** `skills/systematic-debugging/`
 
 **Use Cases:**
+
 - Vercel deployment issues (module resolution)
 - TypeScript errors across both projects
 - Mobile UX bugs in Audio Intel
@@ -119,11 +125,13 @@ Close and reopen Claude Code to load new skills.
 ### ✅ Install Later (After First Customer)
 
 #### 4. Brainstorming
+
 **Why:** Feature planning and customer acquisition strategy
 **Repo:** https://github.com/obra/superpowers
 **Path:** `skills/brainstorming/`
 
 **Use Cases:**
+
 - Plan new Audio Intel conversion features
 - Design experimental totalaud.io workflows
 - Scope 2-hour development sessions
@@ -133,11 +141,13 @@ Close and reopen Claude Code to load new skills.
 ### ⏸️ Defer (After £500/month)
 
 #### 5. Simplification Cascades
+
 **Why:** Refactoring should wait until post-customer acquisition
 **Repo:** https://github.com/obra/superpowers-skills
 **Path:** `skills/problem-solving/simplification-cascades/`
 
 **When to Use:**
+
 - After Audio Intel proves sustainable revenue
 - When totalaud.io moves from experimental to production
 - During code cleanup sprints (not during customer acquisition)
@@ -147,9 +157,11 @@ Close and reopen Claude Code to load new skills.
 ## How to Use Skills
 
 ### Automatic Invocation
+
 Skills are automatically invoked by Claude Code when relevant. No need to call them explicitly.
 
 ### Manual Invocation
+
 If you want to explicitly use a skill:
 
 ```bash
@@ -160,7 +172,9 @@ If you want to explicitly use a skill:
 ```
 
 ### Skill Context
+
 Skills have access to:
+
 - Your codebase
 - Git history
 - Project CLAUDE.md instructions
@@ -173,9 +187,11 @@ Skills have access to:
 ### For Audio Intel (Customer Acquisition Focus)
 
 #### 1. audio-intel-mobile-validator
+
 **Purpose:** Enforce 21 mobile UX standards resolved in September 2025
 **Triggers:** When creating/modifying components in `apps/audio-intel/`
 **Checks:**
+
 - Touch target sizes (min 44x44px)
 - Mobile viewport responsiveness
 - Loading states for network requests
@@ -183,17 +199,21 @@ Skills have access to:
 - Conversion funnel optimization
 
 #### 2. customer-acquisition-tracker
+
 **Purpose:** Track demo calls, conversions, revenue metrics
 **Triggers:** When updating CLAUDE.md with customer data
 **Outputs:**
+
 - Current conversion rates by segment (Radio 85%, Artist 60%, Agency 70%)
 - Progress toward £500/month goal
 - Demo call quality scoring
 
 #### 3. two-hour-session-validator
+
 **Purpose:** Prevent scope creep during 2-hour sessions
 **Triggers:** At session start and every 30 minutes
 **Checks:**
+
 - Current task scope fits in remaining time
 - No rabbit holes or over-optimization
 - Customer acquisition focus maintained
@@ -203,25 +223,31 @@ Skills have access to:
 ### For totalaud.io (Experimental Focus)
 
 #### 1. experimental-sandbox-guard
+
 **Purpose:** Prevent experimental code from affecting production (Audio Intel)
 **Triggers:** When working in `/totalaud.io` directory
 **Checks:**
+
 - No shared dependencies with Audio Intel
 - No Supabase schema changes affecting production
 - Clear separation of concerns
 
 #### 2. theme-system-validator
+
 **Purpose:** Enforce consistency across 5 themes (ascii, xp, aqua, daw, analogue)
 **Triggers:** When modifying theme configs or theme-aware components
 **Checks:**
+
 - All themes have required config keys
 - Theme colours are accessible (WCAG AA)
 - Sound banks are defined for each theme
 
 #### 3. onboarding-flow-tester
+
 **Purpose:** Validate 4-phase onboarding state machine
 **Triggers:** When modifying onboarding components/hooks
 **Checks:**
+
 - Phase transitions work correctly
 - localStorage persistence is reliable
 - Skip functionality (?skip_onboarding=true) works
@@ -231,12 +257,14 @@ Skills have access to:
 ## Token Usage Considerations
 
 Skills consume tokens. Optimize by:
+
 - Only install skills you actively use
 - Archive unused skills to `~/.claude/skills-archive/`
 - Disable automatic invocation for low-priority skills
 - Use manual invocation for infrequent tasks
 
 **Rule of Thumb:**
+
 - Customer acquisition skills: Always active
 - Experimental skills: Manual invocation only
 - Optimization skills: Deferred until post-revenue
@@ -246,6 +274,7 @@ Skills consume tokens. Optimize by:
 ## Integration with Existing Workflows
 
 ### Git Workflow Enhancement
+
 ```bash
 # Before committing (Audio Intel):
 1. Run mobile tests: npm run test:mobile
@@ -260,7 +289,9 @@ Skills consume tokens. Optimize by:
 ```
 
 ### MCP + Skills Synergy
+
 Your 14+ MCP servers + Skills = Powerful automation:
+
 - **Gmail MCP + Customer Acquisition Tracker**: Auto-track demo call responses
 - **Notion MCP + Changelog Generator**: Auto-publish release notes
 - **Puppeteer MCP + Mobile Validator**: Automated mobile UX testing
@@ -270,6 +301,7 @@ Your 14+ MCP servers + Skills = Powerful automation:
 ## Troubleshooting
 
 ### Skills Not Loading
+
 ```bash
 # Check skills are in correct directory
 ls -la ~/.claude/skills/
@@ -279,6 +311,7 @@ ls -la ~/.claude/skills/
 ```
 
 ### Skills Consuming Too Many Tokens
+
 ```bash
 # Move unused skills to archive
 mkdir -p ~/.claude/skills-archive
@@ -286,7 +319,9 @@ mv ~/.claude/skills/simplification-cascades ~/.claude/skills-archive/
 ```
 
 ### Skill Conflicts
+
 If multiple skills try to activate simultaneously:
+
 - Prioritize customer acquisition skills
 - Manually invoke specific skill needed
 - Disable auto-invocation for experimental skills
@@ -296,18 +331,21 @@ If multiple skills try to activate simultaneously:
 ## Next Steps
 
 ### This Week
+
 - [ ] Enable Skills in Claude Code settings
 - [ ] Install Skill Creator, Changelog Generator, Systematic Debugging
 - [ ] Create first custom skill: `audio-intel-mobile-validator`
 - [ ] Generate changelog for recent Audio Intel updates
 
 ### This Month
+
 - [ ] Install Brainstorming skill
 - [ ] Create `customer-acquisition-tracker` skill
 - [ ] Create `two-hour-session-validator` skill
 - [ ] Document skill effectiveness in CLAUDE.md
 
 ### After First Customer
+
 - [ ] Review which skills accelerated customer acquisition
 - [ ] Archive unused skills
 - [ ] Create new skills based on customer feedback patterns
@@ -318,15 +356,18 @@ If multiple skills try to activate simultaneously:
 ## Resources
 
 ### Official Documentation
+
 - Claude Code Skills: https://docs.claude.com/skills
 - Anthropic Skills Repo: https://github.com/anthropics/anthropic-skills
 
 ### Community Skills
+
 - obra/superpowers: https://github.com/obra/superpowers
 - obra/superpowers-skills: https://github.com/obra/superpowers-skills
 - ComposioHQ/awesome-claude-skills: https://github.com/ComposioHQ/awesome-claude-skills
 
 ### Video Tutorial
+
 - "5 Claude Code Skills Every Vibe Coder Needs": https://www.youtube.com/watch?v=901VMcZq8X4
 
 ---

@@ -8,21 +8,21 @@ router.get('/campaigns', async (req, res) => {
   try {
     // Debug: Print the API key to see if it's loaded
     console.log('MAILCHIMP_API_KEY:', process.env.MAILCHIMP_API_KEY);
-    
+
     const config = {
       apiKey: process.env.MAILCHIMP_API_KEY || '',
       serverPrefix: process.env.MAILCHIMP_SERVER_PREFIX || '',
       listId: process.env.MAILCHIMP_AUDIENCE_ID || '',
     };
-    
-    console.log('Config:', { 
+
+    console.log('Config:', {
       apiKey: config.apiKey ? '***' + config.apiKey.slice(-4) : 'EMPTY',
       serverPrefix: config.serverPrefix,
-      listId: config.listId 
+      listId: config.listId,
     });
-    
+
     const mailchimpService = new MailchimpService(config);
-    
+
     // Fetch campaigns from Mailchimp
     const campaigns = await mailchimpService['mailchimp'].get('/campaigns?count=20');
     // Return only basic info for now
@@ -36,7 +36,10 @@ router.get('/campaigns', async (req, res) => {
     res.json({ campaigns: result });
   } catch (error) {
     console.error('Mailchimp campaigns endpoint error:', error);
-    res.status(500).json({ error: 'Failed to fetch campaigns', details: error instanceof Error ? error.stack : error });
+    res.status(500).json({
+      error: 'Failed to fetch campaigns',
+      details: error instanceof Error ? error.stack : error,
+    });
   }
 });
 
@@ -49,12 +52,15 @@ router.get('/campaigns/:id/analytics', async (req, res) => {
       listId: process.env.MAILCHIMP_AUDIENCE_ID || '',
     };
     const mailchimpService = new MailchimpService(config);
-    
+
     const analytics = await mailchimpService.getCampaignAnalytics(req.params.id);
     res.json({ analytics });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch campaign analytics', details: error instanceof Error ? error.message : error });
+    res.status(500).json({
+      error: 'Failed to fetch campaign analytics',
+      details: error instanceof Error ? error.message : error,
+    });
   }
 });
 
-export default router; 
+export default router;

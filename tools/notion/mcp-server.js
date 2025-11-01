@@ -16,7 +16,7 @@ if (!TOKEN) {
 
 // --- MCP framing helpers (LSP-style) ---
 let inBuffer = Buffer.alloc(0);
-process.stdin.on('data', (chunk) => {
+process.stdin.on('data', chunk => {
   inBuffer = Buffer.concat([inBuffer, chunk]);
   drain();
 });
@@ -55,19 +55,22 @@ function send(msg) {
 // --- Notion API helpers ---
 function notionGet(path) {
   return new Promise((resolve, reject) => {
-    const req = https.request({
-      hostname: 'api.notion.com',
-      path,
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${TOKEN}`,
-        'Notion-Version': '2022-06-28'
+    const req = https.request(
+      {
+        hostname: 'api.notion.com',
+        path,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+          'Notion-Version': '2022-06-28',
+        },
+      },
+      res => {
+        let data = '';
+        res.on('data', c => (data += c));
+        res.on('end', () => resolve({ status: res.statusCode, data }));
       }
-    }, (res) => {
-      let data = '';
-      res.on('data', c => data += c);
-      res.on('end', () => resolve({ status: res.statusCode, data }));
-    });
+    );
     req.on('error', reject);
     req.end();
   });
@@ -76,21 +79,24 @@ function notionGet(path) {
 function notionPost(path, bodyObj) {
   const body = JSON.stringify(bodyObj || {});
   return new Promise((resolve, reject) => {
-    const req = https.request({
-      hostname: 'api.notion.com',
-      path,
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${TOKEN}`,
-        'Notion-Version': '2022-06-28',
-        'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(body)
+    const req = https.request(
+      {
+        hostname: 'api.notion.com',
+        path,
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+          'Notion-Version': '2022-06-28',
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(body),
+        },
+      },
+      res => {
+        let data = '';
+        res.on('data', c => (data += c));
+        res.on('end', () => resolve({ status: res.statusCode, data }));
       }
-    }, (res) => {
-      let data = '';
-      res.on('data', c => data += c);
-      res.on('end', () => resolve({ status: res.statusCode, data }));
-    });
+    );
     req.on('error', reject);
     req.write(body);
     req.end();
@@ -100,21 +106,24 @@ function notionPost(path, bodyObj) {
 function notionPatch(path, bodyObj) {
   const body = JSON.stringify(bodyObj || {});
   return new Promise((resolve, reject) => {
-    const req = https.request({
-      hostname: 'api.notion.com',
-      path,
-      method: 'PATCH',
-      headers: {
-        'Authorization': `Bearer ${TOKEN}`,
-        'Notion-Version': '2022-06-28',
-        'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(body)
+    const req = https.request(
+      {
+        hostname: 'api.notion.com',
+        path,
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+          'Notion-Version': '2022-06-28',
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(body),
+        },
+      },
+      res => {
+        let data = '';
+        res.on('data', c => (data += c));
+        res.on('end', () => resolve({ status: res.statusCode, data }));
       }
-    }, (res) => {
-      let data = '';
-      res.on('data', c => data += c);
-      res.on('end', () => resolve({ status: res.statusCode, data }));
-    });
+    );
     req.on('error', reject);
     req.write(body);
     req.end();
@@ -130,8 +139,8 @@ function handleMessage(msg) {
       result: {
         protocolVersion: '2024-11-05',
         serverInfo: { name: 'notion-mcp-min', version: '0.1.0' },
-        capabilities: { tools: {} }
-      }
+        capabilities: { tools: {} },
+      },
     });
   }
   if (method === 'tools/list') {
@@ -145,8 +154,8 @@ function handleMessage(msg) {
             inputSchema: {
               type: 'object',
               properties: { query: { type: 'string' } },
-              required: ['query']
-            }
+              required: ['query'],
+            },
           },
           {
             name: 'notion.page',
@@ -154,8 +163,8 @@ function handleMessage(msg) {
             inputSchema: {
               type: 'object',
               properties: { pageId: { type: 'string' } },
-              required: ['pageId']
-            }
+              required: ['pageId'],
+            },
           },
           {
             name: 'notion.pageTitle',
@@ -163,17 +172,18 @@ function handleMessage(msg) {
             inputSchema: {
               type: 'object',
               properties: { pageId: { type: 'string' } },
-              required: ['pageId']
-            }
+              required: ['pageId'],
+            },
           },
           {
             name: 'notion.pageByUrl',
-            description: 'Resolve a Notion share URL to pageId, then return page metadata and first blocks',
+            description:
+              'Resolve a Notion share URL to pageId, then return page metadata and first blocks',
             inputSchema: {
               type: 'object',
               properties: { url: { type: 'string' } },
-              required: ['url']
-            }
+              required: ['url'],
+            },
           },
           {
             name: 'notion.updatePageProperties',
@@ -182,10 +192,10 @@ function handleMessage(msg) {
               type: 'object',
               properties: {
                 pageId: { type: 'string' },
-                properties: { type: 'object' }
+                properties: { type: 'object' },
               },
-              required: ['pageId', 'properties']
-            }
+              required: ['pageId', 'properties'],
+            },
           },
           {
             name: 'notion.appendBlock',
@@ -194,10 +204,10 @@ function handleMessage(msg) {
               type: 'object',
               properties: {
                 parentBlockId: { type: 'string' },
-                children: { type: 'array' }
+                children: { type: 'array' },
               },
-              required: ['parentBlockId', 'children']
-            }
+              required: ['parentBlockId', 'children'],
+            },
           },
           {
             name: 'notion.setCheckbox',
@@ -207,13 +217,13 @@ function handleMessage(msg) {
               properties: {
                 pageId: { type: 'string' },
                 propertyName: { type: 'string' },
-                value: { type: 'boolean' }
+                value: { type: 'boolean' },
               },
-              required: ['pageId', 'propertyName', 'value']
-            }
-          }
-        ]
-      }
+              required: ['pageId', 'propertyName', 'value'],
+            },
+          },
+        ],
+      },
     });
   }
   if (method === 'tools/call') {
@@ -235,7 +245,12 @@ async function handleToolCall(id, name, args) {
       const resp = await notionPost('/v1/search', { query: q, page_size: 10 });
       if (resp.status !== 200) throw new Error(`Search failed: ${resp.status}`);
       const js = JSON.parse(resp.data);
-      const items = (js.results || []).map(r => ({ id: r.id, object: r.object, title: extractTitle(r), url: r.url || null }));
+      const items = (js.results || []).map(r => ({
+        id: r.id,
+        object: r.object,
+        title: extractTitle(r),
+        url: r.url || null,
+      }));
       return send({ id, result: { content: [{ type: 'json', json: { items } }] } });
     }
     if (name === 'notion.page') {
@@ -258,13 +273,17 @@ async function handleToolCall(id, name, args) {
       const page = JSON.parse(p.data);
       const blocks = await notionGet(`/v1/blocks/${pageId}/children?page_size=20`);
       const children = blocks.status === 200 ? JSON.parse(blocks.data).results : [];
-      return send({ id, result: { content: [{ type: 'json', json: { pageId, page, children } }] } });
+      return send({
+        id,
+        result: { content: [{ type: 'json', json: { pageId, page, children } }] },
+      });
     }
     if (name === 'notion.updatePageProperties') {
       const pageId = String(args.pageId || '').trim();
       const properties = args.properties || {};
       if (!pageId) throw new Error('Missing pageId');
-      if (typeof properties !== 'object' || !Object.keys(properties).length) throw new Error('Missing properties');
+      if (typeof properties !== 'object' || !Object.keys(properties).length)
+        throw new Error('Missing properties');
       const resp = await notionPatch(`/v1/pages/${pageId}`, { properties });
       if (resp.status !== 200) throw new Error(`Update failed: ${resp.status} ${resp.data}`);
       const js = JSON.parse(resp.data);
@@ -287,7 +306,8 @@ async function handleToolCall(id, name, args) {
       if (!pageId || !propertyName) throw new Error('Missing pageId or propertyName');
       const properties = { [propertyName]: { checkbox: value } };
       const resp = await notionPatch(`/v1/pages/${pageId}`, { properties });
-      if (resp.status !== 200) throw new Error(`Checkbox update failed: ${resp.status} ${resp.data}`);
+      if (resp.status !== 200)
+        throw new Error(`Checkbox update failed: ${resp.status} ${resp.data}`);
       const js = JSON.parse(resp.data);
       return send({ id, result: { content: [{ type: 'json', json: js }] } });
     }
@@ -314,18 +334,35 @@ function extractTitle(r) {
       for (const k of Object.keys(props)) {
         const p = props[k];
         if (p && p.type === 'title' && Array.isArray(p.title) && p.title.length) {
-          return p.title.map(t => t.plain_text || '').join('').trim() || 'untitled';
+          return (
+            p.title
+              .map(t => t.plain_text || '')
+              .join('')
+              .trim() || 'untitled'
+          );
         }
       }
       return 'untitled';
     }
     if (r.object === 'database') {
       const t = r.title || [];
-      if (Array.isArray(t) && t.length) return t.map(x => x.plain_text || '').join('').trim() || 'untitled';
+      if (Array.isArray(t) && t.length)
+        return (
+          t
+            .map(x => x.plain_text || '')
+            .join('')
+            .trim() || 'untitled'
+        );
       return 'untitled';
     }
     const t = r.title || [];
-    if (Array.isArray(t) && t.length) return t.map(x => x.plain_text || '').join('').trim() || 'untitled';
+    if (Array.isArray(t) && t.length)
+      return (
+        t
+          .map(x => x.plain_text || '')
+          .join('')
+          .trim() || 'untitled'
+      );
   } catch {}
   return 'untitled';
 }
@@ -340,7 +377,9 @@ function extractPageIdFromUrl(url) {
     const segs = u.pathname.split('/').filter(Boolean);
     const last = segs[segs.length - 1] || '';
     // Match patterns like ...-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx or raw xxxxx...
-    const mDash = last.match(/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/);
+    const mDash = last.match(
+      /([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/
+    );
     if (mDash) return normalizeId(mDash[1]);
     const mRaw = last.match(/([0-9a-fA-F]{32})/);
     if (mRaw) return normalizeId(mRaw[1]);
@@ -352,7 +391,7 @@ function normalizeId(id) {
   const clean = id.replace(/[^0-9a-fA-F]/g, '').toLowerCase();
   if (clean.length !== 32) return null;
   // Return hyphenated UUID format Notion accepts: 8-4-4-4-12
-  return `${clean.slice(0,8)}-${clean.slice(8,12)}-${clean.slice(12,16)}-${clean.slice(16,20)}-${clean.slice(20)}`;
+  return `${clean.slice(0, 8)}-${clean.slice(8, 12)}-${clean.slice(12, 16)}-${clean.slice(16, 20)}-${clean.slice(20)}`;
 }
 
 // Keep process alive

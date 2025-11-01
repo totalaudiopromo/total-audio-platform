@@ -1,0 +1,40 @@
+{
+  "name": "@total-audio/core-db",
+  "version": "1.0.0",
+  "description": "Centralised Supabase integration for Total Audio Platform",
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.ts",
+    "./server": "./src/server.ts",
+    "./middleware": "./src/middleware.ts",
+    "./types": "./src/types/index.ts",
+    "./utils": "./src/utils/index.ts"
+  },
+  "scripts": {
+    "generate:types": "bash scripts/generate-types.sh",
+    "migrate": "bash scripts/migrate.sh",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "keywords": [
+    "total-audio",
+    "supabase",
+    "database",
+    "core"
+  ],
+  "author": "Total Audio Promo",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.75.0",
+    "zod": "^3.23.0"
+  },
+  "peerDependencies": {
+    "next": "^15.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,4 +1,8 @@
-import { CampaignCardSkeleton, DashboardStatsSkeleton, IntegrationsSkeleton } from '@/components/ui/SkeletonLoader';
+import {
+  CampaignCardSkeleton,
+  DashboardStatsSkeleton,
+  IntegrationsSkeleton,
+} from '@/components/ui/SkeletonLoader';
 
 export default function DashboardLoading() {
   return (

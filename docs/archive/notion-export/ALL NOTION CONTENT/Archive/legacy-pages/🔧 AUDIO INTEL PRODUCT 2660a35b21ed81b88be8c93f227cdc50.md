@@ -1,6 +1,6 @@
 # 🔧 AUDIO INTEL PRODUCT
 
-*Your main revenue generator - everything Audio Intel related*
+_Your main revenue generator - everything Audio Intel related_
 
 ---
 
@@ -53,4 +53,4 @@
 
 ---
 
-*Everything you need to make Audio Intel profitable*
+_Everything you need to make Audio Intel profitable_

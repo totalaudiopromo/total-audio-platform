@@ -2,7 +2,7 @@
 
 /**
  * Real Integration Agent for Total Audio Promo
- * 
+ *
  * Uses actual service implementations from the backend instead of mocks
  * Manages all third-party integrations with proper error handling and logging
  */
@@ -13,7 +13,7 @@ const path = require('path');
 const logger = {
   info: (msg, ...args) => console.log(`[INFO] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[ERROR] ${msg}`, ...args),
-  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args)
+  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args),
 };
 
 class RealIntegrationAgent {
@@ -29,9 +29,9 @@ class RealIntegrationAgent {
    */
   async initialize() {
     logger.info(`${this.name} initializing with real services...`);
-    
+
     const results = {};
-    
+
     try {
       // Initialize Airtable service
       results.airtable = await this.initializeAirtable();
@@ -66,7 +66,7 @@ class RealIntegrationAgent {
 
     this.initialized = true;
     logger.info(`${this.name} initialization completed`);
-    
+
     return results;
   }
 
@@ -87,16 +87,20 @@ class RealIntegrationAgent {
           require('ts-node/register');
           AirtableService = require('../backend/src/integrations/airtable').AirtableService;
         } catch (e2) {
-          throw new Error('Cannot load AirtableService. Please compile backend or install ts-node.');
+          throw new Error(
+            'Cannot load AirtableService. Please compile backend or install ts-node.'
+          );
         }
       }
-      
+
       // Check for required environment variables
       const apiKey = process.env.AIRTABLE_API_KEY;
       const baseId = process.env.AIRTABLE_BASE_ID;
-      
+
       if (!apiKey || !baseId) {
-        logger.warn('Airtable configuration missing - service will be available but not functional');
+        logger.warn(
+          'Airtable configuration missing - service will be available but not functional'
+        );
         this.services.airtable = null;
         return 'configured but not connected (missing credentials)';
       }
@@ -107,7 +111,7 @@ class RealIntegrationAgent {
         contactsTableId: process.env.AIRTABLE_CONTACTS_TABLE_ID || 'Contacts',
         campaignsTableId: process.env.AIRTABLE_CAMPAIGNS_TABLE_ID || 'Campaigns',
         interactionsTableId: process.env.AIRTABLE_INTERACTIONS_TABLE_ID || 'Interactions',
-        emailsTableId: process.env.AIRTABLE_EMAILS_TABLE_ID || 'Emails'
+        emailsTableId: process.env.AIRTABLE_EMAILS_TABLE_ID || 'Emails',
       };
 
       this.services.airtable = new AirtableService(config);
@@ -133,15 +137,19 @@ class RealIntegrationAgent {
           require('ts-node/register');
           MailchimpService = require('../backend/src/integrations/mailchimp').MailchimpService;
         } catch (e2) {
-          throw new Error('Cannot load MailchimpService. Please compile backend or install ts-node.');
+          throw new Error(
+            'Cannot load MailchimpService. Please compile backend or install ts-node.'
+          );
         }
       }
-      
+
       const apiKey = process.env.MAILCHIMP_API_KEY;
       const listId = process.env.MAILCHIMP_LIST_ID;
-      
+
       if (!apiKey || !listId) {
-        logger.warn('Mailchimp configuration missing - service will be available but not functional');
+        logger.warn(
+          'Mailchimp configuration missing - service will be available but not functional'
+        );
         this.services.mailchimp = null;
         return 'configured but not connected (missing credentials)';
       }
@@ -149,7 +157,7 @@ class RealIntegrationAgent {
       const config = {
         apiKey,
         serverPrefix: apiKey.split('-')[1], // Extract server prefix from API key
-        listId
+        listId,
       };
 
       this.services.mailchimp = new MailchimpService(config);
@@ -178,12 +186,12 @@ class RealIntegrationAgent {
           throw new Error('Cannot load GmailService. Please compile backend or install ts-node.');
         }
       }
-      
+
       const clientId = process.env.GOOGLE_CLIENT_ID;
       const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
       const refreshToken = process.env.GOOGLE_REFRESH_TOKEN;
       const accessToken = process.env.GOOGLE_ACCESS_TOKEN;
-      
+
       if (!clientId || !clientSecret || !refreshToken) {
         logger.warn('Gmail configuration missing - service will be available but not functional');
         this.services.gmail = null;
@@ -195,7 +203,9 @@ class RealIntegrationAgent {
         clientSecret,
         refreshToken,
         accessToken,
-        expiryDate: process.env.GOOGLE_TOKEN_EXPIRY ? parseInt(process.env.GOOGLE_TOKEN_EXPIRY) : undefined
+        expiryDate: process.env.GOOGLE_TOKEN_EXPIRY
+          ? parseInt(process.env.GOOGLE_TOKEN_EXPIRY)
+          : undefined,
       };
 
       this.services.gmail = new GmailService(config);
@@ -224,9 +234,9 @@ class RealIntegrationAgent {
           throw new Error('Cannot load ClaudeService. Please compile backend or install ts-node.');
         }
       }
-      
+
       const apiKey = process.env.ANTHROPIC_API_KEY;
-      
+
       if (!apiKey) {
         logger.warn('Claude configuration missing - service will be available but not functional');
         this.services.claude = null;
@@ -235,7 +245,7 @@ class RealIntegrationAgent {
 
       const config = {
         apiKey,
-        model: process.env.CLAUDE_MODEL || 'claude-3-sonnet-20240229'
+        model: process.env.CLAUDE_MODEL || 'claude-3-sonnet-20240229',
       };
 
       this.services.claude = new ClaudeService(config);
@@ -253,7 +263,7 @@ class RealIntegrationAgent {
    */
   async healthCheck() {
     const health = {};
-    
+
     // Airtable health check
     if (this.services.airtable) {
       try {
@@ -261,10 +271,10 @@ class RealIntegrationAgent {
         await this.services.airtable.syncContacts('health-check-user');
         health.airtable = { status: 'healthy', timestamp: new Date() };
       } catch (error) {
-        health.airtable = { 
+        health.airtable = {
           status: error.message.includes('User not found') ? 'healthy' : 'error',
           message: error.message,
-          timestamp: new Date()
+          timestamp: new Date(),
         };
       }
     } else {
@@ -278,10 +288,10 @@ class RealIntegrationAgent {
         await this.services.mailchimp.getCampaignAnalytics('test-campaign-id');
         health.mailchimp = { status: 'healthy', timestamp: new Date() };
       } catch (error) {
-        health.mailchimp = { 
+        health.mailchimp = {
           status: error.message.includes('not found') ? 'healthy' : 'error',
           message: error.message,
-          timestamp: new Date()
+          timestamp: new Date(),
         };
       }
     } else {
@@ -295,10 +305,10 @@ class RealIntegrationAgent {
         await this.services.gmail.searchEmails('test', 1);
         health.gmail = { status: 'healthy', timestamp: new Date() };
       } catch (error) {
-        health.gmail = { 
+        health.gmail = {
           status: 'error',
           message: error.message,
-          timestamp: new Date()
+          timestamp: new Date(),
         };
       }
     } else {
@@ -312,16 +322,16 @@ class RealIntegrationAgent {
         await this.services.claude.generateResponse('Health check');
         health.claude = { status: 'healthy', timestamp: new Date() };
       } catch (error) {
-        health.claude = { 
+        health.claude = {
           status: 'error',
           message: error.message,
-          timestamp: new Date()
+          timestamp: new Date(),
         };
       }
     } else {
       health.claude = { status: 'not_configured', message: 'Service not initialized' };
     }
-    
+
     this.healthStatus = health;
     return health;
   }
@@ -432,7 +442,9 @@ class RealIntegrationAgent {
     try {
       logger.info(`Sending bulk emails to ${recipients.length} recipients...`);
       const results = await this.services.gmail.sendBulkEmail(recipients, subject, content);
-      logger.info(`Bulk email completed: ${results.success.length} sent, ${results.failed.length} failed`);
+      logger.info(
+        `Bulk email completed: ${results.success.length} sent, ${results.failed.length} failed`
+      );
       return results;
     } catch (error) {
       logger.error('Bulk email sending failed:', error);
@@ -502,12 +514,12 @@ class RealIntegrationAgent {
    */
   async autoRecover() {
     const recovered = {};
-    
+
     for (const [name, status] of Object.entries(this.healthStatus)) {
       if (status.status === 'error') {
         try {
           logger.info(`Attempting to recover ${name} integration...`);
-          
+
           // Reinitialize the service
           switch (name) {
             case 'airtable':
@@ -525,7 +537,7 @@ class RealIntegrationAgent {
             default:
               recovered[name] = 'unknown service';
           }
-          
+
           logger.info(`${name} integration recovery result: ${recovered[name]}`);
         } catch (error) {
           recovered[name] = `recovery failed: ${error.message}`;
@@ -533,7 +545,7 @@ class RealIntegrationAgent {
         }
       }
     }
-    
+
     return recovered;
   }
 
@@ -542,7 +554,7 @@ class RealIntegrationAgent {
    */
   async bulkSync(userId) {
     const results = {};
-    
+
     try {
       if (this.services.airtable) {
         results.airtable = await this.syncAirtableContacts(userId);
@@ -552,9 +564,9 @@ class RealIntegrationAgent {
     } catch (error) {
       results.airtable = { error: error.message };
     }
-    
+
     // Add more bulk sync operations as needed
-    
+
     return results;
   }
 
@@ -569,11 +581,11 @@ class RealIntegrationAgent {
         airtable: this.services.airtable ? 'available' : 'not_available',
         mailchimp: this.services.mailchimp ? 'available' : 'not_available',
         gmail: this.services.gmail ? 'available' : 'not_available',
-        claude: this.services.claude ? 'available' : 'not_available'
+        claude: this.services.claude ? 'available' : 'not_available',
       },
-      healthStatus: this.healthStatus
+      healthStatus: this.healthStatus,
     };
-    
+
     return stats;
   }
 
@@ -608,33 +620,35 @@ if (require.main === module) {
         const health = await agent.healthCheck();
         console.log(JSON.stringify(health, null, 2));
         break;
-      
+
       case 'sync':
         const userId = process.argv[3] || 'test-user';
         const syncResults = await agent.bulkSync(userId);
         console.log(JSON.stringify(syncResults, null, 2));
         break;
-      
+
       case 'recover':
         await agent.healthCheck(); // Update health status first
         const recovery = await agent.autoRecover();
         console.log(JSON.stringify(recovery, null, 2));
         break;
-      
+
       case 'stats':
         const stats = await agent.getStatistics();
         console.log(JSON.stringify(stats, null, 2));
         break;
-      
+
       case 'test-claude':
         if (agent.isServiceAvailable('claude')) {
-          const response = await agent.services.claude.generateResponse('Hello, this is a test prompt for the agent system.');
+          const response = await agent.services.claude.generateResponse(
+            'Hello, this is a test prompt for the agent system.'
+          );
           console.log('Claude Response:', response);
         } else {
           console.log('Claude service not available');
         }
         break;
-      
+
       case 'test-gmail':
         if (agent.isServiceAvailable('gmail')) {
           const emails = await agent.searchGmailEmails('test', 5);
@@ -644,9 +658,11 @@ if (require.main === module) {
           console.log('Gmail service not available');
         }
         break;
-      
+
       default:
-        console.log('Usage: node integration-agent-real.js [health|sync|recover|stats|test-claude|test-gmail]');
+        console.log(
+          'Usage: node integration-agent-real.js [health|sync|recover|stats|test-claude|test-gmail]'
+        );
         console.log('');
         console.log('Real Integration Agent Commands:');
         console.log('  health       - Check all service health');

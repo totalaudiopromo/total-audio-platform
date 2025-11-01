@@ -18,15 +18,15 @@ const router = express.Router();
 router.post('/audit', authenticateToken, async (req: AuthRequest, res: Response) => {
   try {
     const userId = req.user?.id;
-    
+
     if (!userId) {
       return res.status(401).json({
         error: 'User not authenticated',
       });
     }
-    
+
     const auditService = await AirtableAuditService.getAuditServiceForUser(userId);
-    
+
     if (!auditService) {
       return res.status(404).json({
         error: 'Airtable integration not found or not connected',
@@ -34,14 +34,13 @@ router.post('/audit', authenticateToken, async (req: AuthRequest, res: Response)
     }
 
     logger.info(`Starting Airtable audit for user ${userId}`);
-    
+
     const auditResult = await auditService.performFullAudit();
-    
+
     return res.json({
       success: true,
       data: auditResult,
     });
-    
   } catch (error) {
     logger.error('Airtable audit error:', error);
     return res.status(500).json({
@@ -55,15 +54,15 @@ router.post('/audit', authenticateToken, async (req: AuthRequest, res: Response)
 router.get('/summary', authenticateToken, async (req: AuthRequest, res: Response) => {
   try {
     const userId = req.user?.id;
-    
+
     if (!userId) {
       return res.status(401).json({
         error: 'User not authenticated',
       });
     }
-    
+
     const auditService = await AirtableAuditService.getAuditServiceForUser(userId);
-    
+
     if (!auditService) {
       return res.status(404).json({
         error: 'Airtable integration not found or not connected',
@@ -71,7 +70,7 @@ router.get('/summary', authenticateToken, async (req: AuthRequest, res: Response
     }
 
     const auditResult = await auditService.performFullAudit();
-    
+
     return res.json({
       success: true,
       data: {
@@ -79,7 +78,6 @@ router.get('/summary', authenticateToken, async (req: AuthRequest, res: Response
         recommendations: auditResult.recommendations,
       },
     });
-    
   } catch (error) {
     logger.error('Airtable audit summary error:', error);
     return res.status(500).json({
@@ -94,15 +92,15 @@ router.get('/section/:section', authenticateToken, async (req: AuthRequest, res:
   try {
     const userId = req.user?.id;
     const section = req.params.section;
-    
+
     if (!userId) {
       return res.status(401).json({
         error: 'User not authenticated',
       });
     }
-    
+
     const auditService = await AirtableAuditService.getAuditServiceForUser(userId);
-    
+
     if (!auditService) {
       return res.status(404).json({
         error: 'Airtable integration not found or not connected',
@@ -110,9 +108,9 @@ router.get('/section/:section', authenticateToken, async (req: AuthRequest, res:
     }
 
     const auditResult = await auditService.performFullAudit();
-    
+
     let sectionData: any = {};
-    
+
     switch (section) {
       case 'duplicates':
         sectionData = {
@@ -142,12 +140,11 @@ router.get('/section/:section', authenticateToken, async (req: AuthRequest, res:
           error: 'Invalid section. Valid sections: duplicates, incomplete, inconsistencies, fields',
         });
     }
-    
+
     return res.json({
       success: true,
       data: sectionData,
     });
-    
   } catch (error) {
     logger.error('Airtable audit section error:', error);
     return res.status(500).json({
@@ -157,4 +154,4 @@ router.get('/section/:section', authenticateToken, async (req: AuthRequest, res:
   }
 });
 
-export default router; 
+export default router;

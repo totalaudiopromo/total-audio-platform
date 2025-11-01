@@ -106,7 +106,7 @@
 ### **1. Referral Program**
 
 **Incentive**: Free month of Professional plan for each successful referral
-**Implementation**: 
+**Implementation**:
 
 - Add referral tracking to beta signup
 - Create shareable referral links

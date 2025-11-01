@@ -50,7 +50,7 @@ Audio Intel reduces this to a 15-minute process, allowing professionals to focus
 Time optimisation equals more strategic music promotion.
 
 intel.totalaudiopromo.com`,
-  }
+  },
 ];
 
 const POSTING_LOG_FILE = path.join(process.cwd(), 'data', 'linkedin-posting-log.json');
@@ -92,7 +92,7 @@ class LinkedInAutomation {
     // Test the token by fetching profile
     const response = await fetch('https://api.linkedin.com/v2/people/~', {
       headers: {
-        'Authorization': `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${this.accessToken}`,
       },
     });
 
@@ -102,7 +102,9 @@ class LinkedInAutomation {
     }
 
     const profile = await response.json();
-    await this.log(`✅ LinkedIn authenticated: ${profile.firstName.localized.en_US} ${profile.lastName.localized.en_US}`);
+    await this.log(
+      `✅ LinkedIn authenticated: ${profile.firstName.localized.en_US} ${profile.lastName.localized.en_US}`
+    );
     return true;
   }
 
@@ -112,9 +114,7 @@ class LinkedInAutomation {
       .filter(([key, data]) => new Date(data.timestamp).toDateString() === today)
       .map(([key, data]) => data.postId);
 
-    const availablePosts = LINKEDIN_AUDIO_INTEL_POSTS.filter(post =>
-      !usedToday.includes(post.id)
-    );
+    const availablePosts = LINKEDIN_AUDIO_INTEL_POSTS.filter(post => !usedToday.includes(post.id));
 
     if (availablePosts.length === 0) {
       console.log('All LinkedIn posts used today. Cycle complete.');
@@ -151,7 +151,7 @@ class LinkedInAutomation {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${this.accessToken}`,
         'X-Restli-Protocol-Version': '2.0.0',
       },
       body: JSON.stringify(postData),
@@ -172,7 +172,7 @@ class LinkedInAutomation {
       timestamp: new Date().toISOString(),
       platform: 'linkedin',
       linkedInPostId: result.id,
-      contentHash
+      contentHash,
     });
 
     await this.savePostingHistory();
@@ -198,7 +198,6 @@ class LinkedInAutomation {
 
       // Post to LinkedIn
       await this.postToLinkedIn(nextPost);
-
     } catch (error) {
       await this.log(`❌ LinkedIn posting error: ${error.message}`);
       throw error;
@@ -207,8 +206,9 @@ class LinkedInAutomation {
 
   async showLinkedInStatus() {
     const today = new Date().toDateString();
-    const todaysPosts = Array.from(this.postingHistory.entries())
-      .filter(([key, data]) => new Date(data.timestamp).toDateString() === today);
+    const todaysPosts = Array.from(this.postingHistory.entries()).filter(
+      ([key, data]) => new Date(data.timestamp).toDateString() === today
+    );
 
     console.log('\n💼 LinkedIn Automation Status');
     console.log('==============================');
@@ -216,9 +216,11 @@ class LinkedInAutomation {
     console.log(`Posts today: ${todaysPosts.length}/3`);
 
     if (todaysPosts.length > 0) {
-      console.log('\nToday\'s LinkedIn posts:');
+      console.log("\nToday's LinkedIn posts:");
       todaysPosts.forEach(([key, data]) => {
-        const time = new Date(data.timestamp).toLocaleTimeString('en-GB', { timeZone: 'Europe/London' });
+        const time = new Date(data.timestamp).toLocaleTimeString('en-GB', {
+          timeZone: 'Europe/London',
+        });
         console.log(`  ${time} - ${data.postName}`);
         console.log(`    LinkedIn Post ID: ${data.linkedInPostId}`);
       });

@@ -20,10 +20,26 @@ interface BlogSidebarProps {
 
 const categories = [
   { name: 'All Guides', value: 'all', color: 'bg-gray-100 text-gray-800' },
-  { name: 'Playlist Tracking', value: 'Playlist Tracking', color: 'bg-teal-100 text-teal-800' },
-  { name: 'Radio Tracking', value: 'Radio Tracking', color: 'bg-indigo-100 text-indigo-800' },
-  { name: 'PR Tracking', value: 'PR Tracking', color: 'bg-green-100 text-green-800' },
-  { name: 'Social Media', value: 'Social Media Tracking', color: 'bg-pink-100 text-pink-800' },
+  {
+    name: 'Playlist Tracking',
+    value: 'Playlist Tracking',
+    color: 'bg-teal-100 text-teal-800',
+  },
+  {
+    name: 'Radio Tracking',
+    value: 'Radio Tracking',
+    color: 'bg-indigo-100 text-indigo-800',
+  },
+  {
+    name: 'PR Tracking',
+    value: 'PR Tracking',
+    color: 'bg-green-100 text-green-800',
+  },
+  {
+    name: 'Social Media',
+    value: 'Social Media Tracking',
+    color: 'bg-pink-100 text-pink-800',
+  },
 ];
 
 export default function BlogSidebar({
@@ -31,11 +47,14 @@ export default function BlogSidebar({
   selectedCategory = 'all',
   searchQuery = '',
   onCategoryChange,
-  onSearchChange
+  onSearchChange,
 }: BlogSidebarProps) {
   const filteredPosts = posts.filter(post => {
-    const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory =
+      selectedCategory === 'all' || post.category === selectedCategory;
+    const matchesSearch = post.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -44,7 +63,10 @@ export default function BlogSidebar({
       <div className="sticky top-4 space-y-4">
         {/* Search */}
         <div className="bg-white rounded-xl border-4 border-black shadow-brutal p-4">
-          <label htmlFor="search" className="block text-sm font-bold text-gray-700 mb-2">
+          <label
+            htmlFor="search"
+            className="block text-sm font-bold text-gray-700 mb-2"
+          >
             Search Guides
           </label>
           <input
@@ -52,19 +74,22 @@ export default function BlogSidebar({
             type="text"
             placeholder="Search articles..."
             value={searchQuery}
-            onChange={(e) => onSearchChange?.(e.target.value)}
+            onChange={e => onSearchChange?.(e.target.value)}
             className="w-full px-4 py-2 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
           />
         </div>
 
         {/* Categories */}
         <div className="bg-white rounded-xl border-4 border-black shadow-brutal p-4">
-          <h3 className="text-sm font-bold text-gray-700 mb-3">Filter by Category</h3>
+          <h3 className="text-sm font-bold text-gray-700 mb-3">
+            Filter by Category
+          </h3>
           <div className="space-y-2">
-            {categories.map((category) => {
-              const count = category.value === 'all'
-                ? posts.length
-                : posts.filter(p => p.category === category.value).length;
+            {categories.map(category => {
+              const count =
+                category.value === 'all'
+                  ? posts.length
+                  : posts.filter(p => p.category === category.value).length;
 
               return (
                 <button
@@ -94,7 +119,8 @@ export default function BlogSidebar({
                 {filteredPosts.length}
               </div>
               <p className="text-sm text-gray-600">
-                guide{filteredPosts.length !== 1 ? 's' : ''} {searchQuery ? 'found' : 'available'}
+                guide{filteredPosts.length !== 1 ? 's' : ''}{' '}
+                {searchQuery ? 'found' : 'available'}
               </p>
             </div>
           </div>

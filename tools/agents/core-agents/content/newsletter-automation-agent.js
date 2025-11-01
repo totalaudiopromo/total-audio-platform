@@ -2,10 +2,10 @@
 
 /**
  * Newsletter Automation Agent for Total Audio Promo
- * 
+ *
  * Integrates newsjacked content into "The Unsigned Advantage" newsletter
  * and coordinates multi-platform distribution using authentic Chris Schofield voice patterns.
- * 
+ *
  * Core Capabilities:
  * - Newsletter content integration with ConvertKit
  * - Multi-platform content distribution
@@ -22,7 +22,7 @@ const NewsjackingAgent = require('./newsjacking-agent');
 const logger = {
   info: (msg, ...args) => console.log(`[NEWSLETTER-AUTO] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[NEWSLETTER-AUTO] ${msg}`, ...args),
-  warn: (msg, ...args) => console.warn(`[NEWSLETTER-AUTO] ${msg}`, ...args)
+  warn: (msg, ...args) => console.warn(`[NEWSLETTER-AUTO] ${msg}`, ...args),
 };
 
 class NewsletterAutomationAgent {
@@ -31,13 +31,13 @@ class NewsletterAutomationAgent {
     this.specialty = 'Newsletter Integration & Multi-Platform Distribution';
     this.prisma = new PrismaClient();
     this.newsjackingAgent = new NewsjackingAgent();
-    
+
     this.metrics = {
       newslettersGenerated: 0,
       sectionsIntegrated: 0,
       platformsDistributed: 0,
       approvalsPending: 0,
-      contentPerformanceScore: 0
+      contentPerformanceScore: 0,
     };
 
     // ConvertKit API configuration
@@ -45,74 +45,75 @@ class NewsletterAutomationAgent {
       apiKey: process.env.CONVERTKIT_API_KEY || 'PLACEHOLDER_CONVERTKIT_KEY',
       apiSecret: process.env.CONVERTKIT_API_SECRET || 'PLACEHOLDER_CONVERTKIT_SECRET',
       weekendWarriorFormId: '8440957', // From beta signup form
-      newsletterSequenceId: '2453581' // Main newsletter sequence
+      newsletterSequenceId: '2453581', // Main newsletter sequence
     };
 
     // Newsletter structure for "The Unsigned Advantage"
     this.newsletterStructure = {
       header: {
-        title: "The Unsigned Advantage",
-        subtitle: "Weekly insights for independent artists who refuse to wait for permission",
+        title: 'The Unsigned Advantage',
+        subtitle: 'Weekly insights for independent artists who refuse to wait for permission',
         issueNumber: null, // Will be auto-generated
-        date: null // Will be set to current date
+        date: null, // Will be set to current date
       },
-      
+
       sections: [
         {
           id: 'opening',
-          title: 'This Week\'s Reality Check',
+          title: "This Week's Reality Check",
           purpose: 'Personal connection and industry context',
-          template: 'personal_intro'
+          template: 'personal_intro',
         },
         {
           id: 'industry_intel',
           title: 'Industry Intel',
           purpose: 'Newsjacked content with unsigned advantage angle',
           template: 'newsjacked_content',
-          source: 'newsjacking_agent'
+          source: 'newsjacking_agent',
         },
         {
           id: 'trend_alert',
           title: 'Trend Alert',
           purpose: 'Emerging opportunities for indies',
           template: 'opportunity_spotlight',
-          source: 'newsjacking_agent'
+          source: 'newsjacking_agent',
         },
         {
           id: 'tool_review',
           title: 'Tool That Actually Works',
           purpose: 'Practical tool recommendations',
-          template: 'tool_spotlight'
+          template: 'tool_spotlight',
         },
         {
           id: 'success_story',
           title: 'Unsigned Advantage Win',
           purpose: 'Real artist success story',
-          template: 'success_narrative'
+          template: 'success_narrative',
         },
         {
           id: 'audio_intel_tip',
           title: 'Contact Research Reality',
           purpose: 'Audio Intel feature highlight',
-          template: 'product_integration'
+          template: 'product_integration',
         },
         {
           id: 'closing',
           title: 'Your Move',
           purpose: 'Action-focused closing',
-          template: 'call_to_action'
-        }
+          template: 'call_to_action',
+        },
       ],
-      
+
       footer: {
-        signature: "Cheers,\nChris\n\nP.S. - Hit reply and tell me what industry BS you're dealing with this week. I read every single response.",
+        signature:
+          "Cheers,\nChris\n\nP.S. - Hit reply and tell me what industry BS you're dealing with this week. I read every single response.",
         unsubscribe: "You're receiving this because you signed up for Audio Intel beta access.",
         socialLinks: {
-          twitter: "@totalaudipromo",
-          linkedin: "chris-schofield-audio",
-          website: "intel.totalaudiopromo.com"
-        }
-      }
+          twitter: '@totalaudipromo',
+          linkedin: 'chris-schofield-audio',
+          website: 'intel.totalaudiopromo.com',
+        },
+      },
     };
 
     // Content approval workflow
@@ -122,8 +123,8 @@ class NewsletterAutomationAgent {
         voiceConsistency: 0.8, // Minimum score
         factualAccuracy: 0.9,
         actionableValue: 0.8,
-        audienceAlignment: 0.8
-      }
+        audienceAlignment: 0.8,
+      },
     };
 
     // Multi-platform distribution templates
@@ -132,36 +133,42 @@ class NewsletterAutomationAgent {
         thread: {
           maxTweets: 10,
           charactersPerTweet: 280,
-          structure: ['hook', 'context', 'insights', 'action', 'cta']
+          structure: ['hook', 'context', 'insights', 'action', 'cta'],
         },
         singleTweet: {
           maxCharacters: 280,
-          includeHashtags: ['#IndieMusic', '#MusicPromo', '#UnsignedAdvantage']
-        }
+          includeHashtags: ['#IndieMusic', '#MusicPromo', '#UnsignedAdvantage'],
+        },
       },
-      
+
       linkedin: {
         article: {
           maxLength: 1300,
-          structure: ['hook', 'professional_context', 'insights', 'industry_implications', 'actionable_steps']
+          structure: [
+            'hook',
+            'professional_context',
+            'insights',
+            'industry_implications',
+            'actionable_steps',
+          ],
         },
         post: {
           maxLength: 1300,
-          tone: 'professional_casual'
-        }
+          tone: 'professional_casual',
+        },
       },
-      
+
       instagram: {
         carousel: {
           maxSlides: 10,
           textPerSlide: 150,
-          visualElements: true
+          visualElements: true,
         },
         story: {
           maxSlides: 5,
-          duration: '15s_each'
-        }
-      }
+          duration: '15s_each',
+        },
+      },
     };
   }
 
@@ -186,49 +193,48 @@ class NewsletterAutomationAgent {
   async generateNewsletterWithNewsjacking() {
     try {
       logger.info('Generating newsletter with newsjacked content...');
-      
+
       // Get newsjacked content from newsjacking agent
       const newsjackedContent = await this.newsjackingAgent.processNewsjackingCycle();
-      
+
       if (newsjackedContent.length === 0) {
         logger.warn('No newsjacked content available, generating standard newsletter');
         return await this.generateStandardNewsletter();
       }
-      
+
       // Build newsletter structure
       const newsletter = {
         id: this.generateNewsletterId(),
         issueNumber: await this.getNextIssueNumber(),
         generatedAt: new Date(),
         status: 'generated',
-        
+
         header: {
           ...this.newsletterStructure.header,
           issueNumber: await this.getNextIssueNumber(),
-          date: new Date().toLocaleDateString('en-GB', { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-          })
+          date: new Date().toLocaleDateString('en-GB', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }),
         },
-        
+
         sections: await this.buildNewsletterSections(newsjackedContent),
         footer: this.newsletterStructure.footer,
-        
+
         metadata: {
           newsjackedStories: newsjackedContent.length,
           primaryTopics: this.extractPrimaryTopics(newsjackedContent),
           estimatedReadTime: this.calculateReadTime(newsjackedContent),
           targetAudience: 'weekend_warriors',
-          urgency: this.calculateOverallUrgency(newsjackedContent)
-        }
+          urgency: this.calculateOverallUrgency(newsjackedContent),
+        },
       };
-      
+
       this.metrics.newslettersGenerated++;
-      
+
       return newsletter;
-      
     } catch (error) {
       logger.error('Error generating newsletter:', error);
       return null;
@@ -240,24 +246,27 @@ class NewsletterAutomationAgent {
    */
   async buildNewsletterSections(newsjackedContent) {
     const sections = [];
-    
+
     // Opening section - personal connection
     sections.push(await this.generateOpeningSection(newsjackedContent));
-    
+
     // Industry Intel - primary newsjacked content
-    const primaryStory = newsjackedContent.find(c => c.originalStory.relevanceScore > 0.8) || newsjackedContent[0];
+    const primaryStory =
+      newsjackedContent.find(c => c.originalStory.relevanceScore > 0.8) || newsjackedContent[0];
     if (primaryStory) {
-      const industryIntelSection = primaryStory.newsletterSections.find(s => s.type === 'industry_intel');
+      const industryIntelSection = primaryStory.newsletterSections.find(
+        s => s.type === 'industry_intel'
+      );
       if (industryIntelSection) {
         sections.push({
           ...industryIntelSection,
-          id: 'industry_intel'
+          id: 'industry_intel',
         });
       }
     }
-    
+
     // Trend Alert - secondary newsjacked content
-    const trendStory = newsjackedContent.find(c => 
+    const trendStory = newsjackedContent.find(c =>
       c.newsletterSections.some(s => s.type === 'trend_alert')
     );
     if (trendStory) {
@@ -265,23 +274,23 @@ class NewsletterAutomationAgent {
       if (trendSection) {
         sections.push({
           ...trendSection,
-          id: 'trend_alert'
+          id: 'trend_alert',
         });
       }
     }
-    
+
     // Tool Review - Audio Intel integration
     sections.push(await this.generateToolReviewSection(newsjackedContent));
-    
+
     // Success Story - Unsigned Advantage narrative
     sections.push(await this.generateSuccessStorySection());
-    
+
     // Audio Intel Tip - product integration
     sections.push(await this.generateAudioIntelTipSection(newsjackedContent));
-    
+
     // Closing - action-focused
     sections.push(await this.generateClosingSection(newsjackedContent));
-    
+
     return sections;
   }
 
@@ -290,22 +299,22 @@ class NewsletterAutomationAgent {
    */
   async generateOpeningSection(newsjackedContent) {
     const primaryTopic = newsjackedContent[0]?.originalStory.title || 'the music industry';
-    
+
     const openingOptions = [
       `Right, so this week ${primaryTopic.toLowerCase()} happened, and honestly? It's exactly why I built Audio Intel...`,
-      
+
       `Been watching ${primaryTopic.toLowerCase()} unfold this week, and it's a perfect example of why independent artists who move fast always win...`,
-      
+
       `Kids asked me why I work weekends again. Explained that whilst everyone's talking about ${primaryTopic.toLowerCase()}, someone needs to show indies the actual opportunities...`,
-      
-      `Coffee shop conversation this morning: "Is it really possible to compete with major labels?" After seeing ${primaryTopic.toLowerCase()} this week, the answer is more obvious than ever...`
+
+      `Coffee shop conversation this morning: "Is it really possible to compete with major labels?" After seeing ${primaryTopic.toLowerCase()} this week, the answer is more obvious than ever...`,
     ];
-    
+
     return {
       id: 'opening',
-      title: 'This Week\'s Reality Check',
+      title: "This Week's Reality Check",
       content: this.selectRandomFromArray(openingOptions),
-      type: 'opening'
+      type: 'opening',
     };
   }
 
@@ -314,7 +323,7 @@ class NewsletterAutomationAgent {
    */
   async generateToolReviewSection(newsjackedContent) {
     const toolContext = this.extractToolContext(newsjackedContent);
-    
+
     return {
       id: 'tool_review',
       title: 'Tool That Actually Works',
@@ -329,7 +338,7 @@ The difference between Audio Intel and generic contact lists? We show you *exact
 
 **Your move**: Test it with your next campaign. See the difference real contact intelligence makes.`,
       type: 'tool_review',
-      audioIntelIntegration: true
+      audioIntelIntegration: true,
     };
   }
 
@@ -339,27 +348,27 @@ The difference between Audio Intel and generic contact lists? We show you *exact
   async generateSuccessStorySection() {
     const successStories = [
       {
-        artist: "Folk duo from Brighton",
-        challenge: "Working full-time, only had Saturday mornings for music promo",
-        solution: "Used Audio Intel during commute, campaign ready before weekend ended",
-        result: "Regional radio play, festival circuit breakthrough"
+        artist: 'Folk duo from Brighton',
+        challenge: 'Working full-time, only had Saturday mornings for music promo',
+        solution: 'Used Audio Intel during commute, campaign ready before weekend ended',
+        result: 'Regional radio play, festival circuit breakthrough',
       },
       {
-        artist: "Electronic producer from Liverpool", 
-        challenge: "£40 monthly budget for all promotion",
-        solution: "Strategic use of Audio Intel free tier over 3 months",
-        result: "BBC Radio 1 play, 2 label interest inquiries"
+        artist: 'Electronic producer from Liverpool',
+        challenge: '£40 monthly budget for all promotion',
+        solution: 'Strategic use of Audio Intel free tier over 3 months',
+        result: 'BBC Radio 1 play, 2 label interest inquiries',
       },
       {
-        artist: "Teacher/singer-songwriter",
-        challenge: "Can only work on music during school holidays",
-        solution: "Batch campaign planning during Easter holidays using Audio Intel",
-        result: "3 radio interviews, 2 festival bookings, all organized during 2-week break"
-      }
+        artist: 'Teacher/singer-songwriter',
+        challenge: 'Can only work on music during school holidays',
+        solution: 'Batch campaign planning during Easter holidays using Audio Intel',
+        result: '3 radio interviews, 2 festival bookings, all organized during 2-week break',
+      },
     ];
-    
+
     const story = this.selectRandomFromArray(successStories);
-    
+
     return {
       id: 'success_story',
       title: 'Unsigned Advantage Win',
@@ -371,7 +380,7 @@ The difference between Audio Intel and generic contact lists? We show you *exact
 **Quote**: "Finally found a music tool that works around my chaotic life, not against it."
 
 This is exactly why Audio Intel exists - helping artists who refuse to wait for perfect circumstances.`,
-      type: 'success_story'
+      type: 'success_story',
     };
   }
 
@@ -380,7 +389,7 @@ This is exactly why Audio Intel exists - helping artists who refuse to wait for 
    */
   async generateAudioIntelTipSection(newsjackedContent) {
     const context = this.extractContactContext(newsjackedContent);
-    
+
     return {
       id: 'audio_intel_tip',
       title: 'Contact Research Reality',
@@ -398,7 +407,7 @@ When researching contacts, don't just collect emails. Get the context.
 
 That's the difference between 8% and 35% response rates.`,
       type: 'audio_intel_tip',
-      audioIntelIntegration: true
+      audioIntelIntegration: true,
     };
   }
 
@@ -407,7 +416,7 @@ That's the difference between 8% and 35% response rates.`,
    */
   async generateClosingSection(newsjackedContent) {
     const actionContext = this.extractActionContext(newsjackedContent);
-    
+
     return {
       id: 'closing',
       title: 'Your Move',
@@ -420,7 +429,7 @@ While everyone else is still figuring out what this means, you've got the roadma
 Results come from action, not analysis.
 
 The unsigned advantage isn't about having major label resources. It's about moving faster than major label bureaucracy.`,
-      type: 'closing'
+      type: 'closing',
     };
   }
 
@@ -430,10 +439,10 @@ The unsigned advantage isn't about having major label resources. It's about movi
   async submitToConvertKit(newsletter) {
     try {
       logger.info(`Submitting newsletter issue ${newsletter.issueNumber} to ConvertKit...`);
-      
+
       // Format newsletter content for ConvertKit
       const formattedContent = this.formatNewsletterForEmail(newsletter);
-      
+
       // Create broadcast in ConvertKit
       const broadcastData = {
         content: formattedContent.html,
@@ -443,27 +452,23 @@ The unsigned advantage isn't about having major label resources. It's about movi
         send_at: null,
         subject: `${newsletter.header.title} - Issue ${newsletter.issueNumber}`,
         subscriber_filter: {
-          tag_id: '9942888' // beta_user tag from ConvertKit route
-        }
+          tag_id: '9942888', // beta_user tag from ConvertKit route
+        },
       };
-      
-      const response = await axios.post(
-        `https://api.convertkit.com/v3/broadcasts`,
-        {
-          api_key: this.convertKitConfig.apiKey,
-          ...broadcastData
-        }
-      );
-      
+
+      const response = await axios.post(`https://api.convertkit.com/v3/broadcasts`, {
+        api_key: this.convertKitConfig.apiKey,
+        ...broadcastData,
+      });
+
       if (response.status === 201) {
         logger.info('Successfully created ConvertKit broadcast');
         return {
           success: true,
           broadcastId: response.data.broadcast.id,
-          status: 'scheduled'
+          status: 'scheduled',
         };
       }
-      
     } catch (error) {
       logger.error('Error submitting to ConvertKit:', error.response?.data || error.message);
       return { success: false, error: error.message };
@@ -503,12 +508,16 @@ The unsigned advantage isn't about having major label resources. It's about movi
         <p><strong>Issue ${newsletter.header.issueNumber}</strong> • ${newsletter.header.date}</p>
     </div>
     
-    ${newsletter.sections.map(section => `
+    ${newsletter.sections
+      .map(
+        section => `
         <div class="section">
             <h2>${section.title}</h2>
             <div>${this.formatSectionContent(section.content)}</div>
         </div>
-    `).join('')}
+    `
+      )
+      .join('')}
     
     <div class="signature">
         ${newsletter.footer.signature.replace(/\n/g, '<br>')}
@@ -563,22 +572,21 @@ The unsigned advantage isn't about having major label resources. It's about movi
   async generateMultiPlatformContent(newsletter) {
     try {
       logger.info('Generating multi-platform content...');
-      
+
       const platformContent = {};
-      
+
       // Twitter thread
       platformContent.twitter = await this.generateTwitterThread(newsletter);
-      
+
       // LinkedIn article
       platformContent.linkedin = await this.generateLinkedInArticle(newsletter);
-      
+
       // Instagram carousel
       platformContent.instagram = await this.generateInstagramCarousel(newsletter);
-      
+
       this.metrics.platformsDistributed += Object.keys(platformContent).length;
-      
+
       return platformContent;
-      
     } catch (error) {
       logger.error('Error generating multi-platform content:', error);
       return {};
@@ -590,12 +598,12 @@ The unsigned advantage isn't about having major label resources. It's about movi
    */
   async generateTwitterThread(newsletter) {
     const tweets = [];
-    
+
     // Hook tweet
     tweets.push(`🧵 This week's industry intel: ${newsletter.sections.find(s => s.id === 'industry_intel')?.content.slice(0, 200)}... 
 
 Thread 👇`);
-    
+
     // Content tweets
     newsletter.sections.slice(0, 3).forEach((section, index) => {
       if (section.content) {
@@ -603,19 +611,19 @@ Thread 👇`);
         tweets.push(tweetContent);
       }
     });
-    
+
     // CTA tweet
     tweets.push(`Your move: Stop waiting for permission. Start building direct relationships.
 
 Try Audio Intel free: https://intel.totalaudiopromo.com
 
 #IndieMusic #MusicPromo #UnsignedAdvantage`);
-    
+
     return {
       platform: 'twitter',
       content: tweets,
       scheduledFor: this.getOptimalPostTime('twitter'),
-      hashtags: ['#IndieMusic', '#MusicPromo', '#UnsignedAdvantage']
+      hashtags: ['#IndieMusic', '#MusicPromo', '#UnsignedAdvantage'],
     };
   }
 
@@ -624,7 +632,7 @@ Try Audio Intel free: https://intel.totalaudiopromo.com
    */
   async generateLinkedInArticle(newsletter) {
     const title = `The Unsigned Advantage: ${newsletter.metadata.primaryTopics[0] || 'Industry Intel'}`;
-    
+
     const article = `${newsletter.sections.find(s => s.id === 'opening')?.content || ''}
 
 ${newsletter.sections.find(s => s.id === 'industry_intel')?.content || ''}
@@ -647,9 +655,9 @@ What industry changes are you capitalizing on this week?
       content: {
         title,
         article,
-        summary: newsletter.header.subtitle
+        summary: newsletter.header.subtitle,
       },
-      scheduledFor: this.getOptimalPostTime('linkedin')
+      scheduledFor: this.getOptimalPostTime('linkedin'),
     };
   }
 
@@ -659,25 +667,29 @@ What industry changes are you capitalizing on this week?
   async generateInstagramCarousel(newsletter) {
     const slides = [
       {
-        title: "The Unsigned Advantage",
-        content: `Issue ${newsletter.header.issueNumber}\n\nWeekly intel for indie artists who refuse to wait for permission`
+        title: 'The Unsigned Advantage',
+        content: `Issue ${newsletter.header.issueNumber}\n\nWeekly intel for indie artists who refuse to wait for permission`,
       },
       {
         title: "This Week's Intel",
-        content: newsletter.sections.find(s => s.id === 'industry_intel')?.content.slice(0, 150) + '...'
+        content:
+          newsletter.sections.find(s => s.id === 'industry_intel')?.content.slice(0, 150) + '...',
       },
       {
-        title: "Trend Alert", 
-        content: newsletter.sections.find(s => s.id === 'trend_alert')?.content.slice(0, 150) + '...'
+        title: 'Trend Alert',
+        content:
+          newsletter.sections.find(s => s.id === 'trend_alert')?.content.slice(0, 150) + '...',
       },
       {
-        title: "Your Move",
-        content: "Stop waiting for permission.\n\nStart building direct relationships.\n\nThe unsigned advantage is real."
+        title: 'Your Move',
+        content:
+          'Stop waiting for permission.\n\nStart building direct relationships.\n\nThe unsigned advantage is real.',
       },
       {
-        title: "Try Audio Intel",
-        content: "Contact intelligence that actually works.\n\nFree trial available.\n\nintel.totalaudiopromo.com"
-      }
+        title: 'Try Audio Intel',
+        content:
+          'Contact intelligence that actually works.\n\nFree trial available.\n\nintel.totalaudiopromo.com',
+      },
     ];
 
     return {
@@ -689,9 +701,15 @@ What industry changes are you capitalizing on this week?
 ${newsletter.sections.find(s => s.id === 'closing')?.content.slice(0, 100)}...
 
 #IndieMusic #MusicPromo #UnsignedAdvantage #IndependentArtist #MusicBusiness`,
-        hashtags: ['#IndieMusic', '#MusicPromo', '#UnsignedAdvantage', '#IndependentArtist', '#MusicBusiness']
+        hashtags: [
+          '#IndieMusic',
+          '#MusicPromo',
+          '#UnsignedAdvantage',
+          '#IndependentArtist',
+          '#MusicBusiness',
+        ],
       },
-      scheduledFor: this.getOptimalPostTime('instagram')
+      scheduledFor: this.getOptimalPostTime('instagram'),
     };
   }
 
@@ -715,18 +733,21 @@ ${newsletter.sections.find(s => s.id === 'closing')?.content.slice(0, 100)}...
 
   calculateReadTime(newsjackedContent) {
     const totalWords = newsjackedContent.reduce((acc, content) => {
-      return acc + content.newsletterSections.reduce((sectionAcc, section) => {
-        return sectionAcc + (section.content?.split(' ').length || 0);
-      }, 0);
+      return (
+        acc +
+        content.newsletterSections.reduce((sectionAcc, section) => {
+          return sectionAcc + (section.content?.split(' ').length || 0);
+        }, 0)
+      );
     }, 0);
-    
+
     return Math.ceil(totalWords / 200); // Average reading speed
   }
 
   calculateOverallUrgency(newsjackedContent) {
     const urgencies = newsjackedContent.map(c => c.originalStory.relevanceScore);
     const avgUrgency = urgencies.reduce((a, b) => a + b, 0) / urgencies.length;
-    
+
     if (avgUrgency > 0.8) return 'immediate';
     if (avgUrgency > 0.6) return 'same_day';
     return 'this_week';
@@ -741,7 +762,10 @@ ${newsletter.sections.find(s => s.id === 'closing')?.content.slice(0, 100)}...
   }
 
   extractActionContext(newsjackedContent) {
-    return newsjackedContent[0]?.unsignedAngle.actionable || 'the opportunity is there for those willing to move fast';
+    return (
+      newsjackedContent[0]?.unsignedAngle.actionable ||
+      'the opportunity is there for those willing to move fast'
+    );
   }
 
   formatForTwitter(content, tweetNumber) {
@@ -752,14 +776,14 @@ ${newsletter.sections.find(s => s.id === 'closing')?.content.slice(0, 100)}...
     const times = {
       twitter: '09:00',
       linkedin: '08:00',
-      instagram: '19:00'
+      instagram: '19:00',
     };
-    
+
     const today = new Date();
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
     tomorrow.setHours(parseInt(times[platform].split(':')[0]), 0, 0, 0);
-    
+
     return tomorrow;
   }
 
@@ -770,7 +794,7 @@ ${newsletter.sections.find(s => s.id === 'closing')?.content.slice(0, 100)}...
       issueNumber: await this.getNextIssueNumber(),
       generatedAt: new Date(),
       status: 'standard',
-      message: 'Standard newsletter - no trending topics detected'
+      message: 'Standard newsletter - no trending topics detected',
     };
   }
 
@@ -780,32 +804,33 @@ ${newsletter.sections.find(s => s.id === 'closing')?.content.slice(0, 100)}...
   async runNewsletterCycle() {
     try {
       logger.info('Starting newsletter automation cycle...');
-      
+
       // Generate newsletter with newsjacked content
       const newsletter = await this.generateNewsletterWithNewsjacking();
-      
+
       if (!newsletter) {
         throw new Error('Failed to generate newsletter');
       }
-      
+
       // Generate multi-platform content
       const platformContent = await this.generateMultiPlatformContent(newsletter);
-      
+
       // Submit to ConvertKit (for manual review/scheduling)
       const convertkitResult = await this.submitToConvertKit(newsletter);
-      
+
       const result = {
         newsletter,
         platformContent,
         convertkitResult,
         status: 'pending_review',
-        generatedAt: new Date()
+        generatedAt: new Date(),
       };
-      
-      logger.info(`Newsletter automation cycle complete. Generated content for ${Object.keys(platformContent).length} platforms`);
-      
+
+      logger.info(
+        `Newsletter automation cycle complete. Generated content for ${Object.keys(platformContent).length} platforms`
+      );
+
       return result;
-      
     } catch (error) {
       logger.error('Error in newsletter cycle:', error);
       return null;
@@ -819,7 +844,7 @@ ${newsletter.sections.find(s => s.id === 'closing')?.content.slice(0, 100)}...
     return {
       ...this.metrics,
       uptime: process.uptime(),
-      lastRun: new Date().toISOString()
+      lastRun: new Date().toISOString(),
     };
   }
 
@@ -843,10 +868,10 @@ module.exports = NewsletterAutomationAgent;
 // CLI execution
 if (require.main === module) {
   const agent = new NewsletterAutomationAgent();
-  
+
   async function main() {
     await agent.initialize();
-    
+
     if (process.argv.includes('--generate')) {
       const newsletter = await agent.generateNewsletterWithNewsjacking();
       console.log(JSON.stringify(newsletter, null, 2));
@@ -870,10 +895,10 @@ Newsletter Automation Agent Commands:
   --metrics    Show agent performance metrics
       `);
     }
-    
+
     await agent.shutdown();
     process.exit(0);
   }
-  
+
   main().catch(console.error);
 }

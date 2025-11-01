@@ -23,10 +23,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (!content || content.trim().length === 0) {
-      return NextResponse.json(
-        { error: 'Content cannot be empty' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Content cannot be empty' }, { status: 400 });
     }
 
     // Validate scheduled time if provided
@@ -34,10 +31,7 @@ export async function POST(request: NextRequest) {
     if (scheduledTime) {
       const scheduleDate = new Date(scheduledTime);
       if (isNaN(scheduleDate.getTime())) {
-        return NextResponse.json(
-          { error: 'Invalid scheduled time format' },
-          { status: 400 }
-        );
+        return NextResponse.json({ error: 'Invalid scheduled time format' }, { status: 400 });
       }
       if (scheduleDate <= new Date()) {
         return NextResponse.json(
@@ -50,21 +44,21 @@ export async function POST(request: NextRequest) {
 
     // Generate platform-specific content
     const platformPosts = await Promise.all(
-      platforms.map(async (platform) => {
+      platforms.map(async platform => {
         const optimizedContent = await optimizeContentForPlatform(content, platform, hashtags);
         return {
           platform,
           content: optimizedContent,
           media: media || [],
           scheduledTime: postDate,
-          status: scheduledTime ? 'scheduled' : 'posted'
+          status: scheduledTime ? 'scheduled' : 'posted',
         };
       })
     );
 
     // For now, we'll simulate scheduling - in production this would integrate with actual APIs
     const scheduleId = `schedule_${Date.now()}`;
-    
+
     // Store in database (simulated)
     const scheduledPost = {
       id: scheduleId,
@@ -73,7 +67,7 @@ export async function POST(request: NextRequest) {
       originalContent: content,
       platforms: platformPosts,
       createdAt: new Date(),
-      status: 'scheduled'
+      status: 'scheduled',
     };
 
     // Log the scheduled post
@@ -85,25 +79,21 @@ export async function POST(request: NextRequest) {
       platforms: platformPosts.map(p => ({
         platform: p.platform,
         content: p.content,
-        scheduledTime: p.scheduledTime
+        scheduledTime: p.scheduledTime,
       })),
-      message: scheduledTime ? 
-        `Post scheduled for ${platforms.length} platform(s) at ${postDate.toLocaleString()}` :
-        `Post published immediately to ${platforms.length} platform(s)`
+      message: scheduledTime
+        ? `Post scheduled for ${platforms.length} platform(s) at ${postDate.toLocaleString()}`
+        : `Post published immediately to ${platforms.length} platform(s)`,
     });
-
   } catch (error) {
     console.error('Social media scheduling error:', error);
-    return NextResponse.json(
-      { error: 'Failed to schedule social media post' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to schedule social media post' }, { status: 500 });
   }
 }
 
 async function optimizeContentForPlatform(
-  content: string, 
-  platform: string, 
+  content: string,
+  platform: string,
   hashtags?: string[]
 ): Promise<string> {
   const platformLimits: Record<string, { maxLength: number; hashtagLimit: number }> = {
@@ -112,25 +102,27 @@ async function optimizeContentForPlatform(
     bluesky: { maxLength: 300, hashtagLimit: 5 },
     instagram: { maxLength: 2200, hashtagLimit: 30 },
     facebook: { maxLength: 63206, hashtagLimit: 5 },
-    tiktok: { maxLength: 150, hashtagLimit: 5 }
+    tiktok: { maxLength: 150, hashtagLimit: 5 },
   };
 
   const limits = platformLimits[platform] || { maxLength: 280, hashtagLimit: 3 };
-  
+
   let optimizedContent = content;
-  
+
   // Add hashtags if provided
   if (hashtags && hashtags.length > 0) {
     const limitedHashtags = hashtags.slice(0, limits.hashtagLimit);
-    const hashtagString = limitedHashtags.map(tag => tag.startsWith('#') ? tag : `#${tag}`).join(' ');
+    const hashtagString = limitedHashtags
+      .map(tag => (tag.startsWith('#') ? tag : `#${tag}`))
+      .join(' ');
     optimizedContent = `${content}\n\n${hashtagString}`;
   }
-  
+
   // Truncate if too long
   if (optimizedContent.length > limits.maxLength) {
     optimizedContent = optimizedContent.substring(0, limits.maxLength - 3) + '...';
   }
-  
+
   // Platform-specific optimizations
   switch (platform) {
     case 'twitter':
@@ -143,7 +135,7 @@ async function optimizeContentForPlatform(
       // Blue Sky specific formatting
       break;
   }
-  
+
   return optimizedContent;
 }
 
@@ -155,23 +147,20 @@ export async function GET(request: NextRequest) {
         id: 'schedule_1',
         postType: 'announcement',
         platforms: ['twitter', 'linkedin', 'bluesky'],
-        content: 'Audio Intel is now live! 🎵 Transform your music promotion with AI-powered contact enrichment.',
+        content:
+          'Audio Intel is now live! 🎵 Transform your music promotion with AI-powered contact enrichment.',
         scheduledTime: new Date(Date.now() + 3600000), // 1 hour from now
-        status: 'scheduled'
-      }
+        status: 'scheduled',
+      },
     ];
 
     return NextResponse.json({
       success: true,
       posts: scheduledPosts,
-      count: scheduledPosts.length
+      count: scheduledPosts.length,
     });
-
   } catch (error) {
     console.error('Failed to fetch scheduled posts:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch scheduled posts' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch scheduled posts' }, { status: 500 });
   }
 }

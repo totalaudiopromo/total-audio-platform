@@ -17,9 +17,7 @@ interface RadioGroupProps {
 const RadioGroup = ({ value, onValueChange, children, className = '' }: RadioGroupProps) => {
   return (
     <RadioGroupContext.Provider value={{ value, onValueChange }}>
-      <div className={className}>
-        {children}
-      </div>
+      <div className={className}>{children}</div>
     </RadioGroupContext.Provider>
   );
 };
@@ -49,17 +47,17 @@ const RadioGroupItem = ({ value, children, className = '' }: RadioGroupItemProps
         ${className}
       `}
     >
-      <div className={`
+      <div
+        className={`
         h-4 w-4 rounded-full border-2 flex items-center justify-center
         ${isSelected ? 'border-blue-500' : 'border-gray-300'}
-      `}>
-        {isSelected && (
-          <div className="h-2 w-2 rounded-full bg-blue-500" />
-        )}
+      `}
+      >
+        {isSelected && <div className="h-2 w-2 rounded-full bg-blue-500" />}
       </div>
       {children}
     </button>
   );
 };
 
-export { RadioGroup, RadioGroupItem }; 
+export { RadioGroup, RadioGroupItem };

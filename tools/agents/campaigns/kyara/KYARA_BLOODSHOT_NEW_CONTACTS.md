@@ -1,4 +1,5 @@
 # KYARA "Bloodshot" - New Contact Target List
+
 ## 30 UK & Australian Specialist Electronic/Evening Show Programmers
 
 **Campaign:** KYARA "Bloodshot" Release Week Push
@@ -218,24 +219,30 @@
 ## CONTACT STRATEGY BY REGION
 
 ### Australian Contacts (1-15):
+
 **Lead with:**
+
 - Sydney LOCAL artist (FBi, 2SER)
 - Triple J Home & Hosed support (all Triple J contacts)
 - Interstate support narrative (Melbourne/Brisbane)
 - Amazing Radio international validation
 
 **Best Time to Send:**
+
 - Tuesday-Thursday 10am-2pm AEST
 - Avoid Mondays (busy planning) and Fridays (weekend mode)
 
 ### UK Contacts (16-30):
+
 **Lead with:**
+
 - Amazing Radio UK support (all UK contacts)
 - Australian Triple J credibility (BBC will recognise prestige)
 - International electronic artist angle
 - 85 plays, 9 countries momentum
 
 **Best Time to Send:**
+
 - Tuesday-Thursday 9am-12pm GMT
 - Evening show programmers: send morning so they can listen during the day
 
@@ -244,27 +251,32 @@
 ## EMAIL TEMPLATE SELECTION GUIDE
 
 ### For Australian Triple J Network (1-3):
+
 - Use **Template 1 or 2** (WARM if previous contact, Music Director if not)
 - Lead with Sydney local + Home & Hosed support
 - Mention Amazing Radio as international validation
 
 ### For Australian Community (4-11):
+
 - Use **Template 3** (Community Radio Follow-Up)
 - Lead with LOCAL Sydney artist angle
 - Emphasise bedroom production + independent ethos
 
 ### For Australian Digital/National (12-15):
+
 - Use **Template 4** (Commercial/Crossover)
 - Lead with Triple J credibility
 - Focus on emerging artist momentum
 
 ### For UK BBC Specialist (16-22):
+
 - Use **Template 5** (UK Specialist Shows)
 - Lead with Amazing Radio support
 - Mention Australian Triple J context
 - Keep brief, professional
 
 ### For UK Community/Digital (23-30):
+
 - Use **Template 3 or 5** (adapt for UK context)
 - Lead with underground/independent angle
 - Bedroom production = credibility
@@ -275,19 +287,18 @@
 ## PRIORITY SENDING ORDER
 
 ### Week 1 (Post-Release Monday 14th):
+
 **Day 1-2 (Tue-Wed):**
+
 1. Anika Luna (WARM - Triple J Home & Hosed) ← HIGHEST PRIORITY
 2. Claire Mooney (Triple J Music Director)
 3. FBi Radio Sydney (LOCAL)
 4. 2SER Sydney (LOCAL)
 
-**Day 3-4 (Thu-Fri):**
-5. Triple R Melbourne (Simon Winkler)
-6. PBS FM Melbourne
-7. Danny Howard (BBC Radio 1 Dance)
-8. Amazing Radio (FOLLOW UP - thank them)
+**Day 3-4 (Thu-Fri):** 5. Triple R Melbourne (Simon Winkler) 6. PBS FM Melbourne 7. Danny Howard (BBC Radio 1 Dance) 8. Amazing Radio (FOLLOW UP - thank them)
 
 ### Week 2 (Oct 21-25):
+
 **Monday-Tuesday:**
 9-12. Australian community radio (4ZZZ, RTR FM, Digital)
 13-16. UK BBC 6 Music (Tom Ravenscroft, Mary Anne Hobbs, Elizabeth Alker)
@@ -302,6 +313,7 @@
 ## TRACKING SPREADSHEET SETUP
 
 Create Google Sheet with columns:
+
 - **Contact Name**
 - **Station**
 - **Email**
@@ -319,18 +331,21 @@ Create Google Sheet with columns:
 ## SUCCESS METRICS TO TRACK
 
 ### Australian Campaign:
+
 - Triple J network adds (Home & Hosed, Music Director, presenters)
 - Sydney community station support (FBi, 2SER)
 - Interstate community adds (Triple R, PBS FM, 4ZZZ)
 - Digital/online plays (Unearthed, Double J)
 
 ### UK Campaign:
+
 - BBC Radio 1 Dance/specialist adds (Danny Howard, Pete Tong)
 - BBC 6 Music evening show support (Tom Ravenscroft, Mary Anne Hobbs)
 - London underground electronic (Rinse FM, NTS, Netil)
 - Regional BBC support (Scotland, Wales)
 
 ### Overall Goals:
+
 - **10-15 new station adds** across both regions
 - **3-5 BBC plays** (Radio 1 or 6 Music)
 - **5-10 community station plays** (AU + UK)

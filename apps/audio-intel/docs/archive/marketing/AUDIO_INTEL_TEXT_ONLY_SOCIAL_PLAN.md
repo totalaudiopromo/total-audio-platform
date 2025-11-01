@@ -1,6 +1,6 @@
 # 🎯 AUDIO INTEL - NOTION-POWERED SOCIAL MEDIA STRATEGY
 
-*Command Center Integration for Solo Founder Efficiency*
+_Command Center Integration for Solo Founder Efficiency_
 
 ## 🚀 **STRATEGY OVERVIEW**
 

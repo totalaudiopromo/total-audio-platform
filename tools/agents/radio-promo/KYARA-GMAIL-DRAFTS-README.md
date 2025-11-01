@@ -29,6 +29,7 @@ All 5 emails are ready to copy/paste into Gmail drafts. Files created:
 ## 🎯 Send Priority Order
 
 ### Priority 1 - Anika Luna (URGENT - WARM CONTACT)
+
 - **Email**: luna.anika@abc.net.au
 - **Station**: Triple J Home & Hosed
 - **Why urgent**: KYARA's "Yearn" was played on her show in August 2024
@@ -36,12 +37,14 @@ All 5 emails are ready to copy/paste into Gmail drafts. Files created:
 - **Expected response**: High (warm relationship)
 
 ### Priority 2 - Claire Mooney
+
 - **Email**: mooney.claire@abc.net.au
 - **Station**: Triple J Music Director
 - **When**: After Anika response OR tomorrow
 - **Strategy**: Mention Home & Hosed support if Anika responds positively
 
 ### Priority 3-5 - Other Australian Stations
+
 - **Triple R Melbourne** (simonw@rrr.org.au)
 - **PBS FM** (Firas@pbsfm.org.au)
 - **KIIS 106.5** (music@kiis1065.com.au)
@@ -51,11 +54,13 @@ All 5 emails are ready to copy/paste into Gmail drafts. Files created:
 ## 📋 Pre-Send Checklist
 
 **BEFORE sending any emails, get from Sam/KYARA:**
+
 - ✅ Spotify link (REQUIRED)
 - ✅ WeTransfer link for WAV download
 - ✅ Optional: SoundCloud, YouTube unlisted links
 
 **Release Information:**
+
 - **Track**: "Bloodshot"
 - **Artist**: KYARA (Sydney-based)
 - **Release Date**: 14th October 2025 (TODAY)
@@ -65,6 +70,7 @@ All 5 emails are ready to copy/paste into Gmail drafts. Files created:
 ## 🎵 Key Messaging Points
 
 **Use in ALL emails:**
+
 - ✅ KYARA is Sydney-based (LOCAL to Australia)
 - ✅ Triple J Home & Hosed support ("Yearn" in August)
 - ✅ Self-produced in bedroom studio (independent credibility)
@@ -74,16 +80,19 @@ All 5 emails are ready to copy/paste into Gmail drafts. Files created:
 ## 📊 Follow-up Strategy
 
 **If Anika Luna responds positively:**
+
 - Send materials immediately
 - Mention in other pitches: "Home & Hosed is supporting this"
 - Ask about timeline for play
 
 **If no response after 3 days:**
+
 - One polite follow-up
 - Keep it brief
 - Reference Sydney local angle
 
 **General follow-up (5 days):**
+
 ```
 Hi [Name],
 
@@ -104,12 +113,14 @@ Chris
 ## 🎯 Success Metrics
 
 **Immediate Goals:**
+
 - Home & Hosed play = HUGE WIN (repeat support)
 - Broader Triple J rotation = Career-changing
 - Melbourne stations (RRR, PBS) = Credibility building
 - KIIS support = Crossover success
 
 **Timeline:**
+
 - Release is TODAY (14th October)
 - Send Home & Hosed pitch IMMEDIATELY
 - Follow with others within 24-48 hours

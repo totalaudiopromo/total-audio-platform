@@ -35,12 +35,14 @@ Open a new chat in Claude Code and ask:
 
 **Expected Response:**
 Claude should confirm skills are enabled and list:
+
 - ✅ skill-creator (writing-skills)
 - ✅ systematic-debugging
 - ✅ brainstorming
 - ✅ changelog-generator
 
 If Claude doesn't see the skills:
+
 1. Check skills directory exists: `ls ~/.claude/skills/`
 2. Restart Claude Code again
 3. Try asking: "Can you see SKILL.md files in ~/.claude/skills/?"
@@ -50,6 +52,7 @@ If Claude doesn't see the skills:
 ## Step 3: Test First Skill (5 minutes)
 
 ### Test A: Changelog Generator (Quick Win)
+
 ```
 "Generate a changelog from my recent git commits in this project"
 ```
@@ -59,11 +62,13 @@ Expected: Claude analyzes git history and creates formatted changelog
 ---
 
 ### Test B: Systematic Debugging (If You Have a Bug)
+
 ```
 "Use Systematic Debugging to help me understand why [describe issue]"
 ```
 
 Expected: Claude follows 4-phase framework:
+
 1. Root cause investigation
 2. Pattern analysis
 3. Hypothesis testing
@@ -72,11 +77,13 @@ Expected: Claude follows 4-phase framework:
 ---
 
 ### Test C: Skill Creator (Create Your First Custom Skill)
+
 ```
 "Use Skill Creator to build a simple validator skill that checks if touch targets are at least 44x44px in React components"
 ```
 
 Expected: Claude asks questions about:
+
 - When the skill should activate
 - What it should check for
 - How it should provide feedback
@@ -89,6 +96,7 @@ Expected: Claude asks questions about:
 Once skills are working, use Skill Creator to build project-specific skills:
 
 ### For Audio Intel:
+
 ```
 "Use Skill Creator to build a mobile UX validator that enforces these 21 standards:
 1. Touch targets ≥44x44px
@@ -102,6 +110,7 @@ Trigger when: Creating/modifying components in apps/audio-intel/"
 ---
 
 ### For Customer Acquisition:
+
 ```
 "Use Skill Creator to build a customer acquisition tracker that monitors:
 - Current MRR (£0 → £500 target)
@@ -115,6 +124,7 @@ Trigger when: Updating CLAUDE.md or customer data"
 ---
 
 ### For 2-Hour Sessions:
+
 ```
 "Use Skill Creator to build a session validator that:
 - Checks task scope fits 2 hours at session start
@@ -130,6 +140,7 @@ Trigger: Manual invocation at session start"
 ## Troubleshooting
 
 ### "Skills Not Showing Up"
+
 ```bash
 # Check installation
 ls -la ~/.claude/skills/
@@ -146,6 +157,7 @@ ls -la ~/.claude/skills/*/SKILL.md
 ---
 
 ### "Skills Not Activating Automatically"
+
 - Skills activate based on context and their description
 - Try manual invocation: "Use [skill name] to..."
 - Some skills only activate when explicitly called
@@ -154,6 +166,7 @@ ls -la ~/.claude/skills/*/SKILL.md
 ---
 
 ### "Can't Find Skills Settings"
+
 - Try searching in settings: "skills"
 - Check Capabilities section
 - Update Claude Code to latest version if option is missing
@@ -162,6 +175,7 @@ ls -la ~/.claude/skills/*/SKILL.md
 ---
 
 ### "Token Usage Too High"
+
 ```bash
 # Archive unused skills
 mkdir -p ~/.claude/skills-archive
@@ -176,6 +190,7 @@ mv ~/.claude/skills/brainstorming ~/.claude/skills-archive/
 ## Quick Commands Reference
 
 ### Manual Skill Invocation
+
 ```
 "Use Skill Creator to..."
 "Use Systematic Debugging to..."
@@ -184,6 +199,7 @@ mv ~/.claude/skills/brainstorming ~/.claude/skills-archive/
 ```
 
 ### Check Skill Status
+
 ```
 "What skills are installed?"
 "Are skills enabled?"
@@ -191,6 +207,7 @@ mv ~/.claude/skills/brainstorming ~/.claude/skills-archive/
 ```
 
 ### Test Specific Skills
+
 ```
 "Test the systematic-debugging skill with [issue]"
 "Use changelog-generator for commits from last week"

@@ -13,12 +13,14 @@ Just finished a radio campaign using Audio Intel instead of manual research.
 The time difference was staggering:
 
 **Manual approach (old way):**
+
 - 15+ hours researching contact details
 - 60% accuracy rate (outdated contacts, wrong emails)
 - 8-12% response rate from generic pitching
 - Weekend gone
 
 **Audio Intel approach:**
+
 - 3 minutes contact enrichment
 - 94% accuracy rate (verified, current contacts)
 - 35% response rate from personalised pitching
@@ -53,6 +55,7 @@ That's 780 hours annually.
 Here's what that time breakdown actually looks like:
 
 **Manual Research (Current Reality)**
+
 - Finding current contact details: 3 hours
 - Verifying emails still work: 2 hours
 - Researching submission preferences: 4 hours
@@ -63,6 +66,7 @@ Here's what that time breakdown actually looks like:
 **Total**: 15 hours for one campaign's contact list
 
 **Audio Intel (New Reality)**
+
 - Upload contact list: 30 seconds
 - AI processes and enriches: 90 seconds
 - Review enriched data: 2 minutes
@@ -88,6 +92,7 @@ Stop spending your time on research that can be automated. Focus on what actuall
 Let's talk about what radio promotion tools actually cost.
 
 **US Alternatives:**
+
 - Muck Rack: £400-600/month
 - Cision: £500-800/month
 - MediaHQ: £300-500/month
@@ -97,6 +102,7 @@ Built for enterprise PR agencies with massive budgets. Not for independent radio
 **Audio Intel: £19/month (Professional) or £79/month (Agency)**
 
 Same intelligence:
+
 - Real-time contact enrichment
 - Submission guidelines and preferences
 - Station coverage and reach data
@@ -124,12 +130,14 @@ Generic radio outreach gets ignored.
 Here's what actually happened when I tested personalised vs generic pitches:
 
 **Generic Pitch (Old Approach)**
+
 - 100 contacts reached
 - 3 responses received
 - 3% response rate
 - 0 successful placements
 
 **Personalised Pitch (Audio Intel Approach)**
+
 - 100 contacts reached
 - 28 responses received
 - 28% response rate
@@ -140,6 +148,7 @@ Here's what actually happened when I tested personalised vs generic pitches:
 The reason is straightforward: radio presenters and station managers receive hundreds of generic pitches weekly. They ignore anything that doesn't demonstrate you've actually researched their show.
 
 Audio Intel gives you the intelligence to write pitches that stand out:
+
 - Current show format and recent guests
 - Genre preferences and submission guidelines
 - Coverage area and listener demographics
@@ -165,18 +174,21 @@ Bad contact data doesn't just waste time. It damages your reputation.
 Real example from my radio promotion work:
 
 **The Mistake:**
+
 - Used 6-month-old contact database
 - Pitched to email address that was no longer monitored
 - Show format had completely changed
 - Genre focus had shifted
 
 **The Result:**
+
 - Email bounced (sender reputation hit)
 - Follow-up went to wrong person
 - Artist's music was flagged as spam
 - Station blacklisted our submissions for 3 months
 
 **The Cost:**
+
 - Lost 3 months of pitching opportunity
 - Damaged relationship with key station
 - Had to rebuild trust from scratch
@@ -185,6 +197,7 @@ Real example from my radio promotion work:
 This happened because I relied on outdated contact intelligence.
 
 Audio Intel solves this by pulling real-time data:
+
 - Current email addresses and active contacts
 - Recent show format changes
 - Updated genre preferences
@@ -220,6 +233,7 @@ But those 18 hours should have been spent on strategic relationship building, no
 So I built Audio Intel to automate the research that was eating my life.
 
 **What changed:**
+
 - Research time: 18 hours → 2 minutes
 - Contact accuracy: 60% → 94%
 - Response rates: 8% → 28%
@@ -244,6 +258,7 @@ The music industry is full of problems that technology can solve. We just need m
 Most radio promoters manage their contacts like this:
 
 **The Reality:**
+
 - 5+ different Excel spreadsheets
 - Contacts scattered across email threads
 - Notes in iPhone reminders
@@ -251,6 +266,7 @@ Most radio promoters manage their contacts like this:
 - "I'll remember this" (you won't)
 
 **The Result:**
+
 - Can't find contact when you need it
 - Duplicate outreach to same person
 - Missed submission deadlines
@@ -262,6 +278,7 @@ I lived this chaos for 5+ years. It's absolutely maddening.
 Audio Intel transforms this chaos into organised intelligence:
 
 **Unified Database**
+
 - All contacts in one place
 - Automatic enrichment and updates
 - Searchable by genre, location, reach
@@ -294,6 +311,7 @@ Most radio promoters focus only on national BBC stations and ignore regional/onl
 Massive mistake.
 
 **Regional Radio Reality:**
+
 - 300+ regional stations in UK
 - Combined reach: 35+ million listeners
 - Less competitive than national stations
@@ -304,6 +322,7 @@ Massive mistake.
 Researching regional stations takes forever. Each station has different submission processes, coverage areas, and programming focuses.
 
 **Example Campaign Results:**
+
 - National stations: 8% response rate, 2 placements
 - Regional stations: 35% response rate, 24 placements
 - Total reach: Regional (8.5M) vs National (2.1M)
@@ -311,6 +330,7 @@ Researching regional stations takes forever. Each station has different submissi
 Regional radio is where smart promoters build their foundation.
 
 Audio Intel makes regional station research actually manageable:
+
 - Coverage area and listener demographics
 - Submission windows and preferences
 - Genre focus and programming style
@@ -347,6 +367,7 @@ Real example from last month:
 If you're spending 15+ hours researching contacts, you've already missed it.
 
 This happens constantly in radio promotion:
+
 - Festival lineup submission deadlines
 - Seasonal programming changes
 - Guest presenter opportunities
@@ -355,6 +376,7 @@ This happens constantly in radio promotion:
 By the time you've manually researched the contact, verified the submission format, and crafted your pitch, the opportunity is gone.
 
 Audio Intel solves the speed problem:
+
 - 2-minute contact research
 - Immediate submission guidelines
 - Real-time opportunity alerts
@@ -375,25 +397,30 @@ The music industry moves fast. Your tools need to keep pace.
 Let's calculate the actual ROI of Audio Intel for radio promoters.
 
 **Your Current Cost (Manual Research):**
+
 - 15 hours weekly @ £50/hour = £750
 - 52 weeks = £39,000 annually
 - Plus opportunity cost of missed deadlines
 
 **Audio Intel Cost:**
+
 - Professional: £19/month = £228 annually
 - Agency: £79/month = £948 annually
 
 **Time Saved:**
+
 - 14 hours 56 minutes per campaign
 - Average 4 campaigns monthly = 60 hours
 - Annual time savings: 720+ hours
 
 **ROI Calculation:**
+
 - Cost: £228-948/year
 - Time saved: 720 hours @ £50/hour = £36,000
 - ROI: 3,700% - 15,700%
 
 **Plus Improved Results:**
+
 - 300% better response rates
 - 94% contact accuracy (vs ~60% manual)
 - Faster turnaround on opportunities

@@ -9,9 +9,11 @@
 ## 🎯 Complete User Journey
 
 ### **Step 1: Audio Intel** (Contact Enrichment)
+
 **URL:** `https://intel.totalaudiopromo.com/demo`
 
 **Actions:**
+
 1. User uploads contact list OR loads demo data
 2. AI enriches contacts with intelligence:
    - Outlet/station name
@@ -26,9 +28,11 @@
 ---
 
 ### **Step 2: Pitch Generator** (AI Pitch Creation)
+
 **URL:** `https://pitch.totalaudiopromo.com/pitch/generate?import=clipboard`
 
 **First-Time User Flow:**
+
 1. **Guided Onboarding Modal** appears:
    - "Welcome to Pitch Generator!"
    - Explains authentic voice setup (2 mins)
@@ -39,6 +43,7 @@
 3. If "Skip": Uses professional default tone
 
 **Returning User Flow:**
+
 1. Auto-imports contact from clipboard
 2. Contact details pre-filled:
    - Name: Jack Saunders
@@ -62,9 +67,11 @@
 ---
 
 ### **Step 3: Tracker** (Campaign Management)
+
 **URL:** `https://tracker.totalaudiopromo.com/campaigns/[campaign-id]`
 
 **Actions:**
+
 1. Auto-creates campaign or adds to existing
 2. Contact card shows:
    - Jack Saunders (BBC Radio 1)
@@ -89,18 +96,21 @@
 ## 🛠️ Technical Integration Points
 
 ### **Audio Intel → Pitch Generator**
+
 ```javascript
 // Audio Intel sends contact data via clipboard
 const clipboardData = {
-  source: "intel",
-  contacts: [{
-    name: "Jack Saunders",
-    outlet: "BBC Radio 1",
-    role: "Presenter",
-    genres: "Alternative, Indie, Electronic",
-    notes: "Key tastemaker for breaking new artists...",
-    email: "jack.saunders@bbc.co.uk"
-  }]
+  source: 'intel',
+  contacts: [
+    {
+      name: 'Jack Saunders',
+      outlet: 'BBC Radio 1',
+      role: 'Presenter',
+      genres: 'Alternative, Indie, Electronic',
+      notes: 'Key tastemaker for breaking new artists...',
+      email: 'jack.saunders@bbc.co.uk',
+    },
+  ],
 };
 
 await navigator.clipboard.writeText(JSON.stringify(clipboardData));
@@ -108,27 +118,28 @@ window.open('https://pitch.totalaudiopromo.com/pitch/generate?import=clipboard',
 ```
 
 ### **Pitch Generator → Tracker**
+
 ```javascript
 // After pitch generation, send to tracker
 const campaignData = {
-  source: "pitch-generator",
+  source: 'pitch-generator',
   contact: {
-    name: "Jack Saunders",
-    outlet: "BBC Radio 1",
-    email: "jack.saunders@bbc.co.uk",
+    name: 'Jack Saunders',
+    outlet: 'BBC Radio 1',
+    email: 'jack.saunders@bbc.co.uk',
   },
   pitch: {
-    subject: "New Music: sadact - Midnight Circuits",
-    body: "[Generated pitch text]",
-    sentAt: "2025-10-11T14:30:00Z"
+    subject: 'New Music: sadact - Midnight Circuits',
+    body: '[Generated pitch text]',
+    sentAt: '2025-10-11T14:30:00Z',
   },
-  intelligence: "[Intelligence notes from Audio Intel]"
+  intelligence: '[Intelligence notes from Audio Intel]',
 };
 
 // Option 1: Direct API call
 await fetch('https://tracker.totalaudiopromo.com/api/campaigns/add', {
   method: 'POST',
-  body: JSON.stringify(campaignData)
+  body: JSON.stringify(campaignData),
 });
 
 // Option 2: Clipboard + redirect
@@ -145,6 +156,7 @@ window.open('https://tracker.totalaudiopromo.com/campaigns/new?import=clipboard'
 **Location:** `/apps/pitch-generator/scripts/setup-demo-voice.js`
 
 **Profile:**
+
 - **Background:** Chris Schofield, producer behind sadact - 5+ years radio promotion
 - **Style:** British casual-professional, no corporate speak
 - **Achievements:** BBC Radio 1, 6 Music placements
@@ -152,6 +164,7 @@ window.open('https://tracker.totalaudiopromo.com/campaigns/new?import=clipboard'
 - **Differentiator:** Actually a working producer, not just a tool seller
 
 **Setup:**
+
 ```bash
 cd /apps/pitch-generator
 node scripts/setup-demo-voice.js --import
@@ -164,6 +177,7 @@ node scripts/setup-demo-voice.js --import
 **Time:** 5 minutes total
 
 ### **Part 1: Audio Intel (2 mins)**
+
 1. Open `/demo`
 2. "This is Audio Intel - what I use for all my radio campaigns"
 3. Click "Load Demo Data"
@@ -172,6 +186,7 @@ node scripts/setup-demo-voice.js --import
 6. "This would take 15+ hours manually"
 
 ### **Part 2: Pitch Generator (2 mins)**
+
 7. Click "→ Pitch" on Jack Saunders
 8. "Now I'm in Pitch Generator with the contact pre-loaded"
 9. Fill in track details (use prepared example)
@@ -181,6 +196,7 @@ node scripts/setup-demo-voice.js --import
 13. "I can tweak it, then send it"
 
 ### **Part 3: Tracker (1 min)**
+
 14. Click "Send to Tracker"
 15. "Now it's in my campaign tracker"
 16. Show campaign view with status tracking
@@ -194,18 +210,21 @@ node scripts/setup-demo-voice.js --import
 ## 🚀 Future Enhancements
 
 ### **Phase 1: Complete Integration** (Next 2 weeks)
+
 - ✅ Audio Intel → Pitch (Done)
 - 🔄 Pitch → Tracker (In progress)
 - 🔄 Guided onboarding for first-time users
 - 🔄 Demo voice profile setup
 
 ### **Phase 2: Automation** (Next month)
+
 - Email integration (send directly from Pitch Generator)
 - Auto-tracking of replies
 - MailChimp/ConvertKit sync
 - Automated follow-up reminders
 
 ### **Phase 3: Intelligence** (2-3 months)
+
 - AI learns from successful pitches
 - Suggests best times to contact
 - Predicts response likelihood
@@ -216,6 +235,7 @@ node scripts/setup-demo-voice.js --import
 ## 📝 Implementation Checklist
 
 ### **Audio Intel**
+
 - [x] Fix duplicate headers on /demo
 - [x] Add "→ Pitch" button to contact cards
 - [x] Implement clipboard data export
@@ -224,6 +244,7 @@ node scripts/setup-demo-voice.js --import
 - [x] Use real BBC/Spotify contact emails
 
 ### **Pitch Generator**
+
 - [x] Create VoiceOnboarding component
 - [x] Create demo voice profile script
 - [ ] Integrate onboarding modal into `/pitch/generate`
@@ -231,6 +252,7 @@ node scripts/setup-demo-voice.js --import
 - [ ] Implement Tracker API integration
 
 ### **Tracker**
+
 - [ ] Create `/api/campaigns/add` endpoint
 - [ ] Add clipboard import support
 - [ ] Design campaign card with intelligence notes
@@ -245,5 +267,5 @@ node scripts/setup-demo-voice.js --import
 
 ---
 
-*Last Updated: October 11, 2025*
-*Owner: Chris Schofield (sadact)*
+_Last Updated: October 11, 2025_
+_Owner: Chris Schofield (sadact)_

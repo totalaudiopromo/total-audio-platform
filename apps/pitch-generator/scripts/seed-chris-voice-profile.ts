@@ -23,13 +23,20 @@ async function seedChrisVoiceProfile() {
 
   const voiceProfile = {
     user_id: userId,
-    voice_background: "I'm a producer making electronic music under the name sadact. I've been pitching tracks to BBC Radio 1, 6 Music, and indie labels for 5+ years. I've worked with Royal Blood, Architects, and Rolo Tomassi's networks. I understand both the creative and promotional sides because I live them daily.",
-    voice_style: "Direct but friendly. I write like I'm talking to someone at a gig, not sending a press release. No corporate speak, no forced formality. I keep it real and conversational while staying professional.",
-    voice_achievements: "I've secured BBC Radio 1 airplay for tracks I've promoted. Built genuine relationships with producers at 6 Music. Got featured on Spotify editorial playlists. I've pitched hundreds of campaigns and learned what actually works versus what sounds good in theory.",
-    voice_approach: "I don't do mass emails. Every pitch is researched - I check what shows they've recently featured, understand their sound, and only pitch tracks that genuinely fit. Relationship-building over spray-and-pray. Quality over quantity, always.",
-    voice_differentiator: "I'm a producer myself (sadact), so I understand the artist's perspective and the emotional investment in each track. I've experienced both sides - making music and promoting it. I test every tool and strategy in my own campaigns before recommending it to anyone else.",
-    voice_typical_opener: "I usually start with something personal like 'Hope you've been well' or reference something specific I heard them play recently. Sometimes 'Quick one for you' if we've spoken before. I make it feel like a conversation, not a cold pitch.",
-    voice_context_notes: "Dad of two based in Brighton. Electronic music focus. I work full-time at Postman, so I run campaigns in the evenings and weekends. Time is precious, which is why I built tools to save it. I'm practical, honest, and I hate wasting anyone's time - including my own.",
+    voice_background:
+      "I'm a producer making electronic music under the name sadact. I've been pitching tracks to BBC Radio 1, 6 Music, and indie labels for 5+ years. I've worked with Royal Blood, Architects, and Rolo Tomassi's networks. I understand both the creative and promotional sides because I live them daily.",
+    voice_style:
+      "Direct but friendly. I write like I'm talking to someone at a gig, not sending a press release. No corporate speak, no forced formality. I keep it real and conversational while staying professional.",
+    voice_achievements:
+      "I've secured BBC Radio 1 airplay for tracks I've promoted. Built genuine relationships with producers at 6 Music. Got featured on Spotify editorial playlists. I've pitched hundreds of campaigns and learned what actually works versus what sounds good in theory.",
+    voice_approach:
+      "I don't do mass emails. Every pitch is researched - I check what shows they've recently featured, understand their sound, and only pitch tracks that genuinely fit. Relationship-building over spray-and-pray. Quality over quantity, always.",
+    voice_differentiator:
+      "I'm a producer myself (sadact), so I understand the artist's perspective and the emotional investment in each track. I've experienced both sides - making music and promoting it. I test every tool and strategy in my own campaigns before recommending it to anyone else.",
+    voice_typical_opener:
+      "I usually start with something personal like 'Hope you've been well' or reference something specific I heard them play recently. Sometimes 'Quick one for you' if we've spoken before. I make it feel like a conversation, not a cold pitch.",
+    voice_context_notes:
+      "Dad of two based in Brighton. Electronic music focus. I work full-time at Postman, so I run campaigns in the evenings and weekends. Time is precious, which is why I built tools to save it. I'm practical, honest, and I hate wasting anyone's time - including my own.",
     voice_profile_completed: true,
   };
 
@@ -66,7 +73,7 @@ seedChrisVoiceProfile()
     console.log('\n✨ Done!');
     process.exit(0);
   })
-  .catch((err) => {
+  .catch(err => {
     console.error('❌ Fatal error:', err);
     process.exit(1);
   });

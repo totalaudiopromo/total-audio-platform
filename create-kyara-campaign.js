@@ -8,8 +8,11 @@ const supabase = createClient(
 
 async function createCampaign() {
   // Get user
-  const { data: { user }, error: userError } = await supabase.auth.getUser();
-  
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
   if (userError || !user) {
     console.error('Not authenticated:', userError);
     return;
@@ -45,13 +48,10 @@ Key Contacts:
 - Danny Howard (BBC Radio 1)
 - Pete Tong (BBC Radio 1)
 
-Campaign for Friday demo with Dan from Liberty Music PR.`
+Campaign for Friday demo with Dan from Liberty Music PR.`,
   };
 
-  const { data, error } = await supabase
-    .from('campaigns')
-    .insert(campaign)
-    .select();
+  const { data, error } = await supabase.from('campaigns').insert(campaign).select();
 
   if (error) {
     console.error('Error creating campaign:', error);

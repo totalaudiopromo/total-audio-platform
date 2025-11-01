@@ -17,6 +17,7 @@
 ### 1. Shared Supabase Project
 
 **One Supabase instance for all apps:**
+
 - `NEXT_PUBLIC_SUPABASE_URL` (shared across all apps)
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` (shared across all apps)
 
@@ -143,8 +144,8 @@ const APP_ACCESS_MATRIX = {
   free: ['audio-intel'], // 10 enrichments/month
   pro: ['audio-intel'], // Unlimited enrichments
   agency: ['audio-intel'], // Unlimited + team features
-  bundle: ['audio-intel', 'tracker', 'pitch-generator'] // All apps
-}
+  bundle: ['audio-intel', 'tracker', 'pitch-generator'], // All apps
+};
 ```
 
 ## 🔒 Security Considerations
@@ -158,6 +159,7 @@ const APP_ACCESS_MATRIX = {
 ## 🎨 User Experience Flow
 
 ### New User Sign Up
+
 1. User signs up on any app (e.g., Audio Intel)
 2. Account created in shared Supabase
 3. Default `free` tier assigned
@@ -165,6 +167,7 @@ const APP_ACCESS_MATRIX = {
 5. Tool switcher shows all apps (with upgrade prompts for locked apps)
 
 ### Existing User Sign In
+
 1. User signs in on any app
 2. Session token stored in shared cookie
 3. All apps recognize the session
@@ -172,6 +175,7 @@ const APP_ACCESS_MATRIX = {
 5. Subscription status controls app access
 
 ### Subscription Upgrade
+
 1. User upgrades to Bundle plan
 2. Stripe webhook updates subscription status
 3. `app_permissions` table updated automatically
@@ -205,6 +209,7 @@ const APP_ACCESS_MATRIX = {
 ## 🔄 Migration Path (If Needed)
 
 If Audio Intel already has users:
+
 1. Export existing user data
 2. Import to shared Supabase
 3. Send password reset emails

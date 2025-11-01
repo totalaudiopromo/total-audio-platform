@@ -5,18 +5,20 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@total-audio/core-db/client';
 import { Button } from '@/components/ui/button';
 
-const signupSchema = z.object({
-  email: z.string().email('Please enter a valid email address'),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
-  confirmPassword: z.string(),
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],
-});
+const signupSchema = z
+  .object({
+    email: z.string().email('Please enter a valid email address'),
+    password: z.string().min(8, 'Password must be at least 8 characters'),
+    confirmPassword: z.string(),
+    name: z.string().min(2, 'Name must be at least 2 characters'),
+  })
+  .refine(data => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ['confirmPassword'],
+  });
 
 type SignupFormData = z.infer<typeof signupSchema>;
 
@@ -56,7 +58,9 @@ export function SignupForm() {
         // Check if email confirmation is required
         if (authData.user.identities && authData.user.identities.length === 0) {
           // Email already exists
-          setError('An account with this email already exists. Please sign in instead.');
+          setError(
+            'An account with this email already exists. Please sign in instead.'
+          );
         } else if (authData.session) {
           // User is automatically logged in (email confirmation disabled)
           router.push('/dashboard');
@@ -82,7 +86,10 @@ export function SignupForm() {
       )}
 
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">
+        <label
+          htmlFor="name"
+          className="block text-sm font-medium text-slate-700 mb-1"
+        >
           Full name
         </label>
         <input
@@ -98,7 +105,10 @@ export function SignupForm() {
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-slate-700 mb-1"
+        >
           Email address
         </label>
         <input
@@ -114,7 +124,10 @@ export function SignupForm() {
       </div>
 
       <div>
-        <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-1">
+        <label
+          htmlFor="password"
+          className="block text-sm font-medium text-slate-700 mb-1"
+        >
           Password
         </label>
         <input
@@ -130,7 +143,10 @@ export function SignupForm() {
       </div>
 
       <div>
-        <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-700 mb-1">
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium text-slate-700 mb-1"
+        >
           Confirm password
         </label>
         <input
@@ -141,7 +157,9 @@ export function SignupForm() {
           placeholder="Confirm your password"
         />
         {errors.confirmPassword && (
-          <p className="mt-1 text-sm text-red-600">{errors.confirmPassword.message}</p>
+          <p className="mt-1 text-sm text-red-600">
+            {errors.confirmPassword.message}
+          </p>
         )}
       </div>
 
@@ -155,5 +173,3 @@ export function SignupForm() {
     </form>
   );
 }
-
-

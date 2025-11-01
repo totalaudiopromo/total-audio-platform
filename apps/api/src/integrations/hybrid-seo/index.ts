@@ -29,7 +29,7 @@ export class HybridSEOService {
   constructor(config: HybridSEOConfig) {
     this.config = config;
     this.freeSEOService = new FreeSEOToolsService();
-    
+
     if (config.useDataForSEO && config.dataForSEOUsername && config.dataForSEOPassword) {
       this.dataForSEOService = new DataForSEOService(
         config.dataForSEOUsername,
@@ -41,12 +41,12 @@ export class HybridSEOService {
   // Hybrid domain analysis
   async analyzeDomain(domain: string): Promise<HybridAnalysisResult> {
     const startTime = Date.now();
-    
+
     try {
       // Try Data for SEO first if available
       if (this.dataForSEOService && this.config.useDataForSEO) {
         const dataForSEOResult = await this.dataForSEOService.analyzeDomain(domain);
-        
+
         if (dataForSEOResult.success) {
           return {
             source: 'dataforseo',
@@ -55,8 +55,8 @@ export class HybridSEOService {
             cost: 1, // Data for SEO cost
             performance: {
               responseTime: Date.now() - startTime,
-              dataQuality: 'high'
-            }
+              dataQuality: 'high',
+            },
           };
         }
       }
@@ -64,7 +64,7 @@ export class HybridSEOService {
       // Fallback to free tools
       if (this.config.useFreeTools || this.config.fallbackToFree) {
         const freeResult = await this.freeSEOService.analyzeDomain(domain);
-        
+
         if (freeResult.success) {
           return {
             source: 'free',
@@ -73,8 +73,8 @@ export class HybridSEOService {
             cost: 0,
             performance: {
               responseTime: Date.now() - startTime,
-              dataQuality: 'medium'
-            }
+              dataQuality: 'medium',
+            },
           };
         }
       }
@@ -86,8 +86,8 @@ export class HybridSEOService {
         cost: this.config.useDataForSEO ? 1 : 0,
         performance: {
           responseTime: Date.now() - startTime,
-          dataQuality: 'low'
-        }
+          dataQuality: 'low',
+        },
       };
     } catch (error) {
       return {
@@ -97,8 +97,8 @@ export class HybridSEOService {
         cost: this.config.useDataForSEO ? 1 : 0,
         performance: {
           responseTime: Date.now() - startTime,
-          dataQuality: 'low'
-        }
+          dataQuality: 'low',
+        },
       };
     }
   }
@@ -106,12 +106,12 @@ export class HybridSEOService {
   // Hybrid keyword research
   async researchKeywords(seedKeyword: string): Promise<HybridAnalysisResult> {
     const startTime = Date.now();
-    
+
     try {
       // Use free tools for keyword research (usually sufficient)
       if (this.config.useFreeTools) {
         const freeResult = await this.freeSEOService.researchKeywords(seedKeyword);
-        
+
         if (freeResult.success) {
           return {
             source: 'free',
@@ -120,8 +120,8 @@ export class HybridSEOService {
             cost: 0,
             performance: {
               responseTime: Date.now() - startTime,
-              dataQuality: 'medium'
-            }
+              dataQuality: 'medium',
+            },
           };
         }
       }
@@ -129,7 +129,7 @@ export class HybridSEOService {
       // Fallback to Data for SEO if free tools fail
       if (this.dataForSEOService && this.config.useDataForSEO) {
         const dataForSEOResult = await this.dataForSEOService.researchKeywords(seedKeyword);
-        
+
         if (dataForSEOResult.success) {
           return {
             source: 'dataforseo',
@@ -138,8 +138,8 @@ export class HybridSEOService {
             cost: 1,
             performance: {
               responseTime: Date.now() - startTime,
-              dataQuality: 'high'
-            }
+              dataQuality: 'high',
+            },
           };
         }
       }
@@ -151,8 +151,8 @@ export class HybridSEOService {
         cost: this.config.useDataForSEO ? 1 : 0,
         performance: {
           responseTime: Date.now() - startTime,
-          dataQuality: 'low'
-        }
+          dataQuality: 'low',
+        },
       };
     } catch (error) {
       return {
@@ -162,8 +162,8 @@ export class HybridSEOService {
         cost: this.config.useDataForSEO ? 1 : 0,
         performance: {
           responseTime: Date.now() - startTime,
-          dataQuality: 'low'
-        }
+          dataQuality: 'low',
+        },
       };
     }
   }
@@ -171,12 +171,12 @@ export class HybridSEOService {
   // Hybrid competitor analysis
   async analyzeCompetitors(domain: string): Promise<HybridAnalysisResult> {
     const startTime = Date.now();
-    
+
     try {
       // Use Data for SEO for competitor analysis (more comprehensive)
       if (this.dataForSEOService && this.config.useDataForSEO) {
         const dataForSEOResult = await this.dataForSEOService.analyzeCompetitors(domain);
-        
+
         if (dataForSEOResult.success) {
           return {
             source: 'dataforseo',
@@ -185,8 +185,8 @@ export class HybridSEOService {
             cost: 1,
             performance: {
               responseTime: Date.now() - startTime,
-              dataQuality: 'high'
-            }
+              dataQuality: 'high',
+            },
           };
         }
       }
@@ -194,7 +194,7 @@ export class HybridSEOService {
       // Fallback to free tools
       if (this.config.useFreeTools || this.config.fallbackToFree) {
         const freeResult = await this.freeSEOService.analyzeCompetitors(domain);
-        
+
         if (freeResult.success) {
           return {
             source: 'free',
@@ -203,8 +203,8 @@ export class HybridSEOService {
             cost: 0,
             performance: {
               responseTime: Date.now() - startTime,
-              dataQuality: 'medium'
-            }
+              dataQuality: 'medium',
+            },
           };
         }
       }
@@ -216,8 +216,8 @@ export class HybridSEOService {
         cost: this.config.useDataForSEO ? 1 : 0,
         performance: {
           responseTime: Date.now() - startTime,
-          dataQuality: 'low'
-        }
+          dataQuality: 'low',
+        },
       };
     } catch (error) {
       return {
@@ -227,8 +227,8 @@ export class HybridSEOService {
         cost: this.config.useDataForSEO ? 1 : 0,
         performance: {
           responseTime: Date.now() - startTime,
-          dataQuality: 'low'
-        }
+          dataQuality: 'low',
+        },
       };
     }
   }
@@ -236,12 +236,12 @@ export class HybridSEOService {
   // Hybrid SERP analysis
   async getSERPResults(keyword: string): Promise<HybridAnalysisResult> {
     const startTime = Date.now();
-    
+
     try {
       // Use Data for SEO for SERP (more accurate)
       if (this.dataForSEOService && this.config.useDataForSEO) {
         const dataForSEOResult = await this.dataForSEOService.getSERPResults(keyword);
-        
+
         if (dataForSEOResult.success) {
           return {
             source: 'dataforseo',
@@ -250,8 +250,8 @@ export class HybridSEOService {
             cost: 1,
             performance: {
               responseTime: Date.now() - startTime,
-              dataQuality: 'high'
-            }
+              dataQuality: 'high',
+            },
           };
         }
       }
@@ -264,8 +264,8 @@ export class HybridSEOService {
         cost: 0,
         performance: {
           responseTime: Date.now() - startTime,
-          dataQuality: 'low'
-        }
+          dataQuality: 'low',
+        },
       };
     } catch (error) {
       return {
@@ -275,8 +275,8 @@ export class HybridSEOService {
         cost: 0,
         performance: {
           responseTime: Date.now() - startTime,
-          dataQuality: 'low'
-        }
+          dataQuality: 'low',
+        },
       };
     }
   }
@@ -284,11 +284,11 @@ export class HybridSEOService {
   // Hybrid trends analysis
   async getTrendsData(keyword: string): Promise<HybridAnalysisResult> {
     const startTime = Date.now();
-    
+
     try {
       // Use free Google Trends for trends data
       const freeResult = await this.freeSEOService.getTrendsData(keyword);
-      
+
       if (freeResult.success) {
         return {
           source: 'free',
@@ -297,8 +297,8 @@ export class HybridSEOService {
           cost: 0,
           performance: {
             responseTime: Date.now() - startTime,
-            dataQuality: 'high' // Google Trends is actually high quality
-          }
+            dataQuality: 'high', // Google Trends is actually high quality
+          },
         };
       }
 
@@ -309,8 +309,8 @@ export class HybridSEOService {
         cost: 0,
         performance: {
           responseTime: Date.now() - startTime,
-          dataQuality: 'low'
-        }
+          dataQuality: 'low',
+        },
       };
     } catch (error) {
       return {
@@ -320,8 +320,8 @@ export class HybridSEOService {
         cost: 0,
         performance: {
           responseTime: Date.now() - startTime,
-          dataQuality: 'low'
-        }
+          dataQuality: 'low',
+        },
       };
     }
   }
@@ -330,12 +330,12 @@ export class HybridSEOService {
   async generateSEOReport(domain: string): Promise<HybridAnalysisResult> {
     const startTime = Date.now();
     let totalCost = 0;
-    
+
     try {
       // Use Data for SEO for comprehensive reports if available
       if (this.dataForSEOService && this.config.useDataForSEO) {
         const dataForSEOResult = await this.dataForSEOService.generateSEOReport(domain);
-        
+
         if (dataForSEOResult.success) {
           totalCost += 3; // Comprehensive report costs more
           return {
@@ -345,8 +345,8 @@ export class HybridSEOService {
             cost: totalCost,
             performance: {
               responseTime: Date.now() - startTime,
-              dataQuality: 'high'
-            }
+              dataQuality: 'high',
+            },
           };
         }
       }
@@ -354,7 +354,7 @@ export class HybridSEOService {
       // Fallback to free tools
       if (this.config.useFreeTools || this.config.fallbackToFree) {
         const freeResult = await this.freeSEOService.generateSEOReport(domain);
-        
+
         if (freeResult.success) {
           return {
             source: 'free',
@@ -363,8 +363,8 @@ export class HybridSEOService {
             cost: 0,
             performance: {
               responseTime: Date.now() - startTime,
-              dataQuality: 'medium'
-            }
+              dataQuality: 'medium',
+            },
           };
         }
       }
@@ -376,8 +376,8 @@ export class HybridSEOService {
         cost: totalCost,
         performance: {
           responseTime: Date.now() - startTime,
-          dataQuality: 'low'
-        }
+          dataQuality: 'low',
+        },
       };
     } catch (error) {
       return {
@@ -387,8 +387,8 @@ export class HybridSEOService {
         cost: totalCost,
         performance: {
           responseTime: Date.now() - startTime,
-          dataQuality: 'low'
-        }
+          dataQuality: 'low',
+        },
       };
     }
   }
@@ -403,26 +403,28 @@ export class HybridSEOService {
     const dataForSEOCost = this.config.useDataForSEO ? 5 : 0; // Estimated monthly cost
     const freeToolsCost = 0;
     const totalCost = dataForSEOCost + freeToolsCost;
-    
+
     const recommendations: string[] = [];
-    
+
     if (this.config.useDataForSEO && !this.config.useFreeTools) {
       recommendations.push('Consider using free tools for basic research to reduce costs');
     }
-    
+
     if (!this.config.useDataForSEO && this.config.useFreeTools) {
       recommendations.push('Consider adding Data for SEO for advanced features when budget allows');
     }
-    
+
     if (this.config.useDataForSEO && this.config.useFreeTools) {
-      recommendations.push('Hybrid approach is optimal - using free tools for basic research and Data for SEO for advanced analysis');
+      recommendations.push(
+        'Hybrid approach is optimal - using free tools for basic research and Data for SEO for advanced analysis'
+      );
     }
-    
+
     return {
       dataForSEOCost,
       freeToolsCost,
       totalCost,
-      recommendations
+      recommendations,
     };
   }
 
@@ -436,26 +438,35 @@ export class HybridSEOService {
     const dataForSEOAvailable = !!this.dataForSEOService;
     const freeToolsAvailable = this.config.useFreeTools;
     const hybridMode = dataForSEOAvailable && freeToolsAvailable;
-    
+
     const features: string[] = [];
-    
+
     if (dataForSEOAvailable) {
-      features.push('Advanced domain analysis', 'Comprehensive competitor analysis', 'Detailed SERP data');
+      features.push(
+        'Advanced domain analysis',
+        'Comprehensive competitor analysis',
+        'Detailed SERP data'
+      );
     }
-    
+
     if (freeToolsAvailable) {
-      features.push('Google Trends integration', 'Keyword research', 'Basic competitor analysis', 'Free domain analysis');
+      features.push(
+        'Google Trends integration',
+        'Keyword research',
+        'Basic competitor analysis',
+        'Free domain analysis'
+      );
     }
-    
+
     if (hybridMode) {
       features.push('Intelligent fallback system', 'Cost optimization', 'Best of both worlds');
     }
-    
+
     return {
       dataForSEOAvailable,
       freeToolsAvailable,
       hybridMode,
-      features
+      features,
     };
   }
-} 
+}

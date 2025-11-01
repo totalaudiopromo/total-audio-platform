@@ -19,7 +19,7 @@ const COMMAND_CENTRE_URL = 'http://localhost:3000'; // Adjust for your setup
 const POSTING_SCHEDULE = [
   { time: '09:00', platforms: ['twitter', 'linkedin'], category: 'announcement' },
   { time: '13:00', platforms: ['linkedin', 'bluesky'], category: 'feature' },
-  { time: '17:00', platforms: ['twitter', 'bluesky'], category: 'beta-update' }
+  { time: '17:00', platforms: ['twitter', 'bluesky'], category: 'beta-update' },
 ];
 
 // Track which templates we've used recently to avoid repeats
@@ -47,21 +47,23 @@ async function schedulePost(template, platforms, scheduledTime) {
     const response = await fetch(`${COMMAND_CENTRE_URL}/api/social-media/schedule`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         platforms,
         content: template.content,
         hashtags: template.hashtags.join(' '),
         scheduledTime,
-        templateId: template.id
-      })
+        templateId: template.id,
+      }),
     });
 
     const result = await response.json();
 
     if (result.success) {
-      console.log(`✅ Scheduled "${template.name}" for ${scheduledTime} on ${platforms.join(', ')}`);
+      console.log(
+        `✅ Scheduled "${template.name}" for ${scheduledTime} on ${platforms.join(', ')}`
+      );
       usedTemplates.add(template.id);
     } else {
       console.error(`❌ Failed to schedule "${template.name}":`, result.error);

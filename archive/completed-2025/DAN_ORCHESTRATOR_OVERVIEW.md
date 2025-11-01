@@ -5,6 +5,7 @@
 **Dan is YOUR master orchestrator for the entire Total Audio Promo business**, not just the Liberty client work.
 
 Dan coordinates all your operational agents across:
+
 - Content generation
 - Business operations
 - Technical infrastructure
@@ -31,6 +32,7 @@ Dan coordinates all your operational agents across:
 ## 🤖 Dan Should Orchestrate These Agent Categories:
 
 ### 1. Content Agents (5)
+
 **Location**: `/tools/agents/core-agents/content/`
 
 - `content-generation-agent.js` - General content creation
@@ -41,6 +43,7 @@ Dan coordinates all your operational agents across:
 - `music-tech-agent.js` - Music industry news and insights
 
 ### 2. Business Agents (3)
+
 **Location**: `/tools/agents/core-agents/business/`
 
 - `analytics-agent.js` - Business metrics tracking
@@ -48,6 +51,7 @@ Dan coordinates all your operational agents across:
 - `chris-saas-marketing-agent.js` - Your SaaS marketing automation
 
 ### 3. Technical Agents (4)
+
 **Location**: `/tools/agents/core-agents/technical/`
 
 - `contact-agent.js` - Contact enrichment workflows
@@ -56,11 +60,13 @@ Dan coordinates all your operational agents across:
 - `agent-dashboard.js` - Dashboard data aggregation
 
 ### 4. Campaign Agents (1+)
+
 **Location**: `/tools/agents/core-agents/radio-promo/`
 
 - `campaign-agent.js` - Campaign workflow automation
 
 ### 5. Client-Specific Agents
+
 **Location**: `/tools/agents/campaigns/`
 
 - **Liberty Music PR** → 6 sub-agents (intelligence, project, email, radio, analytics, coverage)
@@ -112,7 +118,9 @@ Dan coordinates all your operational agents across:
 ## 🎬 Dan's Current Workflows
 
 ### 1. **Complete Campaign** (45min)
+
 Liberty client full radio campaign automation:
+
 1. Process Google Meet transcript
 2. Create Monday.com campaign
 3. Generate email content + initiate radio submissions (parallel)
@@ -120,15 +128,20 @@ Liberty client full radio campaign automation:
 5. Generate initial coverage report
 
 ### 2. **Transcript to Brief** (5min)
+
 Convert meeting transcripts to campaign briefs:
+
 1. Process transcript with Gemini AI
 2. Validate brief structure
 
 ### 3. **WARM Monitoring** (continuous)
+
 Real-time play tracking and milestone notifications
 
 ### 4. **Campaign Reporting** (15min)
+
 Professional client deliverables:
+
 1. Aggregate analytics data
 2. Generate PDF report
 3. Deliver to client
@@ -202,6 +215,7 @@ GOOGLE_REFRESH_TOKEN=xxx
 ### Dashboard Port
 
 Dan runs a verification dashboard on port 3008:
+
 ```
 http://localhost:3008
 ```
@@ -211,28 +225,33 @@ http://localhost:3008
 ## 🎯 Testing Dan
 
 ### Basic Health Check
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/radio-promo
 node dan.js health
 ```
 
 ### Run Workflow
+
 ```bash
 node dan.js workflow complete-campaign path/to/transcript.txt
 ```
 
 ### Start Dashboard
+
 ```bash
 node dan.js dashboard
 # Press Ctrl+C to stop
 ```
 
 ### View Campaigns
+
 ```bash
 node dan.js campaigns
 ```
 
 ### View Metrics
+
 ```bash
 node dan.js metrics
 ```
@@ -320,6 +339,7 @@ this.workflows = {
 ### 3. Create Unified Dashboard
 
 Dan's dashboard should show:
+
 - All active workflows across business and client work
 - Agent health status (31+ agents)
 - Campaign progress (Liberty + your own marketing)
@@ -332,6 +352,7 @@ Dan's dashboard should show:
 **Dan = Your Digital Operations Manager**
 
 Instead of manually running:
+
 - Newsletter generation scripts
 - Social media posting
 - Contact enrichment jobs
@@ -352,6 +373,7 @@ node dan.js workflow complete-campaign transcript.txt
 ```
 
 Dan handles:
+
 - Agent coordination
 - Error recovery
 - Progress tracking
@@ -364,6 +386,7 @@ Dan handles:
 ## 📊 Current Status Summary
 
 **✅ What Works:**
+
 - Core orchestration logic
 - Agent lifecycle management
 - Workflow execution engine
@@ -371,7 +394,8 @@ Dan handles:
 - Dashboard API structure
 - Error recovery system
 
-**⚠️  What Needs Work:**
+**⚠️ What Needs Work:**
+
 - Expand from 6 Liberty agents → 31+ Total Audio agents
 - Add Total Audio-specific workflows
 - Integrate all core agents (content, business, technical)

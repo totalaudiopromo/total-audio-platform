@@ -118,13 +118,18 @@ async function main() {
     deduped.push(rec);
   }
 
-  fs.writeFileSync(out, JSON.stringify({ generatedAt: new Date().toISOString(), count: deduped.length, contacts: deduped }, null, 2));
+  fs.writeFileSync(
+    out,
+    JSON.stringify(
+      { generatedAt: new Date().toISOString(), count: deduped.length, contacts: deduped },
+      null,
+      2
+    )
+  );
   console.log(`Saved: ${out} (contacts: ${deduped.length})`);
 }
 
-main().catch((err) => {
+main().catch(err => {
   console.error(err);
   process.exit(1);
 });
-
-

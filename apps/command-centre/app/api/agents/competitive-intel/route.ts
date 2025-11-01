@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   // Verify cron secret
@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
   try {
     console.log('🎯 Starting competitive intelligence surveillance...');
-    
+
     const intelResults = {
       timestamp: new Date().toISOString(),
       competitors_monitored: 0,
@@ -19,19 +19,19 @@ export async function POST(request: NextRequest) {
       social_mentions_analyzed: 0,
       threat_level: 'Low',
       opportunity_alerts: [] as string[],
-      strategic_insights: [] as string[]
+      strategic_insights: [] as string[],
     };
 
     // Competitor monitoring targets
     const competitors = [
       'SubmitHub',
-      'Groover', 
+      'Groover',
       'Playlist Push',
       'RepostExchange',
       'Musosoup',
       'Soundplate',
       'Indie Music Academy',
-      'Music Gateway'
+      'Music Gateway',
     ];
 
     intelResults.competitors_monitored = competitors.length;
@@ -56,17 +56,21 @@ export async function POST(request: NextRequest) {
       'Groover launched UK-focused marketing - need to strengthen our UK positioning',
       'Playlist Push added contact enrichment feature - validate our differentiation',
       'Industry trend: Increasing focus on AI-powered music promotion tools',
-      'Competitor weakness: Most tools focus on playlist pitching, not contact management'
+      'Competitor weakness: Most tools focus on playlist pitching, not contact management',
     ];
 
     intelResults.strategic_insights = insights.slice(0, Math.floor(Math.random() * 3) + 2);
 
     // Opportunity alerts
     if (intelResults.pricing_changes_detected > 0) {
-      intelResults.opportunity_alerts.push('🚨 Competitor pricing increase detected - opportunity for competitive campaigns');
+      intelResults.opportunity_alerts.push(
+        '🚨 Competitor pricing increase detected - opportunity for competitive campaigns'
+      );
     }
     if (intelResults.feature_updates_found > 2) {
-      intelResults.opportunity_alerts.push('📊 Multiple competitor feature updates - review our roadmap');
+      intelResults.opportunity_alerts.push(
+        '📊 Multiple competitor feature updates - review our roadmap'
+      );
     }
 
     // Determine threat level
@@ -85,15 +89,20 @@ export async function POST(request: NextRequest) {
       action: 'Competitive surveillance completed',
       results: intelResults,
       threat_assessment: intelResults.threat_level,
-      immediate_actions: intelResults.opportunity_alerts.length > 0 ? intelResults.opportunity_alerts : ['No immediate actions required'],
-      next_surveillance: 'In 12 hours'
+      immediate_actions:
+        intelResults.opportunity_alerts.length > 0
+          ? intelResults.opportunity_alerts
+          : ['No immediate actions required'],
+      next_surveillance: 'In 12 hours',
     });
-
   } catch (error) {
     console.error('❌ Competitive intelligence failed:', error);
-    return NextResponse.json({
-      error: 'Competitive intelligence failed',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Competitive intelligence failed',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }

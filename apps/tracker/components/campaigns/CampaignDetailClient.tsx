@@ -3,7 +3,15 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { format } from 'date-fns';
-import { ArrowLeft, Plus, Calendar, Mail, MessageSquare, TrendingUp, CheckCircle } from 'lucide-react';
+import {
+  ArrowLeft,
+  Plus,
+  Calendar,
+  Mail,
+  MessageSquare,
+  TrendingUp,
+  CheckCircle,
+} from 'lucide-react';
 import { AddActivityModal } from './AddActivityModal';
 
 type Campaign = {
@@ -54,13 +62,18 @@ const ACTIVITY_COLORS: Record<string, string> = {
   completed: 'bg-emerald-50 border-emerald-200 text-emerald-700',
 };
 
-export function CampaignDetailClient({ campaign, activities, userId }: CampaignDetailClientProps) {
+export function CampaignDetailClient({
+  campaign,
+  activities,
+  userId,
+}: CampaignDetailClientProps) {
   const router = useRouter();
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-  const successRate = campaign.target_reach && campaign.actual_reach
-    ? Math.round((campaign.actual_reach / campaign.target_reach) * 100)
-    : 0;
+  const successRate =
+    campaign.target_reach && campaign.actual_reach
+      ? Math.round((campaign.actual_reach / campaign.target_reach) * 100)
+      : 0;
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -77,7 +90,9 @@ export function CampaignDetailClient({ campaign, activities, userId }: CampaignD
 
           <div className="flex items-start justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">{campaign.name}</h1>
+              <h1 className="text-3xl font-bold text-slate-900">
+                {campaign.name}
+              </h1>
               <div className="flex items-center gap-4 mt-2">
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
                   {campaign.platform}
@@ -85,9 +100,13 @@ export function CampaignDetailClient({ campaign, activities, userId }: CampaignD
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700">
                   {campaign.genre}
                 </span>
-                <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
-                  campaign.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-slate-100 text-slate-700'
-                }`}>
+                <span
+                  className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
+                    campaign.status === 'active'
+                      ? 'bg-green-100 text-green-800'
+                      : 'bg-slate-100 text-slate-700'
+                  }`}
+                >
                   {campaign.status}
                 </span>
               </div>
@@ -109,37 +128,51 @@ export function CampaignDetailClient({ campaign, activities, userId }: CampaignD
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-xl border-2 border-slate-200 p-4">
             <p className="text-sm font-medium text-slate-600">Target Reach</p>
-            <p className="text-2xl font-bold text-slate-900 mt-1">{campaign.target_reach || 0}</p>
+            <p className="text-2xl font-bold text-slate-900 mt-1">
+              {campaign.target_reach || 0}
+            </p>
           </div>
           <div className="bg-white rounded-xl border-2 border-slate-200 p-4">
             <p className="text-sm font-medium text-slate-600">Actual Reach</p>
-            <p className="text-2xl font-bold text-teal-600 mt-1">{campaign.actual_reach || 0}</p>
+            <p className="text-2xl font-bold text-teal-600 mt-1">
+              {campaign.actual_reach || 0}
+            </p>
           </div>
           <div className="bg-white rounded-xl border-2 border-slate-200 p-4">
             <p className="text-sm font-medium text-slate-600">Success Rate</p>
-            <p className="text-2xl font-bold text-green-600 mt-1">{successRate}%</p>
+            <p className="text-2xl font-bold text-green-600 mt-1">
+              {successRate}%
+            </p>
           </div>
           <div className="bg-white rounded-xl border-2 border-slate-200 p-4">
             <p className="text-sm font-medium text-slate-600">Budget</p>
-            <p className="text-2xl font-bold text-slate-900 mt-1">£{campaign.budget || 0}</p>
+            <p className="text-2xl font-bold text-slate-900 mt-1">
+              £{campaign.budget || 0}
+            </p>
           </div>
         </div>
 
         {/* Timeline */}
         <div className="bg-white rounded-xl border-2 border-slate-200 p-6">
-          <h2 className="text-xl font-bold text-slate-900 mb-6">Campaign Timeline</h2>
+          <h2 className="text-xl font-bold text-slate-900 mb-6">
+            Campaign Timeline
+          </h2>
 
           {activities.length === 0 ? (
             <div className="text-center py-12">
               <Calendar className="w-12 h-12 text-slate-300 mx-auto mb-4" />
               <p className="text-slate-600 font-medium">No activities yet</p>
-              <p className="text-sm text-slate-500 mt-1">Click "Add Activity" to start tracking your campaign progress</p>
+              <p className="text-sm text-slate-500 mt-1">
+                Click "Add Activity" to start tracking your campaign progress
+              </p>
             </div>
           ) : (
             <div className="space-y-4">
-              {activities.map((activity) => {
+              {activities.map(activity => {
                 const Icon = ACTIVITY_ICONS[activity.activity_type] || Calendar;
-                const colorClass = ACTIVITY_COLORS[activity.activity_type] || 'bg-slate-50 border-slate-200 text-slate-700';
+                const colorClass =
+                  ACTIVITY_COLORS[activity.activity_type] ||
+                  'bg-slate-50 border-slate-200 text-slate-700';
 
                 return (
                   <div
@@ -158,10 +191,15 @@ export function CampaignDetailClient({ campaign, activities, userId }: CampaignD
                             {activity.activity_type.replace('_', ' ')}
                           </span>
                           <span className="text-xs font-medium opacity-75">
-                            {format(new Date(activity.activity_date), 'MMM d, yyyy')}
+                            {format(
+                              new Date(activity.activity_date),
+                              'MMM d, yyyy'
+                            )}
                           </span>
                         </div>
-                        <p className="font-semibold text-sm mb-1">{activity.description}</p>
+                        <p className="font-semibold text-sm mb-1">
+                          {activity.description}
+                        </p>
                         {activity.notes && (
                           <p className="text-sm opacity-90">{activity.notes}</p>
                         )}
@@ -177,8 +215,12 @@ export function CampaignDetailClient({ campaign, activities, userId }: CampaignD
         {/* Notes */}
         {campaign.notes && (
           <div className="bg-white rounded-xl border-2 border-slate-200 p-6 mt-6">
-            <h2 className="text-xl font-bold text-slate-900 mb-4">Campaign Notes</h2>
-            <p className="text-slate-700 whitespace-pre-wrap">{campaign.notes}</p>
+            <h2 className="text-xl font-bold text-slate-900 mb-4">
+              Campaign Notes
+            </h2>
+            <p className="text-slate-700 whitespace-pre-wrap">
+              {campaign.notes}
+            </p>
           </div>
         )}
       </div>

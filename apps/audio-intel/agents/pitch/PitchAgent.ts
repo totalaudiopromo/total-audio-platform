@@ -3,56 +3,56 @@
  * Orchestrates pitch creation, tone checking, and follow-up management
  */
 
-import { BaseAgent } from '../core/BaseAgent'
-import type { AgentPayload, AgentResult } from '../core/AgentTypes'
-import { PitchFormatter } from './subagents/PitchFormatter'
-import { ToneChecker } from './subagents/ToneChecker'
-import { FollowUpWriter } from './subagents/FollowUpWriter'
+import { BaseAgent } from '../core/BaseAgent';
+import type { AgentPayload, AgentResult } from '../core/AgentTypes';
+import { PitchFormatter } from './subagents/PitchFormatter';
+import { ToneChecker } from './subagents/ToneChecker';
+import { FollowUpWriter } from './subagents/FollowUpWriter';
 
 export interface PitchAgentPayload extends AgentPayload {
-  mode: 'draft' | 'followup'
-  artist: string
-  release: string
-  contactName?: string
-  contactOrganisation?: string
-  genre?: string
-  releaseDate?: string
-  streamingLinks?: Record<string, string>
-  pressQuotes?: string[]
+  mode: 'draft' | 'followup';
+  artist: string;
+  release: string;
+  contactName?: string;
+  contactOrganisation?: string;
+  genre?: string;
+  releaseDate?: string;
+  streamingLinks?: Record<string, string>;
+  pressQuotes?: string[];
   // For follow-ups
-  originalPitchDate?: string
-  followUpNumber?: number
-  strictToneCheck?: boolean
+  originalPitchDate?: string;
+  followUpNumber?: number;
+  strictToneCheck?: boolean;
 }
 
 export class PitchAgent extends BaseAgent {
   constructor() {
-    super('PitchAgent', '1.0.0')
+    super('PitchAgent', '1.0.0');
   }
 
   async run(payload: PitchAgentPayload): Promise<AgentResult> {
     this.log('Starting pitch generation', {
       mode: payload.mode,
       artist: payload.artist,
-    })
+    });
 
     try {
       if (payload.mode === 'draft') {
-        return await this.handleDraftMode(payload)
+        return await this.handleDraftMode(payload);
       } else if (payload.mode === 'followup') {
-        return await this.handleFollowUpMode(payload)
+        return await this.handleFollowUpMode(payload);
       } else {
         return {
           success: false,
           error: `Unknown mode: ${payload.mode}. Use 'draft' or 'followup'`,
-        }
+        };
       }
     } catch (error) {
-      this.log('Pitch generation error', { error })
+      this.log('Pitch generation error', { error });
       return {
         success: false,
         error: error instanceof Error ? error.message : 'Pitch generation failed',
-      }
+      };
     }
   }
 
@@ -70,36 +70,36 @@ export class PitchAgent extends BaseAgent {
       releaseDate: payload.releaseDate,
       streamingLinks: payload.streamingLinks,
       pressQuotes: payload.pressQuotes,
-    })
+    });
 
     if (!formatResult.success) {
       return {
         success: false,
         error: `Pitch formatting failed: ${formatResult.error}`,
-      }
+      };
     }
 
-    const formattedPitch = formatResult.data
-    this.log('Pitch formatted', { length: formattedPitch.fullText.length })
+    const formattedPitch = formatResult.data;
+    this.log('Pitch formatted', { length: formattedPitch.fullText.length });
 
     // Step 2: Check tone
     const toneResult = await ToneChecker.check({
       text: formattedPitch.fullText,
       strictMode: payload.strictToneCheck,
-    })
+    });
 
     if (!toneResult.success) {
       return {
         success: false,
         error: `Tone check failed: ${toneResult.error}`,
-      }
+      };
     }
 
-    const toneCheck = toneResult.data
+    const toneCheck = toneResult.data;
     this.log('Tone checked', {
       score: toneCheck.score,
       issues: toneCheck.issues.length,
-    })
+    });
 
     // Return draft with tone analysis
     return {
@@ -110,7 +110,7 @@ export class PitchAgent extends BaseAgent {
         readyToSend: toneCheck.isValid,
         warnings: toneCheck.issues.length > 0 ? toneCheck.issues : undefined,
       },
-    }
+    };
   }
 
   /**
@@ -121,15 +121,13 @@ export class PitchAgent extends BaseAgent {
       return {
         success: false,
         error: 'originalPitchDate required for follow-up mode',
-      }
+      };
     }
 
     // Calculate days since original pitch
-    const originalDate = new Date(payload.originalPitchDate)
-    const now = new Date()
-    const daysSince = Math.floor(
-      (now.getTime() - originalDate.getTime()) / (1000 * 60 * 60 * 24)
-    )
+    const originalDate = new Date(payload.originalPitchDate);
+    const now = new Date();
+    const daysSince = Math.floor((now.getTime() - originalDate.getTime()) / (1000 * 60 * 60 * 24));
 
     // Generate follow-up
     const followUpResult = await FollowUpWriter.write({
@@ -139,16 +137,16 @@ export class PitchAgent extends BaseAgent {
       originalPitchDate: payload.originalPitchDate,
       daysSinceOriginal: daysSince,
       followUpNumber: payload.followUpNumber || 1,
-    })
+    });
 
     if (!followUpResult.success) {
       return {
         success: false,
         error: `Follow-up generation failed: ${followUpResult.error}`,
-      }
+      };
     }
 
-    const followUp = followUpResult.data
+    const followUp = followUpResult.data;
 
     // If follow-up shouldn't be sent, return early
     if (!followUp.shouldSend) {
@@ -158,16 +156,16 @@ export class PitchAgent extends BaseAgent {
           shouldSend: false,
           reasoning: followUp.reasoning,
         },
-      }
+      };
     }
 
     // Check tone of follow-up
     const toneResult = await ToneChecker.check({
       text: followUp.body,
       strictMode: payload.strictToneCheck,
-    })
+    });
 
-    const toneCheck = toneResult.data
+    const toneCheck = toneResult.data;
 
     return {
       success: true,
@@ -177,6 +175,6 @@ export class PitchAgent extends BaseAgent {
         readyToSend: toneCheck?.isValid ?? true,
         daysSinceOriginal: daysSince,
       },
-    }
+    };
   }
 }

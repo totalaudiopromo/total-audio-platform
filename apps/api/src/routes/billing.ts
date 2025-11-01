@@ -14,12 +14,14 @@ router.get('/subscription', authenticateToken, async (req: any, res) => {
     });
 
     res.json({
-      subscription: subscription ? {
-        tier: subscription.tier,
-        status: subscription.status,
-        monthlyPrice: subscription.monthlyPrice,
-        currentPeriodEnd: subscription.currentPeriodEnd,
-      } : null,
+      subscription: subscription
+        ? {
+            tier: subscription.tier,
+            status: subscription.status,
+            monthlyPrice: subscription.monthlyPrice,
+            currentPeriodEnd: subscription.currentPeriodEnd,
+          }
+        : null,
     });
   } catch (error) {
     logger.error('Get subscription error:', error);
@@ -31,7 +33,7 @@ router.get('/subscription', authenticateToken, async (req: any, res) => {
 router.post('/create-checkout-session', authenticateToken, async (req: any, res) => {
   try {
     const { tier, setupFee } = req.body;
-    
+
     // This would integrate with Stripe
     // For now, return a mock session
     res.json({
@@ -49,7 +51,7 @@ router.post('/webhook', async (req, res) => {
   try {
     // Handle Stripe webhook events
     const { type, data } = req.body;
-    
+
     switch (type) {
       case 'checkout.session.completed':
         // Update subscription status
@@ -61,7 +63,7 @@ router.post('/webhook', async (req, res) => {
         // Handle failed payment
         break;
     }
-    
+
     res.json({ received: true });
   } catch (error) {
     logger.error('Webhook error:', error);
@@ -69,4 +71,4 @@ router.post('/webhook', async (req, res) => {
   }
 });
 
-export default router; 
+export default router;

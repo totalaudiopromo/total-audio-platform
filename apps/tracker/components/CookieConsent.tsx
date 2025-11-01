@@ -47,16 +47,29 @@ export function CookieConsent() {
             <div className="flex-1">
               <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                 <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-teal-600 rounded-lg sm:rounded-xl flex items-center justify-center border-2 border-black">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  <svg
+                    className="w-4 h-4 sm:w-5 sm:h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
                   </svg>
                 </div>
-                <h3 className="text-base sm:text-xl font-black text-gray-900">Cookie & Privacy</h3>
+                <h3 className="text-base sm:text-xl font-black text-gray-900">
+                  Cookie & Privacy
+                </h3>
               </div>
 
               <p className="text-xs sm:text-sm font-bold text-gray-700 leading-relaxed mb-3 sm:mb-4">
-                We use essential cookies to keep you signed in and analytics cookies to understand how you use Tracker.
-                We don't sell your data or use intrusive tracking.
+                We use essential cookies to keep you signed in and analytics
+                cookies to understand how you use Tracker. We don't sell your
+                data or use intrusive tracking.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 items-stretch sm:items-center">

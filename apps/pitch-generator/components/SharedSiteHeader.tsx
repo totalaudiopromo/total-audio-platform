@@ -56,7 +56,9 @@ export function SiteHeader({
               className="h-10 w-auto flex-shrink-0"
             />
             <div className="flex flex-col min-w-0">
-              <span className="text-lg font-bold leading-tight tracking-tight text-black truncate">{toolName}</span>
+              <span className="text-lg font-bold leading-tight tracking-tight text-black truncate">
+                {toolName}
+              </span>
               <span className="text-xs text-gray-500">by Total Audio Promo</span>
             </div>
           </Link>
@@ -82,11 +84,7 @@ export function SiteHeader({
         </nav>
 
         <div className="flex items-center gap-3 flex-shrink-0">
-          {toolSwitcher && (
-            <div className="hidden sm:block">
-              {toolSwitcher}
-            </div>
-          )}
+          {toolSwitcher && <div className="hidden sm:block">{toolSwitcher}</div>}
           {authComponent}
         </div>
       </div>
@@ -97,7 +95,9 @@ export function SiteHeader({
             {/* Tool Switcher on Mobile */}
             {toolSwitcher && (
               <div className="border-b border-gray-200 pb-3">
-                <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Switch Tool</p>
+                <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                  Switch Tool
+                </p>
                 {toolSwitcher}
               </div>
             )}
@@ -112,9 +112,7 @@ export function SiteHeader({
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className={`rounded-lg px-4 py-3 text-sm font-semibold transition ${
-                      isActive
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-700 hover:bg-gray-100'
+                      isActive ? 'bg-gray-900 text-white' : 'text-gray-700 hover:bg-gray-100'
                     }`}
                   >
                     {link.label}

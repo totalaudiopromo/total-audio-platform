@@ -306,12 +306,15 @@ const newsletterTemplate = (content: string, data: NewsletterData = {}) => `
       <div class="newsletter-title">The Unsigned Advantage</div>
       <div class="newsletter-subtitle">Weekly insights for independent music professionals</div>
       <div class="issue-info">
-        Issue ${data.issueNumber || 1} • ${data.publishDate || new Date().toLocaleDateString('en-GB', { 
-          weekday: 'long', 
-          year: 'numeric', 
-          month: 'long', 
-          day: 'numeric' 
-        })}
+        Issue ${data.issueNumber || 1} • ${
+          data.publishDate ||
+          new Date().toLocaleDateString('en-GB', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+        }
       </div>
     </div>
 
@@ -345,7 +348,9 @@ const newsletterTemplate = (content: string, data: NewsletterData = {}) => `
 `;
 
 // Weekly newsletter template
-export const weeklyNewsletter = (data: NewsletterData) => newsletterTemplate(`
+export const weeklyNewsletter = (data: NewsletterData) =>
+  newsletterTemplate(
+    `
   <div class="greeting">Hi ${data.firstName || 'there'},</div>
 
   <div class="story-section">
@@ -353,13 +358,18 @@ export const weeklyNewsletter = (data: NewsletterData) => newsletterTemplate(`
     <div class="story-content">${data.industryInsight || 'After analysing 500+ indie artist campaigns, I discovered something that shocked me: 94% of research time is spent on outdated information. Only 6% of contacts actually work, meaning artists waste 15+ hours weekly on fruitless research. The solution? AI-powered contact enrichment that transforms basic email lists into detailed industry intelligence in 2 minutes.'}</div>
   </div>
 
-  ${data.newsArticles && data.newsArticles.length > 0 ? `
+  ${
+    data.newsArticles && data.newsArticles.length > 0
+      ? `
   <div class="story-section">
     <div class="story-title">What's happening in music this week</div>
     <div class="story-content">
       <p>Here's what caught my attention from the underground music scene and industry news this week:</p>
     </div>
-    ${data.newsArticles.slice(0, 3).map(article => `
+    ${data.newsArticles
+      .slice(0, 3)
+      .map(
+        article => `
       <div class="news-item">
         <div class="news-title">${article.title}</div>
         <div class="news-excerpt">${article.excerpt || article.description}</div>
@@ -368,9 +378,13 @@ export const weeklyNewsletter = (data: NewsletterData) => newsletterTemplate(`
           ${article.url ? `<a href="${article.url}" target="_blank" class="news-link">Read more →</a>` : ''}
         </div>
       </div>
-    `).join('')}
+    `
+      )
+      .join('')}
   </div>
-  ` : ''}
+  `
+      : ''
+  }
 
   <div class="story-section">
     <div class="story-title">Featured tool</div>
@@ -386,7 +400,7 @@ export const weeklyNewsletter = (data: NewsletterData) => newsletterTemplate(`
   <div class="story-section">
     <div class="story-title">What I'm working on</div>
     <div class="story-content">
-      <p>${data.successStory || 'I\'m currently testing a new approach to radio promotion that combines AI-powered contact research with personalised outreach. Early results show 40% higher response rates compared to generic emails, and I\'m spending 80% less time on research. I\'ll share the full results once I\'ve got more data.'}</p>
+      <p>${data.successStory || "I'm currently testing a new approach to radio promotion that combines AI-powered contact research with personalised outreach. Early results show 40% higher response rates compared to generic emails, and I'm spending 80% less time on research. I'll share the full results once I've got more data."}</p>
       <p><em>Building tools that actually work for independent artists - not just talking about it.</em></p>
     </div>
   </div>
@@ -407,10 +421,14 @@ export const weeklyNewsletter = (data: NewsletterData) => newsletterTemplate(`
   </div>
 
   <div class="story-content">Keep creating,<br>Chris</div>
-`, data);
+`,
+    data
+  );
 
 // Welcome email for new newsletter subscribers
-export const newsletterWelcome = (data: NewsletterData) => newsletterTemplate(`
+export const newsletterWelcome = (data: NewsletterData) =>
+  newsletterTemplate(
+    `
   <div class="greeting">Welcome to The Unsigned Advantage! 👋</div>
 
   <div class="section">
@@ -444,12 +462,14 @@ export const newsletterWelcome = (data: NewsletterData) => newsletterTemplate(`
     <div class="section-title">Got Questions?</div>
     <p>Hit reply to this email anytime. I read every response and often feature community questions in future issues.</p>
   </div>
-`, data);
+`,
+    data
+  );
 
 // Export all templates
 export const newsletterTemplates = {
   weekly: weeklyNewsletter,
-  welcome: newsletterWelcome
+  welcome: newsletterWelcome,
 };
 
 // Utility function to send newsletter emails
@@ -464,7 +484,7 @@ export async function sendNewsletterEmail(
   const response = await fetch('/api/newsletter/send', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ to, subject, html })
+    body: JSON.stringify({ to, subject, html }),
   });
 
   return response.json();

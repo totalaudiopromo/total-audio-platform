@@ -5,22 +5,26 @@
 Based on your feedback that "Airtable is still a real mess":
 
 ### 1. **Broken Mailchimp Integration**
+
 - Originally connected to Total Audio Promo Mailchimp
 - Campaign reply tracking doesn't work anymore
 - Syncing issues between platforms
 
 ### 2. **Cluttered Fields**
+
 - 27 total fields (too many!)
 - Unclear which fields are actually used
 - Old fields from abandoned workflows
 - Confusing field names
 
 ### 3. **No Clear Organization**
+
 - Hard to find specific contacts (BBC, high-priority, etc.)
 - No views for different use cases
 - Can't easily filter for campaigns
 
 ### 4. **Mixed Purposes**
+
 - Started for Total Audio Promo (product marketing)
 - Now used for Liberty Music PR (radio promotion)
 - Confused data model
@@ -32,6 +36,7 @@ Based on your feedback that "Airtable is still a real mess":
 **Keep Only Essential Fields:**
 
 #### Core Contact Info (8 fields) ✅
+
 1. **Email** - Primary identifier
 2. **First Name** - Contact first name
 3. **Last Name** - Contact last name
@@ -42,19 +47,23 @@ Based on your feedback that "Airtable is still a real mess":
 8. **Created At** - Auto timestamp
 
 #### Subscription & Status (3 fields) ✅
+
 9. **Status** - Opted-In/Unsubscribed (synced from Mailchimp Liberty)
 10. **Opt-in Source** - Where they subscribed (Mailchimp Landing Page, etc.)
 11. **Last Email Date** - When last contacted
 
 #### Genre & Targeting (1 field) ✅
+
 12. **Genres** - Multiple select (Indie, Rock, Electronic, etc.)
 
 #### AI Enrichment (3 fields) ✅
+
 13. **Enrichment Quality** - High/Medium/Low (AI-powered)
 14. **Enrichment Notes** - Station analysis, pitch strategy
 15. **Last Enriched** - Enrichment timestamp
 
 #### Notes & Context (1 field) ✅
+
 16. **Notes** - All contact intelligence (consolidated)
 
 **TOTAL: 16 Essential Fields** (down from 27)
@@ -82,7 +91,9 @@ Based on your feedback that "Airtable is still a real mess":
 ## Phase 2: Create Strategic Views
 
 ### View 1: **"Priority Contacts"** (BBC & High Quality)
+
 **Filter**:
+
 - Enrichment Quality = High
 - OR Station contains "BBC"
 - Status = Opted-In
@@ -94,7 +105,9 @@ Based on your feedback that "Airtable is still a real mess":
 ---
 
 ### View 2: **"Subscribed - Ready to Pitch"**
+
 **Filter**:
+
 - Status = Opted-In
 - Enrichment Quality = High OR Medium
 
@@ -105,7 +118,9 @@ Based on your feedback that "Airtable is still a real mess":
 ---
 
 ### View 3: **"Genre: Indie/Alternative"**
+
 **Filter**:
+
 - Genres contains "Indie" OR "Alternative"
 - Status = Opted-In
 
@@ -116,7 +131,9 @@ Based on your feedback that "Airtable is still a real mess":
 ---
 
 ### View 4: **"Genre: Rock/Metal"**
+
 **Filter**:
+
 - Genres contains "Rock" OR "Metal" OR "Punk"
 - Status = Opted-In
 
@@ -127,7 +144,9 @@ Based on your feedback that "Airtable is still a real mess":
 ---
 
 ### View 5: **"UK Contacts Only"**
+
 **Filter**:
+
 - Station contains "BBC" OR Region/Country contains "UK" OR "LONDON" OR Email contains ".co.uk"
 - Status = Opted-In
 
@@ -138,7 +157,9 @@ Based on your feedback that "Airtable is still a real mess":
 ---
 
 ### View 6: **"International Stations"**
+
 **Filter**:
+
 - Region/Country NOT empty
 - Region/Country NOT contains "UK"
 - Status = Opted-In
@@ -150,7 +171,9 @@ Based on your feedback that "Airtable is still a real mess":
 ---
 
 ### View 7: **"Needs Review"** (Low Quality/Invalid)
+
 **Filter**:
+
 - Enrichment Quality = Low
 - OR Status = empty
 - OR Email = empty
@@ -162,7 +185,9 @@ Based on your feedback that "Airtable is still a real mess":
 ---
 
 ### View 8: **"All Active Contacts"** (Default)
+
 **Filter**:
+
 - Status = Opted-In
 
 **Sort**: Last Enriched (newest → oldest)
@@ -174,15 +199,18 @@ Based on your feedback that "Airtable is still a real mess":
 ## Phase 3: Fix Mailchimp Integration (DECISION NEEDED)
 
 ### Option 1: Connect to Liberty Music PR Mailchimp ✅ (RECOMMENDED)
+
 **Why**: This Airtable is clearly for radio promotion work, not Audio Intel product marketing
 
 **Actions**:
+
 - Keep syncing Status from Liberty Mailchimp (already doing this!)
 - Remove "MC TAGS" field (old Total Audio Promo tags)
 - Add "Liberty Mailchimp Tags" field (new, clean tags)
 - Create automation to sync new contacts → Liberty Mailchimp
 
 **Benefits**:
+
 - Single source of truth for Liberty radio contacts
 - Accurate subscription tracking
 - Clean slate for tagging
@@ -190,14 +218,17 @@ Based on your feedback that "Airtable is still a real mess":
 ---
 
 ### Option 2: Keep Separate from Mailchimp
+
 **Why**: Airtable is research database, Mailchimp is sending platform
 
 **Actions**:
+
 - Use Airtable for contact research and intelligence
 - Manually export to Mailchimp when ready to send
 - Remove all Mailchimp integration fields
 
 **Benefits**:
+
 - Simplest approach
 - No sync issues
 - Full control over what gets added to Mailchimp
@@ -205,9 +236,11 @@ Based on your feedback that "Airtable is still a real mess":
 ---
 
 ### Option 3: Connect to Total Audio Promo Mailchimp
+
 **Why**: Original setup, might work if re-configured
 
 **Problems**:
+
 - This isn't being used for Audio Intel marketing
 - Would confuse Liberty contacts with Total Audio contacts
 - **Not recommended**
@@ -217,9 +250,11 @@ Based on your feedback that "Airtable is still a real mess":
 ## Phase 4: Standardize Data Quality
 
 ### Auto-Populate Missing Station Names
+
 **Script**: Extract from Enrichment Notes and update Station field
 
 **Example**:
+
 - `michelle.choudhry@bbc.co.uk` → Station: "BBC Radio 6 Music"
 - `paul.mansell@marlowfm.co.uk` → Station: "Marlow FM"
 
@@ -228,9 +263,11 @@ Based on your feedback that "Airtable is still a real mess":
 ---
 
 ### Auto-Tag Genres from Enrichment
+
 **Script**: Parse Enrichment Notes for genre classifications
 
 **Example**:
+
 - BBC 6 Music contacts → Add "Indie, Alternative, Rock"
 - Community stations → Add genres based on programming
 
@@ -239,7 +276,9 @@ Based on your feedback that "Airtable is still a real mess":
 ---
 
 ### Standardize Genre Values
+
 **Clean up inconsistent formatting**:
+
 - "R&B / Soul" → "R&B/Soul"
 - "Jazz / Funk" → "Jazz/Funk"
 - Remove duplicates
@@ -251,7 +290,9 @@ Based on your feedback that "Airtable is still a real mess":
 If you want to track campaigns in Airtable:
 
 ### New Table: "Campaigns"
+
 **Fields**:
+
 - Campaign Name (e.g., "KYARA - Yearn Single")
 - Artist Name
 - Release Date
@@ -260,6 +301,7 @@ If you want to track campaigns in Airtable:
 - Status (Planning/Active/Complete)
 
 ### Link Contacts → Campaigns
+
 - Add "Campaigns Pitched" field (multiple record links)
 - Track which contacts were pitched for each campaign
 - See campaign history per contact
@@ -271,6 +313,7 @@ If you want to track campaigns in Airtable:
 ## 🚀 IMMEDIATE ACTIONS (Post-Enrichment)
 
 ### Step 1: Hide Unused Fields (5 minutes)
+
 ```
 In Airtable UI:
 1. Click "Hide fields" in any view
@@ -291,7 +334,9 @@ In Airtable UI:
 ---
 
 ### Step 2: Create 8 Strategic Views (10 minutes)
+
 **Use the filters I provided above** to create views for:
+
 - Priority Contacts (BBC & High)
 - Subscribed - Ready to Pitch
 - Genre: Indie/Alternative
@@ -304,7 +349,9 @@ In Airtable UI:
 ---
 
 ### Step 3: Auto-Populate Station Names (2 minutes)
+
 **Run script**:
+
 ```bash
 node extract-stations-from-enrichment.js
 ```
@@ -314,7 +361,9 @@ node extract-stations-from-enrichment.js
 ---
 
 ### Step 4: Auto-Tag Genres (2 minutes)
+
 **Run script**:
+
 ```bash
 node auto-tag-genres-from-enrichment.js
 ```
@@ -324,7 +373,9 @@ node auto-tag-genres-from-enrichment.js
 ---
 
 ### Step 5: Clean Up Low Quality Contacts (Optional)
+
 **Review "Needs Review" view** and decide:
+
 - Delete obviously invalid contacts
 - Mark questionable ones for later review
 - Keep valuable contacts even if data is incomplete
@@ -334,6 +385,7 @@ node auto-tag-genres-from-enrichment.js
 ## 📊 EXPECTED RESULT
 
 ### Before Optimization:
+
 - ❌ 27 fields (overwhelming interface)
 - ❌ No views (hard to find contacts)
 - ❌ Broken Mailchimp integration
@@ -342,6 +394,7 @@ node auto-tag-genres-from-enrichment.js
 - ❌ Hard to navigate
 
 ### After Optimization:
+
 - ✅ 16 visible fields (clean, focused)
 - ✅ 8 strategic views for different use cases
 - ✅ Synced to Liberty Mailchimp (clear purpose)
@@ -354,6 +407,7 @@ node auto-tag-genres-from-enrichment.js
 ## 💡 RECOMMENDATION: Two-Phase Approach
 
 ### Phase A: Quick Wins (TODAY - 20 minutes)
+
 1. ✅ Finish AI enrichment (running now)
 2. Hide 11 unused fields
 3. Create 8 strategic views
@@ -365,6 +419,7 @@ node auto-tag-genres-from-enrichment.js
 ---
 
 ### Phase B: Deep Cleanup (LATER - if needed)
+
 1. Decide on Mailchimp integration approach
 2. Archive old Total Audio Promo data
 3. Create campaign tracking (if desired)
@@ -377,16 +432,19 @@ node auto-tag-genres-from-enrichment.js
 ## 🎯 MY RECOMMENDATION
 
 **Start with Phase A (Quick Wins)**:
+
 - Let enrichment finish (~5 more minutes)
 - I'll create the scripts to extract stations and auto-tag genres
 - You create the 8 views in Airtable UI (I can't do this via API)
 - We hide the 11 unused fields
 
 **Then decide**:
+
 - Keep Airtable simple (research database only)
 - OR add campaign tracking later if you need it
 
 **What do you think?** Should I:
+
 1. Create the station extraction and genre tagging scripts now?
 2. Wait for enrichment to finish first?
 3. Focus on a different optimization priority?

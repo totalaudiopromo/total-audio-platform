@@ -29,17 +29,17 @@ class AgentHealthCheck {
       'social-calendar',
       'newsletter-generator',
       'data-cleanup',
-      'station-discovery'
+      'station-discovery',
     ];
 
     // Maximum age before alerting (in hours)
     this.maxAge = {
-      'contact-enrichment': 24,    // Should run daily
-      'gmail-autopilot': 2,         // Should run hourly
-      'social-calendar': 168,       // Should run weekly (7 days)
-      'newsletter-generator': 168,  // Should run weekly
-      'data-cleanup': 168,          // Should run weekly
-      'station-discovery': 168      // Should run weekly
+      'contact-enrichment': 24, // Should run daily
+      'gmail-autopilot': 2, // Should run hourly
+      'social-calendar': 168, // Should run weekly (7 days)
+      'newsletter-generator': 168, // Should run weekly
+      'data-cleanup': 168, // Should run weekly
+      'station-discovery': 168, // Should run weekly
     };
 
     this.alerts = getAlerts();
@@ -65,8 +65,8 @@ class AgentHealthCheck {
         healthy: 0,
         warning: 0,
         critical: 0,
-        missing: 0
-      }
+        missing: 0,
+      },
     };
 
     // Check each expected agent
@@ -81,19 +81,19 @@ class AgentHealthCheck {
         health.summary.warning++;
         health.warnings.push({
           agent: agentName,
-          message: agentHealth.message
+          message: agentHealth.message,
         });
       } else if (agentHealth.status === 'critical') {
         health.summary.critical++;
         health.critical.push({
           agent: agentName,
-          message: agentHealth.message
+          message: agentHealth.message,
         });
       } else if (agentHealth.status === 'missing') {
         health.summary.missing++;
         health.warnings.push({
           agent: agentName,
-          message: 'Agent has never run'
+          message: 'Agent has never run',
         });
       }
     }
@@ -135,7 +135,7 @@ class AgentHealthCheck {
         status: 'missing',
         message: 'Never run',
         lastRun: null,
-        age: null
+        age: null,
       };
     }
 
@@ -155,7 +155,7 @@ class AgentHealthCheck {
         lastRun: lastRunDate.toISOString(),
         age: ageHours,
         maxAge: maxAgeHours,
-        agentStatus: status.status
+        agentStatus: status.status,
       };
 
       if (status.status === 'failed') {
@@ -175,7 +175,7 @@ class AgentHealthCheck {
         status: 'critical',
         message: `Error reading status: ${error.message}`,
         lastRun: null,
-        age: null
+        age: null,
       };
     }
   }
@@ -194,7 +194,7 @@ class AgentHealthCheck {
       warnings.push({
         type: 'daily-cost',
         severity: 'warning',
-        message: `Daily cost (£${today.total.toFixed(2)}) exceeded threshold (£${this.costTracker.budgets.daily})`
+        message: `Daily cost (£${today.total.toFixed(2)}) exceeded threshold (£${this.costTracker.budgets.daily})`,
       });
     }
 
@@ -203,13 +203,13 @@ class AgentHealthCheck {
       warnings.push({
         type: 'monthly-cost',
         severity: 'critical',
-        message: `Monthly budget exceeded! £${summary.total.toFixed(2)} / £${summary.budget}`
+        message: `Monthly budget exceeded! £${summary.total.toFixed(2)} / £${summary.budget}`,
       });
     } else if (summary.percentUsed >= 80) {
       warnings.push({
         type: 'monthly-cost',
         severity: 'warning',
-        message: `Monthly budget ${summary.percentUsed.toFixed(0)}% used (£${summary.total.toFixed(2)} / £${summary.budget})`
+        message: `Monthly budget ${summary.percentUsed.toFixed(0)}% used (£${summary.total.toFixed(2)} / £${summary.budget})`,
       });
     }
 
@@ -218,7 +218,7 @@ class AgentHealthCheck {
       month: summary.total,
       budget: summary.budget,
       percentUsed: summary.percentUsed,
-      warnings
+      warnings,
     };
   }
 
@@ -228,9 +228,9 @@ class AgentHealthCheck {
   displayResults(health) {
     // Overall status
     const statusIcon = {
-      'healthy': '✅',
-      'warning': '⚠️',
-      'critical': '🚨'
+      healthy: '✅',
+      warning: '⚠️',
+      critical: '🚨',
     }[health.overall];
 
     console.log(`${statusIcon} Overall Status: ${health.overall.toUpperCase()}\n`);
@@ -247,15 +247,13 @@ class AgentHealthCheck {
     console.log('🤖 Agent Status:');
     Object.entries(health.agents).forEach(([name, agent]) => {
       const icon = {
-        'healthy': '✅',
-        'warning': '⚠️',
-        'critical': '🚨',
-        'missing': '❓'
+        healthy: '✅',
+        warning: '⚠️',
+        critical: '🚨',
+        missing: '❓',
       }[agent.status];
 
-      const ageStr = agent.age !== null
-        ? `(${Math.round(agent.age)}h ago)`
-        : '';
+      const ageStr = agent.age !== null ? `(${Math.round(agent.age)}h ago)` : '';
 
       console.log(`   ${icon} ${name}: ${agent.message} ${ageStr}`);
     });
@@ -263,7 +261,9 @@ class AgentHealthCheck {
     // Costs
     console.log('\n💰 Costs:');
     console.log(`   Today: £${health.costs.today.toFixed(2)}`);
-    console.log(`   This Month: £${health.costs.month.toFixed(2)} / £${health.costs.budget} (${health.costs.percentUsed.toFixed(0)}%)`);
+    console.log(
+      `   This Month: £${health.costs.month.toFixed(2)} / £${health.costs.budget} (${health.costs.percentUsed.toFixed(0)}%)`
+    );
 
     // Warnings
     if (health.warnings.length > 0) {
@@ -335,13 +335,13 @@ class AgentHealthCheck {
         .map(([name, agent]) => ({
           name,
           status: 'completed',
-          itemsProcessed: 0  // TODO: Extract from agent status
+          itemsProcessed: 0, // TODO: Extract from agent status
         })),
-      contactsEnriched: 0,  // TODO: Get from enrichment agent
-      emailsOrganized: 0,   // TODO: Get from Gmail autopilot
-      socialPosts: 0,       // TODO: Get from social calendar
-      newsletter: false,    // TODO: Check if newsletter ran
-      pendingTasks: health.warnings.map(w => w.message)
+      contactsEnriched: 0, // TODO: Get from enrichment agent
+      emailsOrganized: 0, // TODO: Get from Gmail autopilot
+      socialPosts: 0, // TODO: Get from social calendar
+      newsletter: false, // TODO: Check if newsletter ran
+      pendingTasks: health.warnings.map(w => w.message),
     };
 
     await this.alerts.alertDailySummary(summary);
@@ -371,16 +371,16 @@ class AgentHealthCheck {
         status: agent.status,
         message: agent.message,
         lastRun: agent.lastRun,
-        age: agent.age ? Math.round(agent.age) : null
+        age: agent.age ? Math.round(agent.age) : null,
       })),
       costs: {
         today: health.costs.today,
         month: health.costs.month,
         budget: health.costs.budget,
-        percentUsed: Math.round(health.costs.percentUsed)
+        percentUsed: Math.round(health.costs.percentUsed),
       },
       warnings: health.warnings.length,
-      critical: health.critical.length
+      critical: health.critical.length,
     };
   }
 }

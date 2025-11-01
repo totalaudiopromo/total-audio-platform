@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@total-audio/core-db/client';
 import { Button } from '@/components/ui/button';
 import type { User } from '@supabase/supabase-js';
 
@@ -14,19 +14,21 @@ export function AuthButton() {
 
   useEffect(() => {
     const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
       setUser(user);
       setIsLoading(false);
     };
 
     getUser();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setUser(session?.user ?? null);
-        setIsLoading(false);
-      }
-    );
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+      setIsLoading(false);
+    });
 
     return () => subscription.unsubscribe();
   }, [supabase.auth]);
@@ -63,11 +65,7 @@ export function AuthButton() {
       <Button variant="outline" onClick={() => router.push('/login')}>
         Sign in
       </Button>
-      <Button onClick={() => router.push('/signup')}>
-        Get started
-      </Button>
+      <Button onClick={() => router.push('/signup')}>Get started</Button>
     </div>
   );
 }
-
-

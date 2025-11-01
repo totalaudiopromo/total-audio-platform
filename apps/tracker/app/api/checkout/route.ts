@@ -2,7 +2,9 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-const stripe = stripeSecretKey ? new Stripe(stripeSecretKey, { apiVersion: '2025-08-27.basil' }) : null;
+const stripe = stripeSecretKey
+  ? new Stripe(stripeSecretKey, { apiVersion: '2025-08-27.basil' })
+  : null;
 
 type Billing = 'monthly' | 'annual';
 type Plan = 'professional' | 'agency';
@@ -25,24 +27,42 @@ function isValidStripePriceId(value: string | null | undefined): boolean {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { email, tier, billing }: { email?: string; tier?: Billing | Plan; billing?: Billing } = body || {};
+    const {
+      email,
+      tier,
+      billing,
+    }: { email?: string; tier?: Billing | Plan; billing?: Billing } =
+      body || {};
 
     // Tracker plans: free, professional (£19/mo), agency (£79/mo)
-    const plan = (tier === 'agency' || tier === 'professional') ? tier as Plan : 'professional';
-    const bill = (billing === 'annual' || billing === 'monthly') ? billing : 'monthly';
+    const plan =
+      tier === 'agency' || tier === 'professional'
+        ? (tier as Plan)
+        : 'professional';
+    const bill =
+      billing === 'annual' || billing === 'monthly' ? billing : 'monthly';
 
     const priceId = resolvePlanPriceId(plan, bill);
     if (!isValidStripePriceId(priceId)) {
       // Dev fallback: allow redirect to success locally so template works before Stripe is configured
       if (!stripeSecretKey) {
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001';
-        return NextResponse.json({ url: `${baseUrl}/success?session_id=dev_local` });
+        const baseUrl =
+          process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001';
+        return NextResponse.json({
+          url: `${baseUrl}/success?session_id=dev_local`,
+        });
       }
-      return NextResponse.json({ error: 'Invalid Stripe price configuration' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Invalid Stripe price configuration' },
+        { status: 400 }
+      );
     }
 
     if (!stripe) {
-      return NextResponse.json({ error: 'Stripe not configured' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Stripe not configured' },
+        { status: 500 }
+      );
     }
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001';

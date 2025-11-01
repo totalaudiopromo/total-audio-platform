@@ -1,6 +1,6 @@
 # 🎯 CONTENT STRATEGY HUB - COMPLETE SYSTEM (MASTER)
 
-*Your complete content and marketing command centre - all strategies, voice guidelines, automation, and campaigns in one place*
+_Your complete content and marketing command centre - all strategies, voice guidelines, automation, and campaigns in one place_
 
 ---
 
@@ -97,11 +97,11 @@
 
 ### 🎯 Content Strategy Matrix
 
-| Content Type | AI-Powered Marketing Tools | Radio Promotion & Industry | Independent Artist Success |
-| --- | --- | --- | --- |
-| **Growth Content** | "94% of music marketing tasks can be automated" | "Radio submission windows close faster than you think" | "Why bedroom producers fail at promotion" |
-| **Knowledge Content** | "How to automate contact discovery in 2 minutes" | "The exact email template that gets radio play" | "5-step system for independent artist growth" |
-| **Authority Content** | "How I built Audio Intel from 5 years of frustration" | "BBC Radio 1 pitch: What worked and what didn't" | "From 0 to professional: My sadact journey" |
+| Content Type          | AI-Powered Marketing Tools                            | Radio Promotion & Industry                             | Independent Artist Success                    |
+| --------------------- | ----------------------------------------------------- | ------------------------------------------------------ | --------------------------------------------- |
+| **Growth Content**    | "94% of music marketing tasks can be automated"       | "Radio submission windows close faster than you think" | "Why bedroom producers fail at promotion"     |
+| **Knowledge Content** | "How to automate contact discovery in 2 minutes"      | "The exact email template that gets radio play"        | "5-step system for independent artist growth" |
+| **Authority Content** | "How I built Audio Intel from 5 years of frustration" | "BBC Radio 1 pitch: What worked and what didn't"       | "From 0 to professional: My sadact journey"   |
 
 ### 📱 Platform-Specific Guidelines
 
@@ -202,8 +202,8 @@
 **Scheduling Logic:**
 
 ```
-IF Status = "Scheduled" 
-AND Scheduled Date = Today 
+IF Status = "Scheduled"
+AND Scheduled Date = Today
 AND Time = Platform Optimal
 THEN Post to Platform(s)
 AND Update Status = "Posted"
@@ -301,20 +301,20 @@ AND Log timestamp
 **This Week's Priority Posts:**
 
 1. **🔥 Monday Launch: 94% Automation Thread**
-    - Platform: LinkedIn + Twitter
-    - Status: Ready to post
-    - Goal: Establish thought leadership
-    - Expected: 100+ engagements
+   - Platform: LinkedIn + Twitter
+   - Status: Ready to post
+   - Goal: Establish thought leadership
+   - Expected: 100+ engagements
 2. **📖 Wednesday Personal: Building Audio Intel Story**
-    - Platform: LinkedIn
-    - Status: Ready to post
-    - Goal: Build personal connection
-    - Expected: 50+ meaningful comments
+   - Platform: LinkedIn
+   - Status: Ready to post
+   - Goal: Build personal connection
+   - Expected: 50+ meaningful comments
 3. **📊 Friday Demo: Radio Submission Tips**
-    - Platform: Twitter + Blue Sky
-    - Status: Ready to post
-    - Goal: Provide value + soft sell
-    - Expected: 200+ impressions, 10+ signups
+   - Platform: Twitter + Blue Sky
+   - Status: Ready to post
+   - Goal: Provide value + soft sell
+   - Expected: 200+ impressions, 10+ signups
 
 ### 🔄 Content Optimization Framework
 
@@ -410,7 +410,7 @@ AND Log timestamp
 
 ---
 
-*This Content Strategy Hub consolidates all your content and marketing strategies into one comprehensive system. Use this as your single source of truth for all content creation, automation, and performance tracking.*
+_This Content Strategy Hub consolidates all your content and marketing strategies into one comprehensive system. Use this as your single source of truth for all content creation, automation, and performance tracking._
 
 **Last Updated:** September 2025
 

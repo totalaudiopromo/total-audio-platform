@@ -55,7 +55,7 @@ Founder: Chris Schofield
 # Navigate to main workspace
 cd /Users/chrisschofield/workspace/active/total-audio-platform/
 
-# Start Audio Intel development  
+# Start Audio Intel development
 npm run dev:audio-intel
 
 # Check system status
@@ -63,7 +63,7 @@ npm run status && npm run agents:health
 
 # Use global agents (from any directory)
 # "Use music-industry-strategist for market analysis"
-# "Apply growth-hacking-optimizer for user acquisition"  
+# "Apply growth-hacking-optimizer for user acquisition"
 # "Use music-marketing-mastermind for campaign strategy"
 ```
 

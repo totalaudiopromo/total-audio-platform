@@ -1,7 +1,18 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, Hash, TrendingUp, Plus, Edit, Trash2, Copy, CheckCircle, Share2 } from 'lucide-react';
+import {
+  Calendar,
+  Clock,
+  Hash,
+  TrendingUp,
+  Plus,
+  Edit,
+  Trash2,
+  Copy,
+  CheckCircle,
+  Share2,
+} from 'lucide-react';
 
 interface SocialMediaPost {
   id: string;
@@ -27,7 +38,7 @@ export default function SocialMediaSimple() {
     content: '',
     platform: 'x' as 'x' | 'linkedin' | 'bluesky',
     scheduledTime: '',
-    hashtags: ''
+    hashtags: '',
   });
   const [copiedPostId, setCopiedPostId] = useState<string | null>(null);
 
@@ -61,9 +72,12 @@ export default function SocialMediaSimple() {
           action: 'add',
           post: {
             ...newPost,
-            hashtags: newPost.hashtags.split(',').map(tag => tag.trim()).filter(Boolean)
-          }
-        })
+            hashtags: newPost.hashtags
+              .split(',')
+              .map(tag => tag.trim())
+              .filter(Boolean),
+          },
+        }),
       });
 
       if (response.ok) {
@@ -88,28 +102,40 @@ export default function SocialMediaSimple() {
 
   const formatPlatform = (platform: string) => {
     switch (platform) {
-      case 'x': return 'X (Twitter)';
-      case 'linkedin': return 'LinkedIn';
-      case 'bluesky': return 'Blue Sky';
-      default: return platform;
+      case 'x':
+        return 'X (Twitter)';
+      case 'linkedin':
+        return 'LinkedIn';
+      case 'bluesky':
+        return 'Blue Sky';
+      default:
+        return platform;
     }
   };
 
   const getPlatformColor = (platform: string) => {
     switch (platform) {
-      case 'x': return 'bg-black text-white';
-      case 'linkedin': return 'bg-blue-600 text-white';
-      case 'bluesky': return 'bg-sky-500 text-white';
-      default: return 'bg-gray-500 text-white';
+      case 'x':
+        return 'bg-black text-white';
+      case 'linkedin':
+        return 'bg-blue-600 text-white';
+      case 'bluesky':
+        return 'bg-sky-500 text-white';
+      default:
+        return 'bg-gray-500 text-white';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'scheduled': return 'bg-yellow-100 text-yellow-800';
-      case 'posted': return 'bg-green-100 text-green-800';
-      case 'failed': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'scheduled':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'posted':
+        return 'bg-green-100 text-green-800';
+      case 'failed':
+        return 'bg-red-100 text-red-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
@@ -157,7 +183,7 @@ export default function SocialMediaSimple() {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-orange-100 rounded-lg">
@@ -169,7 +195,7 @@ export default function SocialMediaSimple() {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-green-100 rounded-lg">
@@ -181,7 +207,7 @@ export default function SocialMediaSimple() {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-blue-100 rounded-lg">
@@ -208,25 +234,35 @@ export default function SocialMediaSimple() {
 
         {/* Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post) => (
-            <div key={post.id} className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+          {posts.map(post => (
+            <div
+              key={post.id}
+              className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow"
+            >
               <div className="flex items-center justify-between mb-4">
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(post.platform)}`}>
+                <span
+                  className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(post.platform)}`}
+                >
                   {formatPlatform(post.platform)}
                 </span>
-                <span className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(post.status)}`}>
+                <span
+                  className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(post.status)}`}
+                >
                   {post.status}
                 </span>
               </div>
-              
+
               <div className="mb-4">
                 <p className="text-gray-700 text-sm leading-relaxed line-clamp-4">{post.content}</p>
               </div>
-              
+
               {post.hashtags.length > 0 && (
                 <div className="flex flex-wrap gap-1 mb-4">
                   {post.hashtags.map((tag, index) => (
-                    <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                    <span
+                      key={index}
+                      className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"
+                    >
                       {tag}
                     </span>
                   ))}
@@ -241,7 +277,10 @@ export default function SocialMediaSimple() {
                 {post.engagement && (
                   <span className="flex items-center">
                     <TrendingUp className="w-4 h-4 mr-1" />
-                    {post.engagement.likes + post.engagement.retweets + post.engagement.comments} engagement
+                    {post.engagement.likes +
+                      post.engagement.retweets +
+                      post.engagement.comments}{' '}
+                    engagement
                   </span>
                 )}
               </div>
@@ -293,7 +332,7 @@ export default function SocialMediaSimple() {
                   <label className="block text-sm font-medium mb-2">Content</label>
                   <textarea
                     value={newPost.content}
-                    onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
+                    onChange={e => setNewPost({ ...newPost, content: e.target.value })}
                     className="w-full p-4 border rounded-lg text-sm"
                     rows={6}
                     placeholder="Enter your post content..."
@@ -304,7 +343,7 @@ export default function SocialMediaSimple() {
                     <label className="block text-sm font-medium mb-2">Platform</label>
                     <select
                       value={newPost.platform}
-                      onChange={(e) => setNewPost({ ...newPost, platform: e.target.value as any })}
+                      onChange={e => setNewPost({ ...newPost, platform: e.target.value as any })}
                       className="w-full p-3 border rounded-lg"
                     >
                       <option value="x">X (Twitter)</option>
@@ -317,17 +356,19 @@ export default function SocialMediaSimple() {
                     <input
                       type="datetime-local"
                       value={newPost.scheduledTime}
-                      onChange={(e) => setNewPost({ ...newPost, scheduledTime: e.target.value })}
+                      onChange={e => setNewPost({ ...newPost, scheduledTime: e.target.value })}
                       className="w-full p-3 border rounded-lg"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">Hashtags (comma-separated)</label>
+                  <label className="block text-sm font-medium mb-2">
+                    Hashtags (comma-separated)
+                  </label>
                   <input
                     type="text"
                     value={newPost.hashtags}
-                    onChange={(e) => setNewPost({ ...newPost, hashtags: e.target.value })}
+                    onChange={e => setNewPost({ ...newPost, hashtags: e.target.value })}
                     className="w-full p-3 border rounded-lg"
                     placeholder="#MusicTech #IndieMusic #MusicIndustry"
                   />

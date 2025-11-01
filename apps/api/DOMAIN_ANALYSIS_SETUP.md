@@ -154,4 +154,4 @@ You can modify the patterns in `src/services/airtableDomainAnalysis.ts` to:
 2. Verify your Airtable credentials are correct
 3. Ensure your API key has read/write permissions for the base
 
-That's it! The analysis will help you automatically categorize your music industry contacts based on their email domains. 
+That's it! The analysis will help you automatically categorize your music industry contacts based on their email domains.

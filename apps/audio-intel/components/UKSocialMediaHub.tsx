@@ -1,7 +1,16 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, Share2, Smartphone, CheckCircle, AlertCircle, Copy, Zap } from 'lucide-react';
+import {
+  Calendar,
+  Clock,
+  Share2,
+  Smartphone,
+  CheckCircle,
+  AlertCircle,
+  Copy,
+  Zap,
+} from 'lucide-react';
 
 interface UKPost {
   id: string;
@@ -26,10 +35,10 @@ export default function UKSocialMediaHub({ compact = false }: UKSocialMediaHubPr
   // UK Optimal Posting Times (GMT)
   const UK_OPTIMAL_TIMES = {
     'X (Twitter)': ['07:00', '12:00', '17:00'],
-    'LinkedIn': ['08:00', '12:00', '17:00'],
-    'Threads': ['07:00', '12:00', '18:00'],
-    'Facebook': ['09:00', '13:00', '18:00'],
-    'Blue Sky': ['08:00', '13:00', '19:00']
+    LinkedIn: ['08:00', '12:00', '17:00'],
+    Threads: ['07:00', '12:00', '18:00'],
+    Facebook: ['09:00', '13:00', '18:00'],
+    'Blue Sky': ['08:00', '13:00', '19:00'],
   };
 
   useEffect(() => {
@@ -41,15 +50,16 @@ export default function UKSocialMediaHub({ compact = false }: UKSocialMediaHubPr
       setLoading(true);
       const response = await fetch('/api/hybrid-content');
       const data = await response.json();
-      
+
       if (data.success && data.posts) {
         // Convert to UK format with optimal times
         const ukPosts = data.posts.map((post: any) => ({
           ...post,
           ukTime: getNextOptimalTime(post.platform),
-          optimalTime: UK_OPTIMAL_TIMES[post.platform as keyof typeof UK_OPTIMAL_TIMES]?.[0] || '12:00'
+          optimalTime:
+            UK_OPTIMAL_TIMES[post.platform as keyof typeof UK_OPTIMAL_TIMES]?.[0] || '12:00',
         }));
-        
+
         setPosts(ukPosts);
       }
     } catch (error) {
@@ -62,10 +72,10 @@ export default function UKSocialMediaHub({ compact = false }: UKSocialMediaHubPr
   const getNextOptimalTime = (platform: string) => {
     const times = UK_OPTIMAL_TIMES[platform as keyof typeof UK_OPTIMAL_TIMES];
     if (!times) return '12:00';
-    
+
     const now = new Date();
     const currentHour = now.getHours();
-    
+
     // Find next optimal time today
     for (const time of times) {
       const [hour] = time.split(':').map(Number);
@@ -73,25 +83,23 @@ export default function UKSocialMediaHub({ compact = false }: UKSocialMediaHubPr
         return time;
       }
     }
-    
+
     // If no time today, use first time tomorrow
     return times[0];
   };
 
   const postToAllPlatforms = async (postId: string) => {
     setPosting(postId);
-    
+
     try {
       // Simulate posting to all platforms
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
+
       // Update post status
-      setPosts(prev => prev.map(post => 
-        post.id === postId 
-          ? { ...post, status: 'posted' as const }
-          : post
-      ));
-      
+      setPosts(prev =>
+        prev.map(post => (post.id === postId ? { ...post, status: 'posted' as const } : post))
+      );
+
       console.log('Posted to all platforms successfully');
     } catch (error) {
       console.error('Failed to post:', error);
@@ -111,19 +119,22 @@ export default function UKSocialMediaHub({ compact = false }: UKSocialMediaHubPr
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'posted': return <CheckCircle className="w-4 h-4 text-green-500" />;
-      case 'scheduled': return <Clock className="w-4 h-4 text-blue-500" />;
-      default: return <AlertCircle className="w-4 h-4 text-gray-400" />;
+      case 'posted':
+        return <CheckCircle className="w-4 h-4 text-green-500" />;
+      case 'scheduled':
+        return <Clock className="w-4 h-4 text-blue-500" />;
+      default:
+        return <AlertCircle className="w-4 h-4 text-gray-400" />;
     }
   };
 
   const getPlatformColour = (platform: string) => {
     const colours = {
       'X (Twitter)': 'bg-black text-white',
-      'LinkedIn': 'bg-blue-600 text-white',
-      'Threads': 'bg-blue-600 text-white',
-      'Facebook': 'bg-blue-500 text-white',
-      'Blue Sky': 'bg-sky-500 text-white'
+      LinkedIn: 'bg-blue-600 text-white',
+      Threads: 'bg-blue-600 text-white',
+      Facebook: 'bg-blue-500 text-white',
+      'Blue Sky': 'bg-sky-500 text-white',
     };
     return colours[platform as keyof typeof colours] || 'bg-gray-500 text-white';
   };
@@ -152,14 +163,15 @@ export default function UKSocialMediaHub({ compact = false }: UKSocialMediaHubPr
           </h3>
           <span className="text-sm text-gray-500">{posts.length} posts ready</span>
         </div>
-        
+
         <div className="space-y-2">
-          {posts.slice(0, 2).map((post) => (
-            <div key={post.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+          {posts.slice(0, 2).map(post => (
+            <div
+              key={post.id}
+              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+            >
               <div className="flex-1 min-w-0">
-                <p className="text-sm text-gray-700 truncate">
-                  {post.content.substring(0, 60)}...
-                </p>
+                <p className="text-sm text-gray-700 truncate">{post.content.substring(0, 60)}...</p>
                 <div className="flex items-center space-x-2 mt-1">
                   <span className={`px-2 py-1 rounded text-xs ${getPlatformColour(post.platform)}`}>
                     {post.platform}
@@ -177,7 +189,7 @@ export default function UKSocialMediaHub({ compact = false }: UKSocialMediaHubPr
             </div>
           ))}
         </div>
-        
+
         {posts.length > 2 && (
           <button className="w-full mt-3 text-sm text-blue-600 hover:text-blue-700">
             View all {posts.length} posts
@@ -195,9 +207,7 @@ export default function UKSocialMediaHub({ compact = false }: UKSocialMediaHubPr
             <Share2 className="w-6 h-6 mr-3 text-blue-600" />
             UK Social Media Hub
           </h2>
-          <p className="text-gray-600 mt-1">
-            Your authentic content, optimised for UK audiences
-          </p>
+          <p className="text-gray-600 mt-1">Your authentic content, optimised for UK audiences</p>
         </div>
         <div className="flex items-center space-x-4">
           <div className="text-right">
@@ -232,17 +242,17 @@ export default function UKSocialMediaHub({ compact = false }: UKSocialMediaHubPr
 
       {/* Posts Grid */}
       <div className="space-y-4">
-        {posts.map((post) => (
+        {posts.map(post => (
           <div key={post.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center space-x-3">
                 {getStatusIcon(post.status)}
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColour(post.platform)}`}>
+                <span
+                  className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColour(post.platform)}`}
+                >
                   {post.platform}
                 </span>
-                <span className="text-sm text-gray-500">
-                  Next: {post.ukTime} GMT
-                </span>
+                <span className="text-sm text-gray-500">Next: {post.ukTime} GMT</span>
               </div>
               <div className="flex items-center space-x-2">
                 <button
@@ -275,11 +285,11 @@ export default function UKSocialMediaHub({ compact = false }: UKSocialMediaHubPr
                 </button>
               </div>
             </div>
-            
+
             <div className="mb-3">
               <p className="text-gray-700 leading-relaxed">{post.content}</p>
             </div>
-            
+
             {post.hashtags.length > 0 && (
               <div className="flex flex-wrap gap-1">
                 {post.hashtags.map((tag, index) => (

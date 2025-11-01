@@ -1,6 +1,6 @@
 # 👥 MASTER DATABASE - FILTERED VIEWS SETUP GUIDE
 
-*How to create smart filtered views for different contexts*
+_How to create smart filtered views for different contexts_
 
 ## 📊 DATABASE LOCATION
 
@@ -183,4 +183,4 @@ Click on [📊 Total Audio Master Database](%F0%9F%93%8A%20TOTAL%20AUDIO%20MASTE
 
 ---
 
-*Once views are set up, bookmark the most used ones for quick mobile access*
+_Once views are set up, bookmark the most used ones for quick mobile access_

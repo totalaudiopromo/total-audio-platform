@@ -1,5 +1,5 @@
-import type { NextConfig } from "next";
-import path from "path";
+import type { NextConfig } from 'next';
+import path from 'path';
 
 const nextConfig: NextConfig = {
   eslint: {
@@ -14,12 +14,12 @@ const nextConfig: NextConfig = {
   generateBuildId: async () => {
     return 'build-' + Date.now();
   },
-  webpack: (config) => {
+  webpack: config => {
     // Add root node_modules to module resolution paths for monorepo
-    config.resolve.modules.push(path.resolve(__dirname, "../../node_modules"));
+    config.resolve.modules.push(path.resolve(__dirname, '../../node_modules'));
     config.resolve.alias = {
       ...(config.resolve.alias ?? {}),
-      "@": path.resolve(__dirname),
+      '@': path.resolve(__dirname),
     };
     return config;
   },

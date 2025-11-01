@@ -1,7 +1,20 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, Hash, TrendingUp, Plus, Edit, Trash2, Copy, CheckCircle, Share2, RefreshCw, ExternalLink } from 'lucide-react';
+import {
+  Calendar,
+  Clock,
+  Hash,
+  TrendingUp,
+  Plus,
+  Edit,
+  Trash2,
+  Copy,
+  CheckCircle,
+  Share2,
+  RefreshCw,
+  ExternalLink,
+} from 'lucide-react';
 
 interface NotionPost {
   id: string;
@@ -30,32 +43,33 @@ export default function NotionSocial() {
   const syncFromNotion = async () => {
     setSyncing(true);
     setError(null);
-    
+
     try {
       console.log('🔄 Loading your content from Notion + Local files...');
-      
+
       // Get content from both Notion and local files
       const hybridResponse = await fetch('/api/hybrid-content', {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
-      
+
       if (!hybridResponse.ok) {
         throw new Error(`Failed to load hybrid content: ${hybridResponse.status}`);
       }
-      
+
       const hybridData = await hybridResponse.json();
       console.log('📄 Your hybrid content:', hybridData);
-      
+
       if (hybridData.success && hybridData.posts) {
         // Use your combined content
         setPosts(hybridData.posts);
         setLastSync(new Date());
-        console.log(`✅ Loaded ${hybridData.sources.total} posts (${hybridData.sources.notion} from Notion, ${hybridData.sources.local} from local files)`);
+        console.log(
+          `✅ Loaded ${hybridData.sources.total} posts (${hybridData.sources.notion} from Notion, ${hybridData.sources.local} from local files)`
+        );
       } else {
         throw new Error('No posts found in your content sources');
       }
-      
     } catch (err: any) {
       console.error('❌ Content load failed:', err);
       setError(err.message);
@@ -75,21 +89,17 @@ export default function NotionSocial() {
             content: post.content,
             platform: post.platform,
             scheduledTime: post.scheduledTime,
-            hashtags: post.hashtags
-          }
-        })
+            hashtags: post.hashtags,
+          },
+        }),
       });
 
       if (response.ok) {
         const result = await response.json();
         console.log('✅ Post added to scheduler:', result);
         // Update the post status locally
-        setPosts(prevPosts => 
-          prevPosts.map(p => 
-            p.id === post.id 
-              ? { ...p, status: 'scheduled' as const }
-              : p
-          )
+        setPosts(prevPosts =>
+          prevPosts.map(p => (p.id === post.id ? { ...p, status: 'scheduled' as const } : p))
         );
       } else {
         throw new Error(`Failed to add post: ${response.status}`);
@@ -118,29 +128,42 @@ export default function NotionSocial() {
 
   const formatPlatform = (platform: string) => {
     switch (platform) {
-      case 'x': return 'X (Twitter)';
-      case 'linkedin': return 'LinkedIn';
-      case 'bluesky': return 'Blue Sky';
-      default: return platform;
+      case 'x':
+        return 'X (Twitter)';
+      case 'linkedin':
+        return 'LinkedIn';
+      case 'bluesky':
+        return 'Blue Sky';
+      default:
+        return platform;
     }
   };
 
   const getPlatformColor = (platform: string) => {
     switch (platform) {
-      case 'x': return 'bg-black text-white';
-      case 'linkedin': return 'bg-blue-600 text-white';
-      case 'bluesky': return 'bg-sky-500 text-white';
-      default: return 'bg-gray-500 text-white';
+      case 'x':
+        return 'bg-black text-white';
+      case 'linkedin':
+        return 'bg-blue-600 text-white';
+      case 'bluesky':
+        return 'bg-sky-500 text-white';
+      default:
+        return 'bg-gray-500 text-white';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'scheduled': return 'bg-yellow-100 text-yellow-800';
-      case 'posted': return 'bg-green-100 text-green-800';
-      case 'failed': return 'bg-red-100 text-red-800';
-      case 'draft': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'scheduled':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'posted':
+        return 'bg-green-100 text-green-800';
+      case 'failed':
+        return 'bg-red-100 text-red-800';
+      case 'draft':
+        return 'bg-gray-100 text-gray-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
@@ -200,20 +223,17 @@ export default function NotionSocial() {
               </a>
             </div>
           </div>
-          
+
           {lastSync && (
-            <p className="text-sm text-gray-500 mt-2">
-              Last synced: {lastSync.toLocaleString()}
-            </p>
+            <p className="text-sm text-gray-500 mt-2">Last synced: {lastSync.toLocaleString()}</p>
           )}
-          
+
           {error && (
             <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
               <p className="text-red-700">Sync error: {error}</p>
             </div>
           )}
         </div>
-
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
@@ -228,7 +248,7 @@ export default function NotionSocial() {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-orange-100 rounded-lg">
@@ -240,7 +260,7 @@ export default function NotionSocial() {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-green-100 rounded-lg">
@@ -252,7 +272,7 @@ export default function NotionSocial() {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-blue-100 rounded-lg">
@@ -268,18 +288,28 @@ export default function NotionSocial() {
 
         {/* Instructions */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-          <h3 className="text-lg font-semibold text-blue-900 mb-2">How it works with your content:</h3>
+          <h3 className="text-lg font-semibold text-blue-900 mb-2">
+            How it works with your content:
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-blue-800">
             <div className="flex items-start space-x-2">
-              <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">1</span>
-              <span>Write your authentic posts in Notion (with 🎵 or "Music Industry" keywords)</span>
+              <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
+                1
+              </span>
+              <span>
+                Write your authentic posts in Notion (with 🎵 or "Music Industry" keywords)
+              </span>
             </div>
             <div className="flex items-start space-x-2">
-              <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">2</span>
+              <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
+                2
+              </span>
               <span>This page automatically syncs your Notion content every 30 seconds</span>
             </div>
             <div className="flex items-start space-x-2">
-              <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">3</span>
+              <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
+                3
+              </span>
               <span>Click "Schedule Post" to add your content to the social media queue</span>
             </div>
           </div>
@@ -287,25 +317,35 @@ export default function NotionSocial() {
 
         {/* Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post) => (
-            <div key={post.id} className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+          {posts.map(post => (
+            <div
+              key={post.id}
+              className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow"
+            >
               <div className="flex items-center justify-between mb-4">
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(post.platform)}`}>
+                <span
+                  className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(post.platform)}`}
+                >
                   {formatPlatform(post.platform)}
                 </span>
-                <span className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(post.status)}`}>
+                <span
+                  className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(post.status)}`}
+                >
                   {post.status}
                 </span>
               </div>
-              
+
               <div className="mb-4">
                 <p className="text-gray-700 text-sm leading-relaxed line-clamp-4">{post.content}</p>
               </div>
-              
+
               {post.hashtags.length > 0 && (
                 <div className="flex flex-wrap gap-1 mb-4">
                   {post.hashtags.map((tag, index) => (
-                    <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                    <span
+                      key={index}
+                      className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"
+                    >
                       {tag}
                     </span>
                   ))}
@@ -320,7 +360,10 @@ export default function NotionSocial() {
                 {(post as any).engagement && (
                   <span className="flex items-center">
                     <TrendingUp className="w-4 h-4 mr-1" />
-                    {(post as any).engagement.likes + (post as any).engagement.retweets + (post as any).engagement.comments} engagement
+                    {(post as any).engagement.likes +
+                      (post as any).engagement.retweets +
+                      (post as any).engagement.comments}{' '}
+                    engagement
                   </span>
                 )}
               </div>
@@ -351,7 +394,8 @@ export default function NotionSocial() {
             <Hash className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <h3 className="text-xl font-medium text-gray-900 mb-2">No posts found</h3>
             <p className="text-gray-500 mb-6">
-              Write some social media content in your Notion workspace with 🎵 or "Music Industry" keywords
+              Write some social media content in your Notion workspace with 🎵 or "Music Industry"
+              keywords
             </p>
             <div className="flex justify-center space-x-4">
               <button

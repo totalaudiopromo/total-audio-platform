@@ -2,7 +2,7 @@
 
 /**
  * Airtable + Audio Intel Integration
- * 
+ *
  * This script demonstrates how to integrate your Airtable contacts
  * with Audio Intel for contact enrichment and dynamic station selection
  */
@@ -31,21 +31,21 @@ class AirtableAPI {
         responseRate: 0.75,
         lastContacted: '2025-01-15',
         audioIntelEnriched: false,
-        enrichmentData: null
+        enrichmentData: null,
       },
       {
-        id: 'rec2', 
+        id: 'rec2',
         name: 'Mike Chen',
         stationName: 'Amazing Radio',
         stationType: 'Online',
         email: 'mike@amazingradio.co.uk',
         genreFocus: ['Indie', 'Alternative', 'Electronic'],
         relationshipStatus: 'Hot',
-        responseRate: 0.90,
+        responseRate: 0.9,
         lastContacted: '2025-01-10',
         audioIntelEnriched: true,
-        enrichmentData: 'Specialist indie music curator with focus on emerging artists...'
-      }
+        enrichmentData: 'Specialist indie music curator with focus on emerging artists...',
+      },
     ];
   }
 
@@ -66,18 +66,19 @@ class AudioIntelAPI {
   async enrichContact(contact) {
     // Mock enrichment - replace with actual Audio Intel API call
     const mockEnrichment = {
-      intelligence: `🎵 **${contact.stationName} Contact Intelligence**\n\n` +
-                   `**Contact**: ${contact.name}\n` +
-                   `**Station Type**: ${contact.stationType}\n` +
-                   `**Genre Focus**: ${contact.genreFocus.join(', ')}\n` +
-                   `**Submission Preferences**: Prefers tracks with strong hooks and commercial appeal\n` +
-                   `**Best Contact Time**: Tuesday-Thursday, 10am-2pm\n` +
-                   `**Pitch Tips**: Mention recent playlist successes and streaming numbers\n` +
-                   `**Relationship Status**: ${contact.relationshipStatus}\n` +
-                   `**Response Rate**: ${(contact.responseRate * 100).toFixed(0)}%\n\n` +
-                   `**Strategic Approach**: ${this.getStrategicApproach(contact)}`,
+      intelligence:
+        `🎵 **${contact.stationName} Contact Intelligence**\n\n` +
+        `**Contact**: ${contact.name}\n` +
+        `**Station Type**: ${contact.stationType}\n` +
+        `**Genre Focus**: ${contact.genreFocus.join(', ')}\n` +
+        `**Submission Preferences**: Prefers tracks with strong hooks and commercial appeal\n` +
+        `**Best Contact Time**: Tuesday-Thursday, 10am-2pm\n` +
+        `**Pitch Tips**: Mention recent playlist successes and streaming numbers\n` +
+        `**Relationship Status**: ${contact.relationshipStatus}\n` +
+        `**Response Rate**: ${(contact.responseRate * 100).toFixed(0)}%\n\n` +
+        `**Strategic Approach**: ${this.getStrategicApproach(contact)}`,
       confidence: this.calculateConfidence(contact),
-      lastResearched: new Date().toISOString()
+      lastResearched: new Date().toISOString(),
     };
 
     return mockEnrichment;
@@ -112,17 +113,19 @@ class DynamicStationSelector {
   }
 
   async selectStationsForCampaign(campaign) {
-    console.log(`🎯 Selecting stations for campaign: ${campaign.artistName} - ${campaign.trackTitle}`);
+    console.log(
+      `🎯 Selecting stations for campaign: ${campaign.artistName} - ${campaign.trackTitle}`
+    );
     console.log(`   Genre: ${campaign.genre}`);
     console.log(`   Budget: ${campaign.budget}\n`);
 
     // Get all contacts
     const contacts = await this.airtable.getContacts();
-    
+
     // Score each contact
     const scoredContacts = contacts.map(contact => ({
       ...contact,
-      score: this.calculateStationScore(contact, campaign)
+      score: this.calculateStationScore(contact, campaign),
     }));
 
     // Sort by score (highest first)
@@ -133,11 +136,15 @@ class DynamicStationSelector {
     const selectedContacts = scoredContacts.slice(0, maxContacts);
 
     console.log(`📊 Selected ${selectedContacts.length} contacts for campaign:\n`);
-    
+
     selectedContacts.forEach((contact, index) => {
       console.log(`${index + 1}. ${contact.stationName} (${contact.name})`);
-      console.log(`   Score: ${contact.score.toFixed(1)} | Type: ${contact.stationType} | Status: ${contact.relationshipStatus}`);
-      console.log(`   Genre Focus: ${contact.genreFocus.join(', ')} | Response Rate: ${(contact.responseRate * 100).toFixed(0)}%`);
+      console.log(
+        `   Score: ${contact.score.toFixed(1)} | Type: ${contact.stationType} | Status: ${contact.relationshipStatus}`
+      );
+      console.log(
+        `   Genre Focus: ${contact.genreFocus.join(', ')} | Response Rate: ${(contact.responseRate * 100).toFixed(0)}%`
+      );
       console.log(`   Enriched: ${contact.audioIntelEnriched ? 'Yes' : 'No'}\n`);
     });
 
@@ -149,30 +156,33 @@ class DynamicStationSelector {
 
     // Base station type importance
     const stationTypeScores = {
-      'BBC': 100,
-      'Commercial': 80,
-      'Dance': 70,
-      'Specialist': 90,
-      'Regional': 60,
-      'Online': 50,
-      'Community': 30
+      BBC: 100,
+      Commercial: 80,
+      Dance: 70,
+      Specialist: 90,
+      Regional: 60,
+      Online: 50,
+      Community: 30,
     };
     score += stationTypeScores[contact.stationType] || 50;
 
     // Genre match bonus
-    if (contact.genreFocus.some(genre => 
-      campaign.genre.toLowerCase().includes(genre.toLowerCase()) ||
-      genre.toLowerCase().includes(campaign.genre.toLowerCase())
-    )) {
+    if (
+      contact.genreFocus.some(
+        genre =>
+          campaign.genre.toLowerCase().includes(genre.toLowerCase()) ||
+          genre.toLowerCase().includes(campaign.genre.toLowerCase())
+      )
+    ) {
       score += 20;
     }
 
     // Relationship status bonus
     const relationshipScores = {
-      'VIP': 30,
-      'Hot': 25,
-      'Warm': 15,
-      'Cold': 0
+      VIP: 30,
+      Hot: 25,
+      Warm: 15,
+      Cold: 0,
     };
     score += relationshipScores[contact.relationshipStatus] || 0;
 
@@ -197,7 +207,7 @@ class DynamicStationSelector {
 
   getMaxContactsForBudget(budget) {
     const budgetAmount = parseFloat(budget.replace(/[£$,]/g, ''));
-    
+
     if (budgetAmount < 1000) return 10;
     if (budgetAmount < 2500) return 20;
     if (budgetAmount < 5000) return 35;
@@ -232,21 +242,20 @@ class ContactEnrichmentPipeline {
     for (const contact of unenrichedContacts) {
       try {
         console.log(`🔍 Enriching ${contact.name} (${contact.stationName})...`);
-        
+
         const enrichment = await this.audioIntel.enrichContact(contact);
-        
+
         await this.airtable.updateContact(contact.id, {
           enrichmentData: enrichment.intelligence,
           enrichmentConfidence: enrichment.confidence,
           lastEnriched: enrichment.lastResearched,
-          audioIntelEnriched: true
+          audioIntelEnriched: true,
         });
 
         console.log(`   ✅ Enriched with ${enrichment.confidence} confidence\n`);
-        
+
         // Rate limiting
         await new Promise(resolve => setTimeout(resolve, 1000));
-        
       } catch (error) {
         console.log(`   ❌ Failed to enrich ${contact.name}: ${error.message}\n`);
       }
@@ -258,20 +267,20 @@ class ContactEnrichmentPipeline {
   async enrichContact(contactId) {
     const contacts = await this.airtable.getContacts();
     const contact = contacts.find(c => c.id === contactId);
-    
+
     if (!contact) {
       throw new Error(`Contact ${contactId} not found`);
     }
 
     console.log(`🔍 Enriching single contact: ${contact.name}`);
-    
+
     const enrichment = await this.audioIntel.enrichContact(contact);
-    
+
     await this.airtable.updateContact(contactId, {
       enrichmentData: enrichment.intelligence,
       enrichmentConfidence: enrichment.confidence,
       lastEnriched: enrichment.lastResearched,
-      audioIntelEnriched: true
+      audioIntelEnriched: true,
     });
 
     console.log(`✅ Contact enriched with ${enrichment.confidence} confidence`);
@@ -300,13 +309,13 @@ async function main() {
     console.log('\n' + '='.repeat(60));
     console.log('DEMO 2: Dynamic Station Selection');
     console.log('='.repeat(60));
-    
+
     const sampleCampaign = {
       artistName: 'Senior Dunce',
       trackTitle: 'Bestial',
       genre: 'House Pop',
       budget: '£2500',
-      releaseDate: '2025-02-15'
+      releaseDate: '2025-02-15',
     };
 
     await stationSelector.selectStationsForCampaign(sampleCampaign);
@@ -315,15 +324,21 @@ async function main() {
     console.log('\n' + '='.repeat(60));
     console.log('DEMO 3: Personalized Pitch Generation');
     console.log('='.repeat(60));
-    
+
     const contacts = await airtable.getContacts();
     const enrichedContacts = contacts.filter(c => c.audioIntelEnriched);
-    
+
     for (const contact of enrichedContacts.slice(0, 2)) {
       console.log(`📧 Personalized pitch for ${contact.name} (${contact.stationName}):`);
-      console.log(`   Subject: "New House Pop: ${sampleCampaign.artistName} - ${sampleCampaign.trackTitle}"`);
-      console.log(`   Message: "Hi ${contact.name}, we have a fresh house pop track that would be perfect for your ${contact.genreFocus.join(', ')} shows..."`);
-      console.log(`   Based on: ${contact.enrichmentData ? 'Audio Intel data' : 'Basic contact info'}\n`);
+      console.log(
+        `   Subject: "New House Pop: ${sampleCampaign.artistName} - ${sampleCampaign.trackTitle}"`
+      );
+      console.log(
+        `   Message: "Hi ${contact.name}, we have a fresh house pop track that would be perfect for your ${contact.genreFocus.join(', ')} shows..."`
+      );
+      console.log(
+        `   Based on: ${contact.enrichmentData ? 'Audio Intel data' : 'Basic contact info'}\n`
+      );
     }
 
     console.log('🎉 Integration demo complete!');
@@ -332,7 +347,6 @@ async function main() {
     console.log('2. Connect to Audio Intel API');
     console.log('3. Implement in radio promo agent');
     console.log('4. Test with real campaigns');
-
   } catch (error) {
     console.error('❌ Demo failed:', error.message);
     console.error(error.stack);
@@ -348,5 +362,5 @@ module.exports = {
   AirtableAPI,
   AudioIntelAPI,
   DynamicStationSelector,
-  ContactEnrichmentPipeline
+  ContactEnrichmentPipeline,
 };

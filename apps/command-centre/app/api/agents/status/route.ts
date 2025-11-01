@@ -21,8 +21,8 @@ export async function GET() {
     const healthCheckScript = path.join(agentsPath, 'check-all-agents.js');
 
     const { stdout } = await execAsync(`node "${healthCheckScript}"`, {
-      timeout: 30000,  // 30 second timeout
-      cwd: agentsPath
+      timeout: 30000, // 30 second timeout
+      cwd: agentsPath,
     });
 
     // Try to parse JSON output from health check
@@ -35,9 +35,8 @@ export async function GET() {
     return NextResponse.json({
       success: true,
       ...statusData,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
-
   } catch (error) {
     console.error('[API] Health check error:', error);
 
@@ -50,15 +49,17 @@ export async function GET() {
         success: true,
         warning: 'Health check script failed, using fallback',
         ...statusData,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
-
     } catch (fallbackError) {
-      return NextResponse.json({
-        success: false,
-        error: error instanceof Error ? error.message : 'Unknown error',
-        timestamp: new Date().toISOString()
-      }, { status: 500 });
+      return NextResponse.json(
+        {
+          success: false,
+          error: error instanceof Error ? error.message : 'Unknown error',
+          timestamp: new Date().toISOString(),
+        },
+        { status: 500 }
+      );
     }
   }
 }
@@ -90,7 +91,7 @@ async function getAgentStatusData(agentsPath: string) {
 
       agents.push({
         ...status,
-        age: Math.round(ageHours * 10) / 10
+        age: Math.round(ageHours * 10) / 10,
       });
     }
   } catch (error) {
@@ -105,9 +106,9 @@ async function getAgentStatusData(agentsPath: string) {
       budget: 150,
       remaining: 150,
       percentUsed: 0,
-      projectedTotal: 0
+      projectedTotal: 0,
     },
-    services: {}
+    services: {},
   };
 
   try {
@@ -123,11 +124,7 @@ async function getAgentStatusData(agentsPath: string) {
     // Calculate projections
     const daysPassed = Object.keys(costData.daily).length || 1;
     const dailyAverage = costData.total / daysPassed;
-    const daysInMonth = new Date(
-      new Date().getFullYear(),
-      new Date().getMonth() + 1,
-      0
-    ).getDate();
+    const daysInMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
     costs = {
       today: todayCosts,
@@ -136,9 +133,9 @@ async function getAgentStatusData(agentsPath: string) {
         budget: 150,
         remaining: 150 - costData.total,
         percentUsed: (costData.total / 150) * 100,
-        projectedTotal: dailyAverage * daysInMonth
+        projectedTotal: dailyAverage * daysInMonth,
       },
-      services: costData.services
+      services: costData.services,
     };
   } catch (error) {
     // Cost data not available - use defaults
@@ -150,7 +147,7 @@ async function getAgentStatusData(agentsPath: string) {
     completed: 0,
     failed: 0,
     pending: 0,
-    stale: 0
+    stale: 0,
   };
 
   agents.forEach((agent: any) => {
@@ -191,7 +188,7 @@ async function getAgentStatusData(agentsPath: string) {
     'social-calendar': 1,
     'newsletter-generator': 0.5,
     'data-cleanup': 0.14,
-    'station-discovery': 0.6
+    'station-discovery': 0.6,
   };
 
   let timeSavedToday = 0;
@@ -203,8 +200,8 @@ async function getAgentStatusData(agentsPath: string) {
 
   return {
     health,
-    agents: agents.sort((a: any, b: any) =>
-      new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
+    agents: agents.sort(
+      (a: any, b: any) => new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
     ),
     costs,
     metrics: {
@@ -213,7 +210,7 @@ async function getAgentStatusData(agentsPath: string) {
       timeSavedToday: Math.round(timeSavedToday * 10) / 10,
       contactsEnrichedToday: contactsEnriched,
       emailsProcessedToday: emailsProcessed,
-      health
-    }
+      health,
+    },
   };
 }

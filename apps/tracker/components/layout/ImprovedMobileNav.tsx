@@ -3,7 +3,15 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Home, BarChart3, Settings, FileText, HelpCircle } from 'lucide-react';
+import {
+  Menu,
+  X,
+  Home,
+  BarChart3,
+  Settings,
+  FileText,
+  HelpCircle,
+} from 'lucide-react';
 
 interface MobileNavProps {
   userName?: string;
@@ -76,7 +84,9 @@ export function ImprovedMobileNav({ userName, onSignOut }: MobileNavProps) {
             <div>
               <h2 className="text-xl font-black text-gray-900">Menu</h2>
               {userName && (
-                <p className="text-sm font-bold text-gray-600 mt-1">{userName}</p>
+                <p className="text-sm font-bold text-gray-600 mt-1">
+                  {userName}
+                </p>
               )}
             </div>
             <button
@@ -91,7 +101,7 @@ export function ImprovedMobileNav({ userName, onSignOut }: MobileNavProps) {
           {/* Navigation Links */}
           <nav className="flex-1 overflow-y-auto p-4">
             <ul className="space-y-2">
-              {navItems.map((item) => {
+              {navItems.map(item => {
                 const Icon = item.icon;
                 const isActive = pathname === item.href;
 
@@ -106,7 +116,9 @@ export function ImprovedMobileNav({ userName, onSignOut }: MobileNavProps) {
                       }`}
                       onClick={() => setIsOpen(false)}
                     >
-                      <Icon className={`h-5 w-5 ${isActive ? 'text-white' : 'text-gray-600'}`} />
+                      <Icon
+                        className={`h-5 w-5 ${isActive ? 'text-white' : 'text-gray-600'}`}
+                      />
                       <span>{item.label}</span>
                     </Link>
                   </li>

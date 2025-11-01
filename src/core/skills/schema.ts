@@ -139,10 +139,11 @@ export class SkillExecutionError extends Error {
 }
 
 export class SkillNotFoundError extends Error {
-  constructor(public skillName: string, public version?: string) {
-    super(
-      `Skill "${skillName}"${version ? `@${version}` : ''} not found in registry`
-    );
+  constructor(
+    public skillName: string,
+    public version?: string
+  ) {
+    super(`Skill "${skillName}"${version ? `@${version}` : ''} not found in registry`);
     this.name = 'SkillNotFoundError';
   }
 }

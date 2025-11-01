@@ -22,6 +22,7 @@ node send-to-convertkit.js --test
 ## ✅ Voice Quality Checks
 
 Every newsletter should have:
+
 - ✅ "After 5+ years in radio promotion" OR "Building Audio Intel taught me"
 - ✅ British spelling (organised, whilst, realise)
 - ✅ Specific action (30min-2hr commitment)

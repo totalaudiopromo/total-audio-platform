@@ -2,7 +2,7 @@
 
 /**
  * Simple Email Tracking Server
- * 
+ *
  * Handles tracking pixel and link requests
  * Can be deployed to any hosting service (Vercel, Netlify, etc.)
  */
@@ -36,24 +36,24 @@ app.get('/track/open/:pixelId', async (req, res) => {
     const { pixelId } = req.params;
     const userAgent = req.get('User-Agent');
     const ip = req.ip || req.connection.remoteAddress;
-    
+
     const result = await emailTracking.processOpenTracking(pixelId, userAgent, ip);
-    
+
     if (result.success) {
       // Return 1x1 transparent pixel
       const pixel = Buffer.from(
         'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==',
         'base64'
       );
-      
+
       res.set({
         'Content-Type': 'image/png',
         'Content-Length': pixel.length,
         'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0'
+        Pragma: 'no-cache',
+        Expires: '0',
       });
-      
+
       res.send(pixel);
     } else {
       res.status(404).send('Not found');
@@ -70,9 +70,9 @@ app.get('/track/click/:linkId', async (req, res) => {
     const { linkId } = req.params;
     const userAgent = req.get('User-Agent');
     const ip = req.ip || req.connection.remoteAddress;
-    
+
     const result = await emailTracking.processClickTracking(linkId, userAgent, ip);
-    
+
     if (result.success) {
       // Redirect to original URL
       res.redirect(302, result.redirectUrl);
@@ -114,12 +114,12 @@ app.get('/api/export/:campaignId?', (req, res) => {
   try {
     const { campaignId } = req.params;
     const csv = emailTracking.exportToCSV(campaignId);
-    
+
     res.set({
       'Content-Type': 'text/csv',
-      'Content-Disposition': `attachment; filename="tracking-${campaignId || 'all'}-${Date.now()}.csv"`
+      'Content-Disposition': `attachment; filename="tracking-${campaignId || 'all'}-${Date.now()}.csv"`,
     });
-    
+
     res.send(csv);
   } catch (error) {
     console.error('❌ Export error:', error.message);

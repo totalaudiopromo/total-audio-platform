@@ -104,9 +104,7 @@ export class ContactMatcherSkill {
       let matches = response.matches.filter((m: any) => m.score >= minScore);
 
       // Sort by score and limit results
-      matches = matches
-        .sort((a: any, b: any) => b.score - a.score)
-        .slice(0, input.limit || 10);
+      matches = matches.sort((a: any, b: any) => b.score - a.score).slice(0, input.limit || 10);
 
       // Calculate analysis stats
       const totalContacts = input.contacts.length;
@@ -117,8 +115,8 @@ export class ContactMatcherSkill {
       // Extract top genres from matched contacts
       const genreCounts: Record<string, number> = {};
       matches.forEach((match: any) => {
-        const contact = input.contacts.find((c) => c.id === match.contactId);
-        contact?.genre_focus?.forEach((genre) => {
+        const contact = input.contacts.find(c => c.id === match.contactId);
+        contact?.genre_focus?.forEach(genre => {
           genreCounts[genre] = (genreCounts[genre] || 0) + 1;
         });
       });
@@ -214,7 +212,10 @@ For each match, identify:
       if (input.artistProfile.bio) {
         prompt += `- Bio: ${input.artistProfile.bio}\n`;
       }
-      if (input.artistProfile.previous_coverage && input.artistProfile.previous_coverage.length > 0) {
+      if (
+        input.artistProfile.previous_coverage &&
+        input.artistProfile.previous_coverage.length > 0
+      ) {
         prompt += `- Previous Coverage: ${input.artistProfile.previous_coverage.join('; ')}\n`;
       }
       if (input.artistProfile.target_audience) {
@@ -303,7 +304,7 @@ For each match, identify:
     }>
   > {
     const results = await Promise.all(
-      tracks.map(async (track) => {
+      tracks.map(async track => {
         const result = await this.execute(
           {
             track,

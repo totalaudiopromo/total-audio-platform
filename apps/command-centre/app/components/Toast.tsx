@@ -35,18 +35,34 @@ function Toast({ toast, onRemove }: ToastProps) {
       cursor: 'pointer',
       transition: 'all 0.3s ease',
       maxWidth: '400px',
-      animation: 'slideIn 0.3s ease-out'
+      animation: 'slideIn 0.3s ease-out',
     };
 
     switch (type) {
       case 'success':
-        return { ...baseStyles, background: 'linear-gradient(135deg, #10b981, #059669)', color: 'white' };
+        return {
+          ...baseStyles,
+          background: 'linear-gradient(135deg, #10b981, #059669)',
+          color: 'white',
+        };
       case 'error':
-        return { ...baseStyles, background: 'linear-gradient(135deg, #ef4444, #dc2626)', color: 'white' };
+        return {
+          ...baseStyles,
+          background: 'linear-gradient(135deg, #ef4444, #dc2626)',
+          color: 'white',
+        };
       case 'warning':
-        return { ...baseStyles, background: 'linear-gradient(135deg, #f59e0b, #d97706)', color: 'white' };
+        return {
+          ...baseStyles,
+          background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+          color: 'white',
+        };
       case 'info':
-        return { ...baseStyles, background: 'linear-gradient(135deg, #3b82f6, #2563eb)', color: 'white' };
+        return {
+          ...baseStyles,
+          background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+          color: 'white',
+        };
       default:
         return { ...baseStyles, background: 'rgba(255, 255, 255, 0.9)', color: '#374151' };
     }
@@ -54,23 +70,23 @@ function Toast({ toast, onRemove }: ToastProps) {
 
   const getIcon = (type: string) => {
     switch (type) {
-      case 'success': return '✅';
-      case 'error': return '❌';
-      case 'warning': return '⚠️';
-      case 'info': return 'ℹ️';
-      default: return '📢';
+      case 'success':
+        return '✅';
+      case 'error':
+        return '❌';
+      case 'warning':
+        return '⚠️';
+      case 'info':
+        return 'ℹ️';
+      default:
+        return '📢';
     }
   };
 
   return (
-    <div
-      style={getToastStyles(toast.type)}
-      onClick={() => onRemove(toast.id)}
-    >
+    <div style={getToastStyles(toast.type)} onClick={() => onRemove(toast.id)}>
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-        <span style={{ fontSize: '1.25rem', flexShrink: 0 }}>
-          {getIcon(toast.type)}
-        </span>
+        <span style={{ fontSize: '1.25rem', flexShrink: 0 }}>{getIcon(toast.type)}</span>
         <div style={{ flex: 1 }}>
           <div style={{ fontWeight: '600', fontSize: '0.875rem', marginBottom: '0.25rem' }}>
             {toast.title}
@@ -82,7 +98,7 @@ function Toast({ toast, onRemove }: ToastProps) {
           )}
         </div>
         <button
-          onClick={(e) => {
+          onClick={e => {
             e.stopPropagation();
             onRemove(toast.id);
           }}
@@ -93,7 +109,7 @@ function Toast({ toast, onRemove }: ToastProps) {
             color: 'inherit',
             cursor: 'pointer',
             padding: '0.25rem 0.5rem',
-            fontSize: '0.75rem'
+            fontSize: '0.75rem',
           }}
         >
           ✕
@@ -145,21 +161,19 @@ export function ToastContainer() {
           }
         }
       `}</style>
-      
-      <div style={{
-        position: 'fixed',
-        top: '1rem',
-        right: '1rem',
-        zIndex: 9999,
-        pointerEvents: 'none'
-      }}>
+
+      <div
+        style={{
+          position: 'fixed',
+          top: '1rem',
+          right: '1rem',
+          zIndex: 9999,
+          pointerEvents: 'none',
+        }}
+      >
         <div style={{ pointerEvents: 'auto' }}>
           {toasts.map(toast => (
-            <Toast
-              key={toast.id}
-              toast={toast}
-              onRemove={removeToast}
-            />
+            <Toast key={toast.id} toast={toast} onRemove={removeToast} />
           ))}
         </div>
       </div>
@@ -188,5 +202,5 @@ export const toast = {
     if (typeof window !== 'undefined' && (window as any).showToast) {
       (window as any).showToast({ type: 'info', title, message, duration });
     }
-  }
+  },
 };

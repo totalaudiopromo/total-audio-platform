@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  TrendingUp, 
-  Users, 
-  Mail, 
+import {
+  TrendingUp,
+  Users,
+  Mail,
   Zap,
   Share2,
   Newspaper,
@@ -22,7 +22,7 @@ import {
   Eye,
   Sparkles,
   ArrowUpRight,
-  ArrowDownRight
+  ArrowDownRight,
 } from 'lucide-react';
 import AgentStatusDashboard from './components/AgentStatusDashboard';
 import './intel-design.css';
@@ -67,7 +67,7 @@ export default function MobileDashboard() {
       const [metricsRes, betaRes, newsRes] = await Promise.all([
         fetch('/api/business-metrics'),
         fetch('/api/beta-tracker'),
-        fetch('/api/newsjacking/content')
+        fetch('/api/newsjacking/content'),
       ]);
 
       if (metricsRes.ok) {
@@ -75,22 +75,24 @@ export default function MobileDashboard() {
         // Ensure metrics have proper structure with real data
         setMetrics({
           revenue: {
-            mrr: metricsData.projectedMRR ? parseFloat(metricsData.projectedMRR.replace('£', '')) : 0,
-            growth: 0.0 // Beta phase - no growth yet
+            mrr: metricsData.projectedMRR
+              ? parseFloat(metricsData.projectedMRR.replace('£', ''))
+              : 0,
+            growth: 0.0, // Beta phase - no growth yet
           },
           customers: {
             total: metricsData.betaUsers || 0,
-            newSignups: 0 // Will be calculated from recent signups
+            newSignups: 0, // Will be calculated from recent signups
           },
           product: {
             contactsEnriched: metricsData.contactsEnriched || 0,
             emailsValidated: metricsData.emailsValidated || 0,
-            successRate: parseFloat(metricsData.successRate?.replace('%', '') || '95.2')
+            successRate: parseFloat(metricsData.successRate?.replace('%', '') || '95.2'),
           },
           agents: {
             activeAgents: 12, // Fixed number of active agents
-            tasksCompleted: 332 // From the logs
-          }
+            tasksCompleted: 332, // From the logs
+          },
         });
       }
 
@@ -100,11 +102,14 @@ export default function MobileDashboard() {
         const processedUsers = (betaData.users || []).map((user: any) => ({
           id: user.id || Math.random().toString(),
           name: user.name || user.email || 'Unknown User',
-          location: typeof user.location === 'object' 
-            ? `${user.location.city || ''}, ${user.location.country || ''}`.replace(', ,', '').replace(/^,\s*|,\s*$/g, '') || 'Unknown Location'
-            : user.location || 'Unknown Location',
+          location:
+            typeof user.location === 'object'
+              ? `${user.location.city || ''}, ${user.location.country || ''}`
+                  .replace(', ,', '')
+                  .replace(/^,\s*|,\s*$/g, '') || 'Unknown Location'
+              : user.location || 'Unknown Location',
           signupDate: user.signupDate || new Date().toISOString(),
-          status: user.status || 'pending'
+          status: user.status || 'pending',
         }));
         setBetaUsers(processedUsers);
       }
@@ -173,16 +178,15 @@ export default function MobileDashboard() {
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <button
-                  onClick={fetchData}
-                  className="intel-button"
-                >
+                <button onClick={fetchData} className="intel-button">
                   <RefreshCw className="w-4 h-4" />
                   Refresh Data
                 </button>
                 <div className="intel-status">
                   <div className="intel-status-dot"></div>
-                  <span>Live • Updated {Math.floor((Date.now() - lastUpdated.getTime()) / 1000)}s ago</span>
+                  <span>
+                    Live • Updated {Math.floor((Date.now() - lastUpdated.getTime()) / 1000)}s ago
+                  </span>
                 </div>
               </div>
             </div>
@@ -195,7 +199,7 @@ export default function MobileDashboard() {
                 <h2>Key Performance Indicators</h2>
                 <p>Live metrics from Audio Intel platform</p>
               </div>
-              
+
               <div className="intel-metrics">
                 {/* Revenue Card */}
                 <div className="intel-metric">
@@ -207,13 +211,9 @@ export default function MobileDashboard() {
                       +{metrics.revenue.growth.toFixed(1)}%
                     </div>
                   </div>
-                  <div className="intel-metric-value">
-                    £{metrics.revenue.mrr.toLocaleString()}
-                  </div>
+                  <div className="intel-metric-value">£{metrics.revenue.mrr.toLocaleString()}</div>
                   <div className="intel-metric-label">Projected MRR</div>
-                  <div className="text-xs text-gray-500 mt-2">
-                    Beta Phase - Pre-launch
-                  </div>
+                  <div className="text-xs text-gray-500 mt-2">Beta Phase - Pre-launch</div>
                 </div>
 
                 {/* Customers Card */}
@@ -226,19 +226,18 @@ export default function MobileDashboard() {
                       +{metrics.customers.newSignups} new
                     </div>
                   </div>
-                  <div className="intel-metric-value">
-                    {metrics.customers.total}
-                  </div>
+                  <div className="intel-metric-value">{metrics.customers.total}</div>
                   <div className="intel-metric-label">Active Beta Users</div>
-                  <div className="text-xs text-gray-500 mt-2">
-                    Real users from ConvertKit
-                  </div>
+                  <div className="text-xs text-gray-500 mt-2">Real users from ConvertKit</div>
                 </div>
 
                 {/* Contacts Card */}
                 <div className="intel-metric">
                   <div className="intel-metric-header">
-                    <div className="intel-metric-icon" style={{ background: 'var(--intel-purple)' }}>
+                    <div
+                      className="intel-metric-icon"
+                      style={{ background: 'var(--intel-purple)' }}
+                    >
                       <Activity className="w-6 h-6 text-white" />
                     </div>
                     <div className="intel-badge intel-badge-blue">
@@ -257,16 +256,17 @@ export default function MobileDashboard() {
                 {/* AI Agents Card */}
                 <div className="intel-metric">
                   <div className="intel-metric-header">
-                    <div className="intel-metric-icon" style={{ background: 'var(--intel-orange)' }}>
+                    <div
+                      className="intel-metric-icon"
+                      style={{ background: 'var(--intel-orange)' }}
+                    >
                       <Sparkles className="w-6 h-6 text-white" />
                     </div>
                     <div className="intel-badge intel-badge-orange">
                       {metrics.agents.tasksCompleted} done
                     </div>
                   </div>
-                  <div className="intel-metric-value">
-                    {metrics.agents.activeAgents}
-                  </div>
+                  <div className="intel-metric-value">{metrics.agents.activeAgents}</div>
                   <div className="intel-metric-label">AI Agents Active</div>
                   <div className="text-xs text-gray-500 mt-2">
                     {metrics.agents.tasksCompleted} tasks completed
@@ -282,10 +282,13 @@ export default function MobileDashboard() {
               <h2>Quick Actions</h2>
               <p>One-click access to key platform features</p>
             </div>
-            
+
             <div className="intel-grid intel-grid-4">
               <Link href="/social-media-hub" className="group block">
-                <div className="intel-card hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ background: 'var(--intel-gradient)' }}>
+                <div
+                  className="intel-card hover:shadow-xl hover:scale-105 transition-all duration-300"
+                  style={{ background: 'var(--intel-gradient)' }}
+                >
                   <div className="flex items-center justify-between mb-4">
                     <Share2 className="w-8 h-8 text-white" />
                     <ArrowUpRight className="w-5 h-5 text-white opacity-50 group-hover:opacity-100 transition-opacity" />
@@ -294,9 +297,12 @@ export default function MobileDashboard() {
                   <p className="text-white/80 text-sm">Multi-platform posting & scheduling</p>
                 </div>
               </Link>
-              
+
               <Link href="/newsjacking" className="group block">
-                <div className="intel-card hover:shadow-xl hover:scale-105 transition-all duration-300 relative" style={{ background: 'linear-gradient(135deg, #10b981 0%, #14b8a6 100%)' }}>
+                <div
+                  className="intel-card hover:shadow-xl hover:scale-105 transition-all duration-300 relative"
+                  style={{ background: 'linear-gradient(135deg, #10b981 0%, #14b8a6 100%)' }}
+                >
                   {newsCount > 0 && (
                     <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-lg">
                       {newsCount}
@@ -310,9 +316,12 @@ export default function MobileDashboard() {
                   <p className="text-white/80 text-sm">{newsCount} opportunities ready</p>
                 </div>
               </Link>
-              
+
               <Link href="/beta-management" className="group block">
-                <div className="intel-card hover:shadow-xl hover:scale-105 transition-all duration-300 relative" style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)' }}>
+                <div
+                  className="intel-card hover:shadow-xl hover:scale-105 transition-all duration-300 relative"
+                  style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)' }}
+                >
                   {pendingUsers > 0 && (
                     <div className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-lg">
                       {pendingUsers}
@@ -326,9 +335,12 @@ export default function MobileDashboard() {
                   <p className="text-white/80 text-sm">{betaUsers.length} users managed</p>
                 </div>
               </Link>
-              
+
               <Link href="/analytics" className="group block">
-                <div className="intel-card hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ background: 'linear-gradient(135deg, #f59e0b 0%, #f97316 100%)' }}>
+                <div
+                  className="intel-card hover:shadow-xl hover:scale-105 transition-all duration-300"
+                  style={{ background: 'linear-gradient(135deg, #f59e0b 0%, #f97316 100%)' }}
+                >
                   <div className="flex items-center justify-between mb-4">
                     <BarChart3 className="w-8 h-8 text-white" />
                     <ArrowUpRight className="w-5 h-5 text-white opacity-50 group-hover:opacity-100 transition-opacity" />
@@ -348,21 +360,24 @@ export default function MobileDashboard() {
                   <h2>Recent Beta Users</h2>
                   <p>Latest user activity from ConvertKit</p>
                 </div>
-                <Link 
-                  href="/beta-management"
-                  className="intel-button"
-                >
+                <Link href="/beta-management" className="intel-button">
                   <span>View All</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </div>
-              
+
               <div className="space-y-4">
                 {recentBetaUsers.map((user, index) => (
-                  <div key={user.id} className="intel-card hover:shadow-lg transition-all duration-300">
+                  <div
+                    key={user.id}
+                    className="intel-card hover:shadow-lg transition-all duration-300"
+                  >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg" style={{ background: 'var(--intel-gradient)' }}>
+                        <div
+                          className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg"
+                          style={{ background: 'var(--intel-gradient)' }}
+                        >
                           {user.name.charAt(0).toUpperCase()}
                         </div>
                         <div>
@@ -404,7 +419,7 @@ export default function MobileDashboard() {
               <h2>System Health</h2>
               <p>All Audio Intel services operating normally</p>
             </div>
-            
+
             <div className="intel-grid intel-grid-3">
               <div className="intel-metric">
                 <div className="flex items-center justify-between mb-4">
@@ -419,7 +434,7 @@ export default function MobileDashboard() {
                   <div className="bg-green-500 h-2 rounded-full w-full"></div>
                 </div>
               </div>
-              
+
               <div className="intel-metric">
                 <div className="flex items-center justify-between mb-4">
                   <div className="intel-metric-icon" style={{ background: 'var(--intel-blue)' }}>
@@ -433,7 +448,7 @@ export default function MobileDashboard() {
                   <div className="bg-blue-500 h-2 rounded-full w-full"></div>
                 </div>
               </div>
-              
+
               <div className="intel-metric">
                 <div className="flex items-center justify-between mb-4">
                   <div className="intel-metric-icon" style={{ background: 'var(--intel-purple)' }}>
@@ -458,7 +473,7 @@ export default function MobileDashboard() {
                   <h2>Content Intelligence</h2>
                   <p>AI-powered content opportunities from music industry news</p>
                 </div>
-                <Link 
+                <Link
                   href="/newsjacking"
                   className="intel-button"
                   style={{ background: 'linear-gradient(135deg, #10b981 0%, #14b8a6 100%)' }}
@@ -467,8 +482,11 @@ export default function MobileDashboard() {
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </div>
-              
-              <div className="intel-card text-white relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #10b981 0%, #14b8a6 100%)' }}>
+
+              <div
+                className="intel-card text-white relative overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, #10b981 0%, #14b8a6 100%)' }}
+              >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full transform translate-x-16 -translate-y-16"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full transform -translate-x-12 translate-y-12"></div>
                 <div className="relative z-10">

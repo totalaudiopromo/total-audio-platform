@@ -13,7 +13,7 @@ const EMAILS = {
   email1: null, // We'll find these by listing broadcasts
   email2: null,
   email3: null,
-  email4: null
+  email4: null,
 };
 
 function removeAllEmojis(text) {
@@ -61,7 +61,7 @@ async function cleanEmails() {
     // We need to use the dashboard or find the broadcast IDs
 
     console.log('⚠️  ConvertKit API Limitation:');
-    console.log('   The API doesn\'t expose sequence email content directly.');
+    console.log("   The API doesn't expose sequence email content directly.");
     console.log('   You need to edit emails via the dashboard.\n');
 
     console.log('📝 Manual Steps Required:');
@@ -73,7 +73,6 @@ async function cleanEmails() {
     console.log('      "Trial Status: Day 7/14 (7 days remaining)"\n');
 
     console.log('✅ Alternatively, use Puppeteer (browser automation) to make the changes.');
-
   } catch (error) {
     console.error('❌ Error:', error.message);
   }

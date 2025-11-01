@@ -31,8 +31,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans min-h-screen`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
-          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZNJWDKH"
-                  height="0" width="0" style={{display:'none',visibility:'hidden'}}></iframe>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WZNJWDKH"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
         </noscript>
         <AuthProvider>
           <div className="flex min-h-screen flex-col bg-white">

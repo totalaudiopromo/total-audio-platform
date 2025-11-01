@@ -10,7 +10,7 @@ _Source: 🛠️ DEVELOPMENT HUB - COMPLETE SYSTEM (MASTER) 2750a35b21ed8121840c
 
 # 🛠️ DEVELOPMENT HUB - COMPLETE SYSTEM (MASTER)
 
-*Your complete development and technical command centre - all workflows, tools, agent systems, and technical documentation in one place*
+_Your complete development and technical command centre - all workflows, tools, agent systems, and technical documentation in one place_
 
 ---
 
@@ -112,7 +112,7 @@ node agent-manager.js chat orchestrator-real
 ```bash
 # Tag specific agents for tasks
 @dev-assistant "implement feature X"
-@ui-designer "optimize landing page"  
+@ui-designer "optimize landing page"
 @debug-master "resolve API issue"
 ```
 
@@ -258,21 +258,21 @@ node sprint-coach.js focus [feature-name]
 
 **For Claude Code/Cursor Sessions:**
 
-[**business-context.md](http://business-context.md):**
+[\*\*business-context.md](http://business-context.md):\*\*
 
 - Total Audio ecosystem overview
 - Revenue model and pricing (£19.99-£39.99/month)
 - Target customers (independent artists, PR agencies)
 - UK market positioning vs US competitors
 
-[**technical-stack.md](http://technical-stack.md):**
+[\*\*technical-stack.md](http://technical-stack.md):\*\*
 
 - Current architecture and patterns
 - Agent system integration points
 - Performance requirements and benchmarks
 - Development standards and conventions
 
-[**agent-specs.md](http://agent-specs.md):**
+[\*\*agent-specs.md](http://agent-specs.md):\*\*
 
 - 31+ agent definitions and capabilities
 - Coordination protocols and workflows
@@ -340,33 +340,33 @@ node sprint-coach.js focus [feature-name]
 
 **Pre-Session Setup:**
 
-- [ ]  Agent system status checked
-- [ ]  Context files loaded in Cursor/Claude Code
-- [ ]  Current development branch verified
-- [ ]  Sprint goals reviewed with agent assistance
+- [ ] Agent system status checked
+- [ ] Context files loaded in Cursor/Claude Code
+- [ ] Current development branch verified
+- [ ] Sprint goals reviewed with agent assistance
 
 **Development Execution:**
 
-- [ ]  Agent coordination for complex tasks
-- [ ]  Continuous testing through TDD system
-- [ ]  Real-time performance monitoring
-- [ ]  Context file updates as needed
+- [ ] Agent coordination for complex tasks
+- [ ] Continuous testing through TDD system
+- [ ] Real-time performance monitoring
+- [ ] Context file updates as needed
 
 **Post-Session Review:**
 
-- [ ]  Code committed with agent validation
-- [ ]  Performance metrics reviewed
-- [ ]  Agent system performance assessed
-- [ ]  Next session planned with sprint coach
+- [ ] Code committed with agent validation
+- [ ] Performance metrics reviewed
+- [ ] Agent system performance assessed
+- [ ] Next session planned with sprint coach
 
 ---
 
-*This Development Hub consolidates all your technical workflows, agent systems, and development standards into one comprehensive system. Use this as your single source of truth for all development activities.*
+_This Development Hub consolidates all your technical workflows, agent systems, and development standards into one comprehensive system. Use this as your single source of truth for all development activities._
 
 **Key Integration Points:**
 
-- [🎯 Content Strategy Hub](%F0%9F%8E%AF%20CONTENT%20STRATEGY%20HUB%20-%20COMPLETE%20SYSTEM%20(MASTER)%202750a35b21ed8170bf1af46e82a9a552.md) - Marketing and content workflows
-- [🚀 Radio Promo Agent](%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2/%F0%9F%9A%80%20RADIO%20PROMO%20AGENT%20-%20COMPLETE%20SYSTEM%20(MASTER)%202650a35b21ed81769541f2b7345deb89.md) - Automated promotion system
+- [🎯 Content Strategy Hub](<%F0%9F%8E%AF%20CONTENT%20STRATEGY%20HUB%20-%20COMPLETE%20SYSTEM%20(MASTER)%202750a35b21ed8170bf1af46e82a9a552.md>) - Marketing and content workflows
+- [🚀 Radio Promo Agent](<%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2/%F0%9F%9A%80%20RADIO%20PROMO%20AGENT%20-%20COMPLETE%20SYSTEM%20(MASTER)%202650a35b21ed81769541f2b7345deb89.md>) - Automated promotion system
 - [📊 Master Database](%F0%9F%93%8A%20TOTAL%20AUDIO%20MASTER%20DATABASE%20a6062ff781624533bc91ebcd1435481c.md) - Central navigation and tracking
 
 **Last Updated:** September 2025
@@ -381,7 +381,7 @@ _Source: CC WORKFLOW 25a0a35b21ed80ca9c65dd109f256d41.md_
 
 # CC WORKFLOW
 
-**One command to rule them all** 
+**One command to rule them all**
 
 **cd /Users/chrisschofield/workspace/active/total-audio-platform/ && npm run status && npm run dev:audio-intel**
 
@@ -564,14 +564,23 @@ What would you like to delegate first?
 🔄 Available Real Service Workflows
 
 1. real-agency-onboarding (4 steps)
+
 - Complete agency onboarding with real service setup
+
 2. real-campaign-launch (4 steps)
+
 - Launch campaign using real integrations
+
 3. real-contact-enrichment (4 steps)
+
 - Contact enrichment using real services
+
 4. real-service-maintenance (4 steps)
+
 - Maintenance using real service connections
+
 5. ai-campaign-optimization (4 steps)
+
 - Optimize campaigns using Claude AI insights
 
 All workflows use real services and have 4 steps each. To execute a workflow, you can run:
@@ -591,7 +600,7 @@ _Source: TDD Planning System - Complete Implementation 2610a35b21ed8199856fffaf3
 
 # TDD Planning System - Family-Friendly Development Workflow
 
-*Lightweight planning system that enhances your existing 25-agent workflow*
+_Lightweight planning system that enhances your existing 25-agent workflow_
 
 ## Quick Command Reference
 
@@ -730,7 +739,7 @@ quick "contact search bug fix"
 # Bypasses TDD, straight to existing workflow
 ```
 
-*Implementation Complete - September 2025*
+_Implementation Complete - September 2025_
 
 ---
 
@@ -793,32 +802,32 @@ Always maintain Total Audio's authentic, professional voice while maximizing rea
 const ContentWidget = {
   sections: [
     {
-      title: "Content Pipeline Status",
+      title: 'Content Pipeline Status',
       metrics: [
-        { label: "Scheduled Posts", value: 15, trend: "+3" },
-        { label: "Trending Opportunities", value: 7, trend: "+2" },
-        { label: "Content Bank Items", value: 47, trend: "+5" },
-        { label: "Auto-Generated Today", value: 8, trend: "+8" }
-      ]
+        { label: 'Scheduled Posts', value: 15, trend: '+3' },
+        { label: 'Trending Opportunities', value: 7, trend: '+2' },
+        { label: 'Content Bank Items', value: 47, trend: '+5' },
+        { label: 'Auto-Generated Today', value: 8, trend: '+8' },
+      ],
     },
     {
-      title: "Newsjacker Activity",
+      title: 'Newsjacker Activity',
       liveFeeds: [
-        { source: "Music Industry News", alerts: 3, lastUpdate: "12 mins ago" },
-        { source: "UK Tech Trends", alerts: 1, lastUpdate: "34 mins ago" },
-        { source: "SaaS Industry", alerts: 2, lastUpdate: "1 hour ago" }
-      ]
+        { source: 'Music Industry News', alerts: 3, lastUpdate: '12 mins ago' },
+        { source: 'UK Tech Trends', alerts: 1, lastUpdate: '34 mins ago' },
+        { source: 'SaaS Industry', alerts: 2, lastUpdate: '1 hour ago' },
+      ],
     },
     {
-      title: "Platform Performance",
+      title: 'Platform Performance',
       platforms: [
-        { name: "LinkedIn", posts: 12, engagement: "143%", reach: "2.3K" },
-        { name: "Twitter", posts: 8, engagement: "87%", reach: "1.1K" },
-        { name: "Instagram", posts: 5, engagement: "201%", reach: "890" }
-      ]
-    }
-  ]
-}
+        { name: 'LinkedIn', posts: 12, engagement: '143%', reach: '2.3K' },
+        { name: 'Twitter', posts: 8, engagement: '87%', reach: '1.1K' },
+        { name: 'Instagram', posts: 5, engagement: '201%', reach: '890' },
+      ],
+    },
+  ],
+};
 ```
 
 ### **Agent Orchestration Panel**
@@ -827,37 +836,37 @@ const ContentWidget = {
 // Mobile-accessible agent control
 const AgentPanel = {
   mainOrchestrator: {
-    status: "Active",
-    currentTask: "Optimizing Audio Intel conversion campaign",
-    queuedTasks: 3
+    status: 'Active',
+    currentTask: 'Optimizing Audio Intel conversion campaign',
+    queuedTasks: 3,
   },
   activeAgents: [
-    { 
-      name: "Beta Marketing Expert", 
-      status: "Working", 
-      task: "Audio Intel user conversion sequence",
-      eta: "15 mins"
+    {
+      name: 'Beta Marketing Expert',
+      status: 'Working',
+      task: 'Audio Intel user conversion sequence',
+      eta: '15 mins',
     },
-    { 
-      name: "Content Commander", 
-      status: "Monitoring", 
-      task: "Newsjacking opportunities",
-      eta: "Continuous"
+    {
+      name: 'Content Commander',
+      status: 'Monitoring',
+      task: 'Newsjacking opportunities',
+      eta: 'Continuous',
     },
-    { 
-      name: "Music Sales Specialist", 
-      status: "Ready", 
-      task: "Standby for new leads",
-      eta: "Instant"
-    }
+    {
+      name: 'Music Sales Specialist',
+      status: 'Ready',
+      task: 'Standby for new leads',
+      eta: 'Instant',
+    },
   ],
   quickActions: [
-    "Generate LinkedIn post about Audio Intel",
-    "Research trending music industry topics",
-    "Create customer success story",
-    "Analyze competitor content strategy"
-  ]
-}
+    'Generate LinkedIn post about Audio Intel',
+    'Research trending music industry topics',
+    'Create customer success story',
+    'Analyze competitor content strategy',
+  ],
+};
 ```
 
 ---
@@ -867,24 +876,24 @@ const AgentPanel = {
 ### **1. NEWSJACKER 3000 INTEGRATION**
 
 ```
-Trending Topic Detected → Content Commander Analyzes → 
-Relevant to Music Industry? → Generate Content → 
+Trending Topic Detected → Content Commander Analyzes →
+Relevant to Music Industry? → Generate Content →
 Schedule/Post → Track Performance → Optimize
 ```
 
 ### **2. CONTENT DOMINATION PIPELINE**
 
 ```
-Content Bank Template → Customize for Current Context → 
-AI Enhancement → Multi-Platform Adaptation → 
+Content Bank Template → Customize for Current Context →
+AI Enhancement → Multi-Platform Adaptation →
 Distribution → Performance Analysis → Bank Update
 ```
 
 ### **3. AGENT COORDINATION**
 
 ```
-You (Mobile) → Command Centre → Main Orchestrator → 
-Content Commander → Sub-Agents (parallel) → 
+You (Mobile) → Command Centre → Main Orchestrator →
+Content Commander → Sub-Agents (parallel) →
 Integrated Output → Automated Distribution
 ```
 
@@ -922,12 +931,12 @@ Integrated Output → Automated Distribution
 ```jsx
 // One-tap agent delegation
 const QuickAgentActions = [
-  "🎯 Generate urgent LinkedIn post",
-  "📰 Check trending music news",
-  "💰 Create Audio Intel promotion",
-  "📊 Analyze content performance",
-  "🔥 Newsjack breaking industry news"
-]
+  '🎯 Generate urgent LinkedIn post',
+  '📰 Check trending music news',
+  '💰 Create Audio Intel promotion',
+  '📊 Analyze content performance',
+  '🔥 Newsjack breaking industry news',
+];
 ```
 
 ### **Voice Command Integration**
@@ -935,12 +944,12 @@ const QuickAgentActions = [
 ```jsx
 // Hands-free agent control
 const VoiceCommands = {
-  "Check content pipeline": () => showContentStatus(),
-  "Generate LinkedIn post": () => delegateToContentCommander("linkedin"),
-  "Any trending opportunities": () => checkNewsjackerAlerts(),
-  "Post Audio Intel content": () => triggerBetaMarketingAgent(),
-  "Show today's content": () => displayScheduledPosts()
-}
+  'Check content pipeline': () => showContentStatus(),
+  'Generate LinkedIn post': () => delegateToContentCommander('linkedin'),
+  'Any trending opportunities': () => checkNewsjackerAlerts(),
+  'Post Audio Intel content': () => triggerBetaMarketingAgent(),
+  "Show today's content": () => displayScheduledPosts(),
+};
 ```
 
 ---
@@ -1171,16 +1180,16 @@ interface SocialPost {
 function processContent(content: string): string {
   // 1. Convert to UK spelling
   content = convertToUKSpelling(content);
-  
+
   // 2. Remove all emojis
   content = stripEmojis(content);
-  
+
   // 3. Add UTM tracking to URLs
   content = addUTMTracking(content);
-  
+
   // 4. Platform-specific formatting
   content = formatForPlatform(content, platform);
-  
+
   return content;
 }
 ```
@@ -1190,19 +1199,19 @@ function processContent(content: string): string {
 ```tsx
 // Platform-specific optimal posting times (GMT)
 const OPTIMAL_TIMES = {
-  'LinkedIn': ['09:00', '13:00'],
+  LinkedIn: ['09:00', '13:00'],
   'Twitter/X': ['12:00', '18:00'],
   'Blue Sky': ['11:00', '19:00'],
-  'Threads': ['08:00', '14:00']
+  Threads: ['08:00', '14:00'],
 };
 
 // Check if current time matches scheduled posting time
 function shouldPostNow(scheduledTime: string, platform: string): boolean {
   const currentTimeGMT = new Date().toLocaleTimeString('en-GB', {
     timeZone: 'Europe/London',
-    hour12: false
+    hour12: false,
   });
-  
+
   return scheduledTime === currentTimeGMT;
 }
 ```
@@ -1284,13 +1293,13 @@ const cronSchedule = '*/15 8-20 * * *';
 
 ```tsx
 const UK_SPELLING_MAP = {
-  'realize': 'realise',
-  'organize': 'organise', 
-  'analyze': 'analyse',
-  'color': 'colour',
-  'center': 'centre',
-  'optimize': 'optimise',
-  'recognize': 'recognise'
+  realize: 'realise',
+  organize: 'organise',
+  analyze: 'analyse',
+  color: 'colour',
+  center: 'centre',
+  optimize: 'optimise',
+  recognize: 'recognise',
 };
 ```
 
@@ -1302,10 +1311,10 @@ async function updateNotionAfterPost(postId: string, result: PostResult) {
   await notion.pages.update({
     page_id: postId,
     properties: {
-      'Status': { select: { name: 'Posted' } },
+      Status: { select: { name: 'Posted' } },
       'API Status': { select: { name: 'Posted Successfully' } },
-      'Content Optimised': { checkbox: true }
-    }
+      'Content Optimised': { checkbox: true },
+    },
   });
 }
 ```
@@ -1352,20 +1361,20 @@ _Source: 🛠️ TECHNICAL DEVELOPMENT 2660a35b21ed81a8bab7f71bf0f516f2/🔧 Git
 ### Technical Problems Identified
 
 1. **Package Installation Failure**
-    - Error: `Package 'libasound2' has no installation candidate`
-    - Root Cause: Ubuntu package lists not updated before installation
-    - Solution: Add `sudo apt-get update` step before package installation
+   - Error: `Package 'libasound2' has no installation candidate`
+   - Root Cause: Ubuntu package lists not updated before installation
+   - Solution: Add `sudo apt-get update` step before package installation
 2. **GitHub Integration Permissions**
-    - Error: `HttpError: Resource not accessible by integration`
-    - Root Cause: Default GitHub token lacks `issues:write` permissions
-    - Solution: Update workflow permissions or use Personal Access Token
+   - Error: `HttpError: Resource not accessible by integration`
+   - Root Cause: Default GitHub token lacks `issues:write` permissions
+   - Solution: Update workflow permissions or use Personal Access Token
 
 ### Required Fixes
 
-- [ ]  Add `sudo apt-get update` before package installation in workflow
-- [ ]  Update workflow permissions to include `issues:write` scope
-- [ ]  Test scraper functionality after fixes applied
-- [ ]  Verify contact database refresh resumes properly
+- [ ] Add `sudo apt-get update` before package installation in workflow
+- [ ] Update workflow permissions to include `issues:write` scope
+- [ ] Test scraper functionality after fixes applied
+- [ ] Verify contact database refresh resumes properly
 
 ### Workflow File Changes Needed
 
@@ -1378,7 +1387,7 @@ jobs:
     steps:
       - name: Update Package Lists
         run: sudo apt-get update
-      
+
       - name: Install Dependencies
         run: sudo apt-get install -y libasound2
 ```
@@ -1681,7 +1690,7 @@ _Source: 🛠️ TECHNICAL DEVELOPMENT 2660a35b21ed81a8bab7f71bf0f516f2.md_
 
 # 🛠️ TECHNICAL DEVELOPMENT
 
-*All technical work, code, APIs, and development resources*
+_All technical work, code, APIs, and development resources_
 
 ---
 
@@ -1737,11 +1746,11 @@ _Source: 🛠️ TECHNICAL DEVELOPMENT 2660a35b21ed81a8bab7f71bf0f516f2.md_
 
 ---
 
-*Your technical command centre for Audio Intel development*
+_Your technical command centre for Audio Intel development_
 
 [Master Database Views Guide](%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2/Master%20Database%20Views%20Guide%202570a35b21ed817aa270f2b0a966090d.md)
 
-[🚀 RADIO PROMO AGENT - COMPLETE SYSTEM (MASTER)](%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2/%F0%9F%9A%80%20RADIO%20PROMO%20AGENT%20-%20COMPLETE%20SYSTEM%20(MASTER)%202650a35b21ed81769541f2b7345deb89.md)
+[🚀 RADIO PROMO AGENT - COMPLETE SYSTEM (MASTER)](<%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2/%F0%9F%9A%80%20RADIO%20PROMO%20AGENT%20-%20COMPLETE%20SYSTEM%20(MASTER)%202650a35b21ed81769541f2b7345deb89.md>)
 
 [🔥 Content Commander Agent + Command Centre Integration](%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2/%F0%9F%94%A5%20Content%20Commander%20Agent%20+%20Command%20Centre%20Integra%202540a35b21ed81399d2dd224d7390b3c.md)
 
@@ -1832,4 +1841,3 @@ _Source: 🛠️ TECHNICAL DEVELOPMENT 2660a35b21ed81a8bab7f71bf0f516f2/Master D
 # Master Database Views Guide
 
 ---
-

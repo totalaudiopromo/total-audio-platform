@@ -9,17 +9,17 @@ import { GmailService } from '@/lib/integrations/gmail-service';
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createServerClient(cookies());
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const userId = user.email || user.id;
     const body = await request.json();
-    
+
     const { to, subject, emailBody, pitchId } = body;
 
     if (!to || !subject || !emailBody) {
@@ -35,27 +35,20 @@ export async function POST(request: NextRequest) {
       subject,
       body: emailBody,
       pitchId,
-      userId
+      userId,
     });
 
     if (result.success) {
       return NextResponse.json({
         success: true,
         messageId: result.messageId,
-        threadId: result.threadId
+        threadId: result.threadId,
       });
     } else {
-      return NextResponse.json(
-        { error: result.error || 'Failed to send email' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: result.error || 'Failed to send email' }, { status: 500 });
     }
   } catch (error) {
     console.error('Gmail send error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
-

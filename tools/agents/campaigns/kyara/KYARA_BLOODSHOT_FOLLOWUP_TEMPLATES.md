@@ -1,7 +1,9 @@
 # KYARA "Bloodshot" Follow-Up Email Templates
+
 ## Release Week Follow-Ups (Post-Monday 14th October)
 
 **Campaign Stats to Reference:**
+
 - **85 plays** achieved pre-release
 - **Amazing Radio** confirmed support
 - **9 countries** reach
@@ -14,6 +16,7 @@
 **Subject:** Following up - KYARA "Bloodshot" (now live)
 
 **Body:**
+
 ```
 Hi Anika,
 
@@ -44,6 +47,7 @@ chrisschofield@libertymusicpr.com
 **Subject:** KYARA "Bloodshot" update - Amazing Radio + 85 plays
 
 **Body:**
+
 ```
 Hi Claire,
 
@@ -73,6 +77,7 @@ Liberty Music PR
 **Subject:** KYARA "Bloodshot" - Amazing Radio support + momentum
 
 **Body:**
+
 ```
 Hi [NAME],
 
@@ -100,6 +105,7 @@ chrisschofield@libertymusicpr.com
 **Subject:** KYARA "Bloodshot" - crossover momentum (Amazing Radio + 85 plays)
 
 **Body:**
+
 ```
 Hi,
 
@@ -129,6 +135,7 @@ Liberty Music PR
 **Subject:** KYARA "Bloodshot" - Australian artist, Amazing Radio support
 
 **Body:**
+
 ```
 Hi [NAME],
 
@@ -152,14 +159,17 @@ chrisschofield@libertymusicpr.com
 ## Follow-Up Timing Strategy
 
 ### Day 1-2 (Tuesday-Wednesday Post-Release):
+
 - **Send to WARM contacts** (Anika Luna) - Template 1
 - **Send to Music Directors** (Claire Mooney) - Template 2
 
 ### Day 3-4 (Thursday-Friday):
+
 - **Community radio** (Triple R, PBS FM) - Template 3
 - **UK specialist shows** (non-responders) - Template 5
 
 ### Day 5-7 (Weekend/Monday):
+
 - **Commercial radio** (KIIS, Nova) - Template 4
 - **Second-tier contacts** from new target list
 
@@ -168,6 +178,7 @@ chrisschofield@libertymusicpr.com
 ## Key Messaging Points to Include:
 
 ### Momentum Metrics:
+
 ✅ **85 plays** across **9 countries** pre-release
 ✅ **Amazing Radio** (UK) confirmed support
 ✅ **Triple J** history (Home & Hosed - "Yearn")
@@ -175,12 +186,14 @@ chrisschofield@libertymusicpr.com
 ✅ **Self-produced** (bedroom studio credibility)
 
 ### Production Quality:
+
 - Cinematic electro-pop
 - Sultry, hypnotic soundscape
 - Professional despite bedroom production
 - Think classic synthpop meets modern electronica
 
 ### Story Angle:
+
 - Empowerment anthem (choosing yourself)
 - Follow-up to Triple J-supported debut
 - Sydney independent artist doing it all herself
@@ -191,24 +204,28 @@ chrisschofield@libertymusicpr.com
 ## Personalisation Notes:
 
 ### For WARM Contacts (Previous Support):
+
 - Reference specific show/presenter who supported before
 - Use "following up" language (not "introducing")
 - Lead with momentum metrics
 - Ask for thoughts/feedback
 
 ### For COLD Contacts (First-Time):
+
 - Lead with Amazing Radio + 85 plays
 - Emphasise Triple J credibility
 - Focus on production quality + local angle
 - Keep brief (3-4 paragraphs max)
 
 ### For UK Contacts:
+
 - Lead with Australian context (Sydney-based)
 - Mention Triple J support (they'll recognise prestige)
 - Amazing Radio as UK validation point
 - "Worth checking out" casual tone
 
 ### For Australian Contacts:
+
 - Lead with Sydney local angle
 - Triple J support as primary credential
 - Amazing Radio as international validation
@@ -219,6 +236,7 @@ chrisschofield@libertymusicpr.com
 ## Response Tracking:
 
 Create a simple spreadsheet to track:
+
 - Contact name
 - Station
 - Date sent
@@ -232,6 +250,7 @@ Create a simple spreadsheet to track:
 ## Red Flags to Avoid:
 
 ❌ **Don't:**
+
 - Send generic "blast" emails (personalise each one)
 - Follow up more than twice (once is enough, twice max)
 - Use aggressive language ("need to hear this")
@@ -239,6 +258,7 @@ Create a simple spreadsheet to track:
 - Spam with daily updates
 
 ✅ **Do:**
+
 - Reference specific previous support (if applicable)
 - Use momentum metrics authentically
 - Keep it brief and respectful

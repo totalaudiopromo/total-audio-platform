@@ -14,7 +14,7 @@ interface AgentActivityMonitorProps {
 const AgentActivityMonitor: React.FC<AgentActivityMonitorProps> = ({
   position = 'fixed',
   showCount = true,
-  maxVisible = 4
+  maxVisible = 4,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeAgents, setActiveAgents] = useState([
@@ -23,7 +23,7 @@ const AgentActivityMonitor: React.FC<AgentActivityMonitorProps> = ({
     { type: 'email-scheduler', name: 'Email Scheduler', status: 'completed' as const },
     { type: 'performance-tracker', name: 'Performance Monitor', status: 'active' as const },
     { type: 'brand-validator', name: 'Brand Checker', status: 'warning' as const },
-    { type: 'music-tech-agent', name: 'Music Tech', status: 'idle' as const }
+    { type: 'music-tech-agent', name: 'Music Tech', status: 'idle' as const },
   ]);
 
   const visibleAgents = isExpanded ? activeAgents : activeAgents.slice(0, maxVisible);
@@ -31,9 +31,12 @@ const AgentActivityMonitor: React.FC<AgentActivityMonitorProps> = ({
 
   const getOverallStatus = () => {
     const statuses = activeAgents.map(agent => agent.status);
-    if (statuses.includes('warning')) return { color: '#F44336', icon: 'alert-triangle', message: 'Issues Detected' };
-    if (statuses.includes('warning')) return { color: '#FF9800', icon: 'alert-triangle', message: 'Attention Needed' };
-    if (statuses.includes('active') || statuses.includes('processing')) return { color: '#4CAF50', icon: 'check-circle', message: 'All Systems Active' };
+    if (statuses.includes('warning'))
+      return { color: '#F44336', icon: 'alert-triangle', message: 'Issues Detected' };
+    if (statuses.includes('warning'))
+      return { color: '#FF9800', icon: 'alert-triangle', message: 'Attention Needed' };
+    if (statuses.includes('active') || statuses.includes('processing'))
+      return { color: '#4CAF50', icon: 'check-circle', message: 'All Systems Active' };
     return { color: '#9E9E9E', icon: 'pause', message: 'All Agents Idle' };
   };
 
@@ -55,11 +58,13 @@ const AgentActivityMonitor: React.FC<AgentActivityMonitorProps> = ({
   const positionClasses = {
     fixed: 'fixed top-4 right-4 z-50',
     sticky: 'sticky top-0 z-40',
-    relative: 'relative'
+    relative: 'relative',
   };
 
   return (
-    <div className={`${positionClasses[position]} bg-white rounded-xl shadow-xl border-2 border-gray-200 overflow-hidden transition-all duration-300`}>
+    <div
+      className={`${positionClasses[position]} bg-white rounded-xl shadow-xl border-2 border-gray-200 overflow-hidden transition-all duration-300`}
+    >
       {/* Header */}
       <div
         className="p-3 cursor-pointer transition-colors duration-200 hover:bg-gray-50"
@@ -79,7 +84,7 @@ const AgentActivityMonitor: React.FC<AgentActivityMonitorProps> = ({
               <div className="text-xs text-gray-500">{overallStatus.message}</div>
             </div>
           </div>
-          
+
           {/* Count Badge */}
           {showCount && (
             <div className="flex items-center space-x-2">
@@ -89,7 +94,9 @@ const AgentActivityMonitor: React.FC<AgentActivityMonitorProps> = ({
               >
                 {activeAgents.length}
               </div>
-              <span className={`text-sm transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}>
+              <span
+                className={`text-sm transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+              >
                 ▼
               </span>
             </div>
@@ -111,11 +118,9 @@ const AgentActivityMonitor: React.FC<AgentActivityMonitorProps> = ({
               realTimeUpdates={true}
             />
           ))}
-          
+
           {!isExpanded && hiddenCount > 0 && (
-            <div className="text-xs text-gray-500 text-center py-1">
-              +{hiddenCount} more agents
-            </div>
+            <div className="text-xs text-gray-500 text-center py-1">+{hiddenCount} more agents</div>
           )}
         </div>
       )}
@@ -132,9 +137,7 @@ const AgentActivityMonitor: React.FC<AgentActivityMonitorProps> = ({
                 Logs
               </button>
             </div>
-            <div className="text-xs text-gray-500">
-              Sprint Week Mode
-            </div>
+            <div className="text-xs text-gray-500">Sprint Week Mode</div>
           </div>
         </div>
       )}

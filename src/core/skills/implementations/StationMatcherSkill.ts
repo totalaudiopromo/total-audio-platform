@@ -262,7 +262,7 @@ Return JSON:
   ): Promise<StationRecommendation[]> {
     const result = await this.execute(input, context);
     return result.station_recommendations.filter(
-      (station) => station.priority === 'critical' || station.priority === 'high'
+      station => station.priority === 'critical' || station.priority === 'high'
     );
   }
 
@@ -275,7 +275,7 @@ Return JSON:
     type: 'National' | 'Commercial' | 'Online' | 'Community'
   ): Promise<StationRecommendation[]> {
     const result = await this.execute(input, context);
-    return result.station_recommendations.filter((station) => station.station_type === type);
+    return result.station_recommendations.filter(station => station.station_type === type);
   }
 
   /**
@@ -292,7 +292,7 @@ Return JSON:
   }> {
     const result = await this.execute(input, context);
     const highLikelihood = result.station_recommendations.filter(
-      (s) => s.success_likelihood === 'high'
+      s => s.success_likelihood === 'high'
     ).length;
 
     return {
@@ -307,9 +307,9 @@ Return JSON:
    * Calculate estimated reach based on station types
    */
   private static calculateReach(stations: StationRecommendation[]): string {
-    const hasNational = stations.some((s) => s.station_type === 'National');
-    const onlineCount = stations.filter((s) => s.station_type === 'Online').length;
-    const communityCount = stations.filter((s) => s.station_type === 'Community').length;
+    const hasNational = stations.some(s => s.station_type === 'National');
+    const onlineCount = stations.filter(s => s.station_type === 'Online').length;
+    const communityCount = stations.filter(s => s.station_type === 'Community').length;
 
     if (hasNational && onlineCount > 3) return '50k-100k+ potential listeners';
     if (onlineCount > 5) return '10k-50k potential listeners';

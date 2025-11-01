@@ -8,13 +8,7 @@ export async function GET(request: NextRequest) {
       newsjacker: 'operational',
       podcastAuto: 'operational',
       newsletterGenerator: 'operational',
-      enrich: 'operational'
-    }
+      enrich: 'operational',
+    },
   });
 }
-
-
-
-
-
-

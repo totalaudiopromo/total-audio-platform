@@ -1,14 +1,14 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useState, useRef } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
+import { useState, useRef } from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Slider } from '@/components/ui/slider';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 import {
   Play,
   Pause,
@@ -23,46 +23,50 @@ import {
   Text,
   ImageIcon,
   ChevronDown,
-} from "lucide-react"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+} from 'lucide-react';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 interface VideoStudioProps {
-  onBack: () => void
+  onBack: () => void;
 }
 
 export default function VideoStudio({ onBack }: VideoStudioProps) {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [videoFile, setVideoFile] = useState<File | null>(null)
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [videoFile, setVideoFile] = useState<File | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setVideoFile(e.target.files[0])
+      setVideoFile(e.target.files[0]);
 
       // Create object URL for preview
-      const videoElement = videoRef.current
+      const videoElement = videoRef.current;
       if (videoElement) {
-        videoElement.src = URL.createObjectURL(e.target.files[0])
+        videoElement.src = URL.createObjectURL(e.target.files[0]);
       }
     }
-  }
+  };
 
   const togglePlay = () => {
-    const videoElement = videoRef.current
-    if (!videoElement) return
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
 
     if (isPlaying) {
-      videoElement.pause()
+      videoElement.pause();
     } else {
-      videoElement.play()
+      videoElement.play();
     }
 
-    setIsPlaying(!isPlaying)
-  }
+    setIsPlaying(!isPlaying);
+  };
 
   return (
     <Card className="border-4 border-black rounded-xl p-4 sm:p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-      <Button variant="outline" className="mb-4 border-2 border-black rounded-xl font-bold" onClick={onBack}>
+      <Button
+        variant="outline"
+        className="mb-4 border-2 border-black rounded-xl font-bold"
+        onClick={onBack}
+      >
         Back to Studios
       </Button>
 
@@ -83,11 +87,17 @@ export default function VideoStudio({ onBack }: VideoStudioProps) {
                 <Button
                   variant="outline"
                   className="border-2 border-black rounded-xl font-bold"
-                  onClick={() => document.getElementById("video-upload")?.click()}
+                  onClick={() => document.getElementById('video-upload')?.click()}
                 >
                   <Upload className="h-4 w-4 mr-2" /> Select Video
                 </Button>
-                <input id="video-upload" type="file" accept="video/*" className="hidden" onChange={handleFileChange} />
+                <input
+                  id="video-upload"
+                  type="file"
+                  accept="video/*"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
               </div>
             )}
           </div>
@@ -113,7 +123,10 @@ export default function VideoStudio({ onBack }: VideoStudioProps) {
 
                 {/* Playback controls */}
                 <div className="flex items-center justify-center gap-2">
-                  <Button variant="outline" className="border-2 border-black rounded-xl h-10 w-10 p-0">
+                  <Button
+                    variant="outline"
+                    className="border-2 border-black rounded-xl h-10 w-10 p-0"
+                  >
                     <SkipBack className="h-4 w-4" />
                   </Button>
                   <Button
@@ -122,7 +135,10 @@ export default function VideoStudio({ onBack }: VideoStudioProps) {
                   >
                     {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
                   </Button>
-                  <Button variant="outline" className="border-2 border-black rounded-xl h-10 w-10 p-0">
+                  <Button
+                    variant="outline"
+                    className="border-2 border-black rounded-xl h-10 w-10 p-0"
+                  >
                     <SkipForward className="h-4 w-4" />
                   </Button>
                 </div>
@@ -138,11 +154,17 @@ export default function VideoStudio({ onBack }: VideoStudioProps) {
                 <ChevronDown className="h-5 w-5" />
               </CollapsibleTrigger>
               <CollapsibleContent className="mt-3 space-y-4 p-4 border-2 border-black rounded-xl">
-                <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold flex gap-2">
+                <Button
+                  variant="outline"
+                  className="w-full border-2 border-black rounded-xl font-bold flex gap-2"
+                >
                   <Scissors className="h-4 w-4" /> Split Clip
                 </Button>
 
-                <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold flex gap-2">
+                <Button
+                  variant="outline"
+                  className="w-full border-2 border-black rounded-xl font-bold flex gap-2"
+                >
                   <Layers className="h-4 w-4" /> Add Layer
                 </Button>
 
@@ -199,11 +221,17 @@ export default function VideoStudio({ onBack }: VideoStudioProps) {
                 </TabsList>
 
                 <TabsContent value="edit" className="space-y-4">
-                  <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold flex gap-2">
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 border-black rounded-xl font-bold flex gap-2"
+                  >
                     <Scissors className="h-4 w-4" /> Split Clip
                   </Button>
 
-                  <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold flex gap-2">
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 border-black rounded-xl font-bold flex gap-2"
+                  >
                     <Layers className="h-4 w-4" /> Add Layer
                   </Button>
 
@@ -241,15 +269,24 @@ export default function VideoStudio({ onBack }: VideoStudioProps) {
                 </TabsContent>
 
                 <TabsContent value="text" className="space-y-4">
-                  <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold flex gap-2">
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 border-black rounded-xl font-bold flex gap-2"
+                  >
                     <Text className="h-4 w-4" /> Add Title
                   </Button>
 
-                  <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold flex gap-2">
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 border-black rounded-xl font-bold flex gap-2"
+                  >
                     <Text className="h-4 w-4" /> Add Caption
                   </Button>
 
-                  <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold flex gap-2">
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 border-black rounded-xl font-bold flex gap-2"
+                  >
                     <ImageIcon className="h-4 w-4" /> Add Sticker
                   </Button>
                 </TabsContent>
@@ -259,7 +296,10 @@ export default function VideoStudio({ onBack }: VideoStudioProps) {
                 <Button className="w-full bg-black hover:bg-black/80 text-white rounded-xl border-2 border-black font-bold">
                   <Save className="h-4 w-4 mr-2" /> Save Project
                 </Button>
-                <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold">
+                <Button
+                  variant="outline"
+                  className="w-full border-2 border-black rounded-xl font-bold"
+                >
                   <Download className="h-4 w-4 mr-2" /> Export Video
                 </Button>
               </div>
@@ -268,5 +308,5 @@ export default function VideoStudio({ onBack }: VideoStudioProps) {
         </div>
       </div>
     </Card>
-  )
+  );
 }

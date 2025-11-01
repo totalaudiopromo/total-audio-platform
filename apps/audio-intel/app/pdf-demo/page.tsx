@@ -2,7 +2,12 @@
 
 import React, { useState } from 'react';
 import { Download, FileText, Building2, Zap } from 'lucide-react';
-import { exportWhiteLabelContactsPdf, exportDemoContactsPdf, EnrichedContact, WhiteLabelBranding } from '@/utils/premiumPdfExport';
+import {
+  exportWhiteLabelContactsPdf,
+  exportDemoContactsPdf,
+  EnrichedContact,
+  WhiteLabelBranding,
+} from '@/utils/premiumPdfExport';
 
 export default function PdfDemoPage() {
   const [agencyName, setAgencyName] = useState('Liberty Promotions');
@@ -14,53 +19,58 @@ export default function PdfDemoPage() {
     {
       name: 'Sarah Johnson',
       email: 'sarah.johnson@bbc.co.uk',
-      contactIntelligence: 'BBC Radio 1 producer with focus on new music. Previously worked at BBC Radio 6 Music. Strong track record supporting emerging UK artists. Best contact time: Tue-Thu mornings. Prefers submissions via official BBC Introducing platform.',
+      contactIntelligence:
+        'BBC Radio 1 producer with focus on new music. Previously worked at BBC Radio 6 Music. Strong track record supporting emerging UK artists. Best contact time: Tue-Thu mornings. Prefers submissions via official BBC Introducing platform.',
       researchConfidence: 'High',
       lastResearched: '2025-10-17',
       platform: 'BBC Radio 1',
       role: 'Producer - New Music',
-      company: 'BBC'
+      company: 'BBC',
     },
     {
       name: 'Tom Davies',
       email: 'tom@spotify.com',
-      contactIntelligence: 'Spotify UK editorial team member. Curates "New Music Friday UK" and "The Rock List" playlists. Open to submissions via official Spotify for Artists platform. Strong focus on emerging UK rock/alternative acts.',
+      contactIntelligence:
+        'Spotify UK editorial team member. Curates "New Music Friday UK" and "The Rock List" playlists. Open to submissions via official Spotify for Artists platform. Strong focus on emerging UK rock/alternative acts.',
       researchConfidence: 'Medium',
       lastResearched: '2025-10-17',
       platform: 'Spotify Editorial',
       role: 'Editorial Curator',
-      company: 'Spotify UK'
+      company: 'Spotify UK',
     },
     {
       name: 'Emma Williams',
       email: 'emma.williams@kerrang.com',
-      contactIntelligence: 'Kerrang! Radio presenter and music journalist. Covers rock, metal, and alternative scenes. Active on Twitter/X (@emmawilliams) for submissions. Prefers EPKs with streaming links. Responds well to personalized pitches.',
+      contactIntelligence:
+        'Kerrang! Radio presenter and music journalist. Covers rock, metal, and alternative scenes. Active on Twitter/X (@emmawilliams) for submissions. Prefers EPKs with streaming links. Responds well to personalized pitches.',
       researchConfidence: 'High',
       lastResearched: '2025-10-17',
       platform: 'Kerrang! Radio',
       role: 'Presenter & Journalist',
-      company: 'Kerrang!'
+      company: 'Kerrang!',
     },
     {
       name: 'Dan Murphy',
       email: 'dan.murphy@libertymusicgroup.com',
-      contactIntelligence: 'A&R at Liberty Music Group. Works with Royal Blood, Architects, Rolo Tomassi. Strong connections across UK rock scene. Best approached via warm introduction from existing roster artists.',
+      contactIntelligence:
+        'A&R at Liberty Music Group. Works with Royal Blood, Architects, Rolo Tomassi. Strong connections across UK rock scene. Best approached via warm introduction from existing roster artists.',
       researchConfidence: 'High',
       lastResearched: '2025-10-17',
       platform: 'Record Label',
       role: 'A&R Manager',
-      company: 'Liberty Music Group'
+      company: 'Liberty Music Group',
     },
     {
       name: 'Lucy Chen',
       email: 'lucy@bbc.co.uk',
-      contactIntelligence: 'BBC Radio 6 Music producer. Focus on indie, alternative, and experimental music. Previously at NME. Strong supporter of DIY artists. Prefers organic discovery via Bandcamp and SoundCloud.',
+      contactIntelligence:
+        'BBC Radio 6 Music producer. Focus on indie, alternative, and experimental music. Previously at NME. Strong supporter of DIY artists. Prefers organic discovery via Bandcamp and SoundCloud.',
       researchConfidence: 'Medium',
       lastResearched: '2025-10-17',
       platform: 'BBC Radio 6 Music',
       role: 'Producer',
-      company: 'BBC'
-    }
+      company: 'BBC',
+    },
   ];
 
   const handleExportDefault = () => {
@@ -72,7 +82,7 @@ export default function PdfDemoPage() {
       agencyName,
       primaryColor,
       website,
-      contactEmail
+      contactEmail,
     };
 
     exportWhiteLabelContactsPdf(demoContacts, branding);
@@ -83,7 +93,7 @@ export default function PdfDemoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-pink-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-white">
       {/* Header */}
       <div className="bg-white border-b-4 border-black shadow-brutal">
         <div className="max-w-6xl mx-auto px-6 py-8">
@@ -93,7 +103,9 @@ export default function PdfDemoPage() {
             </div>
             <div>
               <h1 className="text-3xl font-black text-gray-900">Premium PDF Export Demo</h1>
-              <p className="text-base font-bold text-gray-700 mt-1">White-label contact intelligence reports for PR agencies</p>
+              <p className="text-base font-bold text-gray-700 mt-1">
+                White-label contact intelligence reports for PR agencies
+              </p>
             </div>
           </div>
         </div>
@@ -118,7 +130,7 @@ export default function PdfDemoPage() {
                 <input
                   type="text"
                   value={agencyName}
-                  onChange={(e) => setAgencyName(e.target.value)}
+                  onChange={e => setAgencyName(e.target.value)}
                   className="w-full px-4 py-3 border-3 border-black rounded-none font-bold text-gray-900 focus:outline-none focus:ring-4 focus:ring-[#FF006B]/20"
                   placeholder="Your Agency Name"
                 />
@@ -133,13 +145,13 @@ export default function PdfDemoPage() {
                   <input
                     type="color"
                     value={primaryColor}
-                    onChange={(e) => setPrimaryColor(e.target.value)}
+                    onChange={e => setPrimaryColor(e.target.value)}
                     className="w-16 h-12 border-3 border-black rounded-none cursor-pointer"
                   />
                   <input
                     type="text"
                     value={primaryColor}
-                    onChange={(e) => setPrimaryColor(e.target.value)}
+                    onChange={e => setPrimaryColor(e.target.value)}
                     className="flex-1 px-4 py-3 border-3 border-black rounded-none font-mono font-bold text-gray-900 focus:outline-none focus:ring-4 focus:ring-[#FF006B]/20"
                     placeholder="#FF006B"
                   />
@@ -154,7 +166,7 @@ export default function PdfDemoPage() {
                 <input
                   type="text"
                   value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
+                  onChange={e => setWebsite(e.target.value)}
                   className="w-full px-4 py-3 border-3 border-black rounded-none font-bold text-gray-900 focus:outline-none focus:ring-4 focus:ring-[#FF006B]/20"
                   placeholder="yourAgency.com"
                 />
@@ -168,7 +180,7 @@ export default function PdfDemoPage() {
                 <input
                   type="email"
                   value={contactEmail}
-                  onChange={(e) => setContactEmail(e.target.value)}
+                  onChange={e => setContactEmail(e.target.value)}
                   className="w-full px-4 py-3 border-3 border-black rounded-none font-bold text-gray-900 focus:outline-none focus:ring-4 focus:ring-[#FF006B]/20"
                   placeholder="contact@yourAgency.com"
                 />
@@ -186,7 +198,9 @@ export default function PdfDemoPage() {
                 </div>
                 <div>
                   <h3 className="text-xl font-black text-gray-900">White-Label Export</h3>
-                  <p className="text-sm font-bold text-gray-700">Your branding, professional quality</p>
+                  <p className="text-sm font-bold text-gray-700">
+                    Your branding, professional quality
+                  </p>
                 </div>
               </div>
 
@@ -258,11 +272,16 @@ export default function PdfDemoPage() {
 
         {/* Demo Data Preview */}
         <div className="mt-12 bg-white border-4 border-black shadow-brutal rounded-none p-8">
-          <h2 className="text-2xl font-black text-gray-900 mb-6">Demo Contact Data ({demoContacts.length} contacts)</h2>
+          <h2 className="text-2xl font-black text-gray-900 mb-6">
+            Demo Contact Data ({demoContacts.length} contacts)
+          </h2>
 
           <div className="space-y-4">
             {demoContacts.map((contact, idx) => (
-              <div key={idx} className="border-2 border-gray-300 rounded-none p-4 hover:border-[#FF006B] transition-colors">
+              <div
+                key={idx}
+                className="border-2 border-gray-300 rounded-none p-4 hover:border-[#FF006B] transition-colors"
+              >
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="font-black text-gray-900">{contact.name}</h3>
@@ -271,13 +290,15 @@ export default function PdfDemoPage() {
                       {contact.role} • {contact.company}
                     </p>
                   </div>
-                  <span className={`px-3 py-1 text-xs font-black rounded-none border-2 border-black ${
-                    contact.researchConfidence === 'High'
-                      ? 'bg-green-400 text-green-900'
-                      : contact.researchConfidence === 'Medium'
-                      ? 'bg-orange-400 text-orange-900'
-                      : 'bg-red-400 text-red-900'
-                  }`}>
+                  <span
+                    className={`px-3 py-1 text-xs font-black rounded-none border-2 border-black ${
+                      contact.researchConfidence === 'High'
+                        ? 'bg-green-400 text-green-900'
+                        : contact.researchConfidence === 'Medium'
+                          ? 'bg-orange-400 text-orange-900'
+                          : 'bg-red-400 text-red-900'
+                    }`}
+                  >
                     {contact.researchConfidence.toUpperCase()}
                   </span>
                 </div>

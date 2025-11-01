@@ -29,7 +29,11 @@ export async function GET(request: NextRequest) {
     const oauthHandler = new OAuthHandler();
 
     // Exchange code for tokens (returns tokens + userId from state)
-    const { tokens, userId } = await oauthHandler.handleCallback('gmail', code, state);
+    const { tokens, userId } = await oauthHandler.handleCallback(
+      'gmail',
+      code,
+      state
+    );
 
     // Save connection
     await oauthHandler.saveConnection(userId, 'gmail', tokens);

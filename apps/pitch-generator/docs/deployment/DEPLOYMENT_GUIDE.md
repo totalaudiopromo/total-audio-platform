@@ -3,24 +3,28 @@
 ## ✅ Pre-Deployment Checklist
 
 ### 1. Database Setup (Supabase)
+
 - [x] Supabase project created: `ucncbighzqudaszewjrv`
 - [x] All tables created and migrations run
 - [x] User authentication configured
 - [ ] Row Level Security (RLS) policies configured (see below)
 
 ### 2. Stripe Configuration
+
 - [x] Test products created (PRO £14/mo, AGENCY £49/mo)
 - [ ] Live products created with same pricing
 - [ ] Webhook endpoint configured
 - [ ] Stripe keys added to production environment
 
 ### 3. AI Service
+
 - [x] Anthropic API key configured
 - [ ] Production API key with higher rate limits
 
 ## 🚀 Vercel Deployment Steps
 
 ### Step 1: Connect Repository
+
 1. Go to https://vercel.com/new
 2. Import your GitHub repository
 3. Select `apps/pitch-generator` as the root directory
@@ -29,20 +33,24 @@
 6. Output directory: `.next`
 
 ### Step 2: Environment Variables
+
 Add these to Vercel project settings:
 
 #### NextAuth
+
 ```
 NEXTAUTH_URL=https://your-domain.vercel.app
 NEXTAUTH_SECRET=<generate-new-secret-for-production>
 ```
 
 Generate new secret:
+
 ```bash
 openssl rand -base64 32
 ```
 
 #### Supabase
+
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://ucncbighzqudaszewjrv.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-anon-key>
@@ -50,11 +58,13 @@ SUPABASE_SERVICE_ROLE_KEY=<your-service-role-key>
 ```
 
 #### Anthropic Claude AI
+
 ```
 ANTHROPIC_API_KEY=<your-production-api-key>
 ```
 
 #### Stripe (Production Keys)
+
 ```
 STRIPE_SECRET_KEY=sk_live_<your-live-secret-key>
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_<your-live-publishable-key>
@@ -68,12 +78,14 @@ STRIPE_PRICE_AGENCY_ANNUAL=price_<live-agency-annual-id>
 ```
 
 #### App Configuration
+
 ```
 NEXT_PUBLIC_BASE_URL=https://your-domain.vercel.app
 NODE_ENV=production
 ```
 
 ### Step 3: Deploy
+
 1. Click "Deploy"
 2. Wait for build to complete
 3. Test the deployment
@@ -83,6 +95,7 @@ NODE_ENV=production
 Run these SQL commands in Supabase SQL Editor to secure your tables:
 
 ### Enable RLS on all tables
+
 ```sql
 ALTER TABLE contacts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE pitches ENABLE ROW LEVEL SECURITY;
@@ -91,6 +104,7 @@ ALTER TABLE user_pitch_settings ENABLE ROW LEVEL SECURITY;
 ```
 
 ### Contacts table policies
+
 ```sql
 -- Users can only see their own contacts
 CREATE POLICY "Users can view own contacts" ON contacts
@@ -110,6 +124,7 @@ CREATE POLICY "Users can delete own contacts" ON contacts
 ```
 
 ### Pitches table policies
+
 ```sql
 -- Users can only see their own pitches
 CREATE POLICY "Users can view own pitches" ON pitches
@@ -129,6 +144,7 @@ CREATE POLICY "Users can delete own pitches" ON pitches
 ```
 
 ### User settings policies
+
 ```sql
 -- Users can only see their own settings
 CREATE POLICY "Users can view own settings" ON user_pitch_settings
@@ -146,6 +162,7 @@ CREATE POLICY "Users can update own settings" ON user_pitch_settings
 ## 🎯 Stripe Webhook Setup
 
 ### 1. Create Webhook Endpoint in Stripe
+
 1. Go to https://dashboard.stripe.com/webhooks
 2. Click "+ Add endpoint"
 3. Endpoint URL: `https://your-domain.vercel.app/api/webhooks/stripe`
@@ -158,14 +175,17 @@ CREATE POLICY "Users can update own settings" ON user_pitch_settings
 6. Add to Vercel as `STRIPE_WEBHOOK_SECRET`
 
 ### 2. Create Production Products
+
 Follow the same process as test mode:
 
 **PRO Tier:**
+
 - Name: "Pitch Generator PRO"
 - Price: £14/month recurring
 - Copy the price ID to `STRIPE_PRICE_PROFESSIONAL_MONTHLY`
 
 **AGENCY Tier:**
+
 - Name: "Pitch Generator AGENCY"
 - Price: £49/month recurring
 - Copy the price ID to `STRIPE_PRICE_AGENCY_MONTHLY`
@@ -207,32 +227,41 @@ Test these user flows:
 ## 📊 Monitoring
 
 ### Vercel Analytics
+
 - Automatically enabled for all deployments
 - View at https://vercel.com/your-project/analytics
 
 ### Supabase Logs
+
 - View at https://supabase.com/dashboard/project/ucncbighzqudaszewjrv/logs
 
 ### Stripe Dashboard
+
 - Monitor payments at https://dashboard.stripe.com/payments
 - Track subscriptions at https://dashboard.stripe.com/subscriptions
 
 ## 🔧 Common Issues
 
 ### Issue: "Invalid Stripe configuration"
+
 **Solution**: Verify all 6 Stripe environment variables are set correctly in Vercel
 
 ### Issue: "Contact not found" errors
+
 **Solution**: Check RLS policies are correctly configured in Supabase
 
 ### Issue: Pitch generation fails
+
 **Solution**:
+
 1. Check Anthropic API key is valid
 2. Verify rate limits haven't been exceeded
 3. Check server logs in Vercel
 
 ### Issue: Webhook not receiving events
+
 **Solution**:
+
 1. Verify webhook URL in Stripe dashboard
 2. Check webhook secret matches Vercel environment variable
 3. Test webhook with Stripe CLI: `stripe trigger checkout.session.completed`
@@ -240,6 +269,7 @@ Test these user flows:
 ## 🎉 Launch Ready
 
 Once all checklist items are complete:
+
 1. ✅ Update DNS to point to Vercel deployment
 2. ✅ Enable custom domain in Vercel
 3. ✅ Test all flows with real card (Stripe test mode)

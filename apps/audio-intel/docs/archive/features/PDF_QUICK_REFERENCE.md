@@ -13,6 +13,7 @@
 ## 📝 Basic Usage
 
 ### FREE Tier (Default Branding)
+
 ```typescript
 import { exportContactsToPdf } from '@/utils/exportToPdf';
 
@@ -20,11 +21,12 @@ exportContactsToPdf(contacts, 'my-contacts.pdf');
 ```
 
 ### PRO/AGENCY Tier (Custom Branding)
+
 ```typescript
 exportContactsToPdf(contacts, 'client-report.pdf', {
   companyName: 'Your Company',
   logoUrl: 'data:image/png;base64,iVBORw0KG...',
-  primaryColor: '#9333EA'
+  primaryColor: '#9333EA',
 });
 ```
 
@@ -63,14 +65,14 @@ exportContactsToPdf(contacts, 'client-report.pdf', {
 
 ## 📊 Tier Comparison
 
-| Feature | FREE | PRO (£19/mo) | AGENCY (£79/mo) |
-|---------|------|--------------|-----------------|
-| Neobrutalist Design | ✅ | ✅ | ✅ |
-| Custom Logo | ❌ | ✅ | ✅ |
-| Custom Brand Color | ❌ | ✅ | ✅ |
-| Bulk Export (100+) | ❌ | ❌ | ✅ |
-| No Watermarks | ❌ | ✅ | ✅ |
-| Priority Support | ❌ | ❌ | ✅ |
+| Feature             | FREE | PRO (£19/mo) | AGENCY (£79/mo) |
+| ------------------- | ---- | ------------ | --------------- |
+| Neobrutalist Design | ✅   | ✅           | ✅              |
+| Custom Logo         | ❌   | ✅           | ✅              |
+| Custom Brand Color  | ❌   | ✅           | ✅              |
+| Bulk Export (100+)  | ❌   | ❌           | ✅              |
+| No Watermarks       | ❌   | ✅           | ✅              |
+| Priority Support    | ❌   | ❌           | ✅              |
 
 ---
 
@@ -88,16 +90,19 @@ exportContactsToPdf(contacts, 'client-report.pdf', {
 ## 🔧 Common Commands
 
 **Convert logo to base64** (macOS):
+
 ```bash
 echo "data:image/png;base64,$(base64 -i logo.png)" | pbcopy
 ```
 
 **TypeScript type check**:
+
 ```bash
 npx tsc --noEmit
 ```
 
 **Run Audio Intel dev server**:
+
 ```bash
 npm run dev:audio-intel
 ```
@@ -163,24 +168,27 @@ BBC Radio 1 - UK national...   Intelligence Text
 ## 🚀 Real-World Examples
 
 **Radio Promoter** (47 contacts, 12 pages):
+
 ```typescript
 exportContactsToPdf(contacts, 'delilah-bon-campaign.pdf', {
   companyName: 'Stellar Music PR',
   logoUrl: 'data:image/png;base64,...',
-  primaryColor: '#9333EA'
+  primaryColor: '#9333EA',
 });
 ```
 
 **PR Agency** (125 contacts, 32 pages):
+
 ```typescript
 exportContactsToPdf(contacts, 'liberty-campaign.pdf', {
   companyName: 'Liberty Records PR',
   logoUrl: 'data:image/png;base64,...',
-  primaryColor: '#FF6B35'
+  primaryColor: '#FF6B35',
 });
 ```
 
 **Independent Artist** (15 contacts, 4 pages):
+
 ```typescript
 exportContactsToPdf(contacts, 'my-radio-campaign.pdf');
 // Uses default Audio Intel branding

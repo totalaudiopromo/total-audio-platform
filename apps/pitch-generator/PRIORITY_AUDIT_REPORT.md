@@ -1,4 +1,5 @@
 # 🚨 PITCH GENERATOR - PRIORITY AUDIT & ACTION PLAN
+
 **Audited**: October 12, 2025
 **Site**: pitch.totalaudiopromo.com
 **Focus**: Revenue-blocking issues → UX friction → Conversion optimization
@@ -10,6 +11,7 @@
 **Status**: ✅ **PRODUCTION-READY** with **2 CRITICAL fixes** completed and **8 HIGH-PRIORITY** items remaining.
 
 ### Completed This Session
+
 - ✅ **robots.txt created** - proper crawl directives
 - ✅ **sitemap.ts created** - dynamic sitemap with all pages + 10 blog posts
 - ✅ **Privacy Policy created** - GDPR-compliant, UK-specific
@@ -17,13 +19,14 @@
 - ✅ **Footer updated** - Legal links added (Privacy, Terms, Blog)
 
 ### Critical Findings
-| Category | Status | Impact |
-|----------|--------|--------|
-| Pricing Access | ✅ WORKING | No auth required |
-| Legal Compliance | ⚠️ 80% DONE | Privacy/Terms created, need cookie banner |
-| Email Verification | 🔴 MISSING | No verification system |
-| Onboarding Flow | ⚠️ NEEDS WORK | No guided experience |
-| Dashboard UX | ⚠️ MODERATE | Empty states exist, need improvement |
+
+| Category           | Status        | Impact                                    |
+| ------------------ | ------------- | ----------------------------------------- |
+| Pricing Access     | ✅ WORKING    | No auth required                          |
+| Legal Compliance   | ⚠️ 80% DONE   | Privacy/Terms created, need cookie banner |
+| Email Verification | 🔴 MISSING    | No verification system                    |
+| Onboarding Flow    | ⚠️ NEEDS WORK | No guided experience                      |
+| Dashboard UX       | ⚠️ MODERATE   | Empty states exist, need improvement      |
 
 ---
 
@@ -34,12 +37,14 @@
 **Status**: ✅ **WORKING PERFECTLY**
 
 **Current State**:
+
 - Middleware only protects `/profile/*` and `/settings/*` ([middleware.ts:19](middleware.ts#L19))
 - `/pricing` accessible without login ✅
 - HTTP 200 response confirmed via curl ✅
 - No redirect to login ✅
 
 **Evidence**:
+
 ```bash
 $ curl -sI https://pitch.totalaudiopromo.com/pricing | grep HTTP
 HTTP/2 200
@@ -54,6 +59,7 @@ HTTP/2 200
 **Status**: ⚠️ **PARTIALLY COMPLETE** (2/3 done)
 
 #### ✅ COMPLETED:
+
 1. **Privacy Policy** - [app/privacy/page.tsx](app/privacy/page.tsx)
    - GDPR-compliant (all rights: access, erasure, portability, etc.)
    - UK ICO contact information
@@ -120,8 +126,12 @@ export function CookieBanner() {
 
       <h3 className="text-sm font-bold text-gray-900">Privacy-Friendly Analytics</h3>
       <p className="mt-2 text-xs text-gray-600 leading-relaxed">
-        We use Plausible Analytics (no cookies, no tracking) to understand how visitors use our site.
-        Read our <Link href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</Link> for details.
+        We use Plausible Analytics (no cookies, no tracking) to understand how visitors use our
+        site. Read our{' '}
+        <Link href="/privacy" className="text-blue-600 hover:underline">
+          Privacy Policy
+        </Link>{' '}
+        for details.
       </p>
       <button
         onClick={handleAccept}
@@ -135,12 +145,13 @@ export function CookieBanner() {
 ```
 
 **Then add to layout**:
+
 ```tsx
 // app/layout.tsx - add before </body>
 import { CookieBanner } from '@/components/CookieBanner';
 
 // Inside body:
-<CookieBanner />
+<CookieBanner />;
 ```
 
 **B. GDPR Data Deletion in Dashboard**
@@ -241,9 +252,7 @@ export default function DataSettingsPage() {
                   <AlertTriangle className="h-5 w-5 text-red-600" />
                   <div>
                     <p className="text-sm font-bold text-red-900">Are you absolutely sure?</p>
-                    <p className="mt-1 text-xs text-gray-700">
-                      This will delete:
-                    </p>
+                    <p className="mt-1 text-xs text-gray-700">This will delete:</p>
                     <ul className="mt-2 list-disc pl-5 text-xs text-gray-700">
                       <li>All your contacts</li>
                       <li>All generated pitches</li>
@@ -278,6 +287,7 @@ export default function DataSettingsPage() {
 ```
 
 **API Routes to Create**:
+
 ```typescript
 // app/api/user/export/route.ts
 import { NextResponse } from 'next/server';
@@ -346,6 +356,7 @@ export async function DELETE() {
 **Status**: 🔴 **NOT IMPLEMENTED**
 
 **Current State**:
+
 - No email verification found in codebase
 - Users can create accounts without verifying email
 - No "resend verification" functionality
@@ -358,6 +369,7 @@ export async function DELETE() {
 **Implementation Plan**:
 
 **Step 1: Enable Supabase Email Verification**
+
 ```sql
 -- Run in Supabase SQL Editor
 ALTER TABLE auth.users ADD COLUMN IF NOT EXISTS email_confirmed_at TIMESTAMP;
@@ -506,6 +518,7 @@ export function UnverifiedEmailBanner() {
 ```
 
 **Add to layout**:
+
 ```tsx
 // app/layout.tsx - after SiteHeader
 <UnverifiedEmailBanner />
@@ -520,6 +533,7 @@ export function UnverifiedEmailBanner() {
 **Status**: 🔴 **MISSING**
 
 **Current State**:
+
 - Dashboard shows empty state ([dashboard/page.tsx:159-177](dashboard/page.tsx#L159-L177))
 - No guided first-time experience
 - No progress tracking for key actions
@@ -579,10 +593,12 @@ export function OnboardingChecklist() {
     fetch('/api/user/onboarding-status')
       .then(res => res.json())
       .then(data => {
-        setTasks(prev => prev.map(task => ({
-          ...task,
-          completed: data[task.id] || false,
-        })));
+        setTasks(prev =>
+          prev.map(task => ({
+            ...task,
+            completed: data[task.id] || false,
+          }))
+        );
       });
   }, []);
 
@@ -601,7 +617,8 @@ export function OnboardingChecklist() {
           <div>
             <h3 className="text-lg font-bold text-gray-900">Get Started</h3>
             <p className="text-sm text-gray-600">
-              Complete {3 - completedCount} more {3 - completedCount === 1 ? 'task' : 'tasks'} to unlock full potential
+              Complete {3 - completedCount} more {3 - completedCount === 1 ? 'task' : 'tasks'} to
+              unlock full potential
             </p>
           </div>
         </div>
@@ -624,7 +641,9 @@ export function OnboardingChecklist() {
               <Circle className="h-6 w-6 flex-shrink-0 text-gray-400" />
             )}
             <div className="flex-1">
-              <p className={`font-semibold ${task.completed ? 'text-gray-500 line-through' : 'text-gray-900'}`}>
+              <p
+                className={`font-semibold ${task.completed ? 'text-gray-500 line-through' : 'text-gray-900'}`}
+              >
                 {task.title}
               </p>
               <p className="text-sm text-gray-600">{task.description}</p>
@@ -654,7 +673,9 @@ export function OnboardingChecklist() {
 
 ```tsx
 // app/dashboard/page.tsx - Add after loading check, before stats
-{!loading && stats.totalPitches === 0 && <OnboardingChecklist />}
+{
+  !loading && stats.totalPitches === 0 && <OnboardingChecklist />;
+}
 ```
 
 **Step 3: Track Completion (Backend)**
@@ -677,7 +698,11 @@ export async function GET() {
   const [contacts, pitches, voiceProfile] = await Promise.all([
     supabaseAdmin.from('contacts').select('id').eq('user_id', userId).limit(1),
     supabaseAdmin.from('pitches').select('id').eq('user_id', userId).limit(1),
-    supabaseAdmin.from('user_pitch_settings').select('voice_profile_completed').eq('user_id', userId).single(),
+    supabaseAdmin
+      .from('user_pitch_settings')
+      .select('voice_profile_completed')
+      .eq('user_id', userId)
+      .single(),
   ]);
 
   return NextResponse.json({
@@ -697,11 +722,13 @@ export async function GET() {
 **Current Issues Found**:
 
 **A. Genre Dropdown** - [app/pitch/generate/page.tsx:358-375](app/pitch/generate/page.tsx#L358-L375)
+
 - ✅ Has `required` attribute
 - ⚠️ No visual indication of requirement before submission
 - ⚠️ Generic browser validation message
 
 **Fix**:
+
 ```tsx
 // Add label styling to show required field
 <label className="block text-sm font-semibold text-gray-900">
@@ -731,12 +758,14 @@ export async function GET() {
 ```
 
 **B. Key Hook Textarea** - [app/pitch/generate/page.tsx:391-407](app/pitch/generate/page.tsx#L391-L407)
+
 - ✅ Has character limit (500)
 - ✅ Shows character count
 - ⚠️ No minimum character requirement (should be 50+ for quality)
 - ⚠️ No warning when approaching limit
 
 **Fix**:
+
 ```tsx
 // Add minimum character requirement
 const hookCharCount = formData.keyHook.length;
@@ -775,6 +804,7 @@ const hookIsValid = hookCharCount >= hookMinLength && hookCharCount <= hookMaxLe
 **C. Error Messages** - Generic and unhelpful
 
 **Current** ([app/pitch/generate/page.tsx:218-220](app/pitch/generate/page.tsx#L218-L220)):
+
 ```tsx
 } catch (error) {
   console.error('Error generating pitch:', error);
@@ -783,6 +813,7 @@ const hookIsValid = hookCharCount >= hookMinLength && hookCharCount <= hookMaxLe
 ```
 
 **Fix**:
+
 ```tsx
 } catch (error) {
   const errorMessage = error instanceof Error
@@ -830,6 +861,7 @@ const hookIsValid = hookCharCount >= hookMinLength && hookCharCount <= hookMaxLe
 **Status**: ⚠️ **REQUIRES MANUAL TESTING**
 
 **Current AI Implementation** ([lib/openai.ts](lib/openai.ts)):
+
 - Model: Claude 3.5 Sonnet (✅ Good choice)
 - Temperature: 0.8 (✅ Balanced creativity)
 - Max tokens: 1024 (✅ Appropriate for pitches)
@@ -857,6 +889,7 @@ const hookIsValid = hookCharCount >= hookMinLength && hookCharCount <= hookMaxLe
    - Check artist comparisons match genre/era
 
 **Observed Issue** ([lib/openai.ts:94-98](lib/openai.ts#L94-L98)):
+
 ```typescript
 CRITICAL GENRE/STYLE MATCHING RULES:
 - NEVER compare to artists from completely different genres or eras
@@ -867,6 +900,7 @@ CRITICAL GENRE/STYLE MATCHING RULES:
 This suggests **past issues with inappropriate comparisons**. Need to test if prompt fixes are working.
 
 **Action Items**:
+
 1. Run test suite (5 pitches per genre)
 2. Document any inconsistencies
 3. Adjust temperature or prompt if needed
@@ -882,6 +916,7 @@ This suggests **past issues with inappropriate comparisons**. Need to test if pr
 ### 7. PERFORMANCE AUDIT - **MODERATE ISSUES**
 
 **Current Metrics** (from earlier audit):
+
 - Build size: 356MB (⚠️ Large)
 - Node modules: 293MB (⚠️ Large)
 - Estimated FCP: ~2s (⚠️ Target <1s)
@@ -899,6 +934,7 @@ This suggests **past issues with inappropriate comparisons**. Need to test if pr
 **Status**: ✅ **95% COMPLETE**
 
 **Completed**:
+
 - ✅ robots.txt created
 - ✅ sitemap.ts created (dynamic, 11 pages)
 - ✅ Meta titles/descriptions on all pages
@@ -907,6 +943,7 @@ This suggests **past issues with inappropriate comparisons**. Need to test if pr
 - ✅ Blog posts have proper metadata
 
 **Minor Gaps**:
+
 1. **Missing OG Image** - `/og-pitch-generator.png` referenced but doesn't exist
    - **Priority**: Medium
    - **Effort**: 1 hour (design 1200x630px image)
@@ -925,22 +962,26 @@ This suggests **past issues with inappropriate comparisons**. Need to test if pr
 **Current State** ([dashboard/page.tsx:159-177](dashboard/page.tsx#L159-L177)):
 
 **Empty State - ✅ EXISTS** but could be better:
+
 ```tsx
-{recentPitches.length === 0 && !loading && (
-  <div className="glass-panel px-8 py-16 text-center">
-    <Sparkles className="mx-auto h-12 w-12 text-gray-400" />
-    <h3 className="mt-4 text-xl font-semibold text-gray-900">No pitches yet</h3>
-    <p className="mx-auto mt-2 max-w-md text-sm text-gray-600">
-      Generate your first AI-powered pitch and it will appear here
-    </p>
-    <Link href="/pitch/generate" className="cta-button mt-6 inline-flex">
-      Generate Your First Pitch →
-    </Link>
-  </div>
-)}
+{
+  recentPitches.length === 0 && !loading && (
+    <div className="glass-panel px-8 py-16 text-center">
+      <Sparkles className="mx-auto h-12 w-12 text-gray-400" />
+      <h3 className="mt-4 text-xl font-semibold text-gray-900">No pitches yet</h3>
+      <p className="mx-auto mt-2 max-w-md text-sm text-gray-600">
+        Generate your first AI-powered pitch and it will appear here
+      </p>
+      <Link href="/pitch/generate" className="cta-button mt-6 inline-flex">
+        Generate Your First Pitch →
+      </Link>
+    </div>
+  );
+}
 ```
 
 **Issues**:
+
 1. ⚠️ No differentiation between "loading" and "empty" (confusing)
 2. ⚠️ Stats show "0" which looks unprofessional
 3. ⚠️ No guidance on what to do next
@@ -949,56 +990,73 @@ This suggests **past issues with inappropriate comparisons**. Need to test if pr
 
 ```tsx
 // Better loading state
-{loading && (
-  <div className="glass-panel px-8 py-16 text-center">
-    <Loader2 className="mx-auto h-12 w-12 animate-spin text-blue-600" />
-    <p className="mt-4 text-sm text-gray-600">Loading your dashboard...</p>
-  </div>
-)}
+{
+  loading && (
+    <div className="glass-panel px-8 py-16 text-center">
+      <Loader2 className="mx-auto h-12 w-12 animate-spin text-blue-600" />
+      <p className="mt-4 text-sm text-gray-600">Loading your dashboard...</p>
+    </div>
+  );
+}
 
 // Better empty state with onboarding
-{!loading && recentPitches.length === 0 && (
-  <div className="space-y-6">
-    {/* Onboarding checklist - see section 4 */}
-    <OnboardingChecklist />
+{
+  !loading && recentPitches.length === 0 && (
+    <div className="space-y-6">
+      {/* Onboarding checklist - see section 4 */}
+      <OnboardingChecklist />
 
-    {/* Quick actions */}
-    <div className="grid gap-4 sm:grid-cols-3">
-      <Link href="/pitch/contacts" className="glass-panel px-6 py-8 text-center hover:border-blue-500">
-        <Plus className="mx-auto h-8 w-8 text-blue-600" />
-        <h3 className="mt-3 font-semibold">Add Contacts</h3>
-        <p className="mt-1 text-sm text-gray-600">Import or create manually</p>
-      </Link>
+      {/* Quick actions */}
+      <div className="grid gap-4 sm:grid-cols-3">
+        <Link
+          href="/pitch/contacts"
+          className="glass-panel px-6 py-8 text-center hover:border-blue-500"
+        >
+          <Plus className="mx-auto h-8 w-8 text-blue-600" />
+          <h3 className="mt-3 font-semibold">Add Contacts</h3>
+          <p className="mt-1 text-sm text-gray-600">Import or create manually</p>
+        </Link>
 
-      <Link href="/pitch/generate" className="glass-panel border-2 border-blue-500 px-6 py-8 text-center hover:bg-blue-50">
-        <Sparkles className="mx-auto h-8 w-8 text-blue-600" />
-        <h3 className="mt-3 font-semibold">Generate Pitch</h3>
-        <p className="mt-1 text-sm text-gray-600">Start your first campaign</p>
-      </Link>
+        <Link
+          href="/pitch/generate"
+          className="glass-panel border-2 border-blue-500 px-6 py-8 text-center hover:bg-blue-50"
+        >
+          <Sparkles className="mx-auto h-8 w-8 text-blue-600" />
+          <h3 className="mt-3 font-semibold">Generate Pitch</h3>
+          <p className="mt-1 text-sm text-gray-600">Start your first campaign</p>
+        </Link>
 
-      <Link href="/profile/voice" className="glass-panel px-6 py-8 text-center hover:border-blue-500">
-        <MessageCircle className="mx-auto h-8 w-8 text-blue-600" />
-        <h3 className="mt-3 font-semibold">Voice Profile</h3>
-        <p className="mt-1 text-sm text-gray-600">Personalize AI writing</p>
-      </Link>
+        <Link
+          href="/profile/voice"
+          className="glass-panel px-6 py-8 text-center hover:border-blue-500"
+        >
+          <MessageCircle className="mx-auto h-8 w-8 text-blue-600" />
+          <h3 className="mt-3 font-semibold">Voice Profile</h3>
+          <p className="mt-1 text-sm text-gray-600">Personalize AI writing</p>
+        </Link>
+      </div>
     </div>
-  </div>
-)}
+  );
+}
 
 // Hide stats when empty (looks more professional)
-{!loading && stats.totalPitches > 0 && (
-  <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-    {/* ... existing stats cards ... */}
-  </div>
-)}
+{
+  !loading && stats.totalPitches > 0 && (
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {/* ... existing stats cards ... */}
+    </div>
+  );
+}
 ```
 
 **Saved Pitches Organization**: ✅ WORKING
+
 - Uses `/pitch/history` page
 - Status filters available
 - Copy functionality works
 
 **Export Options**: ⚠️ NEEDS IMPROVEMENT
+
 - ✅ Copy to clipboard works
 - ❌ No PDF export
 - ❌ No CSV export for bulk pitches
@@ -1016,22 +1074,26 @@ This suggests **past issues with inappropriate comparisons**. Need to test if pr
 **Status**: ✅ **MOSTLY CLEAR**
 
 **Homepage CTAs** ([app/page.tsx:63-64](app/page.tsx#L63-L64)):
+
 - ✅ Primary CTA: "Start free trial →" (clear)
 - ✅ Secondary CTA: "See how it works" (links to #how-it-works)
 - ✅ Free trial messaging: "5 pitches/month forever free"
 
 **Pricing Page** ([app/pricing/page.tsx](app/pricing/page.tsx)):
+
 - ✅ Clear limits: "5 pitches per month" (Free)
 - ✅ Upgrade prompts: Plan selector + checkout form
 - ⚠️ "Bundle" pricing confusing (mentions Intel + Tracker but this is Pitch Generator only)
 
 **Fix for Bundle Confusion**:
+
 ```tsx
 // app/pricing/page.tsx:26-30
 blurb: 'Get Pitch Generator + Audio Intel + Tracker at one low price. Switch between tools seamlessly for complete campaign workflow.',
 ```
 
 **Signup Flow**:
+
 - ✅ No friction (goes straight to /dashboard after signin)
 - ⚠️ No email verification (see section 3)
 - ✅ Clear next steps shown in dashboard
@@ -1046,6 +1108,7 @@ blurb: 'Get Pitch Generator + Audio Intel + Tracker at one low price. Switch bet
 **Status**: ✅ **WELL-IMPLEMENTED**
 
 **Exit Intent Popup** ([components/ExitIntentPopup.tsx](components/ExitIntentPopup.tsx)):
+
 - ✅ Exists and works
 - ✅ Session-based (only shows once)
 - ✅ Easy close (X button + backdrop click)
@@ -1053,6 +1116,7 @@ blurb: 'Get Pitch Generator + Audio Intel + Tracker at one low price. Switch bet
 - ⚠️ Desktop-only trigger (mouseleave event doesn't fire on mobile)
 
 **Fix for Mobile**:
+
 ```tsx
 // Add time-based trigger for mobile (see main audit for full code)
 useEffect(() => {
@@ -1077,10 +1141,12 @@ useEffect(() => {
 **Email Capture**: ✅ Newsletter signup in footer (ConvertKit integration)
 
 **Upgrade Prompts**: ⚠️ NO UPGRADE PROMPTS VISIBLE
+
 - Free users should see "Upgrade to PRO" banner when approaching 5-pitch limit
 - No usage meter shown anywhere
 
 **Recommended Addition**:
+
 ```tsx
 // components/UsageMeter.tsx
 export function UsageMeter({ current, limit }: { current: number; limit: number }) {
@@ -1090,7 +1156,9 @@ export function UsageMeter({ current, limit }: { current: number; limit: number 
   if (limit === Infinity) return null; // PRO/Agency users
 
   return (
-    <div className={`rounded-xl border-2 p-4 ${nearLimit ? 'border-yellow-500 bg-yellow-50' : 'border-gray-200 bg-white'}`}>
+    <div
+      className={`rounded-xl border-2 p-4 ${nearLimit ? 'border-yellow-500 bg-yellow-50' : 'border-gray-200 bg-white'}`}
+    >
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-semibold text-gray-900">
@@ -1129,6 +1197,7 @@ export function UsageMeter({ current, limit }: { current: number; limit: number 
 **Status**: ✅ **ALL LINKS WORKING**
 
 **Tested**:
+
 - ✅ Header links (Home, Pricing, Blog, Dashboard) - all work
 - ✅ Footer links (Pricing, Dashboard, Total Audio, Audio Intel, Privacy, Terms) - all work
 - ✅ CTA buttons (Start free trial, See how it works) - all work
@@ -1146,20 +1215,24 @@ export function UsageMeter({ current, limit }: { current: number; limit: number 
 **Status**: ⚠️ **NEEDS ENHANCEMENT**
 
 **Current Tracking**:
+
 - ✅ Plausible Analytics installed ([app/layout.tsx:19-23](app/layout.tsx#L19-L23))
 - ✅ Privacy-friendly (no cookies)
 - ⚠️ No custom event tracking
 - ⚠️ No conversion funnel tracking
 
 **User Journey Map**:
+
 1. **Landing** (homepage) → 2. **Sign Up** → 3. **Dashboard** → 4. **Generate Pitch** → 5. **Copy/Export**
 
 **Drop-off Points** (hypothetical, needs real data):
+
 - Homepage → Sign Up: ~60-70% drop-off (industry standard)
 - Sign Up → First Pitch: ~40-50% drop-off (needs onboarding)
 - Generate → Copy/Export: ~10-20% drop-off (acceptable)
 
 **Recommended Event Tracking**:
+
 ```tsx
 // utils/analytics.ts
 export function trackEvent(eventName: string, properties?: Record<string, any>) {
@@ -1184,11 +1257,13 @@ trackEvent('onboarding_step_completed', { step: 'add_contact' });
 ## ✅ ADDITIONAL CHECKS
 
 ### Favicon ✅
+
 - **Status**: ✅ EXISTS
 - Files: `/favicon.ico`, `/favicon-16x16.png`, `/favicon-32x32.png`, `/apple-touch-icon.png`
 - All referenced in metadata
 
 ### Error Pages ⚠️
+
 - **404 Page**: ✅ Default Next.js 404 (works but not styled)
 - **500 Page**: ❌ No custom error page
 - **Unauthorized Page**: ✅ Exists ([app/unauthorized/page.tsx](app/unauthorized/page.tsx))
@@ -1196,17 +1271,20 @@ trackEvent('onboarding_step_completed', { step: 'add_contact' });
 **Recommendation**: Create custom 404/500 pages matching brand design
 
 ### Loading States ✅
+
 - **Dashboard**: ✅ Loader shown while fetching data
 - **Pitch Generation**: ✅ "Generating..." spinner
 - **API calls**: ✅ Disabled buttons during submission
 
 ### Mobile Responsiveness ✅
+
 - **Status**: ✅ EXCELLENT
 - All pages tested responsive
 - Touch targets > 44px
 - Mobile navigation works
 
 ### Cross-Browser ⚠️ (NOT TESTED)
+
 - **Status**: ⚠️ REQUIRES MANUAL TESTING
 - Recommend testing Safari, Chrome, Firefox, Edge
 - Check for CSS compatibility issues
@@ -1217,16 +1295,16 @@ trackEvent('onboarding_step_completed', { step: 'add_contact' });
 
 ### Week 1 (Critical Revenue Blockers)
 
-| # | Task | Priority | Effort | Status |
-|---|------|----------|--------|--------|
-| 1 | ✅ Create Privacy Policy | CRITICAL | 2h | ✅ DONE |
-| 2 | ✅ Create Terms of Service | CRITICAL | 2h | ✅ DONE |
-| 3 | ✅ Update Footer with Legal Links | CRITICAL | 15m | ✅ DONE |
-| 4 | ✅ Create robots.txt | CRITICAL | 15m | ✅ DONE |
-| 5 | ✅ Create sitemap.ts | CRITICAL | 30m | ✅ DONE |
-| 6 | Implement email verification system | HIGH | 4-6h | 🔴 TODO |
-| 7 | Add GDPR data deletion | HIGH | 2h | 🔴 TODO |
-| 8 | Create OG image (1200x630px) | MEDIUM | 1h | 🔴 TODO |
+| #   | Task                                | Priority | Effort | Status  |
+| --- | ----------------------------------- | -------- | ------ | ------- |
+| 1   | ✅ Create Privacy Policy            | CRITICAL | 2h     | ✅ DONE |
+| 2   | ✅ Create Terms of Service          | CRITICAL | 2h     | ✅ DONE |
+| 3   | ✅ Update Footer with Legal Links   | CRITICAL | 15m    | ✅ DONE |
+| 4   | ✅ Create robots.txt                | CRITICAL | 15m    | ✅ DONE |
+| 5   | ✅ Create sitemap.ts                | CRITICAL | 30m    | ✅ DONE |
+| 6   | Implement email verification system | HIGH     | 4-6h   | 🔴 TODO |
+| 7   | Add GDPR data deletion              | HIGH     | 2h     | 🔴 TODO |
+| 8   | Create OG image (1200x630px)        | MEDIUM   | 1h     | 🔴 TODO |
 
 **Total remaining effort: ~8-10 hours**
 
@@ -1234,15 +1312,15 @@ trackEvent('onboarding_step_completed', { step: 'add_contact' });
 
 ### Week 2 (UX & Conversion)
 
-| # | Task | Priority | Effort | Status |
-|---|------|----------|--------|--------|
-| 9 | Add onboarding checklist | HIGH | 6-8h | 🔴 TODO |
-| 10 | Improve form validation | MEDIUM | 3-4h | 🔴 TODO |
-| 11 | Test pitch quality (5 per genre) | HIGH | 2-3h | 🔴 TODO |
-| 12 | Add usage meter for free users | MEDIUM | 2h | 🔴 TODO |
-| 13 | Add cookie consent banner | LOW | 1h | 🔴 TODO |
-| 14 | Improve dashboard empty state | MEDIUM | 2h | 🔴 TODO |
-| 15 | Add event tracking | MEDIUM | 3-4h | 🔴 TODO |
+| #   | Task                             | Priority | Effort | Status  |
+| --- | -------------------------------- | -------- | ------ | ------- |
+| 9   | Add onboarding checklist         | HIGH     | 6-8h   | 🔴 TODO |
+| 10  | Improve form validation          | MEDIUM   | 3-4h   | 🔴 TODO |
+| 11  | Test pitch quality (5 per genre) | HIGH     | 2-3h   | 🔴 TODO |
+| 12  | Add usage meter for free users   | MEDIUM   | 2h     | 🔴 TODO |
+| 13  | Add cookie consent banner        | LOW      | 1h     | 🔴 TODO |
+| 14  | Improve dashboard empty state    | MEDIUM   | 2h     | 🔴 TODO |
+| 15  | Add event tracking               | MEDIUM   | 3-4h   | 🔴 TODO |
 
 **Total effort: ~19-24 hours**
 
@@ -1250,13 +1328,13 @@ trackEvent('onboarding_step_completed', { step: 'add_contact' });
 
 ### Week 3+ (Polish & Optimization)
 
-| # | Task | Priority | Effort |
-|---|------|----------|--------|
-| 16 | Optimize bundle size | MEDIUM | 4-6h |
-| 17 | Add JSON-LD schema to blog | LOW | 2h |
-| 18 | Create custom 404/500 pages | LOW | 2h |
-| 19 | Add PDF export for pitches | LOW | 4h |
-| 20 | Cross-browser testing | LOW | 2h |
+| #   | Task                        | Priority | Effort |
+| --- | --------------------------- | -------- | ------ |
+| 16  | Optimize bundle size        | MEDIUM   | 4-6h   |
+| 17  | Add JSON-LD schema to blog  | LOW      | 2h     |
+| 18  | Create custom 404/500 pages | LOW      | 2h     |
+| 19  | Add PDF export for pitches  | LOW      | 4h     |
+| 20  | Cross-browser testing       | LOW      | 2h     |
 
 **Total effort: ~14-16 hours**
 
@@ -1264,16 +1342,17 @@ trackEvent('onboarding_step_completed', { step: 'add_contact' });
 
 ## 💰 BUSINESS IMPACT ESTIMATES
 
-| Fix | Conversion Impact | Revenue Impact | Confidence |
-|-----|-------------------|----------------|------------|
-| Email verification | +5-10% trust | Low-Medium | High |
-| Onboarding checklist | +30-40% activation | HIGH | High |
-| Privacy/Terms pages | +10-15% trust | Medium | Medium |
-| Improved form validation | +5-10% completion | Low | Medium |
-| Usage meter + upgrade prompts | +20-30% upgrades | VERY HIGH | High |
-| Pitch quality consistency | +10-20% retention | HIGH | High |
+| Fix                           | Conversion Impact  | Revenue Impact | Confidence |
+| ----------------------------- | ------------------ | -------------- | ---------- |
+| Email verification            | +5-10% trust       | Low-Medium     | High       |
+| Onboarding checklist          | +30-40% activation | HIGH           | High       |
+| Privacy/Terms pages           | +10-15% trust      | Medium         | Medium     |
+| Improved form validation      | +5-10% completion  | Low            | Medium     |
+| Usage meter + upgrade prompts | +20-30% upgrades   | VERY HIGH      | High       |
+| Pitch quality consistency     | +10-20% retention  | HIGH           | High       |
 
 **Top 3 Revenue Drivers**:
+
 1. **Onboarding Checklist** - Reduces dashboard abandonment
 2. **Usage Meter** - Drives free → PRO upgrades
 3. **Pitch Quality** - Increases retention and referrals
@@ -1283,6 +1362,7 @@ trackEvent('onboarding_step_completed', { step: 'add_contact' });
 ## 🚀 IMMEDIATE NEXT STEPS (TODAY)
 
 1. ✅ **DONE**: Deploy legal pages + sitemap
+
    ```bash
    npm run build
    vercel --prod

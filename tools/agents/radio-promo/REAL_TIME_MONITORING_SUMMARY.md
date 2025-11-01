@@ -62,7 +62,7 @@ await analytics.initialize();
 await analytics.setupTracking({
   campaignId: 'my-campaign-123',
   artistName: 'My Artist',
-  startDate: '2025-01-01'
+  startDate: '2025-01-01',
 });
 
 // Get real-time analytics

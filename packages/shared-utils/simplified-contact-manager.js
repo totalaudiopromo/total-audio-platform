@@ -6,31 +6,34 @@ const mailchimp = require('@mailchimp/mailchimp_marketing');
 
 class SimplifiedContactManager {
   constructor() {
-    this.airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
-      .base(process.env.AIRTABLE_BASE_ID);
+    this.airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
+      process.env.AIRTABLE_BASE_ID
+    );
     this.contactsTable = this.airtable('Radio Contacts');
-    
+
     mailchimp.setConfig({
       apiKey: process.env.MAILCHIMP_API_KEY,
-      server: process.env.MAILCHIMP_SERVER_PREFIX
+      server: process.env.MAILCHIMP_SERVER_PREFIX,
     });
-    
+
     this.listId = process.env.MAILCHIMP_LIST_ID;
   }
 
   // One-time sync: Import all 517 contacts from Airtable to Mailchimp
   async syncAllContactsToMailchimp() {
     console.log('Starting full contact sync from Airtable to Mailchimp...');
-    
+
     try {
       // Get all contacts from Airtable
       const allRecords = [];
-      await this.contactsTable.select({
-        filterByFormula: '{Status} = "Active"' // Only active contacts
-      }).eachPage((records, fetchNextPage) => {
-        allRecords.push(...records);
-        fetchNextPage();
-      });
+      await this.contactsTable
+        .select({
+          filterByFormula: '{Status} = "Active"', // Only active contacts
+        })
+        .eachPage((records, fetchNextPage) => {
+          allRecords.push(...records);
+          fetchNextPage();
+        });
 
       console.log(`Found ${allRecords.length} active contacts in Airtable`);
 
@@ -47,29 +50,28 @@ class SimplifiedContactManager {
           RESPONSE: record.fields['Response Rate'] || '0',
           REACH: record.fields['Weekly Reach'] || '0',
           COUNTRY: record.fields['Country'] || '',
-          NOTES: record.fields['Notes'] || ''
+          NOTES: record.fields['Notes'] || '',
         },
-        tags: this.generateContactTags(record.fields)
+        tags: this.generateContactTags(record.fields),
       }));
 
       // Batch import to Mailchimp (500 at a time - API limit)
       const batches = this.chunkArray(mailchimpContacts, 500);
-      
+
       for (let i = 0; i < batches.length; i++) {
         console.log(`Syncing batch ${i + 1}/${batches.length}...`);
-        
+
         await mailchimp.lists.batchListMembers(this.listId, {
           members: batches[i],
-          update_existing: true
+          update_existing: true,
         });
-        
+
         // Rate limiting
         await this.sleep(1000);
       }
 
       console.log(`Successfully synced ${allRecords.length} contacts to Mailchimp`);
       return allRecords.length;
-
     } catch (error) {
       console.error('Error syncing contacts:', error);
       throw error;
@@ -78,55 +80,55 @@ class SimplifiedContactManager {
 
   generateContactTags(fields) {
     const tags = [];
-    
+
     // Genre tags
     if (fields['Preferred Genres']) {
       const genres = fields['Preferred Genres'].split(',').map(g => g.trim());
       genres.forEach(genre => tags.push(`Genre-${genre.replace(/\s+/g, '-')}`));
     }
-    
+
     // Tier tags
     if (fields['Station Tier']) {
       tags.push(`Tier-${fields['Station Tier'].replace(/\s+/g, '-')}`);
     }
-    
+
     // Response rate tags
     const responseRate = parseFloat(fields['Response Rate']) || 0;
     if (responseRate > 0.4) tags.push('High-Responder');
     else if (responseRate > 0.2) tags.push('Medium-Responder');
     else tags.push('Low-Responder');
-    
+
     // Reach tags
     const reach = parseInt(fields['Weekly Reach']) || 0;
     if (reach > 100000) tags.push('Large-Audience');
     else if (reach > 10000) tags.push('Medium-Audience');
     else tags.push('Small-Audience');
-    
+
     return tags;
   }
 
   // Campaign-specific contact selection using Mailchimp segments
   async createCampaignSegment(campaignData) {
     const { genre, budget, campaignType } = campaignData;
-    
+
     // Build Mailchimp segment conditions
     const conditions = [];
-    
+
     // Genre matching
     conditions.push({
       condition_type: 'TextMerge',
       field: 'GENRES',
       op: 'contains',
-      value: genre
+      value: genre,
     });
-    
+
     // Budget-based tier filtering
     if (budget < 1500) {
       conditions.push({
         condition_type: 'TextMerge',
         field: 'TIER',
         op: 'is',
-        value: 'Regional'
+        value: 'Regional',
       });
     } else if (budget >= 2500) {
       // Include all tiers for higher budget
@@ -134,16 +136,16 @@ class SimplifiedContactManager {
         condition_type: 'TextMerge',
         field: 'TIER',
         op: 'not',
-        value: '' // Include all
+        value: '', // Include all
       });
     }
-    
+
     // Response rate filtering
     conditions.push({
       condition_type: 'TextMerge',
       field: 'RESPONSE',
       op: 'greater',
-      value: '0.1' // At least 10% response rate
+      value: '0.1', // At least 10% response rate
     });
 
     try {
@@ -152,13 +154,12 @@ class SimplifiedContactManager {
         name: `${campaignData.artistName} - ${campaignData.trackName}`,
         options: {
           match: 'all',
-          conditions: conditions
-        }
+          conditions: conditions,
+        },
       });
 
       console.log(`Created segment: ${segment.name} with ID: ${segment.id}`);
       return segment;
-
     } catch (error) {
       console.error('Error creating campaign segment:', error);
       throw error;
@@ -174,22 +175,22 @@ class SimplifiedContactManager {
         recipients: {
           list_id: this.listId,
           segment_opts: {
-            saved_segment_id: segmentId
-          }
+            saved_segment_id: segmentId,
+          },
         },
         settings: {
           subject_line: `New ${campaignData.genre} from ${campaignData.artistName} - "${campaignData.trackName}"`,
           from_email: 'chris@libertymusic.pr',
           from_name: 'Chris Schofield - Liberty Music PR',
-          reply_to: 'chris@libertymusic.pr'
-        }
+          reply_to: 'chris@libertymusic.pr',
+        },
       });
 
       // Set campaign content
       const emailContent = this.generateEmailTemplate(campaignData, assets);
-      
+
       await mailchimp.campaigns.setContent(campaign.id, {
-        html: emailContent
+        html: emailContent,
       });
 
       // Send campaign
@@ -197,7 +198,6 @@ class SimplifiedContactManager {
 
       console.log(`Campaign sent: ${campaign.id}`);
       return campaign;
-
     } catch (error) {
       console.error('Error creating/sending campaign:', error);
       throw error;

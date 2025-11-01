@@ -28,7 +28,7 @@ export const authenticateToken = async (
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as any;
-    
+
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
       select: {
@@ -79,7 +79,7 @@ export const requireAgencyAccess = async (
   }
 
   const { agencyId } = req.params;
-  
+
   if (req.user.role === 'ADMIN') {
     next();
     return;

@@ -15,14 +15,14 @@ Transform rough ideas into fully-formed designs through structured questioning a
 
 ## Quick Reference
 
-| Phase | Key Activities | Tool Usage | Output |
-|-------|---------------|------------|--------|
-| **1. Understanding** | Ask questions (one at a time) | AskUserQuestion for choices | Purpose, constraints, criteria |
-| **2. Exploration** | Propose 2-3 approaches | AskUserQuestion for approach selection | Architecture options with trade-offs |
-| **3. Design Presentation** | Present in 200-300 word sections | Open-ended questions | Complete design with validation |
-| **4. Design Documentation** | Write design document | writing-clearly-and-concisely skill | Design doc in docs/plans/ |
-| **5. Worktree Setup** | Set up isolated workspace | using-git-worktrees skill | Ready development environment |
-| **6. Planning Handoff** | Create implementation plan | writing-plans skill | Detailed task breakdown |
+| Phase                       | Key Activities                   | Tool Usage                             | Output                               |
+| --------------------------- | -------------------------------- | -------------------------------------- | ------------------------------------ |
+| **1. Understanding**        | Ask questions (one at a time)    | AskUserQuestion for choices            | Purpose, constraints, criteria       |
+| **2. Exploration**          | Propose 2-3 approaches           | AskUserQuestion for approach selection | Architecture options with trade-offs |
+| **3. Design Presentation**  | Present in 200-300 word sections | Open-ended questions                   | Complete design with validation      |
+| **4. Design Documentation** | Write design document            | writing-clearly-and-concisely skill    | Design doc in docs/plans/            |
+| **5. Worktree Setup**       | Set up isolated workspace        | using-git-worktrees skill              | Ready development environment        |
+| **6. Planning Handoff**     | Create implementation plan       | writing-plans skill                    | Detailed task breakdown              |
 
 ## The Process
 
@@ -39,12 +39,14 @@ Brainstorming Progress:
 ```
 
 ### Phase 1: Understanding
+
 - Check current project state in working directory
 - Ask ONE question at a time to refine the idea
 - **Use AskUserQuestion tool** when you have multiple choice options
 - Gather: Purpose, constraints, success criteria
 
 **Example using AskUserQuestion:**
+
 ```
 Question: "Where should the authentication data be stored?"
 Options:
@@ -54,12 +56,14 @@ Options:
 ```
 
 ### Phase 2: Exploration
+
 - Propose 2-3 different approaches
 - For each: Core architecture, trade-offs, complexity assessment
 - **Use AskUserQuestion tool** to present approaches as structured choices
 - Ask your human partner which approach resonates
 
 **Example using AskUserQuestion:**
+
 ```
 Question: "Which architectural approach should we use?"
 Options:
@@ -69,29 +73,36 @@ Options:
 ```
 
 ### Phase 3: Design Presentation
+
 - Present in 200-300 word sections
 - Cover: Architecture, components, data flow, error handling, testing
 - Ask after each section: "Does this look right so far?" (open-ended)
 - Use open-ended questions here to allow freeform feedback
 
 ### Phase 4: Design Documentation
+
 After design is validated, write it to a permanent document:
+
 - **File location:** `docs/plans/YYYY-MM-DD-<topic>-design.md` (use actual date and descriptive topic)
 - **RECOMMENDED SUB-SKILL:** Use elements-of-style:writing-clearly-and-concisely (if available) for documentation quality
 - **Content:** Capture the design as discussed and validated in Phase 3, organized into the sections that emerged from the conversation
 - Commit the design document to git before proceeding
 
 ### Phase 5: Worktree Setup (for implementation)
+
 When design is approved and implementation will follow:
+
 - Announce: "I'm using the using-git-worktrees skill to set up an isolated workspace."
 - **REQUIRED SUB-SKILL:** Use superpowers:using-git-worktrees
 - Follow that skill's process for directory selection, safety verification, and setup
 - Return here when worktree ready
 
 ### Phase 6: Planning Handoff
+
 Ask: "Ready to create the implementation plan?"
 
 When your human partner confirms (any affirmative response):
+
 - Announce: "I'm using the writing-plans skill to create the implementation plan."
 - **REQUIRED SUB-SKILL:** Use superpowers:writing-plans
 - Create detailed plan in the worktree
@@ -101,12 +112,14 @@ When your human partner confirms (any affirmative response):
 ### When to Use AskUserQuestion Tool
 
 **Use AskUserQuestion for:**
+
 - Phase 1: Clarifying questions with 2-4 clear options
 - Phase 2: Architectural approach selection (2-3 alternatives)
 - Any decision with distinct, mutually exclusive choices
 - When options have clear trade-offs to explain
 
 **Benefits:**
+
 - Structured presentation of options with descriptions
 - Clear trade-off visibility for partner
 - Forces explicit choice (prevents vague "maybe both" responses)
@@ -114,12 +127,14 @@ When your human partner confirms (any affirmative response):
 ### When to Use Open-Ended Questions
 
 **Use open-ended questions for:**
+
 - Phase 3: Design validation ("Does this look right so far?")
 - When you need detailed feedback or explanation
 - When partner should describe their own requirements
 - When structured options would limit creative input
 
 **Example decision flow:**
+
 - "What authentication method?" → Use AskUserQuestion (2-4 options)
 - "Does this design handle your use case?" → Open-ended (validation)
 
@@ -145,6 +160,7 @@ digraph revisit_phases {
 ```
 
 **You can and should go backward when:**
+
 - Partner reveals new constraint during Phase 2 or 3 → Return to Phase 1
 - Validation shows fundamental gap in requirements → Return to Phase 1
 - Partner questions approach during Phase 3 → Return to Phase 2
@@ -154,12 +170,12 @@ digraph revisit_phases {
 
 ## Key Principles
 
-| Principle | Application |
-|-----------|-------------|
+| Principle                  | Application                                                           |
+| -------------------------- | --------------------------------------------------------------------- |
 | **One question at a time** | Phase 1: Single question per message, use AskUserQuestion for choices |
-| **Structured choices** | Use AskUserQuestion tool for 2-4 options with trade-offs |
-| **YAGNI ruthlessly** | Remove unnecessary features from all designs |
-| **Explore alternatives** | Always propose 2-3 approaches before settling |
-| **Incremental validation** | Present design in sections, validate each |
-| **Flexible progression** | Go backward when needed - flexibility > rigidity |
-| **Announce usage** | State skill usage at start of session |
+| **Structured choices**     | Use AskUserQuestion tool for 2-4 options with trade-offs              |
+| **YAGNI ruthlessly**       | Remove unnecessary features from all designs                          |
+| **Explore alternatives**   | Always propose 2-3 approaches before settling                         |
+| **Incremental validation** | Present design in sections, validate each                             |
+| **Flexible progression**   | Go backward when needed - flexibility > rigidity                      |
+| **Announce usage**         | State skill usage at start of session                                 |

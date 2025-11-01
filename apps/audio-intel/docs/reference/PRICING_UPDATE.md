@@ -103,4 +103,4 @@ Current pricing structure aligned with "The Unsigned Advantage" strategy and bet
 
 ---
 
-**Note**: This pricing structure reflects our commitment to supporting independent artists while maintaining a sustainable business model. The focus is on accessibility and value rather than premium positioning. 
+**Note**: This pricing structure reflects our commitment to supporting independent artists while maintaining a sustainable business model. The focus is on accessibility and value rather than premium positioning.

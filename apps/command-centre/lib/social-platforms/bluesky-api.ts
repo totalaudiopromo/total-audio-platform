@@ -70,8 +70,10 @@ export class BlueSkyAPI implements SocialPlatform {
     }
 
     // Check for Audio Intel branding
-    if (!content.text.toLowerCase().includes('audio intel') &&
-        !content.hashtags.some(tag => tag.toLowerCase().includes('audiointel'))) {
+    if (
+      !content.text.toLowerCase().includes('audio intel') &&
+      !content.hashtags.some(tag => tag.toLowerCase().includes('audiointel'))
+    ) {
       warnings.push('Consider mentioning Audio Intel or including #AudioIntel hashtag');
     }
 
@@ -82,7 +84,7 @@ export class BlueSkyAPI implements SocialPlatform {
     if (!this.accessToken || !this.did) {
       return {
         success: false,
-        error: 'Not authenticated with BlueSky'
+        error: 'Not authenticated with BlueSky',
       };
     }
 
@@ -93,7 +95,7 @@ export class BlueSkyAPI implements SocialPlatform {
       if (this.recentPosts.includes(contentHash)) {
         return {
           success: false,
-          error: 'Duplicate content detected'
+          error: 'Duplicate content detected',
         };
       }
 
@@ -113,7 +115,7 @@ export class BlueSkyAPI implements SocialPlatform {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${this.accessToken}`,
         },
         body: JSON.stringify(postData),
       });
@@ -122,7 +124,7 @@ export class BlueSkyAPI implements SocialPlatform {
         const error = await response.text();
         return {
           success: false,
-          error: `BlueSky API error: ${error}`
+          error: `BlueSky API error: ${error}`,
         };
       }
 
@@ -145,14 +147,14 @@ export class BlueSkyAPI implements SocialPlatform {
           duplicateCheck: false,
           platformSpecific: {
             did: this.did,
-            uri: result.uri
-          }
-        }
+            uri: result.uri,
+          },
+        },
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -167,7 +169,7 @@ export class BlueSkyAPI implements SocialPlatform {
         `${this.apiUrl}/app.bsky.feed.getAuthorFeed?actor=${this.did}&limit=${limit}`,
         {
           headers: {
-            'Authorization': `Bearer ${this.accessToken}`,
+            Authorization: `Bearer ${this.accessToken}`,
           },
         }
       );

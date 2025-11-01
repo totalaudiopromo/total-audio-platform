@@ -17,19 +17,22 @@ if (!token) {
 
 function get(path) {
   return new Promise((resolve, reject) => {
-    const req = https.request({
-      hostname: 'api.notion.com',
-      path,
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Notion-Version': '2022-06-28'
+    const req = https.request(
+      {
+        hostname: 'api.notion.com',
+        path,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Notion-Version': '2022-06-28',
+        },
+      },
+      res => {
+        let data = '';
+        res.on('data', c => (data += c));
+        res.on('end', () => resolve({ status: res.statusCode, data }));
       }
-    }, (res) => {
-      let data = '';
-      res.on('data', (c) => data += c);
-      res.on('end', () => resolve({ status: res.statusCode, data }));
-    });
+    );
     req.on('error', reject);
     req.end();
   });
@@ -50,5 +53,7 @@ function get(path) {
     console.error('⚠️ Unexpected response:', resp.status);
     process.exit(3);
   }
-})().catch((e) => { console.error('Error:', e.message); process.exit(4); });
-
+})().catch(e => {
+  console.error('Error:', e.message);
+  process.exit(4);
+});

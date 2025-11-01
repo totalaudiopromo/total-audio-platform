@@ -18,7 +18,8 @@ const axios = require('axios');
 const rssParser = new RSSParser();
 
 // API Configuration
-const ANTHROPIC_API_KEY = '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';
+const ANTHROPIC_API_KEY =
+  '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';
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
 const ANTHROPIC_MODEL = 'claude-3-5-sonnet-20241022';
 const CONVERTKIT_API_KEY = process.env.CONVERTKIT_API_KEY;
@@ -29,15 +30,19 @@ console.log('━'.repeat(80));
 
 // RSS Feed Configuration (from NEWSLETTER_SYSTEM_COMPLETE.md)
 const RSS_FEEDS = [
-  { name: 'Ari\'s Take', url: 'https://aristake.com/feed/', priority: 0.95 },
-  { name: 'Attack Magazine', url: 'https://www.attackmagazine.com/feed/', priority: 0.90 },
-  { name: 'Complete Music Update', url: 'https://completemusicupdate.com/feed/', priority: 0.90 },
-  { name: 'Music Business Worldwide', url: 'https://www.musicbusinessworldwide.com/feed/', priority: 0.90 },
+  { name: "Ari's Take", url: 'https://aristake.com/feed/', priority: 0.95 },
+  { name: 'Attack Magazine', url: 'https://www.attackmagazine.com/feed/', priority: 0.9 },
+  { name: 'Complete Music Update', url: 'https://completemusicupdate.com/feed/', priority: 0.9 },
+  {
+    name: 'Music Business Worldwide',
+    url: 'https://www.musicbusinessworldwide.com/feed/',
+    priority: 0.9,
+  },
   { name: 'DIY Magazine', url: 'https://diymag.com/feed', priority: 0.85 },
-  { name: 'BBC Music', url: 'https://www.bbc.co.uk/music/rss', priority: 0.80 },
-  { name: 'Billboard', url: 'https://www.billboard.com/feed/', priority: 0.80 },
+  { name: 'BBC Music', url: 'https://www.bbc.co.uk/music/rss', priority: 0.8 },
+  { name: 'Billboard', url: 'https://www.billboard.com/feed/', priority: 0.8 },
   { name: 'The Line of Best Fit', url: 'https://www.thelineofbestfit.com/feed', priority: 0.75 },
-  { name: 'NME', url: 'https://www.nme.com/feed', priority: 0.70 }
+  { name: 'NME', url: 'https://www.nme.com/feed', priority: 0.7 },
 ];
 
 const CHRIS_VOICE_PROFILE = `You are writing "The Unsigned Advantage" newsletter as Chris Schofield.
@@ -117,7 +122,7 @@ async function fetchRSSFeeds() {
           url: item.link,
           source: feed.name,
           priority: feed.priority,
-          pubDate: item.pubDate
+          pubDate: item.pubDate,
         });
       });
     } catch (error) {
@@ -174,22 +179,28 @@ Include real tactics with budgets, timings, or processes where relevant.
 
 150-200 words, British spelling:`;
 
-    const response = await axios.post(ANTHROPIC_API_URL, {
-      model: ANTHROPIC_MODEL,
-      max_tokens: 800,
-      system: CHRIS_VOICE_PROFILE,
-      messages: [{ role: 'user', content: prompt }]
-    }, {
-      headers: {
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json'
+    const response = await axios.post(
+      ANTHROPIC_API_URL,
+      {
+        model: ANTHROPIC_MODEL,
+        max_tokens: 800,
+        system: CHRIS_VOICE_PROFILE,
+        messages: [{ role: 'user', content: prompt }],
       },
-      timeout: 30000
-    });
+      {
+        headers: {
+          'x-api-key': ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01',
+          'content-type': 'application/json',
+        },
+        timeout: 30000,
+      }
+    );
 
     const content = response.data.content[0].text;
-    const cost = ((response.data.usage.input_tokens * 0.003 + response.data.usage.output_tokens * 0.015) / 1000000);
+    const cost =
+      (response.data.usage.input_tokens * 0.003 + response.data.usage.output_tokens * 0.015) /
+      1000000;
 
     return { story, content, cost };
   } catch (error) {
@@ -224,7 +235,8 @@ https://intel.totalaudiopromo.com`;
 
 // Convert to HTML for ConvertKit
 function convertToHTML(sections) {
-  let html = '<div style="font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">';
+  let html =
+    '<div style="font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">';
 
   sections.forEach((section, index) => {
     // Add section content
@@ -262,16 +274,13 @@ async function sendToConvertKit(subject, htmlContent) {
   try {
     console.log('\n📨 Creating ConvertKit draft broadcast...\n');
 
-    const response = await axios.post(
-      'https://api.convertkit.com/v3/broadcasts',
-      {
-        api_key: CONVERTKIT_API_KEY,
-        subject: subject,
-        content: htmlContent,
-        public: false, // Draft for review
-        published_at: null
-      }
-    );
+    const response = await axios.post('https://api.convertkit.com/v3/broadcasts', {
+      api_key: CONVERTKIT_API_KEY,
+      subject: subject,
+      content: htmlContent,
+      public: false, // Draft for review
+      published_at: null,
+    });
 
     if (response.status === 201) {
       console.log('✅ Newsletter draft created in ConvertKit!\n');
@@ -282,11 +291,17 @@ async function sendToConvertKit(subject, htmlContent) {
       console.log('  1. Log into https://app.convertkit.com/broadcasts');
       console.log('  2. Review the draft broadcast');
       console.log('  3. Schedule or send immediately\n');
-      return { success: true, broadcastId: response.data.broadcast.id, subject: response.data.broadcast.subject };
+      return {
+        success: true,
+        broadcastId: response.data.broadcast.id,
+        subject: response.data.broadcast.subject,
+      };
     }
-
   } catch (error) {
-    console.error('\n❌ Failed to create ConvertKit broadcast:', error.response?.data || error.message);
+    console.error(
+      '\n❌ Failed to create ConvertKit broadcast:',
+      error.response?.data || error.message
+    );
     return { success: false, error: error.message };
   }
 }
@@ -301,7 +316,7 @@ async function sendEmailNotification(broadcastId, subject) {
     const execPromise = util.promisify(exec);
 
     // Send macOS desktop notification
-    const notificationTitle = "Newsletter Draft Ready! 📧";
+    const notificationTitle = 'Newsletter Draft Ready! 📧';
     const notificationMessage = `"${subject}" is ready for review in ConvertKit`;
     const notificationCommand = `osascript -e 'display notification "${notificationMessage}" with title "${notificationTitle}" sound name "Glass"'`;
 
@@ -345,7 +360,6 @@ The Unsigned Advantage Bot 🤖`;
     }
 
     return { success: true };
-
   } catch (error) {
     console.log('⚠️  Notification failed (non-critical):', error.message);
     console.log('   Draft still created in ConvertKit - check dashboard manually\n');
@@ -380,10 +394,12 @@ async function main() {
 
   // Score and sort stories
   console.log('📊 Scoring story relevance...\n');
-  const scoredStories = allStories.map(story => ({
-    ...story,
-    relevanceScore: scoreStoryRelevance(story)
-  })).sort((a, b) => b.relevanceScore - a.relevanceScore);
+  const scoredStories = allStories
+    .map(story => ({
+      ...story,
+      relevanceScore: scoreStoryRelevance(story),
+    }))
+    .sort((a, b) => b.relevanceScore - a.relevanceScore);
 
   // Select top 3 stories
   const topStories = scoredStories.slice(0, 3).filter(s => s.relevanceScore > 0.4);
@@ -437,7 +453,11 @@ async function main() {
 
   // Convert to HTML and send to ConvertKit
   const htmlContent = convertToHTML(sections);
-  const date = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  const date = new Date().toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
   const subject = `The Unsigned Advantage - ${date}`;
 
   const result = await sendToConvertKit(subject, htmlContent);

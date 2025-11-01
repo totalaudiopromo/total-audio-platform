@@ -5,7 +5,7 @@ Simple TDD planning layer that enhances your existing 25-agent system without ch
 ## Family-Friendly Design
 
 - **Planning** (interruptible): Create specs when you have 5-15 minutes
-- **Building** (focused): Use existing agents when you have 1-3 hours  
+- **Building** (focused): Use existing agents when you have 1-3 hours
 - **Emergency bailouts**: Skip planning or bypass TDD entirely when needed
 
 ## Quick Setup
@@ -32,7 +32,7 @@ Then reload: `source ~/.zshrc`
 plan "contact filtering"
 # Creates mobile wireframes, component specs, tests, checklist
 
-# Tuesday evening - focused time  
+# Tuesday evening - focused time
 build "contact filtering"
 # Uses specs to guide your existing 25 agents
 ```
@@ -45,7 +45,7 @@ skip-plan "contact filtering"
 # Creates minimal specs in 30 seconds
 
 # Urgent bug fix needed
-quick "login bug fix"  
+quick "login bug fix"
 # Bypasses TDD entirely, straight to orchestrator
 ```
 
@@ -65,7 +65,7 @@ status
 
 - **tdd-ui-planner.js** - Mobile-first wireframes (Audio Intel blue, Playlist Pulse green)
 - **tdd-component-selector.js** - shadcn/ui component selections
-- **tdd-test-writer.js** - Natural language test scenarios  
+- **tdd-test-writer.js** - Natural language test scenarios
 - **tdd-implementation-planner.js** - Clear checklists for existing agents
 
 ### Specs Storage (`specs/` directory)
@@ -81,7 +81,7 @@ status
 **No Changes To:**
 
 - Your existing 25 agents
-- `orchestrator.sh` 
+- `orchestrator.sh`
 - `agent-manager.js`
 - Current workflows
 
@@ -96,7 +96,7 @@ status
 
 - **UK Music Industry**: £19-99 pricing, BBC regions, UK contact formats
 - **Mobile-First**: All wireframes start with 320px iPhone SE
-- **Product Themes**: Audio Intel (blue), Playlist Pulse (green)  
+- **Product Themes**: Audio Intel (blue), Playlist Pulse (green)
 - **Integration**: Works with existing 515+ contact database
 
 ## Commands Reference
@@ -107,7 +107,7 @@ status
 ./tdd-helper.sh skip-plan "feature name"    # Emergency minimal specs
 ./tdd-helper.sh resume                      # Continue interrupted planning
 
-# Building (focused work) 
+# Building (focused work)
 ./tdd-helper.sh build "feature name"        # Use specs with existing agents
 ./tdd-helper.sh quick "feature name"        # Bypass TDD entirely
 
@@ -134,7 +134,7 @@ Creates:
 ### Building Phase (2 hours, focused)
 
 ```bash
-build "contact filtering" audiointel  
+build "contact filtering" audiointel
 ```
 
 - Reads all specs created during planning

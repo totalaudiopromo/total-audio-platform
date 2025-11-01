@@ -3,7 +3,7 @@ const { AirtableDomainAnalysis } = require('./dist/services/airtableDomainAnalys
 // Demo function to show how domain analysis works
 function demoDomainAnalysis() {
   console.log('🎵 Email Domain Analysis Demo\n');
-  
+
   // Sample email addresses to test
   const sampleEmails = [
     'playlist@spotify.com',
@@ -15,22 +15,22 @@ function demoDomainAnalysis() {
     'contact@musicblog.com',
     'info@recordingstudio.com',
     'sync@licensing.com',
-    'tech@musicplatform.com'
+    'tech@musicplatform.com',
   ];
 
   console.log('📧 Sample Email Analysis:\n');
-  
+
   sampleEmails.forEach(email => {
     const domain = email.split('@')[1];
     console.log(`Email: ${email}`);
     console.log(`Domain: ${domain}`);
-    
+
     // Simulate the analysis logic
     let companyName = '';
     let companyType = '';
     let confidence = 0;
     let reasoning = '';
-    
+
     // Check against patterns (simplified version)
     if (domain.includes('spotify')) {
       companyName = 'Spotify';
@@ -88,7 +88,7 @@ function demoDomainAnalysis() {
       confidence = 0.3;
       reasoning = 'No specific pattern matched';
     }
-    
+
     if (confidence > 0) {
       console.log(`✅ Company: ${companyName}`);
       console.log(`   Type: ${companyType}`);
@@ -99,7 +99,7 @@ function demoDomainAnalysis() {
     }
     console.log('');
   });
-  
+
   console.log('🎯 Music Industry Categories Recognized:');
   console.log('- 🎵 Streaming Platforms (Spotify, Apple Music, etc.)');
   console.log('- 📻 Radio Stations (KCRW, KEXP, NPR, etc.)');
@@ -112,4 +112,4 @@ function demoDomainAnalysis() {
 }
 
 // Run the demo
-demoDomainAnalysis(); 
+demoDomainAnalysis();

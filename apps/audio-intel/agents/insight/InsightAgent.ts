@@ -3,55 +3,55 @@
  * Analyses campaign data and provides actionable recommendations
  */
 
-import { BaseAgent } from '../core/BaseAgent'
-import type { AgentPayload, AgentResult } from '../core/AgentTypes'
+import { BaseAgent } from '../core/BaseAgent';
+import type { AgentPayload, AgentResult } from '../core/AgentTypes';
 
 export interface InsightAgentPayload extends AgentPayload {
-  campaignId: string
-  includeComparison?: boolean // Compare to previous campaigns
-  includeRecommendations?: boolean
+  campaignId: string;
+  includeComparison?: boolean; // Compare to previous campaigns
+  includeRecommendations?: boolean;
 }
 
 export interface CampaignInsight {
-  type: 'performance' | 'engagement' | 'conversion' | 'trend'
-  title: string
-  description: string
+  type: 'performance' | 'engagement' | 'conversion' | 'trend';
+  title: string;
+  description: string;
   metric?: {
-    name: string
-    value: number
-    change?: number
-    trend?: 'up' | 'down' | 'stable'
-  }
-  priority: 'high' | 'medium' | 'low'
-  actionable: boolean
-  recommendation?: string
+    name: string;
+    value: number;
+    change?: number;
+    trend?: 'up' | 'down' | 'stable';
+  };
+  priority: 'high' | 'medium' | 'low';
+  actionable: boolean;
+  recommendation?: string;
 }
 
 export class InsightAgent extends BaseAgent {
   constructor() {
-    super('InsightAgent', '1.0.0')
+    super('InsightAgent', '1.0.0');
   }
 
   async run(payload: InsightAgentPayload): Promise<AgentResult> {
-    this.log('Generating campaign insights', { campaign: payload.campaignId })
+    this.log('Generating campaign insights', { campaign: payload.campaignId });
 
     try {
       // Fetch campaign data
-      const campaignData = await this.fetchCampaignData(payload.campaignId)
+      const campaignData = await this.fetchCampaignData(payload.campaignId);
 
       // Generate insights
-      const insights = this.generateInsights(campaignData)
+      const insights = this.generateInsights(campaignData);
 
       // Add comparisons if requested
-      let comparison
+      let comparison;
       if (payload.includeComparison) {
-        comparison = await this.generateComparison(payload.campaignId)
+        comparison = await this.generateComparison(payload.campaignId);
       }
 
       // Generate recommendations
-      let recommendations
+      let recommendations;
       if (payload.includeRecommendations !== false) {
-        recommendations = this.generateRecommendations(insights, campaignData)
+        recommendations = this.generateRecommendations(insights, campaignData);
       }
 
       return {
@@ -63,13 +63,13 @@ export class InsightAgent extends BaseAgent {
           recommendations,
           summary: this.generateSummary(insights),
         },
-      }
+      };
     } catch (error) {
-      this.log('Insight generation error', { error })
+      this.log('Insight generation error', { error });
       return {
         success: false,
         error: error instanceof Error ? error.message : 'Insight generation failed',
-      }
+      };
     }
   }
 
@@ -84,14 +84,14 @@ export class InsightAgent extends BaseAgent {
       replyRate: 0.16,
       conversionRate: 0.12,
       avgResponseTime: 3.2, // days
-    }
+    };
   }
 
   /**
    * Generate campaign insights
    */
   private generateInsights(campaignData: any): CampaignInsight[] {
-    const insights: CampaignInsight[] = []
+    const insights: CampaignInsight[] = [];
 
     // Open rate insight
     if (campaignData.openRate > 0.6) {
@@ -107,7 +107,7 @@ export class InsightAgent extends BaseAgent {
         },
         priority: 'low',
         actionable: false,
-      })
+      });
     } else if (campaignData.openRate < 0.3) {
       insights.push({
         type: 'engagement',
@@ -121,7 +121,7 @@ export class InsightAgent extends BaseAgent {
         priority: 'high',
         actionable: true,
         recommendation: 'Test different subject line styles and send times',
-      })
+      });
     }
 
     // Reply rate insight
@@ -129,8 +129,7 @@ export class InsightAgent extends BaseAgent {
       insights.push({
         type: 'conversion',
         title: 'Excellent reply rate',
-        description:
-          'Your pitch content is resonating well with recipients',
+        description: 'Your pitch content is resonating well with recipients',
         metric: {
           name: 'Reply Rate',
           value: Math.round(campaignData.replyRate * 100),
@@ -138,7 +137,7 @@ export class InsightAgent extends BaseAgent {
         },
         priority: 'low',
         actionable: false,
-      })
+      });
     } else if (campaignData.replyRate < 0.08) {
       insights.push({
         type: 'conversion',
@@ -152,7 +151,7 @@ export class InsightAgent extends BaseAgent {
         priority: 'high',
         actionable: true,
         recommendation: 'Increase personalisation and reference specific work from each contact',
-      })
+      });
     }
 
     // Response time insight
@@ -168,12 +167,11 @@ export class InsightAgent extends BaseAgent {
         },
         priority: 'medium',
         actionable: true,
-        recommendation:
-          'Consider sending follow-ups earlier or adjusting send timing',
-      })
+        recommendation: 'Consider sending follow-ups earlier or adjusting send timing',
+      });
     }
 
-    return insights
+    return insights;
   }
 
   /**
@@ -192,49 +190,49 @@ export class InsightAgent extends BaseAgent {
         previous: 12,
         change: +4,
       },
-    }
+    };
   }
 
   /**
    * Generate actionable recommendations
    */
   private generateRecommendations(insights: CampaignInsight[], campaignData: any) {
-    const recommendations: string[] = []
+    const recommendations: string[] = [];
 
     // Extract actionable insights
-    const actionableInsights = insights.filter(i => i.actionable && i.recommendation)
+    const actionableInsights = insights.filter(i => i.actionable && i.recommendation);
 
     actionableInsights.forEach(insight => {
       if (insight.recommendation) {
-        recommendations.push(insight.recommendation)
+        recommendations.push(insight.recommendation);
       }
-    })
+    });
 
     // Add general best practices if no specific issues
     if (recommendations.length === 0) {
       recommendations.push(
         'Campaign is performing well - maintain current approach',
         'Consider A/B testing variations to optimise further'
-      )
+      );
     }
 
-    return recommendations
+    return recommendations;
   }
 
   /**
    * Generate executive summary
    */
   private generateSummary(insights: CampaignInsight[]) {
-    const highPriority = insights.filter(i => i.priority === 'high').length
-    const actionable = insights.filter(i => i.actionable).length
+    const highPriority = insights.filter(i => i.priority === 'high').length;
+    const actionable = insights.filter(i => i.actionable).length;
 
-    let status: 'excellent' | 'good' | 'needs_attention'
+    let status: 'excellent' | 'good' | 'needs_attention';
     if (highPriority === 0) {
-      status = 'excellent'
+      status = 'excellent';
     } else if (highPriority <= 1) {
-      status = 'good'
+      status = 'good';
     } else {
-      status = 'needs_attention'
+      status = 'needs_attention';
     }
 
     return {
@@ -242,6 +240,6 @@ export class InsightAgent extends BaseAgent {
       totalInsights: insights.length,
       highPriorityIssues: highPriority,
       actionableItems: actionable,
-    }
+    };
   }
 }

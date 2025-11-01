@@ -1,6 +1,6 @@
 # 🛠️ TECHNICAL DEVELOPMENT
 
-*All technical work, code, APIs, and development resources*
+_All technical work, code, APIs, and development resources_
 
 ---
 
@@ -56,11 +56,11 @@
 
 ---
 
-*Your technical command centre for Audio Intel development*
+_Your technical command centre for Audio Intel development_
 
 [Master Database Views Guide](%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2/Master%20Database%20Views%20Guide%202570a35b21ed817aa270f2b0a966090d.md)
 
-[🚀 RADIO PROMO AGENT - COMPLETE SYSTEM (MASTER)](%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2/%F0%9F%9A%80%20RADIO%20PROMO%20AGENT%20-%20COMPLETE%20SYSTEM%20(MASTER)%202650a35b21ed81769541f2b7345deb89.md)
+[🚀 RADIO PROMO AGENT - COMPLETE SYSTEM (MASTER)](<%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2/%F0%9F%9A%80%20RADIO%20PROMO%20AGENT%20-%20COMPLETE%20SYSTEM%20(MASTER)%202650a35b21ed81769541f2b7345deb89.md>)
 
 [🔥 Content Commander Agent + Command Centre Integration](%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2/%F0%9F%94%A5%20Content%20Commander%20Agent%20+%20Command%20Centre%20Integra%202540a35b21ed81399d2dd224d7390b3c.md)
 

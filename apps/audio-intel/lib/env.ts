@@ -1,4 +1,7 @@
-export function getEnv(name: string, opts?: { requiredInProd?: boolean; default?: string }): string | null {
+export function getEnv(
+  name: string,
+  opts?: { requiredInProd?: boolean; default?: string }
+): string | null {
   const val = process.env[name];
   if (val && val.length > 0) return val;
   const requiredInProd = opts?.requiredInProd !== false; // default true
@@ -21,4 +24,3 @@ export function booleanEnv(name: string, defaultValue = false): boolean {
   if (v == null) return defaultValue;
   return ['1', 'true', 'yes', 'on'].includes(v.toLowerCase());
 }
-

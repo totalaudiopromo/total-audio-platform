@@ -5,7 +5,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { GoogleSheetsSync } from '@/lib/integrations/google-sheets-sync';
 import { GmailReplyTracker } from '@/lib/integrations/gmail-reply-tracker';
@@ -19,10 +19,7 @@ export async function GET(request: NextRequest) {
     const cronSecret = process.env.CRON_SECRET;
 
     if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const supabase = await createServerClient(cookies());
@@ -58,7 +55,9 @@ export async function GET(request: NextRequest) {
 
           case 'gmail':
             const gmailTracker = new GmailReplyTracker();
-            const gmailResult = await gmailTracker.checkForReplies(connection.id);
+            const gmailResult = await gmailTracker.checkForReplies(
+              connection.id
+            );
             result = { type: 'gmail', ...gmailResult };
             break;
 
@@ -95,7 +94,7 @@ export async function GET(request: NextRequest) {
           .select('error_count')
           .eq('id', connection.id)
           .single();
-        
+
         await supabase
           .from('integration_connections')
           .update({
@@ -106,7 +105,7 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    const successCount = results.filter((r) => r.success).length;
+    const successCount = results.filter(r => r.success).length;
 
     return NextResponse.json({
       message: 'Sync complete',

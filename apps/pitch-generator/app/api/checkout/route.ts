@@ -2,7 +2,9 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-const stripe = stripeSecretKey ? new Stripe(stripeSecretKey, { apiVersion: '2025-08-27.basil' }) : null;
+const stripe = stripeSecretKey
+  ? new Stripe(stripeSecretKey, { apiVersion: '2025-08-27.basil' })
+  : null;
 
 type Billing = 'monthly' | 'annual';
 type Plan = 'professional' | 'agency';
@@ -25,10 +27,11 @@ function isValidStripePriceId(value: string | null | undefined): boolean {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { email, tier, billing }: { email?: string; tier?: Billing | Plan; billing?: Billing } = body || {};
+    const { email, tier, billing }: { email?: string; tier?: Billing | Plan; billing?: Billing } =
+      body || {};
 
-    const plan = (tier === 'agency' || tier === 'professional') ? tier as Plan : 'professional';
-    const bill = (billing === 'annual' || billing === 'monthly') ? billing : 'monthly';
+    const plan = tier === 'agency' || tier === 'professional' ? (tier as Plan) : 'professional';
+    const bill = billing === 'annual' || billing === 'monthly' ? billing : 'monthly';
 
     const priceId = resolvePlanPriceId(plan, bill);
     if (!isValidStripePriceId(priceId)) {
@@ -60,5 +63,3 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Checkout failed' }, { status: 500 });
   }
 }
-
-

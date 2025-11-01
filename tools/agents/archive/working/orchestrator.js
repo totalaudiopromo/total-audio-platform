@@ -2,7 +2,7 @@
 
 /**
  * Agent Orchestrator for Total Audio Promo
- * 
+ *
  * Coordinates and manages all specialized agents, handles workflows,
  * and provides a unified interface for complex multi-agent operations
  */
@@ -11,7 +11,7 @@
 const logger = {
   info: (msg, ...args) => console.log(`[INFO] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[ERROR] ${msg}`, ...args),
-  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args)
+  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args),
 };
 const DatabaseAgent = require('./database-agent');
 const IntegrationAgent = require('./integration-agent-real');
@@ -51,7 +51,7 @@ class AgentOrchestrator {
   async initialize() {
     try {
       logger.info('Initializing Agent Orchestrator...');
-      
+
       const results = {};
       for (const [name, agent] of Object.entries(this.agents)) {
         try {
@@ -66,7 +66,7 @@ class AgentOrchestrator {
 
       this.isInitialized = true;
       this.setupWorkflows();
-      
+
       logger.info('Agent Orchestrator initialized successfully');
       return results;
     } catch (error) {
@@ -86,8 +86,8 @@ class AgentOrchestrator {
         { agent: 'agency', action: 'onboardAgency' },
         { agent: 'database', action: 'verifyDataIsolation' },
         { agent: 'integration', action: 'setupAgencyIntegrations' },
-        { agent: 'agency', action: 'setupAgencyBilling' }
-      ]
+        { agent: 'agency', action: 'setupAgencyBilling' },
+      ],
     });
 
     // Campaign launch workflow
@@ -98,8 +98,8 @@ class AgentOrchestrator {
         { agent: 'contact', action: 'segmentContacts' },
         { agent: 'integration', action: 'createMailchimpCampaign' },
         { agent: 'campaign', action: 'launchCampaign' },
-        { agent: 'integration', action: 'monitorGmailReplies' }
-      ]
+        { agent: 'integration', action: 'monitorGmailReplies' },
+      ],
     });
 
     // Contact enrichment workflow
@@ -109,8 +109,8 @@ class AgentOrchestrator {
         { agent: 'contact', action: 'removeDuplicates' },
         { agent: 'contact', action: 'bulkProcessContacts' },
         { agent: 'contact', action: 'segmentContacts' },
-        { agent: 'integration', action: 'syncAirtableContacts' }
-      ]
+        { agent: 'integration', action: 'syncAirtableContacts' },
+      ],
     });
 
     // Daily maintenance workflow
@@ -121,8 +121,8 @@ class AgentOrchestrator {
         { agent: 'integration', action: 'healthCheck' },
         { agent: 'database', action: 'performanceCheck' },
         { agent: 'integration', action: 'bulkSync' },
-        { agent: 'contact', action: 'bulkProcessContacts' }
-      ]
+        { agent: 'contact', action: 'bulkProcessContacts' },
+      ],
     });
 
     // Performance optimization workflow
@@ -133,8 +133,8 @@ class AgentOrchestrator {
         { agent: 'contact', action: 'calculateEngagementScore' },
         { agent: 'integration', action: 'autoRecover' },
         { agent: 'database', action: 'cleanupOldData' },
-        { agent: 'musicTech', action: 'analyzePerformance' }
-      ]
+        { agent: 'musicTech', action: 'analyzePerformance' },
+      ],
     });
 
     // Music technology workflow
@@ -145,8 +145,8 @@ class AgentOrchestrator {
         { agent: 'musicTech', action: 'searchMusic' },
         { agent: 'musicTech', action: 'optimizeStreaming' },
         { agent: 'integration', action: 'syncAirtableContacts' },
-        { agent: 'campaign', action: 'createCampaign' }
-      ]
+        { agent: 'campaign', action: 'createCampaign' },
+      ],
     });
 
     // Technical recommendations workflow
@@ -155,8 +155,8 @@ class AgentOrchestrator {
       steps: [
         { agent: 'musicTech', action: 'generateTechnicalRecommendations' },
         { agent: 'musicTech', action: 'analyzePerformance' },
-        { agent: 'database', action: 'performanceCheck' }
-      ]
+        { agent: 'database', action: 'performanceCheck' },
+      ],
     });
 
     // Complete music release workflow
@@ -170,8 +170,8 @@ class AgentOrchestrator {
         { agent: 'radioPromo', action: 'generateRadioCampaign' },
         { agent: 'radioPromo', action: 'executeOutreachCampaign' },
         { agent: 'socialMedia', action: 'executeCrossPlatformPost' },
-        { agent: 'analytics', action: 'analyzeCampaignPerformance' }
-      ]
+        { agent: 'analytics', action: 'analyzeCampaignPerformance' },
+      ],
     });
 
     // Influencer marketing workflow
@@ -181,8 +181,8 @@ class AgentOrchestrator {
         { agent: 'socialMedia', action: 'executeInfluencerOutreach' },
         { agent: 'contentGeneration', action: 'generateSocialContent' },
         { agent: 'socialMedia', action: 'manageCommunityEngagement' },
-        { agent: 'analytics', action: 'analyzeUserBehavior' }
-      ]
+        { agent: 'analytics', action: 'analyzeUserBehavior' },
+      ],
     });
 
     // Crisis management workflow
@@ -192,8 +192,8 @@ class AgentOrchestrator {
         { agent: 'socialMedia', action: 'handleSocialCrisis' },
         { agent: 'contentGeneration', action: 'generatePressRelease' },
         { agent: 'socialMedia', action: 'manageCommunityEngagement' },
-        { agent: 'analytics', action: 'generateBusinessIntelligence' }
-      ]
+        { agent: 'analytics', action: 'generateBusinessIntelligence' },
+      ],
     });
 
     // Content marketing workflow
@@ -204,8 +204,8 @@ class AgentOrchestrator {
         { agent: 'contentGeneration', action: 'generateEmailCampaign' },
         { agent: 'socialMedia', action: 'createSocialCampaign' },
         { agent: 'socialMedia', action: 'executeCrossPlatformPost' },
-        { agent: 'analytics', action: 'generateCustomReport' }
-      ]
+        { agent: 'analytics', action: 'generateCustomReport' },
+      ],
     });
 
     // Radio promotion workflow
@@ -216,8 +216,8 @@ class AgentOrchestrator {
         { agent: 'contentGeneration', action: 'generatePressRelease' },
         { agent: 'radioPromo', action: 'executeOutreachCampaign' },
         { agent: 'radioPromo', action: 'trackAirplayResults' },
-        { agent: 'analytics', action: 'analyzeCampaignPerformance' }
-      ]
+        { agent: 'analytics', action: 'analyzeCampaignPerformance' },
+      ],
     });
 
     // Social media growth workflow
@@ -228,8 +228,8 @@ class AgentOrchestrator {
         { agent: 'contentGeneration', action: 'generateSocialContent' },
         { agent: 'socialMedia', action: 'createSocialCampaign' },
         { agent: 'socialMedia', action: 'manageCommunityEngagement' },
-        { agent: 'analytics', action: 'generateSocialAnalyticsReport' }
-      ]
+        { agent: 'analytics', action: 'generateSocialAnalyticsReport' },
+      ],
     });
 
     // Analytics and optimization workflow
@@ -240,8 +240,8 @@ class AgentOrchestrator {
         { agent: 'analytics', action: 'generatePredictiveAnalysis' },
         { agent: 'analytics', action: 'generateBusinessIntelligence' },
         { agent: 'contentGeneration', action: 'generateCustomReport' },
-        { agent: 'musicTech', action: 'generateTechnicalRecommendations' }
-      ]
+        { agent: 'musicTech', action: 'generateTechnicalRecommendations' },
+      ],
     });
 
     // Artist branding workflow
@@ -252,8 +252,8 @@ class AgentOrchestrator {
         { agent: 'contentGeneration', action: 'generateCampaignContentSuite' },
         { agent: 'socialMedia', action: 'createSocialCampaign' },
         { agent: 'analytics', action: 'analyzeUserBehavior' },
-        { agent: 'contentGeneration', action: 'generateCustomReport' }
-      ]
+        { agent: 'contentGeneration', action: 'generateCustomReport' },
+      ],
     });
 
     // Multi-platform launch workflow
@@ -269,8 +269,8 @@ class AgentOrchestrator {
         { agent: 'socialMedia', action: 'executeCrossPlatformPost' },
         { agent: 'socialMedia', action: 'executeInfluencerOutreach' },
         { agent: 'analytics', action: 'generateRealTimeDashboard' },
-        { agent: 'analytics', action: 'analyzeCampaignPerformance' }
-      ]
+        { agent: 'analytics', action: 'analyzeCampaignPerformance' },
+      ],
     });
 
     // Beta user acquisition workflow
@@ -284,8 +284,8 @@ class AgentOrchestrator {
         { agent: 'betaUserAcquisition', action: 'createContentStrategy' },
         { agent: 'betaUserAcquisition', action: 'executeInfluencerOutreach' },
         { agent: 'betaUserAcquisition', action: 'trackBetaMetrics' },
-        { agent: 'betaUserAcquisition', action: 'generateBetaReports' }
-      ]
+        { agent: 'betaUserAcquisition', action: 'generateBetaReports' },
+      ],
     });
 
     // Command Centre comprehensive audit workflow
@@ -299,8 +299,8 @@ class AgentOrchestrator {
         { agent: 'contentGeneration', action: 'auditContent' },
         { agent: 'socialMedia', action: 'analyzeEngagement' },
         { agent: 'musicTech', action: 'generateTechnicalRecommendations' },
-        { agent: 'analytics', action: 'generateOptimizationReport' }
-      ]
+        { agent: 'analytics', action: 'generateOptimizationReport' },
+      ],
     });
 
     logger.info(`${this.workflows.size} workflows configured`);
@@ -330,7 +330,7 @@ class AgentOrchestrator {
 
         try {
           logger.info(`Step ${i + 1}/${workflow.steps.length}: ${step.agent}.${step.action}`);
-          
+
           const agent = this.agents[step.agent];
           if (!agent) {
             throw new Error(`Agent '${step.agent}' not found`);
@@ -352,7 +352,7 @@ class AgentOrchestrator {
             action: step.action,
             duration: stepDuration,
             result,
-            status: 'completed'
+            status: 'completed',
           });
 
           logger.info(`Step ${i + 1} completed in ${stepDuration}ms`);
@@ -364,11 +364,11 @@ class AgentOrchestrator {
             action: step.action,
             duration: stepDuration,
             error: error.message,
-            status: 'failed'
+            status: 'failed',
           });
 
           logger.error(`Step ${i + 1} failed:`, error);
-          
+
           // Continue with remaining steps or fail fast based on workflow configuration
           if (workflow.failFast !== false) {
             break;
@@ -378,7 +378,7 @@ class AgentOrchestrator {
 
       const totalDuration = Date.now() - startTime;
       const successfulSteps = results.filter(r => r.status === 'completed').length;
-      
+
       const workflowResult = {
         workflow: workflowName,
         description: workflow.description,
@@ -388,10 +388,12 @@ class AgentOrchestrator {
         duration: totalDuration,
         steps: results,
         status: successfulSteps === workflow.steps.length ? 'completed' : 'partial',
-        timestamp: new Date()
+        timestamp: new Date(),
       };
 
-      logger.info(`Workflow '${workflowName}' completed: ${successfulSteps}/${workflow.steps.length} steps successful`);
+      logger.info(
+        `Workflow '${workflowName}' completed: ${successfulSteps}/${workflow.steps.length} steps successful`
+      );
       return workflowResult;
     } catch (error) {
       logger.error(`Workflow execution failed:`, error);
@@ -409,18 +411,20 @@ class AgentOrchestrator {
 
       for (const operation of operations) {
         const { agent: agentName, action, parameters, parallel } = operation;
-        
+
         if (parallel && Array.isArray(operations)) {
           // Execute operations in parallel
-          const promises = operations.map(op => 
+          const promises = operations.map(op =>
             this.executeSingleOperation(op.agent, op.action, op.parameters)
           );
           const parallelResults = await Promise.allSettled(promises);
-          results.push(...parallelResults.map((result, index) => ({
-            operation: operations[index],
-            result: result.status === 'fulfilled' ? result.value : result.reason,
-            status: result.status === 'fulfilled' ? 'completed' : 'failed'
-          })));
+          results.push(
+            ...parallelResults.map((result, index) => ({
+              operation: operations[index],
+              result: result.status === 'fulfilled' ? result.value : result.reason,
+              status: result.status === 'fulfilled' ? 'completed' : 'failed',
+            }))
+          );
           break; // Exit loop since we processed all operations in parallel
         } else {
           // Execute operations sequentially
@@ -428,7 +432,7 @@ class AgentOrchestrator {
           results.push({
             operation,
             result,
-            status: 'completed'
+            status: 'completed',
           });
         }
       }
@@ -436,7 +440,7 @@ class AgentOrchestrator {
       return {
         operationType: 'custom',
         results,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
     } catch (error) {
       logger.error('Custom operation execution failed:', error);
@@ -470,9 +474,9 @@ class AgentOrchestrator {
         orchestrator: {
           status: this.isInitialized ? 'healthy' : 'unhealthy',
           uptime: process.uptime(),
-          workflows: this.workflows.size
+          workflows: this.workflows.size,
         },
-        agents: {}
+        agents: {},
       };
 
       // Get health status from each agent
@@ -504,9 +508,9 @@ class AgentOrchestrator {
         orchestrator: {
           uptime: process.uptime(),
           workflows: this.workflows.size,
-          initialized: this.isInitialized
+          initialized: this.isInitialized,
         },
-        agents: {}
+        agents: {},
       };
 
       // Get statistics from each agent
@@ -538,7 +542,7 @@ class AgentOrchestrator {
     return Array.from(this.workflows.entries()).map(([name, workflow]) => ({
       name,
       description: workflow.description,
-      steps: workflow.steps.length
+      steps: workflow.steps.length,
     }));
   }
 
@@ -548,7 +552,7 @@ class AgentOrchestrator {
   async shutdown() {
     try {
       logger.info('Shutting down Agent Orchestrator...');
-      
+
       for (const [name, agent] of Object.entries(this.agents)) {
         try {
           if (agent.shutdown) {
@@ -582,17 +586,17 @@ if (require.main === module) {
         const health = await orchestrator.getSystemHealth();
         console.log(JSON.stringify(health, null, 2));
         break;
-      
+
       case 'stats':
         const stats = await orchestrator.getSystemStatistics();
         console.log(JSON.stringify(stats, null, 2));
         break;
-      
+
       case 'workflows':
         const workflows = orchestrator.listWorkflows();
         console.log(JSON.stringify(workflows, null, 2));
         break;
-      
+
       case 'execute':
         const workflowName = process.argv[3];
         if (!workflowName) {
@@ -604,12 +608,12 @@ if (require.main === module) {
         const result = await orchestrator.executeWorkflow(workflowName);
         console.log(JSON.stringify(result, null, 2));
         break;
-      
+
       case 'maintenance':
         const maintenance = await orchestrator.executeWorkflow('daily-maintenance');
         console.log(JSON.stringify(maintenance, null, 2));
         break;
-      
+
       default:
         console.log('Usage: node orchestrator.js [health|stats|workflows|execute|maintenance]');
         console.log('');

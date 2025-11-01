@@ -42,23 +42,23 @@ Format your response as:
       model: ANTHROPIC_MODEL!,
       max_tokens: 2000,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('Music Intelligence Agent error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -90,23 +90,23 @@ Format your response as:
       model: ANTHROPIC_MODEL!,
       max_tokens: 2000,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('Growth & Content Agent error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -138,23 +138,23 @@ Format your response as:
       model: ANTHROPIC_MODEL!,
       max_tokens: 2000,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('Promotion & Outreach Agent error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -186,23 +186,23 @@ Format your response as:
       model: ANTHROPIC_MODEL!,
       max_tokens: 2000,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('Radio Promo Agent error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -234,23 +234,23 @@ Format your response as:
       model: ANTHROPIC_MODEL!,
       max_tokens: 2000,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('TDD Agent error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -259,7 +259,7 @@ Format your response as:
 function extractRecommendations(content: string): string[] {
   const recommendations: string[] = [];
   const lines = content.split('\n');
-  
+
   for (const line of lines) {
     if (line.includes('•') || line.includes('-') || line.includes('*')) {
       const clean = line.replace(/^[\s•\-*]+/, '').trim();
@@ -268,14 +268,14 @@ function extractRecommendations(content: string): string[] {
       }
     }
   }
-  
+
   return recommendations.slice(0, 5); // Limit to 5 recommendations
 }
 
 function extractNextSteps(content: string): string[] {
   const nextSteps: string[] = [];
   const lines = content.split('\n');
-  
+
   for (const line of lines) {
     if (line.toLowerCase().includes('next step') || line.toLowerCase().includes('action item')) {
       const clean = line.replace(/^[\s•\-*]+/, '').trim();
@@ -284,26 +284,32 @@ function extractNextSteps(content: string): string[] {
       }
     }
   }
-  
+
   return nextSteps.slice(0, 3); // Limit to 3 next steps
 }
 
 export async function POST(request: NextRequest) {
   try {
     if (!ANTHROPIC_API_KEY) {
-      return NextResponse.json({ 
-        success: false, 
-        error: 'AI Agent API not configured' 
-      }, { status: 500 });
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'AI Agent API not configured',
+        },
+        { status: 500 }
+      );
     }
 
     const { agentType, query, context } = await request.json();
 
     if (!agentType || !query) {
-      return NextResponse.json({ 
-        success: false, 
-        error: 'Missing required fields: agentType and query' 
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Missing required fields: agentType and query',
+        },
+        { status: 400 }
+      );
     }
 
     let result: AgentResponse;
@@ -325,18 +331,25 @@ export async function POST(request: NextRequest) {
         result = await runTDDAgent(query, context);
         break;
       default:
-        return NextResponse.json({ 
-          success: false, 
-          error: 'Invalid agent type. Available: music-intelligence, growth-content, promotion-outreach, radio-promo, tdd' 
-        }, { status: 400 });
+        return NextResponse.json(
+          {
+            success: false,
+            error:
+              'Invalid agent type. Available: music-intelligence, growth-content, promotion-outreach, radio-promo, tdd',
+          },
+          { status: 400 }
+        );
     }
 
     return NextResponse.json(result);
   } catch (error) {
     console.error('Consolidated Agent API error:', error);
-    return NextResponse.json({ 
-      success: false, 
-      error: 'Internal server error' 
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'Internal server error',
+      },
+      { status: 500 }
+    );
   }
 }

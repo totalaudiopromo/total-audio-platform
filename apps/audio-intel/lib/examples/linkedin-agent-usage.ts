@@ -197,7 +197,7 @@ export async function exampleBatchPosting() {
   const postsToPublish = [
     'The 15-Hour Problem',
     'The Pricing Reality',
-    'The Response Rate Problem'
+    'The Response Rate Problem',
   ];
 
   for (const title of postsToPublish) {
@@ -244,7 +244,7 @@ export async function exampleContentPreview() {
     'The Spreadsheet Chaos Problem',
     'The Regional Radio Opportunity',
     'The Submission Window Problem',
-    'The ROI Calculation'
+    'The ROI Calculation',
   ];
 
   console.log('📚 Available content:\n');
@@ -280,11 +280,13 @@ export async function runAllExamples() {
 
 // Run examples if this file is executed directly
 if (require.main === module) {
-  runAllExamples().then(() => {
-    console.log('\n✅ Examples complete');
-    process.exit(0);
-  }).catch(error => {
-    console.error('\n❌ Examples failed:', error);
-    process.exit(1);
-  });
+  runAllExamples()
+    .then(() => {
+      console.log('\n✅ Examples complete');
+      process.exit(0);
+    })
+    .catch(error => {
+      console.error('\n❌ Examples failed:', error);
+      process.exit(1);
+    });
 }

@@ -16,13 +16,16 @@ const fetch = require('node-fetch');
 const Anthropic = require('@anthropic-ai/sdk');
 const fs = require('fs');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || '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';
+const ANTHROPIC_API_KEY =
+  process.env.ANTHROPIC_API_KEY ||
+  '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';
 
 const anthropic = new Anthropic({
-  apiKey: ANTHROPIC_API_KEY
+  apiKey: ANTHROPIC_API_KEY,
 });
 
 // Load KYARA contacts
@@ -34,12 +37,7 @@ function loadKYARAContacts() {
   }
 
   const data = JSON.parse(fs.readFileSync(contactsFile, 'utf-8'));
-  return [
-    ...data.hot,
-    ...data.warm,
-    ...data.cold,
-    ...data.other
-  ];
+  return [...data.hot, ...data.warm, ...data.cold, ...data.other];
 }
 
 // Enrich contact with AI
@@ -82,10 +80,12 @@ Format as JSON:
     const response = await anthropic.messages.create({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 1024,
-      messages: [{
-        role: 'user',
-        content: prompt
-      }]
+      messages: [
+        {
+          role: 'user',
+          content: prompt,
+        },
+      ],
     });
 
     const content = response.content[0].text;
@@ -103,7 +103,6 @@ Format as JSON:
     console.log(`   🎯 Best For: ${enrichment.bestFor}`);
 
     return enrichment;
-
   } catch (error) {
     console.log(`   ❌ Enrichment failed: ${error.message}`);
 
@@ -115,7 +114,7 @@ Format as JSON:
       bestFor: contact.genre || 'Unknown',
       pitchStrategy: 'Manual review required - automatic enrichment failed.',
       dataIssues: ['Enrichment failed', error.message],
-      enrichmentNotes: `Automatic enrichment failed: ${error.message}`
+      enrichmentNotes: `Automatic enrichment failed: ${error.message}`,
     };
   }
 }
@@ -127,7 +126,8 @@ async function updateAirtableRecord(recordId, enrichment, contact) {
   const updates = {
     fields: {
       // Update station name if we found a better one
-      'Station': enrichment.stationName !== 'Unknown' ? enrichment.stationName : contact.allFields?.Station,
+      Station:
+        enrichment.stationName !== 'Unknown' ? enrichment.stationName : contact.allFields?.Station,
 
       // Add new enrichment fields
       'AI Enrichment Confidence': enrichment.confidence,
@@ -139,18 +139,18 @@ async function updateAirtableRecord(recordId, enrichment, contact) {
       'Last Enriched': new Date().toISOString().split('T')[0],
 
       // Add data issues if any
-      'Data Issues': enrichment.dataIssues.length > 0 ? enrichment.dataIssues.join('; ') : ''
-    }
+      'Data Issues': enrichment.dataIssues.length > 0 ? enrichment.dataIssues.join('; ') : '',
+    },
   };
 
   try {
     const response = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`, {
       method: 'PATCH',
       headers: {
-        'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(updates)
+      body: JSON.stringify(updates),
     });
 
     if (!response.ok) {
@@ -160,7 +160,6 @@ async function updateAirtableRecord(recordId, enrichment, contact) {
 
     console.log(`   ✅ Record updated successfully`);
     return true;
-
   } catch (error) {
     console.log(`   ❌ Update failed: ${error.message}`);
     return false;
@@ -179,25 +178,25 @@ async function addEnrichmentFields() {
         choices: [
           { name: 'LOW', color: 'redLight1' },
           { name: 'MEDIUM', color: 'yellowLight1' },
-          { name: 'HIGH', color: 'greenLight1' }
-        ]
-      }
+          { name: 'HIGH', color: 'greenLight1' },
+        ],
+      },
     },
     {
       name: 'AI Enrichment Notes',
-      type: 'multilineText'
+      type: 'multilineText',
     },
     {
       name: 'AI Contact Quality',
-      type: 'singleLineText'
+      type: 'singleLineText',
     },
     {
       name: 'AI Best For',
-      type: 'singleLineText'
+      type: 'singleLineText',
     },
     {
       name: 'AI Pitch Strategy',
-      type: 'multilineText'
+      type: 'multilineText',
     },
     {
       name: 'Enrichment Status',
@@ -206,22 +205,22 @@ async function addEnrichmentFields() {
         choices: [
           { name: 'Not Enriched', color: 'grayLight1' },
           { name: 'Enriched', color: 'greenLight1' },
-          { name: 'Failed', color: 'redLight1' }
-        ]
-      }
+          { name: 'Failed', color: 'redLight1' },
+        ],
+      },
     },
     {
       name: 'Last Enriched',
-      type: 'date'
+      type: 'date',
     },
     {
       name: 'Data Issues',
-      type: 'multilineText'
-    }
+      type: 'multilineText',
+    },
   ];
 
   console.log('⚠️  Note: Field creation via API requires field creation permissions.');
-  console.log('If fields don\'t exist, you may need to create them manually in Airtable:\n');
+  console.log("If fields don't exist, you may need to create them manually in Airtable:\n");
 
   fieldsToAdd.forEach(field => {
     console.log(`   - ${field.name} (${field.type})`);
@@ -254,7 +253,7 @@ async function main() {
     enriched: [],
     failed: [],
     updated: [],
-    updateFailed: []
+    updateFailed: [],
   };
 
   console.log('═══════════════════════════════════════════════════════════');
@@ -304,7 +303,7 @@ async function main() {
   const confidenceCounts = {
     HIGH: 0,
     MEDIUM: 0,
-    LOW: 0
+    LOW: 0,
   };
 
   results.enriched.forEach(r => {
@@ -330,8 +329,8 @@ async function main() {
       confidence: r.enrichment.confidence,
       stationName: r.enrichment.stationName,
       bestFor: r.enrichment.bestFor,
-      notes: r.enrichment.enrichmentNotes
-    }))
+      notes: r.enrichment.enrichmentNotes,
+    })),
   };
 
   const reportPath = './KYARA_ENRICHMENT_REPORT.json';

@@ -36,11 +36,14 @@ export class PerplexityService {
   constructor(apiKey: string) {
     this.config = {
       apiKey,
-      baseUrl: 'https://api.perplexity.ai'
+      baseUrl: 'https://api.perplexity.ai',
     };
   }
 
-  async findJournalists(industry: string, location?: string): Promise<{
+  async findJournalists(
+    industry: string,
+    location?: string
+  ): Promise<{
     success: boolean;
     journalists: Journalist[];
     error?: string;
@@ -50,22 +53,26 @@ export class PerplexityService {
       Include their name, outlet, beat, location, and if possible their contact information. 
       Focus on journalists who write about this industry regularly.`;
 
-      const response = await axios.post(`${this.config.baseUrl}/chat/completions`, {
-        model: 'sonar',
-        messages: [
-          {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        max_tokens: 2000,
-        temperature: 0.1
-      }, {
-        headers: {
-          'Authorization': `Bearer ${this.config.apiKey}`,
-          'Content-Type': 'application/json'
+      const response = await axios.post(
+        `${this.config.baseUrl}/chat/completions`,
+        {
+          model: 'sonar',
+          messages: [
+            {
+              role: 'user',
+              content: prompt,
+            },
+          ],
+          max_tokens: 2000,
+          temperature: 0.1,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
         }
-      });
+      );
 
       // Parse the response to extract journalist information
       const data = response.data as { choices: Array<{ message: { content: string } }> };
@@ -77,13 +84,13 @@ export class PerplexityService {
 
       return {
         success: true,
-        journalists
+        journalists,
       };
     } catch (error) {
       return {
         success: false,
         journalists: [],
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -102,22 +109,26 @@ export class PerplexityService {
       
       Format the response as structured data.`;
 
-      const response = await axios.post(`${this.config.baseUrl}/chat/completions`, {
-        model: 'sonar',
-        messages: [
-          {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        max_tokens: 3000,
-        temperature: 0.1
-      }, {
-        headers: {
-          'Authorization': `Bearer ${this.config.apiKey}`,
-          'Content-Type': 'application/json'
+      const response = await axios.post(
+        `${this.config.baseUrl}/chat/completions`,
+        {
+          model: 'sonar',
+          messages: [
+            {
+              role: 'user',
+              content: prompt,
+            },
+          ],
+          max_tokens: 3000,
+          temperature: 0.1,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
         }
-      });
+      );
 
       const data = response.data as { choices: Array<{ message: { content: string } }> };
       if (!data.choices || !data.choices[0] || !data.choices[0].message) {
@@ -128,19 +139,19 @@ export class PerplexityService {
 
       return {
         success: true,
-        data: research
+        data: research,
       };
     } catch (error: any) {
       if (error.response) {
         console.error('Perplexity API error:', error.response.status, error.response.data);
         return {
           success: false,
-          error: `Status ${error.response.status}: ${JSON.stringify(error.response.data)}`
+          error: `Status ${error.response.status}: ${JSON.stringify(error.response.data)}`,
         };
       }
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -160,22 +171,26 @@ export class PerplexityService {
       
       Focus on high-quality, verified contact lists.`;
 
-      const response = await axios.post(`${this.config.baseUrl}/chat/completions`, {
-        model: 'sonar',
-        messages: [
-          {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        max_tokens: 2000,
-        temperature: 0.1
-      }, {
-        headers: {
-          'Authorization': `Bearer ${this.config.apiKey}`,
-          'Content-Type': 'application/json'
+      const response = await axios.post(
+        `${this.config.baseUrl}/chat/completions`,
+        {
+          model: 'sonar',
+          messages: [
+            {
+              role: 'user',
+              content: prompt,
+            },
+          ],
+          max_tokens: 2000,
+          temperature: 0.1,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
         }
-      });
+      );
 
       const data = response.data as { choices: Array<{ message: { content: string } }> };
       if (!data.choices || !data.choices[0] || !data.choices[0].message) {
@@ -186,18 +201,21 @@ export class PerplexityService {
 
       return {
         success: true,
-        lists
+        lists,
       };
     } catch (error) {
       return {
         success: false,
         lists: [],
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 
-  async analyzeCompetitorPR(competitor: string, industry: string): Promise<{
+  async analyzeCompetitorPR(
+    competitor: string,
+    industry: string
+  ): Promise<{
     success: boolean;
     analysis?: {
       outlets: string[];
@@ -217,22 +235,26 @@ export class PerplexityService {
       
       Provide actionable insights for PR strategy.`;
 
-      const response = await axios.post(`${this.config.baseUrl}/chat/completions`, {
-        model: 'sonar',
-        messages: [
-          {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        max_tokens: 2500,
-        temperature: 0.1
-      }, {
-        headers: {
-          'Authorization': `Bearer ${this.config.apiKey}`,
-          'Content-Type': 'application/json'
+      const response = await axios.post(
+        `${this.config.baseUrl}/chat/completions`,
+        {
+          model: 'sonar',
+          messages: [
+            {
+              role: 'user',
+              content: prompt,
+            },
+          ],
+          max_tokens: 2500,
+          temperature: 0.1,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
         }
-      });
+      );
 
       const data = response.data as { choices: Array<{ message: { content: string } }> };
       if (!data.choices || !data.choices[0] || !data.choices[0].message) {
@@ -243,17 +265,20 @@ export class PerplexityService {
 
       return {
         success: true,
-        analysis
+        analysis,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 
-  async generatePitchIdeas(client: string, industry: string): Promise<{
+  async generatePitchIdeas(
+    client: string,
+    industry: string
+  ): Promise<{
     success: boolean;
     ideas?: Array<{
       angle: string;
@@ -273,22 +298,26 @@ export class PerplexityService {
       
       Focus on newsworthy, timely angles that would interest journalists.`;
 
-      const response = await axios.post(`${this.config.baseUrl}/chat/completions`, {
-        model: 'sonar',
-        messages: [
-          {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        max_tokens: 3000,
-        temperature: 0.2
-      }, {
-        headers: {
-          'Authorization': `Bearer ${this.config.apiKey}`,
-          'Content-Type': 'application/json'
+      const response = await axios.post(
+        `${this.config.baseUrl}/chat/completions`,
+        {
+          model: 'sonar',
+          messages: [
+            {
+              role: 'user',
+              content: prompt,
+            },
+          ],
+          max_tokens: 3000,
+          temperature: 0.2,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
         }
-      });
+      );
 
       const data = response.data as { choices: Array<{ message: { content: string } }> };
       if (!data.choices || !data.choices[0] || !data.choices[0].message) {
@@ -299,12 +328,12 @@ export class PerplexityService {
 
       return {
         success: true,
-        ideas
+        ideas,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -312,18 +341,18 @@ export class PerplexityService {
   private parseJournalistsFromResponse(content: string): Journalist[] {
     // This is a simplified parser - in a real implementation, you'd want more sophisticated parsing
     const journalists: Journalist[] = [];
-    
+
     // Extract journalist information using regex patterns
     const lines = content.split('\n');
     let currentJournalist: Partial<Journalist> = {};
-    
+
     for (const line of lines) {
       if (line.includes('Name:') || line.includes('Journalist:')) {
         if (currentJournalist.name) {
           journalists.push(currentJournalist as Journalist);
         }
         currentJournalist = {
-          name: line.split(':')[1]?.trim() || 'Unknown'
+          name: line.split(':')[1]?.trim() || 'Unknown',
         };
       } else if (line.includes('Outlet:') || line.includes('Publication:')) {
         currentJournalist.outlet = line.split(':')[1]?.trim() || '';
@@ -335,11 +364,11 @@ export class PerplexityService {
         currentJournalist.twitter = line.split(':')[1]?.trim() || '';
       }
     }
-    
+
     if (currentJournalist.name) {
       journalists.push(currentJournalist as Journalist);
     }
-    
+
     return journalists;
   }
 
@@ -349,32 +378,48 @@ export class PerplexityService {
       trends: [],
       keyPlayers: [],
       recentNews: [],
-      opportunities: []
+      opportunities: [],
     };
-    
+
     const sections = content.split('\n\n');
-    
+
     for (const section of sections) {
       if (section.toLowerCase().includes('trend')) {
-        research.trends = section.split('\n').filter(line => line.trim() && !line.toLowerCase().includes('trend'));
-      } else if (section.toLowerCase().includes('player') || section.toLowerCase().includes('company')) {
-        research.keyPlayers = section.split('\n').filter(line => line.trim() && !line.toLowerCase().includes('player') && !line.toLowerCase().includes('company'));
+        research.trends = section
+          .split('\n')
+          .filter(line => line.trim() && !line.toLowerCase().includes('trend'));
+      } else if (
+        section.toLowerCase().includes('player') ||
+        section.toLowerCase().includes('company')
+      ) {
+        research.keyPlayers = section
+          .split('\n')
+          .filter(
+            line =>
+              line.trim() &&
+              !line.toLowerCase().includes('player') &&
+              !line.toLowerCase().includes('company')
+          );
       } else if (section.toLowerCase().includes('news')) {
-        research.recentNews = section.split('\n').filter(line => line.trim() && !line.toLowerCase().includes('news'));
+        research.recentNews = section
+          .split('\n')
+          .filter(line => line.trim() && !line.toLowerCase().includes('news'));
       } else if (section.toLowerCase().includes('opportunity')) {
-        research.opportunities = section.split('\n').filter(line => line.trim() && !line.toLowerCase().includes('opportunity'));
+        research.opportunities = section
+          .split('\n')
+          .filter(line => line.trim() && !line.toLowerCase().includes('opportunity'));
       }
     }
-    
+
     return research;
   }
 
   private parseContactListsFromResponse(content: string): ContactList[] {
     const lists: ContactList[] = [];
-    
+
     const lines = content.split('\n');
     let currentList: Partial<ContactList> = {};
-    
+
     for (const line of lines) {
       if (line.includes('List:') || line.includes('Database:')) {
         if (currentList.name) {
@@ -382,7 +427,7 @@ export class PerplexityService {
         }
         currentList = {
           name: line.split(':')[1]?.trim() || 'Unknown',
-          contacts: []
+          contacts: [],
         };
       } else if (line.includes('Description:') || line.includes('About:')) {
         currentList.description = line.split(':')[1]?.trim() || '';
@@ -390,11 +435,11 @@ export class PerplexityService {
         currentList.source = line.split(':')[1]?.trim() || '';
       }
     }
-    
+
     if (currentList.name) {
       lists.push(currentList as ContactList);
     }
-    
+
     return lists;
   }
 
@@ -405,10 +450,26 @@ export class PerplexityService {
     opportunities: string[];
   } {
     return {
-      outlets: content.match(/outlet[:\s]+([^\n]+)/gi)?.map(match => match.split(/:\s*/)[1]?.trim()).filter((item): item is string => Boolean(item)) || [],
-      journalists: content.match(/journalist[:\s]+([^\n]+)/gi)?.map(match => match.split(/:\s*/)[1]?.trim()).filter((item): item is string => Boolean(item)) || [],
-      strategies: content.match(/strategy[:\s]+([^\n]+)/gi)?.map(match => match.split(/:\s*/)[1]?.trim()).filter((item): item is string => Boolean(item)) || [],
-      opportunities: content.match(/opportunity[:\s]+([^\n]+)/gi)?.map(match => match.split(/:\s*/)[1]?.trim()).filter((item): item is string => Boolean(item)) || []
+      outlets:
+        content
+          .match(/outlet[:\s]+([^\n]+)/gi)
+          ?.map(match => match.split(/:\s*/)[1]?.trim())
+          .filter((item): item is string => Boolean(item)) || [],
+      journalists:
+        content
+          .match(/journalist[:\s]+([^\n]+)/gi)
+          ?.map(match => match.split(/:\s*/)[1]?.trim())
+          .filter((item): item is string => Boolean(item)) || [],
+      strategies:
+        content
+          .match(/strategy[:\s]+([^\n]+)/gi)
+          ?.map(match => match.split(/:\s*/)[1]?.trim())
+          .filter((item): item is string => Boolean(item)) || [],
+      opportunities:
+        content
+          .match(/opportunity[:\s]+([^\n]+)/gi)
+          ?.map(match => match.split(/:\s*/)[1]?.trim())
+          .filter((item): item is string => Boolean(item)) || [],
     };
   }
 
@@ -424,9 +485,9 @@ export class PerplexityService {
       keyMessages: string[];
       timing: string;
     }> = [];
-    
+
     const sections = content.split('\n\n');
-    
+
     for (const section of sections) {
       if (section.toLowerCase().includes('angle') || section.toLowerCase().includes('idea')) {
         const lines = section.split('\n');
@@ -434,9 +495,9 @@ export class PerplexityService {
           angle: '',
           targetOutlets: [] as string[],
           keyMessages: [] as string[],
-          timing: ''
+          timing: '',
         };
-        
+
         for (const line of lines) {
           if (line.toLowerCase().includes('angle:')) {
             idea.angle = line.split(':')[1]?.trim() || '';
@@ -450,13 +511,13 @@ export class PerplexityService {
             idea.timing = line.split(':')[1]?.trim() || '';
           }
         }
-        
+
         if (idea.angle) {
           ideas.push(idea);
         }
       }
     }
-    
+
     return ideas;
   }
-} 
+}

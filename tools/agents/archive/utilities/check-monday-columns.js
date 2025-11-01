@@ -9,18 +9,18 @@ const MondayApiIntegration = require('./integrations/monday-api');
 
 async function checkMondayColumns() {
   console.log('📋 Checking Monday.com Board Structure and Columns...\n');
-  
+
   const mondayApi = new MondayApiIntegration();
-  
+
   try {
     console.log('🔍 Getting board structure...');
-    
+
     const boardStructure = await mondayApi.getLibertyBoardStructure();
-    
+
     console.log(`✅ Board: ${boardStructure.name}`);
     console.log(`   Board ID: ${boardStructure.id}`);
     console.log('');
-    
+
     console.log('📊 Available Columns:');
     boardStructure.columns.forEach((column, index) => {
       console.log(`   ${index + 1}. ${column.title}`);
@@ -31,7 +31,7 @@ async function checkMondayColumns() {
       }
       console.log('');
     });
-    
+
     console.log('📁 Available Groups:');
     boardStructure.groups.forEach((group, index) => {
       console.log(`   ${index + 1}. ${group.title}`);
@@ -39,7 +39,7 @@ async function checkMondayColumns() {
       console.log(`      Color: ${group.color}`);
       console.log('');
     });
-    
+
     console.log('💡 Column Mapping for Campaign Creation:');
     console.log('   Current mapping uses hardcoded column IDs:');
     console.log('   - text: Artist Name');
@@ -54,9 +54,8 @@ async function checkMondayColumns() {
     console.log('1. Match column IDs with actual board columns');
     console.log('2. Update createCampaignItem method');
     console.log('3. Test with correct column mapping');
-    
+
     return boardStructure;
-    
   } catch (error) {
     console.error('❌ Failed to check board structure:', error.message);
     return null;
@@ -72,5 +71,3 @@ checkMondayColumns().then(boardStructure => {
     console.log('\n❌ Board structure check failed.');
   }
 });
-
-

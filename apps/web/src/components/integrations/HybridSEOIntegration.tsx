@@ -6,7 +6,19 @@ import { Badge } from '../ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Alert, AlertDescription } from '../ui/alert';
 import { Progress } from '../ui/progress';
-import { Loader2, TrendingUp, Search, Users, BarChart3, Globe, Zap, DollarSign, Clock, CheckCircle, XCircle } from 'lucide-react';
+import {
+  Loader2,
+  TrendingUp,
+  Search,
+  Users,
+  BarChart3,
+  Globe,
+  Zap,
+  DollarSign,
+  Clock,
+  CheckCircle,
+  XCircle,
+} from 'lucide-react';
 
 interface HybridSEOData {
   source: 'dataforseo' | 'free' | 'hybrid';
@@ -39,26 +51,26 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
       icon: '📈',
       title: 'Intelligent Routing',
       description: 'Automatically chooses the best tool for each analysis',
-      color: 'text-blue-600'
+      color: 'text-blue-600',
     },
     {
       icon: '💰',
       title: 'Cost Optimization',
       description: 'Minimizes API costs while maximizing data quality',
-      color: 'text-green-600'
+      color: 'text-green-600',
     },
     {
       icon: '⏰',
       title: 'Fast Fallback',
       description: 'Seamlessly switches to free tools when needed',
-      color: 'text-purple-600'
+      color: 'text-purple-600',
     },
     {
       icon: CheckCircle,
       title: 'Best of Both',
       description: 'Combines paid accuracy with free accessibility',
-      color: 'text-orange-600'
-    }
+      color: 'text-orange-600',
+    },
   ];
 
   useEffect(() => {
@@ -93,11 +105,11 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
   const fetchData = async (endpoint: string, query: string) => {
     setLoading(true);
     setError(null);
-    
+
     try {
       const response = await fetch(`/api/hybrid-seo/${endpoint}/${encodeURIComponent(query)}`);
       const result = await response.json();
-      
+
       if (result.success) {
         setData(prev => ({ ...prev, [endpoint]: result }));
       } else {
@@ -113,9 +125,9 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
-    
+
     setLastQuery(inputValue);
-    
+
     switch (activeTab) {
       case 'analysis':
         fetchData('analyze', inputValue);
@@ -137,26 +149,34 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
 
   const getQualityColor = (quality: string) => {
     switch (quality) {
-      case 'high': return 'text-green-600';
-      case 'medium': return 'text-yellow-600';
-      case 'low': return 'text-red-600';
-      default: return 'text-gray-600';
+      case 'high':
+        return 'text-green-600';
+      case 'medium':
+        return 'text-yellow-600';
+      case 'low':
+        return 'text-red-600';
+      default:
+        return 'text-gray-600';
     }
   };
 
   const getQualityBadge = (quality: string) => {
     switch (quality) {
-      case 'high': return <Badge className="bg-green-100 text-green-800">High</Badge>;
-      case 'medium': return <Badge className="bg-yellow-100 text-yellow-800">Medium</Badge>;
-      case 'low': return <Badge className="bg-red-100 text-red-800">Low</Badge>;
-      default: return <Badge variant="secondary">Unknown</Badge>;
+      case 'high':
+        return <Badge className="bg-green-100 text-green-800">High</Badge>;
+      case 'medium':
+        return <Badge className="bg-yellow-100 text-yellow-800">Medium</Badge>;
+      case 'low':
+        return <Badge className="bg-red-100 text-red-800">Low</Badge>;
+      default:
+        return <Badge variant="secondary">Unknown</Badge>;
     }
   };
 
   const renderAnalysisData = () => {
     const analysisData = data.analyze;
     if (!analysisData) return null;
-    
+
     return (
       <div className="space-y-4">
         <Card>
@@ -166,8 +186,8 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
               Analysis Results
             </CardTitle>
             <CardDescription>
-              Source: {analysisData.source} | Cost: ${analysisData.cost || 0} | 
-              Response Time: {analysisData.performance?.responseTime || 0}ms
+              Source: {analysisData.source} | Cost: ${analysisData.cost || 0} | Response Time:{' '}
+              {analysisData.performance?.responseTime || 0}ms
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -177,7 +197,9 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
                 <p className="text-xs text-muted-foreground">SEO Score</p>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold">{analysisData.data?.metrics?.estimatedTraffic?.toLocaleString() || 'N/A'}</div>
+                <div className="text-2xl font-bold">
+                  {analysisData.data?.metrics?.estimatedTraffic?.toLocaleString() || 'N/A'}
+                </div>
                 <p className="text-xs text-muted-foreground">Est. Traffic</p>
               </div>
               <div className="text-center">
@@ -185,7 +207,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
                 <p className="text-xs text-muted-foreground mt-1">Data Quality</p>
               </div>
             </div>
-            
+
             {analysisData.data?.issues && analysisData.data.issues.length > 0 && (
               <div className="space-y-2">
                 <h4 className="font-medium">Issues Found:</h4>
@@ -208,7 +230,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
   const renderKeywordsData = () => {
     const keywordsData = data.keywords;
     if (!keywordsData) return null;
-    
+
     return (
       <div className="space-y-4">
         <Card>
@@ -218,8 +240,8 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
               Keyword Research Results
             </CardTitle>
             <CardDescription>
-              Source: {keywordsData.source} | Cost: ${keywordsData.cost || 0} | 
-              Found {keywordsData.data?.length || 0} keywords
+              Source: {keywordsData.source} | Cost: ${keywordsData.cost || 0} | Found{' '}
+              {keywordsData.data?.length || 0} keywords
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -235,7 +257,15 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
                       </div>
                       <div className="flex justify-between">
                         <span>Difficulty:</span>
-                        <Badge variant={keyword.difficulty === 'low' ? 'default' : keyword.difficulty === 'medium' ? 'secondary' : 'destructive'}>
+                        <Badge
+                          variant={
+                            keyword.difficulty === 'low'
+                              ? 'default'
+                              : keyword.difficulty === 'medium'
+                                ? 'secondary'
+                                : 'destructive'
+                          }
+                        >
                           {keyword.difficulty}
                         </Badge>
                       </div>
@@ -253,7 +283,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
   const renderCompetitorsData = () => {
     const competitorsData = data.competitors;
     if (!competitorsData) return null;
-    
+
     return (
       <div className="space-y-4">
         <Card>
@@ -263,8 +293,8 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
               Competitor Analysis Results
             </CardTitle>
             <CardDescription>
-              Source: {competitorsData.source} | Cost: ${competitorsData.cost || 0} | 
-              Found {competitorsData.data?.length || 0} competitors
+              Source: {competitorsData.source} | Cost: ${competitorsData.cost || 0} | Found{' '}
+              {competitorsData.data?.length || 0} competitors
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -275,7 +305,9 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
                     <div className="font-medium mb-2">{competitor.domain}</div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                       <div>
-                        <div className="font-medium">{competitor.estimatedTraffic?.toLocaleString()}</div>
+                        <div className="font-medium">
+                          {competitor.estimatedTraffic?.toLocaleString()}
+                        </div>
                         <p className="text-xs text-muted-foreground">Est. Traffic</p>
                       </div>
                       <div>
@@ -287,7 +319,9 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
                         <p className="text-xs text-muted-foreground">Content Gaps</p>
                       </div>
                       <div>
-                        <div className="font-medium">{competitor.linkOpportunities?.length || 0}</div>
+                        <div className="font-medium">
+                          {competitor.linkOpportunities?.length || 0}
+                        </div>
                         <p className="text-xs text-muted-foreground">Link Opportunities</p>
                       </div>
                     </div>
@@ -304,7 +338,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
   const renderTrendsData = () => {
     const trendsData = data.trends;
     if (!trendsData) return null;
-    
+
     return (
       <div className="space-y-4">
         <Card>
@@ -314,8 +348,8 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
               Trends Analysis Results
             </CardTitle>
             <CardDescription>
-              Source: {trendsData.source} | Cost: ${trendsData.cost || 0} | 
-              Interest: {trendsData.data?.interest || 'N/A'}
+              Source: {trendsData.source} | Cost: ${trendsData.cost || 0} | Interest:{' '}
+              {trendsData.data?.interest || 'N/A'}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -325,11 +359,15 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
                 <p className="text-xs text-muted-foreground">Interest Score</p>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold capitalize">{trendsData.data?.trend || 'N/A'}</div>
+                <div className="text-2xl font-bold capitalize">
+                  {trendsData.data?.trend || 'N/A'}
+                </div>
                 <p className="text-xs text-muted-foreground">Trend Direction</p>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold">{trendsData.data?.relatedQueries?.length || 0}</div>
+                <div className="text-2xl font-bold">
+                  {trendsData.data?.relatedQueries?.length || 0}
+                </div>
                 <p className="text-xs text-muted-foreground">Related Queries</p>
               </div>
             </div>
@@ -348,7 +386,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
             Hybrid SEO Integration
           </CardTitle>
           <CardDescription>
-            Intelligent SEO analysis that combines Data for SEO with free alternatives. 
+            Intelligent SEO analysis that combines Data for SEO with free alternatives.
             Automatically chooses the best tool for each analysis while minimizing costs.
           </CardDescription>
         </CardHeader>
@@ -375,15 +413,21 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
-                    <div className="text-2xl font-bold text-blue-800">${costAnalysis.dataForSEOCost}</div>
+                    <div className="text-2xl font-bold text-blue-800">
+                      ${costAnalysis.dataForSEOCost}
+                    </div>
                     <p className="text-xs text-blue-600">Data for SEO Cost</p>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-green-800">${costAnalysis.freeToolsCost}</div>
+                    <div className="text-2xl font-bold text-green-800">
+                      ${costAnalysis.freeToolsCost}
+                    </div>
                     <p className="text-xs text-green-600">Free Tools Cost</p>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-purple-800">${costAnalysis.totalCost}</div>
+                    <div className="text-2xl font-bold text-purple-800">
+                      ${costAnalysis.totalCost}
+                    </div>
                     <p className="text-xs text-purple-600">Total Monthly Cost</p>
                   </div>
                 </div>
@@ -447,7 +491,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
               <Input
                 placeholder="Enter keyword or domain..."
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={e => setInputValue(e.target.value)}
                 className="flex-1"
               />
               <Button type="submit" disabled={loading || !inputValue.trim()}>
@@ -504,7 +548,7 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button 
+                  <Button
                     onClick={() => fetchData('report', lastQuery || inputValue)}
                     disabled={loading}
                     className="w-full"
@@ -531,8 +575,8 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
                 <span className="font-medium text-blue-800">Hybrid Benefits</span>
               </div>
               <p className="text-sm text-blue-700">
-                This hybrid approach intelligently routes requests to the most appropriate tool, 
-                ensuring you get the best data quality while minimizing costs. Free tools handle 
+                This hybrid approach intelligently routes requests to the most appropriate tool,
+                ensuring you get the best data quality while minimizing costs. Free tools handle
                 basic research while Data for SEO provides advanced analysis when needed.
               </p>
             </CardContent>
@@ -541,4 +585,4 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
       </Card>
     </div>
   );
-} 
+}

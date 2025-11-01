@@ -40,8 +40,8 @@ async function runMigration() {
     // Split on semicolons and execute each statement
     const statements = migrationSQL
       .split(';')
-      .map((s) => s.trim())
-      .filter((s) => s.length > 0 && !s.startsWith('--'));
+      .map(s => s.trim())
+      .filter(s => s.length > 0 && !s.startsWith('--'));
 
     let successCount = 0;
     let errorCount = 0;
@@ -56,10 +56,7 @@ async function runMigration() {
 
         if (error) {
           // Try direct query instead
-          const { error: queryError } = await supabase
-            .from('_sql')
-            .select('*')
-            .limit(0);
+          const { error: queryError } = await supabase.from('_sql').select('*').limit(0);
 
           if (queryError) {
             console.warn(`⚠️  Warning: ${queryError.message.substring(0, 100)}`);
@@ -97,7 +94,6 @@ async function runMigration() {
 
     console.log('\n✅ Migration complete!');
     console.log('   Skills system tables ready to use.');
-
   } catch (error) {
     console.error('\n❌ Migration failed:', error.message);
     process.exit(1);

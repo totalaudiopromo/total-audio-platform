@@ -11,7 +11,12 @@ interface VoiceOnboardingProps {
   onSetupNow: () => void;
 }
 
-export function VoiceOnboarding({ isOpen, onClose, onSetupLater, onSetupNow }: VoiceOnboardingProps) {
+export function VoiceOnboarding({
+  isOpen,
+  onClose,
+  onSetupLater,
+  onSetupNow,
+}: VoiceOnboardingProps) {
   if (!isOpen) return null;
 
   return (
@@ -31,9 +36,7 @@ export function VoiceOnboarding({ isOpen, onClose, onSetupLater, onSetupNow }: V
           <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-full mb-4">
             <Sparkles className="w-8 h-8 text-amber-600" />
           </div>
-          <h2 className="text-3xl font-black text-gray-900 mb-2">
-            Welcome to Pitch Generator!
-          </h2>
+          <h2 className="text-3xl font-black text-gray-900 mb-2">Welcome to Pitch Generator!</h2>
           <p className="text-gray-600 font-medium">
             Set up your authentic voice to generate personalized pitches that sound like you
           </p>
@@ -64,19 +67,27 @@ export function VoiceOnboarding({ isOpen, onClose, onSetupLater, onSetupNow }: V
           <ul className="space-y-2 text-sm text-gray-700">
             <li className="flex items-start gap-2">
               <span className="text-amber-600 font-bold">•</span>
-              <span><strong>Your background:</strong> Who you are in the music industry</span>
+              <span>
+                <strong>Your background:</strong> Who you are in the music industry
+              </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-amber-600 font-bold">•</span>
-              <span><strong>Your style:</strong> How you communicate (casual, professional, etc.)</span>
+              <span>
+                <strong>Your style:</strong> How you communicate (casual, professional, etc.)
+              </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-amber-600 font-bold">•</span>
-              <span><strong>Your approach:</strong> How you like to pitch your music</span>
+              <span>
+                <strong>Your approach:</strong> How you like to pitch your music
+              </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-amber-600 font-bold">•</span>
-              <span><strong>Your wins:</strong> Achievements that build credibility</span>
+              <span>
+                <strong>Your wins:</strong> Achievements that build credibility
+              </span>
             </li>
           </ul>
         </div>

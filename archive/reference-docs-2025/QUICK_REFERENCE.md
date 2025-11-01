@@ -38,6 +38,7 @@ bash ../../scripts/organize-docs-from-anywhere.sh --dry-run  # adjust ../ as nee
 ## 🎨 Design System Standards
 
 ### Color Palette
+
 - **Audio Intel / Pitch Generator:** Electric Blue (`#3b82f6`)
 - **Playlist Pulse:** Neon Green (`#22c55e`)
 - **Release Radar:** Orange/Amber (`#f59e0b`)
@@ -46,6 +47,7 @@ bash ../../scripts/organize-docs-from-anywhere.sh --dry-run  # adjust ../ as nee
 - **Success Predict:** Gold/Yellow (`#eab308`)
 
 ### Core Components
+
 ```css
 .glass-panel      /* Main card container */
 .cta-button       /* Primary action button */
@@ -54,6 +56,7 @@ bash ../../scripts/organize-docs-from-anywhere.sh --dry-run  # adjust ../ as nee
 ```
 
 ### Design Rules
+
 - ✅ Solid colours, bold borders, hard shadows
 - ✅ UK spelling (colour, personalised, organise)
 - ❌ No gradients, no glassmorphism, no backdrop-blur
@@ -80,12 +83,14 @@ cd your-new-tool
 ## 🔍 Finding Things
 
 ### Documentation
+
 - **[ORGANIZE_DOCS_USAGE.md](./ORGANIZE_DOCS_USAGE.md)** - How to use organizer
 - **[PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md)** - Monorepo structure
 - **[DESIGN_SYSTEM.md](./apps/tap-saas-template/DESIGN_SYSTEM.md)** - Complete design guide
 - **[TEMPLATE_USAGE.md](./apps/tap-saas-template/TEMPLATE_USAGE.md)** - How to duplicate template
 
 ### Each App's Docs
+
 ```
 your-app/docs/
 ├── README.md       # Index of all docs
@@ -100,6 +105,7 @@ your-app/docs/
 ## 🚀 Common Tasks
 
 ### Starting New Feature
+
 ```bash
 # Just create files naturally
 touch FEATURE_NAME_COMPLETE.md
@@ -110,6 +116,7 @@ organize-docs      # Apply
 ```
 
 ### Before Committing
+
 ```bash
 organize-docs-dry  # Check what would change
 organize-docs      # Clean up docs
@@ -118,6 +125,7 @@ git commit -m "docs: organize documentation"
 ```
 
 ### Finding a Specific Doc
+
 ```bash
 # Search in organized docs
 find apps/*/docs -name "*keyword*"
@@ -140,12 +148,12 @@ find apps/*/docs/setup -name "*.md"
 
 ## 🆘 Quick Troubleshooting
 
-| Problem | Solution |
-|---------|----------|
+| Problem                    | Solution                                                                                     |
+| -------------------------- | -------------------------------------------------------------------------------------------- |
 | `npm error Missing script` | You're in an app dir - use `bash ../../scripts/organize-docs-from-anywhere.sh` or go to root |
-| Files not moving | You ran with `--dry-run` - remove that flag |
-| Can't find script | Make sure you're inside the `total-audio-platform/` directory tree |
-| Wrong category | Manually move file or update patterns in `scripts/organize-docs.js` |
+| Files not moving           | You ran with `--dry-run` - remove that flag                                                  |
+| Can't find script          | Make sure you're inside the `total-audio-platform/` directory tree                           |
+| Wrong category             | Manually move file or update patterns in `scripts/organize-docs.js`                          |
 
 ---
 
@@ -159,4 +167,3 @@ find apps/*/docs/setup -name "*.md"
 ---
 
 **TL;DR:** Run `organize-docs-dry` to preview, `organize-docs` to apply. Works from anywhere after setting up alias.
-

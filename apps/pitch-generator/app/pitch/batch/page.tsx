@@ -5,7 +5,8 @@ import { useSession } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Loader2, Sparkles, Copy, CheckCircle, Clock } from 'lucide-react';
-import { supabase, type Contact } from '@/lib/supabase';
+import { createClient } from '@total-audio/core-db/client';
+import type { Contact } from '@/lib/types';
 
 interface FormData {
   artistName: string;
@@ -92,15 +93,13 @@ export default function BatchGeneratePage() {
   }
 
   function toggleContact(contactId: string) {
-    setSelectedContactIds((prev) =>
-      prev.includes(contactId)
-        ? prev.filter((id) => id !== contactId)
-        : [...prev, contactId]
+    setSelectedContactIds(prev =>
+      prev.includes(contactId) ? prev.filter(id => id !== contactId) : [...prev, contactId]
     );
   }
 
   function selectAll() {
-    setSelectedContactIds(contacts.map((c) => c.id));
+    setSelectedContactIds(contacts.map(c => c.id));
   }
 
   function deselectAll() {
@@ -119,9 +118,7 @@ export default function BatchGeneratePage() {
     setGeneratedPitches([]);
     setCurrentProgress(0);
 
-    const selectedContacts = contacts.filter((c) =>
-      selectedContactIds.includes(c.id)
-    );
+    const selectedContacts = contacts.filter(c => selectedContactIds.includes(c.id));
 
     try {
       const pitches: GeneratedPitch[] = [];
@@ -180,7 +177,7 @@ ${pitch.pitchBody}`;
   async function copyAllPitches() {
     const allPitches = generatedPitches
       .map(
-        (p) => `
+        p => `
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 TO: ${p.contactName} (${p.contactOutlet})
 SUBJECT: ${p.subjectLine}
@@ -240,7 +237,7 @@ ${p.pitchBody}
                     type="text"
                     required
                     value={formData.artistName}
-                    onChange={(e) => setFormData({ ...formData, artistName: e.target.value })}
+                    onChange={e => setFormData({ ...formData, artistName: e.target.value })}
                     placeholder="e.g. The Midnight Hearts"
                     className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
@@ -253,7 +250,7 @@ ${p.pitchBody}
                     type="text"
                     required
                     value={formData.trackTitle}
-                    onChange={(e) => setFormData({ ...formData, trackTitle: e.target.value })}
+                    onChange={e => setFormData({ ...formData, trackTitle: e.target.value })}
                     placeholder="e.g. Neon Dreams"
                     className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
@@ -265,10 +262,10 @@ ${p.pitchBody}
                   <select
                     required
                     value={formData.genre}
-                    onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
+                    onChange={e => setFormData({ ...formData, genre: e.target.value })}
                     className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   >
-                    {GENRES.map((genre) => (
+                    {GENRES.map(genre => (
                       <option key={genre} value={genre}>
                         {genre.charAt(0).toUpperCase() + genre.slice(1)}
                       </option>
@@ -276,25 +273,21 @@ ${p.pitchBody}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-900/80">
-                    Release Date
-                  </label>
+                  <label className="block text-sm font-medium text-gray-900/80">Release Date</label>
                   <input
                     type="date"
                     value={formData.releaseDate}
-                    onChange={(e) => setFormData({ ...formData, releaseDate: e.target.value })}
+                    onChange={e => setFormData({ ...formData, releaseDate: e.target.value })}
                     className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-900/80">
-                  Track Link
-                </label>
+                <label className="block text-sm font-medium text-gray-900/80">Track Link</label>
                 <input
                   type="url"
                   value={formData.trackLink}
-                  onChange={(e) => setFormData({ ...formData, trackLink: e.target.value })}
+                  onChange={e => setFormData({ ...formData, trackLink: e.target.value })}
                   placeholder="https://soundcloud.com/..."
                   className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                 />
@@ -306,7 +299,7 @@ ${p.pitchBody}
                 <textarea
                   required
                   value={formData.keyHook}
-                  onChange={(e) => setFormData({ ...formData, keyHook: e.target.value })}
+                  onChange={e => setFormData({ ...formData, keyHook: e.target.value })}
                   rows={3}
                   placeholder="What makes this track special? Why should they care?"
                   className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
@@ -321,18 +314,10 @@ ${p.pitchBody}
                   Select Contacts ({selectedContactIds.length} selected)
                 </h2>
                 <div className="flex gap-2">
-                  <button
-                    type="button"
-                    onClick={selectAll}
-                    className="subtle-button text-xs"
-                  >
+                  <button type="button" onClick={selectAll} className="subtle-button text-xs">
                     Select All
                   </button>
-                  <button
-                    type="button"
-                    onClick={deselectAll}
-                    className="subtle-button text-xs"
-                  >
+                  <button type="button" onClick={deselectAll} className="subtle-button text-xs">
                     Deselect All
                   </button>
                 </div>
@@ -349,7 +334,7 @@ ${p.pitchBody}
                 </div>
               ) : (
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {contacts.map((contact) => (
+                  {contacts.map(contact => (
                     <label
                       key={contact.id}
                       className={`cursor-pointer rounded-2xl border-2 bg-gray-50 px-4 py-3 transition ${
@@ -425,15 +410,10 @@ ${p.pitchBody}
                 <h2 className="text-2xl font-bold text-success">
                   Generated {generatedPitches.length} Pitches
                 </h2>
-                <p className="mt-1 text-sm text-gray-900/60">
-                  Ready to copy and send
-                </p>
+                <p className="mt-1 text-sm text-gray-900/60">Ready to copy and send</p>
               </div>
               <div className="flex gap-3">
-                <button
-                  onClick={copyAllPitches}
-                  className="cta-button flex items-center gap-2"
-                >
+                <button onClick={copyAllPitches} className="cta-button flex items-center gap-2">
                   <Copy className="h-4 w-4" />
                   Copy All Pitches
                 </button>

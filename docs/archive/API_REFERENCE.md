@@ -1,11 +1,14 @@
 # Total Audio Promo - API Reference
 
 ## Base URL
+
 - **Development**: `http://localhost:3001/api`
 - **Production**: `https://api.totalaudiopromo.com/api`
 
 ## Authentication
+
 All API requests require JWT token in the Authorization header:
+
 ```
 Authorization: Bearer <jwt_token>
 ```
@@ -13,6 +16,7 @@ Authorization: Bearer <jwt_token>
 ## Core API Endpoints
 
 ### **Authentication**
+
 ```
 POST /api/auth/login          # User login
 POST /api/auth/register       # User registration
@@ -22,6 +26,7 @@ GET  /api/auth/me            # Get current user
 ```
 
 ### **Users**
+
 ```
 GET    /api/users            # List users (admin only)
 GET    /api/users/:id        # Get user by ID
@@ -31,6 +36,7 @@ POST   /api/users/invite     # Invite user to agency
 ```
 
 ### **Agencies**
+
 ```
 GET    /api/agencies         # List agencies (admin only)
 GET    /api/agencies/:id     # Get agency details
@@ -41,6 +47,7 @@ PUT    /api/agencies/:id/branding  # Update agency branding
 ```
 
 ### **Artists**
+
 ```
 GET    /api/artists          # List artists (filtered by agency)
 GET    /api/artists/:id      # Get artist details
@@ -50,6 +57,7 @@ DELETE /api/artists/:id      # Delete artist
 ```
 
 ### **Campaigns**
+
 ```
 GET    /api/campaigns        # List campaigns
 GET    /api/campaigns/:id    # Get campaign details
@@ -62,6 +70,7 @@ POST   /api/campaigns/:id/stop     # Stop campaign
 ```
 
 ### **Contacts**
+
 ```
 GET    /api/contacts         # List contacts
 GET    /api/contacts/:id     # Get contact details
@@ -73,6 +82,7 @@ POST   /api/contacts/enrich  # Enrich contact data
 ```
 
 ### **Analytics**
+
 ```
 GET    /api/analytics/campaigns/:id    # Campaign analytics
 GET    /api/analytics/overview        # Dashboard overview
@@ -82,6 +92,7 @@ GET    /api/analytics/export          # Export analytics data
 ```
 
 ### **Reports**
+
 ```
 GET    /api/reports          # List reports
 GET    /api/reports/:id      # Get report details
@@ -90,6 +101,7 @@ DELETE /api/reports/:id      # Delete report
 ```
 
 ### **Integrations**
+
 ```
 GET    /api/integrations     # List integrations
 POST   /api/integrations/airtable/sync       # Sync Airtable data
@@ -99,6 +111,7 @@ POST   /api/integrations/claude/generate     # Generate content with Claude
 ```
 
 ### **Billing**
+
 ```
 GET    /api/billing/subscription      # Get subscription details
 POST   /api/billing/subscribe         # Create subscription
@@ -108,6 +121,7 @@ GET    /api/billing/invoices         # List invoices
 ```
 
 ### **Webhooks**
+
 ```
 POST   /api/webhooks/mailchimp       # Mailchimp webhook
 POST   /api/webhooks/stripe          # Stripe webhook
@@ -117,6 +131,7 @@ POST   /api/webhooks/make            # Make.com webhook
 ## Specialized Services
 
 ### **Airtable Contact Enrichment**
+
 ```
 POST   /api/airtable/audit                    # Audit Airtable data
 POST   /api/airtable/enrich                  # Enrich contacts
@@ -126,6 +141,7 @@ POST   /api/airtable/radio-enhancement       # Enhance radio contacts
 ```
 
 ### **AI Services**
+
 ```
 POST   /api/claude/analyze           # Analyze content with Claude
 POST   /api/claude/generate          # Generate content
@@ -134,6 +150,7 @@ POST   /api/agents/orchestrate       # AI agent orchestration
 ```
 
 ### **SEO Tools**
+
 ```
 POST   /api/seo/analyze              # SEO analysis
 GET    /api/seo/tools                # List available tools
@@ -141,6 +158,7 @@ POST   /api/seo/hybrid               # Hybrid SEO analysis
 ```
 
 ### **Curator Discovery**
+
 ```
 GET    /api/curators                 # List curators
 POST   /api/curators/discover        # Discover new curators
@@ -150,6 +168,7 @@ POST   /api/curators/analyze         # Analyze curator preferences
 ## Request/Response Examples
 
 ### **Create Campaign**
+
 ```typescript
 POST /api/campaigns
 Content-Type: application/json
@@ -178,6 +197,7 @@ Response:
 ```
 
 ### **Enrich Contacts**
+
 ```typescript
 POST /api/contacts/enrich
 Content-Type: application/json
@@ -198,6 +218,7 @@ Response:
 ```
 
 ### **Campaign Analytics**
+
 ```typescript
 GET /api/analytics/campaigns/campaign_456?timeframe=30d
 
@@ -233,6 +254,7 @@ Response:
 ## Error Handling
 
 ### **Standard Error Response**
+
 ```typescript
 {
   "error": {
@@ -248,6 +270,7 @@ Response:
 ```
 
 ### **HTTP Status Codes**
+
 - **200**: Success
 - **201**: Created
 - **400**: Bad Request
@@ -260,15 +283,18 @@ Response:
 - **500**: Internal Server Error
 
 ## Rate Limiting
+
 - **Window**: 15 minutes
 - **Limit**: 100 requests per window
-- **Headers**: 
+- **Headers**:
   - `X-RateLimit-Limit`
   - `X-RateLimit-Remaining`
   - `X-RateLimit-Reset`
 
 ## Pagination
+
 List endpoints support pagination:
+
 ```
 GET /api/contacts?page=2&limit=20&sort=createdAt&order=desc
 
@@ -287,6 +313,7 @@ Response:
 ```
 
 ## Filtering & Search
+
 ```
 GET /api/contacts?search=radio&type=station&country=UK&active=true
 ```
@@ -294,12 +321,15 @@ GET /api/contacts?search=radio&type=station&country=UK&active=true
 ## Webhooks
 
 ### **Webhook Security**
+
 All webhooks include signature verification:
+
 ```
 X-Webhook-Signature: sha256=<signature>
 ```
 
 ### **Webhook Events**
+
 - `campaign.started`
 - `campaign.completed`
 - `email.opened`
@@ -312,14 +342,17 @@ X-Webhook-Signature: sha256=<signature>
 ## Development Notes
 
 ### **Testing**
+
 - Use Postman collection: `/docs/postman/`
 - Test environment: `http://localhost:3001/api`
 - Include JWT token in all requests
 
 ### **Documentation**
+
 - OpenAPI spec: `/docs/openapi.json`
 - Interactive docs: `/docs/api`
 - Postman collection: Available in repo
 
 ### **Environment Variables**
+
 See `.env.example` for required configuration.

@@ -4,7 +4,8 @@
  */
 
 import { google, sheets_v4 } from 'googleapis';
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 import { OAuthHandler } from './oauth-handler';
 
 export interface SheetRow {
@@ -257,7 +258,9 @@ export class GoogleSheetsSync {
             .eq('user_id', connection.user_id);
 
           if (error) {
-            errors.push(`Failed to update campaign ${trackerId}: ${error.message}`);
+            errors.push(
+              `Failed to update campaign ${trackerId}: ${error.message}`
+            );
           } else {
             updated++;
           }
@@ -322,7 +325,7 @@ export class GoogleSheetsSync {
       });
 
       const sheetExists = response.data.sheets?.some(
-        (sheet) => sheet.properties?.title === sheetName
+        sheet => sheet.properties?.title === sheetName
       );
 
       if (!sheetExists) {
@@ -366,7 +369,10 @@ export class GoogleSheetsSync {
       const supabase = await this.getSupabaseClient();
       const sanitizedMetadata = metadata ? { ...metadata } : {};
 
-      if ('errors' in sanitizedMetadata && sanitizedMetadata.errors === undefined) {
+      if (
+        'errors' in sanitizedMetadata &&
+        sanitizedMetadata.errors === undefined
+      ) {
         delete sanitizedMetadata.errors;
       }
 
@@ -380,8 +386,12 @@ export class GoogleSheetsSync {
         metadata: sanitizedMetadata,
       });
     } catch (logError) {
-      const logMessage = logError instanceof Error ? logError.message : String(logError);
-      console.error('Failed to log Google Sheets integration activity:', logMessage);
+      const logMessage =
+        logError instanceof Error ? logError.message : String(logError);
+      console.error(
+        'Failed to log Google Sheets integration activity:',
+        logMessage
+      );
     }
   }
 }

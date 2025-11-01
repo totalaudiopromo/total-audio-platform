@@ -71,8 +71,8 @@ await agent.authenticate();
 // Post a tweet (max 280 characters)
 const result = await agent.post(
   'After 5+ years promoting music to UK radio, I was spending 15+ hours weekly researching contacts.\n\n' +
-  'Built Audio Intel to solve this properly. Now it takes 2 minutes.\n\n' +
-  'intel.totalaudiopromo.com'
+    'Built Audio Intel to solve this properly. Now it takes 2 minutes.\n\n' +
+    'intel.totalaudiopromo.com'
 );
 
 if (result.success) {
@@ -159,6 +159,7 @@ const result = await agent.post('Your tweet text here');
 ```
 
 Returns:
+
 ```typescript
 {
   success: boolean;
@@ -176,6 +177,7 @@ const result = await agent.postThread(longContent);
 ```
 
 Returns:
+
 ```typescript
 {
   success: boolean;
@@ -202,6 +204,7 @@ const results = await agent.processScheduledPosts(calendar.schedule);
 ```
 
 Returns:
+
 ```typescript
 {
   posted: number;
@@ -241,6 +244,7 @@ The agent integrates with `CONTENT_CALENDAR.json`. Twitter/X posts are identifie
 ## Rate Limiting
 
 Built-in rate limiting:
+
 - **Between tweets in thread**: 1 second delay
 - **Between threads**: 2 second delay
 - **Twitter API limits**:
@@ -270,6 +274,7 @@ if (!result.success) {
 ```
 
 Common errors:
+
 - **Authentication failed**: Check credentials in `.env.local`
 - **Tweet too long**: Use `postThread()` instead of `post()`
 - **Rate limit exceeded**: Wait and retry (API returns 429 status)
@@ -307,14 +312,14 @@ TWITTER_AGENT_README.md            # This file
 
 Both agents share similar architecture for consistency:
 
-| Feature | Twitter Agent | Bluesky Agent |
-|---------|--------------|---------------|
-| Single post | `post()` | `post()` |
-| Thread support | `postThread()` | N/A (Bluesky uses long posts) |
-| Content mapping | `getContentByTitle()` | `getContentByTitle()` |
-| Scheduled posts | `processScheduledPosts()` | `processScheduledPosts()` |
-| Health check | `healthCheck()` | `healthCheck()` |
-| Rate limiting | 1-2 second delays | 1 second delays |
+| Feature         | Twitter Agent             | Bluesky Agent                 |
+| --------------- | ------------------------- | ----------------------------- |
+| Single post     | `post()`                  | `post()`                      |
+| Thread support  | `postThread()`            | N/A (Bluesky uses long posts) |
+| Content mapping | `getContentByTitle()`     | `getContentByTitle()`         |
+| Scheduled posts | `processScheduledPosts()` | `processScheduledPosts()`     |
+| Health check    | `healthCheck()`           | `healthCheck()`               |
+| Rate limiting   | 1-2 second delays         | 1 second delays               |
 
 ## Production Deployment
 
@@ -333,7 +338,9 @@ async function runScheduledPosts() {
     const results = await agent.processScheduledPosts(contentCalendar.schedule);
 
     console.log(`[${new Date().toISOString()}] Twitter posting complete`);
-    console.log(`Posted: ${results.posted}, Skipped: ${results.skipped}, Failed: ${results.failed}`);
+    console.log(
+      `Posted: ${results.posted}, Skipped: ${results.skipped}, Failed: ${results.failed}`
+    );
 
     // Log to monitoring service
     // await logToMonitoring(results);
@@ -348,6 +355,7 @@ runScheduledPosts();
 ```
 
 Run via cron (every hour):
+
 ```bash
 0 * * * * cd /path/to/audio-intel && npx tsx schedule-twitter-posts.ts
 ```
@@ -381,13 +389,16 @@ export async function GET() {
 
     return NextResponse.json({
       success: true,
-      results
+      results,
     });
   } catch (error) {
-    return NextResponse.json({
-      success: false,
-      error: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }
 ```
@@ -443,10 +454,9 @@ try {
     data: {
       posted: results.posted,
       skipped: results.skipped,
-      failed: results.failed
-    }
+      failed: results.failed,
+    },
   });
-
 } catch (error) {
   // Capture errors
   Sentry.captureException(error);
@@ -466,6 +476,7 @@ try {
 ## Support
 
 For issues or questions:
+
 - Review this README
 - Check example file: `lib/examples/twitter-agent-example.ts`
 - Verify credentials in `.env.local`

@@ -8,43 +8,34 @@ const DashboardScreen = ({ navigation }: any) => {
         <Text style={styles.title}>Dashboard</Text>
         <Text style={styles.subtitle}>Your campaign overview</Text>
       </View>
-      
+
       <View style={styles.statsContainer}>
         <View style={styles.statCard}>
           <Text style={styles.statNumber}>12</Text>
           <Text style={styles.statLabel}>Active Campaigns</Text>
         </View>
-        
+
         <View style={styles.statCard}>
           <Text style={styles.statNumber}>1,247</Text>
           <Text style={styles.statLabel}>Total Contacts</Text>
         </View>
-        
+
         <View style={styles.statCard}>
           <Text style={styles.statNumber}>89%</Text>
           <Text style={styles.statLabel}>Reply Rate</Text>
         </View>
       </View>
-      
+
       <View style={styles.navigationContainer}>
-        <TouchableOpacity 
-          style={styles.navButton}
-          onPress={() => navigation.navigate('Campaigns')}
-        >
+        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Campaigns')}>
           <Text style={styles.navButtonText}>Campaigns</Text>
         </TouchableOpacity>
-        
-        <TouchableOpacity 
-          style={styles.navButton}
-          onPress={() => navigation.navigate('Contacts')}
-        >
+
+        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Contacts')}>
           <Text style={styles.navButtonText}>Contacts</Text>
         </TouchableOpacity>
-        
-        <TouchableOpacity 
-          style={styles.navButton}
-          onPress={() => navigation.navigate('Analytics')}
-        >
+
+        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Analytics')}>
           <Text style={styles.navButtonText}>Analytics</Text>
         </TouchableOpacity>
       </View>
@@ -117,4 +108,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DashboardScreen; 
+export default DashboardScreen;

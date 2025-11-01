@@ -18,49 +18,50 @@ function resolvePlanPriceId(plan?: Plan, billing?: Billing): string | null {
   if (!plan || !billing) return null;
   const keyBase = `${plan}`.toUpperCase();
   const billKey = billing === 'annual' ? 'ANNUAL' : 'MONTHLY';
-  
+
   // Try environment variables first
-  const envPriceId = getEnv(`STRIPE_PRICE_${keyBase}_${billKey}`) ||
-                    getEnv(`NEXT_PUBLIC_STRIPE_PRICE_${keyBase}_${billKey}`);
-  
+  const envPriceId =
+    getEnv(`STRIPE_PRICE_${keyBase}_${billKey}`) ||
+    getEnv(`NEXT_PUBLIC_STRIPE_PRICE_${keyBase}_${billKey}`);
+
   if (envPriceId) return envPriceId;
-  
+
   // Fallback to hardcoded price IDs if environment variables are not set
   const fallbackPriceIds: Record<string, Record<string, string>> = {
     STARTER: {
       MONTHLY: 'price_1Ro9x2PqujcPv5fbMFNSIqq1',
-      ANNUAL: 'price_1Ro9x2PqujcPv5fbjvdTBDvE'
+      ANNUAL: 'price_1Ro9x2PqujcPv5fbjvdTBDvE',
     },
     PROFESSIONAL: {
       MONTHLY: 'price_1Ro9xiPqujcPv5fbutj97L7C',
-      ANNUAL: 'price_1Ro9xiPqujcPv5fbutj97L7C'
+      ANNUAL: 'price_1Ro9xiPqujcPv5fbutj97L7C',
     },
     AGENCY: {
       MONTHLY: 'price_1Ro9zrPqujcPv5fbmjN7bph6',
-      ANNUAL: 'price_1Ro9yePqujcPv5fb4PBXlwVb'
-    }
+      ANNUAL: 'price_1Ro9yePqujcPv5fb4PBXlwVb',
+    },
   };
-  
+
   return fallbackPriceIds[keyBase]?.[billKey] || null;
 }
 
 function resolveLegacyPriceId(billing?: Billing): string | null {
   if (!billing) return null;
-  
+
   // Try environment variables first
   if (billing === 'annual') {
-    const envPriceId = process.env.STRIPE_PRICE_ANNUAL ||
-                       process.env.NEXT_PUBLIC_STRIPE_PRICE_ANNUAL;
+    const envPriceId =
+      process.env.STRIPE_PRICE_ANNUAL || process.env.NEXT_PUBLIC_STRIPE_PRICE_ANNUAL;
     if (envPriceId) return envPriceId;
-    
+
     // Fallback to Professional Annual (most common annual plan)
     return 'price_1Ro9xiPqujcPv5fbutj97L7C';
   }
-  
-  const envPriceId = process.env.STRIPE_PRICE_MONTHLY ||
-                     process.env.NEXT_PUBLIC_STRIPE_PRICE_MONTHLY;
+
+  const envPriceId =
+    process.env.STRIPE_PRICE_MONTHLY || process.env.NEXT_PUBLIC_STRIPE_PRICE_MONTHLY;
   if (envPriceId) return envPriceId;
-  
+
   // Fallback to Professional Monthly (most common monthly plan)
   return 'price_1Ro9xiPqujcPv5fbutj97L7C';
 }
@@ -92,8 +93,12 @@ export async function POST(req: NextRequest) {
     } catch {
       body = {};
     }
-    const { priceId, email, tier, plan }:
-      { priceId?: string; email?: string; tier?: Billing; plan?: Plan } = body;
+    const {
+      priceId,
+      email,
+      tier,
+      plan,
+    }: { priceId?: string; email?: string; tier?: Billing; plan?: Plan } = body;
 
     if (!email) {
       return NextResponse.json({ error: 'Missing email' }, { status: 400 });
@@ -104,65 +109,73 @@ export async function POST(req: NextRequest) {
     // CRITICAL FIX: Subscribe to ConvertKit BEFORE creating Stripe session
     try {
       console.log(`Subscribing ${email} to ConvertKit before checkout...`);
-      
+
       const { getEnv } = await import('@/lib/env');
-      const CONVERTKIT_API_KEY = getEnv('KIT_API_KEY', { requiredInProd: false }) || getEnv('CONVERTKIT_API_KEY', { requiredInProd: false });
+      const CONVERTKIT_API_KEY =
+        getEnv('KIT_API_KEY', { requiredInProd: false }) ||
+        getEnv('CONVERTKIT_API_KEY', { requiredInProd: false });
       const formId = '8440957'; // Enterprise trial form ID for 'hero' form type
-      
+
       // Determine user type (beta users get special tagging)
       const isBetaUser = true; // All users are currently beta users during beta phase
       const userRole = isBetaUser ? 'beta_trial_user' : 'trial_user';
-      
+
       // Direct ConvertKit API call instead of internal HTTP request
       if (CONVERTKIT_API_KEY) {
-      const convertkitResponse = await fetch(`https://api.convertkit.com/v3/forms/${formId}/subscribe`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          api_key: CONVERTKIT_API_KEY,
-          email: email,
-          first_name: '',
-          fields: {
-            company_name: '',
-            industry_role: userRole,
-            lead_source: 'checkout',
-            signup_date: new Date().toISOString(),
-            trial_start_date: new Date().toISOString(),
-            trial_end_date: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
-            plan: plan || 'professional',
-            billing: tier || 'monthly',
-            is_beta: isBetaUser ? 'true' : 'false'
+        const convertkitResponse = await fetch(
+          `https://api.convertkit.com/v3/forms/${formId}/subscribe`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              api_key: CONVERTKIT_API_KEY,
+              email: email,
+              first_name: '',
+              fields: {
+                company_name: '',
+                industry_role: userRole,
+                lead_source: 'checkout',
+                signup_date: new Date().toISOString(),
+                trial_start_date: new Date().toISOString(),
+                trial_end_date: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+                plan: plan || 'professional',
+                billing: tier || 'monthly',
+                is_beta: isBetaUser ? 'true' : 'false',
+              },
+            }),
           }
-        })
-      });
+        );
 
-      if (convertkitResponse.ok) {
-        const result = await convertkitResponse.json();
-        console.log(`Successfully subscribed ${email} to ConvertKit before checkout`, result);
-        
-        // Subscribe to the email sequence (ID: 2453581)
-        const sequenceResponse = await fetch(`https://api.convertkit.com/v3/courses/2453581/subscribe`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            api_key: CONVERTKIT_API_KEY,
-            email: email
-          })
-        });
-        
-        if (sequenceResponse.ok) {
-          console.log(`Successfully subscribed ${email} to sequence 2453581`);
+        if (convertkitResponse.ok) {
+          const result = await convertkitResponse.json();
+          console.log(`Successfully subscribed ${email} to ConvertKit before checkout`, result);
+
+          // Subscribe to the email sequence (ID: 2453581)
+          const sequenceResponse = await fetch(
+            `https://api.convertkit.com/v3/courses/2453581/subscribe`,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                api_key: CONVERTKIT_API_KEY,
+                email: email,
+              }),
+            }
+          );
+
+          if (sequenceResponse.ok) {
+            console.log(`Successfully subscribed ${email} to sequence 2453581`);
+          } else {
+            console.warn(`Failed to subscribe ${email} to sequence`);
+          }
         } else {
-          console.warn(`Failed to subscribe ${email} to sequence`);
+          const errorText = await convertkitResponse.text();
+          console.warn(`ConvertKit subscription failed for ${email}:`, errorText);
         }
-      } else {
-        const errorText = await convertkitResponse.text();
-        console.warn(`ConvertKit subscription failed for ${email}:`, errorText);
-      }
       } else {
         console.warn('ConvertKit API key not set; skipping pre-checkout subscription');
       }
@@ -171,14 +184,17 @@ export async function POST(req: NextRequest) {
       // Continue with checkout even if ConvertKit fails
     }
     const resolvedPriceId = priceId || resolvePlanPriceId(plan, tier) || resolveLegacyPriceId(tier);
-    
+
     // Check if we have a valid price ID
     if (!resolvedPriceId) {
-      return NextResponse.json({ 
-        error: 'Missing priceId (provide priceId or tier with configured envs)' 
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          error: 'Missing priceId (provide priceId or tier with configured envs)',
+        },
+        { status: 400 }
+      );
     }
-    
+
     if (!isValidStripePriceId(resolvedPriceId)) {
       const msg = `Invalid priceId configured (received "${resolvedPriceId}"). Expected a Stripe Price ID starting with 'price_'.`;
       console.warn(msg);
@@ -191,12 +207,15 @@ export async function POST(req: NextRequest) {
         console.warn('Checkout dev fallback: redirecting to success without Stripe.');
         return NextResponse.json({ url: `${baseUrl}/success?session_id=dev_local` });
       }
-      
+
       // In production, if Stripe is not configured, provide a helpful error
       console.error('Stripe not configured in production');
-      return NextResponse.json({ 
-        error: 'Payments not configured. Please contact support.' 
-      }, { status: 503 });
+      return NextResponse.json(
+        {
+          error: 'Payments not configured. Please contact support.',
+        },
+        { status: 503 }
+      );
     }
 
     const trialDays = resolveTrialDays(plan);
@@ -210,13 +229,12 @@ export async function POST(req: NextRequest) {
       const sessionConfig: any = {
         mode: 'subscription',
         customer_email: email,
-        line_items: [
-          { price: resolvedPriceId, quantity: 1 },
-        ],
+        line_items: [{ price: resolvedPriceId, quantity: 1 }],
         allow_promotion_codes: true,
         // Apple Pay off for now: only 'card'
         payment_method_types: ['card'],
-        subscription_data: trialDays && trialDays > 0 ? { trial_period_days: trialDays } : undefined,
+        subscription_data:
+          trialDays && trialDays > 0 ? { trial_period_days: trialDays } : undefined,
         success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${baseUrl}/pricing`,
       };
@@ -232,28 +250,40 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ url: session.url });
     } catch (stripeError: any) {
       console.error('Stripe API error:', stripeError);
-      
+
       // Provide specific error messages for common Stripe errors
       if (stripeError.type === 'StripeInvalidRequestError') {
-        return NextResponse.json({ 
-          error: 'Invalid payment configuration. Please contact support.' 
-        }, { status: 400 });
+        return NextResponse.json(
+          {
+            error: 'Invalid payment configuration. Please contact support.',
+          },
+          { status: 400 }
+        );
       }
-      
+
       if (stripeError.type === 'StripeAuthenticationError') {
-        return NextResponse.json({ 
-          error: 'Payment service authentication failed. Please contact support.' 
-        }, { status: 503 });
+        return NextResponse.json(
+          {
+            error: 'Payment service authentication failed. Please contact support.',
+          },
+          { status: 503 }
+        );
       }
-      
-      return NextResponse.json({ 
-        error: 'Payment processing failed. Please try again or contact support.' 
-      }, { status: 500 });
+
+      return NextResponse.json(
+        {
+          error: 'Payment processing failed. Please try again or contact support.',
+        },
+        { status: 500 }
+      );
     }
   } catch (err: any) {
     console.error('Checkout route error:', err);
-    return NextResponse.json({ 
-      error: 'Checkout failed. Please try again or contact support.' 
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Checkout failed. Please try again or contact support.',
+      },
+      { status: 500 }
+    );
   }
 }

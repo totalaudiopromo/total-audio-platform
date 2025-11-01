@@ -6,11 +6,11 @@
 
 ### Quality Metrics by Story Type
 
-| Story Category | Depth Score | Status | Key Strengths |
-|---------------|-------------|---------|---------------|
-| Production (AI Mastering) | 83% | ✅ Pass | Specific budget (£150-300), timing (2 hours), personal experience as sadact |
-| Promotion (Festival Slots) | 83% | ✅ Pass | Audio Intel data (40% spike), specific timing (48 hours), budget (£200) |
-| Streaming (Spotify) | 67% | ⚠️ Marginal | Good tactical advice but could use more specific numbers |
+| Story Category             | Depth Score | Status      | Key Strengths                                                               |
+| -------------------------- | ----------- | ----------- | --------------------------------------------------------------------------- |
+| Production (AI Mastering)  | 83%         | ✅ Pass     | Specific budget (£150-300), timing (2 hours), personal experience as sadact |
+| Promotion (Festival Slots) | 83%         | ✅ Pass     | Audio Intel data (40% spike), specific timing (48 hours), budget (£200)     |
+| Streaming (Spotify)        | 67%         | ⚠️ Marginal | Good tactical advice but could use more specific numbers                    |
 
 ## Files Modified
 
@@ -64,12 +64,14 @@ Every generated newsletter section is now tested for:
 ## Example Depth Indicators
 
 ### Good Depth ✅
+
 - "After 5+ years pitching to specialist shows, I've noticed programmers are looking for..."
 - "Audio Intel data shows 40% spike in positive responses when..."
 - "Budget around £150-300 for professional mastering, 2 hours for testing..."
 - "I've seen tracks with 200 dedicated Bandcamp supporters get more attention than..."
 
 ### Insufficient Depth ❌
+
 - "Indies are more nimble than major labels" (generic, no backing)
 - "Social media is important for artists" (obvious, no specific tactics)
 - "You should work on your promotion" (vague, no actionable detail)
@@ -77,6 +79,7 @@ Every generated newsletter section is now tested for:
 ## API Costs
 
 Based on test runs:
+
 - **Per section**: ~£0.0000 (effectively free with Claude API)
 - **3-section newsletter**: ~£0.0000
 - **100 newsletters**: ~£0.00 (minimal cost)

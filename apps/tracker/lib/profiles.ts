@@ -1,4 +1,5 @@
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 
 export interface UserProfile {
   id: string;
@@ -58,11 +59,15 @@ export interface TeamMember {
   updated_at: string;
 }
 
-export async function getUserProfile(userId?: string): Promise<UserProfile | null> {
-  const supabase = await createClient();
+export async function getUserProfile(
+  userId?: string
+): Promise<UserProfile | null> {
+  const supabase = await createServerClient(cookies());
 
   if (!userId) {
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     if (!user) return null;
     userId = user.id;
   }
@@ -81,7 +86,7 @@ export async function createUserProfile(
   userId: string,
   profile: Partial<UserProfile>
 ): Promise<UserProfile | null> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
 
   const { data, error } = await supabase
     .from('user_profiles')
@@ -104,7 +109,7 @@ export async function updateUserProfile(
   userId: string,
   updates: Partial<UserProfile>
 ): Promise<UserProfile | null> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
 
   const { data, error } = await supabase
     .from('user_profiles')
@@ -121,11 +126,15 @@ export async function updateUserProfile(
   return data;
 }
 
-export async function getAgencyProfile(userId?: string): Promise<AgencyProfile | null> {
-  const supabase = await createClient();
+export async function getAgencyProfile(
+  userId?: string
+): Promise<AgencyProfile | null> {
+  const supabase = await createServerClient(cookies());
 
   if (!userId) {
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     if (!user) return null;
     userId = user.id;
   }
@@ -144,7 +153,7 @@ export async function createAgencyProfile(
   userId: string,
   profile: Omit<AgencyProfile, 'id' | 'user_id' | 'created_at' | 'updated_at'>
 ): Promise<AgencyProfile | null> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
 
   const { data, error } = await supabase
     .from('agency_profiles')
@@ -167,7 +176,7 @@ export async function updateAgencyProfile(
   userId: string,
   updates: Partial<Omit<AgencyProfile, 'id' | 'user_id'>>
 ): Promise<AgencyProfile | null> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
 
   const { data, error } = await supabase
     .from('agency_profiles')
@@ -187,8 +196,10 @@ export async function updateAgencyProfile(
 export async function getClientRelationships(
   type: 'agency' | 'client' = 'agency'
 ): Promise<ClientRelationship[]> {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const supabase = await createServerClient(cookies());
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) return [];
 
   const column = type === 'agency' ? 'agency_id' : 'client_id';
@@ -212,8 +223,10 @@ export async function createClientRelationship(
   role: 'client' | 'collaborator' | 'viewer' = 'client',
   notes?: string
 ): Promise<ClientRelationship | null> {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const supabase = await createServerClient(cookies());
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) return null;
 
   const { data, error } = await supabase
@@ -241,7 +254,7 @@ export async function updateClientRelationship(
   relationshipId: string,
   updates: Partial<Pick<ClientRelationship, 'status' | 'role' | 'notes'>>
 ): Promise<ClientRelationship | null> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
 
   const { data, error } = await supabase
     .from('client_relationships')
@@ -267,8 +280,10 @@ export async function acceptClientRelationship(
 }
 
 export async function getTeamMembers(): Promise<TeamMember[]> {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const supabase = await createServerClient(cookies());
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) return [];
 
   const { data, error } = await supabase
@@ -290,8 +305,10 @@ export async function inviteTeamMember(
   role: 'admin' | 'manager' | 'member' = 'member',
   permissions: string[] = ['view_campaigns', 'edit_activities']
 ): Promise<TeamMember | null> {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const supabase = await createServerClient(cookies());
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) return null;
 
   const { data, error } = await supabase

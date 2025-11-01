@@ -5,6 +5,7 @@
 **Audio Intel has its own separate GitHub repository** and is NOT part of the main monorepo's CI/CD pipeline.
 
 ### Key Details:
+
 - **Repository**: `totalaudiopromo/audio-intel`
 - **Remote URL**: `https://github.com/totalaudiopromo/audio-intel.git`
 - **Deployment**: Vercel automatic deployment on push to main branch
@@ -14,6 +15,7 @@
 ## 🚀 Deployment Process
 
 ### Correct Workflow:
+
 1. Make changes in `/apps/audio-intel/` directory
 2. Commit changes locally
 3. **Push to Audio Intel repository**: `git push origin main`
@@ -21,12 +23,14 @@
 5. Vercel automatically deploys to `https://intel.totalaudiopromo.com`
 
 ### ❌ Common Mistake:
+
 - **DON'T** push Audio Intel changes to the monorepo (`total-audio-platform`)
 - **DON'T** expect Audio Intel to deploy via the main monorepo's CI/CD pipeline
 
 ## 🔧 Repository Setup
 
 ### Verify Correct Remote:
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel
 git remote -v
@@ -34,6 +38,7 @@ git remote -v
 ```
 
 ### If Remote is Wrong:
+
 ```bash
 git remote set-url origin https://github.com/totalaudiopromo/audio-intel.git
 ```
@@ -49,12 +54,14 @@ git remote set-url origin https://github.com/totalaudiopromo/audio-intel.git
 ## 🚨 Troubleshooting
 
 ### If Deployment Doesn't Work:
+
 1. Check Vercel dashboard for build logs
 2. Verify environment variables are set in Vercel
 3. Ensure `vercel.json` configuration is correct
 4. Check that changes were pushed to the correct repository
 
 ### If Changes Don't Appear:
+
 1. Wait 2-3 minutes for Vercel deployment
 2. Check for browser caching issues
 3. Verify the correct branch was pushed
@@ -68,5 +75,6 @@ git remote set-url origin https://github.com/totalaudiopromo/audio-intel.git
 - Always push Audio Intel changes to its own repository for deployment
 
 ---
-*Last Updated: January 2025*
-*Repository: totalaudiopromo/audio-intel*
+
+_Last Updated: January 2025_
+_Repository: totalaudiopromo/audio-intel_

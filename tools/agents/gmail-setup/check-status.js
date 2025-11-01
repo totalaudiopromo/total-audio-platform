@@ -9,7 +9,9 @@ const oauth2Client = new google.auth.OAuth2(
   'http://localhost:3001/callback'
 );
 
-const tokens = JSON.parse(fs.readFileSync(path.join(__dirname, '../radio-promo/gmail-token.json'), 'utf8'));
+const tokens = JSON.parse(
+  fs.readFileSync(path.join(__dirname, '../radio-promo/gmail-token.json'), 'utf8')
+);
 oauth2Client.setCredentials(tokens);
 const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
 
@@ -26,7 +28,7 @@ async function checkLabels() {
     const msgs = await gmail.users.messages.list({
       userId: 'me',
       labelIds: [label.id],
-      maxResults: 1
+      maxResults: 1,
     });
     const count = msgs.data.resultSizeEstimate || 0;
 

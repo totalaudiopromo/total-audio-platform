@@ -10,8 +10,10 @@ const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '../../../../apps/tracker/.env.local') });
 
 // Supabase setup
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ucncbighzqudaszewjrv.supabase.co';
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseUrl =
+  process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ucncbighzqudaszewjrv.supabase.co';
+const supabaseKey =
+  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 if (!supabaseKey) {
   console.error('❌ SUPABASE key not found');
@@ -30,8 +32,8 @@ const ACTIVITIES = [
     metadata: {
       contacts: 15,
       region: 'Australia',
-      targets: ['Triple J', 'Triple R', 'PBS FM', 'KIIS', 'FBi Radio']
-    }
+      targets: ['Triple J', 'Triple R', 'PBS FM', 'KIIS', 'FBi Radio'],
+    },
   },
   {
     activity_type: 'email_sent',
@@ -40,8 +42,8 @@ const ACTIVITIES = [
     metadata: {
       tool: 'Gmail API',
       drafts: 5,
-      contacts: ['Anika Luna', 'Claire Mooney', 'Simon Winkler', 'Firas', 'KIIS Music Team']
-    }
+      contacts: ['Anika Luna', 'Claire Mooney', 'Simon Winkler', 'Firas', 'KIIS Music Team'],
+    },
   },
   {
     activity_type: 'response',
@@ -50,8 +52,8 @@ const ACTIVITIES = [
     metadata: {
       station: 'Amazing Radio',
       region: 'UK',
-      status: 'CONFIRMED ADD'
-    }
+      status: 'CONFIRMED ADD',
+    },
   },
   {
     activity_type: 'milestone',
@@ -61,8 +63,8 @@ const ACTIVITIES = [
       plays: 85,
       countries: 9,
       stations: 12,
-      source: 'WARM API'
-    }
+      source: 'WARM API',
+    },
   },
   {
     activity_type: 'email_sent',
@@ -72,8 +74,8 @@ const ACTIVITIES = [
       tool: 'Mailchimp',
       recipients: 20,
       region: 'UK',
-      targets: ['BBC Radio 1', 'BBC 6 Music', 'Community Radio']
-    }
+      targets: ['BBC Radio 1', 'BBC 6 Music', 'Community Radio'],
+    },
   },
   {
     activity_type: 'scheduled',
@@ -83,9 +85,9 @@ const ACTIVITIES = [
       scheduled_for: '2025-10-14T07:00:00+10:00',
       recipients: 30,
       type: 'Release day announcement',
-      regions: ['Australia', 'UK']
-    }
-  }
+      regions: ['Australia', 'UK'],
+    },
+  },
 ];
 
 async function addActivitiesToKyaraCampaign() {
@@ -129,7 +131,7 @@ async function addActivitiesToKyaraCampaign() {
     if (existingActivities && existingActivities.length > 0) {
       console.log(`⚠️  Campaign already has ${existingActivities.length} activities`);
       console.log('   Deleting existing activities first...\n');
-      
+
       const { error: deleteError } = await supabase
         .from('campaign_activities')
         .delete()
@@ -176,7 +178,6 @@ async function addActivitiesToKyaraCampaign() {
     console.log('3. See the 6 activities in chronological order');
     console.log('4. Perfect for Friday demo with Dan!\n');
     console.log('✅ Ready for demo! 🚀\n');
-
   } catch (error) {
     console.error('❌ Unexpected error:', error);
     throw error;
@@ -194,4 +195,3 @@ if (require.main === module) {
 }
 
 module.exports = { addActivitiesToKyaraCampaign };
-

@@ -1,6 +1,7 @@
 # Spotify Editorial Playlist Research - October 2025
 
 ## Research Overview
+
 Comprehensive research into Spotify's editorial playlist submission process, focusing on UK market and common artist pain points. Research conducted October 2025.
 
 ---
@@ -47,6 +48,7 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 ## Major UK Editorial Playlists (Top 5)
 
 ### 1. New Music Friday UK
+
 - **Playlist ID**: 37i9dQZF1DX4W3aJJYCDfV
 - **Genre**: Cross-genre (pop, rock, indie, electronic, hip-hop)
 - **Update Schedule**: Every Friday
@@ -56,6 +58,7 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 - **Source**: [Spotify New Music Friday](https://open.spotify.com/playlist/37i9dQZF1DX4W3aJJYCDfV)
 
 ### 2. Hot Hits UK
+
 - **Playlist ID**: 37i9dQZF1DWY4lFlS4Pnso
 - **Genre**: Current popular tracks across genres
 - **Update Schedule**: Regular updates
@@ -65,6 +68,7 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 - **Source**: [Spotify Hot Hits UK](https://open.spotify.com/playlist/37i9dQZF1DWY4lFlS4Pnso)
 
 ### 3. Rap UK
+
 - **Playlist ID**: Not publicly listed in search results
 - **Genre**: UK rap, grime, drill, hip-hop
 - **Update Schedule**: Regular updates
@@ -74,6 +78,7 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 - **Source**: [Spotify Support Documentation](https://support.spotify.com/us/artists/article/pitching-music-to-playlist-editors/)
 
 ### 4. Fresh Finds UK
+
 - **Playlist ID**: Not publicly listed in search results
 - **Genre**: Emerging artists across genres
 - **Update Schedule**: Weekly updates
@@ -83,6 +88,7 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 - **Source**: [Spotify Support Documentation](https://support.spotify.com/us/artists/article/pitching-music-to-playlist-editors/)
 
 ### 5. Indie List UK
+
 - **Playlist ID**: Not publicly listed in search results (common editorial playlist type)
 - **Genre**: UK independent and alternative rock/pop
 - **Update Schedule**: Regular updates
@@ -96,36 +102,42 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 ## Common Mistakes Artists Make
 
 ### 1. Submitting Too Late (MOST COMMON)
+
 - **Mistake**: Pitching less than 7 days before release, or only 7-14 days
 - **2025 Reality**: Independent artists without label support need 28+ days
 - **Impact**: Curators don't have time to review thousands of weekly submissions
 - **Source**: [Hypebot 2025 Guide](https://www.hypebot.com/hypebot/2025/07/guide-to-get-on-spotify-editorial-playlist-in-2025.html)
 
 ### 2. Incomplete or Poorly-Crafted Pitches
+
 - **Mistake**: Full biographies, award lists, or generic one-liners
 - **Examples of bad pitches**: "This will be the next big hit" or just "Check out my song"
 - **Impact**: Signals lack of effort, immediate rejection
 - **Source**: [iMusician Mistakes Guide](https://imusician.pro/en/resources/blog/playlist-submission-mistakes)
 
 ### 3. Incorrect Genre/Metadata Tagging
+
 - **Mistake**: Choosing multiple genres to "widen chances" or mislabelling genre
 - **Reality**: Top reason for editorial curator rejection
 - **Impact**: Track routed to wrong curators or ignored entirely
 - **Source**: [iMusician Guide](https://imusician.pro/en/resources/blog/playlist-submission-mistakes)
 
 ### 4. Not Providing Enough Detail
+
 - **Mistake**: Leaving submission form fields blank or incomplete
 - **Impact**: Curators have no context to understand where track fits
 - **Best Practice**: Fill every field accurately - mood, genre, instrumentation, language
 - **Source**: [Spotify for Artists](https://support.spotify.com/us/artists/article/pitching-music-to-playlist-editors/)
 
 ### 5. Pitching Already Released Music
+
 - **Mistake**: Trying to pitch tracks that are already live on Spotify
 - **Reality**: Submission tool only works for unreleased tracks
 - **Impact**: Impossible to pitch post-release - option disappears
 - **Source**: [Spotify Editorial Guide](https://artists.spotify.com/en/playlisting)
 
 ### 6. Neglecting Artist Profile and Online Presence
+
 - **Mistake**: Incomplete Spotify profile (no bio, image, banner) or no social campaign
 - **Reality**: Curators check artist profile and social media
 - **Impact**: Indicates artist not serious about career, reduces placement chances
@@ -133,6 +145,7 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 - **Source**: [iMusician Mistakes](https://imusician.pro/en/resources/blog/playlist-submission-mistakes)
 
 ### 7. Sarcastic or Incorrect Information
+
 - **Mistake**: Jokes or sarcasm in submission form, deliberately wrong metadata
 - **Impact**: Immediate disqualification, damages artist credibility
 - **Source**: [Indie Music Academy](https://www.indiemusicacademy.com/blog/spotify-editorial-release-pitch)
@@ -142,11 +155,13 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 ## Best Practices for Pitching (2025)
 
 ### Timing
+
 - **Ideal**: 28+ days before release for independent artists
 - **Minimum**: 7 days (only gets you Release Radar, not editorial consideration)
 - **Industry standard with PR/label**: 2-4 weeks minimum
 
 ### Pitch Content
+
 - **Tell the story**: What's the song about, what does it mean to you
 - **Reference similar artists**: Give curators easy reference points
 - **Describe the vibe**: Clear genre and mood description
@@ -154,12 +169,14 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 - **Be specific**: Fill every metadata field accurately
 
 ### Profile Optimisation
+
 - **Complete profile**: Image, banner, bio, Canvas artwork, Artist Pick
 - **Build following**: Encourage fans to follow your Spotify profile
 - **Show campaign**: Social media posts, engagement strategy, promotional plans
 - **Professional presence**: Consistent branding across platforms
 
 ### What NOT to Do
+
 - ❌ Don't write full biographies or list every award
 - ❌ Don't make bold claims like "next big hit"
 - ❌ Don't choose multiple genres to "game the system"
@@ -172,12 +189,14 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 ## Contact Discovery Methods (That Actually Work)
 
 ### Official Method (ONLY Way for Editorial Playlists)
+
 - **Spotify for Artists**: The only submission method for editorial playlists
 - **No direct email**: Cannot email Spotify curators directly
 - **Equal access**: All artists have same opportunity via official tool
 - **Source**: [Spotify Support](https://support.spotify.com/us/artists/article/pitching-music-to-playlist-editors/)
 
 ### For Independent Curator Playlists (NOT Editorial)
+
 - **Playlist descriptions**: Check for contact info or submission links
 - **Search method**: Search '@hotmail.com' or 'gmail.com' in Spotify search bar → check Playlists
 - **Genre search**: Search "genre, submissions" (e.g., "lofi, submissions")
@@ -186,6 +205,7 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 - **Source**: [Soundcamps Contact Guide](https://soundcamps.com/blog/how-to-contact-spotify-playlist-curators/)
 
 ### Tools and Services
+
 - **SubmitHub**: Third-party platform for independent curator pitching (not editorial)
 - **Playlist Push**: Paid service connecting artists to independent curators
 - **PlaylistPushers**: Directory of independent playlist contacts
@@ -197,30 +217,35 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 ## Artist Pain Points (Documented Frustrations)
 
 ### Time and Research Burden
+
 - **Finding curators**: Hours searching for genre-appropriate playlists
 - **Contact discovery**: Difficulty finding submission channels for independent playlists
 - **Submission tracking**: No centralised system to track which playlists pitched
 - **Follow-up**: No confirmation or feedback from Spotify editorial
 
 ### Process Confusion
+
 - **Editorial vs Independent**: Confusion about which playlists are editorial (can't email) vs independent (can contact)
 - **Submission windows**: Understanding optimal timing (7 days minimum vs 28 days realistic)
 - **Genre matching**: Identifying which playlists match specific subgenres
 - **Metadata requirements**: Understanding what information curators actually need
 
 ### Rejection and Lack of Feedback
+
 - **No confirmation**: Never know if pitch was reviewed
 - **No feedback**: Can't improve for next release
 - **One shot only**: Can't re-pitch after release
 - **Opaque process**: No insight into selection criteria
 
 ### Profile and Presence Requirements
+
 - **Social proof needed**: Curators check social media and artist profile
 - **Campaign requirement**: Expected to have promotional strategy in place
 - **Professional presentation**: Need complete profile, branding, content
 - **Chicken and egg**: Need streams to get playlisted, need playlists to get streams
 
 ### Independent Curator Outreach Challenges
+
 - **Contact discovery**: Finding actual email addresses or submission channels
 - **Personalisation time**: Each curator pitch needs customisation
 - **Hit rate**: Low response rates from independent curators
@@ -231,21 +256,25 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 ## Audio Intel Solution Angles
 
 ### Time Savings
+
 - **Research automation**: AI discovers genre-appropriate editorial playlists
 - **Contact intelligence**: Identifies independent curator contact methods
 - **Submission readiness**: Pre-populates metadata and genre information
 
 ### Process Clarity
+
 - **Editorial classification**: Clear identification of editorial vs independent playlists
 - **Genre matching**: AI matches tracks to appropriate playlist types
 - **Submission guidance**: Best practice recommendations based on genre and artist type
 
 ### Contact Discovery (For Independent Playlists)
+
 - **Curator contacts**: Discovers submission emails and forms for independent playlists
 - **Validation**: Verifies contact information current and accurate
 - **Engagement intel**: Identifies most responsive curators for specific genres
 
 ### Strategic Intelligence
+
 - **Playlist analysis**: Follower counts, update frequency, engagement metrics
 - **Genre positioning**: Understanding which playlists match artist's specific sound
 - **Campaign planning**: Optimal timing and submission strategy recommendations

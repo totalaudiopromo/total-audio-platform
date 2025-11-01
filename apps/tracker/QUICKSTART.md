@@ -7,9 +7,11 @@ I've built your intelligent campaign tracker based on the PRD. Everything is rea
 ## Step 1: Run Database Migration (5 minutes)
 
 ### Open Supabase SQL Editor:
+
 **URL**: https://supabase.com/dashboard/project/mjfhegawkusjlkcgfevp/sql
 
 ### Copy and Run Migration:
+
 1. Open: `supabase/migrations/010_tracker_prd_schema.sql`
 2. Copy **entire file** contents
 3. Paste into Supabase SQL editor
@@ -17,6 +19,7 @@ I've built your intelligent campaign tracker based on the PRD. Everything is rea
 5. Wait for "Success. No rows returned"
 
 ### What This Does:
+
 - ✅ Adds intelligence fields to campaigns table
 - ✅ Pre-populates 30+ industry benchmarks
 - ✅ Creates auto-calculation triggers
@@ -34,6 +37,7 @@ npm run dev
 ## Step 3: Test Intelligent Features
 
 ### Create Your First Campaign:
+
 1. Visit http://localhost:3000
 2. Sign up or login
 3. Click "+ New Campaign"
@@ -46,13 +50,16 @@ npm run dev
    - **Actual Reach**: 6
 
 ### You Should See:
+
 - ✨ **Success Rate**: 30% (calculated automatically)
 - 💰 **Cost Per Result**: £66.67
 - 📊 **Performance Score**: vs 26% industry average
 - 🎯 **Insight**: "Good work! Your campaign beat industry average by 15%"
 
 ### Unlock Pattern Recognition:
+
 Create 3+ campaigns with different platforms/genres to see:
+
 - "Your Electronic tracks perform 2.1x better than average"
 - "Playlists campaigns show 45% success rate - your most effective platform"
 - "Your optimal budget range is £300-£500"
@@ -60,12 +67,14 @@ Create 3+ campaigns with different platforms/genres to see:
 ## 🎨 What's Different From Before
 
 ### Old Tracker:
+
 - Basic campaign list
 - Manual calculations
 - No context
 - Spreadsheet replacement
 
 ### New Intelligent Tracker:
+
 - ✅ **Automatic Performance Scoring** (0-100)
 - ✅ **Industry Benchmarking** (30+ platforms/genres)
 - ✅ **Pattern Recognition** (learns what works for you)
@@ -75,6 +84,7 @@ Create 3+ campaigns with different platforms/genres to see:
 ## 💰 Value Delivered
 
 Each campaign now shows:
+
 - How you compare to industry average
 - Whether you're getting good value
 - What's working best for you
@@ -85,21 +95,24 @@ Each campaign now shows:
 ## 🔍 Verify It's Working
 
 ### Check Benchmarks Loaded:
+
 ```sql
 SELECT COUNT(*) FROM benchmarks;
 -- Should return 30+
 ```
 
 ### Check Auto-Calculation:
+
 ```sql
 SELECT tgname FROM pg_trigger WHERE tgrelid = 'campaigns'::regclass;
 -- Should show: trigger_calculate_intelligence
 ```
 
 ### Check Your Campaigns:
+
 ```sql
-SELECT name, success_rate, cost_per_result, performance_score 
-FROM campaigns 
+SELECT name, success_rate, cost_per_result, performance_score
+FROM campaigns
 WHERE user_id = 'your-user-id'
 LIMIT 5;
 -- Should show calculated intelligence fields
@@ -108,20 +121,25 @@ LIMIT 5;
 ## 🚨 Common Issues
 
 ### "Column does not exist"
+
 **Fix**: Run the migration SQL in Supabase SQL Editor
 
 ### "No insights showing"
+
 **Fix**: Need campaigns with actual_reach > 0
 
 ### "No patterns"
+
 **Fix**: Need 3+ completed campaigns
 
 ### "Can't connect to database"
+
 **Fix**: Check `.env.local` has correct Supabase credentials
 
 ## 🎉 You're Ready!
 
 Once migration is run:
+
 1. Restart dev server
 2. Create test campaigns
 3. Watch intelligence appear

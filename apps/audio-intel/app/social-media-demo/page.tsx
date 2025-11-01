@@ -14,9 +14,7 @@ export default function SocialMediaDemo() {
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             📱 Social Media Scheduler Interface
           </h1>
-          <p className="text-gray-600">
-            Your complete social media automation command center
-          </p>
+          <p className="text-gray-600">Your complete social media automation command center</p>
         </div>
 
         {/* Quick Stats */}
@@ -32,7 +30,7 @@ export default function SocialMediaDemo() {
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
@@ -44,7 +42,7 @@ export default function SocialMediaDemo() {
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
@@ -56,7 +54,7 @@ export default function SocialMediaDemo() {
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
@@ -85,21 +83,23 @@ export default function SocialMediaDemo() {
               <div>
                 <h3 className="font-semibold mb-2">1. Add Content to Notion</h3>
                 <p className="text-sm text-gray-600 mb-4">
-                  Write your social media posts in your Notion workspace. The system will automatically detect and sync content.
+                  Write your social media posts in your Notion workspace. The system will
+                  automatically detect and sync content.
                 </p>
-                
+
                 <h3 className="font-semibold mb-2">2. Review Scheduled Posts</h3>
                 <p className="text-sm text-gray-600 mb-4">
-                  Check the "Upcoming Posts" section to see what's scheduled and when it will be posted.
+                  Check the "Upcoming Posts" section to see what's scheduled and when it will be
+                  posted.
                 </p>
               </div>
-              
+
               <div>
                 <h3 className="font-semibold mb-2">3. Manual Posting</h3>
                 <p className="text-sm text-gray-600 mb-4">
                   Use the "Post Now" button to manually trigger posts or adjust timing as needed.
                 </p>
-                
+
                 <h3 className="font-semibold mb-2">4. Track Performance</h3>
                 <p className="text-sm text-gray-600 mb-4">
                   Monitor engagement metrics and posting consistency in the "Recent Posts" section.

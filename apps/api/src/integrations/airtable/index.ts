@@ -36,7 +36,7 @@ export class AirtableService {
 
       for (const record of contacts) {
         const fields = record.fields;
-        
+
         await prisma.contact.upsert({
           where: { email: (fields.Email as string) || '' },
           update: {
@@ -77,7 +77,7 @@ export class AirtableService {
       logger.info(`Synced ${contacts.length} contacts from Airtable for user ${userId}`);
     } catch (error) {
       logger.error('Airtable sync error:', error);
-      
+
       await prisma.integration.update({
         where: {
           userId_type: {
@@ -89,7 +89,7 @@ export class AirtableService {
           status: 'ERROR',
         },
       });
-      
+
       throw error;
     }
   }

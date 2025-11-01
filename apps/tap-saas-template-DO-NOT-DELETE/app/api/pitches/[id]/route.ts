@@ -2,17 +2,14 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { supabaseAdmin } from '@/lib/supabase';
 
-export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function GET(req: Request, { params }: { params: { id: string } }) {
   try {
     const session = await getServerSession();
     if (!session?.user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user).id || 'demo-user';
+    const userId = session.user.id || 'demo-user';
 
     const { data: pitch, error } = await supabaseAdmin
       .from('pitches')
@@ -28,24 +25,18 @@ export async function GET(
     return NextResponse.json({ pitch });
   } catch (error: any) {
     console.error('Pitch fetch error:', error);
-    return NextResponse.json(
-      { error: error.message || 'Failed to fetch pitch' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message || 'Failed to fetch pitch' }, { status: 500 });
   }
 }
 
-export async function PATCH(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   try {
     const session = await getServerSession();
     if (!session?.user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user).id || 'demo-user';
+    const userId = session.user.id || 'demo-user';
     const body = await req.json();
     const { subject_line, body: pitchBody, status } = body;
 
@@ -63,33 +54,24 @@ export async function PATCH(
       .single();
 
     if (error || !pitch) {
-      return NextResponse.json(
-        { error: 'Failed to update pitch' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to update pitch' }, { status: 500 });
     }
 
     return NextResponse.json({ pitch });
   } catch (error: any) {
     console.error('Pitch update error:', error);
-    return NextResponse.json(
-      { error: error.message || 'Failed to update pitch' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message || 'Failed to update pitch' }, { status: 500 });
   }
 }
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(req: Request, { params }: { params: { id: string } }) {
   try {
     const session = await getServerSession();
     if (!session?.user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user).id || 'demo-user';
+    const userId = session.user.id || 'demo-user';
 
     const { error } = await supabaseAdmin
       .from('pitches')
@@ -98,19 +80,12 @@ export async function DELETE(
       .eq('user_id', userId);
 
     if (error) {
-      return NextResponse.json(
-        { error: 'Failed to delete pitch' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to delete pitch' }, { status: 500 });
     }
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error('Pitch delete error:', error);
-    return NextResponse.json(
-      { error: error.message || 'Failed to delete pitch' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message || 'Failed to delete pitch' }, { status: 500 });
   }
 }
-

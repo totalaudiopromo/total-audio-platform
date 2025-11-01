@@ -60,7 +60,11 @@ function ImportCampaignsPage() {
         const clipboardData = JSON.parse(clipboardText);
 
         // Validate structure
-        if (!clipboardData.source || clipboardData.source !== 'pitch' || !clipboardData.campaign) {
+        if (
+          !clipboardData.source ||
+          clipboardData.source !== 'pitch' ||
+          !clipboardData.campaign
+        ) {
           setNotification('Invalid clipboard data format');
           setTimeout(() => setNotification(null), 3000);
           return;
@@ -74,14 +78,16 @@ function ImportCampaignsPage() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            campaigns: [{
-              name: campaign.name,
-              artist_name: campaign.artist,
-              platform: campaign.contacts?.[0]?.outlet || 'Pitch Generator',
-              status: 'active',
-              start_date: new Date().toISOString().split('T')[0],
-              notes: `Imported from Pitch Generator\nContact: ${campaign.contacts?.[0]?.name || ''}\nEmail: ${campaign.contacts?.[0]?.email || ''}\nPitch: ${campaign.contacts?.[0]?.pitchBody?.substring(0, 200) || ''}...`,
-            }]
+            campaigns: [
+              {
+                name: campaign.name,
+                artist_name: campaign.artist,
+                platform: campaign.contacts?.[0]?.outlet || 'Pitch Generator',
+                status: 'active',
+                start_date: new Date().toISOString().split('T')[0],
+                notes: `Imported from Pitch Generator\nContact: ${campaign.contacts?.[0]?.name || ''}\nEmail: ${campaign.contacts?.[0]?.email || ''}\nPitch: ${campaign.contacts?.[0]?.pitchBody?.substring(0, 200) || ''}...`,
+              },
+            ],
           }),
         });
 
@@ -92,7 +98,9 @@ function ImportCampaignsPage() {
         const importResult = await response.json();
 
         // Show success notification
-        setNotification(`Campaign "${campaign.name}" imported from Pitch Generator!`);
+        setNotification(
+          `Campaign "${campaign.name}" imported from Pitch Generator!`
+        );
         setResult(importResult);
 
         // Clean up URL
@@ -105,7 +113,6 @@ function ImportCampaignsPage() {
             router.push('/dashboard');
           }, 1000);
         }, 2500);
-
       } catch (error) {
         console.error('Error importing from clipboard:', error);
         setNotification('Failed to import campaign from clipboard');
@@ -130,10 +137,10 @@ function ImportCampaignsPage() {
       header: true,
       preview: 5,
       skipEmptyLines: true,
-      complete: (results) => {
+      complete: results => {
         setPreview(results.data as CampaignImportRow[]);
       },
-      error: (error) => {
+      error: error => {
         console.error('CSV parse error:', error);
         alert('Failed to parse CSV file. Please check the format.');
       },
@@ -149,7 +156,7 @@ function ImportCampaignsPage() {
     Papa.parse(file, {
       header: true,
       skipEmptyLines: true,
-      complete: async (results) => {
+      complete: async results => {
         try {
           const response = await fetch('/api/campaigns/import', {
             method: 'POST',
@@ -176,7 +183,7 @@ function ImportCampaignsPage() {
           setImporting(false);
         }
       },
-      error: (error) => {
+      error: error => {
         console.error('CSV parse error:', error);
         alert('Failed to parse CSV file.');
         setImporting(false);
@@ -217,9 +224,12 @@ Commercial Radio - Kiss FM Push,sadact,Commercial Radio,Electronic,2025-03-01,,8
           >
             ← Back to Dashboard
           </button>
-          <h1 className="text-4xl font-black text-gray-900 mb-2">Import Campaigns</h1>
+          <h1 className="text-4xl font-black text-gray-900 mb-2">
+            Import Campaigns
+          </h1>
           <p className="text-lg font-bold text-gray-700">
-            Upload your existing campaign spreadsheet and save hours of manual data entry
+            Upload your existing campaign spreadsheet and save hours of manual
+            data entry
           </p>
         </div>
 
@@ -227,20 +237,37 @@ Commercial Radio - Kiss FM Push,sadact,Commercial Radio,Electronic,2025-03-01,,8
         <div className="bg-blue-50 rounded-2xl p-6 border-4 border-teal-500 shadow-brutal mb-6">
           <div className="flex items-start gap-4">
             <div className="flex-shrink-0 w-12 h-12 bg-teal-600 rounded-xl flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg
+                className="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-black text-gray-900 mb-3">How to Import</h3>
+              <h3 className="text-xl font-black text-gray-900 mb-3">
+                How to Import
+              </h3>
               <ol className="space-y-2 text-sm font-bold text-gray-800">
                 <li className="flex items-start gap-2">
                   <span className="text-teal-600 font-black">1.</span>
-                  <span>Download the CSV template below to see the correct format</span>
+                  <span>
+                    Download the CSV template below to see the correct format
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-teal-600 font-black">2.</span>
-                  <span>Fill in your campaign data (name is required, everything else is optional)</span>
+                  <span>
+                    Fill in your campaign data (name is required, everything
+                    else is optional)
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-teal-600 font-black">3.</span>
@@ -248,7 +275,9 @@ Commercial Radio - Kiss FM Push,sadact,Commercial Radio,Electronic,2025-03-01,,8
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-teal-600 font-black">4.</span>
-                  <span>Click "Import Campaigns" to add them to your dashboard</span>
+                  <span>
+                    Click "Import Campaigns" to add them to your dashboard
+                  </span>
                 </li>
               </ol>
               <button
@@ -277,43 +306,75 @@ Commercial Radio - Kiss FM Push,sadact,Commercial Radio,Electronic,2025-03-01,,8
               className="cursor-pointer flex flex-col items-center"
             >
               <div className="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-4">
-                <svg className="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                <svg
+                  className="w-8 h-8 text-teal-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                  />
                 </svg>
               </div>
               <p className="text-lg font-black text-gray-900 mb-2">
                 {file ? file.name : 'Click to select CSV file'}
               </p>
               <p className="text-sm font-bold text-gray-600">
-                {file ? `${preview.length} campaigns detected` : 'Upload your campaign spreadsheet'}
+                {file
+                  ? `${preview.length} campaigns detected`
+                  : 'Upload your campaign spreadsheet'}
               </p>
             </label>
           </div>
 
           {file && preview.length > 0 && (
             <div className="mt-6">
-              <h3 className="text-lg font-black text-gray-900 mb-4">Preview (first 5 rows)</h3>
+              <h3 className="text-lg font-black text-gray-900 mb-4">
+                Preview (first 5 rows)
+              </h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b-2 border-gray-200">
-                      <th className="text-left py-2 px-3 font-black text-gray-700">Name</th>
-                      <th className="text-left py-2 px-3 font-black text-gray-700">Artist</th>
-                      <th className="text-left py-2 px-3 font-black text-gray-700">Platform</th>
-                      <th className="text-left py-2 px-3 font-black text-gray-700">Budget</th>
-                      <th className="text-left py-2 px-3 font-black text-gray-700">Status</th>
+                      <th className="text-left py-2 px-3 font-black text-gray-700">
+                        Name
+                      </th>
+                      <th className="text-left py-2 px-3 font-black text-gray-700">
+                        Artist
+                      </th>
+                      <th className="text-left py-2 px-3 font-black text-gray-700">
+                        Platform
+                      </th>
+                      <th className="text-left py-2 px-3 font-black text-gray-700">
+                        Budget
+                      </th>
+                      <th className="text-left py-2 px-3 font-black text-gray-700">
+                        Status
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {preview.map((row, i) => (
                       <tr key={i} className="border-b border-gray-100">
-                        <td className="py-2 px-3 font-bold text-gray-800">{row.name || '—'}</td>
-                        <td className="py-2 px-3 font-medium text-gray-700">{row.artist_name || '—'}</td>
-                        <td className="py-2 px-3 font-medium text-gray-700">{row.platform || '—'}</td>
+                        <td className="py-2 px-3 font-bold text-gray-800">
+                          {row.name || '—'}
+                        </td>
+                        <td className="py-2 px-3 font-medium text-gray-700">
+                          {row.artist_name || '—'}
+                        </td>
+                        <td className="py-2 px-3 font-medium text-gray-700">
+                          {row.platform || '—'}
+                        </td>
                         <td className="py-2 px-3 font-medium text-gray-700">
                           {row.budget ? `£${row.budget}` : '—'}
                         </td>
-                        <td className="py-2 px-3 font-medium text-gray-700">{row.status || '—'}</td>
+                        <td className="py-2 px-3 font-medium text-gray-700">
+                          {row.status || '—'}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -362,9 +423,19 @@ Commercial Radio - Kiss FM Push,sadact,Commercial Radio,Electronic,2025-03-01,,8
                   result.failed === 0 ? 'bg-green-600' : 'bg-orange-600'
                 }`}
               >
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   {result.failed === 0 ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
                   ) : (
                     <path
                       strokeLinecap="round"
@@ -377,16 +448,23 @@ Commercial Radio - Kiss FM Push,sadact,Commercial Radio,Electronic,2025-03-01,,8
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-black text-gray-900 mb-2">
-                  Import {result.failed === 0 ? 'Complete' : 'Completed with Errors'}
+                  Import{' '}
+                  {result.failed === 0 ? 'Complete' : 'Completed with Errors'}
                 </h3>
                 <div className="space-y-2 text-sm font-bold">
-                  <p className="text-green-700">✓ {result.success} campaigns imported successfully</p>
+                  <p className="text-green-700">
+                    ✓ {result.success} campaigns imported successfully
+                  </p>
                   {result.failed > 0 && (
                     <>
-                      <p className="text-orange-700">⚠️ {result.failed} campaigns failed to import</p>
+                      <p className="text-orange-700">
+                        ⚠️ {result.failed} campaigns failed to import
+                      </p>
                       {result.errors.length > 0 && (
                         <div className="mt-3 p-3 bg-white/50 rounded-lg">
-                          <p className="font-black text-gray-900 mb-2">Errors:</p>
+                          <p className="font-black text-gray-900 mb-2">
+                            Errors:
+                          </p>
                           <ul className="space-y-1">
                             {result.errors.map((error, i) => (
                               <li key={i} className="text-xs text-gray-800">
@@ -412,52 +490,76 @@ Commercial Radio - Kiss FM Push,sadact,Commercial Radio,Electronic,2025-03-01,,8
 
         {/* Supported Fields */}
         <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
-          <h3 className="text-lg font-black text-gray-900 mb-4">Supported CSV Fields</h3>
+          <h3 className="text-lg font-black text-gray-900 mb-4">
+            Supported CSV Fields
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
             <div>
               <span className="font-black text-gray-900">name</span>
               <span className="text-red-600 ml-1">*</span>
-              <span className="text-gray-600 font-medium ml-2">Campaign name (required)</span>
+              <span className="text-gray-600 font-medium ml-2">
+                Campaign name (required)
+              </span>
             </div>
             <div>
               <span className="font-black text-gray-900">artist_name</span>
-              <span className="text-gray-600 font-medium ml-2">Artist or band name</span>
+              <span className="text-gray-600 font-medium ml-2">
+                Artist or band name
+              </span>
             </div>
             <div>
               <span className="font-black text-gray-900">platform</span>
-              <span className="text-gray-600 font-medium ml-2">BBC Radio, Playlists, Blogs, etc.</span>
+              <span className="text-gray-600 font-medium ml-2">
+                BBC Radio, Playlists, Blogs, etc.
+              </span>
             </div>
             <div>
               <span className="font-black text-gray-900">genre</span>
-              <span className="text-gray-600 font-medium ml-2">Electronic, Indie, Rock, etc.</span>
+              <span className="text-gray-600 font-medium ml-2">
+                Electronic, Indie, Rock, etc.
+              </span>
             </div>
             <div>
               <span className="font-black text-gray-900">start_date</span>
-              <span className="text-gray-600 font-medium ml-2">YYYY-MM-DD format</span>
+              <span className="text-gray-600 font-medium ml-2">
+                YYYY-MM-DD format
+              </span>
             </div>
             <div>
               <span className="font-black text-gray-900">end_date</span>
-              <span className="text-gray-600 font-medium ml-2">YYYY-MM-DD format</span>
+              <span className="text-gray-600 font-medium ml-2">
+                YYYY-MM-DD format
+              </span>
             </div>
             <div>
               <span className="font-black text-gray-900">budget</span>
-              <span className="text-gray-600 font-medium ml-2">Number (e.g., 550)</span>
+              <span className="text-gray-600 font-medium ml-2">
+                Number (e.g., 550)
+              </span>
             </div>
             <div>
               <span className="font-black text-gray-900">target_reach</span>
-              <span className="text-gray-600 font-medium ml-2">Number of targets</span>
+              <span className="text-gray-600 font-medium ml-2">
+                Number of targets
+              </span>
             </div>
             <div>
               <span className="font-black text-gray-900">actual_reach</span>
-              <span className="text-gray-600 font-medium ml-2">Actual results achieved</span>
+              <span className="text-gray-600 font-medium ml-2">
+                Actual results achieved
+              </span>
             </div>
             <div>
               <span className="font-black text-gray-900">status</span>
-              <span className="text-gray-600 font-medium ml-2">planning, active, completed</span>
+              <span className="text-gray-600 font-medium ml-2">
+                planning, active, completed
+              </span>
             </div>
             <div className="md:col-span-2">
               <span className="font-black text-gray-900">notes</span>
-              <span className="text-gray-600 font-medium ml-2">Any additional campaign details</span>
+              <span className="text-gray-600 font-medium ml-2">
+                Any additional campaign details
+              </span>
             </div>
           </div>
         </div>
@@ -466,10 +568,15 @@ Commercial Radio - Kiss FM Push,sadact,Commercial Radio,Electronic,2025-03-01,,8
   );
 }
 
-
 export default function ImportCampaignsPageWrapper() {
   return (
-    <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="text-lg">Loading...</div></div>}>
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center">
+          <div className="text-lg">Loading...</div>
+        </div>
+      }
+    >
       <ImportCampaignsPage />
     </Suspense>
   );

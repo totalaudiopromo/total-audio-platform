@@ -53,7 +53,7 @@ Conversion Score: 9/10
 
 #### Outreach Message Template:
 
-*"Hi [Name], I noticed your work promoting [recent campaign]. I've been in radio promotion for 5+ years and built Audio Intel to solve the contact research headache. It turns a 15-hour contact research task into 15 minutes. Thought you might find it useful - fancy a quick demo?"*
+_"Hi [Name], I noticed your work promoting [recent campaign]. I've been in radio promotion for 5+ years and built Audio Intel to solve the contact research headache. It turns a 15-hour contact research task into 15 minutes. Thought you might find it useful - fancy a quick demo?"_
 
 ---
 
@@ -98,7 +98,7 @@ Conversion Score: 7/10
 
 #### Outreach Message Template:
 
-*"Hi [Name], love your latest track [track name]. As a producer myself (sadact), I know the pain of contact research for promotion. I built Audio Intel to solve this - it finds radio DJs, playlist curators, and bloggers for your genre in minutes rather than hours. Want to see it in action?"*
+_"Hi [Name], love your latest track [track name]. As a producer myself (sadact), I know the pain of contact research for promotion. I built Audio Intel to solve this - it finds radio DJs, playlist curators, and bloggers for your genre in minutes rather than hours. Want to see it in action?"_
 
 ---
 
@@ -143,7 +143,7 @@ Conversion Score: 8/10
 
 #### Outreach Message Template:
 
-*"Hi [Name], I've been watching [Agency Name]'s great work with [recent client]. As an industry insider, I built Audio Intel to solve the contact research bottleneck that kills team efficiency. It turns your junior staff's 8-hour research tasks into 30-minute jobs. Interested in seeing how it could scale your operations?"*
+_"Hi [Name], I've been watching [Agency Name]'s great work with [recent client]. As an industry insider, I built Audio Intel to solve the contact research bottleneck that kills team efficiency. It turns your junior staff's 8-hour research tasks into 30-minute jobs. Interested in seeing how it could scale your operations?"_
 
 ---
 

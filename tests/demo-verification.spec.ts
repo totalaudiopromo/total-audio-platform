@@ -48,7 +48,9 @@ test.describe('Audio Intel - Demo Verification', () => {
     await expect(header).toBeVisible();
 
     // Check for burger menu on mobile
-    const burgerMenu = page.locator('[aria-label*="menu"]').or(page.locator('button[aria-expanded]'));
+    const burgerMenu = page
+      .locator('[aria-label*="menu"]')
+      .or(page.locator('button[aria-expanded]'));
     const isBurgerVisible = await burgerMenu.isVisible().catch(() => false);
 
     if (!isBurgerVisible) {
@@ -71,7 +73,7 @@ test.describe('Tracker - Demo Verification', () => {
     await expect(header).toBeVisible();
 
     // Check that header text is black, not teal
-    const color = await header.evaluate((el) => {
+    const color = await header.evaluate(el => {
       return window.getComputedStyle(el).color;
     });
 
@@ -129,7 +131,7 @@ test.describe('Tracker - Demo Verification', () => {
 
     // Check that content doesn't overflow
     const body = page.locator('body');
-    const hasHorizontalScroll = await body.evaluate((el) => {
+    const hasHorizontalScroll = await body.evaluate(el => {
       return el.scrollWidth > el.clientWidth;
     });
 
@@ -230,7 +232,7 @@ test.describe('Pitch Generator - Demo Verification', () => {
     const isNewsletterVisible = await newsletterSection.isVisible().catch(() => false);
 
     if (isNewsletterVisible) {
-      const overflows = await newsletterSection.evaluate((el) => {
+      const overflows = await newsletterSection.evaluate(el => {
         const rect = el.getBoundingClientRect();
         return rect.right > window.innerWidth;
       });
@@ -256,7 +258,7 @@ test.describe('Pitch Generator - Demo Verification', () => {
 
     if (buttonCount > 0) {
       const firstButton = buttons.first();
-      const overflows = await firstButton.evaluate((el) => {
+      const overflows = await firstButton.evaluate(el => {
         const rect = el.getBoundingClientRect();
         return rect.right > window.innerWidth;
       });
@@ -277,7 +279,7 @@ test.describe('Pitch Generator - Demo Verification', () => {
 
     // Check for horizontal scroll
     const body = page.locator('body');
-    const hasHorizontalScroll = await body.evaluate((el) => {
+    const hasHorizontalScroll = await body.evaluate(el => {
       return el.scrollWidth > el.clientWidth;
     });
 
@@ -293,13 +295,13 @@ test.describe('Cross-Site Authentication', () => {
   test('can sign in with same credentials across all sites', async ({ page }) => {
     const credentials = {
       email: 'chris.schofield@libertymusicpr.com',
-      password: '2Sn00zyD0g$'
+      password: '2Sn00zyD0g$',
     };
 
     const sites = [
       { name: 'Audio Intel', url: 'http://localhost:3000' },
       { name: 'Tracker', url: 'http://localhost:3001' },
-      { name: 'Pitch Generator', url: 'http://localhost:3002' }
+      { name: 'Pitch Generator', url: 'http://localhost:3002' },
     ];
 
     for (const site of sites) {

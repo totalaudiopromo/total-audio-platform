@@ -15,9 +15,7 @@ Examples:
 }
 
 const rawName = args[0];
-let displayName = rawName
-  .replace(/[-_]+/g, ' ')
-  .replace(/\b\w/g, char => char.toUpperCase());
+let displayName = rawName.replace(/[-_]+/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
 let relativePath = args[0].includes('/') ? args[0] : path.join('apps', rawName);
 
 for (let i = 1; i < args.length; i += 1) {
@@ -87,8 +85,10 @@ async function pathExists(target) {
     let layout = await fs.readFile(layoutPath, 'utf8');
     layout = layout
       .replace(/TAP SaaS Template/g, displayName)
-      .replace(/Postcraft-inspired SaaS starter for Total Audio Promo micro tools\./,
-        `${displayName} · Generated from the TAP SaaS Template.`);
+      .replace(
+        /Postcraft-inspired SaaS starter for Total Audio Promo micro tools\./,
+        `${displayName} · Generated from the TAP SaaS Template.`
+      );
     await fs.writeFile(layoutPath, layout);
   } catch (err) {
     console.warn('⚠️  Unable to update layout metadata:', err.message);

@@ -7,6 +7,7 @@ https://github.com/user-attachments/assets/c8285e76-d0ed-4018-94c7-20535db6c944
 ## Installation
 
 **Step 1**: [Create an Airtable personal access token by clicking here](https://airtable.com/create/tokens/new). Details:
+
 - Name: Anything you want e.g. 'Airtable MCP Server Token'.
 - Scopes: `schema.bases:read`, `data.records:read`, and optionally `schema.bases:write` and `data.records:write`.
 - Access: The bases you want to access. If you're not sure, select 'Add all resources'.
@@ -47,12 +48,9 @@ Keep the token handy, you'll need it in the next step. It should look something 
   "mcpServers": {
     "airtable": {
       "command": "npx",
-      "args": [
-        "-y",
-        "airtable-mcp-server"
-      ],
+      "args": ["-y", "airtable-mcp-server"],
       "env": {
-        "AIRTABLE_API_KEY": "pat123.abc123",
+        "AIRTABLE_API_KEY": "pat123.abc123"
       }
     }
   }
@@ -243,7 +241,8 @@ Pull requests are welcomed on GitHub! To get started:
 3. Install dependencies with `npm install`
 4. Run `npm run test` to run tests
 5. Build with `npm run build`
-  - You can use `npm run build:watch` to automatically build after editing [`src/index.ts`](./src/index.ts). This means you can hit save, reload Claude Desktop (with Ctrl/Cmd+R), and the changes apply.
+
+- You can use `npm run build:watch` to automatically build after editing [`src/index.ts`](./src/index.ts). This means you can hit save, reload Claude Desktop (with Ctrl/Cmd+R), and the changes apply.
 
 ## Releases
 

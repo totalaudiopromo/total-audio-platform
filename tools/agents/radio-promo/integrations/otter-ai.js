@@ -2,7 +2,7 @@
 
 /**
  * Otter.ai API Integration for Liberty Music PR
- * 
+ *
  * Processes existing Otter.ai transcripts for campaign brief extraction
  * Handles both individual transcripts and batch processing
  */
@@ -15,7 +15,7 @@ class OtterAiIntegration {
     this.baseUrl = 'https://otter.ai/api/v1';
     this.rateLimitDelay = 2000; // 2 seconds between calls
     this.lastApiCall = 0;
-    
+
     if (!this.apiKey) {
       throw new Error('OTTER_AI_API_KEY environment variable is required');
     }
@@ -28,22 +28,22 @@ class OtterAiIntegration {
     // Rate limiting
     const now = Date.now();
     const timeSinceLastCall = now - this.lastApiCall;
-    
+
     if (timeSinceLastCall < this.rateLimitDelay) {
       const delay = this.rateLimitDelay - timeSinceLastCall;
       await new Promise(resolve => setTimeout(resolve, delay));
     }
-    
+
     try {
       this.lastApiCall = Date.now();
-      
+
       const response = await fetch(`${this.baseUrl}${endpoint}`, {
         headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
+          Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
-          ...options.headers
+          ...options.headers,
         },
-        ...options
+        ...options,
       });
 
       if (!response.ok) {
@@ -101,7 +101,9 @@ class OtterAiIntegration {
    */
   async searchTranscripts(query, limit = 20) {
     try {
-      const response = await this.callOtterAPI(`/transcripts/search?q=${encodeURIComponent(query)}&limit=${limit}`);
+      const response = await this.callOtterAPI(
+        `/transcripts/search?q=${encodeURIComponent(query)}&limit=${limit}`
+      );
       return response.transcripts || [];
     } catch (error) {
       console.error('Failed to search transcripts:', error);
@@ -115,21 +117,21 @@ class OtterAiIntegration {
   async processTranscriptForCampaign(transcriptId) {
     try {
       console.log(`Processing Otter.ai transcript: ${transcriptId}`);
-      
+
       // Get transcript details
       const transcript = await this.getTranscript(transcriptId);
       const transcriptText = await this.getTranscriptText(transcriptId);
-      
+
       // Extract campaign information using patterns
       const campaignBrief = this.extractCampaignInfo(transcriptText, transcript);
-      
+
       // Add Otter.ai metadata
       campaignBrief.source = 'otter_ai';
       campaignBrief.transcriptId = transcriptId;
       campaignBrief.transcriptTitle = transcript.title || 'Untitled';
       campaignBrief.transcriptDate = transcript.created_at || new Date().toISOString();
       campaignBrief.duration = transcript.duration || 0;
-      
+
       console.log(`✅ Campaign brief extracted from Otter.ai transcript`);
       return campaignBrief;
     } catch (error) {
@@ -145,7 +147,7 @@ class OtterAiIntegration {
     const campaignBrief = {
       extractedAt: new Date().toISOString(),
       source: 'otter_ai',
-      data: {}
+      data: {},
     };
 
     // Enhanced patterns for Otter.ai transcripts
@@ -154,13 +156,15 @@ class OtterAiIntegration {
       trackTitle: /(?:track|song|single)[:\s]+"([^"]+)"/i,
       genre: /(?:genre|style|type)[:\s]+([A-Za-z\s]+)/i,
       releaseDate: /(?:release|launch|drop)[:\s]+([A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{4})/i,
-      budget: /(?:budget|budget|spend)[:\s]*(?:is\s+)?(?:around\s+)?[\$£]?(\d+(?:,\d{3})*(?:\.\d{2})?)/i,
+      budget:
+        /(?:budget|budget|spend)[:\s]*(?:is\s+)?(?:around\s+)?[\$£]?(\d+(?:,\d{3})*(?:\.\d{2})?)/i,
       targets: /(?:target|want\s+to\s+target|focus\s+on)[:\s]*([^\.]+)/i,
       priority: /(?:priority|urgent|important)[:\s]*(?:level\s*[:\s]*)?(high|medium|low)/i,
-      deadline: /(?:deadline|due\s+date|need\s+by)[:\s]*([A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{4})/i,
+      deadline:
+        /(?:deadline|due\s+date|need\s+by)[:\s]*([A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{4})/i,
       campaignType: /(?:campaign|promo|promotion)[:\s]+([A-Za-z\s]+)/i,
       radioStations: /(?:radio|station)[:\s]+([A-Za-z\s,]+)/i,
-      contactInfo: /(?:contact|email|phone)[:\s]+([A-Za-z0-9@.\s\-+()]+)/i
+      contactInfo: /(?:contact|email|phone)[:\s]+([A-Za-z0-9@.\s\-+()]+)/i,
     };
 
     // Extract data using patterns
@@ -175,7 +179,7 @@ class OtterAiIntegration {
     campaignBrief.fullTranscript = transcriptText;
     campaignBrief.confidence = this.calculateExtractionConfidence(campaignBrief.data);
     campaignBrief.wordCount = transcriptText.split(/\s+/).length;
-    
+
     return campaignBrief;
   }
 
@@ -193,24 +197,24 @@ class OtterAiIntegration {
    */
   async batchProcessTranscripts(transcriptIds) {
     const results = [];
-    
+
     for (const transcriptId of transcriptIds) {
       try {
         const campaignBrief = await this.processTranscriptForCampaign(transcriptId);
         results.push({
           transcriptId,
           success: true,
-          campaignBrief
+          campaignBrief,
         });
       } catch (error) {
         results.push({
           transcriptId,
           success: false,
-          error: error.message
+          error: error.message,
         });
       }
     }
-    
+
     return results;
   }
 
@@ -224,11 +228,11 @@ class OtterAiIntegration {
       'track release',
       'single launch',
       'artist meeting',
-      'music promotion'
+      'music promotion',
     ];
-    
+
     const allResults = [];
-    
+
     for (const term of searchTerms) {
       try {
         const results = await this.searchTranscripts(term, 10);
@@ -237,12 +241,12 @@ class OtterAiIntegration {
         console.error(`Failed to search for "${term}":`, error);
       }
     }
-    
+
     // Remove duplicates
-    const uniqueResults = allResults.filter((transcript, index, self) => 
-      index === self.findIndex(t => t.id === transcript.id)
+    const uniqueResults = allResults.filter(
+      (transcript, index, self) => index === self.findIndex(t => t.id === transcript.id)
     );
-    
+
     return uniqueResults;
   }
 
@@ -254,7 +258,7 @@ class OtterAiIntegration {
       const allTranscripts = await this.getTranscripts(100);
       const cutoffDate = new Date();
       cutoffDate.setDate(cutoffDate.getDate() - days);
-      
+
       return allTranscripts.filter(transcript => {
         const transcriptDate = new Date(transcript.created_at);
         return transcriptDate >= cutoffDate;
@@ -274,18 +278,17 @@ class OtterAiIntegration {
       return {
         status: 'healthy',
         service: 'otter_ai',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
     } catch (error) {
       return {
         status: 'unhealthy',
         service: 'otter_ai',
         error: error.message,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
     }
   }
 }
 
 module.exports = OtterAiIntegration;
-

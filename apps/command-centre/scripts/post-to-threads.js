@@ -29,9 +29,10 @@ async function run() {
   }
 
   const headless = getArg('--headless');
-  const message = (process.argv[2] && !process.argv[2].startsWith('--'))
-    ? process.argv[2]
-    : (process.env.TEXT || 'Audio Intel test post – built for UK music pros.');
+  const message =
+    process.argv[2] && !process.argv[2].startsWith('--')
+      ? process.argv[2]
+      : process.env.TEXT || 'Audio Intel test post – built for UK music pros.';
 
   const sessionDir = path.resolve(__dirname, '..', '..', '..', '..', '.threads-session');
   await ensureDir(sessionDir);
@@ -40,12 +41,12 @@ async function run() {
     headless,
     userDataDir: sessionDir,
     defaultViewport: null,
-    args: ['--start-maximized']
+    args: ['--start-maximized'],
   });
 
   const page = await browser.newPage();
   page.setDefaultTimeout(30000);
-  const sleep = (ms) => new Promise(res => setTimeout(res, ms));
+  const sleep = ms => new Promise(res => setTimeout(res, ms));
 
   try {
     console.log('Opening Threads...');
@@ -58,7 +59,10 @@ async function run() {
       'button[aria-label="Create"]',
     ];
     for (const sel of loggedInSelectors) {
-      if (await page.$(sel)) { loggedIn = true; break; }
+      if (await page.$(sel)) {
+        loggedIn = true;
+        break;
+      }
     }
 
     if (!loggedIn) {
@@ -75,7 +79,11 @@ async function run() {
           const el = await page.$(sel);
           if (el) {
             const text = await page.evaluate(node => node.innerText || node.textContent || '', el);
-            if (text && /log in/i.test(text)) { await el.click(); clicked = true; break; }
+            if (text && /log in/i.test(text)) {
+              await el.click();
+              clicked = true;
+              break;
+            }
           }
         } catch {}
       }
@@ -85,9 +93,17 @@ async function run() {
         await page.goto('https://www.threads.net/login', { waitUntil: 'domcontentloaded' });
       }
 
-      console.log('Please complete Instagram/Threads login in the browser. Waiting up to 2 minutes...');
+      console.log(
+        'Please complete Instagram/Threads login in the browser. Waiting up to 2 minutes...'
+      );
       loggedIn = await Promise.race([
-        page.waitForSelector('button[aria-label="Create"], div[role="dialog"] textarea, div[contenteditable="true"]', { timeout: 120000 }).then(() => true).catch(() => false),
+        page
+          .waitForSelector(
+            'button[aria-label="Create"], div[role="dialog"] textarea, div[contenteditable="true"]',
+            { timeout: 120000 }
+          )
+          .then(() => true)
+          .catch(() => false),
       ]);
       if (!loggedIn) throw new Error('Login not detected within 2 minutes.');
       console.log('Login detected. Proceeding...');
@@ -100,8 +116,14 @@ async function run() {
       // Try alternative: look for visible buttons with matching text
       const candidates = await page.$$('button, div[role="button"], a[role="button"]');
       for (const c of candidates) {
-        const text = await page.evaluate(node => (node.innerText || node.textContent || '').trim(), c);
-        if (/^(create|new thread)$/i.test(text)) { createBtn = c; break; }
+        const text = await page.evaluate(
+          node => (node.innerText || node.textContent || '').trim(),
+          c
+        );
+        if (/^(create|new thread)$/i.test(text)) {
+          createBtn = c;
+          break;
+        }
       }
     }
     if (createBtn) await createBtn.click();
@@ -134,10 +156,19 @@ async function run() {
     // Click Post/Share button
     let posted = false;
     // Prefer aria-label buttons inside dialog
-    const dialogButtons = await page.$$('div[role="dialog"] button, div[role="dialog"] div[role="button"]');
+    const dialogButtons = await page.$$(
+      'div[role="dialog"] button, div[role="dialog"] div[role="button"]'
+    );
     for (const b of dialogButtons) {
-      const text = await page.evaluate(node => (node.innerText || node.textContent || '').trim(), b);
-      if (/^(post|share)$/i.test(text)) { await b.click(); posted = true; break; }
+      const text = await page.evaluate(
+        node => (node.innerText || node.textContent || '').trim(),
+        b
+      );
+      if (/^(post|share)$/i.test(text)) {
+        await b.click();
+        posted = true;
+        break;
+      }
     }
 
     if (!posted) throw new Error('Could not find Post/Share button.');
@@ -152,11 +183,11 @@ async function run() {
     console.log('If you see Threads, click “Create”, paste your text and post.');
     // Keep browser open for 3 minutes to allow manual posting
     await new Promise(res => setTimeout(res, 180000));
-    try { await browser.close(); } catch {}
+    try {
+      await browser.close();
+    } catch {}
     process.exit(0);
   }
 }
 
 run();
-
-

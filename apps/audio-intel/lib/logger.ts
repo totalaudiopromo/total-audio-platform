@@ -52,8 +52,7 @@ export const logger = new Logger();
 export const logApiCall = (endpoint: string, method: string, status: number, duration?: number) =>
   logger.api(endpoint, method, status, duration);
 
-export const logError = (message: string, error?: Error) =>
-  logger.error(message, error);
+export const logError = (message: string, error?: Error) => logger.error(message, error);
 
 export const logSuccess = (message: string, context?: LogContext) =>
   logger.success(message, context);

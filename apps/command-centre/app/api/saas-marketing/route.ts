@@ -41,13 +41,13 @@ export async function POST(req: NextRequest) {
     }
 
     console.log(`Executing: ${command}`);
-    
+
     let result: any;
-    
+
     try {
-      const { stdout, stderr } = await execAsync(command, { 
+      const { stdout, stderr } = await execAsync(command, {
         timeout: 30000,
-        cwd: path.dirname(agentPath)
+        cwd: path.dirname(agentPath),
       });
 
       if (stderr) {
@@ -56,11 +56,12 @@ export async function POST(req: NextRequest) {
 
       // Filter out log lines and find the JSON output
       const lines = stdout.split('\n');
-      const jsonLines = lines.filter(line => 
-        !line.includes('[SAAS-MARKETING]') && 
-        (line.trim().startsWith('{') || line.trim().startsWith('['))
+      const jsonLines = lines.filter(
+        line =>
+          !line.includes('[SAAS-MARKETING]') &&
+          (line.trim().startsWith('{') || line.trim().startsWith('['))
       );
-      
+
       if (jsonLines.length === 0) {
         throw new Error('No valid JSON output from agent');
       }
@@ -68,13 +69,12 @@ export async function POST(req: NextRequest) {
       // Take the first complete JSON object
       const jsonString = jsonLines[0];
       result = JSON.parse(jsonString);
-      
     } catch (execError) {
       console.warn('Agent execution failed, using fallback content:', execError);
       // Use fallback content generation
       result = generateFallbackContent(action, product, platform, contentType, topic);
     }
-    
+
     // If this is social content, automatically schedule it
     if (action === 'generate_social' && result.text) {
       await scheduleToSocialMedia(result);
@@ -87,32 +87,40 @@ export async function POST(req: NextRequest) {
       action,
       product,
       result,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
-
   } catch (error) {
     console.error('❌ SaaS Marketing Agent error:', error);
-    return NextResponse.json({
-      success: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
-      timestamp: new Date().toISOString()
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+        timestamp: new Date().toISOString(),
+      },
+      { status: 500 }
+    );
   }
 }
 
 // Fallback content generation when agent scripts are not available
-function generateFallbackContent(action: string, product: string, platform: string, contentType: string, topic?: any) {
+function generateFallbackContent(
+  action: string,
+  product: string,
+  platform: string,
+  contentType: string,
+  topic?: any
+) {
   const productInfo = {
     'audio-intel': {
       name: 'Audio Intel',
       description: 'AI-powered contact enrichment for music industry professionals',
-      benefits: ['Enrich contact databases', 'Validate email addresses', 'Streamline outreach']
+      benefits: ['Enrich contact databases', 'Validate email addresses', 'Streamline outreach'],
     },
     'playlist-pulse': {
       name: 'Playlist Pulse',
       description: 'Discover playlist curators and submission opportunities',
-      benefits: ['Find relevant playlists', 'Connect with curators', 'Track submissions']
-    }
+      benefits: ['Find relevant playlists', 'Connect with curators', 'Track submissions'],
+    },
   };
 
   const info = productInfo[product as keyof typeof productInfo] || productInfo['audio-intel'];
@@ -125,7 +133,7 @@ function generateFallbackContent(action: string, product: string, platform: stri
         product,
         hashtags: ['#MusicPromo', '#AudioIntel', '#MusicBusiness'],
         type: contentType,
-        generated: 'fallback'
+        generated: 'fallback',
       };
 
     case 'generate_blog':
@@ -133,7 +141,7 @@ function generateFallbackContent(action: string, product: string, platform: stri
         title: topic?.title || `How ${info.name} Transforms Music Promotion`,
         content: generateBlogContent(info, topic),
         keywords: topic?.keywords || ['music promotion', 'contact enrichment', 'music industry'],
-        generated: 'fallback'
+        generated: 'fallback',
       };
 
     case 'generate_calendar':
@@ -141,7 +149,7 @@ function generateFallbackContent(action: string, product: string, platform: stri
         posts: generateCalendarContent(info, 4),
         weeks: 4,
         product,
-        generated: 'fallback'
+        generated: 'fallback',
       };
 
     case 'health_check':
@@ -149,7 +157,7 @@ function generateFallbackContent(action: string, product: string, platform: stri
         status: 'operational',
         services: ['content-generation', 'scheduling', 'analytics'],
         uptime: '99.9%',
-        generated: 'fallback'
+        generated: 'fallback',
       };
 
     case 'get_metrics':
@@ -158,7 +166,7 @@ function generateFallbackContent(action: string, product: string, platform: stri
         scheduled_posts: 23,
         engagement_rate: '4.2%',
         reach: 12500,
-        generated: 'fallback'
+        generated: 'fallback',
       };
 
     default:
@@ -170,16 +178,19 @@ function generateSocialPost(info: any, platform: string, contentType: string): s
   const posts = {
     linkedin: {
       update: `🎵 Exciting news! ${info.name} is transforming how music professionals manage their contacts.\n\n✨ ${info.benefits.join('\n✨ ')}\n\nReady to streamline your music promotion? Try ${info.name} today!`,
-      announcement: `🚀 Major Update: ${info.name} just got even better!\n\nNew features:\n• Enhanced contact enrichment\n• Faster processing\n• Improved accuracy\n\nMusic industry professionals are seeing 3x better outreach results.`
+      announcement: `🚀 Major Update: ${info.name} just got even better!\n\nNew features:\n• Enhanced contact enrichment\n• Faster processing\n• Improved accuracy\n\nMusic industry professionals are seeing 3x better outreach results.`,
     },
     twitter: {
       update: `🎵 ${info.name}: ${info.description}\n\n${info.benefits[0]} ✨\n\nTry it free: intel.totalaudiopromo.com`,
-      announcement: `🚀 ${info.name} update is live!\n\n• Better accuracy\n• Faster results\n• More features\n\n#MusicPromo #AudioIntel`
-    }
+      announcement: `🚀 ${info.name} update is live!\n\n• Better accuracy\n• Faster results\n• More features\n\n#MusicPromo #AudioIntel`,
+    },
   };
 
-  return posts[platform as keyof typeof posts]?.[contentType as keyof typeof posts[keyof typeof posts]] || 
-         `Check out ${info.name} - ${info.description}`;
+  return (
+    posts[platform as keyof typeof posts]?.[
+      contentType as keyof (typeof posts)[keyof typeof posts]
+    ] || `Check out ${info.name} - ${info.description}`
+  );
 }
 
 function generateBlogContent(info: any, topic?: any): string {
@@ -213,14 +224,14 @@ function generateCalendarContent(info: any, weeks: number) {
         {
           platform: 'linkedin',
           content: `Week ${week}: ${info.name} tip - ${info.benefits[week % info.benefits.length]}`,
-          day: 'Monday'
+          day: 'Monday',
         },
         {
           platform: 'twitter',
           content: `Music promotion tip: Use ${info.name} to ${info.benefits[week % info.benefits.length].toLowerCase()}`,
-          day: 'Wednesday'
-        }
-      ]
+          day: 'Wednesday',
+        },
+      ],
     });
   }
   return posts;
@@ -239,14 +250,14 @@ async function scheduleToSocialMedia(content: any) {
       scheduledFor: getNextOptimalTime(content.platform),
       source: 'SaaS Marketing Agent',
       product: content.product || 'audio-intel',
-      status: 'scheduled'
+      status: 'scheduled',
     };
 
     // Call your existing social media API endpoint
     const response = await fetch('/api/social-media/schedule', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(scheduleData)
+      body: JSON.stringify(scheduleData),
     });
 
     if (response.ok) {
@@ -254,7 +265,6 @@ async function scheduleToSocialMedia(content: any) {
     } else {
       console.warn(`⚠️ Failed to schedule content: ${response.statusText}`);
     }
-
   } catch (error) {
     console.warn('Failed to auto-schedule content:', error);
   }
@@ -266,15 +276,15 @@ function getNextOptimalTime(platform: string) {
   const optimalHours = {
     linkedin: [8, 9, 10], // 8-10 AM
     twitter: [12, 13, 14, 15], // 12-3 PM
-    instagram: [11, 12, 13] // 11 AM - 1 PM
+    instagram: [11, 12, 13], // 11 AM - 1 PM
   };
 
   const hours = optimalHours[platform as keyof typeof optimalHours] || [12, 13];
   const randomHour = hours[Math.floor(Math.random() * hours.length)];
-  
+
   const scheduledTime = new Date();
   scheduledTime.setHours(randomHour, 0, 0, 0);
-  
+
   // If time has passed today, schedule for tomorrow
   if (scheduledTime <= now) {
     scheduledTime.setDate(scheduledTime.getDate() + 1);
@@ -289,34 +299,24 @@ export async function GET() {
     return NextResponse.json({
       available_actions: [
         'generate_blog',
-        'generate_social', 
+        'generate_social',
         'generate_calendar',
         'health_check',
-        'get_metrics'
+        'get_metrics',
       ],
-      available_products: [
-        'audio-intel',
-        'playlist-pulse', 
-        'command-centre',
-        'voice-echo'
-      ],
-      social_platforms: [
-        'linkedin',
-        'twitter',
-        'instagram'
-      ],
-      content_types: [
-        'update',
-        'story',
-        'thread'
-      ],
+      available_products: ['audio-intel', 'playlist-pulse', 'command-centre', 'voice-echo'],
+      social_platforms: ['linkedin', 'twitter', 'instagram'],
+      content_types: ['update', 'story', 'thread'],
       agent_status: 'operational',
-      last_updated: new Date().toISOString()
+      last_updated: new Date().toISOString(),
     });
   } catch (error) {
-    return NextResponse.json({
-      error: 'Failed to get agent info',
-      timestamp: new Date().toISOString()
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Failed to get agent info',
+        timestamp: new Date().toISOString(),
+      },
+      { status: 500 }
+    );
   }
 }

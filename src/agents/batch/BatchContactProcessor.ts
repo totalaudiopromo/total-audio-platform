@@ -29,7 +29,7 @@ export class BatchContactProcessor extends EventEmitter {
   constructor() {
     super();
     this.client = new Anthropic({
-      apiKey: process.env.ANTHROPIC_API_KEY
+      apiKey: process.env.ANTHROPIC_API_KEY,
     });
   }
 
@@ -54,7 +54,7 @@ export class BatchContactProcessor extends EventEmitter {
     this.emit('batch_start', {
       totalContacts: contactIds.length,
       totalBatches: batches.length,
-      timestamp: new Date()
+      timestamp: new Date(),
     });
 
     for (let i = 0; i < batches.length; i++) {
@@ -64,7 +64,7 @@ export class BatchContactProcessor extends EventEmitter {
         batchNumber: i + 1,
         totalBatches: batches.length,
         contactsInBatch: batch.length,
-        timestamp: new Date()
+        timestamp: new Date(),
       });
 
       await this.processBatch(batch, i + 1, batches.length, options);
@@ -78,7 +78,7 @@ export class BatchContactProcessor extends EventEmitter {
     this.emit('batch_complete', {
       totalContacts: contactIds.length,
       totalBatches: batches.length,
-      timestamp: new Date()
+      timestamp: new Date(),
     });
   }
 
@@ -101,9 +101,10 @@ export class BatchContactProcessor extends EventEmitter {
         model: 'claude-sonnet-4-20250514' as const,
         max_tokens: 2048,
         system: options.systemPrompt || this.getDefaultSystemPrompt(),
-        messages: [{
-          role: 'user' as const,
-          content: `Enrich contact data for contact ID: ${contactId}
+        messages: [
+          {
+            role: 'user' as const,
+            content: `Enrich contact data for contact ID: ${contactId}
 
 Please provide:
 1. Social media profile discovery (Twitter, Instagram, LinkedIn)
@@ -112,9 +113,10 @@ Please provide:
 4. Email deliverability check
 5. Activity level assessment (active/inactive)
 
-Return structured JSON with enrichment data.`
-        }]
-      }
+Return structured JSON with enrichment data.`,
+          },
+        ],
+      },
     }));
 
     // Create batch job
@@ -126,7 +128,7 @@ Return structured JSON with enrichment data.`
       totalBatches,
       contactCount: contactIds.length,
       estimatedCostSavings: '50%',
-      timestamp: new Date()
+      timestamp: new Date(),
     });
 
     console.log(`✅ Batch ${batchNumber}/${totalBatches} created: ${batchJob.id}`);
@@ -163,14 +165,16 @@ Return structured JSON with enrichment data.`
         succeeded: status.request_counts.succeeded,
         failed: status.request_counts.failed,
         total: status.request_counts.total,
-        percentComplete: (status.request_counts.succeeded / status.request_counts.total) * 100
+        percentComplete: (status.request_counts.succeeded / status.request_counts.total) * 100,
       };
 
       this.emit('batch_progress', progress);
 
       console.log(`📊 Batch ${batchNumber}/${totalBatches} (${batchId})`);
       console.log(`   Status: ${status.processing_status}`);
-      console.log(`   Progress: ${status.request_counts.succeeded}/${status.request_counts.total} (${progress.percentComplete.toFixed(1)}%)`);
+      console.log(
+        `   Progress: ${status.request_counts.succeeded}/${status.request_counts.total} (${progress.percentComplete.toFixed(1)}%)`
+      );
       console.log(`   Failed: ${status.request_counts.failed}`);
 
       if (status.processing_status === 'ended') {
@@ -182,7 +186,7 @@ Return structured JSON with enrichment data.`
           totalBatches,
           succeeded: status.request_counts.succeeded,
           failed: status.request_counts.failed,
-          timestamp: new Date()
+          timestamp: new Date(),
         });
 
         // Retrieve and process results
@@ -194,7 +198,11 @@ Return structured JSON with enrichment data.`
           results.push(result);
           await this.processResult(result);
         }
-      } else if (status.processing_status === 'failed' || status.processing_status === 'expired' || status.processing_status === 'canceled') {
+      } else if (
+        status.processing_status === 'failed' ||
+        status.processing_status === 'expired' ||
+        status.processing_status === 'canceled'
+      ) {
         const error = new Error(`Batch ${batchId} ${status.processing_status}`);
 
         this.emit('batch_error', {
@@ -202,7 +210,7 @@ Return structured JSON with enrichment data.`
           batchNumber,
           totalBatches,
           error: error.message,
-          timestamp: new Date()
+          timestamp: new Date(),
         });
 
         throw error;
@@ -232,7 +240,7 @@ Return structured JSON with enrichment data.`
           contactId,
           enrichmentData,
           success: true,
-          timestamp: new Date()
+          timestamp: new Date(),
         });
 
         // Here you would save to database
@@ -244,7 +252,7 @@ Return structured JSON with enrichment data.`
           contactId,
           error: result.result.error,
           success: false,
-          timestamp: new Date()
+          timestamp: new Date(),
         });
 
         console.error(`   ❌ Failed to enrich contact: ${contactId}`, result.result.error);
@@ -254,7 +262,7 @@ Return structured JSON with enrichment data.`
       this.emit('processing_error', {
         error: error.message,
         result,
-        timestamp: new Date()
+        timestamp: new Date(),
       });
     }
   }
@@ -272,9 +280,10 @@ Return structured JSON with enrichment data.`
 
       // Try to parse as JSON
       // Look for JSON block in markdown code fence or raw JSON
-      const jsonMatch = textContent.match(/```json\n([\s\S]*?)\n```/) ||
-                        textContent.match(/```\n([\s\S]*?)\n```/) ||
-                        textContent.match(/(\{[\s\S]*\})/);
+      const jsonMatch =
+        textContent.match(/```json\n([\s\S]*?)\n```/) ||
+        textContent.match(/```\n([\s\S]*?)\n```/) ||
+        textContent.match(/(\{[\s\S]*\})/);
 
       if (jsonMatch) {
         return JSON.parse(jsonMatch[1]);
@@ -387,7 +396,8 @@ Return structured JSON in this format:
 
     // Individual API call cost
     const individualInputCost = (inputTokensPerContact * contactCount * inputCostPerMTok) / 1000000;
-    const individualOutputCost = (outputTokensPerContact * contactCount * outputCostPerMTok) / 1000000;
+    const individualOutputCost =
+      (outputTokensPerContact * contactCount * outputCostPerMTok) / 1000000;
     const individualCost = individualInputCost + individualOutputCost;
 
     // Batch API cost (50% discount)
@@ -400,7 +410,7 @@ Return structured JSON in this format:
       individualCost: parseFloat(individualCost.toFixed(4)),
       batchCost: parseFloat(batchCost.toFixed(4)),
       savings: parseFloat(savings.toFixed(4)),
-      savingsPercent: parseFloat(savingsPercent.toFixed(1))
+      savingsPercent: parseFloat(savingsPercent.toFixed(1)),
     };
   }
 

@@ -12,7 +12,8 @@ const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '../../../../apps/tracker/.env.local') });
 
 // Supabase setup (from your tracker app .env.local)
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ucncbighzqudaszewjrv.supabase.co';
+const supabaseUrl =
+  process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ucncbighzqudaszewjrv.supabase.co';
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 if (!supabaseKey) {
@@ -112,8 +113,8 @@ const CAMPAIGN_ACTIVITIES = [
     metadata: {
       contacts: 15,
       region: 'Australia',
-      targets: ['Triple J', 'Triple R', 'PBS FM', 'KIIS', 'FBi Radio']
-    }
+      targets: ['Triple J', 'Triple R', 'PBS FM', 'KIIS', 'FBi Radio'],
+    },
   },
   {
     campaign_name: 'KYARA - Bloodshot',
@@ -123,8 +124,8 @@ const CAMPAIGN_ACTIVITIES = [
     metadata: {
       tool: 'Gmail API',
       drafts: 5,
-      contacts: ['Anika Luna', 'Claire Mooney', 'Simon Winkler', 'Firas', 'KIIS Music Team']
-    }
+      contacts: ['Anika Luna', 'Claire Mooney', 'Simon Winkler', 'Firas', 'KIIS Music Team'],
+    },
   },
   {
     campaign_name: 'KYARA - Bloodshot',
@@ -134,8 +135,8 @@ const CAMPAIGN_ACTIVITIES = [
     metadata: {
       station: 'Amazing Radio',
       region: 'UK',
-      status: 'CONFIRMED ADD'
-    }
+      status: 'CONFIRMED ADD',
+    },
   },
   {
     campaign_name: 'KYARA - Bloodshot',
@@ -146,8 +147,8 @@ const CAMPAIGN_ACTIVITIES = [
       plays: 85,
       countries: 9,
       stations: 12,
-      source: 'WARM API'
-    }
+      source: 'WARM API',
+    },
   },
   {
     campaign_name: 'KYARA - Bloodshot',
@@ -158,8 +159,8 @@ const CAMPAIGN_ACTIVITIES = [
       tool: 'Mailchimp',
       recipients: 20,
       region: 'UK',
-      targets: ['BBC Radio 1', 'BBC 6 Music', 'Community Radio']
-    }
+      targets: ['BBC Radio 1', 'BBC 6 Music', 'Community Radio'],
+    },
   },
   {
     campaign_name: 'KYARA - Bloodshot',
@@ -170,9 +171,9 @@ const CAMPAIGN_ACTIVITIES = [
       scheduled_for: '2025-10-14T07:00:00+10:00',
       recipients: 30,
       type: 'Release day announcement',
-      regions: ['Australia', 'UK']
-    }
-  }
+      regions: ['Australia', 'UK'],
+    },
+  },
 ];
 
 async function addKyaraCampaignToTracker() {
@@ -190,10 +191,15 @@ async function addKyaraCampaignToTracker() {
   try {
     // Step 1: Get user ID (you'll need to be authenticated)
     console.log('🔐 Fetching user authentication...');
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      console.error('❌ Authentication required. Please sign in to tracker.totalaudiopromo.com first');
+      console.error(
+        '❌ Authentication required. Please sign in to tracker.totalaudiopromo.com first'
+      );
       console.log('   Then export your session token to SUPABASE_SERVICE_ROLE_KEY');
       return;
     }
@@ -204,10 +210,12 @@ async function addKyaraCampaignToTracker() {
     console.log('📝 Creating campaign in database...');
     const { data: campaign, error: campaignError } = await supabase
       .from('campaigns')
-      .insert([{
-        ...KYARA_CAMPAIGN,
-        user_id: user.id
-      }])
+      .insert([
+        {
+          ...KYARA_CAMPAIGN,
+          user_id: user.id,
+        },
+      ])
       .select()
       .single();
 
@@ -275,7 +283,6 @@ async function addKyaraCampaignToTracker() {
     console.log('✅ Ready for Friday demo with Dan!\n');
 
     return campaign;
-
   } catch (error) {
     console.error('❌ Unexpected error:', error);
     throw error;

@@ -11,6 +11,7 @@
 ### 1. Multi-Client Campaign Organisation ⭐⭐⭐⭐⭐
 
 **Database Changes** ([019_multi_client_support.sql](apps/tracker/supabase/migrations/019_multi_client_support.sql)):
+
 - Added `client_name` field to campaigns table
 - Added `client_company` field (for formal company names)
 - Added `client_email` field (for client reporting)
@@ -19,6 +20,7 @@
 - Created `client_campaign_stats` view for agency dashboard analytics
 
 **TypeScript Types** ([lib/types.ts](apps/tracker/lib/types.ts)):
+
 - Updated `Campaign` interface with client fields
 - Added `ClientStats` type for agency analytics
 - All fields optional (backwards compatible)
@@ -26,6 +28,7 @@
 **UI Components**:
 
 #### SimpleCampaignForm.tsx - Agency Client Fields
+
 - Blue-highlighted "Agency Client Info" section
 - 4 client fields: name, company, email, billing code
 - Excel-familiar input design
@@ -33,6 +36,7 @@
 - Optional but prominent for agency workflow
 
 #### ClientFilterBar.tsx - Excel-Style Filtering
+
 - **Excel-familiar design**: Looks like Excel filter dropdown
 - **Quick search**: Ctrl+F style search box
 - **Client cards**: Shows campaign count, active campaigns, budget per client
@@ -42,6 +46,7 @@
 - **Smart grouping**: Automatically groups campaigns by client
 
 #### AICommandBar.tsx - Airtable-Style AI Commands
+
 - **Keyboard shortcut**: ⌘K / Ctrl+K to open (like Airtable/Linear)
 - **Natural language**: "Show campaigns for Royal Blood"
 - **Smart suggestions**: Context-aware command suggestions
@@ -53,6 +58,7 @@
 - **Visual polish**: Purple gradient, brutalist shadows, modal overlay
 
 #### DashboardClientFilters.tsx - Integrated Agency Dashboard
+
 - Combines AI Command Bar + Client Filter Bar
 - Success messages after AI commands
 - Intelligent filtering based on commands
@@ -60,6 +66,7 @@
 - Maintains "Your Campaigns" vs "[Client] Campaigns" title
 
 **CampaignManagerSkill** ([src/core/skills/implementations/CampaignManagerSkill.ts](src/core/skills/implementations/CampaignManagerSkill.ts)):
+
 - Natural language command parsing using Claude
 - Extracts: client names, platforms, status, date ranges
 - Smart suggestions based on past campaigns
@@ -72,17 +79,20 @@
 ## 🎯 DEMO FLOW FOR DAN (Liberty Records)
 
 ### Opening (30 seconds)
+
 "Right, so I've built agency-specific features since we last spoke. Let me show you how this works for someone like you managing multiple artists..."
 
 ### Demo Sequence (5 minutes)
 
 **1. Show AI Command Bar (Airtable-style)**
+
 - Press ⌘K to open command palette
 - Type: "Show campaigns for Royal Blood"
 - **Result**: Instantly filters to Royal Blood campaigns
 - **Key Message**: "Natural language, not clicking through menus"
 
 **2. Show Excel-Style Client Filter**
+
 - Click on client filter dropdown
 - Show all clients with campaign counts
 - Select "Architects"
@@ -90,6 +100,7 @@
 - **Key Message**: "Familiar Excel-style filtering, but smarter"
 
 **3. Create New Campaign with Client Info**
+
 - Click "+ New Campaign"
 - Fill in blue "Agency Client Info" section:
   - Client Name: "Rolo Tomassi"
@@ -99,17 +110,20 @@
 - **Key Message**: "Track billing, separate clients, professional reporting"
 
 **4. Show Client Grouping**
+
 - Back to dashboard
 - Use AI command: "Show all Liberty Records campaigns"
 - **Result**: See all Liberty artists grouped together
 - **Key Message**: "Manage your entire roster from one dashboard"
 
 **5. Quick Stats**
+
 - Show client filter bar with campaign counts
 - "Liberty Records: 8 campaigns (5 active), £2,400 budget"
 - **Key Message**: "Instant overview of every client's activity"
 
 ### Close (30 seconds)
+
 "This is designed for agencies like yours - familiar like Excel, smart like AI, professional for client reporting. £79/month saves you 8+ hours of admin work."
 
 ---
@@ -117,6 +131,7 @@
 ## 💡 AGENCY-SPECIFIC VALUE PROPS
 
 ### For Dan (Liberty Records):
+
 1. **Multi-artist management**: Track Royal Blood, Architects, Rolo Tomassi separately
 2. **Professional billing**: Client codes for invoicing ("RB-Q4-2024")
 3. **Client reporting**: Generate reports per client (coming in TIER 2)
@@ -124,6 +139,7 @@
 5. **Excel familiarity**: Designed for agencies used to spreadsheets
 
 ### Competitive Advantages:
+
 - **vs Google Sheets**: Smart filtering, AI commands, professional export
 - **vs Monday.com**: Music industry-specific, UK-centric, half the price
 - **vs Airtable**: Specialised for PR agencies, industry benchmarks
@@ -134,12 +150,14 @@
 ## 🛠️ TECHNICAL IMPLEMENTATION
 
 ### Stack:
+
 - **Frontend**: React, TypeScript, Tailwind CSS
 - **Backend**: Supabase (PostgreSQL view for stats)
 - **AI**: CampaignManagerSkill (Claude 3.5 Sonnet)
 - **Design**: Brutalist shadows, Excel-familiar UX
 
 ### Database Schema:
+
 ```sql
 -- New client fields on campaigns table
 client_name VARCHAR(255)
@@ -157,6 +175,7 @@ client_campaign_stats (aggregates by client)
 ```
 
 ### Component Architecture:
+
 ```
 DashboardClientFilters (Client Component)
   ├── AICommandBar (⌘K command palette)
@@ -173,6 +192,7 @@ DashboardClientFilters (Client Component)
 For realistic Dan demo, create:
 
 **Liberty Records Campaigns**:
+
 1. Royal Blood - BBC Radio 1 Campaign (Active)
    - Budget: £450
    - Platform: BBC Radio
@@ -205,10 +225,10 @@ For realistic Dan demo, create:
    - Company: "Liberty Records"
    - Billing: "RB-2024-Q3"
 
-**Other Artists** (to show multi-client filtering):
-5. Idles - BBC Radio 6 Music (Active)
-   - Client: "Idles"
-   - Company: "Rough Trade"
+**Other Artists** (to show multi-client filtering): 5. Idles - BBC Radio 6 Music (Active)
+
+- Client: "Idles"
+- Company: "Rough Trade"
 
 6. Black Midi - Spotify Editorial (Active)
    - Client: "Black Midi"
@@ -272,11 +292,13 @@ Includes:
 ✅ Priority support
 
 **ROI Calculation**:
+
 - Saves 8+ hours/month on client reporting
 - Junior staff @ £15/hour = £120/month savings
 - ROI: 50% return on £79/month investment
 
 **vs Competitors**:
+
 - Monday.com: £10-20/user (£50-100/month for 5 users)
 - Airtable: £20/user (£100/month for 5 users)
 - Tracker Agency: £79/month flat (no per-seat charges)

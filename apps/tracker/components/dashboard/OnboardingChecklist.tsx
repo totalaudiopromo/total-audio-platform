@@ -61,7 +61,7 @@ export function OnboardingChecklist({
     },
   ];
 
-  const completedCount = items.filter((item) => item.completed).length;
+  const completedCount = items.filter(item => item.completed).length;
   const totalCount = items.length;
   const isFullyComplete = completedCount === totalCount;
 
@@ -90,7 +90,8 @@ export function OnboardingChecklist({
               Get Started with Tracker
             </h2>
             <p className="text-sm font-bold text-gray-700">
-              Complete these steps to unlock the full power of campaign intelligence
+              Complete these steps to unlock the full power of campaign
+              intelligence
             </p>
           </div>
         </div>
@@ -115,7 +116,7 @@ export function OnboardingChecklist({
 
         {/* Checklist Items */}
         <div className="space-y-4">
-          {items.map((item) => (
+          {items.map(item => (
             <div
               key={item.id}
               className={`bg-white rounded-xl border-2 p-4 transition-all ${
@@ -157,10 +158,12 @@ export function OnboardingChecklist({
                   {!item.completed && (
                     <Link
                       href={item.action.href}
-                      onClick={(e) => {
+                      onClick={e => {
                         if (item.action.href.startsWith('#')) {
                           e.preventDefault();
-                          const target = document.querySelector(item.action.href);
+                          const target = document.querySelector(
+                            item.action.href
+                          );
                           if (target) {
                             (target as HTMLElement).click();
                           }
@@ -181,8 +184,10 @@ export function OnboardingChecklist({
         {completedCount > 0 && (
           <div className="mt-6 bg-white rounded-xl border-2 border-teal-300 p-4 text-center">
             <p className="text-sm font-bold text-teal-900">
-              {completedCount === 1 && "🎉 Great start! Keep going to unlock AI insights."}
-              {completedCount === 2 && "🚀 Almost there! Complete the final step."}
+              {completedCount === 1 &&
+                '🎉 Great start! Keep going to unlock AI insights.'}
+              {completedCount === 2 &&
+                '🚀 Almost there! Complete the final step.'}
             </p>
           </div>
         )}

@@ -19,7 +19,7 @@ This is a shared workspace used by the entire Liberty team. The agent is configu
 
 - **Mode**: Read-only intelligence gathering
 - **No notifications sent** to anyone
-- **Channels monitored**: 
+- **Channels monitored**:
   - Success Shout Outs: `AAAANDK-SNA`
   - Radio Superstars: `AAAACVjpDTI`
   - Campaigns: `AAAAu3XTTik`

@@ -1,4 +1,5 @@
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 export default async function AuthLayout({
@@ -6,8 +7,10 @@ export default async function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const supabase = await createServerClient(cookies());
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (user) {
     redirect('/dashboard');
@@ -23,7 +26,9 @@ export default async function AuthLayout({
             className="w-16 h-16 mx-auto mb-4"
           />
           <h1 className="text-3xl font-black text-gray-900">Tracker</h1>
-          <p className="text-gray-700 font-bold mt-2">Music Campaign Management</p>
+          <p className="text-gray-700 font-bold mt-2">
+            Music Campaign Management
+          </p>
         </div>
         {children}
       </div>

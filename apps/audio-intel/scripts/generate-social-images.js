@@ -13,32 +13,32 @@ const PLATFORM_SPECS = {
     width: 1200,
     height: 627,
     format: 'jpeg',
-    filename: 'og-linkedin.jpg'
+    filename: 'og-linkedin.jpg',
   },
   twitter: {
     width: 1200,
     height: 600,
     format: 'jpeg',
-    filename: 'og-twitter.jpg'
+    filename: 'og-twitter.jpg',
   },
   facebook: {
     width: 1200,
     height: 630,
     format: 'jpeg',
-    filename: 'og-facebook.jpg'
+    filename: 'og-facebook.jpg',
   },
   bluesky: {
     width: 1200,
     height: 630,
     format: 'jpeg',
-    filename: 'og-bluesky.jpg'
+    filename: 'og-bluesky.jpg',
   },
   general: {
     width: 1200,
     height: 630,
     format: 'jpeg',
-    filename: 'og-image.jpg'
-  }
+    filename: 'og-image.jpg',
+  },
 };
 
 // Audio Intel brand colors and messaging
@@ -49,7 +49,7 @@ const BRAND_CONFIG = {
   title: 'Audio Intel',
   tagline: '15 Hours → 15 Minutes',
   subtitle: 'Contact Enrichment for Music Promotion',
-  url: 'intel.totalaudiopromo.com'
+  url: 'intel.totalaudiopromo.com',
 };
 
 function generateHTMLCanvas(platform, spec) {
@@ -204,7 +204,7 @@ function generateMetadataConfigs() {
       description: getPlatformDescription(platform),
       image: `https://intel.totalaudiopromo.com/${spec.filename}`,
       url: 'https://intel.totalaudiopromo.com',
-      type: 'website'
+      type: 'website',
     };
   });
 
@@ -216,11 +216,16 @@ function generateMetadataConfigs() {
 
 function getPlatformDescription(platform) {
   const descriptions = {
-    linkedin: 'Transform chaotic contact spreadsheets into organised databases in minutes. Built by radio promoters for radio promoters. BBC Radio 1 + Spotify case studies proven. Professional contact intelligence for music industry growth.',
-    twitter: 'Transform 15 hours of contact research into 15 minutes. BBC Radio 1 ✅ Spotify ✅ 100% success rate ✅ Built by radio promoters for radio promoters.',
-    facebook: 'Stop spending weekends researching music contacts! Audio Intel transforms chaotic spreadsheets into organised databases in minutes. Real case studies: BBC Radio 1, Spotify playlist curators. Built by musicians, for musicians.',
-    bluesky: 'Audio Intel: 15 hours → 15 minutes ⚡ Transform music promotion chaos into organised contact intelligence. BBC Radio 1 + Spotify case studies proven.',
-    general: 'Transform chaotic contact spreadsheets into organised databases in minutes. Built by radio promoters for radio promoters. BBC Radio 1 + Spotify case studies proven.'
+    linkedin:
+      'Transform chaotic contact spreadsheets into organised databases in minutes. Built by radio promoters for radio promoters. BBC Radio 1 + Spotify case studies proven. Professional contact intelligence for music industry growth.',
+    twitter:
+      'Transform 15 hours of contact research into 15 minutes. BBC Radio 1 ✅ Spotify ✅ 100% success rate ✅ Built by radio promoters for radio promoters.',
+    facebook:
+      'Stop spending weekends researching music contacts! Audio Intel transforms chaotic spreadsheets into organised databases in minutes. Real case studies: BBC Radio 1, Spotify playlist curators. Built by musicians, for musicians.',
+    bluesky:
+      'Audio Intel: 15 hours → 15 minutes ⚡ Transform music promotion chaos into organised contact intelligence. BBC Radio 1 + Spotify case studies proven.',
+    general:
+      'Transform chaotic contact spreadsheets into organised databases in minutes. Built by radio promoters for radio promoters. BBC Radio 1 + Spotify case studies proven.',
   };
 
   return descriptions[platform] || descriptions.general;
@@ -253,9 +258,9 @@ Commands:
   metadata    Generate metadata configurations only
 
 Platform specifications:
-${Object.entries(PLATFORM_SPECS).map(([platform, spec]) =>
-  `  ${platform.padEnd(10)} ${spec.width}x${spec.height} ${spec.format}`
-).join('\n')}
+${Object.entries(PLATFORM_SPECS)
+  .map(([platform, spec]) => `  ${platform.padEnd(10)} ${spec.width}x${spec.height} ${spec.format}`)
+  .join('\n')}
 
 Examples:
   node scripts/generate-social-images.js generate

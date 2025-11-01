@@ -178,11 +178,7 @@ export function parseCSV(csvPath: string): PSEORowData[] {
  * Returns null if no research file exists (page not ready for generation)
  */
 export function loadResearchData(topicSlug: string): ResearchData | null {
-  const researchPath = path.join(
-    process.cwd(),
-    'docs/pseo/research',
-    `${topicSlug}-research.md`
-  );
+  const researchPath = path.join(process.cwd(), 'docs/pseo/research', `${topicSlug}-research.md`);
 
   if (!fs.existsSync(researchPath)) {
     console.warn(`⚠️  No research file for ${topicSlug} - skipping page generation`);
@@ -273,7 +269,7 @@ export function generatePageData(
 
   if (!validation.valid) {
     console.error(`❌ Validation failed for ${rowData.topic_slug}:`);
-    validation.errors.forEach((error) => console.error(`   - ${error}`));
+    validation.errors.forEach(error => console.error(`   - ${error}`));
     return null;
   }
 
@@ -357,7 +353,7 @@ function generatePainPoints(row: PSEORowData, research: ResearchData) {
   return {
     heading: 'Where Manual Research Fell Apart',
     intro: row.pain_point,
-    points: research.submission_process.common_mistakes.map((mistake) => ({
+    points: research.submission_process.common_mistakes.map(mistake => ({
       title: mistake.split(':')[0],
       description: mistake.split(':')[1] || mistake,
     })),
@@ -390,7 +386,10 @@ function generateWorkflow(row: PSEORowData, research: ResearchData) {
 }
 
 function generateContactsHeading(row: PSEORowData): string {
-  return `Sample ${row.topic_slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')} Contacts After Enrichment`;
+  return `Sample ${row.topic_slug
+    .split('-')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ')} Contacts After Enrichment`;
 }
 
 function generateContactsDisclaimer(research: ResearchData): string {
@@ -419,7 +418,10 @@ function generateResults(row: PSEORowData, research: ResearchData) {
 
 function generatePlaybook(row: PSEORowData, research: ResearchData) {
   return {
-    heading: `Use This Playbook for Your Next ${row.topic_slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')} Pitch`,
+    heading: `Use This Playbook for Your Next ${row.topic_slug
+      .split('-')
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ')} Pitch`,
     intro: 'Follow this exact workflow for verified contact intelligence.',
     steps: [
       'Gather all existing contact data (spreadsheets, notes, anything)',
@@ -441,8 +443,12 @@ function generateTestimonial(row: PSEORowData) {
 
 function generateCTA(row: PSEORowData) {
   return {
-    heading: `Ready to Stop Guessing ${row.topic_slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')} Contacts?`,
-    intro: 'Audio Intel provides verified contact intelligence with source verification and confidence scoring.',
+    heading: `Ready to Stop Guessing ${row.topic_slug
+      .split('-')
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ')} Contacts?`,
+    intro:
+      'Audio Intel provides verified contact intelligence with source verification and confidence scoring.',
     primaryButton: {
       text: 'Drop Your Chaos Here',
       href: '/pricing?plan=professional&billing=monthly',
@@ -481,7 +487,7 @@ export function generateAllPages(csvPath: string): {
     errors: [] as Array<{ slug: string; errors: string[] }>,
   };
 
-  rows.forEach((row) => {
+  rows.forEach(row => {
     // Only process pages marked as 'planned' or 'draft'
     if (row.status !== 'planned' && row.status !== 'draft') {
       result.skipped.push(row.topic_slug);

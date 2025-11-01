@@ -12,7 +12,7 @@ async function getToken(baseUrl, email, password) {
   const response = await fetch(`${baseUrl}/auth/exchange`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'User-Agent': 'Total-Audio-Promo/1.0' },
-    body: JSON.stringify({ email, password })
+    body: JSON.stringify({ email, password }),
   });
   if (!response.ok) {
     const text = await response.text();
@@ -24,7 +24,7 @@ async function getToken(baseUrl, email, password) {
 async function fetchPlays(baseUrl, token) {
   const params = new URLSearchParams({ countryCode: 'GB', pageSize: '10' });
   const response = await fetch(`${baseUrl}/plays?${params.toString()}`, {
-    headers: { Authorization: `Bearer ${await token}` }
+    headers: { Authorization: `Bearer ${await token}` },
   });
   const text = await response.text();
   return { ok: response.ok, status: response.status, body: text };
@@ -58,5 +58,3 @@ async function main() {
 if (require.main === module) {
   main();
 }
-
-

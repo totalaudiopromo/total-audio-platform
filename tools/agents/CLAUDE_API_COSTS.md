@@ -21,53 +21,58 @@ You're **already using Claude API** for Audio Intel contact enrichment!
 ## 💰 Complete Monthly Cost Breakdown
 
 ### CORE OPERATIONS (£0.06/month)
-| Agent | Frequency | Cost per Run | Monthly Cost |
-|-------|-----------|--------------|--------------|
-| Contact Enrichment | 20/month (manual) | £0.003 (0.3p) | £0.06 |
-| Database Operations | Always on | £0 | £0 |
-| Agent Manager | Always on | £0 | £0 |
-| Data Cleanup | Weekly | £0 | £0 |
-| **SUBTOTAL** | | | **£0.06** |
+
+| Agent               | Frequency         | Cost per Run  | Monthly Cost |
+| ------------------- | ----------------- | ------------- | ------------ |
+| Contact Enrichment  | 20/month (manual) | £0.003 (0.3p) | £0.06        |
+| Database Operations | Always on         | £0            | £0           |
+| Agent Manager       | Always on         | £0            | £0           |
+| Data Cleanup        | Weekly            | £0            | £0           |
+| **SUBTOTAL**        |                   |               | **£0.06**    |
 
 ### MARKETING & CONTENT (£0.62/month)
-| Agent | Frequency | Cost per Run | Monthly Cost |
-|-------|-----------|--------------|--------------|
-| Newsletter Automation | 4/month (Mon 9am) | £0.03 (3p) | £0.12 |
-| Newsjacking | 30/month (daily 8am) | £0.01 (1p) | £0.30 |
-| Content Generation | 10/month (manual) | £0.02 (2p) | £0.20 |
-| Social Media | Weekly | £0 | £0 |
-| Business Analytics | Weekly | £0 | £0 |
-| SaaS Marketing | Manual | £0 | £0 |
-| **SUBTOTAL** | | | **£0.62** |
+
+| Agent                 | Frequency            | Cost per Run | Monthly Cost |
+| --------------------- | -------------------- | ------------ | ------------ |
+| Newsletter Automation | 4/month (Mon 9am)    | £0.03 (3p)   | £0.12        |
+| Newsjacking           | 30/month (daily 8am) | £0.01 (1p)   | £0.30        |
+| Content Generation    | 10/month (manual)    | £0.02 (2p)   | £0.20        |
+| Social Media          | Weekly               | £0           | £0           |
+| Business Analytics    | Weekly               | £0           | £0           |
+| SaaS Marketing        | Manual               | £0           | £0           |
+| **SUBTOTAL**          |                      |              | **£0.62**    |
 
 ### CLIENT DELIVERY (£0/month normally)
-| Agent | Frequency | Cost per Run | Monthly Cost |
-|-------|-----------|--------------|--------------|
-| Liberty Intelligence | As needed | £0.01 (1p) | £0* |
-| Liberty Project | Manual | £0 | £0 |
-| Liberty Email | Manual | £0 | £0 |
-| Liberty Radio | Manual | £0 | £0 |
-| Liberty Analytics | Manual | £0 | £0 |
-| Liberty Coverage | Manual | £0 | £0 |
-| Liberty Followup | Manual | £0 | £0 |
-| **SUBTOTAL** | | | **£0*** |
 
-*Only runs for paying client work
+| Agent                | Frequency | Cost per Run | Monthly Cost |
+| -------------------- | --------- | ------------ | ------------ |
+| Liberty Intelligence | As needed | £0.01 (1p)   | £0\*         |
+| Liberty Project      | Manual    | £0           | £0           |
+| Liberty Email        | Manual    | £0           | £0           |
+| Liberty Radio        | Manual    | £0           | £0           |
+| Liberty Analytics    | Manual    | £0           | £0           |
+| Liberty Coverage     | Manual    | £0           | £0           |
+| Liberty Followup     | Manual    | £0           | £0           |
+| **SUBTOTAL**         |           |              | **£0\***     |
+
+\*Only runs for paying client work
 
 ### MONITORING & ALERTS (£0/month)
-| Agent | Frequency | Cost per Run | Monthly Cost |
-|-------|-----------|--------------|--------------|
-| Gmail Autopilot | Every 2 hours | £0 | £0 |
-| Health Check | Every 30 min | £0 | £0 |
-| Agent Dashboard | Real-time | £0 | £0 |
-| Cost Tracker | Real-time | £0 | £0 |
-| **SUBTOTAL** | | | **£0** |
+
+| Agent           | Frequency     | Cost per Run | Monthly Cost |
+| --------------- | ------------- | ------------ | ------------ |
+| Gmail Autopilot | Every 2 hours | £0           | £0           |
+| Health Check    | Every 30 min  | £0           | £0           |
+| Agent Dashboard | Real-time     | £0           | £0           |
+| Cost Tracker    | Real-time     | £0           | £0           |
+| **SUBTOTAL**    |               |              | **£0**       |
 
 ---
 
 ## 📊 TOTAL MONTHLY COST: £0.68
 
 **Breakdown**:
+
 - Core Operations: £0.06 (9%)
 - Marketing & Content: £0.62 (91%)
 - Client Delivery: £0 (only when clients pay)
@@ -78,6 +83,7 @@ You're **already using Claude API** for Audio Intel contact enrichment!
 ## 🔄 Cost Comparison
 
 ### Old Setup (Perplexity API)
+
 ```
 Contact Enrichment only: 20 × £3 = £60/month
 Newsletter: Not automated (manual)
@@ -86,6 +92,7 @@ TOTAL: £60/month + 10 hours/week manual work
 ```
 
 ### New Setup (Claude API - ALL AGENTS ENABLED)
+
 ```
 Contact Enrichment: 20 × £0.003 = £0.06/month
 Newsletter: 4 × £0.03 = £0.12/month
@@ -101,6 +108,7 @@ TOTAL: £0.68/month + 0 hours manual work
 ## 📈 Time Savings Value
 
 **Time saved per month**: ~190 hours
+
 - Contact enrichment: 100 hours (20 × 5h)
 - Newsletter: 32 hours (4 × 8h)
 - Newsjacking: 120 hours (30 × 4h)
@@ -118,21 +126,26 @@ TOTAL: £0.68/month + 0 hours manual work
 ## 💳 Claude API Billing
 
 ### Current Setup
+
 **API Key**: Already configured in Audio Intel
 **Model**: claude-3-5-sonnet-20241022 (latest)
 **Location**: `apps/audio-intel/.env.local`
 
 ### Anthropic Pricing (October 2025)
+
 **Claude 3.5 Sonnet**:
+
 - Input: $3 per 1M tokens (~£2.40/1M tokens)
 - Output: $15 per 1M tokens (~£12/1M tokens)
 
 **Your typical usage**:
+
 - Input: ~50,000 tokens/month
 - Output: ~30,000 tokens/month
 - **Total cost**: £0.68/month
 
 ### Adding Credit
+
 1. Go to: https://console.anthropic.com/settings/billing
 2. Add credit to your account (£5-10 recommended)
 3. Set up recurring payment (optional)
@@ -144,6 +157,7 @@ TOTAL: £0.68/month + 0 hours manual work
 ## ⚡ What's Actually Running
 
 ### Automated (Cron Jobs)
+
 ✅ **Newsletter Automation** - Monday 9am
 ✅ **Newsjacking Agent** - Daily 8am
 ✅ **Social Media** - Sunday 8pm
@@ -153,6 +167,7 @@ TOTAL: £0.68/month + 0 hours manual work
 ✅ **Data Cleanup** - Sunday 2am
 
 ### Manual Trigger Only
+
 ⏸️ **Contact Enrichment** - Run when customers request
 ⏸️ **Content Generation** - Run when you need content
 ⏸️ **Liberty Agents** - Run for client work only
@@ -162,16 +177,19 @@ TOTAL: £0.68/month + 0 hours manual work
 ## 🎯 Budget Recommendations
 
 ### Conservative (Current Setup)
+
 **Budget**: £2/month
 **Coverage**: All automated agents + buffer
 **Risk**: Very low
 
 ### Comfortable
+
 **Budget**: £5/month
 **Coverage**: Automated agents + manual content generation
 **Risk**: Minimal
 
 ### Growth Phase (When revenue comes in)
+
 **Budget**: £10/month
 **Coverage**: Everything + room for experiments
 **Risk**: None
@@ -181,20 +199,26 @@ TOTAL: £0.68/month + 0 hours manual work
 ## 🚨 Cost Control Safeguards
 
 ### 1. Agent Registry Controls
+
 All agents marked with:
+
 - `estimatedCost`: Transparent cost per run
 - `automation`: "manual" for expensive operations
 - `costNote`: Clear explanation of charges
 
 ### 2. Dashboard Warnings
+
 Command Centre shows:
+
 - Real-time cost tracking
 - Monthly budget usage
 - Warning at 80% budget
 - Alert at 95% budget
 
 ### 3. Anthropic Dashboard
+
 Monitor actual usage:
+
 - https://console.anthropic.com/settings/usage
 - See tokens used per request
 - Track daily/monthly spend
@@ -207,21 +231,26 @@ Monitor actual usage:
 ### Where Claude API is Used
 
 **Audio Intel** (`apps/audio-intel/app/api/enrich-claude/route.ts`):
+
 ```typescript
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const ANTHROPIC_MODEL = 'claude-3-5-sonnet-20241022';
 ```
+
 ✅ Already configured and working
 
 **Content Agents** (`tools/agents/core-agents/content/service-wrapper.js`):
+
 ```javascript
 const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY
+  apiKey: process.env.ANTHROPIC_API_KEY,
 });
 ```
+
 ✅ Already configured and working
 
 **Liberty Intelligence** (`tools/agents/radio-promo/agents/intelligence-agent.js`):
+
 - Currently uses Google Gemini
 - **Recommendation**: Update to use Claude API instead (same £0.01 cost, better quality)
 
@@ -230,6 +259,7 @@ const anthropic = new Anthropic({
 ## 🔄 Next Steps
 
 ### Immediate (This Week)
+
 1. ✅ Verify Claude API key working (already done)
 2. ✅ Enable all AI agents in registry (already done)
 3. ⏳ Add £5-10 credit to Anthropic account
@@ -237,12 +267,14 @@ const anthropic = new Anthropic({
 5. ⏳ Test newsjacking agent (runs daily 8am)
 
 ### Short-term (Next 2 Weeks)
+
 1. Monitor actual usage vs estimates
 2. Adjust automation schedules if needed
 3. Set up budget alerts in Anthropic dashboard
 4. Update Liberty Intelligence to use Claude instead of Gemini
 
 ### Long-term (Next Month)
+
 1. Review cost efficiency monthly
 2. Optimize prompts to reduce token usage
 3. Add new AI agents as needed
@@ -259,6 +291,7 @@ const anthropic = new Anthropic({
 **ROI**: 13,588x
 
 **All AI agents enabled**:
+
 - Contact enrichment (Audio Intel core)
 - Newsletter generation (The Unsigned Advantage)
 - Newsjacking (daily news analysis)

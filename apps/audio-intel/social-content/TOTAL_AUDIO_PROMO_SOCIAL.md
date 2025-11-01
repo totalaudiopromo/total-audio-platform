@@ -128,7 +128,7 @@ Generate authentic UK music industry social media posts for Total Audio Promo's 
 ### **Weekly Content Themes**
 
 - **Monday**: Music Industry Insight Monday
-- **Tuesday**: Time-Saving Tuesday  
+- **Tuesday**: Time-Saving Tuesday
 - **Wednesday**: Behind-the-Scenes Wednesday
 - **Thursday**: User Success Stories
 - **Friday**: Community Engagement Friday

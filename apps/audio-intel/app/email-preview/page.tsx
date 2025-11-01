@@ -1,7 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { betaWelcomeEmail, betaEndingEmail, betaFinalEmail, type EmailTemplateData } from '@/utils/emailTemplates';
+import {
+  betaWelcomeEmail,
+  betaEndingEmail,
+  betaFinalEmail,
+  type EmailTemplateData,
+} from '@/utils/emailTemplates';
 
 export default function EmailPreviewPage() {
   const [selectedTemplate, setSelectedTemplate] = useState<string>('welcome');
@@ -11,25 +16,25 @@ export default function EmailPreviewPage() {
     betaDaysLeft: 4,
     pricingUrl: 'https://intel.totalaudiopromo.com/pricing',
     upgradeUrl: 'https://intel.totalaudiopromo.com/pricing',
-    unsubscribeUrl: 'https://intel.totalaudiopromo.com/unsubscribe'
+    unsubscribeUrl: 'https://intel.totalaudiopromo.com/unsubscribe',
   });
 
   const templates = {
     welcome: {
       name: 'Beta Welcome Email',
       description: 'Sent immediately after beta signup',
-      generator: betaWelcomeEmail
+      generator: betaWelcomeEmail,
     },
     ending: {
       name: 'Beta Ending Email',
       description: 'Sent 4 days before beta ends',
-      generator: betaEndingEmail
+      generator: betaEndingEmail,
     },
     final: {
       name: 'Beta Final Email',
       description: 'Sent on final day of beta',
-      generator: betaFinalEmail
-    }
+      generator: betaFinalEmail,
+    },
   };
 
   const currentTemplate = templates[selectedTemplate as keyof typeof templates];
@@ -39,9 +44,7 @@ export default function EmailPreviewPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            🎵 Audio Intel Email Templates
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">🎵 Audio Intel Email Templates</h1>
           <p className="text-gray-600">
             Professional HTML email templates with perfect spacing and branding
           </p>
@@ -65,9 +68,7 @@ export default function EmailPreviewPage() {
                     }`}
                   >
                     <div className="font-medium">{template.name}</div>
-                    <div className="text-sm text-gray-500 mt-1">
-                      {template.description}
-                    </div>
+                    <div className="text-sm text-gray-500 mt-1">{template.description}</div>
                   </button>
                 ))}
               </div>
@@ -80,7 +81,7 @@ export default function EmailPreviewPage() {
                     <input
                       type="text"
                       value={sampleData.firstName || ''}
-                      onChange={(e) => setSampleData({...sampleData, firstName: e.target.value})}
+                      onChange={e => setSampleData({ ...sampleData, firstName: e.target.value })}
                       className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
                   </div>
@@ -89,7 +90,9 @@ export default function EmailPreviewPage() {
                     <input
                       type="number"
                       value={sampleData.betaDaysLeft || 4}
-                      onChange={(e) => setSampleData({...sampleData, betaDaysLeft: parseInt(e.target.value)})}
+                      onChange={e =>
+                        setSampleData({ ...sampleData, betaDaysLeft: parseInt(e.target.value) })
+                      }
                       className="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
                   </div>
@@ -98,9 +101,7 @@ export default function EmailPreviewPage() {
             </div>
 
             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
-              <h4 className="font-semibold text-yellow-800 mb-2">
-                ✅ Email Improvements
-              </h4>
+              <h4 className="font-semibold text-yellow-800 mb-2">✅ Email Improvements</h4>
               <ul className="text-sm text-yellow-700 space-y-1">
                 <li>• Professional spacing & typography</li>
                 <li>• Custom branded signature</li>
@@ -170,8 +171,8 @@ export default function EmailPreviewPage() {
                 Option 1: Replace ConvertKit Templates (Recommended)
               </h4>
               <p className="text-gray-600 text-sm mb-3">
-                Copy the HTML from above and paste it into your ConvertKit email sequences.
-                This keeps your existing automation while improving the design.
+                Copy the HTML from above and paste it into your ConvertKit email sequences. This
+                keeps your existing automation while improving the design.
               </p>
               <ul className="text-sm text-gray-600 space-y-1">
                 <li>• Use ConvertKit's custom HTML editor</li>
@@ -182,15 +183,17 @@ export default function EmailPreviewPage() {
             </div>
 
             <div className="border-l-4 border-green-500 pl-4">
-              <h4 className="font-medium text-green-900 mb-2">
-                Option 2: Custom Email System
-              </h4>
+              <h4 className="font-medium text-green-900 mb-2">Option 2: Custom Email System</h4>
               <p className="text-gray-600 text-sm mb-3">
                 Use your existing Resend integration with these templates for full control.
               </p>
               <ul className="text-sm text-gray-600 space-y-1">
-                <li>• Import <code>emailTemplates.ts</code></li>
-                <li>• Use <code>sendCustomEmail()</code> function</li>
+                <li>
+                  • Import <code>emailTemplates.ts</code>
+                </li>
+                <li>
+                  • Use <code>sendCustomEmail()</code> function
+                </li>
                 <li>• Schedule with your own cron jobs</li>
                 <li>• Zero external branding</li>
               </ul>

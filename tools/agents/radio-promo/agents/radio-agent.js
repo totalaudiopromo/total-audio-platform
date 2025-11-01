@@ -44,7 +44,7 @@ class RadioAgent {
       amazingUsername: this.config.amazingRadioUsername,
       amazingPassword: this.config.amazingRadioPassword,
       wigwamUsername: this.config.wigwamUsername,
-      wigwamPassword: this.config.wigwamPassword
+      wigwamPassword: this.config.wigwamPassword,
     });
     this.log('success', 'Radio submission service ready');
     return true;
@@ -64,7 +64,10 @@ class RadioAgent {
       if (!value) return [];
       if (Array.isArray(value)) return value.filter(Boolean);
       if (typeof value === 'string' && value.includes(',')) {
-        return value.split(',').map(v => v.trim()).filter(Boolean);
+        return value
+          .split(',')
+          .map(v => v.trim())
+          .filter(Boolean);
       }
       return [value];
     };
@@ -75,20 +78,36 @@ class RadioAgent {
       return Number.isNaN(date.getTime()) ? null : date.toISOString().split('T')[0];
     };
 
-    const campaignStart = pick(['campaignStartDate', 'startDate', 'campaign_start_date', 'intakeDate', 'intake_date']);
+    const campaignStart = pick([
+      'campaignStartDate',
+      'startDate',
+      'campaign_start_date',
+      'intakeDate',
+      'intake_date',
+    ]);
     const campaignEnd = pick(['campaignEndDate', 'endDate', 'campaign_end_date']);
-    const streamingLinks = toArray(pick(['streamingLinks', 'streaming_links', 'spotifyLink', 'soundcloudLink', 'listenLinks'])).filter(Boolean);
-    const downloadLinks = toArray(pick(['downloadLinks', 'download_links', 'mp3Link', 'wavLink', 'assetsDownload'])).filter(Boolean);
+    const streamingLinks = toArray(
+      pick(['streamingLinks', 'streaming_links', 'spotifyLink', 'soundcloudLink', 'listenLinks'])
+    ).filter(Boolean);
+    const downloadLinks = toArray(
+      pick(['downloadLinks', 'download_links', 'mp3Link', 'wavLink', 'assetsDownload'])
+    ).filter(Boolean);
     const otherLinksRaw = [
       ...toArray(pick(['otherLinks', 'other_links', 'additionalLinks', 'links'])).filter(Boolean),
-      ...toArray(source.otherLinks).filter(Boolean)
+      ...toArray(source.otherLinks).filter(Boolean),
     ];
     const otherLinks = [...new Set(otherLinksRaw.map(link => link.trim()))].filter(Boolean);
 
     return {
       original: raw,
-      artistName: pick(['artistName', 'artist', 'artist_name', 'bandName', 'band_name'], 'Unknown Artist'),
-      trackTitle: pick(['trackTitle', 'track', 'track_name', 'songTitle', 'song_title'], 'Untitled Track'),
+      artistName: pick(
+        ['artistName', 'artist', 'artist_name', 'bandName', 'band_name'],
+        'Unknown Artist'
+      ),
+      trackTitle: pick(
+        ['trackTitle', 'track', 'track_name', 'songTitle', 'song_title'],
+        'Untitled Track'
+      ),
       genre: pick(['genre', 'musicGenre', 'music_genre', 'style'], ''),
       releaseDate: pick(['releaseDate', 'release_date', 'launchDate', 'launch_date'], ''),
       isrc: pick(['isrc', 'isrcCode', 'isrc_code'], ''),
@@ -96,7 +115,12 @@ class RadioAgent {
       campaignEndDate: normalizeDate(campaignEnd),
       pitch: pick(['campaignPitch', 'pitch', 'logline', 'campaignSummary', 'summary'], ''),
       pressRelease: pick(['pressRelease', 'press_release', 'pressBio', 'press_bio'], ''),
-      pressReleaseLink: pick(['pressReleaseLink', 'press_release_link', 'pressKit', 'pressKitLink']),
+      pressReleaseLink: pick([
+        'pressReleaseLink',
+        'press_release_link',
+        'pressKit',
+        'pressKitLink',
+      ]),
       streamingLinks,
       downloadLinks,
       primaryStream: streamingLinks[0] || null,
@@ -107,18 +131,18 @@ class RadioAgent {
       contact: {
         name: pick(['contactName', 'contact_name', 'managerName', 'manager_name']),
         email: pick(['contactEmail', 'contact_email', 'email']),
-        phone: pick(['contactPhone', 'contact_phone', 'phone'])
+        phone: pick(['contactPhone', 'contact_phone', 'phone']),
       },
       additionalTracks: source.additionalTracks || [],
       packagePreference: source.packagePreference || source.eimPackage || null,
-      paymentReference: source.paymentReference || null
+      paymentReference: source.paymentReference || null,
     };
   }
 
   buildSubmissionSummary(results) {
     const summary = {
       stationsContacted: 0,
-      submissions: results
+      submissions: results,
     };
 
     if (results.amazingRadio?.success) summary.stationsContacted += 1;
@@ -134,18 +158,24 @@ class RadioAgent {
     }
 
     const campaign = this.normalizeCampaignData(campaignData);
-    this.log('info', `Initiating radio submissions for ${campaign.artistName} – ${campaign.trackTitle}`);
+    this.log(
+      'info',
+      `Initiating radio submissions for ${campaign.artistName} – ${campaign.trackTitle}`
+    );
 
     const amazingRadio = await this.submissionService.submitToAmazingRadio(campaign);
     const radioWigwam = await this.submissionService.submitToRadioWigwam(campaign);
     const europeanIndieMusic = await this.submissionService.submitToEuropeanIndieMusic(campaign, {
       packageType: campaign.packagePreference,
       paymentReference: campaign.paymentReference,
-      campaignId: campaign.original?.campaignId
+      campaignId: campaign.original?.campaignId,
     });
 
     const summary = this.buildSubmissionSummary({ amazingRadio, radioWigwam, europeanIndieMusic });
-    this.log('success', `Radio submissions completed – contacted ${summary.stationsContacted} channels`);
+    this.log(
+      'success',
+      `Radio submissions completed – contacted ${summary.stationsContacted} channels`
+    );
     return summary;
   }
 
@@ -154,7 +184,7 @@ class RadioAgent {
       status: 'healthy',
       agent: this.name,
       version: this.version,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
   }
 

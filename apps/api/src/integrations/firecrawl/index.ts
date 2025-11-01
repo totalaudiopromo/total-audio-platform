@@ -63,7 +63,7 @@ export class FirecrawlService {
   constructor(apiKey: string) {
     this.config = {
       apiKey,
-      baseUrl: 'https://api.firecrawl.dev'
+      baseUrl: 'https://api.firecrawl.dev',
     };
   }
 
@@ -71,7 +71,7 @@ export class FirecrawlService {
     if (!this.browser) {
       this.browser = await chromium.launch({
         headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
       });
     }
     return this.browser;
@@ -82,15 +82,16 @@ export class FirecrawlService {
       // Use Playwright for advanced scraping
       const browser = await this.getBrowser();
       const page = await browser.newPage();
-      
+
       // Set user agent to avoid detection
       await page.setExtraHTTPHeaders({
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        'User-Agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
       });
-      
+
       // Set viewport
       await page.setViewportSize({ width: 1920, height: 1080 });
-      
+
       await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
 
       // Wait for specific selectors if provided
@@ -113,12 +114,12 @@ export class FirecrawlService {
       }
 
       const html = await page.content();
-      const text = await page.textContent('body') || '';
+      const text = (await page.textContent('body')) || '';
 
       let screenshot: string | undefined;
       if (options?.includeScreenshot) {
-        const screenshotBuffer = await page.screenshot({ 
-          fullPage: true 
+        const screenshotBuffer = await page.screenshot({
+          fullPage: true,
         });
         screenshot = screenshotBuffer.toString('base64');
       }
@@ -128,8 +129,10 @@ export class FirecrawlService {
       // Extract various types of information
       const contactInfo = await this.extractContactInfo(html);
       const metaData = options?.extractMetaData ? await this.extractMetaData(html) : undefined;
-      const structuredData = options?.extractStructuredData ? await this.extractStructuredData(html) : undefined;
-      
+      const structuredData = options?.extractStructuredData
+        ? await this.extractStructuredData(html)
+        : undefined;
+
       // Build metaData object with only defined properties
       const metaDataObj: any = {};
       if (metaData) {
@@ -147,21 +150,23 @@ export class FirecrawlService {
           screenshot: screenshot || undefined,
           emails: contactInfo.emails,
           phones: contactInfo.phones,
-          socialMedia: Object.fromEntries(Object.entries(contactInfo.socialMedia).filter(([_, v]) => v !== undefined)),
+          socialMedia: Object.fromEntries(
+            Object.entries(contactInfo.socialMedia).filter(([_, v]) => v !== undefined)
+          ),
           contactInfo: contactInfo.contacts.map(c => ({
             name: c.name,
             email: c.email,
             ...(c.phone !== undefined ? { phone: c.phone } : {}),
-            ...(c.title !== undefined ? { title: c.title } : {})
+            ...(c.title !== undefined ? { title: c.title } : {}),
           })),
           ...(Object.keys(metaDataObj).length > 0 ? { metaData: metaDataObj } : {}),
-          structuredData
-        }
+          structuredData,
+        },
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -183,7 +188,7 @@ export class FirecrawlService {
     }>;
   }> {
     const $ = cheerio.load(html);
-    
+
     // Extract emails using regex
     const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
     const emails = html.match(emailRegex) || [];
@@ -206,22 +211,25 @@ export class FirecrawlService {
     // Extract names and titles with improved regex
     const nameRegex = /([A-Z][a-z]+ [A-Z][a-z]+)/g;
     const names = html.match(nameRegex) || [];
-    const titleRegex = /(Editor|Reporter|Journalist|Writer|Correspondent|Columnist|Manager|Director|CEO|CTO|Founder|President|Vice President|Senior|Lead)/gi;
+    const titleRegex =
+      /(Editor|Reporter|Journalist|Writer|Correspondent|Columnist|Manager|Director|CEO|CTO|Founder|President|Vice President|Senior|Lead)/gi;
     const titles = html.match(titleRegex) || [];
 
     // Create contact objects
-    const contacts = emails.map((email, index) => {
-      const contact: any = { name: names[index] || 'Unknown', email };
-      if (phones[index] !== undefined) contact.phone = phones[index];
-      if (titles[index] !== undefined) contact.title = titles[index];
-      return contact;
-    }).filter(contact => contact.name && contact.email);
+    const contacts = emails
+      .map((email, index) => {
+        const contact: any = { name: names[index] || 'Unknown', email };
+        if (phones[index] !== undefined) contact.phone = phones[index];
+        if (titles[index] !== undefined) contact.title = titles[index];
+        return contact;
+      })
+      .filter(contact => contact.name && contact.email);
 
     return {
       emails: [...new Set(emails)],
       phones: [...new Set(phones)],
       socialMedia,
-      contacts
+      contacts,
     };
   }
 
@@ -233,11 +241,16 @@ export class FirecrawlService {
     canonicalUrl?: string;
   }> {
     const $ = cheerio.load(html);
-    
+
     // metaData return
     const title = $('title').text() || $('meta[property="og:title"]').attr('content');
-    const description = $('meta[name="description"]').attr('content') || $('meta[property="og:description"]').attr('content');
-    const keywords = $('meta[name="keywords"]').attr('content')?.split(',').map((k: string) => k.trim());
+    const description =
+      $('meta[name="description"]').attr('content') ||
+      $('meta[property="og:description"]').attr('content');
+    const keywords = $('meta[name="keywords"]')
+      .attr('content')
+      ?.split(',')
+      .map((k: string) => k.trim());
     const ogImage = $('meta[property="og:image"]').attr('content');
     const canonicalUrl = $('link[rel="canonical"]').attr('href');
     const meta: any = {};
@@ -252,7 +265,7 @@ export class FirecrawlService {
   async extractStructuredData(html: string): Promise<any> {
     const $ = cheerio.load(html);
     const structuredData: any = {};
-    
+
     // Extract JSON-LD structured data
     $('script[type="application/ld+json"]').each((index: number, element: any) => {
       try {
@@ -282,36 +295,36 @@ export class FirecrawlService {
         includeHtml: true,
         extractEmails: true,
         extractPhones: true,
-        scrollToBottom: true
+        scrollToBottom: true,
       });
 
       if (!result.success || !result.data?.html) {
         return {
           success: false,
           contacts: [],
-          error: result.error || 'Failed to scrape website'
+          error: result.error || 'Failed to scrape website',
         };
       }
 
       const contactInfo = await this.extractContactInfo(result.data.html);
-      
+
       const contacts = contactInfo.contacts.map(contact => ({
         name: contact.name,
         email: contact.email,
         ...(contact.phone !== undefined ? { phone: contact.phone } : {}),
         ...(contact.title !== undefined ? { title: contact.title } : {}),
-        source: websiteUrl
+        source: websiteUrl,
       }));
 
       return {
         success: true,
-        contacts
+        contacts,
       };
     } catch (error) {
       return {
         success: false,
         contacts: [],
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -331,7 +344,7 @@ export class FirecrawlService {
     }>;
   }> {
     const results = [];
-    
+
     for (const url of urls) {
       try {
         const result = await this.scrapeJournalistContacts(url);
@@ -339,30 +352,33 @@ export class FirecrawlService {
           url,
           success: result.success,
           contacts: result.contacts,
-          ...(result.error !== undefined ? { error: result.error } : {})
+          ...(result.error !== undefined ? { error: result.error } : {}),
         });
       } catch (error) {
         results.push({
           url,
           success: false,
           contacts: [],
-          error: error instanceof Error ? error.message : 'Unknown error'
+          error: error instanceof Error ? error.message : 'Unknown error',
         });
       }
     }
 
     return {
       success: true,
-      results
+      results,
     };
   }
 
-  async scrapeWithCustomSelectors(url: string, selectors: {
-    contactName?: string;
-    contactEmail?: string;
-    contactPhone?: string;
-    contactTitle?: string;
-  }): Promise<{
+  async scrapeWithCustomSelectors(
+    url: string,
+    selectors: {
+      contactName?: string;
+      contactEmail?: string;
+      contactPhone?: string;
+      contactTitle?: string;
+    }
+  ): Promise<{
     success: boolean;
     contacts: Array<{
       name: string;
@@ -375,37 +391,40 @@ export class FirecrawlService {
     try {
       const browser = await this.getBrowser();
       const page = await browser.newPage();
-      
+
       await page.goto(url, { waitUntil: 'networkidle' });
 
       const contacts = [];
-      
+
       if (selectors.contactName) {
-        const names = await page.$$eval(selectors.contactName, (elements: any[]) => 
+        const names = await page.$$eval(selectors.contactName, (elements: any[]) =>
           elements.map((el: any) => el.textContent?.trim()).filter(Boolean)
         );
-        
-        const emails = selectors.contactEmail ? 
-          await page.$$eval(selectors.contactEmail, (elements: any[]) => 
-            elements.map((el: any) => el.textContent?.trim()).filter(Boolean)
-          ) : [];
-          
-        const phones = selectors.contactPhone ? 
-          await page.$$eval(selectors.contactPhone, (elements: any[]) => 
-            elements.map((el: any) => el.textContent?.trim()).filter(Boolean)
-          ) : [];
-          
-        const titles = selectors.contactTitle ? 
-          await page.$$eval(selectors.contactTitle, (elements: any[]) => 
-            elements.map((el: any) => el.textContent?.trim()).filter(Boolean)
-          ) : [];
+
+        const emails = selectors.contactEmail
+          ? await page.$$eval(selectors.contactEmail, (elements: any[]) =>
+              elements.map((el: any) => el.textContent?.trim()).filter(Boolean)
+            )
+          : [];
+
+        const phones = selectors.contactPhone
+          ? await page.$$eval(selectors.contactPhone, (elements: any[]) =>
+              elements.map((el: any) => el.textContent?.trim()).filter(Boolean)
+            )
+          : [];
+
+        const titles = selectors.contactTitle
+          ? await page.$$eval(selectors.contactTitle, (elements: any[]) =>
+              elements.map((el: any) => el.textContent?.trim()).filter(Boolean)
+            )
+          : [];
 
         for (let i = 0; i < names.length; i++) {
           contacts.push({
             name: names[i] || 'Unknown',
             email: emails[i] || '',
             phone: phones[i] || undefined,
-            title: titles[i] || undefined
+            title: titles[i] || undefined,
           });
         }
       }
@@ -414,13 +433,13 @@ export class FirecrawlService {
 
       return {
         success: true,
-        contacts
+        contacts,
       };
     } catch (error) {
       return {
         success: false,
         contacts: [],
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -431,4 +450,4 @@ export class FirecrawlService {
       this.browser = null;
     }
   }
-} 
+}

@@ -1,10 +1,12 @@
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 export async function POST() {
   const supabase = await createServerClient(cookies());
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -12,7 +14,10 @@ export async function POST() {
 
   // Check if email is already verified
   if (user.email_confirmed_at) {
-    return NextResponse.json({ message: 'Email already verified' }, { status: 200 });
+    return NextResponse.json(
+      { message: 'Email already verified' },
+      { status: 200 }
+    );
   }
 
   // Resend verification email

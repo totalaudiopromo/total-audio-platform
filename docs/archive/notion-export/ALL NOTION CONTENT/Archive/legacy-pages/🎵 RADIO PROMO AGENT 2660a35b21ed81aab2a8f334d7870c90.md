@@ -1,6 +1,6 @@
 # 🎵 RADIO PROMO AGENT
 
-*Liberty workflow integration and radio promotion automation*
+_Liberty workflow integration and radio promotion automation_
 
 ## Development
 

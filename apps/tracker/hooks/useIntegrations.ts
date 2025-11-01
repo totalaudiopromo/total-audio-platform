@@ -2,9 +2,14 @@
 
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import type { RealtimeChannel } from '@supabase/supabase-js';
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@total-audio/core-db/client';
 
-export type IntegrationType = 'google_sheets' | 'gmail' | 'airtable' | 'mailchimp' | 'excel';
+export type IntegrationType =
+  | 'google_sheets'
+  | 'gmail'
+  | 'airtable'
+  | 'mailchimp'
+  | 'excel';
 
 // Convert underscore type to hyphenated API route
 const typeToRoute = (type: IntegrationType): string => type.replace(/_/g, '-');
@@ -23,7 +28,9 @@ export interface Integration {
 }
 
 export function useIntegrations() {
-  const [connections, setConnections] = useState<Record<IntegrationType, Integration | null>>({
+  const [connections, setConnections] = useState<
+    Record<IntegrationType, Integration | null>
+  >({
     google_sheets: null,
     gmail: null,
     airtable: null,
@@ -103,7 +110,10 @@ export function useIntegrations() {
     const initialize = async () => {
       setLoading(true);
 
-      const { data: { user }, error } = await supabase.auth.getUser();
+      const {
+        data: { user },
+        error,
+      } = await supabase.auth.getUser();
 
       if (!active || !isMountedRef.current) {
         return;
@@ -166,80 +176,92 @@ export function useIntegrations() {
     window.location.href = `/api/integrations/${typeToRoute(type)}/connect`;
   }, []);
 
-  const disconnect = useCallback(async (type: IntegrationType) => {
-    try {
-      const { error } = await supabase
-        .from('integration_connections')
-        .update({
-          status: 'disconnected',
-          sync_enabled: false,
-        })
-        .eq('integration_type', type);
+  const disconnect = useCallback(
+    async (type: IntegrationType) => {
+      try {
+        const { error } = await supabase
+          .from('integration_connections')
+          .update({
+            status: 'disconnected',
+            sync_enabled: false,
+          })
+          .eq('integration_type', type);
 
-      if (error) throw error;
+        if (error) throw error;
 
-      await loadConnections();
-    } catch (error) {
-      console.error(`Error disconnecting ${type}:`, error);
-      throw error;
-    }
-  }, [loadConnections, supabase]);
-
-  const manualSync = useCallback(async (type: IntegrationType) => {
-    setSyncing((prev) => ({ ...prev, [type]: true }));
-
-    try {
-      const response = await fetch(`/api/integrations/${typeToRoute(type)}/sync`, {
-        method: 'POST',
-      });
-
-      if (!response.ok) {
-        throw new Error('Sync failed');
+        await loadConnections();
+      } catch (error) {
+        console.error(`Error disconnecting ${type}:`, error);
+        throw error;
       }
+    },
+    [loadConnections, supabase]
+  );
 
-      await loadConnections();
-    } catch (error) {
-      console.error(`Error syncing ${type}:`, error);
-      throw error;
-    } finally {
-      setSyncing((prev) => ({ ...prev, [type]: false }));
-    }
-  }, [loadConnections]);
+  const manualSync = useCallback(
+    async (type: IntegrationType) => {
+      setSyncing(prev => ({ ...prev, [type]: true }));
 
-  const updateSettings = useCallback(async (
-    type: IntegrationType,
-    settings: Record<string, any>
-  ) => {
-    try {
-      const { error } = await supabase
-        .from('integration_connections')
-        .update({ settings })
-        .eq('integration_type', type);
+      try {
+        const response = await fetch(
+          `/api/integrations/${typeToRoute(type)}/sync`,
+          {
+            method: 'POST',
+          }
+        );
 
-      if (error) throw error;
+        if (!response.ok) {
+          throw new Error('Sync failed');
+        }
 
-      await loadConnections();
-    } catch (error) {
-      console.error(`Error updating ${type} settings:`, error);
-      throw error;
-    }
-  }, [loadConnections, supabase]);
+        await loadConnections();
+      } catch (error) {
+        console.error(`Error syncing ${type}:`, error);
+        throw error;
+      } finally {
+        setSyncing(prev => ({ ...prev, [type]: false }));
+      }
+    },
+    [loadConnections]
+  );
 
-  const toggleSync = useCallback(async (type: IntegrationType, enabled: boolean) => {
-    try {
-      const { error } = await supabase
-        .from('integration_connections')
-        .update({ sync_enabled: enabled })
-        .eq('integration_type', type);
+  const updateSettings = useCallback(
+    async (type: IntegrationType, settings: Record<string, any>) => {
+      try {
+        const { error } = await supabase
+          .from('integration_connections')
+          .update({ settings })
+          .eq('integration_type', type);
 
-      if (error) throw error;
+        if (error) throw error;
 
-      await loadConnections();
-    } catch (error) {
-      console.error(`Error toggling sync for ${type}:`, error);
-      throw error;
-    }
-  }, [loadConnections, supabase]);
+        await loadConnections();
+      } catch (error) {
+        console.error(`Error updating ${type} settings:`, error);
+        throw error;
+      }
+    },
+    [loadConnections, supabase]
+  );
+
+  const toggleSync = useCallback(
+    async (type: IntegrationType, enabled: boolean) => {
+      try {
+        const { error } = await supabase
+          .from('integration_connections')
+          .update({ sync_enabled: enabled })
+          .eq('integration_type', type);
+
+        if (error) throw error;
+
+        await loadConnections();
+      } catch (error) {
+        console.error(`Error toggling sync for ${type}:`, error);
+        throw error;
+      }
+    },
+    [loadConnections, supabase]
+  );
 
   return {
     connections,

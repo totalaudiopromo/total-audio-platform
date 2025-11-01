@@ -14,12 +14,12 @@ class DirectEmailSender {
   async sendCampaignEmails(selectedContacts, campaignData, assets) {
     // Batch emails across multiple days to respect Gmail limits
     const batches = this.createEmailBatches(selectedContacts, this.dailyLimit);
-    
+
     for (let i = 0; i < batches.length; i++) {
       const batch = batches[i];
       const sendDate = new Date();
       sendDate.setDate(sendDate.getDate() + i); // Spread over multiple days
-      
+
       await this.scheduleBatch(batch, campaignData, assets, sendDate);
     }
   }
@@ -35,16 +35,16 @@ class DirectEmailSender {
   async scheduleBatch(contacts, campaignData, assets, sendDate) {
     for (const contact of contacts) {
       const personalizedEmail = await this.generatePersonalizedEmail(contact, campaignData, assets);
-      
+
       // Queue for sending
       this.sendQueue.push({
         to: contact['Email'],
         subject: personalizedEmail.subject,
         html: personalizedEmail.html,
-        scheduledDate: sendDate
+        scheduledDate: sendDate,
       });
     }
-    
+
     // Process queue immediately if sending today
     if (sendDate.toDateString() === new Date().toDateString()) {
       await this.processSendQueue();
@@ -84,27 +84,26 @@ class DirectEmailSender {
     </body>
     </html>
     `;
-    
+
     return {
       subject: `New ${campaignData.genre} from ${campaignData.artistName} - "${campaignData.trackName}"`,
-      html: template
+      html: template,
     };
   }
 
   async processSendQueue() {
     const today = new Date().toDateString();
-    const todaysEmails = this.sendQueue.filter(email => 
-      email.scheduledDate.toDateString() === today
+    const todaysEmails = this.sendQueue.filter(
+      email => email.scheduledDate.toDateString() === today
     );
-    
+
     for (const email of todaysEmails) {
       try {
         await this.sendEmail(email);
         await this.sleep(1000); // 1 second delay between emails
-        
+
         // Remove from queue after sending
         this.sendQueue = this.sendQueue.filter(e => e !== email);
-        
       } catch (error) {
         console.error(`Error sending email to ${email.to}:`, error);
       }
@@ -117,17 +116,20 @@ class DirectEmailSender {
       `Subject: ${emailData.subject}`,
       'Content-Type: text/html; charset=utf-8',
       '',
-      emailData.html
+      emailData.html,
     ].join('\n');
 
-    const encodedMessage = Buffer.from(message).toString('base64').replace(/\+/g, '-').replace(/\//g, '_');
+    const encodedMessage = Buffer.from(message)
+      .toString('base64')
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_');
 
     return gmail.users.messages.send({
       auth: this.auth,
       userId: 'me',
       requestBody: {
-        raw: encodedMessage
-      }
+        raw: encodedMessage,
+      },
     });
   }
 

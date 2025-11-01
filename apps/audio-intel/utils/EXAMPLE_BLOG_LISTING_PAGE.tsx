@@ -44,21 +44,24 @@ export default function BlogPage() {
   const allStudies = getAllCaseStudiesSync();
 
   // Filter to only show live studies
-  const liveStudies = allStudies.filter((s) => s.status === 'live');
+  const liveStudies = allStudies.filter(s => s.status === 'live');
 
   // Group by category
-  const studiesByCategory = liveStudies.reduce((acc, study) => {
-    if (!acc[study.category]) {
-      acc[study.category] = [];
-    }
-    acc[study.category].push(study);
-    return acc;
-  }, {} as Record<string, EnrichedCaseStudyData[]>);
+  const studiesByCategory = liveStudies.reduce(
+    (acc, study) => {
+      if (!acc[study.category]) {
+        acc[study.category] = [];
+      }
+      acc[study.category].push(study);
+      return acc;
+    },
+    {} as Record<string, EnrichedCaseStudyData[]>
+  );
 
   // Sort categories by priority (tier 1 categories first)
   const sortedCategories = Object.entries(studiesByCategory).sort((a, b) => {
-    const aTier = Math.min(...a[1].map((s) => s.tier));
-    const bTier = Math.min(...b[1].map((s) => s.tier));
+    const aTier = Math.min(...a[1].map(s => s.tier));
+    const bTier = Math.min(...b[1].map(s => s.tier));
     return aTier - bTier;
   });
 
@@ -68,8 +71,8 @@ export default function BlogPage() {
       <header className="mb-12 text-center">
         <h1 className="text-5xl font-black text-gray-900 mb-6">Music Industry Case Studies</h1>
         <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          Real radio promotion and playlist pitching workflows rebuilt with Audio Intel. See exactly how we save 15+
-          hours per campaign with contact enrichment.
+          Real radio promotion and playlist pitching workflows rebuilt with Audio Intel. See exactly
+          how we save 15+ hours per campaign with contact enrichment.
         </p>
       </header>
 
@@ -86,7 +89,7 @@ export default function BlogPage() {
 
             {/* Case Study Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {studies.map((study) => (
+              {studies.map(study => (
                 <CaseStudyCard key={study.topicSlug} study={study} />
               ))}
             </div>
@@ -95,14 +98,14 @@ export default function BlogPage() {
       </div>
 
       {/* Coming Soon Section (if planned studies exist) */}
-      {allStudies.some((s) => s.status === 'planned') && (
+      {allStudies.some(s => s.status === 'planned') && (
         <section className="mt-16 pt-16 border-t border-gray-200">
           <h2 className="text-3xl font-black text-gray-900 mb-8">Coming Soon</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {allStudies
-              .filter((s) => s.status === 'planned')
+              .filter(s => s.status === 'planned')
               .slice(0, 6)
-              .map((study) => (
+              .map(study => (
                 <PlannedCaseStudyCard key={study.topicSlug} study={study} />
               ))}
           </div>
@@ -120,10 +123,22 @@ function CaseStudyCard({ study }: { study: EnrichedCaseStudyData }) {
   // Get tier badge styling
   const getTierBadge = (tier: number) => {
     if (tier === 1)
-      return <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded">High Priority</span>;
+      return (
+        <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded">
+          High Priority
+        </span>
+      );
     if (tier === 2)
-      return <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-bold rounded">Medium Priority</span>;
-    return <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-bold rounded">Reference Guide</span>;
+      return (
+        <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-bold rounded">
+          Medium Priority
+        </span>
+      );
+    return (
+      <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-bold rounded">
+        Reference Guide
+      </span>
+    );
   };
 
   return (
@@ -212,16 +227,16 @@ export function FilteredBlogPage({ category, tier }: { category?: string; tier?:
   const allStudies = getAllCaseStudiesSync();
 
   // Apply filters
-  let filteredStudies = allStudies.filter((s) => s.status === 'live');
+  let filteredStudies = allStudies.filter(s => s.status === 'live');
 
   if (category) {
     filteredStudies = filteredStudies.filter(
-      (s) => s.category.toLowerCase() === category.toLowerCase()
+      s => s.category.toLowerCase() === category.toLowerCase()
     );
   }
 
   if (tier) {
-    filteredStudies = filteredStudies.filter((s) => s.tier === tier);
+    filteredStudies = filteredStudies.filter(s => s.tier === tier);
   }
 
   // Sort by monthly searches (highest first)
@@ -238,7 +253,7 @@ export function FilteredBlogPage({ category, tier }: { category?: string; tier?:
       </header>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredStudies.map((study) => (
+        {filteredStudies.map(study => (
           <CaseStudyCard key={study.topicSlug} study={study} />
         ))}
       </div>
@@ -260,17 +275,20 @@ export function FilteredBlogPage({ category, tier }: { category?: string; tier?:
  * Group case studies by primary search intent for SEO landing pages
  */
 export function SearchIntentBlogPage() {
-  const allStudies = getAllCaseStudiesSync().filter((s) => s.status === 'live');
+  const allStudies = getAllCaseStudiesSync().filter(s => s.status === 'live');
 
   // Group by primary keyword (first search intent)
-  const byKeyword = allStudies.reduce((acc, study) => {
-    const keyword = study.primaryKeyword;
-    if (!acc[keyword]) {
-      acc[keyword] = [];
-    }
-    acc[keyword].push(study);
-    return acc;
-  }, {} as Record<string, EnrichedCaseStudyData[]>);
+  const byKeyword = allStudies.reduce(
+    (acc, study) => {
+      const keyword = study.primaryKeyword;
+      if (!acc[keyword]) {
+        acc[keyword] = [];
+      }
+      acc[keyword].push(study);
+      return acc;
+    },
+    {} as Record<string, EnrichedCaseStudyData[]>
+  );
 
   // Sort by total monthly searches
   const sortedKeywords = Object.entries(byKeyword).sort((a, b) => {
@@ -295,13 +313,13 @@ export function SearchIntentBlogPage() {
               <div className="mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">&quot;{keyword}&quot;</h2>
                 <p className="text-gray-600">
-                  {studies.length} case {studies.length === 1 ? 'study' : 'studies'} • ~{totalSearches.toLocaleString()}{' '}
-                  monthly searches
+                  {studies.length} case {studies.length === 1 ? 'study' : 'studies'} • ~
+                  {totalSearches.toLocaleString()} monthly searches
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {studies.map((study) => (
+                {studies.map(study => (
                   <CaseStudyCard key={study.topicSlug} study={study} />
                 ))}
               </div>
@@ -322,14 +340,14 @@ export function SearchIntentBlogPage() {
  */
 export function CaseStudyStats() {
   const allStudies = getAllCaseStudiesSync();
-  const liveStudies = allStudies.filter((s) => s.status === 'live');
+  const liveStudies = allStudies.filter(s => s.status === 'live');
 
   const totalSearchVolume = liveStudies.reduce((sum, s) => sum + s.monthlySearchesEst, 0);
   const avgReadTime = Math.round(
     liveStudies.reduce((sum, s) => sum + s.estimatedReadTime, 0) / liveStudies.length
   );
 
-  const categories = [...new Set(liveStudies.map((s) => s.category))];
+  const categories = [...new Set(liveStudies.map(s => s.category))];
 
   return (
     <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-12">
@@ -340,7 +358,9 @@ export function CaseStudyStats() {
           <div className="text-sm text-gray-600">Live Case Studies</div>
         </div>
         <div>
-          <div className="text-3xl font-black text-green-600 mb-1">{totalSearchVolume.toLocaleString()}</div>
+          <div className="text-3xl font-black text-green-600 mb-1">
+            {totalSearchVolume.toLocaleString()}
+          </div>
           <div className="text-sm text-gray-600">Monthly Search Volume</div>
         </div>
         <div>

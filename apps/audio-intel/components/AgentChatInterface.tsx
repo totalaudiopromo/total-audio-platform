@@ -13,7 +13,13 @@ interface ChatMessage {
 }
 
 interface AgentChatProps {
-  agentType: 'orchestrator' | 'marketing' | 'content' | 'performance' | 'newsletter' | 'competitive';
+  agentType:
+    | 'orchestrator'
+    | 'marketing'
+    | 'content'
+    | 'performance'
+    | 'newsletter'
+    | 'competitive';
 }
 
 const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
@@ -29,7 +35,7 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
       role: 'agent',
       content: getWelcomeMessage(agentType),
       timestamp: new Date(),
-      agentType
+      agentType,
     };
     setMessages([welcomeMessage]);
   }, [agentType]);
@@ -42,56 +48,66 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const getWelcomeMessage = (type: 'orchestrator' | 'marketing' | 'content' | 'performance' | 'newsletter' | 'competitive'): string => {
+  const getWelcomeMessage = (
+    type: 'orchestrator' | 'marketing' | 'content' | 'performance' | 'newsletter' | 'competitive'
+  ): string => {
     const messages = {
-      orchestrator: "**Orchestrator Agent Online** - I control all 5 sub-agents. Ask me about strategy, coordination, or agent performance. I can deploy, pause, or modify any agent on command.",
-      marketing: "**Marketing Agent Ready** - I monitor Reddit, track email performance, and identify beta prospects 24/7. Currently scanning 5 music subreddits every 4 hours.",
-      content: "**Content Agent Active** - I generate daily content ideas, social posts, and blog topics. I've already created 12 weeks of newsletter content.",
-      performance: "**Performance Agent Monitoring** - I track all KPIs, analyze trends, and generate alerts. Current focus: 1,000 beta user goal progress.",
-      newsletter: "**Newsletter Agent Standing By** - I manage weekly newsletter automation, subscriber segmentation, and email sequences. Next send: Tuesday 9am.",
-      competitive: "**Competitive Intel Agent Deployed** - I monitor Muck Rack, Cision, and competitor mentions across Reddit and social media. Weekly competitive reports generated."
+      orchestrator:
+        '**Orchestrator Agent Online** - I control all 5 sub-agents. Ask me about strategy, coordination, or agent performance. I can deploy, pause, or modify any agent on command.',
+      marketing:
+        '**Marketing Agent Ready** - I monitor Reddit, track email performance, and identify beta prospects 24/7. Currently scanning 5 music subreddits every 4 hours.',
+      content:
+        "**Content Agent Active** - I generate daily content ideas, social posts, and blog topics. I've already created 12 weeks of newsletter content.",
+      performance:
+        '**Performance Agent Monitoring** - I track all KPIs, analyze trends, and generate alerts. Current focus: 1,000 beta user goal progress.',
+      newsletter:
+        '**Newsletter Agent Standing By** - I manage weekly newsletter automation, subscriber segmentation, and email sequences. Next send: Tuesday 9am.',
+      competitive:
+        '**Competitive Intel Agent Deployed** - I monitor Muck Rack, Cision, and competitor mentions across Reddit and social media. Weekly competitive reports generated.',
     };
-    return messages[type] || "Agent online and ready for commands.";
+    return messages[type] || 'Agent online and ready for commands.';
   };
 
-  const getAgentPersonality = (type: 'orchestrator' | 'marketing' | 'content' | 'performance' | 'newsletter' | 'competitive') => {
+  const getAgentPersonality = (
+    type: 'orchestrator' | 'marketing' | 'content' | 'performance' | 'newsletter' | 'competitive'
+  ) => {
     const personalities = {
       orchestrator: {
-        name: "Commander",
-        icon: "bot",
-        color: "text-blue-600",
-        bgColor: "bg-blue-50"
+        name: 'Commander',
+        icon: 'bot',
+        color: 'text-blue-600',
+        bgColor: 'bg-blue-50',
       },
       marketing: {
-        name: "Scout",
-        icon: "trending-up", 
-        color: "text-blue-600",
-        bgColor: "bg-blue-50"
+        name: 'Scout',
+        icon: 'trending-up',
+        color: 'text-blue-600',
+        bgColor: 'bg-blue-50',
       },
       content: {
-        name: "Creator",
-        icon: "edit",
-        color: "text-green-600", 
-        bgColor: "bg-green-50"
+        name: 'Creator',
+        icon: 'edit',
+        color: 'text-green-600',
+        bgColor: 'bg-green-50',
       },
       performance: {
-        name: "Analyst",
-        icon: "bar-chart-3",
-        color: "text-orange-600",
-        bgColor: "bg-orange-50"
+        name: 'Analyst',
+        icon: 'bar-chart-3',
+        color: 'text-orange-600',
+        bgColor: 'bg-orange-50',
       },
       newsletter: {
-        name: "Communicator", 
-        icon: "mail",
-        color: "text-blue-600",
-        bgColor: "bg-blue-50"
+        name: 'Communicator',
+        icon: 'mail',
+        color: 'text-blue-600',
+        bgColor: 'bg-blue-50',
       },
       competitive: {
-        name: "Intel",
-        icon: "target",
-        color: "text-red-600",
-        bgColor: "bg-red-50"
-      }
+        name: 'Intel',
+        icon: 'target',
+        color: 'text-red-600',
+        bgColor: 'bg-red-50',
+      },
     };
     return personalities[type] || personalities.orchestrator;
   };
@@ -103,7 +119,7 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
       id: Date.now().toString(),
       role: 'user',
       content: inputValue,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
 
     setMessages(prev => [...prev, userMessage]);
@@ -117,8 +133,8 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
         body: JSON.stringify({
           agentType,
           message: inputValue,
-          conversationHistory: messages.slice(-5) // Last 5 messages for context
-        })
+          conversationHistory: messages.slice(-5), // Last 5 messages for context
+        }),
       });
 
       const data = await response.json();
@@ -128,7 +144,7 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
         role: 'agent',
         content: data.response || 'Agent is processing your request...',
         timestamp: new Date(),
-        agentType
+        agentType,
       };
 
       setMessages(prev => [...prev, agentResponse]);
@@ -136,15 +152,18 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
       // If orchestrator is commanding sub-agents, show system messages
       if (agentType === 'orchestrator' && data.subAgentCommands) {
         data.subAgentCommands.forEach((command: any, index: number) => {
-          setTimeout(() => {
-            const systemMessage: ChatMessage = {
-              id: (Date.now() + index + 2).toString(),
-              role: 'system',
-              content: `🤖 ${command.agent} Agent: ${command.action}`,
-              timestamp: new Date()
-            };
-            setMessages(prev => [...prev, systemMessage]);
-          }, (index + 1) * 1000);
+          setTimeout(
+            () => {
+              const systemMessage: ChatMessage = {
+                id: (Date.now() + index + 2).toString(),
+                role: 'system',
+                content: `🤖 ${command.agent} Agent: ${command.action}`,
+                timestamp: new Date(),
+              };
+              setMessages(prev => [...prev, systemMessage]);
+            },
+            (index + 1) * 1000
+          );
         });
       }
     } catch (error) {
@@ -153,7 +172,7 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
         id: (Date.now() + 1).toString(),
         role: 'system',
         content: 'Error communicating with agent. Please try again.',
-        timestamp: new Date()
+        timestamp: new Date(),
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
@@ -205,7 +224,7 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
       <CardContent className="flex-1 flex flex-col p-4">
         {/* Messages */}
         <div className="flex-1 overflow-y-auto space-y-4 mb-4">
-          {messages.map((message) => (
+          {messages.map(message => (
             <div
               key={message.id}
               className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
@@ -215,8 +234,8 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
                   message.role === 'user'
                     ? 'bg-blue-600 text-white'
                     : message.role === 'system'
-                    ? 'bg-gray-100 text-gray-700 text-sm'
-                    : `${personality.bgColor} ${personality.color}`
+                      ? 'bg-gray-100 text-gray-700 text-sm'
+                      : `${personality.bgColor} ${personality.color}`
                 }`}
               >
                 <div className="whitespace-pre-wrap">{message.content}</div>
@@ -235,8 +254,14 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
               <div className={`${personality.bgColor} p-3 rounded-lg`}>
                 <div className="flex items-center space-x-1">
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  <div
+                    className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                    style={{ animationDelay: '0.1s' }}
+                  ></div>
+                  <div
+                    className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                    style={{ animationDelay: '0.2s' }}
+                  ></div>
                 </div>
               </div>
             </div>
@@ -248,7 +273,7 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
         <div className="flex gap-2">
           <textarea
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={e => setInputValue(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder={`Message ${personality.name} Agent...`}
             className="flex-1 p-2 border rounded-lg resize-none"
@@ -281,52 +306,54 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
   );
 };
 
-const getQuickActions = (agentType: 'orchestrator' | 'marketing' | 'content' | 'performance' | 'newsletter' | 'competitive'): string[] => {
+const getQuickActions = (
+  agentType: 'orchestrator' | 'marketing' | 'content' | 'performance' | 'newsletter' | 'competitive'
+): string[] => {
   const actions = {
     orchestrator: [
-      "Status report from all agents",
-      "Deploy marketing blitz mode", 
-      "Pause competitive agent",
-      "Scale up content creation",
-      "Emergency beta push campaign"
+      'Status report from all agents',
+      'Deploy marketing blitz mode',
+      'Pause competitive agent',
+      'Scale up content creation',
+      'Emergency beta push campaign',
     ],
     marketing: [
-      "Find high-value Reddit opportunities",
-      "Check email performance", 
-      "Update beta metrics",
-      "Scan for competitor complaints",
-      "Generate lead magnet ideas"
+      'Find high-value Reddit opportunities',
+      'Check email performance',
+      'Update beta metrics',
+      'Scan for competitor complaints',
+      'Generate lead magnet ideas',
     ],
     content: [
-      "Generate 5 social posts",
-      "Create blog topic ideas",
-      "Write newsletter content",
-      "Suggest viral content angles",
-      "Create competitor comparison post"
+      'Generate 5 social posts',
+      'Create blog topic ideas',
+      'Write newsletter content',
+      'Suggest viral content angles',
+      'Create competitor comparison post',
     ],
     performance: [
-      "Show beta progress",
-      "Analyze email metrics",
-      "Generate performance alerts",
-      "Track conversion rates",
-      "Compare to industry benchmarks"
+      'Show beta progress',
+      'Analyze email metrics',
+      'Generate performance alerts',
+      'Track conversion rates',
+      'Compare to industry benchmarks',
     ],
     newsletter: [
-      "Preview next newsletter",
-      "Check subscriber growth",
-      "Segment beta users",
-      "Schedule special announcement",
-      "Optimize send times"
+      'Preview next newsletter',
+      'Check subscriber growth',
+      'Segment beta users',
+      'Schedule special announcement',
+      'Optimize send times',
     ],
     competitive: [
-      "Scan Muck Rack complaints",
-      "Find switcher opportunities", 
-      "Generate competitive responses",
-      "Track mention volume",
-      "Identify pricing pain points"
-    ]
+      'Scan Muck Rack complaints',
+      'Find switcher opportunities',
+      'Generate competitive responses',
+      'Track mention volume',
+      'Identify pricing pain points',
+    ],
   };
-  
+
   return actions[agentType] || [];
 };
 

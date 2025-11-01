@@ -28,14 +28,14 @@ export async function POST(request: NextRequest) {
     const { pitchBody, subjectLine, contactType } = await request.json();
 
     if (!pitchBody) {
-      return NextResponse.json(
-        { error: 'Pitch body is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Pitch body is required' }, { status: 400 });
     }
 
     // Check if API key is configured
-    if (!process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_API_KEY === 'your-anthropic-api-key') {
+    if (
+      !process.env.ANTHROPIC_API_KEY ||
+      process.env.ANTHROPIC_API_KEY === 'your-anthropic-api-key'
+    ) {
       return NextResponse.json(
         { error: 'Anthropic API key not configured. Add ANTHROPIC_API_KEY to .env.local' },
         { status: 500 }
@@ -105,7 +105,8 @@ Be honest but constructive. Provide specific, actionable suggestions.`;
     let analysis: AnalysisResult;
     try {
       // Try to extract JSON from markdown code blocks if present
-      const jsonMatch = responseText.match(/```json\n(.*?)\n```/s) || responseText.match(/```\n(.*?)\n```/s);
+      const jsonMatch =
+        responseText.match(/```json\n(.*?)\n```/s) || responseText.match(/```\n(.*?)\n```/s);
       const jsonString = jsonMatch ? jsonMatch[1] : responseText;
       analysis = JSON.parse(jsonString);
     } catch (parseError) {
@@ -114,7 +115,6 @@ Be honest but constructive. Provide specific, actionable suggestions.`;
     }
 
     return NextResponse.json({ analysis });
-
   } catch (error: any) {
     console.error('Pitch analysis error:', error);
     return NextResponse.json(

@@ -38,13 +38,13 @@ export class NotionSocialMediaSync {
   async syncFromNotion(): Promise<NotionSyncResult> {
     try {
       console.log('🔄 Syncing social media posts from Notion...');
-      
+
       const result: NotionSyncResult = {
         success: true,
         postsImported: 0,
         postsUpdated: 0,
         errors: [],
-        nextSync: new Date(Date.now() + 15 * 60 * 1000).toISOString() // Next sync in 15 minutes
+        nextSync: new Date(Date.now() + 15 * 60 * 1000).toISOString(), // Next sync in 15 minutes
       };
 
       // Get the CONTENT & BRAND page
@@ -56,7 +56,7 @@ export class NotionSocialMediaSync {
 
       // Look for social media content blocks
       const socialMediaBlocks = await this.findSocialMediaBlocks(contentPage.id);
-      
+
       for (const block of socialMediaBlocks) {
         try {
           const post = await this.parseSocialMediaBlock(block);
@@ -78,7 +78,6 @@ export class NotionSocialMediaSync {
 
       console.log('✅ Notion sync completed:', result);
       return result;
-
     } catch (error) {
       console.error('❌ Notion sync failed:', error);
       return {
@@ -86,13 +85,17 @@ export class NotionSocialMediaSync {
         postsImported: 0,
         postsUpdated: 0,
         errors: [error instanceof Error ? error.message : 'Unknown error'],
-        nextSync: new Date(Date.now() + 5 * 60 * 1000).toISOString() // Retry in 5 minutes
+        nextSync: new Date(Date.now() + 5 * 60 * 1000).toISOString(), // Retry in 5 minutes
       };
     }
   }
 
   // Update Notion with posting results
-  async updateNotionWithResults(postId: string, status: 'posted' | 'failed', engagement?: any): Promise<boolean> {
+  async updateNotionWithResults(
+    postId: string,
+    status: 'posted' | 'failed',
+    engagement?: any
+  ): Promise<boolean> {
     try {
       // Find the corresponding Notion page
       const notionPageId = await this.findNotionPageId(postId);
@@ -103,21 +106,24 @@ export class NotionSocialMediaSync {
 
       // Update the page with posting results
       const properties = {
-        'Status': { select: { name: status === 'posted' ? 'Posted' : 'Failed' } },
-        'Last Posted': { date: { start: new Date().toISOString() } }
+        Status: { select: { name: status === 'posted' ? 'Posted' : 'Failed' } },
+        'Last Posted': { date: { start: new Date().toISOString() } },
       };
 
       if (engagement) {
-        (properties as any)['Engagement'] = { 
-          rich_text: [{ 
-            text: { content: `Likes: ${engagement.likes}, Retweets: ${engagement.retweets}, Comments: ${engagement.comments}` } 
-          }] 
+        (properties as any)['Engagement'] = {
+          rich_text: [
+            {
+              text: {
+                content: `Likes: ${engagement.likes}, Retweets: ${engagement.retweets}, Comments: ${engagement.comments}`,
+              },
+            },
+          ],
         };
       }
 
       await this.updateNotionPage(notionPageId, properties);
       return true;
-
     } catch (error) {
       console.error(`Failed to update Notion for post ${postId}:`, error);
       return false;
@@ -128,9 +134,9 @@ export class NotionSocialMediaSync {
   private async getNotionPage(pageId: string): Promise<any> {
     const response = await fetch(`https://api.notion.com/v1/pages/${pageId}`, {
       headers: {
-        'Authorization': `Bearer ${this.notionApiKey}`,
-        'Notion-Version': '2022-06-28'
-      }
+        Authorization: `Bearer ${this.notionApiKey}`,
+        'Notion-Version': '2022-06-28',
+      },
     });
 
     if (!response.ok) {
@@ -143,9 +149,9 @@ export class NotionSocialMediaSync {
   private async findSocialMediaBlocks(pageId: string): Promise<any[]> {
     const response = await fetch(`https://api.notion.com/v1/blocks/${pageId}/children`, {
       headers: {
-        'Authorization': `Bearer ${this.notionApiKey}`,
-        'Notion-Version': '2022-06-28'
-      }
+        Authorization: `Bearer ${this.notionApiKey}`,
+        'Notion-Version': '2022-06-28',
+      },
     });
 
     if (!response.ok) {
@@ -160,7 +166,7 @@ export class NotionSocialMediaSync {
     // Look for blocks that contain social media content
     if (block.type === 'paragraph' && block.paragraph?.rich_text) {
       const text = block.paragraph.rich_text.map((t: any) => t.plain_text).join('');
-      
+
       // Check if this looks like a social media post
       if (this.isSocialMediaPost(text)) {
         return {
@@ -171,7 +177,7 @@ export class NotionSocialMediaSync {
           scheduledTime: this.extractScheduledTime(text),
           status: 'draft',
           hashtags: this.extractHashtags(text),
-          lastModified: block.last_edited_time
+          lastModified: block.last_edited_time,
         };
       }
     }
@@ -182,9 +188,16 @@ export class NotionSocialMediaSync {
   private isSocialMediaPost(text: string): boolean {
     // Check for social media indicators
     const indicators = [
-      '🎵', '📱', 'X (Twitter)', 'LinkedIn', 'Blue Sky',
-      '#MusicTech', '#IndieMusic', '#MusicIndustry',
-      'Comment "BETA"', 'Get free beta access'
+      '🎵',
+      '📱',
+      'X (Twitter)',
+      'LinkedIn',
+      'Blue Sky',
+      '#MusicTech',
+      '#IndieMusic',
+      '#MusicIndustry',
+      'Comment "BETA"',
+      'Get free beta access',
     ];
 
     return indicators.some(indicator => text.includes(indicator));
@@ -194,7 +207,7 @@ export class NotionSocialMediaSync {
     if (text.includes('X (Twitter)') || text.includes('Twitter')) return 'x';
     if (text.includes('LinkedIn')) return 'linkedin';
     if (text.includes('Blue Sky')) return 'bluesky';
-    
+
     // Default to X for now
     return 'x';
   }
@@ -207,10 +220,10 @@ export class NotionSocialMediaSync {
       const hour = parseInt(timeMatch[1]);
       const minute = timeMatch[2] ? parseInt(timeMatch[2]) : 0;
       const isPM = /pm/i.test(timeMatch[3]);
-      
+
       const scheduledTime = new Date(now);
       scheduledTime.setHours(isPM && hour !== 12 ? hour + 12 : hour, minute, 0, 0);
-      
+
       return scheduledTime.toISOString();
     }
 
@@ -251,11 +264,11 @@ export class NotionSocialMediaSync {
     const response = await fetch(`https://api.notion.com/v1/pages/${pageId}`, {
       method: 'PATCH',
       headers: {
-        'Authorization': `Bearer ${this.notionApiKey}`,
+        Authorization: `Bearer ${this.notionApiKey}`,
         'Notion-Version': '2022-06-28',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ properties })
+      body: JSON.stringify({ properties }),
     });
 
     if (!response.ok) {
@@ -267,5 +280,5 @@ export class NotionSocialMediaSync {
 // Export singleton instance
 export const notionSync = new NotionSocialMediaSync(
   process.env.NOTION_API_KEY || '',
-  (process.env.NOTION_CONTENT_PAGE_ID || '2660a35b21ed8162baeaf8afbf100b2e')
+  process.env.NOTION_CONTENT_PAGE_ID || '2660a35b21ed8162baeaf8afbf100b2e'
 );

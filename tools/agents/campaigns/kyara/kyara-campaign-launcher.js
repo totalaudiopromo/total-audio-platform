@@ -23,7 +23,7 @@ class KYARACampaignLauncher {
       soundcloudLink: 'https://on.soundcloud.com/1oiblSoRYCp1swzCr3',
       releaseDate: '2025-10-14',
       previousPlays: ['triple j Home & Hosed (Jaimee Taylor-Neilsen, August 2024)'],
-      bio: "KYARA's latest track 'Yearn' showcases their signature blend of alternative rock with haunting melodies. Following successful support from triple j Home & Hosed, this new release represents a strong progression in their sound."
+      bio: "KYARA's latest track 'Yearn' showcases their signature blend of alternative rock with haunting melodies. Following successful support from triple j Home & Hosed, this new release represents a strong progression in their sound.",
     };
 
     this.airtableBaseId = process.env.AIRTABLE_BASE_ID;
@@ -38,7 +38,7 @@ class KYARACampaignLauncher {
       const filters = {
         genre: ['Alternative', 'Indie', 'Alternative Rock', 'Indie Rock'],
         stationType: ['Community', 'Online', 'National'],
-        relationshipStatus: ['Warm', 'Hot', 'Cold'] // Include all, prioritize warm/hot
+        relationshipStatus: ['Warm', 'Hot', 'Cold'], // Include all, prioritize warm/hot
       };
 
       // Mock Airtable search - replace with actual API call
@@ -49,7 +49,7 @@ class KYARACampaignLauncher {
           genre: ['Alternative', 'Indie'],
           stationType: 'Online',
           relationshipStatus: 'Warm',
-          submissionMethod: 'webhook'
+          submissionMethod: 'webhook',
         },
         {
           name: 'Radio Wigwam',
@@ -57,7 +57,7 @@ class KYARACampaignLauncher {
           genre: ['Alternative', 'Indie'],
           stationType: 'Community',
           relationshipStatus: 'Warm',
-          submissionMethod: 'webhook'
+          submissionMethod: 'webhook',
         },
         {
           name: 'BBC Radio 6 Music',
@@ -65,7 +65,7 @@ class KYARACampaignLauncher {
           genre: ['Alternative', 'Indie'],
           stationType: 'National',
           relationshipStatus: 'Cold',
-          submissionMethod: 'email'
+          submissionMethod: 'email',
         },
         {
           name: 'NTS Radio',
@@ -73,7 +73,7 @@ class KYARACampaignLauncher {
           genre: ['Alternative', 'Electronic', 'Indie'],
           stationType: 'Online',
           relationshipStatus: 'Cold',
-          submissionMethod: 'email'
+          submissionMethod: 'email',
         },
         {
           name: 'Resonance FM',
@@ -81,18 +81,19 @@ class KYARACampaignLauncher {
           genre: ['Alternative', 'Experimental'],
           stationType: 'Community',
           relationshipStatus: 'Cold',
-          submissionMethod: 'email'
-        }
+          submissionMethod: 'email',
+        },
       ];
 
       console.log(`✅ Found ${relevantContacts.length} relevant contacts in Airtable:`);
       relevantContacts.forEach((contact, i) => {
-        console.log(`   ${i+1}. ${contact.name} (${contact.stationType}) - ${contact.relationshipStatus}`);
+        console.log(
+          `   ${i + 1}. ${contact.name} (${contact.stationType}) - ${contact.relationshipStatus}`
+        );
       });
       console.log('');
 
       return relevantContacts;
-
     } catch (error) {
       console.error('❌ Failed to search Airtable:', error.message);
       return [];
@@ -111,7 +112,7 @@ class KYARACampaignLauncher {
         streamLink: this.campaignData.soundcloudLink,
         bio: this.campaignData.bio,
         previousSupport: this.campaignData.previousPlays.join(', '),
-        submissionDate: new Date().toISOString()
+        submissionDate: new Date().toISOString(),
       };
 
       // NOTE: Replace with actual Amazing Radio API endpoint when available
@@ -130,9 +131,8 @@ class KYARACampaignLauncher {
         success: true,
         station: 'Amazing Radio',
         method: 'manual_required',
-        submissionData
+        submissionData,
       };
-
     } catch (error) {
       console.error('❌ Failed to submit to Amazing Radio:', error.message);
       return { success: false, error: error.message };
@@ -151,7 +151,7 @@ class KYARACampaignLauncher {
         streamLink: this.campaignData.soundcloudLink,
         bio: this.campaignData.bio,
         previousSupport: this.campaignData.previousPlays.join(', '),
-        submissionDate: new Date().toISOString()
+        submissionDate: new Date().toISOString(),
       };
 
       // NOTE: Replace with actual Wigwam API endpoint when available
@@ -170,9 +170,8 @@ class KYARACampaignLauncher {
         success: true,
         station: 'Radio Wigwam',
         method: 'manual_required',
-        submissionData
+        submissionData,
       };
-
     } catch (error) {
       console.error('❌ Failed to submit to Wigwam:', error.message);
       return { success: false, error: error.message };
@@ -199,9 +198,8 @@ class KYARACampaignLauncher {
       return {
         success: true,
         soundcloudLink,
-        method: 'manual_required'
+        method: 'manual_required',
       };
-
     } catch (error) {
       console.error('❌ Failed to update Mailchimp:', error.message);
       return { success: false, error: error.message };
@@ -219,7 +217,6 @@ class KYARACampaignLauncher {
       const result = await runLibertyAgentKYARA();
 
       return result;
-
     } catch (error) {
       console.error('❌ Failed to run Liberty Agent:', error.message);
       console.log('\n⚠️  Manual execution required:');
@@ -308,7 +305,6 @@ class KYARACampaignLauncher {
       await this.generateCampaignSummary(results);
 
       return results;
-
     } catch (error) {
       console.error('❌ Campaign launch failed:', error.message);
       throw error;

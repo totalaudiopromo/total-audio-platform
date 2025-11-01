@@ -1,8 +1,9 @@
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 import type { Campaign } from '@/lib/types';
 
 export async function getCampaigns(): Promise<Campaign[]> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -16,7 +17,7 @@ export async function getCampaigns(): Promise<Campaign[]> {
 }
 
 export async function getCampaign(id: string): Promise<Campaign | null> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
   const { data, error } = await supabase
     .from('campaigns')
     .select('*')
@@ -26,8 +27,10 @@ export async function getCampaign(id: string): Promise<Campaign | null> {
   return data as Campaign;
 }
 
-export async function createCampaign(input: Partial<Campaign>): Promise<Campaign> {
-  const supabase = await createClient();
+export async function createCampaign(
+  input: Partial<Campaign>
+): Promise<Campaign> {
+  const supabase = await createServerClient(cookies());
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -42,8 +45,11 @@ export async function createCampaign(input: Partial<Campaign>): Promise<Campaign
   return data as Campaign;
 }
 
-export async function updateCampaign(id: string, input: Partial<Campaign>): Promise<Campaign> {
-  const supabase = await createClient();
+export async function updateCampaign(
+  id: string,
+  input: Partial<Campaign>
+): Promise<Campaign> {
+  const supabase = await createServerClient(cookies());
   const { data, error } = await supabase
     .from('campaigns')
     .update(input)
@@ -55,14 +61,7 @@ export async function updateCampaign(id: string, input: Partial<Campaign>): Prom
 }
 
 export async function deleteCampaign(id: string): Promise<void> {
-  const supabase = await createClient();
-  const { error } = await supabase
-    .from('campaigns')
-    .delete()
-    .eq('id', id);
+  const supabase = await createServerClient(cookies());
+  const { error } = await supabase.from('campaigns').delete().eq('id', id);
   if (error) throw error;
 }
-
-
-
-

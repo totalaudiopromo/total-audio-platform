@@ -6,7 +6,7 @@ Notes and SOPs for running the label.
 
 ### Operations Notes
 
-- [ ]  
+- [ ]
 
 ---
 

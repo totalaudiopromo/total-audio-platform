@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   // Verify cron secret
@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
   try {
     console.log('📝 Starting automated content generation...');
-    
+
     const contentResults = {
       timestamp: new Date().toISOString(),
       social_posts_created: 0,
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       reddit_responses_prepared: 0,
       linkedin_content_created: 0,
       twitter_threads_planned: 0,
-      content_calendar_updated: false
+      content_calendar_updated: false,
     };
 
     // Daily Content Generation Tasks
@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
       'Reddit responses for common promotion questions',
       'Blog topic ideas based on trending music industry news',
       'Email template optimization based on performance data',
-      'Social media content calendar for next week'
+      'Social media content calendar for next week',
     ];
 
     // In a real implementation, this would:
@@ -50,11 +50,15 @@ export async function POST(request: NextRequest) {
 
     // Generated Content Examples (would be actual AI-generated content in real implementation)
     const generatedContent = {
-      linkedin_post: "🎵 Music industry professionals waste 15+ hours weekly on manual contact research. Here's how AI-powered contact enrichment can transform your workflow...",
-      twitter_thread: "🧵 Thread: The hidden costs of messy music industry contact lists (and how to fix them)",
-      reddit_response: "I've been using Audio Intel for contact enrichment and it's saved me hours. Happy to share my experience...",
-      blog_topic: "From Chaos to Contacts: How AI is Revolutionizing Music Industry Networking",
-      email_subject_test: "A/B Testing: 'Transform Your Contact Chaos' vs 'Stop Wasting Hours on Spreadsheets'"
+      linkedin_post:
+        "🎵 Music industry professionals waste 15+ hours weekly on manual contact research. Here's how AI-powered contact enrichment can transform your workflow...",
+      twitter_thread:
+        '🧵 Thread: The hidden costs of messy music industry contact lists (and how to fix them)',
+      reddit_response:
+        "I've been using Audio Intel for contact enrichment and it's saved me hours. Happy to share my experience...",
+      blog_topic: 'From Chaos to Contacts: How AI is Revolutionizing Music Industry Networking',
+      email_subject_test:
+        "A/B Testing: 'Transform Your Contact Chaos' vs 'Stop Wasting Hours on Spreadsheets'",
     };
 
     console.log('✅ Content generation complete:', contentResults);
@@ -66,14 +70,16 @@ export async function POST(request: NextRequest) {
       results: contentResults,
       generated_content: generatedContent,
       content_strategy: 'Focus on spreadsheet pain points and time-saving benefits',
-      next_run: 'Tomorrow at 10 AM'
+      next_run: 'Tomorrow at 10 AM',
     });
-
   } catch (error) {
     console.error('❌ Content generation failed:', error);
-    return NextResponse.json({
-      error: 'Content generation failed',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Content generation failed',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }

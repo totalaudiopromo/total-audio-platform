@@ -13,11 +13,11 @@
 ### Step 1: Verify Integration in Notion
 
 1. Go to: <https://www.notion.so/my-integrations>
-2. Find "Claude Code Integration" 
+2. Find "Claude Code Integration"
 3. **Copy the EXACT token** (starts with `ntn_`)
 4. Verify it has these permissions:
    - ✅ Read content
-   - ✅ Update content  
+   - ✅ Update content
    - ✅ Insert content
    - ✅ Read comments
    - ✅ Insert comments
@@ -47,7 +47,7 @@ claude mcp list
 **MUST SHARE** these pages with the integration:
 
 - [ ] Sprint tracking workspace
-- [ ] Beta user acquisition docs  
+- [ ] Beta user acquisition docs
 - [ ] Project roadmap
 - [ ] Daily standup notes
 - [ ] Any other critical tracking docs
@@ -71,7 +71,7 @@ async function checkNotionHealth() {
     const notion = new Client({
       auth: process.env.NOTION_API_KEY,
     });
-    
+
     const response = await notion.users.me();
     console.log('✅ Notion integration: HEALTHY');
     console.log('User:', response.name);
@@ -108,11 +108,11 @@ if claude mcp list | grep -q "notion.*✓"; then
 else
     echo "❌ Notion MCP server: DISCONNECTED"
     echo "🔧 Running auto-recovery..."
-    
+
     # Auto-recovery attempt
     claude mcp remove notion 2>/dev/null
     claude mcp add notion npx -- @notionhq/notion-mcp-server --api-key=$NOTION_API_KEY_BACKUP
-    
+
     if claude mcp list | grep -q "notion.*✓"; then
         echo "✅ Auto-recovery: SUCCESS"
     else
@@ -125,7 +125,7 @@ fi
 
 **Always maintain local copies** of critical docs that can be synced to Notion:
 
-- `sprint-tracking.md` 
+- `sprint-tracking.md`
 - `beta-outreach-progress.md`
 - `daily-standup-notes.md`
 - `project-roadmap.md`

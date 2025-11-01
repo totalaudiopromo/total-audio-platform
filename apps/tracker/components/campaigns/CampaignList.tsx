@@ -47,7 +47,9 @@ export function CampaignList({ campaigns }: { campaigns: Campaign[] }) {
     return (
       <div className="text-center py-12">
         <p className="text-slate-500 text-lg mb-4">No campaigns yet</p>
-        <p className="text-slate-400">Create your first campaign to get started</p>
+        <p className="text-slate-400">
+          Create your first campaign to get started
+        </p>
       </div>
     );
   }
@@ -55,10 +57,13 @@ export function CampaignList({ campaigns }: { campaigns: Campaign[] }) {
   return (
     <>
       <div className="space-y-3">
-        {campaigns.map((campaign) => {
-          const roi = campaign.actual_reach > 0 && campaign.target_reach > 0
-            ? ((campaign.actual_reach - campaign.target_reach) / campaign.target_reach) * 100
-            : 0;
+        {campaigns.map(campaign => {
+          const roi =
+            campaign.actual_reach > 0 && campaign.target_reach > 0
+              ? ((campaign.actual_reach - campaign.target_reach) /
+                  campaign.target_reach) *
+                100
+              : 0;
 
           return (
             <div
@@ -71,21 +76,33 @@ export function CampaignList({ campaigns }: { campaigns: Campaign[] }) {
                   <span className="px-2 py-1 bg-blue-100 text-teal-700 rounded-lg text-xs font-semibold uppercase">
                     {campaign.platform}
                   </span>
-                  <span className={`px-2 py-1 rounded-lg text-xs font-semibold ${
-                    campaign.status === 'active'
-                      ? 'bg-green-100 text-green-700'
-                      : 'bg-slate-100 text-slate-700'
-                  }`}>
+                  <span
+                    className={`px-2 py-1 rounded-lg text-xs font-semibold ${
+                      campaign.status === 'active'
+                        ? 'bg-green-100 text-green-700'
+                        : 'bg-slate-100 text-slate-700'
+                    }`}
+                  >
                     {campaign.status}
                   </span>
                 </div>
                 <div className="flex gap-4 text-sm text-slate-600">
-                  <span>Started: {format(new Date(campaign.start_date), 'MMM d, yyyy')}</span>
+                  <span>
+                    Started:{' '}
+                    {format(new Date(campaign.start_date), 'MMM d, yyyy')}
+                  </span>
                   <span>Budget: £{campaign.budget}</span>
                   <span>Target: {campaign.target_reach.toLocaleString()}</span>
                   {campaign.actual_reach > 0 && (
-                    <span className={roi >= 0 ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
-                      ROI: {roi >= 0 ? '+' : ''}{roi.toFixed(0)}%
+                    <span
+                      className={
+                        roi >= 0
+                          ? 'text-green-600 font-semibold'
+                          : 'text-red-600 font-semibold'
+                      }
+                    >
+                      ROI: {roi >= 0 ? '+' : ''}
+                      {roi.toFixed(0)}%
                     </span>
                   )}
                 </div>

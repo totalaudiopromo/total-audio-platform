@@ -11,7 +11,7 @@ interface ErrorMessageProps {
 
 export function ErrorMessage({ context, onRetry, onDismiss }: ErrorMessageProps) {
   const error = getUserFriendlyError(context);
-  
+
   return (
     <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6 mb-6">
       <div className="flex items-start gap-4">
@@ -21,7 +21,7 @@ export function ErrorMessage({ context, onRetry, onDismiss }: ErrorMessageProps)
         <div className="flex-1">
           <h3 className="text-lg font-black text-red-900 mb-2">{error.title}</h3>
           <p className="text-red-800 font-bold mb-4">{error.message}</p>
-          
+
           <div className="mb-4">
             <h4 className="font-bold text-red-900 mb-2">What you can try:</h4>
             <ul className="list-disc list-inside space-y-1 text-sm text-red-800">
@@ -30,7 +30,7 @@ export function ErrorMessage({ context, onRetry, onDismiss }: ErrorMessageProps)
               ))}
             </ul>
           </div>
-          
+
           <div className="flex gap-3">
             {onRetry && (
               <button
@@ -78,26 +78,9 @@ export function SuccessMessage({ message, details }: SuccessMessageProps) {
         <div className="flex-1">
           <h3 className="text-lg font-black text-green-900 mb-2">Success!</h3>
           <p className="text-green-800 font-bold">{message}</p>
-          {details && (
-            <p className="text-sm text-green-700 mt-2">{details}</p>
-          )}
+          {details && <p className="text-sm text-green-700 mt-2">{details}</p>}
         </div>
       </div>
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

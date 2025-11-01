@@ -16,38 +16,38 @@ const navItems: NavItem[] = [
     id: 'dashboard',
     label: 'Dashboard',
     href: '/',
-    icon: Home
+    icon: Home,
   },
   {
     id: 'business',
     label: 'Business Dashboard',
     href: '/business-dashboard',
-    icon: BarChart3
+    icon: BarChart3,
   },
   {
     id: 'analytics',
     label: 'Analytics',
     href: '/analytics',
-    icon: TrendingUp
+    icon: TrendingUp,
   },
   {
     id: 'social-posting',
     label: 'Social Media',
     href: '/social-posting',
-    icon: Share2
+    icon: Share2,
   },
   {
     id: 'reports',
     label: 'Reports',
     href: '/reports',
-    icon: FileText
+    icon: FileText,
   },
   {
     id: 'users',
     label: 'Users',
     href: '/users',
-    icon: Users
-  }
+    icon: Users,
+  },
 ];
 
 interface CleanNavigationProps {
@@ -74,10 +74,10 @@ export default function CleanNavigation({ children }: CleanNavigationProps) {
         </div>
 
         <nav className="mt-6">
-          {navItems.map((item) => {
+          {navItems.map(item => {
             const IconComponent = item.icon;
             const isActive = pathname === item.href;
-            
+
             return (
               <Link
                 key={item.id}
@@ -100,9 +100,7 @@ export default function CleanNavigation({ children }: CleanNavigationProps) {
       </div>
 
       {/* Main Content */}
-      <div className="clean-content">
-        {children}
-      </div>
+      <div className="clean-content">{children}</div>
     </div>
   );
 }

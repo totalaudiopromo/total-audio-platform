@@ -60,7 +60,7 @@ export class OpenRouterService {
   constructor(apiKey: string) {
     this.config = {
       apiKey,
-      baseUrl: 'https://openrouter.ai/api/v1'
+      baseUrl: 'https://openrouter.ai/api/v1',
     };
   }
 
@@ -72,9 +72,9 @@ export class OpenRouterService {
     try {
       const response = await axios.get(`${this.config.baseUrl}/models`, {
         headers: {
-          'Authorization': `Bearer ${this.config.apiKey}`,
-          'Content-Type': 'application/json'
-        }
+          Authorization: `Bearer ${this.config.apiKey}`,
+          'Content-Type': 'application/json',
+        },
       });
 
       const models = response.data.data.map((model: any) => ({
@@ -84,53 +84,61 @@ export class OpenRouterService {
         contextLength: model.context_length || 0,
         pricing: {
           prompt: model.pricing?.prompt || '0',
-          completion: model.pricing?.completion || '0'
-        }
+          completion: model.pricing?.completion || '0',
+        },
       }));
 
       return {
         success: true,
-        models
+        models,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 
   async chatCompletion(request: ChatCompletionRequest): Promise<ChatCompletionResponse> {
     try {
-      const response = await axios.post(`${this.config.baseUrl}/chat/completions`, {
-        model: request.model,
-        messages: request.messages,
-        temperature: request.temperature || 0.7,
-        max_tokens: request.maxTokens || 1000,
-        top_p: request.topP || 1,
-        frequency_penalty: request.frequencyPenalty || 0,
-        presence_penalty: request.presencePenalty || 0,
-        stream: request.stream || false
-      }, {
-        headers: {
-          'Authorization': `Bearer ${this.config.apiKey}`,
-          'Content-Type': 'application/json'
+      const response = await axios.post(
+        `${this.config.baseUrl}/chat/completions`,
+        {
+          model: request.model,
+          messages: request.messages,
+          temperature: request.temperature || 0.7,
+          max_tokens: request.maxTokens || 1000,
+          top_p: request.topP || 1,
+          frequency_penalty: request.frequencyPenalty || 0,
+          presence_penalty: request.presencePenalty || 0,
+          stream: request.stream || false,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
         }
-      });
+      );
 
       return {
         success: true,
-        data: response.data
+        data: response.data,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 
-  async generatePressRelease(client: string, news: string, industry: string): Promise<{
+  async generatePressRelease(
+    client: string,
+    news: string,
+    industry: string
+  ): Promise<{
     success: boolean;
     pressRelease?: string;
     error?: string;
@@ -139,7 +147,8 @@ export class OpenRouterService {
       const messages: ChatMessage[] = [
         {
           role: 'system',
-          content: 'You are a professional PR writer. Write compelling press releases that are newsworthy and follow AP style guidelines.'
+          content:
+            'You are a professional PR writer. Write compelling press releases that are newsworthy and follow AP style guidelines.',
         },
         {
           role: 'user',
@@ -154,21 +163,21 @@ export class OpenRouterService {
           - Contact information
           - Boilerplate about the company
           
-          Make it newsworthy and engaging for journalists.`
-        }
+          Make it newsworthy and engaging for journalists.`,
+        },
       ];
 
       const result = await this.chatCompletion({
         model: 'anthropic/claude-3.5-sonnet',
         messages,
         temperature: 0.7,
-        maxTokens: 2000
+        maxTokens: 2000,
       });
 
       if (!result.success) {
         return {
           success: false,
-          error: result.error || 'Unknown error'
+          error: result.error || 'Unknown error',
         };
       }
 
@@ -179,12 +188,17 @@ export class OpenRouterService {
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 
-  async generatePitchEmail(journalist: string, outlet: string, story: string, client: string): Promise<{
+  async generatePitchEmail(
+    journalist: string,
+    outlet: string,
+    story: string,
+    client: string
+  ): Promise<{
     success: boolean;
     pitch?: string;
     subjectLine?: string;
@@ -194,7 +208,8 @@ export class OpenRouterService {
       const messages: ChatMessage[] = [
         {
           role: 'system',
-          content: 'You are a PR professional writing personalized pitch emails to journalists. Be concise, relevant, and respectful of their time.'
+          content:
+            'You are a PR professional writing personalized pitch emails to journalists. Be concise, relevant, and respectful of their time.',
         },
         {
           role: 'user',
@@ -209,40 +224,47 @@ export class OpenRouterService {
           - Clear call to action
           - Professional signature
           
-          Keep it under 150 words and make it personal to the journalist.`
-        }
+          Keep it under 150 words and make it personal to the journalist.`,
+        },
       ];
 
       const result = await this.chatCompletion({
         model: 'anthropic/claude-3.5-sonnet',
         messages,
         temperature: 0.6,
-        maxTokens: 1000
+        maxTokens: 1000,
       });
 
       if (!result.success) {
         return {
           success: false,
-          error: result.error || 'Unknown error'
+          error: result.error || 'Unknown error',
         };
       }
 
       const content = result.data?.choices[0]?.message?.content || '';
-      
+
       // Extract subject line and pitch body
       const lines = content.split('\n');
-      const subjectLine = lines.find(line => line.toLowerCase().includes('subject:'))?.split(':')[1]?.trim() || '';
-      const pitch = lines.filter(line => !line.toLowerCase().includes('subject:')).join('\n').trim();
+      const subjectLine =
+        lines
+          .find(line => line.toLowerCase().includes('subject:'))
+          ?.split(':')[1]
+          ?.trim() || '';
+      const pitch = lines
+        .filter(line => !line.toLowerCase().includes('subject:'))
+        .join('\n')
+        .trim();
 
       return {
         success: true,
         pitch,
-        subjectLine
+        subjectLine,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -261,7 +283,8 @@ export class OpenRouterService {
       const messages: ChatMessage[] = [
         {
           role: 'system',
-          content: 'You are a media analysis expert. Analyze articles for sentiment, themes, and provide actionable recommendations.'
+          content:
+            'You are a media analysis expert. Analyze articles for sentiment, themes, and provide actionable recommendations.',
         },
         {
           role: 'user',
@@ -275,42 +298,45 @@ export class OpenRouterService {
           - Tone analysis
           - Recommendations for PR strategy
           
-          Be specific and actionable.`
-        }
+          Be specific and actionable.`,
+        },
       ];
 
       const result = await this.chatCompletion({
         model: 'anthropic/claude-3.5-sonnet',
         messages,
         temperature: 0.3,
-        maxTokens: 1500
+        maxTokens: 1500,
       });
 
       if (!result.success) {
         return {
           success: false,
-          error: result.error || 'Unknown error'
+          error: result.error || 'Unknown error',
         };
       }
 
       const content = result.data?.choices[0]?.message?.content || '';
-      
+
       // Parse the analysis
       const analysis = this.parseMediaAnalysis(content);
 
       return {
         success: true,
-        analysis
+        analysis,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 
-  async generateSocialMediaContent(pressRelease: string, platforms: string[]): Promise<{
+  async generateSocialMediaContent(
+    pressRelease: string,
+    platforms: string[]
+  ): Promise<{
     success: boolean;
     content?: Record<string, string>;
     error?: string;
@@ -319,7 +345,8 @@ export class OpenRouterService {
       const messages: ChatMessage[] = [
         {
           role: 'system',
-          content: 'You are a social media expert. Create engaging content for different platforms based on press releases.'
+          content:
+            'You are a social media expert. Create engaging content for different platforms based on press releases.',
         },
         {
           role: 'user',
@@ -334,21 +361,21 @@ export class OpenRouterService {
           - Relevant hashtags
           - Call to action
           
-          Adapt the tone and length for each platform.`
-        }
+          Adapt the tone and length for each platform.`,
+        },
       ];
 
       const result = await this.chatCompletion({
         model: 'anthropic/claude-3.5-sonnet',
         messages,
         temperature: 0.7,
-        maxTokens: 2000
+        maxTokens: 2000,
       });
 
       if (!result.success) {
         return {
           success: false,
-          error: result.error || 'Unknown error'
+          error: result.error || 'Unknown error',
         };
       }
 
@@ -357,12 +384,12 @@ export class OpenRouterService {
 
       return {
         success: true,
-        content: socialContent
+        content: socialContent,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -400,24 +427,25 @@ export class OpenRouterService {
       sentiment,
       keyThemes,
       tone,
-      recommendations
+      recommendations,
     };
   }
 
   private parseSocialMediaContent(content: string, platforms: string[]): Record<string, string> {
     const socialContent: Record<string, string> = {};
-    
+
     const sections = content.split('\n\n');
-    
+
     for (const platform of platforms) {
       const section = sections.find(s => s.toLowerCase().includes(platform.toLowerCase()));
       if (section) {
-        socialContent[platform] = section.split('\n').filter(line => 
-          !line.toLowerCase().includes(platform.toLowerCase()) && line.trim()
-        ).join('\n');
+        socialContent[platform] = section
+          .split('\n')
+          .filter(line => !line.toLowerCase().includes(platform.toLowerCase()) && line.trim())
+          .join('\n');
       }
     }
 
     return socialContent;
   }
-} 
+}

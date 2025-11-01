@@ -1,7 +1,9 @@
 # Liberty Music PR - Google Chat MCP Setup
 
 ## 🎯 OBJECTIVE
+
 Give the agent read-only access to Liberty Google Chat for training on:
+
 - Campaign workflows
 - Station communications
 - Team processes
@@ -38,12 +40,14 @@ Go to: https://console.cloud.google.com/apis/credentials
 ### 3. Configure OAuth Consent Screen
 
 If prompted, configure the OAuth consent screen:
+
 - User Type: **Internal** (if Google Workspace) or **External**
 - App name: **Liberty Music PR Agent**
 - User support email: `chrisschofield@libertymusicpr.com`
 - Developer contact: `chrisschofield@libertymusicpr.com`
 
 Add scopes:
+
 - `https://www.googleapis.com/auth/chat.spaces.readonly`
 - `https://www.googleapis.com/auth/chat.messages.readonly`
 
@@ -69,6 +73,7 @@ cp ~/.liberty-chat-mcp/credentials.json ~/.google-chat-mcp/credentials.json
 ### 6. First Authentication
 
 The first time you use the agent to access Liberty Chat, it will:
+
 1. Open a browser window
 2. Ask you to sign in with `chrisschofield@libertymusicpr.com`
 3. Request permission to read Google Chat spaces and messages
@@ -85,12 +90,14 @@ The first time you use the agent to access Liberty Chat, it will:
 ## 📊 WHAT THE AGENT CAN ACCESS
 
 From Liberty Google Chat:
+
 - All spaces you have access to
 - Historical messages (subject to retention policies)
 - Channel/space metadata
 - User information (for understanding team structure)
 
 Training data will help agent understand:
+
 - How Liberty manages campaigns
 - Station communication patterns
 - Client interaction workflows
@@ -100,6 +107,7 @@ Training data will help agent understand:
 ## 🚀 QUICK START (After Setup)
 
 Once authenticated, you can ask the agent:
+
 - "List all Liberty Chat spaces"
 - "Show recent messages from #campaigns channel"
 - "Search Liberty Chat for 'BBC Radio 6 Music' campaigns"
@@ -111,6 +119,7 @@ You already have Liberty Takeout data at:
 `/Users/chrisschofield/workspace/active/liberty-music-pr/Liberty_Training_Data/Takeout/Google Chat/`
 
 The agent will use BOTH:
+
 - **Takeout data**: Historical baseline (up to export date)
 - **Live Chat API**: Recent updates and ongoing conversations
 

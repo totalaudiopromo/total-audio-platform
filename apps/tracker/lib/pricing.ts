@@ -1,4 +1,5 @@
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 
 export interface PricingTier {
   id: string;
@@ -29,8 +30,10 @@ export interface UsageLimits {
   api_calls_made: number;
 }
 
-export async function getPricingTiers(userType?: 'artist' | 'agency'): Promise<PricingTier[]> {
-  const supabase = await createClient();
+export async function getPricingTiers(
+  userType?: 'artist' | 'agency'
+): Promise<PricingTier[]> {
+  const supabase = await createServerClient(cookies());
 
   let query = supabase
     .from('pricing_tiers')
@@ -53,8 +56,10 @@ export async function getPricingTiers(userType?: 'artist' | 'agency'): Promise<P
 }
 
 export async function getUserSubscription() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const supabase = await createServerClient(cookies());
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) return null;
 
@@ -74,8 +79,10 @@ export async function getUserSubscription() {
   return data;
 }
 
-export async function getCurrentUsage(userId: string): Promise<UsageLimits | null> {
-  const supabase = await createClient();
+export async function getCurrentUsage(
+  userId: string
+): Promise<UsageLimits | null> {
+  const supabase = await createServerClient(cookies());
   const now = new Date();
   const periodStart = new Date(now.getFullYear(), now.getMonth(), 1);
   const periodEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0);
@@ -154,7 +161,7 @@ export async function incrementUsage(
   limitType: 'campaigns' | 'clients' | 'team_members' | 'api_calls',
   amount: number = 1
 ): Promise<boolean> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
   const usage = await getCurrentUsage(userId);
 
   if (!usage) return false;

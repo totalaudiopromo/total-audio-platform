@@ -2,7 +2,7 @@
 
 /**
  * Senior Dunce - Bestial Press Release Generator
- * 
+ *
  * Based on Synth Seoul meeting approach and UK electronic angle
  * Creates professional press release for radio station outreach
  */
@@ -19,10 +19,10 @@ class SeniorDuncePressRelease {
       campaignDuration: '4-week',
       budget: '£500',
       targetMarket: 'UK focused',
-      angle: 'UK electronic influence with British engineer collaboration'
+      angle: 'UK electronic influence with British engineer collaboration',
     };
   }
-  
+
   generatePressRelease() {
     const pressRelease = `FOR IMMEDIATE RELEASE
 
@@ -62,7 +62,7 @@ NOTES TO EDITORS:
 
     return pressRelease;
   }
-  
+
   generateEmailTemplates() {
     return {
       radioStation: {
@@ -81,9 +81,9 @@ Liberty Music PR
 
 ---
 
-[PRESS_RELEASE_CONTENT]`
+[PRESS_RELEASE_CONTENT]`,
       },
-      
+
       bbcIntroducing: {
         subject: 'BBC Introducing Submission: Senior Dunce - Bestial',
         template: `Hi BBC Introducing Team,
@@ -100,9 +100,9 @@ Liberty Music PR
 
 ---
 
-[PRESS_RELEASE_CONTENT]`
+[PRESS_RELEASE_CONTENT]`,
       },
-      
+
       majorStations: {
         subject: 'Commercial Electronic Track: Senior Dunce - Bestial',
         template: `Hi [STATION_NAME],
@@ -119,30 +119,30 @@ Liberty Music PR
 
 ---
 
-[PRESS_RELEASE_CONTENT]`
-      }
+[PRESS_RELEASE_CONTENT]`,
+      },
     };
   }
-  
+
   generateSocialMediaContent() {
     return {
       twitter: [
         "🎵 New track alert! Senior Dunce - 'Bestial' is out now. UK electronic influence meets experimental sound design. Perfect for specialist radio shows. #ElectronicMusic #UKMusic #IndieElectronic",
         "🔥 Senior Dunce drops 'Bestial' - a compelling blend of experimental electronic with British production values. Already getting love from community radio! #NewMusic #Electronic #UKProducer",
-        "🎧 'Bestial' by Senior Dunce showcases authentic UK electronic artistry. Experimental sound design meets commercial accessibility. Radio stations are taking notice! #ElectronicMusic #UKMusic"
+        "🎧 'Bestial' by Senior Dunce showcases authentic UK electronic artistry. Experimental sound design meets commercial accessibility. Radio stations are taking notice! #ElectronicMusic #UKMusic",
       ],
-      
+
       instagram: [
         "🎵 New track from Senior Dunce - 'Bestial' is here! UK electronic influence meets experimental sound design. Perfect for specialist radio shows and BBC Introducing consideration. #ElectronicMusic #UKMusic #IndieElectronic #NewMusic",
-        "🔥 Senior Dunce drops 'Bestial' - a compelling blend of experimental electronic with British production values. Early support from community radio stations shows this track has serious potential! #ElectronicMusic #UKMusic #NewMusic #IndieElectronic"
+        "🔥 Senior Dunce drops 'Bestial' - a compelling blend of experimental electronic with British production values. Early support from community radio stations shows this track has serious potential! #ElectronicMusic #UKMusic #NewMusic #IndieElectronic",
       ],
-      
+
       facebook: [
-        "Senior Dunce has unveiled their compelling new single 'Bestial', a beautifully crafted experimental electronic track that highlights the artist's distinctive sound design and ability to capture authentic electronic textures with a distinctly British influence. The track has already garnered support from community radio stations and is perfect for specialist electronic shows and BBC Introducing consideration."
-      ]
+        "Senior Dunce has unveiled their compelling new single 'Bestial', a beautifully crafted experimental electronic track that highlights the artist's distinctive sound design and ability to capture authentic electronic textures with a distinctly British influence. The track has already garnered support from community radio stations and is perfect for specialist electronic shows and BBC Introducing consideration.",
+      ],
     };
   }
-  
+
   generatePlaylistPitch() {
     return `Hi [PLAYLIST_CURATOR],
 
@@ -163,15 +163,15 @@ Chris Schofield
 Liberty Music PR
 chris@libertymusicpr.com`;
   }
-  
+
   async executePressReleaseCampaign() {
     console.log('📰 Senior Dunce - Bestial Press Release Campaign\n');
-    
+
     const pressRelease = this.generatePressRelease();
     const emailTemplates = this.generateEmailTemplates();
     const socialContent = this.generateSocialMediaContent();
     const playlistPitch = this.generatePlaylistPitch();
-    
+
     console.log('📊 PRESS RELEASE GENERATED:\n');
     console.log('✅ Professional press release created');
     console.log('✅ UK electronic angle emphasized');
@@ -179,31 +179,31 @@ chris@libertymusicpr.com`;
     console.log('✅ Early radio support mentioned');
     console.log('✅ BBC Introducing positioning included');
     console.log('');
-    
+
     console.log('📧 EMAIL TEMPLATES CREATED:\n');
     console.log('✅ Radio station press release email');
     console.log('✅ BBC Introducing submission email');
     console.log('✅ Major station commercial pitch email');
     console.log('');
-    
+
     console.log('📱 SOCIAL MEDIA CONTENT GENERATED:\n');
     console.log(`✅ ${socialContent.twitter.length} Twitter posts`);
     console.log(`✅ ${socialContent.instagram.length} Instagram posts`);
     console.log(`✅ ${socialContent.facebook.length} Facebook posts`);
     console.log('');
-    
+
     console.log('🎵 PLAYLIST PITCH TEMPLATE:\n');
     console.log('✅ Curator outreach email template');
     console.log('✅ UK electronic angle emphasized');
     console.log('✅ Early support evidence included');
     console.log('');
-    
+
     console.log('📋 PRESS RELEASE CONTENT:\n');
     console.log('─'.repeat(60));
     console.log(pressRelease);
     console.log('─'.repeat(60));
     console.log('');
-    
+
     console.log('🚀 IMMEDIATE NEXT STEPS:\n');
     console.log('1. Send press release to all 18 radio station contacts');
     console.log('2. Submit to BBC Introducing with press release');
@@ -212,7 +212,7 @@ chris@libertymusicpr.com`;
     console.log('5. Follow up with stations after 1 week');
     console.log('6. Monitor press release pick-up and coverage');
     console.log('');
-    
+
     console.log('🎯 SUCCESS METRICS:');
     console.log('• Press release sent to 18 radio stations');
     console.log('• BBC Introducing submission completed');
@@ -220,13 +220,13 @@ chris@libertymusicpr.com`;
     console.log('• Playlist curator outreach initiated');
     console.log('• Follow-up schedule established');
     console.log('');
-    
+
     return {
       pressRelease,
       emailTemplates,
       socialContent,
       playlistPitch,
-      campaignData: this.campaignData
+      campaignData: this.campaignData,
     };
   }
 }
@@ -234,14 +234,14 @@ chris@libertymusicpr.com`;
 // Run the press release campaign
 async function runSeniorDuncePressRelease() {
   const pressRelease = new SeniorDuncePressRelease();
-  
+
   try {
     const result = await pressRelease.executePressReleaseCampaign();
-    
+
     console.log('🎉 Senior Dunce Press Release Campaign Complete!');
     console.log('Professional press release ready for radio station outreach');
     console.log('UK electronic angle and British production values emphasized');
-    
+
     return result;
   } catch (error) {
     console.error('❌ Press release campaign failed:', error.message);

@@ -17,14 +17,10 @@ export async function POST(request: NextRequest) {
     // In the future, you could send this to Google Analytics, Mixpanel, etc.
     return NextResponse.json({
       success: true,
-      message: 'Engagement tracked successfully'
+      message: 'Engagement tracked successfully',
     });
-
   } catch (error) {
     console.error('Error tracking engagement:', error);
-    return NextResponse.json(
-      { error: 'Failed to track engagement' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to track engagement' }, { status: 500 });
   }
 }

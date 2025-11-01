@@ -9,10 +9,33 @@ interface CampaignModalProps {
   campaign?: any;
 }
 
-const PLATFORMS = ['BBC Radio', 'Commercial Radio', 'Playlists', 'Blogs', 'Social', 'PR'];
-const GENRES = ['Electronic', 'Indie', 'Jazz', 'Pop', 'Rock', 'Hip-Hop', 'R&B', 'Country', 'Folk', 'Classical', 'Other'];
+const PLATFORMS = [
+  'BBC Radio',
+  'Commercial Radio',
+  'Playlists',
+  'Blogs',
+  'Social',
+  'PR',
+];
+const GENRES = [
+  'Electronic',
+  'Indie',
+  'Jazz',
+  'Pop',
+  'Rock',
+  'Hip-Hop',
+  'R&B',
+  'Country',
+  'Folk',
+  'Classical',
+  'Other',
+];
 
-export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps) {
+export function CampaignModal({
+  isOpen,
+  onClose,
+  campaign,
+}: CampaignModalProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -104,7 +127,9 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
                 {campaign ? 'Edit Campaign' : 'Create New Campaign'}
               </h2>
               <p className="text-sm font-bold text-blue-100 mt-1">
-                {campaign ? 'Update your campaign details' : 'Track your music promotion campaign'}
+                {campaign
+                  ? 'Update your campaign details'
+                  : 'Track your music promotion campaign'}
               </p>
             </div>
             <button
@@ -128,7 +153,7 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
               type="text"
               required
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={e => setFormData({ ...formData, name: e.target.value })}
               className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               placeholder="Summer Radio Push"
             />
@@ -142,7 +167,9 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
             <input
               type="text"
               value={formData.artist_name}
-              onChange={(e) => setFormData({ ...formData, artist_name: e.target.value })}
+              onChange={e =>
+                setFormData({ ...formData, artist_name: e.target.value })
+              }
               className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               placeholder="The Audio Dogs"
             />
@@ -156,11 +183,15 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
               </label>
               <select
                 value={formData.platform}
-                onChange={(e) => setFormData({ ...formData, platform: e.target.value })}
+                onChange={e =>
+                  setFormData({ ...formData, platform: e.target.value })
+                }
                 className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white"
               >
-                {PLATFORMS.map((platform) => (
-                  <option key={platform} value={platform}>{platform}</option>
+                {PLATFORMS.map(platform => (
+                  <option key={platform} value={platform}>
+                    {platform}
+                  </option>
                 ))}
               </select>
             </div>
@@ -171,11 +202,15 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
               </label>
               <select
                 value={formData.genre}
-                onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
+                onChange={e =>
+                  setFormData({ ...formData, genre: e.target.value })
+                }
                 className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white"
               >
-                {GENRES.map((genre) => (
-                  <option key={genre} value={genre}>{genre}</option>
+                {GENRES.map(genre => (
+                  <option key={genre} value={genre}>
+                    {genre}
+                  </option>
                 ))}
               </select>
             </div>
@@ -193,7 +228,9 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
                 min="0"
                 step="0.01"
                 value={formData.budget}
-                onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                onChange={e =>
+                  setFormData({ ...formData, budget: e.target.value })
+                }
                 className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 placeholder="500"
               />
@@ -207,7 +244,9 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
                 type="date"
                 required
                 value={formData.start_date}
-                onChange={(e) => setFormData({ ...formData, start_date: e.target.value })}
+                onChange={e =>
+                  setFormData({ ...formData, start_date: e.target.value })
+                }
                 className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               />
             </div>
@@ -222,7 +261,9 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
               <input
                 type="text"
                 value={formData.target_type}
-                onChange={(e) => setFormData({ ...formData, target_type: e.target.value })}
+                onChange={e =>
+                  setFormData({ ...formData, target_type: e.target.value })
+                }
                 className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 placeholder="Radio Stations / Playlists / Blogs"
               />
@@ -237,11 +278,15 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
                 required
                 min="0"
                 value={formData.target_reach}
-                onChange={(e) => setFormData({ ...formData, target_reach: e.target.value })}
+                onChange={e =>
+                  setFormData({ ...formData, target_reach: e.target.value })
+                }
                 className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 placeholder="20"
               />
-              <p className="text-xs font-bold text-gray-600 mt-1">How many contacts will you pitch to?</p>
+              <p className="text-xs font-bold text-gray-600 mt-1">
+                How many contacts will you pitch to?
+              </p>
             </div>
           </div>
 
@@ -254,12 +299,15 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
               type="number"
               min="0"
               value={formData.actual_reach}
-              onChange={(e) => setFormData({ ...formData, actual_reach: e.target.value })}
+              onChange={e =>
+                setFormData({ ...formData, actual_reach: e.target.value })
+              }
               className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               placeholder="0"
             />
             <p className="text-xs font-bold text-gray-600 mt-1">
-              How many positive responses did you get? Update this as results come in.
+              How many positive responses did you get? Update this as results
+              come in.
             </p>
           </div>
 
@@ -270,7 +318,9 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
             </label>
             <textarea
               value={formData.notes}
-              onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+              onChange={e =>
+                setFormData({ ...formData, notes: e.target.value })
+              }
               rows={4}
               className="w-full px-4 py-3 border-4 border-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-teal-500 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] resize-none"
               placeholder="Track progress, contacts pitched, special notes..."
@@ -291,7 +341,11 @@ export function CampaignModal({ isOpen, onClose, campaign }: CampaignModalProps)
               disabled={loading}
               className="flex-1 px-6 py-3.5 bg-teal-600 text-white rounded-xl font-black hover:bg-teal-700 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-base"
             >
-              {loading ? 'Saving...' : campaign ? 'Update Campaign' : 'Create Campaign'}
+              {loading
+                ? 'Saving...'
+                : campaign
+                  ? 'Update Campaign'
+                  : 'Create Campaign'}
             </button>
           </div>
         </form>

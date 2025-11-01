@@ -12,7 +12,7 @@ Download the Workflow file below
 
 ### Step 2
 
- 🚨Important, I’ve added a second video at the bottom of this doc how to customize please watch it! 🚨
+🚨Important, I’ve added a second video at the bottom of this doc how to customize please watch it! 🚨
 
 **🎬 COMPLETE VIDEO WALKTHROUGH (WATCH THIS FIRST!)**
 
@@ -83,7 +83,7 @@ An automated system that:
 4. In n8n, click **"Start from scratch"**
 5. Click anywhere on the canvas
 6. Press **Ctrl+V** (or Cmd+V on Mac) to paste
-7. 
+7.
 
 **✅ Success check:** You should see the full workflow with sticky notes
 
@@ -154,7 +154,7 @@ An automated system that:
 **Clean the data:**
 
 5. Upload CSV to Claude/ChatGPT
-6. Ask: *"Extract only tweet text, numbered 1, 2, 3, etc."*
+6. Ask: _"Extract only tweet text, numbered 1, 2, 3, etc."_
 7. Copy the cleaned list
 8. Save in a Google Doc for Step 7
 

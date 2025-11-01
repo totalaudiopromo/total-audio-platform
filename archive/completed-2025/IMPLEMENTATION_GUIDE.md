@@ -143,7 +143,7 @@ Edit `apps/audio-intel/package.json`:
 ```json
 {
   "dependencies": {
-    "@total-audio/auth": "*",
+    "@total-audio/auth": "*"
     // ... other dependencies
   }
 }
@@ -160,18 +160,18 @@ npm install
 Replace `apps/audio-intel/middleware.ts`:
 
 ```typescript
-import { createMiddleware } from '@total-audio/auth/middleware'
+import { createMiddleware } from '@total-audio/auth/middleware';
 
 export const middleware = createMiddleware({
   protectedRoutes: ['/dashboard', '/enrichments', '/settings', '/profile'],
   authRoutes: ['/signin', '/signup', '/auth'],
   signInPath: '/signin',
   defaultRedirect: '/dashboard',
-})
+});
 
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
-}
+};
 ```
 
 #### Step 4.3: Create Sign-In Page
@@ -219,19 +219,19 @@ cp examples/auth-components/*.tsx apps/audio-intel/components/auth/
 Create `apps/audio-intel/app/auth/callback/route.ts`:
 
 ```typescript
-import { createServerClient } from '@total-audio/auth'
-import { NextResponse } from 'next/server'
+import { createServerClient } from '@total-audio/auth';
+import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
-  const requestUrl = new URL(request.url)
-  const code = requestUrl.searchParams.get('code')
+  const requestUrl = new URL(request.url);
+  const code = requestUrl.searchParams.get('code');
 
   if (code) {
-    const supabase = await createServerClient()
-    await supabase.auth.exchangeCodeForSession(code)
+    const supabase = await createServerClient();
+    await supabase.auth.exchangeCodeForSession(code);
   }
 
-  return NextResponse.redirect(new URL('/dashboard', request.url))
+  return NextResponse.redirect(new URL('/dashboard', request.url));
 }
 ```
 
@@ -390,84 +390,80 @@ Edit the auth components to match your brand:
 Create `apps/audio-intel/app/api/webhooks/stripe/route.ts`:
 
 ```typescript
-import { createServerClient } from '@total-audio/auth'
-import { headers } from 'next/headers'
-import { NextResponse } from 'next/server'
-import Stripe from 'stripe'
+import { createServerClient } from '@total-audio/auth';
+import { headers } from 'next/headers';
+import { NextResponse } from 'next/server';
+import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2024-06-20',
-})
+});
 
 export async function POST(req: Request) {
-  const body = await req.text()
-  const signature = headers().get('stripe-signature')!
+  const body = await req.text();
+  const signature = headers().get('stripe-signature')!;
 
-  let event: Stripe.Event
+  let event: Stripe.Event;
 
   try {
-    event = stripe.webhooks.constructEvent(
-      body,
-      signature,
-      process.env.STRIPE_WEBHOOK_SECRET!
-    )
+    event = stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET!);
   } catch (err) {
-    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
+    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
   }
 
-  const supabase = await createServerClient()
+  const supabase = await createServerClient();
 
   switch (event.type) {
     case 'customer.subscription.created':
     case 'customer.subscription.updated': {
-      const subscription = event.data.object as Stripe.Subscription
+      const subscription = event.data.object as Stripe.Subscription;
 
       // Update user profile tier based on subscription
-      const customerId = subscription.customer as string
+      const customerId = subscription.customer as string;
       const { data: profile } = await supabase
         .from('user_profiles')
         .select('id')
         .eq('stripe_customer_id', customerId)
-        .single()
+        .single();
 
       if (profile) {
         // Determine tier from price ID
-        const priceId = subscription.items.data[0].price.id
-        let tier = 'free'
+        const priceId = subscription.items.data[0].price.id;
+        let tier = 'free';
 
-        if (priceId.includes('bundle')) tier = 'bundle'
-        else if (priceId.includes('agency')) tier = 'agency'
-        else if (priceId.includes('professional')) tier = 'pro'
+        if (priceId.includes('bundle')) tier = 'bundle';
+        else if (priceId.includes('agency')) tier = 'agency';
+        else if (priceId.includes('professional')) tier = 'pro';
 
         await supabase
           .from('user_profiles')
           .update({ subscription_tier: tier })
-          .eq('id', profile.id)
+          .eq('id', profile.id);
       }
-      break
+      break;
     }
 
     case 'customer.subscription.deleted': {
-      const subscription = event.data.object as Stripe.Subscription
-      const customerId = subscription.customer as string
+      const subscription = event.data.object as Stripe.Subscription;
+      const customerId = subscription.customer as string;
 
       const { data: profile } = await supabase
         .from('user_profiles')
         .select('id')
         .eq('stripe_customer_id', customerId)
-        .single()
+        .single();
 
       if (profile) {
         await supabase
           .from('user_profiles')
           .update({ subscription_tier: 'free' })
-          .eq('id', profile.id)
+          .eq('id', profile.id);
       }
-      break
+      break;
     }
   }
 
-  return NextResponse.json({ received: true })
+  return NextResponse.json({ received: true });
 }
 ```
 
@@ -497,6 +493,7 @@ STRIPE_WEBHOOK_SECRET=whsec_your_signing_secret
 ### Issue: Can't sign in
 
 **Check:**
+
 1. Supabase credentials are correct in `.env.local`
 2. Email confirmation is enabled in Supabase
 3. User exists in `auth.users` table
@@ -505,6 +502,7 @@ STRIPE_WEBHOOK_SECRET=whsec_your_signing_secret
 ### Issue: User profile not created
 
 **Fix:**
+
 ```sql
 -- In Supabase SQL Editor
 SELECT public.handle_new_user()
@@ -515,6 +513,7 @@ WHERE id NOT IN (SELECT id FROM public.user_profiles);
 ### Issue: No access to apps after sign-up
 
 **Fix:**
+
 ```sql
 -- Grant default access
 INSERT INTO public.app_permissions (user_id, app_name, has_access)
@@ -524,6 +523,7 @@ VALUES ('user_id_here', 'audio-intel', true);
 ### Issue: Session not persisting
 
 **Check:**
+
 1. All apps use the SAME Supabase credentials
 2. Clear browser cookies
 3. Middleware is configured correctly

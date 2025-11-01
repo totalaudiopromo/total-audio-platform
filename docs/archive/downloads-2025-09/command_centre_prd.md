@@ -11,11 +11,13 @@
 ## 📋 Project Overview
 
 ### Business Context
+
 The Total Audio Command Centre is the central nervous system for Total Audio Promo's music marketing ecosystem. It provides real-time insights into business performance, customer behavior, system health, and revenue metrics using the EXACT same visual design system as Audio Intel.
 
 ### Success Metrics
+
 - **Revenue Tracking**: Real-time MRR, ARR, and growth metrics
-- **Customer Intelligence**: Live user activity and engagement analytics  
+- **Customer Intelligence**: Live user activity and engagement analytics
 - **System Performance**: Audio Intel processing speeds and success rates
 - **Newsletter Analytics**: Total Audio Insider subscriber growth and engagement
 - **Operational Efficiency**: Quick actions for common business tasks
@@ -23,30 +25,33 @@ The Total Audio Command Centre is the central nervous system for Total Audio Pro
 ## 🎨 Design Requirements (EXACT Audio Intel Match)
 
 ### Visual Standards
+
 **Design System**: Professional texture-enhanced cards matching Audio Intel exactly
 
 **Color Palette** (from Audio Intel globals.css):
+
 ```css
 :root {
-  --brand-blue: #3B82F6;
-  --brand-yellow: #F59E0B;  
-  --background: #FAFAFA;
-  --card: #FFFFFF;
-  --text-primary: #1F2937;
-  --text-secondary: #6B7280;
-  --border: #E5E7EB;
+  --brand-blue: #3b82f6;
+  --brand-yellow: #f59e0b;
+  --background: #fafafa;
+  --card: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border: #e5e7eb;
 }
 
 .dark {
-  --background: #0F172A;
-  --card: #1E293B;
-  --text-primary: #F8FAFC;
-  --text-secondary: #CBD5E1;
+  --background: #0f172a;
+  --card: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
   --border: #334155;
 }
 ```
 
 **Typography** (Audio Intel Standard):
+
 - **Primary Font**: Inter (Google Fonts)
 - **Fallback**: system-ui, sans-serif
 - **Hierarchy**:
@@ -57,6 +62,7 @@ The Total Audio Command Centre is the central nervous system for Total Audio Pro
   - Small: `text-sm text-gray-600` (Labels and descriptions)
 
 **Component Standards** (EXACT Audio Intel Match):
+
 ```css
 /* Cards - Same as Audio Intel */
 .metric-card {
@@ -80,15 +86,20 @@ The Total Audio Command Centre is the central nervous system for Total Audio Pro
 
 /* Shadows - Audio Intel Standard */
 .shadow-texture-soft {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .shadow-texture-elevated {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.08);
 }
 ```
 
 **Texture Background** (Audio Intel Standard):
+
 ```css
 /* Same texture system as Audio Intel */
 .texture-luma {
@@ -112,65 +123,67 @@ The Total Audio Command Centre is the central nervous system for Total Audio Pro
 ### Core Features
 
 #### 1. Real-Time Business Dashboard
+
 **4-Card Metric Grid** (Audio Intel Style):
 
 ```typescript
 interface BusinessMetrics {
   revenue: {
-    mrr: number;           // Monthly Recurring Revenue
-    growth: number;        // Month-over-month growth %
-    target: number;        // Monthly target (£1000)
-    arr: number;           // Annual Recurring Revenue
+    mrr: number; // Monthly Recurring Revenue
+    growth: number; // Month-over-month growth %
+    target: number; // Monthly target (£1000)
+    arr: number; // Annual Recurring Revenue
   };
   customers: {
-    total: number;         // Total customer count
-    active: number;        // Currently active users
-    newToday: number;      // New signups today
-    churnRate: number;     // Monthly churn percentage
+    total: number; // Total customer count
+    active: number; // Currently active users
+    newToday: number; // New signups today
+    churnRate: number; // Monthly churn percentage
   };
   performance: {
-    contactsEnriched: number;      // Total contacts processed
-    processingSpeed: number;       // Average seconds per contact
-    successRate: number;           // Success percentage
+    contactsEnriched: number; // Total contacts processed
+    processingSpeed: number; // Average seconds per contact
+    successRate: number; // Success percentage
     systemStatus: 'excellent' | 'good' | 'warning' | 'critical';
   };
   newsletter: {
-    subscribers: number;           // Total newsletter subscribers
-    openRate: number;             // Average open rate %
-    clickRate: number;            // Average click rate %
-    newToday: number;             // New subscribers today
+    subscribers: number; // Total newsletter subscribers
+    openRate: number; // Average open rate %
+    clickRate: number; // Average click rate %
+    newToday: number; // New subscribers today
   };
 }
 ```
 
 **Card Layout** (Audio Intel Standard):
+
 ```jsx
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-  <MetricCard 
+  <MetricCard
     title="Monthly Revenue"
     value={`£${metrics.revenue.mrr}`}
     change={`+${metrics.revenue.growth}%`}
     icon={<TrendingUp className="h-6 w-6 text-brand-blue" />}
     textureClass="texture-paper"
   />
-  
-  <MetricCard 
+
+  <MetricCard
     title="Active Users"
     value={metrics.customers.active}
     change={`${metrics.customers.newToday} today`}
     icon={<Users className="h-6 w-6 text-brand-yellow" />}
     textureClass="texture-paper-2"
   />
-  
-  <MetricCard 
+
+  <MetricCard
     title="Intel Speed"
     value={`${metrics.performance.processingSpeed}s`}
     change={`${metrics.performance.successRate}% success`}
     icon={<Zap className="h-6 w-6 text-green-500" />}
     textureClass="texture-grain"
   />
-  
-  <MetricCard 
+
+  <MetricCard
     title="Newsletter"
     value={metrics.newsletter.subscribers}
     change={`${metrics.newsletter.openRate}% open rate`}
@@ -181,6 +194,7 @@ interface BusinessMetrics {
 ```
 
 #### 2. Live User Tracking (Audio Intel Style)
+
 ```typescript
 interface LiveUser {
   id: string;
@@ -189,13 +203,14 @@ interface LiveUser {
   app: 'Audio Intel' | 'Command Centre' | 'Landing Page';
   status: 'active' | 'idle';
   lastAction: string;
-  timeAgo: number;               // Minutes since last activity
-  contactsProcessed: number;     // Session contact count
-  sessionValue: number;          // Estimated session value £
+  timeAgo: number; // Minutes since last activity
+  contactsProcessed: number; // Session contact count
+  sessionValue: number; // Estimated session value £
 }
 ```
 
 **Live User Display**:
+
 ```jsx
 <Card className="texture-card">
   <CardHeader>
@@ -209,10 +224,14 @@ interface LiveUser {
       {liveUsers.map(user => (
         <div key={user.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
           <div className="flex items-center gap-3">
-            <div className={`w-3 h-3 rounded-full ${user.status === 'active' ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`} />
+            <div
+              className={`w-3 h-3 rounded-full ${user.status === 'active' ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`}
+            />
             <div>
               <p className="font-medium text-sm">{user.name || user.email}</p>
-              <p className="text-xs text-gray-600">{user.lastAction} • {user.timeAgo}m ago</p>
+              <p className="text-xs text-gray-600">
+                {user.lastAction} • {user.timeAgo}m ago
+              </p>
             </div>
           </div>
           <div className="text-right">
@@ -227,7 +246,9 @@ interface LiveUser {
 ```
 
 #### 3. Navigation System (Audio Intel Style)
+
 **Tab-Based Navigation**:
+
 ```jsx
 <Tabs defaultValue="overview" className="w-full">
   <TabsList className="grid w-full grid-cols-4 mb-6">
@@ -248,26 +269,19 @@ interface LiveUser {
       Newsletter
     </TabsTrigger>
   </TabsList>
-  
-  <TabsContent value="overview">
-    {/* Overview Dashboard */}
-  </TabsContent>
-  
-  <TabsContent value="users">
-    {/* Live Users Tracking */}
-  </TabsContent>
-  
-  <TabsContent value="performance">
-    {/* System Performance */}
-  </TabsContent>
-  
-  <TabsContent value="newsletter">
-    {/* Newsletter Analytics */}
-  </TabsContent>
+
+  <TabsContent value="overview">{/* Overview Dashboard */}</TabsContent>
+
+  <TabsContent value="users">{/* Live Users Tracking */}</TabsContent>
+
+  <TabsContent value="performance">{/* System Performance */}</TabsContent>
+
+  <TabsContent value="newsletter">{/* Newsletter Analytics */}</TabsContent>
 </Tabs>
 ```
 
 #### 4. Quick Actions Panel (Audio Intel Style)
+
 ```typescript
 interface QuickAction {
   name: string;
@@ -278,31 +292,31 @@ interface QuickAction {
 }
 
 const quickActions: QuickAction[] = [
-  { 
-    name: 'Send Newsletter', 
-    action: 'send_newsletter', 
-    color: 'blue', 
+  {
+    name: 'Send Newsletter',
+    action: 'send_newsletter',
+    color: 'blue',
     icon: <Mail className="h-5 w-5" />,
     handler: async () => { /* Implementation */ }
   },
-  { 
-    name: 'Optimize Intel', 
-    action: 'optimize_intel', 
-    color: 'purple', 
+  {
+    name: 'Optimize Intel',
+    action: 'optimize_intel',
+    color: 'purple',
     icon: <Zap className="h-5 w-5" />,
     handler: async () => { /* Implementation */ }
   },
-  { 
-    name: 'Export Data', 
-    action: 'export_data', 
-    color: 'green', 
+  {
+    name: 'Export Data',
+    action: 'export_data',
+    color: 'green',
     icon: <Download className="h-5 w-5" />,
     handler: async () => { /* Implementation */ }
   },
-  { 
-    name: 'View Reports', 
-    action: 'view_reports', 
-    color: 'orange', 
+  {
+    name: 'View Reports',
+    action: 'view_reports',
+    color: 'orange',
     icon: <BarChart3 className="h-5 w-5" />,
     handler: async () => { /* Implementation */ }
   }
@@ -310,6 +324,7 @@ const quickActions: QuickAction[] = [
 ```
 
 **Quick Actions Display**:
+
 ```jsx
 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
   {quickActions.map((action, index) => (
@@ -328,6 +343,7 @@ const quickActions: QuickAction[] = [
 ## 🏗️ Technical Architecture
 
 ### Technology Stack (Audio Intel Match)
+
 ```typescript
 // Frontend: Next.js 15.4+ with TypeScript
 // Styling: Tailwind CSS with Audio Intel design system
@@ -339,6 +355,7 @@ const quickActions: QuickAction[] = [
 ```
 
 ### File Structure
+
 ```
 apps/command-centre/
 ├── app/
@@ -367,12 +384,14 @@ apps/command-centre/
 ```
 
 ### Port Configuration
+
 - **Development**: http://localhost:4001
 - **Production**: https://command.totalaudiopromo.com
 
 ## 📊 Component Specifications
 
 ### MetricCard Component (Audio Intel Style)
+
 ```tsx
 interface MetricCardProps {
   title: string;
@@ -383,13 +402,13 @@ interface MetricCardProps {
   trend?: 'up' | 'down' | 'neutral';
 }
 
-export function MetricCard({ 
-  title, 
-  value, 
-  change, 
-  icon, 
-  textureClass, 
-  trend = 'up' 
+export function MetricCard({
+  title,
+  value,
+  change,
+  icon,
+  textureClass,
+  trend = 'up',
 }: MetricCardProps) {
   return (
     <Card className={`texture-card ${textureClass} relative overflow-hidden`}>
@@ -402,11 +421,11 @@ export function MetricCard({
       </CardHeader>
       <CardContent className="relative z-10">
         <div className="text-2xl font-bold mb-1">{value}</div>
-        <p className={`text-sm ${
-          trend === 'up' ? 'text-green-600' : 
-          trend === 'down' ? 'text-red-600' : 
-          'text-gray-600'
-        }`}>
+        <p
+          className={`text-sm ${
+            trend === 'up' ? 'text-green-600' : trend === 'down' ? 'text-red-600' : 'text-gray-600'
+          }`}
+        >
           {change}
         </p>
       </CardContent>
@@ -416,9 +435,10 @@ export function MetricCard({
 ```
 
 ### Audio Character Integration
+
 ```tsx
 // Include Audio Intel mascot exactly as in Audio Intel
-import { AudioCharacter } from "@/components/ui/audio-character"
+import { AudioCharacter } from '@/components/ui/audio-character';
 
 <div className="flex items-center gap-4 mb-6">
   <AudioCharacter mood="focused" size="lg" />
@@ -426,29 +446,25 @@ import { AudioCharacter } from "@/components/ui/audio-character"
     <h1 className="text-3xl font-bold gradient-text">Command Centre</h1>
     <p className="text-gray-600">Total Audio Business Intelligence</p>
   </div>
-</div>
+</div>;
 ```
 
 ### Texture Background (Audio Intel Match)
+
 ```tsx
 // Same texture system as Audio Intel
-import { TextureBackground } from "@/components/ui/texture-overlay"
+import { TextureBackground } from '@/components/ui/texture-overlay';
 
 <main className="min-h-screen relative">
-  <TextureBackground 
-    variant="luma" 
-    opacity={0.15}
-    className="fixed inset-0 z-0"
-  />
-  <div className="relative z-10 container mx-auto px-4 py-8">
-    {/* Command Centre Content */}
-  </div>
-</main>
+  <TextureBackground variant="luma" opacity={0.15} className="fixed inset-0 z-0" />
+  <div className="relative z-10 container mx-auto px-4 py-8">{/* Command Centre Content */}</div>
+</main>;
 ```
 
 ## 🔥 API Endpoints
 
 ### Business Metrics API
+
 ```typescript
 // GET /api/business-metrics
 export interface BusinessMetricsResponse {
@@ -481,6 +497,7 @@ export interface BusinessMetricsResponse {
 ```
 
 ### Live Users API
+
 ```typescript
 // GET /api/live-users
 export interface LiveUsersResponse {
@@ -494,6 +511,7 @@ export interface LiveUsersResponse {
 ## 🎯 Success Criteria
 
 ### MVP Requirements
+
 - [ ] Application builds without errors
 - [ ] Starts successfully on http://localhost:4001
 - [ ] EXACT visual match to Audio Intel design quality
@@ -509,6 +527,7 @@ export interface LiveUsersResponse {
 - [ ] Texture background system working
 
 ### Performance Criteria
+
 - [ ] 90%+ uptime
 - [ ] <3 second page load times
 - [ ] 80%+ user retention after 30 days

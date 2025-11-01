@@ -5,6 +5,7 @@
 **Phase 3 of the Total Audio ecosystem audit is now complete!** The CSV workflow enables seamless data flow from Audio Intel (contact enrichment) to Tracker (campaign management) with deep linking and preserved intelligence data.
 
 **Business Impact**:
+
 - Radio promoters can now export enriched contacts and import directly into campaign tracking
 - 85% conversion rate segment gets complete workflow (research → enrich → track)
 - Zero data loss - all enrichment intelligence preserved in campaign notes
@@ -19,6 +20,7 @@
 **File**: [`apps/audio-intel/app/api/export-to-tracker/route.ts`](apps/audio-intel/app/api/export-to-tracker/route.ts)
 
 **Features**:
+
 - Transforms Audio Intel contacts to Tracker-compatible CSV format
 - Preserves enrichment data (intelligence, confidence, research date) in notes field
 - Generates timestamped filenames
@@ -26,6 +28,7 @@
 - Tracks analytics for export events
 
 **API Contract**:
+
 ```typescript
 POST /api/export-to-tracker
 {
@@ -42,6 +45,7 @@ POST /api/export-to-tracker
 **File**: [`apps/audio-intel/app/demo/page.tsx`](apps/audio-intel/app/demo/page.tsx:714-728)
 
 **Features**:
+
 - Prominent amber button below export options
 - Shows contact count dynamically
 - Handles CSV download + opens Tracker in new tab
@@ -49,6 +53,7 @@ POST /api/export-to-tracker
 - Success notification after transfer
 
 **User Experience**:
+
 1. Click "Send X Contacts to Tracker" button
 2. CSV downloads automatically
 3. Tracker opens in new tab at import page
@@ -59,12 +64,14 @@ POST /api/export-to-tracker
 **File**: [`apps/tracker/app/dashboard/import/page.tsx`](apps/tracker/app/dashboard/import/page.tsx:37-49)
 
 **Features**:
+
 - Detects `?source=audio-intel` URL parameter
 - Shows welcome notification with contact count
 - Highlights Audio Intel as import source
 - Existing CSV import flow handles the rest
 
 **Detection Logic**:
+
 ```typescript
 useEffect(() => {
   if (source === 'audio-intel') {
@@ -78,6 +85,7 @@ useEffect(() => {
 **File**: [`docs/CSV_WORKFLOW_GUIDE.md`](docs/CSV_WORKFLOW_GUIDE.md)
 
 **Contents**:
+
 - Quick start guide (2 options: direct send + manual)
 - Technical API specifications
 - 3 detailed user workflows (promoter, agency, artist)
@@ -139,18 +147,19 @@ useEffect(() => {
 
 ### CSV Format Mapping
 
-| Audio Intel Field | CSV Column | Tracker Field | Preserved |
-|-------------------|------------|---------------|-----------|
-| `name` | Name | `name` | ✅ |
-| `email` | Email | `email` | ✅ |
-| `platform` / `company` | Outlet | `outlet` | ✅ |
-| `role` | Role | `role` | ✅ |
-| `contactIntelligence` | Notes | `notes` | ✅ |
-| `researchConfidence` | Notes | `notes` | ✅ |
-| `lastResearched` | Notes | `notes` | ✅ |
-| N/A | Status | `status` | Set to "pending" |
+| Audio Intel Field      | CSV Column | Tracker Field | Preserved        |
+| ---------------------- | ---------- | ------------- | ---------------- |
+| `name`                 | Name       | `name`        | ✅               |
+| `email`                | Email      | `email`       | ✅               |
+| `platform` / `company` | Outlet     | `outlet`      | ✅               |
+| `role`                 | Role       | `role`        | ✅               |
+| `contactIntelligence`  | Notes      | `notes`       | ✅               |
+| `researchConfidence`   | Notes      | `notes`       | ✅               |
+| `lastResearched`       | Notes      | `notes`       | ✅               |
+| N/A                    | Status     | `status`      | Set to "pending" |
 
 **Example CSV Output**:
+
 ```csv
 Name,Email,Outlet,Role,Status,Notes,Contacted Date,Response Date
 Annie Mac,annie@bbc.co.uk,BBC Radio,DJ/Presenter,pending,"Intelligence: BBC Radio 1 Future Sounds host...
@@ -169,6 +178,7 @@ Researched: 2025-10-13",,,
 **So that** I can track my pitching campaign responses
 
 **Acceptance Criteria**:
+
 - [x] One-click export from Audio Intel
 - [x] CSV downloads automatically
 - [x] Tracker opens with import ready
@@ -176,6 +186,7 @@ Researched: 2025-10-13",,,
 - [x] Contact count visible throughout
 
 **Test Scenario**:
+
 1. Enrich 50 BBC Radio contacts in Audio Intel
 2. Click "Send 50 Contacts to Tracker"
 3. CSV downloads as `audio-intel-tracker-export-2025-10-13.csv`
@@ -190,12 +201,14 @@ Researched: 2025-10-13",,,
 **So that** I can provide clients with professional deliverables AND track campaigns
 
 **Acceptance Criteria**:
+
 - [x] Enrichment data preserved in Tracker notes
 - [x] Campaign name customizable
 - [x] Can export same contacts to PDF (client) AND Tracker (internal)
 - [x] No data loss between tools
 
 **Test Scenario**:
+
 1. Agency enriches client's 100 contacts
 2. Export PDF → Send to client
 3. Click "Send to Tracker" → Internal campaign tracking
@@ -212,12 +225,14 @@ Researched: 2025-10-13",,,
 **So that** I can manage my own PR campaign effectively
 
 **Acceptance Criteria**:
+
 - [x] Simple one-click workflow
 - [x] No technical knowledge required
 - [x] Clear visual feedback
 - [x] Works on mobile (future testing)
 
 **Test Scenario**:
+
 1. Artist pastes 25 contacts into Audio Intel
 2. Enrichment fills gaps in knowledge
 3. Click "Send 25 Contacts to Tracker"
@@ -230,6 +245,7 @@ Researched: 2025-10-13",,,
 ## Files Modified/Created
 
 ### New Files ✅
+
 1. **`apps/audio-intel/app/api/export-to-tracker/route.ts`** (171 lines)
    - New API endpoint for Tracker export
    - CSV generation with proper escaping
@@ -248,6 +264,7 @@ Researched: 2025-10-13",,,
    - Architecture documentation
 
 ### Modified Files ✅
+
 1. **`apps/audio-intel/app/demo/page.tsx`**
    - Added [`handleSendToTracker`](apps/audio-intel/app/demo/page.tsx:254-319) function
    - Added ["Send to Tracker" UI button](apps/audio-intel/app/demo/page.tsx:714-728)
@@ -290,21 +307,23 @@ Researched: 2025-10-13",,,
 
 ### Expected Performance
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| Export API call | <200ms | CSV generation |
-| CSV download | <500ms | Browser file save |
-| Tracker page load | <2s | Next.js page with notification |
-| Import 50 contacts | <3s | Tracker CSV parsing + DB insert |
+| Operation          | Time   | Notes                           |
+| ------------------ | ------ | ------------------------------- |
+| Export API call    | <200ms | CSV generation                  |
+| CSV download       | <500ms | Browser file save               |
+| Tracker page load  | <2s    | Next.js page with notification  |
+| Import 50 contacts | <3s    | Tracker CSV parsing + DB insert |
 
 ### Analytics Tracked
 
 **Audio Intel**:
+
 - `export_to_tracker` event count
 - Contacts per export (average)
 - Campaign names provided (if any)
 
 **Tracker**:
+
 - `import_source: audio-intel` count
 - Success rate of Audio Intel imports
 - Average contacts per Audio Intel import
@@ -333,16 +352,19 @@ Researched: 2025-10-13",,,
 ### Future Enhancements (Phase 4-6)
 
 #### Phase 4: Unified Authentication
+
 - Single sign-on between tools
 - Shared user accounts
 - Auto-login via deep links
 
 #### Phase 5: Real-Time Sync
+
 - Webhooks for Tracker → Audio Intel updates
 - Response data synced back to enrichment records
 - Campaign status reflected in Audio Intel
 
 #### Phase 6: Shared Database
+
 - Single source of truth for contact data
 - No CSV export/import needed
 - Real-time data consistency
@@ -352,18 +374,21 @@ Researched: 2025-10-13",,,
 ## Deployment Checklist
 
 ### Prerequisites ✅
+
 - [x] Audio Intel export API created
 - [x] Tracker import detection added
 - [x] UI components integrated
 - [x] Documentation written
 
 ### Pre-Deploy Testing ⏳
+
 - [ ] Build both apps successfully
 - [ ] Test export API with curl/Postman
 - [ ] Test import page with ?source=audio-intel URL
 - [ ] Verify CSV format with real contacts
 
 ### Deploy Steps
+
 1. **Merge Phase 3 branch** to main
 2. **Deploy Audio Intel** (Vercel)
    - New API route: `/api/export-to-tracker`
@@ -376,6 +401,7 @@ Researched: 2025-10-13",,,
    - Confirm deep links work cross-domain
 
 ### Post-Deploy Validation
+
 - [ ] Monitor error rates for new API
 - [ ] Check Tracker import success rate
 - [ ] Gather user feedback on workflow
@@ -386,16 +412,19 @@ Researched: 2025-10-13",,,
 ## Success Metrics (30 Days Post-Launch)
 
 ### Adoption Metrics
+
 - **Target**: 15+ radio promoters use "Send to Tracker" feature
 - **Target**: 50+ contacts transferred via CSV workflow
 - **Target**: 80%+ import success rate (contacts imported vs attempted)
 
 ### User Satisfaction
+
 - **Target**: <2 support tickets about CSV workflow confusion
 - **Target**: Positive feedback from beta testers (radio promoters)
 - **Target**: Feature included in onboarding demos
 
 ### Technical Performance
+
 - **Target**: <2% error rate on `/api/export-to-tracker`
 - **Target**: <1% Tracker import failures from Audio Intel CSVs
 - **Target**: <5s average end-to-end workflow time
@@ -407,12 +436,14 @@ Researched: 2025-10-13",,,
 ### Radio Promoter Value Prop (85% Conversion Rate)
 
 **Before Phase 3**:
+
 1. Manually research 50 contacts (15 hours)
 2. Copy/paste into separate tracking spreadsheet
 3. Lose enrichment context during transfer
 4. Manage two disconnected systems
 
 **After Phase 3**:
+
 1. Enrich 50 contacts in Audio Intel (15 minutes)
 2. Click "Send to Tracker" (1 click)
 3. All enrichment data preserved automatically
@@ -423,12 +454,14 @@ Researched: 2025-10-13",,,
 ### Platform Strategy
 
 Phase 3 is the **first real tool integration** in the Total Audio ecosystem:
+
 - Proves multi-tool platform vision
 - Establishes integration patterns for future tools
 - Validates customer need for connected workflows
 - Foundation for Phases 4-6 (SSO, webhooks, shared DB)
 
 **Next Steps**:
+
 - Apply same pattern to Pitch Generator → Tracker
 - Add Tracker → Command Centre analytics sync
 - Build Audio Intel → Pitch Generator contact sharing
@@ -438,6 +471,7 @@ Phase 3 is the **first real tool integration** in the Total Audio ecosystem:
 ## Developer Notes
 
 ### Code Quality
+
 - ✅ TypeScript strict mode compliant
 - ✅ Proper error handling with try/catch
 - ✅ CSV escaping prevents injection
@@ -445,12 +479,14 @@ Phase 3 is the **first real tool integration** in the Total Audio ecosystem:
 - ✅ Follows existing export patterns in Audio Intel
 
 ### Maintainability
+
 - Clear function naming (`handleSendToTracker`)
 - Documented API contracts
 - Reusable CSV generation utilities
 - Separation of concerns (API vs UI)
 
 ### Security Considerations
+
 - CSV escaping prevents formula injection
 - No sensitive data in URL parameters
 - Analytics events don't leak PII
@@ -463,6 +499,7 @@ Phase 3 is the **first real tool integration** in the Total Audio ecosystem:
 **Phase 3 CSV Workflow is production-ready!** ✅
 
 The Audio Intel → Tracker integration delivers real business value to the 85% radio promoter conversion segment. Users can now:
+
 - Research contacts in 15 minutes instead of 15 hours (Audio Intel)
 - Transfer enriched contacts with one click
 - Track campaign responses without losing intelligence data (Tracker)

@@ -28,12 +28,16 @@ export class PerplexityContactResearch {
     const contacts = await this.airtable.getRadioContacts();
     // Remove country filter: just take the first N contacts
     const previewContacts = contacts.slice(0, this.maxBatch);
-    logger.info(`👤 Previewing research for ${previewContacts.length} radio contacts (no country filter)...`);
+    logger.info(
+      `👤 Previewing research for ${previewContacts.length} radio contacts (no country filter)...`
+    );
     const results: ResearchResult[] = [];
     let processed = 0;
     for (const contact of previewContacts) {
       processed++;
-      logger.info(`⏳ [${processed}/${previewContacts.length}] Researching: ${contact.fields.Name || contact.id}`);
+      logger.info(
+        `⏳ [${processed}/${previewContacts.length}] Researching: ${contact.fields.Name || contact.id}`
+      );
       try {
         const research = await this.researchContact(contact);
         results.push(research);
@@ -44,7 +48,7 @@ export class PerplexityContactResearch {
           research_confidence: 'Low',
           last_researched: new Date().toISOString(),
           query_prompt: '',
-          errors: [err instanceof Error ? err.message : String(err)]
+          errors: [err instanceof Error ? err.message : String(err)],
         });
       }
       // Respect rate limits
@@ -94,7 +98,9 @@ export class PerplexityContactResearch {
         `🎧 Focus: (Not found)`,
         `💡 Tip: (Not found)`,
         `✅ Research Confidence: ${confidence} | Updated: ${format(new Date(), 'MMM yyyy')}`,
-      ].filter(Boolean).join('\n');
+      ]
+        .filter(Boolean)
+        .join('\n');
     } else {
       // Add/update the confidence and updated date line if not present
       if (!intelligence.includes('✅')) {
@@ -114,7 +120,10 @@ export class PerplexityContactResearch {
 }
 
 // For CLI/preview use
-export async function previewPerplexityContactResearch(airtable: AirtableContactEnrichment, perplexity: PerplexityService) {
+export async function previewPerplexityContactResearch(
+  airtable: AirtableContactEnrichment,
+  perplexity: PerplexityService
+) {
   const engine = new PerplexityContactResearch(airtable, perplexity, 10000); // Process all contacts
   const results = await engine.runPreview();
   console.log('\n--- Perplexity Contact Research PREVIEW Results ---\n');
@@ -131,4 +140,4 @@ export async function previewPerplexityContactResearch(airtable: AirtableContact
     }
   }
   return results;
-} 
+}

@@ -1,13 +1,9 @@
-import type React from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft, Home } from "lucide-react"
+import type React from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, Home } from 'lucide-react';
 
-export default function StudioLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function StudioLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 p-2 sm:p-4 md:p-8">
       {/* Glassmorphic container */}
@@ -33,5 +29,5 @@ export default function StudioLayout({
         <div className="p-4 sm:p-6">{children}</div>
       </div>
     </div>
-  )
+  );
 }

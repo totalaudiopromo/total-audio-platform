@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server';
+import { createClient } from '@total-audio/core-db/server';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
@@ -16,5 +16,7 @@ export async function GET(request: Request) {
   }
 
   // Return to login with error
-  return NextResponse.redirect(new URL('/auth/signin?error=auth-callback-error', requestUrl.origin));
+  return NextResponse.redirect(
+    new URL('/auth/signin?error=auth-callback-error', requestUrl.origin)
+  );
 }

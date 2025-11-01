@@ -176,8 +176,3 @@ To enable automatic weekly scheduling:
 - **Time Saved**: Hours of manual research automated
 
 The agent is designed to save you 5-10 hours per week while delivering valuable, authentic content to your subscribers! 🚀
-
-
-
-
-

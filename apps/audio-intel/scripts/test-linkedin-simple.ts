@@ -28,7 +28,6 @@ async function testLinkedIn() {
     }
 
     console.log('[TEST] ✅ LinkedIn agent working correctly!');
-
   } catch (error) {
     console.error('[TEST] ❌ Error:', error instanceof Error ? error.message : error);
     process.exit(1);

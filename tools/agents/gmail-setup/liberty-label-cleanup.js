@@ -23,7 +23,7 @@ class LibertyLabelCleanup {
 
     // CLEAN structure - everything organized
     this.newStructure = {
-      'Liberty/Active': 'Current campaigns you\'re working on',
+      'Liberty/Active': "Current campaigns you're working on",
       'Liberty/Station Feedback': 'Responses from stations',
       'Liberty/Needs Action': 'Campaigns requiring your response',
       'Liberty/Internal': 'Liberty team communication',
@@ -32,7 +32,7 @@ class LibertyLabelCleanup {
       'Liberty/Archive': 'Old campaigns for reference',
       'Personal/Otter AI': 'Your call transcripts',
       'Personal/Gemini': 'Your AI transcripts',
-      'Junk/Marketing': 'Spam and marketing emails'
+      'Junk/Marketing': 'Spam and marketing emails',
     };
 
     // Old labels to delete/merge
@@ -58,14 +58,14 @@ class LibertyLabelCleanup {
       'Personal Tools/Gemini',
       'Marketing Junk/WARM',
       'Marketing Junk/Machina',
-      'Marketing Junk/Other'
+      'Marketing Junk/Other',
     ];
   }
 
   async getLabelMap() {
     const response = await this.gmail.users.labels.list({ userId: 'me' });
     const map = {};
-    response.data.labels.forEach(l => map[l.name] = l.id);
+    response.data.labels.forEach(l => (map[l.name] = l.id));
     return map;
   }
 
@@ -79,8 +79,8 @@ class LibertyLabelCleanup {
           requestBody: {
             name: labelName,
             labelListVisibility: 'labelShow',
-            messageListVisibility: 'show'
-          }
+            messageListVisibility: 'show',
+          },
         });
         console.log(`✅ Created: ${labelName}`);
       } catch (error) {
@@ -106,7 +106,7 @@ class LibertyLabelCleanup {
     const activeSearch = await this.gmail.users.messages.list({
       userId: 'me',
       q: 'label:active-campaigns OR label:radio-campaigns',
-      maxResults: 500
+      maxResults: 500,
     });
 
     if (activeSearch.data.messages) {
@@ -119,9 +119,9 @@ class LibertyLabelCleanup {
             removeLabelIds: [
               labelMap['Active Campaigns'],
               labelMap['Radio Campaigns'],
-              labelMap['Liberty/Active-Campaigns']
-            ].filter(Boolean)
-          }
+              labelMap['Liberty/Active-Campaigns'],
+            ].filter(Boolean),
+          },
         });
         stats.active++;
         if (stats.active % 10 === 0) console.log(`  Moved ${stats.active} active campaigns...`);
@@ -134,7 +134,7 @@ class LibertyLabelCleanup {
     const completedSearch = await this.gmail.users.messages.list({
       userId: 'me',
       q: 'label:completed-radio-campaigns OR label:completed',
-      maxResults: 500
+      maxResults: 500,
     });
 
     if (completedSearch.data.messages) {
@@ -143,7 +143,7 @@ class LibertyLabelCleanup {
         const msgData = await this.gmail.users.messages.get({
           userId: 'me',
           id: msg.id,
-          format: 'minimal'
+          format: 'minimal',
         });
 
         const date = new Date(parseInt(msgData.data.internalDate));
@@ -158,12 +158,13 @@ class LibertyLabelCleanup {
             removeLabelIds: [
               labelMap['Completed'],
               labelMap['Completed Radio Campaigns'],
-              labelMap['Liberty/Completed']
-            ].filter(Boolean)
-          }
+              labelMap['Liberty/Completed'],
+            ].filter(Boolean),
+          },
         });
         stats.completed++;
-        if (stats.completed % 10 === 0) console.log(`  Moved ${stats.completed} completed campaigns...`);
+        if (stats.completed % 10 === 0)
+          console.log(`  Moved ${stats.completed} completed campaigns...`);
       }
     }
     console.log(`✅ Moved ${stats.completed} completed campaigns\n`);
@@ -180,7 +181,7 @@ class LibertyLabelCleanup {
     const search = await this.gmail.users.messages.list({
       userId: 'me',
       q: 'label:station-feedback OR label:station-responses',
-      maxResults: 500
+      maxResults: 500,
     });
 
     if (search.data.messages) {
@@ -190,11 +191,10 @@ class LibertyLabelCleanup {
           id: msg.id,
           requestBody: {
             addLabelIds: [labelMap['Liberty/Station Feedback']],
-            removeLabelIds: [
-              labelMap['Station Feedback'],
-              labelMap['Station Responses']
-            ].filter(Boolean)
-          }
+            removeLabelIds: [labelMap['Station Feedback'], labelMap['Station Responses']].filter(
+              Boolean
+            ),
+          },
         });
         moved++;
         if (moved % 10 === 0) console.log(`  Moved ${moved}...`);
@@ -215,7 +215,7 @@ class LibertyLabelCleanup {
     const otterSearch = await this.gmail.users.messages.list({
       userId: 'me',
       q: 'label:personal-tools-otter-ai',
-      maxResults: 500
+      maxResults: 500,
     });
 
     if (otterSearch.data.messages) {
@@ -225,8 +225,8 @@ class LibertyLabelCleanup {
           id: msg.id,
           requestBody: {
             addLabelIds: [labelMap['Personal/Otter AI']],
-            removeLabelIds: [labelMap['Personal Tools/Otter AI']].filter(Boolean)
-          }
+            removeLabelIds: [labelMap['Personal Tools/Otter AI']].filter(Boolean),
+          },
         });
         stats.otter++;
       }
@@ -237,7 +237,7 @@ class LibertyLabelCleanup {
     const geminiSearch = await this.gmail.users.messages.list({
       userId: 'me',
       q: 'label:personal-tools-gemini',
-      maxResults: 500
+      maxResults: 500,
     });
 
     if (geminiSearch.data.messages) {
@@ -247,8 +247,8 @@ class LibertyLabelCleanup {
           id: msg.id,
           requestBody: {
             addLabelIds: [labelMap['Personal/Gemini']],
-            removeLabelIds: [labelMap['Personal Tools/Gemini']].filter(Boolean)
-          }
+            removeLabelIds: [labelMap['Personal Tools/Gemini']].filter(Boolean),
+          },
         });
         stats.gemini++;
       }
@@ -270,7 +270,7 @@ class LibertyLabelCleanup {
         try {
           await this.gmail.users.labels.delete({
             userId: 'me',
-            id: labelId
+            id: labelId,
           });
           console.log(`✅ Deleted: ${labelName}`);
           deleted++;
@@ -283,16 +283,15 @@ class LibertyLabelCleanup {
     // Delete all old campaign sub-labels
     console.log('\nDeleting old campaign sub-labels...');
     const allLabels = await this.gmail.users.labels.list({ userId: 'me' });
-    const campaignSubLabels = allLabels.data.labels.filter(l =>
-      l.name.includes('Completed Radio Campaigns/') ||
-      l.name.includes('Radio Campaigns/')
+    const campaignSubLabels = allLabels.data.labels.filter(
+      l => l.name.includes('Completed Radio Campaigns/') || l.name.includes('Radio Campaigns/')
     );
 
     for (const label of campaignSubLabels) {
       try {
         await this.gmail.users.labels.delete({
           userId: 'me',
-          id: label.id
+          id: label.id,
         });
         console.log(`✅ Deleted: ${label.name}`);
         deleted++;
@@ -351,7 +350,6 @@ class LibertyLabelCleanup {
       console.log('\n  Junk/');
       console.log('    └── Marketing\n');
       console.log('✅ Clean, simple, organized!');
-
     } catch (error) {
       console.error('❌ Cleanup failed:', error);
       throw error;

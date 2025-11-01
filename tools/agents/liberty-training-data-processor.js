@@ -13,7 +13,8 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const LIBERTY_TAKEOUT_PATH = '/Users/chrisschofield/workspace/active/liberty-music-pr/Liberty_Training_Data/Takeout/Google Chat';
+const LIBERTY_TAKEOUT_PATH =
+  '/Users/chrisschofield/workspace/active/liberty-music-pr/Liberty_Training_Data/Takeout/Google Chat';
 
 class LibertyTrainingProcessor {
   constructor() {
@@ -24,14 +25,14 @@ class LibertyTrainingProcessor {
         campaignWorkflows: [],
         stationCommunications: [],
         clientInteractions: [],
-        teamProcesses: []
+        teamProcesses: [],
       },
       metadata: {
         processedAt: new Date().toISOString(),
         totalMessages: 0,
         totalSpaces: 0,
-        dateRange: { earliest: null, latest: null }
-      }
+        dateRange: { earliest: null, latest: null },
+      },
     };
   }
 
@@ -65,7 +66,6 @@ class LibertyTrainingProcessor {
       console.log(`📊 Total Spaces: ${this.trainingData.metadata.totalSpaces}`);
 
       return this.trainingData;
-
     } catch (error) {
       if (error.code === 'ENOENT') {
         console.error('❌ Liberty Takeout data not found at:', LIBERTY_TAKEOUT_PATH);
@@ -82,7 +82,9 @@ class LibertyTrainingProcessor {
       const files = await fs.readdir(spacePath);
 
       // Look for messages.json
-      const messagesFile = files.find(f => f.toLowerCase().includes('messages') && f.endsWith('.json'));
+      const messagesFile = files.find(
+        f => f.toLowerCase().includes('messages') && f.endsWith('.json')
+      );
 
       if (messagesFile) {
         const messagesPath = path.join(spacePath, messagesFile);
@@ -96,7 +98,7 @@ class LibertyTrainingProcessor {
           id: spaceId,
           path: spacePath,
           messageCount: messages.length,
-          messages: messages
+          messages: messages,
         };
 
         this.trainingData.spaces.push(spaceData);
@@ -109,7 +111,6 @@ class LibertyTrainingProcessor {
 
         console.log(`  ✓ Processed ${spaceId}: ${messages.length} messages`);
       }
-
     } catch (error) {
       console.error(`  ⚠️ Error processing ${spaceId}:`, error.message);
     }
@@ -134,7 +135,7 @@ class LibertyTrainingProcessor {
           creator,
           timestamp,
           snippet: text.substring(0, 200),
-          type: 'campaign'
+          type: 'campaign',
         });
       }
 
@@ -145,7 +146,7 @@ class LibertyTrainingProcessor {
           creator,
           timestamp,
           snippet: text.substring(0, 200),
-          type: 'station'
+          type: 'station',
         });
       }
 
@@ -156,7 +157,7 @@ class LibertyTrainingProcessor {
           creator,
           timestamp,
           snippet: text.substring(0, 200),
-          type: 'client'
+          type: 'client',
         });
       }
 
@@ -167,18 +168,22 @@ class LibertyTrainingProcessor {
           creator,
           timestamp,
           snippet: text.substring(0, 200),
-          type: 'team'
+          type: 'team',
         });
       }
 
       // Track date range
       if (timestamp) {
-        if (!this.trainingData.metadata.dateRange.earliest ||
-            timestamp < this.trainingData.metadata.dateRange.earliest) {
+        if (
+          !this.trainingData.metadata.dateRange.earliest ||
+          timestamp < this.trainingData.metadata.dateRange.earliest
+        ) {
           this.trainingData.metadata.dateRange.earliest = timestamp;
         }
-        if (!this.trainingData.metadata.dateRange.latest ||
-            timestamp > this.trainingData.metadata.dateRange.latest) {
+        if (
+          !this.trainingData.metadata.dateRange.latest ||
+          timestamp > this.trainingData.metadata.dateRange.latest
+        ) {
           this.trainingData.metadata.dateRange.latest = timestamp;
         }
       }
@@ -192,13 +197,15 @@ class LibertyTrainingProcessor {
       campaignWorkflows: this.analyzePatterns(this.trainingData.patterns.campaignWorkflows),
       stationCommunications: this.analyzePatterns(this.trainingData.patterns.stationCommunications),
       clientInteractions: this.analyzePatterns(this.trainingData.patterns.clientInteractions),
-      teamProcesses: this.analyzePatterns(this.trainingData.patterns.teamProcesses)
+      teamProcesses: this.analyzePatterns(this.trainingData.patterns.teamProcesses),
     };
 
     this.trainingData.insights = insights;
 
     console.log(`  ✓ Campaign workflows: ${insights.campaignWorkflows.totalPatterns} patterns`);
-    console.log(`  ✓ Station communications: ${insights.stationCommunications.totalPatterns} patterns`);
+    console.log(
+      `  ✓ Station communications: ${insights.stationCommunications.totalPatterns} patterns`
+    );
     console.log(`  ✓ Client interactions: ${insights.clientInteractions.totalPatterns} patterns`);
     console.log(`  ✓ Team processes: ${insights.teamProcesses.totalPatterns} patterns`);
   }
@@ -208,7 +215,7 @@ class LibertyTrainingProcessor {
       totalPatterns: patterns.length,
       topContributors: this.getTopContributors(patterns),
       commonThemes: this.extractCommonThemes(patterns),
-      timeline: this.getTimelineDistribution(patterns)
+      timeline: this.getTimelineDistribution(patterns),
     };
   }
 
@@ -218,7 +225,7 @@ class LibertyTrainingProcessor {
       contributors[p.creator] = (contributors[p.creator] || 0) + 1;
     });
     return Object.entries(contributors)
-      .sort(([,a], [,b]) => b - a)
+      .sort(([, a], [, b]) => b - a)
       .slice(0, 5)
       .map(([name, count]) => ({ name, count }));
   }
@@ -234,7 +241,7 @@ class LibertyTrainingProcessor {
       });
     });
     return Object.entries(words)
-      .sort(([,a], [,b]) => b - a)
+      .sort(([, a], [, b]) => b - a)
       .slice(0, 10)
       .map(([word, count]) => ({ word, count }));
   }
@@ -261,10 +268,17 @@ class LibertyTrainingProcessor {
 
     // Save insights summary
     const summaryPath = path.join(__dirname, '..', 'data', 'liberty-training-summary.json');
-    await fs.writeFile(summaryPath, JSON.stringify({
-      metadata: this.trainingData.metadata,
-      insights: this.trainingData.insights
-    }, null, 2));
+    await fs.writeFile(
+      summaryPath,
+      JSON.stringify(
+        {
+          metadata: this.trainingData.metadata,
+          insights: this.trainingData.insights,
+        },
+        null,
+        2
+      )
+    );
 
     console.log(`\n💾 Training data saved to: ${outputPath}`);
     console.log(`💾 Summary saved to: ${summaryPath}`);
@@ -274,7 +288,8 @@ class LibertyTrainingProcessor {
 // Run if called directly
 if (require.main === module) {
   const processor = new LibertyTrainingProcessor();
-  processor.processLibertyTakeout()
+  processor
+    .processLibertyTakeout()
     .then(() => {
       console.log('\n✅ Liberty training data processing complete!');
       process.exit(0);

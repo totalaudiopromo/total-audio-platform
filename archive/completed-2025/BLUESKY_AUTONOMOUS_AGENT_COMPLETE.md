@@ -82,6 +82,7 @@ Check Vercel logs after deployment:
 https://vercel.com/chris-projects-6ffe0e29/audio-intel/logs
 
 Look for at 9am or 5pm:
+
 ```
 [CRON] 🤖 Autonomous social posting triggered
 [BLUESKY] ✅ Posted successfully
@@ -96,18 +97,22 @@ Look for at 9am or 5pm:
 **Duration:** 4 weeks
 
 ### Week 1: Problem Awareness
+
 - Monday 2pm: "The Time Problem"
 - Thursday 2pm: "BBC Radio 1 Test"
 
 ### Week 2: Solution Education
+
 - Monday 2pm: "Regional Radio Opportunity"
 - Wednesday 2pm: "The Cost Reality"
 
 ### Week 3: Social Proof
+
 - Tuesday 2pm: "Response Rate Breakthrough"
 - Thursday 2pm: "The Brighton Reality"
 
 ### Week 4: Call-to-Action
+
 - Tuesday 2pm: "Submission Windows"
 - Thursday 2pm: "The Spreadsheet Chaos"
 
@@ -162,6 +167,7 @@ No Buffer, no Hootsuite, no external services needed.
 Your agent will post content like:
 
 ### "The Time Problem"
+
 > After 5+ years promoting music to UK radio, I was spending 15+ hours weekly researching contacts.
 >
 > Built Audio Intel to solve this properly. Now it takes 2 minutes instead of 15 hours.
@@ -171,6 +177,7 @@ Your agent will post content like:
 > intel.totalaudiopromo.com
 
 ### "BBC Radio 1 Test"
+
 > Tested Audio Intel on 5 BBC Radio 1 contacts yesterday.
 >
 > Processing time: 2 minutes
@@ -204,17 +211,20 @@ You can revoke the app password anytime: https://bsky.app/settings/app-passwords
 Once Bluesky is working smoothly, you can add:
 
 ### X/Twitter (Next Priority)
+
 - Similar agent structure
 - Twitter API v2 (Free tier: 1,500 posts/month)
 - 15 minutes to implement
 
 ### LinkedIn (B2B Focus)
+
 - OAuth2 required
 - Free tier: 500 posts/day
 - Best for radio promoter targeting
 - 30 minutes to implement
 
 ### Threads (Lower Priority)
+
 - Instagram Graph API
 - Free tier included
 - 20 minutes to implement
@@ -244,6 +254,7 @@ apps/audio-intel/
 ## 📞 Testing & Debugging
 
 ### Local Test (Development):
+
 ```bash
 cd apps/audio-intel
 npm run dev
@@ -253,12 +264,14 @@ curl http://localhost:3000/api/cron/social-posting
 ```
 
 ### Production Test (After Deploy):
+
 ```bash
 curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
   -H "Authorization: Bearer YOUR_CRON_SECRET"
 ```
 
 ### Check Logs:
+
 - Vercel dashboard: https://vercel.com/chris-projects-6ffe0e29/audio-intel/logs
 - Look for `[CRON]` and `[BLUESKY]` prefixes
 - Should see posts at 9am and 5pm daily
@@ -291,6 +304,7 @@ Before deploying, verify:
 - **Duration**: 4 weeks of content (then repeats or add new content)
 
 **Monitoring:**
+
 - Check Vercel logs daily for first week
 - Verify posts appearing on your Bluesky profile
 - Track engagement rates
@@ -303,6 +317,7 @@ Before deploying, verify:
 Your autonomous Bluesky agent is **production-ready**.
 
 **All you need:**
+
 1. Add Bluesky credentials to Vercel (5 mins)
 2. Deploy (git push)
 3. Monitor first posts

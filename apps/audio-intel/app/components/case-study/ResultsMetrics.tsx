@@ -1,4 +1,4 @@
-import type { ResultsMetricsData } from "@/types/case-study";
+import type { ResultsMetricsData } from '@/types/case-study';
 
 interface ResultsMetricsProps {
   data: ResultsMetricsData;

@@ -64,11 +64,13 @@ Open http://localhost:3000
 ### Cost Comparison
 
 **Claude 3.5 Sonnet:**
+
 - Input: $3 / million tokens
 - Output: $15 / million tokens
 - ~$0.01 per pitch
 
 **GPT-4 (what was planned):**
+
 - Input: $30 / million tokens
 - Output: $60 / million tokens
 - ~$0.015 per pitch
@@ -80,6 +82,7 @@ Open http://localhost:3000
 ## 🧪 Test the AI Quality
 
 Once running, generate a few test pitches and check:
+
 - ✅ Natural, conversational tone
 - ✅ Personalization with contact data
 - ✅ No robotic/corporate speak
@@ -87,7 +90,7 @@ Once running, generate a few test pitches and check:
 - ✅ Under 150 words
 - ✅ Subject lines feel personal
 
-Claude is excellent at all of these. You might find the quality is actually *better* than GPT-4 for this use case.
+Claude is excellent at all of these. You might find the quality is actually _better_ than GPT-4 for this use case.
 
 ---
 
@@ -97,7 +100,7 @@ All pitch generation happens in `lib/openai.ts` (kept the name for simplicity):
 
 ```typescript
 // Using Claude 3.5 Sonnet (latest model)
-model: 'claude-3-5-sonnet-20241022'
+model: 'claude-3-5-sonnet-20241022';
 
 // Pitch body generation: ~500-700 tokens
 // Subject lines: ~100-150 tokens
@@ -135,9 +138,9 @@ Compare to OpenAI version: ~$68/month
 ## 🔧 If You Want to Switch Back to OpenAI Later
 
 Just:
+
 1. Add `OPENAI_API_KEY` to `.env.local`
 2. Run: `npm install openai`
 3. Update `lib/openai.ts` to use OpenAI SDK
 
 But honestly, try Claude first. You might love it!
-

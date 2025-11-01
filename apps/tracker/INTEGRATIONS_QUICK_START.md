@@ -3,6 +3,7 @@
 ## 🚀 Get Your First Integration Working in 10 Minutes
 
 ### Prerequisites
+
 - Tracker running locally (`npm run dev`)
 - Google account
 - 10 minutes
@@ -18,21 +19,25 @@ Copy the output.
 ## Step 2: Set Up Google OAuth (5 minutes)
 
 ### A. Go to Google Cloud Console
+
 https://console.cloud.google.com
 
 ### B. Create Project
+
 1. Click project dropdown (top left)
 2. Click "New Project"
 3. Name: "Tracker Local Dev"
 4. Click "Create"
 
 ### C. Enable APIs
+
 1. Click "Enable APIs and Services"
 2. Search "Google Sheets API" → Enable
 3. Search "Gmail API" → Enable
 4. Search "Google Drive API" → Enable
 
 ### D. Create OAuth Credentials
+
 1. Go to "APIs & Services" → "Credentials"
 2. Click "Create Credentials" → "OAuth Client ID"
 3. Click "Configure Consent Screen"
@@ -59,6 +64,7 @@ cd apps/tracker
 ```
 
 Add to `.env.local`:
+
 ```bash
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 NEXT_PUBLIC_GOOGLE_SHEETS_CLIENT_ID=<paste-client-id>
@@ -71,6 +77,7 @@ CRON_SECRET=<paste-generated-secret>
 ## Step 4: Apply Database Migration (2 minutes)
 
 ### Option A: Supabase Dashboard (Easiest)
+
 1. Go to https://app.supabase.com/project/YOUR_PROJECT/sql
 2. Open `apps/tracker/supabase/migrations/013_integrations_system.sql`
 3. Copy all contents
@@ -78,6 +85,7 @@ CRON_SECRET=<paste-generated-secret>
 5. Click "Run"
 
 ### Option B: Command Line
+
 ```bash
 # If you have Supabase CLI set up
 npx supabase db push
@@ -93,9 +101,11 @@ npm run dev
 ## Step 6: Test Google Sheets Integration (2 minutes)
 
 ### A. Open Integrations Page
+
 http://localhost:3000/dashboard/integrations
 
 ### B. Connect Google Sheets
+
 1. Click "Connect Google Sheets" button
 2. Google OAuth screen appears
 3. Select your account
@@ -103,15 +113,19 @@ http://localhost:3000/dashboard/integrations
 5. Redirects back to Tracker
 
 ### C. Verify Connection
+
 You should see:
+
 - ✅ Green checkmark on Google Sheets card
 - "Connected" status
 - "Last synced: Just now"
 
 ### D. Check Database
+
 Open Supabase dashboard → Table Editor → `integration_connections`
 
 You should see one row with:
+
 - `integration_type`: "google_sheets"
 - `status`: "active"
 - `credentials`: (encrypted JSON with tokens)
@@ -119,6 +133,7 @@ You should see one row with:
 ## Step 7: Test Sync (1 minute)
 
 ### A. Create Test Campaign
+
 1. Go to http://localhost:3000/dashboard
 2. Click "New Campaign"
 3. Fill in:
@@ -129,6 +144,7 @@ You should see one row with:
 4. Click "Create"
 
 ### B. Configure Sync (UI to be built)
+
 For now, we'll use the database directly:
 
 ```sql
@@ -143,21 +159,25 @@ WHERE integration_type = 'google_sheets';
 ```
 
 To get a Sheet ID:
+
 1. Create new Google Sheet: https://sheets.new
 2. Copy ID from URL: `https://docs.google.com/spreadsheets/d/{THIS_IS_THE_ID}/edit`
 
 ### C. Trigger Manual Sync
+
 ```bash
 curl -X POST http://localhost:3000/api/integrations/google-sheets/sync \
   -H "Content-Type: application/json"
 ```
 
 ### D. Check Google Sheet
+
 Your campaign should appear in the spreadsheet!
 
 ## 🎉 Success!
 
 You now have:
+
 - ✅ OAuth authentication working
 - ✅ Google Sheets connection active
 - ✅ Campaigns syncing to spreadsheet
@@ -167,17 +187,21 @@ You now have:
 ## Next Steps
 
 ### Test Gmail Integration
+
 1. Click "Connect Gmail" on integrations page
 2. Authorize with Google
 3. Check database for connection
 
 ### Build Configuration UI
+
 Currently need to set `spreadsheet_id` in database manually. Should build:
+
 - Sheet selector dropdown
 - Column mapping interface
 - Sync frequency settings
 
 ### Test Background Worker
+
 The cron job runs automatically every 15 minutes. To test immediately:
 
 ```bash
@@ -191,21 +215,25 @@ Check `integration_sync_logs` table to see results.
 ## Troubleshooting
 
 ### Error: "redirect_uri_mismatch"
+
 - Check redirect URI in Google Console matches exactly
 - Must be: `http://localhost:3000/api/integrations/google-sheets/callback`
 - No trailing slash!
 
 ### Error: "invalid_client"
+
 - Client ID or Secret is wrong
 - Check you copied full values (no spaces)
 - Check environment variables loaded (`console.log(process.env.NEXT_PUBLIC_GOOGLE_SHEETS_CLIENT_ID)`)
 
 ### Connection shows but no sync happening
+
 - Check `integration_sync_logs` table for errors
 - Verify `spreadsheet_id` is set in connection settings
 - Check Vercel logs: `vercel logs --follow`
 
 ### Spreadsheet not updating
+
 - Check you have edit access to the sheet
 - Verify OAuth scopes include `https://www.googleapis.com/auth/spreadsheets`
 - Try disconnecting and reconnecting

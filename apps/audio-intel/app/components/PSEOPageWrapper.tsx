@@ -11,18 +11,25 @@ interface PSEOPageWrapperProps {
   tier: number;
 }
 
-export function PSEOPageWrapper({ children, pageName, topic, searchVolume, tier }: PSEOPageWrapperProps) {
+export function PSEOPageWrapper({
+  children,
+  pageName,
+  topic,
+  searchVolume,
+  tier,
+}: PSEOPageWrapperProps) {
   useEffect(() => {
     // Get referrer and UTM parameters
     const urlParams = new URLSearchParams(window.location.search);
     const referrer = document.referrer;
 
     // Determine if organic traffic
-    const isOrganic = !referrer ||
-                     referrer.includes('google') ||
-                     referrer.includes('bing') ||
-                     referrer.includes('duckduckgo') ||
-                     referrer.includes('yahoo');
+    const isOrganic =
+      !referrer ||
+      referrer.includes('google') ||
+      referrer.includes('bing') ||
+      referrer.includes('duckduckgo') ||
+      referrer.includes('yahoo');
 
     // Build PSEO-specific tracking data
     const trackingData = {
@@ -47,7 +54,7 @@ export function PSEOPageWrapper({ children, pageName, topic, searchVolume, tier 
       (window as any).dataLayer.push({
         event: 'pseo_page_view',
         page_name: pageName,
-        ...trackingData
+        ...trackingData,
       });
     }
 
@@ -58,14 +65,14 @@ export function PSEOPageWrapper({ children, pageName, topic, searchVolume, tier 
         page_name: pageName,
         pseo_topic: topic,
         cta_type: ctaType,
-        cta_position: ctaPosition
+        cta_position: ctaPosition,
       };
 
       // Send to analytics API
       fetch('/api/analytics', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(ctaData)
+        body: JSON.stringify(ctaData),
       }).catch(() => {});
 
       // Send to GTM
@@ -75,19 +82,24 @@ export function PSEOPageWrapper({ children, pageName, topic, searchVolume, tier 
     };
 
     // Add click tracking to all CTA links
-    const ctaLinks = document.querySelectorAll('a[href*="/pricing"], a[href*="/demo"], a[href*="/beta"]');
-    ctaLinks.forEach((link) => {
+    const ctaLinks = document.querySelectorAll(
+      'a[href*="/pricing"], a[href*="/demo"], a[href*="/beta"]'
+    );
+    ctaLinks.forEach(link => {
       const href = link.getAttribute('href') || '';
-      const ctaType = href.includes('/pricing') ? 'pricing' :
-                     href.includes('/demo') ? 'demo' :
-                     href.includes('/beta') ? 'beta' : 'other';
+      const ctaType = href.includes('/pricing')
+        ? 'pricing'
+        : href.includes('/demo')
+          ? 'demo'
+          : href.includes('/beta')
+            ? 'beta'
+            : 'other';
 
       link.addEventListener('click', () => {
         const position = link.closest('section')?.id || 'unknown';
         trackCTAClick(ctaType, position);
       });
     });
-
   }, [pageName, topic, searchVolume, tier]);
 
   return <>{children}</>;

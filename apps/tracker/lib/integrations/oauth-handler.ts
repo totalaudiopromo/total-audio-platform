@@ -3,11 +3,16 @@
  * Supports Google Sheets, Gmail, Airtable, Mailchimp
  */
 
-import { createClient as createServerClient } from '@/lib/supabase/server';
+import { createClient as createServerClient } from '@total-audio/core-db/server';
 import { nanoid } from 'nanoid';
 import crypto from 'crypto';
 
-export type IntegrationType = 'google_sheets' | 'gmail' | 'airtable' | 'mailchimp' | 'excel';
+export type IntegrationType =
+  | 'google_sheets'
+  | 'gmail'
+  | 'airtable'
+  | 'mailchimp'
+  | 'excel';
 
 // Helper function to generate PKCE code challenge
 function generatePKCE() {
@@ -44,7 +49,7 @@ const OAUTH_CONFIGS: Record<IntegrationType, Partial<OAuthConfig>> = {
     tokenUrl: 'https://oauth2.googleapis.com/token',
     scopes: [
       'https://www.googleapis.com/auth/spreadsheets',
-      'https://www.googleapis.com/auth/drive.file'
+      'https://www.googleapis.com/auth/drive.file',
     ],
   },
   gmail: {
@@ -52,7 +57,7 @@ const OAUTH_CONFIGS: Record<IntegrationType, Partial<OAuthConfig>> = {
     tokenUrl: 'https://oauth2.googleapis.com/token',
     scopes: [
       'https://www.googleapis.com/auth/gmail.readonly',
-      'https://www.googleapis.com/auth/gmail.metadata'
+      'https://www.googleapis.com/auth/gmail.metadata',
     ],
   },
   airtable: {
@@ -68,10 +73,7 @@ const OAUTH_CONFIGS: Record<IntegrationType, Partial<OAuthConfig>> = {
   excel: {
     authUrl: 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
     tokenUrl: 'https://login.microsoftonline.com/common/oauth2/v2.0/token',
-    scopes: [
-      'Files.ReadWrite',
-      'offline_access'
-    ],
+    scopes: ['Files.ReadWrite', 'offline_access'],
   },
 };
 
@@ -102,7 +104,7 @@ export class OAuthHandler {
       user_id: userId,
       integration_type: integrationType,
       expires_at: expiresAt,
-      code_verifier: pkce?.codeVerifier || null
+      code_verifier: pkce?.codeVerifier || null,
     });
 
     if (error) {
@@ -142,7 +144,7 @@ export class OAuthHandler {
     integrationType: IntegrationType,
     code: string,
     state: string
-  ): Promise<{tokens: OAuthTokens, userId: string}> {
+  ): Promise<{ tokens: OAuthTokens; userId: string }> {
     // Verify state for CSRF protection (from database)
     const supabase = await createServerClient();
 
@@ -184,7 +186,9 @@ export class OAuthHandler {
     // Airtable uses Basic Auth, others use client_secret in body
     if (integrationType === 'airtable') {
       // Airtable requires Basic Authentication with base64(client_id:client_secret)
-      const credentials = Buffer.from(`${config.clientId}:${config.clientSecret}`).toString('base64');
+      const credentials = Buffer.from(
+        `${config.clientId}:${config.clientSecret}`
+      ).toString('base64');
       headers['Authorization'] = `Basic ${credentials}`;
     } else {
       // Other providers send client_id and client_secret in body
@@ -266,22 +270,25 @@ export class OAuthHandler {
     const supabase = await createServerClient();
     const { data, error } = await supabase
       .from('integration_connections')
-      .upsert({
-        user_id: userId,
-        integration_type: integrationType,
-        credentials: {
-          access_token: tokens.access_token,
-          refresh_token: tokens.refresh_token,
-          expires_at: tokens.expires_at,
-          token_type: tokens.token_type,
+      .upsert(
+        {
+          user_id: userId,
+          integration_type: integrationType,
+          credentials: {
+            access_token: tokens.access_token,
+            refresh_token: tokens.refresh_token,
+            expires_at: tokens.expires_at,
+            token_type: tokens.token_type,
+          },
+          settings,
+          status: 'active',
+          error_message: null,
+          error_count: 0,
         },
-        settings,
-        status: 'active',
-        error_message: null,
-        error_count: 0,
-      }, {
-        onConflict: 'user_id,integration_type'
-      })
+        {
+          onConflict: 'user_id,integration_type',
+        }
+      )
       .select('id')
       .single();
 
@@ -314,7 +321,10 @@ export class OAuthHandler {
   /**
    * Disconnect integration
    */
-  async disconnect(userId: string, integrationType: IntegrationType): Promise<void> {
+  async disconnect(
+    userId: string,
+    integrationType: IntegrationType
+  ): Promise<void> {
     const supabase = await createServerClient();
     const { error } = await supabase
       .from('integration_connections')
@@ -333,9 +343,7 @@ export class OAuthHandler {
   /**
    * Get valid access token (refreshes if expired)
    */
-  async getValidAccessToken(
-    connectionId: string
-  ): Promise<string> {
+  async getValidAccessToken(connectionId: string): Promise<string> {
     const supabase = await createServerClient();
     const { data: connection } = await supabase
       .from('integration_connections')
@@ -350,7 +358,10 @@ export class OAuthHandler {
     const credentials = connection.credentials as OAuthTokens;
 
     // Check if token is expired (with 5 minute buffer)
-    if (credentials.expires_at && credentials.expires_at < Date.now() + 300000) {
+    if (
+      credentials.expires_at &&
+      credentials.expires_at < Date.now() + 300000
+    ) {
       // Token expired or about to expire - refresh it
       const newTokens = await this.refreshToken(
         connection.integration_type,

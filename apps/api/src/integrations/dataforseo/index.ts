@@ -53,7 +53,7 @@ export class DataForSEOService {
     this.config = {
       username,
       password,
-      baseUrl: 'https://api.dataforseo.com/v3'
+      baseUrl: 'https://api.dataforseo.com/v3',
     };
   }
 
@@ -62,11 +62,11 @@ export class DataForSEOService {
       const response = await axios.post(`${this.config.baseUrl}${endpoint}`, [data], {
         auth: {
           username: this.config.username,
-          password: this.config.password
+          password: this.config.password,
         },
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       });
 
       return response.data;
@@ -84,20 +84,20 @@ export class DataForSEOService {
       const data = {
         target: domain,
         location_code: 2840, // US
-        language_code: 'en'
+        language_code: 'en',
       };
 
       const response = await this.makeRequest('/domain_analytics/overview', data);
-      
+
       if (!response.tasks?.[0]?.result?.[0]) {
         return {
           success: false,
-          error: 'No analysis data available'
+          error: 'No analysis data available',
         };
       }
 
       const result = response.tasks[0].result[0];
-      
+
       const analysis: SEOAnalysis = {
         domain,
         score: this.calculateSEOScore(result),
@@ -107,23 +107,26 @@ export class DataForSEOService {
           organicKeywords: result.organic_keywords || 0,
           organicTraffic: result.organic_traffic || 0,
           backlinks: result.backlinks || 0,
-          domainAuthority: result.domain_authority || 0
-        }
+          domainAuthority: result.domain_authority || 0,
+        },
       };
 
       return {
         success: true,
-        analysis
+        analysis,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 
-  async researchKeywords(seedKeyword: string, location?: string): Promise<{
+  async researchKeywords(
+    seedKeyword: string,
+    location?: string
+  ): Promise<{
     success: boolean;
     keywords?: KeywordData[];
     error?: string;
@@ -133,15 +136,15 @@ export class DataForSEOService {
         keyword: seedKeyword,
         location_code: location ? this.getLocationCode(location) : 2840,
         language_code: 'en',
-        depth: 10
+        depth: 10,
       };
 
       const response = await this.makeRequest('/keywords_data/google/keyword_suggestions', data);
-      
+
       if (!response.tasks?.[0]?.result?.[0]?.items) {
         return {
           success: false,
-          error: 'No keyword data available'
+          error: 'No keyword data available',
         };
       }
 
@@ -150,17 +153,17 @@ export class DataForSEOService {
         searchVolume: item.search_volume || 0,
         difficulty: item.keyword_difficulty || 0,
         cpc: item.cpc || 0,
-        competition: item.competition || 'low'
+        competition: item.competition || 'low',
       }));
 
       return {
         success: true,
-        keywords
+        keywords,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -174,15 +177,15 @@ export class DataForSEOService {
       const data = {
         target: domain,
         location_code: 2840,
-        language_code: 'en'
+        language_code: 'en',
       };
 
       const response = await this.makeRequest('/domain_analytics/competitors', data);
-      
+
       if (!response.tasks?.[0]?.result?.[0]?.items) {
         return {
           success: false,
-          error: 'No competitor data available'
+          error: 'No competitor data available',
         };
       }
 
@@ -191,22 +194,25 @@ export class DataForSEOService {
         organicKeywords: item.organic_keywords || 0,
         organicTraffic: item.organic_traffic || 0,
         backlinks: item.backlinks || 0,
-        domainAuthority: item.domain_authority || 0
+        domainAuthority: item.domain_authority || 0,
       }));
 
       return {
         success: true,
-        competitors
+        competitors,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 
-  async getSERPResults(keyword: string, location?: string): Promise<{
+  async getSERPResults(
+    keyword: string,
+    location?: string
+  ): Promise<{
     success: boolean;
     results?: SERPData;
     error?: string;
@@ -216,15 +222,15 @@ export class DataForSEOService {
         keyword: keyword,
         location_code: location ? this.getLocationCode(location) : 2840,
         language_code: 'en',
-        depth: 100
+        depth: 100,
       };
 
       const response = await this.makeRequest('/serp/google/organic/live/regular', data);
-      
+
       if (!response.tasks?.[0]?.result?.[0]?.items) {
         return {
           success: false,
-          error: 'No SERP data available'
+          error: 'No SERP data available',
         };
       }
 
@@ -235,18 +241,18 @@ export class DataForSEOService {
           title: item.title || '',
           url: item.link || '',
           snippet: item.snippet || '',
-          domain: this.extractDomain(item.link || '')
-        }))
+          domain: this.extractDomain(item.link || ''),
+        })),
       };
 
       return {
         success: true,
-        results
+        results,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -266,13 +272,13 @@ export class DataForSEOService {
       const [analysisResult, keywordsResult, competitorsResult] = await Promise.all([
         this.analyzeDomain(domain),
         this.researchKeywords(domain),
-        this.analyzeCompetitors(domain)
+        this.analyzeCompetitors(domain),
       ]);
 
       if (!analysisResult.success) {
         return {
           success: false,
-          error: analysisResult.error || 'Analysis failed'
+          error: analysisResult.error || 'Analysis failed',
         };
       }
 
@@ -285,17 +291,17 @@ export class DataForSEOService {
           analysisResult.analysis!,
           keywordsResult.keywords || [],
           competitorsResult.competitors || []
-        )
+        ),
       };
 
       return {
         success: true,
-        report
+        report,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -303,56 +309,56 @@ export class DataForSEOService {
   private calculateSEOScore(data: any): number {
     // Calculate a simple SEO score based on various metrics
     let score = 0;
-    
+
     if (data.organic_keywords) score += Math.min(data.organic_keywords / 100, 30);
     if (data.organic_traffic) score += Math.min(data.organic_traffic / 1000, 30);
     if (data.backlinks) score += Math.min(data.backlinks / 1000, 20);
     if (data.domain_authority) score += Math.min(data.domain_authority, 20);
-    
+
     return Math.round(score);
   }
 
   private identifyIssues(data: any): string[] {
     const issues: string[] = [];
-    
+
     if (!data.organic_keywords || data.organic_keywords < 10) {
       issues.push('Low number of organic keywords');
     }
-    
+
     if (!data.organic_traffic || data.organic_traffic < 1000) {
       issues.push('Low organic traffic');
     }
-    
+
     if (!data.backlinks || data.backlinks < 100) {
       issues.push('Limited backlink profile');
     }
-    
+
     if (!data.domain_authority || data.domain_authority < 20) {
       issues.push('Low domain authority');
     }
-    
+
     return issues;
   }
 
   private generateRecommendations(data: any): string[] {
     const recommendations: string[] = [];
-    
+
     if (!data.organic_keywords || data.organic_keywords < 10) {
       recommendations.push('Focus on keyword research and content creation');
     }
-    
+
     if (!data.organic_traffic || data.organic_traffic < 1000) {
       recommendations.push('Improve on-page SEO and content quality');
     }
-    
+
     if (!data.backlinks || data.backlinks < 100) {
       recommendations.push('Develop link building strategy');
     }
-    
+
     if (!data.domain_authority || data.domain_authority < 20) {
       recommendations.push('Build quality backlinks and improve site authority');
     }
-    
+
     return recommendations;
   }
 
@@ -362,18 +368,23 @@ export class DataForSEOService {
     competitors: CompetitorData[]
   ): string[] {
     const recommendations: string[] = [];
-    
+
     // Add analysis-based recommendations
     recommendations.push(...analysis.recommendations);
-    
+
     // Add keyword-based recommendations
     if (keywords.length > 0) {
       const highVolumeKeywords = keywords.filter(k => k.searchVolume > 1000);
       if (highVolumeKeywords.length > 0) {
-        recommendations.push(`Target high-volume keywords: ${highVolumeKeywords.slice(0, 3).map(k => k.keyword).join(', ')}`);
+        recommendations.push(
+          `Target high-volume keywords: ${highVolumeKeywords
+            .slice(0, 3)
+            .map(k => k.keyword)
+            .join(', ')}`
+        );
       }
     }
-    
+
     // Add competitor-based recommendations
     if (competitors.length > 0) {
       const topCompetitor = competitors[0];
@@ -381,7 +392,7 @@ export class DataForSEOService {
         recommendations.push(`Analyze competitor strategies from ${topCompetitor.domain}`);
       }
     }
-    
+
     return recommendations;
   }
 
@@ -395,18 +406,18 @@ export class DataForSEOService {
 
   private getLocationCode(location: string): number {
     const locationMap: Record<string, number> = {
-      'US': 2840,
-      'UK': 2826,
-      'CA': 2124,
-      'AU': 2036,
-      'DE': 2276,
-      'FR': 2250,
-      'ES': 2724,
-      'IT': 2380,
-      'JP': 2392,
-      'BR': 2076
+      US: 2840,
+      UK: 2826,
+      CA: 2124,
+      AU: 2036,
+      DE: 2276,
+      FR: 2250,
+      ES: 2724,
+      IT: 2380,
+      JP: 2392,
+      BR: 2076,
     };
-    
+
     return locationMap[location.toUpperCase()] || 2840;
   }
 
@@ -417,4 +428,4 @@ export class DataForSEOService {
       return url;
     }
   }
-} 
+}

@@ -70,8 +70,8 @@ describe('VoiceGuardSkill', () => {
       const result = await VoiceGuardSkill.execute(input, mockContext);
 
       expect(result.warnings.length).toBeGreaterThan(0);
-      expect(result.warnings.some((w) => w.includes('leverage'))).toBe(true);
-      expect(result.warnings.some((w) => w.includes('solution'))).toBe(true);
+      expect(result.warnings.some(w => w.includes('leverage'))).toBe(true);
+      expect(result.warnings.some(w => w.includes('solution'))).toBe(true);
       expect(result.compliance_score).toBeLessThan(0.8);
     });
 
@@ -104,8 +104,7 @@ describe('VoiceGuardSkill', () => {
 
   describe('Email Pitch Validation', () => {
     it('should warn about pitch length over 150 words', async () => {
-      const longPitch =
-        'Hi there. ' + 'This is a really long pitch email. '.repeat(20);
+      const longPitch = 'Hi there. ' + 'This is a really long pitch email. '.repeat(20);
 
       const input = {
         text: longPitch,
@@ -115,7 +114,7 @@ describe('VoiceGuardSkill', () => {
 
       const result = await VoiceGuardSkill.execute(input, mockContext);
 
-      expect(result.warnings.some((w) => w.includes('150 words'))).toBe(true);
+      expect(result.warnings.some(w => w.includes('150 words'))).toBe(true);
     });
 
     it('should suggest personalisation if missing', async () => {
@@ -127,9 +126,7 @@ describe('VoiceGuardSkill', () => {
 
       const result = await VoiceGuardSkill.execute(input, mockContext);
 
-      expect(
-        result.suggestions.some((s) => s.includes('personalisation'))
-      ).toBe(true);
+      expect(result.suggestions.some(s => s.includes('personalisation'))).toBe(true);
     });
 
     it('should pass well-structured pitch', async () => {
@@ -163,9 +160,7 @@ Chris`,
 
       const result = await VoiceGuardSkill.execute(input, mockContext);
 
-      expect(
-        result.suggestions.some((s) => s.includes('industry credibility'))
-      ).toBe(true);
+      expect(result.suggestions.some(s => s.includes('industry credibility'))).toBe(true);
     });
 
     it('should pass content with radio credibility', async () => {
@@ -186,10 +181,7 @@ Chris`,
     it('validate() should return true for compliant text', async () => {
       const goodText = 'We organise your contacts. Right, so this works.';
 
-      const isValid = await VoiceGuardSkill.validate(
-        goodText,
-        'email_pitch'
-      );
+      const isValid = await VoiceGuardSkill.validate(goodText, 'email_pitch');
 
       expect(isValid).toBe(true);
     });
@@ -205,10 +197,7 @@ Chris`,
     it('correct() should fix spelling automatically', async () => {
       const badText = 'We organize and analyze your data.';
 
-      const corrected = await VoiceGuardSkill.correct(
-        badText,
-        'email_pitch'
-      );
+      const corrected = await VoiceGuardSkill.correct(badText, 'email_pitch');
 
       expect(corrected).toContain('organise');
       expect(corrected).toContain('analyse');

@@ -1,10 +1,13 @@
 'use server';
 
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 import type { CampaignActivity } from '@/lib/types';
 
-export async function listActivitiesForCampaign(campaignId: string): Promise<CampaignActivity[]> {
-  const supabase = await createClient();
+export async function listActivitiesForCampaign(
+  campaignId: string
+): Promise<CampaignActivity[]> {
+  const supabase = await createServerClient(cookies());
   const { data, error } = await supabase
     .from('campaign_activities')
     .select('*')
@@ -15,8 +18,10 @@ export async function listActivitiesForCampaign(campaignId: string): Promise<Cam
   return (data as CampaignActivity[]) ?? [];
 }
 
-export async function listRecentActivities(limit = 20): Promise<CampaignActivity[]> {
-  const supabase = await createClient();
+export async function listRecentActivities(
+  limit = 20
+): Promise<CampaignActivity[]> {
+  const supabase = await createServerClient(cookies());
   const { data, error } = await supabase
     .from('campaign_activities')
     .select('*')
@@ -26,8 +31,10 @@ export async function listRecentActivities(limit = 20): Promise<CampaignActivity
   return (data as CampaignActivity[]) ?? [];
 }
 
-export async function getActivity(id: string): Promise<CampaignActivity | null> {
-  const supabase = await createClient();
+export async function getActivity(
+  id: string
+): Promise<CampaignActivity | null> {
+  const supabase = await createServerClient(cookies());
   const { data, error } = await supabase
     .from('campaign_activities')
     .select('*')
@@ -37,8 +44,10 @@ export async function getActivity(id: string): Promise<CampaignActivity | null> 
   return data as CampaignActivity;
 }
 
-export async function createActivity(input: Partial<CampaignActivity>): Promise<CampaignActivity> {
-  const supabase = await createClient();
+export async function createActivity(
+  input: Partial<CampaignActivity>
+): Promise<CampaignActivity> {
+  const supabase = await createServerClient(cookies());
   const { data, error } = await supabase
     .from('campaign_activities')
     .insert(input)
@@ -48,8 +57,11 @@ export async function createActivity(input: Partial<CampaignActivity>): Promise<
   return data as CampaignActivity;
 }
 
-export async function updateActivity(id: string, input: Partial<CampaignActivity>): Promise<CampaignActivity> {
-  const supabase = await createClient();
+export async function updateActivity(
+  id: string,
+  input: Partial<CampaignActivity>
+): Promise<CampaignActivity> {
+  const supabase = await createServerClient(cookies());
   const { data, error } = await supabase
     .from('campaign_activities')
     .update(input)
@@ -61,22 +73,10 @@ export async function updateActivity(id: string, input: Partial<CampaignActivity
 }
 
 export async function deleteActivity(id: string): Promise<void> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
   const { error } = await supabase
     .from('campaign_activities')
     .delete()
     .eq('id', id);
   if (error) throw error;
 }
-
-
-
-
-
-
-
-
-
-
-
-

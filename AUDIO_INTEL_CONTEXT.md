@@ -1,6 +1,6 @@
 # 🎯 AUDIO INTEL - COMPLETE CONTEXT
 
-*Everything you need to know about the product in one place*
+_Everything you need to know about the product in one place_
 
 ## 📊 KEY NUMBERS (Update Weekly)
 
@@ -123,15 +123,15 @@
 
 ### For Radio Promoters
 
-*"I've spent 5+ years doing radio promotion and built Audio Intel because I was tired of spending 15+ hours per campaign researching contacts. Now I can enrich an entire campaign's worth of contacts in 15 minutes. Let me show you exactly how."*
+_"I've spent 5+ years doing radio promotion and built Audio Intel because I was tired of spending 15+ hours per campaign researching contacts. Now I can enrich an entire campaign's worth of contacts in 15 minutes. Let me show you exactly how."_
 
 ### For Artists
 
-*"Stop spending your creative weekends wrestling with spreadsheets and researching contacts. Upload your messy contact list, get back a professional database, and get back to making music."*
+_"Stop spending your creative weekends wrestling with spreadsheets and researching contacts. Upload your messy contact list, get back a professional database, and get back to making music."_
 
 ### For Agencies
 
-*"Transform your junior staff's 15-hour contact research projects into 15-minute automated processes. White-label reports, bulk processing, multi-client support - everything you need to scale efficiently."*
+_"Transform your junior staff's 15-hour contact research projects into 15-minute automated processes. White-label reports, bulk processing, multi-client support - everything you need to scale efficiently."_
 
 ---
 

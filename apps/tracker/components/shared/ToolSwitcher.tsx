@@ -63,7 +63,10 @@ const accentStyles = {
   },
 };
 
-export function ToolSwitcher({ currentTool, accentColor = 'teal' }: ToolSwitcherProps) {
+export function ToolSwitcher({
+  currentTool,
+  accentColor = 'teal',
+}: ToolSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false);
   const activeTool = tools.find(t => t.name === currentTool);
   const styles = accentStyles[accentColor];
@@ -75,7 +78,9 @@ export function ToolSwitcher({ currentTool, accentColor = 'teal' }: ToolSwitcher
         className="flex items-center gap-2 rounded-lg border-2 border-black bg-white px-4 py-2 text-sm font-semibold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
       >
         <span>{activeTool?.name || currentTool}</span>
-        <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown
+          className={`h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+        />
       </button>
 
       {isOpen && (
@@ -90,25 +95,27 @@ export function ToolSwitcher({ currentTool, accentColor = 'teal' }: ToolSwitcher
                 Total Audio Tools
               </p>
               <div className="space-y-2">
-                {tools.map((tool) => {
+                {tools.map(tool => {
                   const isActive = tool.name === currentTool;
                   return (
                     <a
                       key={tool.name}
                       href={tool.url}
                       className={`block rounded-lg border-2 border-black p-4 transition ${
-                        isActive
-                          ? styles.activeBg
-                          : 'bg-white hover:bg-gray-50'
+                        isActive ? styles.activeBg : 'bg-white hover:bg-gray-50'
                       }`}
                     >
                       <div className="flex items-start justify-between">
                         <div>
                           <p className="font-bold text-black">{tool.name}</p>
-                          <p className="mt-1 text-xs text-gray-600">{tool.description}</p>
+                          <p className="mt-1 text-xs text-gray-600">
+                            {tool.description}
+                          </p>
                         </div>
                         {isActive && (
-                          <span className={`rounded-full ${styles.badge} px-2 py-0.5 text-xs font-bold text-white`}>
+                          <span
+                            className={`rounded-full ${styles.badge} px-2 py-0.5 text-xs font-bold text-white`}
+                          >
                             CURRENT
                           </span>
                         )}
@@ -132,5 +139,3 @@ export function ToolSwitcher({ currentTool, accentColor = 'teal' }: ToolSwitcher
     </div>
   );
 }
-
-

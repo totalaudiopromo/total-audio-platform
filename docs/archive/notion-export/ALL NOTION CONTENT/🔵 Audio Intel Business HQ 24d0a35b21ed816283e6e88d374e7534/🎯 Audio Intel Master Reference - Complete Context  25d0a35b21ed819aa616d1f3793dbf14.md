@@ -1,6 +1,6 @@
 # 🎯 Audio Intel Master Reference - Complete Context Summary
 
-*Single source of truth for Audio Intel contact enrichment tool development*
+_Single source of truth for Audio Intel contact enrichment tool development_
 
 ---
 
@@ -10,7 +10,7 @@ This page links to all essential Audio Intel documentation. **Always reference t
 
 ### 📄 **Primary Reference: Complete Business Context**
 
-📁 **BUSINESS_CONTEXT_[COMPLETE.md](http://COMPLETE.md)** (External Document)
+📁 **BUSINESS*CONTEXT*[COMPLETE.md](http://COMPLETE.md)** (External Document)
 
 - ✅ **Most comprehensive and current**
 - ✅ **Single source of truth for all Audio Intel development**
@@ -125,7 +125,7 @@ AGENCY: £79/month (500 enrichments)
 
 ### **For Strategic Decisions:**
 
-- Reference **BUSINESS_CONTEXT_[COMPLETE.md](http://COMPLETE.md)** as primary source
+- Reference **BUSINESS*CONTEXT*[COMPLETE.md](http://COMPLETE.md)** as primary source
 - Audio Intel competes with **manual Excel work**, not submission platforms
 - Focus on **spreadsheet chaos** pain point
 - Leverage **authentic founder story** for credibility

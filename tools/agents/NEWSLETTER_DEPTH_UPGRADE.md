@@ -5,6 +5,7 @@
 ### 1. Voice Profile Enhancement ([FINAL_CHRIS_VOICE.md](FINAL_CHRIS_VOICE.md))
 
 Added **DEPTH REQUIREMENTS** section:
+
 - Every newsletter must connect to Chris's actual expertise (radio promotion, Audio Intel data, underground scene)
 - Depth test: "Could only Chris write this?" vs "Could any music blogger write this?"
 - Specific examples of sufficient depth with tactical detail
@@ -13,6 +14,7 @@ Added **DEPTH REQUIREMENTS** section:
 ### 2. Newsletter Framework Enhancement ([generate-real-newsletter.js](generate-real-newsletter.js))
 
 **Updated 5-Part Structure:**
+
 1. HOOK (1-2 sentences): What happened in the industry
 2. EXPERTISE CONNECTION (2-3 sentences): Radio promotion reality / Audio Intel data / underground scene
 3. THE UNSIGNED ADVANTAGE (2-3 sentences): Specific advantage from real experience
@@ -22,6 +24,7 @@ Added **DEPTH REQUIREMENTS** section:
 ### 3. Enhanced Claude Prompt Instructions
 
 Added to generation prompt:
+
 - "Connect this news story to Chris's actual expertise"
 - "What does Chris know about this that others don't?"
 - Specific guidance for promotion, data, or scene angles
@@ -31,6 +34,7 @@ Added to generation prompt:
 ### 4. Reference Examples Added
 
 Three example templates in system prompt:
+
 - **Example A**: Radio promotion angle (programmer behavior insight)
 - **Example B**: Audio Intel data angle (UK contact change statistics)
 - **Example C**: Scene perspective angle (club promoter outreach differences)
@@ -38,6 +42,7 @@ Three example templates in system prompt:
 ### 5. Quality Check Criteria
 
 Updated checks:
+
 - ✅ Connects to specific Chris expertise
 - ✅ Includes tactical insight from real experience
 - ✅ Answers "What does Chris know that others don't?"
@@ -49,6 +54,7 @@ Updated checks:
 **Test Story**: "Suno and Udio SUED By Indie Musicians"
 
 **Generated Content Quality:**
+
 - ✅ Connected to radio promotion experience (5+ years pitching)
 - ✅ Specific insight: Programmers ask about copyright registration before playlisting
 - ✅ Tactical advantage: Direct control over rights = faster responses
@@ -61,13 +67,17 @@ Updated checks:
 ## Before vs After
 
 ### Before
+
 Generic commentary like:
+
 - "Indies are more nimble than major labels"
 - "Social media changes everything for independent artists"
 - Generic observations anyone could make
 
 ### After
+
 Specific insights like:
+
 - "After 5+ years pitching to radio programmers, I've learned they check streaming numbers before playlisting - not because they care about Spotify, but because it's social proof of engaged audience"
 - Includes budgets (£30-40), timings (90 minutes), specific processes
 - Real campaign insights from actual experience
@@ -88,6 +98,7 @@ node generate-real-newsletter.js
 ## Next Steps for Further Testing
 
 Test with different story types:
+
 - Streaming platform news (test data angle)
 - Production/gear news (test scene perspective angle)
 - Industry business news (test promotion tactics angle)
@@ -95,6 +106,7 @@ Test with different story types:
 ## Quality Assurance
 
 Each generated section should pass:
+
 - Could only Chris write this based on his experience? ✅
 - Includes specific tactical detail with numbers/budgets/timings? ✅
 - Avoids generic takes without backing? ✅

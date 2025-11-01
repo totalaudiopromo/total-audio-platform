@@ -24,7 +24,13 @@ interface RadioCampaign {
   budget: number;
   releaseDate: string;
   priority: 'high' | 'medium' | 'low';
-  status: 'transcript_processing' | 'campaign_creation' | 'press_release' | 'radio_outreach' | 'tracking' | 'completed';
+  status:
+    | 'transcript_processing'
+    | 'campaign_creation'
+    | 'press_release'
+    | 'radio_outreach'
+    | 'tracking'
+    | 'completed';
   steps: WorkflowStep[];
   createdAt: string;
 }
@@ -46,11 +52,17 @@ interface StatusResponse {
 }
 
 // Path to the radio-promo orchestrator
-const ORCHESTRATOR_PATH = path.resolve(process.cwd(), '../../../tools/agents/radio-promo/orchestrator.js');
-const STATUS_FILE_PATH = path.resolve(process.cwd(), '../../../tools/agents/radio-promo/status/current-status.json');
+const ORCHESTRATOR_PATH = path.resolve(
+  process.cwd(),
+  '../../../tools/agents/radio-promo/orchestrator.js'
+);
+const STATUS_FILE_PATH = path.resolve(
+  process.cwd(),
+  '../../../tools/agents/radio-promo/status/current-status.json'
+);
 
 async function checkOrchestratorStatus(): Promise<boolean> {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     exec('pgrep -f "radio-promo.*orchestrator"', (error, stdout, stderr) => {
       // If pgrep finds processes, stdout will have PIDs
       resolve(stdout.trim().length > 0);
@@ -66,13 +78,13 @@ async function getStatusFromFile(): Promise<StatusResponse | null> {
 
     const statusData = fs.readFileSync(STATUS_FILE_PATH, 'utf-8');
     const parsedStatus = JSON.parse(statusData);
-    
+
     return {
       campaigns: parsedStatus.campaigns || [],
       agentStatuses: parsedStatus.agentStatuses || [],
       approvalQueue: parsedStatus.approvalQueue || [],
       isConnected: parsedStatus.isConnected || false,
-      lastUpdate: parsedStatus.lastUpdate || new Date().toISOString()
+      lastUpdate: parsedStatus.lastUpdate || new Date().toISOString(),
     };
   } catch (error) {
     console.error('Error reading status file:', error);
@@ -104,8 +116,8 @@ async function getMockData(): Promise<StatusResponse> {
           requiresManualApproval: false,
           data: {
             confidence: 0.92,
-            extractedFields: ['artist', 'track', 'genre', 'budget', 'releaseDate']
-          }
+            extractedFields: ['artist', 'track', 'genre', 'budget', 'releaseDate'],
+          },
         },
         {
           id: 'step_002',
@@ -119,8 +131,13 @@ async function getMockData(): Promise<StatusResponse> {
           data: {
             boardId: 'board_12345',
             taskCount: 24,
-            groups: ['Pre-Launch Setup', 'Launch Week', 'Follow-up & Tracking', 'Reporting & Delivery']
-          }
+            groups: [
+              'Pre-Launch Setup',
+              'Launch Week',
+              'Follow-up & Tracking',
+              'Reporting & Delivery',
+            ],
+          },
         },
         {
           id: 'step_003',
@@ -134,8 +151,8 @@ async function getMockData(): Promise<StatusResponse> {
           data: {
             wordCount: 342,
             template: 'liberty_standard',
-            targetStations: ['Amazing Radio', 'Wigwam Radio', 'BBC Introducing']
-          }
+            targetStations: ['Amazing Radio', 'Wigwam Radio', 'BBC Introducing'],
+          },
         },
         {
           id: 'step_004',
@@ -145,7 +162,7 @@ async function getMockData(): Promise<StatusResponse> {
           progress: 0,
           message: 'Waiting for press release approval',
           timestamp: new Date(Date.now() - 120000).toISOString(),
-          requiresManualApproval: false
+          requiresManualApproval: false,
         },
         {
           id: 'step_005',
@@ -155,10 +172,10 @@ async function getMockData(): Promise<StatusResponse> {
           progress: 0,
           message: 'Pending radio outreach completion',
           timestamp: new Date(Date.now() - 120000).toISOString(),
-          requiresManualApproval: false
-        }
-      ]
-    }
+          requiresManualApproval: false,
+        },
+      ],
+    },
   ];
 
   const mockAgentStatuses: AgentStatus[] = [
@@ -167,47 +184,47 @@ async function getMockData(): Promise<StatusResponse> {
       status: 'online',
       currentTask: 'Monitoring Google Meet calendar',
       lastHeartbeat: new Date(Date.now() - 30000).toISOString(),
-      errorCount: 0
+      errorCount: 0,
     },
     {
       name: 'Project Agent',
       status: 'online',
       currentTask: 'Updating Monday.com board statuses',
       lastHeartbeat: new Date(Date.now() - 45000).toISOString(),
-      errorCount: 0
+      errorCount: 0,
     },
     {
       name: 'Email Agent',
       status: 'processing',
       currentTask: 'Generating press release for Emily Watson',
       lastHeartbeat: new Date(Date.now() - 60000).toISOString(),
-      errorCount: 0
+      errorCount: 0,
     },
     {
       name: 'Radio Agent',
       status: 'offline',
       currentTask: 'Waiting for approval',
       lastHeartbeat: new Date(Date.now() - 420000).toISOString(),
-      errorCount: 1
+      errorCount: 1,
     },
     {
       name: 'Analytics Agent',
       status: 'online',
       currentTask: 'Monitoring WARM API connections',
       lastHeartbeat: new Date(Date.now() - 90000).toISOString(),
-      errorCount: 0
+      errorCount: 0,
     },
     {
       name: 'Coverage Agent',
       status: 'online',
       currentTask: 'Preparing weekly reports',
       lastHeartbeat: new Date(Date.now() - 120000).toISOString(),
-      errorCount: 0
-    }
+      errorCount: 0,
+    },
   ];
 
   // Extract approval queue from campaigns
-  const approvalQueue = mockCampaigns.flatMap(campaign => 
+  const approvalQueue = mockCampaigns.flatMap(campaign =>
     campaign.steps.filter(step => step.status === 'requires_approval')
   );
 
@@ -216,7 +233,7 @@ async function getMockData(): Promise<StatusResponse> {
     agentStatuses: mockAgentStatuses,
     approvalQueue,
     isConnected: await checkOrchestratorStatus(),
-    lastUpdate: new Date().toISOString()
+    lastUpdate: new Date().toISOString(),
   };
 }
 
@@ -224,50 +241,55 @@ export async function GET(request: NextRequest) {
   try {
     // Try to get real status from orchestrator first
     const fileStatus = await getStatusFromFile();
-    
+
     if (fileStatus) {
       return NextResponse.json(fileStatus, {
         headers: {
           'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache',
-          'Expires': '0'
-        }
+          Pragma: 'no-cache',
+          Expires: '0',
+        },
       });
     }
 
     // Fall back to mock data if orchestrator isn't running or no status file
     const mockStatus = await getMockData();
-    
-    return NextResponse.json({
-      ...mockStatus,
-      note: 'Using mock data - orchestrator not running'
-    }, {
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0'
-      }
-    });
 
+    return NextResponse.json(
+      {
+        ...mockStatus,
+        note: 'Using mock data - orchestrator not running',
+      },
+      {
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          Pragma: 'no-cache',
+          Expires: '0',
+        },
+      }
+    );
   } catch (error) {
     console.error('Error fetching radio promo status:', error);
-    
+
     // Return basic error status
-    return NextResponse.json({
-      campaigns: [],
-      agentStatuses: [],
-      approvalQueue: [],
-      isConnected: false,
-      lastUpdate: new Date().toISOString(),
-      error: 'Failed to fetch status data'
-    }, { 
-      status: 500,
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0'
+    return NextResponse.json(
+      {
+        campaigns: [],
+        agentStatuses: [],
+        approvalQueue: [],
+        isConnected: false,
+        lastUpdate: new Date().toISOString(),
+        error: 'Failed to fetch status data',
+      },
+      {
+        status: 500,
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          Pragma: 'no-cache',
+          Expires: '0',
+        },
       }
-    });
+    );
   }
 }
 
@@ -279,9 +301,9 @@ export async function POST(request: NextRequest) {
     if (action === 'approve_step') {
       // Here we would typically send the approval to the orchestrator
       // For now, we'll update the status file directly
-      
-      const currentStatus = await getStatusFromFile() || await getMockData();
-      
+
+      const currentStatus = (await getStatusFromFile()) || (await getMockData());
+
       // Update the step status
       const updatedCampaigns = currentStatus.campaigns.map(campaign => {
         if (campaign.id === campaignId) {
@@ -293,29 +315,27 @@ export async function POST(request: NextRequest) {
                   ...step,
                   status: approved ? 'approved' : 'failed',
                   progress: approved ? 100 : 0,
-                  message: approved 
+                  message: approved
                     ? `Approved by user at ${new Date().toISOString()}`
                     : `Rejected by user at ${new Date().toISOString()}`,
-                  timestamp: new Date().toISOString()
+                  timestamp: new Date().toISOString(),
                 };
               }
               return step;
-            })
+            }),
           };
         }
         return campaign;
       });
 
       // Update approval queue
-      const updatedApprovalQueue = currentStatus.approvalQueue.filter(
-        step => step.id !== stepId
-      );
+      const updatedApprovalQueue = currentStatus.approvalQueue.filter(step => step.id !== stepId);
 
       const updatedStatus = {
         ...currentStatus,
         campaigns: updatedCampaigns,
         approvalQueue: updatedApprovalQueue,
-        lastUpdate: new Date().toISOString()
+        lastUpdate: new Date().toISOString(),
       };
 
       // Save updated status back to file
@@ -332,20 +352,25 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         success: true,
         message: approved ? 'Step approved' : 'Step rejected',
-        updatedStatus
+        updatedStatus,
       });
     }
 
-    return NextResponse.json({
-      success: false,
-      message: 'Unknown action'
-    }, { status: 400 });
-
+    return NextResponse.json(
+      {
+        success: false,
+        message: 'Unknown action',
+      },
+      { status: 400 }
+    );
   } catch (error) {
     console.error('Error processing approval:', error);
-    return NextResponse.json({
-      success: false,
-      message: 'Failed to process approval'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        message: 'Failed to process approval',
+      },
+      { status: 500 }
+    );
   }
 }

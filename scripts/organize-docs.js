@@ -2,13 +2,13 @@
 
 /**
  * TAP Documentation Organiser
- * 
+ *
  * Automatically organises scattered .md files into proper docs/ structure
  * Runs across all apps in the monorepo
- * 
+ *
  * Usage:
  *   node scripts/organize-docs.js [app-name]
- * 
+ *
  * Examples:
  *   node scripts/organize-docs.js                    # Organize all apps
  *   node scripts/organize-docs.js tap-saas-template  # Organize specific app
@@ -32,13 +32,7 @@ const CATEGORIES = {
     /quick.*deploy/i,
     /run.*migration/i,
   ],
-  guides: [
-    /how.*to/i,
-    /tutorial/i,
-    /walkthrough/i,
-    /quickstart/i,
-    /getting.*started/i,
-  ],
+  guides: [/how.*to/i, /tutorial/i, /walkthrough/i, /quickstart/i, /getting.*started/i],
   reference: [
     /readme.*prd/i,
     /prd/i,
@@ -119,10 +113,10 @@ class DocOrganizer {
    */
   findMarkdownFiles(dir) {
     const files = [];
-    
+
     try {
       const entries = fs.readdirSync(dir, { withFileTypes: true });
-      
+
       for (const entry of entries) {
         if (entry.name.startsWith('.')) continue;
         if (SKIP_DIRS.includes(entry.name)) continue;
@@ -186,8 +180,11 @@ class DocOrganizer {
    * Generate a docs/README.md template
    */
   generateDocsReadme(appName) {
-    const title = appName.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-    
+    const title = appName
+      .split('-')
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ');
+
     return `# ${title} - Documentation
 
 All documentation organised by category.
@@ -260,7 +257,7 @@ When adding new documentation:
    */
   organizeApp(appDir) {
     const appName = path.basename(appDir);
-    
+
     if (!fs.existsSync(appDir)) {
       this.log(`❌ App not found: ${appName}`, 'red');
       return;
@@ -293,7 +290,7 @@ When adding new documentation:
 
       // Categorize and move
       const category = this.categorizeFile(filename);
-      
+
       if (category) {
         this.moveFile(filePath, category, appDir);
         organized++;
@@ -382,7 +379,8 @@ function main() {
     organizer.organizeApp(appDir);
   } else {
     // Organize all apps
-    const apps = fs.readdirSync(appsDir, { withFileTypes: true })
+    const apps = fs
+      .readdirSync(appsDir, { withFileTypes: true })
       .filter(entry => entry.isDirectory())
       .filter(entry => !SKIP_DIRS.includes(entry.name))
       .map(entry => entry.name);
@@ -401,4 +399,3 @@ if (require.main === module) {
 }
 
 module.exports = { DocOrganizer };
-

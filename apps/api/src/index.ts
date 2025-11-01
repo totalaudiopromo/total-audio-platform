@@ -78,10 +78,10 @@ app.get('/api/ping', (req, res) => {
 // Add error handler back
 app.use(errorHandler);
 
-io.on('connection', (socket) => {
+io.on('connection', socket => {
   logger.info(`Socket connected: ${socket.id}`);
-  
-  socket.on('join-campaign', (campaignId) => {
+
+  socket.on('join-campaign', campaignId => {
     socket.join(`campaign-${campaignId}`);
     logger.info(`Socket ${socket.id} joined campaign ${campaignId}`);
   });
@@ -94,6 +94,9 @@ io.on('connection', (socket) => {
 export { io };
 
 server.listen(PORT, () => {
-  logger.info(`Server running on port ${PORT}`, { service: 'total-audio-promo-backend', timestamp: new Date().toISOString() });
+  logger.info(`Server running on port ${PORT}`, {
+    service: 'total-audio-promo-backend',
+    timestamp: new Date().toISOString(),
+  });
   console.log(`Server running on port ${PORT}`);
 });

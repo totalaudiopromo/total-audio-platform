@@ -3,6 +3,7 @@
 ## What Happened
 
 You successfully got a LinkedIn access token, but it's giving a 403 error:
+
 ```
 ACCESS_DENIED: Not enough permissions to access: me.GET.NO_VERSION
 ```
@@ -14,9 +15,11 @@ This means your LinkedIn app doesn't have the right **Products** enabled.
 ## Quick Fix (5 minutes)
 
 ### Step 1: Go to LinkedIn Developers
+
 https://www.linkedin.com/developers/apps
 
 ### Step 2: Find Your App
+
 Look for the app with Client ID: `781ioptlbwi0ok`
 
 ###Step 3: Add Required Products
@@ -26,11 +29,13 @@ In your app dashboard, go to the **"Products"** tab.
 You need to add **ONE** of these products:
 
 **Option A: "Share on LinkedIn"** (recommended for posting)
+
 - Click "Request access" on "Share on LinkedIn"
 - This gives you `w_member_social` permission (needed for posting)
 - Usually approved instantly
 
 **Option B: "Marketing Developer Platform"**
+
 - More comprehensive permissions
 - Includes posting + analytics
 - May require business verification
@@ -54,6 +59,7 @@ After adding the product:
 **IMPORTANT**: Your current token doesn't have the new permissions. You need a fresh one.
 
 Run the script again:
+
 ```bash
 npx tsx scripts/get-linkedin-token-simple.ts
 ```

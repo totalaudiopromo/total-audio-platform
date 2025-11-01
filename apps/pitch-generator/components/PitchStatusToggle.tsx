@@ -21,7 +21,7 @@ export default function PitchStatusToggle({
   pitchId,
   currentStatus,
   onStatusChange,
-  pitchData
+  pitchData,
 }: PitchStatusToggleProps) {
   const [status, setStatus] = useState(currentStatus);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -96,16 +96,18 @@ export default function PitchStatusToggle({
           name: `${pitchData.artistName} - ${pitchData.trackTitle}`,
           artist: pitchData.artistName,
           track: pitchData.trackTitle,
-          contacts: [{
-            name: pitchData.contactName,
-            email: pitchData.contactEmail,
-            outlet: pitchData.contactOutlet,
-            status: 'sent',
-            pitchBody: pitchData.pitchBody,
-            subjectLine: pitchData.subjectLine,
-            sentDate: new Date().toISOString(),
-          }]
-        }
+          contacts: [
+            {
+              name: pitchData.contactName,
+              email: pitchData.contactEmail,
+              outlet: pitchData.contactOutlet,
+              status: 'sent',
+              pitchBody: pitchData.pitchBody,
+              subjectLine: pitchData.subjectLine,
+              sentDate: new Date().toISOString(),
+            },
+          ],
+        },
       };
 
       // Copy to clipboard
@@ -115,14 +117,16 @@ export default function PitchStatusToggle({
       setNotification('Pitch marked as sent! Opening Tracker...');
 
       // Open tracker
-      window.open('https://tracker.totalaudiopromo.com/dashboard/import?source=clipboard', '_blank');
+      window.open(
+        'https://tracker.totalaudiopromo.com/dashboard/import?source=clipboard',
+        '_blank'
+      );
 
       // Hide track option and clear notification after delay
       setTimeout(() => {
         setShowTrackOption(false);
         setNotification(null);
       }, 3000);
-
     } catch (error) {
       console.error('Error in send & track:', error);
       setNotification('Failed to send & track. Please try again.');
@@ -173,7 +177,8 @@ export default function PitchStatusToggle({
           <div className="bg-white rounded-xl border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 max-w-md w-full">
             <h3 className="text-xl font-bold mb-4">Track this pitch in Tracker?</h3>
             <p className="text-gray-600 mb-6">
-              Would you like to automatically create a campaign in Tracker to monitor responses and follow-ups?
+              Would you like to automatically create a campaign in Tracker to monitor responses and
+              follow-ups?
             </p>
             <div className="flex gap-3">
               <button
@@ -202,16 +207,17 @@ export default function PitchStatusToggle({
       )}
 
       <div className="flex gap-2 flex-wrap">
-        {statuses.map((s) => (
+        {statuses.map(s => (
           <button
             key={s.value}
             onClick={() => handleStatusChange(s.value)}
             disabled={isUpdating}
             className={`
               px-3 py-1 rounded-full text-sm font-medium transition-all
-              ${status === s.value
-                ? s.color.replace('hover:', '') + ' ring-2 ring-offset-2 ring-gray-300'
-                : 'bg-gray-50 text-gray-500 hover:bg-gray-100'
+              ${
+                status === s.value
+                  ? s.color.replace('hover:', '') + ' ring-2 ring-offset-2 ring-gray-300'
+                  : 'bg-gray-50 text-gray-500 hover:bg-gray-100'
               }
               ${isUpdating ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
             `}

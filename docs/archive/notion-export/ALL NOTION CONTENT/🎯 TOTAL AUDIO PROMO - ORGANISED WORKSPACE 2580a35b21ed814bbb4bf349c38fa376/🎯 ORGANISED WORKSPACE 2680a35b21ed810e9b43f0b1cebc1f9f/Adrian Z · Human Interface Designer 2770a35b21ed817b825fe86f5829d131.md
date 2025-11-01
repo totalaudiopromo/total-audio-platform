@@ -30,7 +30,7 @@ spec icon
 
 number 32
 
-[glowing sauce](javascript:void(0))
+[glowing sauce](<javascript:void(0)>)
 
 ![glowing sauce](https://azumbrunnen.me/sauce.b29015ba.png)
 
@@ -39,11 +39,8 @@ number 32
 Writing is an essential part of my process. My essays were featured on FastCompany, TNW, Smashing Magazine, and Medium. You can find some of my latest writing below.
 
 - [](https://medium.com/s/story/from-clockworks-to-computers-on-our-wrists-11a709a20000)
-    
-      [How Apple beat Swiss watchmakers at their own game](https://medium.com/s/story/from-clockworks-to-computers-on-our-wrists-11a709a20000) 
-    
-    ![clock](https://azumbrunnen.me/icon-clock.0dea988d.png)
-    
+  [How Apple beat Swiss watchmakers at their own game](https://medium.com/s/story/from-clockworks-to-computers-on-our-wrists-11a709a20000)
+  ![clock](https://azumbrunnen.me/icon-clock.0dea988d.png)
 - [My chatbot is dead](https://azumbrunnen.me/blog/my-chatbot-is-dead-%C2%B7-why-yours-should-probably-be-too/)
 - [The rise of Anti-notifications](https://medium.com/s/story/the-rise-of-anti-notifications-6c92e355612b)
 

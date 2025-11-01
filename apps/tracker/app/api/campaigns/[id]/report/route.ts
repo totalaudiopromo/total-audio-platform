@@ -5,9 +5,12 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
-import { generateCampaignReportPDF, type ReportData } from '@/components/reports/pdf-generator';
+import {
+  generateCampaignReportPDF,
+  type ReportData,
+} from '@/components/reports/pdf-generator';
 import Anthropic from '@anthropic-ai/sdk';
 
 export const maxDuration = 60; // 60 seconds for AI generation
@@ -23,7 +26,9 @@ export async function POST(
 
     const supabase = await createServerClient(cookies());
 
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     if (!user) {
       console.log('[Report Generation] No user authenticated');
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -31,13 +36,13 @@ export async function POST(
     console.log('[Report Generation] User:', user.id);
 
     const body = await request.json();
-    const {
-      reportType = 'custom',
+    const { reportType = 'custom', startDate, endDate, templateId } = body;
+    console.log('[Report Generation] Request body:', {
+      reportType,
       startDate,
       endDate,
       templateId,
-    } = body;
-    console.log('[Report Generation] Request body:', { reportType, startDate, endDate, templateId });
+    });
 
     // Fetch campaign data
     console.log('[Report Generation] Fetching campaign data...');
@@ -50,7 +55,10 @@ export async function POST(
 
     if (campaignError || !campaign) {
       console.log('[Report Generation] Campaign not found:', campaignError);
-      return NextResponse.json({ error: 'Campaign not found' }, { status: 404 });
+      return NextResponse.json(
+        { error: 'Campaign not found' },
+        { status: 404 }
+      );
     }
     console.log('[Report Generation] Campaign found:', campaign.name);
 
@@ -98,15 +106,24 @@ export async function POST(
 
     // Calculate metrics
     const metrics = {
-      response_rate: campaign.actual_reach && campaign.target_reach
-        ? campaign.actual_reach / campaign.target_reach
-        : 0,
-      cost_per_result: campaign.budget && campaign.actual_reach
-        ? campaign.budget / campaign.actual_reach
-        : 0,
+      response_rate:
+        campaign.actual_reach && campaign.target_reach
+          ? campaign.actual_reach / campaign.target_reach
+          : 0,
+      cost_per_result:
+        campaign.budget && campaign.actual_reach
+          ? campaign.budget / campaign.actual_reach
+          : 0,
       days_active: campaign.end_date
-        ? Math.ceil((new Date(campaign.end_date).getTime() - new Date(campaign.start_date).getTime()) / (1000 * 60 * 60 * 24))
-        : Math.ceil((Date.now() - new Date(campaign.start_date).getTime()) / (1000 * 60 * 60 * 24)),
+        ? Math.ceil(
+            (new Date(campaign.end_date).getTime() -
+              new Date(campaign.start_date).getTime()) /
+              (1000 * 60 * 60 * 24)
+          )
+        : Math.ceil(
+            (Date.now() - new Date(campaign.start_date).getTime()) /
+              (1000 * 60 * 60 * 24)
+          ),
     };
 
     // Generate AI Executive Summary
@@ -122,9 +139,10 @@ export async function POST(
         const message = await anthropic.messages.create({
           model: 'claude-3-5-sonnet-20241022',
           max_tokens: 500,
-          messages: [{
-            role: 'user',
-            content: `Generate a professional 3-paragraph executive summary for this music promotion campaign report:
+          messages: [
+            {
+              role: 'user',
+              content: `Generate a professional 3-paragraph executive summary for this music promotion campaign report:
 
 Campaign: ${campaign.name}
 Artist: ${campaign.artist_name}
@@ -138,7 +156,8 @@ Duration: ${metrics.days_active} days
 Status: ${campaign.status}
 
 Write it in UK English, professional but not corporate. Focus on results, insights, and recommendations. Keep it under 250 words.`,
-          }],
+            },
+          ],
         });
 
         const content = message.content[0];
@@ -147,13 +166,18 @@ Write it in UK English, professional but not corporate. Focus on results, insigh
           console.log('[Report Generation] AI summary generated successfully');
         }
       } catch (aiError: any) {
-        console.error('[Report Generation] AI summary generation failed:', aiError?.message || aiError);
+        console.error(
+          '[Report Generation] AI summary generation failed:',
+          aiError?.message || aiError
+        );
         // Fallback to basic summary
         executiveSummary = `This ${campaign.platform} campaign for ${campaign.artist_name} achieved ${campaign.actual_reach || 0} of ${campaign.target_reach || 0} targeted contacts (${(metrics.response_rate * 100).toFixed(0)}% success rate). The campaign ran for ${metrics.days_active} days with a total budget of £${campaign.budget || 0}, resulting in a cost per result of £${metrics.cost_per_result.toFixed(2)}.`;
         console.log('[Report Generation] Using fallback summary');
       }
     } else {
-      console.log('[Report Generation] No Anthropic API key, skipping AI summary');
+      console.log(
+        '[Report Generation] No Anthropic API key, skipping AI summary'
+      );
     }
 
     // Prepare report data
@@ -162,11 +186,12 @@ Write it in UK English, professional but not corporate. Focus on results, insigh
       campaign,
       template,
       executiveSummary,
-      activities: activities?.map(a => ({
-        type: a.type,
-        description: a.description,
-        created_at: a.created_at,
-      })) || [],
+      activities:
+        activities?.map(a => ({
+          type: a.type,
+          description: a.description,
+          created_at: a.created_at,
+        })) || [],
       metrics,
     };
 
@@ -176,7 +201,10 @@ Write it in UK English, professional but not corporate. Focus on results, insigh
     console.log('[Report Generation] PDF generated, converting to buffer...');
     const pdfBuffer = Buffer.from(await pdfBlob.arrayBuffer());
     const pdfBase64 = pdfBuffer.toString('base64');
-    console.log('[Report Generation] PDF buffer created, size:', pdfBuffer.length);
+    console.log(
+      '[Report Generation] PDF buffer created, size:',
+      pdfBuffer.length
+    );
 
     // Generate filename
     const filename = `campaign-report-${campaign.name.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}.pdf`;
@@ -192,7 +220,10 @@ Write it in UK English, professional but not corporate. Focus on results, insigh
         template_id: templateId || null,
         report_type: reportType,
         start_date: startDate || campaign.start_date,
-        end_date: endDate || campaign.end_date || new Date().toISOString().split('T')[0],
+        end_date:
+          endDate ||
+          campaign.end_date ||
+          new Date().toISOString().split('T')[0],
         pdf_filename: filename,
         executive_summary: executiveSummary,
         metadata: {
@@ -218,7 +249,6 @@ Write it in UK English, professional but not corporate. Focus on results, insigh
         'X-Report-ID': reportRecord?.id || 'unknown',
       },
     });
-
   } catch (error: any) {
     console.error('[Report Generation] FATAL ERROR:', error);
     console.error('[Report Generation] Error stack:', error?.stack);

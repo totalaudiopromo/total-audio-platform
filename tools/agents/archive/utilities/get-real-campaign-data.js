@@ -20,7 +20,7 @@ async function getRealCampaignData() {
     console.log(`Unique Stations: ${Object.keys(seniorDunceData.stationBreakdown).length}`);
     console.log('\nStation Breakdown:');
     Object.entries(seniorDunceData.stationBreakdown)
-      .sort(([,a], [,b]) => b - a)
+      .sort(([, a], [, b]) => b - a)
       .forEach(([station, plays]) => {
         console.log(`  - ${station}: ${plays} plays`);
       });
@@ -32,13 +32,14 @@ async function getRealCampaignData() {
         console.log(`\n📊 Checking ${artist}...`);
         const data = await warmAPI.getCampaignPlaySummary(artist, '2025-09-01');
         if (data.totalPlays > 0) {
-          console.log(`  ✅ ${artist}: ${data.totalPlays} plays across ${Object.keys(data.stationBreakdown).length} stations`);
+          console.log(
+            `  ✅ ${artist}: ${data.totalPlays} plays across ${Object.keys(data.stationBreakdown).length} stations`
+          );
         }
       } catch (err) {
         console.log(`  ⚠️ ${artist}: No data or error`);
       }
     }
-
   } catch (error) {
     console.error('❌ Error:', error.message);
 

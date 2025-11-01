@@ -1,6 +1,11 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from 'lucide-react';
 
 interface CampaignPaginationProps {
   currentPage: number;
@@ -72,13 +77,16 @@ export function CampaignPagination({
 
         {/* Items per page selector */}
         <div className="flex items-center gap-2">
-          <label htmlFor="items-per-page" className="text-sm font-bold text-gray-600">
+          <label
+            htmlFor="items-per-page"
+            className="text-sm font-bold text-gray-600"
+          >
             Per page:
           </label>
           <select
             id="items-per-page"
             value={itemsPerPage}
-            onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
+            onChange={e => onItemsPerPageChange(Number(e.target.value))}
             className="px-3 py-1.5 border-2 border-gray-300 rounded-lg font-bold text-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-all bg-white"
           >
             <option value={10}>10</option>
@@ -122,8 +130,8 @@ export function CampaignPagination({
                 page === currentPage
                   ? 'bg-teal-600 text-white border-teal-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
                   : page === '...'
-                  ? 'border-transparent cursor-default'
-                  : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                    ? 'border-transparent cursor-default'
+                    : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400 hover:bg-gray-50'
               }`}
             >
               {page}

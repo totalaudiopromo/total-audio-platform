@@ -8,7 +8,7 @@ const ContactsScreen = () => {
         <Text style={styles.title}>Contacts</Text>
         <Text style={styles.subtitle}>Manage your industry contacts</Text>
       </View>
-      
+
       <View style={styles.content}>
         <Text style={styles.comingSoon}>Contacts feature coming soon!</Text>
       </View>
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ContactsScreen; 
+export default ContactsScreen;

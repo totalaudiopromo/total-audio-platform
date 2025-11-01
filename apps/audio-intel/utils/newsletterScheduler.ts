@@ -17,7 +17,7 @@ export class NewsletterScheduler {
     timezone: 'Europe/London',
     autoSend: false,
     emailPreview: true,
-    slackNotification: false
+    slackNotification: false,
   };
 
   constructor(config?: Partial<ScheduleConfig>) {
@@ -27,8 +27,10 @@ export class NewsletterScheduler {
   }
 
   async scheduleWeeklyNewsletter(): Promise<void> {
-    console.log(`📅 Scheduling weekly newsletter for ${this.getDayName(this.config.dayOfWeek)} at ${this.config.hour}:00 ${this.config.timezone}`);
-    
+    console.log(
+      `📅 Scheduling weekly newsletter for ${this.getDayName(this.config.dayOfWeek)} at ${this.config.hour}:00 ${this.config.timezone}`
+    );
+
     // In a real implementation, this would use a cron job or scheduled task
     // For now, we'll create a manual trigger system
     this.createScheduledTask();
@@ -42,25 +44,32 @@ export class NewsletterScheduler {
   }> {
     try {
       console.log(`🤖 Running weekly newsletter generation...`);
-      
+
       // Get current week number if not provided
       const currentWeek = weekNumber || this.getCurrentWeekNumber();
-      
+
       // Generate weekly intelligence
       // const intelligence = await weeklyMusicAgent.generateWeeklyIntelligence(currentWeek);
-      const intelligence: any = { weekNumber: currentWeek, totalArticles: 0, sources: [], topStories: [] };
-      
+      const intelligence: any = {
+        weekNumber: currentWeek,
+        totalArticles: 0,
+        sources: [],
+        topStories: [],
+      };
+
       console.log(`📊 Generated intelligence for week ${currentWeek}:`);
-      console.log(`- ${intelligence.totalArticles} articles from ${intelligence.sources.length} sources`);
+      console.log(
+        `- ${intelligence.totalArticles} articles from ${intelligence.sources.length} sources`
+      );
       console.log(`- Top sources: ${intelligence.sources.slice(0, 3).join(', ')}`);
 
       let newsletterSent = false;
-      
+
       if (this.config.autoSend) {
         // Auto-send the newsletter
         const sendResult = await this.sendNewsletterFromIntelligence(intelligence);
         newsletterSent = sendResult.success;
-        
+
         if (newsletterSent) {
           console.log(`📧 Newsletter sent successfully to subscribers`);
         } else {
@@ -73,19 +82,20 @@ export class NewsletterScheduler {
       return {
         success: true,
         intelligence,
-        newsletterSent
+        newsletterSent,
       };
-
     } catch (error) {
       console.error('Error running weekly newsletter:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 
-  private async sendNewsletterFromIntelligence(intelligence: any): Promise<{ success: boolean; error?: string }> {
+  private async sendNewsletterFromIntelligence(
+    intelligence: any
+  ): Promise<{ success: boolean; error?: string }> {
     try {
       const newsletterData = {
         issueNumber: intelligence.weekNumber,
@@ -96,18 +106,18 @@ export class NewsletterScheduler {
         successStory: intelligence.weeklyInsight, // Using weekly insight as "what I'm working on"
         quickTip: intelligence.quickTip,
         communityQuestion: intelligence.communityQuestion,
-        newsArticles: intelligence.topStories
+        newsArticles: intelligence.topStories,
       };
 
       // This would call the actual newsletter sending service
       // For now, we'll simulate it
       console.log('📧 Sending newsletter with intelligence data...');
-      
+
       return { success: true };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -117,7 +127,7 @@ export class NewsletterScheduler {
     // 1. Set up a cron job
     // 2. Use a service like Vercel Cron or GitHub Actions
     // 3. Use a database to track scheduled tasks
-    
+
     console.log('⏰ Scheduled task created (manual implementation)');
     console.log('📝 To implement automatic scheduling, integrate with:');
     console.log('   - Vercel Cron Jobs');
@@ -149,4 +159,3 @@ export class NewsletterScheduler {
 }
 
 export const newsletterScheduler = new NewsletterScheduler();
-

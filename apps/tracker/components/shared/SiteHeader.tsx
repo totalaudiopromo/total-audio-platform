@@ -56,8 +56,12 @@ export function SiteHeader({
               className="h-10 w-auto flex-shrink-0"
             />
             <div className="flex flex-col min-w-0">
-              <span className="text-lg font-bold leading-tight tracking-tight text-black truncate">{toolName}</span>
-              <span className="text-xs text-gray-500">by Total Audio Promo</span>
+              <span className="text-lg font-bold leading-tight tracking-tight text-black truncate">
+                {toolName}
+              </span>
+              <span className="text-xs text-gray-500">
+                by Total Audio Promo
+              </span>
             </div>
           </Link>
         </div>
@@ -83,9 +87,7 @@ export function SiteHeader({
 
         <div className="flex items-center gap-3 flex-shrink-0">
           {toolSwitcher && (
-            <div className="hidden sm:block">
-              {toolSwitcher}
-            </div>
+            <div className="hidden sm:block">{toolSwitcher}</div>
           )}
           {authComponent}
         </div>
@@ -97,7 +99,9 @@ export function SiteHeader({
             {/* Tool Switcher on Mobile */}
             {toolSwitcher && (
               <div className="border-b border-gray-200 pb-3">
-                <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Switch Tool</p>
+                <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                  Switch Tool
+                </p>
                 {toolSwitcher}
               </div>
             )}
@@ -128,5 +132,3 @@ export function SiteHeader({
     </header>
   );
 }
-
-

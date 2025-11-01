@@ -24,7 +24,7 @@ const APPS = {
     logo: 'apps/audio-intel/public/images/total_audio_promo_logo_trans.png',
     outputDir: 'apps/audio-intel/public',
     primaryColor: '#000000',
-    secondaryColor: '#FFFFFF'
+    secondaryColor: '#FFFFFF',
   },
   'pitch-generator': {
     name: 'Pitch Generator',
@@ -33,23 +33,23 @@ const APPS = {
     logo: 'apps/pitch-generator/public/total_audio_promo_logo_trans.png',
     outputDir: 'apps/pitch-generator/public',
     primaryColor: '#000000',
-    secondaryColor: '#FFFFFF'
+    secondaryColor: '#FFFFFF',
   },
-  'tracker': {
+  tracker: {
     name: 'Campaign Tracker',
     tagline: 'Simple Campaign Tracking',
     description: 'Stop using spreadsheets for radio promotion campaigns',
     logo: 'apps/tracker/public/images/tracker-mascot.png',
     outputDir: 'apps/tracker/public',
     primaryColor: '#000000',
-    secondaryColor: '#FFFFFF'
-  }
+    secondaryColor: '#FFFFFF',
+  },
 };
 
 const FAVICON_SIZES = [
   { size: 16, name: 'favicon-16x16.png' },
   { size: 32, name: 'favicon-32x32.png' },
-  { size: 180, name: 'apple-touch-icon.png' }
+  { size: 180, name: 'apple-touch-icon.png' },
 ];
 
 const OG_IMAGE_SIZE = { width: 1200, height: 630 };
@@ -73,7 +73,7 @@ async function generateFavicons(appKey, appConfig) {
       await sharp(logoPath)
         .resize(size, size, {
           fit: 'contain',
-          background: { r: 255, g: 255, b: 255, alpha: 0 }
+          background: { r: 255, g: 255, b: 255, alpha: 0 },
         })
         .png()
         .toFile(outputPath);
@@ -86,7 +86,7 @@ async function generateFavicons(appKey, appConfig) {
     await sharp(logoPath)
       .resize(32, 32, {
         fit: 'contain',
-        background: { r: 255, g: 255, b: 255, alpha: 0 }
+        background: { r: 255, g: 255, b: 255, alpha: 0 },
       })
       .png()
       .toFile(icoPath);
@@ -113,9 +113,12 @@ async function generateOGImage(appKey, appConfig) {
 
   try {
     // OG image filename based on app
-    const ogImageName = appKey === 'audio-intel' ? 'og-image.jpg' :
-                        appKey === 'pitch-generator' ? 'og-pitch-generator.png' :
-                        'og-tracker.png';
+    const ogImageName =
+      appKey === 'audio-intel'
+        ? 'og-image.jpg'
+        : appKey === 'pitch-generator'
+          ? 'og-pitch-generator.png'
+          : 'og-tracker.png';
 
     const outputPath = path.join(outputDir, ogImageName);
 
@@ -124,7 +127,7 @@ async function generateOGImage(appKey, appConfig) {
     await sharp(logoPath)
       .resize(OG_IMAGE_SIZE.width, OG_IMAGE_SIZE.height, {
         fit: 'contain',
-        background: { r: 255, g: 255, b: 255, alpha: 1 } // White background
+        background: { r: 255, g: 255, b: 255, alpha: 1 }, // White background
       })
       .jpeg({ quality: 90 })
       .toFile(outputPath);
@@ -147,9 +150,11 @@ async function validateExistingAssets(appKey, appConfig) {
     'favicon-16x16.png',
     'favicon-32x32.png',
     'apple-touch-icon.png',
-    appKey === 'audio-intel' ? 'og-image.jpg' :
-    appKey === 'pitch-generator' ? 'og-pitch-generator.png' :
-    'og-tracker.png'
+    appKey === 'audio-intel'
+      ? 'og-image.jpg'
+      : appKey === 'pitch-generator'
+        ? 'og-pitch-generator.png'
+        : 'og-tracker.png',
   ];
 
   const missingAssets = [];
@@ -176,9 +181,7 @@ async function main() {
   const appFilter = args[0]; // Optional: specify single app
   const command = args[1] || 'generate'; // 'generate' or 'validate'
 
-  const appsToProcess = appFilter && APPS[appFilter]
-    ? { [appFilter]: APPS[appFilter] }
-    : APPS;
+  const appsToProcess = appFilter && APPS[appFilter] ? { [appFilter]: APPS[appFilter] } : APPS;
 
   let totalSuccess = 0;
   let totalFailed = 0;

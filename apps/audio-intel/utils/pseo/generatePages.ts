@@ -77,13 +77,13 @@ export default function ${toPascalCase(pageData.slug)}() {
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">${pageData.campaignSnapshot.manualEffort.title}</h3>
               <ul className="space-y-2 text-gray-700 text-base leading-relaxed">
-                ${pageData.campaignSnapshot.manualEffort.points.map((point) => `<li>• ${point}</li>`).join('\n                ')}
+                ${pageData.campaignSnapshot.manualEffort.points.map(point => `<li>• ${point}</li>`).join('\n                ')}
               </ul>
             </div>
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">${pageData.campaignSnapshot.aiRun.title}</h3>
               <ul className="space-y-2 text-gray-700 text-base leading-relaxed">
-                ${pageData.campaignSnapshot.aiRun.points.map((point) => `<li>• ${point}</li>`).join('\n                ')}
+                ${pageData.campaignSnapshot.aiRun.points.map(point => `<li>• ${point}</li>`).join('\n                ')}
               </ul>
             </div>
           </div>
@@ -96,9 +96,13 @@ export default function ${toPascalCase(pageData.slug)}() {
             ${pageData.painPoints.intro}
           </p>
           <ul className="space-y-4 text-base text-gray-700 leading-relaxed pl-4">
-            ${pageData.painPoints.points.map((point) => `<li>
+            ${pageData.painPoints.points
+              .map(
+                point => `<li>
               <strong className="text-gray-900">${point.title}:</strong> ${point.description}
-            </li>`).join('\n            ')}
+            </li>`
+              )
+              .join('\n            ')}
           </ul>
         </section>
 
@@ -109,9 +113,13 @@ export default function ${toPascalCase(pageData.slug)}() {
             ${pageData.workflow.intro}
           </p>
           <ol className="list-decimal pl-6 space-y-4 text-base text-gray-700 leading-relaxed">
-            ${pageData.workflow.steps.map((step) => `<li>
+            ${pageData.workflow.steps
+              .map(
+                step => `<li>
               <strong className="text-gray-900">${step.title}:</strong> ${step.description}
-            </li>`).join('\n            ')}
+            </li>`
+              )
+              .join('\n            ')}
           </ol>
         </section>
 
@@ -129,12 +137,16 @@ export default function ${toPascalCase(pageData.slug)}() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 text-gray-700">
-                ${pageData.contacts.contacts.map((contact) => `<tr>
+                ${pageData.contacts.contacts
+                  .map(
+                    contact => `<tr>
                   <td className="py-4 px-4 font-semibold">${contact.name}</td>
                   <td className="py-4 px-4">${contact.role}</td>
                   <td className="py-4 px-4">${contact.submission_notes}</td>
                   <td className="py-4 px-4">Validated, ${contact.confidence_score} percent confidence</td>
-                </tr>`).join('\n                ')}
+                </tr>`
+                  )
+                  .join('\n                ')}
               </tbody>
             </table>
           </div>
@@ -145,10 +157,14 @@ export default function ${toPascalCase(pageData.slug)}() {
         <section id="results" className="space-y-6">
           <h2 className="text-3xl font-black text-gray-900">${pageData.results.heading}</h2>
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 grid md:grid-cols-3 gap-6 text-gray-800">
-            ${pageData.results.metrics.map((metric) => `<div>
+            ${pageData.results.metrics
+              .map(
+                metric => `<div>
               <h3 className="text-2xl font-black mb-2">${metric.title}</h3>
               <p className="text-base leading-relaxed">${metric.description}</p>
-            </div>`).join('\n            ')}
+            </div>`
+              )
+              .join('\n            ')}
           </div>
         </section>
 
@@ -159,7 +175,7 @@ export default function ${toPascalCase(pageData.slug)}() {
             ${pageData.playbook.intro}
           </p>
           <ol className="list-decimal pl-6 space-y-4 text-base text-gray-700 leading-relaxed">
-            ${pageData.playbook.steps.map((step) => `<li>${step}</li>`).join('\n            ')}
+            ${pageData.playbook.steps.map(step => `<li>${step}</li>`).join('\n            ')}
           </ol>
         </section>
 
@@ -206,7 +222,7 @@ export default function ${toPascalCase(pageData.slug)}() {
 function toPascalCase(slug: string): string {
   return slug
     .split('-')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join('');
 }
 
@@ -237,8 +253,8 @@ export function main() {
   // Parse CLI arguments
   const options = {
     all: args.includes('--all'),
-    slug: args.find((arg) => arg.startsWith('--slug='))?.split('=')[1],
-    tier: args.find((arg) => arg.startsWith('--tier='))?.split('=')[1],
+    slug: args.find(arg => arg.startsWith('--slug='))?.split('=')[1],
+    tier: args.find(arg => arg.startsWith('--tier='))?.split('=')[1],
     validateOnly: args.includes('--validate-only'),
   };
 
@@ -253,14 +269,14 @@ export function main() {
   let filteredRows = rows;
 
   if (options.slug) {
-    filteredRows = rows.filter((row) => row.topic_slug === options.slug);
+    filteredRows = rows.filter(row => row.topic_slug === options.slug);
     console.log(`🎯 Filtering to slug: ${options.slug}\n`);
   } else if (options.tier) {
     const tierNum = parseInt(options.tier, 10);
-    filteredRows = rows.filter((row) => row.tier === tierNum);
+    filteredRows = rows.filter(row => row.tier === tierNum);
     console.log(`🎯 Filtering to tier ${tierNum} pages\n`);
   } else if (options.all) {
-    filteredRows = rows.filter((row) => row.status === 'planned' || row.status === 'draft');
+    filteredRows = rows.filter(row => row.status === 'planned' || row.status === 'draft');
     console.log(`🎯 Processing all planned/draft pages (${filteredRows.length})\n`);
   } else {
     console.log('❌ No generation mode specified');
@@ -280,9 +296,11 @@ export function main() {
     errors: 0,
   };
 
-  filteredRows.forEach((row) => {
+  filteredRows.forEach(row => {
     console.log(`\n📝 Processing: ${row.topic_slug}`);
-    console.log(`   Category: ${row.category} | Tier ${row.tier} | ${row.monthly_searches_est} searches/month`);
+    console.log(
+      `   Category: ${row.category} | Tier ${row.tier} | ${row.monthly_searches_est} searches/month`
+    );
 
     // Load research data
     const researchData = loadResearchData(row.topic_slug);
@@ -296,12 +314,14 @@ export function main() {
     const validation = validatePageData(row, researchData);
     if (!validation.valid) {
       console.log(`   ❌ Validation failed:`);
-      validation.errors.forEach((error) => console.log(`      - ${error}`));
+      validation.errors.forEach(error => console.log(`      - ${error}`));
       stats.errors++;
       return;
     }
 
-    console.log(`   ✓ Validation passed (${researchData.verified_contacts.length} contacts, ${researchData.sources.length} sources)`);
+    console.log(
+      `   ✓ Validation passed (${researchData.verified_contacts.length} contacts, ${researchData.sources.length} sources)`
+    );
 
     // Generate page data
     const pageData = generatePageData(row, researchData);

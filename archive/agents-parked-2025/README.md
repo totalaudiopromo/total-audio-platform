@@ -30,14 +30,17 @@ These agents were parked and archived because their functionality is now covered
    - Status: Not actively used
 
 ## Total Impact
+
 - **Files archived**: 5
 - **Space cleared**: 197KB
 - **Lines of code**: ~6,000 lines removed from active codebase
 
 ## Recovery
+
 If you need any of these agents, they're preserved here. Simply copy back to `tools/agents/parked/` or activate in `tools/agents/active/`.
 
 ---
+
 **Archived**: 29 September 2025
 **Reason**: Duplicate functionality with active agents
 **Business Phase**: Customer Acquisition - Audio Intel focus

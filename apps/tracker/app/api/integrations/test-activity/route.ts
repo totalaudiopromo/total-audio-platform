@@ -5,13 +5,15 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createServerClient(cookies());
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -26,7 +28,10 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (!connection) {
-      return NextResponse.json({ error: 'No connections found' }, { status: 404 });
+      return NextResponse.json(
+        { error: 'No connections found' },
+        { status: 404 }
+      );
     }
 
     // Generate test activity logs

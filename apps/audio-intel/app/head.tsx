@@ -3,5 +3,5 @@ export default function Head() {
     <>
       <link rel="canonical" href="https://intel.totalaudiopromo.com/" />
     </>
-  )
+  );
 }

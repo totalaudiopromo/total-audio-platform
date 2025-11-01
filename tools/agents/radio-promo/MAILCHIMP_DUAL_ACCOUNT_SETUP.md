@@ -21,6 +21,7 @@ You have **two separate Mailchimp accounts**:
 **Solution**: Contact Mailchimp support and ask them to transfer ownership
 
 ### Support Request Template:
+
 ```
 Hi Mailchimp Support,
 
@@ -36,6 +37,7 @@ Thank you!
 ```
 
 **Support Contact**:
+
 - Chat: Bottom right corner when logged in to mailchimp.com
 - Or: mailchimp.com/help/contact-us
 
@@ -50,6 +52,7 @@ Add this field to your KYARA Airtable base:
 **Field Name**: `Mailchimp Account`
 **Field Type**: Single select
 **Options**:
+
 - Liberty
 - TAP
 - Both
@@ -74,6 +77,7 @@ node sync-both-mailchimp-accounts.js
 ```
 
 This will:
+
 1. Fetch all members from Liberty Mailchimp (498 contacts)
 2. Fetch all members from TAP Mailchimp (339 contacts)
 3. Check each Airtable contact against both accounts
@@ -115,6 +119,7 @@ TAP_MAILCHIMP_LIST_ID=2c81175fba
 ## 🎯 Expected Results
 
 After sync completes:
+
 - **516 total contacts** in Airtable
 - Each contact will show:
   - Which Mailchimp account (Liberty/TAP/Both/None)
@@ -127,6 +132,7 @@ After sync completes:
 ## 🚀 Future Use
 
 Use this to:
+
 1. **Identify duplicates** (contacts in Both accounts)
 2. **Target campaigns** by Mailchimp account
 3. **Clean up** contacts that are in Neither account

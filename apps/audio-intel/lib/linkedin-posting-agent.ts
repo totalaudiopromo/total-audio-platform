@@ -6,7 +6,6 @@
  */
 
 import axios from 'axios';
-import type { AxiosInstance } from 'axios';
 
 export interface LinkedInPost {
   id: string;
@@ -27,7 +26,7 @@ export interface LinkedInCredentials {
 }
 
 export class LinkedInPostingAgent {
-  private client: AxiosInstance;
+  private client: ReturnType<typeof axios.create>;
   private credentials: LinkedInCredentials;
   private baseURL = 'https://api.linkedin.com';
 
@@ -36,7 +35,7 @@ export class LinkedInPostingAgent {
     this.client = axios.create({
       baseURL: this.baseURL,
       headers: {
-        'Authorization': `Bearer ${credentials.accessToken}`,
+        Authorization: `Bearer ${credentials.accessToken}`,
         'Content-Type': 'application/json',
         'X-Restli-Protocol-Version': '2.0.0',
       },
@@ -85,7 +84,8 @@ export class LinkedInPostingAgent {
 
       if (data.access_token) {
         this.credentials.accessToken = data.access_token;
-        this.client.setAccessToken(data.access_token);
+        // Update authorization header with new token
+        this.client.defaults.headers.common['Authorization'] = `Bearer ${data.access_token}`;
 
         console.log('[LINKEDIN] ✅ Access token refreshed');
         return {
@@ -116,7 +116,7 @@ export class LinkedInPostingAgent {
       }
 
       // Get user profile to obtain the author URN
-      const profileResponse = await this.client.get('/v2/me');
+      const profileResponse: any = await this.client.get('/v2/me');
       const authorUrn = `urn:li:person:${profileResponse.data.id}`;
 
       // Create post using UGC Post API
@@ -136,7 +136,7 @@ export class LinkedInPostingAgent {
         },
       };
 
-      const response = await this.client.post('/v2/ugcPosts', postData);
+      const response: any = await this.client.post('/v2/ugcPosts', postData);
 
       console.log('[LINKEDIN] ✅ Posted successfully:', response.data.id);
 
@@ -575,7 +575,7 @@ https://intel.totalaudiopromo.com?utm_source=linkedin&utm_medium=social&utm_camp
       posted: 0,
       skipped: 0,
       failed: 0,
-      details: [] as Array<{ title: string; status: string; postId?: string; error?: string }>
+      details: [] as Array<{ title: string; status: string; postId?: string; error?: string }>,
     };
 
     // Authenticate first
@@ -585,9 +585,8 @@ https://intel.totalaudiopromo.com?utm_source=linkedin&utm_medium=social&utm_camp
     }
 
     // Filter LinkedIn posts that should be posted now
-    const linkedInPosts = calendar.filter(post =>
-      post.platform === 'LinkedIn' &&
-      post.status === 'scheduled'
+    const linkedInPosts = calendar.filter(
+      post => post.platform === 'LinkedIn' && post.status === 'scheduled'
     );
 
     console.log(`[LINKEDIN] Found ${linkedInPosts.length} LinkedIn posts in calendar`);
@@ -614,7 +613,7 @@ https://intel.totalaudiopromo.com?utm_source=linkedin&utm_medium=social&utm_camp
         results.details.push({
           title: post.title,
           status: 'failed',
-          error: 'Content not found'
+          error: 'Content not found',
         });
         continue;
       }
@@ -628,14 +627,14 @@ https://intel.totalaudiopromo.com?utm_source=linkedin&utm_medium=social&utm_camp
         results.details.push({
           title: post.title,
           status: 'posted',
-          postId: result.postId
+          postId: result.postId,
         });
       } else {
         results.failed++;
         results.details.push({
           title: post.title,
           status: 'failed',
-          error: result.error
+          error: result.error,
         });
       }
 
@@ -653,12 +652,12 @@ https://intel.totalaudiopromo.com?utm_source=linkedin&utm_medium=social&utm_camp
     try {
       const authenticated = await this.authenticate();
       return {
-        healthy: authenticated
+        healthy: authenticated,
       };
     } catch (error) {
       return {
         healthy: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -676,7 +675,9 @@ export function createLinkedInAgent(): LinkedInPostingAgent {
   };
 
   if (!credentials.clientId || !credentials.clientSecret || !credentials.accessToken) {
-    throw new Error('LinkedIn credentials not configured. Set LINKEDIN_CLIENT_ID, LINKEDIN_CLIENT_SECRET, and LINKEDIN_ACCESS_TOKEN environment variables.');
+    throw new Error(
+      'LinkedIn credentials not configured. Set LINKEDIN_CLIENT_ID, LINKEDIN_CLIENT_SECRET, and LINKEDIN_ACCESS_TOKEN environment variables.'
+    );
   }
 
   return new LinkedInPostingAgent(credentials);

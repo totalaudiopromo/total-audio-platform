@@ -19,15 +19,10 @@ const maxWidthClasses = {
   full: 'max-w-full',
 };
 
-export const NeoPageWrapper: React.FC<NeoPageWrapperProps> = ({
-  children,
-  maxWidth = '7xl'
-}) => {
+export const NeoPageWrapper: React.FC<NeoPageWrapperProps> = ({ children, maxWidth = '7xl' }) => {
   return (
     <div className="min-h-screen bg-white">
-      <div className={`${maxWidthClasses[maxWidth]} mx-auto px-4 py-8`}>
-        {children}
-      </div>
+      <div className={`${maxWidthClasses[maxWidth]} mx-auto px-4 py-8`}>{children}</div>
     </div>
   );
 };

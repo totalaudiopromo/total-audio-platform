@@ -5,7 +5,8 @@ import { useSession } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Plus, UserPlus, Loader2, Trash2, Upload } from 'lucide-react';
-import { supabase, type Contact } from '@/lib/supabase';
+import { createClient } from '@total-audio/core-db/client';
+import type { Contact } from '@/lib/types';
 
 export default function ContactsPage() {
   const { data: session, status } = useSession();
@@ -64,18 +65,16 @@ export default function ContactsPage() {
         .map(tag => tag.trim())
         .filter(tag => tag.length > 0);
 
-      const { error } = await supabase
-        .from('contacts')
-        .insert({
-          user_id: userId,
-          name: formData.name,
-          role: formData.role || null,
-          outlet: formData.outlet || null,
-          email: formData.email || null,
-          genre_tags: genreTags.length > 0 ? genreTags : null,
-          notes: formData.notes || null,
-          preferred_tone: formData.preferred_tone,
-        });
+      const { error } = await supabase.from('contacts').insert({
+        user_id: userId,
+        name: formData.name,
+        role: formData.role || null,
+        outlet: formData.outlet || null,
+        email: formData.email || null,
+        genre_tags: genreTags.length > 0 ? genreTags : null,
+        notes: formData.notes || null,
+        preferred_tone: formData.preferred_tone,
+      });
 
       if (error) throw error;
 
@@ -102,10 +101,7 @@ export default function ContactsPage() {
     if (!confirmed) return;
 
     try {
-      const { error } = await supabase
-        .from('contacts')
-        .delete()
-        .eq('id', contactId);
+      const { error } = await supabase.from('contacts').delete().eq('id', contactId);
 
       if (error) throw error;
       loadContacts();
@@ -129,10 +125,15 @@ export default function ContactsPage() {
       }
 
       // Parse header row
-      const headers = lines[0].toLowerCase().split(',').map(h => h.trim());
+      const headers = lines[0]
+        .toLowerCase()
+        .split(',')
+        .map(h => h.trim());
       const nameIdx = headers.findIndex(h => h.includes('name'));
       const emailIdx = headers.findIndex(h => h.includes('email'));
-      const outletIdx = headers.findIndex(h => h.includes('outlet') || h.includes('station') || h.includes('publication'));
+      const outletIdx = headers.findIndex(
+        h => h.includes('outlet') || h.includes('station') || h.includes('publication')
+      );
       const roleIdx = headers.findIndex(h => h.includes('role') || h.includes('title'));
       const genreIdx = headers.findIndex(h => h.includes('genre'));
 
@@ -148,9 +149,13 @@ export default function ContactsPage() {
         const name = values[nameIdx];
         if (!name) continue;
 
-        const genreTags = genreIdx !== -1 && values[genreIdx]
-          ? values[genreIdx].split(';').map(g => g.trim()).filter(Boolean)
-          : [];
+        const genreTags =
+          genreIdx !== -1 && values[genreIdx]
+            ? values[genreIdx]
+                .split(';')
+                .map(g => g.trim())
+                .filter(Boolean)
+            : [];
 
         contactsToImport.push({
           user_id: session?.user?.email || '',
@@ -168,9 +173,7 @@ export default function ContactsPage() {
       }
 
       // Batch insert
-      const { error } = await supabase
-        .from('contacts')
-        .insert(contactsToImport);
+      const { error } = await supabase.from('contacts').insert(contactsToImport);
 
       if (error) throw error;
 
@@ -217,7 +220,9 @@ export default function ContactsPage() {
               <p className="mt-2 text-gray-900/60">Add contacts manually or import from CSV</p>
             </div>
             <div className="flex gap-3">
-              <label className={`subtle-button flex cursor-pointer items-center gap-2 ${importing ? 'opacity-50' : ''}`}>
+              <label
+                className={`subtle-button flex cursor-pointer items-center gap-2 ${importing ? 'opacity-50' : ''}`}
+              >
                 {importing ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
@@ -248,7 +253,8 @@ export default function ContactsPage() {
           </div>
           <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
             <p className="text-sm text-amber-900">
-              <strong>💡 Pro tip:</strong> Use Audio Intel to enrich your contacts first, then export as CSV and import here for best results.
+              <strong>💡 Pro tip:</strong> Use Audio Intel to enrich your contacts first, then
+              export as CSV and import here for best results.
             </p>
           </div>
         </div>
@@ -267,43 +273,37 @@ export default function ContactsPage() {
                     type="text"
                     required
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={e => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Sarah Johnson"
                     className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-900/80">
-                    Role
-                  </label>
+                  <label className="block text-sm font-medium text-gray-900/80">Role</label>
                   <input
                     type="text"
                     value={formData.role}
-                    onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                    onChange={e => setFormData({ ...formData, role: e.target.value })}
                     placeholder="e.g. Producer"
                     className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-900/80">
-                    Outlet
-                  </label>
+                  <label className="block text-sm font-medium text-gray-900/80">Outlet</label>
                   <input
                     type="text"
                     value={formData.outlet}
-                    onChange={(e) => setFormData({ ...formData, outlet: e.target.value })}
+                    onChange={e => setFormData({ ...formData, outlet: e.target.value })}
                     placeholder="e.g. BBC Radio 6 Music"
                     className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-900/80">
-                    Email
-                  </label>
+                  <label className="block text-sm font-medium text-gray-900/80">Email</label>
                   <input
                     type="email"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={e => setFormData({ ...formData, email: e.target.value })}
                     placeholder="contact@example.com"
                     className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                   />
@@ -316,29 +316,25 @@ export default function ContactsPage() {
                 <input
                   type="text"
                   value={formData.genre_tags}
-                  onChange={(e) => setFormData({ ...formData, genre_tags: e.target.value })}
+                  onChange={e => setFormData({ ...formData, genre_tags: e.target.value })}
                   placeholder="e.g. indie, folk, alternative"
                   className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-900/80">
-                  Notes
-                </label>
+                <label className="block text-sm font-medium text-gray-900/80">Notes</label>
                 <textarea
                   value={formData.notes}
-                  onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                  onChange={e => setFormData({ ...formData, notes: e.target.value })}
                   rows={2}
                   placeholder="e.g. Replies on Tuesdays, loves touring artists"
                   className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-900/80">
-                  Preferred Tone
-                </label>
+                <label className="block text-sm font-medium text-gray-900/80">Preferred Tone</label>
                 <div className="mt-2 flex gap-2">
-                  {(['casual', 'professional', 'enthusiastic'] as const).map((tone) => (
+                  {(['casual', 'professional', 'enthusiastic'] as const).map(tone => (
                     <button
                       key={tone}
                       type="button"
@@ -382,7 +378,7 @@ export default function ContactsPage() {
           </div>
         ) : (
           <div className="space-y-3">
-            {contacts.map((contact) => (
+            {contacts.map(contact => (
               <div
                 key={contact.id}
                 className="group rounded-2xl border border-white/10 bg-gray-50 px-6 py-5 transition hover:border-gray-300 hover:bg-white/[0.07]"
@@ -391,7 +387,9 @@ export default function ContactsPage() {
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-3">
                       <h3 className="font-semibold">{contact.name}</h3>
-                      {contact.role && <span className="text-sm text-gray-900/60">{contact.role}</span>}
+                      {contact.role && (
+                        <span className="text-sm text-gray-900/60">{contact.role}</span>
+                      )}
                     </div>
                     {contact.outlet && (
                       <p className="mt-1 text-sm text-gray-900/70">{contact.outlet}</p>
@@ -401,8 +399,11 @@ export default function ContactsPage() {
                     )}
                     {contact.genre_tags && contact.genre_tags.length > 0 && (
                       <div className="mt-3 flex flex-wrap gap-2">
-                        {contact.genre_tags.map((tag) => (
-                          <span key={tag} className="rounded-full bg-brand-amber/20 px-3 py-1 text-xs text-brand-amber">
+                        {contact.genre_tags.map(tag => (
+                          <span
+                            key={tag}
+                            className="rounded-full bg-brand-amber/20 px-3 py-1 text-xs text-brand-amber"
+                          >
                             {tag}
                           </span>
                         ))}
@@ -428,4 +429,3 @@ export default function ContactsPage() {
     </div>
   );
 }
-

@@ -31,7 +31,7 @@ const colours = {
   bgYellow: '\x1b[43m',
   bgBlue: '\x1b[44m',
   bgMagenta: '\x1b[45m',
-  bgCyan: '\x1b[46m'
+  bgCyan: '\x1b[46m',
 };
 
 class AgentOSDashboard {
@@ -41,7 +41,7 @@ class AgentOSDashboard {
 
     // Agent categories with visual organisation
     this.agentCategories = {
-      'tdd_workflow': {
+      tdd_workflow: {
         name: '🧪 TDD WORKFLOW (Development System)',
         colour: colours.cyan,
         agents: [
@@ -51,7 +51,7 @@ class AgentOSDashboard {
             command: 'node unified-launcher.js tdd-plan',
             description: 'Plan feature with mobile-first TDD methodology',
             status: 'production',
-            examples: ['tdd-plan "contact filtering" audiointel']
+            examples: ['tdd-plan "contact filtering" audiointel'],
           },
           {
             id: 'tdd-build',
@@ -59,7 +59,7 @@ class AgentOSDashboard {
             command: 'node unified-launcher.js tdd-build',
             description: 'Build feature using TDD specs',
             status: 'production',
-            examples: ['tdd-build "contact filtering"']
+            examples: ['tdd-build "contact filtering"'],
           },
           {
             id: 'tdd-status',
@@ -67,12 +67,12 @@ class AgentOSDashboard {
             command: 'node unified-launcher.js tdd-status',
             description: 'Show all TDD feature development status',
             status: 'production',
-            examples: ['tdd-status']
-          }
-        ]
+            examples: ['tdd-status'],
+          },
+        ],
       },
 
-      'customer_acquisition': {
+      customer_acquisition: {
         name: '🎯 CUSTOMER ACQUISITION (Audio Intel Focus)',
         colour: colours.green,
         agents: [
@@ -82,7 +82,7 @@ class AgentOSDashboard {
             command: 'node core-agents/content/newsletter-automation-agent.js',
             description: '"The Unsigned Advantage" content generation',
             status: 'production',
-            examples: ['newsletter generate', 'newsletter schedule']
+            examples: ['newsletter generate', 'newsletter schedule'],
           },
           {
             id: 'social-media',
@@ -90,7 +90,7 @@ class AgentOSDashboard {
             command: 'node core-agents/content/social-media-agent.js',
             description: 'Cross-platform social content automation',
             status: 'production',
-            examples: ['social-media twitter', 'social-media linkedin']
+            examples: ['social-media twitter', 'social-media linkedin'],
           },
           {
             id: 'newsjacking',
@@ -98,7 +98,7 @@ class AgentOSDashboard {
             command: 'node core-agents/content/newsjacking-agent.js',
             description: 'AI-powered music industry news analysis',
             status: 'production',
-            examples: ['newsjacking scan', 'newsjacking generate']
+            examples: ['newsjacking scan', 'newsjacking generate'],
           },
           {
             id: 'chris-marketing',
@@ -106,12 +106,12 @@ class AgentOSDashboard {
             command: 'node core-agents/business/chris-saas-marketing-agent.js',
             description: 'Audio Intel marketing strategy & execution',
             status: 'production',
-            examples: ['chris-marketing campaign', 'chris-marketing analytics']
-          }
-        ]
+            examples: ['chris-marketing campaign', 'chris-marketing analytics'],
+          },
+        ],
       },
 
-      'business_intelligence': {
+      business_intelligence: {
         name: '📊 BUSINESS INTELLIGENCE',
         colour: colours.blue,
         agents: [
@@ -121,7 +121,7 @@ class AgentOSDashboard {
             command: 'node core-agents/business/analytics-agent.js',
             description: 'Customer acquisition metrics & performance',
             status: 'production',
-            examples: ['analytics dashboard', 'analytics conversion-rates']
+            examples: ['analytics dashboard', 'analytics conversion-rates'],
           },
           {
             id: 'agency',
@@ -129,12 +129,12 @@ class AgentOSDashboard {
             command: 'node core-agents/business/agency-agent.js',
             description: 'Agency partnership management',
             status: 'partial',
-            examples: ['agency health', 'agency manage']
-          }
-        ]
+            examples: ['agency health', 'agency manage'],
+          },
+        ],
       },
 
-      'technical_infrastructure': {
+      technical_infrastructure: {
         name: '⚙️  TECHNICAL INFRASTRUCTURE',
         colour: colours.white,
         agents: [
@@ -144,7 +144,7 @@ class AgentOSDashboard {
             command: 'node core-agents/technical/contact-agent.js',
             description: 'Contact database management',
             status: 'production',
-            examples: ['contact create', 'contact enrich']
+            examples: ['contact create', 'contact enrich'],
           },
           {
             id: 'database',
@@ -152,7 +152,7 @@ class AgentOSDashboard {
             command: 'node core-agents/technical/database-agent.js',
             description: 'Database operations & migrations',
             status: 'production',
-            examples: ['database migrate', 'database backup']
+            examples: ['database migrate', 'database backup'],
           },
           {
             id: 'agent-manager',
@@ -160,12 +160,12 @@ class AgentOSDashboard {
             command: 'node core-agents/technical/agent-manager.js',
             description: 'Agent coordination & health checks',
             status: 'production',
-            examples: ['agent-manager health', 'agent-manager status']
-          }
-        ]
+            examples: ['agent-manager health', 'agent-manager status'],
+          },
+        ],
       },
 
-      'radio_promotion': {
+      radio_promotion: {
         name: '📻 RADIO PROMOTION (Personal Use)',
         colour: colours.magenta,
         agents: [
@@ -175,12 +175,12 @@ class AgentOSDashboard {
             command: 'node core-agents/radio-promo/radio-promo-agent.js',
             description: 'Radio campaign management for Liberty Music PR',
             status: 'production',
-            examples: ['radio-promo campaign', 'radio-promo track-submissions']
-          }
-        ]
+            examples: ['radio-promo campaign', 'radio-promo track-submissions'],
+          },
+        ],
       },
 
-      'system_utilities': {
+      system_utilities: {
         name: '🔧 SYSTEM UTILITIES',
         colour: colours.yellow,
         agents: [
@@ -190,10 +190,10 @@ class AgentOSDashboard {
             command: 'node gmail-setup/gmail-liberty-setup.js',
             description: 'Gmail automation setup & configuration',
             status: 'production',
-            examples: ['gmail-setup configure', 'gmail-setup test']
-          }
-        ]
-      }
+            examples: ['gmail-setup configure', 'gmail-setup test'],
+          },
+        ],
+      },
     };
   }
 
@@ -204,10 +204,18 @@ class AgentOSDashboard {
     console.clear();
 
     // Header
-    console.log(`${colours.bright}${colours.cyan}╔════════════════════════════════════════════════════════════════╗${colours.reset}`);
-    console.log(`${colours.bright}${colours.cyan}║                    AGENT OS COMMAND CENTRE                     ║${colours.reset}`);
-    console.log(`${colours.bright}${colours.cyan}║                      Version ${this.version}                           ║${colours.reset}`);
-    console.log(`${colours.bright}${colours.cyan}╚════════════════════════════════════════════════════════════════╝${colours.reset}`);
+    console.log(
+      `${colours.bright}${colours.cyan}╔════════════════════════════════════════════════════════════════╗${colours.reset}`
+    );
+    console.log(
+      `${colours.bright}${colours.cyan}║                    AGENT OS COMMAND CENTRE                     ║${colours.reset}`
+    );
+    console.log(
+      `${colours.bright}${colours.cyan}║                      Version ${this.version}                           ║${colours.reset}`
+    );
+    console.log(
+      `${colours.bright}${colours.cyan}╚════════════════════════════════════════════════════════════════╝${colours.reset}`
+    );
     console.log('');
 
     // Show each category
@@ -235,7 +243,9 @@ class AgentOSDashboard {
       console.log(`     ${colours.dim}${agent.description}${colours.reset}`);
 
       if (agent.examples && agent.examples.length > 0) {
-        console.log(`     ${colours.dim}Example: node unified-launcher.js ${agent.examples[0]}${colours.reset}`);
+        console.log(
+          `     ${colours.dim}Example: node unified-launcher.js ${agent.examples[0]}${colours.reset}`
+        );
       }
     });
   }
@@ -265,12 +275,20 @@ class AgentOSDashboard {
     console.log(`${colours.bright}${colours.cyan}QUICK COMMANDS${colours.reset}`);
     console.log(`${colours.cyan}${'─'.repeat(60)}${colours.reset}`);
     console.log('');
-    console.log(`  ${colours.green}Development:${colours.reset}  node unified-launcher.js tdd-plan "feature" audiointel`);
-    console.log(`  ${colours.green}Status:${colours.reset}       node unified-launcher.js tdd-status`);
-    console.log(`  ${colours.green}Marketing:${colours.reset}    node unified-launcher.js newsletter generate`);
+    console.log(
+      `  ${colours.green}Development:${colours.reset}  node unified-launcher.js tdd-plan "feature" audiointel`
+    );
+    console.log(
+      `  ${colours.green}Status:${colours.reset}       node unified-launcher.js tdd-status`
+    );
+    console.log(
+      `  ${colours.green}Marketing:${colours.reset}    node unified-launcher.js newsletter generate`
+    );
     console.log(`  ${colours.green}Social:${colours.reset}       node unified-launcher.js social`);
     console.log('');
-    console.log(`  ${colours.yellow}For detailed help:${colours.reset} node unified-launcher.js [agent-id]`);
+    console.log(
+      `  ${colours.yellow}For detailed help:${colours.reset} node unified-launcher.js [agent-id]`
+    );
     console.log('');
   }
 
@@ -286,7 +304,9 @@ class AgentOSDashboard {
         console.log(`${category.colour}${'─'.repeat(60)}${colours.reset}`);
         console.log('');
         console.log(`${colours.bright}Description:${colours.reset} ${agent.description}`);
-        console.log(`${colours.bright}Status:${colours.reset} ${this.getStatusIcon(agent.status)} ${agent.status}`);
+        console.log(
+          `${colours.bright}Status:${colours.reset} ${this.getStatusIcon(agent.status)} ${agent.status}`
+        );
         console.log(`${colours.bright}Command:${colours.reset} ${agent.command}`);
         console.log('');
 
@@ -317,7 +337,7 @@ class AgentOSDashboard {
           healthy: true,
           features: status.totalFeatures || 0,
           planned: status.plannedFeatures || 0,
-          built: status.builtFeatures || 0
+          built: status.builtFeatures || 0,
         };
       }
     } catch (error) {
@@ -338,10 +358,14 @@ class AgentOSDashboard {
 
     // TDD System
     const tddHealth = this.getTDDHealth();
-    const tddIcon = tddHealth.healthy ? `${colours.green}✓${colours.reset}` : `${colours.red}✗${colours.reset}`;
+    const tddIcon = tddHealth.healthy
+      ? `${colours.green}✓${colours.reset}`
+      : `${colours.red}✗${colours.reset}`;
     console.log(`${tddIcon} TDD System: ${tddHealth.healthy ? 'Operational' : 'Not Initialised'}`);
     if (tddHealth.healthy) {
-      console.log(`  Features: ${tddHealth.features} | Planned: ${tddHealth.planned} | Built: ${tddHealth.built}`);
+      console.log(
+        `  Features: ${tddHealth.features} | Planned: ${tddHealth.planned} | Built: ${tddHealth.built}`
+      );
     }
 
     // Agent Categories
@@ -356,7 +380,9 @@ class AgentOSDashboard {
 
     console.log(`${colours.green}✓${colours.reset} Total Agents: ${totalAgents}`);
     console.log(`${colours.green}✓${colours.reset} Production Ready: ${productionAgents}`);
-    console.log(`${colours.yellow}⚠${colours.reset} Partial/Development: ${totalAgents - productionAgents}`);
+    console.log(
+      `${colours.yellow}⚠${colours.reset} Partial/Development: ${totalAgents - productionAgents}`
+    );
     console.log('');
   }
 
@@ -405,7 +431,7 @@ class AgentOSDashboard {
 // CLI Interface
 if (require.main === module) {
   const dashboard = new AgentOSDashboard();
-  const [,, command, ...args] = process.argv;
+  const [, , command, ...args] = process.argv;
 
   if (!command) {
     dashboard.showDashboard();

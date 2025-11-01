@@ -3,7 +3,19 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { BarChart3, TrendingUp, FileText, Share2, Newspaper, Users, Settings, DollarSign, Search, Menu, X } from 'lucide-react';
+import {
+  BarChart3,
+  TrendingUp,
+  FileText,
+  Share2,
+  Newspaper,
+  Users,
+  Settings,
+  DollarSign,
+  Search,
+  Menu,
+  X,
+} from 'lucide-react';
 
 interface AppShellProps {
   children: React.ReactNode;
@@ -33,7 +45,7 @@ export default function AppShell({ children }: AppShellProps) {
       document.body.classList.remove('mobile-sidebar-open');
       document.body.classList.add('mobile-sidebar-closed');
     }
-    
+
     // Cleanup on unmount
     return () => {
       document.body.classList.remove('mobile-sidebar-open', 'mobile-sidebar-closed');
@@ -87,7 +99,9 @@ export default function AppShell({ children }: AppShellProps) {
         )}
 
         {/* Sidebar - Fixed positioning on mobile when open, z-50 to be above overlay */}
-        <div className={`${sidebarOpen ? 'fixed inset-y-0 left-0 z-50' : 'hidden'} lg:block lg:flex-shrink-0`}>
+        <div
+          className={`${sidebarOpen ? 'fixed inset-y-0 left-0 z-50' : 'hidden'} lg:block lg:flex-shrink-0`}
+        >
           <div className="flex flex-col w-64 h-screen lg:h-auto">
             <div className="flex flex-col h-full flex-1 bg-white border-r-4 border-black shadow-[4px_0_0px_0px_rgba(0,0,0,1)] lg:shadow-none">
               {/* Mobile close button */}
@@ -103,7 +117,7 @@ export default function AppShell({ children }: AppShellProps) {
 
               <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
                 <nav className="mt-5 flex-1 px-3 space-y-2">
-                  {navItems.map((item) => {
+                  {navItems.map(item => {
                     const Icon = item.icon;
                     const active = isActive(item.href);
                     return (
@@ -132,9 +146,7 @@ export default function AppShell({ children }: AppShellProps) {
         <div className="flex-1 flex flex-col overflow-hidden lg:ml-0">
           <main className="flex-1 relative overflow-y-auto focus:outline-none">
             <div className="py-6">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                {children}
-              </div>
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">{children}</div>
             </div>
           </main>
         </div>

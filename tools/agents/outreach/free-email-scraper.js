@@ -21,9 +21,9 @@ const PROSPECTS_FILE = join(OUTPUT_DIR, 'radio-promoters.json');
 
 // Free tier limits
 const LIMITS = {
-  hunter: 25,      // Hunter.io free: 25 searches/month
-  snov: 50,        // Snov.io free: 50 credits/month
-  googlemaps: 100  // Manual scraping limit per session
+  hunter: 25, // Hunter.io free: 25 searches/month
+  snov: 50, // Snov.io free: 50 credits/month
+  googlemaps: 100, // Manual scraping limit per session
 };
 
 class FreeEmailScraper {
@@ -34,8 +34,8 @@ class FreeEmailScraper {
       validated: 0,
       remaining: {
         hunter: LIMITS.hunter,
-        snov: LIMITS.snov
-      }
+        snov: LIMITS.snov,
+      },
     };
   }
 
@@ -72,17 +72,18 @@ class FreeEmailScraper {
 
     // Return example structure for manual entry
     return {
-      instructions: 'After scraping, add results to tools/agents/outreach/data/google-maps-raw.json',
+      instructions:
+        'After scraping, add results to tools/agents/outreach/data/google-maps-raw.json',
       exampleFormat: [
         {
-          name: "BBC Radio Pluggers",
-          website: "https://bbcradiopluggers.co.uk",
-          phone: "+44 20 1234 5678",
-          location: "London, UK",
-          source: "google_maps",
-          scraped_at: new Date().toISOString()
-        }
-      ]
+          name: 'BBC Radio Pluggers',
+          website: 'https://bbcradiopluggers.co.uk',
+          phone: '+44 20 1234 5678',
+          location: 'London, UK',
+          source: 'google_maps',
+          scraped_at: new Date().toISOString(),
+        },
+      ],
     };
   }
 
@@ -107,7 +108,7 @@ class FreeEmailScraper {
     return {
       instructions: 'Use Hunter.io web interface (25 free searches/month)',
       url: `https://hunter.io/search/${domain}`,
-      note: `Remaining searches: ${this.stats.remaining.hunter}/25`
+      note: `Remaining searches: ${this.stats.remaining.hunter}/25`,
     };
   }
 
@@ -132,7 +133,7 @@ class FreeEmailScraper {
     return {
       instructions: 'Use Snov.io web interface (50 free credits/month)',
       url: 'https://snov.io/email-finder',
-      note: `Remaining credits: ${this.stats.remaining.snov}/50`
+      note: `Remaining credits: ${this.stats.remaining.snov}/50`,
     };
   }
 
@@ -151,7 +152,7 @@ class FreeEmailScraper {
     return {
       instructions: 'Manual LinkedIn verification',
       searchUrl: `https://www.linkedin.com/search/results/all/?keywords=${encodeURIComponent(companyName + ' radio promotion')}`,
-      note: 'Look for: Founder, Director, Head of Radio, Senior Plugger'
+      note: 'Look for: Founder, Director, Head of Radio, Senior Plugger',
     };
   }
 
@@ -209,34 +210,34 @@ class FreeEmailScraper {
     const example = [
       {
         id: 1,
-        company: "BBC Radio Pluggers",
-        website: "https://bbcradiopluggers.co.uk",
-        contact_name: "Sarah Johnson",
-        email: "sarah@bbcradiopluggers.co.uk",
-        job_title: "Founder & Director",
-        phone: "+44 20 1234 5678",
-        location: "London, UK",
-        linkedin: "https://linkedin.com/in/sarahjohnson",
-        source: "google_maps",
+        company: 'BBC Radio Pluggers',
+        website: 'https://bbcradiopluggers.co.uk',
+        contact_name: 'Sarah Johnson',
+        email: 'sarah@bbcradiopluggers.co.uk',
+        job_title: 'Founder & Director',
+        phone: '+44 20 1234 5678',
+        location: 'London, UK',
+        linkedin: 'https://linkedin.com/in/sarahjohnson',
+        source: 'google_maps',
         verified: true,
-        notes: "Pitched to BBC Radio 1 successfully, 10+ years experience",
-        scraped_at: new Date().toISOString()
+        notes: 'Pitched to BBC Radio 1 successfully, 10+ years experience',
+        scraped_at: new Date().toISOString(),
       },
       {
         id: 2,
-        company: "Independent Music Promotions",
-        website: "https://indiepromo.co.uk",
-        contact_name: "Mike Thompson",
-        email: "mike@indiepromo.co.uk",
-        job_title: "Head of Radio",
-        phone: "+44 161 987 6543",
-        location: "Manchester, UK",
-        linkedin: "https://linkedin.com/in/mikethompson",
-        source: "hunter_io",
+        company: 'Independent Music Promotions',
+        website: 'https://indiepromo.co.uk',
+        contact_name: 'Mike Thompson',
+        email: 'mike@indiepromo.co.uk',
+        job_title: 'Head of Radio',
+        phone: '+44 161 987 6543',
+        location: 'Manchester, UK',
+        linkedin: 'https://linkedin.com/in/mikethompson',
+        source: 'hunter_io',
         verified: true,
-        notes: "Specialises in indie/alternative, BBC 6 Music connections",
-        scraped_at: new Date().toISOString()
-      }
+        notes: 'Specialises in indie/alternative, BBC 6 Music connections',
+        scraped_at: new Date().toISOString(),
+      },
     ];
 
     const exampleFile = join(OUTPUT_DIR, 'example-prospects.json');

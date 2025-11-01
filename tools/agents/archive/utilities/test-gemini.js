@@ -2,7 +2,7 @@
 
 /**
  * Test Google Gemini Integration for Liberty Music PR
- * 
+ *
  * Tests the Gemini API connection and transcript processing
  */
 
@@ -10,10 +10,10 @@ const GoogleGeminiIntegration = require('./integrations/google-gemini');
 
 async function testGeminiIntegration() {
   console.log('🤖 Testing Google Gemini Integration...\n');
-  
+
   try {
     const gemini = new GoogleGeminiIntegration();
-    
+
     // Test 1: Health Check
     console.log('1. Checking Gemini integration health...');
     const health = gemini.healthCheck();
@@ -21,7 +21,7 @@ async function testGeminiIntegration() {
     console.log(`   API Key: ${health.apiKey}`);
     console.log(`   Base URL: ${health.baseUrl}`);
     console.log(`   ✅ Health check complete\n`);
-    
+
     // Test 2: API Connection
     console.log('2. Testing Gemini API connection...');
     try {
@@ -34,13 +34,13 @@ async function testGeminiIntegration() {
       console.log(`   ❌ API connection test failed: ${error.message}`);
       console.log(`   🔧 Make sure GOOGLE_GEMINI_API_KEY is set in your .env file\n`);
     }
-    
+
     // Test 3: Transcript Processing (Mock)
     console.log('3. Testing transcript processing...');
     try {
       const mockTranscriptId = 'test-transcript-123';
       const result = await gemini.processTranscriptForCampaign(mockTranscriptId);
-      
+
       console.log(`   Transcript ID: ${result.transcriptId}`);
       console.log(`   Source: ${result.source}`);
       console.log(`   Artist: ${result.data.artistName}`);
@@ -50,7 +50,7 @@ async function testGeminiIntegration() {
     } catch (error) {
       console.log(`   ❌ Transcript processing test failed: ${error.message}\n`);
     }
-    
+
     // Test 4: Campaign Info Extraction (Mock)
     console.log('4. Testing campaign info extraction...');
     try {
@@ -60,9 +60,9 @@ async function testGeminiIntegration() {
         release date. My budget is around £500 and I'd love to target BBC Radio 6 Music 
         and Amazing Radio. This is high priority for me.
       `;
-      
+
       const extractedInfo = await gemini.extractCampaignInfo(mockTranscript);
-      
+
       console.log(`   Artist: ${extractedInfo.artistName}`);
       console.log(`   Track: ${extractedInfo.trackTitle}`);
       console.log(`   Genre: ${extractedInfo.genre}`);
@@ -74,20 +74,19 @@ async function testGeminiIntegration() {
     } catch (error) {
       console.log(`   ❌ Campaign info extraction test failed: ${error.message}\n`);
     }
-    
+
     console.log('🎉 Gemini integration test complete!');
     console.log('\n📊 Summary:');
     console.log(`✅ Health check: ${health.status}`);
     console.log(`✅ API connection: ${health.apiKey === 'Set' ? 'Ready' : 'Not configured'}`);
     console.log(`✅ Transcript processing: Working`);
     console.log(`✅ Campaign extraction: Working`);
-    
+
     console.log('\n🎯 Next steps:');
     console.log('1. Set up your Gemini API key in .env file');
     console.log('2. Test with real transcript: gemini:your-transcript-id');
     console.log('3. Run complete workflow: personal-workflow gemini:your-transcript-id');
     console.log('4. Process your Google Meet transcripts automatically');
-    
   } catch (error) {
     console.error('❌ Gemini integration test failed:', error.message);
     console.error('\n🔧 Troubleshooting:');
@@ -100,4 +99,3 @@ async function testGeminiIntegration() {
 
 // Run the test
 testGeminiIntegration();
-

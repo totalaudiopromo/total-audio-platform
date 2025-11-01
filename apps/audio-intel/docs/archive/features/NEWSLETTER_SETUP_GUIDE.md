@@ -175,8 +175,8 @@ export const RESEARCH_SOURCES: ResearchSource[] = [
     name: 'Your Source Name',
     url: 'https://example.com',
     type: 'newsletter',
-    topics: ['independent artists', 'music tech']
-  }
+    topics: ['independent artists', 'music tech'],
+  },
 ];
 ```
 

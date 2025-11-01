@@ -13,16 +13,19 @@ function getArg(name, fallback = null) {
 function postJSON(url, body) {
   return new Promise((resolve, reject) => {
     const u = new URL(url);
-    const req = https.request({
-      hostname: u.hostname,
-      path: u.pathname + u.search,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    }, (res) => {
-      let data = '';
-      res.on('data', (c) => (data += c));
-      res.on('end', () => resolve({ status: res.statusCode, body: data }));
-    });
+    const req = https.request(
+      {
+        hostname: u.hostname,
+        path: u.pathname + u.search,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      },
+      res => {
+        let data = '';
+        res.on('data', c => (data += c));
+        res.on('end', () => resolve({ status: res.statusCode, body: data }));
+      }
+    );
     req.on('error', reject);
     req.write(JSON.stringify(body));
     req.end();
@@ -52,5 +55,7 @@ async function main() {
   console.log('Body:', resp.body);
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
-
+main().catch(e => {
+  console.error(e);
+  process.exit(1);
+});

@@ -1,9 +1,11 @@
 # Gmail Integration Setup Guide
 
 ## Overview
+
 This guide will help you set up Gmail integration for Total Audio Promo to track email replies and send emails directly from your Gmail account.
 
 ## Prerequisites
+
 - Google Cloud Platform account
 - Gmail account
 - Node.js backend running
@@ -11,6 +13,7 @@ This guide will help you set up Gmail integration for Total Audio Promo to track
 ## Step 1: Google Cloud Platform Setup
 
 ### 1.1 Create a Google Cloud Project
+
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Create a new project or select an existing one
 3. Enable the Gmail API:
@@ -19,6 +22,7 @@ This guide will help you set up Gmail integration for Total Audio Promo to track
    - Click "Enable"
 
 ### 1.2 Create OAuth 2.0 Credentials
+
 1. Go to "APIs & Services" > "Credentials"
 2. Click "Create Credentials" > "OAuth 2.0 Client IDs"
 3. Choose "Web application"
@@ -97,7 +101,7 @@ model EmailReply {
   subject   String
   content   String
   timestamp DateTime @default(now())
-  
+
   @@index([campaignId])
   @@index([contactId])
 }
@@ -108,18 +112,21 @@ model EmailReply {
 The Gmail integration provides these endpoints:
 
 ### Authentication
+
 - `GET /api/gmail/auth` - Initiate OAuth flow
 - `GET /api/gmail/callback` - OAuth callback handler
 - `GET /api/gmail/status` - Check connection status
 - `DELETE /api/gmail/disconnect` - Disconnect Gmail
 
 ### Email Operations
+
 - `POST /api/gmail/send` - Send individual email
 - `POST /api/gmail/send-bulk` - Send bulk emails
 - `GET /api/gmail/search` - Search emails
 - `GET /api/gmail/thread/:threadId` - Get email thread
 
 ### Campaign Tracking
+
 - `POST /api/gmail/track-replies/:campaignId` - Start reply tracking
 - `GET /api/gmail/analytics/:campaignId` - Get campaign analytics
 - `GET /api/gmail/replies/:campaignId` - Get recent replies
@@ -137,6 +144,7 @@ The Gmail integration includes a React component (`GmailIntegration.tsx`) that p
 ## Step 6: Testing the Integration
 
 ### 6.1 Test Connection
+
 1. Start your backend server
 2. Navigate to `/integrations` in your frontend
 3. Click "Connect" on the Gmail integration
@@ -144,11 +152,13 @@ The Gmail integration includes a React component (`GmailIntegration.tsx`) that p
 5. Verify the connection status shows "Connected"
 
 ### 6.2 Test Email Sending
+
 1. Use the "Quick Email Sender" in the Gmail integration component
 2. Send a test email to yourself
 3. Verify the email is received
 
 ### 6.3 Test Reply Tracking
+
 1. Create a campaign in your system
 2. Start reply tracking for the campaign
 3. Send emails from the campaign
@@ -174,6 +184,7 @@ The Gmail integration includes a React component (`GmailIntegration.tsx`) that p
 ### Debug Mode
 
 Enable debug logging by setting:
+
 ```bash
 LOG_LEVEL=debug
 ```
@@ -181,6 +192,7 @@ LOG_LEVEL=debug
 ### Monitoring
 
 Check the logs for Gmail-related activities:
+
 ```bash
 tail -f logs/combined.log | grep gmail
 ```
@@ -209,25 +221,29 @@ For production deployment:
 
 ```typescript
 class GmailService {
-  constructor(config: GmailConfig)
-  
+  constructor(config: GmailConfig);
+
   // Authentication
-  async refreshTokens(): Promise<void>
-  
+  async refreshTokens(): Promise<void>;
+
   // Email Operations
-  async sendEmail(to: string, subject: string, content: string): Promise<void>
-  async sendBulkEmail(recipients: string[], subject: string, content: string): Promise<BulkEmailResult>
-  async searchEmails(query: string, maxResults?: number): Promise<Email[]>
-  async getEmailThread(threadId: string): Promise<EmailThread>
-  
+  async sendEmail(to: string, subject: string, content: string): Promise<void>;
+  async sendBulkEmail(
+    recipients: string[],
+    subject: string,
+    content: string
+  ): Promise<BulkEmailResult>;
+  async searchEmails(query: string, maxResults?: number): Promise<Email[]>;
+  async getEmailThread(threadId: string): Promise<EmailThread>;
+
   // Campaign Tracking
-  async trackReplies(campaignId: string): Promise<void>
-  async getRecentReplies(subject: string, sentAfter: Date): Promise<EmailReply[]>
-  async watchEmailChanges(campaignId: string): Promise<void>
-  async stopWatching(): Promise<void>
-  
+  async trackReplies(campaignId: string): Promise<void>;
+  async getRecentReplies(subject: string, sentAfter: Date): Promise<EmailReply[]>;
+  async watchEmailChanges(campaignId: string): Promise<void>;
+  async stopWatching(): Promise<void>;
+
   // Analytics
-  async updateReplyAnalytics(campaignId: string): Promise<void>
+  async updateReplyAnalytics(campaignId: string): Promise<void>;
 }
 ```
 
@@ -266,4 +282,4 @@ For issues with the Gmail integration:
 2. Verify your Google Cloud Console settings
 3. Ensure all environment variables are set correctly
 4. Test with a simple email send operation first
-5. Contact support with specific error messages and logs 
+5. Contact support with specific error messages and logs

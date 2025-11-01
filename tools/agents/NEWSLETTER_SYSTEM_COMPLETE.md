@@ -13,6 +13,7 @@
 ## 🎯 What This System Does
 
 Automatically generates "The Unsigned Advantage" newsletter by:
+
 1. **Monitoring 9 RSS feeds** for indie-relevant music industry news
 2. **Filtering stories** by relevance to independent artists (90+ stories → top 3)
 3. **Using Claude API** to write fresh, authentic content in Chris's voice every time
@@ -25,18 +26,21 @@ Automatically generates "The Unsigned Advantage" newsletter by:
 ## 📰 RSS Feed Sources (9 Total)
 
 ### High Priority (Indie Focus):
+
 - **Ari's Take** (0.95) - Ari Herstand's indie artist business advice
 - **Attack Magazine** (0.90) - Electronic music production
 - **Complete Music Update** (0.90) - UK music industry news
 - **Music Business Worldwide** (0.90) - Global industry business
 
 ### UK Scene:
+
 - **DIY Magazine** (0.85) - UK independent artists
 - **The Line of Best Fit** (0.75) - UK indie culture
 - **BBC Music** (0.80) - UK cultural authority
 - **NME** (0.70) - UK music culture
 
 ### Mainstream Context:
+
 - **Billboard** (0.80) - Charts/trends for "major label drama" angles
 
 ---
@@ -44,6 +48,7 @@ Automatically generates "The Unsigned Advantage" newsletter by:
 ## ✍️ Voice Profile (Verified Facts Only)
 
 ### What Claude Knows About You:
+
 - 5+ years radio promotion experience
 - Electronic music producer (**sadact** - underground electronic)
 - Built **Audio Intel** (contact enrichment SaaS)
@@ -51,6 +56,7 @@ Automatically generates "The Unsigned Advantage" newsletter by:
 - Works with independent artists daily
 
 ### What Claude WON'T Mention:
+
 ❌ BBC Radio 1 (removed claim)
 ❌ Royal Blood, Architects, Rolo Tomassi (no name dropping)
 ❌ Fred Again or any specific commercial artists
@@ -58,6 +64,7 @@ Automatically generates "The Unsigned Advantage" newsletter by:
 ❌ Invented personal examples
 
 ### Allowed References:
+
 ✅ "After 5+ years in radio promotion"
 ✅ "Building Audio Intel taught me"
 ✅ "As an underground electronic producer"
@@ -70,6 +77,7 @@ Automatically generates "The Unsigned Advantage" newsletter by:
 Every section follows **"The Unsigned Advantage"** structure with **depth requirements**:
 
 ### 1. HOOK (1-2 sentences)
+
 What happened in the industry this week (conversational, natural)
 
 **Example**: "Right, so it's kicking off in the AI music world. A group of independent musicians have just launched a massive lawsuit against Suno and Udio..."
@@ -113,12 +121,14 @@ Only if genuinely relevant to contact research/organisation
 ## 🤖 Technical Details
 
 ### Files:
+
 - **Generator**: `/tools/agents/generate-real-newsletter.js`
 - **Voice Profile**: `/tools/agents/FINAL_CHRIS_VOICE.md`
 - **ConvertKit Integration**: `/tools/agents/send-to-convertkit.js`
 - **Depth Testing**: `/tools/agents/test-newsletter-depth.js` ⚡ NEW
 
 ### How It Works:
+
 1. Fetches 90 stories from 9 RSS feeds
 2. Scores each story for indie artist relevance (0-1.0)
 3. Filters to top 3 stories (>0.4 relevance score)
@@ -128,6 +138,7 @@ Only if genuinely relevant to contact research/organisation
 7. You review and approve in ConvertKit dashboard
 
 ### API Usage:
+
 - **Model**: Claude 3.5 Sonnet (claude-3-5-sonnet-20241022)
 - **Cost per newsletter**: £0.01-0.03 (depending on story count)
 - **Your credit**: $23.21 = 26+ months at this rate
@@ -137,6 +148,7 @@ Only if genuinely relevant to contact research/organisation
 ## 📊 Example Newsletter Output
 
 ### Story: "Suno and Udio SUED By Indie Musicians"
+
 **Source**: Ari's Take
 **Generated**:
 
@@ -186,6 +198,7 @@ node send-to-convertkit.js --test
 ```
 
 ### Review & Approve:
+
 1. Log into [ConvertKit dashboard](https://app.convertkit.com/broadcasts)
 2. Find draft broadcast
 3. Review content
@@ -196,6 +209,7 @@ node send-to-convertkit.js --test
 ## 📝 Weekly Workflow
 
 **Monday Morning (15 minutes)**:
+
 1. Run `node generate-real-newsletter.js`
 2. Review 3 generated sections
 3. Edit any sections if needed
@@ -203,6 +217,7 @@ node send-to-convertkit.js --test
 5. Schedule for Tuesday 9am send
 
 **Automation Potential**:
+
 - Can be fully automated with cron job
 - Will create draft every Monday
 - Still requires your manual approval before sending
@@ -213,6 +228,7 @@ node send-to-convertkit.js --test
 ## ✅ Quality Safeguards
 
 ### Content Quality:
+
 - ✅ Relevance filtering (only >0.4 score stories)
 - ✅ Fresh generation every time (no templates)
 - ✅ Strict voice profile (no hallucinations)
@@ -220,6 +236,7 @@ node send-to-convertkit.js --test
 - ✅ Specific actions (not vague advice)
 
 ### Brand Safety:
+
 - ✅ No BBC Radio 1 claims
 - ✅ No name dropping
 - ✅ No invented examples
@@ -231,11 +248,13 @@ node send-to-convertkit.js --test
 ## 💰 Cost Breakdown
 
 **Per Newsletter**:
+
 - Story fetching: Free (RSS)
 - Claude API generation: £0.01-0.03
 - ConvertKit: Included in your plan
 
 **Monthly** (4 newsletters):
+
 - Newsletter generation: £0.12
 - Total automation cost: £0.68/month for full system
 
@@ -246,6 +265,7 @@ node send-to-convertkit.js --test
 ## 🎯 Next Steps
 
 ### Ready to Go:
+
 1. ✅ RSS feeds configured (9 sources)
 2. ✅ Voice profile locked (no hallucinations)
 3. ✅ Claude API working (tested)
@@ -253,6 +273,7 @@ node send-to-convertkit.js --test
 5. ✅ Example newsletter generated
 
 ### To Launch:
+
 1. Run first real newsletter generation Monday
 2. Review quality with fresh eyes
 3. Schedule for Tuesday 9am send

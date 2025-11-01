@@ -1,12 +1,10 @@
 # 🎯 Total Audio Promo: Ideal Customer Profile Deep Research Strategy
 
 > Research Goal: Identify and validate ideal customers for Audio Intel’s freemium SaaS model
-> 
-> 
+>
 > **Current Status:** Live platform with users | Need conversion optimization data
-> 
+>
 > **Research Timeline:** 2-4 weeks | **Priority:** High (affects pricing/positioning)
-> 
 
 ---
 
@@ -44,16 +42,21 @@
 **Immediate Actions:**
 
 1. **Stripe Revenue Analytics**
+
 - Who converts free → Pro (£19) vs free → Agency (£79)?
 - Geographic distribution within UK
 - Conversion timeline patterns
 - Churn analysis by tier
+
 1. **Audio Intel Usage Patterns**
+
 - What types of contacts do paying users enrich?
 - Usage frequency patterns (daily vs weekly users)
 - Feature utilization (which features predict upgrade?)
 - Session duration and return behavior
+
 1. **Customer Journey Mapping**
+
 - How do users discover Audio Intel?
 - What triggers the upgrade decision?
 - Which onboarding steps correlate with retention?
@@ -84,7 +87,7 @@ Pain Points:
 
 **Target Interview Segments:**
 
-**🎯 Segment A: Pro Tier Subscribers (£19/month)***Sample Size: 10-15 interviews*
+**🎯 Segment A: Pro Tier Subscribers (£19/month)\***Sample Size: 10-15 interviews\*
 
 ```
 Pre-Audio Intel:
@@ -106,7 +109,7 @@ Value Perception:
 
 ```
 
-**🎯 Segment B: Agency Tier Prospects (£79/month)***Sample Size: 5-8 interviews*
+**🎯 Segment B: Agency Tier Prospects (£79/month)\***Sample Size: 5-8 interviews\*
 
 ```
 Business Context:
@@ -123,7 +126,7 @@ Upgrade Triggers:
 
 ```
 
-**🎯 Segment C: Active Free Users (Not Converted)***Sample Size: 8-12 interviews*
+**🎯 Segment C: Active Free Users (Not Converted)\***Sample Size: 8-12 interviews\*
 
 ```
 Usage Patterns:
@@ -139,7 +142,7 @@ Alternative Solutions:
 
 ```
 
-**🎯 Segment D: Churned Users (Left Platform)***Sample Size: 5-8 interviews*
+**🎯 Segment D: Churned Users (Left Platform)\***Sample Size: 5-8 interviews\*
 
 ```
 Departure Reasons:
@@ -182,23 +185,23 @@ Departure Reasons:
 
 **Monday-Tuesday: Platform Analytics**
 
-- [ ]  Export Stripe conversion data (free → paid patterns)
-- [ ]  Analyze Audio Intel usage metrics
-- [ ]  Create user segmentation based on behavior
-- [ ]  Identify top converting user characteristics
+- [ ] Export Stripe conversion data (free → paid patterns)
+- [ ] Analyze Audio Intel usage metrics
+- [ ] Create user segmentation based on behavior
+- [ ] Identify top converting user characteristics
 
 **Wednesday-Thursday: Interview Preparation**
 
-- [ ]  Create interview scripts for each segment
-- [ ]  Set up scheduling system (Calendly integration)
-- [ ]  Design interview incentives (free Pro months, etc.)
-- [ ]  Recruit interview participants from user base
+- [ ] Create interview scripts for each segment
+- [ ] Set up scheduling system (Calendly integration)
+- [ ] Design interview incentives (free Pro months, etc.)
+- [ ] Recruit interview participants from user base
 
 **Friday: Outreach Launch**
 
-- [ ]  Email campaigns to each user segment
-- [ ]  Schedule first batch of interviews
-- [ ]  Set up interview recording/notes system
+- [ ] Email campaigns to each user segment
+- [ ] Schedule first batch of interviews
+- [ ] Set up interview recording/notes system
 
 ### **Week 2-3: Customer Interviews**
 
@@ -213,17 +216,17 @@ Departure Reasons:
 
 **Data Synthesis:**
 
-- [ ]  Compile quantitative findings (usage, conversion, churn)
-- [ ]  Analyze qualitative themes from interviews
-- [ ]  Create detailed customer personas
-- [ ]  Validate findings against market research
+- [ ] Compile quantitative findings (usage, conversion, churn)
+- [ ] Analyze qualitative themes from interviews
+- [ ] Create detailed customer personas
+- [ ] Validate findings against market research
 
 **ICP Documentation:**
 
-- [ ]  Primary customer profile (Pro tier target)
-- [ ]  Secondary customer profile (Agency tier target)
-- [ ]  Anti-customer profile (who to avoid)
-- [ ]  Positioning recommendations based on findings
+- [ ] Primary customer profile (Pro tier target)
+- [ ] Secondary customer profile (Agency tier target)
+- [ ] Anti-customer profile (who to avoid)
+- [ ] Positioning recommendations based on findings
 
 ---
 
@@ -381,7 +384,7 @@ Departure Reasons:
 
 ---
 
-*“The goal isn’t to find customers for your product. It’s to find the right product for your customers.” - Focus on learning, not confirming assumptions.*
+_“The goal isn’t to find customers for your product. It’s to find the right product for your customers.” - Focus on learning, not confirming assumptions._
 
 **Research Start Date:** [This Week]
 

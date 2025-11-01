@@ -49,32 +49,32 @@ export function CampaignFilters({
   }, [filters, onFilterChange]);
 
   const handleSearchChange = (value: string) => {
-    setFilters((prev) => ({ ...prev, search: value }));
+    setFilters(prev => ({ ...prev, search: value }));
   };
 
   const toggleStatus = (status: string) => {
-    setFilters((prev) => ({
+    setFilters(prev => ({
       ...prev,
       status: prev.status.includes(status)
-        ? prev.status.filter((s) => s !== status)
+        ? prev.status.filter(s => s !== status)
         : [...prev.status, status],
     }));
   };
 
   const togglePlatform = (platform: string) => {
-    setFilters((prev) => ({
+    setFilters(prev => ({
       ...prev,
       platform: prev.platform.includes(platform)
-        ? prev.platform.filter((p) => p !== platform)
+        ? prev.platform.filter(p => p !== platform)
         : [...prev.platform, platform],
     }));
   };
 
   const toggleGenre = (genre: string) => {
-    setFilters((prev) => ({
+    setFilters(prev => ({
       ...prev,
       genre: prev.genre.includes(genre)
-        ? prev.genre.filter((g) => g !== genre)
+        ? prev.genre.filter(g => g !== genre)
         : [...prev.genre, genre],
     }));
   };
@@ -109,7 +109,7 @@ export function CampaignFilters({
             type="text"
             placeholder="Search campaigns, artists, or platforms..."
             value={filters.search}
-            onChange={(e) => handleSearchChange(e.target.value)}
+            onChange={e => handleSearchChange(e.target.value)}
             className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-xl font-bold focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-all"
           />
           {filters.search && (
@@ -125,12 +125,12 @@ export function CampaignFilters({
         {/* Sort Dropdown */}
         <select
           value={`${filters.sortBy}-${filters.sortOrder}`}
-          onChange={(e) => {
+          onChange={e => {
             const [sortBy, sortOrder] = e.target.value.split('-') as [
               FilterOptions['sortBy'],
-              FilterOptions['sortOrder']
+              FilterOptions['sortOrder'],
             ];
-            setFilters((prev) => ({ ...prev, sortBy, sortOrder }));
+            setFilters(prev => ({ ...prev, sortBy, sortOrder }));
           }}
           className="px-4 py-3 border-2 border-gray-300 rounded-xl font-bold focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-all bg-white"
         >
@@ -187,7 +187,7 @@ export function CampaignFilters({
               Status
             </p>
             <div className="flex flex-wrap gap-2">
-              {['planning', 'active', 'completed', 'paused'].map((status) => (
+              {['planning', 'active', 'completed', 'paused'].map(status => (
                 <button
                   key={status}
                   onClick={() => toggleStatus(status)}
@@ -210,7 +210,7 @@ export function CampaignFilters({
                 Platform
               </p>
               <div className="flex flex-wrap gap-2">
-                {availablePlatforms.map((platform) => (
+                {availablePlatforms.map(platform => (
                   <button
                     key={platform}
                     onClick={() => togglePlatform(platform)}
@@ -234,7 +234,7 @@ export function CampaignFilters({
                 Genre
               </p>
               <div className="flex flex-wrap gap-2">
-                {availableGenres.map((genre) => (
+                {availableGenres.map(genre => (
                   <button
                     key={genre}
                     onClick={() => toggleGenre(genre)}
@@ -262,11 +262,14 @@ export function CampaignFilters({
                 { value: '7d', label: 'Last 7 Days' },
                 { value: '30d', label: 'Last 30 Days' },
                 { value: '90d', label: 'Last 90 Days' },
-              ].map((range) => (
+              ].map(range => (
                 <button
                   key={range.value}
                   onClick={() =>
-                    setFilters((prev) => ({ ...prev, dateRange: range.value as any }))
+                    setFilters(prev => ({
+                      ...prev,
+                      dateRange: range.value as any,
+                    }))
                   }
                   className={`px-4 py-2 rounded-xl font-bold text-sm transition-all border-2 ${
                     filters.dateRange === range.value

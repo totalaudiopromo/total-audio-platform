@@ -8,17 +8,17 @@ const MondayApiIntegration = require('./integrations/monday-api');
 
 async function checkMondayBoard() {
   console.log('📋 Checking Monday.com Board for Actual Campaigns...\n');
-  
+
   const mondayApi = new MondayApiIntegration();
-  
+
   try {
     console.log('🔍 Fetching all campaigns from Monday.com board...');
-    
+
     const campaigns = await mondayApi.getCampaignItems();
-    
+
     console.log(`✅ Found ${campaigns.length} campaigns on the board`);
     console.log('');
-    
+
     if (campaigns.length > 0) {
       console.log('📊 Campaign Details:');
       campaigns.forEach((campaign, index) => {
@@ -29,7 +29,7 @@ async function checkMondayBoard() {
         console.log(`   Track: ${campaign.trackName || 'Unknown'}`);
         console.log(`   Status: ${campaign.status || 'Unknown'}`);
         console.log(`   Release Date: ${campaign.releaseDate || 'Unknown'}`);
-        
+
         // Show column values
         if (campaign.column_values && campaign.column_values.length > 0) {
           console.log('   Column Values:');
@@ -40,14 +40,15 @@ async function checkMondayBoard() {
           });
         }
       });
-      
+
       // Check specifically for Senior Dunce
-      const seniorDunceCampaign = campaigns.find(c => 
-        c.name && c.name.toLowerCase().includes('senior dunce') ||
-        c.groupTitle && c.groupTitle.toLowerCase().includes('senior dunce') ||
-        c.artistName && c.artistName.toLowerCase().includes('senior dunce')
+      const seniorDunceCampaign = campaigns.find(
+        c =>
+          (c.name && c.name.toLowerCase().includes('senior dunce')) ||
+          (c.groupTitle && c.groupTitle.toLowerCase().includes('senior dunce')) ||
+          (c.artistName && c.artistName.toLowerCase().includes('senior dunce'))
       );
-      
+
       if (seniorDunceCampaign) {
         console.log('\n🎵 Senior Dunce Campaign Found:');
         console.log(`   Name: ${seniorDunceCampaign.name}`);
@@ -63,7 +64,6 @@ async function checkMondayBoard() {
         console.log('3. Campaign ID 10044670002 might be incorrect');
         console.log('4. Board permissions issue');
       }
-      
     } else {
       console.log('❌ No campaigns found on the board');
       console.log('💡 Possible reasons:');
@@ -72,13 +72,12 @@ async function checkMondayBoard() {
       console.log('3. Wrong board ID');
       console.log('4. Authentication problem');
     }
-    
+
     console.log('\n🔧 Troubleshooting Steps:');
     console.log('1. Check your Monday.com board manually');
     console.log('2. Verify the board ID in the API configuration');
     console.log('3. Check API permissions');
     console.log('4. Try creating a new campaign manually');
-    
   } catch (error) {
     console.error('❌ Failed to check Monday.com board:', error.message);
     console.log('');
@@ -94,5 +93,3 @@ async function checkMondayBoard() {
 checkMondayBoard().then(() => {
   console.log('\n✅ Monday.com board check completed');
 });
-
-

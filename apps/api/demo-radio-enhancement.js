@@ -3,7 +3,7 @@ const { AirtableRadioEnhancement } = require('./dist/services/airtableRadioEnhan
 // Demo function to show how radio enhancement works
 function demoRadioEnhancement() {
   console.log('🎵 UK Radio Station Enhancement Demo\n');
-  
+
   // Sample UK radio email addresses to test
   const sampleEmails = [
     'dj@bbc.co.uk',
@@ -17,16 +17,16 @@ function demoRadioEnhancement() {
     'student@university.ac.uk',
     'community@localradio.co.uk',
     'john@gmail.com', // Should be skipped
-    'contact@unknownradio.com'
+    'contact@unknownradio.com',
   ];
 
   console.log('📻 Sample UK Radio Email Analysis:\n');
-  
+
   sampleEmails.forEach(email => {
     const domain = email.split('@')[1];
     console.log(`Email: ${email}`);
     console.log(`Domain: ${domain}`);
-    
+
     // Simulate the analysis
     let classification = 'Unknown';
     let stationName = 'Unknown';
@@ -34,7 +34,7 @@ function demoRadioEnhancement() {
     let market = 'Unknown';
     let format = 'Unknown';
     let marketSize = 'Unknown';
-    
+
     if (domain.includes('bbc.co.uk')) {
       classification = 'BBC National';
       stationName = 'BBC Radio';
@@ -113,7 +113,7 @@ function demoRadioEnhancement() {
       format = 'SKIPPED';
       marketSize = 'SKIPPED';
     }
-    
+
     if (classification === 'SKIPPED') {
       console.log(`Result: ❌ Skipped (personal email domain)`);
     } else {
@@ -149,4 +149,4 @@ function demoRadioEnhancement() {
 }
 
 // Run the demo
-demoRadioEnhancement(); 
+demoRadioEnhancement();

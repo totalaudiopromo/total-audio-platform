@@ -15,12 +15,14 @@
 ### Step 2: Add Credentials to Environment (1 minute)
 
 Copy the example file:
+
 ```bash
 cd apps/audio-intel
 cp .env.twitter.example .env.local
 ```
 
 Edit `.env.local` and add your credentials:
+
 ```bash
 TWITTER_API_KEY=your_api_key_here
 TWITTER_API_SECRET=your_api_secret_here
@@ -35,6 +37,7 @@ npx tsx scripts/verify-twitter-setup.ts
 ```
 
 You should see:
+
 ```
 ✅ Twitter API Package
 ✅ Agent File
@@ -154,6 +157,7 @@ export async function GET() {
 ### Option B: Server Cron
 
 Add to crontab:
+
 ```bash
 0 * * * * cd /path/to/audio-intel && npx tsx schedule-twitter-posts.ts
 ```
@@ -188,15 +192,18 @@ All content pre-configured and ready to post:
 ## 🐛 Troubleshooting
 
 **"Authentication failed"**
+
 - Check credentials in `.env.local` match Twitter portal exactly
 - Ensure app has "Read and Write" permissions
 - Regenerate tokens if needed
 
 **"Tweet exceeds 280 characters"**
+
 - Use `postThread()` not `post()` for long content
 - Agent auto-splits long content into threads
 
 **"Rate limit exceeded"**
+
 - Free tier: 50 tweets/day
 - Wait for reset or upgrade to elevated access
 
@@ -205,6 +212,7 @@ All content pre-configured and ready to post:
 ## 📚 Full Documentation
 
 For complete details, see:
+
 - **Main README**: `lib/TWITTER_AGENT_README.md`
 - **Summary**: `TWITTER_AGENT_SUMMARY.md`
 - **Examples**: `lib/examples/twitter-agent-example.ts`

@@ -1,5 +1,6 @@
 # 🎯 Master Context - Audio Intel Platform
-*Single authoritative source for all development context*
+
+_Single authoritative source for all development context_
 
 ## 📋 **PROJECT OVERVIEW**
 
@@ -18,13 +19,14 @@
 ## 🤖 **GLOBAL AGENT SYSTEM**
 
 **Location**: `~/.claude/agents/`
+
 ```
 business/
 ├── music-industry-strategist.md    # Industry partnerships & strategy
-├── music-marketing-mastermind.md   # Marketing & viral campaigns  
+├── music-marketing-mastermind.md   # Marketing & viral campaigns
 └── growth-hacking-optimizer.md     # SaaS growth & conversion
 
-technical/  
+technical/
 ├── full-stack-music-tech.md        # Technical development
 └── quick-access.md                 # Development shortcuts
 
@@ -38,12 +40,14 @@ workflows/
 
 ## 👤 **BUSINESS CONTEXT**
 
-**Founder**: Chris Schofield  
+**Founder**: Chris Schofield
+
 - Musician: sadact (independent artist)
-- Former: Network Programs Manager at Decadance UK  
+- Former: Network Programs Manager at Decadance UK
 - Experience: Music industry promotion and contact management challenges
 
 **Brand Identity**:
+
 - **Colors**: Professional Blue (#3b82f6) with grayscale foundation
 - **Tone**: Professional, empathetic to artist struggles
 - **Mission**: Eliminate spreadsheet chaos for music professionals
@@ -52,8 +56,9 @@ workflows/
 
 **Sprint Week Focus**: Audio Intel development and optimization  
 **Active Features**:
+
 - Contact enrichment with AI intelligence
-- Email validation with confidence scoring  
+- Email validation with confidence scoring
 - Export systems (CSV, Excel, PDF)
 - Multi-platform contact search
 - AI-powered industry agents
@@ -87,7 +92,7 @@ workflows/
 # Navigate to main workspace
 cd /Users/chrisschofield/workspace/active/total-audio-platform/
 
-# Start Audio Intel development  
+# Start Audio Intel development
 npm run dev:audio-intel
 
 # Check system status
@@ -95,7 +100,7 @@ npm run status && npm run agents:health
 
 # Use global agents (from any directory)
 # "Use music-industry-strategist for market analysis"
-# "Apply growth-hacking-optimizer for user acquisition"  
+# "Apply growth-hacking-optimizer for user acquisition"
 # "Use music-marketing-mastermind for campaign strategy"
 ```
 
@@ -108,4 +113,4 @@ npm run status && npm run agents:health
 
 ---
 
-*This master context eliminates fragmentation and provides single-source truth for all Audio Intel development.*
+_This master context eliminates fragmentation and provides single-source truth for all Audio Intel development._

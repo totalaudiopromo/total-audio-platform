@@ -9,11 +9,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className = '', label, error, ...props }, ref) => {
     return (
       <div className="w-full">
-        {label && (
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            {label}
-          </label>
-        )}
+        {label && <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>}
         <textarea
           className={`
             flex min-h-[80px] w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm 
@@ -25,9 +21,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           {...props}
         />
-        {error && (
-          <p className="mt-1 text-sm text-red-600">{error}</p>
-        )}
+        {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
       </div>
     );
   }
@@ -35,4 +29,4 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
 Textarea.displayName = 'Textarea';
 
-export { Textarea }; 
+export { Textarea };

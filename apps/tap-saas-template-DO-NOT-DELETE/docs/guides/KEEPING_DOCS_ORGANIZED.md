@@ -5,6 +5,7 @@ A guide to using the automated documentation organizer for TAP apps.
 ## The Problem
 
 As you build, you create lots of `.md` files:
+
 - `AUTH_SETUP_COMPLETE.md`
 - `MOBILE_FIXES_DONE.md`
 - `NEW_FEATURE_README.md`
@@ -15,6 +16,7 @@ Without organization, they clutter your app root and make it hard to find what y
 ## The Solution
 
 We've automated documentation organization with a smart script that:
+
 - Scans your app for `.md` files
 - Categorizes them based on their purpose
 - Moves them to proper subdirectories
@@ -66,16 +68,17 @@ Shows detailed information about every file moved.
 
 The script automatically categorizes files based on naming patterns:
 
-| Category | Patterns | Examples |
-|----------|----------|----------|
-| **setup/** | `*SETUP*`, `*DEPLOYMENT*`, `*MIGRATION*`, `*OAUTH*` | `AUTH_SETUP.md`, `DEPLOYMENT_GUIDE.md`, `RUN_MIGRATION.md` |
-| **guides/** | `*QUICKSTART*`, `*TUTORIAL*`, `*HOW_TO*` | `QUICKSTART.md`, `HOW_TO_DEPLOY.md` |
-| **reference/** | `*README_*`, `*STRATEGY*`, `*ARCHITECTURE*`, `*PRD*` | `README_PRD.md`, `PSEO_STRATEGY.md`, `API_REFERENCE.md` |
-| **status/** | `*COMPLETE*`, `*FIXED*`, `*SUMMARY*`, `*REPORT*` | `BUILD_COMPLETE.md`, `TEXT_COLORS_FIXED.md`, `BATCH_1_COMPLETE.md` |
+| Category       | Patterns                                             | Examples                                                           |
+| -------------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
+| **setup/**     | `*SETUP*`, `*DEPLOYMENT*`, `*MIGRATION*`, `*OAUTH*`  | `AUTH_SETUP.md`, `DEPLOYMENT_GUIDE.md`, `RUN_MIGRATION.md`         |
+| **guides/**    | `*QUICKSTART*`, `*TUTORIAL*`, `*HOW_TO*`             | `QUICKSTART.md`, `HOW_TO_DEPLOY.md`                                |
+| **reference/** | `*README_*`, `*STRATEGY*`, `*ARCHITECTURE*`, `*PRD*` | `README_PRD.md`, `PSEO_STRATEGY.md`, `API_REFERENCE.md`            |
+| **status/**    | `*COMPLETE*`, `*FIXED*`, `*SUMMARY*`, `*REPORT*`     | `BUILD_COMPLETE.md`, `TEXT_COLORS_FIXED.md`, `BATCH_1_COMPLETE.md` |
 
 ### 2. Protected Files
 
 These files **never** move (stay at root):
+
 - `README.md`
 - `DESIGN_SYSTEM.md`
 - `TEMPLATE_USAGE.md`
@@ -101,6 +104,7 @@ your-app/
 ### 4. Documentation Index
 
 A `docs/README.md` is automatically generated with:
+
 - Links to all subdirectories
 - Explanation of each category
 - Quick start guide
@@ -136,7 +140,7 @@ Add to your GitHub Actions workflow:
 ```yaml
 - name: Organize Documentation
   run: npm run organize-docs
-  
+
 - name: Commit organized docs
   run: |
     git config user.name "Docs Organizer Bot"
@@ -205,6 +209,7 @@ tracker/
 ### File Not Moving
 
 If a file doesn't get categorized:
+
 - It moves to `reference/` by default
 - You can manually move it to the correct directory
 - Or update the categorization patterns in `scripts/organize-docs.js`
@@ -212,6 +217,7 @@ If a file doesn't get categorized:
 ### File Already Exists
 
 If target already exists, the script skips it with a message:
+
 ```
 ⏭️  Skipped: AUTH_SETUP.md (already exists in docs/setup/)
 ```
@@ -219,6 +225,7 @@ If target already exists, the script skips it with a message:
 ### Wrong Category
 
 If a file goes to the wrong category:
+
 1. Manually move it to the right place
 2. Update the pattern matching in `scripts/organize-docs.js`
 3. Submit a PR to improve the categorization
@@ -228,16 +235,19 @@ If a file goes to the wrong category:
 ## Benefits
 
 ### For Solo Developers
+
 - ✅ Quick cleanup of cluttered directories
 - ✅ Easy to find documentation later
 - ✅ Professional project structure
 
 ### For Teams
+
 - ✅ Consistent organization across all apps
 - ✅ New developers can navigate easily
 - ✅ Standards enforced automatically
 
 ### For Open Source
+
 - ✅ Contributors know where to add docs
 - ✅ Clear structure for documentation
 - ✅ Professional appearance
@@ -262,6 +272,7 @@ git commit -m "docs: organize documentation"
 ### 2. Use Descriptive Filenames
 
 Good names help with auto-categorization:
+
 - ✅ `STRIPE_SETUP_GUIDE.md` → moves to `setup/`
 - ✅ `USER_AUTH_COMPLETE.md` → moves to `status/`
 - ❌ `NOTES.md` → goes to `reference/` (too vague)
@@ -269,6 +280,7 @@ Good names help with auto-categorization:
 ### 3. Archive Historical Docs
 
 Move old status reports to an archive:
+
 ```bash
 mkdir docs/status/archive-2024
 mv docs/status/*_COMPLETE.md docs/status/archive-2024/
@@ -277,6 +289,7 @@ mv docs/status/*_COMPLETE.md docs/status/archive-2024/
 ### 4. Keep Root Clean
 
 Only these at root:
+
 - `README.md` - Main overview
 - `QUICKSTART.md` - Getting started (optional)
 - `CONTRIBUTING.md` - For open source (optional)
@@ -294,7 +307,7 @@ const CATEGORIES = {
   setup: [
     /auth.*setup/i,
     /setup.*guide/i,
-    /your.*custom.*pattern/i,  // Add your pattern
+    /your.*custom.*pattern/i, // Add your pattern
   ],
   // ... other categories
 };
@@ -315,4 +328,3 @@ Keep your docs organized. Your future self will thank you.
 ---
 
 **Next:** Read [PROJECT_STRUCTURE.md](../../../PROJECT_STRUCTURE.md) for complete organizational standards.
-

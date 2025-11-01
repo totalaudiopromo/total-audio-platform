@@ -1,9 +1,16 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@total-audio/core-db/client';
 import { formatDistanceToNow } from 'date-fns';
-import { CheckCircle, AlertCircle, Clock, RefreshCw, Mail, FileSpreadsheet } from 'lucide-react';
+import {
+  CheckCircle,
+  AlertCircle,
+  Clock,
+  RefreshCw,
+  Mail,
+  FileSpreadsheet,
+} from 'lucide-react';
 
 interface ActivityLog {
   id: string;
@@ -21,7 +28,9 @@ export function IntegrationActivityFeed() {
   const supabase = useMemo(() => createClient(), []);
 
   const loadActivities = useCallback(async () => {
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     if (!user) {
       setActivities([]);
       setLoading(false);
@@ -57,7 +66,9 @@ export function IntegrationActivityFeed() {
         return;
       }
 
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
       if (!user || !isMounted) {
         return;
       }
@@ -72,8 +83,10 @@ export function IntegrationActivityFeed() {
             table: 'integration_activity_log',
             filter: `user_id=eq.${user.id}`,
           },
-          (payload) => {
-            setActivities((prev) => [payload.new as ActivityLog, ...prev].slice(0, 20));
+          payload => {
+            setActivities(prev =>
+              [payload.new as ActivityLog, ...prev].slice(0, 20)
+            );
           }
         )
         .subscribe();
@@ -91,24 +104,32 @@ export function IntegrationActivityFeed() {
 
   const getIcon = (activityType: string, integrationType: string) => {
     if (activityType.includes('reply')) return <Mail className="w-5 h-5" />;
-    if (activityType.includes('sheet') || integrationType === 'google_sheets') return <FileSpreadsheet className="w-5 h-5" />;
+    if (activityType.includes('sheet') || integrationType === 'google_sheets')
+      return <FileSpreadsheet className="w-5 h-5" />;
     return <RefreshCw className="w-5 h-5" />;
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'success': return 'text-green-600 bg-green-100 border-green-500';
-      case 'error': return 'text-red-600 bg-red-100 border-red-500';
-      case 'warning': return 'text-yellow-600 bg-yellow-100 border-yellow-500';
-      default: return 'text-gray-600 bg-gray-100 border-gray-500';
+      case 'success':
+        return 'text-green-600 bg-green-100 border-green-500';
+      case 'error':
+        return 'text-red-600 bg-red-100 border-red-500';
+      case 'warning':
+        return 'text-yellow-600 bg-yellow-100 border-yellow-500';
+      default:
+        return 'text-gray-600 bg-gray-100 border-gray-500';
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'success': return <CheckCircle className="w-4 h-4" />;
-      case 'error': return <AlertCircle className="w-4 h-4" />;
-      default: return <Clock className="w-4 h-4" />;
+      case 'success':
+        return <CheckCircle className="w-4 h-4" />;
+      case 'error':
+        return <AlertCircle className="w-4 h-4" />;
+      default:
+        return <Clock className="w-4 h-4" />;
     }
   };
 
@@ -127,7 +148,9 @@ export function IntegrationActivityFeed() {
   return (
     <div className="bg-white rounded-2xl border-4 border-black shadow-brutal p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-xl font-black text-gray-900">Integration Activity</h3>
+        <h3 className="text-xl font-black text-gray-900">
+          Integration Activity
+        </h3>
         <button
           onClick={loadActivities}
           className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -147,13 +170,15 @@ export function IntegrationActivityFeed() {
         </div>
       ) : (
         <div className="space-y-3 max-h-96 overflow-y-auto">
-          {activities.map((activity) => (
+          {activities.map(activity => (
             <div
               key={activity.id}
               className="flex items-start gap-3 p-3 rounded-xl border-2 border-gray-200 hover:border-teal-300 transition-colors"
             >
               {/* Icon */}
-              <div className={`flex-shrink-0 p-2 rounded-lg border-2 ${getStatusColor(activity.status)}`}>
+              <div
+                className={`flex-shrink-0 p-2 rounded-lg border-2 ${getStatusColor(activity.status)}`}
+              >
                 {getIcon(activity.activity_type, activity.integration_type)}
               </div>
 
@@ -163,35 +188,40 @@ export function IntegrationActivityFeed() {
                   <p className="text-sm font-bold text-gray-900">
                     {activity.message}
                   </p>
-                  <div className={`flex items-center gap-1 px-2 py-1 rounded-lg border ${getStatusColor(activity.status)}`}>
+                  <div
+                    className={`flex items-center gap-1 px-2 py-1 rounded-lg border ${getStatusColor(activity.status)}`}
+                  >
                     {getStatusIcon(activity.status)}
                   </div>
                 </div>
 
                 {/* Metadata */}
-                {activity.metadata && Object.keys(activity.metadata).length > 0 && (
-                  <div className="flex items-center gap-3 mt-1 text-xs text-gray-600">
-                    {activity.metadata?.records_synced && (
-                      <span className="font-medium">
-                        {activity.metadata.records_synced} records synced
-                      </span>
-                    )}
-                    {activity.metadata?.campaign_name && (
-                      <span className="font-medium truncate">
-                        Campaign: {activity.metadata.campaign_name}
-                      </span>
-                    )}
-                    {activity.metadata?.contact_email && (
-                      <span className="font-medium truncate">
-                        {activity.metadata.contact_email}
-                      </span>
-                    )}
-                  </div>
-                )}
+                {activity.metadata &&
+                  Object.keys(activity.metadata).length > 0 && (
+                    <div className="flex items-center gap-3 mt-1 text-xs text-gray-600">
+                      {activity.metadata?.records_synced && (
+                        <span className="font-medium">
+                          {activity.metadata.records_synced} records synced
+                        </span>
+                      )}
+                      {activity.metadata?.campaign_name && (
+                        <span className="font-medium truncate">
+                          Campaign: {activity.metadata.campaign_name}
+                        </span>
+                      )}
+                      {activity.metadata?.contact_email && (
+                        <span className="font-medium truncate">
+                          {activity.metadata.contact_email}
+                        </span>
+                      )}
+                    </div>
+                  )}
 
                 {/* Timestamp */}
                 <p className="text-xs text-gray-500 mt-1">
-                  {formatDistanceToNow(new Date(activity.created_at), { addSuffix: true })}
+                  {formatDistanceToNow(new Date(activity.created_at), {
+                    addSuffix: true,
+                  })}
                 </p>
               </div>
             </div>

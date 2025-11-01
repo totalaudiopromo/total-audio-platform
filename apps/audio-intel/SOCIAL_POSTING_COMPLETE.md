@@ -3,18 +3,21 @@
 ## What's Working
 
 ### Platforms Configured
+
 - ✅ **Bluesky**: Fully tested and operational
 - ✅ **LinkedIn**: Fixed API endpoint, tested and operational
 - ❌ **Threads**: Not configured (optional - can add later)
 - ❓ **Twitter/X**: Not checked (may already be configured)
 
 ### Posting Schedule
+
 - **Frequency**: Once daily (Vercel Hobby plan limitation)
 - **Time**: 9:00 AM UK time
 - **Content**: 8 posts per platform in rotation
 - **Automation**: Fully automatic via Vercel Cron
 
 ### Environment Variables (All Set in Vercel)
+
 ```
 ✓ BLUESKY_IDENTIFIER
 ✓ BLUESKY_APP_PASSWORD
@@ -29,6 +32,7 @@
 ## What Changed
 
 ### LinkedIn API Fix
+
 **Problem**: Original code used `/v2/me` endpoint which required extra LinkedIn products.
 
 **Solution**: Changed to `/v2/userinfo` endpoint which works with basic OpenID permissions.
@@ -36,6 +40,7 @@
 **File Changed**: `lib/linkedin-posting-agent.ts` line 52
 
 ### Cron Schedule Update
+
 **Problem**: Vercel Hobby plan only allows daily cron jobs, not multiple times per day.
 
 **Original**: `0 9,17 * * *` (9am and 5pm)
@@ -57,6 +62,7 @@ vercel --prod
 ```
 
 After deployment:
+
 - Cron will run automatically at 9am UK time daily
 - Posts will go to Bluesky and LinkedIn
 - Check Vercel dashboard → Functions → Logs to verify
@@ -68,11 +74,13 @@ After deployment:
 Content is stored in: `social-content/CONTENT_CALENDAR.json`
 
 **Current content**:
+
 - 8 posts for Bluesky
 - 10 posts for LinkedIn
 - 10 posts for Threads (ready when you set it up)
 
 Posts rotate through different themes:
+
 - Product value propositions
 - Real customer results
 - Founder story
@@ -83,6 +91,7 @@ Posts rotate through different themes:
 ## Testing
 
 ### Test Locally (Before Deploying)
+
 ```bash
 # Start dev server
 PORT=3000 npm run dev
@@ -92,6 +101,7 @@ curl -X POST http://localhost:3000/api/cron/social-posting
 ```
 
 ### Test in Production (After Deploying)
+
 ```bash
 # Manual trigger (requires CRON_SECRET)
 curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
@@ -99,6 +109,7 @@ curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
 ```
 
 ### Check Logs
+
 1. Go to Vercel dashboard
 2. Select your project (audio-intel)
 3. Go to Deployments → Latest deployment
@@ -110,12 +121,14 @@ curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
 ## Token Expiry Reminders
 
 ### LinkedIn (59 days from now)
+
 - **Expires**: ~17 December 2025
 - **Refresh**: Run `npx tsx scripts/get-linkedin-token-simple.ts`
 - **Update Vercel**: `./add-linkedin-to-vercel.sh`
 - **Set calendar reminder**: 15 December 2025
 
 ### Bluesky
+
 - **Expires**: Never (unless you revoke the app password)
 - **Manage**: https://bsky.app/settings/app-passwords
 
@@ -124,15 +137,18 @@ curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
 ## Troubleshooting
 
 ### Posts not going out
+
 1. Check Vercel cron logs (see "Check Logs" above)
 2. Verify environment variables: `vercel env ls`
 3. Check cron is enabled in Vercel dashboard
 
 ### LinkedIn 403 errors
+
 - Token expired → Get new token (see Token Expiry section)
 - App permissions changed → Verify products in LinkedIn developer portal
 
 ### Bluesky authentication failed
+
 - App password revoked → Generate new one at https://bsky.app/settings/app-passwords
 - Update BLUESKY_APP_PASSWORD in Vercel
 
@@ -169,6 +185,7 @@ If you want to add Instagram Threads posting:
 ## File Reference
 
 ### Core Files
+
 - `app/api/cron/social-posting/route.ts` - Main cron endpoint
 - `lib/bluesky-posting-agent.ts` - Bluesky integration
 - `lib/linkedin-posting-agent.ts` - LinkedIn integration
@@ -177,12 +194,14 @@ If you want to add Instagram Threads posting:
 - `vercel.json` - Cron configuration
 
 ### Setup Scripts
+
 - `scripts/get-linkedin-token-simple.ts` - LinkedIn OAuth helper
 - `scripts/test-bluesky.ts` - Bluesky testing
 - `scripts/test-linkedin-simple.ts` - LinkedIn testing
 - `add-linkedin-to-vercel.sh` - Bulk add LinkedIn env vars
 
 ### Documentation
+
 - `SOCIAL_POSTING_QUICKSTART.md` - Quick overview
 - `LINKEDIN_SETUP.md` - LinkedIn OAuth guide
 - `THREADS_SETUP.md` - Threads OAuth guide

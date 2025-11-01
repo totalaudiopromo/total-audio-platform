@@ -170,7 +170,7 @@ export function analyzePatterns(campaigns: Campaign[]): Pattern[] {
 
   // Filter campaigns with results
   const completedCampaigns = campaigns.filter(
-    (c) => c.actual_reach > 0 && c.target_reach > 0
+    c => c.actual_reach > 0 && c.target_reach > 0
   );
 
   if (completedCampaigns.length === 0) {
@@ -213,7 +213,7 @@ function analyzeGenrePerformance(campaigns: Campaign[]): Pattern | null {
     { successRate: number; count: number; avgCost: number }
   >();
 
-  campaigns.forEach((c) => {
+  campaigns.forEach(c => {
     if (!c.genre) return;
 
     const existing = genreStats.get(c.genre) || {
@@ -240,10 +240,7 @@ function analyzeGenrePerformance(campaigns: Campaign[]): Pattern | null {
     const avgCost = stats.avgCost / stats.count;
 
     if (stats.count >= 2 && avgSuccessRate > 25) {
-      if (
-        !bestGenre ||
-        avgSuccessRate > bestGenre.successRate
-      ) {
+      if (!bestGenre || avgSuccessRate > bestGenre.successRate) {
         bestGenre = {
           genre,
           successRate: avgSuccessRate,
@@ -280,7 +277,7 @@ function analyzePlatformPerformance(campaigns: Campaign[]): Pattern | null {
     { successRate: number; count: number }
   >();
 
-  campaigns.forEach((c) => {
+  campaigns.forEach(c => {
     if (!c.platform) return;
 
     const existing = platformStats.get(c.platform) || {
@@ -327,20 +324,23 @@ function analyzePlatformPerformance(campaigns: Campaign[]): Pattern | null {
  */
 function analyzeBudgetEfficiency(campaigns: Campaign[]): Pattern | null {
   const campaignsWithBudget = campaigns.filter(
-    (c) => c.budget > 0 && c.actual_reach > 0
+    c => c.budget > 0 && c.actual_reach > 0
   );
 
   if (campaignsWithBudget.length < 3) return null;
 
   // Calculate ROI (results per £100)
-  const budgetRanges = campaignsWithBudget.map((c) => ({
+  const budgetRanges = campaignsWithBudget.map(c => ({
     budget: c.budget,
     roi: (c.actual_reach / c.budget) * 100,
   }));
 
   // Find sweet spot
   budgetRanges.sort((a, b) => b.roi - a.roi);
-  const topPerformers = budgetRanges.slice(0, Math.ceil(budgetRanges.length / 3));
+  const topPerformers = budgetRanges.slice(
+    0,
+    Math.ceil(budgetRanges.length / 3)
+  );
 
   const avgBudget =
     topPerformers.reduce((sum, b) => sum + b.budget, 0) / topPerformers.length;
@@ -420,7 +420,7 @@ export function predictCampaignPerformance(
 
   // Adjust based on user history for same platform/genre
   const relevantHistory = userHistory.filter(
-    (c) =>
+    c =>
       c.platform === formData.platform &&
       c.genre === formData.genre &&
       c.actual_reach > 0
@@ -445,7 +445,11 @@ export function predictCampaignPerformance(
   const recommendations: string[] = [];
 
   // Budget recommendations
-  if (formData.budget && benchmark.optimal_budget_min && benchmark.optimal_budget_max) {
+  if (
+    formData.budget &&
+    benchmark.optimal_budget_min &&
+    benchmark.optimal_budget_max
+  ) {
     if (formData.budget < benchmark.optimal_budget_min) {
       recommendations.push(
         `Consider increasing budget to £${benchmark.optimal_budget_min} for better results`
@@ -510,7 +514,7 @@ export function generateIntelligenceAnalysis(
   let totalPerformance = 0;
   let campaignsWithBenchmarks = 0;
 
-  campaigns.forEach((campaign) => {
+  campaigns.forEach(campaign => {
     if (campaign.platform && campaign.genre) {
       const key = `${campaign.platform}-${campaign.genre}`;
       const benchmark = benchmarks.get(key);
@@ -527,20 +531,26 @@ export function generateIntelligenceAnalysis(
       : 50;
 
   // Generate recommendations from patterns
-  patterns.forEach((pattern) => {
+  patterns.forEach(pattern => {
     if (pattern.type === 'genre_performance' && pattern.metadata?.genre) {
       recommendations.push(
         `Focus future campaigns on ${pattern.metadata.genre} music for best results`
       );
     }
 
-    if (pattern.type === 'platform_effectiveness' && pattern.metadata?.platform) {
+    if (
+      pattern.type === 'platform_effectiveness' &&
+      pattern.metadata?.platform
+    ) {
       recommendations.push(
         `${pattern.metadata.platform} shows strongest performance for your campaigns`
       );
     }
 
-    if (pattern.type === 'budget_optimization' && pattern.metadata?.budgetRange) {
+    if (
+      pattern.type === 'budget_optimization' &&
+      pattern.metadata?.budgetRange
+    ) {
       recommendations.push(
         `Optimal budget: £${pattern.metadata.budgetRange.min}-£${pattern.metadata.budgetRange.max}`
       );
@@ -566,11 +576,11 @@ export function generateIntelligenceAnalysis(
     recommendations,
     warnings,
     overall_performance,
-    best_genre: patterns.find((p) => p.type === 'genre_performance')?.metadata
+    best_genre: patterns.find(p => p.type === 'genre_performance')?.metadata
       ?.genre,
-    best_platform: patterns.find((p) => p.type === 'platform_effectiveness')
+    best_platform: patterns.find(p => p.type === 'platform_effectiveness')
       ?.metadata?.platform,
-    optimal_budget: patterns.find((p) => p.type === 'budget_optimization')
+    optimal_budget: patterns.find(p => p.type === 'budget_optimization')
       ?.metadata?.budgetRange,
   };
 }

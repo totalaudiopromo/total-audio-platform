@@ -3,11 +3,11 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useState } from 'react';
-import { 
-  Home, 
-  Share2, 
-  TrendingUp, 
-  Newspaper, 
+import {
+  Home,
+  Share2,
+  TrendingUp,
+  Newspaper,
   Users,
   BarChart3,
   FileText,
@@ -16,7 +16,7 @@ import {
   Menu,
   X,
   Plus,
-  Target
+  Target,
 } from 'lucide-react';
 import DesktopDashboard from './DesktopDashboard';
 
@@ -36,28 +36,28 @@ const navItems: NavItem[] = [
     label: 'Dashboard',
     href: '/',
     icon: Home,
-    category: 'primary'
+    category: 'primary',
   },
   {
     id: 'social',
     label: 'Social',
     href: '/social-posting',
     icon: Share2,
-    category: 'primary'
+    category: 'primary',
   },
   {
     id: 'analytics',
-    label: 'Analytics', 
+    label: 'Analytics',
     href: '/analytics',
     icon: TrendingUp,
-    category: 'primary'
+    category: 'primary',
   },
   {
     id: 'news',
     label: 'News',
     href: '/newsjacking',
     icon: Newspaper,
-    category: 'primary'
+    category: 'primary',
   },
   // Secondary navigation - Hamburger menu
   {
@@ -65,7 +65,7 @@ const navItems: NavItem[] = [
     label: 'Business Dashboard',
     href: '/business-dashboard',
     icon: BarChart3,
-    category: 'secondary'
+    category: 'secondary',
   },
   {
     id: 'beta',
@@ -73,50 +73,50 @@ const navItems: NavItem[] = [
     href: '/beta-management',
     icon: Users,
     category: 'secondary',
-    badge: 3
+    badge: 3,
   },
   {
     id: 'reports',
     label: 'Reports',
     href: '/reports',
     icon: FileText,
-    category: 'secondary'
+    category: 'secondary',
   },
   {
     id: 'marketing',
     label: 'Marketing',
     href: '/marketing',
     icon: Target,
-    category: 'secondary'
+    category: 'secondary',
   },
   {
     id: 'predictive-revenue',
     label: 'Predictive Revenue',
     href: '/predictive-revenue',
     icon: TrendingUp,
-    category: 'secondary'
+    category: 'secondary',
   },
   {
     id: 'revenue-intelligence',
     label: 'Revenue Intelligence',
     href: '/revenue-intelligence',
     icon: BarChart3,
-    category: 'secondary'
+    category: 'secondary',
   },
   {
     id: 'users',
     label: 'Users',
     href: '/users',
     icon: Users,
-    category: 'secondary'
+    category: 'secondary',
   },
   {
     id: 'system',
     label: 'System Status',
     href: '/system-status',
     icon: Settings,
-    category: 'secondary'
-  }
+    category: 'secondary',
+  },
 ];
 
 interface MobileNavigationProps {
@@ -127,7 +127,7 @@ interface MobileNavigationProps {
 export default function MobileNavigation({ children, newsCount = 0 }: MobileNavigationProps) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const primaryNav = navItems.filter(item => item.category === 'primary');
   const secondaryNav = navItems.filter(item => item.category === 'secondary');
 
@@ -153,11 +153,11 @@ export default function MobileNavigation({ children, newsCount = 0 }: MobileNavi
           {/* Primary Navigation */}
           <div className="postcraft-nav-section">
             <div className="postcraft-nav-section-title">Main Dashboard</div>
-            {primaryNav.map((item) => {
+            {primaryNav.map(item => {
               const IconComponent = item.icon;
               const isActive = pathname === item.href;
               const showBadge = item.id === 'news' && newsCount > 0;
-              
+
               return (
                 <Link
                   key={item.id}
@@ -188,10 +188,10 @@ export default function MobileNavigation({ children, newsCount = 0 }: MobileNavi
           {/* Secondary Navigation */}
           <div className="postcraft-nav-section">
             <div className="postcraft-nav-section-title">Management Tools</div>
-            {secondaryNav.map((item) => {
+            {secondaryNav.map(item => {
               const IconComponent = item.icon;
               const isActive = pathname === item.href;
-              
+
               return (
                 <Link
                   key={item.id}
@@ -224,12 +224,8 @@ export default function MobileNavigation({ children, newsCount = 0 }: MobileNavi
         </div>
       </div>
 
-
       {/* Main Content - Mobile and Desktop */}
-      <main className="postcraft-main-content lg:ml-64">
-        {children}
-      </main>
-
+      <main className="postcraft-main-content lg:ml-64">{children}</main>
     </div>
   );
 }

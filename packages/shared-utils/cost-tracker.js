@@ -21,33 +21,33 @@ class CostTracker {
     this.pricing = {
       anthropic: {
         'claude-sonnet-4-20250514': {
-          input: 0.003 / 1000,  // per 1K tokens
+          input: 0.003 / 1000, // per 1K tokens
           output: 0.015 / 1000,
-          perContact: 0.003 * 0.79  // Approx £0.0024 per contact (USD to GBP)
-        }
+          perContact: 0.003 * 0.79, // Approx £0.0024 per contact (USD to GBP)
+        },
       },
       perplexity: {
-        standard: 0.001 * 0.79  // per request
+        standard: 0.001 * 0.79, // per request
       },
       warm: {
-        subscription: 25  // £25/month subscription
+        subscription: 25, // £25/month subscription
       },
       twitter: {
-        enterprise: 100  // £100/month if using API
+        enterprise: 100, // £100/month if using API
       },
       airtable: {
         free: 0,
-        plus: 10  // £10/month if exceeding free tier
-      }
+        plus: 10, // £10/month if exceeding free tier
+      },
     };
 
     // Monthly budget thresholds
     this.budgets = {
-      total: options.monthlyBudget || 150,  // £150/month total
-      daily: options.dailyBudget || 5,       // £5/day average
-      anthropic: 100,  // £100/month for Claude
-      perplexity: 20,  // £20/month for Perplexity
-      subscriptions: 30  // £30/month for WARM + others
+      total: options.monthlyBudget || 150, // £150/month total
+      daily: options.dailyBudget || 5, // £5/day average
+      anthropic: 100, // £100/month for Claude
+      perplexity: 20, // £20/month for Perplexity
+      subscriptions: 30, // £30/month for WARM + others
     };
 
     this.ensureDataDir();
@@ -100,10 +100,10 @@ class CostTracker {
         perplexity: { requests: 0, cost: 0 },
         warm: { cost: 0 },
         twitter: { cost: 0 },
-        airtable: { cost: 0 }
+        airtable: { cost: 0 },
       },
       daily: {},
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date().toISOString(),
     };
   }
 
@@ -131,7 +131,7 @@ class CostTracker {
       model = 'claude-sonnet-4-20250514',
       inputTokens = 0,
       outputTokens = 0,
-      contacts = 0  // Shorthand for contact enrichment
+      contacts = 0, // Shorthand for contact enrichment
     } = options;
 
     const costs = this.loadCosts();
@@ -146,7 +146,7 @@ class CostTracker {
     } else {
       // Token-based pricing
       const pricing = this.pricing.anthropic[model];
-      cost = (inputTokens * pricing.input) + (outputTokens * pricing.output);
+      cost = inputTokens * pricing.input + outputTokens * pricing.output;
     }
 
     // Update totals
@@ -231,7 +231,7 @@ class CostTracker {
       percentUsed: (costs.total / this.budgets.total) * 100,
       services: costs.services,
       dailyAverage: this.calculateDailyAverage(costs),
-      projectedMonthly: this.projectMonthlyTotal(costs)
+      projectedMonthly: this.projectMonthlyTotal(costs),
     };
   }
 
@@ -260,11 +260,7 @@ class CostTracker {
    * Project monthly total based on current usage
    */
   projectMonthlyTotal(costs) {
-    const daysInMonth = new Date(
-      new Date().getFullYear(),
-      new Date().getMonth() + 1,
-      0
-    ).getDate();
+    const daysInMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
     const daysPassed = Object.keys(costs.daily).length;
     if (daysPassed === 0) return 0;
@@ -285,7 +281,7 @@ class CostTracker {
       warnings.push({
         type: 'daily',
         message: `Daily cost (£${today.total.toFixed(2)}) exceeded threshold (£${this.budgets.daily})`,
-        severity: 'warning'
+        severity: 'warning',
       });
     }
 
@@ -295,13 +291,13 @@ class CostTracker {
       warnings.push({
         type: 'monthly',
         message: `Monthly budget (£${this.budgets.total}) exceeded! Current: £${costs.total.toFixed(2)}`,
-        severity: 'critical'
+        severity: 'critical',
       });
     } else if (monthlyPercent >= 80) {
       warnings.push({
         type: 'monthly',
         message: `Monthly budget ${monthlyPercent.toFixed(0)}% used (£${costs.total.toFixed(2)} / £${this.budgets.total})`,
-        severity: 'warning'
+        severity: 'warning',
       });
     }
 
@@ -310,7 +306,7 @@ class CostTracker {
       warnings.push({
         type: 'anthropic',
         message: `Anthropic cost (£${costs.services.anthropic.cost.toFixed(2)}) exceeded budget (£${this.budgets.anthropic})`,
-        severity: 'warning'
+        severity: 'warning',
       });
     }
 
@@ -333,18 +329,18 @@ class CostTracker {
       anthropic: {
         requests: costs.services.anthropic.requests,
         contacts: costs.services.anthropic.contacts,
-        cost: costs.services.anthropic.cost
+        cost: costs.services.anthropic.cost,
       },
       perplexity: {
         requests: costs.services.perplexity.requests,
-        cost: costs.services.perplexity.cost
+        cost: costs.services.perplexity.cost,
       },
       subscriptions: {
         warm: costs.services.warm.cost,
         twitter: costs.services.twitter.cost,
-        airtable: costs.services.airtable.cost
+        airtable: costs.services.airtable.cost,
       },
-      total: costs.total
+      total: costs.total,
     };
   }
 
@@ -391,29 +387,29 @@ class CostTracker {
     return {
       today: {
         total: today.total,
-        breakdown: today
+        breakdown: today,
       },
       month: {
         total: costs.total,
         budget: this.budgets.total,
         remaining: summary.remaining,
         percentUsed: summary.percentUsed,
-        projectedTotal: summary.projectedMonthly
+        projectedTotal: summary.projectedMonthly,
       },
       services: {
         anthropic: {
           contacts: costs.services.anthropic.contacts,
           requests: costs.services.anthropic.requests,
           cost: costs.services.anthropic.cost,
-          budget: this.budgets.anthropic
+          budget: this.budgets.anthropic,
         },
         perplexity: {
           requests: costs.services.perplexity.requests,
           cost: costs.services.perplexity.cost,
-          budget: this.budgets.perplexity
-        }
+          budget: this.budgets.perplexity,
+        },
       },
-      warnings: this.checkThresholds(costs)
+      warnings: this.checkThresholds(costs),
     };
   }
 
@@ -437,7 +433,7 @@ class CostTracker {
     const summary = this.getMonthlySummary();
     console.log(JSON.stringify(summary, null, 2));
 
-    console.log('\n💰 Today\'s Costs:');
+    console.log("\n💰 Today's Costs:");
     const today = this.getTodayCosts();
     console.log(JSON.stringify(today, null, 2));
 

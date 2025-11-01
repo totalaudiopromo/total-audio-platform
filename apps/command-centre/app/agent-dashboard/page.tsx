@@ -76,10 +76,14 @@ const AgentDashboardPage: React.FC = () => {
             <div key={index} className="postcraft-card">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4 flex-1">
-                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center border-3 border-black ${
-                    agent.status === 'active' ? 'bg-green-100' : 'bg-gray-100'
-                  }`}>
-                    <Bot className={`w-6 h-6 ${agent.status === 'active' ? 'text-green-600' : 'text-gray-600'}`} />
+                  <div
+                    className={`w-12 h-12 rounded-lg flex items-center justify-center border-3 border-black ${
+                      agent.status === 'active' ? 'bg-green-100' : 'bg-gray-100'
+                    }`}
+                  >
+                    <Bot
+                      className={`w-6 h-6 ${agent.status === 'active' ? 'text-green-600' : 'text-gray-600'}`}
+                    />
                   </div>
                   <div className="flex-1">
                     <h3 className="font-black text-lg text-gray-900">{agent.name}</h3>
@@ -94,11 +98,13 @@ const AgentDashboardPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className={`px-4 py-2 rounded-lg border-2 border-black font-bold text-sm ${
-                  agent.status === 'active'
-                    ? 'bg-green-100 text-green-900'
-                    : 'bg-gray-100 text-gray-900'
-                }`}>
+                <div
+                  className={`px-4 py-2 rounded-lg border-2 border-black font-bold text-sm ${
+                    agent.status === 'active'
+                      ? 'bg-green-100 text-green-900'
+                      : 'bg-gray-100 text-gray-900'
+                  }`}
+                >
                   {agent.status === 'active' ? '● Active' : '○ Idle'}
                 </div>
               </div>
@@ -116,7 +122,9 @@ const AgentDashboardPage: React.FC = () => {
             <div className="flex items-start gap-3 pb-4 border-b-2 border-gray-200">
               <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
               <div>
-                <p className="font-bold text-gray-900">Social Media Agent completed content calendar</p>
+                <p className="font-bold text-gray-900">
+                  Social Media Agent completed content calendar
+                </p>
                 <p className="postcraft-text text-sm">2 minutes ago</p>
               </div>
             </div>
@@ -124,7 +132,9 @@ const AgentDashboardPage: React.FC = () => {
             <div className="flex items-start gap-3 pb-4 border-b-2 border-gray-200">
               <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
               <div>
-                <p className="font-bold text-gray-900">Email Marketing Agent sent 47 automated emails</p>
+                <p className="font-bold text-gray-900">
+                  Email Marketing Agent sent 47 automated emails
+                </p>
                 <p className="postcraft-text text-sm">15 minutes ago</p>
               </div>
             </div>
@@ -132,7 +142,9 @@ const AgentDashboardPage: React.FC = () => {
             <div className="flex items-start gap-3 pb-4 border-b-2 border-gray-200">
               <div className="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
               <div>
-                <p className="font-bold text-gray-900">Content Strategy Agent generated new blog topics</p>
+                <p className="font-bold text-gray-900">
+                  Content Strategy Agent generated new blog topics
+                </p>
                 <p className="postcraft-text text-sm">1 hour ago</p>
               </div>
             </div>

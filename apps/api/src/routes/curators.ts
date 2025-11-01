@@ -41,7 +41,7 @@ router.post('/discover', authenticateToken, async (req: AuthRequest, res: Respon
     // Discover curators from each platform
     for (const platform of platforms) {
       let platformCurators = [];
-      
+
       switch (platform) {
         case 'spotify':
           platformCurators = await curatorService.discoverSpotifyCurators(genre);
@@ -72,9 +72,8 @@ router.post('/discover', authenticateToken, async (req: AuthRequest, res: Respon
       curators: allCurators,
       total: allCurators.length,
       platforms: platforms,
-      genre: genre
+      genre: genre,
     });
-
   } catch (error) {
     logger.error('Curator discovery error:', error);
     res.status(500).json({ error: 'Failed to discover curators' });
@@ -92,7 +91,7 @@ router.get('/my-curators', authenticateToken, async (req: AuthRequest, res: Resp
     }
 
     const whereClause: any = {
-      tags: { has: 'curator' }
+      tags: { has: 'curator' },
     };
 
     if (genre) whereClause.genre = genre;
@@ -102,15 +101,14 @@ router.get('/my-curators', authenticateToken, async (req: AuthRequest, res: Resp
       where: whereClause,
       take: parseInt(limit as string),
       skip: parseInt(offset as string),
-      orderBy: { lastContactedAt: 'desc' }
+      orderBy: { lastContactedAt: 'desc' },
     });
 
     res.json({
       success: true,
       curators,
-      total: curators.length
+      total: curators.length,
     });
-
   } catch (error) {
     logger.error('Get curators error:', error);
     res.status(500).json({ error: 'Failed to get curators' });
@@ -129,21 +127,21 @@ router.get('/stats', authenticateToken, async (req: AuthRequest, res: Response) 
     const stats = await prisma.contact.groupBy({
       by: ['genre', 'role'],
       where: {
-        tags: { has: 'curator' }
+        tags: { has: 'curator' },
       },
       _count: {
-        id: true
-      }
+        id: true,
+      },
     });
 
     const platformStats = await prisma.contact.groupBy({
       by: ['tags'],
       where: {
-        tags: { has: 'curator' }
+        tags: { has: 'curator' },
       },
       _count: {
-        id: true
-      }
+        id: true,
+      },
     });
 
     res.json({
@@ -152,11 +150,10 @@ router.get('/stats', authenticateToken, async (req: AuthRequest, res: Response) 
         byGenre: stats,
         byPlatform: platformStats,
         total: await prisma.contact.count({
-          where: { tags: { has: 'curator' } }
-        })
-      }
+          where: { tags: { has: 'curator' } },
+        }),
+      },
     });
-
   } catch (error) {
     logger.error('Curator stats error:', error);
     res.status(500).json({ error: 'Failed to get curator statistics' });
@@ -180,19 +177,18 @@ router.put('/:curatorId', authenticateToken, async (req: AuthRequest, res: Respo
         email: email || undefined,
         phone: phone || undefined,
         status: status || undefined,
-        lastContactedAt: new Date()
-      }
+        lastContactedAt: new Date(),
+      },
     });
 
     res.json({
       success: true,
-      curator: updatedCurator
+      curator: updatedCurator,
     });
-
   } catch (error) {
     logger.error('Update curator error:', error);
     res.status(500).json({ error: 'Failed to update curator' });
   }
 });
 
-export default router; 
+export default router;

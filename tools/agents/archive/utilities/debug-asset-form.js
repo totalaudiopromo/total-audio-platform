@@ -2,7 +2,7 @@
 
 /**
  * Debug Asset Form Structure
- * 
+ *
  * Debug the Asset Form NEW to understand the correct field mappings
  */
 
@@ -12,22 +12,22 @@ const TypeformApiIntegration = require('./integrations/typeform-api');
 
 async function debugAssetForm() {
   console.log('🔍 Debugging Asset Form Structure - Liberty Radio Promo Agent\n');
-  
+
   try {
     const typeform = new TypeformApiIntegration();
-    
+
     // Get the Asset Form NEW
     const forms = await typeform.getRecentForms(20);
     const assetForm = forms.find(f => f.title.includes('Asset Form NEW'));
-    
+
     if (!assetForm) {
       console.log('❌ Asset Form NEW not found');
       return;
     }
-    
+
     console.log(`📋 Form: ${assetForm.title} (${assetForm.id})`);
     console.log('');
-    
+
     // Get the form structure
     const formDetails = await typeform.getForm(assetForm.id);
     console.log('🏗️ Form Fields:');
@@ -38,7 +38,7 @@ async function debugAssetForm() {
       console.log(`   Ref: ${field.ref}`);
       console.log('');
     });
-    
+
     // Get a sample response
     const responses = await typeform.getFormResponses(assetForm.id, 5);
     if (responses.length > 0) {
@@ -46,7 +46,7 @@ async function debugAssetForm() {
       const sampleResponse = responses[0];
       console.log(JSON.stringify(sampleResponse, null, 2));
       console.log('');
-      
+
       // Show field mappings
       console.log('🗂️ Field Mappings:');
       if (sampleResponse.answers) {
@@ -57,7 +57,6 @@ async function debugAssetForm() {
         });
       }
     }
-    
   } catch (error) {
     console.error('❌ Debug failed:', error.message);
     console.error('Stack trace:', error.stack);

@@ -55,6 +55,7 @@ Supabase doesn't expose arbitrary SQL execution via API without custom RPC funct
 - `PGRST202`: Could not find function `exec`
 
 The only way to run database migrations in Supabase is:
+
 1. SQL Editor (dashboard)
 2. Supabase CLI with `supabase db push`
 3. Direct PostgreSQL connection with `psql`
@@ -99,6 +100,7 @@ The voice profile feature will work immediately:
 ## Related Tables (Already Fixed)
 
 These tables were migrated in `003_fix_user_id_types.sql`:
+
 - ✅ `contacts` - user_id is TEXT
 - ✅ `pitches` - user_id is TEXT
 - ✅ `pitch_templates` - user_id is TEXT

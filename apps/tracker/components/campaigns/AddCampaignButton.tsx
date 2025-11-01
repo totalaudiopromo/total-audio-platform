@@ -14,10 +14,7 @@ export function AddCampaignButton() {
       >
         + New Campaign
       </button>
-      <CampaignModal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-      />
+      <CampaignModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
 }

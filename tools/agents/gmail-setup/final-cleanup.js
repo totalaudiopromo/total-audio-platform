@@ -13,17 +13,33 @@ const oauth2Client = new google.auth.OAuth2(
   'http://localhost:3001/callback'
 );
 
-const tokens = JSON.parse(fs.readFileSync(path.join(__dirname, '../radio-promo/gmail-token.json'), 'utf8'));
+const tokens = JSON.parse(
+  fs.readFileSync(path.join(__dirname, '../radio-promo/gmail-token.json'), 'utf8')
+);
 oauth2Client.setCredentials(tokens);
 const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
 
 // Protected Gmail labels that cannot be removed
-const PROTECTED_LABELS = ['UNREAD', 'STARRED', 'IMPORTANT', 'SENT', 'DRAFT', 'INBOX', 'TRASH', 'SPAM', 'CATEGORY_PERSONAL', 'CATEGORY_SOCIAL', 'CATEGORY_UPDATES', 'CATEGORY_FORUMS', 'CATEGORY_PROMOTIONS'];
+const PROTECTED_LABELS = [
+  'UNREAD',
+  'STARRED',
+  'IMPORTANT',
+  'SENT',
+  'DRAFT',
+  'INBOX',
+  'TRASH',
+  'SPAM',
+  'CATEGORY_PERSONAL',
+  'CATEGORY_SOCIAL',
+  'CATEGORY_UPDATES',
+  'CATEGORY_FORUMS',
+  'CATEGORY_PROMOTIONS',
+];
 
 async function getLabelMap() {
   const response = await gmail.users.labels.list({ userId: 'me' });
   const map = {};
-  response.data.labels.forEach(l => map[l.name] = l.id);
+  response.data.labels.forEach(l => (map[l.name] = l.id));
   return map;
 }
 
@@ -48,8 +64,8 @@ async function createLabel(labelName) {
       requestBody: {
         name: labelName,
         labelListVisibility: 'labelShow',
-        messageListVisibility: 'show'
-      }
+        messageListVisibility: 'show',
+      },
     });
     console.log(`✅ Created: ${labelName}`);
     return true;
@@ -69,7 +85,7 @@ async function organizeEmails(query, targetLabel, description, labelMap) {
   const search = await gmail.users.messages.list({
     userId: 'me',
     q: query,
-    maxResults: 500
+    maxResults: 500,
   });
 
   if (!search.data.messages) {
@@ -84,7 +100,7 @@ async function organizeEmails(query, targetLabel, description, labelMap) {
       const msgData = await gmail.users.messages.get({
         userId: 'me',
         id: msg.id,
-        format: 'minimal'
+        format: 'minimal',
       });
 
       // Filter out protected labels and get removable ones
@@ -98,8 +114,8 @@ async function organizeEmails(query, targetLabel, description, labelMap) {
         id: msg.id,
         requestBody: {
           addLabelIds: [labelMap[targetLabel]],
-          removeLabelIds: labelsToRemove
-        }
+          removeLabelIds: labelsToRemove,
+        },
       });
 
       processed++;
@@ -135,7 +151,7 @@ async function main() {
       'Liberty/Active',
       'Liberty/Completed/2024',
       'Liberty/Completed/2025',
-      'Junk/Marketing'
+      'Junk/Marketing',
     ];
 
     for (const label of toDelete) {
@@ -153,7 +169,7 @@ async function main() {
       'Liberty/Internal',
       'Liberty/Archive',
       'Personal/Otter AI',
-      'Personal/Gemini'
+      'Personal/Gemini',
     ];
 
     for (const label of cleanLabels) {
@@ -224,7 +240,7 @@ async function main() {
     const otterInbox = await gmail.users.messages.list({
       userId: 'me',
       q: 'from:otter.ai in:inbox',
-      maxResults: 500
+      maxResults: 500,
     });
 
     if (otterInbox.data.messages) {
@@ -233,8 +249,8 @@ async function main() {
           userId: 'me',
           id: msg.id,
           requestBody: {
-            removeLabelIds: ['INBOX']
-          }
+            removeLabelIds: ['INBOX'],
+          },
         });
       }
       console.log(`✅ Archived ${otterInbox.data.messages.length} Otter AI from inbox`);
@@ -243,7 +259,7 @@ async function main() {
     const geminiInbox = await gmail.users.messages.list({
       userId: 'me',
       q: 'from:gemini in:inbox',
-      maxResults: 500
+      maxResults: 500,
     });
 
     if (geminiInbox.data.messages) {
@@ -252,8 +268,8 @@ async function main() {
           userId: 'me',
           id: msg.id,
           requestBody: {
-            removeLabelIds: ['INBOX']
-          }
+            removeLabelIds: ['INBOX'],
+          },
         });
       }
       console.log(`✅ Archived ${geminiInbox.data.messages.length} Gemini from inbox`);
@@ -279,7 +295,6 @@ async function main() {
     console.log('  Personal/Gemini');
     console.log('  Personal/Otter AI');
     console.log('\n✅ Clean, simple, no emojis, no duplicates');
-
   } catch (error) {
     console.error('\n❌ Error:', error.message);
     throw error;

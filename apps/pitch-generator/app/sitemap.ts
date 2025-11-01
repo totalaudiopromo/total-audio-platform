@@ -1,7 +1,7 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://pitch.totalaudiopromo.com'
+  const baseUrl = 'https://pitch.totalaudiopromo.com';
 
   // Blog posts - sync with /app/blog/page.tsx
   const blogPosts = [
@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'community-radio-pitch-writing',
     'commercial-radio-pitch-templates',
     'music-pr-pitch-writing-guide',
-  ]
+  ];
 
   return [
     {
@@ -36,11 +36,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    ...blogPosts.map((slug) => ({
+    ...blogPosts.map(slug => ({
       url: `${baseUrl}/blog/${slug}`,
       lastModified: new Date('2025-10-06'),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     })),
-  ]
+  ];
 }

@@ -266,7 +266,7 @@ chris@libertymusicpr.com
     context: SkillContext
   ): Promise<Array<{ station: string; email: EmailPersonalisationOutput }>> {
     const results = await Promise.all(
-      stations.map(async (station) => {
+      stations.map(async station => {
         const email = await this.execute(
           {
             station_info: station,

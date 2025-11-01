@@ -1,7 +1,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Share2, Copy, Check, Calendar, TrendingUp, Users, Music, RefreshCw, Filter } from 'lucide-react';
+import {
+  Share2,
+  Copy,
+  Check,
+  Calendar,
+  TrendingUp,
+  Users,
+  Music,
+  RefreshCw,
+  Filter,
+} from 'lucide-react';
 
 interface AuthenticPost {
   id: string;
@@ -29,7 +39,7 @@ export default function SocialPostingPage() {
   const loadContent = async () => {
     try {
       if (!loading) setRefreshing(true);
-      
+
       const params = new URLSearchParams();
       if (selectedPlatform !== 'all') params.append('platform', selectedPlatform);
       if (selectedType !== 'all') params.append('type', selectedType);
@@ -37,7 +47,7 @@ export default function SocialPostingPage() {
 
       const response = await fetch(`/api/social-content?${params}`);
       const result = await response.json();
-      
+
       if (result.success) {
         setPosts(result.posts);
         setStats(result.stats);
@@ -64,69 +74,75 @@ export default function SocialPostingPage() {
     {
       id: 'post-1',
       platform: 'twitter',
-      content: "Built Audio Intel to solve my own problem: music PR is broken.\n\nSpent years manually enriching contacts, validating emails, writing pitches.\n\nNow it takes 30 seconds instead of 30 minutes.\n\nBeta users are processing 1000+ contacts/day.\n\nPR agencies are paying £200-500 for what we do for £45.",
+      content:
+        'Built Audio Intel to solve my own problem: music PR is broken.\n\nSpent years manually enriching contacts, validating emails, writing pitches.\n\nNow it takes 30 seconds instead of 30 minutes.\n\nBeta users are processing 1000+ contacts/day.\n\nPR agencies are paying £200-500 for what we do for £45.',
       topic: 'Product Story',
       engagement_score: 94,
       ready_to_post: true,
       character_count: 280,
       created_at: new Date().toISOString(),
-      post_type: 'founder_story'
+      post_type: 'founder_story',
     },
     {
       id: 'post-2',
       platform: 'linkedin',
-      content: "Music industry problem: 90% of PR pitches go to dead emails.\n\nI spent 3 years in music promotion watching agencies waste thousands on bad contact data.\n\nThe solution wasn't another CRM or email tool.\n\nIt was intelligent contact enrichment that understands the music industry.\n\nAudio Intel validates emails, enriches contacts, and provides submission guidelines - all in one tool.\n\nBeta users report 97% email delivery rates and 40% faster campaign setup.\n\nSometimes the best solutions come from founders who lived the problem.",
+      content:
+        "Music industry problem: 90% of PR pitches go to dead emails.\n\nI spent 3 years in music promotion watching agencies waste thousands on bad contact data.\n\nThe solution wasn't another CRM or email tool.\n\nIt was intelligent contact enrichment that understands the music industry.\n\nAudio Intel validates emails, enriches contacts, and provides submission guidelines - all in one tool.\n\nBeta users report 97% email delivery rates and 40% faster campaign setup.\n\nSometimes the best solutions come from founders who lived the problem.",
       topic: 'Industry Insight',
       engagement_score: 89,
       ready_to_post: true,
       character_count: 0,
       created_at: new Date().toISOString(),
-      post_type: 'industry_insight'
+      post_type: 'industry_insight',
     },
     {
       id: 'post-3',
       platform: 'bluesky',
-      content: "Music tech founders: stop building tools musicians don't need.\n\nI talked to 50+ artists and PR agencies before building Audio Intel.\n\nThey all said the same thing: \"I need better contact data, not another social media scheduler.\"\n\nBuild what they actually ask for, not what you think they need.",
+      content:
+        'Music tech founders: stop building tools musicians don\'t need.\n\nI talked to 50+ artists and PR agencies before building Audio Intel.\n\nThey all said the same thing: "I need better contact data, not another social media scheduler."\n\nBuild what they actually ask for, not what you think they need.',
       topic: 'Founder Advice',
       engagement_score: 87,
       ready_to_post: true,
       character_count: 0,
       created_at: new Date().toISOString(),
-      post_type: 'founder_advice'
+      post_type: 'founder_advice',
     },
     {
       id: 'post-4',
       platform: 'twitter',
-      content: "Audio Intel beta update:\n\n• 12,847 emails validated\n• 3,672 contacts enriched\n• 97.4% delivery rate\n• 4 paying beta customers\n\nBuilding in public means sharing real numbers.\n\nPre-launch but already proving product-market fit.",
+      content:
+        'Audio Intel beta update:\n\n• 12,847 emails validated\n• 3,672 contacts enriched\n• 97.4% delivery rate\n• 4 paying beta customers\n\nBuilding in public means sharing real numbers.\n\nPre-launch but already proving product-market fit.',
       topic: 'Progress Update',
       engagement_score: 91,
       ready_to_post: true,
       character_count: 0,
       created_at: new Date().toISOString(),
-      post_type: 'progress_update'
+      post_type: 'progress_update',
     },
     {
       id: 'post-5',
       platform: 'linkedin',
-      content: "Why I'm building Total Audio Promo in public:\n\n1. Accountability - can't fake progress when everyone's watching\n2. Feedback loops - customers tell me what they actually need\n3. Authenticity - no marketing BS, just real founder updates\n4. Community - other music tech founders share their experiences\n\nTransparency isn't a marketing strategy. It's how you build trust.\n\nWhat are you building? Let's connect.",
+      content:
+        "Why I'm building Total Audio Promo in public:\n\n1. Accountability - can't fake progress when everyone's watching\n2. Feedback loops - customers tell me what they actually need\n3. Authenticity - no marketing BS, just real founder updates\n4. Community - other music tech founders share their experiences\n\nTransparency isn't a marketing strategy. It's how you build trust.\n\nWhat are you building? Let's connect.",
       topic: 'Building in Public',
       engagement_score: 88,
       ready_to_post: true,
       character_count: 0,
       created_at: new Date().toISOString(),
-      post_type: 'building_in_public'
+      post_type: 'building_in_public',
     },
     {
       id: 'post-6',
       platform: 'twitter',
-      content: "Music PR agencies charge £500-2000 per campaign.\n\n50% of that cost is manual contact research.\n\nAudio Intel automates the research for £45.\n\nSame result, 90% less cost, 95% faster.\n\nThis is how you disrupt an industry.",
+      content:
+        'Music PR agencies charge £500-2000 per campaign.\n\n50% of that cost is manual contact research.\n\nAudio Intel automates the research for £45.\n\nSame result, 90% less cost, 95% faster.\n\nThis is how you disrupt an industry.',
       topic: 'Market Disruption',
       engagement_score: 92,
       ready_to_post: true,
       character_count: 0,
       created_at: new Date().toISOString(),
-      post_type: 'market_disruption'
-    }
+      post_type: 'market_disruption',
+    },
   ];
 
   const handleCopy = async (content: string, id: string) => {
@@ -141,21 +157,31 @@ export default function SocialPostingPage() {
 
   const getPlatformColor = (platform: string) => {
     switch (platform) {
-      case 'twitter': return 'bg-black text-white';
-      case 'linkedin': return 'bg-blue-600 text-white';
-      case 'bluesky': return 'bg-sky-500 text-white';
-      case 'instagram': return 'bg-gradient-to-r from-purple-500 to-pink-500 text-white';
-      default: return 'bg-gray-600 text-white';
+      case 'twitter':
+        return 'bg-black text-white';
+      case 'linkedin':
+        return 'bg-blue-600 text-white';
+      case 'bluesky':
+        return 'bg-sky-500 text-white';
+      case 'instagram':
+        return 'bg-gradient-to-r from-purple-500 to-pink-500 text-white';
+      default:
+        return 'bg-gray-600 text-white';
     }
   };
 
   const getPlatformIcon = (platform: string) => {
     switch (platform) {
-      case 'twitter': return 'X';
-      case 'linkedin': return 'in';
-      case 'bluesky': return 'BS';
-      case 'instagram': return 'IG';
-      default: return '';
+      case 'twitter':
+        return 'X';
+      case 'linkedin':
+        return 'in';
+      case 'bluesky':
+        return 'BS';
+      case 'instagram':
+        return 'IG';
+      default:
+        return '';
     }
   };
 
@@ -166,16 +192,26 @@ export default function SocialPostingPage() {
       {/* Header */}
       <div className="postcraft-section">
         <div className="postcraft-section-header text-center">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">Authentic Content</h1>
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+            Authentic Content
+          </h1>
           <p className="text-gray-600">Ready-to-share posts in your authentic voice</p>
           <div className="flex items-center justify-center gap-3 mt-4">
-            <button onClick={loadContent} disabled={refreshing} className={`postcraft-button ${refreshing ? 'opacity-60 cursor-not-allowed' : ''}`} aria-label="Refresh content">
+            <button
+              onClick={loadContent}
+              disabled={refreshing}
+              className={`postcraft-button ${refreshing ? 'opacity-60 cursor-not-allowed' : ''}`}
+              aria-label="Refresh content"
+            >
               <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
               Refresh
             </button>
             <div className="postcraft-status">
               <div className="postcraft-status-dot"></div>
-              <span>{displayPosts.length} posts ready {metrics && `• ${Number(metrics.customers) || 0} customers`}</span>
+              <span>
+                {displayPosts.length} posts ready{' '}
+                {metrics && `• ${Number(metrics.customers) || 0} customers`}
+              </span>
             </div>
           </div>
         </div>
@@ -188,13 +224,13 @@ export default function SocialPostingPage() {
             <Filter className="w-5 h-5 text-gray-600" />
             <h3 className="font-semibold text-gray-900">Content Filters</h3>
           </div>
-          
+
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Platform</label>
               <select
                 value={selectedPlatform}
-                onChange={(e) => setSelectedPlatform(e.target.value)}
+                onChange={e => setSelectedPlatform(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="all">All Platforms</option>
@@ -204,12 +240,12 @@ export default function SocialPostingPage() {
                 <option value="instagram">Instagram</option>
               </select>
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Content Type</label>
               <select
                 value={selectedType}
-                onChange={(e) => setSelectedType(e.target.value)}
+                onChange={e => setSelectedType(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="all">All Types</option>
@@ -232,7 +268,11 @@ export default function SocialPostingPage() {
               </div>
             </div>
             <div className="postcraft-metric-value">
-              {stats?.averageEngagement || Math.round(displayPosts.reduce((sum, p) => sum + p.engagement_score, 0) / displayPosts.length)}%
+              {stats?.averageEngagement ||
+                Math.round(
+                  displayPosts.reduce((sum, p) => sum + p.engagement_score, 0) / displayPosts.length
+                )}
+              %
             </div>
             <div className="postcraft-metric-label">Avg Engagement Score</div>
           </div>
@@ -273,7 +313,7 @@ export default function SocialPostingPage() {
           <div className="postcraft-section-header">
             <h2>Your Authentic Content Library</h2>
           </div>
-          
+
           {loading && posts.length === 0 ? (
             <div className="space-y-4">
               {[1, 2, 3].map(i => (
@@ -282,51 +322,53 @@ export default function SocialPostingPage() {
             </div>
           ) : (
             <div className="grid gap-6">
-              {displayPosts.map((post) => (
-              <div key={post.id} className="postcraft-metric-card">
-                {/* Post Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(post.platform)}`}>
-                      {getPlatformIcon(post.platform)} {post.platform}
-                    </span>
-                    <span className="postcraft-metric-badge postcraft-badge-info">
-                      {post.topic}
-                    </span>
-                    <span className="postcraft-metric-badge postcraft-badge-success">
-                      {post.engagement_score}% engagement
-                    </span>
+              {displayPosts.map(post => (
+                <div key={post.id} className="postcraft-metric-card">
+                  {/* Post Header */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(post.platform)}`}
+                      >
+                        {getPlatformIcon(post.platform)} {post.platform}
+                      </span>
+                      <span className="postcraft-metric-badge postcraft-badge-info">
+                        {post.topic}
+                      </span>
+                      <span className="postcraft-metric-badge postcraft-badge-success">
+                        {post.engagement_score}% engagement
+                      </span>
+                    </div>
+
+                    <button
+                      onClick={() => handleCopy(post.content, post.id)}
+                      className={`postcraft-button ${copiedId === post.id ? 'bg-green-100 text-green-800' : ''}`}
+                    >
+                      {copiedId === post.id ? (
+                        <>
+                          <Check className="w-4 h-4" />
+                          Copied!
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-4 h-4" />
+                          Copy Post
+                        </>
+                      )}
+                    </button>
                   </div>
-                  
-                  <button
-                    onClick={() => handleCopy(post.content, post.id)}
-                    className={`postcraft-button ${copiedId === post.id ? 'bg-green-100 text-green-800' : ''}`}
-                  >
-                    {copiedId === post.id ? (
-                      <>
-                        <Check className="w-4 h-4" />
-                        Copied!
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-4 h-4" />
-                        Copy Post
-                      </>
-                    )}
-                  </button>
-                </div>
 
-                {/* Post Content */}
-                <div className="bg-gray-50 p-4 rounded border border-gray-200 font-mono text-sm text-gray-800 whitespace-pre-line">
-                  {post.content}
-                </div>
+                  {/* Post Content */}
+                  <div className="bg-gray-50 p-4 rounded border border-gray-200 font-mono text-sm text-gray-800 whitespace-pre-line">
+                    {post.content}
+                  </div>
 
-                {/* Post Footer */}
-                <div className="flex items-center justify-between mt-3 text-xs text-gray-500">
-                  <span>Character count: {post.character_count || post.content.length}</span>
-                  <span>Ready to post immediately</span>
+                  {/* Post Footer */}
+                  <div className="flex items-center justify-between mt-3 text-xs text-gray-500">
+                    <span>Character count: {post.character_count || post.content.length}</span>
+                    <span>Ready to post immediately</span>
+                  </div>
                 </div>
-              </div>
               ))}
             </div>
           )}
@@ -341,19 +383,27 @@ export default function SocialPostingPage() {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div>
-                <div className="font-bold text-lg text-blue-600">{Number(metrics.customers) || 0}</div>
+                <div className="font-bold text-lg text-blue-600">
+                  {Number(metrics.customers) || 0}
+                </div>
                 <div className="text-gray-600">Beta Customers</div>
               </div>
               <div>
-                <div className="font-bold text-lg text-green-600">{metrics.emailsValidated?.toLocaleString() || '0'}</div>
+                <div className="font-bold text-lg text-green-600">
+                  {metrics.emailsValidated?.toLocaleString() || '0'}
+                </div>
                 <div className="text-gray-600">Emails Validated</div>
               </div>
               <div>
-                <div className="font-bold text-lg text-purple-600">{metrics.contactsEnriched?.toLocaleString() || '0'}</div>
+                <div className="font-bold text-lg text-purple-600">
+                  {metrics.contactsEnriched?.toLocaleString() || '0'}
+                </div>
                 <div className="text-gray-600">Contacts Enriched</div>
               </div>
               <div>
-                <div className="font-bold text-lg text-orange-600">{metrics.deliveryRate || '0%'}</div>
+                <div className="font-bold text-lg text-orange-600">
+                  {metrics.deliveryRate || '0%'}
+                </div>
                 <div className="text-gray-600">Delivery Rate</div>
               </div>
             </div>
@@ -365,22 +415,29 @@ export default function SocialPostingPage() {
 
         {/* Instructions */}
         <div className="postcraft-section">
-          <h3 className="text-lg font-semibold mb-3 text-gray-900">Endless Authentic Content Stream</h3>
+          <h3 className="text-lg font-semibold mb-3 text-gray-900">
+            Endless Authentic Content Stream
+          </h3>
           <div className="text-sm text-gray-700 leading-6">
             <p className="mb-3">
-              <strong>1. Endless Stream:</strong> Click refresh for new posts anytime. Content auto-generates with real Audio Intel metrics.
+              <strong>1. Endless Stream:</strong> Click refresh for new posts anytime. Content
+              auto-generates with real Audio Intel metrics.
             </p>
             <p className="mb-3">
-              <strong>2. Platform Filtering:</strong> Use filters to get platform-specific content (Twitter, LinkedIn, Bluesky, Instagram).
+              <strong>2. Platform Filtering:</strong> Use filters to get platform-specific content
+              (Twitter, LinkedIn, Bluesky, Instagram).
             </p>
             <p className="mb-3">
-              <strong>3. Content Types:</strong> Progress updates, founder stories, industry insights, customer stories - all in your voice.
+              <strong>3. Content Types:</strong> Progress updates, founder stories, industry
+              insights, customer stories - all in your voice.
             </p>
             <p className="mb-3">
-              <strong>4. Real Numbers:</strong> Every post includes actual Audio Intel metrics for maximum authenticity.
+              <strong>4. Real Numbers:</strong> Every post includes actual Audio Intel metrics for
+              maximum authenticity.
             </p>
             <p>
-              <strong>5. High Engagement:</strong> Content optimized for 85-95% engagement rates based on your authentic founder story.
+              <strong>5. High Engagement:</strong> Content optimized for 85-95% engagement rates
+              based on your authentic founder story.
             </p>
           </div>
         </div>

@@ -16,7 +16,8 @@ async function createBundleProduct() {
     // Create the product
     const product = await stripe.products.create({
       name: 'Total Audio Bundle',
-      description: 'Audio Intel + Pitch Generator - Complete music promotion workflow. Save £5/month compared to buying separately.',
+      description:
+        'Audio Intel + Pitch Generator - Complete music promotion workflow. Save £5/month compared to buying separately.',
       metadata: {
         bundle: 'true',
         includes: 'audio-intel,pitch-generator',
@@ -69,7 +70,6 @@ async function createBundleProduct() {
     console.log('NEXT_PUBLIC_STRIPE_PRICE_BUNDLE_MONTHLY=' + monthlyPrice.id);
     console.log('NEXT_PUBLIC_STRIPE_PRICE_BUNDLE_ANNUAL=' + annualPrice.id);
     console.log('─────────────────────────────────────────────────\n');
-
   } catch (error) {
     console.error('Error creating bundle product:', error.message);
     process.exit(1);

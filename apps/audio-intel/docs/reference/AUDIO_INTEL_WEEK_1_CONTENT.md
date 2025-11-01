@@ -1,6 +1,6 @@
 # 🎵 AUDIO INTEL - WEEK 1 CONTENT CALENDAR
 
-*Notion-Powered Social Media Posts for Beta User Acquisition*
+_Notion-Powered Social Media Posts for Beta User Acquisition_
 
 ## 🚀 **QUICK START GUIDE**
 

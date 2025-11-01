@@ -15,6 +15,7 @@ After merge, command-centre will deploy successfully.
 ## Repository Cleanup (4,605 lines reduced)
 
 ### Removed Duplicates
+
 - Deleted `.ai-agents/` directory (100% duplicate of `docs/ai-agents/`)
 - Consolidated 5 overlapping context files into single `CLAUDE.md`
 - Removed CodeRabbit configuration (service unused)
@@ -22,8 +23,9 @@ After merge, command-centre will deploy successfully.
 - Removed session-snapshots directory
 
 ### Organized Structure
+
 - Created `scripts/` directory for shell scripts
-- Created `tools/outreach/` for email campaigns  
+- Created `tools/outreach/` for email campaigns
 - Created `tools/social-auto-poster/` for automation
 - Updated all file references in package.json
 
@@ -32,18 +34,22 @@ After merge, command-centre will deploy successfully.
 ## New Features
 
 ### 1. Unified Social Auto-Poster
+
 Location: `tools/social-auto-poster/`
 
 Complete "set and forget" social media posting system:
+
 - Post to LinkedIn, Bluesky, Threads with one command
 - Simple setup wizard consolidates all auth
 - Auto-scheduler runs in background
 - Content queue for automatic posting
 
-### 2. Radio Promoter Outreach System  
+### 2. Radio Promoter Outreach System
+
 Location: `tools/outreach/`
 
 Ready-to-use email outreach for Audio Intel user acquisition:
+
 - 3 proven email templates (copy-paste ready)
 - Contact sources (LinkedIn, directories)
 - ConvertKit setup guide (10 minutes)
@@ -52,7 +58,9 @@ Ready-to-use email outreach for Audio Intel user acquisition:
 No demos needed - fully self-serve.
 
 ### 3. SEO Improvements
+
 Fixed Audio Intel SEO issues:
+
 - Corrected Open Graph image paths
 - Fixed URLs (audiointel.com → intel.totalaudiopromo.com)
 - Added robots directives
@@ -63,7 +71,9 @@ Fixed Audio Intel SEO issues:
 ## Development Workflow Updates
 
 ### Vercel Preview Workflow (No More Localhost)
+
 Updated `CLAUDE.md` with new development workflow:
+
 - Push to branch → instant preview URL (30 seconds)
 - Claude checks with WebFetch (no puppeteer needed)
 - Faster feedback loop

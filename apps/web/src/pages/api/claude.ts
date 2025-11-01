@@ -9,7 +9,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { prompt, model: modelOverride } = req.body || {};
   const MODEL = modelOverride || process.env.ANTHROPIC_MODEL;
   if (!MODEL) {
-    return res.status(500).json({ error: 'Model not configured. Pass model in request or set ANTHROPIC_MODEL.' });
+    return res
+      .status(500)
+      .json({ error: 'Model not configured. Pass model in request or set ANTHROPIC_MODEL.' });
   }
 
   try {
@@ -18,13 +20,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       headers: {
         'x-api-key': API_KEY,
         'content-type': 'application/json',
-        'anthropic-version': '2023-06-01'
+        'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
         model: MODEL,
         max_tokens: 1024,
-        messages: [{ role: 'user', content: prompt }]
-      })
+        messages: [{ role: 'user', content: prompt }],
+      }),
     });
 
     const data = await response.json();

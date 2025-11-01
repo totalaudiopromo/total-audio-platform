@@ -1,10 +1,11 @@
 ---
-title: "🎨 UPDATED Total Audio Brand Guidelines - Command Centre Era"
+title: '🎨 UPDATED Total Audio Brand Guidelines - Command Centre Era'
 notion_url: https://www.notion.so/UPDATED-Total-Audio-Brand-Guidelines-Command-Centre-Era-25d0a35b21ed818981c0f93f53909ee6
 exported_at: 2025-09-26T14:33:11.022Z
 ---
 
 # 🎨 UPDATED Total Audio Brand Guidelines - Command Centre Era
+
 _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 ## 🎯 STRATEGIC SHIFT: REAL COMPETITOR ANALYSIS
@@ -51,7 +52,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 :root {
   /* Grayscale Foundation */
   --color-base-50: #fafafa;
-  --color-base-100: #f8f9fa;  /* Light grey background */
+  --color-base-100: #f8f9fa; /* Light grey background */
   --color-base-200: #e5e5e5;
   --color-base-300: #d4d4d4;
   --color-base-400: #a3a3a3;
@@ -126,19 +127,15 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 /* Tool-Specific Texture Overlays */
 .texture-intel {
-  background: linear-gradient(
-    135deg, 
-    rgba(59, 130, 246, 0.1) 0%, 
-    transparent 50%
-  ), url('/assets/textures/drs-paper-light.webp');
+  background:
+    linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    url('/assets/textures/drs-paper-light.webp');
 }
 
 .texture-pulse {
-  background: linear-gradient(
-    135deg, 
-    rgba(34, 197, 94, 0.1) 0%, 
-    transparent 50%
-  ), url('/assets/textures/drs-paper-light.webp');
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+    url('/assets/textures/drs-paper-light.webp');
 }
 ```
 
@@ -169,14 +166,14 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 ### Dark Mode Colour Adjustments
 
 ```css
-[data-theme="dark"] {
+[data-theme='dark'] {
   /* Inverted Grayscale */
   --color-base-50: #0a0a0a;
   --color-base-100: #171717;
   --color-base-200: #262626;
   --color-base-800: #e5e5e5;
   --color-base-900: #f8f9fa;
-  
+
   /* Tool Colours - Slightly Desaturated for Dark */
   --color-intel-500: #60a5fa; /* Lighter blue */
   --color-pulse-500: #4ade80; /* Lighter green */
@@ -206,16 +203,16 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
   --texture-paper: url('/assets/textures/drs-paper-light.webp');
   --texture-canvas: url('/assets/textures/drs-canvas-light.webp');
   --texture-noise: url('/assets/textures/drs-noise-light.webp');
-  
+
   --blend-mode: multiply;
   --overlay-opacity: 0.1;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --texture-paper: url('/assets/textures/drs-paper-dark.webp');
   --texture-canvas: url('/assets/textures/drs-canvas-dark.webp');
   --texture-noise: url('/assets/textures/drs-noise-dark.webp');
-  
+
   --blend-mode: screen;
   --overlay-opacity: 0.15;
 }
@@ -234,11 +231,9 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 /* Audio Intel Active State */
 .intel-active {
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, var(--overlay-opacity)) 0%,
-    transparent 50%
-  ), var(--texture-paper);
+  background:
+    linear-gradient(135deg, rgba(59, 130, 246, var(--overlay-opacity)) 0%, transparent 50%),
+    var(--texture-paper);
 }
 ```
 

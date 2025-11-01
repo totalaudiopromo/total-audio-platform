@@ -7,7 +7,9 @@ interface CommandProps {
 
 const Command = ({ children, className = '' }: CommandProps) => {
   return (
-    <div className={`flex h-full w-full flex-col overflow-hidden rounded-md bg-white text-gray-950 ${className}`}>
+    <div
+      className={`flex h-full w-full flex-col overflow-hidden rounded-md bg-white text-gray-950 ${className}`}
+    >
       {children}
     </div>
   );
@@ -40,7 +42,7 @@ const CommandInput = ({ placeholder, value, onValueChange, className = '' }: Com
         className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-gray-500 disabled:cursor-not-allowed disabled:opacity-50"
         placeholder={placeholder}
         value={value}
-        onChange={(e) => onValueChange?.(e.target.value)}
+        onChange={e => onValueChange?.(e.target.value)}
       />
     </div>
   );
@@ -53,9 +55,7 @@ interface CommandListProps {
 
 const CommandList = ({ children, className = '' }: CommandListProps) => {
   return (
-    <div className={`max-h-[300px] overflow-y-auto overflow-x-hidden ${className}`}>
-      {children}
-    </div>
+    <div className={`max-h-[300px] overflow-y-auto overflow-x-hidden ${className}`}>{children}</div>
   );
 };
 
@@ -79,4 +79,4 @@ const CommandItem = ({ children, onSelect, className = '' }: CommandItemProps) =
   );
 };
 
-export { Command, CommandInput, CommandList, CommandItem }; 
+export { Command, CommandInput, CommandList, CommandItem };

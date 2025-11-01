@@ -4,11 +4,16 @@ const path = require('path');
 // ========================================
 // 🚨 REPLACE THESE WITH YOUR ACTUAL AIRTABLE CREDENTIALS
 // ========================================
-process.env.AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY || 'patOohG8Gg008SKWj.fd0e179e09416b65e61ae4fc97b29136a79f769809446aadbccebebcd060f6e1';
+process.env.AIRTABLE_API_KEY =
+  process.env.AIRTABLE_API_KEY ||
+  'patOohG8Gg008SKWj.fd0e179e09416b65e61ae4fc97b29136a79f769809446aadbccebebcd060f6e1';
 process.env.AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appx7uTQWRH8cIC20';
-process.env.AIRTABLE_CONTACTS_TABLE_ID = process.env.AIRTABLE_CONTACTS_TABLE_ID || 'tblcZnUsB4Swyjcip';
-process.env.AIRTABLE_CAMPAIGNS_TABLE_ID = process.env.AIRTABLE_CAMPAIGNS_TABLE_ID || 'tblvRvF1pqpFnixnK';
-process.env.AIRTABLE_INTERACTIONS_TABLE_ID = process.env.AIRTABLE_INTERACTIONS_TABLE_ID || 'tbl0bjeo3ZwpzRQyV';
+process.env.AIRTABLE_CONTACTS_TABLE_ID =
+  process.env.AIRTABLE_CONTACTS_TABLE_ID || 'tblcZnUsB4Swyjcip';
+process.env.AIRTABLE_CAMPAIGNS_TABLE_ID =
+  process.env.AIRTABLE_CAMPAIGNS_TABLE_ID || 'tblvRvF1pqpFnixnK';
+process.env.AIRTABLE_INTERACTIONS_TABLE_ID =
+  process.env.AIRTABLE_INTERACTIONS_TABLE_ID || 'tbl0bjeo3ZwpzRQyV';
 process.env.AIRTABLE_EMAILS_TABLE_ID = process.env.AIRTABLE_EMAILS_TABLE_ID || 'tblodWpE3Bh7XxPID';
 // ========================================
 
@@ -23,7 +28,9 @@ async function testDuplicateRemoval() {
 
     // Import the service using ts-node
     const { AirtableDuplicateRemoval } = require('ts-node/register');
-    const { AirtableDuplicateRemoval: RemovalService } = require('./src/services/airtableDuplicateRemoval');
+    const {
+      AirtableDuplicateRemoval: RemovalService,
+    } = require('./src/services/airtableDuplicateRemoval');
 
     // Create service instance
     const removalService = RemovalService.getRemovalServiceForUser('test-user');
@@ -48,7 +55,7 @@ async function testDuplicateRemoval() {
     if (dryRunResult.duplicateGroups.length > 0) {
       console.log('\n📧 Duplicate Groups Found:');
       console.log('=====================================');
-      
+
       dryRunResult.duplicateGroups.slice(0, 5).forEach((group, index) => {
         console.log(`\n${index + 1}. Email: ${group.email}`);
         console.log(`   Records: ${group.records.length}`);
@@ -71,7 +78,6 @@ async function testDuplicateRemoval() {
     } else {
       console.log('\n✅ No duplicates found to remove!');
     }
-
   } catch (error) {
     console.error('❌ Error during duplicate removal test:', error);
     process.exit(1);
@@ -79,4 +85,4 @@ async function testDuplicateRemoval() {
 }
 
 // Run the test
-testDuplicateRemoval(); 
+testDuplicateRemoval();

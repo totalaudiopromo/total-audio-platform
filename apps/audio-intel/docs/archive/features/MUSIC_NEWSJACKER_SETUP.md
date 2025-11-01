@@ -138,8 +138,8 @@ musicIndustryKeywords: [
   'music industry',
   'independent artist',
   // Add your specific terms here
-  'your_keyword_here'
-]
+  'your_keyword_here',
+];
 ```
 
 ### Adjust Scoring
@@ -148,7 +148,7 @@ Modify the scoring formula in the `fetchMusicNews` method:
 
 ```typescript
 // Change the balance (currently 35% recency + 65% importance)
-const totalScore = (recencyScore * 0.35) + (importanceScore * 0.65);
+const totalScore = recencyScore * 0.35 + importanceScore * 0.65;
 ```
 
 ---

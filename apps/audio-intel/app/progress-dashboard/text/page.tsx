@@ -1,93 +1,109 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Save, Download, Wand2, Sparkles, MessageSquare, Loader2, Check, Copy, RotateCcw } from "lucide-react"
+import { useState } from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import {
+  Save,
+  Download,
+  Wand2,
+  Sparkles,
+  MessageSquare,
+  Loader2,
+  Check,
+  Copy,
+  RotateCcw,
+} from 'lucide-react';
 
 export default function TextStudioPage() {
-  const [textContent, setTextContent] = useState("")
-  const [isProcessing, setIsProcessing] = useState(false)
-  const [aiPrompt, setAiPrompt] = useState("")
-  const [aiResponse, setAiResponse] = useState("")
-  const [generationPrompt, setGenerationPrompt] = useState("")
-  const [generatedText, setGeneratedText] = useState("")
+  const [textContent, setTextContent] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [aiResponse, setAiResponse] = useState('');
+  const [generationPrompt, setGenerationPrompt] = useState('');
+  const [generatedText, setGeneratedText] = useState('');
   const [textStats, setTextStats] = useState({
     words: 0,
     characters: 0,
     sentences: 0,
-    readingTime: "0 min",
-  })
+    readingTime: '0 min',
+  });
 
   const updateTextStats = (text: string) => {
-    const words = text.trim().split(/\s+/).filter(Boolean).length
-    const characters = text.length
-    const sentences = text.split(/[.!?]+/).filter(Boolean).length
-    const readingTime = Math.ceil(words / 200) // Assuming 200 words per minute reading speed
+    const words = text.trim().split(/\s+/).filter(Boolean).length;
+    const characters = text.length;
+    const sentences = text.split(/[.!?]+/).filter(Boolean).length;
+    const readingTime = Math.ceil(words / 200); // Assuming 200 words per minute reading speed
 
     setTextStats({
       words,
       characters,
       sentences,
       readingTime: `${readingTime} min`,
-    })
-  }
+    });
+  };
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newText = e.target.value
-    setTextContent(newText)
-    updateTextStats(newText)
-  }
+    const newText = e.target.value;
+    setTextContent(newText);
+    updateTextStats(newText);
+  };
 
   const handleAIProcess = () => {
-    if (!aiPrompt.trim() || !textContent.trim()) return
+    if (!aiPrompt.trim() || !textContent.trim()) return;
 
-    setIsProcessing(true)
+    setIsProcessing(true);
 
     // Simulate AI processing
     setTimeout(() => {
       setAiResponse(
-        "I've analysed your text and made the following improvements: fixed grammar issues, improved sentence structure, and enhanced overall readability. The tone is now more professional and engaging.",
-      )
+        "I've analysed your text and made the following improvements: fixed grammar issues, improved sentence structure, and enhanced overall readability. The tone is now more professional and engaging."
+      );
 
       // In a real implementation, this would be the result from an LLM
-      setTextContent(textContent) // Here we'd update with the improved text
-      updateTextStats(textContent)
+      setTextContent(textContent); // Here we'd update with the improved text
+      updateTextStats(textContent);
 
-      setIsProcessing(false)
-    }, 2000)
-  }
+      setIsProcessing(false);
+    }, 2000);
+  };
 
   const handleAIGenerate = () => {
-    if (!generationPrompt.trim()) return
+    if (!generationPrompt.trim()) return;
 
-    setIsProcessing(true)
+    setIsProcessing(true);
 
     // Simulate AI processing
     setTimeout(() => {
       const generatedContent =
-        "This is a sample of AI-generated text based on your prompt. In a real implementation, this would be content created by a language model that follows your specific instructions and requirements. The text would be tailored to your desired tone, style, and purpose."
+        'This is a sample of AI-generated text based on your prompt. In a real implementation, this would be content created by a language model that follows your specific instructions and requirements. The text would be tailored to your desired tone, style, and purpose.';
 
-      setGeneratedText(generatedContent)
-      updateTextStats(generatedContent)
+      setGeneratedText(generatedContent);
+      updateTextStats(generatedContent);
       setAiResponse(
-        "I've generated text based on your prompt. The content follows your specified parameters and is ready for further editing or refinement.",
-      )
+        "I've generated text based on your prompt. The content follows your specified parameters and is ready for further editing or refinement."
+      );
 
-      setIsProcessing(false)
-    }, 2000)
-  }
+      setIsProcessing(false);
+    }, 2000);
+  };
 
   const handleCopyText = () => {
-    navigator.clipboard.writeText(textContent || generatedText)
-  }
+    navigator.clipboard.writeText(textContent || generatedText);
+  };
 
   return (
     <div>
@@ -159,7 +175,7 @@ export default function TextStudioPage() {
                       placeholder="E.g., Write a professional email to schedule a meeting, create a product description for a new smartphone..."
                       className="min-h-[100px] border-2 border-black rounded-xl"
                       value={generationPrompt}
-                      onChange={(e) => setGenerationPrompt(e.target.value)}
+                      onChange={e => setGenerationPrompt(e.target.value)}
                     />
                   </div>
 
@@ -252,12 +268,14 @@ export default function TextStudioPage() {
 
             <div className="space-y-4">
               <div>
-                <Label className="font-bold mb-2 block">What would you like to do with your text?</Label>
+                <Label className="font-bold mb-2 block">
+                  What would you like to do with your text?
+                </Label>
                 <Textarea
                   placeholder="E.g., Improve grammar, make it more concise, change the tone to be more professional..."
                   className="min-h-[80px] border-2 border-black rounded-xl"
                   value={aiPrompt}
-                  onChange={(e) => setAiPrompt(e.target.value)}
+                  onChange={e => setAiPrompt(e.target.value)}
                 />
               </div>
 
@@ -396,7 +414,10 @@ export default function TextStudioPage() {
                     </div>
                   </div>
 
-                  <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold mt-4">
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 border-black rounded-xl font-bold mt-4"
+                  >
                     <Sparkles className="h-4 w-4 mr-2" /> Detailed Analysis
                   </Button>
                 </TabsContent>
@@ -428,7 +449,10 @@ export default function TextStudioPage() {
                 <Button className="w-full bg-black hover:bg-black/80 text-white rounded-xl border-2 border-black font-bold">
                   <Save className="h-4 w-4 mr-2" /> Save Project
                 </Button>
-                <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold">
+                <Button
+                  variant="outline"
+                  className="w-full border-2 border-black rounded-xl font-bold"
+                >
                   <Download className="h-4 w-4 mr-2" /> Export Text
                 </Button>
                 <Button
@@ -444,5 +468,5 @@ export default function TextStudioPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -41,7 +41,7 @@ import * as path from 'path';
 interface SocialPost {
   title: string;
   content: string;
-  platform: string[];  // Split by |
+  platform: string[]; // Split by |
   contentType: string;
   scheduledTime: string;
   utmTracking: string;
@@ -50,7 +50,7 @@ interface SocialPost {
 function loadPostsFromCSV(): SocialPost[] {
   const csvPath = './content/ready-posts.csv';
   const csvContent = fs.readFileSync(csvPath, 'utf8');
-  
+
   // Parse CSV and return structured posts
   // Implementation details...
 }
@@ -60,14 +60,17 @@ function processContentForUK(content: string): string {
   content = content.replace(/realize/g, 'realise');
   content = content.replace(/organize/g, 'organise');
   // Remove emojis
-  content = content.replace(/[\u{1f300}-\u{1f5ff}\u{1f900}-\u{1f9ff}\u{1f600}-\u{1f64f}\u{1f680}-\u{1f6ff}\u{2600}-\u{26ff}\u{2700}-\u{27bf}]/gu, '');
+  content = content.replace(
+    /[\u{1f300}-\u{1f5ff}\u{1f900}-\u{1f9ff}\u{1f600}-\u{1f64f}\u{1f680}-\u{1f6ff}\u{2600}-\u{26ff}\u{2700}-\u{27bf}]/gu,
+    ''
+  );
   return content;
 }
 
 function shouldPostNow(scheduledTime: string): boolean {
   const now = new Date();
   const scheduled = new Date(scheduledTime);
-  
+
   // Check if within 15 minutes of scheduled time
   const diff = Math.abs(now.getTime() - scheduled.getTime());
   return diff < 15 * 60 * 1000; // 15 minutes
@@ -113,22 +116,22 @@ import { postToBluesky } from './platforms/bluesky';
 
 async function runAutomation() {
   const posts = loadPostsFromCSV();
-  
+
   for (const post of posts) {
     if (shouldPostNow(post.scheduledTime)) {
       const processedContent = processContentForUK(post.content);
-      
+
       // Add UTM tracking to links
       const finalContent = processedContent.replace(
         /intel\.totalaudiopromo\.com/g,
         `[intel.totalaudiopromo.com](http://intel.totalaudiopromo.com)${post.utmTracking}`
       );
-      
+
       // Post to each platform
       for (const platform of post.platform) {
         try {
           let success = false;
-          
+
           switch (platform) {
             case 'Twitter/X':
               success = await postToTwitter(finalContent);
@@ -140,7 +143,7 @@ async function runAutomation() {
               success = await postToBluesky(finalContent);
               break;
           }
-          
+
           if (success) {
             updatePostStatus(`${post.title} - ${platform}`, 'posted');
           } else {

@@ -5,6 +5,7 @@ Shared utilities for the Total Audio Promo platform - used across agents, apps, 
 ## Utilities
 
 ### AgentLogger
+
 Centralized logging and status tracking for automation agents.
 
 ```javascript
@@ -17,6 +18,7 @@ logger.complete({ itemsProcessed: 100 });
 ```
 
 ### CostTracker
+
 Track API costs with budget management (£150/month budget).
 
 ```javascript
@@ -27,7 +29,7 @@ await tracker.recordAnthropicUsage({
   model: 'claude-sonnet-4-20250514',
   inputTokens: 1000,
   outputTokens: 500,
-  contacts: 10
+  contacts: 10,
 });
 
 const summary = await tracker.getMonthlySummary();
@@ -35,6 +37,7 @@ console.log(`Spent £${summary.total} of £${summary.budget} budget`);
 ```
 
 ### RetryWrapper
+
 Exponential backoff retry logic for API calls.
 
 ```javascript
@@ -55,6 +58,7 @@ const response = await retry.anthropicWithRetry(client, {
 ```
 
 ### EmailAlerts
+
 Email notification system for agent failures, cost alerts, token expiry.
 
 ```javascript
@@ -65,13 +69,13 @@ const alerts = new EmailAlerts();
 // Alert on agent failure
 await alerts.alertAgentFailure('contact-enrichment', error, {
   contactsProcessed: 50,
-  contactsFailed: 5
+  contactsFailed: 5,
 });
 
 // Alert on cost threshold
-await alerts.alertCostThreshold(6.50, {
-  anthropic: 4.20,
-  perplexity: 2.30
+await alerts.alertCostThreshold(6.5, {
+  anthropic: 4.2,
+  perplexity: 2.3,
 });
 ```
 

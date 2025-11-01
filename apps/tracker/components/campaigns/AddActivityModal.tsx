@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@total-audio/core-db/client';
 import { X } from 'lucide-react';
 
 interface AddActivityModalProps {
@@ -29,7 +29,9 @@ export function AddActivityModal({
 }: AddActivityModalProps) {
   const [activityType, setActivityType] = useState('email_sent');
   const [description, setDescription] = useState('');
-  const [activityDate, setActivityDate] = useState(new Date().toISOString().split('T')[0]);
+  const [activityDate, setActivityDate] = useState(
+    new Date().toISOString().split('T')[0]
+  );
   const [notes, setNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -97,11 +99,11 @@ export function AddActivityModal({
             </label>
             <select
               value={activityType}
-              onChange={(e) => setActivityType(e.target.value)}
+              onChange={e => setActivityType(e.target.value)}
               className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               required
             >
-              {ACTIVITY_TYPES.map((type) => (
+              {ACTIVITY_TYPES.map(type => (
                 <option key={type.value} value={type.value}>
                   {type.label}
                 </option>
@@ -116,7 +118,7 @@ export function AddActivityModal({
             <input
               type="text"
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={e => setDescription(e.target.value)}
               placeholder="e.g., Initial pitch sent to 15 contacts"
               className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               required
@@ -130,7 +132,7 @@ export function AddActivityModal({
             <input
               type="date"
               value={activityDate}
-              onChange={(e) => setActivityDate(e.target.value)}
+              onChange={e => setActivityDate(e.target.value)}
               className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               required
             />
@@ -142,7 +144,7 @@ export function AddActivityModal({
             </label>
             <textarea
               value={notes}
-              onChange={(e) => setNotes(e.target.value)}
+              onChange={e => setNotes(e.target.value)}
               placeholder="Additional details about this activity..."
               rows={3}
               className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"

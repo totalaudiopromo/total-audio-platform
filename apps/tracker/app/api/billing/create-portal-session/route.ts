@@ -1,14 +1,17 @@
 import { NextResponse } from 'next/server';
 import { stripe, getOrCreateCustomerId } from '@/lib/stripe';
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
 export async function POST() {
   try {
     const supabase = await createServerClient(cookies());
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: 'Unauthenticated' }, { status: 401 });
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user)
+      return NextResponse.json({ error: 'Unauthenticated' }, { status: 401 });
     const customerId = await getOrCreateCustomerId(user.id, user.email);
     const session = await stripe.billingPortal.sessions.create({
       customer: customerId,
@@ -16,18 +19,9 @@ export async function POST() {
     });
     return NextResponse.json({ url: session.url });
   } catch (e: any) {
-    return NextResponse.json({ error: e.message || 'Failed to create portal session' }, { status: 500 });
+    return NextResponse.json(
+      { error: e.message || 'Failed to create portal session' },
+      { status: 500 }
+    );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-

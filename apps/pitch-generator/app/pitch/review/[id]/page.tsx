@@ -4,8 +4,20 @@ import { useState, useEffect } from 'react';
 import { useSession } from '@/hooks/useAuth';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Copy, CheckCircle2, Edit3, Send, Sparkles, Clock, Loader2, BarChart3, FileDown } from 'lucide-react';
-import { supabase, type Pitch } from '@/lib/supabase';
+import {
+  ArrowLeft,
+  Copy,
+  CheckCircle2,
+  Edit3,
+  Send,
+  Sparkles,
+  Clock,
+  Loader2,
+  BarChart3,
+  FileDown,
+} from 'lucide-react';
+import { createClient } from '@total-audio/core-db/client';
+import type { Pitch } from '@/lib/types';
 import { PitchAnalyser } from '@/components/PitchAnalyser';
 import { exportPitchToPDF, downloadPitchAsHTML } from '@/lib/pdf-export';
 
@@ -61,7 +73,7 @@ export default function ReviewPitchPage() {
         .single();
 
       if (error) throw error;
-      
+
       setPitch(data);
       setEditedBody(data.pitch_body);
     } catch (error) {
@@ -76,9 +88,11 @@ export default function ReviewPitchPage() {
   async function handleCopy() {
     if (!pitch) return;
 
-    const subject = pitch.subject_line_options?.[selectedSubject as keyof typeof pitch.subject_line_options] || pitch.subject_line;
+    const subject =
+      pitch.subject_line_options?.[selectedSubject as keyof typeof pitch.subject_line_options] ||
+      pitch.subject_line;
     const fullPitch = `Subject: ${subject}\n\n${editing ? editedBody : pitch.pitch_body}`;
-    
+
     await navigator.clipboard.writeText(fullPitch);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -89,8 +103,10 @@ export default function ReviewPitchPage() {
 
     setSaving(true);
     try {
-      const subject = pitch.subject_line_options?.[selectedSubject as keyof typeof pitch.subject_line_options] || pitch.subject_line;
-      
+      const subject =
+        pitch.subject_line_options?.[selectedSubject as keyof typeof pitch.subject_line_options] ||
+        pitch.subject_line;
+
       const { error } = await supabase
         .from('pitches')
         .update({
@@ -149,7 +165,9 @@ export default function ReviewPitchPage() {
 
     setSendingViaGmail(true);
     try {
-      const subject = pitch.subject_line_options?.[selectedSubject as keyof typeof pitch.subject_line_options] || pitch.subject_line;
+      const subject =
+        pitch.subject_line_options?.[selectedSubject as keyof typeof pitch.subject_line_options] ||
+        pitch.subject_line;
       const pitchBody = editing ? editedBody : pitch.pitch_body;
 
       const response = await fetch('/api/integrations/gmail/send', {
@@ -159,8 +177,8 @@ export default function ReviewPitchPage() {
           to: pitch.contact_email || `${pitch.contact_name}@example.com`,
           subject,
           emailBody: pitchBody,
-          pitchId: pitch.id
-        })
+          pitchId: pitch.id,
+        }),
       });
 
       const result = await response.json();
@@ -184,7 +202,9 @@ export default function ReviewPitchPage() {
 
     try {
       // Prepare campaign data for Tracker
-      const subject = pitch.subject_line_options?.[selectedSubject as keyof typeof pitch.subject_line_options] || pitch.subject_line;
+      const subject =
+        pitch.subject_line_options?.[selectedSubject as keyof typeof pitch.subject_line_options] ||
+        pitch.subject_line;
       const pitchBody = editing ? editedBody : pitch.pitch_body;
 
       const clipboardData = {
@@ -192,13 +212,15 @@ export default function ReviewPitchPage() {
         campaign: {
           name: `${pitch.artist_name} - ${pitch.contact_outlet || pitch.contact_name}`,
           artist: pitch.artist_name,
-          contacts: [{
-            name: pitch.contact_name,
-            outlet: pitch.contact_outlet || '',
-            email: pitch.contact_email || '',
-            subject: subject,
-            pitchBody: pitchBody,
-          }],
+          contacts: [
+            {
+              name: pitch.contact_name,
+              outlet: pitch.contact_outlet || '',
+              email: pitch.contact_email || '',
+              subject: subject,
+              pitchBody: pitchBody,
+            },
+          ],
         },
       };
 
@@ -213,7 +235,10 @@ export default function ReviewPitchPage() {
 
       // Open Tracker import page with clipboard parameter
       setTimeout(() => {
-        window.open('https://tracker.totalaudiopromo.com/dashboard/import?source=clipboard', '_blank');
+        window.open(
+          'https://tracker.totalaudiopromo.com/dashboard/import?source=clipboard',
+          '_blank'
+        );
         setNotification('Campaign sent to Tracker! Check the new tab.');
       }, 500);
 
@@ -229,7 +254,9 @@ export default function ReviewPitchPage() {
   async function handleRegenerate() {
     if (!pitch) return;
 
-    const confirmed = confirm('Regenerate this pitch with the same track and contact details? Your current version will be lost.');
+    const confirmed = confirm(
+      'Regenerate this pitch with the same track and contact details? Your current version will be lost.'
+    );
     if (!confirmed) return;
 
     setLoading(true);
@@ -257,10 +284,7 @@ export default function ReviewPitchPage() {
       const data = await response.json();
 
       // Delete the old pitch
-      await supabase
-        .from('pitches')
-        .delete()
-        .eq('id', pitch.id);
+      await supabase.from('pitches').delete().eq('id', pitch.id);
 
       // Navigate to the new pitch
       router.push(`/pitch/review/${data.pitchId}`);
@@ -323,13 +347,18 @@ export default function ReviewPitchPage() {
               </div>
               <p className="mt-3 text-lg text-gray-900/70">
                 For <span className="font-semibold text-gray-900">{pitch.contact_name}</span>
-                {pitch.contact_outlet && <span className="text-gray-900/50"> at {pitch.contact_outlet}</span>}
+                {pitch.contact_outlet && (
+                  <span className="text-gray-900/50"> at {pitch.contact_outlet}</span>
+                )}
               </p>
               <p className="mt-1 text-sm text-gray-900/50">
                 "{pitch.track_title}" by {pitch.artist_name}
               </p>
             </div>
-            <button onClick={handleRegenerate} className="subtle-button flex items-center gap-2 text-sm">
+            <button
+              onClick={handleRegenerate}
+              className="subtle-button flex items-center gap-2 text-sm"
+            >
               <Sparkles className="h-4 w-4" />
               Regenerate
             </button>
@@ -362,9 +391,7 @@ export default function ReviewPitchPage() {
         {/* Pitch Body */}
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <label className="block text-sm font-semibold text-gray-900/90">
-              Pitch Body
-            </label>
+            <label className="block text-sm font-semibold text-gray-900/90">Pitch Body</label>
             <button
               onClick={() => setEditing(!editing)}
               className="subtle-button flex items-center gap-2 text-xs"
@@ -377,7 +404,7 @@ export default function ReviewPitchPage() {
           {editing ? (
             <textarea
               value={editedBody}
-              onChange={(e) => setEditedBody(e.target.value)}
+              onChange={e => setEditedBody(e.target.value)}
               rows={12}
               className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-4 font-mono text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
             />
@@ -468,8 +495,8 @@ export default function ReviewPitchPage() {
                 Export PDF
               </button>
               {gmailConnected ? (
-                <button 
-                  onClick={handleSendViaGmail} 
+                <button
+                  onClick={handleSendViaGmail}
                   disabled={sendingViaGmail}
                   className="cta-button flex items-center gap-2 bg-red-600 hover:bg-red-700"
                 >
@@ -486,7 +513,10 @@ export default function ReviewPitchPage() {
                   )}
                 </button>
               ) : (
-                <button onClick={handleMarkAsSent} className="subtle-button flex items-center gap-2">
+                <button
+                  onClick={handleMarkAsSent}
+                  className="subtle-button flex items-center gap-2"
+                >
                   <Send className="h-4 w-4" />
                   Mark as Sent
                 </button>
@@ -507,8 +537,7 @@ export default function ReviewPitchPage() {
                   </>
                 ) : (
                   <>
-                    <BarChart3 className="h-4 w-4" />
-                    → Track Campaign
+                    <BarChart3 className="h-4 w-4" />→ Track Campaign
                   </>
                 )}
               </button>
@@ -522,19 +551,27 @@ export default function ReviewPitchPage() {
         <h3 className="text-lg font-semibold">What's next?</h3>
         <ul className="mt-4 space-y-3 text-sm text-gray-900/70">
           <li className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber">1</span>
+            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber">
+              1
+            </span>
             <span>Copy this pitch and paste it into your email client</span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber">2</span>
+            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber">
+              2
+            </span>
             <span>Send it at the suggested time for best response rates</span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber">3</span>
+            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber">
+              3
+            </span>
             <span>Click "Track Campaign" to monitor results in Campaign Tracker</span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-success/20 text-xs font-semibold text-success">4</span>
+            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-success/20 text-xs font-semibold text-success">
+              4
+            </span>
             <span>Mark it as sent here to track your success rate in Pitch Generator</span>
           </li>
         </ul>
@@ -542,4 +579,3 @@ export default function ReviewPitchPage() {
     </div>
   );
 }
-

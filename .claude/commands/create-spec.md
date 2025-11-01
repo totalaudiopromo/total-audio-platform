@@ -6,4 +6,5 @@ arguments:
     description: Short description of the feature or improvement to plan.
     required: true
 ---
+
 @include .agent-os/instructions/core/create-spec.md

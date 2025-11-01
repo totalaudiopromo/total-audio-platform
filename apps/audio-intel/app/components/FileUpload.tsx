@@ -27,26 +27,29 @@ export default function FileUpload({ onFile, onAnalytics, fileType = 'csv' }: Fi
           'audio/aac',
           'audio/flac',
           'audio/m4a',
-          'audio/webm'
+          'audio/webm',
         ];
-        
+
         const fileExtension = file.name.split('.').pop()?.toLowerCase();
         const validExtensions = ['mp3', 'wav', 'ogg', 'aac', 'flac', 'm4a', 'webm'];
-        
+
         console.log('FileUpload: Validating audio file', file.type, fileExtension);
-        
-        if (!validAudioTypes.includes(file.type) && !validExtensions.includes(fileExtension || '')) {
+
+        if (
+          !validAudioTypes.includes(file.type) &&
+          !validExtensions.includes(fileExtension || '')
+        ) {
           console.log('FileUpload: Invalid audio file');
           setError('Please select a valid audio file (MP3, WAV, OGG, AAC, FLAC, M4A, or WEBM)');
           setSelectedFile(null);
           return;
         }
-        
+
         console.log('FileUpload: Valid audio file, calling onFile');
         setError(null);
         setSelectedFile(file);
         onFile(file);
-        
+
         if (onAnalytics) {
           const ext = fileExtension || 'unknown';
           onAnalytics(ext, 0);
@@ -57,7 +60,7 @@ export default function FileUpload({ onFile, onAnalytics, fileType = 'csv' }: Fi
         setError(null);
         setSelectedFile(file);
         onFile(file);
-        
+
         if (onAnalytics) {
           const ext = file.name.split('.').pop() || 'unknown';
           onAnalytics(ext, 0);
@@ -92,7 +95,7 @@ export default function FileUpload({ onFile, onAnalytics, fileType = 'csv' }: Fi
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragOver(false);
-    
+
     const files = e.dataTransfer.files;
     if (files.length > 0) {
       const file = files[0];
@@ -121,27 +124,30 @@ export default function FileUpload({ onFile, onAnalytics, fileType = 'csv' }: Fi
     return 'Supported formats: CSV, Excel, TXT';
   };
 
-  console.log('FileUpload: Rendering with fileType:', fileType, 'selectedFile:', selectedFile?.name);
+  console.log(
+    'FileUpload: Rendering with fileType:',
+    fileType,
+    'selectedFile:',
+    selectedFile?.name
+  );
 
   return (
-    <div 
+    <div
       className={`card-glass-hover border-2 border-dashed rounded-2xl p-6 text-center transition-all duration-300 ${
-        isDragOver 
-          ? 'border-blue-400 bg-blue-500/10 scale-105' 
-          : 'border-white/30'
+        isDragOver ? 'border-blue-400 bg-blue-500/10 scale-105' : 'border-white/30'
       }`}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
-      <input 
-        type="file" 
-        className="hidden" 
-        id="file-upload" 
+      <input
+        type="file"
+        className="hidden"
+        id="file-upload"
         onChange={handleChange}
         accept={getAcceptTypes()}
       />
-      
+
       {!selectedFile ? (
         <div className="space-y-4">
           <div className="text-white/80 mb-4">
@@ -163,8 +169,8 @@ export default function FileUpload({ onFile, onAnalytics, fileType = 'csv' }: Fi
               {isDragOver ? 'Drop your file here' : 'Click below to select a file or drag and drop'}
             </div>
           </div>
-          <label 
-            htmlFor="file-upload" 
+          <label
+            htmlFor="file-upload"
             className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300 cursor-pointer group"
           >
             <Upload className="w-5 h-5 mr-2 inline group-hover:animate-bounce" />
@@ -173,7 +179,7 @@ export default function FileUpload({ onFile, onAnalytics, fileType = 'csv' }: Fi
           </label>
         </div>
       ) : (
-                    <div className="space-y-4 animate-in fade-in duration-300">
+        <div className="space-y-4 animate-in fade-in duration-300">
           <div className="flex items-center justify-center gap-3">
             <div className="bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm font-medium border border-green-400/30 backdrop-blur-xl">
               <Check className="w-4 h-4 inline mr-2" />
@@ -186,9 +192,7 @@ export default function FileUpload({ onFile, onAnalytics, fileType = 'csv' }: Fi
               <X className="w-4 h-4" />
             </button>
           </div>
-          <div className="text-white font-medium text-lg">
-            {selectedFile.name}
-          </div>
+          <div className="text-white font-medium text-lg">{selectedFile.name}</div>
           <div className="text-white/60 text-sm">
             {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
           </div>
@@ -199,21 +203,17 @@ export default function FileUpload({ onFile, onAnalytics, fileType = 'csv' }: Fi
           </div>
         </div>
       )}
-      
+
       {error && (
-                    <div className="mt-4 text-red-400 text-sm font-medium bg-white bg-opacity-10 backdrop-blur-sm border border-red-400 border-opacity-30 p-4 rounded-xl animate-in fade-in duration-300">
+        <div className="mt-4 text-red-400 text-sm font-medium bg-white bg-opacity-10 backdrop-blur-sm border border-red-400 border-opacity-30 p-4 rounded-xl animate-in fade-in duration-300">
           <div className="flex items-center gap-2">
             <X className="w-4 h-4" />
             {error}
           </div>
         </div>
       )}
-      
-      {!selectedFile && (
-        <div className="mt-4 text-white/60 text-sm">
-          {getSupportedFormats()}
-        </div>
-      )}
+
+      {!selectedFile && <div className="mt-4 text-white/60 text-sm">{getSupportedFormats()}</div>}
     </div>
   );
-} 
+}

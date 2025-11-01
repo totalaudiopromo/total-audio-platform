@@ -2,7 +2,7 @@
 const nextConfig = {
   // Enable experimental optimizations
   experimental: {
-    optimizePackageImports: ['lucide-react']
+    optimizePackageImports: ['lucide-react'],
   },
   async redirects() {
     return [
@@ -16,6 +16,6 @@ const nextConfig = {
   // Production optimizations
   poweredByHeader: false,
   compress: true,
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

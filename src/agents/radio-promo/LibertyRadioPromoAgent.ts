@@ -33,12 +33,7 @@ export class LibertyRadioPromoAgent extends StreamingAgent {
   private warmApi: any;
   private mailchimpApi: any;
 
-  constructor(
-    mondayApi: any,
-    gmailApi: any,
-    warmApi: any,
-    mailchimpApi?: any
-  ) {
+  constructor(mondayApi: any, gmailApi: any, warmApi: any, mailchimpApi?: any) {
     // Initialize with cached context and tools
     super(
       'LibertyRadioPromo',
@@ -48,8 +43,8 @@ export class LibertyRadioPromoAgent extends StreamingAgent {
         {
           type: 'text',
           text: LibertyRadioPromoAgent.getLibertySpecificContext(),
-          cache_control: { type: 'ephemeral' }
-        }
+          cache_control: { type: 'ephemeral' },
+        },
       ],
       LibertyRadioPromoAgent.getTools()
     );
@@ -305,7 +300,8 @@ export class LibertyRadioPromoAgent extends StreamingAgent {
     return [
       {
         name: 'create_monday_campaign',
-        description: 'Create a new campaign board in Monday.com for tracking radio promotion workflow',
+        description:
+          'Create a new campaign board in Monday.com for tracking radio promotion workflow',
         input_schema: {
           type: 'object',
           properties: {
@@ -323,13 +319,13 @@ export class LibertyRadioPromoAgent extends StreamingAgent {
                   name: { type: 'string' },
                   email: { type: 'string' },
                   type: { type: 'string' },
-                  priority: { type: 'string' }
-                }
-              }
-            }
+                  priority: { type: 'string' },
+                },
+              },
+            },
           },
-          required: ['artist_name', 'track_name', 'genre', 'target_stations']
-        }
+          required: ['artist_name', 'track_name', 'genre', 'target_stations'],
+        },
       },
       {
         name: 'generate_personalized_email',
@@ -338,7 +334,10 @@ export class LibertyRadioPromoAgent extends StreamingAgent {
           type: 'object',
           properties: {
             station_name: { type: 'string', description: 'Radio station name' },
-            station_type: { type: 'string', description: 'Station type (national, community, online)' },
+            station_type: {
+              type: 'string',
+              description: 'Station type (national, community, online)',
+            },
             artist_name: { type: 'string', description: 'Artist name' },
             track_name: { type: 'string', description: 'Track name' },
             genre: { type: 'string', description: 'Genre' },
@@ -346,11 +345,11 @@ export class LibertyRadioPromoAgent extends StreamingAgent {
             previous_plays: {
               type: 'array',
               description: 'List of stations that have already played the track',
-              items: { type: 'string' }
-            }
+              items: { type: 'string' },
+            },
           },
-          required: ['station_name', 'artist_name', 'track_name', 'genre']
-        }
+          required: ['station_name', 'artist_name', 'track_name', 'genre'],
+        },
       },
       {
         name: 'send_email_via_gmail',
@@ -361,10 +360,10 @@ export class LibertyRadioPromoAgent extends StreamingAgent {
             to: { type: 'string', description: 'Recipient email address' },
             subject: { type: 'string', description: 'Email subject line' },
             body: { type: 'string', description: 'Email body (plain text)' },
-            station_name: { type: 'string', description: 'Station name (for tracking)' }
+            station_name: { type: 'string', description: 'Station name (for tracking)' },
           },
-          required: ['to', 'subject', 'body', 'station_name']
-        }
+          required: ['to', 'subject', 'body', 'station_name'],
+        },
       },
       {
         name: 'check_warm_plays',
@@ -374,10 +373,10 @@ export class LibertyRadioPromoAgent extends StreamingAgent {
           properties: {
             artist_name: { type: 'string', description: 'Artist name' },
             track_name: { type: 'string', description: 'Track name' },
-            days_back: { type: 'number', description: 'Number of days to check (default: 7)' }
+            days_back: { type: 'number', description: 'Number of days to check (default: 7)' },
           },
-          required: ['artist_name', 'track_name']
-        }
+          required: ['artist_name', 'track_name'],
+        },
       },
       {
         name: 'update_campaign_status',
@@ -390,13 +389,20 @@ export class LibertyRadioPromoAgent extends StreamingAgent {
             status: {
               type: 'string',
               description: 'New status',
-              enum: ['pending', 'sent', 'responded', 'play_secured', 'declined', 'follow_up_needed']
+              enum: [
+                'pending',
+                'sent',
+                'responded',
+                'play_secured',
+                'declined',
+                'follow_up_needed',
+              ],
             },
-            notes: { type: 'string', description: 'Additional notes' }
+            notes: { type: 'string', description: 'Additional notes' },
           },
-          required: ['campaign_id', 'station_name', 'status']
-        }
-      }
+          required: ['campaign_id', 'station_name', 'status'],
+        },
+      },
     ];
   }
 
@@ -408,7 +414,7 @@ export class LibertyRadioPromoAgent extends StreamingAgent {
       artist: campaignData.artistName,
       track: campaignData.trackName,
       stations: campaignData.targetStations.length,
-      timestamp: new Date()
+      timestamp: new Date(),
     });
 
     // Use agentic loop for autonomous campaign execution
@@ -444,16 +450,16 @@ IMPORTANT:
         maxIterations: 20,
         thinking: {
           type: 'enabled',
-          budget_tokens: 5000 // Give Claude thinking time for strategy
+          budget_tokens: 5000, // Give Claude thinking time for strategy
         },
         onToolUse: (toolName, toolInput) => {
           this.emit('tool_use', {
             agent: this.agentName,
             toolName,
             toolInput,
-            timestamp: new Date()
+            timestamp: new Date(),
           });
-        }
+        },
       }
     );
 
@@ -461,7 +467,7 @@ IMPORTANT:
       artist: campaignData.artistName,
       track: campaignData.trackName,
       result,
-      timestamp: new Date()
+      timestamp: new Date(),
     });
 
     return result;
@@ -494,8 +500,8 @@ Use your knowledge of UK radio landscape to provide actionable insights.`,
       {
         thinking: {
           type: 'enabled',
-          budget_tokens: 10000 // Extra thinking for strategic analysis
-        }
+          budget_tokens: 10000, // Extra thinking for strategic analysis
+        },
       }
     );
 
@@ -532,25 +538,28 @@ Use your knowledge of UK radio landscape to provide actionable insights.`,
    */
   private async createMondayCampaign(input: any): Promise<any> {
     try {
-      const campaignResult = await this.mondayApi.createLibertyCampaign({
-        artistName: input.artist_name,
-        trackName: input.track_name,
-        genre: input.genre,
-        releaseDate: input.release_date,
-        budget: input.budget,
-        targetStations: input.target_stations
-      }, this.warmApi);
+      const campaignResult = await this.mondayApi.createLibertyCampaign(
+        {
+          artistName: input.artist_name,
+          trackName: input.track_name,
+          genre: input.genre,
+          releaseDate: input.release_date,
+          budget: input.budget,
+          targetStations: input.target_stations,
+        },
+        this.warmApi
+      );
 
       return {
         success: true,
         campaign_id: campaignResult.id,
         board_url: campaignResult.url,
-        stations_added: input.target_stations.length
+        stations_added: input.target_stations.length,
       };
     } catch (error: any) {
       return {
         success: false,
-        error: error.message
+        error: error.message,
       };
     }
   }
@@ -567,7 +576,7 @@ Use your knowledge of UK radio landscape to provide actionable insights.`,
       subject: emailTemplate.subject,
       body: emailTemplate.body,
       station_name: input.station_name,
-      personalization_applied: true
+      personalization_applied: true,
     };
   }
 
@@ -575,9 +584,10 @@ Use your knowledge of UK radio landscape to provide actionable insights.`,
    * Build email template (to be replaced with AI generation)
    */
   private buildEmailTemplate(input: any): { subject: string; body: string } {
-    const previousPlaysText = input.previous_plays?.length > 0
-      ? `The track has already received plays from ${input.previous_plays.join(', ')}, demonstrating its appeal across diverse audiences.`
-      : '';
+    const previousPlaysText =
+      input.previous_plays?.length > 0
+        ? `The track has already received plays from ${input.previous_plays.join(', ')}, demonstrating its appeal across diverse audiences.`
+        : '';
 
     return {
       subject: `${input.station_type === 'National' && input.station_name.includes('BBC') ? 'BBC Introducing Submission: ' : ''}${input.artist_name} - ${input.track_name}`,
@@ -594,7 +604,7 @@ Would you like to hear it for playlist consideration?
 Best regards,
 Chris Schofield
 Liberty Music PR
-chris@libertymusicpr.com`
+chris@libertymusicpr.com`,
     };
   }
 
@@ -608,20 +618,20 @@ chris@libertymusicpr.com`
         subject: input.subject,
         body: input.body,
         campaignId: 'liberty-campaign',
-        stationInfo: { name: input.station_name }
+        stationInfo: { name: input.station_name },
       });
 
       return {
         success: true,
         message_id: emailResult.id,
         station: input.station_name,
-        sent_at: new Date().toISOString()
+        sent_at: new Date().toISOString(),
       };
     } catch (error: any) {
       return {
         success: false,
         error: error.message,
-        station: input.station_name
+        station: input.station_name,
       };
     }
   }
@@ -634,19 +644,19 @@ chris@libertymusicpr.com`
       const plays = await this.warmApi.checkPlays({
         artist: input.artist_name,
         track: input.track_name,
-        daysBack: input.days_back || 7
+        daysBack: input.days_back || 7,
       });
 
       return {
         success: true,
         plays: plays || [],
-        total_plays: plays?.length || 0
+        total_plays: plays?.length || 0,
       };
     } catch (error: any) {
       return {
         success: false,
         error: error.message,
-        plays: []
+        plays: [],
       };
     }
   }
@@ -667,12 +677,12 @@ chris@libertymusicpr.com`
         success: true,
         campaign_id: input.campaign_id,
         station: input.station_name,
-        new_status: input.status
+        new_status: input.status,
       };
     } catch (error: any) {
       return {
         success: false,
-        error: error.message
+        error: error.message,
       };
     }
   }

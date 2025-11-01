@@ -3,7 +3,6 @@ import { test, expect } from '@playwright/test';
 const PRODUCTION_URL = 'https://pitch.totalaudiopromo.com';
 
 test.describe('Pitch Generator MVP - Production Tests', () => {
-
   test('Homepage loads successfully', async ({ page }) => {
     await page.goto(PRODUCTION_URL);
     await expect(page).toHaveTitle(/Pitch Generator/i);
@@ -32,7 +31,9 @@ test.describe('Pitch Generator MVP - Production Tests', () => {
       await expect(page.locator('h1:has-text("Template Library")')).toBeVisible();
 
       // Check for template elements (may not have all 6 if database not seeded)
-      const templateCards = page.locator('[class*="rounded-2xl"]').filter({ hasText: /template|radio|spotify|blog/i });
+      const templateCards = page
+        .locator('[class*="rounded-2xl"]')
+        .filter({ hasText: /template|radio|spotify|blog/i });
       const count = await templateCards.count();
       if (count > 0) {
         console.log(`✓ Templates page shows ${count} template(s)`);
@@ -124,9 +125,9 @@ test.describe('Pitch Generator MVP - Production Tests', () => {
         'Your Voice Profile',
         'Quick Setup',
         'Guided Setup',
-        'Voice Analysis'
+        'Voice Analysis',
       ];
-      
+
       let headingFound = false;
       for (const headingText of possibleHeadings) {
         const heading = page.locator(`h1:has-text("${headingText}")`);
@@ -136,7 +137,7 @@ test.describe('Pitch Generator MVP - Production Tests', () => {
           break;
         }
       }
-      
+
       if (!headingFound) {
         // Fallback: just check for any h1
         await expect(page.locator('h1').first()).toBeVisible();
@@ -247,7 +248,7 @@ test.describe('Pitch Generator MVP - Production Tests', () => {
 
     // Check for meta description
     const metaDescription = page.locator('meta[name="description"]');
-    if (await metaDescription.count() > 0) {
+    if ((await metaDescription.count()) > 0) {
       console.log('✓ Meta description present');
     }
   });

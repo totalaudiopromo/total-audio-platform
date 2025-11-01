@@ -58,4 +58,4 @@ cd backend
 node test-audit.js
 ```
 
-That's it! The audit will analyze your Airtable data and show you exactly what needs to be cleaned up. 
+That's it! The audit will analyze your Airtable data and show you exactly what needs to be cleaned up.

@@ -1,6 +1,6 @@
 # CC WORKFLOW
 
-**One command to rule them all** 
+**One command to rule them all**
 
 **cd /Users/chrisschofield/workspace/active/total-audio-platform/ && npm run status && npm run dev:audio-intel**
 
@@ -183,14 +183,23 @@ What would you like to delegate first?
 🔄 Available Real Service Workflows
 
 1. real-agency-onboarding (4 steps)
+
 - Complete agency onboarding with real service setup
+
 2. real-campaign-launch (4 steps)
+
 - Launch campaign using real integrations
+
 3. real-contact-enrichment (4 steps)
+
 - Contact enrichment using real services
+
 4. real-service-maintenance (4 steps)
+
 - Maintenance using real service connections
+
 5. ai-campaign-optimization (4 steps)
+
 - Optimize campaigns using Claude AI insights
 
 All workflows use real services and have 4 steps each. To execute a workflow, you can run:

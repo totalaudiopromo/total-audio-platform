@@ -2,7 +2,7 @@
 
 /**
  * Notion Integration Health Check
- * 
+ *
  * Monitors Notion API connectivity and MCP server health
  * Run this daily or when integration issues occur
  */
@@ -14,18 +14,19 @@ const logger = {
   error: (msg, ...args) => console.error(`[NOTION-HEALTH] ${msg}`, ...args),
   warn: (msg, ...args) => console.warn(`[NOTION-HEALTH] ${msg}`, ...args),
   success: (msg, ...args) => console.log(`✅ [NOTION-HEALTH] ${msg}`, ...args),
-  fail: (msg, ...args) => console.error(`❌ [NOTION-HEALTH] ${msg}`, ...args)
+  fail: (msg, ...args) => console.error(`❌ [NOTION-HEALTH] ${msg}`, ...args),
 };
 
 class NotionHealthMonitor {
   constructor() {
     this.name = 'NotionHealthMonitor';
-    this.apiKey = process.env.NOTION_API_KEY || 'ntn_b2740658669wm0A1FXlKD4CZbHgiygQW4PM6ZDngMbuavL';
+    this.apiKey =
+      process.env.NOTION_API_KEY || 'ntn_b2740658669wm0A1FXlKD4CZbHgiygQW4PM6ZDngMbuavL';
     this.healthStatus = {
       apiConnection: false,
       mcpServer: false,
       permissions: false,
-      lastCheck: new Date()
+      lastCheck: new Date(),
     };
   }
 
@@ -35,13 +36,13 @@ class NotionHealthMonitor {
   async testDirectAPI() {
     try {
       logger.info('Testing direct Notion API connection...');
-      
+
       const response = await fetch('https://api.notion.com/v1/users/me', {
         headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
+          Authorization: `Bearer ${this.apiKey}`,
           'Notion-Version': '2022-06-28',
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       });
 
       if (response.ok) {
@@ -66,22 +67,22 @@ class NotionHealthMonitor {
    * Test MCP server status
    */
   async testMCPServer() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       logger.info('Testing MCP server status...');
-      
+
       const mcpList = spawn('claude', ['mcp', 'list']);
       let output = '';
       let errorOutput = '';
 
-      mcpList.stdout.on('data', (data) => {
+      mcpList.stdout.on('data', data => {
         output += data.toString();
       });
 
-      mcpList.stderr.on('data', (data) => {
+      mcpList.stderr.on('data', data => {
         errorOutput += data.toString();
       });
 
-      mcpList.on('close', (code) => {
+      mcpList.on('close', code => {
         if (code === 0 && output.includes('notion') && output.includes('✓')) {
           logger.success('MCP server is connected and healthy');
           this.healthStatus.mcpServer = true;
@@ -97,7 +98,7 @@ class NotionHealthMonitor {
         }
       });
 
-      mcpList.on('error', (error) => {
+      mcpList.on('error', error => {
         logger.fail(`MCP server test error: ${error.message}`);
         this.healthStatus.mcpServer = false;
         resolve(false);
@@ -111,26 +112,26 @@ class NotionHealthMonitor {
   async testPermissions() {
     try {
       logger.info('Testing workspace permissions...');
-      
+
       // Try to search for pages - this tests read permissions
       const searchResponse = await fetch('https://api.notion.com/v1/search', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
+          Authorization: `Bearer ${this.apiKey}`,
           'Notion-Version': '2022-06-28',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           query: '',
           filter: { property: 'object', value: 'page' },
-          page_size: 5
-        })
+          page_size: 5,
+        }),
       });
 
       if (searchResponse.ok) {
         const searchData = await searchResponse.json();
         const pageCount = searchData.results.length;
-        
+
         if (pageCount > 0) {
           logger.success(`Workspace access confirmed - Found ${pageCount} accessible pages`);
           this.healthStatus.permissions = true;
@@ -159,16 +160,24 @@ class NotionHealthMonitor {
    */
   async attemptRecovery() {
     logger.warn('Attempting auto-recovery...');
-    
-    return new Promise((resolve) => {
+
+    return new Promise(resolve => {
       // Remove existing MCP server
       const removeCmd = spawn('claude', ['mcp', 'remove', 'notion']);
-      
-      removeCmd.on('close', (code) => {
+
+      removeCmd.on('close', code => {
         // Add fresh MCP server
-        const addCmd = spawn('claude', ['mcp', 'add', 'notion', 'npx', '--', '@notionhq/notion-mcp-server', `--api-key=${this.apiKey}`]);
-        
-        addCmd.on('close', (addCode) => {
+        const addCmd = spawn('claude', [
+          'mcp',
+          'add',
+          'notion',
+          'npx',
+          '--',
+          '@notionhq/notion-mcp-server',
+          `--api-key=${this.apiKey}`,
+        ]);
+
+        addCmd.on('close', addCode => {
           if (addCode === 0) {
             logger.info('MCP server re-configured. Testing connection...');
             // Give it a moment to initialize
@@ -188,13 +197,13 @@ class NotionHealthMonitor {
           }
         });
 
-        addCmd.on('error', (error) => {
+        addCmd.on('error', error => {
           logger.fail(`Recovery error: ${error.message}`);
           resolve(false);
         });
       });
 
-      removeCmd.on('error', (error) => {
+      removeCmd.on('error', error => {
         logger.warn(`Remove command error (may be expected): ${error.message}`);
         // Continue with add command anyway
       });
@@ -217,15 +226,15 @@ class NotionHealthMonitor {
     logger.info(`API Connection: ${apiHealthy ? '✅ HEALTHY' : '❌ FAILED'}`);
     logger.info(`MCP Server: ${mcpHealthy ? '✅ HEALTHY' : '❌ FAILED'}`);
     logger.info(`Permissions: ${permissionsOk ? '✅ HEALTHY' : '❌ LIMITED'}`);
-    
+
     const overallHealthy = apiHealthy && mcpHealthy && permissionsOk;
-    
+
     if (overallHealthy) {
       logger.success('🎉 All systems healthy! Notion integration is working perfectly.');
       return true;
     } else {
       logger.fail('🚨 Integration issues detected!');
-      
+
       if (!apiHealthy) {
         logger.error('🔧 FIX REQUIRED: Check API key at https://www.notion.so/my-integrations');
       }
@@ -239,7 +248,7 @@ class NotionHealthMonitor {
       if (!permissionsOk && apiHealthy) {
         logger.error('🔧 FIX REQUIRED: Share pages with integration at https://www.notion.so');
       }
-      
+
       return false;
     }
   }
@@ -253,7 +262,9 @@ class NotionHealthMonitor {
     console.log('2. Find "Claude Code Integration"');
     console.log('3. Copy the API token');
     console.log('4. Run: claude mcp remove notion');
-    console.log('5. Run: claude mcp add notion npx -- @notionhq/notion-mcp-server --api-key=YOUR_TOKEN');
+    console.log(
+      '5. Run: claude mcp add notion npx -- @notionhq/notion-mcp-server --api-key=YOUR_TOKEN'
+    );
     console.log('6. Share critical pages with the integration');
     console.log('7. Run this health check again');
     console.log('\n💡 See NOTION-INTEGRATION-RECOVERY-PLAN.md for full details');
@@ -263,18 +274,21 @@ class NotionHealthMonitor {
 // CLI execution
 if (require.main === module) {
   const monitor = new NotionHealthMonitor();
-  
-  monitor.runFullCheck().then((healthy) => {
-    if (!healthy) {
-      monitor.showRecoveryInstructions();
+
+  monitor
+    .runFullCheck()
+    .then(healthy => {
+      if (!healthy) {
+        monitor.showRecoveryInstructions();
+        process.exit(1);
+      } else {
+        process.exit(0);
+      }
+    })
+    .catch(error => {
+      logger.fail(`Health check failed: ${error.message}`);
       process.exit(1);
-    } else {
-      process.exit(0);
-    }
-  }).catch((error) => {
-    logger.fail(`Health check failed: ${error.message}`);
-    process.exit(1);
-  });
+    });
 }
 
 module.exports = NotionHealthMonitor;

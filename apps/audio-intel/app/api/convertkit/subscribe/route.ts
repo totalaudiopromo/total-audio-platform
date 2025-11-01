@@ -37,8 +37,11 @@ export async function POST(request: NextRequest) {
         lead_source: form_type,
         signup_date: new Date().toISOString(),
         trial_start_date: form_type === 'hero' ? new Date().toISOString() : undefined,
-        trial_end_date: form_type === 'hero' ? new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString() : undefined
-      }
+        trial_end_date:
+          form_type === 'hero'
+            ? new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString()
+            : undefined,
+      },
     });
 
     if (!result.success) {
@@ -48,14 +51,16 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       subscription_id: result.subscriberId,
-      message: 'Successfully subscribed to ConvertKit'
+      message: 'Successfully subscribed to ConvertKit',
     });
-
   } catch (error) {
     console.error('ConvertKit subscription error:', error);
-    return NextResponse.json({
-      error: 'Subscription failed',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Subscription failed',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }

@@ -12,7 +12,7 @@ const MOCK_USER = {
   email: 'demo@totalaudiopromo.com',
   password: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // 'password'
   name: 'Demo User',
-  role: 'artist'
+  role: 'artist',
 };
 
 // Login endpoint
@@ -23,8 +23,9 @@ router.post('/login', async (req, res) => {
     // For MVP, use mock user
     if (email === MOCK_USER.email) {
       const isValidPassword = await bcrypt.compare(password, MOCK_USER.password);
-      
-      if (isValidPassword || password === 'password') { // Allow plain password for demo
+
+      if (isValidPassword || password === 'password') {
+        // Allow plain password for demo
         const token = jwt.sign(
           { userId: MOCK_USER.id, email: MOCK_USER.email, role: MOCK_USER.role },
           process.env.JWT_SECRET || 'your-secret-key',
@@ -38,8 +39,8 @@ router.post('/login', async (req, res) => {
             id: MOCK_USER.id,
             email: MOCK_USER.email,
             name: MOCK_USER.name,
-            role: MOCK_USER.role
-          }
+            role: MOCK_USER.role,
+          },
         });
       } else {
         res.status(401).json({ success: false, message: 'Invalid credentials' });
@@ -62,7 +63,7 @@ router.post('/register', async (req, res) => {
     res.json({
       success: true,
       message: 'Registration successful. Please login.',
-      user: { email, name }
+      user: { email, name },
     });
   } catch (error) {
     console.error('Register error:', error);
@@ -74,20 +75,20 @@ router.post('/register', async (req, res) => {
 router.get('/verify', async (req, res) => {
   try {
     const token = req.headers.authorization?.replace('Bearer ', '');
-    
+
     if (!token) {
       return res.status(401).json({ success: false, message: 'No token provided' });
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key') as any;
-    
+
     return res.json({
       success: true,
       user: {
         id: decoded.userId,
         email: decoded.email,
-        role: decoded.role
-      }
+        role: decoded.role,
+      },
     });
   } catch (error) {
     console.error('Token verification error:', error);

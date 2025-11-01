@@ -1,6 +1,6 @@
 # 🎯 WEEKLY FOCUS - Week of September 30, 2025
 
-*THE main file - start here every day*
+_THE main file - start here every day_
 
 ## 📅 THIS WEEK'S 3 BIG GOALS
 
@@ -71,7 +71,7 @@
 
 ## 📝 RUNNING NOTES THIS WEEK
 
-*Add thoughts, feedback, ideas throughout the week*
+_Add thoughts, feedback, ideas throughout the week_
 
 **Monday**:
 
@@ -87,23 +87,23 @@
 
 ## ✅ COMPLETED THIS WEEK
 
-*Move finished items here for satisfaction and progress tracking*
+_Move finished items here for satisfaction and progress tracking_
 
 ---
 
 ## 🔄 NEXT WEEK PREVIEW
 
-*What to carry forward or focus on next*
+_What to carry forward or focus on next_
 
 > DESSA pilot: tag tasks with the primary step they reinforce. Leave the tag empty if it never earns its keep.
 
-- [ ] Follow up with prospects from this week's outreach *(S₂ — Speed up)*
-- [ ] Optimise demo process based on first calls *(S₁ — Simplify)*
-- [ ] Scale outreach based on conversion data *(A — Automate once stable)*
+- [ ] Follow up with prospects from this week's outreach _(S₂ — Speed up)_
+- [ ] Optimise demo process based on first calls _(S₁ — Simplify)_
+- [ ] Scale outreach based on conversion data _(A — Automate once stable)_
 
 ## 🧭 DESSA Pilot Checklist
 
-*Use this block to test the framework safely. Skip any item that creates drag.*
+_Use this block to test the framework safely. Skip any item that creates drag._
 
 - [ ] **Define** (`D`): Capture next week's single measurable target → ☐
 - [ ] **Eliminate** (`E`): List any task you're pausing or deleting → ☐

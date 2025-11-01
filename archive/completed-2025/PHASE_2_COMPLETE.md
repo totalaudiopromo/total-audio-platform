@@ -5,34 +5,41 @@
 ### 1. Dependency Standardization (All 3 Apps)
 
 **Next.js Version**: All apps now pinned to **15.3.0**
+
 - Audio Intel: 15.4.2 → 15.3.0 ✅
 - Tracker: 15.5.4 → 15.3.0 ✅
 - Pitch Generator: 15.4.2 → 15.3.0 ✅
 
 **Tailwind CSS**: All apps now on **3.4.17**
+
 - Audio Intel: 3.4.17 (no change) ✅
 - Tracker: 4.1.13 → 3.4.17 ✅ (Major downgrade - needs testing)
 - Pitch Generator: 3.4.17 (no change) ✅
 
 **Stripe SDK**: All apps now on **18.5.0**
+
 - Audio Intel: 18.3.0 → 18.5.0 ✅
 - Tracker: 18.5.0 (no change) ✅
 - Pitch Generator: 18.3.0 → 18.5.0 ✅
 
 **lucide-react**: All apps now on **0.525.0**
+
 - Audio Intel: 0.525.0 (no change) ✅
 - Tracker: 0.469.0 → 0.525.0 ✅
 - Pitch Generator: 0.525.0 (no change) ✅
 
 **Anthropic AI SDK**: Standardized to **0.65.0**
+
 - Audio Intel: Not installed (doesn't need it)
 - Tracker: 0.65.0 (no change) ✅
 - Pitch Generator: 0.32.1 → 0.65.0 ✅
 
 **Supabase SDK**: Updated to latest
+
 - Pitch Generator: 2.39.0 → 2.58.0 ✅
 
 **Shared UI Package**: Added to all apps
+
 - Audio Intel: `"@total-audio/ui": "file:../../packages/ui"` ✅
 - Tracker: `"@total-audio/ui": "file:../../packages/ui"` ✅
 - Pitch Generator: `"@total-audio/ui": "file:../../packages/ui"` ✅
@@ -40,11 +47,13 @@
 ### 2. Analytics Standardization
 
 **Before**:
+
 - Audio Intel: Google Tag Manager (GTM-WZNJWDKH) ✅
 - Tracker: Google Tag Manager (GTM-WZNJWDKH) ✅
 - Pitch Generator: Plausible Analytics ❌
 
 **After**: All apps now use **Google Tag Manager** with ID `GTM-WZNJWDKH`
+
 - Pitch Generator: Replaced Plausible with GTM ✅
 - Removed unused `Script` import ✅
 - Added GTM noscript fallback ✅
@@ -52,11 +61,13 @@
 ### 3. Locale Standardization (UK Market Focus)
 
 **Before**:
+
 - Audio Intel: `lang="en"` with `locale: 'en_GB'` in OpenGraph
 - Tracker: `lang="en"` with no locale metadata
 - Pitch Generator: `lang="en"` with `locale: 'en_GB'` in OpenGraph (already correct)
 
 **After**: All apps now use `lang="en-GB"` with proper OpenGraph locale
+
 - Audio Intel: Already had en_GB ✅
 - Tracker: Added `lang="en-GB"` + OpenGraph metadata ✅
 - Pitch Generator: Changed to `lang="en-GB"` ✅
@@ -64,6 +75,7 @@
 ### 4. Root Package Configuration
 
 **Changed**:
+
 - Removed conflicting React overrides (was forcing 18.2.0 while apps use 19.1.0)
 - Added Next.js resolution to pin version: `"resolutions": { "next": "15.3.0" }`
 
@@ -117,11 +129,13 @@
 The Tracker app was downgraded from Tailwind v4.1.13 to v3.4.17 (major version downgrade).
 
 **Potential Issues**:
+
 - Different CSS processing engine
 - v4-specific utilities may not work
 - PostCSS configuration differences
 
 **Test Checklist for Tracker**:
+
 - [ ] All pages render correctly
 - [ ] No missing Tailwind classes
 - [ ] Gradients, shadows, animations still work
@@ -134,6 +148,7 @@ The Tracker app was downgraded from Tailwind v4.1.13 to v3.4.17 (major version d
 Upgraded from 0.32.1 → 0.65.0 (33 minor versions)
 
 **Test Checklist**:
+
 - [ ] Pitch generation still works
 - [ ] No API errors
 - [ ] Response streaming works (if used)
@@ -142,6 +157,7 @@ Upgraded from 0.32.1 → 0.65.0 (33 minor versions)
 ### General Testing
 
 **All Apps**:
+
 - [ ] `npm install` completes successfully
 - [ ] `npm run build` completes for all apps
 - [ ] No TypeScript errors
@@ -188,6 +204,7 @@ Now that dependencies are standardized, we can build cross-tool workflows:
 ### Phase 4: Unified Database (Long-term)
 
 After CSV MVP proves the workflow, build proper integration:
+
 - Design unified contact schema
 - Create shared Supabase project
 - Build @total-audio/api-client package
@@ -196,18 +213,21 @@ After CSV MVP proves the workflow, build proper integration:
 ## 📊 Impact Summary
 
 ### Developer Experience
+
 - ✅ Single version for all core dependencies
 - ✅ Consistent build process across apps
 - ✅ Easier to maintain (update once, not 3× times)
 - ✅ Shared UI components reduce duplication
 
 ### User Experience
+
 - ✅ Consistent analytics tracking (better insights)
 - ✅ UK market SEO optimization (en_GB locale)
 - ✅ Professional brand consistency
 - ✅ Foundation for cross-tool workflows
 
 ### Business Impact
+
 - ✅ Lower technical debt
 - ✅ Faster feature development
 - ✅ Better data for customer acquisition decisions
@@ -216,6 +236,7 @@ After CSV MVP proves the workflow, build proper integration:
 ## 📝 Documentation
 
 All changes documented in:
+
 - [AUDIT_SUMMARY.md](./AUDIT_SUMMARY.md) - Executive summary
 - [ECOSYSTEM_AUDIT_STATUS.md](./ECOSYSTEM_AUDIT_STATUS.md) - Detailed status
 - [DEPENDENCY_STANDARDIZATION.md](./DEPENDENCY_STANDARDIZATION.md) - Version planning

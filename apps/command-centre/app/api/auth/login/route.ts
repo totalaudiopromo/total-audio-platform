@@ -9,15 +9,13 @@ export async function POST(request: Request) {
     const correctPassword = process.env.COMMAND_CENTRE_PASSWORD;
 
     if (!correctPassword) {
-      return NextResponse.json(
-        { error: 'Authentication not configured' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Authentication not configured' }, { status: 500 });
     }
 
     if (password === correctPassword) {
       // Generate a secure token
-      const token = process.env.COMMAND_CENTRE_AUTH_TOKEN ||
+      const token =
+        process.env.COMMAND_CENTRE_AUTH_TOKEN ||
         Buffer.from(`${Date.now()}-${Math.random()}`).toString('base64');
 
       // Set authentication cookie
@@ -33,14 +31,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true });
     }
 
-    return NextResponse.json(
-      { error: 'Incorrect password' },
-      { status: 401 }
-    );
+    return NextResponse.json({ error: 'Incorrect password' }, { status: 401 });
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Authentication failed' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Authentication failed' }, { status: 500 });
   }
 }

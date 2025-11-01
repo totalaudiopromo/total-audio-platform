@@ -4,23 +4,19 @@
  * Copy this to your app and customise as needed
  */
 
-'use client'
+'use client';
 
-import { usePermissions, getTierDisplayName } from '@total-audio/auth'
-import type { AppName } from '@total-audio/auth'
+import { usePermissions, getTierDisplayName } from '@total-audio/auth';
+import type { AppName } from '@total-audio/auth';
 
 interface AppAccessGateProps {
-  appName: AppName
-  children: React.ReactNode
-  fallback?: React.ReactNode
+  appName: AppName;
+  children: React.ReactNode;
+  fallback?: React.ReactNode;
 }
 
-export function AppAccessGate({
-  appName,
-  children,
-  fallback,
-}: AppAccessGateProps) {
-  const { checkAccess, tier, loading } = usePermissions()
+export function AppAccessGate({ appName, children, fallback }: AppAccessGateProps) {
+  const { checkAccess, tier, loading } = usePermissions();
 
   if (loading) {
     return (
@@ -30,17 +26,17 @@ export function AppAccessGate({
           <p className="text-gray-600">Checking access...</p>
         </div>
       </div>
-    )
+    );
   }
 
-  const hasAccess = checkAccess(appName)
+  const hasAccess = checkAccess(appName);
 
   if (hasAccess) {
-    return <>{children}</>
+    return <>{children}</>;
   }
 
   if (fallback) {
-    return <>{fallback}</>
+    return <>{fallback}</>;
   }
 
   return (
@@ -49,14 +45,14 @@ export function AppAccessGate({
         <div className="mb-4 text-6xl">🔒</div>
         <h2 className="text-2xl font-bold mb-2">Upgrade Required</h2>
         <p className="text-gray-600 mb-4">
-          You're currently on the <strong>{getTierDisplayName(tier)}</strong>{' '}
-          plan. This app requires a higher tier subscription.
+          You're currently on the <strong>{getTierDisplayName(tier)}</strong> plan. This app
+          requires a higher tier subscription.
         </p>
 
         <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-6">
           <p className="text-sm text-blue-900">
-            <strong>Get access to {getAppDisplayName(appName)}</strong> by
-            upgrading to the Bundle plan and unlock all Total Audio tools!
+            <strong>Get access to {getAppDisplayName(appName)}</strong> by upgrading to the Bundle
+            plan and unlock all Total Audio tools!
           </p>
         </div>
 
@@ -76,7 +72,7 @@ export function AppAccessGate({
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function getAppDisplayName(appName: AppName): string {
@@ -85,6 +81,6 @@ function getAppDisplayName(appName: AppName): string {
     tracker: 'Campaign Tracker',
     'pitch-generator': 'Pitch Generator',
     'command-centre': 'Command Centre',
-  }
-  return names[appName]
+  };
+  return names[appName];
 }

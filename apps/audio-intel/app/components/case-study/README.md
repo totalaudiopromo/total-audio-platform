@@ -9,72 +9,90 @@ This component library enables creating new case study pages by passing data obj
 ## Components
 
 ### 1. CaseStudyHero
+
 Hero section with title, byline metadata, and highlighted intro callout.
 
 **Props**: `CaseStudyHeroData`
+
 - `title`: Main page heading
 - `byline`: Author, role, format, read time
 - `introCallout`: Highlighted intro paragraph
 
 ### 2. CampaignSnapshot
+
 Two-column comparison grid showing manual effort vs AI-powered approach.
 
 **Props**: `CampaignSnapshotData`
+
 - `context`: Campaign description
 - `manualEffort`: Title and bullet points
 - `aiRun`: Title and bullet points
 
 ### 3. PainPointsSection
+
 Problem statement section with titled pain points.
 
 **Props**: `PainPointsSectionData`
+
 - `heading`: Section title
 - `intro`: Context paragraph
 - `painPoints`: Array of {title, description}
 
 ### 4. WorkflowBreakdown
+
 Numbered workflow steps showing the Audio Intel process.
 
 **Props**: `WorkflowBreakdownData`
+
 - `heading`: Section title
 - `intro`: Workflow context
 - `steps`: Array of {title, description}
 
 ### 5. ContactsTable
+
 Professional table displaying enriched contact data with validation status.
 
 **Props**: `ContactsTableData`
+
 - `heading`: Table section title
 - `contacts`: Array of ContactData objects
 - `disclaimer`: Optional footer text
 
 ### 6. ResultsMetrics
+
 Three-column results grid with key metrics.
 
 **Props**: `ResultsMetricsData`
+
 - `heading`: Section title
 - `metrics`: Array of {title, description}
 
 ### 7. PlaybookChecklist
+
 Ordered checklist for readers to follow.
 
 **Props**: `PlaybookChecklistData`
+
 - `heading`: Section title
 - `intro`: Context paragraph
 - `steps`: Array of step descriptions
 
 ### 8. TestimonialQuote
+
 Blockquote with optional attribution.
 
 **Props**: `TestimonialQuoteData`
+
 - `heading`: Section title
 - `quote`: Testimonial text
 - `attribution`: Optional source citation
 
 ### 9. DualCTA
+
 Two-button call-to-action section (primary + secondary).
 
 **Props**: `DualCTAData`
+
 - `heading`: CTA section title
 - `intro`: Context paragraph
 - `primaryButton`: {text, href}

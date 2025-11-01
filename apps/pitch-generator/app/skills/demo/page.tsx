@@ -44,12 +44,10 @@ export default function SkillsDemo() {
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Text to Check:
-              </label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Text to Check:</label>
               <textarea
                 value={text}
-                onChange={(e) => setText(e.target.value)}
+                onChange={e => setText(e.target.value)}
                 className="w-full p-3 border border-gray-300 rounded-lg h-32 font-mono text-sm"
                 placeholder="Enter text to check..."
               />
@@ -75,9 +73,7 @@ export default function SkillsDemo() {
                     {/* Compliance Score */}
                     <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
                       <div className="flex items-center justify-between">
-                        <span className="font-medium text-gray-700">
-                          Compliance Score:
-                        </span>
+                        <span className="font-medium text-gray-700">Compliance Score:</span>
                         <div className="flex items-center gap-2">
                           <div className="w-48 bg-gray-200 rounded-full h-4">
                             <div
@@ -85,8 +81,8 @@ export default function SkillsDemo() {
                                 result.complianceScore >= 0.8
                                   ? 'bg-green-500'
                                   : result.complianceScore >= 0.6
-                                  ? 'bg-yellow-500'
-                                  : 'bg-red-500'
+                                    ? 'bg-yellow-500'
+                                    : 'bg-red-500'
                               }`}
                               style={{
                                 width: `${result.complianceScore * 100}%`,
@@ -103,20 +99,12 @@ export default function SkillsDemo() {
                     {/* Original vs Corrected */}
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                        <p className="font-medium text-red-800 mb-2">
-                          Original:
-                        </p>
-                        <p className="text-sm text-gray-700 font-mono">
-                          {result.original}
-                        </p>
+                        <p className="font-medium text-red-800 mb-2">Original:</p>
+                        <p className="text-sm text-gray-700 font-mono">{result.original}</p>
                       </div>
                       <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                        <p className="font-medium text-green-800 mb-2">
-                          Corrected:
-                        </p>
-                        <p className="text-sm text-gray-700 font-mono">
-                          {result.corrected}
-                        </p>
+                        <p className="font-medium text-green-800 mb-2">Corrected:</p>
+                        <p className="text-sm text-gray-700 font-mono">{result.corrected}</p>
                       </div>
                     </div>
 
@@ -128,10 +116,7 @@ export default function SkillsDemo() {
                         </p>
                         <ul className="space-y-1">
                           {result.changes.map((change: any, i: number) => (
-                            <li
-                              key={i}
-                              className="text-sm text-gray-700 flex items-center gap-2"
-                            >
+                            <li key={i} className="text-sm text-gray-700 flex items-center gap-2">
                               <span className="font-mono bg-red-100 px-2 py-0.5 rounded">
                                 {change.from}
                               </span>
@@ -139,9 +124,7 @@ export default function SkillsDemo() {
                               <span className="font-mono bg-green-100 px-2 py-0.5 rounded">
                                 {change.to}
                               </span>
-                              <span className="text-gray-500 text-xs">
-                                ({change.reason})
-                              </span>
+                              <span className="text-gray-500 text-xs">({change.reason})</span>
                             </li>
                           ))}
                         </ul>
@@ -167,17 +150,13 @@ export default function SkillsDemo() {
                     {/* Suggestions */}
                     {result.suggestions && result.suggestions.length > 0 && (
                       <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                        <p className="font-medium text-purple-800 mb-2">
-                          Suggestions:
-                        </p>
+                        <p className="font-medium text-purple-800 mb-2">Suggestions:</p>
                         <ul className="space-y-1">
-                          {result.suggestions.map(
-                            (suggestion: string, i: number) => (
-                              <li key={i} className="text-sm text-gray-700">
-                                💡 {suggestion}
-                              </li>
-                            )
-                          )}
+                          {result.suggestions.map((suggestion: string, i: number) => (
+                            <li key={i} className="text-sm text-gray-700">
+                              💡 {suggestion}
+                            </li>
+                          ))}
                         </ul>
                       </div>
                     )}
@@ -189,9 +168,7 @@ export default function SkillsDemo() {
 
           {/* Example Texts */}
           <div className="mt-8 pt-6 border-t border-gray-200">
-            <p className="text-sm font-medium text-gray-700 mb-3">
-              Try these examples:
-            </p>
+            <p className="text-sm font-medium text-gray-700 mb-3">Try these examples:</p>
             <div className="grid gap-2">
               <button
                 onClick={() =>
@@ -214,11 +191,7 @@ export default function SkillsDemo() {
                 🟢 Good: Authentic UK voice
               </button>
               <button
-                onClick={() =>
-                  setText(
-                    'We analyze and organize your data to optimize results.'
-                  )
-                }
+                onClick={() => setText('We analyze and organize your data to optimize results.')}
                 className="text-left text-sm bg-gray-100 hover:bg-gray-200 p-3 rounded-lg transition-colors"
               >
                 🟡 Medium: Just US spelling issues
@@ -228,9 +201,7 @@ export default function SkillsDemo() {
         </div>
 
         <div className="mt-6 text-center text-sm text-gray-600">
-          <p>
-            Powered by Claude 3.5 Haiku • 73% cheaper than Sonnet • 3-5x faster
-          </p>
+          <p>Powered by Claude 3.5 Haiku • 73% cheaper than Sonnet • 3-5x faster</p>
         </div>
       </div>
     </div>

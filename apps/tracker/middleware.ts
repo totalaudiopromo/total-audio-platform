@@ -9,32 +9,35 @@ export async function middleware(request: NextRequest) {
   // Check if Supabase environment variables are available
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  
+
   // If Supabase is not configured, allow public access to all routes
-  if (!supabaseUrl || !supabaseAnonKey || supabaseUrl.includes('placeholder') || !supabaseUrl.startsWith('http')) {
+  if (
+    !supabaseUrl ||
+    !supabaseAnonKey ||
+    supabaseUrl.includes('placeholder') ||
+    !supabaseUrl.startsWith('http')
+  ) {
     return supabaseResponse;
   }
 
-  const supabase = createServerClient(
-    supabaseUrl,
-    supabaseAnonKey,
-    {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll();
-        },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value));
-          supabaseResponse = NextResponse.next({
-            request,
-          });
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          );
-        },
+  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+    cookies: {
+      getAll() {
+        return request.cookies.getAll();
       },
-    }
-  );
+      setAll(cookiesToSet) {
+        cookiesToSet.forEach(({ name, value, options }) =>
+          request.cookies.set(name, value)
+        );
+        supabaseResponse = NextResponse.next({
+          request,
+        });
+        cookiesToSet.forEach(({ name, value, options }) =>
+          supabaseResponse.cookies.set(name, value, options)
+        );
+      },
+    },
+  });
 
   // Refresh session if expired - required for Server Components
   await supabase.auth.getUser();
@@ -44,8 +47,20 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   // Public routes that don't require authentication
-  const publicRoutes = ['/', '/login', '/signup', '/demo', '/pricing', '/privacy', '/terms', '/billing', '/upgrade', '/verify-email'];
-  const isPublicRoute = publicRoutes.includes(request.nextUrl.pathname) ||
+  const publicRoutes = [
+    '/',
+    '/login',
+    '/signup',
+    '/demo',
+    '/pricing',
+    '/privacy',
+    '/terms',
+    '/billing',
+    '/upgrade',
+    '/verify-email',
+  ];
+  const isPublicRoute =
+    publicRoutes.includes(request.nextUrl.pathname) ||
     request.nextUrl.pathname.startsWith('/blog') ||
     request.nextUrl.pathname.startsWith('/docs') ||
     request.nextUrl.pathname.startsWith('/auth/callback');

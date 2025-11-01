@@ -1,7 +1,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Users, User, Shield, Activity, BarChart3, MapPin, Calendar, Mail, Filter } from 'lucide-react';
+import {
+  Users,
+  User,
+  Shield,
+  Activity,
+  BarChart3,
+  MapPin,
+  Calendar,
+  Mail,
+  Filter,
+} from 'lucide-react';
 
 interface User {
   id: string;
@@ -37,15 +47,15 @@ export default function UserManagementPage() {
     try {
       // Fetch real ConvertKit subscribers
       console.log('📊 Fetching real ConvertKit subscribers...');
-      
+
       const response = await fetch('/api/convertkit-subscribers');
       const data = await response.json();
-      
+
       if (data.error) {
         console.error('❌ Failed to fetch ConvertKit subscribers:', data.error);
         throw new Error(data.error);
       }
-      
+
       // Transform ConvertKit subscribers to User format
       const realUsers: User[] = data.users.map((subscriber: any) => {
         // Determine user type based on email domain and engagement
@@ -82,11 +92,11 @@ export default function UserManagementPage() {
             contactsEnriched: subscriber.engagement.contactsEnriched,
             emailsValidated: subscriber.engagement.emailsValidated,
             apiCalls: Math.floor(subscriber.engagement.contactsEnriched * 2.5), // Estimate API calls
-            exportsDownloaded: subscriber.engagement.exportsGenerated
+            exportsDownloaded: subscriber.engagement.exportsGenerated,
           },
           tier: 'free' as const, // All beta users are on free tier
           location: `${subscriber.location?.city || 'Unknown'}, ${subscriber.location?.country || 'UK'}`,
-          userType
+          userType,
         };
       });
 
@@ -106,14 +116,14 @@ export default function UserManagementPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           userId,
-          updates: { status: newStatus }
-        })
+          updates: { status: newStatus },
+        }),
       });
 
       if (response.ok) {
-        setUsers(prev => prev.map(user => 
-          user.id === userId ? { ...user, status: newStatus } : user
-        ));
+        setUsers(prev =>
+          prev.map(user => (user.id === userId ? { ...user, status: newStatus } : user))
+        );
         alert(`✅ User status updated to ${newStatus}`);
       } else {
         const error = await response.json();
@@ -132,14 +142,14 @@ export default function UserManagementPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           userId,
-          updates: { role: newRole }
-        })
+          updates: { role: newRole },
+        }),
       });
 
       if (response.ok) {
-        setUsers(prev => prev.map(user => 
-          user.id === userId ? { ...user, role: newRole } : user
-        ));
+        setUsers(prev =>
+          prev.map(user => (user.id === userId ? { ...user, role: newRole } : user))
+        );
         alert(`✅ User role updated to ${newRole}`);
       } else {
         const error = await response.json();
@@ -156,7 +166,7 @@ export default function UserManagementPage() {
       const response = await fetch('/api/users/update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action, userId, ...data })
+        body: JSON.stringify({ action, userId, ...data }),
       });
 
       const result = await response.json();
@@ -173,26 +183,34 @@ export default function UserManagementPage() {
     }
   };
 
-  const filteredUsers = filterStatus === 'all' 
-    ? users 
-    : users.filter(user => user.status === filterStatus);
+  const filteredUsers =
+    filterStatus === 'all' ? users : users.filter(user => user.status === filterStatus);
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return { bg: '#d1fae5', text: '#047857', border: '#10b981' };
-      case 'inactive': return { bg: '#fef3c7', text: '#d97706', border: '#f59e0b' };
-      case 'suspended': return { bg: '#fed7d7', text: '#c53030', border: '#f56565' };
-      default: return { bg: '#f3f4f6', text: '#374151', border: '#9ca3af' };
+      case 'active':
+        return { bg: '#d1fae5', text: '#047857', border: '#10b981' };
+      case 'inactive':
+        return { bg: '#fef3c7', text: '#d97706', border: '#f59e0b' };
+      case 'suspended':
+        return { bg: '#fed7d7', text: '#c53030', border: '#f56565' };
+      default:
+        return { bg: '#f3f4f6', text: '#374151', border: '#9ca3af' };
     }
   };
 
   const getUserTypeColor = (userType: string) => {
     switch (userType) {
-      case 'independent_artist': return { bg: '#dbeafe', text: '#1e40af' };
-      case 'pr_agency': return { bg: '#f3e8ff', text: '#7c3aed' };
-      case 'record_label': return { bg: '#fed7d7', text: '#c53030' };
-      case 'music_venue': return { bg: '#d1fae5', text: '#047857' };
-      default: return { bg: '#f3f4f6', text: '#374151' };
+      case 'independent_artist':
+        return { bg: '#dbeafe', text: '#1e40af' };
+      case 'pr_agency':
+        return { bg: '#f3e8ff', text: '#7c3aed' };
+      case 'record_label':
+        return { bg: '#fed7d7', text: '#c53030' };
+      case 'music_venue':
+        return { bg: '#d1fae5', text: '#047857' };
+      default:
+        return { bg: '#f3f4f6', text: '#374151' };
     }
   };
 
@@ -218,7 +236,9 @@ export default function UserManagementPage() {
           </div>
           <div>
             <h1 className="postcraft-title mb-1">User Management</h1>
-            <p className="postcraft-subtitle">Manage beta users, permissions, and track usage across Audio Intel</p>
+            <p className="postcraft-subtitle">
+              Manage beta users, permissions, and track usage across Audio Intel
+            </p>
           </div>
         </div>
       </div>
@@ -237,21 +257,27 @@ export default function UserManagementPage() {
             <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
               <Activity className="w-6 h-6 text-white" />
             </div>
-            <div className="postcraft-metric-value">{users.filter(u => u.status === 'active').length}</div>
+            <div className="postcraft-metric-value">
+              {users.filter(u => u.status === 'active').length}
+            </div>
             <div className="postcraft-metric-label">Active</div>
           </div>
           <div className="postcraft-metric-card">
             <div className="postcraft-metric-icon bg-gradient-to-br from-yellow-500 to-orange-500">
               <User className="w-6 h-6 text-white" />
             </div>
-            <div className="postcraft-metric-value">{users.filter(u => u.status === 'inactive').length}</div>
+            <div className="postcraft-metric-value">
+              {users.filter(u => u.status === 'inactive').length}
+            </div>
             <div className="postcraft-metric-label">Inactive</div>
           </div>
           <div className="postcraft-metric-card">
             <div className="postcraft-metric-icon bg-gradient-to-br from-purple-500 to-pink-500">
               <BarChart3 className="w-6 h-6 text-white" />
             </div>
-            <div className="postcraft-metric-value">{users.reduce((sum, user) => sum + user.usage.contactsEnriched, 0).toLocaleString()}</div>
+            <div className="postcraft-metric-value">
+              {users.reduce((sum, user) => sum + user.usage.contactsEnriched, 0).toLocaleString()}
+            </div>
             <div className="postcraft-metric-label">Total Enriched</div>
           </div>
         </div>
@@ -261,13 +287,15 @@ export default function UserManagementPage() {
       <div className="postcraft-section mb-8">
         <h3 className="postcraft-label mb-4">Filter Users</h3>
         <div className="flex gap-3 flex-wrap">
-          {['all', 'active', 'inactive', 'suspended'].map((status) => (
+          {['all', 'active', 'inactive', 'suspended'].map(status => (
             <button
               key={status}
               onClick={() => setFilterStatus(status)}
               className={`postcraft-button ${filterStatus === status ? 'bg-black text-white' : ''}`}
             >
-              {status === 'all' ? `All Users (${users.length})` : `${status.charAt(0).toUpperCase() + status.slice(1)} (${users.filter(u => u.status === status).length})`}
+              {status === 'all'
+                ? `All Users (${users.length})`
+                : `${status.charAt(0).toUpperCase() + status.slice(1)} (${users.filter(u => u.status === status).length})`}
             </button>
           ))}
         </div>
@@ -275,29 +303,25 @@ export default function UserManagementPage() {
 
       {/* Users Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {filteredUsers.map((user) => {
+        {filteredUsers.map(user => {
           const statusColors = getStatusColor(user.status);
           const typeColors = getUserTypeColor(user.userType);
-          
+
           return (
             <div key={user.id} className="postcraft-card">
               {/* User Header */}
               <div className="flex justify-between items-start mb-4">
                 <div className="flex-1">
-                  <h3 className="postcraft-label mb-1">
-                    {user.name}
-                  </h3>
-                  <p className="postcraft-text text-sm mb-2">
-                    {user.email}
-                  </p>
-                  <span 
+                  <h3 className="postcraft-label mb-1">{user.name}</h3>
+                  <p className="postcraft-text text-sm mb-2">{user.email}</p>
+                  <span
                     className="inline-block px-3 py-1 rounded-full text-xs font-bold border-2 border-black capitalize"
                     style={{ background: typeColors.bg, color: typeColors.text }}
                   >
                     {user.userType.replace('_', ' ')}
                   </span>
                 </div>
-                <span 
+                <span
                   className="px-3 py-1 rounded-full text-xs font-bold uppercase border-2 border-black"
                   style={{ background: statusColors.bg, color: statusColors.text }}
                 >
@@ -329,9 +353,7 @@ export default function UserManagementPage() {
                   </div>
                   <div>
                     <span className="postcraft-text">Exports:</span>
-                    <div className="font-black text-orange-600">
-                      {user.usage.exportsDownloaded}
-                    </div>
+                    <div className="font-black text-orange-600">{user.usage.exportsDownloaded}</div>
                   </div>
                 </div>
               </div>
@@ -353,28 +375,21 @@ export default function UserManagementPage() {
                   </div>
                   <div>
                     <span className="postcraft-text">Location:</span>
-                    <div className="font-bold text-gray-900">
-                      {user.location}
-                    </div>
+                    <div className="font-bold text-gray-900">{user.location}</div>
                   </div>
                   <div>
                     <span className="postcraft-text">Tier:</span>
-                    <div className="font-bold text-gray-900 capitalize">
-                      {user.tier}
-                    </div>
+                    <div className="font-bold text-gray-900 capitalize">{user.tier}</div>
                   </div>
                 </div>
               </div>
 
               {/* Actions */}
               <div className="flex gap-2 flex-wrap">
-                <button
-                  onClick={() => setSelectedUser(user)}
-                  className="postcraft-button flex-1"
-                >
+                <button onClick={() => setSelectedUser(user)} className="postcraft-button flex-1">
                   View Details
                 </button>
-                
+
                 {user.status === 'active' ? (
                   <button
                     onClick={() => updateUserStatus(user.id, 'suspended')}
@@ -390,10 +405,10 @@ export default function UserManagementPage() {
                     Activate
                   </button>
                 )}
-                
+
                 <select
                   value={user.role}
-                  onChange={(e) => updateUserRole(user.id, e.target.value as User['role'])}
+                  onChange={e => updateUserRole(user.id, e.target.value as User['role'])}
                   className="px-3 py-2 border-3 border-black rounded-xl font-bold bg-white"
                 >
                   <option value="beta-user">Beta User</option>
@@ -415,26 +430,22 @@ export default function UserManagementPage() {
 
       {filteredUsers.length === 0 && (
         <div className="postcraft-card text-center py-16">
-          <p className="postcraft-text text-lg">
-            No users found for the selected filter.
-          </p>
+          <p className="postcraft-text text-lg">No users found for the selected filter.</p>
         </div>
       )}
 
       {/* User Detail Modal */}
       {selectedUser && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-8"
           onClick={() => setSelectedUser(null)}
         >
-          <div 
+          <div
             className="postcraft-card max-w-2xl w-full max-h-[80vh] overflow-auto"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             <div className="flex justify-between items-center mb-6">
-              <h3 className="postcraft-section-title">
-                {selectedUser.name}
-              </h3>
+              <h3 className="postcraft-section-title">{selectedUser.name}</h3>
               <button
                 onClick={() => setSelectedUser(null)}
                 className="text-4xl text-gray-500 hover:text-black font-bold"
@@ -442,7 +453,7 @@ export default function UserManagementPage() {
                 ×
               </button>
             </div>
-            
+
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -455,7 +466,9 @@ export default function UserManagementPage() {
                 </div>
                 <div>
                   <span className="postcraft-label block mb-1">User Type</span>
-                  <p className="postcraft-text capitalize">{selectedUser.userType.replace('_', ' ')}</p>
+                  <p className="postcraft-text capitalize">
+                    {selectedUser.userType.replace('_', ' ')}
+                  </p>
                 </div>
                 <div>
                   <span className="postcraft-label block mb-1">Status</span>
@@ -471,32 +484,44 @@ export default function UserManagementPage() {
                 </div>
                 <div>
                   <span className="postcraft-label block mb-1">Signup Date</span>
-                  <p className="postcraft-text">{new Date(selectedUser.signupDate).toLocaleString('en-GB')}</p>
+                  <p className="postcraft-text">
+                    {new Date(selectedUser.signupDate).toLocaleString('en-GB')}
+                  </p>
                 </div>
                 <div>
                   <span className="postcraft-label block mb-1">Last Active</span>
-                  <p className="postcraft-text">{new Date(selectedUser.lastActive).toLocaleString('en-GB')}</p>
+                  <p className="postcraft-text">
+                    {new Date(selectedUser.lastActive).toLocaleString('en-GB')}
+                  </p>
                 </div>
               </div>
-              
+
               <div className="mt-6 pt-6 border-t-3 border-black">
                 <h4 className="postcraft-label mb-4">Usage Details</h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <span className="postcraft-text">Contacts Enriched</span>
-                    <p className="font-black text-xl text-purple-600">{selectedUser.usage.contactsEnriched.toLocaleString()}</p>
+                    <p className="font-black text-xl text-purple-600">
+                      {selectedUser.usage.contactsEnriched.toLocaleString()}
+                    </p>
                   </div>
                   <div>
                     <span className="postcraft-text">Emails Validated</span>
-                    <p className="font-black text-xl text-green-600">{selectedUser.usage.emailsValidated.toLocaleString()}</p>
+                    <p className="font-black text-xl text-green-600">
+                      {selectedUser.usage.emailsValidated.toLocaleString()}
+                    </p>
                   </div>
                   <div>
                     <span className="postcraft-text">API Calls</span>
-                    <p className="font-black text-xl text-blue-600">{selectedUser.usage.apiCalls.toLocaleString()}</p>
+                    <p className="font-black text-xl text-blue-600">
+                      {selectedUser.usage.apiCalls.toLocaleString()}
+                    </p>
                   </div>
                   <div>
                     <span className="postcraft-text">Exports Downloaded</span>
-                    <p className="font-black text-xl text-orange-600">{selectedUser.usage.exportsDownloaded}</p>
+                    <p className="font-black text-xl text-orange-600">
+                      {selectedUser.usage.exportsDownloaded}
+                    </p>
                   </div>
                 </div>
               </div>

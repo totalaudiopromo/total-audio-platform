@@ -38,9 +38,10 @@ async function run() {
   }
 
   const headless = getArg('--headless');
-  const message = (process.argv[2] && !process.argv[2].startsWith('--'))
-    ? process.argv[2]
-    : (process.env.TEXT || 'Audio Intel test post – generated via Puppeteer.');
+  const message =
+    process.argv[2] && !process.argv[2].startsWith('--')
+      ? process.argv[2]
+      : process.env.TEXT || 'Audio Intel test post – generated via Puppeteer.';
 
   const sessionDir = path.resolve(__dirname, '..', '..', '..', '..', '.x-session');
   await ensureDir(sessionDir);
@@ -49,7 +50,7 @@ async function run() {
   const page = await browser.newPage();
   page.setDefaultTimeout(30000);
 
-  const sleep = (ms) => new Promise(res => setTimeout(res, ms));
+  const sleep = ms => new Promise(res => setTimeout(res, ms));
 
   try {
     // Step 1: Open home, check login
@@ -63,15 +64,25 @@ async function run() {
     ];
     let loggedIn = false;
     for (const sel of loggedInSelectors) {
-      if (await page.$(sel)) { loggedIn = true; break; }
+      if (await page.$(sel)) {
+        loggedIn = true;
+        break;
+      }
     }
 
     if (!loggedIn) {
       console.log('\nLogin required. Taking you to the login page...');
       await page.goto('https://x.com/login', { waitUntil: 'domcontentloaded' });
-      console.log('Please complete login in the opened browser window. I will wait up to 2 minutes...');
+      console.log(
+        'Please complete login in the opened browser window. I will wait up to 2 minutes...'
+      );
       loggedIn = await Promise.race([
-        page.waitForSelector('a[aria-label="Profile"], div[data-testid="SideNav_NewTweet_Button"]', { timeout: 120000 }).then(() => true).catch(() => false),
+        page
+          .waitForSelector('a[aria-label="Profile"], div[data-testid="SideNav_NewTweet_Button"]', {
+            timeout: 120000,
+          })
+          .then(() => true)
+          .catch(() => false),
       ]);
       if (!loggedIn) {
         throw new Error('Login not detected within 2 minutes. Try again.');
@@ -99,10 +110,18 @@ async function run() {
         if (sel.startsWith('xpath=')) {
           const [, xp] = sel.split('=');
           const els = await page.$x(xp);
-          if (els && els[0]) { await els[0].click(); clicked = true; break; }
+          if (els && els[0]) {
+            await els[0].click();
+            clicked = true;
+            break;
+          }
         } else {
           const el = await page.$(sel);
-          if (el) { await el.click(); clicked = true; break; }
+          if (el) {
+            await el.click();
+            clicked = true;
+            break;
+          }
         }
       } catch {}
     }
@@ -151,7 +170,10 @@ async function run() {
       for (const sel of postButtonSelectors) {
         if (sel.startsWith('xpath=')) {
           const els = await page.$x(sel.replace('xpath=', ''));
-          if (els && els[0]) { postButton = els[0]; break; }
+          if (els && els[0]) {
+            postButton = els[0];
+            break;
+          }
         } else {
           postButton = await page.$(sel);
           if (postButton) break;
@@ -169,11 +191,11 @@ async function run() {
     process.exit(0);
   } catch (err) {
     console.error(`❌ Failed: ${err.message}`);
-    try { await browser.close(); } catch {}
+    try {
+      await browser.close();
+    } catch {}
     process.exit(1);
   }
 }
 
 run();
-
-

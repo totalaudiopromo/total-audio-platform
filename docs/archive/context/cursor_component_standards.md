@@ -3,6 +3,7 @@
 ## 🎨 Audio Brand Component System
 
 ### Core Component Architecture
+
 ```typescript
 // Brand-consistent component naming and structure
 packages/
@@ -22,6 +23,7 @@ packages/
 ```
 
 ### Component Template Structure
+
 ```typescript
 import React from 'react';
 import { cn } from '@/lib/utils';
@@ -33,15 +35,15 @@ interface ComponentProps {
   className?: string;
 }
 
-export function Component({ 
+export function Component({
   variant = 'default',
   size = 'md',
   children,
   className,
-  ...props 
+  ...props
 }: ComponentProps) {
   return (
-    <div 
+    <div
       className={cn(
         // Base styles
         'relative rounded-lg border',
@@ -69,6 +71,7 @@ export function Component({
 ## 🎯 Audio Character Integration
 
 ### Character State Management
+
 ```typescript
 interface AudioCharacterState {
   tool: 'intel' | 'pulse' | 'radar' | 'track' | 'clone' | 'predict';
@@ -88,9 +91,9 @@ export const useAudioStore = create<AudioState>()((set, get) => ({
     colorActivation: false,
     animationDuration: 800,
   },
-  
-  setTool: (tool) => 
-    set((state) => ({
+
+  setTool: tool =>
+    set(state => ({
       currentTool: tool,
       characterState: {
         ...state.characterState,
@@ -98,16 +101,16 @@ export const useAudioStore = create<AudioState>()((set, get) => ({
         activity: 'idle',
       },
     })),
-  
+
   triggerCelebration: () => {
-    set((state) => ({
+    set(state => ({
       characterState: {
         ...state.characterState,
         activity: 'celebration',
         colorActivation: true,
       },
     }));
-    
+
     setTimeout(() => {
       get().resetToIdle();
     }, 2000);
@@ -116,32 +119,34 @@ export const useAudioStore = create<AudioState>()((set, get) => ({
 ```
 
 ### Tool-Specific Character Poses
+
 ```typescript
 const audioAnimations = {
-  'intel': {
+  intel: {
     idle: 'sitting with headphones',
     working: 'focused analysis expression',
     success: 'headphones glow blue',
-    celebration: 'brief blue animation'
+    celebration: 'brief blue animation',
   },
-  'pulse': {
+  pulse: {
     idle: 'creative writing pose',
     working: 'thoughtful pitch creation',
     success: 'notepad glows green',
-    celebration: 'writing success animation'
+    celebration: 'writing success animation',
   },
-  'radar': {
+  radar: {
     idle: 'campaign strategist pose',
     working: 'coordinating multiple screens',
     success: 'orange timeline activation',
-    celebration: 'campaign launch animation'
-  }
+    celebration: 'campaign launch animation',
+  },
 };
 ```
 
 ## 🎨 Styling Standards
 
 ### Tailwind Configuration
+
 ```javascript
 // tailwind.config.js
 module.exports = {
@@ -182,23 +187,24 @@ module.exports = {
 ```
 
 ### CSS Organization
+
 ```css
 @layer components {
   .audio-card {
     @apply rounded-lg border bg-white p-6 shadow-sm;
   }
-  
+
   .tool-button {
     @apply inline-flex items-center justify-center rounded-md px-4 py-2 
            text-sm font-medium transition-colors focus-visible:outline-none 
            focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50;
   }
-  
+
   .color-activation {
     @apply transition-all duration-[800ms] ease-in-out;
     filter: grayscale(1);
   }
-  
+
   .color-activation.active {
     filter: grayscale(0);
   }
@@ -208,6 +214,7 @@ module.exports = {
 ## 📝 TypeScript Standards
 
 ### Strict Configuration
+
 ```json
 {
   "compilerOptions": {
@@ -223,14 +230,15 @@ module.exports = {
 ```
 
 ### Type Organization
+
 ```typescript
 // types/tools.ts
-export type ToolType = 
-  | 'audio-intel' 
-  | 'playlist-pulse' 
-  | 'release-radar' 
-  | 'trend-track' 
-  | 'content-clone' 
+export type ToolType =
+  | 'audio-intel'
+  | 'playlist-pulse'
+  | 'release-radar'
+  | 'trend-track'
+  | 'content-clone'
   | 'success-predict';
 
 export interface Tool {
@@ -256,6 +264,7 @@ export interface User {
 ## 🧪 Testing Standards
 
 ### Component Testing Template
+
 ```typescript
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -270,16 +279,16 @@ describe('AudioCharacter', () => {
 
   it('renders with correct tool styling', () => {
     render(<AudioCharacter {...defaultProps} />);
-    
+
     const character = screen.getByTestId('audio-character');
     expect(character).toHaveClass('tool-intel');
   });
 
   it('activates color on state change', () => {
     const { rerender } = render(<AudioCharacter {...defaultProps} />);
-    
+
     rerender(<AudioCharacter {...defaultProps} state="working" />);
-    
+
     const character = screen.getByTestId('audio-character');
     expect(character).toHaveClass('color-activation', 'active');
   });
@@ -287,6 +296,7 @@ describe('AudioCharacter', () => {
 ```
 
 ### API Testing Template
+
 ```typescript
 import { POST } from '../api/contacts/enrich/route';
 import { NextRequest } from 'next/server';
@@ -313,18 +323,20 @@ describe('/api/contacts/enrich', () => {
 ## 🚀 Performance Standards
 
 ### Core Web Vitals Targets
+
 - **LCP**: < 2.5 seconds
-- **FID**: < 100 milliseconds  
+- **FID**: < 100 milliseconds
 - **CLS**: < 0.1
 
 ### Code Splitting
+
 ```typescript
 // Dynamic imports for tool-specific components
 const AudioIntelDashboard = dynamic(
   () => import('@/components/audio-intel/Dashboard'),
-  { 
+  {
     loading: () => <DashboardSkeleton />,
-    ssr: false 
+    ssr: false
   }
 );
 ```
@@ -332,13 +344,10 @@ const AudioIntelDashboard = dynamic(
 ## 🔧 Code Quality
 
 ### ESLint Configuration
+
 ```json
 {
-  "extends": [
-    "next/core-web-vitals",
-    "@typescript-eslint/recommended",
-    "prettier"
-  ],
+  "extends": ["next/core-web-vitals", "@typescript-eslint/recommended", "prettier"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-explicit-any": "warn",
@@ -348,6 +357,7 @@ const AudioIntelDashboard = dynamic(
 ```
 
 ### Naming Conventions
+
 - **PascalCase**: Component names (`AudioCharacter`, `BrandButton`)
 - **camelCase**: Props and functions (`onClick`, `handleSubmit`)
 - **kebab-case**: File names (`brand-button.tsx`)
@@ -356,22 +366,23 @@ const AudioIntelDashboard = dynamic(
 ## 📱 Responsive Design
 
 ### Breakpoint Strategy
+
 ```css
 .audio-character {
-  width: 100px;  /* Mobile */
+  width: 100px; /* Mobile */
   height: 100px;
 }
 
 @media (min-width: 768px) {
   .audio-character {
-    width: 150px;  /* Tablet */
+    width: 150px; /* Tablet */
     height: 150px;
   }
 }
 
 @media (min-width: 1024px) {
   .audio-character {
-    width: 200px;  /* Desktop */
+    width: 200px; /* Desktop */
     height: 200px;
   }
 }
@@ -380,6 +391,7 @@ const AudioIntelDashboard = dynamic(
 ## 🔒 Security Standards
 
 ### Input Validation
+
 ```typescript
 import { z } from 'zod';
 
@@ -396,6 +408,7 @@ const validatedData = contactEnrichmentSchema.parse(body);
 ## 🎯 Development Workflow
 
 ### Git Strategy
+
 ```bash
 # Branch naming
 feature/audio-intel-dashboard
@@ -409,13 +422,11 @@ docs: update component documentation
 ```
 
 ### Pre-commit Hooks
+
 ```json
 {
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
+    "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"]
   },
   "husky": {
     "hooks": {

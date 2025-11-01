@@ -23,6 +23,7 @@ A complete unified authentication system that enables:
 ### 1. **Shared Authentication Package** (`packages/auth/`)
 
 Complete TypeScript package with:
+
 - ✅ Browser and server Supabase clients
 - ✅ React hooks (useAuth, useUser, usePermissions)
 - ✅ Middleware for route protection
@@ -33,6 +34,7 @@ Complete TypeScript package with:
 ### 2. **Database Schema** (`supabase/migrations/`)
 
 Complete Supabase migration:
+
 - ✅ `user_profiles` table
 - ✅ `app_permissions` table
 - ✅ `subscriptions` table
@@ -42,6 +44,7 @@ Complete Supabase migration:
 ### 3. **Example Components** (`examples/auth-components/`)
 
 Production-ready React components:
+
 - ✅ SignInForm
 - ✅ SignUpForm
 - ✅ UserMenu
@@ -50,6 +53,7 @@ Production-ready React components:
 ### 4. **Documentation**
 
 Comprehensive guides:
+
 - ✅ [UNIFIED_AUTH_IMPLEMENTATION.md](./UNIFIED_AUTH_IMPLEMENTATION.md)
 - ✅ [SUPABASE_SETUP_GUIDE.md](./SUPABASE_SETUP_GUIDE.md)
 - ✅ [IMPLEMENTATION_GUIDE.md](./IMPLEMENTATION_GUIDE.md)
@@ -59,18 +63,19 @@ Comprehensive guides:
 
 ## 💰 Subscription Tier Matrix
 
-| Tier    | Price | Audio Intel | Tracker | Pitch Gen | Command Centre |
-|---------|-------|-------------|---------|-----------|----------------|
-| Free    | £0    | ✅ (10/mo)  | ❌      | ❌        | ❌             |
-| Pro     | £19   | ✅ Unlimited| ❌      | ❌        | ❌             |
-| Agency  | £79   | ✅ + Teams  | ❌      | ❌        | ❌             |
-| Bundle  | £99   | ✅          | ✅      | ✅        | ✅             |
+| Tier   | Price | Audio Intel  | Tracker | Pitch Gen | Command Centre |
+| ------ | ----- | ------------ | ------- | --------- | -------------- |
+| Free   | £0    | ✅ (10/mo)   | ❌      | ❌        | ❌             |
+| Pro    | £19   | ✅ Unlimited | ❌      | ❌        | ❌             |
+| Agency | £79   | ✅ + Teams   | ❌      | ❌        | ❌             |
+| Bundle | £99   | ✅           | ✅      | ✅        | ✅             |
 
 ---
 
 ## 🚀 Quick Start
 
 ### 1. Set up Supabase (10 minutes)
+
 ```bash
 # Follow SUPABASE_SETUP_GUIDE.md
 # - Create project
@@ -79,6 +84,7 @@ Comprehensive guides:
 ```
 
 ### 2. Update Environment Variables (5 minutes)
+
 ```bash
 # Add to all apps' .env.local
 NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
@@ -86,6 +92,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
 ```
 
 ### 3. Test Authentication (15 minutes)
+
 ```bash
 npm run dev:audio-intel
 # Sign up → Sign in → Test cross-app access
@@ -98,16 +105,19 @@ npm run dev:audio-intel
 ## 📊 Business Impact
 
 ### Customer Acquisition
+
 - ✅ Lower signup friction
 - ✅ Better conversion rates
 - ✅ Professional platform experience
 
 ### Revenue Optimisation
+
 - ✅ Makes bundle pricing attractive
 - ✅ Enables easy upgrades
 - ✅ Increases ARPU
 
 ### Customer Retention
+
 - ✅ Seamless app switching
 - ✅ Better user experience
 - ✅ Reduced support burden
@@ -117,6 +127,7 @@ npm run dev:audio-intel
 ## 🔄 Next Actions
 
 ### Immediate (Before Launch)
+
 1. [ ] Set up Supabase project
 2. [ ] Run database migration
 3. [ ] Update environment variables
@@ -124,6 +135,7 @@ npm run dev:audio-intel
 5. [ ] Customise auth UI
 
 ### Short-term (First Month)
+
 1. [ ] Implement Stripe webhooks
 2. [ ] Add password reset
 3. [ ] Create profile editing

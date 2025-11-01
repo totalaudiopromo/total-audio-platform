@@ -1,6 +1,6 @@
 # Content Bank - Authentic Voice (MASTER)
 
-*Your authentic voice - properly capitalised, naturally British casual*
+_Your authentic voice - properly capitalised, naturally British casual_
 
 ## VOICE CHARACTERISTICS
 

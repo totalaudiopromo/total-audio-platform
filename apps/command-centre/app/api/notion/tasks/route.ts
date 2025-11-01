@@ -8,7 +8,7 @@ const mockTasks = [
     status: 'in-progress' as const,
     priority: 'high' as const,
     dueDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-    assignee: 'Chris Schofield'
+    assignee: 'Chris Schofield',
   },
   {
     id: '2',
@@ -16,7 +16,7 @@ const mockTasks = [
     status: 'todo' as const,
     priority: 'medium' as const,
     dueDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
-    assignee: 'Design Team'
+    assignee: 'Design Team',
   },
   {
     id: '3',
@@ -24,7 +24,7 @@ const mockTasks = [
     status: 'todo' as const,
     priority: 'low' as const,
     dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-    assignee: 'AI Team'
+    assignee: 'AI Team',
   },
   {
     id: '4',
@@ -32,21 +32,18 @@ const mockTasks = [
     status: 'done' as const,
     priority: 'medium' as const,
     dueDate: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-    assignee: 'Dev Team'
-  }
+    assignee: 'Dev Team',
+  },
 ];
 
 export async function GET() {
   try {
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 500));
-    
+
     return NextResponse.json(mockTasks);
   } catch (error) {
     console.error('Error fetching tasks:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch tasks' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch tasks' }, { status: 500 });
   }
 }

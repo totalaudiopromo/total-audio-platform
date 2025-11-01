@@ -1,7 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { FileText, Download, Mail, Upload, Grid3x3, Loader2 } from 'lucide-react';
+import {
+  FileText,
+  Download,
+  Mail,
+  Upload,
+  Grid3x3,
+  Loader2,
+} from 'lucide-react';
 import { useIntegrations } from '@/hooks/useIntegrations';
 
 interface GenerateReportButtonProps {
@@ -9,7 +16,10 @@ interface GenerateReportButtonProps {
   campaignName: string;
 }
 
-export function GenerateReportButton({ campaignId, campaignName }: GenerateReportButtonProps) {
+export function GenerateReportButton({
+  campaignId,
+  campaignName,
+}: GenerateReportButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [reportUrl, setReportUrl] = useState<string | null>(null);
@@ -30,7 +40,9 @@ export function GenerateReportButton({ campaignId, campaignName }: GenerateRepor
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        const errorData = await response
+          .json()
+          .catch(() => ({ error: 'Unknown error' }));
         throw new Error(errorData.error || 'Failed to generate report');
       }
 
@@ -46,7 +58,6 @@ export function GenerateReportButton({ campaignId, campaignName }: GenerateRepor
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-
     } catch (err: any) {
       console.error('Report generation error:', err);
       setError(err.message || 'Failed to generate report');
@@ -77,8 +88,12 @@ export function GenerateReportButton({ campaignId, campaignName }: GenerateRepor
             <div className="bg-gradient-to-br from-teal-50 to-teal-100 border-b-4 border-black p-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <h2 className="text-2xl font-black text-gray-900 mb-2">Generate Campaign Report</h2>
-                  <p className="text-sm font-bold text-gray-700">{campaignName}</p>
+                  <h2 className="text-2xl font-black text-gray-900 mb-2">
+                    Generate Campaign Report
+                  </h2>
+                  <p className="text-sm font-bold text-gray-700">
+                    {campaignName}
+                  </p>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
@@ -92,7 +107,8 @@ export function GenerateReportButton({ campaignId, campaignName }: GenerateRepor
             <div className="p-6 space-y-4">
               {/* Report Preview - Simpler */}
               <div className="text-sm font-bold text-gray-600">
-                Creates a professional PDF with executive summary, performance metrics, and activity timeline.
+                Creates a professional PDF with executive summary, performance
+                metrics, and activity timeline.
               </div>
 
               {/* Error Display */}
@@ -101,7 +117,9 @@ export function GenerateReportButton({ campaignId, campaignName }: GenerateRepor
                   <div className="flex items-start gap-3">
                     <span className="text-red-600 font-black">⚠</span>
                     <div className="flex-1">
-                      <p className="text-sm font-black text-red-900 mb-1">Generation Failed</p>
+                      <p className="text-sm font-black text-red-900 mb-1">
+                        Generation Failed
+                      </p>
                       <p className="text-xs font-bold text-red-700">{error}</p>
                     </div>
                   </div>
@@ -114,7 +132,9 @@ export function GenerateReportButton({ campaignId, campaignName }: GenerateRepor
                   <div className="flex items-start gap-3">
                     <span className="text-green-600 font-black text-xl">✓</span>
                     <div className="flex-1">
-                      <p className="text-sm font-black text-green-900 mb-1">Report Generated!</p>
+                      <p className="text-sm font-black text-green-900 mb-1">
+                        Report Generated!
+                      </p>
                       <p className="text-xs font-bold text-green-700 mb-3">
                         Your PDF has been downloaded automatically
                       </p>

@@ -3,15 +3,15 @@
  * GET /api/agents/stats?name=<agent_name> (optional)
  */
 
-import { NextRequest, NextResponse } from 'next/server'
-import { AgentRegistry } from '@/agents/core/AgentRegistry'
+import { NextRequest, NextResponse } from 'next/server';
+import { AgentRegistry } from '@/agents/core/AgentRegistry';
 
 export async function GET(request: NextRequest) {
   try {
-    const searchParams = request.nextUrl.searchParams
-    const agentName = searchParams.get('name')
+    const searchParams = request.nextUrl.searchParams;
+    const agentName = searchParams.get('name');
 
-    const stats = AgentRegistry.getStats(agentName || undefined)
+    const stats = AgentRegistry.getStats(agentName || undefined);
 
     if (agentName && !stats) {
       return NextResponse.json(
@@ -20,10 +20,10 @@ export async function GET(request: NextRequest) {
           available: AgentRegistry.list(),
         },
         { status: 404 }
-      )
+      );
     }
 
-    return NextResponse.json(stats)
+    return NextResponse.json(stats);
   } catch (error) {
     return NextResponse.json(
       {
@@ -31,6 +31,6 @@ export async function GET(request: NextRequest) {
         message: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
-    )
+    );
   }
 }

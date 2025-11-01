@@ -3,6 +3,7 @@
 ## 🚀 Getting Started Locally
 
 ### 1. Start the Dev Server
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/pitch-generator
 npm run dev
@@ -11,18 +12,21 @@ npm run dev
 Server will start at: **http://localhost:3001**
 
 ### 2. Sign In
+
 - **Email**: `founder@totalaudiopromo.com`
 - **Password**: `buildfast`
 
 ### 3. Test the Core Flow
 
 **Step 1: Add a Contact**
+
 1. Go to "Contacts"
 2. Click "Add Contact"
 3. Fill in details (name, email, outlet, role, genre tags)
 4. Save
 
 **Step 2: Generate a Pitch**
+
 1. Go to "Generate Pitch"
 2. Select your contact
 3. Fill in track details:
@@ -37,6 +41,7 @@ Server will start at: **http://localhost:3001**
 7. Review the generated pitch
 
 **Step 3: Review & Edit**
+
 1. Click "Review & Edit"
 2. Make any changes
 3. Select your preferred subject line
@@ -80,16 +85,19 @@ Follow [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for step-by-step deployment to
 ## 🐛 Troubleshooting
 
 **Issue**: "Failed to generate pitch"
+
 - Check Anthropic API key is valid
 - Check server logs for errors
 - Verify contact exists in database
 
 **Issue**: "Contact not found"
+
 - Verify you're signed in
 - Check contact belongs to your user account
 - Clear browser cache and try again
 
 **Issue**: Stripe checkout fails
+
 - Verify Stripe keys are correct in `.env.local`
 - Check price IDs match Stripe dashboard
 - Ensure using test card (4242 4242 4242 4242)

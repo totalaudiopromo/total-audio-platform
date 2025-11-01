@@ -37,12 +37,14 @@
 ## 📊 HOW ENRICHMENT ACTUALLY WORKS
 
 ### **Input Required**:
+
 ```csv
 Name,Email,Company,Role
 Jack Saunders,jack.saunders@bbc.co.uk,BBC Radio 1,Presenter
 ```
 
 ### **What Gets Added/Enhanced**:
+
 - ✅ **Company**: Verified from email domain (e.g., `@bbc.co.uk` → "BBC")
 - ✅ **Role**: Suggested based on email pattern + domain
 - ✅ **Intelligence**: Rich context about the contact:
@@ -54,6 +56,7 @@ Jack Saunders,jack.saunders@bbc.co.uk,BBC Radio 1,Presenter
 - ✅ **Confidence**: High/Medium/Low based on domain recognition
 
 ### **What It Does NOT Do**:
+
 - ❌ Find missing emails via API lookups (e.g., Hunter.io, Apollo.io)
 - ❌ LinkedIn profile scraping
 - ❌ Social media discovery
@@ -67,6 +70,7 @@ Jack Saunders,jack.saunders@bbc.co.uk,BBC Radio 1,Presenter
 ### **Best Demo Flow** (Recommended):
 
 **Option 1: Load Demo Data** (Easiest, Most Impressive)
+
 1. Click "Load Demo Data" button
 2. 5 contacts appear instantly with full enrichment
 3. Show the intelligence data: BBC Radio 1, Spotify details, pitch tips
@@ -74,6 +78,7 @@ Jack Saunders,jack.saunders@bbc.co.uk,BBC Radio 1,Presenter
 5. **Time**: 30 seconds, looks professional
 
 **Option 2: Upload Demo CSV**
+
 1. Upload `DEMO_CONTACTS.csv` (now includes emails!)
 2. Watch processing + enrichment happen
 3. See results appear
@@ -97,11 +102,13 @@ Jack Saunders,jack.saunders@bbc.co.uk,BBC Radio 1,Presenter
 ## 🚨 IMPORTANT CLARIFICATIONS FOR DAN
 
 ### **Don't Oversell**:
+
 ❌ "It finds emails from just names" - **NO, it doesn't**
 ❌ "It scrapes LinkedIn" - **Not in demo version**
 ❌ "You can add contacts one by one manually" - **No UI for this yet**
 
 ### **DO Emphasize**:
+
 ✅ "Enriches existing contact data you already have"
 ✅ "Adds intelligence and context that saves hours of manual research"
 ✅ "Analyzes email domains to verify companies and suggest roles"

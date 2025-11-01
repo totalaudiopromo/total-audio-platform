@@ -1,11 +1,13 @@
 # Total Audio Promo - AI Agents Guide
 
 ## Overview
+
 The AI Agents system provides intelligent automation for music promotion workflows using multiple AI services including Claude AI, Perplexity, and custom orchestration logic.
 
 ## Agent Architecture
 
 ### **Core Components**
+
 ```
 tools/agents/
 ├── orchestrator.js           # Main orchestration engine
@@ -23,14 +25,16 @@ tools/agents/
 ### **Agent Types**
 
 #### **1. Music Technology Agent**
+
 - **Purpose**: Audio analysis, technical recommendations
-- **Capabilities**: 
+- **Capabilities**:
   - Audio file analysis
   - Technical performance optimization
   - Music format recommendations
   - Quality assessment
 
 #### **2. Growth Hacking Optimizer**
+
 - **Purpose**: Data-driven growth strategies
 - **Capabilities**:
   - A/B testing recommendations
@@ -39,6 +43,7 @@ tools/agents/
   - Retention analysis
 
 #### **3. Industry Strategist**
+
 - **Purpose**: Music industry insights and strategy
 - **Capabilities**:
   - Market trend analysis
@@ -47,6 +52,7 @@ tools/agents/
   - Strategic planning
 
 #### **4. Marketing Mastermind**
+
 - **Purpose**: Campaign optimization and automation
 - **Capabilities**:
   - Campaign performance analysis
@@ -55,6 +61,7 @@ tools/agents/
   - ROI maximization
 
 #### **5. Viral Content Automation**
+
 - **Purpose**: Content generation and optimization
 - **Capabilities**:
   - Social media content creation
@@ -65,6 +72,7 @@ tools/agents/
 ## Agent Configuration
 
 ### **Environment Setup**
+
 ```env
 # AI Service API Keys
 ANTHROPIC_API_KEY=your-claude-api-key
@@ -82,6 +90,7 @@ ORCHESTRATOR_INTERVAL=300000  # 5 minutes
 ```
 
 ### **Agent Setup Commands**
+
 ```bash
 # Initialize all agents
 npm run agents:setup
@@ -99,6 +108,7 @@ npm run agents:health
 ## Agent Workflows
 
 ### **Campaign Creation Workflow**
+
 ```mermaid
 graph TD
     A[Campaign Request] --> B[Industry Strategist]
@@ -111,6 +121,7 @@ graph TD
 ```
 
 ### **Contact Research Workflow**
+
 ```mermaid
 graph TD
     A[Contact List] --> B[Contact Agent]
@@ -124,6 +135,7 @@ graph TD
 ## Agent Implementation
 
 ### **Base Agent Class**
+
 ```javascript
 class BaseAgent {
   constructor(config) {
@@ -153,13 +165,14 @@ class BaseAgent {
     return {
       agent: this.name,
       status: 'healthy',
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
   }
 }
 ```
 
 ### **Music Technology Agent Example**
+
 ```javascript
 class MusicTechAgent extends BaseAgent {
   async processTask(task) {
@@ -185,8 +198,8 @@ class MusicTechAgent extends BaseAgent {
       key: 'C Major',
       recommendations: [
         'Consider mastering for streaming platforms',
-        'Optimize for radio play dynamics'
-      ]
+        'Optimize for radio play dynamics',
+      ],
     };
     return analysis;
   }
@@ -196,6 +209,7 @@ class MusicTechAgent extends BaseAgent {
 ## Orchestrator System
 
 ### **Orchestrator Configuration**
+
 ```javascript
 // tools/agents/orchestrator.js
 class AgentOrchestrator {
@@ -222,6 +236,7 @@ class AgentOrchestrator {
 ```
 
 ### **Workflow Definitions**
+
 ```javascript
 const workflows = {
   'campaign-creation': {
@@ -230,23 +245,24 @@ const workflows = {
       { agent: 'MarketingMastermind', task: 'create-strategy' },
       { agent: 'ContactAgent', task: 'research-targets' },
       { agent: 'ContentAutomation', task: 'generate-content' },
-      { agent: 'CampaignAgent', task: 'execute-campaign' }
-    ]
+      { agent: 'CampaignAgent', task: 'execute-campaign' },
+    ],
   },
   'contact-enrichment': {
     steps: [
       { agent: 'ContactAgent', task: 'scrape-data' },
       { agent: 'IndustryStrategist', task: 'analyze-relevance' },
       { agent: 'ContactAgent', task: 'enrich-profile' },
-      { agent: 'IntegrationAgent', task: 'update-airtable' }
-    ]
-  }
+      { agent: 'IntegrationAgent', task: 'update-airtable' },
+    ],
+  },
 };
 ```
 
 ## Agent Commands
 
 ### **Setup and Management**
+
 ```bash
 # Setup all agents
 npm run agents:setup
@@ -268,6 +284,7 @@ npm run agents:maintenance
 ```
 
 ### **Individual Agent Commands**
+
 ```bash
 # Music Technology Agent
 npm run agents:music-tech
@@ -288,11 +305,12 @@ npm run agents:content-optimize
 ## Integration with Main System
 
 ### **API Integration**
+
 ```typescript
 // apps/api/src/routes/agents.ts
 router.post('/execute', async (req, res) => {
   const { agentName, task } = req.body;
-  
+
   try {
     const agent = orchestrator.getAgent(agentName);
     const result = await agent.execute(task);
@@ -304,6 +322,7 @@ router.post('/execute', async (req, res) => {
 ```
 
 ### **Database Integration**
+
 ```typescript
 // Store agent results in database
 const agentResult = await prisma.agentExecution.create({
@@ -312,32 +331,34 @@ const agentResult = await prisma.agentExecution.create({
     taskType: task.type,
     result: JSON.stringify(result),
     executionTime: Date.now() - startTime,
-    status: 'completed'
-  }
+    status: 'completed',
+  },
 });
 ```
 
 ### **Real-time Updates**
+
 ```javascript
 // Send real-time updates via Socket.io
 socket.emit('agent-update', {
   agentName: agent.name,
   status: 'processing',
   progress: 50,
-  message: 'Analyzing contact data...'
+  message: 'Analyzing contact data...',
 });
 ```
 
 ## AI Service Integration
 
 ### **Claude AI Integration**
+
 ```javascript
 import Anthropic from '@anthropic-ai/sdk';
 
 class ClaudeService {
   constructor() {
     this.client = new Anthropic({
-      apiKey: process.env.ANTHROPIC_API_KEY
+      apiKey: process.env.ANTHROPIC_API_KEY,
     });
   }
 
@@ -345,10 +366,12 @@ class ClaudeService {
     const response = await this.client.messages.create({
       model: 'claude-3-opus-20240229',
       max_tokens: 1000,
-      messages: [{
-        role: 'user',
-        content: prompt
-      }]
+      messages: [
+        {
+          role: 'user',
+          content: prompt,
+        },
+      ],
     });
 
     return response.content[0].text;
@@ -357,6 +380,7 @@ class ClaudeService {
 ```
 
 ### **Perplexity Integration**
+
 ```javascript
 class PerplexityService {
   constructor() {
@@ -368,16 +392,14 @@ class PerplexityService {
     const response = await fetch(`${this.baseURL}/chat/completions`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${this.apiKey}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${this.apiKey}`,
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         model: 'llama-3.1-sonar-small-128k-online',
-        messages: [
-          { role: 'user', content: query }
-        ],
-        ...options
-      })
+        messages: [{ role: 'user', content: query }],
+        ...options,
+      }),
     });
 
     return await response.json();
@@ -388,6 +410,7 @@ class PerplexityService {
 ## Agent Monitoring
 
 ### **Health Monitoring**
+
 ```javascript
 class AgentMonitor {
   constructor() {
@@ -396,16 +419,16 @@ class AgentMonitor {
 
   async checkAllAgents() {
     const results = [];
-    
+
     for (const [name, agent] of this.agents) {
       try {
         const health = await agent.healthCheck();
         results.push({ name, status: 'healthy', ...health });
       } catch (error) {
-        results.push({ 
-          name, 
-          status: 'unhealthy', 
-          error: error.message 
+        results.push({
+          name,
+          status: 'unhealthy',
+          error: error.message,
         });
       }
     }
@@ -416,19 +439,21 @@ class AgentMonitor {
 ```
 
 ### **Performance Metrics**
+
 ```javascript
 const metrics = {
-  executionTime: 1250,      // milliseconds
-  successRate: 95.5,        // percentage
-  tasksCompleted: 1247,     // count
-  errors: 56,               // count
-  avgResponseTime: 850      // milliseconds
+  executionTime: 1250, // milliseconds
+  successRate: 95.5, // percentage
+  tasksCompleted: 1247, // count
+  errors: 56, // count
+  avgResponseTime: 850, // milliseconds
 };
 ```
 
 ## Error Handling
 
 ### **Agent Error Types**
+
 ```javascript
 class AgentError extends Error {
   constructor(message, type, agent, recoverable = false) {
@@ -446,30 +471,31 @@ const ERROR_TYPES = {
   API_LIMIT: 'api_limit',
   NETWORK: 'network',
   PROCESSING: 'processing',
-  VALIDATION: 'validation'
+  VALIDATION: 'validation',
 };
 ```
 
 ### **Retry Logic**
+
 ```javascript
 async function executeWithRetry(agent, task, maxRetries = 3) {
   let lastError;
-  
+
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       return await agent.execute(task);
     } catch (error) {
       lastError = error;
-      
+
       if (!error.recoverable || attempt === maxRetries) {
         throw error;
       }
-      
+
       const delay = Math.pow(2, attempt) * 1000; // Exponential backoff
       await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
-  
+
   throw lastError;
 }
 ```
@@ -477,6 +503,7 @@ async function executeWithRetry(agent, task, maxRetries = 3) {
 ## Best Practices
 
 ### **Agent Development**
+
 1. **Single Responsibility**: Each agent should have a clear, focused purpose
 2. **Error Handling**: Implement comprehensive error handling and recovery
 3. **Logging**: Use structured logging for debugging and monitoring
@@ -484,12 +511,14 @@ async function executeWithRetry(agent, task, maxRetries = 3) {
 5. **Documentation**: Document agent capabilities and usage
 
 ### **Workflow Design**
+
 1. **Modularity**: Design workflows as composable steps
 2. **Fault Tolerance**: Handle individual step failures gracefully
 3. **Monitoring**: Track workflow execution and performance
 4. **Versioning**: Version workflows for backward compatibility
 
 ### **Performance Optimization**
+
 1. **Caching**: Cache expensive operations and API calls
 2. **Parallel Execution**: Run independent tasks in parallel
 3. **Rate Limiting**: Respect API rate limits
@@ -500,6 +529,7 @@ async function executeWithRetry(agent, task, maxRetries = 3) {
 ## Quick Reference
 
 ### **Agent Commands**
+
 ```bash
 npm run agents:setup      # Initialize agents
 npm run agents:health     # Check agent status
@@ -508,11 +538,13 @@ npm run agents:test       # Test functionality
 ```
 
 ### **Key Files**
+
 - `tools/agents/orchestrator.js` - Main orchestration
 - `tools/agents/setup.js` - Configuration
 - `docs/ai-agents/` - Agent documentation
 
 ### **Monitoring Endpoints**
+
 - `/api/agents/health` - Agent health status
 - `/api/agents/metrics` - Performance metrics
 - `/api/agents/logs` - Recent agent logs

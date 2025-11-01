@@ -3,6 +3,7 @@
 ## 🎯 The Problem
 
 You've asked CC multiple times to fix your Gmail organization, but:
+
 - Otter AI transcripts → Going into "Station Feedback" ❌
 - Gemini transcripts → Going into "Station Feedback" ❌
 - WARM marketing → Going into "Station Feedback" ❌
@@ -28,12 +29,14 @@ I've built a complete system that ACTUALLY works:
 ### What Makes This Different
 
 **Why CC failed:**
+
 - Added new filters on top of old ones (conflicts)
 - Used generic patterns (`radio OR station` catches everything)
 - Didn't fix existing emails
 - No maintenance system
 
 **Why this works:**
+
 - ✅ Deletes ALL old filters first
 - ✅ Precise patterns with explicit exclusions: `-from:otter.ai -from:gemini -from:WARM -from:machina`
 - ✅ Bulk fixes ALL existing emails
@@ -54,6 +57,7 @@ cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/gmai
 ## 📊 What You'll See Tomorrow
 
 **Gmail:**
+
 - ✅ Otter AI → Personal Tools/Otter AI
 - ✅ Gemini → Personal Tools/Gemini
 - ✅ WARM/Machina → Marketing Junk (archived, marked read)
@@ -62,6 +66,7 @@ cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/gmai
 - ✅ Hourly autopilot maintaining everything
 
 **Google Drive:**
+
 - 🟢 Liberty Music PR/Active Campaigns
 - 🟠 Liberty Music PR/Station Feedback & Assets
 - 🔵 Liberty Music PR/Needs Action
@@ -69,6 +74,7 @@ cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/gmai
 - 🔴 Liberty Music PR/Archive
 
 **Google Calendar:**
+
 - 🔴 Campaign Deadlines
 - 🟠 Station Follow-ups
 - 🔵 Action Items
@@ -96,6 +102,7 @@ tail -f autopilot.log
 ## 📖 Full Documentation
 
 See `OVERNIGHT_DEPLOYMENT_GUIDE.md` for:
+
 - Detailed explanation of what gets created
 - Manual commands for each component
 - Troubleshooting guide
@@ -130,6 +137,7 @@ node liberty-calendar-sync.js test
 ## 🎯 Success Criteria
 
 Tomorrow morning:
+
 - [ ] No Otter AI in Station Feedback
 - [ ] No Gemini in Station Feedback
 - [ ] No WARM/Machina in Station Feedback
@@ -142,6 +150,7 @@ Tomorrow morning:
 ## 🚁 Autopilot Maintenance
 
 Once deployed, autopilot runs every hour:
+
 - Checks last 2 hours of emails
 - Applies correct labels to anything that slipped through
 - Removes incorrect labels

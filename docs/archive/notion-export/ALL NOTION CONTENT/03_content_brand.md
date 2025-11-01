@@ -8,7 +8,7 @@ _Source: 📝 CONTENT & BRAND 2660a35b21ed8162baeaf8afbf100b2e.md_
 
 # 📝 CONTENT & BRAND
 
-*Brand voice, content creation, and marketing materials*
+_Brand voice, content creation, and marketing materials_
 
 ---
 
@@ -89,9 +89,9 @@ _Source: 📝 CONTENT & BRAND 2660a35b21ed8162baeaf8afbf100b2e.md_
 
 ---
 
-*Your brand and content command centre*
+_Your brand and content command centre_
 
-[Authentic Brand Strategy (Producer Credibility)](%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/Authentic%20Brand%20Strategy%20(Producer%20Credibility)%202580a35b21ed81dfaf91c61ab7eab1d6.md)
+[Authentic Brand Strategy (Producer Credibility)](<%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/Authentic%20Brand%20Strategy%20(Producer%20Credibility)%202580a35b21ed81dfaf91c61ab7eab1d6.md>)
 
 [Journal & Ideas](%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/Journal%20&%20Ideas%202230a35b21ed81febadff01f4a0adde9.md)
 
@@ -130,7 +130,7 @@ Comment BETA for free access 👇
 
 [🎨 UPDATED Total Audio Brand Guidelines - Command Centre Era](%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/%F0%9F%8E%A8%20UPDATED%20Total%20Audio%20Brand%20Guidelines%20-%20Command%20C%2025d0a35b21ed818981c0f93f53909ee6.md)
 
-[Content Bank - Authentic Voice (MASTER)](%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/Content%20Bank%20-%20Authentic%20Voice%20(MASTER)%202530a35b21ed81498091e408bf6f5ff6.md)
+[Content Bank - Authentic Voice (MASTER)](<%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/Content%20Bank%20-%20Authentic%20Voice%20(MASTER)%202530a35b21ed81498091e408bf6f5ff6.md>)
 
 [Social Media Content - User Acquisition](%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/Social%20Media%20Content%20-%20User%20Acquisition%2075c7e9291f49412ca546b4e880291455.csv)
 
@@ -152,7 +152,7 @@ _Source: 🎯 CONTENT STRATEGY HUB - COMPLETE SYSTEM (MASTER) 2750a35b21ed8170bf
 
 # 🎯 CONTENT STRATEGY HUB - COMPLETE SYSTEM (MASTER)
 
-*Your complete content and marketing command centre - all strategies, voice guidelines, automation, and campaigns in one place*
+_Your complete content and marketing command centre - all strategies, voice guidelines, automation, and campaigns in one place_
 
 ---
 
@@ -249,11 +249,11 @@ _Source: 🎯 CONTENT STRATEGY HUB - COMPLETE SYSTEM (MASTER) 2750a35b21ed8170bf
 
 ### 🎯 Content Strategy Matrix
 
-| Content Type | AI-Powered Marketing Tools | Radio Promotion & Industry | Independent Artist Success |
-| --- | --- | --- | --- |
-| **Growth Content** | "94% of music marketing tasks can be automated" | "Radio submission windows close faster than you think" | "Why bedroom producers fail at promotion" |
-| **Knowledge Content** | "How to automate contact discovery in 2 minutes" | "The exact email template that gets radio play" | "5-step system for independent artist growth" |
-| **Authority Content** | "How I built Audio Intel from 5 years of frustration" | "BBC Radio 1 pitch: What worked and what didn't" | "From 0 to professional: My sadact journey" |
+| Content Type          | AI-Powered Marketing Tools                            | Radio Promotion & Industry                             | Independent Artist Success                    |
+| --------------------- | ----------------------------------------------------- | ------------------------------------------------------ | --------------------------------------------- |
+| **Growth Content**    | "94% of music marketing tasks can be automated"       | "Radio submission windows close faster than you think" | "Why bedroom producers fail at promotion"     |
+| **Knowledge Content** | "How to automate contact discovery in 2 minutes"      | "The exact email template that gets radio play"        | "5-step system for independent artist growth" |
+| **Authority Content** | "How I built Audio Intel from 5 years of frustration" | "BBC Radio 1 pitch: What worked and what didn't"       | "From 0 to professional: My sadact journey"   |
 
 ### 📱 Platform-Specific Guidelines
 
@@ -354,8 +354,8 @@ _Source: 🎯 CONTENT STRATEGY HUB - COMPLETE SYSTEM (MASTER) 2750a35b21ed8170bf
 **Scheduling Logic:**
 
 ```
-IF Status = "Scheduled" 
-AND Scheduled Date = Today 
+IF Status = "Scheduled"
+AND Scheduled Date = Today
 AND Time = Platform Optimal
 THEN Post to Platform(s)
 AND Update Status = "Posted"
@@ -453,20 +453,20 @@ AND Log timestamp
 **This Week's Priority Posts:**
 
 1. **🔥 Monday Launch: 94% Automation Thread**
-    - Platform: LinkedIn + Twitter
-    - Status: Ready to post
-    - Goal: Establish thought leadership
-    - Expected: 100+ engagements
+   - Platform: LinkedIn + Twitter
+   - Status: Ready to post
+   - Goal: Establish thought leadership
+   - Expected: 100+ engagements
 2. **📖 Wednesday Personal: Building Audio Intel Story**
-    - Platform: LinkedIn
-    - Status: Ready to post
-    - Goal: Build personal connection
-    - Expected: 50+ meaningful comments
+   - Platform: LinkedIn
+   - Status: Ready to post
+   - Goal: Build personal connection
+   - Expected: 50+ meaningful comments
 3. **📊 Friday Demo: Radio Submission Tips**
-    - Platform: Twitter + Blue Sky
-    - Status: Ready to post
-    - Goal: Provide value + soft sell
-    - Expected: 200+ impressions, 10+ signups
+   - Platform: Twitter + Blue Sky
+   - Status: Ready to post
+   - Goal: Provide value + soft sell
+   - Expected: 200+ impressions, 10+ signups
 
 ### 🔄 Content Optimization Framework
 
@@ -562,7 +562,7 @@ AND Log timestamp
 
 ---
 
-*This Content Strategy Hub consolidates all your content and marketing strategies into one comprehensive system. Use this as your single source of truth for all content creation, automation, and performance tracking.*
+_This Content Strategy Hub consolidates all your content and marketing strategies into one comprehensive system. Use this as your single source of truth for all content creation, automation, and performance tracking._
 
 **Last Updated:** September 2025
 
@@ -594,7 +594,7 @@ _Source: 📝 CONTENT & BRAND 2660a35b21ed8162baeaf8afbf100b2e/Content Bank - Au
 
 # Content Bank - Authentic Voice (MASTER)
 
-*Your authentic voice - properly capitalised, naturally British casual*
+_Your authentic voice - properly capitalised, naturally British casual_
 
 ## VOICE CHARACTERISTICS
 
@@ -1181,7 +1181,7 @@ _Source: 📝 CONTENT & BRAND 2660a35b21ed8162baeaf8afbf100b2e/🎨 UPDATED Tota
 
 # 🎨 UPDATED Total Audio Brand Guidelines - Command Centre Era
 
-*Updated August 2025 - Freemium strategy with refined competitive positioning*
+_Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 ## 🎯 STRATEGIC SHIFT: REAL COMPETITOR ANALYSIS
 
@@ -1222,7 +1222,7 @@ _Source: 📝 CONTENT & BRAND 2660a35b21ed8162baeaf8afbf100b2e/🎨 UPDATED Tota
 :root {
   /* Grayscale Foundation */
   --color-base-50: #fafafa;
-  --color-base-100: #f8f9fa;  /* Light grey background */
+  --color-base-100: #f8f9fa; /* Light grey background */
   --color-base-200: #e5e5e5;
   --color-base-300: #d4d4d4;
   --color-base-400: #a3a3a3;
@@ -1297,19 +1297,15 @@ _Source: 📝 CONTENT & BRAND 2660a35b21ed8162baeaf8afbf100b2e/🎨 UPDATED Tota
 
 /* Tool-Specific Texture Overlays */
 .texture-intel {
-  background: linear-gradient(
-    135deg, 
-    rgba(59, 130, 246, 0.1) 0%, 
-    transparent 50%
-  ), url('/assets/textures/drs-paper-light.webp');
+  background:
+    linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    url('/assets/textures/drs-paper-light.webp');
 }
 
 .texture-pulse {
-  background: linear-gradient(
-    135deg, 
-    rgba(34, 197, 94, 0.1) 0%, 
-    transparent 50%
-  ), url('/assets/textures/drs-paper-light.webp');
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+    url('/assets/textures/drs-paper-light.webp');
 }
 ```
 
@@ -1334,14 +1330,14 @@ _Source: 📝 CONTENT & BRAND 2660a35b21ed8162baeaf8afbf100b2e/🎨 UPDATED Tota
 ### Dark Mode Colour Adjustments
 
 ```css
-[data-theme="dark"] {
+[data-theme='dark'] {
   /* Inverted Grayscale */
   --color-base-50: #0a0a0a;
   --color-base-100: #171717;
   --color-base-200: #262626;
   --color-base-800: #e5e5e5;
   --color-base-900: #f8f9fa;
-  
+
   /* Tool Colours - Slightly Desaturated for Dark */
   --color-intel-500: #60a5fa; /* Lighter blue */
   --color-pulse-500: #4ade80; /* Lighter green */
@@ -1368,16 +1364,16 @@ _Source: 📝 CONTENT & BRAND 2660a35b21ed8162baeaf8afbf100b2e/🎨 UPDATED Tota
   --texture-paper: url('/assets/textures/drs-paper-light.webp');
   --texture-canvas: url('/assets/textures/drs-canvas-light.webp');
   --texture-noise: url('/assets/textures/drs-noise-light.webp');
-  
+
   --blend-mode: multiply;
   --overlay-opacity: 0.1;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --texture-paper: url('/assets/textures/drs-paper-dark.webp');
   --texture-canvas: url('/assets/textures/drs-canvas-dark.webp');
   --texture-noise: url('/assets/textures/drs-noise-dark.webp');
-  
+
   --blend-mode: screen;
   --overlay-opacity: 0.15;
 }
@@ -1396,11 +1392,9 @@ _Source: 📝 CONTENT & BRAND 2660a35b21ed8162baeaf8afbf100b2e/🎨 UPDATED Tota
 
 /* Audio Intel Active State */
 .intel-active {
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, var(--overlay-opacity)) 0%,
-    transparent 50%
-  ), var(--texture-paper);
+  background:
+    linear-gradient(135deg, rgba(59, 130, 246, var(--overlay-opacity)) 0%, transparent 50%),
+    var(--texture-paper);
 }
 ```
 
@@ -1524,7 +1518,7 @@ import * as path from 'path';
 interface SocialPost {
   title: string;
   content: string;
-  platform: string[];  // Split by |
+  platform: string[]; // Split by |
   contentType: string;
   scheduledTime: string;
   utmTracking: string;
@@ -1533,7 +1527,7 @@ interface SocialPost {
 function loadPostsFromCSV(): SocialPost[] {
   const csvPath = './content/ready-posts.csv';
   const csvContent = fs.readFileSync(csvPath, 'utf8');
-  
+
   // Parse CSV and return structured posts
   // Implementation details...
 }
@@ -1543,14 +1537,17 @@ function processContentForUK(content: string): string {
   content = content.replace(/realize/g, 'realise');
   content = content.replace(/organize/g, 'organise');
   // Remove emojis
-  content = content.replace(/[\u{1f300}-\u{1f5ff}\u{1f900}-\u{1f9ff}\u{1f600}-\u{1f64f}\u{1f680}-\u{1f6ff}\u{2600}-\u{26ff}\u{2700}-\u{27bf}]/gu, '');
+  content = content.replace(
+    /[\u{1f300}-\u{1f5ff}\u{1f900}-\u{1f9ff}\u{1f600}-\u{1f64f}\u{1f680}-\u{1f6ff}\u{2600}-\u{26ff}\u{2700}-\u{27bf}]/gu,
+    ''
+  );
   return content;
 }
 
 function shouldPostNow(scheduledTime: string): boolean {
   const now = new Date();
   const scheduled = new Date(scheduledTime);
-  
+
   // Check if within 15 minutes of scheduled time
   const diff = Math.abs(now.getTime() - scheduled.getTime());
   return diff < 15 * 60 * 1000; // 15 minutes
@@ -1596,22 +1593,22 @@ import { postToBluesky } from './platforms/bluesky';
 
 async function runAutomation() {
   const posts = loadPostsFromCSV();
-  
+
   for (const post of posts) {
     if (shouldPostNow(post.scheduledTime)) {
       const processedContent = processContentForUK(post.content);
-      
+
       // Add UTM tracking to links
       const finalContent = processedContent.replace(
         /intel\.totalaudiopromo\.com/g,
         `[intel.totalaudiopromo.com](http://intel.totalaudiopromo.com)${post.utmTracking}`
       );
-      
+
       // Post to each platform
       for (const platform of post.platform) {
         try {
           let success = false;
-          
+
           switch (platform) {
             case 'Twitter/X':
               success = await postToTwitter(finalContent);
@@ -1623,7 +1620,7 @@ async function runAutomation() {
               success = await postToBluesky(finalContent);
               break;
           }
-          
+
           if (success) {
             updatePostStatus(`${post.title} - ${platform}`, 'posted');
           } else {
@@ -1706,7 +1703,7 @@ Download the Workflow file below
 
 ### Step 2
 
- 🚨Important, I’ve added a second video at the bottom of this doc how to customize please watch it! 🚨
+🚨Important, I’ve added a second video at the bottom of this doc how to customize please watch it! 🚨
 
 **🎬 COMPLETE VIDEO WALKTHROUGH (WATCH THIS FIRST!)**
 
@@ -1777,7 +1774,7 @@ An automated system that:
 4. In n8n, click **"Start from scratch"**
 5. Click anywhere on the canvas
 6. Press **Ctrl+V** (or Cmd+V on Mac) to paste
-7. 
+7.
 
 **✅ Success check:** You should see the full workflow with sticky notes
 
@@ -1848,7 +1845,7 @@ An automated system that:
 **Clean the data:**
 
 5. Upload CSV to Claude/ChatGPT
-6. Ask: *"Extract only tweet text, numbered 1, 2, 3, etc."*
+6. Ask: _"Extract only tweet text, numbered 1, 2, 3, etc."_
 7. Copy the cleaned list
 8. Save in a Google Doc for Step 7
 
@@ -2098,10 +2095,7 @@ Replace your current MCP config with this:
   "mcpServers": {
     "notion": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-notion"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-notion"],
       "env": {
         "NOTION_API_KEY": "secret_YOUR_INTEGRATION_TOKEN_HERE"
       }
@@ -2160,10 +2154,10 @@ async function testConnection() {
         }
       }
     });
-    
+
     console.log('✅ Notion connection successful!');
     console.log(`Found ${response.results.length} posts ready to post`);
-    
+
     // Show sample post
     if (response.results.length > 0) {
       const post = response.results[0] as any;
@@ -2173,7 +2167,7 @@ async function testConnection() {
         content: [post.properties](http://post.properties).Content?.rich_text[0]?.text?.content?.substring(0, 100) + '...' || 'No content'
       });
     }
-    
+
   } catch (error) {
     console.error('❌ Notion connection failed:', error);
   }
@@ -2228,4 +2222,3 @@ Once you have the Notion integration token and share the database, Cursor will b
 **Database URL**: [Social Media Content - User Acquisition](Social%20Media%20Content%20-%20User%20Acquisition%2075c7e9291f49412ca546b4e880291455.md)
 
 ---
-

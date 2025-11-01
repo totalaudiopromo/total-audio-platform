@@ -1,0 +1,17 @@
+packages:
+  # Active production apps
+  - 'apps/audio-intel'
+  - 'apps/pitch-generator'
+  - 'apps/tracker'
+  - 'apps/command-centre'
+  - 'apps/web'
+  - 'apps/api'
+  - 'apps/mobile'
+  - 'apps/tap-saas-template-DO-NOT-DELETE'
+
+  # Shared packages
+  - 'packages/*'
+
+  # Exclude archived and node_modules
+  - '!archive/**'
+  - '!**/node_modules/**'

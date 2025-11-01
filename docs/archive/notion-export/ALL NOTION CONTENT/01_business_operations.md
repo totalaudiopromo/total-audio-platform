@@ -10,7 +10,7 @@ _Source: 🎯 CURRENT PRIORITIES & TO-DOS 2660a35b21ed81c8acc7e5c626c5ed08.md_
 
 # 🎯 CURRENT STATUS - Audio Intel Ready for Launch
 
-*Updated: September 20, 2025 - Foundation Complete, Customer Acquisition Phase*
+_Updated: September 20, 2025 - Foundation Complete, Customer Acquisition Phase_
 
 ## 🚨 WHERE WE ARE NOW
 
@@ -65,38 +65,38 @@ _Source: 🎯 CURRENT PRIORITIES & TO-DOS 2660a35b21ed81c8acc7e5c626c5ed08.md_
 
 **LAUNCH CASE STUDY CONTENT**
 
-- [ ]  **Post Twitter thread**: Radio contact enrichment results (5 contacts, 100% success)
-- [ ]  **LinkedIn article**: "How I Saved 10+ Hours on Radio Contact Research"
-- [ ]  **Blog post**: Case study with screenshots and time-saving calculations
-- [ ]  **Reddit posts**: Share in r/WeAreTheMusicMakers and r/IndieMusicFeedback
-- [ ]  **Newsletter**: Send first "Unsigned Advantage" to beta users
+- [ ] **Post Twitter thread**: Radio contact enrichment results (5 contacts, 100% success)
+- [ ] **LinkedIn article**: "How I Saved 10+ Hours on Radio Contact Research"
+- [ ] **Blog post**: Case study with screenshots and time-saving calculations
+- [ ] **Reddit posts**: Share in r/WeAreTheMusicMakers and r/IndieMusicFeedback
+- [ ] **Newsletter**: Send first "Unsigned Advantage" to beta users
 
 ### **MONDAY (45 minutes)**
 
 **START CUSTOMER OUTREACH**
 
-- [ ]  **Research 5 radio promoters**: LinkedIn search "radio promotion UK"
-- [ ]  **Score prospects**: Use 8-factor qualification system (65+ scores only)
-- [ ]  **Send 3 outreach messages**: Use proven radio promoter script
-- [ ]  **Post social content**: "Music Industry Insight Monday"
+- [ ] **Research 5 radio promoters**: LinkedIn search "radio promotion UK"
+- [ ] **Score prospects**: Use 8-factor qualification system (65+ scores only)
+- [ ] **Send 3 outreach messages**: Use proven radio promoter script
+- [ ] **Post social content**: "Music Industry Insight Monday"
 
 ### **WEDNESDAY (45 minutes)**
 
 **FOLLOW UP & EXPAND**
 
-- [ ]  **Check Monday responses**: Follow up with interested prospects
-- [ ]  **Outreach to artists**: Contact 2 solo artists (5K+ monthly listeners)
-- [ ]  **Engage socially**: Respond to comments, build relationships
-- [ ]  **Newsletter tracking**: Monitor open rates and engagement
+- [ ] **Check Monday responses**: Follow up with interested prospects
+- [ ] **Outreach to artists**: Contact 2 solo artists (5K+ monthly listeners)
+- [ ] **Engage socially**: Respond to comments, build relationships
+- [ ] **Newsletter tracking**: Monitor open rates and engagement
 
 ### **FRIDAY (30 minutes)**
 
 **REVIEW & PLAN**
 
-- [ ]  **Analyze results**: Response rates, content performance, social engagement
-- [ ]  **Book demo calls**: Schedule with interested prospects
-- [ ]  **Plan next week**: Artist segment outreach strategy
-- [ ]  **Update metrics**: Track progress toward first customer
+- [ ] **Analyze results**: Response rates, content performance, social engagement
+- [ ] **Book demo calls**: Schedule with interested prospects
+- [ ] **Plan next week**: Artist segment outreach strategy
+- [ ] **Update metrics**: Track progress toward first customer
 
 ---
 
@@ -293,11 +293,11 @@ _Source: 🎯 CURRENT PRIORITIES & TO-DOS 2660a35b21ed81c8acc7e5c626c5ed08.md_
 
 ---
 
-*Status: FOUNDATION COMPLETE → CUSTOMER ACQUISITION PHASE*
+_Status: FOUNDATION COMPLETE → CUSTOMER ACQUISITION PHASE_
 
-*Updated: September 20, 2025*
+_Updated: September 20, 2025_
 
-*Next Review: September 27, 2025*
+_Next Review: September 27, 2025_
 
 [🚀 SPRINT WEEK DASHBOARD](https://www.notion.so/SPRINT-WEEK-DASHBOARD-2570a35b21ed81509ec7ef1f183ff248?pvs=21)
 
@@ -311,7 +311,7 @@ _Source: 💰 REVENUE & BUSINESS OPERATIONS 2660a35b21ed812e9406ca29e4d3b78f.md_
 
 # 💰 REVENUE & BUSINESS OPERATIONS
 
-*Your revenue command centre - customer acquisition and business growth*
+_Your revenue command centre - customer acquisition and business growth_
 
 ---
 
@@ -408,7 +408,7 @@ _Source: 💰 REVENUE & BUSINESS OPERATIONS 2660a35b21ed812e9406ca29e4d3b78f.md_
 
 ---
 
-*Your path to £500/month recurring revenue*
+_Your path to £500/month recurring revenue_
 
 ## 📝 Consolidation Note
 
@@ -422,7 +422,7 @@ _Source: 🎯 TOTAL AUDIO PROMO - ORGANISED WORKSPACE 2580a35b21ed814bbb4bf349c3
 
 # 🎯 TOTAL AUDIO PROMO - ORGANISED WORKSPACE
 
-*Your main revenue generator - everything Audio Intel*
+_Your main revenue generator - everything Audio Intel_
 
 - 🎯 Quick Access (Live site, Stripe, customer feedback)
 - 📈 Business Strategy (customer acquisition, pricing)
@@ -432,7 +432,7 @@ _Source: 🎯 TOTAL AUDIO PROMO - ORGANISED WORKSPACE 2580a35b21ed814bbb4bf349c3
 
 ### **4. 💰 [REVENUE & BUSINESS OPERATIONS](%F0%9F%92%B0%20REVENUE%20&%20BUSINESS%20OPERATIONS%202660a35b21ed812e9406ca29e4d3b78f.md)**
 
-*Revenue command centre - customer acquisition and growth*
+_Revenue command centre - customer acquisition and growth_
 
 - 💰 Revenue Tracking (MRR, targets, analytics)
 - 🎯 Customer Acquisition (outreach, digital marketing)
@@ -445,7 +445,7 @@ _Source: 🎯 TOTAL AUDIO PROMO - ORGANISED WORKSPACE 2580a35b21ed814bbb4bf349c3
 
 ### **🛠️ [TECHNICAL DEVELOPMENT](%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2.md)**
 
-*All technical work, code, APIs, and development resources*
+_All technical work, code, APIs, and development resources_
 
 - 📧 Development Workflow (sprints, bugs, features)
 - 🚀 Tools & Infrastructure (Claude Code, GitHub, Vercel)
@@ -454,7 +454,7 @@ _Source: 🎯 TOTAL AUDIO PROMO - ORGANISED WORKSPACE 2580a35b21ed814bbb4bf349c3
 
 ### **📝 [CONTENT & BRAND](%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e.md)**
 
-*Brand voice, content creation, and marketing materials*
+_Brand voice, content creation, and marketing materials_
 
 - 🎨 Brand Strategy (positioning, voice, credibility)
 - 📝 Content Creation (social media, marketing, customer comms)
@@ -463,7 +463,7 @@ _Source: 🎯 TOTAL AUDIO PROMO - ORGANISED WORKSPACE 2580a35b21ed814bbb4bf349c3
 
 ### **🔍 [RESEARCH & INTELLIGENCE](%F0%9F%94%8D%20RESEARCH%20&%20INTELLIGENCE%202660a35b21ed81a19360ff89af99c4d3.md)**
 
-*Market research, competitive analysis, and strategic intelligence*
+_Market research, competitive analysis, and strategic intelligence_
 
 - 🔍 Competitive Intelligence (competitors, advantages, positioning)
 - 🇬🇧 UK Music Industry Analysis (market size, contacts, trends)
@@ -474,11 +474,11 @@ _Source: 🎯 TOTAL AUDIO PROMO - ORGANISED WORKSPACE 2580a35b21ed814bbb4bf349c3
 
 ### **🎵 [RADIO PROMO AGENT](%F0%9F%8E%B5%20RADIO%20PROMO%20AGENT%202660a35b21ed81aab2a8f334d7870c90.md)**
 
-*Liberty workflow integration and future product development*
+_Liberty workflow integration and future product development_
 
-### **🎼 [TOTAL AUDIO TRANSFER (RECORD LABEL)](%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93.md)**
+### **🎼 [TOTAL AUDIO TRANSFER (RECORD LABEL)](<%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93.md>)**
 
-*Your record label business operations*
+_Your record label business operations_
 
 - Total Audio Transfer (Record Label) - Main page
 - Release Plans - Track upcoming releases
@@ -508,21 +508,21 @@ _Source: 🎯 TOTAL AUDIO PROMO - ORGANISED WORKSPACE 2580a35b21ed814bbb4bf349c3
 
 ### **Monday Sept 9:**
 
-- [ ]  Test current email automation status
-- [ ]  List 10 producer/artist contacts for outreach
-- [ ]  Update Audio Intel landing page value proposition
+- [ ] Test current email automation status
+- [ ] List 10 producer/artist contacts for outreach
+- [ ] Update Audio Intel landing page value proposition
 
 ### **Wednesday Sept 11:**
 
-- [ ]  Send outreach messages to first 3 contacts
-- [ ]  Post LinkedIn update about building Audio Intel
-- [ ]  Check Stripe dashboard for any trial users
+- [ ] Send outreach messages to first 3 contacts
+- [ ] Post LinkedIn update about building Audio Intel
+- [ ] Check Stripe dashboard for any trial users
 
 ### **Friday Sept 13:**
 
-- [ ]  Follow up on Monday's outreach
-- [ ]  Review any user feedback/questions
-- [ ]  Plan next week's outreach targets
+- [ ] Follow up on Monday's outreach
+- [ ] Review any user feedback/questions
+- [ ] Plan next week's outreach targets
 
 ---
 
@@ -569,11 +569,11 @@ ONE simple to-do system for customer acquisition and reaching £500/month by Nov
 
 ---
 
-*Last Updated: September 6, 2025*
+_Last Updated: September 6, 2025_
 
-*Next Review: September 13, 2025*
+_Next Review: September 13, 2025_
 
-*Status: ✅ Workspace Recovery Complete - Ready for Revenue Generation*
+_Status: ✅ Workspace Recovery Complete - Ready for Revenue Generation_
 
 [🎯 MASTER CONTEXT - CONSOLIDATED & ORGANISED](%F0%9F%8E%AF%20TOTAL%20AUDIO%20PROMO%20-%20ORGANISED%20WORKSPACE%202580a35b21ed814bbb4bf349c38fa376/%F0%9F%8E%AF%20MASTER%20CONTEXT%20-%20CONSOLIDATED%20&%20ORGANISED%202670a35b21ed814a9feafeb8f022d524.md)
 
@@ -620,53 +620,29 @@ Your Notion workspace is now organized into 6 main folders for maximum productiv
 ## 🏠 CORE BUSINESS FOLDERS
 
 - 📋 Daily Operations
-    
-    • MASTER TO-DO LIST - SEPTEMBER 2025
-    
-    • CURRENT PRIORITIES & TO-DOS
-    
-    • Daily standup notes
-    
+  • MASTER TO-DO LIST - SEPTEMBER 2025
+  • CURRENT PRIORITIES & TO-DOS
+  • Daily standup notes
 - 🎯 Audio Intel Product
-    
-    • Audio Intel Master Reference
-    
-    • Audio Intel Business HQ
-    
-    • Product development notes
-    
+  • Audio Intel Master Reference
+  • Audio Intel Business HQ
+  • Product development notes
 - 📊 Business Strategy
-    
-    • REVENUE & BUSINESS OPERATIONS
-    
-    • UK Market Domination Strategy 2025
-    
-    • Ideal Customer Profile Research
-    
+  • REVENUE & BUSINESS OPERATIONS
+  • UK Market Domination Strategy 2025
+  • Ideal Customer Profile Research
 - 🔧 Technical Development
-    
-    • TECHNICAL DEVELOPMENT
-    
-    • Radio Promo Agent (Consolidated)
-    
-    • TDD Planning System
-    
+  • TECHNICAL DEVELOPMENT
+  • Radio Promo Agent (Consolidated)
+  • TDD Planning System
 - 📝 Content & Marketing
-    
-    • CONTENT & BRAND
-    
-    • Content Bank - Authentic Voice
-    
-    • Brand Guidelines
-    
+  • CONTENT & BRAND
+  • Content Bank - Authentic Voice
+  • Brand Guidelines
 - 📚 Reference & Archive
-    
-    • Master Context - Consolidated
-    
-    • Feature Creep Parking Lot
-    
-    • Old/duplicate pages
-    
+  • Master Context - Consolidated
+  • Feature Creep Parking Lot
+  • Old/duplicate pages
 
 [📊 Business Strategy](%F0%9F%8E%AF%20TOTAL%20AUDIO%20PROMO%20-%20ORGANISED%20WORKSPACE%202580a35b21ed814bbb4bf349c38fa376/%F0%9F%93%8A%20Business%20Strategy%202680a35b21ed8179b947ff1fff444528.md)
 
@@ -681,45 +657,25 @@ Your workspace is now organized into 6 main folders. Click on any folder to acce
 ## 📁 ORGANIZED FOLDERS
 
 - 📋 Daily Operations
-    
-    • MASTER TO-DO LIST - SEPTEMBER 2025
-    
-    • CURRENT PRIORITIES & TO-DOS
-    
-    • SPRINT WEEK DASHBOARD
-    
+  • MASTER TO-DO LIST - SEPTEMBER 2025
+  • CURRENT PRIORITIES & TO-DOS
+  • SPRINT WEEK DASHBOARD
 - 🎯 Audio Intel Product
-    
-    • Audio Intel Master Reference
-    
-    • Audio Intel Business HQ
-    
-    • AUDIO INTEL PRODUCT
-    
+  • Audio Intel Master Reference
+  • Audio Intel Business HQ
+  • AUDIO INTEL PRODUCT
 - 📊 Business Strategy
-    
-    • REVENUE & BUSINESS OPERATIONS
-    
-    • UK Market Domination Strategy 2025
-    
-    • Ideal Customer Profile Research
-    
+  • REVENUE & BUSINESS OPERATIONS
+  • UK Market Domination Strategy 2025
+  • Ideal Customer Profile Research
 - 🔧 Technical Development
-    
-    • TECHNICAL DEVELOPMENT
-    
-    • RADIO PROMO AGENT (Consolidated)
-    
-    • TDD Planning System
-    
+  • TECHNICAL DEVELOPMENT
+  • RADIO PROMO AGENT (Consolidated)
+  • TDD Planning System
 - 📝 Content & Marketing
-    
-    • CONTENT & BRAND
-    
-    • Content Bank - Authentic Voice
-    
-    • Brand Guidelines
-    
+  • CONTENT & BRAND
+  • Content Bank - Authentic Voice
+  • Brand Guidelines
 
 ## ✅ ORGANIZATION COMPLETE
 
@@ -833,7 +789,7 @@ Founder: Chris Schofield
 # Navigate to main workspace
 cd /Users/chrisschofield/workspace/active/total-audio-platform/
 
-# Start Audio Intel development  
+# Start Audio Intel development
 npm run dev:audio-intel
 
 # Check system status
@@ -841,7 +797,7 @@ npm run status && npm run agents:health
 
 # Use global agents (from any directory)
 # "Use music-industry-strategist for market analysis"
-# "Apply growth-hacking-optimizer for user acquisition"  
+# "Apply growth-hacking-optimizer for user acquisition"
 # "Use music-marketing-mastermind for campaign strategy"
 ```
 
@@ -934,7 +890,7 @@ _Source: 👥 MASTER DATABASE - FILTERED VIEWS SETUP GUIDE 2570a35b21ed81c2a1e2f
 
 # 👥 MASTER DATABASE - FILTERED VIEWS SETUP GUIDE
 
-*How to create smart filtered views for different contexts*
+_How to create smart filtered views for different contexts_
 
 ## 📊 DATABASE LOCATION
 
@@ -1117,7 +1073,7 @@ Click on [📊 Total Audio Master Database](%F0%9F%93%8A%20TOTAL%20AUDIO%20MASTE
 
 ---
 
-*Once views are set up, bookmark the most used ones for quick mobile access*
+_Once views are set up, bookmark the most used ones for quick mobile access_
 
 ---
 
@@ -1129,7 +1085,7 @@ _Source: 🚀 SPRINT WEEK DASHBOARD 2570a35b21ed81509ec7ef1f183ff248.md_
 
 # 🚀 SPRINT WEEK DASHBOARD - DAY 1
 
-*Audio Intel Beta Launch Week*
+_Audio Intel Beta Launch Week_
 
 ## Current Status: Monday 26 August 2025
 
@@ -1176,38 +1132,38 @@ _Source: 🚀 SPRINT WEEK DASHBOARD 2570a35b21ed81509ec7ef1f183ff248.md_
 
 **Critical Path:**
 
-- [x]  Renew Kit API token and test integration
-- [x]  Update email template pricing (£15 → £19.99)
-- [ ]  Connect newsletter signup to Kit automation
-- [x]  Test upload completion email triggers
+- [x] Renew Kit API token and test integration
+- [x] Update email template pricing (£15 → £19.99)
+- [ ] Connect newsletter signup to Kit automation
+- [x] Test upload completion email triggers
 
 ### Tuesday (Day 2) - Beta Launch Preparation
 
-- [x]  Newsletter welcome series creation (3 emails)
-- [x]  Beta onboarding sequence testing
-- [x]  Landing page final optimization
-- [ ]  User journey validation (signup to upload)
+- [x] Newsletter welcome series creation (3 emails)
+- [x] Beta onboarding sequence testing
+- [x] Landing page final optimization
+- [ ] User journey validation (signup to upload)
 
 ### Wednesday (Day 3) - Launch Campaign
 
-- [ ]  Beta user acquisition campaign launch
-- [ ]  Social media announcement coordination
-- [ ]  Industry outreach and partnership activation
-- [ ]  Performance monitoring setup
+- [ ] Beta user acquisition campaign launch
+- [ ] Social media announcement coordination
+- [ ] Industry outreach and partnership activation
+- [ ] Performance monitoring setup
 
 ### Thursday (Day 4) - Playlist Pulse Foundation
 
-- [ ]  Technical architecture planning
-- [ ]  UI/UX design concepts
-- [ ]  Integration points with Audio Intel
-- [ ]  Competitive analysis completion
+- [ ] Technical architecture planning
+- [ ] UI/UX design concepts
+- [ ] Integration points with Audio Intel
+- [ ] Competitive analysis completion
 
 ### Friday (Day 5) - Sprint Review & Next Steps
 
-- [ ]  Audio Intel beta performance analysis
-- [ ]  Playlist Pulse development roadmap
-- [ ]  User feedback collection and prioritization
-- [ ]  Next sprint planning
+- [ ] Audio Intel beta performance analysis
+- [ ] Playlist Pulse development roadmap
+- [ ] User feedback collection and prioritization
+- [ ] Next sprint planning
 
 ## Current Business Metrics
 
@@ -1273,7 +1229,7 @@ _Source: 📋 DAILY TAP TO-DO'S - SEPTEMBER 2025 2540a35b21ed80859525e1da247ff65
 
 # 📋 DAILY TAP TO-DO'S - SEPTEMBER 2025
 
-*Your daily action centre - Updated for current reality and £500/month goal*
+_Your daily action centre - Updated for current reality and £500/month goal_
 
 ---
 
@@ -1281,17 +1237,17 @@ _Source: 📋 DAILY TAP TO-DO'S - SEPTEMBER 2025 2540a35b21ed80859525e1da247ff65
 
 ### **Email Automation (BROKEN - Priority #1)**
 
-- [ ]  **FIX IMMEDIATELY** - Email automation after signup (currently broken)
-- [ ]  **FIX IMMEDIATELY** - Welcome sequence for new users
-- [ ]  **FIX IMMEDIATELY** - Newsletter confirmation flow
-- [ ]  **BACKUP PLAN** - Create manual email process if API fails
+- [ ] **FIX IMMEDIATELY** - Email automation after signup (currently broken)
+- [ ] **FIX IMMEDIATELY** - Welcome sequence for new users
+- [ ] **FIX IMMEDIATELY** - Newsletter confirmation flow
+- [ ] **BACKUP PLAN** - Create manual email process if API fails
 
 ### **Customer Acquisition (ZERO CUSTOMERS - Priority #2)**
 
-- [ ]  **THIS WEEK** - List 20 potential customers from your network
-- [ ]  **THIS WEEK** - Send outreach to first 5 contacts using proven script
-- [ ]  **THIS WEEK** - Post LinkedIn update about Audio Intel
-- [ ]  **THIS WEEK** - Follow up with any existing beta users
+- [ ] **THIS WEEK** - List 20 potential customers from your network
+- [ ] **THIS WEEK** - Send outreach to first 5 contacts using proven script
+- [ ] **THIS WEEK** - Post LinkedIn update about Audio Intel
+- [ ] **THIS WEEK** - Follow up with any existing beta users
 
 ---
 
@@ -1299,24 +1255,24 @@ _Source: 📋 DAILY TAP TO-DO'S - SEPTEMBER 2025 2540a35b21ed80859525e1da247ff65
 
 ### **🎯 Monday Priorities (30 minutes)**
 
-- [ ]  Test email automation status - is it working?
-- [ ]  Write list of 10 producer/artist contacts for outreach
-- [ ]  Update Audio Intel landing page with clearer value proposition
-- [ ]  Check Stripe dashboard for any weekend signups
+- [ ] Test email automation status - is it working?
+- [ ] Write list of 10 producer/artist contacts for outreach
+- [ ] Update Audio Intel landing page with clearer value proposition
+- [ ] Check Stripe dashboard for any weekend signups
 
 ### **🎯 Wednesday Priorities (45 minutes)**
 
-- [ ]  Send outreach messages to first 3 contacts
-- [ ]  Post LinkedIn update: "Building Audio Intel for radio promotion"
-- [ ]  Follow up on Monday's outreach attempts
-- [ ]  Check user feedback/support requests
+- [ ] Send outreach messages to first 3 contacts
+- [ ] Post LinkedIn update: "Building Audio Intel for radio promotion"
+- [ ] Follow up on Monday's outreach attempts
+- [ ] Check user feedback/support requests
 
 ### **🎯 Friday Priorities (30 minutes)**
 
-- [ ]  Follow up on Wednesday's outreach
-- [ ]  Review week's progress vs Master To-Do List
-- [ ]  Plan next week's customer targets
-- [ ]  Update revenue tracking
+- [ ] Follow up on Wednesday's outreach
+- [ ] Review week's progress vs Master To-Do List
+- [ ] Plan next week's customer targets
+- [ ] Update revenue tracking
 
 ---
 
@@ -1324,18 +1280,18 @@ _Source: 📋 DAILY TAP TO-DO'S - SEPTEMBER 2025 2540a35b21ed80859525e1da247ff65
 
 ### **Audio Intel Platform Issues**
 
-- [ ]  **HIGH** - Fix signup email automation (Kit API issues)
-- [ ]  **HIGH** - Test complete user journey (signup → upload → results)
-- [ ]  **MEDIUM** - Add simple onboarding flow for new users
-- [ ]  **MEDIUM** - Set up basic analytics (who signs up, where they drop off)
-- [ ]  **LOW** - Create simple demo video/screenshots
+- [ ] **HIGH** - Fix signup email automation (Kit API issues)
+- [ ] **HIGH** - Test complete user journey (signup → upload → results)
+- [ ] **MEDIUM** - Add simple onboarding flow for new users
+- [ ] **MEDIUM** - Set up basic analytics (who signs up, where they drop off)
+- [ ] **LOW** - Create simple demo video/screenshots
 
 ### **Infrastructure & Tools**
 
-- [ ]  **MEDIUM** - Fix Gmail tags and remove emojis from current inbox
-- [ ]  **MEDIUM** - Implement mobile-responsive dashboard toggles
-- [ ]  **LOW** - Deploy production build with SSL verification
-    - [ ]  **LOW** - Update main TAP URL as proper landing page
+- [ ] **MEDIUM** - Fix Gmail tags and remove emojis from current inbox
+- [ ] **MEDIUM** - Implement mobile-responsive dashboard toggles
+- [ ] **LOW** - Deploy production build with SSL verification
+  - [ ] **LOW** - Update main TAP URL as proper landing page
 
 ---
 
@@ -1343,17 +1299,17 @@ _Source: 📋 DAILY TAP TO-DO'S - SEPTEMBER 2025 2540a35b21ed80859525e1da247ff65
 
 ### **Customer Outreach (THE PRIORITY)**
 
-- [ ]  **Week 1** - Reach out to 5 industry contacts
-- [ ]  **Week 2** - Reach out to 5 more contacts + follow up on Week 1
-- [ ]  **Week 3** - Scale to 10 contacts + LinkedIn posts
-- [ ]  **Week 4** - Scale to 15 contacts + create case study
+- [ ] **Week 1** - Reach out to 5 industry contacts
+- [ ] **Week 2** - Reach out to 5 more contacts + follow up on Week 1
+- [ ] **Week 3** - Scale to 10 contacts + LinkedIn posts
+- [ ] **Week 4** - Scale to 15 contacts + create case study
 
 ### **Partnership Opportunities**
 
-- [ ]  **Execute DeMarco campaign** (£2-4K opportunity)
-- [ ]  **Finalise Liberty Music PR partnership** framework
-- [ ]  **Define revenue sharing** structure (10-15%)
-- [ ]  **Create joint service** offering documentation
+- [ ] **Execute DeMarco campaign** (£2-4K opportunity)
+- [ ] **Finalise Liberty Music PR partnership** framework
+- [ ] **Define revenue sharing** structure (10-15%)
+- [ ] **Create joint service** offering documentation
 
 ---
 
@@ -1375,7 +1331,7 @@ _Source: 📋 DAILY TAP TO-DO'S - SEPTEMBER 2025 2540a35b21ed80859525e1da247ff65
 
 ## ⏰ **REALISTIC WEEKLY SCHEDULE**
 
-*Sustainable with postman job + family*
+_Sustainable with postman job + family_
 
 ### **Monday (30 minutes) - Technical Check**
 
@@ -1403,11 +1359,11 @@ _Source: 📋 DAILY TAP TO-DO'S - SEPTEMBER 2025 2540a35b21ed80859525e1da247ff65
 
 ### **This Week's Targets (Sept 6-13)**
 
-- [ ]  Email automation fixed (or manual backup created)
-- [ ]  3 customer outreach messages sent
-- [ ]  1 LinkedIn post about Audio Intel
-- [ ]  Complete user journey tested
-- [ ]  Next week's targets planned
+- [ ] Email automation fixed (or manual backup created)
+- [ ] 3 customer outreach messages sent
+- [ ] 1 LinkedIn post about Audio Intel
+- [ ] Complete user journey tested
+- [ ] Next week's targets planned
 
 ### **Monthly Milestones**
 
@@ -1421,10 +1377,10 @@ _Source: 📋 DAILY TAP TO-DO'S - SEPTEMBER 2025 2540a35b21ed80859525e1da247ff65
 
 ### **Low-Effort, High-Impact**
 
-- [ ]  Message Kent FM guy about beta signup
-- [ ]  Ask existing contacts for referrals
-- [ ]  Create simple Audio Intel demo screenshots
-- [ ]  Set up "Are you enjoying the beta?" feedback email
+- [ ] Message Kent FM guy about beta signup
+- [ ] Ask existing contacts for referrals
+- [ ] Create simple Audio Intel demo screenshots
+- [ ] Set up "Are you enjoying the beta?" feedback email
 
 ### **Future Features (After £500/Month)**
 
@@ -1437,7 +1393,7 @@ _Source: 📋 DAILY TAP TO-DO'S - SEPTEMBER 2025 2540a35b21ed80859525e1da247ff65
 
 ## 🎯 **OUTREACH SCRIPT (PROVEN)**
 
-*"Hi [Name], hope you're well. I've been working on a tool for my own radio promotion campaigns that saves about 15 hours of contact research per campaign. It's working well for me - thought you might find it useful too. Happy to show you how it works if you're interested. Chris"*
+_"Hi [Name], hope you're well. I've been working on a tool for my own radio promotion campaigns that saves about 15 hours of contact research per campaign. It's working well for me - thought you might find it useful too. Happy to show you how it works if you're interested. Chris"_
 
 ---
 
@@ -1457,11 +1413,11 @@ _Source: 📋 DAILY TAP TO-DO'S - SEPTEMBER 2025 2540a35b21ed80859525e1da247ff65
 
 ---
 
-*Last Updated: September 6, 2025*
+_Last Updated: September 6, 2025_
 
-*Next Review: September 13, 2025*
+_Next Review: September 13, 2025_
 
-*Current Focus: Fix email automation + first 5 customers*
+_Current Focus: Fix email automation + first 5 customers_
 
 ---
 
@@ -1518,4 +1474,3 @@ _Source: NOTION WORKSPACE ORGANISATION GUIDE 2530a35b21ed81278d95f5ea907046c7.md
 - Clear, descriptive names
 
 ---
-

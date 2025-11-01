@@ -13,14 +13,16 @@ const oauth2Client = new google.auth.OAuth2(
   'http://localhost:3001/callback'
 );
 
-const tokens = JSON.parse(fs.readFileSync(path.join(__dirname, '../radio-promo/gmail-token.json'), 'utf8'));
+const tokens = JSON.parse(
+  fs.readFileSync(path.join(__dirname, '../radio-promo/gmail-token.json'), 'utf8')
+);
 oauth2Client.setCredentials(tokens);
 const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
 
 async function getLabelMap() {
   const response = await gmail.users.labels.list({ userId: 'me' });
   const map = {};
-  response.data.labels.forEach(l => map[l.name] = l.id);
+  response.data.labels.forEach(l => (map[l.name] = l.id));
   return map;
 }
 
@@ -37,8 +39,8 @@ async function createOrUpdateLabel(name, color) {
           name: name,
           color: color,
           labelListVisibility: 'labelShow',
-          messageListVisibility: 'show'
-        }
+          messageListVisibility: 'show',
+        },
       });
       console.log(`✅ Updated: ${name} with color`);
     } catch (error) {
@@ -53,8 +55,8 @@ async function createOrUpdateLabel(name, color) {
           name: name,
           color: color,
           labelListVisibility: 'labelShow',
-          messageListVisibility: 'show'
-        }
+          messageListVisibility: 'show',
+        },
       });
       console.log(`✅ Created: ${name} with color`);
     } catch (error) {
@@ -77,7 +79,7 @@ async function labelEmails(query, labelName, description) {
   const search = await gmail.users.messages.list({
     userId: 'me',
     q: query,
-    maxResults: 500
+    maxResults: 500,
   });
 
   if (!search.data.messages) {
@@ -92,8 +94,8 @@ async function labelEmails(query, labelName, description) {
         userId: 'me',
         id: msg.id,
         requestBody: {
-          addLabelIds: [targetLabelId]
-        }
+          addLabelIds: [targetLabelId],
+        },
       });
       labeled++;
       if (labeled % 20 === 0) console.log(`  Labeled ${labeled}...`);
@@ -116,42 +118,42 @@ async function main() {
 
     await createOrUpdateLabel('Kiara Bloodshot', {
       textColor: '#ffffff',
-      backgroundColor: '#fb4c2f' // Red
+      backgroundColor: '#fb4c2f', // Red
     });
 
     await createOrUpdateLabel('Senior Dunce Bestial', {
       textColor: '#ffffff',
-      backgroundColor: '#f691b2' // Pink
+      backgroundColor: '#f691b2', // Pink
     });
 
     await createOrUpdateLabel('Weekly Releases', {
       textColor: '#000000',
-      backgroundColor: '#fad165' // Yellow
+      backgroundColor: '#fad165', // Yellow
     });
 
     await createOrUpdateLabel('Liberty/Station Feedback', {
       textColor: '#ffffff',
-      backgroundColor: '#ff7537' // Orange
+      backgroundColor: '#ff7537', // Orange
     });
 
     await createOrUpdateLabel('Liberty/Internal', {
       textColor: '#ffffff',
-      backgroundColor: '#a4c2f4' // Light Blue
+      backgroundColor: '#a4c2f4', // Light Blue
     });
 
     await createOrUpdateLabel('Liberty/Archive', {
       textColor: '#ffffff',
-      backgroundColor: '#cabdbf' // Grey
+      backgroundColor: '#cabdbf', // Grey
     });
 
     await createOrUpdateLabel('Personal/Otter AI', {
       textColor: '#ffffff',
-      backgroundColor: '#16a765' // Green
+      backgroundColor: '#16a765', // Green
     });
 
     await createOrUpdateLabel('Personal/Gemini', {
       textColor: '#ffffff',
-      backgroundColor: '#16a765' // Green
+      backgroundColor: '#16a765', // Green
     });
 
     console.log('\n2. LABELING ALL EMAILS\n');
@@ -194,18 +196,10 @@ async function main() {
     );
 
     // Label Otter AI
-    stats.otter = await labelEmails(
-      'from:otter.ai',
-      'Personal/Otter AI',
-      'Labeling Otter AI'
-    );
+    stats.otter = await labelEmails('from:otter.ai', 'Personal/Otter AI', 'Labeling Otter AI');
 
     // Label Gemini
-    stats.gemini = await labelEmails(
-      'from:gemini',
-      'Personal/Gemini',
-      'Labeling Gemini'
-    );
+    stats.gemini = await labelEmails('from:gemini', 'Personal/Gemini', 'Labeling Gemini');
 
     // Archive Otter and Gemini from inbox
     console.log('\n3. ARCHIVING PERSONAL TOOLS FROM INBOX\n');
@@ -213,7 +207,7 @@ async function main() {
     const otterInbox = await gmail.users.messages.list({
       userId: 'me',
       q: 'from:otter.ai in:inbox',
-      maxResults: 500
+      maxResults: 500,
     });
 
     if (otterInbox.data.messages) {
@@ -222,8 +216,8 @@ async function main() {
           userId: 'me',
           id: msg.id,
           requestBody: {
-            removeLabelIds: ['INBOX']
-          }
+            removeLabelIds: ['INBOX'],
+          },
         });
       }
       console.log(`✅ Archived ${otterInbox.data.messages.length} Otter AI from inbox`);
@@ -234,7 +228,7 @@ async function main() {
     const geminiInbox = await gmail.users.messages.list({
       userId: 'me',
       q: 'from:gemini in:inbox',
-      maxResults: 500
+      maxResults: 500,
     });
 
     if (geminiInbox.data.messages) {
@@ -243,8 +237,8 @@ async function main() {
           userId: 'me',
           id: msg.id,
           requestBody: {
-            removeLabelIds: ['INBOX']
-          }
+            removeLabelIds: ['INBOX'],
+          },
         });
       }
       console.log(`✅ Archived ${geminiInbox.data.messages.length} Gemini from inbox`);
@@ -274,7 +268,6 @@ async function main() {
     console.log('    🟢 Otter AI');
     console.log('    🟢 Gemini');
     console.log('\n✅ Everything organized and color coded!');
-
   } catch (error) {
     console.error('\n❌ Error:', error.message);
     throw error;

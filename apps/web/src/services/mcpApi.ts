@@ -6,7 +6,7 @@ export const perplexityApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/perplexity/find-journalists`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ industry, location })
+      body: JSON.stringify({ industry, location }),
     });
     return response.json();
   },
@@ -15,7 +15,7 @@ export const perplexityApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/perplexity/research-industry`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ industry })
+      body: JSON.stringify({ industry }),
     });
     return response.json();
   },
@@ -24,10 +24,10 @@ export const perplexityApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/perplexity/find-contact-lists`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ industry })
+      body: JSON.stringify({ industry }),
     });
     return response.json();
-  }
+  },
 };
 
 // Open Router API calls
@@ -35,7 +35,7 @@ export const openRouterApi = {
   getModels: async () => {
     const response = await fetch(`${API_BASE_URL}/api/mcp/openrouter/models`, {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     });
     return response.json();
   },
@@ -44,7 +44,7 @@ export const openRouterApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/openrouter/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages, model, options })
+      body: JSON.stringify({ messages, model, options }),
     });
     return response.json();
   },
@@ -53,7 +53,7 @@ export const openRouterApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/openrouter/generate-press-release`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ client, news, industry })
+      body: JSON.stringify({ client, news, industry }),
     });
     return response.json();
   },
@@ -62,10 +62,10 @@ export const openRouterApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/openrouter/generate-pitch-email`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ journalist, outlet, story, client })
+      body: JSON.stringify({ journalist, outlet, story, client }),
     });
     return response.json();
-  }
+  },
 };
 
 // Data for SEO API calls
@@ -74,7 +74,7 @@ export const dataForSEOApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/dataforseo/analyze-domain`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ domain })
+      body: JSON.stringify({ domain }),
     });
     return response.json();
   },
@@ -83,7 +83,7 @@ export const dataForSEOApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/dataforseo/research-keywords`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ seedKeyword, location })
+      body: JSON.stringify({ seedKeyword, location }),
     });
     return response.json();
   },
@@ -92,7 +92,7 @@ export const dataForSEOApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/dataforseo/analyze-competitors`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ domain })
+      body: JSON.stringify({ domain }),
     });
     return response.json();
   },
@@ -101,13 +101,11 @@ export const dataForSEOApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/dataforseo/get-serp-results`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ keyword, location })
+      body: JSON.stringify({ keyword, location }),
     });
     return response.json();
-  }
+  },
 };
-
-
 
 // Aura AI API calls
 export const auraApi = {
@@ -115,7 +113,7 @@ export const auraApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/aura/generate-pitch`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ client, journalist, story })
+      body: JSON.stringify({ client, journalist, story }),
     });
     return response.json();
   },
@@ -124,7 +122,7 @@ export const auraApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/aura/generate-press-release`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ client, news, industry })
+      body: JSON.stringify({ client, news, industry }),
     });
     return response.json();
   },
@@ -133,7 +131,7 @@ export const auraApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/aura/suggest-campaigns`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ industry, budget })
+      body: JSON.stringify({ industry, budget }),
     });
     return response.json();
   },
@@ -142,17 +140,17 @@ export const auraApi = {
     const response = await fetch(`${API_BASE_URL}/api/mcp/aura/optimize-subject-line`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ emailContent, targetAudience })
+      body: JSON.stringify({ emailContent, targetAudience }),
     });
     return response.json();
-  }
+  },
 };
 
 // Test endpoint
 export const testMCPConnection = async () => {
   const response = await fetch(`${API_BASE_URL}/api/mcp/test`, {
     method: 'GET',
-    headers: { 'Content-Type': 'application/json' }
+    headers: { 'Content-Type': 'application/json' },
   });
   return response.json();
-}; 
+};

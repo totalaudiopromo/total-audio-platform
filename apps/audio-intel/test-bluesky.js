@@ -9,19 +9,18 @@ async function testBluesky() {
 
   try {
     const agent = createBlueskyAgent();
-    
+
     // Test health check
     console.log('[TEST] Running health check...');
     const health = await agent.healthCheck();
     console.log('[TEST] Health check result:', health);
-    
+
     if (!health.healthy) {
       console.error('[TEST] ❌ Health check failed');
       process.exit(1);
     }
-    
+
     console.log('[TEST] ✅ Bluesky agent working correctly!');
-    
   } catch (error) {
     console.error('[TEST] ❌ Error:', error.message);
     process.exit(1);

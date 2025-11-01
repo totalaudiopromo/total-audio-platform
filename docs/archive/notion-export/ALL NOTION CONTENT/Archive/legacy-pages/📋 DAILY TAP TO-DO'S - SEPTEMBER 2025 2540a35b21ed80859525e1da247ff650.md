@@ -1,6 +1,6 @@
 # 📋 DAILY TAP TO-DO'S - SEPTEMBER 2025
 
-*Your daily action centre - Updated for current reality and £500/month goal*
+_Your daily action centre - Updated for current reality and £500/month goal_
 
 ---
 
@@ -8,17 +8,17 @@
 
 ### **Email Automation (BROKEN - Priority #1)**
 
-- [ ]  **FIX IMMEDIATELY** - Email automation after signup (currently broken)
-- [ ]  **FIX IMMEDIATELY** - Welcome sequence for new users
-- [ ]  **FIX IMMEDIATELY** - Newsletter confirmation flow
-- [ ]  **BACKUP PLAN** - Create manual email process if API fails
+- [ ] **FIX IMMEDIATELY** - Email automation after signup (currently broken)
+- [ ] **FIX IMMEDIATELY** - Welcome sequence for new users
+- [ ] **FIX IMMEDIATELY** - Newsletter confirmation flow
+- [ ] **BACKUP PLAN** - Create manual email process if API fails
 
 ### **Customer Acquisition (ZERO CUSTOMERS - Priority #2)**
 
-- [ ]  **THIS WEEK** - List 20 potential customers from your network
-- [ ]  **THIS WEEK** - Send outreach to first 5 contacts using proven script
-- [ ]  **THIS WEEK** - Post LinkedIn update about Audio Intel
-- [ ]  **THIS WEEK** - Follow up with any existing beta users
+- [ ] **THIS WEEK** - List 20 potential customers from your network
+- [ ] **THIS WEEK** - Send outreach to first 5 contacts using proven script
+- [ ] **THIS WEEK** - Post LinkedIn update about Audio Intel
+- [ ] **THIS WEEK** - Follow up with any existing beta users
 
 ---
 
@@ -26,24 +26,24 @@
 
 ### **🎯 Monday Priorities (30 minutes)**
 
-- [ ]  Test email automation status - is it working?
-- [ ]  Write list of 10 producer/artist contacts for outreach
-- [ ]  Update Audio Intel landing page with clearer value proposition
-- [ ]  Check Stripe dashboard for any weekend signups
+- [ ] Test email automation status - is it working?
+- [ ] Write list of 10 producer/artist contacts for outreach
+- [ ] Update Audio Intel landing page with clearer value proposition
+- [ ] Check Stripe dashboard for any weekend signups
 
 ### **🎯 Wednesday Priorities (45 minutes)**
 
-- [ ]  Send outreach messages to first 3 contacts
-- [ ]  Post LinkedIn update: "Building Audio Intel for radio promotion"
-- [ ]  Follow up on Monday's outreach attempts
-- [ ]  Check user feedback/support requests
+- [ ] Send outreach messages to first 3 contacts
+- [ ] Post LinkedIn update: "Building Audio Intel for radio promotion"
+- [ ] Follow up on Monday's outreach attempts
+- [ ] Check user feedback/support requests
 
 ### **🎯 Friday Priorities (30 minutes)**
 
-- [ ]  Follow up on Wednesday's outreach
-- [ ]  Review week's progress vs Master To-Do List
-- [ ]  Plan next week's customer targets
-- [ ]  Update revenue tracking
+- [ ] Follow up on Wednesday's outreach
+- [ ] Review week's progress vs Master To-Do List
+- [ ] Plan next week's customer targets
+- [ ] Update revenue tracking
 
 ---
 
@@ -51,18 +51,18 @@
 
 ### **Audio Intel Platform Issues**
 
-- [ ]  **HIGH** - Fix signup email automation (Kit API issues)
-- [ ]  **HIGH** - Test complete user journey (signup → upload → results)
-- [ ]  **MEDIUM** - Add simple onboarding flow for new users
-- [ ]  **MEDIUM** - Set up basic analytics (who signs up, where they drop off)
-- [ ]  **LOW** - Create simple demo video/screenshots
+- [ ] **HIGH** - Fix signup email automation (Kit API issues)
+- [ ] **HIGH** - Test complete user journey (signup → upload → results)
+- [ ] **MEDIUM** - Add simple onboarding flow for new users
+- [ ] **MEDIUM** - Set up basic analytics (who signs up, where they drop off)
+- [ ] **LOW** - Create simple demo video/screenshots
 
 ### **Infrastructure & Tools**
 
-- [ ]  **MEDIUM** - Fix Gmail tags and remove emojis from current inbox
-- [ ]  **MEDIUM** - Implement mobile-responsive dashboard toggles
-- [ ]  **LOW** - Deploy production build with SSL verification
-    - [ ]  **LOW** - Update main TAP URL as proper landing page
+- [ ] **MEDIUM** - Fix Gmail tags and remove emojis from current inbox
+- [ ] **MEDIUM** - Implement mobile-responsive dashboard toggles
+- [ ] **LOW** - Deploy production build with SSL verification
+  - [ ] **LOW** - Update main TAP URL as proper landing page
 
 ---
 
@@ -70,17 +70,17 @@
 
 ### **Customer Outreach (THE PRIORITY)**
 
-- [ ]  **Week 1** - Reach out to 5 industry contacts
-- [ ]  **Week 2** - Reach out to 5 more contacts + follow up on Week 1
-- [ ]  **Week 3** - Scale to 10 contacts + LinkedIn posts
-- [ ]  **Week 4** - Scale to 15 contacts + create case study
+- [ ] **Week 1** - Reach out to 5 industry contacts
+- [ ] **Week 2** - Reach out to 5 more contacts + follow up on Week 1
+- [ ] **Week 3** - Scale to 10 contacts + LinkedIn posts
+- [ ] **Week 4** - Scale to 15 contacts + create case study
 
 ### **Partnership Opportunities**
 
-- [ ]  **Execute DeMarco campaign** (£2-4K opportunity)
-- [ ]  **Finalise Liberty Music PR partnership** framework
-- [ ]  **Define revenue sharing** structure (10-15%)
-- [ ]  **Create joint service** offering documentation
+- [ ] **Execute DeMarco campaign** (£2-4K opportunity)
+- [ ] **Finalise Liberty Music PR partnership** framework
+- [ ] **Define revenue sharing** structure (10-15%)
+- [ ] **Create joint service** offering documentation
 
 ---
 
@@ -102,7 +102,7 @@
 
 ## ⏰ **REALISTIC WEEKLY SCHEDULE**
 
-*Sustainable with postman job + family*
+_Sustainable with postman job + family_
 
 ### **Monday (30 minutes) - Technical Check**
 
@@ -130,11 +130,11 @@
 
 ### **This Week's Targets (Sept 6-13)**
 
-- [ ]  Email automation fixed (or manual backup created)
-- [ ]  3 customer outreach messages sent
-- [ ]  1 LinkedIn post about Audio Intel
-- [ ]  Complete user journey tested
-- [ ]  Next week's targets planned
+- [ ] Email automation fixed (or manual backup created)
+- [ ] 3 customer outreach messages sent
+- [ ] 1 LinkedIn post about Audio Intel
+- [ ] Complete user journey tested
+- [ ] Next week's targets planned
 
 ### **Monthly Milestones**
 
@@ -148,10 +148,10 @@
 
 ### **Low-Effort, High-Impact**
 
-- [ ]  Message Kent FM guy about beta signup
-- [ ]  Ask existing contacts for referrals
-- [ ]  Create simple Audio Intel demo screenshots
-- [ ]  Set up "Are you enjoying the beta?" feedback email
+- [ ] Message Kent FM guy about beta signup
+- [ ] Ask existing contacts for referrals
+- [ ] Create simple Audio Intel demo screenshots
+- [ ] Set up "Are you enjoying the beta?" feedback email
 
 ### **Future Features (After £500/Month)**
 
@@ -164,7 +164,7 @@
 
 ## 🎯 **OUTREACH SCRIPT (PROVEN)**
 
-*"Hi [Name], hope you're well. I've been working on a tool for my own radio promotion campaigns that saves about 15 hours of contact research per campaign. It's working well for me - thought you might find it useful too. Happy to show you how it works if you're interested. Chris"*
+_"Hi [Name], hope you're well. I've been working on a tool for my own radio promotion campaigns that saves about 15 hours of contact research per campaign. It's working well for me - thought you might find it useful too. Happy to show you how it works if you're interested. Chris"_
 
 ---
 
@@ -184,8 +184,8 @@
 
 ---
 
-*Last Updated: September 6, 2025*
+_Last Updated: September 6, 2025_
 
-*Next Review: September 13, 2025*
+_Next Review: September 13, 2025_
 
-*Current Focus: Fix email automation + first 5 customers*
+_Current Focus: Fix email automation + first 5 customers_

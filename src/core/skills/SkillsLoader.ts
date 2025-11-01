@@ -40,9 +40,7 @@ export class SkillsLoader {
   async initialize(): Promise<void> {
     try {
       await this.loadAllSkills();
-      console.log(
-        `[SkillsLoader] Initialized with ${this.registry.skills.size} skills`
-      );
+      console.log(`[SkillsLoader] Initialized with ${this.registry.skills.size} skills`);
     } catch (error) {
       console.error('[SkillsLoader] Initialization failed:', error);
       throw new SkillExecutionError(
@@ -60,7 +58,7 @@ export class SkillsLoader {
     try {
       const files = await fs.readdir(this.skillsDir);
       const skillFiles = files.filter(
-        (f) => f.endsWith('.yml') || f.endsWith('.yaml') || f.endsWith('.json')
+        f => f.endsWith('.yml') || f.endsWith('.yaml') || f.endsWith('.json')
       );
 
       for (const file of skillFiles) {
@@ -72,9 +70,7 @@ export class SkillsLoader {
       }
     } catch (error) {
       if (error.code === 'ENOENT') {
-        console.warn(
-          `[SkillsLoader] Skills directory not found: ${this.skillsDir}`
-        );
+        console.warn(`[SkillsLoader] Skills directory not found: ${this.skillsDir}`);
         // Create directory if it doesn't exist
         await fs.mkdir(this.skillsDir, { recursive: true });
       } else {
@@ -88,9 +84,7 @@ export class SkillsLoader {
    */
   private async loadSkillFile(filePath: string): Promise<void> {
     const content = await fs.readFile(filePath, 'utf-8');
-    const skill: Skill = filePath.endsWith('.json')
-      ? JSON.parse(content)
-      : yaml.parse(content);
+    const skill: Skill = filePath.endsWith('.json') ? JSON.parse(content) : yaml.parse(content);
 
     this.registerSkill(skill);
   }
@@ -110,18 +104,13 @@ export class SkillsLoader {
       this.registry.versions.set(skill.metadata.name, versions);
     }
 
-    console.log(
-      `[SkillsLoader] Registered ${skill.metadata.name}@${skill.metadata.version}`
-    );
+    console.log(`[SkillsLoader] Registered ${skill.metadata.name}@${skill.metadata.version}`);
   }
 
   /**
    * Load a specific skill by name and version
    */
-  async load(
-    skillName: string,
-    version: string = 'latest'
-  ): Promise<Skill> {
+  async load(skillName: string, version: string = 'latest'): Promise<Skill> {
     const resolvedVersion = this.resolveVersion(skillName, version);
     const key = this.getSkillKey(skillName, resolvedVersion);
 
@@ -156,10 +145,7 @@ export class SkillsLoader {
 
     try {
       // Load the skill
-      const skill = await this.load(
-        skillName,
-        context?.version || 'latest'
-      );
+      const skill = await this.load(skillName, context?.version || 'latest');
 
       // Validate inputs
       this.validateInputs(skill, inputs);
@@ -189,10 +175,7 @@ export class SkillsLoader {
     } catch (error) {
       const executionTime = Date.now() - startTime;
 
-      if (
-        error instanceof SkillValidationError ||
-        error instanceof SkillNotFoundError
-      ) {
+      if (error instanceof SkillValidationError || error instanceof SkillNotFoundError) {
         return {
           success: false,
           outputs: {},
@@ -247,10 +230,7 @@ export class SkillsLoader {
   /**
    * Validate skill inputs against schema
    */
-  private validateInputs(
-    skill: Skill,
-    inputs: Record<string, any>
-  ): void {
+  private validateInputs(skill: Skill, inputs: Record<string, any>): void {
     for (const inputDef of skill.inputs) {
       if (inputDef.required && !(inputDef.name in inputs)) {
         throw new SkillValidationError(
@@ -263,9 +243,7 @@ export class SkillsLoader {
       const value = inputs[inputDef.name];
       if (value !== undefined) {
         // Type validation
-        const actualType = Array.isArray(value)
-          ? 'array'
-          : typeof value;
+        const actualType = Array.isArray(value) ? 'array' : typeof value;
         if (actualType !== inputDef.type) {
           throw new SkillValidationError(
             inputDef.name,
@@ -326,10 +304,7 @@ export class SkillsLoader {
   /**
    * Validate skill outputs
    */
-  private validateOutputs(
-    skill: Skill,
-    outputs: Record<string, any>
-  ): void {
+  private validateOutputs(skill: Skill, outputs: Record<string, any>): void {
     for (const outputDef of skill.outputs) {
       if (!(outputDef.name in outputs)) {
         console.warn(
@@ -342,9 +317,7 @@ export class SkillsLoader {
   /**
    * Check if skill dependencies are available
    */
-  private async checkDependencies(
-    dependencies: NonNullable<Skill['dependencies']>
-  ): Promise<void> {
+  private async checkDependencies(dependencies: NonNullable<Skill['dependencies']>): Promise<void> {
     for (const dep of dependencies) {
       try {
         await this.load(dep.skillName, dep.version);
@@ -406,12 +379,10 @@ export class SkillsLoader {
    * Get list of all registered skills
    */
   listSkills(): Array<{ name: string; versions: string[] }> {
-    return Array.from(this.registry.versions.entries()).map(
-      ([name, versions]) => ({
-        name,
-        versions,
-      })
-    );
+    return Array.from(this.registry.versions.entries()).map(([name, versions]) => ({
+      name,
+      versions,
+    }));
   }
 
   /**

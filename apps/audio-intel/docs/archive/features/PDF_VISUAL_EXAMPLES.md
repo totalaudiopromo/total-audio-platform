@@ -5,6 +5,7 @@
 ### 1. FREE TIER PDF EXAMPLE
 
 **What you get:**
+
 - Default Audio Intel logo
 - Standard blue brand color (#2563EB)
 - Full neobrutalist styling
@@ -62,6 +63,7 @@ Style: Bold 2px black borders, white background,
 ### 2. PRO TIER PDF EXAMPLE (£19/month)
 
 **What you get:**
+
 - **Custom company logo** (your brand)
 - **Custom brand color** (your website color)
 - Full neobrutalist styling
@@ -117,6 +119,7 @@ Brand Color: #9333EA (Purple) - used for:
 ### 3. AGENCY TIER PDF EXAMPLE (£79/month)
 
 **What you get:**
+
 - **Custom company logo** (your brand)
 - **Custom brand color** (your website color)
 - **Bulk export support** (100+ contacts)
@@ -163,6 +166,7 @@ Bulk Support: 125 contacts across 32 pages
 ## Logo Placement Examples
 
 ### Option 1: Custom Logo (PRO/AGENCY)
+
 ```
   ╔═══════════╗
   ║  ┌─────┐  ║
@@ -174,6 +178,7 @@ Bulk Support: 125 contacts across 32 pages
 ```
 
 ### Option 2: Company Initials Fallback
+
 ```
   ╔═══════════╗
   ║           ║
@@ -184,6 +189,7 @@ Bulk Support: 125 contacts across 32 pages
 ```
 
 ### Option 3: Default Audio Intel Logo (FREE)
+
 ```
   ╔═══════════╗
   ║  🎵 🌊    ║
@@ -198,6 +204,7 @@ Bulk Support: 125 contacts across 32 pages
 ## Brand Color Showcase
 
 ### Purple Agency Example
+
 ```
 Table Header: ████████████ #9333EA
 Email Color:  jack.saunders@bbc.co.uk (purple)
@@ -205,6 +212,7 @@ Date Color:   Generated: 12 Oct 2025 (purple)
 ```
 
 ### Orange PR Example
+
 ```
 Table Header: ████████████ #FF6B35
 Email Color:  jack.saunders@bbc.co.uk (orange)
@@ -212,6 +220,7 @@ Date Color:   Generated: 12 Oct 2025 (orange)
 ```
 
 ### Blue Professional Example
+
 ```
 Table Header: ████████████ #2563EB
 Email Color:  jack.saunders@bbc.co.uk (blue)
@@ -233,22 +242,26 @@ LOW:    ██ #EF4444 (Red)    - Needs verification
 ## Table Styling Detail
 
 ### Header Row (with your brand color)
+
 ```
 ╔═══════════════════════════════════════════════╗
 ║ Name          ║ Email         ║ Confidence   ║  (Colored background)
 ╠═══════════════════════════════════════════════╣
 ```
+
 - Background: Your brand color
 - Text: White, bold
 - Border: 2px black
 
 ### Body Rows (alternating)
+
 ```
 ║ Jack Saunders ║ jack@bbc...   ║ [HIGH] ██    ║  (White background)
 ╟───────────────────────────────────────────────╢
 ║ Clara Amfo    ║ clara@bbc...  ║ [HIGH] ██    ║  (Light gray)
 ╟───────────────────────────────────────────────╢
 ```
+
 - Alternating: White / Light blue-gray
 - Text: Black, bold
 - Border: 1.5px black
@@ -258,6 +271,7 @@ LOW:    ██ #EF4444 (Red)    - Needs verification
 ## Contact Card Detail
 
 ### Full Contact Card Layout
+
 ```
   ╔═══════════════════════════════════════════════╗
   ║ Jack Saunders                      [HIGH] ██ ║
@@ -285,6 +299,7 @@ LOW:    ██ #EF4444 (Red)    - Needs verification
   ║ Powered by Total Audio Promo                 ║
   ╚═══════════════════════════════════════════════╝
 ```
+
 - White background
 - Bold 2px black border
 - Left: Page numbers
@@ -297,6 +312,7 @@ LOW:    ██ #EF4444 (Red)    - Needs verification
 ## Real-World Use Cases
 
 ### Case 1: Radio Promoter (PRO Tier)
+
 **Company**: Stellar Music PR
 **Logo**: Purple star icon
 **Color**: #9333EA (Purple)
@@ -304,6 +320,7 @@ LOW:    ██ #EF4444 (Red)    - Needs verification
 **Result**: 12-page professional PDF ready to share with band
 
 ### Case 2: Independent Artist (FREE Tier)
+
 **Company**: Audio Intel (default)
 **Logo**: Waveform icon (default)
 **Color**: #2563EB (Blue)
@@ -311,6 +328,7 @@ LOW:    ██ #EF4444 (Red)    - Needs verification
 **Result**: 4-page PDF for personal radio submissions
 
 ### Case 3: PR Agency (AGENCY Tier)
+
 **Company**: Liberty Records PR
 **Logo**: Custom agency logo
 **Color**: #FF6B35 (Orange)
@@ -322,18 +340,21 @@ LOW:    ██ #EF4444 (Red)    - Needs verification
 ## Typography & Spacing
 
 ### Font Hierarchy
+
 - **Headers**: 18-22pt Helvetica Bold
 - **Subheaders**: 11pt Helvetica Bold
 - **Body text**: 9-11pt Helvetica Bold
 - **Small text**: 8-9pt Helvetica Normal
 
 ### Spacing Standards
+
 - Header padding: 10mm top, 8mm sides
 - Table cell padding: 6pt all sides
 - Contact card padding: 5mm all sides
 - Line spacing: 1.5x for intelligence text
 
 ### Border Weights
+
 - Main containers: 2px black
 - Table headers: 2px black
 - Table body: 1.5px black
@@ -344,12 +365,14 @@ LOW:    ██ #EF4444 (Red)    - Needs verification
 ## Performance Metrics
 
 ### File Sizes (Actual)
+
 - **10 contacts**: ~140KB (3 pages)
 - **25 contacts**: ~280KB (7 pages)
 - **50 contacts**: ~420KB (13 pages)
 - **100 contacts**: ~750KB (26 pages)
 
 ### Generation Times
+
 - **10 contacts**: < 1 second
 - **25 contacts**: 1-2 seconds
 - **50 contacts**: 2-3 seconds
@@ -360,6 +383,7 @@ LOW:    ██ #EF4444 (Red)    - Needs verification
 ## Design Comparison
 
 ### Before (Generic)
+
 ```
 ┌────────────────────────┐
 │  Audio Intel           │  Soft gray border
@@ -371,6 +395,7 @@ LOW:    ██ #EF4444 (Red)    - Needs verification
 ```
 
 ### After (Neobrutalist)
+
 ```
 ╔════════════════════════╗
 ║  Audio Intel           ║  Bold black border
@@ -386,31 +411,37 @@ LOW:    ██ #EF4444 (Red)    - Needs verification
 ## Quick Start Examples
 
 ### Example 1: Basic Export (FREE)
+
 ```typescript
 import { exportContactsToPdf } from '@/utils/exportToPdf';
 
 exportContactsToPdf(contacts, 'my-contacts.pdf');
 ```
+
 **Result**: Blue Audio Intel branded PDF
 
 ### Example 2: Custom Logo (PRO)
+
 ```typescript
 exportContactsToPdf(contacts, 'stellar-contacts.pdf', {
   companyName: 'Stellar Music PR',
   logoUrl: 'data:image/png;base64,iVBORw0KG...',
-  primaryColor: '#9333EA'
+  primaryColor: '#9333EA',
 });
 ```
+
 **Result**: Purple Stellar Music PR branded PDF
 
 ### Example 3: Bulk Export (AGENCY)
+
 ```typescript
 exportContactsToPdf(contacts, 'liberty-campaign.pdf', {
   companyName: 'Liberty Records PR',
   logoUrl: 'data:image/png;base64,iVBORw0KG...',
-  primaryColor: '#FF6B35'
+  primaryColor: '#FF6B35',
 });
 ```
+
 **Result**: Orange Liberty Records branded 32-page PDF
 
 ---

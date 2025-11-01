@@ -2,7 +2,11 @@
 
 import { useState } from 'react';
 import { AlertCircle, CheckCircle, ChevronDown } from 'lucide-react';
-import { validateField, type ValidationRule, type ValidationResult } from '@/lib/validation';
+import {
+  validateField,
+  type ValidationRule,
+  type ValidationResult,
+} from '@/lib/validation';
 
 interface SelectOption {
   value: string;
@@ -63,7 +67,10 @@ export function ValidatedSelect({
   return (
     <div className="space-y-2">
       {/* Label */}
-      <label htmlFor={name} className="block text-sm font-black text-gray-900 uppercase tracking-wider">
+      <label
+        htmlFor={name}
+        className="block text-sm font-black text-gray-900 uppercase tracking-wider"
+      >
         {label}
         {required && <span className="text-red-600 ml-1">*</span>}
       </label>
@@ -82,8 +89,8 @@ export function ValidatedSelect({
             showErrors
               ? 'border-red-500 focus:border-red-600 focus:ring-red-200 bg-red-50'
               : showSuccess
-              ? 'border-green-500 focus:border-green-600 focus:ring-green-200 bg-green-50'
-              : 'border-gray-300 focus:border-teal-500 focus:ring-teal-200'
+                ? 'border-green-500 focus:border-green-600 focus:ring-green-200 bg-green-50'
+                : 'border-gray-300 focus:border-teal-500 focus:ring-teal-200'
           } ${disabled ? 'opacity-50 cursor-not-allowed bg-gray-100' : 'cursor-pointer'}`}
           aria-invalid={showErrors}
           aria-describedby={showErrors ? `${name}-error` : undefined}
@@ -91,7 +98,7 @@ export function ValidatedSelect({
           <option value="" disabled>
             {placeholder}
           </option>
-          {options.map((option) => (
+          {options.map(option => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
@@ -103,7 +110,10 @@ export function ValidatedSelect({
           {showErrors ? (
             <AlertCircle className="h-5 w-5 text-red-600" aria-hidden="true" />
           ) : showSuccess ? (
-            <CheckCircle className="h-5 w-5 text-green-600" aria-hidden="true" />
+            <CheckCircle
+              className="h-5 w-5 text-green-600"
+              aria-hidden="true"
+            />
           ) : (
             <ChevronDown className="h-5 w-5 text-gray-400" aria-hidden="true" />
           )}
@@ -124,7 +134,10 @@ export function ValidatedSelect({
           aria-live="assertive"
         >
           {validationResult.errors.map((error, index) => (
-            <p key={index} className="text-sm font-bold text-red-700 flex items-start gap-2">
+            <p
+              key={index}
+              className="text-sm font-bold text-red-700 flex items-start gap-2"
+            >
               <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
               <span>{error}</span>
             </p>
@@ -132,8 +145,13 @@ export function ValidatedSelect({
 
           {/* Show suggestions in errors */}
           {validationResult.suggestions.map((suggestion, index) => (
-            <p key={`suggestion-${index}`} className="text-sm font-bold text-red-600 flex items-start gap-2 mt-2 pt-2 border-t border-red-200">
-              <span className="text-xs bg-red-200 px-2 py-0.5 rounded font-black">TIP</span>
+            <p
+              key={`suggestion-${index}`}
+              className="text-sm font-bold text-red-600 flex items-start gap-2 mt-2 pt-2 border-t border-red-200"
+            >
+              <span className="text-xs bg-red-200 px-2 py-0.5 rounded font-black">
+                TIP
+              </span>
               <span>{suggestion}</span>
             </p>
           ))}

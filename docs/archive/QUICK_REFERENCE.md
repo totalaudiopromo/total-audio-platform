@@ -3,6 +3,7 @@
 ## 🚀 Development Commands
 
 ### **Start Services**
+
 ```bash
 npm run dev                    # Start all services
 npm run dev:audio-intel        # Audio Intel app (port 3000)
@@ -11,6 +12,7 @@ npm run dev:backend           # Backend API (port 3004)
 ```
 
 ### **Build & Test**
+
 ```bash
 npm run build                 # Build all applications
 npm run test                  # Run all tests
@@ -19,6 +21,7 @@ npm run lint                 # Code linting
 ```
 
 ### **Database**
+
 ```bash
 npm run db:migrate           # Run migrations
 npm run db:seed              # Seed with sample data
@@ -27,6 +30,7 @@ npm run db:generate          # Generate Prisma client
 ```
 
 ### **AI Agents**
+
 ```bash
 npm run agents:setup         # Initialize agents
 npm run agents:health        # Check agent status
@@ -37,6 +41,7 @@ npm run agents:test          # Test functionality
 ## 🔧 Environment Configuration
 
 ### **Required Environment Variables**
+
 ```env
 # Database
 DATABASE_URL="postgresql://username:password@localhost:5432/total_audio_promo"
@@ -79,6 +84,7 @@ total-audio-promo/
 ## 🌐 Service URLs
 
 ### **Development**
+
 - Audio Intel: http://localhost:3000
 - Playlist Pulse: http://localhost:3001
 - Backend API: http://localhost:3004
@@ -86,6 +92,7 @@ total-audio-promo/
 - Prisma Studio: http://localhost:5555
 
 ### **Health Checks**
+
 ```bash
 curl http://localhost:3004/health              # API health
 curl http://localhost:3004/health/db           # Database
@@ -95,6 +102,7 @@ curl http://localhost:3004/health/integrations # Third-party services
 ## 🔌 API Endpoints
 
 ### **Authentication**
+
 ```bash
 POST /api/auth/login          # User login
 POST /api/auth/register       # User registration
@@ -103,6 +111,7 @@ GET  /api/auth/profile        # User profile
 ```
 
 ### **Campaigns**
+
 ```bash
 GET    /api/campaigns         # List campaigns
 POST   /api/campaigns         # Create campaign
@@ -112,6 +121,7 @@ DELETE /api/campaigns/:id     # Delete campaign
 ```
 
 ### **Contacts**
+
 ```bash
 GET    /api/contacts          # List contacts
 POST   /api/contacts          # Create contact
@@ -122,6 +132,7 @@ POST   /api/contacts/enrich   # Enrich contact data
 ```
 
 ### **Integrations**
+
 ```bash
 GET  /api/integrations/status      # Integration health
 POST /api/airtable/sync           # Sync Airtable
@@ -134,6 +145,7 @@ POST /api/perplexity/research     # Research contacts
 ## 📊 Database Schema
 
 ### **Key Models**
+
 ```typescript
 User {
   id: String @id
@@ -169,6 +181,7 @@ Contact {
 ## 🤖 AI Agent Commands
 
 ### **Music Technology Agent**
+
 ```bash
 npm run agents:music-tech          # Full music analysis
 npm run agents:music-analyze       # Analyze audio files
@@ -177,12 +190,14 @@ npm run agents:music-performance   # Performance optimization
 ```
 
 ### **Marketing Agent**
+
 ```bash
 npm run agents:marketing-analyze   # Analyze campaigns
 npm run agents:marketing-optimize  # Optimize performance
 ```
 
 ### **Content Agent**
+
 ```bash
 npm run agents:content-generate    # Generate content
 npm run agents:content-optimize    # Optimize existing
@@ -191,10 +206,12 @@ npm run agents:content-optimize    # Optimize existing
 ## 📈 Business Model
 
 ### **Pricing Structure**
+
 - **Artist Plan**: £45/month + £200 setup
 - **Agency Plan**: £150/month + £500 setup
 
 ### **Key Metrics**
+
 - Campaign Success Rate
 - Customer Acquisition Cost (CAC)
 - Customer Lifetime Value (CLV)
@@ -205,6 +222,7 @@ npm run agents:content-optimize    # Optimize existing
 ### **Common Issues**
 
 #### **Database Connection**
+
 ```bash
 # Check PostgreSQL status
 pg_ctl status
@@ -214,6 +232,7 @@ npm run db:reset
 ```
 
 #### **Integration Failures**
+
 ```bash
 # Test integrations
 curl -X GET http://localhost:3004/api/integrations/test
@@ -224,6 +243,7 @@ echo $ANTHROPIC_API_KEY
 ```
 
 #### **Build Issues**
+
 ```bash
 # Clean build cache
 npm run clean
@@ -234,6 +254,7 @@ npm install
 ```
 
 ### **Debug Mode**
+
 ```bash
 # Debug all services
 DEBUG=* npm run dev
@@ -245,6 +266,7 @@ DEBUG=app:* npm run dev:backend
 ## 📱 Testing
 
 ### **Test Commands**
+
 ```bash
 npm run test                   # All tests
 npm run test:unit             # Unit tests
@@ -254,6 +276,7 @@ npm run test:coverage         # Coverage report
 ```
 
 ### **Test Specific Services**
+
 ```bash
 npm run test:audio-intel      # Audio Intel tests
 npm run test:playlist-pulse   # Playlist Pulse tests
@@ -263,12 +286,14 @@ npm run test:backend          # Backend tests
 ## 🔐 Security
 
 ### **Authentication Flow**
+
 1. User registers/logs in
 2. JWT token issued
 3. Token included in API requests
 4. Multi-tenant access control
 
 ### **API Security**
+
 - JWT authentication required
 - Role-based access control
 - Rate limiting implemented
@@ -277,31 +302,37 @@ npm run test:backend          # Backend tests
 ## 📚 Documentation Quick Links
 
 ### **Technical Docs**
+
 - [System Architecture](./SYSTEM_ARCHITECTURE.md)
 - [API Reference](./API_REFERENCE.md)
 - [Integration Guide](./INTEGRATION_GUIDE.md)
 - [Development Workflows](./DEVELOPMENT_WORKFLOWS.md)
 
 ### **Business Docs**
+
 - [Business Context](./BUSINESS_CONTEXT.md)
 - [Product Requirements](../Total_Audio_Promo_Updated_PRD.md)
 
 ### **AI & Automation**
+
 - [AI Agents Guide](./AI_AGENTS_GUIDE.md)
 - [Claude Development Guide](../CLAUDE.md)
 
 ## 🆘 Getting Help
 
 ### **Development Issues**
+
 1. Check [DEVELOPMENT_WORKFLOWS.md](./DEVELOPMENT_WORKFLOWS.md) → Troubleshooting
 2. Review [INTEGRATION_GUIDE.md](./INTEGRATION_GUIDE.md) → Error Handling
 3. Consult [API_REFERENCE.md](./API_REFERENCE.md) → Error Codes
 
 ### **Business Questions**
+
 1. Review [BUSINESS_CONTEXT.md](./BUSINESS_CONTEXT.md)
 2. Check [Total_Audio_Promo_Updated_PRD.md](../Total_Audio_Promo_Updated_PRD.md)
 
 ### **Log Files**
+
 ```bash
 tail -f logs/app.log          # Application logs
 tail -f logs/error.log        # Error logs
@@ -313,18 +344,21 @@ npm run logs:backend          # Backend service logs
 ## 🎯 Daily Workflow Checklist
 
 ### **Development Start**
+
 - [ ] `npm run dev` to start all services
 - [ ] Check service health at health endpoints
 - [ ] Review any overnight errors in logs
 - [ ] Check integration status dashboard
 
 ### **Before Committing**
+
 - [ ] `npm run lint` - Code quality check
 - [ ] `npm run typecheck` - Type validation
 - [ ] `npm run test` - Run test suite
 - [ ] `npm run build` - Verify build success
 
 ### **Deployment**
+
 - [ ] All tests passing
 - [ ] Documentation updated
 - [ ] Environment variables configured
@@ -332,4 +366,4 @@ npm run logs:backend          # Backend service logs
 
 ---
 
-*This quick reference is your go-to guide for daily development tasks. Bookmark this file and refer to it regularly for efficient workflow management.* 
+_This quick reference is your go-to guide for daily development tasks. Bookmark this file and refer to it regularly for efficient workflow management._

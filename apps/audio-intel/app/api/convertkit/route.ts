@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
       firstName: first_name,
       formId: form_id,
       tags,
-      fields
+      fields,
     });
 
     if (!result.success) {
@@ -29,13 +29,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       success: true,
       message: 'Successfully subscribed to beta access - welcome email sent!',
-      subscriber_id: result.subscriberId
+      subscriber_id: result.subscriberId,
     });
-
   } catch (error) {
     console.error('ConvertKit API error:', error);
-    return NextResponse.json({
-      error: 'Failed to process subscription'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Failed to process subscription',
+      },
+      { status: 500 }
+    );
   }
 }

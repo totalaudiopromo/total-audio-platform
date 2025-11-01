@@ -47,7 +47,7 @@ Audio Intel reduces this to a 15-minute process, allowing professionals to focus
 Time optimisation equals more strategic music promotion.
 
 intel.totalaudiopromo.com`,
-  }
+  },
 ];
 
 function showLinkedInContent() {

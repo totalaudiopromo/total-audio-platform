@@ -54,7 +54,9 @@ async function testStationMatcher() {
     const result = await StationMatcherSkill.execute(input, context);
     const duration = Date.now() - startTime;
 
-    console.log(`\n✅ Matched ${result.station_recommendations.length} stations in ${duration}ms\n`);
+    console.log(
+      `\n✅ Matched ${result.station_recommendations.length} stations in ${duration}ms\n`
+    );
 
     console.log('📊 Confidence Scores:');
     console.log(`  Overall: ${(result.confidence_scores.overall * 100).toFixed(0)}%`);
@@ -71,7 +73,9 @@ async function testStationMatcher() {
     console.log('\n🎯 Top 5 Station Recommendations:\n');
     result.station_recommendations.slice(0, 5).forEach((station, index) => {
       console.log(`${index + 1}. ${station.station_name} (${station.station_type})`);
-      console.log(`   Priority: ${station.priority} | Genre Fit: ${(station.genre_fit * 100).toFixed(0)}% | Success: ${station.success_likelihood}`);
+      console.log(
+        `   Priority: ${station.priority} | Genre Fit: ${(station.genre_fit * 100).toFixed(0)}% | Success: ${station.success_likelihood}`
+      );
       console.log(`   Reasoning: ${station.reasoning}`);
       if (station.specific_shows.length > 0) {
         console.log(`   Shows: ${station.specific_shows.join(', ')}`);
@@ -89,7 +93,7 @@ async function testStationMatcher() {
     console.log(`  High priority stations: ${highPriority.length}`);
 
     const topThree = await StationMatcherSkill.getTopStations(input, context, 3);
-    console.log(`  Top 3 stations: ${topThree.map((s) => s.station_name).join(', ')}`);
+    console.log(`  Top 3 stations: ${topThree.map(s => s.station_name).join(', ')}`);
 
     const onlineStations = await StationMatcherSkill.getStationsByType(input, context, 'Online');
     console.log(`  Online stations: ${onlineStations.length}`);
@@ -165,7 +169,7 @@ async function testEmailPersonalisation(stationRecommendations: any[]) {
 
     if (result.alternative_approaches.length > 0) {
       console.log('\n💡 Alternative Approaches:');
-      result.alternative_approaches.forEach((alt) => {
+      result.alternative_approaches.forEach(alt => {
         console.log(`  • ${alt.angle}`);
         console.log(`    ${alt.reasoning}`);
       });
@@ -173,13 +177,13 @@ async function testEmailPersonalisation(stationRecommendations: any[]) {
 
     if (result.warnings.length > 0) {
       console.log('\n⚠️  Warnings:');
-      result.warnings.forEach((warning) => console.log(`  • ${warning}`));
+      result.warnings.forEach(warning => console.log(`  • ${warning}`));
     }
 
     // Test batch generation
     console.log('\n\n🔧 Testing Batch Email Generation:\n');
 
-    const batchStations = stationRecommendations.slice(0, 3).map((s) => ({
+    const batchStations = stationRecommendations.slice(0, 3).map(s => ({
       name: s.station_name,
       type: s.station_type,
       known_shows: s.specific_shows || [],

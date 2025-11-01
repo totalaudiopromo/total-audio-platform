@@ -25,7 +25,7 @@ const REDIRECT_URI = 'https://intel.totalaudiopromo.com/auth/linkedin/callback';
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 function question(query: string): Promise<string> {
@@ -35,7 +35,9 @@ function question(query: string): Promise<string> {
 async function getAccessToken() {
   console.log('=== LinkedIn OAuth Token Generator ===\n');
 
-  console.log('⚠️  IMPORTANT: Before running this, make sure your LinkedIn app has this redirect URI:');
+  console.log(
+    '⚠️  IMPORTANT: Before running this, make sure your LinkedIn app has this redirect URI:'
+  );
   console.log('   https://intel.totalaudiopromo.com/auth/linkedin/callback');
   console.log('');
   console.log('Configure it at: https://www.linkedin.com/developers/apps');
@@ -56,7 +58,8 @@ async function getAccessToken() {
   const state = Math.random().toString(36).substring(7);
   const scope = 'openid profile email w_member_social'; // w_member_social for posting
 
-  const authUrl = `https://www.linkedin.com/oauth/v2/authorization?` +
+  const authUrl =
+    `https://www.linkedin.com/oauth/v2/authorization?` +
     `response_type=code&` +
     `client_id=${CLIENT_ID}&` +
     `redirect_uri=${encodeURIComponent(REDIRECT_URI)}&` +
@@ -67,13 +70,19 @@ async function getAccessToken() {
   console.log('');
   console.log(authUrl);
   console.log('');
-  console.log('Step 2: After authorization, you\'ll be redirected to a page that says "Cannot GET /auth/linkedin/callback"');
+  console.log(
+    'Step 2: After authorization, you\'ll be redirected to a page that says "Cannot GET /auth/linkedin/callback"'
+  );
   console.log('        This is expected! Look at the URL in your browser - it will look like:');
-  console.log('        https://intel.totalaudiopromo.com/auth/linkedin/callback?code=XXXXXXXXXX&state=XXXXX');
+  console.log(
+    '        https://intel.totalaudiopromo.com/auth/linkedin/callback?code=XXXXXXXXXX&state=XXXXX'
+  );
   console.log('');
 
   // Step 2: Get authorization code from user
-  const code = await question('Step 3: Copy the entire "code" parameter value (the XXXXXXXXXX part) and paste it here: ');
+  const code = await question(
+    'Step 3: Copy the entire "code" parameter value (the XXXXXXXXXX part) and paste it here: '
+  );
 
   console.log('\nExchanging code for access token...\n');
 
@@ -100,7 +109,13 @@ async function getAccessToken() {
       console.log('');
       console.log(data.access_token);
       console.log('');
-      console.log('Token expires in:', data.expires_in, 'seconds (', Math.floor(data.expires_in / 86400), 'days )');
+      console.log(
+        'Token expires in:',
+        data.expires_in,
+        'seconds (',
+        Math.floor(data.expires_in / 86400),
+        'days )'
+      );
       console.log('');
       console.log('Add these to your .env.local:');
       console.log('-----------------------------------');

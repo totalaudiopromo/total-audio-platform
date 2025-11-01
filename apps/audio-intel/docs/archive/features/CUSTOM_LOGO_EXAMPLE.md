@@ -7,11 +7,13 @@
 Your logo must be converted to a base64 data URI. Here are three easy methods:
 
 #### Method A: Online Converter (Fastest)
+
 1. Visit https://base64-image.de/
 2. Upload your logo (PNG or JPG, square format recommended)
 3. Copy the entire data URI output (starts with `data:image/png;base64,`)
 
 #### Method B: Command Line (macOS/Linux)
+
 ```bash
 # Navigate to your logo file
 cd /path/to/your/logo
@@ -24,12 +26,13 @@ echo "data:image/png;base64,$(base64 -i your-logo.png)" | pbcopy
 ```
 
 #### Method C: JavaScript in Browser Console
+
 ```javascript
 // Use a file input on any webpage
 const input = document.createElement('input');
 input.type = 'file';
 input.accept = 'image/*';
-input.onchange = async (e) => {
+input.onchange = async e => {
   const file = e.target.files[0];
   const reader = new FileReader();
   reader.onload = () => {
@@ -44,6 +47,7 @@ input.click();
 ### Step 2: Use Your Logo in Exports
 
 #### Example 1: Basic Custom Logo Export
+
 ```typescript
 import { exportContactsToPdf } from '@/utils/exportToPdf';
 
@@ -56,28 +60,29 @@ const contacts = [
     lastResearched: new Date().toISOString(),
     platform: 'BBC Radio 1',
     role: 'Presenter',
-    company: 'BBC'
-  }
+    company: 'BBC',
+  },
   // ... more contacts
 ];
 
 const whiteLabel = {
   companyName: 'Stellar Music PR',
   logoUrl: 'data:image/png;base64,iVBORw0KGgoAAAANS...', // Your base64 logo
-  primaryColor: '#9333EA' // Your brand color (purple in this example)
+  primaryColor: '#9333EA', // Your brand color (purple in this example)
 };
 
 exportContactsToPdf(contacts, 'stellar-music-contacts.pdf', whiteLabel);
 ```
 
 #### Example 2: Full Export with Progress Tracking
+
 ```typescript
 import { ProfessionalExportService } from '@/utils/exportService';
 
 const exportService = new ProfessionalExportService({
   companyName: 'Liberty Records PR',
   logoUrl: 'data:image/png;base64,iVBORw0KGgoAAAANS...', // Your base64 logo
-  primaryColor: '#FF6B35' // Orange brand color
+  primaryColor: '#FF6B35', // Orange brand color
 });
 
 const result = await exportService.exportContacts(
@@ -89,11 +94,11 @@ const result = await exportService.exportContacts(
     whiteLabel: {
       companyName: 'Liberty Records PR',
       logoUrl: 'data:image/png;base64,iVBORw0KGgoAAAANS...',
-      primaryColor: '#FF6B35'
-    }
+      primaryColor: '#FF6B35',
+    },
   },
   'Your Name',
-  (progress) => {
+  progress => {
     console.log(`Exporting: ${progress.percentage}%`);
   }
 );
@@ -164,15 +169,19 @@ Choose a primary color that represents your brand:
 ### Common Issues & Solutions
 
 **Issue**: Logo doesn't appear
+
 - **Solution**: Verify your data URI starts with `data:image/png;base64,` or `data:image/jpeg;base64,`
 
 **Issue**: Logo looks pixelated
+
 - **Solution**: Use a higher resolution source image (1000x1000px minimum)
 
 **Issue**: PDF file size too large
+
 - **Solution**: Compress your logo before converting to base64 (use TinyPNG or similar)
 
 **Issue**: Logo is off-center
+
 - **Solution**: Ensure your source image is perfectly square
 
 ### Real-World Example: Liberty Records PR
@@ -215,6 +224,7 @@ exportContactsToPdf(
 **Documentation**: [PDF_EXPORT_GUIDE.md](./PDF_EXPORT_GUIDE.md)
 
 **Questions?**
+
 - "Can I use my logo without base64?" → Not yet, but URL loading is planned
 - "Can I change the logo per export?" → Yes, pass different `whiteLabel` config each time
 - "Does FREE tier get custom logos?" → No, custom logos are PRO/AGENCY only

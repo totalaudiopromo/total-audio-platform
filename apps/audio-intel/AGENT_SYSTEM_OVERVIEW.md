@@ -52,21 +52,20 @@
 ## Agent Responsibilities
 
 ### 🎯 IntelAgent - Contact Enrichment
+
 **When to Use**: Artist/release contact research
 **Sub-Agents**:
+
 - ContactFinder → Searches database + external APIs
 - LabelMatcher → Finds suitable record labels
 - EnrichmentValidator → Quality scoring
 
 **Example Output**:
+
 ```json
 {
-  "contacts": [
-    { "name": "John Smith", "role": "Producer", "org": "BBC Radio 6" }
-  ],
-  "labels": [
-    { "name": "Independent Label", "matchScore": 0.85 }
-  ],
+  "contacts": [{ "name": "John Smith", "role": "Producer", "org": "BBC Radio 6" }],
+  "labels": [{ "name": "Independent Label", "matchScore": 0.85 }],
   "validation": {
     "score": 0.92,
     "issues": [],
@@ -78,13 +77,16 @@
 ---
 
 ### ✉️ PitchAgent - Pitch Generation
+
 **When to Use**: Creating pitches or follow-ups
 **Sub-Agents**:
+
 - PitchFormatter → Structures professional emails
 - ToneChecker → Validates brand voice
 - FollowUpWriter → Generates polite follow-ups
 
 **Example Output**:
+
 ```json
 {
   "pitch": {
@@ -103,13 +105,16 @@
 ---
 
 ### 📊 TrackerAgent - Campaign Tracking
+
 **When to Use**: Logging submissions, analytics, reminders
 **Sub-Agents**:
+
 - SubmissionLogger → Records campaign activity
 - AnalyticsSummariser → Performance metrics
 - ReminderAgent → Follow-up timing
 
 **Example Output**:
+
 ```json
 {
   "metrics": {
@@ -117,20 +122,18 @@
     "openRate": 64,
     "replyRate": 16
   },
-  "insights": [
-    "Strong open rate - subject lines working well"
-  ],
-  "recommendations": [
-    "Maintain current approach"
-  ]
+  "insights": ["Strong open rate - subject lines working well"],
+  "recommendations": ["Maintain current approach"]
 }
 ```
 
 ---
 
 ### 💡 InsightAgent - Performance Insights
+
 **When to Use**: Campaign analysis and recommendations
 **Output**:
+
 ```json
 {
   "insights": [
@@ -151,13 +154,16 @@
 ---
 
 ### 🛡️ VoiceGuardAgent - Brand Voice
+
 **When to Use**: Validating any outbound content
 **Detects**:
+
 - ❌ Corporate speak ("leverage", "synergy")
 - ❌ AI buzzwords ("AI-powered", "cutting-edge")
 - ❌ Inauthentic phrases ("excited to announce")
 
 **Example Output**:
+
 ```json
 {
   "passed": false,
@@ -260,12 +266,14 @@ apps/audio-intel/
 ## Performance Metrics
 
 ### Tracked Per Agent:
+
 - **Runs**: Total executions
 - **Success Rate**: % successful
 - **Avg Latency**: Average execution time (ms)
 - **Last Run**: Timestamp of last execution
 
 ### Supabase Tables:
+
 ```sql
 -- All execution logs
 SELECT * FROM agent_logs;
@@ -282,6 +290,7 @@ ORDER BY created_at DESC;
 ## Usage Patterns
 
 ### 1. Typescript Import
+
 ```typescript
 import { Agents } from '@/agents'
 
@@ -289,33 +298,38 @@ const result = await Agents.intel.execute({ ... })
 ```
 
 ### 2. REST API
+
 ```bash
 curl -X POST http://localhost:3000/api/agents?name=intel \
   -d '{ "artist": "Artist Name" }'
 ```
 
 ### 3. Registry Access
-```typescript
-import { AgentRegistry } from '@/agents'
 
-const agent = AgentRegistry.get('intel')
-const stats = AgentRegistry.getStats('intel')
-const health = await AgentRegistry.healthCheck()
+```typescript
+import { AgentRegistry } from '@/agents';
+
+const agent = AgentRegistry.get('intel');
+const stats = AgentRegistry.getStats('intel');
+const health = await AgentRegistry.healthCheck();
 ```
 
 ## Integration Points
 
 ### Audio Intel
+
 - ✅ Contact enrichment pipeline
 - ✅ Quality validation dashboard
 - ✅ User analytics
 
 ### Pitch Generator
+
 - ✅ Automated pitch creation
 - ✅ Follow-up management
 - ✅ Brand voice checking
 
 ### Campaign Tracker
+
 - ✅ Submission logging
 - ✅ Performance analytics
 - ✅ Reminder notifications
@@ -333,11 +347,13 @@ const health = await AgentRegistry.healthCheck()
 ## Next Steps
 
 ### Immediate
+
 1. Run migration: `npx supabase db push`
 2. Test agents: `npm run test:agents`
 3. Check API: `curl http://localhost:3000/api/agents`
 
 ### Integration
+
 1. Connect IntelAgent to enrichment UI
 2. Add PitchAgent to pitch generator
 3. Integrate TrackerAgent with campaign dashboard
@@ -345,6 +361,7 @@ const health = await AgentRegistry.healthCheck()
 5. Use VoiceGuardAgent on all outbound content
 
 ### Future
+
 - WebSocket real-time updates
 - Agent orchestration (chaining)
 - Metrics dashboard UI

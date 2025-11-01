@@ -9,13 +9,13 @@ export default defineConfig({
   workers: 1, // Single worker for mobile testing
   reporter: [
     ['html', { outputFolder: './reports/mobile' }],
-    ['json', { outputFile: './reports/mobile/results.json' }]
+    ['json', { outputFile: './reports/mobile/results.json' }],
   ],
   use: {
     baseURL: 'http://127.0.0.1:3010',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure'
+    video: 'retain-on-failure',
   },
 
   // Mobile device configurations for UK market
@@ -31,7 +31,7 @@ export default defineConfig({
     {
       name: 'Mobile Safari iPad',
       use: { ...devices['iPad Pro'] },
-    }
+    },
   ],
 
   // Local server setup

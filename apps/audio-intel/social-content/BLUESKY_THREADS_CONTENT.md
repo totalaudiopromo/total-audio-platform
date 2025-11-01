@@ -9,6 +9,7 @@
 ## BLUESKY POSTS (300 character limit)
 
 ### Bluesky Post 1: The Time Problem
+
 After 5+ years promoting music to UK radio, I was spending 15+ hours weekly researching contacts.
 
 Built Audio Intel to solve this properly. Now it takes 2 minutes instead of 15 hours.
@@ -20,6 +21,7 @@ intel.totalaudiopromo.com
 ---
 
 ### Bluesky Post 2: BBC Radio 1 Test
+
 Tested Audio Intel on 5 BBC Radio 1 contacts yesterday.
 
 Processing time: 2 minutes
@@ -35,6 +37,7 @@ intel.totalaudiopromo.com
 ---
 
 ### Bluesky Post 3: Regional Radio Opportunity
+
 Most radio promoters ignore regional stations.
 
 Massive mistake.
@@ -51,6 +54,7 @@ intel.totalaudiopromo.com
 ---
 
 ### Bluesky Post 4: The Cost Reality
+
 Muck Rack: £400-600/month
 Cision: £500-800/month
 
@@ -67,6 +71,7 @@ intel.totalaudiopromo.com
 ---
 
 ### Bluesky Post 5: Response Rate Breakthrough
+
 Generic radio outreach: 8% response
 Personalised pitches (Audio Intel): 28% response
 
@@ -81,6 +86,7 @@ intel.totalaudiopromo.com
 ---
 
 ### Bluesky Post 6: The Brighton Reality
+
 Right, so I've been building Audio Intel at 2am whilst the girlfriend sleeps.
 
 Why? After 5+ years promoting music (including BBC Radio 1), research was killing my weekends.
@@ -94,6 +100,7 @@ intel.totalaudiopromo.com
 ---
 
 ### Bluesky Post 7: Submission Windows
+
 Radio submission windows close faster than you think.
 
 Monday 9am: BBC announces opportunity
@@ -109,9 +116,11 @@ intel.totalaudiopromo.com
 ---
 
 ### Bluesky Post 8: The Spreadsheet Problem
+
 Managing radio contacts across 5+ Excel spreadsheets is absolutely maddening.
 
 Audio Intel transforms chaos into organised intelligence:
+
 - All contacts unified
 - Automatic updates
 - Searchable database
@@ -124,6 +133,7 @@ intel.totalaudiopromo.com
 ---
 
 ### Bluesky Post 9: Real ROI
+
 Manual research: 15 hours × £50 = £750/campaign
 Audio Intel: £19/month = £0.48/campaign
 
@@ -140,6 +150,7 @@ intel.totalaudiopromo.com
 ---
 
 ### Bluesky Post 10: Industry Reality
+
 Most indie artists waste 780 hours annually on contact research.
 
 That's 32+ days of work.
@@ -157,6 +168,7 @@ intel.totalaudiopromo.com
 ## THREADS POSTS (500 character limit)
 
 ### Threads Post 1: The Real Problem
+
 After 5 years promoting music for indie artists, I was still spending 15+ hours every week researching radio contacts.
 
 Most of that time was wasted on outdated information.
@@ -178,6 +190,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 ---
 
 ### Threads Post 2: BBC Radio 1 Success
+
 I just tested Audio Intel on 5 real BBC Radio 1 contacts.
 
 Results:
@@ -203,6 +216,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 ---
 
 ### Threads Post 3: Regional Radio Strategy
+
 Regional radio represents 35+ million potential listeners across 300+ UK stations.
 
 Better response rates than national (35% vs 8%)
@@ -231,6 +245,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 ---
 
 ### Threads Post 4: The Pricing Problem
+
 Let's talk about what radio promotion tools actually cost.
 
 US Alternatives:
@@ -260,6 +275,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 ---
 
 ### Threads Post 5: Response Rate Data
+
 I tested personalised vs generic radio pitches.
 
 Generic Pitch:
@@ -290,6 +306,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 ---
 
 ### Threads Post 6: The Brighton Producer Story
+
 Right, so I've been building Audio Intel at 2am whilst the girlfriend and kids sleep.
 
 This is what bootstrapped looks like.
@@ -317,6 +334,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 ---
 
 ### Threads Post 7: Submission Window Problem
+
 Radio submission windows close faster than you think.
 
 Real example from last month:
@@ -350,6 +368,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 ---
 
 ### Threads Post 8: The Spreadsheet Chaos
+
 Managing radio contacts like this:
 
 ❌ 5+ different Excel spreadsheets
@@ -380,6 +399,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 ---
 
 ### Threads Post 9: Real ROI Calculation
+
 Let's calculate actual ROI for radio promoters.
 
 Your Current Cost (Manual):
@@ -412,6 +432,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 ---
 
 ### Threads Post 10: Industry Truth
+
 Most indie artists waste 15+ hours weekly on contact research.
 
 That's 780 hours annually. 32+ days of work.
@@ -443,6 +464,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 ## CONTENT POSTING SCHEDULE
 
 ### Week 1: Problem Awareness
+
 - **Monday**: LinkedIn (BBC Radio 1 Reality Check) + Bluesky (Time Problem)
 - **Tuesday**: Threads (Real Problem)
 - **Wednesday**: Twitter/X Thread (2AM Reality) + LinkedIn (15-Hour Problem)
@@ -450,6 +472,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 - **Friday**: LinkedIn (Pricing Reality)
 
 ### Week 2: Solution Education
+
 - **Monday**: Twitter/X Thread (BBC Test) + Bluesky (Regional Opportunity)
 - **Tuesday**: Threads (Regional Strategy) + LinkedIn (Response Rate Problem)
 - **Wednesday**: Bluesky (Cost Reality)
@@ -457,6 +480,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 - **Friday**: Twitter/X Thread (Brighton Story)
 
 ### Week 3: Social Proof & Results
+
 - **Monday**: LinkedIn (Brighton Reality) + Bluesky (Response Breakthrough)
 - **Tuesday**: Threads (Response Data)
 - **Wednesday**: Twitter/X Thread (Submission Windows) + Bluesky (Brighton Reality)
@@ -464,6 +488,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 - **Friday**: Bluesky (Submission Windows)
 
 ### Week 4: Call-to-Action Focus
+
 - **Monday**: LinkedIn (Regional Opportunity) + Threads (Submission Windows)
 - **Tuesday**: Bluesky (Spreadsheet Problem) + Twitter/X Thread (Cost Reality)
 - **Wednesday**: Threads (Spreadsheet Chaos) + LinkedIn (ROI Calculation)
@@ -473,6 +498,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 ## PLATFORM-SPECIFIC BEST PRACTICES
 
 ### Bluesky
+
 - **Character limit**: 300 (strictly enforced)
 - **Best posting times**: 10am, 2pm, 6pm UK time
 - **Engagement style**: Tech-savvy, innovation-focused
@@ -481,6 +507,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 - **Voice**: Professional but concise
 
 ### Threads
+
 - **Character limit**: 500 (optimal for engagement)
 - **Best posting times**: 9am, 1pm, 7pm UK time
 - **Engagement style**: Community-focused, conversational
@@ -489,6 +516,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 - **Voice**: Professional but approachable
 
 ### Cross-Platform Strategy
+
 - **Repurpose**: Adapt Twitter threads to Bluesky series
 - **Test**: A/B test messaging across platforms
 - **Engage**: Respond to all comments within 2 hours

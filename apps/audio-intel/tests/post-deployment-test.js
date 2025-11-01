@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
  * 🚀 AUDIO INTEL - POST-DEPLOYMENT TEST SUITE
- * 
+ *
  * Run this after deploying to verify all critical functionality works.
- * 
+ *
  * Usage:
  *   node tests/post-deployment-test.js https://intel.totalaudiopromo.com
  *   node tests/post-deployment-test.js http://localhost:3000  (for local)
@@ -20,7 +20,7 @@ const colors = {
   yellow: '\x1b[33m',
   blue: '\x1b[34m',
   cyan: '\x1b[36m',
-  gray: '\x1b[90m'
+  gray: '\x1b[90m',
 };
 
 class DeploymentTester {
@@ -30,7 +30,7 @@ class DeploymentTester {
       passed: 0,
       failed: 0,
       warnings: 0,
-      tests: []
+      tests: [],
     };
   }
 
@@ -40,15 +40,15 @@ class DeploymentTester {
       fail: '❌',
       warn: '⚠️ ',
       info: '📋',
-      test: '🧪'
+      test: '🧪',
     };
-    
+
     const colorMap = {
       success: colors.green,
       fail: colors.red,
       warn: colors.yellow,
       info: colors.blue,
-      test: colors.cyan
+      test: colors.cyan,
     };
 
     console.log(`${colorMap[type] || ''}${icons[type] || ''} ${message}${colors.reset}`);
@@ -58,30 +58,34 @@ class DeploymentTester {
     return new Promise((resolve, reject) => {
       const url = new URL(path, this.baseUrl);
       const protocol = url.protocol === 'https:' ? https : http;
-      
-      const req = protocol.request(url, {
-        method: options.method || 'GET',
-        headers: options.headers || {},
-        ...options
-      }, (res) => {
-        let data = '';
-        res.on('data', (chunk) => data += chunk);
-        res.on('end', () => {
-          resolve({
-            status: res.statusCode,
-            headers: res.headers,
-            body: data,
-            ok: res.statusCode >= 200 && res.statusCode < 300
+
+      const req = protocol.request(
+        url,
+        {
+          method: options.method || 'GET',
+          headers: options.headers || {},
+          ...options,
+        },
+        res => {
+          let data = '';
+          res.on('data', chunk => (data += chunk));
+          res.on('end', () => {
+            resolve({
+              status: res.statusCode,
+              headers: res.headers,
+              body: data,
+              ok: res.statusCode >= 200 && res.statusCode < 300,
+            });
           });
-        });
-      });
+        }
+      );
 
       req.on('error', reject);
-      
+
       if (options.body) {
         req.write(typeof options.body === 'string' ? options.body : JSON.stringify(options.body));
       }
-      
+
       req.end();
     });
   }
@@ -113,15 +117,15 @@ class DeploymentTester {
       const startTime = Date.now();
       const res = await this.fetch('/');
       const loadTime = Date.now() - startTime;
-      
+
       if (!res.ok) {
         return { pass: false, message: `Status ${res.status}` };
       }
-      
+
       if (loadTime > 5000) {
         return { pass: true, warn: true, message: `Loaded but slow (${loadTime}ms)` };
       }
-      
+
       return { pass: true, message: `Loaded in ${loadTime}ms` };
     });
   }
@@ -131,7 +135,7 @@ class DeploymentTester {
       const res = await this.fetch('/signin');
       return {
         pass: res.ok,
-        message: res.ok ? 'Page exists' : `Status ${res.status}`
+        message: res.ok ? 'Page exists' : `Status ${res.status}`,
       };
     });
   }
@@ -141,7 +145,7 @@ class DeploymentTester {
       const res = await this.fetch('/signup');
       return {
         pass: res.ok,
-        message: res.ok ? 'Page exists' : `Status ${res.status}`
+        message: res.ok ? 'Page exists' : `Status ${res.status}`,
       };
     });
   }
@@ -151,7 +155,7 @@ class DeploymentTester {
       const res = await this.fetch('/pricing');
       return {
         pass: res.ok,
-        message: res.ok ? 'Page exists' : `Status ${res.status}`
+        message: res.ok ? 'Page exists' : `Status ${res.status}`,
       };
     });
   }
@@ -159,13 +163,14 @@ class DeploymentTester {
   async testUploadPageRedirects() {
     return this.runTest('Upload page requires authentication', async () => {
       const res = await this.fetch('/demo');
-      
+
       // Should redirect to signin (307) or show signin page (200)
-      const requiresAuth = res.status === 307 || res.body.includes('signin') || res.body.includes('Sign in');
-      
+      const requiresAuth =
+        res.status === 307 || res.body.includes('signin') || res.body.includes('Sign in');
+
       return {
         pass: requiresAuth,
-        message: requiresAuth ? 'Protected ✅' : 'NOT PROTECTED - SECURITY ISSUE!'
+        message: requiresAuth ? 'Protected ✅' : 'NOT PROTECTED - SECURITY ISSUE!',
       };
     });
   }
@@ -173,12 +178,13 @@ class DeploymentTester {
   async testDashboardProtected() {
     return this.runTest('Dashboard requires authentication', async () => {
       const res = await this.fetch('/dashboard');
-      
-      const requiresAuth = res.status === 307 || res.body.includes('signin') || res.body.includes('Sign in');
-      
+
+      const requiresAuth =
+        res.status === 307 || res.body.includes('signin') || res.body.includes('Sign in');
+
       return {
         pass: requiresAuth,
-        message: requiresAuth ? 'Protected ✅' : 'NOT PROTECTED - SECURITY ISSUE!'
+        message: requiresAuth ? 'Protected ✅' : 'NOT PROTECTED - SECURITY ISSUE!',
       };
     });
   }
@@ -186,16 +192,16 @@ class DeploymentTester {
   async testHealthEndpoint() {
     return this.runTest('Health check endpoint', async () => {
       const res = await this.fetch('/api/health');
-      
+
       if (!res.ok) {
         return { pass: false, message: `Status ${res.status}` };
       }
-      
+
       try {
         const data = JSON.parse(res.body);
         return {
           pass: data.status === 'ok',
-          message: `Status: ${data.status}`
+          message: `Status: ${data.status}`,
         };
       } catch (e) {
         return { pass: false, message: 'Invalid JSON response' };
@@ -208,15 +214,17 @@ class DeploymentTester {
       const res = await this.fetch('/api/enrich', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contacts: [{ email: 'test@example.com' }] })
+        body: JSON.stringify({ contacts: [{ email: 'test@example.com' }] }),
       });
-      
+
       // Should return 401 or redirect
       const isProtected = res.status === 401 || res.status === 307 || res.status === 403;
-      
+
       return {
         pass: isProtected,
-        message: isProtected ? 'Protected ✅' : `WARNING: Returns ${res.status} - may not be protected!`
+        message: isProtected
+          ? 'Protected ✅'
+          : `WARNING: Returns ${res.status} - may not be protected!`,
       };
     });
   }
@@ -226,15 +234,15 @@ class DeploymentTester {
       const res = await this.fetch('/api/enrich-claude', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contacts: [{ email: 'test@example.com' }] })
+        body: JSON.stringify({ contacts: [{ email: 'test@example.com' }] }),
       });
-      
+
       const isProtected = res.status === 401 || res.status === 307 || res.status === 403;
-      
+
       return {
         pass: isProtected,
         warn: !isProtected,
-        message: isProtected ? 'Protected ✅' : `⚠️  NOT PROTECTED - Returns ${res.status}!`
+        message: isProtected ? 'Protected ✅' : `⚠️  NOT PROTECTED - Returns ${res.status}!`,
       };
     });
   }
@@ -244,7 +252,7 @@ class DeploymentTester {
       const res = await this.fetch('/robots.txt');
       return {
         pass: res.ok,
-        message: res.ok ? 'Exists' : 'Missing'
+        message: res.ok ? 'Exists' : 'Missing',
       };
     });
   }
@@ -254,7 +262,7 @@ class DeploymentTester {
       const res = await this.fetch('/sitemap.xml');
       return {
         pass: res.ok,
-        message: res.ok ? 'Exists' : 'Missing'
+        message: res.ok ? 'Exists' : 'Missing',
       };
     });
   }
@@ -265,13 +273,13 @@ class DeploymentTester {
       if (!this.baseUrl.includes('totalaudiopromo.com')) {
         return { pass: true, message: 'Skipped (not production)' };
       }
-      
+
       const res = await this.fetch('/test');
       const isBlocked = res.status === 307 || res.status === 404;
-      
+
       return {
         pass: isBlocked,
-        message: isBlocked ? 'Blocked ✅' : `WARNING: Test page accessible (${res.status})`
+        message: isBlocked ? 'Blocked ✅' : `WARNING: Test page accessible (${res.status})`,
       };
     });
   }
@@ -281,7 +289,7 @@ class DeploymentTester {
       if (!this.baseUrl.startsWith('https://')) {
         return { pass: true, message: 'Skipped (HTTP)' };
       }
-      
+
       // SSL is automatically validated by Node.js https module
       // If we can connect, SSL is valid
       try {
@@ -296,14 +304,13 @@ class DeploymentTester {
   async testMetaTags() {
     return this.runTest('Meta tags present', async () => {
       const res = await this.fetch('/');
-      
-      const hasMeta = res.body.includes('<meta') && 
-                      res.body.includes('description') &&
-                      res.body.includes('og:');
-      
+
+      const hasMeta =
+        res.body.includes('<meta') && res.body.includes('description') && res.body.includes('og:');
+
       return {
         pass: hasMeta,
-        message: hasMeta ? 'Meta tags found' : 'Missing meta tags'
+        message: hasMeta ? 'Meta tags found' : 'Missing meta tags',
       };
     });
   }
@@ -370,7 +377,7 @@ class DeploymentTester {
     }
 
     console.log('');
-    
+
     if (this.results.failed === 0) {
       this.log('🎉 ALL TESTS PASSED - DEPLOYMENT SUCCESSFUL!', 'success');
       return 0;
@@ -384,7 +391,7 @@ class DeploymentTester {
 // Main execution
 (async () => {
   const baseUrl = process.argv[2] || 'http://localhost:3000';
-  
+
   if (baseUrl === '--help' || baseUrl === '-h') {
     console.log(`
 📋 Audio Intel - Post-Deployment Test Suite
@@ -406,4 +413,3 @@ Options:
   const exitCode = await tester.runAllTests();
   process.exit(exitCode);
 })();
-

@@ -3,6 +3,7 @@
 ## 🎯 Project Overview
 
 **Total Audio Promo** is an AI-powered music promotion ecosystem serving two markets:
+
 - **Independent Artists** (£50-200/month): Emerging talent seeking affordable automation
 - **PR Agencies** (£500-2000/month): Firms managing multiple clients at scale
 
@@ -30,12 +31,14 @@ Monitoring: Sentry + PostHog + LogRocket
 **Goal**: Contact enrichment tool that transforms email addresses into comprehensive industry profiles
 
 ### Core Features to Build
+
 1. **Contact Upload**: CSV file processing + manual entry
 2. **AI Enrichment**: Perplexity API integration for contact intelligence
 3. **Results Dashboard**: Clean display of enriched contact data
 4. **Export Options**: CSV, Airtable sync, email campaigns
 
 ### Technical Requirements
+
 ```typescript
 // Contact enrichment API endpoint
 interface ContactEnrichment {
@@ -68,24 +71,26 @@ POST /api/contacts/enrich
 ## 🎨 Audio Brand System
 
 ### Brand Character Integration
+
 - **Audio (AI Dog Mascot)**: Present across all tools with tool-specific animations
 - **Color Activation**: Tools activate from B&W base to specific colors
 - **Professional**: Suitable for both indie artists and agencies
 
 ### Tool-Specific Colors
+
 ```css
 :root {
   /* Audio Intel - Electric Blue */
-  --color-intel-500: #1E88E5;
-  --color-intel-600: #1976D2;
-  
+  --color-intel-500: #1e88e5;
+  --color-intel-600: #1976d2;
+
   /* Playlist Pulse - Neon Green */
-  --color-pulse-500: #43A047;
-  --color-pulse-600: #388E3C;
-  
+  --color-pulse-500: #43a047;
+  --color-pulse-600: #388e3c;
+
   /* Release Radar - Orange */
-  --color-radar-500: #FF9800;
-  --color-radar-600: #F57C00;
+  --color-radar-500: #ff9800;
+  --color-radar-600: #f57c00;
 }
 
 /* Color activation system */
@@ -103,6 +108,7 @@ POST /api/contacts/enrich
 ## 🔌 Critical Integrations
 
 ### Music Industry APIs
+
 ```javascript
 // Essential platform integrations
 Spotify for Artists API: Stream data, playlist tracking
@@ -114,6 +120,7 @@ Twitter API v2: Real-time engagement
 ```
 
 ### CRM & Email Systems
+
 ```javascript
 // Contact management integrations
 Airtable API: Contact database (517 contacts enriched)
@@ -124,6 +131,7 @@ Mailchimp API: Marketing automation
 ```
 
 ### AI & Content Generation
+
 ```python
 # AI service integrations
 OpenAI GPT-4: Content generation, campaign strategy
@@ -135,12 +143,14 @@ Custom models: Success prediction, audience matching
 ## 📊 Current Status & Metrics
 
 ### Technical Performance
+
 - Contact enrichment accuracy: 94%+
 - API response time: <2 seconds
 - System uptime: 99.9%
 - Contacts processed: 517 (366 radio contacts)
 
 ### Business Targets
+
 - Launch: 2 weeks from today
 - Revenue goal: £1K MRR Month 1
 - User acquisition: 50 beta users (25 indies, 25 agencies)
@@ -149,6 +159,7 @@ Custom models: Success prediction, audience matching
 ## 🎯 Development Standards
 
 ### Component Architecture
+
 ```typescript
 // Audio Brand Component
 interface AudioCharacterProps {
@@ -159,32 +170,30 @@ interface AudioCharacterProps {
 }
 
 // Usage
-<AudioCharacter 
-  tool="intel" 
-  state="working" 
-  size="md" 
+<AudioCharacter
+  tool="intel"
+  state="working"
+  size="md"
 />
 ```
 
 ### API Design Patterns
+
 ```typescript
 // tRPC Router Structure
 export const appRouter = router({
   contacts: {
-    enrich: procedure
-      .input(contactEnrichSchema)
-      .mutation(({ input }) => enrichContact(input)),
-    export: procedure
-      .input(exportSchema)
-      .mutation(({ input }) => exportContacts(input)),
+    enrich: procedure.input(contactEnrichSchema).mutation(({ input }) => enrichContact(input)),
+    export: procedure.input(exportSchema).mutation(({ input }) => exportContacts(input)),
   },
   analytics: {
     usage: procedure.query(() => getUsageStats()),
-  }
+  },
 });
 ```
 
 ### Error Handling Standards
+
 ```typescript
 // Consistent error handling
 export class APIError extends Error {
@@ -216,12 +225,14 @@ try {
 ## 🎵 Music Industry Context
 
 ### Understanding the Domain
+
 - **Playlist Ecosystem**: 4M+ playlists on Spotify; placement = 100K+ streams
 - **TikTok Impact**: 15-30 second clips drive 67% of music discovery
 - **Release Strategy**: Fridays are global release days
 - **Press Coverage**: Music blogs crucial for credibility and playlist placement
 
 ### Success Metrics That Matter
+
 ```javascript
 // KPIs for music promotion
 Streaming Growth: Monthly listeners, playlist adds, saves
@@ -234,18 +245,21 @@ ROI: Streaming revenue, booking fees, sync opportunities
 ## 🚨 Critical Development Guidelines
 
 ### Performance Requirements
+
 - Page load times: <3 seconds
 - API response times: <500ms for 95th percentile
 - Mobile-first design: Artists manage careers on mobile
 - Accessibility: WCAG 2.1 AA compliance
 
 ### Security & Privacy
+
 - GDPR compliance for EU users
 - Rate limiting on all APIs
 - Input validation with Zod schemas
 - Secure environment variable handling
 
 ### Testing Strategy
+
 ```typescript
 // Essential test coverage
 Unit Tests: API endpoints, business logic
@@ -267,6 +281,7 @@ Performance Tests: Load testing for contact processing
 ## 🎊 Current Sprint Goals (Week 1-2)
 
 ### Audio Intel MVP Completion
+
 - [ ] Contact upload interface (CSV + manual)
 - [ ] Perplexity API enrichment engine
 - [ ] Results dashboard with export options
@@ -274,6 +289,7 @@ Performance Tests: Load testing for contact processing
 - [ ] Basic analytics and usage tracking
 
 ### Success Criteria
+
 - Process 50+ contacts in <30 seconds
 - 90%+ enrichment success rate
 - Clean, professional UI suitable for agencies

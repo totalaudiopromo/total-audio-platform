@@ -1,40 +1,40 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { createClient } from '../../lib/supabase/client'
+import { useState, useEffect } from 'react';
+import { createClient } from '@total-audio/core-db/client';
 
 export function UserMenu() {
-  const [user, setUser] = useState<any>(null)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState<any>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const supabase = createClient()
+  const supabase = createClient();
 
   useEffect(() => {
     // Get initial session
     supabase.auth.getUser().then(({ data: { user } }) => {
-      setUser(user)
-      setLoading(false)
-    })
+      setUser(user);
+      setLoading(false);
+    });
 
     // Listen for auth changes
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null)
-      setLoading(false)
-    })
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
 
-    return () => subscription.unsubscribe()
-  }, [])
+    return () => subscription.unsubscribe();
+  }, []);
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    window.location.href = '/'
-  }
+    await supabase.auth.signOut();
+    window.location.href = '/';
+  };
 
   if (loading) {
-    return <div className="w-8 h-8 bg-gray-200 rounded-full animate-pulse" />
+    return <div className="w-8 h-8 bg-gray-200 rounded-full animate-pulse" />;
   }
 
   if (!user) {
@@ -53,10 +53,10 @@ export function UserMenu() {
           Sign Up
         </a>
       </div>
-    )
+    );
   }
 
-  const displayName = user.user_metadata?.full_name || user.email?.split('@')[0] || 'User'
+  const displayName = user.user_metadata?.full_name || user.email?.split('@')[0] || 'User';
 
   return (
     <div className="relative">
@@ -75,10 +75,7 @@ export function UserMenu() {
 
       {menuOpen && (
         <>
-          <div
-            className="fixed inset-0 z-10"
-            onClick={() => setMenuOpen(false)}
-          />
+          <div className="fixed inset-0 z-10" onClick={() => setMenuOpen(false)} />
           <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-20 border border-gray-200">
             <div className="px-4 py-3 border-b border-gray-200">
               <p className="text-sm font-medium">{displayName}</p>
@@ -106,5 +103,5 @@ export function UserMenu() {
         </>
       )}
     </div>
-  )
+  );
 }

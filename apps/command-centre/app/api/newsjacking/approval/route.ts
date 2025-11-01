@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
     // Sort by priority (urgent first) and then by created time
     filteredQueue.sort((a, b) => {
       if (a.urgency !== b.urgency) {
-        const urgencyOrder: Record<string, number> = { 'immediate': 3, 'high': 2, 'medium': 1, 'low': 0 };
+        const urgencyOrder: Record<string, number> = { immediate: 3, high: 2, medium: 1, low: 0 };
         return urgencyOrder[b.urgency] - urgencyOrder[a.urgency];
       }
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
@@ -46,13 +46,13 @@ export async function GET(request: NextRequest) {
       approved: approvalQueue.filter(item => item.status === 'approved').length,
       rejected: approvalQueue.filter(item => item.status === 'rejected').length,
       scheduled: approvalQueue.filter(item => item.status === 'scheduled').length,
-      urgent: approvalQueue.filter(item => item.urgency === 'immediate').length
+      urgent: approvalQueue.filter(item => item.urgency === 'immediate').length,
     };
 
     return NextResponse.json({
       success: true,
       queue: filteredQueue,
-      stats
+      stats,
     });
   } catch (error) {
     console.error('Error fetching approval queue:', error);
@@ -66,7 +66,8 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { action, contentId, platform, approver, scheduledTime, editedContent, rejectionReason } = body;
+    const { action, contentId, platform, approver, scheduledTime, editedContent, rejectionReason } =
+      body;
 
     if (!action || !contentId || !platform || !approver) {
       return NextResponse.json(
@@ -78,8 +79,8 @@ export async function POST(request: NextRequest) {
     const approvalQueue = getApprovalQueue();
 
     // Find the content in the queue
-    const queueIndex = approvalQueue.findIndex(item =>
-      item.contentId === contentId && item.platform === platform
+    const queueIndex = approvalQueue.findIndex(
+      item => item.contentId === contentId && item.platform === platform
     );
 
     if (queueIndex === -1) {
@@ -90,7 +91,7 @@ export async function POST(request: NextRequest) {
     }
 
     const queueItem = approvalQueue[queueIndex];
-    
+
     // Process the approval action
     const approval: ApprovalAction = {
       contentId,
@@ -99,15 +100,15 @@ export async function POST(request: NextRequest) {
       approver,
       scheduledTime,
       editedContent,
-      rejectionReason
+      rejectionReason,
     };
-    
+
     // Update queue item status
     queueItem.status = action === 'schedule' ? 'scheduled' : action + 'd';
     queueItem.lastAction = action;
     queueItem.approver = approver;
     queueItem.processedAt = new Date().toISOString();
-    
+
     if (action === 'approve') {
       queueItem.approvedAt = new Date().toISOString();
       queueItem.readyToPost = true;
@@ -123,24 +124,24 @@ export async function POST(request: NextRequest) {
       queueItem.status = 'pending'; // Send back to pending after edit
       queueItem.lastEditedAt = new Date().toISOString();
     }
-    
+
     // Log the approval action
     approvals.push({
       id: `approval_${Date.now()}_${Math.random().toString(36).substring(7)}`,
       ...approval,
       timestamp: new Date().toISOString(),
-      originalContent: queueItem.generatedContent
+      originalContent: queueItem.generatedContent,
     });
-    
+
     // If approved or scheduled, prepare for social posting system integration
     if (action === 'approve' || action === 'schedule') {
       await integrateWithSocialPosting(queueItem, approval);
     }
-    
+
     return NextResponse.json({
       success: true,
       message: `Content ${action}${action === 'approve' ? 'ed' : action === 'reject' ? 'ed' : 'd'} successfully`,
-      item: queueItem
+      item: queueItem,
     });
   } catch (error) {
     console.error('Error processing approval:', error);
@@ -166,17 +167,20 @@ async function integrateWithSocialPosting(queueItem: any, approval: ApprovalActi
       metadata: {
         originalTitle: queueItem.originalStory?.title,
         relevanceScore: queueItem.relevanceScore,
-        audioIntelAngle: queueItem.audioIntelAngle
-      }
+        audioIntelAngle: queueItem.audioIntelAngle,
+      },
     };
-    
+
     // Call social posting system
-    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3005'}/api/social-media/schedule`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(socialPostData)
-    });
-    
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3005'}/api/social-media/schedule`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(socialPostData),
+      }
+    );
+
     if (response.ok) {
       console.log(`✅ Content queued for ${approval.platform} posting`);
     } else {
@@ -186,4 +190,3 @@ async function integrateWithSocialPosting(queueItem: any, approval: ApprovalActi
     console.error('Error integrating with social posting:', error);
   }
 }
-

@@ -12,7 +12,7 @@ async function checkCampaigns() {
     .select('*')
     .order('created_at', { ascending: false })
     .limit(5);
-  
+
   if (error) {
     console.error('Error:', error);
   } else {

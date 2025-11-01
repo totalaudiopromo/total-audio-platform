@@ -40,7 +40,7 @@ export abstract class StreamingAgent extends EventEmitter {
 
     // Initialize Anthropic client
     this.client = new Anthropic({
-      apiKey: process.env.ANTHROPIC_API_KEY
+      apiKey: process.env.ANTHROPIC_API_KEY,
     });
 
     this.model = modelName;
@@ -55,11 +55,13 @@ export abstract class StreamingAgent extends EventEmitter {
   protected buildCachedSystemPrompt(): Anthropic.Messages.CacheControlEphemeral[] {
     if (typeof this.systemPrompt === 'string') {
       const contextText = this.buildSystemContext();
-      return [{
-        type: 'text' as const,
-        text: contextText,
-        cache_control: { type: 'ephemeral' as const }
-      }];
+      return [
+        {
+          type: 'text' as const,
+          text: contextText,
+          cache_control: { type: 'ephemeral' as const },
+        },
+      ];
     }
 
     // If already an array of system messages, add cache control to last item
@@ -73,7 +75,7 @@ export abstract class StreamingAgent extends EventEmitter {
         // Add cache control to last message
         messages[messages.length - 1] = {
           ...lastMessage,
-          cache_control: { type: 'ephemeral' as const }
+          cache_control: { type: 'ephemeral' as const },
         };
       }
     }
@@ -92,7 +94,7 @@ export abstract class StreamingAgent extends EventEmitter {
     // Combine all text messages
     return this.systemPrompt
       .filter(msg => msg.type === 'text')
-      .map(msg => 'text' in msg ? msg.text : '')
+      .map(msg => ('text' in msg ? msg.text : ''))
       .join('\n\n');
   }
 
@@ -110,7 +112,7 @@ export abstract class StreamingAgent extends EventEmitter {
   ): Promise<Anthropic.Message> {
     this.emit('start', {
       agent: this.agentName,
-      timestamp: new Date()
+      timestamp: new Date(),
     });
 
     const stream = this.client.messages.stream({
@@ -119,51 +121,48 @@ export abstract class StreamingAgent extends EventEmitter {
       temperature: options.temperature,
       system: this.cachedSystemPrompt,
       tools: this.tools.length > 0 ? this.tools : undefined,
-      messages: [
-        ...conversationHistory,
-        { role: 'user', content: userMessage }
-      ],
-      ...(options.thinking && { thinking: options.thinking })
+      messages: [...conversationHistory, { role: 'user', content: userMessage }],
+      ...(options.thinking && { thinking: options.thinking }),
     });
 
     // Emit progress events for dashboard integration
-    stream.on('text', (textDelta) => {
+    stream.on('text', textDelta => {
       this.emit('progress', {
         agent: this.agentName,
         type: 'text',
         delta: textDelta,
-        timestamp: new Date()
+        timestamp: new Date(),
       });
     });
 
-    stream.on('content_block_start', (event) => {
+    stream.on('content_block_start', event => {
       this.emit('content_block_start', {
         agent: this.agentName,
         event,
-        timestamp: new Date()
+        timestamp: new Date(),
       });
     });
 
-    stream.on('content_block_delta', (event) => {
+    stream.on('content_block_delta', event => {
       this.emit('content_block_delta', {
         agent: this.agentName,
         delta: event.delta,
-        timestamp: new Date()
+        timestamp: new Date(),
       });
     });
 
     stream.on('message_stop', () => {
       this.emit('complete', {
         agent: this.agentName,
-        timestamp: new Date()
+        timestamp: new Date(),
       });
     });
 
-    stream.on('error', (error) => {
+    stream.on('error', error => {
       this.emit('error', {
         agent: this.agentName,
         error: error.message,
-        timestamp: new Date()
+        timestamp: new Date(),
       });
     });
 
@@ -195,7 +194,7 @@ export abstract class StreamingAgent extends EventEmitter {
       agent: this.agentName,
       task,
       maxIterations,
-      timestamp: new Date()
+      timestamp: new Date(),
     });
 
     while (!taskComplete && iteration < maxIterations) {
@@ -203,7 +202,7 @@ export abstract class StreamingAgent extends EventEmitter {
         agent: this.agentName,
         iteration: iteration + 1,
         maxIterations,
-        timestamp: new Date()
+        timestamp: new Date(),
       });
 
       const response = await this.client.messages.create({
@@ -212,16 +211,13 @@ export abstract class StreamingAgent extends EventEmitter {
         temperature: options.temperature,
         system: this.cachedSystemPrompt,
         tools: this.tools,
-        messages: [
-          ...conversationHistory,
-          { role: 'user', content: task }
-        ],
-        ...(options.thinking && { thinking: options.thinking })
+        messages: [...conversationHistory, { role: 'user', content: task }],
+        ...(options.thinking && { thinking: options.thinking }),
       });
 
       conversationHistory.push({
         role: 'assistant',
-        content: response.content
+        content: response.content,
       });
 
       // Handle tool use
@@ -229,7 +225,7 @@ export abstract class StreamingAgent extends EventEmitter {
         const toolResults = await this.executeTools(response.content, options.onToolUse);
         conversationHistory.push({
           role: 'user',
-          content: toolResults
+          content: toolResults,
         });
         iteration++;
         continue;
@@ -241,7 +237,7 @@ export abstract class StreamingAgent extends EventEmitter {
       this.emit('agentic_loop_complete', {
         agent: this.agentName,
         iterations: iteration + 1,
-        timestamp: new Date()
+        timestamp: new Date(),
       });
 
       return this.extractResult(response);
@@ -252,7 +248,7 @@ export abstract class StreamingAgent extends EventEmitter {
       agent: this.agentName,
       error: error.message,
       iterations: iteration,
-      timestamp: new Date()
+      timestamp: new Date(),
     });
 
     throw error;
@@ -273,7 +269,7 @@ export abstract class StreamingAgent extends EventEmitter {
           agent: this.agentName,
           toolName: block.name,
           toolInput: block.input,
-          timestamp: new Date()
+          timestamp: new Date(),
         });
 
         if (onToolUse) {
@@ -286,28 +282,28 @@ export abstract class StreamingAgent extends EventEmitter {
           toolResults.push({
             type: 'tool_result',
             tool_use_id: block.id,
-            content: JSON.stringify(result)
+            content: JSON.stringify(result),
           });
 
           this.emit('tool_result', {
             agent: this.agentName,
             toolName: block.name,
             success: true,
-            timestamp: new Date()
+            timestamp: new Date(),
           });
         } catch (error: any) {
           toolResults.push({
             type: 'tool_result',
             tool_use_id: block.id,
             content: JSON.stringify({ error: error.message }),
-            is_error: true
+            is_error: true,
           });
 
           this.emit('tool_error', {
             agent: this.agentName,
             toolName: block.name,
             error: error.message,
-            timestamp: new Date()
+            timestamp: new Date(),
           });
         }
       }
@@ -330,7 +326,7 @@ export abstract class StreamingAgent extends EventEmitter {
     // Default: return text content
     const textBlocks = response.content.filter(block => block.type === 'text');
     if (textBlocks.length > 0) {
-      return textBlocks.map(block => 'text' in block ? block.text : '').join('\n');
+      return textBlocks.map(block => ('text' in block ? block.text : '')).join('\n');
     }
     return null;
   }
@@ -349,7 +345,7 @@ export abstract class StreamingAgent extends EventEmitter {
       inputTokens: usage.input_tokens || 0,
       outputTokens: usage.output_tokens || 0,
       cacheCreationTokens: (usage as any).cache_creation_input_tokens || 0,
-      cacheReadTokens: (usage as any).cache_read_input_tokens || 0
+      cacheReadTokens: (usage as any).cache_read_input_tokens || 0,
     };
   }
 
@@ -371,7 +367,7 @@ export abstract class StreamingAgent extends EventEmitter {
       system: this.cachedSystemPrompt,
       tools: this.tools.length > 0 ? this.tools : undefined,
       messages: [{ role: 'user', content: userMessage }],
-      ...(options.thinking && { thinking: options.thinking })
+      ...(options.thinking && { thinking: options.thinking }),
     });
 
     return response;

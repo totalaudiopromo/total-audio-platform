@@ -5,15 +5,19 @@ All documentation organised by category.
 ## 📁 Documentation Structure
 
 ### `/setup/` - Setup & Configuration
+
 Configuration, deployment, and integration guides.
 
 ### `/guides/` - How-To Guides
+
 Step-by-step tutorials and feature guides.
 
 ### `/reference/` - Reference Documentation
+
 Technical specifications, architecture docs, and API references.
 
 ### `/status/` - Status Reports (Archive)
+
 Historical completion reports and milestone records.
 
 > **Note:** Status files are kept for historical reference but are not actively maintained.
@@ -23,6 +27,7 @@ Historical completion reports and milestone records.
 ## 🎯 Quick Start
 
 For getting started, see the root-level documentation:
+
 - **[README.md](../README.md)** - Main project overview
 
 ---
@@ -38,4 +43,4 @@ When adding new documentation:
 
 ---
 
-*Last updated: 2025-10-04*
+_Last updated: 2025-10-04_

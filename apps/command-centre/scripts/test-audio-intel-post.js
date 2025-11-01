@@ -16,7 +16,7 @@ const AUDIO_INTEL_TEMPLATES = [
 The time savings are incredible for radio promotion campaigns. From chaotic spreadsheets to organised contact intelligence.
 
 This is why I built Audio Intel.`,
-    hashtags: ['#MusicIndustry', '#RadioPromotion', '#ContactEnrichment', '#BBC', '#IndieMusic']
+    hashtags: ['#MusicIndustry', '#RadioPromotion', '#ContactEnrichment', '#BBC', '#IndieMusic'],
   },
   {
     id: 'spotify_success',
@@ -26,7 +26,13 @@ This is why I built Audio Intel.`,
 Built Audio Intel because I was tired of spending 15+ hours per campaign researching radio contacts. Now it's automated.
 
 From manual Excel chaos to professional contact intelligence in minutes.`,
-    hashtags: ['#MusicTech', '#PlaylistPitching', '#Spotify', '#ContactResearch', '#MusicPromotion']
+    hashtags: [
+      '#MusicTech',
+      '#PlaylistPitching',
+      '#Spotify',
+      '#ContactResearch',
+      '#MusicPromotion',
+    ],
   },
   {
     id: 'time_savings',
@@ -36,8 +42,14 @@ From manual Excel chaos to professional contact intelligence in minutes.`,
 That's £300+ in time value for indie artists. Audio Intel turns this into a 15-minute process.
 
 Time saved = more music created.`,
-    hashtags: ['#IndieMusic', '#MusicBusiness', '#ContactEnrichment', '#RadioPromotion', '#MusicIndustry']
-  }
+    hashtags: [
+      '#IndieMusic',
+      '#MusicBusiness',
+      '#ContactEnrichment',
+      '#RadioPromotion',
+      '#MusicIndustry',
+    ],
+  },
 ];
 
 async function authenticateBlueSky() {
@@ -76,7 +88,7 @@ async function postToBlueSky(session, template) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${session.accessJwt}`,
+      Authorization: `Bearer ${session.accessJwt}`,
     },
     body: JSON.stringify(postData),
   });
@@ -141,7 +153,6 @@ Examples:
   node scripts/test-audio-intel-post.js post 2    # Spotify success story
   node scripts/test-audio-intel-post.js post 3    # Time savings value prop
     `);
-
   } catch (error) {
     console.error('❌ Error:', error.message);
   }

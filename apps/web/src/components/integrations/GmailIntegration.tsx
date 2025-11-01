@@ -30,10 +30,10 @@ const GmailIntegration: React.FC = () => {
     try {
       const response = await fetch('/api/gmail/status', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      
+
       if (response.ok) {
         const data = await response.json();
         setStatus(data);
@@ -47,10 +47,10 @@ const GmailIntegration: React.FC = () => {
     try {
       const response = await fetch('/api/campaigns', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      
+
       if (response.ok) {
         const data = await response.json();
         setCampaigns(data.campaigns || []);
@@ -65,10 +65,10 @@ const GmailIntegration: React.FC = () => {
     try {
       const response = await fetch('/api/gmail/auth', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      
+
       if (response.ok) {
         const data = await response.json();
         window.location.href = data.authUrl;
@@ -86,10 +86,10 @@ const GmailIntegration: React.FC = () => {
       const response = await fetch('/api/gmail/disconnect', {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      
+
       if (response.ok) {
         setStatus({ connected: false });
       }
@@ -106,10 +106,10 @@ const GmailIntegration: React.FC = () => {
       const response = await fetch(`/api/gmail/track-replies/${campaignId}`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      
+
       if (response.ok) {
         alert('Reply tracking started successfully!');
       }
@@ -125,10 +125,10 @@ const GmailIntegration: React.FC = () => {
     try {
       const response = await fetch(`/api/gmail/analytics/${campaignId}`, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      
+
       if (response.ok) {
         const data = await response.json();
         setAnalytics(data);
@@ -146,12 +146,12 @@ const GmailIntegration: React.FC = () => {
       const response = await fetch('/api/gmail/send', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ to, subject, content, campaignId }),
       });
-      
+
       if (response.ok) {
         alert('Email sent successfully!');
       }
@@ -191,16 +191,19 @@ const GmailIntegration: React.FC = () => {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <div className="ml-3">
-                <h3 className="text-sm font-medium text-green-800">
-                  Gmail Connected
-                </h3>
+                <h3 className="text-sm font-medium text-green-800">Gmail Connected</h3>
                 <div className="mt-2 text-sm text-green-700">
                   <p>
-                    Last synced: {status.lastSyncAt ? new Date(status.lastSyncAt).toLocaleString() : 'Never'}
+                    Last synced:{' '}
+                    {status.lastSyncAt ? new Date(status.lastSyncAt).toLocaleString() : 'Never'}
                   </p>
                 </div>
               </div>
@@ -220,17 +223,17 @@ const GmailIntegration: React.FC = () => {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  <path
+                    fillRule="evenodd"
+                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <div className="ml-3">
-                <h3 className="text-sm font-medium text-yellow-800">
-                  Gmail Not Connected
-                </h3>
+                <h3 className="text-sm font-medium text-yellow-800">Gmail Not Connected</h3>
                 <div className="mt-2 text-sm text-yellow-700">
-                  <p>
-                    Connect your Gmail account to track email replies and send emails directly.
-                  </p>
+                  <p>Connect your Gmail account to track email replies and send emails directly.</p>
                 </div>
               </div>
             </div>
@@ -259,18 +262,18 @@ const GmailIntegration: React.FC = () => {
               <select
                 id="campaign"
                 value={selectedCampaign}
-                onChange={(e) => setSelectedCampaign(e.target.value)}
+                onChange={e => setSelectedCampaign(e.target.value)}
                 className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
               >
                 <option value="">Choose a campaign...</option>
-                {campaigns.map((campaign) => (
+                {campaigns.map(campaign => (
                   <option key={campaign.id} value={campaign.id}>
                     {campaign.name}
                   </option>
                 ))}
               </select>
             </div>
-            
+
             {selectedCampaign && (
               <div className="flex space-x-4">
                 <button
@@ -280,7 +283,7 @@ const GmailIntegration: React.FC = () => {
                 >
                   {loading ? 'Starting...' : 'Start Reply Tracking'}
                 </button>
-                
+
                 <button
                   onClick={() => getAnalytics(selectedCampaign)}
                   disabled={loading}
@@ -308,17 +311,22 @@ const GmailIntegration: React.FC = () => {
               <div className="text-sm text-green-600">Total Replies</div>
             </div>
             <div className="bg-purple-50 p-4 rounded-lg">
-              <div className="text-2xl font-bold text-purple-600">{analytics.replyRate.toFixed(1)}%</div>
+              <div className="text-2xl font-bold text-purple-600">
+                {analytics.replyRate.toFixed(1)}%
+              </div>
               <div className="text-sm text-purple-600">Reply Rate</div>
             </div>
           </div>
-          
+
           {analytics.recentReplies.length > 0 && (
             <div className="mt-4">
               <h4 className="text-md font-medium text-gray-900 mb-2">Recent Replies</h4>
               <div className="bg-gray-50 rounded-lg p-4">
                 {analytics.recentReplies.slice(0, 5).map((reply, index) => (
-                  <div key={index} className="flex items-center justify-between py-2 border-b border-gray-200 last:border-b-0">
+                  <div
+                    key={index}
+                    className="flex items-center justify-between py-2 border-b border-gray-200 last:border-b-0"
+                  >
                     <div>
                       <div className="text-sm font-medium text-gray-900">{reply.contact.name}</div>
                       <div className="text-xs text-gray-500">{reply.contact.email}</div>
@@ -350,7 +358,7 @@ const GmailIntegration: React.FC = () => {
                 placeholder="recipient@example.com"
               />
             </div>
-            
+
             <div>
               <label htmlFor="email-subject" className="block text-sm font-medium text-gray-700">
                 Subject
@@ -362,7 +370,7 @@ const GmailIntegration: React.FC = () => {
                 placeholder="Email subject"
               />
             </div>
-            
+
             <div>
               <label htmlFor="email-content" className="block text-sm font-medium text-gray-700">
                 Content
@@ -374,13 +382,15 @@ const GmailIntegration: React.FC = () => {
                 placeholder="Email content..."
               />
             </div>
-            
+
             <button
               onClick={() => {
                 const to = (document.getElementById('email-to') as HTMLInputElement).value;
-                const subject = (document.getElementById('email-subject') as HTMLInputElement).value;
-                const content = (document.getElementById('email-content') as HTMLTextAreaElement).value;
-                
+                const subject = (document.getElementById('email-subject') as HTMLInputElement)
+                  .value;
+                const content = (document.getElementById('email-content') as HTMLTextAreaElement)
+                  .value;
+
                 if (to && subject && content) {
                   sendEmail(to, subject, content);
                 } else {
@@ -399,4 +409,4 @@ const GmailIntegration: React.FC = () => {
   );
 };
 
-export default GmailIntegration; 
+export default GmailIntegration;

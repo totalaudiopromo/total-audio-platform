@@ -2,7 +2,7 @@
 
 /**
  * Real Agent Orchestrator for Total Audio Promo
- * 
+ *
  * Coordinates real integration services and manages workflows
  * Uses actual backend services instead of mocks
  */
@@ -11,7 +11,7 @@
 const logger = {
   info: (msg, ...args) => console.log(`[INFO] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[ERROR] ${msg}`, ...args),
-  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args)
+  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args),
 };
 
 const DatabaseAgent = require('./database-agent');
@@ -28,7 +28,7 @@ class RealAgentOrchestrator {
       integration: new RealIntegrationAgent(),
       campaign: new CampaignAgent(),
       contact: new ContactAgent(),
-      agency: new AgencyAgent()
+      agency: new AgencyAgent(),
     };
     this.workflows = new Map();
     this.isInitialized = false;
@@ -40,7 +40,7 @@ class RealAgentOrchestrator {
   async initialize() {
     try {
       logger.info('Initializing Real Agent Orchestrator...');
-      
+
       const results = {};
       for (const [name, agent] of Object.entries(this.agents)) {
         try {
@@ -55,7 +55,7 @@ class RealAgentOrchestrator {
 
       this.isInitialized = true;
       this.setupRealWorkflows();
-      
+
       logger.info('Real Agent Orchestrator initialized successfully');
       return results;
     } catch (error) {
@@ -75,8 +75,8 @@ class RealAgentOrchestrator {
         { agent: 'agency', action: 'onboardAgency' },
         { agent: 'database', action: 'verifyDataIsolation' },
         { agent: 'integration', action: 'initialize' },
-        { agent: 'integration', action: 'healthCheck' }
-      ]
+        { agent: 'integration', action: 'healthCheck' },
+      ],
     });
 
     // Real campaign launch workflow
@@ -86,8 +86,8 @@ class RealAgentOrchestrator {
         { agent: 'integration', action: 'healthCheck' },
         { agent: 'campaign', action: 'createCampaign' },
         { agent: 'integration', action: 'createAirtableCampaignRecord' },
-        { agent: 'integration', action: 'monitorGmailReplies' }
-      ]
+        { agent: 'integration', action: 'monitorGmailReplies' },
+      ],
     });
 
     // Real contact enrichment workflow
@@ -97,8 +97,8 @@ class RealAgentOrchestrator {
         { agent: 'integration', action: 'syncAirtableContacts' },
         { agent: 'contact', action: 'removeDuplicates' },
         { agent: 'contact', action: 'bulkProcessContacts' },
-        { agent: 'integration', action: 'analyzeContactEngagement' }
-      ]
+        { agent: 'integration', action: 'analyzeContactEngagement' },
+      ],
     });
 
     // Real service maintenance workflow
@@ -108,8 +108,8 @@ class RealAgentOrchestrator {
         { agent: 'integration', action: 'healthCheck' },
         { agent: 'integration', action: 'autoRecover' },
         { agent: 'database', action: 'healthCheck' },
-        { agent: 'integration', action: 'bulkSync' }
-      ]
+        { agent: 'integration', action: 'bulkSync' },
+      ],
     });
 
     // AI-powered campaign optimization workflow
@@ -119,8 +119,8 @@ class RealAgentOrchestrator {
         { agent: 'integration', action: 'generateCampaignReport' },
         { agent: 'campaign', action: 'checkOptimizationOpportunities' },
         { agent: 'integration', action: 'analyzeContactEngagement' },
-        { agent: 'integration', action: 'generateEmailContent' }
-      ]
+        { agent: 'integration', action: 'generateEmailContent' },
+      ],
     });
 
     logger.info(`${this.workflows.size} real service workflows configured`);
@@ -150,7 +150,7 @@ class RealAgentOrchestrator {
 
         try {
           logger.info(`Step ${i + 1}/${workflow.steps.length}: ${step.agent}.${step.action}`);
-          
+
           const agent = this.agents[step.agent];
           if (!agent) {
             throw new Error(`Agent '${step.agent}' not found`);
@@ -159,10 +159,11 @@ class RealAgentOrchestrator {
           let result;
           if (typeof agent[step.action] === 'function') {
             // Pass parameters specific to this step, action, or general parameters
-            const stepParams = parameters[`step${i + 1}`] || 
-                              parameters[step.action] || 
-                              parameters.general || 
-                              parameters;
+            const stepParams =
+              parameters[`step${i + 1}`] ||
+              parameters[step.action] ||
+              parameters.general ||
+              parameters;
             result = await agent[step.action](stepParams);
           } else {
             throw new Error(`Action '${step.action}' not found on agent '${step.agent}'`);
@@ -175,7 +176,7 @@ class RealAgentOrchestrator {
             action: step.action,
             duration: stepDuration,
             result,
-            status: 'completed'
+            status: 'completed',
           });
 
           logger.info(`Step ${i + 1} completed in ${stepDuration}ms`);
@@ -187,11 +188,11 @@ class RealAgentOrchestrator {
             action: step.action,
             duration: stepDuration,
             error: error.message,
-            status: 'failed'
+            status: 'failed',
           });
 
           logger.error(`Step ${i + 1} failed:`, error);
-          
+
           // Continue with remaining steps unless it's a critical failure
           if (workflow.failFast !== false && this.isCriticalFailure(error)) {
             break;
@@ -201,7 +202,7 @@ class RealAgentOrchestrator {
 
       const totalDuration = Date.now() - startTime;
       const successfulSteps = results.filter(r => r.status === 'completed').length;
-      
+
       const workflowResult = {
         workflow: workflowName,
         description: workflow.description,
@@ -211,10 +212,12 @@ class RealAgentOrchestrator {
         duration: totalDuration,
         steps: results,
         status: successfulSteps === workflow.steps.length ? 'completed' : 'partial',
-        timestamp: new Date()
+        timestamp: new Date(),
       };
 
-      logger.info(`Workflow '${workflowName}' completed: ${successfulSteps}/${workflow.steps.length} steps successful`);
+      logger.info(
+        `Workflow '${workflowName}' completed: ${successfulSteps}/${workflow.steps.length} steps successful`
+      );
       return workflowResult;
     } catch (error) {
       logger.error(`Workflow execution failed:`, error);
@@ -229,10 +232,10 @@ class RealAgentOrchestrator {
     const criticalErrors = [
       'Database connection failed',
       'Authentication failed',
-      'Service permanently unavailable'
+      'Service permanently unavailable',
     ];
-    
-    return criticalErrors.some(criticalError => 
+
+    return criticalErrors.some(criticalError =>
       error.message.toLowerCase().includes(criticalError.toLowerCase())
     );
   }
@@ -243,28 +246,28 @@ class RealAgentOrchestrator {
   async testIntegration(serviceName, testType = 'health') {
     try {
       const integrationAgent = this.agents.integration;
-      
+
       if (!integrationAgent.isServiceAvailable(serviceName)) {
         return {
           service: serviceName,
           test: testType,
           status: 'not_available',
-          message: `${serviceName} service is not configured or available`
+          message: `${serviceName} service is not configured or available`,
         };
       }
 
       let result;
-      
+
       switch (testType) {
         case 'health':
           const health = await integrationAgent.healthCheck();
           result = health[serviceName];
           break;
-          
+
         case 'functionality':
           result = await this.testServiceFunctionality(serviceName, integrationAgent);
           break;
-          
+
         default:
           throw new Error(`Unknown test type: ${testType}`);
       }
@@ -274,7 +277,7 @@ class RealAgentOrchestrator {
         test: testType,
         status: 'tested',
         result,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
     } catch (error) {
       logger.error(`Integration test failed for ${serviceName}:`, error);
@@ -283,7 +286,7 @@ class RealAgentOrchestrator {
         test: testType,
         status: 'error',
         error: error.message,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
     }
   }
@@ -295,18 +298,18 @@ class RealAgentOrchestrator {
     switch (serviceName) {
       case 'claude':
         return await integrationAgent.services.claude.generateResponse('Test functionality check');
-        
+
       case 'gmail':
         return await integrationAgent.searchGmailEmails('test', 1);
-        
+
       case 'airtable':
         // Test would require valid user ID
         return { message: 'Airtable functionality test requires valid user ID' };
-        
+
       case 'mailchimp':
         // Test would require valid campaign ID
         return { message: 'Mailchimp functionality test requires valid campaign ID' };
-        
+
       default:
         throw new Error(`Functionality test not implemented for ${serviceName}`);
     }
@@ -318,17 +321,17 @@ class RealAgentOrchestrator {
   async generateSystemReport() {
     try {
       logger.info('Generating comprehensive system report with real services...');
-      
+
       const report = {
         timestamp: new Date(),
         orchestrator: {
           status: this.isInitialized ? 'initialized' : 'not_initialized',
           uptime: process.uptime(),
-          workflows: this.workflows.size
+          workflows: this.workflows.size,
         },
         agents: {},
         integrations: {},
-        recommendations: []
+        recommendations: [],
       };
 
       // Get agent statuses
@@ -385,9 +388,14 @@ class RealAgentOrchestrator {
       const lines = aiResponse.split('\n').filter(line => line.trim().length > 0);
       const recommendations = lines
         .filter(line => line.match(/^\d+\./) || line.includes('•') || line.includes('-'))
-        .map(line => line.replace(/^\d+\.\s*/, '').replace(/^[•\-]\s*/, '').trim())
+        .map(line =>
+          line
+            .replace(/^\d+\.\s*/, '')
+            .replace(/^[•\-]\s*/, '')
+            .trim()
+        )
         .filter(rec => rec.length > 10); // Filter out short/meaningless recommendations
-      
+
       return recommendations.length > 0 ? recommendations : [aiResponse];
     } catch (error) {
       return [aiResponse];
@@ -403,11 +411,11 @@ class RealAgentOrchestrator {
         orchestrator: {
           status: this.isInitialized ? 'healthy' : 'unhealthy',
           uptime: process.uptime(),
-          workflows: this.workflows.size
+          workflows: this.workflows.size,
         },
         agents: {},
         integrations: {},
-        overall: 'unknown'
+        overall: 'unknown',
       };
 
       // Get health status from each agent
@@ -431,11 +439,13 @@ class RealAgentOrchestrator {
       // Determine overall health
       const agentStatuses = Object.values(health.agents).map(a => a.status);
       const integrationStatuses = Object.values(health.integrations).map(i => i.status);
-      
+
       if (agentStatuses.includes('error') || integrationStatuses.includes('error')) {
         health.overall = 'degraded';
-      } else if (agentStatuses.every(s => s === 'healthy') && 
-                 integrationStatuses.every(s => s === 'healthy')) {
+      } else if (
+        agentStatuses.every(s => s === 'healthy') &&
+        integrationStatuses.every(s => s === 'healthy')
+      ) {
         health.overall = 'healthy';
       } else {
         health.overall = 'partial';
@@ -456,7 +466,7 @@ class RealAgentOrchestrator {
       name,
       description: workflow.description,
       steps: workflow.steps.length,
-      usesRealServices: true
+      usesRealServices: true,
     }));
   }
 
@@ -466,7 +476,7 @@ class RealAgentOrchestrator {
   async shutdown() {
     try {
       logger.info('Shutting down Real Agent Orchestrator...');
-      
+
       for (const [name, agent] of Object.entries(this.agents)) {
         try {
           if (agent.shutdown) {
@@ -500,17 +510,17 @@ if (require.main === module) {
         const health = await orchestrator.getSystemHealth();
         console.log(JSON.stringify(health, null, 2));
         break;
-      
+
       case 'report':
         const report = await orchestrator.generateSystemReport();
         console.log(JSON.stringify(report, null, 2));
         break;
-      
+
       case 'workflows':
         const workflows = orchestrator.listWorkflows();
         console.log(JSON.stringify(workflows, null, 2));
         break;
-      
+
       case 'execute':
         const workflowName = process.argv[3];
         if (!workflowName) {
@@ -519,7 +529,7 @@ if (require.main === module) {
           orchestrator.listWorkflows().forEach(w => console.log(`  - ${w.name}: ${w.description}`));
           return;
         }
-        
+
         // Parse parameters if provided
         const params = {};
         if (process.argv[4]) {
@@ -530,32 +540,34 @@ if (require.main === module) {
             params.general = process.argv[4];
           }
         }
-        
+
         const result = await orchestrator.executeWorkflow(workflowName, params);
         console.log(JSON.stringify(result, null, 2));
         break;
-      
+
       case 'test':
         const serviceName = process.argv[3];
         const testType = process.argv[4] || 'health';
-        
+
         if (!serviceName) {
           console.log('Usage: node orchestrator-real.js test <service> [health|functionality]');
           console.log('Available services: airtable, mailchimp, gmail, claude');
           return;
         }
-        
+
         const testResult = await orchestrator.testIntegration(serviceName, testType);
         console.log(JSON.stringify(testResult, null, 2));
         break;
-      
+
       case 'maintenance':
         const maintenance = await orchestrator.executeWorkflow('real-service-maintenance');
         console.log(JSON.stringify(maintenance, null, 2));
         break;
-      
+
       default:
-        console.log('Usage: node orchestrator-real.js [health|report|workflows|execute|test|maintenance]');
+        console.log(
+          'Usage: node orchestrator-real.js [health|report|workflows|execute|test|maintenance]'
+        );
         console.log('');
         console.log('Real Service Commands:');
         console.log('  health       - Check system health with real services');

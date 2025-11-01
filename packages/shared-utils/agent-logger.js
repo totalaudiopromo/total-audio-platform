@@ -19,7 +19,7 @@ class AgentLogger {
       statusDir: options.statusDir || path.join(os.homedir(), '.total-audio-status'),
       logToConsole: options.logToConsole !== false,
       logToFile: options.logToFile !== false,
-      ...options
+      ...options,
     };
 
     // Ensure status directory exists
@@ -38,7 +38,7 @@ class AgentLogger {
       progress: 0,
       metrics: {},
       logs: [],
-      errors: []
+      errors: [],
     };
 
     this.writeStatus();
@@ -52,7 +52,7 @@ class AgentLogger {
       level: 'info',
       message,
       data,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
 
     this.status.logs.push(logEntry);
@@ -73,7 +73,7 @@ class AgentLogger {
       level: 'warn',
       message,
       data,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
 
     this.status.logs.push(logEntry);
@@ -92,12 +92,14 @@ class AgentLogger {
   error(message, error = null) {
     const errorEntry = {
       message,
-      error: error ? {
-        message: error.message,
-        stack: error.stack,
-        code: error.code
-      } : null,
-      timestamp: new Date().toISOString()
+      error: error
+        ? {
+            message: error.message,
+            stack: error.stack,
+            code: error.code,
+          }
+        : null,
+      timestamp: new Date().toISOString(),
     };
 
     this.status.errors.push(errorEntry);
@@ -118,7 +120,7 @@ class AgentLogger {
       level: 'success',
       message,
       data,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
 
     this.status.logs.push(logEntry);
@@ -151,7 +153,7 @@ class AgentLogger {
   updateMetrics(metrics) {
     this.status.metrics = {
       ...this.status.metrics,
-      ...metrics
+      ...metrics,
     };
     this.status.lastUpdate = new Date().toISOString();
     this.writeStatus();

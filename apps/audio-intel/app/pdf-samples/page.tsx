@@ -1,13 +1,24 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Download, Eye, FileText, BarChart3, Brain, CheckCircle, Star, Crown, Zap, ArrowRight } from 'lucide-react';
-import { 
-  DEMO_CONTACTS, 
-  DEMO_ANALYTICS, 
-  DEMO_AI_AGENT_REPORT, 
+import {
+  Download,
+  Eye,
+  FileText,
+  BarChart3,
+  Brain,
+  CheckCircle,
+  Star,
+  Crown,
+  Zap,
+  ArrowRight,
+} from 'lucide-react';
+import {
+  DEMO_CONTACTS,
+  DEMO_ANALYTICS,
+  DEMO_AI_AGENT_REPORT,
   PDF_SAMPLES_INFO,
-  generateAllSamplePdfs 
+  generateAllSamplePdfs,
 } from '../../utils/generateSamplePdfs';
 import { exportContactsPreview, exportAnalyticsPreview } from '../../utils/exportToPdf';
 import Link from 'next/link';
@@ -18,7 +29,7 @@ export default function PdfSamplesPage() {
 
   const handleGenerateSample = async (type: 'contacts' | 'analytics' | 'aiAgent') => {
     setIsGenerating(type);
-    
+
     try {
       switch (type) {
         case 'contacts':
@@ -40,14 +51,14 @@ export default function PdfSamplesPage() {
     }
   };
 
-  const SampleCard = ({ 
-    type, 
-    title, 
-    description, 
-    features, 
+  const SampleCard = ({
+    type,
+    title,
+    description,
+    features,
     icon: Icon,
     color,
-    bgColor 
+    bgColor,
   }: {
     type: 'contacts' | 'analytics' | 'aiAgent';
     title: string;
@@ -62,16 +73,20 @@ export default function PdfSamplesPage() {
       <div className={`${bgColor} p-6`}>
         <div className="flex items-center gap-3 mb-2">
           <Icon className={`w-6 h-6 ${color}`} />
-          <h3 className={`text-lg font-semibold ${color.replace('text-', 'text-gray-')}`}>{title}</h3>
+          <h3 className={`text-lg font-semibold ${color.replace('text-', 'text-gray-')}`}>
+            {title}
+          </h3>
         </div>
         <p className="text-sm text-gray-600">{description}</p>
-        
+
         {/* Stats */}
         <div className="flex items-center gap-4 mt-3 text-xs text-gray-500">
           <span>📄 {PDF_SAMPLES_INFO[type].pages} pages</span>
           {type === 'contacts' && <span>👤 {PDF_SAMPLES_INFO[type].contacts} contacts</span>}
           {type === 'analytics' && <span>📊 {PDF_SAMPLES_INFO[type].metrics} metrics</span>}
-          {type === 'aiAgent' && <span>💡 {PDF_SAMPLES_INFO[type].recommendations} recommendations</span>}
+          {type === 'aiAgent' && (
+            <span>💡 {PDF_SAMPLES_INFO[type].recommendations} recommendations</span>
+          )}
         </div>
       </div>
 
@@ -106,7 +121,7 @@ export default function PdfSamplesPage() {
               </>
             )}
           </button>
-          
+
           <button
             onClick={() => setShowUpgradeModal(true)}
             className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-600 text-white rounded-md hover:from-blue-700 hover:to-blue-700 transition-all"
@@ -128,7 +143,7 @@ export default function PdfSamplesPage() {
           <p className="text-gray-600 mb-6">
             Upgrade to Professional to generate unlimited high-quality PDFs with no watermarks
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-sm">
             <div className="bg-gray-50 p-3 rounded-md">
               <h4 className="font-medium text-gray-700 mb-2">Free Samples</h4>
@@ -148,7 +163,7 @@ export default function PdfSamplesPage() {
               </ul>
             </div>
           </div>
-          
+
           <div className="space-y-3">
             <button
               onClick={() => {
@@ -160,7 +175,7 @@ export default function PdfSamplesPage() {
             >
               Upgrade to Professional - £19/month
             </button>
-            
+
             <button
               onClick={() => setShowUpgradeModal(false)}
               className="w-full text-gray-500 px-4 py-2 rounded-md hover:text-gray-700 transition-colors"
@@ -185,7 +200,7 @@ export default function PdfSamplesPage() {
                 Experience the quality of Audio Intel's professional PDF reports
               </p>
             </div>
-            <Link 
+            <Link
               href="/export-demo"
               className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
             >
@@ -202,11 +217,13 @@ export default function PdfSamplesPage() {
         <div className="bg-gradient-to-r from-blue-50 to-blue-50 rounded-lg p-6 mb-8">
           <div className="flex items-center gap-3 mb-3">
             <Zap className="w-6 h-6 text-blue-600" />
-            <h2 className="text-xl font-semibold text-gray-900">See The Quality Before You Upgrade</h2>
+            <h2 className="text-xl font-semibold text-gray-900">
+              See The Quality Before You Upgrade
+            </h2>
           </div>
           <p className="text-gray-600 mb-4">
-            Download free samples of our professional PDF reports. Each sample demonstrates the quality, 
-            formatting, and intelligence you'll get with Audio Intel Professional.
+            Download free samples of our professional PDF reports. Each sample demonstrates the
+            quality, formatting, and intelligence you'll get with Audio Intel Professional.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
             <div className="flex items-center gap-2 text-blue-700">
@@ -235,17 +252,17 @@ export default function PdfSamplesPage() {
             color="text-blue-600"
             bgColor="bg-blue-50"
           />
-          
+
           <SampleCard
             type="analytics"
             title="Performance Analytics"
             description="Comprehensive analytics dashboard with metrics and trend analysis"
             features={PDF_SAMPLES_INFO.analytics.features}
             icon={BarChart3}
-            color="text-green-600" 
+            color="text-green-600"
             bgColor="bg-green-50"
           />
-          
+
           <SampleCard
             type="aiAgent"
             title="AI Strategy Report"
@@ -260,7 +277,9 @@ export default function PdfSamplesPage() {
         {/* Feature Comparison */}
         <div className="mt-12 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
           <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900">Sample vs Professional Comparison</h3>
+            <h3 className="text-lg font-semibold text-gray-900">
+              Sample vs Professional Comparison
+            </h3>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -280,28 +299,54 @@ export default function PdfSamplesPage() {
               <tbody className="bg-white divide-y divide-gray-200">
                 <tr>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">PDF Quality</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">Watermarked</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-green-600">Full Quality</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                    Watermarked
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-green-600">
+                    Full Quality
+                  </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Contact Limit</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">First 3-5</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-green-600">Unlimited</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    Contact Limit
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                    First 3-5
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-green-600">
+                    Unlimited
+                  </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Email Delivery</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">❌</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-green-600">✅</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    Email Delivery
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                    ❌
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-green-600">
+                    ✅
+                  </td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">White Label</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">❌</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-green-600">Agency Only</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                    ❌
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-green-600">
+                    Agency Only
+                  </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Monthly Limit</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">View Only</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-green-600">Unlimited</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    Monthly Limit
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                    View Only
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-green-600">
+                    Unlimited
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -312,18 +357,18 @@ export default function PdfSamplesPage() {
         <div className="mt-12 bg-gradient-to-r from-blue-600 to-blue-600 rounded-lg p-8 text-center text-white">
           <h3 className="text-2xl font-bold mb-4">Ready for Professional Quality?</h3>
           <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-            Upgrade to Professional for unlimited high-quality PDF reports, email delivery, 
-            and advanced features starting at just £19/month.
+            Upgrade to Professional for unlimited high-quality PDF reports, email delivery, and
+            advanced features starting at just £19/month.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
+            <Link
               href="/pricing"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-600 rounded-md font-medium hover:bg-gray-100 transition-colors"
             >
               <Crown className="w-5 h-5" />
               View Pricing Plans
             </Link>
-            <Link 
+            <Link
               href="/export-demo"
               className="inline-flex items-center gap-2 px-6 py-3 border border-white text-white rounded-md font-medium hover:bg-white hover:bg-opacity-10 transition-colors"
             >

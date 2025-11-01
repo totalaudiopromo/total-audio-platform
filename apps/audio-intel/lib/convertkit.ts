@@ -33,7 +33,7 @@ export class ConvertKitService {
     ENTERPRISE_TRIAL: '8440957',
     PRICING: '8405293',
     NEWSLETTER: '8405293',
-    BETA: '8440957'
+    BETA: '8440957',
   } as const;
 
   static readonly TAGS = {
@@ -45,20 +45,22 @@ export class ConvertKitService {
     TRIAL_USER: 'trial_user',
     WEBSITE_SIGNUP: 'website_signup',
     PRICING_INTEREST: 'pricing_interest',
-    DEMO_REQUEST: 'demo_request'
+    DEMO_REQUEST: 'demo_request',
   } as const;
 
   constructor() {
     this.config = {
       apiKey: getEnv('CONVERTKIT_API_KEY', { requiredInProd: false }),
-      apiSecret: getEnv('CONVERTKIT_API_SECRET', { requiredInProd: false })
+      apiSecret: getEnv('CONVERTKIT_API_SECRET', { requiredInProd: false }),
     };
   }
 
   /**
    * Subscribe user to ConvertKit form with automatic tagging
    */
-  async subscribe(data: SubscriptionData): Promise<{ success: boolean; subscriberId?: string; error?: string }> {
+  async subscribe(
+    data: SubscriptionData
+  ): Promise<{ success: boolean; subscriberId?: string; error?: string }> {
     try {
       if (!this.config.apiKey) {
         throw new Error('ConvertKit API key not configured');
@@ -72,8 +74,8 @@ export class ConvertKitService {
         first_name: data.firstName || '',
         fields: {
           signup_timestamp: new Date().toISOString(),
-          ...data.fields
-        }
+          ...data.fields,
+        },
       };
 
       console.log(`🔄 Subscribing ${data.email} to ConvertKit form ${formId}`);
@@ -81,7 +83,7 @@ export class ConvertKitService {
       const response = await fetch(`https://api.convertkit.com/v3/forms/${formId}/subscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
@@ -102,15 +104,14 @@ export class ConvertKitService {
 
       return {
         success: true,
-        subscriberId
+        subscriberId,
       };
-
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       console.error('ConvertKit subscription error:', error);
       return {
         success: false,
-        error: errorMessage
+        error: errorMessage,
       };
     }
   }
@@ -137,8 +138,8 @@ export class ConvertKitService {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             api_secret: this.config.apiSecret,
-            email
-          })
+            email,
+          }),
         });
 
         if (response.ok) {
@@ -161,18 +162,17 @@ export class ConvertKitService {
         event: data.event,
         email: data.email,
         properties: data.properties,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
 
       // In future: integrate with analytics platforms here
       return { success: true };
-
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       console.error('ConvertKit event tracking error:', error);
       return {
         success: false,
-        error: errorMessage
+        error: errorMessage,
       };
     }
   }
@@ -197,7 +197,9 @@ export class ConvertKitService {
    * Get tag ID from tag name
    */
   private getTagId(tagName: string): string | null {
-    const tagKey = tagName.toUpperCase().replace(/[^A-Z0-9]/g, '_') as keyof typeof ConvertKitService.TAGS;
+    const tagKey = tagName
+      .toUpperCase()
+      .replace(/[^A-Z0-9]/g, '_') as keyof typeof ConvertKitService.TAGS;
     return ConvertKitService.TAGS[tagKey] || null;
   }
 

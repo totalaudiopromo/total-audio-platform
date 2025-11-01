@@ -8,7 +8,7 @@ This is your clean, organized workspace. Use the sidebar to navigate between the
 
 [🎯 Audio Intel Product](%F0%9F%8E%AF%20ORGANISED%20WORKSPACE%202680a35b21ed810e9b43f0b1cebc1f9f/%F0%9F%8E%AF%20Audio%20Intel%20Product%202680a35b21ed810b908bde41ed5c4f59.md)
 
-What people use LLMs for 
+What people use LLMs for
 
 [https://www.notion.so](https://www.notion.so)
 

@@ -3,19 +3,19 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { 
-  BarChart3, 
-  Users, 
-  TrendingUp, 
-  FileText, 
-  Share2, 
-  Radio, 
-  Newspaper, 
-  DollarSign, 
-  Settings, 
-  Menu, 
+import {
+  BarChart3,
+  Users,
+  TrendingUp,
+  FileText,
+  Share2,
+  Radio,
+  Newspaper,
+  DollarSign,
+  Settings,
+  Menu,
   X,
-  Zap
+  Zap,
 } from 'lucide-react';
 
 const navigationItems = [
@@ -48,12 +48,12 @@ export default function TotalAudioNavigation() {
             <div className="audio-mascot" />
             <span>Command Centre</span>
           </Link>
-          
+
           <div className="tap-nav-links">
-            {navigationItems.map((item) => {
+            {navigationItems.map(item => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
-              
+
               return (
                 <Link
                   key={item.name}
@@ -84,7 +84,7 @@ export default function TotalAudioNavigation() {
             <div className="audio-mascot" />
             <span>Command Centre</span>
           </Link>
-          
+
           <button
             onClick={toggleMobileMenu}
             className="tap-button tap-button-secondary tap-p-2"
@@ -93,15 +93,15 @@ export default function TotalAudioNavigation() {
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
-        
+
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="tap-p-4 tap-border-t tap-border-gray-200">
             <div className="tap-grid tap-grid-2 tap-gap-2">
-              {navigationItems.map((item) => {
+              {navigationItems.map(item => {
                 const Icon = item.icon;
                 const isActive = pathname === item.href;
-                
+
                 return (
                   <Link
                     key={item.name}
@@ -131,5 +131,3 @@ export default function TotalAudioNavigation() {
     </>
   );
 }
-
-

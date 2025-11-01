@@ -1,16 +1,14 @@
 ---
-title: "CC WORKFLOW"
+title: 'CC WORKFLOW'
 notion_url: https://www.notion.so/CC-WORKFLOW-25a0a35b21ed80ca9c65dd109f256d41
 exported_at: 2025-09-26T14:33:09.491Z
 ---
 
 # CC WORKFLOW
 
-
-**  One command to rule them all **
+** One command to rule them all **
 
 **cd /Users/chrisschofield/workspace/active/total-audio-platform/ && npm run status && npm run dev:audio-intel**
-
 
 🎯 COMMITTED TO MEMORY & CODEBASE!
 
@@ -70,8 +68,6 @@ node agent-manager.js chat orchestrator-real
 Your agent system is now bulletproof and will restore instantly every time Claude
 Code starts! The system is committed to both my memory and your git repository.
 
-
-
 🎯 Your Agent Commands (Memorized):
 
 # Main orchestrator
@@ -101,10 +97,6 @@ node agent-manager.js chat orchestrator-real
 - Agent Count: 23 operational agents
 
 - Workflows: 5 real-service workflows available
-
-
-
-
 
 Summon Main Orchestrator in CC
 
@@ -156,8 +148,6 @@ The orchestrators have 25 specialized agents ready for delegation across analyti
 generation, database operations, and more.
 
 Try: node agent-manager.js run orchestrator-real to start!
-
-
 
 Your orchestrator agents are now fully operational! Here's how to use them:
 
@@ -224,23 +214,26 @@ efficiently!
 
 What would you like to delegate first?
 
-
-
 🔄 Available Real Service Workflows
 
 1. real-agency-onboarding (4 steps)
+
 - Complete agency onboarding with real service setup
 
 1. real-campaign-launch (4 steps)
+
 - Launch campaign using real integrations
 
 1. real-contact-enrichment (4 steps)
+
 - Contact enrichment using real services
 
 1. real-service-maintenance (4 steps)
+
 - Maintenance using real service connections
 
 1. ai-campaign-optimization (4 steps)
+
 - Optimize campaigns using Claude AI insights
 
 All workflows use real services and have 4 steps each. To execute a workflow, you can run:

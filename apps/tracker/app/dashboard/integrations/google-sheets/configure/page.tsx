@@ -34,15 +34,22 @@ export default function GoogleSheetsConfigurePage() {
           </div>
 
           <div className="bg-green-50 border-2 border-green-300 rounded-xl p-6 mb-6">
-            <h3 className="font-black text-green-900 mb-2">What happens next?</h3>
+            <h3 className="font-black text-green-900 mb-2">
+              What happens next?
+            </h3>
             <ul className="space-y-2 text-green-800 font-medium">
               <li className="flex items-start gap-2">
                 <span className="text-green-600 mt-0.5">✓</span>
-                <span>Your campaigns sync to Google Sheets every 15 minutes</span>
+                <span>
+                  Your campaigns sync to Google Sheets every 15 minutes
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-600 mt-0.5">✓</span>
-                <span>Edit campaigns in either Tracker or Sheets - changes sync both ways</span>
+                <span>
+                  Edit campaigns in either Tracker or Sheets - changes sync both
+                  ways
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-600 mt-0.5">✓</span>

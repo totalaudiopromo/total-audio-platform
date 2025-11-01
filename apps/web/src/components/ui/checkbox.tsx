@@ -7,7 +7,12 @@ interface CheckboxProps {
   className?: string;
 }
 
-const Checkbox = ({ checked, onCheckedChange, disabled = false, className = '' }: CheckboxProps) => {
+const Checkbox = ({
+  checked,
+  onCheckedChange,
+  disabled = false,
+  className = '',
+}: CheckboxProps) => {
   return (
     <button
       type="button"
@@ -22,22 +27,12 @@ const Checkbox = ({ checked, onCheckedChange, disabled = false, className = '' }
       `}
     >
       {checked && (
-        <svg
-          className="h-4 w-4 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 13l4 4L19 7"
-          />
+        <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
         </svg>
       )}
     </button>
   );
 };
 
-export { Checkbox }; 
+export { Checkbox };

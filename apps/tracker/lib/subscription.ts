@@ -1,4 +1,5 @@
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 
 export type SubscriptionStatus =
   | 'free'
@@ -39,7 +40,7 @@ export interface SubscriptionLimits {
 export async function getUserSubscriptionDetails(
   userId?: string
 ): Promise<SubscriptionDetails | null> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
 
   if (!userId) {
     const {
@@ -65,7 +66,7 @@ export async function getUserSubscriptionDetails(
  * Check if user can create a new campaign
  */
 export async function canCreateCampaign(userId?: string): Promise<boolean> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
 
   if (!userId) {
     const {
@@ -120,9 +121,7 @@ export async function getSubscriptionLimits(
 /**
  * Check if user has an active subscription
  */
-export async function hasActiveSubscription(
-  userId?: string
-): Promise<boolean> {
+export async function hasActiveSubscription(userId?: string): Promise<boolean> {
   const details = await getUserSubscriptionDetails(userId);
 
   if (!details) return false;
@@ -159,7 +158,7 @@ export async function setBetaUser(
   userId: string,
   isBeta: boolean
 ): Promise<boolean> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
 
   const { error } = await supabase
     .from('user_profiles')
@@ -178,7 +177,7 @@ export async function setBetaUser(
  * Get pricing tier details from database
  */
 export async function getPricingTiers(userType: 'artist' | 'agency') {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
 
   const { data, error } = await supabase
     .from('pricing_tiers')
@@ -210,7 +209,7 @@ export async function syncSubscriptionFromStripe(
     cancel_at_period_end: boolean;
   }
 ): Promise<boolean> {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
 
   // Check if subscription exists
   const { data: existing } = await supabase
@@ -227,7 +226,8 @@ export async function syncSubscriptionFromStripe(
         status: subscriptionData.status,
         price_id: subscriptionData.price_id,
         plan_type: subscriptionData.plan_type,
-        current_period_start: subscriptionData.current_period_start.toISOString(),
+        current_period_start:
+          subscriptionData.current_period_start.toISOString(),
         current_period_end: subscriptionData.current_period_end.toISOString(),
         cancel_at_period_end: subscriptionData.cancel_at_period_end,
         updated_at: new Date().toISOString(),

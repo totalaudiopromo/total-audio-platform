@@ -13,21 +13,25 @@
 #### Priority 1: Supabase Client Issues (15 errors)
 
 **lib/integrations/google-sheets-sync.ts** (9 errors)
+
 - Same pattern as gmail-reply-tracker
 - Replace `private supabase = createClient();` with helper method
 - Replace all `this.supabase` with local `const supabase = await this.getSupabaseClient();`
 - Fix `supabase.raw()` calls (doesn't exist, use direct SQL or RPC)
 
 **lib/integrations/oauth-handler.ts** (4 errors)
+
 - Missing `supabase` property on class
 - Add `getSupabaseClient()` helper method
 - Replace all `this.supabase` references
 
 **app/api/cron/sync-integrations/route.ts** (1 error)
+
 - Fix `.raw()` call (property doesn't exist)
 - Use direct update or RPC call instead
 
 **Solution Pattern**:
+
 ```typescript
 // OLD (broken):
 export class MyClass {
@@ -54,13 +58,14 @@ export class MyClass {
 #### Priority 2: Date Handling (3 errors)
 
 **components/analytics/EnhancedAnalytics.tsx** (3 errors)
+
 - Line 63, 65: Undefined dates passed to `new Date()`
 - Add null checks before date construction
 - Use optional chaining and default dates
 
 ```typescript
 // OLD:
-const date = new Date(campaign.start_date);  // ERROR if undefined!
+const date = new Date(campaign.start_date); // ERROR if undefined!
 
 // NEW:
 const date = campaign.start_date ? new Date(campaign.start_date) : new Date();
@@ -69,18 +74,22 @@ const date = campaign.start_date ? new Date(campaign.start_date) : new Date();
 #### Priority 3: Type Safety (4 errors)
 
 **components/analytics/EnhancedAnalytics.tsx** (1 error)
+
 - Line 261: 'percent' is of type 'unknown'
 - Add type assertion or proper typing
 
 **lib/integrations/google-sheets-sync.ts** (1 error)
+
 - Line 95: Parameter 'c' implicitly has 'any' type
 - Add proper type annotation
 
 **app/pricing/page.tsx** (1 error)
+
 - Line 137: Type 'unknown' not assignable to 'ReactNode'
 - Add proper type assertion
 
 **.next/types/app/campaigns/[id]/page.ts** (1 error)
+
 - Next.js 15 async params issue
 - params must be awaited in page component
 
@@ -91,7 +100,11 @@ export default function Page({ params }: { params: { id: string } }) {
 }
 
 // NEW (Next.js 15):
-export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
 }
 ```
@@ -114,6 +127,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 ### 🧪 VALIDATION
 
 After each fix:
+
 ```bash
 npm run typecheck
 ```

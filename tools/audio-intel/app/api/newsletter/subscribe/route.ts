@@ -18,21 +18,15 @@ interface NewsletterSubscriber {
 export async function POST(request: NextRequest) {
   try {
     const { email, source = 'homepage' } = await request.json();
-    
+
     if (!email || typeof email !== 'string') {
-      return NextResponse.json(
-        { error: 'Valid email address is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Valid email address is required' }, { status: 400 });
     }
 
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
     }
 
     // Ensure data directory exists
@@ -53,7 +47,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if email already exists
-    const existingSubscriber = subscribers.find(sub => sub.email.toLowerCase() === email.toLowerCase());
+    const existingSubscriber = subscribers.find(
+      sub => sub.email.toLowerCase() === email.toLowerCase()
+    );
     if (existingSubscriber) {
       // Update existing subscriber
       existingSubscriber.subscribedAt = new Date().toISOString();
@@ -67,7 +63,7 @@ export async function POST(request: NextRequest) {
         email: email.toLowerCase(),
         subscribedAt: new Date().toISOString(),
         source,
-        tags: ['newsletter', 'audio-intel']
+        tags: ['newsletter', 'audio-intel'],
       });
     }
 
@@ -89,10 +85,10 @@ export async function POST(request: NextRequest) {
           fields: {
             source: source,
             signup_timestamp: new Date().toISOString(),
-            form_id: NEWSLETTER_FORM_ID
+            form_id: NEWSLETTER_FORM_ID,
           },
-          state: 'active' // Skip confirmation step
-        })
+          state: 'active', // Skip confirmation step
+        }),
       });
 
       if (formResponse.ok) {
@@ -107,15 +103,15 @@ export async function POST(request: NextRequest) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               api_secret: process.env.CONVERTKIT_API_SECRET,
-              tag: 'newsletter_subscriber'
-            })
+              tag: 'newsletter_subscriber',
+            }),
           });
         }
 
         // Send authentic welcome email
         const welcomeEmailData = {
           api_key: CONVERTKIT_API_KEY,
-          subject: "Quick question about your music marketing",
+          subject: 'Quick question about your music marketing',
           content: `<html>
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
 
@@ -157,9 +153,9 @@ export async function POST(request: NextRequest) {
 </html>`,
           description: `Newsletter welcome for ${email}`,
           public: false,
-          from_name: "Chris Schofield - Audio Intel",
-          from_email: "chris@totalaudiopromo.com",
-          reply_to: "chris@totalaudiopromo.com"
+          from_name: 'Chris Schofield - Audio Intel',
+          from_email: 'chris@totalaudiopromo.com',
+          reply_to: 'chris@totalaudiopromo.com',
         };
 
         // Send welcome email directly to subscriber
@@ -172,12 +168,11 @@ export async function POST(request: NextRequest) {
             content: welcomeEmailData.content,
             from_name: welcomeEmailData.from_name,
             from_email: welcomeEmailData.from_email,
-            reply_to: welcomeEmailData.reply_to
-          })
+            reply_to: welcomeEmailData.reply_to,
+          }),
         });
 
         console.log(`📧 Newsletter welcome email sent to ${email}`);
-
       } else {
         console.warn(`⚠️ ConvertKit newsletter subscription failed for ${email}`);
       }
@@ -191,9 +186,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       message: 'Cheers! Newsletter subscription sorted. Check your email in a mo.',
-      subscriberCount: subscribers.length
+      subscriberCount: subscribers.length,
     });
-
   } catch (error) {
     console.error('Newsletter subscription error:', error);
     return NextResponse.json(
@@ -207,7 +201,7 @@ async function trackUserEngagement(action: string, data: any) {
   try {
     const engagementFile = path.join(process.cwd(), 'data', 'user-engagement.json');
     const dataDir = path.dirname(engagementFile);
-    
+
     try {
       await fs.access(dataDir);
     } catch {
@@ -227,7 +221,7 @@ async function trackUserEngagement(action: string, data: any) {
       action,
       data,
       userAgent: 'server-side',
-      ip: 'server-side'
+      ip: 'server-side',
     });
 
     // Keep only last 1000 engagements to prevent file from growing too large

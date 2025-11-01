@@ -31,26 +31,27 @@ class GmailSimpleSetup {
     this.labels = [
       { name: 'Radio Work', description: 'All radio campaigns - active' },
       { name: 'Station Responses', description: 'Real feedback from stations' },
-      { name: 'Done', description: 'Completed campaigns' }
+      { name: 'Done', description: 'Completed campaigns' },
     ];
 
     // Simple filters for what you actually do
     this.filters = [
       {
-        description: 'Radio Campaigns (you get CC\'d)',
+        description: "Radio Campaigns (you get CC'd)",
         query: 'cc:chrisschofield@libertymusicpr.com (R4 OR R6)',
-        addLabels: ['Radio Work']
+        addLabels: ['Radio Work'],
       },
       {
         description: 'Station Responses',
-        query: 'to:chrisschofield@libertymusicpr.com (radio OR station OR presenter OR DJ) -from:libertymusicpr.com -subject:"out of office"',
-        addLabels: ['Station Responses']
-      }
+        query:
+          'to:chrisschofield@libertymusicpr.com (radio OR station OR presenter OR DJ) -from:libertymusicpr.com -subject:"out of office"',
+        addLabels: ['Station Responses'],
+      },
     ];
   }
 
   async cleanup() {
-    console.log('🧹 Removing complex labels you don\'t need...');
+    console.log("🧹 Removing complex labels you don't need...");
 
     const labelsResponse = await this.gmail.users.labels.list({ userId: 'me' });
     const existingLabels = labelsResponse.data.labels;
@@ -62,7 +63,7 @@ class GmailSimpleSetup {
       'Station Auto-Responses',
       'Completed',
       'Old Campaigns',
-      'Agent'
+      'Agent',
     ];
 
     for (const labelName of unnecessaryLabels) {
@@ -71,7 +72,7 @@ class GmailSimpleSetup {
         try {
           await this.gmail.users.labels.delete({
             userId: 'me',
-            id: label.id
+            id: label.id,
           });
           console.log(`✅ Removed: ${labelName}`);
         } catch (error) {
@@ -91,8 +92,8 @@ class GmailSimpleSetup {
           requestBody: {
             name: labelConfig.name,
             labelListVisibility: 'labelShow',
-            messageListVisibility: 'show'
-          }
+            messageListVisibility: 'show',
+          },
         });
         console.log(`✅ Created: ${labelConfig.name} - ${labelConfig.description}`);
       } catch (error) {
@@ -123,8 +124,8 @@ class GmailSimpleSetup {
           userId: 'me',
           requestBody: {
             criteria: { query: filter.query },
-            action: { addLabelIds: labelIds }
-          }
+            action: { addLabelIds: labelIds },
+          },
         });
 
         console.log(`✅ Created filter: ${filter.description}`);
@@ -146,7 +147,7 @@ class GmailSimpleSetup {
     console.log('🎉 Simple Gmail setup complete!');
     console.log('');
     console.log('📧 Your simplified workflow:');
-    console.log('  🔵 Radio Work - All your campaigns (when CC\'d on R4/R6)');
+    console.log("  🔵 Radio Work - All your campaigns (when CC'd on R4/R6)");
     console.log('  🟠 Station Responses - Real feedback from stations');
     console.log('  🟡 Done - Completed campaigns (manual)');
     console.log('');

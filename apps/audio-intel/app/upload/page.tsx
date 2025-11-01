@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { CheckCircle, Shield, UploadCloud } from "lucide-react";
-import SpreadsheetUploader from "@/components/SpreadsheetUploader";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { CheckCircle, Shield, UploadCloud } from 'lucide-react';
+import SpreadsheetUploader from '@/components/SpreadsheetUploader';
 
 export const metadata: Metadata = {
-  title: "Contact Upload | Audio Intel",
-  description: "Upload your contact spreadsheets and let Audio Intel clean, validate, and enrich every record in minutes.",
+  title: 'Contact Upload | Audio Intel',
+  description:
+    'Upload your contact spreadsheets and let Audio Intel clean, validate, and enrich every record in minutes.',
 };
 
 export default function UploadPage() {
@@ -20,7 +21,8 @@ export default function UploadPage() {
           Upload Contacts for Enrichment
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-gray-600">
-          Bring your CSV or Excel files and Audio Intel will clean, dedupe, and enrich every contact with submission-ready intelligence.
+          Bring your CSV or Excel files and Audio Intel will clean, dedupe, and enrich every contact
+          with submission-ready intelligence.
         </p>
       </header>
 
@@ -37,19 +39,22 @@ export default function UploadPage() {
           <li className="flex items-start gap-3">
             <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-blue-600" />
             <span>
-              Tap the <strong>“Upload contact spreadsheet”</strong> button above to open the native file picker on iOS, Android, or tablet devices.
+              Tap the <strong>“Upload contact spreadsheet”</strong> button above to open the native
+              file picker on iOS, Android, or tablet devices.
             </span>
           </li>
           <li className="flex items-start gap-3">
             <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-blue-600" />
             <span>
-              Supported formats include <strong>.csv</strong>, <strong>.xlsx</strong>, and <strong>.xls</strong>. Drag-and-drop also works on desktop browsers.
+              Supported formats include <strong>.csv</strong>, <strong>.xlsx</strong>, and{' '}
+              <strong>.xls</strong>. Drag-and-drop also works on desktop browsers.
             </span>
           </li>
           <li className="flex items-start gap-3">
             <Shield className="mt-1 h-5 w-5 flex-shrink-0 text-green-600" />
             <span>
-              Your files never leave Audio Intel’s secure processors—nothing is stored after enrichment completes.
+              Your files never leave Audio Intel’s secure processors—nothing is stored after
+              enrichment completes.
             </span>
           </li>
         </ul>

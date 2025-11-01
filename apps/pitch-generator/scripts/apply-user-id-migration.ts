@@ -17,7 +17,7 @@ if (!supabaseUrl || !supabaseServiceKey) {
   process.exit(1);
 }
 
-const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
+const (supabase as any) = createClient(supabaseUrl, supabaseServiceKey);
 
 async function applyMigration() {
   console.log('🔧 Applying user_id type migration...\n');
@@ -66,7 +66,7 @@ async function applyMigration() {
     // Verify the change
     console.log('🔍 Verifying column type...');
 
-    const { data, error } = await supabaseAdmin
+    const { data, error } = await (supabase as any)
       .from('information_schema.columns')
       .select('column_name, data_type, udt_name')
       .eq('table_name', 'user_pitch_settings')

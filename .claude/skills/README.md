@@ -5,6 +5,7 @@ This directory contains Claude Code skills for the Total Audio projects.
 ## Installation Status
 
 ### Installed Skills
+
 - [x] **Skill Creator** (writing-skills) - obra/superpowers ✅
 - [x] **Changelog Generator** - ComposioHQ/awesome-claude-skills ✅
 - [x] **Systematic Debugging** - obra/superpowers ✅
@@ -17,9 +18,11 @@ This directory contains Claude Code skills for the Total Audio projects.
 ## Skill Sources
 
 ### Anthropic Official Skills
+
 - https://github.com/anthropics/anthropic-skills
 
 ### Community Skills Repos
+
 - https://github.com/obra/superpowers
 - https://github.com/obra/superpowers-skills
 - https://github.com/ComposioHQ/awesome-claude-skills
@@ -31,6 +34,7 @@ This directory contains Claude Code skills for the Total Audio projects.
    - Restart Claude Code
 
 2. **Install via Plugin Marketplace:**
+
    ```
    /plugin → Add marketplace → Install skill collections
    ```
@@ -43,11 +47,13 @@ This directory contains Claude Code skills for the Total Audio projects.
 ## Project-Specific Skills
 
 ### Audio Intel Skills (Customer Acquisition Focus)
+
 - `audio-intel-component-generator`: Enforces mobile-first, conversion-optimized UI patterns
 - `customer-acquisition-tracker`: Tracks demo calls, conversions, revenue metrics
 - `mobile-ux-validator`: Ensures 21 UX standards are maintained
 
 ### totalaud.io Skills (Experimental Focus)
+
 - `experimental-feature-validator`: Prevents experimental code leaking to production
 - `theme-system-enforcer`: Validates theme config consistency across 5 themes
 - `onboarding-flow-tester`: Validates 4-phase onboarding state machine
@@ -55,11 +61,13 @@ This directory contains Claude Code skills for the Total Audio projects.
 ## Usage Guidelines
 
 ### During 2-Hour Sessions
+
 - Use "Systematic Debugging" for any blockers
 - Use "Skill Creator" to codify new patterns discovered
 - Use "Changelog Generator" before commits
 
 ### Customer Acquisition Phase
+
 - Focus on skills that improve conversion rates
 - Defer optimization skills until post-£500/month
 - Prioritize customer-facing quality over internal refactoring

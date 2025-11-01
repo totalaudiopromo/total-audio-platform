@@ -61,7 +61,7 @@ export interface PlatformContent {
   };
   instagram: {
     content: {
-      slides: Array<{title: string; content: string}>;
+      slides: Array<{ title: string; content: string }>;
       caption: string;
       hashtags: string[];
     };
@@ -87,7 +87,7 @@ export function NewsjackingDashboard() {
       setLoading(true);
       const response = await fetch('/api/newsjacking/content');
       const result = await response.json();
-      
+
       if (result.success) {
         // Parse dates that come as strings from JSON
         const parsedContent = result.data.map((item: any) => ({
@@ -98,13 +98,13 @@ export function NewsjackingDashboard() {
             source: item.originalStory.source,
             publishedAt: new Date(item.originalStory.publishedAt),
             relevanceScore: item.originalStory.relevanceScore,
-            url: item.originalStory.url
+            url: item.originalStory.url,
           },
           unsignedAngle: {
             type: item.unsignedAngle.urgency,
             angle: item.unsignedAngle.angle,
             opportunity: item.unsignedAngle.keyInsight,
-            actionable: item.unsignedAngle.actionableAdvice
+            actionable: item.unsignedAngle.actionableAdvice,
           },
           newsletterSections: item.newsletterSections.map((section: any) => ({
             id: section.title,
@@ -114,41 +114,47 @@ export function NewsjackingDashboard() {
             keyTakeaways: [item.unsignedAngle.keyInsight],
             audioIntelConnection: 'Contact data enrichment opportunity',
             urgency: item.unsignedAngle.urgency,
-            estimatedReach: 15000
+            estimatedReach: 15000,
           })),
           platformContent: {
             twitter: {
               content: item.multiPlatformContent.twitter.content,
               hashtags: ['#UnsignedAdvantage', '#IndieArtist', '#MusicBusiness'],
-              scheduledFor: new Date(item.multiPlatformContent.twitter.scheduledFor)
+              scheduledFor: new Date(item.multiPlatformContent.twitter.scheduledFor),
             },
             linkedin: {
               content: {
                 title: item.multiPlatformContent.linkedin.content.title,
                 article: item.multiPlatformContent.linkedin.content.article,
-                summary: item.multiPlatformContent.linkedin.content.title
+                summary: item.multiPlatformContent.linkedin.content.title,
               },
-              scheduledFor: new Date(item.multiPlatformContent.linkedin.scheduledFor)
+              scheduledFor: new Date(item.multiPlatformContent.linkedin.scheduledFor),
             },
             instagram: {
               content: {
-                slides: item.multiPlatformContent.instagram.content.slides.map((slide: string, index: number) => ({
-                  title: `Slide ${index + 1}`,
-                  content: slide
-                })),
+                slides: item.multiPlatformContent.instagram.content.slides.map(
+                  (slide: string, index: number) => ({
+                    title: `Slide ${index + 1}`,
+                    content: slide,
+                  })
+                ),
                 caption: item.multiPlatformContent.instagram.content.caption,
-                hashtags: ['#UnsignedAdvantage', '#IndieArtist', '#MusicBusiness']
+                hashtags: ['#UnsignedAdvantage', '#IndieArtist', '#MusicBusiness'],
               },
-              scheduledFor: new Date(item.multiPlatformContent.instagram.scheduledFor)
-            }
+              scheduledFor: new Date(item.multiPlatformContent.instagram.scheduledFor),
+            },
           },
           generatedAt: new Date(item.createdAt),
           status: item.status as 'pending' | 'approved' | 'rejected' | 'scheduled' | 'published',
           voiceScore: item.voiceScore,
           estimatedReach: 25000,
-          urgency: item.unsignedAngle.urgency === 'immediate' ? 'immediate' : 
-                   item.unsignedAngle.urgency === 'high' ? 'same_day' : 'this_week' as 'immediate' | 'same_day' | 'this_week',
-          feedback: undefined
+          urgency:
+            item.unsignedAngle.urgency === 'immediate'
+              ? 'immediate'
+              : item.unsignedAngle.urgency === 'high'
+                ? 'same_day'
+                : ('this_week' as 'immediate' | 'same_day' | 'this_week'),
+          feedback: undefined,
         }));
         setPendingContent(parsedContent);
       }
@@ -164,13 +170,13 @@ export function NewsjackingDashboard() {
       await fetch('/api/newsjacking/content', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'approve', contentId })
+        body: JSON.stringify({ action: 'approve', contentId }),
       });
-      
-      setPendingContent(prev => 
-        prev.map(c => c.id === contentId ? { ...c, status: 'approved', feedback } : c)
+
+      setPendingContent(prev =>
+        prev.map(c => (c.id === contentId ? { ...c, status: 'approved', feedback } : c))
       );
-      
+
       setSelectedContent(null);
     } catch (error) {
       console.error('Failed to approve content:', error);
@@ -182,13 +188,13 @@ export function NewsjackingDashboard() {
       await fetch('/api/newsjacking/content', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'reject', contentId })
+        body: JSON.stringify({ action: 'reject', contentId }),
       });
-      
-      setPendingContent(prev => 
-        prev.map(c => c.id === contentId ? { ...c, status: 'rejected', feedback: reason } : c)
+
+      setPendingContent(prev =>
+        prev.map(c => (c.id === contentId ? { ...c, status: 'rejected', feedback: reason } : c))
       );
-      
+
       setSelectedContent(null);
     } catch (error) {
       console.error('Failed to reject content:', error);
@@ -200,11 +206,11 @@ export function NewsjackingDashboard() {
       await fetch('/api/newsjacking/content', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'schedule', contentId, scheduledTime: scheduleDate })
+        body: JSON.stringify({ action: 'schedule', contentId, scheduledTime: scheduleDate }),
       });
-      
-      setPendingContent(prev => 
-        prev.map(c => c.id === contentId ? { ...c, status: 'scheduled' } : c)
+
+      setPendingContent(prev =>
+        prev.map(c => (c.id === contentId ? { ...c, status: 'scheduled' } : c))
       );
     } catch (error) {
       console.error('Failed to schedule content:', error);
@@ -239,7 +245,7 @@ export function NewsjackingDashboard() {
       {/* Filters */}
       <div className="mb-6">
         <div className="flex space-x-4">
-          {['all', 'pending', 'approved', 'published'].map((filterOption) => (
+          {['all', 'pending', 'approved', 'published'].map(filterOption => (
             <button
               key={filterOption}
               onClick={() => setFilter(filterOption as any)}
@@ -251,7 +257,12 @@ export function NewsjackingDashboard() {
             >
               {filterOption.charAt(0).toUpperCase() + filterOption.slice(1)}
               <span className="ml-2 text-sm">
-                ({pendingContent.filter(c => filterOption === 'all' || c.status === filterOption).length})
+                (
+                {
+                  pendingContent.filter(c => filterOption === 'all' || c.status === filterOption)
+                    .length
+                }
+                )
               </span>
             </button>
           ))}
@@ -262,13 +273,11 @@ export function NewsjackingDashboard() {
         {/* Content List */}
         <div className="lg:col-span-1 space-y-4">
           <h2 className="text-xl font-semibold text-gray-900">Generated Content</h2>
-          
+
           {filteredContent.length === 0 ? (
-            <div className="text-center text-gray-500 py-8">
-              No content to review
-            </div>
+            <div className="text-center text-gray-500 py-8">No content to review</div>
           ) : (
-            filteredContent.map((content) => (
+            filteredContent.map(content => (
               <ContentCard
                 key={content.id}
                 content={content}
@@ -284,9 +293,9 @@ export function NewsjackingDashboard() {
           {selectedContent ? (
             <ContentPreview
               content={selectedContent}
-              onApprove={(feedback) => approveContent(selectedContent.id, feedback)}
-              onReject={(reason) => rejectContent(selectedContent.id, reason)}
-              onSchedule={(date) => scheduleContent(selectedContent.id, date)}
+              onApprove={feedback => approveContent(selectedContent.id, feedback)}
+              onReject={reason => rejectContent(selectedContent.id, reason)}
+              onSchedule={date => scheduleContent(selectedContent.id, date)}
             />
           ) : (
             <div className="bg-gray-50 rounded-lg p-8 text-center">
@@ -304,67 +313,79 @@ export function NewsjackingDashboard() {
 /**
  * Content Card Component
  */
-function ContentCard({ 
-  content, 
-  isSelected, 
-  onClick 
-}: { 
+function ContentCard({
+  content,
+  isSelected,
+  onClick,
+}: {
   content: GeneratedContent;
   isSelected: boolean;
   onClick: () => void;
 }) {
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'approved': return 'bg-green-100 text-green-800';
-      case 'rejected': return 'bg-red-100 text-red-800';
-      case 'scheduled': return 'bg-blue-100 text-blue-800';
-      case 'published': return 'bg-purple-100 text-purple-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'pending':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'approved':
+        return 'bg-green-100 text-green-800';
+      case 'rejected':
+        return 'bg-red-100 text-red-800';
+      case 'scheduled':
+        return 'bg-blue-100 text-blue-800';
+      case 'published':
+        return 'bg-purple-100 text-purple-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
   const getUrgencyColor = (urgency: string) => {
     switch (urgency) {
-      case 'immediate': return 'bg-red-100 text-red-800';
-      case 'same_day': return 'bg-orange-100 text-orange-800';
-      case 'this_week': return 'bg-yellow-100 text-yellow-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'immediate':
+        return 'bg-red-100 text-red-800';
+      case 'same_day':
+        return 'bg-orange-100 text-orange-800';
+      case 'this_week':
+        return 'bg-yellow-100 text-yellow-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
   return (
-    <div 
+    <div
       className={`border rounded-lg p-4 cursor-pointer transition-all ${
-        isSelected 
-          ? 'border-blue-500 bg-blue-50 shadow-md' 
+        isSelected
+          ? 'border-blue-500 bg-blue-50 shadow-md'
           : 'border-gray-200 hover:border-gray-300 hover:shadow-sm'
       }`}
       onClick={onClick}
     >
       <div className="flex justify-between items-start mb-2">
-        <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(content.status)}`}>
+        <span
+          className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(content.status)}`}
+        >
           {content.status.charAt(0).toUpperCase() + content.status.slice(1)}
         </span>
-        <span className={`px-2 py-1 rounded-full text-xs font-medium ${getUrgencyColor(content.urgency)}`}>
+        <span
+          className={`px-2 py-1 rounded-full text-xs font-medium ${getUrgencyColor(content.urgency)}`}
+        >
           {content.urgency.replace('_', ' ')}
         </span>
       </div>
-      
-      <h3 className="font-medium text-gray-900 mb-2 line-clamp-2">
-        {content.originalStory.title}
-      </h3>
-      
+
+      <h3 className="font-medium text-gray-900 mb-2 line-clamp-2">{content.originalStory.title}</h3>
+
       <div className="text-sm text-gray-600 mb-2">
         {content.originalStory.source} • {content.originalStory.relevanceScore.toFixed(2)} relevance
       </div>
-      
+
       <div className="flex justify-between items-center text-xs text-gray-500">
         <span>{content.newsletterSections.length} sections</span>
         <span>Voice: {(content.voiceScore * 100).toFixed(0)}%</span>
         <span>{content.estimatedReach.toLocaleString()} reach</span>
       </div>
-      
+
       <div className="text-xs text-gray-500 mt-1">
         {new Date(content.generatedAt).toLocaleDateString()}
       </div>
@@ -375,11 +396,11 @@ function ContentCard({
 /**
  * Content Preview Component
  */
-function ContentPreview({ 
-  content, 
-  onApprove, 
-  onReject, 
-  onSchedule 
+function ContentPreview({
+  content,
+  onApprove,
+  onReject,
+  onSchedule,
 }: {
   content: GeneratedContent;
   onApprove: (feedback?: string) => void;
@@ -406,7 +427,7 @@ function ContentPreview({
               {content.originalStory.source} • {content.unsignedAngle.type.replace('_', ' ')}
             </div>
           </div>
-          
+
           <div className="text-right">
             <div className="text-sm font-medium text-gray-900">
               Voice Score: {(content.voiceScore * 100).toFixed(0)}%
@@ -428,7 +449,7 @@ function ContentPreview({
 
         {/* Tab Navigation */}
         <div className="flex space-x-4">
-          {['newsletter', 'twitter', 'linkedin', 'instagram'].map((tab) => (
+          {['newsletter', 'twitter', 'linkedin', 'instagram'].map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -446,18 +467,12 @@ function ContentPreview({
 
       {/* Content Preview */}
       <div className="p-6">
-        {activeTab === 'newsletter' && (
-          <NewsletterPreview sections={content.newsletterSections} />
-        )}
-        
-        {activeTab === 'twitter' && (
-          <TwitterPreview content={content.platformContent.twitter} />
-        )}
-        
-        {activeTab === 'linkedin' && (
-          <LinkedInPreview content={content.platformContent.linkedin} />
-        )}
-        
+        {activeTab === 'newsletter' && <NewsletterPreview sections={content.newsletterSections} />}
+
+        {activeTab === 'twitter' && <TwitterPreview content={content.platformContent.twitter} />}
+
+        {activeTab === 'linkedin' && <LinkedInPreview content={content.platformContent.linkedin} />}
+
         {activeTab === 'instagram' && (
           <InstagramPreview content={content.platformContent.instagram} />
         )}
@@ -474,14 +489,14 @@ function ContentPreview({
               >
                 Approve & Publish
               </button>
-              
+
               <button
                 onClick={() => setShowScheduleModal(true)}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 font-medium"
               >
                 Schedule
               </button>
-              
+
               <button
                 onClick={() => setShowRejectModal(true)}
                 className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 font-medium"
@@ -489,13 +504,13 @@ function ContentPreview({
                 Reject
               </button>
             </div>
-            
+
             <div className="flex-1 max-w-md ml-4">
               <input
                 type="text"
                 placeholder="Add feedback (optional)..."
                 value={feedback}
-                onChange={(e) => setFeedback(e.target.value)}
+                onChange={e => setFeedback(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
               />
             </div>
@@ -522,11 +537,11 @@ function NewsletterPreview({ sections }: { sections: NewsletterSection[] }) {
               {section.type}
             </span>
           </div>
-          
+
           <div className="prose prose-sm max-w-none">
             <p className="text-gray-700 whitespace-pre-line">{section.content}</p>
           </div>
-          
+
           <div className="mt-4 pt-3 border-t border-gray-100">
             <div className="flex justify-between items-center text-xs text-gray-600">
               <span>Audio Intel: {section.audioIntelConnection}</span>
@@ -546,9 +561,10 @@ function TwitterPreview({ content }: { content: any }) {
   return (
     <div className="space-y-4">
       <div className="text-sm text-gray-600 mb-4">
-        Thread of {content.content.length} tweets • Scheduled: {content.scheduledFor.toLocaleString()}
+        Thread of {content.content.length} tweets • Scheduled:{' '}
+        {content.scheduledFor.toLocaleString()}
       </div>
-      
+
       {content.content.map((tweet: string, index: number) => (
         <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
           <div className="flex justify-between items-start mb-2">
@@ -558,16 +574,14 @@ function TwitterPreview({ content }: { content: any }) {
           <p className="text-gray-800">{tweet}</p>
         </div>
       ))}
-      
-      <div className="text-xs text-gray-600">
-        Hashtags: {content.hashtags.join(' ')}
-      </div>
+
+      <div className="text-xs text-gray-600">Hashtags: {content.hashtags.join(' ')}</div>
     </div>
   );
 }
 
 /**
- * LinkedIn Preview Component  
+ * LinkedIn Preview Component
  */
 function LinkedInPreview({ content }: { content: any }) {
   return (
@@ -575,11 +589,9 @@ function LinkedInPreview({ content }: { content: any }) {
       <div className="text-sm text-gray-600 mb-4">
         Article • Scheduled: {content.scheduledFor.toLocaleString()}
       </div>
-      
+
       <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-          {content.content.title}
-        </h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">{content.content.title}</h3>
         <p className="text-sm text-gray-600 mb-4">{content.content.summary}</p>
         <div className="prose prose-sm max-w-none">
           <p className="text-gray-800 whitespace-pre-line">{content.content.article}</p>
@@ -596,24 +608,26 @@ function InstagramPreview({ content }: { content: any }) {
   return (
     <div className="space-y-4">
       <div className="text-sm text-gray-600 mb-4">
-        Carousel of {content.content.slides.length} slides • Scheduled: {content.scheduledFor.toLocaleString()}
+        Carousel of {content.content.slides.length} slides • Scheduled:{' '}
+        {content.scheduledFor.toLocaleString()}
       </div>
-      
+
       <div className="grid grid-cols-2 gap-4 mb-4">
         {content.content.slides.map((slide: any, index: number) => (
-          <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4 aspect-square flex flex-col justify-center">
+          <div
+            key={index}
+            className="bg-gray-50 border border-gray-200 rounded-lg p-4 aspect-square flex flex-col justify-center"
+          >
             <h4 className="font-semibold text-gray-900 text-center mb-2">{slide.title}</h4>
             <p className="text-sm text-gray-700 text-center">{slide.content}</p>
           </div>
         ))}
       </div>
-      
+
       <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
         <h4 className="font-medium text-gray-900 mb-2">Caption</h4>
         <p className="text-gray-800 whitespace-pre-line">{content.content.caption}</p>
-        <div className="text-xs text-gray-600 mt-2">
-          {content.content.hashtags.join(' ')}
-        </div>
+        <div className="text-xs text-gray-600 mt-2">{content.content.hashtags.join(' ')}</div>
       </div>
     </div>
   );

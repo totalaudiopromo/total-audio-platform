@@ -23,7 +23,9 @@ interface ContactList {
 }
 
 export default function PerplexityIntegration() {
-  const [activeTab, setActiveTab] = useState<'journalists' | 'research' | 'contacts'>('journalists');
+  const [activeTab, setActiveTab] = useState<'journalists' | 'research' | 'contacts'>(
+    'journalists'
+  );
   const [loading, setLoading] = useState(false);
   const [journalists, setJournalists] = useState<Journalist[]>([]);
   const [research, setResearch] = useState<IndustryResearch | null>(null);
@@ -33,7 +35,7 @@ export default function PerplexityIntegration() {
 
   const handleFindJournalists = async () => {
     if (!industry) return;
-    
+
     setLoading(true);
     try {
       const result = await perplexityApi.findJournalists(industry, location);
@@ -49,7 +51,7 @@ export default function PerplexityIntegration() {
 
   const handleResearchIndustry = async () => {
     if (!industry) return;
-    
+
     setLoading(true);
     try {
       const result = await perplexityApi.researchIndustry(industry);
@@ -65,7 +67,7 @@ export default function PerplexityIntegration() {
 
   const handleFindContactLists = async () => {
     if (!industry) return;
-    
+
     setLoading(true);
     try {
       const result = await perplexityApi.findContactLists(industry);
@@ -86,12 +88,17 @@ export default function PerplexityIntegration() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <button 
+              <button
                 onClick={() => window.history.back()}
                 className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
                 </svg>
                 Back to Integrations
               </button>
@@ -117,13 +124,11 @@ export default function PerplexityIntegration() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200/50 p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Industry *
-              </label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Industry *</label>
               <input
                 type="text"
                 value={industry}
-                onChange={(e) => setIndustry(e.target.value)}
+                onChange={e => setIndustry(e.target.value)}
                 placeholder="e.g., technology, healthcare, finance"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
@@ -135,7 +140,7 @@ export default function PerplexityIntegration() {
               <input
                 type="text"
                 value={location}
-                onChange={(e) => setLocation(e.target.value)}
+                onChange={e => setLocation(e.target.value)}
                 placeholder="e.g., San Francisco, CA"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
@@ -150,8 +155,8 @@ export default function PerplexityIntegration() {
               {[
                 { id: 'journalists', label: 'Find Journalists', icon: '👥' },
                 { id: 'research', label: 'Industry Research', icon: '📊' },
-                { id: 'contacts', label: 'Contact Lists', icon: '📋' }
-              ].map((tab) => (
+                { id: 'contacts', label: 'Contact Lists', icon: '📋' },
+              ].map(tab => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
@@ -182,7 +187,7 @@ export default function PerplexityIntegration() {
                     {loading ? 'Searching...' : 'Find Journalists'}
                   </button>
                 </div>
-                
+
                 {journalists.length > 0 && (
                   <div className="grid gap-4">
                     {journalists.map((journalist, index) => (
@@ -195,17 +200,30 @@ export default function PerplexityIntegration() {
                           </div>
                           <div className="flex gap-2">
                             {journalist.email && (
-                              <a href={`mailto:${journalist.email}`} className="text-blue-600 hover:text-blue-800">
+                              <a
+                                href={`mailto:${journalist.email}`}
+                                className="text-blue-600 hover:text-blue-800"
+                              >
                                 📧
                               </a>
                             )}
                             {journalist.twitter && (
-                              <a href={journalist.twitter} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+                              <a
+                                href={journalist.twitter}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-600 hover:text-blue-800"
+                              >
                                 🐦
                               </a>
                             )}
                             {journalist.linkedin && (
-                              <a href={journalist.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+                              <a
+                                href={journalist.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-600 hover:text-blue-800"
+                              >
                                 💼
                               </a>
                             )}
@@ -231,7 +249,7 @@ export default function PerplexityIntegration() {
                     {loading ? 'Researching...' : 'Research Industry'}
                   </button>
                 </div>
-                
+
                 {research && (
                   <div className="grid gap-6">
                     <div>
@@ -245,7 +263,7 @@ export default function PerplexityIntegration() {
                         ))}
                       </ul>
                     </div>
-                    
+
                     <div>
                       <h4 className="font-medium text-gray-900 mb-3">Insights</h4>
                       <ul className="space-y-2">
@@ -257,7 +275,7 @@ export default function PerplexityIntegration() {
                         ))}
                       </ul>
                     </div>
-                    
+
                     <div>
                       <h4 className="font-medium text-gray-900 mb-3">Opportunities</h4>
                       <ul className="space-y-2">
@@ -287,7 +305,7 @@ export default function PerplexityIntegration() {
                     {loading ? 'Finding...' : 'Find Contact Lists'}
                   </button>
                 </div>
-                
+
                 {contactLists.length > 0 && (
                   <div className="grid gap-4">
                     {contactLists.map((list, index) => (
@@ -296,8 +314,13 @@ export default function PerplexityIntegration() {
                         <p className="text-sm text-gray-600 mb-3">{list.description}</p>
                         <div className="space-y-2">
                           {list.contacts.map((contact, contactIndex) => (
-                            <div key={contactIndex} className="flex justify-between items-center text-sm">
-                              <span className="text-gray-700">{contact.name} - {contact.outlet}</span>
+                            <div
+                              key={contactIndex}
+                              className="flex justify-between items-center text-sm"
+                            >
+                              <span className="text-gray-700">
+                                {contact.name} - {contact.outlet}
+                              </span>
                               <span className="text-gray-500">{contact.beat}</span>
                             </div>
                           ))}
@@ -313,4 +336,4 @@ export default function PerplexityIntegration() {
       </div>
     </div>
   );
-} 
+}

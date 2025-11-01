@@ -10,7 +10,7 @@ const mockProjects = [
     tasks: 15,
     priority: 'high' as const,
     lastUpdated: new Date().toISOString(),
-    assignee: 'Chris Schofield'
+    assignee: 'Chris Schofield',
   },
   {
     id: '2',
@@ -20,7 +20,7 @@ const mockProjects = [
     tasks: 8,
     priority: 'medium' as const,
     lastUpdated: new Date().toISOString(),
-    assignee: 'Dev Team'
+    assignee: 'Dev Team',
   },
   {
     id: '3',
@@ -30,21 +30,18 @@ const mockProjects = [
     tasks: 12,
     priority: 'low' as const,
     lastUpdated: new Date().toISOString(),
-    assignee: 'AI Team'
-  }
+    assignee: 'AI Team',
+  },
 ];
 
 export async function GET() {
   try {
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 500));
-    
+
     return NextResponse.json(mockProjects);
   } catch (error) {
     console.error('Error fetching projects:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch projects' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch projects' }, { status: 500 });
   }
 }

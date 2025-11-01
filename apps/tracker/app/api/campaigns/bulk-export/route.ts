@@ -1,4 +1,4 @@
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
@@ -7,7 +7,10 @@ export async function POST(request: Request) {
     const supabase = await createServerClient(cookies());
 
     // Check authentication
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
     }
@@ -60,14 +63,16 @@ export async function POST(request: Request) {
       'Notes',
     ];
 
-    const rows = campaigns.map((campaign) => {
-      const successRate = campaign.target_reach > 0
-        ? ((campaign.actual_reach / campaign.target_reach) * 100).toFixed(1)
-        : '0';
+    const rows = campaigns.map(campaign => {
+      const successRate =
+        campaign.target_reach > 0
+          ? ((campaign.actual_reach / campaign.target_reach) * 100).toFixed(1)
+          : '0';
 
-      const costPerResult = campaign.actual_reach > 0
-        ? (campaign.budget / campaign.actual_reach).toFixed(2)
-        : '0';
+      const costPerResult =
+        campaign.actual_reach > 0
+          ? (campaign.budget / campaign.actual_reach).toFixed(2)
+          : '0';
 
       return [
         campaign.name || '',
@@ -88,10 +93,11 @@ export async function POST(request: Request) {
     // Build CSV content
     const csvContent = [
       headers.join(','),
-      ...rows.map((row) =>
+      ...rows.map(row =>
         row
-          .map((cell) =>
-            typeof cell === 'string' && (cell.includes(',') || cell.includes('"') || cell.includes('\n'))
+          .map(cell =>
+            typeof cell === 'string' &&
+            (cell.includes(',') || cell.includes('"') || cell.includes('\n'))
               ? `"${cell}"`
               : cell
           )

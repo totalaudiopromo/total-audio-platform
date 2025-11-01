@@ -17,7 +17,9 @@ function extractIdFromUrl(url) {
     if (qp) return normalize(qp);
     const segs = u.pathname.split('/').filter(Boolean);
     const last = segs[segs.length - 1] || '';
-    const mDash = last.match(/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/);
+    const mDash = last.match(
+      /([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/
+    );
     if (mDash) return normalize(mDash[1]);
     const mRaw = last.match(/([0-9a-fA-F]{32})/);
     if (mRaw) return normalize(mRaw[1]);
@@ -28,24 +30,27 @@ function extractIdFromUrl(url) {
 function normalize(id) {
   const clean = id.replace(/[^0-9a-fA-F]/g, '').toLowerCase();
   if (clean.length !== 32) return null;
-  return `${clean.slice(0,8)}-${clean.slice(8,12)}-${clean.slice(12,16)}-${clean.slice(16,20)}-${clean.slice(20)}`;
+  return `${clean.slice(0, 8)}-${clean.slice(8, 12)}-${clean.slice(12, 16)}-${clean.slice(16, 20)}-${clean.slice(20)}`;
 }
 
 function get(path) {
   return new Promise((resolve, reject) => {
-    const req = https.request({
-      hostname: 'api.notion.com',
-      path,
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Notion-Version': '2022-06-28'
+    const req = https.request(
+      {
+        hostname: 'api.notion.com',
+        path,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Notion-Version': '2022-06-28',
+        },
+      },
+      res => {
+        let data = '';
+        res.on('data', c => (data += c));
+        res.on('end', () => resolve({ status: res.statusCode, data }));
       }
-    }, (res) => {
-      let data = '';
-      res.on('data', c => data += c);
-      res.on('end', () => resolve({ status: res.statusCode, data }));
-    });
+    );
     req.on('error', reject);
     req.end();
   });
@@ -87,5 +92,7 @@ async function main() {
   if (summary.failed > 0) process.exitCode = 2;
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
-
+main().catch(e => {
+  console.error(e);
+  process.exit(1);
+});

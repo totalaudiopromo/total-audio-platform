@@ -1,7 +1,11 @@
 // Underground Music Content Fetcher
 // Fetches content from curated underground music sources
 
-import { UNDERGROUND_MUSIC_SOURCES, MusicSource, CONTENT_CATEGORIES } from './undergroundMusicSources';
+import {
+  UNDERGROUND_MUSIC_SOURCES,
+  MusicSource,
+  CONTENT_CATEGORIES,
+} from './undergroundMusicSources';
 
 export interface UndergroundArticle {
   title: string;
@@ -41,7 +45,7 @@ export class UndergroundContentFetcher {
       try {
         console.log(`Fetching from ${source.name}...`);
         const articles = await this.fetchFromSource(source);
-        
+
         if (articles.length > 0) {
           allArticles.push(...articles);
           usedSources.push(source.name);
@@ -70,7 +74,7 @@ export class UndergroundContentFetcher {
       articles: sortedArticles,
       sources: usedSources,
       totalFound: allArticles.length,
-      categories: Array.from(categories)
+      categories: Array.from(categories),
     };
   }
 
@@ -90,7 +94,7 @@ export class UndergroundContentFetcher {
 
       const xmlText = await response.text();
       const articles = this.parseRSSFeed(xmlText, source);
-      
+
       return articles;
     } catch (error) {
       console.log(`Error fetching RSS from ${source.name}:`, error);
@@ -101,7 +105,7 @@ export class UndergroundContentFetcher {
   // Parse RSS feed XML
   private parseRSSFeed(xmlText: string, source: MusicSource): UndergroundArticle[] {
     const articles: UndergroundArticle[] = [];
-    
+
     try {
       // Simple RSS parsing (in production, use a proper XML parser)
       const itemRegex = /<item>([\s\S]*?)<\/item>/g;
@@ -109,7 +113,7 @@ export class UndergroundContentFetcher {
 
       while ((match = itemRegex.exec(xmlText)) !== null) {
         const itemXml = match[1];
-        
+
         const title = this.extractFromXml(itemXml, 'title');
         const description = this.extractFromXml(itemXml, 'description');
         const link = this.extractFromXml(itemXml, 'link');
@@ -125,7 +129,7 @@ export class UndergroundContentFetcher {
             category: this.categorizeContent(title, description || '', source.focus),
             relevanceScore: this.calculateRelevanceScore(title, description || '', source.focus),
             excerpt: this.generateExcerpt(description || title),
-            tags: this.extractTags(title, description || '', source.focus)
+            tags: this.extractTags(title, description || '', source.focus),
           };
 
           articles.push(article);
@@ -161,7 +165,7 @@ export class UndergroundContentFetcher {
   // Categorize content based on title, description, and source focus
   private categorizeContent(title: string, description: string, sourceFocus: string[]): string {
     const text = (title + ' ' + description).toLowerCase();
-    
+
     // Check each category
     for (const [category, keywords] of Object.entries(CONTENT_CATEGORIES)) {
       if (keywords.some(keyword => text.includes(keyword))) {
@@ -174,20 +178,36 @@ export class UndergroundContentFetcher {
     if (sourceFocus.includes('business')) return 'business';
     if (sourceFocus.includes('culture')) return 'culture';
     if (sourceFocus.includes('technology')) return 'technology';
-    
+
     return 'general';
   }
 
   // Calculate relevance score for independent artists
-  private calculateRelevanceScore(title: string, description: string, sourceFocus: string[]): number {
+  private calculateRelevanceScore(
+    title: string,
+    description: string,
+    sourceFocus: string[]
+  ): number {
     const text = (title + ' ' + description).toLowerCase();
     let score = 50; // Base score
 
     // Boost for independent artist keywords
     const indieKeywords = [
-      'independent', 'indie', 'underground', 'producer', 'artist',
-      'self-release', 'diy', 'bedroom', 'home studio', 'unsigned',
-      'promotion', 'marketing', 'streaming', 'playlist', 'radio'
+      'independent',
+      'indie',
+      'underground',
+      'producer',
+      'artist',
+      'self-release',
+      'diy',
+      'bedroom',
+      'home studio',
+      'unsigned',
+      'promotion',
+      'marketing',
+      'streaming',
+      'playlist',
+      'radio',
     ];
 
     indieKeywords.forEach(keyword => {
@@ -198,8 +218,16 @@ export class UndergroundContentFetcher {
 
     // Boost for production/technical content
     const productionKeywords = [
-      'production', 'mixing', 'mastering', 'synthesis', 'sampling',
-      'daw', 'plugin', 'tutorial', 'technique', 'workflow'
+      'production',
+      'mixing',
+      'mastering',
+      'synthesis',
+      'sampling',
+      'daw',
+      'plugin',
+      'tutorial',
+      'technique',
+      'workflow',
     ];
 
     productionKeywords.forEach(keyword => {
@@ -210,8 +238,16 @@ export class UndergroundContentFetcher {
 
     // Boost for business/marketing content
     const businessKeywords = [
-      'marketing', 'promotion', 'streaming', 'royalties', 'distribution',
-      'playlist', 'radio', 'pr', 'campaign', 'strategy'
+      'marketing',
+      'promotion',
+      'streaming',
+      'royalties',
+      'distribution',
+      'playlist',
+      'radio',
+      'pr',
+      'campaign',
+      'strategy',
     ];
 
     businessKeywords.forEach(keyword => {
@@ -222,8 +258,16 @@ export class UndergroundContentFetcher {
 
     // Boost for AI empowerment content (not hype)
     const aiEmpowermentKeywords = [
-      'ai marketing', 'automation', 'independent artist', 'diy', 'affordable',
-      'empower', 'level playing field', 'accessible', 'practical', 'budget'
+      'ai marketing',
+      'automation',
+      'independent artist',
+      'diy',
+      'affordable',
+      'empower',
+      'level playing field',
+      'accessible',
+      'practical',
+      'budget',
     ];
 
     aiEmpowermentKeywords.forEach(keyword => {
@@ -234,8 +278,17 @@ export class UndergroundContentFetcher {
 
     // Boost for UK/European content (your audience)
     const ukKeywords = [
-      'uk', 'british', 'london', 'manchester', 'birmingham', 'glasgow',
-      'europe', 'european', 'bbc', 'radio 1', 'radio 6'
+      'uk',
+      'british',
+      'london',
+      'manchester',
+      'birmingham',
+      'glasgow',
+      'europe',
+      'european',
+      'bbc',
+      'radio 1',
+      'radio 6',
     ];
 
     ukKeywords.forEach(keyword => {
@@ -251,7 +304,7 @@ export class UndergroundContentFetcher {
   // Generate excerpt from description
   private generateExcerpt(description: string): string {
     if (!description) return '';
-    
+
     const cleaned = this.cleanText(description);
     return cleaned.length > 150 ? cleaned.substring(0, 150) + '...' : cleaned;
   }
@@ -266,11 +319,11 @@ export class UndergroundContentFetcher {
 
     // Add content-based tags
     const tagKeywords = {
-      'electronic': ['electronic', 'edm', 'house', 'techno', 'dubstep', 'drum and bass'],
-      'production': ['production', 'mixing', 'mastering', 'synthesis', 'sampling'],
-      'business': ['business', 'marketing', 'promotion', 'streaming', 'royalties'],
-      'culture': ['culture', 'underground', 'alternative', 'indie', 'scene'],
-      'technology': ['technology', 'ai', 'digital', 'software', 'platform']
+      electronic: ['electronic', 'edm', 'house', 'techno', 'dubstep', 'drum and bass'],
+      production: ['production', 'mixing', 'mastering', 'synthesis', 'sampling'],
+      business: ['business', 'marketing', 'promotion', 'streaming', 'royalties'],
+      culture: ['culture', 'underground', 'alternative', 'indie', 'scene'],
+      technology: ['technology', 'ai', 'digital', 'software', 'platform'],
     };
 
     Object.entries(tagKeywords).forEach(([tag, keywords]) => {
@@ -284,9 +337,7 @@ export class UndergroundContentFetcher {
 
   // Get sources by category
   getSourcesByCategory(category: string): MusicSource[] {
-    return this.sources.filter(source => 
-      source.focus.includes(category.toLowerCase())
-    );
+    return this.sources.filter(source => source.focus.includes(category.toLowerCase()));
   }
 
   // Get high-quality sources only
@@ -299,7 +350,7 @@ export class UndergroundContentFetcher {
 export async function fetchUndergroundMusicNews(): Promise<NewsArticle[]> {
   const fetcher = new UndergroundContentFetcher();
   const result = await fetcher.fetchAllContent();
-  
+
   // Convert to NewsArticle format
   return result.articles.map(article => ({
     title: article.title,
@@ -310,7 +361,7 @@ export async function fetchUndergroundMusicNews(): Promise<NewsArticle[]> {
     category: article.category,
     relevanceScore: article.relevanceScore,
     excerpt: article.excerpt,
-    tags: article.tags
+    tags: article.tags,
   }));
 }
 

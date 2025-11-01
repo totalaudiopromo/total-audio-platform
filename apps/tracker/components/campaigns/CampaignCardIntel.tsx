@@ -36,7 +36,9 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
               <p className="text-sm text-gray-500">{campaign.artist_name}</p>
             )}
           </div>
-          <span className={`px-3 py-1 rounded-full text-xs font-medium ${statusColors[campaign.status]}`}>
+          <span
+            className={`px-3 py-1 rounded-full text-xs font-medium ${statusColors[campaign.status]}`}
+          >
             {campaign.status}
           </span>
         </div>
@@ -57,19 +59,25 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
         <div className="grid grid-cols-3 gap-4 mb-4">
           <div>
             <p className="text-xs text-gray-500 mb-1">Success Rate</p>
-            <p className={`text-lg font-bold ${performanceColor(campaign.success_rate)}`}>
+            <p
+              className={`text-lg font-bold ${performanceColor(campaign.success_rate)}`}
+            >
               {Math.round(campaign.success_rate)}%
             </p>
           </div>
           <div>
             <p className="text-xs text-gray-500 mb-1">Cost/Result</p>
             <p className="text-lg font-bold text-gray-900">
-              {campaign.cost_per_result > 0 ? `£${Math.round(campaign.cost_per_result)}` : '-'}
+              {campaign.cost_per_result > 0
+                ? `£${Math.round(campaign.cost_per_result)}`
+                : '-'}
             </p>
           </div>
           <div>
             <p className="text-xs text-gray-500 mb-1">Performance</p>
-            <p className={`text-lg font-bold ${performanceColor(campaign.performance_score)}`}>
+            <p
+              className={`text-lg font-bold ${performanceColor(campaign.performance_score)}`}
+            >
               {campaign.performance_score}/100
             </p>
           </div>
@@ -79,12 +87,16 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
           <div className="mb-4">
             <div className="flex justify-between text-xs text-gray-600 mb-1">
               <span>Progress</span>
-              <span>{campaign.actual_reach} / {campaign.target_reach}</span>
+              <span>
+                {campaign.actual_reach} / {campaign.target_reach}
+              </span>
             </div>
             <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
               <div
                 className="h-full bg-teal-600 rounded-full transition-all"
-                style={{ width: `${Math.min(100, (campaign.actual_reach / campaign.target_reach) * 100)}%` }}
+                style={{
+                  width: `${Math.min(100, (campaign.actual_reach / campaign.target_reach) * 100)}%`,
+                }}
               />
             </div>
           </div>
@@ -99,7 +111,9 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
         <div className="mt-4 pt-4 border-t border-gray-100">
           <div className="flex justify-between text-sm">
             <span className="text-gray-500">Budget</span>
-            <span className="font-medium text-gray-900">£{campaign.budget}</span>
+            <span className="font-medium text-gray-900">
+              £{campaign.budget}
+            </span>
           </div>
         </div>
       </div>

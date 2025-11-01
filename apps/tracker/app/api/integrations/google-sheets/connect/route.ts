@@ -4,20 +4,19 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { OAuthHandler } from '@/lib/integrations/oauth-handler';
 
 export async function GET(request: NextRequest) {
   try {
     const supabase = await createServerClient(cookies());
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
     if (!user) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const oauthHandler = new OAuthHandler();

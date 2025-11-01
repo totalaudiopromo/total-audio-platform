@@ -18,10 +18,13 @@ export function AudioIntelImport() {
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-2">
             <Upload className="h-5 w-5 text-teal-600" />
-            <h3 className="text-lg font-bold text-gray-900">Import from Audio Intel</h3>
+            <h3 className="text-lg font-bold text-gray-900">
+              Import from Audio Intel
+            </h3>
           </div>
           <p className="text-sm text-gray-600 mb-4">
-            Use your enriched contacts from Audio Intel to quickly add campaign targets
+            Use your enriched contacts from Audio Intel to quickly add campaign
+            targets
           </p>
           <button
             onClick={handleImport}

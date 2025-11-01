@@ -11,6 +11,7 @@ This implementation combines the best of both ChatGPT's suggestion and my enhanc
 ### 1. Core Infrastructure ✅
 
 **Database Layer** (`supabase/migrations/20251017000001_skills_system.sql`):
+
 - ✅ `skill` table - Registry of all available skills
 - ✅ `skill_version` table - Semantic versioning with manifests
 - ✅ `skill_binding` table - Per-org/user enablement & config
@@ -19,12 +20,14 @@ This implementation combines the best of both ChatGPT's suggestion and my enhanc
 - ✅ Seeded with 5 initial skills
 
 **TypeScript Schema** (`src/core/skills/schema.ts`):
+
 - ✅ Complete type definitions for all skill components
 - ✅ Input/output validation interfaces
 - ✅ Custom error types (SkillValidationError, SkillExecutionError, etc.)
 - ✅ Skill manifest structure
 
 **Skills Engine** (`src/core/skills/SkillEngine.ts`):
+
 - ✅ Registry management with in-memory caching
 - ✅ Skill loading from database
 - ✅ Input/output validation against schemas
@@ -35,6 +38,7 @@ This implementation combines the best of both ChatGPT's suggestion and my enhanc
 - ✅ Version resolution (including 'latest')
 
 **Skills Loader** (`src/core/skills/SkillsLoader.ts`):
+
 - ✅ Local file-based skill loading (YAML/JSON)
 - ✅ Version comparison and resolution
 - ✅ Hot reloading for development
@@ -43,6 +47,7 @@ This implementation combines the best of both ChatGPT's suggestion and my enhanc
 ### 2. Built-in Skills ✅
 
 **VoiceGuardSkill** (`src/core/skills/implementations/VoiceGuardSkill.ts`):
+
 - ✅ UK vs US spelling corrections
 - ✅ Corporate speak detection
 - ✅ Marketing hype filtering
@@ -53,6 +58,7 @@ This implementation combines the best of both ChatGPT's suggestion and my enhanc
 - ✅ Convenience methods: `validate()`, `correct()`
 
 **PitchDraftSkill** (`src/core/skills/implementations/PitchDraftSkill.ts`):
+
 - ✅ Multi-angle pitch generation (story, data, emotion, industry)
 - ✅ Generates 3 draft variations per request
 - ✅ Integrated VoiceGuard validation
@@ -62,6 +68,7 @@ This implementation combines the best of both ChatGPT's suggestion and my enhanc
 - ✅ Confidence scoring per draft
 
 **ContactMatcherSkill** (`src/core/skills/implementations/ContactMatcherSkill.ts`):
+
 - ✅ AI-powered contact-to-track matching
 - ✅ Multi-factor scoring (genre, recent activity, outlet fit, submission preferences)
 - ✅ Explainable recommendations with "why" reasoning
@@ -71,6 +78,7 @@ This implementation combines the best of both ChatGPT's suggestion and my enhanc
 - ✅ Configurable score thresholds
 
 **Skill Definitions** (`skills/definitions/*.yml`):
+
 - ✅ `pitch_drafting_skill.yml` - Complete manifest with examples
 - ✅ `brand_voice_skill.yml` - Voice guard specification
 - ✅ `contact_enrichment_skill.yml` - Audio Intel enrichment spec
@@ -78,6 +86,7 @@ This implementation combines the best of both ChatGPT's suggestion and my enhanc
 ### 3. API Layer ✅
 
 **REST API Routes** (`src/core/skills/api/routes.ts`):
+
 - ✅ `GET /api/skills` - List all available skills
 - ✅ `GET /api/skills/:key` - Get skill details
 - ✅ `POST /api/skills/:key/invoke` - Execute a skill
@@ -90,6 +99,7 @@ This implementation combines the best of both ChatGPT's suggestion and my enhanc
 ### 4. Testing ✅
 
 **Test Suite** (`src/core/skills/tests/VoiceGuardSkill.test.ts`):
+
 - ✅ UK spelling corrections
 - ✅ Corporate speak detection
 - ✅ Email pitch validation
@@ -99,6 +109,7 @@ This implementation combines the best of both ChatGPT's suggestion and my enhanc
 - ✅ Integration test patterns
 
 **Integration Examples** (`src/core/skills/examples/integration-example.ts`):
+
 - ✅ Pitch Generator integration
 - ✅ Audio Intel contact matching
 - ✅ Voice guard validation
@@ -110,6 +121,7 @@ This implementation combines the best of both ChatGPT's suggestion and my enhanc
 ### 5. Documentation ✅
 
 **Complete README** (`README_SKILLS.md`):
+
 - ✅ Architecture overview with diagrams
 - ✅ Database schema documentation
 - ✅ Quick start guide
@@ -249,11 +261,14 @@ All tests should pass - proves UK spelling correction, corporate speak detection
 // In Node REPL or test file
 import { VoiceGuardSkill } from './src/core/skills/implementations/VoiceGuardSkill';
 
-const result = await VoiceGuardSkill.execute({
-  text: 'Leverage our innovative solution to organize music.',
-  contentType: 'website_copy',
-  targetAudience: 'independent_artists'
-}, {} as any);
+const result = await VoiceGuardSkill.execute(
+  {
+    text: 'Leverage our innovative solution to organize music.',
+    contentType: 'website_copy',
+    targetAudience: 'independent_artists',
+  },
+  {} as any
+);
 
 console.log(result.text); // "Leverage our innovative solution to organise music."
 console.log(result.warnings); // ["Corporate speak: leverage", "Marketing hype: innovative"]
@@ -289,7 +304,7 @@ export async function POST(req: Request) {
     version: 'latest',
     payload: { track, contact },
     orgId,
-    userId
+    userId,
   });
 
   return Response.json(result);
@@ -312,12 +327,12 @@ export async function POST(req: Request) {
     version: 'latest',
     payload: { track, contacts, limit: 10 },
     orgId,
-    userId
+    userId,
   });
 
   return Response.json({
     matches: result.outputs.matches,
-    analysis: result.outputs.analysis
+    analysis: result.outputs.analysis,
   });
 }
 ```
@@ -382,7 +397,7 @@ export function useSkill<I, O>(skillKey: string) {
     setLoading(true);
     const res = await fetch(`/api/skills/${skillKey}/invoke`, {
       method: 'POST',
-      body: JSON.stringify({ orgId, userId, inputs })
+      body: JSON.stringify({ orgId, userId, inputs }),
     });
     const data = await res.json();
     setResult(data.outputs);
@@ -414,24 +429,28 @@ function PitchEditor() {
 ## 🚦 Next Steps
 
 ### Immediate (This Week)
+
 1. ✅ Run database migration
 2. ✅ Test VoiceGuardSkill locally
 3. ✅ Add skill invocation to one API route (Pitch Generator)
 4. ✅ Monitor audit trail in Supabase
 
 ### Short-term (Next 2 Weeks)
+
 5. Implement FollowUpSkill for campaign follow-ups
 6. Implement InsightSkill for analytics dashboard
 7. Add frontend skill toggles in settings
 8. Add usage dashboard showing skill stats
 
 ### Medium-term (Next Month)
+
 9. Implement skill result caching (Redis)
 10. Add A/B testing for skill versions
 11. Create skill marketplace UI
 12. Build visual skill composer (no-code)
 
 ### Long-term (Next Quarter)
+
 13. Community-contributed skills
 14. Fine-tuned models for specific skills
 15. Real-time skill execution monitoring
@@ -442,11 +461,13 @@ function PitchEditor() {
 **Claude 3.5 Sonnet Pricing**: $3 per 1M input tokens, $15 per 1M output tokens
 
 **Estimated Costs** (based on your use case):
+
 - **PitchDraftSkill**: ~800 tokens input, ~400 tokens output = $0.0084 per invocation
 - **ContactMatcherSkill**: ~1200 tokens input, ~600 tokens output = $0.0126 per invocation
 - **VoiceGuardSkill**: ~200 tokens input, ~100 tokens output = $0.0021 per invocation
 
 **Example Monthly Cost** (100 pitches/day, 30 days):
+
 - 3000 pitch generations × $0.0084 = **$25.20/month**
 - Plus contact matching, voice guard = **~$35-40/month total**
 
@@ -455,23 +476,27 @@ This is **way cheaper** than your time manually writing pitches or using other s
 ## 🎉 What This Enables
 
 ### For Pitch Generator:
+
 - ✅ AI-powered pitch drafts with 3 angle variations
 - ✅ Automatic UK voice compliance
 - ✅ Personalisation based on contact activity
 - ✅ Quality scoring and confidence metrics
 
 ### For Audio Intel:
+
 - ✅ Intelligent contact matching
 - ✅ Explainable recommendations
 - ✅ Personalisation hook extraction
 - ✅ Genre analysis and insights
 
 ### For Campaign Tracker:
+
 - ✅ Automated follow-up generation (when you build FollowUpSkill)
 - ✅ Campaign insights and recommendations (when you build InsightSkill)
 - ✅ Optimal timing suggestions
 
 ### For Total Audio Platform:
+
 - ✅ Consistent brand voice across all apps
 - ✅ Audit trail for compliance and quality
 - ✅ Cost tracking and ROI analysis

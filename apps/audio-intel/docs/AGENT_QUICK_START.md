@@ -9,7 +9,7 @@ The Agent Layer is already integrated into Audio Intel. No additional installati
 ### 1. Import Agents
 
 ```typescript
-import { Agents } from '@/agents'
+import { Agents } from '@/agents';
 ```
 
 ### 2. Execute an Agent
@@ -20,12 +20,12 @@ const result = await Agents.intel.execute({
   artist: 'sadact',
   release: 'New Single',
   genre: 'house',
-  region: 'UK'
-})
+  region: 'UK',
+});
 
-console.log(result.data.contacts) // Enriched contacts
-console.log(result.data.validation) // Quality validation
-console.log(result.metrics.latency_ms) // Performance metrics
+console.log(result.data.contacts); // Enriched contacts
+console.log(result.data.validation); // Quality validation
+console.log(result.metrics.latency_ms); // Performance metrics
 ```
 
 ## Common Use Cases
@@ -38,13 +38,13 @@ const enrichment = await Agents.intel.execute({
   artist: 'Artist Name',
   genre: 'electronic',
   region: 'UK',
-  includeLabels: true
-})
+  includeLabels: true,
+});
 
 if (enrichment.success) {
-  const { contacts, labels, validation } = enrichment.data
-  console.log(`Found ${contacts.length} contacts`)
-  console.log(`Quality score: ${validation.score}`)
+  const { contacts, labels, validation } = enrichment.data;
+  console.log(`Found ${contacts.length} contacts`);
+  console.log(`Quality score: ${validation.score}`);
 }
 ```
 
@@ -62,14 +62,14 @@ const pitch = await Agents.pitch.execute({
   releaseDate: '2025-11-15',
   streamingLinks: {
     Spotify: 'https://spotify.com/...',
-    Bandcamp: 'https://bandcamp.com/...'
-  }
-})
+    Bandcamp: 'https://bandcamp.com/...',
+  },
+});
 
 if (pitch.success) {
-  console.log(pitch.data.pitch.fullText) // Full pitch email
-  console.log(pitch.data.toneCheck) // Brand voice validation
-  console.log(pitch.data.readyToSend) // Ready to send?
+  console.log(pitch.data.pitch.fullText); // Full pitch email
+  console.log(pitch.data.toneCheck); // Brand voice validation
+  console.log(pitch.data.readyToSend); // Ready to send?
 }
 ```
 
@@ -83,12 +83,12 @@ const followUp = await Agents.pitch.execute({
   release: 'Release Title',
   contactName: 'John',
   originalPitchDate: '2025-10-15',
-  followUpNumber: 1
-})
+  followUpNumber: 1,
+});
 
 if (followUp.success && followUp.data.shouldSend) {
-  console.log(followUp.data.followUp.body) // Follow-up text
-  console.log(followUp.data.daysSinceOriginal) // Days waited
+  console.log(followUp.data.followUp.body); // Follow-up text
+  console.log(followUp.data.daysSinceOriginal); // Days waited
 }
 ```
 
@@ -104,18 +104,18 @@ await Agents.tracker.execute({
     contactName: 'John Smith',
     contactOrganisation: 'BBC Radio 6 Music',
     submissionDate: new Date().toISOString(),
-    pitchType: 'initial'
-  }
-})
+    pitchType: 'initial',
+  },
+});
 
 // Get campaign analytics
 const analytics = await Agents.tracker.execute({
   mode: 'analytics',
-  campaignId: 'campaign-123'
-})
+  campaignId: 'campaign-123',
+});
 
-console.log(analytics.data.metrics) // Open/reply rates
-console.log(analytics.data.insights) // Performance insights
+console.log(analytics.data.metrics); // Open/reply rates
+console.log(analytics.data.insights); // Performance insights
 ```
 
 ### Brand Voice Checking
@@ -125,12 +125,12 @@ console.log(analytics.data.insights) // Performance insights
 const voiceCheck = await Agents.voiceguard.execute({
   text: "I'm sharing my new release with you...",
   contentType: 'pitch',
-  autoFix: true
-})
+  autoFix: true,
+});
 
 if (!voiceCheck.data.passed) {
-  console.log(voiceCheck.data.issues) // Tone issues found
-  console.log(voiceCheck.data.fixedText) // Auto-fixed version
+  console.log(voiceCheck.data.issues); // Tone issues found
+  console.log(voiceCheck.data.fixedText); // Auto-fixed version
 }
 ```
 
@@ -162,44 +162,44 @@ curl http://localhost:3000/api/agents/stats?name=intel
 ### List Available Agents
 
 ```typescript
-import { AgentRegistry } from '@/agents'
+import { AgentRegistry } from '@/agents';
 
-const agents = AgentRegistry.list()
+const agents = AgentRegistry.list();
 // ['intel', 'pitch', 'tracker', 'insight', 'voiceguard']
 ```
 
 ### Get Agent Stats
 
 ```typescript
-const stats = AgentRegistry.getStats('intel')
-console.log(stats.runs) // Total executions
-console.log(stats.successRate) // Success percentage
-console.log(stats.avgLatency) // Average latency (ms)
+const stats = AgentRegistry.getStats('intel');
+console.log(stats.runs); // Total executions
+console.log(stats.successRate); // Success percentage
+console.log(stats.avgLatency); // Average latency (ms)
 ```
 
 ### Health Check
 
 ```typescript
-const health = await AgentRegistry.healthCheck()
-console.log(health.healthy) // true/false
-console.log(health.agents) // Status of each agent
+const health = await AgentRegistry.healthCheck();
+console.log(health.healthy); // true/false
+console.log(health.agents); // Status of each agent
 ```
 
 ## Error Handling
 
 ```typescript
-const result = await Agents.intel.execute({ artist: 'Test' })
+const result = await Agents.intel.execute({ artist: 'Test' });
 
 if (result.success) {
   // Handle success
-  console.log(result.data)
+  console.log(result.data);
 } else {
   // Handle error
-  console.error(result.error)
+  console.error(result.error);
 }
 
 // Always check metrics
-console.log(`Execution took ${result.metrics?.latency_ms}ms`)
+console.log(`Execution took ${result.metrics?.latency_ms}ms`);
 ```
 
 ## TypeScript Support
@@ -211,15 +211,15 @@ import type {
   IntelAgentPayload,
   PitchAgentPayload,
   VoiceGuardPayload,
-  AgentResult
-} from '@/agents'
+  AgentResult,
+} from '@/agents';
 
 const payload: IntelAgentPayload = {
   artist: 'Artist Name',
-  genre: 'electronic'
-}
+  genre: 'electronic',
+};
 
-const result: AgentResult = await Agents.intel.execute(payload)
+const result: AgentResult = await Agents.intel.execute(payload);
 ```
 
 ## Next Steps
@@ -232,6 +232,7 @@ const result: AgentResult = await Agents.intel.execute(payload)
 ## Support
 
 Questions? Check:
+
 1. [AGENT_LAYER_SPEC.md](./AGENT_LAYER_SPEC.md) - Full specification
 2. Test suite: `tests/agents/agents.spec.ts`
 3. Agent manifests: `agents/*/manifest.json`

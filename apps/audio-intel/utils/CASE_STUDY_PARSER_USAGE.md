@@ -74,6 +74,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 #### Core Functions
 
 **`getAllCaseStudies(): Promise<EnrichedCaseStudyData[]>`**
+
 - Returns all case studies from the CSV
 - Async version for runtime use
 - Includes computed fields (estimatedReadTime, primaryKeyword, etc.)
@@ -84,6 +85,7 @@ console.log(`Found ${allStudies.length} case studies`);
 ```
 
 **`getAllCaseStudiesSync(): EnrichedCaseStudyData[]`**
+
 - Synchronous version for build-time use
 - Use in `generateStaticParams()` or `generateMetadata()`
 
@@ -92,6 +94,7 @@ const allStudies = getAllCaseStudiesSync();
 ```
 
 **`getCaseStudyBySlug(slug: string): Promise<EnrichedCaseStudyData>`**
+
 - Gets a single case study by slug
 - Throws error if not found
 - Async version
@@ -106,6 +109,7 @@ try {
 ```
 
 **`getCaseStudyBySlugSync(slug: string): EnrichedCaseStudyData | null`**
+
 - Synchronous version
 - Returns null if not found (safer for build time)
 
@@ -119,24 +123,28 @@ if (data) {
 #### Filter Functions
 
 **`getCaseStudiesByStatus(status: 'live' | 'planned' | 'draft')`**
+
 ```typescript
 const liveStudies = await getCaseStudiesByStatus('live');
 const plannedStudies = await getCaseStudiesByStatus('planned');
 ```
 
 **`getCaseStudiesByCategory(category: string)`**
+
 ```typescript
 const radioStudies = await getCaseStudiesByCategory('UK Radio Stations');
 const streamingStudies = await getCaseStudiesByCategory('Streaming Platforms');
 ```
 
 **`getCaseStudiesByTier(tier: 1 | 2 | 3)`**
+
 ```typescript
 const tier1Studies = await getCaseStudiesByTier(1); // High priority
 const tier2Studies = await getCaseStudiesByTier(2); // Medium priority
 ```
 
 **`getAllCaseStudySlugs(): Promise<string[]>`**
+
 ```typescript
 const slugs = await getAllCaseStudySlugs();
 // ['bbc-radio-1', 'bbc-radio-6-music', 'spotify-editorial', ...]
@@ -145,6 +153,7 @@ const slugs = await getAllCaseStudySlugs();
 #### Validation
 
 **`validateCaseStudy(data: CaseStudyData): { valid: boolean; errors: string[] }`**
+
 ```typescript
 const validation = validateCaseStudy(data);
 if (!validation.valid) {
@@ -159,6 +168,7 @@ if (!validation.valid) {
 #### Metadata Generation
 
 **`generateCaseStudyMetadata(slug: string, options?): Promise<Metadata>`**
+
 - Generates complete Next.js metadata object
 - Includes OpenGraph, Twitter Cards, robots directives
 - Automatically sets indexing based on status
@@ -166,13 +176,14 @@ if (!validation.valid) {
 ```typescript
 export async function generateMetadata({ params }) {
   return await generateCaseStudyMetadata(params.slug, {
-    includeAlternates: true,  // Include canonical URL
-    includeRobots: true,      // Include robots directives
+    includeAlternates: true, // Include canonical URL
+    includeRobots: true, // Include robots directives
   });
 }
 ```
 
 **`generateCaseStudyMetadataSync(slug: string, options?): Metadata`**
+
 - Synchronous version for build-time use
 
 ```typescript
@@ -182,6 +193,7 @@ const metadata = generateCaseStudyMetadataSync('bbc-radio-1');
 #### Structured Data (JSON-LD)
 
 **`generateCaseStudyStructuredData(slug: string): object`**
+
 - Generates Article schema markup
 
 ```typescript
@@ -195,6 +207,7 @@ const schema = generateCaseStudyStructuredData('bbc-radio-1');
 ```
 
 **`generateCaseStudyBreadcrumbSchema(slug: string): object`**
+
 - Generates BreadcrumbList schema
 
 ```typescript
@@ -202,22 +215,24 @@ const breadcrumb = generateCaseStudyBreadcrumbSchema('bbc-radio-1');
 ```
 
 **`generateCaseStudyFAQSchema(questions: Array<{question: string, answer: string}>): object`**
+
 - Generates FAQ schema if you have Q&A sections
 
 ```typescript
 const faqSchema = generateCaseStudyFAQSchema([
   {
     question: 'How long does BBC Radio 1 enrichment take?',
-    answer: 'Under 2 minutes with Audio Intel, compared to 18 hours manually.'
+    answer: 'Under 2 minutes with Audio Intel, compared to 18 hours manually.',
   },
   {
     question: 'What contacts are included?',
-    answer: 'All current BBC Radio 1 specialist show producers and presenters.'
-  }
+    answer: 'All current BBC Radio 1 specialist show producers and presenters.',
+  },
 ]);
 ```
 
 **`generateAllCaseStudySchemas(slug: string, faqQuestions?): object[]`**
+
 - Combines all schemas into one array
 
 ```typescript
@@ -244,25 +259,25 @@ Core CSV data structure:
 ```typescript
 interface CaseStudyData {
   // Identifiers
-  topicSlug: string;              // 'bbc-radio-1'
-  pageUrl: string;                // '/blog/bbc-radio-1-contact-enrichment'
+  topicSlug: string; // 'bbc-radio-1'
+  pageUrl: string; // '/blog/bbc-radio-1-contact-enrichment'
 
   // SEO
-  pageTitle: string;              // 'BBC Radio 1 Contact Enrichment...'
-  metaDescription: string;        // Meta description for search results
-  searchIntent: string[];         // ['bbc radio 1 contacts', ...]
+  pageTitle: string; // 'BBC Radio 1 Contact Enrichment...'
+  metaDescription: string; // Meta description for search results
+  searchIntent: string[]; // ['bbc radio 1 contacts', ...]
 
   // Targeting
-  audience: string[];             // ['UK radio promoters', ...]
-  painPoint: string;              // Problem being solved
-  solutionAngle: string;          // How Audio Intel solves it
-  proofPoints: string[];          // Evidence and results
+  audience: string[]; // ['UK radio promoters', ...]
+  painPoint: string; // Problem being solved
+  solutionAngle: string; // How Audio Intel solves it
+  proofPoints: string[]; // Evidence and results
 
   // CTA & Classification
-  ctaPrimary: string;             // 'Start Free Trial'
-  category: string;               // 'UK Radio Stations'
-  tier: number;                   // 1-3 (priority level)
-  monthlySearchesEst: number;     // SEO volume estimate
+  ctaPrimary: string; // 'Start Free Trial'
+  category: string; // 'UK Radio Stations'
+  tier: number; // 1-3 (priority level)
+  monthlySearchesEst: number; // SEO volume estimate
   status: 'live' | 'planned' | 'draft';
 }
 ```
@@ -273,9 +288,9 @@ Extended version with computed fields:
 
 ```typescript
 interface EnrichedCaseStudyData extends CaseStudyData {
-  estimatedReadTime: number;      // Minutes (computed from tier)
-  primaryKeyword: string;         // First search intent value
-  targetAudiencePrimary: string;  // First audience value
+  estimatedReadTime: number; // Minutes (computed from tier)
+  primaryKeyword: string; // First search intent value
+  targetAudiencePrimary: string; // First audience value
 }
 ```
 
@@ -287,22 +302,22 @@ interface EnrichedCaseStudyData extends CaseStudyData {
 
 ### Column Reference
 
-| Column | Type | Description | Example |
-|--------|------|-------------|---------|
-| `topic_slug` | string | URL-safe identifier | `bbc-radio-1` |
-| `page_url` | string | Full page path | `/blog/bbc-radio-1-contact-enrichment` |
-| `page_title` | string | SEO page title | `BBC Radio 1 Contact Enrichment: From 18 Hours to 2 Minutes` |
-| `meta_description` | string | Meta description | `Real BBC Radio 1 pitching workflow...` |
-| `search_intent` | string (semicolon-separated) | Search keywords | `bbc radio 1 contacts; how to pitch bbc radio 1` |
-| `audience` | string (semicolon-separated) | Target audiences | `UK radio promoters; independent artists` |
-| `pain_point` | string | Problem statement | `18 hours researching contacts...` |
-| `solution_angle` | string | Solution description | `Upload messy contact list...` |
-| `proof_points` | string (semicolon-separated) | Evidence/results | `100% contact accuracy; 32% reply rate` |
-| `cta_primary` | string | Call to action | `Start Free Trial` |
-| `category` | string | Content category | `UK Radio Stations` |
-| `tier` | number (1-3) | Priority level | `1` |
-| `monthly_searches_est` | number | Search volume | `1200` |
-| `status` | string | Publication status | `live`, `planned`, or `draft` |
+| Column                 | Type                         | Description          | Example                                                      |
+| ---------------------- | ---------------------------- | -------------------- | ------------------------------------------------------------ |
+| `topic_slug`           | string                       | URL-safe identifier  | `bbc-radio-1`                                                |
+| `page_url`             | string                       | Full page path       | `/blog/bbc-radio-1-contact-enrichment`                       |
+| `page_title`           | string                       | SEO page title       | `BBC Radio 1 Contact Enrichment: From 18 Hours to 2 Minutes` |
+| `meta_description`     | string                       | Meta description     | `Real BBC Radio 1 pitching workflow...`                      |
+| `search_intent`        | string (semicolon-separated) | Search keywords      | `bbc radio 1 contacts; how to pitch bbc radio 1`             |
+| `audience`             | string (semicolon-separated) | Target audiences     | `UK radio promoters; independent artists`                    |
+| `pain_point`           | string                       | Problem statement    | `18 hours researching contacts...`                           |
+| `solution_angle`       | string                       | Solution description | `Upload messy contact list...`                               |
+| `proof_points`         | string (semicolon-separated) | Evidence/results     | `100% contact accuracy; 32% reply rate`                      |
+| `cta_primary`          | string                       | Call to action       | `Start Free Trial`                                           |
+| `category`             | string                       | Content category     | `UK Radio Stations`                                          |
+| `tier`                 | number (1-3)                 | Priority level       | `1`                                                          |
+| `monthly_searches_est` | number                       | Search volume        | `1200`                                                       |
+| `status`               | string                       | Publication status   | `live`, `planned`, or `draft`                                |
 
 ### CSV Parsing Rules
 
@@ -319,30 +334,38 @@ interface EnrichedCaseStudyData extends CaseStudyData {
 ### Common Errors
 
 **CSV Not Found**
+
 ```typescript
 Error: CSV file not found at /path/to/docs/pseo/programmatic-pages.csv
 ```
+
 - Ensure CSV exists in `docs/pseo/` directory
 - Check file permissions
 
 **Case Study Not Found**
+
 ```typescript
 Error: Case study not found for slug: invalid-slug
 Available slugs: bbc-radio-1, bbc-radio-6-music, ...
 ```
+
 - Verify slug matches CSV `topic_slug` column
 - Check CSV has been updated
 
 **Invalid Tier**
+
 ```typescript
 Error: Invalid tier value for bbc-radio-1: 5. Must be 1, 2, or 3.
 ```
+
 - Tier must be 1 (high priority), 2 (medium), or 3 (low)
 
 **Missing Required Fields**
+
 ```typescript
 Validation errors: ['Missing required field: pageTitle', 'searchIntent must have at least one value']
 ```
+
 - Check CSV for empty required columns
 - Use `validateCaseStudy()` to debug
 
@@ -355,12 +378,12 @@ Validation errors: ['Missing required field: pageTitle', 'searchIntent must have
 ```typescript
 // Disable robots directives (for staging)
 const metadata = await generateCaseStudyMetadata('bbc-radio-1', {
-  includeRobots: false
+  includeRobots: false,
 });
 
 // No canonical URL
 const metadata = await generateCaseStudyMetadata('bbc-radio-1', {
-  includeAlternates: false
+  includeAlternates: false,
 });
 ```
 
@@ -467,11 +490,13 @@ console.log('OpenGraph:', metadata.openGraph);
 The existing BBC Radio 1 case study serves as the template. Here's how the CSV maps to it:
 
 **CSV Row**:
+
 ```csv
 bbc-radio-1,/blog/bbc-radio-1-contact-enrichment,"BBC Radio 1 Contact Enrichment: From 18 Hours to 2 Minutes | Audio Intel",...
 ```
 
 **Generated Metadata** (matches existing):
+
 ```typescript
 {
   title: "BBC Radio 1 Contact Enrichment: From 18 Hours to 2 Minutes | Audio Intel",
@@ -495,16 +520,19 @@ bbc-radio-1,/blog/bbc-radio-1-contact-enrichment,"BBC Radio 1 Contact Enrichment
 ## Troubleshooting
 
 ### Issue: "CSV file not found"
+
 - Verify `docs/pseo/programmatic-pages.csv` exists
 - Check working directory is project root
 - Ensure file has read permissions
 
 ### Issue: Metadata not updating
+
 - Clear Next.js cache: `rm -rf .next`
 - Rebuild: `npm run build`
 - Check CSV was saved after edits
 
 ### Issue: TypeScript errors on imports
+
 - Ensure types are exported from `parseCaseStudyData.ts`
 - If types directory created, move types there
 - Update imports to use `types/case-study.ts`

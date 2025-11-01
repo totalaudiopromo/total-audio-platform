@@ -1,10 +1,11 @@
 ---
-title: "🔧 GitHub Workflow Fixes - Contact Scraper"
+title: '🔧 GitHub Workflow Fixes - Contact Scraper'
 notion_url: https://www.notion.so/GitHub-Workflow-Fixes-Contact-Scraper-25b0a35b21ed816ead6bff4fb481cc72
 exported_at: 2025-09-26T14:33:07.079Z
 ---
 
 # 🔧 GitHub Workflow Fixes - Contact Scraper
+
 ## Issue: Contact Scraper Failure
 
 **Status:** All 18 jobs failed in 44 seconds
@@ -40,7 +41,7 @@ jobs:
     steps:
       - name: Update Package Lists
         run: sudo apt-get update
-      
+
       - name: Install Dependencies
         run: sudo apt-get install -y libasound2
 ```

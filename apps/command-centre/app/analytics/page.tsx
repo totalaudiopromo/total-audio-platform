@@ -45,16 +45,16 @@ export default function AdvancedAnalyticsPage() {
       const [businessResponse, audioIntelResponse, betaResponse] = await Promise.all([
         fetch(`/api/business-metrics?timeframe=${timeframe}`, {
           cache: 'no-store',
-          headers: { 'Cache-Control': 'no-cache' }
+          headers: { 'Cache-Control': 'no-cache' },
         }),
         fetch('/api/audio-intel-metrics', {
           cache: 'no-store',
-          headers: { 'Cache-Control': 'no-cache' }
+          headers: { 'Cache-Control': 'no-cache' },
         }),
         fetch('/api/convertkit-subscribers', {
           cache: 'no-store',
-          headers: { 'Cache-Control': 'no-cache' }
-        }).catch(() => null)
+          headers: { 'Cache-Control': 'no-cache' },
+        }).catch(() => null),
       ]);
 
       const businessData = businessResponse.ok ? await businessResponse.json() : {};
@@ -70,35 +70,42 @@ export default function AdvancedAnalyticsPage() {
           revenueBySource: [
             { name: 'Pro Subscriptions', value: businessData.revenue?.mrr || 0, percentage: 60 },
             { name: 'Enterprise', value: 0, percentage: 0 },
-            { name: 'API Usage', value: 0, percentage: 40 }
-          ]
+            { name: 'API Usage', value: 0, percentage: 40 },
+          ],
         },
         users: {
           totalUsers: betaData.users?.length || businessData.customers?.total || 0,
-          activeUsers: betaData.users?.filter((u: any) => u.status === 'active').length || businessData.customers?.activeUsers || 0,
+          activeUsers:
+            betaData.users?.filter((u: any) => u.status === 'active').length ||
+            businessData.customers?.activeUsers ||
+            0,
           userGrowth: businessData.customers?.growth || 0,
           retentionRate: 100,
-          churnRate: businessData.revenue?.churnRate || 0
+          churnRate: businessData.revenue?.churnRate || 0,
         },
         product: {
-          contactsEnriched: audioIntelData.contactsEnriched || businessData.product?.contactsEnriched || 0,
-          emailsValidated: audioIntelData.emailsValidated || businessData.product?.emailsValidated || 0,
+          contactsEnriched:
+            audioIntelData.contactsEnriched || businessData.product?.contactsEnriched || 0,
+          emailsValidated:
+            audioIntelData.emailsValidated || businessData.product?.emailsValidated || 0,
           apiCalls: audioIntelData.apiCalls || businessData.product?.apiCalls || 0,
           successRate: audioIntelData.successRate || businessData.product?.successRate || 0,
-          avgProcessingTime: audioIntelData.avgProcessingTime || businessData.product?.avgProcessingTime || 0,
+          avgProcessingTime:
+            audioIntelData.avgProcessingTime || businessData.product?.avgProcessingTime || 0,
           featureUsage: [
             { feature: 'Contact Enrichment', usage: 85 },
             { feature: 'Email Validation', usage: 92 },
             { feature: 'Data Export', usage: 78 },
-            { feature: 'API Access', usage: 45 }
-          ]
+            { feature: 'API Access', usage: 45 },
+          ],
         },
         performance: {
           systemUptime: parseFloat((audioIntelData.uptime || '0%').replace('%', '')) || 99.9,
           averageResponseTime: parseInt(audioIntelData.responseTime?.replace('ms', '')) || 245,
           errorRate: audioIntelData.errorRate || 0.1,
-          dataProcessingVolume: (audioIntelData.contactsEnriched || 0) + (audioIntelData.emailsValidated || 0)
-        }
+          dataProcessingVolume:
+            (audioIntelData.contactsEnriched || 0) + (audioIntelData.emailsValidated || 0),
+        },
       };
 
       setAnalytics(realAnalytics);
@@ -147,8 +154,8 @@ export default function AdvancedAnalyticsPage() {
           { value: '7d', label: 'Last 7 Days' },
           { value: '30d', label: 'Last 30 Days' },
           { value: '90d', label: 'Last 3 Months' },
-          { value: '1y', label: 'Last Year' }
-        ].map((period) => (
+          { value: '1y', label: 'Last Year' },
+        ].map(period => (
           <button
             key={period.value}
             onClick={() => setTimeframe(period.value)}
@@ -168,7 +175,9 @@ export default function AdvancedAnalyticsPage() {
             <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
               <DollarSign className="w-6 h-6 text-white" />
             </div>
-            <div className="postcraft-metric-value">£{analytics?.revenue?.totalRevenue?.toLocaleString() || '0'}</div>
+            <div className="postcraft-metric-value">
+              £{analytics?.revenue?.totalRevenue?.toLocaleString() || '0'}
+            </div>
             <div className="postcraft-metric-label">Current Revenue</div>
             <div className="postcraft-text text-sm mt-2">Beta Phase - Pre-launch</div>
           </div>
@@ -177,7 +186,9 @@ export default function AdvancedAnalyticsPage() {
             <div className="postcraft-metric-icon bg-gradient-to-br from-blue-500 to-cyan-500">
               <Target className="w-6 h-6 text-white" />
             </div>
-            <div className="postcraft-metric-value">£{analytics?.revenue?.projectedMonthly?.toLocaleString() || '0'}</div>
+            <div className="postcraft-metric-value">
+              £{analytics?.revenue?.projectedMonthly?.toLocaleString() || '0'}
+            </div>
             <div className="postcraft-metric-label">Monthly Target</div>
             <div className="postcraft-text text-sm mt-2">Q4 2025 Goal</div>
           </div>
@@ -232,7 +243,9 @@ export default function AdvancedAnalyticsPage() {
             <div className="postcraft-metric-icon bg-gradient-to-br from-purple-500 to-pink-500">
               <Target className="w-6 h-6 text-white" />
             </div>
-            <div className="postcraft-metric-value">{analytics?.product?.contactsEnriched?.toLocaleString() || '0'}</div>
+            <div className="postcraft-metric-value">
+              {analytics?.product?.contactsEnriched?.toLocaleString() || '0'}
+            </div>
             <div className="postcraft-metric-label">Contacts Enriched</div>
           </div>
 
@@ -240,7 +253,9 @@ export default function AdvancedAnalyticsPage() {
             <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
               <BarChart3 className="w-6 h-6 text-white" />
             </div>
-            <div className="postcraft-metric-value">{analytics?.product?.emailsValidated?.toLocaleString() || '0'}</div>
+            <div className="postcraft-metric-value">
+              {analytics?.product?.emailsValidated?.toLocaleString() || '0'}
+            </div>
             <div className="postcraft-metric-label">Emails Validated</div>
           </div>
         </div>
@@ -275,7 +290,9 @@ export default function AdvancedAnalyticsPage() {
             <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
               <Activity className="w-6 h-6 text-white" />
             </div>
-            <div className="postcraft-metric-value">{analytics?.performance?.systemUptime || 0}%</div>
+            <div className="postcraft-metric-value">
+              {analytics?.performance?.systemUptime || 0}%
+            </div>
             <div className="postcraft-metric-label">System Uptime</div>
           </div>
 
@@ -283,7 +300,9 @@ export default function AdvancedAnalyticsPage() {
             <div className="postcraft-metric-icon bg-gradient-to-br from-blue-500 to-cyan-500">
               <Zap className="w-6 h-6 text-white" />
             </div>
-            <div className="postcraft-metric-value">{analytics?.performance?.averageResponseTime || 0}ms</div>
+            <div className="postcraft-metric-value">
+              {analytics?.performance?.averageResponseTime || 0}ms
+            </div>
             <div className="postcraft-metric-label">Response Time</div>
           </div>
 
@@ -299,7 +318,9 @@ export default function AdvancedAnalyticsPage() {
             <div className="postcraft-metric-icon bg-gradient-to-br from-orange-500 to-amber-500">
               <BarChart3 className="w-6 h-6 text-white" />
             </div>
-            <div className="postcraft-metric-value">{analytics?.product?.avgProcessingTime || 0}s</div>
+            <div className="postcraft-metric-value">
+              {analytics?.product?.avgProcessingTime || 0}s
+            </div>
             <div className="postcraft-metric-label">Processing Time</div>
           </div>
         </div>

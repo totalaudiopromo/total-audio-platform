@@ -16,5 +16,7 @@ export function formatContactIntelligence(data: {
     data.focus ? `Focus: ${data.focus}` : '',
     data.tip ? `Tip: ${data.tip}` : '',
     `Confidence: ${data.confidence || 'High'}${data.updated ? ' | Updated: ' + data.updated : ''}`,
-  ].filter(Boolean).join('\n');
-} 
+  ]
+    .filter(Boolean)
+    .join('\n');
+}

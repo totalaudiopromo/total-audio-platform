@@ -60,9 +60,7 @@ export class SkillEngine {
     try {
       await this.loadActiveSkills();
       this.initialized = true;
-      console.log(
-        `[SkillEngine] Initialized with ${this.registry.size} active skills`
-      );
+      console.log(`[SkillEngine] Initialized with ${this.registry.size} active skills`);
     } catch (error) {
       console.error('[SkillEngine] Initialization failed:', error);
       throw new SkillExecutionError(
@@ -79,7 +77,8 @@ export class SkillEngine {
   private async loadActiveSkills(): Promise<void> {
     const { data: skills, error } = await this.db
       .from('skill_version')
-      .select(`
+      .select(
+        `
         id,
         version,
         manifest,
@@ -91,7 +90,8 @@ export class SkillEngine {
           category,
           tags
         )
-      `)
+      `
+      )
       .eq('status', 'active');
 
     if (error) {
@@ -115,10 +115,7 @@ export class SkillEngine {
                 name,
                 type: schema.type || 'object',
                 description: schema.description || '',
-                required:
-                  skillVersion.manifest.io.input_schema.required?.includes(
-                    name
-                  ) || false,
+                required: skillVersion.manifest.io.input_schema.required?.includes(name) || false,
                 validation: schema.validation,
               })
             )
@@ -342,8 +339,8 @@ export class SkillEngine {
     // Add rules to system prompt
     if (skill.rules && skill.rules.length > 0) {
       prompt += '\n\nCRITICAL RULES:\n';
-      const criticalRules = skill.rules.filter((r) => r.priority === 'critical');
-      criticalRules.forEach((rule) => {
+      const criticalRules = skill.rules.filter(r => r.priority === 'critical');
+      criticalRules.forEach(rule => {
         prompt += `- ${rule.description}\n`;
       });
     }
@@ -371,8 +368,7 @@ export class SkillEngine {
    */
   private async loadSkill(skillKey: string, version: string): Promise<Skill> {
     // Resolve version if 'latest'
-    const resolvedVersion =
-      version === 'latest' ? await this.getLatestVersion(skillKey) : version;
+    const resolvedVersion = version === 'latest' ? await this.getLatestVersion(skillKey) : version;
 
     const key = this.getSkillKey(skillKey, resolvedVersion);
     const skill = this.registry.get(key);
@@ -412,11 +408,7 @@ export class SkillEngine {
     userId: string | undefined,
     skillKey: string
   ): Promise<{ enabled: boolean; config: Record<string, any> } | null> {
-    const { data: skill } = await this.db
-      .from('skill')
-      .select('id')
-      .eq('key', skillKey)
-      .single();
+    const { data: skill } = await this.db.from('skill').select('id').eq('key', skillKey).single();
 
     if (!skill) return null;
 
@@ -475,9 +467,7 @@ export class SkillEngine {
   private validateOutputs(skill: Skill, outputs: Record<string, any>): void {
     for (const outputDef of skill.outputs) {
       if (!(outputDef.name in outputs)) {
-        console.warn(
-          `[SkillEngine] Expected output "${outputDef.name}" not found in skill result`
-        );
+        console.warn(`[SkillEngine] Expected output "${outputDef.name}" not found in skill result`);
       }
     }
   }
@@ -529,11 +519,13 @@ export class SkillEngine {
   async listSkills(): Promise<Array<{ key: string; name: string; versions: string[] }>> {
     const { data: skills, error } = await this.db
       .from('skill')
-      .select(`
+      .select(
+        `
         key,
         name,
         skill_version!inner(version, status)
-      `)
+      `
+      )
       .eq('skill_version.status', 'active');
 
     if (error) {
@@ -541,10 +533,10 @@ export class SkillEngine {
     }
 
     return (
-      skills?.map((skill) => ({
+      skills?.map(skill => ({
         key: skill.key,
         name: skill.name,
-        versions: skill.skill_version?.map((v) => v.version) || [],
+        versions: skill.skill_version?.map(v => v.version) || [],
       })) || []
     );
   }

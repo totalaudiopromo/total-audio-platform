@@ -2,7 +2,7 @@
 
 # TDD Planning System - Family-Friendly Development Workflow
 
-*Lightweight planning system that enhances your existing 25-agent workflow*
+_Lightweight planning system that enhances your existing 25-agent workflow_
 
 ## Quick Command Reference
 
@@ -141,4 +141,4 @@ quick "contact search bug fix"
 # Bypasses TDD, straight to existing workflow
 ```
 
-*Implementation Complete - September 2025*
+_Implementation Complete - September 2025_

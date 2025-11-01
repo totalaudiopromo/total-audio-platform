@@ -13,9 +13,9 @@ class GmailColourSetup {
       'Needs Action': 'blue',
       'Station Feedback': 'orange',
       'Station Auto-Responses': 'gray',
-      'Completed': 'yellow',
+      Completed: 'yellow',
       'Old Campaigns': 'red',
-      'Agent': 'purple'
+      Agent: 'purple',
     };
   }
 
@@ -58,14 +58,19 @@ class GmailColourSetup {
 
           if (await labelRow.isVisible()) {
             // Find the colour dropdown in the same row
-            const colourButton = await labelRow.locator('..').locator('[data-tooltip*="color" i], [aria-label*="color" i]').first();
+            const colourButton = await labelRow
+              .locator('..')
+              .locator('[data-tooltip*="color" i], [aria-label*="color" i]')
+              .first();
 
             if (await colourButton.isVisible()) {
               await colourButton.click();
               await page.waitForTimeout(500);
 
               // Select the colour
-              const colourOption = await page.locator(`[data-color="${colour}"], [title*="${colour}" i]`).first();
+              const colourOption = await page
+                .locator(`[data-color="${colour}"], [title*="${colour}" i]`)
+                .first();
               if (await colourOption.isVisible()) {
                 await colourOption.click();
                 console.log(`✅ Set ${labelName} to ${colour}`);
@@ -80,7 +85,6 @@ class GmailColourSetup {
           } else {
             console.log(`⚠️  Label "${labelName}" not found - may need to be created first`);
           }
-
         } catch (error) {
           console.log(`❌ Failed to set colour for ${labelName}: ${error.message}`);
         }
@@ -89,7 +93,9 @@ class GmailColourSetup {
       console.log('💾 Saving changes...');
 
       // Look for save button
-      const saveButton = await page.locator('button:has-text("Save Changes"), input[value*="Save" i]').first();
+      const saveButton = await page
+        .locator('button:has-text("Save Changes"), input[value*="Save" i]')
+        .first();
       if (await saveButton.isVisible()) {
         await saveButton.click();
         await page.waitForTimeout(2000);
@@ -105,7 +111,6 @@ class GmailColourSetup {
       console.log('  🟡 Completed - Yellow');
       console.log('  🔴 Old Campaigns - Red');
       console.log('  🟣 Agent - Purple');
-
     } catch (error) {
       console.error('❌ Setup failed:', error);
     } finally {
@@ -159,7 +164,6 @@ class GmailColourSetup {
 
       // Keep browser open for manual setup
       await page.waitForTimeout(300000); // 5 minutes
-
     } catch (error) {
       console.error('❌ Setup failed:', error);
     } finally {
@@ -199,7 +203,6 @@ async function main() {
         console.log('');
         console.log('Example: node gmail-colour-setup.js colours');
     }
-
   } catch (error) {
     console.error('❌ Command failed:', error.message);
     process.exit(1);

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Settings, Palette, Building2, Save, Upload, Eye } from 'lucide-react';
 import { teamManager, Team } from '@/lib/teams';
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@total-audio/core-db/client';
 
 export default function TeamSettings() {
   const [team, setTeam] = useState<Team | null>(null);
@@ -20,7 +20,9 @@ export default function TeamSettings() {
 
   const loadTeamSettings = async () => {
     const supabase = createClient();
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
     if (user) {
       const teams = await teamManager.getUserTeams(user.id);
@@ -30,10 +32,16 @@ export default function TeamSettings() {
 
         // Load existing branding
         if (currentTeam.custom_branding) {
-          setAgencyName(currentTeam.custom_branding.agency_name || currentTeam.name);
+          setAgencyName(
+            currentTeam.custom_branding.agency_name || currentTeam.name
+          );
           setLogoUrl(currentTeam.custom_branding.logo_url || '');
-          setPrimaryColor(currentTeam.custom_branding.primary_color || '#14B8A6');
-          setSecondaryColor(currentTeam.custom_branding.secondary_color || '#0F9488');
+          setPrimaryColor(
+            currentTeam.custom_branding.primary_color || '#14B8A6'
+          );
+          setSecondaryColor(
+            currentTeam.custom_branding.secondary_color || '#0F9488'
+          );
         } else {
           setAgencyName(currentTeam.name);
         }
@@ -50,7 +58,7 @@ export default function TeamSettings() {
       agency_name: agencyName,
       logo_url: logoUrl,
       primary_color: primaryColor,
-      secondary_color: secondaryColor
+      secondary_color: secondaryColor,
     });
 
     if (success) {
@@ -92,8 +100,12 @@ export default function TeamSettings() {
             <Settings className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-black text-gray-900">White-Label Settings</h2>
-            <p className="text-sm font-bold text-gray-700">Customize your agency branding for PDF exports</p>
+            <h2 className="text-2xl font-black text-gray-900">
+              White-Label Settings
+            </h2>
+            <p className="text-sm font-bold text-gray-700">
+              Customize your agency branding for PDF exports
+            </p>
           </div>
         </div>
       </div>
@@ -114,7 +126,7 @@ export default function TeamSettings() {
             <input
               type="text"
               value={agencyName}
-              onChange={(e) => setAgencyName(e.target.value)}
+              onChange={e => setAgencyName(e.target.value)}
               placeholder="Your Agency Name"
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl font-bold text-gray-900 focus:border-[#14B8A6] focus:outline-none"
             />
@@ -132,7 +144,11 @@ export default function TeamSettings() {
               {/* Logo Preview */}
               <div className="w-24 h-24 border-4 border-gray-300 rounded-lg flex items-center justify-center bg-white overflow-hidden">
                 {logoUrl ? (
-                  <img src={logoUrl} alt="Logo preview" className="max-w-full max-h-full object-contain" />
+                  <img
+                    src={logoUrl}
+                    alt="Logo preview"
+                    className="max-w-full max-h-full object-contain"
+                  />
                 ) : (
                   <Building2 className="w-10 h-10 text-gray-400" />
                 )}
@@ -176,13 +192,13 @@ export default function TeamSettings() {
                 <input
                   type="color"
                   value={primaryColor}
-                  onChange={(e) => setPrimaryColor(e.target.value)}
+                  onChange={e => setPrimaryColor(e.target.value)}
                   className="w-16 h-12 border-2 border-gray-300 rounded-lg cursor-pointer"
                 />
                 <input
                   type="text"
                   value={primaryColor}
-                  onChange={(e) => setPrimaryColor(e.target.value)}
+                  onChange={e => setPrimaryColor(e.target.value)}
                   className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-xl font-mono font-bold text-gray-900 focus:border-[#14B8A6] focus:outline-none"
                   placeholder="#14B8A6"
                 />
@@ -201,13 +217,13 @@ export default function TeamSettings() {
                 <input
                   type="color"
                   value={secondaryColor}
-                  onChange={(e) => setSecondaryColor(e.target.value)}
+                  onChange={e => setSecondaryColor(e.target.value)}
                   className="w-16 h-12 border-2 border-gray-300 rounded-lg cursor-pointer"
                 />
                 <input
                   type="text"
                   value={secondaryColor}
-                  onChange={(e) => setSecondaryColor(e.target.value)}
+                  onChange={e => setSecondaryColor(e.target.value)}
                   className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-xl font-mono font-bold text-gray-900 focus:border-[#14B8A6] focus:outline-none"
                   placeholder="#0F9488"
                 />
@@ -248,16 +264,20 @@ export default function TeamSettings() {
           </div>
           <div>
             <h3 className="text-lg font-black text-yellow-900 mb-2">
-              {team.plan_tier === 'agency' ? 'Agency Plan - White-Label Active' : 'Upgrade to Enable White-Label'}
+              {team.plan_tier === 'agency'
+                ? 'Agency Plan - White-Label Active'
+                : 'Upgrade to Enable White-Label'}
             </h3>
             {team.plan_tier === 'agency' ? (
               <p className="text-sm font-medium text-yellow-900">
-                Your agency plan includes full white-label branding for all PDF exports. Clients will only see your agency branding.
+                Your agency plan includes full white-label branding for all PDF
+                exports. Clients will only see your agency branding.
               </p>
             ) : (
               <div>
                 <p className="text-sm font-medium text-yellow-900 mb-3">
-                  White-label branding is available on the Agency plan (£79/month). Features include:
+                  White-label branding is available on the Agency plan
+                  (£79/month). Features include:
                 </p>
                 <ul className="text-sm font-medium text-yellow-900 space-y-1 mb-4">
                   <li>• Custom logo on all PDFs</li>
@@ -279,34 +299,60 @@ export default function TeamSettings() {
       {showPreview && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white border-4 border-black shadow-brutal rounded-none max-w-2xl w-full p-8">
-            <h3 className="text-2xl font-black text-gray-900 mb-6">Branding Preview</h3>
+            <h3 className="text-2xl font-black text-gray-900 mb-6">
+              Branding Preview
+            </h3>
 
             {/* Mock PDF Header Preview */}
-            <div className="border-4 border-black shadow-brutal rounded-none p-6 mb-6" style={{ backgroundColor: '#ffffff' }}>
+            <div
+              className="border-4 border-black shadow-brutal rounded-none p-6 mb-6"
+              style={{ backgroundColor: '#ffffff' }}
+            >
               <div className="flex items-center gap-4 mb-4 pb-4 border-b-2 border-gray-300">
                 {/* Logo */}
-                <div className="w-16 h-16 border-2 border-black rounded-lg flex items-center justify-center overflow-hidden" style={{ backgroundColor: primaryColor }}>
+                <div
+                  className="w-16 h-16 border-2 border-black rounded-lg flex items-center justify-center overflow-hidden"
+                  style={{ backgroundColor: primaryColor }}
+                >
                   {logoUrl ? (
-                    <img src={logoUrl} alt="Logo" className="max-w-full max-h-full object-contain" />
+                    <img
+                      src={logoUrl}
+                      alt="Logo"
+                      className="max-w-full max-h-full object-contain"
+                    />
                   ) : (
                     <span className="text-white font-black text-2xl">
-                      {agencyName.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase()}
+                      {agencyName
+                        .split(' ')
+                        .map(w => w[0])
+                        .join('')
+                        .substring(0, 2)
+                        .toUpperCase()}
                     </span>
                   )}
                 </div>
 
                 {/* Agency Info */}
                 <div>
-                  <h4 className="text-xl font-black" style={{ color: '#000000' }}>
+                  <h4
+                    className="text-xl font-black"
+                    style={{ color: '#000000' }}
+                  >
                     {agencyName.toUpperCase()}
                   </h4>
-                  <p className="text-sm font-bold" style={{ color: primaryColor }}>
+                  <p
+                    className="text-sm font-bold"
+                    style={{ color: primaryColor }}
+                  >
                     CONTACT INTELLIGENCE REPORT
                   </p>
                 </div>
               </div>
 
-              <h5 className="text-2xl font-black mb-2" style={{ color: '#000000' }}>
+              <h5
+                className="text-2xl font-black mb-2"
+                style={{ color: '#000000' }}
+              >
                 ENRICHED CONTACT INTELLIGENCE
               </h5>
               <p className="text-sm font-bold" style={{ color: primaryColor }}>

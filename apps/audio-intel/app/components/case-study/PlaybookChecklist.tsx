@@ -1,4 +1,4 @@
-import type { PlaybookChecklistData } from "@/types/case-study";
+import type { PlaybookChecklistData } from '@/types/case-study';
 
 interface PlaybookChecklistProps {
   data: PlaybookChecklistData;

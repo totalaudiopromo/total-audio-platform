@@ -3,9 +3,12 @@ const Airtable = require('airtable');
 // ========================================
 // 🚨 REPLACE THESE WITH YOUR ACTUAL AIRTABLE CREDENTIALS
 // ========================================
-process.env.AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY || 'patOohG8Gg008SKWj.fd0e179e09416b65e61ae4fc97b29136a79f769809446aadbccebebcd060f6e1';
+process.env.AIRTABLE_API_KEY =
+  process.env.AIRTABLE_API_KEY ||
+  'patOohG8Gg008SKWj.fd0e179e09416b65e61ae4fc97b29136a79f769809446aadbccebebcd060f6e1';
 process.env.AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appx7uTQWRH8cIC20';
-process.env.AIRTABLE_CONTACTS_TABLE_ID = process.env.AIRTABLE_CONTACTS_TABLE_ID || 'tblcZnUsB4Swyjcip';
+process.env.AIRTABLE_CONTACTS_TABLE_ID =
+  process.env.AIRTABLE_CONTACTS_TABLE_ID || 'tblcZnUsB4Swyjcip';
 // ========================================
 
 async function testDuplicateRemoval() {
@@ -21,7 +24,7 @@ async function testDuplicateRemoval() {
     }
 
     const base = new Airtable({ apiKey }).base(baseId);
-    
+
     console.log('🔍 Scanning for duplicate email addresses...\n');
 
     // Get all records
@@ -35,7 +38,7 @@ async function testDuplicateRemoval() {
 
     // Group by email
     const emailGroups = new Map();
-    
+
     records.forEach(record => {
       const email = record.fields.Email?.toString().toLowerCase().trim();
       if (email && email !== '') {
@@ -62,8 +65,18 @@ async function testDuplicateRemoval() {
     }
 
     // Calculate completeness for each record
-    const importantFields = ['Name', 'Company', 'Role', 'Genre', 'Location', 'Email', 'Phone', 'Website', 'Notes'];
-    
+    const importantFields = [
+      'Name',
+      'Company',
+      'Role',
+      'Genre',
+      'Location',
+      'Email',
+      'Phone',
+      'Website',
+      'Notes',
+    ];
+
     function calculateCompleteness(record) {
       let filledFields = 0;
       importantFields.forEach(field => {
@@ -80,13 +93,13 @@ async function testDuplicateRemoval() {
 
     console.log('\n📧 Duplicate Groups Found:');
     console.log('=====================================');
-    
+
     duplicates.forEach((records, email) => {
       // Calculate completeness scores
       const recordsWithScores = records.map(record => ({
         record,
         completeness: calculateCompleteness(record),
-        created: record._rawJson.createdTime
+        created: record._rawJson.createdTime,
       }));
 
       // Sort by completeness (descending), then by creation date (descending)
@@ -99,10 +112,11 @@ async function testDuplicateRemoval() {
 
       const keepRecord = recordsWithScores[0].record;
       const deleteRecords = recordsWithScores.slice(1).map(r => r.record);
-      
-      const reason = recordsWithScores[0].completeness > recordsWithScores[1].completeness
-        ? `Most complete record (${Math.round(recordsWithScores[0].completeness * 100)}% vs ${Math.round(recordsWithScores[1].completeness * 100)}%)`
-        : `Most recently created (${new Date(recordsWithScores[0].created).toLocaleDateString()})`;
+
+      const reason =
+        recordsWithScores[0].completeness > recordsWithScores[1].completeness
+          ? `Most complete record (${Math.round(recordsWithScores[0].completeness * 100)}% vs ${Math.round(recordsWithScores[1].completeness * 100)}%)`
+          : `Most recently created (${new Date(recordsWithScores[0].created).toLocaleDateString()})`;
 
       totalRecordsToDelete += deleteRecords.length;
 
@@ -119,7 +133,7 @@ async function testDuplicateRemoval() {
           recordId: record.id,
           fields: record.fields,
           deletedAt: new Date().toISOString(),
-          reason: `Duplicate of ${keepRecord.id} (${reason})`
+          reason: `Duplicate of ${keepRecord.id} (${reason})`,
         });
       });
     });
@@ -144,7 +158,6 @@ async function testDuplicateRemoval() {
     } else {
       console.log('\n✅ No duplicates found to remove!');
     }
-
   } catch (error) {
     console.error('❌ Error during duplicate removal test:', error);
     process.exit(1);
@@ -152,4 +165,4 @@ async function testDuplicateRemoval() {
 }
 
 // Run the test
-testDuplicateRemoval(); 
+testDuplicateRemoval();

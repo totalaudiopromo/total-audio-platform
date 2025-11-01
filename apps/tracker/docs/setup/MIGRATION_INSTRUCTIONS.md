@@ -33,6 +33,7 @@ NOTIFY pgrst, 'reload schema';
 ```
 
 **Verification**: After running, check that columns exist:
+
 ```sql
 SELECT column_name, data_type, is_nullable
 FROM information_schema.columns
@@ -45,6 +46,7 @@ ORDER BY ordinal_position;
 **Problem**: Dashboard crashed when API returned error objects instead of arrays.
 
 **Fix Applied**: [app/dashboard/page.tsx:23-27](app/dashboard/page.tsx#L23-L27)
+
 - Now checks if response is an array before processing
 - Shows clear error message to users when API fails
 - Prevents server-side crashes from filter/reduce operations
@@ -96,6 +98,7 @@ grep "error" /tmp/tracker-campaign-debug.log | tail -20
 ```
 
 **Log Events**:
+
 - `campaign:create:start` - Initial request received
 - `campaign:create:retry` - Column removed and retrying
 - `campaign:create:success` - Campaign created
@@ -143,6 +146,7 @@ grep "error" /tmp/tracker-campaign-debug.log | tail -20
 ## Support
 
 If issues persist after migration:
+
 1. Check browser console for client-side errors
 2. Check `/tmp/tracker-campaign-debug.log` for server-side errors
 3. Verify Supabase RLS policies allow your user to insert campaigns

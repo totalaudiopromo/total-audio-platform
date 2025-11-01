@@ -1,7 +1,9 @@
 # Code Efficiency Audit Report
+
 **Total Audio Platform - September 2025**
 
 ## Executive Summary
+
 - **Total files analysed**: 617 source files (apps), 214 agent files (tools)
 - **High-impact opportunities**: 8 major findings
 - **Potential line reduction**: ~35-40% across non-critical paths
@@ -11,6 +13,7 @@
 ## Critical Findings (Do First)
 
 ### 1. Archive Unused Apps - Immediate Cleanup
+
 - **Location**:
   - `/apps/landing-page` (40KB, 3 files only)
   - `/apps/mobile` (167MB, React Native prototype)
@@ -27,6 +30,7 @@
 - **Revenue Impact**: None - these aren't customer-facing
 
 ### 2. Consolidate OAuth Implementation (41 Files!)
+
 - **Location**: `/tools/agents/radio-promo/` - 15+ OAuth files
   - `simple-oauth-no-domains.js`
   - `simple-gmail-oauth.js`
@@ -47,6 +51,7 @@
 - **Effort**: Medium (2 hours - identify working version, archive rest)
 
 ### 3. Reduce radio-promo Root Script Clutter (97 Files)
+
 - **Location**: `/tools/agents/radio-promo/*.js` (97 root-level scripts)
 - **Issue**: Massive script proliferation including:
   - 45 test/debug scripts (`test-*.js`, `debug-*.js`)
@@ -64,6 +69,7 @@
 - **Effort**: Medium (2-3 hours)
 
 ### 4. Command Centre Component Bloat (513 Lines!)
+
 - **Location**: `/apps/command-centre/app/components/`
 - **Files**:
   - `EnhancedSocialPosting.tsx` (513 lines)
@@ -85,6 +91,7 @@
 - **Note**: Command Centre is supporting infrastructure, not customer-facing
 
 ### 5. Command Centre API Route Overload (52 Routes!)
+
 - **Location**: `/apps/command-centre/app/api/` (52 route.ts files)
 - **Largest routes**:
   - `revenue-opportunities/route.ts` (652 lines)
@@ -105,6 +112,7 @@
 ## Medium Priority
 
 ### 6. Audio Intel Export Service Duplication
+
 - **Location**: `/apps/audio-intel/utils/`
   - `exportService.ts` (1,198 lines)
   - `exportToPdf.ts` (813 lines)
@@ -124,6 +132,7 @@
 - **Note**: Audio Intel is THE priority - only refactor if it adds customer value
 
 ### 7. Archive Parked Agents (5 Files, 5,000+ Lines)
+
 - **Location**: `/tools/agents/parked/`
   - `viral-content-automation.js` (1,667 lines)
   - `beta-user-acquisition-agent.js` (1,385 lines)
@@ -136,6 +145,7 @@
 - **Effort**: Low (30 minutes)
 
 ### 8. Archived Agent Files Already in Archive (24 Files)
+
 - **Location**: `/tools/agents/archive/` (24 .js files)
 - **Issue**: Archive directory exists but also 29 more files in parked + outdated locations
 - **Impact**: Consolidate all archived agents to single location
@@ -145,6 +155,7 @@
 ## Low Priority / Future
 
 ### 9. Newsletter Content Utilities Consolidation
+
 - **Location**: `/apps/audio-intel/utils/`
   - `newsletterTemplates.ts` (471 lines)
   - `newsletterContentStrategy.ts` (347 lines)
@@ -157,6 +168,7 @@
 - **Priority**: LOW - Newsletter system operational, don't fix what isn't broken
 
 ### 10. Content Domination App - Unclear Status
+
 - **Location**: `/apps/content-domination/` (41MB)
 - **Issue**: Has packages subdirectory (`newsjacker-engine`, `content-engine`) but unclear if actively used
 - **Impact**: Determine if this is supporting Audio Intel customer acquisition
@@ -164,6 +176,7 @@
 - **Effort**: Low (15 minutes to assess, 30 minutes to archive if needed)
 
 ### 11. Playlist Pulse & Voice Echo - Experimental Status
+
 - **Location**:
   - `/apps/playlist-pulse/` (372MB)
   - `/apps/voice-echo/` (281MB)
@@ -173,6 +186,7 @@
 - **Effort**: Low (30 minutes each)
 
 ### 12. Test File Distribution (357 Test Files)
+
 - **Location**: Across all apps
 - **Issue**: 357 test files found but no clear testing strategy documentation
 - **Impact**: Assess if tests are running, maintained, and valuable
@@ -183,6 +197,7 @@
 ## Apps to Archive/Remove
 
 ### Immediate Archive (High Confidence)
+
 1. **apps/landing-page** - 40KB, only 3 files, appears unused
 2. **apps/mobile** - 167MB, React Native prototype, not in active development
 3. **apps/seo-tool** - 228MB, contains only demo.html file
@@ -190,6 +205,7 @@
 5. **apps/tap-saas-template** - 296MB, template for future products, move to `/templates/`
 
 ### Assess Before Archive (Needs Business Context Check)
+
 6. **apps/content-domination** - 41MB, has real packages but unclear if supporting customer acquisition
 7. **apps/playlist-pulse** - 372MB, has OAuth setup, unclear if supporting Audio Intel
 8. **apps/voice-echo** - 281MB, has professional export system docs, unclear usage
@@ -199,6 +215,7 @@
 ## Recommended Next Actions
 
 ### Phase 1: Quick Wins (4 hours, High ROI)
+
 1. **Archive 5 unused apps** (30 min) - Immediate 1.1GB cleanup
 2. **Archive parked agents** (30 min) - Remove 6,098 lines of unused code
 3. **Consolidate OAuth files** (2 hours) - From 41 files to 2 working implementations
@@ -207,12 +224,14 @@
 **Impact**: 1.1GB disk space, ~10,000 lines removed, dramatically clearer agent system
 
 ### Phase 2: Component Quality (8 hours, Medium ROI)
+
 1. **Split Command Centre large components** (4 hours) - Break 6 components into focused sub-components
 2. **Consolidate Command Centre API routes** (4 hours) - From 52 to ~20 routes
 
 **Impact**: Better maintainability of supporting infrastructure (but NOT customer-facing)
 
 ### Phase 3: Audio Intel Optimisation (3 hours, Only If Adds Customer Value)
+
 1. **Consolidate export services** (3 hours) - Only if it improves customer experience or enables new features
 
 **Impact**: Cleaner code in THE revenue app, but only do if it adds customer value
@@ -220,41 +239,46 @@
 ## Critical Notes
 
 ### DON'T TOUCH (Working Systems)
+
 - ✅ Discord bot integration (just built, working perfectly)
 - ✅ Gmail, Monday.com, WARM, Mailchimp integrations (operational)
 - ✅ Audio Intel customer-facing features (proven, revenue-generating)
 - ✅ Newsletter "The Unsigned Advantage" system (operational)
 
 ### Business Phase Context
+
 - **Current Phase**: Customer Acquisition (Audio Intel is THE priority)
 - **Philosophy**: "Foundation complete, focus on customer acquisition"
 - **Constraint**: 2-hour max work sessions
 - **Key Metric**: First £500/month by November 2025
 
 ### Refactoring Philosophy
+
 **Only refactor if it**:
+
 1. Directly supports customer acquisition
 2. Removes confusion that slows down development
 3. Reduces deployment/CI costs
 4. Fixes actual bugs affecting customers
 
 **Don't refactor**:
+
 1. Working customer-facing features (Audio Intel core)
 2. Supporting systems that work (newsletter, Gmail automation)
 3. Code just because it's "not perfect"
 
 ## Summary: ROI-Ranked Actions
 
-| Action | Effort | Impact | Priority | Customer Benefit |
-|--------|--------|--------|----------|------------------|
-| Archive 5 unused apps | 30 min | 1.1GB, clarity | HIGH | Faster deploys, clearer codebase |
-| Consolidate OAuth files | 2 hrs | -2,500 lines | HIGH | Easier future integrations |
-| Archive radio-promo clutter | 2 hrs | -4,000 lines | HIGH | Clearer agent system |
-| Archive parked agents | 30 min | -6,098 lines | HIGH | Mental clarity |
-| Split Command Centre components | 4 hrs | Better maintainability | MEDIUM | None (supporting app) |
-| Consolidate API routes | 4 hrs | -3,000 lines | MEDIUM | None (supporting app) |
-| Audio Intel export consolidation | 3 hrs | Cleaner code | LOW | Only if enables features |
-| Assess experimental apps | 1 hr | Clarity | LOW | Indirectly helpful |
+| Action                           | Effort | Impact                 | Priority | Customer Benefit                 |
+| -------------------------------- | ------ | ---------------------- | -------- | -------------------------------- |
+| Archive 5 unused apps            | 30 min | 1.1GB, clarity         | HIGH     | Faster deploys, clearer codebase |
+| Consolidate OAuth files          | 2 hrs  | -2,500 lines           | HIGH     | Easier future integrations       |
+| Archive radio-promo clutter      | 2 hrs  | -4,000 lines           | HIGH     | Clearer agent system             |
+| Archive parked agents            | 30 min | -6,098 lines           | HIGH     | Mental clarity                   |
+| Split Command Centre components  | 4 hrs  | Better maintainability | MEDIUM   | None (supporting app)            |
+| Consolidate API routes           | 4 hrs  | -3,000 lines           | MEDIUM   | None (supporting app)            |
+| Audio Intel export consolidation | 3 hrs  | Cleaner code           | LOW      | Only if enables features         |
+| Assess experimental apps         | 1 hr   | Clarity                | LOW      | Indirectly helpful               |
 
 **Total Quick Win ROI**: 5 hours = 1.1GB space + ~12,598 lines removed + dramatically clearer structure
 

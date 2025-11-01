@@ -8,11 +8,13 @@
 ## 🚀 OPTION 1: VERCEL POSTGRES VIA WEB (EASIEST - 3 MINUTES)
 
 ### Step 1: Go to Vercel Dashboard
+
 ```
 https://vercel.com/chris-projects-6ffe0e29/audio-intel
 ```
 
 ### Step 2: Add Postgres Storage
+
 1. Click **Storage** tab in your Audio Intel project
 2. Click **Create Database**
 3. Select **Postgres**
@@ -21,23 +23,27 @@ https://vercel.com/chris-projects-6ffe0e29/audio-intel
 6. Click **Create**
 
 ### Step 3: Connect to Project
+
 1. After creation, click **Connect Project**
 2. Select: `audio-intel`
 3. Environment: **Development, Preview, Production** (all three)
 4. Click **Connect**
 
 ### Step 4: Pull Environment Variables Locally
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel
 vercel env pull .env.local
 ```
 
 You'll see:
+
 ```
 ✓ Created .env.local file (.env.local)
 ```
 
 ### Step 5: Update Database Schema
+
 ```bash
 cd ../api
 npx prisma db push
@@ -45,6 +51,7 @@ npx prisma generate
 ```
 
 ### Step 6: Test It Works
+
 ```bash
 cd ../audio-intel
 npm run dev
@@ -57,11 +64,13 @@ npm run dev
 ## 🚀 OPTION 2: SUPABASE (ALTERNATIVE - 5 MINUTES)
 
 ### Step 1: Create Supabase Account
+
 ```
 https://supabase.com/dashboard
 ```
 
 ### Step 2: Create New Project
+
 1. Click **New Project**
 2. Name: `total-audio-promo`
 3. Database Password: `AudioIntel2025!` (save this)
@@ -69,6 +78,7 @@ https://supabase.com/dashboard
 5. Click **Create new project** (takes 2 minutes)
 
 ### Step 3: Get Connection String
+
 1. Go to **Settings** → **Database**
 2. Scroll to **Connection string**
 3. Select **URI** mode
@@ -78,6 +88,7 @@ https://supabase.com/dashboard
    ```
 
 ### Step 4: Update .env.local
+
 ```bash
 # Edit apps/audio-intel/.env.local
 # Replace DATABASE_URL line with your Supabase connection string
@@ -86,6 +97,7 @@ DATABASE_URL="postgresql://postgres.[project-ref]:[YOUR-PASSWORD]@aws-0-us-east-
 ```
 
 ### Step 5: Push Database Schema
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/api
 npx prisma db push
@@ -93,6 +105,7 @@ npx prisma generate
 ```
 
 ### Step 6: Test It Works
+
 ```bash
 cd ../audio-intel
 npm run dev
@@ -104,16 +117,17 @@ npm run dev
 
 ## 📊 WHICH ONE SHOULD YOU USE?
 
-| Feature | Vercel Postgres | Supabase |
-|---------|----------------|----------|
-| **Setup Time** | 3 minutes | 5 minutes |
-| **Integration** | Native with Vercel | Manual connection string |
-| **Dashboard** | Basic | Feature-rich UI |
-| **Free Tier** | 256MB, 10k rows | 500MB, unlimited rows |
-| **Backups** | Automatic | Automatic |
-| **Best For** | Quick setup, Vercel users | Better UI, more features |
+| Feature         | Vercel Postgres           | Supabase                 |
+| --------------- | ------------------------- | ------------------------ |
+| **Setup Time**  | 3 minutes                 | 5 minutes                |
+| **Integration** | Native with Vercel        | Manual connection string |
+| **Dashboard**   | Basic                     | Feature-rich UI          |
+| **Free Tier**   | 256MB, 10k rows           | 500MB, unlimited rows    |
+| **Backups**     | Automatic                 | Automatic                |
+| **Best For**    | Quick setup, Vercel users | Better UI, more features |
 
 **My Recommendation**: **Vercel Postgres** (Option 1)
+
 - You're already using Vercel
 - 3-minute setup via dashboard
 - Native integration (env vars automatically added)
@@ -124,12 +138,14 @@ npm run dev
 ## 🎯 WHAT YOU GET
 
 ### Before
+
 ❌ Must start local PostgreSQL server every time
 ❌ "Database server not running" errors
 ❌ Only works on one machine
 ❌ Manual backups
 
 ### After
+
 ✅ Works everywhere (home, Postman office, travelling)
 ✅ Zero maintenance
 ✅ Automatic backups
@@ -141,12 +157,14 @@ npm run dev
 ## 🔧 TROUBLESHOOTING
 
 ### After Setup: "Prisma Client not found"
+
 ```bash
 cd apps/api
 npx prisma generate
 ```
 
 ### "Can't connect to database"
+
 ```bash
 # Check .env.local has DATABASE_URL
 cat apps/audio-intel/.env.local | grep DATABASE_URL
@@ -156,6 +174,7 @@ cat apps/audio-intel/.env.local | grep DATABASE_URL
 ```
 
 ### Vercel env pull not working
+
 ```bash
 # Make sure you're in the audio-intel directory
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel
@@ -165,6 +184,7 @@ vercel env pull .env.local
 ```
 
 ### Want to see your database
+
 **Vercel**: `vercel.com/chris-projects-6ffe0e29/stores`
 **Supabase**: `supabase.com/dashboard` → Your project → Table Editor
 
@@ -192,6 +212,7 @@ npm run dev
 ```
 
 You should see:
+
 ```
 ✓ Ready in 2.3s
 ✓ Local: http://localhost:3000
@@ -211,6 +232,7 @@ node unified-launcher.js health
 ```
 
 Will show:
+
 ```
 ✅ Database: Connected (Vercel Postgres)
 ✅ TDD System: Operational
@@ -246,6 +268,7 @@ npm run dev
 ```
 
 Then:
+
 ```bash
 chmod +x ~/start-dev.sh
 bash ~/start-dev.sh
@@ -259,6 +282,7 @@ bash ~/start-dev.sh
 **Option 2 (Supabase)**: 5 minutes with connection string
 
 Both are:
+
 - ✅ FREE at your scale
 - ✅ Zero maintenance
 - ✅ Work everywhere

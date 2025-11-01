@@ -9,11 +9,13 @@ I've created a complete TypeScript utility system for parsing programmatic case 
 ## 📁 Files Created
 
 ### 1. **`utils/parseCaseStudyData.ts`** (Main CSV Parser)
+
 **Location**: `/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/utils/parseCaseStudyData.ts`
 
 **Purpose**: Reads and parses `docs/pseo/programmatic-pages.csv` into strongly-typed TypeScript objects.
 
 **Key Features**:
+
 - ✅ Reads CSV file at build time (synchronous) or runtime (async)
 - ✅ Converts semicolon-separated values to arrays (`search_intent`, `audience`, `proof_points`)
 - ✅ Type-safe data validation with helpful error messages
@@ -22,6 +24,7 @@ I've created a complete TypeScript utility system for parsing programmatic case 
 - ✅ Handles missing data gracefully (returns null instead of throwing)
 
 **Public API**:
+
 ```typescript
 // Async versions (runtime)
 getAllCaseStudies(): Promise<EnrichedCaseStudyData[]>
@@ -42,11 +45,13 @@ validateCaseStudy(data: CaseStudyData): { valid: boolean; errors: string[] }
 ---
 
 ### 2. **`utils/generateCaseStudyMetadata.ts`** (Metadata Generator)
+
 **Location**: `/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/utils/generateCaseStudyMetadata.ts`
 
 **Purpose**: Generates SEO-optimized Next.js metadata from CSV data.
 
 **Key Features**:
+
 - ✅ Creates complete `Metadata` object for Next.js pages
 - ✅ Generates OpenGraph metadata for social sharing (Facebook, LinkedIn)
 - ✅ Creates Twitter Card metadata (optimized for character limits)
@@ -56,6 +61,7 @@ validateCaseStudy(data: CaseStudyData): { valid: boolean; errors: string[] }
 - ✅ Structured data (JSON-LD) generators for Article, Breadcrumb, FAQ schemas
 
 **Public API**:
+
 ```typescript
 // Metadata generation
 generateCaseStudyMetadata(slug: string, options?)
@@ -71,11 +77,13 @@ generateAllCaseStudySchemas(slug: string, faqQuestions?): object[]
 ---
 
 ### 3. **`utils/CASE_STUDY_PARSER_USAGE.md`** (Documentation)
+
 **Location**: `/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/utils/CASE_STUDY_PARSER_USAGE.md`
 
 **Purpose**: Complete reference documentation with examples.
 
 **Contents**:
+
 - Quick start guide
 - Full API reference with examples
 - Type definitions
@@ -87,11 +95,13 @@ generateAllCaseStudySchemas(slug: string, faqQuestions?): object[]
 ---
 
 ### 4. **`utils/test-case-study-parser.ts`** (Test Suite)
+
 **Location**: `/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/utils/test-case-study-parser.ts`
 
 **Purpose**: Comprehensive test script to verify CSV parsing and metadata generation.
 
 **Tests Included**:
+
 - ✅ Get all case studies
 - ✅ Get case study by slug
 - ✅ Validation of all case studies
@@ -101,6 +111,7 @@ generateAllCaseStudySchemas(slug: string, faqQuestions?): object[]
 - ✅ Edge cases (non-existent slugs, 404 handling)
 
 **To Run** (once ts-node is configured):
+
 ```bash
 npx ts-node utils/test-case-study-parser.ts
 ```
@@ -108,11 +119,13 @@ npx ts-node utils/test-case-study-parser.ts
 ---
 
 ### 5. **`utils/EXAMPLE_CASE_STUDY_PAGE.tsx`** (Implementation Example)
+
 **Location**: `/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/utils/EXAMPLE_CASE_STUDY_PAGE.tsx`
 
 **Purpose**: Complete page component example showing real-world usage.
 
 **Features Demonstrated**:
+
 - ✅ `generateMetadata()` implementation
 - ✅ `generateStaticParams()` for static generation
 - ✅ JSON-LD structured data injection
@@ -128,31 +141,33 @@ npx ts-node utils/test-case-study-parser.ts
 ### Inline Types (will be moved to `types/case-study.ts`)
 
 **`CaseStudyData`** - Core CSV structure:
+
 ```typescript
 interface CaseStudyData {
-  topicSlug: string;              // 'bbc-radio-1'
-  pageUrl: string;                // '/blog/bbc-radio-1-contact-enrichment'
-  pageTitle: string;              // Full SEO title
-  metaDescription: string;        // Meta description
-  searchIntent: string[];         // Array of search keywords
-  audience: string[];             // Target audiences
-  painPoint: string;              // Problem statement
-  solutionAngle: string;          // Solution description
-  proofPoints: string[];          // Results/evidence
-  ctaPrimary: string;             // Call to action
-  category: string;               // Content category
-  tier: number;                   // 1-3 priority
-  monthlySearchesEst: number;     // SEO volume
+  topicSlug: string; // 'bbc-radio-1'
+  pageUrl: string; // '/blog/bbc-radio-1-contact-enrichment'
+  pageTitle: string; // Full SEO title
+  metaDescription: string; // Meta description
+  searchIntent: string[]; // Array of search keywords
+  audience: string[]; // Target audiences
+  painPoint: string; // Problem statement
+  solutionAngle: string; // Solution description
+  proofPoints: string[]; // Results/evidence
+  ctaPrimary: string; // Call to action
+  category: string; // Content category
+  tier: number; // 1-3 priority
+  monthlySearchesEst: number; // SEO volume
   status: 'live' | 'planned' | 'draft';
 }
 ```
 
 **`EnrichedCaseStudyData`** - Extended with computed fields:
+
 ```typescript
 interface EnrichedCaseStudyData extends CaseStudyData {
-  estimatedReadTime: number;      // Minutes (computed from tier)
-  primaryKeyword: string;         // First search intent
-  targetAudiencePrimary: string;  // First audience
+  estimatedReadTime: number; // Minutes (computed from tier)
+  primaryKeyword: string; // First search intent
+  targetAudiencePrimary: string; // First audience
 }
 ```
 
@@ -205,24 +220,25 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
 ### Column Mapping
 
-| CSV Column | Type | Separator | Example |
-|------------|------|-----------|---------|
-| `topic_slug` | string | - | `bbc-radio-1` |
-| `page_url` | string | - | `/blog/bbc-radio-1-contact-enrichment` |
-| `page_title` | string | - | `BBC Radio 1 Contact Enrichment...` |
-| `meta_description` | string | - | `Real BBC Radio 1 pitching workflow...` |
-| `search_intent` | string[] | `;` | `bbc radio 1 contacts; how to pitch` |
-| `audience` | string[] | `;` | `UK radio promoters; independent artists` |
-| `pain_point` | string | - | `18 hours researching contacts...` |
-| `solution_angle` | string | - | `Upload messy contact list...` |
-| `proof_points` | string[] | `;` | `100% accuracy; 32% reply rate` |
-| `cta_primary` | string | - | `Start Free Trial` |
-| `category` | string | - | `UK Radio Stations` |
-| `tier` | number | - | `1` (1-3) |
-| `monthly_searches_est` | number | - | `1200` |
-| `status` | enum | - | `live`, `planned`, or `draft` |
+| CSV Column             | Type     | Separator | Example                                   |
+| ---------------------- | -------- | --------- | ----------------------------------------- |
+| `topic_slug`           | string   | -         | `bbc-radio-1`                             |
+| `page_url`             | string   | -         | `/blog/bbc-radio-1-contact-enrichment`    |
+| `page_title`           | string   | -         | `BBC Radio 1 Contact Enrichment...`       |
+| `meta_description`     | string   | -         | `Real BBC Radio 1 pitching workflow...`   |
+| `search_intent`        | string[] | `;`       | `bbc radio 1 contacts; how to pitch`      |
+| `audience`             | string[] | `;`       | `UK radio promoters; independent artists` |
+| `pain_point`           | string   | -         | `18 hours researching contacts...`        |
+| `solution_angle`       | string   | -         | `Upload messy contact list...`            |
+| `proof_points`         | string[] | `;`       | `100% accuracy; 32% reply rate`           |
+| `cta_primary`          | string   | -         | `Start Free Trial`                        |
+| `category`             | string   | -         | `UK Radio Stations`                       |
+| `tier`                 | number   | -         | `1` (1-3)                                 |
+| `monthly_searches_est` | number   | -         | `1200`                                    |
+| `status`               | enum     | -         | `live`, `planned`, or `draft`             |
 
 ### Parsing Rules
+
 - **Semicolons (`;`)** separate array values
 - **Commas** are standard CSV delimiters
 - **Empty rows** are skipped
@@ -235,6 +251,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 ### Automatic Validation
 
 The parser validates:
+
 - ✅ All required fields are present
 - ✅ `tier` is 1, 2, or 3
 - ✅ `monthlySearchesEst` is non-negative
@@ -244,17 +261,20 @@ The parser validates:
 ### Error Messages
 
 **CSV Not Found**:
+
 ```
 Error: CSV file not found at /path/to/docs/pseo/programmatic-pages.csv
 ```
 
 **Case Study Not Found**:
+
 ```
 Error: Case study not found for slug: invalid-slug
 Available slugs: bbc-radio-1, bbc-radio-6-music, ...
 ```
 
 **Invalid Data**:
+
 ```
 Error: Invalid tier value for bbc-radio-1: 5. Must be 1, 2, or 3.
 ```
@@ -269,11 +289,13 @@ The metadata generator follows the exact format from:
 `/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/app/blog/bbc-radio-1-contact-enrichment/page.tsx`
 
 **CSV Row**:
+
 ```csv
 bbc-radio-1,/blog/bbc-radio-1-contact-enrichment,"BBC Radio 1 Contact Enrichment: From 18 Hours to 2 Minutes | Audio Intel","Real BBC Radio 1 pitching workflow from 18 hours to 2 minutes..."
 ```
 
 **Generated Metadata** (identical to manual):
+
 ```typescript
 {
   title: "BBC Radio 1 Contact Enrichment: From 18 Hours to 2 Minutes | Audio Intel",
@@ -297,15 +319,19 @@ bbc-radio-1,/blog/bbc-radio-1-contact-enrichment,"BBC Radio 1 Contact Enrichment
 ## 🚨 Known Issues & Notes
 
 ### TypeScript Errors (Minor)
+
 The test file (`test-case-study-parser.ts`) has some TypeScript warnings due to Next.js `Metadata` type complexity. These don't affect functionality and will be resolved when types are properly extracted.
 
 ### Types Location
+
 Currently, types are defined inline in `parseCaseStudyData.ts`. Once the other agent creates `types/case-study.ts`, move:
+
 - `CaseStudyData`
 - `EnrichedCaseStudyData`
 - `ContactData` (if needed)
 
 Update imports:
+
 ```typescript
 // From
 import type { CaseStudyData } from './parseCaseStudyData';
@@ -315,7 +341,9 @@ import type { CaseStudyData } from '@/types/case-study';
 ```
 
 ### Environment Variables
+
 Set `NEXT_PUBLIC_SITE_URL` in `.env.local`:
+
 ```bash
 NEXT_PUBLIC_SITE_URL=https://intel.totalaudiopromo.com
 ```
@@ -327,6 +355,7 @@ This is used for canonical URLs and OpenGraph metadata.
 ## 📝 Next Steps for You
 
 1. **Test the Parser**:
+
    ```bash
    # Verify CSV loads correctly
    npx ts-node utils/test-case-study-parser.ts

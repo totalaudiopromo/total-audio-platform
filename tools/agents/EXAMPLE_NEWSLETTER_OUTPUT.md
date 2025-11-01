@@ -36,6 +36,7 @@ Chris
 ## ✅ Quality Check
 
 ### Voice Authenticity:
+
 - ✅ Uses verified background: "After 5+ years in radio promotion"
 - ✅ No BBC Radio 1 mention
 - ✅ No name dropping
@@ -43,18 +44,21 @@ Chris
 - ✅ British spelling ("organised", "whilst", "nicked")
 
 ### Content Quality:
+
 - ✅ Conversational opening: "Right, so it's kicking off..."
 - ✅ Clear unsigned advantage: "indies can move fast whilst majors are stuck in meetings"
 - ✅ Specific action: "Take 90 minutes this week to audit..."
 - ✅ Underground perspective: "we've got the advantage of speed"
 
 ### Framework Adherence:
+
 - ✅ HOOK: AI lawsuit news (2 sentences)
 - ✅ UNSIGNED ADVANTAGE: Indies move faster than majors (3 sentences)
 - ✅ ACTION: Audit online presence, screenshot evidence, join communities
 - ✅ No forced Audio Intel mention (not relevant to story)
 
 ### Tone:
+
 - ✅ Sounds like messaging a friend in a band
 - ✅ Direct, no BS
 - ✅ Practical and actionable

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   // Verify cron secret
@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
   try {
     console.log('📧 Starting automated email scheduling...');
-    
+
     const results = {
       timestamp: new Date().toISOString(),
       beta_sequences_triggered: 0,
@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
       subscribers_segmented: 0,
       newsletter_prepared: false,
       conversion_emails_sent: 0,
-      engagement_tracked: 0
+      engagement_tracked: 0,
     };
 
     // In a real implementation, this would:
@@ -38,8 +38,10 @@ export async function POST(request: NextRequest) {
 
     const todayTasks = [];
     if (results.newsletter_prepared) todayTasks.push('Weekly newsletter prepared');
-    if (results.beta_sequences_triggered > 0) todayTasks.push(`${results.beta_sequences_triggered} beta sequences triggered`);
-    if (results.conversion_emails_sent > 0) todayTasks.push(`${results.conversion_emails_sent} conversion emails sent`);
+    if (results.beta_sequences_triggered > 0)
+      todayTasks.push(`${results.beta_sequences_triggered} beta sequences triggered`);
+    if (results.conversion_emails_sent > 0)
+      todayTasks.push(`${results.conversion_emails_sent} conversion emails sent`);
 
     console.log('✅ Email scheduling complete:', results);
 
@@ -49,14 +51,16 @@ export async function POST(request: NextRequest) {
       action: 'Daily email automation completed',
       results,
       tasks_completed: todayTasks,
-      next_run: 'Tomorrow at 9 AM'
+      next_run: 'Tomorrow at 9 AM',
     });
-
   } catch (error) {
     console.error('❌ Email scheduling failed:', error);
-    return NextResponse.json({
-      error: 'Email scheduling failed',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Email scheduling failed',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }

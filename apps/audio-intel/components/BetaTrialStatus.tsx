@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Clock, Crown, Sparkles } from 'lucide-react'
-import { getBetaUserStatus, generateTrialExpiryMessage } from '@/utils/betaAccessControl'
+import { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Clock, Crown, Sparkles } from 'lucide-react';
+import { getBetaUserStatus, generateTrialExpiryMessage } from '@/utils/betaAccessControl';
 
 interface BetaTrialStatusProps {
   userEmail?: string;
@@ -13,9 +13,13 @@ interface BetaTrialStatusProps {
   onUpgradeClick?: () => void;
 }
 
-export default function BetaTrialStatus({ userEmail, signupTimestamp, onUpgradeClick }: BetaTrialStatusProps) {
+export default function BetaTrialStatus({
+  userEmail,
+  signupTimestamp,
+  onUpgradeClick,
+}: BetaTrialStatusProps) {
   const [trialStatus, setTrialStatus] = useState<any>(null);
-  
+
   useEffect(() => {
     if (signupTimestamp) {
       const status = getBetaUserStatus(userEmail || '', signupTimestamp);
@@ -39,12 +43,8 @@ export default function BetaTrialStatus({ userEmail, signupTimestamp, onUpgradeC
               <Clock className="w-6 h-6 text-white" />
             </div>
             <div>
-              <CardTitle className="text-2xl font-black text-red-900">
-                Free Trial Expired
-              </CardTitle>
-              <Badge className="bg-red-500 text-white font-black mt-1">
-                UPGRADE REQUIRED
-              </Badge>
+              <CardTitle className="text-2xl font-black text-red-900">Free Trial Expired</CardTitle>
+              <Badge className="bg-red-500 text-white font-black mt-1">UPGRADE REQUIRED</Badge>
             </div>
           </div>
         </CardHeader>
@@ -58,13 +58,13 @@ export default function BetaTrialStatus({ userEmail, signupTimestamp, onUpgradeC
               <h4 className="font-black text-yellow-800">Exclusive Beta Founder Discount</h4>
             </div>
             <p className="text-sm font-bold text-yellow-800">
-              As a beta tester, you get <strong>50% off forever</strong>: 
+              As a beta tester, you get <strong>50% off forever</strong>:
               <span className="block text-xl font-black mt-1">
                 £9.99/month instead of £19.99/month
               </span>
             </p>
           </div>
-          <Button 
+          <Button
             onClick={onUpgradeClick}
             size="lg"
             className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-black text-lg rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
@@ -111,7 +111,7 @@ export default function BetaTrialStatus({ userEmail, signupTimestamp, onUpgradeC
               <li>✅ Founding member recognition</li>
             </ul>
           </div>
-          <Button 
+          <Button
             onClick={onUpgradeClick}
             size="lg"
             className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-black text-lg rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
@@ -137,14 +137,10 @@ export default function BetaTrialStatus({ userEmail, signupTimestamp, onUpgradeC
               <p className="font-bold text-blue-900">
                 Free Trial: {trialStatus.daysRemaining} days remaining
               </p>
-              <p className="text-sm text-blue-700">
-                Then £9.99/month (50% lifetime discount)
-              </p>
+              <p className="text-sm text-blue-700">Then £9.99/month (50% lifetime discount)</p>
             </div>
           </div>
-          <Badge className="bg-blue-500 text-white font-black">
-            BETA FOUNDER
-          </Badge>
+          <Badge className="bg-blue-500 text-white font-black">BETA FOUNDER</Badge>
         </div>
       </CardContent>
     </Card>

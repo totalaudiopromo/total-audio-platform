@@ -43,19 +43,28 @@ class DriveSyncService {
     if (!this.driveHelper || !this.rootFolderId) return null;
 
     const campaignFolderName = this.buildCampaignFolderName(campaign);
-    const campaignFolderId = await this.driveHelper.ensureFolder(this.rootFolderId, campaignFolderName);
+    const campaignFolderId = await this.driveHelper.ensureFolder(
+      this.rootFolderId,
+      campaignFolderName
+    );
 
     const audioFolderId = await this.driveHelper.ensureFolder(campaignFolderId, 'MP3-WAV');
     const artworkFolderId = await this.driveHelper.ensureFolder(campaignFolderId, 'Artwork');
-    const pressImagesFolderId = await this.driveHelper.ensureFolder(campaignFolderId, 'Press Images');
-    const pressReleaseFolderId = await this.driveHelper.ensureFolder(campaignFolderId, 'Press Release');
+    const pressImagesFolderId = await this.driveHelper.ensureFolder(
+      campaignFolderId,
+      'Press Images'
+    );
+    const pressReleaseFolderId = await this.driveHelper.ensureFolder(
+      campaignFolderId,
+      'Press Release'
+    );
 
     return {
       campaignFolderId,
       audioFolderId,
       artworkFolderId,
       pressImagesFolderId,
-      pressReleaseFolderId
+      pressReleaseFolderId,
     };
   }
 
@@ -81,7 +90,10 @@ class DriveSyncService {
           url.searchParams.set('export', url.searchParams.get('export') || 'download');
           return url.toString();
         }
-        this.log('warn', `Google Drive folder link cannot be downloaded automatically: ${originalUrl}`);
+        this.log(
+          'warn',
+          `Google Drive folder link cannot be downloaded automatically: ${originalUrl}`
+        );
         return originalUrl;
       }
 
@@ -187,7 +199,7 @@ class DriveSyncService {
       artwork: [],
       press: [],
       other: [],
-      campaignFolderId: folders.campaignFolderId
+      campaignFolderId: folders.campaignFolderId,
     };
 
     const uploadTasks = [];
@@ -209,14 +221,35 @@ class DriveSyncService {
       .filter(Boolean);
 
     audioLinks.forEach((link, index) => {
-      pushUpload('audio', this.uploadAsset(folders.audioFolderId, link, `${campaign.trackTitle || 'Track'}-${index + 1}`));
+      pushUpload(
+        'audio',
+        this.uploadAsset(
+          folders.audioFolderId,
+          link,
+          `${campaign.trackTitle || 'Track'}-${index + 1}`
+        )
+      );
     });
 
     if (data.pressPhoto) {
-      pushUpload('press', this.uploadAsset(folders.pressFolderId, data.pressPhoto, `${campaign.artistName || 'Artist'}-press`));
+      pushUpload(
+        'press',
+        this.uploadAsset(
+          folders.pressFolderId,
+          data.pressPhoto,
+          `${campaign.artistName || 'Artist'}-press`
+        )
+      );
     }
     if (data.coverArt) {
-      pushUpload('artwork', this.uploadAsset(folders.artworkFolderId, data.coverArt, `${campaign.trackTitle || 'Track'}-artwork`));
+      pushUpload(
+        'artwork',
+        this.uploadAsset(
+          folders.artworkFolderId,
+          data.coverArt,
+          `${campaign.trackTitle || 'Track'}-artwork`
+        )
+      );
     }
 
     (campaign.otherLinks || []).forEach((link, index) => {
@@ -230,7 +263,7 @@ class DriveSyncService {
       additionalTracks: [],
       pressPhoto: null,
       artwork: null,
-      cleanup: []
+      cleanup: [],
     };
 
     const downloadFirstFile = async (files, label) => {
@@ -255,7 +288,10 @@ class DriveSyncService {
             localAssets.cleanup.push(tempPath);
             return tempPath;
           } catch (error) {
-            this.log('warn', `Failed to download additional track ${file.name || file.id}: ${error.message}`);
+            this.log(
+              'warn',
+              `Failed to download additional track ${file.name || file.id}: ${error.message}`
+            );
             return null;
           }
         })
@@ -268,7 +304,7 @@ class DriveSyncService {
 
     return {
       drive: driveAssets,
-      local: localAssets
+      local: localAssets,
     };
   }
 }

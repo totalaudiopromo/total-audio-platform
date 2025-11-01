@@ -8,6 +8,7 @@
 ## 🎯 Critical Issues (Fix Before Launch)
 
 ### 1. **Duplicate "Drop Your Chaos Here" Heading**
+
 **Location**: `/app/demo/page.tsx` (line 324) and `/components/SpreadsheetUploader.tsx` (line 666)
 
 **Problem**: Two identical headings create visual redundancy and confusion.
@@ -27,21 +28,24 @@
 ---
 
 ### 2. **Mobile: Broken Vertical Text in Workflow Diagram**
+
 **Location**: The 3-stage workflow diagram (CHAOS → PROCESSING → INTELLIGENCE)
 
 **Problem**: On mobile (375px width), the vertical "PROCESSING" text breaks awkwardly and is hard to read.
 
 **Solution**:
+
 - Option A: Make the cards stack vertically on mobile with horizontal text
 - Option B: Use icon-only cards on mobile, show text labels below
 - Option C: Hide the decorative text on mobile, keep only the card titles
 
 **Recommended Fix** (Option A):
+
 ```tsx
 // Update the workflow cards to be responsive
-className="flex flex-col md:flex-row gap-4"
+className = 'flex flex-col md:flex-row gap-4';
 // Text orientation based on screen size
-className="text-base md:writing-mode-vertical"
+className = 'text-base md:writing-mode-vertical';
 ```
 
 **Impact**: Professional mobile experience
@@ -51,9 +55,11 @@ className="text-base md:writing-mode-vertical"
 ## ✨ Polish Recommendations (Nice to Have)
 
 ### 3. **Homepage Value Proposition**
+
 **Current**: "Don't Let Manual Research Kill Your Music Career"
 
 **Observation**: Strong, but could test alternatives:
+
 - "Stop Weekend Contact Research, Start Creating Music"
 - "Transform 15 Hours of Research Into 15 Minutes"
 - "Contact Intelligence Built by a Radio Promoter Who Actually Uses It"
@@ -63,7 +69,9 @@ className="text-base md:writing-mode-vertical"
 ---
 
 ### 4. **Upload Screen Information Hierarchy**
+
 **Current Flow**:
+
 1. Workflow diagram at top
 2. "Drop Your Chaos Here" heading
 3. Feature cards (Intelligent Processing, Cost-Effective)
@@ -71,6 +79,7 @@ className="text-base md:writing-mode-vertical"
 5. Workflow visualization (repeated)
 
 **Recommendation**: Simplify to:
+
 1. Workflow progress tracker (keep current)
 2. Upload dropzone (prominently)
 3. Feature benefits (below)
@@ -80,14 +89,16 @@ This gets users to the action faster.
 ---
 
 ### 5. **Mobile Pricing Page**
+
 **Status**: ✅ Excellent - clean, readable, proper hierarchy
 
 **Minor polish**: Consider reducing shadow size on mobile for cleaner look:
+
 ```css
 /* Mobile only */
 @media (max-width: 768px) {
   .pricing-card {
-    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1); /* Reduced from 12px */
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1); /* Reduced from 12px */
   }
 }
 ```
@@ -95,9 +106,11 @@ This gets users to the action faster.
 ---
 
 ### 6. **Beta Trial Status Banner**
+
 **Current**: Shows at top of demo page with countdown
 
 **Recommendation**: Add subtle urgency without being annoying:
+
 - Green: 14-7 days remaining
 - Yellow: 7-3 days remaining
 - Red: <3 days remaining
@@ -107,6 +120,7 @@ This gets users to the action faster.
 ## 📱 Mobile Responsiveness Audit
 
 ### ✅ What Works Great:
+
 - Homepage hero section
 - Pricing cards
 - Navigation
@@ -114,6 +128,7 @@ This gets users to the action faster.
 - Button sizing and touch targets
 
 ### ⚠️ Needs Attention:
+
 - Workflow diagram text (see #2 above)
 - Duplicate heading (see #1 above)
 
@@ -122,6 +137,7 @@ This gets users to the action faster.
 ## 🚀 Production Readiness Checklist
 
 ### Desktop Experience
+
 - [x] Homepage loads fast and looks professional
 - [x] Pricing page is clear and compelling
 - [x] Upload interface is intuitive
@@ -129,6 +145,7 @@ This gets users to the action faster.
 - [x] Workflow visualization is engaging
 
 ### Mobile Experience (375px - iPhone SE)
+
 - [x] Homepage hero readable
 - [x] Pricing cards stack properly
 - [ ] Fix vertical text in workflow diagram
@@ -136,6 +153,7 @@ This gets users to the action faster.
 - [x] Touch targets are 44px minimum
 
 ### Cross-Browser
+
 - [ ] Test in Safari (iOS)
 - [ ] Test in Chrome (Android)
 - [ ] Test in Firefox
@@ -163,12 +181,14 @@ This gets users to the action faster.
 ## 🎨 Design System Observations
 
 **Strengths**:
+
 - Consistent brutalist design language
 - Bold typography hierarchy
 - Strong CTAs with good contrast
 - Professional mascot integration
 
 **Consistency Notes**:
+
 - Shadow pattern: `shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]` used everywhere ✓
 - Border pattern: `border-4 border-gray-500` ✓
 - Primary color: Blue (#2563eb) ✓
@@ -190,14 +210,14 @@ This gets users to the action faster.
 
 ## 📊 Overall Audit Score
 
-| Category | Score | Notes |
-|----------|-------|-------|
-| **Desktop UX** | 9/10 | Excellent, minor duplicate heading issue |
-| **Mobile UX** | 7/10 | Good, needs workflow diagram fix |
-| **Visual Design** | 10/10 | Outstanding brutalist execution |
-| **Copy & Messaging** | 9/10 | Clear, authentic, compelling |
-| **Performance** | ✅ | Fast load times, no blocking issues |
-| **Market Readiness** | 8/10 | Ready to launch with 2 quick fixes |
+| Category             | Score | Notes                                    |
+| -------------------- | ----- | ---------------------------------------- |
+| **Desktop UX**       | 9/10  | Excellent, minor duplicate heading issue |
+| **Mobile UX**        | 7/10  | Good, needs workflow diagram fix         |
+| **Visual Design**    | 10/10 | Outstanding brutalist execution          |
+| **Copy & Messaging** | 9/10  | Clear, authentic, compelling             |
+| **Performance**      | ✅    | Fast load times, no blocking issues      |
+| **Market Readiness** | 8/10  | Ready to launch with 2 quick fixes       |
 
 ---
 

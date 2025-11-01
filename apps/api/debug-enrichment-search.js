@@ -8,34 +8,34 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'tblcZnUsB4Swyjcip';
 async function debugEnrichmentSearch() {
   try {
     console.log('🔍 Debugging enrichment search patterns...\n');
-    
+
     const apiKey = process.env.AIRTABLE_API_KEY;
     const baseId = process.env.AIRTABLE_BASE_ID;
     const contactsTableId = process.env.AIRTABLE_CONTACTS_TABLE_ID;
-    
+
     const base = new Airtable({ apiKey }).base(baseId);
-    
+
     // Try different search patterns
     const searchPatterns = [
       "SEARCH('Contact enrichment:', {Reply Notes})",
       "SEARCH('Contact Enrichment:', {Reply Notes})",
       "SEARCH('enrichment', {Reply Notes})",
-      "SEARCH('Enrichment', {Reply Notes})"
+      "SEARCH('Enrichment', {Reply Notes})",
     ];
-    
+
     for (const pattern of searchPatterns) {
       console.log(`\n🔍 Testing pattern: "${pattern}"`);
-      
+
       try {
         const records = await base(contactsTableId)
           .select({
             filterByFormula: pattern,
-            maxRecords: 10
+            maxRecords: 10,
           })
           .all();
-        
+
         console.log(`   Found: ${records.length} records`);
-        
+
         if (records.length > 0) {
           records.forEach((record, index) => {
             const email = record.fields.Email || 'No email';
@@ -47,10 +47,9 @@ async function debugEnrichmentSearch() {
         console.log(`   Error: ${error.message}`);
       }
     }
-    
   } catch (error) {
     console.error('❌ Error debugging search:', error);
   }
 }
 
-debugEnrichmentSearch(); 
+debugEnrichmentSearch();

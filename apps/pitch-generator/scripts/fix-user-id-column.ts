@@ -24,15 +24,14 @@ async function fixUserIdColumn() {
   try {
     // Step 1: Check current column type
     console.log('1️⃣  Checking current column type...');
-    const { data: columnInfo, error: checkError } = await supabase
-      .rpc('exec_sql', {
-        sql: `
+    const { data: columnInfo, error: checkError } = await supabase.rpc('exec_sql', {
+      sql: `
           SELECT column_name, data_type, udt_name
           FROM information_schema.columns
           WHERE table_name = 'user_pitch_settings'
           AND column_name = 'user_id';
-        `
-      });
+        `,
+    });
 
     if (checkError) {
       console.log('   ℹ️  RPC not available, will proceed with direct migration\n');
@@ -55,7 +54,7 @@ async function fixUserIdColumn() {
       sql: `
         ALTER TABLE user_pitch_settings
         ALTER COLUMN user_id TYPE TEXT USING user_id::TEXT;
-      `
+      `,
     });
 
     if (alterError) {
@@ -81,7 +80,7 @@ async function fixUserIdColumn() {
       sql: `
         ALTER TABLE user_pitch_settings
         DROP CONSTRAINT IF EXISTS user_pitch_settings_user_id_key;
-      `
+      `,
     });
 
     if (dropError) {
@@ -92,7 +91,7 @@ async function fixUserIdColumn() {
       sql: `
         ALTER TABLE user_pitch_settings
         ADD CONSTRAINT user_pitch_settings_user_id_key UNIQUE (user_id);
-      `
+      `,
     });
 
     if (addError) {
@@ -103,7 +102,6 @@ async function fixUserIdColumn() {
 
     console.log('✨ Migration complete!\n');
     console.log('You can now save voice profiles with email-based user IDs.');
-
   } catch (err) {
     console.error('❌ Unexpected error:', err);
     console.log('\n📋 Please run this SQL manually in Supabase dashboard:\n');

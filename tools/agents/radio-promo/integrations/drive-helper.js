@@ -37,14 +37,14 @@ class DriveHelper {
 
     this.log('info', 'Initializing Google Drive helper', {
       email: this.clientEmail,
-      hasKey: Boolean(this.privateKey)
+      hasKey: Boolean(this.privateKey),
     });
 
     const scopes = ['https://www.googleapis.com/auth/drive'];
     const auth = new google.auth.JWT({
       email: this.clientEmail,
       key: this.privateKey,
-      scopes
+      scopes,
     });
 
     await auth.authorize();
@@ -58,17 +58,17 @@ class DriveHelper {
 
     const query = [
       "mimeType = 'application/vnd.google-apps.folder'",
-      "trashed = false",
+      'trashed = false',
       `'${parentId}' in parents`,
-      `name = '${trimmedName.replace(/'/g, "\\'")}'`
+      `name = '${trimmedName.replace(/'/g, "\\'")}'`,
     ].join(' and ');
 
     const listResponse = await drive.files.list({
       q: query,
       spaces: 'drive',
-      fields: 'files(id, name)' ,
+      fields: 'files(id, name)',
       orderBy: 'createdTime desc',
-      pageSize: 1
+      pageSize: 1,
     });
 
     const existing = listResponse.data.files && listResponse.data.files[0];
@@ -80,9 +80,9 @@ class DriveHelper {
       resource: {
         name: trimmedName,
         mimeType: 'application/vnd.google-apps.folder',
-        parents: [parentId]
+        parents: [parentId],
       },
-      fields: 'id, name'
+      fields: 'id, name',
     });
 
     this.log('info', `Created Drive folder: ${trimmedName}`);
@@ -94,24 +94,25 @@ class DriveHelper {
 
     const fileMetadata = {
       name,
-      parents: [parentId]
+      parents: [parentId],
     };
 
-    const bodyStream = buffer instanceof fs.ReadStream
-      ? buffer
-      : Buffer.isBuffer(buffer)
-        ? Readable.from(buffer)
-        : Readable.from(Buffer.from(buffer));
+    const bodyStream =
+      buffer instanceof fs.ReadStream
+        ? buffer
+        : Buffer.isBuffer(buffer)
+          ? Readable.from(buffer)
+          : Readable.from(Buffer.from(buffer));
 
     const media = {
       mimeType: mimeType || 'application/octet-stream',
-      body: bodyStream
+      body: bodyStream,
     };
 
     const response = await drive.files.create({
       resource: fileMetadata,
       media,
-      fields: 'id, name, mimeType, webViewLink, webContentLink'
+      fields: 'id, name, mimeType, webViewLink, webContentLink',
     });
 
     this.log('success', `Uploaded file to Drive: ${name}`);
@@ -120,10 +121,7 @@ class DriveHelper {
 
   async findFiles(parentId, nameStartsWith) {
     const drive = await this.ensureAuth();
-    const queryParts = [
-      "trashed = false",
-      `'${parentId}' in parents`
-    ];
+    const queryParts = ['trashed = false', `'${parentId}' in parents`];
 
     if (nameStartsWith) {
       queryParts.push(`name contains '${nameStartsWith.replace(/'/g, "\\'")}'`);
@@ -133,7 +131,7 @@ class DriveHelper {
       q: queryParts.join(' and '),
       spaces: 'drive',
       fields: 'files(id, name, mimeType, webViewLink, webContentLink)',
-      pageSize: 100
+      pageSize: 100,
     });
 
     return resp.data.files || [];

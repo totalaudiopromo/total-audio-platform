@@ -24,9 +24,10 @@ export async function GET(request: NextRequest) {
       intelligence = {
         issueNumber: weekNumber,
         industryInsight: `Quick take: ${theme.focus}. Practical, UK-focused advice for independent artists.`,
-        quickTip: 'Block 30 minutes weekly to curate UK-focused industry sources you genuinely use.',
+        quickTip:
+          'Block 30 minutes weekly to curate UK-focused industry sources you genuinely use.',
         communityQuestion: 'What’s your biggest time-waster in promotion right now?',
-        newsArticles: []
+        newsArticles: [],
       };
     } else {
       intelligence = await newsletterResearch.generateWeeklyContent(weekNumber);
@@ -41,12 +42,15 @@ export async function GET(request: NextRequest) {
         communityQuestion: intelligence.communityQuestion,
         topStories: intelligence.newsArticles || [],
         sources: (intelligence.newsArticles || []).map((a: any) => a.source).filter(Boolean),
-        totalArticles: intelligence.newsArticles?.length || 0
-      }
+        totalArticles: intelligence.newsArticles?.length || 0,
+      },
     });
   } catch (error) {
     console.error('Weekly agent GET error:', error);
-    return NextResponse.json({ success: false, error: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: error instanceof Error ? error.message : 'Unknown error' },
+      { status: 500 }
+    );
   }
 }
 
@@ -61,10 +65,12 @@ export async function POST(request: NextRequest) {
       } catch {
         const params = new URLSearchParams(raw);
         body = {
-          weekNumber: params.get('weekNumber') ? parseInt(params.get('weekNumber') as string) : undefined,
+          weekNumber: params.get('weekNumber')
+            ? parseInt(params.get('weekNumber') as string)
+            : undefined,
           createDraft: params.get('createDraft') === 'true',
           sendDraft: params.get('sendDraft') === 'true',
-          campaignId: params.get('campaignId') || undefined
+          campaignId: params.get('campaignId') || undefined,
         };
       }
     }
@@ -81,56 +87,89 @@ export async function POST(request: NextRequest) {
       industryInsight: content.industryInsight,
       featuredTool: content.featuredTool,
       successStory: content.successStory,
-      newsArticles: content.newsArticles
+      newsArticles: content.newsArticles,
     });
 
     // Optional: create a ConvertKit draft (preview email instead, if CK not configured)
     if (createDraft) {
       const CK_SECRET = getEnv('CONVERTKIT_API_SECRET', { requiredInProd: false });
-      const PREVIEW_EMAIL = getEnv('NEWSLETTER_PREVIEW_EMAIL', { requiredInProd: false }) || getEnv('EMAIL_FROM', { requiredInProd: false });
+      const PREVIEW_EMAIL =
+        getEnv('NEWSLETTER_PREVIEW_EMAIL', { requiredInProd: false }) ||
+        getEnv('EMAIL_FROM', { requiredInProd: false });
 
       if (!CK_SECRET && PREVIEW_EMAIL) {
         // Fallback: email preview via Resend if configured
         const previewSent = await sendPreviewEmail(PREVIEW_EMAIL, subject, html);
         if (!previewSent.success) {
-          return NextResponse.json({ success: false, error: previewSent.error || 'Preview email failed' }, { status: 500 });
+          return NextResponse.json(
+            { success: false, error: previewSent.error || 'Preview email failed' },
+            { status: 500 }
+          );
         }
-        return NextResponse.json({ success: true, campaignId: `preview-${Date.now()}`, sentPreviewTo: PREVIEW_EMAIL });
+        return NextResponse.json({
+          success: true,
+          campaignId: `preview-${Date.now()}`,
+          sentPreviewTo: PREVIEW_EMAIL,
+        });
       }
 
       // If ConvertKit secret exists, attempt to create a draft broadcast (best-effort)
       if (CK_SECRET) {
         try {
-          const draftResult = await createConvertKitBroadcastDraft({ subject, html, apiSecret: CK_SECRET });
+          const draftResult = await createConvertKitBroadcastDraft({
+            subject,
+            html,
+            apiSecret: CK_SECRET,
+          });
           return NextResponse.json({ success: true, campaignId: draftResult.campaignId });
         } catch (e) {
           console.warn('ConvertKit draft creation failed, falling back to preview only:', e);
           if (PREVIEW_EMAIL) {
             const previewSent = await sendPreviewEmail(PREVIEW_EMAIL, subject, html);
             if (!previewSent.success) {
-              return NextResponse.json({ success: false, error: previewSent.error || 'Preview email failed' }, { status: 500 });
+              return NextResponse.json(
+                { success: false, error: previewSent.error || 'Preview email failed' },
+                { status: 500 }
+              );
             }
-            return NextResponse.json({ success: true, campaignId: `preview-${Date.now()}`, sentPreviewTo: PREVIEW_EMAIL });
+            return NextResponse.json({
+              success: true,
+              campaignId: `preview-${Date.now()}`,
+              sentPreviewTo: PREVIEW_EMAIL,
+            });
           }
-          return NextResponse.json({ success: false, error: 'Draft creation failed and no preview email configured' }, { status: 500 });
+          return NextResponse.json(
+            { success: false, error: 'Draft creation failed and no preview email configured' },
+            { status: 500 }
+          );
         }
       }
     }
 
     if (sendDraft) {
       // For now we do not auto-send to all subscribers from the app; this should be done in ConvertKit.
-      return NextResponse.json({ success: false, error: 'Direct send disabled. Please send from ConvertKit.' }, { status: 400 });
+      return NextResponse.json(
+        { success: false, error: 'Direct send disabled. Please send from ConvertKit.' },
+        { status: 400 }
+      );
     }
 
     // Default: just return the content payload for UI usage
     return NextResponse.json({ success: true, subject, html });
   } catch (error) {
     console.error('Weekly agent POST error:', error);
-    return NextResponse.json({ success: false, error: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: error instanceof Error ? error.message : 'Unknown error' },
+      { status: 500 }
+    );
   }
 }
 
-async function createConvertKitBroadcastDraft(params: { subject: string; html: string; apiSecret: string }): Promise<{ campaignId: string }> {
+async function createConvertKitBroadcastDraft(params: {
+  subject: string;
+  html: string;
+  apiSecret: string;
+}): Promise<{ campaignId: string }> {
   // Best-effort draft creation; if ConvertKit API schema changes, we gracefully fail in caller
   const response = await fetch('https://api.convertkit.com/v3/broadcasts', {
     method: 'POST',
@@ -139,8 +178,8 @@ async function createConvertKitBroadcastDraft(params: { subject: string; html: s
       api_secret: params.apiSecret,
       subject: params.subject,
       content: params.html,
-      published: false
-    })
+      published: false,
+    }),
   });
   if (!response.ok) {
     const text = await response.text();
@@ -151,7 +190,11 @@ async function createConvertKitBroadcastDraft(params: { subject: string; html: s
   return { campaignId };
 }
 
-async function sendPreviewEmail(to: string, subject: string, html: string): Promise<{ success: boolean; error?: string }> {
+async function sendPreviewEmail(
+  to: string,
+  subject: string,
+  html: string
+): Promise<{ success: boolean; error?: string }> {
   try {
     const { Resend } = await import('resend');
     const key = getEnv('RESEND_API_KEY', { requiredInProd: false });
@@ -164,5 +207,3 @@ async function sendPreviewEmail(to: string, subject: string, html: string): Prom
     return { success: false, error: e instanceof Error ? e.message : 'Preview email failed' };
   }
 }
-
-

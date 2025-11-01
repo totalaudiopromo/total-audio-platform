@@ -14,7 +14,22 @@ interface ChatRequest {
 // Knowledge base for common Audio Intel questions
 const KNOWLEDGE_BASE = {
   pricing: {
-    keywords: ['price', 'cost', 'plan', 'subscription', 'billing', 'payment', 'tier', 'upgrade', 'coffee', 'cheap', 'expensive', 'money', 'afford', 'budget'],
+    keywords: [
+      'price',
+      'cost',
+      'plan',
+      'subscription',
+      'billing',
+      'payment',
+      'tier',
+      'upgrade',
+      'coffee',
+      'cheap',
+      'expensive',
+      'money',
+      'afford',
+      'budget',
+    ],
     response: `Audio Intel pricing (proper honest breakdown):
 
 **FREE BETA - "Try The Real Thing"**
@@ -37,22 +52,41 @@ const KNOWLEDGE_BASE = {
 • 500 contact enrichments - Handle multiple artists without breaking
 • Instant processing - No waiting around for urgent campaigns
 • Your branding on everything - Clients think you're the intelligence source
-• Perfect for: PR agencies and labels juggling multiple artists`
+• Perfect for: PR agencies and labels juggling multiple artists`,
   },
-  
+
   features: {
-    keywords: ['feature', 'what does', 'how does', 'enrichment', 'validation', 'export', 'benefit', 'help', 'advantage', 'good for', 'useful', 'value'],
+    keywords: [
+      'feature',
+      'what does',
+      'how does',
+      'enrichment',
+      'validation',
+      'export',
+      'benefit',
+      'help',
+      'advantage',
+      'good for',
+      'useful',
+      'value',
+    ],
     response: `Audio Intel's key features (built by working promoters):
 
 • **AI Contact Enrichment**: Transform basic emails into detailed music industry intelligence - genres, submission preferences, coverage areas, recent activity
 • **Email Validation**: Professional-grade SMTP testing and spam trap detection - stops you looking daft with bounced emails
 • **Multi-Format Exports**: CSV, Excel, PDF with email delivery - proper professional reports your clients will actually want to keep
 • **White-Label Options**: Custom branding for agencies - clients think you're the intelligence source
-• **Real-Time Processing**: Fast, accurate results using Perplexity AI - no waiting around when you could be pitching`
+• **Real-Time Processing**: Fast, accurate results using Perplexity AI - no waiting around when you could be pitching`,
   },
 
   contactenrichment: {
-    keywords: ['what is contact enrichment', 'contact enrichment', 'enrichment', 'intelligence', 'research'],
+    keywords: [
+      'what is contact enrichment',
+      'contact enrichment',
+      'enrichment',
+      'intelligence',
+      'research',
+    ],
     response: `Contact enrichment is transforming basic email lists into actionable intelligence.
 
 Instead of just having john@bbc.co.uk, you get:
@@ -66,7 +100,7 @@ Instead of just having john@bbc.co.uk, you get:
 - Databases = Generic pre-built lists you buy
 - Enrichment = Enhances YOUR existing contacts with specific intelligence
 
-Built specifically for the music industry - generic B2B tools are useless for playlist curators, radio DJs, and music bloggers who all need different approaches.`
+Built specifically for the music industry - generic B2B tools are useless for playlist curators, radio DJs, and music bloggers who all need different approaches.`,
   },
 
   howto: {
@@ -78,7 +112,7 @@ Built specifically for the music industry - generic B2B tools are useless for pl
 3. **Review**: Check results with confidence scores and insights
 4. **Export**: Download in your preferred format (CSV/Excel/PDF)
 
-Need help with file formatting? We support any CSV format - no headers required!`
+Need help with file formatting? We support any CSV format - no headers required!`,
   },
 
   technical: {
@@ -89,7 +123,7 @@ Need help with file formatting? We support any CSV format - no headers required!
 • **Enrichment Errors**: Check email format and try smaller batches
 • **Export Issues**: Clear browser cache and try again
 
-For technical issues beyond basic troubleshooting, I'll connect you with our development team immediately.`
+For technical issues beyond basic troubleshooting, I'll connect you with our development team immediately.`,
   },
 
   contact: {
@@ -101,7 +135,7 @@ Ways to reach us:
 • **Email support**: info@totalaudiopromo.com for detailed technical issues or billing questions
 • **Response times**: Agency users get fastest responses, Professional users get priority, Free beta users get standard support
 
-We're working promoters who built this platform because we needed better tools ourselves. What specific help do you need?`
+We're working promoters who built this platform because we needed better tools ourselves. What specific help do you need?`,
   },
 
   beta: {
@@ -114,11 +148,22 @@ Here's what you get during our free beta:
 • **Beta feedback priority** - your input directly shapes the final product
 • **No credit card needed** - we're not collecting payment during beta testing
 
-We built this because we were tired of paying €3-15 per submission to SubmitHub and Groover when artists need direct contact intelligence. Ready to try it? Just upload your contact list and see the difference.`
+We built this because we were tired of paying €3-15 per submission to SubmitHub and Groover when artists need direct contact intelligence. Ready to try it? Just upload your contact list and see the difference.`,
   },
 
   independent: {
-    keywords: ['independent', 'indie', 'solo', 'artists', 'musician', 'singer', 'songwriter', 'band', 'self-release', 'diy'],
+    keywords: [
+      'independent',
+      'indie',
+      'solo',
+      'artists',
+      'musician',
+      'singer',
+      'songwriter',
+      'band',
+      'self-release',
+      'diy',
+    ],
     response: `Here's how Audio Intel specifically helps independent artists (we're independent ourselves!):
 
 **Instead of paying €3-15 per submission to SubmitHub/Groover:**
@@ -136,11 +181,19 @@ We built this because we were tired of paying €3-15 per submission to SubmitHu
 • Reference their recent playlists/articles in your pitch
 • Know their coverage focus before you waste their time
 
-**Bottom line**: Transform your campaign from spray-and-pray into targeted intelligence. We built this because we were frustrated artists ourselves - tired of submission platforms that don't give you actual contact control.`
+**Bottom line**: Transform your campaign from spray-and-pray into targeted intelligence. We built this because we were frustrated artists ourselves - tired of submission platforms that don't give you actual contact control.`,
   },
 
   playlists: {
-    keywords: ['playlist', 'spotify', 'apple music', 'curator', 'streaming', 'playlisting', 'playlist pitch'],
+    keywords: [
+      'playlist',
+      'spotify',
+      'apple music',
+      'curator',
+      'streaming',
+      'playlisting',
+      'playlist pitch',
+    ],
     response: `Getting on playlists the right way (no more spray-and-pray submissions):
 
 **The Audio Intel approach:**
@@ -155,11 +208,20 @@ We built this because we were tired of paying €3-15 per submission to SubmitHu
 • Know the best times to reach them for maximum response
 • Build ongoing relationships instead of one-off transactions
 
-We've seen artists go from 0% playlist response rates to 15-20% success rates by using proper intelligence instead of generic mass pitching.`
+We've seen artists go from 0% playlist response rates to 15-20% success rates by using proper intelligence instead of generic mass pitching.`,
   },
 
   radio: {
-    keywords: ['radio', 'radio show', 'dj', 'airplay', 'broadcast', 'fm', 'college radio', 'community radio'],
+    keywords: [
+      'radio',
+      'radio show',
+      'dj',
+      'airplay',
+      'broadcast',
+      'fm',
+      'college radio',
+      'community radio',
+    ],
     response: `Radio promotion that actually works (built by people who've done thousands of campaigns):
 
 **Audio Intel for radio campaigns:**
@@ -174,11 +236,20 @@ We've seen artists go from 0% playlist response rates to 15-20% success rates by
 • "Station focuses on local artists from these specific postcodes"
 • "Show has featured 12 new indie artists this month - actively seeking submissions"
 
-Stop sending generic "please play my song" emails. Start sending targeted pitches based on actual intelligence about what each show needs right now.`
+Stop sending generic "please play my song" emails. Start sending targeted pitches based on actual intelligence about what each show needs right now.`,
   },
 
   blogs: {
-    keywords: ['blog', 'blogger', 'music blog', 'review', 'premiere', 'coverage', 'press', 'publication'],
+    keywords: [
+      'blog',
+      'blogger',
+      'music blog',
+      'review',
+      'premiere',
+      'coverage',
+      'press',
+      'publication',
+    ],
     response: `Music blog coverage that leads to real results:
 
 **The intelligence approach to blog outreach:**
@@ -198,44 +269,48 @@ Stop sending generic "please play my song" emails. Start sending targeted pitche
 • Better story placement because pitches match editorial focus
 • Ongoing relationships instead of one-off coverage requests
 
-Transform from "please review my music" to "I noticed your recent feature on [specific artist] - here's why our new track fits your [specific coverage area]".`
-  }
+Transform from "please review my music" to "I noticed your recent feature on [specific artist] - here's why our new track fits your [specific coverage area]".`,
+  },
 };
 
 function findBestResponse(message: string, userTier: string): string {
   const lowercaseMessage = message.toLowerCase();
-  
+
   // Score-based matching for better flexibility
   let bestMatch = { category: '', score: 0, response: '' };
-  
+
   for (const [category, data] of Object.entries(KNOWLEDGE_BASE)) {
     let score = 0;
-    
+
     // Direct keyword matches (highest priority)
     for (const keyword of data.keywords) {
       if (lowercaseMessage.includes(keyword)) {
         score += keyword.length; // Longer matches get higher scores
       }
     }
-    
+
     // Context-based scoring for related terms
-    if (category === 'independent' && (
-      lowercaseMessage.includes('how') && (lowercaseMessage.includes('benefit') || lowercaseMessage.includes('help'))
-    )) {
+    if (
+      category === 'independent' &&
+      lowercaseMessage.includes('how') &&
+      (lowercaseMessage.includes('benefit') || lowercaseMessage.includes('help'))
+    ) {
       score += 10;
     }
-    
-    if (category === 'features' && (
-      lowercaseMessage.includes('what') && (lowercaseMessage.includes('do') || lowercaseMessage.includes('does'))
-    )) {
+
+    if (
+      category === 'features' &&
+      lowercaseMessage.includes('what') &&
+      (lowercaseMessage.includes('do') || lowercaseMessage.includes('does'))
+    ) {
       score += 8;
     }
-    
+
     if (score > bestMatch.score) {
       bestMatch = { category, score, response: data.response };
     }
   }
-  
+
   // Return best match if score is high enough
   if (bestMatch.score >= 3) {
     return bestMatch.response;
@@ -249,7 +324,7 @@ function findBestResponse(message: string, userTier: string): string {
 
 function getFallbackResponses(userTier: string, message: string): string[] {
   const baseResponses = [];
-  
+
   if (userTier === 'agency') {
     baseResponses.push(
       `I'm Audio, representing the team behind this platform. As an Agency user, you get our fastest support.
@@ -328,14 +403,18 @@ I know the challenges because we've lived them:
 Let me help you understand how Audio Intel changes that game. What's your biggest campaign challenge right now?`
     );
   }
-  
+
   return baseResponses;
 }
 
-function generateContextualResponse(message: string, userTier: string, history: ChatMessage[]): string {
+function generateContextualResponse(
+  message: string,
+  userTier: string,
+  history: ChatMessage[]
+): string {
   // Look for specific questions about the user's experience
   const lowercaseMessage = message.toLowerCase();
-  
+
   if (lowercaseMessage.includes('not working') || lowercaseMessage.includes('error')) {
     return `I can help troubleshoot that issue! For ${userTier} users, I recommend:
 
@@ -366,9 +445,12 @@ export async function POST(request: NextRequest) {
     const { message, userTier = 'free', conversationHistory = [] } = body;
 
     if (!message?.trim()) {
-      return NextResponse.json({
-        error: 'Message is required'
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          error: 'Message is required',
+        },
+        { status: 400 }
+      );
     }
 
     // Generate response based on message content and user tier
@@ -381,13 +463,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       reply: response,
       userTier,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
-
   } catch (error) {
     console.error('Chat support error:', error);
-    return NextResponse.json({
-      error: 'Failed to process chat message'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Failed to process chat message',
+      },
+      { status: 500 }
+    );
   }
 }

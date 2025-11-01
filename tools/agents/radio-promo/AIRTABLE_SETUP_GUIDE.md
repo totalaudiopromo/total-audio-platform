@@ -120,7 +120,7 @@
 #### Automation 1: Auto-Enrich New Contacts
 
 **Trigger:** When a record is created in Radio Contacts
-**Action:** 
+**Action:**
 
 - Set "Audio Intel Enriched" to False
 - Set "Created Date" to today
@@ -129,7 +129,7 @@
 #### Automation 2: Follow-up Reminder
 
 **Trigger:** When "Last Contacted" is more than 14 days ago
-**Action:** 
+**Action:**
 
 - Send email notification
 - Add to "Needs Follow-up" view
@@ -137,7 +137,7 @@
 #### Automation 3: Update Response Rate
 
 **Trigger:** When a new Interaction is created
-**Action:** 
+**Action:**
 
 - Calculate new response rate
 - Update the linked Contact record
@@ -187,16 +187,25 @@ AIRTABLE_BASE_ID=your_base_id_here
 ```javascript
 // Test script
 const Airtable = require('airtable');
-const base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base(process.env.AIRTABLE_BASE_ID);
+const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
+  process.env.AIRTABLE_BASE_ID
+);
 
-base('Radio Contacts').select({
-  maxRecords: 1
-}).eachPage(function page(records, fetchNextPage) {
-  console.log('✅ Airtable connection successful!');
-  console.log('Sample record:', records[0].fields);
-}, function done(err) {
-  if (err) { console.error('❌ Airtable connection failed:', err); }
-});
+base('Radio Contacts')
+  .select({
+    maxRecords: 1,
+  })
+  .eachPage(
+    function page(records, fetchNextPage) {
+      console.log('✅ Airtable connection successful!');
+      console.log('Sample record:', records[0].fields);
+    },
+    function done(err) {
+      if (err) {
+        console.error('❌ Airtable connection failed:', err);
+      }
+    }
+  );
 ```
 
 ### 8. Connect to Audio Intel
@@ -222,15 +231,17 @@ AUDIO_INTEL_BASE_URL=https://intel.totalaudiopromo.com/api
 const response = await fetch(`${process.env.AUDIO_INTEL_BASE_URL}/enrich`, {
   method: 'POST',
   headers: {
-    'Authorization': `Bearer ${process.env.AUDIO_INTEL_API_KEY}`,
-    'Content-Type': 'application/json'
+    Authorization: `Bearer ${process.env.AUDIO_INTEL_API_KEY}`,
+    'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    contacts: [{
-      name: 'Test Contact',
-      email: 'test@example.com'
-    }]
-  })
+    contacts: [
+      {
+        name: 'Test Contact',
+        email: 'test@example.com',
+      },
+    ],
+  }),
 });
 
 const result = await response.json();

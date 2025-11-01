@@ -22,7 +22,13 @@ interface RadioCampaign {
   budget: number;
   releaseDate: string;
   priority: 'high' | 'medium' | 'low';
-  status: 'transcript_processing' | 'campaign_creation' | 'press_release' | 'radio_outreach' | 'tracking' | 'completed';
+  status:
+    | 'transcript_processing'
+    | 'campaign_creation'
+    | 'press_release'
+    | 'radio_outreach'
+    | 'tracking'
+    | 'completed';
   steps: WorkflowStep[];
   createdAt: string;
 }
@@ -51,23 +57,22 @@ export default function RadioPromoVerificationDashboard() {
       const response = await fetch('/api/radio-promo/status', {
         cache: 'no-store',
         headers: {
-          'Cache-Control': 'no-cache'
-        }
+          'Cache-Control': 'no-cache',
+        },
       });
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       const data = await response.json();
-      
+
       setCampaigns(data.campaigns || []);
       setAgentStatuses(data.agentStatuses || []);
       setApprovalQueue(data.approvalQueue || []);
       setIsConnected(data.isConnected || false);
       setLastUpdate(data.lastUpdate || new Date().toISOString());
       setError(null);
-      
     } catch (err) {
       console.error('Failed to fetch status data:', err);
       setError(err instanceof Error ? err.message : 'Failed to fetch data');
@@ -80,10 +85,10 @@ export default function RadioPromoVerificationDashboard() {
   // Initial load and polling setup
   useEffect(() => {
     fetchStatusData();
-    
+
     // Poll for updates every 10 seconds
     const interval = setInterval(fetchStatusData, 10000);
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -148,10 +153,8 @@ export default function RadioPromoVerificationDashboard() {
   const handleApproval = async (stepId: string, approved: boolean) => {
     try {
       // Find the campaign containing this step
-      const campaign = campaigns.find(c => 
-        c.steps.some(s => s.id === stepId)
-      );
-      
+      const campaign = campaigns.find(c => c.steps.some(s => s.id === stepId));
+
       if (!campaign) {
         console.error('Campaign not found for step:', stepId);
         return;
@@ -166,7 +169,7 @@ export default function RadioPromoVerificationDashboard() {
           action: 'approve_step',
           stepId,
           approved,
-          campaignId: campaign.id
+          campaignId: campaign.id,
         }),
       });
 
@@ -175,27 +178,29 @@ export default function RadioPromoVerificationDashboard() {
       }
 
       const result = await response.json();
-      
+
       if (result.success) {
         // Update local state immediately for better UX
-        setCampaigns(prev => prev.map(c => ({
-          ...c,
-          steps: c.steps.map(step => 
-            step.id === stepId 
-              ? { 
-                  ...step, 
-                  status: approved ? 'approved' : 'failed',
-                  progress: approved ? 100 : 0,
-                  message: approved 
-                    ? `Approved by user at ${new Date().toISOString()}`
-                    : `Rejected by user at ${new Date().toISOString()}`
-                }
-              : step
-          )
-        })));
+        setCampaigns(prev =>
+          prev.map(c => ({
+            ...c,
+            steps: c.steps.map(step =>
+              step.id === stepId
+                ? {
+                    ...step,
+                    status: approved ? 'approved' : 'failed',
+                    progress: approved ? 100 : 0,
+                    message: approved
+                      ? `Approved by user at ${new Date().toISOString()}`
+                      : `Rejected by user at ${new Date().toISOString()}`,
+                  }
+                : step
+            ),
+          }))
+        );
 
         setApprovalQueue(prev => prev.filter(step => step.id !== stepId));
-        
+
         // Refresh data from server to ensure consistency
         setTimeout(fetchStatusData, 1000);
       } else {
@@ -213,14 +218,14 @@ export default function RadioPromoVerificationDashboard() {
       month: '2-digit',
       year: 'numeric',
       hour: '2-digit',
-      minute: '2-digit'
+      minute: '2-digit',
     });
   };
 
   const formatBudget = (budget: number) => {
     return new Intl.NumberFormat('en-GB', {
       style: 'currency',
-      currency: 'GBP'
+      currency: 'GBP',
     }).format(budget);
   };
 
@@ -230,7 +235,9 @@ export default function RadioPromoVerificationDashboard() {
         <div className="flex items-center justify-center min-h-96">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <h2 className="text-lg font-semibold text-gray-900 mb-2">Loading Radio Promo Status...</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-2">
+              Loading Radio Promo Status...
+            </h2>
             <p className="text-gray-600">Connecting to orchestrator system</p>
           </div>
         </div>
@@ -244,7 +251,9 @@ export default function RadioPromoVerificationDashboard() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Radio Promo Verification Dashboard</h1>
-          <p className="text-gray-600 mt-1">Monitor and approve Liberty Music PR campaign workflows</p>
+          <p className="text-gray-600 mt-1">
+            Monitor and approve Liberty Music PR campaign workflows
+          </p>
           {lastUpdate && (
             <p className="text-xs text-gray-500 mt-1">
               Last updated: {formatTimestamp(lastUpdate)}
@@ -259,10 +268,14 @@ export default function RadioPromoVerificationDashboard() {
           >
             Refresh
           </button>
-          <div className={`flex items-center space-x-2 px-3 py-1 rounded-full text-sm font-medium ${
-            isConnected ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-          }`}>
-            <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-red-500'}`}></div>
+          <div
+            className={`flex items-center space-x-2 px-3 py-1 rounded-full text-sm font-medium ${
+              isConnected ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+            }`}
+          >
+            <div
+              className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-red-500'}`}
+            ></div>
             <span>{isConnected ? 'Connected' : 'Disconnected'}</span>
           </div>
         </div>
@@ -299,7 +312,9 @@ export default function RadioPromoVerificationDashboard() {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="font-medium text-gray-900">{step.name}</div>
-                    <div className="text-sm text-gray-600">{step.agent} • {step.message}</div>
+                    <div className="text-sm text-gray-600">
+                      {step.agent} • {step.message}
+                    </div>
                     {step.data && (
                       <div className="text-xs text-gray-500 mt-1">
                         {JSON.stringify(step.data, null, 2)}
@@ -330,12 +345,17 @@ export default function RadioPromoVerificationDashboard() {
       {/* Agent Status Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {agentStatuses.map(agent => (
-          <div key={agent.name} className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+          <div
+            key={agent.name}
+            className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm"
+          >
             <div className="flex items-center justify-between mb-2">
               <div className="text-sm font-medium text-gray-900 truncate">{agent.name}</div>
               <div className="text-lg">{getStatusIcon(agent.status)}</div>
             </div>
-            <div className={`text-xs px-2 py-1 rounded-full font-medium mb-2 ${getStatusColor(agent.status)}`}>
+            <div
+              className={`text-xs px-2 py-1 rounded-full font-medium mb-2 ${getStatusColor(agent.status)}`}
+            >
               {agent.status.toUpperCase()}
             </div>
             <div className="text-xs text-gray-600">{agent.currentTask}</div>
@@ -364,21 +384,25 @@ export default function RadioPromoVerificationDashboard() {
                     <h3 className="text-xl font-semibold text-gray-900">
                       {campaign.artistName} - {campaign.trackTitle}
                     </h3>
-                    <span className={`px-2 py-1 text-xs font-medium rounded-full ${getPriorityColor(campaign.priority)}`}>
+                    <span
+                      className={`px-2 py-1 text-xs font-medium rounded-full ${getPriorityColor(campaign.priority)}`}
+                    >
                       {campaign.priority.toUpperCase()}
                     </span>
                   </div>
                   <div className="flex items-center space-x-4 mt-2 text-sm text-gray-600">
                     <span>Genre: {campaign.genre}</span>
                     <span>Budget: {formatBudget(campaign.budget)}</span>
-                    <span>Release: {new Date(campaign.releaseDate).toLocaleDateString('en-GB')}</span>
+                    <span>
+                      Release: {new Date(campaign.releaseDate).toLocaleDateString('en-GB')}
+                    </span>
                     <span>Created: {formatTimestamp(campaign.createdAt)}</span>
                   </div>
                 </div>
                 <button
-                  onClick={() => setSelectedCampaign(
-                    selectedCampaign === campaign.id ? null : campaign.id
-                  )}
+                  onClick={() =>
+                    setSelectedCampaign(selectedCampaign === campaign.id ? null : campaign.id)
+                  }
                   className="px-4 py-2 text-sm font-medium text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
                 >
                   {selectedCampaign === campaign.id ? 'Hide Details' : 'Show Details'}
@@ -391,14 +415,18 @@ export default function RadioPromoVerificationDashboard() {
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium text-gray-700">Overall Progress</span>
                 <span className="text-sm font-medium text-gray-700">
-                  {Math.round(campaign.steps.reduce((acc, step) => acc + step.progress, 0) / campaign.steps.length)}%
+                  {Math.round(
+                    campaign.steps.reduce((acc, step) => acc + step.progress, 0) /
+                      campaign.steps.length
+                  )}
+                  %
                 </span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
+                <div
                   className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-                  style={{ 
-                    width: `${campaign.steps.reduce((acc, step) => acc + step.progress, 0) / campaign.steps.length}%` 
+                  style={{
+                    width: `${campaign.steps.reduce((acc, step) => acc + step.progress, 0) / campaign.steps.length}%`,
                   }}
                 ></div>
               </div>
@@ -421,8 +449,11 @@ export default function RadioPromoVerificationDashboard() {
                             <div className="text-sm text-gray-600">{step.agent}</div>
                           </div>
                           <div className="flex items-center space-x-3">
-                            <span className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(step.status)}`}>
-                              {getStatusIcon(step.status)} {step.status.replace('_', ' ').toUpperCase()}
+                            <span
+                              className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(step.status)}`}
+                            >
+                              {getStatusIcon(step.status)}{' '}
+                              {step.status.replace('_', ' ').toUpperCase()}
                             </span>
                             <div className="text-sm font-medium text-gray-700 w-16 text-right">
                               {step.progress}%
@@ -431,17 +462,17 @@ export default function RadioPromoVerificationDashboard() {
                         </div>
                         <div className="mt-2">
                           <div className="w-full bg-gray-200 rounded-full h-1">
-                            <div 
+                            <div
                               className={`h-1 rounded-full transition-all duration-300 ${
-                                step.status === 'completed' || step.status === 'approved' 
-                                  ? 'bg-green-500' 
+                                step.status === 'completed' || step.status === 'approved'
+                                  ? 'bg-green-500'
                                   : step.status === 'in_progress'
-                                  ? 'bg-blue-500'
-                                  : step.status === 'requires_approval'
-                                  ? 'bg-amber-500'
-                                  : step.status === 'failed'
-                                  ? 'bg-red-500'
-                                  : 'bg-gray-400'
+                                    ? 'bg-blue-500'
+                                    : step.status === 'requires_approval'
+                                      ? 'bg-amber-500'
+                                      : step.status === 'failed'
+                                        ? 'bg-red-500'
+                                        : 'bg-gray-400'
                               }`}
                               style={{ width: `${step.progress}%` }}
                             ></div>
@@ -487,7 +518,12 @@ export default function RadioPromoVerificationDashboard() {
         </div>
         <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
           <div className="text-2xl font-bold text-blue-600">
-            {campaigns.reduce((acc, c) => acc + c.steps.filter(s => s.status === 'completed' || s.status === 'approved').length, 0)}
+            {campaigns.reduce(
+              (acc, c) =>
+                acc +
+                c.steps.filter(s => s.status === 'completed' || s.status === 'approved').length,
+              0
+            )}
           </div>
           <div className="text-sm text-gray-600">Completed Steps</div>
         </div>

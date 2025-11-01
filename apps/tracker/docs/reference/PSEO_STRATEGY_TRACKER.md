@@ -2,16 +2,18 @@
 
 **Last Updated**: October 4, 2025  
 **Current Status**: 0/60 pages live  
-**Goal**: Scale to 60 pages optimized for campaign tracking searches  
+**Goal**: Scale to 60 pages optimized for campaign tracking searches
 
 ## 🎯 TRACKER VS INTEL POSITIONING
 
 ### Audio Intel Focus
+
 - **Primary**: Contact enrichment & validation
 - **Keywords**: "BBC Radio 1 contacts", "Spotify editorial emails"
 - **User Intent**: Finding verified contact details
 
-### Tracker Focus  
+### Tracker Focus
+
 - **Primary**: Campaign tracking & intelligence
 - **Keywords**: "BBC Radio 1 campaign tracking", "radio promotion analytics"
 - **User Intent**: Measuring campaign success, understanding benchmarks
@@ -19,6 +21,7 @@
 ## 📊 TIER 1 PSEO PAGES (10 HIGH-PRIORITY)
 
 ### Radio Campaign Tracking (1,000-2,000 searches/month)
+
 1. **BBC Radio 1 Campaign Tracking** - 1,500 searches/month
 2. **BBC Radio 6 Music Campaign Analytics** - 900 searches/month
 3. **Community Radio Promotion Tracking** - 800 searches/month
@@ -26,17 +29,20 @@
 5. **Commercial Radio Campaign Tracking** - 650 searches/month
 
 ### Playlist Campaign Tracking (1,500-3,000 searches/month)
+
 6. **Spotify Playlist Campaign Tracking** - 2,800 searches/month
 7. **Apple Music Playlist Analytics** - 1,800 searches/month
 8. **Deezer Playlist Campaign Tracking** - 600 searches/month
 
 ### General Campaign Topics (2,000+ searches/month)
+
 9. **Music PR Campaign Tracking** - 2,200 searches/month
 10. **Blog Campaign Analytics for Musicians** - 1,900 searches/month
 
 ## 📝 TIER 2 PSEO PAGES (20 MEDIUM-PRIORITY)
 
 ### UK Radio Stations (300-800 searches/month)
+
 - Radio X Campaign Tracking - 550/month
 - Capital FM Promotion Analytics - 480/month
 - KISS FM Campaign Tracking - 420/month
@@ -44,6 +50,7 @@
 - Heart FM Promotion Tracking - 350/month
 
 ### Regional/Genre-Specific
+
 - UK Garage Radio Campaign Tracking
 - Scottish Radio Promotion Analytics
 - Welsh Language Radio Campaign Tracking
@@ -51,6 +58,7 @@
 - Jazz FM Promotion Tracking
 
 ### Campaign Types
+
 - Single Release Campaign Tracking
 - Album Launch Campaign Analytics
 - Tour Announcement Campaign Tracking
@@ -58,6 +66,7 @@
 - Remix Campaign Tracking
 
 ### Platform-Specific
+
 - YouTube Music Campaign Tracking
 - TikTok Music Campaign Analytics
 - SoundCloud Promotion Tracking
@@ -67,6 +76,7 @@
 ## 📝 TIER 3 PSEO PAGES (30 LONG-TAIL)
 
 ### Genre-Specific Campaign Tracking
+
 - Electronic Music Campaign Tracking UK
 - Hip Hop Radio Campaign Analytics
 - Indie Rock Promotion Tracking
@@ -74,6 +84,7 @@
 - Folk Music Radio Tracking
 
 ### Location-Specific
+
 - London Radio Campaign Tracking
 - Manchester Music Promotion Analytics
 - Brighton Music Scene Campaign Tracking
@@ -81,6 +92,7 @@
 - Bristol Music Campaign Analytics
 
 ### Success Metrics Pages
+
 - Radio Airplay Success Rate Benchmarks
 - Playlist Add Rate Analytics
 - Blog Coverage Success Metrics
@@ -90,21 +102,23 @@
 ## 📄 PSEO PAGE TEMPLATE STRUCTURE
 
 ### Hero Section (300 words)
+
 ```markdown
 # [Platform] Campaign Tracking: Stop Wasting Time on Guesswork
 
-Real campaign intelligence for [platform] promotion. Track your campaigns, 
-compare against industry benchmarks, and know exactly what's working—without 
+Real campaign intelligence for [platform] promotion. Track your campaigns,
+compare against industry benchmarks, and know exactly what's working—without
 spending weekends in spreadsheets.
 
 **The Reality**: Most artists track [platform] campaigns in messy spreadsheets,
-never knowing if their 12% success rate is good or terrible. Tracker shows you 
+never knowing if their 12% success rate is good or terrible. Tracker shows you
 the industry average (18% for your genre) and exactly what to improve.
 
 [Campaign snapshot stats, processing time, intelligence features]
 ```
 
 ### Why Manual Tracking Fails (400 words)
+
 - Specific pain points for this platform/campaign type
 - No context or benchmarks
 - Wasting time on data entry
@@ -112,6 +126,7 @@ the industry average (18% for your genre) and exactly what to improve.
 - No proof of ROI for clients
 
 ### How Tracker Works for [Platform] (500 words)
+
 - Upload campaign data (CSV, manual entry, or integrations)
 - AI pattern recognition for this platform
 - Industry benchmarks comparison
@@ -119,16 +134,19 @@ the industry average (18% for your genre) and exactly what to improve.
 - Export analytics reports
 
 ### Sample Campaign Results (300 words)
+
 ```markdown
 ## Real [Platform] Campaign: Before vs After Tracker
 
 **Before Tracker** (Manual Spreadsheet):
+
 - 8 hours/week updating campaign status
 - No idea if 15% response rate is good
 - Repeated same mistakes across 3 campaigns
 - Couldn't prove value to label
 
 **After Tracker** (AI Intelligence):
+
 - 15 minutes/week reviewing insights
 - Immediately saw 15% is below the 22% genre average
 - AI flagged timing issues causing low success
@@ -136,22 +154,26 @@ the industry average (18% for your genre) and exactly what to improve.
 ```
 
 ### Platform-Specific Benchmarks (400 words)
+
 ```markdown
 ## [Platform] Campaign Benchmarks (2025 Data)
 
 ### Success Rate by Genre
+
 - Electronic: 22% average response rate
 - Indie Rock: 18% average
 - Hip Hop: 25% average
 - Folk: 16% average
 
 ### Budget vs Success Rate
+
 - £0-50: 12% average success
-- £50-200: 19% average success  
+- £50-200: 19% average success
 - £200-500: 24% average success
 - £500+: 28% average success
 
 ### Timing Impact
+
 - Monday submissions: 21% success
 - Friday submissions: 14% success
 - 4 weeks before release: 26% success
@@ -159,26 +181,33 @@ the industry average (18% for your genre) and exactly what to improve.
 ```
 
 ### Common Campaign Mistakes (500 words)
+
 ```markdown
 ## 5 [Platform] Campaign Tracking Mistakes
 
 ### Mistake #1: No Baseline Comparison
+
 You see 18% success rate but don't know if that's good or bad...
 
 ### Mistake #2: Ignoring Timing Patterns
+
 [Platform-specific timing insights]
 
 ### Mistake #3: Budget Allocation Guesswork
+
 [Platform-specific budget recommendations]
 
 ### Mistake #4: Genre Mismatch
+
 [Platform-specific genre fit insights]
 
 ### Mistake #5: No Follow-Up Strategy
+
 [Platform-specific follow-up best practices]
 ```
 
 ### Campaign Intelligence Features (300 words)
+
 - Pattern recognition for this platform
 - Budget optimization suggestions
 - Timing recommendations
@@ -186,36 +215,45 @@ You see 18% success rate but don't know if that's good or bad...
 - Competitor benchmarking
 
 ### FAQ Section (500 words)
+
 ```markdown
 ## Frequently Asked Questions
 
 ### What metrics should I track for [platform] campaigns?
+
 [Detailed answer with specific KPIs]
 
 ### How long does a typical [platform] campaign take?
+
 [Timeline expectations]
 
 ### What's a good success rate for [platform]?
+
 [Benchmark data by genre, budget, etc.]
 
 ### Can I compare my campaign to industry averages?
+
 [Yes, explanation of benchmark features]
 
 ### How does Tracker handle [platform-specific issue]?
+
 [Technical explanation]
 ```
 
 ### Related Campaign Guides (200 words)
+
 ```markdown
 ## Related Campaign Intelligence
 
 Tracking [platform] campaigns? You might also benefit from:
+
 - [Related Platform 1] Campaign Tracking
-- [Related Platform 2] Campaign Analytics  
+- [Related Platform 2] Campaign Analytics
 - [Related Campaign Type] Tracking Guide
 ```
 
 ### CTA Section (200 words)
+
 ```markdown
 ## Track Your [Platform] Campaigns Properly
 
@@ -223,6 +261,7 @@ Stop guessing if your [platform] campaigns are working. Get instant benchmarks,
 AI pattern recognition, and know exactly what to improve.
 
 **What you get**:
+
 - Industry benchmark comparison
 - AI campaign intelligence
 - Pattern recognition
@@ -235,6 +274,7 @@ AI pattern recognition, and know exactly what to improve.
 ## 🔧 IMPLEMENTATION TIMELINE
 
 ### Week 1: Foundation
+
 - [ ] Add SEO meta tags to all existing pages
 - [ ] Create blog index page structure
 - [ ] Set up PSEO page component wrapper
@@ -242,6 +282,7 @@ AI pattern recognition, and know exactly what to improve.
 - [ ] Add structured data (schema.org)
 
 ### Week 2: Tier 1 Pages (10 pages)
+
 - [ ] BBC Radio 1 Campaign Tracking (2,500 words)
 - [ ] Spotify Playlist Campaign Tracking (2,500 words)
 - [ ] Music PR Campaign Tracking (2,200 words)
@@ -254,14 +295,17 @@ AI pattern recognition, and know exactly what to improve.
 - [ ] Deezer Campaign Tracking (1,800 words)
 
 ### Week 3-4: Tier 2 Pages (20 pages)
+
 Focus on UK radio stations and campaign types (1,800-2,200 words each)
 
 ### Week 5-8: Tier 3 Pages (30 pages)
+
 Focus on genre and location-specific long-tail (1,500-1,800 words each)
 
 ## 📈 SEO OPTIMIZATION CHECKLIST
 
 ### Every PSEO Page Must Have:
+
 - [ ] Target keyword in H1 (exactly matching search query)
 - [ ] Meta description 155-160 chars with keyword
 - [ ] Target keyword in first 100 words
@@ -274,6 +318,7 @@ Focus on genre and location-specific long-tail (1,500-1,800 words each)
 - [ ] CTA buttons to /signup and /demo
 
 ### Technical Requirements:
+
 - Mobile responsive (already done ✅)
 - Load time <3s
 - Images with descriptive alt text
@@ -284,17 +329,20 @@ Focus on genre and location-specific long-tail (1,500-1,800 words each)
 ## 🎯 SUCCESS METRICS (6 MONTHS)
 
 ### Traffic Goals
+
 - **Tier 1 pages**: 400-800 organic visitors/month each
-- **Tier 2 pages**: 150-300 organic visitors/month each  
+- **Tier 2 pages**: 150-300 organic visitors/month each
 - **Tier 3 pages**: 50-100 organic visitors/month each
 - **Total PSEO traffic**: 4,000-7,000 monthly visitors
 
 ### Ranking Goals (90 days)
+
 - Top 3 rankings: 25% of target keywords
 - Top 10 rankings: 55% of target keywords
 - Featured snippets: 8-12 FAQs
 
 ### Business Impact
+
 - Organic signups: 35-45% of total
 - Cost per acquisition: £0 (organic)
 - Revenue from PSEO: £400-800/month
@@ -311,4 +359,3 @@ Focus on genre and location-specific long-tail (1,500-1,800 words each)
 ---
 
 **Key Differentiator**: Intel = contacts, Tracker = campaigns. Zero overlap, perfect cross-selling opportunity.
-

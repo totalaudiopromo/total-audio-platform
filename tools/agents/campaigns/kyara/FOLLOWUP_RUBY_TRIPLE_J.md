@@ -13,6 +13,7 @@ Hi Ruby,
 Following up on KYARA's "Bloodshot" - wanted to share some crossover momentum that suggests this could work for your audience.
 
 First-week highlights:
+
 - Amazing Radio (UK) support
 - 85 plays across 9 countries
 - Strong streaming numbers (first 48 hours)
@@ -68,6 +69,7 @@ Hi Ruby,
 Quick follow-up on KYARA's "Bloodshot" (releases Monday 14th Oct).
 
 Some quick momentum to share:
+
 - Amazing Radio (UK) now supporting
 - 85 plays across 9 countries pre-release
 - Same Sydney artist you supported with "Yearn" on Home & Hosed

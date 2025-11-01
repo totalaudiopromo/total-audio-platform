@@ -7,7 +7,10 @@ import { getSuggestedSendTime } from '@/lib/sendTimeHelper';
 export async function POST(req: Request) {
   try {
     const supabase = await createServerClient(cookies());
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
 
     if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
@@ -37,17 +40,14 @@ export async function POST(req: Request) {
     // Use provided contact or fetch from database
     let contact = providedContact;
     if (!contact) {
-      const { data: fetchedContact, error: contactError } = await (supabase)
+      const { data: fetchedContact, error: contactError } = await supabase
         .from('contacts')
         .select('*')
         .eq('id', contactId)
         .single();
 
       if (contactError || !fetchedContact) {
-        return NextResponse.json(
-          { error: 'Contact not found' },
-          { status: 404 }
-        );
+        return NextResponse.json({ error: 'Contact not found' }, { status: 404 });
       }
       contact = fetchedContact;
     }
@@ -58,9 +58,11 @@ export async function POST(req: Request) {
     // Get user's voice profile
     const userId = user.email || user.id;
 
-    const { data: voiceProfile } = await (supabase)
+    const { data: voiceProfile } = await supabase
       .from('user_pitch_settings')
-      .select('voice_background, voice_style, voice_achievements, voice_approach, voice_differentiator, voice_typical_opener, voice_context_notes')
+      .select(
+        'voice_background, voice_style, voice_achievements, voice_approach, voice_differentiator, voice_typical_opener, voice_context_notes'
+      )
       .eq('user_id', userId)
       .single();
 
@@ -79,12 +81,15 @@ export async function POST(req: Request) {
       releaseDate: releaseDate || '',
       keyHook: keyHook || '',
       trackLink: trackLink || '',
-      tone: (tone || contact.preferred_tone || 'professional') as 'casual' | 'professional' | 'enthusiastic',
+      tone: (tone || contact.preferred_tone || 'professional') as
+        | 'casual'
+        | 'professional'
+        | 'enthusiastic',
       voiceProfile: voiceProfile || null,
     });
 
     // Save to database
-    const { data: pitch, error: pitchError } = await (supabase)
+    const { data: pitch, error: pitchError } = await supabase
       .from('pitches')
       .insert({
         user_id: userId,
@@ -101,7 +106,9 @@ export async function POST(req: Request) {
         pitch_body: pitchResponse.pitchBody,
         subject_line: pitchResponse.subjectLines?.option1 || 'New Track',
         subject_line_options: pitchResponse.subjectLines || null,
-        suggested_send_time: sendTimeSuggestion ? `${sendTimeSuggestion.time} - ${sendTimeSuggestion.reason}` : null,
+        suggested_send_time: sendTimeSuggestion
+          ? `${sendTimeSuggestion.time} - ${sendTimeSuggestion.reason}`
+          : null,
         status: 'draft',
       })
       .select()
@@ -109,10 +116,7 @@ export async function POST(req: Request) {
 
     if (pitchError) {
       console.error('Error saving pitch:', pitchError);
-      return NextResponse.json(
-        { error: 'Failed to save pitch' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to save pitch' }, { status: 500 });
     }
 
     return NextResponse.json({

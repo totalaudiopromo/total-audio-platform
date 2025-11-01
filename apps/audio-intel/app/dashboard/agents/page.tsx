@@ -3,25 +3,25 @@
  * Simple metrics view for monitoring agent health and performance
  */
 
-'use client'
+'use client';
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 interface AgentStats {
-  name: string
-  version: string
-  runs: number
-  success: number
-  failures: number
-  successRate: number
-  avgLatency: number
-  lastRun?: string
+  name: string;
+  version: string;
+  runs: number;
+  success: number;
+  failures: number;
+  successRate: number;
+  avgLatency: number;
+  lastRun?: string;
 }
 
 export default function AgentsDashboard() {
-  const [agents, setAgents] = useState<any[]>([])
-  const [health, setHealth] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
+  const [agents, setAgents] = useState<any[]>([]);
+  const [health, setHealth] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadData() {
@@ -30,25 +30,25 @@ export default function AgentsDashboard() {
         const [agentsRes, healthRes] = await Promise.all([
           fetch('/api/agents'),
           fetch('/api/agents/health'),
-        ])
+        ]);
 
-        const agentsData = await agentsRes.json()
-        const healthData = await healthRes.json()
+        const agentsData = await agentsRes.json();
+        const healthData = await healthRes.json();
 
-        setAgents(agentsData.agents || [])
-        setHealth(healthData)
+        setAgents(agentsData.agents || []);
+        setHealth(healthData);
       } catch (error) {
-        console.error('Failed to load agent data:', error)
+        console.error('Failed to load agent data:', error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
 
-    loadData()
+    loadData();
     // Refresh every 30 seconds
-    const interval = setInterval(loadData, 30000)
-    return () => clearInterval(interval)
-  }, [])
+    const interval = setInterval(loadData, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
   if (loading) {
     return (
@@ -56,16 +56,14 @@ export default function AgentsDashboard() {
         <h1 className="text-2xl font-bold mb-4">Agent Performance Dashboard</h1>
         <p className="text-gray-600">Loading agent metrics...</p>
       </div>
-    )
+    );
   }
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Agent Performance Dashboard</h1>
-        <p className="text-gray-600">
-          Monitor agent health, performance, and usage metrics
-        </p>
+        <p className="text-gray-600">Monitor agent health, performance, and usage metrics</p>
       </div>
 
       {/* Health Status */}
@@ -79,9 +77,7 @@ export default function AgentsDashboard() {
         >
           <div className="flex items-center gap-2">
             <div
-              className={`w-3 h-3 rounded-full ${
-                health?.healthy ? 'bg-green-500' : 'bg-red-500'
-              }`}
+              className={`w-3 h-3 rounded-full ${health?.healthy ? 'bg-green-500' : 'bg-red-500'}`}
             />
             <span className="font-semibold">
               System {health?.healthy ? 'Healthy' : 'Issues Detected'}
@@ -92,7 +88,7 @@ export default function AgentsDashboard() {
 
       {/* Agent Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {agents.map((agent) => (
+        {agents.map(agent => (
           <AgentCard key={agent.name} agent={agent} />
         ))}
       </div>
@@ -130,12 +126,12 @@ LIMIT 50;`}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function AgentCard({ agent }: { agent: any }) {
-  const stats = agent.stats as AgentStats
-  const manifest = agent.manifest
+  const stats = agent.stats as AgentStats;
+  const manifest = agent.manifest;
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow">
@@ -175,17 +171,14 @@ function AgentCard({ agent }: { agent: any }) {
       {manifest?.capabilities && (
         <div className="mt-4 flex flex-wrap gap-2">
           {manifest.capabilities.slice(0, 3).map((cap: string) => (
-            <span
-              key={cap}
-              className="text-xs px-2 py-1 bg-blue-50 text-blue-700 rounded"
-            >
+            <span key={cap} className="text-xs px-2 py-1 bg-blue-50 text-blue-700 rounded">
               {cap}
             </span>
           ))}
         </div>
       )}
     </div>
-  )
+  );
 }
 
 function MetricBox({ label, value }: { label: string; value: string | number }) {
@@ -194,17 +187,17 @@ function MetricBox({ label, value }: { label: string; value: string | number }) 
       <p className="text-xs text-gray-500 mb-1">{label}</p>
       <p className="text-lg font-semibold">{value}</p>
     </div>
-  )
+  );
 }
 
 function QueryExample({ title, query }: { title: string; query: string }) {
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(false);
 
   const copyQuery = () => {
-    navigator.clipboard.writeText(query)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
+    navigator.clipboard.writeText(query);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="border border-gray-200 rounded-lg p-4">
@@ -217,9 +210,7 @@ function QueryExample({ title, query }: { title: string; query: string }) {
           {copied ? 'Copied!' : 'Copy'}
         </button>
       </div>
-      <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
-        {query}
-      </pre>
+      <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">{query}</pre>
     </div>
-  )
+  );
 }

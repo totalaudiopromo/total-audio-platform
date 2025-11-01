@@ -93,11 +93,11 @@ import { getAllCaseStudiesSync } from '@/utils/parseCaseStudyData';
 
 // Get only UK Radio Stations
 const radioStudies = getAllCaseStudiesSync().filter(
-  (s) => s.category === 'UK Radio Stations' && s.status === 'live'
+  s => s.category === 'UK Radio Stations' && s.status === 'live'
 );
 
 // Get only Tier 1 (high priority) studies
-const tier1Studies = getAllCaseStudiesSync().filter((s) => s.tier === 1 && s.status === 'live');
+const tier1Studies = getAllCaseStudiesSync().filter(s => s.tier === 1 && s.status === 'live');
 ```
 
 ---
@@ -177,14 +177,14 @@ function TierBadge({ tier }: { tier: number }) {
 
 ## 🔧 Utility Functions Cheat Sheet
 
-| Function | Use Case | Returns |
-|----------|----------|---------|
-| `getAllCaseStudiesSync()` | Get all case studies | `EnrichedCaseStudyData[]` |
-| `getCaseStudyBySlugSync(slug)` | Get one case study | `EnrichedCaseStudyData \| null` |
-| `getAllCaseStudySlugs()` | Static path generation | `Promise<string[]>` |
-| `generateCaseStudyMetadata(slug)` | Page metadata | `Promise<Metadata>` |
-| `generateCaseStudyStructuredData(slug)` | Article schema | `object` (JSON-LD) |
-| `generateAllCaseStudySchemas(slug)` | All schemas | `object[]` |
+| Function                                | Use Case               | Returns                         |
+| --------------------------------------- | ---------------------- | ------------------------------- |
+| `getAllCaseStudiesSync()`               | Get all case studies   | `EnrichedCaseStudyData[]`       |
+| `getCaseStudyBySlugSync(slug)`          | Get one case study     | `EnrichedCaseStudyData \| null` |
+| `getAllCaseStudySlugs()`                | Static path generation | `Promise<string[]>`             |
+| `generateCaseStudyMetadata(slug)`       | Page metadata          | `Promise<Metadata>`             |
+| `generateCaseStudyStructuredData(slug)` | Article schema         | `object` (JSON-LD)              |
+| `generateAllCaseStudySchemas(slug)`     | All schemas            | `object[]`                      |
 
 ---
 
@@ -193,6 +193,7 @@ function TierBadge({ tier }: { tier: number }) {
 **Location**: `docs/pseo/programmatic-pages.csv`
 
 **Add new case study**: Add a row with these columns:
+
 - `topic_slug` - URL slug (e.g., `bbc-radio-2`)
 - `page_url` - Full path (e.g., `/blog/bbc-radio-2-contact-enrichment`)
 - `page_title` - SEO title with brand
@@ -222,6 +223,7 @@ function TierBadge({ tier }: { tier: number }) {
 ## 🐛 Debugging
 
 **Case study not showing?**
+
 ```typescript
 // Check if it exists
 const study = getCaseStudyBySlugSync('your-slug');
@@ -233,6 +235,7 @@ console.log(slugs); // See all available slugs
 ```
 
 **Validation errors?**
+
 ```typescript
 import { validateCaseStudy } from '@/utils/parseCaseStudyData';
 

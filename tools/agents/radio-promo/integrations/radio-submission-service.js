@@ -9,45 +9,50 @@ class RadioSubmissionService {
     this.gmail = options.gmail || null;
     this.amazingWebhook = options.amazingWebhook || process.env.AMAZING_RADIO_WEBHOOK_URL || null;
     this.wigwamWebhook = options.wigwamWebhook || process.env.WIGWAM_RADIO_WEBHOOK_URL || null;
-    this.eimEmail = options.eimEmail || process.env.EUROPEAN_INDIE_MUSIC_EMAIL || 'info@europeanindiemusic.com';
+    this.eimEmail =
+      options.eimEmail || process.env.EUROPEAN_INDIE_MUSIC_EMAIL || 'info@europeanindiemusic.com';
     this.paymentUrl = options.paymentUrl || process.env.EUROPEAN_INDIE_MUSIC_PAYMENT_URL || null;
-    this.logFn = typeof options.log === 'function'
-      ? options.log
-      : (level, message, meta) => {
-          const prefixMap = { info: 'ℹ️', warn: '⚠️', error: '❌', success: '✅' };
-          const prefix = prefixMap[level] || 'ℹ️';
-          if (meta) {
-            console.log(prefix, message, meta);
-          } else {
-            console.log(prefix, message);
-          }
-        };
+    this.logFn =
+      typeof options.log === 'function'
+        ? options.log
+        : (level, message, meta) => {
+            const prefixMap = { info: 'ℹ️', warn: '⚠️', error: '❌', success: '✅' };
+            const prefix = prefixMap[level] || 'ℹ️';
+            if (meta) {
+              console.log(prefix, message, meta);
+            } else {
+              console.log(prefix, message);
+            }
+          };
     this.portalAutomation = new RadioPortalAutomation({
       log: this.logFn,
       credentials: {
         amazingUsername: options.amazingUsername || process.env.AMAZING_RADIO_USERNAME,
         amazingPassword: options.amazingPassword || process.env.AMAZING_RADIO_PASSWORD,
         wigwamUsername: options.wigwamUsername || process.env.WIGWAM_USERNAME,
-        wigwamPassword: options.wigwamPassword || process.env.WIGWAM_PASSWORD
-      }
+        wigwamPassword: options.wigwamPassword || process.env.WIGWAM_PASSWORD,
+      },
     });
 
-    const driveEmail = process.env.GOOGLE_DRIVE_SERVICE_ACCOUNT_EMAIL || process.env.GOOGLE_DRIVE_CLIENT_EMAIL;
-    const driveKey = process.env.GOOGLE_DRIVE_SERVICE_ACCOUNT_PRIVATE_KEY || process.env.GOOGLE_DRIVE_PRIVATE_KEY;
-    const driveRoot = process.env.GOOGLE_DRIVE_ROOT_FOLDER_ID || process.env.GOOGLE_DRIVE_CAMPAIGNS_FOLDER_ID;
+    const driveEmail =
+      process.env.GOOGLE_DRIVE_SERVICE_ACCOUNT_EMAIL || process.env.GOOGLE_DRIVE_CLIENT_EMAIL;
+    const driveKey =
+      process.env.GOOGLE_DRIVE_SERVICE_ACCOUNT_PRIVATE_KEY || process.env.GOOGLE_DRIVE_PRIVATE_KEY;
+    const driveRoot =
+      process.env.GOOGLE_DRIVE_ROOT_FOLDER_ID || process.env.GOOGLE_DRIVE_CAMPAIGNS_FOLDER_ID;
 
     if (driveEmail && driveKey && driveRoot) {
       this.driveHelper = new DriveHelper({
         clientEmail: driveEmail,
         privateKey: driveKey,
         rootFolderId: driveRoot,
-        log: this.logFn
+        log: this.logFn,
       });
 
       this.driveSyncService = new DriveSyncService({
         driveHelper: this.driveHelper,
         rootFolderId: driveRoot,
-        log: this.logFn
+        log: this.logFn,
       });
     } else {
       this.driveHelper = null;
@@ -73,7 +78,11 @@ class RadioSubmissionService {
   sanitizeText(value) {
     if (!value) return '';
     if (typeof value === 'string') return value.trim();
-    if (Array.isArray(value)) return value.filter(Boolean).map(v => this.sanitizeText(v)).join(', ');
+    if (Array.isArray(value))
+      return value
+        .filter(Boolean)
+        .map(v => this.sanitizeText(v))
+        .join(', ');
     if (value instanceof Date) return value.toISOString();
     return String(value).trim();
   }
@@ -93,8 +102,8 @@ class RadioSubmissionService {
       contact: campaign.contact || {},
       metadata: {
         station: stationName,
-        submittedAt: new Date().toISOString()
-      }
+        submittedAt: new Date().toISOString(),
+      },
     };
   }
 
@@ -109,9 +118,9 @@ class RadioSubmissionService {
       const response = await this.fetch(url, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
@@ -153,7 +162,10 @@ class RadioSubmissionService {
     }
 
     if (this.portalAutomation.hasAmazingCredentials()) {
-      const result = await this.portalAutomation.submitToAmazingRadio(campaign, campaign.preparedAssets || null);
+      const result = await this.portalAutomation.submitToAmazingRadio(
+        campaign,
+        campaign.preparedAssets || null
+      );
       if (campaign.preparedAssets?.cleanup?.length) {
         await this.portalAutomation.cleanupAssets(campaign.preparedAssets.cleanup);
         campaign.preparedAssets.cleanup = [];
@@ -183,7 +195,10 @@ class RadioSubmissionService {
     }
 
     if (this.portalAutomation.hasWigwamCredentials()) {
-      const result = await this.portalAutomation.submitToRadioWigwam(campaign, campaign.preparedAssets || null);
+      const result = await this.portalAutomation.submitToRadioWigwam(
+        campaign,
+        campaign.preparedAssets || null
+      );
       if (campaign.preparedAssets?.cleanup?.length) {
         await this.portalAutomation.cleanupAssets(campaign.preparedAssets.cleanup);
         campaign.preparedAssets.cleanup = [];
@@ -218,7 +233,9 @@ class RadioSubmissionService {
       return options.packageType;
     }
 
-    const additionalTracks = Array.isArray(campaign.additionalTracks) ? campaign.additionalTracks.length : 0;
+    const additionalTracks = Array.isArray(campaign.additionalTracks)
+      ? campaign.additionalTracks.length
+      : 0;
     const totalTracks = 1 + additionalTracks;
     return totalTracks > 1 ? 'three-track' : 'single-track';
   }
@@ -228,14 +245,14 @@ class RadioSubmissionService {
       return {
         code: 'three-track',
         description: '3 songs / 1 month',
-        amount: 20
+        amount: 20,
       };
     }
 
     return {
       code: 'single-track',
       description: '1 song / 1 month',
-      amount: 10
+      amount: 10,
     };
   }
 
@@ -244,26 +261,28 @@ class RadioSubmissionService {
     if (campaign.downloadLinks && campaign.downloadLinks.length > 0) {
       attachments.push({
         label: 'Download Links',
-        urls: campaign.downloadLinks
+        urls: campaign.downloadLinks,
       });
     }
     if (campaign.pressReleaseLink) {
       attachments.push({
         label: 'Press Release',
-        urls: [campaign.pressReleaseLink]
+        urls: [campaign.pressReleaseLink],
       });
     }
     if (campaign.streamingLinks && campaign.streamingLinks.length > 0) {
       attachments.push({
         label: 'Streaming Links',
-        urls: campaign.streamingLinks
+        urls: campaign.streamingLinks,
       });
     }
 
     const paymentReference = options.paymentReference || options.transactionId || null;
     const paymentLine = paymentReference
       ? `Payment Reference: ${paymentReference}`
-      : 'Payment: £' + packageDetails.amount + ' via European Indie Music website (please confirm receipt).';
+      : 'Payment: £' +
+        packageDetails.amount +
+        ' via European Indie Music website (please confirm receipt).';
 
     const bodyLines = [
       'Hi European Indie Music Team,',
@@ -283,11 +302,11 @@ class RadioSubmissionService {
         ? attachments.flatMap(att => att.urls.map(url => `- ${att.label}: ${url}`))
         : ['- Streaming link: ' + (campaign.primaryStream || 'Available on request')]),
       '',
-      (campaign.pitch ? campaign.pitch : 'Let me know if you need any additional info or assets.'),
+      campaign.pitch ? campaign.pitch : 'Let me know if you need any additional info or assets.',
       '',
       'Thanks as always!',
       '',
-      'Chris Schofield'
+      'Chris Schofield',
     ];
 
     return {
@@ -295,7 +314,7 @@ class RadioSubmissionService {
       subject: `European Indie Music – ${this.sanitizeText(campaign.artistName)} – ${this.sanitizeText(campaign.trackTitle)}`,
       body: bodyLines.join('\n'),
       package: packageDetails,
-      attachments
+      attachments,
     };
   }
 
@@ -307,7 +326,7 @@ class RadioSubmissionService {
     let emailResult = {
       sent: false,
       messageId: null,
-      channel: 'draft'
+      channel: 'draft',
     };
 
     if (this.gmail && typeof this.gmail.sendEmail === 'function' && options.autoSend !== false) {
@@ -317,13 +336,15 @@ class RadioSubmissionService {
           subject: emailDraft.subject,
           body: emailDraft.body,
           campaignId: options.campaignId || campaign.campaignId || null,
-          attachments: (options.attachments || []).concat(emailDraft.attachments.flatMap(att => att.urls || []))
+          attachments: (options.attachments || []).concat(
+            emailDraft.attachments.flatMap(att => att.urls || [])
+          ),
         };
         const response = await this.gmail.sendEmail(payload);
         emailResult = {
           sent: true,
           messageId: response?.id || response?.messageId || null,
-          channel: 'gmail'
+          channel: 'gmail',
         };
         this.log('success', 'European Indie Music email sent via Gmail API');
       } catch (error) {
@@ -339,7 +360,7 @@ class RadioSubmissionService {
       emailDraft,
       emailResult,
       paymentUrl: this.paymentUrl,
-      paymentReference: options.paymentReference || null
+      paymentReference: options.paymentReference || null,
     };
   }
 }

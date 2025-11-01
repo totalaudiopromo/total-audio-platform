@@ -2,10 +2,10 @@
 
 /**
  * Dan - Total Audio Agent Orchestrator
- * 
+ *
  * Master coordinator for the 6-agent radio promotion system
  * Transforms 15-20 hour manual workflow into 45 minutes + monitoring
- * 
+ *
  * Architecture:
  * - Intelligence Agent: Google Meet + Gemini processing
  * - Project Agent: Monday.com campaign automation
@@ -33,15 +33,15 @@ const logToFile = (level, message, args) => {
   try {
     const logDir = './logs';
     if (!fs.existsSync(logDir)) fs.mkdirSync(logDir, { recursive: true });
-    
+
     const logEntry = {
       timestamp: new Date().toISOString(),
       level,
       message,
       args: args || [],
-      pid: process.pid
+      pid: process.pid,
     };
-    
+
     const logFile = path.join(logDir, `orchestrator-${new Date().toISOString().split('T')[0]}.log`);
     fs.appendFileSync(logFile, JSON.stringify(logEntry) + '\n');
   } catch (error) {
@@ -79,7 +79,7 @@ const logger = {
     const timestamp = new Date().toISOString();
     console.log(`🔍 [${timestamp}] [VERIFICATION] ${msg}`, ...args);
     logToFile('verification', msg, args);
-  }
+  },
 };
 
 class Dan extends EventEmitter {
@@ -88,7 +88,7 @@ class Dan extends EventEmitter {
     this.name = 'Dan';
     this.version = '1.0.0';
     this.startTime = Date.now();
-    
+
     // Campaign state management
     this.campaigns = new Map();
     this.activeWorkflows = new Map();
@@ -104,12 +104,12 @@ class Dan extends EventEmitter {
       // Campaign agents
       campaigns: {},
       // Liberty client agents (backward compatibility)
-      liberty: {}
+      liberty: {},
     };
 
     // Flat agent access for backward compatibility
     this.agentRegistry = {};
-    
+
     // System metrics
     this.metrics = {
       campaignsProcessed: 0,
@@ -119,13 +119,13 @@ class Dan extends EventEmitter {
       agentUptime: {},
       warmApiCalls: 0,
       notificationsSent: 0,
-      reportsGenerated: 0
+      reportsGenerated: 0,
     };
 
     // Status file management for Command Centre integration
     this.statusFile = path.join(__dirname, 'status', 'current-status.json');
     this.ensureStatusDirectory();
-    
+
     // Configuration
     this.config = {
       verificationEnabled: true,
@@ -145,7 +145,7 @@ class Dan extends EventEmitter {
       wigwamUsername: process.env.WIGWAM_USERNAME,
       wigwamPassword: process.env.WIGWAM_PASSWORD,
       europeanIndieEmail: process.env.EUROPEAN_INDIE_MUSIC_EMAIL,
-      europeanIndiePaymentUrl: process.env.EUROPEAN_INDIE_MUSIC_PAYMENT_URL
+      europeanIndiePaymentUrl: process.env.EUROPEAN_INDIE_MUSIC_PAYMENT_URL,
     };
 
     // Workflow definitions - Liberty client + Total Audio operations
@@ -162,9 +162,9 @@ class Dan extends EventEmitter {
         steps: [
           { agent: 'newsjack', action: 'fetchTrends', parallel: false },
           { agent: 'newsletter', action: 'generateContent', parallel: false },
-          { agent: 'newsletter', action: 'distribute', parallel: false }
+          { agent: 'newsletter', action: 'distribute', parallel: false },
         ],
-        verification: ['content-review', 'distribution-confirmation']
+        verification: ['content-review', 'distribution-confirmation'],
       },
 
       'audio-intel-case-study': {
@@ -178,10 +178,10 @@ class Dan extends EventEmitter {
           {
             agents: ['social', 'newsletter'],
             actions: ['schedulePost', 'queueContent'],
-            parallel: true
-          }
+            parallel: true,
+          },
         ],
-        verification: ['case-study-approval']
+        verification: ['case-study-approval'],
       },
 
       'contact-enrichment-batch': {
@@ -192,9 +192,9 @@ class Dan extends EventEmitter {
         steps: [
           { agent: 'contact', action: 'enrichBatch', parallel: false },
           { agent: 'database', action: 'updateRecords', parallel: false },
-          { agent: 'analytics', action: 'trackQuality', parallel: false }
+          { agent: 'analytics', action: 'trackQuality', parallel: false },
         ],
-        verification: ['quality-check']
+        verification: ['quality-check'],
       },
 
       'social-content-week': {
@@ -205,9 +205,9 @@ class Dan extends EventEmitter {
         steps: [
           { agent: 'newsjack', action: 'fetchTrends', parallel: false },
           { agent: 'contentGen', action: 'generateWeeklyPosts', parallel: false },
-          { agent: 'social', action: 'scheduleWeek', parallel: false }
+          { agent: 'social', action: 'scheduleWeek', parallel: false },
         ],
-        verification: ['content-calendar-review']
+        verification: ['content-calendar-review'],
       },
 
       'business-analytics-report': {
@@ -218,9 +218,9 @@ class Dan extends EventEmitter {
         steps: [
           { agent: 'analytics', action: 'aggregateMonthlyData', parallel: false },
           { agent: 'analytics', action: 'generateInsights', parallel: false },
-          { agent: 'marketing', action: 'createReport', parallel: false }
+          { agent: 'marketing', action: 'createReport', parallel: false },
         ],
-        verification: ['metrics-validation']
+        verification: ['metrics-validation'],
       },
 
       // ============================================
@@ -234,21 +234,21 @@ class Dan extends EventEmitter {
         steps: [
           { agent: 'intelligence', action: 'processTranscript', parallel: false },
           { agent: 'project', action: 'createCampaign', parallel: false },
-          { 
-            agents: ['email', 'radio'], 
-            actions: ['generateContent', 'initiateSubmissions'], 
-            parallel: true 
+          {
+            agents: ['email', 'radio'],
+            actions: ['generateContent', 'initiateSubmissions'],
+            parallel: true,
           },
           { agent: 'analytics', action: 'setupTracking', parallel: false },
-          { agent: 'coverage', action: 'generateInitialReport', parallel: false }
+          { agent: 'coverage', action: 'generateInitialReport', parallel: false },
         ],
         verification: [
           'campaign-brief-review',
           'content-approval',
           'submission-confirmation',
           'tracking-setup',
-          'final-report'
-        ]
+          'final-report',
+        ],
       },
       'transcript-to-brief': {
         name: 'Google Meet to Campaign Brief',
@@ -256,18 +256,16 @@ class Dan extends EventEmitter {
         estimatedTime: 5,
         steps: [
           { agent: 'intelligence', action: 'processTranscript', parallel: false },
-          { agent: 'intelligence', action: 'validateBrief', parallel: false }
+          { agent: 'intelligence', action: 'validateBrief', parallel: false },
         ],
-        verification: ['transcript-processing']
+        verification: ['transcript-processing'],
       },
       'warm-monitoring': {
         name: 'WARM API Continuous Monitoring',
         description: 'Real-time play tracking and milestone notifications',
         estimatedTime: 0, // continuous
-        steps: [
-          { agent: 'analytics', action: 'startContinuousMonitoring', parallel: false }
-        ],
-        verification: []
+        steps: [{ agent: 'analytics', action: 'startContinuousMonitoring', parallel: false }],
+        verification: [],
       },
       'campaign-reporting': {
         name: 'Professional Campaign Reporting',
@@ -276,25 +274,25 @@ class Dan extends EventEmitter {
         steps: [
           { agent: 'analytics', action: 'aggregateData', parallel: false },
           { agent: 'coverage', action: 'generateProfessionalReport', parallel: false },
-          { agent: 'coverage', action: 'deliverToClient', parallel: false }
+          { agent: 'coverage', action: 'deliverToClient', parallel: false },
         ],
-        verification: ['data-validation', 'report-approval']
-      }
+        verification: ['data-validation', 'report-approval'],
+      },
     };
-    
+
     // Error handling and recovery
     this.errorHandling = {
       maxRetries: 3,
       retryDelay: 5000,
       fallbackMethods: new Map(),
-      criticalOperations: ['warm-api-calls', 'client-deliverables', 'payment-processing']
+      criticalOperations: ['warm-api-calls', 'client-deliverables', 'payment-processing'],
     };
 
     // Integration helpers (loaded lazily)
     this.gmailMatcher = null;
     this.timers = {
       gmailDailyTimeout: null,
-      gmailDailyInterval: null
+      gmailDailyInterval: null,
     };
   }
 
@@ -304,22 +302,22 @@ class Dan extends EventEmitter {
   async initialize() {
     try {
       logger.info('🚀 Initializing Dan - Total Audio Agent Orchestrator v' + this.version);
-      
+
       // Initialize configuration
       await this.loadConfiguration();
-      
+
       // Initialize all agents
       await this.initializeAgents();
-      
+
       // Setup inter-agent communication
       await this.setupAgentCommunication();
-      
+
       // Initialize dashboard API
       await this.initializeDashboard();
-      
+
       // Setup Google Chat notifications
       await this.setupNotifications();
-      
+
       // Load existing campaigns
       await this.loadCampaignState();
 
@@ -328,12 +326,12 @@ class Dan extends EventEmitter {
 
       logger.success('Liberty Radio Promo Orchestrator initialized successfully');
       logger.info(`Dashboard available at: http://localhost:${this.config.dashboardPort}`);
-      
+
       return {
         status: 'ready',
         agents: Object.keys(this.agents).length,
         workflows: Object.keys(this.workflows).length,
-        uptime: Date.now() - this.startTime
+        uptime: Date.now() - this.startTime,
       };
     } catch (error) {
       logger.error('Orchestrator initialization failed:', error);
@@ -351,16 +349,16 @@ class Dan extends EventEmitter {
     this.libertyTemplates = null;
     this.radioStations = null;
     this.warmConfig = null;
-    
+
     // Check environment variables (warn but don't fail)
     const recommendedEnvVars = {
-      'ANTHROPIC_API_KEY': 'AI content generation',
-      'CONVERTKIT_API_KEY': 'Newsletter distribution',
-      'NOTION_API_KEY': 'Notion integration',
-      'GEMINI_API_KEY': 'Liberty: Google Meet processing',
-      'MONDAY_API_KEY': 'Liberty: Campaign management',
-      'WARM_API_KEY': 'Liberty: Radio tracking',
-      'GOOGLE_CHAT_WEBHOOK': 'Team notifications'
+      ANTHROPIC_API_KEY: 'AI content generation',
+      CONVERTKIT_API_KEY: 'Newsletter distribution',
+      NOTION_API_KEY: 'Notion integration',
+      GEMINI_API_KEY: 'Liberty: Google Meet processing',
+      MONDAY_API_KEY: 'Liberty: Campaign management',
+      WARM_API_KEY: 'Liberty: Radio tracking',
+      GOOGLE_CHAT_WEBHOOK: 'Team notifications',
     };
 
     const missingVars = Object.entries(recommendedEnvVars)
@@ -372,7 +370,7 @@ class Dan extends EventEmitter {
       missingVars.forEach(varDesc => logger.warn(`   - ${varDesc}`));
       logger.info('💡 These are optional - agents will work with available credentials');
     }
-    
+
     logger.info('Configuration loaded successfully');
   }
 
@@ -409,7 +407,7 @@ class Dan extends EventEmitter {
           const agentInstance = new AgentClass({
             orchestrator: this,
             config: this.config,
-            logger: (msg, ...args) => logger.agent(agentKey, msg, ...args)
+            logger: (msg, ...args) => logger.agent(agentKey, msg, ...args),
           });
 
           // Try to initialize (some agents may not have initialize method)
@@ -433,7 +431,6 @@ class Dan extends EventEmitter {
           } else {
             throw new Error(`Agent initialization returned false`);
           }
-
         } catch (error) {
           logger.error(`  └─ ✗ Failed to initialize ${agentConfig.name}:`, error.message);
           // Continue with other agents - graceful degradation
@@ -459,8 +456,12 @@ class Dan extends EventEmitter {
       return;
     }
 
-    const hour = Number.isFinite(this.config.gmailDailySyncHour) ? this.config.gmailDailySyncHour : 9;
-    const minute = Number.isFinite(this.config.gmailDailySyncMinute) ? this.config.gmailDailySyncMinute : 0;
+    const hour = Number.isFinite(this.config.gmailDailySyncHour)
+      ? this.config.gmailDailySyncHour
+      : 9;
+    const minute = Number.isFinite(this.config.gmailDailySyncMinute)
+      ? this.config.gmailDailySyncMinute
+      : 0;
 
     const scheduleNextRun = () => {
       if (this.timers.gmailDailyInterval) {
@@ -484,9 +485,12 @@ class Dan extends EventEmitter {
 
       this.timers.gmailDailyTimeout = setTimeout(() => {
         this.runDailyGmailSync();
-        this.timers.gmailDailyInterval = setInterval(() => {
-          this.runDailyGmailSync();
-        }, 24 * 60 * 60 * 1000);
+        this.timers.gmailDailyInterval = setInterval(
+          () => {
+            this.runDailyGmailSync();
+          },
+          24 * 60 * 60 * 1000
+        );
       }, delay);
     };
 
@@ -520,23 +524,25 @@ class Dan extends EventEmitter {
    */
   async setupAgentCommunication() {
     logger.info('Setting up inter-agent communication system...');
-    
+
     // Event-based messaging system
     this.on('agent-message', this.handleAgentMessage.bind(this));
     this.on('workflow-progress', this.handleWorkflowProgress.bind(this));
     this.on('verification-required', this.handleVerificationRequest.bind(this));
     this.on('error-recovery', this.handleErrorRecovery.bind(this));
-    
+
     // Register each agent with the communication system
     Object.entries(this.agents).forEach(([name, agent]) => {
       if (agent && typeof agent.on === 'function') {
-        agent.on('message', (data) => this.emit('agent-message', { from: name, ...data }));
-        agent.on('progress', (data) => this.emit('workflow-progress', { agent: name, ...data }));
-        agent.on('verification', (data) => this.emit('verification-required', { agent: name, ...data }));
-        agent.on('error', (data) => this.emit('error-recovery', { agent: name, ...data }));
+        agent.on('message', data => this.emit('agent-message', { from: name, ...data }));
+        agent.on('progress', data => this.emit('workflow-progress', { agent: name, ...data }));
+        agent.on('verification', data =>
+          this.emit('verification-required', { agent: name, ...data })
+        );
+        agent.on('error', data => this.emit('error-recovery', { agent: name, ...data }));
       }
     });
-    
+
     logger.info('Inter-agent communication system ready');
   }
 
@@ -545,22 +551,23 @@ class Dan extends EventEmitter {
    */
   async initializeDashboard() {
     logger.info('Initializing verification dashboard...');
-    
+
     // In a full implementation, this would start an Express server
     // For now, we'll create the API structure
-    
+
     this.dashboardAPI = {
       getCampaigns: () => Array.from(this.campaigns.values()),
-      getAgentStatus: () => Object.entries(this.agents).map(([name, agent]) => ({
-        name,
-        status: agent ? 'active' : 'inactive',
-        uptime: this.metrics.agentUptime[name] || 0
-      })),
+      getAgentStatus: () =>
+        Object.entries(this.agents).map(([name, agent]) => ({
+          name,
+          status: agent ? 'active' : 'inactive',
+          uptime: this.metrics.agentUptime[name] || 0,
+        })),
       getMetrics: () => ({ ...this.metrics }),
       approveVerification: (id, approved) => this.handleVerificationResponse(id, approved),
-      getWorkflowStatus: (campaignId) => this.activeWorkflows.get(campaignId)
+      getWorkflowStatus: campaignId => this.activeWorkflows.get(campaignId),
     };
-    
+
     logger.info(`Dashboard API initialized (port ${this.config.dashboardPort})`);
   }
 
@@ -572,18 +579,22 @@ class Dan extends EventEmitter {
       logger.warn('Google Chat webhook not configured - notifications disabled');
       return;
     }
-    
+
     logger.info('Setting up Google Chat notification system...');
-    
+
     // Setup notification templates
     this.notificationTemplates = {
-      campaignStarted: '🚀 *New Radio Campaign Started*\n*Artist:* {artist}\n*Track:* {track}\n*Expected completion:* {estimatedTime} minutes',
+      campaignStarted:
+        '🚀 *New Radio Campaign Started*\n*Artist:* {artist}\n*Track:* {track}\n*Expected completion:* {estimatedTime} minutes',
       milestoneReached: '🎯 *Campaign Milestone*\n*{milestone}* completed for *{artist} - {track}*',
-      verificationRequired: '🔍 *Verification Required*\n*Campaign:* {campaign}\n*Step:* {step}\n[Approve in Command Centre]',
-      campaignComplete: '✅ *Campaign Complete*\n*Artist:* {artist}\n*Track:* {track}\n*Total time:* {actualTime} minutes\n*Success rate:* {successRate}%',
-      errorAlert: '⚠️ *System Alert*\n*Error:* {error}\n*Campaign:* {campaign}\n*Action required:* {action}'
+      verificationRequired:
+        '🔍 *Verification Required*\n*Campaign:* {campaign}\n*Step:* {step}\n[Approve in Command Centre]',
+      campaignComplete:
+        '✅ *Campaign Complete*\n*Artist:* {artist}\n*Track:* {track}\n*Total time:* {actualTime} minutes\n*Success rate:* {successRate}%',
+      errorAlert:
+        '⚠️ *System Alert*\n*Error:* {error}\n*Campaign:* {campaign}\n*Action required:* {action}',
     };
-    
+
     logger.info('Google Chat notifications configured');
   }
 
@@ -596,14 +607,14 @@ class Dan extends EventEmitter {
       if (!workflow) {
         throw new Error(`Workflow '${workflowName}' not found`);
       }
-      
+
       const campaignId = this.generateCampaignId();
       const startTime = Date.now();
-      
+
       logger.info(`🎬 Starting workflow: ${workflow.name}`);
       logger.info(`Campaign ID: ${campaignId}`);
       logger.info(`Estimated time: ${workflow.estimatedTime} minutes`);
-      
+
       // Create campaign record
       const campaign = {
         id: campaignId,
@@ -611,82 +622,81 @@ class Dan extends EventEmitter {
         data: campaignData,
         status: 'running',
         startTime,
-        estimatedEndTime: startTime + (workflow.estimatedTime * 60 * 1000),
+        estimatedEndTime: startTime + workflow.estimatedTime * 60 * 1000,
         steps: [],
         verifications: [],
         currentStep: 0,
-        results: {}
+        results: {},
       };
-      
+
       this.campaigns.set(campaignId, campaign);
       this.activeWorkflows.set(campaignId, {
         workflow,
         campaign,
-        progress: 0
+        progress: 0,
       });
-      
+
       // Update status file for new campaign
       await this.updateStatusFile();
-      
+
       // Send start notification
       await this.sendNotification('campaignStarted', {
         artist: campaignData.artist || 'Unknown',
         track: campaignData.track || 'Unknown',
-        estimatedTime: workflow.estimatedTime
+        estimatedTime: workflow.estimatedTime,
       });
-      
+
       // Execute workflow steps
       const results = await this.executeWorkflowSteps(campaign, workflow);
-      
+
       // Calculate final metrics
       const endTime = Date.now();
       const actualTime = Math.round((endTime - startTime) / (1000 * 60)); // minutes
       const successRate = this.calculateSuccessRate(results);
-      
+
       // Update campaign
       campaign.status = 'completed';
       campaign.endTime = endTime;
       campaign.actualTime = actualTime;
       campaign.successRate = successRate;
       campaign.results = results;
-      
+
       // Update metrics
       this.metrics.campaignsProcessed++;
-      this.metrics.totalTimeReduction += Math.max(0, (15 * 60) - actualTime); // assuming 15 hours manual
+      this.metrics.totalTimeReduction += Math.max(0, 15 * 60 - actualTime); // assuming 15 hours manual
       this.metrics.averageWorkflowTime = this.calculateAverageWorkflowTime();
       this.metrics.successRate = this.calculateOverallSuccessRate();
-      
+
       // Send completion notification
       await this.sendNotification('campaignComplete', {
         artist: campaignData.artist || 'Unknown',
         track: campaignData.track || 'Unknown',
         actualTime,
-        successRate
+        successRate,
       });
-      
+
       logger.success(`✨ Workflow completed in ${actualTime} minutes`);
       logger.success(`Success rate: ${successRate}%`);
-      
+
       return {
         campaignId,
         status: 'completed',
         actualTime,
         estimatedTime: workflow.estimatedTime,
-        timeReduction: Math.max(0, (15 * 60) - actualTime),
+        timeReduction: Math.max(0, 15 * 60 - actualTime),
         successRate,
-        results
+        results,
       };
-      
     } catch (error) {
       logger.error('Workflow execution failed:', error);
-      
+
       // Send error notification
       await this.sendNotification('errorAlert', {
         error: error.message,
         campaign: campaignData.artist + ' - ' + campaignData.track,
-        action: 'Check Command Centre dashboard'
+        action: 'Check Command Centre dashboard',
       });
-      
+
       throw error;
     } finally {
       // Cleanup
@@ -699,16 +709,16 @@ class Dan extends EventEmitter {
    */
   async executeWorkflowSteps(campaign, workflow) {
     const results = {};
-    
+
     for (let i = 0; i < workflow.steps.length; i++) {
       const step = workflow.steps[i];
       const stepStartTime = Date.now();
-      
+
       try {
         logger.info(`📋 Step ${i + 1}/${workflow.steps.length}: ${this.getStepDescription(step)}`);
-        
+
         let stepResult;
-        
+
         if (step.parallel && step.agents && step.actions) {
           // Parallel execution
           stepResult = await this.executeParallelStep(step, campaign.data);
@@ -716,60 +726,59 @@ class Dan extends EventEmitter {
           // Single agent execution
           stepResult = await this.executeSingleStep(step, campaign.data);
         }
-        
+
         // Handle verification if required
         const verificationId = `${campaign.id}-step-${i}`;
         if (workflow.verification && workflow.verification[i] && this.config.verificationEnabled) {
           const approved = await this.requestVerification(verificationId, {
             campaign: campaign.id,
             step: workflow.verification[i],
-            data: stepResult
+            data: stepResult,
           });
-          
+
           if (!approved) {
             throw new Error(`Step ${i + 1} verification rejected`);
           }
         }
-        
+
         const stepDuration = Date.now() - stepStartTime;
-        
+
         // Record step completion
         campaign.steps.push({
           index: i,
           description: this.getStepDescription(step),
           duration: stepDuration,
           result: stepResult,
-          status: 'completed'
+          status: 'completed',
         });
-        
+
         results[`step${i + 1}`] = stepResult;
         campaign.currentStep = i + 1;
-        
+
         // Update progress
         const progress = ((i + 1) / workflow.steps.length) * 100;
         this.emit('workflow-progress', {
           campaignId: campaign.id,
           progress,
           currentStep: i + 1,
-          totalSteps: workflow.steps.length
+          totalSteps: workflow.steps.length,
         });
-        
+
         // Update status file for Command Centre dashboard
         await this.updateStatusFile();
-        
+
         logger.success(`✓ Step ${i + 1} completed in ${Math.round(stepDuration / 1000)}s`);
-        
       } catch (error) {
         logger.error(`✗ Step ${i + 1} failed:`, error);
-        
+
         // Record failed step
         campaign.steps.push({
           index: i,
           description: this.getStepDescription(step),
           error: error.message,
-          status: 'failed'
+          status: 'failed',
         });
-        
+
         // Handle error recovery
         const recovered = await this.attemptErrorRecovery(step, error, campaign);
         if (!recovered) {
@@ -777,7 +786,7 @@ class Dan extends EventEmitter {
         }
       }
     }
-    
+
     return results;
   }
 
@@ -826,15 +835,15 @@ class Dan extends EventEmitter {
       const action = step.actions[index];
       return this.executeSingleStep({ agent: agentName, action }, campaignData);
     });
-    
+
     const results = await Promise.allSettled(promises);
-    
+
     return results.map((result, index) => ({
       agent: step.agents[index],
       action: step.actions[index],
       status: result.status,
       value: result.status === 'fulfilled' ? result.value : null,
-      error: result.status === 'rejected' ? result.reason.message : null
+      error: result.status === 'rejected' ? result.reason.message : null,
     }));
   }
 
@@ -843,21 +852,21 @@ class Dan extends EventEmitter {
    */
   async requestVerification(verificationId, data) {
     logger.verification(`Verification required: ${data.step}`);
-    
+
     if (!this.config.verificationEnabled) {
       logger.verification('Auto-approved (verification disabled)');
       return true;
     }
-    
+
     // Send notification
     await this.sendNotification('verificationRequired', {
       campaign: data.campaign,
-      step: data.step
+      step: data.step,
     });
-    
+
     // In a full implementation, this would wait for dashboard response
     // For now, auto-approve after delay
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       setTimeout(() => {
         logger.verification('Auto-approved for demonstration');
         resolve(true);
@@ -870,23 +879,22 @@ class Dan extends EventEmitter {
    */
   async sendNotification(templateName, data) {
     if (!this.config.googleChatWebhook) return;
-    
+
     try {
       const template = this.notificationTemplates[templateName];
       if (!template) {
         logger.warn(`Notification template '${templateName}' not found`);
         return;
       }
-      
+
       let message = template;
       Object.entries(data).forEach(([key, value]) => {
         message = message.replace(new RegExp(`{${key}}`, 'g'), value);
       });
-      
+
       // In a full implementation, this would make HTTP request to Google Chat
       logger.info(`📱 Notification sent: ${templateName}`);
       this.metrics.notificationsSent++;
-      
     } catch (error) {
       logger.error('Failed to send notification:', error);
     }
@@ -900,19 +908,19 @@ class Dan extends EventEmitter {
       const stateFile = './data/campaign-state.json';
       if (fs.existsSync(stateFile)) {
         const state = JSON.parse(fs.readFileSync(stateFile, 'utf8'));
-        
+
         // Restore campaigns
         if (state.campaigns) {
           state.campaigns.forEach(campaign => {
             this.campaigns.set(campaign.id, campaign);
           });
         }
-        
+
         // Restore metrics
         if (state.metrics) {
           this.metrics = { ...this.metrics, ...state.metrics };
         }
-        
+
         logger.info(`Restored ${this.campaigns.size} campaigns from state`);
       }
     } catch (error) {
@@ -929,15 +937,14 @@ class Dan extends EventEmitter {
       if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
       }
-      
+
       const state = {
         campaigns: Array.from(this.campaigns.values()),
         metrics: this.metrics,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
-      
+
       fs.writeFileSync('./data/campaign-state.json', JSON.stringify(state, null, 2));
-      
     } catch (error) {
       logger.error('Failed to save campaign state:', error);
     }
@@ -953,13 +960,13 @@ class Dan extends EventEmitter {
         version: this.version,
         uptime: Date.now() - this.startTime,
         campaigns: this.campaigns.size,
-        activeWorkflows: this.activeWorkflows.size
+        activeWorkflows: this.activeWorkflows.size,
       },
       agents: {},
       metrics: { ...this.metrics },
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
-    
+
     // Check each agent
     for (const [name, agent] of Object.entries(this.agents)) {
       if (agent && typeof agent.healthCheck === 'function') {
@@ -974,7 +981,7 @@ class Dan extends EventEmitter {
         health.status = 'degraded';
       }
     }
-    
+
     return health;
   }
 
@@ -1022,7 +1029,7 @@ class Dan extends EventEmitter {
       priority: campaign.priority || 'medium',
       status: this.getCampaignStatus(campaign),
       steps: this.getCampaignSteps(campaign),
-      createdAt: campaign.createdAt || new Date().toISOString()
+      createdAt: campaign.createdAt || new Date().toISOString(),
     }));
 
     const agentStatuses = Object.entries(this.agents).map(([name, agent]) => ({
@@ -1030,11 +1037,11 @@ class Dan extends EventEmitter {
       status: agent ? 'online' : 'offline',
       currentTask: agent?.currentTask || 'Idle',
       lastHeartbeat: new Date().toISOString(),
-      errorCount: agent?.errorCount || 0
+      errorCount: agent?.errorCount || 0,
     }));
 
     // Extract approval queue
-    const approvalQueue = campaigns.flatMap(campaign => 
+    const approvalQueue = campaigns.flatMap(campaign =>
       campaign.steps.filter(step => step.status === 'requires_approval')
     );
 
@@ -1044,19 +1051,19 @@ class Dan extends EventEmitter {
       approvalQueue,
       isConnected: true,
       lastUpdate: new Date().toISOString(),
-      metrics: this.metrics
+      metrics: this.metrics,
     };
   }
 
   getCampaignStatus(campaign) {
     if (!campaign.workflowState) return 'transcript_processing';
-    
+
     const completedSteps = Object.values(campaign.workflowState).filter(
       step => step.status === 'completed' || step.status === 'approved'
     ).length;
-    
+
     const totalSteps = Object.keys(campaign.workflowState).length;
-    
+
     if (completedSteps === totalSteps) return 'completed';
     if (completedSteps >= totalSteps * 0.8) return 'tracking';
     if (completedSteps >= totalSteps * 0.6) return 'radio_outreach';
@@ -1067,7 +1074,7 @@ class Dan extends EventEmitter {
 
   getCampaignSteps(campaign) {
     if (!campaign.workflowState) return [];
-    
+
     return Object.entries(campaign.workflowState).map(([stepId, stepData]) => ({
       id: stepId,
       name: this.getStepDisplayName(stepId),
@@ -1077,30 +1084,30 @@ class Dan extends EventEmitter {
       message: stepData.message || '',
       timestamp: stepData.timestamp || new Date().toISOString(),
       requiresManualApproval: stepData.requiresManualApproval || false,
-      data: stepData.data || null
+      data: stepData.data || null,
     }));
   }
 
   getStepDisplayName(stepId) {
     const stepNames = {
-      'process_transcript': 'Process Google Meet Transcript',
-      'create_campaign': 'Create Monday.com Campaign Board',
-      'generate_press_release': 'Generate Liberty Press Release',
-      'initiate_radio_outreach': 'Begin Radio Station Outreach',
-      'setup_warm_tracking': 'Setup WARM API Tracking',
-      'generate_coverage_report': 'Generate Coverage Report'
+      process_transcript: 'Process Google Meet Transcript',
+      create_campaign: 'Create Monday.com Campaign Board',
+      generate_press_release: 'Generate Liberty Press Release',
+      initiate_radio_outreach: 'Begin Radio Station Outreach',
+      setup_warm_tracking: 'Setup WARM API Tracking',
+      generate_coverage_report: 'Generate Coverage Report',
     };
     return stepNames[stepId] || stepId.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   }
 
   getStepAgent(stepId) {
     const stepAgents = {
-      'process_transcript': 'Intelligence Agent',
-      'create_campaign': 'Project Agent',
-      'generate_press_release': 'Email Agent',
-      'initiate_radio_outreach': 'Radio Agent',
-      'setup_warm_tracking': 'Analytics Agent',
-      'generate_coverage_report': 'Coverage Agent'
+      process_transcript: 'Intelligence Agent',
+      create_campaign: 'Project Agent',
+      generate_press_release: 'Email Agent',
+      initiate_radio_outreach: 'Radio Agent',
+      setup_warm_tracking: 'Analytics Agent',
+      generate_coverage_report: 'Coverage Agent',
     };
     return stepAgents[stepId] || 'Unknown Agent';
   }
@@ -1114,7 +1121,7 @@ class Dan extends EventEmitter {
   calculateAverageWorkflowTime() {
     const campaigns = Array.from(this.campaigns.values()).filter(c => c.actualTime);
     if (campaigns.length === 0) return 0;
-    
+
     const totalTime = campaigns.reduce((sum, c) => sum + c.actualTime, 0);
     return Math.round(totalTime / campaigns.length);
   }
@@ -1122,21 +1129,21 @@ class Dan extends EventEmitter {
   calculateOverallSuccessRate() {
     const campaigns = Array.from(this.campaigns.values()).filter(c => c.successRate !== undefined);
     if (campaigns.length === 0) return 0;
-    
+
     const totalSuccess = campaigns.reduce((sum, c) => sum + c.successRate, 0);
     return Math.round(totalSuccess / campaigns.length);
   }
 
   async attemptErrorRecovery(step, error, campaign) {
     logger.warn(`Attempting error recovery for step: ${this.getStepDescription(step)}`);
-    
+
     // Basic retry logic
     if (this.errorHandling.maxRetries > 0) {
       for (let retry = 1; retry <= this.errorHandling.maxRetries; retry++) {
         logger.info(`Retry attempt ${retry}/${this.errorHandling.maxRetries}`);
-        
+
         await new Promise(resolve => setTimeout(resolve, this.errorHandling.retryDelay));
-        
+
         try {
           const result = await this.executeSingleStep(step, campaign.data);
           logger.success(`Recovery successful on retry ${retry}`);
@@ -1146,7 +1153,7 @@ class Dan extends EventEmitter {
         }
       }
     }
-    
+
     logger.error('Error recovery failed - manual intervention required');
     return false;
   }
@@ -1171,10 +1178,10 @@ class Dan extends EventEmitter {
   async shutdown() {
     try {
       logger.info('Shutting down Liberty Radio Promo Orchestrator...');
-      
+
       // Save current state
       await this.saveCampaignState();
-      
+
       // Shutdown all agents
       for (const [name, agent] of Object.entries(this.agents)) {
         if (agent && typeof agent.shutdown === 'function') {
@@ -1186,7 +1193,7 @@ class Dan extends EventEmitter {
           }
         }
       }
-      
+
       logger.success('Liberty Radio Promo Orchestrator shut down successfully');
     } catch (error) {
       logger.error('Orchestrator shutdown failed:', error);
@@ -1210,37 +1217,39 @@ if (require.main === module) {
           const health = await orchestrator.healthCheck();
           console.log(JSON.stringify(health, null, 2));
           break;
-        
+
         case 'workflow':
           const workflowName = args[0] || 'complete-campaign';
           const transcriptFile = args[1];
-          
+
           if (!transcriptFile && workflowName === 'complete-campaign') {
             console.log('Usage: node dan.js workflow complete-campaign <transcript-file>');
             return;
           }
-          
+
           const campaignData = transcriptFile ? { transcriptFile } : {};
           const result = await orchestrator.executeWorkflow(workflowName, campaignData);
           console.log(JSON.stringify(result, null, 2));
           break;
-        
+
         case 'dashboard':
-          console.log(`Dashboard API available at: http://localhost:${orchestrator.config.dashboardPort}`);
+          console.log(
+            `Dashboard API available at: http://localhost:${orchestrator.config.dashboardPort}`
+          );
           console.log('Press Ctrl+C to stop');
-          
+
           // Keep process alive
           process.on('SIGINT', async () => {
             await orchestrator.shutdown();
             process.exit(0);
           });
           break;
-        
+
         case 'campaigns':
           const campaigns = Array.from(orchestrator.campaigns.values());
           console.log(JSON.stringify(campaigns, null, 2));
           break;
-        
+
         case 'metrics':
           console.log(JSON.stringify(orchestrator.metrics, null, 2));
           break;
@@ -1295,7 +1304,9 @@ if (require.main === module) {
           console.log('');
           console.log('Available workflows:');
           Object.entries(orchestrator.workflows).forEach(([name, workflow]) => {
-            console.log(`  ${name.padEnd(20)} - ${workflow.description} (${workflow.estimatedTime}min)`);
+            console.log(
+              `  ${name.padEnd(20)} - ${workflow.description} (${workflow.estimatedTime}min)`
+            );
           });
           console.log('');
           console.log('🎯 Transforming 15-20 hours of manual work into 45 minutes of automation');

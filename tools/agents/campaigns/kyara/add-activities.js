@@ -63,7 +63,9 @@ async function addActivities() {
   console.log(`✅ Found campaign: "${campaigns[0].name}" (ID: ${campaignId})\n`);
 
   // Get user ID (assuming you're the only user)
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
     console.error('❌ Not authenticated. Please sign in first.');
@@ -85,8 +87,8 @@ async function addActivities() {
       metadata: {
         contacts: 15,
         region: 'Australia',
-        targets: ['Triple J', 'Triple R', 'PBS FM', 'KIIS', 'FBi Radio']
-      }
+        targets: ['Triple J', 'Triple R', 'PBS FM', 'KIIS', 'FBi Radio'],
+      },
     },
     {
       campaign_id: campaignId,
@@ -98,8 +100,8 @@ async function addActivities() {
       metadata: {
         tool: 'Gmail API',
         drafts: 5,
-        contacts: ['Anika Luna', 'Claire Mooney', 'Simon Winkler', 'Firas', 'KIIS Music Team']
-      }
+        contacts: ['Anika Luna', 'Claire Mooney', 'Simon Winkler', 'Firas', 'KIIS Music Team'],
+      },
     },
     {
       campaign_id: campaignId,
@@ -111,8 +113,8 @@ async function addActivities() {
       metadata: {
         station: 'Amazing Radio',
         region: 'UK',
-        status: 'CONFIRMED ADD'
-      }
+        status: 'CONFIRMED ADD',
+      },
     },
     {
       campaign_id: campaignId,
@@ -125,8 +127,8 @@ async function addActivities() {
         plays: 85,
         countries: 9,
         stations: 12,
-        source: 'WARM API'
-      }
+        source: 'WARM API',
+      },
     },
     {
       campaign_id: campaignId,
@@ -139,8 +141,8 @@ async function addActivities() {
         tool: 'Mailchimp',
         contacts: 20,
         region: 'UK',
-        targets: ['Danny Howard', 'Pete Tong', 'BBC Radio 1', 'BBC 6 Music']
-      }
+        targets: ['Danny Howard', 'Pete Tong', 'BBC Radio 1', 'BBC 6 Music'],
+      },
     },
     {
       campaign_id: campaignId,
@@ -153,9 +155,9 @@ async function addActivities() {
         contacts: 40,
         variations: 4,
         send_date: '2025-10-14',
-        send_time: '7am AEST'
-      }
-    }
+        send_time: '7am AEST',
+      },
+    },
   ];
 
   // Insert activities one by one
@@ -163,10 +165,7 @@ async function addActivities() {
     const activity = activities[i];
     console.log(`${i + 1}. Adding: "${activity.description}"...`);
 
-    const { data, error } = await supabase
-      .from('campaign_activities')
-      .insert(activity)
-      .select();
+    const { data, error } = await supabase.from('campaign_activities').insert(activity).select();
 
     if (error) {
       console.error(`   ❌ Error: ${error.message}`);

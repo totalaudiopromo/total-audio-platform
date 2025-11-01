@@ -5,6 +5,7 @@
 ## Current State
 
 ### ✅ Existing Infrastructure
+
 - Gmail OAuth integration (`apps/api/src/integrations/gmail/`)
 - Mailchimp integration (`apps/api/src/integrations/mailchimp/`)
 - Airtable integration (`apps/api/src/integrations/airtable/`)
@@ -27,6 +28,7 @@ The current integrations exist but aren't **user-facing** or **useful for tracki
 **Why**: Radio promoters and agencies live in Sheets
 
 **User Flow**:
+
 ```
 Tracker Dashboard → Settings → Integrations
 → Click "Connect Google Sheets"
@@ -36,6 +38,7 @@ Tracker Dashboard → Settings → Integrations
 ```
 
 **Technical Implementation**:
+
 - Use Google Sheets API v4
 - OAuth 2.0 flow (already have Gmail OAuth pattern)
 - Create `/api/integrations/google-sheets/connect` endpoint
@@ -43,12 +46,14 @@ Tracker Dashboard → Settings → Integrations
 - Background sync job every 5 minutes
 
 **Useful Features**:
+
 - Create new row when campaign added in Tracker
 - Update row when status changes
 - Two-way sync: edit in Sheet → updates Tracker
 - Column mapping: user chooses which fields sync
 
 **Tables**:
+
 ```sql
 CREATE TABLE integration_connections (
   id UUID PRIMARY KEY,
@@ -75,6 +80,7 @@ CREATE TABLE sync_logs (
 **Why**: You already have Gmail OAuth - just need to connect it to campaigns
 
 **User Flow**:
+
 ```
 Tracker → Campaign Detail
 → "Connect Gmail to track replies"
@@ -84,6 +90,7 @@ Tracker → Campaign Detail
 ```
 
 **Technical Implementation**:
+
 - Extend existing `apps/api/src/integrations/gmail/index.ts`
 - Add `/api/integrations/gmail/connect` endpoint for Tracker users
 - Background job: check for replies every 15 minutes
@@ -91,6 +98,7 @@ Tracker → Campaign Detail
 - Update campaign contact status: 'sent' → 'replied'
 
 **Useful Features**:
+
 - Real-time reply notifications
 - Auto-categorize replies: interested/not interested/bounce
 - Show reply preview in Tracker
@@ -101,6 +109,7 @@ Tracker → Campaign Detail
 **Why**: Agencies already use Airtable for campaign management
 
 **User Flow**:
+
 ```
 Tracker → Settings → Connect Airtable
 → OAuth flow
@@ -110,12 +119,14 @@ Tracker → Settings → Connect Airtable
 ```
 
 **Technical Implementation**:
+
 - Use existing `apps/api/src/integrations/airtable/index.ts`
 - Add OAuth flow (currently uses API key only)
 - Create webhook endpoint for Airtable → Tracker updates
 - Background sync Tracker → Airtable
 
 **Useful Features**:
+
 - Import existing Airtable campaigns
 - Sync custom fields
 - View-based filtering
@@ -126,6 +137,7 @@ Tracker → Settings → Connect Airtable
 **Why**: Track email campaign sends + opens alongside other campaign activity
 
 **User Flow**:
+
 ```
 Tracker → Campaign → Add Email Channel
 → Connect Mailchimp
@@ -134,12 +146,14 @@ Tracker → Campaign → Add Email Channel
 ```
 
 **Technical Implementation**:
+
 - Extend `apps/api/src/integrations/mailchimp/index.ts`
 - OAuth flow for user accounts
 - Fetch campaign stats via Mailchimp API
 - Display alongside campaign contacts
 
 **Useful Features**:
+
 - See email open rates per contact
 - Link email activity to pitch responses
 - Combined view: "Sent pitch + opened email = warmer lead"
@@ -148,6 +162,7 @@ Tracker → Campaign → Add Email Channel
 
 **Already Have This**: Export buttons in Tracker
 **Enhancement**: Add scheduled exports
+
 - Weekly/monthly CSV emailed
 - Google Drive auto-upload
 - Format templates (radio promo, playlist, press)
@@ -157,6 +172,7 @@ Tracker → Campaign → Add Email Channel
 ### Consistent Integration Flow (All Integrations)
 
 **Step 1: Connect Screen**
+
 ```
 ┌────────────────────────────────────┐
 │  Connect Google Sheets             │
@@ -176,6 +192,7 @@ Tracker → Campaign → Add Email Channel
 ```
 
 **Step 2: Configuration**
+
 ```
 ┌────────────────────────────────────┐
 │  Configure Google Sheets Sync      │
@@ -199,6 +216,7 @@ Tracker → Campaign → Add Email Channel
 ```
 
 **Step 3: Active Integration Card**
+
 ```
 ┌────────────────────────────────────┐
 │  🟢 Google Sheets                  │
@@ -215,6 +233,7 @@ Tracker → Campaign → Add Email Channel
 ## Implementation Plan
 
 ### Phase 1: Foundation (Week 1)
+
 **Goal**: User-facing OAuth infrastructure
 
 - [ ] Create `/apps/tracker/app/dashboard/integrations/page.tsx`
@@ -223,27 +242,22 @@ Tracker → Campaign → Add Email Channel
 - [ ] Add integration status to user settings
 
 **Components**:
+
 ```typescript
 // apps/tracker/components/integrations/IntegrationCard.tsx
-export function IntegrationCard({
-  name,
-  icon,
-  description,
-  status,
-  onConnect,
-  onDisconnect
-}) { }
+export function IntegrationCard({ name, icon, description, status, onConnect, onDisconnect }) {}
 
 // apps/tracker/components/integrations/OAuthFlow.tsx
 export function OAuthFlow({
   provider, // 'google', 'airtable', etc
   scopes,
   onSuccess,
-  onError
-}) { }
+  onError,
+}) {}
 ```
 
 ### Phase 2: Google Sheets (Week 2)
+
 **Goal**: First fully functional integration
 
 - [ ] Google Sheets OAuth flow
@@ -254,6 +268,7 @@ export function OAuthFlow({
 - [ ] Error handling & notifications
 
 **API Routes**:
+
 ```
 POST   /api/integrations/google-sheets/connect
 GET    /api/integrations/google-sheets/spreadsheets
@@ -262,6 +277,7 @@ DELETE /api/integrations/google-sheets/disconnect
 ```
 
 ### Phase 3: Gmail Tracking (Week 3)
+
 **Goal**: Auto-reply detection
 
 - [ ] Gmail OAuth for Tracker users
@@ -271,6 +287,7 @@ DELETE /api/integrations/google-sheets/disconnect
 - [ ] Notification system
 
 ### Phase 4: Airtable & Mailchimp (Week 4)
+
 **Goal**: Complete integration suite
 
 - [ ] Airtable two-way sync
@@ -344,30 +361,36 @@ export class IntegrationSyncWorker {
 ## User Value Propositions
 
 ### For Radio Promoters
+
 > "Connect your existing Google Sheet and we'll keep it updated automatically.
 > No more copy-pasting between Tracker and your spreadsheet."
 
 ### For Agencies
+
 > "Sync campaigns to Airtable so your whole team sees real-time status updates.
 > Everyone stays on the same page."
 
 ### For Solo Artists
+
 > "Connect Gmail and we'll automatically mark contacts as 'replied' when they
 > email you back. Never miss a follow-up."
 
 ## Pricing Impact
 
 ### Free Tier
+
 - 1 integration
 - Manual sync only
 - 100 records/month
 
 ### Pro Tier (£19/month)
+
 - 3 integrations
 - Auto-sync every 15 minutes
 - 1,000 records/month
 
 ### Agency Tier (£79/month)
+
 - Unlimited integrations
 - Real-time sync
 - Unlimited records
@@ -376,12 +399,14 @@ export class IntegrationSyncWorker {
 ## Competitive Advantage
 
 **Current competitors** (Submithub, MusoSoup, etc):
+
 - ❌ No CRM integrations
 - ❌ Export to CSV only
 - ❌ No two-way sync
 - ❌ Siloed data
 
 **Total Audio with Integrations**:
+
 - ✅ Works with existing workflows
 - ✅ Two-way data flow
 - ✅ Auto-updates from replies
@@ -390,15 +415,18 @@ export class IntegrationSyncWorker {
 ## Success Metrics
 
 ### Week 1-2 (Post-Launch)
+
 - 10+ users connect Google Sheets
 - 100+ campaigns synced
 
 ### Month 1
+
 - 30% of active users have ≥1 integration
 - 5,000+ sync operations
 - <1% sync error rate
 
 ### Month 3
+
 - 50% of Pro users use integrations daily
 - "Integrations" = top feature in user surveys
 - 20% upgrade from Free → Pro for integrations
@@ -427,6 +455,7 @@ export class IntegrationSyncWorker {
    Tracker automatically knows. I don't touch anything."
 
 **The Punch Line**:
+
 > "This isn't just campaign tracking. It's campaign tracking that
 > connects to how you already work. That's the difference between a
 > £50 tool and a £500 platform."

@@ -1,72 +1,86 @@
 # Subscription Enforcement Implementation
 
 ## Overview
+
 This implementation adds full subscription checking and enforcement to Campaign Tracker, ensuring non-beta users are limited by their subscription tier while beta users have unlimited access.
 
 ## What Was Added
 
 ### 1. Database Schema (Migration 018)
+
 **File**: `supabase/migrations/018_subscription_enforcement.sql`
 
 Added columns to `user_profiles` table:
+
 - `subscription_status` - Current Stripe subscription status
-- `subscription_tier` - Current pricing tier (free, pro, agency_*)
+- `subscription_tier` - Current pricing tier (free, pro, agency\_\*)
 - `campaigns_limit` - Maximum campaigns allowed (-1 for unlimited)
 - `is_beta_user` - Boolean flag for beta access
 
 **Database Functions**:
+
 - `get_user_subscription_details(user_id)` - Returns subscription info + current usage
 - `can_create_campaign(user_id)` - Checks if user can create new campaign
 - `sync_subscription_to_profile()` - Trigger to sync Stripe webhooks to profile
 - `handle_subscription_cancellation()` - Trigger for cancellation handling
 
 ### 2. Subscription Utilities
+
 **File**: `lib/subscription.ts`
 
 Key functions:
+
 ```typescript
 // Check if user can create campaign
-await canCreateCampaign(userId)
+await canCreateCampaign(userId);
 
 // Get detailed subscription info
-await getUserSubscriptionDetails(userId)
+await getUserSubscriptionDetails(userId);
 
 // Get limits for UI display
-await getSubscriptionLimits(userId)
+await getSubscriptionLimits(userId);
 
 // Check active subscription status
-await hasActiveSubscription(userId)
+await hasActiveSubscription(userId);
 
 // Get current tier
-await getSubscriptionTier(userId)
+await getSubscriptionTier(userId);
 
 // Admin: Mark user as beta
-await setBetaUser(userId, true)
+await setBetaUser(userId, true);
 ```
 
 ### 3. API Protection
+
 **File**: `app/api/campaigns/route.ts`
 
 Campaign creation now checks subscription limits:
+
 ```typescript
 // Returns 403 if limit reached
 const canCreate = await canCreateCampaign(user.id);
 if (!canCreate) {
-  return NextResponse.json({
-    error: 'Campaign limit reached',
-    requiresUpgrade: true,
-    limits
-  }, { status: 403 });
+  return NextResponse.json(
+    {
+      error: 'Campaign limit reached',
+      requiresUpgrade: true,
+      limits,
+    },
+    { status: 403 }
+  );
 }
 ```
 
 ### 4. Billing Dashboard
+
 **Files**:
+
 - `app/billing/page.tsx` - Billing page route
 - `components/billing/BillingDashboard.tsx` - Main billing UI
 - `components/billing/UpgradePrompt.tsx` - Upgrade prompts
 
 Features:
+
 - Display current subscription status
 - Show campaign usage (X/Y campaigns used)
 - Pricing tier comparison
@@ -75,6 +89,7 @@ Features:
 - Billing portal access
 
 ### 5. Middleware Updates
+
 **File**: `middleware.ts`
 
 Added `/billing` and `/upgrade` to public routes so authenticated users can access billing pages.
@@ -82,6 +97,7 @@ Added `/billing` and `/upgrade` to public routes so authenticated users can acce
 ## How It Works
 
 ### Flow 1: New User Signs Up
+
 1. User creates account
 2. Profile created with default values:
    - `subscription_status`: 'free'
@@ -90,12 +106,14 @@ Added `/billing` and `/upgrade` to public routes so authenticated users can acce
    - `is_beta_user`: false
 
 ### Flow 2: User Creates Campaign
+
 1. POST request to `/api/campaigns`
 2. API checks `can_create_campaign(user.id)`
 3. If limit reached → 403 response with upgrade prompt
 4. If allowed → Campaign created
 
 ### Flow 3: User Upgrades
+
 1. User visits `/billing`
 2. Selects pricing tier
 3. Clicks "Upgrade" → Stripe checkout
@@ -107,6 +125,7 @@ Added `/billing` and `/upgrade` to public routes so authenticated users can acce
    - Updates `campaigns_limit` to -1 (unlimited)
 
 ### Flow 4: Beta User Access
+
 1. Admin marks user as beta: `UPDATE user_profiles SET is_beta_user = true WHERE id = 'user-id'`
 2. Beta users bypass all subscription checks
 3. `can_create_campaign()` returns true immediately for beta users
@@ -114,6 +133,7 @@ Added `/billing` and `/upgrade` to public routes so authenticated users can acce
 ## Testing Instructions
 
 ### 1. Run the Migration
+
 ```bash
 # Apply migration to production database
 PGPASSWORD='PostTracker123!' psql \
@@ -125,12 +145,14 @@ PGPASSWORD='PostTracker123!' psql \
 ```
 
 ### 2. Test Free User Limits
+
 1. Create new test account
 2. Create 3 campaigns (should succeed)
 3. Try to create 4th campaign → Should see "Campaign limit reached" error
 4. Visit `/billing` → Should see upgrade prompt
 
 ### 3. Test Beta User
+
 ```sql
 -- Mark test user as beta
 UPDATE user_profiles
@@ -139,11 +161,13 @@ WHERE id = 'user-uuid-here';
 ```
 
 Then test:
+
 1. Create unlimited campaigns ✅
 2. Visit `/billing` → Should see beta user badge
 3. No upgrade prompts shown
 
 ### 4. Test Subscription Upgrade
+
 1. Visit `/billing` as free user
 2. Click "Upgrade to Pro" (£19/month)
 3. Complete Stripe checkout (use test card: 4242 4242 4242 4242)
@@ -154,6 +178,7 @@ Then test:
 5. Try creating campaigns → Unlimited ✅
 
 ### 5. Test Subscription Cancellation
+
 1. Visit `/billing` → Click "Manage Billing in Stripe"
 2. Cancel subscription in Stripe portal
 3. After webhook:
@@ -165,13 +190,16 @@ Then test:
 ## Stripe Configuration Required
 
 ### 1. Environment Variables
+
 ```bash
 STRIPE_SECRET_KEY=sk_test_...
 NEXT_PUBLIC_APP_URL=https://tracker.totalaudiopromo.com
 ```
 
 ### 2. Create Products in Stripe
+
 Create products for each tier:
+
 - **Free**: No Stripe product needed
 - **Pro**: £19/month, £190/year
 - **Agency Starter**: £49/month, £490/year
@@ -179,6 +207,7 @@ Create products for each tier:
 - **Agency Enterprise**: £199/month, £1990/year
 
 ### 3. Update Pricing Tiers
+
 After creating Stripe products, update the database:
 
 ```sql
@@ -193,7 +222,9 @@ WHERE name = 'Pro' AND user_type = 'artist';
 ```
 
 ### 4. Configure Webhooks
+
 Add webhook endpoint in Stripe Dashboard:
+
 - URL: `https://tracker.totalaudiopromo.com/api/webhooks/stripe`
 - Events:
   - `customer.subscription.created`
@@ -201,6 +232,7 @@ Add webhook endpoint in Stripe Dashboard:
   - `customer.subscription.deleted`
 
 ### 5. Update Webhook Handler
+
 The webhook handler should call `syncSubscriptionFromStripe()`:
 
 ```typescript
@@ -222,6 +254,7 @@ await syncSubscriptionFromStripe(userId, {
 ## Admin Functions
 
 ### Mark User as Beta
+
 ```sql
 UPDATE user_profiles
 SET is_beta_user = true
@@ -229,11 +262,13 @@ WHERE id = 'user-uuid';
 ```
 
 ### Check User's Subscription Status
+
 ```sql
 SELECT * FROM get_user_subscription_details('user-uuid');
 ```
 
 ### Manually Set Subscription
+
 ```sql
 UPDATE user_profiles
 SET
@@ -244,6 +279,7 @@ WHERE id = 'user-uuid';
 ```
 
 ### View All Subscriptions
+
 ```sql
 SELECT
   up.id,
@@ -260,6 +296,7 @@ GROUP BY up.id;
 ## Frontend Integration Examples
 
 ### Show Upgrade Prompt on Campaign Create
+
 ```tsx
 import { UpgradeModal } from '@/components/billing/UpgradePrompt';
 
@@ -297,6 +334,7 @@ function CreateCampaignButton() {
 ```
 
 ### Display Usage in Header
+
 ```tsx
 import { getSubscriptionLimits } from '@/lib/subscription';
 
@@ -320,31 +358,40 @@ async function HeaderUsage() {
 ## Troubleshooting
 
 ### Issue: Users can still create unlimited campaigns
+
 **Check**:
+
 1. Migration applied? `SELECT * FROM user_profiles LIMIT 1;`
 2. RPC functions exist? `SELECT * FROM pg_proc WHERE proname = 'can_create_campaign';`
 3. API check added? Review `app/api/campaigns/route.ts`
 
 ### Issue: Stripe checkout not working
+
 **Check**:
+
 1. Environment variables set? `echo $STRIPE_SECRET_KEY`
 2. Price IDs correct? `SELECT * FROM pricing_tiers;`
 3. Customer creation working? `SELECT * FROM customers;`
 
 ### Issue: Webhook not updating profile
+
 **Check**:
+
 1. Webhook endpoint configured in Stripe?
 2. Trigger exists? `SELECT * FROM pg_trigger WHERE tgname = 'sync_subscription_status';`
 3. Webhook handler calling `syncSubscriptionFromStripe()`?
 
 ### Issue: Beta users seeing limits
+
 **Check**:
+
 1. Beta flag set? `SELECT is_beta_user FROM user_profiles WHERE id = 'user-id';`
 2. Function checking beta? Review `can_create_campaign()` logic
 
 ## Next Steps
 
 ### Phase 1: Launch (Completed)
+
 - ✅ Database schema
 - ✅ Subscription utilities
 - ✅ API protection
@@ -352,6 +399,7 @@ async function HeaderUsage() {
 - ✅ Upgrade prompts
 
 ### Phase 2: Enhancement
+
 - [ ] Add usage analytics to dashboard
 - [ ] Email notifications when approaching limit
 - [ ] Graceful downgrade handling
@@ -359,6 +407,7 @@ async function HeaderUsage() {
 - [ ] Team member limits for agencies
 
 ### Phase 3: Optimization
+
 - [ ] Cache subscription checks (Redis)
 - [ ] Optimistic UI updates
 - [ ] A/B test pricing tiers
@@ -367,6 +416,7 @@ async function HeaderUsage() {
 ## Support
 
 For issues or questions:
+
 1. Check logs: `supabase logs`
 2. Review Stripe events: Stripe Dashboard > Developers > Events
 3. Check database state: Run diagnostic queries above

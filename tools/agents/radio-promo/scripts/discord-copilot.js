@@ -21,12 +21,12 @@ const {
   Routes,
   SlashCommandBuilder,
   EmbedBuilder,
-  ActivityType
+  ActivityType,
 } = discord;
 
 const DEFAULT_PRESENCE = {
   activities: [{ name: 'Liberty radio workflows', type: ActivityType.Listening }],
-  status: 'idle'
+  status: 'idle',
 };
 
 function resolveEnv(primaryKey, fallbackKey) {
@@ -81,20 +81,26 @@ function pickCampaign(statusPayload, query) {
   }
 
   const loweredQuery = query.toLowerCase();
-  return campaigns.find(campaign => {
-    const haystack = [campaign.id, campaign.artistName, campaign.trackTitle]
-      .filter(Boolean)
-      .map(value => value.toLowerCase());
-    return haystack.some(value => value.includes(loweredQuery));
-  }) || null;
+  return (
+    campaigns.find(campaign => {
+      const haystack = [campaign.id, campaign.artistName, campaign.trackTitle]
+        .filter(Boolean)
+        .map(value => value.toLowerCase());
+      return haystack.some(value => value.includes(loweredQuery));
+    }) || null
+  );
 }
 
 function buildCampaignEmbed(statusPayload, campaign) {
   const steps = Array.isArray(campaign.steps) ? campaign.steps : [];
-  const completedSteps = steps.filter(step => step.status === 'completed' || step.status === 'approved').length;
+  const completedSteps = steps.filter(
+    step => step.status === 'completed' || step.status === 'approved'
+  ).length;
   const totalSteps = steps.length || (statusPayload?.workflows?.[campaign.workflowId]?.length ?? 0);
   const createdAt = campaign.createdAt ? new Date(campaign.createdAt).toLocaleString() : 'n/a';
-  const lastUpdate = statusPayload?.lastUpdate ? new Date(statusPayload.lastUpdate).toLocaleString() : 'n/a';
+  const lastUpdate = statusPayload?.lastUpdate
+    ? new Date(statusPayload.lastUpdate).toLocaleString()
+    : 'n/a';
 
   const agentStatuses = Array.isArray(statusPayload?.agentStatuses)
     ? statusPayload.agentStatuses
@@ -110,7 +116,7 @@ function buildCampaignEmbed(statusPayload, campaign) {
     { name: 'Progress', value: `${completedSteps}/${totalSteps || '?'} steps`, inline: true },
     { name: 'Genre', value: campaign.genre || 'unknown', inline: true },
     { name: 'Last Update', value: lastUpdate, inline: true },
-    { name: 'Agent Snapshot', value: agentStatuses }
+    { name: 'Agent Snapshot', value: agentStatuses },
   ];
 
   const descriptionParts = [];
@@ -132,35 +138,33 @@ const commands = [
   new SlashCommandBuilder()
     .setName('status')
     .setDescription('Show the current state of the Liberty radio automation')
-    .addStringOption(option => option
-      .setName('campaign')
-      .setDescription('Optional campaign identifier or artist name')
-      .setRequired(false)
+    .addStringOption(option =>
+      option
+        .setName('campaign')
+        .setDescription('Optional campaign identifier or artist name')
+        .setRequired(false)
     ),
   new SlashCommandBuilder()
     .setName('submit')
     .setDescription('Kick off an Amazing Radio + Wigwam submission for a campaign')
-    .addStringOption(option => option
-      .setName('campaign')
-      .setDescription('Campaign slug or artist name')
-      .setRequired(true)
+    .addStringOption(option =>
+      option.setName('campaign').setDescription('Campaign slug or artist name').setRequired(true)
     ),
   new SlashCommandBuilder()
     .setName('notify')
     .setDescription('Send yourself a reminder about a campaign milestone')
-    .addStringOption(option => option
-      .setName('campaign')
-      .setDescription('Campaign slug or artist name')
-      .setRequired(true)
+    .addStringOption(option =>
+      option.setName('campaign').setDescription('Campaign slug or artist name').setRequired(true)
     )
-    .addStringOption(option => option
-      .setName('note')
-      .setDescription('What should the agent remind you about?')
-      .setRequired(true)
+    .addStringOption(option =>
+      option
+        .setName('note')
+        .setDescription('What should the agent remind you about?')
+        .setRequired(true)
     ),
   new SlashCommandBuilder()
     .setName('help')
-    .setDescription('List available Liberty radio agent commands')
+    .setDescription('List available Liberty radio agent commands'),
 ].map(command => command.toJSON());
 
 async function registerCommands(rest) {
@@ -177,7 +181,7 @@ function buildEmbed(title, description, fields = []) {
     .setTitle(title)
     .setDescription(description)
     .addFields(fields)
-    .setColor(0x5865F2)
+    .setColor(0x5865f2)
     .setTimestamp(new Date());
 }
 
@@ -185,7 +189,7 @@ function computePresenceFromStatus(statusPayload) {
   if (!statusPayload) {
     return {
       activities: [{ name: 'Awaiting orchestrator sync...', type: ActivityType.Watching }],
-      status: 'idle'
+      status: 'idle',
     };
   }
 
@@ -197,15 +201,17 @@ function computePresenceFromStatus(statusPayload) {
 
   if (activeCampaigns.length === 0) {
     return {
-      activities: [{ name: `No active campaigns - updated ${lastUpdate}`, type: ActivityType.Playing }],
-      status: 'idle'
+      activities: [
+        { name: `No active campaigns - updated ${lastUpdate}`, type: ActivityType.Playing },
+      ],
+      status: 'idle',
     };
   }
 
   const activityLabel = `${activeCampaigns.length} active campaign${activeCampaigns.length === 1 ? '' : 's'}`;
   return {
     activities: [{ name: `${activityLabel} - updated ${lastUpdate}`, type: ActivityType.Watching }],
-    status: 'online'
+    status: 'online',
   };
 }
 
@@ -241,11 +247,15 @@ function startStatusWatcher(client) {
 
   let dirWatcher = null;
   try {
-    dirWatcher = fs.watch(path.dirname(statusFilePath), { persistent: false }, (eventType, filename) => {
-      if (filename === path.basename(statusFilePath)) {
-        update();
+    dirWatcher = fs.watch(
+      path.dirname(statusFilePath),
+      { persistent: false },
+      (eventType, filename) => {
+        if (filename === path.basename(statusFilePath)) {
+          update();
+        }
       }
-    });
+    );
   } catch (error) {
     console.error('Failed to watch status directory:', error.message);
   }
@@ -274,10 +284,13 @@ async function handleStatus(interaction) {
           'Liberty Radio Agent Status',
           'No status data found. Ensure the orchestrator has written `status/current-status.json`.',
           [
-            { name: 'Next Step', value: 'Run the orchestrator or check file permissions for the status directory.' }
+            {
+              name: 'Next Step',
+              value: 'Run the orchestrator or check file permissions for the status directory.',
+            },
           ]
-        )
-      ]
+        ),
+      ],
     });
     return;
   }
@@ -292,16 +305,19 @@ async function handleStatus(interaction) {
             ? `No campaign matched **${campaignQuery}**.`
             : 'No campaigns available in the current status file.',
           [
-            { name: 'Next Step', value: 'Kick off a workflow from the orchestrator, then re-run this command.' }
+            {
+              name: 'Next Step',
+              value: 'Kick off a workflow from the orchestrator, then re-run this command.',
+            },
           ]
-        )
-      ]
+        ),
+      ],
     });
     return;
   }
 
   await interaction.editReply({
-    embeds: [buildCampaignEmbed(statusPayload, campaign)]
+    embeds: [buildCampaignEmbed(statusPayload, campaign)],
   });
 }
 
@@ -315,12 +331,13 @@ async function handleSubmit(interaction) {
         [
           {
             name: 'Next Step',
-            value: 'Call the radio submission orchestrator from here (e.g., spawn `radio-agent.js` or expose an internal API).'
-          }
+            value:
+              'Call the radio submission orchestrator from here (e.g., spawn `radio-agent.js` or expose an internal API).',
+          },
         ]
-      )
+      ),
     ],
-    ephemeral: true
+    ephemeral: true,
   });
 }
 
@@ -330,18 +347,15 @@ async function handleNotify(interaction) {
 
   await interaction.reply({
     embeds: [
-      buildEmbed(
-        'Reminder Created (Stub)',
-        `Reminder noted for **${campaign}**: ${note}`,
-        [
-          {
-            name: 'Next Step',
-            value: 'Persist reminders to a queue or database and route through whichever notification channel you prefer.'
-          }
-        ]
-      )
+      buildEmbed('Reminder Created (Stub)', `Reminder noted for **${campaign}**: ${note}`, [
+        {
+          name: 'Next Step',
+          value:
+            'Persist reminders to a queue or database and route through whichever notification channel you prefer.',
+        },
+      ]),
     ],
-    ephemeral: true
+    ephemeral: true,
   });
 }
 
@@ -354,11 +368,14 @@ async function handleHelp(interaction) {
         [
           { name: '/status [campaign?]', value: 'Check automation progress for a campaign.' },
           { name: '/submit <campaign>', value: 'Kick off Amazing Radio + Wigwam submissions.' },
-          { name: '/notify <campaign> <note>', value: 'Ask the agent to remind you about something.' }
+          {
+            name: '/notify <campaign> <note>',
+            value: 'Ask the agent to remind you about something.',
+          },
         ]
-      )
+      ),
     ],
-    ephemeral: true
+    ephemeral: true,
   });
 }
 
@@ -367,7 +384,7 @@ function routeInteraction(interaction) {
     status: handleStatus,
     submit: handleSubmit,
     notify: handleNotify,
-    help: handleHelp
+    help: handleHelp,
   };
 
   return handlers[interaction.commandName]?.(interaction);
@@ -381,7 +398,7 @@ async function main() {
   let stopStatusWatcher = () => {};
   const client = new Client({
     intents: [GatewayIntentBits.Guilds],
-    partials: [Partials.Channel]
+    partials: [Partials.Channel],
   });
 
   stopStatusWatcher = startStatusWatcher(client);
@@ -399,9 +416,14 @@ async function main() {
     } catch (error) {
       console.error('Discord command handler failed:', error);
       if (interaction.deferred || interaction.replied) {
-        await interaction.editReply({ content: 'Something went wrong while handling that command.' });
+        await interaction.editReply({
+          content: 'Something went wrong while handling that command.',
+        });
       } else {
-        await interaction.reply({ content: 'Something went wrong while handling that command.', ephemeral: true });
+        await interaction.reply({
+          content: 'Something went wrong while handling that command.',
+          ephemeral: true,
+        });
       }
     }
   });

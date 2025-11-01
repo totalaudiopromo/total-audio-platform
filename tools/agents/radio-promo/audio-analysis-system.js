@@ -2,7 +2,7 @@
 
 /**
  * Real Audio Analysis System for Radio Promo
- * 
+ *
  * Analyzes actual audio tracks to provide accurate genre, tempo, mood analysis
  * for proper radio station targeting and campaign strategy
  */
@@ -22,7 +22,7 @@ class AudioAnalysisSystem {
   async analyzeTrackForRadioPromo(trackPath, artistName, trackTitle) {
     try {
       console.log(`🎵 Analyzing "${trackTitle}" by ${artistName}...`);
-      
+
       // Check if file exists
       if (!fs.existsSync(trackPath)) {
         throw new Error(`Track file not found: ${trackPath}`);
@@ -36,34 +36,33 @@ class AudioAnalysisSystem {
 
       console.log(`📁 File: ${path.basename(trackPath)}`);
       console.log(`📊 Size: ${(fs.statSync(trackPath).size / 1024 / 1024).toFixed(2)} MB`);
-      
+
       // Perform audio analysis
       const analysis = await this.performAudioAnalysis(trackPath);
-      
+
       // Generate radio promo recommendations
       const radioRecommendations = this.generateRadioRecommendations(analysis);
-      
+
       // Create comprehensive report
       const report = {
         trackInfo: {
           artist: artistName,
           title: trackTitle,
           file: path.basename(trackPath),
-          analyzedAt: new Date().toISOString()
+          analyzedAt: new Date().toISOString(),
         },
         audioFeatures: analysis,
         radioRecommendations: radioRecommendations,
-        confidence: this.calculateConfidence(analysis)
+        confidence: this.calculateConfidence(analysis),
       };
 
       console.log('✅ Audio analysis complete!');
       return report;
-
     } catch (error) {
       console.error('❌ Audio analysis failed:', error.message);
       return {
         error: error.message,
-        fallback: await this.generateFallbackAnalysis(artistName, trackTitle)
+        fallback: await this.generateFallbackAnalysis(artistName, trackTitle),
       };
     }
   }
@@ -76,27 +75,27 @@ class AudioAnalysisSystem {
     // 1. File metadata analysis
     // 2. Basic audio processing (if available)
     // 3. AI-powered analysis via your existing tools
-    
+
     const fileStats = fs.statSync(trackPath);
     const fileName = path.basename(trackPath);
-    
+
     // Basic file analysis
     const basicAnalysis = {
       duration: await this.estimateDuration(trackPath),
       fileSize: fileStats.size,
       format: path.extname(trackPath),
       bitrate: await this.estimateBitrate(fileStats.size),
-      channels: await this.detectChannels(trackPath)
+      channels: await this.detectChannels(trackPath),
     };
 
     // Try to use your existing AI tools for genre analysis
     const aiAnalysis = await this.runAIAnalysis(fileName);
-    
+
     // Combine analyses
     return {
       ...basicAnalysis,
       ...aiAnalysis,
-      analysisMethod: 'hybrid'
+      analysisMethod: 'hybrid',
     };
   }
 
@@ -106,22 +105,22 @@ class AudioAnalysisSystem {
   async estimateDuration(trackPath) {
     const ext = path.extname(trackPath).toLowerCase();
     const fileSize = fs.statSync(trackPath).size;
-    
+
     // Rough estimation based on typical bitrates
     const avgBitrates = {
       '.mp3': 128000, // 128 kbps
       '.wav': 1411000, // 1411 kbps
       '.flac': 700000, // ~700 kbps
       '.m4a': 256000, // 256 kbps
-      '.aac': 128000  // 128 kbps
+      '.aac': 128000, // 128 kbps
     };
-    
+
     const bitrate = avgBitrates[ext] || 128000;
     const durationSeconds = (fileSize * 8) / bitrate;
-    
+
     return {
       seconds: Math.round(durationSeconds),
-      formatted: this.formatDuration(durationSeconds)
+      formatted: this.formatDuration(durationSeconds),
     };
   }
 
@@ -150,7 +149,7 @@ class AudioAnalysisSystem {
     try {
       // Use your existing Perplexity API integration
       const prompt = `Analyze this audio track: "${fileName}". Provide: 1) Primary genre 2) Secondary genres 3) BPM estimate 4) Mood/energy level 5) Radio station fit (alternative/indie/pop/rock) 6) Key musical elements. Format as: Genre: [primary] | BPM: [estimate] | Mood: [level] | Radio Fit: [type] | Elements: [list]`;
-      
+
       // This would integrate with your existing AI tools
       return {
         genre: 'Alternative/Electronic',
@@ -160,13 +159,13 @@ class AudioAnalysisSystem {
         energy: 'Medium-High',
         radioFit: 'Alternative/Indie',
         keyElements: ['Synthesizers', 'Electronic drums', 'Vocal effects'],
-        confidence: 'Medium'
+        confidence: 'Medium',
       };
     } catch (error) {
       return {
         genre: 'Unknown',
         confidence: 'Low',
-        error: error.message
+        error: error.message,
       };
     }
   }
@@ -180,7 +179,7 @@ class AudioAnalysisSystem {
       secondaryTargets: [],
       internationalTargets: [],
       pitchAngle: '',
-      campaignStrategy: ''
+      campaignStrategy: '',
     };
 
     // Genre-based targeting
@@ -226,28 +225,28 @@ class AudioAnalysisSystem {
    */
   async generateFallbackAnalysis(artistName, trackTitle) {
     console.log(`⚠️  Using fallback analysis for ${trackTitle} by ${artistName}`);
-    
+
     return {
       trackInfo: {
         artist: artistName,
         title: trackTitle,
-        status: 'fallback_analysis'
+        status: 'fallback_analysis',
       },
       audioFeatures: {
         genre: 'Alternative/Electronic (estimated)',
         mood: 'Unknown - requires audio file',
-        confidence: 'Low'
+        confidence: 'Low',
       },
       radioRecommendations: {
         primaryTargets: ['BBC Radio 6 Music', 'Amazing Radio'],
         pitchAngle: 'Analysis pending - requires audio file',
-        campaignStrategy: 'Upload audio file for accurate analysis'
+        campaignStrategy: 'Upload audio file for accurate analysis',
       },
       nextSteps: [
         'Upload audio file to system',
         'Run full audio analysis',
-        'Generate accurate radio recommendations'
-      ]
+        'Generate accurate radio recommendations',
+      ],
     };
   }
 
@@ -256,13 +255,13 @@ class AudioAnalysisSystem {
    */
   calculateConfidence(analysis) {
     let confidence = 0;
-    
+
     if (analysis.genre && analysis.genre !== 'Unknown') confidence += 30;
     if (analysis.estimatedBPM && analysis.estimatedBPM > 0) confidence += 20;
     if (analysis.mood && analysis.mood !== 'Unknown') confidence += 20;
     if (analysis.duration && analysis.duration.seconds > 0) confidence += 15;
     if (analysis.keyElements && analysis.keyElements.length > 0) confidence += 15;
-    
+
     return `${confidence}%`;
   }
 
@@ -294,7 +293,7 @@ class AudioAnalysisSystem {
 // CLI usage
 if (require.main === module) {
   const analyzer = new AudioAnalysisSystem();
-  
+
   const args = process.argv.slice(2);
   if (args.length < 3) {
     console.log('Usage: node audio-analysis-system.js <track_path> <artist_name> <track_title>');
@@ -303,13 +302,14 @@ if (require.main === module) {
   }
 
   const [trackPath, artistName, trackTitle] = args;
-  
-  analyzer.analyzeTrackForRadioPromo(trackPath, artistName, trackTitle)
+
+  analyzer
+    .analyzeTrackForRadioPromo(trackPath, artistName, trackTitle)
     .then(report => {
       console.log('\n📊 ANALYSIS REPORT:');
       console.log('==================');
       console.log(JSON.stringify(report, null, 2));
-      
+
       // Save report
       const outputPath = `./audio-analysis-${trackTitle.toLowerCase().replace(/\s+/g, '-')}.json`;
       analyzer.saveAnalysisReport(report, outputPath);

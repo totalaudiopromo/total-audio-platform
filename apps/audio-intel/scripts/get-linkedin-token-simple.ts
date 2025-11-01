@@ -16,7 +16,7 @@ const REDIRECT_URI = 'https://intel.totalaudiopromo.com/auth/linkedin/callback';
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 function question(query: string): Promise<string> {
@@ -55,7 +55,8 @@ async function getAccessToken() {
   const state = Math.random().toString(36).substring(7);
   const scope = 'openid profile email w_member_social';
 
-  const authUrl = `https://www.linkedin.com/oauth/v2/authorization?` +
+  const authUrl =
+    `https://www.linkedin.com/oauth/v2/authorization?` +
     `response_type=code&` +
     `client_id=${CLIENT_ID}&` +
     `redirect_uri=${encodeURIComponent(REDIRECT_URI)}&` +
@@ -68,13 +69,17 @@ async function getAccessToken() {
   console.log('');
   console.log('Step 2: LinkedIn will ask you to authorize. Click "Allow".');
   console.log('');
-  console.log('Step 3: You\'ll be redirected to a page that shows an error.');
-  console.log('        DON\'T WORRY! This is expected.');
+  console.log("Step 3: You'll be redirected to a page that shows an error.");
+  console.log("        DON'T WORRY! This is expected.");
   console.log('');
   console.log('Step 4: Look at the URL bar. It will look something like:');
-  console.log('        https://intel.totalaudiopromo.com/auth/linkedin/callback?code=AQT...V14&state=abc123');
+  console.log(
+    '        https://intel.totalaudiopromo.com/auth/linkedin/callback?code=AQT...V14&state=abc123'
+  );
   console.log('');
-  console.log('Step 5: Copy EVERYTHING after "?code=" (or just paste the whole URL, I\'ll parse it)');
+  console.log(
+    'Step 5: Copy EVERYTHING after "?code=" (or just paste the whole URL, I\'ll parse it)'
+  );
   console.log('');
 
   // Get input from user
@@ -111,7 +116,7 @@ async function getAccessToken() {
       console.log(data.access_token);
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
       console.log('Token expires in:', data.expires_in, 'seconds');
-      console.log('That\'s about', Math.floor(data.expires_in / 86400), 'days\n');
+      console.log("That's about", Math.floor(data.expires_in / 86400), 'days\n');
 
       console.log('NEXT STEPS:\n');
       console.log('1. Add to your .env.local file:');
@@ -141,15 +146,19 @@ async function getAccessToken() {
 
       console.log('⚠️  REMINDER: Set a calendar reminder to refresh this token in 55 days!');
       console.log('   LinkedIn tokens expire after 60 days.\n');
-
     } else {
       console.error('❌ Error getting access token:\n');
       console.error(JSON.stringify(data, null, 2));
       console.error('');
 
-      if (data.error === 'invalid_request' && data.error_description?.includes('authorization code')) {
+      if (
+        data.error === 'invalid_request' &&
+        data.error_description?.includes('authorization code')
+      ) {
         console.error('⚠️  This usually means:');
-        console.error('   1. The authorization code was already used (codes can only be used once)');
+        console.error(
+          '   1. The authorization code was already used (codes can only be used once)'
+        );
         console.error('   2. The code has expired (they expire after a few minutes)');
         console.error('');
         console.error('💡 Solution: Run this script again and get a NEW authorization code.');

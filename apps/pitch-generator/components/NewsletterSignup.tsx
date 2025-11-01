@@ -12,9 +12,9 @@ interface NewsletterSignupProps {
 
 export function NewsletterSignup({
   variant = 'card',
-  title = "Get The Unsigned Advantage",
-  description = "Weekly music industry insights, radio promotion tips, and tools to help you break through.",
-  placeholder = "your@email.com"
+  title = 'Get The Unsigned Advantage',
+  description = 'Weekly music industry insights, radio promotion tips, and tools to help you break through.',
+  placeholder = 'your@email.com',
 }: NewsletterSignupProps) {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
@@ -37,11 +37,11 @@ export function NewsletterSignup({
             tags: ['newsletter', 'pitch_generator_user'],
             fields: {
               lead_source: 'pitch_generator',
-              signup_tool: 'Pitch Generator'
-            }
+              signup_tool: 'Pitch Generator',
+            },
           },
-          form_type: 'newsletter'
-        })
+          form_type: 'newsletter',
+        }),
       });
 
       if (!response.ok) {
@@ -65,7 +65,7 @@ export function NewsletterSignup({
         <input
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
           placeholder={placeholder}
           required
           disabled={loading || status === 'success'}
@@ -77,11 +77,15 @@ export function NewsletterSignup({
           className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-700 disabled:opacity-50"
         >
           {status === 'success' ? (
-            <><CheckCircle2 className="h-4 w-4" /> Subscribed</>
+            <>
+              <CheckCircle2 className="h-4 w-4" /> Subscribed
+            </>
           ) : loading ? (
             'Subscribing...'
           ) : (
-            <>Subscribe <ArrowRight className="h-4 w-4" /></>
+            <>
+              Subscribe <ArrowRight className="h-4 w-4" />
+            </>
           )}
         </button>
       </form>
@@ -100,7 +104,7 @@ export function NewsletterSignup({
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
               placeholder={placeholder}
               required
               disabled={loading || status === 'success'}
@@ -145,7 +149,7 @@ export function NewsletterSignup({
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value)}
                 placeholder={placeholder}
                 required
                 disabled={loading || status === 'success'}
@@ -157,11 +161,15 @@ export function NewsletterSignup({
                 className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-700 disabled:opacity-50"
               >
                 {status === 'success' ? (
-                  <><CheckCircle2 className="h-4 w-4" /> Done</>
+                  <>
+                    <CheckCircle2 className="h-4 w-4" /> Done
+                  </>
                 ) : loading ? (
                   'Subscribing...'
                 ) : (
-                  <>Subscribe <ArrowRight className="h-4 w-4" /></>
+                  <>
+                    Subscribe <ArrowRight className="h-4 w-4" />
+                  </>
                 )}
               </button>
             </div>

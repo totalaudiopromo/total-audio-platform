@@ -1,6 +1,7 @@
 # Add 6 Activities to KYARA Campaign in Tracker (5 Minutes)
 
 ## 🎯 WHAT YOU'RE DOING:
+
 Adding timeline activities to show Dan how the tracker logs campaign progress in real-time.
 
 ## ⚡ QUICK START:
@@ -13,6 +14,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 ---
 
 ## 📋 ACTIVITY 1: Initial Australian Pitch
+
 - **Date:** 7 Oct 2025
 - **Type:** Email Sent
 - **Description:** Initial pitch wave sent to 15 Australian radio contacts
@@ -21,6 +23,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 ---
 
 ## 📋 ACTIVITY 2: Gmail Drafts Created
+
 - **Date:** 8 Oct 2025
 - **Type:** Email Sent
 - **Description:** 5 Gmail drafts auto-created for Australian radio (Liberty inbox)
@@ -29,6 +32,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 ---
 
 ## 📋 ACTIVITY 3: Amazing Radio Confirmed ⭐
+
 - **Date:** 9 Oct 2025
 - **Type:** Response / Milestone
 - **Description:** Amazing Radio (UK) confirmed support for "Bloodshot"
@@ -37,6 +41,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 ---
 
 ## 📋 ACTIVITY 4: WARM Report (85 Plays)
+
 - **Date:** 10 Oct 2025
 - **Type:** Milestone
 - **Description:** WARM report: 85 plays across 9 countries (pre-release)
@@ -45,6 +50,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 ---
 
 ## 📋 ACTIVITY 5: UK Mailchimp Campaign
+
 - **Date:** 11 Oct 2025
 - **Type:** Email Sent
 - **Description:** Mailchimp campaign sent to 20 UK specialist electronic contacts
@@ -53,6 +59,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 ---
 
 ## 📋 ACTIVITY 6: Release Day Blast Prepared
+
 - **Date:** 11 Oct 2025 (Today)
 - **Type:** Planning
 - **Description:** Monday release day email blast prepared (40 contacts)
@@ -63,6 +70,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 ## 🎯 WHY THESE ACTIVITIES MATTER FOR DEMO:
 
 **Shows Dan:**
+
 1. ✅ **Week-by-week progress** - Real campaign timeline
 2. ✅ **Multi-channel approach** - Email, Mailchimp, WARM tracking
 3. ✅ **Wins logged** - Amazing Radio add tracked
@@ -75,6 +83,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 ---
 
 ## ⏱️ TIME TO COMPLETE:
+
 **5 minutes** - Just copy/paste the descriptions into the tracker UI
 
 ---
@@ -82,6 +91,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 ## 📸 AFTER YOU ADD ACTIVITIES:
 
 **Take screenshots for backup:**
+
 1. Dashboard with KYARA campaign card
 2. KYARA campaign detail page showing timeline
 3. Individual activity (zoom on Amazing Radio add)

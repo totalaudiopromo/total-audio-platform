@@ -4,22 +4,22 @@
  * Copy this to your app and customise as needed
  */
 
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { useAuth, getTierDisplayName } from '@total-audio/auth'
+import { useState } from 'react';
+import { useAuth, getTierDisplayName } from '@total-audio/auth';
 
 export function UserMenu() {
-  const { user, profile, signOut, loading } = useAuth()
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [signingOut, setSigningOut] = useState(false)
+  const { user, profile, signOut, loading } = useAuth();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [signingOut, setSigningOut] = useState(false);
 
   if (loading) {
     return (
       <div className="flex items-center gap-2">
         <div className="w-8 h-8 bg-gray-200 rounded-full animate-pulse" />
       </div>
-    )
+    );
   }
 
   if (!user) {
@@ -38,23 +38,23 @@ export function UserMenu() {
           Sign Up
         </a>
       </div>
-    )
+    );
   }
 
   const handleSignOut = async () => {
-    setSigningOut(true)
+    setSigningOut(true);
     try {
-      await signOut()
-      window.location.href = '/'
+      await signOut();
+      window.location.href = '/';
     } catch (error) {
-      console.error('Sign out error:', error)
-      setSigningOut(false)
+      console.error('Sign out error:', error);
+      setSigningOut(false);
     }
-  }
+  };
 
-  const displayName = profile?.full_name || user.email?.split('@')[0] || 'User'
-  const tier = profile?.subscription_tier || 'free'
-  const tierName = getTierDisplayName(tier)
+  const displayName = profile?.full_name || user.email?.split('@')[0] || 'User';
+  const tier = profile?.subscription_tier || 'free';
+  const tierName = getTierDisplayName(tier);
 
   return (
     <div className="relative">
@@ -73,10 +73,7 @@ export function UserMenu() {
 
       {menuOpen && (
         <>
-          <div
-            className="fixed inset-0 z-10"
-            onClick={() => setMenuOpen(false)}
-          />
+          <div className="fixed inset-0 z-10" onClick={() => setMenuOpen(false)} />
           <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-20 border border-gray-200">
             <div className="px-4 py-3 border-b border-gray-200">
               <p className="text-sm font-medium">{displayName}</p>
@@ -131,5 +128,5 @@ export function UserMenu() {
         </>
       )}
     </div>
-  )
+  );
 }

@@ -53,12 +53,11 @@ export function CookieBanner() {
                   <Cookie className="h-6 w-6 text-amber-600" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-sm font-black text-gray-900 mb-1">
-                    We respect your privacy
-                  </h3>
+                  <h3 className="text-sm font-black text-gray-900 mb-1">We respect your privacy</h3>
                   <p className="text-sm text-gray-700 leading-relaxed">
-                    We use <strong>Plausible Analytics</strong>, a privacy-friendly analytics tool that doesn't use cookies or track you across the web.
-                    We only store essential cookies for authentication and preferences.
+                    We use <strong>Plausible Analytics</strong>, a privacy-friendly analytics tool
+                    that doesn't use cookies or track you across the web. We only store essential
+                    cookies for authentication and preferences.
                     <a
                       href="/privacy"
                       className="ml-1 text-amber-600 hover:underline font-medium"

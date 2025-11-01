@@ -8,7 +8,5 @@ interface PostcraftLayoutProps {
 }
 
 export default function PostcraftLayout({ children }: PostcraftLayoutProps) {
-  return (
-    <div>{children}</div>
-  );
+  return <div>{children}</div>;
 }

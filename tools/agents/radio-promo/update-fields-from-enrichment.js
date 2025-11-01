@@ -9,7 +9,8 @@
 
 const fetch = require('node-fetch');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -24,7 +25,7 @@ async function fetchAllContacts() {
       : `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
 
     const response = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
     });
 
     const data = await response.json();
@@ -59,9 +60,23 @@ function extractFieldsFromEnrichment(enrichmentNotes, currentFields) {
 
   // Extract genres
   const STANDARD_GENRES = [
-    'Indie', 'Alternative', 'Rock', 'Metal', 'Pop', 'Electronic', 'Dance',
-    'Hip-Hop', 'R&B / Soul', 'Jazz / Funk', 'Folk', 'Blues', 'Reggae',
-    'Punk', 'Pop-Punk', 'Techno', 'All'
+    'Indie',
+    'Alternative',
+    'Rock',
+    'Metal',
+    'Pop',
+    'Electronic',
+    'Dance',
+    'Hip-Hop',
+    'R&B / Soul',
+    'Jazz / Funk',
+    'Folk',
+    'Blues',
+    'Reggae',
+    'Punk',
+    'Pop-Punk',
+    'Techno',
+    'All',
   ];
 
   let extractedGenres = [];
@@ -75,25 +90,43 @@ function extractFieldsFromEnrichment(enrichmentNotes, currentFields) {
     genresList.forEach(extracted => {
       const lowerExtracted = extracted.toLowerCase();
       if (lowerExtracted.includes('indie')) extractedGenres.push('Indie');
-      if (lowerExtracted.includes('alternative') || lowerExtracted.includes('alt')) extractedGenres.push('Alternative');
-      if (lowerExtracted.includes('rock') && !lowerExtracted.includes('punk')) extractedGenres.push('Rock');
+      if (lowerExtracted.includes('alternative') || lowerExtracted.includes('alt'))
+        extractedGenres.push('Alternative');
+      if (lowerExtracted.includes('rock') && !lowerExtracted.includes('punk'))
+        extractedGenres.push('Rock');
       if (lowerExtracted.includes('metal')) extractedGenres.push('Metal');
-      if (lowerExtracted.includes('pop') && !lowerExtracted.includes('punk')) extractedGenres.push('Pop');
-      if (lowerExtracted.includes('electronic') || lowerExtracted.includes('electro')) extractedGenres.push('Electronic');
-      if (lowerExtracted.includes('dance') || lowerExtracted.includes('edm')) extractedGenres.push('Dance');
-      if (lowerExtracted.includes('hip-hop') || lowerExtracted.includes('hip hop') || lowerExtracted.includes('rap')) extractedGenres.push('Hip-Hop');
-      if (lowerExtracted.includes('r&b') || lowerExtracted.includes('soul')) extractedGenres.push('R&B / Soul');
-      if (lowerExtracted.includes('jazz') || lowerExtracted.includes('funk')) extractedGenres.push('Jazz / Funk');
+      if (lowerExtracted.includes('pop') && !lowerExtracted.includes('punk'))
+        extractedGenres.push('Pop');
+      if (lowerExtracted.includes('electronic') || lowerExtracted.includes('electro'))
+        extractedGenres.push('Electronic');
+      if (lowerExtracted.includes('dance') || lowerExtracted.includes('edm'))
+        extractedGenres.push('Dance');
+      if (
+        lowerExtracted.includes('hip-hop') ||
+        lowerExtracted.includes('hip hop') ||
+        lowerExtracted.includes('rap')
+      )
+        extractedGenres.push('Hip-Hop');
+      if (lowerExtracted.includes('r&b') || lowerExtracted.includes('soul'))
+        extractedGenres.push('R&B / Soul');
+      if (lowerExtracted.includes('jazz') || lowerExtracted.includes('funk'))
+        extractedGenres.push('Jazz / Funk');
       if (lowerExtracted.includes('folk')) extractedGenres.push('Folk');
       if (lowerExtracted.includes('blues')) extractedGenres.push('Blues');
       if (lowerExtracted.includes('reggae')) extractedGenres.push('Reggae');
-      if (lowerExtracted.includes('punk') && !lowerExtracted.includes('pop')) extractedGenres.push('Punk');
+      if (lowerExtracted.includes('punk') && !lowerExtracted.includes('pop'))
+        extractedGenres.push('Punk');
       if (lowerExtracted.includes('pop-punk') || lowerExtracted.includes('pop punk')) {
         extractedGenres = extractedGenres.filter(g => g !== 'Pop' && g !== 'Punk');
         extractedGenres.push('Pop-Punk');
       }
       if (lowerExtracted.includes('techno')) extractedGenres.push('Techno');
-      if (lowerExtracted.includes('all') || lowerExtracted.includes('eclectic') || lowerExtracted.includes('variety')) extractedGenres.push('All');
+      if (
+        lowerExtracted.includes('all') ||
+        lowerExtracted.includes('eclectic') ||
+        lowerExtracted.includes('variety')
+      )
+        extractedGenres.push('All');
     });
 
     extractedGenres = [...new Set(extractedGenres)];
@@ -107,14 +140,22 @@ function extractFieldsFromEnrichment(enrichmentNotes, currentFields) {
     let region = null;
     const notesLower = enrichmentNotes.toLowerCase();
 
-    if (notesLower.includes('uk') || notesLower.includes('united kingdom') ||
-        notesLower.includes('england') || notesLower.includes('scotland') ||
-        notesLower.includes('wales') || notesLower.includes('northern ireland')) {
+    if (
+      notesLower.includes('uk') ||
+      notesLower.includes('united kingdom') ||
+      notesLower.includes('england') ||
+      notesLower.includes('scotland') ||
+      notesLower.includes('wales') ||
+      notesLower.includes('northern ireland')
+    ) {
       region = 'UK';
     } else if (notesLower.includes('australia') || notesLower.includes('australian')) {
       region = 'Australia';
-    } else if (notesLower.includes('usa') || notesLower.includes('united states') ||
-               notesLower.includes('american')) {
+    } else if (
+      notesLower.includes('usa') ||
+      notesLower.includes('united states') ||
+      notesLower.includes('american')
+    ) {
       region = 'USA';
     } else if (notesLower.includes('canada') || notesLower.includes('canadian')) {
       region = 'Canada';
@@ -164,17 +205,14 @@ function extractFieldsFromEnrichment(enrichmentNotes, currentFields) {
 
 async function updateContact(recordId, fields) {
   try {
-    const response = await fetch(
-      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ fields })
-      }
-    );
+    const response = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ fields }),
+    });
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -194,14 +232,14 @@ async function updateAllFields() {
   const contacts = await fetchAllContacts();
 
   // Filter to only enriched contacts with missing fields
-  const contactsToUpdate = contacts.filter(c =>
-    c.fields['Enrichment Notes'] && (
-      !c.fields.Genres ||
-      c.fields.Genres.length === 0 ||
-      !c.fields.Station ||
-      c.fields.Station === 'Unknown' ||
-      !c.fields['Region / Country']
-    )
+  const contactsToUpdate = contacts.filter(
+    c =>
+      c.fields['Enrichment Notes'] &&
+      (!c.fields.Genres ||
+        c.fields.Genres.length === 0 ||
+        !c.fields.Station ||
+        c.fields.Station === 'Unknown' ||
+        !c.fields['Region / Country'])
   );
 
   console.log(`📊 Update Status:`);
@@ -219,20 +257,17 @@ async function updateAllFields() {
     total: contactsToUpdate.length,
     updated: 0,
     skipped: 0,
-    errors: 0
+    errors: 0,
   };
 
   for (let i = 0; i < contactsToUpdate.length; i++) {
     const contact = contactsToUpdate[i];
     const email = contact.fields.Email || 'no-email';
 
-    console.log(`[${i+1}/${contactsToUpdate.length}] ${email}`);
+    console.log(`[${i + 1}/${contactsToUpdate.length}] ${email}`);
 
     // Extract fields from enrichment notes
-    const updates = extractFieldsFromEnrichment(
-      contact.fields['Enrichment Notes'],
-      contact.fields
-    );
+    const updates = extractFieldsFromEnrichment(contact.fields['Enrichment Notes'], contact.fields);
 
     if (updates) {
       const result = await updateContact(contact.id, updates);

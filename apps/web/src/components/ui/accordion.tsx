@@ -14,7 +14,12 @@ interface AccordionProps {
   className?: string;
 }
 
-const Accordion = ({ type = 'single', defaultValue = '', children, className = '' }: AccordionProps) => {
+const Accordion = ({
+  type = 'single',
+  defaultValue = '',
+  children,
+  className = '',
+}: AccordionProps) => {
   const [openItems, setOpenItems] = useState<string[]>(
     Array.isArray(defaultValue) ? defaultValue : defaultValue ? [defaultValue] : []
   );
@@ -23,19 +28,15 @@ const Accordion = ({ type = 'single', defaultValue = '', children, className = '
     if (type === 'single') {
       setOpenItems(openItems.includes(value) ? [] : [value]);
     } else {
-      setOpenItems(prev => 
-        prev.includes(value) 
-          ? prev.filter(item => item !== value)
-          : [...prev, value]
+      setOpenItems(prev =>
+        prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]
       );
     }
   };
 
   return (
     <AccordionContext.Provider value={{ openItems, toggleItem }}>
-      <div className={className}>
-        {children}
-      </div>
+      <div className={className}>{children}</div>
     </AccordionContext.Provider>
   );
 };
@@ -47,11 +48,7 @@ interface AccordionItemProps {
 }
 
 const AccordionItem = ({ value, children, className = '' }: AccordionItemProps) => {
-  return (
-    <div className={`border-b border-gray-200 ${className}`}>
-      {children}
-    </div>
-  );
+  return <div className={`border-b border-gray-200 ${className}`}>{children}</div>;
 };
 
 interface AccordionTriggerProps {
@@ -83,12 +80,7 @@ const AccordionTrigger = ({ children, className = '' }: AccordionTriggerProps) =
         stroke="currentColor"
         viewBox="0 0 24 24"
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M19 9l-7 7-7-7"
-        />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
       </svg>
     </button>
   );
@@ -110,11 +102,9 @@ const AccordionContent = ({ children, className = '' }: AccordionContentProps) =
 
   return (
     <div className={`overflow-hidden text-sm transition-all ${className}`}>
-      <div className="pb-4 pt-0">
-        {children}
-      </div>
+      <div className="pb-4 pt-0">{children}</div>
     </div>
   );
 };
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }; 
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };

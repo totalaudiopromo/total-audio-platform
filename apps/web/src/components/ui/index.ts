@@ -5,7 +5,14 @@ export { Badge } from './badge';
 export { Select } from './select';
 export { Textarea } from './textarea';
 export { Label } from './label';
-export { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './dialog';
+export {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from './dialog';
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs';
 export { Alert, AlertTitle, AlertDescription } from './alert';
 export { Separator } from './separator';
@@ -23,4 +30,4 @@ export { Toast } from './toast';
 export { HoverCard } from './hover-card';
 export { Popover } from './popover';
 export { Command, CommandInput, CommandList, CommandItem } from './command';
-export { Resizable } from './resizable'; 
+export { Resizable } from './resizable';

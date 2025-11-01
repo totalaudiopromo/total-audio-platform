@@ -18,7 +18,7 @@ import {
   ThumbsDown,
   Calendar,
   Users,
-  Target
+  Target,
 } from 'lucide-react';
 
 interface GeneratedContent {
@@ -42,7 +42,9 @@ export default function EnhancedNewsjacking() {
   const [selectedContent, setSelectedContent] = useState<GeneratedContent | null>(null);
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
-  const [activeTab, setActiveTab] = useState<'opportunities' | 'analytics' | 'approvals'>('opportunities');
+  const [activeTab, setActiveTab] = useState<'opportunities' | 'analytics' | 'approvals'>(
+    'opportunities'
+  );
   const [analytics, setAnalytics] = useState<any>(null);
   const [approvalQueue, setApprovalQueue] = useState<any[]>([]);
   const [episodes, setEpisodes] = useState<any[]>([]);
@@ -60,7 +62,7 @@ export default function EnhancedNewsjacking() {
       const response = await fetch('/api/newsjacking/content', { signal: controller.signal });
       clearTimeout(timeout);
       const result = await response.json();
-      
+
       if (result.success) {
         const parsedContent = result.data.map((item: any) => ({
           id: item.id,
@@ -68,15 +70,19 @@ export default function EnhancedNewsjacking() {
             title: item.originalStory.title,
             source: item.originalStory.source,
             publishedAt: new Date(item.originalStory.publishedAt),
-            relevanceScore: item.originalStory.relevanceScore
+            relevanceScore: item.originalStory.relevanceScore,
           },
           status: item.status,
-          urgency: item.unsignedAngle?.urgency === 'immediate' ? 'immediate' : 
-                   item.unsignedAngle?.urgency === 'high' ? 'same_day' : 'this_week',
+          urgency:
+            item.unsignedAngle?.urgency === 'immediate'
+              ? 'immediate'
+              : item.unsignedAngle?.urgency === 'high'
+                ? 'same_day'
+                : 'this_week',
           voiceScore: item.voiceScore,
           estimatedReach: 25000,
           generatedAt: new Date(item.createdAt),
-          newsletterSections: item.newsletterSections || []
+          newsletterSections: item.newsletterSections || [],
         }));
         setContent(parsedContent);
         if (parsedContent.length > 0 && !selectedContent) {
@@ -98,21 +104,21 @@ export default function EnhancedNewsjacking() {
           color: 'bg-red-500 text-white',
           icon: <AlertTriangle className="w-4 h-4" />,
           label: 'URGENT',
-          description: 'Post within 1 hour'
+          description: 'Post within 1 hour',
         };
       case 'same_day':
         return {
           color: 'bg-orange-500 text-white',
           icon: <Clock className="w-4 h-4" />,
           label: 'SAME DAY',
-          description: 'Post today'
+          description: 'Post today',
         };
       default:
         return {
           color: 'bg-blue-500 text-white',
           icon: <TrendingUp className="w-4 h-4" />,
           label: 'THIS WEEK',
-          description: 'Post this week'
+          description: 'Post this week',
         };
     }
   };
@@ -121,7 +127,7 @@ export default function EnhancedNewsjacking() {
     const now = new Date();
     const diffMs = now.getTime() - date.getTime();
     const diffMins = Math.floor(diffMs / 60000);
-    
+
     if (diffMins < 60) return `${diffMins}m ago`;
     const diffHours = Math.floor(diffMins / 60);
     if (diffHours < 24) return `${diffHours}h ago`;
@@ -172,8 +178,8 @@ export default function EnhancedNewsjacking() {
         <div className="bg-white border border-gray-200 rounded-lg p-8 text-center">
           <h2 className="text-lg font-semibold mb-2">Load latest opportunities</h2>
           <p className="text-gray-600 mb-4">Tap to fetch fresh industry stories and angles.</p>
-          <button 
-            onClick={loadContent} 
+          <button
+            onClick={loadContent}
             className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
             <RefreshCw className="w-4 h-4 mr-2 inline" /> Load Opportunities
@@ -204,16 +210,27 @@ export default function EnhancedNewsjacking() {
           <p className="text-gray-600">Tap refresh to load recent episodes from your shows.</p>
         ) : (
           <div className="space-y-3">
-            {episodes.map((ep) => (
+            {episodes.map(ep => (
               <div key={ep.id} className="p-4 border border-gray-200 rounded-lg">
                 <div className="flex items-center justify-between mb-1">
                   <div className="font-medium text-gray-900">{ep.title}</div>
-                  <span className="text-sm text-gray-500">{new Date(ep.publishedAt).toLocaleDateString()}</span>
+                  <span className="text-sm text-gray-500">
+                    {new Date(ep.publishedAt).toLocaleDateString()}
+                  </span>
                 </div>
                 <div className="text-sm text-gray-600 mb-2">{ep.show}</div>
                 <div className="flex items-center gap-2">
-                  <a href={ep.link} target="_blank" rel="noreferrer" className="text-sm text-blue-600 hover:text-blue-800">Open Episode</a>
-                  {ep.audioUrl && <audio controls preload="none" src={ep.audioUrl} className="h-8" />}
+                  <a
+                    href={ep.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm text-blue-600 hover:text-blue-800"
+                  >
+                    Open Episode
+                  </a>
+                  {ep.audioUrl && (
+                    <audio controls preload="none" src={ep.audioUrl} className="h-8" />
+                  )}
                 </div>
               </div>
             ))}
@@ -227,19 +244,25 @@ export default function EnhancedNewsjacking() {
           <div className="text-2xl font-bold text-gray-900">{content.length}</div>
           <div className="text-sm text-gray-600">TOTAL OPPORTUNITIES</div>
         </div>
-        
+
         <div className="bg-white border border-gray-200 rounded-lg p-4 text-center">
-          <div className="text-2xl font-bold text-red-600">{content.filter(c => c.urgency === 'immediate').length}</div>
+          <div className="text-2xl font-bold text-red-600">
+            {content.filter(c => c.urgency === 'immediate').length}
+          </div>
           <div className="text-sm text-gray-600">URGENT</div>
         </div>
-        
+
         <div className="bg-white border border-gray-200 rounded-lg p-4 text-center">
-          <div className="text-2xl font-bold text-green-600">{content.filter(c => c.status === 'approved').length}</div>
+          <div className="text-2xl font-bold text-green-600">
+            {content.filter(c => c.status === 'approved').length}
+          </div>
           <div className="text-sm text-gray-600">APPROVED</div>
         </div>
-        
+
         <div className="bg-white border border-gray-200 rounded-lg p-4 text-center">
-          <div className="text-2xl font-bold text-orange-600">{content.filter(c => c.status === 'pending').length}</div>
+          <div className="text-2xl font-bold text-orange-600">
+            {content.filter(c => c.status === 'pending').length}
+          </div>
           <div className="text-sm text-gray-600">PENDING</div>
         </div>
       </div>
@@ -256,32 +279,41 @@ export default function EnhancedNewsjacking() {
             <div className="bg-red-50 border border-red-200 rounded-lg p-6">
               <h2 className="text-lg font-semibold text-red-800 mb-4">Urgent Opportunities</h2>
               <div className="space-y-3">
-                {content.filter(item => item.urgency === 'immediate').slice(0, 2).map((item) => {
-                  const urgencyConfig = getUrgencyConfig(item.urgency);
-                  return (
-                    <div key={item.id} className="bg-white p-4 rounded-lg border border-red-200">
-                      <div className="flex items-start justify-between mb-3">
-                        <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold ${urgencyConfig.color}`}>
-                          {urgencyConfig.icon}
-                          <span className="ml-1">{urgencyConfig.label}</span>
+                {content
+                  .filter(item => item.urgency === 'immediate')
+                  .slice(0, 2)
+                  .map(item => {
+                    const urgencyConfig = getUrgencyConfig(item.urgency);
+                    return (
+                      <div key={item.id} className="bg-white p-4 rounded-lg border border-red-200">
+                        <div className="flex items-start justify-between mb-3">
+                          <div
+                            className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold ${urgencyConfig.color}`}
+                          >
+                            {urgencyConfig.icon}
+                            <span className="ml-1">{urgencyConfig.label}</span>
+                          </div>
+                          <span className="text-xs text-gray-500">
+                            {formatTimeAgo(item.generatedAt)}
+                          </span>
                         </div>
-                        <span className="text-xs text-gray-500">{formatTimeAgo(item.generatedAt)}</span>
+
+                        <h3 className="font-semibold text-gray-900 mb-2">
+                          {item.originalStory.title}
+                        </h3>
+
+                        <div className="flex items-center justify-between">
+                          <div className="text-sm text-gray-600">{item.originalStory.source}</div>
+                          <Link
+                            href={`/social-posting?newsId=${item.id}&fromNews=true`}
+                            className="bg-blue-600 text-white px-3 py-1 text-sm rounded hover:bg-blue-700"
+                          >
+                            <Share2 className="w-4 h-4 mr-1 inline" /> Share Now
+                          </Link>
+                        </div>
                       </div>
-                      
-                      <h3 className="font-semibold text-gray-900 mb-2">{item.originalStory.title}</h3>
-                      
-                      <div className="flex items-center justify-between">
-                        <div className="text-sm text-gray-600">{item.originalStory.source}</div>
-                        <Link
-                          href={`/social-posting?newsId=${item.id}&fromNews=true`}
-                          className="bg-blue-600 text-white px-3 py-1 text-sm rounded hover:bg-blue-700"
-                        >
-                          <Share2 className="w-4 h-4 mr-1 inline" /> Share Now
-                        </Link>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
               </div>
             </div>
           )}
@@ -290,41 +322,49 @@ export default function EnhancedNewsjacking() {
           <div className="bg-white border border-gray-200 rounded-lg p-6">
             <h2 className="text-lg font-semibold mb-4">All Opportunities</h2>
             <div className="space-y-3">
-              {content.slice(0, 10).map((item) => {
+              {content.slice(0, 10).map(item => {
                 const urgencyConfig = getUrgencyConfig(item.urgency);
                 return (
-                  <div 
-                    key={item.id} 
+                  <div
+                    key={item.id}
                     className={`p-4 rounded-lg border transition-all cursor-pointer ${
-                      selectedContent?.id === item.id 
-                        ? 'border-blue-500 bg-blue-50' 
+                      selectedContent?.id === item.id
+                        ? 'border-blue-500 bg-blue-50'
                         : 'border-gray-200 bg-white hover:border-gray-300'
                     }`}
                     onClick={() => setSelectedContent(item)}
                   >
                     <div className="flex items-start justify-between mb-3">
-                      <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold ${urgencyConfig.color}`}>
+                      <div
+                        className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold ${urgencyConfig.color}`}
+                      >
                         {urgencyConfig.icon}
                         <span className="ml-1">{urgencyConfig.label}</span>
                       </div>
-                      
+
                       <div className="flex items-center space-x-2">
-                        <span className="text-xs text-gray-500">{formatTimeAgo(item.generatedAt)}</span>
-                        {item.status === 'approved' && <CheckCircle2 className="w-4 h-4 text-green-500" />}
+                        <span className="text-xs text-gray-500">
+                          {formatTimeAgo(item.generatedAt)}
+                        </span>
+                        {item.status === 'approved' && (
+                          <CheckCircle2 className="w-4 h-4 text-green-500" />
+                        )}
                       </div>
                     </div>
-                    
+
                     <h3 className="font-semibold text-gray-900 mb-2">{item.originalStory.title}</h3>
-                    
+
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
                         <div className="text-sm text-gray-600">{item.originalStory.source}</div>
-                        <div className="text-sm text-gray-500">{item.originalStory.relevanceScore.toFixed(1)}/10</div>
+                        <div className="text-sm text-gray-500">
+                          {item.originalStory.relevanceScore.toFixed(1)}/10
+                        </div>
                       </div>
-                      
+
                       <div className="flex items-center space-x-2">
                         <button
-                          onClick={(e) => {
+                          onClick={e => {
                             e.stopPropagation();
                             setSelectedContent(item);
                           }}
@@ -332,11 +372,11 @@ export default function EnhancedNewsjacking() {
                         >
                           <Eye className="w-4 h-4" />
                         </button>
-                        
+
                         <Link
                           href={`/social-posting?newsId=${item.id}&fromNews=true`}
                           className="bg-blue-600 text-white px-2 py-1 text-xs rounded hover:bg-blue-700"
-                          onClick={(e) => e.stopPropagation()}
+                          onClick={e => e.stopPropagation()}
                         >
                           <Share2 className="w-3 h-3 mr-1 inline" /> Share
                         </Link>
@@ -360,31 +400,40 @@ export default function EnhancedNewsjacking() {
                   <Sparkles className="w-4 h-4 mr-2 inline" /> Create Post
                 </Link>
               </div>
-              
+
               <div className="bg-blue-50 p-4 rounded-lg border border-blue-200 mb-4">
-                <h3 className="font-semibold text-gray-900 mb-2">{selectedContent.originalStory.title}</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  {selectedContent.originalStory.title}
+                </h3>
                 <div className="flex items-center space-x-4 text-sm text-gray-600">
                   <span>{selectedContent.originalStory.source}</span>
-                  <span>Relevance: {selectedContent.originalStory.relevanceScore.toFixed(2)}/10</span>
+                  <span>
+                    Relevance: {selectedContent.originalStory.relevanceScore.toFixed(2)}/10
+                  </span>
                   <span>Est. {selectedContent.estimatedReach.toLocaleString()} reach</span>
                 </div>
               </div>
 
               {selectedContent.newsletterSections.length > 0 ? (
                 <div className="space-y-4">
-                  {selectedContent.newsletterSections.slice(0, 1).map((section: any, index: number) => (
-                    <div key={index} className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                      <h4 className="font-semibold text-gray-900 mb-3">{section.title}</h4>
-                      <div className="text-gray-700 leading-relaxed">
-                        {section.content.split('\n').map((paragraph: string, pIndex: number) => 
-                          paragraph.trim() && (
-                            <p key={pIndex} className="mb-3">{paragraph}</p>
-                          )
-                        )}
+                  {selectedContent.newsletterSections
+                    .slice(0, 1)
+                    .map((section: any, index: number) => (
+                      <div key={index} className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <h4 className="font-semibold text-gray-900 mb-3">{section.title}</h4>
+                        <div className="text-gray-700 leading-relaxed">
+                          {section.content.split('\n').map(
+                            (paragraph: string, pIndex: number) =>
+                              paragraph.trim() && (
+                                <p key={pIndex} className="mb-3">
+                                  {paragraph}
+                                </p>
+                              )
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                  
+                    ))}
+
                   <Link
                     href={`/social-posting?newsId=${selectedContent.id}&fromNews=true`}
                     className="bg-blue-600 text-white w-full flex items-center justify-center px-4 py-2 rounded hover:bg-blue-700"
@@ -396,8 +445,12 @@ export default function EnhancedNewsjacking() {
                 </div>
               ) : (
                 <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200 text-center">
-                  <div className="text-yellow-800 font-semibold mb-2">Content being generated...</div>
-                  <p className="text-yellow-700 text-sm">AI is crafting content in your voice. Check back in a few minutes.</p>
+                  <div className="text-yellow-800 font-semibold mb-2">
+                    Content being generated...
+                  </div>
+                  <p className="text-yellow-700 text-sm">
+                    AI is crafting content in your voice. Check back in a few minutes.
+                  </p>
                 </div>
               )}
             </div>

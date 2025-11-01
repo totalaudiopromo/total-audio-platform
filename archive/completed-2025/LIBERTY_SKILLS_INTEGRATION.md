@@ -3,6 +3,7 @@
 ## ✅ What's Been Built
 
 ### 1. **Station Matcher Skill**
+
 **File**: [src/core/skills/implementations/StationMatcherSkill.ts](src/core/skills/implementations/StationMatcherSkill.ts)
 
 **Purpose**: Matches tracks with realistic UK radio station targets using AI analysis.
@@ -10,6 +11,7 @@
 **Time Savings**: 3-5 hours → 2-3 seconds per campaign
 
 **Features**:
+
 - Realistic targeting (no bedroom pop to BBC Radio 1)
 - Show/presenter-specific recommendations
 - Success likelihood scoring
@@ -17,6 +19,7 @@
 - UK radio landscape expertise (National, Commercial, Online, Community)
 
 **Convenience Methods**:
+
 ```typescript
 // Get top N stations
 await StationMatcherSkill.getTopStations(input, context, 5);
@@ -32,6 +35,7 @@ await StationMatcherSkill.estimateCampaignReach(input, context);
 ```
 
 ### 2. **Email Personalisation Skill**
+
 **File**: [src/core/skills/implementations/EmailPersonalisationSkill.ts](src/core/skills/implementations/EmailPersonalisationSkill.ts)
 
 **Purpose**: Generates genuinely personalised station-specific pitches (not templates).
@@ -39,6 +43,7 @@ await StationMatcherSkill.estimateCampaignReach(input, context);
 **Time Savings**: 15-20 mins → 2-3 seconds per email
 
 **Features**:
+
 - Station-specific approaches (BBC formal, community warm, online cutting-edge)
 - Show/presenter targeting
 - Natural social proof weaving
@@ -47,9 +52,16 @@ await StationMatcherSkill.estimateCampaignReach(input, context);
 - Personalisation scoring (0-1)
 
 **Convenience Methods**:
+
 ```typescript
 // Generate batch emails for multiple stations
-await EmailPersonalisationSkill.generateBatchEmails(stations, trackInfo, campaignAngle, socialProof, context);
+await EmailPersonalisationSkill.generateBatchEmails(
+  stations,
+  trackInfo,
+  campaignAngle,
+  socialProof,
+  context
+);
 
 // Generate with voice guard validation
 await EmailPersonalisationSkill.generateWithVoiceGuard(input, context);
@@ -66,11 +78,13 @@ EmailPersonalisationSkill.calculateTimeSavings(10); // for 10 emails
 ### Liberty Radio Promo Workflow Transformation
 
 **BEFORE (Manual)**:
+
 1. Station research: 3-5 hours
 2. Email drafting (15 stations × 18 mins): 4-5 hours
 3. **Total**: 8-10 hours per campaign
 
 **AFTER (With Skills)**:
+
 1. Station matching: 2-3 seconds
 2. Email generation (15 emails): 45 seconds
 3. **Total**: < 1 minute
@@ -208,6 +222,7 @@ private async generatePersonalizedEmail(input: any): Promise<{ subject: string; 
 **Test file**: [scripts/test-liberty-skills.ts](scripts/test-liberty-skills.ts)
 
 **Run tests**:
+
 ```bash
 # Set API key first
 export ANTHROPIC_API_KEY="your-key-here"
@@ -217,6 +232,7 @@ npx tsx scripts/test-liberty-skills.ts
 ```
 
 **Expected output**:
+
 - ✅ Station Matcher: 10 realistic stations in <3s
 - ✅ Email Personalisation: Genuinely personalised emails with 0.8-0.95 personalisation scores
 - ✅ Voice Guard Integration: UK voice compliance checking
@@ -224,11 +240,13 @@ npx tsx scripts/test-liberty-skills.ts
 ## 💰 Cost Analysis
 
 **Per Campaign** (15 stations):
+
 - Station matching: $0.0002
 - Email generation (15 emails): $0.009
 - **Total**: ~$0.01
 
 **vs Manual**:
+
 - Time cost: 8-10 hours @ £50/hour = £400-500
 - AI cost: $0.01 = £0.008
 - **ROI**: 50,000x cost reduction
@@ -238,6 +256,7 @@ npx tsx scripts/test-liberty-skills.ts
 Tests currently fail without `ANTHROPIC_API_KEY` environment variable.
 
 **To fix**:
+
 1. Add to `.env.local`: `ANTHROPIC_API_KEY="your-key-here"`
 2. Or export before running: `export ANTHROPIC_API_KEY="your-key-here"`
 
@@ -255,6 +274,7 @@ The skills themselves are fully functional - just need API key for testing.
 ## 🎵 Example: Senior Dunce "Bestial" Campaign
 
 **Input**:
+
 ```typescript
 {
   track_info: {
@@ -271,6 +291,7 @@ The skills themselves are fully functional - just need API key for testing.
 ```
 
 **Station Matcher Output** (predicted):
+
 1. Amazing Radio (0.95 genre fit, high success)
 2. Radio Wigwam (0.92 genre fit, high success)
 3. BBC 6 Music (0.88 genre fit, medium success)
@@ -278,6 +299,7 @@ The skills themselves are fully functional - just need API key for testing.
 5. Resonance FM (0.84 genre fit, medium success)
 
 **Email Personalisation Output** (predicted for BBC 6 Music):
+
 - Subject: "Experimental electronic track for BBC 6 Music consideration"
 - Body: Personalised 120-word pitch referencing previous plays and UK electronic focus
 - Personalisation Score: 0.87

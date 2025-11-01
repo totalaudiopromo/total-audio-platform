@@ -5,7 +5,8 @@ import { useSession } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Loader2, Sparkles } from 'lucide-react';
-import { supabase, type Contact } from '@/lib/supabase';
+import { createClient } from '@total-audio/core-db/client';
+import type { Contact } from '@/lib/types';
 import { trackPitchGenerated, trackContactAdded, trackFormValidationError } from '@/lib/analytics';
 
 interface FormData {
@@ -96,7 +97,12 @@ export default function GeneratePitchPage() {
         const clipboardData = JSON.parse(clipboardText);
 
         // Validate structure
-        if (!clipboardData.source || clipboardData.source !== 'intel' || !clipboardData.contacts || !Array.isArray(clipboardData.contacts)) {
+        if (
+          !clipboardData.source ||
+          clipboardData.source !== 'intel' ||
+          !clipboardData.contacts ||
+          !Array.isArray(clipboardData.contacts)
+        ) {
           setImportNotification('Invalid clipboard data format');
           setTimeout(() => setImportNotification(null), 3000);
           return;
@@ -119,7 +125,9 @@ export default function GeneratePitchPage() {
             email: importedContact.email || '',
             outlet: importedContact.outlet || '',
             role: importedContact.role || '',
-            genre_tags: importedContact.genres ? importedContact.genres.split(',').map((g: string) => g.trim()) : [],
+            genre_tags: importedContact.genres
+              ? importedContact.genres.split(',').map((g: string) => g.trim())
+              : [],
             notes: importedContact.notes || '',
           })
           .select()
@@ -208,7 +216,9 @@ export default function GeneratePitchPage() {
     // Validate key hook minimum length
     if (formData.keyHook.length < 50) {
       trackFormValidationError('pitch_generation', 'key_hook');
-      setErrorMessage('Please provide more detail about what makes this track special (minimum 50 characters)');
+      setErrorMessage(
+        'Please provide more detail about what makes this track special (minimum 50 characters)'
+      );
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
@@ -239,7 +249,9 @@ export default function GeneratePitchPage() {
       router.push(`/pitch/review/${result.pitchId}`);
     } catch (error) {
       console.error('Error generating pitch:', error);
-      setErrorMessage(error instanceof Error ? error.message : 'Failed to generate pitch. Please try again.');
+      setErrorMessage(
+        error instanceof Error ? error.message : 'Failed to generate pitch. Please try again.'
+      );
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } finally {
       setLoading(false);
@@ -277,8 +289,18 @@ export default function GeneratePitchPage() {
         <div className="mb-6 glass-panel border-red-600 bg-red-50 px-6 py-4">
           <div className="flex items-start gap-3">
             <div className="flex-shrink-0 rounded-full bg-red-600 p-1">
-              <svg className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="h-4 w-4 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </div>
             <div className="flex-1">
@@ -290,7 +312,12 @@ export default function GeneratePitchPage() {
               className="flex-shrink-0 text-red-600 hover:text-red-800 transition"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
@@ -325,7 +352,8 @@ export default function GeneratePitchPage() {
           </div>
           {voiceProfileActive && (
             <div className="mt-4 rounded-lg border border-success/30 bg-success/5 px-4 py-3 text-sm text-gray-900/80">
-              ✨ <strong>Your authentic voice is enabled.</strong> This pitch will be written in your natural writing style.
+              ✨ <strong>Your authentic voice is enabled.</strong> This pitch will be written in
+              your natural writing style.
             </div>
           )}
         </div>
@@ -339,11 +367,11 @@ export default function GeneratePitchPage() {
             <select
               required
               value={formData.contactId}
-              onChange={(e) => handleContactChange(e.target.value)}
+              onChange={e => handleContactChange(e.target.value)}
               className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             >
               <option value="">Select a contact...</option>
-              {contacts.map((contact) => (
+              {contacts.map(contact => (
                 <option key={contact.id} value={contact.id}>
                   {contact.name} {contact.outlet ? `- ${contact.outlet}` : ''}
                 </option>
@@ -360,13 +388,20 @@ export default function GeneratePitchPage() {
             {selectedContact && (
               <div className="mt-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm">
                 <p className="text-gray-600">
-                  {selectedContact.role && <span className="font-medium">{selectedContact.role}</span>}
-                  {selectedContact.outlet && <span className="text-gray-500"> at {selectedContact.outlet}</span>}
+                  {selectedContact.role && (
+                    <span className="font-medium">{selectedContact.role}</span>
+                  )}
+                  {selectedContact.outlet && (
+                    <span className="text-gray-500"> at {selectedContact.outlet}</span>
+                  )}
                 </p>
                 {selectedContact.genre_tags && selectedContact.genre_tags.length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-2">
-                    {selectedContact.genre_tags.map((tag) => (
-                      <span key={tag} className="rounded-full bg-brand-amber/20 px-3 py-1 text-xs text-brand-amber">
+                    {selectedContact.genre_tags.map(tag => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-brand-amber/20 px-3 py-1 text-xs text-brand-amber"
+                      >
                         {tag}
                       </span>
                     ))}
@@ -385,7 +420,7 @@ export default function GeneratePitchPage() {
               type="text"
               required
               value={formData.artistName}
-              onChange={(e) => setFormData({ ...formData, artistName: e.target.value })}
+              onChange={e => setFormData({ ...formData, artistName: e.target.value })}
               placeholder="e.g. The Midnight Sons"
               className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
@@ -400,7 +435,7 @@ export default function GeneratePitchPage() {
               type="text"
               required
               value={formData.trackTitle}
-              onChange={(e) => setFormData({ ...formData, trackTitle: e.target.value })}
+              onChange={e => setFormData({ ...formData, trackTitle: e.target.value })}
               placeholder="e.g. Northern Lights"
               className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
@@ -409,16 +444,21 @@ export default function GeneratePitchPage() {
           {/* Genre */}
           <div>
             <label className="block text-sm font-semibold text-gray-900">
-              Genre <span className="text-red-600" title="Required field">*</span>
+              Genre{' '}
+              <span className="text-red-600" title="Required field">
+                *
+              </span>
             </label>
-            <p className="mt-1 text-xs text-gray-600">Select the primary genre that best represents this track</p>
+            <p className="mt-1 text-xs text-gray-600">
+              Select the primary genre that best represents this track
+            </p>
             <select
               required
               value={formData.genre}
-              onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
+              onChange={e => setFormData({ ...formData, genre: e.target.value })}
               className="mt-2 w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             >
-              {GENRES.map((genre) => (
+              {GENRES.map(genre => (
                 <option key={genre} value={genre} className="bg-white text-gray-900">
                   {genre.charAt(0).toUpperCase() + genre.slice(1)}
                 </option>
@@ -435,7 +475,7 @@ export default function GeneratePitchPage() {
               type="date"
               required
               value={formData.releaseDate}
-              onChange={(e) => setFormData({ ...formData, releaseDate: e.target.value })}
+              onChange={e => setFormData({ ...formData, releaseDate: e.target.value })}
               className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
           </div>
@@ -443,23 +483,29 @@ export default function GeneratePitchPage() {
           {/* Key Hook */}
           <div>
             <label className="block text-sm font-semibold text-gray-900">
-              What makes this track special? <span className="text-red-600" title="Required field">*</span>
+              What makes this track special?{' '}
+              <span className="text-red-600" title="Required field">
+                *
+              </span>
             </label>
             <p className="mt-1 text-xs text-gray-600">
-              Describe the vibe, sound, and story. Include artist comparisons if helpful. (Minimum {hookMinLength} characters)
+              Describe the vibe, sound, and story. Include artist comparisons if helpful. (Minimum{' '}
+              {hookMinLength} characters)
             </p>
             <textarea
               required
               value={formData.keyHook}
-              onChange={(e) => setFormData({ ...formData, keyHook: e.target.value.slice(0, hookMaxLength) })}
+              onChange={e =>
+                setFormData({ ...formData, keyHook: e.target.value.slice(0, hookMaxLength) })
+              }
               rows={4}
               placeholder="e.g. Intimate indie-folk about finding home after years of touring. Think Laura Marling meets Phoebe Bridgers - sparse production, honest lyrics, gorgeous harmonies."
               className={`mt-2 w-full rounded-xl border-2 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-2 ${
                 hookCharCount === 0
                   ? 'border-gray-300 focus:border-amber-500 focus:ring-amber-500/50'
                   : hookIsValid
-                  ? 'border-green-500 focus:border-green-500 focus:ring-green-500/50'
-                  : 'border-yellow-500 focus:border-yellow-500 focus:ring-yellow-500/50'
+                    ? 'border-green-500 focus:border-green-500 focus:ring-green-500/50'
+                    : 'border-yellow-500 focus:border-yellow-500 focus:ring-yellow-500/50'
               }`}
             />
             <div className="mt-2 flex items-center justify-between">
@@ -468,8 +514,18 @@ export default function GeneratePitchPage() {
                   <>
                     {hookIsValid ? (
                       <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600">
-                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        <svg
+                          className="h-4 w-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
                         </svg>
                         Good length
                       </span>
@@ -481,7 +537,9 @@ export default function GeneratePitchPage() {
                   </>
                 )}
               </div>
-              <p className={`text-xs ${hookIsValid ? 'text-green-600 font-medium' : 'text-gray-500'}`}>
+              <p
+                className={`text-xs ${hookIsValid ? 'text-green-600 font-medium' : 'text-gray-500'}`}
+              >
                 {hookCharCount} / {hookMaxLength} characters
               </p>
             </div>
@@ -495,7 +553,7 @@ export default function GeneratePitchPage() {
             <input
               type="url"
               value={formData.trackLink}
-              onChange={(e) => setFormData({ ...formData, trackLink: e.target.value })}
+              onChange={e => setFormData({ ...formData, trackLink: e.target.value })}
               placeholder="https://open.spotify.com/track/..."
               className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
@@ -503,11 +561,9 @@ export default function GeneratePitchPage() {
 
           {/* Tone Selector */}
           <div>
-            <label className="block text-sm font-semibold text-gray-900">
-              Tone
-            </label>
+            <label className="block text-sm font-semibold text-gray-900">Tone</label>
             <div className="mt-3 flex gap-3">
-              {(['casual', 'professional', 'enthusiastic'] as const).map((tone) => (
+              {(['casual', 'professional', 'enthusiastic'] as const).map(tone => (
                 <button
                   key={tone}
                   type="button"
@@ -549,4 +605,3 @@ export default function GeneratePitchPage() {
     </div>
   );
 }
-

@@ -7,9 +7,19 @@ const PLATFORMS = [
   { value: 'radio', label: 'Radio' },
   { value: 'playlist', label: 'Playlists' },
   { value: 'blog', label: 'Blog' },
-  { value: 'pr', label: 'PR' }
+  { value: 'pr', label: 'PR' },
 ];
-const GENRES = ['Electronic', 'Indie', 'Jazz', 'Pop', 'Rock', 'Hip-Hop', 'R&B', 'Country', 'Other'];
+const GENRES = [
+  'Electronic',
+  'Indie',
+  'Jazz',
+  'Pop',
+  'Rock',
+  'Hip-Hop',
+  'R&B',
+  'Country',
+  'Other',
+];
 
 interface FormData {
   name: string;
@@ -30,7 +40,7 @@ interface FormData {
 
 export function SimpleCampaignForm({
   onSubmit,
-  onCancel
+  onCancel,
 }: {
   onSubmit: (data: FormData) => Promise<void>;
   onCancel: () => void;
@@ -61,10 +71,22 @@ export function SimpleCampaignForm({
       {/* Agency Client Fields (Airtable-style collapsible section) */}
       <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 border-2 border-blue-200">
         <div className="flex items-center gap-2 mb-3">
-          <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          <svg
+            className="w-5 h-5 text-blue-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
           </svg>
-          <span className="text-sm font-black text-blue-900 uppercase tracking-wide">Agency Client Info (Optional)</span>
+          <span className="text-sm font-black text-blue-900 uppercase tracking-wide">
+            Agency Client Info (Optional)
+          </span>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
@@ -75,7 +97,9 @@ export function SimpleCampaignForm({
             <input
               type="text"
               value={formData.client_name || ''}
-              onChange={e => setFormData({ ...formData, client_name: e.target.value })}
+              onChange={e =>
+                setFormData({ ...formData, client_name: e.target.value })
+              }
               placeholder="e.g., Royal Blood"
               className="w-full px-3 py-2 border-2 border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
             />
@@ -88,7 +112,9 @@ export function SimpleCampaignForm({
             <input
               type="text"
               value={formData.client_company || ''}
-              onChange={e => setFormData({ ...formData, client_company: e.target.value })}
+              onChange={e =>
+                setFormData({ ...formData, client_company: e.target.value })
+              }
               placeholder="e.g., Warner Records"
               className="w-full px-3 py-2 border-2 border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
             />
@@ -101,7 +127,9 @@ export function SimpleCampaignForm({
             <input
               type="email"
               value={formData.client_email || ''}
-              onChange={e => setFormData({ ...formData, client_email: e.target.value })}
+              onChange={e =>
+                setFormData({ ...formData, client_email: e.target.value })
+              }
               placeholder="e.g., manager@artistemail.com"
               className="w-full px-3 py-2 border-2 border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
             />
@@ -114,7 +142,12 @@ export function SimpleCampaignForm({
             <input
               type="text"
               value={formData.client_billing_code || ''}
-              onChange={e => setFormData({ ...formData, client_billing_code: e.target.value })}
+              onChange={e =>
+                setFormData({
+                  ...formData,
+                  client_billing_code: e.target.value,
+                })
+              }
               placeholder="e.g., RB-2024-Q4"
               className="w-full px-3 py-2 border-2 border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
             />
@@ -122,7 +155,8 @@ export function SimpleCampaignForm({
         </div>
 
         <p className="text-xs text-blue-700 mt-2 font-medium italic">
-          💡 Add client info to track multiple artists separately and generate client-specific reports
+          💡 Add client info to track multiple artists separately and generate
+          client-specific reports
         </p>
       </div>
 
@@ -148,12 +182,16 @@ export function SimpleCampaignForm({
           <select
             required
             value={formData.platform}
-            onChange={e => setFormData({ ...formData, platform: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, platform: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-[#14B8A6]"
           >
             <option value="">Select platform</option>
             {PLATFORMS.map(p => (
-              <option key={p.value} value={p.value}>{p.label}</option>
+              <option key={p.value} value={p.value}>
+                {p.label}
+              </option>
             ))}
           </select>
         </div>
@@ -170,7 +208,9 @@ export function SimpleCampaignForm({
           >
             <option value="">Select genre</option>
             {GENRES.map(g => (
-              <option key={g} value={g}>{g}</option>
+              <option key={g} value={g}>
+                {g}
+              </option>
             ))}
           </select>
         </div>
@@ -186,7 +226,12 @@ export function SimpleCampaignForm({
           min="0"
           step="0.01"
           value={formData.budget}
-          onChange={e => setFormData({ ...formData, budget: parseFloat(e.target.value) || 0 })}
+          onChange={e =>
+            setFormData({
+              ...formData,
+              budget: parseFloat(e.target.value) || 0,
+            })
+          }
           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
         />
       </div>
@@ -200,7 +245,9 @@ export function SimpleCampaignForm({
             type="date"
             required
             value={formData.start_date}
-            onChange={e => setFormData({ ...formData, start_date: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, start_date: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-[#14B8A6]"
           />
         </div>
@@ -212,7 +259,9 @@ export function SimpleCampaignForm({
           <input
             type="date"
             value={formData.end_date || ''}
-            onChange={e => setFormData({ ...formData, end_date: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, end_date: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-[#14B8A6]"
           />
         </div>
@@ -228,11 +277,18 @@ export function SimpleCampaignForm({
             required
             min="0"
             value={formData.target_reach}
-            onChange={e => setFormData({ ...formData, target_reach: parseInt(e.target.value) || 0 })}
+            onChange={e =>
+              setFormData({
+                ...formData,
+                target_reach: parseInt(e.target.value) || 0,
+              })
+            }
             placeholder="e.g., 20 stations"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-[#14B8A6]"
           />
-          <p className="text-xs text-gray-500 mt-1">How many contacts you're pitching to</p>
+          <p className="text-xs text-gray-500 mt-1">
+            How many contacts you're pitching to
+          </p>
         </div>
 
         <div>
@@ -243,11 +299,18 @@ export function SimpleCampaignForm({
             type="number"
             min="0"
             value={formData.actual_reach}
-            onChange={e => setFormData({ ...formData, actual_reach: parseInt(e.target.value) || 0 })}
+            onChange={e =>
+              setFormData({
+                ...formData,
+                actual_reach: parseInt(e.target.value) || 0,
+              })
+            }
             placeholder="e.g., 6 stations"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-[#14B8A6]"
           />
-          <p className="text-xs text-gray-500 mt-1">How many actually responded/played it</p>
+          <p className="text-xs text-gray-500 mt-1">
+            How many actually responded/played it
+          </p>
         </div>
       </div>
 

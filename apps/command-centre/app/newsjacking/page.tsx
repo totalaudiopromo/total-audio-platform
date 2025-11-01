@@ -3,7 +3,5 @@
 import EnhancedNewsjacking from '../components/EnhancedNewsjacking';
 
 export default function NewsjackingPage() {
-  return (
-    <EnhancedNewsjacking />
-  );
+  return <EnhancedNewsjacking />;
 }

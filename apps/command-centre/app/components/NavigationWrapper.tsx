@@ -3,17 +3,17 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { 
-  ChartColumn, 
-  TrendingUp, 
-  DollarSign, 
-  Share2, 
-  FileText, 
-  Newspaper, 
-  Users, 
+import {
+  ChartColumn,
+  TrendingUp,
+  DollarSign,
+  Share2,
+  FileText,
+  Newspaper,
+  Users,
   Settings,
   Menu,
-  X
+  X,
 } from 'lucide-react';
 
 interface NavigationWrapperProps {
@@ -52,8 +52,11 @@ export default function NavigationWrapper({ children }: NavigationWrapperProps) 
             <div className="audio-mascot"></div>
             <span>Command Centre</span>
           </Link>
-          <div className="tap-nav-links overflow-x-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
-            {navigationItems.map((item) => {
+          <div
+            className="tap-nav-links overflow-x-auto"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
+            {navigationItems.map(item => {
               const Icon = item.icon;
               return (
                 <Link
@@ -70,9 +73,7 @@ export default function NavigationWrapper({ children }: NavigationWrapperProps) 
         </div>
       </nav>
 
-      <main className="tap-container tap-p-6">
-        {children}
-      </main>
+      <main className="tap-container tap-p-6">{children}</main>
     </div>
   );
 }

@@ -37,21 +37,24 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
   // Group users by location for clustering
   const locationClusters = useMemo(() => {
     const clusters = new Map();
-    
+
     users.forEach(user => {
       if (!user.location?.coordinates) return; // Skip users without location data
-      
+
       const key = `${user.location.coordinates.lat}-${user.location.coordinates.lng}`;
       if (!clusters.has(key)) {
         clusters.set(key, {
           location: user.location,
           users: [],
-          coordinates: toSVGCoordinates(user.location.coordinates.lat, user.location.coordinates.lng)
+          coordinates: toSVGCoordinates(
+            user.location.coordinates.lat,
+            user.location.coordinates.lng
+          ),
         });
       }
       clusters.get(key).users.push(user);
     });
-    
+
     return Array.from(clusters.values());
   }, [users]);
 
@@ -59,9 +62,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
   if (locationClusters.length === 0) {
     return (
       <div className="postcraft-card text-center mb-8">
-        <h3 className="postcraft-section-title mb-4">
-          Global Beta User Map
-        </h3>
+        <h3 className="postcraft-section-title mb-4">Global Beta User Map</h3>
         <div className="inline-flex items-center gap-3 px-6 py-3 bg-blue-100 rounded-xl border-3 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
           <div className="animate-spin rounded-full h-5 w-5 border-3 border-black border-t-transparent"></div>
           <p className="postcraft-text font-bold text-gray-900 m-0">
@@ -69,7 +70,8 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
           </p>
         </div>
         <p className="postcraft-text mt-4">
-          This map will show where your beta users are located worldwide once they start using Audio Intel.
+          This map will show where your beta users are located worldwide once they start using Audio
+          Intel.
         </p>
       </div>
     );
@@ -79,7 +81,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
     const activeCount = users.filter(u => u.status === 'active').length;
     const total = users.length;
     const activeRatio = activeCount / total;
-    
+
     if (activeRatio > 0.6) return '#10b981'; // Green for highly active
     if (activeRatio > 0.3) return '#f59e0b'; // Orange for moderately active
     return '#6b7280'; // Gray for low activity
@@ -94,10 +96,8 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
   return (
     <div className="postcraft-card mb-8">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="postcraft-section-title m-0">
-          Global Beta User Distribution
-        </h3>
-        
+        <h3 className="postcraft-section-title m-0">Global Beta User Distribution</h3>
+
         {/* Legend */}
         <div className="flex gap-4 items-center">
           <div className="flex items-center gap-2">
@@ -122,19 +122,25 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
           style={{
             width: '100%',
             height: '400px',
-            display: 'block'
+            display: 'block',
           }}
         >
           {/* Simplified world map background */}
           <defs>
             <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" strokeWidth="0.5" opacity="0.3"/>
+              <path
+                d="M 40 0 L 0 0 0 40"
+                fill="none"
+                stroke="#e2e8f0"
+                strokeWidth="0.5"
+                opacity="0.3"
+              />
             </pattern>
           </defs>
-          
+
           {/* Grid background */}
           <rect width="800" height="400" fill="url(#grid)" />
-          
+
           {/* Simplified continent shapes */}
           {/* North America */}
           <path
@@ -144,7 +150,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
             strokeWidth="1"
             opacity="0.6"
           />
-          
+
           {/* South America */}
           <path
             d="M 200 200 L 250 180 L 280 220 L 270 300 L 230 320 L 200 300 L 190 250 Z"
@@ -153,7 +159,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
             strokeWidth="1"
             opacity="0.6"
           />
-          
+
           {/* Europe */}
           <path
             d="M 380 60 L 460 50 L 480 90 L 450 120 L 400 110 L 370 80 Z"
@@ -162,7 +168,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
             strokeWidth="1"
             opacity="0.6"
           />
-          
+
           {/* Africa */}
           <path
             d="M 400 120 L 480 110 L 520 160 L 510 250 L 480 280 L 430 270 L 410 200 Z"
@@ -171,7 +177,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
             strokeWidth="1"
             opacity="0.6"
           />
-          
+
           {/* Asia */}
           <path
             d="M 480 50 L 680 40 L 720 80 L 700 140 L 650 160 L 580 150 L 500 120 Z"
@@ -180,7 +186,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
             strokeWidth="1"
             opacity="0.6"
           />
-          
+
           {/* Australia */}
           <path
             d="M 620 250 L 720 240 L 730 280 L 680 290 L 630 285 Z"
@@ -194,7 +200,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
           {locationClusters.map((cluster, index) => {
             const color = getClusterColor(cluster.users);
             const size = getClusterSize(cluster.users.length);
-            
+
             return (
               <g key={index}>
                 {/* Pulse animation for active locations */}
@@ -206,11 +212,11 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
                     fill={color}
                     opacity="0.3"
                     style={{
-                      animation: 'pulse 2s infinite'
+                      animation: 'pulse 2s infinite',
                     }}
                   />
                 )}
-                
+
                 {/* Main marker */}
                 <circle
                   cx={cluster.coordinates.x}
@@ -221,10 +227,10 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
                   strokeWidth="2"
                   style={{
                     filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
                   }}
                 />
-                
+
                 {/* User count label for clusters */}
                 {cluster.users.length > 1 && (
                   <text
@@ -250,8 +256,9 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
           .sort((a, b) => b.users.length - a.users.length)
           .slice(0, 6)
           .map((cluster, index) => {
-            const totalEngagement = cluster.users.reduce((sum: number, user: BetaUser) =>
-              sum + user.engagement.contactsEnriched, 0
+            const totalEngagement = cluster.users.reduce(
+              (sum: number, user: BetaUser) => sum + user.engagement.contactsEnriched,
+              0
             );
             const activeUsers = cluster.users.filter((u: BetaUser) => u.status === 'active').length;
 
@@ -266,9 +273,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
                       className="w-2 h-2 rounded-full border border-black"
                       style={{ background: getClusterColor(cluster.users) }}
                     ></div>
-                    <span className="text-sm font-bold text-gray-900">
-                      {cluster.location.city}
-                    </span>
+                    <span className="text-sm font-bold text-gray-900">{cluster.location.city}</span>
                   </div>
                   <span className="text-xs text-gray-600 font-bold">
                     {cluster.users.length} user{cluster.users.length !== 1 ? 's' : ''}
@@ -280,9 +285,7 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
                 </div>
 
                 <div className="flex justify-between text-xs">
-                  <span className="text-green-600 font-bold">
-                    {activeUsers} active
-                  </span>
+                  <span className="text-green-600 font-bold">{activeUsers} active</span>
                   <span className="text-purple-600 font-bold">
                     {totalEngagement.toLocaleString()} contacts
                   </span>
@@ -294,8 +297,13 @@ export default function BetaUserMap({ users }: BetaUserMapProps) {
 
       <style jsx>{`
         @keyframes pulse {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.6; }
+          0%,
+          100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 0.6;
+          }
         }
       `}</style>
     </div>

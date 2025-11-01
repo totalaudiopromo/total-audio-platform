@@ -5,6 +5,7 @@ The demo page (`/demo`) was just to prove it works. Here's how to **actually int
 ## ✅ What You've Got
 
 **Skills System Status:**
+
 - ✅ Database tables created (4 tables, 5 skills seeded)
 - ✅ VoiceGuardSkill working perfectly
 - ✅ Using Claude 3.5 Haiku (73% cheaper, 3-5x faster)
@@ -26,17 +27,20 @@ import { VoiceGuardSkill } from '@/core/skills';
 
 // In your component or server action:
 async function checkPitchVoice(pitchText: string) {
-  const result = await VoiceGuardSkill.execute({
-    text: pitchText,
-    contentType: 'email_pitch',
-    targetAudience: 'radio_promoters'
-  }, {} as any);
+  const result = await VoiceGuardSkill.execute(
+    {
+      text: pitchText,
+      contentType: 'email_pitch',
+      targetAudience: 'radio_promoters',
+    },
+    {} as any
+  );
 
   return {
     score: result.compliance_score,
     correctedText: result.text,
     issues: result.warnings,
-    changes: result.changes
+    changes: result.changes,
   };
 }
 ```
@@ -54,10 +58,7 @@ export async function POST(req: Request) {
   const { subject, body, contactId } = await req.json();
 
   // Auto-correct UK spelling
-  const corrected = await VoiceGuardSkill.correct(
-    `${subject}\n\n${body}`,
-    'email_pitch'
-  );
+  const corrected = await VoiceGuardSkill.correct(`${subject}\n\n${body}`, 'email_pitch');
 
   // Split back into subject/body
   const [correctedSubject, ...bodyParts] = corrected.split('\n\n');
@@ -67,7 +68,7 @@ export async function POST(req: Request) {
   const pitch = await savePitch({
     subject: correctedSubject,
     body: correctedBody,
-    contactId
+    contactId,
   });
 
   return Response.json({ pitch });
@@ -133,16 +134,19 @@ export async function validateUKVoice(text: string): Promise<{
   score: number;
   issues: string[];
 }> {
-  const result = await VoiceGuardSkill.execute({
-    text,
-    contentType: 'email_pitch',
-    targetAudience: 'general'
-  }, {} as any);
+  const result = await VoiceGuardSkill.execute(
+    {
+      text,
+      contentType: 'email_pitch',
+      targetAudience: 'general',
+    },
+    {} as any
+  );
 
   return {
     isValid: result.compliance_score >= 0.8,
     score: result.compliance_score,
-    issues: result.warnings
+    issues: result.warnings,
   };
 }
 
@@ -223,6 +227,7 @@ export function PitchEditor() {
 4. Offer "Auto-fix UK spelling" button that applies corrections
 
 **Why this works:**
+
 - ✅ Catches issues before sending
 - ✅ Educates users about UK voice
 - ✅ Low cost (~$0.0006 per check)
@@ -231,21 +236,25 @@ export function PitchEditor() {
 ## 📊 Cost Calculator
 
 **Current pricing (Haiku):**
+
 - Input: $0.80 per 1M tokens
 - Output: $4.00 per 1M tokens
 - Average pitch check: ~300 tokens total = **$0.0006**
 
 **Monthly costs:**
+
 - 100 checks/day = 3000/month = **$1.80/month**
 - 500 checks/day = 15000/month = **$9/month**
 - 1000 checks/day = 30000/month = **$18/month**
 
 **Compare to Sonnet:**
+
 - Same checks would cost **3.5x more** (~$63/month for 1000/day)
 
 ## 🔑 Environment Setup
 
 Your `.env.local` already has:
+
 ```bash
 ANTHROPIC_API_KEY="sk-ant-api03-CchY..."
 ```
@@ -259,28 +268,26 @@ So you're ready to go - just import and use!
 import { VoiceGuardSkill } from '@/core/skills';
 
 // Basic check
-const result = await VoiceGuardSkill.execute({
-  text: "Your pitch text here",
-  contentType: 'email_pitch',
-  targetAudience: 'radio_promoters'
-}, {} as any);
+const result = await VoiceGuardSkill.execute(
+  {
+    text: 'Your pitch text here',
+    contentType: 'email_pitch',
+    targetAudience: 'radio_promoters',
+  },
+  {} as any
+);
 
 // Quick validation (returns true/false)
-const isValid = await VoiceGuardSkill.validate(
-  "Your pitch text",
-  'email_pitch'
-);
+const isValid = await VoiceGuardSkill.validate('Your pitch text', 'email_pitch');
 
 // Auto-correct (returns fixed text)
-const corrected = await VoiceGuardSkill.correct(
-  "Your pitch text",
-  'email_pitch'
-);
+const corrected = await VoiceGuardSkill.correct('Your pitch text', 'email_pitch');
 ```
 
 ## 🎯 What Works Right Now
 
 **VoiceGuardSkill (No DB required!):**
+
 - ✅ UK spelling corrections (organize → organise)
 - ✅ Corporate speak detection (leverage, synergy, etc.)
 - ✅ Compliance scoring (0-1 scale)
@@ -288,6 +295,7 @@ const corrected = await VoiceGuardSkill.correct(
 - ✅ Auto-correction
 
 **Still needs DB + Anthropic key:**
+
 - ⏳ PitchDraftSkill (AI pitch generation)
 - ⏳ ContactMatcherSkill (contact recommendations)
 

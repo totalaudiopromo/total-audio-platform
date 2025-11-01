@@ -1,5 +1,5 @@
 // Team Access System - TypeScript types and utilities
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@total-audio/core-db/client';
 
 export type TeamRole = 'admin' | 'member' | 'client';
 
@@ -70,7 +70,11 @@ export type TeamActivity = {
 export class TeamManager {
   private supabase = createClient();
 
-  async createTeam(name: string, slug: string, ownerId: string): Promise<Team | null> {
+  async createTeam(
+    name: string,
+    slug: string,
+    ownerId: string
+  ): Promise<Team | null> {
     const { data, error } = await this.supabase
       .from('teams')
       .insert({
@@ -110,10 +114,12 @@ export class TeamManager {
   async getTeamMembers(teamId: string): Promise<TeamMember[]> {
     const { data, error } = await this.supabase
       .from('team_members')
-      .select(`
+      .select(
+        `
         *,
         user:auth.users(email, user_metadata)
-      `)
+      `
+      )
       .eq('team_id', teamId)
       .order('joined_at', { ascending: true });
 
@@ -148,15 +154,26 @@ export class TeamManager {
     }
 
     // Log activity
-    await this.logActivity(teamId, invitedBy || userId, 'member_added', 'team_member', data.id, {
-      new_member_email: data.user?.email,
-      role,
-    });
+    await this.logActivity(
+      teamId,
+      invitedBy || userId,
+      'member_added',
+      'team_member',
+      data.id,
+      {
+        new_member_email: data.user?.email,
+        role,
+      }
+    );
 
     return data;
   }
 
-  async updateMemberRole(teamId: string, userId: string, newRole: TeamRole): Promise<boolean> {
+  async updateMemberRole(
+    teamId: string,
+    userId: string,
+    newRole: TeamRole
+  ): Promise<boolean> {
     const { error } = await this.supabase
       .from('team_members')
       .update({ role: newRole })
@@ -216,10 +233,17 @@ export class TeamManager {
     }
 
     // Log activity
-    await this.logActivity(teamId, invitedBy, 'member_invited', 'team_invitation', data.id, {
-      email,
-      role,
-    });
+    await this.logActivity(
+      teamId,
+      invitedBy,
+      'member_invited',
+      'team_invitation',
+      data.id,
+      {
+        email,
+        role,
+      }
+    );
 
     return data;
   }
@@ -265,7 +289,11 @@ export class TeamManager {
     return true;
   }
 
-  async hasPermission(teamId: string, userId: string, requiredRole: TeamRole = 'member'): Promise<boolean> {
+  async hasPermission(
+    teamId: string,
+    userId: string,
+    requiredRole: TeamRole = 'member'
+  ): Promise<boolean> {
     const { data, error } = await this.supabase
       .from('team_members')
       .select('role')
@@ -286,13 +314,18 @@ export class TeamManager {
     return roleHierarchy[data.role] >= roleHierarchy[requiredRole];
   }
 
-  async getTeamActivity(teamId: string, limit: number = 50): Promise<TeamActivity[]> {
+  async getTeamActivity(
+    teamId: string,
+    limit: number = 50
+  ): Promise<TeamActivity[]> {
     const { data, error } = await this.supabase
       .from('team_activity_log')
-      .select(`
+      .select(
+        `
         *,
         user:auth.users(email, user_metadata)
-      `)
+      `
+      )
       .eq('team_id', teamId)
       .order('created_at', { ascending: false })
       .limit(limit);
@@ -313,16 +346,14 @@ export class TeamManager {
     resourceId?: string,
     metadata: Record<string, any> = {}
   ): Promise<void> {
-    await this.supabase
-      .from('team_activity_log')
-      .insert({
-        team_id: teamId,
-        user_id: userId,
-        action,
-        resource_type: resourceType,
-        resource_id: resourceId,
-        metadata,
-      });
+    await this.supabase.from('team_activity_log').insert({
+      team_id: teamId,
+      user_id: userId,
+      action,
+      resource_type: resourceType,
+      resource_id: resourceId,
+      metadata,
+    });
   }
 
   async updateTeamBranding(

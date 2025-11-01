@@ -1,42 +1,42 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
-import { 
-  Mail, 
-  Users, 
-  Send, 
-  Eye, 
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Mail,
+  Users,
+  Send,
+  Eye,
   Calendar,
   TrendingUp,
   BookOpen,
   Zap,
   CheckCircle,
-  AlertCircle
-} from 'lucide-react'
+  AlertCircle,
+} from 'lucide-react';
 
 interface NewsletterStats {
-  totalSubscribers: number
-  weeklyOpenRate: number
-  weeklyClickRate: number
-  recentIssues: number
+  totalSubscribers: number;
+  weeklyOpenRate: number;
+  weeklyClickRate: number;
+  recentIssues: number;
 }
 
 interface NewsletterContent {
-  issueNumber: number
-  publishDate: string
-  theme: string
-  industryInsight: string
-  articles: any[]
-  featuredTool: string
-  successStory: string
-  quickTip: string
-  communityQuestion: string
+  issueNumber: number;
+  publishDate: string;
+  theme: string;
+  industryInsight: string;
+  articles: any[];
+  featuredTool: string;
+  successStory: string;
+  quickTip: string;
+  communityQuestion: string;
 }
 
 export default function NewsletterDashboard() {
@@ -44,217 +44,225 @@ export default function NewsletterDashboard() {
     totalSubscribers: 0,
     weeklyOpenRate: 0,
     weeklyClickRate: 0,
-    recentIssues: 0
-  })
-  
-  const [currentContent, setCurrentContent] = useState<NewsletterContent | null>(null)
-  const [isGenerating, setIsGenerating] = useState(false)
-  const [isSending, setIsSending] = useState(false)
-  const [previewMode, setPreviewMode] = useState(false)
+    recentIssues: 0,
+  });
+
+  const [currentContent, setCurrentContent] = useState<NewsletterContent | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [previewMode, setPreviewMode] = useState(false);
   const [customContent, setCustomContent] = useState({
     industryInsight: '',
     featuredTool: '',
     successStory: '',
     quickTip: '',
-    communityQuestion: ''
-  })
-  const [isNewsjacking, setIsNewsjacking] = useState(false)
-  const [newsjackerResults, setNewsjackerResults] = useState<any>(null)
-  const [campaignId, setCampaignId] = useState<string | null>(null)
-  const [isCreatingDraft, setIsCreatingDraft] = useState(false)
-  const [isSendingDraft, setIsSendingDraft] = useState(false)
-  const [isBulkScheduling, setIsBulkScheduling] = useState(false)
-  const [bulkStartWeek, setBulkStartWeek] = useState<number>(1)
-  const [bulkCount, setBulkCount] = useState<number>(6)
+    communityQuestion: '',
+  });
+  const [isNewsjacking, setIsNewsjacking] = useState(false);
+  const [newsjackerResults, setNewsjackerResults] = useState<any>(null);
+  const [campaignId, setCampaignId] = useState<string | null>(null);
+  const [isCreatingDraft, setIsCreatingDraft] = useState(false);
+  const [isSendingDraft, setIsSendingDraft] = useState(false);
+  const [isBulkScheduling, setIsBulkScheduling] = useState(false);
+  const [bulkStartWeek, setBulkStartWeek] = useState<number>(1);
+  const [bulkCount, setBulkCount] = useState<number>(6);
 
   // Load dashboard data
   useEffect(() => {
-    loadDashboardData()
-  }, [])
+    loadDashboardData();
+  }, []);
 
   const loadDashboardData = async () => {
     try {
       // Load newsletter stats
-      const statsResponse = await fetch('/api/newsletter/stats')
+      const statsResponse = await fetch('/api/newsletter/stats');
       if (statsResponse.ok) {
-        const statsData = await statsResponse.json()
-        setStats(statsData)
+        const statsData = await statsResponse.json();
+        setStats(statsData);
       }
 
       // Load current week's content
-      const contentResponse = await fetch('/api/newsletter/content?week=1')
+      const contentResponse = await fetch('/api/newsletter/content?week=1');
       if (contentResponse.ok) {
-        const contentData = await contentResponse.json()
-        setCurrentContent(contentData)
+        const contentData = await contentResponse.json();
+        setCurrentContent(contentData);
         setCustomContent({
           industryInsight: contentData.industryInsight || '',
           featuredTool: contentData.featuredTool || '',
           successStory: contentData.successStory || '',
           quickTip: contentData.quickTip || '',
-          communityQuestion: contentData.communityQuestion || ''
-        })
+          communityQuestion: contentData.communityQuestion || '',
+        });
       }
     } catch (error) {
-      console.error('Error loading dashboard data:', error)
+      console.error('Error loading dashboard data:', error);
     }
-  }
+  };
 
   const generateContent = async () => {
-    setIsGenerating(true)
+    setIsGenerating(true);
     try {
       const response = await fetch('/api/newsletter/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ week: 1 })
-      })
-      
+        body: JSON.stringify({ week: 1 }),
+      });
+
       if (response.ok) {
-        const content = await response.json()
-        setCurrentContent(content)
+        const content = await response.json();
+        setCurrentContent(content);
         setCustomContent({
           industryInsight: content.industryInsight || '',
           featuredTool: content.featuredTool || '',
           successStory: content.successStory || '',
           quickTip: content.quickTip || '',
-          communityQuestion: content.communityQuestion || ''
-        })
+          communityQuestion: content.communityQuestion || '',
+        });
       }
     } catch (error) {
-      console.error('Error generating content:', error)
+      console.error('Error generating content:', error);
     } finally {
-      setIsGenerating(false)
+      setIsGenerating(false);
     }
-  }
+  };
 
   const previewNewsletter = async () => {
-    setPreviewMode(true)
+    setPreviewMode(true);
     try {
-      const response = await fetch(`/api/newsletter/send?week=1&test=true`)
+      const response = await fetch(`/api/newsletter/send?week=1&test=true`);
       if (response.ok) {
-        const html = await response.text()
+        const html = await response.text();
         // Open preview in new window
-        const previewWindow = window.open('', '_blank')
+        const previewWindow = window.open('', '_blank');
         if (previewWindow) {
-          previewWindow.document.write(html)
-          previewWindow.document.close()
+          previewWindow.document.write(html);
+          previewWindow.document.close();
         }
       }
     } catch (error) {
-      console.error('Error previewing newsletter:', error)
+      console.error('Error previewing newsletter:', error);
     }
-  }
+  };
 
   const runWeeklyAgent = async () => {
-    setIsNewsjacking(true)
+    setIsNewsjacking(true);
     try {
-      const response = await fetch('/api/newsletter/weekly-agent?week=1&test=true')
-      const result = await response.json()
+      const response = await fetch('/api/newsletter/weekly-agent?week=1&test=true');
+      const result = await response.json();
 
       if (result.success && result.intelligence) {
-        const intelligence = result.intelligence
-        setNewsjackerResults({ articles: intelligence.topStories, sources: intelligence.sources })
-        
+        const intelligence = result.intelligence;
+        setNewsjackerResults({ articles: intelligence.topStories, sources: intelligence.sources });
+
         // Update the content with weekly agent results
         setCustomContent(prev => ({
           ...prev,
           industryInsight: intelligence.weeklyInsight || prev.industryInsight,
           quickTip: intelligence.quickTip || prev.quickTip,
           communityQuestion: intelligence.communityQuestion || prev.communityQuestion,
-          featuredTool: intelligence.toolPromotion || 'Audio Intel - Contact Intelligence\n\nStop wasting your weekends researching radio contacts. Audio Intel automates contact enrichment, giving you 94% accurate intelligence in 2 minutes.',
-          successStory: intelligence.weeklyInsight || 'I\'m currently testing a new approach to radio promotion that combines AI-powered contact research with personalised outreach. Early results show 40% higher response rates compared to generic emails, and I\'m spending 80% less time on research. I\'ll share the full results once I\'ve got more data.'
-        }))
-        
-        alert(`🤖 Weekly Music Agent analyzed ${intelligence.totalArticles} articles from ${intelligence.sources.length} sources! Generated authentic content for week ${intelligence.weekNumber}.`)
+          featuredTool:
+            intelligence.toolPromotion ||
+            'Audio Intel - Contact Intelligence\n\nStop wasting your weekends researching radio contacts. Audio Intel automates contact enrichment, giving you 94% accurate intelligence in 2 minutes.',
+          successStory:
+            intelligence.weeklyInsight ||
+            "I'm currently testing a new approach to radio promotion that combines AI-powered contact research with personalised outreach. Early results show 40% higher response rates compared to generic emails, and I'm spending 80% less time on research. I'll share the full results once I've got more data.",
+        }));
+
+        alert(
+          `🤖 Weekly Music Agent analyzed ${intelligence.totalArticles} articles from ${intelligence.sources.length} sources! Generated authentic content for week ${intelligence.weekNumber}.`
+        );
       } else {
-        alert(`Weekly Agent error: ${result.error}`)
+        alert(`Weekly Agent error: ${result.error}`);
       }
     } catch (error) {
-      console.error('Error running weekly agent:', error)
-      alert('Error running weekly agent. Please try again.')
+      console.error('Error running weekly agent:', error);
+      alert('Error running weekly agent. Please try again.');
     } finally {
-      setIsNewsjacking(false)
+      setIsNewsjacking(false);
     }
-  }
+  };
 
   const createConvertKitDraft = async () => {
-    setIsCreatingDraft(true)
+    setIsCreatingDraft(true);
     try {
       const response = await fetch('/api/newsletter/weekly-agent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ weekNumber: 1, createDraft: true })
-      })
-      
-      const result = await response.json()
+        body: JSON.stringify({ weekNumber: 1, createDraft: true }),
+      });
+
+      const result = await response.json();
 
       if (result.success) {
-        setCampaignId(result.campaignId)
-        alert(`📧 ConvertKit draft created! Campaign ID: ${result.campaignId}\n\nYou can now review and send it from your ConvertKit dashboard.`)
+        setCampaignId(result.campaignId);
+        alert(
+          `📧 ConvertKit draft created! Campaign ID: ${result.campaignId}\n\nYou can now review and send it from your ConvertKit dashboard.`
+        );
       } else {
-        alert(`Error creating draft: ${result.error}`)
+        alert(`Error creating draft: ${result.error}`);
       }
     } catch (error) {
-      console.error('Error creating ConvertKit draft:', error)
-      alert('Error creating ConvertKit draft. Please try again.')
+      console.error('Error creating ConvertKit draft:', error);
+      alert('Error creating ConvertKit draft. Please try again.');
     } finally {
-      setIsCreatingDraft(false)
+      setIsCreatingDraft(false);
     }
-  }
+  };
 
   const sendConvertKitDraft = async () => {
     if (!campaignId) {
-      alert('No campaign ID available. Please create a draft first.')
-      return
+      alert('No campaign ID available. Please create a draft first.');
+      return;
     }
 
-    setIsSendingDraft(true)
+    setIsSendingDraft(true);
     try {
       const response = await fetch('/api/newsletter/weekly-agent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sendDraft: true, campaignId })
-      })
-      
-      const result = await response.json()
+        body: JSON.stringify({ sendDraft: true, campaignId }),
+      });
+
+      const result = await response.json();
 
       if (result.success) {
-        alert(`📤 Newsletter sent successfully to ${result.sent} subscribers!`)
-        setCampaignId(null) // Reset campaign ID
+        alert(`📤 Newsletter sent successfully to ${result.sent} subscribers!`);
+        setCampaignId(null); // Reset campaign ID
       } else {
-        alert(`Error sending newsletter: ${result.error}`)
+        alert(`Error sending newsletter: ${result.error}`);
       }
     } catch (error) {
-      console.error('Error sending ConvertKit draft:', error)
-      alert('Error sending ConvertKit draft. Please try again.')
+      console.error('Error sending ConvertKit draft:', error);
+      alert('Error sending ConvertKit draft. Please try again.');
     } finally {
-      setIsSendingDraft(false)
+      setIsSendingDraft(false);
     }
-  }
+  };
 
   const bulkScheduleDrafts = async () => {
-    setIsBulkScheduling(true)
+    setIsBulkScheduling(true);
     try {
       const response = await fetch('/api/newsletter/bulk-schedule', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ startWeek: bulkStartWeek, count: bulkCount })
-      })
-      const result = await response.json()
+        body: JSON.stringify({ startWeek: bulkStartWeek, count: bulkCount }),
+      });
+      const result = await response.json();
       if (result.success) {
-        alert(`Queued ${result.queued} drafts successfully.`)
+        alert(`Queued ${result.queued} drafts successfully.`);
       } else {
-        alert(`Bulk schedule failed: ${result.error || 'Unknown error'}`)
+        alert(`Bulk schedule failed: ${result.error || 'Unknown error'}`);
       }
     } catch (error) {
-      console.error('Bulk schedule error:', error)
-      alert('Bulk schedule failed. Please try again.')
+      console.error('Bulk schedule error:', error);
+      alert('Bulk schedule failed. Please try again.');
     } finally {
-      setIsBulkScheduling(false)
+      setIsBulkScheduling(false);
     }
-  }
+  };
 
   const sendNewsletter = async () => {
-    setIsSending(true)
+    setIsSending(true);
     try {
       const response = await fetch('/api/newsletter/send', {
         method: 'POST',
@@ -264,34 +272,38 @@ export default function NewsletterDashboard() {
           data: {
             ...currentContent,
             ...customContent,
-            newsArticles: newsjackerResults?.articles || []
-          }
-        })
-      })
-      
+            newsArticles: newsjackerResults?.articles || [],
+          },
+        }),
+      });
+
       if (response.ok) {
-        const result = await response.json()
-        alert(`Newsletter sent successfully! ${result.sent || 0} subscribers notified.`)
-        loadDashboardData() // Refresh stats
+        const result = await response.json();
+        alert(`Newsletter sent successfully! ${result.sent || 0} subscribers notified.`);
+        loadDashboardData(); // Refresh stats
       } else {
-        const error = await response.json()
-        alert(`Error sending newsletter: ${error.error}`)
+        const error = await response.json();
+        alert(`Error sending newsletter: ${error.error}`);
       }
     } catch (error) {
-      console.error('Error sending newsletter:', error)
-      alert('Error sending newsletter. Please try again.')
+      console.error('Error sending newsletter:', error);
+      alert('Error sending newsletter. Please try again.');
     } finally {
-      setIsSending(false)
+      setIsSending(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">The Unsigned Advantage Newsletter</h1>
-          <p className="text-gray-600">Manage your weekly newsletter for independent music professionals</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            The Unsigned Advantage Newsletter
+          </h1>
+          <p className="text-gray-600">
+            Manage your weekly newsletter for independent music professionals
+          </p>
         </div>
 
         {/* Stats Overview */}
@@ -354,9 +366,7 @@ export default function NewsletterDashboard() {
                 <Mail className="h-5 w-5" />
                 Newsletter Content
               </CardTitle>
-              <CardDescription>
-                Customise this week's newsletter content
-              </CardDescription>
+              <CardDescription>Customise this week's newsletter content</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
@@ -364,7 +374,9 @@ export default function NewsletterDashboard() {
                 <Textarea
                   id="industryInsight"
                   value={customContent.industryInsight}
-                  onChange={(e) => setCustomContent(prev => ({ ...prev, industryInsight: e.target.value }))}
+                  onChange={e =>
+                    setCustomContent(prev => ({ ...prev, industryInsight: e.target.value }))
+                  }
                   placeholder="This week's key industry insight..."
                   className="mt-2"
                   rows={3}
@@ -376,7 +388,9 @@ export default function NewsletterDashboard() {
                 <Input
                   id="featuredTool"
                   value={customContent.featuredTool}
-                  onChange={(e) => setCustomContent(prev => ({ ...prev, featuredTool: e.target.value }))}
+                  onChange={e =>
+                    setCustomContent(prev => ({ ...prev, featuredTool: e.target.value }))
+                  }
                   placeholder="Tool name and description"
                   className="mt-2"
                 />
@@ -387,7 +401,9 @@ export default function NewsletterDashboard() {
                 <Textarea
                   id="successStory"
                   value={customContent.successStory}
-                  onChange={(e) => setCustomContent(prev => ({ ...prev, successStory: e.target.value }))}
+                  onChange={e =>
+                    setCustomContent(prev => ({ ...prev, successStory: e.target.value }))
+                  }
                   placeholder="What you're currently working on or testing..."
                   className="mt-2"
                   rows={3}
@@ -399,7 +415,7 @@ export default function NewsletterDashboard() {
                 <Textarea
                   id="quickTip"
                   value={customContent.quickTip}
-                  onChange={(e) => setCustomContent(prev => ({ ...prev, quickTip: e.target.value }))}
+                  onChange={e => setCustomContent(prev => ({ ...prev, quickTip: e.target.value }))}
                   placeholder="Quick tip for readers..."
                   className="mt-2"
                   rows={2}
@@ -411,7 +427,9 @@ export default function NewsletterDashboard() {
                 <Input
                   id="communityQuestion"
                   value={customContent.communityQuestion}
-                  onChange={(e) => setCustomContent(prev => ({ ...prev, communityQuestion: e.target.value }))}
+                  onChange={e =>
+                    setCustomContent(prev => ({ ...prev, communityQuestion: e.target.value }))
+                  }
                   placeholder="Question to engage the community"
                   className="mt-2"
                 />
@@ -420,46 +438,52 @@ export default function NewsletterDashboard() {
               <div className="space-y-4">
                 <div className="flex gap-3">
                   <Button onClick={runWeeklyAgent} disabled={isNewsjacking} className="flex-1">
-                    {isNewsjacking ? '🤖 Weekly Agent Analyzing...' : '🤖 Generate Weekly Intelligence'}
+                    {isNewsjacking
+                      ? '🤖 Weekly Agent Analyzing...'
+                      : '🤖 Generate Weekly Intelligence'}
                   </Button>
                   <Button variant="outline" onClick={previewNewsletter}>
                     <Eye className="h-4 w-4 mr-2" />
                     Preview
                   </Button>
                 </div>
-                
+
                 <div className="flex gap-3">
-                  <Button 
-                    onClick={createConvertKitDraft} 
-                    disabled={isCreatingDraft || !newsjackerResults} 
+                  <Button
+                    onClick={createConvertKitDraft}
+                    disabled={isCreatingDraft || !newsjackerResults}
                     className="flex-1"
                     variant="secondary"
                   >
-                    {isCreatingDraft ? '📧 Creating ConvertKit Draft...' : '📧 Create ConvertKit Draft'}
+                    {isCreatingDraft
+                      ? '📧 Creating ConvertKit Draft...'
+                      : '📧 Create ConvertKit Draft'}
                   </Button>
-                  <Button 
-                    onClick={sendConvertKitDraft} 
-                    disabled={isSendingDraft || !campaignId} 
+                  <Button
+                    onClick={sendConvertKitDraft}
+                    disabled={isSendingDraft || !campaignId}
                     className="flex-1"
                     variant="default"
                   >
                     {isSendingDraft ? '📤 Sending...' : '📤 Send Draft'}
                   </Button>
                 </div>
-                
+
                 {campaignId && (
                   <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
                     <p className="text-sm text-green-800">
-                      ✅ ConvertKit draft created! Campaign ID: <code className="bg-green-100 px-1 rounded">{campaignId}</code>
+                      ✅ ConvertKit draft created! Campaign ID:{' '}
+                      <code className="bg-green-100 px-1 rounded">{campaignId}</code>
                     </p>
                     <p className="text-xs text-green-600 mt-1">
                       You can review it in your ConvertKit dashboard or send it directly from here.
                     </p>
                   </div>
                 )}
-                
+
                 <p className="text-sm text-gray-600">
-                  <strong>Workflow:</strong> Generate Intelligence → Create ConvertKit Draft → Review in ConvertKit → Send to Subscribers
+                  <strong>Workflow:</strong> Generate Intelligence → Create ConvertKit Draft →
+                  Review in ConvertKit → Send to Subscribers
                 </p>
               </div>
             </CardContent>
@@ -472,17 +496,19 @@ export default function NewsletterDashboard() {
                 <Send className="h-5 w-5" />
                 Send Newsletter
               </CardTitle>
-              <CardDescription>
-                Send this week's newsletter to all subscribers
-              </CardDescription>
+              <CardDescription>Send this week's newsletter to all subscribers</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {currentContent && (
                 <div className="space-y-4">
                   <div className="p-4 bg-blue-50 rounded-lg">
-                    <h4 className="font-semibold text-blue-900">Issue #{currentContent.issueNumber}</h4>
+                    <h4 className="font-semibold text-blue-900">
+                      Issue #{currentContent.issueNumber}
+                    </h4>
                     <p className="text-sm text-blue-700">Theme: {currentContent.theme}</p>
-                    <p className="text-sm text-blue-700">Publish Date: {currentContent.publishDate}</p>
+                    <p className="text-sm text-blue-700">
+                      Publish Date: {currentContent.publishDate}
+                    </p>
                   </div>
 
                   <div className="space-y-3">
@@ -507,8 +533,8 @@ export default function NewsletterDashboard() {
               )}
 
               <div className="pt-4 border-t">
-                <Button 
-                  onClick={sendNewsletter} 
+                <Button
+                  onClick={sendNewsletter}
                   disabled={isSending || !currentContent}
                   className="w-full"
                   size="lg"
@@ -525,9 +551,10 @@ export default function NewsletterDashboard() {
                     </>
                   )}
                 </Button>
-                
+
                 <p className="text-xs text-gray-500 mt-2 text-center">
-                  Newsletter will be sent to all subscribers with the "newsletter_unsigned_advantage" tag
+                  Newsletter will be sent to all subscribers with the
+                  "newsletter_unsigned_advantage" tag
                 </p>
 
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -537,7 +564,7 @@ export default function NewsletterDashboard() {
                       id="bulkStartWeek"
                       type="number"
                       value={bulkStartWeek}
-                      onChange={(e) => setBulkStartWeek(parseInt(e.target.value || '1'))}
+                      onChange={e => setBulkStartWeek(parseInt(e.target.value || '1'))}
                       className="mt-1"
                     />
                   </div>
@@ -547,12 +574,16 @@ export default function NewsletterDashboard() {
                       id="bulkCount"
                       type="number"
                       value={bulkCount}
-                      onChange={(e) => setBulkCount(parseInt(e.target.value || '6'))}
+                      onChange={e => setBulkCount(parseInt(e.target.value || '6'))}
                       className="mt-1"
                     />
                   </div>
                   <div className="flex items-end">
-                    <Button onClick={bulkScheduleDrafts} disabled={isBulkScheduling} className="w-full">
+                    <Button
+                      onClick={bulkScheduleDrafts}
+                      disabled={isBulkScheduling}
+                      className="w-full"
+                    >
                       {isBulkScheduling ? 'Queuing drafts…' : 'Queue Drafts'}
                     </Button>
                   </div>
@@ -570,26 +601,30 @@ export default function NewsletterDashboard() {
                 <TrendingUp className="h-5 w-5" />
                 🤖 Weekly Music Intelligence
               </CardTitle>
-              <CardDescription>
-                This week's underground music analysis and trends
-              </CardDescription>
+              <CardDescription>This week's underground music analysis and trends</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <div className="p-4 bg-blue-50 rounded-lg">
                   <h4 className="font-semibold text-blue-900">Articles Analyzed</h4>
-                  <p className="text-2xl font-bold text-blue-700">{newsjackerResults.articles?.length || 0}</p>
+                  <p className="text-2xl font-bold text-blue-700">
+                    {newsjackerResults.articles?.length || 0}
+                  </p>
                 </div>
                 <div className="p-4 bg-green-50 rounded-lg">
                   <h4 className="font-semibold text-green-900">Sources</h4>
-                  <p className="text-2xl font-bold text-green-700">{newsjackerResults.sources?.length || 0}</p>
+                  <p className="text-2xl font-bold text-green-700">
+                    {newsjackerResults.sources?.length || 0}
+                  </p>
                 </div>
                 <div className="p-4 bg-blue-50 rounded-lg">
                   <h4 className="font-semibold text-blue-900">Top Sources</h4>
-                  <p className="text-sm text-blue-700">{newsjackerResults.sources?.slice(0, 3).join(', ') || 'N/A'}</p>
+                  <p className="text-sm text-blue-700">
+                    {newsjackerResults.sources?.slice(0, 3).join(', ') || 'N/A'}
+                  </p>
                 </div>
               </div>
-              
+
               {newsjackerResults.articles && newsjackerResults.articles.length > 0 && (
                 <div>
                   <h4 className="font-semibold mb-3">Top Stories This Week</h4>
@@ -601,14 +636,18 @@ export default function NewsletterDashboard() {
                             <h5 className="font-medium text-sm">{article.title}</h5>
                             <p className="text-xs text-gray-600 mt-1">{article.excerpt}</p>
                             <div className="flex items-center gap-2 mt-2">
-                              <Badge variant="outline" className="text-xs">{article.source}</Badge>
-                              <span className="text-xs text-gray-500">Score: {article.relevanceScore}</span>
+                              <Badge variant="outline" className="text-xs">
+                                {article.source}
+                              </Badge>
+                              <span className="text-xs text-gray-500">
+                                Score: {article.relevanceScore}
+                              </span>
                             </div>
                           </div>
                           {article.url && (
-                            <a 
-                              href={article.url} 
-                              target="_blank" 
+                            <a
+                              href={article.url}
+                              target="_blank"
                               rel="noopener noreferrer"
                               className="text-blue-600 hover:text-blue-800 text-xs ml-2"
                             >
@@ -632,14 +671,15 @@ export default function NewsletterDashboard() {
               <Calendar className="h-5 w-5" />
               Recent Issues
             </CardTitle>
-            <CardDescription>
-              Track your newsletter performance over time
-            </CardDescription>
+            <CardDescription>Track your newsletter performance over time</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {[1, 2, 3].map((issue) => (
-                <div key={issue} className="flex items-center justify-between p-4 border rounded-lg">
+              {[1, 2, 3].map(issue => (
+                <div
+                  key={issue}
+                  className="flex items-center justify-between p-4 border rounded-lg"
+                >
                   <div>
                     <h4 className="font-semibold">Issue #{issue}</h4>
                     <p className="text-sm text-gray-600">Published 2 weeks ago</p>
@@ -655,5 +695,5 @@ export default function NewsletterDashboard() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

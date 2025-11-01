@@ -9,7 +9,7 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user).email || 'demo-user';
+    const userId = session.user.email || 'demo-user';
 
     // Get total pitches
     const { count: totalPitches } = await supabaseAdmin
@@ -32,9 +32,10 @@ export async function GET(req: Request) {
       .eq('status', 'draft');
 
     // Calculate response rate (mock for now - would need actual response tracking)
-    const responseRate = sentPitches && sentPitches > 0 
-      ? Math.round((sentPitches * 0.15) * 10) / 10  // 15% mock response rate
-      : 0;
+    const responseRate =
+      sentPitches && sentPitches > 0
+        ? Math.round(sentPitches * 0.15 * 10) / 10 // 15% mock response rate
+        : 0;
 
     return NextResponse.json({
       stats: {
@@ -46,10 +47,6 @@ export async function GET(req: Request) {
     });
   } catch (error: any) {
     console.error('Stats API error:', error);
-    return NextResponse.json(
-      { error: error.message || 'Failed to fetch stats' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message || 'Failed to fetch stats' }, { status: 500 });
   }
 }
-

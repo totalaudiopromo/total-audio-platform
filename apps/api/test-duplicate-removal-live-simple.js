@@ -6,17 +6,18 @@ const readline = require('readline');
 // ========================================
 process.env.AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY || 'PLACEHOLDER_AIRTABLE_KEY';
 process.env.AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appx7uTQWRH8cIC20';
-process.env.AIRTABLE_CONTACTS_TABLE_ID = process.env.AIRTABLE_CONTACTS_TABLE_ID || 'tblcZnUsB4Swyjcip';
+process.env.AIRTABLE_CONTACTS_TABLE_ID =
+  process.env.AIRTABLE_CONTACTS_TABLE_ID || 'tblcZnUsB4Swyjcip';
 // ========================================
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 function askQuestion(question) {
-  return new Promise((resolve) => {
-    rl.question(question, (answer) => {
+  return new Promise(resolve => {
+    rl.question(question, answer => {
       resolve(answer);
     });
   });
@@ -36,8 +37,8 @@ async function liveDuplicateRemoval() {
     }
 
     const base = new Airtable({ apiKey }).base(baseId);
-    
-    console.log('🔍 First, let\'s run a dry run to see what would be deleted...\n');
+
+    console.log("🔍 First, let's run a dry run to see what would be deleted...\n");
 
     // Get all records
     const records = await base(contactsTableId)
@@ -50,7 +51,7 @@ async function liveDuplicateRemoval() {
 
     // Group by email
     const emailGroups = new Map();
-    
+
     records.forEach(record => {
       const email = record.fields.Email?.toString().toLowerCase().trim();
       if (email && email !== '') {
@@ -78,8 +79,18 @@ async function liveDuplicateRemoval() {
     }
 
     // Calculate completeness for each record
-    const importantFields = ['Name', 'Company', 'Role', 'Genre', 'Location', 'Email', 'Phone', 'Website', 'Notes'];
-    
+    const importantFields = [
+      'Name',
+      'Company',
+      'Role',
+      'Genre',
+      'Location',
+      'Email',
+      'Phone',
+      'Website',
+      'Notes',
+    ];
+
     function calculateCompleteness(record) {
       let filledFields = 0;
       importantFields.forEach(field => {
@@ -97,14 +108,14 @@ async function liveDuplicateRemoval() {
 
     console.log('\n📧 Sample Duplicate Groups:');
     console.log('=====================================');
-    
+
     let count = 0;
     duplicates.forEach((records, email) => {
       // Calculate completeness scores
       const recordsWithScores = records.map(record => ({
         record,
         completeness: calculateCompleteness(record),
-        created: record._rawJson.createdTime
+        created: record._rawJson.createdTime,
       }));
 
       // Sort by completeness (descending), then by creation date (descending)
@@ -117,10 +128,11 @@ async function liveDuplicateRemoval() {
 
       const keepRecord = recordsWithScores[0].record;
       const deleteRecords = recordsWithScores.slice(1).map(r => r.record);
-      
-      const reason = recordsWithScores[0].completeness > recordsWithScores[1].completeness
-        ? `Most complete record (${Math.round(recordsWithScores[0].completeness * 100)}% vs ${Math.round(recordsWithScores[1].completeness * 100)}%)`
-        : `Most recently created (${new Date(recordsWithScores[0].created).toLocaleDateString()})`;
+
+      const reason =
+        recordsWithScores[0].completeness > recordsWithScores[1].completeness
+          ? `Most complete record (${Math.round(recordsWithScores[0].completeness * 100)}% vs ${Math.round(recordsWithScores[1].completeness * 100)}%)`
+          : `Most recently created (${new Date(recordsWithScores[0].created).toLocaleDateString()})`;
 
       totalRecordsToDelete += deleteRecords.length;
       allRecordsToDelete.push(...deleteRecords);
@@ -142,7 +154,7 @@ async function liveDuplicateRemoval() {
           recordId: record.id,
           fields: record.fields,
           deletedAt: new Date().toISOString(),
-          reason: `Duplicate of ${keepRecord.id} (${reason})`
+          reason: `Duplicate of ${keepRecord.id} (${reason})`,
         });
       });
     });
@@ -161,7 +173,9 @@ async function liveDuplicateRemoval() {
     console.log('A backup file has been created with all records that would be deleted.');
     console.log('You can restore from the backup file if needed.\n');
 
-    const confirmation = await askQuestion('Are you sure you want to proceed with LIVE deletion? (yes/no): ');
+    const confirmation = await askQuestion(
+      'Are you sure you want to proceed with LIVE deletion? (yes/no): '
+    );
 
     if (confirmation.toLowerCase() !== 'yes') {
       console.log('\n❌ Operation cancelled by user.');
@@ -182,11 +196,11 @@ async function liveDuplicateRemoval() {
     // Delete records in batches
     const batchSize = 10;
     let deletedCount = 0;
-    
+
     for (let i = 0; i < allRecordsToDelete.length; i += batchSize) {
       const batch = allRecordsToDelete.slice(i, i + batchSize);
       const recordIds = batch.map(record => record.id);
-      
+
       try {
         await base(contactsTableId).destroy(recordIds);
         deletedCount += batch.length;
@@ -205,7 +219,6 @@ async function liveDuplicateRemoval() {
 
     console.log('\n💾 Backup file created with all deleted records.');
     console.log('You can use this backup to restore records if needed.');
-
   } catch (error) {
     console.error('❌ Error during live duplicate removal:', error);
     process.exit(1);

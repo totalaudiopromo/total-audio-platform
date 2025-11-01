@@ -44,12 +44,14 @@ npm run dev
 Then visit: http://localhost:3004/dashboard/integrations
 
 You should see:
+
 - Google Sheets integration card
 - Gmail integration card
 - Airtable integration card (ready for future)
 - Mailchimp integration card (ready for future)
 
 Click **"Connect Google Sheets"**:
+
 1. Google OAuth screen appears
 2. Select your account
 3. Click "Allow"
@@ -60,12 +62,14 @@ Click **"Connect Google Sheets"**:
 Your integrations system is now live. You can:
 
 ### Google Sheets
+
 - Sync campaigns to spreadsheets automatically
 - Edit in either Tracker or Sheet - changes sync both ways
 - Share campaign progress with clients/team
 - Auto-syncs every 15 minutes
 
 ### Gmail (Coming Soon)
+
 - Automatic reply detection
 - Campaign status updates
 - Never miss a follow-up
@@ -84,15 +88,18 @@ After connecting Google Sheets, check your Supabase database:
 ## 🚨 Troubleshooting
 
 ### Error: "redirect_uri_mismatch"
+
 - Check you added the exact URIs to Google Console
 - Must match exactly (no trailing slash, correct port 3004)
 - Make sure you saved changes in Google Console
 
 ### Error: "invalid_client"
+
 - Verify credentials copied correctly to .env.local
 - Restart dev server: `npm run dev`
 
 ### Connection shows but doesn't work
+
 - Check you enabled Google Sheets API in Cloud Console
 - Check you enabled Gmail API in Cloud Console
 - Go to: https://console.cloud.google.com/apis/library

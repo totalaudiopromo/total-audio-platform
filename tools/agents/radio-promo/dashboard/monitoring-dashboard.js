@@ -2,7 +2,7 @@
 
 /**
  * Real-time Monitoring Dashboard
- * 
+ *
  * Simple web dashboard to view play monitoring status
  * Shows live play alerts and analytics
  */
@@ -22,21 +22,21 @@ class MonitoringDashboard {
 
   async start() {
     console.log('🚀 Starting Real-time Monitoring Dashboard...');
-    
+
     // Initialize analytics agent
     await this.analyticsAgent.initialize();
-    
+
     // Create HTTP server
     this.server = http.createServer((req, res) => {
       this.handleRequest(req, res);
     });
-    
+
     // Start server
     this.server.listen(this.port, () => {
       console.log(`📊 Dashboard running at http://localhost:${this.port}`);
       console.log('🎵 Monitoring play alerts in real-time...');
     });
-    
+
     // Add alert callback for real-time updates
     this.analyticsAgent.monitor.addAlertCallback((config, newPlays) => {
       this.broadcastAlert(config, newPlays);
@@ -45,18 +45,18 @@ class MonitoringDashboard {
 
   handleRequest(req, res) {
     const url = req.url;
-    
+
     // CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    
+
     if (req.method === 'OPTIONS') {
       res.writeHead(200);
       res.end();
       return;
     }
-    
+
     if (url === '/') {
       this.serveDashboard(res);
     } else if (url === '/api/status') {
@@ -361,7 +361,7 @@ class MonitoringDashboard {
 </body>
 </html>
     `;
-    
+
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end(html);
   }
@@ -369,14 +369,14 @@ class MonitoringDashboard {
   serveStatus(res) {
     const status = this.analyticsAgent.getMonitoringStatus();
     const health = this.analyticsAgent.healthCheck();
-    
+
     Promise.resolve(health).then(healthData => {
       const response = {
         ...status,
         warmApi: healthData.monitoring?.warmApi || 'unknown',
-        lastChecked: new Date().toISOString()
+        lastChecked: new Date().toISOString(),
       };
-      
+
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify(response, null, 2));
     });
@@ -411,7 +411,7 @@ class MonitoringDashboard {
       this.server.close();
       console.log('🛑 Dashboard stopped');
     }
-    
+
     await this.analyticsAgent.shutdown();
   }
 }
@@ -420,7 +420,7 @@ class MonitoringDashboard {
 if (require.main === module) {
   const dashboard = new MonitoringDashboard();
   dashboard.start().catch(console.error);
-  
+
   // Graceful shutdown
   process.on('SIGINT', async () => {
     console.log('\n🛑 Shutting down dashboard...');

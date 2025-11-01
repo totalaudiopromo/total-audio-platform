@@ -29,7 +29,7 @@ export class LinkedInAPI implements SocialPlatform {
       // Get user profile to verify token
       const response = await fetch(`${this.apiUrl}/people/~`, {
         headers: {
-          'Authorization': `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${this.accessToken}`,
           'Content-Type': 'application/json',
         },
       });
@@ -67,7 +67,13 @@ export class LinkedInAPI implements SocialPlatform {
     }
 
     // LinkedIn prefers professional content
-    const professionalKeywords = ['music industry', 'business', 'professional', 'career', 'network'];
+    const professionalKeywords = [
+      'music industry',
+      'business',
+      'professional',
+      'career',
+      'network',
+    ];
     const hasProfessionalTone = professionalKeywords.some(keyword =>
       content.text.toLowerCase().includes(keyword)
     );
@@ -83,7 +89,7 @@ export class LinkedInAPI implements SocialPlatform {
     if (!this.accessToken || !this.personId) {
       return {
         success: false,
-        error: 'Not authenticated with LinkedIn'
+        error: 'Not authenticated with LinkedIn',
       };
     }
 
@@ -94,7 +100,7 @@ export class LinkedInAPI implements SocialPlatform {
       if (this.recentPosts.includes(contentHash)) {
         return {
           success: false,
-          error: 'Duplicate content detected'
+          error: 'Duplicate content detected',
         };
       }
 
@@ -120,7 +126,7 @@ export class LinkedInAPI implements SocialPlatform {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${this.accessToken}`,
           'X-Restli-Protocol-Version': '2.0.0',
         },
         body: JSON.stringify(postData),
@@ -130,7 +136,7 @@ export class LinkedInAPI implements SocialPlatform {
         const error = await response.text();
         return {
           success: false,
-          error: `LinkedIn API error: ${error}`
+          error: `LinkedIn API error: ${error}`,
         };
       }
 
@@ -153,14 +159,14 @@ export class LinkedInAPI implements SocialPlatform {
           duplicateCheck: false,
           platformSpecific: {
             personId: this.personId,
-            ugcPostId: result.id
-          }
-        }
+            ugcPostId: result.id,
+          },
+        },
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -175,7 +181,7 @@ export class LinkedInAPI implements SocialPlatform {
         `${this.apiUrl}/ugcPosts?q=authors&authors=List(urn:li:person:${this.personId})&count=${limit}`,
         {
           headers: {
-            'Authorization': `Bearer ${this.accessToken}`,
+            Authorization: `Bearer ${this.accessToken}`,
             'X-Restli-Protocol-Version': '2.0.0',
           },
         }

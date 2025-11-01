@@ -1,10 +1,11 @@
 ---
-title: "TDD Planning System - Complete Implementation"
+title: 'TDD Planning System - Complete Implementation'
 notion_url: https://www.notion.so/TDD-Planning-System-Complete-Implementation-2610a35b21ed8199856fffaf3320e202
 exported_at: 2025-09-26T14:32:53.151Z
 ---
 
 # TDD Planning System - Complete Implementation
+
 # TDD Planning System - Family-Friendly Development Workflow
 
 _Lightweight planning system that enhances your existing 25-agent workflow_

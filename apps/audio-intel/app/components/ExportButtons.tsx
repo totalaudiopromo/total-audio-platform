@@ -3,9 +3,9 @@ import { exportToCsv } from '@/utils/exportToCsv';
 // import { exportToExcel } from '@/utils/exportToExcel';
 
 interface ExportButtonsProps {
-  enriched: Array<{ 
-    name: string; 
-    email: string; 
+  enriched: Array<{
+    name: string;
+    email: string;
     contactIntelligence: string;
     researchConfidence?: string;
     lastResearched?: string;
@@ -16,12 +16,20 @@ interface ExportButtonsProps {
   onExport?: (format: string, enrichedCount: number) => void;
   fields?: string[]; // which columns to include
   columns?: { key: string; header: string }[]; // per-contact mapping
-  formatPreference?: 'csv'|'excel'|'pdf';
+  formatPreference?: 'csv' | 'excel' | 'pdf';
   delimiter?: ',' | ';' | '\t';
   includeHeaders?: boolean;
 }
 
-export default function ExportButtons({ enriched, onExport, fields, columns, formatPreference = 'csv', delimiter = ',', includeHeaders = true }: ExportButtonsProps) {
+export default function ExportButtons({
+  enriched,
+  onExport,
+  fields,
+  columns,
+  formatPreference = 'csv',
+  delimiter = ',',
+  includeHeaders = true,
+}: ExportButtonsProps) {
   const [error, setError] = useState<string | null>(null);
 
   // Minimal analytics error tracker
@@ -32,7 +40,10 @@ export default function ExportButtons({ enriched, onExport, fields, columns, for
     fetch('/api/analytics', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ event: 'error', data: { errorType, details, timestamp: new Date().toISOString() } }),
+      body: JSON.stringify({
+        event: 'error',
+        data: { errorType, details, timestamp: new Date().toISOString() },
+      }),
     });
   }
 
@@ -75,7 +86,7 @@ export default function ExportButtons({ enriched, onExport, fields, columns, for
         </div>
       )}
       <div className="flex gap-4">
-        {(formatPreference === 'csv') && (
+        {formatPreference === 'csv' && (
           <button
             onClick={handleExportCsv}
             className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold shadow w-full"
@@ -83,7 +94,7 @@ export default function ExportButtons({ enriched, onExport, fields, columns, for
             Export as CSV
           </button>
         )}
-        {(formatPreference === 'excel') && (
+        {formatPreference === 'excel' && (
           <button
             onClick={handleExportExcel}
             className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 font-semibold shadow w-full"
@@ -91,9 +102,11 @@ export default function ExportButtons({ enriched, onExport, fields, columns, for
             Export as Excel
           </button>
         )}
-        {(formatPreference === 'pdf') && (
+        {formatPreference === 'pdf' && (
           <button
-            onClick={() => alert('PDF export coming soon in this flow. Use Professional Export System for PDFs.')}
+            onClick={() =>
+              alert('PDF export coming soon in this flow. Use Professional Export System for PDFs.')
+            }
             className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold shadow w-full"
           >
             Export as PDF
@@ -102,4 +115,4 @@ export default function ExportButtons({ enriched, onExport, fields, columns, for
       </div>
     </div>
   );
-} 
+}

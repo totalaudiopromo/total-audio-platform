@@ -3,17 +3,17 @@
  * Clean, observable, testable contact enrichment
  */
 
-import { NextRequest, NextResponse } from 'next/server'
-import { Agents } from '@/agents'
+import { NextRequest, NextResponse } from 'next/server';
+import { Agents } from '@/agents';
 
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
 export async function POST(req: NextRequest) {
-  const start = Date.now()
+  const start = Date.now();
 
   try {
-    const body = await req.json()
-    const contacts = body.contacts || []
+    const body = await req.json();
+    const contacts = body.contacts || [];
 
     if (!Array.isArray(contacts) || contacts.length === 0) {
       return NextResponse.json(
@@ -22,13 +22,13 @@ export async function POST(req: NextRequest) {
           error: 'No contacts provided',
         },
         { status: 400 }
-      )
+      );
     }
 
     // Use IntelAgent for clean, observable enrichment
-    const results = []
-    let successCount = 0
-    let cacheHitCount = 0
+    const results = [];
+    let successCount = 0;
+    let cacheHitCount = 0;
 
     for (const contact of contacts) {
       const result = await Agents.intel.execute({
@@ -36,10 +36,10 @@ export async function POST(req: NextRequest) {
         genre: contact.genre,
         region: contact.region || 'UK',
         includeLabels: false, // Just contacts for now
-      })
+      });
 
       if (result.success) {
-        successCount++
+        successCount++;
 
         // Transform IntelAgent response to match expected format
         const enrichedContact = {
@@ -47,9 +47,9 @@ export async function POST(req: NextRequest) {
           intelligence: result.data.contacts[0]?.contactIntelligence || 'No intelligence found',
           confidence: result.data.validation?.score > 0.7 ? 'High' : 'Medium',
           lastResearched: new Date().toISOString(),
-        }
+        };
 
-        results.push(enrichedContact)
+        results.push(enrichedContact);
       } else {
         // Fallback for failed enrichment
         results.push({
@@ -58,13 +58,13 @@ export async function POST(req: NextRequest) {
           confidence: 'Low',
           lastResearched: new Date().toISOString(),
           errors: [result.error],
-        })
+        });
       }
     }
 
-    const elapsed = ((Date.now() - start) / 1000).toFixed(1)
-    const successRate = Math.round((successCount / contacts.length) * 100)
-    const estimatedCost = (contacts.length * 0.003).toFixed(3)
+    const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+    const successRate = Math.round((successCount / contacts.length) * 100);
+    const estimatedCost = (contacts.length * 0.003).toFixed(3);
 
     return NextResponse.json({
       success: true,
@@ -81,10 +81,10 @@ export async function POST(req: NextRequest) {
         averageResponseTime: `${elapsed}s for ${contacts.length} contacts`,
         costPerContact: '$0.003',
       },
-    })
+    });
   } catch (error: any) {
-    console.error('Claude enrichment API error:', error)
-    const elapsed = ((Date.now() - start) / 1000).toFixed(1)
+    console.error('Claude enrichment API error:', error);
+    const elapsed = ((Date.now() - start) / 1000).toFixed(1);
 
     return NextResponse.json(
       {
@@ -93,7 +93,7 @@ export async function POST(req: NextRequest) {
         elapsed,
       },
       { status: 500 }
-    )
+    );
   }
 }
 
@@ -110,5 +110,5 @@ export async function GET() {
     ],
     status: 'Ready',
     agentVersion: '1.0.0',
-  })
+  });
 }

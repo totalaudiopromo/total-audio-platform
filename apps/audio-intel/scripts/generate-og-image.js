@@ -9,7 +9,7 @@ async function generateOGImage() {
 
   const browser = await puppeteer.launch({
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
 
   try {
@@ -30,7 +30,7 @@ async function generateOGImage() {
     const screenshot = await page.screenshot({
       type: 'jpeg',
       quality: 95,
-      fullPage: false
+      fullPage: false,
     });
 
     // Save as og-image.jpg
@@ -39,7 +39,6 @@ async function generateOGImage() {
 
     console.log('✅ Open Graph image generated successfully!');
     console.log(`💾 Saved to: ${outputPath}`);
-
   } catch (error) {
     console.error('❌ Error generating Open Graph image:', error);
   } finally {

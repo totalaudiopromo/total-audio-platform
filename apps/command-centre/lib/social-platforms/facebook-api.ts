@@ -64,9 +64,7 @@ export class FacebookAPI implements SocialPlatform {
 
     // Facebook algorithm prefers engaging content
     const engagementWords = ['question', 'what', 'how', 'why', 'share', 'thoughts', 'experience'];
-    const hasEngagement = engagementWords.some(word =>
-      content.text.toLowerCase().includes(word)
-    );
+    const hasEngagement = engagementWords.some(word => content.text.toLowerCase().includes(word));
 
     if (!hasEngagement) {
       warnings.push('Consider adding engaging elements (questions, calls to action)');
@@ -79,7 +77,7 @@ export class FacebookAPI implements SocialPlatform {
     if (!this.accessToken || !this.pageId) {
       return {
         success: false,
-        error: 'Not authenticated with Facebook'
+        error: 'Not authenticated with Facebook',
       };
     }
 
@@ -90,7 +88,7 @@ export class FacebookAPI implements SocialPlatform {
       if (this.recentPosts.includes(contentHash)) {
         return {
           success: false,
-          error: 'Duplicate content detected'
+          error: 'Duplicate content detected',
         };
       }
 
@@ -120,7 +118,7 @@ export class FacebookAPI implements SocialPlatform {
         const error = await response.text();
         return {
           success: false,
-          error: `Facebook API error: ${error}`
+          error: `Facebook API error: ${error}`,
         };
       }
 
@@ -145,14 +143,14 @@ export class FacebookAPI implements SocialPlatform {
           platformSpecific: {
             pageId: this.pageId,
             postId: result.id,
-            scheduled: !!content.scheduledTime
-          }
-        }
+            scheduled: !!content.scheduledTime,
+          },
+        },
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }

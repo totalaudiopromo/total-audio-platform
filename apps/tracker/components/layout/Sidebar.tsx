@@ -2,7 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { HomeIcon, RocketLaunchIcon, ChartBarIcon, CogIcon, PlayIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
+import {
+  HomeIcon,
+  RocketLaunchIcon,
+  ChartBarIcon,
+  CogIcon,
+  PlayIcon,
+  ArrowPathIcon,
+} from '@heroicons/react/24/outline';
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -11,7 +18,11 @@ export function Sidebar() {
     { href: '/', label: 'Dashboard', icon: HomeIcon },
     { href: '/campaigns', label: 'Campaigns', icon: RocketLaunchIcon },
     { href: '/analytics', label: 'Analytics', icon: ChartBarIcon },
-    { href: '/dashboard/integrations', label: 'Integrations', icon: ArrowPathIcon },
+    {
+      href: '/dashboard/integrations',
+      label: 'Integrations',
+      icon: ArrowPathIcon,
+    },
     { href: '/billing', label: 'Billing', icon: CogIcon },
   ];
 
@@ -34,7 +45,7 @@ export function Sidebar() {
       </div>
 
       <nav className="space-y-2">
-        {navItems.map((item) => {
+        {navItems.map(item => {
           const Icon = item.icon;
           const active = isActive(item.href);
           return (
@@ -56,8 +67,12 @@ export function Sidebar() {
 
       <div className="absolute bottom-6 left-6 right-6">
         <div className="bg-gradient-to-br from-teal-50 to-orange-50 dark:from-teal-900/20 dark:to-orange-900/20 rounded-xl p-4 border border-teal-200 dark:border-teal-800">
-          <p className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Upgrade to Pro</p>
-          <p className="text-xs text-slate-600 dark:text-slate-400 mb-3">Unlock advanced analytics & unlimited campaigns</p>
+          <p className="text-sm font-semibold text-slate-900 dark:text-white mb-1">
+            Upgrade to Pro
+          </p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mb-3">
+            Unlock advanced analytics & unlimited campaigns
+          </p>
           <Link
             href="/billing"
             className="block text-center px-4 py-2 bg-gradient-to-r from-teal-600 to-orange-600 text-white rounded-lg text-sm font-semibold hover:from-teal-700 hover:to-orange-700 transition-all"
@@ -69,14 +84,3 @@ export function Sidebar() {
     </aside>
   );
 }
-
-
-
-
-
-
-
-
-
-
-

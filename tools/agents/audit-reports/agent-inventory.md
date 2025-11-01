@@ -1,4 +1,5 @@
 # TOTAL AUDIO AGENT SYSTEM AUDIT
+
 **Date**: 2 October 2025
 **Auditor**: Claude Code
 **Project**: Total Audio Platform (Audio Intel, Playlist Pulse, Command Centre)
@@ -19,6 +20,7 @@
 ### 1. CORE TECHNICAL AGENTS (Priority 1)
 
 #### 1.1 Contact Agent
+
 - **File**: `core-agents/technical/contact-agent.js`
 - **Purpose**: Contact enrichment, deduplication, relationship tracking
 - **Current SDK Usage**: ❌ No Anthropic SDK
@@ -36,6 +38,7 @@
 - **Estimated Impact**: Revenue-critical (Audio Intel core feature)
 
 #### 1.2 Database Agent
+
 - **File**: `core-agents/technical/database-agent.js`
 - **Purpose**: Database operations, migrations, data integrity
 - **Current SDK Usage**: ❌ No Anthropic SDK needed
@@ -43,6 +46,7 @@
 - **Upgrade Priority**: ⚪ N/A (database utility, no AI needed)
 
 #### 1.3 Agent Manager
+
 - **File**: `core-agents/technical/agent-manager.js`
 - **Purpose**: Orchestrate all 40+ agents
 - **Current SDK Usage**: ❌ No Anthropic SDK
@@ -55,6 +59,7 @@
 - **Estimated Impact**: System-wide observability
 
 #### 1.4 Agent Dashboard
+
 - **File**: `core-agents/technical/agent-dashboard.js`
 - **Purpose**: Web UI for agent monitoring
 - **Current SDK Usage**: ❌ No SDK needed (UI layer)
@@ -65,6 +70,7 @@
 ### 2. CAMPAIGN & BUSINESS AGENTS (Priority 2)
 
 #### 2.1 Campaign Agent
+
 - **File**: `core-agents/radio-promo/campaign-agent.js`
 - **Purpose**: Music campaign management
 - **Current SDK Usage**: ⚠️ Limited usage
@@ -76,18 +82,21 @@
   - Cached context for music industry knowledge
 
 #### 2.2 Agency Agent
+
 - **File**: `core-agents/business/agency-agent.js`
 - **Purpose**: PR agency workflow automation
 - **Current SDK Usage**: ⚠️ Basic usage
 - **Upgrade Priority**: 🟡 MEDIUM
 
 #### 2.3 Analytics Agent
+
 - **File**: `core-agents/business/analytics-agent.js`
 - **Purpose**: Performance analytics and reporting
 - **Current SDK Usage**: ❌ No SDK
 - **Upgrade Priority**: 🟡 MEDIUM
 
 #### 2.4 SaaS Marketing Agent
+
 - **File**: `core-agents/business/chris-saas-marketing-agent.js`
 - **Purpose**: Customer acquisition and marketing automation
 - **Current SDK Usage**: ❌ No SDK
@@ -98,6 +107,7 @@
 ### 3. CONTENT GENERATION AGENTS (Priority 3)
 
 #### 3.1 Content Generation Agent
+
 - **File**: `core-agents/content/content-generation-agent.js`
 - **Purpose**: General content creation
 - **Current SDK Usage**: ❌ No SDK
@@ -108,30 +118,35 @@
   - Extended thinking for creative strategy
 
 #### 3.2 Newsletter Automation Agent
+
 - **File**: `core-agents/content/newsletter-automation-agent.js`
 - **Purpose**: "The Unsigned Advantage" newsletter generation
 - **Current SDK Usage**: ❌ No SDK
 - **Upgrade Priority**: 🟠 HIGH (active newsletter system)
 
 #### 3.3 Social Media Agent
+
 - **File**: `core-agents/content/social-media-agent.js`
 - **Purpose**: Twitter, LinkedIn, BlueSky automation
 - **Current SDK Usage**: ❌ No SDK
 - **Upgrade Priority**: 🟡 MEDIUM
 
 #### 3.4 Newsjacking Agent
+
 - **File**: `core-agents/content/newsjacking-agent.js`
 - **Purpose**: News-based content generation
 - **Current SDK Usage**: ❌ No SDK
 - **Upgrade Priority**: 🟡 MEDIUM
 
 #### 3.5 Audio Intel Content Agent
+
 - **File**: `core-agents/content/audio-intel-content-agent.js`
 - **Purpose**: Product-specific content
 - **Current SDK Usage**: ❌ No SDK
 - **Upgrade Priority**: 🟠 HIGH (customer acquisition)
 
 #### 3.6 Music Tech Agent
+
 - **File**: `core-agents/content/music-tech-agent.js`
 - **Purpose**: Music technology content
 - **Current SDK Usage**: ❌ No SDK
@@ -142,6 +157,7 @@
 ### 4. RADIO PROMO AGENTS (Priority 4)
 
 #### 4.1 Radio Promo Agent (Main)
+
 - **File**: `radio-promo-agent.js`
 - **Purpose**: Radio station outreach and DJ relationships
 - **Current SDK Usage**: ❌ No SDK
@@ -150,12 +166,14 @@
 - **Upgrade Priority**: 🟡 MEDIUM (Liberty Music PR workflow)
 
 #### 4.2 Radio Promo Orchestrator
+
 - **File**: `radio-promo/orchestrator.js`
 - **Purpose**: Coordinate radio promo sub-agents
 - **Current SDK Usage**: ❌ No SDK
 - **Upgrade Priority**: 🟡 MEDIUM
 
 #### 4.3 Radio Promo Sub-Agents (7 agents)
+
 - **Files**:
   - `radio-promo/agents/coverage-agent.js`
   - `radio-promo/agents/project-agent.js`
@@ -172,6 +190,7 @@
 ### 5. INTEGRATION & UTILITY AGENTS
 
 #### 5.1 Service Wrapper
+
 - **File**: `core-agents/content/service-wrapper.js`
 - **Purpose**: Interface to TypeScript backend services
 - **Current SDK Usage**: ✅ Has Anthropic SDK (ClaudeWrapper)
@@ -179,12 +198,14 @@
 - **Upgrade Priority**: ⚪ Reference for other agents
 
 #### 5.2 Integration Agent
+
 - **File**: `utilities/integration-agent.js`
 - **Purpose**: Third-party API integrations
 - **Current SDK Usage**: ❌ No SDK
 - **Upgrade Priority**: 🟢 LOW
 
 #### 5.3 Memory Persistence Agent
+
 - **File**: `utilities/memory-persistence-agent.js`
 - **Purpose**: Session memory and context persistence
 - **Current SDK Usage**: ❌ No SDK
@@ -195,12 +216,14 @@
 ### 6. ARCHIVED AGENTS (Reference Only)
 
 #### 6.1 Orchestrator Real (Archived)
+
 - **File**: `archive/working/orchestrator-real.js`
 - **Purpose**: Original orchestrator implementation
 - **Status**: Archived but potentially has useful patterns
 - **Upgrade Priority**: ⚪ Reference only
 
 #### 6.2 TDD Agents (Archived)
+
 - **Files**:
   - `archive/working/tdd-component-selector.js`
   - `archive/working/tdd-implementation-planner.js`
@@ -211,12 +234,14 @@
 - **Upgrade Priority**: 🟡 MEDIUM (if TDD workflow reactivated)
 
 #### 6.3 TypeScript Specialist (Archived)
+
 - **File**: `archive/working/total-audio-typescript-specialist.js`
 - **Purpose**: TypeScript code generation and refactoring
 - **Status**: Archived, 26KB
 - **Upgrade Priority**: 🟢 LOW
 
 #### 6.4 UI Designer (Archived)
+
 - **File**: `archive/working/total-audio-ui-designer.js`
 - **Purpose**: UI/UX design and component generation
 - **Status**: Archived, 20KB
@@ -233,6 +258,7 @@
 **Upgrade Priority**: 🟡 MEDIUM (support customer acquisition)
 
 Key files:
+
 - `gmail-liberty-setup.js` - Liberty Music PR automation
 - `gmail-newsletter-integration.js` - Newsletter system
 - Various cleanup and migration scripts
@@ -253,6 +279,7 @@ Key files:
 ### Current Implementation Patterns
 
 **Pattern A: No SDK (36 agents)**
+
 ```javascript
 // Manual API calls or no AI at all
 class ContactAgent {
@@ -264,6 +291,7 @@ class ContactAgent {
 ```
 
 **Pattern B: Basic SDK Usage (4 agents)**
+
 ```javascript
 const Anthropic = require('@anthropic-ai/sdk');
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
@@ -272,7 +300,7 @@ const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const response = await anthropic.messages.create({
   model: 'claude-sonnet-4-20250514',
   max_tokens: 1024,
-  messages: [{ role: 'user', content: prompt }]
+  messages: [{ role: 'user', content: prompt }],
 });
 ```
 

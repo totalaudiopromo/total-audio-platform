@@ -7,7 +7,7 @@ const testCampaign = {
   budget: 450,
   target_reach: 20,
   actual_reach: 25,
-  status: 'active'
+  status: 'active',
 };
 
 console.log('Test campaign data:');

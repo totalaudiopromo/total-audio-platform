@@ -3,8 +3,12 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { UserCircleIcon, BellIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
-import { createClient } from '@/lib/supabase/client';
+import {
+  UserCircleIcon,
+  BellIcon,
+  ArrowRightOnRectangleIcon,
+} from '@heroicons/react/24/outline';
+import { createClient } from '@total-audio/core-db/client';
 
 export function Header({ userName }: { userName: string }) {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -37,9 +41,7 @@ export function Header({ userName }: { userName: string }) {
             height={32}
             className="object-contain"
           />
-          <h1 className="text-xl font-black text-black">
-            Tracker
-          </h1>
+          <h1 className="text-xl font-black text-black">Tracker</h1>
         </div>
 
         <div className="relative">
@@ -72,14 +74,3 @@ export function Header({ userName }: { userName: string }) {
     </header>
   );
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -9,8 +9,10 @@ const { createClient } = require('@supabase/supabase-js');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '../../../../apps/tracker/.env.local') });
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ucncbighzqudaszewjrv.supabase.co';
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseUrl =
+  process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ucncbighzqudaszewjrv.supabase.co';
+const supabaseKey =
+  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -65,8 +67,8 @@ const ACTIVITIES = [
     metadata: {
       contacts: 15,
       region: 'Australia',
-      targets: ['Triple J', 'Triple R', 'PBS FM', 'KIIS', 'FBi Radio']
-    }
+      targets: ['Triple J', 'Triple R', 'PBS FM', 'KIIS', 'FBi Radio'],
+    },
   },
   {
     activity_type: 'email_sent',
@@ -75,8 +77,8 @@ const ACTIVITIES = [
     metadata: {
       tool: 'Gmail API',
       drafts: 5,
-      contacts: ['Anika Luna', 'Claire Mooney', 'Simon Winkler', 'Firas', 'KIIS Music Team']
-    }
+      contacts: ['Anika Luna', 'Claire Mooney', 'Simon Winkler', 'Firas', 'KIIS Music Team'],
+    },
   },
   {
     activity_type: 'response',
@@ -85,8 +87,8 @@ const ACTIVITIES = [
     metadata: {
       station: 'Amazing Radio',
       region: 'UK',
-      status: 'CONFIRMED ADD'
-    }
+      status: 'CONFIRMED ADD',
+    },
   },
   {
     activity_type: 'milestone',
@@ -96,8 +98,8 @@ const ACTIVITIES = [
       plays: 85,
       countries: 9,
       stations: 12,
-      source: 'WARM API'
-    }
+      source: 'WARM API',
+    },
   },
   {
     activity_type: 'email_sent',
@@ -107,8 +109,8 @@ const ACTIVITIES = [
       tool: 'Mailchimp',
       recipients: 20,
       region: 'UK',
-      targets: ['BBC Radio 1', 'BBC 6 Music', 'Community Radio']
-    }
+      targets: ['BBC Radio 1', 'BBC 6 Music', 'Community Radio'],
+    },
   },
   {
     activity_type: 'scheduled',
@@ -118,9 +120,9 @@ const ACTIVITIES = [
       scheduled_for: '2025-10-14T07:00:00+10:00',
       recipients: 30,
       type: 'Release day announcement',
-      regions: ['Australia', 'UK']
-    }
-  }
+      regions: ['Australia', 'UK'],
+    },
+  },
 ];
 
 async function run() {
@@ -159,11 +161,10 @@ async function run() {
 
     // Insert activities
     console.log('📅 Adding 6 timeline activities...\n');
-    
+
     for (const activity of ACTIVITIES) {
-      const { error: actError } = await supabase
-        .from('campaign_activities')
-        .insert([{
+      const { error: actError } = await supabase.from('campaign_activities').insert([
+        {
           campaign_id: campaign.id,
           user_id: user.id,
           activity_type: activity.activity_type,
@@ -171,7 +172,8 @@ async function run() {
           activity_date: activity.activity_date,
           metadata: activity.metadata,
           created_at: new Date(activity.activity_date).toISOString(),
-        }]);
+        },
+      ]);
 
       if (actError) {
         console.log(`   ⚠️  ${activity.description} - ${actError.message}`);
@@ -187,14 +189,14 @@ async function run() {
     console.log('1. Visit: https://tracker.totalaudiopromo.com/dashboard');
     console.log('2. See KYARA - Bloodshot campaign with 6 activities');
     console.log('3. Demo to Dan on Friday! 🚀\n');
-
   } catch (error) {
     console.error('❌ Error:', error.message);
   }
 }
 
-run().then(() => process.exit(0)).catch(e => {
-  console.error(e);
-  process.exit(1);
-});
-
+run()
+  .then(() => process.exit(0))
+  .catch(e => {
+    console.error(e);
+    process.exit(1);
+  });

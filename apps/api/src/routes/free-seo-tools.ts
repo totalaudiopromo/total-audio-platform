@@ -6,20 +6,24 @@ const router = express.Router();
 const freeSEOService = new FreeSEOToolsService();
 
 // Middleware to handle validation errors
-const handleValidationErrors = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+const handleValidationErrors = (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({
       success: false,
       error: 'Validation failed',
-      details: errors.array()
+      details: errors.array(),
     });
   }
   return next();
 };
 
 // Get Google Trends data for a keyword
-router.get('/trends/:keyword', async (req: express.Request, res:express.Response) => {
+router.get('/trends/:keyword', async (req: express.Request, res: express.Response) => {
   try {
     const { keyword } = req.params;
     const { timeframe = 'today 12-m' } = req.query;
@@ -27,7 +31,7 @@ router.get('/trends/:keyword', async (req: express.Request, res:express.Response
     if (!keyword) {
       return res.status(400).json({
         success: false,
-        error: 'Keyword parameter is required'
+        error: 'Keyword parameter is required',
       });
     }
 
@@ -36,65 +40,69 @@ router.get('/trends/:keyword', async (req: express.Request, res:express.Response
     if (result.success) {
       return res.json({
         success: true,
-        data: result.data
+        data: result.data,
       });
     } else {
       return res.status(400).json({
         success: false,
-        error: result.error
+        error: result.error,
       });
     }
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
 
 // Get Search Console data for a domain
-router.get('/search-console/:domain', [
-  body('startDate').isISO8601().withMessage('Start date must be a valid ISO date'),
-  body('endDate').isISO8601().withMessage('End date must be a valid ISO date'),
-  handleValidationErrors
-], async (req: express.Request, res: express.Response) => {
-  try {
-    const { domain } = req.params;
-    const { startDate, endDate } = req.body as { startDate: string; endDate: string };
+router.get(
+  '/search-console/:domain',
+  [
+    body('startDate').isISO8601().withMessage('Start date must be a valid ISO date'),
+    body('endDate').isISO8601().withMessage('End date must be a valid ISO date'),
+    handleValidationErrors,
+  ],
+  async (req: express.Request, res: express.Response) => {
+    try {
+      const { domain } = req.params;
+      const { startDate, endDate } = req.body as { startDate: string; endDate: string };
 
-    if (!domain) {
-      return res.status(400).json({
+      if (!domain) {
+        return res.status(400).json({
+          success: false,
+          error: 'Domain parameter is required',
+        });
+      }
+
+      if (!startDate || !endDate) {
+        return res.status(400).json({
+          success: false,
+          error: 'Start date and end date are required',
+        });
+      }
+      const result = await freeSEOService.getSearchConsoleData(domain, startDate, endDate);
+
+      if (result.success) {
+        return res.json({
+          success: true,
+          data: result.data,
+        });
+      } else {
+        return res.status(400).json({
+          success: false,
+          error: result.error,
+        });
+      }
+    } catch (error) {
+      return res.status(500).json({
         success: false,
-        error: 'Domain parameter is required'
+        error: error instanceof Error ? error.message : 'Internal server error',
       });
     }
-
-    if (!startDate || !endDate) {
-      return res.status(400).json({
-        success: false,
-        error: 'Start date and end date are required'
-      });
-    }
-    const result = await freeSEOService.getSearchConsoleData(domain, startDate, endDate);
-
-    if (result.success) {
-      return res.json({
-        success: true,
-        data: result.data
-      });
-    } else {
-      return res.status(400).json({
-        success: false,
-        error: result.error
-      });
-    }
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
-    });
   }
-});
+);
 
 // Research keywords for a seed keyword
 router.get('/keywords/:seedKeyword', async (req: express.Request, res: express.Response) => {
@@ -104,7 +112,7 @@ router.get('/keywords/:seedKeyword', async (req: express.Request, res: express.R
     if (!seedKeyword) {
       return res.status(400).json({
         success: false,
-        error: 'Seed keyword parameter is required'
+        error: 'Seed keyword parameter is required',
       });
     }
 
@@ -113,18 +121,18 @@ router.get('/keywords/:seedKeyword', async (req: express.Request, res: express.R
     if (result.success) {
       return res.json({
         success: true,
-        data: result.data
+        data: result.data,
       });
     } else {
       return res.status(400).json({
         success: false,
-        error: result.error
+        error: result.error,
       });
     }
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -137,7 +145,7 @@ router.get('/competitors/:domain', async (req: express.Request, res: express.Res
     if (!domain) {
       return res.status(400).json({
         success: false,
-        error: 'Domain parameter is required'
+        error: 'Domain parameter is required',
       });
     }
 
@@ -146,18 +154,18 @@ router.get('/competitors/:domain', async (req: express.Request, res: express.Res
     if (result.success) {
       return res.json({
         success: true,
-        data: result.data
+        data: result.data,
       });
     } else {
       return res.status(400).json({
         success: false,
-        error: result.error
+        error: result.error,
       });
     }
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -170,7 +178,7 @@ router.get('/analyze/:domain', async (req: express.Request, res: express.Respons
     if (!domain) {
       return res.status(400).json({
         success: false,
-        error: 'Domain parameter is required'
+        error: 'Domain parameter is required',
       });
     }
 
@@ -179,18 +187,18 @@ router.get('/analyze/:domain', async (req: express.Request, res: express.Respons
     if (result.success) {
       return res.json({
         success: true,
-        analysis: result.analysis
+        analysis: result.analysis,
       });
     } else {
       return res.status(400).json({
         success: false,
-        error: result.error
+        error: result.error,
       });
     }
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -203,7 +211,7 @@ router.get('/report/:domain', async (req: express.Request, res: express.Response
     if (!domain) {
       return res.status(400).json({
         success: false,
-        error: 'Domain parameter is required'
+        error: 'Domain parameter is required',
       });
     }
 
@@ -212,18 +220,18 @@ router.get('/report/:domain', async (req: express.Request, res: express.Response
     if (result.success) {
       return res.json({
         success: true,
-        report: result.report
+        report: result.report,
       });
     } else {
       return res.status(400).json({
         success: false,
-        error: result.error
+        error: result.error,
       });
     }
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -236,7 +244,7 @@ router.get('/related-queries/:keyword', async (req: express.Request, res: expres
     if (!keyword) {
       return res.status(400).json({
         success: false,
-        error: 'Keyword parameter is required'
+        error: 'Keyword parameter is required',
       });
     }
 
@@ -248,13 +256,13 @@ router.get('/related-queries/:keyword', async (req: express.Request, res: expres
       success: true,
       data: {
         keyword,
-        relatedQueries
-      }
+        relatedQueries,
+      },
     });
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -267,7 +275,7 @@ router.get('/geographic-interest/:keyword', async (req: express.Request, res: ex
     if (!keyword) {
       return res.status(400).json({
         success: false,
-        error: 'Keyword parameter is required'
+        error: 'Keyword parameter is required',
       });
     }
 
@@ -277,13 +285,13 @@ router.get('/geographic-interest/:keyword', async (req: express.Request, res: ex
       success: true,
       data: {
         keyword,
-        geographicInterest
-      }
+        geographicInterest,
+      },
     });
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -296,7 +304,7 @@ router.get('/questions/:keyword', async (req: express.Request, res: express.Resp
     if (!keyword) {
       return res.status(400).json({
         success: false,
-        error: 'Keyword parameter is required'
+        error: 'Keyword parameter is required',
       });
     }
 
@@ -306,13 +314,13 @@ router.get('/questions/:keyword', async (req: express.Request, res: express.Resp
       success: true,
       data: {
         keyword,
-        questions
-      }
+        questions,
+      },
     });
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -325,7 +333,7 @@ router.get('/long-tail/:keyword', async (req: express.Request, res: express.Resp
     if (!keyword) {
       return res.status(400).json({
         success: false,
-        error: 'Keyword parameter is required'
+        error: 'Keyword parameter is required',
       });
     }
 
@@ -335,13 +343,13 @@ router.get('/long-tail/:keyword', async (req: express.Request, res: express.Resp
       success: true,
       data: {
         keyword,
-        longTailVariations
-      }
+        longTailVariations,
+      },
     });
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: error instanceof Error ? error.message : 'Internal server error',
     });
   }
 });
@@ -358,9 +366,9 @@ router.get('/health', (req: express.Request, res: express.Response) => {
       'Keyword Research',
       'Competitor Analysis',
       'Domain SEO Analysis',
-      'Comprehensive SEO Reports'
-    ]
+      'Comprehensive SEO Reports',
+    ],
   });
 });
 
-export default router; 
+export default router;

@@ -82,11 +82,11 @@ function testValidation() {
     const studies = getAllCaseStudiesSync();
     let allValid = true;
 
-    studies.forEach((study) => {
+    studies.forEach(study => {
       const validation = validateCaseStudy(study);
       if (!validation.valid) {
         console.error(`✗ Validation failed for ${study.topicSlug}:`);
-        validation.errors.forEach((error) => console.error(`    - ${error}`));
+        validation.errors.forEach(error => console.error(`    - ${error}`));
         allValid = false;
       }
     });
@@ -121,7 +121,11 @@ function testMetadataGeneration() {
       console.log(`  Keywords: ${keywords.substring(0, 80)}...`);
     }
 
-    if (metadata.openGraph && typeof metadata.openGraph === 'object' && 'title' in metadata.openGraph) {
+    if (
+      metadata.openGraph &&
+      typeof metadata.openGraph === 'object' &&
+      'title' in metadata.openGraph
+    ) {
       console.log(`\nOpenGraph:`);
       console.log(`  Title: ${metadata.openGraph.title}`);
       if ('locale' in metadata.openGraph) {
@@ -175,11 +179,14 @@ function testFilterFunctions() {
     const allStudies = getAllCaseStudiesSync();
 
     // Group by status
-    const statusGroups = allStudies.reduce((acc, study) => {
-      if (!acc[study.status]) acc[study.status] = [];
-      acc[study.status].push(study);
-      return acc;
-    }, {} as Record<string, EnrichedCaseStudyData[]>);
+    const statusGroups = allStudies.reduce(
+      (acc, study) => {
+        if (!acc[study.status]) acc[study.status] = [];
+        acc[study.status].push(study);
+        return acc;
+      },
+      {} as Record<string, EnrichedCaseStudyData[]>
+    );
 
     console.log('\nBy Status:');
     Object.entries(statusGroups).forEach(([status, studies]) => {
@@ -187,11 +194,14 @@ function testFilterFunctions() {
     });
 
     // Group by category
-    const categoryGroups = allStudies.reduce((acc, study) => {
-      if (!acc[study.category]) acc[study.category] = [];
-      acc[study.category].push(study);
-      return acc;
-    }, {} as Record<string, EnrichedCaseStudyData[]>);
+    const categoryGroups = allStudies.reduce(
+      (acc, study) => {
+        if (!acc[study.category]) acc[study.category] = [];
+        acc[study.category].push(study);
+        return acc;
+      },
+      {} as Record<string, EnrichedCaseStudyData[]>
+    );
 
     console.log('\nBy Category:');
     Object.entries(categoryGroups).forEach(([category, studies]) => {
@@ -199,11 +209,14 @@ function testFilterFunctions() {
     });
 
     // Group by tier
-    const tierGroups = allStudies.reduce((acc, study) => {
-      if (!acc[study.tier]) acc[study.tier] = [];
-      acc[study.tier].push(study);
-      return acc;
-    }, {} as Record<number, EnrichedCaseStudyData[]>);
+    const tierGroups = allStudies.reduce(
+      (acc, study) => {
+        if (!acc[study.tier]) acc[study.tier] = [];
+        acc[study.tier].push(study);
+        return acc;
+      },
+      {} as Record<number, EnrichedCaseStudyData[]>
+    );
 
     console.log('\nBy Tier:');
     Object.entries(tierGroups).forEach(([tier, studies]) => {
@@ -264,7 +277,7 @@ function runAllTests() {
     { name: 'Edge Cases', fn: testEdgeCases },
   ];
 
-  const results = tests.map((test) => ({
+  const results = tests.map(test => ({
     name: test.name,
     passed: test.fn(),
   }));
@@ -273,12 +286,12 @@ function runAllTests() {
   console.log('  Test Results');
   console.log('═══════════════════════════════════════════════════════');
 
-  results.forEach((result) => {
+  results.forEach(result => {
     const icon = result.passed ? '✓' : '✗';
     console.log(`${icon} ${result.name}`);
   });
 
-  const passedCount = results.filter((r) => r.passed).length;
+  const passedCount = results.filter(r => r.passed).length;
   const totalCount = results.length;
 
   console.log('\n═══════════════════════════════════════════════════════');

@@ -1,4 +1,4 @@
-import type { DualCTAData } from "@/types/case-study";
+import type { DualCTAData } from '@/types/case-study';
 
 interface DualCTAProps {
   data: DualCTAData;

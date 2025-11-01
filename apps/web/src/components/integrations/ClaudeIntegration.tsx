@@ -16,7 +16,7 @@ export default function ClaudeIntegration() {
     'pitch-email': 'Write a pitch email to [JOURNALIST] at [OUTLET] about [STORY] for [CLIENT].',
     'social-post': 'Create a social media post for [CLIENT] about [TOPIC] that engages [AUDIENCE].',
     'email-campaign': 'Write an email campaign for [CLIENT] targeting [AUDIENCE] about [TOPIC].',
-    'custom': ''
+    custom: '',
   };
 
   const handleTemplateChange = (template: string) => {
@@ -65,12 +65,17 @@ export default function ClaudeIntegration() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <button 
+              <button
                 onClick={() => window.history.back()}
                 className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
                 </svg>
                 Back to Integrations
               </button>
@@ -98,7 +103,7 @@ export default function ClaudeIntegration() {
           {/* Input Section */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200/50 p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Generate Content</h2>
-            
+
             {/* Template Selection */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -106,7 +111,7 @@ export default function ClaudeIntegration() {
               </label>
               <select
                 value={selectedTemplate}
-                onChange={(e) => handleTemplateChange(e.target.value)}
+                onChange={e => handleTemplateChange(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
                 <option value="custom">Custom Prompt</option>
@@ -125,7 +130,7 @@ export default function ClaudeIntegration() {
                 <textarea
                   id="prompt"
                   value={prompt}
-                  onChange={(e) => setPrompt(e.target.value)}
+                  onChange={e => setPrompt(e.target.value)}
                   rows={8}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                   placeholder="Describe what you want Claude to generate..."
@@ -167,7 +172,11 @@ export default function ClaudeIntegration() {
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                 <div className="flex items-center">
                   <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                   <span className="ml-2 text-red-800">{response.error}</span>
                 </div>
@@ -216,4 +225,4 @@ export default function ClaudeIntegration() {
       </div>
     </div>
   );
-} 
+}

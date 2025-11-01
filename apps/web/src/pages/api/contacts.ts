@@ -12,99 +12,99 @@ const sampleData = {
       fields: {
         'First Name': 'Sarah',
         'Last Name': 'Johnson',
-        'Email': 'sarah.johnson@musicweekly.com',
-        'Station': 'Music Weekly',
+        Email: 'sarah.johnson@musicweekly.com',
+        Station: 'Music Weekly',
         'Contact Type': 'Journalist',
-        'Status': 'Active',
+        Status: 'Active',
         'Last Engagement': '2024-01-15',
-        'Region': 'UK',
-        'Genres': ['Electronic', 'Dance', 'Pop'],
+        Region: 'UK',
+        Genres: ['Electronic', 'Dance', 'Pop'],
         'Publication Tier': 'Tier 1',
         'Contact Method': 'email',
         'Response Rate': 85,
         'Campaign Replies': 'Positive',
-        'Influencer': true,
-        'Press': true,
-        'Promo Reply': 'Positive'
-      }
+        Influencer: true,
+        Press: true,
+        'Promo Reply': 'Positive',
+      },
     },
     {
       id: 'rec2',
       fields: {
         'First Name': 'Mike',
         'Last Name': 'Chen',
-        'Email': 'mike.chen@beatsradio.com',
-        'Station': 'Beats Radio',
+        Email: 'mike.chen@beatsradio.com',
+        Station: 'Beats Radio',
         'Contact Type': 'DJ',
-        'Status': 'Active',
+        Status: 'Active',
         'Last Engagement': '2024-01-10',
-        'Region': 'USA',
-        'Genres': ['Hip-Hop', 'R&B / Soul'],
+        Region: 'USA',
+        Genres: ['Hip-Hop', 'R&B / Soul'],
         'Publication Tier': 'Tier 2',
         'Contact Method': 'phone',
         'Response Rate': 72,
-        'Radio': true,
-        'Playlisting': true
-      }
+        Radio: true,
+        Playlisting: true,
+      },
     },
     {
       id: 'rec3',
       fields: {
         'First Name': 'Emma',
         'Last Name': 'Rodriguez',
-        'Email': 'emma.rodriguez@indieblog.net',
-        'Station': 'Indie Blog',
+        Email: 'emma.rodriguez@indieblog.net',
+        Station: 'Indie Blog',
         'Contact Type': 'Blogger',
-        'Status': 'VIP',
+        Status: 'VIP',
         'Last Engagement': '2024-01-20',
-        'Region': 'EUROPE',
-        'Genres': ['Indie', 'Alternative', 'Rock'],
+        Region: 'EUROPE',
+        Genres: ['Indie', 'Alternative', 'Rock'],
         'Publication Tier': 'Tier 1',
         'Contact Method': 'social',
         'Response Rate': 95,
-        'Influencer': true,
-        'Press': true,
-        'Promo Reply': 'Positive'
-      }
+        Influencer: true,
+        Press: true,
+        'Promo Reply': 'Positive',
+      },
     },
     {
       id: 'rec4',
       fields: {
         'First Name': 'David',
         'Last Name': 'Thompson',
-        'Email': 'david.thompson@synthmag.com',
-        'Station': 'Synth Magazine',
+        Email: 'david.thompson@synthmag.com',
+        Station: 'Synth Magazine',
         'Contact Type': 'Editor',
-        'Status': 'Active',
+        Status: 'Active',
         'Last Engagement': '2024-01-05',
-        'Region': 'CANADA',
-        'Genres': ['Synthpop', 'Electronic', 'Experimental'],
+        Region: 'CANADA',
+        Genres: ['Synthpop', 'Electronic', 'Experimental'],
         'Publication Tier': 'Tier 3',
         'Contact Method': 'email',
         'Response Rate': 68,
-        'Press': true
-      }
+        Press: true,
+      },
     },
     {
       id: 'rec5',
       fields: {
         'First Name': 'Lisa',
         'Last Name': 'Wang',
-        'Email': 'lisa.wang@ambientzone.com',
-        'Station': 'Ambient Zone',
+        Email: 'lisa.wang@ambientzone.com',
+        Station: 'Ambient Zone',
         'Contact Type': 'Curator',
-        'Status': 'Active',
+        Status: 'Active',
         'Last Engagement': '2024-01-18',
-        'Region': 'AUSTRALIA',
-        'Genres': ['Ambient / Chill', 'Experimental'],
+        Region: 'AUSTRALIA',
+        Genres: ['Ambient / Chill', 'Experimental'],
         'Publication Tier': 'Tier 2',
         'Contact Method': 'email',
         'Response Rate': 88,
-        'Playlisting': true,
-        'Press': true
-      }
-    }
-  ]
+        Playlisting: true,
+        Press: true,
+      },
+    },
+  ],
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -130,7 +130,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.status(500).json({ error: error.message || 'Unknown error' });
   }
   */
-  
+
   // Return sample data for now
   res.status(200).json(sampleData);
-} 
+}

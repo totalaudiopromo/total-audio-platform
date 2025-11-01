@@ -27,7 +27,7 @@ export const BRAND_COLORS = {
     gray100: '#E5E7EB',
     gray600: '#4B5563',
     gray900: '#111827',
-  }
+  },
 } as const;
 
 // Typography System
@@ -37,12 +37,12 @@ export const TYPOGRAPHY = {
     mono: 'ui-monospace, "Cascadia Code", Monaco, consolas, monospace',
   },
   sizes: {
-    xs: '0.75rem',    // 12px
-    sm: '0.875rem',   // 14px
-    base: '1rem',     // 16px
-    lg: '1.125rem',   // 18px
-    xl: '1.25rem',    // 20px
-    '2xl': '1.5rem',  // 24px
+    xs: '0.75rem', // 12px
+    sm: '0.875rem', // 14px
+    base: '1rem', // 16px
+    lg: '1.125rem', // 18px
+    xl: '1.25rem', // 20px
+    '2xl': '1.5rem', // 24px
     '3xl': '1.875rem', // 30px
     '4xl': '2.25rem', // 36px
     '6xl': '3.75rem', // 60px
@@ -51,18 +51,18 @@ export const TYPOGRAPHY = {
     medium: 500,
     bold: 600,
     black: 900,
-  }
+  },
 } as const;
 
 // Spacing System (Tailwind compatible)
 export const SPACING = {
-  xs: '0.5rem',   // 8px
-  sm: '0.75rem',  // 12px
-  md: '1rem',     // 16px
-  lg: '1.5rem',   // 24px
-  xl: '2rem',     // 32px
-  '2xl': '3rem',  // 48px
-  '3xl': '4rem',  // 64px
+  xs: '0.5rem', // 8px
+  sm: '0.75rem', // 12px
+  md: '1rem', // 16px
+  lg: '1.5rem', // 24px
+  xl: '2rem', // 32px
+  '2xl': '3rem', // 48px
+  '3xl': '4rem', // 64px
 } as const;
 
 // Animation System
@@ -76,7 +76,7 @@ export const ANIMATIONS = {
     easeOut: 'cubic-bezier(0.23, 1, 0.32, 1)',
     easeIn: 'cubic-bezier(0.55, 0.055, 0.675, 0.19)',
     easeInOut: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
-  }
+  },
 } as const;
 
 // Loading State Configuration
@@ -86,15 +86,15 @@ export const LOADING_STATES = {
     processing: 'Analysing and cleaning your contact data...',
     analysing: 'Gathering music industry intelligence...',
     success: 'Contact enrichment completed successfully!',
-    error: 'Something went wrong. Let\'s try again.',
+    error: "Something went wrong. Let's try again.",
     export: 'Downloading your organised contact database...',
-    launch: 'Your music is flying out to all verified contacts!'
+    launch: 'Your music is flying out to all verified contacts!',
   },
   durations: {
     fast: 1000,
     normal: 2000,
     slow: 3000,
-  }
+  },
 } as const;
 
 // Button Variants System
@@ -116,7 +116,7 @@ export const BUTTON_VARIANTS = {
     hover: 'hover:bg-gray-100',
     text: 'text-gray-700 font-medium',
     transition: ANIMATIONS.transition.fast,
-  }
+  },
 } as const;
 
 // Card System
@@ -140,26 +140,26 @@ export const CARD_VARIANTS = {
     base: `bg-gradient-to-br from-red-50 to-pink-50 border-2 border-[${BRAND_COLORS.status.error}]`,
     hover: 'hover:scale-[1.02]',
     transition: ANIMATIONS.transition.normal,
-  }
+  },
 } as const;
 
 // UK Spelling Dictionary
 export const UK_SPELLING = {
-  'analyze': 'analyse',
-  'analyzing': 'analysing',
-  'analyzed': 'analysed',
-  'organize': 'organise',
-  'organizing': 'organising',
-  'organized': 'organised',
-  'color': 'colour',
-  'colors': 'colours',
-  'favorite': 'favourite',
-  'favorites': 'favourites',
-  'center': 'centre',
-  'theater': 'theatre',
-  'realize': 'realise',
-  'optimize': 'optimise',
-  'optimization': 'optimisation',
+  analyze: 'analyse',
+  analyzing: 'analysing',
+  analyzed: 'analysed',
+  organize: 'organise',
+  organizing: 'organising',
+  organized: 'organised',
+  color: 'colour',
+  colors: 'colours',
+  favorite: 'favourite',
+  favorites: 'favourites',
+  center: 'centre',
+  theater: 'theatre',
+  realize: 'realise',
+  optimize: 'optimise',
+  optimization: 'optimisation',
 } as const;
 
 // Utility Functions
@@ -170,12 +170,12 @@ export const brandUtils = {
   getColor: (colorPath: string, fallback: string = BRAND_COLORS.neutral.gray600) => {
     const paths = colorPath.split('.');
     let color: any = BRAND_COLORS;
-    
+
     for (const path of paths) {
       color = color?.[path];
       if (!color) return fallback;
     }
-    
+
     return color;
   },
 
@@ -218,12 +218,12 @@ export const COMMON_CLASSES = {
   // Buttons
   primaryButton: brandUtils.getButtonClasses('primary'),
   secondaryButton: brandUtils.getButtonClasses('secondary'),
-  
+
   // Cards
   defaultCard: brandUtils.getCardClasses('default'),
   elevatedCard: brandUtils.getCardClasses('elevated'),
   successCard: brandUtils.getCardClasses('success'),
-  
+
   // Typography
   heading1: `text-${TYPOGRAPHY.sizes['4xl']} font-${TYPOGRAPHY.weights.black} text-gray-900`,
   heading2: `text-${TYPOGRAPHY.sizes['3xl']} font-${TYPOGRAPHY.weights.bold} text-gray-900`,

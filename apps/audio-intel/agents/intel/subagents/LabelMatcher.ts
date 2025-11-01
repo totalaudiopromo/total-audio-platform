@@ -3,23 +3,23 @@
  * Matches releases to appropriate record labels based on genre, size, and artist fit
  */
 
-import type { SubAgentResult } from '../../core/AgentTypes'
+import type { SubAgentResult } from '../../core/AgentTypes';
 
 export interface LabelMatcherPayload {
-  artist: string
-  release: string
-  genre?: string
-  releaseType?: 'single' | 'ep' | 'album'
+  artist: string;
+  release: string;
+  genre?: string;
+  releaseType?: 'single' | 'ep' | 'album';
 }
 
 export interface Label {
-  name: string
-  size: 'major' | 'independent' | 'boutique'
-  genres: string[]
-  submissionEmail?: string
-  website?: string
-  matchScore: number
-  reasoning: string
+  name: string;
+  size: 'major' | 'independent' | 'boutique';
+  genres: string[];
+  submissionEmail?: string;
+  website?: string;
+  matchScore: number;
+  reasoning: string;
 }
 
 export class LabelMatcher {
@@ -28,13 +28,13 @@ export class LabelMatcher {
    */
   static async match(payload: LabelMatcherPayload): Promise<SubAgentResult> {
     try {
-      console.log('[LabelMatcher] Matching labels for:', payload.release)
+      console.log('[LabelMatcher] Matching labels for:', payload.release);
 
       // Query label database
-      const labels = await this.queryLabelDatabase(payload)
+      const labels = await this.queryLabelDatabase(payload);
 
       // Score and rank labels
-      const rankedLabels = this.rankLabels(labels, payload)
+      const rankedLabels = this.rankLabels(labels, payload);
 
       return {
         success: true,
@@ -42,23 +42,21 @@ export class LabelMatcher {
           labels: rankedLabels,
           count: rankedLabels.length,
         },
-      }
+      };
     } catch (error) {
       return {
         success: false,
         error: error instanceof Error ? error.message : 'Label matching failed',
-      }
+      };
     }
   }
 
   /**
    * Query label database
    */
-  private static async queryLabelDatabase(
-    payload: LabelMatcherPayload
-  ): Promise<Label[]> {
+  private static async queryLabelDatabase(payload: LabelMatcherPayload): Promise<Label[]> {
     // TODO: Integrate with label database
-    console.log('[LabelMatcher] Querying label database...')
+    console.log('[LabelMatcher] Querying label database...');
 
     return [
       {
@@ -70,13 +68,13 @@ export class LabelMatcher {
         matchScore: 0.85,
         reasoning: 'Strong genre match, artist-friendly ethos',
       },
-    ]
+    ];
   }
 
   /**
    * Rank labels by match quality
    */
   private static rankLabels(labels: Label[], payload: LabelMatcherPayload): Label[] {
-    return labels.sort((a, b) => b.matchScore - a.matchScore)
+    return labels.sort((a, b) => b.matchScore - a.matchScore);
   }
 }

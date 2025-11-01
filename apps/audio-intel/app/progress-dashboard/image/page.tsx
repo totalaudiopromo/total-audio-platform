@@ -1,16 +1,22 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useState, useRef, useEffect } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useState, useRef, useEffect } from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Slider } from '@/components/ui/slider';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import {
   Upload,
   Save,
@@ -26,130 +32,130 @@ import {
   Sparkles,
   MessageSquare,
   Loader2,
-} from "lucide-react"
+} from 'lucide-react';
 
 export default function ImageStudioPage() {
-  const [imageFile, setImageFile] = useState<File | null>(null)
-  const [imagePreview, setImagePreview] = useState<string | null>(null)
-  const [isProcessing, setIsProcessing] = useState(false)
-  const [aiPrompt, setAiPrompt] = useState("")
-  const [aiResponse, setAiResponse] = useState("")
-  const [activeFilter, setActiveFilter] = useState("none")
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [aiResponse, setAiResponse] = useState('');
+  const [activeFilter, setActiveFilter] = useState('none');
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0]
-      setImageFile(file)
+      const file = e.target.files[0];
+      setImageFile(file);
 
       // Create preview URL
-      const reader = new FileReader()
-      reader.onload = (e) => {
+      const reader = new FileReader();
+      reader.onload = e => {
         if (e.target?.result) {
-          setImagePreview(e.target.result as string)
+          setImagePreview(e.target.result as string);
         }
-      }
-      reader.readAsDataURL(file)
+      };
+      reader.readAsDataURL(file);
     }
-  }
+  };
 
   // Apply filter effect to canvas when filter changes
   useEffect(() => {
-    if (!imagePreview || !canvasRef.current) return
+    if (!imagePreview || !canvasRef.current) return;
 
-    const canvas = canvasRef.current
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    const img = new Image()
-    img.crossOrigin = "anonymous"
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
     img.onload = () => {
       // Set canvas dimensions to match image
-      canvas.width = img.width
-      canvas.height = img.height
+      canvas.width = img.width;
+      canvas.height = img.height;
 
       // Draw original image
-      ctx.drawImage(img, 0, 0)
+      ctx.drawImage(img, 0, 0);
 
       // Apply filter based on selection
       switch (activeFilter) {
-        case "grayscale":
-          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
-          const data = imageData.data
+        case 'grayscale':
+          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const data = imageData.data;
           for (let i = 0; i < data.length; i += 4) {
-            const avg = (data[i] + data[i + 1] + data[i + 2]) / 3
-            data[i] = avg // red
-            data[i + 1] = avg // green
-            data[i + 2] = avg // blue
+            const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+            data[i] = avg; // red
+            data[i + 1] = avg; // green
+            data[i + 2] = avg; // blue
           }
-          ctx.putImageData(imageData, 0, 0)
-          break
+          ctx.putImageData(imageData, 0, 0);
+          break;
 
-        case "sepia":
-          const sepiaData = ctx.getImageData(0, 0, canvas.width, canvas.height)
-          const sepiaPixels = sepiaData.data
+        case 'sepia':
+          const sepiaData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const sepiaPixels = sepiaData.data;
           for (let i = 0; i < sepiaPixels.length; i += 4) {
-            const r = sepiaPixels[i]
-            const g = sepiaPixels[i + 1]
-            const b = sepiaPixels[i + 2]
+            const r = sepiaPixels[i];
+            const g = sepiaPixels[i + 1];
+            const b = sepiaPixels[i + 2];
 
-            sepiaPixels[i] = Math.min(255, r * 0.393 + g * 0.769 + b * 0.189)
-            sepiaPixels[i + 1] = Math.min(255, r * 0.349 + g * 0.686 + b * 0.168)
-            sepiaPixels[i + 2] = Math.min(255, r * 0.272 + g * 0.534 + b * 0.131)
+            sepiaPixels[i] = Math.min(255, r * 0.393 + g * 0.769 + b * 0.189);
+            sepiaPixels[i + 1] = Math.min(255, r * 0.349 + g * 0.686 + b * 0.168);
+            sepiaPixels[i + 2] = Math.min(255, r * 0.272 + g * 0.534 + b * 0.131);
           }
-          ctx.putImageData(sepiaData, 0, 0)
-          break
+          ctx.putImageData(sepiaData, 0, 0);
+          break;
 
-        case "invert":
-          const invertData = ctx.getImageData(0, 0, canvas.width, canvas.height)
-          const invertPixels = invertData.data
+        case 'invert':
+          const invertData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const invertPixels = invertData.data;
           for (let i = 0; i < invertPixels.length; i += 4) {
-            invertPixels[i] = 255 - invertPixels[i] // red
-            invertPixels[i + 1] = 255 - invertPixels[i + 1] // green
-            invertPixels[i + 2] = 255 - invertPixels[i + 2] // blue
+            invertPixels[i] = 255 - invertPixels[i]; // red
+            invertPixels[i + 1] = 255 - invertPixels[i + 1]; // green
+            invertPixels[i + 2] = 255 - invertPixels[i + 2]; // blue
           }
-          ctx.putImageData(invertData, 0, 0)
-          break
+          ctx.putImageData(invertData, 0, 0);
+          break;
 
-        case "none":
+        case 'none':
         default:
           // No filter, already drawn original image
-          break
+          break;
       }
-    }
-    img.src = imagePreview
-  }, [imagePreview, activeFilter])
+    };
+    img.src = imagePreview;
+  }, [imagePreview, activeFilter]);
 
   const handleAIProcess = () => {
-    if (!aiPrompt.trim()) return
+    if (!aiPrompt.trim()) return;
 
-    setIsProcessing(true)
+    setIsProcessing(true);
 
     // Simulate AI processing
     setTimeout(() => {
       setAiResponse(
-        "I've analysed your image and made the following adjustments: enhanced colours, removed background distractions, and improved overall clarity. I've also applied a subtle vignette effect to draw focus to the main subject.",
-      )
-      setIsProcessing(false)
-    }, 2000)
-  }
+        "I've analysed your image and made the following adjustments: enhanced colours, removed background distractions, and improved overall clarity. I've also applied a subtle vignette effect to draw focus to the main subject."
+      );
+      setIsProcessing(false);
+    }, 2000);
+  };
 
   const handleAIGenerate = () => {
-    if (!aiPrompt.trim()) return
+    if (!aiPrompt.trim()) return;
 
-    setIsProcessing(true)
+    setIsProcessing(true);
 
     // Simulate AI processing
     setTimeout(() => {
       setAiResponse(
-        "I've generated a new image based on your prompt. The image features the elements you described with a cohesive style and composition. You can now edit this image further using the tools in the Image Studio.",
-      )
-      setIsProcessing(false)
+        "I've generated a new image based on your prompt. The image features the elements you described with a cohesive style and composition. You can now edit this image further using the tools in the Image Studio."
+      );
+      setIsProcessing(false);
 
       // Here we would normally set the generated image, but for this demo we'll just use a placeholder
       // In a real implementation, this would be the result from an image generation API
-    }, 2000)
-  }
+    }, 2000);
+  };
 
   return (
     <div>
@@ -179,7 +185,10 @@ export default function ImageStudioPage() {
                 <h3 className="text-xl font-bold mb-4">Image Source</h3>
                 {imagePreview ? (
                   <div className="border-4 border-black rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center mb-4">
-                    <canvas ref={canvasRef} className="max-w-full max-h-[300px] sm:max-h-[400px] object-contain" />
+                    <canvas
+                      ref={canvasRef}
+                      className="max-w-full max-h-[300px] sm:max-h-[400px] object-contain"
+                    />
                   </div>
                 ) : (
                   <div className="border-4 border-dashed border-black rounded-xl p-4 sm:p-8 text-center mb-4 aspect-video flex flex-col items-center justify-center">
@@ -188,7 +197,7 @@ export default function ImageStudioPage() {
                     <Button
                       variant="outline"
                       className="border-2 border-black rounded-xl font-bold"
-                      onClick={() => document.getElementById("image-upload")?.click()}
+                      onClick={() => document.getElementById('image-upload')?.click()}
                     >
                       <Upload className="h-4 w-4 mr-2" /> Select Image
                     </Button>
@@ -222,12 +231,14 @@ export default function ImageStudioPage() {
                 <h3 className="text-xl font-bold mb-4">AI Image Generation</h3>
                 <div className="space-y-4">
                   <div>
-                    <Label className="font-bold mb-2 block">Describe the image you want to create</Label>
+                    <Label className="font-bold mb-2 block">
+                      Describe the image you want to create
+                    </Label>
                     <Textarea
                       placeholder="E.g., A serene mountain landscape at sunset with a lake reflecting the colorful sky..."
                       className="min-h-[100px] border-2 border-black rounded-xl"
                       value={aiPrompt}
-                      onChange={(e) => setAiPrompt(e.target.value)}
+                      onChange={e => setAiPrompt(e.target.value)}
                     />
                   </div>
 
@@ -328,12 +339,14 @@ export default function ImageStudioPage() {
 
             <div className="space-y-4">
               <div>
-                <Label className="font-bold mb-2 block">What would you like to do with your image?</Label>
+                <Label className="font-bold mb-2 block">
+                  What would you like to do with your image?
+                </Label>
                 <Textarea
                   placeholder="E.g., Remove the background, enhance colors, make it look more professional..."
                   className="min-h-[80px] border-2 border-black rounded-xl"
                   value={aiPrompt}
-                  onChange={(e) => setAiPrompt(e.target.value)}
+                  onChange={e => setAiPrompt(e.target.value)}
                 />
               </div>
 
@@ -515,7 +528,10 @@ export default function ImageStudioPage() {
                 <Button className="w-full bg-black hover:bg-black/80 text-white rounded-xl border-2 border-black font-bold">
                   <Save className="h-4 w-4 mr-2" /> Save Project
                 </Button>
-                <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold">
+                <Button
+                  variant="outline"
+                  className="w-full border-2 border-black rounded-xl font-bold"
+                >
                   <Download className="h-4 w-4 mr-2" /> Export Image
                 </Button>
               </div>
@@ -524,5 +540,5 @@ export default function ImageStudioPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

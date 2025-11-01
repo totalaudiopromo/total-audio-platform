@@ -2,7 +2,7 @@
 
 /**
  * Test Google Services MCP Server for Liberty Music PR
- * 
+ *
  * Tests the MCP server functionality for Gmail, Drive, and Calendar
  */
 
@@ -10,10 +10,10 @@ const { GoogleServicesMCPServer } = require('./mcp-servers/google-services-mcp')
 
 async function testGoogleMCP() {
   console.log('🔧 Testing Google Services MCP Server...\n');
-  
+
   try {
     const mcpServer = new GoogleServicesMCPServer();
-    
+
     // Test 1: List tools
     console.log('1. Testing tool listing...');
     const tools = await mcpServer.listTools();
@@ -22,7 +22,7 @@ async function testGoogleMCP() {
       console.log(`   - ${tool.name}: ${tool.description}`);
     });
     console.log('');
-    
+
     // Test 2: List resources
     console.log('2. Testing resource listing...');
     const resources = mcpServer.listResources();
@@ -31,7 +31,7 @@ async function testGoogleMCP() {
       console.log(`   - ${resource.uri}: ${resource.name}`);
     });
     console.log('');
-    
+
     // Test 3: Check Gmail profile (if authenticated)
     if (mcpServer.gmail) {
       console.log('3. Testing Gmail profile...');
@@ -49,7 +49,7 @@ async function testGoogleMCP() {
       console.log('3. Gmail not authenticated - need to run OAuth flow');
       console.log('');
     }
-    
+
     // Test 4: Check Google Drive (if authenticated)
     if (mcpServer.drive) {
       console.log('4. Testing Google Drive...');
@@ -65,7 +65,7 @@ async function testGoogleMCP() {
       console.log('4. Google Drive not authenticated - need to run OAuth flow');
       console.log('');
     }
-    
+
     // Test 5: Check Google Calendar (if authenticated)
     if (mcpServer.calendar) {
       console.log('5. Testing Google Calendar...');
@@ -81,7 +81,7 @@ async function testGoogleMCP() {
       console.log('5. Google Calendar not authenticated - need to run OAuth flow');
       console.log('');
     }
-    
+
     console.log('🎉 Google Services MCP Server test complete!');
     console.log('');
     console.log('📋 Next steps:');
@@ -97,7 +97,6 @@ async function testGoogleMCP() {
     console.log('   - Ask Claude to search Gmail for campaign emails');
     console.log('   - Ask Claude to create calendar events');
     console.log('   - Ask Claude to search Google Drive');
-    
   } catch (error) {
     console.error('❌ MCP server test failed:', error.message);
     console.log('');

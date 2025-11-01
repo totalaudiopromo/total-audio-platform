@@ -4,7 +4,7 @@
  */
 
 import { google } from 'googleapis';
-import { createClient as createServerClient } from '@/lib/supabase-server';
+import { createClient as createServerClient } from '@total-audio/core-db/server';
 import { OAuthHandler } from './oauth-handler';
 
 export interface SendEmailParams {
@@ -44,7 +44,7 @@ export class GmailService {
     subject,
     body,
     pitchId,
-    userId
+    userId,
   }: SendEmailParams): Promise<SendEmailResult> {
     try {
       const supabase = await this.getSupabaseClient();
@@ -61,7 +61,7 @@ export class GmailService {
       if (connError || !connection) {
         return {
           success: false,
-          error: 'Gmail not connected. Please connect your Gmail account first.'
+          error: 'Gmail not connected. Please connect your Gmail account first.',
         };
       }
 
@@ -80,11 +80,12 @@ export class GmailService {
         'Content-Type: text/html; charset=utf-8',
         'MIME-Version: 1.0',
         '',
-        this.formatEmailBody(body)
+        this.formatEmailBody(body),
       ];
 
       const message = emailLines.join('\n');
-      const encodedMessage = Buffer.from(message).toString('base64')
+      const encodedMessage = Buffer.from(message)
+        .toString('base64')
         .replace(/\+/g, '-')
         .replace(/\//g, '_')
         .replace(/=+$/, '');
@@ -103,7 +104,7 @@ export class GmailService {
       if (!messageId) {
         return {
           success: false,
-          error: 'Failed to get message ID from Gmail'
+          error: 'Failed to get message ID from Gmail',
         };
       }
 
@@ -116,15 +117,15 @@ export class GmailService {
           threadId,
           to,
           subject,
-          connectionId: connection.id
+          connectionId: connection.id,
         });
 
         // Update pitch status to sent
         await supabase
           .from('pitches')
-          .update({ 
+          .update({
             status: 'sent',
-            sent_at: new Date().toISOString()
+            sent_at: new Date().toISOString(),
           })
           .eq('id', pitchId)
           .eq('user_id', userId);
@@ -133,13 +134,13 @@ export class GmailService {
       return {
         success: true,
         messageId,
-        threadId
+        threadId,
       };
     } catch (error) {
       console.error('Gmail send error:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -154,7 +155,7 @@ export class GmailService {
     threadId,
     to,
     subject,
-    connectionId
+    connectionId,
   }: {
     userId: string;
     pitchId: string;
@@ -166,18 +167,16 @@ export class GmailService {
   }): Promise<void> {
     const supabase = await this.getSupabaseClient();
 
-    await supabase
-      .from('gmail_tracked_emails')
-      .insert({
-        user_id: userId,
-        connection_id: connectionId,
-        pitch_id: pitchId,
-        gmail_thread_id: threadId || messageId,
-        gmail_message_id: messageId,
-        to_email: to,
-        subject,
-        sent_at: new Date().toISOString()
-      });
+    await supabase.from('gmail_tracked_emails').insert({
+      user_id: userId,
+      connection_id: connectionId,
+      pitch_id: pitchId,
+      gmail_thread_id: threadId || messageId,
+      gmail_message_id: messageId,
+      to_email: to,
+      subject,
+      sent_at: new Date().toISOString(),
+    });
   }
 
   /**
@@ -239,7 +238,7 @@ export class GmailService {
             userId: 'me',
             id: latestMessage.id!,
             format: 'metadata',
-            metadataHeaders: ['From', 'Date']
+            metadataHeaders: ['From', 'Date'],
           });
 
           const message = messageResponse.data;
@@ -252,7 +251,7 @@ export class GmailService {
             const fullMessageResponse = await gmail.users.messages.get({
               userId: 'me',
               id: latestMessage.id!,
-              format: 'full'
+              format: 'full',
             });
 
             const snippet = fullMessageResponse.data.snippet || '';
@@ -263,7 +262,7 @@ export class GmailService {
               .update({
                 has_reply: true,
                 reply_detected_at: new Date().toISOString(),
-                reply_snippet: snippet
+                reply_snippet: snippet,
               })
               .eq('id', trackedEmail.id);
 
@@ -271,9 +270,9 @@ export class GmailService {
             if (trackedEmail.pitch_id) {
               await supabase
                 .from('pitches')
-                .update({ 
+                .update({
                   status: 'replied',
-                  replied_at: new Date().toISOString()
+                  replied_at: new Date().toISOString(),
                 })
                 .eq('id', trackedEmail.pitch_id);
             }
@@ -354,11 +353,10 @@ export class GmailService {
 
       return { connected: true, connection };
     } catch (error) {
-      return { 
-        connected: false, 
-        error: error instanceof Error ? error.message : 'Unknown error' 
+      return {
+        connected: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 }
-

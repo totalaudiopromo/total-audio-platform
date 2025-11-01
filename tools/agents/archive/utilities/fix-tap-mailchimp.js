@@ -19,8 +19,8 @@ async function getAccountInfo() {
 
   const response = await fetch(`https://${TAP_SERVER}.api.mailchimp.com/3.0/`, {
     headers: {
-      'Authorization': `Bearer ${TAP_API_KEY}`
-    }
+      Authorization: `Bearer ${TAP_API_KEY}`,
+    },
   });
 
   if (!response.ok) {
@@ -46,8 +46,8 @@ async function getLists() {
 
   const response = await fetch(`https://${TAP_SERVER}.api.mailchimp.com/3.0/lists?count=100`, {
     headers: {
-      'Authorization': `Bearer ${TAP_API_KEY}`
-    }
+      Authorization: `Bearer ${TAP_API_KEY}`,
+    },
   });
 
   const data = await response.json();
@@ -69,8 +69,8 @@ async function getAuthorizedApps() {
 
   const response = await fetch(`https://${TAP_SERVER}.api.mailchimp.com/3.0/authorized-apps`, {
     headers: {
-      'Authorization': `Bearer ${TAP_API_KEY}`
-    }
+      Authorization: `Bearer ${TAP_API_KEY}`,
+    },
   });
 
   const data = await response.json();
@@ -142,7 +142,6 @@ async function main() {
     console.log('   TAP_MAILCHIMP_SERVER=us17');
     console.log('   LIBERTY_MAILCHIMP_API_KEY=83f53d36bd6667b4c56015e8a0d1ed66-us13');
     console.log('   LIBERTY_MAILCHIMP_SERVER=us13\n');
-
   } catch (error) {
     console.error('❌ Error:', error.message);
     process.exit(1);

@@ -1,4 +1,4 @@
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
@@ -9,7 +9,9 @@ export async function GET(
 ) {
   const params = await context.params;
   const supabase = await createServerClient(cookies());
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -35,7 +37,9 @@ export async function PUT(
 ) {
   const params = await context.params;
   const supabase = await createServerClient(cookies());
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -45,7 +49,8 @@ export async function PUT(
 
   const payload: Record<string, unknown> = {
     name: body.name,
-    artist_name: body.artist_name || body.artist || body.name || 'Unknown Artist',
+    artist_name:
+      body.artist_name || body.artist || body.name || 'Unknown Artist',
   };
 
   if (body.platform) payload.platform = body.platform;
@@ -100,7 +105,14 @@ export async function PUT(
       continue;
     }
 
-    return NextResponse.json({ error: error.message, details: error, removedColumns: Array.from(removedColumns) }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: error.message,
+        details: error,
+        removedColumns: Array.from(removedColumns),
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -110,7 +122,9 @@ export async function DELETE(
 ) {
   const params = await context.params;
   const supabase = await createServerClient(cookies());
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

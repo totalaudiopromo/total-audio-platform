@@ -1,4 +1,5 @@
 # BBC Radio 1Xtra Contact & Submission Research
+
 **Research Date**: October 4, 2025
 **Target Audience**: UK urban music artists (grime, hip-hop, Afrobeats, R&B)
 **Status**: Verified from official sources and music industry publications
@@ -16,6 +17,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 ## Current BBC Radio 1Xtra Presenters (October 2025)
 
 ### 1. **Nadia Jae** - Breakfast Show
+
 - **Show**: 1Xtra Breakfast
 - **Time**: Weekday mornings (NEEDS VERIFICATION for exact times)
 - **Genre Focus**: General urban music, hip-hop, grime, rap
@@ -24,6 +26,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Source**: [UKRadioLive BBC 1Xtra Schedule](https://ukradiolive.com/bbc-1xtra/schedule), [RadioToday October 2025](https://www.radiotoday.uk/2025/10/craig-david-lethal-bizzle-and-tinie-tempah-join-1xtra-for-black-history-month/)
 
 ### 2. **Kenny Allstar** - Rap Show (HIGH PRIORITY FOR RAP/GRIME)
+
 - **Show**: BBC Radio 1 & 1Xtra Rap Show
 - **Time**: Fridays 11pm-1am (1Xtra), Saturdays 9pm-11pm (Radio 1 simulcast)
 - **Genre Focus**: UK rap, grime, hip-hop (UK and international)
@@ -33,6 +36,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Sources**: [Kenny Allstar Wikipedia](https://en.wikipedia.org/wiki/Kenny_Allstar), [Music Week March 2023](https://www.musicweek.com/interviews/read/an-allstar-is-born-bbc-radio-1-s-kenny-allstar-talks-making-history-on-the-rap-show/087828)
 
 ### 3. **DJ Target** - Monday-Thursday & Saturday Shows
+
 - **Show**: DJ Target Show
 - **Time**: Monday-Thursday 7-9pm, Saturday 7-9pm (1Xtra)
 - **Genre Focus**: R&B, UK rap, grime, drum & bass, hip-hop (multi-genre)
@@ -42,6 +46,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Source**: [Great British Speakers](https://greatbritishspeakers.co.uk/talents/dj-target-speaker/), [Wikipedia](https://en.wikipedia.org/wiki/DJ_Target)
 
 ### 4. **Eddie Kadi** - Official UK Afrobeats Chart Show (HIGH PRIORITY FOR AFROBEATS)
+
 - **Show**: The Official UK Afrobeats Chart Show
 - **Time**: Sundays 15:00 (3pm)
 - **Genre Focus**: Afrobeats, African music
@@ -50,6 +55,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Sources**: [UKRadioLive Schedule](https://ukradiolive.com/bbc-1xtra/schedule), [RadioToday October 2025](https://www.radiotoday.uk/2025/10/craig-david-lethal-bizzle-and-tinie-tempah-join-1xtra-for-black-history-month/)
 
 ### 5. **Chuckie** - R&B Show (HIGH PRIORITY FOR R&B)
+
 - **Show**: BBC 1Xtra R&B Show
 - **Time**: NEEDS VERIFICATION (likely Saturday slot based on predecessor's schedule)
 - **Genre Focus**: R&B, contemporary R&B, soul
@@ -58,6 +64,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Sources**: [RadioToday December 2023](https://radiotoday.co.uk/2023/12/chuckie-to-replace-dj-ace-on-the-bbc-radio-1xtra-rb-show/), [Wikipedia 2024 in British Radio](https://en.wikipedia.org/wiki/2024_in_British_radio)
 
 ### 6. **Remi Burgz** - Drivetime
+
 - **Show**: 1Xtra Drivetime
 - **Time**: Monday-Friday 16:00-19:00 (4pm-7pm)
 - **Genre Focus**: General urban music, hip-hop, Afrobeats, grime
@@ -67,6 +74,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Sources**: [UKRadioLive Schedule](https://ukradiolive.com/bbc-1xtra/schedule), [On The Radio February 2023](https://ontheradio.co.uk/2023/02/weekday-schedule-changes-at-bbc-radio-1xtra-include-new-presenter/)
 
 ### 7. **Kaylee** - Afternoon Show
+
 - **Show**: Weekday Afternoons
 - **Time**: NEEDS VERIFICATION (afternoon slot before Remi Burgz drivetime)
 - **Location**: Broadcasting from Birmingham
@@ -76,6 +84,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Source**: [On The Radio February 2023](https://ontheradio.co.uk/2023/02/weekday-schedule-changes-at-bbc-radio-1xtra-include-new-presenter/)
 
 ### 8. **Seani B** - Dancehall Show
+
 - **Show**: BBC 1Xtra Dancehall Show
 - **Time**: Thursday nights 10pm (as of mid-2024, NEEDS VERIFICATION for October 2025)
 - **Genre Focus**: Dancehall, reggae, bashment, Caribbean music
@@ -84,6 +93,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Source**: [1001Tracklists April 2024](https://www.1001tracklists.com/tracklist/nykwzj9/masicka-seani-b-bbc-radio-1xtra-dancehall-show-2024-04-04.html)
 
 ### 9. **Weekend & Specialist Shows**
+
 - **Joelah Noble**: Saturday afternoons 13:00-16:00 (replaced Lady Leshurr April 2023)
 - **CassKidd**: 1Xtra's Alternative Selection (electronic, experimental hip-hop, emerging genres)
 - **Trevor Nelson**: Black History Month specials and empowerment mixtapes
@@ -95,32 +105,44 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 ## Genre Matching Guidance
 
 ### Grime
+
 **Best Fit**: Kenny Allstar (Rap Show), DJ Target (multi-genre show)
+
 - Both have grime credentials and actively support the scene
 - Submit UK-focused grime with clean versions only
 
 ### Hip-Hop (UK & International)
+
 **Best Fit**: Kenny Allstar (UK rap focus), DJ Target (broader hip-hop)
+
 - Kenny Allstar: UK rap and grime priority
 - DJ Target: Multi-genre including drum & bass crossover
 
 ### Afrobeats
+
 **Best Fit**: Eddie Kadi (Official UK Afrobeats Chart Show)
+
 - Dedicated Afrobeats programming every Sunday
 - Direct route to official chart consideration
 
 ### R&B / Contemporary Soul
+
 **Best Fit**: Chuckie (R&B Show)
+
 - New presenter (January 2024), building fresh playlist
 - Contemporary R&B, smooth urban sounds
 
 ### Dancehall / Reggae
+
 **Best Fit**: Seani B (Dancehall Show)
+
 - Specialist Caribbean music programming
 - Thursday nights, established long-running show
 
 ### Alternative / Experimental Urban
+
 **Best Fit**: CassKidd (Alternative Selection)
+
 - Electronic, experimental hip-hop
 - Emerging genres and boundary-pushing sounds
 
@@ -154,18 +176,21 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 ### Critical Submission Requirements
 
 **CLEAN VERSIONS ONLY**
+
 - **No explicit language** - tracks with swearing will not be considered
 - BBC broadcast standards apply to all submissions
 - Upload clean radio edits, not album versions with explicit content
 - **Source**: [Ditto Music BBC Introducing Guide](https://dittomusic.com/en/blog/how-to-get-your-music-played-on-bbc-introducing/), [ICMP BBC Introducing Guide](https://www.icmp.ac.uk/blog/inside-bbc-music-introducing)
 
 **Audio Quality Standards**
+
 - Professional quality MP3 (high bitrate)
 - Final mastered versions only
 - No unfinished lyrics, no out-of-tune instruments
 - First 30 seconds must be compelling (often all that's listened to initially)
 
 **Complete Artist Information**
+
 - Full contact details (required for immediate follow-up)
 - Artist biography and story in Release Notes section
 - Influences and genre tags
@@ -189,41 +214,49 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 ## Common Mistakes for 1Xtra Submissions
 
 ### 1. **Submitting Explicit Content**
+
 **Mistake**: Uploading tracks with swearing, explicit language, or adult themes
 **Result**: Immediate rejection - won't be considered for any BBC airplay
 **Solution**: Always submit clean radio edits that meet BBC broadcast standards
 
 ### 2. **Poor Audio Quality**
+
 **Mistake**: Uploading unfinished mixes, demo quality, or unmastered tracks
 **Result**: Rejected in first 30 seconds of listening
 **Solution**: Only submit professional, radio-ready final masters
 
 ### 3. **Incomplete Artist Profile**
+
 **Mistake**: Missing contact info, no biography, generic release notes
 **Result**: Even if track is good, presenters can't follow up or context is missing
 **Solution**: Complete all profile fields, write compelling artist story in Release Notes
 
 ### 4. **Genre Mismatch**
+
 **Mistake**: Submitting music that doesn't fit 1Xtra's urban music remit
 **Result**: Track not forwarded from regional team to 1Xtra
 **Solution**: Ensure music genuinely fits grime/hip-hop/Afrobeats/R&B/dancehall genres
 
 ### 5. **Submitting Too Early**
+
 **Mistake**: Uploading tracks before they're genuinely radio-ready to "get feedback"
 **Result**: Missed opportunity - you only get 2 uploads per month
 **Solution**: Treat BBC Introducing as a professional submission, not a demo platform
 
 ### 6. **Weak First 30 Seconds**
+
 **Mistake**: Long intros, slow builds, burying the hook
 **Result**: Track skipped before best parts are heard
 **Solution**: Front-load your best musical ideas - first 30 seconds must grab attention
 
 ### 7. **No Social Media / Streaming Presence**
+
 **Mistake**: Submitting with no online presence for presenters to reference
 **Result**: Harder to champion artist with no digital footprint
 **Solution**: Build basic artist presence (Spotify, Instagram, etc.) before submission
 
 ### 8. **Impatience**
+
 **Mistake**: Repeatedly emailing or uploading same track under different names
 **Result**: Flagged as unprofessional, damages reputation
 **Solution**: Submit once, wait the guaranteed 6-month review period
@@ -300,26 +333,31 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 ### Genre-Specific Strategies
 
 **Grime Artists**:
+
 - Target Kenny Allstar's Rap Show and DJ Target's multi-genre shows
 - Emphasise UK authenticity and scene connections
 - Reference grime history and evolution in artist bio
 
 **Afrobeats Artists**:
+
 - Eddie Kadi's Official UK Afrobeats Chart Show is primary target
 - Highlight African heritage, diaspora connections, or UK Afrobeats scene involvement
 - Note any previous plays on community radio or Capital Xtra
 
 **R&B Artists**:
+
 - Chuckie's R&B Show is the dedicated slot
 - Contemporary R&B with UK twist often favoured
 - Clean versions absolutely essential for R&B format
 
 **Hip-Hop Artists**:
+
 - Kenny Allstar for UK rap, DJ Target for broader hip-hop
 - UK perspective valued over generic US-style hip-hop
 - Demonstrate originality and fresh approach to genre
 
 **Dancehall Artists**:
+
 - Seani B's specialist show is the clear target
 - Authentic Caribbean connections or UK dancehall scene credentials
 - Thursday night specialist slot
@@ -329,6 +367,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 ## Verification Status & Research Notes
 
 ### Verified Information
+
 ✅ Kenny Allstar hosts Rap Show (Fridays/Saturdays) - verified multiple sources
 ✅ Chuckie replaced DJ Ace on R&B Show (January 2024) - verified RadioToday
 ✅ Eddie Kadi hosts Official UK Afrobeats Chart (Sundays 3pm) - verified multiple sources
@@ -339,12 +378,14 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 ✅ Remi Burgz hosts drivetime - verified schedule sources
 
 ### Needs Verification
+
 ⚠️ Exact timeslots for some shows (Nadia Jae breakfast, Kaylee afternoon, Chuckie R&B)
 ⚠️ Seani B current schedule for October 2025 (last confirmed mid-2024)
 ⚠️ Some weekend programming details
 ⚠️ Tiffany Calver's current show (launched multi-genre Friday show June 2023, current status NEEDS VERIFICATION)
 
 ### Information Gaps
+
 ❌ BBC website blocking automated scraping - cannot directly verify official schedule
 ❌ Most recent information from mid-2024 - some October 2025 gaps
 ❌ Exact presenter contact emails (not publicly available, intentionally - use BBC Introducing only)
@@ -354,22 +395,26 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 ## Sources & References
 
 ### Primary Sources (Official)
+
 - BBC Radio 1Xtra Wikipedia: https://en.wikipedia.org/wiki/BBC_Radio_1Xtra
 - BBC Introducing Guide (ICMP): https://www.icmp.ac.uk/blog/inside-bbc-music-introducing
 - BBC Introducing Guide (Ditto Music): https://dittomusic.com/en/blog/how-to-get-your-music-played-on-bbc-introducing
 - PRS for Music Radio Guide 2025: https://www.prsformusic.com/m-magazine/how-to/how-to-get-played-on-the-radio-in-2025
 
 ### Music Industry Publications
+
 - Music Week (Kenny Allstar Interview March 2023): https://www.musicweek.com/interviews/read/an-allstar-is-born-bbc-radio-1-s-kenny-allstar-talks-making-history-on-the-rap-show/087828
 - RadioToday (Multiple 2023-2025 articles): https://radiotoday.co.uk/
 - RadioToday October 2025 Black History Month: https://www.radiotoday.uk/2025/10/craig-david-lethal-bizzle-and-tinie-tempah-join-1xtra-for-black-history-month/
 
 ### Schedule & Programming Sources
+
 - UKRadioLive BBC 1Xtra Schedule: https://ukradiolive.com/bbc-1xtra/schedule
 - On The Radio (Schedule Changes Feb 2023): https://ontheradio.co.uk/2023/02/weekday-schedule-changes-at-bbc-radio-1xtra-include-new-presenter/
 - 1001Tracklists (Show Archives): https://www.1001tracklists.com/
 
 ### Artist Guidance Sources
+
 - The Unsigned Guide (BBC Introducing Advice): https://www.theunsignedguide.com/blog/718-bbc-introducing-share-advice-on-getting-radio-airplay-for-your-music
 - Music Gateway (BBC Introducing): https://www.musicgateway.com/radio-station/bbc-introducing
 

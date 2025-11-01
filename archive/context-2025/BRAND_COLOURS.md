@@ -5,6 +5,7 @@
 Each app in the Total Audio ecosystem has its own distinct brand colour to maintain visual identity and prevent confusion.
 
 ### Audio Intel - BLUE (`#1E88E5`)
+
 - **Primary**: `blue-600`, `blue-500`, `blue-700`
 - **Accent**: Blue gradients
 - **Use Case**: Contact enrichment, database management
@@ -16,6 +17,7 @@ Each app in the Total Audio ecosystem has its own distinct brand colour to maint
   ```
 
 ### Pitch Generator - AMBER (`#F59E0B`)
+
 - **Primary**: `amber-500`, `amber-600`, `brand-amber`
 - **Accent**: Yellow/amber gradients
 - **Use Case**: AI-powered pitch writing
@@ -26,6 +28,7 @@ Each app in the Total Audio ecosystem has its own distinct brand colour to maint
   ```
 
 ### Tracker - PURPLE (`#7C3AED`)
+
 - **Primary**: `purple-600`, `purple-500`, `purple-700`
 - **Accent**: Purple/indigo gradients
 - **Use Case**: Campaign tracking and analytics
@@ -36,6 +39,7 @@ Each app in the Total Audio ecosystem has its own distinct brand colour to maint
   ```
 
 ### Command Centre - PURPLE (`#7C3AED`)
+
 - **Primary**: `purple-600`, similar to Tracker
 - **Accent**: Purple gradients
 - **Use Case**: Marketing automation dashboard
@@ -45,14 +49,17 @@ Each app in the Total Audio ecosystem has its own distinct brand colour to maint
 ## 🚨 Preventing Colour Bleed
 
 ### The Problem
+
 When copy-pasting components between apps, colours from one app (e.g., purple from Tracker) can leak into another app (e.g., Audio Intel should be blue).
 
 ### The Solution
 
 #### 1. Automated Validation (RECOMMENDED)
+
 Each app now has colour validation scripts that run before builds:
 
 **Audio Intel:**
+
 ```json
 {
   "scripts": {
@@ -64,23 +71,28 @@ Each app now has colour validation scripts that run before builds:
 ```
 
 This means:
+
 - ✅ Every build validates colours first
 - ✅ Catches wrong colours before deployment
 - ✅ Fails build if forbidden colours detected
 - ✅ Auto-fix script available
 
 #### 2. Manual Checks
+
 Before committing, run:
+
 ```bash
 npm run check-colours
 ```
 
 If issues found:
+
 ```bash
 npm run fix-colours
 ```
 
 #### 3. Copy-Paste Protocol
+
 When copying components between apps:
 
 1. **Copy the component**
@@ -92,35 +104,40 @@ When copying components between apps:
 
 ## 🎯 Quick Reference
 
-| App | Brand Colour | Hex | Tailwind | Forbidden |
-|-----|-------------|-----|----------|-----------|
-| **Audio Intel** | Blue | `#1E88E5` | `blue-600` | purple, amber |
-| **Pitch Generator** | Amber | `#F59E0B` | `amber-500` | blue, purple |
-| **Tracker** | Purple | `#7C3AED` | `purple-600` | blue, amber |
-| **Command Centre** | Purple | `#7C3AED` | `purple-600` | blue, amber |
+| App                 | Brand Colour | Hex       | Tailwind     | Forbidden     |
+| ------------------- | ------------ | --------- | ------------ | ------------- |
+| **Audio Intel**     | Blue         | `#1E88E5` | `blue-600`   | purple, amber |
+| **Pitch Generator** | Amber        | `#F59E0B` | `amber-500`  | blue, purple  |
+| **Tracker**         | Purple       | `#7C3AED` | `purple-600` | blue, amber   |
+| **Command Centre**  | Purple       | `#7C3AED` | `purple-600` | blue, amber   |
 
 ---
 
 ## 🛠️ Implementation Details
 
 ### Colour Validators
+
 Located in each app: `apps/[app-name]/scripts/check-brand-colours.js`
 
 **What they check:**
+
 - Tailwind colour classes (e.g., `purple-600`, `blue-500`)
 - Hex colour codes (e.g., `#7C3AED`, `#1E88E5`)
 - Gradient classes (e.g., `from-purple-`, `to-blue-`)
 
 **What they ignore:**
+
 - Status colours (green for success, red for error, yellow for warnings)
 - Neutral colours (gray, white, black)
 - Comments and documentation
 - node_modules
 
 ### Auto-Fix Scripts (Audio Intel only)
+
 Located in: `apps/audio-intel/scripts/fix-brand-colours.js`
 
 Automatically replaces:
+
 - `purple-*` → `blue-*`
 - `amber-*` → `blue-*` (for branding, not warnings)
 - Purple hex codes → Blue hex codes
@@ -130,6 +147,7 @@ Automatically replaces:
 ## 📋 Testing
 
 ### Test the Validators
+
 ```bash
 # Audio Intel
 cd apps/audio-intel
@@ -145,7 +163,9 @@ npm run check-colours
 ```
 
 ### Expected Output
+
 **Success:**
+
 ```
 🎨 Checking [App] brand colours...
 
@@ -153,6 +173,7 @@ npm run check-colours
 ```
 
 **Violations Found:**
+
 ```
 ❌ Found 5 forbidden colour usage(s):
 
@@ -166,6 +187,7 @@ npm run check-colours
 ## 🔧 Troubleshooting
 
 ### Build Failing Due to Colours
+
 ```bash
 # Option 1: Auto-fix (Audio Intel only)
 npm run fix-colours
@@ -177,13 +199,14 @@ npm run check-colours  # Verify fixed
 ```
 
 ### False Positives
+
 If a colour is legitimately needed (e.g., status indicators), add the file to `EXCEPTIONS` array in `scripts/check-brand-colours.js`:
 
 ```javascript
 const EXCEPTIONS = [
   'node_modules',
   '.next',
-  'components/StatusIndicator.tsx',  // Add exception
+  'components/StatusIndicator.tsx', // Add exception
 ];
 ```
 
@@ -192,6 +215,7 @@ const EXCEPTIONS = [
 ## 📝 Maintenance
 
 ### Adding New Apps
+
 1. Copy colour validator from similar app
 2. Update `ALLOWED_COLOURS` and `FORBIDDEN_COLOURS`
 3. Add `check-colours` script to `package.json`
@@ -199,7 +223,9 @@ const EXCEPTIONS = [
 5. Update this document
 
 ### Updating Brand Colours
+
 If an app's brand colour changes:
+
 1. Update validator script in `apps/[app]/scripts/check-brand-colours.js`
 2. Run `npm run check-colours` to find old colours
 3. Update components manually or with script

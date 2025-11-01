@@ -31,4 +31,4 @@ const Switch = ({ checked, onCheckedChange, disabled = false, className = '' }: 
   );
 };
 
-export { Switch }; 
+export { Switch };

@@ -9,6 +9,7 @@ Pre-built React components for authentication in your Total Audio apps. These co
 A complete sign-in form with email/password and magic link support.
 
 **Features:**
+
 - Email and password authentication
 - Magic link (passwordless) option
 - Error handling and loading states
@@ -18,14 +19,14 @@ A complete sign-in form with email/password and magic link support.
 **Usage:**
 
 ```tsx
-import { SignInForm } from './components/auth/SignInForm'
+import { SignInForm } from './components/auth/SignInForm';
 
 export default function SignInPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <SignInForm />
     </div>
-  )
+  );
 }
 ```
 
@@ -34,6 +35,7 @@ export default function SignInPage() {
 A complete sign-up form with email confirmation.
 
 **Features:**
+
 - Full name, email, and password fields
 - Email confirmation flow
 - Success state with instructions
@@ -43,14 +45,14 @@ A complete sign-up form with email confirmation.
 **Usage:**
 
 ```tsx
-import { SignUpForm } from './components/auth/SignUpForm'
+import { SignUpForm } from './components/auth/SignUpForm';
 
 export default function SignUpPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <SignUpForm />
     </div>
-  )
+  );
 }
 ```
 
@@ -59,6 +61,7 @@ export default function SignUpPage() {
 A dropdown menu showing user info and subscription tier.
 
 **Features:**
+
 - User avatar with initials
 - Subscription tier display
 - Navigation links (Dashboard, Settings, Profile)
@@ -69,7 +72,7 @@ A dropdown menu showing user info and subscription tier.
 **Usage:**
 
 ```tsx
-import { UserMenu } from './components/auth/UserMenu'
+import { UserMenu } from './components/auth/UserMenu';
 
 export function Header() {
   return (
@@ -79,7 +82,7 @@ export function Header() {
         <UserMenu />
       </div>
     </header>
-  )
+  );
 }
 ```
 
@@ -88,6 +91,7 @@ export function Header() {
 Restricts access to apps based on subscription tier.
 
 **Features:**
+
 - Checks user's subscription tier
 - Shows upgrade prompt if access denied
 - Loading state while checking
@@ -97,7 +101,7 @@ Restricts access to apps based on subscription tier.
 **Usage:**
 
 ```tsx
-import { AppAccessGate } from './components/auth/AppAccessGate'
+import { AppAccessGate } from './components/auth/AppAccessGate';
 
 export default function TrackerPage() {
   return (
@@ -108,17 +112,14 @@ export default function TrackerPage() {
         {/* ... */}
       </div>
     </AppAccessGate>
-  )
+  );
 }
 ```
 
 **With custom fallback:**
 
 ```tsx
-<AppAccessGate
-  appName="pitch-generator"
-  fallback={<CustomUpgradePrompt />}
->
+<AppAccessGate appName="pitch-generator" fallback={<CustomUpgradePrompt />}>
   {/* App content */}
 </AppAccessGate>
 ```
@@ -149,9 +150,7 @@ Update the components to match your app:
 
 ```tsx
 // In SignInForm.tsx
-<h2 className="text-2xl font-bold mb-6 text-center">
-  Sign In to Audio Intel
-</h2>
+<h2 className="text-2xl font-bold mb-6 text-center">Sign In to Audio Intel</h2>
 ```
 
 ### Links
@@ -180,27 +179,27 @@ cp examples/auth-components/*.tsx apps/your-app/components/auth/
 
 ```tsx
 // apps/your-app/app/signin/page.tsx
-import { SignInForm } from '@/components/auth/SignInForm'
+import { SignInForm } from '@/components/auth/SignInForm';
 
 export default function SignInPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <SignInForm />
     </div>
-  )
+  );
 }
 ```
 
 ```tsx
 // apps/your-app/app/signup/page.tsx
-import { SignUpForm } from '@/components/auth/SignUpForm'
+import { SignUpForm } from '@/components/auth/SignUpForm';
 
 export default function SignUpPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <SignUpForm />
     </div>
-  )
+  );
 }
 ```
 
@@ -208,39 +207,39 @@ export default function SignUpPage() {
 
 ```tsx
 // apps/your-app/middleware.ts
-import { createMiddleware } from '@total-audio/auth/middleware'
+import { createMiddleware } from '@total-audio/auth/middleware';
 
 export const middleware = createMiddleware({
   protectedRoutes: ['/dashboard', '/settings', '/profile'],
   authRoutes: ['/signin', '/signup'],
   signInPath: '/signin',
   defaultRedirect: '/dashboard',
-})
+});
 
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
-}
+};
 ```
 
 ### 4. Add Auth Callback Handler
 
 ```tsx
 // apps/your-app/app/auth/callback/route.ts
-import { createServerClient } from '@total-audio/auth'
-import { NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
+import { createServerClient } from '@total-audio/auth';
+import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 
 export async function GET(request: Request) {
-  const requestUrl = new URL(request.url)
-  const code = requestUrl.searchParams.get('code')
+  const requestUrl = new URL(request.url);
+  const code = requestUrl.searchParams.get('code');
 
   if (code) {
-    const cookieStore = await cookies()
-    const supabase = await createServerClient()
-    await supabase.auth.exchangeCodeForSession(code)
+    const cookieStore = await cookies();
+    const supabase = await createServerClient();
+    await supabase.auth.exchangeCodeForSession(code);
   }
 
-  return NextResponse.redirect(new URL('/dashboard', request.url))
+  return NextResponse.redirect(new URL('/dashboard', request.url));
 }
 ```
 
@@ -248,13 +247,9 @@ export async function GET(request: Request) {
 
 ```tsx
 // apps/your-app/app/layout.tsx
-import { UserMenu } from '@/components/auth/UserMenu'
+import { UserMenu } from '@/components/auth/UserMenu';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
@@ -267,7 +262,7 @@ export default function RootLayout({
         <main>{children}</main>
       </body>
     </html>
-  )
+  );
 }
 ```
 

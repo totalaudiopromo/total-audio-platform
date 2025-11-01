@@ -2,7 +2,7 @@
 
 /**
  * Client Reporting Dashboard
- * 
+ *
  * Professional reports for clients
  * Shows ROI and performance metrics
  * Includes play confirmations and coverage
@@ -19,7 +19,7 @@ class ClientDashboard {
     this.server = null;
     this.reports = new Map();
     this.campaigns = new Map();
-    
+
     // Data persistence
     this.dataFile = path.join(__dirname, '..', 'data', 'client-dashboard.json');
     this.loadData();
@@ -30,12 +30,12 @@ class ClientDashboard {
    */
   async start() {
     console.log('📊 Starting Client Reporting Dashboard...');
-    
+
     // Create HTTP server
     this.server = http.createServer((req, res) => {
       this.handleRequest(req, res);
     });
-    
+
     // Start server
     this.server.listen(this.port, () => {
       console.log(`📊 Client Dashboard running at http://localhost:${this.port}`);
@@ -45,18 +45,18 @@ class ClientDashboard {
 
   handleRequest(req, res) {
     const url = req.url;
-    
+
     // CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    
+
     if (req.method === 'OPTIONS') {
       res.writeHead(200);
       res.end();
       return;
     }
-    
+
     if (url === '/') {
       this.serveDashboard(res);
     } else if (url === '/api/campaigns') {
@@ -427,7 +427,7 @@ class ClientDashboard {
 </body>
 </html>
     `;
-    
+
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end(html);
   }
@@ -445,7 +445,7 @@ class ClientDashboard {
         budget: 500,
         estimatedValue: 750,
         startDate: '2025-01-01',
-        endDate: '2025-01-31'
+        endDate: '2025-01-31',
       },
       {
         campaignId: 'campaign-2',
@@ -457,10 +457,10 @@ class ClientDashboard {
         budget: 300,
         estimatedValue: 400,
         startDate: '2024-12-01',
-        endDate: '2024-12-31'
-      }
+        endDate: '2024-12-31',
+      },
     ];
-    
+
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(campaigns));
   }
@@ -476,12 +476,12 @@ class ClientDashboard {
     req.on('data', chunk => {
       body += chunk.toString();
     });
-    
+
     req.on('end', () => {
       try {
         const data = JSON.parse(body);
         const report = this.generateReport(data.campaignId);
-        
+
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ success: true, reportId: report.id }));
       } catch (error) {
@@ -493,21 +493,21 @@ class ClientDashboard {
 
   generateReport(campaignId) {
     console.log(`📊 Generating report for campaign: ${campaignId}`);
-    
+
     const report = {
       id: `report-${campaignId}-${Date.now()}`,
       campaignId: campaignId,
       campaignName: `Campaign ${campaignId}`,
       status: 'completed',
       generatedAt: Date.now(),
-      content: this.generateReportContent(campaignId)
+      content: this.generateReportContent(campaignId),
     };
-    
+
     this.reports.set(report.id, report);
     this.saveData();
-    
+
     console.log(`✅ Report generated: ${report.id}`);
-    
+
     return report;
   }
 
@@ -520,20 +520,20 @@ class ClientDashboard {
         totalPlays: 15,
         totalContacts: 50,
         successRate: '30%',
-        roi: '50%'
+        roi: '50%',
       },
       performanceMetrics: {
         totalPlays: 15,
         totalContacts: 50,
         responseRate: '25%',
         playRate: '30%',
-        averagePlaysPerContact: 0.3
+        averagePlaysPerContact: 0.3,
       },
       stationBreakdown: [
         { station: 'BBC Radio 1', plays: 5, contacts: 10, successRate: '50%' },
         { station: 'Capital FM', plays: 3, contacts: 8, successRate: '37.5%' },
         { station: 'Kiss FM', plays: 2, contacts: 6, successRate: '33.3%' },
-        { station: 'Radio X', plays: 5, contacts: 26, successRate: '19.2%' }
+        { station: 'Radio X', plays: 5, contacts: 26, successRate: '19.2%' },
       ],
       timeline: [
         { date: '2025-01-01', event: 'Campaign Launch', status: 'completed' },
@@ -541,14 +541,14 @@ class ClientDashboard {
         { date: '2025-01-10', event: 'First Play', status: 'completed' },
         { date: '2025-01-15', event: 'Mid-Campaign Review', status: 'completed' },
         { date: '2025-01-25', event: 'Peak Activity', status: 'completed' },
-        { date: '2025-01-31', event: 'Campaign End', status: 'completed' }
+        { date: '2025-01-31', event: 'Campaign End', status: 'completed' },
       ],
       recommendations: [
         'Focus on BBC Radio 1 and Capital FM for future campaigns',
         'Improve targeting for Radio X contacts',
         'Consider longer follow-up sequences for better response rates',
-        'Implement more personalized pitches for higher success rates'
-      ]
+        'Implement more personalized pitches for higher success rates',
+      ],
     };
   }
 
@@ -559,7 +559,7 @@ class ClientDashboard {
       res.end('Report not found');
       return;
     }
-    
+
     const html = this.generateReportHTML(report);
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end(html);
@@ -567,7 +567,7 @@ class ClientDashboard {
 
   generateReportHTML(report) {
     const content = report.content;
-    
+
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -726,14 +726,18 @@ class ClientDashboard {
                 </tr>
             </thead>
             <tbody>
-                ${content.stationBreakdown.map(station => `
+                ${content.stationBreakdown
+                  .map(
+                    station => `
                     <tr>
                         <td>${station.station}</td>
                         <td>${station.plays}</td>
                         <td>${station.contacts}</td>
                         <td>${station.successRate}</td>
                     </tr>
-                `).join('')}
+                `
+                  )
+                  .join('')}
             </tbody>
         </table>
     </div>
@@ -741,13 +745,17 @@ class ClientDashboard {
     <div class="section">
         <h2>Campaign Timeline</h2>
         <div class="timeline">
-            ${content.timeline.map(item => `
+            ${content.timeline
+              .map(
+                item => `
                 <div class="timeline-item">
                     <div class="timeline-date">${item.date}</div>
                     <div class="timeline-event">${item.event}</div>
                     <div class="timeline-status status-${item.status}">${item.status}</div>
                 </div>
-            `).join('')}
+            `
+              )
+              .join('')}
         </div>
     </div>
     
@@ -771,7 +779,7 @@ class ClientDashboard {
       res.end('Report not found');
       return;
     }
-    
+
     // In real implementation, this would generate a PDF
     const html = this.generateReportHTML(report);
     res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -800,13 +808,13 @@ class ClientDashboard {
       if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
       }
-      
+
       const data = {
         reports: Array.from(this.reports.entries()),
         campaigns: Array.from(this.campaigns.entries()),
-        lastSaved: Date.now()
+        lastSaved: Date.now(),
       };
-      
+
       fs.writeFileSync(this.dataFile, JSON.stringify(data, null, 2));
     } catch (error) {
       console.error('❌ Failed to save client dashboard data:', error.message);
@@ -821,7 +829,7 @@ class ClientDashboard {
       status: 'healthy',
       totalReports: this.reports.size,
       totalCampaigns: this.campaigns.size,
-      lastChecked: new Date().toISOString()
+      lastChecked: new Date().toISOString(),
     };
   }
 }
@@ -830,7 +838,7 @@ class ClientDashboard {
 if (require.main === module) {
   const dashboard = new ClientDashboard();
   dashboard.start().catch(console.error);
-  
+
   // Graceful shutdown
   process.on('SIGINT', async () => {
     console.log('\n🛑 Shutting down client dashboard...');

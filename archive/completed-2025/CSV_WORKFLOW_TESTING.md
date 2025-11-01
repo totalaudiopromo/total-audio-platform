@@ -1,6 +1,7 @@
 # CSV Workflow Testing Checklist
 
 ## Prerequisites ✅
+
 - [x] Audio Intel blog fixes committed and pushed
 - [x] Mobile header amber sign-in button deployed
 - [ ] Audio Intel builds successfully (pending UI package fix)
@@ -46,6 +47,7 @@ curl -X POST http://localhost:3000/api/export-to-tracker \
 ```
 
 **Expected Response**:
+
 ```json
 {
   "success": true,
@@ -59,6 +61,7 @@ curl -X POST http://localhost:3000/api/export-to-tracker \
 ```
 
 **Validation Checklist**:
+
 - [ ] Response status is 200
 - [ ] `success: true` in response
 - [ ] `contactsCount` matches input (2)
@@ -71,27 +74,33 @@ curl -X POST http://localhost:3000/api/export-to-tracker \
 ### Error Handling Tests
 
 **Test 1: Empty contacts array**
+
 ```bash
 curl -X POST http://localhost:3000/api/export-to-tracker \
   -H "Content-Type: application/json" \
   -d '{"contacts": [], "campaignName": "Test"}' | jq
 ```
+
 Expected: 400 error with "No contacts provided for export"
 
 **Test 2: Missing contacts field**
+
 ```bash
 curl -X POST http://localhost:3000/api/export-to-tracker \
   -H "Content-Type: application/json" \
   -d '{"campaignName": "Test"}' | jq
 ```
+
 Expected: 400 error
 
 **Test 3: Malformed JSON**
+
 ```bash
 curl -X POST http://localhost:3000/api/export-to-tracker \
   -H "Content-Type: application/json" \
   -d '{invalid json}' | jq
 ```
+
 Expected: 500 error
 
 ---
@@ -101,11 +110,13 @@ Expected: 500 error
 ### Manual Browser Testing
 
 **Step 1: Navigate to Tracker import with source parameter**
+
 ```
 http://localhost:3001/dashboard/import?source=audio-intel&contacts=42
 ```
 
 **Expected Behavior**:
+
 - [ ] Page loads successfully
 - [ ] Notification appears in top-right corner
 - [ ] Notification text: "Ready to import 42 enriched contacts from Audio Intel!"
@@ -113,21 +124,25 @@ http://localhost:3001/dashboard/import?source=audio-intel&contacts=42
 - [ ] Notification disappears after 5 seconds
 
 **Step 2: Navigate without source parameter**
+
 ```
 http://localhost:3001/dashboard/import
 ```
 
 **Expected Behavior**:
+
 - [ ] Page loads successfully
 - [ ] NO notification appears
 - [ ] Standard import page UI visible
 
 **Step 3: Test with Pitch Generator source (existing feature)**
+
 ```
 http://localhost:3001/dashboard/import?source=clipboard
 ```
 
 **Expected Behavior**:
+
 - [ ] Clipboard import logic triggers (if clipboard has data)
 - [ ] Different from Audio Intel notification
 
@@ -152,6 +167,7 @@ useEffect(() => {
 ```
 
 **Validation**:
+
 - [ ] UseEffect depends on `searchParams`
 - [ ] Checks for `source === 'audio-intel'`
 - [ ] Reads `contacts` count from URL
@@ -165,6 +181,7 @@ useEffect(() => {
 ### Development Server Testing
 
 **Step 1: Start Audio Intel dev server**
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform
 npm run dev:audio-intel
@@ -172,11 +189,13 @@ npm run dev:audio-intel
 ```
 
 **Step 2: Navigate to demo page**
+
 ```
 http://localhost:3000/demo
 ```
 
 **Step 3: Enrich some contacts**
+
 - Paste test emails:
   ```
   annie@bbc.co.uk
@@ -186,12 +205,14 @@ http://localhost:3000/demo
 - Wait for enrichment to complete
 
 **Step 4: Locate "Send to Tracker" button**
+
 - Scroll down to "Professional Export Options" section
 - Below the 3 export buttons (CSV, Excel, PDF)
 - Should see "🚀 Tool Integration" section
 - Button text: "Send X Contacts to Tracker"
 
 **Button Appearance Checklist**:
+
 - [ ] Button is amber/yellow (bg-amber-600)
 - [ ] Full width with shadow styling
 - [ ] Arrow icon pointing right
@@ -202,6 +223,7 @@ http://localhost:3000/demo
 **Step 5: Click "Send to Tracker" button**
 
 **Expected Behavior (in order)**:
+
 1. [ ] Button becomes disabled
 2. [ ] Loading message: "Preparing contacts for Tracker..."
 3. [ ] CSV file downloads automatically (check Downloads folder)
@@ -211,6 +233,7 @@ http://localhost:3000/demo
 7. [ ] Button re-enables after 3 seconds
 
 **CSV File Validation**:
+
 - [ ] File exists in Downloads: `audio-intel-tracker-export-YYYY-MM-DD.csv`
 - [ ] File opens in Excel/Numbers/CSV viewer
 - [ ] Contains correct headers
@@ -218,6 +241,7 @@ http://localhost:3000/demo
 - [ ] Notes column has enrichment data
 
 **Tracker Tab Validation**:
+
 - [ ] Opens at `/dashboard/import?source=audio-intel&contacts=2`
 - [ ] Notification shows in Tracker
 - [ ] Upload CSV section visible
@@ -225,6 +249,7 @@ http://localhost:3000/demo
 ### Error Scenarios
 
 **Test 1: Click button with no contacts enriched**
+
 - Load `/demo` page
 - Don't enrich any contacts
 - Try clicking "Send to Tracker"
@@ -232,6 +257,7 @@ http://localhost:3000/demo
 Expected: Nothing happens (button should be disabled or prevent action)
 
 **Test 2: Network error simulation**
+
 - Open browser DevTools → Network tab
 - Set network to "Offline"
 - Enrich contacts
@@ -263,6 +289,7 @@ Expected: Error message "Failed to send to Tracker: [network error]"
 5. Review enrichment results (intelligence, confidence scores)
 
 **Validation**:
+
 - [ ] All 5 contacts enriched successfully
 - [ ] At least 3 have "High" confidence
 - [ ] Intelligence data shows BBC Radio context
@@ -276,6 +303,7 @@ Expected: Error message "Failed to send to Tracker: [network error]"
 4. Tracker opens in new tab
 
 **Validation**:
+
 - [ ] CSV file downloaded: `audio-intel-tracker-export-2025-10-13.csv`
 - [ ] Tracker tab opened with URL: `?source=audio-intel&contacts=5`
 - [ ] Green notification visible in Tracker
@@ -289,6 +317,7 @@ Expected: Error message "Failed to send to Tracker: [network error]"
 4. Click "Import" button
 
 **Validation**:
+
 - [ ] CSV preview shows 5 contacts
 - [ ] Names match: Annie Mac, Clara Amfo, Jack Saunders, Danny Howard, Pete Tong
 - [ ] Outlets all show "BBC Radio" or similar
@@ -302,6 +331,7 @@ Expected: Error message "Failed to send to Tracker: [network error]"
 3. Navigate to `/dashboard` in Tracker
 
 **Validation**:
+
 - [ ] Success notification shows "5 campaigns imported"
 - [ ] Dashboard shows 5 new campaign entries
 - [ ] Each campaign has:
@@ -317,6 +347,7 @@ Expected: Error message "Failed to send to Tracker: [network error]"
 2. View campaign details
 
 **Validation**:
+
 - [ ] Name: "Annie Mac"
 - [ ] Email: "annie@bbc.co.uk"
 - [ ] Outlet: "BBC Radio"
@@ -343,6 +374,7 @@ Repeat for 1-2 other contacts to verify data consistency.
 4. Save changes
 
 **Validation**:
+
 - [ ] Status updates to "contacted"
 - [ ] Contacted date saved
 - [ ] Original enrichment notes still visible
@@ -355,6 +387,7 @@ Repeat for 1-2 other contacts to verify data consistency.
 3. Add note: "Requested press kit"
 
 **Validation**:
+
 - [ ] Status = "responded"
 - [ ] Response date saved
 - [ ] Both enrichment AND campaign notes visible
@@ -366,6 +399,7 @@ Repeat for 1-2 other contacts to verify data consistency.
 2. Check for campaign metrics
 
 **Validation**:
+
 - [ ] 5 campaigns visible in overview
 - [ ] 1 contacted, 1 responded, 3 pending
 - [ ] Response rate: 20% (1/5)
@@ -378,6 +412,7 @@ Repeat for 1-2 other contacts to verify data consistency.
 ### Cross-Domain Testing
 
 **Important**: Local testing uses `localhost:3000` → `localhost:3001`. Production uses:
+
 - Audio Intel: `https://intel.totalaudiopromo.com`
 - Tracker: `https://tracker.totalaudiopromo.com`
 
@@ -389,6 +424,7 @@ Repeat for 1-2 other contacts to verify data consistency.
 4. Verify opens `https://tracker.totalaudiopromo.com/dashboard/import?source=audio-intel&contacts=3`
 
 **Expected Behavior**:
+
 - [ ] Cross-domain navigation works (no CORS errors)
 - [ ] Notification triggers correctly
 - [ ] CSV download works (not blocked by browser)
@@ -403,6 +439,7 @@ Repeat for 1-2 other contacts to verify data consistency.
 3. Click "Send to Tracker"
 
 **Expected Behavior**:
+
 - [ ] Button is tappable (not too small)
 - [ ] CSV downloads to phone
 - [ ] Tracker opens in new tab (mobile browser)
@@ -415,16 +452,17 @@ Repeat for 1-2 other contacts to verify data consistency.
 
 ### Target Metrics
 
-| Operation | Target | Method |
-|-----------|--------|--------|
-| Export API response | <200ms | Chrome DevTools Network tab |
-| CSV download | <500ms | Time from click to file in Downloads |
-| Tracker page load | <2s | Time from click to notification visible |
-| Import 50 contacts | <3s | Time from click Import to success message |
+| Operation           | Target | Method                                    |
+| ------------------- | ------ | ----------------------------------------- |
+| Export API response | <200ms | Chrome DevTools Network tab               |
+| CSV download        | <500ms | Time from click to file in Downloads      |
+| Tracker page load   | <2s    | Time from click to notification visible   |
+| Import 50 contacts  | <3s    | Time from click Import to success message |
 
 ### How to Measure
 
 **Export API**:
+
 ```bash
 # Run 10 times and average
 time curl -X POST http://localhost:3000/api/export-to-tracker \
@@ -433,10 +471,12 @@ time curl -X POST http://localhost:3000/api/export-to-tracker \
 ```
 
 **Page Load**:
+
 - Chrome DevTools → Network → Disable cache → Reload
 - Check "Load" time in Network tab footer
 
 **Import Speed**:
+
 - Use browser DevTools Performance tab
 - Record from "Import" button click to success notification
 
@@ -447,11 +487,13 @@ time curl -X POST http://localhost:3000/api/export-to-tracker \
 ### Issue 1: "Send to Tracker" button does nothing
 
 **Diagnosis**:
+
 - Check browser console for JavaScript errors
 - Verify `/api/export-to-tracker` endpoint exists
 - Check Network tab for failed requests
 
 **Fix**:
+
 - Ensure Audio Intel dev server is running
 - Verify route file exists and exports POST function
 - Check request payload in Network tab
@@ -459,11 +501,13 @@ time curl -X POST http://localhost:3000/api/export-to-tracker \
 ### Issue 2: CSV downloads but Tracker doesn't open
 
 **Diagnosis**:
+
 - Check if popup blocked (browser notification)
 - Verify deep link URL in API response
 - Check browser console for errors
 
 **Fix**:
+
 - Allow popups for localhost:3000
 - Test `window.open()` with simple URL first
 - Ensure Tracker dev server is running on port 3001
@@ -471,11 +515,13 @@ time curl -X POST http://localhost:3000/api/export-to-tracker \
 ### Issue 3: Tracker import fails
 
 **Diagnosis**:
+
 - Check CSV file content (encoding issues?)
 - Verify all required fields present
 - Check Tracker API response in Network tab
 
 **Fix**:
+
 - Re-download CSV and check format
 - Ensure UTF-8 encoding
 - Check Tracker `/api/campaigns/import` endpoint
@@ -483,11 +529,13 @@ time curl -X POST http://localhost:3000/api/export-to-tracker \
 ### Issue 4: Enrichment data not in Tracker notes
 
 **Diagnosis**:
+
 - Open CSV in text editor
 - Check if Notes column has content
 - Verify `includeEnrichmentData: true` in request
 
 **Fix**:
+
 - Re-export from Audio Intel
 - Check export API response for notes content
 - Manually verify CSV Notes column
@@ -504,6 +552,7 @@ time curl -X POST http://localhost:3000/api/export-to-tracker \
 ✅ **Task 4**: End-to-end workflow preserves all enrichment data
 
 **Ready for Production** when:
+
 - All 4 tasks pass on localhost
 - Cross-domain testing passes
 - Mobile testing passes

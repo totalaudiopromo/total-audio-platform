@@ -1,10 +1,30 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { agentColorUtils, AGENT_CATEGORIES, AGENT_STATUS_STATES, AGENT_COLOR_THEMES } from '../lib/agent-color-system';
+import {
+  agentColorUtils,
+  AGENT_CATEGORIES,
+  AGENT_STATUS_STATES,
+  AGENT_COLOR_THEMES,
+} from '../lib/agent-color-system';
 import AgentStatusWidget from './AgentStatusWidget';
 import AgentLoadingState from './AgentLoadingState';
-import { CheckCircle, AlertTriangle, AlertCircle, BarChart3, Gamepad2, Rocket, Sparkles, ContactRound, Mail, TrendingUp, Calendar, Clock, Share2, Smartphone } from 'lucide-react';
+import {
+  CheckCircle,
+  AlertTriangle,
+  AlertCircle,
+  BarChart3,
+  Gamepad2,
+  Rocket,
+  Sparkles,
+  ContactRound,
+  Mail,
+  TrendingUp,
+  Calendar,
+  Clock,
+  Share2,
+  Smartphone,
+} from 'lucide-react';
 import SocialMediaScheduler from './SocialMediaScheduler';
 import UKSocialMediaHub from './UKSocialMediaHub';
 
@@ -15,9 +35,9 @@ interface CommandCenterProps {
 }
 
 const AgentCommandCenter: React.FC<CommandCenterProps> = ({
-  title = "🤖 Agent Command Center",
+  title = '🤖 Agent Command Center',
   showHeader = true,
-  compactMode = false
+  compactMode = false,
 }) => {
   const [activeWorkflow, setActiveWorkflow] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -33,17 +53,17 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
       category: 'Growth & Marketing',
       performance: 94,
       currentTask: 'Monitoring WeAreTheMusicMakers for opportunities',
-      priority: 'high' as const
+      priority: 'high' as const,
     },
     {
-      id: '2', 
+      id: '2',
       name: 'Contact Enrichment',
       type: 'contact-agent',
       status: 'processing' as const,
       category: 'Data & Analytics',
       performance: 87,
       currentTask: 'Processing 2,341 contacts',
-      priority: 'critical' as const
+      priority: 'critical' as const,
     },
     {
       id: '3',
@@ -53,7 +73,7 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
       category: 'Growth & Marketing',
       performance: 96,
       currentTask: 'Sent 340 personalized emails',
-      priority: 'medium' as const
+      priority: 'medium' as const,
     },
     {
       id: '4',
@@ -62,7 +82,7 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
       status: 'idle' as const,
       category: 'Music Industry',
       performance: 82,
-      priority: 'low' as const
+      priority: 'low' as const,
     },
     {
       id: '5',
@@ -72,7 +92,7 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
       category: 'System Operations',
       performance: 71,
       currentTask: 'Color inconsistencies detected in UI',
-      priority: 'high' as const
+      priority: 'high' as const,
     },
     {
       id: '6',
@@ -82,33 +102,33 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
       category: 'System Operations',
       performance: 99,
       currentTask: 'Monitoring all system metrics',
-      priority: 'critical' as const
+      priority: 'critical' as const,
     },
-           {
-             id: '7',
-             name: 'UK Social Media Hub',
-             type: 'uk-social-hub',
-             status: 'active' as const,
-             category: 'Growth & Marketing',
-             performance: 95,
-             currentTask: 'Managing 16 posts across 5 platforms',
-             priority: 'high' as const
-           }
+    {
+      id: '7',
+      name: 'UK Social Media Hub',
+      type: 'uk-social-hub',
+      status: 'active' as const,
+      category: 'Growth & Marketing',
+      performance: 95,
+      currentTask: 'Managing 16 posts across 5 platforms',
+      priority: 'high' as const,
+    },
   ]);
 
   // System health calculation
   useEffect(() => {
     const errorCount = agents.filter(agent => agent.status === 'warning').length;
     const warningCount = agents.filter(agent => agent.status === 'warning').length;
-    
+
     if (errorCount > 0) {
       setSystemStatus('critical');
     } else if (warningCount > 0) {
-      setSystemStatus('warning'); 
+      setSystemStatus('warning');
     } else {
       setSystemStatus('healthy');
     }
-    
+
     setLastUpdate(new Date().toLocaleTimeString());
   }, [agents]);
 
@@ -118,20 +138,20 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
         color: '#4CAF50',
         icon: 'check-circle',
         message: 'All Systems Operational',
-        bgColor: '#E8F5E8'
+        bgColor: '#E8F5E8',
       },
       warning: {
-        color: '#FF9800', 
+        color: '#FF9800',
         icon: 'alert-triangle',
         message: 'Issues Detected',
-        bgColor: '#FFF3E0'
+        bgColor: '#FFF3E0',
       },
       critical: {
         color: '#F44336',
         icon: 'alert-circle',
         message: 'Critical Issues',
-        bgColor: '#FFEBEE'
-      }
+        bgColor: '#FFEBEE',
+      },
     };
     return configs[systemStatus];
   };
@@ -150,7 +170,7 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
         return <span>•</span>;
     }
   };
-  const filteredAgents = selectedCategory 
+  const filteredAgents = selectedCategory
     ? agents.filter(agent => agent.category === selectedCategory)
     : agents;
 
@@ -158,12 +178,15 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
     { key: 'contact-processing', label: 'Contact Processing', desc: 'Validate & enrich contacts' },
     { key: 'email-campaign', label: 'Email Campaign', desc: 'Send personalized emails' },
     { key: 'data-analysis', label: 'Data Analysis', desc: 'Performance analytics' },
-    { key: 'content-generation', label: 'Content Generation', desc: 'Create viral content' }
+    { key: 'content-generation', label: 'Content Generation', desc: 'Create viral content' },
   ];
 
   if (compactMode) {
     return (
-      <div className="bg-white rounded-lg shadow-lg p-4 border-2" style={{ borderColor: statusConfig.color }}>
+      <div
+        className="bg-white rounded-lg shadow-lg p-4 border-2"
+        style={{ borderColor: statusConfig.color }}
+      >
         {/* Compact Header */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center space-x-2">
@@ -179,7 +202,7 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
 
         {/* Compact Agent Grid */}
         <div className="grid grid-cols-2 gap-2">
-          {filteredAgents.slice(0, 4).map((agent) => (
+          {filteredAgents.slice(0, 4).map(agent => (
             <AgentStatusWidget
               key={agent.id}
               agentType={agent.type}
@@ -202,14 +225,17 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-xl border-2 overflow-hidden" style={{ borderColor: statusConfig.color }}>
+    <div
+      className="bg-white rounded-xl shadow-xl border-2 overflow-hidden"
+      style={{ borderColor: statusConfig.color }}
+    >
       {/* Header */}
       {showHeader && (
-        <div 
+        <div
           className="p-6 border-b-2"
-          style={{ 
+          style={{
             backgroundColor: statusConfig.bgColor,
-            borderBottomColor: statusConfig.color 
+            borderBottomColor: statusConfig.color,
           }}
         >
           <div className="flex items-center justify-between">
@@ -230,9 +256,7 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
                   {statusConfig.message}
                 </span>
               </div>
-              <div className="text-xs text-gray-500">
-                Last updated: {lastUpdate}
-              </div>
+              <div className="text-xs text-gray-500">Last updated: {lastUpdate}</div>
             </div>
           </div>
         </div>
@@ -246,12 +270,14 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
             <span className="text-sm font-medium text-gray-700">Category:</span>
             <select
               value={selectedCategory || ''}
-              onChange={(e) => setSelectedCategory(e.target.value || null)}
+              onChange={e => setSelectedCategory(e.target.value || null)}
               className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Categories</option>
               {Object.keys(AGENT_CATEGORIES).map(category => (
-                <option key={category} value={category}>{category}</option>
+                <option key={category} value={category}>
+                  {category}
+                </option>
               ))}
             </select>
           </div>
@@ -262,23 +288,25 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
               onClick={() => window.open('/agent-dashboard', '_blank')}
               className="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition-colors"
             >
-              <BarChart3 className="w-4 h-4 inline mr-2" />Full Dashboard
+              <BarChart3 className="w-4 h-4 inline mr-2" />
+              Full Dashboard
             </button>
             <button
               onClick={() => window.open('/agent-demo', '_blank')}
               className="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition-colors"
             >
-              <Gamepad2 className="w-4 h-4 inline mr-2" />Demo Mode
+              <Gamepad2 className="w-4 h-4 inline mr-2" />
+              Demo Mode
             </button>
           </div>
         </div>
 
         {/* Agent Status Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-          {filteredAgents.map((agent) => {
+          {filteredAgents.map(agent => {
             const theme = agentColorUtils.getAgentTheme(agent.type);
             const priorityStyle = agentColorUtils.getPriorityStyle(agent.priority);
-            
+
             return (
               <div
                 key={agent.id}
@@ -287,7 +315,7 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
                   backgroundColor: theme.secondary,
                   borderColor: theme.primary,
                   boxShadow: agent.status === 'active' ? `0 0 15px ${theme.primary}30` : undefined,
-                  ...priorityStyle
+                  ...priorityStyle,
                 }}
               >
                 {/* Agent Header */}
@@ -313,7 +341,10 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
 
                 {/* Performance */}
                 <div className="mb-3">
-                  <div className="flex justify-between text-xs mb-1" style={{ color: theme.accent }}>
+                  <div
+                    className="flex justify-between text-xs mb-1"
+                    style={{ color: theme.accent }}
+                  >
                     <span>Performance</span>
                     <span>{agent.performance}%</span>
                   </div>
@@ -322,7 +353,7 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
                       className="h-2 rounded-full transition-all duration-500"
                       style={{
                         width: `${agent.performance}%`,
-                        backgroundColor: theme.accent
+                        backgroundColor: theme.accent,
                       }}
                     />
                   </div>
@@ -341,11 +372,14 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
 
         {/* Workflow Section */}
         <div className="border-t border-gray-200 pt-6">
-          <h3 className="text-lg font-bold text-gray-900 mb-4"><Rocket className="w-5 h-5 inline mr-2" />Quick Workflows</h3>
-          
+          <h3 className="text-lg font-bold text-gray-900 mb-4">
+            <Rocket className="w-5 h-5 inline mr-2" />
+            Quick Workflows
+          </h3>
+
           {!activeWorkflow ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-              {workflowOptions.map((workflow) => (
+              {workflowOptions.map(workflow => (
                 <button
                   key={workflow.key}
                   onClick={() => setActiveWorkflow(workflow.key)}
@@ -369,14 +403,14 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
                   Cancel
                 </button>
               </div>
-              
+
               <AgentLoadingState
                 workflow={activeWorkflow as any}
                 onComplete={() => {
                   setActiveWorkflow(null);
                   alert('Workflow completed successfully!');
                 }}
-                onError={(error) => {
+                onError={error => {
                   setActiveWorkflow(null);
                   alert(`Workflow error: ${error}`);
                 }}
@@ -385,10 +419,10 @@ const AgentCommandCenter: React.FC<CommandCenterProps> = ({
           )}
         </div>
 
-               {/* UK Social Media Hub */}
-               <div className="border-t border-gray-200 pt-6 mt-6">
-                 <UKSocialMediaHub compact={compactMode} />
-               </div>
+        {/* UK Social Media Hub */}
+        <div className="border-t border-gray-200 pt-6 mt-6">
+          <UKSocialMediaHub compact={compactMode} />
+        </div>
 
         {/* System Stats */}
         <div className="border-t border-gray-200 pt-6 mt-6">

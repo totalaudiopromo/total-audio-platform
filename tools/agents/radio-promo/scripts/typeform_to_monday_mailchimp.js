@@ -95,7 +95,9 @@ async function main() {
   // 1) Pull campaign brief from Typeform
   const found = await findTypeformCampaignByArtist(artistQuery);
   if (!found) {
-    console.log(JSON.stringify({ ok: false, step: 'typeform', message: 'Artist not found in Typeform' }));
+    console.log(
+      JSON.stringify({ ok: false, step: 'typeform', message: 'Artist not found in Typeform' })
+    );
     process.exit(0);
   }
   const artistData = found.brief.data || {};
@@ -107,14 +109,17 @@ async function main() {
   // 2) Create Claude-written press, duplicate Mailchimp source and inject
   const pr = new PressReleaseGenerator();
   if (process.env.MC_DUPLICATE_SOURCE == null) {
-    process.env.MC_DUPLICATE_SOURCE = 'Charcom x Luisa Wilson - KEEP MY EYES ON YOU - Main Contacts';
+    process.env.MC_DUPLICATE_SOURCE =
+      'Charcom x Luisa Wilson - KEEP MY EYES ON YOU - Main Contacts';
   }
   const content = await pr.createClaudeFirstContent(artistData);
   const mailchimpDraft = await pr.createMailchimpDraftFromSource(artistData, content);
 
   // 3) Locate/ensure Monday item for artist, then add targets as subitems
   const items = await monday.getCampaignItems();
-  const targetItem = items.find(i => (i.name || '').toLowerCase().includes(artistQuery.toLowerCase()));
+  const targetItem = items.find(i =>
+    (i.name || '').toLowerCase().includes(artistQuery.toLowerCase())
+  );
   let itemId = targetItem?.id;
   if (!itemId) {
     const created = await monday.createLibertyCampaign({
@@ -122,7 +127,7 @@ async function main() {
       trackName: artistData.trackTitle,
       genre: artistData.genre,
       releaseDate: artistData.releaseDate,
-      campaignType: '6-week'
+      campaignType: '6-week',
     });
     itemId = created.id;
   }
@@ -141,7 +146,7 @@ async function main() {
         name: `Pitch: ${name}`,
         status: 'Working on it',
         deadline: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-        description: desc
+        description: desc,
       });
     } catch (e) {
       // continue
@@ -152,7 +157,10 @@ async function main() {
   const csv = toCsv(targets);
   const outDir = path.resolve(__dirname, '../../campaigns');
   if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
-  const csvPath = path.join(outDir, `${artistData.artistName.replace(/[^a-zA-Z0-9]/g, '_')}_targets.csv`);
+  const csvPath = path.join(
+    outDir,
+    `${artistData.artistName.replace(/[^a-zA-Z0-9]/g, '_')}_targets.csv`
+  );
   fs.writeFileSync(csvPath, csv);
 
   console.log(
@@ -163,7 +171,7 @@ async function main() {
         mailchimpDraft,
         mondayItemId: itemId,
         airtableTargets: targets.length,
-        csvPath
+        csvPath,
       },
       null,
       2
@@ -175,5 +183,3 @@ main().catch(err => {
   console.error(err.message || String(err));
   process.exit(1);
 });
-
-

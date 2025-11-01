@@ -10,7 +10,8 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -25,7 +26,7 @@ async function fetchAllContacts() {
       : `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
 
     const response = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
     });
 
     const data = await response.json();
@@ -46,14 +47,16 @@ function isRelevantForKYARA(contact) {
   if (status !== 'Opted-In') return false;
 
   // Must have indie or alternative genre (or enrichment mentions it)
-  const hasIndieAlt = genres.some(g =>
-    g.toLowerCase().includes('indie') ||
-    g.toLowerCase().includes('alternative') ||
-    g.toLowerCase().includes('all')
+  const hasIndieAlt = genres.some(
+    g =>
+      g.toLowerCase().includes('indie') ||
+      g.toLowerCase().includes('alternative') ||
+      g.toLowerCase().includes('all')
   );
 
-  const notesHasIndieAlt = enrichmentNotes.toLowerCase().includes('indie') ||
-                          enrichmentNotes.toLowerCase().includes('alternative');
+  const notesHasIndieAlt =
+    enrichmentNotes.toLowerCase().includes('indie') ||
+    enrichmentNotes.toLowerCase().includes('alternative');
 
   if (!hasIndieAlt && !notesHasIndieAlt) return false;
 
@@ -89,9 +92,11 @@ function calculatePriority(contact) {
   }
 
   // Community/specialist radio bonus (indie-friendly)
-  if (enrichmentNotes.toLowerCase().includes('community') ||
-      enrichmentNotes.toLowerCase().includes('specialist') ||
-      enrichmentNotes.toLowerCase().includes('independent music')) {
+  if (
+    enrichmentNotes.toLowerCase().includes('community') ||
+    enrichmentNotes.toLowerCase().includes('specialist') ||
+    enrichmentNotes.toLowerCase().includes('independent music')
+  ) {
     score += 20;
   }
 
@@ -122,11 +127,13 @@ async function generateKYARAPriorityList() {
     contact,
     score: calculatePriority(contact),
     email: contact.fields.Email || '',
-    name: `${contact.fields['First Name'] || ''} ${contact.fields['Last Name'] || ''}`.trim() || 'Unknown',
+    name:
+      `${contact.fields['First Name'] || ''} ${contact.fields['Last Name'] || ''}`.trim() ||
+      'Unknown',
     station: contact.fields.Station || 'Unknown',
     quality: contact.fields['Enrichment Quality'] || 'Low',
     genres: contact.fields.Genres || [],
-    enrichmentNotes: contact.fields['Enrichment Notes'] || ''
+    enrichmentNotes: contact.fields['Enrichment Notes'] || '',
   }));
 
   // Sort by priority score (highest first)
@@ -137,7 +144,7 @@ async function generateKYARAPriorityList() {
     tier1: prioritized.filter(p => p.score >= 150), // Top priority (BBC, triple j, High quality)
     tier2: prioritized.filter(p => p.score >= 80 && p.score < 150), // High priority
     tier3: prioritized.filter(p => p.score >= 40 && p.score < 80), // Medium priority
-    tier4: prioritized.filter(p => p.score < 40) // Lower priority
+    tier4: prioritized.filter(p => p.score < 40), // Lower priority
   };
 
   console.log('📋 PRIORITY TIERS:\n');
@@ -163,7 +170,7 @@ async function generateKYARAPriorityList() {
 `;
 
   tiers.tier1.forEach((p, i) => {
-    markdownReport += `### ${i+1}. ${p.name} - ${p.station}\n`;
+    markdownReport += `### ${i + 1}. ${p.name} - ${p.station}\n`;
     markdownReport += `- **Email**: ${p.email}\n`;
     markdownReport += `- **Quality**: ${p.quality} (Score: ${p.score})\n`;
     markdownReport += `- **Genres**: ${p.genres.join(', ') || 'Not specified'}\n`;
@@ -185,8 +192,9 @@ async function generateKYARAPriorityList() {
 
 `;
 
-  tiers.tier2.slice(0, 20).forEach((p, i) => { // Show first 20
-    markdownReport += `${i+1}. **${p.name}** - ${p.station} (${p.email}) - ${p.quality}\n`;
+  tiers.tier2.slice(0, 20).forEach((p, i) => {
+    // Show first 20
+    markdownReport += `${i + 1}. **${p.name}** - ${p.station} (${p.email}) - ${p.quality}\n`;
   });
 
   if (tiers.tier2.length > 20) {
@@ -201,8 +209,9 @@ async function generateKYARAPriorityList() {
 
 `;
 
-  tiers.tier3.slice(0, 10).forEach((p, i) => { // Show first 10
-    markdownReport += `${i+1}. **${p.name}** - ${p.station} (${p.email})\n`;
+  tiers.tier3.slice(0, 10).forEach((p, i) => {
+    // Show first 10
+    markdownReport += `${i + 1}. **${p.name}** - ${p.station} (${p.email})\n`;
   });
 
   if (tiers.tier3.length > 10) {
@@ -242,8 +251,8 @@ _Full list available in JSON export_
 ### triple j Australia (Highest Priority)
 `;
 
-  const tripleJContacts = tiers.tier1.filter(p =>
-    p.station.includes('triple j') || p.email.includes('abc.net.au')
+  const tripleJContacts = tiers.tier1.filter(
+    p => p.station.includes('triple j') || p.email.includes('abc.net.au')
   );
 
   tripleJContacts.forEach(p => {
@@ -253,8 +262,8 @@ _Full list available in JSON export_
   markdownReport += `\n### BBC 6 Music (UK Priority)
 `;
 
-  const bbc6Contacts = tiers.tier1.filter(p =>
-    p.station.includes('6 Music') || p.enrichmentNotes.includes('6 Music')
+  const bbc6Contacts = tiers.tier1.filter(
+    p => p.station.includes('6 Music') || p.enrichmentNotes.includes('6 Music')
   );
 
   bbc6Contacts.forEach(p => {
@@ -263,37 +272,44 @@ _Full list available in JSON export_
 
   // Save files
   fs.writeFileSync('./KYARA_PRIORITY_LIST.md', markdownReport);
-  fs.writeFileSync('./KYARA_PRIORITY_LIST.json', JSON.stringify({
-    generated: new Date().toISOString(),
-    totalContacts: prioritized.length,
-    tiers: {
-      tier1: tiers.tier1.map(p => ({
-        name: p.name,
-        email: p.email,
-        station: p.station,
-        quality: p.quality,
-        score: p.score,
-        genres: p.genres
-      })),
-      tier2: tiers.tier2.map(p => ({
-        name: p.name,
-        email: p.email,
-        station: p.station,
-        quality: p.quality,
-        score: p.score
-      })),
-      tier3: tiers.tier3.map(p => ({
-        name: p.name,
-        email: p.email,
-        station: p.station
-      })),
-      tier4: tiers.tier4.map(p => ({
-        name: p.name,
-        email: p.email,
-        station: p.station
-      }))
-    }
-  }, null, 2));
+  fs.writeFileSync(
+    './KYARA_PRIORITY_LIST.json',
+    JSON.stringify(
+      {
+        generated: new Date().toISOString(),
+        totalContacts: prioritized.length,
+        tiers: {
+          tier1: tiers.tier1.map(p => ({
+            name: p.name,
+            email: p.email,
+            station: p.station,
+            quality: p.quality,
+            score: p.score,
+            genres: p.genres,
+          })),
+          tier2: tiers.tier2.map(p => ({
+            name: p.name,
+            email: p.email,
+            station: p.station,
+            quality: p.quality,
+            score: p.score,
+          })),
+          tier3: tiers.tier3.map(p => ({
+            name: p.name,
+            email: p.email,
+            station: p.station,
+          })),
+          tier4: tiers.tier4.map(p => ({
+            name: p.name,
+            email: p.email,
+            station: p.station,
+          })),
+        },
+      },
+      null,
+      2
+    )
+  );
 
   console.log('✅ Priority list generated!\n');
   console.log('📄 Files created:');

@@ -1,4 +1,4 @@
-import type { ContactsTableData } from "@/types/case-study";
+import type { ContactsTableData } from '@/types/case-study';
 
 interface ContactsTableProps {
   data: ContactsTableData;
@@ -30,9 +30,7 @@ export function ContactsTable({ data }: ContactsTableProps) {
           </tbody>
         </table>
       </div>
-      {data.disclaimer && (
-        <p className="text-sm text-gray-500">{data.disclaimer}</p>
-      )}
+      {data.disclaimer && <p className="text-sm text-gray-500">{data.disclaimer}</p>}
     </section>
   );
 }

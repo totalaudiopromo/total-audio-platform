@@ -1,4 +1,5 @@
 # QUICK START: Get KYARA Campaign into Tracker NOW
+
 ## 5-Minute Setup (Do This Right Now!)
 
 **Your tracker is RUNNING:** Port 3004 is active ✅
@@ -16,6 +17,7 @@ open http://localhost:3004/dashboard
 ```
 
 **OR** if deployed:
+
 ```bash
 open https://tracker.totalaudiopromo.com/dashboard
 ```
@@ -25,12 +27,14 @@ open https://tracker.totalaudiopromo.com/dashboard
 ### Step 2: Sign In / Sign Up (1 minute)
 
 **If you haven't created an account yet:**
+
 1. Click "Sign Up"
 2. Use email: chrisschofield@libertymusicpr.com (or your regular email)
 3. Create password
 4. Verify email (check inbox)
 
 **If you have an account:**
+
 1. Click "Sign In"
 2. Enter credentials
 3. Go to dashboard
@@ -67,6 +71,7 @@ Actual Reach: 15
 ```
 
 **Campaign Notes:**
+
 ```
 Real Liberty Music PR campaign.
 
@@ -114,6 +119,7 @@ MONDAY 14th: Release blast ready (30 contacts)
 ## ✅ DONE! (Verify)
 
 **You should now see:**
+
 - KYARA - Bloodshot campaign card on dashboard
 - Status: Active
 - Release Date: Mon 14th Oct
@@ -141,6 +147,7 @@ MONDAY 14th: Release blast ready (30 contacts)
 ### Dog-Fooding the Tracker:
 
 **Today (Thursday):**
+
 - ✅ Campaign created
 - ✅ Timeline populated
 - [ ] Use tracker to track actual emails sent today
@@ -148,18 +155,21 @@ MONDAY 14th: Release blast ready (30 contacts)
 - [ ] Update stats as they come in
 
 **Monday (Release Day):**
+
 - [ ] Log release day blast sent (7am AEST)
 - [ ] Track email opens/clicks (if using Mailchimp)
 - [ ] Add Amazing Radio response activity
 - [ ] Update WARM play count (pull new report)
 
 **Throughout Next Week:**
+
 - [ ] Log all follow-up emails sent
 - [ ] Track responses (adds, declines, no response)
 - [ ] Update campaign progress
 - [ ] Add notes about what's working
 
 **This Gives You:**
+
 - Real campaign data for Dan demo
 - Actual usage experience (dog-fooding)
 - Genuine feedback on what works/what doesn't
@@ -196,17 +206,20 @@ MONDAY 14th: Release blast ready (30 contacts)
 ### "Tracker won't load at localhost:3004"
 
 **Check if it's running:**
+
 ```bash
 lsof -ti:3004
 ```
 
 **If nothing returned, start it:**
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform
 npm run dev:tracker
 ```
 
 **OR start on different port:**
+
 ```bash
 PORT=3004 npm run dev -- apps/tracker
 ```
@@ -214,11 +227,13 @@ PORT=3004 npm run dev -- apps/tracker
 ### "Can't create campaign - form won't submit"
 
 **Check console for errors:**
+
 - Open DevTools (F12)
 - Look for red errors
 - Usually: Supabase connection issue or auth issue
 
 **Quick fix:**
+
 - Try signing out and back in
 - Clear browser cache
 - Check apps/tracker/.env.local has correct Supabase URL/key
@@ -226,10 +241,12 @@ PORT=3004 npm run dev -- apps/tracker
 ### "Activities won't save"
 
 **Check database schema:**
+
 - Campaign activities might need migration
 - Check: `apps/tracker/supabase/migrations/`
 
 **Workaround:**
+
 - Add activities as notes in campaign notes field
 - Still works for demo, just different UI
 
@@ -245,12 +262,14 @@ PORT=3004 npm run dev -- apps/tracker
 ✅ Dog-fooding strategy (use it for real!)
 
 **What To Do:**
+
 1. **RIGHT NOW:** Create KYARA campaign (5 min)
 2. **Tonight:** Review demo prep files (30 min)
 3. **Friday:** Show Dan, crush demo (7 min)
 4. **Monday:** Use tracker for release day blast
 
 **Expected Outcome:**
+
 - Dan sees real campaign in real tool
 - You have actual usage experience (not fake demo)
 - Authentic business case (you're saving time RIGHT NOW)

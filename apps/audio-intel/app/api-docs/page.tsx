@@ -1,26 +1,27 @@
-import type { Metadata } from "next"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { 
-  ArrowLeft, 
-  Code, 
-  Key, 
-  Send, 
-  FileText, 
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  ArrowLeft,
+  Code,
+  Key,
+  Send,
+  FileText,
   ExternalLink,
   Mail,
   Check,
-  AlertCircle
-} from "lucide-react"
+  AlertCircle,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: "API Documentation | Audio Intel",
-  description: "Integrate Audio Intel's contact enrichment API into your applications. RESTful API for music industry intelligence.",
+  title: 'API Documentation | Audio Intel',
+  description:
+    "Integrate Audio Intel's contact enrichment API into your applications. RESTful API for music industry intelligence.",
   alternates: { canonical: 'https://intel.totalaudiopromo.com/api' },
-  openGraph: { url: 'https://intel.totalaudiopromo.com/api' }
-}
+  openGraph: { url: 'https://intel.totalaudiopromo.com/api' },
+};
 
 export default function APIPage() {
   return (
@@ -31,25 +32,33 @@ export default function APIPage() {
           <div className="flex items-center space-x-4">
             <Link href="/" className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <img 
-                  src="/images/total_audio_promo_logo_trans.png" 
-                  alt="Total Audio Promo Logo" 
+                <img
+                  src="/images/total_audio_promo_logo_trans.png"
+                  alt="Total Audio Promo Logo"
                   className="w-8 h-8"
                 />
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-3xl font-black text-gray-900">Audio Intel</span>
-                <Badge variant="secondary" className="bg-blue-100 text-blue-800 font-bold">API</Badge>
+                <Badge variant="secondary" className="bg-blue-100 text-blue-800 font-bold">
+                  API
+                </Badge>
               </div>
             </Link>
           </div>
-          
+
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
+            <Link
+              href="/"
+              className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors"
+            >
               <ArrowLeft className="w-4 h-4 mr-2 inline" />
               Back to Home
             </Link>
-            <Link href="/documentation" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors">
+            <Link
+              href="/documentation"
+              className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors"
+            >
               <FileText className="w-4 h-4 mr-2 inline" />
               Documentation
             </Link>
@@ -66,22 +75,27 @@ export default function APIPage() {
               API Documentation
             </Badge>
           </div>
-          
-          <h1 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">
-            Audio Intel API
-          </h1>
-          
+
+          <h1 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8">Audio Intel API</h1>
+
           <p className="text-2xl font-bold text-gray-700 mb-12 max-w-3xl mx-auto">
-            Integrate music industry contact enrichment directly into your applications. 
-            RESTful API with real-time processing and comprehensive analytics.
+            Integrate music industry contact enrichment directly into your applications. RESTful API
+            with real-time processing and comprehensive analytics.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold text-lg px-8 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold text-lg px-8 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+            >
               <Key className="w-5 h-5 mr-2" />
               Get API Key
             </Button>
-            <Button variant="outline" size="lg" className="font-bold text-lg px-8 py-4 border-2 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <Button
+              variant="outline"
+              size="lg"
+              className="font-bold text-lg px-8 py-4 border-2 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+            >
               <FileText className="w-5 h-5 mr-2" />
               View Documentation
             </Button>
@@ -95,7 +109,7 @@ export default function APIPage() {
           <h2 className="text-4xl font-black text-gray-900 text-center mb-16">
             Powerful API Features
           </h2>
-          
+
           <div className="grid lg:grid-cols-3 gap-8">
             <Card className="border-4 border-blue-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               <CardHeader className="text-center">
@@ -198,29 +212,35 @@ export default function APIPage() {
               <div className="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <AlertCircle className="w-10 h-10 text-white" />
               </div>
-              <CardTitle className="text-3xl font-black text-gray-900">
-                API Coming Soon
-              </CardTitle>
+              <CardTitle className="text-3xl font-black text-gray-900">API Coming Soon</CardTitle>
               <CardDescription className="text-xl font-bold text-gray-700 mt-4">
-                We're putting the finishing touches on our API. Get early access and shape the final version.
+                We're putting the finishing touches on our API. Get early access and shape the final
+                version.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="bg-white p-6 rounded-xl border-2 border-yellow-200">
                 <h3 className="text-2xl font-black text-gray-900 mb-4">Get Early Access</h3>
                 <p className="text-lg font-bold text-gray-700 mb-6">
-                  Join our API beta program and help us build the perfect developer experience 
-                  for music industry applications.
+                  Join our API beta program and help us build the perfect developer experience for
+                  music industry applications.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a href="mailto:api@totalaudiopromo.com?subject=API Early Access Request">
-                    <Button size="lg" className="bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-700 hover:to-yellow-600 text-white font-bold text-lg px-8 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
+                    <Button
+                      size="lg"
+                      className="bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-700 hover:to-yellow-600 text-white font-bold text-lg px-8 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+                    >
                       <Mail className="w-5 h-5 mr-2" />
                       Request Early Access
                     </Button>
                   </a>
                   <Link href="/beta">
-                    <Button variant="outline" size="lg" className="font-bold text-lg px-8 py-4 border-2 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="font-bold text-lg px-8 py-4 border-2 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                    >
                       Join Beta Program
                     </Button>
                   </Link>
@@ -252,5 +272,5 @@ export default function APIPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

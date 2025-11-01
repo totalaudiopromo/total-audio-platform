@@ -14,6 +14,7 @@ All emojis need to be removed from the 4-email sequence. Replace with text alter
 **Subject**: ♪ Welcome to Audio Intel - Your 14-Day Trial Starts Now!
 
 ### Changes Needed:
+
 - ♪ (musical note) → Keep or remove from subject line
 - 🎵 What You'll Get → **What You'll Get** (remove emoji)
 - 📊 (any chart emojis) → Remove
@@ -25,6 +26,7 @@ All emojis need to be removed from the 4-email sequence. Replace with text alter
 ## Email 2: Day 3 - Master These 3 Automation Features
 
 ### Changes Needed:
+
 - Remove all emojis from content
 - Replace 🤖 with "Automation:"
 - Replace ⚡ with "Quick tip:"
@@ -35,6 +37,7 @@ All emojis need to be removed from the 4-email sequence. Replace with text alter
 ## Email 3: Day 5 - Advanced Features
 
 ### Changes Needed:
+
 - Remove all emojis
 - Replace 🚀 with "Advanced:"
 - Replace 💼 with "Business tip:"
@@ -47,6 +50,7 @@ All emojis need to be removed from the 4-email sequence. Replace with text alter
 **SPECIAL REQUEST**: Replace clock emoji with text countdown
 
 ### Changes Needed:
+
 - Remove ⏰ (clock emoji)
 - Replace with: **"⏱️ Countdown: 7 days remaining in your trial"**
   Or simpler: **"Trial Status: 7 days remaining (50% complete)"**
@@ -55,6 +59,7 @@ All emojis need to be removed from the 4-email sequence. Replace with text alter
 - Replace 📊 with "Stats:"
 
 ### Suggested Countdown Format:
+
 ```
 Trial Progress: Day 7 of 14
 [=======----------] 50% Complete
@@ -62,6 +67,7 @@ Time Remaining: 7 days
 ```
 
 Or simpler:
+
 ```
 Trial Status: Day 7/14 (7 days remaining)
 ```
@@ -70,20 +76,20 @@ Trial Status: Day 7/14 (7 days remaining)
 
 ## Quick Replacement Reference
 
-| Emoji | Replace With |
-|-------|-------------|
-| 🎵 | Remove or "♪" |
-| 📊 | Remove |
-| 👉 | → or remove |
-| 💡 | Remove or "Tip:" |
-| 🤖 | "Automation:" |
-| ⚡ | "Quick:" |
-| 📈 | "Results:" |
-| 🚀 | "Advanced:" |
-| 💼 | "Business:" |
-| ✨ | "Feature:" |
-| ⏰ | "Trial Status: X days remaining" |
-| 🎯 | "Goal:" |
+| Emoji | Replace With                     |
+| ----- | -------------------------------- |
+| 🎵    | Remove or "♪"                    |
+| 📊    | Remove                           |
+| 👉    | → or remove                      |
+| 💡    | Remove or "Tip:"                 |
+| 🤖    | "Automation:"                    |
+| ⚡    | "Quick:"                         |
+| 📈    | "Results:"                       |
+| 🚀    | "Advanced:"                      |
+| 💼    | "Business:"                      |
+| ✨    | "Feature:"                       |
+| ⏰    | "Trial Status: X days remaining" |
+| 🎯    | "Goal:"                          |
 
 ---
 

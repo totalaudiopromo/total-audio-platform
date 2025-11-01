@@ -10,12 +10,12 @@
 
 ## Current Status
 
-| Platform | Status | Time to Setup | Complexity |
-|----------|--------|---------------|------------|
-| **Bluesky** | ✅ Working | Done | Easy |
-| **LinkedIn** | ⚠️ Needs token | 10 minutes | Medium |
-| **Threads** | ❌ Not configured | 30+ minutes | Hard |
-| **Twitter/X** | ❓ Unknown | Need to check | Medium |
+| Platform      | Status            | Time to Setup | Complexity |
+| ------------- | ----------------- | ------------- | ---------- |
+| **Bluesky**   | ✅ Working        | Done          | Easy       |
+| **LinkedIn**  | ⚠️ Needs token    | 10 minutes    | Medium     |
+| **Threads**   | ❌ Not configured | 30+ minutes   | Hard       |
+| **Twitter/X** | ❓ Unknown        | Need to check | Medium     |
 
 ---
 
@@ -28,6 +28,7 @@ LinkedIn is the best platform for your audience (radio promoters, PR agencies). 
 **Follow this guide**: [LINKEDIN_SETUP.md](./LINKEDIN_SETUP.md)
 
 **Quick steps**:
+
 1. Go to https://www.linkedin.com/developers/apps
 2. Find your app (Client ID: `781ioptlbwi0ok`)
 3. Add redirect URI: `https://intel.totalaudiopromo.com/auth/linkedin/callback`
@@ -43,6 +44,7 @@ LinkedIn is the best platform for your audience (radio promoters, PR agencies). 
 ### Skip Threads for Now (or do it later)
 
 Threads requires:
+
 - Business Instagram account
 - Facebook Page connection
 - Facebook Developer app approval (can take days)
@@ -56,6 +58,7 @@ Threads requires:
 ## What Happens When Platforms Are Missing?
 
 The autonomous posting system is smart - it will:
+
 - ✅ Post to configured platforms (Bluesky, LinkedIn)
 - ⏭️ Skip platforms without credentials (Threads, Twitter)
 - 📊 Report which platforms succeeded/failed
@@ -70,11 +73,13 @@ The autonomous posting system is smart - it will:
 Once LinkedIn is configured:
 
 ### 1. Test LinkedIn Agent
+
 ```bash
 npx tsx scripts/verify-linkedin-agent.ts
 ```
 
 ### 2. Test Full Posting System
+
 ```bash
 # Start dev server
 PORT=3000 npm run dev
@@ -84,7 +89,9 @@ curl -X POST http://localhost:3000/api/cron/social-posting
 ```
 
 ### 3. Check What Posted
+
 The response will show:
+
 - Which platforms posted successfully
 - How many posts went out
 - Any errors or skipped platforms
@@ -96,6 +103,7 @@ The response will show:
 After testing locally:
 
 ### 1. Add Environment Variables to Vercel
+
 ```bash
 # LinkedIn
 vercel env add LINKEDIN_CLIENT_ID
@@ -106,18 +114,22 @@ vercel env add LINKEDIN_ACCESS_TOKEN
 ```
 
 ### 2. Deploy
+
 ```bash
 vercel --prod
 ```
 
 ### 3. Verify Cron is Working
+
 Check Vercel dashboard:
+
 - Go to your project
 - Click "Deployments" → Latest deployment
 - Click "Functions" tab
 - Look for `/api/cron/social-posting` logs
 
 Or manually trigger:
+
 ```bash
 curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
   -H "Authorization: Bearer $CRON_SECRET"
@@ -128,6 +140,7 @@ curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
 ## Posting Schedule
 
 The system posts **twice daily**:
+
 - **9:00 AM UK time** - Morning post
 - **5:00 PM UK time** - Afternoon post
 
@@ -138,16 +151,19 @@ Content comes from: `social-content/CONTENT_CALENDAR.json`
 ## Token Expiry & Maintenance
 
 ### LinkedIn
+
 - **Expires**: 60 days
 - **Refresh**: Run `npx tsx scripts/get-linkedin-token.ts`
 - **Calendar reminder**: Set for 55 days from now
 
 ### Threads
+
 - **Expires**: 60 days
 - **Refresh**: Run `npx tsx scripts/get-threads-token.ts`
 - **Calendar reminder**: Set for 55 days from now
 
 ### Bluesky
+
 - **Expires**: Never (unless you revoke the app password)
 - **Manage**: https://bsky.app/settings/app-passwords
 
@@ -163,6 +179,7 @@ All documentation in one place:
 4. **[SOCIAL_POSTING_SETUP.md](./SOCIAL_POSTING_SETUP.md)** - Complete technical reference
 
 Scripts:
+
 - `scripts/get-linkedin-token.ts` - LinkedIn OAuth helper
 - `scripts/get-threads-token.ts` - Threads OAuth helper
 - `scripts/test-bluesky.ts` - Test Bluesky agent
@@ -180,6 +197,7 @@ Scripts:
 **Threads taking too long**: Skip it! Launch with Bluesky + LinkedIn
 
 **Want to see the code**:
+
 - API route: `app/api/cron/social-posting/route.ts`
 - Bluesky agent: `lib/bluesky-posting-agent.ts`
 - LinkedIn agent: `lib/linkedin-posting-agent.ts`
@@ -190,11 +208,13 @@ Scripts:
 ## Bottom Line
 
 **Right now**:
+
 1. Bluesky works ✅
 2. LinkedIn needs 10 minutes of OAuth setup
 3. Threads is optional (can add later)
 
 **After LinkedIn setup**:
+
 - You'll have autonomous posting to 2 platforms
 - Twice daily (9am & 5pm UK time)
 - Using the content you've already written

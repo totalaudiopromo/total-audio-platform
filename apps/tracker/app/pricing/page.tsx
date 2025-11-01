@@ -76,7 +76,9 @@ const plans: Array<{
 
 export default function PricingPage() {
   const [email, setEmail] = useState('');
-  const [selectedTier, setSelectedTier] = useState<'professional' | 'agency'>('professional');
+  const [selectedTier, setSelectedTier] = useState<'professional' | 'agency'>(
+    'professional'
+  );
   const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -97,7 +99,7 @@ export default function PricingPage() {
         body: JSON.stringify({
           email,
           tier,
-          billing: 'monthly'
+          billing: 'monthly',
         }),
       });
 
@@ -129,14 +131,14 @@ export default function PricingPage() {
           Simple, Transparent Pricing
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-gray-600 sm:text-xl">
-          Standalone campaign tracking with AI-powered insights and industry benchmarks.
-          Start free, upgrade when you need unlimited campaigns.
+          Standalone campaign tracking with AI-powered insights and industry
+          benchmarks. Start free, upgrade when you need unlimited campaigns.
         </p>
       </div>
 
       {/* Pricing Cards */}
       <div className="grid gap-8 md:grid-cols-3 lg:grid-cols-3">
-        {plans.map((plan) => (
+        {plans.map(plan => (
           <div
             key={plan.name}
             className={`glass-panel relative px-6 py-10 ${
@@ -152,8 +154,8 @@ export default function PricingPage() {
                   plan.badgeColor === 'green'
                     ? 'bg-green-500 text-white'
                     : plan.badgeColor === 'purple'
-                    ? 'bg-teal-600 text-white'
-                    : 'bg-gray-900 text-white'
+                      ? 'bg-teal-600 text-white'
+                      : 'bg-gray-900 text-white'
                 }`}
               >
                 {plan.badge}
@@ -183,7 +185,7 @@ export default function PricingPage() {
 
             {/* Features */}
             <ul className="mb-8 space-y-4">
-              {plan.features.map((feature) => (
+              {plan.features.map(feature => (
                 <li key={feature} className="flex items-start gap-3">
                   <div className="mt-1 h-5 w-5 flex-shrink-0 rounded-full border-2 border-black bg-green-500 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                     <svg
@@ -213,7 +215,9 @@ export default function PricingPage() {
                 onClick={() => {
                   setSelectedTier(plan.tier!);
                   // Scroll to checkout form
-                  document.getElementById('checkout-form')?.scrollIntoView({ behavior: 'smooth' });
+                  document
+                    .getElementById('checkout-form')
+                    ?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className={`block w-full rounded-xl border-4 border-black px-6 py-4 text-center text-lg font-bold transition-all ${
                   plan.highlighted
@@ -238,9 +242,16 @@ export default function PricingPage() {
       {/* Checkout Form */}
       <div id="checkout-form" className="mt-16">
         <div className="glass-panel px-6 py-10 sm:px-10">
-          <h2 className="mb-6 text-2xl font-bold text-center">Complete Your Purchase</h2>
+          <h2 className="mb-6 text-2xl font-bold text-center">
+            Complete Your Purchase
+          </h2>
           <p className="mb-6 text-sm text-gray-600 text-center">
-            Selected plan: <span className="font-bold">{selectedTier === 'professional' ? 'Professional (£19/month)' : 'Agency (£79/month)'}</span>
+            Selected plan:{' '}
+            <span className="font-bold">
+              {selectedTier === 'professional'
+                ? 'Professional (£19/month)'
+                : 'Agency (£79/month)'}
+            </span>
           </p>
 
           <form
@@ -251,7 +262,10 @@ export default function PricingPage() {
             }}
           >
             <div className="space-y-2">
-              <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-600">
+              <label
+                htmlFor="email"
+                className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-600"
+              >
                 Email Address
               </label>
               <input
@@ -270,7 +284,9 @@ export default function PricingPage() {
               disabled={status === 'loading'}
               className="w-full rounded-xl border-4 border-black bg-teal-600 px-8 py-4 text-lg font-bold text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {status === 'loading' ? 'Processing...' : 'Start 14-Day Free Trial'}
+              {status === 'loading'
+                ? 'Processing...'
+                : 'Start 14-Day Free Trial'}
             </button>
 
             <p className="text-xs text-gray-500 text-center">
@@ -295,11 +311,14 @@ export default function PricingPage() {
           <div className="glass-panel px-6 py-6">
             <h3 className="mb-3 text-lg font-bold">Can I switch plans?</h3>
             <p className="text-sm text-gray-600">
-              Yes! Upgrade or downgrade anytime. Changes take effect immediately.
+              Yes! Upgrade or downgrade anytime. Changes take effect
+              immediately.
             </p>
           </div>
           <div className="glass-panel px-6 py-6">
-            <h3 className="mb-3 text-lg font-bold">What payment methods do you accept?</h3>
+            <h3 className="mb-3 text-lg font-bold">
+              What payment methods do you accept?
+            </h3>
             <p className="text-sm text-gray-600">
               We accept all major credit and debit cards via Stripe.
             </p>
@@ -307,13 +326,15 @@ export default function PricingPage() {
           <div className="glass-panel px-6 py-6">
             <h3 className="mb-3 text-lg font-bold">Can I cancel anytime?</h3>
             <p className="text-sm text-gray-600">
-              Absolutely. Cancel anytime with no questions asked. Your data stays available.
+              Absolutely. Cancel anytime with no questions asked. Your data
+              stays available.
             </p>
           </div>
           <div className="glass-panel px-6 py-6">
             <h3 className="mb-3 text-lg font-bold">Do you offer refunds?</h3>
             <p className="text-sm text-gray-600">
-              Yes. If you're not happy within the first 14 days, we'll refund you in full.
+              Yes. If you're not happy within the first 14 days, we'll refund
+              you in full.
             </p>
           </div>
         </div>

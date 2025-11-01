@@ -23,13 +23,19 @@ interface ImportPreviewModalProps {
   isImporting: boolean;
 }
 
-export function ImportPreviewModal({ isOpen, onClose, data, onConfirm, isImporting }: ImportPreviewModalProps) {
+export function ImportPreviewModal({
+  isOpen,
+  onClose,
+  data,
+  onConfirm,
+  isImporting,
+}: ImportPreviewModalProps) {
   const [showErrors, setShowErrors] = useState(true);
 
   if (!isOpen) return null;
 
-  const validRows = data.filter((row) => !row.errors || row.errors.length === 0);
-  const errorRows = data.filter((row) => row.errors && row.errors.length > 0);
+  const validRows = data.filter(row => !row.errors || row.errors.length === 0);
+  const errorRows = data.filter(row => row.errors && row.errors.length > 0);
 
   const downloadSampleCSV = () => {
     const sample = `name,artist_name,platform,genre,budget,target_reach,status
@@ -65,7 +71,9 @@ PR Campaign,Artist Name,Press,Electronic,800,100,planning`;
           </button>
 
           <div className="p-6 md:p-8">
-            <h2 className="text-2xl font-black text-gray-900 mb-2">Import Preview</h2>
+            <h2 className="text-2xl font-black text-gray-900 mb-2">
+              Import Preview
+            </h2>
             <p className="text-sm font-bold text-gray-600 mb-6">
               Review your import data before confirming
             </p>
@@ -75,19 +83,41 @@ PR Campaign,Artist Name,Press,Electronic,800,100,planning`;
               <div className="bg-green-50 rounded-xl p-4 border-2 border-green-500">
                 <div className="flex items-center gap-2 mb-1">
                   <CheckCircle2 className="h-5 w-5 text-green-600" />
-                  <span className="text-sm font-black text-green-900 uppercase">Valid</span>
+                  <span className="text-sm font-black text-green-900 uppercase">
+                    Valid
+                  </span>
                 </div>
-                <p className="text-3xl font-black text-green-600">{validRows.length}</p>
-                <p className="text-xs font-bold text-green-700">campaigns ready to import</p>
+                <p className="text-3xl font-black text-green-600">
+                  {validRows.length}
+                </p>
+                <p className="text-xs font-bold text-green-700">
+                  campaigns ready to import
+                </p>
               </div>
 
-              <div className={`rounded-xl p-4 border-2 ${errorRows.length > 0 ? 'bg-red-50 border-red-500' : 'bg-gray-50 border-gray-300'}`}>
+              <div
+                className={`rounded-xl p-4 border-2 ${errorRows.length > 0 ? 'bg-red-50 border-red-500' : 'bg-gray-50 border-gray-300'}`}
+              >
                 <div className="flex items-center gap-2 mb-1">
-                  <AlertCircle className={`h-5 w-5 ${errorRows.length > 0 ? 'text-red-600' : 'text-gray-400'}`} />
-                  <span className={`text-sm font-black uppercase ${errorRows.length > 0 ? 'text-red-900' : 'text-gray-500'}`}>Errors</span>
+                  <AlertCircle
+                    className={`h-5 w-5 ${errorRows.length > 0 ? 'text-red-600' : 'text-gray-400'}`}
+                  />
+                  <span
+                    className={`text-sm font-black uppercase ${errorRows.length > 0 ? 'text-red-900' : 'text-gray-500'}`}
+                  >
+                    Errors
+                  </span>
                 </div>
-                <p className={`text-3xl font-black ${errorRows.length > 0 ? 'text-red-600' : 'text-gray-400'}`}>{errorRows.length}</p>
-                <p className={`text-xs font-bold ${errorRows.length > 0 ? 'text-red-700' : 'text-gray-500'}`}>rows with issues</p>
+                <p
+                  className={`text-3xl font-black ${errorRows.length > 0 ? 'text-red-600' : 'text-gray-400'}`}
+                >
+                  {errorRows.length}
+                </p>
+                <p
+                  className={`text-xs font-bold ${errorRows.length > 0 ? 'text-red-700' : 'text-gray-500'}`}
+                >
+                  rows with issues
+                </p>
               </div>
             </div>
 
@@ -97,7 +127,10 @@ PR Campaign,Artist Name,Press,Electronic,800,100,planning`;
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                    <h3 className="text-base font-black text-red-900">Found {errorRows.length} Error{errorRows.length > 1 ? 's' : ''}</h3>
+                    <h3 className="text-base font-black text-red-900">
+                      Found {errorRows.length} Error
+                      {errorRows.length > 1 ? 's' : ''}
+                    </h3>
                   </div>
                   <button
                     onClick={() => setShowErrors(!showErrors)}
@@ -110,9 +143,13 @@ PR Campaign,Artist Name,Press,Electronic,800,100,planning`;
                 {showErrors && (
                   <div className="space-y-2 max-h-48 overflow-y-auto">
                     {errorRows.map((row, idx) => (
-                      <div key={idx} className="bg-white rounded-lg p-3 border border-red-200">
+                      <div
+                        key={idx}
+                        className="bg-white rounded-lg p-3 border border-red-200"
+                      >
                         <p className="text-sm font-bold text-gray-900 mb-1">
-                          Row {data.indexOf(row) + 1}: {row.name || 'Unnamed campaign'}
+                          Row {data.indexOf(row) + 1}:{' '}
+                          {row.name || 'Unnamed campaign'}
                         </p>
                         <ul className="text-xs text-red-700 space-y-1">
                           {row.errors?.map((error, i) => (
@@ -128,7 +165,8 @@ PR Campaign,Artist Name,Press,Electronic,800,100,planning`;
                 )}
 
                 <p className="text-xs font-bold text-red-700 mt-3">
-                  ⚠️ Rows with errors will be skipped. Only valid rows will be imported.
+                  ⚠️ Rows with errors will be skipped. Only valid rows will be
+                  imported.
                 </p>
               </div>
             )}
@@ -136,29 +174,50 @@ PR Campaign,Artist Name,Press,Electronic,800,100,planning`;
             {/* Valid Rows Preview */}
             {validRows.length > 0 && (
               <div className="mb-6">
-                <h3 className="text-base font-black text-gray-900 mb-3">Valid Campaigns ({validRows.length})</h3>
+                <h3 className="text-base font-black text-gray-900 mb-3">
+                  Valid Campaigns ({validRows.length})
+                </h3>
                 <div className="bg-gray-50 rounded-xl border-2 border-gray-300 overflow-hidden max-h-64 overflow-y-auto">
                   <table className="w-full text-xs">
                     <thead className="bg-gray-100 border-b-2 border-gray-300 sticky top-0">
                       <tr>
-                        <th className="px-3 py-2 text-left font-black text-gray-900">Campaign Name</th>
-                        <th className="px-3 py-2 text-left font-black text-gray-900">Platform</th>
-                        <th className="px-3 py-2 text-left font-black text-gray-900">Budget</th>
-                        <th className="px-3 py-2 text-left font-black text-gray-900">Status</th>
+                        <th className="px-3 py-2 text-left font-black text-gray-900">
+                          Campaign Name
+                        </th>
+                        <th className="px-3 py-2 text-left font-black text-gray-900">
+                          Platform
+                        </th>
+                        <th className="px-3 py-2 text-left font-black text-gray-900">
+                          Budget
+                        </th>
+                        <th className="px-3 py-2 text-left font-black text-gray-900">
+                          Status
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
                       {validRows.slice(0, 10).map((row, idx) => (
-                        <tr key={idx} className="border-b border-gray-200 hover:bg-gray-100">
-                          <td className="px-3 py-2 font-bold text-gray-900">{row.name}</td>
-                          <td className="px-3 py-2 font-medium text-gray-700">{row.platform || '-'}</td>
+                        <tr
+                          key={idx}
+                          className="border-b border-gray-200 hover:bg-gray-100"
+                        >
+                          <td className="px-3 py-2 font-bold text-gray-900">
+                            {row.name}
+                          </td>
+                          <td className="px-3 py-2 font-medium text-gray-700">
+                            {row.platform || '-'}
+                          </td>
                           <td className="px-3 py-2 font-medium text-gray-700">
                             {row.budget ? `£${row.budget}` : '-'}
                           </td>
                           <td className="px-3 py-2">
-                            <span className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${
-                              row.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-700'
-                            }`}>
+                            <span
+                              className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${
+                                row.status === 'active'
+                                  ? 'bg-green-100 text-green-800'
+                                  : 'bg-gray-100 text-gray-700'
+                              }`}
+                            >
                               {row.status || 'planning'}
                             </span>
                           </td>
@@ -166,7 +225,10 @@ PR Campaign,Artist Name,Press,Electronic,800,100,planning`;
                       ))}
                       {validRows.length > 10 && (
                         <tr>
-                          <td colSpan={4} className="px-3 py-2 text-center text-xs font-bold text-gray-500">
+                          <td
+                            colSpan={4}
+                            className="px-3 py-2 text-center text-xs font-bold text-gray-500"
+                          >
                             + {validRows.length - 10} more campaigns...
                           </td>
                         </tr>
@@ -181,9 +243,12 @@ PR Campaign,Artist Name,Press,Electronic,800,100,planning`;
             <div className="mb-6 bg-blue-50 rounded-xl p-4 border-2 border-blue-200">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
-                  <h4 className="text-sm font-black text-teal-900 mb-1">Need a template?</h4>
+                  <h4 className="text-sm font-black text-teal-900 mb-1">
+                    Need a template?
+                  </h4>
                   <p className="text-xs font-bold text-teal-700">
-                    Download our sample CSV to see the correct format for imports
+                    Download our sample CSV to see the correct format for
+                    imports
                   </p>
                 </div>
                 <button

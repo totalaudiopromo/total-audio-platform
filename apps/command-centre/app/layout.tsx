@@ -1,15 +1,17 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import AppShell from './components/AppShell'
-import { ToastContainer } from './components/Toast'
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import AppShell from './components/AppShell';
+import { ToastContainer } from './components/Toast';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Command Centre - Total Audio Promo',
-  description: 'Total Audio Promo Command Centre - Business intelligence, industry news monitoring, and marketing automation for indie artists',
-  keywords: 'music industry, audio intel, contact intelligence, indie artist tools, music promotion',
+  description:
+    'Total Audio Promo Command Centre - Business intelligence, industry news monitoring, and marketing automation for indie artists',
+  keywords:
+    'music industry, audio intel, contact intelligence, indie artist tools, music promotion',
   authors: [{ name: 'Total Audio Promo', url: 'https://intel.totalaudiopromo.com' }],
   creator: 'Total Audio Promo',
   publisher: 'Total Audio Promo',
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/favicon.ico',
-    shortcut: '/favicon.ico'
+    shortcut: '/favicon.ico',
   },
   metadataBase: new URL('https://command.totalaudiopromo.com'),
   alternates: {
@@ -58,7 +60,7 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code',
   },
-}
+};
 
 export const viewport = {
   width: 'device-width',
@@ -67,23 +69,17 @@ export const viewport = {
   userScalable: false, // Prevents zoom on mobile inputs
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#f6ab00' },
-    { media: '(prefers-color-scheme: dark)', color: '#f6ab00' }
+    { media: '(prefers-color-scheme: dark)', color: '#f6ab00' },
   ],
-}
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AppShell>
-          {children}
-        </AppShell>
+        <AppShell>{children}</AppShell>
         <ToastContainer />
       </body>
     </html>
-  )
+  );
 }

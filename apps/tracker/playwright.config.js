@@ -10,13 +10,13 @@ export default defineConfig({
   reporter: [
     ['html', { outputFolder: './reports' }],
     ['json', { outputFile: './reports/results.json' }],
-    ['list']
+    ['list'],
   ],
   use: {
     baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure'
+    video: 'retain-on-failure',
   },
 
   // Test on multiple devices
@@ -32,10 +32,9 @@ export default defineConfig({
     {
       name: 'Mobile Chrome',
       use: { ...devices['Galaxy S9+'] },
-    }
+    },
   ],
 
   // Don't start the server - assumes dev server is already running
   timeout: 30000,
 });
-

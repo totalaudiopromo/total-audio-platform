@@ -32,7 +32,7 @@ export default function LocationTracker({ email, page = 'unknown' }: LocationTra
             timestamp: new Date().toISOString(),
             screenResolution: `${screen.width}x${screen.height}`,
             language: navigator.language,
-            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
           }),
         });
 
@@ -40,7 +40,7 @@ export default function LocationTracker({ email, page = 'unknown' }: LocationTra
           const data = await response.json();
           if (data.success && data.location?.city) {
             console.log(`📍 Location tracked: ${data.location.city}, ${data.location.country}`);
-            
+
             // Store location in sessionStorage for potential future use
             sessionStorage.setItem('user-location', JSON.stringify(data.location));
           }

@@ -41,14 +41,16 @@ export class CuratorDiscoveryService {
       Focus on playlists with significant followings and active curation.`;
 
       const response = await this.perplexity.findJournalists(`Spotify ${genre} playlist curation`);
-      
+
       // Parse and enrich the data
       const curators = this.parseCuratorData(response.journalists, 'spotify', genre);
-      
+
       // Enrich with contact information
       for (const curator of curators) {
         if (curator.socialMedia?.website) {
-          const contactInfo = await this.firecrawl.scrapeJournalistContacts(curator.socialMedia.website);
+          const contactInfo = await this.firecrawl.scrapeJournalistContacts(
+            curator.socialMedia.website
+          );
           if (contactInfo.success && contactInfo.contacts.length > 0) {
             curator.contactInfo = contactInfo.contacts[0];
           }
@@ -69,9 +71,9 @@ export class CuratorDiscoveryService {
       Include music blogs, influencers, and discovery accounts.`;
 
       const response = await this.perplexity.findJournalists(`Instagram ${genre} music curation`);
-      
+
       const curators = this.parseCuratorData(response.journalists, 'instagram', genre);
-      
+
       // Try to find contact information from bio links
       for (const curator of curators) {
         if (curator.socialMedia?.website) {
@@ -81,7 +83,7 @@ export class CuratorDiscoveryService {
           if (contactInfo.emails.length > 0) {
             curator.contactInfo = {
               email: contactInfo.emails[0],
-              location: curator.contactInfo?.location
+              location: curator.contactInfo?.location,
             };
           }
         }
@@ -104,7 +106,7 @@ export class CuratorDiscoveryService {
         const redditUrl = `https://www.reddit.com/r/${subreddit}/`;
         const scrapingResult = await this.firecrawl.scrapeWebsite(redditUrl, {
           extractEmails: true,
-          extractSocialMedia: true
+          extractSocialMedia: true,
         });
 
         if (scrapingResult.success && scrapingResult.data) {
@@ -128,7 +130,7 @@ export class CuratorDiscoveryService {
 
       for (const blog of musicBlogs) {
         const scrapingResult = await this.firecrawl.scrapeJournalistContacts(blog.url);
-        
+
         if (scrapingResult.success) {
           const blogCurators = scrapingResult.contacts.map(contact => ({
             name: contact.name,
@@ -137,17 +139,17 @@ export class CuratorDiscoveryService {
             email: contact.email,
             socialMedia: {
               website: blog.url,
-              twitter: blog.twitter
+              twitter: blog.twitter,
             },
             contactInfo: {
               email: contact.email,
               phone: contact.phone,
-              title: contact.title
+              title: contact.title,
             },
             source: `Music Blog: ${blog.name}`,
-            lastUpdated: new Date()
+            lastUpdated: new Date(),
           }));
-          
+
           curators.push(...blogCurators);
         }
       }
@@ -169,21 +171,21 @@ export class CuratorDiscoveryService {
       socialMedia: {
         instagram: journalist.instagram,
         twitter: journalist.twitter,
-        website: journalist.website
+        website: journalist.website,
       },
       contactInfo: {
         email: journalist.email,
-        location: journalist.location
+        location: journalist.location,
       },
       source: `AI Discovery: ${platform}`,
-      lastUpdated: new Date()
+      lastUpdated: new Date(),
     }));
   }
 
   private parseRedditData(data: any, subreddit: string, genre: string): Curator[] {
     // Parse Reddit scraping results for curator information
     const curators: Curator[] = [];
-    
+
     // Extract moderator information and active contributors
     if (data.contactInfo) {
       data.contactInfo.forEach((contact: any) => {
@@ -193,14 +195,14 @@ export class CuratorDiscoveryService {
           genre,
           email: contact.email,
           socialMedia: {
-            website: `https://reddit.com/r/${subreddit}`
+            website: `https://reddit.com/r/${subreddit}`,
           },
           contactInfo: {
             email: contact.email,
-            title: contact.title
+            title: contact.title,
           },
           source: `Reddit: r/${subreddit}`,
-          lastUpdated: new Date()
+          lastUpdated: new Date(),
         });
       });
     }
@@ -210,24 +212,24 @@ export class CuratorDiscoveryService {
 
   private getGenreSubreddits(genre: string): string[] {
     const genreMap: Record<string, string[]> = {
-      'rock': ['indieheads', 'rock', 'listentothis'],
+      rock: ['indieheads', 'rock', 'listentothis'],
       'hip-hop': ['hiphopheads', 'trap', 'listentothis'],
-      'electronic': ['electronicmusic', 'edm', 'listentothis'],
-      'pop': ['popheads', 'listentothis'],
-      'indie': ['indieheads', 'listentothis'],
-      'jazz': ['jazz', 'listentothis'],
-      'classical': ['classicalmusic', 'listentothis']
+      electronic: ['electronicmusic', 'edm', 'listentothis'],
+      pop: ['popheads', 'listentothis'],
+      indie: ['indieheads', 'listentothis'],
+      jazz: ['jazz', 'listentothis'],
+      classical: ['classicalmusic', 'listentothis'],
     };
 
     return genreMap[genre.toLowerCase()] || ['listentothis'];
   }
 
-  private getMusicBlogs(genre: string): Array<{name: string, url: string, twitter?: string}> {
+  private getMusicBlogs(genre: string): Array<{ name: string; url: string; twitter?: string }> {
     const blogs = [
       { name: 'Pitchfork', url: 'https://pitchfork.com', twitter: '@pitchfork' },
       { name: 'Stereogum', url: 'https://stereogum.com', twitter: '@stereogum' },
       { name: 'Consequence of Sound', url: 'https://consequence.net', twitter: '@consequence' },
-      { name: 'BrooklynVegan', url: 'https://brooklynvegan.com', twitter: '@brooklynvegan' }
+      { name: 'BrooklynVegan', url: 'https://brooklynvegan.com', twitter: '@brooklynvegan' },
     ];
 
     return blogs;
@@ -247,8 +249,8 @@ export class CuratorDiscoveryService {
     try {
       for (const curator of curators) {
         await prisma.contact.upsert({
-          where: { 
-            email: curator.email || curator.name 
+          where: {
+            email: curator.email || curator.name,
           },
           update: {
             name: curator.name,
@@ -257,7 +259,7 @@ export class CuratorDiscoveryService {
             role: `${curator.platform} curator`,
             genre: curator.genre,
             tags: [curator.platform, curator.genre, 'curator'],
-            lastContactedAt: new Date()
+            lastContactedAt: new Date(),
           },
           create: {
             name: curator.name,
@@ -266,8 +268,8 @@ export class CuratorDiscoveryService {
             role: `${curator.platform} curator`,
             genre: curator.genre,
             tags: [curator.platform, curator.genre, 'curator'],
-            status: 'ACTIVE'
-          }
+            status: 'ACTIVE',
+          },
         });
       }
 
@@ -277,4 +279,4 @@ export class CuratorDiscoveryService {
       throw error;
     }
   }
-} 
+}

@@ -1,19 +1,21 @@
 # 🔒 Audio Intel - API Security Audit
 
 **Date:** 2025-10-14  
-**Status:** Pre-Deployment Review  
+**Status:** Pre-Deployment Review
 
 ---
 
 ## ✅ PROTECTED ROUTES (Middleware Authentication)
 
 ### Page Routes
+
 ```typescript
 ✅ /demo                    → Requires authentication
 ✅ /dashboard               → Requires authentication
 ```
 
 ### API Routes
+
 ```typescript
 ✅ /api/enrich              → Requires authentication
 ✅ /api/usage               → Requires authentication
@@ -28,20 +30,22 @@
 
 ### 1. `/api/enrich-claude` - NOT PROTECTED ⚠️
 
-**Issue:**  
+**Issue:**
+
 - Route: `app/api/enrich-claude/route.ts`
 - **NOT in middleware protected paths**
 - Contains rate limiting (1000 req/min) but no auth check
 - Could be exploited for free enrichments
 
 **Recommendation:**
+
 ```typescript
 // Add to middleware.ts line 20
 const protectedAPIPaths = [
   '/api/enrich',
-  '/api/enrich-claude',  // ← Add this
+  '/api/enrich-claude', // ← Add this
   '/api/usage',
-]
+];
 ```
 
 **Impact:** HIGH - This is your core enrichment API  
@@ -52,23 +56,28 @@ const protectedAPIPaths = [
 ### 2. `/api/checkout` - Stripe Payment Endpoint
 
 **Current State:** ✅ Partially Secure
+
 - Uses Stripe secret key (server-side only)
 - No explicit auth check but creates Stripe session with metadata
 
 **Recommendation:**
+
 ```typescript
 // app/api/checkout/route.ts - Add at top of POST function
-import { createClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/server';
 
 export async function POST(request: NextRequest) {
   // Add auth check
-  const supabase = createClient()
-  const { data: { user }, error } = await supabase.auth.getUser()
-  
+  const supabase = createClient();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
   if (!user || error) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  
+
   // ... rest of checkout logic
 }
 ```
@@ -83,6 +92,7 @@ export async function POST(request: NextRequest) {
 **Current State:** ✅ Protected by middleware
 
 **Verify:** Check that it enforces usage limits server-side
+
 ```typescript
 // Should check:
 1. User is authenticated ✅ (via middleware)
@@ -97,28 +107,31 @@ export async function POST(request: NextRequest) {
 ### 4. Cron/Webhook Endpoints - Verify Security
 
 **Unprotected Public Endpoints:**
+
 ```typescript
 ❓ /api/cron/weekly-newsletter        → Should verify Vercel cron secret
 ❓ /api/webhook/stripe (if exists)    → Should verify Stripe webhook signature
 ```
 
 **Recommendation for Cron:**
+
 ```typescript
 // Add to cron route
 export async function GET(request: NextRequest) {
-  const authHeader = request.headers.get('authorization')
+  const authHeader = request.headers.get('authorization');
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   // ... cron logic
 }
 ```
 
 **Recommendation for Stripe Webhook:**
+
 ```typescript
 // Verify signature
-const sig = request.headers.get('stripe-signature')
-const event = stripe.webhooks.constructEvent(body, sig, webhookSecret)
+const sig = request.headers.get('stripe-signature');
+const event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
 ```
 
 ---
@@ -126,11 +139,13 @@ const event = stripe.webhooks.constructEvent(body, sig, webhookSecret)
 ### 5. Rate Limiting
 
 **Current Implementation:**
+
 ```typescript
 ✅ /api/enrich-claude → 1000 req/min per IP + 2000 global
 ```
 
 **Recommendations:**
+
 - Lower to 10-20 req/min per user in production (currently 1000!)
 - Add rate limiting to `/api/checkout`
 - Consider Redis for distributed rate limiting in production
@@ -140,6 +155,7 @@ const event = stripe.webhooks.constructEvent(body, sig, webhookSecret)
 ### 6. Test/Debug Pages - ✅ PROTECTED
 
 **Production Protection:** Lines 36-60 in `middleware.ts`
+
 ```typescript
 ✅ Redirects test pages to homepage in production:
   - /test*, /debug-*, /notion-*, /pdf-*, /export-demo
@@ -153,18 +169,21 @@ const event = stripe.webhooks.constructEvent(body, sig, webhookSecret)
 ## 📋 PRE-DEPLOYMENT CHECKLIST
 
 ### Critical (Must Fix)
+
 - [ ] **Add `/api/enrich-claude` to protected middleware paths**
 - [ ] **Add authentication to `/api/checkout`**
 - [ ] **Verify usage limit enforcement in `/api/enrich`**
 - [ ] **Lower rate limits from 1000/min to 10-20/min per user**
 
 ### Important (Recommended)
+
 - [ ] Add Vercel cron secret verification to `/api/cron/*` routes
 - [ ] Verify Stripe webhook signature handling
 - [ ] Test all protected routes after middleware changes
 - [ ] Add logging for failed auth attempts
 
 ### Optional (Future Enhancement)
+
 - [ ] Implement Redis-based rate limiting
 - [ ] Add request logging/monitoring (Sentry)
 - [ ] CORS configuration for API routes
@@ -199,18 +218,15 @@ curl -X POST http://localhost:3000/api/enrich-claude \
 
 ```typescript
 // BEFORE (Current - Insecure)
-const protectedAPIPaths = [
-  '/api/enrich',
-  '/api/usage',
-]
+const protectedAPIPaths = ['/api/enrich', '/api/usage'];
 
 // AFTER (Secure)
 const protectedAPIPaths = [
   '/api/enrich',
-  '/api/enrich-claude',      // ← ADD THIS LINE
+  '/api/enrich-claude', // ← ADD THIS LINE
   '/api/usage',
-  '/api/checkout',           // ← ADD THIS LINE
-]
+  '/api/checkout', // ← ADD THIS LINE
+];
 ```
 
 **This change MUST be made before deploying to production.**
@@ -235,4 +251,3 @@ const protectedAPIPaths = [
 - [Supabase Auth Docs](https://supabase.com/docs/guides/auth)
 - [Stripe Webhook Security](https://stripe.com/docs/webhooks/signatures)
 - [OWASP API Security Top 10](https://owasp.org/www-project-api-security/)
-

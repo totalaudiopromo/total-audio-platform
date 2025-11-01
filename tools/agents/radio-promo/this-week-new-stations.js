@@ -2,7 +2,7 @@
 
 /**
  * This Week: New Radio Station Outreach for Senior Dunce
- * 
+ *
  * Focus on getting new stations on board this week
  * Based on Phase 2 of our strategy
  */
@@ -19,7 +19,7 @@ class ThisWeekNewStations {
         priority: 'high',
         action: 'new_submission',
         notes: 'BBC Introducing submission required + direct pitch',
-        deadline: 'Monday'
+        deadline: 'Monday',
       },
       {
         name: 'Amazing Radio',
@@ -28,7 +28,7 @@ class ThisWeekNewStations {
         priority: 'high',
         action: 'new_submission',
         notes: 'Direct submission via website + email pitch',
-        deadline: 'Tuesday'
+        deadline: 'Tuesday',
       },
       {
         name: 'Radio Wigwam',
@@ -37,7 +37,7 @@ class ThisWeekNewStations {
         priority: 'high',
         action: 'new_submission',
         notes: 'Direct email pitch with press release',
-        deadline: 'Wednesday'
+        deadline: 'Wednesday',
       },
       {
         name: 'Resonance FM',
@@ -46,7 +46,7 @@ class ThisWeekNewStations {
         priority: 'medium',
         action: 'new_submission',
         notes: 'Experimental format - perfect fit',
-        deadline: 'Wednesday'
+        deadline: 'Wednesday',
       },
       {
         name: 'NTS Radio',
@@ -55,7 +55,7 @@ class ThisWeekNewStations {
         priority: 'medium',
         action: 'new_submission',
         notes: 'Direct pitch to relevant shows',
-        deadline: 'Thursday'
+        deadline: 'Thursday',
       },
       {
         name: 'Soho Radio',
@@ -64,7 +64,7 @@ class ThisWeekNewStations {
         priority: 'medium',
         action: 'new_submission',
         notes: 'Fresh electronic sound angle',
-        deadline: 'Thursday'
+        deadline: 'Thursday',
       },
       {
         name: 'Totally Radio',
@@ -73,7 +73,7 @@ class ThisWeekNewStations {
         priority: 'low',
         action: 'new_submission',
         notes: 'Alternative shows focus',
-        deadline: 'Friday'
+        deadline: 'Friday',
       },
       {
         name: 'Radio Reverb',
@@ -82,23 +82,23 @@ class ThisWeekNewStations {
         priority: 'low',
         action: 'new_submission',
         notes: 'UK experimental track angle',
-        deadline: 'Friday'
-      }
+        deadline: 'Friday',
+      },
     ];
   }
-  
+
   generateWeekPlan() {
     console.log('🎵 THIS WEEK: New Radio Station Outreach for Senior Dunce\n');
-    
+
     console.log('📊 WEEKLY TARGETS:');
     console.log(`   Total New Stations: ${this.newTargets.length}`);
     console.log('   High Priority: 3 stations');
     console.log('   Medium Priority: 3 stations');
     console.log('   Low Priority: 2 stations');
     console.log('');
-    
+
     console.log('📅 DAILY ACTION PLAN:\n');
-    
+
     // Monday - BBC Radio 6 Music
     console.log('MONDAY - BBC Radio 6 Music:');
     console.log('   🎯 Priority: HIGH');
@@ -106,7 +106,7 @@ class ThisWeekNewStations {
     console.log('   📝 Notes: Register Senior Dunce, upload "Bestial", pitch to 6 Music');
     console.log('   ⏰ Deadline: End of day');
     console.log('');
-    
+
     // Tuesday - Amazing Radio
     console.log('TUESDAY - Amazing Radio:');
     console.log('   🎯 Priority: HIGH');
@@ -114,7 +114,7 @@ class ThisWeekNewStations {
     console.log('   📝 Notes: Perfect for indie electronic shows');
     console.log('   ⏰ Deadline: End of day');
     console.log('');
-    
+
     // Wednesday - Radio Wigwam + Resonance FM
     console.log('WEDNESDAY - Radio Wigwam + Resonance FM:');
     console.log('   🎯 Priority: HIGH + MEDIUM');
@@ -122,7 +122,7 @@ class ThisWeekNewStations {
     console.log('   📝 Notes: Community radio focus, experimental angle');
     console.log('   ⏰ Deadline: End of day');
     console.log('');
-    
+
     // Thursday - NTS Radio + Soho Radio
     console.log('THURSDAY - NTS Radio + Soho Radio:');
     console.log('   🎯 Priority: MEDIUM + MEDIUM');
@@ -130,7 +130,7 @@ class ThisWeekNewStations {
     console.log('   📝 Notes: Online radio, fresh electronic sound');
     console.log('   ⏰ Deadline: End of day');
     console.log('');
-    
+
     // Friday - Totally Radio + Radio Reverb
     console.log('FRIDAY - Totally Radio + Radio Reverb:');
     console.log('   🎯 Priority: LOW + LOW');
@@ -138,10 +138,10 @@ class ThisWeekNewStations {
     console.log('   📝 Notes: Alternative shows, UK experimental angle');
     console.log('   ⏰ Deadline: End of day');
     console.log('');
-    
+
     return this.newTargets;
   }
-  
+
   generateEmailTemplates() {
     return {
       bbcIntroducing: {
@@ -163,9 +163,9 @@ Would you like to consider it for BBC Introducing?
 Best regards,
 Chris Schofield
 Liberty Music PR
-chris@libertymusicpr.com`
+chris@libertymusicpr.com`,
       },
-      
+
       newStation: {
         subject: 'New Electronic Track: Senior Dunce - Bestial',
         template: `Hi [STATION_NAME],
@@ -185,9 +185,9 @@ Would you like to hear it for playlist consideration?
 Best regards,
 Chris Schofield
 Liberty Music PR
-chris@libertymusicpr.com`
+chris@libertymusicpr.com`,
       },
-      
+
       experimental: {
         subject: 'Experimental Electronic Track: Senior Dunce - Bestial',
         template: `Hi [STATION_NAME],
@@ -207,45 +207,45 @@ Would you like to hear it for your experimental shows?
 Best regards,
 Chris Schofield
 Liberty Music PR
-chris@libertymusicpr.com`
-      }
+chris@libertymusicpr.com`,
+      },
     };
   }
-  
+
   generateSuccessMetrics() {
     return {
       weekly: {
         targetStations: 8,
         highPriority: 3,
         mediumPriority: 3,
-        lowPriority: 2
+        lowPriority: 2,
       },
       expected: {
         responses: 4,
         playlistAdds: 2,
-        newPlays: 10
+        newPlays: 10,
       },
       stretch: {
         responses: 6,
         playlistAdds: 4,
-        newPlays: 20
-      }
+        newPlays: 20,
+      },
     };
   }
-  
+
   async executeThisWeekPlan() {
     console.log('🎵 THIS WEEK: New Radio Station Outreach for Senior Dunce\n');
-    
+
     const weekPlan = this.generateWeekPlan();
     const emailTemplates = this.generateEmailTemplates();
     const successMetrics = this.generateSuccessMetrics();
-    
+
     console.log('📧 EMAIL TEMPLATES READY:\n');
     console.log('✅ BBC Introducing submission template');
     console.log('✅ New station pitch template');
     console.log('✅ Experimental station template');
     console.log('');
-    
+
     console.log('🎯 SUCCESS METRICS FOR THIS WEEK:\n');
     console.log('Target Goals:');
     console.log(`   • New Stations Contacted: ${successMetrics.weekly.targetStations}`);
@@ -258,7 +258,7 @@ chris@libertymusicpr.com`
     console.log(`   • Stretch Playlist Adds: ${successMetrics.stretch.playlistAdds}`);
     console.log(`   • Stretch New Plays: ${successMetrics.stretch.newPlays}`);
     console.log('');
-    
+
     console.log('🚀 IMMEDIATE ACTIONS FOR THIS WEEK:\n');
     console.log('1. MONDAY: BBC Introducing submission + 6 Music pitch');
     console.log('2. TUESDAY: Amazing Radio submission + pitch');
@@ -267,7 +267,7 @@ chris@libertymusicpr.com`
     console.log('5. FRIDAY: Totally Radio + Radio Reverb pitches');
     console.log('6. WEEKEND: Follow up on all submissions');
     console.log('');
-    
+
     console.log('💡 KEY SUCCESS FACTORS:');
     console.log('• Personal approach for each station');
     console.log('• UK electronic angle emphasized');
@@ -275,12 +275,12 @@ chris@libertymusicpr.com`
     console.log('• Follow up schedule established');
     console.log('• Track responses and new plays');
     console.log('');
-    
+
     return {
       weekPlan,
       emailTemplates,
       successMetrics,
-      totalStations: this.newTargets.length
+      totalStations: this.newTargets.length,
     };
   }
 }
@@ -288,14 +288,14 @@ chris@libertymusicpr.com`
 // Run the this week plan
 async function runThisWeekNewStations() {
   const thisWeek = new ThisWeekNewStations();
-  
+
   try {
     const result = await thisWeek.executeThisWeekPlan();
-    
+
     console.log('🎉 This Week New Station Outreach Plan Complete!');
     console.log(`Total New Stations to Target: ${result.totalStations}`);
     console.log('Focus: Getting new radio stations on board this week');
-    
+
     return result;
   } catch (error) {
     console.error('❌ This week plan failed:', error.message);

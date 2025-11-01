@@ -12,29 +12,42 @@ async function main() {
   }
 
   const dotCount = (token.match(/\./g) || []).length;
-  console.log('ℹ️  Using bot token with length', token.length, 'ending with', token.slice(-6), 'dotCount', dotCount);
+  console.log(
+    'ℹ️  Using bot token with length',
+    token.length,
+    'ending with',
+    token.slice(-6),
+    'dotCount',
+    dotCount
+  );
   if (dotCount === 0) {
-    console.log('⚠️  Discord bot tokens normally contain two periods. Double-check that the token is complete.');
+    console.log(
+      '⚠️  Discord bot tokens normally contain two periods. Double-check that the token is complete.'
+    );
   }
 
   const headers = {
     Authorization: `Bot ${token}`,
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   };
 
   const identityResponse = await fetch('https://discord.com/api/v10/users/@me', {
     method: 'GET',
-    headers
+    headers,
   });
 
   if (!identityResponse.ok) {
     const errorText = await identityResponse.text();
     if (identityResponse.status === 401) {
       console.error('❌ Discord rejected the token (401 Unauthorized).');
-      console.error('   • Ensure you copied the full token after regenerating it in the Developer Portal.');
+      console.error(
+        '   • Ensure you copied the full token after regenerating it in the Developer Portal.'
+      );
       console.error('   • If the bot was reset, invite it again to your guild.');
     }
-    throw new Error(`Discord identity request failed: ${identityResponse.status} ${identityResponse.statusText} ${errorText}`.trim());
+    throw new Error(
+      `Discord identity request failed: ${identityResponse.status} ${identityResponse.statusText} ${errorText}`.trim()
+    );
   }
 
   const identity = await identityResponse.json();
@@ -46,14 +59,17 @@ async function main() {
   }
 
   const messagePayload = {
-    content: `Liberty radio agent test ping at ${new Date().toISOString()}`
+    content: `Liberty radio agent test ping at ${new Date().toISOString()}`,
   };
 
-  const messageResponse = await fetch(`https://discord.com/api/v10/channels/${channelId}/messages`, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify(messagePayload)
-  });
+  const messageResponse = await fetch(
+    `https://discord.com/api/v10/channels/${channelId}/messages`,
+    {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(messagePayload),
+    }
+  );
 
   if (!messageResponse.ok) {
     const errorText = await messageResponse.text();
@@ -61,7 +77,9 @@ async function main() {
       console.error('❌ Missing permissions to post in channel', channelId);
       console.error('   • Confirm the bot has "Send Messages" in the target channel.');
     }
-    throw new Error(`Posting test message failed: ${messageResponse.status} ${messageResponse.statusText} ${errorText}`.trim());
+    throw new Error(
+      `Posting test message failed: ${messageResponse.status} ${messageResponse.statusText} ${errorText}`.trim()
+    );
   }
 
   console.log('✅ Test message posted to channel', channelId);

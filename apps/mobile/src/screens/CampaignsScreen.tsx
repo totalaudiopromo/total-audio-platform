@@ -8,7 +8,7 @@ const CampaignsScreen = () => {
         <Text style={styles.title}>Campaigns</Text>
         <Text style={styles.subtitle}>Manage your music promotion campaigns</Text>
       </View>
-      
+
       <View style={styles.content}>
         <Text style={styles.comingSoon}>Campaigns feature coming soon!</Text>
       </View>
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CampaignsScreen; 
+export default CampaignsScreen;

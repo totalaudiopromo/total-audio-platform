@@ -15,8 +15,16 @@ export default function Navbar() {
   return (
     <nav className="w-full bg-white border-b-4 magazine-bg-alt shadow flex items-center justify-between px-6 py-2">
       <Link href="/" className="flex items-center gap-2">
-        <Image src="/assets/dog-logo.png" alt="Logo" width={40} height={40} className="rounded-lg" />
-        <span className="font-space-grotesk text-xl font-bold text-campaign-radio">Total Audio Promo</span>
+        <Image
+          src="/assets/dog-logo.png"
+          alt="Logo"
+          width={40}
+          height={40}
+          className="rounded-lg"
+        />
+        <span className="font-space-grotesk text-xl font-bold text-campaign-radio">
+          Total Audio Promo
+        </span>
       </Link>
       <div className="flex gap-4">
         {navLinks.map(link => (
@@ -31,4 +39,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-} 
+}

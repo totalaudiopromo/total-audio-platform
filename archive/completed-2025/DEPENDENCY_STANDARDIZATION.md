@@ -4,33 +4,33 @@
 
 ### Critical Version Conflicts
 
-| Dependency | Audio Intel | Tracker | Pitch Generator | Target Version |
-|------------|-------------|---------|-----------------|----------------|
-| **next** | 15.4.2 | 15.5.4 | 15.4.2 | **15.3.0** (pinned) |
-| **react** | 19.1.0 | 19.1.0 | 19.1.0 | **19.1.0** ✅ |
-| **react-dom** | 19.1.0 | 19.1.0 | 19.1.0 | **19.1.0** ✅ |
-| **tailwindcss** | 3.4.17 | 4.1.13 | 3.4.17 | **3.4.17** |
-| **stripe** | 18.3.0 | 18.5.0 | 18.3.0 | **18.5.0** (latest) |
-| **lucide-react** | 0.525.0 | 0.469.0 | 0.525.0 | **0.525.0** |
-| **@anthropic-ai/sdk** | ❌ | 0.65.0 | 0.32.1 | **0.65.0** (latest) |
+| Dependency            | Audio Intel | Tracker | Pitch Generator | Target Version      |
+| --------------------- | ----------- | ------- | --------------- | ------------------- |
+| **next**              | 15.4.2      | 15.5.4  | 15.4.2          | **15.3.0** (pinned) |
+| **react**             | 19.1.0      | 19.1.0  | 19.1.0          | **19.1.0** ✅       |
+| **react-dom**         | 19.1.0      | 19.1.0  | 19.1.0          | **19.1.0** ✅       |
+| **tailwindcss**       | 3.4.17      | 4.1.13  | 3.4.17          | **3.4.17**          |
+| **stripe**            | 18.3.0      | 18.5.0  | 18.3.0          | **18.5.0** (latest) |
+| **lucide-react**      | 0.525.0     | 0.469.0 | 0.525.0         | **0.525.0**         |
+| **@anthropic-ai/sdk** | ❌          | 0.65.0  | 0.32.1          | **0.65.0** (latest) |
 
 ### Analytics Configuration
 
-| App | Analytics Provider | GTM ID | Plausible |
-|-----|-------------------|---------|-----------|
-| Audio Intel | Google Tag Manager | GTM-WZNJWDKH | ❌ |
-| Tracker | Google Tag Manager | GTM-WZNJWDKH | ❌ |
-| Pitch Generator | Plausible | ❌ | pitch.totalaudiopromo.com |
+| App             | Analytics Provider | GTM ID       | Plausible                 |
+| --------------- | ------------------ | ------------ | ------------------------- |
+| Audio Intel     | Google Tag Manager | GTM-WZNJWDKH | ❌                        |
+| Tracker         | Google Tag Manager | GTM-WZNJWDKH | ❌                        |
+| Pitch Generator | Plausible          | ❌           | pitch.totalaudiopromo.com |
 
 **Decision**: Standardize on **Google Tag Manager** (GTM-WZNJWDKH) for consistency.
 
 ### Locale Settings
 
-| App | HTML lang | OpenGraph locale | Metadata locale |
-|-----|-----------|------------------|-----------------|
-| Audio Intel | en | en_GB | en_GB ✅ |
-| Tracker | en | ❌ | ❌ |
-| Pitch Generator | en | ❌ | ❌ |
+| App             | HTML lang | OpenGraph locale | Metadata locale |
+| --------------- | --------- | ---------------- | --------------- |
+| Audio Intel     | en        | en_GB            | en_GB ✅        |
+| Tracker         | en        | ❌               | ❌              |
+| Pitch Generator | en        | ❌               | ❌              |
 
 **Decision**: Standardize on **en_GB** (UK market focus per business context).
 
@@ -79,6 +79,7 @@
 ### Tailwind v4 → v3 Downgrade (Tracker)
 
 Tracker is currently on Tailwind v4.1.13 which has **breaking changes**:
+
 - New CSS-first configuration
 - Different plugin system
 - PostCSS changes
@@ -86,6 +87,7 @@ Tracker is currently on Tailwind v4.1.13 which has **breaking changes**:
 **Risk**: Medium. Need to verify all Tailwind classes still work after downgrade.
 
 **Mitigation**:
+
 - Keep tailwind.config.ts as-is (already v3 format)
 - Test all pages after downgrade
 - Check for v4-specific utilities
@@ -99,6 +101,7 @@ Tracker is currently on Tailwind v4.1.13 which has **breaking changes**:
 ## Shared Dependencies to Add
 
 All apps should include:
+
 ```json
 {
   "@total-audio/ui": "workspace:*",
@@ -113,24 +116,29 @@ All apps should include:
 ## Files to Update
 
 ### Root
+
 - [x] `package.json` - Remove React overrides, add shared deps
 
 ### Audio Intel
+
 - [x] `package.json` - Pin Next.js, update Stripe, add @total-audio/ui
 - [x] `app/layout.tsx` - Already en_GB ✅
 
 ### Tracker
+
 - [x] `package.json` - Pin Next.js, downgrade Tailwind, update deps
 - [x] `app/layout.tsx` - Add en_GB locale, verify GTM
 - [ ] `tailwind.config.ts` - Verify v3 compatibility after downgrade
 
 ### Pitch Generator
+
 - [x] `package.json` - Pin Next.js, update deps, add @total-audio/ui
 - [x] `app/layout.tsx` - Replace Plausible with GTM, add en_GB locale
 
 ## Testing Checklist
 
 After changes:
+
 - [ ] `npm install` at root (resolve workspace dependencies)
 - [ ] Build all apps: `npm run build --workspaces`
 - [ ] Test Audio Intel locally

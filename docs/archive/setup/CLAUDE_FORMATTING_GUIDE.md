@@ -3,6 +3,7 @@
 ## **Proper Output Structure**
 
 ### ✅ **CORRECT FORMATTING**
+
 ```
 # Clear Section Headers
 
@@ -10,7 +11,7 @@
 
 ### Key Points
 - ✅ Point one with proper spacing
-- ✅ Point two with clear separation  
+- ✅ Point two with clear separation
 - ✅ Point three with consistent formatting
 
 **Bold emphasis for important items**
@@ -21,6 +22,7 @@ Another paragraph with clear separation.
 ```
 
 ### ❌ **INCORRECT FORMATTING** (What happened today)
+
 ```
 Long continuous text without breaks causing readability issues and making it hard to scan information quickly without proper visual separation between concepts making everything run together.
 ```
@@ -28,24 +30,28 @@ Long continuous text without breaks causing readability issues and making it har
 ## **Visual Organization Rules**
 
 ### **1. Consistent Spacing**
+
 - Always use blank lines between sections
 - Separate bullet points properly
 - Break up long text blocks
 
-### **2. Clear Hierarchy**  
+### **2. Clear Hierarchy**
+
 - # for main sections
-- ## for subsections  
+- ## for subsections
 - ### for detailed points
 - **Bold** for emphasis
 
 ### **3. Scannable Content**
+
 - Use bullet points for lists
 - Keep paragraphs short (2-3 sentences)
 - Add visual breaks with lines (---)
 
 ### **4. Color-Coded Categories**
+
 - 🟦 Business Strategy
-- 🟩 Technical Development  
+- 🟩 Technical Development
 - 🟨 Workflow Management
 - 🟪 Project-Specific
 

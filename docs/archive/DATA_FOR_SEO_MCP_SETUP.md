@@ -5,6 +5,7 @@ This guide explains how to set up and use the Data for SEO MCP (Model Context Pr
 ## Overview
 
 The Data for SEO MCP integration provides comprehensive SEO analysis capabilities including:
+
 - Domain analysis and SEO scoring
 - Keyword research and analysis
 - Competitor analysis
@@ -43,11 +44,13 @@ The Data for SEO integration is already enabled in your backend. The following r
 The Data for SEO integration is available in two locations:
 
 #### Main Frontend (`projects/web-apps/frontend`)
+
 - Navigate to `/integrations` page
 - Click on "Data for SEO" integration
 - Use the tabbed interface to access different SEO tools
 
 #### Audio Intel Live (`projects/web-apps/audio-intel-live`)
+
 - Navigate to `/seo-analysis` page
 - Use the comprehensive SEO analysis tools
 
@@ -57,7 +60,7 @@ The Data for SEO integration is available in two locations:
 
 1. **Purpose**: Analyze a domain's overall SEO performance
 2. **Input**: Domain name (e.g., "example.com")
-3. **Output**: 
+3. **Output**:
    - SEO score (0-100)
    - Organic keywords count
    - Organic traffic metrics
@@ -65,6 +68,7 @@ The Data for SEO integration is available in two locations:
    - Issues and recommendations
 
 **Example Request**:
+
 ```json
 {
   "domain": "example.com"
@@ -74,7 +78,7 @@ The Data for SEO integration is available in two locations:
 ### Keyword Research
 
 1. **Purpose**: Research keywords related to a seed keyword
-2. **Input**: 
+2. **Input**:
    - Seed keyword (required)
    - Location (optional, e.g., "US", "UK")
 3. **Output**:
@@ -85,6 +89,7 @@ The Data for SEO integration is available in two locations:
    - Competition level
 
 **Example Request**:
+
 ```json
 {
   "seedKeyword": "music promotion",
@@ -104,6 +109,7 @@ The Data for SEO integration is available in two locations:
    - Domain authority scores
 
 **Example Request**:
+
 ```json
 {
   "domain": "example.com"
@@ -124,6 +130,7 @@ The Data for SEO integration is available in two locations:
    - Domain information
 
 **Example Request**:
+
 ```json
 {
   "keyword": "music promotion services",
@@ -185,11 +192,13 @@ The Data for SEO integration works seamlessly with other MCP services:
 If the Data for SEO MCP server fails to connect:
 
 1. Check if the MCP server is installed:
+
    ```bash
    claude mcp list
    ```
 
 2. Reinstall the MCP server if needed:
+
    ```bash
    claude mcp add dataforseo "npx dataforseo-mcp-server"
    ```
@@ -222,4 +231,4 @@ Planned improvements for the Data for SEO integration:
 
 ---
 
-For more information about Data for SEO API, visit: https://dataforseo.com/ 
+For more information about Data for SEO API, visit: https://dataforseo.com/

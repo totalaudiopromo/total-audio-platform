@@ -12,12 +12,16 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const Anthropic = require('@anthropic-ai/sdk');
 
-const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY || 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  process.env.AIRTABLE_API_KEY ||
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
 const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY || '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'
+  apiKey:
+    process.env.ANTHROPIC_API_KEY ||
+    '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',
 });
 
 const logger = new AgentLogger('contact-enrichment');
@@ -33,7 +37,7 @@ async function fetchAllContacts() {
       : `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
 
     const response = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
     });
 
     if (!response.ok) {
@@ -96,10 +100,12 @@ ISSUES: [Any data quality concerns or N/A]`;
     const message = await anthropic.messages.create({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 500,
-      messages: [{
-        role: 'user',
-        content: prompt
-      }]
+      messages: [
+        {
+          role: 'user',
+          content: prompt,
+        },
+      ],
     });
 
     const responseText = message.content[0].text;
@@ -117,14 +123,13 @@ ISSUES: [Any data quality concerns or N/A]`;
       genres: genresMatch ? genresMatch[1].split(',').map(g => g.trim()) : genres,
       intelligence: intelligenceMatch ? intelligenceMatch[1].trim() : '',
       strategy: strategyMatch ? strategyMatch[1].trim() : '',
-      enriched: true
+      enriched: true,
     };
-
   } catch (error) {
     logger.warn(`Failed to enrich ${email}: ${error.message}`);
     return {
       enriched: false,
-      error: error.message
+      error: error.message,
     };
   }
 }
@@ -136,7 +141,7 @@ async function updateContact(recordId, enrichmentData) {
     'Quality Score': enrichmentData.quality,
     'Enrichment Notes': enrichmentData.intelligence,
     'Pitch Strategy': enrichmentData.strategy,
-    'Enriched': true
+    Enriched: true,
   };
 
   // Add genres if new ones identified
@@ -148,10 +153,10 @@ async function updateContact(recordId, enrichmentData) {
     const response = await fetch(url, {
       method: 'PATCH',
       headers: {
-        'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ fields })
+      body: JSON.stringify({ fields }),
     });
 
     if (!response.ok) {
@@ -179,7 +184,7 @@ async function main() {
     logger.updateMetrics({
       totalContacts: allContacts.length,
       unenrichedContacts: unenriched.length,
-      alreadyEnriched: allContacts.length - unenriched.length
+      alreadyEnriched: allContacts.length - unenriched.length,
     });
 
     if (unenriched.length === 0) {
@@ -188,7 +193,7 @@ async function main() {
         contactsProcessed: 0,
         contactsEnriched: 0,
         contactsFailed: 0,
-        cost: 0
+        cost: 0,
       });
       return;
     }
@@ -243,9 +248,8 @@ async function main() {
       contactsFailed: failed,
       contactsSkipped: skipped,
       costUSD: cost.toFixed(2),
-      costGBP: (cost * 0.79).toFixed(2) // Approx conversion
+      costGBP: (cost * 0.79).toFixed(2), // Approx conversion
     });
-
   } catch (error) {
     logger.fail('Enrichment failed', error);
     process.exit(1);

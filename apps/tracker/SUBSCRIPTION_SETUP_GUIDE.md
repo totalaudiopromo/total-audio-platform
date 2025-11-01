@@ -3,12 +3,14 @@
 ## 🚀 Step 1: Apply Migration
 
 ### Option A: Supabase Dashboard (Recommended)
+
 1. Go to: https://supabase.com/dashboard/project/mjfhegawkusjlkcgfevp/sql
 2. Copy the entire contents of `supabase/migrations/018_subscription_enforcement.sql`
 3. Paste into the SQL editor
 4. Click **"Run"**
 
 ### Option B: Command Line (if psql is installed)
+
 ```bash
 PGPASSWORD='PostTracker123!' psql \
   -h aws-0-eu-west-2.pooler.supabase.com \
@@ -19,7 +21,9 @@ PGPASSWORD='PostTracker123!' psql \
 ```
 
 ### Verify Migration Applied
+
 Run this in Supabase SQL Editor:
+
 ```sql
 -- Check columns were added
 SELECT column_name, data_type, column_default
@@ -47,6 +51,7 @@ ORDER BY trigger_name;
 ```
 
 **Expected Results:**
+
 - ✅ 4 columns added to user_profiles
 - ✅ 4 functions created
 - ✅ 2 triggers created
@@ -62,6 +67,7 @@ Go to: https://dashboard.stripe.com/test/products
 Create these products:
 
 #### Product 1: Campaign Tracker Pro (Artist)
+
 - Name: **Campaign Tracker Pro**
 - Description: Unlimited campaigns, advanced analytics, priority support
 - **Monthly Price**: £19.00 GBP
@@ -70,18 +76,21 @@ Create these products:
   - Copy the Price ID
 
 #### Product 2: Campaign Tracker Agency Starter
+
 - Name: **Campaign Tracker Agency Starter**
 - Description: Up to 5 clients, unlimited campaigns, team collaboration
 - **Monthly Price**: £49.00 GBP
 - **Yearly Price**: £490.00 GBP
 
 #### Product 3: Campaign Tracker Agency Pro
+
 - Name: **Campaign Tracker Agency Pro**
 - Description: Up to 15 clients, advanced team tools, API access
 - **Monthly Price**: £99.00 GBP
 - **Yearly Price**: £990.00 GBP
 
 #### Product 4: Campaign Tracker Agency Enterprise
+
 - Name: **Campaign Tracker Agency Enterprise**
 - Description: Unlimited clients, full API access, dedicated support
 - **Monthly Price**: £199.00 GBP
@@ -138,6 +147,7 @@ ORDER BY user_type, price_monthly;
 ## 👤 Step 3: Mark Beta Users
 
 ### Get Your User ID
+
 First, find your user ID. Visit the app and sign in, then check the browser console or run:
 
 ```sql
@@ -148,6 +158,7 @@ WHERE email = 'your-email@example.com';  -- Replace with your email
 ```
 
 ### Mark as Beta User
+
 ```sql
 -- Replace with your actual user ID
 UPDATE user_profiles
@@ -171,6 +182,7 @@ WHERE is_beta_user = true;
 ## ✅ Step 4: Testing Checklist
 
 ### Test 1: Free User Limits
+
 Create a **new test account** (or use an existing non-beta user):
 
 ```sql
@@ -194,6 +206,7 @@ WHERE id = 'NEW_USER_UUID_FROM_AUTH';
 ```
 
 **Test Steps:**
+
 1. ✅ Sign up with test account
 2. ✅ Create campaign 1 → Should succeed
 3. ✅ Create campaign 2 → Should succeed
@@ -206,6 +219,7 @@ WHERE id = 'NEW_USER_UUID_FROM_AUTH';
 6. ✅ Visit `/billing` → Should see upgrade options
 
 ### Test 2: Beta User Unlimited Access
+
 Using your beta user account:
 
 ```sql
@@ -222,15 +236,18 @@ SELECT can_create_campaign('YOUR_USER_UUID');  -- Should return true
 ```
 
 **Test Steps:**
+
 1. ✅ Sign in as beta user
 2. ✅ Create 10+ campaigns → All should succeed
 3. ✅ Visit `/billing` → Should see beta user badge
 4. ✅ No upgrade prompts shown
 
 ### Test 3: Subscription Upgrade Flow
+
 Using your free test account:
 
 **Test Steps:**
+
 1. ✅ Visit `/billing` as free user
 2. ✅ Click "Upgrade to Pro"
 3. ✅ Should redirect to Stripe Checkout
@@ -242,6 +259,7 @@ Using your free test account:
 6. ✅ Should redirect back to `/billing?success=true`
 
 **Verify in Database:**
+
 ```sql
 -- Check subscription was created
 SELECT
@@ -269,7 +287,9 @@ WHERE id = 'TEST_USER_UUID';
 8. ✅ Visit `/billing` → Should show "Pro Plan" as current
 
 ### Test 4: Stripe Billing Portal
+
 **Test Steps:**
+
 1. ✅ Visit `/billing` as paid user
 2. ✅ Click "Manage Billing in Stripe"
 3. ✅ Should open Stripe Customer Portal
@@ -291,6 +311,7 @@ WHERE id = 'TEST_USER_UUID';
 ## 🔍 Debugging Queries
 
 ### Check All Users' Subscription Status
+
 ```sql
 SELECT
   up.id,
@@ -310,18 +331,21 @@ ORDER BY up.created_at DESC;
 ```
 
 ### Test Subscription Details Function
+
 ```sql
 -- Replace with any user ID
 SELECT * FROM get_user_subscription_details('USER_UUID_HERE');
 ```
 
 ### Check Campaign Creation Permission
+
 ```sql
 -- Replace with any user ID
 SELECT can_create_campaign('USER_UUID_HERE') as can_create;
 ```
 
 ### View All Subscriptions
+
 ```sql
 SELECT
   s.id,
@@ -338,6 +362,7 @@ ORDER BY s.created_at DESC;
 ```
 
 ### Reset User to Free Tier (for testing)
+
 ```sql
 -- Reset a user back to free tier
 UPDATE user_profiles
@@ -358,6 +383,7 @@ WHERE user_id = 'USER_UUID_HERE';
 ## 🎯 Quick Reference
 
 ### Beta User Management
+
 ```sql
 -- Mark as beta
 UPDATE user_profiles SET is_beta_user = true WHERE id = 'UUID';
@@ -372,6 +398,7 @@ SELECT id, email FROM auth.users WHERE id IN (
 ```
 
 ### Subscription Status Values
+
 - `free` - No active subscription
 - `trialing` - In trial period (treated as active)
 - `active` - Paid and active
@@ -380,6 +407,7 @@ SELECT id, email FROM auth.users WHERE id IN (
 - `unpaid` - Payment failed, no access
 
 ### Subscription Tiers
+
 - `free` - 3 campaigns
 - `pro` - Unlimited campaigns (£19/month)
 - `agency_starter` - Unlimited campaigns + 5 clients (£49/month)
@@ -391,7 +419,9 @@ SELECT id, email FROM auth.users WHERE id IN (
 ## 🚨 Troubleshooting
 
 ### Issue: Migration fails with "column already exists"
+
 **Solution:** Run this to check and manually add missing columns:
+
 ```sql
 -- Check which columns exist
 SELECT column_name FROM information_schema.columns
@@ -404,21 +434,27 @@ ALTER TABLE user_profiles ADD COLUMN IF NOT EXISTS subscription_status TEXT DEFA
 ```
 
 ### Issue: Stripe checkout not redirecting
+
 **Check:**
+
 1. `NEXT_PUBLIC_APP_URL` environment variable set correctly
 2. Stripe Price IDs configured in database
 3. Browser console for errors
 4. Network tab for API response
 
 ### Issue: Webhook not updating profile
+
 **Check:**
+
 1. Webhook endpoint configured in Stripe Dashboard
 2. Webhook secret configured in environment variables
 3. Check Stripe Dashboard > Developers > Events for webhook delivery status
 4. Review application logs for webhook processing errors
 
 ### Issue: Beta user still seeing limits
+
 **Check:**
+
 ```sql
 -- Verify beta status
 SELECT id, is_beta_user FROM user_profiles WHERE id = 'UUID';

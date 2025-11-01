@@ -1,4 +1,5 @@
 # Manual KYARA Campaign Setup for Tracker
+
 ## Quick Setup Guide (5 Minutes)
 
 **Goal:** Add KYARA "Bloodshot" campaign to tracker.totalaudiopromo.com manually
@@ -32,6 +33,7 @@ Actual Reach: 15 (so far)
 ```
 
 **Campaign Notes:**
+
 ```
 Real Liberty Music PR campaign for Sydney artist KYARA.
 
@@ -58,31 +60,37 @@ MONDAY 14th OCT: Release day email blast prepared (30+ contacts)
 **After creating the campaign, add these 6 activities:**
 
 **Activity 1:**
+
 - Type: Email Sent
 - Date: 2025-10-07
 - Description: `Initial pitch wave sent to 15 Australian radio contacts (Triple J, Triple R, PBS FM, KIIS, FBi Radio)`
 
 **Activity 2:**
+
 - Type: Email Sent
 - Date: 2025-10-08
 - Description: `5 Gmail drafts auto-created for Australian radio using Liberty inbox`
 
 **Activity 3:**
+
 - Type: Response
 - Date: 2025-10-09
 - Description: `Amazing Radio (UK) confirmed support for "Bloodshot" - CONFIRMED ADD`
 
 **Activity 4:**
+
 - Type: Milestone
 - Date: 2025-10-10
 - Description: `WARM report: 85 plays across 9 countries (pre-release) - pulled via API`
 
 **Activity 5:**
+
 - Type: Email Sent
 - Date: 2025-10-10
 - Description: `Mailchimp campaign sent to 20 UK electronic specialist contacts (BBC Radio 1, BBC 6 Music)`
 
 **Activity 6:**
+
 - Type: Scheduled
 - Date: 2025-10-11
 - Description: `Release day email blast prepared for Monday 14th Oct 7am AEST (30 recipients, AU + UK)`
@@ -112,21 +120,25 @@ MONDAY 14th OCT: Release day email blast prepared (30+ contacts)
 ### Dan Will See:
 
 **1. Real Campaign Data:**
+
 - Actual Liberty client (KYARA)
 - Real release date (Monday 14th Oct)
 - Real metrics (85 plays, 15 contacts, Amazing Radio support)
 
 **2. Activity Timeline:**
+
 - Week-by-week progress visible
 - Integration points shown (Gmail, Mailchimp, WARM)
 - Release day preparation visible
 
 **3. Campaign Intelligence:**
+
 - At-a-glance status (Active, 75% progress)
 - Key metrics highlighted
 - Next actions suggested
 
 **4. Proof of Concept:**
+
 - Shows how tracker centralizes campaign data
 - Demonstrates time savings (no manual spreadsheet updates)
 - Showcases integration potential (Gmail, Mailchimp, WARM)
@@ -138,20 +150,24 @@ MONDAY 14th OCT: Release day email blast prepared (30+ contacts)
 ### When Showing This to Dan:
 
 **Point 1: "This is the KYARA campaign I'm running right now through Liberty"**
+
 - Real client, real data, real release date
 - Not hypothetical - this is actually happening
 
 **Point 2: "Look at the activity timeline"**
+
 - Every email, response, milestone logged
 - WARM data pulled automatically (85 plays)
 - Gmail drafts created via integration
 
 **Point 3: "Imagine this for all 20 Liberty campaigns"**
+
 - At-a-glance status for every campaign
 - No more digging through Gmail or spreadsheets
 - Automated tracking and reporting
 
 **Point 4: "This saves me 10+ hours per campaign"**
+
 - Manual tracking = 2-3 hours per campaign
 - Spreadsheet updates = 1-2 hours per campaign
 - Client reports = 2-3 hours per campaign
@@ -172,11 +188,13 @@ If you want to use the script instead of manual setup:
    - Copy the `sb-access-token` value
 
 2. **Set environment variable:**
+
 ```bash
 export SUPABASE_AUTH_TOKEN="your-token-here"
 ```
 
 3. **Run script:**
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/campaigns/kyara
 node add-kyara-campaign-to-tracker.js
@@ -191,11 +209,13 @@ If you have Supabase service role key:
    - Copy "service_role" key (NOT anon key)
 
 2. **Add to apps/tracker/.env.local:**
+
 ```bash
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
 ```
 
 3. **Run script:**
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/campaigns/kyara
 node add-kyara-campaign-to-tracker.js
@@ -206,11 +226,13 @@ node add-kyara-campaign-to-tracker.js
 ## ✅ MANUAL SETUP IS FASTER (Recommended)
 
 **For your use case:**
+
 - Manual setup = 5 minutes
 - Script troubleshooting = 15-30 minutes
 - Result is identical
 
 **Manual setup gives you:**
+
 - Familiarity with the tracker UI
 - Better understanding for demo
 - Ability to show Dan how easy it is
@@ -232,6 +254,7 @@ node add-kyara-campaign-to-tracker.js
 - [ ] Review demo script (`FRIDAY_DEMO_PREP_COMPLETE.md`)
 
 **Time Required:** 10 minutes total
+
 - 2 min: Create campaign
 - 5 min: Add 6 activities
 - 3 min: Verify & screenshot

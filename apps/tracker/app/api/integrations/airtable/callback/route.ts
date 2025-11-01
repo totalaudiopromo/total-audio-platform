@@ -26,7 +26,11 @@ export async function GET(request: NextRequest) {
     }
 
     const oauthHandler = new OAuthHandler();
-    const { tokens, userId } = await oauthHandler.handleCallback('airtable', code, state);
+    const { tokens, userId } = await oauthHandler.handleCallback(
+      'airtable',
+      code,
+      state
+    );
     await oauthHandler.saveConnection(userId, 'airtable', tokens);
 
     return NextResponse.redirect(

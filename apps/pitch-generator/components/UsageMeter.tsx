@@ -82,9 +82,7 @@ export function UsageMeter({ userId, className = '' }: UsageMeterProps) {
           <div className="flex items-center gap-2">
             <Zap className={`h-5 w-5 ${isNearLimit ? 'text-yellow-600' : 'text-brand-amber'}`} />
             <div>
-              <h3 className="text-sm font-bold text-gray-900">
-                Free Tier Usage
-              </h3>
+              <h3 className="text-sm font-bold text-gray-900">Free Tier Usage</h3>
               <p className="text-xs text-gray-600">
                 {currentUsage} / {limit} pitches this month
               </p>
@@ -106,8 +104,8 @@ export function UsageMeter({ userId, className = '' }: UsageMeterProps) {
                 isAtLimit
                   ? 'bg-red-600'
                   : isNearLimit
-                  ? 'bg-yellow-500'
-                  : 'bg-gradient-to-r from-amber-600 to-amber-600'
+                    ? 'bg-yellow-500'
+                    : 'bg-gradient-to-r from-amber-600 to-amber-600'
               }`}
               style={{ width: `${Math.min(percentageUsed, 100)}%` }}
             />
@@ -122,18 +120,22 @@ export function UsageMeter({ userId, className = '' }: UsageMeterProps) {
 
         {/* Upgrade CTA */}
         {isNearLimit && (
-          <div className={`mt-4 rounded-xl border-2 p-4 ${
-            isAtLimit
-              ? 'border-red-600 bg-red-50'
-              : 'border-yellow-500 bg-yellow-50'
-          }`}>
+          <div
+            className={`mt-4 rounded-xl border-2 p-4 ${
+              isAtLimit ? 'border-red-600 bg-red-50' : 'border-yellow-500 bg-yellow-50'
+            }`}
+          >
             <div className="flex items-start gap-3">
               <div className="flex-shrink-0">
-                <TrendingUp className={`h-5 w-5 ${isAtLimit ? 'text-red-600' : 'text-yellow-700'}`} />
+                <TrendingUp
+                  className={`h-5 w-5 ${isAtLimit ? 'text-red-600' : 'text-yellow-700'}`}
+                />
               </div>
               <div className="flex-1 min-w-0">
-                <h4 className={`text-sm font-bold ${isAtLimit ? 'text-red-900' : 'text-yellow-900'}`}>
-                  {isAtLimit ? 'You\'ve reached your free limit' : 'Running low on pitches'}
+                <h4
+                  className={`text-sm font-bold ${isAtLimit ? 'text-red-900' : 'text-yellow-900'}`}
+                >
+                  {isAtLimit ? "You've reached your free limit" : 'Running low on pitches'}
                 </h4>
                 <p className={`mt-1 text-xs ${isAtLimit ? 'text-red-800' : 'text-yellow-800'}`}>
                   {isAtLimit
@@ -161,7 +163,15 @@ export function UsageMeter({ userId, className = '' }: UsageMeterProps) {
         {!isNearLimit && (
           <div className="mt-3 text-xs text-gray-600">
             <p>
-              Need more? <Link href="/pricing" onClick={() => trackUpgradeClicked('usage_meter_info', 'professional')} className="text-amber-600 hover:underline font-medium">Upgrade to PRO</Link> for unlimited pitches (£12/month)
+              Need more?{' '}
+              <Link
+                href="/pricing"
+                onClick={() => trackUpgradeClicked('usage_meter_info', 'professional')}
+                className="text-amber-600 hover:underline font-medium"
+              >
+                Upgrade to PRO
+              </Link>{' '}
+              for unlimited pitches (£12/month)
             </p>
           </div>
         )}

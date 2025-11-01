@@ -9,7 +9,6 @@ const { test, expect, devices } = require('@playwright/test');
 test.use({ ...devices['iPhone 13'] });
 
 test.describe('Critical Mobile Issues Check', () => {
-
   test('Homepage loads and CTA is accessible', async ({ page }) => {
     await page.goto('/');
 
@@ -23,7 +22,10 @@ test.describe('Critical Mobile Issues Check', () => {
     }
 
     // Find main CTA button
-    const ctaButton = page.locator('button').filter({ hasText: /try|demo|start|get started/i }).first();
+    const ctaButton = page
+      .locator('button')
+      .filter({ hasText: /try|demo|start|get started/i })
+      .first();
     await expect(ctaButton).toBeVisible();
 
     // Check button size is touch-friendly
@@ -65,10 +67,11 @@ test.describe('Critical Mobile Issues Check', () => {
     await page.waitForTimeout(2000);
 
     // Check for critical JavaScript errors
-    const criticalErrors = errors.filter(error =>
-      error.includes('ReferenceError') ||
-      error.includes('TypeError') ||
-      error.includes('SyntaxError')
+    const criticalErrors = errors.filter(
+      error =>
+        error.includes('ReferenceError') ||
+        error.includes('TypeError') ||
+        error.includes('SyntaxError')
     );
 
     if (criticalErrors.length > 0) {

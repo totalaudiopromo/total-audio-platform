@@ -1,6 +1,6 @@
 # 🤖 RADIO PROMO AGENT - MULTI-AGENT ARCHITECTURE
 
-*Specialized AI agents for different aspects of radio campaign automation*
+_Specialized AI agents for different aspects of radio campaign automation_
 
 ---
 
@@ -324,4 +324,4 @@ You are a campaign performance analyst. Monitor play data, email metrics, and ca
 
 **The multi-agent architecture transforms Radio Promo Agent from a single automation tool into a coordinated team of AI specialists, each expert in their domain while working together seamlessly.**
 
-*This approach makes the system more powerful, maintainable, and scalable while providing clear separation of concerns for development and debugging.*
+_This approach makes the system more powerful, maintainable, and scalable while providing clear separation of concerns for development and debugging._

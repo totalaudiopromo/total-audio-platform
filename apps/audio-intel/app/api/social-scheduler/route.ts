@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   // Verify cron secret
@@ -9,14 +9,14 @@ export async function POST(request: NextRequest) {
 
   try {
     console.log('📱 Starting automated social media scheduling...');
-    
+
     const results = {
       timestamp: new Date().toISOString(),
       posts_scheduled: 0,
       content_generated: 0,
       engagement_tracked: 0,
       beta_signups_tracked: 0,
-      platforms_updated: [] as string[]
+      platforms_updated: [] as string[],
     };
 
     // Get current day of week for content selection
@@ -26,13 +26,13 @@ export async function POST(request: NextRequest) {
 
     // Content themes by day
     const contentThemes = {
-      'Monday': 'Music Industry Insight Monday',
-      'Tuesday': 'Time-Saving Tuesday', 
-      'Wednesday': 'Behind-the-Scenes Wednesday',
-      'Thursday': 'User Success Stories',
-      'Friday': 'Community Engagement Friday',
-      'Saturday': 'Weekend Reflection',
-      'Sunday': 'Community Engagement Sunday'
+      Monday: 'Music Industry Insight Monday',
+      Tuesday: 'Time-Saving Tuesday',
+      Wednesday: 'Behind-the-Scenes Wednesday',
+      Thursday: 'User Success Stories',
+      Friday: 'Community Engagement Friday',
+      Saturday: 'Weekend Reflection',
+      Sunday: 'Community Engagement Sunday',
     };
 
     const todayTheme = contentThemes[currentDay as keyof typeof contentThemes];
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
       `Prepare Blue Sky content for ${todayTheme}`,
       `Schedule Reddit engagement for ${todayTheme}`,
       `Track beta signups from social media`,
-      `Monitor engagement across all platforms`
+      `Monitor engagement across all platforms`,
     ];
 
     // Simulate content generation and scheduling
@@ -56,8 +56,10 @@ export async function POST(request: NextRequest) {
 
     const todayTasks = [];
     if (results.posts_scheduled > 0) todayTasks.push(`${results.posts_scheduled} posts scheduled`);
-    if (results.content_generated > 0) todayTasks.push(`${results.content_generated} content pieces generated`);
-    if (results.beta_signups_tracked > 0) todayTasks.push(`${results.beta_signups_tracked} beta signups tracked`);
+    if (results.content_generated > 0)
+      todayTasks.push(`${results.content_generated} content pieces generated`);
+    if (results.beta_signups_tracked > 0)
+      todayTasks.push(`${results.beta_signups_tracked} beta signups tracked`);
 
     console.log('✅ Social media scheduling complete:', results);
 
@@ -71,15 +73,17 @@ export async function POST(request: NextRequest) {
         'Review scheduled content in command center',
         'Engage with comments and mentions',
         'Track beta signup conversions',
-        'Prepare tomorrow\'s content theme'
-      ]
+        "Prepare tomorrow's content theme",
+      ],
     });
-
   } catch (error) {
     console.error('Social media scheduling error:', error);
-    return NextResponse.json({ 
-      success: false, 
-      error: 'Social media scheduling failed' 
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'Social media scheduling failed',
+      },
+      { status: 500 }
+    );
   }
 }

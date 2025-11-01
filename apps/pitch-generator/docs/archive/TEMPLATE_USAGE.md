@@ -21,11 +21,12 @@ cd your-new-tool-name
 ```
 
 **Examples:**
+
 ```bash
 # Creating Audio Intel
 cp -r tap-saas-template audio-intel
 
-# Creating Playlist Pulse  
+# Creating Playlist Pulse
 cp -r tap-saas-template playlist-pulse
 
 # Creating Release Radar
@@ -39,15 +40,17 @@ cp -r tap-saas-template release-radar
 Once you've duplicated the template, update these files:
 
 #### 1. `package.json`
+
 ```json
 {
-  "name": "audio-intel",  // Change from "tap-saas-template"
-  "version": "0.1.0",
+  "name": "audio-intel", // Change from "tap-saas-template"
+  "version": "0.1.0"
   // ... rest of config
 }
 ```
 
 #### 2. `app/layout.tsx` - Update metadata
+
 ```tsx
 export const metadata: Metadata = {
   title: 'Audio Intel - AI-Powered Music Contact Research',
@@ -56,6 +59,7 @@ export const metadata: Metadata = {
 ```
 
 #### 3. Update Brand Colour Throughout
+
 Replace all instances of `bg-blue-500` / `text-blue-500` / `border-blue-500` with your tool's signature colour:
 
 - **Audio Intel:** `bg-blue-500` (Electric Blue) - Keep as is!
@@ -66,12 +70,15 @@ Replace all instances of `bg-blue-500` / `text-blue-500` / `border-blue-500` wit
 - **Success Predict:** `bg-yellow-500` (Gold/Yellow)
 
 #### 4. Update Tool Names
+
 Search and replace throughout:
+
 - "Pitch Generator" → "Your Tool Name"
 - Update navigation links in `components/SiteHeader.tsx`
 - Update badge text from `<span className="badge-postcraft">Pitch Generator</span>`
 
 #### 5. Database Schema
+
 - Update `supabase/schema.sql` with tool-specific tables
 - Keep the naming convention: `{tool_prefix}_tablename`
   - Example: `intel_contacts`, `pulse_playlists`, `radar_releases`
@@ -111,6 +118,7 @@ vercel --prod
 ```
 
 **Benefits of separate deployments:**
+
 - Independent scaling per tool
 - Tool-specific domains (audiointel.tap.com, playlistpulse.tap.com)
 - Isolated databases and auth
@@ -124,6 +132,7 @@ vercel --prod
 ### When to Update the Template
 
 Only update `tap-saas-template` when you discover:
+
 - Better design patterns
 - Bug fixes that apply to ALL tools
 - Improved component structures
@@ -132,6 +141,7 @@ Only update `tap-saas-template` when you discover:
 ### After Updating the Template
 
 If you improve the template, consider backporting changes to existing tools:
+
 ```bash
 # Review changes
 git diff tap-saas-template/
@@ -145,6 +155,7 @@ git diff tap-saas-template/
 ## File Structure Reference
 
 ### What to Keep the Same Across Tools
+
 - `globals.css` - Design system (Postcraft aesthetic)
 - `tailwind.config.ts` - Core configuration
 - `DESIGN_SYSTEM.md` - Aesthetic standards
@@ -152,6 +163,7 @@ git diff tap-saas-template/
 - Auth setup (`middleware.ts`, `app/api/auth/`)
 
 ### What to Customise Per Tool
+
 - Tool-specific routes (`app/[tool-routes]/`)
 - Brand colour (blue → your tool colour)
 - Database schema (`supabase/schema.sql`)
@@ -203,4 +215,3 @@ Starting a new tool? Use this checklist:
 Refer to `DESIGN_SYSTEM.md` for aesthetic standards and component patterns.
 
 **Remember:** This template is your friend. Keep it clean, duplicate freely, and build brilliant tools. 🎵
-

@@ -1,7 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { BarChart3, Users, DollarSign, TrendingUp, Activity, Target, AlertTriangle } from 'lucide-react';
+import {
+  BarChart3,
+  Users,
+  DollarSign,
+  TrendingUp,
+  Activity,
+  Target,
+  AlertTriangle,
+} from 'lucide-react';
 import PostcraftLayout from '../components/PostcraftLayout';
 
 interface BusinessMetrics {
@@ -94,7 +102,9 @@ export default function BusinessDashboardPage() {
             </div>
             <div>
               <h1 className="postcraft-title mb-1">Business Dashboard</h1>
-              <p className="postcraft-subtitle">Complete business metrics and performance analytics</p>
+              <p className="postcraft-subtitle">
+                Complete business metrics and performance analytics
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-2 mt-4 px-4 py-2 bg-green-100 rounded-xl border-3 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] max-w-fit">

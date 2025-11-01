@@ -2,7 +2,8 @@ import { Metadata } from 'next';
 
 export const siteConfig = {
   name: 'Pitch Generator',
-  description: 'Write 50 personalised music PR pitches in 20 minutes. AI-powered pitch writing for artists, managers, and radio promoters. Built by a producer with 5+ years music PR experience.',
+  description:
+    'Write 50 personalised music PR pitches in 20 minutes. AI-powered pitch writing for artists, managers, and radio promoters. Built by a producer with 5+ years music PR experience.',
   url: 'https://pitch.totalaudiopromo.com',
   ogImage: '/og-pitch-generator.png',
   keywords: [
@@ -75,9 +76,7 @@ export const defaultMetadata: Metadata = {
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   robots: {
     index: true,

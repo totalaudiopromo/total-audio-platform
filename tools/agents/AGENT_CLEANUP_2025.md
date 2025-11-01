@@ -9,12 +9,14 @@
 ## 🎯 The Problem
 
 The `/tools/agents/` directory had **225 JavaScript files**, creating the illusion of a massive agent system. In reality, most files were:
+
 - Utility scripts for debugging and testing
 - Campaign-specific one-off tools
 - Archived experiments
 - API integration libraries (not standalone agents)
 
 This made it impossible to:
+
 - Understand what agents actually existed
 - Build a meaningful dashboard
 - Know which agents were production-ready vs experimental
@@ -24,9 +26,11 @@ This made it impossible to:
 ## ✅ The Solution
 
 ### 1. **Archived Utility Scripts** (53 files)
+
 **Location**: `archive/utilities/`
 
 Moved all debugging, testing, and setup scripts:
+
 - `test-*.js` - Testing scripts
 - `debug-*.js` - Debug utilities
 - `check-*.js` - Validation scripts
@@ -37,9 +41,11 @@ Moved all debugging, testing, and setup scripts:
 These are **preserved** (not deleted) but out of the way.
 
 ### 2. **Consolidated Campaign Tools** (25+ files)
+
 **Location**: `campaigns/`
 
 Organised client-specific tools into subfolders:
+
 - `campaigns/kyara/` - 12 files for Kyara campaign
 - `campaigns/bestial/` - 7 files for Bestial Mouths campaign
 - `campaigns/liberty/` - 2 Liberty-specific files
@@ -52,10 +58,12 @@ These are **campaign tools**, not reusable production agents.
 Found apparent duplicates that are actually **different agents**:
 
 **orchestrator.js** (2 files):
+
 - `archive/working/orchestrator.js` (629 lines) - Old version
 - `radio-promo/orchestrator.js` (1,149 lines) - **Current production version** ✓
 
 **analytics-agent.js** (2 files):
+
 - `core-agents/business/analytics-agent.js` (839 lines) - Database analytics
 - `radio-promo/agents/analytics-agent.js` (308 lines) - WARM API tracking
 - These serve **different purposes** and are both valid ✓
@@ -65,6 +73,7 @@ Found apparent duplicates that are actually **different agents**:
 **Location**: `/tools/agents/agent-registry.json`
 
 Comprehensive catalogue of **22 real production agents**:
+
 - Full metadata: name, category, priority, automation type
 - Cost estimates and time savings
 - Cron schedules for automated agents
@@ -76,14 +85,18 @@ Comprehensive catalogue of **22 real production agents**:
 ## 📊 Real Agent Count: 22
 
 ### **CORE OPERATIONS** (4 agents)
+
 Production agents for Audio Intel core functionality:
+
 - `contact-enrichment` - Audio Intel contact enrichment (manual, £3/run, saves 5h)
 - `database-operations` - Database management
 - `agent-manager` - Agent coordination
 - `data-cleanup` - Data quality maintenance (weekly cron)
 
 ### **MARKETING & CONTENT** (7 agents)
+
 Customer acquisition and content generation:
+
 - `newsletter-automation` - "The Unsigned Advantage" (Monday 9am, saves 8h)
 - `social-media-scheduler` - Cross-platform posting (Sunday 8pm, saves 8h)
 - `newsjacking-agent` - News analysis (daily 8am, saves 4h)
@@ -93,7 +106,9 @@ Customer acquisition and content generation:
 - `agency-manager` - Partnership management (disabled)
 
 ### **CLIENT DELIVERY** (7 agents)
+
 Liberty Music PR campaign automation (all manual trigger, critical priority):
+
 - `liberty-intelligence` - Google Meet transcript processing
 - `liberty-project` - Monday.com automation
 - `liberty-email` - Email template generation + Mailchimp
@@ -103,7 +118,9 @@ Liberty Music PR campaign automation (all manual trigger, critical priority):
 - `liberty-followup` - Automated follow-ups
 
 ### **MONITORING & ALERTS** (4 agents)
+
 System health and cost tracking:
+
 - `gmail-autopilot` - Email auto-sorting (every 2 hours, saves 6h)
 - `health-check` - Agent health monitoring (every 30 min)
 - `agent-dashboard` - Command Centre updates
@@ -152,6 +169,7 @@ System health and cost tracking:
 The agent registry includes **visual system metadata** for Command Centre:
 
 ### Category Colors (Text Background Badges)
+
 ```json
 {
   "core": { "bg": "bg-blue-500", "text": "text-white", "color": "#3B82F6" },
@@ -162,6 +180,7 @@ The agent registry includes **visual system metadata** for Command Centre:
 ```
 
 ### Status Badges
+
 ```json
 {
   "running": { "emoji": "⚡", "bg": "bg-yellow-500", "text": "text-black", "pulse": true },
@@ -177,6 +196,7 @@ The agent registry includes **visual system metadata** for Command Centre:
 ## 🚀 Next Steps
 
 ### Immediate (Week 1)
+
 1. **Update `check-all-agents.js`**
    - Read agents from `agent-registry.json` instead of hardcoded list
    - Monitor all 22 agents, not just 6
@@ -194,6 +214,7 @@ The agent registry includes **visual system metadata** for Command Centre:
    - Validate cost tracking
 
 ### Short-term (Week 2-3)
+
 1. Add category filtering UI to dashboard
 2. Implement cost budget enforcement (£50/day, £200/month)
 3. Add UK business hours checking (9am-6pm GMT)
@@ -204,6 +225,7 @@ The agent registry includes **visual system metadata** for Command Centre:
 ## 💰 Time & Cost Savings
 
 **Total Time Saved (per week)**: ~50 hours
+
 - Newsletter: 8h (weekly)
 - Social media: 8h (weekly)
 - Gmail autopilot: 42h (6h/day × 7 days)
@@ -211,6 +233,7 @@ The agent registry includes **visual system metadata** for Command Centre:
 - Business analytics: 4h (weekly)
 
 **Monthly Cost Budget**: £200
+
 - Contact enrichment: ~£60/month (20 enrichments @ £3)
 - Newsletter generation: ~£2/month (4 runs @ £0.50)
 - Content agents: ~£10/month
@@ -221,12 +244,14 @@ The agent registry includes **visual system metadata** for Command Centre:
 ## 📝 Maintenance Notes
 
 **What NOT to do**:
+
 - ❌ Don't create new test/debug scripts in root - use `archive/utilities/`
 - ❌ Don't create campaign-specific tools in root - use `campaigns/[name]/`
 - ❌ Don't add agents without updating `agent-registry.json`
 - ❌ Don't delete archived files - they may be needed for reference
 
 **What TO do**:
+
 - ✅ Add new production agents to `agent-registry.json`
 - ✅ Put campaign tools in `campaigns/` subfolder
 - ✅ Archive test scripts immediately after use

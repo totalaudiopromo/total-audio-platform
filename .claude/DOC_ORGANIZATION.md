@@ -7,6 +7,7 @@ Automated system to keep your Total Audio Platform documentation organised and t
 ## Structure
 
 ### ✅ Root Level (Only These 5 Files)
+
 - **README.md** - Project overview
 - **SECURITY.md** - Security policies
 - **AUDIO_INTEL_CONTEXT.md** - Business context (frequently referenced)
@@ -27,23 +28,24 @@ docs/
 
 ## Automatic Organisation Rules
 
-| Pattern | Destination | Examples |
-|---------|-------------|----------|
-| `*_AUDIT*.md` | `docs/reports/` | CODE_EFFICIENCY_AUDIT.md |
-| `*_REPORT*.md` | `docs/reports/` | CONSOLIDATION_REPORT.md |
-| `*_SUMMARY*.md` | `docs/reports/` | Mobile test summaries |
-| `*_COMPLETE*.md` | `docs/reports/` | CLEANUP_COMPLETE.md |
-| `SECURITY*.md` | `docs/security/` | SECURITY_ROTATION_CHECKLIST.md |
-| `*SETUP*.md` | `docs/guides/` | QUICK_DATABASE_SETUP.md |
-| `*GUIDE*.md` | `docs/guides/` | Setup guides |
-| `*WORKFLOW*.md` | `docs/technical/` | CLAUDE_MAX_WORKFLOW.md |
-| `AGENT_OS*.md` | `docs/technical/` | AGENT_OS_QUICK_REFERENCE.md |
-| `QUICK_*.md` | `docs/guides/` | Quick references |
-| `*CHECKLIST*.md` | `docs/guides/` | Various checklists |
+| Pattern          | Destination       | Examples                       |
+| ---------------- | ----------------- | ------------------------------ |
+| `*_AUDIT*.md`    | `docs/reports/`   | CODE_EFFICIENCY_AUDIT.md       |
+| `*_REPORT*.md`   | `docs/reports/`   | CONSOLIDATION_REPORT.md        |
+| `*_SUMMARY*.md`  | `docs/reports/`   | Mobile test summaries          |
+| `*_COMPLETE*.md` | `docs/reports/`   | CLEANUP_COMPLETE.md            |
+| `SECURITY*.md`   | `docs/security/`  | SECURITY_ROTATION_CHECKLIST.md |
+| `*SETUP*.md`     | `docs/guides/`    | QUICK_DATABASE_SETUP.md        |
+| `*GUIDE*.md`     | `docs/guides/`    | Setup guides                   |
+| `*WORKFLOW*.md`  | `docs/technical/` | CLAUDE_MAX_WORKFLOW.md         |
+| `AGENT_OS*.md`   | `docs/technical/` | AGENT_OS_QUICK_REFERENCE.md    |
+| `QUICK_*.md`     | `docs/guides/`    | Quick references               |
+| `*CHECKLIST*.md` | `docs/guides/`    | Various checklists             |
 
 ## Usage
 
 ### Manual Organisation
+
 Run this anytime to tidy up root directory:
 
 ```bash
@@ -51,6 +53,7 @@ bash .claude/auto-organise-docs.sh
 ```
 
 ### Automatic Organisation
+
 The system can automatically organise docs after Claude creates them using hooks (optional).
 
 ## Adding Custom Rules

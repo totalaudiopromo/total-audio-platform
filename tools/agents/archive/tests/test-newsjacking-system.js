@@ -31,9 +31,9 @@ Industry experts predict this could significantly change how independent artists
     source: 'Music Business Worldwide',
     category: 'streaming',
     relevanceWeight: 0.9,
-    url: 'https://example.com/spotify-ai-playlist'
+    url: 'https://example.com/spotify-ai-playlist',
   },
-  
+
   {
     id: 'story_002',
     title: 'Major UK Radio Stations Eliminate Manual Submission Processes',
@@ -54,8 +54,8 @@ Several music promotion companies have already announced they're updating their 
     source: 'Music Week',
     category: 'radio',
     relevanceWeight: 0.9,
-    url: 'https://example.com/uk-radio-automation'
-  }
+    url: 'https://example.com/uk-radio-automation',
+  },
 ];
 
 /**
@@ -66,30 +66,32 @@ class MockNewsjackingAgent extends NewsjackingAgent {
     super();
     this.mockMode = true;
   }
-  
+
   async initialize() {
     console.log('[MOCK-NEWSJACKING] Mock mode initialized - skipping database');
     return true;
   }
-  
+
   async monitorTrendingTopics() {
     console.log('[MOCK-NEWSJACKING] Using mock trending stories...');
-    
+
     // Apply relevance scoring to mock stories
     const scoredStories = MOCK_TRENDING_STORIES.map(story => ({
       ...story,
       relevanceScore: this.calculateRelevanceScore(story),
-      detectedAt: new Date()
+      detectedAt: new Date(),
     }));
-    
-    console.log(`[MOCK-NEWSJACKING] Found ${scoredStories.length} mock stories with relevance scores:`);
+
+    console.log(
+      `[MOCK-NEWSJACKING] Found ${scoredStories.length} mock stories with relevance scores:`
+    );
     scoredStories.forEach(story => {
       console.log(`  - ${story.title.slice(0, 50)}... (${story.relevanceScore.toFixed(2)})`);
     });
-    
+
     return scoredStories.filter(story => story.relevanceScore > 0.6);
   }
-  
+
   async shutdown() {
     console.log('[MOCK-NEWSJACKING] Mock shutdown complete');
   }
@@ -104,27 +106,27 @@ class MockNewsletterAutomationAgent extends NewsletterAutomationAgent {
     this.newsjackingAgent = new MockNewsjackingAgent();
     this.mockMode = true;
   }
-  
+
   async initialize() {
     await this.newsjackingAgent.initialize();
     console.log('[MOCK-NEWSLETTER] Mock mode initialized - skipping database');
     return true;
   }
-  
+
   async submitToConvertKit(newsletter) {
     console.log('[MOCK-NEWSLETTER] Mock ConvertKit submission:', {
       issueNumber: newsletter.issueNumber,
       sectionsCount: newsletter.sections.length,
-      estimatedLength: newsletter.sections.reduce((acc, s) => acc + (s.content?.length || 0), 0)
+      estimatedLength: newsletter.sections.reduce((acc, s) => acc + (s.content?.length || 0), 0),
     });
-    
+
     return {
       success: true,
       broadcastId: 'mock_broadcast_123',
-      status: 'mock_scheduled'
+      status: 'mock_scheduled',
     };
   }
-  
+
   async shutdown() {
     await this.newsjackingAgent.shutdown();
     console.log('[MOCK-NEWSLETTER] Mock shutdown complete');
@@ -136,34 +138,34 @@ class MockNewsletterAutomationAgent extends NewsletterAutomationAgent {
  */
 async function testNewsjackingSystem() {
   console.log('🧪 Testing Complete Newsjacking System\n');
-  
+
   const agent = new MockNewsjackingAgent();
   await agent.initialize();
-  
+
   console.log('📊 Step 1: Testing Trend Detection & Relevance Scoring');
-  console.log('=' .repeat(60));
-  
+  console.log('='.repeat(60));
+
   const trendingStories = await agent.monitorTrendingTopics();
-  
+
   if (trendingStories.length === 0) {
     console.log('❌ No high-relevance stories detected');
     return;
   }
-  
+
   console.log(`✅ Detected ${trendingStories.length} high-relevance stories\n`);
-  
+
   console.log('🎯 Step 2: Testing Unsigned Advantage Content Generation');
-  console.log('=' .repeat(60));
-  
+  console.log('='.repeat(60));
+
   for (const story of trendingStories.slice(0, 2)) {
     console.log(`\n📰 Processing: ${story.title}`);
     console.log(`   Source: ${story.source} | Relevance: ${story.relevanceScore.toFixed(2)}`);
-    
+
     const content = await agent.generateUnsignedAdvantageContent(story);
-    
+
     if (content) {
       console.log(`✅ Generated ${content.newsletterSections.length} newsletter sections`);
-      
+
       // Show first section as example
       const firstSection = content.newsletterSections[0];
       if (firstSection) {
@@ -172,60 +174,58 @@ async function testNewsjackingSystem() {
         console.log(firstSection.content.slice(0, 300) + '...');
         console.log('─'.repeat(40));
       }
-      
+
       // Validate Chris voice patterns
       const voiceScore = validateChrisVoice(content.newsletterSections);
       console.log(`🗣️  Voice authenticity score: ${voiceScore.toFixed(2)}/1.0`);
-      
+
       if (voiceScore < 0.7) {
         console.log('⚠️  Warning: Voice pattern authenticity below threshold');
       }
-      
     } else {
       console.log('❌ Failed to generate content');
     }
   }
-  
+
   console.log('\n📧 Step 3: Testing Newsletter Integration');
-  console.log('=' .repeat(60));
-  
+  console.log('='.repeat(60));
+
   const newsletterAgent = new MockNewsletterAutomationAgent();
   await newsletterAgent.initialize();
-  
+
   const newsletter = await newsletterAgent.generateNewsletterWithNewsjacking();
-  
+
   if (newsletter) {
     console.log(`✅ Generated newsletter issue ${newsletter.issueNumber}`);
     console.log(`   Sections: ${newsletter.sections.length}`);
     console.log(`   Primary topics: ${newsletter.metadata.primaryTopics.slice(0, 2).join(', ')}`);
     console.log(`   Estimated read time: ${newsletter.metadata.estimatedReadTime} minutes`);
     console.log(`   Urgency: ${newsletter.metadata.urgency}`);
-    
+
     // Show newsletter preview
     console.log('\n📄 Newsletter Preview:');
-    console.log('=' .repeat(50));
+    console.log('='.repeat(50));
     console.log(`${newsletter.header.title} - Issue ${newsletter.header.issueNumber}`);
     console.log(`${newsletter.header.subtitle}`);
     console.log(`${newsletter.header.date}\n`);
-    
+
     newsletter.sections.slice(0, 2).forEach(section => {
       console.log(`## ${section.title}`);
       console.log(section.content.slice(0, 200) + '...\n');
     });
-    
   } else {
     console.log('❌ Failed to generate newsletter');
   }
-  
+
   console.log('🌐 Step 4: Testing Multi-Platform Content Generation');
-  console.log('=' .repeat(60));
-  
+  console.log('='.repeat(60));
+
   if (newsletter) {
     const platformContent = await newsletterAgent.generateMultiPlatformContent(newsletter);
-    
+
     Object.entries(platformContent).forEach(([platform, content]) => {
       console.log(`\n📱 ${platform.toUpperCase()}:`);
-      
+
       if (platform === 'twitter') {
         console.log(`   Thread: ${content.content.length} tweets`);
         console.log(`   Preview: ${content.content[0].slice(0, 100)}...`);
@@ -236,54 +236,55 @@ async function testNewsjackingSystem() {
         console.log(`   Carousel: ${content.content.slides.length} slides`);
         console.log(`   Caption length: ${content.content.caption.length} characters`);
       }
-      
+
       console.log(`   Scheduled: ${content.scheduledFor.toLocaleString()}`);
     });
-    
+
     console.log(`\n✅ Generated content for ${Object.keys(platformContent).length} platforms`);
   }
-  
+
   console.log('\n📊 Step 5: Performance Metrics');
-  console.log('=' .repeat(60));
-  
+  console.log('='.repeat(60));
+
   const metrics = agent.getMetrics();
   console.log('Newsjacking Agent Metrics:');
   Object.entries(metrics).forEach(([key, value]) => {
     console.log(`  ${key}: ${value}`);
   });
-  
+
   const newsletterMetrics = newsletterAgent.getMetrics();
   console.log('\nNewsletter Agent Metrics:');
   Object.entries(newsletterMetrics).forEach(([key, value]) => {
     console.log(`  ${key}: ${value}`);
   });
-  
+
   console.log('\n🎉 Test Results Summary');
-  console.log('=' .repeat(60));
-  
+  console.log('='.repeat(60));
+
   const testResults = {
     trendDetection: trendingStories.length > 0,
     contentGeneration: newsletter !== null,
     voiceAuthenticity: true, // Would be calculated from all sections
-    multiPlatform: Object.keys(await newsletterAgent.generateMultiPlatformContent(newsletter || {})).length > 0,
-    integration: true // ConvertKit mock succeeded
+    multiPlatform:
+      Object.keys(await newsletterAgent.generateMultiPlatformContent(newsletter || {})).length > 0,
+    integration: true, // ConvertKit mock succeeded
   };
-  
+
   Object.entries(testResults).forEach(([test, passed]) => {
     console.log(`${passed ? '✅' : '❌'} ${test}: ${passed ? 'PASSED' : 'FAILED'}`);
   });
-  
+
   const passedTests = Object.values(testResults).filter(Boolean).length;
   const totalTests = Object.values(testResults).length;
-  
+
   console.log(`\n🏆 Overall: ${passedTests}/${totalTests} tests passed`);
-  
+
   if (passedTests === totalTests) {
     console.log('🎊 All systems operational! Newsjacking integration ready for production.');
   } else {
     console.log('⚠️  Some tests failed. Review issues before production deployment.');
   }
-  
+
   await agent.shutdown();
   await newsletterAgent.shutdown();
 }
@@ -293,26 +294,35 @@ async function testNewsjackingSystem() {
  */
 function validateChrisVoice(sections) {
   const chrisPatterns = [
-    'Right, so', 'Here\'s the thing', 'The reality is', 'What this actually means',
-    'Here\'s your move', 'Bottom line', 'Perfect timing', 'Here\'s where it gets interesting',
-    'Honestly?', 'The opportunity', 'What everyone\'s missing', 'Here\'s how to turn this'
+    'Right, so',
+    "Here's the thing",
+    'The reality is',
+    'What this actually means',
+    "Here's your move",
+    'Bottom line',
+    'Perfect timing',
+    "Here's where it gets interesting",
+    'Honestly?',
+    'The opportunity',
+    "What everyone's missing",
+    "Here's how to turn this",
   ];
-  
+
   let patternMatches = 0;
   let totalContent = '';
-  
+
   sections.forEach(section => {
     if (section.content) {
       totalContent += section.content + ' ';
     }
   });
-  
+
   chrisPatterns.forEach(pattern => {
     if (totalContent.includes(pattern)) {
       patternMatches++;
     }
   });
-  
+
   return patternMatches / chrisPatterns.length;
 }
 

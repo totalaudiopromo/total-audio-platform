@@ -22,14 +22,14 @@
 - **Message Template**:
 
   ```
-  "Hey [Name], you know how we spend hours digging through websites 
-  and social media to research contacts before pitching? 
-  
-  I built Audio Intel to solve that exact problem - it turns basic email 
-  lists into detailed contact intelligence with submission guidelines, 
+  "Hey [Name], you know how we spend hours digging through websites
+  and social media to research contacts before pitching?
+
+  I built Audio Intel to solve that exact problem - it turns basic email
+  lists into detailed contact intelligence with submission guidelines,
   contact preferences, and pitch tips.
-  
-  Want to be one of my beta testers? It's completely free and could 
+
+  Want to be one of my beta testers? It's completely free and could
   save you those painful 3-hour research sessions."
   ```
 
@@ -43,10 +43,10 @@
 
   ```
   "Hey [Name], tired of spending forever researching who to pitch your music to?
-  
-  I built Audio Intel - it takes basic contact lists and enriches them with 
+
+  I built Audio Intel - it takes basic contact lists and enriches them with
   everything you need: submission guidelines, contact preferences, coverage areas.
-  
+
   No more guessing what playlist curators or radio DJs are looking for.
   Want to try it free during beta?"
   ```
@@ -59,12 +59,12 @@
 
   ```
   "Hey [Name], I built something that could help people pitch to you better.
-  
-  Audio Intel turns basic contact lists into detailed intelligence - so instead 
-  of getting generic pitches, people would know your submission preferences, 
+
+  Audio Intel turns basic contact lists into detailed intelligence - so instead
+  of getting generic pitches, people would know your submission preferences,
   coverage areas, and what you're actually looking for.
-  
-  Since you're on the receiving end of pitches, your feedback would be gold. 
+
+  Since you're on the receiving end of pitches, your feedback would be gold.
   Want to check it out?"
   ```
 
@@ -82,12 +82,12 @@
 #### **Sample LinkedIn Posts**:
 
 ```
-"Spent 3 hours last week researching one playlist curator's 
+"Spent 3 hours last week researching one playlist curator's
 submission guidelines. Found them buried on page 4 of their website.
 
 There has to be a better way... so I built Audio Intel.
 
-Drop an email address, get detailed contact intelligence: 
+Drop an email address, get detailed contact intelligence:
 submission preferences, coverage areas, pitch tips.
 
 Looking for 20 more beta testers. Who's tired of manual research?
@@ -114,7 +114,7 @@ Looking for 20 more beta testers. Who's tired of manual research?
 ### **Reddit Communities (Free)**
 
 - **r/WeAreTheMusicMakers** (1.4M members)
-- **r/trapproduction** (200K+ members)  
+- **r/trapproduction** (200K+ members)
 - **r/edmproduction** (300K+ members)
 - **r/makinghiphop** (200K+ members)
 
@@ -132,7 +132,7 @@ Looking for 20 more beta testers. Who's tired of manual research?
 ### **Facebook Groups (Free)**
 
 - Independent Artists groups
-- Music PR/Marketing groups  
+- Music PR/Marketing groups
 - Local music scene groups
 
 ---
@@ -249,20 +249,20 @@ Subject: End the 3-hour contact research nightmare?
 
 Hey [Name],
 
-You know those painful research sessions where you spend hours 
-digging through websites to find submission guidelines and contact 
+You know those painful research sessions where you spend hours
+digging through websites to find submission guidelines and contact
 preferences before pitching?
 
-I got so fed up with it I built Audio Intel - it takes basic email 
-lists and enriches them with everything you need: submission 
+I got so fed up with it I built Audio Intel - it takes basic email
+lists and enriches them with everything you need: submission
 guidelines, contact preferences, coverage areas, pitch tips.
 
-Would you mind being one of my first beta testers? It's completely 
+Would you mind being one of my first beta testers? It's completely
 free and could save you those 3-hour research sessions.
 
 [Your name]
 
-P.S. I can do a quick demo with your actual contact list if you want 
+P.S. I can do a quick demo with your actual contact list if you want
 to see it in action.
 ```
 
@@ -273,15 +273,15 @@ Subject: Stop guessing what playlist curators want
 
 Hey [Name],
 
-Love your music! Quick question - how much time do you spend 
+Love your music! Quick question - how much time do you spend
 researching contacts before pitching?
 
-I built Audio Intel because I was tired of sending generic pitches 
-and wondering why they weren't working. It turns basic contact 
-lists into detailed intelligence - submission guidelines, contact 
+I built Audio Intel because I was tired of sending generic pitches
+and wondering why they weren't working. It turns basic contact
+lists into detailed intelligence - submission guidelines, contact
 preferences, what they're actually looking for.
 
-Want to try it free during beta? Could help with your next release 
+Want to try it free during beta? Could help with your next release
 campaign.
 
 [Beta signup link]

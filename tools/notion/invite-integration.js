@@ -37,14 +37,21 @@ function getArg(name, fallback = null) {
 
 function loadConfig() {
   const p = path.join('tools', 'notion', 'config.json');
-  try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return {}; }
+  try {
+    return JSON.parse(fs.readFileSync(p, 'utf8'));
+  } catch {
+    return {};
+  }
 }
 
 async function run() {
   const cfg = loadConfig();
-  const integrationName = getArg('integration', null) || process.env.NOTION_INTEGRATION_NAME || cfg.integrationName;
+  const integrationName =
+    getArg('integration', null) || process.env.NOTION_INTEGRATION_NAME || cfg.integrationName;
   if (!integrationName) {
-    console.error('ERROR: Provide integration name via --integration, NOTION_INTEGRATION_NAME, or tools/notion/config.json');
+    console.error(
+      'ERROR: Provide integration name via --integration, NOTION_INTEGRATION_NAME, or tools/notion/config.json'
+    );
     process.exit(1);
   }
   const listPath = process.argv[2] || path.join('tools', 'notion', 'pages.json');
@@ -53,7 +60,13 @@ async function run() {
     console.error(`ERROR: Pages list not found at ${absListPath}`);
     process.exit(1);
   }
-  const pages = Array.from(new Set((JSON.parse(fs.readFileSync(absListPath, 'utf8')) || []).map(u => String(u || '').trim()).filter(Boolean)));
+  const pages = Array.from(
+    new Set(
+      (JSON.parse(fs.readFileSync(absListPath, 'utf8')) || [])
+        .map(u => String(u || '').trim())
+        .filter(Boolean)
+    )
+  );
   if (!Array.isArray(pages) || pages.length === 0) {
     console.error('ERROR: Pages JSON must be a non-empty array of Notion share URLs.');
     process.exit(1);
@@ -75,12 +88,12 @@ async function run() {
     headless,
     userDataDir,
     defaultViewport: null,
-    args: ['--start-maximized']
+    args: ['--start-maximized'],
   });
 
   const page = await browser.newPage();
   page.setDefaultTimeout(30000);
-  const sleep = (ms) => new Promise(res => setTimeout(res, ms));
+  const sleep = ms => new Promise(res => setTimeout(res, ms));
 
   // Helper: eval XPaths and CSS with fallbacks
   async function $xFirst(xpath) {
@@ -126,7 +139,7 @@ async function run() {
     await sleep(500);
 
     // Validate integration appears somewhere in the dialog text
-    const found = await page.evaluate((n) => {
+    const found = await page.evaluate(n => {
       const dlg = document.querySelector('[role="dialog"], [data-testid="popover"]');
       if (!dlg) return false;
       return dlg.innerText.toLowerCase().includes(n.toLowerCase());
@@ -146,30 +159,42 @@ async function run() {
     const labels = ['Can edit', 'Can read', 'Can view', 'Full access'];
     let permBtn = null;
     for (const lbl of labels) {
-      const els = await page.$x(`//div[@role='dialog']//*[self::button or self::div][contains(normalize-space(.), '${lbl}')]`);
-      if (els && els[0]) { permBtn = els[0]; break; }
+      const els = await page.$x(
+        `//div[@role='dialog']//*[self::button or self::div][contains(normalize-space(.), '${lbl}')]`
+      );
+      if (els && els[0]) {
+        permBtn = els[0];
+        break;
+      }
     }
     if (!permBtn) {
       // fallback: any button inside dialog
       permBtn = await dialogHandle.$('button');
     }
     if (!permBtn) return;
-    try { await permBtn.click(); } catch {}
+    try {
+      await permBtn.click();
+    } catch {}
     await sleep(300);
     // choose Can edit in the menu
-    const editItems = await page.$x(`//div[@role='menu' or @role='listbox']//*[contains(normalize-space(.), 'Can edit') or contains(normalize-space(.), 'Full access')]`);
+    const editItems = await page.$x(
+      `//div[@role='menu' or @role='listbox']//*[contains(normalize-space(.), 'Can edit') or contains(normalize-space(.), 'Full access')]`
+    );
     if (editItems && editItems[0]) {
       await editItems[0].click();
       await sleep(400);
     }
     // verification
-    const showsEdit = await page.evaluate((n) => {
+    const showsEdit = await page.evaluate(n => {
       const dlg = document.querySelector('[role="dialog"], [data-testid="popover"]');
       if (!dlg) return false;
       const txt = dlg.innerText.toLowerCase();
-      return txt.includes(n.toLowerCase()) && (txt.includes('can edit') || txt.includes('full access'));
+      return (
+        txt.includes(n.toLowerCase()) && (txt.includes('can edit') || txt.includes('full access'))
+      );
     }, name);
-    if (!showsEdit) console.warn('Could not verify Can edit; please double-check this page manually.');
+    if (!showsEdit)
+      console.warn('Could not verify Can edit; please double-check this page manually.');
   }
 
   // Walk all pages
@@ -177,14 +202,18 @@ async function run() {
   for (let i = 0; i < pages.length; i++) {
     const url = pages[i];
     console.log(`\n[${i + 1}/${pages.length}] Opening: ${url}`);
-    let attempt = 0; let ok = false; let lastErr = null;
+    let attempt = 0;
+    let ok = false;
+    let lastErr = null;
     while (attempt <= retries && !ok) {
       attempt++;
       try {
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
         await sleep(1200);
         if (page.url().includes('notion.so/login')) {
-          console.log('Please log in to Notion in the opened window. Script will continue after login.');
+          console.log(
+            'Please log in to Notion in the opened window. Script will continue after login.'
+          );
           await page.waitForFunction(() => !location.pathname.includes('login'), { timeout: 0 });
           await sleep(1500);
         }
@@ -197,7 +226,9 @@ async function run() {
       } catch (err) {
         lastErr = err;
         console.warn(`Attempt ${attempt}/${retries + 1} failed: ${err.message}`);
-        try { await page.keyboard.press('Escape'); } catch {}
+        try {
+          await page.keyboard.press('Escape');
+        } catch {}
         await sleep(700);
       }
     }
@@ -217,15 +248,22 @@ async function run() {
   }
 
   await browser.close();
-  const summary = { total: results.length, ok: results.filter(r => r.status === 'ok').length, failed: results.filter(r => r.status === 'failed').length };
+  const summary = {
+    total: results.length,
+    ok: results.filter(r => r.status === 'ok').length,
+    failed: results.filter(r => r.status === 'failed').length,
+  };
   console.log('\nSummary:', summary);
   if (summary.failed > 0) {
-    console.log('Failed pages:', results.filter(r => r.status === 'failed'));
+    console.log(
+      'Failed pages:',
+      results.filter(r => r.status === 'failed')
+    );
     process.exitCode = 2;
   }
 }
 
-run().catch((e) => {
+run().catch(e => {
   console.error('Unexpected error:', e);
   process.exit(1);
 });

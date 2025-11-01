@@ -12,6 +12,7 @@
 ### Social Media Content
 
 **LinkedIn Posts**: 10
+
 - BBC Radio 1 case study focus
 - Time savings emphasis
 - ROI calculations
@@ -19,6 +20,7 @@
 - Professional tone
 
 **Twitter/X Threads**: 6
+
 - Brighton producer authentic story
 - 2AM development reality
 - Real campaign results
@@ -26,12 +28,14 @@
 - Response rate data
 
 **Bluesky Posts**: 10
+
 - Tech-savvy professional focus
 - Innovation emphasis
 - 300-character optimised
 - Direct CTAs
 
 **Threads Posts**: 10
+
 - Community-focused content
 - 500-character optimised
 - Conversational tone
@@ -40,6 +44,7 @@
 ### Email Outreach
 
 **Cold Outreach Templates**: 5
+
 1. National/BBC Radio Promoters
 2. Regional/Independent Radio Promoters
 3. Small PR Firms/Agencies (1-5 staff)
@@ -47,6 +52,7 @@
 5. DIY Artists/Self-Promoters
 
 Each template includes:
+
 - Problem-focused subject lines
 - Personalised pain points
 - Clear ROI calculations
@@ -56,6 +62,7 @@ Each template includes:
 ### Blog Content
 
 **SEO Case Studies**: 2
+
 1. BBC Radio 1 Contact Enrichment (~2,500 words)
    - 18 hours → 2 minutes transformation
    - Real campaign data
@@ -69,6 +76,7 @@ Each template includes:
    - Practical execution guide
 
 **Programmatic SEO Templates**: 3
+
 1. Genre-Based Template (50+ potential URLs)
 2. Location-Based Template (20+ UK cities)
 3. Station-Type Template (5 types)
@@ -83,6 +91,7 @@ Total SEO potential: 75+ unique pages
 
 **Total Scheduled Posts**: 35
 **Platform Distribution**:
+
 - LinkedIn: 10 posts
 - Twitter/X: 6 threads
 - Bluesky: 9 posts
@@ -91,21 +100,25 @@ Total SEO potential: 75+ unique pages
 ### Week-by-Week Theme
 
 **Week 1**: Problem Awareness
+
 - Focus on time wasting and inefficiency
 - BBC Radio 1 credibility
 - Founder authentic story
 
 **Week 2**: Solution Education
+
 - How Audio Intel solves problems
 - Regional radio opportunities
 - Pricing comparison
 
 **Week 3**: Social Proof & Results
+
 - Real campaign data
 - Response rate improvements
 - Customer testimonials (prepared)
 
 **Week 4**: Call-to-Action Focus
+
 - ROI calculations
 - Free trial promotion
 - Demo booking emphasis
@@ -122,6 +135,7 @@ Total SEO potential: 75+ unique pages
 ## 📁 GENERATED FILES
 
 ### Social Content Directory
+
 ```
 /apps/audio-intel/social-content/
 ├── RADIO_PROMOTER_LINKEDIN_POSTS.md (10 posts)
@@ -137,6 +151,7 @@ Total SEO potential: 75+ unique pages
 ```
 
 ### Scheduler System
+
 ```
 /tools/agents/active/
 └── social-media-scheduler.js (automation system)
@@ -149,6 +164,7 @@ Total SEO potential: 75+ unique pages
 ### Voice Consistency
 
 All content maintains Chris Schofield authentic voice:
+
 - ✅ UK spelling throughout (organised, realise, colour)
 - ✅ Direct, no-nonsense communication
 - ✅ Real industry experience (BBC Radio 1, sadact producer)
@@ -159,6 +175,7 @@ All content maintains Chris Schofield authentic voice:
 ### Platform Optimisation
 
 **LinkedIn**:
+
 - Professional but authentic
 - 1,000-3,000 character posts
 - Industry statistics emphasised
@@ -166,6 +183,7 @@ All content maintains Chris Schofield authentic voice:
 - CTA: Direct URL to intel.totalaudiopromo.com
 
 **Twitter/X**:
+
 - Threaded storytelling
 - 5-7 tweets per thread
 - Line breaks for readability
@@ -173,6 +191,7 @@ All content maintains Chris Schofield authentic voice:
 - Engagement-focused format
 
 **Bluesky**:
+
 - Tech-savvy professional
 - Strict 300-character limit
 - Innovation and efficiency focus
@@ -180,6 +199,7 @@ All content maintains Chris Schofield authentic voice:
 - Minimal hashtags
 
 **Threads**:
+
 - Community-focused
 - 500-character sweet spot
 - Conversational tone
@@ -189,6 +209,7 @@ All content maintains Chris Schofield authentic voice:
 ### UTM Tracking
 
 All links include proper campaign tracking:
+
 ```
 ?utm_source=[platform]
 &utm_medium=social
@@ -196,6 +217,7 @@ All links include proper campaign tracking:
 ```
 
 Examples:
+
 - `linkedin&utm_medium=social&utm_campaign=radio_bbc_case_study`
 - `twitter&utm_medium=social&utm_campaign=radio_brighton_story`
 - `bluesky&utm_medium=social&utm_campaign=radio_time_savings`
@@ -207,18 +229,21 @@ Examples:
 ### Conversion Funnel
 
 **Top of Funnel** (Awareness)
+
 - Social media posts highlighting problems
 - Time wasting and research inefficiency
 - Industry pain points
 - Target: Radio promoters discovering Audio Intel
 
 **Middle of Funnel** (Consideration)
+
 - Case study blog posts
 - ROI calculations
 - Real campaign results
 - Target: Evaluating Audio Intel vs alternatives
 
 **Bottom of Funnel** (Decision)
+
 - Email outreach templates
 - Demo booking CTAs
 - Free trial promotion
@@ -227,18 +252,21 @@ Examples:
 ### Segmentation Strategy
 
 **Radio Promoters (85% conversion - HIGHEST PRIORITY)**
+
 - National radio focus (BBC Radio 1 credibility)
 - Time savings emphasis (15 hours → 2 minutes)
 - ROI calculations (£750 saved per campaign)
 - Professional credibility (5+ years experience)
 
 **Small PR Agencies (70% conversion)**
+
 - Junior staff time waste
 - Multi-client support
 - White-label capabilities
 - Agency ROI (5,700% return)
 
 **DIY Artists (60% conversion)**
+
 - Weekend research elimination
 - Focus on music creation
 - Affordable pricing (£19/month)
@@ -328,7 +356,7 @@ Examples:
    - Adjust subject lines and messaging
 
 3. **Analyse Blog Traffic**
-   - Google Analytics: Track /blog/* traffic
+   - Google Analytics: Track /blog/\* traffic
    - Identify high-performing keywords
    - Monitor conversion from blog to trial signup
    - Iterate on underperforming content
@@ -366,6 +394,7 @@ Examples:
 ### Social Media KPIs
 
 **Engagement Metrics**:
+
 - Post reach (target: 1,000+ per post by Week 4)
 - Engagement rate (target: 3-5%)
 - Comment rate (target: 1-2%)
@@ -373,11 +402,13 @@ Examples:
 - Click-through rate (target: 4-6%)
 
 **Traffic Metrics**:
+
 - Website visits from social (target: 50+ weekly)
 - Demo page visits (target: 20+ weekly)
 - Trial signups from social (target: 5+ weekly)
 
 **Platform Growth**:
+
 - LinkedIn followers (target: +100 monthly)
 - Twitter/X followers (target: +150 monthly)
 - Bluesky followers (target: +75 monthly)
@@ -386,6 +417,7 @@ Examples:
 ### Email Outreach KPIs
 
 **Campaign Metrics**:
+
 - Emails sent (target: 50+ weekly)
 - Open rate (target: 35-45%)
 - Reply rate (target: 15-20% for radio promoters)
@@ -393,6 +425,7 @@ Examples:
 - Trial signup rate (target: 60% from demos)
 
 **Segment Performance**:
+
 - National radio promoters (highest priority)
 - Regional radio promoters (volume opportunity)
 - Small agencies (steady converters)
@@ -402,17 +435,20 @@ Examples:
 ### Blog/SEO KPIs
 
 **Traffic Metrics**:
+
 - Organic search visitors (target: 100+ weekly by Month 3)
 - Bounce rate (target: <60%)
 - Time on page (target: 4+ minutes)
 - Pages per session (target: 2+)
 
 **Conversion Metrics**:
+
 - Blog to trial signups (target: 2-3% conversion)
 - Blog to demo bookings (target: 1-2% conversion)
 - Internal link clicks (target: 15-20%)
 
 **SEO Performance**:
+
 - Keyword rankings (target: 10+ first page by Month 3)
 - Backlinks earned (target: 5+ monthly)
 - Domain authority (monitor monthly)
@@ -423,24 +459,28 @@ Examples:
 ## 🎯 NEXT STEPS ROADMAP
 
 ### Week 1-2: Launch Phase
+
 - [ ] Schedule all Week 1 social posts
 - [ ] Send first 25 cold outreach emails (radio promoters)
 - [ ] Publish BBC Radio 1 case study blog post
 - [ ] Monitor initial engagement and feedback
 
 ### Week 3-4: Optimisation Phase
+
 - [ ] Analyse Week 1-2 performance data
 - [ ] Adjust content themes based on engagement
 - [ ] Scale email outreach to 50+ weekly
 - [ ] Publish regional radio case study blog post
 
 ### Month 2: Expansion Phase
+
 - [ ] Generate 10 programmatic SEO pages
 - [ ] Scale social posting frequency (2x per week per platform)
 - [ ] Expand email segments beyond radio promoters
 - [ ] Implement retargeting for blog visitors
 
 ### Month 3: Scale Phase
+
 - [ ] 20 additional pSEO pages
 - [ ] Video content from blog posts
 - [ ] Podcast/audio content experiment
@@ -453,24 +493,28 @@ Examples:
 ### Monthly Updates
 
 **Social Content**:
+
 - Refresh statistics with latest data
 - Add new case studies from customers
 - Respond to industry news and trends
 - Seasonal content (festival season, etc.)
 
 **Email Templates**:
+
 - Update ROI calculations quarterly
 - Add new customer testimonials
 - Refresh competitive pricing data
 - Test new subject line variations
 
 **Blog Posts**:
+
 - Update "Last Updated" dates monthly
 - Refresh statistics and data points
 - Add new sections based on user questions
 - Improve internal linking structure
 
 **pSEO Pages**:
+
 - Quarterly content audits
 - Update station counts and data
 - Add new genre/location combinations
@@ -525,6 +569,7 @@ Examples:
 ### Voice Standards
 
 **✅ ALWAYS**:
+
 - Use UK spelling (organised, realise, colour, etc.)
 - Be direct and honest about problems
 - Include real data and statistics
@@ -533,6 +578,7 @@ Examples:
 - Maintain professional but authentic tone
 
 **❌ NEVER**:
+
 - Use US spelling
 - Make exaggerated claims without data
 - Use emojis excessively
@@ -543,18 +589,21 @@ Examples:
 ### Compliance
 
 **Data Claims**:
+
 - All statistics verified or anonymised
 - Customer testimonials with permission
 - ROI calculations transparent
 - Response rates from real campaigns
 
 **Competition**:
+
 - Fair comparison to alternatives
 - Accurate pricing information
 - No disparaging language
 - Focus on value differentiation
 
 **Legal**:
+
 - Privacy policy linked
 - Terms of service referenced
 - GDPR compliance for UK/EU
@@ -574,6 +623,7 @@ Examples:
 ### Immediate ROI Potential
 
 **If 1% of social followers convert**:
+
 - 1,000 followers × 1% = 10 trials
 - 10 trials × 85% (radio promoter rate) = 8 customers
 - 8 customers × £19/month = £152 MRR
@@ -581,6 +631,7 @@ Examples:
 - ROI: Infinite (content created overnight)
 
 **If 15% of email outreach converts**:
+
 - 100 emails sent (radio promoters)
 - 15% reply rate = 15 demo calls
 - 85% demo → trial = 12 trials
@@ -589,6 +640,7 @@ Examples:
 - First month revenue covers 9+ months of Claude Max
 
 **If blog posts rank for long-tail keywords**:
+
 - 75+ pSEO pages targeting specific searches
 - Long-tail ranking easier (less competition)
 - Organic traffic compounds monthly
@@ -600,6 +652,7 @@ Examples:
 ## ✅ READY TO EXECUTE
 
 All content is:
+
 - ✅ Production-ready (no additional editing required)
 - ✅ Voice-consistent (Chris Schofield authentic)
 - ✅ Platform-optimised (correct character limits)

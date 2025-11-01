@@ -9,7 +9,8 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -24,7 +25,7 @@ async function fetchAllContacts() {
       : `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
 
     const response = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
     });
 
     const data = await response.json();
@@ -38,23 +39,20 @@ async function fetchAllContacts() {
 
 async function updateContactNotes(recordId, consolidatedNotes) {
   try {
-    const response = await fetch(
-      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-          'Content-Type': 'application/json'
+    const response = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        fields: {
+          Notes: consolidatedNotes,
+          'Reply Notes': '', // Clear after merge
+          Description: '', // Clear after merge
         },
-        body: JSON.stringify({
-          fields: {
-            'Notes': consolidatedNotes,
-            'Reply Notes': '', // Clear after merge
-            'Description': ''  // Clear after merge
-          }
-        })
-      }
-    );
+      }),
+    });
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -77,7 +75,7 @@ async function consolidateNotes() {
     total: contacts.length,
     updated: 0,
     noChange: 0,
-    errors: 0
+    errors: 0,
   };
 
   const consolidations = [];
@@ -121,7 +119,7 @@ async function consolidateNotes() {
         email,
         hadReplyNotes: !!replyNotes,
         hadDescription: !!description,
-        hadExistingNotes: !!existingNotes
+        hadExistingNotes: !!existingNotes,
       });
 
       if (stats.updated % 50 === 0) {
@@ -150,7 +148,10 @@ async function consolidateNotes() {
   console.log(`   Merged Description: ${withDescription}`);
   console.log(`   Had existing Notes: ${withExisting}\n`);
 
-  fs.writeFileSync('./NOTES_CONSOLIDATION_REPORT.json', JSON.stringify({ stats, consolidations }, null, 2));
+  fs.writeFileSync(
+    './NOTES_CONSOLIDATION_REPORT.json',
+    JSON.stringify({ stats, consolidations }, null, 2)
+  );
   console.log('💾 Report saved: NOTES_CONSOLIDATION_REPORT.json\n');
   console.log('✅ Notes consolidation complete!\n');
 

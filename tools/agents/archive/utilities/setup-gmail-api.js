@@ -2,7 +2,7 @@
 
 /**
  * Gmail API Setup Script for Liberty Music PR
- * 
+ *
  * This script helps you get Gmail API access for campaign discovery
  */
 
@@ -54,4 +54,3 @@ if (process.argv.includes('--get-token')) {
   console.log('- Cross-reference with Typeform responses');
   console.log('- Find your actual Liberty Music PR campaigns');
 }
-

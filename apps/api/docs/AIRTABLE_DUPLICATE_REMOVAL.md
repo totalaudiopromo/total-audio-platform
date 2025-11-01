@@ -117,8 +117,15 @@ Type "DELETE" to confirm permanent deletion: DELETE
 
 ```typescript
 const importantFields = [
-  'Name', 'Company', 'Role', 'Genre', 'Location', 
-  'Email', 'Phone', 'Website', 'Notes'
+  'Name',
+  'Company',
+  'Role',
+  'Genre',
+  'Location',
+  'Email',
+  'Phone',
+  'Website',
+  'Notes',
 ];
 
 // Score = (filled fields / total fields) * 100
@@ -155,10 +162,10 @@ To restore deleted records, you can use the backup file to recreate records in A
 const backupData = require('./duplicate-backup-2024-01-15.json');
 const base = new Airtable({ apiKey: 'your-key' }).base('your-base-id');
 
-backupData.forEach(async (record) => {
+backupData.forEach(async record => {
   try {
     await base('Contacts').create({
-      ...record.fields
+      ...record.fields,
     });
     console.log(`Restored record for ${record.email}`);
   } catch (error) {
@@ -321,4 +328,4 @@ For issues or questions:
 1. Check the logs for detailed error messages
 2. Review this documentation
 3. Test with dry-run mode first
-4. Verify environment variables and permissions 
+4. Verify environment variables and permissions

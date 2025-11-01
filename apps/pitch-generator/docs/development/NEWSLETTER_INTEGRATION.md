@@ -3,7 +3,9 @@
 ## ✅ Integration Complete
 
 ### Component Created
+
 **`components/NewsletterSignup.tsx`** - Reusable newsletter signup component with 3 variants:
+
 - `card` - Full card with icon and description (for dashboard)
 - `inline` - Compact inline form (for footer)
 - `footer` - Dark theme version for footer areas
@@ -23,6 +25,7 @@
 ### How It Works
 
 The newsletter signup:
+
 1. Collects email address
 2. Sends to Audio Intel's ConvertKit API: `https://intel.totalaudiopromo.com/api/convertkit/subscribe`
 3. Tags subscribers with:
@@ -81,6 +84,7 @@ import { NewsletterSignup } from '@/components/NewsletterSignup';
 ### Testing
 
 Visit http://localhost:3001/dashboard to see the newsletter signup in action:
+
 1. Scroll to newsletter card
 2. Enter email address
 3. Click Subscribe
@@ -90,6 +94,7 @@ Visit http://localhost:3001/dashboard to see the newsletter signup in action:
 ### Production Deployment
 
 The newsletter signup will work in production as long as:
+
 - Audio Intel ConvertKit API is accessible at `https://intel.totalaudiopromo.com/api/convertkit/subscribe`
 - ConvertKit API key is configured in Audio Intel
 - Form ID and tags are correct (already configured)

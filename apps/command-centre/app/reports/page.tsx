@@ -1,7 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FileText, Download, RefreshCw, Calendar, Filter, TrendingUp, BarChart3 } from 'lucide-react';
+import {
+  FileText,
+  Download,
+  RefreshCw,
+  Calendar,
+  Filter,
+  TrendingUp,
+  BarChart3,
+} from 'lucide-react';
 
 interface Report {
   id: string;
@@ -33,7 +41,7 @@ export default function ReportsPage() {
           description: 'Comprehensive business metrics, KPIs, and growth analysis for Audio Intel',
           type: 'business',
           lastGenerated: '2025-08-29T15:30:00Z',
-          status: 'ready'
+          status: 'ready',
         },
         {
           id: 'user-activity',
@@ -41,7 +49,7 @@ export default function ReportsPage() {
           description: 'Beta user engagement, feature usage, and behavioral insights',
           type: 'user',
           lastGenerated: '2025-08-29T12:00:00Z',
-          status: 'ready'
+          status: 'ready',
         },
         {
           id: 'system-performance',
@@ -49,15 +57,16 @@ export default function ReportsPage() {
           description: 'API performance, uptime metrics, and technical health indicators',
           type: 'technical',
           lastGenerated: '2025-08-29T10:15:00Z',
-          status: 'ready'
+          status: 'ready',
         },
         {
           id: 'data-processing',
           title: 'Data Processing Report',
-          description: 'Contact enrichment statistics, email validation results, and processing efficiency',
+          description:
+            'Contact enrichment statistics, email validation results, and processing efficiency',
           type: 'technical',
           lastGenerated: '2025-08-29T08:45:00Z',
-          status: 'ready'
+          status: 'ready',
         },
         {
           id: 'beta-feedback',
@@ -65,16 +74,17 @@ export default function ReportsPage() {
           description: 'Collected feedback, feature requests, and user satisfaction metrics',
           type: 'user',
           lastGenerated: '2025-08-28T16:20:00Z',
-          status: 'ready'
+          status: 'ready',
         },
         {
           id: 'revenue-forecast',
           title: 'Revenue Forecast & Projections',
-          description: 'Financial projections, pricing analysis, and revenue optimization recommendations',
+          description:
+            'Financial projections, pricing analysis, and revenue optimization recommendations',
           type: 'financial',
           lastGenerated: '2025-08-28T14:30:00Z',
-          status: 'generating'
-        }
+          status: 'generating',
+        },
       ];
 
       setReports(mockReports);
@@ -86,19 +96,21 @@ export default function ReportsPage() {
   };
 
   const generateReport = async (reportId: string) => {
-    setReports(prev => prev.map(report => 
-      report.id === reportId 
-        ? { ...report, status: 'generating' as const }
-        : report
-    ));
+    setReports(prev =>
+      prev.map(report =>
+        report.id === reportId ? { ...report, status: 'generating' as const } : report
+      )
+    );
 
     // Simulate report generation
     setTimeout(() => {
-      setReports(prev => prev.map(report => 
-        report.id === reportId 
-          ? { ...report, status: 'ready' as const, lastGenerated: new Date().toISOString() }
-          : report
-      ));
+      setReports(prev =>
+        prev.map(report =>
+          report.id === reportId
+            ? { ...report, status: 'ready' as const, lastGenerated: new Date().toISOString() }
+            : report
+        )
+      );
     }, 3000);
   };
 
@@ -107,7 +119,7 @@ export default function ReportsPage() {
       const response = await fetch('/api/reports/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ reportId, format })
+        body: JSON.stringify({ reportId, format }),
       });
 
       if (!response.ok) {
@@ -118,7 +130,7 @@ export default function ReportsPage() {
 
       // Get filename from response headers
       const contentDisposition = response.headers.get('Content-Disposition');
-      const filename = contentDisposition 
+      const filename = contentDisposition
         ? contentDisposition.split('filename=')[1].replace(/"/g, '')
         : `${reportId}-report.${format}`;
 
@@ -132,33 +144,40 @@ export default function ReportsPage() {
       a.click();
       document.body.removeChild(a);
       window.URL.revokeObjectURL(url);
-
     } catch (error) {
       console.error('Download failed:', error);
       alert('Failed to download report');
     }
   };
 
-  const filteredReports = selectedType === 'all' 
-    ? reports 
-    : reports.filter(report => report.type === selectedType);
+  const filteredReports =
+    selectedType === 'all' ? reports : reports.filter(report => report.type === selectedType);
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'business': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'technical': return 'bg-purple-100 text-purple-800 border-purple-200';
-      case 'user': return 'bg-green-100 text-green-800 border-green-200';
-      case 'financial': return 'bg-red-100 text-red-800 border-red-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'business':
+        return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'technical':
+        return 'bg-purple-100 text-purple-800 border-purple-200';
+      case 'user':
+        return 'bg-green-100 text-green-800 border-green-200';
+      case 'financial':
+        return 'bg-red-100 text-red-800 border-red-200';
+      default:
+        return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'ready': return 'bg-green-100 text-green-800';
-      case 'generating': return 'bg-yellow-100 text-yellow-800';
-      case 'error': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'ready':
+        return 'bg-green-100 text-green-800';
+      case 'generating':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'error':
+        return 'bg-red-100 text-red-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
@@ -184,12 +203,16 @@ export default function ReportsPage() {
           </div>
           <div>
             <h1 className="postcraft-title mb-1">Business Reports</h1>
-            <p className="postcraft-subtitle">Generate and download comprehensive business intelligence reports</p>
+            <p className="postcraft-subtitle">
+              Generate and download comprehensive business intelligence reports
+            </p>
           </div>
         </div>
         <div className="flex items-center gap-2 mt-4 px-4 py-2 bg-blue-100 rounded-xl border-3 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] max-w-fit">
           <BarChart3 className="w-5 h-5 text-blue-600" />
-          <span className="font-bold text-gray-900">{filteredReports.length} reports available</span>
+          <span className="font-bold text-gray-900">
+            {filteredReports.length} reports available
+          </span>
         </div>
       </div>
 
@@ -198,15 +221,11 @@ export default function ReportsPage() {
         <h2 className="postcraft-section-title mb-6">Filter Reports</h2>
 
         <div className="flex gap-3 flex-wrap">
-          {['all', 'business', 'technical', 'user', 'financial'].map((type) => (
+          {['all', 'business', 'technical', 'user', 'financial'].map(type => (
             <button
               key={type}
               onClick={() => setSelectedType(type)}
-              className={`postcraft-button ${
-                selectedType === type
-                  ? 'bg-black text-white'
-                  : ''
-              }`}
+              className={`postcraft-button ${selectedType === type ? 'bg-black text-white' : ''}`}
             >
               {type === 'all' ? 'All Reports' : type.charAt(0).toUpperCase() + type.slice(1)}
             </button>
@@ -216,23 +235,38 @@ export default function ReportsPage() {
 
       {/* Reports Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredReports.map((report) => {
+        {filteredReports.map(report => {
           const getTypeColorBadge = (type: string) => {
             switch (type) {
-              case 'business': return 'bg-blue-500';
-              case 'technical': return 'bg-purple-500';
-              case 'user': return 'bg-green-500';
-              case 'financial': return 'bg-red-500';
-              default: return 'bg-gray-500';
+              case 'business':
+                return 'bg-blue-500';
+              case 'technical':
+                return 'bg-purple-500';
+              case 'user':
+                return 'bg-green-500';
+              case 'financial':
+                return 'bg-red-500';
+              default:
+                return 'bg-gray-500';
             }
           };
 
           const getStatusBadge = (status: string) => {
             switch (status) {
-              case 'ready': return { color: 'bg-green-500', icon: <BarChart3 className="w-4 h-4 text-white" /> };
-              case 'generating': return { color: 'bg-yellow-500', icon: <RefreshCw className="w-4 h-4 text-white animate-spin" /> };
-              case 'error': return { color: 'bg-red-500', icon: <FileText className="w-4 h-4 text-white" /> };
-              default: return { color: 'bg-gray-500', icon: <FileText className="w-4 h-4 text-white" /> };
+              case 'ready':
+                return {
+                  color: 'bg-green-500',
+                  icon: <BarChart3 className="w-4 h-4 text-white" />,
+                };
+              case 'generating':
+                return {
+                  color: 'bg-yellow-500',
+                  icon: <RefreshCw className="w-4 h-4 text-white animate-spin" />,
+                };
+              case 'error':
+                return { color: 'bg-red-500', icon: <FileText className="w-4 h-4 text-white" /> };
+              default:
+                return { color: 'bg-gray-500', icon: <FileText className="w-4 h-4 text-white" /> };
             }
           };
 
@@ -242,34 +276,37 @@ export default function ReportsPage() {
             <div key={report.id} className="postcraft-card">
               {/* Header */}
               <div className="flex justify-between items-start mb-4">
-                <div className={`${getTypeColorBadge(report.type)} text-white px-3 py-1 rounded-lg font-bold text-xs border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}>
+                <div
+                  className={`${getTypeColorBadge(report.type)} text-white px-3 py-1 rounded-lg font-bold text-xs border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}
+                >
                   {report.type.toUpperCase()}
                 </div>
-                <div className={`${statusBadge.color} px-3 py-1 rounded-lg flex items-center gap-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}>
+                <div
+                  className={`${statusBadge.color} px-3 py-1 rounded-lg flex items-center gap-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}
+                >
                   {statusBadge.icon}
                   <span className="text-white font-bold text-xs capitalize">{report.status}</span>
                 </div>
               </div>
 
               {/* Content */}
-              <h3 className="postcraft-label mb-3">
-                {report.title}
-              </h3>
+              <h3 className="postcraft-label mb-3">{report.title}</h3>
 
-              <p className="postcraft-text mb-4">
-                {report.description}
-              </p>
+              <p className="postcraft-text mb-4">{report.description}</p>
 
               <div className="bg-gray-100 p-3 rounded-xl mb-6 border-3 border-black">
                 <div className="flex items-center gap-2 text-sm font-bold text-gray-900">
                   <Calendar className="w-4 h-4" />
-                  <span>Last: {new Date(report.lastGenerated).toLocaleDateString('en-GB', {
-                    day: 'numeric',
-                    month: 'short',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                  })}</span>
+                  <span>
+                    Last:{' '}
+                    {new Date(report.lastGenerated).toLocaleDateString('en-GB', {
+                      day: 'numeric',
+                      month: 'short',
+                      year: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })}
+                  </span>
                 </div>
               </div>
 
@@ -327,7 +364,9 @@ export default function ReportsPage() {
             <FileText className="w-8 h-8 text-white" />
           </div>
           <h3 className="postcraft-section-title mb-2">No reports found</h3>
-          <p className="postcraft-text">Try selecting a different filter to see available reports</p>
+          <p className="postcraft-text">
+            Try selecting a different filter to see available reports
+          </p>
         </div>
       )}
     </div>

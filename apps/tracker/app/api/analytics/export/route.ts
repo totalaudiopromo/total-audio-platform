@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { toCSV } from '@/lib/csv';
 
@@ -13,7 +13,10 @@ export async function GET(request: Request) {
     const supabase = await createServerClient(cookies());
 
     // Get current user
-    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
     if (userError || !user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -34,23 +37,25 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    const csv = toCSV((data ?? []).map((campaign) => ({
-      name: campaign.name,
-      artist_name: campaign.artist_name,
-      platform: campaign.platform,
-      genre: campaign.genre,
-      status: campaign.status,
-      start_date: campaign.start_date,
-      end_date: campaign.end_date,
-      budget: campaign.budget,
-      target_reach: campaign.target_reach,
-      actual_reach: campaign.actual_reach,
-      success_rate: campaign.success_rate,
-      cost_per_result: campaign.cost_per_result,
-      performance_score: campaign.performance_score,
-      percentile_rank: campaign.percentile_rank,
-      created_at: campaign.created_at,
-    })));
+    const csv = toCSV(
+      (data ?? []).map(campaign => ({
+        name: campaign.name,
+        artist_name: campaign.artist_name,
+        platform: campaign.platform,
+        genre: campaign.genre,
+        status: campaign.status,
+        start_date: campaign.start_date,
+        end_date: campaign.end_date,
+        budget: campaign.budget,
+        target_reach: campaign.target_reach,
+        actual_reach: campaign.actual_reach,
+        success_rate: campaign.success_rate,
+        cost_per_result: campaign.cost_per_result,
+        performance_score: campaign.performance_score,
+        percentile_rank: campaign.percentile_rank,
+        created_at: campaign.created_at,
+      }))
+    );
 
     return new NextResponse(csv, {
       headers: {
@@ -63,15 +68,3 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Export failed' }, { status: 500 });
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-

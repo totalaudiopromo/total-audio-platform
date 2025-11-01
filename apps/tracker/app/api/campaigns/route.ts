@@ -4,15 +4,16 @@
 // POST: Create new campaign
 // ============================================================================
 
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import {
-  generateCampaignInsights,
-  analyzePatterns,
-} from '@/lib/intelligence';
+import { generateCampaignInsights, analyzePatterns } from '@/lib/intelligence';
 import { canCreateCampaign, getSubscriptionLimits } from '@/lib/subscription';
-import type { Campaign, Benchmark, CreateCampaignPayload } from '@/lib/types/tracker';
+import type {
+  Campaign,
+  Benchmark,
+  CreateCampaignPayload,
+} from '@/lib/types/tracker';
 
 // ============================================================================
 // GET /api/campaigns - List all campaigns with intelligence
@@ -20,7 +21,9 @@ import type { Campaign, Benchmark, CreateCampaignPayload } from '@/lib/types/tra
 export const dynamic = 'force-dynamic';
 export async function GET() {
   const supabase = await createServerClient(cookies());
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -41,24 +44,25 @@ export async function GET() {
   }
 
   // Fetch benchmarks for intelligence
-  const { data: benchmarks } = await supabase
-    .from('benchmarks')
-    .select('*');
+  const { data: benchmarks } = await supabase.from('benchmarks').select('*');
 
   const benchmarkMap = new Map<string, Benchmark>();
-  benchmarks?.forEach((b) => {
+  benchmarks?.forEach(b => {
     benchmarkMap.set(`${b.platform}-${b.genre}`, b as Benchmark);
   });
 
   // Enrich campaigns with insights
-  const enrichedCampaigns = (campaigns || []).map((campaign) => {
+  const enrichedCampaigns = (campaigns || []).map(campaign => {
     const typedCampaign = campaign as Campaign;
 
     if (typedCampaign.platform && typedCampaign.genre) {
       const key = `${typedCampaign.platform}-${typedCampaign.genre}`;
       const benchmark = benchmarkMap.get(key);
 
-      const insights = generateCampaignInsights(typedCampaign, benchmark || null);
+      const insights = generateCampaignInsights(
+        typedCampaign,
+        benchmark || null
+      );
 
       return {
         ...typedCampaign,
@@ -75,10 +79,10 @@ export async function GET() {
   // Calculate dashboard metrics
   const totalCampaigns = enrichedCampaigns.length;
   const activeCampaigns = enrichedCampaigns.filter(
-    (c) => c.status === 'active'
+    c => c.status === 'active'
   ).length;
   const completedCampaigns = enrichedCampaigns.filter(
-    (c) => c.status === 'completed'
+    c => c.status === 'completed'
   ).length;
   const totalSpend = enrichedCampaigns.reduce(
     (sum, c) => sum + (c.budget || 0),
@@ -86,13 +90,14 @@ export async function GET() {
   );
 
   const campaignsWithResults = enrichedCampaigns.filter(
-    (c) => c.actual_reach > 0 && c.target_reach > 0
+    c => c.actual_reach > 0 && c.target_reach > 0
   );
 
-  const avgSuccessRate = campaignsWithResults.length > 0
-    ? campaignsWithResults.reduce((sum, c) => sum + c.success_rate, 0) /
-      campaignsWithResults.length
-    : 0;
+  const avgSuccessRate =
+    campaignsWithResults.length > 0
+      ? campaignsWithResults.reduce((sum, c) => sum + c.success_rate, 0) /
+        campaignsWithResults.length
+      : 0;
 
   const metrics = {
     total_campaigns: totalCampaigns,
@@ -114,7 +119,9 @@ export async function GET() {
 // ============================================================================
 export async function POST(request: Request) {
   const supabase = await createServerClient(cookies());
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -182,7 +189,8 @@ export async function POST(request: Request) {
   // Optional metric fields
   if (body.streams) payload.streams = Number(body.streams);
   if (body.saves) payload.saves = Number(body.saves);
-  if (body.social_engagement) payload.social_engagement = Number(body.social_engagement);
+  if (body.social_engagement)
+    payload.social_engagement = Number(body.social_engagement);
 
   // Insert campaign
   const { data, error } = await supabase

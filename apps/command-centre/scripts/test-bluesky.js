@@ -79,7 +79,7 @@ Real solution for real musicians. #AudioIntel #MusicTech #TestPost`;
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${session.accessJwt}`,
+        Authorization: `Bearer ${session.accessJwt}`,
       },
       body: JSON.stringify(postData),
     });

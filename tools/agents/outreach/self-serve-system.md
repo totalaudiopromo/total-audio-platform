@@ -8,11 +8,13 @@
 ## 🎯 New Strategy: Automated Self-Serve
 
 ### Old Way (85% conversion but requires YOUR time)
+
 ❌ Cold email → Demo call → Close → Onboarding
 ❌ 42 demo calls = 84 hours of YOUR time
 ❌ Doesn't scale for solopreneur with day job
 
 ### New Way (30% conversion but ZERO time required)
+
 ✅ Cold email → Free trial signup → Product sells itself → Auto-payment
 ✅ 0 hours of YOUR time (fully automated)
 ✅ Scales infinitely while you're at Postman
@@ -22,18 +24,21 @@
 ## 💰 The Math (Self-Serve vs Demos)
 
 ### With Demos (Current)
+
 - 50 emails → 42 demos (85%) → 4 customers (10%)
 - **Revenue:** £76/month
 - **Your time:** 84 hours (2 hours per demo)
 - **Hourly rate:** £0.90/hour (terrible)
 
 ### Self-Serve (New)
+
 - 50 emails → 25 signups (50%) → 8 trials (32%) → 2 customers (25%)
 - **Revenue:** £38/month per 50 emails
 - **Your time:** 0 hours (fully automated)
 - **Hourly rate:** ∞ (no time spent)
 
 ### Self-Serve at Scale (200 emails/month)
+
 - 200 emails → 100 signups → 32 trials → 8 customers
 - **Revenue:** £152/month
 - **Your time:** Still 0 hours
@@ -43,10 +48,12 @@
 ## 🚀 What You Need to Build
 
 ### 1. Loom Video Demo (Record Once, Use Forever)
+
 **Time to create:** 15 minutes
 **Replaces:** 500 demo calls
 
 **Script:**
+
 ```
 "Hi, I'm Chris - I built Audio Intel after spending 15 hours researching
 BBC Radio 1 contacts.
@@ -63,6 +70,7 @@ No card required. Just upload your contacts and watch it work."
 ```
 
 **Record with:**
+
 - Loom (free)
 - Show real BBC Radio 1 enrichment
 - 60 seconds total
@@ -84,6 +92,7 @@ Then I built Audio Intel to do it in 15 minutes.
 **Watch:** [60-second video showing real enrichment]
 
 **Try free:** intel.totalaudiopromo.com
+
 - Upload 5 contacts
 - Watch real-time enrichment
 - No card required
@@ -100,6 +109,7 @@ P.S. The BBC Radio 1 enrichment in the video? 100% real. Every contact validated
 ### 3. Automated Email Drip (ConvertKit)
 
 **Email 1:** Immediate (Welcome)
+
 ```
 Subject: Your Audio Intel account is ready
 
@@ -118,6 +128,7 @@ Chris
 ```
 
 **Email 2:** Day 2 (If they haven't enriched anything)
+
 ```
 Subject: Try Audio Intel with one contact
 
@@ -139,6 +150,7 @@ Chris
 ```
 
 **Email 3:** Day 5 (Case study)
+
 ```
 Subject: How I used Audio Intel for BBC Radio 1
 
@@ -159,6 +171,7 @@ Chris
 ```
 
 **Email 4:** Day 9 (Last chance + upgrade offer)
+
 ```
 Subject: £19/month to never research contacts again
 
@@ -209,6 +222,7 @@ PAYMENT (Stripe) → Instant PRO access
 ## 🛠️ Technical Implementation
 
 ### Step 1: Record Loom Video (15 mins)
+
 ```bash
 # 1. Open Loom
 # 2. Start screen recording
@@ -221,6 +235,7 @@ PAYMENT (Stripe) → Instant PRO access
 ```
 
 ### Step 2: ConvertKit Automation (30 mins)
+
 ```bash
 # Already have ConvertKit integrated
 # Create 4-email sequence (above)
@@ -229,6 +244,7 @@ PAYMENT (Stripe) → Instant PRO access
 ```
 
 ### Step 3: Update Cold Email Template (5 mins)
+
 ```bash
 # Replace demo booking CTA with:
 # - Loom video link
@@ -237,6 +253,7 @@ PAYMENT (Stripe) → Instant PRO access
 ```
 
 ### Step 4: Landing Page Updates (1 hour)
+
 ```bash
 # Add to intel.totalaudiopromo.com homepage:
 # - Embed Loom video (above the fold)
@@ -251,15 +268,15 @@ PAYMENT (Stripe) → Instant PRO access
 
 ### Realistic Self-Serve Conversions
 
-| Step | Rate | Count (50 emails) | Count (200 emails) |
-|------|------|-------------------|---------------------|
-| Emails sent | 100% | 50 | 200 |
-| Email opens | 65% | 32 | 130 |
-| Landing page visits | 50% | 16 | 65 |
-| Free signups | 50% | 8 | 32 |
-| Active users (enriched 1+ contacts) | 70% | 5 | 22 |
-| Upgrade to PRO (£19/month) | 40% | 2 | 9 |
-| **Monthly revenue** | - | **£38** | **£171** |
+| Step                                | Rate | Count (50 emails) | Count (200 emails) |
+| ----------------------------------- | ---- | ----------------- | ------------------ |
+| Emails sent                         | 100% | 50                | 200                |
+| Email opens                         | 65%  | 32                | 130                |
+| Landing page visits                 | 50%  | 16                | 65                 |
+| Free signups                        | 50%  | 8                 | 32                 |
+| Active users (enriched 1+ contacts) | 70%  | 5                 | 22                 |
+| Upgrade to PRO (£19/month)          | 40%  | 2                 | 9                  |
+| **Monthly revenue**                 | -    | **£38**           | **£171**           |
 
 ---
 
@@ -267,39 +284,42 @@ PAYMENT (Stripe) → Instant PRO access
 
 ### Time Comparison
 
-| Activity | Old Way (Demos) | New Way (Self-Serve) |
-|----------|-----------------|----------------------|
-| Initial setup | 2 hours | 2 hours |
-| Recording demo | 0 hours | 15 mins (once) |
-| Demo calls | 84 hours/month | 0 hours |
-| Email sequences | Manual | Automated |
-| Payment processing | Manual | Automated (Stripe) |
-| **Total monthly time** | **86 hours** | **0 hours** |
+| Activity               | Old Way (Demos) | New Way (Self-Serve) |
+| ---------------------- | --------------- | -------------------- |
+| Initial setup          | 2 hours         | 2 hours              |
+| Recording demo         | 0 hours         | 15 mins (once)       |
+| Demo calls             | 84 hours/month  | 0 hours              |
+| Email sequences        | Manual          | Automated            |
+| Payment processing     | Manual          | Automated (Stripe)   |
+| **Total monthly time** | **86 hours**    | **0 hours**          |
 
 ### Revenue Comparison (200 emails/month)
 
-| Method | Revenue | Time | Hourly Rate |
-|--------|---------|------|-------------|
-| Demos (85% conversion) | £304/month | 336 hours | £0.90/hour |
-| Self-serve (25% of trials convert) | £171/month | 0 hours | ∞ |
+| Method                             | Revenue    | Time      | Hourly Rate |
+| ---------------------------------- | ---------- | --------- | ----------- |
+| Demos (85% conversion)             | £304/month | 336 hours | £0.90/hour  |
+| Self-serve (25% of trials convert) | £171/month | 0 hours   | ∞           |
 
 ---
 
 ## 🎯 Implementation Plan (Total: 2 hours)
 
 ### Today (30 mins)
+
 - [ ] Record Loom video (15 mins)
 - [ ] Update cold email template (5 mins)
 - [ ] Upload video to YouTube (unlisted) (5 mins)
 - [ ] Embed on Audio Intel homepage (5 mins)
 
 ### Tomorrow (1 hour)
+
 - [ ] Create ConvertKit 4-email drip sequence (30 mins)
 - [ ] Test signup → payment flow (15 mins)
 - [ ] Send test email to yourself (5 mins)
 - [ ] Update landing page CTAs (10 mins)
 
 ### This Week (30 mins)
+
 - [ ] Scrape 50 radio promoter emails (Google Maps)
 - [ ] Find emails (Hunter.io + Snov.io free)
 - [ ] Send 50 cold emails with new template
@@ -341,11 +361,13 @@ Hi {{firstName}},
 Audio Intel = automated radio contact research.
 
 **Free tier:**
+
 - 10 enrichments/month
 - No card required
 - Full contact data (email, phone, socials)
 
 **PRO tier (£19/month):**
+
 - Unlimited enrichments
 - Priority support
 - Campaign management tools
@@ -365,6 +387,7 @@ Chris
 Hi {{firstName}},
 
 I used Audio Intel to research contacts for:
+
 - BBC Radio 1 (Clara Amfo, Jack Saunders)
 - Spotify editorial
 - Radio X producers
@@ -385,24 +408,28 @@ Chris
 ## 📈 Expected Results (Self-Serve)
 
 ### Month 1 (50 emails)
+
 - 8 free signups
 - 5 active users (enriched contacts)
 - 2 paying customers = £38/month
 - **Your time:** 2 hours (setup)
 
 ### Month 2 (100 emails)
+
 - 16 free signups
 - 11 active users
 - 4 paying customers = £76/month
 - **Your time:** 0 hours
 
 ### Month 3 (200 emails)
+
 - 32 free signups
 - 22 active users
 - 9 paying customers = £171/month
 - **Your time:** 0 hours
 
 ### Month 6 (400 emails/month via paid tools)
+
 - 64 free signups
 - 45 active users
 - 18 paying customers = £342/month
@@ -439,12 +466,14 @@ Chris
 ## 🚨 Critical Success Factors
 
 ### ✅ DO THIS:
+
 - Loom video MUST show REAL enrichment (not fake demo)
 - Free tier MUST work perfectly (10 enrichments is enough to prove value)
 - Upgrade prompt in product (after 8th enrichment: "2 left this month, upgrade?")
 - Email drip MUST be value-first (not salesy)
 
 ### ❌ DON'T DO THIS:
+
 - Don't require demo calls (kills self-serve)
 - Don't ask for card for free tier (reduces signups)
 - Don't make free tier too limited (needs to show value)
@@ -455,16 +484,19 @@ Chris
 ## 💰 Bottom Line
 
 **Old way (demos):**
+
 - 50 emails → 42 demos → 4 customers = £76/month
 - Your time: 84 hours
 - Hourly rate: £0.90/hour
 
 **New way (self-serve):**
+
 - 50 emails → 8 signups → 2 customers = £38/month
 - Your time: 0 hours (after 2-hour setup)
 - Hourly rate: ∞
 
 **At scale (200 emails/month):**
+
 - 200 emails → 32 signups → 9 customers = £171/month
 - Your time: Still 0 hours
 - You're still at Postman full-time

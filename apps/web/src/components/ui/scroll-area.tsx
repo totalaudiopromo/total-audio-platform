@@ -6,11 +6,7 @@ interface ScrollAreaProps {
 }
 
 const ScrollArea = ({ children, className = '' }: ScrollAreaProps) => {
-  return (
-    <div className={`relative overflow-auto ${className}`}>
-      {children}
-    </div>
-  );
+  return <div className={`relative overflow-auto ${className}`}>{children}</div>;
 };
 
-export { ScrollArea }; 
+export { ScrollArea };

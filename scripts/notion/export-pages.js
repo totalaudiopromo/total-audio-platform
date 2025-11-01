@@ -95,7 +95,9 @@ function extractPageId(entry) {
     if (qp) return normalizeId(qp);
     const segments = url.pathname.split('/').filter(Boolean);
     const tail = segments[segments.length - 1] || '';
-    const mDash = tail.match(/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/);
+    const mDash = tail.match(
+      /([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/
+    );
     if (mDash) return normalizeId(mDash[1]);
     const mRaw = tail.match(/([0-9a-fA-F]{32})/);
     if (mRaw) return normalizeId(mRaw[1]);
@@ -162,7 +164,10 @@ function getTitleFromPage(page) {
     if (prop?.type === 'title') {
       const titleArr = prop.title || [];
       if (Array.isArray(titleArr) && titleArr.length) {
-        return titleArr.map(part => part.plain_text || '').join('').trim();
+        return titleArr
+          .map(part => part.plain_text || '')
+          .join('')
+          .trim();
       }
     }
   }
@@ -242,27 +247,31 @@ function indent(depth) {
 
 function richTextToMarkdown(richText = []) {
   if (!Array.isArray(richText) || !richText.length) return '';
-  return richText.map((item) => {
-    const text = item.plain_text || '';
-    if (!text) return '';
-    let value = text;
-    const ann = item.annotations || {};
-    if (ann.code) value = `\`${value}\``;
-    if (ann.bold) value = `**${value}**`;
-    if (ann.italic) value = `_${value}_`;
-    if (ann.strikethrough) value = `~~${value}~~`;
-    if (ann.underline) value = `<u>${value}</u>`;
-    if (item.href) {
-      return `[${value}](${item.href})`;
-    }
-    return value;
-  }).join('');
+  return richText
+    .map(item => {
+      const text = item.plain_text || '';
+      if (!text) return '';
+      let value = text;
+      const ann = item.annotations || {};
+      if (ann.code) value = `\`${value}\``;
+      if (ann.bold) value = `**${value}**`;
+      if (ann.italic) value = `_${value}_`;
+      if (ann.strikethrough) value = `~~${value}~~`;
+      if (ann.underline) value = `<u>${value}</u>`;
+      if (item.href) {
+        return `[${value}](${item.href})`;
+      }
+      return value;
+    })
+    .join('');
 }
 
 function slugify(str) {
-  return str
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 120) || 'untitled';
+  return (
+    str
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .slice(0, 120) || 'untitled'
+  );
 }

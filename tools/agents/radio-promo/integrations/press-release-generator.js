@@ -6,12 +6,12 @@ const logger = {
   info: (msg, ...args) => console.log(`[PRESS-RELEASE] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[PRESS-RELEASE] ${msg}`, ...args),
   warn: (msg, ...args) => console.warn(`[PRESS-RELEASE] ${msg}`, ...args),
-  success: (msg, ...args) => console.log(`✅ [PRESS-RELEASE] ${msg}`, ...args)
+  success: (msg, ...args) => console.log(`✅ [PRESS-RELEASE] ${msg}`, ...args),
 };
 
 /**
  * Press Release Generator for Liberty Music PR
- * 
+ *
  * Pulls artist assets from Typeform and creates complete press release drafts
  * Includes press photos, bio, socials, and all relevant information
  */
@@ -27,32 +27,32 @@ class PressReleaseGenerator {
   async generatePressReleaseForArtist(artistName) {
     try {
       logger.info(`Generating press release for artist: ${artistName}`);
-      
+
       // Find the artist's campaign data
       const campaigns = await this.gmailTypeformMatcher.findCampaignsByArtist(artistName);
-      
+
       if (campaigns.length === 0) {
         throw new Error(`No campaigns found for artist: ${artistName}`);
       }
-      
+
       // Get the most recent campaign
       const campaign = campaigns[0];
       const artistData = this.extractArtistAssets(campaign);
-      
+
       // Generate press release content (Claude-enhanced if key present)
       const pressRelease = await this.createClaudeFirstContent(artistData);
-      
+
       // Create Mailchimp draft via duplication when possible
       const draft = await this.createMailchimpDraftFromSource(artistData, pressRelease);
-      
+
       logger.success(`Press release generated for ${artistName}`);
-      
+
       return {
         artistName,
         campaignData: artistData,
         pressRelease,
         mailchimpDraft: draft,
-        generatedAt: new Date().toISOString()
+        generatedAt: new Date().toISOString(),
       };
     } catch (error) {
       logger.error(`Failed to generate press release for ${artistName}:`, error);
@@ -65,7 +65,7 @@ class PressReleaseGenerator {
    */
   convertGoogleDriveUrl(url) {
     if (!url) return null;
-    
+
     // Convert Google Drive sharing links to direct image URLs
     if (url.includes('drive.google.com/file/d/')) {
       const fileId = url.match(/\/file\/d\/([a-zA-Z0-9-_]+)/);
@@ -73,12 +73,12 @@ class PressReleaseGenerator {
         return `https://drive.google.com/uc?export=view&id=${fileId[1]}`;
       }
     }
-    
+
     // For folders, we can't convert directly - return original
     if (url.includes('drive.google.com/drive/folders/')) {
       return url; // Keep original for now
     }
-    
+
     return url;
   }
 
@@ -88,14 +88,14 @@ class PressReleaseGenerator {
   extractArtistAssets(campaign) {
     const typeformData = campaign.typeformResponse?.data || {};
     const gmailData = campaign.gmailCampaign?.artistInfo || {};
-    
+
     return {
       // Basic info
       artistName: typeformData.artistName || gmailData.name || 'Unknown Artist',
       trackTitle: typeformData.trackTitle || gmailData.track || 'Unknown Track',
       genre: typeformData.genre || gmailData.genre || 'Unknown Genre',
       releaseDate: typeformData.releaseDate || gmailData.releaseDate || 'TBD',
-      
+
       // Artist assets - convert Google Drive URLs to direct links
       pressPhoto: this.convertGoogleDriveUrl(typeformData.pressPhoto),
       coverArt: this.convertGoogleDriveUrl(typeformData.coverArt),
@@ -105,21 +105,21 @@ class PressReleaseGenerator {
       socialMedia: typeformData.socialMedia || null,
       website: typeformData.website || null,
       pressKit: typeformData.pressKit || null,
-      
+
       // Additional info
       label: typeformData.label || null,
       management: typeformData.management || null,
       budget: typeformData.budget || null,
       targets: typeformData.targets || null,
-      
+
       // Contact info
       contactEmail: typeformData.contactEmail || campaign.matchedEmail || null,
       contactPhone: typeformData.contactPhone || null,
-      
+
       // Campaign context
       gmailSubject: campaign.gmailCampaign?.subject || null,
       typeformForm: campaign.typeformResponse?.formTitle || null,
-      matchConfidence: campaign.matchConfidence || 0
+      matchConfidence: campaign.matchConfidence || 0,
     };
   }
 
@@ -137,30 +137,36 @@ class PressReleaseGenerator {
       socialMedia,
       website,
       label,
-      management
+      management,
     } = artistData;
-    
+
     // Build social media links
     const socialLinks = this.buildSocialMediaLinks(socialMedia, artistName);
-    
+
     // Build press photo section with actual asset
-    const pressPhotoSection = pressPhoto ? `
+    const pressPhotoSection = pressPhoto
+      ? `
       <div class="press-photo">
         <img src="${pressPhoto}" alt="${artistName} Press Photo" />
         <p>Press photo for ${artistName}</p>
       </div>
-    ` : '';
-    
+    `
+      : '';
+
     // Build cover art section
-    const coverArtSection = artistData.coverArt ? `
+    const coverArtSection = artistData.coverArt
+      ? `
       <div class="press-photo" style="margin: 20px 0;">
         <img src="${artistData.coverArt}" alt="${artistName} - ${trackTitle} Cover Art" />
         <p>Cover art for "${trackTitle}"</p>
       </div>
-    ` : '';
-    
+    `
+      : '';
+
     // Build audio links section
-    const audioLinksSection = (artistData.soundcloudLink || artistData.mp3Link) ? `
+    const audioLinksSection =
+      artistData.soundcloudLink || artistData.mp3Link
+        ? `
       <div class="release-info">
         <h3>Audio Preview</h3>
         <p>Listen to "${trackTitle}" by ${artistName}:</p>
@@ -169,20 +175,23 @@ class PressReleaseGenerator {
           ${artistData.mp3Link ? `<li><strong>Audio Files:</strong> <a href="${artistData.mp3Link}" style="color: #3498db; text-decoration: none;">MP3 & WAV Files</a></li>` : ''}
         </ul>
       </div>
-    ` : '';
-    
+    `
+        : '';
+
     // Build press bio section
-    const pressBioSection = pressBio ? `
+    const pressBioSection = pressBio
+      ? `
       <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #007bff;">
         <h3 style="margin-top: 0; color: #333; font-size: 18px;">About ${artistName}</h3>
         <p style="margin: 0; line-height: 1.6; color: #555;">${pressBio}</p>
       </div>
-    ` : '';
-    
+    `
+      : '';
+
     // Build label/management info
     const labelInfo = label ? `<li><strong>Label:</strong> ${label}</li>` : '';
     const managementInfo = management ? `<li><strong>Management:</strong> ${management}</li>` : '';
-    
+
     const html = `
       <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
       <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -337,8 +346,8 @@ class PressReleaseGenerator {
         socialMedia: socialMedia,
         website: website,
         label: label,
-        management: management
-      }
+        management: management,
+      },
     };
   }
 
@@ -347,17 +356,18 @@ class PressReleaseGenerator {
    */
   buildSocialMediaLinks(socialMedia, artistName) {
     if (!socialMedia) return '';
-    
+
     const socialLinks = [];
-    
+
     // Parse social media links
     if (typeof socialMedia === 'string') {
       const urlRegex = /(https?:\/\/[^\s]+)/g;
       const urls = socialMedia.match(urlRegex) || [];
-      
+
       urls.forEach(url => {
         if (url.includes('instagram.com')) socialLinks.push({ platform: 'Instagram', url });
-        else if (url.includes('twitter.com') || url.includes('x.com')) socialLinks.push({ platform: 'Twitter/X', url });
+        else if (url.includes('twitter.com') || url.includes('x.com'))
+          socialLinks.push({ platform: 'Twitter/X', url });
         else if (url.includes('facebook.com')) socialLinks.push({ platform: 'Facebook', url });
         else if (url.includes('tiktok.com')) socialLinks.push({ platform: 'TikTok', url });
         else if (url.includes('youtube.com')) socialLinks.push({ platform: 'YouTube', url });
@@ -365,13 +375,16 @@ class PressReleaseGenerator {
         else if (url.includes('soundcloud.com')) socialLinks.push({ platform: 'SoundCloud', url });
       });
     }
-    
+
     if (socialLinks.length === 0) return '';
-    
-    const linksHtml = socialLinks.map(link => 
-      `<a href="${link.url}" style="color: #007bff; text-decoration: none; margin: 0 10px; font-weight: bold;">${link.platform}</a>`
-    ).join(' | ');
-    
+
+    const linksHtml = socialLinks
+      .map(
+        link =>
+          `<a href="${link.url}" style="color: #007bff; text-decoration: none; margin: 0 10px; font-weight: bold;">${link.platform}</a>`
+      )
+      .join(' | ');
+
     return `
       <div class="social-links">
         <h3 style="margin-top: 0; color: #333;">Connect with ${artistName}</h3>
@@ -386,10 +399,10 @@ class PressReleaseGenerator {
   async createMailchimpDraft(artistData, pressRelease) {
     try {
       logger.info(`Creating Mailchimp draft for ${artistData.artistName}`);
-      
+
       // Ensure Liberty audience exists
       const audience = await this.mailchimp.ensureLibertyAudience();
-      
+
       // Create campaign
       const campaign = await this.mailchimp.createCampaign({
         type: 'regular',
@@ -397,26 +410,26 @@ class PressReleaseGenerator {
         settings: {
           subjectLine: `Press Release: ${artistData.artistName} - "${artistData.trackTitle}"`,
           fromName: 'Liberty Music PR',
-          replyTo: 'chrisschofield@libertymusicpr.com'
+          replyTo: 'chrisschofield@libertymusicpr.com',
         },
         tracking: {
           opens: true,
           htmlClicks: true,
-          textClicks: true
-        }
+          textClicks: true,
+        },
       });
-      
+
       // Set campaign content
       await this.mailchimp.setCampaignContent(campaign.id, pressRelease);
-      
+
       logger.success(`Mailchimp draft created: ${campaign.id}`);
-      
+
       return {
         campaignId: campaign.id,
         subjectLine: campaign.settings.subject_line,
         status: 'draft',
         previewUrl: `https://us13.admin.mailchimp.com/campaigns/show?id=${campaign.id}`,
-        audience: audience.name
+        audience: audience.name,
       };
     } catch (error) {
       logger.error('Failed to create Mailchimp draft:', error);
@@ -446,13 +459,16 @@ Include short intro, artist background, key highlights, and a closing call-to-ac
         model: process.env.ANTHROPIC_MODEL,
         max_tokens: 1200,
         temperature: 0.3,
-        messages: [{ role: 'user', content: prompt }]
+        messages: [{ role: 'user', content: prompt }],
       });
       const body = res.content?.[0]?.type === 'text' ? res.content[0].text : '';
       if (!body) return this.createPressReleaseContent(artistData);
       const base = this.createPressReleaseContent(artistData);
       // Replace the main intro block with Claude body in a simple way
-      const injectedHtml = base.html.replace('We\'re excited to announce the latest release from', body);
+      const injectedHtml = base.html.replace(
+        "We're excited to announce the latest release from",
+        body
+      );
       return { html: injectedHtml, plainText: this.stripHtml(injectedHtml), assets: base.assets };
     } catch {
       return this.createPressReleaseContent(artistData);
@@ -465,7 +481,9 @@ Include short intro, artist background, key highlights, and a closing call-to-ac
   async createMailchimpDraftFromSource(artistData, pressRelease) {
     try {
       const audience = await this.mailchimp.ensureLibertyAudience();
-      const sourceName = process.env.MC_DUPLICATE_SOURCE || 'Charcom x Luisa Wilson - KEEP MY EYES ON YOU - Main Contacts';
+      const sourceName =
+        process.env.MC_DUPLICATE_SOURCE ||
+        'Charcom x Luisa Wilson - KEEP MY EYES ON YOU - Main Contacts';
       // Try duplication path first
       try {
         const dup = await this.mailchimp.duplicateCampaignWithContent(
@@ -475,7 +493,7 @@ Include short intro, artist background, key highlights, and a closing call-to-ac
           {
             subjectLine: `Press Release: ${artistData.artistName} - "${artistData.trackTitle}"`,
             fromName: 'Liberty Music PR',
-            replyTo: 'chrisschofield@libertymusicpr.com'
+            replyTo: 'chrisschofield@libertymusicpr.com',
           }
         );
         return { campaignId: dup.id, status: 'draft', audience: audience.name };
@@ -487,8 +505,8 @@ Include short intro, artist background, key highlights, and a closing call-to-ac
           settings: {
             subjectLine: `Press Release: ${artistData.artistName} - "${artistData.trackTitle}"`,
             fromName: 'Liberty Music PR',
-            replyTo: 'chrisschofield@libertymusicpr.com'
-          }
+            replyTo: 'chrisschofield@libertymusicpr.com',
+          },
         });
         await this.mailchimp.setCampaignContent(campaign.id, pressRelease);
         return { campaignId: campaign.id, status: 'draft', audience: audience.name };
@@ -504,7 +522,10 @@ Include short intro, artist background, key highlights, and a closing call-to-ac
    * Strip HTML tags for plain text version
    */
   stripHtml(html) {
-    return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    return html
+      .replace(/<[^>]*>/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 
   /**
@@ -513,13 +534,14 @@ Include short intro, artist background, key highlights, and a closing call-to-ac
   async generatePressReleasesForRecentCampaigns(days = 30) {
     try {
       logger.info(`Generating press releases for recent campaigns (last ${days} days)`);
-      
+
       const recentCampaigns = await this.gmailTypeformMatcher.getRecentLibertyCampaigns(days);
       const pressReleases = [];
-      
+
       for (const campaign of recentCampaigns) {
         try {
-          const artistName = campaign.typeformResponse?.data?.artistName || campaign.gmailCampaign?.artistInfo?.name;
+          const artistName =
+            campaign.typeformResponse?.data?.artistName || campaign.gmailCampaign?.artistInfo?.name;
           if (artistName) {
             const pressRelease = await this.generatePressReleaseForArtist(artistName);
             pressReleases.push(pressRelease);
@@ -528,7 +550,7 @@ Include short intro, artist background, key highlights, and a closing call-to-ac
           logger.warn(`Failed to generate press release for campaign: ${error.message}`);
         }
       }
-      
+
       logger.success(`Generated ${pressReleases.length} press releases`);
       return pressReleases;
     } catch (error) {
@@ -539,4 +561,3 @@ Include short intro, artist background, key highlights, and a closing call-to-ac
 }
 
 module.exports = PressReleaseGenerator;
-

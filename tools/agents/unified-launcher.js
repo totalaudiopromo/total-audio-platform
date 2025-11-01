@@ -10,8 +10,8 @@ const path = require('path');
 
 const AGENTS = {
   // Agent OS Dashboard
-  'dashboard': 'agent-os-dashboard.js',
-  'health': 'agent-os-dashboard.js health',
+  dashboard: 'agent-os-dashboard.js',
+  health: 'agent-os-dashboard.js health',
 
   // TDD Workflow
   'tdd-plan': 'active/total-audio-tdd-orchestrator.js plan',
@@ -24,30 +24,30 @@ const AGENTS = {
   'test-quick': 'active/tdd/tdd-test-writer.js quick',
 
   // Content & Marketing
-  'newsletter': 'core-agents/content/newsletter-automation-agent.js',
-  'social': 'core-agents/content/social-media-agent.js',
+  newsletter: 'core-agents/content/newsletter-automation-agent.js',
+  social: 'core-agents/content/social-media-agent.js',
   'social-media': 'core-agents/content/social-media-agent.js',
-  'news': 'core-agents/content/newsjacking-agent.js',
-  'newsjacking': 'core-agents/content/newsjacking-agent.js',
+  news: 'core-agents/content/newsjacking-agent.js',
+  newsjacking: 'core-agents/content/newsjacking-agent.js',
 
   // Business Operations
-  'analytics': 'core-agents/business/analytics-agent.js',
-  'marketing': 'core-agents/business/chris-saas-marketing-agent.js',
+  analytics: 'core-agents/business/analytics-agent.js',
+  marketing: 'core-agents/business/chris-saas-marketing-agent.js',
   'chris-marketing': 'core-agents/business/chris-saas-marketing-agent.js',
-  'agency': 'core-agents/business/agency-agent.js',
+  agency: 'core-agents/business/agency-agent.js',
 
   // Technical Infrastructure
-  'contact': 'core-agents/technical/contact-agent.js',
-  'database': 'core-agents/technical/database-agent.js',
+  contact: 'core-agents/technical/contact-agent.js',
+  database: 'core-agents/technical/database-agent.js',
   'agent-manager': 'core-agents/technical/agent-manager.js',
 
   // Radio Promotion
-  'radio': 'core-agents/radio-promo/radio-promo-agent.js',
+  radio: 'core-agents/radio-promo/radio-promo-agent.js',
   'radio-promo': 'core-agents/radio-promo/radio-promo-agent.js',
-  'campaign': 'core-agents/radio-promo/campaign-agent.js',
+  campaign: 'core-agents/radio-promo/campaign-agent.js',
 
   // System Utilities
-  'gmail-setup': 'gmail-setup/gmail-liberty-setup.js'
+  'gmail-setup': 'gmail-setup/gmail-liberty-setup.js',
 };
 
 function showHelp() {
@@ -117,7 +117,7 @@ function runAgent(workflow, args) {
 }
 
 // CLI Interface
-const [,, workflow, ...args] = process.argv;
+const [, , workflow, ...args] = process.argv;
 
 if (!workflow) {
   showHelp();

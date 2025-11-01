@@ -47,8 +47,8 @@ Arctic Wolves Management`,
           genre: 'Indie Rock',
           releaseDate: 'Next Friday',
           budget: '£500-£1000',
-          confidence: 95
-        }
+          confidence: 95,
+        },
       },
       {
         id: 'demo002',
@@ -82,8 +82,8 @@ Neon Beats Productions`,
           genre: 'Electronic/Synthwave',
           releaseDate: '15th September',
           budget: '£750',
-          confidence: 90
-        }
+          confidence: 90,
+        },
       },
       {
         id: 'demo003',
@@ -116,9 +116,9 @@ The Luna Rose Team`,
           genre: 'Dream Pop',
           releaseDate: 'October 1st',
           budget: '£400',
-          confidence: 85
-        }
-      }
+          confidence: 85,
+        },
+      },
     ];
   }
 
@@ -134,9 +134,10 @@ The Luna Rose Team`,
   async findCampaignEmailsWithArtists() {
     console.log('🎵 [DEMO] Finding campaign emails with artist information...');
 
-    const emailsWithArtists = this.demoEmails.filter(email =>
-      email.artistInfo &&
-      (email.artistInfo.email || email.artistInfo.name || email.artistInfo.track)
+    const emailsWithArtists = this.demoEmails.filter(
+      email =>
+        email.artistInfo &&
+        (email.artistInfo.email || email.artistInfo.name || email.artistInfo.track)
     );
 
     console.log(`   Found ${emailsWithArtists.length} campaign emails with artist info`);
@@ -161,7 +162,7 @@ The Luna Rose Team`,
     return {
       artistEmails: uniqueEmails,
       campaignEmails: campaignEmails,
-      totalCampaigns: campaignEmails.length
+      totalCampaigns: campaignEmails.length,
     };
   }
 
@@ -171,7 +172,7 @@ The Luna Rose Team`,
       service: 'gmail-demo',
       mode: 'demo',
       timestamp: new Date().toISOString(),
-      message: 'Gmail Demo Mode - No OAuth required'
+      message: 'Gmail Demo Mode - No OAuth required',
     };
   }
 
@@ -187,8 +188,8 @@ The Luna Rose Team`,
         track: e.artistInfo.track,
         genre: e.artistInfo.genre,
         budget: e.artistInfo.budget,
-        email: e.artistInfo.email
-      }))
+        email: e.artistInfo.email,
+      })),
     };
 
     return summary;
@@ -218,7 +219,9 @@ if (require.main === module) {
     const emails = await demo.searchCampaignEmails('campaign', 10);
     console.log('\n📧 Demo Campaign Emails:');
     emails.forEach(email => {
-      console.log(`   ${email.artistInfo.name} - "${email.artistInfo.track}" (${email.artistInfo.genre})`);
+      console.log(
+        `   ${email.artistInfo.name} - "${email.artistInfo.track}" (${email.artistInfo.genre})`
+      );
     });
 
     // Test artist extraction

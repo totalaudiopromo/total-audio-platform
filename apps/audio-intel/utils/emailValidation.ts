@@ -17,17 +17,41 @@ export interface EmailValidationResult {
 
 // Common disposable email domains
 const DISPOSABLE_DOMAINS = new Set([
-  '10minutemail.com', 'guerrillamail.com', 'mailinator.com', 'tempmail.com',
-  'throwaway.com', 'yopmail.com', 'mailnesia.com', 'sharklasers.com',
-  'getairmail.com', 'maildrop.cc', 'mailinator.net', 'spam4.me',
-  'bccto.me', 'chacuo.net', 'dispostable.com', 'fakeinbox.com'
+  '10minutemail.com',
+  'guerrillamail.com',
+  'mailinator.com',
+  'tempmail.com',
+  'throwaway.com',
+  'yopmail.com',
+  'mailnesia.com',
+  'sharklasers.com',
+  'getairmail.com',
+  'maildrop.cc',
+  'mailinator.net',
+  'spam4.me',
+  'bccto.me',
+  'chacuo.net',
+  'dispostable.com',
+  'fakeinbox.com',
 ]);
 
 // Common free email providers
 const FREE_EMAIL_DOMAINS = new Set([
-  'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com',
-  'icloud.com', 'protonmail.com', 'mail.com', 'live.com', 'me.com',
-  'mac.com', 'msn.com', 'ymail.com', 'rocketmail.com', 'fastmail.com'
+  'gmail.com',
+  'yahoo.com',
+  'hotmail.com',
+  'outlook.com',
+  'aol.com',
+  'icloud.com',
+  'protonmail.com',
+  'mail.com',
+  'live.com',
+  'me.com',
+  'mac.com',
+  'msn.com',
+  'ymail.com',
+  'rocketmail.com',
+  'fastmail.com',
 ]);
 
 export async function validateEmail(email: string): Promise<EmailValidationResult> {
@@ -40,13 +64,13 @@ export async function validateEmail(email: string): Promise<EmailValidationResul
     disposable: false,
     freeEmail: false,
     confidence: 'low',
-    issues: []
+    issues: [],
   };
 
   // 1. Basic format validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   result.formatValid = emailRegex.test(email);
-  
+
   if (!result.formatValid) {
     result.issues.push('Invalid email format');
     return result;
@@ -103,17 +127,17 @@ export async function validateEmailList(emails: string[]): Promise<{
   };
 }> {
   const results = await Promise.all(emails.map(validateEmail));
-  
+
   const valid = results.filter(r => r.isValid);
   const invalid = results.filter(r => !r.isValid);
-  
+
   const summary = {
     total: results.length,
     valid: valid.length,
     invalid: invalid.length,
     disposable: results.filter(r => r.disposable).length,
     freeEmails: results.filter(r => r.freeEmail).length,
-    businessEmails: results.filter(r => r.isValid && !r.freeEmail).length
+    businessEmails: results.filter(r => r.isValid && !r.freeEmail).length,
   };
 
   return { valid, invalid, summary };
@@ -121,21 +145,21 @@ export async function validateEmailList(emails: string[]): Promise<{
 
 // Batch validation with progress callback
 export async function validateEmailBatch(
-  emails: string[], 
+  emails: string[],
   batchSize: number = 10,
   onProgress?: (processed: number, total: number) => void
 ): Promise<EmailValidationResult[]> {
   const results: EmailValidationResult[] = [];
-  
+
   for (let i = 0; i < emails.length; i += batchSize) {
     const batch = emails.slice(i, i + batchSize);
     const batchResults = await Promise.all(batch.map(validateEmail));
     results.push(...batchResults);
-    
+
     if (onProgress) {
       onProgress(Math.min(i + batchSize, emails.length), emails.length);
     }
   }
-  
+
   return results;
-} 
+}

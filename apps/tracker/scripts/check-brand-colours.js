@@ -25,11 +25,7 @@ const FORBIDDEN_COLOURS = {
 };
 
 // Exceptions
-const EXCEPTIONS = [
-  'node_modules',
-  '.next',
-  'scripts/check-brand-colours.js',
-];
+const EXCEPTIONS = ['node_modules', '.next', 'scripts/check-brand-colours.js'];
 
 function shouldCheckFile(filePath) {
   return !EXCEPTIONS.some(exception => filePath.includes(exception));
@@ -80,7 +76,9 @@ function main() {
   });
 
   if (allViolations.length === 0) {
-    console.log('✅ All colours are correct! Tracker is using purple consistently.\n');
+    console.log(
+      '✅ All colours are correct! Tracker is using purple consistently.\n'
+    );
     process.exit(0);
   }
 
@@ -97,7 +95,9 @@ function main() {
   Object.entries(violationsByFile).forEach(([file, violations]) => {
     console.log(`📁 ${file}`);
     violations.forEach(v => {
-      console.log(`   Line ${v.line}: ${v.colour.toUpperCase()} colour "${v.pattern}"`);
+      console.log(
+        `   Line ${v.line}: ${v.colour.toUpperCase()} colour "${v.pattern}"`
+      );
       console.log(`   ${v.context.substring(0, 80)}...`);
     });
     console.log('');

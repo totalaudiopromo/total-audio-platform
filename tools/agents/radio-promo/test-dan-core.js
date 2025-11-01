@@ -27,7 +27,7 @@ class MockAgent {
       status: 'healthy',
       agent: this.name,
       mock: true,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
   }
 
@@ -36,7 +36,7 @@ class MockAgent {
       artist: data.artist || 'Test Artist',
       track: data.track || 'Test Track',
       genre: 'Electronic',
-      processed: true
+      processed: true,
     };
   }
 
@@ -44,35 +44,35 @@ class MockAgent {
     return {
       campaignId: `camp_${Date.now()}`,
       created: true,
-      artist: data.artist
+      artist: data.artist,
     };
   }
 
   async generateContent(data) {
     return {
       content: `Generated content for ${data.artist}`,
-      template: 'liberty-standard'
+      template: 'liberty-standard',
     };
   }
 
   async initiateSubmissions(data) {
     return {
       submitted: 5,
-      stations: ['BBC Radio 1', 'Radio X', 'Kerrang!']
+      stations: ['BBC Radio 1', 'Radio X', 'Kerrang!'],
     };
   }
 
   async setupTracking(data) {
     return {
       trackingId: `track_${Date.now()}`,
-      warmApiEnabled: true
+      warmApiEnabled: true,
     };
   }
 
   async generateInitialReport(data) {
     return {
       reportUrl: 'https://reports.example.com/12345',
-      format: 'PDF'
+      format: 'PDF',
     };
   }
 
@@ -86,7 +86,7 @@ class MockAgent {
 const Module = require('module');
 const originalRequire = Module.prototype.require;
 
-Module.prototype.require = function(id) {
+Module.prototype.require = function (id) {
   // Mock all agent imports
   if (id.includes('intelligence-agent')) {
     return class IntelligenceAgent extends MockAgent {
@@ -169,7 +169,7 @@ async function runTests() {
   const testResults = {
     passed: 0,
     failed: 0,
-    tests: []
+    tests: [],
   };
 
   function test(name, fn) {
@@ -234,7 +234,7 @@ async function runTests() {
     const campaignData = {
       artist: 'Senior Dunce',
       track: 'Test Track',
-      transcriptFile: 'mock-transcript.txt'
+      transcriptFile: 'mock-transcript.txt',
     };
 
     const result = await dan.executeWorkflow('transcript-to-brief', campaignData);
@@ -257,7 +257,7 @@ async function runTests() {
 
     const campaignData = {
       artist: 'Test Artist',
-      track: 'Test Track'
+      track: 'Test Track',
     };
 
     await dan.executeWorkflow('transcript-to-brief', campaignData);
@@ -304,7 +304,7 @@ async function runTests() {
       'complete-campaign',
       'transcript-to-brief',
       'warm-monitoring',
-      'campaign-reporting'
+      'campaign-reporting',
     ];
 
     const missing = expectedWorkflows.filter(w => !workflows.includes(w));

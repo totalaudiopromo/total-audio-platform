@@ -37,7 +37,7 @@ class LibertyBulkFix {
       machinaFixed: 0,
       otherMarketingFixed: 0,
       stationFeedbackCleaned: 0,
-      total: 0
+      total: 0,
     };
   }
 
@@ -62,7 +62,7 @@ class LibertyBulkFix {
         userId: 'me',
         q: query,
         maxResults: Math.min(100, maxResults - messages.length),
-        pageToken: pageToken
+        pageToken: pageToken,
       });
 
       if (response.data.messages) {
@@ -86,8 +86,8 @@ class LibertyBulkFix {
         id: messageId,
         requestBody: {
           addLabelIds,
-          removeLabelIds
-        }
+          removeLabelIds,
+        },
       });
       return true;
     } catch (error) {
@@ -182,11 +182,13 @@ class LibertyBulkFix {
 
       if (await this.modifyLabels(message.id, addLabels, removeLabels)) {
         // Also mark as read
-        await this.gmail.users.messages.modify({
-          userId: 'me',
-          id: message.id,
-          requestBody: { removeLabelIds: ['UNREAD'] }
-        }).catch(() => {});
+        await this.gmail.users.messages
+          .modify({
+            userId: 'me',
+            id: message.id,
+            requestBody: { removeLabelIds: ['UNREAD'] },
+          })
+          .catch(() => {});
 
         this.stats.warmFixed++;
       }
@@ -221,11 +223,13 @@ class LibertyBulkFix {
 
       if (await this.modifyLabels(message.id, addLabels, removeLabels)) {
         // Also mark as read
-        await this.gmail.users.messages.modify({
-          userId: 'me',
-          id: message.id,
-          requestBody: { removeLabelIds: ['UNREAD'] }
-        }).catch(() => {});
+        await this.gmail.users.messages
+          .modify({
+            userId: 'me',
+            id: message.id,
+            requestBody: { removeLabelIds: ['UNREAD'] },
+          })
+          .catch(() => {});
 
         this.stats.machinaFixed++;
       }
@@ -240,7 +244,8 @@ class LibertyBulkFix {
   async fixOtherMarketing() {
     console.log('\n📭 Fixing other marketing emails...');
 
-    const query = 'from:musicreaction OR subject:"grow your audience" OR subject:"promote your music" -from:libertymusicpr.com';
+    const query =
+      'from:musicreaction OR subject:"grow your audience" OR subject:"promote your music" -from:libertymusicpr.com';
     const messages = await this.searchEmails(query, 200); // Limit to 200
 
     console.log(`Found ${messages.length} other marketing emails`);
@@ -260,11 +265,13 @@ class LibertyBulkFix {
 
       if (await this.modifyLabels(message.id, addLabels, removeLabels)) {
         // Also mark as read
-        await this.gmail.users.messages.modify({
-          userId: 'me',
-          id: message.id,
-          requestBody: { removeLabelIds: ['UNREAD'] }
-        }).catch(() => {});
+        await this.gmail.users.messages
+          .modify({
+            userId: 'me',
+            id: message.id,
+            requestBody: { removeLabelIds: ['UNREAD'] },
+          })
+          .catch(() => {});
 
         this.stats.otherMarketingFixed++;
       }
@@ -280,7 +287,8 @@ class LibertyBulkFix {
     console.log('\n🧹 Cleaning Station Feedback label...');
 
     // Find all emails currently in Station Feedback that shouldn't be there
-    const query = 'label:station-feedback (from:otter.ai OR from:gemini OR from:WARM OR from:machina OR from:musicreaction OR subject:"out of office")';
+    const query =
+      'label:station-feedback (from:otter.ai OR from:gemini OR from:WARM OR from:machina OR from:musicreaction OR subject:"out of office")';
     const messages = await this.searchEmails(query);
 
     console.log(`Found ${messages.length} emails to remove from Station Feedback`);
@@ -332,7 +340,6 @@ class LibertyBulkFix {
       console.log(`  ✅ Total: ${this.stats.total} emails fixed\n`);
 
       console.log('💡 Your inbox is now properly organized!');
-
     } catch (error) {
       console.error('❌ Bulk fix failed:', error);
       throw error;
@@ -351,7 +358,10 @@ class LibertyBulkFix {
       { name: 'WARM', query: 'from:WARM OR from:warmmusichelp.com' },
       { name: 'Machina', query: 'from:machina OR subject:"Machina Account"' },
       { name: 'Other Marketing', query: 'from:musicreaction OR subject:"grow your audience"' },
-      { name: 'Wrong Station Feedback', query: 'label:station-feedback (from:otter.ai OR from:WARM OR from:machina)' }
+      {
+        name: 'Wrong Station Feedback',
+        query: 'label:station-feedback (from:otter.ai OR from:WARM OR from:machina)',
+      },
     ];
 
     for (const { name, query } of queries) {
@@ -387,7 +397,6 @@ async function main() {
       console.log('');
       console.log('Example: node liberty-bulk-fix.js fix');
     }
-
   } catch (error) {
     console.error('❌ Command failed:', error.message);
     process.exit(1);

@@ -52,7 +52,6 @@ async function testConvertKitConnection() {
     });
 
     return { success: true, forms: formsResponse.data.forms };
-
   } catch (error) {
     console.error('\n❌ ConvertKit connection failed:', error.response?.data || error.message);
     return { success: false, error: error.message };
@@ -67,16 +66,13 @@ async function createNewsletterBroadcast(subject, content, formId = null) {
       subject: subject,
       content: content,
       public: false, // Keep as draft for review
-      published_at: null // Don't schedule yet
+      published_at: null, // Don't schedule yet
     };
 
-    const response = await axios.post(
-      `https://api.convertkit.com/v3/broadcasts`,
-      {
-        api_key: CONVERTKIT_API_KEY,
-        ...broadcastData
-      }
-    );
+    const response = await axios.post(`https://api.convertkit.com/v3/broadcasts`, {
+      api_key: CONVERTKIT_API_KEY,
+      ...broadcastData,
+    });
 
     if (response.status === 201) {
       console.log('✓ Newsletter broadcast created successfully!');
@@ -89,7 +85,6 @@ async function createNewsletterBroadcast(subject, content, formId = null) {
       console.log('  3. Schedule or send immediately\n');
       return { success: true, broadcastId: response.data.broadcast.id };
     }
-
   } catch (error) {
     console.error('\n❌ Failed to create broadcast:', error.response?.data || error.message);
     return { success: false, error: error.message };

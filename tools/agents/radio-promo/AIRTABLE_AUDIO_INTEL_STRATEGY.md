@@ -11,7 +11,7 @@ The radio promo agent currently uses a **tiered targeting system** based on:
    - National reach, 100% importance
    - Immediate notifications
 
-2. **Tier 2 Commercial** (High Priority)  
+2. **Tier 2 Commercial** (High Priority)
    - Kiss FM, Magic, Classic FM, Smooth, LBC
    - National reach, 80% importance
 
@@ -50,7 +50,7 @@ The radio promo agent currently uses a **tiered targeting system** based on:
 ```
 Fields:
 - Contact Name (Single Line Text)
-- Station Name (Single Line Text) 
+- Station Name (Single Line Text)
 - Station Type (Single Select: BBC, Commercial, Dance, Specialist, Regional, Online, Community)
 - Email Address (Email)
 - Phone (Phone Number)
@@ -103,19 +103,19 @@ Fields:
 // Pseudo-code for integration
 async function enrichContacts() {
   const contacts = await airtable.getContacts({ enriched: false });
-  
+
   for (const contact of contacts) {
     const enrichedData = await audioIntel.enrich({
       name: contact.name,
       email: contact.email,
-      station: contact.stationName
+      station: contact.stationName,
     });
-    
+
     await airtable.updateContact(contact.id, {
       enrichmentData: enrichedData.intelligence,
       enrichmentConfidence: enrichedData.confidence,
       lastEnriched: new Date(),
-      audioIntelEnriched: true
+      audioIntelEnriched: true,
     });
   }
 }
@@ -146,29 +146,29 @@ async function enrichContacts() {
 ```javascript
 function calculateStationScore(contact, campaign) {
   let score = 0;
-  
+
   // Base station importance
   score += contact.stationType.importance;
-  
+
   // Genre match
   if (contact.genreFocus.includes(campaign.genre)) {
     score += 20;
   }
-  
+
   // Relationship status
   score += contact.relationshipStatus.score;
-  
+
   // Response rate
   score += contact.responseRate * 10;
-  
+
   // Recent success
-  if (contact.lastSuccess > Date.now() - 30*24*60*60*1000) {
+  if (contact.lastSuccess > Date.now() - 30 * 24 * 60 * 60 * 1000) {
     score += 15;
   }
-  
+
   // Audio Intel confidence
   score += contact.enrichmentConfidence.score;
-  
+
   return score;
 }
 ```
@@ -198,7 +198,7 @@ function calculateStationScore(contact, campaign) {
 **Relationship scoring:**
 
 - Cold: 0-25 points
-- Warm: 26-50 points  
+- Warm: 26-50 points
 - Hot: 51-75 points
 - VIP: 76-100 points
 

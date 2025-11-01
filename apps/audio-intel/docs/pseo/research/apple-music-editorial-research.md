@@ -1,4 +1,5 @@
 # Apple Music Editorial Playlist Submission Research
+
 **Research Date**: October 2025
 **Status**: Current and Verified
 **Target Audience**: Independent UK Artists
@@ -10,6 +11,7 @@
 **CRITICAL FINDING**: Unlike Spotify, Apple Music does **NOT** offer direct playlist pitching for independent artists. Editorial playlist consideration requires working through approved distributors who have access to the Apple Music Pitch tool.
 
 **Key Differences from Spotify**:
+
 - No public submission portal for artists
 - Must work through distributor relationships
 - Requires 10+ days advance submission (via distributor)
@@ -22,6 +24,7 @@
 ### Who Has Access?
 
 **Apple Music Partners Only** - The Apple Music Pitch tool is exclusively available to:
+
 - Approved distributors (iTunes Partners)
 - Record labels with iTunes Partner accounts
 - **NOT available to individual independent artists**
@@ -31,6 +34,7 @@
 ### Access Requirements
 
 To use Apple Music Pitch, partners must:
+
 1. Be an approved Apple Music Partner
 2. Have an Apple ID associated with their iTunes Connect account
 3. Receive access granted by company account Admin
@@ -47,29 +51,30 @@ To use Apple Music Pitch, partners must:
 
 **Verified Apple Music Preferred Distributors** (as of October 2025):
 
-| Distributor | Dolby Atmos | Credits | Lyrics | Motion Art | Analytics |
-|-------------|-------------|---------|--------|------------|-----------|
-| Believe | ✓ | ✓ | ✓ | ✓ | ✓ |
-| TuneCore | ✓ | ✓ | ✓ | ✗ | ✓ |
-| TuneCore Japan | ✓ | ✓ | ✓ | ✓ | ✓ |
-| EWWAY | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Label Engine | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Golden Dynamic | ✓ | ✓ | ✓ | ✓ | ✓ |
-| AudioSalad | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Symphonic | ✓ | ✓ | ✓ | ✓ | ✓ |
-| FUGA | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Kontor | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Rock Mobile | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Stem | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Metropolitan Groove Merchants | ✓ | ✓ | ✓ | ✓ | ✓ |
-| recordJet | ✓ | ✓ | ✓ | ✓ | ✗ |
-| IDOL | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Distributor                   | Dolby Atmos | Credits | Lyrics | Motion Art | Analytics |
+| ----------------------------- | ----------- | ------- | ------ | ---------- | --------- |
+| Believe                       | ✓           | ✓       | ✓      | ✓          | ✓         |
+| TuneCore                      | ✓           | ✓       | ✓      | ✗          | ✓         |
+| TuneCore Japan                | ✓           | ✓       | ✓      | ✓          | ✓         |
+| EWWAY                         | ✓           | ✓       | ✓      | ✓          | ✓         |
+| Label Engine                  | ✓           | ✓       | ✓      | ✓          | ✓         |
+| Golden Dynamic                | ✓           | ✓       | ✓      | ✓          | ✓         |
+| AudioSalad                    | ✓           | ✓       | ✓      | ✓          | ✓         |
+| Symphonic                     | ✓           | ✓       | ✓      | ✓          | ✓         |
+| FUGA                          | ✓           | ✓       | ✓      | ✓          | ✓         |
+| Kontor                        | ✓           | ✓       | ✓      | ✓          | ✓         |
+| Rock Mobile                   | ✓           | ✓       | ✓      | ✓          | ✓         |
+| Stem                          | ✓           | ✓       | ✓      | ✓          | ✓         |
+| Metropolitan Groove Merchants | ✓           | ✓       | ✓      | ✓          | ✓         |
+| recordJet                     | ✓           | ✓       | ✓      | ✓          | ✗         |
+| IDOL                          | ✓           | ✓       | ✓      | ✓          | ✓         |
 
 **Source**: [Apple Music Preferred Partners](https://artists.apple.com/partners)
 
 ### Preferred Plus Tier
 
 **"Preferred Plus" Distributors** (highest tier):
+
 - Believe Digital
 - FUGA
 
@@ -95,6 +100,7 @@ To use Apple Music Pitch, partners must:
 ### Timeline Requirements
 
 **Official Apple Music Deadlines**:
+
 - **Full Coverage Consideration**: Pitch 10 days before release date
 - **Final Deadline (Late Adds)**: Pitch 7 days before release date minimum
 - **Recommended Lead Time**: 3-4 weeks for maximum consideration
@@ -106,18 +112,21 @@ To use Apple Music Pitch, partners must:
 When distributors submit pitches via Apple Music Pitch, they provide:
 
 **Basic Information**:
+
 - Release type (New Release, Pre-Add/Pre-Order, Re-promotion)
 - UPC/Catalogue number
 - Artist name and track details
 - Promotion start date and territories
 
 **Enhanced Metadata** (Highly Recommended):
+
 - Spatial Audio (Dolby Atmos) details
 - Motion Artwork
 - Lyrics (mandatory for vocal content as of January 2025)
 - Contributor credits (Writers, Performers, Production team)
 
 **Promotional Context**:
+
 - Campaign key moments and marketing plans
 - Song release schedule and focus tracks
 - Media moments and press coverage
@@ -130,11 +139,13 @@ When distributors submit pitches via Apple Music Pitch, they provide:
 **Effective January 2, 2025 - Mandatory Contributor Credits**:
 
 Each track must include at least one role from each of three groups:
+
 1. **Writers**: Lyricist, Composer, or Arranger
 2. **Performers**: Solo and band members
 3. **Production & Engineering**: Producer, Recording Engineer, Mixing Engineer, Mastering Engineer, or Immersive Engineer
 
 **Lyrics Requirement**:
+
 - All releases with vocal content must include lyrics
 - Even tracks with only one or two words require lyric submission
 
@@ -147,6 +158,7 @@ Each track must include at least one role from each of three groups:
 ### Flagship Global Playlists
 
 **New Music Daily** (Premiere Global Editorial Playlist):
+
 - **Format**: 60 songs, multi-genre
 - **Update Frequency**: Daily (Monday-Friday)
 - **Structure**: New lead song and cover artist daily
@@ -158,6 +170,7 @@ Each track must include at least one role from each of three groups:
 ### Genre-Specific Flagship Playlists
 
 **40+ Genre-Specific Editorial Playlists** (2025):
+
 - **Rap Life** (Hip-Hop/Rap)
 - **Pop Chill** (Pop)
 - **Afrobeats Weekly** (Afrobeats)
@@ -174,6 +187,7 @@ Each track must include at least one role from each of three groups:
 ### UK-Specific Playlists
 
 **NEEDS VERIFICATION**: The following UK playlists exist but specific submission processes require verification:
+
 - UK rap and grime playlists
 - UK indie/alternative playlists
 - Regional genre-specific playlists
@@ -222,6 +236,7 @@ Each track must include at least one role from each of three groups:
 **Method 1: Optimize Apple Music for Artists Profile**
 
 **Essential Profile Elements**:
+
 - High-quality artist image (2400 x 2400 pixels preferred, 800 x 800 minimum)
 - Compelling artist biography with keywords
 - Artist Content section (musical influences, collaborations, achievements)
@@ -235,6 +250,7 @@ Each track must include at least one role from each of three groups:
 **Method 2: Build Organic Momentum**
 
 **Engagement Strategies**:
+
 - Drive streams to Apple Music profile from social media
 - Encourage fans to add tracks to personal playlists
 - Build strong early streaming numbers
@@ -248,6 +264,7 @@ Each track must include at least one role from each of three groups:
 **Method 3: Industry Relationships**
 
 **Leverage Connections**:
+
 - Manager or PR team with Apple Music relationships
 - Publicist with track record of Apple Music placements
 - Industry contacts who can make warm introductions
@@ -260,6 +277,7 @@ Each track must include at least one role from each of three groups:
 **Method 4: User-Generated Playlists**
 
 **Building Playlist Presence**:
+
 - Target influential user-created playlists first
 - Use playlist pitching services (Playlist Push, SubmitHub, etc.)
 - Build relationships with independent playlist curators
@@ -278,6 +296,7 @@ Each track must include at least one role from each of three groups:
 **1. Submitting Poor Audio Quality**
 
 **The Mistake**:
+
 - Low-quality MP3 files instead of WAV
 - Rough demos or poorly mixed tracks
 - Unmastered audio
@@ -292,6 +311,7 @@ Each track must include at least one role from each of three groups:
 **2. Incorrect Submission Timing**
 
 **The Mistake**:
+
 - Submitting 2-3 days before release
 - Assuming last-minute submissions are acceptable
 - Not accounting for distributor processing time
@@ -299,6 +319,7 @@ Each track must include at least one role from each of three groups:
 **Why It Fails**: Apple Music editorial team needs minimum 7-10 days for review. Late submissions miss consideration windows entirely.
 
 **The Fix**:
+
 - Schedule distributor pitch 10+ days before release
 - Allow 3-4 weeks for maximum consideration
 - Account for distributor processing time (add 2-3 days)
@@ -308,6 +329,7 @@ Each track must include at least one role from each of three groups:
 **3. Misunderstanding Apple Music's Closed System**
 
 **The Mistake**:
+
 - Assuming there's a public submission portal like Spotify
 - Trying to contact curators directly via social media
 - Expecting to pitch directly without a distributor
@@ -315,6 +337,7 @@ Each track must include at least one role from each of three groups:
 **Why It Fails**: Apple Music operates a closed editorial system. Only approved distributors can submit pitches.
 
 **The Fix**:
+
 - Verify your distributor has Apple Music Pitch access
 - Work through proper distributor channels
 - Build relationships rather than cold outreach
@@ -324,6 +347,7 @@ Each track must include at least one role from each of three groups:
 **4. Incomplete or Poor Metadata**
 
 **The Mistake**:
+
 - Missing contributor credits
 - No lyrics for vocal tracks
 - Generic artist bio
@@ -333,6 +357,7 @@ Each track must include at least one role from each of three groups:
 **Why It Fails**: As of January 2025, contributor credits and lyrics are mandatory. Incomplete metadata disqualifies releases.
 
 **The Fix**:
+
 - Complete all contributor fields (Writers, Performers, Production)
 - Upload lyrics for ALL vocal content
 - High-resolution artwork (2400 x 2400 pixels)
@@ -343,6 +368,7 @@ Each track must include at least one role from each of three groups:
 **5. Not Following Platform Guidelines**
 
 **The Mistake**:
+
 - Ignoring distributor submission requirements
 - Incorrect file formats
 - Missing deadline requirements
@@ -351,6 +377,7 @@ Each track must include at least one role from each of three groups:
 **Why It Fails**: Every platform has specific rules. Non-compliance results in automatic rejection.
 
 **The Fix**:
+
 - Read distributor guidelines thoroughly
 - Follow Apple Music technical specifications exactly
 - Prepare all materials in advance
@@ -361,6 +388,7 @@ Each track must include at least one role from each of three groups:
 **6. Unrealistic Genre Targeting**
 
 **The Mistake**:
+
 - Pitching indie rock to hip-hop playlists
 - Targeting playlists with completely different vibes
 - Not researching playlist content
@@ -368,6 +396,7 @@ Each track must include at least one role from each of three groups:
 **Why It Fails**: Editorial teams instantly reject genre mismatches.
 
 **The Fix**:
+
 - Research target playlists thoroughly
 - Match your sound to appropriate playlists
 - Be honest about your genre classification
@@ -378,6 +407,7 @@ Each track must include at least one role from each of three groups:
 **7. Weak Artist Profile and Presence**
 
 **The Mistake**:
+
 - Unclaimed Apple Music for Artists profile
 - No artist bio or outdated information
 - Low-resolution or missing artist image
@@ -387,6 +417,7 @@ Each track must include at least one role from each of three groups:
 **Why It Fails**: Editorial teams check artist profiles. Weak presentation suggests unprofessionalism.
 
 **The Fix**:
+
 - Claim and fully optimize Apple Music for Artists profile
 - Professional artist photography (2400 x 2400 pixels)
 - Compelling biography with keywords
@@ -402,6 +433,7 @@ Each track must include at least one role from each of three groups:
 ### UK Market Advantages
 
 **Geographic Targeting**:
+
 - Apple Music allows territory-specific pitching
 - UK artists can target UK-specific editorial playlists
 - Geographic analytics available via Apple Music for Artists
@@ -416,6 +448,7 @@ Each track must include at least one role from each of three groups:
 ### UK-Focused Distributors
 
 **Distributors with Strong UK Presence**:
+
 - Symphonic (Preferred Partner)
 - Believe (Preferred Plus Partner)
 - Various UK-based aggregators
@@ -426,18 +459,18 @@ Each track must include at least one role from each of three groups:
 
 ## 8. Key Differences: Apple Music vs Spotify
 
-| Feature | Apple Music | Spotify |
-|---------|-------------|---------|
-| **Direct Artist Pitching** | ❌ No - Distributor only | ✓ Yes - Spotify for Artists |
-| **Minimum Lead Time** | 10 days (via distributor) | 7 days (artist direct) |
-| **Public Submission Portal** | ❌ No | ✓ Yes |
-| **Editorial Team Access** | Closed/Private | Semi-open via portal |
-| **Playlist Update Frequency** | Daily/Weekly varies | Weekly (New Music Friday) |
-| **Feedback on Submissions** | ❌ None | ❌ None |
-| **Independent Curators** | ❌ No user playlists featured | ✓ Yes - large curator network |
-| **Analytics Dashboard** | Apple Music for Artists | Spotify for Artists |
-| **Lyrics Requirement** | ✓ Mandatory (Jan 2025) | Optional but recommended |
-| **Contributor Credits** | ✓ Mandatory (Jan 2025) | Optional but recommended |
+| Feature                       | Apple Music                   | Spotify                       |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| **Direct Artist Pitching**    | ❌ No - Distributor only      | ✓ Yes - Spotify for Artists   |
+| **Minimum Lead Time**         | 10 days (via distributor)     | 7 days (artist direct)        |
+| **Public Submission Portal**  | ❌ No                         | ✓ Yes                         |
+| **Editorial Team Access**     | Closed/Private                | Semi-open via portal          |
+| **Playlist Update Frequency** | Daily/Weekly varies           | Weekly (New Music Friday)     |
+| **Feedback on Submissions**   | ❌ None                       | ❌ None                       |
+| **Independent Curators**      | ❌ No user playlists featured | ✓ Yes - large curator network |
+| **Analytics Dashboard**       | Apple Music for Artists       | Spotify for Artists           |
+| **Lyrics Requirement**        | ✓ Mandatory (Jan 2025)        | Optional but recommended      |
+| **Contributor Credits**       | ✓ Mandatory (Jan 2025)        | Optional but recommended      |
 
 **Sources**: Comparison compiled from Apple Music Pitch User Guide and Spotify for Artists documentation
 
@@ -448,6 +481,7 @@ Each track must include at least one role from each of three groups:
 ### 30 Days Before Release
 
 **Week 1: Preparation**
+
 - [ ] Verify distributor has Apple Music Pitch access
 - [ ] Finalize master and Dolby Atmos version (if possible)
 - [ ] Complete contributor credits (Writers, Performers, Production)
@@ -458,6 +492,7 @@ Each track must include at least one role from each of three groups:
 - [ ] Research target playlists and genres
 
 **Week 2: Profile Optimization**
+
 - [ ] Claim Apple Music for Artists profile (if not already done)
 - [ ] Upload professional artist image (2400 x 2400 pixels)
 - [ ] Write compelling artist biography with keywords
@@ -466,6 +501,7 @@ Each track must include at least one role from each of three groups:
 - [ ] Ensure consistent branding across platforms
 
 **Week 3: Distributor Submission**
+
 - [ ] Deliver all assets to distributor (10+ days before release)
 - [ ] Provide promotional context and marketing plans
 - [ ] Confirm distributor has submitted pitch via Apple Music Pitch
@@ -473,6 +509,7 @@ Each track must include at least one role from each of three groups:
 - [ ] Set up pre-save/pre-add campaign
 
 **Week 4: Pre-Release Marketing**
+
 - [ ] Drive social media engagement to Apple Music profile
 - [ ] Share listening links with press and industry contacts
 - [ ] Pitch to user-generated playlists
@@ -583,6 +620,7 @@ Each track must include at least one role from each of three groups:
 **Recommended Action**: Artists should directly contact their distributor to confirm Apple Music Pitch access
 
 **Key Takeaway**: Apple Music editorial playlisting for independent artists is 100% dependent on distributor relationships. Unlike Spotify, there is NO direct artist submission portal. Success requires:
+
 1. Choosing a distributor with Apple Music Pitch access
 2. Following strict metadata and timing requirements
 3. Building organic momentum and engagement

@@ -67,43 +67,153 @@ export class AirtableContactEnrichment {
   private firecrawlApiKey: string;
   private ukRadioStations: UKRadioStation[];
 
-  constructor(
-    apiKey: string,
-    baseId: string,
-    contactsTableId: string,
-    firecrawlApiKey: string
-  ) {
+  constructor(apiKey: string, baseId: string, contactsTableId: string, firecrawlApiKey: string) {
     this.base = new Airtable({ apiKey }).base(baseId);
     this.config = { contactsTableId };
     this.firecrawlApiKey = firecrawlApiKey;
     this.ukRadioStations = [
       // BBC National Stations
-      { domain: 'bbc.co.uk', name: 'BBC Radio', websiteUrl: 'https://www.bbc.co.uk/sounds', expectedFormat: 'Public Service' },
-      { domain: 'bbcradio1.co.uk', name: 'BBC Radio 1', websiteUrl: 'https://www.bbc.co.uk/sounds/play/live:bbc_radio_one', expectedFormat: 'Public Service' },
-      { domain: 'bbcradio2.co.uk', name: 'BBC Radio 2', websiteUrl: 'https://www.bbc.co.uk/sounds/play/live:bbc_radio_two', expectedFormat: 'Public Service' },
-      { domain: 'bbcradio3.co.uk', name: 'BBC Radio 3', websiteUrl: 'https://www.bbc.co.uk/sounds/play/live:bbc_radio_three', expectedFormat: 'Public Service' },
-      { domain: 'bbcradio4.co.uk', name: 'BBC Radio 4', websiteUrl: 'https://www.bbc.co.uk/sounds/play/live:bbc_radio_four', expectedFormat: 'Public Service' },
-      { domain: 'bbc6music.co.uk', name: 'BBC Radio 6 Music', websiteUrl: 'https://www.bbc.co.uk/sounds/play/live:bbc_6music', expectedFormat: 'Public Service' },
+      {
+        domain: 'bbc.co.uk',
+        name: 'BBC Radio',
+        websiteUrl: 'https://www.bbc.co.uk/sounds',
+        expectedFormat: 'Public Service',
+      },
+      {
+        domain: 'bbcradio1.co.uk',
+        name: 'BBC Radio 1',
+        websiteUrl: 'https://www.bbc.co.uk/sounds/play/live:bbc_radio_one',
+        expectedFormat: 'Public Service',
+      },
+      {
+        domain: 'bbcradio2.co.uk',
+        name: 'BBC Radio 2',
+        websiteUrl: 'https://www.bbc.co.uk/sounds/play/live:bbc_radio_two',
+        expectedFormat: 'Public Service',
+      },
+      {
+        domain: 'bbcradio3.co.uk',
+        name: 'BBC Radio 3',
+        websiteUrl: 'https://www.bbc.co.uk/sounds/play/live:bbc_radio_three',
+        expectedFormat: 'Public Service',
+      },
+      {
+        domain: 'bbcradio4.co.uk',
+        name: 'BBC Radio 4',
+        websiteUrl: 'https://www.bbc.co.uk/sounds/play/live:bbc_radio_four',
+        expectedFormat: 'Public Service',
+      },
+      {
+        domain: 'bbc6music.co.uk',
+        name: 'BBC Radio 6 Music',
+        websiteUrl: 'https://www.bbc.co.uk/sounds/play/live:bbc_6music',
+        expectedFormat: 'Public Service',
+      },
       // Commercial Major Networks
-      { domain: 'capitalfm.com', name: 'Capital FM', websiteUrl: 'https://www.capitalfm.com', expectedFormat: 'Commercial' },
-      { domain: 'heart.co.uk', name: 'Heart', websiteUrl: 'https://www.heart.co.uk', expectedFormat: 'Commercial' },
-      { domain: 'kissfm.co.uk', name: 'Kiss FM', websiteUrl: 'https://www.kissfm.co.uk', expectedFormat: 'Commercial' },
-      { domain: 'smoothradio.com', name: 'Smooth Radio', websiteUrl: 'https://www.smoothradio.com', expectedFormat: 'Commercial' },
-      { domain: 'magic.co.uk', name: 'Magic', websiteUrl: 'https://www.magic.co.uk', expectedFormat: 'Commercial' },
+      {
+        domain: 'capitalfm.com',
+        name: 'Capital FM',
+        websiteUrl: 'https://www.capitalfm.com',
+        expectedFormat: 'Commercial',
+      },
+      {
+        domain: 'heart.co.uk',
+        name: 'Heart',
+        websiteUrl: 'https://www.heart.co.uk',
+        expectedFormat: 'Commercial',
+      },
+      {
+        domain: 'kissfm.co.uk',
+        name: 'Kiss FM',
+        websiteUrl: 'https://www.kissfm.co.uk',
+        expectedFormat: 'Commercial',
+      },
+      {
+        domain: 'smoothradio.com',
+        name: 'Smooth Radio',
+        websiteUrl: 'https://www.smoothradio.com',
+        expectedFormat: 'Commercial',
+      },
+      {
+        domain: 'magic.co.uk',
+        name: 'Magic',
+        websiteUrl: 'https://www.magic.co.uk',
+        expectedFormat: 'Commercial',
+      },
       // Regional Commercial Stations
-      { domain: 'lbc.co.uk', name: 'LBC', websiteUrl: 'https://www.lbc.co.uk', expectedFormat: 'Commercial' },
-      { domain: 'key103.co.uk', name: 'Key 103', websiteUrl: 'https://www.key103.co.uk', expectedFormat: 'Commercial' },
-      { domain: 'brum.co.uk', name: 'BRMB', websiteUrl: 'https://www.brum.co.uk', expectedFormat: 'Commercial' },
-      { domain: 'radiocity.co.uk', name: 'Radio City', websiteUrl: 'https://www.radiocity.co.uk', expectedFormat: 'Commercial' },
+      {
+        domain: 'lbc.co.uk',
+        name: 'LBC',
+        websiteUrl: 'https://www.lbc.co.uk',
+        expectedFormat: 'Commercial',
+      },
+      {
+        domain: 'key103.co.uk',
+        name: 'Key 103',
+        websiteUrl: 'https://www.key103.co.uk',
+        expectedFormat: 'Commercial',
+      },
+      {
+        domain: 'brum.co.uk',
+        name: 'BRMB',
+        websiteUrl: 'https://www.brum.co.uk',
+        expectedFormat: 'Commercial',
+      },
+      {
+        domain: 'radiocity.co.uk',
+        name: 'Radio City',
+        websiteUrl: 'https://www.radiocity.co.uk',
+        expectedFormat: 'Commercial',
+      },
       // Additional UK Radio Stations
-      { domain: 'meridianradio.co.uk', name: 'Meridian Radio', websiteUrl: 'https://www.meridianradio.co.uk', expectedFormat: 'Community' },
-      { domain: 'radioexe.co.uk', name: 'Radio Exe', websiteUrl: 'https://www.radioexe.co.uk', expectedFormat: 'Community' },
-      { domain: 'radiofandango.co.uk', name: 'Radio Fandango', websiteUrl: 'https://www.radiofandango.co.uk', expectedFormat: 'Community' },
-      { domain: 'capitalradio.co.uk', name: 'Capital Radio', websiteUrl: 'https://www.capitalfm.com', expectedFormat: 'Commercial' },
-      { domain: 'heartradio.co.uk', name: 'Heart Radio', websiteUrl: 'https://www.heart.co.uk', expectedFormat: 'Commercial' },
-      { domain: 'kissradio.co.uk', name: 'Kiss Radio', websiteUrl: 'https://www.kissfm.co.uk', expectedFormat: 'Commercial' },
-      { domain: 'smoothradio.co.uk', name: 'Smooth Radio', websiteUrl: 'https://www.smoothradio.com', expectedFormat: 'Commercial' },
-      { domain: 'magicradio.co.uk', name: 'Magic Radio', websiteUrl: 'https://www.magic.co.uk', expectedFormat: 'Commercial' }
+      {
+        domain: 'meridianradio.co.uk',
+        name: 'Meridian Radio',
+        websiteUrl: 'https://www.meridianradio.co.uk',
+        expectedFormat: 'Community',
+      },
+      {
+        domain: 'radioexe.co.uk',
+        name: 'Radio Exe',
+        websiteUrl: 'https://www.radioexe.co.uk',
+        expectedFormat: 'Community',
+      },
+      {
+        domain: 'radiofandango.co.uk',
+        name: 'Radio Fandango',
+        websiteUrl: 'https://www.radiofandango.co.uk',
+        expectedFormat: 'Community',
+      },
+      {
+        domain: 'capitalradio.co.uk',
+        name: 'Capital Radio',
+        websiteUrl: 'https://www.capitalfm.com',
+        expectedFormat: 'Commercial',
+      },
+      {
+        domain: 'heartradio.co.uk',
+        name: 'Heart Radio',
+        websiteUrl: 'https://www.heart.co.uk',
+        expectedFormat: 'Commercial',
+      },
+      {
+        domain: 'kissradio.co.uk',
+        name: 'Kiss Radio',
+        websiteUrl: 'https://www.kissfm.co.uk',
+        expectedFormat: 'Commercial',
+      },
+      {
+        domain: 'smoothradio.co.uk',
+        name: 'Smooth Radio',
+        websiteUrl: 'https://www.smoothradio.com',
+        expectedFormat: 'Commercial',
+      },
+      {
+        domain: 'magicradio.co.uk',
+        name: 'Magic Radio',
+        websiteUrl: 'https://www.magic.co.uk',
+        expectedFormat: 'Commercial',
+      },
     ];
   }
 
@@ -113,10 +223,12 @@ export class AirtableContactEnrichment {
   }
 
   private findRadioStation(domain: string): UKRadioStation | null {
-    return this.ukRadioStations.find(
-      (station: UKRadioStation) =>
-        domain.includes(station.domain) || station.domain.includes(domain)
-    ) || null;
+    return (
+      this.ukRadioStations.find(
+        (station: UKRadioStation) =>
+          domain.includes(station.domain) || station.domain.includes(domain)
+      ) || null
+    );
   }
 
   private async scrapeWebsite(url: string): Promise<ScrapedData> {
@@ -124,17 +236,17 @@ export class AirtableContactEnrichment {
       const response: Response = await fetch('https://api.firecrawl.dev/v0/scrape', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${this.firecrawlApiKey}`,
-          'Content-Type': 'application/json'
+          Authorization: `Bearer ${this.firecrawlApiKey}`,
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           url: url,
           pageOptions: {
             onlyMainContent: true,
             includeHtml: true,
-            includeMarkdown: true
-          }
-        })
+            includeMarkdown: true,
+          },
+        }),
       });
 
       if (!response.ok) {
@@ -160,7 +272,7 @@ export class AirtableContactEnrichment {
         showInfo: [],
         contactForms: [],
         socialMedia: [],
-        additionalContacts: []
+        additionalContacts: [],
       };
 
       if (scrapedData.extractedData) {
@@ -185,7 +297,7 @@ export class AirtableContactEnrichment {
         showInfo: [],
         contactForms: [],
         socialMedia: [],
-        additionalContacts: []
+        additionalContacts: [],
       };
     }
   }
@@ -200,26 +312,30 @@ export class AirtableContactEnrichment {
       showInfo: [],
       contactForms: [],
       socialMedia: [],
-      additionalContacts: []
+      additionalContacts: [],
     };
 
     // Extract DJ names (common patterns)
     const djPatterns: RegExp[] = [
       /(?:DJ|Presenter|Host)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/gi,
-      /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(?:DJ|Presenter|Host)/gi
+      /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(?:DJ|Presenter|Host)/gi,
     ];
 
     djPatterns.forEach((pattern: RegExp) => {
       const matches: RegExpMatchArray | null = content.match(pattern);
       if (matches) {
-        data.djNames.push(...matches.map((match: string) => match.replace(/(?:DJ|Presenter|Host)\s+/i, '').trim()).filter(Boolean));
+        data.djNames.push(
+          ...matches
+            .map((match: string) => match.replace(/(?:DJ|Presenter|Host)\s+/i, '').trim())
+            .filter(Boolean)
+        );
       }
     });
 
     // Extract genres
     const genrePatterns: RegExp[] = [
       /(?:playing|featuring|music)\s+(?:genres?|styles?)\s*:? a*([^.\n]+)/gi,
-      /(?:format|style)\s*:? a*([^.\n]+)/gi
+      /(?:format|style)\s*:? a*([^.\n]+)/gi,
     ];
 
     genrePatterns.forEach((pattern: RegExp) => {
@@ -233,7 +349,7 @@ export class AirtableContactEnrichment {
     // Extract submission guidelines
     const submissionPatterns: RegExp[] = [
       /(?:submission|demo|music)\s+(?:guidelines?|policies?|requirements?)\s*:? a*([^.\n]+)/gi,
-      /(?:send|submit)\s+(?:your|demo|music)\s+to\s*:? a*([^.\n]+)/gi
+      /(?:send|submit)\s+(?:your|demo|music)\s+to\s*:? a*([^.\n]+)/gi,
     ];
 
     submissionPatterns.forEach((pattern: RegExp) => {
@@ -246,7 +362,7 @@ export class AirtableContactEnrichment {
     // Extract social media links
     const socialPatterns: RegExp[] = [
       /(?:https?:\/\/)?(?:www\.)?(?:facebook|twitter|instagram|youtube|tiktok)\.com\/[^ \s]+/gi,
-      /@[a-zA-Z0-9_]+/g
+      /@[a-zA-Z0-9_]+/g,
     ];
 
     socialPatterns.forEach((pattern: RegExp) => {
@@ -259,7 +375,7 @@ export class AirtableContactEnrichment {
     // Extract contact forms
     const contactPatterns: RegExp[] = [
       /(?:contact|submit|demo)\s+(?:form|page|portal)\s*:? a*([^.\n]+)/gi,
-      /(?:email|send)\s+(?:to|at)\s*:? a*([^\s]+@[^ \s]+)/gi
+      /(?:email|send)\s+(?:to|at)\s*:? a*([^\s]+@[^ \s]+)/gi,
     ];
 
     contactPatterns.forEach((pattern: RegExp) => {
@@ -277,7 +393,7 @@ export class AirtableContactEnrichment {
     const records: ReadonlyArray<AirtableRecord> = await this.base(this.config.contactsTableId)
       .select({
         maxRecords: 10000,
-        filterByFormula: "{Contact Type} = 'Radio'"
+        filterByFormula: "{Contact Type} = 'Radio'",
       })
       .all();
     logger.info(`📈 Found ${records.length} radio contacts`);
@@ -331,11 +447,11 @@ export class AirtableContactEnrichment {
               contactForms: parsedData.contactForms || [],
               socialMedia: parsedData.socialMedia || [],
               additionalContacts: parsedData.additionalContacts || [],
-              rawContent: scrapedData.markdown || ''
+              rawContent: scrapedData.markdown || '',
             },
             confidence: 0.8,
             errors: [],
-            contactIntelligence: '' // Placeholder for now
+            contactIntelligence: '', // Placeholder for now
           };
           enrichments.push(enrichment);
           const stationKey: string = radioStation.name;
@@ -358,7 +474,7 @@ export class AirtableContactEnrichment {
         failedScrapes: errors.length,
         dryRun,
         errors,
-        summary
+        summary,
       };
       logger.info(`✅ Contact enrichment completed: ${enrichments.length} records enriched`);
       return result;
@@ -371,23 +487,27 @@ export class AirtableContactEnrichment {
   private async updateEnrichedRecords(enrichments: EnrichmentData[]): Promise<void> {
     logger.info(`🔄 Updating ${enrichments.length} enriched records...`);
     const updateRecords = enrichments.map(async (enrichment: EnrichmentData) => {
-      const records: AirtableRecord[] = Array.from(await this.base(this.config.contactsTableId)
-        .select({
-          filterByFormula: `{Email} = '${enrichment.email.replace(/'/g, "\\'")}'`
-        })
-        .all());
+      const records: AirtableRecord[] = Array.from(
+        await this.base(this.config.contactsTableId)
+          .select({
+            filterByFormula: `{Email} = '${enrichment.email.replace(/'/g, "\\'")}'`,
+          })
+          .all()
+      );
       if (records.length > 0 && records[0]) {
         return {
           id: records[0].id,
           fields: {
-            'Contact Intelligence': enrichment.contactIntelligence
-          }
+            'Contact Intelligence': enrichment.contactIntelligence,
+          },
         };
       }
       return null;
     });
     const resolvedRecords = await Promise.all(updateRecords);
-    const validRecords = resolvedRecords.filter((record): record is NonNullable<typeof record> => record !== null);
+    const validRecords = resolvedRecords.filter(
+      (record): record is NonNullable<typeof record> => record !== null
+    );
     if (validRecords.length > 0) {
       const batchSize: number = 10;
       let updatedCount: number = 0;
@@ -397,7 +517,9 @@ export class AirtableContactEnrichment {
         updatedCount += batch.length;
         logger.info(`✅ Updated batch ${Math.floor(i / batchSize) + 1}: ${batch.length} records`);
       }
-      logger.info(`✅ Completed: Updated ${updatedCount} enriched records in ${Math.ceil(validRecords.length / batchSize)} batches`);
+      logger.info(
+        `✅ Completed: Updated ${updatedCount} enriched records in ${Math.ceil(validRecords.length / batchSize)} batches`
+      );
     }
   }
 
@@ -432,8 +554,10 @@ export class AirtableContactEnrichment {
     const contactsTableId: string | undefined = process.env.AIRTABLE_CONTACTS_TABLE_ID;
     const firecrawlApiKey: string | undefined = process.env.FIRECRAWL_API_KEY;
     if (!apiKey || !baseId || !contactsTableId || !firecrawlApiKey) {
-      throw new Error('Missing required environment variables (AIRTABLE_API_KEY, AIRTABLE_BASE_ID, AIRTABLE_CONTACTS_TABLE_ID, FIRECRAWL_API_KEY)');
+      throw new Error(
+        'Missing required environment variables (AIRTABLE_API_KEY, AIRTABLE_BASE_ID, AIRTABLE_CONTACTS_TABLE_ID, FIRECRAWL_API_KEY)'
+      );
     }
     return new AirtableContactEnrichment(apiKey, baseId, contactsTableId, firecrawlApiKey);
   }
-} 
+}

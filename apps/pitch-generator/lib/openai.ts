@@ -73,11 +73,19 @@ export async function generatePitch(params: GeneratePitchParams) {
 CONTEXT ABOUT CONTACT:
 ${contextString || 'No additional context available.'}
 
-${voiceProfile && (voiceProfile.voice_background || voiceProfile.voice_style || voiceProfile.voice_typical_opener || voiceProfile.voice_approach) ? `VOICE PROFILE (Match this writing style):
+${
+  voiceProfile &&
+  (voiceProfile.voice_background ||
+    voiceProfile.voice_style ||
+    voiceProfile.voice_typical_opener ||
+    voiceProfile.voice_approach)
+    ? `VOICE PROFILE (Match this writing style):
 ${voiceProfile.voice_background ? `- Background: ${voiceProfile.voice_background}\n` : ''}${voiceProfile.voice_style ? `- Writing Style: ${voiceProfile.voice_style}\n` : ''}${voiceProfile.voice_typical_opener ? `- Typical Opener: ${voiceProfile.voice_typical_opener}\n` : ''}${voiceProfile.voice_approach ? `- Approach: ${voiceProfile.voice_approach}\n` : ''}${voiceProfile.voice_differentiator ? `- What Makes Me Different: ${voiceProfile.voice_differentiator}\n` : ''}${voiceProfile.voice_achievements ? `- Key Achievements to Reference: ${voiceProfile.voice_achievements}\n` : ''}${voiceProfile.voice_context_notes ? `- Context Notes: ${voiceProfile.voice_context_notes}\n` : ''}
 IMPORTANT: Write in this person's natural voice while maintaining professionalism and the UK music industry tone.
 
-` : ''}ARTIST INFORMATION:
+`
+    : ''
+}ARTIST INFORMATION:
 - Artist: ${artistName}
 - Track: "${trackTitle}"
 - Genre: ${genre}
@@ -123,7 +131,8 @@ Return ONLY the pitch body text, nothing else.`;
     model: 'claude-3-5-sonnet-20241022',
     max_tokens: 1024,
     temperature: 0.8,
-    system: 'You are an expert music PR professional who writes personalized, natural-sounding pitch emails that get responses. You avoid corporate speak and write like a real person.',
+    system:
+      'You are an expert music PR professional who writes personalized, natural-sounding pitch emails that get responses. You avoid corporate speak and write like a real person.',
     messages: [
       {
         role: 'user',
@@ -167,14 +176,16 @@ Format: Return exactly 3 subject lines, one per line, numbered 1-3.`;
     ],
   });
 
-  const subjectLines = subjectResponse.content[0].type === 'text' ? subjectResponse.content[0].text.trim() : '';
-  
+  const subjectLines =
+    subjectResponse.content[0].type === 'text' ? subjectResponse.content[0].text.trim() : '';
+
   // Parse subject lines
   const lines = subjectLines.split('\n').filter(line => line.trim());
   const subjects = {
     option1: lines[0]?.replace(/^[123]\.\s*/, '').trim() || `New ${genre} from ${artistName}`,
     option2: lines[1]?.replace(/^[123]\.\s*/, '').trim() || `${trackTitle} - ${artistName}`,
-    option3: lines[2]?.replace(/^[123]\.\s*/, '').trim() || `Track for ${contactOutlet || 'your show'}`,
+    option3:
+      lines[2]?.replace(/^[123]\.\s*/, '').trim() || `Track for ${contactOutlet || 'your show'}`,
   };
 
   // Determine suggested send time based on contact data
@@ -193,4 +204,3 @@ Format: Return exactly 3 subject lines, one per line, numbered 1-3.`;
     suggestedSendTime,
   };
 }
-

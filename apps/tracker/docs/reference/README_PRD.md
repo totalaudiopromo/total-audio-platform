@@ -5,6 +5,7 @@
 ## ✅ What's Been Built
 
 ### 1. Database Schema (`010_tracker_prd_schema.sql`)
+
 - **Campaigns Table**: Enhanced with intelligence fields
   - Performance metrics (success_rate, cost_per_result, performance_score, percentile_rank)
   - Auto-calculated triggers for intelligence
@@ -20,6 +21,7 @@
 - **Campaign Insights**: AI-generated patterns and recommendations
 
 ### 2. Intelligence Engine (`lib/intelligence.ts`)
+
 - **Performance Scoring**: 0-100 score vs industry benchmarks
 - **Pattern Recognition**: Identifies what works across campaigns
   - Genre performance analysis
@@ -31,12 +33,14 @@
 - **Insight Generation**: Human-readable recommendations
 
 ### 3. TypeScript Types (`lib/types/tracker.ts`)
+
 - Complete type system matching PRD
 - Campaign, Benchmark, Pattern, Activity, Insight interfaces
 - API response types
 - Form data types
 
 ### 4. API Routes
+
 - **`/api/campaigns`**:
   - GET: List campaigns with intelligence and patterns
   - POST: Create campaigns with auto-enrichment
@@ -45,6 +49,7 @@
   - GET: Fetch industry benchmark data
 
 ### 5. UI Components
+
 - **IntelligenceBar**: Shows personalized patterns prominently
 - **InsightCard**: Display individual insights with confidence scores
 - **CampaignCardWithIntel**: Intel-matching design with performance metrics
@@ -55,6 +60,7 @@
 ### Step 1: Run Database Migration
 
 **Option A: Via Supabase SQL Editor** (Recommended)
+
 1. Go to https://supabase.com/dashboard/project/mjfhegawkusjlkcgfevp/sql
 2. Copy entire contents of `supabase/migrations/010_tracker_prd_schema.sql`
 3. Paste into SQL editor
@@ -62,6 +68,7 @@
 5. Verify success (should see "Success. No rows returned")
 
 **Option B: Check Schema**
+
 ```sql
 -- Verify campaigns table has new columns
 SELECT column_name, data_type, is_nullable
@@ -75,13 +82,16 @@ SELECT COUNT(*) FROM benchmarks;
 ```
 
 ### Step 2: Install Dependencies
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/tracker
 npm install
 ```
 
 ### Step 3: Environment Variables
+
 Ensure `.env.local` has:
+
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=https://mjfhegawkusjlkcgfevp.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
@@ -89,6 +99,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
 ### Step 4: Start Development Server
+
 ```bash
 # Clear port if needed
 lsof -ti:3000 | xargs kill -9 2>/dev/null || true
@@ -105,6 +116,7 @@ PORT=3001 npm run dev
 1. **Visit**: http://localhost:3000
 2. **Sign Up/Login**: Create account or login
 3. **Create Test Campaign**:
+
    ```
    Name: "Summer Singles Radio Push"
    Platform: BBC Radio
@@ -125,6 +137,7 @@ PORT=3001 npm run dev
 ## 📊 Expected Behavior
 
 ### Dashboard Shows:
+
 - **Intelligence Bar**: Personalized insights at top
 - **Metrics Cards**: Total campaigns, active, success rate, spend
 - **Campaign Cards**: Each with:
@@ -135,11 +148,13 @@ PORT=3001 npm run dev
   - Top insight displayed
 
 ### Campaign Intelligence:
+
 - **Automatic**: Calculated on save via database trigger
 - **Real-time**: Updates when targets/results change
 - **Contextual**: Based on platform + genre benchmarks
 
 ### Pattern Recognition (3+ campaigns):
+
 - Best performing genre
 - Most effective platform
 - Optimal budget range
@@ -148,31 +163,37 @@ PORT=3001 npm run dev
 ## 🎯 Key Features
 
 ### 1. Benchmarking
+
 Every campaign compares to industry data:
+
 - **BBC Radio Electronic**: 26% avg success, £80 cost/result
 - **Playlists Electronic**: 45.5% avg success, £38 cost/result
 - **Commercial Radio**: Lower success, higher cost
 
 ### 2. Performance Scoring
+
 - 50 = Average performance
 - 70+ = Top 20% performance
 - < 30 = Below average
 
 ### 3. Cost Efficiency
+
 - Shows savings vs industry average
 - Flags campaigns costing significantly more
 - Budget recommendations based on data
 
 ### 4. Pattern Recognition
+
 ```typescript
-"Your Electronic tracks perform 2.1x better than your average"
-"Playlists campaigns show 42% success rate - your most effective platform"
-"Your optimal budget range is £300-£500 based on your most efficient campaigns"
+'Your Electronic tracks perform 2.1x better than your average';
+'Playlists campaigns show 42% success rate - your most effective platform';
+'Your optimal budget range is £300-£500 based on your most efficient campaigns';
 ```
 
 ## 🔧 Troubleshooting
 
 ### Migration Issues
+
 **Problem**: Column doesn't exist errors
 **Solution**: Run migration SQL in Supabase SQL Editor
 
@@ -180,17 +201,20 @@ Every campaign compares to industry data:
 **Solution**: Migration includes `NOTIFY pgrst, 'reload schema'`
 
 ### API Issues
+
 **Problem**: Campaigns return empty array
 **Solution**: Check RLS policies allow user access
 
 **Problem**: Intelligence not calculating
 **Solution**: Verify database trigger exists:
+
 ```sql
 SELECT tgname FROM pg_trigger WHERE tgrelid = 'campaigns'::regclass;
 -- Should show: trigger_calculate_intelligence
 ```
 
 ### Dashboard Issues
+
 **Problem**: No patterns showing
 **Solution**: Need 3+ campaigns with results (actual_reach > 0)
 
@@ -215,6 +239,7 @@ SELECT tgname FROM pg_trigger WHERE tgrelid = 'campaigns'::regclass;
 ## 🎨 Design Principles
 
 **Matches intel.totalaudiopromo.com:**
+
 - White background (#FFFFFF)
 - Purple accent (#5856d6 / purple-600)
 - Rounded corners (xl, lg)
@@ -226,6 +251,7 @@ SELECT tgname FROM pg_trigger WHERE tgrelid = 'campaigns'::regclass;
 ## 💰 Value Proposition
 
 Users get:
+
 - ✅ Campaign tracking (£5 value)
 - ✅ Success benchmarking (£20 value)
 - ✅ Pattern insights (£15 value)
@@ -246,6 +272,7 @@ Users get:
 ## 📧 Support
 
 Issues? Check:
+
 1. Database migration ran successfully
 2. Environment variables set correctly
 3. Supabase RLS policies allow access

@@ -7,7 +7,7 @@ const router = Router();
 router.post('/', async (req, res) => {
   try {
     const { prompt } = req.body;
-    
+
     if (!prompt) {
       res.status(400).json({ error: 'Prompt is required' });
       return;
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 
     const claudeService = new ClaudeService(config);
     const response = await claudeService.generateResponse(prompt);
-    
+
     res.json({ content: response });
   } catch (error) {
     console.error('Claude API error:', error);
@@ -33,4 +33,4 @@ router.post('/', async (req, res) => {
   }
 });
 
-export default router; 
+export default router;

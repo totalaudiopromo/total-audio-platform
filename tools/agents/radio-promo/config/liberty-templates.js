@@ -2,7 +2,7 @@
 
 /**
  * Liberty Music PR Templates Configuration
- * 
+ *
  * Professional press release templates and content styles
  * Based on Liberty Music PR's proven successful formats
  * Maintains consistent brand voice and industry credibility
@@ -11,21 +11,21 @@
 class LibertyTemplates {
   constructor() {
     this.version = '1.0.0';
-    
+
     // Liberty brand voice characteristics
     this.brandVoice = {
       tone: 'Professional yet approachable',
       style: 'British music industry credible',
       language: 'UK English with industry terminology',
-      personality: 'Confident, knowledgeable, results-driven'
+      personality: 'Confident, knowledgeable, results-driven',
     };
-    
+
     // Core press release templates
     this.pressReleaseTemplates = {
       // Main Liberty template - proven successful format
       liberty_standard: {
         name: 'Liberty Standard Release',
-        description: 'Chris Schofield\'s proven press release format',
+        description: "Chris Schofield's proven press release format",
         template: `FOR IMMEDIATE RELEASE
 
 {pressReleaseHeadline}
@@ -57,10 +57,10 @@ ABOUT LIBERTY MUSIC PR:
 Liberty Music PR is a boutique music publicity agency specialising in radio promotion, digital marketing, and industry relations. Founded by industry veteran Chris Schofield, Liberty has secured coverage for artists across BBC Radio, commercial stations, and specialist music media throughout the UK and Europe.
 
 {releaseNotes}`,
-        
+
         variables: [
           'pressReleaseHeadline',
-          'subheadline', 
+          'subheadline',
           'dateline',
           'openingParagraph',
           'artistQuote',
@@ -69,10 +69,10 @@ Liberty Music PR is a boutique music publicity agency specialising in radio prom
           'callToAction',
           'boilerplate',
           'phoneNumber',
-          'releaseNotes'
-        ]
+          'releaseNotes',
+        ],
       },
-      
+
       // Genre-specific variations
       electronic_focused: {
         name: 'Electronic Music Release',
@@ -102,9 +102,9 @@ Chris Schofield
 Liberty Music PR
 Specialist Electronic Music Promotion
 Email: chris@libertymusicpr.com
-Web: https://libertymusicpr.com`
+Web: https://libertymusicpr.com`,
       },
-      
+
       indie_focused: {
         name: 'Independent Music Release',
         description: 'Crafted for indie/alternative artists',
@@ -135,9 +135,9 @@ Chris Schofield
 Liberty Music PR  
 Independent Artist Specialist
 Email: chris@libertymusicpr.com
-Web: https://libertymusicpr.com`
+Web: https://libertymusicpr.com`,
       },
-      
+
       // Rush/urgent release template
       breaking_news: {
         name: 'Breaking News Release',
@@ -164,10 +164,10 @@ Liberty Music PR
 Mobile: {mobileNumber}
 Email: chris@libertymusicpr.com
 
-###`
-      }
+###`,
+      },
     };
-    
+
     // Email pitch templates for different station types
     this.emailTemplates = {
       commercial_radio: {
@@ -199,9 +199,9 @@ Liberty Music PR
 chris@libertymusicpr.com
 {phoneNumber}
 
-P.S. {personalNote}`
+P.S. {personalNote}`,
       },
-      
+
       specialist_show: {
         name: 'Specialist Show Pitch',
         subject: '{genre} specialist - {artistName} "{trackTitle}" - Exclusive for {showName}',
@@ -224,9 +224,9 @@ Liberty Music PR
 Specialist Music Promotion
 chris@libertymusicpr.com
 
-"Supporting specialist music since {yearEstablished}"`
+"Supporting specialist music since {yearEstablished}"`,
       },
-      
+
       bbc_introducing: {
         name: 'BBC Introducing Submission',
         subject: 'BBC Introducing Submission - {artistName} "{trackTitle}" - {location}',
@@ -257,9 +257,9 @@ Best wishes,
 Chris Schofield
 Liberty Music PR
 On behalf of {artistName}
-chris@libertymusicpr.com`
+chris@libertymusicpr.com`,
       },
-      
+
       follow_up: {
         name: 'Follow-up Email',
         subject: 'Following up - {artistName} "{trackTitle}" for {stationName}',
@@ -280,10 +280,10 @@ Thanks for your time and continued support for new music.
 Best,
 Chris
 Liberty Music PR
-chris@libertymusicpr.com`
-      }
+chris@libertymusicpr.com`,
+      },
     };
-    
+
     // Content generation prompts for different contexts
     this.contentPrompts = {
       headline_generation: `Create a compelling press release headline for {artistName}'s new {genre} track "{trackTitle}". 
@@ -299,7 +299,7 @@ Examples of good headlines:
 - "Artist Name Returns with Captivating New Single 'Track Title'"
 
 Generate 5 headline options:`,
-      
+
       opening_paragraph: `Write an engaging opening paragraph for a press release about {artistName}'s new {genre} track "{trackTitle}".
 
 Requirements:
@@ -312,7 +312,7 @@ Requirements:
 Context: {additionalContext}
 
 Opening paragraph:`,
-      
+
       artist_quote: `Generate an authentic artist quote for {artistName} about their new track "{trackTitle}".
 
 Style: 
@@ -326,7 +326,7 @@ Genre context: {genre}
 Track theme: {trackTheme}
 
 Artist quote:`,
-      
+
       social_media_post: `Create a social media post for {artistName}'s new release "{trackTitle}".
 
 Platform: {platform}
@@ -338,7 +338,7 @@ Genre: {genre}
 Key message: {keyMessage}
 
 Post:`,
-      
+
       bio_paragraph: `Write a professional artist bio paragraph for {artistName}.
 
 Style: Third person, present tense
@@ -350,17 +350,29 @@ Genre: {genre}
 Key achievements: {achievements}
 Distinctive elements: {uniqueQualities}
 
-Bio paragraph:`
+Bio paragraph:`,
     };
-    
+
     // Industry-specific terminology and phrases
     this.industryLanguage = {
       positive_descriptors: [
-        'compelling', 'captivating', 'stunning', 'masterful', 'authentic',
-        'innovative', 'distinctive', 'powerful', 'mesmerising', 'exceptional',
-        'brilliant', 'accomplished', 'sophisticated', 'dynamic', 'engaging'
+        'compelling',
+        'captivating',
+        'stunning',
+        'masterful',
+        'authentic',
+        'innovative',
+        'distinctive',
+        'powerful',
+        'mesmerising',
+        'exceptional',
+        'brilliant',
+        'accomplished',
+        'sophisticated',
+        'dynamic',
+        'engaging',
       ],
-      
+
       genre_descriptors: {
         electronic: ['cutting-edge', 'immersive', 'innovative', 'hypnotic', 'experimental'],
         indie: ['authentic', 'heartfelt', 'genuine', 'intimate', 'honest'],
@@ -368,53 +380,53 @@ Bio paragraph:`
         rock: ['powerful', 'driving', 'anthemic', 'energetic', 'raw'],
         folk: ['storytelling', 'emotive', 'acoustic', 'traditional', 'timeless'],
         hip_hop: ['innovative', 'rhythmic', 'conscious', 'dynamic', 'contemporary'],
-        classical: ['sophisticated', 'orchestral', 'elegant', 'refined', 'virtuosic']
+        classical: ['sophisticated', 'orchestral', 'elegant', 'refined', 'virtuosic'],
       },
-      
+
       industry_phrases: [
         'garnering significant industry attention',
         'building a dedicated following',
-        'receiving specialist radio support', 
+        'receiving specialist radio support',
         'connecting with audiences across',
         'demonstrating artistic growth',
         'pushing creative boundaries',
         'establishing themselves as',
-        'continuing their musical journey'
+        'continuing their musical journey',
       ],
-      
+
       call_to_actions: [
         'Available now on all major streaming platforms',
         'Stream and download across all digital platforms',
         'Get the track on your preferred streaming service',
         'Listen now wherever you get your music',
-        'Available for immediate radio play and playlist inclusion'
-      ]
+        'Available for immediate radio play and playlist inclusion',
+      ],
     };
-    
+
     // Template customisation options
     this.customisationOptions = {
       urgency_levels: {
         standard: 'Normal release cycle timing',
         priority: 'Expedited review requested',
         urgent: 'Time-sensitive - immediate attention needed',
-        exclusive: 'Exclusive first listen opportunity'
+        exclusive: 'Exclusive first listen opportunity',
       },
-      
+
       target_demographics: {
         mainstream: 'Broad commercial appeal',
         specialist: 'Genre-focused audience',
         underground: 'Alternative/underground scene',
-        crossover: 'Multi-demographic appeal'
+        crossover: 'Multi-demographic appeal',
       },
-      
+
       campaign_angles: {
         debut: 'Emerging artist introduction',
         comeback: 'Artist return after hiatus',
-        evolution: 'Artistic development showcase', 
+        evolution: 'Artistic development showcase',
         collaboration: 'Featured collaboration highlight',
         concept: 'Thematic/conceptual release',
-        seasonal: 'Timely/seasonal relevance'
-      }
+        seasonal: 'Timely/seasonal relevance',
+      },
     };
   }
 
@@ -426,39 +438,39 @@ Bio paragraph:`
     if (!template) {
       throw new Error(`Template '${templateName}' not found`);
     }
-    
+
     // Build context for content generation
     const context = {
       artistName: campaignData.artistName || 'Unknown Artist',
       trackTitle: campaignData.trackTitle || 'Untitled Track',
       genre: campaignData.genre || 'Music',
       releaseDate: campaignData.releaseDate || new Date().toDateString(),
-      ...options
+      ...options,
     };
-    
+
     // Generate dynamic content elements
     const generatedContent = this.generateContentElements(context, templateName);
-    
+
     // Merge with provided context
     const fullContext = { ...context, ...generatedContent };
-    
+
     // Replace template variables
     let pressRelease = template.template;
-    
+
     Object.entries(fullContext).forEach(([key, value]) => {
       const regex = new RegExp(`{${key}}`, 'g');
       pressRelease = pressRelease.replace(regex, value);
     });
-    
+
     // Clean up any unreplaced variables
     pressRelease = pressRelease.replace(/{[^}]+}/g, '[TO BE COMPLETED]');
-    
+
     return {
       content: pressRelease,
       template: templateName,
       generatedAt: new Date().toISOString(),
       wordCount: pressRelease.split(/\s+/).length,
-      context: fullContext
+      context: fullContext,
     };
   }
 
@@ -467,38 +479,39 @@ Bio paragraph:`
    */
   generateContentElements(context, templateName) {
     const generated = {};
-    
+
     // Generate headline
     generated.pressReleaseHeadline = this.generateHeadline(context);
-    
+
     // Generate subheadline
     generated.subheadline = this.generateSubheadline(context);
-    
+
     // Generate dateline
     generated.dateline = this.generateDateline();
-    
+
     // Generate opening paragraph
     generated.openingParagraph = this.generateOpeningParagraph(context);
-    
+
     // Generate artist quote
     generated.artistQuote = this.generateArtistQuote(context);
-    
+
     // Generate background paragraph
     generated.backgroundParagraph = this.generateBackgroundParagraph(context);
-    
+
     // Generate industry context
     generated.industryContext = this.generateIndustryContext(context);
-    
+
     // Generate call to action
     generated.callToAction = this.generateCallToAction(context);
-    
+
     // Generate boilerplate
     generated.boilerplate = this.generateBoilerplate(context);
-    
+
     // Add standard contact info
     generated.phoneNumber = '+44 (0)7XXX XXXXXX';
-    generated.releaseNotes = 'High-resolution images and additional promotional materials available upon request.';
-    
+    generated.releaseNotes =
+      'High-resolution images and additional promotional materials available upon request.';
+
     return generated;
   }
 
@@ -507,15 +520,15 @@ Bio paragraph:`
    */
   generateHeadline(context) {
     const { artistName, trackTitle, genre } = context;
-    
+
     const templates = [
       `${artistName} Delivers Stunning New ${genre} Anthem "${trackTitle}"`,
       `Rising Star ${artistName} Unleashes Powerful New Single "${trackTitle}"`,
       `${artistName} Returns with Captivating ${genre} Track "${trackTitle}"`,
       `Breakthrough Artist ${artistName} Shares Compelling New Release "${trackTitle}"`,
-      `${artistName} Drops Game-Changing ${genre} Single "${trackTitle}"`
+      `${artistName} Drops Game-Changing ${genre} Single "${trackTitle}"`,
     ];
-    
+
     // Select based on context or randomly
     return templates[Math.floor(Math.random() * templates.length)];
   }
@@ -525,12 +538,13 @@ Bio paragraph:`
    */
   generateSubheadline(context) {
     const { artistName, genre } = context;
-    
-    const descriptors = this.industryLanguage.genre_descriptors[genre.toLowerCase()] || 
-                       this.industryLanguage.positive_descriptors;
-    
+
+    const descriptors =
+      this.industryLanguage.genre_descriptors[genre.toLowerCase()] ||
+      this.industryLanguage.positive_descriptors;
+
     const randomDescriptor = descriptors[Math.floor(Math.random() * descriptors.length)];
-    
+
     return `${randomDescriptor.charAt(0).toUpperCase()}${randomDescriptor.slice(1)} new release showcases ${artistName}'s evolving artistry and distinctive sound`;
   }
 
@@ -538,14 +552,20 @@ Bio paragraph:`
    * Generate dateline
    */
   generateDateline() {
-    const locations = ['London, UK', 'Manchester, UK', 'Birmingham, UK', 'Bristol, UK', 'Glasgow, UK'];
+    const locations = [
+      'London, UK',
+      'Manchester, UK',
+      'Birmingham, UK',
+      'Bristol, UK',
+      'Glasgow, UK',
+    ];
     const randomLocation = locations[Math.floor(Math.random() * locations.length)];
-    const date = new Date().toLocaleDateString('en-GB', { 
-      day: 'numeric', 
-      month: 'long', 
-      year: 'numeric' 
+    const date = new Date().toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
     });
-    
+
     return `${randomLocation}, ${date}`;
   }
 
@@ -554,10 +574,10 @@ Bio paragraph:`
    */
   generateOpeningParagraph(context) {
     const { artistName, trackTitle, genre } = context;
-    
+
     const descriptors = this.industryLanguage.positive_descriptors;
     const randomDescriptor = descriptors[Math.floor(Math.random() * descriptors.length)];
-    
+
     return `${artistName} has released their latest ${genre} track "${trackTitle}", a ${randomDescriptor} piece that demonstrates the artist's continued evolution and commitment to creating authentic, engaging music that resonates with listeners.`;
   }
 
@@ -566,14 +586,14 @@ Bio paragraph:`
    */
   generateArtistQuote(context) {
     const { trackTitle, artistName } = context;
-    
+
     const quotes = [
       `"${trackTitle} represents everything I've been working towards as an artist. It's honest, it's authentic, and it connects with people on a real level," says ${artistName}.`,
       `"This track came from a very personal place," explains ${artistName}. "I wanted to create something that felt genuine and spoke to the experiences we all share."`,
       `"${trackTitle} is about pushing boundaries while staying true to who I am as an artist," reflects ${artistName}. "It's the most honest music I've ever made."`,
-      `"I'm incredibly excited to share this with everyone," says ${artistName}. "It represents a new chapter in my music and I think people will really connect with it."`
+      `"I'm incredibly excited to share this with everyone," says ${artistName}. "It represents a new chapter in my music and I think people will really connect with it."`,
     ];
-    
+
     return quotes[Math.floor(Math.random() * quotes.length)];
   }
 
@@ -582,10 +602,10 @@ Bio paragraph:`
    */
   generateBackgroundParagraph(context) {
     const { artistName, genre } = context;
-    
+
     const phrases = this.industryLanguage.industry_phrases;
     const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
-    
+
     return `Known for their distinctive approach to ${genre.toLowerCase()}, ${artistName} has been ${randomPhrase} with their unique blend of authentic songwriting and innovative production techniques.`;
   }
 
@@ -594,16 +614,20 @@ Bio paragraph:`
    */
   generateIndustryContext(context) {
     const { genre } = context;
-    
+
     const contexts = {
-      electronic: 'With electronic music continuing its global dominance and UK producers at the forefront of innovation, this release positions the artist within the thriving British electronic scene.',
-      indie: 'In an era where independent music continues to find new audiences through grassroots support and specialist radio, this track represents authentic artistry that resonates with listeners.',
+      electronic:
+        'With electronic music continuing its global dominance and UK producers at the forefront of innovation, this release positions the artist within the thriving British electronic scene.',
+      indie:
+        'In an era where independent music continues to find new audiences through grassroots support and specialist radio, this track represents authentic artistry that resonates with listeners.',
       pop: 'As the UK music scene continues to produce globally successful pop artists, this release demonstrates the quality and creativity emerging from British musicians.',
-      rock: 'Building on the UK\'s rich rock heritage while bringing contemporary sensibilities, this track showcases the continued vitality of British rock music.'
+      rock: "Building on the UK's rich rock heritage while bringing contemporary sensibilities, this track showcases the continued vitality of British rock music.",
     };
-    
-    return contexts[genre.toLowerCase()] || 
-           'The track demonstrates the continued strength and diversity of the UK music scene, with artists creating compelling music that connects with audiences both domestically and internationally.';
+
+    return (
+      contexts[genre.toLowerCase()] ||
+      'The track demonstrates the continued strength and diversity of the UK music scene, with artists creating compelling music that connects with audiences both domestically and internationally.'
+    );
   }
 
   /**
@@ -629,7 +653,7 @@ Bio paragraph:`
     if (!template) {
       throw new Error(`Email template '${templateName}' not found`);
     }
-    
+
     const context = {
       artistName: campaignData.artistName || 'Unknown Artist',
       trackTitle: campaignData.trackTitle || 'Untitled Track',
@@ -637,25 +661,25 @@ Bio paragraph:`
       djName: options.djName || '[DJ NAME]',
       stationName: options.stationName || '[STATION NAME]',
       personalNote: options.personalNote || 'Hope this finds you well!',
-      ...options
+      ...options,
     };
-    
+
     // Replace template variables
     let subject = template.subject;
     let content = template.template;
-    
+
     Object.entries(context).forEach(([key, value]) => {
       const regex = new RegExp(`{${key}}`, 'g');
       subject = subject.replace(regex, value);
       content = content.replace(regex, value);
     });
-    
+
     return {
       subject: subject,
       content: content,
       template: templateName,
       generatedAt: new Date().toISOString(),
-      context: context
+      context: context,
     };
   }
 
@@ -663,10 +687,8 @@ Bio paragraph:`
    * Get template by name
    */
   getTemplate(templateName, type = 'pressRelease') {
-    const templates = type === 'pressRelease' ? 
-                     this.pressReleaseTemplates : 
-                     this.emailTemplates;
-    
+    const templates = type === 'pressRelease' ? this.pressReleaseTemplates : this.emailTemplates;
+
     return templates[templateName];
   }
 
@@ -675,15 +697,15 @@ Bio paragraph:`
    */
   listTemplates(type = 'all') {
     const templates = {};
-    
+
     if (type === 'all' || type === 'pressRelease') {
       templates.pressRelease = Object.keys(this.pressReleaseTemplates);
     }
-    
+
     if (type === 'all' || type === 'email') {
       templates.email = Object.keys(this.emailTemplates);
     }
-    
+
     return templates;
   }
 
@@ -691,20 +713,19 @@ Bio paragraph:`
    * Validate campaign data for template generation
    */
   validateCampaignData(campaignData, templateName) {
-    const template = this.pressReleaseTemplates[templateName] || 
-                     this.emailTemplates[templateName];
-    
+    const template = this.pressReleaseTemplates[templateName] || this.emailTemplates[templateName];
+
     if (!template) {
       throw new Error(`Template '${templateName}' not found`);
     }
-    
+
     const required = ['artistName', 'trackTitle', 'genre'];
     const missing = required.filter(field => !campaignData[field]);
-    
+
     if (missing.length > 0) {
       throw new Error(`Missing required fields: ${missing.join(', ')}`);
     }
-    
+
     return true;
   }
 

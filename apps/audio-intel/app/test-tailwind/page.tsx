@@ -13,11 +13,12 @@ export default function TestTailwindPage() {
     const testElement = document.createElement('div');
     testElement.className = 'bg-red-500 text-white p-2';
     document.body.appendChild(testElement);
-    
+
     const computedStyle = window.getComputedStyle(testElement);
-    const isWorking = computedStyle.backgroundColor !== 'rgba(0, 0, 0, 0)' && 
-                     computedStyle.backgroundColor !== 'transparent';
-    
+    const isWorking =
+      computedStyle.backgroundColor !== 'rgba(0, 0, 0, 0)' &&
+      computedStyle.backgroundColor !== 'transparent';
+
     setTailwindWorking(isWorking);
     document.body.removeChild(testElement);
 
@@ -25,11 +26,12 @@ export default function TestTailwindPage() {
     const customColorElement = document.createElement('div');
     customColorElement.className = 'bg-brand-blue';
     document.body.appendChild(customColorElement);
-    
+
     const customColorStyle = window.getComputedStyle(customColorElement);
-    const customColorsOk = customColorStyle.backgroundColor !== 'rgba(0, 0, 0, 0)' && 
-                          customColorStyle.backgroundColor !== 'transparent';
-    
+    const customColorsOk =
+      customColorStyle.backgroundColor !== 'rgba(0, 0, 0, 0)' &&
+      customColorStyle.backgroundColor !== 'transparent';
+
     setCustomColorsWorking(customColorsOk);
     document.body.removeChild(customColorElement);
 
@@ -38,7 +40,7 @@ export default function TestTailwindPage() {
       const width = window.innerWidth;
       setResponsiveWorking(width > 0);
     };
-    
+
     checkResponsive();
     window.addEventListener('resize', checkResponsive);
 
@@ -85,7 +87,7 @@ export default function TestTailwindPage() {
             </div>
           </div>
         </div>
-        
+
         {/* Basic Tailwind Classes */}
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-gray-800">Basic Tailwind Classes</h2>
@@ -151,7 +153,8 @@ export default function TestTailwindPage() {
             </div>
           </div>
           <div className="mt-4 p-3 bg-blue-100 border border-blue-400 text-blue-700 rounded">
-            <strong>Expected:</strong> Button with hover effects, card that lifts on hover, progress bar with brand gradient
+            <strong>Expected:</strong> Button with hover effects, card that lifts on hover, progress
+            bar with brand gradient
           </div>
         </div>
 
@@ -176,17 +179,20 @@ export default function TestTailwindPage() {
             </div>
           </div>
           <div className="mt-4 p-3 bg-blue-100 border border-blue-400 text-blue-700 rounded">
-            <strong>Expected:</strong> Resize browser window to see different text (Mobile/Tablet/Desktop)
+            <strong>Expected:</strong> Resize browser window to see different text
+            (Mobile/Tablet/Desktop)
           </div>
         </div>
 
         {/* Dark Mode Support */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">Dark Mode Support</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">
+            Dark Mode Support
+          </h2>
           <p className="text-gray-600 dark:text-gray-300">
             This section supports dark mode. Click the button below to test.
           </p>
-          <button 
+          <button
             onClick={() => document.documentElement.classList.toggle('dark')}
             className="mt-4 bg-gray-800 dark:bg-white text-white dark:text-gray-800 px-4 py-2 rounded"
           >
@@ -198,19 +204,23 @@ export default function TestTailwindPage() {
         </div>
 
         {/* Final Status */}
-        <div className={`p-6 rounded-lg text-center text-lg font-semibold ${
-          tailwindWorking && customColorsWorking && animationsWorking && responsiveWorking
-            ? 'bg-green-100 border border-green-400 text-green-700'
-            : 'bg-red-100 border border-red-400 text-red-700'
-        }`}>
+        <div
+          className={`p-6 rounded-lg text-center text-lg font-semibold ${
+            tailwindWorking && customColorsWorking && animationsWorking && responsiveWorking
+              ? 'bg-green-100 border border-green-400 text-green-700'
+              : 'bg-red-100 border border-red-400 text-red-700'
+          }`}
+        >
           {tailwindWorking && customColorsWorking && animationsWorking && responsiveWorking ? (
             <>
-              <strong>🎉 SUCCESS!</strong><br />
+              <strong>🎉 SUCCESS!</strong>
+              <br />
               All Tailwind CSS features are working correctly!
             </>
           ) : (
             <>
-              <strong>⚠️ ISSUES DETECTED!</strong><br />
+              <strong>⚠️ ISSUES DETECTED!</strong>
+              <br />
               Check the status dashboard above for specific problems.
             </>
           )}
@@ -222,13 +232,22 @@ export default function TestTailwindPage() {
             <h3 className="text-lg font-semibold mb-4">🔧 Troubleshooting Guide</h3>
             <ul className="list-disc list-inside space-y-2">
               {!tailwindWorking && (
-                <li>Tailwind not working: Check if <code>globals.css</code> is imported in <code>layout.tsx</code></li>
+                <li>
+                  Tailwind not working: Check if <code>globals.css</code> is imported in{' '}
+                  <code>layout.tsx</code>
+                </li>
               )}
               {!customColorsWorking && (
-                <li>Custom colors not working: Check <code>tailwind.config.ts</code> brand colors configuration</li>
+                <li>
+                  Custom colors not working: Check <code>tailwind.config.ts</code> brand colors
+                  configuration
+                </li>
               )}
               {!animationsWorking && (
-                <li>Animations not working: Check <code>tailwind.config.ts</code> keyframes and animations</li>
+                <li>
+                  Animations not working: Check <code>tailwind.config.ts</code> keyframes and
+                  animations
+                </li>
               )}
               {!responsiveWorking && (
                 <li>Responsive not working: Check viewport meta tag and responsive classes</li>
@@ -242,4 +261,4 @@ export default function TestTailwindPage() {
       </div>
     </div>
   );
-} 
+}

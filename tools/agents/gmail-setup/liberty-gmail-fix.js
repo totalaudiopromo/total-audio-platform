@@ -47,7 +47,7 @@ class LibertyGmailFix {
       // Marketing Junk
       { name: 'Marketing Junk/WARM' },
       { name: 'Marketing Junk/Machina' },
-      { name: 'Marketing Junk/Other' }
+      { name: 'Marketing Junk/Other' },
     ];
 
     // PRECISE filter rules - exclude everything that's been causing problems
@@ -57,7 +57,7 @@ class LibertyGmailFix {
         description: 'Otter AI Transcripts',
         query: 'from:otter.ai OR from:no-reply@otter.ai OR from:noreply@otter.ai',
         addLabels: ['Personal Tools/Otter AI'],
-        skipInbox: false
+        skipInbox: false,
       },
 
       // 2. Gemini transcripts
@@ -65,7 +65,7 @@ class LibertyGmailFix {
         description: 'Gemini Transcripts',
         query: 'from:gemini OR from:google-gemini OR subject:"Gemini"',
         addLabels: ['Personal Tools/Gemini'],
-        skipInbox: false
+        skipInbox: false,
       },
 
       // 3. WARM - marketing junk
@@ -74,7 +74,7 @@ class LibertyGmailFix {
         query: 'from:WARM OR from:warmmusichelp.com OR from:warmapp.co',
         addLabels: ['Marketing Junk/WARM'],
         skipInbox: true,
-        markRead: true
+        markRead: true,
       },
 
       // 4. Machina - marketing junk
@@ -83,56 +83,61 @@ class LibertyGmailFix {
         query: 'from:machina OR subject:"Machina Account"',
         addLabels: ['Marketing Junk/Machina'],
         skipInbox: true,
-        markRead: true
+        markRead: true,
       },
 
       // 5. Other cold marketing (Music Reaction, etc.)
       {
         description: 'Other Marketing Junk',
-        query: 'from:musicreaction OR subject:"grow your audience" OR subject:"promote your music" -from:libertymusicpr.com',
+        query:
+          'from:musicreaction OR subject:"grow your audience" OR subject:"promote your music" -from:libertymusicpr.com',
         addLabels: ['Marketing Junk/Other'],
         skipInbox: true,
-        markRead: true
+        markRead: true,
       },
 
       // 6. New campaign assignments - needs action
       {
         description: 'New Campaign - Needs Action',
-        query: 'cc:chrisschofield@libertymusicpr.com (subject:R4 OR subject:R6) -subject:Re: -subject:Fwd:',
+        query:
+          'cc:chrisschofield@libertymusicpr.com (subject:R4 OR subject:R6) -subject:Re: -subject:Fwd:',
         addLabels: ['Liberty/Needs Action'],
-        markImportant: true
+        markImportant: true,
       },
 
       // 7. New campaign assignments - active
       {
         description: 'New Campaign - Active',
-        query: 'cc:chrisschofield@libertymusicpr.com (subject:R4 OR subject:R6) -subject:Re: -subject:Fwd:',
-        addLabels: ['Liberty/Active Campaigns']
+        query:
+          'cc:chrisschofield@libertymusicpr.com (subject:R4 OR subject:R6) -subject:Re: -subject:Fwd:',
+        addLabels: ['Liberty/Active Campaigns'],
       },
 
       // 8. Station auto-responses
       {
         description: 'Station Auto-Responses',
-        query: 'subject:"out of office" OR subject:"automatic reply" OR subject:"auto-reply" OR subject:"autoreply" OR subject:"away from desk"',
+        query:
+          'subject:"out of office" OR subject:"automatic reply" OR subject:"auto-reply" OR subject:"autoreply" OR subject:"away from desk"',
         addLabels: ['Liberty/Station Auto-Responses'],
         skipInbox: true,
-        markRead: true
+        markRead: true,
       },
 
       // 9. REAL station feedback (most restrictive - exclude all the noise)
       {
         description: 'Real Station Feedback',
-        query: 'to:chrisschofield@libertymusicpr.com (subject:Re: OR subject:Fwd:) (subject:R4 OR subject:R6) -from:libertymusicpr.com -from:otter.ai -from:gemini -from:WARM -from:machina -from:musicreaction -subject:"out of office" -subject:"automatic reply" -subject:"autoreply"',
+        query:
+          'to:chrisschofield@libertymusicpr.com (subject:Re: OR subject:Fwd:) (subject:R4 OR subject:R6) -from:libertymusicpr.com -from:otter.ai -from:gemini -from:WARM -from:machina -from:musicreaction -subject:"out of office" -subject:"automatic reply" -subject:"autoreply"',
         addLabels: ['Liberty/Station Feedback'],
-        markImportant: true
+        markImportant: true,
       },
 
       // 10. Internal Liberty team
       {
         description: 'Liberty Internal',
         query: 'from:libertymusicpr.com -cc:chrisschofield@libertymusicpr.com',
-        addLabels: ['Liberty/Internal Team']
-      }
+        addLabels: ['Liberty/Internal Team'],
+      },
     ];
   }
 
@@ -152,7 +157,7 @@ class LibertyGmailFix {
         try {
           await this.gmail.users.settings.filters.delete({
             userId: 'me',
-            id: filter.id
+            id: filter.id,
           });
           console.log(`✅ Deleted filter: ${filter.id}`);
         } catch (error) {
@@ -181,8 +186,8 @@ class LibertyGmailFix {
           requestBody: {
             name: labelConfig.name,
             labelListVisibility: 'labelShow',
-            messageListVisibility: 'show'
-          }
+            messageListVisibility: 'show',
+          },
         });
         console.log(`✅ Created: ${labelConfig.name}`);
       } catch (error) {
@@ -230,12 +235,12 @@ class LibertyGmailFix {
           userId: 'me',
           requestBody: {
             criteria: {
-              query: rule.query
+              query: rule.query,
             },
             action: {
-              addLabelIds: addLabelIds.length > 0 ? addLabelIds : undefined
-            }
-          }
+              addLabelIds: addLabelIds.length > 0 ? addLabelIds : undefined,
+            },
+          },
         };
 
         // Add optional actions
@@ -252,7 +257,6 @@ class LibertyGmailFix {
 
         await this.gmail.users.settings.filters.create(filterRequest);
         console.log(`✅ Created filter: ${rule.description}`);
-
       } catch (error) {
         console.error(`❌ Failed to create filter "${rule.description}":`, error.message);
       }
@@ -294,7 +298,6 @@ class LibertyGmailFix {
       console.log('\n✅ All old broken filters deleted');
       console.log('✅ New precise filters active');
       console.log('\n💡 Next: Run liberty-bulk-fix.js to fix existing emails');
-
     } catch (error) {
       console.error('❌ Setup failed:', error);
       throw error;
@@ -371,7 +374,6 @@ async function main() {
         console.log('');
         console.log('Example: node liberty-gmail-fix.js setup');
     }
-
   } catch (error) {
     console.error('❌ Command failed:', error.message);
     process.exit(1);

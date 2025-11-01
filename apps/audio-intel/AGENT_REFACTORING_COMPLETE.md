@@ -11,6 +11,7 @@ Refactored messy inline enrichment logic into clean agent-based architecture.
 ### Before & After Comparison
 
 #### Before: `/api/enrich-claude/route.ts`
+
 - **514 lines** of mixed concerns
 - Inline caching logic (44 lines)
 - Inline rate limiting (57 lines)
@@ -20,6 +21,7 @@ Refactored messy inline enrichment logic into clean agent-based architecture.
 - Hard to test, hard to debug
 
 #### After: `/api/enrich-claude/route.ts`
+
 - **115 lines** total
 - Clean agent call: `Agents.intel.execute()`
 - Automatic Supabase logging
@@ -44,8 +46,8 @@ async function runClaudeResearch(prompt, cacheKey, retries) {
 const result = await Agents.intel.execute({
   artist: contact.name,
   genre: contact.genre,
-  region: 'UK'
-})
+  region: 'UK',
+});
 ```
 
 ## Practical Benefits
@@ -53,6 +55,7 @@ const result = await Agents.intel.execute({
 ### 1. **Cleaner Development**
 
 **Before**:
+
 ```typescript
 // Reading route.ts was painful
 // 514 lines of mixed logic
@@ -61,6 +64,7 @@ const result = await Agents.intel.execute({
 ```
 
 **After**:
+
 ```typescript
 // route.ts is now readable
 // Clear intent: use IntelAgent
@@ -71,29 +75,33 @@ const result = await Agents.intel.execute({
 ### 2. **Better Testing**
 
 **Before**:
+
 ```bash
 # Had to test via HTTP requests
 curl localhost:3000/api/enrich-claude -d '{"contacts":[...]}'
 ```
 
 **After**:
+
 ```typescript
 // Can test agent directly
-import { Agents } from '@/agents'
+import { Agents } from '@/agents';
 
-const result = await Agents.intel.execute({ artist: 'Test' })
-expect(result.success).toBe(true)
+const result = await Agents.intel.execute({ artist: 'Test' });
+expect(result.success).toBe(true);
 ```
 
 ### 3. **Automatic Observability**
 
 Every enrichment now logs to Supabase:
+
 - Execution time
 - Success/failure
 - Error details
 - Agent version
 
 Query performance:
+
 ```sql
 -- See what's working
 SELECT * FROM agent_performance;
@@ -110,10 +118,11 @@ SELECT * FROM agent_logs WHERE success = false;
 **Before**: Scattered console.logs, unclear error sources
 
 **After**: Structured logging via BaseAgent
+
 ```typescript
 // Automatic logging in BaseAgent
-this.log('Starting execution', { payload })
-this.log('Execution succeeded', { latency })
+this.log('Starting execution', { payload });
+this.log('Execution succeeded', { latency });
 // Records to Supabase automatically
 ```
 
@@ -124,6 +133,7 @@ this.log('Execution succeeded', { latency })
 **URL**: http://localhost:3000/dashboard/agents
 
 Shows:
+
 - Agent health status
 - Success rates
 - Average latency
@@ -134,16 +144,19 @@ Shows:
 ### 2. Agent API Endpoints
 
 **List agents**:
+
 ```bash
 curl http://localhost:3000/api/agents
 ```
 
 **Check health**:
+
 ```bash
 curl http://localhost:3000/api/agents/health
 ```
 
 **Get stats**:
+
 ```bash
 curl http://localhost:3000/api/agents/stats?name=intel
 ```
@@ -189,29 +202,31 @@ curl http://localhost:3000/api/agents/health
 ### Test Agent in Code
 
 ```typescript
-import { Agents } from '@/agents'
+import { Agents } from '@/agents';
 
 // Direct agent call
 const result = await Agents.intel.execute({
   artist: 'sadact',
   genre: 'house',
-  region: 'UK'
-})
+  region: 'UK',
+});
 
-console.log(result.success)
-console.log(result.data.contacts)
-console.log(result.metrics.latency_ms)
+console.log(result.success);
+console.log(result.data.contacts);
+console.log(result.metrics.latency_ms);
 ```
 
 ## Performance Comparison
 
 ### Before (Old Code)
+
 - Response time: ~2-3s for 10 contacts
 - Cache management: Manual, prone to memory leaks
 - Error handling: Inconsistent
 - Metrics: Scattered, hard to query
 
 ### After (Agent-Based)
+
 - Response time: ~2-3s for 10 contacts (same performance)
 - Cache management: Automatic via sub-agents
 - Error handling: Consistent BaseAgent logic
@@ -236,6 +251,7 @@ console.log(result.metrics.latency_ms)
 ### When Useful:
 
 1. **Test with real contacts**:
+
    ```bash
    # Upload your sadact contacts
    # Watch them enrich via IntelAgent
@@ -243,6 +259,7 @@ console.log(result.metrics.latency_ms)
    ```
 
 2. **Monitor performance**:
+
    ```sql
    -- Check IntelAgent performance
    SELECT * FROM agent_performance WHERE agent_name = 'IntelAgent';
@@ -263,30 +280,33 @@ console.log(result.metrics.latency_ms)
 
 ## Benefits Summary
 
-| Before | After |
-|--------|-------|
-| 514 lines of mixed logic | 115 lines clean code |
-| Scattered metrics | Automatic Supabase logging |
-| Hard to test | Easy unit testing |
-| Unclear errors | Structured error handling |
-| Manual cache management | Automatic via agents |
-| No performance tracking | Built-in metrics |
-| 1 endpoint | 1 endpoint + 3 monitoring endpoints |
+| Before                   | After                               |
+| ------------------------ | ----------------------------------- |
+| 514 lines of mixed logic | 115 lines clean code                |
+| Scattered metrics        | Automatic Supabase logging          |
+| Hard to test             | Easy unit testing                   |
+| Unclear errors           | Structured error handling           |
+| Manual cache management  | Automatic via agents                |
+| No performance tracking  | Built-in metrics                    |
+| 1 endpoint               | 1 endpoint + 3 monitoring endpoints |
 
 ## Real-World Impact
 
 **For You as Developer:**
+
 - Faster debugging (check Supabase logs)
 - Easier testing (test agents directly)
 - Cleaner code (78% reduction)
 - Better monitoring (metrics dashboard)
 
 **For Users:**
+
 - No difference (same experience)
 - Same performance (agents add ~10-20ms overhead)
 - Better reliability (consistent error handling)
 
 **For Future Development:**
+
 - Easy to extend (add new sub-agents)
 - Easy to modify (change agent logic)
 - Easy to scale (agents handle complexity)

@@ -9,7 +9,8 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -28,8 +29,8 @@ async function fetchAllRecords() {
 
     const response = await fetch(url, {
       headers: {
-        Authorization: `Bearer ${AIRTABLE_API_KEY}`
-      }
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+      },
     });
 
     if (!response.ok) {
@@ -39,11 +40,12 @@ async function fetchAllRecords() {
     const data = await response.json();
 
     allRecords.push(...data.records);
-    console.log(`   Fetched page ${pageNum}: ${data.records.length} records (Total: ${allRecords.length})`);
+    console.log(
+      `   Fetched page ${pageNum}: ${data.records.length} records (Total: ${allRecords.length})`
+    );
 
     offset = data.offset;
     pageNum++;
-
   } while (offset);
 
   console.log(`\n✅ Total records fetched: ${allRecords.length}\n`);
@@ -62,13 +64,18 @@ function analyzeFieldUsage(records) {
         fieldStats[fieldName] = {
           count: 0,
           emptyCount: 0,
-          sampleValues: []
+          sampleValues: [],
         };
       }
 
       const value = record.fields[fieldName];
 
-      if (value === null || value === undefined || value === '' || (Array.isArray(value) && value.length === 0)) {
+      if (
+        value === null ||
+        value === undefined ||
+        value === '' ||
+        (Array.isArray(value) && value.length === 0)
+      ) {
         fieldStats[fieldName].emptyCount++;
       } else {
         fieldStats[fieldName].count++;
@@ -101,7 +108,7 @@ function identifyIssues(records) {
     noGenres: [],
     statusMismatches: [], // Will be populated by sync script
     duplicateEmails: [],
-    testContacts: []
+    testContacts: [],
   };
 
   const emailSet = new Set();
@@ -117,7 +124,7 @@ function identifyIssues(records) {
       issues.invalidEmails.push({
         id: record.id,
         email,
-        station: station || 'Unknown'
+        station: station || 'Unknown',
       });
     }
 
@@ -126,7 +133,7 @@ function identifyIssues(records) {
       if (emailSet.has(email.toLowerCase())) {
         issues.duplicateEmails.push({
           id: record.id,
-          email
+          email,
         });
       } else {
         emailSet.add(email.toLowerCase());
@@ -138,7 +145,7 @@ function identifyIssues(records) {
       issues.missingStations.push({
         id: record.id,
         email,
-        currentStation: station || '(empty)'
+        currentStation: station || '(empty)',
       });
     }
 
@@ -147,7 +154,7 @@ function identifyIssues(records) {
       issues.noGenres.push({
         id: record.id,
         email,
-        station: station || 'Unknown'
+        station: station || 'Unknown',
       });
     }
 
@@ -156,7 +163,7 @@ function identifyIssues(records) {
       issues.testContacts.push({
         id: record.id,
         email,
-        station: station || 'Unknown'
+        station: station || 'Unknown',
       });
     }
   });
@@ -185,7 +192,7 @@ async function exportBackup() {
       tableId: TABLE_ID,
       records,
       fieldStats,
-      issues
+      issues,
     };
 
     // Save full backup
@@ -229,7 +236,7 @@ async function exportBackup() {
     if (issues.invalidEmails.length > 0) {
       console.log('⚠️  Invalid Emails:');
       issues.invalidEmails.forEach((issue, i) => {
-        console.log(`   ${i+1}. ${issue.email} (${issue.station})`);
+        console.log(`   ${i + 1}. ${issue.email} (${issue.station})`);
       });
       console.log('');
     }
@@ -237,7 +244,7 @@ async function exportBackup() {
     if (issues.duplicateEmails.length > 0) {
       console.log('⚠️  Duplicate Emails:');
       issues.duplicateEmails.forEach((issue, i) => {
-        console.log(`   ${i+1}. ${issue.email}`);
+        console.log(`   ${i + 1}. ${issue.email}`);
       });
       console.log('');
     }
@@ -247,7 +254,6 @@ async function exportBackup() {
     console.log('✅ Backup complete! Ready for cleanup operations.\n');
 
     return backup;
-
   } catch (error) {
     console.error('❌ Backup failed:', error.message);
     throw error;

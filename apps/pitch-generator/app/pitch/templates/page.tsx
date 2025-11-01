@@ -5,7 +5,8 @@ import { useSession } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Loader2, Star, TrendingUp, Music } from 'lucide-react';
-import { supabase, type PitchTemplate } from '@/lib/supabase';
+import { createClient } from '@total-audio/core-db/client';
+import type { PitchTemplate } from '@/lib/types';
 
 export default function TemplatesPage() {
   const { data: session, status } = useSession();
@@ -41,9 +42,8 @@ export default function TemplatesPage() {
     }
   }
 
-  const filteredTemplates = selectedGenre === 'all'
-    ? templates
-    : templates.filter(t => t.genre === selectedGenre);
+  const filteredTemplates =
+    selectedGenre === 'all' ? templates : templates.filter(t => t.genre === selectedGenre);
 
   const genres = Array.from(new Set(templates.map(t => t.genre)));
 
@@ -90,7 +90,7 @@ export default function TemplatesPage() {
             >
               All Genres
             </button>
-            {genres.map((genre) => (
+            {genres.map(genre => (
               <button
                 key={genre}
                 onClick={() => setSelectedGenre(genre)}
@@ -111,13 +111,11 @@ export default function TemplatesPage() {
           <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-8 py-12 text-center">
             <Music className="mx-auto h-12 w-12 text-gray-900/30" />
             <h3 className="mt-4 text-lg font-semibold text-gray-900/70">No templates found</h3>
-            <p className="mt-2 text-sm text-gray-900/50">
-              Try selecting a different genre
-            </p>
+            <p className="mt-2 text-sm text-gray-900/50">Try selecting a different genre</p>
           </div>
         ) : (
           <div className="space-y-6">
-            {filteredTemplates.map((template) => (
+            {filteredTemplates.map(template => (
               <div
                 key={template.id}
                 className="rounded-2xl border border-gray-200 bg-gray-50 p-6 transition hover:border-brand-amber/50"
@@ -159,20 +157,22 @@ export default function TemplatesPage() {
                         View Template Structure
                       </summary>
                       <div className="mt-3 space-y-4 rounded-xl bg-white/50 p-4">
-                        {template.opening_lines && Array.isArray(template.opening_lines) && template.opening_lines.length > 0 && (
-                          <div>
-                            <p className="text-xs font-semibold uppercase tracking-wider text-gray-900/50">
-                              Opening Lines (Random selection)
-                            </p>
-                            <ul className="mt-2 space-y-1">
-                              {template.opening_lines.map((line: string, idx: number) => (
-                                <li key={idx} className="text-sm text-gray-900/70">
-                                  • {line}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
+                        {template.opening_lines &&
+                          Array.isArray(template.opening_lines) &&
+                          template.opening_lines.length > 0 && (
+                            <div>
+                              <p className="text-xs font-semibold uppercase tracking-wider text-gray-900/50">
+                                Opening Lines (Random selection)
+                              </p>
+                              <ul className="mt-2 space-y-1">
+                                {template.opening_lines.map((line: string, idx: number) => (
+                                  <li key={idx} className="text-sm text-gray-900/70">
+                                    • {line}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
                         <div>
                           <p className="text-xs font-semibold uppercase tracking-wider text-gray-900/50">
                             Template Structure
@@ -181,20 +181,22 @@ export default function TemplatesPage() {
                             {template.template_body}
                           </pre>
                         </div>
-                        {template.closing_ctas && Array.isArray(template.closing_ctas) && template.closing_ctas.length > 0 && (
-                          <div>
-                            <p className="text-xs font-semibold uppercase tracking-wider text-gray-900/50">
-                              Closing CTAs (Random selection)
-                            </p>
-                            <ul className="mt-2 space-y-1">
-                              {template.closing_ctas.map((cta: string, idx: number) => (
-                                <li key={idx} className="text-sm text-gray-900/70">
-                                  • {cta}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
+                        {template.closing_ctas &&
+                          Array.isArray(template.closing_ctas) &&
+                          template.closing_ctas.length > 0 && (
+                            <div>
+                              <p className="text-xs font-semibold uppercase tracking-wider text-gray-900/50">
+                                Closing CTAs (Random selection)
+                              </p>
+                              <ul className="mt-2 space-y-1">
+                                {template.closing_ctas.map((cta: string, idx: number) => (
+                                  <li key={idx} className="text-sm text-gray-900/70">
+                                    • {cta}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
                       </div>
                     </details>
                   </div>
@@ -224,9 +226,7 @@ export default function TemplatesPage() {
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-amber" />
-              <span>
-                AI personalises each template based on your track and contact details
-              </span>
+              <span>AI personalises each template based on your track and contact details</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-amber" />

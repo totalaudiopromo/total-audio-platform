@@ -5,7 +5,10 @@ import { cookies } from 'next/headers';
 export async function POST(req: Request) {
   try {
     const supabase = await createServerClient(cookies());
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
     }
@@ -13,17 +16,14 @@ export async function POST(req: Request) {
     const userId = user.email || user.id;
 
     // Fetch contacts from Audio Intel database (intel_contacts table)
-    const { data: intelContacts, error: fetchError } = await (supabase)
+    const { data: intelContacts, error: fetchError } = await supabase
       .from('intel_contacts')
       .select('*')
       .eq('user_id', userId);
 
     if (fetchError) {
       console.error('Error fetching Audio Intel contacts:', fetchError);
-      return NextResponse.json(
-        { error: 'Failed to fetch Audio Intel contacts' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to fetch Audio Intel contacts' }, { status: 500 });
     }
 
     if (!intelContacts || intelContacts.length === 0) {
@@ -34,20 +34,16 @@ export async function POST(req: Request) {
     }
 
     // Get existing contacts in Pitch Generator to avoid duplicates
-    const { data: existingContacts } = await (supabase)
+    const { data: existingContacts } = await supabase
       .from('contacts')
       .select('email, name')
       .eq('user_id', userId);
 
-    const existingEmails = new Set(
-      existingContacts?.map((c) => c.email?.toLowerCase()) || []
-    );
-    const existingNames = new Set(
-      existingContacts?.map((c) => c.name?.toLowerCase()) || []
-    );
+    const existingEmails = new Set(existingContacts?.map(c => c.email?.toLowerCase()) || []);
+    const existingNames = new Set(existingContacts?.map(c => c.name?.toLowerCase()) || []);
 
     // Filter out duplicates (match by email or name)
-    const newContacts = intelContacts.filter((contact) => {
+    const newContacts = intelContacts.filter(contact => {
       const emailMatch = contact.email && existingEmails.has(contact.email.toLowerCase());
       const nameMatch = contact.name && existingNames.has(contact.name.toLowerCase());
       return !emailMatch && !nameMatch;
@@ -62,7 +58,7 @@ export async function POST(req: Request) {
     }
 
     // Transform Audio Intel contacts to Pitch Generator format
-    const contactsToInsert = newContacts.map((contact) => ({
+    const contactsToInsert = newContacts.map(contact => ({
       user_id: userId,
       name: contact.contact_name || contact.name,
       role: contact.role || null,
@@ -74,16 +70,11 @@ export async function POST(req: Request) {
     }));
 
     // Insert contacts into Pitch Generator database
-    const { error: insertError } = await (supabase)
-      .from('contacts')
-      .insert(contactsToInsert);
+    const { error: insertError } = await supabase.from('contacts').insert(contactsToInsert);
 
     if (insertError) {
       console.error('Error inserting contacts:', insertError);
-      return NextResponse.json(
-        { error: 'Failed to sync contacts' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to sync contacts' }, { status: 500 });
     }
 
     return NextResponse.json({

@@ -56,9 +56,6 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(onboardingStatus);
   } catch (error) {
     console.error('Error fetching onboarding status:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

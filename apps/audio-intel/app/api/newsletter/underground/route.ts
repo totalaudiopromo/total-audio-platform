@@ -20,17 +20,20 @@ export async function GET(request: NextRequest) {
         success: result.success,
         articlesFound: result.articles.length,
         sources: result.sources,
-        totalFound: result.totalFound
+        totalFound: result.totalFound,
       });
     }
 
     if (!result.success) {
-      return NextResponse.json({
-        success: false,
-        error: result.error || 'Failed to generate content',
-        articles: [],
-        content: null
-      }, { status: 500 });
+      return NextResponse.json(
+        {
+          success: false,
+          error: result.error || 'Failed to generate content',
+          articles: [],
+          content: null,
+        },
+        { status: 500 }
+      );
     }
 
     if (result.articles.length === 0) {
@@ -40,7 +43,7 @@ export async function GET(request: NextRequest) {
         articles: [],
         content: null,
         sources: result.sources,
-        totalFound: result.totalFound
+        totalFound: result.totalFound,
       });
     }
 
@@ -50,16 +53,18 @@ export async function GET(request: NextRequest) {
       articles: result.articles,
       content: result.content,
       sources: result.sources,
-      totalFound: result.totalFound
+      totalFound: result.totalFound,
     });
-
   } catch (error) {
     console.error('Underground Newsjacker API Error:', error);
-    return NextResponse.json({
-      success: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
-      articles: [],
-      content: null
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+        articles: [],
+        content: null,
+      },
+      { status: 500 }
+    );
   }
 }

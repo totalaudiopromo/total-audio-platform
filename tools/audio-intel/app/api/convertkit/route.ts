@@ -31,8 +31,8 @@ export async function POST(req: NextRequest) {
         fields: {
           ...fields,
           signup_timestamp: new Date().toISOString(),
-        }
-      })
+        },
+      }),
     });
 
     if (!formResponse.ok) {
@@ -55,8 +55,8 @@ export async function POST(req: NextRequest) {
             body: JSON.stringify({
               api_key: CONVERTKIT_API_KEY,
               tag: { name: tag },
-              email: email
-            })
+              email: email,
+            }),
           });
 
           if (tagResponse.ok) {
@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
       // Send immediate welcome email using broadcasts API
       const welcomeEmailData = {
         api_key: CONVERTKIT_API_KEY,
-        subject: "Your Audio Intel beta access is sorted",
+        subject: 'Your Audio Intel beta access is sorted',
         content: `<html>
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
   
@@ -134,28 +134,30 @@ export async function POST(req: NextRequest) {
 </html>`,
         description: `Authentic beta welcome for ${email}`,
         public: false,
-        from_name: "Chris Schofield - Audio Intel",
-        from_email: "chris@totalaudiopromo.com",
-        reply_to: "chris@totalaudiopromo.com"
+        from_name: 'Chris Schofield - Audio Intel',
+        from_email: 'chris@totalaudiopromo.com',
+        reply_to: 'chris@totalaudiopromo.com',
       };
 
       // Send the welcome email as a broadcast
       const welcomeResponse = await fetch('https://api.convertkit.com/v3/broadcasts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(welcomeEmailData)
+        body: JSON.stringify(welcomeEmailData),
       });
 
       if (welcomeResponse.ok) {
         const welcomeResult = await welcomeResponse.json();
-        console.log(`✅ Welcome email sent immediately to ${email} (Broadcast ID: ${welcomeResult.broadcast?.id})`);
+        console.log(
+          `✅ Welcome email sent immediately to ${email} (Broadcast ID: ${welcomeResult.broadcast?.id})`
+        );
       } else {
         console.warn(`⚠️ Welcome email failed for ${email}:`, await welcomeResponse.text());
       }
     } catch (emailError) {
       console.warn('Welcome email error:', emailError);
     }
-    
+
     const emailSent = true;
 
     // Save beta signup locally for backup and analytics
@@ -167,7 +169,7 @@ export async function POST(req: NextRequest) {
       tags,
       fields,
       subscribed_at: new Date().toISOString(),
-      source: fields.signup_source || 'beta_form'
+      source: fields.signup_source || 'beta_form',
     });
 
     // Track engagement event
@@ -176,23 +178,31 @@ export async function POST(req: NextRequest) {
       first_name: first_name || '',
       subscriber_id: subscriberId,
       source: fields.signup_source || 'beta_form',
-      tags
+      tags,
     });
 
-    return NextResponse.json({ 
-      success: true, 
+    return NextResponse.json({
+      success: true,
       message: 'Beta signup successful! Check your email for welcome message.',
       subscriber_id: subscriberId,
       form_id: formId,
       tags_applied: tags,
-      branded_email_sent: emailSent
+      branded_email_sent: emailSent,
     });
-
   } catch (error) {
     console.error('❌ ConvertKit API error:', error);
-    return NextResponse.json({ 
-      error: 'Signup failed: ' + (error instanceof Error ? (error instanceof Error ? error.message : 'Unknown error') : 'Unknown error') 
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error:
+          'Signup failed: ' +
+          (error instanceof Error
+            ? error instanceof Error
+              ? error.message
+              : 'Unknown error'
+            : 'Unknown error'),
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -216,13 +226,15 @@ async function saveBetaSubscriberLocally(subscriber: any) {
     }
 
     // Check if email already exists, update if so
-    const existingIndex = subscribers.findIndex(sub => sub.email.toLowerCase() === subscriber.email.toLowerCase());
+    const existingIndex = subscribers.findIndex(
+      sub => sub.email.toLowerCase() === subscriber.email.toLowerCase()
+    );
     if (existingIndex !== -1) {
       // Update existing subscriber
       subscribers[existingIndex] = {
         ...subscribers[existingIndex],
         ...subscriber,
-        updated_at: new Date().toISOString()
+        updated_at: new Date().toISOString(),
       };
       console.log(`📝 Updated existing beta subscriber: ${subscriber.email}`);
     } else {
@@ -233,7 +245,6 @@ async function saveBetaSubscriberLocally(subscriber: any) {
 
     // Save updated subscribers
     await fs.writeFile(BETA_SUBSCRIBERS_FILE, JSON.stringify(subscribers, null, 2));
-
   } catch (error) {
     console.error('Failed to save beta subscriber locally:', error);
   }
@@ -262,7 +273,7 @@ async function trackUserEngagement(action: string, data: any) {
       action,
       data,
       userAgent: 'server-side',
-      ip: 'server-side'
+      ip: 'server-side',
     });
 
     // Keep only last 1000 engagements to prevent file from growing too large
@@ -272,7 +283,6 @@ async function trackUserEngagement(action: string, data: any) {
 
     await fs.writeFile(USER_ENGAGEMENT_FILE, JSON.stringify(engagements, null, 2));
     console.log(`📊 Tracked engagement: ${action} for ${data.email || 'unknown'}`);
-
   } catch (error) {
     console.error('Failed to track user engagement:', error);
   }

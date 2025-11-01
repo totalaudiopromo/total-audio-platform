@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Plus, Zap, Send, MessageCircle, TrendingUp, Loader2, Sparkles } from 'lucide-react';
-import { createClient } from '@/lib/supabase/client';
-import { supabase, type Pitch } from '@/lib/supabase';
+import { createClient } from '@total-audio/core-db/client';
+import type { Pitch } from '@/lib/types';
 import { NewsletterSignup } from '@/components/NewsletterSignup';
 import { OnboardingChecklist } from '@/components/OnboardingChecklist';
 import { UsageMeter } from '@/components/UsageMeter';
@@ -88,7 +88,6 @@ export default function DashboardPage() {
         setRecentPitches(pitchesData.pitches || []);
       }
       return;
-
     } catch (error) {
       console.error('Error loading dashboard data:', error);
       setStats({ totalPitches: 0, sentPitches: 0, replies: 0, successRate: 0 });
@@ -106,12 +105,18 @@ export default function DashboardPage() {
 
   function getStatusColor(status: string) {
     switch (status) {
-      case 'draft': return 'bg-gray-100 text-gray-600';
-      case 'sent': return 'bg-brand-amber/20 text-brand-amber';
-      case 'replied': return 'bg-success/20 text-success';
-      case 'success': return 'bg-success/30 text-success';
-      case 'no_reply': return 'bg-gray-50 text-gray-400';
-      default: return 'bg-gray-100 text-gray-600';
+      case 'draft':
+        return 'bg-gray-100 text-gray-600';
+      case 'sent':
+        return 'bg-brand-amber/20 text-brand-amber';
+      case 'replied':
+        return 'bg-success/20 text-success';
+      case 'success':
+        return 'bg-success/30 text-success';
+      case 'no_reply':
+        return 'bg-gray-50 text-gray-400';
+      default:
+        return 'bg-gray-100 text-gray-600';
     }
   }
 
@@ -142,9 +147,14 @@ export default function DashboardPage() {
       <div className="glass-panel px-8 py-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-              <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">Pitch Generator</span>
+            <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">
+              Pitch Generator
+            </span>
             <h1 className="mt-3 text-3xl font-bold">
-              Welcome back, <span className="text-brand-amber">{user.user_metadata?.name || user.email?.split('@')[0] || 'there'}</span>
+              Welcome back,{' '}
+              <span className="text-brand-amber">
+                {user.user_metadata?.name || user.email?.split('@')[0] || 'there'}
+              </span>
             </h1>
             <p className="mt-2 text-gray-900/60">
               Write personalized pitches in seconds, not hours
@@ -168,14 +178,10 @@ export default function DashboardPage() {
       </div>
 
       {/* Onboarding Checklist - Show for new users */}
-      {stats.totalPitches === 0 && user?.email && (
-        <OnboardingChecklist userId={user.email} />
-      )}
+      {stats.totalPitches === 0 && user?.email && <OnboardingChecklist userId={user.email} />}
 
       {/* Usage Meter - Show for free tier users */}
-      {user?.email && (
-        <UsageMeter userId={user.email} />
-      )}
+      {user?.email && <UsageMeter userId={user.email} />}
 
       {/* Empty State - Show when no pitches */}
       {stats.totalPitches === 0 ? (
@@ -201,7 +207,9 @@ export default function DashboardPage() {
             <div className="mt-8 grid gap-4 text-left sm:grid-cols-3">
               <div className="rounded-xl border border-white/10 bg-gray-50 px-4 py-4">
                 <div className="text-2xl font-bold text-brand-amber">6</div>
-                <p className="mt-1 text-xs text-gray-900/60">Proven templates from real campaigns</p>
+                <p className="mt-1 text-xs text-gray-900/60">
+                  Proven templates from real campaigns
+                </p>
               </div>
               <div className="rounded-xl border border-white/10 bg-gray-50 px-4 py-4">
                 <div className="text-2xl font-bold text-brand-amber">3</div>
@@ -221,7 +229,9 @@ export default function DashboardPage() {
             <div className="glass-panel px-6 py-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Total Pitches</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">
+                    Total Pitches
+                  </p>
                   <p className="mt-3 text-3xl font-bold">{stats.totalPitches}</p>
                 </div>
                 <div className="rounded-full bg-brand-amber/20 p-3">
@@ -233,7 +243,9 @@ export default function DashboardPage() {
             <div className="glass-panel px-6 py-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Sent</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">
+                    Sent
+                  </p>
                   <p className="mt-3 text-3xl font-bold">{stats.sentPitches}</p>
                 </div>
                 <div className="rounded-full bg-brand-amber/20 p-3">
@@ -245,7 +257,9 @@ export default function DashboardPage() {
             <div className="glass-panel px-6 py-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Replies</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">
+                    Replies
+                  </p>
                   <p className="mt-3 text-3xl font-bold">{stats.replies}</p>
                 </div>
                 <div className="rounded-full bg-success/20 p-3">
@@ -257,7 +271,9 @@ export default function DashboardPage() {
             <div className="glass-panel px-6 py-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">Response Rate</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gray-900/40">
+                    Response Rate
+                  </p>
                   <p className="mt-3 text-3xl font-bold">{(stats.successRate || 0).toFixed(1)}%</p>
                 </div>
                 <div className="rounded-full bg-brand-amber/20 p-3">
@@ -295,7 +311,7 @@ export default function DashboardPage() {
           </div>
         ) : (
           <div className="space-y-3">
-            {recentPitches.map((pitch) => (
+            {recentPitches.map(pitch => (
               <div
                 key={pitch.id}
                 className="group rounded-2xl border border-white/10 bg-gray-50 px-6 py-5 transition hover:border-gray-300 hover:bg-white/[0.07]"
@@ -307,7 +323,9 @@ export default function DashboardPage() {
                       {pitch.contact_outlet && (
                         <>
                           <span className="text-gray-900/30">•</span>
-                          <span className="truncate text-sm text-gray-900/60">{pitch.contact_outlet}</span>
+                          <span className="truncate text-sm text-gray-900/60">
+                            {pitch.contact_outlet}
+                          </span>
                         </>
                       )}
                     </div>
@@ -329,10 +347,7 @@ export default function DashboardPage() {
                     >
                       Copy
                     </button>
-                    <Link
-                      href={`/pitch/review/${pitch.id}`}
-                      className="subtle-button text-xs"
-                    >
+                    <Link href={`/pitch/review/${pitch.id}`} className="subtle-button text-xs">
                       View
                     </Link>
                   </div>
@@ -354,7 +369,10 @@ export default function DashboardPage() {
 
       {/* Quick Links */}
       <div className="grid gap-6 sm:grid-cols-2 px-4 sm:px-0">
-        <Link href="/pitch/templates" className="glass-panel group px-6 sm:px-8 py-8 transition hover:border-brand-amber/50">
+        <Link
+          href="/pitch/templates"
+          className="glass-panel group px-6 sm:px-8 py-8 transition hover:border-brand-amber/50"
+        >
           <h3 className="text-xl font-semibold">Template Library</h3>
           <p className="mt-2 text-sm text-gray-900/60 break-words">
             Browse genre-specific templates from 500+ successful campaigns
@@ -364,7 +382,10 @@ export default function DashboardPage() {
           </span>
         </Link>
 
-        <Link href="/pitch/contacts" className="glass-panel group px-6 sm:px-8 py-8 transition hover:border-brand-amber/50">
+        <Link
+          href="/pitch/contacts"
+          className="glass-panel group px-6 sm:px-8 py-8 transition hover:border-brand-amber/50"
+        >
           <h3 className="text-xl font-semibold">Manage Contacts</h3>
           <p className="mt-2 text-sm text-gray-900/60 break-words">
             Add and organize your media contacts for personalized pitches
@@ -377,4 +398,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-

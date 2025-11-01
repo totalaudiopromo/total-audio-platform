@@ -11,7 +11,7 @@ class RadioStations {
     this.stations = {
       'BBC Radio 1': { type: 'national', genre: 'pop' },
       'BBC Radio 2': { type: 'national', genre: 'general' },
-      'Amazing Radio': { type: 'online', genre: 'indie' }
+      'Amazing Radio': { type: 'online', genre: 'indie' },
     };
   }
 

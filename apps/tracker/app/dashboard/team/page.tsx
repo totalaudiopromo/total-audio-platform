@@ -5,14 +5,18 @@ import TeamManagement from '@/components/teams/TeamManagement';
 import TeamSettings from '@/components/teams/TeamSettings';
 
 export default function TeamPage() {
-  const [activeTab, setActiveTab] = React.useState<'members' | 'settings'>('members');
+  const [activeTab, setActiveTab] = React.useState<'members' | 'settings'>(
+    'members'
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#14B8A6]/5 via-white to-blue-50">
       {/* Header */}
       <div className="bg-white border-b-4 border-black shadow-brutal">
         <div className="max-w-7xl mx-auto px-6 py-6">
-          <h1 className="text-3xl font-black text-gray-900 mb-4">Team & Agency Settings</h1>
+          <h1 className="text-3xl font-black text-gray-900 mb-4">
+            Team & Agency Settings
+          </h1>
 
           {/* Tabs */}
           <div className="flex gap-2">

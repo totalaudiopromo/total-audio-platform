@@ -243,7 +243,7 @@ Based on existing mobile CSS files:
 
 ```typescript
 // Test Case: CSV Upload on Mobile
-test("Mobile CSV Upload Flow", async () => {
+test('Mobile CSV Upload Flow', async () => {
   // 1. Navigate to upload page on mobile
   // 2. Tap file upload button
   // 3. Select CSV file using mobile file picker
@@ -254,7 +254,7 @@ test("Mobile CSV Upload Flow", async () => {
 });
 
 // Test Case: File Preview Table Mobile
-test("Mobile File Preview Usability", async () => {
+test('Mobile File Preview Usability', async () => {
   // 1. Upload CSV with multiple contacts
   // 2. Verify table fits mobile viewport
   // 3. Test horizontal scrolling if needed
@@ -269,7 +269,7 @@ test("Mobile File Preview Usability", async () => {
 
 ```typescript
 // Test Case: Mobile Enrichment Experience
-test("Mobile Enrichment Progress", async () => {
+test('Mobile Enrichment Progress', async () => {
   // 1. Start enrichment process
   // 2. Verify progress bar visibility on mobile
   // 3. Check loading states don't block UI
@@ -285,7 +285,7 @@ test("Mobile Enrichment Progress", async () => {
 
 ```typescript
 // Test Case: Mobile Results Display
-test("Mobile Results Table", async () => {
+test('Mobile Results Table', async () => {
   // 1. Complete contact enrichment
   // 2. Verify results table mobile layout
   // 3. Test contact intelligence text readability
@@ -294,7 +294,7 @@ test("Mobile Results Table", async () => {
 });
 
 // Test Case: Mobile Export Flow
-test("Mobile Export Functionality", async () => {
+test('Mobile Export Functionality', async () => {
   // 1. Access export options
   // 2. Test format selection on mobile
   // 3. Verify export preferences mobile UI

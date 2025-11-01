@@ -131,7 +131,8 @@ export const campaignValidation = {
     {
       type: 'required' as const,
       message: 'Platform is required',
-      suggestion: 'Select the platform for this campaign (e.g., Radio, Spotify, TikTok)',
+      suggestion:
+        'Select the platform for this campaign (e.g., Radio, Spotify, TikTok)',
     },
   ],
 
@@ -252,7 +253,8 @@ export const userValidation = {
       type: 'pattern' as const,
       value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
       message: 'Password must contain uppercase, lowercase, and number',
-      suggestion: 'Include at least one uppercase letter, one lowercase letter, and one number',
+      suggestion:
+        'Include at least one uppercase letter, one lowercase letter, and one number',
     },
   ],
 
@@ -292,7 +294,9 @@ export function validateForm<T extends Record<string, any>>(
 export function isFormValid<T extends Record<string, any>>(
   validationResults: Record<keyof T, ValidationResult>
 ): boolean {
-  return Object.values(validationResults).every((result: any) => result.isValid);
+  return Object.values(validationResults).every(
+    (result: any) => result.isValid
+  );
 }
 
 /**

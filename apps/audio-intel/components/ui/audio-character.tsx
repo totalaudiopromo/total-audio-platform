@@ -59,7 +59,7 @@ export function AudioCharacter({
 }: AudioCharacterProps) {
   const colors = toolColors[tool];
   const animation = stateAnimations[state];
-  
+
   const sizeClasses = {
     sm: 'w-12 h-12',
     md: 'w-16 h-16',
@@ -99,20 +99,20 @@ export function AudioCharacter({
         >
           {/* Dog head shape */}
           <ellipse cx="50" cy="45" rx="25" ry="20" fill="currentColor" />
-          
+
           {/* Ears */}
           <ellipse cx="35" cy="35" rx="8" ry="12" fill="currentColor" />
           <ellipse cx="65" cy="35" rx="8" ry="12" fill="currentColor" />
-          
+
           {/* Eyes */}
           <circle cx="42" cy="40" r="3" fill="white" />
           <circle cx="58" cy="40" r="3" fill="white" />
           <circle cx="42" cy="40" r="1.5" fill="currentColor" />
           <circle cx="58" cy="40" r="1.5" fill="currentColor" />
-          
+
           {/* Nose */}
           <ellipse cx="50" cy="48" rx="2" ry="1" fill="white" />
-          
+
           {/* Mouth */}
           <path
             d="M 45 52 Q 50 55 55 52"
@@ -121,7 +121,7 @@ export function AudioCharacter({
             fill="none"
             strokeLinecap="round"
           />
-          
+
           {/* Headphones for intel tool */}
           {tool === 'intel' && (
             <>
@@ -136,7 +136,7 @@ export function AudioCharacter({
               />
             </>
           )}
-          
+
           {/* Writing pose for pulse tool */}
           {tool === 'pulse' && (
             <>
@@ -145,46 +145,65 @@ export function AudioCharacter({
               <rect x="60" y="70" width="10" height="2" fill="currentColor" rx="1" />
             </>
           )}
-          
+
           {/* Success sparkles */}
           {state === 'success' && (
             <>
               <circle cx="20" cy="20" r="1" fill="white" className="animate-ping" />
-              <circle cx="80" cy="20" r="1" fill="white" className="animate-ping" style={{ animationDelay: '0.2s' }} />
-              <circle cx="20" cy="80" r="1" fill="white" className="animate-ping" style={{ animationDelay: '0.4s' }} />
-              <circle cx="80" cy="80" r="1" fill="white" className="animate-ping" style={{ animationDelay: '0.6s' }} />
+              <circle
+                cx="80"
+                cy="20"
+                r="1"
+                fill="white"
+                className="animate-ping"
+                style={{ animationDelay: '0.2s' }}
+              />
+              <circle
+                cx="20"
+                cy="80"
+                r="1"
+                fill="white"
+                className="animate-ping"
+                style={{ animationDelay: '0.4s' }}
+              />
+              <circle
+                cx="80"
+                cy="80"
+                r="1"
+                fill="white"
+                className="animate-ping"
+                style={{ animationDelay: '0.6s' }}
+              />
             </>
           )}
         </svg>
-        
+
         {/* Working indicator */}
         {state === 'working' && (
           <div className="absolute inset-0 rounded-full border-2 border-white border-t-transparent animate-spin" />
         )}
       </div>
-      
+
       {showText && (
         <div className="text-center">
-          <div className={cn(
-            'text-sm font-semibold transition-colors duration-800',
-            {
+          <div
+            className={cn('text-sm font-semibold transition-colors duration-800', {
               'text-gray-600': !isActive,
               'text-gray-900': isActive,
-            }
-          )}>
+            })}
+          >
             Audio {tool.charAt(0).toUpperCase() + tool.slice(1)}
           </div>
-          <div className={cn(
-            'text-xs transition-colors duration-800',
-            {
+          <div
+            className={cn('text-xs transition-colors duration-800', {
               'text-gray-500': !isActive,
               [`text-${colors.primary}`]: isActive,
-            }
-          )}>
+            })}
+          >
             {state.charAt(0).toUpperCase() + state.slice(1)}
           </div>
         </div>
       )}
     </div>
   );
-} 
+}

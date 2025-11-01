@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
   try {
     const { service } = await request.json();
-    
+
     // Validate service parameter
     const validServices = ['audio-intel', 'command-centre', 'all'];
     if (service && !validServices.includes(service)) {
@@ -14,10 +14,10 @@ export async function POST(request: NextRequest) {
     }
 
     const serviceToRestart = service || 'audio-intel';
-    
+
     // Log restart request
     console.log(`[${new Date().toISOString()}] System restart requested for: ${serviceToRestart}`);
-    
+
     // In production, this would trigger actual service restarts
     // For now, we'll simulate the restart process
     const restartResults: any = {
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
       service: serviceToRestart,
       status: 'success',
       timestamp: new Date().toISOString(),
-      message: `${serviceToRestart} restart initiated successfully`
+      message: `${serviceToRestart} restart initiated successfully`,
     };
 
     // Simulate restart delay
@@ -39,10 +39,10 @@ export async function POST(request: NextRequest) {
           audioIntel: {
             status: 'online',
             uptime: '0s',
-            lastRestart: new Date().toISOString()
-          }
+            lastRestart: new Date().toISOString(),
+          },
         };
-        
+
         restartResults.healthCheck = healthCheck;
       } catch (error) {
         console.warn('Health check failed after restart:', error);
@@ -51,15 +51,14 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      ...restartResults
+      ...restartResults,
     });
-
   } catch (error) {
     console.error('System restart error:', error);
     return NextResponse.json(
-      { 
+      {
         error: 'Failed to restart system',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
     );
@@ -74,26 +73,22 @@ export async function GET() {
         status: 'online',
         uptime: '2h 15m',
         lastRestart: '2025-09-01T10:30:00Z',
-        canRestart: true
+        canRestart: true,
       },
       commandCentre: {
-        status: 'online', 
+        status: 'online',
         uptime: '1d 3h',
         lastRestart: '2025-08-31T07:15:00Z',
-        canRestart: true
-      }
+        canRestart: true,
+      },
     };
 
     return NextResponse.json({
       success: true,
-      services: systemStatus
+      services: systemStatus,
     });
-
   } catch (error) {
     console.error('Failed to get system status:', error);
-    return NextResponse.json(
-      { error: 'Failed to get system status' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to get system status' }, { status: 500 });
   }
 }

@@ -1,4 +1,4 @@
-import type { CaseStudyHeroData } from "@/types/case-study";
+import type { CaseStudyHeroData } from '@/types/case-study';
 
 interface CaseStudyHeroProps {
   data: CaseStudyHeroData;
@@ -22,9 +22,7 @@ export function CaseStudyHero({ data }: CaseStudyHeroProps) {
       </div>
 
       <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg">
-        <p className="text-lg text-gray-800 font-medium leading-relaxed">
-          {data.introCallout}
-        </p>
+        <p className="text-lg text-gray-800 font-medium leading-relaxed">{data.introCallout}</p>
       </div>
     </header>
   );

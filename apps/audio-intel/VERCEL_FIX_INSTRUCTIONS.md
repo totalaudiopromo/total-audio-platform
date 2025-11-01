@@ -1,12 +1,15 @@
 # 🔧 VERCEL MONOREPO FIX - REQUIRED MANUAL STEPS
 
 ## ❌ Current Problem
+
 Vercel is failing to build because it can't find `@total-audio/ui`:
+
 ```
 Module not found: Can't resolve '@total-audio/ui'
 ```
 
 ## 🎯 Root Cause
+
 - Vercel is only uploading `apps/audio-intel` directory
 - The workspace dependency `@total-audio/ui` lives in `../../packages/ui`
 - Vercel needs access to the **entire monorepo** to link workspace packages
@@ -37,7 +40,7 @@ Module not found: Can't resolve '@total-audio/ui'
    - Leave as default: `.next`
 
 8. **Install Command:**
-   - IMPORTANT: Change to: `npm install` 
+   - IMPORTANT: Change to: `npm install`
    - (This runs at monorepo root before cd'ing to apps/audio-intel)
 
 9. **Click "Save"**
@@ -50,6 +53,7 @@ Module not found: Can't resolve '@total-audio/ui'
 ### Option 2: Via vercel.json (If Dashboard Doesn't Work)
 
 Update `apps/audio-intel/vercel.json`:
+
 ```json
 {
   "build": {
@@ -76,6 +80,7 @@ Update `apps/audio-intel/vercel.json`:
 ### Option 3: Use Vercel Turborepo Support
 
 If you're using turborepo, add to monorepo root:
+
 ```json
 // turbo.json
 {
@@ -93,6 +98,7 @@ If you're using turborepo, add to monorepo root:
 After applying the fix:
 
 1. **Check build logs show monorepo context:**
+
    ```
    Installing dependencies...
    ✓ Packages installed from monorepo root
@@ -113,11 +119,12 @@ After applying the fix:
 ✅ Workspace packages (`@total-audio/ui`) are linked  
 ✅ `transpilePackages` config works  
 ✅ Build completes successfully  
-✅ Auth middleware protects routes  
+✅ Auth middleware protects routes
 
 ## ⚡ Quick Test Command
 
 After fixing Vercel settings:
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel
 
@@ -134,14 +141,15 @@ Try this alternative approach - convert to relative imports:
 
 1. Copy `packages/ui/components/*` into `apps/audio-intel/components/shared/`
 2. Update imports:
+
    ```typescript
    // Before
-   import { SiteHeader } from '@total-audio/ui'
-   
+   import { SiteHeader } from '@total-audio/ui';
+
    // After
-   import { SiteHeader } from '@/components/shared/SiteHeader'
+   import { SiteHeader } from '@/components/shared/SiteHeader';
    ```
+
 3. Remove `@total-audio/ui` dependency from package.json
 
 This eliminates the workspace dependency entirely (less elegant, but guaranteed to work).
-

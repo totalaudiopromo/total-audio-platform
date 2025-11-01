@@ -108,7 +108,7 @@ export class CachedContextManager {
 - **Strategy**: Radio promoter outreach (highest conversion)
 - **Tactics**: Case study content, demo calls, "The Unsigned Advantage" newsletter
         `,
-        cache_control: { type: 'ephemeral' as const }
+        cache_control: { type: 'ephemeral' as const },
       });
     }
     return this.contexts.get('audio-intel')!;
@@ -229,7 +229,7 @@ export class CachedContextManager {
 - Full Total Audio ecosystem launched
 - Industry recognition as UK leader
         `,
-        cache_control: { type: 'ephemeral' as const }
+        cache_control: { type: 'ephemeral' as const },
       });
     }
     return this.contexts.get('ecosystem')!;
@@ -378,7 +378,7 @@ export class CachedContextManager {
 4. **Relationships**: Long-term over one-off
 5. **Data**: Track interactions, learn patterns
         `,
-        cache_control: { type: 'ephemeral' as const }
+        cache_control: { type: 'ephemeral' as const },
       });
     }
     return this.contexts.get('uk-music')!;
@@ -538,7 +538,7 @@ const topResponders = await prisma.contact.findMany({
 });
 \`\`\`
         `,
-        cache_control: { type: 'ephemeral' as const }
+        cache_control: { type: 'ephemeral' as const },
       });
     }
     return this.contexts.get('db-schema')!;
@@ -673,7 +673,7 @@ const topResponders = await prisma.contact.findMany({
 - "Join the revolution"
 - "Experience the difference"
         `,
-        cache_control: { type: 'ephemeral' as const }
+        cache_control: { type: 'ephemeral' as const },
       });
     }
     return this.contexts.get('brand-voice')!;
@@ -701,7 +701,7 @@ const topResponders = await prisma.contact.findMany({
     return {
       totalContexts: contexts.length,
       contexts,
-      estimatedTokensSaved: contexts.length * estimatedTokensPerContext * estimatedCacheHitRate
+      estimatedTokensSaved: contexts.length * estimatedTokensPerContext * estimatedCacheHitRate,
     };
   }
 }

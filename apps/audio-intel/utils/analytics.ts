@@ -31,7 +31,7 @@ export function trackGA4Event(eventData: AnalyticsEvent) {
       value: eventData.value,
       custom_parameters: eventData.custom_parameters,
       user_id: eventData.user_id,
-      session_id: eventData.session_id
+      session_id: eventData.session_id,
     });
   }
 }
@@ -47,8 +47,8 @@ export async function trackInternalEvent(eventData: AnalyticsEvent) {
         timestamp: eventData.timestamp || new Date().toISOString(),
         user_agent: navigator.userAgent,
         page_url: window.location.href,
-        referrer: document.referrer
-      })
+        referrer: document.referrer,
+      }),
     });
   } catch (error) {
     console.warn('Analytics tracking failed:', error);
@@ -73,12 +73,12 @@ export function trackFunnelStep(step: ConversionFunnelStep) {
       funnel_step: step.step,
       step_number: step.step_number,
       page_url: step.page_url,
-      metadata: step.metadata
+      metadata: step.metadata,
     },
     user_id: step.user_id,
-    session_id: step.session_id
+    session_id: step.session_id,
   };
-  
+
   trackEvent(eventData);
 }
 
@@ -91,8 +91,8 @@ export function trackPageView(page: string, title?: string) {
     label: page,
     custom_parameters: {
       page_title: title || document.title,
-      page_url: window.location.href
-    }
+      page_url: window.location.href,
+    },
   });
 }
 
@@ -106,8 +106,8 @@ export function trackFileUpload(fileType: string, contactCount: number, fileSize
     custom_parameters: {
       file_type: fileType,
       contact_count: contactCount,
-      file_size: fileSize
-    }
+      file_size: fileSize,
+    },
   });
 }
 
@@ -120,12 +120,16 @@ export function trackEnrichmentStart(contactCount: number, userEmail?: string) {
     value: contactCount,
     custom_parameters: {
       contact_count: contactCount,
-      user_email: userEmail
-    }
+      user_email: userEmail,
+    },
   });
 }
 
-export function trackEnrichmentComplete(contactCount: number, processingTime: number, successRate: number) {
+export function trackEnrichmentComplete(
+  contactCount: number,
+  processingTime: number,
+  successRate: number
+) {
   trackEvent({
     event: 'enrichment_complete',
     category: 'conversion',
@@ -135,8 +139,8 @@ export function trackEnrichmentComplete(contactCount: number, processingTime: nu
     custom_parameters: {
       contact_count: contactCount,
       processing_time: processingTime,
-      success_rate: successRate
-    }
+      success_rate: successRate,
+    },
   });
 }
 
@@ -150,8 +154,8 @@ export function trackExport(format: string, enrichedCount: number, fields: strin
     custom_parameters: {
       export_format: format,
       enriched_count: enrichedCount,
-      fields_exported: fields
-    }
+      fields_exported: fields,
+    },
   });
 }
 
@@ -163,8 +167,8 @@ export function trackBetaSignup(source: string, userData: any) {
     label: source,
     custom_parameters: {
       signup_source: source,
-      user_data: userData
-    }
+      user_data: userData,
+    },
   });
 }
 
@@ -177,8 +181,8 @@ export function trackPricingClick(plan: string, billing: string, location: strin
     custom_parameters: {
       plan: plan,
       billing: billing,
-      location: location
-    }
+      location: location,
+    },
   });
 }
 
@@ -191,8 +195,8 @@ export function trackCheckoutStart(plan: string, billing: string, email: string)
     custom_parameters: {
       plan: plan,
       billing: billing,
-      user_email: email
-    }
+      user_email: email,
+    },
   });
 }
 
@@ -206,8 +210,8 @@ export function trackCheckoutComplete(plan: string, billing: string, amount: num
     custom_parameters: {
       plan: plan,
       billing: billing,
-      amount: amount
-    }
+      amount: amount,
+    },
   });
 }
 
@@ -220,8 +224,8 @@ export function trackError(errorType: string, details: string, context?: string)
     custom_parameters: {
       error_type: errorType,
       error_details: details,
-      error_context: context
-    }
+      error_context: context,
+    },
   });
 }
 
@@ -233,8 +237,8 @@ export function trackDemoRun(email: string, result: string) {
     label: 'instant_demo',
     custom_parameters: {
       demo_email: email,
-      demo_result: result
-    }
+      demo_result: result,
+    },
   });
 }
 
@@ -249,20 +253,23 @@ export const FUNNEL_STEPS = {
   EXPORT: 'export',
   PRICING_VIEW: 'pricing_view',
   CHECKOUT_START: 'checkout_start',
-  PURCHASE: 'purchase'
+  PURCHASE: 'purchase',
 } as const;
 
 // Track funnel progression
-export function trackFunnelProgression(step: keyof typeof FUNNEL_STEPS, metadata?: Record<string, any>) {
+export function trackFunnelProgression(
+  step: keyof typeof FUNNEL_STEPS,
+  metadata?: Record<string, any>
+) {
   const stepNumber = Object.keys(FUNNEL_STEPS).indexOf(step) + 1;
-  
+
   trackFunnelStep({
     step: FUNNEL_STEPS[step],
     step_number: stepNumber,
     user_action: step.toLowerCase().replace(/_/g, ' '),
     page_url: window.location.href,
     timestamp: new Date().toISOString(),
-    metadata
+    metadata,
   });
 }
 
@@ -276,8 +283,8 @@ export function trackPerformance(metric: string, value: number, unit: string = '
     value: value,
     custom_parameters: {
       metric: metric,
-      unit: unit
-    }
+      unit: unit,
+    },
   });
 }
 
@@ -290,8 +297,8 @@ export function trackEngagement(action: string, element: string, value?: any) {
     label: element,
     custom_parameters: {
       element: element,
-      value: value
-    }
+      value: value,
+    },
   });
 }
 
@@ -304,22 +311,7 @@ export function trackABTest(testName: string, variant: string, action: string) {
     label: testName,
     custom_parameters: {
       test_name: testName,
-      variant: variant
-    }
+      variant: variant,
+    },
   });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

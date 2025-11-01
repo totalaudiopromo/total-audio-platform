@@ -3,22 +3,41 @@
 import React, { useState } from 'react';
 import ExportButtons from '../../components/ExportButtons';
 import PdfExportProgressive from '../../components/ui/pdf-export-progressive';
-import { ContactData, AnalyticsData, SearchResultsData, AIAgentData, ExportProgress } from '../../utils/exportService';
-import { Activity, CheckCircle, AlertCircle, Zap, Users, BarChart3, Search, Brain, Mail, Settings } from 'lucide-react';
+import {
+  ContactData,
+  AnalyticsData,
+  SearchResultsData,
+  AIAgentData,
+  ExportProgress,
+} from '../../utils/exportService';
+import {
+  Activity,
+  CheckCircle,
+  AlertCircle,
+  Zap,
+  Users,
+  BarChart3,
+  Search,
+  Brain,
+  Mail,
+  Settings,
+} from 'lucide-react';
 
 export default function ExportDemoPage() {
   const [userName, setUserName] = useState('John Doe');
   const [whiteLabelConfig, setWhiteLabelConfig] = useState({
     companyName: 'Audio Intel',
-    primaryColor: '#1E88E5'
+    primaryColor: '#1E88E5',
   });
-  const [exportHistory, setExportHistory] = useState<Array<{
-    type: string;
-    success: boolean;
-    message: string;
-    timestamp: string;
-    metadata?: any;
-  }>>([]);
+  const [exportHistory, setExportHistory] = useState<
+    Array<{
+      type: string;
+      success: boolean;
+      message: string;
+      timestamp: string;
+      metadata?: any;
+    }>
+  >([]);
   const [currentProgress, setCurrentProgress] = useState<ExportProgress | null>(null);
   const [userTier, setUserTier] = useState<'free' | 'professional' | 'agency'>('free');
   const [monthlyPdfUsage] = useState(0);
@@ -28,7 +47,8 @@ export default function ExportDemoPage() {
     {
       name: 'Sarah Johnson',
       email: 'sarah.johnson@bbc.co.uk',
-      contactIntelligence: 'BBC Radio 1 DJ, specializes in indie and alternative music. Best contact time: Tuesday-Thursday 10am-2pm. Prefers personalized pitches with streaming links.',
+      contactIntelligence:
+        'BBC Radio 1 DJ, specializes in indie and alternative music. Best contact time: Tuesday-Thursday 10am-2pm. Prefers personalized pitches with streaming links.',
       researchConfidence: '95%',
       lastResearched: '2024-01-15',
       platform: 'BBC Radio 1',
@@ -38,13 +58,14 @@ export default function ExportDemoPage() {
         source: 'BBC Directory',
         tags: ['radio', 'indie', 'alternative'],
         notes: 'Responds well to emerging artists',
-        priority: 'high' as const
-      }
+        priority: 'high' as const,
+      },
     },
     {
       name: 'Mike Chen',
       email: 'mike.chen@spotify.com',
-      contactIntelligence: 'Spotify playlist curator for "Indie Discoveries" and "New Music Friday". Loves discovering emerging artists. Submit through Spotify for Artists portal.',
+      contactIntelligence:
+        'Spotify playlist curator for "Indie Discoveries" and "New Music Friday". Loves discovering emerging artists. Submit through Spotify for Artists portal.',
       researchConfidence: '92%',
       lastResearched: '2024-01-14',
       platform: 'Spotify',
@@ -54,13 +75,14 @@ export default function ExportDemoPage() {
         source: 'Spotify for Artists',
         tags: ['playlist', 'discovery', 'emerging'],
         notes: 'Prefers high-quality audio files',
-        priority: 'high' as const
-      }
+        priority: 'high' as const,
+      },
     },
     {
       name: 'Emma Rodriguez',
       email: 'emma.rodriguez@kexp.org',
-      contactIntelligence: 'KEXP radio host and music blogger. Passionate about supporting independent artists. Responds well to artists with compelling stories.',
+      contactIntelligence:
+        'KEXP radio host and music blogger. Passionate about supporting independent artists. Responds well to artists with compelling stories.',
       researchConfidence: '88%',
       lastResearched: '2024-01-13',
       platform: 'KEXP',
@@ -70,9 +92,9 @@ export default function ExportDemoPage() {
         source: 'KEXP Directory',
         tags: ['radio', 'independent', 'blog'],
         notes: 'Loves artist stories and background',
-        priority: 'medium' as const
-      }
-    }
+        priority: 'medium' as const,
+      },
+    },
   ];
 
   const sampleAnalytics: AnalyticsData = {
@@ -81,10 +103,10 @@ export default function ExportDemoPage() {
     successRate: 94.4,
     averageConfidence: 87.2,
     platformBreakdown: {
-      'Spotify': 450,
+      Spotify: 450,
       'BBC Radio': 320,
-      'KEXP': 280,
-      'Other': 200
+      KEXP: 280,
+      Other: 200,
     },
     dailyEnrichments: [
       { date: '2024-01-10', count: 45 },
@@ -92,25 +114,25 @@ export default function ExportDemoPage() {
       { date: '2024-01-12', count: 38 },
       { date: '2024-01-13', count: 61 },
       { date: '2024-01-14', count: 48 },
-      { date: '2024-01-15', count: 55 }
+      { date: '2024-01-15', count: 55 },
     ],
     topPlatforms: [
       { platform: 'Spotify', count: 450, percentage: 36.0 },
       { platform: 'BBC Radio', count: 320, percentage: 25.6 },
       { platform: 'KEXP', count: 280, percentage: 22.4 },
-      { platform: 'Other', count: 200, percentage: 16.0 }
+      { platform: 'Other', count: 200, percentage: 16.0 },
     ],
     performanceMetrics: {
       averageProcessingTime: 2.3,
       cacheHitRate: 78.5,
-      errorRate: 1.2
+      errorRate: 1.2,
     },
     customMetrics: {
       'High Priority Contacts': 320,
       'Medium Priority Contacts': 580,
       'Low Priority Contacts': 350,
-      'Average Response Rate': 12.5
-    }
+      'Average Response Rate': 12.5,
+    },
   };
 
   const sampleSearchResults: SearchResultsData = {
@@ -119,7 +141,8 @@ export default function ExportDemoPage() {
       {
         platform: 'Spotify',
         title: 'Indie Rock Discoveries Playlist',
-        description: 'Curated playlist featuring the best indie rock discoveries. Updated weekly with fresh tracks from emerging artists.',
+        description:
+          'Curated playlist featuring the best indie rock discoveries. Updated weekly with fresh tracks from emerging artists.',
         url: 'https://open.spotify.com/playlist/example',
         contact: 'curator@spotify.com',
         relevance: 'High',
@@ -127,13 +150,14 @@ export default function ExportDemoPage() {
         metadata: {
           tags: ['indie rock', 'discovery', 'weekly'],
           priority: 9,
-          notes: 'Very active curator, responds quickly'
-        }
+          notes: 'Very active curator, responds quickly',
+        },
       },
       {
         platform: 'Apple Music',
         title: 'Alternative Rock Essentials',
-        description: 'Essential alternative and indie rock tracks. Perfect for discovering new artists in the genre.',
+        description:
+          'Essential alternative and indie rock tracks. Perfect for discovering new artists in the genre.',
         url: 'https://music.apple.com/playlist/example',
         contact: 'alt.rock@apple.com',
         relevance: 'Medium',
@@ -141,13 +165,14 @@ export default function ExportDemoPage() {
         metadata: {
           tags: ['alternative', 'essentials', 'curated'],
           priority: 7,
-          notes: 'Prefers established artists'
-        }
+          notes: 'Prefers established artists',
+        },
       },
       {
         platform: 'YouTube Music',
         title: 'Indie Rock Mix',
-        description: 'Dynamic mix of indie rock tracks. Great for background listening and discovering new music.',
+        description:
+          'Dynamic mix of indie rock tracks. Great for background listening and discovering new music.',
         url: 'https://music.youtube.com/playlist/example',
         contact: 'indie.mix@youtube.com',
         relevance: 'Medium',
@@ -155,59 +180,63 @@ export default function ExportDemoPage() {
         metadata: {
           tags: ['mix', 'background', 'dynamic'],
           priority: 6,
-          notes: 'Algorithm-driven playlist'
-        }
-      }
+          notes: 'Algorithm-driven playlist',
+        },
+      },
     ],
     totalFound: 3,
     filters: {
       platform: 'spotify',
       genre: 'indie rock',
-      role: 'curator'
+      role: 'curator',
     },
     searchMetadata: {
       searchTime: 2.1,
       sources: ['Spotify API', 'Apple Music API', 'YouTube Data API'],
-      confidence: 85.5
-    }
+      confidence: 85.5,
+    },
   };
 
   const sampleAIAgentReport: AIAgentData = {
     agentType: 'music-industry-strategist',
     query: 'How should I approach playlist curators for indie rock promotion?',
-    response: 'Based on your query about indie rock promotion, here\'s a strategic approach for playlist curators. The indie rock scene is highly competitive, so you need to stand out with authentic storytelling and high-quality production. Focus on curators who specifically work with emerging artists and have a track record of supporting independent musicians.',
+    response:
+      "Based on your query about indie rock promotion, here's a strategic approach for playlist curators. The indie rock scene is highly competitive, so you need to stand out with authentic storytelling and high-quality production. Focus on curators who specifically work with emerging artists and have a track record of supporting independent musicians.",
     recommendations: [
-      'Research each curator\'s specific taste and submission preferences',
+      "Research each curator's specific taste and submission preferences",
       'Create personalized pitches that reference their recent playlist additions',
       'Ensure your audio quality meets professional standards',
       'Include compelling artist bio and story elements',
-      'Follow up respectfully after 2-3 weeks if no response'
+      'Follow up respectfully after 2-3 weeks if no response',
     ],
     nextSteps: [
       'Compile a list of 20-30 relevant playlist curators',
       'Create personalized pitch templates for each curator type',
       'Prepare high-quality audio files and press materials',
       'Set up tracking system for submission responses',
-      'Plan follow-up strategy for non-responders'
+      'Plan follow-up strategy for non-responders',
     ],
     dateGenerated: '2024-01-15T10:30:00Z',
     metadata: {
       processingTime: 3.2,
       confidence: 92.5,
       sources: ['Playlist curator database', 'Industry reports', 'Success case studies'],
-      model: 'Claude-3.5-Sonnet'
-    }
+      model: 'Claude-3.5-Sonnet',
+    },
   };
 
   const handleExportComplete = (result: { success: boolean; message: string; metadata?: any }) => {
     console.log('Export completed:', result);
-    setExportHistory(prev => [{
-      type: 'Export',
-      success: result.success,
-      message: result.message,
-      timestamp: new Date().toLocaleString(),
-      metadata: result.metadata
-    }, ...prev.slice(0, 9)]); // Keep last 10 exports
+    setExportHistory(prev => [
+      {
+        type: 'Export',
+        success: result.success,
+        message: result.message,
+        timestamp: new Date().toLocaleString(),
+        metadata: result.metadata,
+      },
+      ...prev.slice(0, 9),
+    ]); // Keep last 10 exports
   };
 
   const handleProgress = (progress: ExportProgress) => {
@@ -216,12 +245,18 @@ export default function ExportDemoPage() {
 
   const getProgressColor = (stage: string) => {
     switch (stage) {
-      case 'preparing': return 'text-blue-600';
-      case 'processing': return 'text-yellow-600';
-      case 'formatting': return 'text-blue-600';
-      case 'delivering': return 'text-green-600';
-      case 'complete': return 'text-green-600';
-      default: return 'text-gray-600';
+      case 'preparing':
+        return 'text-blue-600';
+      case 'processing':
+        return 'text-yellow-600';
+      case 'formatting':
+        return 'text-blue-600';
+      case 'delivering':
+        return 'text-green-600';
+      case 'complete':
+        return 'text-green-600';
+      default:
+        return 'text-gray-600';
     }
   };
 
@@ -230,12 +265,10 @@ export default function ExportDemoPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            Enhanced Export System Demo
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">Enhanced Export System Demo</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Experience the complete export system with real-time progress tracking, 
-            enhanced metadata support, and professional email delivery for agencies.
+            Experience the complete export system with real-time progress tracking, enhanced
+            metadata support, and professional email delivery for agencies.
           </p>
         </div>
 
@@ -244,13 +277,11 @@ export default function ExportDemoPage() {
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Demo Configuration</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                User Name
-              </label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">User Name</label>
               <input
                 type="text"
                 value={userName}
-                onChange={(e) => setUserName(e.target.value)}
+                onChange={e => setUserName(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter user name"
               />
@@ -262,7 +293,9 @@ export default function ExportDemoPage() {
               <input
                 type="text"
                 value={whiteLabelConfig.companyName}
-                onChange={(e) => setWhiteLabelConfig(prev => ({ ...prev, companyName: e.target.value }))}
+                onChange={e =>
+                  setWhiteLabelConfig(prev => ({ ...prev, companyName: e.target.value }))
+                }
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter company name"
               />
@@ -273,7 +306,7 @@ export default function ExportDemoPage() {
               </label>
               <select
                 value={userTier}
-                onChange={(e) => setUserTier(e.target.value as 'free' | 'professional' | 'agency')}
+                onChange={e => setUserTier(e.target.value as 'free' | 'professional' | 'agency')}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="free">Free Tier</option>
@@ -303,7 +336,9 @@ export default function ExportDemoPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">Analytics Data</p>
-                <p className="text-2xl font-bold text-green-600">{sampleAnalytics.totalContacts.toLocaleString()}</p>
+                <p className="text-2xl font-bold text-green-600">
+                  {sampleAnalytics.totalContacts.toLocaleString()}
+                </p>
                 <p className="text-xs text-gray-500">Enhanced metrics</p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
@@ -316,7 +351,9 @@ export default function ExportDemoPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">Search Results</p>
-                <p className="text-2xl font-bold text-blue-600">{sampleSearchResults.results.length}</p>
+                <p className="text-2xl font-bold text-blue-600">
+                  {sampleSearchResults.results.length}
+                </p>
                 <p className="text-xs text-gray-500">With metadata</p>
               </div>
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -352,11 +389,12 @@ export default function ExportDemoPage() {
                   {currentProgress.stage.charAt(0).toUpperCase() + currentProgress.stage.slice(1)}
                 </span>
                 <span className="text-sm text-gray-600">
-                  {currentProgress.current} / {currentProgress.total} ({currentProgress.percentage.toFixed(0)}%)
+                  {currentProgress.current} / {currentProgress.total} (
+                  {currentProgress.percentage.toFixed(0)}%)
                 </span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-3">
-                <div 
+                <div
                   className="bg-blue-600 h-3 rounded-full transition-all duration-300"
                   style={{ width: `${currentProgress.percentage}%` }}
                 ></div>
@@ -378,7 +416,9 @@ export default function ExportDemoPage() {
 
         {/* Original Export System */}
         <div className="mt-8">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Legacy Export System (All Formats)</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            Legacy Export System (All Formats)
+          </h3>
           <ExportButtons
             contacts={sampleContacts}
             analytics={sampleAnalytics}
@@ -398,7 +438,10 @@ export default function ExportDemoPage() {
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Export History</h2>
             <div className="space-y-3">
               {exportHistory.map((export_, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-3 bg-gray-50 rounded-md"
+                >
                   <div className="flex items-center gap-3">
                     {export_.success ? (
                       <CheckCircle className="w-4 h-4 text-green-600" />
@@ -522,11 +565,15 @@ export default function ExportDemoPage() {
                       {contact.platform}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                        contact.metadata?.priority === 'high' ? 'bg-red-100 text-red-800' :
-                        contact.metadata?.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' :
-                        'bg-green-100 text-green-800'
-                      }`}>
+                      <span
+                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                          contact.metadata?.priority === 'high'
+                            ? 'bg-red-100 text-red-800'
+                            : contact.metadata?.priority === 'medium'
+                              ? 'bg-yellow-100 text-yellow-800'
+                              : 'bg-green-100 text-green-800'
+                        }`}
+                      >
                         {contact.metadata?.priority || 'N/A'}
                       </span>
                     </td>
@@ -542,4 +589,4 @@ export default function ExportDemoPage() {
       </div>
     </div>
   );
-} 
+}

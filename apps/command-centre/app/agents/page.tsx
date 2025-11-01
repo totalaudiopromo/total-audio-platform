@@ -67,11 +67,10 @@ export default function AgentsPage() {
           <div className="postcraft-card">
             <h3 className="font-black text-xl text-gray-900 mb-3">🎯 Marketing Agents</h3>
             <p className="postcraft-text mb-4">
-              Content creation, social media management, and campaign optimization agents working 24/7.
+              Content creation, social media management, and campaign optimization agents working
+              24/7.
             </p>
-            <div className="postcraft-highlight">
-              8 agents active
-            </div>
+            <div className="postcraft-highlight">8 agents active</div>
           </div>
 
           <div className="postcraft-card">
@@ -79,9 +78,7 @@ export default function AgentsPage() {
             <p className="postcraft-text mb-4">
               Gmail sorting, ConvertKit integration, and automated email response handling.
             </p>
-            <div className="postcraft-highlight">
-              5 agents active
-            </div>
+            <div className="postcraft-highlight">5 agents active</div>
           </div>
 
           <div className="postcraft-card">
@@ -89,9 +86,7 @@ export default function AgentsPage() {
             <p className="postcraft-text mb-4">
               Business intelligence, revenue prediction, and performance monitoring agents.
             </p>
-            <div className="postcraft-highlight">
-              6 agents active
-            </div>
+            <div className="postcraft-highlight">6 agents active</div>
           </div>
 
           <div className="postcraft-card">
@@ -99,9 +94,7 @@ export default function AgentsPage() {
             <p className="postcraft-text mb-4">
               Contact enrichment, email validation, and data quality management for Audio Intel.
             </p>
-            <div className="postcraft-highlight">
-              4 agents active
-            </div>
+            <div className="postcraft-highlight">4 agents active</div>
           </div>
 
           <div className="postcraft-card">
@@ -109,19 +102,16 @@ export default function AgentsPage() {
             <p className="postcraft-text mb-4">
               Twitter, LinkedIn, and BlueSky automation with scheduling and engagement tracking.
             </p>
-            <div className="postcraft-highlight">
-              3 agents active
-            </div>
+            <div className="postcraft-highlight">3 agents active</div>
           </div>
 
           <div className="postcraft-card">
             <h3 className="font-black text-xl text-gray-900 mb-3">🎵 Radio Promotion</h3>
             <p className="postcraft-text mb-4">
-              Campaign verification, contact management, and submission tracking for radio promotion.
+              Campaign verification, contact management, and submission tracking for radio
+              promotion.
             </p>
-            <div className="postcraft-highlight">
-              5 agents active
-            </div>
+            <div className="postcraft-highlight">5 agents active</div>
           </div>
         </div>
       </div>
@@ -132,7 +122,9 @@ export default function AgentsPage() {
           <h3 className="font-black text-lg text-blue-900 mb-2">ℹ️ Agent Management</h3>
           <p className="postcraft-text text-blue-800">
             All agents are running autonomously in the background. Visit the{' '}
-            <a href="/agent-demo" className="underline font-bold">Agent Demo page</a>{' '}
+            <a href="/agent-demo" className="underline font-bold">
+              Agent Demo page
+            </a>{' '}
             to interact with specific agents directly.
           </p>
         </div>

@@ -10,10 +10,13 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const Anthropic = require('@anthropic-ai/sdk');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || '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';
+const ANTHROPIC_API_KEY =
+  process.env.ANTHROPIC_API_KEY ||
+  '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';
 
 const anthropic = new Anthropic({ apiKey: ANTHROPIC_API_KEY });
 
@@ -52,22 +55,29 @@ Keep it concise - max 3-4 sentences.`;
     const response = await anthropic.messages.create({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 300,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const notes = response.content[0].text;
 
     // Determine quality from keywords
     let quality = 'Low';
-    if (notes.toLowerCase().includes('bbc') || notes.toLowerCase().includes('tier-1') || notes.toLowerCase().includes('influential')) {
+    if (
+      notes.toLowerCase().includes('bbc') ||
+      notes.toLowerCase().includes('tier-1') ||
+      notes.toLowerCase().includes('influential')
+    ) {
       quality = 'High';
-    } else if (notes.toLowerCase().includes('valuable') || notes.toLowerCase().includes('good') || notes.toLowerCase().includes('community')) {
+    } else if (
+      notes.toLowerCase().includes('valuable') ||
+      notes.toLowerCase().includes('good') ||
+      notes.toLowerCase().includes('community')
+    ) {
       quality = 'Medium';
     }
 
     console.log(`   ✅ Quality: ${quality}`);
     return { quality, notes };
-
   } catch (error) {
     console.log(`   ❌ Failed: ${error.message}`);
     return { quality: 'Low', notes: `Enrichment failed: ${error.message}` };
@@ -80,18 +90,18 @@ async function updateRecord(recordId, enrichment) {
     fields: {
       'Enrichment Quality': enrichment.quality,
       'Enrichment Notes': enrichment.notes,
-      'Last Enriched': new Date().toISOString().split('T')[0]
-    }
+      'Last Enriched': new Date().toISOString().split('T')[0],
+    },
   };
 
   try {
     const response = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`, {
       method: 'PATCH',
       headers: {
-        'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(updates)
+      body: JSON.stringify(updates),
     });
 
     if (response.ok) {
@@ -120,7 +130,7 @@ async function main() {
 
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
-    console.log(`[${i+1}/${contacts.length}] ${contact.email}`);
+    console.log(`[${i + 1}/${contacts.length}] ${contact.email}`);
 
     const enrichment = await enrichContact(contact);
     enriched++;

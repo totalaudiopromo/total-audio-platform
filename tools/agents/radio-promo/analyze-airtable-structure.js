@@ -11,7 +11,8 @@
 
 const fetch = require('node-fetch');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -26,7 +27,7 @@ async function fetchAllContacts() {
       : `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
 
     const response = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
     });
 
     const data = await response.json();
@@ -59,7 +60,7 @@ async function analyzeStructure() {
       populated: 0,
       empty: 0,
       unique: new Set(),
-      types: new Set()
+      types: new Set(),
     };
   });
 
@@ -67,8 +68,12 @@ async function analyzeStructure() {
     allFields.forEach(fieldName => {
       const value = contact.fields[fieldName];
 
-      if (value === undefined || value === null || value === '' ||
-          (Array.isArray(value) && value.length === 0)) {
+      if (
+        value === undefined ||
+        value === null ||
+        value === '' ||
+        (Array.isArray(value) && value.length === 0)
+      ) {
         fieldStats[fieldName].empty++;
       } else {
         fieldStats[fieldName].populated++;
@@ -90,7 +95,9 @@ async function analyzeStructure() {
   sortedFields.forEach(([fieldName, stats]) => {
     const percent = ((stats.populated / contacts.length) * 100).toFixed(1);
     const bar = '█'.repeat(Math.floor(percent / 5)) + '░'.repeat(20 - Math.floor(percent / 5));
-    console.log(`${fieldName.padEnd(30)} ${bar} ${percent}% (${stats.populated}/${contacts.length})`);
+    console.log(
+      `${fieldName.padEnd(30)} ${bar} ${percent}% (${stats.populated}/${contacts.length})`
+    );
   });
 
   console.log('\n═══════════════════════════════════════════════════════════\n');
@@ -107,7 +114,7 @@ async function analyzeStructure() {
       severity: 'HIGH',
       issue: 'Missing Emails',
       count: noEmail.length,
-      fix: 'Remove or research these contacts'
+      fix: 'Remove or research these contacts',
     });
   }
 
@@ -118,7 +125,7 @@ async function analyzeStructure() {
       severity: 'MEDIUM',
       issue: 'Station = "Unknown"',
       count: unknownStation.length,
-      fix: 'AI enrichment should have populated these'
+      fix: 'AI enrichment should have populated these',
     });
   }
 
@@ -129,7 +136,7 @@ async function analyzeStructure() {
       severity: 'MEDIUM',
       issue: 'Missing Genres',
       count: noGenres.length,
-      fix: 'AI enrichment should have populated these'
+      fix: 'AI enrichment should have populated these',
     });
   }
 
@@ -142,7 +149,7 @@ async function analyzeStructure() {
       severity: 'LOW',
       issue: 'Missing First Name',
       count: noFirstName.length,
-      fix: 'Extract from email or enrichment notes'
+      fix: 'Extract from email or enrichment notes',
     });
   }
 
@@ -151,7 +158,7 @@ async function analyzeStructure() {
       severity: 'LOW',
       issue: 'Missing Last Name',
       count: noLastName.length,
-      fix: 'Extract from enrichment notes or email'
+      fix: 'Extract from enrichment notes or email',
     });
   }
 
@@ -162,7 +169,7 @@ async function analyzeStructure() {
       severity: 'HIGH',
       issue: 'Not AI Enriched',
       count: notEnriched.length,
-      fix: 'Run enrich-all-contacts.js'
+      fix: 'Run enrich-all-contacts.js',
     });
   }
 
@@ -173,7 +180,7 @@ async function analyzeStructure() {
       severity: 'LOW',
       issue: 'Missing Region/Country',
       count: noRegion.length,
-      fix: 'Extract from enrichment or infer from station'
+      fix: 'Extract from enrichment or infer from station',
     });
   }
 
@@ -198,7 +205,7 @@ async function analyzeStructure() {
     High: 0,
     Medium: 0,
     Low: 0,
-    'Not Enriched': 0
+    'Not Enriched': 0,
   };
 
   contacts.forEach(c => {
@@ -234,7 +241,8 @@ async function analyzeStructure() {
 
   sortedGenres.forEach(([genre, count]) => {
     const percent = ((count / contacts.length) * 100).toFixed(1);
-    const bar = '█'.repeat(Math.floor(count / 10)) + '░'.repeat(Math.max(0, 20 - Math.floor(count / 10)));
+    const bar =
+      '█'.repeat(Math.floor(count / 10)) + '░'.repeat(Math.max(0, 20 - Math.floor(count / 10)));
     console.log(`${genre.padEnd(20)} ${bar} ${count} (${percent}%)`);
   });
 

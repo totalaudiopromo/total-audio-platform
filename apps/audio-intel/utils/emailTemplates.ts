@@ -224,7 +224,9 @@ const baseTemplate = (content: string, data: EmailTemplateData = {}) => `
 `;
 
 // Beta Welcome Email - Day 0
-export const betaWelcomeEmail = (data: EmailTemplateData) => baseTemplate(`
+export const betaWelcomeEmail = (data: EmailTemplateData) =>
+  baseTemplate(
+    `
   <div class="greeting">Hi ${data.firstName || 'there'} 👋</div>
 
   <div class="body-text">
@@ -258,10 +260,14 @@ export const betaWelcomeEmail = (data: EmailTemplateData) => baseTemplate(`
   <div class="body-text">
     I'd love to hear how it works for your campaigns. Hit reply if you run into anything or just want to chat about radio promotion!
   </div>
-`, data);
+`,
+    data
+  );
 
 // Beta End Warning - Day 10
-export const betaEndingEmail = (data: EmailTemplateData) => baseTemplate(`
+export const betaEndingEmail = (data: EmailTemplateData) =>
+  baseTemplate(
+    `
   <div class="greeting">Hi ${data.firstName || 'there'},</div>
 
   <div class="body-text">
@@ -293,10 +299,14 @@ export const betaEndingEmail = (data: EmailTemplateData) => baseTemplate(`
   <div class="body-text">
     This discount is my way of saying thanks for helping shape Audio Intel into what it is today.
   </div>
-`, data);
+`,
+    data
+  );
 
 // Final Beta Email - Day 14
-export const betaFinalEmail = (data: EmailTemplateData) => baseTemplate(`
+export const betaFinalEmail = (data: EmailTemplateData) =>
+  baseTemplate(
+    `
   <div class="greeting">Hi ${data.firstName || 'there'},</div>
 
   <div class="body-text">
@@ -334,13 +344,15 @@ export const betaFinalEmail = (data: EmailTemplateData) => baseTemplate(`
   <div class="body-text">
     Thanks again for being part of the journey. Here's to more successful radio campaigns! 🎵
   </div>
-`, data);
+`,
+    data
+  );
 
 // Export all templates
 export const emailTemplates = {
   betaWelcome: betaWelcomeEmail,
   betaEnding: betaEndingEmail,
-  betaFinal: betaFinalEmail
+  betaFinal: betaFinalEmail,
 };
 
 // Utility function to send custom HTML emails via your notify API
@@ -355,7 +367,7 @@ export async function sendCustomEmail(
   const response = await fetch('/api/notify', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ to, subject, html })
+    body: JSON.stringify({ to, subject, html }),
   });
 
   return response.json();
@@ -363,7 +375,8 @@ export async function sendCustomEmail(
 
 // Export email templates
 export const generateContactExportEmail = (data: any) => {
-  return baseTemplate(`
+  return baseTemplate(
+    `
     <div class="content">
       <h1>Your Contact Export is Ready</h1>
       <p>Hi ${data.firstName || 'there'},</p>
@@ -379,11 +392,14 @@ export const generateContactExportEmail = (data: any) => {
         This link will expire in 7 days.
       </p>
     </div>
-  `, data);
+  `,
+    data
+  );
 };
 
 export const generateAnalyticsExportEmail = (data: any) => {
-  return baseTemplate(`
+  return baseTemplate(
+    `
     <div class="content">
       <h1>Your Analytics Report is Ready</h1>
       <p>Hi ${data.firstName || 'there'},</p>
@@ -399,11 +415,14 @@ export const generateAnalyticsExportEmail = (data: any) => {
         This link will expire in 7 days.
       </p>
     </div>
-  `, data);
+  `,
+    data
+  );
 };
 
 export const generateSearchResultsEmail = (data: any) => {
-  return baseTemplate(`
+  return baseTemplate(
+    `
     <div class="content">
       <h1>Your Search Results are Ready</h1>
       <p>Hi ${data.firstName || 'there'},</p>
@@ -419,11 +438,14 @@ export const generateSearchResultsEmail = (data: any) => {
         This link will expire in 7 days.
       </p>
     </div>
-  `, data);
+  `,
+    data
+  );
 };
 
 export const generateAIAgentReportEmail = (data: any) => {
-  return baseTemplate(`
+  return baseTemplate(
+    `
     <div class="content">
       <h1>Your AI Agent Report is Ready</h1>
       <p>Hi ${data.firstName || 'there'},</p>
@@ -439,5 +461,7 @@ export const generateAIAgentReportEmail = (data: any) => {
         This link will expire in 7 days.
       </p>
     </div>
-  `, data);
+  `,
+    data
+  );
 };

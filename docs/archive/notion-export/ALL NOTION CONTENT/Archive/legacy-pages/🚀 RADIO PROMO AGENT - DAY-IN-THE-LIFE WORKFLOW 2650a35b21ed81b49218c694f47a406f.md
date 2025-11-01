@@ -1,6 +1,6 @@
 # 🚀 RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW
 
-*How Chris 10x's his radio promotion efficiency with complete automation*
+_How Chris 10x's his radio promotion efficiency with complete automation_
 
 ---
 
@@ -71,8 +71,8 @@
 ```
 ✅ AI generates personalized press release:
    "Hi [Station Name],
-   Hope you're well! I've got an exciting indie pop track from Sarah Jones 
-   that's perfect for your evening rotation. 'Electric Dreams' has that 
+   Hope you're well! I've got an exciting indie pop track from Sarah Jones
+   that's perfect for your evening rotation. 'Electric Dreams' has that
    dreamy 80s-influenced sound that your listeners love..."
 
 ✅ Press release automatically customized for each station type
@@ -327,4 +327,4 @@ You focus on strategy, relationships, and growth.
 
 The system handles the tedious stuff.
 
-*Your clients get better results. You get your life back. Everyone wins.*
+_Your clients get better results. You get your life back. Everyone wins._

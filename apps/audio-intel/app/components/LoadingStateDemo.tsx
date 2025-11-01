@@ -1,58 +1,66 @@
-'use client'
+'use client';
 
-import React, { useState, useEffect } from 'react'
-import ContactLoadingState, { LoadingState } from './ContactLoadingState'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import React, { useState, useEffect } from 'react';
+import ContactLoadingState, { LoadingState } from './ContactLoadingState';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const LoadingStateDemo: React.FC = () => {
-  const [currentState, setCurrentState] = useState<LoadingState>('upload')
-  const [progress, setProgress] = useState(0)
-  const [isAnimating, setIsAnimating] = useState(false)
+  const [currentState, setCurrentState] = useState<LoadingState>('upload');
+  const [progress, setProgress] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const states: { state: LoadingState; label: string; message: string }[] = [
     { state: 'upload', label: 'Upload', message: 'Ready to process your contact spreadsheets...' },
-    { state: 'processing', label: 'Processing', message: 'Analysing and cleaning your contact data...' },
+    {
+      state: 'processing',
+      label: 'Processing',
+      message: 'Analysing and cleaning your contact data...',
+    },
     { state: 'analysing', label: 'Analysing', message: 'Gathering music industry intelligence...' },
     { state: 'success', label: 'Success', message: 'Contact enrichment completed successfully!' },
-    { state: 'error', label: 'Error', message: 'Oops! Something went wrong. Let\'s try again.' },
+    { state: 'error', label: 'Error', message: "Oops! Something went wrong. Let's try again." },
     { state: 'export', label: 'Export', message: 'Downloading your organised contact database...' },
-    { state: 'launch', label: 'Launch', message: 'Your music is flying out to all verified contacts!' }
-  ]
+    {
+      state: 'launch',
+      label: 'Launch',
+      message: 'Your music is flying out to all verified contacts!',
+    },
+  ];
 
   const runFullDemo = () => {
-    setIsAnimating(true)
-    setProgress(0)
-    
+    setIsAnimating(true);
+    setProgress(0);
+
     // Upload state
-    setCurrentState('upload')
+    setCurrentState('upload');
     setTimeout(() => {
       // Processing state
-      setCurrentState('processing')
-      setProgress(25)
-      
+      setCurrentState('processing');
+      setProgress(25);
+
       setTimeout(() => {
-        setProgress(50)
-        
+        setProgress(50);
+
         setTimeout(() => {
-          // Analysing state  
-          setCurrentState('analysing')
-          setProgress(75)
-          
+          // Analysing state
+          setCurrentState('analysing');
+          setProgress(75);
+
           setTimeout(() => {
-            setProgress(95)
-            
+            setProgress(95);
+
             setTimeout(() => {
               // Success state
-              setCurrentState('success')
-              setProgress(100)
-              setIsAnimating(false)
-            }, 1000)
-          }, 1000)
-        }, 1000)
-      }, 1000)
-    }, 1000)
-  }
+              setCurrentState('success');
+              setProgress(100);
+              setIsAnimating(false);
+            }, 1000);
+          }, 1000);
+        }, 1000);
+      }, 1000);
+    }, 1000);
+  };
 
   return (
     <Card className="w-full max-w-2xl mx-auto">
@@ -80,12 +88,13 @@ const LoadingStateDemo: React.FC = () => {
               variant={currentState === state ? 'default' : 'outline'}
               size="sm"
               onClick={() => {
-                setCurrentState(state)
-                if (state === 'upload') setProgress(0)
-                else if (state === 'processing') setProgress(35)
-                else if (state === 'analysing') setProgress(75)
-                else if (state === 'export' || state === 'launch') setProgress(0) // Action states don't show progress
-                else setProgress(100)
+                setCurrentState(state);
+                if (state === 'upload') setProgress(0);
+                else if (state === 'processing') setProgress(35);
+                else if (state === 'analysing') setProgress(75);
+                else if (state === 'export' || state === 'launch')
+                  setProgress(0); // Action states don't show progress
+                else setProgress(100);
               }}
               disabled={isAnimating}
             >
@@ -96,8 +105,8 @@ const LoadingStateDemo: React.FC = () => {
 
         {/* Full Demo Button */}
         <div className="flex justify-center">
-          <Button 
-            onClick={runFullDemo} 
+          <Button
+            onClick={runFullDemo}
             disabled={isAnimating}
             size="lg"
             className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700"
@@ -110,18 +119,31 @@ const LoadingStateDemo: React.FC = () => {
         <div className="mt-8 p-4 bg-gray-50 rounded-lg text-sm">
           <h3 className="font-semibold mb-2">🎯 Implementation Guide:</h3>
           <ol className="list-decimal list-inside space-y-1 text-gray-700">
-            <li>Copy your mascot images to <code>/public/assets/loading-states/</code></li>
-            <li>Include: <code>upload-contacts.png</code>, <code>processing-contacts.png</code>, <code>analyzing-data.png</code>, <code>success-complete.png</code>, <code>error-state.png</code>, <code>vinyl-throw-action.png</code></li>
-            <li>Use high-quality PNG files with transparent backgrounds for professional appearance</li>
+            <li>
+              Copy your mascot images to <code>/public/assets/loading-states/</code>
+            </li>
+            <li>
+              Include: <code>upload-contacts.png</code>, <code>processing-contacts.png</code>,{' '}
+              <code>analyzing-data.png</code>, <code>success-complete.png</code>,{' '}
+              <code>error-state.png</code>, <code>vinyl-throw-action.png</code>
+            </li>
+            <li>
+              Use high-quality PNG files with transparent backgrounds for professional appearance
+            </li>
             <li>The component automatically falls back to the main logo if images aren't found</li>
-            <li>Loading states use: gentle-bob, typing-motion, success-bounce, error-shake animations</li>
-            <li>Action states (Export/Launch) use: export-pulse, launch-energy, dynamic-throw animations</li>
+            <li>
+              Loading states use: gentle-bob, typing-motion, success-bounce, error-shake animations
+            </li>
+            <li>
+              Action states (Export/Launch) use: export-pulse, launch-energy, dynamic-throw
+              animations
+            </li>
             <li>Progress bar includes shine animation for professional polish</li>
           </ol>
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default LoadingStateDemo
+export default LoadingStateDemo;

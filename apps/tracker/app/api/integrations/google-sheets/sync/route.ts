@@ -4,20 +4,19 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { GoogleSheetsSync } from '@/lib/integrations/google-sheets-sync';
 
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createServerClient(cookies());
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
     if (!user) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Get user's Google Sheets connection

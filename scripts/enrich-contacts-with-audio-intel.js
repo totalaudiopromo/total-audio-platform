@@ -52,14 +52,24 @@ async function readCsv(filePath) {
   await new Promise((resolve, reject) => {
     fs.createReadStream(filePath)
       .pipe(csv())
-      .on('data', (row) => {
+      .on('data', row => {
         try {
           // Determine keys once per row (robust to mixed headers)
           const emailKey = pickFieldKey(row, ['email', 'e-mail', 'email address']);
           const firstNameKey = pickFieldKey(row, ['first name', 'firstname', 'given name']);
-          const lastNameKey = pickFieldKey(row, ['last name', 'lastname', 'surname', 'family name']);
+          const lastNameKey = pickFieldKey(row, [
+            'last name',
+            'lastname',
+            'surname',
+            'family name',
+          ]);
           const nameKey = pickFieldKey(row, ['name', 'full name', 'contact name']);
-          const stationKey = pickFieldKey(row, ['station', 'organisation', 'organization', 'company']);
+          const stationKey = pickFieldKey(row, [
+            'station',
+            'organisation',
+            'organization',
+            'company',
+          ]);
 
           const rawEmail = emailKey ? String(row[emailKey] || '').trim() : '';
           if (!rawEmail) return; // skip rows without email
@@ -76,7 +86,10 @@ async function readCsv(filePath) {
           }
           if (!name) {
             // fallback from email local part
-            name = rawEmail.split('@')[0].replace(/[._-]+/g, ' ').trim();
+            name = rawEmail
+              .split('@')[0]
+              .replace(/[._-]+/g, ' ')
+              .trim();
           }
 
           // Attach all original fields for context
@@ -86,7 +99,7 @@ async function readCsv(filePath) {
         }
       })
       .on('end', () => resolve())
-      .on('error', (err) => reject(err));
+      .on('error', err => reject(err));
   });
 
   return contacts;
@@ -141,13 +154,18 @@ async function main() {
     deduped.push(rec);
   }
 
-  fs.writeFileSync(out, JSON.stringify({ generatedAt: new Date().toISOString(), count: deduped.length, contacts: deduped }, null, 2));
+  fs.writeFileSync(
+    out,
+    JSON.stringify(
+      { generatedAt: new Date().toISOString(), count: deduped.length, contacts: deduped },
+      null,
+      2
+    )
+  );
   console.log(`Saved: ${out} (contacts: ${deduped.length})`);
 }
 
-main().catch((err) => {
+main().catch(err => {
   console.error(err);
   process.exit(1);
 });
-
-

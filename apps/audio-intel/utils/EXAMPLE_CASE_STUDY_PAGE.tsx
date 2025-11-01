@@ -16,14 +16,21 @@
 
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { generateCaseStudyMetadata, generateAllCaseStudySchemas } from '@/utils/generateCaseStudyMetadata';
+import {
+  generateCaseStudyMetadata,
+  generateAllCaseStudySchemas,
+} from '@/utils/generateCaseStudyMetadata';
 import { getCaseStudyBySlugSync, getAllCaseStudySlugs } from '@/utils/parseCaseStudyData';
 
 // ============================================================================
 // METADATA GENERATION
 // ============================================================================
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   return await generateCaseStudyMetadata(params.slug, {
     includeAlternates: true,
     includeRobots: true,
@@ -37,7 +44,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export async function generateStaticParams() {
   const slugs = await getAllCaseStudySlugs();
 
-  return slugs.map((slug) => ({
+  return slugs.map(slug => ({
     slug,
   }));
 }
@@ -105,23 +112,17 @@ export default function CaseStudyPage({ params }: PageProps) {
           {/* Campaign Snapshot */}
           <section id="campaign-snapshot" className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">Campaign Snapshot</h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              {data.painPoint}
-            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">{data.painPoint}</p>
 
             {/* Problem vs Solution Grid */}
             <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 grid md:grid-cols-2 gap-6">
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">The Problem</h3>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  {data.painPoint}
-                </p>
+                <p className="text-base text-gray-700 leading-relaxed">{data.painPoint}</p>
               </div>
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">The Solution</h3>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  {data.solutionAngle}
-                </p>
+                <p className="text-base text-gray-700 leading-relaxed">{data.solutionAngle}</p>
               </div>
             </div>
           </section>
@@ -147,15 +148,30 @@ export default function CaseStudyPage({ params }: PageProps) {
               Use This Playbook for Your Next {data.category} Campaign
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              If you already have a contact list in any shape or form, the fastest route is to run it through the same
-              workflow. Here is the exact checklist:
+              If you already have a contact list in any shape or form, the fastest route is to run
+              it through the same workflow. Here is the exact checklist:
             </p>
             <ol className="list-decimal pl-6 space-y-4 text-base text-gray-700 leading-relaxed">
-              <li>Gather every scrap of contact data you have: inbox history, Airtable exports, Discord DMs, anything.</li>
-              <li>Upload to Audio Intel and tag the campaign as {data.category} so the enrichment engine scopes the right sources.</li>
-              <li>Review the risk scores, remove anything below 85 percent confidence, and request manual review inside the app if needed.</li>
-              <li>Export the CSV for your mailer, and send the PDF summary to the artist or label to prove the prep work.</li>
-              <li>Track replies inside your CRM and feed them back into Audio Intel for live activity dashboards.</li>
+              <li>
+                Gather every scrap of contact data you have: inbox history, Airtable exports,
+                Discord DMs, anything.
+              </li>
+              <li>
+                Upload to Audio Intel and tag the campaign as {data.category} so the enrichment
+                engine scopes the right sources.
+              </li>
+              <li>
+                Review the risk scores, remove anything below 85 percent confidence, and request
+                manual review inside the app if needed.
+              </li>
+              <li>
+                Export the CSV for your mailer, and send the PDF summary to the artist or label to
+                prove the prep work.
+              </li>
+              <li>
+                Track replies inside your CRM and feed them back into Audio Intel for live activity
+                dashboards.
+              </li>
             </ol>
           </section>
 
@@ -163,10 +179,12 @@ export default function CaseStudyPage({ params }: PageProps) {
           <section id="testimonials" className="space-y-6">
             <h2 className="text-3xl font-black text-gray-900">What Other Promoters Say</h2>
             <blockquote className="bg-white border-l-4 border-gray-900 p-6 rounded-r-xl shadow-sm text-gray-800 text-lg leading-relaxed">
-              "Audio Intel is the first tool that actually respects how {data.category} contacts work. The enriched
-              intel alone is worth the subscription."
+              "Audio Intel is the first tool that actually respects how {data.category} contacts
+              work. The enriched intel alone is worth the subscription."
             </blockquote>
-            <p className="text-sm text-gray-500">Pulled from internal beta feedback, January 2025.</p>
+            <p className="text-sm text-gray-500">
+              Pulled from internal beta feedback, January 2025.
+            </p>
           </section>
 
           {/* CTA Section */}
@@ -175,9 +193,9 @@ export default function CaseStudyPage({ params }: PageProps) {
               Ready to Stop Guessing {data.category} Contacts?
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Audio Intel was built by people who actually pitch {data.category.toLowerCase()} every month. Drop your
-              messy spreadsheet, and we will return validated contacts, submission rules, and follow up reminders so you
-              spend time on the music rather than the admin.
+              Audio Intel was built by people who actually pitch {data.category.toLowerCase()} every
+              month. Drop your messy spreadsheet, and we will return validated contacts, submission
+              rules, and follow up reminders so you spend time on the music rather than the admin.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a

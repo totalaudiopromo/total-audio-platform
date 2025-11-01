@@ -5,7 +5,7 @@ async function runDemoAudit() {
   try {
     console.log('🔍 Starting Airtable Data Audit Demo...');
     console.log('=====================================');
-    
+
     // Create a demo script that shows what the audit would look like
     const demoScript = `
 // Demo Airtable Data Audit Results
@@ -138,19 +138,18 @@ console.log('4. Run: node test-audit.js');
     const fs = require('fs');
     const demoFile = path.join(__dirname, 'temp-demo-audit.js');
     fs.writeFileSync(demoFile, demoScript);
-    
+
     // Run the demo script
-    execSync(`node ${demoFile}`, { 
+    execSync(`node ${demoFile}`, {
       stdio: 'inherit',
-      cwd: __dirname 
+      cwd: __dirname,
     });
-    
+
     // Clean up
     fs.unlinkSync(demoFile);
-    
   } catch (error) {
     console.error('❌ Demo failed:', error.message);
   }
 }
 
-runDemoAudit(); 
+runDemoAudit();

@@ -1,19 +1,17 @@
-import Link from "next/link"
-import { Home, Sparkles, FileText, HelpCircle } from "lucide-react"
+import Link from 'next/link';
+import { Home, Sparkles, FileText, HelpCircle } from 'lucide-react';
 
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4">
       <div className="max-w-2xl w-full text-center">
-
         {/* 404 Message */}
         <div className="mb-8">
           <h1 className="text-9xl font-black text-gray-200 mb-4">404</h1>
-          <h2 className="text-4xl font-black text-gray-900 mb-4">
-            Pitch Not Found
-          </h2>
+          <h2 className="text-4xl font-black text-gray-900 mb-4">Pitch Not Found</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-lg mx-auto">
-            The page you're looking for doesn't exist. It might have been moved, deleted, or the URL could be incorrect.
+            The page you're looking for doesn't exist. It might have been moved, deleted, or the URL
+            could be incorrect.
           </p>
         </div>
 
@@ -44,24 +42,42 @@ export default function NotFound() {
 
           <div className="grid sm:grid-cols-2 gap-6">
             <div className="space-y-3 text-left">
-              <Link href="/pitch/generate" className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
+              <Link
+                href="/pitch/generate"
+                className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200"
+              >
                 → Generate New Pitch
               </Link>
-              <Link href="/pitch/history" className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
+              <Link
+                href="/pitch/history"
+                className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200"
+              >
                 → View Pitch History
               </Link>
-              <Link href="/pitch/templates" className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
+              <Link
+                href="/pitch/templates"
+                className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200"
+              >
                 → Browse Templates
               </Link>
             </div>
             <div className="space-y-3 text-left">
-              <Link href="/pricing" className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
+              <Link
+                href="/pricing"
+                className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200"
+              >
                 → View Pricing Plans
               </Link>
-              <Link href="/blog" className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
+              <Link
+                href="/blog"
+                className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200"
+              >
                 → Read Our Blog
               </Link>
-              <Link href="/" className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200">
+              <Link
+                href="/"
+                className="block text-amber-600 hover:text-amber-700 font-bold text-lg transition-colors hover:translate-x-1 duration-200"
+              >
                 → Back to Homepage
               </Link>
             </div>
@@ -72,12 +88,15 @@ export default function NotFound() {
         <div className="mt-8 text-center">
           <p className="text-gray-600 font-medium">
             Still can't find what you need?
-            <a href="mailto:support@totalaudiopromo.com" className="text-amber-600 hover:text-amber-700 ml-1 font-bold transition-colors">
+            <a
+              href="mailto:support@totalaudiopromo.com"
+              className="text-amber-600 hover:text-amber-700 ml-1 font-bold transition-colors"
+            >
               Contact our support team
             </a>
           </p>
         </div>
       </div>
     </div>
-  )
+  );
 }

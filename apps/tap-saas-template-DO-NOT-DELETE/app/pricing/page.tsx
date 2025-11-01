@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
@@ -22,15 +22,12 @@ const plans = [
     monthly: 79,
     annual: 790,
     blurb: 'Perfect for studios and agencies shipping client-ready experiences.',
-    features: [
-      'Everything in Professional',
-      'Multi-brand theme presets',
-      'Priority async support',
-    ],
+    features: ['Everything in Professional', 'Multi-brand theme presets', 'Priority async support'],
   },
 ];
 
-const formatPrice = (value: number) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(value);
+const formatPrice = (value: number) =>
+  new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(value);
 
 type BillingCycle = 'monthly' | 'annual';
 
@@ -39,7 +36,7 @@ type CheckoutState = 'idle' | 'loading' | 'error';
 export default function PricingPage() {
   const { data: session } = useSession();
   const [billing, setBilling] = useState<BillingCycle>('monthly');
-  const [selectedPlan, setSelectedPlan] = useState<typeof plans[number]['id']>('professional');
+  const [selectedPlan, setSelectedPlan] = useState<(typeof plans)[number]['id']>('professional');
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<CheckoutState>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -49,7 +46,6 @@ export default function PricingPage() {
       setEmail(session.user.email);
     }
   }, [session?.user?.email]);
-
 
   const handleCheckout = async () => {
     setStatus('loading');
@@ -84,10 +80,14 @@ export default function PricingPage() {
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
       <header className="glass-panel px-6 py-10 sm:px-10">
-        <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800">Pricing preview · Stripe ready</span>
+        <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800">
+          Pricing preview · Stripe ready
+        </span>
         <h1 className="mt-6 text-3xl font-semibold">Pick a launch plan</h1>
         <p className="mt-4 max-w-2xl text-sm text-gray-600">
-          These tiers map to the Stripe price IDs referenced in the checkout API. Swap the copy and price points to align with your latest experiment, then plug in the IDs from your Stripe dashboard.
+          These tiers map to the Stripe price IDs referenced in the checkout API. Swap the copy and
+          price points to align with your latest experiment, then plug in the IDs from your Stripe
+          dashboard.
         </p>
         <div className="mt-6 inline-flex items-center rounded-full border border-gray-300 p-1 text-xs text-gray-600">
           <button
@@ -127,11 +127,15 @@ export default function PricingPage() {
               <div className="flex flex-col gap-4 px-6 py-8">
                 <div className="flex items-center justify-between">
                   <h2 className="text-2xl font-semibold">{plan.name}</h2>
-                  <span className="text-sm font-medium text-gray-500">{billing === 'monthly' ? 'Monthly' : 'Annual'} plan</span>
+                  <span className="text-sm font-medium text-gray-500">
+                    {billing === 'monthly' ? 'Monthly' : 'Annual'} plan
+                  </span>
                 </div>
                 <div className="flex items-baseline gap-2">
                   <span className="text-4xl font-bold text-gray-900">{formatPrice(price)}</span>
-                  <span className="text-sm text-gray-500">/{billing === 'monthly' ? 'mo' : 'yr'}</span>
+                  <span className="text-sm text-gray-500">
+                    /{billing === 'monthly' ? 'mo' : 'yr'}
+                  </span>
                 </div>
                 <p className="text-sm text-gray-600">{plan.blurb}</p>
                 <ul className="space-y-2 text-sm text-gray-600">
@@ -161,7 +165,10 @@ export default function PricingPage() {
         }}
       >
         <div className="w-full max-w-md space-y-2">
-          <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-600">
+          <label
+            htmlFor="email"
+            className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-600"
+          >
             Checkout email
           </label>
           <input
@@ -173,7 +180,9 @@ export default function PricingPage() {
             required
             className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
           />
-          <p className="text-xs text-gray-500">Prefilled with the signed-in account when available.</p>
+          <p className="text-xs text-gray-500">
+            Prefilled with the signed-in account when available.
+          </p>
         </div>
         <div className="flex w-full flex-col items-start gap-3 sm:w-auto sm:flex-row sm:items-center">
           <button
@@ -183,7 +192,9 @@ export default function PricingPage() {
           >
             {status === 'loading' ? 'Redirecting…' : 'Proceed to checkout'}
           </button>
-          <span className="text-xs text-gray-500">Stripe session will redirect to the success screen.</span>
+          <span className="text-xs text-gray-500">
+            Stripe session will redirect to the success screen.
+          </span>
         </div>
       </form>
 

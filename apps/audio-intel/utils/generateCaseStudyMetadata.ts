@@ -419,10 +419,7 @@ export function generateAllCaseStudySchemas(
   slug: string,
   faqQuestions?: Array<{ question: string; answer: string }>
 ): object[] {
-  const schemas = [
-    generateCaseStudyStructuredData(slug),
-    generateCaseStudyBreadcrumbSchema(slug),
-  ];
+  const schemas = [generateCaseStudyStructuredData(slug), generateCaseStudyBreadcrumbSchema(slug)];
 
   if (faqQuestions && faqQuestions.length > 0) {
     schemas.push(generateCaseStudyFAQSchema(faqQuestions));

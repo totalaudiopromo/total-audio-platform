@@ -19,7 +19,7 @@ interface VerificationResult {
 
 async function verifyLinkedInAgent(): Promise<void> {
   console.log('🔍 LinkedIn Agent Verification\n');
-  console.log('=' .repeat(50));
+  console.log('='.repeat(50));
 
   const results: VerificationResult[] = [];
 
@@ -27,7 +27,7 @@ async function verifyLinkedInAgent(): Promise<void> {
   console.log('\n1️⃣  Agent Structure Verification\n');
   const structureChecks: VerificationResult = {
     category: 'Structure',
-    checks: []
+    checks: [],
   };
 
   try {
@@ -35,38 +35,46 @@ async function verifyLinkedInAgent(): Promise<void> {
     const dummyAgent = new LinkedInPostingAgent({
       clientId: 'test',
       clientSecret: 'test',
-      accessToken: 'test'
+      accessToken: 'test',
     });
 
     structureChecks.checks.push({
       name: 'Agent instantiation',
       status: 'pass',
-      message: 'LinkedInPostingAgent class instantiates correctly'
+      message: 'LinkedInPostingAgent class instantiates correctly',
     });
 
     // Check methods exist
-    const methods = ['authenticate', 'post', 'refreshAccessToken', 'getContentByTitle', 'processScheduledPosts', 'healthCheck'];
-    const missingMethods = methods.filter(method => typeof (dummyAgent as any)[method] !== 'function');
+    const methods = [
+      'authenticate',
+      'post',
+      'refreshAccessToken',
+      'getContentByTitle',
+      'processScheduledPosts',
+      'healthCheck',
+    ];
+    const missingMethods = methods.filter(
+      method => typeof (dummyAgent as any)[method] !== 'function'
+    );
 
     if (missingMethods.length === 0) {
       structureChecks.checks.push({
         name: 'Required methods',
         status: 'pass',
-        message: `All ${methods.length} required methods present`
+        message: `All ${methods.length} required methods present`,
       });
     } else {
       structureChecks.checks.push({
         name: 'Required methods',
         status: 'fail',
-        message: `Missing methods: ${missingMethods.join(', ')}`
+        message: `Missing methods: ${missingMethods.join(', ')}`,
       });
     }
-
   } catch (error) {
     structureChecks.checks.push({
       name: 'Agent instantiation',
       status: 'fail',
-      message: `Failed to instantiate: ${error instanceof Error ? error.message : 'Unknown error'}`
+      message: `Failed to instantiate: ${error instanceof Error ? error.message : 'Unknown error'}`,
     });
   }
 
@@ -77,13 +85,13 @@ async function verifyLinkedInAgent(): Promise<void> {
   console.log('\n2️⃣  Content Mapping Verification\n');
   const contentChecks: VerificationResult = {
     category: 'Content',
-    checks: []
+    checks: [],
   };
 
   const dummyAgent = new LinkedInPostingAgent({
     clientId: 'test',
     clientSecret: 'test',
-    accessToken: 'test'
+    accessToken: 'test',
   });
 
   const expectedTitles = [
@@ -96,7 +104,7 @@ async function verifyLinkedInAgent(): Promise<void> {
     'The Spreadsheet Chaos Problem',
     'The Regional Radio Opportunity',
     'The Submission Window Problem',
-    'The ROI Calculation'
+    'The ROI Calculation',
   ];
 
   let mappedCount = 0;
@@ -119,19 +127,19 @@ async function verifyLinkedInAgent(): Promise<void> {
   contentChecks.checks.push({
     name: 'Content titles mapped',
     status: mappedCount === expectedTitles.length ? 'pass' : 'fail',
-    message: `${mappedCount}/${expectedTitles.length} titles have content`
+    message: `${mappedCount}/${expectedTitles.length} titles have content`,
   });
 
   contentChecks.checks.push({
     name: 'Character limits',
     status: maxChars <= 3000 ? 'pass' : 'fail',
-    message: `Largest post: ${maxChars} chars (${maxCharTitle}) - Limit: 3000`
+    message: `Largest post: ${maxChars} chars (${maxCharTitle}) - Limit: 3000`,
   });
 
   contentChecks.checks.push({
     name: 'Average content length',
     status: 'pass',
-    message: `Average: ${Math.round(totalChars / mappedCount)} characters per post`
+    message: `Average: ${Math.round(totalChars / mappedCount)} characters per post`,
   });
 
   // Check for UTM tracking
@@ -146,7 +154,7 @@ async function verifyLinkedInAgent(): Promise<void> {
   contentChecks.checks.push({
     name: 'UTM tracking',
     status: utmCount === mappedCount ? 'pass' : 'fail',
-    message: `${utmCount}/${mappedCount} posts include LinkedIn UTM parameters`
+    message: `${utmCount}/${mappedCount} posts include LinkedIn UTM parameters`,
   });
 
   // Check for hashtags
@@ -161,7 +169,7 @@ async function verifyLinkedInAgent(): Promise<void> {
   contentChecks.checks.push({
     name: 'Hashtags',
     status: hashtagCount === mappedCount ? 'pass' : 'fail',
-    message: `${hashtagCount}/${mappedCount} posts include hashtags`
+    message: `${hashtagCount}/${mappedCount} posts include hashtags`,
   });
 
   results.push(contentChecks);
@@ -171,7 +179,7 @@ async function verifyLinkedInAgent(): Promise<void> {
   console.log('\n3️⃣  Content Calendar Integration\n');
   const calendarChecks: VerificationResult = {
     category: 'Calendar',
-    checks: []
+    checks: [],
   };
 
   const linkedInPosts = contentCalendar.schedule.filter(post => post.platform === 'LinkedIn');
@@ -179,7 +187,7 @@ async function verifyLinkedInAgent(): Promise<void> {
   calendarChecks.checks.push({
     name: 'LinkedIn posts in calendar',
     status: linkedInPosts.length > 0 ? 'pass' : 'fail',
-    message: `${linkedInPosts.length} LinkedIn posts scheduled`
+    message: `${linkedInPosts.length} LinkedIn posts scheduled`,
   });
 
   // Check how many calendar posts have content mapped
@@ -194,7 +202,7 @@ async function verifyLinkedInAgent(): Promise<void> {
   calendarChecks.checks.push({
     name: 'Calendar content mapping',
     status: calendarMappedCount === linkedInPosts.length ? 'pass' : 'fail',
-    message: `${calendarMappedCount}/${linkedInPosts.length} calendar posts have content mapped`
+    message: `${calendarMappedCount}/${linkedInPosts.length} calendar posts have content mapped`,
   });
 
   // Check scheduling distribution
@@ -202,7 +210,7 @@ async function verifyLinkedInAgent(): Promise<void> {
   calendarChecks.checks.push({
     name: 'Weekly distribution',
     status: 'pass',
-    message: `Posts distributed across ${weeks.length} week themes`
+    message: `Posts distributed across ${weeks.length} week themes`,
   });
 
   results.push(calendarChecks);
@@ -212,14 +220,14 @@ async function verifyLinkedInAgent(): Promise<void> {
   console.log('\n4️⃣  Environment Variables Check\n');
   const envChecks: VerificationResult = {
     category: 'Environment',
-    checks: []
+    checks: [],
   };
 
   const requiredEnvVars = [
     'LINKEDIN_CLIENT_ID',
     'LINKEDIN_CLIENT_SECRET',
     'LINKEDIN_ACCESS_TOKEN',
-    'LINKEDIN_REFRESH_TOKEN'
+    'LINKEDIN_REFRESH_TOKEN',
   ];
 
   const missingEnvVars = requiredEnvVars.filter(envVar => !process.env[envVar]);
@@ -228,13 +236,13 @@ async function verifyLinkedInAgent(): Promise<void> {
     envChecks.checks.push({
       name: 'Environment variables',
       status: 'pass',
-      message: 'All required environment variables are set'
+      message: 'All required environment variables are set',
     });
   } else {
     envChecks.checks.push({
       name: 'Environment variables',
       status: 'fail',
-      message: `Missing: ${missingEnvVars.join(', ')} - See .env.linkedin.template`
+      message: `Missing: ${missingEnvVars.join(', ')} - See .env.linkedin.template`,
     });
   }
 
@@ -259,7 +267,9 @@ async function verifyLinkedInAgent(): Promise<void> {
   if (failedChecks === 0) {
     console.log('🎉 LinkedIn agent is fully configured and ready to use!');
   } else if (missingEnvVars.length > 0) {
-    console.log('⚠️  LinkedIn agent structure is correct, but OAuth credentials need to be configured.');
+    console.log(
+      '⚠️  LinkedIn agent structure is correct, but OAuth credentials need to be configured.'
+    );
     console.log('📖 Follow LINKEDIN_OAUTH_SETUP.md to complete setup.\n');
   } else {
     console.log('⚠️  Some checks failed. Review the results above.\n');

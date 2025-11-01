@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { Check, Clock, Target, TrendingUp, Users, Zap } from 'lucide-react'
+import Image from 'next/image';
+import Link from 'next/link';
+import { Check, Clock, Target, TrendingUp, Users, Zap } from 'lucide-react';
 
 // Case Study Data
 const caseStudies = [
@@ -39,8 +39,18 @@ const caseStudies = [
       ],
     },
     metrics: [
-      { label: 'Research Time', before: '15 hours', after: '15 minutes', improvement: '98% reduction' },
-      { label: 'Contact Quality', before: '60% valid', after: '100% validated', improvement: '40% improvement' },
+      {
+        label: 'Research Time',
+        before: '15 hours',
+        after: '15 minutes',
+        improvement: '98% reduction',
+      },
+      {
+        label: 'Contact Quality',
+        before: '60% valid',
+        after: '100% validated',
+        improvement: '40% improvement',
+      },
       { label: 'Campaign Confidence', before: 'Low', after: 'High', improvement: 'Game changer' },
     ],
     quote: {
@@ -49,9 +59,27 @@ const caseStudies = [
       role: 'Radio Promoter / Producer (sadact)',
     },
     contacts: [
-      { name: 'Greg James', platform: 'BBC Radio 1', show: 'Breakfast Show', timing: '6:30-10am', genre: 'Pop, Electronic' },
-      { name: 'Danny Howard', platform: 'BBC Radio 1', show: 'Dance', timing: 'Friday 7-9pm', genre: 'House, Techno' },
-      { name: 'Pete Tong', platform: 'BBC Radio 1', show: 'Essential Selection', timing: 'Friday 8-10pm', genre: 'Dance, Electronic' },
+      {
+        name: 'Greg James',
+        platform: 'BBC Radio 1',
+        show: 'Breakfast Show',
+        timing: '6:30-10am',
+        genre: 'Pop, Electronic',
+      },
+      {
+        name: 'Danny Howard',
+        platform: 'BBC Radio 1',
+        show: 'Dance',
+        timing: 'Friday 7-9pm',
+        genre: 'House, Techno',
+      },
+      {
+        name: 'Pete Tong',
+        platform: 'BBC Radio 1',
+        show: 'Essential Selection',
+        timing: 'Friday 8-10pm',
+        genre: 'Dance, Electronic',
+      },
     ],
   },
   {
@@ -87,9 +115,24 @@ const caseStudies = [
       ],
     },
     metrics: [
-      { label: 'Research Time', before: '10 hours', after: '20 minutes', improvement: '97% reduction' },
-      { label: 'Playlist Targets', before: '8 generic', after: '34 specific', improvement: '325% increase' },
-      { label: 'Submission Strategy', before: 'Hope & pray', after: 'Data-driven', improvement: 'Confidence boost' },
+      {
+        label: 'Research Time',
+        before: '10 hours',
+        after: '20 minutes',
+        improvement: '97% reduction',
+      },
+      {
+        label: 'Playlist Targets',
+        before: '8 generic',
+        after: '34 specific',
+        improvement: '325% increase',
+      },
+      {
+        label: 'Submission Strategy',
+        before: 'Hope & pray',
+        after: 'Data-driven',
+        improvement: 'Confidence boost',
+      },
     ],
     quote: {
       text: 'Spotify editorial was a black box. Audio Intel gave me the intelligence to submit strategically, not desperately.',
@@ -97,9 +140,27 @@ const caseStudies = [
       role: 'Electronic Music Promoter',
     },
     contacts: [
-      { name: 'Spotify Editorial', platform: 'Spotify', show: 'New Music Friday UK', timing: '4-week lead', genre: 'All genres' },
-      { name: 'Mint Playlist', platform: 'Spotify', show: 'Dance Hits', timing: 'Tuesday updates', genre: 'Dance, House' },
-      { name: 'Hot Hits UK', platform: 'Spotify', show: 'Pop Focus', timing: 'Friday refresh', genre: 'Pop, Dance-Pop' },
+      {
+        name: 'Spotify Editorial',
+        platform: 'Spotify',
+        show: 'New Music Friday UK',
+        timing: '4-week lead',
+        genre: 'All genres',
+      },
+      {
+        name: 'Mint Playlist',
+        platform: 'Spotify',
+        show: 'Dance Hits',
+        timing: 'Tuesday updates',
+        genre: 'Dance, House',
+      },
+      {
+        name: 'Hot Hits UK',
+        platform: 'Spotify',
+        show: 'Pop Focus',
+        timing: 'Friday refresh',
+        genre: 'Pop, Dance-Pop',
+      },
     ],
   },
   {
@@ -135,9 +196,24 @@ const caseStudies = [
       ],
     },
     metrics: [
-      { label: 'Weekly Research', before: '20 hours', after: '2 hours', improvement: '90% reduction' },
-      { label: 'Contact Database', before: '60% accurate', after: '95% validated', improvement: '35% improvement' },
-      { label: 'Team Efficiency', before: 'Siloed chaos', after: 'Centralised intel', improvement: 'Game changer' },
+      {
+        label: 'Weekly Research',
+        before: '20 hours',
+        after: '2 hours',
+        improvement: '90% reduction',
+      },
+      {
+        label: 'Contact Database',
+        before: '60% accurate',
+        after: '95% validated',
+        improvement: '35% improvement',
+      },
+      {
+        label: 'Team Efficiency',
+        before: 'Siloed chaos',
+        after: 'Centralised intel',
+        improvement: 'Game changer',
+      },
     ],
     quote: {
       text: 'We were spending a day per week just keeping our contact list current. Audio Intel turned that into a 20-minute weekly task.',
@@ -145,12 +221,30 @@ const caseStudies = [
       role: 'Founder, Liberty Music PR',
     },
     contacts: [
-      { name: 'BBC Radio 1', platform: 'National Radio', show: 'Multiple Shows', timing: 'Various', genre: 'All genres' },
-      { name: 'Spotify Editorial', platform: 'Playlisting', show: 'Multiple Playlists', timing: '4-week lead', genre: 'All genres' },
-      { name: 'Regional Radio', platform: 'Local Radio', show: '40+ Stations', timing: 'Various', genre: 'Pop, Dance' },
+      {
+        name: 'BBC Radio 1',
+        platform: 'National Radio',
+        show: 'Multiple Shows',
+        timing: 'Various',
+        genre: 'All genres',
+      },
+      {
+        name: 'Spotify Editorial',
+        platform: 'Playlisting',
+        show: 'Multiple Playlists',
+        timing: '4-week lead',
+        genre: 'All genres',
+      },
+      {
+        name: 'Regional Radio',
+        platform: 'Local Radio',
+        show: '40+ Stations',
+        timing: 'Various',
+        genre: 'Pop, Dance',
+      },
     ],
   },
-]
+];
 
 export default function CaseStudiesPage() {
   return (
@@ -161,11 +255,10 @@ export default function CaseStudiesPage() {
           <div className="inline-flex items-center gap-2 rounded-full border-2 border-blue-600 bg-blue-100 px-4 py-2 text-xs font-bold uppercase tracking-wider text-blue-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
             Real Campaigns, Real Results
           </div>
-          <h1 className="text-5xl font-black tracking-tight mb-6">
-            Audio Intel Case Studies
-          </h1>
+          <h1 className="text-5xl font-black tracking-tight mb-6">Audio Intel Case Studies</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            See how real radio promoters, playlist curators, and PR agencies use Audio Intel to transform chaotic research into organised contact intelligence.
+            See how real radio promoters, playlist curators, and PR agencies use Audio Intel to
+            transform chaotic research into organised contact intelligence.
           </p>
         </div>
       </section>
@@ -225,15 +318,21 @@ export default function CaseStudiesPage() {
                   <h3 className="text-2xl font-black mb-4">{study.solution.title}</h3>
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     <div className="text-center">
-                      <div className="text-3xl font-black text-green-600">{study.solution.timeSaved}</div>
+                      <div className="text-3xl font-black text-green-600">
+                        {study.solution.timeSaved}
+                      </div>
                       <div className="text-xs text-gray-600">Time Saved</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-black text-green-600">{study.solution.contactsEnriched}</div>
+                      <div className="text-3xl font-black text-green-600">
+                        {study.solution.contactsEnriched}
+                      </div>
                       <div className="text-xs text-gray-600">Contacts</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-black text-green-600">{study.solution.successRate}</div>
+                      <div className="text-3xl font-black text-green-600">
+                        {study.solution.successRate}
+                      </div>
                       <div className="text-xs text-gray-600">Success</div>
                     </div>
                   </div>
@@ -253,7 +352,10 @@ export default function CaseStudiesPage() {
                 <h3 className="text-2xl font-black mb-6 text-center">The Numbers</h3>
                 <div className="grid md:grid-cols-3 gap-6">
                   {study.metrics.map((metric, i) => (
-                    <div key={i} className="text-center p-6 bg-gradient-to-br from-gray-50 to-white rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <div
+                      key={i}
+                      className="text-center p-6 bg-gradient-to-br from-gray-50 to-white rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                    >
                       <div className="text-sm font-bold text-gray-600 mb-3">{metric.label}</div>
                       <div className="space-y-2">
                         <div className="text-red-600 font-bold line-through">{metric.before}</div>
@@ -273,11 +375,16 @@ export default function CaseStudiesPage() {
                 <h3 className="text-2xl font-black mb-6">Example Enriched Contacts</h3>
                 <div className="space-y-4">
                   {study.contacts.map((contact, i) => (
-                    <div key={i} className="bg-white rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] p-4">
+                    <div
+                      key={i}
+                      className="bg-white rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] p-4"
+                    >
                       <div className="flex flex-wrap items-center justify-between gap-4">
                         <div>
                           <div className="font-bold text-lg">{contact.name}</div>
-                          <div className="text-sm text-gray-600">{contact.platform} · {contact.show}</div>
+                          <div className="text-sm text-gray-600">
+                            {contact.platform} · {contact.show}
+                          </div>
                         </div>
                         <div className="text-right">
                           <div className="text-sm font-medium text-gray-900">{contact.timing}</div>
@@ -289,7 +396,9 @@ export default function CaseStudiesPage() {
                 </div>
                 <div className="mt-6 rounded-lg bg-blue-100 border border-blue-300 p-4">
                   <p className="text-sm text-blue-900">
-                    <strong>Audio Intel provides:</strong> Submission guidelines, pitch timing, genre preferences, contact history, response rates, and current activity status for every contact.
+                    <strong>Audio Intel provides:</strong> Submission guidelines, pitch timing,
+                    genre preferences, contact history, response rates, and current activity status
+                    for every contact.
                   </p>
                 </div>
               </div>
@@ -313,7 +422,8 @@ export default function CaseStudiesPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-black mb-6">Ready to transform your campaigns?</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join radio promoters, playlist curators, and PR agencies who've saved hundreds of hours with Audio Intel.
+            Join radio promoters, playlist curators, and PR agencies who've saved hundreds of hours
+            with Audio Intel.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/demo" className="cta-button">
@@ -326,5 +436,5 @@ export default function CaseStudiesPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

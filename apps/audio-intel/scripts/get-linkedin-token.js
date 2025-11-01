@@ -18,7 +18,9 @@ const CLIENT_SECRET = process.env.LINKEDIN_CLIENT_SECRET;
 if (!CLIENT_ID || !CLIENT_SECRET) {
   console.error('❌ Missing credentials!');
   console.log('\nUsage:');
-  console.log('  LINKEDIN_CLIENT_ID=your_id LINKEDIN_CLIENT_SECRET=your_secret node scripts/get-linkedin-token.js');
+  console.log(
+    '  LINKEDIN_CLIENT_ID=your_id LINKEDIN_CLIENT_SECRET=your_secret node scripts/get-linkedin-token.js'
+  );
   console.log('\nOr add them to your .env file first\n');
   process.exit(1);
 }
@@ -41,7 +43,8 @@ function startOAuthFlow() {
   console.log('\n🚀 Starting OAuth flow...\n');
 
   // Create authorization URL
-  const authUrl = `https://www.linkedin.com/oauth/v2/authorization?` +
+  const authUrl =
+    `https://www.linkedin.com/oauth/v2/authorization?` +
     `response_type=code&` +
     `client_id=${CLIENT_ID}&` +
     `redirect_uri=${encodeURIComponent(REDIRECT_URI)}&` +
@@ -92,7 +95,7 @@ function startOAuthFlow() {
           console.log(`LINKEDIN_ACCESS_TOKEN=${tokenData.access_token}\n`);
           console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
           console.log('⏰ Token expires in:', tokenData.expires_in, 'seconds');
-          console.log('📅 That\'s about:', Math.floor(tokenData.expires_in / 86400), 'days\n');
+          console.log("📅 That's about:", Math.floor(tokenData.expires_in / 86400), 'days\n');
 
           res.writeHead(200, { 'Content-Type': 'text/html' });
           res.end(`
@@ -127,9 +130,9 @@ function startOAuthFlow() {
     console.log('🌐 Opening authorization URL...\n');
 
     // Open browser
-    exec(`open "${authUrl}"`, (err) => {
+    exec(`open "${authUrl}"`, err => {
       if (err) {
-        console.log('⚠️  Couldn\'t open browser automatically.');
+        console.log("⚠️  Couldn't open browser automatically.");
         console.log('📋 Copy and paste this URL into your browser:\n');
         console.log(authUrl, '\n');
       }

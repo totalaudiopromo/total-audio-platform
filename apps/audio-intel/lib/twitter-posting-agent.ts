@@ -20,10 +20,10 @@ export interface TwitterPost {
 }
 
 export interface TwitterCredentials {
-  apiKey: string;        // Twitter API Key
-  apiSecret: string;     // Twitter API Secret
-  accessToken: string;   // Twitter Access Token
-  accessSecret: string;  // Twitter Access Token Secret
+  apiKey: string; // Twitter API Key
+  apiSecret: string; // Twitter API Secret
+  accessToken: string; // Twitter Access Token
+  accessSecret: string; // Twitter Access Token Secret
 }
 
 export class TwitterPostingAgent {
@@ -103,7 +103,7 @@ export class TwitterPostingAgent {
       if (text.length > 280) {
         return {
           success: false,
-          error: `Tweet exceeds 280 characters (${text.length} chars). Use postThread() for longer content.`
+          error: `Tweet exceeds 280 characters (${text.length} chars). Use postThread() for longer content.`,
         };
       }
 
@@ -113,13 +113,13 @@ export class TwitterPostingAgent {
 
       return {
         success: true,
-        id: tweet.data.id
+        id: tweet.data.id,
       };
     } catch (error) {
       console.error('[TWITTER] ❌ Post failed:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -139,7 +139,7 @@ export class TwitterPostingAgent {
       if (tweets.length === 0) {
         return {
           success: false,
-          error: 'No valid tweets generated from content'
+          error: 'No valid tweets generated from content',
         };
       }
 
@@ -172,7 +172,7 @@ export class TwitterPostingAgent {
             success: false,
             error: `Failed at tweet ${i + 1}: ${error instanceof Error ? error.message : 'Unknown error'}`,
             ids: tweetIds,
-            count: tweetIds.length
+            count: tweetIds.length,
           };
         }
       }
@@ -182,13 +182,13 @@ export class TwitterPostingAgent {
       return {
         success: true,
         ids: tweetIds,
-        count: tweetIds.length
+        count: tweetIds.length,
       };
     } catch (error) {
       console.error('[TWITTER] ❌ Thread failed:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -645,7 +645,7 @@ Comment "BETA" for free access.
 
 Stop sending generic pitches that get ignored.
 
-https://intel.totalaudiopromo.com?utm_source=twitter&utm_medium=social&utm_campaign=radio_response_rates`
+https://intel.totalaudiopromo.com?utm_source=twitter&utm_medium=social&utm_campaign=radio_response_rates`,
     };
 
     return contentMap[title] || null;
@@ -658,14 +658,26 @@ https://intel.totalaudiopromo.com?utm_source=twitter&utm_medium=social&utm_campa
     posted: number;
     skipped: number;
     failed: number;
-    details: Array<{ title: string; status: string; ids?: string[]; count?: number; error?: string }>;
+    details: Array<{
+      title: string;
+      status: string;
+      ids?: string[];
+      count?: number;
+      error?: string;
+    }>;
   }> {
     const now = new Date();
     const results = {
       posted: 0,
       skipped: 0,
       failed: 0,
-      details: [] as Array<{ title: string; status: string; ids?: string[]; count?: number; error?: string }>
+      details: [] as Array<{
+        title: string;
+        status: string;
+        ids?: string[];
+        count?: number;
+        error?: string;
+      }>,
     };
 
     // Authenticate first
@@ -675,9 +687,8 @@ https://intel.totalaudiopromo.com?utm_source=twitter&utm_medium=social&utm_campa
     }
 
     // Filter Twitter/X posts that should be posted now
-    const twitterPosts = calendar.filter(post =>
-      post.platform === 'Twitter/X' &&
-      post.status === 'scheduled'
+    const twitterPosts = calendar.filter(
+      post => post.platform === 'Twitter/X' && post.status === 'scheduled'
     );
 
     console.log(`[TWITTER] Found ${twitterPosts.length} Twitter/X posts in calendar`);
@@ -704,7 +715,7 @@ https://intel.totalaudiopromo.com?utm_source=twitter&utm_medium=social&utm_campa
         results.details.push({
           title: post.title,
           status: 'failed',
-          error: 'Content not found'
+          error: 'Content not found',
         });
         continue;
       }
@@ -719,14 +730,14 @@ https://intel.totalaudiopromo.com?utm_source=twitter&utm_medium=social&utm_campa
           title: post.title,
           status: 'posted',
           ids: result.ids,
-          count: result.count
+          count: result.count,
         });
       } else {
         results.failed++;
         results.details.push({
           title: post.title,
           status: 'failed',
-          error: result.error
+          error: result.error,
         });
       }
 
@@ -744,12 +755,12 @@ https://intel.totalaudiopromo.com?utm_source=twitter&utm_medium=social&utm_campa
     try {
       const authenticated = await this.authenticate();
       return {
-        healthy: authenticated
+        healthy: authenticated,
       };
     } catch (error) {
       return {
         healthy: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -763,11 +774,18 @@ export function createTwitterAgent(): TwitterPostingAgent {
     apiKey: process.env.TWITTER_API_KEY || '',
     apiSecret: process.env.TWITTER_API_SECRET || '',
     accessToken: process.env.TWITTER_ACCESS_TOKEN || '',
-    accessSecret: process.env.TWITTER_ACCESS_SECRET || ''
+    accessSecret: process.env.TWITTER_ACCESS_SECRET || '',
   };
 
-  if (!credentials.apiKey || !credentials.apiSecret || !credentials.accessToken || !credentials.accessSecret) {
-    throw new Error('Twitter credentials not configured. Set TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, and TWITTER_ACCESS_SECRET environment variables.');
+  if (
+    !credentials.apiKey ||
+    !credentials.apiSecret ||
+    !credentials.accessToken ||
+    !credentials.accessSecret
+  ) {
+    throw new Error(
+      'Twitter credentials not configured. Set TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, and TWITTER_ACCESS_SECRET environment variables.'
+    );
   }
 
   return new TwitterPostingAgent(credentials);

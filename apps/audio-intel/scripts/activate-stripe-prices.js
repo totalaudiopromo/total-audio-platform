@@ -24,7 +24,7 @@ async function activatePrice(priceId, name) {
 
       if (!product.active) {
         await stripe.products.update(price.product, {
-          active: true
+          active: true,
         });
         console.log(`✅ Activated product: ${product.name}`);
       }
@@ -35,7 +35,6 @@ async function activatePrice(priceId, name) {
     // Show price details
     console.log(`   Amount: £${(price.unit_amount / 100).toFixed(2)}`);
     console.log(`   Interval: ${price.recurring?.interval || 'one-time'}`);
-
   } catch (error) {
     console.error(`❌ Error activating ${name}:`, error.message);
   }
@@ -47,7 +46,7 @@ async function main() {
   // From your .env.local
   const prices = [
     { id: 'price_1Ro9yEPqujcPv5fbZKpcLIFT', name: 'Professional Monthly (£19.99)' },
-    { id: 'price_1Ro9zrPqujcPv5fbmjN7bph6', name: 'Agency Monthly (£39.99)' }
+    { id: 'price_1Ro9zrPqujcPv5fbmjN7bph6', name: 'Agency Monthly (£39.99)' },
   ];
 
   for (const price of prices) {

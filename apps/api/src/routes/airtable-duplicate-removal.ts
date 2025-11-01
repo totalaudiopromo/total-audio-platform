@@ -19,22 +19,21 @@ router.post('/dry-run', async (req: AuthRequest, res) => {
     }
 
     logger.info(`🔍 User ${req.user.email} started duplicate removal dry run`);
-    
+
     const removalService = AirtableDuplicateRemoval.getRemovalServiceForUser(req.user.id);
     const result = await removalService.removeDuplicates(true); // true = dry run
-    
+
     return res.json({
       success: true,
       message: 'Dry run completed successfully',
-      data: result
+      data: result,
     });
-    
   } catch (error) {
     logger.error('Error during duplicate removal dry run:', error);
     return res.status(500).json({
       success: false,
       error: 'Failed to perform duplicate removal dry run',
-      details: error instanceof Error ? error.message : 'Unknown error'
+      details: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 });
@@ -47,22 +46,21 @@ router.post('/remove', async (req: AuthRequest, res) => {
     }
 
     logger.info(`🗑️ User ${req.user.email} started live duplicate removal`);
-    
+
     const removalService = AirtableDuplicateRemoval.getRemovalServiceForUser(req.user.id);
     const result = await removalService.removeDuplicates(false); // false = live removal
-    
+
     return res.json({
       success: true,
       message: 'Duplicate removal completed successfully',
-      data: result
+      data: result,
     });
-    
   } catch (error) {
     logger.error('Error during duplicate removal:', error);
     return res.status(500).json({
       success: false,
       error: 'Failed to remove duplicates',
-      details: error instanceof Error ? error.message : 'Unknown error'
+      details: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 });
@@ -76,24 +74,23 @@ router.get('/status', async (req: AuthRequest, res) => {
 
     const removalService = AirtableDuplicateRemoval.getRemovalServiceForUser(req.user.id);
     const result = await removalService.removeDuplicates(true); // dry run to get status
-    
+
     return res.json({
       success: true,
       data: {
         totalDuplicates: result.totalDuplicates,
         recordsToDelete: result.recordsToDelete,
-        hasDuplicates: result.totalDuplicates > 0
-      }
+        hasDuplicates: result.totalDuplicates > 0,
+      },
     });
-    
   } catch (error) {
     logger.error('Error checking duplicate status:', error);
     return res.status(500).json({
       success: false,
       error: 'Failed to check duplicate status',
-      details: error instanceof Error ? error.message : 'Unknown error'
+      details: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 });
 
-export default router; 
+export default router;

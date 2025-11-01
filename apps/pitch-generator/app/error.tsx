@@ -19,7 +19,6 @@ export default function Error({
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4">
       <div className="max-w-2xl w-full text-center">
-
         {/* Error Icon */}
         <div className="mb-8">
           <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-red-100 border-4 border-red-600 mb-6">
@@ -29,11 +28,10 @@ export default function Error({
 
         {/* Error Message */}
         <div className="mb-8">
-          <h1 className="text-4xl font-black text-gray-900 mb-4">
-            Something Went Wrong
-          </h1>
+          <h1 className="text-4xl font-black text-gray-900 mb-4">Something Went Wrong</h1>
           <p className="text-xl text-gray-600 mb-4 max-w-lg mx-auto">
-            We encountered an unexpected error while processing your request. Don't worry, your data is safe.
+            We encountered an unexpected error while processing your request. Don't worry, your data
+            is safe.
           </p>
           {error.digest && (
             <p className="text-sm text-gray-500 font-mono bg-gray-100 px-4 py-2 rounded-lg inline-block">
@@ -64,17 +62,11 @@ export default function Error({
         {/* Error Details (Development Only) */}
         {process.env.NODE_ENV === 'development' && (
           <div className="glass-panel p-6 text-left">
-            <h3 className="text-lg font-black text-gray-900 mb-3">
-              Development Error Details
-            </h3>
+            <h3 className="text-lg font-black text-gray-900 mb-3">Development Error Details</h3>
             <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4 overflow-auto">
-              <p className="text-sm font-mono text-red-900 break-all">
-                {error.message}
-              </p>
+              <p className="text-sm font-mono text-red-900 break-all">{error.message}</p>
               {error.stack && (
-                <pre className="mt-3 text-xs text-red-800 overflow-x-auto">
-                  {error.stack}
-                </pre>
+                <pre className="mt-3 text-xs text-red-800 overflow-x-auto">{error.stack}</pre>
               )}
             </div>
           </div>
@@ -82,9 +74,7 @@ export default function Error({
 
         {/* Helpful Actions */}
         <div className="glass-panel p-8 mt-8">
-          <h3 className="text-2xl font-black text-gray-900 mb-6">
-            What can you do?
-          </h3>
+          <h3 className="text-2xl font-black text-gray-900 mb-6">What can you do?</h3>
 
           <div className="grid sm:grid-cols-2 gap-6 text-left">
             <div className="space-y-3">
@@ -110,7 +100,10 @@ export default function Error({
                 <br />
                 <span className="text-sm">
                   If the problem persists,{' '}
-                  <a href="mailto:support@totalaudiopromo.com" className="text-amber-600 hover:text-amber-700 font-bold transition-colors">
+                  <a
+                    href="mailto:support@totalaudiopromo.com"
+                    className="text-amber-600 hover:text-amber-700 font-bold transition-colors"
+                  >
                     email us
                   </a>
                   {error.digest && ` with error ID: ${error.digest}`}

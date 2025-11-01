@@ -2,7 +2,7 @@
 
 # 🛠️ DEVELOPMENT HUB - COMPLETE SYSTEM (MASTER)
 
-*Your complete development and technical command centre - all workflows, tools, agent systems, and technical documentation in one place*
+_Your complete development and technical command centre - all workflows, tools, agent systems, and technical documentation in one place_
 
 ---
 
@@ -104,7 +104,7 @@ node agent-manager.js chat orchestrator-real
 ```bash
 # Tag specific agents for tasks
 @dev-assistant "implement feature X"
-@ui-designer "optimize landing page"  
+@ui-designer "optimize landing page"
 @debug-master "resolve API issue"
 ```
 
@@ -250,21 +250,21 @@ node sprint-coach.js focus [feature-name]
 
 **For Claude Code/Cursor Sessions:**
 
-[**business-context.md](http://business-context.md):**
+[\*\*business-context.md](http://business-context.md):\*\*
 
 - Total Audio ecosystem overview
 - Revenue model and pricing (£19.99-£39.99/month)
 - Target customers (independent artists, PR agencies)
 - UK market positioning vs US competitors
 
-[**technical-stack.md](http://technical-stack.md):**
+[\*\*technical-stack.md](http://technical-stack.md):\*\*
 
 - Current architecture and patterns
 - Agent system integration points
 - Performance requirements and benchmarks
 - Development standards and conventions
 
-[**agent-specs.md](http://agent-specs.md):**
+[\*\*agent-specs.md](http://agent-specs.md):\*\*
 
 - 31+ agent definitions and capabilities
 - Coordination protocols and workflows
@@ -332,33 +332,33 @@ node sprint-coach.js focus [feature-name]
 
 **Pre-Session Setup:**
 
-- [ ]  Agent system status checked
-- [ ]  Context files loaded in Cursor/Claude Code
-- [ ]  Current development branch verified
-- [ ]  Sprint goals reviewed with agent assistance
+- [ ] Agent system status checked
+- [ ] Context files loaded in Cursor/Claude Code
+- [ ] Current development branch verified
+- [ ] Sprint goals reviewed with agent assistance
 
 **Development Execution:**
 
-- [ ]  Agent coordination for complex tasks
-- [ ]  Continuous testing through TDD system
-- [ ]  Real-time performance monitoring
-- [ ]  Context file updates as needed
+- [ ] Agent coordination for complex tasks
+- [ ] Continuous testing through TDD system
+- [ ] Real-time performance monitoring
+- [ ] Context file updates as needed
 
 **Post-Session Review:**
 
-- [ ]  Code committed with agent validation
-- [ ]  Performance metrics reviewed
-- [ ]  Agent system performance assessed
-- [ ]  Next session planned with sprint coach
+- [ ] Code committed with agent validation
+- [ ] Performance metrics reviewed
+- [ ] Agent system performance assessed
+- [ ] Next session planned with sprint coach
 
 ---
 
-*This Development Hub consolidates all your technical workflows, agent systems, and development standards into one comprehensive system. Use this as your single source of truth for all development activities.*
+_This Development Hub consolidates all your technical workflows, agent systems, and development standards into one comprehensive system. Use this as your single source of truth for all development activities._
 
 **Key Integration Points:**
 
-- [🎯 Content Strategy Hub](%F0%9F%8E%AF%20CONTENT%20STRATEGY%20HUB%20-%20COMPLETE%20SYSTEM%20(MASTER)%202750a35b21ed8170bf1af46e82a9a552.md) - Marketing and content workflows
-- [🚀 Radio Promo Agent](%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2/%F0%9F%9A%80%20RADIO%20PROMO%20AGENT%20-%20COMPLETE%20SYSTEM%20(MASTER)%202650a35b21ed81769541f2b7345deb89.md) - Automated promotion system
+- [🎯 Content Strategy Hub](<%F0%9F%8E%AF%20CONTENT%20STRATEGY%20HUB%20-%20COMPLETE%20SYSTEM%20(MASTER)%202750a35b21ed8170bf1af46e82a9a552.md>) - Marketing and content workflows
+- [🚀 Radio Promo Agent](<%F0%9F%9B%A0%EF%B8%8F%20TECHNICAL%20DEVELOPMENT%202660a35b21ed81a8bab7f71bf0f516f2/%F0%9F%9A%80%20RADIO%20PROMO%20AGENT%20-%20COMPLETE%20SYSTEM%20(MASTER)%202650a35b21ed81769541f2b7345deb89.md>) - Automated promotion system
 - [📊 Master Database](%F0%9F%93%8A%20TOTAL%20AUDIO%20MASTER%20DATABASE%20a6062ff781624533bc91ebcd1435481c.md) - Central navigation and tracking
 
 **Last Updated:** September 2025

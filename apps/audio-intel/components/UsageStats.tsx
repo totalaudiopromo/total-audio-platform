@@ -1,49 +1,49 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from 'react'
-import { Badge } from '@/components/ui/badge'
-import { Progress } from '@/components/ui/progress'
-import { Zap, TrendingUp, AlertCircle } from 'lucide-react'
-import Link from 'next/link'
+import { useEffect, useState } from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { Zap, TrendingUp, AlertCircle } from 'lucide-react';
+import Link from 'next/link';
 
 interface UsageData {
-  used: number
-  limit: number
-  remaining: number
-  percentage: number
-  tier: string
-  betaAccess: boolean
+  used: number;
+  limit: number;
+  remaining: number;
+  percentage: number;
+  tier: string;
+  betaAccess: boolean;
 }
 
 export function UsageStats() {
-  const [usage, setUsage] = useState<UsageData | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [usage, setUsage] = useState<UsageData | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchUsage()
-  }, [])
+    fetchUsage();
+  }, []);
 
   const fetchUsage = async () => {
     try {
-      const response = await fetch('/api/usage')
+      const response = await fetch('/api/usage');
       if (response.ok) {
-        const data = await response.json()
-        setUsage(data.usage)
+        const data = await response.json();
+        setUsage(data.usage);
       }
     } catch (error) {
-      console.error('Failed to fetch usage:', error)
+      console.error('Failed to fetch usage:', error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   if (loading || !usage) {
-    return null
+    return null;
   }
 
-  const percentageUsed = usage.percentage
-  const isNearLimit = percentageUsed >= 80
-  const isAtLimit = percentageUsed >= 100
+  const percentageUsed = usage.percentage;
+  const isNearLimit = percentageUsed >= 80;
+  const isAtLimit = percentageUsed >= 100;
 
   return (
     <div className="flex items-center gap-3">
@@ -75,46 +75,46 @@ export function UsageStats() {
         </Link>
       )}
     </div>
-  )
+  );
 }
 
 export function UsageStatsDetailed() {
-  const [usage, setUsage] = useState<UsageData | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [usage, setUsage] = useState<UsageData | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchUsage()
-  }, [])
+    fetchUsage();
+  }, []);
 
   const fetchUsage = async () => {
     try {
-      const response = await fetch('/api/usage')
+      const response = await fetch('/api/usage');
       if (response.ok) {
-        const data = await response.json()
-        setUsage(data.usage)
+        const data = await response.json();
+        setUsage(data.usage);
       }
     } catch (error) {
-      console.error('Failed to fetch usage:', error)
+      console.error('Failed to fetch usage:', error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   if (loading) {
     return (
       <div className="animate-pulse">
         <div className="h-4 bg-gray-200 rounded w-48"></div>
       </div>
-    )
+    );
   }
 
   if (!usage) {
-    return null
+    return null;
   }
 
-  const percentageUsed = usage.percentage
-  const isNearLimit = percentageUsed >= 80
-  const isAtLimit = percentageUsed >= 100
+  const percentageUsed = usage.percentage;
+  const isNearLimit = percentageUsed >= 80;
+  const isAtLimit = percentageUsed >= 100;
 
   return (
     <div className="space-y-3">
@@ -140,23 +140,28 @@ export function UsageStatsDetailed() {
       </div>
 
       {isNearLimit && (
-        <div className={`p-3 rounded-lg border-2 ${isAtLimit ? 'bg-red-50 border-red-200' : 'bg-amber-50 border-amber-200'}`}>
-          <p className={`text-sm font-semibold mb-2 ${isAtLimit ? 'text-red-800' : 'text-amber-800'}`}>
+        <div
+          className={`p-3 rounded-lg border-2 ${isAtLimit ? 'bg-red-50 border-red-200' : 'bg-amber-50 border-amber-200'}`}
+        >
+          <p
+            className={`text-sm font-semibold mb-2 ${isAtLimit ? 'text-red-800' : 'text-amber-800'}`}
+          >
             {isAtLimit ? '🚫 Limit Reached' : '⚠️ Running Low'}
           </p>
           <p className={`text-xs mb-3 ${isAtLimit ? 'text-red-700' : 'text-amber-700'}`}>
             {isAtLimit
               ? 'You have used all your beta enrichments. Upgrade to continue.'
-              : `Only ${usage.remaining} enrichments remaining. Upgrade for unlimited access.`
-            }
+              : `Only ${usage.remaining} enrichments remaining. Upgrade for unlimited access.`}
           </p>
           <Link href="/pricing">
-            <button className={`w-full py-2 px-4 rounded-lg font-bold text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${isAtLimit ? 'bg-red-500 hover:bg-red-600' : 'bg-amber-500 hover:bg-amber-600'}`}>
+            <button
+              className={`w-full py-2 px-4 rounded-lg font-bold text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${isAtLimit ? 'bg-red-500 hover:bg-red-600' : 'bg-amber-500 hover:bg-amber-600'}`}
+            >
               Upgrade Now
             </button>
           </Link>
         </div>
       )}
     </div>
-  )
+  );
 }

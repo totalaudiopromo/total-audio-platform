@@ -12,6 +12,7 @@ Generate personalized, professional music PR pitches in seconds by combining AI 
 **Tagline:** Write 50 personalized pitches in 20 minutes
 
 ### Core Value Proposition
+
 Stop spending 5+ hours writing pitches. Let Pitch Generator write personalized emails that get responses by using your contact data, campaign history, and industry best practices—all in your authentic voice.
 
 ---
@@ -145,6 +146,7 @@ Run the SQL schema in your Supabase project:
 ```
 
 This creates:
+
 - `contacts` table
 - `pitches` table
 - `pitch_templates` table (with 5 pre-loaded templates)
@@ -167,12 +169,9 @@ Visit `http://localhost:3000`
 ### Brand Colors
 
 ```css
---brand-iris: #4C5CF6      /* Primary - Electric Blue */
---brand-magenta: #C954F7   /* Secondary - Magenta */
---brand-amber: #FFC857     /* Accent - Amber/Gold */
---success: #3DD68C         /* Success green */
---warning: #F6BD60         /* Warning orange */
---danger: #F25F5C          /* Error red */
+--brand-iris: #4c5cf6 /* Primary - Electric Blue */ --brand-magenta: #c954f7
+  /* Secondary - Magenta */ --brand-amber: #ffc857 /* Accent - Amber/Gold */ --success: #3dd68c
+  /* Success green */ --warning: #f6bd60 /* Warning orange */ --danger: #f25f5c /* Error red */;
 ```
 
 ### Components
@@ -192,6 +191,7 @@ Visit `http://localhost:3000`
 ## 📊 Database Schema
 
 ### Contacts
+
 ```sql
 - id (UUID)
 - user_id (UUID)
@@ -207,6 +207,7 @@ Visit `http://localhost:3000`
 ```
 
 ### Pitches
+
 ```sql
 - id (UUID)
 - user_id (UUID)
@@ -224,6 +225,7 @@ Visit `http://localhost:3000`
 ```
 
 ### Templates
+
 ```sql
 - id (UUID)
 - genre (VARCHAR)
@@ -244,10 +246,13 @@ Visit `http://localhost:3000`
 Generates a new pitch using AI.
 
 **Request:**
+
 ```json
 {
   "contactId": "uuid",
-  "contact": { /* contact object */ },
+  "contact": {
+    /* contact object */
+  },
   "artistName": "Artist Name",
   "trackTitle": "Track Title",
   "genre": "indie",
@@ -259,11 +264,14 @@ Generates a new pitch using AI.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
   "pitchId": "uuid",
-  "pitch": { /* full pitch object */ }
+  "pitch": {
+    /* full pitch object */
+  }
 }
 ```
 
@@ -295,11 +303,13 @@ Generates a new pitch using AI.
 ## 💰 Pricing Strategy
 
 ### Standalone Pricing
+
 - **Free:** 3 pitches/month
 - **Solo:** £15/month - Unlimited pitches
 - **Pro:** £25/month - Batch mode + analytics
 
 ### Bundle Pricing
+
 - **Intel + Pitch:** £29/month (save £5)
 - **Professional Bundle:** £49/month (all tools)
 
@@ -308,12 +318,14 @@ Generates a new pitch using AI.
 ## 📈 Success Metrics
 
 ### Product KPIs
+
 - Pitches generated per user/month: Target 15+
 - Generation time: Target <30 seconds
 - Save rate: Target >80%
 - Regeneration rate: Target <20%
 
 ### Business KPIs
+
 - Free → Paid conversion: Target 15%
 - Standalone → Bundle: Target 40%
 - Monthly churn: Target <5%
@@ -323,6 +335,7 @@ Generates a new pitch using AI.
 ## 🚧 Roadmap
 
 ### Phase 2 (Post-MVP)
+
 - [ ] Batch generation mode (generate for 20+ contacts)
 - [ ] Voice note input for key hook
 - [ ] A/B testing (generate 2 versions)
@@ -330,6 +343,7 @@ Generates a new pitch using AI.
 - [ ] Smart follow-ups (auto-generate after 7 days)
 
 ### Phase 3 (Month 4-6)
+
 - [ ] Team collaboration features
 - [ ] White-label for agencies
 - [ ] Multi-language support
@@ -370,18 +384,21 @@ Generates a new pitch using AI.
 ## 🐛 Troubleshooting
 
 ### AI Generation Fails
+
 - Check OpenAI API key is set
 - Verify API credits available
 - Check network connection
 - Review error logs
 
 ### Database Connection Issues
+
 - Verify Supabase URL and keys
 - Check project is not paused
 - Ensure schema is deployed
 - Check RLS policies if needed
 
 ### Empty Contact List
+
 - Ensure user_id matches between tables
 - Check contacts table has data
 - Verify auth session exists
@@ -401,6 +418,7 @@ Templates use placeholders like `{{contact_name}}` that get replaced by the AI d
 ### Contact Data
 
 The app includes a simple contact management system. For production, consider:
+
 - Importing from Audio Intel database
 - API integration with Intel
 - Bulk import from CSV
@@ -420,11 +438,13 @@ The app includes a simple contact management system. For production, consider:
 ### Writing Key Hooks
 
 Good examples:
+
 - "Intimate indie-folk about finding home after years of touring"
 - "High-energy punk with 90s nostalgia and modern production"
 - "Story-driven folk that sounds like Laura Marling meets Phoebe Bridgers"
 
 Bad examples:
+
 - "Good song"
 - "You'll love this"
 - "Best track ever"
@@ -432,6 +452,7 @@ Bad examples:
 ### Contact Notes
 
 Include useful context:
+
 - Best days/times to contact
 - Recent interactions
 - Personal preferences
@@ -448,6 +469,7 @@ MIT License - Part of Total Audio Promo ecosystem
 ## 🤝 Support
 
 For questions or issues:
+
 - GitHub Issues
 - Email: support@totalaudiopromo.com
 - Documentation: docs.totalaudiopromo.com
@@ -455,4 +477,3 @@ For questions or issues:
 ---
 
 Built with ❤️ by the Total Audio Promo team
-

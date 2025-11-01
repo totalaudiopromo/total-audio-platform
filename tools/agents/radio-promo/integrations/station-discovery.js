@@ -2,7 +2,7 @@
 
 /**
  * Station Discovery System
- * 
+ *
  * Uses Claude and Firecrawl to research and discover new radio stations
  * and contacts that aren't in the existing database
  */
@@ -17,12 +17,12 @@ class StationDiscovery {
     this.claudeBaseUrl = 'https://api.anthropic.com/v1/messages';
     this.anthropicModel = process.env.ANTHROPIC_MODEL;
     this.firecrawlBaseUrl = 'https://api.firecrawl.dev/v1';
-    
+
     // Discovery cache to avoid duplicate research
     this.discoveryCache = new Map();
     this.cacheFile = path.join(__dirname, '..', 'data', 'discovery-cache.json');
     this.loadCache();
-    
+
     // Research patterns and strategies
     this.researchStrategies = this.loadResearchStrategies();
   }
@@ -32,7 +32,7 @@ class StationDiscovery {
    */
   async discoverStations(genre, region = 'UK', maxStations = 20) {
     console.log(`🔍 Discovering ${genre} stations in ${region}...`);
-    
+
     try {
       // Check cache first
       const cacheKey = `${genre}-${region}`;
@@ -43,18 +43,18 @@ class StationDiscovery {
           return cached.stations;
         }
       }
-      
+
       // Research strategy based on genre
       const strategy = this.getResearchStrategy(genre, region);
-      
+
       // Discover stations using multiple methods
       const discoveryResults = await Promise.allSettled([
         this.researchRadioStations(genre, region, strategy),
         this.researchOnlineStations(genre, region, strategy),
         this.researchSpecialistShows(genre, region, strategy),
-        this.researchCommunityStations(genre, region, strategy)
+        this.researchCommunityStations(genre, region, strategy),
       ]);
-      
+
       // Combine and deduplicate results
       const allStations = [];
       discoveryResults.forEach(result => {
@@ -62,23 +62,22 @@ class StationDiscovery {
           allStations.push(...result.value);
         }
       });
-      
+
       const uniqueStations = this.deduplicateStations(allStations);
       const rankedStations = this.rankStations(uniqueStations, genre, region);
       const topStations = rankedStations.slice(0, maxStations);
-      
+
       // Cache results
       this.discoveryCache.set(cacheKey, {
         stations: topStations,
         timestamp: Date.now(),
         genre,
-        region
+        region,
       });
       this.saveCache();
-      
+
       console.log(`✅ Discovered ${topStations.length} new ${genre} stations in ${region}`);
       return topStations;
-      
     } catch (error) {
       console.error(`❌ Station discovery failed for ${genre} in ${region}:`, error.message);
       return [];
@@ -90,19 +89,18 @@ class StationDiscovery {
    */
   async researchRadioStations(genre, region, strategy) {
     console.log(`📻 Researching radio stations for ${genre}...`);
-    
+
     try {
       const prompt = this.buildRadioResearchPrompt(genre, region, strategy);
       const claudeResponse = await this.callClaude(prompt);
-      
+
       // Extract station information from Claude response
       const stations = this.extractStationsFromClaude(claudeResponse, 'radio');
-      
+
       // Research each station for contact details
       const enrichedStations = await this.enrichStationContacts(stations);
-      
+
       return enrichedStations;
-      
     } catch (error) {
       console.error('❌ Radio station research failed:', error.message);
       return [];
@@ -114,16 +112,15 @@ class StationDiscovery {
    */
   async researchOnlineStations(genre, region, strategy) {
     console.log(`🌐 Researching online stations for ${genre}...`);
-    
+
     try {
       const prompt = this.buildOnlineResearchPrompt(genre, region, strategy);
       const claudeResponse = await this.callClaude(prompt);
-      
+
       const stations = this.extractStationsFromClaude(claudeResponse, 'online');
       const enrichedStations = await this.enrichStationContacts(stations);
-      
+
       return enrichedStations;
-      
     } catch (error) {
       console.error('❌ Online station research failed:', error.message);
       return [];
@@ -135,16 +132,15 @@ class StationDiscovery {
    */
   async researchSpecialistShows(genre, region, strategy) {
     console.log(`🎧 Researching specialist shows for ${genre}...`);
-    
+
     try {
       const prompt = this.buildSpecialistResearchPrompt(genre, region, strategy);
       const claudeResponse = await this.callClaude(prompt);
-      
+
       const stations = this.extractStationsFromClaude(claudeResponse, 'specialist');
       const enrichedStations = await this.enrichStationContacts(stations);
-      
+
       return enrichedStations;
-      
     } catch (error) {
       console.error('❌ Specialist show research failed:', error.message);
       return [];
@@ -156,16 +152,15 @@ class StationDiscovery {
    */
   async researchCommunityStations(genre, region, strategy) {
     console.log(`🏘️ Researching community stations for ${genre}...`);
-    
+
     try {
       const prompt = this.buildCommunityResearchPrompt(genre, region, strategy);
       const claudeResponse = await this.callClaude(prompt);
-      
+
       const stations = this.extractStationsFromClaude(claudeResponse, 'community');
       const enrichedStations = await this.enrichStationContacts(stations);
-      
+
       return enrichedStations;
-      
     } catch (error) {
       console.error('❌ Community station research failed:', error.message);
       return [];
@@ -177,9 +172,9 @@ class StationDiscovery {
    */
   async enrichStationContacts(stations) {
     console.log(`🔍 Enriching contact details for ${stations.length} stations...`);
-    
+
     const enrichedStations = [];
-    
+
     for (const station of stations) {
       try {
         if (station.website) {
@@ -188,30 +183,29 @@ class StationDiscovery {
             ...station,
             ...contactInfo,
             lastResearched: new Date().toISOString(),
-            researchMethod: 'firecrawl'
+            researchMethod: 'firecrawl',
           });
         } else {
           enrichedStations.push({
             ...station,
             lastResearched: new Date().toISOString(),
-            researchMethod: 'claude'
+            researchMethod: 'claude',
           });
         }
-        
+
         // Rate limiting
         await new Promise(resolve => setTimeout(resolve, 1000));
-        
       } catch (error) {
         console.error(`❌ Failed to enrich ${station.name}:`, error.message);
         enrichedStations.push({
           ...station,
           lastResearched: new Date().toISOString(),
           researchMethod: 'claude',
-          errors: [error.message]
+          errors: [error.message],
         });
       }
     }
-    
+
     return enrichedStations;
   }
 
@@ -223,29 +217,28 @@ class StationDiscovery {
       const response = await fetch(`${this.firecrawlBaseUrl}/scrape`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${this.firecrawlApiKey}`,
-          'Content-Type': 'application/json'
+          Authorization: `Bearer ${this.firecrawlApiKey}`,
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           url: website,
           formats: ['markdown'],
           onlyMainContent: true,
-          maxDepth: 1
-        })
+          maxDepth: 1,
+        }),
       });
-      
+
       if (!response.ok) {
         throw new Error(`Firecrawl API error: ${response.status}`);
       }
-      
+
       const data = await response.json();
       const content = data.data?.markdown || '';
-      
+
       // Extract contact information using Claude
       const contactInfo = await this.extractContactInfo(content, website);
-      
+
       return contactInfo;
-      
     } catch (error) {
       console.error(`❌ Website research failed for ${website}:`, error.message);
       return {};
@@ -281,9 +274,8 @@ If any field is not available, use null. Be concise and accurate.`;
 
       const claudeResponse = await this.callClaude(prompt);
       const contactInfo = JSON.parse(claudeResponse);
-      
+
       return contactInfo;
-      
     } catch (error) {
       console.error('❌ Contact extraction failed:', error.message);
       return {};
@@ -300,27 +292,28 @@ If any field is not available, use null. Be concise and accurate.`;
         headers: {
           'x-api-key': this.claudeApiKey,
           'Content-Type': 'application/json',
-          'anthropic-version': '2023-06-01'
+          'anthropic-version': '2023-06-01',
         },
         body: JSON.stringify({
           model: this.anthropicModel,
           max_tokens: 4000,
-          messages: [{
-            role: 'user',
-            content: prompt
-          }]
-        })
+          messages: [
+            {
+              role: 'user',
+              content: prompt,
+            },
+          ],
+        }),
       });
-      
+
       if (!response.ok) {
         const data = await response.json().catch(() => ({}));
         const detail = data?.error?.message || data?.message || '';
         throw new Error(`Claude API error: ${response.status}${detail ? ` - ${detail}` : ''}`);
       }
-      
+
       const data = await response.json();
       return data.content[0].text;
-      
     } catch (error) {
       console.error('❌ Claude API call failed:', error.message);
       throw error;
@@ -424,19 +417,19 @@ Return as a structured list with clear platform information.`;
   extractStationsFromClaude(response, stationType) {
     const stations = [];
     const lines = response.split('\n');
-    
+
     let currentStation = {};
-    
+
     for (const line of lines) {
       const trimmedLine = line.trim();
-      
+
       if (trimmedLine.match(/^\d+\.|^[-*]\s/)) {
         // New station entry
         if (currentStation.name) {
           stations.push({
             ...currentStation,
             stationType,
-            discoveredAt: new Date().toISOString()
+            discoveredAt: new Date().toISOString(),
           });
         }
         currentStation = { name: trimmedLine.replace(/^\d+\.|^[-*]\s/, '').trim() };
@@ -445,23 +438,27 @@ Return as a structured list with clear platform information.`;
       } else if (trimmedLine.includes('Contact:') || trimmedLine.includes('Email:')) {
         currentStation.email = trimmedLine.split(':')[1]?.trim();
       } else if (trimmedLine.includes('Genre:')) {
-        currentStation.genreFocus = trimmedLine.split(':')[1]?.trim().split(',').map(g => g.trim());
+        currentStation.genreFocus = trimmedLine
+          .split(':')[1]
+          ?.trim()
+          .split(',')
+          .map(g => g.trim());
       } else if (trimmedLine.includes('Audience:')) {
         currentStation.audience = trimmedLine.split(':')[1]?.trim();
       } else if (trimmedLine.includes('Submission:')) {
         currentStation.submissionGuidelines = trimmedLine.split(':')[1]?.trim();
       }
     }
-    
+
     // Add the last station
     if (currentStation.name) {
       stations.push({
         ...currentStation,
         stationType,
-        discoveredAt: new Date().toISOString()
+        discoveredAt: new Date().toISOString(),
       });
     }
-    
+
     return stations;
   }
 
@@ -484,45 +481,51 @@ Return as a structured list with clear platform information.`;
    * Rank stations by relevance
    */
   rankStations(stations, genre, region) {
-    return stations.map(station => {
-      let score = 0;
-      
-      // Base score
-      score += 50;
-      
-      // Genre match bonus
-      if (station.genreFocus && station.genreFocus.some(g => 
-        g.toLowerCase().includes(genre.toLowerCase()) || 
-        genre.toLowerCase().includes(g.toLowerCase())
-      )) {
-        score += 30;
-      }
-      
-      // Contact information bonus
-      if (station.email) score += 20;
-      if (station.website) score += 10;
-      if (station.submissionGuidelines) score += 15;
-      
-      // Station type bonus
-      const typeScores = {
-        'radio': 25,
-        'online': 20,
-        'specialist': 30,
-        'community': 15
-      };
-      score += typeScores[station.stationType] || 10;
-      
-      // Reach bonus
-      const reachScores = {
-        'national': 25,
-        'regional': 20,
-        'local': 10,
-        'international': 15
-      };
-      score += reachScores[station.reach] || 10;
-      
-      return { ...station, score };
-    }).sort((a, b) => b.score - a.score);
+    return stations
+      .map(station => {
+        let score = 0;
+
+        // Base score
+        score += 50;
+
+        // Genre match bonus
+        if (
+          station.genreFocus &&
+          station.genreFocus.some(
+            g =>
+              g.toLowerCase().includes(genre.toLowerCase()) ||
+              genre.toLowerCase().includes(g.toLowerCase())
+          )
+        ) {
+          score += 30;
+        }
+
+        // Contact information bonus
+        if (station.email) score += 20;
+        if (station.website) score += 10;
+        if (station.submissionGuidelines) score += 15;
+
+        // Station type bonus
+        const typeScores = {
+          radio: 25,
+          online: 20,
+          specialist: 30,
+          community: 15,
+        };
+        score += typeScores[station.stationType] || 10;
+
+        // Reach bonus
+        const reachScores = {
+          national: 25,
+          regional: 20,
+          local: 10,
+          international: 15,
+        };
+        score += reachScores[station.reach] || 10;
+
+        return { ...station, score };
+      })
+      .sort((a, b) => b.score - a.score);
   }
 
   /**
@@ -530,36 +533,38 @@ Return as a structured list with clear platform information.`;
    */
   getResearchStrategy(genre, region) {
     const strategies = {
-      'Pop': {
+      Pop: {
         focus: 'Commercial radio, BBC Radio 1/2, mainstream platforms',
-        priority: 'Commercial, BBC, Regional'
+        priority: 'Commercial, BBC, Regional',
       },
-      'Dance': {
+      Dance: {
         focus: 'Dance stations, club radio, specialist shows',
-        priority: 'Specialist, Online, Commercial'
+        priority: 'Specialist, Online, Commercial',
       },
-      'Electronic': {
+      Electronic: {
         focus: 'Specialist shows, online platforms, experimental radio',
-        priority: 'Specialist, Online, Community'
+        priority: 'Specialist, Online, Community',
       },
-      'Indie': {
+      Indie: {
         focus: 'BBC 6 Music, specialist shows, online platforms',
-        priority: 'Specialist, Online, Community'
+        priority: 'Specialist, Online, Community',
       },
-      'Rock': {
+      Rock: {
         focus: 'Rock stations, specialist shows, commercial radio',
-        priority: 'Commercial, Specialist, Regional'
+        priority: 'Commercial, Specialist, Regional',
       },
       'Hip-Hop': {
         focus: 'Urban stations, specialist shows, online platforms',
-        priority: 'Specialist, Online, Commercial'
+        priority: 'Specialist, Online, Commercial',
+      },
+    };
+
+    return (
+      strategies[genre] || {
+        focus: 'General music platforms and stations',
+        priority: 'Commercial, BBC, Regional',
       }
-    };
-    
-    return strategies[genre] || {
-      focus: 'General music platforms and stations',
-      priority: 'Commercial, BBC, Regional'
-    };
+    );
   }
 
   /**
@@ -583,7 +588,7 @@ Return as a structured list with clear platform information.`;
       if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
       }
-      
+
       const data = Array.from(this.discoveryCache.entries());
       fs.writeFileSync(this.cacheFile, JSON.stringify(data, null, 2));
     } catch (error) {
@@ -599,26 +604,26 @@ Return as a structured list with clear platform information.`;
 
   loadResearchStrategies() {
     return {
-      'Pop': {
+      Pop: {
         keywords: ['pop', 'mainstream', 'commercial', 'chart', 'hit'],
         platforms: ['BBC Radio 1', 'Capital FM', 'Heart', 'Kiss FM'],
-        focus: 'Commercial appeal and mainstream success'
+        focus: 'Commercial appeal and mainstream success',
       },
-      'Dance': {
+      Dance: {
         keywords: ['dance', 'electronic', 'club', 'beat', 'rhythm'],
         platforms: ['BBC Radio 1Xtra', 'Kiss FM', 'Ministry of Sound', 'Amazing Radio'],
-        focus: 'Dancefloor appeal and club potential'
+        focus: 'Dancefloor appeal and club potential',
       },
-      'Electronic': {
+      Electronic: {
         keywords: ['electronic', 'ambient', 'experimental', 'synthetic', 'techno'],
         platforms: ['BBC 6 Music', 'Amazing Radio', 'Online platforms'],
-        focus: 'Artistic integrity and experimental sound'
+        focus: 'Artistic integrity and experimental sound',
       },
-      'Indie': {
+      Indie: {
         keywords: ['indie', 'alternative', 'underground', 'independent', 'authentic'],
         platforms: ['BBC 6 Music', 'Amazing Radio', 'Online platforms'],
-        focus: 'Authentic sound and artistic vision'
-      }
+        focus: 'Authentic sound and artistic vision',
+      },
     };
   }
 
@@ -631,7 +636,7 @@ Return as a structured list with clear platform information.`;
       claudeApi: !!this.claudeApiKey,
       firecrawlApi: !!this.firecrawlApiKey,
       cacheSize: this.discoveryCache.size,
-      lastChecked: new Date().toISOString()
+      lastChecked: new Date().toISOString(),
     };
   }
 }

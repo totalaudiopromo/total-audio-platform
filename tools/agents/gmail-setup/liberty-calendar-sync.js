@@ -34,23 +34,23 @@ class LibertyCalendarSync {
       {
         summary: 'Liberty - Campaign Deadlines',
         description: 'Radio campaign deadlines and release dates',
-        colorId: '11' // Red
+        colorId: '11', // Red
       },
       {
         summary: 'Liberty - Station Follow-ups',
         description: 'Station response follow-ups and callbacks',
-        colorId: '6' // Orange
+        colorId: '6', // Orange
       },
       {
         summary: 'Liberty - Action Items',
         description: 'Tasks requiring immediate attention',
-        colorId: '9' // Blue
+        colorId: '9', // Blue
       },
       {
         summary: 'Liberty - Team Meetings',
         description: 'Liberty Music PR team coordination',
-        colorId: '3' // Purple
-      }
+        colorId: '3', // Purple
+      },
     ];
   }
 
@@ -63,7 +63,6 @@ class LibertyCalendarSync {
 
       const calendar = response.data.items.find(cal => cal.summary === summary);
       return calendar || null;
-
     } catch (error) {
       console.error(`Failed to find calendar "${summary}":`, error.message);
       return null;
@@ -80,8 +79,8 @@ class LibertyCalendarSync {
         requestBody: {
           summary: summary,
           description: description,
-          timeZone: 'Europe/London'
-        }
+          timeZone: 'Europe/London',
+        },
       });
 
       const calendarId = response.data.id;
@@ -91,13 +90,12 @@ class LibertyCalendarSync {
       await this.calendar.calendarList.update({
         calendarId: calendarId,
         requestBody: {
-          colorId: colorId
-        }
+          colorId: colorId,
+        },
       });
 
       console.log(`  🎨 Color set: ${colorId}`);
       return response.data;
-
     } catch (error) {
       console.error(`Failed to create calendar "${summary}":`, error.message);
       return null;
@@ -112,13 +110,12 @@ class LibertyCalendarSync {
       await this.calendar.calendarList.update({
         calendarId: calendarId,
         requestBody: {
-          colorId: colorId
-        }
+          colorId: colorId,
+        },
       });
 
       console.log(`✅ Updated calendar color: ${colorId}`);
       return true;
-
     } catch (error) {
       console.error(`Failed to update calendar color:`, error.message);
       return false;
@@ -164,7 +161,6 @@ class LibertyCalendarSync {
       console.log('  - Calendars will appear in your Google Calendar');
       console.log('  - You can toggle them on/off in the sidebar');
       console.log('  - Future enhancement: Auto-create events from campaign emails');
-
     } catch (error) {
       console.error('❌ Setup failed:', error);
       throw error;
@@ -180,8 +176,8 @@ class LibertyCalendarSync {
     try {
       const response = await this.calendar.calendarList.list();
 
-      const libertyCalendars = response.data.items.filter(cal =>
-        cal.summary && cal.summary.startsWith('Liberty')
+      const libertyCalendars = response.data.items.filter(
+        cal => cal.summary && cal.summary.startsWith('Liberty')
       );
 
       if (libertyCalendars.length === 0) {
@@ -196,7 +192,6 @@ class LibertyCalendarSync {
         console.log(`   Description: ${cal.description || 'none'}`);
         console.log('');
       });
-
     } catch (error) {
       console.error('❌ Failed to list calendars:', error);
     }
@@ -214,7 +209,6 @@ class LibertyCalendarSync {
       console.log('✅ Calendar access OK');
       console.log(`Found ${response.data.items.length} calendars`);
       return true;
-
     } catch (error) {
       console.error('❌ Calendar access failed:', error.message);
       return false;
@@ -241,22 +235,21 @@ class LibertyCalendarSync {
         summary: 'Example: Senior Dunce - Release Date',
         description: 'Radio campaign deadline for Senior Dunce',
         start: {
-          date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 7 days from now
+          date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 7 days from now
         },
         end: {
-          date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+          date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
         },
-        colorId: '11' // Red
+        colorId: '11', // Red
       };
 
       await this.calendar.events.insert({
         calendarId: calendar.id,
-        requestBody: event
+        requestBody: event,
       });
 
       console.log('✅ Created example event: Senior Dunce - Release Date');
       console.log('💡 Check your Google Calendar to see it!');
-
     } catch (error) {
       console.error('❌ Failed to create example events:', error);
     }
@@ -297,7 +290,6 @@ async function main() {
         console.log('');
         console.log('Example: node liberty-calendar-sync.js setup');
     }
-
   } catch (error) {
     console.error('❌ Command failed:', error.message);
     process.exit(1);

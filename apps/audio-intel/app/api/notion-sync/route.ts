@@ -7,20 +7,27 @@ const CONTENT_PAGE_ID = getEnv('NOTION_CONTENT_PAGE_ID') || '2660a35b21ed8162bae
 export async function POST(request: NextRequest) {
   try {
     console.log('🔄 Notion sync requested...');
-    
+
     // Notion integration temporarily disabled
-    return NextResponse.json({ 
-      success: false,
-      error: 'Notion integration is temporarily unavailable. Content management features are disabled.' 
-    }, { status: 503 });
+    return NextResponse.json(
+      {
+        success: false,
+        error:
+          'Notion integration is temporarily unavailable. Content management features are disabled.',
+      },
+      { status: 503 }
+    );
 
     // Get blocks from Notion page
-    const notionResponse = await fetch(`https://api.notion.com/v1/blocks/${CONTENT_PAGE_ID}/children`, {
-      headers: {
-        'Authorization': `Bearer ${NOTION_API_KEY}`,
-        'Notion-Version': '2022-06-28'
+    const notionResponse = await fetch(
+      `https://api.notion.com/v1/blocks/${CONTENT_PAGE_ID}/children`,
+      {
+        headers: {
+          Authorization: `Bearer ${NOTION_API_KEY}`,
+          'Notion-Version': '2022-06-28',
+        },
       }
-    });
+    );
 
     if (!notionResponse.ok) {
       throw new Error(`Notion API error: ${notionResponse.status}`);
@@ -30,27 +37,30 @@ export async function POST(request: NextRequest) {
     console.log('📄 Retrieved', notionData.results?.length || 0, 'blocks from Notion');
 
     // Look for social media content
-    const socialMediaBlocks = notionData.results?.filter((block: any) => {
-      if (block.type === 'paragraph' && block.paragraph?.rich_text) {
-        const text = block.paragraph.rich_text.map((t: any) => t.plain_text).join('');
-        return text.includes('🎵') || 
-               text.includes('Music Industry') || 
-               text.includes('Audio Intel') ||
-               text.includes('Stop wasting') ||
-               text.includes('radio contacts');
-      }
-      return false;
-    }) || [];
+    const socialMediaBlocks =
+      notionData.results?.filter((block: any) => {
+        if (block.type === 'paragraph' && block.paragraph?.rich_text) {
+          const text = block.paragraph.rich_text.map((t: any) => t.plain_text).join('');
+          return (
+            text.includes('🎵') ||
+            text.includes('Music Industry') ||
+            text.includes('Audio Intel') ||
+            text.includes('Stop wasting') ||
+            text.includes('radio contacts')
+          );
+        }
+        return false;
+      }) || [];
 
     console.log('🎯 Found', socialMediaBlocks.length, 'social media content blocks');
 
     // Convert blocks to social media posts
     const posts = socialMediaBlocks.map((block: any, index: number) => {
       const content = block.paragraph.rich_text.map((t: any) => t.plain_text).join('');
-      
+
       // Extract hashtags from content
       const hashtagMatches = content.match(/#\w+/g) || [];
-      
+
       // Determine platform based on content
       let platform = 'x';
       if (content.includes('LinkedIn') || content.includes('professional')) {
@@ -73,7 +83,7 @@ export async function POST(request: NextRequest) {
         hashtags: hashtagMatches,
         notionPageId: block.id,
         createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
       };
     });
 
@@ -85,14 +95,16 @@ export async function POST(request: NextRequest) {
       posts: posts,
       syncedAt: new Date().toISOString(),
       totalBlocks: notionData.results?.length || 0,
-      socialMediaBlocks: socialMediaBlocks.length
+      socialMediaBlocks: socialMediaBlocks.length,
     });
-
   } catch (error) {
     console.error('❌ Notion sync failed:', error);
-    return NextResponse.json({
-      error: 'Notion sync failed',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Notion sync failed',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }

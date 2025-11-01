@@ -66,14 +66,17 @@ export default function LoginPage() {
             )}
 
             <div>
-              <label htmlFor="password" className="block text-sm font-black text-gray-900 mb-2 uppercase tracking-wider">
+              <label
+                htmlFor="password"
+                className="block text-sm font-black text-gray-900 mb-2 uppercase tracking-wider"
+              >
                 Access Password
               </label>
               <input
                 type="password"
                 id="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={e => setPassword(e.target.value)}
                 className="w-full px-4 py-3 border-2 border-black rounded-xl font-bold focus:outline-none focus:ring-4 focus:ring-orange-500 focus:border-orange-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 placeholder="Enter password"
                 required

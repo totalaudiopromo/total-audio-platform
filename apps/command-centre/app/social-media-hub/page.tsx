@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Calendar, 
-  Send, 
-  Clock, 
-  Target, 
+import {
+  Calendar,
+  Send,
+  Clock,
+  Target,
   BarChart3,
   Copy,
   Check,
@@ -18,7 +18,7 @@ import {
   TrendingUp,
   Users,
   MessageSquare,
-  Share2
+  Share2,
 } from 'lucide-react';
 
 interface Platform {
@@ -65,7 +65,7 @@ const PLATFORMS: Platform[] = [
     icon: 'X',
     color: 'bg-black text-white',
     maxChars: 280,
-    connected: true
+    connected: true,
   },
   {
     id: 'linkedin',
@@ -73,7 +73,7 @@ const PLATFORMS: Platform[] = [
     icon: 'in',
     color: 'bg-blue-600 text-white',
     maxChars: 3000,
-    connected: true
+    connected: true,
   },
   {
     id: 'bluesky',
@@ -81,7 +81,7 @@ const PLATFORMS: Platform[] = [
     icon: 'BS',
     color: 'bg-sky-500 text-white',
     maxChars: 300,
-    connected: false
+    connected: false,
   },
   {
     id: 'threads',
@@ -89,12 +89,14 @@ const PLATFORMS: Platform[] = [
     icon: 'TH',
     color: 'bg-gray-900 text-white',
     maxChars: 500,
-    connected: false
-  }
+    connected: false,
+  },
 ];
 
 export default function SocialMediaHubPage() {
-  const [activeTab, setActiveTab] = useState<'compose' | 'calendar' | 'templates' | 'analytics'>('compose');
+  const [activeTab, setActiveTab] = useState<'compose' | 'calendar' | 'templates' | 'analytics'>(
+    'compose'
+  );
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>(['twitter', 'linkedin']);
   const [content, setContent] = useState('');
   const [scheduledTime, setScheduledTime] = useState('');
@@ -134,7 +136,7 @@ BBC 6, local stations - all scattered.
 Audio Intel: 15 minutes.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-2',
@@ -147,7 +149,7 @@ BBC contact left 6 months ago. Email from 2019.
 Audio Intel validates in real-time.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin', 'threads']
+        platforms: ['twitter', 'linkedin', 'threads'],
       },
       {
         id: 'template-3',
@@ -162,7 +164,7 @@ Built Audio Intel to fix this.
 0 customers. Building in public.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-4',
@@ -180,7 +182,7 @@ Only 28% still valid.
 This is why pitches fail.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-5',
@@ -193,7 +195,7 @@ Instead: Googling "BBC 6 Music contacts 2025"
 Audio Intel: 15 minutes instead of 15 hours.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+        platforms: ['twitter', 'threads'],
       },
       {
         id: 'template-6',
@@ -206,7 +208,7 @@ Why no customers? Built features instead of talking to people.
 Now: 85% interest from radio promoters after demos.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter']
+        platforms: ['twitter'],
       },
       {
         id: 'template-7',
@@ -219,7 +221,7 @@ intel.totalaudiopromo.com`,
 Audio Intel verifies before you send.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin', 'threads']
+        platforms: ['twitter', 'linkedin', 'threads'],
       },
       {
         id: 'template-8',
@@ -232,7 +234,7 @@ People move. Emails change. Shows cancel.
 Audio Intel fixes this in 15 minutes.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+        platforms: ['twitter', 'threads'],
       },
       {
         id: 'template-9',
@@ -247,7 +249,7 @@ Audio Intel: £19/month, 15 minutes
 The maths is simple.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-10',
@@ -262,7 +264,7 @@ intel.totalaudiopromo.com`,
 Audio Intel catches this before you send.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+        platforms: ['twitter', 'threads'],
       },
       {
         id: 'template-11',
@@ -275,7 +277,7 @@ I'm a producer (sadact) who built the tool I needed.
 6 months. 100% enrichment rate. 0 customers 😅
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-12',
@@ -287,7 +289,7 @@ Audio Intel: £19/month, you control everything
 Built for people who want to own their promo strategy.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-13',
@@ -304,7 +306,7 @@ Tomorrow: work.
 This is why I built Audio Intel.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+        platforms: ['twitter', 'threads'],
       },
       {
         id: 'template-14',
@@ -320,7 +322,7 @@ LinkedIn manual: 71% (20+ hours)
 Audio Intel: 92% in 15 minutes
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-15',
@@ -334,7 +336,7 @@ intel.totalaudiopromo.com`,
 4. Building in public works
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-16',
@@ -349,7 +351,7 @@ Presenters moved. Shows changed. Emails updated.
 Don't pitch ghosts.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-17',
@@ -362,7 +364,7 @@ Websites from 2018. Generic emails. No info.
 Audio Intel specializes in this.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+        platforms: ['twitter', 'threads'],
       },
       {
         id: 'template-18',
@@ -377,7 +379,7 @@ intel.totalaudiopromo.com`,
 Audio Intel: 5-8% bounce rate
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-19',
@@ -392,7 +394,7 @@ Verify before you pitch.
 Coming soon.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+        platforms: ['twitter', 'threads'],
       },
       {
         id: 'template-20',
@@ -409,7 +411,7 @@ Savings: £281/month
 Tool pays for itself 15x over.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-21',
@@ -424,7 +426,7 @@ MusoSoup: Better for budgets
 Audio Intel: For people who want control
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-22',
@@ -441,7 +443,7 @@ You need:
 Audio Intel handles contacts.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+        platforms: ['twitter', 'threads'],
       },
       {
         id: 'template-23',
@@ -456,7 +458,7 @@ Problem: contact info is nightmare fuel.
 Audio Intel specializes in this.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+        platforms: ['twitter', 'threads'],
       },
       {
         id: 'template-24',
@@ -472,7 +474,7 @@ intel.totalaudiopromo.com`,
 Now: 10 demos booked, focusing on conversion
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-25',
@@ -488,7 +490,7 @@ intel.totalaudiopromo.com`,
 Stop pitching irrelevant shows.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+        platforms: ['twitter', 'threads'],
       },
       {
         id: 'template-26',
@@ -506,7 +508,7 @@ Now:
 ✅ 10 conversations/week
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-27',
@@ -523,7 +525,7 @@ Your 2023 list? 35%+ wrong
 Audio Intel checks real-time.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-28',
@@ -538,7 +540,7 @@ Audio Intel: DIY promotion done properly.
 No fluff. Just verified contacts.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+        platforms: ['twitter', 'threads'],
       },
       {
         id: 'template-29',
@@ -553,7 +555,7 @@ Lifetime free access for feedback.
 DM me
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-30',
@@ -567,7 +569,7 @@ Average pitch + verified email = possible success
 Audio Intel focuses on foundation.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-31',
@@ -582,7 +584,7 @@ intel.totalaudiopromo.com`,
 Not for everyone. For UK artists.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-32',
@@ -597,7 +599,7 @@ But your pitch goes to an email from 2021 that bounces.
 Audio Intel fills this gap.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+        platforms: ['twitter', 'threads'],
       },
       {
         id: 'template-33',
@@ -615,7 +617,7 @@ Revenue: £0
 Building in public.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-34',
@@ -630,7 +632,7 @@ Building Audio Intel to solve the contact research nightmare.
 Let's connect 👋
 
 intel.totalaudiopromo.com`,
-        platforms: ['threads', 'bluesky']
+        platforms: ['threads', 'bluesky'],
       },
       {
         id: 'template-35',
@@ -645,7 +647,7 @@ Because your contact data is wrong.
 Audio Intel fixes this.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-36',
@@ -660,7 +662,7 @@ Audio Intel: £19/month, 15 minutes.
 This should be a no-brainer.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-37',
@@ -674,7 +676,7 @@ Audio Intel: £79/month unlimited campaigns
 ROI positive after 1 campaign.
 
 intel.totalaudiopromo.com`,
-        platforms: ['linkedin']
+        platforms: ['linkedin'],
       },
       {
         id: 'template-38',
@@ -690,7 +692,7 @@ That's why 60%+ bounce or go nowhere.
 Audio Intel does step 1.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
+        platforms: ['twitter', 'linkedin'],
       },
       {
         id: 'template-39',
@@ -705,7 +707,7 @@ I'll run it through Audio Intel and show you what's wrong.
 DM me or visit:
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'threads']
+        platforms: ['twitter', 'threads'],
       },
       {
         id: 'template-40',
@@ -723,8 +725,8 @@ Next: First paying customer
 Building in public.
 
 intel.totalaudiopromo.com`,
-        platforms: ['twitter', 'linkedin']
-      }
+        platforms: ['twitter', 'linkedin'],
+      },
     ];
 
     setContentTemplates(templates);
@@ -735,27 +737,27 @@ intel.totalaudiopromo.com`,
       {
         id: 'post-1',
         platforms: ['twitter'],
-        content: 'Spent 15 hours researching contacts for my last radio campaign.\n\nBBC Radio 6 Music, local stations, specialist shows - all scattered across emails, LinkedIn, outdated websites.\n\nBuilt Audio Intel because this is broken.\n\nFree trial: intel.totalaudiopromo.com',
+        content:
+          'Spent 15 hours researching contacts for my last radio campaign.\n\nBBC Radio 6 Music, local stations, specialist shows - all scattered across emails, LinkedIn, outdated websites.\n\nBuilt Audio Intel because this is broken.\n\nFree trial: intel.totalaudiopromo.com',
         scheduledTime: new Date(Date.now() + 2 * 60 * 60 * 1000),
-        status: 'draft'
+        status: 'draft',
       },
       {
         id: 'post-2',
         platforms: ['linkedin'],
-        content: 'After 5 years doing radio promotion, I can tell you the real problem:\n\nIt\'s not that radio gatekeepers don\'t want new music. It\'s that 90% of pitches never reach the right person.\n\nCurrently in beta, free to try: intel.totalaudiopromo.com',
+        content:
+          "After 5 years doing radio promotion, I can tell you the real problem:\n\nIt's not that radio gatekeepers don't want new music. It's that 90% of pitches never reach the right person.\n\nCurrently in beta, free to try: intel.totalaudiopromo.com",
         scheduledTime: new Date(Date.now() + 24 * 60 * 60 * 1000),
-        status: 'draft'
-      }
+        status: 'draft',
+      },
     ];
 
     setScheduledPosts(posts);
   };
 
   const handlePlatformToggle = (platformId: string) => {
-    setSelectedPlatforms(prev => 
-      prev.includes(platformId) 
-        ? prev.filter(id => id !== platformId)
-        : [...prev, platformId]
+    setSelectedPlatforms(prev =>
+      prev.includes(platformId) ? prev.filter(id => id !== platformId) : [...prev, platformId]
     );
   };
 
@@ -765,9 +767,7 @@ intel.totalaudiopromo.com`,
 
   const getCharacterLimit = () => {
     if (selectedPlatforms.length === 0) return 280;
-    const limits = selectedPlatforms.map(pid => 
-      PLATFORMS.find(p => p.id === pid)?.maxChars || 280
-    );
+    const limits = selectedPlatforms.map(pid => PLATFORMS.find(p => p.id === pid)?.maxChars || 280);
     return Math.min(...limits);
   };
 
@@ -779,7 +779,7 @@ intel.totalaudiopromo.com`,
       platforms: selectedPlatforms,
       content: content.trim(),
       scheduledTime: scheduledTime ? new Date(scheduledTime) : new Date(),
-      status: scheduledTime ? 'scheduled' : 'draft'
+      status: scheduledTime ? 'scheduled' : 'draft',
     };
 
     setScheduledPosts(prev => [...prev, newPost]);
@@ -829,7 +829,9 @@ intel.totalaudiopromo.com`,
         </div>
         <div className="flex items-center gap-2 mt-4 px-4 py-2 bg-green-100 rounded-xl border-3 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] max-w-fit">
           <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-          <span className="font-bold text-gray-900">{PLATFORMS.filter(p => p.connected).length} platforms connected</span>
+          <span className="font-bold text-gray-900">
+            {PLATFORMS.filter(p => p.connected).length} platforms connected
+          </span>
         </div>
       </div>
 
@@ -840,15 +842,13 @@ intel.totalaudiopromo.com`,
             { key: 'compose', label: 'Compose', icon: Edit },
             { key: 'calendar', label: 'Calendar', icon: Calendar },
             { key: 'templates', label: 'Templates', icon: Sparkles },
-            { key: 'analytics', label: 'Analytics', icon: BarChart3 }
+            { key: 'analytics', label: 'Analytics', icon: BarChart3 },
           ].map(tab => (
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key as any)}
               className={`postcraft-button flex items-center gap-2 ${
-                activeTab === tab.key
-                  ? 'bg-black text-white'
-                  : ''
+                activeTab === tab.key ? 'bg-black text-white' : ''
               }`}
             >
               <tab.icon size={16} />
@@ -864,12 +864,10 @@ intel.totalaudiopromo.com`,
           {/* Composer */}
           <div className="postcraft-card">
             <h2 className="postcraft-section-title mb-6">Create Post</h2>
-            
+
             {/* Platform Selection */}
             <div className="mb-6">
-              <label className="postcraft-label mb-3">
-                Select Platforms
-              </label>
+              <label className="postcraft-label mb-3">Select Platforms</label>
               <div className="grid grid-cols-2 gap-3">
                 {PLATFORMS.map(platform => (
                   <label
@@ -887,7 +885,9 @@ intel.totalaudiopromo.com`,
                       disabled={!platform.connected}
                       className="hidden"
                     />
-                    <span className={`px-2 py-1 rounded text-sm font-bold border-2 border-black ${platform.color}`}>
+                    <span
+                      className={`px-2 py-1 rounded text-sm font-bold border-2 border-black ${platform.color}`}
+                    >
                       {platform.icon}
                     </span>
                     <div className="flex-1">
@@ -903,40 +903,36 @@ intel.totalaudiopromo.com`,
 
             {/* Content Input */}
             <div className="mb-6">
-              <label className="postcraft-label mb-3">
-                Post Content
-              </label>
+              <label className="postcraft-label mb-3">Post Content</label>
               <textarea
                 value={content}
-                onChange={(e) => setContent(e.target.value)}
+                onChange={e => setContent(e.target.value)}
                 placeholder="Share your authentic insights about the music industry..."
                 rows={8}
                 className="w-full p-4 border-3 border-black rounded-xl text-sm resize-vertical focus:ring-2 focus:ring-blue-500 focus:border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               />
               <div className="flex justify-between items-center mt-2 text-xs font-bold">
-                <span className={getCharacterCount() > getCharacterLimit() ? 'text-red-600' : 'text-gray-600'}>
+                <span
+                  className={
+                    getCharacterCount() > getCharacterLimit() ? 'text-red-600' : 'text-gray-600'
+                  }
+                >
                   {getCharacterCount()}/{getCharacterLimit()} characters
                 </span>
                 {getCharacterCount() > getCharacterLimit() && (
-                  <span className="text-red-600">
-                    Content too long for selected platforms
-                  </span>
+                  <span className="text-red-600">Content too long for selected platforms</span>
                 )}
               </div>
             </div>
 
             {/* Scheduling */}
             <div className="mb-6">
-              <label className="postcraft-label mb-3">
-                Schedule (Optional)
-              </label>
+              <label className="postcraft-label mb-3">Schedule (Optional)</label>
               <div className="flex gap-3">
                 <button
                   onClick={() => setScheduledTime('')}
                   className={`flex-1 postcraft-button flex items-center justify-center gap-2 ${
-                    !scheduledTime
-                      ? 'bg-black text-white'
-                      : ''
+                    !scheduledTime ? 'bg-black text-white' : ''
                   }`}
                 >
                   <Send size={16} />
@@ -945,7 +941,7 @@ intel.totalaudiopromo.com`,
                 <input
                   type="datetime-local"
                   value={scheduledTime}
-                  onChange={(e) => setScheduledTime(e.target.value)}
+                  onChange={e => setScheduledTime(e.target.value)}
                   min={new Date().toISOString().slice(0, 16)}
                   className="flex-1 px-4 py-3 border-3 border-black rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 />
@@ -955,7 +951,11 @@ intel.totalaudiopromo.com`,
             {/* Action Button */}
             <button
               onClick={handleSchedulePost}
-              disabled={!content.trim() || selectedPlatforms.length === 0 || getCharacterCount() > getCharacterLimit()}
+              disabled={
+                !content.trim() ||
+                selectedPlatforms.length === 0 ||
+                getCharacterCount() > getCharacterLimit()
+              }
               className="w-full postcraft-button bg-gradient-to-br from-blue-600 to-purple-600 text-white flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Clock size={16} />
@@ -973,18 +973,22 @@ intel.totalaudiopromo.com`,
                   if (!platform) return null;
 
                   return (
-                    <div key={platformId} className="border-3 border-black rounded-xl p-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <div
+                      key={platformId}
+                      className="border-3 border-black rounded-xl p-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                    >
                       <div className="flex items-center gap-2 mb-3">
-                        <span className={`px-2 py-1 rounded text-xs font-bold border-2 border-black ${platform.color}`}>
+                        <span
+                          className={`px-2 py-1 rounded text-xs font-bold border-2 border-black ${platform.color}`}
+                        >
                           {platform.icon}
                         </span>
                         <span className="text-sm font-bold">{platform.name}</span>
                       </div>
                       <div className="bg-gray-100 border-2 border-black rounded-lg p-3 text-sm whitespace-pre-line">
-                        {content.length > platform.maxChars ?
-                          content.substring(0, platform.maxChars) + '...' :
-                          content
-                        }
+                        {content.length > platform.maxChars
+                          ? content.substring(0, platform.maxChars) + '...'
+                          : content}
                       </div>
                     </div>
                   );
@@ -1023,7 +1027,9 @@ intel.totalaudiopromo.com`,
           {/* Templates by Platform */}
           {PLATFORMS.filter(p => p.connected).map(platform => {
             // Get templates for this platform
-            const platformTemplates = contentTemplates.filter(t => t.platforms.includes(platform.id));
+            const platformTemplates = contentTemplates.filter(t =>
+              t.platforms.includes(platform.id)
+            );
 
             // Seeded shuffle function
             const seededShuffle = (array: ContentTemplate[], seed: number) => {
@@ -1046,12 +1052,17 @@ intel.totalaudiopromo.com`,
             };
 
             // Shuffle based on seed and take first 4
-            const shuffled = seededShuffle(platformTemplates, templateSeed + platform.id.charCodeAt(0)).slice(0, 4);
+            const shuffled = seededShuffle(
+              platformTemplates,
+              templateSeed + platform.id.charCodeAt(0)
+            ).slice(0, 4);
 
             return (
               <div key={platform.id} className="postcraft-card">
                 <div className="flex items-center gap-3 mb-6">
-                  <span className={`px-3 py-2 rounded-lg text-sm font-bold border-3 border-black ${platform.color}`}>
+                  <span
+                    className={`px-3 py-2 rounded-lg text-sm font-bold border-3 border-black ${platform.color}`}
+                  >
                     {platform.icon}
                   </span>
                   <div>
@@ -1064,19 +1075,28 @@ intel.totalaudiopromo.com`,
 
                 <div className="space-y-4">
                   {shuffled.map(template => (
-                    <div key={template.id} className="border-3 border-black rounded-xl p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-gray-50">
+                    <div
+                      key={template.id}
+                      className="border-3 border-black rounded-xl p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-gray-50"
+                    >
                       <div className="flex justify-between items-start mb-4">
                         <div>
-                          <h4 className="postcraft-label mb-2">
-                            {template.name}
-                          </h4>
-                          <span className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black ${
-                            template.category === 'announcement' ? 'bg-blue-500 text-white' :
-                            template.category === 'insight' ? 'bg-green-500 text-white' :
-                            template.category === 'personal' ? 'bg-orange-500 text-white' :
-                            template.category === 'news' ? 'bg-purple-500 text-white' :
-                            template.category === 'feature' ? 'bg-cyan-500 text-white' : 'bg-blue-500 text-white'
-                          }`}>
+                          <h4 className="postcraft-label mb-2">{template.name}</h4>
+                          <span
+                            className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black ${
+                              template.category === 'announcement'
+                                ? 'bg-blue-500 text-white'
+                                : template.category === 'insight'
+                                  ? 'bg-green-500 text-white'
+                                  : template.category === 'personal'
+                                    ? 'bg-orange-500 text-white'
+                                    : template.category === 'news'
+                                      ? 'bg-purple-500 text-white'
+                                      : template.category === 'feature'
+                                        ? 'bg-cyan-500 text-white'
+                                        : 'bg-blue-500 text-white'
+                            }`}
+                          >
                             {template.category}
                           </span>
                         </div>
@@ -1087,7 +1107,11 @@ intel.totalaudiopromo.com`,
                             className="p-2 border-3 border-black rounded-lg hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all bg-white"
                             title="Copy content"
                           >
-                            {copiedId === template.id ? <Check size={16} className="text-green-600" /> : <Copy size={16} />}
+                            {copiedId === template.id ? (
+                              <Check size={16} className="text-green-600" />
+                            ) : (
+                              <Copy size={16} />
+                            )}
                           </button>
                           <button
                             onClick={() => {
@@ -1113,7 +1137,10 @@ intel.totalaudiopromo.com`,
                           .map(pid => {
                             const p = PLATFORMS.find(pl => pl.id === pid);
                             return p ? (
-                              <span key={pid} className={`px-2 py-1 rounded text-xs font-bold border-2 border-black ${p.color}`}>
+                              <span
+                                key={pid}
+                                className={`px-2 py-1 rounded text-xs font-bold border-2 border-black ${p.color}`}
+                              >
                                 {p.icon}
                               </span>
                             ) : null;
@@ -1132,10 +1159,7 @@ intel.totalaudiopromo.com`,
         <div className="postcraft-card">
           <div className="flex justify-between items-center mb-6">
             <h2 className="postcraft-section-title">Scheduled Posts</h2>
-            <button
-              onClick={fetchData}
-              className="postcraft-button flex items-center gap-2"
-            >
+            <button onClick={fetchData} className="postcraft-button flex items-center gap-2">
               <RefreshCw size={16} />
               Refresh
             </button>
@@ -1149,14 +1173,20 @@ intel.totalaudiopromo.com`,
           ) : (
             <div className="space-y-4">
               {scheduledPosts.map(post => (
-                <div key={post.id} className="border-3 border-black rounded-xl p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <div
+                  key={post.id}
+                  className="border-3 border-black rounded-xl p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                >
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <div className="flex gap-2 mb-2">
                         {post.platforms.map(platformId => {
                           const platform = PLATFORMS.find(p => p.id === platformId);
                           return platform ? (
-                            <span key={platformId} className={`px-2 py-1 rounded text-xs font-bold border-2 border-black ${platform.color}`}>
+                            <span
+                              key={platformId}
+                              className={`px-2 py-1 rounded text-xs font-bold border-2 border-black ${platform.color}`}
+                            >
                               {platform.icon}
                             </span>
                           ) : null;
@@ -1167,11 +1197,17 @@ intel.totalaudiopromo.com`,
                       </p>
                     </div>
 
-                    <span className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black ${
-                      post.status === 'scheduled' ? 'bg-blue-500 text-white' :
-                      post.status === 'published' ? 'bg-green-500 text-white' :
-                      post.status === 'failed' ? 'bg-red-500 text-white' : 'bg-orange-500 text-white'
-                    }`}>
+                    <span
+                      className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black ${
+                        post.status === 'scheduled'
+                          ? 'bg-blue-500 text-white'
+                          : post.status === 'published'
+                            ? 'bg-green-500 text-white'
+                            : post.status === 'failed'
+                              ? 'bg-red-500 text-white'
+                              : 'bg-orange-500 text-white'
+                      }`}
+                    >
                       {post.status}
                     </span>
                   </div>
@@ -1199,7 +1235,9 @@ intel.totalaudiopromo.com`,
                         <div className="text-gray-600">Comments</div>
                       </div>
                       <div>
-                        <div className="font-semibold text-green-600">{post.performance.signups}</div>
+                        <div className="font-semibold text-green-600">
+                          {post.performance.signups}
+                        </div>
                         <div className="text-gray-600">Signups</div>
                       </div>
                     </div>
@@ -1277,22 +1315,34 @@ intel.totalaudiopromo.com`,
           <div className="postcraft-card">
             <h2 className="postcraft-section-title mb-6">Customer Acquisition Templates</h2>
             <p className="postcraft-text mb-6">
-              Focus: Radio promoters, solo artists, and PR agencies. All content emphasises real pain points and authentic experience.
+              Focus: Radio promoters, solo artists, and PR agencies. All content emphasises real
+              pain points and authentic experience.
             </p>
             <div className="space-y-4">
               {contentTemplates.slice(0, 5).map(template => (
-                <div key={template.id} className="p-4 border-3 border-black rounded-xl bg-gray-100 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <div
+                  key={template.id}
+                  className="p-4 border-3 border-black rounded-xl bg-gray-100 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                >
                   <div className="flex justify-between items-center mb-2">
                     <h3 className="postcraft-label">{template.name}</h3>
-                    <span className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black ${
-                      template.category === 'insight' ? 'bg-green-500 text-white' :
-                      template.category === 'personal' ? 'bg-orange-500 text-white' : 'bg-blue-500 text-white'
-                    }`}>
+                    <span
+                      className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-2 border-black ${
+                        template.category === 'insight'
+                          ? 'bg-green-500 text-white'
+                          : template.category === 'personal'
+                            ? 'bg-orange-500 text-white'
+                            : 'bg-blue-500 text-white'
+                      }`}
+                    >
                       {template.category}
                     </span>
                   </div>
                   <div className="text-sm font-bold text-gray-900">
-                    Platforms: {template.platforms.map(p => PLATFORMS.find(pl => pl.id === p)?.name).join(', ')}
+                    Platforms:{' '}
+                    {template.platforms
+                      .map(p => PLATFORMS.find(pl => pl.id === p)?.name)
+                      .join(', ')}
                   </div>
                 </div>
               ))}
@@ -1306,21 +1356,31 @@ intel.totalaudiopromo.com`,
               <div className="p-4 border-3 border-black rounded-xl bg-green-50 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 <div className="flex justify-between items-center">
                   <span className="font-bold text-gray-900">Radio Promoters</span>
-                  <span className="px-4 py-2 bg-green-500 text-white font-black rounded-lg border-2 border-black">85%</span>
+                  <span className="px-4 py-2 bg-green-500 text-white font-black rounded-lg border-2 border-black">
+                    85%
+                  </span>
                 </div>
-                <p className="text-sm text-gray-700 mt-2">Highest priority - proven interest after demos</p>
+                <p className="text-sm text-gray-700 mt-2">
+                  Highest priority - proven interest after demos
+                </p>
               </div>
               <div className="p-4 border-3 border-black rounded-xl bg-blue-50 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 <div className="flex justify-between items-center">
                   <span className="font-bold text-gray-900">PR Agencies</span>
-                  <span className="px-4 py-2 bg-blue-500 text-white font-black rounded-lg border-2 border-black">70%</span>
+                  <span className="px-4 py-2 bg-blue-500 text-white font-black rounded-lg border-2 border-black">
+                    70%
+                  </span>
                 </div>
-                <p className="text-sm text-gray-700 mt-2">Multi-client processing, agency tier pricing</p>
+                <p className="text-sm text-gray-700 mt-2">
+                  Multi-client processing, agency tier pricing
+                </p>
               </div>
               <div className="p-4 border-3 border-black rounded-xl bg-orange-50 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 <div className="flex justify-between items-center">
                   <span className="font-bold text-gray-900">Solo Artists with Budget</span>
-                  <span className="px-4 py-2 bg-orange-500 text-white font-black rounded-lg border-2 border-black">60%</span>
+                  <span className="px-4 py-2 bg-orange-500 text-white font-black rounded-lg border-2 border-black">
+                    60%
+                  </span>
                 </div>
                 <p className="text-sm text-gray-700 mt-2">Free trial → PRO tier conversion focus</p>
               </div>

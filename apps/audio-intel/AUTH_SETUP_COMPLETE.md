@@ -6,17 +6,20 @@
 ## What Was Implemented
 
 ### 1. Supabase Configuration ✅
+
 - Added credentials to `.env.local`
 - Connected to existing Supabase project
 - Database tables created (`user_profiles`, `app_permissions`)
 
 ### 2. Auth Components ✅
+
 - **SignInForm** - Email/password + magic link authentication
 - **SignUpForm** - User registration with email confirmation
 - **UserMenu** - User dropdown (ready to add to layout)
 - **AppAccessGate** - Permission-based access control
 
 ### 3. Auth Pages ✅
+
 - `/signin` - Sign in page
 - `/signup` - Sign up page
 - `/auth/callback` - Email confirmation handler
@@ -26,11 +29,13 @@
 ### Test Sign Up Flow
 
 1. **Start the server** (already running):
+
    ```bash
    # Server is running at http://localhost:3000
    ```
 
 2. **Navigate to sign-up page**:
+
    ```
    http://localhost:3000/signup
    ```
@@ -51,6 +56,7 @@
 ### Test Sign In Flow
 
 1. **Navigate to sign-in page**:
+
    ```
    http://localhost:3000/signin
    ```
@@ -64,6 +70,7 @@
 ### Test Magic Link
 
 1. **Navigate to sign-in page**:
+
    ```
    http://localhost:3000/signin
    ```
@@ -91,13 +98,15 @@
 ## ⚠️ Known Issues / Next Steps
 
 ### What's Working ✅
+
 - Sign up flow
-- Sign in flow  
+- Sign in flow
 - Email confirmation
 - Database integration
 - Auth package
 
 ### What's NOT Done Yet ❌
+
 - UserMenu not added to layout (need to integrate)
 - No protected routes yet (no middleware)
 - Dashboard might not exist (check if `/dashboard` route exists)
@@ -138,18 +147,18 @@ export default function DashboardPage() {
 Create `apps/audio-intel/middleware.ts`:
 
 ```typescript
-import { createMiddleware } from '@total-audio/auth/middleware'
+import { createMiddleware } from '@total-audio/auth/middleware';
 
 export const middleware = createMiddleware({
   protectedRoutes: ['/dashboard', '/enrichments'],
   authRoutes: ['/signin', '/signup'],
   signInPath: '/signin',
   defaultRedirect: '/dashboard',
-})
+});
 
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
-}
+};
 ```
 
 ## 🎉 Success Metrics

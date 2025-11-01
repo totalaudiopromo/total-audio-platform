@@ -1,22 +1,34 @@
-'use client'
+'use client';
 
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { TrendingUp, Zap, Check, X } from 'lucide-react'
-import Link from 'next/link'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { TrendingUp, Zap, Check, X } from 'lucide-react';
+import Link from 'next/link';
 
 interface UpgradeModalProps {
-  open: boolean
-  onOpenChange: (open: boolean) => void
-  reason: 'limit_reached' | 'near_limit'
-  enrichmentsUsed: number
-  enrichmentsLimit: number
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  reason: 'limit_reached' | 'near_limit';
+  enrichmentsUsed: number;
+  enrichmentsLimit: number;
 }
 
-export function UpgradeModal({ open, onOpenChange, reason, enrichmentsUsed, enrichmentsLimit }: UpgradeModalProps) {
-  const isAtLimit = reason === 'limit_reached'
-  const remaining = enrichmentsLimit - enrichmentsUsed
+export function UpgradeModal({
+  open,
+  onOpenChange,
+  reason,
+  enrichmentsUsed,
+  enrichmentsLimit,
+}: UpgradeModalProps) {
+  const isAtLimit = reason === 'limit_reached';
+  const remaining = enrichmentsLimit - enrichmentsUsed;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -39,8 +51,7 @@ export function UpgradeModal({ open, onOpenChange, reason, enrichmentsUsed, enri
               <DialogDescription className="text-base">
                 {isAtLimit
                   ? `You've used all ${enrichmentsLimit} beta enrichments`
-                  : `Only ${remaining} enrichments remaining`
-                }
+                  : `Only ${remaining} enrichments remaining`}
               </DialogDescription>
             </div>
           </div>
@@ -138,5 +149,5 @@ export function UpgradeModal({ open, onOpenChange, reason, enrichmentsUsed, enri
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

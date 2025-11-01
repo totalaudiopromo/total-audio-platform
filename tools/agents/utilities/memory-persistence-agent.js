@@ -27,7 +27,7 @@ class MemoryPersistenceAgent {
       agentStates: sessionData.agentStates || {},
       sprintStatus: sessionData.sprintStatus || 'In Progress',
       criticalContext: sessionData.criticalContext || {},
-      lastCompactTime: timestamp
+      lastCompactTime: timestamp,
     };
 
     try {
@@ -67,10 +67,13 @@ class MemoryPersistenceAgent {
 
     try {
       let content = fs.readFileSync(this.contextFile, 'utf8');
-      
+
       // Update timestamp
-      content = content.replace(/\*Last Updated: \[.*?\]\*/, `*Last Updated: ${new Date().toISOString()}*`);
-      
+      content = content.replace(
+        /\*Last Updated: \[.*?\]\*/,
+        `*Last Updated: ${new Date().toISOString()}*`
+      );
+
       // Update current focus if provided
       if (updates.currentFocus) {
         content = content.replace(
@@ -102,24 +105,24 @@ class MemoryPersistenceAgent {
   generatePreCompactSummary() {
     const sessionMemory = this.loadSessionMemory();
     const timestamp = new Date().toISOString();
-    
+
     const summary = {
       timestamp,
       criticalReminders: [
-        "Primary focus: Audio Intel contact enrichment SaaS",
-        "23+ specialized agents available in tools/agents/",
-        "Plan Mode integration: PLAN → REVIEW → EXECUTE → TEST → DOCUMENT",
-        "MCP servers: puppeteer + filesystem active",
-        "Main workspace: /workspace/active/total-audio-platform/",
-        "Development command: npm run dev:audio-intel"
+        'Primary focus: Audio Intel contact enrichment SaaS',
+        '23+ specialized agents available in tools/agents/',
+        'Plan Mode integration: PLAN → REVIEW → EXECUTE → TEST → DOCUMENT',
+        'MCP servers: puppeteer + filesystem active',
+        'Main workspace: /workspace/active/total-audio-platform/',
+        'Development command: npm run dev:audio-intel',
       ],
       currentContext: sessionMemory,
       nextSessionInstructions: [
-        "Read CLAUDE_CODE_SESSION_CONTEXT.md for current state",
-        "Load session memory with: node tools/agents/memory-persistence-agent.js load",
-        "Check agent health with: npm run agents:health",
-        "Verify MCP servers with: claude mcp list"
-      ]
+        'Read CLAUDE_CODE_SESSION_CONTEXT.md for current state',
+        'Load session memory with: node tools/agents/memory-persistence-agent.js load',
+        'Check agent health with: npm run agents:health',
+        'Verify MCP servers with: claude mcp list',
+      ],
     };
 
     return summary;
@@ -136,7 +139,7 @@ class MemoryPersistenceAgent {
       case 'save':
         const sessionData = {
           currentFocus: args[1] || 'Audio Intel Development',
-          sprintStatus: args[2] || 'In Progress'
+          sprintStatus: args[2] || 'In Progress',
         };
         this.saveSessionMemory(sessionData);
         this.updateContextFile(sessionData);
@@ -159,7 +162,7 @@ class MemoryPersistenceAgent {
       case 'update':
         const updates = {
           currentFocus: args[1],
-          sprintStatus: args[2]
+          sprintStatus: args[2],
         };
         this.updateContextFile(updates);
         break;

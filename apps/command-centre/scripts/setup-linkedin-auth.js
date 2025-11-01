@@ -28,7 +28,8 @@ function generateAuthUrl() {
   const state = Math.random().toString(36).substring(7);
   const scope = REQUESTED_SCOPES.join(' ');
 
-  const authUrl = `https://www.linkedin.com/oauth/v2/authorization?` +
+  const authUrl =
+    `https://www.linkedin.com/oauth/v2/authorization?` +
     `response_type=code&` +
     `client_id=${LINKEDIN_CLIENT_ID}&` +
     `redirect_uri=${encodeURIComponent(redirectUri)}&` +
@@ -66,21 +67,28 @@ async function getProfile(accessToken) {
   // Otherwise, if OpenID Connect is requested, prefer /userinfo.
   const wantsPosting = REQUESTED_SCOPES.includes('w_member_social');
   const useOidc = REQUESTED_SCOPES.includes('openid') && !wantsPosting;
-  const url = wantsPosting ? 'https://api.linkedin.com/v2/me' : (useOidc ? 'https://api.linkedin.com/v2/userinfo' : 'https://api.linkedin.com/v2/me');
-  let response = await fetch(url + (url.endsWith('/me') ? '?projection=(id,localizedFirstName,localizedLastName)' : ''), {
-    headers: {
-      'Authorization': `Bearer ${accessToken}`,
-      'X-Restli-Protocol-Version': '2.0.0',
-      'LinkedIn-Version': LINKEDIN_API_VERSION,
-    },
-  });
+  const url = wantsPosting
+    ? 'https://api.linkedin.com/v2/me'
+    : useOidc
+      ? 'https://api.linkedin.com/v2/userinfo'
+      : 'https://api.linkedin.com/v2/me';
+  let response = await fetch(
+    url + (url.endsWith('/me') ? '?projection=(id,localizedFirstName,localizedLastName)' : ''),
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'X-Restli-Protocol-Version': '2.0.0',
+        'LinkedIn-Version': LINKEDIN_API_VERSION,
+      },
+    }
+  );
 
   if (!response.ok) {
     // Fallback: if /me failed and OIDC available, try /userinfo
     if (url.endsWith('/me') && REQUESTED_SCOPES.includes('openid')) {
       const alt = await fetch('https://api.linkedin.com/v2/userinfo', {
         headers: {
-          'Authorization': `Bearer ${accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           'X-Restli-Protocol-Version': '2.0.0',
           'LinkedIn-Version': LINKEDIN_API_VERSION,
         },
@@ -129,7 +137,7 @@ intel.totalaudiopromo.com`;
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${accessToken}`,
+      Authorization: `Bearer ${accessToken}`,
       'X-Restli-Protocol-Version': '2.0.0',
       'LinkedIn-Version': LINKEDIN_API_VERSION,
     },
@@ -179,8 +187,16 @@ function startLocalServer() {
 
         const profile = await getProfile(tokenData.access_token);
         // v2 /me returns localizedFirstName/LastName
-        const firstName = profile.given_name || profile.localizedFirstName || (profile.firstName && profile.firstName.localized && profile.firstName.localized.en_US) || 'Unknown';
-        const lastName = profile.family_name || profile.localizedLastName || (profile.lastName && profile.lastName.localized && profile.lastName.localized.en_US) || '';
+        const firstName =
+          profile.given_name ||
+          profile.localizedFirstName ||
+          (profile.firstName && profile.firstName.localized && profile.firstName.localized.en_US) ||
+          'Unknown';
+        const lastName =
+          profile.family_name ||
+          profile.localizedLastName ||
+          (profile.lastName && profile.lastName.localized && profile.lastName.localized.en_US) ||
+          '';
         console.log(`👤 Profile: ${firstName} ${lastName}`);
 
         // Extract person ID for posting (URN id when using /me). When using OIDC userinfo, id is a subject identifier.
@@ -200,7 +216,7 @@ function startLocalServer() {
 # LinkedIn credentials (updated by setup script)
 LINKEDIN_ACCESS_TOKEN=${tokenData.access_token}
 LINKEDIN_PERSON_ID=${personId}
-LINKEDIN_TOKEN_EXPIRES=${Date.now() + (tokenData.expires_in * 1000)}
+LINKEDIN_TOKEN_EXPIRES=${Date.now() + tokenData.expires_in * 1000}
 `;
 
         fs.appendFileSync('.env', envContent);
@@ -222,7 +238,6 @@ LINKEDIN_TOKEN_EXPIRES=${Date.now() + (tokenData.expires_in * 1000)}
 
         server.close();
         process.exit(0);
-
       } catch (error) {
         console.error('❌ Error during token exchange:', error);
         res.writeHead(500, { 'Content-Type': 'text/html' });
@@ -261,7 +276,7 @@ function main() {
   console.log('2. Open this URL in your browser:');
   console.log('\n' + authUrl);
   console.log('\n3. Authorize Audio Intel to post to your LinkedIn');
-  console.log('4. You\'ll be redirected back to complete the setup');
+  console.log("4. You'll be redirected back to complete the setup");
 
   console.log('\n⚠️  Make sure to:');
   console.log('- Use your LinkedIn account that you want to post from');

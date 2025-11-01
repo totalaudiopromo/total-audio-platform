@@ -2,13 +2,13 @@ import { NextResponse } from 'next/server';
 import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 
-export async function PATCH(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   try {
     const supabase = await createServerClient(cookies());
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
     }
@@ -36,7 +36,7 @@ export async function PATCH(
     }
 
     // Update pitch status
-    const { data: pitch, error: updateError } = await (supabase)
+    const { data: pitch, error: updateError } = await supabase
       .from('pitches')
       .update(updateData)
       .eq('id', pitchId)
@@ -46,10 +46,7 @@ export async function PATCH(
 
     if (updateError) {
       console.error('Error updating pitch status:', updateError);
-      return NextResponse.json(
-        { error: 'Failed to update pitch status' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to update pitch status' }, { status: 500 });
     }
 
     if (!pitch) {

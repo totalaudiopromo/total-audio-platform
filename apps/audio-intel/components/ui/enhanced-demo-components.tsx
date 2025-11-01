@@ -4,16 +4,16 @@
  * Uses centralized brand system for consistency
  */
 
-'use client'
+'use client';
 
-import React, { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Progress } from '@/components/ui/progress'
-import { 
-  Sparkles, 
-  ArrowRight, 
+import React, { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import {
+  Sparkles,
+  ArrowRight,
   CheckCircle,
   Music,
   Users,
@@ -21,20 +21,20 @@ import {
   Play,
   Clock,
   TrendingUp,
-  Zap
-} from 'lucide-react'
-import { BRAND_COLORS, brandUtils, COMMON_CLASSES } from '@/lib/brand-system'
-import ContactLoadingState, { LoadingState } from '@/app/components/ContactLoadingState'
+  Zap,
+} from 'lucide-react';
+import { BRAND_COLORS, brandUtils, COMMON_CLASSES } from '@/lib/brand-system';
+import ContactLoadingState, { LoadingState } from '@/app/components/ContactLoadingState';
 
 interface DemoMetric {
-  label: string
-  value: string
-  icon: React.ReactNode
-  color: string
+  label: string;
+  value: string;
+  icon: React.ReactNode;
+  color: string;
 }
 
 interface DemoShowcaseProps {
-  className?: string
+  className?: string;
 }
 
 /**
@@ -46,27 +46,27 @@ export function DemoMetrics({ className = '' }: DemoShowcaseProps) {
       label: 'Contacts Processed',
       value: '0',
       icon: <Users className="w-5 h-5" />,
-      color: BRAND_COLORS.primary.blue
+      color: BRAND_COLORS.primary.blue,
     },
     {
       label: 'Time Saved',
       value: '0 hours',
       icon: <Clock className="w-5 h-5" />,
-      color: BRAND_COLORS.secondary.yellow
+      color: BRAND_COLORS.secondary.yellow,
     },
     {
       label: 'Accuracy Rate',
       value: '0%',
       icon: <Target className="w-5 h-5" />,
-      color: BRAND_COLORS.status.success
+      color: BRAND_COLORS.status.success,
     },
     {
       label: 'Active Users',
       value: '0',
       icon: <TrendingUp className="w-5 h-5" />,
-      color: BRAND_COLORS.status.info
-    }
-  ])
+      color: BRAND_COLORS.status.info,
+    },
+  ]);
 
   // Animate metrics on mount
   useEffect(() => {
@@ -75,155 +75,152 @@ export function DemoMetrics({ className = '' }: DemoShowcaseProps) {
         { label: 'Contacts Processed', value: '2,847' },
         { label: 'Time Saved', value: '156 hours' },
         { label: 'Accuracy Rate', value: '94%' },
-        { label: 'Active Users', value: '127' }
-      ]
+        { label: 'Active Users', value: '127' },
+      ];
 
-      let progress = 0
+      let progress = 0;
       const interval = setInterval(() => {
-        progress += 10
-        
-        setMetrics(current => current.map((metric, index) => {
-          const target = targets[index]
-          if (target && target.label === metric.label) {
-            // Animate numbers
-            if (metric.label === 'Contacts Processed') {
-              const current = Math.round((2847 * progress) / 100)
-              return { ...metric, value: current.toLocaleString() }
-            } else if (metric.label === 'Time Saved') {
-              const current = Math.round((156 * progress) / 100)
-              return { ...metric, value: `${current} hours` }
-            } else if (metric.label === 'Accuracy Rate') {
-              const current = Math.round((94 * progress) / 100)
-              return { ...metric, value: `${current}%` }
-            } else if (metric.label === 'Active Users') {
-              const current = Math.round((127 * progress) / 100)
-              return { ...metric, value: current.toString() }
+        progress += 10;
+
+        setMetrics(current =>
+          current.map((metric, index) => {
+            const target = targets[index];
+            if (target && target.label === metric.label) {
+              // Animate numbers
+              if (metric.label === 'Contacts Processed') {
+                const current = Math.round((2847 * progress) / 100);
+                return { ...metric, value: current.toLocaleString() };
+              } else if (metric.label === 'Time Saved') {
+                const current = Math.round((156 * progress) / 100);
+                return { ...metric, value: `${current} hours` };
+              } else if (metric.label === 'Accuracy Rate') {
+                const current = Math.round((94 * progress) / 100);
+                return { ...metric, value: `${current}%` };
+              } else if (metric.label === 'Active Users') {
+                const current = Math.round((127 * progress) / 100);
+                return { ...metric, value: current.toString() };
+              }
             }
-          }
-          return metric
-        }))
+            return metric;
+          })
+        );
 
         if (progress >= 100) {
-          clearInterval(interval)
+          clearInterval(interval);
         }
-      }, 80)
-    }
+      }, 80);
+    };
 
-    const timer = setTimeout(animateMetrics, 500)
-    return () => clearTimeout(timer)
-  }, [])
+    const timer = setTimeout(animateMetrics, 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className={`grid grid-cols-2 lg:grid-cols-4 gap-4 ${className}`}>
       {metrics.map((metric, index) => (
-        <Card key={index} className="text-center transition-all duration-300 hover:scale-105 hover:shadow-lg">
+        <Card
+          key={index}
+          className="text-center transition-all duration-300 hover:scale-105 hover:shadow-lg"
+        >
           <CardContent className="p-4">
-            <div 
+            <div
               className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3"
               style={{ backgroundColor: `${metric.color}20`, color: metric.color }}
             >
               {metric.icon}
             </div>
-            <div className="text-2xl font-black text-gray-900 mb-1">
-              {metric.value}
-            </div>
-            <div className="text-sm text-gray-600 font-medium">
-              {metric.label}
-            </div>
+            <div className="text-2xl font-black text-gray-900 mb-1">{metric.value}</div>
+            <div className="text-sm text-gray-600 font-medium">{metric.label}</div>
           </CardContent>
         </Card>
       ))}
     </div>
-  )
+  );
 }
 
 /**
  * Interactive Demo Flow
  */
 interface DemoFlowProps {
-  onComplete?: () => void
+  onComplete?: () => void;
 }
 
 export function InteractiveDemoFlow({ onComplete }: DemoFlowProps) {
-  const [currentStep, setCurrentStep] = useState(0)
-  const [isRunning, setIsRunning] = useState(false)
-  const [progress, setProgress] = useState(0)
+  const [currentStep, setCurrentStep] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const steps = [
     {
       state: 'upload' as LoadingState,
       title: 'Upload Contacts',
       description: 'Drop your messy spreadsheets here',
-      duration: 2000
+      duration: 2000,
     },
     {
       state: 'processing' as LoadingState,
       title: 'Processing Data',
       description: 'Cleaning and organising your contacts',
-      duration: 3000
+      duration: 3000,
     },
     {
       state: 'analysing' as LoadingState,
       title: 'AI Analysis',
       description: 'Gathering music industry intelligence',
-      duration: 4000
+      duration: 4000,
     },
     {
       state: 'success' as LoadingState,
       title: 'Complete!',
       description: 'Your contacts are enriched and ready',
-      duration: 1000
-    }
-  ]
+      duration: 1000,
+    },
+  ];
 
   const runDemo = async () => {
-    setIsRunning(true)
-    setCurrentStep(0)
-    setProgress(0)
+    setIsRunning(true);
+    setCurrentStep(0);
+    setProgress(0);
 
     for (let i = 0; i < steps.length; i++) {
-      setCurrentStep(i)
-      
+      setCurrentStep(i);
+
       // Animate progress during each step
-      const stepProgress = 100 / steps.length
-      const startProgress = i * stepProgress
-      const endProgress = (i + 1) * stepProgress
-      
-      const stepDuration = steps[i].duration
-      const progressInterval = 50
-      const progressIncrement = stepProgress / (stepDuration / progressInterval)
-      
-      let currentProgress = startProgress
-      
+      const stepProgress = 100 / steps.length;
+      const startProgress = i * stepProgress;
+      const endProgress = (i + 1) * stepProgress;
+
+      const stepDuration = steps[i].duration;
+      const progressInterval = 50;
+      const progressIncrement = stepProgress / (stepDuration / progressInterval);
+
+      let currentProgress = startProgress;
+
       const progressTimer = setInterval(() => {
-        currentProgress += progressIncrement
+        currentProgress += progressIncrement;
         if (currentProgress >= endProgress) {
-          currentProgress = endProgress
-          clearInterval(progressTimer)
+          currentProgress = endProgress;
+          clearInterval(progressTimer);
         }
-        setProgress(currentProgress)
-      }, progressInterval)
+        setProgress(currentProgress);
+      }, progressInterval);
 
       // Wait for step duration
-      await new Promise(resolve => setTimeout(resolve, stepDuration))
-      clearInterval(progressTimer)
+      await new Promise(resolve => setTimeout(resolve, stepDuration));
+      clearInterval(progressTimer);
     }
 
-    setIsRunning(false)
-    onComplete?.()
-  }
+    setIsRunning(false);
+    onComplete?.();
+  };
 
   return (
     <Card className="max-w-2xl mx-auto">
       <CardHeader className="text-center">
-        <CardTitle className={COMMON_CLASSES.heading2}>
-          Interactive Demo
-        </CardTitle>
-        <CardDescription>
-          See Audio Intel in action with real-time processing
-        </CardDescription>
+        <CardTitle className={COMMON_CLASSES.heading2}>Interactive Demo</CardTitle>
+        <CardDescription>See Audio Intel in action with real-time processing</CardDescription>
       </CardHeader>
-      
+
       <CardContent className="space-y-6">
         {/* Demo Progress */}
         {isRunning && (
@@ -233,9 +230,7 @@ export function InteractiveDemoFlow({ onComplete }: DemoFlowProps) {
               <div className="text-lg font-bold text-gray-900 mb-1">
                 {steps[currentStep]?.title}
               </div>
-              <div className="text-sm text-gray-600">
-                {steps[currentStep]?.description}
-              </div>
+              <div className="text-sm text-gray-600">{steps[currentStep]?.description}</div>
             </div>
           </div>
         )}
@@ -251,9 +246,7 @@ export function InteractiveDemoFlow({ onComplete }: DemoFlowProps) {
           ) : (
             <div className="text-center space-y-4">
               <div className="text-6xl mb-4">•</div>
-              <div className="text-lg font-bold text-gray-900">
-                Ready to see the magic?
-              </div>
+              <div className="text-lg font-bold text-gray-900">Ready to see the magic?</div>
               <div className="text-gray-600">
                 Watch how we transform chaos into organised intelligence
               </div>
@@ -286,37 +279,43 @@ export function InteractiveDemoFlow({ onComplete }: DemoFlowProps) {
         {/* Demo Features */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
           <div className="text-center p-4 bg-green-50 rounded-lg">
-            <CheckCircle className="w-8 h-8 mx-auto mb-2" style={{ color: BRAND_COLORS.status.success }} />
+            <CheckCircle
+              className="w-8 h-8 mx-auto mb-2"
+              style={{ color: BRAND_COLORS.status.success }}
+            />
             <div className="font-bold text-gray-900">Real Processing</div>
             <div className="text-sm text-gray-600">Same AI pipeline as production</div>
           </div>
-          
+
           <div className="text-center p-4 bg-blue-50 rounded-lg">
             <Zap className="w-8 h-8 mx-auto mb-2" style={{ color: BRAND_COLORS.primary.blue }} />
             <div className="font-bold text-gray-900">Lightning Fast</div>
             <div className="text-sm text-gray-600">Process 100+ contacts in seconds</div>
           </div>
-          
+
           <div className="text-center p-4 bg-yellow-50 rounded-lg">
-            <Sparkles className="w-8 h-8 mx-auto mb-2" style={{ color: BRAND_COLORS.secondary.yellow }} />
+            <Sparkles
+              className="w-8 h-8 mx-auto mb-2"
+              style={{ color: BRAND_COLORS.secondary.yellow }}
+            />
             <div className="font-bold text-gray-900">Professional Quality</div>
             <div className="text-sm text-gray-600">Industry-ready intelligence</div>
           </div>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 /**
  * Professional Results Showcase
  */
 interface ResultsShowcaseProps {
-  className?: string
+  className?: string;
 }
 
 export function ResultsShowcase({ className = '' }: ResultsShowcaseProps) {
-  const [selectedResult, setSelectedResult] = useState(0)
+  const [selectedResult, setSelectedResult] = useState(0);
 
   const results = [
     {
@@ -327,7 +326,7 @@ export function ResultsShowcase({ className = '' }: ResultsShowcaseProps) {
 • Email: Weekday mornings preferred
 • Focus: New UK artists, breaking acts
 • Tip: Include streaming numbers + press quote
-• Research Confidence: High`
+• Research Confidence: High`,
     },
     {
       title: 'Playlist Curator',
@@ -337,7 +336,7 @@ export function ResultsShowcase({ className = '' }: ResultsShowcaseProps) {
 • Email: Via official channels only
 • Focus: Emerging artists, trending genres
 • Tip: Submit via Spotify for Artists portal
-• Research Confidence: High`
+• Research Confidence: High`,
     },
     {
       title: 'Music Blogger',
@@ -347,19 +346,15 @@ export function ResultsShowcase({ className = '' }: ResultsShowcaseProps) {
 • Email: Accepts submissions Tuesday-Thursday
 • Focus: Alternative, indie, emerging artists
 • Tip: Include high-res images and bio
-• Research Confidence: Medium`
-    }
-  ]
+• Research Confidence: Medium`,
+    },
+  ];
 
   return (
     <div className={`space-y-6 ${className}`}>
       <div className="text-center">
-        <h3 className={COMMON_CLASSES.heading2}>
-          See the Transformation
-        </h3>
-        <p className={COMMON_CLASSES.body}>
-          From basic emails to actionable intelligence
-        </p>
+        <h3 className={COMMON_CLASSES.heading2}>See the Transformation</h3>
+        <p className={COMMON_CLASSES.body}>From basic emails to actionable intelligence</p>
       </div>
 
       <div className="flex justify-center">
@@ -408,9 +403,7 @@ export function ResultsShowcase({ className = '' }: ResultsShowcaseProps) {
         {/* After */}
         <Card className="border-2 border-green-200 md:col-start-2">
           <CardHeader className="text-center">
-            <CardTitle className="text-lg text-green-700">
-              After: Enriched Intelligence
-            </CardTitle>
+            <CardTitle className="text-lg text-green-700">After: Enriched Intelligence</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="bg-green-50 p-6 rounded-lg">
@@ -427,20 +420,17 @@ export function ResultsShowcase({ className = '' }: ResultsShowcaseProps) {
 
       {/* Call to Action */}
       <div className="text-center">
-        <Button
-          size="lg"
-          className={brandUtils.getButtonClasses('primary')}
-        >
+        <Button size="lg" className={brandUtils.getButtonClasses('primary')}>
           <Sparkles className="w-5 h-5 mr-2" />
           Try It Yourself
         </Button>
       </div>
     </div>
-  )
+  );
 }
 
 export default {
   DemoMetrics,
   InteractiveDemoFlow,
-  ResultsShowcase
-}
+  ResultsShowcase,
+};

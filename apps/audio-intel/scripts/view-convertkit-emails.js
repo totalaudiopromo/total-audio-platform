@@ -33,7 +33,6 @@ async function viewSequenceEmails() {
 
     console.log('✅ Note: Email content can only be edited via ConvertKit dashboard');
     console.log('   We can update via API once we have the broadcast IDs');
-
   } catch (error) {
     console.error('❌ Error:', error.message);
   }

@@ -8,7 +8,7 @@ const AnalyticsScreen = () => {
         <Text style={styles.title}>Analytics</Text>
         <Text style={styles.subtitle}>Track your campaign performance</Text>
       </View>
-      
+
       <View style={styles.content}>
         <Text style={styles.comingSoon}>Analytics feature coming soon!</Text>
       </View>
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AnalyticsScreen; 
+export default AnalyticsScreen;

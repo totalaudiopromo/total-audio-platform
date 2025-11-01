@@ -18,9 +18,7 @@ const Tabs = ({ defaultValue, children, className = '' }: TabsProps) => {
 
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>
-      <div className={className}>
-        {children}
-      </div>
+      <div className={className}>{children}</div>
     </TabsContext.Provider>
   );
 };
@@ -32,7 +30,9 @@ interface TabsListProps {
 
 const TabsList = ({ children, className = '' }: TabsListProps) => {
   return (
-    <div className={`inline-flex h-10 items-center justify-center rounded-md bg-gray-100 p-1 text-gray-500 ${className}`}>
+    <div
+      className={`inline-flex h-10 items-center justify-center rounded-md bg-gray-100 p-1 text-gray-500 ${className}`}
+    >
       {children}
     </div>
   );
@@ -81,10 +81,12 @@ const TabsContent = ({ value, children, className = '' }: TabsContentProps) => {
   if (!isActive) return null;
 
   return (
-    <div className={`mt-2 ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 ${className}`}>
+    <div
+      className={`mt-2 ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 ${className}`}
+    >
       {children}
     </div>
   );
 };
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }; 
+export { Tabs, TabsList, TabsTrigger, TabsContent };

@@ -2,7 +2,7 @@
 
 /**
  * Real-time Play Monitoring System
- * 
+ *
  * Monitors WARM API for new plays and sends instant alerts
  * Tracks play history and celebrates wins
  */
@@ -17,20 +17,20 @@ class RealTimeMonitor {
     this.monitoring = new Map(); // campaignId -> monitoring config
     this.playHistory = new Map(); // campaignId -> play history
     this.alertCallbacks = [];
-    
+
     // Data persistence
     this.dataFile = path.join(__dirname, '..', 'data', 'play-monitoring.json');
     this.loadPlayHistory();
-    
+
     // Monitoring intervals
     this.checkInterval = 2 * 60 * 1000; // Check every 2 minutes
     this.monitoringInterval = null;
-    
+
     // Alert channels
     this.alertChannels = {
       console: true,
       webhook: process.env.GOOGLE_CHAT_WEBHOOK || null,
-      email: process.env.ALERT_EMAIL || null
+      email: process.env.ALERT_EMAIL || null,
     };
   }
 
@@ -39,7 +39,7 @@ class RealTimeMonitor {
    */
   async startMonitoring(campaignId, artistName, options = {}) {
     console.log(`🎵 Starting real-time monitoring for ${artistName} (${campaignId})`);
-    
+
     const config = {
       campaignId,
       artistName,
@@ -49,21 +49,21 @@ class RealTimeMonitor {
       lastCheck: Date.now(),
       totalPlays: 0,
       newPlays: 0,
-      monitoring: true
+      monitoring: true,
     };
-    
+
     this.monitoring.set(campaignId, config);
-    
+
     // Initialize play history if not exists
     if (!this.playHistory.has(campaignId)) {
       this.playHistory.set(campaignId, []);
     }
-    
+
     // Start monitoring if not already running
     if (!this.monitoringInterval) {
       this.startMonitoringLoop();
     }
-    
+
     console.log(`✅ Real-time monitoring started for ${artistName}`);
     return config;
   }
@@ -86,9 +86,9 @@ class RealTimeMonitor {
     if (this.monitoringInterval) {
       return; // Already running
     }
-    
+
     console.log('🔄 Starting real-time monitoring loop...');
-    
+
     this.monitoringInterval = setInterval(async () => {
       await this.checkForNewPlays();
     }, this.checkInterval);
@@ -109,15 +109,16 @@ class RealTimeMonitor {
    * Check for new plays across all monitored campaigns
    */
   async checkForNewPlays() {
-    const activeCampaigns = Array.from(this.monitoring.values())
-      .filter(config => config.monitoring);
-    
+    const activeCampaigns = Array.from(this.monitoring.values()).filter(
+      config => config.monitoring
+    );
+
     if (activeCampaigns.length === 0) {
       return;
     }
-    
+
     console.log(`🔍 Checking for new plays across ${activeCampaigns.length} campaigns...`);
-    
+
     for (const config of activeCampaigns) {
       try {
         await this.checkCampaignPlays(config);
@@ -138,19 +139,19 @@ class RealTimeMonitor {
         config.startDate,
         new Date().toISOString().split('T')[0]
       );
-      
+
       const currentPlays = playsData.plays || playsData || [];
       const existingPlays = this.playHistory.get(config.campaignId) || [];
-      
+
       // Find new plays
       const newPlays = currentPlays.filter(play => {
         const playId = this.generatePlayId(play);
         return !existingPlays.some(existing => existing.id === playId);
       });
-      
+
       if (newPlays.length > 0) {
         console.log(`🎉 NEW PLAYS DETECTED for ${config.artistName}: ${newPlays.length} plays!`);
-        
+
         // Update play history
         const playHistory = this.playHistory.get(config.campaignId) || [];
         newPlays.forEach(play => {
@@ -160,22 +161,22 @@ class RealTimeMonitor {
             play: play,
             station: play.radioStationName || play.stationName || 'Unknown Station',
             time: play.time || 'Unknown Time',
-            date: play.date || new Date().toISOString().split('T')[0]
+            date: play.date || new Date().toISOString().split('T')[0],
           };
           playHistory.push(playRecord);
         });
-        
+
         this.playHistory.set(config.campaignId, playHistory);
         this.savePlayHistory();
-        
+
         // Update config
         config.totalPlays = currentPlays.length;
         config.newPlays += newPlays.length;
         config.lastCheck = Date.now();
-        
+
         // Send alerts
         await this.sendPlayAlerts(config, newPlays);
-        
+
         // Trigger callbacks
         this.alertCallbacks.forEach(callback => {
           try {
@@ -189,7 +190,6 @@ class RealTimeMonitor {
         config.lastCheck = Date.now();
         config.totalPlays = currentPlays.length;
       }
-      
     } catch (error) {
       console.error(`❌ Error checking plays for ${config.artistName}:`, error.message);
     }
@@ -200,7 +200,7 @@ class RealTimeMonitor {
    */
   async sendPlayAlerts(config, newPlays) {
     const alertMessage = this.formatPlayAlert(config, newPlays);
-    
+
     // Console alert
     if (this.alertChannels.console) {
       console.log('\n' + '='.repeat(60));
@@ -209,12 +209,12 @@ class RealTimeMonitor {
       console.log(alertMessage);
       console.log('='.repeat(60) + '\n');
     }
-    
+
     // Webhook alert (Google Chat, Slack, etc.)
     if (this.alertChannels.webhook) {
       await this.sendWebhookAlert(alertMessage);
     }
-    
+
     // Email alert
     if (this.alertChannels.email) {
       await this.sendEmailAlert(config, newPlays);
@@ -229,7 +229,7 @@ class RealTimeMonitor {
     message += `📊 Campaign: ${config.campaignId}\n`;
     message += `🎯 Total Plays: ${config.totalPlays}\n`;
     message += `🆕 New Plays: ${newPlays.length}\n\n`;
-    
+
     message += `📻 Stations Playing:\n`;
     newPlays.forEach((play, index) => {
       const station = play.radioStationName || play.stationName || 'Unknown Station';
@@ -237,9 +237,9 @@ class RealTimeMonitor {
       const date = play.date || new Date().toISOString().split('T')[0];
       message += `   ${index + 1}. ${station} - ${time} (${date})\n`;
     });
-    
+
     message += `\n⏰ Alert Time: ${new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' })}`;
-    
+
     return message;
   }
 
@@ -251,13 +251,13 @@ class RealTimeMonitor {
       const response = await fetch(this.alertChannels.webhook, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          text: message
-        })
+          text: message,
+        }),
       });
-      
+
       if (response.ok) {
         console.log('✅ Webhook alert sent successfully');
       } else {
@@ -289,9 +289,10 @@ class RealTimeMonitor {
    * Get monitoring status
    */
   getMonitoringStatus() {
-    const activeCampaigns = Array.from(this.monitoring.values())
-      .filter(config => config.monitoring);
-    
+    const activeCampaigns = Array.from(this.monitoring.values()).filter(
+      config => config.monitoring
+    );
+
     return {
       monitoring: this.monitoringInterval !== null,
       activeCampaigns: activeCampaigns.length,
@@ -300,10 +301,10 @@ class RealTimeMonitor {
         artistName: config.artistName,
         totalPlays: config.totalPlays,
         newPlays: config.newPlays,
-        lastCheck: new Date(config.lastCheck).toISOString()
+        lastCheck: new Date(config.lastCheck).toISOString(),
       })),
       checkInterval: this.checkInterval,
-      alertChannels: this.alertChannels
+      alertChannels: this.alertChannels,
     };
   }
 
@@ -356,12 +357,12 @@ class RealTimeMonitor {
       if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
       }
-      
+
       const data = {
         playHistory: Array.from(this.playHistory.entries()),
-        lastSaved: new Date().toISOString()
+        lastSaved: new Date().toISOString(),
       };
-      
+
       fs.writeFileSync(this.dataFile, JSON.stringify(data, null, 2));
     } catch (error) {
       console.error('❌ Failed to save play history:', error.message);
@@ -374,13 +375,13 @@ class RealTimeMonitor {
   async healthCheck() {
     const status = this.getMonitoringStatus();
     const warmHealth = await this.warmApi.healthCheck();
-    
+
     return {
       status: 'healthy',
       monitoring: status.monitoring,
       activeCampaigns: status.activeCampaigns,
       warmApi: warmHealth.status,
-      lastChecked: new Date().toISOString()
+      lastChecked: new Date().toISOString(),
     };
   }
 

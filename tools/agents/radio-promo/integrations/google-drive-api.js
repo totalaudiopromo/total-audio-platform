@@ -7,7 +7,7 @@ const logger = {
   info: (msg, ...args) => console.log(`[DRIVE] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[DRIVE] ${msg}`, ...args),
   warn: (msg, ...args) => console.warn(`[DRIVE] ${msg}`, ...args),
-  success: (msg, ...args) => console.log(`✅ [DRIVE] ${msg}`, ...args)
+  success: (msg, ...args) => console.log(`✅ [DRIVE] ${msg}`, ...args),
 };
 
 /**
@@ -61,7 +61,7 @@ class GoogleDriveApiIntegration {
     // Rate limiting
     const now = Date.now();
     const timeSinceLastCall = now - this.lastApiCall;
-    
+
     if (timeSinceLastCall < this.rateLimitDelay) {
       const delay = this.rateLimitDelay - timeSinceLastCall;
       await new Promise(resolve => setTimeout(resolve, delay));
@@ -82,16 +82,13 @@ class GoogleDriveApiIntegration {
   async searchFiles(query, maxResults = 100) {
     try {
       logger.info(`Searching Drive for: "${query}"`);
-      
-      const response = await this.callDriveAPI(
-        this.drive.files.list,
-        {
-          q: query,
-          pageSize: maxResults,
-          fields: 'files(id,name,mimeType,parents,createdTime,modifiedTime)',
-          orderBy: 'modifiedTime desc'
-        }
-      );
+
+      const response = await this.callDriveAPI(this.drive.files.list, {
+        q: query,
+        pageSize: maxResults,
+        fields: 'files(id,name,mimeType,parents,createdTime,modifiedTime)',
+        orderBy: 'modifiedTime desc',
+      });
 
       const files = response.data.files || [];
       logger.info(`Found ${files.length} files matching query`);
@@ -108,14 +105,11 @@ class GoogleDriveApiIntegration {
   async getFileContent(fileId) {
     try {
       logger.info(`Getting content for file: ${fileId}`);
-      
-      const response = await this.callDriveAPI(
-        this.drive.files.get,
-        {
-          fileId: fileId,
-          alt: 'media'
-        }
-      );
+
+      const response = await this.callDriveAPI(this.drive.files.get, {
+        fileId: fileId,
+        alt: 'media',
+      });
 
       return response.data;
     } catch (error) {
@@ -130,23 +124,20 @@ class GoogleDriveApiIntegration {
   async createFolder(name, parentId = null) {
     try {
       logger.info(`Creating folder: ${name}`);
-      
+
       const folderMetadata = {
         name: name,
-        mimeType: 'application/vnd.google-apps.folder'
+        mimeType: 'application/vnd.google-apps.folder',
       };
 
       if (parentId) {
         folderMetadata.parents = [parentId];
       }
 
-      const response = await this.callDriveAPI(
-        this.drive.files.create,
-        {
-          resource: folderMetadata,
-          fields: 'id,name'
-        }
-      );
+      const response = await this.callDriveAPI(this.drive.files.create, {
+        resource: folderMetadata,
+        fields: 'id,name',
+      });
 
       logger.success(`Created folder: ${response.data.name} (ID: ${response.data.id})`);
       return response.data;
@@ -162,9 +153,9 @@ class GoogleDriveApiIntegration {
   async uploadFile(fileName, fileContent, mimeType = 'text/plain', parentId = null) {
     try {
       logger.info(`Uploading file: ${fileName}`);
-      
+
       const fileMetadata = {
-        name: fileName
+        name: fileName,
       };
 
       if (parentId) {
@@ -173,17 +164,14 @@ class GoogleDriveApiIntegration {
 
       const media = {
         mimeType: mimeType,
-        body: fileContent
+        body: fileContent,
       };
 
-      const response = await this.callDriveAPI(
-        this.drive.files.create,
-        {
-          resource: fileMetadata,
-          media: media,
-          fields: 'id,name'
-        }
-      );
+      const response = await this.callDriveAPI(this.drive.files.create, {
+        resource: fileMetadata,
+        media: media,
+        fields: 'id,name',
+      });
 
       logger.success(`Uploaded file: ${response.data.name} (ID: ${response.data.id})`);
       return response.data;
@@ -201,11 +189,11 @@ class GoogleDriveApiIntegration {
       const queries = [
         `name contains "${artistName}" and mimeType="application/vnd.google-apps.folder"`,
         `name contains "${artistName} ${trackName}" and mimeType="application/vnd.google-apps.folder"`,
-        `name contains "${artistName} ${trackName.toLowerCase()}" and mimeType="application/vnd.google-apps.folder"`
+        `name contains "${artistName} ${trackName.toLowerCase()}" and mimeType="application/vnd.google-apps.folder"`,
       ];
 
       const allFolders = [];
-      
+
       for (const query of queries) {
         try {
           const folders = await this.searchFiles(query);
@@ -216,8 +204,8 @@ class GoogleDriveApiIntegration {
       }
 
       // Remove duplicates
-      const uniqueFolders = allFolders.filter((folder, index, self) => 
-        index === self.findIndex(f => f.id === folder.id)
+      const uniqueFolders = allFolders.filter(
+        (folder, index, self) => index === self.findIndex(f => f.id === folder.id)
       );
 
       logger.info(`Found ${uniqueFolders.length} campaign folders for ${artistName}`);
@@ -235,11 +223,11 @@ class GoogleDriveApiIntegration {
     try {
       const queries = [
         `parents in "${folderId}" and (name contains "transcript" or name contains "meeting" or name contains ".txt")`,
-        `parents in "${folderId}" and mimeType contains "text"`
+        `parents in "${folderId}" and mimeType contains "text"`,
       ];
 
       const allFiles = [];
-      
+
       for (const query of queries) {
         try {
           const files = await this.searchFiles(query);
@@ -250,8 +238,8 @@ class GoogleDriveApiIntegration {
       }
 
       // Remove duplicates
-      const uniqueFiles = allFiles.filter((file, index, self) => 
-        index === self.findIndex(f => f.id === file.id)
+      const uniqueFiles = allFiles.filter(
+        (file, index, self) => index === self.findIndex(f => f.id === file.id)
       );
 
       logger.info(`Found ${uniqueFiles.length} transcript files in folder ${folderId}`);
@@ -264,5 +252,3 @@ class GoogleDriveApiIntegration {
 }
 
 module.exports = GoogleDriveApiIntegration;
-
-

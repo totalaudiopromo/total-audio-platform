@@ -97,16 +97,17 @@ npm run organize-docs:verbose
 
 All `.md` files are automatically categorized:
 
-| Category | Purpose | Examples |
-|----------|---------|----------|
-| **`/setup/`** | Configuration & deployment | `AUTH_SETUP.md`, `DEPLOYMENT_GUIDE.md`, `MIGRATION_INSTRUCTIONS.md` |
-| **`/guides/`** | How-to tutorials | `QUICKSTART.md`, `GETTING_STARTED.md` |
-| **`/reference/`** | Technical specs | `API_REFERENCE.md`, `ARCHITECTURE.md`, `README_PRD.md` |
-| **`/status/`** | Historical reports (archive) | `*_COMPLETE.md`, `*_FIXED.md`, `BUILD_STATUS.md` |
+| Category          | Purpose                      | Examples                                                            |
+| ----------------- | ---------------------------- | ------------------------------------------------------------------- |
+| **`/setup/`**     | Configuration & deployment   | `AUTH_SETUP.md`, `DEPLOYMENT_GUIDE.md`, `MIGRATION_INSTRUCTIONS.md` |
+| **`/guides/`**    | How-to tutorials             | `QUICKSTART.md`, `GETTING_STARTED.md`                               |
+| **`/reference/`** | Technical specs              | `API_REFERENCE.md`, `ARCHITECTURE.md`, `README_PRD.md`              |
+| **`/status/`**    | Historical reports (archive) | `*_COMPLETE.md`, `*_FIXED.md`, `BUILD_STATUS.md`                    |
 
 ### Root-Level Docs (Never Moved)
 
 These stay at the app root:
+
 - `README.md` - Main project overview
 - `DESIGN_SYSTEM.md` - Design standards (template only)
 - `TEMPLATE_USAGE.md` - Template duplication guide (template only)
@@ -122,6 +123,7 @@ These stay at the app root:
 ### 1. Documentation Organizer
 
 The `organize-docs.js` script automatically:
+
 - ✅ Scans all apps for loose `.md` files
 - ✅ Creates `docs/` structure with subdirectories
 - ✅ Categorizes files based on naming patterns
@@ -176,6 +178,7 @@ See [`apps/tap-saas-template/DESIGN_SYSTEM.md`](./apps/tap-saas-template/DESIGN_
 ### Starting a New Tool
 
 1. **Duplicate template:**
+
    ```bash
    cd apps/
    cp -r tap-saas-template my-new-tool
@@ -220,10 +223,7 @@ We use **npm workspaces** for the monorepo:
 
 ```json
 {
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "workspaces": ["apps/*", "packages/*"]
 }
 ```
 
@@ -272,17 +272,20 @@ mv apps/old-tool archive/old-tool/
 ## 📝 Naming Conventions
 
 ### Apps
+
 - Use kebab-case: `audio-intel`, `playlist-pulse`
 - Tool name should match product name
 - No abbreviations: `tracker` not `trk`
 
 ### Files
+
 - Components: PascalCase (`CampaignCard.tsx`)
 - Utilities: camelCase (`formatDate.ts`)
 - Pages: kebab-case (`blog/spotify-playlist-tracking/page.tsx`)
 - Documentation: SCREAMING_SNAKE_CASE (`SETUP_GUIDE.md`)
 
 ### Git Commits
+
 ```
 feat(audio-intel): add contact enrichment
 fix(tracker): resolve auth redirect loop
@@ -323,6 +326,5 @@ When adding new features or tools:
 
 ---
 
-*Last updated: ${new Date().toISOString().split('T')[0]}*
-*Maintained by: Total Audio Promo Engineering*
-
+_Last updated: ${new Date().toISOString().split('T')[0]}_
+_Maintained by: Total Audio Promo Engineering_

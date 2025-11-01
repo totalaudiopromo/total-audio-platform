@@ -1,7 +1,17 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, Hash, TrendingUp, Plus, Edit, Trash2, Copy, CheckCircle } from 'lucide-react';
+import {
+  Calendar,
+  Clock,
+  Hash,
+  TrendingUp,
+  Plus,
+  Edit,
+  Trash2,
+  Copy,
+  CheckCircle,
+} from 'lucide-react';
 
 interface SocialMediaPost {
   id: string;
@@ -32,7 +42,7 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
     content: '',
     platform: 'x' as 'x' | 'linkedin' | 'bluesky',
     scheduledTime: '',
-    hashtags: ''
+    hashtags: '',
   });
   const [copiedPostId, setCopiedPostId] = useState<string | null>(null);
 
@@ -66,9 +76,12 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
           action: 'add',
           post: {
             ...newPost,
-            hashtags: newPost.hashtags.split(',').map(tag => tag.trim()).filter(Boolean)
-          }
-        })
+            hashtags: newPost.hashtags
+              .split(',')
+              .map(tag => tag.trim())
+              .filter(Boolean),
+          },
+        }),
       });
 
       if (response.ok) {
@@ -93,28 +106,40 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
 
   const formatPlatform = (platform: string) => {
     switch (platform) {
-      case 'x': return 'X (Twitter)';
-      case 'linkedin': return 'LinkedIn';
-      case 'bluesky': return 'Blue Sky';
-      default: return platform;
+      case 'x':
+        return 'X (Twitter)';
+      case 'linkedin':
+        return 'LinkedIn';
+      case 'bluesky':
+        return 'Blue Sky';
+      default:
+        return platform;
     }
   };
 
   const getPlatformColor = (platform: string) => {
     switch (platform) {
-      case 'x': return 'bg-black text-white';
-      case 'linkedin': return 'bg-blue-600 text-white';
-      case 'bluesky': return 'bg-sky-500 text-white';
-      default: return 'bg-gray-500 text-white';
+      case 'x':
+        return 'bg-black text-white';
+      case 'linkedin':
+        return 'bg-blue-600 text-white';
+      case 'bluesky':
+        return 'bg-sky-500 text-white';
+      default:
+        return 'bg-gray-500 text-white';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'scheduled': return 'bg-yellow-100 text-yellow-800';
-      case 'posted': return 'bg-green-100 text-green-800';
-      case 'failed': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'scheduled':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'posted':
+        return 'bg-green-100 text-green-800';
+      case 'failed':
+        return 'bg-red-100 text-red-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
@@ -150,13 +175,17 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
         </div>
 
         <div className="space-y-3">
-          {posts.slice(0, 3).map((post) => (
+          {posts.slice(0, 3).map(post => (
             <div key={post.id} className="p-3 border rounded-lg">
               <div className="flex items-center justify-between mb-2">
-                <span className={`px-2 py-1 rounded text-xs font-medium ${getPlatformColor(post.platform)}`}>
+                <span
+                  className={`px-2 py-1 rounded text-xs font-medium ${getPlatformColor(post.platform)}`}
+                >
                   {formatPlatform(post.platform)}
                 </span>
-                <span className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(post.status)}`}>
+                <span
+                  className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(post.status)}`}
+                >
                   {post.status}
                 </span>
               </div>
@@ -190,7 +219,7 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
                   <label className="block text-sm font-medium mb-1">Content</label>
                   <textarea
                     value={newPost.content}
-                    onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
+                    onChange={e => setNewPost({ ...newPost, content: e.target.value })}
                     className="w-full p-2 border rounded"
                     rows={3}
                     placeholder="Enter your post content..."
@@ -200,7 +229,7 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
                   <label className="block text-sm font-medium mb-1">Platform</label>
                   <select
                     value={newPost.platform}
-                    onChange={(e) => setNewPost({ ...newPost, platform: e.target.value as any })}
+                    onChange={e => setNewPost({ ...newPost, platform: e.target.value as any })}
                     className="w-full p-2 border rounded"
                   >
                     <option value="x">X (Twitter)</option>
@@ -213,16 +242,18 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
                   <input
                     type="datetime-local"
                     value={newPost.scheduledTime}
-                    onChange={(e) => setNewPost({ ...newPost, scheduledTime: e.target.value })}
+                    onChange={e => setNewPost({ ...newPost, scheduledTime: e.target.value })}
                     className="w-full p-2 border rounded"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Hashtags (comma-separated)</label>
+                  <label className="block text-sm font-medium mb-1">
+                    Hashtags (comma-separated)
+                  </label>
                   <input
                     type="text"
                     value={newPost.hashtags}
-                    onChange={(e) => setNewPost({ ...newPost, hashtags: e.target.value })}
+                    onChange={e => setNewPost({ ...newPost, hashtags: e.target.value })}
                     className="w-full p-2 border rounded"
                     placeholder="#MusicTech #IndieMusic"
                   />
@@ -266,19 +297,23 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {posts.map((post) => (
+        {posts.map(post => (
           <div key={post.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-3">
-              <span className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(post.platform)}`}>
+              <span
+                className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(post.platform)}`}
+              >
                 {formatPlatform(post.platform)}
               </span>
-              <span className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(post.status)}`}>
+              <span
+                className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(post.status)}`}
+              >
                 {post.status}
               </span>
             </div>
-            
+
             <p className="text-gray-700 mb-3 line-clamp-3">{post.content}</p>
-            
+
             {post.hashtags.length > 0 && (
               <div className="flex flex-wrap gap-1 mb-3">
                 {post.hashtags.map((tag, index) => (
@@ -297,7 +332,8 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
               {post.engagement && (
                 <span className="flex items-center">
                   <TrendingUp className="w-4 h-4 mr-1" />
-                  {post.engagement.likes + post.engagement.retweets + post.engagement.comments} engagement
+                  {post.engagement.likes + post.engagement.retweets + post.engagement.comments}{' '}
+                  engagement
                 </span>
               )}
             </div>
@@ -349,7 +385,7 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
                 <label className="block text-sm font-medium mb-2">Content</label>
                 <textarea
                   value={newPost.content}
-                  onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
+                  onChange={e => setNewPost({ ...newPost, content: e.target.value })}
                   className="w-full p-3 border rounded-lg"
                   rows={4}
                   placeholder="Enter your post content..."
@@ -360,7 +396,7 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
                   <label className="block text-sm font-medium mb-2">Platform</label>
                   <select
                     value={newPost.platform}
-                    onChange={(e) => setNewPost({ ...newPost, platform: e.target.value as any })}
+                    onChange={e => setNewPost({ ...newPost, platform: e.target.value as any })}
                     className="w-full p-3 border rounded-lg"
                   >
                     <option value="x">X (Twitter)</option>
@@ -373,7 +409,7 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
                   <input
                     type="datetime-local"
                     value={newPost.scheduledTime}
-                    onChange={(e) => setNewPost({ ...newPost, scheduledTime: e.target.value })}
+                    onChange={e => setNewPost({ ...newPost, scheduledTime: e.target.value })}
                     className="w-full p-3 border rounded-lg"
                   />
                 </div>
@@ -383,7 +419,7 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
                 <input
                   type="text"
                   value={newPost.hashtags}
-                  onChange={(e) => setNewPost({ ...newPost, hashtags: e.target.value })}
+                  onChange={e => setNewPost({ ...newPost, hashtags: e.target.value })}
                   className="w-full p-3 border rounded-lg"
                   placeholder="#MusicTech #IndieMusic #MusicIndustry"
                 />

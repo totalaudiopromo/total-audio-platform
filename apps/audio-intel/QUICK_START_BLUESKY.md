@@ -20,11 +20,11 @@ Go to: https://vercel.com/chris-projects-6ffe0e29/audio-intel/settings/environme
 
 Add these 3 variables to **all environments** (Production, Preview, Development):
 
-| Name | Value | Example |
-|------|-------|---------|
-| `BLUESKY_IDENTIFIER` | Your Bluesky handle | `yourname.bsky.social` |
-| `BLUESKY_APP_PASSWORD` | App password from Step 1 | `xxxx-xxxx-xxxx-xxxx` |
-| `CRON_SECRET` | Random secret | Run: `openssl rand -base64 32` |
+| Name                   | Value                    | Example                        |
+| ---------------------- | ------------------------ | ------------------------------ |
+| `BLUESKY_IDENTIFIER`   | Your Bluesky handle      | `yourname.bsky.social`         |
+| `BLUESKY_APP_PASSWORD` | App password from Step 1 | `xxxx-xxxx-xxxx-xxxx`          |
+| `CRON_SECRET`          | Random secret            | Run: `openssl rand -base64 32` |
 
 ---
 
@@ -44,6 +44,7 @@ Vercel automatically deploys.
 ## ✅ Done!
 
 Your agent now posts **twice daily** at:
+
 - **9am UK time** (morning commute)
 - **5pm UK time** (end-of-work)
 
@@ -61,6 +62,7 @@ After next 9am or 5pm, check:
 https://vercel.com/chris-projects-6ffe0e29/audio-intel/logs
 
 Look for:
+
 ```
 [CRON] 🤖 Autonomous social posting triggered
 [BLUESKY] ✅ Posted successfully

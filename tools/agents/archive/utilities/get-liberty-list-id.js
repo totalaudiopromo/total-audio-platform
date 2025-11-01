@@ -7,7 +7,7 @@ const LIBERTY_SERVER = 'us13';
 
 async function getLists() {
   const response = await fetch(`https://${LIBERTY_SERVER}.api.mailchimp.com/3.0/lists?count=100`, {
-    headers: { 'Authorization': `Bearer ${LIBERTY_API_KEY}` }
+    headers: { Authorization: `Bearer ${LIBERTY_API_KEY}` },
   });
 
   const data = await response.json();

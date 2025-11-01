@@ -14,7 +14,7 @@ const KYARA_CAMPAIGN = {
   trackName: 'Yearn',
   genre: 'Alternative/Indie',
   soundcloudLink: 'https://on.soundcloud.com/1oiblSoRYCp1swzCr3',
-  previousPlays: ['triple j Home & Hosed (Jaimee Taylor-Neilsen, August 2024)']
+  previousPlays: ['triple j Home & Hosed (Jaimee Taylor-Neilsen, August 2024)'],
 };
 
 const TRIPLE_J_CONTACTS = [
@@ -22,26 +22,26 @@ const TRIPLE_J_CONTACTS = [
     name: 'triple j (Claire Mooney - Music Director)',
     email: 'mooney.claire@abc.net.au',
     priority: 'high',
-    template: 'music_director'
+    template: 'music_director',
   },
   {
     name: 'triple j Home & Hosed (Anika Luna)',
     email: 'luna.anika@abc.net.au',
     priority: 'high',
-    template: 'home_and_hosed'
+    template: 'home_and_hosed',
   },
   {
     name: 'triple j (Abby Butler)',
     email: 'butler.abby@abc.net.au',
     priority: 'high',
-    template: 'abby_tyrone'
+    template: 'abby_tyrone',
   },
   {
     name: 'triple j (Tyrone Pynor)',
     email: 'pynor.tyrone@abc.net.au',
     priority: 'high',
-    template: 'abby_tyrone'
-  }
+    template: 'abby_tyrone',
+  },
 ];
 
 function generateEmailContent(contact) {
@@ -69,7 +69,7 @@ Would love to know if you'd like to consider this for the show!
 Best regards,
 Chris Schofield
 Liberty Music PR
-chris@libertymusicpr.com`
+chris@libertymusicpr.com`,
     },
     music_director: {
       subject: 'KYARA - Alternative/Indie Track for triple j',
@@ -92,7 +92,7 @@ Would you like to hear more for triple j consideration?
 Best regards,
 Chris Schofield
 Liberty Music PR
-chris@libertymusicpr.com`
+chris@libertymusicpr.com`,
     },
     abby_tyrone: {
       subject: 'KYARA - Alternative/Indie Track for triple j',
@@ -115,8 +115,8 @@ Would love to know if you'd like to consider this for triple j!
 Best regards,
 Chris Schofield
 Liberty Music PR
-chris@libertymusicpr.com`
-    }
+chris@libertymusicpr.com`,
+    },
   };
 
   return templates[contact.template];

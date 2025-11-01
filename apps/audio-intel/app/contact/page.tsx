@@ -3,7 +3,8 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Contact & Support | Audio Intel',
-  description: 'Get help with Audio Intel. Contact support, report issues, or provide feedback. Fast response times from real music industry professionals.',
+  description:
+    'Get help with Audio Intel. Contact support, report issues, or provide feedback. Fast response times from real music industry professionals.',
 };
 
 export default function ContactPage() {
@@ -13,7 +14,8 @@ export default function ContactPage() {
         <h1 className="mb-6 text-4xl font-bold">Contact & Support</h1>
 
         <p className="mb-8 text-lg text-gray-700">
-          Need help with Audio Intel? We're here to support you. Get responses from real music industry professionals who understand your workflow.
+          Need help with Audio Intel? We're here to support you. Get responses from real music
+          industry professionals who understand your workflow.
         </p>
 
         {/* Primary Contact */}
@@ -22,9 +24,7 @@ export default function ContactPage() {
 
           <div className="mb-6 rounded-lg border-2 border-blue-400 bg-blue-50 p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
             <h3 className="mb-3 text-xl font-bold text-gray-900">Email Support</h3>
-            <p className="mb-4 text-gray-700">
-              For all support requests, questions, or feedback:
-            </p>
+            <p className="mb-4 text-gray-700">For all support requests, questions, or feedback:</p>
             <a
               href="mailto:support@totalaudiopromo.com"
               className="inline-block rounded-lg border-2 border-gray-900 bg-white px-8 py-4 text-xl font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
@@ -32,7 +32,8 @@ export default function ContactPage() {
               support@totalaudiopromo.com
             </a>
             <p className="mt-4 text-sm font-semibold text-gray-600">
-              📧 Response time: Within 48 hours during UK business hours (Monday-Friday, 9am-6pm GMT)
+              📧 Response time: Within 48 hours during UK business hours (Monday-Friday, 9am-6pm
+              GMT)
             </p>
           </div>
         </section>
@@ -98,16 +99,22 @@ export default function ContactPage() {
 
           <div className="space-y-4">
             <div className="rounded-lg border-2 border-gray-300 bg-gray-50 p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <h3 className="mb-2 text-lg font-bold text-gray-900">Standard Support (Free & Professional Plans)</h3>
+              <h3 className="mb-2 text-lg font-bold text-gray-900">
+                Standard Support (Free & Professional Plans)
+              </h3>
               <p className="text-gray-700">
-                <strong>Within 48 hours</strong> during UK business hours (Monday-Friday, 9am-6pm GMT)
+                <strong>Within 48 hours</strong> during UK business hours (Monday-Friday, 9am-6pm
+                GMT)
               </p>
             </div>
 
             <div className="rounded-lg border-2 border-blue-400 bg-blue-50 p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <h3 className="mb-2 text-lg font-bold text-gray-900">Priority Support (Agency Plan)</h3>
+              <h3 className="mb-2 text-lg font-bold text-gray-900">
+                Priority Support (Agency Plan)
+              </h3>
               <p className="text-gray-700">
-                <strong>Within 24 hours</strong> during UK business hours (Monday-Friday, 9am-6pm GMT)
+                <strong>Within 24 hours</strong> during UK business hours (Monday-Friday, 9am-6pm
+                GMT)
               </p>
               <p className="mt-2 text-sm text-gray-600">
                 Includes direct access to senior support staff and faster bug resolution.
@@ -117,7 +124,8 @@ export default function ContactPage() {
             <div className="rounded-lg border-2 border-red-400 bg-red-50 p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <h3 className="mb-2 text-lg font-bold text-gray-900">Critical Issues</h3>
               <p className="text-gray-700">
-                For service outages or critical payment issues affecting multiple users, we aim to respond <strong>within 4 hours</strong>.
+                For service outages or critical payment issues affecting multiple users, we aim to
+                respond <strong>within 4 hours</strong>.
               </p>
             </div>
           </div>
@@ -139,13 +147,19 @@ export default function ContactPage() {
               </li>
               <li>
                 <strong>💳 Billing:</strong> Manage your subscription directly from your{' '}
-                <Link href="/dashboard/settings" className="font-bold text-blue-600 hover:underline">
+                <Link
+                  href="/dashboard/settings"
+                  className="font-bold text-blue-600 hover:underline"
+                >
                   account settings
                 </Link>
               </li>
               <li>
                 <strong>🔐 Password Reset:</strong> Use the{' '}
-                <Link href="/auth/reset-password" className="font-bold text-blue-600 hover:underline">
+                <Link
+                  href="/auth/reset-password"
+                  className="font-bold text-blue-600 hover:underline"
+                >
                   password reset
                 </Link>{' '}
                 feature on the login page
@@ -165,12 +179,16 @@ export default function ContactPage() {
           <h2 className="mb-6 text-2xl font-bold text-gray-900">When Contacting Support</h2>
 
           <div className="rounded-lg border-2 border-gray-900 bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-            <h3 className="mb-4 text-lg font-bold text-gray-900">To Help Us Help You Faster, Please Include:</h3>
+            <h3 className="mb-4 text-lg font-bold text-gray-900">
+              To Help Us Help You Faster, Please Include:
+            </h3>
             <ul className="space-y-3 text-gray-700">
               <li>
                 <strong>✅ Your account email address</strong>
                 <br />
-                <span className="text-sm text-gray-600">(So we can locate your account quickly)</span>
+                <span className="text-sm text-gray-600">
+                  (So we can locate your account quickly)
+                </span>
               </li>
               <li>
                 <strong>✅ Your subscription plan</strong>
@@ -180,12 +198,16 @@ export default function ContactPage() {
               <li>
                 <strong>✅ Detailed description of the issue</strong>
                 <br />
-                <span className="text-sm text-gray-600">(What happened? What were you trying to do?)</span>
+                <span className="text-sm text-gray-600">
+                  (What happened? What were you trying to do?)
+                </span>
               </li>
               <li>
                 <strong>✅ Steps to reproduce the problem</strong>
                 <br />
-                <span className="text-sm text-gray-600">(Help us recreate the issue on our end)</span>
+                <span className="text-sm text-gray-600">
+                  (Help us recreate the issue on our end)
+                </span>
               </li>
               <li>
                 <strong>✅ Screenshots or error messages</strong>
@@ -195,7 +217,9 @@ export default function ContactPage() {
               <li>
                 <strong>✅ Device and browser information</strong>
                 <br />
-                <span className="text-sm text-gray-600">(e.g., Chrome on Windows, Safari on iPhone)</span>
+                <span className="text-sm text-gray-600">
+                  (e.g., Chrome on Windows, Safari on iPhone)
+                </span>
               </li>
             </ul>
           </div>
@@ -209,7 +233,8 @@ export default function ContactPage() {
             <div className="rounded-lg border-2 border-gray-900 bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <h3 className="mb-3 text-xl font-bold text-gray-900">📧 Newsletter</h3>
               <p className="mb-4 text-gray-700">
-                Get product updates, music industry insights, and promotion tips with <strong>&quot;The Unsigned Advantage&quot;</strong>.
+                Get product updates, music industry insights, and promotion tips with{' '}
+                <strong>&quot;The Unsigned Advantage&quot;</strong>.
               </p>
               <a
                 href="https://totalaudiopromo.com/newsletter"
@@ -223,7 +248,9 @@ export default function ContactPage() {
 
             <div className="rounded-lg border-2 border-gray-900 bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <h3 className="mb-3 text-xl font-bold text-gray-900">🐦 Social Media</h3>
-              <p className="mb-4 text-gray-700">Follow us for real-time updates, tips, and industry insights.</p>
+              <p className="mb-4 text-gray-700">
+                Follow us for real-time updates, tips, and industry insights.
+              </p>
               <div className="space-y-2">
                 <a
                   href="https://x.com/totalaudiopromo"
@@ -259,13 +286,19 @@ export default function ContactPage() {
             </p>
             <p className="mb-2 text-gray-700">
               <strong>Support Email:</strong>{' '}
-              <a href="mailto:support@totalaudiopromo.com" className="font-bold text-blue-600 hover:underline">
+              <a
+                href="mailto:support@totalaudiopromo.com"
+                className="font-bold text-blue-600 hover:underline"
+              >
                 support@totalaudiopromo.com
               </a>
             </p>
             <p className="mb-2 text-gray-700">
               <strong>Website:</strong>{' '}
-              <a href="https://intel.totalaudiopromo.com" className="font-bold text-blue-600 hover:underline">
+              <a
+                href="https://intel.totalaudiopromo.com"
+                className="font-bold text-blue-600 hover:underline"
+              >
                 intel.totalaudiopromo.com
               </a>
             </p>
@@ -301,7 +334,8 @@ export default function ContactPage() {
         <div className="mt-12 rounded-lg border-2 border-blue-400 bg-blue-50 p-8 text-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
           <h3 className="mb-4 text-2xl font-bold text-gray-900">Ready to Get Started?</h3>
           <p className="mb-6 text-gray-700">
-            Audio Intel is built by music industry professionals for music industry professionals. Let&apos;s save you time on contact research.
+            Audio Intel is built by music industry professionals for music industry professionals.
+            Let&apos;s save you time on contact research.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link

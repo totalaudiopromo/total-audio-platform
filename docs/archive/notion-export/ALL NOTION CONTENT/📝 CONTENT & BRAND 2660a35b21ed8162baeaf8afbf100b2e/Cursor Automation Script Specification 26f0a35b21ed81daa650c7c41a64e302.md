@@ -49,16 +49,16 @@ interface SocialPost {
 function processContent(content: string): string {
   // 1. Convert to UK spelling
   content = convertToUKSpelling(content);
-  
+
   // 2. Remove all emojis
   content = stripEmojis(content);
-  
+
   // 3. Add UTM tracking to URLs
   content = addUTMTracking(content);
-  
+
   // 4. Platform-specific formatting
   content = formatForPlatform(content, platform);
-  
+
   return content;
 }
 ```
@@ -68,19 +68,19 @@ function processContent(content: string): string {
 ```tsx
 // Platform-specific optimal posting times (GMT)
 const OPTIMAL_TIMES = {
-  'LinkedIn': ['09:00', '13:00'],
+  LinkedIn: ['09:00', '13:00'],
   'Twitter/X': ['12:00', '18:00'],
   'Blue Sky': ['11:00', '19:00'],
-  'Threads': ['08:00', '14:00']
+  Threads: ['08:00', '14:00'],
 };
 
 // Check if current time matches scheduled posting time
 function shouldPostNow(scheduledTime: string, platform: string): boolean {
   const currentTimeGMT = new Date().toLocaleTimeString('en-GB', {
     timeZone: 'Europe/London',
-    hour12: false
+    hour12: false,
   });
-  
+
   return scheduledTime === currentTimeGMT;
 }
 ```
@@ -162,13 +162,13 @@ const cronSchedule = '*/15 8-20 * * *';
 
 ```tsx
 const UK_SPELLING_MAP = {
-  'realize': 'realise',
-  'organize': 'organise', 
-  'analyze': 'analyse',
-  'color': 'colour',
-  'center': 'centre',
-  'optimize': 'optimise',
-  'recognize': 'recognise'
+  realize: 'realise',
+  organize: 'organise',
+  analyze: 'analyse',
+  color: 'colour',
+  center: 'centre',
+  optimize: 'optimise',
+  recognize: 'recognise',
 };
 ```
 
@@ -180,10 +180,10 @@ async function updateNotionAfterPost(postId: string, result: PostResult) {
   await notion.pages.update({
     page_id: postId,
     properties: {
-      'Status': { select: { name: 'Posted' } },
+      Status: { select: { name: 'Posted' } },
       'API Status': { select: { name: 'Posted Successfully' } },
-      'Content Optimised': { checkbox: true }
-    }
+      'Content Optimised': { checkbox: true },
+    },
   });
 }
 ```

@@ -10,14 +10,14 @@ export async function POST(request: NextRequest) {
     const { pitchBody, suggestions, weaknesses, toneAnalysis } = await request.json();
 
     if (!pitchBody) {
-      return NextResponse.json(
-        { error: 'Pitch body is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Pitch body is required' }, { status: 400 });
     }
 
     // Check if API key is configured
-    if (!process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_API_KEY === 'your-anthropic-api-key') {
+    if (
+      !process.env.ANTHROPIC_API_KEY ||
+      process.env.ANTHROPIC_API_KEY === 'your-anthropic-api-key'
+    ) {
       return NextResponse.json(
         { error: 'Anthropic API key not configured. Add ANTHROPIC_API_KEY to .env.local' },
         { status: 500 }
@@ -67,7 +67,6 @@ Return ONLY the improved pitch text, with no additional commentary or explanatio
     const improvedPitch = message.content[0].type === 'text' ? message.content[0].text : '';
 
     return NextResponse.json({ improvedPitch });
-
   } catch (error: any) {
     console.error('Pitch improvement error:', error);
     return NextResponse.json(

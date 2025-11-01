@@ -4,8 +4,9 @@
 **Problem**: `x-vercel-cache: HIT` and `x-nextjs-prerender: 1` indicate old static cache
 
 ## Current Production Response
+
 ```
-HTTP/2 200 
+HTTP/2 200
 age: 285984  # ← 79+ hours old!
 x-nextjs-prerender: 1  # ← Static cached version
 x-vercel-cache: HIT  # ← Serving from cache
@@ -61,7 +62,7 @@ const nextConfig = {
       ],
     },
     {
-      source: '/dashboard', 
+      source: '/dashboard',
       headers: [
         {
           key: 'Cache-Control',
@@ -70,9 +71,9 @@ const nextConfig = {
       ],
     },
   ],
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
 ```
 
 ## 🔍 How to Verify Fix Worked
@@ -84,12 +85,14 @@ curl -I https://intel.totalaudiopromo.com/demo
 ```
 
 **Should see:**
+
 - ❌ NO `x-nextjs-prerender: 1`
-- ❌ NO `age: [high number]`  
+- ❌ NO `age: [high number]`
 - ✅ Different etag than `1ccefe22c74f3f7bb6264e11fdd7ecb3`
 - ✅ HTTP 307 or 302 redirect (not 200)
 
 **Or run verification script:**
+
 ```bash
 ./verify-deployment.sh
 ```
@@ -103,6 +106,7 @@ The `export const dynamic = 'force-dynamic'` in client components doesn't preven
 Convert `/demo` and `/dashboard` to server components with auth checks:
 
 1. Create server component wrapper:
+
 ```typescript
 // app/demo/page.tsx
 import { redirect } from 'next/navigation'
@@ -114,11 +118,11 @@ export const dynamic = 'force-dynamic'
 export default async function DemoPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  
+
   if (!user) {
     redirect('/signin?redirectTo=/demo')
   }
-  
+
   return <DemoClient />
 }
 ```
@@ -136,7 +140,7 @@ This ensures auth check happens on the server BEFORE any HTML is generated.
 ## 📞 Support
 
 If cache persists after all attempts:
+
 1. Check Vercel project settings → Caching → Clear All
 2. Contact Vercel support about stale cache
 3. Consider temporary fix: Add `?v=2` to all protected route redirects to bypass cache
-

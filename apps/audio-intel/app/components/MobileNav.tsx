@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
@@ -34,7 +34,7 @@ export default function MobileNav() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Show header when scrolling up, hide when scrolling down
       // Always show at top of page
       if (currentScrollY < 10) {
@@ -46,7 +46,7 @@ export default function MobileNav() {
         // Scrolling up
         setIsHeaderVisible(true);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
@@ -96,8 +96,17 @@ export default function MobileNav() {
     >
       <div className="flex items-center justify-between px-4 py-3 bg-white border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-          <Image src="/images/total_audio_promo_logo_trans.png" alt="Total Audio Promo Mascot" width={36} height={36} className="w-9 h-9 flex-shrink-0" priority />
-          <span className="font-black text-gray-900 text-lg tracking-tight whitespace-nowrap">Audio Intel</span>
+          <Image
+            src="/images/total_audio_promo_logo_trans.png"
+            alt="Total Audio Promo Mascot"
+            width={36}
+            height={36}
+            className="w-9 h-9 flex-shrink-0"
+            priority
+          />
+          <span className="font-black text-gray-900 text-lg tracking-tight whitespace-nowrap">
+            Audio Intel
+          </span>
         </Link>
         <div className="flex items-center gap-2">
           <div className="hidden sm:block">
@@ -113,16 +122,16 @@ export default function MobileNav() {
           </button>
         </div>
       </div>
-      
+
       {/* Overlay */}
       {open && (
-        <div 
-          className="fixed inset-0 bg-black/40 z-[100] backdrop-blur-sm transition-opacity animate-in fade-in duration-300" 
-          aria-hidden 
-          onClick={() => setOpen(false)} 
+        <div
+          className="fixed inset-0 bg-black/40 z-[100] backdrop-blur-sm transition-opacity animate-in fade-in duration-300"
+          aria-hidden
+          onClick={() => setOpen(false)}
         />
       )}
-      
+
       {/* Slide-in menu */}
       <div
         ref={menuRef}
@@ -142,9 +151,9 @@ export default function MobileNav() {
             <X className="w-5 h-5" />
           </button>
         </div>
-        
+
         <div className="flex flex-col gap-3 px-4 py-6 flex-1 overflow-y-auto">
-          {navLinks.slice(0, 4).map(link => (
+          {navLinks.slice(0, 4).map(link =>
             link.isRoute ? (
               <Link
                 key={link.href}
@@ -167,9 +176,9 @@ export default function MobileNav() {
                 <span className="block w-full">{link.label}</span>
               </button>
             )
-          ))}
+          )}
         </div>
-        
+
         <div className="px-4 pb-6 border-t-2 border-black pt-4 bg-gradient-to-r from-green-50 to-white">
           <button
             className="flex items-center justify-center w-full text-center py-4 rounded-xl font-black text-white bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 transition-all duration-200 focus:outline-none min-h-[56px] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5"
@@ -183,4 +192,4 @@ export default function MobileNav() {
       </div>
     </nav>
   );
-} 
+}

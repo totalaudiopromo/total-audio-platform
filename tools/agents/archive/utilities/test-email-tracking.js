@@ -2,7 +2,7 @@
 
 /**
  * Test Email Tracking System
- * 
+ *
  * Demonstrates how to use the universal email tracker
  * with any email system (Gmail, Outlook, Mailchimp, etc.)
  */
@@ -17,12 +17,12 @@ async function testEmailTracking() {
   try {
     // Initialize tracker
     const tracker = new UniversalEmailTracker();
-    
+
     // Test 1: Health check
     console.log('='.repeat(60));
     console.log('TEST 1: Health Check');
     console.log('='.repeat(60));
-    
+
     const health = await tracker.healthCheck();
     console.log('🏥 System Health:');
     console.log(`   Status: ${health.status}`);
@@ -34,7 +34,7 @@ async function testEmailTracking() {
     console.log('='.repeat(60));
     console.log('TEST 2: Prepare Email for Tracking');
     console.log('='.repeat(60));
-    
+
     const emailContent = `
       <h2>New House Pop Track: Senior Dunce - Bestial</h2>
       <p>Hi Sarah,</p>
@@ -59,18 +59,18 @@ async function testEmailTracking() {
       Liberty Music PR<br>
       <a href="mailto:chrisschofield@libertymusicpr.com">chrisschofield@libertymusicpr.com</a></p>
     `;
-    
+
     const emailId = 'email-' + Date.now();
     const contactId = 'sarah-johnson-bbc-radio-1';
     const campaignId = 'senior-dunce-bestial-campaign';
-    
+
     const trackedEmail = tracker.prepareEmailForTracking(
       emailContent,
       emailId,
       contactId,
       campaignId
     );
-    
+
     console.log('📧 Email prepared for tracking:');
     console.log(`   Email ID: ${emailId}`);
     console.log(`   Contact ID: ${contactId}`);
@@ -84,11 +84,11 @@ async function testEmailTracking() {
     console.log('='.repeat(60));
     console.log('TEST 3: Sending Instructions');
     console.log('='.repeat(60));
-    
+
     const instructions = trackedEmail.instructions;
     console.log('📋 Sending Instructions for Different Email Systems:');
     console.log('');
-    
+
     Object.entries(instructions).forEach(([system, info]) => {
       console.log(`📧 ${system.toUpperCase()}:`);
       console.log(`   Method: ${info.method}`);
@@ -100,14 +100,14 @@ async function testEmailTracking() {
     console.log('='.repeat(60));
     console.log('TEST 4: Simulate Tracking Events');
     console.log('='.repeat(60));
-    
+
     console.log('📧 Simulating email open...');
     await tracker.emailTracking.processOpenTracking(
       trackedEmail.trackingInfo.pixelId,
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
       '192.168.1.100'
     );
-    
+
     console.log('🔗 Simulating link clicks...');
     const linkMatches = trackedEmail.content.match(/click\/([^"]+)/g);
     if (linkMatches && linkMatches.length > 0) {
@@ -127,7 +127,7 @@ async function testEmailTracking() {
     console.log('='.repeat(60));
     console.log('TEST 5: Campaign Performance');
     console.log('='.repeat(60));
-    
+
     const performance = tracker.getCampaignPerformance(campaignId);
     console.log('');
 
@@ -135,7 +135,7 @@ async function testEmailTracking() {
     console.log('='.repeat(60));
     console.log('TEST 6: Contact Engagement');
     console.log('='.repeat(60));
-    
+
     const engagement = tracker.getContactEngagement(contactId);
     console.log('');
 
@@ -143,7 +143,7 @@ async function testEmailTracking() {
     console.log('='.repeat(60));
     console.log('TEST 7: Tracking Report');
     console.log('='.repeat(60));
-    
+
     const report = tracker.generateTrackingReport(campaignId);
     console.log('📊 Tracking Report Generated:');
     console.log(`   Campaign: ${report.campaignId}`);
@@ -154,7 +154,7 @@ async function testEmailTracking() {
     console.log(`     Click Rate: ${report.summary.clickRate}`);
     console.log(`     Click-Through Rate: ${report.summary.clickThroughRate}`);
     console.log(`   Recommendations: ${report.recommendations.length}`);
-    
+
     report.recommendations.forEach((rec, index) => {
       console.log(`     ${index + 1}. [${rec.priority.toUpperCase()}] ${rec.message}`);
     });
@@ -164,13 +164,16 @@ async function testEmailTracking() {
     console.log('='.repeat(60));
     console.log('TEST 8: Export Tracking Data');
     console.log('='.repeat(60));
-    
+
     const csvData = tracker.emailTracking.exportToCSV(campaignId);
     console.log(`📁 CSV Export Generated: ${csvData.split('\n').length - 1} records`);
     console.log('   (First few lines):');
-    csvData.split('\n').slice(0, 3).forEach(line => {
-      console.log(`   ${line}`);
-    });
+    csvData
+      .split('\n')
+      .slice(0, 3)
+      .forEach(line => {
+        console.log(`   ${line}`);
+      });
     console.log('');
 
     // Summary
@@ -200,7 +203,6 @@ async function testEmailTracking() {
     console.log('   2. Update TRACKING_BASE_URL in your .env');
     console.log('   3. Integrate with your email sending system');
     console.log('   4. Start tracking your radio promo campaigns!');
-
   } catch (error) {
     console.error('❌ Test failed:', error.message);
     console.error(error.stack);

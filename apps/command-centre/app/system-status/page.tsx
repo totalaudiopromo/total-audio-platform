@@ -1,7 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Activity, Wifi, WifiOff, AlertTriangle, RefreshCw, CheckCircle, Server, Globe } from 'lucide-react';
+import {
+  Activity,
+  Wifi,
+  WifiOff,
+  AlertTriangle,
+  RefreshCw,
+  CheckCircle,
+  Server,
+  Globe,
+} from 'lucide-react';
 
 interface ServiceStatus {
   name: string;
@@ -15,7 +24,9 @@ interface ServiceStatus {
 export default function SystemStatusPage() {
   const [services, setServices] = useState<ServiceStatus[]>([]);
   const [loading, setLoading] = useState(true);
-  const [overallStatus, setOverallStatus] = useState<'operational' | 'degraded' | 'down'>('operational');
+  const [overallStatus, setOverallStatus] = useState<'operational' | 'degraded' | 'down'>(
+    'operational'
+  );
 
   useEffect(() => {
     fetchSystemStatus();
@@ -33,21 +44,21 @@ export default function SystemStatusPage() {
         { name: 'Beta Signup', url: '/api/beta-signup' },
         { name: 'Marketing Agent', url: '/api/saas-marketing' },
         { name: 'Social Media', url: '/api/social-media/schedule' },
-        { name: 'Reports Generator', url: '/api/reports/generate' }
+        { name: 'Reports Generator', url: '/api/reports/generate' },
       ];
 
       const statusChecks = await Promise.allSettled(
-        serviceChecks.map(async (service) => {
+        serviceChecks.map(async service => {
           const startTime = Date.now();
           try {
             const response = await fetch(service.url, { method: 'GET' });
             const responseTime = Date.now() - startTime;
             return {
               ...service,
-              status: response.ok ? 'online' : 'warning' as const,
+              status: response.ok ? 'online' : ('warning' as const),
               uptime: '99.9%',
               responseTime: `${responseTime}ms`,
-              lastCheck: new Date().toISOString()
+              lastCheck: new Date().toISOString(),
             };
           } catch (error) {
             return {
@@ -55,7 +66,7 @@ export default function SystemStatusPage() {
               status: 'offline' as const,
               uptime: '0%',
               responseTime: 'timeout',
-              lastCheck: new Date().toISOString()
+              lastCheck: new Date().toISOString(),
             };
           }
         })
@@ -71,7 +82,7 @@ export default function SystemStatusPage() {
             uptime: '0%',
             responseTime: 'error',
             lastCheck: new Date().toISOString(),
-            url: serviceChecks[index].url
+            url: serviceChecks[index].url,
           };
         }
       });
@@ -82,7 +93,7 @@ export default function SystemStatusPage() {
       // Determine overall status
       const onlineCount = serviceStatuses.filter(s => s.status === 'online').length;
       const totalCount = serviceStatuses.length;
-      
+
       if (onlineCount === totalCount) {
         setOverallStatus('operational');
       } else if (onlineCount > totalCount / 2) {
@@ -90,7 +101,6 @@ export default function SystemStatusPage() {
       } else {
         setOverallStatus('down');
       }
-
     } catch (error) {
       console.error('Failed to fetch system status:', error);
     } finally {
@@ -103,9 +113,9 @@ export default function SystemStatusPage() {
       const response = await fetch('/api/system/restart', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ service: serviceName.toLowerCase().replace(' ', '-') })
+        body: JSON.stringify({ service: serviceName.toLowerCase().replace(' ', '-') }),
       });
-      
+
       const result = await response.json();
       if (result.success) {
         alert(`✅ ${serviceName} restart initiated`);
@@ -120,25 +130,33 @@ export default function SystemStatusPage() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'online': return 'bg-green-100 text-green-800 border-green-200';
-      case 'warning': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'offline': return 'bg-red-100 text-red-800 border-red-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'online':
+        return 'bg-green-100 text-green-800 border-green-200';
+      case 'warning':
+        return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      case 'offline':
+        return 'bg-red-100 text-red-800 border-red-200';
+      default:
+        return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
 
   const getOverallStatusColor = () => {
     switch (overallStatus) {
-      case 'operational': return 'bg-green-100 text-green-800';
-      case 'degraded': return 'bg-yellow-100 text-yellow-800';
-      case 'down': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'operational':
+        return 'bg-green-100 text-green-800';
+      case 'degraded':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'down':
+        return 'bg-red-100 text-red-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
   if (loading) {
     return (
-    <div className="postcraft-page flex items-center justify-center h-64">
+      <div className="postcraft-page flex items-center justify-center h-64">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <h2 className="text-xl font-semibold text-gray-900 mb-2">Checking System Status</h2>
@@ -159,15 +177,21 @@ export default function SystemStatusPage() {
           Real-time monitoring of all Audio Intel services
         </p>
         <div className="postcraft-status">
-          <div className={`postcraft-status-dot ${
-            overallStatus === 'operational' ? 'bg-green-500' :
-            overallStatus === 'degraded' ? 'bg-yellow-500' :
-            'bg-red-500'
-          }`}></div>
+          <div
+            className={`postcraft-status-dot ${
+              overallStatus === 'operational'
+                ? 'bg-green-500'
+                : overallStatus === 'degraded'
+                  ? 'bg-yellow-500'
+                  : 'bg-red-500'
+            }`}
+          ></div>
           <span>
-            {overallStatus === 'operational' ? 'All Systems Operational' :
-             overallStatus === 'degraded' ? 'Some Services Degraded' :
-             'System Issues Detected'}
+            {overallStatus === 'operational'
+              ? 'All Systems Operational'
+              : overallStatus === 'degraded'
+                ? 'Some Services Degraded'
+                : 'System Issues Detected'}
           </span>
         </div>
       </div>
@@ -184,13 +208,9 @@ export default function SystemStatusPage() {
           )}
         </div>
 
-        <h2 className="text-3xl font-bold text-gray-900 mb-4 capitalize">
-          {overallStatus}
-        </h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4 capitalize">{overallStatus}</h2>
 
-        <p className="text-gray-600">
-          Last updated: {new Date().toLocaleString()}
-        </p>
+        <p className="text-gray-600">Last updated: {new Date().toLocaleString()}</p>
       </div>
 
       {/* Services Grid */}
@@ -201,13 +221,17 @@ export default function SystemStatusPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => {
+          {services.map(service => {
             const getStatusIcon = (status: string) => {
               switch (status) {
-                case 'online': return <Wifi className="w-5 h-5 text-green-600" />;
-                case 'warning': return <AlertTriangle className="w-5 h-5 text-yellow-600" />;
-                case 'offline': return <WifiOff className="w-5 h-5 text-red-600" />;
-                default: return <Server className="w-5 h-5 text-gray-600" />;
+                case 'online':
+                  return <Wifi className="w-5 h-5 text-green-600" />;
+                case 'warning':
+                  return <AlertTriangle className="w-5 h-5 text-yellow-600" />;
+                case 'offline':
+                  return <WifiOff className="w-5 h-5 text-red-600" />;
+                default:
+                  return <Server className="w-5 h-5 text-gray-600" />;
               }
             };
 
@@ -224,7 +248,7 @@ export default function SystemStatusPage() {
                     <span className="uppercase text-xs">{service.status}</span>
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-gray-900">{service.uptime}</div>
@@ -235,12 +259,12 @@ export default function SystemStatusPage() {
                     <div className="text-sm text-gray-600">Response</div>
                   </div>
                 </div>
-                
+
                 <div className="text-xs text-gray-500 mb-4 flex items-center gap-1">
                   <Activity className="w-3 h-3" />
                   Last check: {new Date(service.lastCheck).toLocaleTimeString()}
                 </div>
-                
+
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleRestart(service.name)}

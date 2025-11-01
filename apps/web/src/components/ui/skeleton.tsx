@@ -5,9 +5,7 @@ interface SkeletonProps {
 }
 
 const Skeleton = ({ className = '' }: SkeletonProps) => {
-  return (
-    <div className={`animate-pulse rounded-md bg-gray-200 ${className}`} />
-  );
+  return <div className={`animate-pulse rounded-md bg-gray-200 ${className}`} />;
 };
 
-export { Skeleton }; 
+export { Skeleton };

@@ -44,7 +44,9 @@ interface SERPData {
 }
 
 export default function SEOAnalysisPage() {
-  const [activeTab, setActiveTab] = useState<'domain' | 'keywords' | 'competitors' | 'serp'>('domain');
+  const [activeTab, setActiveTab] = useState<'domain' | 'keywords' | 'competitors' | 'serp'>(
+    'domain'
+  );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -81,11 +83,11 @@ export default function SEOAnalysisPage() {
       const response = await fetch(`${API_BASE_URL}/api/mcp/dataforseo/analyse-domain`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ domain })
+        body: JSON.stringify({ domain }),
       });
-      
+
       const data = await response.json();
-      
+
       if (data.success) {
         setDomainAnalysis(data.analysis);
       } else {
@@ -111,11 +113,11 @@ export default function SEOAnalysisPage() {
       const response = await fetch(`${API_BASE_URL}/api/mcp/dataforseo/research-keywords`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ seedKeyword, location: keywordLocation })
+        body: JSON.stringify({ seedKeyword, location: keywordLocation }),
       });
-      
+
       const data = await response.json();
-      
+
       if (data.success) {
         setKeywords(data.keywords);
       } else {
@@ -141,11 +143,11 @@ export default function SEOAnalysisPage() {
       const response = await fetch(`${API_BASE_URL}/api/mcp/dataforseo/analyse-competitors`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ domain: competitorDomain })
+        body: JSON.stringify({ domain: competitorDomain }),
       });
-      
+
       const data = await response.json();
-      
+
       if (data.success) {
         setCompetitors(data.competitors);
       } else {
@@ -171,11 +173,11 @@ export default function SEOAnalysisPage() {
       const response = await fetch(`${API_BASE_URL}/api/mcp/dataforseo/get-serp-results`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ keyword: serpKeyword, location: serpLocation })
+        body: JSON.stringify({ keyword: serpKeyword, location: serpLocation }),
       });
-      
+
       const data = await response.json();
-      
+
       if (data.success) {
         setSerpResults(data.results);
       } else {
@@ -200,12 +202,12 @@ export default function SEOAnalysisPage() {
             <input
               type="text"
               value={domain}
-              onChange={(e) => setDomain(e.target.value)}
+              onChange={e => setDomain(e.target.value)}
               placeholder="e.g., example.com"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-          
+
           <button
             onClick={handleDomainAnalysis}
             disabled={loading}
@@ -219,22 +221,28 @@ export default function SEOAnalysisPage() {
       {domainAnalysis && (
         <div className="bg-white rounded-lg shadow-lg p-6">
           <h3 className="text-xl font-semibold mb-4">SEO Analysis for {domainAnalysis.domain}</h3>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="text-center p-4 bg-blue-50 rounded-lg">
               <div className="text-3xl font-bold text-blue-600">{domainAnalysis.score}/100</div>
               <div className="text-sm text-gray-600">SEO Score</div>
             </div>
             <div className="text-center p-4 bg-green-50 rounded-lg">
-              <div className="text-3xl font-bold text-green-600">{domainAnalysis.metrics.organicKeywords}</div>
+              <div className="text-3xl font-bold text-green-600">
+                {domainAnalysis.metrics.organicKeywords}
+              </div>
               <div className="text-sm text-gray-600">Organic Keywords</div>
             </div>
             <div className="text-center p-4 bg-blue-50 rounded-lg">
-              <div className="text-3xl font-bold text-blue-600">{domainAnalysis.metrics.organicTraffic}</div>
+              <div className="text-3xl font-bold text-blue-600">
+                {domainAnalysis.metrics.organicTraffic}
+              </div>
               <div className="text-sm text-gray-600">Organic Traffic</div>
             </div>
             <div className="text-center p-4 bg-orange-50 rounded-lg">
-              <div className="text-3xl font-bold text-orange-600">{domainAnalysis.metrics.domainAuthority}</div>
+              <div className="text-3xl font-bold text-orange-600">
+                {domainAnalysis.metrics.domainAuthority}
+              </div>
               <div className="text-sm text-gray-600">Domain Authority</div>
             </div>
           </div>
@@ -277,18 +285,16 @@ export default function SEOAnalysisPage() {
         <h3 className="text-xl font-semibold mb-4">Keyword Research</h3>
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Seed Keyword
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Seed Keyword</label>
             <input
               type="text"
               value={seedKeyword}
-              onChange={(e) => setSeedKeyword(e.target.value)}
+              onChange={e => setSeedKeyword(e.target.value)}
               placeholder="e.g., music promotion"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Location (optional)
@@ -296,12 +302,12 @@ export default function SEOAnalysisPage() {
             <input
               type="text"
               value={keywordLocation}
-              onChange={(e) => setKeywordLocation(e.target.value)}
+              onChange={e => setKeywordLocation(e.target.value)}
               placeholder="e.g., US, UK, CA"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-          
+
           <button
             onClick={handleKeywordResearch}
             disabled={loading}
@@ -370,12 +376,12 @@ export default function SEOAnalysisPage() {
             <input
               type="text"
               value={competitorDomain}
-              onChange={(e) => setCompetitorDomain(e.target.value)}
+              onChange={e => setCompetitorDomain(e.target.value)}
               placeholder="e.g., example.com"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-          
+
           <button
             onClick={handleCompetitorAnalysis}
             disabled={loading}
@@ -450,12 +456,12 @@ export default function SEOAnalysisPage() {
             <input
               type="text"
               value={serpKeyword}
-              onChange={(e) => setSerpKeyword(e.target.value)}
+              onChange={e => setSerpKeyword(e.target.value)}
               placeholder="e.g., music promotion services"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Location (optional)
@@ -463,12 +469,12 @@ export default function SEOAnalysisPage() {
             <input
               type="text"
               value={serpLocation}
-              onChange={(e) => setSerpLocation(e.target.value)}
+              onChange={e => setSerpLocation(e.target.value)}
               placeholder="e.g., US, UK, CA"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-          
+
           <button
             onClick={handleSERPResults}
             disabled={loading}
@@ -484,7 +490,10 @@ export default function SEOAnalysisPage() {
           <h3 className="text-xl font-semibold mb-4">SERP Results for "{serpResults.keyword}"</h3>
           <div className="space-y-4">
             {serpResults.results.slice(0, 10).map((result, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div
+                key={index}
+                className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+              >
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center space-x-3 mb-2">
@@ -494,7 +503,12 @@ export default function SEOAnalysisPage() {
                       <span className="text-sm text-gray-500">{result.domain}</span>
                     </div>
                     <h4 className="text-blue-600 hover:text-blue-800 font-medium mb-2">
-                      <a href={result.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                      <a
+                        href={result.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline"
+                      >
                         {result.title}
                       </a>
                     </h4>
@@ -516,7 +530,10 @@ export default function SEOAnalysisPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+              <Link
+                href="/"
+                className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+              >
                 <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-600 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">AI</span>
                 </div>
@@ -552,8 +569,8 @@ export default function SEOAnalysisPage() {
                 { id: 'domain', label: 'Domain Analysis', icon: '🌐' },
                 { id: 'keywords', label: 'Keyword Research', icon: '🔍' },
                 { id: 'competitors', label: 'Competitor Analysis', icon: '🏆' },
-                { id: 'serp', label: 'SERP Results', icon: '📊' }
-              ].map((tab) => (
+                { id: 'serp', label: 'SERP Results', icon: '📊' },
+              ].map(tab => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
@@ -579,4 +596,4 @@ export default function SEOAnalysisPage() {
       </div>
     </div>
   );
-} 
+}

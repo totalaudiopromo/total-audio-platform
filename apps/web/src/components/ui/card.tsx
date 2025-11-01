@@ -27,11 +27,7 @@ interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ className = '', children, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        className={`flex flex-col space-y-1.5 p-6 ${className}`}
-        {...props}
-      >
+      <div ref={ref} className={`flex flex-col space-y-1.5 p-6 ${className}`} {...props}>
         {children}
       </div>
     );
@@ -67,11 +63,7 @@ interface CardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement
 const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionProps>(
   ({ className = '', children, ...props }, ref) => {
     return (
-      <p
-        ref={ref}
-        className={`text-sm text-gray-500 ${className}`}
-        {...props}
-      >
+      <p ref={ref} className={`text-sm text-gray-500 ${className}`} {...props}>
         {children}
       </p>
     );
@@ -87,11 +79,7 @@ interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {
 const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
   ({ className = '', children, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        className={`p-6 pt-0 ${className}`}
-        {...props}
-      >
+      <div ref={ref} className={`p-6 pt-0 ${className}`} {...props}>
         {children}
       </div>
     );
@@ -107,11 +95,7 @@ interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
 const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
   ({ className = '', children, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        className={`flex items-center p-6 pt-0 ${className}`}
-        {...props}
-      >
+      <div ref={ref} className={`flex items-center p-6 pt-0 ${className}`} {...props}>
         {children}
       </div>
     );
@@ -120,4 +104,4 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
 
 CardFooter.displayName = 'CardFooter';
 
-export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }; 
+export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter };

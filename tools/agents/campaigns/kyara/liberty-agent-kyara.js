@@ -25,11 +25,10 @@ class LibertyAgentKYARA {
       campaignDuration: '6-week',
       budget: '£2,500',
       targetMarket: 'triple j Australia + UK alternative',
-      angle: 'Follow-up to successful Home & Hosed play - Jaimee Taylor-Neilsen played "Yearn" last August',
+      angle:
+        'Follow-up to successful Home & Hosed play - Jaimee Taylor-Neilsen played "Yearn" last August',
       soundcloudLink: 'https://on.soundcloud.com/1oiblSoRYCp1swzCr3',
-      previousPlays: [
-        'triple j Home & Hosed (Jaimee Taylor-Neilsen, August 2024)'
-      ]
+      previousPlays: ['triple j Home & Hosed (Jaimee Taylor-Neilsen, August 2024)'],
     };
 
     // Kyara's specific contacts for triple j
@@ -40,7 +39,7 @@ class LibertyAgentKYARA {
         type: 'National',
         priority: 'high',
         action: 'music_director_pitch',
-        notes: 'New music director - pitch for general triple j consideration'
+        notes: 'New music director - pitch for general triple j consideration',
       },
       {
         name: 'triple j Home & Hosed (Anika Luna)',
@@ -48,7 +47,8 @@ class LibertyAgentKYARA {
         type: 'National',
         priority: 'high',
         action: 'show_pitch',
-        notes: 'KEY TARGET - "Yearn" was played by Jaimee Taylor-Neilsen last August. Home & Hosed champions independent artists/releases.'
+        notes:
+          'KEY TARGET - "Yearn" was played by Jaimee Taylor-Neilsen last August. Home & Hosed champions independent artists/releases.',
       },
       {
         name: 'triple j (Abby Butler)',
@@ -56,7 +56,7 @@ class LibertyAgentKYARA {
         type: 'National',
         priority: 'high',
         action: 'duo_pitch',
-        notes: 'Part of Abby & Tyrone duo - good pitch target'
+        notes: 'Part of Abby & Tyrone duo - good pitch target',
       },
       {
         name: 'triple j (Tyrone Pynor)',
@@ -64,8 +64,8 @@ class LibertyAgentKYARA {
         type: 'National',
         priority: 'high',
         action: 'duo_pitch',
-        notes: 'Part of Abby & Tyrone duo - good pitch target'
-      }
+        notes: 'Part of Abby & Tyrone duo - good pitch target',
+      },
     ];
   }
 
@@ -101,7 +101,9 @@ class LibertyAgentKYARA {
 
       console.log('✅ Monday.com campaign created successfully!');
       console.log(`   Campaign ID: ${campaignResult.id}`);
-      console.log(`   Campaign Name: ${this.campaignData.artistName} - ${this.campaignData.trackName}`);
+      console.log(
+        `   Campaign Name: ${this.campaignData.artistName} - ${this.campaignData.trackName}`
+      );
       console.log(`   Board URL: ${campaignResult.url || 'Available in Monday.com'}`);
       console.log('');
 
@@ -137,7 +139,7 @@ class LibertyAgentKYARA {
           subject: template.subject,
           body: template.body,
           campaignId: 'kyara-yearn',
-          stationInfo: station
+          stationInfo: station,
         };
 
         // Send email via Gmail API
@@ -151,9 +153,8 @@ class LibertyAgentKYARA {
           email: station.email,
           status: 'sent',
           messageId: emailResult.id,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         });
-
       } catch (error) {
         console.log(`   ❌ Failed to send email to ${station.name}: ${error.message}`);
         results.push({
@@ -161,7 +162,7 @@ class LibertyAgentKYARA {
           email: station.email,
           status: 'failed',
           error: error.message,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         });
       }
 
@@ -169,7 +170,9 @@ class LibertyAgentKYARA {
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
 
-    console.log(`\n✅ Email sending complete: ${results.filter(r => r.status === 'sent').length}/${results.length} successful`);
+    console.log(
+      `\n✅ Email sending complete: ${results.filter(r => r.status === 'sent').length}/${results.length} successful`
+    );
     return results;
   }
 
@@ -198,7 +201,7 @@ Would love to know if you'd like to consider this for the show!
 Best regards,
 Chris Schofield
 Liberty Music PR
-chris@libertymusicpr.com`
+chris@libertymusicpr.com`,
       },
 
       musicDirector: {
@@ -222,7 +225,7 @@ Would you like to hear more for triple j consideration?
 Best regards,
 Chris Schofield
 Liberty Music PR
-chris@libertymusicpr.com`
+chris@libertymusicpr.com`,
       },
 
       abbyTyrone: {
@@ -246,8 +249,8 @@ Would love to know if you'd like to consider this for triple j!
 Best regards,
 Chris Schofield
 Liberty Music PR
-chris@libertymusicpr.com`
-      }
+chris@libertymusicpr.com`,
+      },
     };
   }
 
@@ -260,7 +263,7 @@ chris@libertymusicpr.com`
         artistName: this.campaignData.artistName,
         trackName: this.campaignData.trackName,
         genre: this.campaignData.genre,
-        releaseDate: this.campaignData.releaseDate
+        releaseDate: this.campaignData.releaseDate,
       });
 
       console.log('✅ Track registered with WARM API');
@@ -277,7 +280,7 @@ chris@libertymusicpr.com`
         console.log('   Current Supporters:');
         currentPlays.plays.slice(0, 5).forEach((play, i) => {
           const station = play.radioStationName || play.stationName || 'Unknown';
-          console.log(`     ${i+1}. ${station}`);
+          console.log(`     ${i + 1}. ${station}`);
         });
       }
 
@@ -285,9 +288,8 @@ chris@libertymusicpr.com`
 
       return {
         trackRegistration,
-        currentPlays
+        currentPlays,
       };
-
     } catch (error) {
       console.error('❌ Failed to setup WARM tracking:', error.message);
       return null;
@@ -309,8 +311,8 @@ chris@libertymusicpr.com`
         emailsSent: emailResults.filter(r => r.status === 'sent').length,
         emailsFailed: emailResults.filter(r => r.status === 'failed').length,
         currentPlays: warmData?.currentPlays?.total || 0,
-        supportingStations: warmData?.currentPlays?.plays?.length || 0
-      }
+        supportingStations: warmData?.currentPlays?.plays?.length || 0,
+      },
     };
 
     console.log('📋 CAMPAIGN REPORT SUMMARY:');
@@ -359,7 +361,7 @@ chris@libertymusicpr.com`
 
       console.log('📋 NEXT STEPS:');
       console.log('1. Monitor email responses from triple j team');
-      console.log('2. Follow up with contacts that don\'t respond (1-2 weeks)');
+      console.log("2. Follow up with contacts that don't respond (1-2 weeks)");
       console.log('3. Track new plays via WARM API');
       console.log('4. Update Monday.com campaign board with results');
       console.log('5. Report back to Marie (KYARA) on progress');
@@ -370,14 +372,13 @@ chris@libertymusicpr.com`
         campaignResult,
         emailResults,
         warmData,
-        report
+        report,
       };
-
     } catch (error) {
       console.error('❌ Liberty Agent campaign execution failed:', error.message);
       return {
         success: false,
-        error: error.message
+        error: error.message,
       };
     } finally {
       if (this.agent) {
@@ -396,7 +397,9 @@ async function runLibertyAgentKYARA() {
 
     if (result.success) {
       console.log('🎉 KYARA Liberty Agent Campaign Complete!');
-      console.log('Real emails sent to triple j contacts, Monday.com campaign created, WARM tracking active');
+      console.log(
+        'Real emails sent to triple j contacts, Monday.com campaign created, WARM tracking active'
+      );
     } else {
       console.log('❌ Campaign failed:', result.error);
     }

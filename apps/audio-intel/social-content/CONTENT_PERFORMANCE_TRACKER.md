@@ -4,12 +4,12 @@
 
 ### Post Performance Log
 
-| Date | Platform | Topic | Type | Engagement | Clicks | Notes |
-|------|----------|-------|------|------------|--------|-------|
-| 2025-01-16 | LinkedIn | Contact research | Problem-focused | 15 likes, 3 comments | 5 | Good engagement |
-| 2025-01-16 | Blue Sky | Time-saving tips | Solution-focused | 8 likes, 2 replies | 2 | Decent reach |
-| 2025-01-17 | LinkedIn | Personal story | Story-focused | 22 likes, 7 comments | 8 | High engagement |
-| 2025-01-17 | Blue Sky | Industry insight | Insight-focused | 12 likes, 4 replies | 3 | Good discussion |
+| Date       | Platform | Topic            | Type             | Engagement           | Clicks | Notes           |
+| ---------- | -------- | ---------------- | ---------------- | -------------------- | ------ | --------------- |
+| 2025-01-16 | LinkedIn | Contact research | Problem-focused  | 15 likes, 3 comments | 5      | Good engagement |
+| 2025-01-16 | Blue Sky | Time-saving tips | Solution-focused | 8 likes, 2 replies   | 2      | Decent reach    |
+| 2025-01-17 | LinkedIn | Personal story   | Story-focused    | 22 likes, 7 comments | 8      | High engagement |
+| 2025-01-17 | Blue Sky | Industry insight | Insight-focused  | 12 likes, 4 replies  | 3      | Good discussion |
 
 ## Engagement Metrics to Track
 

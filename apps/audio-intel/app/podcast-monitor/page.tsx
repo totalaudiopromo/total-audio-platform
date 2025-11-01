@@ -76,10 +76,14 @@ export default function PodcastMonitorPage() {
 
   const getRelevanceColor = (relevance: string) => {
     switch (relevance) {
-      case 'High': return 'bg-green-100 text-green-800';
-      case 'Medium': return 'bg-yellow-100 text-yellow-800';
-      case 'Low': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'High':
+        return 'bg-green-100 text-green-800';
+      case 'Medium':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'Low':
+        return 'bg-gray-100 text-gray-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
@@ -87,7 +91,7 @@ export default function PodcastMonitorPage() {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
-      day: 'numeric'
+      day: 'numeric',
     });
   };
 
@@ -95,12 +99,10 @@ export default function PodcastMonitorPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            🎙️ Podcast Monitor
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">🎙️ Podcast Monitor</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Monitor Apple Podcasts feeds for AI and technology insights relevant to the music industry. 
-            Discover cutting-edge tools and features that podcasters are testing first.
+            Monitor Apple Podcasts feeds for AI and technology insights relevant to the music
+            industry. Discover cutting-edge tools and features that podcasters are testing first.
           </p>
         </div>
 
@@ -119,14 +121,10 @@ export default function PodcastMonitorPage() {
               <Input
                 placeholder="https://feeds.apple.com/podcasts/your-podcast-feed"
                 value={feedUrl}
-                onChange={(e) => setFeedUrl(e.target.value)}
+                onChange={e => setFeedUrl(e.target.value)}
                 className="flex-1"
               />
-              <Button 
-                onClick={handleMonitor} 
-                disabled={isLoading}
-                className="px-8"
-              >
+              <Button onClick={handleMonitor} disabled={isLoading} className="px-8">
                 {isLoading ? (
                   <>
                     <Loader2 className="h-4 w-4 mr-2 animate-spin" />
@@ -137,7 +135,7 @@ export default function PodcastMonitorPage() {
                 )}
               </Button>
             </div>
-            
+
             {error && (
               <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <div className="flex items-center gap-2 text-red-800">
@@ -163,15 +161,21 @@ export default function PodcastMonitorPage() {
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600">{result.stats.totalEpisodes}</div>
+                    <div className="text-2xl font-bold text-blue-600">
+                      {result.stats.totalEpisodes}
+                    </div>
                     <div className="text-sm text-gray-600">Total Episodes</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">{result.stats.highRelevance}</div>
+                    <div className="text-2xl font-bold text-green-600">
+                      {result.stats.highRelevance}
+                    </div>
                     <div className="text-sm text-gray-600">High Relevance</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-yellow-600">{result.stats.mediumRelevance}</div>
+                    <div className="text-2xl font-bold text-yellow-600">
+                      {result.stats.mediumRelevance}
+                    </div>
                     <div className="text-sm text-gray-600">Medium Relevance</div>
                   </div>
                 </div>
@@ -200,12 +204,17 @@ export default function PodcastMonitorPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="text-green-700">🔥 High-Impact Episodes</CardTitle>
-                  <CardDescription>Episodes with significant AI/tech insights for music industry</CardDescription>
+                  <CardDescription>
+                    Episodes with significant AI/tech insights for music industry
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     {result.episodes.highRelevance.map((episode, index) => (
-                      <div key={index} className="border border-green-200 rounded-lg p-4 bg-green-50">
+                      <div
+                        key={index}
+                        className="border border-green-200 rounded-lg p-4 bg-green-50"
+                      >
                         <div className="flex items-start justify-between mb-2">
                           <h3 className="font-semibold text-green-900">{episode.title}</h3>
                           <Badge className={getRelevanceColor(episode.musicIndustryRelevance)}>
@@ -213,10 +222,12 @@ export default function PodcastMonitorPage() {
                           </Badge>
                         </div>
                         <p className="text-sm text-gray-700 mb-3">{episode.description}</p>
-                        
+
                         {episode.aiInsights.length > 0 && (
                           <div className="mb-3">
-                            <h4 className="text-sm font-semibold text-gray-900 mb-1">AI Insights:</h4>
+                            <h4 className="text-sm font-semibold text-gray-900 mb-1">
+                              AI Insights:
+                            </h4>
                             <ul className="text-sm text-gray-700 list-disc list-inside">
                               {episode.aiInsights.map((insight, i) => (
                                 <li key={i}>{insight}</li>
@@ -227,7 +238,9 @@ export default function PodcastMonitorPage() {
 
                         {episode.techFeatures.length > 0 && (
                           <div className="mb-3">
-                            <h4 className="text-sm font-semibold text-gray-900 mb-1">Tech Features:</h4>
+                            <h4 className="text-sm font-semibold text-gray-900 mb-1">
+                              Tech Features:
+                            </h4>
                             <ul className="text-sm text-gray-700 list-disc list-inside">
                               {episode.techFeatures.map((feature, i) => (
                                 <li key={i}>{feature}</li>
@@ -238,7 +251,9 @@ export default function PodcastMonitorPage() {
 
                         {episode.actionableTips.length > 0 && (
                           <div className="mb-3">
-                            <h4 className="text-sm font-semibold text-gray-900 mb-1">Actionable Tips:</h4>
+                            <h4 className="text-sm font-semibold text-gray-900 mb-1">
+                              Actionable Tips:
+                            </h4>
                             <ul className="text-sm text-gray-700 list-disc list-inside">
                               {episode.actionableTips.map((tip, i) => (
                                 <li key={i}>{tip}</li>
@@ -254,9 +269,9 @@ export default function PodcastMonitorPage() {
 
                         {episode.url && (
                           <div className="mt-3">
-                            <a 
-                              href={episode.url} 
-                              target="_blank" 
+                            <a
+                              href={episode.url}
+                              target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800"
                             >
@@ -282,14 +297,19 @@ export default function PodcastMonitorPage() {
                 <CardContent>
                   <div className="space-y-3">
                     {result.episodes.mediumRelevance.slice(0, 5).map((episode, index) => (
-                      <div key={index} className="border border-yellow-200 rounded-lg p-3 bg-yellow-50">
+                      <div
+                        key={index}
+                        className="border border-yellow-200 rounded-lg p-3 bg-yellow-50"
+                      >
                         <div className="flex items-start justify-between mb-2">
                           <h3 className="font-medium text-yellow-900">{episode.title}</h3>
                           <Badge className={getRelevanceColor(episode.musicIndustryRelevance)}>
                             {episode.musicIndustryRelevance}
                           </Badge>
                         </div>
-                        <p className="text-sm text-gray-700 mb-2">{episode.description.substring(0, 200)}...</p>
+                        <p className="text-sm text-gray-700 mb-2">
+                          {episode.description.substring(0, 200)}...
+                        </p>
                         <div className="flex items-center justify-between text-xs text-gray-500">
                           <span>Published: {formatDate(episode.publishedAt)}</span>
                           <span>Duration: {episode.duration}</span>
@@ -336,9 +356,3 @@ export default function PodcastMonitorPage() {
     </div>
   );
 }
-
-
-
-
-
-

@@ -1,9 +1,11 @@
 # Liberty Gmail/Drive/Calendar - Complete Organization System
+
 ## Actually Getting This Done (Not Like CC)
 
 ## 🎯 What This Fixes
 
 **Your Current Problems:**
+
 - ❌ Otter AI transcripts going into "Station Feedback"
 - ❌ Gemini transcripts going into "Station Feedback"
 - ❌ WARM marketing going into "Station Feedback"
@@ -14,6 +16,7 @@
 - ❌ No calendar integration
 
 **What You'll Have Tomorrow Morning:**
+
 - ✅ Otter AI → Personal Tools/Otter AI
 - ✅ Gemini → Personal Tools/Gemini
 - ✅ WARM/Machina/Marketing → Marketing Junk (archived)
@@ -31,6 +34,7 @@ cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/gmai
 ```
 
 This runs through 5 phases:
+
 1. **Gmail Filter Fix** - Deletes all old broken filters, creates precise new ones
 2. **Bulk Email Fix** - Re-labels all existing misclassified emails
 3. **Autopilot Setup** - Installs hourly cron job for maintenance
@@ -98,6 +102,7 @@ Marketing Junk/
 ## 🚁 Autopilot System
 
 **Runs every hour automatically via cron:**
+
 - Checks last 2 hours of new emails
 - Applies correct labels to any that slipped through
 - Removes incorrect labels
@@ -105,6 +110,7 @@ Marketing Junk/
 - Logs all actions
 
 **Cron job:**
+
 ```
 0 * * * * cd /path/to/gmail-setup && node liberty-autopilot.js run >> autopilot.log 2>&1
 ```
@@ -112,6 +118,7 @@ Marketing Junk/
 ## 📊 What Gets Fixed in Bulk
 
 The `liberty-bulk-fix.js` script finds and fixes:
+
 - All Otter AI emails currently in wrong folders
 - All Gemini emails currently in wrong folders
 - All WARM emails currently in wrong folders
@@ -124,6 +131,7 @@ The `liberty-bulk-fix.js` script finds and fixes:
 If you want to run things individually:
 
 ### Gmail
+
 ```bash
 # Test current setup
 node liberty-gmail-fix.js test
@@ -139,6 +147,7 @@ node liberty-bulk-fix.js --dry-run
 ```
 
 ### Autopilot
+
 ```bash
 # Test autopilot
 node liberty-autopilot.js test
@@ -157,6 +166,7 @@ crontab -l | grep -v liberty-autopilot | crontab -
 ```
 
 ### Drive
+
 ```bash
 # Create Drive folder structure
 node liberty-drive-sync.js setup
@@ -169,6 +179,7 @@ node liberty-drive-sync.js test
 ```
 
 ### Calendar
+
 ```bash
 # Create Calendar structure
 node liberty-calendar-sync.js setup
@@ -208,6 +219,7 @@ After deployment, check:
 ### Filter Logic
 
 **REAL Station Feedback filter:**
+
 ```
 to:chrisschofield@libertymusicpr.com
 (subject:Re: OR subject:Fwd:)
@@ -222,6 +234,7 @@ to:chrisschofield@libertymusicpr.com
 ```
 
 This catches ONLY:
+
 - Emails TO you (not CC'd)
 - That are replies/forwards
 - About R4/R6 campaigns
@@ -233,6 +246,7 @@ This catches ONLY:
 ## 📱 Mobile Experience
 
 All labels, folders, and calendars work on:
+
 - Gmail mobile app (color-coded labels)
 - Google Drive mobile app (color-coded folders)
 - Google Calendar mobile app (color-coded calendars)
@@ -253,6 +267,7 @@ Consistent across Gmail, Drive, and Calendar:
 ## 🐛 Troubleshooting
 
 ### "OAuth tokens not found"
+
 ```bash
 # Make sure you have Gmail tokens from radio-promo agent
 cd ../radio-promo
@@ -262,6 +277,7 @@ ls gmail-token.json
 ```
 
 ### "Filters not working"
+
 ```bash
 # Delete and recreate
 node liberty-gmail-fix.js delete-filters
@@ -269,6 +285,7 @@ node liberty-gmail-fix.js filters
 ```
 
 ### "Autopilot not running"
+
 ```bash
 # Check cron
 crontab -l | grep liberty-autopilot
@@ -281,6 +298,7 @@ node liberty-autopilot.js run
 ```
 
 ### "Drive folders not appearing"
+
 ```bash
 # Check Drive access
 node liberty-drive-sync.js test
@@ -295,6 +313,7 @@ node liberty-drive-sync.js setup
 ## 🎯 Success Criteria
 
 **Tomorrow morning, you should:**
+
 - ✅ See no Otter AI in Station Feedback
 - ✅ See no WARM/Machina in Station Feedback
 - ✅ See ONLY real station responses in Station Feedback
@@ -306,6 +325,7 @@ node liberty-drive-sync.js setup
 ## 📈 Future Enhancements
 
 The system is built to support:
+
 - Auto-creating calendar events from campaign emails
 - Auto-moving campaign files to Drive folders
 - Smart campaign lifecycle management (active → completed → archived)
@@ -314,12 +334,14 @@ The system is built to support:
 ## 💡 Why This Is Different
 
 **CC's attempts failed because:**
+
 - Added filters without deleting old ones (conflicts)
 - Used generic patterns that caught everything
 - Didn't fix existing emails (only "going forward")
 - No maintenance system
 
 **This solution:**
+
 - ✅ Deletes ALL old filters first
 - ✅ Uses precise patterns with explicit exclusions
 - ✅ Fixes ALL existing emails in bulk

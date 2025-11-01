@@ -3,16 +3,19 @@
 ## 🎯 YOUR ACTIVE CAMPAIGNS (Front & Center)
 
 **🎵 Kiara - Bloodshot** (50 emails)
+
 - Automatically routes all emails with "Kiara", "Bloodshot", or "KYARA"
 - Stays in inbox if mentions "Chris"
 - Color: Red
 
 **🎵 Senior Dunce - Bestial** (44 emails)
+
 - Automatically routes all emails with "Senior Dunce" or "Bestial"
 - Stays in inbox if mentions "Chris"
 - Color: Pink
 
 **📅 Weekly Releases** (100 emails)
+
 - Sam's weekly releases emails
 - Always stays in inbox (marked important)
 - Auto-updates when Sam sends new releases
@@ -44,24 +47,29 @@ Junk/
 ### Automatic Routing (11 filters active)
 
 **Current Campaigns:**
+
 - Kiara/Bloodshot emails → 🎵 Kiara - Bloodshot
 - Senior Dunce/Bestial emails → 🎵 Senior Dunce - Bestial
 - Weekly releases from Sam → 📅 Weekly Releases (always in inbox)
 
 **Station Feedback:**
+
 - Mentions "Chris" → Keep in inbox + mark important
 - Doesn't mention "Chris" → Archive to Liberty/Station Feedback
 
 **Personal Tools:**
+
 - Otter AI → Archive to Personal/Otter AI
 - Gemini → Archive to Personal/Gemini
 
 **Marketing Junk:**
+
 - WARM/Machina/Music Reaction → Archive + mark read
 
 ### Inbox Behavior
 
 **STAYS IN INBOX:**
+
 - 🎵 Kiara - Bloodshot (if mentions "Chris")
 - 🎵 Senior Dunce - Bestial (if mentions "Chris")
 - 📅 Weekly Releases (always)
@@ -69,6 +77,7 @@ Junk/
 - Liberty/Internal (team emails)
 
 **ARCHIVED AUTOMATICALLY:**
+
 - Campaign emails without "Chris"
 - Station feedback without "Chris"
 - Otter AI transcripts
@@ -81,6 +90,7 @@ Junk/
 **Status:** Running every hour (next runs at top of each hour)
 
 **What it does:**
+
 - Checks last 2 hours of new emails
 - Applies correct campaign labels
 - Archives marketing spam
@@ -88,21 +98,25 @@ Junk/
 - Logs all actions
 
 **View activity:**
+
 ```bash
 tail -f autopilot.log
 ```
 
 **Recent runs:**
+
 - 17:00 - ✅ Inbox clean
 - 21:00 - ✅ Inbox clean
 
 ## 📝 Adding New Campaigns
 
 When you start a new campaign, tell me:
+
 1. Campaign name (artist + release)
 2. Keywords to watch for
 
 I'll:
+
 1. Create emoji label (colored)
 2. Add filter to auto-route emails
 3. Move existing emails to the label

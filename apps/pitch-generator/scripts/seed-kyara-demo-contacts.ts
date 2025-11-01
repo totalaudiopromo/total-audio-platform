@@ -22,9 +22,10 @@ const DEMO_CONTACTS = [
     outlet: 'Triple J (ABC Radio)',
     email: 'luna.anika@abc.net.au',
     genre_tags: ['Alternative', 'Indie', 'Electronic', 'Emerging Artists'],
-    notes: 'Championed KYARA\'s "Yearn" on Home & Hosed in August 2024. Key tastemaker for independent Australian and international artists. Show focuses on new and unsigned talent.',
+    notes:
+      'Championed KYARA\'s "Yearn" on Home & Hosed in August 2024. Key tastemaker for independent Australian and international artists. Show focuses on new and unsigned talent.',
     preferred_tone: 'professional',
-    response_rate: 75.00,
+    response_rate: 75.0,
   },
   {
     name: 'Claire Mooney',
@@ -32,9 +33,10 @@ const DEMO_CONTACTS = [
     outlet: 'Triple J (ABC Radio)',
     email: 'mooney.claire@abc.net.au',
     genre_tags: ['Alternative', 'Indie', 'Electronic', 'Pop'],
-    notes: 'Triple J Music Director. Oversees playlist decisions for Australia\'s leading youth broadcaster. Strong focus on Australian independent artists with international appeal.',
+    notes:
+      "Triple J Music Director. Oversees playlist decisions for Australia's leading youth broadcaster. Strong focus on Australian independent artists with international appeal.",
     preferred_tone: 'professional',
-    response_rate: 65.00,
+    response_rate: 65.0,
   },
   {
     name: 'Rosie Dunkley',
@@ -42,9 +44,10 @@ const DEMO_CONTACTS = [
     outlet: 'BBC Radio (UK)',
     email: 'rosie.dunkley@bbc.co.uk',
     genre_tags: ['Pop', 'Rock', 'Electronic', 'Indie', 'Alternative'],
-    notes: 'BBC Radio music specialist with broad genre knowledge. High-quality contact with proven track record. Open to UK and international artists with radio-ready production.',
+    notes:
+      'BBC Radio music specialist with broad genre knowledge. High-quality contact with proven track record. Open to UK and international artists with radio-ready production.',
     preferred_tone: 'professional',
-    response_rate: 70.00,
+    response_rate: 70.0,
   },
   {
     name: 'Jada Joshi',
@@ -52,9 +55,10 @@ const DEMO_CONTACTS = [
     outlet: 'BBC Radio (UK)',
     email: 'jada.joshi.ext@bbc.co.uk',
     genre_tags: ['Alternative', 'Indie', 'Electronic', 'Hip-Hop'],
-    notes: 'BBC Radio specialist focusing on alternative and electronic crossover. Strong advocate for independent artists. Excellent contact for genre-blending artists.',
+    notes:
+      'BBC Radio specialist focusing on alternative and electronic crossover. Strong advocate for independent artists. Excellent contact for genre-blending artists.',
     preferred_tone: 'professional',
-    response_rate: 68.00,
+    response_rate: 68.0,
   },
   {
     name: 'Tom Ravenscroft',
@@ -62,9 +66,10 @@ const DEMO_CONTACTS = [
     outlet: 'BBC Radio 6 Music',
     email: 'tom@tomravenscroft.co.uk',
     genre_tags: ['Alternative', 'Rock', 'Indie', 'Electronic', 'Punk'],
-    notes: 'Legendary BBC 6 Music presenter (son of John Peel). Champions independent and alternative music. High-profile tastemaker with industry credibility.',
+    notes:
+      'Legendary BBC 6 Music presenter (son of John Peel). Champions independent and alternative music. High-profile tastemaker with industry credibility.',
     preferred_tone: 'professional',
-    response_rate: 80.00,
+    response_rate: 80.0,
   },
 ];
 
@@ -111,7 +116,10 @@ async function seedDemoContacts() {
       .from('contacts')
       .select('name')
       .eq('user_id', demoUserId)
-      .in('name', DEMO_CONTACTS.map(c => c.name));
+      .in(
+        'name',
+        DEMO_CONTACTS.map(c => c.name)
+      );
 
     if (existingContacts && existingContacts.length > 0) {
       console.log('⚠️  Some contacts already exist:');
@@ -153,7 +161,6 @@ async function seedDemoContacts() {
     console.log('      Track: Bloodshot');
     console.log('      Genre: Alternative/Electronic');
     console.log('      Hook: Self-produced electro-pop anthem about empowerment\n');
-
   } catch (error) {
     console.error('❌ Unexpected error:', error);
   }

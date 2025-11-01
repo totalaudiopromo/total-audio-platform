@@ -13,6 +13,7 @@ Complete automation system with content verification and duplicate detection.
 ## ⚡ Quick Start (5 Minutes)
 
 ### 1. Environment Setup
+
 ```bash
 cd apps/command-centre
 cp .env.example .env
@@ -21,15 +22,18 @@ cp .env.example .env
 ### 2. Configure Platforms (Start with BlueSky - it's free!)
 
 **BlueSky (Recommended - FREE)**
+
 1. Go to BlueSky Settings > App Passwords
 2. Create new app password
 3. Add to `.env`:
+
 ```env
 BLUESKY_IDENTIFIER=yourhandle.bsky.social
 BLUESKY_APP_PASSWORD=your-app-password
 ```
 
 ### 3. Test the System
+
 ```bash
 # Test authentication
 node scripts/social-automation-verified.js auth
@@ -44,24 +48,28 @@ node scripts/social-automation-verified.js verify
 ## 🔧 Platform Setup Details
 
 ### BlueSky (FREE - Start Here!)
+
 - **Cost**: Free
 - **Setup**: 2 minutes
 - **Features**: Full API access, scheduling
 - **Limits**: Reasonable (no issues for Audio Intel)
 
 ### LinkedIn (FREE)
+
 - **Cost**: Free for personal posting
 - **Setup**: 5 minutes
 - **API**: LinkedIn Developer Portal
 - **Perfect for**: Professional Audio Intel content
 
 ### Facebook (FREE)
+
 - **Cost**: Free for page posting
 - **Setup**: 10 minutes
 - **API**: Facebook Graph API
 - **Good for**: Broader audience reach
 
 ### Twitter/X (Expensive - Using Automation)
+
 - **Cost**: $100/month for basic API
 - **Our Solution**: Puppeteer browser automation
 - **Setup**: Manual login required
@@ -70,6 +78,7 @@ node scripts/social-automation-verified.js verify
 ## 📋 Content Verification Features
 
 ### Pre-Post Checks
+
 ✅ Character limits per platform
 ✅ Audio Intel branding verification
 ✅ Hashtag format validation
@@ -77,12 +86,14 @@ node scripts/social-automation-verified.js verify
 ✅ Engagement optimization (Facebook)
 
 ### Duplicate Detection
+
 ✅ Content hash tracking
 ✅ Cross-platform duplicate prevention
 ✅ Recent post history checking
 ✅ Intelligent content rotation
 
 ### Manual Approval Workflow
+
 ✅ Quality control review
 ✅ Platform-specific warnings
 ✅ Content preview with verification results
@@ -91,6 +102,7 @@ node scripts/social-automation-verified.js verify
 ## 🤖 Automation Commands
 
 ### Daily Automation
+
 ```bash
 # Run daily posting (safe mode with verification)
 node scripts/social-automation-verified.js daily
@@ -100,6 +112,7 @@ node scripts/social-automation-verified.js daily --dry-run
 ```
 
 ### Content Management
+
 ```bash
 # Check available templates by category
 node scripts/social-automation-verified.js verify case-study
@@ -113,6 +126,7 @@ node scripts/social-automation-verified.js auth
 ```
 
 ### Schedule Automation (Cron)
+
 ```bash
 # Edit cron jobs
 crontab -e
@@ -124,6 +138,7 @@ crontab -e
 ## 📊 Your Audio Intel Content
 
 Ready-to-post templates include:
+
 - **BBC Radio 1 case study** posts
 - **Spotify playlist success** stories
 - **"15 hours → 15 minutes"** value propositions
@@ -158,16 +173,19 @@ Before any post goes live:
 ## 📈 Expected Results
 
 ### Week 1
+
 - 3 verified posts per day across platforms
 - Zero duplicate content
 - Professional Audio Intel presence
 
 ### Week 2-4
+
 - Consistent brand messaging
 - Growing engagement
 - Customer acquisition support
 
 ### Month 1+
+
 - Automated thought leadership
 - Industry credibility establishment
 - Lead generation pipeline
@@ -175,12 +193,14 @@ Before any post goes live:
 ## 🚨 Safety Features
 
 ### Never Posts
+
 ❌ Duplicate content
 ❌ Unverified content
 ❌ Content exceeding character limits
 ❌ Content without Audio Intel context
 
 ### Always Verifies
+
 ✅ Platform-specific requirements
 ✅ Content quality standards
 ✅ Brand consistency
@@ -191,21 +211,25 @@ Before any post goes live:
 ### Common Issues
 
 **"Authentication failed"**
+
 - Check API credentials in `.env`
 - Verify app passwords are correct
 - Test with single platform first
 
 **"Duplicate content detected"**
+
 - Check content history: `node scripts/social-automation-verified.js history`
 - Clear history if needed (careful!)
 - Add new content templates
 
 **"Character limit exceeded"**
+
 - Content automatically truncated with warning
 - Edit templates for platform-specific lengths
 - Check hashtag lengths
 
 ### Support
+
 - All logs saved to `logs/social-automation.log`
 - Content history in `data/content-history.json`
 - Verification results logged for debugging

@@ -16,16 +16,19 @@ This makes them available across the entire Total Audio Promo platform, not just
 ## New Import Paths
 
 **Before:**
+
 ```javascript
 const { AgentLogger } = require('./lib/agent-logger');
 ```
 
 **After (from agents directory):**
+
 ```javascript
 const { AgentLogger } = require('../../packages/shared-utils/agent-logger');
 ```
 
 **After (from apps):**
+
 ```javascript
 const { AgentLogger } = require('@total-audio/shared-utils/agent-logger');
 ```
@@ -33,6 +36,7 @@ const { AgentLogger } = require('@total-audio/shared-utils/agent-logger');
 ## Why the Move?
 
 These utilities are useful across:
+
 - Automation agents (`/tools/agents/`)
 - Audio Intel app (`/apps/audio-intel/`)
 - Command Centre (`/apps/command-centre/`)
@@ -44,6 +48,7 @@ Having them in `/tools/agents/lib/` implied they were agent-specific. Now they'r
 ## What Stays in /tools/agents/lib/
 
 This directory now contains agent-specific integrations (files that moved here are listed in the ls output above):
+
 - Airtable integration
 - Gmail integration
 - Contact intelligence

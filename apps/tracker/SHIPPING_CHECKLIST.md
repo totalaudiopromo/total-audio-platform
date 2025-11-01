@@ -21,6 +21,7 @@
 ### 1. Database Setup (30 minutes)
 
 **A. Apply Latest Migration**
+
 ```bash
 # Connect to Supabase and run:
 # File: supabase/migrations/010_tracker_prd_schema.sql
@@ -33,6 +34,7 @@
 ```
 
 **B. Disable Email Confirmation (CRITICAL)**
+
 ```bash
 # 1. Go to: https://supabase.com/dashboard/project/ucncbighzqudaszewjrv/auth/providers
 # 2. Click "Email" provider
@@ -42,6 +44,7 @@
 ```
 
 **C. Create Test Account**
+
 ```bash
 # 1. Visit http://localhost:3004/signup
 # 2. Create: test@tracker.com / TestPass123!
@@ -50,6 +53,7 @@
 ```
 
 **D. Add Demo Data (Optional but recommended)**
+
 ```bash
 # Run the seed script to create example campaigns
 # This will show off intelligence features
@@ -64,6 +68,7 @@
 ### 2. Local Testing (20 minutes)
 
 **A. Test Core Flows**
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/tracker
 npm run dev
@@ -85,6 +90,7 @@ npm run dev
 - [ ] **Sign in** works with existing account
 
 **B. Test Payment Flow (Optional - can test in production)**
+
 ```bash
 # If you want to test Stripe locally:
 # 1. Use test card: 4242 4242 4242 4242
@@ -108,6 +114,7 @@ npm run build
 ```
 
 **Common build issues to watch for**:
+
 - TypeScript errors → Fix types
 - Missing dependencies → npm install
 - Environment variables → Check .env.local
@@ -120,6 +127,7 @@ npm run build
 **A. Prepare Environment Variables**
 
 Create `.env.production` file with:
+
 ```bash
 # === Production URLs ===
 NEXT_PUBLIC_BASE_URL=https://tracker.totalaudiopromo.com
@@ -139,6 +147,7 @@ AIRTABLE_BASE_ID=appx7uTQWRH8cIC20
 ```
 
 **B. Push to GitHub**
+
 ```bash
 git add .
 git commit -m "feat: Tracker ready for production deployment
@@ -222,12 +231,14 @@ git push origin main
 **B. Update Audio Intel Cross-Links**
 
 Add "Try Tracker" link to Audio Intel:
+
 - apps/audio-intel/app/page.tsx footer
 - "Complete your campaign workflow" messaging
 
 **C. Social Media Announcement**
 
 Tweet/Post:
+
 ```
 🎵 NEW: Tracker by Total Audio Promo
 
@@ -248,6 +259,7 @@ tracker.totalaudiopromo.com
 ## 📋 FINAL CHECKLIST SUMMARY
 
 **Before deploying**:
+
 - [ ] Database migration applied (010_tracker_prd_schema.sql)
 - [ ] Email confirmation disabled in Supabase
 - [ ] Local testing complete (sign up → create → intelligence → export)
@@ -255,6 +267,7 @@ tracker.totalaudiopromo.com
 - [ ] GitHub repo pushed with latest code
 
 **During deployment**:
+
 - [ ] Vercel project created
 - [ ] Root directory set to `apps/tracker`
 - [ ] All environment variables added
@@ -262,6 +275,7 @@ tracker.totalaudiopromo.com
 - [ ] DNS CNAME record added
 
 **After deployment**:
+
 - [ ] Production site loads (tracker.totalaudiopromo.com)
 - [ ] Sign up flow works
 - [ ] Campaigns creation works
@@ -306,12 +320,14 @@ Vercel keeps all previous deployments, can rollback instantly.
 ## 🎉 POST-LAUNCH
 
 **Week 1**:
+
 - Monitor Vercel analytics for errors
 - Check Stripe dashboard for payment issues
 - Collect user feedback
 - Fix any critical bugs
 
 **Week 2**:
+
 - Add missing "nice-to-have" features
 - Implement activity logging
 - Create automated insights

@@ -10,7 +10,8 @@
 require('dotenv').config();
 const fetch = require('node-fetch');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -20,13 +21,15 @@ async function getTableSchema() {
   try {
     const response = await fetch(`https://api.airtable.com/v0/meta/bases/${BASE_ID}/tables`, {
       headers: {
-        'Authorization': `Bearer ${AIRTABLE_API_KEY}`
-      }
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+      },
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(`Failed to get schema: ${response.status} ${response.statusText} - ${errorText}`);
+      throw new Error(
+        `Failed to get schema: ${response.status} ${response.statusText} - ${errorText}`
+      );
     }
 
     const data = await response.json();
@@ -63,13 +66,15 @@ async function searchAllRecords() {
 
       const response = await fetch(url, {
         headers: {
-          'Authorization': `Bearer ${AIRTABLE_API_KEY}`
-        }
+          Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        },
       });
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`Failed to search: ${response.status} ${response.statusText} - ${errorText}`);
+        throw new Error(
+          `Failed to search: ${response.status} ${response.statusText} - ${errorText}`
+        );
       }
 
       const data = await response.json();
@@ -77,12 +82,10 @@ async function searchAllRecords() {
       offset = data.offset;
 
       console.log(`   Fetched ${data.records.length} records... (Total: ${allRecords.length})`);
-
     } while (offset);
 
     console.log(`\n✅ Total records fetched: ${allRecords.length}\n`);
     return allRecords;
-
   } catch (error) {
     console.error('❌ Failed to search records:', error.message);
     return allRecords;
@@ -93,18 +96,31 @@ function isAlternativeIndieContact(record) {
   const fields = record.fields;
 
   // Check all possible genre fields
-  const genreFields = ['Genre', 'Genres', 'genre', 'genres', 'Genre Focus', 'Music Genre', 'Station Genre', 'Format'];
+  const genreFields = [
+    'Genre',
+    'Genres',
+    'genre',
+    'genres',
+    'Genre Focus',
+    'Music Genre',
+    'Station Genre',
+    'Format',
+  ];
 
   for (const field of genreFields) {
     if (fields[field]) {
-      const genreValue = Array.isArray(fields[field]) ? fields[field].join(' ') : String(fields[field]);
+      const genreValue = Array.isArray(fields[field])
+        ? fields[field].join(' ')
+        : String(fields[field]);
       const genreLower = genreValue.toLowerCase();
 
-      if (genreLower.includes('alternative') ||
-          genreLower.includes('indie') ||
-          genreLower.includes('alt rock') ||
-          genreLower.includes('indie rock') ||
-          genreLower.includes('alt') && genreLower.includes('rock')) {
+      if (
+        genreLower.includes('alternative') ||
+        genreLower.includes('indie') ||
+        genreLower.includes('alt rock') ||
+        genreLower.includes('indie rock') ||
+        (genreLower.includes('alt') && genreLower.includes('rock'))
+      ) {
         return true;
       }
     }
@@ -128,7 +144,7 @@ function extractContactDetails(record) {
     notes: fields['Notes'] || fields['Description'] || '',
     lastContacted: fields['Last Contacted'] || fields['Last Contact'] || '',
     responseRate: fields['Response Rate'] || '',
-    allFields: fields
+    allFields: fields,
   };
 }
 
@@ -171,7 +187,7 @@ async function main() {
     console.log('Showing first 5 records to help debug:\n');
 
     allRecords.slice(0, 5).forEach((record, i) => {
-      console.log(`${i+1}. Record ID: ${record.id}`);
+      console.log(`${i + 1}. Record ID: ${record.id}`);
       console.log(`   Fields: ${Object.keys(record.fields).join(', ')}`);
       console.log(`   Sample values:`, JSON.stringify(record.fields, null, 2).slice(0, 200));
       console.log('');
@@ -184,7 +200,7 @@ async function main() {
     hot: [],
     warm: [],
     cold: [],
-    other: []
+    other: [],
   };
 
   alternativeIndieContacts.forEach(contact => {
@@ -230,13 +246,20 @@ async function main() {
   // Save to file
   const fs = require('fs');
   const outputPath = './KYARA_AIRTABLE_CONTACTS.json';
-  fs.writeFileSync(outputPath, JSON.stringify({
-    total: alternativeIndieContacts.length,
-    hot: byRelationship.hot,
-    warm: byRelationship.warm,
-    cold: byRelationship.cold,
-    other: byRelationship.other
-  }, null, 2));
+  fs.writeFileSync(
+    outputPath,
+    JSON.stringify(
+      {
+        total: alternativeIndieContacts.length,
+        hot: byRelationship.hot,
+        warm: byRelationship.warm,
+        cold: byRelationship.cold,
+        other: byRelationship.other,
+      },
+      null,
+      2
+    )
+  );
 
   console.log(`✅ Contact list saved to: ${outputPath}\n`);
 }
@@ -248,7 +271,8 @@ function displayContact(contact, index) {
   if (contact.genre) console.log(`   🎵 ${contact.genre}`);
   if (contact.country) console.log(`   🌍 ${contact.country}`);
   if (contact.lastContacted) console.log(`   📅 Last contacted: ${contact.lastContacted}`);
-  if (contact.notes) console.log(`   📝 ${contact.notes.slice(0, 100)}${contact.notes.length > 100 ? '...' : ''}`);
+  if (contact.notes)
+    console.log(`   📝 ${contact.notes.slice(0, 100)}${contact.notes.length > 100 ? '...' : ''}`);
   console.log('');
 }
 

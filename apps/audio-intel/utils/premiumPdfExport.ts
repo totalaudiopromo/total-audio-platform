@@ -50,11 +50,7 @@ function hexToRgb(hex: string): [number, number, number] {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   if (!result) return BRAND.audioIntelPink;
 
-  return [
-    parseInt(result[1], 16),
-    parseInt(result[2], 16),
-    parseInt(result[3], 16)
-  ];
+  return [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)];
 }
 
 /**
@@ -103,7 +99,9 @@ function addPremiumBrutalistHeader(
   branding?: WhiteLabelBranding
 ): void {
   const agencyName = branding?.agencyName || 'Audio Intel';
-  const primaryColor = branding?.primaryColor ? hexToRgb(branding.primaryColor) : BRAND.audioIntelPink;
+  const primaryColor = branding?.primaryColor
+    ? hexToRgb(branding.primaryColor)
+    : BRAND.audioIntelPink;
 
   // WHITE BACKGROUND - full width
   doc.setFillColor(...BRAND.white);
@@ -127,7 +125,12 @@ function addPremiumBrutalistHeader(
     } catch (error) {
       console.warn('Failed to load logo, using initials');
       // Fallback to initials
-      const initials = agencyName.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+      const initials = agencyName
+        .split(' ')
+        .map(w => w[0])
+        .join('')
+        .substring(0, 2)
+        .toUpperCase();
       doc.setFillColor(...primaryColor);
       doc.rect(18, 18, 28, 28, 'F');
       doc.setDrawColor(...BRAND.black);
@@ -192,12 +195,11 @@ function addPremiumBrutalistHeader(
 /**
  * PREMIUM BRUTALIST FOOTER
  */
-function addPremiumBrutalistFooter(
-  doc: jsPDF,
-  branding?: WhiteLabelBranding
-): void {
+function addPremiumBrutalistFooter(doc: jsPDF, branding?: WhiteLabelBranding): void {
   const agencyName = branding?.agencyName || 'Audio Intel';
-  const primaryColor = branding?.primaryColor ? hexToRgb(branding.primaryColor) : BRAND.audioIntelPink;
+  const primaryColor = branding?.primaryColor
+    ? hexToRgb(branding.primaryColor)
+    : BRAND.audioIntelPink;
   const pageCount = (doc as any).internal.getNumberOfPages();
 
   for (let i = 1; i <= pageCount; i++) {
@@ -231,7 +233,7 @@ function addPremiumBrutalistFooter(
     const dateStr = new Date().toLocaleDateString('en-GB', {
       day: '2-digit',
       month: 'short',
-      year: 'numeric'
+      year: 'numeric',
     });
     doc.text(`Generated ${dateStr}`, 15, 290);
 
@@ -263,7 +265,9 @@ function drawContactCard(
   branding?: WhiteLabelBranding
 ): number {
   const displayName = getDisplayName(contact);
-  const primaryColor = branding?.primaryColor ? hexToRgb(branding.primaryColor) : BRAND.audioIntelPink;
+  const primaryColor = branding?.primaryColor
+    ? hexToRgb(branding.primaryColor)
+    : BRAND.audioIntelPink;
   const confidenceColor = getConfidenceColor(contact.researchConfidence || 'Low');
 
   // CARD CONTAINER - white background with brutal border
@@ -329,16 +333,15 @@ function drawContactCard(
 /**
  * INTELLIGENCE SECTION - Clean formatted text
  */
-function drawIntelligenceSection(
-  doc: jsPDF,
-  contact: EnrichedContact,
-  y: number
-): number {
+function drawIntelligenceSection(doc: jsPDF, contact: EnrichedContact, y: number): number {
   let intelligenceText = contact.contactIntelligence;
 
   // Generate fallback intelligence if empty
-  if (!intelligenceText || intelligenceText.trim() === '' ||
-      intelligenceText === 'No intelligence available for this contact.') {
+  if (
+    !intelligenceText ||
+    intelligenceText.trim() === '' ||
+    intelligenceText === 'No intelligence available for this contact.'
+  ) {
     const platform = contact.platform || 'Unknown Platform';
     const company = contact.company || 'Unknown Company';
     const confidence = contact.researchConfidence || 'Low';
@@ -347,8 +350,8 @@ function drawIntelligenceSection(
       confidence === 'High'
         ? 'Priority contact - verified music industry connection. Ready for outreach.'
         : confidence === 'Medium'
-        ? 'Good potential contact. Verify details before outreach.'
-        : 'Requires additional research before contact. Cross-reference with LinkedIn.'
+          ? 'Good potential contact. Verify details before outreach.'
+          : 'Requires additional research before contact. Cross-reference with LinkedIn.'
     }`;
   }
 
@@ -363,7 +366,7 @@ function drawIntelligenceSection(
   doc.setFillColor(...BRAND.gray100);
 
   const intelligenceLines = doc.splitTextToSize(intelligenceText, 170);
-  const boxHeight = (intelligenceLines.length * 5) + 10;
+  const boxHeight = intelligenceLines.length * 5 + 10;
 
   doc.rect(15, y, 180, boxHeight, 'F');
 
@@ -378,7 +381,7 @@ function drawIntelligenceSection(
   doc.setTextColor(...BRAND.gray900);
 
   intelligenceLines.forEach((line: string, idx: number) => {
-    doc.text(line, 20, y + 8 + (idx * 5));
+    doc.text(line, 20, y + 8 + idx * 5);
   });
 
   return y + boxHeight + 10; // Return next Y position
@@ -425,11 +428,15 @@ export function exportWhiteLabelContactsPdf(
   doc.setTextColor(...BRAND.gray900);
   doc.text(`Total Contacts: ${contacts.length}`, 20, 107);
   doc.text(`High Confidence: ${highConfidence}`, 20, 113);
-  doc.text(`Generated: ${new Date().toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric'
-  })}`, 120, 107);
+  doc.text(
+    `Generated: ${new Date().toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric',
+    })}`,
+    120,
+    107
+  );
   doc.text(`Agency: ${agencyName}`, 120, 113);
 
   // CONTACT CARDS - starting on page 2
@@ -474,7 +481,8 @@ export function exportWhiteLabelContactsPdf(
   addPremiumBrutalistFooter(doc, branding);
 
   // Save PDF
-  const finalFilename = filename ||
+  const finalFilename =
+    filename ||
     `${(branding?.agencyName || 'audio-intel').toLowerCase().replace(/\s+/g, '-')}-contacts-${new Date().toISOString().split('T')[0]}.pdf`;
 
   doc.save(finalFilename);
@@ -490,40 +498,43 @@ export function exportDemoContactsPdf(): void {
     {
       name: 'Sarah Johnson',
       email: 'sarah.johnson@bbc.co.uk',
-      contactIntelligence: 'BBC Radio 1 producer with focus on new music. Previously worked at BBC Radio 6 Music. Strong track record supporting emerging UK artists. Best contact time: Tue-Thu mornings.',
+      contactIntelligence:
+        'BBC Radio 1 producer with focus on new music. Previously worked at BBC Radio 6 Music. Strong track record supporting emerging UK artists. Best contact time: Tue-Thu mornings.',
       researchConfidence: 'High',
       lastResearched: '2025-10-17',
       platform: 'BBC Radio 1',
       role: 'Producer',
-      company: 'BBC'
+      company: 'BBC',
     },
     {
       name: 'Tom Davies',
       email: 'tom@spotify.com',
-      contactIntelligence: 'Spotify UK editorial team. Curates "New Music Friday UK" and "The Rock List". Open to submissions via official Spotify for Artists platform.',
+      contactIntelligence:
+        'Spotify UK editorial team. Curates "New Music Friday UK" and "The Rock List". Open to submissions via official Spotify for Artists platform.',
       researchConfidence: 'Medium',
       lastResearched: '2025-10-17',
       platform: 'Spotify',
       role: 'Editorial',
-      company: 'Spotify UK'
+      company: 'Spotify UK',
     },
     {
       name: 'Emma Williams',
       email: 'emma.williams@kerrrang.com',
-      contactIntelligence: 'Kerrang! Radio presenter and music journalist. Covers rock, metal, and alternative scenes. Active on Twitter/X for submissions.',
+      contactIntelligence:
+        'Kerrang! Radio presenter and music journalist. Covers rock, metal, and alternative scenes. Active on Twitter/X for submissions.',
       researchConfidence: 'High',
       lastResearched: '2025-10-17',
       platform: 'Kerrang! Radio',
       role: 'Presenter',
-      company: 'Kerrang!'
-    }
+      company: 'Kerrang!',
+    },
   ];
 
   const demoBranding: WhiteLabelBranding = {
     agencyName: 'Liberty Promotions',
     primaryColor: '#FF006B',
     website: 'liberty-promotions.co.uk',
-    contactEmail: 'dan@liberty-promotions.co.uk'
+    contactEmail: 'dan@liberty-promotions.co.uk',
   };
 
   exportWhiteLabelContactsPdf(demoContacts, demoBranding);

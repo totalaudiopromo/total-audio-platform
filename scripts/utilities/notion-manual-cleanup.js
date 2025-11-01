@@ -12,14 +12,14 @@ async function manualCleanup() {
   try {
     console.log('🧹 MANUAL NOTION CLEANUP');
     console.log('========================');
-    
+
     const response = await notion.search({
       query: '',
-      page_size: 100
+      page_size: 100,
     });
-    
+
     console.log(`📊 Total pages found: ${response.results.length}\n`);
-    
+
     // Find duplicates that need manual cleanup
     const duplicates = {
       'Content & Marketing': [],
@@ -29,13 +29,13 @@ async function manualCleanup() {
       'Business Operations': [],
       'Business Strategy': [],
       'Audio Intel Product': [],
-      'Daily Operations': []
+      'Daily Operations': [],
     };
-    
-    response.results.forEach((item) => {
+
+    response.results.forEach(item => {
       if (item.object === 'page') {
         const title = item.properties?.title?.title?.[0]?.text?.content || '';
-        
+
         // Categorize duplicates
         if (title.includes('CONTENT & MARKETING') || title.includes('Content & Marketing')) {
           duplicates['Content & Marketing'].push({ id: item.id, title, url: item.url });
@@ -43,7 +43,10 @@ async function manualCleanup() {
           duplicates['Development Hub'].push({ id: item.id, title, url: item.url });
         } else if (title.includes('ADMIN & RESOURCES') || title.includes('Admin & Resources')) {
           duplicates['Admin & Resources'].push({ id: item.id, title, url: item.url });
-        } else if (title.includes('TECHNICAL DEVELOPMENT') || title.includes('Technical Development')) {
+        } else if (
+          title.includes('TECHNICAL DEVELOPMENT') ||
+          title.includes('Technical Development')
+        ) {
           duplicates['Technical Development'].push({ id: item.id, title, url: item.url });
         } else if (title.includes('BUSINESS OPERATIONS') || title.includes('Business Operations')) {
           duplicates['Business Operations'].push({ id: item.id, title, url: item.url });
@@ -56,10 +59,10 @@ async function manualCleanup() {
         }
       }
     });
-    
+
     console.log('🔍 DUPLICATES FOUND:');
     console.log('===================');
-    
+
     Object.entries(duplicates).forEach(([category, pages]) => {
       if (pages.length > 1) {
         console.log(`\n📁 ${category.toUpperCase()} (${pages.length} duplicates):`);
@@ -68,15 +71,15 @@ async function manualCleanup() {
           console.log(`     ID: ${page.id}`);
           console.log(`     URL: ${page.url}`);
         });
-        
+
         // Recommend which one to keep (usually the most recent or most complete)
         const keepPage = pages[0]; // Keep the first one for now
         const archivePages = pages.slice(1);
-        
+
         console.log(`\n  📌 RECOMMENDATION:`);
         console.log(`     KEEP: ${keepPage.title}`);
         console.log(`     ARCHIVE: ${archivePages.length} duplicates`);
-        
+
         console.log(`\n  🔗 MANUAL ACTIONS NEEDED:`);
         archivePages.forEach((page, index) => {
           console.log(`     ${index + 1}. Go to: ${page.url}`);
@@ -85,7 +88,7 @@ async function manualCleanup() {
         console.log('');
       }
     });
-    
+
     console.log('\n📋 CLEANUP INSTRUCTIONS:');
     console.log('========================');
     console.log('1. Open each duplicate page URL above');
@@ -93,10 +96,9 @@ async function manualCleanup() {
     console.log('3. Select "Move to" → "Archive"');
     console.log('4. This will move the page to your Notion trash');
     console.log('5. Empty trash to permanently delete (optional)');
-    
+
     console.log('\n✅ MANUAL CLEANUP ANALYSIS COMPLETE!');
     console.log('Follow the instructions above to clean up duplicates manually.');
-    
   } catch (error) {
     console.error('Error during manual cleanup analysis:', error.message);
   }
@@ -107,5 +109,3 @@ if (require.main === module) {
 }
 
 module.exports = { manualCleanup };
-
-

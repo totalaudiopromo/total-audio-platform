@@ -12,21 +12,25 @@ export function DashboardClient({ children }: DashboardClientProps) {
 
   return (
     <>
-      <div onClick={(e) => {
-        const target = e.target as HTMLElement;
-        if (target.id === 'new-campaign-trigger' || target.closest('#new-campaign-trigger')) {
-          e.preventDefault();
-          setIsModalOpen(true);
-        }
-      }}>
+      <div
+        onClick={e => {
+          const target = e.target as HTMLElement;
+          if (
+            target.id === 'new-campaign-trigger' ||
+            target.closest('#new-campaign-trigger')
+          ) {
+            e.preventDefault();
+            setIsModalOpen(true);
+          }
+        }}
+      >
         {children}
       </div>
 
-      <CampaignModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <CampaignModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
       />
     </>
   );
 }
-

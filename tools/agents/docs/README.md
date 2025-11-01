@@ -89,12 +89,12 @@ npm run agents:music-recommendations         # Get technical recommendations
 
 # Growth Hacking Optimizer commands
 node agents/growth-hacking-optimizer.js funnel [agencyId]           # Analyze conversion funnel
-node agents/growth-hacking-optimizer.js experiment create           # Create A/B test experiment  
+node agents/growth-hacking-optimizer.js experiment create           # Create A/B test experiment
 node agents/growth-hacking-optimizer.js experiment analyze <id>     # Analyze experiment results
 node agents/growth-hacking-optimizer.js retention [agencyId]        # Analyze user retention
 node agents/growth-hacking-optimizer.js report [agencyId]           # Generate growth report
 
-# Music Industry Strategist commands  
+# Music Industry Strategist commands
 node agents/music-industry-strategist.js market [sector] [market]   # Market opportunity analysis
 node agents/music-industry-strategist.js partnership [type]         # Partnership strategy development
 node agents/music-industry-strategist.js network                    # Industry network analysis
@@ -117,7 +117,7 @@ npm run agents:workflows                     # Shows all available workflows inc
 ### New Workflows
 
 - **music-analysis**: Comprehensive music analysis and platform integration
-- **tech-recommendations**: Generate technical architecture recommendations  
+- **tech-recommendations**: Generate technical architecture recommendations
 - **performance-optimization**: Enhanced with music tech performance analysis
 - **growth-optimization**: User acquisition funnel analysis and conversion optimization
 - **viral-campaign**: End-to-end viral content strategy and automation

@@ -39,32 +39,32 @@ export async function GET() {
 
 function createHealthEndpoints() {
   console.log('🏥 Creating health check endpoints...\n');
-  
+
   apps.forEach(app => {
     console.log(`📱 Creating health endpoint for ${app}:`);
-    
+
     // Create the health API route directory
     const healthDir = path.join(__dirname, '..', 'apps', app, 'app', 'api', 'health');
-    
+
     if (!fs.existsSync(healthDir)) {
       fs.mkdirSync(healthDir, { recursive: true });
       console.log(`  📁 Created directory: ${healthDir}`);
     }
-    
+
     // Create route.ts file
     const routeFile = path.join(healthDir, 'route.ts');
-    
+
     if (!fs.existsSync(routeFile)) {
       fs.writeFileSync(routeFile, healthEndpointTemplate);
       console.log(`  📝 Created route.ts`);
     } else {
       console.log(`  ✅ Health endpoint already exists`);
     }
-    
+
     console.log(`  🔗 Health check URL: https://${getAppDomain(app)}/api/health`);
     console.log('');
   });
-  
+
   console.log('🎉 Health endpoints created successfully!');
   console.log('📊 You can now monitor your apps at /api/health');
 }
@@ -73,11 +73,11 @@ function getAppDomain(app) {
   const domains = {
     'audio-intel': 'intel.totalaudiopromo.com',
     'command-centre': 'command.totalaudiopromo.com',
-    'tracker': 'tracker.totalaudiopromo.com',
-    'web': 'totalaudiopromo.com',
-    'pitch-generator': 'pitch.totalaudiopromo.com'
+    tracker: 'tracker.totalaudiopromo.com',
+    web: 'totalaudiopromo.com',
+    'pitch-generator': 'pitch.totalaudiopromo.com',
   };
-  
+
   return domains[app] || `${app}.totalaudiopromo.com`;
 }
 

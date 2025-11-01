@@ -25,8 +25,8 @@ async function exampleSingleTweet() {
     // Post a single tweet
     const result = await agent.post(
       'After 5+ years promoting music to UK radio, I was spending 15+ hours weekly researching contacts.\n\n' +
-      'Built Audio Intel to solve this properly. Now it takes 2 minutes instead of 15 hours.\n\n' +
-      'intel.totalaudiopromo.com'
+        'Built Audio Intel to solve this properly. Now it takes 2 minutes instead of 15 hours.\n\n' +
+        'intel.totalaudiopromo.com'
     );
 
     if (result.success) {
@@ -138,7 +138,7 @@ function exampleListContent() {
     'The Brighton Producer Story',
     'The Submission Window Problem',
     'The Cost Reality',
-    'The Response Rate Breakthrough'
+    'The Response Rate Breakthrough',
   ];
 
   console.log('📝 Available Twitter content:\n');
@@ -176,5 +176,5 @@ export {
   exampleThread,
   exampleScheduledPosts,
   exampleHealthCheck,
-  exampleListContent
+  exampleListContent,
 };

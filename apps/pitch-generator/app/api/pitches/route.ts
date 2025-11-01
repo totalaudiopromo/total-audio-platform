@@ -5,7 +5,10 @@ import { cookies } from 'next/headers';
 export async function GET(req: Request) {
   try {
     const supabase = await createServerClient(cookies());
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -16,7 +19,7 @@ export async function GET(req: Request) {
     const limit = parseInt(searchParams.get('limit') || '20');
     const offset = parseInt(searchParams.get('offset') || '0');
 
-    let query = (supabase)
+    let query = supabase
       .from('pitches')
       .select('*', { count: 'exact' })
       .eq('user_id', userId)
@@ -31,10 +34,7 @@ export async function GET(req: Request) {
 
     if (error) {
       console.error('Error fetching pitches:', error);
-      return NextResponse.json(
-        { error: 'Failed to fetch pitches' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to fetch pitches' }, { status: 500 });
     }
 
     return NextResponse.json({
@@ -51,4 +51,3 @@ export async function GET(req: Request) {
     );
   }
 }
-

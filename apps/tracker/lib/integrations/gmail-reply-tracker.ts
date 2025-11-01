@@ -4,7 +4,8 @@
  */
 
 import { google } from 'googleapis';
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 import { OAuthHandler } from './oauth-handler';
 
 export class GmailReplyTracker {
@@ -84,7 +85,7 @@ export class GmailReplyTracker {
           if (messages.length > 1) {
             // Find the reply message (not sent by user)
             const replyMessage = messages.find(
-              (msg) => msg.id !== tracked.gmail_message_id
+              msg => msg.id !== tracked.gmail_message_id
             );
 
             if (replyMessage) {
@@ -112,7 +113,7 @@ export class GmailReplyTracker {
                   status: 'replied',
                   notes: supabase.rpc('concat_notes', {
                     current_notes: '',
-                    new_note: `\n\n✉️ Reply received: ${snippet.substring(0, 200)}`
+                    new_note: `\n\n✉️ Reply received: ${snippet.substring(0, 200)}`,
                   }),
                 })
                 .eq('id', tracked.campaign_id);
@@ -169,9 +170,10 @@ export class GmailReplyTracker {
         userId: connection.user_id,
         activityType: 'reply_scan',
         status: errors.length > 0 ? 'warning' : 'success',
-        message: repliesFound > 0
-          ? `Detected ${repliesFound} new repl${repliesFound === 1 ? 'y' : 'ies'}`
-          : 'Checked Gmail for replies',
+        message:
+          repliesFound > 0
+            ? `Detected ${repliesFound} new repl${repliesFound === 1 ? 'y' : 'ies'}`
+            : 'Checked Gmail for replies',
         metadata: {
           replies_found: repliesFound,
           errors: errors.length > 0 ? errors : undefined,
@@ -269,7 +271,10 @@ export class GmailReplyTracker {
       const supabase = await this.getSupabaseClient();
       const sanitizedMetadata = metadata ? { ...metadata } : {};
 
-      if ('errors' in sanitizedMetadata && sanitizedMetadata.errors === undefined) {
+      if (
+        'errors' in sanitizedMetadata &&
+        sanitizedMetadata.errors === undefined
+      ) {
         delete sanitizedMetadata.errors;
       }
 
@@ -283,7 +288,8 @@ export class GmailReplyTracker {
         metadata: sanitizedMetadata,
       });
     } catch (logError) {
-      const logMessage = logError instanceof Error ? logError.message : String(logError);
+      const logMessage =
+        logError instanceof Error ? logError.message : String(logError);
       console.error('Failed to log Gmail integration activity:', logMessage);
     }
   }

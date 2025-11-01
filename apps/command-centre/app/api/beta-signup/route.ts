@@ -13,7 +13,11 @@ interface BetaSignupData {
 }
 
 // In-memory storage for demo (in production, this would use a database)
-const betaSignups: (BetaSignupData & { id: string; signupDate: string; status: 'pending' | 'approved' | 'rejected' })[] = [];
+const betaSignups: (BetaSignupData & {
+  id: string;
+  signupDate: string;
+  status: 'pending' | 'approved' | 'rejected';
+})[] = [];
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,7 +26,7 @@ export async function POST(request: NextRequest) {
     // Validate required fields
     const required = ['name', 'email', 'role', 'referralSource', 'goals'];
     const missing = required.filter(field => !signupData[field as keyof BetaSignupData]);
-    
+
     if (missing.length > 0) {
       return NextResponse.json(
         { error: `Missing required fields: ${missing.join(', ')}` },
@@ -44,7 +48,7 @@ export async function POST(request: NextRequest) {
       id: `beta_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       ...signupData,
       signupDate: new Date().toISOString(),
-      status: 'pending' as const
+      status: 'pending' as const,
     };
 
     betaSignups.push(newSignup);
@@ -54,7 +58,7 @@ export async function POST(request: NextRequest) {
       id: newSignup.id,
       email: newSignup.email,
       role: newSignup.role,
-      source: newSignup.referralSource
+      source: newSignup.referralSource,
     });
 
     return NextResponse.json({
@@ -65,16 +69,12 @@ export async function POST(request: NextRequest) {
         id: newSignup.id,
         email: newSignup.email,
         status: newSignup.status,
-        signupDate: newSignup.signupDate
-      }
+        signupDate: newSignup.signupDate,
+      },
     });
-
   } catch (error) {
     console.error('Beta signup error:', error);
-    return NextResponse.json(
-      { error: 'Failed to process beta signup' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to process beta signup' }, { status: 500 });
   }
 }
 
@@ -82,14 +82,16 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
-    
+
     let filteredSignups = betaSignups;
     if (status && ['pending', 'approved', 'rejected'].includes(status)) {
       filteredSignups = betaSignups.filter(signup => signup.status === status);
     }
 
     // Sort by signup date (newest first)
-    filteredSignups.sort((a, b) => new Date(b.signupDate).getTime() - new Date(a.signupDate).getTime());
+    filteredSignups.sort(
+      (a, b) => new Date(b.signupDate).getTime() - new Date(a.signupDate).getTime()
+    );
 
     return NextResponse.json({
       success: true,
@@ -99,15 +101,11 @@ export async function GET(request: NextRequest) {
         pending: betaSignups.filter(s => s.status === 'pending').length,
         approved: betaSignups.filter(s => s.status === 'approved').length,
         rejected: betaSignups.filter(s => s.status === 'rejected').length,
-        total: betaSignups.length
-      }
+        total: betaSignups.length,
+      },
     });
-
   } catch (error) {
     console.error('Failed to fetch beta signups:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch beta signups' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch beta signups' }, { status: 500 });
   }
 }

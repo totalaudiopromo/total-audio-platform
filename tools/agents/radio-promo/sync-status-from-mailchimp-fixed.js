@@ -14,7 +14,8 @@ const MAILCHIMP_API_KEY = '83f53d36bd6667b4c56015e8a0d1ed66-us13';
 const MAILCHIMP_SERVER = 'us13';
 const LIST_ID = '137bcedead';
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -33,7 +34,7 @@ async function fetchAllAirtableContacts() {
       : `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
 
     const response = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
     });
 
     const data = await response.json();
@@ -55,9 +56,9 @@ async function checkMailchimpStatus(email) {
       {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${MAILCHIMP_API_KEY}`,
-          'Content-Type': 'application/json'
-        }
+          Authorization: `Bearer ${MAILCHIMP_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
       }
     );
 
@@ -71,7 +72,6 @@ async function checkMailchimpStatus(email) {
 
     const data = await response.json();
     return { exists: true, status: data.status };
-
   } catch (error) {
     return { exists: false };
   }
@@ -79,19 +79,16 @@ async function checkMailchimpStatus(email) {
 
 async function updateAirtableStatus(recordId, newStatus) {
   try {
-    const response = await fetch(
-      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          fields: { 'Status': newStatus }
-        })
-      }
-    );
+    const response = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        fields: { Status: newStatus },
+      }),
+    });
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -115,7 +112,7 @@ async function syncAllStatuses() {
     updated: 0,
     noChange: 0,
     skipped: 0,
-    errors: 0
+    errors: 0,
   };
 
   const changes = [];
@@ -159,7 +156,7 @@ async function syncAllStatuses() {
           email,
           station: contact.fields.Station || 'Unknown',
           oldStatus: currentStatus,
-          newStatus
+          newStatus,
         });
 
         if (stats.updated % 10 === 0) {
@@ -186,7 +183,7 @@ async function syncAllStatuses() {
   if (changes.length > 0) {
     console.log(`🔍 STATUS CHANGES (${changes.length} total):\n`);
     changes.forEach((c, i) => {
-      console.log(`${i+1}. ${c.email}`);
+      console.log(`${i + 1}. ${c.email}`);
       console.log(`   ${c.oldStatus} → ${c.newStatus}`);
       console.log(`   Station: ${c.station}\n`);
     });

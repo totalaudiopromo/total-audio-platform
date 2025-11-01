@@ -5,7 +5,9 @@ export default function SignupPage() {
   return (
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-2">Create your account</h2>
+        <h2 className="text-2xl font-bold text-slate-900 mb-2">
+          Create your account
+        </h2>
         <p className="text-slate-600">
           Start tracking your music campaigns with professional analytics
         </p>
@@ -27,5 +29,3 @@ export default function SignupPage() {
     </div>
   );
 }
-
-

@@ -12,7 +12,7 @@ async function listAllPrices() {
   try {
     const prices = await stripe.prices.list({
       limit: 20,
-      expand: ['data.product']
+      expand: ['data.product'],
     });
 
     for (const price of prices.data) {

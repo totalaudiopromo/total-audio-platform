@@ -19,129 +19,128 @@ interface AgentLoadingStateProps {
   onError?: (error: string) => void;
 }
 
-const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({
-  workflow,
-  onComplete,
-  onError
-}) => {
+const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({ workflow, onComplete, onError }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [steps, setSteps] = useState<LoadingStep[]>([]);
 
   // Define workflows with their agent sequences (useMemo to prevent recreation)
-  const workflows = useMemo(() => ({
-    'contact-processing': [
-      {
-        id: '1',
-        agentType: 'contact-agent',
-        agentName: 'Contact Validator',
-        message: 'Validating contact data format and structure...',
-        duration: 2000
-      },
-      {
-        id: '2', 
-        agentType: 'contact-agent',
-        agentName: 'Duplicate Detector',
-        message: 'Scanning for duplicate contacts across databases...',
-        duration: 3000
-      },
-      {
-        id: '3',
-        agentType: 'integration-agent',
-        agentName: 'Industry Intelligence',
-        message: 'Gathering music industry intelligence and contact insights...',
-        duration: 4000
-      },
-      {
-        id: '4',
-        agentType: 'contact-agent',
-        agentName: 'Data Enrichment',
-        message: 'Enriching contacts with social profiles and company data...',
-        duration: 3500
-      },
-      {
-        id: '5',
-        agentType: 'database-agent',
-        agentName: 'Data Organiser',
-        message: 'Organising enriched contacts into campaign-ready database...',
-        duration: 2500
-      }
-    ],
-    'email-campaign': [
-      {
-        id: '1',
-        agentType: 'content-generator',
-        agentName: 'Content Generator',
-        message: 'Creating personalised email content for your campaign...',
-        duration: 3000
-      },
-      {
-        id: '2',
-        agentType: 'email-scheduler',
-        agentName: 'Campaign Scheduler',
-        message: 'Scheduling emails for optimal delivery times...',
-        duration: 2000
-      },
-      {
-        id: '3',
-        agentType: 'email-scheduler',
-        agentName: 'Delivery Engine',
-        message: 'Sending personalised emails to verified contacts...',
-        duration: 4000
-      }
-    ],
-    'data-analysis': [
-      {
-        id: '1',
-        agentType: 'analytics-agent',
-        agentName: 'Data Collector',
-        message: 'Collecting performance metrics across all platforms...',
-        duration: 2500
-      },
-      {
-        id: '2',
-        agentType: 'analytics-agent',
-        agentName: 'Pattern Analyzer',
-        message: 'Analyzing engagement patterns and success metrics...',
-        duration: 3500
-      },
-      {
-        id: '3',
-        agentType: 'competitive-intel',
-        agentName: 'Market Intelligence',
-        message: 'Gathering competitive intelligence and market insights...',
-        duration: 4000
-      }
-    ],
-    'content-generation': [
-      {
-        id: '1',
-        agentType: 'viral-content-automation',
-        agentName: 'Trend Analyzer',
-        message: 'Analyzing current trends and viral content patterns...',
-        duration: 3000
-      },
-      {
-        id: '2',
-        agentType: 'content-generator',
-        agentName: 'Content Creator',
-        message: 'Generating original content optimized for your audience...',
-        duration: 4500
-      },
-      {
-        id: '3',
-        agentType: 'brand-validator',
-        agentName: 'Brand Validator',
-        message: 'Ensuring content aligns with Total Audio Promo branding...',
-        duration: 2000
-      }
-    ]
-  }), []);
+  const workflows = useMemo(
+    () => ({
+      'contact-processing': [
+        {
+          id: '1',
+          agentType: 'contact-agent',
+          agentName: 'Contact Validator',
+          message: 'Validating contact data format and structure...',
+          duration: 2000,
+        },
+        {
+          id: '2',
+          agentType: 'contact-agent',
+          agentName: 'Duplicate Detector',
+          message: 'Scanning for duplicate contacts across databases...',
+          duration: 3000,
+        },
+        {
+          id: '3',
+          agentType: 'integration-agent',
+          agentName: 'Industry Intelligence',
+          message: 'Gathering music industry intelligence and contact insights...',
+          duration: 4000,
+        },
+        {
+          id: '4',
+          agentType: 'contact-agent',
+          agentName: 'Data Enrichment',
+          message: 'Enriching contacts with social profiles and company data...',
+          duration: 3500,
+        },
+        {
+          id: '5',
+          agentType: 'database-agent',
+          agentName: 'Data Organiser',
+          message: 'Organising enriched contacts into campaign-ready database...',
+          duration: 2500,
+        },
+      ],
+      'email-campaign': [
+        {
+          id: '1',
+          agentType: 'content-generator',
+          agentName: 'Content Generator',
+          message: 'Creating personalised email content for your campaign...',
+          duration: 3000,
+        },
+        {
+          id: '2',
+          agentType: 'email-scheduler',
+          agentName: 'Campaign Scheduler',
+          message: 'Scheduling emails for optimal delivery times...',
+          duration: 2000,
+        },
+        {
+          id: '3',
+          agentType: 'email-scheduler',
+          agentName: 'Delivery Engine',
+          message: 'Sending personalised emails to verified contacts...',
+          duration: 4000,
+        },
+      ],
+      'data-analysis': [
+        {
+          id: '1',
+          agentType: 'analytics-agent',
+          agentName: 'Data Collector',
+          message: 'Collecting performance metrics across all platforms...',
+          duration: 2500,
+        },
+        {
+          id: '2',
+          agentType: 'analytics-agent',
+          agentName: 'Pattern Analyzer',
+          message: 'Analyzing engagement patterns and success metrics...',
+          duration: 3500,
+        },
+        {
+          id: '3',
+          agentType: 'competitive-intel',
+          agentName: 'Market Intelligence',
+          message: 'Gathering competitive intelligence and market insights...',
+          duration: 4000,
+        },
+      ],
+      'content-generation': [
+        {
+          id: '1',
+          agentType: 'viral-content-automation',
+          agentName: 'Trend Analyzer',
+          message: 'Analyzing current trends and viral content patterns...',
+          duration: 3000,
+        },
+        {
+          id: '2',
+          agentType: 'content-generator',
+          agentName: 'Content Creator',
+          message: 'Generating original content optimized for your audience...',
+          duration: 4500,
+        },
+        {
+          id: '3',
+          agentType: 'brand-validator',
+          agentName: 'Brand Validator',
+          message: 'Ensuring content aligns with Total Audio Promo branding...',
+          duration: 2000,
+        },
+      ],
+    }),
+    []
+  );
 
   // Initialize steps
   useEffect(() => {
     const workflowSteps = workflows[workflow].map(step => ({
       ...step,
-      status: 'pending' as const
+      status: 'pending' as const,
     }));
     setSteps(workflowSteps);
   }, [workflow, workflows]);
@@ -157,10 +156,12 @@ const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({
       }
 
       // Mark current step as active
-      setSteps(prev => prev.map((step, index) => ({
-        ...step,
-        status: index === stepIndex ? 'active' : step.status
-      })));
+      setSteps(prev =>
+        prev.map((step, index) => ({
+          ...step,
+          status: index === stepIndex ? 'active' : step.status,
+        }))
+      );
 
       setCurrentStep(stepIndex);
 
@@ -170,11 +171,13 @@ const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({
 
       // Mark current step as completed (with small chance of error for demo)
       const hasError = Math.random() < 0.05; // 5% chance of error
-      
-      setSteps(prev => prev.map((step, index) => ({
-        ...step,
-        status: index === stepIndex ? (hasError ? 'error' : 'completed') : step.status
-      })));
+
+      setSteps(prev =>
+        prev.map((step, index) => ({
+          ...step,
+          status: index === stepIndex ? (hasError ? 'error' : 'completed') : step.status,
+        }))
+      );
 
       if (hasError) {
         onError?.(`Error in ${currentStepData.agentName}: Simulated processing error`);
@@ -206,7 +209,7 @@ const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({
           backgroundColor: isError ? '#FFEBEE' : theme.secondary,
           borderColor: isError ? '#F44336' : theme.primary,
           opacity: isPending ? 0.5 : 1,
-          boxShadow: isActive ? `0 0 20px ${theme.primary}40` : undefined
+          boxShadow: isActive ? `0 0 20px ${theme.primary}40` : undefined,
         }}
       >
         {/* Step Number & Status */}
@@ -214,10 +217,18 @@ const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({
           className="flex items-center justify-center w-12 h-12 rounded-full font-bold text-lg"
           style={{
             backgroundColor: isError ? '#F44336' : isCompleted ? '#4CAF50' : theme.primary,
-            color: 'white'
+            color: 'white',
           }}
         >
-          {isCompleted ? <Check className="w-5 h-5" /> : isError ? <X className="w-5 h-5" /> : isActive ? <Zap className="w-5 h-5" /> : index + 1}
+          {isCompleted ? (
+            <Check className="w-5 h-5" />
+          ) : isError ? (
+            <X className="w-5 h-5" />
+          ) : isActive ? (
+            <Zap className="w-5 h-5" />
+          ) : (
+            index + 1
+          )}
         </div>
 
         {/* Agent Icon */}
@@ -236,10 +247,7 @@ const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({
           >
             {step.agentName}
           </h3>
-          <p
-            className="text-sm"
-            style={{ color: isError ? '#C62828' : theme.accent + 'CC' }}
-          >
+          <p className="text-sm" style={{ color: isError ? '#C62828' : theme.accent + 'CC' }}>
             {isError ? 'Processing failed - retrying...' : step.message}
           </p>
         </div>
@@ -278,17 +286,20 @@ const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-3xl font-black text-gray-900 mb-2">
-          <Rocket className="w-8 h-8 inline mr-2" />Agent Workflow in Progress
+          <Rocket className="w-8 h-8 inline mr-2" />
+          Agent Workflow in Progress
         </h1>
         <p className="text-lg text-gray-600">
           Multiple agents are working together to process your request
         </p>
-        
+
         {/* Overall Progress */}
         <div className="mt-4">
           <div className="flex justify-between text-sm text-gray-600 mb-2">
             <span>Overall Progress</span>
-            <span>{completedCount}/{totalCount} completed</span>
+            <span>
+              {completedCount}/{totalCount} completed
+            </span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
             <div
@@ -300,9 +311,7 @@ const AgentLoadingState: React.FC<AgentLoadingStateProps> = ({
       </div>
 
       {/* Steps */}
-      <div className="space-y-4">
-        {steps.map(renderStep)}
-      </div>
+      <div className="space-y-4">{steps.map(renderStep)}</div>
 
       {/* Footer */}
       <div className="text-center mt-8 text-sm text-gray-500">

@@ -51,7 +51,7 @@ export class AirtableRadioEnhancement {
       format: 'Public Service',
       marketSize: 'National',
       classification: 'BBC National',
-      confidence: 0.95
+      confidence: 0.95,
     },
     {
       pattern: /bbcradio1\.co\.uk|radio1\.bbc\.co\.uk/i,
@@ -61,7 +61,7 @@ export class AirtableRadioEnhancement {
       format: 'Public Service',
       marketSize: 'National',
       classification: 'BBC National',
-      confidence: 0.98
+      confidence: 0.98,
     },
     {
       pattern: /bbcradio2\.co\.uk|radio2\.bbc\.co\.uk/i,
@@ -71,7 +71,7 @@ export class AirtableRadioEnhancement {
       format: 'Public Service',
       marketSize: 'National',
       classification: 'BBC National',
-      confidence: 0.98
+      confidence: 0.98,
     },
     {
       pattern: /bbcradio3\.co\.uk|radio3\.bbc\.co\.uk/i,
@@ -81,7 +81,7 @@ export class AirtableRadioEnhancement {
       format: 'Public Service',
       marketSize: 'National',
       classification: 'BBC National',
-      confidence: 0.98
+      confidence: 0.98,
     },
     {
       pattern: /bbcradio4\.co\.uk|radio4\.bbc\.co\.uk/i,
@@ -91,7 +91,7 @@ export class AirtableRadioEnhancement {
       format: 'Public Service',
       marketSize: 'National',
       classification: 'BBC National',
-      confidence: 0.98
+      confidence: 0.98,
     },
     {
       pattern: /bbc6music\.co\.uk|6music\.bbc\.co\.uk/i,
@@ -101,7 +101,7 @@ export class AirtableRadioEnhancement {
       format: 'Public Service',
       marketSize: 'National',
       classification: 'BBC National',
-      confidence: 0.98
+      confidence: 0.98,
     },
 
     // BBC Regional Stations
@@ -113,7 +113,7 @@ export class AirtableRadioEnhancement {
       format: 'Public Service',
       marketSize: 'Regional',
       classification: 'BBC Regional',
-      confidence: 0.95
+      confidence: 0.95,
     },
     {
       pattern: /bbc\.co\.uk\/wales|bbcwales\.co\.uk/i,
@@ -123,7 +123,7 @@ export class AirtableRadioEnhancement {
       format: 'Public Service',
       marketSize: 'Regional',
       classification: 'BBC Regional',
-      confidence: 0.95
+      confidence: 0.95,
     },
     {
       pattern: /bbc\.co\.uk\/northernireland|bbcnorthernireland\.co\.uk/i,
@@ -133,7 +133,7 @@ export class AirtableRadioEnhancement {
       format: 'Public Service',
       marketSize: 'Regional',
       classification: 'BBC Regional',
-      confidence: 0.95
+      confidence: 0.95,
     },
 
     // Commercial Radio - Major Networks
@@ -145,7 +145,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'National',
       classification: 'Commercial Major',
-      confidence: 0.95
+      confidence: 0.95,
     },
     {
       pattern: /heart\.co\.uk|heartfm\.com/i,
@@ -155,7 +155,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'National',
       classification: 'Commercial Major',
-      confidence: 0.95
+      confidence: 0.95,
     },
     {
       pattern: /kissfm\.co\.uk|kiss\.com/i,
@@ -165,7 +165,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'National',
       classification: 'Commercial Major',
-      confidence: 0.95
+      confidence: 0.95,
     },
     {
       pattern: /smoothradio\.com|smooth\.co\.uk/i,
@@ -175,7 +175,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'National',
       classification: 'Commercial Major',
-      confidence: 0.95
+      confidence: 0.95,
     },
     {
       pattern: /magic\.co\.uk|magicfm\.com/i,
@@ -185,7 +185,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'National',
       classification: 'Commercial Major',
-      confidence: 0.95
+      confidence: 0.95,
     },
 
     // Regional Commercial Stations
@@ -197,7 +197,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'Regional',
       classification: 'Commercial Regional',
-      confidence: 0.90
+      confidence: 0.9,
     },
     {
       pattern: /century\.co\.uk|centuryradio\.com/i,
@@ -207,7 +207,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'Regional',
       classification: 'Commercial Regional',
-      confidence: 0.90
+      confidence: 0.9,
     },
 
     // London Stations
@@ -219,7 +219,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'Local',
       classification: 'Commercial Local',
-      confidence: 0.85
+      confidence: 0.85,
     },
     {
       pattern: /lbc\.co\.uk|lbcradio\.com/i,
@@ -229,7 +229,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'Local',
       classification: 'Commercial Local',
-      confidence: 0.95
+      confidence: 0.95,
     },
 
     // Manchester Stations
@@ -241,7 +241,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'Local',
       classification: 'Commercial Local',
-      confidence: 0.85
+      confidence: 0.85,
     },
     {
       pattern: /key103\.co\.uk|key103\.com/i,
@@ -251,7 +251,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'Local',
       classification: 'Commercial Local',
-      confidence: 0.90
+      confidence: 0.9,
     },
 
     // Birmingham Stations
@@ -263,7 +263,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'Local',
       classification: 'Commercial Local',
-      confidence: 0.85
+      confidence: 0.85,
     },
     {
       pattern: /brum\.co\.uk|brumradio\.com/i,
@@ -273,7 +273,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'Local',
       classification: 'Commercial Local',
-      confidence: 0.90
+      confidence: 0.9,
     },
 
     // Liverpool Stations
@@ -285,7 +285,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'Local',
       classification: 'Commercial Local',
-      confidence: 0.85
+      confidence: 0.85,
     },
     {
       pattern: /radio-city\.co\.uk|radiocity\.com/i,
@@ -295,7 +295,7 @@ export class AirtableRadioEnhancement {
       format: 'Commercial',
       marketSize: 'Local',
       classification: 'Commercial Local',
-      confidence: 0.90
+      confidence: 0.9,
     },
 
     // Student Radio
@@ -307,7 +307,7 @@ export class AirtableRadioEnhancement {
       format: 'Student',
       marketSize: 'Local',
       classification: 'Student Radio',
-      confidence: 0.90
+      confidence: 0.9,
     },
     {
       pattern: /\.ac\.uk|university\.co\.uk/i,
@@ -317,7 +317,7 @@ export class AirtableRadioEnhancement {
       format: 'Student',
       marketSize: 'Local',
       classification: 'Student Radio',
-      confidence: 0.80
+      confidence: 0.8,
     },
 
     // Community Radio
@@ -329,7 +329,7 @@ export class AirtableRadioEnhancement {
       format: 'Community',
       marketSize: 'Local',
       classification: 'Community Radio',
-      confidence: 0.90
+      confidence: 0.9,
     },
     {
       pattern: /localradio\.co\.uk|localradio\.com/i,
@@ -339,7 +339,7 @@ export class AirtableRadioEnhancement {
       format: 'Community',
       marketSize: 'Local',
       classification: 'Community Radio',
-      confidence: 0.85
+      confidence: 0.85,
     },
 
     // Generic Radio Patterns
@@ -351,14 +351,14 @@ export class AirtableRadioEnhancement {
       format: 'Unknown',
       marketSize: 'Unknown',
       classification: 'Unknown Radio',
-      confidence: 0.70
-    }
+      confidence: 0.7,
+    },
   ];
 
   constructor(apiKey: string, baseId: string, contactsTableId: string) {
     this.base = new Airtable({ apiKey }).base(baseId);
     this.config = {
-      contactsTableId
+      contactsTableId,
     };
   }
 
@@ -386,7 +386,7 @@ export class AirtableRadioEnhancement {
           marketSize: pattern.marketSize,
           classification: pattern.classification,
           confidence: pattern.confidence,
-          reasoning: `Matched pattern: ${pattern.pattern.source}`
+          reasoning: `Matched pattern: ${pattern.pattern.source}`,
         };
       }
     }
@@ -399,11 +399,11 @@ export class AirtableRadioEnhancement {
    */
   private async getRadioContacts(): Promise<Airtable.Record<any>[]> {
     logger.info('📻 Fetching radio contacts from Airtable...');
-    
+
     const records = await this.base(this.config.contactsTableId)
       .select({
         maxRecords: 10000,
-        filterByFormula: "{Contact Type} = 'Radio'"
+        filterByFormula: "{Contact Type} = 'Radio'",
       })
       .all();
 
@@ -449,7 +449,9 @@ export class AirtableRadioEnhancement {
             classifications.set(enhancement.classification, currentCount + 1);
           }
         } catch (error) {
-          errors.push(`Record ${record.id}: ${error instanceof Error ? error.message : 'Unknown error'}`);
+          errors.push(
+            `Record ${record.id}: ${error instanceof Error ? error.message : 'Unknown error'}`
+          );
         }
       }
 
@@ -463,12 +465,11 @@ export class AirtableRadioEnhancement {
         enhancedRecords: enhancements.length,
         classifications,
         dryRun,
-        errors
+        errors,
       };
 
       logger.info(`✅ Radio enhancement completed: ${enhancements.length} records enhanced`);
       return result;
-
     } catch (error) {
       logger.error('❌ Radio enhancement error:', error);
       throw error;
@@ -484,38 +485,42 @@ export class AirtableRadioEnhancement {
     const updateRecords = enhancements.map(async update => {
       const records = await this.base(this.config.contactsTableId)
         .select({
-          filterByFormula: `{Email} = '${update.email.replace(/'/g, "\\'")}'`
+          filterByFormula: `{Email} = '${update.email.replace(/'/g, "\\'")}'`,
         })
         .all();
-      
+
       if (records.length > 0 && records[0]) {
         return {
           id: records[0].id,
           fields: {
-            'Station': update.stationName,
-            'Reply Notes': `Radio enhancement: ${update.stationName} - ${update.classification} | Location: ${update.location} | Market: ${update.market} | Format: ${update.format} | Market Size: ${update.marketSize} | Classification: ${update.classification} (${update.reasoning})`
-          }
+            Station: update.stationName,
+            'Reply Notes': `Radio enhancement: ${update.stationName} - ${update.classification} | Location: ${update.location} | Market: ${update.market} | Format: ${update.format} | Market Size: ${update.marketSize} | Classification: ${update.classification} (${update.reasoning})`,
+          },
         };
       }
       return null;
     });
 
     const resolvedRecords = await Promise.all(updateRecords);
-    const validRecords = resolvedRecords.filter((record): record is NonNullable<typeof record> => record !== null);
+    const validRecords = resolvedRecords.filter(
+      (record): record is NonNullable<typeof record> => record !== null
+    );
 
     if (validRecords.length > 0) {
       // Process in batches of 10 (Airtable limit)
       const batchSize = 10;
       let updatedCount = 0;
-      
+
       for (let i = 0; i < validRecords.length; i += batchSize) {
         const batch = validRecords.slice(i, i + batchSize);
         await this.base(this.config.contactsTableId).update(batch);
         updatedCount += batch.length;
         logger.info(`✅ Updated batch ${Math.floor(i / batchSize) + 1}: ${batch.length} records`);
       }
-      
-      logger.info(`✅ Completed: Updated ${updatedCount} radio records in ${Math.ceil(validRecords.length / batchSize)} batches`);
+
+      logger.info(
+        `✅ Completed: Updated ${updatedCount} radio records in ${Math.ceil(validRecords.length / batchSize)} batches`
+      );
     }
   }
 
@@ -564,4 +569,4 @@ export class AirtableRadioEnhancement {
 
     return new AirtableRadioEnhancement(apiKey, baseId, contactsTableId);
   }
-} 
+}

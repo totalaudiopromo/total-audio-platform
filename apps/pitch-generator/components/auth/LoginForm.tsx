@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@total-audio/core-db/client';
 
 export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -45,14 +45,17 @@ export function LoginForm() {
       )}
 
       <div className="space-y-2">
-        <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-900/40">
+        <label
+          htmlFor="email"
+          className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-900/40"
+        >
           Email
         </label>
         <input
           type="email"
           id="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
           className="w-full rounded-full border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-900/40 focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
           placeholder="Enter your email"
           required
@@ -60,25 +63,24 @@ export function LoginForm() {
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="password" className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-900/40">
+        <label
+          htmlFor="password"
+          className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-900/40"
+        >
           Password
         </label>
         <input
           type="password"
           id="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
           className="w-full rounded-full border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-900/40 focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
           placeholder="Enter your password"
           required
         />
       </div>
 
-      <button
-        type="submit"
-        disabled={isLoading}
-        className="cta-button w-full justify-center"
-      >
+      <button type="submit" disabled={isLoading} className="cta-button w-full justify-center">
         {isLoading ? 'Signing in…' : 'Sign in'}
       </button>
 

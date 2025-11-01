@@ -14,13 +14,11 @@ const templates = [
   {
     name: 'BBC Radio 1 Specialist Shows',
     genre: 'Electronic/Dance',
-    description: 'Optimised for BBC Radio 1 specialist shows (Pete Tong, Danny Howard, etc.). Natural UK language, genre context, under 150 words.',
-    opening_lines: [
-      'Hope you\'re well.',
-      'Hope all\'s good with you.',
-      'Quick one for you.',
-    ],
-    hook_structure: 'Start with track + artist, then key hook in first 50 words. Reference show/outlet naturally.',
+    description:
+      'Optimised for BBC Radio 1 specialist shows (Pete Tong, Danny Howard, etc.). Natural UK language, genre context, under 150 words.',
+    opening_lines: ["Hope you're well.", "Hope all's good with you.", 'Quick one for you.'],
+    hook_structure:
+      'Start with track + artist, then key hook in first 50 words. Reference show/outlet naturally.',
     closing_ctas: [
       'Would love to hear your thoughts.',
       'Let me know what you think.',
@@ -47,9 +45,10 @@ Best,
   {
     name: 'BBC 6 Music Alternative/Indie',
     genre: 'Alternative/Indie',
-    description: 'For 6 Music shows - conversational tone, emphasis on musicianship and authenticity',
+    description:
+      'For 6 Music shows - conversational tone, emphasis on musicianship and authenticity',
     opening_lines: [
-      'Hope you\'ve been well.',
+      "Hope you've been well.",
       'Been a while since we last spoke.',
       'Reaching out with something special.',
     ],
@@ -57,7 +56,7 @@ Best,
     closing_ctas: [
       'Would love to hear your thoughts.',
       'Happy to chat more if this resonates.',
-      'Let me know if it\'s one for the show.',
+      "Let me know if it's one for the show.",
     ],
     template_body: `Hi {{contact_name}},
 
@@ -82,13 +81,15 @@ Best,
   {
     name: 'Spotify Editorial Playlists',
     genre: 'All Genres',
-    description: 'Curator-focused pitch highlighting streaming numbers and existing playlist support',
+    description:
+      'Curator-focused pitch highlighting streaming numbers and existing playlist support',
     opening_lines: [
       'Submitting for playlist consideration.',
       'New track submission for {{playlist_name}}.',
       'Hope this finds you well.',
     ],
-    hook_structure: 'Data-driven. Numbers, playlist placements, genre fit. Professional and concise.',
+    hook_structure:
+      'Data-driven. Numbers, playlist placements, genre fit. Professional and concise.',
     closing_ctas: [
       'Thanks for considering.',
       'Happy to provide additional info.',
@@ -122,10 +123,11 @@ Thanks for considering,
     description: 'Format-focused pitch emphasizing audience fit and commercial appeal',
     opening_lines: [
       'New track for {{station_name}} consideration.',
-      'Hope you\'re well.',
+      "Hope you're well.",
       'Quick pitch for you.',
     ],
-    hook_structure: 'Format-focused. Audience demographics, daypart fit, commercial potential. Direct and concise.',
+    hook_structure:
+      'Format-focused. Audience demographics, daypart fit, commercial potential. Direct and concise.',
     closing_ctas: [
       'Thanks for considering.',
       'Would love to discuss further.',
@@ -154,15 +156,16 @@ Thanks,
     genre: 'All Genres',
     description: 'Story-focused pitch for music blogs, emphasis on artist narrative and exclusives',
     opening_lines: [
-      'I\'m reaching out about {{artist_name}}.',
-      'Hope you\'re well.',
+      "I'm reaching out about {{artist_name}}.",
+      "Hope you're well.",
       'Wanted to share something I think {{outlet_name}} readers would appreciate.',
     ],
-    hook_structure: 'Story first. Artist narrative, unique angle, why now. Offer premiere/exclusive if possible.',
+    hook_structure:
+      'Story first. Artist narrative, unique angle, why now. Offer premiere/exclusive if possible.',
     closing_ctas: [
       'Would this interest {{outlet_name}} readers?',
       'Happy to offer an exclusive premiere if that works.',
-      'Let me know if you\'d like more info.',
+      "Let me know if you'd like more info.",
     ],
     template_body: `Hi {{contact_name}},
 
@@ -187,13 +190,15 @@ Best,
   {
     name: 'Community & Independent Radio',
     genre: 'All Genres',
-    description: 'Flexible pitch for community stations, emphasis on local connection and grassroots support',
+    description:
+      'Flexible pitch for community stations, emphasis on local connection and grassroots support',
     opening_lines: [
-      'Hope you\'re well.',
+      "Hope you're well.",
       'Been listening to {{station_name}} and thought this might fit.',
       'Reaching out about a track that feels right for your listeners.',
     ],
-    hook_structure: 'Warm, personal. Local connection if applicable. Grassroots approach, genuine appreciation for the station.',
+    hook_structure:
+      'Warm, personal. Local connection if applicable. Grassroots approach, genuine appreciation for the station.',
     closing_ctas: [
       'Would love to work with {{station_name}}.',
       'Let me know if this is one for your playlist.',
@@ -257,10 +262,7 @@ async function seedTemplates() {
   }
 
   // Insert templates
-  const { data, error } = await supabase
-    .from('pitch_templates')
-    .insert(templates)
-    .select();
+  const { data, error } = await supabase.from('pitch_templates').insert(templates).select();
 
   if (error) {
     console.error('❌ Error inserting templates:', error);
@@ -280,7 +282,7 @@ async function seedTemplates() {
 
 seedTemplates()
   .then(() => process.exit(0))
-  .catch((error) => {
+  .catch(error => {
     console.error('Fatal error:', error);
     process.exit(1);
   });

@@ -11,8 +11,8 @@ export default function UKSocialMobile() {
       {/* Mobile Header */}
       <div className="bg-white border-b border-gray-200 px-4 py-3 sticky top-0 z-10">
         <div className="flex items-center justify-between">
-          <Link 
-            href="/agent-dashboard" 
+          <Link
+            href="/agent-dashboard"
             className="flex items-center text-gray-600 hover:text-gray-800"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />

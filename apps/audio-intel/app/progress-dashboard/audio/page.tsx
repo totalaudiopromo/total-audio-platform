@@ -1,16 +1,22 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useState, useRef, useEffect } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useState, useRef, useEffect } from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Slider } from '@/components/ui/slider';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import {
   Play,
   Pause,
@@ -27,62 +33,62 @@ import {
   Sparkles,
   MessageSquare,
   Loader2,
-} from "lucide-react"
+} from 'lucide-react';
 
 export default function AudioStudioPage() {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [volume, setVolume] = useState(75)
-  const [audioFile, setAudioFile] = useState<File | null>(null)
-  const [isProcessing, setIsProcessing] = useState(false)
-  const [aiPrompt, setAiPrompt] = useState("")
-  const [aiResponse, setAiResponse] = useState("")
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(75);
+  const [audioFile, setAudioFile] = useState<File | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [aiResponse, setAiResponse] = useState('');
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Simulate waveform visualization
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    const width = canvas.width
-    const height = canvas.height
+    const width = canvas.width;
+    const height = canvas.height;
 
-    ctx.clearRect(0, 0, width, height)
-    ctx.fillStyle = "#000"
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = '#000';
 
     // Draw a simulated waveform
-    const barWidth = 3
-    const gap = 2
-    const bars = Math.floor(width / (barWidth + gap))
+    const barWidth = 3;
+    const gap = 2;
+    const bars = Math.floor(width / (barWidth + gap));
 
     for (let i = 0; i < bars; i++) {
       // Generate random heights for the waveform visualization
-      const barHeight = Math.random() * (height * 0.8) + height * 0.1
-      ctx.fillRect(i * (barWidth + gap), (height - barHeight) / 2, barWidth, barHeight)
+      const barHeight = Math.random() * (height * 0.8) + height * 0.1;
+      ctx.fillRect(i * (barWidth + gap), (height - barHeight) / 2, barWidth, barHeight);
     }
-  }, [])
+  }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setAudioFile(e.target.files[0])
+      setAudioFile(e.target.files[0]);
     }
-  }
+  };
 
   const handleAIProcess = () => {
-    if (!aiPrompt.trim()) return
+    if (!aiPrompt.trim()) return;
 
-    setIsProcessing(true)
+    setIsProcessing(true);
 
     // Simulate AI processing
     setTimeout(() => {
       setAiResponse(
-        "I've analysed your audio and made the following adjustments: enhanced bass frequencies, reduced background noise, and improved vocal clarity. The processed audio has a more balanced EQ profile and sounds more professional.",
-      )
-      setIsProcessing(false)
-    }, 2000)
-  }
+        "I've analysed your audio and made the following adjustments: enhanced bass frequencies, reduced background noise, and improved vocal clarity. The processed audio has a more balanced EQ profile and sounds more professional."
+      );
+      setIsProcessing(false);
+    }, 2000);
+  };
 
   return (
     <div>
@@ -98,7 +104,9 @@ export default function AudioStudioPage() {
                 <div>
                   <Music className="mx-auto h-8 w-8 sm:h-10 sm:w-10 mb-2" />
                   <p className="font-bold">{audioFile.name}</p>
-                  <p className="text-sm text-gray-500">{(audioFile.size / (1024 * 1024)).toFixed(2)} MB</p>
+                  <p className="text-sm text-gray-500">
+                    {(audioFile.size / (1024 * 1024)).toFixed(2)} MB
+                  </p>
                 </div>
               ) : (
                 <>
@@ -107,7 +115,7 @@ export default function AudioStudioPage() {
                   <Button
                     variant="outline"
                     className="border-2 border-black rounded-xl font-bold"
-                    onClick={() => document.getElementById("audio-upload")?.click()}
+                    onClick={() => document.getElementById('audio-upload')?.click()}
                   >
                     <Upload className="h-4 w-4 mr-2" /> Select File
                   </Button>
@@ -143,12 +151,20 @@ export default function AudioStudioPage() {
             <h3 className="text-xl font-bold mb-4">Audio Editor</h3>
             <div className="bg-white/50 border-4 border-black rounded-xl p-4">
               <div className="bg-white border-2 border-black rounded-lg p-2">
-                <canvas ref={canvasRef} width={800} height={150} className="w-full h-[100px] sm:h-[150px]" />
+                <canvas
+                  ref={canvasRef}
+                  width={800}
+                  height={150}
+                  className="w-full h-[100px] sm:h-[150px]"
+                />
               </div>
 
               {/* Playback controls */}
               <div className="flex items-center justify-center gap-2 mt-4">
-                <Button variant="outline" className="border-2 border-black rounded-xl h-10 w-10 p-0">
+                <Button
+                  variant="outline"
+                  className="border-2 border-black rounded-xl h-10 w-10 p-0"
+                >
                   <SkipBack className="h-4 w-4" />
                 </Button>
                 <Button
@@ -157,7 +173,10 @@ export default function AudioStudioPage() {
                 >
                   {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
                 </Button>
-                <Button variant="outline" className="border-2 border-black rounded-xl h-10 w-10 p-0">
+                <Button
+                  variant="outline"
+                  className="border-2 border-black rounded-xl h-10 w-10 p-0"
+                >
                   <SkipForward className="h-4 w-4" />
                 </Button>
               </div>
@@ -173,7 +192,7 @@ export default function AudioStudioPage() {
                     max={100}
                     step={1}
                     className="flex-1"
-                    onValueChange={(value) => setVolume(value[0])}
+                    onValueChange={value => setVolume(value[0])}
                   />
                   <span className="w-8 text-right">{volume}%</span>
                 </div>
@@ -198,12 +217,14 @@ export default function AudioStudioPage() {
 
             <div className="space-y-4">
               <div>
-                <Label className="font-bold mb-2 block">What would you like to do with your audio?</Label>
+                <Label className="font-bold mb-2 block">
+                  What would you like to do with your audio?
+                </Label>
                 <Textarea
                   placeholder="E.g., Remove background noise, enhance vocals, add reverb, make it sound more professional..."
                   className="min-h-[80px] border-2 border-black rounded-xl"
                   value={aiPrompt}
-                  onChange={(e) => setAiPrompt(e.target.value)}
+                  onChange={e => setAiPrompt(e.target.value)}
                 />
               </div>
 
@@ -349,7 +370,10 @@ export default function AudioStudioPage() {
                 <Button className="w-full bg-black hover:bg-black/80 text-white rounded-xl border-2 border-black font-bold">
                   <Save className="h-4 w-4 mr-2" /> Save Project
                 </Button>
-                <Button variant="outline" className="w-full border-2 border-black rounded-xl font-bold">
+                <Button
+                  variant="outline"
+                  className="w-full border-2 border-black rounded-xl font-bold"
+                >
                   <Download className="h-4 w-4 mr-2" /> Export Audio
                 </Button>
               </div>
@@ -358,5 +382,5 @@ export default function AudioStudioPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

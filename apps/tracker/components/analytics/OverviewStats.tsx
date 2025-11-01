@@ -3,7 +3,13 @@ import { getOverviewStats } from '@/lib/analytics';
 export default async function OverviewStats() {
   const stats = await getOverviewStats();
   const responsePct = Math.round(stats.responseRate * 100);
-  const budgetPct = stats.budgetAllocated > 0 ? Math.min(100, Math.round((stats.budgetSpent / stats.budgetAllocated) * 100)) : 0;
+  const budgetPct =
+    stats.budgetAllocated > 0
+      ? Math.min(
+          100,
+          Math.round((stats.budgetSpent / stats.budgetAllocated) * 100)
+        )
+      : 0;
 
   const metrics = [
     {
@@ -21,10 +27,20 @@ export default async function OverviewStats() {
     {
       label: 'Response Rate',
       value: `${responsePct}%`,
-      gradient: responsePct >= 30 ? 'from-green-500 to-green-600' : responsePct >= 10 ? 'from-yellow-500 to-yellow-600' : 'from-red-500 to-red-600',
+      gradient:
+        responsePct >= 30
+          ? 'from-green-500 to-green-600'
+          : responsePct >= 10
+            ? 'from-yellow-500 to-yellow-600'
+            : 'from-red-500 to-red-600',
       showProgress: true,
       progress: responsePct,
-      progressColor: responsePct >= 30 ? 'bg-green-500' : responsePct >= 10 ? 'bg-yellow-500' : 'bg-red-500',
+      progressColor:
+        responsePct >= 30
+          ? 'bg-green-500'
+          : responsePct >= 10
+            ? 'bg-yellow-500'
+            : 'bg-red-500',
     },
     {
       label: 'Budget Utilisation',
@@ -38,13 +54,17 @@ export default async function OverviewStats() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {metrics.map((metric) => (
+      {metrics.map(metric => (
         <div
           key={metric.label}
           className="bg-white dark:bg-slate-900 rounded-2xl p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all"
         >
-          <div className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-3">{metric.label}</div>
-          <div className={`text-4xl font-black bg-gradient-to-r ${metric.gradient} bg-clip-text text-transparent mb-3`}>
+          <div className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-3">
+            {metric.label}
+          </div>
+          <div
+            className={`text-4xl font-black bg-gradient-to-r ${metric.gradient} bg-clip-text text-transparent mb-3`}
+          >
             {metric.value}
           </div>
           {metric.showProgress && (
@@ -60,14 +80,3 @@ export default async function OverviewStats() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -73,10 +73,7 @@ export default function CleanDashboard() {
             <span className="text-sm text-gray-500">
               Updated {Math.floor((Date.now() - lastUpdated.getTime()) / 1000)}s ago
             </span>
-            <button 
-              onClick={fetchMetrics}
-              className="clean-button"
-            >
+            <button onClick={fetchMetrics} className="clean-button">
               <RefreshCw className="w-4 h-4 mr-2" />
               Refresh
             </button>
@@ -96,9 +93,7 @@ export default function CleanDashboard() {
               <div className="clean-metric-value text-green-600">
                 £{metrics.revenue.mrr.toLocaleString()}
               </div>
-              <div className="clean-metric-label">
-                Monthly Recurring Revenue
-              </div>
+              <div className="clean-metric-label">Monthly Recurring Revenue</div>
               <div className="clean-metric-description">
                 +{metrics.revenue.growth.toFixed(1)}% vs last month
               </div>
@@ -110,12 +105,8 @@ export default function CleanDashboard() {
               <div className="flex justify-center mb-4">
                 <Users className="w-12 h-12 text-blue-600" />
               </div>
-              <div className="clean-metric-value text-blue-600">
-                {metrics.customers.total}
-              </div>
-              <div className="clean-metric-label">
-                Total Customers
-              </div>
+              <div className="clean-metric-value text-blue-600">{metrics.customers.total}</div>
+              <div className="clean-metric-label">Total Customers</div>
               <div className="clean-metric-description">
                 +{metrics.customers.newSignups} this month
               </div>
@@ -130,9 +121,7 @@ export default function CleanDashboard() {
               <div className="clean-metric-value text-purple-600">
                 {metrics.product.contactsEnriched.toLocaleString()}
               </div>
-              <div className="clean-metric-label">
-                Contacts Enriched
-              </div>
+              <div className="clean-metric-label">Contacts Enriched</div>
               <div className="clean-metric-description">
                 {metrics.product.successRate.toFixed(1)}% success rate
               </div>
@@ -147,9 +136,7 @@ export default function CleanDashboard() {
               <div className="clean-metric-value text-orange-600">
                 {metrics.agents.activeAgents}
               </div>
-              <div className="clean-metric-label">
-                Active AI Agents
-              </div>
+              <div className="clean-metric-label">Active AI Agents</div>
               <div className="clean-metric-description">
                 {metrics.agents.tasksCompleted} tasks completed today
               </div>

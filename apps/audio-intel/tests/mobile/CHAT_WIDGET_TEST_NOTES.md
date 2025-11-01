@@ -1,12 +1,15 @@
 # Chat Widget Mobile Testing Notes
 
 ## Chat Widget Component Location
+
 **File**: `/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/app/components/LiveChatBot.tsx`
 
 ## Mobile-Specific Features Tested
 
 ### 1. Body Scroll Lock
+
 **Location**: Lines 38-47 in `LiveChatBot.tsx`
+
 ```typescript
 useEffect(() => {
   if (isOpen && window.innerWidth < 640) {
@@ -21,55 +24,68 @@ useEffect(() => {
 ```
 
 **Test Coverage**:
+
 - ✅ Validated by touch interaction tests
 - ✅ Checks scroll behavior doesn't conflict with tap gestures
 - ✅ Verifies body scroll is locked when chat is open on mobile
 
 ### 2. Chat Widget Button Accessibility
+
 **Expected Behavior**:
+
 - Fixed position button at bottom-right on mobile
 - Minimum 44px touch target size
 - Z-index ensures visibility above content
 - Icon clearly indicates chat functionality
 
 **Test Selectors**:
+
 ```javascript
 // Generic chat button detection
-const chatButton = page.locator('button').filter({ hasText: /chat|message|support/i }).first();
+const chatButton = page
+  .locator('button')
+  .filter({ hasText: /chat|message|support/i })
+  .first();
 
 // Or by icon/visual element
 const chatButton = page.locator('[aria-label*="chat"], [title*="chat"]').first();
 ```
 
 ### 3. Z-Index Layering
+
 **Mobile-Specific CSS**: `/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/app/mobile-ux-fixes.css`
 
 **Key Z-Index Hierarchy**:
+
 ```css
 @media (max-width: 768px) {
   /* Navigation menu */
-  nav[aria-label="Mobile Navigation"] {
+  nav[aria-label='Mobile Navigation'] {
     z-index: 1000 !important;
   }
 
-  nav[aria-label="Mobile Navigation"] [role="dialog"] {
+  nav[aria-label='Mobile Navigation'] [role='dialog'] {
     z-index: 1100 !important;
   }
 }
 ```
 
 **Expected Behavior**:
+
 - Chat widget button: z-index ~50-100 (above page content)
 - Chat widget window: z-index ~900 (below navigation)
 - Mobile navigation: z-index 1000-1100 (top layer)
 
 **Test Validation**:
+
 - ✅ Mobile menu overlays chat widget when open
 - ✅ Chat widget visible above page content
 - ✅ No z-index conflicts causing hidden elements
 
 ### 4. Chat Window Mobile Layout
+
 **Expected Behavior**:
+
 - Full-screen on mobile (< 640px width)
 - Proper keyboard space handling
 - Message input remains accessible
@@ -77,6 +93,7 @@ const chatButton = page.locator('[aria-label*="chat"], [title*="chat"]').first()
 - Close button easily tappable
 
 **Test Coverage in `mobile-user-journey.test.js`**:
+
 ```javascript
 // Touch target accessibility check includes chat widget button
 const clickableElements = await page.locator('button, a, input[type="submit"]').all();
@@ -91,16 +108,20 @@ for (const element of clickableElements) {
 ## Mobile Test Scenarios for Chat Widget
 
 ### Scenario 1: Chat Widget Button Visibility
+
 **Test**: Homepage mobile loading
 **Validates**:
+
 - Chat widget button is visible on page load
 - Button meets 44px minimum touch target
 - Button positioned correctly in viewport
 - Button doesn't interfere with other UI elements
 
 ### Scenario 2: Opening Chat on Mobile
+
 **Test**: Mobile touch interactions
 **Validates**:
+
 - Tap opens chat widget
 - Body scroll is locked
 - Chat window fills viewport appropriately
@@ -108,8 +129,10 @@ for (const element of clickableElements) {
 - Navigation menu can still overlay chat
 
 ### Scenario 3: Chat Interaction Flow
+
 **Test**: (Not yet implemented - recommended addition)
 **Should Validate**:
+
 1. Tap chat button to open
 2. Welcome message appears
 3. Type message in input field
@@ -121,8 +144,10 @@ for (const element of clickableElements) {
 9. Body scroll is restored after close
 
 ### Scenario 4: Z-Index Conflict Resolution
+
 **Test**: Mobile touch interactions
 **Validates**:
+
 - Chat widget button doesn't conflict with CTA buttons
 - Mobile menu overlays chat widget
 - Chat widget overlays page content
@@ -131,16 +156,17 @@ for (const element of clickableElements) {
 ## Recommended Additional Chat Widget Tests
 
 ### Test File: `tests/mobile/chat-widget-mobile.test.js`
+
 ```javascript
 const { test, expect } = require('@playwright/test');
 
 test.describe('Chat Widget Mobile Experience', () => {
-
   test('Chat widget button is accessible on mobile', async ({ page }) => {
     await page.goto('/');
 
     // Find chat widget button
-    const chatButton = page.locator('button')
+    const chatButton = page
+      .locator('button')
       .filter({ hasText: /chat|message|support/i })
       .first();
 
@@ -156,7 +182,8 @@ test.describe('Chat Widget Mobile Experience', () => {
     await page.goto('/');
 
     // Open chat
-    const chatButton = page.locator('button')
+    const chatButton = page
+      .locator('button')
       .filter({ hasText: /chat|message|support/i })
       .first();
     await chatButton.tap();
@@ -179,7 +206,8 @@ test.describe('Chat Widget Mobile Experience', () => {
     await page.goto('/');
 
     // Open chat first
-    const chatButton = page.locator('button')
+    const chatButton = page
+      .locator('button')
       .filter({ hasText: /chat|message|support/i })
       .first();
     if (await chatButton.isVisible()) {
@@ -188,7 +216,9 @@ test.describe('Chat Widget Mobile Experience', () => {
     }
 
     // Open mobile menu
-    const menuButton = page.locator('button[aria-label*="menu"], button[aria-label*="Menu"]').first();
+    const menuButton = page
+      .locator('button[aria-label*="menu"], button[aria-label*="Menu"]')
+      .first();
     if (await menuButton.isVisible()) {
       await menuButton.tap();
 
@@ -211,14 +241,16 @@ test.describe('Chat Widget Mobile Experience', () => {
     await page.goto('/');
 
     // Open chat
-    const chatButton = page.locator('button')
+    const chatButton = page
+      .locator('button')
       .filter({ hasText: /chat|message|support/i })
       .first();
     await chatButton.tap();
     await page.waitForTimeout(1000);
 
     // Find and focus message input
-    const messageInput = page.locator('input[type="text"], textarea')
+    const messageInput = page
+      .locator('input[type="text"], textarea')
       .filter({ hasText: /message|type/i })
       .first();
 
@@ -233,13 +265,13 @@ test.describe('Chat Widget Mobile Experience', () => {
       expect(inputBox.y).toBeGreaterThan(0);
     }
   });
-
 });
 ```
 
 ## Current Test Coverage Status
 
 ### ✅ Validated
+
 - Touch target sizes (all buttons including chat widget)
 - Scroll behavior conflicts
 - Z-index layering (mobile menu above chat)
@@ -247,10 +279,12 @@ test.describe('Chat Widget Mobile Experience', () => {
 - General mobile accessibility
 
 ### ⚠️ Partial Coverage
+
 - Chat widget button visibility (covered by general button tests)
 - Z-index hierarchy (validated indirectly)
 
 ### ❌ Not Yet Tested
+
 - Chat opening/closing flow
 - Message sending functionality
 - Bot response appearance
@@ -262,6 +296,7 @@ test.describe('Chat Widget Mobile Experience', () => {
 ## Integration with Existing Tests
 
 ### Current Test Files
+
 1. **`mobile-user-journey.test.js`**
    - ✅ Tests touch target sizes (includes chat widget button)
    - ✅ Tests gesture conflicts
@@ -272,23 +307,27 @@ test.describe('Chat Widget Mobile Experience', () => {
    - ✅ Tests for JavaScript errors (would catch chat widget issues)
 
 ### Recommended Test Addition
+
 Create `/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/tests/mobile/chat-widget-mobile.test.js` with the tests outlined above.
 
 ## Test Execution for Chat Widget
 
 ### Quick Validation
+
 ```bash
 # Run all mobile tests (includes chat widget validation)
 npm run test:mobile:quick
 ```
 
 ### Full Chat Widget Testing (after adding chat-widget-mobile.test.js)
+
 ```bash
 # Run specific chat widget tests
 npx playwright test tests/mobile/chat-widget-mobile.test.js --headed
 ```
 
 ### Debug Chat Widget Issues
+
 ```bash
 # Run in headed mode to watch chat widget behavior
 npm run test:mobile:headed
@@ -297,6 +336,7 @@ npm run test:mobile:headed
 ## Chat Widget Mobile CSS Classes
 
 ### From mobile-optimizations.css
+
 ```css
 .mobile-cta-button {
   width: 100%;

@@ -1,4 +1,5 @@
 # Pitch Generator - MVP Audit Report
+
 **Audited**: 5th October 2025
 **Current Status**: 75% Audio Intel Standard Ready
 **Technical Status**: 95% Complete (per existing checklist)
@@ -11,6 +12,7 @@
 **The Gap**: Pitch Generator is **technically complete** but **marketing incomplete** compared to Audio Intel's professional standard.
 
 ### What's Working ✅
+
 - Core feature (pitch generation) fully implemented
 - Database schema complete with proper relationships
 - Authentication and user management working
@@ -18,6 +20,7 @@
 - Clean Postcraft UI design consistent
 
 ### Critical Marketing Gaps ❌
+
 1. **SEO metadata incomplete** - No OpenGraph tags for social sharing
 2. **Pricing copy is template boilerplate** - Needs pitch-specific value proposition
 3. **No social proof or case studies** - Missing credibility signals
@@ -28,18 +31,18 @@
 
 ## 📊 Comparison: Pitch Generator vs Audio Intel Standard
 
-| Element | Audio Intel | Pitch Generator | Gap |
-|---------|-------------|-----------------|-----|
-| **SEO Metadata** | ✅ Full OpenGraph + Twitter Cards | ❌ Basic title + description only | **CRITICAL** |
-| **Social Proof** | ✅ BBC Radio 1, Spotify case studies | ⚠️ Vague "500+ campaigns" | **HIGH** |
-| **Pricing Copy** | ✅ Time savings calculator, specific features | ❌ Generic template boilerplate | **CRITICAL** |
-| **Case Studies** | ✅ Real contact enrichment examples | ❌ No examples of generated pitches | **HIGH** |
-| **Founder Credibility** | ✅ Chris's 5+ years, BBC Radio 1 experience | ❌ Not mentioned anywhere | **MEDIUM** |
-| **CTA Strategy** | ✅ Clear hierarchy, single primary CTA | ⚠️ Multiple CTAs, unclear priority | **MEDIUM** |
-| **Free Trial** | ✅ FREE tier (10 enrichments) | ❌ Claims "7-day free trial" but not implemented | **CRITICAL** |
-| **Mobile UX** | ✅ 21 issues resolved, tested | ❓ Not tested yet | **MEDIUM** |
-| **Analytics** | ✅ Conversion tracking setup | ❌ No analytics installed | **HIGH** |
-| **Onboarding** | ✅ First-time user guidance | ❌ No welcome/tutorial flow | **HIGH** |
+| Element                 | Audio Intel                                   | Pitch Generator                                  | Gap          |
+| ----------------------- | --------------------------------------------- | ------------------------------------------------ | ------------ |
+| **SEO Metadata**        | ✅ Full OpenGraph + Twitter Cards             | ❌ Basic title + description only                | **CRITICAL** |
+| **Social Proof**        | ✅ BBC Radio 1, Spotify case studies          | ⚠️ Vague "500+ campaigns"                        | **HIGH**     |
+| **Pricing Copy**        | ✅ Time savings calculator, specific features | ❌ Generic template boilerplate                  | **CRITICAL** |
+| **Case Studies**        | ✅ Real contact enrichment examples           | ❌ No examples of generated pitches              | **HIGH**     |
+| **Founder Credibility** | ✅ Chris's 5+ years, BBC Radio 1 experience   | ❌ Not mentioned anywhere                        | **MEDIUM**   |
+| **CTA Strategy**        | ✅ Clear hierarchy, single primary CTA        | ⚠️ Multiple CTAs, unclear priority               | **MEDIUM**   |
+| **Free Trial**          | ✅ FREE tier (10 enrichments)                 | ❌ Claims "7-day free trial" but not implemented | **CRITICAL** |
+| **Mobile UX**           | ✅ 21 issues resolved, tested                 | ❓ Not tested yet                                | **MEDIUM**   |
+| **Analytics**           | ✅ Conversion tracking setup                  | ❌ No analytics installed                        | **HIGH**     |
+| **Onboarding**          | ✅ First-time user guidance                   | ❌ No welcome/tutorial flow                      | **HIGH**     |
 
 ---
 
@@ -50,12 +53,14 @@
 **File**: [app/page.tsx](app/page.tsx)
 
 #### Hero Section (Lines 47-97)
+
 ✅ **Strong value prop**: "Write 50 personalised pitches in 20 minutes"
 ✅ **Clear problem statement**: Lists 3 specific pain points
 ❌ **Weak competitor positioning** (line 81): "Generic ChatGPT outputs sound robotic" - need stronger angle
 ❌ **Unverified claim** (line 90): "30 seconds per pitch" - is this accurate?
 
 **Recommended changes**:
+
 ```typescript
 // LINE 81-82: Strengthen ChatGPT comparison
 // BEFORE:
@@ -72,11 +77,13 @@
 ```
 
 #### Social Proof Section (Lines 144-154)
+
 ❌ **CRITICAL**: "Proven templates from 500+ campaigns" is unverifiable
 ❌ **Missing founder story**: Chris's BBC Radio 1, Royal Blood connections not mentioned
 ❌ **No client logos or testimonials**: Zero trust signals
 
 **Recommended replacement**:
+
 ```typescript
 <section className="glass-panel px-6 py-10 sm:px-10">
   <div className="text-center">
@@ -94,15 +101,19 @@
 ```
 
 #### Free Trial Claim (Line 162)
+
 ❌ **CRITICAL INCONSISTENCY**: "Start your 7-day free trial. Generate unlimited pitches. No credit card required."
 
 **Problem**: No free trial is configured anywhere in:
+
 - Stripe product setup
 - Middleware authentication logic
 - Pricing tiers
 
 **Solutions**:
+
 1. **Option A (Quick Fix)**: Remove free trial mention entirely
+
 ```typescript
 // LINE 161-163
 <p className="mt-2 max-w-xl text-sm text-gray-600">
@@ -112,6 +123,7 @@
 ```
 
 2. **Option B (Better)**: Implement a FREE tier like Audio Intel
+
 ```typescript
 // Add to pricing tiers:
 {
@@ -141,6 +153,7 @@
 #### ❌ CRITICAL ISSUES - COMPLETE REWRITE NEEDED
 
 **Current pricing copy** (lines 12-30):
+
 ```typescript
 blurb: 'Designed for indie promoters launching new audio products.',
 features: [
@@ -151,6 +164,7 @@ features: [
 ```
 
 **Problems**:
+
 1. "Audio products" is vague - what are those?
 2. "Postcraft component kit" is a developer tool, not a customer feature
 3. "Automated PDF export patterns" sounds technical, not benefit-focused
@@ -195,6 +209,7 @@ const plans = [
 ```
 
 **Pricing page header** needs customer-facing copy (lines 86-91):
+
 ```typescript
 // BEFORE (developer-facing):
 <h1 className="mt-6 text-3xl font-semibold">Pick a launch plan</h1>
@@ -215,14 +230,17 @@ const plans = [
 ### 3. SEO & Meta Tags
 
 **Current implementation** ([app/layout.tsx](app/layout.tsx):11-14):
+
 ```typescript
 export const metadata: Metadata = {
   title: 'Pitch Generator - AI-Powered Music PR Pitches',
-  description: 'Write 50 personalized music PR pitches in 20 minutes. AI that sounds human, powered by your contact data.',
+  description:
+    'Write 50 personalized music PR pitches in 20 minutes. AI that sounds human, powered by your contact data.',
 };
 ```
 
 #### ❌ Missing Critical SEO Elements
+
 1. **No OpenGraph tags** - Social media previews won't work
 2. **No Twitter Card meta** - Twitter/X shares will look broken
 3. **No keywords** - Missing important search terms
@@ -239,7 +257,8 @@ import { Metadata } from 'next';
 
 export const siteConfig = {
   name: 'Pitch Generator',
-  description: 'Write 50 personalised music PR pitches in 20 minutes. AI-powered pitch writing for radio promoters, independent artists, and PR agencies. Built by industry professionals with 5+ years BBC Radio 1 experience.',
+  description:
+    'Write 50 personalised music PR pitches in 20 minutes. AI-powered pitch writing for radio promoters, independent artists, and PR agencies. Built by industry professionals with 5+ years BBC Radio 1 experience.',
   url: 'https://pitches.totalaudiopromo.com', // UPDATE WITH ACTUAL DOMAIN
   ogImage: '/og-pitch-generator.png', // CREATE THIS 1200x630px IMAGE
   keywords: [
@@ -311,9 +330,7 @@ export const defaultMetadata: Metadata = {
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
     other: [
       {
         rel: 'mask-icon',
@@ -337,6 +354,7 @@ export const defaultMetadata: Metadata = {
 ```
 
 Update **`app/layout.tsx`**:
+
 ```typescript
 import { defaultMetadata } from './metadata';
 
@@ -344,6 +362,7 @@ export const metadata = defaultMetadata;
 ```
 
 #### Required Assets to Create:
+
 1. **`/public/og-pitch-generator.png`** (1200x630px) - Social sharing preview image
 2. **`/public/favicon.ico`** - Browser tab icon
 3. **`/public/favicon-16x16.png`** - Small favicon
@@ -357,6 +376,7 @@ export const metadata = defaultMetadata;
 ### 4. Analytics & Conversion Tracking
 
 #### ❌ Currently Missing:
+
 1. **Page view tracking** - Don't know traffic volume
 2. **CTA click tracking** - Don't know which CTAs convert
 3. **Signup funnel** - No visibility into conversion rates
@@ -368,6 +388,7 @@ export const metadata = defaultMetadata;
 **Option 1: Plausible (Recommended - Privacy-focused, UK-based)**
 
 Add to **`app/layout.tsx`** (inside `<head>`):
+
 ```typescript
 import Script from 'next/script';
 
@@ -380,18 +401,20 @@ import Script from 'next/script';
 ```
 
 **Track custom events**:
+
 ```typescript
 // On CTA clicks:
-window.plausible('CTA Click', { props: { location: 'hero', text: 'Start free trial' }});
+window.plausible('CTA Click', { props: { location: 'hero', text: 'Start free trial' } });
 
 // On pitch generation:
-window.plausible('Pitch Generated', { props: { template: 'radio' }});
+window.plausible('Pitch Generated', { props: { template: 'radio' } });
 
 // On signup:
 window.plausible('Signup Complete');
 ```
 
 **Option 2: Google Analytics (More features, less privacy)**
+
 ```typescript
 <Script
   src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
@@ -414,6 +437,7 @@ window.plausible('Signup Complete');
 #### ❌ CRITICAL GAP: No First-Time User Experience
 
 **Current flow**:
+
 1. User clicks "Start free trial" → `/auth/signin`
 2. User signs in
 3. User lands at... **WHERE?** (Unclear what page they see)
@@ -549,6 +573,7 @@ export default function DashboardPage() {
 ### 6. Missing Features Analysis
 
 #### Core Features Status:
+
 ✅ **Pitch generation API** - Confirmed working (per checklist)
 ✅ **Contact management** - Database schema exists
 ✅ **Template library** - Implemented
@@ -558,6 +583,7 @@ export default function DashboardPage() {
 ❌ **Pitch performance tracking** - Database table exists but UI unclear
 
 #### UX Features Missing:
+
 - [ ] **Bulk pitch generation** - Generate 50 pitches at once
 - [ ] **Pitch editing** - Edit AI output before copying
 - [ ] **Pitch versioning** - Track iterations of same pitch
@@ -570,6 +596,7 @@ export default function DashboardPage() {
 ## 🚀 Launch Readiness Scoring
 
 ### Technical Readiness: **95%** ✅
+
 - Core feature works
 - Database properly configured
 - Authentication secure
@@ -577,6 +604,7 @@ export default function DashboardPage() {
 - Only needs: API keys + testing
 
 ### Marketing Readiness: **50%** ⚠️
+
 - Homepage exists but needs refinement
 - Pricing page needs complete rewrite
 - SEO metadata critically incomplete
@@ -650,6 +678,7 @@ export default function DashboardPage() {
 ## 📝 Content Gaps Summary
 
 ### Missing Pages
+
 - About/Founder Story
 - Detailed "How It Works" with screenshots
 - Examples/Case Studies
@@ -658,6 +687,7 @@ export default function DashboardPage() {
 - Contact/Support
 
 ### Missing Copy Elements
+
 - Time savings calculator ("5 min × 50 pitches = 4+ hours saved")
 - Competitor comparison table (vs Manual, vs ChatGPT, vs Submithub)
 - Beta pricing disclaimer ("Lock in launch pricing before Nov increase")
@@ -668,17 +698,20 @@ export default function DashboardPage() {
 ## 🎯 Recommended Launch Timeline
 
 ### Week 1 (Pre-Launch)
+
 - **Day 1-2**: Fix CRITICAL issues (pricing copy, SEO, free trial)
 - **Day 3-4**: Add onboarding flow + example screenshots
 - **Day 5**: Mobile testing + analytics setup
 - **Day 6-7**: Final testing with 3-5 beta testers
 
 ### Launch Day
+
 - Announce on Total Audio Promo email list + social
 - Post in r/WeAreTheMusicMakers, music industry forums
 - Launch offer: "First 50 users: 50% off for 3 months"
 
 ### Week 2 (Post-Launch)
+
 - Daily usage monitoring
 - User feedback collection (15-min calls)
 - Bug fixes and quick wins
@@ -689,12 +722,14 @@ export default function DashboardPage() {
 ## 🏆 Success Metrics to Track
 
 ### Week 1 Targets
+
 - [ ] 10+ signups
 - [ ] 3+ paying customers
 - [ ] 50+ pitches generated
 - [ ] <5% error rate on pitch generation
 
 ### Month 1 Targets
+
 - [ ] £500/month recurring revenue
 - [ ] 25+ satisfied users
 - [ ] 5+ testimonials collected

@@ -1,6 +1,6 @@
 # 💰 REVENUE & BUSINESS OPERATIONS
 
-*Your revenue command centre - customer acquisition and business growth*
+_Your revenue command centre - customer acquisition and business growth_
 
 ---
 
@@ -97,7 +97,7 @@
 
 ---
 
-*Your path to £500/month recurring revenue*
+_Your path to £500/month recurring revenue_
 
 ## 📝 Consolidation Note
 

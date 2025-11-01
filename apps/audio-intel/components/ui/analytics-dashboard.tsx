@@ -1,16 +1,16 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { 
-  TrendingUp, 
-  TrendingDown, 
-  Users, 
-  Target, 
-  Zap, 
-  Clock, 
+import { useState, useEffect } from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+  TrendingUp,
+  TrendingDown,
+  Users,
+  Target,
+  Zap,
+  Clock,
   BarChart3,
   Download,
   Mail,
@@ -20,20 +20,20 @@ import {
   RefreshCw,
   Eye,
   PieChart,
-  LineChart
-} from "lucide-react"
-import { 
-  LineChart as RechartsLineChart, 
-  Line, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
+  LineChart,
+} from 'lucide-react';
+import {
+  LineChart as RechartsLineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
   ResponsiveContainer,
   PieChart as RechartsPieChart,
   Pie,
-  Cell
-} from 'recharts'
+  Cell,
+} from 'recharts';
 
 interface AnalyticsData {
   metrics: {
@@ -57,38 +57,49 @@ interface AnalyticsData {
   };
 }
 
-const COLORS = ['#1E88E5', '#43A047', '#FF9800', '#E91E63', '#9C27B0', '#607D8B', '#795548', '#FF5722', '#00BCD4', '#8BC34A'];
+const COLORS = [
+  '#1E88E5',
+  '#43A047',
+  '#FF9800',
+  '#E91E63',
+  '#9C27B0',
+  '#607D8B',
+  '#795548',
+  '#FF5722',
+  '#00BCD4',
+  '#8BC34A',
+];
 
 export function AnalyticsDashboard() {
-  const [analyticsData, setAnalyticsData] = useState<AnalyticsData | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [analyticsData, setAnalyticsData] = useState<AnalyticsData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchAnalytics = async () => {
     try {
-      setLoading(true)
-      const response = await fetch('/api/analytics')
-      const result = await response.json()
-      
+      setLoading(true);
+      const response = await fetch('/api/analytics');
+      const result = await response.json();
+
       if (result.success) {
-        setAnalyticsData(result.data)
-        setError(null)
+        setAnalyticsData(result.data);
+        setError(null);
       } else {
-        setError(result.error || 'Failed to load analytics')
+        setError(result.error || 'Failed to load analytics');
       }
     } catch (err) {
-      setError('Failed to fetch analytics data')
+      setError('Failed to fetch analytics data');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchAnalytics()
+    fetchAnalytics();
     // Refresh every 30 seconds
-    const interval = setInterval(fetchAnalytics, 30000)
-    return () => clearInterval(interval)
-  }, [])
+    const interval = setInterval(fetchAnalytics, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
   if (loading) {
     return (
@@ -98,7 +109,7 @@ export function AnalyticsDashboard() {
           <span className="text-lg font-semibold text-gray-600">Loading analytics...</span>
         </div>
       </div>
-    )
+    );
   }
 
   if (error) {
@@ -114,7 +125,7 @@ export function AnalyticsDashboard() {
           </Button>
         </div>
       </div>
-    )
+    );
   }
 
   if (!analyticsData) {
@@ -126,10 +137,10 @@ export function AnalyticsDashboard() {
           <p className="text-gray-600">Start enriching contacts to see your analytics dashboard.</p>
         </div>
       </div>
-    )
+    );
   }
 
-  const { metrics, charts, performance } = analyticsData
+  const { metrics, charts, performance } = analyticsData;
 
   return (
     <div className="space-y-6">
@@ -137,7 +148,9 @@ export function AnalyticsDashboard() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold text-gray-900">Analytics Dashboard</h2>
-          <p className="text-gray-600 mt-1">Real-time insights into your contact enrichment performance</p>
+          <p className="text-gray-600 mt-1">
+            Real-time insights into your contact enrichment performance
+          </p>
         </div>
         <Button onClick={fetchAnalytics} variant="outline" size="sm">
           <RefreshCw className="h-4 w-4 mr-2" />
@@ -153,7 +166,9 @@ export function AnalyticsDashboard() {
             <Users className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-900">{metrics.totalContacts.toLocaleString()}</div>
+            <div className="text-2xl font-bold text-blue-900">
+              {metrics.totalContacts.toLocaleString()}
+            </div>
             <p className="text-xs text-blue-600 mt-1">
               {metrics.totalEnrichments} enrichments completed
             </p>
@@ -166,10 +181,10 @@ export function AnalyticsDashboard() {
             <CheckCircle className="h-4 w-4 text-green-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-900">{metrics.successRate.toFixed(1)}%</div>
-            <p className="text-xs text-green-600 mt-1">
-              High confidence enrichments
-            </p>
+            <div className="text-2xl font-bold text-green-900">
+              {metrics.successRate.toFixed(1)}%
+            </div>
+            <p className="text-xs text-green-600 mt-1">High confidence enrichments</p>
           </CardContent>
         </Card>
 
@@ -179,10 +194,10 @@ export function AnalyticsDashboard() {
             <Target className="h-4 w-4 text-orange-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-orange-900">{metrics.averageConfidence.toFixed(0)}%</div>
-            <p className="text-xs text-orange-600 mt-1">
-              Research quality score
-            </p>
+            <div className="text-2xl font-bold text-orange-900">
+              {metrics.averageConfidence.toFixed(0)}%
+            </div>
+            <p className="text-xs text-orange-600 mt-1">Research quality score</p>
           </CardContent>
         </Card>
 
@@ -192,10 +207,10 @@ export function AnalyticsDashboard() {
             <Zap className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-900">{metrics.averageDailyEnrichments.toFixed(1)}</div>
-            <p className="text-xs text-blue-600 mt-1">
-              Enrichments per day
-            </p>
+            <div className="text-2xl font-bold text-blue-900">
+              {metrics.averageDailyEnrichments.toFixed(1)}
+            </div>
+            <p className="text-xs text-blue-600 mt-1">Enrichments per day</p>
           </CardContent>
         </Card>
       </div>
@@ -211,8 +226,11 @@ export function AnalyticsDashboard() {
           </CardHeader>
           <CardContent>
             <div className="flex items-center space-x-2">
-              <span className={`text-2xl font-bold ${metrics.weeklyGrowth >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                {metrics.weeklyGrowth >= 0 ? '+' : ''}{metrics.weeklyGrowth.toFixed(1)}%
+              <span
+                className={`text-2xl font-bold ${metrics.weeklyGrowth >= 0 ? 'text-green-600' : 'text-red-600'}`}
+              >
+                {metrics.weeklyGrowth >= 0 ? '+' : ''}
+                {metrics.weeklyGrowth.toFixed(1)}%
               </span>
               {metrics.weeklyGrowth >= 0 ? (
                 <TrendingUp className="h-5 w-5 text-green-600" />
@@ -256,31 +274,38 @@ export function AnalyticsDashboard() {
               <ResponsiveContainer width="100%" height="100%">
                 <RechartsLineChart data={charts.dailyEnrichments}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                  <XAxis 
-                    dataKey="date" 
+                  <XAxis
+                    dataKey="date"
                     stroke="#666"
                     fontSize={12}
-                    tickFormatter={(value) => new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                    tickFormatter={value =>
+                      new Date(value).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                      })
+                    }
                   />
                   <YAxis stroke="#666" fontSize={12} />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'white', 
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: 'white',
                       border: '1px solid #e5e7eb',
                       borderRadius: '8px',
-                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                     }}
-                    labelFormatter={(value) => new Date(value).toLocaleDateString('en-US', { 
-                      weekday: 'long', 
-                      year: 'numeric', 
-                      month: 'long', 
-                      day: 'numeric' 
-                    })}
+                    labelFormatter={value =>
+                      new Date(value).toLocaleDateString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })
+                    }
                   />
-                  <Line 
-                    type="monotone" 
-                    dataKey="count" 
-                    stroke="#1E88E5" 
+                  <Line
+                    type="monotone"
+                    dataKey="count"
+                    stroke="#1E88E5"
                     strokeWidth={3}
                     dot={{ fill: '#1E88E5', strokeWidth: 2, r: 4 }}
                     activeDot={{ r: 6, stroke: '#1E88E5', strokeWidth: 2 }}
@@ -318,12 +343,12 @@ export function AnalyticsDashboard() {
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'white', 
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: 'white',
                       border: '1px solid #e5e7eb',
                       borderRadius: '8px',
-                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                     }}
                     formatter={(value, name) => [value, 'Contacts']}
                   />
@@ -348,10 +373,16 @@ export function AnalyticsDashboard() {
             {charts.recentActivity.map((activity, index) => (
               <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
                 <div className="flex-shrink-0">
-                  {activity.action.includes('Enrichment') && <Users className="h-4 w-4 text-blue-600" />}
-                  {activity.action.includes('Export') && <Download className="h-4 w-4 text-green-600" />}
+                  {activity.action.includes('Enrichment') && (
+                    <Users className="h-4 w-4 text-blue-600" />
+                  )}
+                  {activity.action.includes('Export') && (
+                    <Download className="h-4 w-4 text-green-600" />
+                  )}
                   {activity.action.includes('Search') && <Eye className="h-4 w-4 text-blue-600" />}
-                  {activity.action.includes('Promotion') && <TrendingUp className="h-4 w-4 text-orange-600" />}
+                  {activity.action.includes('Promotion') && (
+                    <TrendingUp className="h-4 w-4 text-orange-600" />
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-gray-900">{activity.action}</p>
@@ -359,9 +390,9 @@ export function AnalyticsDashboard() {
                 </div>
                 <div className="flex-shrink-0">
                   <span className="text-xs text-gray-500">
-                    {new Date(activity.timestamp).toLocaleTimeString('en-US', { 
-                      hour: '2-digit', 
-                      minute: '2-digit' 
+                    {new Date(activity.timestamp).toLocaleTimeString('en-US', {
+                      hour: '2-digit',
+                      minute: '2-digit',
                     })}
                   </span>
                 </div>
@@ -377,5 +408,5 @@ export function AnalyticsDashboard() {
         </CardContent>
       </Card>
     </div>
-  )
-} 
+  );
+}

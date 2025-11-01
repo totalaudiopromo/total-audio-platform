@@ -6,7 +6,7 @@
 ✅ **Better Error Handling**: Built-in retry logic and error management  
 ✅ **Easier Maintenance**: No need to maintain custom API integration code  
 ✅ **Security**: OAuth flows handled properly with token refresh  
-✅ **Scalability**: Can easily add more Google services  
+✅ **Scalability**: Can easily add more Google services
 
 ## **Current MCP Status**
 
@@ -45,7 +45,9 @@ node simple-gmail-oauth.js
 {
   "name": "google-services",
   "command": "node",
-  "args": ["/Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/radio-promo/mcp-servers/google-services-mcp.js"],
+  "args": [
+    "/Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/radio-promo/mcp-servers/google-services-mcp.js"
+  ],
   "env": {
     "GOOGLE_CREDENTIALS_PATH": "/Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/radio-promo/gmail-credentials.json",
     "GOOGLE_TOKEN_PATH": "/Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/radio-promo/gmail-token.json"
@@ -111,7 +113,7 @@ await oAuth2Client.getToken(code);
 ```javascript
 // Simple MCP call
 await mcp.callTool('gmail_search_emails', {
-  query: 'from:artist@example.com subject:campaign'
+  query: 'from:artist@example.com subject:campaign',
 });
 // Automatic error handling
 // Built-in retry logic
@@ -149,7 +151,7 @@ await mcp.callTool('gmail_search_emails', {
 ✅ **Read-Only Access**: Gmail and Drive are read-only by default  
 ✅ **Token Security**: Tokens are stored locally and not shared  
 ✅ **Scope Limitation**: Only requests necessary permissions  
-✅ **No Data Storage**: MCP server doesn't store your data  
+✅ **No Data Storage**: MCP server doesn't store your data
 
 ---
 

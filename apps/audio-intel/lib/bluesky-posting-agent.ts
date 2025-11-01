@@ -20,7 +20,7 @@ export interface BlueskyPost {
 
 export interface BlueskyCredentials {
   identifier: string; // Your Bluesky handle (e.g., yourname.bsky.social)
-  password: string;   // App password (not your main password)
+  password: string; // App password (not your main password)
 }
 
 export class BlueskyPostingAgent {
@@ -29,7 +29,7 @@ export class BlueskyPostingAgent {
 
   constructor(credentials: BlueskyCredentials) {
     this.agent = new BskyAgent({
-      service: 'https://bsky.social'
+      service: 'https://bsky.social',
     });
     this.credentials = credentials;
   }
@@ -41,7 +41,7 @@ export class BlueskyPostingAgent {
     try {
       await this.agent.login({
         identifier: this.credentials.identifier,
-        password: this.credentials.password
+        password: this.credentials.password,
       });
       console.log('[BLUESKY] ✅ Authenticated successfully');
       return true;
@@ -58,20 +58,20 @@ export class BlueskyPostingAgent {
     try {
       const response = await this.agent.post({
         text,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       });
 
       console.log('[BLUESKY] ✅ Posted successfully:', response.uri);
 
       return {
         success: true,
-        uri: response.uri
+        uri: response.uri,
       };
     } catch (error) {
       console.error('[BLUESKY] ❌ Post failed:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -168,7 +168,7 @@ Audio Intel transforms chaos → organised intelligence in 2 minutes.
 
 Contact research shouldn't kill weekends.
 
-intel.totalaudiopromo.com`
+intel.totalaudiopromo.com`,
     };
 
     return contentMap[title] || null;
@@ -188,7 +188,7 @@ intel.totalaudiopromo.com`
       posted: 0,
       skipped: 0,
       failed: 0,
-      details: [] as Array<{ title: string; status: string; uri?: string; error?: string }>
+      details: [] as Array<{ title: string; status: string; uri?: string; error?: string }>,
     };
 
     // Authenticate first
@@ -198,9 +198,8 @@ intel.totalaudiopromo.com`
     }
 
     // Filter Bluesky posts that should be posted now
-    const blueskyPosts = calendar.filter(post =>
-      post.platform === 'Bluesky' &&
-      post.status === 'scheduled'
+    const blueskyPosts = calendar.filter(
+      post => post.platform === 'Bluesky' && post.status === 'scheduled'
     );
 
     console.log(`[BLUESKY] Found ${blueskyPosts.length} Bluesky posts in calendar`);
@@ -227,7 +226,7 @@ intel.totalaudiopromo.com`
         results.details.push({
           title: post.title,
           status: 'failed',
-          error: 'Content not found'
+          error: 'Content not found',
         });
         continue;
       }
@@ -241,14 +240,14 @@ intel.totalaudiopromo.com`
         results.details.push({
           title: post.title,
           status: 'posted',
-          uri: result.uri
+          uri: result.uri,
         });
       } else {
         results.failed++;
         results.details.push({
           title: post.title,
           status: 'failed',
-          error: result.error
+          error: result.error,
         });
       }
 
@@ -266,12 +265,12 @@ intel.totalaudiopromo.com`
     try {
       const authenticated = await this.authenticate();
       return {
-        healthy: authenticated
+        healthy: authenticated,
       };
     } catch (error) {
       return {
         healthy: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -283,11 +282,13 @@ intel.totalaudiopromo.com`
 export function createBlueskyAgent(): BlueskyPostingAgent {
   const credentials: BlueskyCredentials = {
     identifier: process.env.BLUESKY_IDENTIFIER || '',
-    password: process.env.BLUESKY_APP_PASSWORD || ''
+    password: process.env.BLUESKY_APP_PASSWORD || '',
   };
 
   if (!credentials.identifier || !credentials.password) {
-    throw new Error('Bluesky credentials not configured. Set BLUESKY_IDENTIFIER and BLUESKY_APP_PASSWORD environment variables.');
+    throw new Error(
+      'Bluesky credentials not configured. Set BLUESKY_IDENTIFIER and BLUESKY_APP_PASSWORD environment variables.'
+    );
   }
 
   return new BlueskyPostingAgent(credentials);

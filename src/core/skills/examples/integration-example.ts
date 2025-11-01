@@ -17,15 +17,9 @@ import Anthropic from '@anthropic-ai/sdk';
  * Initialize the skills engine (do this once at app startup)
  */
 export async function initializeSkillsEngine() {
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
+  const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
 
-  const skillEngine = new SkillEngine(
-    supabase,
-    process.env.ANTHROPIC_API_KEY
-  );
+  const skillEngine = new SkillEngine(supabase, process.env.ANTHROPIC_API_KEY);
 
   await skillEngine.initialize();
 
@@ -135,7 +129,7 @@ export async function matchContactsWithSkills(
         influences: track.influences || [],
         key_facts: track.achievements || [],
       },
-      contacts: availableContacts.map((c) => ({
+      contacts: availableContacts.map(c => ({
         id: c.id,
         name: c.name,
         role: c.role,
@@ -165,12 +159,8 @@ export async function matchContactsWithSkills(
   }));
 
   console.log(`[Audio Intel] Found ${matches.length} matches`);
-  console.log(
-    `[Audio Intel] Avg score: ${matchResult.outputs.analysis.averageScore.toFixed(2)}`
-  );
-  console.log(
-    `[Audio Intel] Top genres: ${matchResult.outputs.analysis.topGenres.join(', ')}`
-  );
+  console.log(`[Audio Intel] Avg score: ${matchResult.outputs.analysis.averageScore.toFixed(2)}`);
+  console.log(`[Audio Intel] Top genres: ${matchResult.outputs.analysis.topGenres.join(', ')}`);
 
   return {
     matches,
@@ -241,12 +231,10 @@ export async function batchGeneratePitches(
   track: any,
   contacts: any[]
 ) {
-  console.log(
-    `[Batch] Generating pitches for ${contacts.length} contacts...`
-  );
+  console.log(`[Batch] Generating pitches for ${contacts.length} contacts...`);
 
   const results = await Promise.all(
-    contacts.map(async (contact) => {
+    contacts.map(async contact => {
       try {
         const result = await skillEngine.invokeSkill({
           orgId,
@@ -287,12 +275,10 @@ export async function batchGeneratePitches(
     })
   );
 
-  const successful = results.filter((r) => r.success).length;
-  const failed = results.filter((r) => !r.success).length;
+  const successful = results.filter(r => r.success).length;
+  const failed = results.filter(r => !r.success).length;
 
-  console.log(
-    `[Batch] Complete: ${successful} successful, ${failed} failed`
-  );
+  console.log(`[Batch] Complete: ${successful} successful, ${failed} failed`);
 
   return {
     results,
@@ -323,13 +309,7 @@ export async function fullPitchWorkflow(
 
   // Step 1: Match best contacts
   console.log('[Workflow] Step 1: Matching contacts...');
-  const matchResult = await matchContactsWithSkills(
-    skillEngine,
-    orgId,
-    userId,
-    track,
-    contacts
-  );
+  const matchResult = await matchContactsWithSkills(skillEngine, orgId, userId, track, contacts);
 
   if (matchResult.matches.length === 0) {
     throw new Error('No suitable contacts found');
@@ -339,15 +319,9 @@ export async function fullPitchWorkflow(
   console.log('[Workflow] Step 2: Generating pitches for top 3 matches...');
   const topContacts = matchResult.matches.slice(0, 3);
   const pitches = await Promise.all(
-    topContacts.map(async (match) => {
-      const contact = contacts.find((c) => c.id === match.contactId);
-      const pitchResult = await generatePitchWithSkills(
-        skillEngine,
-        orgId,
-        userId,
-        track,
-        contact
-      );
+    topContacts.map(async match => {
+      const contact = contacts.find(c => c.id === match.contactId);
+      const pitchResult = await generatePitchWithSkills(skillEngine, orgId, userId, track, contact);
 
       return {
         contactId: match.contactId,
@@ -362,7 +336,7 @@ export async function fullPitchWorkflow(
   // Step 3: Validate all pitches with voice guard
   console.log('[Workflow] Step 3: Validating pitches...');
   const validatedPitches = await Promise.all(
-    pitches.map(async (pitch) => {
+    pitches.map(async pitch => {
       const bestDraft = pitch.pitchDrafts[0]; // Use highest confidence draft
       const validation = await validateContentVoice(
         skillEngine,
@@ -384,7 +358,7 @@ export async function fullPitchWorkflow(
   return {
     matchingSummary: matchResult.analysis,
     pitches: validatedPitches,
-    readyToSendCount: validatedPitches.filter((p) => p.readyToSend).length,
+    readyToSendCount: validatedPitches.filter(p => p.readyToSend).length,
   };
 }
 
@@ -404,23 +378,14 @@ export async function generatePitchWithFallback(
 ) {
   try {
     // Try AI-powered skill first
-    const result = await generatePitchWithSkills(
-      skillEngine,
-      orgId,
-      userId,
-      track,
-      contact
-    );
+    const result = await generatePitchWithSkills(skillEngine, orgId, userId, track, contact);
 
     return {
       source: 'ai',
       drafts: result.drafts,
     };
   } catch (error) {
-    console.warn(
-      '[Fallback] AI pitch generation failed, using template fallback:',
-      error.message
-    );
+    console.warn('[Fallback] AI pitch generation failed, using template fallback:', error.message);
 
     // Fallback to template-based generation
     const templateDraft = {
@@ -458,13 +423,7 @@ export async function exampleApiRoute(req: any, res: any) {
     const contacts = await getContactsFromDatabase(contactIds);
 
     // Run full workflow
-    const result = await fullPitchWorkflow(
-      skillEngine,
-      orgId,
-      userId,
-      track,
-      contacts
-    );
+    const result = await fullPitchWorkflow(skillEngine, orgId, userId, track, contacts);
 
     res.json({
       success: true,

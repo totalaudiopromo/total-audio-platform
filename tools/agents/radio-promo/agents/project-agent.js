@@ -2,10 +2,10 @@
 
 /**
  * Liberty Music PR Project Agent
- * 
+ *
  * Handles Monday.com campaign automation and project management
  * Creates structured campaign boards, manages tasks, timelines, and milestones
- * 
+ *
  * Features:
  * - Monday.com API integration for campaign board creation
  * - Automated task generation based on Liberty workflows
@@ -21,22 +21,22 @@ const EventEmitter = require('events');
 class ProjectAgent extends EventEmitter {
   constructor(options = {}) {
     super();
-    
+
     this.name = 'ProjectAgent';
     this.version = '1.0.0';
     this.orchestrator = options.orchestrator;
     this.config = options.config || {};
     this.logger = options.logger || console.log;
-    
+
     // Monday.com API configuration
     this.mondayConfig = {
       apiKey: process.env.MONDAY_API_KEY,
       apiVersion: '2023-10',
       baseUrl: 'https://api.monday.com/v2',
       defaultWorkspaceId: process.env.MONDAY_WORKSPACE_ID,
-      rateLimitDelay: 1000 // 1 second between requests
+      rateLimitDelay: 1000, // 1 second between requests
     };
-    
+
     // Campaign board templates for different workflow types
     this.boardTemplates = {
       'complete-campaign': {
@@ -53,7 +53,7 @@ class ProjectAgent extends EventEmitter {
                 priority: 'critical',
                 timeline: -7, // days from release
                 dependencies: [],
-                assignee: 'chris@libertymusicpr.com'
+                assignee: 'chris@libertymusicpr.com',
               },
               {
                 name: 'Press Release Creation',
@@ -61,7 +61,7 @@ class ProjectAgent extends EventEmitter {
                 priority: 'high',
                 timeline: -5,
                 dependencies: ['Campaign Brief Review'],
-                assignee: 'team@libertymusicpr.com'
+                assignee: 'team@libertymusicpr.com',
               },
               {
                 name: 'Radio Station List Compilation',
@@ -69,7 +69,7 @@ class ProjectAgent extends EventEmitter {
                 priority: 'high',
                 timeline: -5,
                 dependencies: ['Campaign Brief Review'],
-                assignee: 'team@libertymusicpr.com'
+                assignee: 'team@libertymusicpr.com',
               },
               {
                 name: 'WARM API Tracking Setup',
@@ -77,9 +77,9 @@ class ProjectAgent extends EventEmitter {
                 priority: 'high',
                 timeline: -3,
                 dependencies: ['Campaign Brief Review'],
-                assignee: 'system@libertymusicpr.com'
-              }
-            ]
+                assignee: 'system@libertymusicpr.com',
+              },
+            ],
           },
           {
             title: 'Launch Week',
@@ -91,7 +91,7 @@ class ProjectAgent extends EventEmitter {
                 priority: 'critical',
                 timeline: 0, // release day
                 dependencies: ['Press Release Creation'],
-                assignee: 'team@libertymusicpr.com'
+                assignee: 'team@libertymusicpr.com',
               },
               {
                 name: 'Radio Station Outreach - Wave 1',
@@ -99,7 +99,7 @@ class ProjectAgent extends EventEmitter {
                 priority: 'critical',
                 timeline: 1,
                 dependencies: ['Radio Station List Compilation', 'Press Release Distribution'],
-                assignee: 'team@libertymusicpr.com'
+                assignee: 'team@libertymusicpr.com',
               },
               {
                 name: 'Amazing Radio Submission',
@@ -107,7 +107,7 @@ class ProjectAgent extends EventEmitter {
                 priority: 'high',
                 timeline: 1,
                 dependencies: ['Radio Station List Compilation'],
-                assignee: 'system@libertymusicpr.com'
+                assignee: 'system@libertymusicpr.com',
               },
               {
                 name: 'Wigwam Radio Submission',
@@ -115,9 +115,9 @@ class ProjectAgent extends EventEmitter {
                 priority: 'medium',
                 timeline: 2,
                 dependencies: ['Radio Station List Compilation'],
-                assignee: 'system@libertymusicpr.com'
-              }
-            ]
+                assignee: 'system@libertymusicpr.com',
+              },
+            ],
           },
           {
             title: 'Follow-up & Tracking',
@@ -129,7 +129,7 @@ class ProjectAgent extends EventEmitter {
                 priority: 'high',
                 timeline: 7,
                 dependencies: ['Radio Station Outreach - Wave 1'],
-                assignee: 'team@libertymusicpr.com'
+                assignee: 'team@libertymusicpr.com',
               },
               {
                 name: 'WARM API Play Monitoring',
@@ -138,7 +138,7 @@ class ProjectAgent extends EventEmitter {
                 timeline: 1,
                 duration: 30,
                 dependencies: ['WARM API Tracking Setup'],
-                assignee: 'system@libertymusicpr.com'
+                assignee: 'system@libertymusicpr.com',
               },
               {
                 name: 'Weekly Performance Review',
@@ -147,9 +147,9 @@ class ProjectAgent extends EventEmitter {
                 timeline: 7,
                 frequency: 'weekly',
                 dependencies: ['WARM API Play Monitoring'],
-                assignee: 'team@libertymusicpr.com'
-              }
-            ]
+                assignee: 'team@libertymusicpr.com',
+              },
+            ],
           },
           {
             title: 'Reporting & Delivery',
@@ -161,7 +161,7 @@ class ProjectAgent extends EventEmitter {
                 priority: 'high',
                 timeline: 21,
                 dependencies: ['WARM API Play Monitoring'],
-                assignee: 'team@libertymusicpr.com'
+                assignee: 'team@libertymusicpr.com',
               },
               {
                 name: 'Professional Report Generation',
@@ -169,7 +169,7 @@ class ProjectAgent extends EventEmitter {
                 priority: 'high',
                 timeline: 23,
                 dependencies: ['Campaign Performance Analysis'],
-                assignee: 'system@libertymusicpr.com'
+                assignee: 'system@libertymusicpr.com',
               },
               {
                 name: 'Client Report Delivery',
@@ -177,13 +177,13 @@ class ProjectAgent extends EventEmitter {
                 priority: 'critical',
                 timeline: 25,
                 dependencies: ['Professional Report Generation'],
-                assignee: 'chris@libertymusicpr.com'
-              }
-            ]
-          }
-        ]
+                assignee: 'chris@libertymusicpr.com',
+              },
+            ],
+          },
+        ],
       },
-      
+
       'rush-campaign': {
         name: '{artistName} - {trackTitle} RUSH Campaign',
         description: 'Expedited Liberty Music PR radio promotion campaign',
@@ -197,7 +197,7 @@ class ProjectAgent extends EventEmitter {
                 type: 'milestone',
                 priority: 'critical',
                 timeline: 0,
-                assignee: 'chris@libertymusicpr.com'
+                assignee: 'chris@libertymusicpr.com',
               },
               {
                 name: 'Rapid Press Release Creation',
@@ -205,7 +205,7 @@ class ProjectAgent extends EventEmitter {
                 priority: 'critical',
                 timeline: 1,
                 dependencies: ['Emergency Brief Review'],
-                assignee: 'team@libertymusicpr.com'
+                assignee: 'team@libertymusicpr.com',
               },
               {
                 name: 'Priority Station Outreach',
@@ -213,32 +213,32 @@ class ProjectAgent extends EventEmitter {
                 priority: 'critical',
                 timeline: 2,
                 dependencies: ['Rapid Press Release Creation'],
-                assignee: 'team@libertymusicpr.com'
-              }
-            ]
-          }
-        ]
-      }
+                assignee: 'team@libertymusicpr.com',
+              },
+            ],
+          },
+        ],
+      },
     };
-    
+
     // Task status workflow
     this.statusWorkflow = {
-      'not_started': { next: ['in_progress', 'blocked'], color: 'grey' },
-      'in_progress': { next: ['completed', 'blocked', 'review'], color: 'blue' },
-      'review': { next: ['completed', 'in_progress', 'blocked'], color: 'orange' },
-      'completed': { next: [], color: 'green' },
-      'blocked': { next: ['in_progress', 'cancelled'], color: 'red' },
-      'cancelled': { next: [], color: 'dark_grey' }
+      not_started: { next: ['in_progress', 'blocked'], color: 'grey' },
+      in_progress: { next: ['completed', 'blocked', 'review'], color: 'blue' },
+      review: { next: ['completed', 'in_progress', 'blocked'], color: 'orange' },
+      completed: { next: [], color: 'green' },
+      blocked: { next: ['in_progress', 'cancelled'], color: 'red' },
+      cancelled: { next: [], color: 'dark_grey' },
     };
-    
+
     // Priority levels with scoring
     this.priorityLevels = {
-      'critical': { score: 100, color: 'red' },
-      'high': { score: 80, color: 'orange' },
-      'medium': { score: 60, color: 'yellow' },
-      'low': { score: 40, color: 'green' }
+      critical: { score: 100, color: 'red' },
+      high: { score: 80, color: 'orange' },
+      medium: { score: 60, color: 'yellow' },
+      low: { score: 40, color: 'green' },
     };
-    
+
     // Metrics tracking
     this.metrics = {
       campaignsCreated: 0,
@@ -248,13 +248,13 @@ class ProjectAgent extends EventEmitter {
       averageSetupTime: 0,
       mondayApiCalls: 0,
       successfulUpdates: 0,
-      failedOperations: 0
+      failedOperations: 0,
     };
-    
+
     // Active campaigns tracking
     this.activeCampaigns = new Map();
     this.campaignBoards = new Map();
-    
+
     // Rate limiting for Monday.com API
     this.lastApiCall = 0;
     this.apiQueue = [];
@@ -266,16 +266,16 @@ class ProjectAgent extends EventEmitter {
   async initialize() {
     try {
       this.logger('📋 Initializing Project Agent...');
-      
+
       // Verify Monday.com API access
       await this.verifyMondayAccess();
-      
+
       // Load existing campaigns
       await this.loadCampaignState();
-      
+
       // Setup monitoring
       await this.setupCampaignMonitoring();
-      
+
       this.logger('✅ Project Agent initialized successfully');
       return true;
     } catch (error) {
@@ -291,7 +291,7 @@ class ProjectAgent extends EventEmitter {
     if (!this.mondayConfig.apiKey) {
       throw new Error('MONDAY_API_KEY environment variable not set');
     }
-    
+
     try {
       // Test API call
       await this.callMondayAPI('query { me { name } }');
@@ -309,19 +309,19 @@ class ProjectAgent extends EventEmitter {
       const stateFile = './data/campaign-boards.json';
       if (fs.existsSync(stateFile)) {
         const state = JSON.parse(fs.readFileSync(stateFile, 'utf8'));
-        
+
         if (state.campaigns) {
           state.campaigns.forEach(campaign => {
             this.activeCampaigns.set(campaign.id, campaign);
           });
         }
-        
+
         if (state.boards) {
           state.boards.forEach(board => {
             this.campaignBoards.set(board.campaignId, board);
           });
         }
-        
+
         this.logger(`📂 Loaded ${this.activeCampaigns.size} existing campaigns`);
       }
     } catch (error) {
@@ -334,14 +334,17 @@ class ProjectAgent extends EventEmitter {
    */
   async setupCampaignMonitoring() {
     // Monitor campaign progress every 15 minutes
-    this.monitoringInterval = setInterval(async () => {
-      try {
-        await this.monitorActiveCampaigns();
-      } catch (error) {
-        this.logger('⚠️  Campaign monitoring error:', error.message);
-      }
-    }, 15 * 60 * 1000); // 15 minutes
-    
+    this.monitoringInterval = setInterval(
+      async () => {
+        try {
+          await this.monitorActiveCampaigns();
+        } catch (error) {
+          this.logger('⚠️  Campaign monitoring error:', error.message);
+        }
+      },
+      15 * 60 * 1000
+    ); // 15 minutes
+
     this.logger('📊 Campaign monitoring started');
   }
 
@@ -351,19 +354,19 @@ class ProjectAgent extends EventEmitter {
   async createCampaign(campaignData) {
     const startTime = Date.now();
     const campaignId = this.generateCampaignId();
-    
+
     try {
       this.logger(`🎬 Creating campaign: ${campaignId}`);
-      
+
       // Parse campaign data from Intelligence Agent
       const parsedData = this.parseCampaignData(campaignData);
-      
+
       // Determine campaign template
       const template = this.selectCampaignTemplate(parsedData);
-      
+
       // Create Monday.com board
       const board = await this.createMondayBoard(campaignId, parsedData, template);
-      
+
       // Setup campaign structure
       const campaign = {
         id: campaignId,
@@ -376,35 +379,37 @@ class ProjectAgent extends EventEmitter {
           tasksTotal: 0,
           tasksCompleted: 0,
           milestonesTotal: 0,
-          milestonesReached: 0
+          milestonesReached: 0,
         },
         timeline: this.calculateCampaignTimeline(parsedData, template),
-        notifications: []
+        notifications: [],
       };
-      
+
       // Generate all tasks and groups
       await this.generateCampaignTasks(campaign);
-      
+
       // Store campaign
       this.activeCampaigns.set(campaignId, campaign);
       this.campaignBoards.set(campaignId, board);
-      
+
       // Save state
       await this.saveCampaignState();
-      
+
       // Update metrics
       this.updateMetrics(campaign, Date.now() - startTime);
-      
+
       this.logger(`✨ Campaign created successfully: ${board.name}`);
-      this.logger(`📊 Generated ${campaign.metrics.tasksTotal} tasks across ${board.groups.length} groups`);
-      
+      this.logger(
+        `📊 Generated ${campaign.metrics.tasksTotal} tasks across ${board.groups.length} groups`
+      );
+
       // Emit progress event
       this.emit('campaign-created', {
         campaignId,
         boardUrl: board.url,
-        tasksGenerated: campaign.metrics.tasksTotal
+        tasksGenerated: campaign.metrics.tasksTotal,
       });
-      
+
       return {
         campaignId,
         boardId: board.id,
@@ -412,16 +417,15 @@ class ProjectAgent extends EventEmitter {
         boardName: board.name,
         tasksGenerated: campaign.metrics.tasksTotal,
         estimatedCompletion: campaign.timeline.estimatedCompletion,
-        nextMilestone: campaign.timeline.nextMilestone
+        nextMilestone: campaign.timeline.nextMilestone,
       };
-      
     } catch (error) {
       this.logger('❌ Campaign creation failed:', error);
-      
+
       // Clean up any partial creation
       this.activeCampaigns.delete(campaignId);
       this.campaignBoards.delete(campaignId);
-      
+
       throw error;
     }
   }
@@ -432,7 +436,7 @@ class ProjectAgent extends EventEmitter {
   parseCampaignData(rawData) {
     // Handle different input formats
     let campaignData;
-    
+
     if (rawData.campaign) {
       // From Intelligence Agent final brief
       campaignData = rawData.campaign;
@@ -443,7 +447,7 @@ class ProjectAgent extends EventEmitter {
       // Direct campaign data
       campaignData = rawData;
     }
-    
+
     // Set defaults for missing fields
     const parsedData = {
       artistName: campaignData.artistName || 'Unknown Artist',
@@ -454,18 +458,18 @@ class ProjectAgent extends EventEmitter {
       priority: campaignData.priority || 'medium',
       campaignType: campaignData.campaignType || 'standard',
       targets: campaignData.targets || 'UK radio stations',
-      timeline: campaignData.timeline || '4 weeks'
+      timeline: campaignData.timeline || '4 weeks',
     };
-    
+
     // Validate required fields
     if (!parsedData.artistName || parsedData.artistName === 'Unknown Artist') {
       throw new Error('Artist name is required for campaign creation');
     }
-    
+
     if (!parsedData.trackTitle || parsedData.trackTitle === 'Unknown Track') {
       throw new Error('Track title is required for campaign creation');
     }
-    
+
     return parsedData;
   }
 
@@ -474,19 +478,21 @@ class ProjectAgent extends EventEmitter {
    */
   selectCampaignTemplate(campaignData) {
     // Check for rush campaign indicators
-    if (campaignData.priority === 'critical' || 
-        campaignData.campaignType === 'rush' ||
-        this.isRushTimeline(campaignData.releaseDate)) {
+    if (
+      campaignData.priority === 'critical' ||
+      campaignData.campaignType === 'rush' ||
+      this.isRushTimeline(campaignData.releaseDate)
+    ) {
       return {
         name: 'rush-campaign',
-        ...this.boardTemplates['rush-campaign']
+        ...this.boardTemplates['rush-campaign'],
       };
     }
-    
+
     // Default to complete campaign template
     return {
       name: 'complete-campaign',
-      ...this.boardTemplates['complete-campaign']
+      ...this.boardTemplates['complete-campaign'],
     };
   }
 
@@ -497,7 +503,7 @@ class ProjectAgent extends EventEmitter {
     const now = new Date();
     const release = new Date(releaseDate);
     const daysUntilRelease = Math.ceil((release - now) / (1000 * 60 * 60 * 24));
-    
+
     return daysUntilRelease <= 7; // Less than a week
   }
 
@@ -507,31 +513,30 @@ class ProjectAgent extends EventEmitter {
   async createMondayBoard(campaignId, campaignData, template) {
     try {
       this.logger(`🏗️  Creating Monday.com board for ${campaignData.artistName}...`);
-      
+
       // Generate board name from template
       const boardName = template.name
         .replace('{artistName}', campaignData.artistName)
         .replace('{trackTitle}', campaignData.trackTitle);
-      
+
       // Create board via Monday.com API (simulated)
       const board = await this.callMondayBoardCreation({
         name: boardName,
         description: template.description,
         workspaceId: this.mondayConfig.defaultWorkspaceId,
-        campaignData
+        campaignData,
       });
-      
+
       this.logger(`✅ Monday.com board created: ${board.name}`);
-      
+
       return {
         id: board.id,
         name: board.name,
         url: board.url,
         groups: [],
         created: new Date(),
-        campaignId
+        campaignId,
       };
-      
     } catch (error) {
       this.logger('❌ Monday.com board creation failed:', error);
       throw error;
@@ -546,38 +551,41 @@ class ProjectAgent extends EventEmitter {
     if (!template) {
       throw new Error(`Template '${campaign.template}' not found`);
     }
-    
+
     this.logger(`📝 Generating tasks for ${template.groups.length} groups...`);
-    
+
     for (const groupTemplate of template.groups) {
       try {
         // Create group in Monday.com
         const group = await this.createMondayGroup(campaign.board.id, groupTemplate, campaign);
-        
+
         // Add group to board
         campaign.board.groups.push(group);
-        
+
         // Generate tasks for this group
         await this.generateGroupTasks(campaign, group, groupTemplate);
-        
+
         this.logger(`✅ Group created: ${group.title} (${group.tasks.length} tasks)`);
-        
       } catch (error) {
         this.logger(`❌ Failed to create group ${groupTemplate.title}:`, error);
         throw error;
       }
     }
-    
+
     // Calculate totals
-    campaign.metrics.tasksTotal = campaign.board.groups.reduce((total, group) => 
-      total + group.tasks.length, 0
+    campaign.metrics.tasksTotal = campaign.board.groups.reduce(
+      (total, group) => total + group.tasks.length,
+      0
     );
-    
-    campaign.metrics.milestonesTotal = campaign.board.groups.reduce((total, group) => 
-      total + group.tasks.filter(task => task.type === 'milestone').length, 0
+
+    campaign.metrics.milestonesTotal = campaign.board.groups.reduce(
+      (total, group) => total + group.tasks.filter(task => task.type === 'milestone').length,
+      0
     );
-    
-    this.logger(`📊 Task generation complete: ${campaign.metrics.tasksTotal} tasks, ${campaign.metrics.milestonesTotal} milestones`);
+
+    this.logger(
+      `📊 Task generation complete: ${campaign.metrics.tasksTotal} tasks, ${campaign.metrics.milestonesTotal} milestones`
+    );
   }
 
   /**
@@ -590,9 +598,9 @@ class ProjectAgent extends EventEmitter {
       color: groupTemplate.color,
       boardId,
       tasks: [],
-      created: new Date()
+      created: new Date(),
     };
-    
+
     // Create group via Monday.com API (simulated)
     await this.callMondayAPI(`
       mutation {
@@ -601,7 +609,7 @@ class ProjectAgent extends EventEmitter {
         }
       }
     `);
-    
+
     return group;
   }
 
@@ -613,7 +621,6 @@ class ProjectAgent extends EventEmitter {
       try {
         const task = await this.createCampaignTask(campaign, group, taskTemplate);
         group.tasks.push(task);
-        
       } catch (error) {
         this.logger(`❌ Failed to create task ${taskTemplate.name}:`, error);
         // Continue with other tasks
@@ -629,7 +636,7 @@ class ProjectAgent extends EventEmitter {
     const releaseDate = new Date(campaign.data.releaseDate);
     const taskDate = new Date(releaseDate);
     taskDate.setDate(taskDate.getDate() + taskTemplate.timeline);
-    
+
     const task = {
       id: this.generateTaskId(),
       name: taskTemplate.name,
@@ -643,23 +650,23 @@ class ProjectAgent extends EventEmitter {
       groupId: group.id,
       campaignId: campaign.id,
       created: new Date(),
-      updated: new Date()
+      updated: new Date(),
     };
-    
+
     // Add recurring or ongoing task properties
     if (taskTemplate.type === 'recurring' && taskTemplate.frequency) {
       task.frequency = taskTemplate.frequency;
       task.nextDue = new Date(taskDate);
     }
-    
+
     if (taskTemplate.type === 'ongoing' && taskTemplate.duration) {
       task.duration = taskTemplate.duration;
-      task.endDate = new Date(taskDate.getTime() + (taskTemplate.duration * 24 * 60 * 60 * 1000));
+      task.endDate = new Date(taskDate.getTime() + taskTemplate.duration * 24 * 60 * 60 * 1000);
     }
-    
+
     // Create task in Monday.com
     await this.createMondayTask(group.boardId, group.id, task);
-    
+
     return task;
   }
 
@@ -681,10 +688,13 @@ class ProjectAgent extends EventEmitter {
       'Weekly Performance Review': `Weekly analysis of campaign performance. Review WARM API data, station responses, and adjust strategy as needed.`,
       'Campaign Performance Analysis': `Comprehensive analysis of campaign results. Compile play data, reach statistics, and ROI calculations for final reporting.`,
       'Professional Report Generation': `Generate professional campaign report with charts, statistics, and insights. Include recommendations for future campaigns.`,
-      'Client Report Delivery': `Final delivery of campaign results to client. Schedule presentation meeting and provide actionable insights for future releases.`
+      'Client Report Delivery': `Final delivery of campaign results to client. Schedule presentation meeting and provide actionable insights for future releases.`,
     };
-    
-    return descriptions[taskTemplate.name] || `${taskTemplate.name} for ${campaignData.artistName} - ${campaignData.trackTitle} campaign.`;
+
+    return (
+      descriptions[taskTemplate.name] ||
+      `${taskTemplate.name} for ${campaignData.artistName} - ${campaignData.trackTitle} campaign.`
+    );
   }
 
   /**
@@ -703,7 +713,7 @@ class ProjectAgent extends EventEmitter {
         }
       }
     `);
-    
+
     // Set task properties (priority, status, assignee, due date)
     await this.updateMondayTaskProperties(task);
   }
@@ -717,9 +727,9 @@ class ProjectAgent extends EventEmitter {
       { column: 'priority', value: this.priorityLevels[task.priority] },
       { column: 'status', value: this.statusWorkflow[task.status] },
       { column: 'due_date', value: task.dueDate.toISOString() },
-      { column: 'person', value: task.assignee }
+      { column: 'person', value: task.assignee },
     ];
-    
+
     for (const update of updates) {
       await this.callMondayAPI(`
         mutation {
@@ -742,30 +752,30 @@ class ProjectAgent extends EventEmitter {
   calculateCampaignTimeline(campaignData, template) {
     const releaseDate = new Date(campaignData.releaseDate);
     const now = new Date();
-    
+
     // Find earliest and latest task dates
     let earliestTask = releaseDate;
     let latestTask = releaseDate;
-    
+
     template.groups.forEach(group => {
       group.tasks.forEach(task => {
         const taskDate = new Date(releaseDate);
         taskDate.setDate(taskDate.getDate() + task.timeline);
-        
+
         if (taskDate < earliestTask) earliestTask = taskDate;
         if (taskDate > latestTask) latestTask = taskDate;
-        
+
         // Account for duration
         if (task.duration) {
-          const endDate = new Date(taskDate.getTime() + (task.duration * 24 * 60 * 60 * 1000));
+          const endDate = new Date(taskDate.getTime() + task.duration * 24 * 60 * 60 * 1000);
           if (endDate > latestTask) latestTask = endDate;
         }
       });
     });
-    
+
     // Find next milestone
     const nextMilestone = this.findNextMilestone(template, releaseDate, now);
-    
+
     return {
       campaignStart: earliestTask,
       campaignEnd: latestTask,
@@ -773,7 +783,7 @@ class ProjectAgent extends EventEmitter {
       estimatedCompletion: latestTask,
       durationDays: Math.ceil((latestTask - earliestTask) / (1000 * 60 * 60 * 24)),
       nextMilestone,
-      daysUntilRelease: Math.ceil((releaseDate - now) / (1000 * 60 * 60 * 24))
+      daysUntilRelease: Math.ceil((releaseDate - now) / (1000 * 60 * 60 * 24)),
     };
   }
 
@@ -782,24 +792,24 @@ class ProjectAgent extends EventEmitter {
    */
   findNextMilestone(template, releaseDate, now) {
     const milestones = [];
-    
+
     template.groups.forEach(group => {
       group.tasks.forEach(task => {
         if (task.type === 'milestone') {
           const milestoneDate = new Date(releaseDate);
           milestoneDate.setDate(milestoneDate.getDate() + task.timeline);
-          
+
           if (milestoneDate > now) {
             milestones.push({
               name: task.name,
               date: milestoneDate,
-              daysFromNow: Math.ceil((milestoneDate - now) / (1000 * 60 * 60 * 24))
+              daysFromNow: Math.ceil((milestoneDate - now) / (1000 * 60 * 60 * 24)),
             });
           }
         }
       });
     });
-    
+
     // Sort by date and return next milestone
     milestones.sort((a, b) => a.date - b.date);
     return milestones.length > 0 ? milestones[0] : null;
@@ -810,17 +820,16 @@ class ProjectAgent extends EventEmitter {
    */
   async monitorActiveCampaigns() {
     this.logger(`📊 Monitoring ${this.activeCampaigns.size} active campaigns...`);
-    
+
     for (const [campaignId, campaign] of this.activeCampaigns.entries()) {
       try {
         await this.updateCampaignStatus(campaign);
-        
+
         // Check for overdue tasks
         await this.checkOverdueTasks(campaign);
-        
+
         // Update progress metrics
         await this.updateCampaignProgress(campaign);
-        
       } catch (error) {
         this.logger(`❌ Error monitoring campaign ${campaignId}:`, error.message);
       }
@@ -833,36 +842,37 @@ class ProjectAgent extends EventEmitter {
   async updateCampaignStatus(campaign) {
     // In a full implementation, this would fetch current task statuses from Monday.com
     // For now, we'll simulate status updates
-    
+
     campaign.lastUpdate = new Date();
-    
+
     // Simulate some progress
-    if (Math.random() > 0.7) { // 30% chance of progress
-      const incompleteTasks = campaign.board.groups.flatMap(group => 
+    if (Math.random() > 0.7) {
+      // 30% chance of progress
+      const incompleteTasks = campaign.board.groups.flatMap(group =>
         group.tasks.filter(task => task.status !== 'completed')
       );
-      
+
       if (incompleteTasks.length > 0) {
         const randomTask = incompleteTasks[Math.floor(Math.random() * incompleteTasks.length)];
-        
+
         if (randomTask.status === 'not_started') {
           randomTask.status = 'in_progress';
         } else if (randomTask.status === 'in_progress' && Math.random() > 0.5) {
           randomTask.status = 'completed';
           campaign.metrics.tasksCompleted++;
-          
+
           if (randomTask.type === 'milestone') {
             campaign.metrics.milestonesReached++;
-            
+
             // Emit milestone event
             this.emit('milestone-reached', {
               campaignId: campaign.id,
               milestone: randomTask.name,
-              progress: (campaign.metrics.tasksCompleted / campaign.metrics.tasksTotal) * 100
+              progress: (campaign.metrics.tasksCompleted / campaign.metrics.tasksTotal) * 100,
             });
           }
         }
-        
+
         randomTask.updated = new Date();
       }
     }
@@ -874,7 +884,7 @@ class ProjectAgent extends EventEmitter {
   async checkOverdueTasks(campaign) {
     const now = new Date();
     const overdueTasks = [];
-    
+
     campaign.board.groups.forEach(group => {
       group.tasks.forEach(task => {
         if (task.status !== 'completed' && task.dueDate < now) {
@@ -882,19 +892,19 @@ class ProjectAgent extends EventEmitter {
         }
       });
     });
-    
+
     if (overdueTasks.length > 0) {
       campaign.notifications.push({
         type: 'overdue',
         message: `${overdueTasks.length} tasks are overdue`,
         tasks: overdueTasks.map(t => t.name),
-        timestamp: new Date()
+        timestamp: new Date(),
       });
-      
+
       this.emit('tasks-overdue', {
         campaignId: campaign.id,
         overdueTasks: overdueTasks.length,
-        taskNames: overdueTasks.map(t => t.name)
+        taskNames: overdueTasks.map(t => t.name),
       });
     }
   }
@@ -906,24 +916,24 @@ class ProjectAgent extends EventEmitter {
     const totalTasks = campaign.metrics.tasksTotal;
     const completedTasks = campaign.metrics.tasksCompleted;
     const progress = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
-    
+
     campaign.progress = Math.round(progress);
-    
+
     // Check for major progress milestones (25%, 50%, 75%, 100%)
     const milestones = [25, 50, 75, 100];
     const lastProgress = campaign.lastProgressMilestone || 0;
-    
+
     for (const milestone of milestones) {
       if (progress >= milestone && lastProgress < milestone) {
         campaign.lastProgressMilestone = milestone;
-        
+
         this.emit('progress-milestone', {
           campaignId: campaign.id,
           progress: milestone,
           artistName: campaign.data.artistName,
-          trackTitle: campaign.data.trackTitle
+          trackTitle: campaign.data.trackTitle,
         });
-        
+
         break;
       }
     }
@@ -936,23 +946,22 @@ class ProjectAgent extends EventEmitter {
     // Rate limiting
     const now = Date.now();
     const timeSinceLastCall = now - this.lastApiCall;
-    
+
     if (timeSinceLastCall < this.mondayConfig.rateLimitDelay) {
       const delay = this.mondayConfig.rateLimitDelay - timeSinceLastCall;
       await new Promise(resolve => setTimeout(resolve, delay));
     }
-    
+
     try {
       this.lastApiCall = Date.now();
       this.metrics.mondayApiCalls++;
-      
+
       // In a full implementation, this would make the actual HTTP request
       // For now, simulate the API call
       const response = await this.simulateMondayAPI(query, variables);
-      
+
       this.metrics.successfulUpdates++;
       return response;
-      
     } catch (error) {
       this.metrics.failedOperations++;
       throw error;
@@ -965,7 +974,7 @@ class ProjectAgent extends EventEmitter {
   async simulateMondayAPI(query, variables) {
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 200 + Math.random() * 300));
-    
+
     // Parse query type
     if (query.includes('create_board')) {
       return {
@@ -973,32 +982,32 @@ class ProjectAgent extends EventEmitter {
           create_board: {
             id: this.generateBoardId(),
             name: variables.name || 'Campaign Board',
-            url: `https://liberty-music-pr.monday.com/boards/${this.generateBoardId()}`
-          }
-        }
+            url: `https://liberty-music-pr.monday.com/boards/${this.generateBoardId()}`,
+          },
+        },
       };
     }
-    
+
     if (query.includes('create_group')) {
       return {
         data: {
           create_group: {
-            id: this.generateGroupId()
-          }
-        }
+            id: this.generateGroupId(),
+          },
+        },
       };
     }
-    
+
     if (query.includes('create_item')) {
       return {
         data: {
           create_item: {
-            id: this.generateTaskId()
-          }
-        }
+            id: this.generateTaskId(),
+          },
+        },
       };
     }
-    
+
     // Default response
     return { data: { success: true } };
   }
@@ -1021,13 +1030,13 @@ class ProjectAgent extends EventEmitter {
         }
       }
     `);
-    
+
     return {
       id: this.generateBoardId(),
       name: boardData.name,
       url: `https://liberty-music-pr.monday.com/boards/${this.generateBoardId()}`,
       description: boardData.description,
-      created: new Date()
+      created: new Date(),
     };
   }
 
@@ -1040,16 +1049,15 @@ class ProjectAgent extends EventEmitter {
         campaigns: Array.from(this.activeCampaigns.values()),
         boards: Array.from(this.campaignBoards.values()),
         metrics: this.metrics,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
-      
+
       const dataDir = './data';
       if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
       }
-      
+
       fs.writeFileSync('./data/campaign-boards.json', JSON.stringify(state, null, 2));
-      
     } catch (error) {
       this.logger('❌ Failed to save campaign state:', error);
     }
@@ -1063,12 +1071,12 @@ class ProjectAgent extends EventEmitter {
     this.metrics.boardsGenerated++;
     this.metrics.tasksCreated += campaign.metrics.tasksTotal;
     this.metrics.milestonesTracked += campaign.metrics.milestonesTotal;
-    
+
     // Update average setup time
     const currentAvg = this.metrics.averageSetupTime;
     const totalCampaigns = this.metrics.campaignsCreated;
     this.metrics.averageSetupTime = Math.round(
-      ((currentAvg * (totalCampaigns - 1)) + setupTime) / totalCampaigns
+      (currentAvg * (totalCampaigns - 1) + setupTime) / totalCampaigns
     );
   }
 
@@ -1084,9 +1092,9 @@ class ProjectAgent extends EventEmitter {
       activeCampaigns: this.activeCampaigns.size,
       mondayApi: !!this.mondayConfig.apiKey,
       uptime: Date.now() - (this.startTime || Date.now()),
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
-    
+
     // Check Monday.com API connectivity
     try {
       await this.callMondayAPI('query { me { name } }');
@@ -1096,7 +1104,7 @@ class ProjectAgent extends EventEmitter {
       health.mondayError = error.message;
       health.status = 'degraded';
     }
-    
+
     return health;
   }
 
@@ -1113,7 +1121,7 @@ class ProjectAgent extends EventEmitter {
         'Automated task generation',
         'Timeline management',
         'Progress monitoring',
-        'Milestone tracking'
+        'Milestone tracking',
       ],
       activeCampaigns: {
         total: this.activeCampaigns.size,
@@ -1122,10 +1130,10 @@ class ProjectAgent extends EventEmitter {
           artist: c.data.artistName,
           track: c.data.trackTitle,
           progress: c.progress || 0,
-          status: c.status
-        }))
+          status: c.status,
+        })),
       },
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
   }
 
@@ -1152,15 +1160,15 @@ class ProjectAgent extends EventEmitter {
   async shutdown() {
     try {
       this.logger('🛑 Shutting down Project Agent...');
-      
+
       // Stop monitoring
       if (this.monitoringInterval) {
         clearInterval(this.monitoringInterval);
       }
-      
+
       // Save final state
       await this.saveCampaignState();
-      
+
       this.logger('✅ Project Agent shut down successfully');
     } catch (error) {
       this.logger('❌ Project Agent shutdown failed:', error);
@@ -1172,9 +1180,9 @@ class ProjectAgent extends EventEmitter {
 // CLI interface
 if (require.main === module) {
   const agent = new ProjectAgent({
-    logger: (msg, ...args) => console.log(`[PROJECT] ${msg}`, ...args)
+    logger: (msg, ...args) => console.log(`[PROJECT] ${msg}`, ...args),
   });
-  
+
   const command = process.argv[2];
   const args = process.argv.slice(3);
 
@@ -1187,30 +1195,30 @@ if (require.main === module) {
           const health = await agent.healthCheck();
           console.log(JSON.stringify(health, null, 2));
           break;
-        
+
         case 'stats':
           const stats = agent.getAgentStatistics();
           console.log(JSON.stringify(stats, null, 2));
           break;
-        
+
         case 'create':
           const briefFile = args[0];
           if (!briefFile) {
             console.log('Usage: node project-agent.js create <campaign-brief-file>');
             return;
           }
-          
+
           const briefData = JSON.parse(fs.readFileSync(briefFile, 'utf8'));
           const result = await agent.createCampaign(briefData);
           console.log(JSON.stringify(result, null, 2));
           break;
-        
+
         case 'monitor':
           console.log('Starting campaign monitoring...');
           await agent.monitorActiveCampaigns();
           console.log('Monitoring complete');
           break;
-        
+
         default:
           console.log('Liberty Music PR Project Agent v' + agent.version);
           console.log('');

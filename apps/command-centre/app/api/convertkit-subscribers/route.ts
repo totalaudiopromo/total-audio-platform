@@ -49,9 +49,9 @@ interface BetaUser {
 export async function GET() {
   try {
     console.log('Fetching real ConvertKit subscribers...');
-    
+
     const CONVERTKIT_API_SECRET = process.env.CONVERTKIT_API_SECRET;
-    
+
     if (!CONVERTKIT_API_SECRET) {
       return NextResponse.json({
         totalUsers: 0,
@@ -62,9 +62,9 @@ export async function GET() {
           topFeatures: [],
           deviceBreakdown: {},
           appUsage: {},
-          engagementMetrics: { avgSessionTime: 0, avgContactsPerUser: 0, conversionRate: 0 }
+          engagementMetrics: { avgSessionTime: 0, avgContactsPerUser: 0, conversionRate: 0 },
         },
-        source: 'convertkit-missing-secret'
+        source: 'convertkit-missing-secret',
       });
     }
 
@@ -83,8 +83,8 @@ export async function GET() {
                 countryCode: cluster.location.countryCode,
                 coordinates: {
                   lat: cluster.location.coordinates.lat,
-                  lng: cluster.location.coordinates.lng
-                }
+                  lng: cluster.location.coordinates.lng,
+                },
               });
             });
           });
@@ -96,12 +96,15 @@ export async function GET() {
 
     // Try to fetch subscribers by beta_user tag (Tag ID: 9942888)
     const BETA_USER_TAG_ID = '9942888';
-    const response = await fetch(`https://api.convertkit.com/v3/tags/${BETA_USER_TAG_ID}/subscriptions?api_secret=${CONVERTKIT_API_SECRET}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const response = await fetch(
+      `https://api.convertkit.com/v3/tags/${BETA_USER_TAG_ID}/subscriptions?api_secret=${CONVERTKIT_API_SECRET}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -115,7 +118,7 @@ export async function GET() {
     // Extract subscriptions from the tag endpoint response
     const subscriptions = data.subscriptions || [];
     const subscribers = subscriptions.map((sub: any) => sub.subscriber).filter(Boolean);
-    
+
     // Filter and transform subscribers for our beta tracker format
     const betaUsers: BetaUser[] = subscribers
       .filter((sub: any) => sub.email_address)
@@ -124,12 +127,12 @@ export async function GET() {
         const createdDate = new Date(sub.created_at);
         const now = new Date();
         const minutesAgo = Math.floor((now.getTime() - createdDate.getTime()) / (1000 * 60));
-        
+
         // Estimate last seen conservatively from created date (no random)
         const lastSeenOffset = Math.min(minutesAgo, 180);
 
         const lastSeen = new Date(now.getTime() - lastSeenOffset * 60 * 1000);
-        
+
         // Determine status based on last seen
         let status: 'active' | 'idle' | 'offline';
         if (lastSeenOffset < 15) {
@@ -153,7 +156,7 @@ export async function GET() {
 
         // Check if we have real location data for this user
         const realLocation = realLocationData.get(sub.email_address);
-        
+
         // Only include users with real location data - no placeholder locations
         if (!realLocation) {
           console.log(`No real location data for ${sub.email_address}, skipping user`);
@@ -165,9 +168,11 @@ export async function GET() {
           city: realLocation.city,
           code: realLocation.countryCode,
           lat: Number(realLocation.coordinates.lat),
-          lng: Number(realLocation.coordinates.lng)
+          lng: Number(realLocation.coordinates.lng),
         };
-        console.log(`Using real location for ${sub.email_address}: ${realLocation.city}, ${realLocation.country}`);
+        console.log(
+          `Using real location for ${sub.email_address}: ${realLocation.city}, ${realLocation.country}`
+        );
 
         return {
           id: sub.id.toString(),
@@ -178,31 +183,35 @@ export async function GET() {
           firstVisit: sub.created_at,
           lastSeen: lastSeen.toISOString(),
           sessionCount: Math.floor(daysSignedUp * 1.5) + Math.floor(Math.random() * 10) + 1,
-          features: app === 'audio-intel' 
-            ? ['contact-enrichment', 'email-validation', 'csv-export', 'magical-spreadsheet']
-            : app === 'command-centre'
-            ? ['agent-orchestration', 'business-analytics', 'user-management']
-            : ['mobile-optimization', 'responsive-testing'],
+          features:
+            app === 'audio-intel'
+              ? ['contact-enrichment', 'email-validation', 'csv-export', 'magical-spreadsheet']
+              : app === 'command-centre'
+                ? ['agent-orchestration', 'business-analytics', 'user-management']
+                : ['mobile-optimization', 'responsive-testing'],
           location: {
             country: selectedLocation.country,
             city: selectedLocation.city,
             countryCode: selectedLocation.code,
             coordinates: {
               lat: selectedLocation.lat,
-              lng: selectedLocation.lng
-            }
+              lng: selectedLocation.lng,
+            },
           },
           device: {
-            type: Math.random() > 0.8 ? 'mobile' : 'desktop' as 'desktop' | 'mobile' | 'tablet',
+            type: Math.random() > 0.8 ? 'mobile' : ('desktop' as 'desktop' | 'mobile' | 'tablet'),
             browser: ['Chrome', 'Safari', 'Firefox', 'Edge'][Math.floor(Math.random() * 4)],
-            os: Math.random() > 0.6 ? 'macOS' : ['Windows', 'iOS', 'Android'][Math.floor(Math.random() * 3)]
+            os:
+              Math.random() > 0.6
+                ? 'macOS'
+                : ['Windows', 'iOS', 'Android'][Math.floor(Math.random() * 3)],
           },
           engagement: {
             contactsEnriched,
             emailsValidated,
             exportsGenerated,
-            timeSpent
-          }
+            timeSpent,
+          },
         };
       })
       .filter(Boolean); // Remove null entries (users without real location data)
@@ -214,9 +223,7 @@ export async function GET() {
     const activeUsers = betaUsers.filter(u => u.status === 'active').length;
     const today = new Date();
     const yesterday = new Date(today.getTime() - 24 * 60 * 60 * 1000);
-    const newUsersToday = betaUsers.filter(u => 
-      new Date(u.firstVisit) >= yesterday
-    ).length;
+    const newUsersToday = betaUsers.filter(u => new Date(u.firstVisit) >= yesterday).length;
 
     // Feature usage analytics
     const featureUsage = new Map<string, number>();
@@ -232,20 +239,29 @@ export async function GET() {
       .slice(0, 5);
 
     // Device breakdown
-    const deviceBreakdown = betaUsers.reduce((acc, user) => {
-      acc[user.device.type] = (acc[user.device.type] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const deviceBreakdown = betaUsers.reduce(
+      (acc, user) => {
+        acc[user.device.type] = (acc[user.device.type] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     // App usage
-    const appUsage = betaUsers.reduce((acc, user) => {
-      acc[user.app] = (acc[user.app] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const appUsage = betaUsers.reduce(
+      (acc, user) => {
+        acc[user.app] = (acc[user.app] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     // Engagement metrics
     const totalSessionTime = betaUsers.reduce((acc, user) => acc + user.engagement.timeSpent, 0);
-    const totalContacts = betaUsers.reduce((acc, user) => acc + user.engagement.contactsEnriched, 0);
+    const totalContacts = betaUsers.reduce(
+      (acc, user) => acc + user.engagement.contactsEnriched,
+      0
+    );
     const activeEngagedUsers = betaUsers.filter(u => u.engagement.contactsEnriched > 0).length;
 
     const trackingData = {
@@ -260,38 +276,40 @@ export async function GET() {
         engagementMetrics: {
           avgSessionTime: totalUsers > 0 ? Math.round(totalSessionTime / totalUsers) : 0,
           avgContactsPerUser: totalUsers > 0 ? Math.round(totalContacts / totalUsers) : 0,
-          conversionRate: totalUsers > 0 ? Math.round((activeEngagedUsers / totalUsers) * 100) : 0
-        }
-      }
+          conversionRate: totalUsers > 0 ? Math.round((activeEngagedUsers / totalUsers) * 100) : 0,
+        },
+      },
     };
 
     return NextResponse.json({
       ...trackingData,
       lastUpdated: new Date().toISOString(),
-      source: 'convertkit-live-data'
+      source: 'convertkit-live-data',
     });
-
   } catch (error) {
     console.error('ConvertKit subscribers fetch error:', error);
-    
-    return NextResponse.json({
-      totalUsers: 0,
-      activeUsers: 0,
-      newUsersToday: 0,
-      users: [],
-      analytics: {
-        topFeatures: [],
-        deviceBreakdown: {},
-        appUsage: {},
-        engagementMetrics: {
-          avgSessionTime: 0,
-          avgContactsPerUser: 0,
-          conversionRate: 0
-        }
+
+    return NextResponse.json(
+      {
+        totalUsers: 0,
+        activeUsers: 0,
+        newUsersToday: 0,
+        users: [],
+        analytics: {
+          topFeatures: [],
+          deviceBreakdown: {},
+          appUsage: {},
+          engagementMetrics: {
+            avgSessionTime: 0,
+            avgContactsPerUser: 0,
+            conversionRate: 0,
+          },
+        },
+        error: 'Failed to fetch ConvertKit subscribers',
+        lastUpdated: new Date().toISOString(),
+        source: 'error-fallback',
       },
-      error: 'Failed to fetch ConvertKit subscribers',
-      lastUpdated: new Date().toISOString(),
-      source: 'error-fallback'
-    }, { status: 500 });
+      { status: 500 }
+    );
   }
 }

@@ -28,7 +28,7 @@ async function testVoiceGuard() {
   console.log('Input:', test1Input.text);
   console.log('Output:', test1Result.text);
   console.log('Changes:', test1Result.changes.length);
-  test1Result.changes.forEach((change) => {
+  test1Result.changes.forEach(change => {
     console.log(`  - ${change.from} → ${change.to} (${change.reason})`);
   });
   console.log('Compliance Score:', (test1Result.compliance_score * 100).toFixed(0) + '%');
@@ -48,7 +48,7 @@ async function testVoiceGuard() {
 
   console.log('Input:', test2Input.text);
   console.log('Warnings:', test2Result.warnings.length);
-  test2Result.warnings.forEach((warning) => {
+  test2Result.warnings.forEach(warning => {
     console.log(`  - ${warning}`);
   });
   console.log('Compliance Score:', (test2Result.compliance_score * 100).toFixed(0) + '%');
@@ -104,7 +104,7 @@ async function testVoiceGuard() {
 }
 
 // Run tests
-testVoiceGuard().catch((error) => {
+testVoiceGuard().catch(error => {
   console.error('❌ Test failed:', error);
   process.exit(1);
 });

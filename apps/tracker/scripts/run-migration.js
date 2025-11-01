@@ -20,7 +20,10 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 async function runMigration() {
   console.log('🚀 Running database migration...\n');
 
-  const migrationPath = path.join(__dirname, '../supabase/migrations/001_campaigns_mvp.sql');
+  const migrationPath = path.join(
+    __dirname,
+    '../supabase/migrations/001_campaigns_mvp.sql'
+  );
   const sql = fs.readFileSync(migrationPath, 'utf8');
 
   // Split by semicolon to run each statement separately
@@ -34,13 +37,19 @@ async function runMigration() {
     console.log(`📝 Executing statement ${i + 1}/${statements.length}...`);
 
     try {
-      const { error } = await supabase.rpc('exec_sql', { sql: statement + ';' });
+      const { error } = await supabase.rpc('exec_sql', {
+        sql: statement + ';',
+      });
 
       if (error) {
         // Try alternative method - direct query
         const { error: error2 } = await supabase.from('_').select('*').limit(0);
-        console.log(`⚠️  Note: Cannot execute SQL directly via API. Please run this in Supabase SQL Editor:`);
-        console.log(`\nhttps://supabase.com/dashboard/project/${supabaseUrl.split('.')[0].split('//')[1]}/sql\n`);
+        console.log(
+          `⚠️  Note: Cannot execute SQL directly via API. Please run this in Supabase SQL Editor:`
+        );
+        console.log(
+          `\nhttps://supabase.com/dashboard/project/${supabaseUrl.split('.')[0].split('//')[1]}/sql\n`
+        );
         console.log('Copy and paste the contents of:');
         console.log(migrationPath);
         process.exit(1);

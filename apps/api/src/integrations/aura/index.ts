@@ -47,14 +47,14 @@ export class AuraService {
   constructor(apiKey: string) {
     this.config = {
       apiKey,
-      baseUrl: 'https://api.aura.io'
+      baseUrl: 'https://api.aura.io',
     };
   }
 
   async generatePitch(request: PitchRequest): Promise<PitchResponse> {
     try {
       const prompt = this.buildPitchPrompt(request);
-      
+
       const response = await axios.post(
         `${this.config.baseUrl}/generate`,
         {
@@ -67,13 +67,13 @@ export class AuraService {
           - Include relevant context and news hooks
           - Are tailored to the journalist's beat and recent work
           - Have clear subject lines that drive opens
-          - Include a clear call to action`
+          - Include a clear call to action`,
         },
         {
           headers: {
-            'Authorization': `Bearer ${this.config.apiKey}`,
-            'Content-Type': 'application/json'
-          }
+            Authorization: `Bearer ${this.config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
         }
       );
 
@@ -81,17 +81,21 @@ export class AuraService {
 
       return {
         success: true,
-        pitch
+        pitch,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 
-  async generatePressRelease(client: string, news: string, industry: string): Promise<{
+  async generatePressRelease(
+    client: string,
+    news: string,
+    industry: string
+  ): Promise<{
     success: boolean;
     pressRelease?: {
       headline: string;
@@ -120,13 +124,13 @@ export class AuraService {
           prompt,
           model: 'gpt-4',
           max_tokens: 800,
-          temperature: 0.6
+          temperature: 0.6,
         },
         {
           headers: {
-            'Authorization': `Bearer ${this.config.apiKey}`,
-            'Content-Type': 'application/json'
-          }
+            Authorization: `Bearer ${this.config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
         }
       );
 
@@ -134,17 +138,21 @@ export class AuraService {
 
       return {
         success: true,
-        pressRelease
+        pressRelease,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 
-  async suggestCampaigns(client: string, industry: string, recentNews: string[]): Promise<{
+  async suggestCampaigns(
+    client: string,
+    industry: string,
+    recentNews: string[]
+  ): Promise<{
     success: boolean;
     suggestions: CampaignSuggestion[];
     error?: string;
@@ -168,13 +176,13 @@ export class AuraService {
           prompt,
           model: 'gpt-4',
           max_tokens: 600,
-          temperature: 0.8
+          temperature: 0.8,
         },
         {
           headers: {
-            'Authorization': `Bearer ${this.config.apiKey}`,
-            'Content-Type': 'application/json'
-          }
+            Authorization: `Bearer ${this.config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
         }
       );
 
@@ -182,18 +190,21 @@ export class AuraService {
 
       return {
         success: true,
-        suggestions
+        suggestions,
       };
     } catch (error) {
       return {
         success: false,
         suggestions: [],
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 
-  async optimizeSubjectLine(pitch: string, journalistInfo?: any): Promise<{
+  async optimizeSubjectLine(
+    pitch: string,
+    journalistInfo?: any
+  ): Promise<{
     success: boolean;
     subjectLines?: string[];
     error?: string;
@@ -217,13 +228,13 @@ export class AuraService {
           prompt,
           model: 'gpt-4',
           max_tokens: 300,
-          temperature: 0.9
+          temperature: 0.9,
         },
         {
           headers: {
-            'Authorization': `Bearer ${this.config.apiKey}`,
-            'Content-Type': 'application/json'
-          }
+            Authorization: `Bearer ${this.config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
         }
       );
 
@@ -231,12 +242,12 @@ export class AuraService {
 
       return {
         success: true,
-        subjectLines
+        subjectLines,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -298,7 +309,7 @@ export class AuraService {
       subject: subject || 'Pitch from ' + new Date().toLocaleDateString(),
       body: body.trim(),
       personalized: body.toLowerCase().includes('recent') || body.toLowerCase().includes('article'),
-      wordCount: body.split(' ').length
+      wordCount: body.split(' ').length,
     };
   }
 
@@ -337,7 +348,7 @@ export class AuraService {
       subheadline: subheadline || '',
       body: body.trim(),
       boilerplate: boilerplate.trim(),
-      wordCount: body.split(' ').length
+      wordCount: body.split(' ').length,
     };
   }
 
@@ -389,4 +400,4 @@ export class AuraService {
 
     return subjectLines;
   }
-} 
+}

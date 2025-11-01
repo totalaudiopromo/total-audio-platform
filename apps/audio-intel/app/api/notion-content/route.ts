@@ -40,7 +40,7 @@ Comment "BETA" for free access 👇
     platform: 'x',
     scheduledTime: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
     hashtags: ['#MusicTech', '#IndieMusic', '#MusicIndustry'],
-    status: 'draft'
+    status: 'draft',
   },
   {
     id: 'content_2',
@@ -64,7 +64,7 @@ Stop paying for tools that don't work for UK music.
     platform: 'x',
     scheduledTime: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(),
     hashtags: ['#UKMusic', '#IndieMusic', '#MusicTech'],
-    status: 'draft'
+    status: 'draft',
   },
   {
     id: 'content_3',
@@ -91,7 +91,7 @@ Stop overthinking. Start executing.
     platform: 'linkedin',
     scheduledTime: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(),
     hashtags: ['#MusicMarketing', '#IndieMusic', '#MusicPR'],
-    status: 'draft'
+    status: 'draft',
   },
   {
     id: 'content_4',
@@ -123,7 +123,7 @@ Stop using tools that don't work for you.
     platform: 'x',
     scheduledTime: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000).toISOString(),
     hashtags: ['#MusicTech', '#UKMusic', '#IndieMusic'],
-    status: 'draft'
+    status: 'draft',
   },
   {
     id: 'content_5',
@@ -150,7 +150,7 @@ Start making music.
     platform: 'linkedin',
     scheduledTime: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
     hashtags: ['#MusicMarketing', '#IndieMusic', '#MusicTech'],
-    status: 'draft'
+    status: 'draft',
   },
   {
     id: 'content_6',
@@ -175,7 +175,7 @@ You handle the relationships.
     platform: 'x',
     scheduledTime: new Date(Date.now() + 6 * 24 * 60 * 60 * 1000).toISOString(),
     hashtags: ['#MusicPR', '#MusicTech', '#IndieMusic'],
-    status: 'draft'
+    status: 'draft',
   },
   {
     id: 'content_7',
@@ -203,7 +203,7 @@ Stop guessing. Start measuring.
     platform: 'linkedin',
     scheduledTime: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
     hashtags: ['#MusicMarketing', '#IndieMusic', '#MusicPR'],
-    status: 'draft'
+    status: 'draft',
   },
   {
     id: 'content_8',
@@ -236,33 +236,38 @@ Stop competing. Start executing.
     platform: 'x',
     scheduledTime: new Date(Date.now() + 8 * 24 * 60 * 60 * 1000).toISOString(),
     hashtags: ['#MusicMarketing', '#IndieMusic', '#MusicTech'],
-    status: 'draft'
-  }
+    status: 'draft',
+  },
 ];
 
 export async function GET(request: NextRequest) {
   try {
     console.log('📱 Content API requested...');
-    
-    // Notion integration temporarily disabled
-    return NextResponse.json({
-      success: false,
-      error: 'Content management is temporarily unavailable. Please use other features.'
-    }, { status: 503 });
 
+    // Notion integration temporarily disabled
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'Content management is temporarily unavailable. Please use other features.',
+      },
+      { status: 503 }
+    );
   } catch (error) {
     console.error('❌ Failed to load content:', error);
-    return NextResponse.json({
-      error: 'Failed to load content',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Failed to load content',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }
 
 export async function POST(request: NextRequest) {
   try {
     const { action, postId, updates } = await request.json();
-    
+
     if (action === 'update') {
       // Update a specific post
       const postIndex = AUTHENTIC_CONTENT.findIndex(p => p.id === postId);
@@ -271,22 +276,24 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({
           success: true,
           message: 'Post updated successfully',
-          post: AUTHENTIC_CONTENT[postIndex]
+          post: AUTHENTIC_CONTENT[postIndex],
         });
       }
     }
-    
+
     return NextResponse.json({
       success: true,
       message: 'Action completed',
-      posts: AUTHENTIC_CONTENT
+      posts: AUTHENTIC_CONTENT,
     });
-
   } catch (error) {
     console.error('❌ Failed to process content action:', error);
-    return NextResponse.json({
-      error: 'Failed to process content action',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Failed to process content action',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }

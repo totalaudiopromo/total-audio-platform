@@ -29,20 +29,21 @@ function checkPackageInstalled(): CheckResult {
       return {
         name: 'Twitter API Package',
         status: 'pass',
-        message: `twitter-api-v2@${packageJson.dependencies['twitter-api-v2']} installed`
+        message: `twitter-api-v2@${packageJson.dependencies['twitter-api-v2']} installed`,
       };
     } else {
       return {
         name: 'Twitter API Package',
         status: 'fail',
-        message: 'twitter-api-v2 not found in package.json'
+        message: 'twitter-api-v2 not found in package.json',
       };
     }
   } catch (error) {
     return {
       name: 'Twitter API Package',
       status: 'fail',
-      message: 'Error reading package.json: ' + (error instanceof Error ? error.message : 'Unknown error')
+      message:
+        'Error reading package.json: ' + (error instanceof Error ? error.message : 'Unknown error'),
     };
   }
 }
@@ -57,13 +58,13 @@ function checkAgentFileExists(): CheckResult {
     return {
       name: 'Agent File',
       status: 'pass',
-      message: 'twitter-posting-agent.ts exists at lib/twitter-posting-agent.ts'
+      message: 'twitter-posting-agent.ts exists at lib/twitter-posting-agent.ts',
     };
   } else {
     return {
       name: 'Agent File',
       status: 'fail',
-      message: 'twitter-posting-agent.ts not found'
+      message: 'twitter-posting-agent.ts not found',
     };
   }
 }
@@ -72,19 +73,24 @@ function checkAgentFileExists(): CheckResult {
  * Check 3: Verify content file exists
  */
 function checkContentFileExists(): CheckResult {
-  const contentPath = path.join(__dirname, '..', 'social-content', 'TWITTER_X_THREADS_RADIO_PROMOTERS.md');
+  const contentPath = path.join(
+    __dirname,
+    '..',
+    'social-content',
+    'TWITTER_X_THREADS_RADIO_PROMOTERS.md'
+  );
 
   if (fs.existsSync(contentPath)) {
     return {
       name: 'Content File',
       status: 'pass',
-      message: 'TWITTER_X_THREADS_RADIO_PROMOTERS.md exists'
+      message: 'TWITTER_X_THREADS_RADIO_PROMOTERS.md exists',
     };
   } else {
     return {
       name: 'Content File',
       status: 'warning',
-      message: 'Content file not found (agent will still work with embedded content)'
+      message: 'Content file not found (agent will still work with embedded content)',
     };
   }
 }
@@ -98,25 +104,26 @@ function checkContentCalendarExists(): CheckResult {
   if (fs.existsSync(calendarPath)) {
     try {
       const calendar = JSON.parse(fs.readFileSync(calendarPath, 'utf-8'));
-      const twitterPosts = calendar.schedule?.filter((post: any) => post.platform === 'Twitter/X') || [];
+      const twitterPosts =
+        calendar.schedule?.filter((post: any) => post.platform === 'Twitter/X') || [];
 
       return {
         name: 'Content Calendar',
         status: 'pass',
-        message: `CONTENT_CALENDAR.json exists with ${twitterPosts.length} Twitter/X posts`
+        message: `CONTENT_CALENDAR.json exists with ${twitterPosts.length} Twitter/X posts`,
       };
     } catch (error) {
       return {
         name: 'Content Calendar',
         status: 'warning',
-        message: 'CONTENT_CALENDAR.json exists but may be malformed'
+        message: 'CONTENT_CALENDAR.json exists but may be malformed',
       };
     }
   } else {
     return {
       name: 'Content Calendar',
       status: 'warning',
-      message: 'CONTENT_CALENDAR.json not found'
+      message: 'CONTENT_CALENDAR.json not found',
     };
   }
 }
@@ -133,34 +140,36 @@ function checkEnvironmentVariables(): CheckResult {
 
   if (hasEnvLocal) {
     const envContent = fs.readFileSync(envLocalPath, 'utf-8');
-    const hasTwitterVars = envContent.includes('TWITTER_API_KEY') ||
-                           envContent.includes('TWITTER_API_SECRET') ||
-                           envContent.includes('TWITTER_ACCESS_TOKEN');
+    const hasTwitterVars =
+      envContent.includes('TWITTER_API_KEY') ||
+      envContent.includes('TWITTER_API_SECRET') ||
+      envContent.includes('TWITTER_ACCESS_TOKEN');
 
     if (hasTwitterVars) {
       return {
         name: 'Environment Variables',
         status: 'pass',
-        message: '.env.local exists with Twitter credentials configured'
+        message: '.env.local exists with Twitter credentials configured',
       };
     } else {
       return {
         name: 'Environment Variables',
         status: 'warning',
-        message: '.env.local exists but Twitter credentials not found. Add TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET'
+        message:
+          '.env.local exists but Twitter credentials not found. Add TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET',
       };
     }
   } else if (hasEnvExample) {
     return {
       name: 'Environment Variables',
       status: 'warning',
-      message: '.env.twitter.example exists. Copy to .env.local and add your credentials'
+      message: '.env.twitter.example exists. Copy to .env.local and add your credentials',
     };
   } else {
     return {
       name: 'Environment Variables',
       status: 'fail',
-      message: 'No environment configuration found'
+      message: 'No environment configuration found',
     };
   }
 }
@@ -175,13 +184,13 @@ function checkExampleFileExists(): CheckResult {
     return {
       name: 'Example File',
       status: 'pass',
-      message: 'twitter-agent-example.ts exists at lib/examples/'
+      message: 'twitter-agent-example.ts exists at lib/examples/',
     };
   } else {
     return {
       name: 'Example File',
       status: 'warning',
-      message: 'Example file not found (not critical for production)'
+      message: 'Example file not found (not critical for production)',
     };
   }
 }
@@ -196,13 +205,13 @@ function checkReadmeExists(): CheckResult {
     return {
       name: 'Documentation',
       status: 'pass',
-      message: 'TWITTER_AGENT_README.md exists with full documentation'
+      message: 'TWITTER_AGENT_README.md exists with full documentation',
     };
   } else {
     return {
       name: 'Documentation',
       status: 'warning',
-      message: 'README not found (not critical for functionality)'
+      message: 'README not found (not critical for functionality)',
     };
   }
 }

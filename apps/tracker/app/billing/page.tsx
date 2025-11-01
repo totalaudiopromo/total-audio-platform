@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 import {
   getUserSubscriptionDetails,
   getSubscriptionLimits,
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BillingPage() {
-  const supabase = await createClient();
+  const supabase = await createServerClient(cookies());
   const {
     data: { user },
   } = await supabase.auth.getUser();

@@ -27,6 +27,7 @@ TWITTER_ACCESS_SECRET=your_access_secret_here
 ```
 
 **How to get:**
+
 1. Go to https://developer.twitter.com/en/portal/dashboard
 2. Create app or use existing
 3. Generate keys under "Keys and tokens"
@@ -45,6 +46,7 @@ LINKEDIN_ACCESS_TOKEN=your_access_token_here
 ```
 
 **How to get:**
+
 1. Go to https://www.linkedin.com/developers/apps
 2. Create new app
 3. Request "Share on LinkedIn" product access
@@ -64,6 +66,7 @@ FACEBOOK_APP_SECRET=your_facebook_app_secret_here
 ```
 
 **How to get:**
+
 1. Go to https://developers.facebook.com/apps
 2. Create new app
 3. Add "Threads API" product
@@ -81,6 +84,7 @@ CRON_SECRET=generate-with-openssl-rand-base64-32
 ```
 
 **How to generate:**
+
 ```bash
 openssl rand -base64 32
 ```
@@ -92,6 +96,7 @@ This prevents unauthorized cron triggers.
 ## 📋 Environment Settings
 
 **For each variable:**
+
 - ✅ Production
 - ✅ Preview
 - ✅ Development

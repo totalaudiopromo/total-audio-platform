@@ -10,37 +10,45 @@ Updated "The Unsigned Advantage" newsletter generation system to require **depth
 
 ### Test Results by Category
 
-| Story Type | Depth Score | Status | Key Improvements |
-|------------|-------------|---------|------------------|
-| AI Mastering (Production) | 83% | ✅ Pass | Specific budget (£150-300), timing (2 hours), sadact producer perspective |
-| Festival Slots (Promotion) | 83% | ✅ Pass | Audio Intel data (40% spike), campaign tactics, 48-hour timing |
-| Spotify Royalties (Streaming) | 67% | ⚠️ Marginal | Good tactical advice but needs more specific numbers |
+| Story Type                    | Depth Score | Status      | Key Improvements                                                          |
+| ----------------------------- | ----------- | ----------- | ------------------------------------------------------------------------- |
+| AI Mastering (Production)     | 83%         | ✅ Pass     | Specific budget (£150-300), timing (2 hours), sadact producer perspective |
+| Festival Slots (Promotion)    | 83%         | ✅ Pass     | Audio Intel data (40% spike), campaign tactics, 48-hour timing            |
+| Spotify Royalties (Streaming) | 67%         | ⚠️ Marginal | Good tactical advice but needs more specific numbers                      |
 
 ## 🔧 Files Modified
 
 ### 1. [FINAL_CHRIS_VOICE.md](FINAL_CHRIS_VOICE.md)
+
 **Added**: Depth Requirements section
+
 - Every newsletter must connect to Chris's actual expertise
 - Depth test: "Could only Chris write this?"
 - Examples of sufficient vs insufficient depth
 - Clear guidance on avoiding generic takes
 
 ### 2. [generate-real-newsletter.js](generate-real-newsletter.js)
+
 **Enhanced**: 5-part framework with expertise requirement
+
 - Hook → **Expertise Connection** → Unsigned Advantage → Action Step → Audio Intel mention
 - Added reference examples for Claude API
 - Updated prompt with "What does Chris know that others don't?"
 - Includes quality check criteria
 
 ### 3. [test-newsletter-depth.js](test-newsletter-depth.js) ⚡ NEW
+
 **Created**: Automated depth quality testing
+
 - Tests 3 different story types (streaming, production, promotion)
 - Validates 6 quality criteria per story
 - Outputs depth score (target: 80%+)
 - Identifies which checks passed/failed
 
 ### 4. [NEWSLETTER_SYSTEM_COMPLETE.md](NEWSLETTER_SYSTEM_COMPLETE.md)
+
 **Updated**: Main documentation with new framework
+
 - Added quality score to status
 - Updated framework section with expertise connection requirement
 - Added depth testing command reference
@@ -74,14 +82,17 @@ node test-newsletter-depth.js
 ## 📈 Before vs After
 
 ### Before: Generic Commentary
+
 > "Indies are more nimble than major labels when it comes to adapting to change."
 
 **Problem**: Anyone could write this. No specific backing.
 
 ### After: Specific Expertise
+
 > "After 5+ years pitching to radio programmers, I've learned they check streaming numbers before playlisting - not because they care about Spotify, but because it's social proof of engaged audience. I've seen tracks with 200 dedicated Bandcamp supporters get more radio attention than those with 10,000 passive Spotify streams."
 
 **Improvement**:
+
 - Backed by 5+ years experience
 - Specific comparison (200 vs 10,000)
 - Explains the "why" behind programmer behavior
@@ -90,20 +101,26 @@ node test-newsletter-depth.js
 ## 💡 Key Improvements
 
 ### 1. Expertise Connection Requirement
+
 Every story must now connect to one of three expertise areas:
+
 - **Radio promotion**: 5+ years campaign experience
 - **Audio Intel data**: Contact research patterns
 - **Underground scene**: Electronic producer perspective
 
 ### 2. Tactical Detail with Numbers
+
 Generic advice replaced with specific tactics:
+
 - Budget amounts (£20, £150-300, £200)
 - Time commitments (90 minutes, 2 hours, 48 hours)
 - Specific processes (landing page setup, press kit creation)
 - Real percentages (40% response spike, 31% contact changes)
 
 ### 3. Depth Test Framework
+
 New quality check: "Could only Chris write this?"
+
 - If YES → Publish it
 - If MAYBE → Add more specific detail
 - If NO → Regenerate with clearer expertise connection
@@ -124,18 +141,21 @@ The enhanced prompts add minimal token usage, and the quality improvement is sub
 ## ⚡ Next Steps
 
 ### Immediate
+
 - ✅ Voice profile updated
 - ✅ Generation system enhanced
 - ✅ Testing framework created
 - ✅ Documentation complete
 
 ### For Production Use
+
 1. Monitor depth scores on real newsletter generation
 2. Adjust relevance scoring if needed to prioritize stories with natural expertise angles
 3. Fine-tune British spelling detection in test script
 4. Consider expanding expertise areas as Audio Intel generates more data
 
 ### Quality Goals
+
 - **Current**: 78% average depth score
 - **Target**: 80%+ consistent average
 - **Stretch**: 90%+ on all story types

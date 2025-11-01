@@ -1,11 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { createClient } from '../lib/supabase/client';
+import { createClient } from '@total-audio/core-db/client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-export function AuthButton({ variant = 'desktop' }: { variant?: 'desktop' | 'mobile' }) {
+export function AuthButton({
+  variant = 'desktop',
+}: {
+  variant?: 'desktop' | 'mobile';
+}) {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -19,7 +23,9 @@ export function AuthButton({ variant = 'desktop' }: { variant?: 'desktop' | 'mob
     });
 
     // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
 
@@ -46,7 +52,9 @@ export function AuthButton({ variant = 'desktop' }: { variant?: 'desktop' | 'mob
         <div className="px-4 pt-4 border-t border-gray-200">
           <div className="mb-2 px-2">
             <p className="text-xs font-semibold text-gray-500">Signed in as</p>
-            <p className="text-sm font-bold text-gray-900 truncate">{displayName}</p>
+            <p className="text-sm font-bold text-gray-900 truncate">
+              {displayName}
+            </p>
           </div>
           <button
             onClick={handleSignOut}

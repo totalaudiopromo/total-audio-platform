@@ -87,12 +87,14 @@ curl -X GET "https://graph.threads.net/v1.0/me" \
 ### 1. Environment Configuration
 
 - [ ] Copy environment template
+
   ```bash
   cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel
   cp .env.threads.example .env.local
   ```
 
 - [ ] Add credentials to .env.local
+
   ```bash
   THREADS_USER_ID=123456789
   THREADS_ACCESS_TOKEN=IGQ...
@@ -110,6 +112,7 @@ curl -X GET "https://graph.threads.net/v1.0/me" \
 ### 2. Run Test Suite
 
 - [ ] Execute test script
+
   ```bash
   npx tsx scripts/test-threads-agent.ts
   ```
@@ -209,7 +212,7 @@ openssl rand -base64 32
 
 - [ ] Verify cron job scheduled
   - Vercel dashboard → Project → Cron Jobs
-  - Confirm schedule: "0 * * * *" (hourly)
+  - Confirm schedule: "0 \* \* \* \*" (hourly)
 
 - [ ] Monitor first cron execution
   - Wait for next hour
@@ -289,12 +292,14 @@ openssl rand -base64 32
 **Symptoms**: Test script reports "Health check failed"
 
 **Possible Causes**:
+
 - Access token expired or invalid
 - Instagram account not Professional
 - Missing Threads API permissions
 - User ID doesn't match token
 
 **Resolution**:
+
 1. Verify token with Graph API Explorer
 2. Check Instagram account type
 3. Review Meta app permissions
@@ -305,12 +310,14 @@ openssl rand -base64 32
 **Symptoms**: Cron runs but no posts appear
 
 **Possible Causes**:
+
 - Posts outside 1-hour scheduling window
 - Content not found for title
 - API rate limit exceeded
 - Network timeout
 
 **Resolution**:
+
 1. Check Vercel cron logs for errors
 2. Verify content mapping in agent
 3. Review scheduling in CONTENT_CALENDAR.json
@@ -321,11 +328,13 @@ openssl rand -base64 32
 **Symptoms**: "Rate limit exceeded" errors
 
 **Possible Causes**:
+
 - Too many API calls (>1,000/hour)
 - Multiple agents running simultaneously
 - Insufficient delays between posts
 
 **Resolution**:
+
 1. Check API usage in Meta dashboard
 2. Increase delay between posts
 3. Reduce cron frequency
@@ -336,11 +345,13 @@ openssl rand -base64 32
 **Symptoms**: "Invalid OAuth access token" error
 
 **Possible Causes**:
+
 - Long-lived token expired (60 days)
 - Token revoked in Meta settings
 - App permissions changed
 
 **Resolution**:
+
 1. Generate new short-lived token
 2. Convert to long-lived token
 3. Update Vercel environment variables
@@ -351,21 +362,25 @@ openssl rand -base64 32
 ## Maintenance Schedule
 
 ### Daily
+
 - [x] Monitor cron execution logs
 - [x] Check posting success rate
 - [x] Review any error messages
 
 ### Weekly
+
 - [x] Review engagement metrics
 - [x] Check API rate limit usage
 - [x] Verify content calendar accuracy
 
 ### Monthly
+
 - [x] Analyse posting performance
 - [x] Optimise content and schedule
 - [x] Review API quotas and costs
 
 ### Every 55 Days
+
 - [x] Refresh long-lived access token
 - [x] Update Vercel environment variables
 - [x] Test token validity
@@ -376,18 +391,21 @@ openssl rand -base64 32
 ## Success Metrics
 
 ### Technical KPIs
+
 - **Uptime**: >99% cron execution success
 - **Posting Rate**: >95% scheduled posts published
 - **API Errors**: <5% failure rate
 - **Response Time**: <5s per post
 
 ### Engagement KPIs
+
 - **Views**: Track weekly trends
 - **Likes**: Measure content resonance
 - **Replies**: Monitor community engagement
 - **Followers**: Growth rate tracking
 
 ### Business KPIs
+
 - **Click-through Rate**: UTM tracking to intel.totalaudiopromo.com
 - **Beta Signups**: "Comment BETA" conversions
 - **Demo Bookings**: Attributed to Threads traffic
@@ -400,22 +418,26 @@ openssl rand -base64 32
 If critical issues occur:
 
 ### 1. Immediate Actions
+
 - [ ] Disable Vercel cron job
 - [ ] Pause scheduled posts
 - [ ] Investigate error logs
 
 ### 2. Temporary Measures
+
 - [ ] Switch to manual posting
 - [ ] Reduce posting frequency
 - [ ] Test with single post
 
 ### 3. Resolution Steps
+
 - [ ] Identify root cause
 - [ ] Implement fix
 - [ ] Test in development
 - [ ] Gradual re-enable
 
 ### 4. Prevention
+
 - [ ] Document issue
 - [ ] Update troubleshooting guide
 - [ ] Implement monitoring alerts
@@ -437,25 +459,28 @@ If critical issues occur:
 ## Completion Sign-Off
 
 ### Pre-Deployment
+
 - [ ] All setup steps completed
 - [ ] Local testing passed
 - [ ] Documentation reviewed
 
-**Signed**: _________________ Date: _________
+**Signed**: **\*\*\*\***\_**\*\*\*\*** Date: \***\*\_\*\***
 
 ### Production Deployment
+
 - [ ] Vercel configured
 - [ ] Cron job active
 - [ ] First posts verified
 
-**Signed**: _________________ Date: _________
+**Signed**: **\*\*\*\***\_**\*\*\*\*** Date: \***\*\_\*\***
 
 ### Post-Deployment
+
 - [ ] Week 1 monitoring complete
 - [ ] Performance acceptable
 - [ ] No critical issues
 
-**Signed**: _________________ Date: _________
+**Signed**: **\*\*\*\***\_**\*\*\*\*** Date: \***\*\_\*\***
 
 ---
 

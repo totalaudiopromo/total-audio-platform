@@ -4,7 +4,8 @@
 const { createClient } = require('@supabase/supabase-js');
 
 const supabaseUrl = 'https://ucncbighzqudaszewjrv.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVjbmNiaWdoenF1ZGFzemV3anJ2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODkxNTYyMSwiZXhwIjoyMDc0NDkxNjIxfQ.jNbVTjvh7uOGINRPXJ6TFQJuNEbOLuOccVm8nqnlgPE'; // Service role key from pitch-generator
+const supabaseKey =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVjbmNiaWdoenF1ZGFzemV3anJ2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODkxNTYyMSwiZXhwIjoyMDc0NDkxNjIxfQ.jNbVTjvh7uOGINRPXJ6TFQJuNEbOLuOccVm8nqnlgPE'; // Service role key from pitch-generator
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -19,7 +20,7 @@ async function addActivityDateColumn() {
       UPDATE campaign_activities
       SET activity_date = COALESCE(submitted_at, created_at)
       WHERE activity_date IS NULL;
-    `
+    `,
   });
 
   if (error) {
@@ -32,7 +33,9 @@ async function addActivityDateColumn() {
     if (rpcError) {
       console.error('RPC Error:', rpcError);
       console.log('\n⚠️  Manual fix required:');
-      console.log('1. Go to https://supabase.com/dashboard/project/ucncbighzqudaszewjrv/editor');
+      console.log(
+        '1. Go to https://supabase.com/dashboard/project/ucncbighzqudaszewjrv/editor'
+      );
       console.log('2. Click SQL Editor');
       console.log('3. Run this SQL:');
       console.log(`

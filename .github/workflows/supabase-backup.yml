@@ -1,0 +1,170 @@
+name: Supabase Database Backup
+
+on:
+  schedule:
+    # Run daily at 2:00 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      backup_name:
+        description: 'Custom backup name (optional)'
+        required: false
+        type: string
+
+env:
+  SUPABASE_PROJECT_ID: ucncbighzqudaszewjrv
+  BACKUP_RETENTION_DAYS: 30
+
+jobs:
+  backup:
+    name: Backup Database
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Login to Supabase
+        run: |
+          echo "${{ secrets.SUPABASE_ACCESS_TOKEN }}" | supabase login
+
+      - name: Create backup directory
+        run: |
+          BACKUP_DATE=$(date +%Y-%m-%d_%H-%M-%S)
+          BACKUP_DIR="backups/${BACKUP_DATE}"
+          mkdir -p ${BACKUP_DIR}
+          echo "BACKUP_DIR=${BACKUP_DIR}" >> $GITHUB_ENV
+          echo "BACKUP_DATE=${BACKUP_DATE}" >> $GITHUB_ENV
+
+      - name: Export database schema
+        run: |
+          supabase db dump --project-id ${{ env.SUPABASE_PROJECT_ID }} --schema public > ${BACKUP_DIR}/schema.sql
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+      - name: Export database data
+        run: |
+          supabase db dump --project-id ${{ env.SUPABASE_PROJECT_ID }} --data-only > ${BACKUP_DIR}/data.sql
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+      - name: Export database roles and grants
+        run: |
+          supabase db dump --project-id ${{ env.SUPABASE_PROJECT_ID }} --role-only > ${BACKUP_DIR}/roles.sql
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+      - name: Create backup metadata
+        run: |
+          cat > ${BACKUP_DIR}/metadata.json <<EOF
+          {
+            "backup_date": "${BACKUP_DATE}",
+            "project_id": "${{ env.SUPABASE_PROJECT_ID }}",
+            "github_sha": "${{ github.sha }}",
+            "github_ref": "${{ github.ref }}",
+            "triggered_by": "${{ github.event_name }}",
+            "custom_name": "${{ inputs.backup_name || 'automated' }}"
+          }
+          EOF
+
+      - name: Compress backup
+        run: |
+          tar -czf backup-${BACKUP_DATE}.tar.gz ${BACKUP_DIR}
+          echo "BACKUP_ARCHIVE=backup-${BACKUP_DATE}.tar.gz" >> $GITHUB_ENV
+
+      - name: Upload backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: supabase-backup-${{ env.BACKUP_DATE }}
+          path: ${{ env.BACKUP_ARCHIVE }}
+          retention-days: ${{ env.BACKUP_RETENTION_DAYS }}
+
+      - name: Backup summary
+        run: |
+          echo "### 💾 Supabase Backup Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Backup Date:** ${BACKUP_DATE}" >> $GITHUB_STEP_SUMMARY
+          echo "**Project ID:** ${{ env.SUPABASE_PROJECT_ID }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Archive:** ${BACKUP_ARCHIVE}" >> $GITHUB_STEP_SUMMARY
+          echo "**Retention:** ${{ env.BACKUP_RETENTION_DAYS }} days" >> $GITHUB_STEP_SUMMARY
+          echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "#### Backup Contents:" >> $GITHUB_STEP_SUMMARY
+          echo "- \`schema.sql\` - Database schema definition" >> $GITHUB_STEP_SUMMARY
+          echo "- \`data.sql\` - Complete data export" >> $GITHUB_STEP_SUMMARY
+          echo "- \`roles.sql\` - Database roles and permissions" >> $GITHUB_STEP_SUMMARY
+          echo "- \`metadata.json\` - Backup metadata and provenance" >> $GITHUB_STEP_SUMMARY
+
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.setFailed('❌ Supabase backup failed! Check workflow logs for details.')
+
+  verify-backup:
+    name: Verify Backup Integrity
+    needs: backup
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Download backup artifact
+        uses: actions/download-artifact@v4
+        with:
+          pattern: supabase-backup-*
+
+      - name: Verify archive integrity
+        run: |
+          for archive in supabase-backup-*/backup-*.tar.gz; do
+            echo "Verifying: $archive"
+            if tar -tzf "$archive" > /dev/null 2>&1; then
+              echo "✅ Archive is valid: $archive"
+            else
+              echo "❌ Archive is corrupted: $archive"
+              exit 1
+            fi
+          done
+
+      - name: Extract and verify SQL files
+        run: |
+          for archive in supabase-backup-*/backup-*.tar.gz; do
+            tar -xzf "$archive"
+            backup_dir=$(tar -tzf "$archive" | head -1 | cut -f1 -d"/")
+
+            echo "Checking SQL files in: $backup_dir"
+
+            if [ ! -f "$backup_dir/schema.sql" ]; then
+              echo "❌ Missing schema.sql"
+              exit 1
+            fi
+
+            if [ ! -f "$backup_dir/data.sql" ]; then
+              echo "❌ Missing data.sql"
+              exit 1
+            fi
+
+            if [ ! -f "$backup_dir/roles.sql" ]; then
+              echo "❌ Missing roles.sql"
+              exit 1
+            fi
+
+            if [ ! -f "$backup_dir/metadata.json" ]; then
+              echo "❌ Missing metadata.json"
+              exit 1
+            fi
+
+            echo "✅ All required files present in: $backup_dir"
+          done
+
+      - name: Verification summary
+        run: |
+          echo "### ✅ Backup Verification Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All backup archives verified successfully." >> $GITHUB_STEP_SUMMARY

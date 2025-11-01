@@ -22,7 +22,7 @@ const SEARCH_QUERIES = [
   'BBC radio promotion UK',
   'music promotion agency London',
   'radio campaign manager UK',
-  'music marketing agency UK'
+  'music marketing agency UK',
 ];
 
 class GoogleMapsScraper {
@@ -98,7 +98,7 @@ return results;
       query,
       instructions: 'Use Puppeteer MCP via Claude Code',
       expectedResults: '20-50 businesses per query',
-      outputFile: OUTPUT_FILE
+      outputFile: OUTPUT_FILE,
     };
   }
 
@@ -122,15 +122,21 @@ return results;
     console.log(`   ${OUTPUT_FILE}\n`);
 
     console.log('📋 EXAMPLE FORMAT:\n');
-    console.log(JSON.stringify({
-      name: "BBC Radio Pluggers",
-      website: "https://bbcradiopluggers.co.uk",
-      phone: "+44 20 1234 5678",
-      address: "London, UK",
-      source: "google_maps",
-      query: query,
-      scraped_at: new Date().toISOString()
-    }, null, 2));
+    console.log(
+      JSON.stringify(
+        {
+          name: 'BBC Radio Pluggers',
+          website: 'https://bbcradiopluggers.co.uk',
+          phone: '+44 20 1234 5678',
+          address: 'London, UK',
+          source: 'google_maps',
+          query: query,
+          scraped_at: new Date().toISOString(),
+        },
+        null,
+        2
+      )
+    );
     console.log('\n');
   }
 
@@ -145,7 +151,7 @@ return results;
       .map(r => ({
         ...r,
         domain: this.extractDomain(r.website),
-        priority: this.calculatePriority(r)
+        priority: this.calculatePriority(r),
       }))
       .sort((a, b) => b.priority - a.priority);
 

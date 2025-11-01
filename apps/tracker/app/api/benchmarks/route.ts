@@ -3,7 +3,7 @@
 // GET: Fetch industry benchmark data
 // ============================================================================
 
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 

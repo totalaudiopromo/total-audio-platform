@@ -15,6 +15,7 @@ Your Airtable database has **STALE/INCORRECT** subscription status data.
 **ALL 21 KYARA contacts are SUBSCRIBED in Mailchimp** ✅
 
 But Airtable shows:
+
 - ❌ **11 contacts as "Unsubscribed"**
 - ✅ 8 contacts as "Opted-In"
 - ❓ 2 contacts with no status
@@ -61,6 +62,7 @@ But Airtable shows:
 **Theory**: The Airtable "Status" field was populated at some point in the past (possibly when contacts were imported from an old Mailchimp export or manual data entry), and it has **never been synced since**.
 
 **Evidence**:
+
 - Airtable shows "Last Engagement" dates from May-July 2025
 - Mailchimp shows all contacts as currently subscribed
 - The statuses don't match at all
@@ -70,17 +72,20 @@ But Airtable shows:
 ### Option 1: Update Airtable Status to Match Mailchimp (RECOMMENDED)
 
 I can create a script that:
+
 1. Fetches subscription status from Mailchimp for ALL 517 contacts in Airtable
 2. Updates Airtable "Status" field to match Mailchimp reality
 3. Adds a "Last Synced" field to track when data was updated
 
 **Benefits**:
+
 - ✅ Accurate subscription status in Airtable
 - ✅ Won't accidentally skip valuable contacts
 - ✅ Mailchimp is single source of truth
 - ✅ Can run script weekly to stay in sync
 
 **Script to create**:
+
 ```bash
 node sync-all-airtable-from-mailchimp.js
 ```
@@ -106,6 +111,7 @@ node sync-all-airtable-from-mailchimp.js
 ```
 
 This will:
+
 1. Check ALL 517 contacts against Mailchimp Liberty Music PR list
 2. Update "Status" field to match reality:
    - "Subscribed" if subscribed in Mailchimp
@@ -117,11 +123,13 @@ This will:
 ## 📊 IMPACT ANALYSIS
 
 **Current Situation**:
+
 - You're enriching contacts based on Airtable status
 - 62% of KYARA contacts had wrong status
 - You almost **skipped enriching BBC Radio Devon** because Airtable said "Unsubscribed"
 
 **After Sync**:
+
 - Accurate subscription status for all contacts
 - Can confidently filter by status when building campaigns
 - Won't miss high-value contacts due to stale data

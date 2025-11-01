@@ -8,9 +8,9 @@ interface HoverCardProps {
 
 const HoverCard = ({ trigger, content, className = '' }: HoverCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   return (
-    <div 
+    <div
       className={`relative inline-block ${className}`}
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
@@ -25,4 +25,4 @@ const HoverCard = ({ trigger, content, className = '' }: HoverCardProps) => {
   );
 };
 
-export { HoverCard }; 
+export { HoverCard };

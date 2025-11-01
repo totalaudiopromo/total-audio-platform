@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { SiteHeader as SharedSiteHeader } from './SharedSiteHeader';
 import { ToolSwitcher } from './SharedToolSwitcher';
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@total-audio/core-db/client';
 import type { User } from '@supabase/supabase-js';
 
 const links = [
@@ -57,12 +57,18 @@ function AuthComponent() {
         <span className="hidden text-sm font-medium text-gray-700 sm:inline">
           {user.user_metadata?.name ?? user.email}
         </span>
-        <button onClick={handleSignOut} className="subtle-button text-xs">Sign out</button>
+        <button onClick={handleSignOut} className="subtle-button text-xs">
+          Sign out
+        </button>
       </>
     );
   }
 
-  return <button onClick={handleSignIn} className="cta-button">Sign in</button>;
+  return (
+    <button onClick={handleSignIn} className="cta-button">
+      Sign in
+    </button>
+  );
 }
 
 export function SiteHeader() {

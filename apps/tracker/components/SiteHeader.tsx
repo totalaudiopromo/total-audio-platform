@@ -11,10 +11,27 @@ export function SiteHeader() {
   const [toolMenuOpen, setToolMenuOpen] = useState(false);
 
   const tools = [
-    { name: 'Audio Intel', href: 'https://audio-intel.totalaudiopromo.com', color: 'blue' },
-    { name: 'Playlist Pulse', href: 'https://playlist-pulse.totalaudiopromo.com', color: 'green' },
-    { name: 'Tracker', href: 'https://tracker.totalaudiopromo.com', color: 'teal', active: true },
-    { name: 'Pitch Generator', href: 'https://pitch.totalaudiopromo.com', color: 'purple' },
+    {
+      name: 'Audio Intel',
+      href: 'https://audio-intel.totalaudiopromo.com',
+      color: 'blue',
+    },
+    {
+      name: 'Playlist Pulse',
+      href: 'https://playlist-pulse.totalaudiopromo.com',
+      color: 'green',
+    },
+    {
+      name: 'Tracker',
+      href: 'https://tracker.totalaudiopromo.com',
+      color: 'teal',
+      active: true,
+    },
+    {
+      name: 'Pitch Generator',
+      href: 'https://pitch.totalaudiopromo.com',
+      color: 'purple',
+    },
   ];
 
   const navLinks = [
@@ -38,16 +55,16 @@ export function SiteHeader() {
               className="h-10 w-10 object-contain group-hover:scale-105 transition-transform"
             />
             <div className="hidden sm:block">
-              <h1 className="text-lg font-black text-black">
-                Tracker
-              </h1>
-              <p className="text-xs text-gray-500 font-bold -mt-1">by Total Audio Promo</p>
+              <h1 className="text-lg font-black text-black">Tracker</h1>
+              <p className="text-xs text-gray-500 font-bold -mt-1">
+                by Total Audio Promo
+              </p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {navLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -69,10 +86,10 @@ export function SiteHeader() {
                 More Tools
                 <ChevronDown className="w-4 h-4" />
               </button>
-              
+
               {toolMenuOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-brutal border-2 border-black z-10 overflow-hidden">
-                  {tools.map((tool) => (
+                  {tools.map(tool => (
                     <a
                       key={tool.name}
                       href={tool.href}
@@ -112,7 +129,7 @@ export function SiteHeader() {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <nav className="md:hidden border-t-2 border-black bg-white py-4 space-y-2">
-            {navLinks.map((link) => (
+            {navLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -122,20 +139,24 @@ export function SiteHeader() {
                 {link.label}
               </Link>
             ))}
-            
+
             {/* Mobile Tool Switcher */}
             <div className="px-4 py-2 pt-4 border-t border-gray-200">
-              <p className="text-xs font-bold text-gray-500 mb-2">Other Tools</p>
-              {tools.filter(t => !t.active).map((tool) => (
-                <a
-                  key={tool.name}
-                  href={tool.href}
-                  className="block px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {tool.name}
-                </a>
-              ))}
+              <p className="text-xs font-bold text-gray-500 mb-2">
+                Other Tools
+              </p>
+              {tools
+                .filter(t => !t.active)
+                .map(tool => (
+                  <a
+                    key={tool.name}
+                    href={tool.href}
+                    className="block px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {tool.name}
+                  </a>
+                ))}
             </div>
 
             {/* Mobile Auth Button */}

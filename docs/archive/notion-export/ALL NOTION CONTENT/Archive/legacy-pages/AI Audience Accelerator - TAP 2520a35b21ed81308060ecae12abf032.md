@@ -2,7 +2,7 @@
 
 # AI Audience Accelerator - Total Audio Promo
 
-*Building authentic audience growth for Chris Schofield / sadact / Total Audio Promo*
+_Building authentic audience growth for Chris Schofield / sadact / Total Audio Promo_
 
 ---
 
@@ -169,8 +169,7 @@ The brand I want you to create a Content Strategy for is **Chris Schofield - dad
 
 The target audience of this brand is **My audience consists of two distinct but interconnected groups in the UK music industry. First, independent artists - bedroom producers, singer-songwriters, and emerging bands who are talented but struggling to cut through the noise without major label resources. Second, music PR agencies and industry professionals who are drowning in manual processes and burning out from repetitive tasks that should be automated. Both groups share a common frustration: they know music marketing could be more efficient, but the current tools and processes are either too expensive, too generic, or simply don't understand how the music industry actually works**, please draw context about their frustrations, fears, desires, and dreams from the previous output.
 
-- 
-    - 
+- -
 
 To create a content strategy, I want you to imagine a "Content Strategy Matrix" with an x and y axis.
 
@@ -184,7 +183,7 @@ It's beginner-friendly content that promises a "quick fix", and often appeals to
 
 When creating good growth content, you want to ask yourself: how can I position my content as the small effort that is standing between the reader and a big benefit that appeals to as many people as possible?
 
-- --
+---
 
 2 Knowledge content - to get fans
 
@@ -202,7 +201,7 @@ This content works because when you you solve people's problems, they start liki
 
 The key to creating good knowledge content is being aware of the problems and desires of the audience you're talking to, and then to produce the world's most valuable content for exactly that target audience.
 
-- --
+---
 
 3 Authority content - to get authority
 
@@ -219,7 +218,7 @@ Common ways to do this are:
 
 Authority content works well when it subtly addresses the big inner desire the reader has. It should give the reader the inner feeling of hope, and feel like "if this creator has proof that they helped someone else who's exactly like me, perhaps they can really help me"
 
-- --
+---
 
 ## on the y axis, you have my 3 content buckets, the things I have expertise in:
 
@@ -229,7 +228,7 @@ Authority content works well when it subtly addresses the big inner desire the r
 
 3 **Independent Artist Development & Success**
 
-- 
+-
 
 Now, I want you to create a Content Strategy by filling out the matrix.
 
@@ -253,7 +252,7 @@ This will create a 3x3 matrix (9 content types total) that covers every angle of
 
 ---
 
-*Ready for the next step: Running these prompts to generate your complete content strategy!*
+_Ready for the next step: Running these prompts to generate your complete content strategy!_
 
 ## Content Idea Generator Prompt - Completed for Total Audio Promo
 
@@ -271,11 +270,11 @@ Make sure the scope of each content idea fits a thread.
 
 I have two constraints for my writing:
 
-1) All content ideas need to be actionable, inspirational, or analytical
+1. All content ideas need to be actionable, inspirational, or analytical
 
-2) All content ideas need to include at least 1 number
+2. All content ideas need to include at least 1 number
 
-3) Some content ideas should question the status quo, offer a unique perspective or break down a big concept in simpler terms
+3. Some content ideas should question the status quo, offer a unique perspective or break down a big concept in simpler terms
 
 Please come up with 40 content ideas in total, out of which 15 are for the Growth content type, 15 are for the Knowledge content type, and 10 are for the Authority content type
 

@@ -79,8 +79,7 @@ export function ContactIntelligence({
         <div className="flex-1">
           <h4 className="font-semibold text-gray-900">Contact Intelligence</h4>
           <p className="mt-1 text-sm text-gray-900/60">
-            Insights for{' '}
-            <span className="font-medium">{contactName}</span>
+            Insights for <span className="font-medium">{contactName}</span>
             {outlet && ` at ${outlet}`}
           </p>
         </div>

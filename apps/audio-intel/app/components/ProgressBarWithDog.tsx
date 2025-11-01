@@ -9,21 +9,21 @@ interface ProgressBarWithDogProps {
 
 export default function ProgressBarWithDog({ current, total }: ProgressBarWithDogProps) {
   const percent = Math.round((current / total) * 100);
-  
+
   const getLoadingState = (): LoadingState => {
-    if (percent === 0) return "upload";
-    if (percent < 50) return "processing";
-    if (percent < 100) return "analysing";
-    return "success";
+    if (percent === 0) return 'upload';
+    if (percent < 50) return 'processing';
+    if (percent < 100) return 'analysing';
+    return 'success';
   };
-  
+
   const getProgressMessage = () => {
-    if (percent === 0) return "Preparing to upload your contacts...";
-    if (percent < 25) return "Starting AI analysis...";
-    if (percent < 50) return "Researching music industry contacts...";
-    if (percent < 75) return "Gathering contact intelligence...";
-    if (percent < 100) return "Finalizing enrichment data...";
-    return "Enrichment complete!";
+    if (percent === 0) return 'Preparing to upload your contacts...';
+    if (percent < 25) return 'Starting AI analysis...';
+    if (percent < 50) return 'Researching music industry contacts...';
+    if (percent < 75) return 'Gathering contact intelligence...';
+    if (percent < 100) return 'Finalizing enrichment data...';
+    return 'Enrichment complete!';
   };
 
   return (
@@ -41,9 +41,7 @@ export default function ProgressBarWithDog({ current, total }: ProgressBarWithDo
           <Zap className="w-5 h-5 text-yellow-400 animate-pulse" />
           {current} of {total} contacts enriched
         </div>
-        <div className="text-2xl font-bold gradient-text">
-          {percent}%
-        </div>
+        <div className="text-2xl font-bold gradient-text">{percent}%</div>
       </div>
 
       {/* Progress Stats */}
@@ -59,4 +57,4 @@ export default function ProgressBarWithDog({ current, total }: ProgressBarWithDo
       </div>
     </div>
   );
-} 
+}

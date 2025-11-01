@@ -24,21 +24,21 @@ export function checkTrialStatus(signupDate: string): {
   const signup = new Date(signupDate);
   const expiry = calculateTrialExpiry(signup);
   const now = new Date();
-  
+
   const msRemaining = expiry.getTime() - now.getTime();
   const daysRemaining = Math.ceil(msRemaining / (1000 * 60 * 60 * 24));
-  
+
   return {
     isActive: daysRemaining > 0,
     daysRemaining: Math.max(0, daysRemaining),
     hasExpired: daysRemaining <= 0,
-    expiresAt: expiry
+    expiresAt: expiry,
   };
 }
 
 export function getBetaUserStatus(email: string, signupTimestamp: string) {
   const trialStatus = checkTrialStatus(signupTimestamp);
-  
+
   return {
     email,
     signupDate: signupTimestamp,
@@ -48,7 +48,7 @@ export function getBetaUserStatus(email: string, signupTimestamp: string) {
     hasExpired: trialStatus.hasExpired,
     hasLifetimeDiscount: true, // All beta users get 50% lifetime discount
     discountPrice: '£9.99/month', // 50% off £19.99
-    regularPrice: '£19.99/month'
+    regularPrice: '£19.99/month',
   };
 }
 

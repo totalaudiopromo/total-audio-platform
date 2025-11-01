@@ -32,6 +32,7 @@
 ## 📦 Dependencies
 
 **No new npm packages required** - Uses existing dependencies:
+
 - `axios` (already installed) - HTTP client for Threads API
 - `@atproto/api` pattern followed for consistency
 
@@ -54,20 +55,21 @@ CRON_SECRET=random_secure_string   # For Vercel cron authentication
 
 All content sourced from `social-content/BLUESKY_THREADS_CONTENT.md`:
 
-| Title | Category | Character Count | UTM Campaign |
-|-------|----------|-----------------|--------------|
-| The Real Problem | General | 498 | `radio_real_problem` |
-| BBC Radio 1 Success | BBC Case Study | 489 | `radio_bbc_success` |
-| Regional Radio Strategy | Regional Radio | 493 | `radio_regional_strategy` |
-| The Pricing Problem | Pricing | 490 | `radio_pricing_problem` |
-| Response Rate Data | Results | 475 | `radio_response_data` |
-| The Brighton Producer Story | Founder Story | 498 | `radio_brighton_story` |
-| Submission Window Problem | Urgency | 485 | `radio_submission_windows` |
-| The Spreadsheet Chaos | Problem Awareness | 470 | `radio_spreadsheet_chaos` |
-| Real ROI Calculation | Pricing | 495 | `radio_roi_calculation` |
-| Industry Truth | General | 442 | `radio_industry_truth` |
+| Title                       | Category          | Character Count | UTM Campaign               |
+| --------------------------- | ----------------- | --------------- | -------------------------- |
+| The Real Problem            | General           | 498             | `radio_real_problem`       |
+| BBC Radio 1 Success         | BBC Case Study    | 489             | `radio_bbc_success`        |
+| Regional Radio Strategy     | Regional Radio    | 493             | `radio_regional_strategy`  |
+| The Pricing Problem         | Pricing           | 490             | `radio_pricing_problem`    |
+| Response Rate Data          | Results           | 475             | `radio_response_data`      |
+| The Brighton Producer Story | Founder Story     | 498             | `radio_brighton_story`     |
+| Submission Window Problem   | Urgency           | 485             | `radio_submission_windows` |
+| The Spreadsheet Chaos       | Problem Awareness | 470             | `radio_spreadsheet_chaos`  |
+| Real ROI Calculation        | Pricing           | 495             | `radio_roi_calculation`    |
+| Industry Truth              | General           | 442             | `radio_industry_truth`     |
 
 **All posts include:**
+
 - UTM tracking for analytics
 - 500 character limit compliance
 - Authentic Chris Schofield voice
@@ -79,17 +81,21 @@ All content sourced from `social-content/BLUESKY_THREADS_CONTENT.md`:
 ### Threads Posts Scheduled (from `CONTENT_CALENDAR.json`)
 
 **Week 1: Problem Awareness**
+
 - Day 2: "The Spreadsheet Chaos" (08:00)
 
 **Week 2: Solution Education**
+
 - Day 2: "Regional Radio Strategy" (08:00)
 - Day 4: "The Pricing Problem" + "Real ROI Calculation" (08:00)
 
 **Week 3: Social Proof**
+
 - Day 2: "Response Rate Data" (08:00)
 - Day 4: "The Brighton Producer Story" (08:00)
 
 **Week 4: CTA Focus**
+
 - Day 1: "Submission Window Problem" (12:00)
 - Day 3: "The Spreadsheet Chaos" (08:00)
 - Day 4: "Real ROI Calculation" (12:00)
@@ -104,6 +110,7 @@ All content sourced from `social-content/BLUESKY_THREADS_CONTENT.md`:
 Threads requires a two-step process (matching Instagram's requirements):
 
 1. **Create Media Container** (unpublished draft)
+
    ```typescript
    POST /v1.0/{user_id}/threads
    params: { media_type: 'TEXT', text: content, access_token: token }
@@ -159,24 +166,24 @@ Threads requires a two-step process (matching Instagram's requirements):
 ```typescript
 class ThreadsPostingAgent {
   // Core methods
-  async post(text: string): Promise<PostResult>
-  async processScheduledPosts(calendar: ThreadsPost[]): Promise<Results>
-  async healthCheck(): Promise<HealthStatus>
-  async getAccountInsights(): Promise<InsightsData>
+  async post(text: string): Promise<PostResult>;
+  async processScheduledPosts(calendar: ThreadsPost[]): Promise<Results>;
+  async healthCheck(): Promise<HealthStatus>;
+  async getAccountInsights(): Promise<InsightsData>;
 
   // Content management
-  getContentByTitle(title: string): string | null
+  getContentByTitle(title: string): string | null;
 
   // Internal API methods
-  private async createMediaContainer(text: string): Promise<ContainerResult>
-  private async publishMediaContainer(containerId: string): Promise<PublishResult>
+  private async createMediaContainer(text: string): Promise<ContainerResult>;
+  private async publishMediaContainer(containerId: string): Promise<PublishResult>;
 }
 ```
 
 ### Factory Function
 
 ```typescript
-export function createThreadsAgent(): ThreadsPostingAgent
+export function createThreadsAgent(): ThreadsPostingAgent;
 // Throws error if THREADS_USER_ID or THREADS_ACCESS_TOKEN not configured
 ```
 
@@ -305,12 +312,14 @@ Update `.env.local` with new token.
 ### Monitor Rate Limits
 
 Check API usage in Meta Developer dashboard:
+
 - **Path**: Your App → Threads API → Insights
 - **Metrics**: API calls, publishing rate, errors
 
 ### Logging
 
 All operations logged with prefixes:
+
 - `[THREADS] ✅` - Success
 - `[THREADS] ❌` - Error
 - `[THREADS] ⏭️` - Skipped
@@ -319,12 +328,14 @@ All operations logged with prefixes:
 ## 📚 Documentation References
 
 ### Internal Documentation
+
 - `lib/THREADS_API_SETUP.md` - Complete setup guide
 - `.env.threads.example` - Environment variable template
 - `scripts/test-threads-agent.ts` - Testing workflow
 - `social-content/BLUESKY_THREADS_CONTENT.md` - Content source
 
 ### External Resources
+
 - [Threads API Documentation](https://developers.facebook.com/docs/threads)
 - [Graph API Explorer](https://developers.facebook.com/tools/explorer/)
 - [Meta Developer Portal](https://developers.facebook.com/)
@@ -367,6 +378,7 @@ All operations logged with prefixes:
 ## 📧 Support
 
 For issues or questions:
+
 - Review `lib/THREADS_API_SETUP.md` troubleshooting section
 - Check Meta Developer dashboard for API errors
 - Test with Graph API Explorer

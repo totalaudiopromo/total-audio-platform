@@ -8,7 +8,8 @@ const RSSParser = require('rss-parser');
 const axios = require('axios');
 const rssParser = new RSSParser();
 
-const ANTHROPIC_API_KEY = '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';
+const ANTHROPIC_API_KEY =
+  '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';
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
 const ANTHROPIC_MODEL = 'claude-3-5-sonnet-20241022';
 
@@ -99,22 +100,29 @@ Include real tactics with budgets, timings, or processes where relevant.
 
 150-200 words, British spelling:`;
 
-    const response = await axios.post(ANTHROPIC_API_URL, {
-      model: ANTHROPIC_MODEL,
-      max_tokens: 800,
-      system: CHRIS_VOICE_PROFILE,
-      messages: [{ role: 'user', content: prompt }]
-    }, {
-      headers: {
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json'
+    const response = await axios.post(
+      ANTHROPIC_API_URL,
+      {
+        model: ANTHROPIC_MODEL,
+        max_tokens: 800,
+        system: CHRIS_VOICE_PROFILE,
+        messages: [{ role: 'user', content: prompt }],
       },
-      timeout: 30000
-    });
+      {
+        headers: {
+          'x-api-key': ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01',
+          'content-type': 'application/json',
+        },
+        timeout: 30000,
+      }
+    );
 
     const content = response.data.content[0].text;
-    const cost = ((response.data.usage.input_tokens * 0.003 + response.data.usage.output_tokens * 0.015) / 1000000).toFixed(4);
+    const cost = (
+      (response.data.usage.input_tokens * 0.003 + response.data.usage.output_tokens * 0.015) /
+      1000000
+    ).toFixed(4);
 
     return { story, content, cost };
   } catch (error) {
@@ -146,9 +154,10 @@ Know the difference.
 async function main() {
   const testStory = {
     title: 'Suno and Udio SUED By Indie Musicians',
-    source: 'Ari\'s Take',
-    content: 'Major lawsuit by independent musicians against AI music companies Suno and Udio for copyright infringement. Indies taking collective legal action.',
-    url: 'https://aristake.com/suno-udio-lawsuit'
+    source: "Ari's Take",
+    content:
+      'Major lawsuit by independent musicians against AI music companies Suno and Udio for copyright infringement. Indies taking collective legal action.',
+    url: 'https://aristake.com/suno-udio-lawsuit',
   };
 
   console.log(`\n📰 ${testStory.title}\n`);

@@ -8,13 +8,13 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'tblcZnUsB4Swyjcip';
 async function addNotesField() {
   try {
     console.log('🔧 Adding "Notes" field to Airtable...\n');
-    
+
     const apiKey = process.env.AIRTABLE_API_KEY;
     const baseId = process.env.AIRTABLE_BASE_ID;
     const contactsTableId = process.env.AIRTABLE_CONTACTS_TABLE_ID;
-    
+
     const base = new Airtable({ apiKey }).base(baseId);
-    
+
     // Note: Airtable doesn't have a direct API to add fields
     // We need to do this manually in the Airtable interface
     console.log('⚠️  IMPORTANT: Airtable API cannot add fields automatically');
@@ -25,18 +25,18 @@ async function addNotesField() {
     console.log('4. Name the new field "Notes"');
     console.log('5. Set the field type to "Long text"');
     console.log('6. Save the changes');
-    console.log('\nOnce you\'ve added the field, run this script again to verify it exists.');
-    
+    console.log("\nOnce you've added the field, run this script again to verify it exists.");
+
     // Check if the field exists after manual addition
     const records = await base(contactsTableId)
       .select({
-        maxRecords: 1
+        maxRecords: 1,
       })
       .all();
-    
+
     if (records.length > 0) {
       const fields = Object.keys(records[0].fields);
-      
+
       if (fields.includes('Notes')) {
         console.log('\n✅ "Notes" field successfully added!');
         console.log('📋 Current fields:', fields);
@@ -46,10 +46,9 @@ async function addNotesField() {
         console.log('\nPlease add the field manually and run this script again.');
       }
     }
-    
   } catch (error) {
     console.error('❌ Error adding Notes field:', error);
   }
 }
 
-addNotesField(); 
+addNotesField();

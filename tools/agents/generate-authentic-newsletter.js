@@ -11,7 +11,8 @@ const axios = require('axios');
 const rssParser = new RSSParser();
 
 // Use working Anthropic API key
-const ANTHROPIC_API_KEY = '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';
+const ANTHROPIC_API_KEY =
+  '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';
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
 const ANTHROPIC_MODEL = 'claude-3-5-sonnet-20241022';
 
@@ -25,74 +26,102 @@ if (!ANTHROPIC_API_KEY) {
 
 const newsSources = [
   {
-    name: 'Ari\'s Take (Ari Herstand)',
+    name: "Ari's Take (Ari Herstand)",
     rss: 'https://aristake.com/feed/',
     relevanceWeight: 0.95,
-    category: 'indie_artist'
+    category: 'indie_artist',
   },
   {
     name: 'Attack Magazine',
     rss: 'https://www.attackmagazine.com/feed/',
     relevanceWeight: 0.9,
-    category: 'electronic_production'
+    category: 'electronic_production',
   },
   {
     name: 'Complete Music Update (UK)',
     rss: 'https://completemusicupdate.com/feed/',
     relevanceWeight: 0.9,
-    category: 'uk_industry'
+    category: 'uk_industry',
   },
   {
     name: 'Music Business Worldwide',
     rss: 'https://www.musicbusinessworldwide.com/feed/',
     relevanceWeight: 0.9,
-    category: 'business'
+    category: 'business',
   },
   {
     name: 'DIY Magazine (UK)',
     rss: 'https://diymag.com/feed',
     relevanceWeight: 0.85,
-    category: 'uk_indie'
+    category: 'uk_indie',
   },
   {
     name: 'Billboard',
     rss: 'https://www.billboard.com/feed/',
     relevanceWeight: 0.8,
-    category: 'charts'
+    category: 'charts',
   },
   {
     name: 'BBC Music',
     rss: 'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml',
     relevanceWeight: 0.8,
-    category: 'culture'
+    category: 'culture',
   },
   {
     name: 'The Line of Best Fit (UK)',
     rss: 'https://www.thelineofbestfit.com/feed',
     relevanceWeight: 0.75,
-    category: 'uk_indie_culture'
+    category: 'uk_indie_culture',
   },
   {
     name: 'NME',
     rss: 'https://www.nme.com/feed',
     relevanceWeight: 0.7,
-    category: 'culture'
-  }
+    category: 'culture',
+  },
 ];
 
 const relevanceKeywords = {
   highRelevance: [
-    'independent artist', 'indie artist', 'unsigned', 'self-released',
-    'playlist pitching', 'radio promotion', 'streaming', 'spotify',
-    'contact research', 'music promotion', 'DIY music', 'bedroom producer',
-    'electronic music', 'production', 'ableton', 'mixing', 'mastering'
+    'independent artist',
+    'indie artist',
+    'unsigned',
+    'self-released',
+    'playlist pitching',
+    'radio promotion',
+    'streaming',
+    'spotify',
+    'contact research',
+    'music promotion',
+    'DIY music',
+    'bedroom producer',
+    'electronic music',
+    'production',
+    'ableton',
+    'mixing',
+    'mastering',
   ],
   mediumRelevance: [
-    'major label', 'record label', 'A&R', 'music industry',
-    'marketing', 'promotion', 'social media', 'tiktok', 'instagram',
-    'music discovery', 'algorithm', 'playlists', 'curator', 'lawsuit',
-    'sued', 'legal', 'collaboration', 'mental health', 'merch'
-  ]
+    'major label',
+    'record label',
+    'A&R',
+    'music industry',
+    'marketing',
+    'promotion',
+    'social media',
+    'tiktok',
+    'instagram',
+    'music discovery',
+    'algorithm',
+    'playlists',
+    'curator',
+    'lawsuit',
+    'sued',
+    'legal',
+    'collaboration',
+    'mental health',
+    'merch',
+  ],
 };
 
 // Chris's authentic voice training data
@@ -162,7 +191,7 @@ async function fetchStories(source) {
       source: source.name,
       category: source.category,
       url: item.link,
-      relevanceWeight: source.relevanceWeight
+      relevanceWeight: source.relevanceWeight,
     }));
   } catch (error) {
     console.log(`   ✗ ${source.name}: ${error.message}`);
@@ -195,7 +224,9 @@ function calculateRelevanceScore(story) {
 
 async function generateAuthenticContent(story) {
   try {
-    console.log(`\n🤖 Using Claude API to generate authentic content for: ${story.title.slice(0, 60)}...`);
+    console.log(
+      `\n🤖 Using Claude API to generate authentic content for: ${story.title.slice(0, 60)}...`
+    );
 
     const prompt = `You are writing a newsletter section for "The Unsigned Advantage" about this news story:
 
@@ -231,17 +262,17 @@ Write the complete section now:`;
         messages: [
           {
             role: 'user',
-            content: prompt
-          }
-        ]
+            content: prompt,
+          },
+        ],
       },
       {
         headers: {
           'x-api-key': ANTHROPIC_API_KEY,
           'anthropic-version': '2023-06-01',
-          'content-type': 'application/json'
+          'content-type': 'application/json',
         },
-        timeout: 30000
+        timeout: 30000,
       }
     );
 
@@ -253,11 +284,15 @@ Write the complete section now:`;
       content: generatedContent,
       model: ANTHROPIC_MODEL,
       tokens: response.data.usage.input_tokens + response.data.usage.output_tokens,
-      cost: ((response.data.usage.input_tokens * 0.003 + response.data.usage.output_tokens * 0.015) / 1000000).toFixed(4)
+      cost: (
+        (response.data.usage.input_tokens * 0.003 + response.data.usage.output_tokens * 0.015) /
+        1000000
+      ).toFixed(4),
     };
-
   } catch (error) {
-    console.error(`   ✗ Claude API error: ${error.response?.data?.error?.message || error.message}`);
+    console.error(
+      `   ✗ Claude API error: ${error.response?.data?.error?.message || error.message}`
+    );
     return null;
   }
 }
@@ -281,7 +316,7 @@ async function main() {
   const scoredStories = allStories
     .map(story => ({
       ...story,
-      relevanceScore: calculateRelevanceScore(story)
+      relevanceScore: calculateRelevanceScore(story),
     }))
     .filter(story => story.relevanceScore > 0.4)
     .sort((a, b) => b.relevanceScore - a.relevanceScore)
@@ -314,7 +349,9 @@ async function main() {
   newsletterSections.forEach((section, i) => {
     console.log(`\n${'═'.repeat(80)}`);
     console.log(`SECTION ${i + 1} - ${section.story.title}`);
-    console.log(`Source: ${section.story.source} | Score: ${section.story.relevanceScore.toFixed(2)}`);
+    console.log(
+      `Source: ${section.story.source} | Score: ${section.story.relevanceScore.toFixed(2)}`
+    );
     console.log(`${'═'.repeat(80)}\n`);
     console.log(section.content);
     console.log(`\n📖 Read more: ${section.story.url}`);

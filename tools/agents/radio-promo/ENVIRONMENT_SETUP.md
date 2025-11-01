@@ -4,7 +4,7 @@
 
 ✅ WARM API endpoint confirmed working: `https://public-api.warmmusic.net/api/v1`  
 ✅ Authentication format confirmed correct  
-⏳ Rate limited from previous failed attempts (wait 10-15 minutes or ask Gustav to whitelist IP)  
+⏳ Rate limited from previous failed attempts (wait 10-15 minutes or ask Gustav to whitelist IP)
 
 ## 🔧 Required Environment Variables
 
@@ -58,7 +58,7 @@ node radio-promo-agent.js health
 ### Authentication Failed (403 Error)
 
 - **Cause**: Wrong email/password or trial expired
-- **Solution**: 
+- **Solution**:
   1. Verify password is correct
   2. Check 250-song trial is still active
   3. Contact Gustav if trial expired

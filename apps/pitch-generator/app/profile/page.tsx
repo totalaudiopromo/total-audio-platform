@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useSession } from '@/hooks/useAuth';
 import { useEffect, useState } from 'react';
@@ -32,7 +32,9 @@ export default function ProfilePage() {
   if (status === 'loading') {
     return (
       <div className="mx-auto w-full max-w-3xl">
-        <div className="glass-panel px-6 py-12 text-center text-gray-900/70">Loading your workspace…</div>
+        <div className="glass-panel px-6 py-12 text-center text-gray-900/70">
+          Loading your workspace…
+        </div>
       </div>
     );
   }
@@ -43,10 +45,13 @@ export default function ProfilePage() {
         <div className="glass-panel px-6 py-12 text-center">
           <h1 className="text-3xl font-semibold">Sign in to access profile details</h1>
           <p className="mt-3 text-sm text-gray-900/70">
-            The profile section is protected by NextAuth. Use the demo credentials or an OAuth provider to sign in and explore the authenticated dashboard shell.
+            The profile section is protected by NextAuth. Use the demo credentials or an OAuth
+            provider to sign in and explore the authenticated dashboard shell.
           </p>
           <div className="mt-6 flex justify-center">
-            <button onClick={() => signIn()} className="cta-button">Continue to sign in</button>
+            <button onClick={() => signIn()} className="cta-button">
+              Continue to sign in
+            </button>
           </div>
         </div>
       </div>
@@ -92,8 +97,12 @@ export default function ProfilePage() {
               <p className="text-sm text-gray-900/70">
                 Your pitches will now be written in your authentic voice
               </p>
-              <a href="/profile/voice" className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100">
-                <span className="font-semibold text-gray-900">Edit voice profile</span> · Update your writing style and preferences
+              <a
+                href="/profile/voice"
+                className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100"
+              >
+                <span className="font-semibold text-gray-900">Edit voice profile</span> · Update
+                your writing style and preferences
               </a>
             </div>
           ) : (
@@ -105,8 +114,12 @@ export default function ProfilePage() {
               <p className="text-sm text-gray-900/70">
                 Set up your voice profile to make AI pitches sound like you wrote them
               </p>
-              <a href="/profile/voice" className="block rounded-2xl bg-brand-amber/10 px-4 py-3 text-sm transition hover:bg-brand-amber/20 border-2 border-brand-amber/30">
-                <span className="font-semibold text-brand-amber">Set up voice profile</span> · Takes 2-5 minutes
+              <a
+                href="/profile/voice"
+                className="block rounded-2xl bg-brand-amber/10 px-4 py-3 text-sm transition hover:bg-brand-amber/20 border-2 border-brand-amber/30"
+              >
+                <span className="font-semibold text-brand-amber">Set up voice profile</span> · Takes
+                2-5 minutes
               </a>
             </div>
           )}
@@ -116,19 +129,31 @@ export default function ProfilePage() {
       <section className="glass-panel px-6 py-8">
         <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
         <div className="grid gap-3 md:grid-cols-2">
-          <a href="/pitch/generate" className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100">
-            <span className="font-semibold text-gray-900">Generate a pitch</span> · Create personalised pitches in seconds
+          <a
+            href="/pitch/generate"
+            className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100"
+          >
+            <span className="font-semibold text-gray-900">Generate a pitch</span> · Create
+            personalised pitches in seconds
           </a>
-          <a href="/pitch/contacts" className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100">
-            <span className="font-semibold text-gray-900">Manage contacts</span> · Build your database of radio, press, and playlist contacts
+          <a
+            href="/pitch/contacts"
+            className="block rounded-2xl bg-gray-50 px-4 py-3 text-sm text-gray-900/70 transition hover:bg-gray-100"
+          >
+            <span className="font-semibold text-gray-900">Manage contacts</span> · Build your
+            database of radio, press, and playlist contacts
           </a>
         </div>
       </section>
 
       <div className="glass-panel flex flex-col gap-4 px-6 py-6 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-gray-900/40">Session details</p>
-          <p className="mt-1 text-xs text-gray-900/60">Authenticated via NextAuth · Secure session active</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-gray-900/40">
+            Session details
+          </p>
+          <p className="mt-1 text-xs text-gray-900/60">
+            Authenticated via NextAuth · Secure session active
+          </p>
         </div>
         <button onClick={() => signOut({ callbackUrl: '/' })} className="subtle-button">
           Sign out

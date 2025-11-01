@@ -12,7 +12,7 @@ const PLATFORMS = [
   { name: 'twitter', width: 1200, height: 600 },
   { name: 'facebook', width: 1200, height: 630 },
   { name: 'bluesky', width: 1200, height: 630 },
-  { name: 'general', width: 1200, height: 630 }
+  { name: 'general', width: 1200, height: 630 },
 ];
 
 async function captureImage(platform) {
@@ -30,7 +30,6 @@ async function captureImage(platform) {
 
     // Manual instructions for now
     console.log(`   ⚠️  Manual step: Open og-${platform.name}.html in browser and screenshot`);
-
   } catch (error) {
     console.error(`❌ Failed to capture ${platform.name}:`, error.message);
   }

@@ -3,6 +3,7 @@
 ## 🧪 Local Testing (Before Deployment)
 
 ### 1. Authentication Flow ✓
+
 - [ ] Visit http://localhost:3001
 - [ ] Click "Sign In"
 - [ ] Sign in with: `founder@totalaudiopromo.com` / `buildfast`
@@ -10,12 +11,14 @@
 - [ ] Check session persists on page refresh
 
 ### 2. Dashboard ✓
+
 - [ ] View dashboard at http://localhost:3001/dashboard
 - [ ] Stats cards show correct data
 - [ ] Recent pitches table loads
 - [ ] All navigation links work
 
 ### 3. Contact Management ✓
+
 - [ ] Navigate to "Contacts" (http://localhost:3001/pitch/contacts)
 - [ ] Click "Add Contact"
 - [ ] Fill in contact form:
@@ -33,6 +36,7 @@
 - [ ] Verify contact removed from list
 
 ### 4. Pitch Generation (CRITICAL) ✓
+
 - [ ] Navigate to "Generate Pitch" (http://localhost:3001/pitch/generate)
 - [ ] Fill in pitch form:
   - Contact: Select from dropdown
@@ -50,6 +54,7 @@
 - [ ] Click "Review & Edit"
 
 ### 5. Pitch Review & Edit ✓
+
 - [ ] Verify pitch loads on review page
 - [ ] Click "Edit Pitch Body"
 - [ ] Make changes to pitch text
@@ -61,6 +66,7 @@
 - [ ] Paste in text editor to verify full pitch copied
 
 ### 6. Pitch History ✓
+
 - [ ] Navigate to "History" (http://localhost:3001/pitch/history)
 - [ ] Verify all generated pitches appear
 - [ ] Click on a pitch to view details
@@ -68,6 +74,7 @@
 - [ ] Test search/filter (if implemented)
 
 ### 7. Pricing Page ✓
+
 - [ ] Navigate to "Pricing" (http://localhost:3001/pricing)
 - [ ] Verify 3 tiers show: FREE (£0), PRO (£14), AGENCY (£49)
 - [ ] Toggle between Monthly/Annual billing
@@ -81,6 +88,7 @@
 - [ ] Verify redirect to success page
 
 ### 8. Settings/Profile (if implemented) ✓
+
 - [ ] Navigate to settings
 - [ ] Update profile information
 - [ ] Save changes
@@ -89,31 +97,35 @@
 ## 🎯 Critical User Flows
 
 ### Flow 1: First-Time User Journey
+
 1. Sign up/Sign in
 2. Add first contact
 3. Generate first pitch
 4. Review and edit pitch
 5. Copy to send
-**Expected Result**: User can generate and use a pitch within 2 minutes
+   **Expected Result**: User can generate and use a pitch within 2 minutes
 
 ### Flow 2: Returning User Journey
+
 1. Sign in
 2. View dashboard
 3. Generate pitch for existing contact
 4. Review history
-**Expected Result**: User can generate pitch in under 1 minute
+   **Expected Result**: User can generate pitch in under 1 minute
 
 ### Flow 3: Upgrade Flow
+
 1. Generate 5+ pitches (hit free limit)
 2. See upgrade prompt
 3. Visit pricing page
 4. Complete checkout
 5. Verify unlimited access
-**Expected Result**: Seamless upgrade without losing data
+   **Expected Result**: Seamless upgrade without losing data
 
 ## 🐛 Bug Testing
 
 ### Genre Matching Test
+
 Generate pitches with these Key Hooks and verify AI respects genre:
 
 1. **UK Garage**: "Sounds like 1999 UK garage from So Solid Crew era"
@@ -129,6 +141,7 @@ Generate pitches with these Key Hooks and verify AI respects genre:
    - Should NOT mention: electronic music
 
 ### Edge Cases
+
 - [ ] Generate pitch with empty optional fields
 - [ ] Generate pitch with very long key hook (500+ characters)
 - [ ] Generate pitch with special characters in names
@@ -182,6 +195,6 @@ After deploying to Vercel:
 
 **Date**: October 2025
 **Version**: 1.0
-**Tester**: _____________
+**Tester**: **\*\***\_**\*\***
 **Status**: [ ] PASS / [ ] FAIL
-**Notes**: ____________________
+**Notes**: **\*\*\*\***\_\_\_\_**\*\*\*\***

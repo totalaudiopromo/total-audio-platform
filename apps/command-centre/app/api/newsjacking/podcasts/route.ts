@@ -18,13 +18,17 @@ const DEFAULT_SHOWS = [
   "You've Been a Bad Agent",
 ];
 
-function withTimeout<T>(promise: Promise<T>, ms: number, message = 'Request timed out'): Promise<T> {
+function withTimeout<T>(
+  promise: Promise<T>,
+  ms: number,
+  message = 'Request timed out'
+): Promise<T> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), ms);
   return new Promise<T>((resolve, reject) => {
     promise
-      .then((v) => resolve(v))
-      .catch((e) => reject(e))
+      .then(v => resolve(v))
+      .catch(e => reject(e))
       .finally(() => clearTimeout(timeout));
   });
 }
@@ -79,7 +83,12 @@ export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const showsParam = searchParams.get('shows');
-    const shows = showsParam ? showsParam.split(',').map((s) => s.trim()).filter(Boolean) : DEFAULT_SHOWS;
+    const shows = showsParam
+      ? showsParam
+          .split(',')
+          .map(s => s.trim())
+          .filter(Boolean)
+      : DEFAULT_SHOWS;
 
     const results: Episode[] = [];
 
@@ -102,8 +111,9 @@ export async function GET(req: Request) {
 
     return NextResponse.json({ success: true, count: results.length, episodes: results });
   } catch (error: any) {
-    return NextResponse.json({ success: false, error: error?.message || 'Unknown error' }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: error?.message || 'Unknown error' },
+      { status: 500 }
+    );
   }
 }
-
-

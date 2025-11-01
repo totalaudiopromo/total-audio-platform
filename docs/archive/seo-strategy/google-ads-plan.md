@@ -1,9 +1,11 @@
 # Audio Intel Google Ads Campaign Strategy
 
 ## Campaign 1: Music Industry Contact Enrichment
+
 **Target**: Music PR professionals, record labels, artists
 
 ### Keywords (High Intent)
+
 - "music contact database"
 - "playlist curator contacts"
 - "music PR email lists"
@@ -12,11 +14,11 @@
 - "playlist submission contacts"
 
 ### Ad Groups
+
 1. **Playlist Contacts** - CPCs: $3-8
    - playlist curator email
    - spotify playlist contacts
    - apple music playlists
-   
 2. **Radio Contacts** - CPCs: $2-6
    - radio DJ contacts
    - radio station emails
@@ -28,9 +30,11 @@
    - music reviewer emails
 
 ## Campaign 2: Music PR Tools
+
 **Target**: Independent artists, small labels
 
 ### Keywords (Problem-Aware)
+
 - "music PR software"
 - "playlist submission tool"
 - "music promotion platform"
@@ -38,6 +42,7 @@
 - "music industry CRM"
 
 ### Budget Allocation
+
 - Start: £500/month total
 - Playlist Contacts: £200/month (highest intent)
 - Radio Contacts: £150/month
@@ -45,11 +50,13 @@
 - PR Tools: £50/month (test budget)
 
 ## Landing Page Strategy
+
 - **Primary**: intel.totalaudiopromo.com (optimized for conversion)
 - **A/B Test**: Create dedicated Google Ads landing pages
 - **CTA**: "Get Free Contact Sample" → Email capture → Demo booking
 
 ## Conversion Events to Track
+
 1. Email signup (primary conversion)
 2. Demo request (high-value conversion)
 3. Free trial start

@@ -3,7 +3,8 @@
 ---
 
 ## Issue #1: Three Features Built by Weekend Warriors
-*Week of 1st September 2025*
+
+_Week of 1st September 2025_
 
 Right, so this week I learned that most Audio Intel users do their campaign planning on Sundays...
 
@@ -44,17 +45,20 @@ Turns out indie artists aren't researching contacts during business hours - they
 ## Weekend Warrior Wins
 
 ### Electronic Artist from Liverpool
+
 - **Sunday Afternoon Session:** Researched 47 contacts whilst partner watched TV
 - **Monday Result:** 3 playlist placements confirmed by Wednesday
 - **Time Saved:** "Normally takes me entire weekend. Finished during halftime."
 
 ### Indie Folk Duo from Brighton
+
 - **Challenge:** Working full-time, only had Saturday mornings for music promo
 - **Before Audio Intel:** 4 hours researching 15 contacts
 - **After:** Same quality contacts in 20 minutes
 - **Outcome:** "Spent rest of Saturday writing new songs instead of googling email addresses"
 
 ### Solo Artist from Manchester
+
 - **Frustration:** "Girlfriend gets annoyed when I spend Sunday researching contacts"
 - **Solution:** Quick enrichment session whilst she's at gym
 - **Result:** "Campaign ready before she got back. Domestic harmony restored."
@@ -96,12 +100,14 @@ Turns out indie artists aren't researching contacts during business hours - they
 ### Small Budget, Big Results
 
 **Electronic Artist Campaign:**
+
 - **Budget:** £45 total (streaming distribution + Audio Intel Pro)
-- **Contacts:** 34 enriched contacts over 2 weeks  
+- **Contacts:** 34 enriched contacts over 2 weeks
 - **Results:** 2 playlist placements, 1 radio interview
 - **ROI:** Streaming revenue covered costs in first month
 
 **Folk Singer Campaign:**
+
 - **Budget:** £0 (used free tier)
 - **Strategy:** 10 carefully selected contacts monthly for 3 months
 - **Results:** Local BBC coverage, 2 festival bookings
@@ -122,11 +128,13 @@ Turns out indie artists aren't researching contacts during business hours - they
 ### This Week's Genre Wins
 
 **UK Electronic Scene:**
+
 - Found 12 contacts specifically covering "UK underground electronic"
 - Included submission timing ("Friday submissions for weekend playlists")
 - Result: 3 artists got featured same weekend
 
 **Indie Folk Discoveries:**
+
 - Identified 8 blogs covering "acoustic storytelling"
 - Showed which ones respond to Spotify links vs SoundCloud
 - Result: 40% response rate vs usual 8%
@@ -163,7 +171,8 @@ Chris
 ---
 
 ## Issue #2: Mobile Campaigns Between Day Jobs
-*Week of 8th September 2025*
+
+_Week of 8th September 2025_
 
 Right, so turns out 70% of you use Audio Intel on your phones...
 
@@ -188,6 +197,7 @@ Makes complete sense when you think about it. Solo artists don't have office hou
 **New Approach:** Designed for thumb navigation, one-handed use, quick sessions.
 
 **Key Changes:**
+
 - Upload works with phone file manager
 - Results readable without zooming
 - Contact details fit phone screens
@@ -200,21 +210,27 @@ Makes complete sense when you think about it. Solo artists don't have office hou
 ## Between-Jobs Campaign Wins
 
 ### Coffee Shop Research Session
+
 **Manchester Singer-Songwriter:**
+
 - **Situation:** 15-minute break between shifts
 - **Goal:** Research contacts for new single
 - **Mobile Result:** Uploaded contact list, reviewed enriched data, exported results
 - **Outcome:** "Pitched 8 contacts before evening shift started"
 
 ### Commuter Campaign Planning
+
 **Electronic Artist from Birmingham:**
+
 - **Daily Reality:** 45-minute train commute each way
 - **Before:** Lost time scrolling social media
 - **After:** Campaign planning becomes commute productivity
 - **Results:** "Two releases per month instead of struggling with one"
 
 ### Parent/Artist Juggling Act
+
 **Folk Duo from Bristol:**
+
 - **Challenge:** Both work full-time, kids aged 3 and 6
 - **Window:** Saturday morning whilst kids watch cartoons
 - **Mobile Solution:** Research contacts from sofa, export to email, review later
@@ -234,11 +250,13 @@ Makes complete sense when you think about it. Solo artists don't have office hou
 ### Upgrade Stories
 
 **Part-Time Barista Budget:**
+
 - **Income:** £800/month part-time + music
 - **Justification:** "£19.99 = 3 coffee shop shifts. Saves me 4 hours weekly."
 - **Result:** More time for music, better campaign results
 
 **Teacher's Summer Campaign:**
+
 - **Situation:** 6-week school holiday for intensive music push
 - **Investment:** £19.99/month for summer holidays only
 - **Strategy:** Cancel during term time, upgrade for campaign seasons
@@ -251,6 +269,7 @@ Makes complete sense when you think about it. Solo artists don't have office hou
 ### Electronic Music Breakthrough
 
 **Discovery:** UK electronic scene has specific submission timing
+
 - **Insight:** Friday uploads get weekend playlist consideration
 - **Contact Note:** "Best response rate: Friday 2-6pm submissions"
 - **Artist Result:** 3 weekend playlist adds from same contacts that previously ignored weekday pitches
@@ -258,6 +277,7 @@ Makes complete sense when you think about it. Solo artists don't have office hou
 ### Folk Music Reality Check
 
 **Learning:** Folk contacts prefer email over streaming links
+
 - **Data:** 67% of folk contacts request email attachments
 - **Reason:** "We listen while driving/walking, not at desks"
 - **Campaign Adjustment:** Include MP3 attachments, not just Spotify links
@@ -266,6 +286,7 @@ Makes complete sense when you think about it. Solo artists don't have office hou
 ### Indie Rock Contact Timing
 
 **Pattern:** Indie blogs respond better Tuesday-Thursday
+
 - **Reason:** Weekend submissions get buried, Monday catch-up overwhelm
 - **Sweet Spot:** Tuesday morning submissions
 - **User Win:** "Same contacts, different timing, 3x response rate"
@@ -301,6 +322,7 @@ Makes complete sense when you think about it. Solo artists don't have office hou
 ### £30 Monthly Music Budget Breakdown
 
 **Realistic Artist Budget:**
+
 - £15 streaming distribution
 - £19.99 Audio Intel Pro (some months)
 - £5-10 occasional promotional boost
@@ -308,6 +330,7 @@ Makes complete sense when you think about it. Solo artists don't have office hou
 **Strategy:** Upgrade Audio Intel during campaign months, use free tier between releases.
 
 **Results Tracking:**
+
 - **Campaign Month:** £19.99 investment
 - **Quiet Months:** Free tier maintenance
 - **Average:** £8/month across the year
@@ -316,6 +339,7 @@ Makes complete sense when you think about it. Solo artists don't have office hou
 ### Free Tier Success Story
 
 **Student Band from Edinburgh:**
+
 - **Budget:** £0 for promotion tools
 - **Strategy:** 100 free enrichments monthly, careful contact selection
 - **Approach:** Research 25 contacts weekly, spread across month
@@ -339,6 +363,7 @@ Makes complete sense when you think about it. Solo artists don't have office hou
 ### Success Despite Constraints
 
 **Night Shift Nurse/Folk Singer:**
+
 - **Schedule:** 12-hour shifts, 3 nights weekly
 - **Music Time:** Tuesday/Wednesday afternoons
 - **Campaign Strategy:** Batch contact research, spread pitching across free days
@@ -376,7 +401,8 @@ Chris
 ---
 
 ## Issue #3: When £50 Campaigns Beat £500 Ones
-*Week of 15th September 2025*
+
+_Week of 15th September 2025_
 
 This week I learned that budget constraints create better campaigns than unlimited spending...
 
@@ -387,6 +413,7 @@ This week I learned that budget constraints create better campaigns than unlimit
 ### Electronic Artist from Manchester
 
 **Total Promotion Budget:** £47.50
+
 - £19.99 Audio Intel Pro (1 month)
 - £12.99 DistroKid single release
 - £14.52 targeted social media boost
@@ -394,8 +421,9 @@ This week I learned that budget constraints create better campaigns than unlimit
 **Campaign Strategy:** 34 carefully researched contacts over 2 weeks
 
 **Results:**
+
 - 6 playlist placements
-- 1 BBC Radio Manchester feature  
+- 1 BBC Radio Manchester feature
 - 2,847 new monthly listeners
 - £73 streaming revenue in first month
 
@@ -418,6 +446,7 @@ This week I learned that budget constraints create better campaigns than unlimit
 **Brighton Singer-Songwriter Challenge:** Finding contacts who actually cover acoustic folk, not just "indie music."
 
 **Audio Intel Discovery:**
+
 - 12 contacts specifically mention "storytelling songwriters"
 - 8 blogs actively seek "acoustic demos"
 - 5 playlists focused on "UK folk revival"
@@ -431,6 +460,7 @@ This week I learned that budget constraints create better campaigns than unlimit
 **Liverpool Producer Learning:** UK electronic contacts respond differently than US ones.
 
 **Contact Intelligence Revealed:**
+
 - UK contacts prefer Friday submissions (weekend listening)
 - US contacts prefer Tuesday submissions (week planning)
 - European contacts prefer Monday submissions (fresh start focus)
@@ -448,8 +478,9 @@ This week I learned that budget constraints create better campaigns than unlimit
 **Solution:** Campaign batching during holiday periods
 
 **Easter Holiday Campaign:**
+
 - Week 1: Contact research and enrichment
-- Week 2: Personalized pitch creation  
+- Week 2: Personalized pitch creation
 - Weeks 3-4: Follow-up and relationship building
 - Term Time: Monitor results, plan next campaign
 
@@ -461,6 +492,7 @@ This week I learned that budget constraints create better campaigns than unlimit
 **Approach:** Concentrated campaign bursts
 
 **Campaign Structure:**
+
 - Tuesday: Upload and enrich contact lists
 - Wednesday: Review data, create pitches, send everything
 - Following week: Check responses, plan follow-ups
@@ -478,6 +510,7 @@ This week I learned that budget constraints create better campaigns than unlimit
 **How It Works:** Analyzes successful campaigns by genre, location, and artist size to suggest contacts.
 
 **Electronic Artist Example:**
+
 - Uploaded their style: "UK underground house"
 - Suggested contacts: 12 curators who featured similar artists in past 3 months
 - Result: 3 playlist adds from first 8 pitches
@@ -504,12 +537,14 @@ This week I learned that budget constraints create better campaigns than unlimit
 ### Conversion Stories
 
 **Part-Time Retail Worker:**
+
 - **Situation:** 15-minute breaks between customers
 - **Free Tier:** Had to start research, come back later for results
 - **Upgrade Reason:** "£19.99 means I can finish campaign work during one break"
 - **Result:** More consistent campaign execution
 
 **Student Band:**
+
 - **Challenge:** Limited computer lab time at university
 - **Problem:** Free tier processing too slow for 30-minute computer sessions
 - **Solution:** One month Pro upgrade during campaign period
@@ -527,6 +562,7 @@ This week I learned that budget constraints create better campaigns than unlimit
 ### Real Agency Use Case
 
 **2-Person Label from Bristol:**
+
 - **Artists:** 4 acts across different genres
 - **Challenge:** Maintaining campaign quality for all artists
 - **Agency Solution:** White-label reports for each artist, bulk processing
@@ -541,16 +577,19 @@ This week I learned that budget constraints create better campaigns than unlimit
 ### What's Actually Working
 
 **Response Rate Tracking:**
+
 - Electronic music: 31% average response rate
-- Folk/acoustic: 38% average response rate  
+- Folk/acoustic: 38% average response rate
 - Indie rock: 24% average response rate
 
 **Timing Intelligence:**
+
 - Tuesday-Thursday submissions: 35% response rate
 - Friday submissions: 28% response rate
 - Monday/Weekend submissions: 18% response rate
 
 **Geographic Patterns:**
+
 - Local/regional contacts: 45% response rate
 - National contacts: 28% response rate
 - International contacts: 19% response rate
@@ -593,7 +632,8 @@ Chris
 ---
 
 ## Issue #4: The Feature Users Actually Built
-*Week of 22nd September 2025*
+
+_Week of 22nd September 2025_
 
 This week users designed better features than I ever could...
 
@@ -612,8 +652,9 @@ This week users designed better features than I ever could...
 ### The Rebuild
 
 **New Approach:** Contact "freshness" instead of confidence scores
+
 - **Active:** Posted this week, currently seeking music
-- **Recent:** Posted this month, likely responsive  
+- **Recent:** Posted this month, likely responsive
 - **Stale:** Last activity 2+ months ago, probably moved on
 - **Unknown:** Can't determine recent activity
 
@@ -626,6 +667,7 @@ This week users designed better features than I ever could...
 ### Sunday Afternoon Hero
 
 **Electronic Artist from Liverpool:**
+
 - **Available Time:** Sunday 2-5pm (girlfriend watching Netflix)
 - **Campaign Goal:** Research contacts for new EP
 - **Strategy:** Focus on "Active" contacts only
@@ -640,6 +682,7 @@ This week users designed better features than I ever could...
 **Approach:** Batch campaign during Easter holidays
 
 **Week 1 Results:**
+
 - 47 contacts researched (all marked "Active" or "Recent")
 - 23 personalized pitches sent
 - 8 positive responses by end of week
@@ -663,11 +706,13 @@ This week users designed better features than I ever could...
 ### Upgrade Timing Patterns
 
 **Campaign Season Upgrades:**
+
 - March-May: Festival application season
 - August-September: Christmas campaign prep
 - January: New year release push
 
 **Free Tier Months:**
+
 - June-July: Festival season (performing, not promoting)
 - October-December: Focus on live shows
 - February: Post-Christmas budget recovery
@@ -709,16 +754,19 @@ This week users designed better features than I ever could...
 ### Real Usage Patterns
 
 **Morning Commute (7:30-8:15am):**
+
 - Check overnight responses
 - Export successful contact lists
 - Plan follow-up schedule
 
 **Lunch Break (12:30-1:00pm):**
+
 - Upload new contact lists
 - Review enrichment results
 - Send time-sensitive pitches
 
 **Evening Wind-Down (9:00-10:00pm):**
+
 - Analyze campaign success rates
 - Plan next day's outreach
 - Update campaign spreadsheets
@@ -726,6 +774,7 @@ This week users designed better features than I ever could...
 ### Mobile Success Story
 
 **Manchester Indie Band:**
+
 - **Challenge:** Three members with different day job schedules
 - **Solution:** Mobile campaign management via WhatsApp sharing
 - **Process:** One member researches, shares results, all members pitch their networks
@@ -738,6 +787,7 @@ This week users designed better features than I ever could...
 ### £0 Monthly Budget Campaign
 
 **Student Singer-Songwriter:**
+
 - **Resources:** 100 free enrichments monthly
 - **Strategy:** 25 contacts weekly, spread across genres
 - **Execution:** Careful selection, personalized approach
@@ -747,13 +797,15 @@ This week users designed better features than I ever could...
 ### £40 Campaign ROI
 
 **Electronic Producer Budget:**
+
 - £19.99 Audio Intel Pro (1 month)
 - £12.99 single distribution
 - £7 social media boost
 
 **Campaign Results:**
+
 - 4 playlist placements
-- 1,847 new monthly listeners  
+- 1,847 new monthly listeners
 - £67 streaming revenue (first month)
 - 3 remix commission inquiries
 
@@ -767,7 +819,8 @@ This week users designed better features than I ever could...
 
 **User Request:** "Show me contacts that worked for artists like me"
 
-**How It Works:** 
+**How It Works:**
+
 - Analyzes successful campaigns by genre and artist size
 - Suggests contacts with proven track record for similar music
 - Shows success rates for contact/genre combinations
@@ -797,6 +850,7 @@ This week users designed better features than I ever could...
 ### The Agency Question
 
 Users asking for team collaboration features:
+
 - Shared contact lists between band members
 - Campaign progress sharing
 - Multi-user white-label reports
@@ -825,7 +879,8 @@ Chris
 ---
 
 ## Issue #5: Launch Week - What Beta Users Actually Built
-*Week of 29th September 2025*
+
+_Week of 29th September 2025_
 
 Last beta newsletter before launch. Here's what 8 weeks of user feedback actually created...
 
@@ -834,6 +889,7 @@ Last beta newsletter before launch. Here's what 8 weeks of user feedback actuall
 ## The Real Numbers
 
 **Beta User Stats:**
+
 - 189 active users (solo artists and small labels)
 - 8,847 contacts enriched
 - £47.50 average monthly music budget per user
@@ -875,16 +931,19 @@ Last beta newsletter before launch. Here's what 8 weeks of user feedback actuall
 ### Free Tier - What Stays Free Forever
 
 **100 monthly enrichments** (up from planned 25 based on user feedback)
+
 - **User Logic:** "25 enrichments = 1 campaign. We need 2-3 campaigns monthly."
 - **Reality Check:** They were right.
 
 **All enrichment features included**
+
 - **User Feedback:** "Don't gate basic features behind paywalls"
 - **Decision:** Keep feature parity, charge for speed and convenience
 
 ### Pro Tier - £19.99/month
 
 **What Justifies The Cost:**
+
 - 60-second processing (vs 2-3 minutes free tier)
 - Advanced export formats
 - Campaign success tracking
@@ -892,9 +951,10 @@ Last beta newsletter before launch. Here's what 8 weeks of user feedback actuall
 
 **User Conversion Logic:** "£19.99 = 3 coffee shop shifts. Saves 4 hours weekly research."
 
-### Agency Tier - £39.99/month  
+### Agency Tier - £39.99/month
 
 **Real Agency Use Cases:**
+
 - Small labels managing 3-5 artists
 - PR agencies handling multiple campaigns
 - Band managers coordinating several acts
@@ -909,7 +969,8 @@ Last beta newsletter before launch. Here's what 8 weeks of user feedback actuall
 ### Weekend Warrior Wins
 
 **Manchester Electronic Artist:**
-- **Day Job:** Retail management  
+
+- **Day Job:** Retail management
 - **Music Time:** Sunday afternoons only
 - **Audio Intel Impact:** Campaign planning compressed from 6 hours to 45 minutes
 - **Results:** 3 EP releases this year vs 1 last year
@@ -918,6 +979,7 @@ Last beta newsletter before launch. Here's what 8 weeks of user feedback actuall
 ### Budget Campaign Champions
 
 **Student Folk Duo:**
+
 - **Budget:** £0 for promotion tools
 - **Strategy:** Strategic use of free tier over 6 months
 - **Results:** BBC Radio Scotland session, 2 festival bookings
@@ -926,6 +988,7 @@ Last beta newsletter before launch. Here's what 8 weeks of user feedback actuall
 ### Mobile-First Success
 
 **Teacher/Singer-Songwriter:**
+
 - **Available Time:** School holiday periods only
 - **Mobile Campaign Management:** Entire album campaign via phone
 - **Results:** Regional radio play, festival circuit breakthrough
@@ -1049,12 +1112,13 @@ Thanks for building this with me.
 Cheers,  
 Chris
 
-*P.S. - Beta discount codes arrive Monday morning. 50% off forever, because you helped build this thing.*
+_P.S. - Beta discount codes arrive Monday morning. 50% off forever, because you helped build this thing._
 
 ---
 
 ## Issue #6: First Month Post-Launch Reality
-*Week of 6th October 2025*
+
+_Week of 6th October 2025_
 
 Right, so launch week happened and everything I thought I knew about my users was wrong...
 
@@ -1069,7 +1133,7 @@ Right, so launch week happened and everything I thought I knew about my users wa
 
 **Reason:** "60-second processing vs 3-minute wait is worth £19.99 when you're researching between day job shifts"
 
-### User Behaviour Shock #2  
+### User Behaviour Shock #2
 
 **Expected:** Agency tier for established businesses only
 **Reality:** Solo artists upgrading for white-label reports
@@ -1090,6 +1154,7 @@ Right, so launch week happened and everything I thought I knew about my users wa
 ### The £50 Monthly Music Budget Reality
 
 **Typical Indie Artist Spending:**
+
 - £15 streaming distribution
 - £19.99 Audio Intel Pro (campaign months)
 - £10-15 social media promotion
@@ -1105,8 +1170,9 @@ Right, so launch week happened and everything I thought I knew about my users wa
 **Approach:** Strategic free tier usage
 
 **Monthly Strategy:**
+
 - Week 1: Research 25 local/regional contacts
-- Week 2: Research 25 national contacts  
+- Week 2: Research 25 national contacts
 - Week 3: Research 25 international contacts
 - Week 4: Research 25 genre-specific contacts
 
@@ -1142,16 +1208,19 @@ Right, so launch week happened and everything I thought I knew about my users wa
 ### Real Usage Patterns Post-Launch
 
 **Morning Commute (7:30-8:15am):**
+
 - Check overnight responses
 - Plan daily outreach priorities
 - Export urgent contact lists
 
 **Lunch Break Power Sessions (12:30-1:00pm):**
+
 - Upload contact lists
-- Review enrichment results  
+- Review enrichment results
 - Send time-sensitive pitches
 
 **Evening Analysis (9:00-10:00pm):**
+
 - Campaign success tracking
 - Plan tomorrow's activities
 - Update campaign spreadsheets
@@ -1159,6 +1228,7 @@ Right, so launch week happened and everything I thought I knew about my users wa
 ### Mobile Success Stories
 
 **Nurse/Musician Night Shift Strategy:**
+
 - **Available Time:** Tuesday/Wednesday afternoons only
 - **Mobile Workflow:** Entire campaign managed via phone during off-days
 - **Results:** EP campaign, radio interview, 2 festival bookings
@@ -1195,6 +1265,7 @@ Right, so launch week happened and everything I thought I knew about my users wa
 **But:** 2-3 person operations scaling up
 
 **Real Use Cases:**
+
 - Small indie labels managing 4-6 artists
 - Band managers handling multiple acts
 - Producer collectives coordinating releases
@@ -1216,17 +1287,20 @@ Right, so launch week happened and everything I thought I knew about my users wa
 ### What's Actually Working
 
 **Response Rate by Genre:**
+
 - Folk/Acoustic: 38% average
-- Electronic/Dance: 31% average  
+- Electronic/Dance: 31% average
 - Indie Rock: 24% average
 - Hip-Hop/Urban: 19% average
 
 **Timing Intelligence:**
+
 - Tuesday-Thursday: 35% response rate
-- Monday/Friday: 28% response rate  
+- Monday/Friday: 28% response rate
 - Weekend submissions: 16% response rate
 
 **Geographic Success Patterns:**
+
 - Local contacts: 47% response rate
 - Regional contacts: 34% response rate
 - National contacts: 23% response rate
@@ -1247,8 +1321,9 @@ Right, so launch week happened and everything I thought I knew about my users wa
 **User Need:** "Show me successful campaign structures for my genre"
 
 **Specific Requests:**
+
 - Single release campaign template
-- EP campaign template  
+- EP campaign template
 - Album campaign template
 - Festival application campaign template
 
@@ -1257,6 +1332,7 @@ Right, so launch week happened and everything I thought I knew about my users wa
 **User Need:** "Tell me honestly - will this campaign work before I start it?"
 
 **Desired Features:**
+
 - Response rate prediction based on contact selection
 - Genre matching confidence scores
 - Optimal timing suggestions
@@ -1308,4 +1384,4 @@ Users requesting features that blur the line between contact research and full c
 Cheers,  
 Chris
 
-*P.S. - October campaign data shows 41% average response rate for users following Audio Intel timing and genre intelligence. That's worth celebrating.*
+_P.S. - October campaign data shows 41% average response rate for users following Audio Intel timing and genre intelligence. That's worth celebrating._

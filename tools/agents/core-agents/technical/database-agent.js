@@ -2,7 +2,7 @@
 
 /**
  * Database Agent for Total Audio Promo
- * 
+ *
  * Handles database operations, migrations, and multi-tenant data management
  * Ensures data isolation between agencies and provides database utilities
  */
@@ -13,7 +13,7 @@ const { PrismaClient } = require('@prisma/client');
 const logger = {
   info: (msg, ...args) => console.log(`[INFO] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[ERROR] ${msg}`, ...args),
-  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args)
+  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args),
 };
 
 // Try to load backend logger if available
@@ -67,21 +67,21 @@ class DatabaseAgent {
       // Check that agency can only access its own data
       const artists = await this.prisma.artist.findMany({
         where: { agencyId },
-        select: { id: true, agencyId: true }
+        select: { id: true, agencyId: true },
       });
 
       const campaigns = await this.prisma.campaign.findMany({
-        where: { 
-          artist: { agencyId }
+        where: {
+          artist: { agencyId },
         },
-        select: { id: true, artistId: true }
+        select: { id: true, artistId: true },
       });
 
       const isolation = {
         agencyId,
         artistCount: artists.length,
         campaignCount: campaigns.length,
-        dataIsolated: artists.every(artist => artist.agencyId === agencyId)
+        dataIsolated: artists.every(artist => artist.agencyId === agencyId),
       };
 
       logger.info(`Data isolation verified for agency ${agencyId}:`, isolation);
@@ -103,8 +103,8 @@ class DatabaseAgent {
       const result = await this.prisma.campaign.deleteMany({
         where: {
           createdAt: { lt: cutoffDate },
-          status: 'completed'
-        }
+          status: 'completed',
+        },
       });
 
       logger.info(`Cleaned up ${result.count} old campaigns older than ${daysOld} days`);
@@ -126,7 +126,7 @@ class DatabaseAgent {
         this.prisma.artist.count(),
         this.prisma.campaign.count(),
         this.prisma.contact.count(),
-        this.prisma.emailCampaign.count()
+        this.prisma.emailCampaign.count(),
       ]);
 
       return {
@@ -136,7 +136,7 @@ class DatabaseAgent {
         campaigns: stats[3],
         contacts: stats[4],
         emailCampaigns: stats[5],
-        timestamp: new Date()
+        timestamp: new Date(),
       };
     } catch (error) {
       logger.error('Failed to get database statistics:', error);
@@ -152,12 +152,12 @@ class DatabaseAgent {
       const data = {
         agencies: await this.prisma.agency.findMany(),
         users: await this.prisma.user.findMany({
-          select: { id: true, email: true, role: true, agencyId: true, createdAt: true }
+          select: { id: true, email: true, role: true, agencyId: true, createdAt: true },
         }),
         artists: await this.prisma.artist.findMany(),
         activeCampaigns: await this.prisma.campaign.findMany({
-          where: { status: { in: ['active', 'scheduled'] } }
-        })
+          where: { status: { in: ['active', 'scheduled'] } },
+        }),
       };
 
       const backup = {
@@ -166,9 +166,9 @@ class DatabaseAgent {
           agencies: data.agencies.length,
           users: data.users.length,
           artists: data.artists.length,
-          activeCampaigns: data.activeCampaigns.length
+          activeCampaigns: data.activeCampaigns.length,
         },
-        data
+        data,
       };
 
       logger.info('Critical data backup completed:', backup.recordCount);
@@ -185,22 +185,22 @@ class DatabaseAgent {
   async performanceCheck() {
     try {
       const start = Date.now();
-      
+
       // Test query performance
       await this.prisma.campaign.findMany({
         take: 100,
         include: {
           artist: true,
-          emailCampaigns: true
-        }
+          emailCampaigns: true,
+        },
       });
 
       const queryTime = Date.now() - start;
-      
+
       return {
         queryTime,
         performanceStatus: queryTime < 1000 ? 'good' : queryTime < 5000 ? 'moderate' : 'slow',
-        timestamp: new Date()
+        timestamp: new Date(),
       };
     } catch (error) {
       logger.error('Performance check failed:', error);
@@ -234,28 +234,28 @@ if (require.main === module) {
         const health = await agent.healthCheck();
         console.log(JSON.stringify(health, null, 2));
         break;
-      
+
       case 'stats':
         const stats = await agent.getStatistics();
         console.log(JSON.stringify(stats, null, 2));
         break;
-      
+
       case 'cleanup':
         const days = parseInt(process.argv[3]) || 90;
         const cleanup = await agent.cleanupOldData(days);
         console.log(JSON.stringify(cleanup, null, 2));
         break;
-      
+
       case 'backup':
         const backup = await agent.backupCriticalData();
         console.log(JSON.stringify(backup.recordCount, null, 2));
         break;
-      
+
       case 'performance':
         const perf = await agent.performanceCheck();
         console.log(JSON.stringify(perf, null, 2));
         break;
-      
+
       default:
         console.log('Usage: node database-agent.js [health|stats|cleanup|backup|performance]');
     }

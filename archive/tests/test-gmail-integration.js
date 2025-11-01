@@ -4,7 +4,7 @@ async function testGmailIntegration() {
   console.log('🧪 Testing Gmail Integration...\n');
 
   const baseUrl = 'http://localhost:3001';
-  
+
   // Test 1: Health endpoint
   console.log('1. Testing health endpoint...');
   try {
@@ -56,4 +56,4 @@ async function testGmailIntegration() {
   console.log('4. Test sending emails and tracking replies');
 }
 
-testGmailIntegration().catch(console.error); 
+testGmailIntegration().catch(console.error);

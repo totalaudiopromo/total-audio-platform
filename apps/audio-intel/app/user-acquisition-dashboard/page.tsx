@@ -1,31 +1,31 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Progress } from '@/components/ui/progress'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { useState, useEffect } from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface DashboardMetrics {
-  beta_signups: number
-  email_subscribers: number
-  social_engagement: number
-  content_performance: number
-  conversion_rate: number
+  beta_signups: number;
+  email_subscribers: number;
+  social_engagement: number;
+  content_performance: number;
+  conversion_rate: number;
   weekly_goals: {
-    beta_signups: number
-    email_subscribers: number
-    social_engagement: number
-  }
+    beta_signups: number;
+    email_subscribers: number;
+    social_engagement: number;
+  };
 }
 
 interface SocialPost {
-  platform: string
-  content: string
-  scheduled_time: string
-  status: 'draft' | 'scheduled' | 'posted'
-  engagement: number
+  platform: string;
+  content: string;
+  scheduled_time: string;
+  status: 'draft' | 'scheduled' | 'posted';
+  engagement: number;
 }
 
 export default function UserAcquisitionDashboard() {
@@ -38,21 +38,21 @@ export default function UserAcquisitionDashboard() {
     weekly_goals: {
       beta_signups: 10,
       email_subscribers: 50,
-      social_engagement: 100
-    }
-  })
+      social_engagement: 100,
+    },
+  });
 
-  const [socialPosts, setSocialPosts] = useState<SocialPost[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [socialPosts, setSocialPosts] = useState<SocialPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Simulate loading dashboard data
     const loadDashboardData = async () => {
-      setIsLoading(true)
-      
+      setIsLoading(true);
+
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
       // Mock data - in real implementation, fetch from APIs
       setMetrics({
         beta_signups: 23,
@@ -63,9 +63,9 @@ export default function UserAcquisitionDashboard() {
         weekly_goals: {
           beta_signups: 10,
           email_subscribers: 50,
-          social_engagement: 100
-        }
-      })
+          social_engagement: 100,
+        },
+      });
 
       setSocialPosts([
         {
@@ -73,42 +73,46 @@ export default function UserAcquisitionDashboard() {
           content: '🎵 BREAKTHROUGH: I just automated radio contact research...',
           scheduled_time: '2024-01-15 09:00',
           status: 'posted',
-          engagement: 45
+          engagement: 45,
         },
         {
           platform: 'LinkedIn',
           content: 'The Hidden Cost of Manual Contact Research in Music Promotion...',
           scheduled_time: '2024-01-15 10:30',
           status: 'scheduled',
-          engagement: 0
+          engagement: 0,
         },
         {
           platform: 'Blue Sky',
-          content: 'Music industry professionals: What\'s your biggest time-waster...',
+          content: "Music industry professionals: What's your biggest time-waster...",
           scheduled_time: '2024-01-15 14:00',
           status: 'draft',
-          engagement: 0
-        }
-      ])
-      
-      setIsLoading(false)
-    }
+          engagement: 0,
+        },
+      ]);
 
-    loadDashboardData()
-  }, [])
+      setIsLoading(false);
+    };
+
+    loadDashboardData();
+  }, []);
 
   const getProgressPercentage = (current: number, goal: number) => {
-    return Math.min((current / goal) * 100, 100)
-  }
+    return Math.min((current / goal) * 100, 100);
+  };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'posted': return 'bg-green-500'
-      case 'scheduled': return 'bg-blue-500'
-      case 'draft': return 'bg-yellow-500'
-      default: return 'bg-gray-500'
+      case 'posted':
+        return 'bg-green-500';
+      case 'scheduled':
+        return 'bg-blue-500';
+      case 'draft':
+        return 'bg-yellow-500';
+      default:
+        return 'bg-gray-500';
     }
-  }
+  };
 
   if (isLoading) {
     return (
@@ -124,16 +128,14 @@ export default function UserAcquisitionDashboard() {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            User Acquisition Dashboard
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">User Acquisition Dashboard</h1>
           <p className="text-gray-600">
             Track your progress towards acquiring 50+ beta users for Audio Intel
           </p>
@@ -149,8 +151,11 @@ export default function UserAcquisitionDashboard() {
             <CardContent>
               <div className="text-2xl font-bold">{metrics.beta_signups}</div>
               <div className="flex items-center mt-2">
-                <Progress 
-                  value={getProgressPercentage(metrics.beta_signups, metrics.weekly_goals.beta_signups)} 
+                <Progress
+                  value={getProgressPercentage(
+                    metrics.beta_signups,
+                    metrics.weekly_goals.beta_signups
+                  )}
                   className="flex-1 mr-2"
                 />
                 <span className="text-sm text-gray-500">
@@ -168,8 +173,11 @@ export default function UserAcquisitionDashboard() {
             <CardContent>
               <div className="text-2xl font-bold">{metrics.email_subscribers}</div>
               <div className="flex items-center mt-2">
-                <Progress 
-                  value={getProgressPercentage(metrics.email_subscribers, metrics.weekly_goals.email_subscribers)} 
+                <Progress
+                  value={getProgressPercentage(
+                    metrics.email_subscribers,
+                    metrics.weekly_goals.email_subscribers
+                  )}
                   className="flex-1 mr-2"
                 />
                 <span className="text-sm text-gray-500">
@@ -187,8 +195,11 @@ export default function UserAcquisitionDashboard() {
             <CardContent>
               <div className="text-2xl font-bold">{metrics.social_engagement}</div>
               <div className="flex items-center mt-2">
-                <Progress 
-                  value={getProgressPercentage(metrics.social_engagement, metrics.weekly_goals.social_engagement)} 
+                <Progress
+                  value={getProgressPercentage(
+                    metrics.social_engagement,
+                    metrics.weekly_goals.social_engagement
+                  )}
                   className="flex-1 mr-2"
                 />
                 <span className="text-sm text-gray-500">
@@ -205,9 +216,7 @@ export default function UserAcquisitionDashboard() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{metrics.conversion_rate}%</div>
-              <p className="text-xs text-gray-500 mt-1">
-                Beta signup to paid conversion
-              </p>
+              <p className="text-xs text-gray-500 mt-1">Beta signup to paid conversion</p>
             </CardContent>
           </Card>
         </div>
@@ -231,11 +240,16 @@ export default function UserAcquisitionDashboard() {
               <CardContent>
                 <div className="space-y-4">
                   {socialPosts.map((post, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
+                    <div
+                      key={index}
+                      className="flex items-center justify-between p-4 border rounded-lg"
+                    >
                       <div className="flex-1">
                         <div className="flex items-center space-x-2 mb-2">
                           <Badge variant="outline">{post.platform}</Badge>
-                          <div className={`w-2 h-2 rounded-full ${getStatusColor(post.status)}`}></div>
+                          <div
+                            className={`w-2 h-2 rounded-full ${getStatusColor(post.status)}`}
+                          ></div>
                           <span className="text-sm text-gray-500">{post.status}</span>
                         </div>
                         <p className="text-sm text-gray-700 line-clamp-2">{post.content}</p>
@@ -262,9 +276,7 @@ export default function UserAcquisitionDashboard() {
             <Card>
               <CardHeader>
                 <CardTitle>Content Calendar</CardTitle>
-                <CardDescription>
-                  Plan and schedule your content for maximum impact
-                </CardDescription>
+                <CardDescription>Plan and schedule your content for maximum impact</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-center py-8">
@@ -279,9 +291,7 @@ export default function UserAcquisitionDashboard() {
             <Card>
               <CardHeader>
                 <CardTitle>Performance Analytics</CardTitle>
-                <CardDescription>
-                  Track what's working and optimize your strategy
-                </CardDescription>
+                <CardDescription>Track what's working and optimize your strategy</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-center py-8">
@@ -297,9 +307,7 @@ export default function UserAcquisitionDashboard() {
         <Card className="mt-8">
           <CardHeader>
             <CardTitle>Quick Actions</CardTitle>
-            <CardDescription>
-              Take immediate action to drive user acquisition
-            </CardDescription>
+            <CardDescription>Take immediate action to drive user acquisition</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -320,5 +328,5 @@ export default function UserAcquisitionDashboard() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

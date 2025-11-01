@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 import { usePathname } from 'next/navigation';
@@ -19,11 +19,17 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     <MobileLayout>
       <div className="flex min-h-screen flex-col bg-white">
         {showGlobalHeader && <SiteHeader />}
-        <main className={showGlobalHeader ? "flex-1 px-4 pb-16 pt-10 sm:px-8 lg:px-12 xl:px-16" : "flex-1"}>{children}</main>
+        <main
+          className={
+            showGlobalHeader ? 'flex-1 px-4 pb-16 pt-10 sm:px-8 lg:px-12 xl:px-16' : 'flex-1'
+          }
+        >
+          {children}
+        </main>
         <SiteFooter />
         <ExitIntentPopup />
         <CookieConsent />
       </div>
     </MobileLayout>
   );
-} 
+}

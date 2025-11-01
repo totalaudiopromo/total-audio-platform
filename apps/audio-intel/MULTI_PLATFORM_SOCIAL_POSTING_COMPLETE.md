@@ -27,12 +27,14 @@ All platforms read from the same content calendar:
 `apps/audio-intel/social-content/CONTENT_CALENDAR.json`
 
 **Total content across 4 weeks:**
+
 - Week 1: Problem Awareness
 - Week 2: Solution Education
 - Week 3: Social Proof & Results
 - Week 4: Call-to-Action Focus
 
 **Content sources:**
+
 - Bluesky: `BLUESKY_THREADS_CONTENT.md` (9 posts)
 - Twitter/X: `TWITTER_X_THREADS_RADIO_PROMOTERS.md` (6 threads, 43 tweets)
 - LinkedIn: `RADIO_PROMOTER_LINKEDIN_POSTS.md` (10 posts)
@@ -49,16 +51,19 @@ You need to add API credentials for each platform to Vercel. Only configured pla
 #### 1. Bluesky (EASIEST - 5 minutes)
 
 **Credentials needed:**
+
 - `BLUESKY_IDENTIFIER` - Your Bluesky handle (e.g., `chrisschouk.bsky.social`)
 - `BLUESKY_APP_PASSWORD` - App-specific password (NOT your main password)
 
 **How to get credentials:**
+
 1. Go to https://bsky.app/settings/app-passwords
 2. Click "Add App Password"
 3. Name it: `Audio Intel Posting Agent`
 4. Copy the generated password
 
 **Add to Vercel:**
+
 ```
 BLUESKY_IDENTIFIER=chrisschouk.bsky.social
 BLUESKY_APP_PASSWORD=your-app-password-here
@@ -71,18 +76,21 @@ BLUESKY_APP_PASSWORD=your-app-password-here
 #### 2. Twitter/X (MEDIUM - 15 minutes)
 
 **Credentials needed:**
+
 - `TWITTER_API_KEY` - Your Twitter API key
 - `TWITTER_API_SECRET` - Your Twitter API secret
 - `TWITTER_ACCESS_TOKEN` - Your access token
 - `TWITTER_ACCESS_SECRET` - Your access token secret
 
 **How to get credentials:**
+
 1. Go to https://developer.twitter.com/en/portal/dashboard
 2. Create a new project and app (or use existing)
 3. Generate API keys and access tokens
 4. Enable "Read and Write" permissions
 
 **Add to Vercel:**
+
 ```
 TWITTER_API_KEY=your_api_key
 TWITTER_API_SECRET=your_api_secret
@@ -97,17 +105,20 @@ TWITTER_ACCESS_SECRET=your_access_secret
 #### 3. LinkedIn (HARD - 30 minutes)
 
 **Credentials needed:**
+
 - `LINKEDIN_CLIENT_ID` - Your LinkedIn app client ID
 - `LINKEDIN_CLIENT_SECRET` - Your LinkedIn app secret
 - `LINKEDIN_ACCESS_TOKEN` - OAuth2 access token (requires manual OAuth flow)
 
 **How to get credentials:**
+
 1. Go to https://www.linkedin.com/developers/apps
 2. Create a new app
 3. Request "Sign In with LinkedIn using OpenID Connect" and "Share on LinkedIn" products
 4. Complete OAuth2 flow to get access token (see detailed guide)
 
 **Add to Vercel:**
+
 ```
 LINKEDIN_CLIENT_ID=your_client_id
 LINKEDIN_CLIENT_SECRET=your_client_secret
@@ -121,12 +132,14 @@ LINKEDIN_ACCESS_TOKEN=your_access_token
 #### 4. Threads (MEDIUM-HARD - 30 minutes)
 
 **Credentials needed:**
+
 - `THREADS_USER_ID` - Your Instagram/Threads user ID
 - `THREADS_ACCESS_TOKEN` - Long-lived access token (60 days)
 - `FACEBOOK_APP_ID` - Facebook app ID
 - `FACEBOOK_APP_SECRET` - Facebook app secret
 
 **How to get credentials:**
+
 1. Create Facebook app at https://developers.facebook.com/apps
 2. Add "Threads API" product to your app
 3. Get Instagram Business Account ID
@@ -134,6 +147,7 @@ LINKEDIN_ACCESS_TOKEN=your_access_token
 5. Exchange for 60-day token
 
 **Add to Vercel:**
+
 ```
 THREADS_USER_ID=123456789
 THREADS_ACCESS_TOKEN=IGQV...
@@ -180,6 +194,7 @@ CRON_SECRET=your-random-secret
 ```
 
 **For each variable:**
+
 - Environment: Production, Preview, Development (all three)
 
 ---
@@ -227,6 +242,7 @@ curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
 **Cron Expression:** `0 9,17 * * *`
 
 **Why these times?**
+
 - **9am** - Morning commute + coffee scroll
 - **5pm** - End-of-work scroll + evening engagement
 
@@ -302,6 +318,7 @@ If a platform's credentials aren't configured, it's skipped gracefully:
 ```
 
 This means you can:
+
 1. Start with just Bluesky (already configured)
 2. Add other platforms as you get credentials
 3. Test each platform independently
@@ -313,6 +330,7 @@ This means you can:
 ### Platform Not Posting
 
 **Check:**
+
 1. Environment variables are set in Vercel
 2. Credentials are correct and not expired
 3. API permissions are enabled
@@ -327,6 +345,7 @@ Check `CONTENT_CALENDAR.json` for scheduled times.
 ### Rate Limiting
 
 All agents include built-in rate limiting:
+
 - 1-2 seconds between posts
 - Bluesky: 1 second
 - Twitter: 2 seconds (thread delays)
@@ -340,23 +359,27 @@ All agents include built-in rate limiting:
 ### Platform-Specific Adaptations
 
 **Bluesky** (9 posts):
+
 - Casual, authentic tone
 - 300 character limit
 - Community-focused messaging
 
 **Twitter/X** (6 threads, 43 tweets):
+
 - Thread format (5-7 tweets each)
 - 280 character limit per tweet
 - Radio promoter pain points
 - Strong CTAs
 
 **LinkedIn** (10 posts):
+
 - Professional tone
 - 3000 character limit (longer form)
 - Industry credibility
 - B2B messaging
 
 **Threads** (10 posts):
+
 - Visual, engaging tone
 - 500 character limit
 - Mobile-first messaging
@@ -408,12 +431,12 @@ All agents include built-in rate limiting:
 
 ### Platform Status:
 
-| Platform | Agent | Content | Credentials | Status |
-|----------|-------|---------|-------------|--------|
-| **Bluesky** | ✅ Built | ✅ 9 posts | ✅ Added | **LIVE** |
-| **Twitter/X** | ✅ Built | ✅ 6 threads | ⏳ Pending | Ready |
-| **LinkedIn** | ✅ Built | ✅ 10 posts | ⏳ Pending | Ready |
-| **Threads** | ✅ Built | ✅ 10 posts | ⏳ Pending | Ready |
+| Platform      | Agent    | Content      | Credentials | Status   |
+| ------------- | -------- | ------------ | ----------- | -------- |
+| **Bluesky**   | ✅ Built | ✅ 9 posts   | ✅ Added    | **LIVE** |
+| **Twitter/X** | ✅ Built | ✅ 6 threads | ⏳ Pending  | Ready    |
+| **LinkedIn**  | ✅ Built | ✅ 10 posts  | ⏳ Pending  | Ready    |
+| **Threads**   | ✅ Built | ✅ 10 posts  | ⏳ Pending  | Ready    |
 
 ### Code Status:
 

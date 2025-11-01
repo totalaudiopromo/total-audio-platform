@@ -9,7 +9,7 @@ test.describe('Dashboard Page', () => {
   test('should load dashboard successfully', async ({ page }) => {
     // Check if page loads without errors
     await expect(page).toHaveTitle(/Total Audio Promo/);
-    
+
     // Verify main dashboard elements are present
     await expect(page.locator('text=Dashboard')).toBeVisible();
     await expect(page.locator('text=Total Audio Promo')).toBeVisible();
@@ -55,11 +55,11 @@ test.describe('Dashboard Page', () => {
   test('should be responsive on mobile', async ({ page }) => {
     // Set mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
-    
+
     // Verify mobile layout
     await expect(page.locator('text=Dashboard')).toBeVisible();
     await expect(page.locator('text=Total Audio Promo')).toBeVisible();
-    
+
     // Check if navigation is accessible on mobile
     await expect(page.locator('a[href="/dashboard"]')).toBeVisible();
   });
@@ -67,9 +67,12 @@ test.describe('Dashboard Page', () => {
   test('should handle real-time updates', async ({ page }) => {
     // Check if real-time elements are present
     await expect(page.locator('text=Last updated')).toBeVisible();
-    
+
     // Verify time is displayed
-    const timeElement = page.locator('text=Last updated').locator('..').locator('text=/\\d{1,2}:\\d{2}/');
+    const timeElement = page
+      .locator('text=Last updated')
+      .locator('..')
+      .locator('text=/\\d{1,2}:\\d{2}/');
     await expect(timeElement).toBeVisible();
   });
 
@@ -77,7 +80,7 @@ test.describe('Dashboard Page', () => {
     // This test checks for the recent replies section
     // It may or may not be visible depending on data
     const recentRepliesSection = page.locator('text=Recent Email Replies');
-    
+
     // If section exists, verify it has proper structure
     if (await recentRepliesSection.isVisible()) {
       await expect(recentRepliesSection).toBeVisible();
@@ -88,7 +91,7 @@ test.describe('Dashboard Page', () => {
   test('should have proper accessibility', async ({ page }) => {
     // Check for proper heading structure
     await expect(page.locator('h1')).toBeVisible();
-    
+
     // Check for alt text on images
     const logo = page.locator('img[alt="Total Audio Promo Logo"]');
     await expect(logo).toBeVisible();
@@ -98,7 +101,7 @@ test.describe('Dashboard Page', () => {
     // Test navigation to campaigns page
     await page.click('text=View Campaigns');
     await expect(page).toHaveURL(/.*campaigns/);
-    
+
     // Go back to dashboard
     await page.goto('/dashboard');
     await expect(page).toHaveURL(/.*dashboard/);
@@ -107,9 +110,9 @@ test.describe('Dashboard Page', () => {
   test('should display loading states appropriately', async ({ page }) => {
     // Check if loading indicators are present when needed
     const loadingElements = page.locator('text=...');
-    
+
     // Some stats might show loading state
     // This is expected behavior for dynamic data
     expect(await loadingElements.count()).toBeGreaterThanOrEqual(0);
   });
-}); 
+});

@@ -16,7 +16,7 @@ const path = require('path');
 const NOTION_PAGES = {
   WEEKLY_FOCUS: process.env.NOTION_WEEKLY_FOCUS_ID || '',
   AUDIO_INTEL_CONTEXT: process.env.NOTION_CONTEXT_ID || '',
-  BUSINESS_NOTES: process.env.NOTION_NOTES_ID || ''
+  BUSINESS_NOTES: process.env.NOTION_NOTES_ID || '',
 };
 
 const REPO_ROOT = '/Users/chrisschofield/workspace/active/total-audio-platform';
@@ -44,7 +44,7 @@ async function syncNotionDocs() {
         // Get page content
         const blocks = await notion.blocks.children.list({
           block_id: pageId,
-          page_size: 100
+          page_size: 100,
         });
 
         // Convert blocks to markdown
@@ -62,14 +62,12 @@ async function syncNotionDocs() {
 
         fs.writeFileSync(filePath, content, 'utf8');
         console.log(`✅ Synced ${docName} to ${fileName}`);
-
       } catch (error) {
         console.error(`❌ Failed to sync ${docName}:`, error.message);
       }
     }
 
     console.log('✅ Notion sync complete');
-
   } catch (error) {
     console.error('❌ Notion sync failed:', error.message);
     process.exit(1);
@@ -147,18 +145,20 @@ async function blockToMarkdown(block, notion) {
 function richTextToMarkdown(richText) {
   if (!richText || !richText.length) return '';
 
-  return richText.map(text => {
-    let content = text.plain_text;
+  return richText
+    .map(text => {
+      let content = text.plain_text;
 
-    if (text.annotations.bold) content = `**${content}**`;
-    if (text.annotations.italic) content = `*${content}*`;
-    if (text.annotations.code) content = `\`${content}\``;
-    if (text.annotations.strikethrough) content = `~~${content}~~`;
+      if (text.annotations.bold) content = `**${content}**`;
+      if (text.annotations.italic) content = `*${content}*`;
+      if (text.annotations.code) content = `\`${content}\``;
+      if (text.annotations.strikethrough) content = `~~${content}~~`;
 
-    if (text.href) content = `[${content}](${text.href})`;
+      if (text.href) content = `[${content}](${text.href})`;
 
-    return content;
-  }).join('');
+      return content;
+    })
+    .join('');
 }
 
 // Run sync

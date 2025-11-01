@@ -20,14 +20,17 @@ const hasCorrectImport = globalsContent.includes('@import "tailwindcss"');
 const hasThemeBlock = globalsContent.includes('@theme');
 
 // Check for incorrect v3 syntax
-const hasWrongImports = globalsContent.includes('@import "tailwindcss/base"') ||
-                        globalsContent.includes('@import "tailwindcss/components"') ||
-                        globalsContent.includes('@import "tailwindcss/utilities"');
+const hasWrongImports =
+  globalsContent.includes('@import "tailwindcss/base"') ||
+  globalsContent.includes('@import "tailwindcss/components"') ||
+  globalsContent.includes('@import "tailwindcss/utilities"');
 const hasLayerBase = globalsContent.includes('@layer base');
 
 if (!hasCorrectImport) {
   console.error('❌ ERROR: Missing "@import "tailwindcss";" in globals.css');
-  console.error('   This project uses Tailwind v4. See TAILWIND_V4_README.md\n');
+  console.error(
+    '   This project uses Tailwind v4. See TAILWIND_V4_README.md\n'
+  );
   process.exit(1);
 }
 

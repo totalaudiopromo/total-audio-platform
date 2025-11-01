@@ -8,6 +8,7 @@
 ## Current Setup
 
 Your repository has multiple apps:
+
 - `apps/audio-intel` → intel.totalaudiopromo.com
 - `apps/pitch-generator` → pitch.totalaudiopromo.com
 - `apps/web` → totalaudiopromo.com
@@ -33,6 +34,7 @@ Add these scripts to your root `package.json`:
 ```
 
 **Usage**:
+
 ```bash
 # Deploy specific app
 npm run deploy:web
@@ -156,6 +158,7 @@ cd ../tracker && vercel project
 Go to: GitHub repo → Settings → Secrets and variables → Actions
 
 Add these secrets:
+
 - `VERCEL_TOKEN` - Your Vercel token
 - `VERCEL_ORG_ID` - Your Vercel org ID
 - `VERCEL_WEB_PROJECT_ID` - Web project ID
@@ -208,10 +211,12 @@ cd ../pitch-generator && vercel --prod
 ## Why This Happens
 
 **Vercel's Default Behavior**:
+
 - Single-app repos: Auto-deploys on every push ✅
 - Monorepos: Requires configuration per project ❌
 
 **Your Setup**:
+
 - Monorepo with 10+ apps
 - Each app = separate Vercel project
 - Each needs explicit deployment trigger

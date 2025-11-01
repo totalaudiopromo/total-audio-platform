@@ -3,12 +3,14 @@
 ## Development Environment Setup
 
 ### **Prerequisites**
+
 - Node.js 18+ and npm
 - PostgreSQL 14+
 - Redis 6+
 - Git
 
 ### **Quick Start**
+
 ```bash
 # Clone repository
 git clone <repository-url>
@@ -30,7 +32,9 @@ npm run dev
 ```
 
 ### **Environment Variables**
+
 Copy `.env.example` to `.env` and configure:
+
 ```bash
 # Database
 DATABASE_URL="postgresql://username:password@localhost:5432/total_audio_promo"
@@ -73,6 +77,7 @@ total-audio-promo/
 ## Development Commands
 
 ### **Core Development**
+
 ```bash
 # Start all services
 npm run dev
@@ -85,6 +90,7 @@ npm run dev:mobile           # Mobile app
 ```
 
 ### **Building & Testing**
+
 ```bash
 # Build all applications
 npm run build
@@ -114,6 +120,7 @@ npm run lint:backend
 ```
 
 ### **Database Management**
+
 ```bash
 # Run migrations
 npm run db:migrate
@@ -129,6 +136,7 @@ npm run db:generate
 ```
 
 ### **AI Agents & Tools**
+
 ```bash
 # Setup AI agents
 npm run agents:setup
@@ -145,6 +153,7 @@ npm run agents:music-analyze
 ```
 
 ### **Maintenance**
+
 ```bash
 # Clean build artifacts
 npm run clean
@@ -162,6 +171,7 @@ npm run status
 ## Git Workflow
 
 ### **Branch Strategy**
+
 ```
 main                 # Production-ready code
 ├── develop         # Development integration branch
@@ -171,6 +181,7 @@ main                 # Production-ready code
 ```
 
 ### **Commit Convention**
+
 ```bash
 # Format: type(scope): description
 feat(campaigns): add email tracking functionality
@@ -181,6 +192,7 @@ test(integration): add Airtable sync tests
 ```
 
 ### **Pull Request Process**
+
 1. Create feature branch from `develop`
 2. Implement changes with tests
 3. Update documentation if needed
@@ -191,24 +203,28 @@ test(integration): add Airtable sync tests
 ## Code Standards
 
 ### **TypeScript Guidelines**
+
 - Use strict TypeScript configuration
 - Define interfaces for all data structures
 - Avoid `any` type usage
 - Use proper error handling with typed exceptions
 
 ### **React/Next.js Standards**
+
 - Use functional components with hooks
 - Implement proper error boundaries
 - Follow Next.js app router conventions
 - Use server components where appropriate
 
 ### **Backend Standards**
+
 - Use express.js with TypeScript
 - Implement proper middleware for auth and validation
 - Use Prisma for database operations
 - Follow REST API conventions
 
 ### **Styling Standards**
+
 - Use Tailwind CSS for all styling
 - Follow shadcn/ui component patterns
 - Maintain consistent design system
@@ -217,6 +233,7 @@ test(integration): add Airtable sync tests
 ## Testing Strategy
 
 ### **Unit Testing**
+
 ```bash
 # Run unit tests
 npm run test:unit
@@ -229,6 +246,7 @@ npm run test:watch
 ```
 
 ### **Integration Testing**
+
 ```bash
 # Test API endpoints
 npm run test:api
@@ -241,6 +259,7 @@ npm run test:integrations
 ```
 
 ### **End-to-End Testing**
+
 ```bash
 # Run Playwright tests
 npm run test:e2e
@@ -251,6 +270,7 @@ npm run test:e2e:campaigns
 ```
 
 ### **Testing Best Practices**
+
 - Write tests for all business logic
 - Mock external dependencies
 - Test error handling scenarios
@@ -259,6 +279,7 @@ npm run test:e2e:campaigns
 ## Database Development
 
 ### **Schema Changes**
+
 ```bash
 # Create new migration
 npx prisma migrate dev --name add_campaign_analytics
@@ -271,6 +292,7 @@ npx prisma studio
 ```
 
 ### **Seeding Development Data**
+
 ```bash
 # Seed with sample data
 npm run db:seed
@@ -280,6 +302,7 @@ npm run db:seed
 ```
 
 ### **Database Best Practices**
+
 - Always create migrations for schema changes
 - Use descriptive migration names
 - Test migrations on sample data
@@ -288,6 +311,7 @@ npm run db:seed
 ## API Development
 
 ### **Adding New Endpoints**
+
 1. Create route file in `apps/api/src/routes/`
 2. Implement controller logic
 3. Add authentication middleware
@@ -295,6 +319,7 @@ npm run db:seed
 5. Write tests for endpoints
 
 ### **Example Route Structure**
+
 ```typescript
 // apps/api/src/routes/campaigns.ts
 import { Router } from 'express';
@@ -313,6 +338,7 @@ export default router;
 ```
 
 ### **API Documentation**
+
 - Update OpenAPI specification
 - Include request/response examples
 - Document error scenarios
@@ -321,6 +347,7 @@ export default router;
 ## Integration Development
 
 ### **Adding New Integrations**
+
 1. Create service class in `apps/api/src/integrations/`
 2. Implement authentication and error handling
 3. Add configuration to environment variables
@@ -328,6 +355,7 @@ export default router;
 5. Test thoroughly with third-party service
 
 ### **Integration Template**
+
 ```typescript
 // apps/api/src/integrations/new-service.ts
 export class NewServiceIntegration {
@@ -350,18 +378,21 @@ export class NewServiceIntegration {
 ## Frontend Development
 
 ### **Component Development**
+
 - Use shadcn/ui components as base
 - Create custom components in `packages/shared/`
 - Follow atomic design principles
 - Implement proper loading and error states
 
 ### **State Management**
+
 - Use React Query for server state
 - Use React Context for global UI state
 - Minimize prop drilling
 - Implement optimistic updates where appropriate
 
 ### **Performance Optimization**
+
 - Use Next.js image optimization
 - Implement code splitting
 - Lazy load components when appropriate
@@ -370,6 +401,7 @@ export class NewServiceIntegration {
 ## Deployment Workflow
 
 ### **Development Deployment**
+
 ```bash
 # Build production bundles
 npm run build
@@ -382,6 +414,7 @@ npm run deploy:staging
 ```
 
 ### **Production Deployment**
+
 1. Create release branch from `develop`
 2. Update version numbers
 3. Test thoroughly in staging environment
@@ -390,13 +423,15 @@ npm run deploy:staging
 6. Rollback if issues detected
 
 ### **Environment Management**
+
 - **Development**: Local development environment
-- **Staging**: Pre-production testing environment  
+- **Staging**: Pre-production testing environment
 - **Production**: Live application environment
 
 ## Monitoring & Debugging
 
 ### **Logging**
+
 ```bash
 # View application logs
 tail -f logs/app.log
@@ -410,6 +445,7 @@ npm run logs:frontend
 ```
 
 ### **Health Checks**
+
 ```bash
 # Check service health
 curl http://localhost:3001/health
@@ -422,6 +458,7 @@ curl http://localhost:3001/health/integrations
 ```
 
 ### **Performance Monitoring**
+
 - Monitor API response times
 - Track database query performance
 - Monitor third-party integration latency
@@ -430,6 +467,7 @@ curl http://localhost:3001/health/integrations
 ## AI Agent Development
 
 ### **Agent Structure**
+
 ```typescript
 // tools/agents/example-agent.js
 class ExampleAgent {
@@ -448,6 +486,7 @@ class ExampleAgent {
 ```
 
 ### **Agent Orchestration**
+
 ```bash
 # Setup agents
 npm run agents:setup
@@ -464,6 +503,7 @@ npm run agents:health
 ### **Common Issues**
 
 #### **Database Connection**
+
 ```bash
 # Check PostgreSQL status
 pg_ctl status
@@ -473,6 +513,7 @@ npm run db:reset
 ```
 
 #### **Integration Failures**
+
 ```bash
 # Test individual integrations
 curl -X GET http://localhost:3001/api/integrations/test
@@ -482,6 +523,7 @@ echo $AIRTABLE_API_KEY
 ```
 
 #### **Build Failures**
+
 ```bash
 # Clear build cache
 npm run clean
@@ -492,6 +534,7 @@ npm install
 ```
 
 ### **Debug Mode**
+
 ```bash
 # Start with debug logging
 DEBUG=* npm run dev
@@ -505,13 +548,15 @@ DEBUG=app:* npm run dev:backend
 ## Quick Reference
 
 ### **Port Assignments**
+
 - **3000**: Audio Intel Live
-- **3001**: Playlist Pulse Live  
+- **3001**: Playlist Pulse Live
 - **3004**: Backend API
 - **5432**: PostgreSQL
 - **6379**: Redis
 
 ### **Key Directories**
+
 - `apps/api/src/routes/` - API endpoints
 - `apps/api/src/services/` - Business logic
 - `apps/api/prisma/` - Database schema
@@ -519,6 +564,7 @@ DEBUG=app:* npm run dev:backend
 - `tools/agents/` - AI agents
 
 ### **Development URLs**
+
 - **Audio Intel**: http://localhost:3000
 - **Playlist Pulse**: http://localhost:3001
 - **API**: http://localhost:3004

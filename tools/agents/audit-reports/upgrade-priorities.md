@@ -1,4 +1,5 @@
 # ANTHROPIC SDK UPGRADE PRIORITIES
+
 **Date**: 2 October 2025
 **Project**: Total Audio Platform Agent System
 
@@ -26,18 +27,21 @@
 ### 1. Contact Agent (`core-agents/technical/contact-agent.js`)
 
 **Current Status**:
+
 - ❌ **CRITICAL**: No streaming for enrichment progress
 - ❌ **HIGH**: No caching for UK contacts context (515 contacts)
 - ❌ **MEDIUM**: Manual enrichment flow instead of agentic loops
 - ℹ️ **INFO**: Perfect candidate for batch processing
 
 **Why Critical**:
+
 - Core Audio Intel feature (revenue-generating)
 - Customer-facing performance
 - Used in demo calls (customer acquisition)
 - High-volume operations (515 contacts)
 
 **Upgrade Benefits**:
+
 1. **Streaming**: Real-time progress for demo demonstrations
    - Show contact enrichment happening live
    - 40-60% faster perceived performance
@@ -60,6 +64,7 @@
    - Background processing for large uploads
 
 **Implementation Plan**:
+
 ```typescript
 // Before: Manual, no streaming, no caching
 async enrichContact(contactId) {
@@ -85,6 +90,7 @@ class ContactEnrichmentAgent extends StreamingAgent {
 ```
 
 **Expected Impact**:
+
 - **Performance**: 40-60% faster
 - **Cost**: 70-85% reduction
 - **Quality**: Better enrichment accuracy
@@ -98,18 +104,21 @@ class ContactEnrichmentAgent extends StreamingAgent {
 ### 2. Agent Manager (`core-agents/technical/agent-manager.js`)
 
 **Current Status**:
+
 - ❌ **CRITICAL**: No SDK health monitoring
 - ❌ **HIGH**: No cost tracking or cache hit rate visibility
 - ❌ **MEDIUM**: No centralized event system for agents
 - ⚠️ **LOW**: No performance benchmarking
 
 **Why Critical**:
+
 - Orchestrates all 40+ agents
 - System observability requirement
 - Cost control necessity (customer acquisition budget)
 - Foundation for Command Centre dashboard
 
 **Upgrade Benefits**:
+
 1. **SDK Health Checks**: System reliability
    - Monitor API connectivity
    - Track rate limits
@@ -132,6 +141,7 @@ class ContactEnrichmentAgent extends StreamingAgent {
    - A/B test improvements
 
 **Implementation Plan**:
+
 ```typescript
 class AgentManager {
   async checkSDKHealth() {
@@ -139,13 +149,13 @@ class AgentManager {
       this.checkStreamingCapability(),
       this.checkPromptCaching(),
       this.checkToolExecution(),
-      this.checkBatchProcessing()
+      this.checkBatchProcessing(),
     ]);
 
     return {
       status: checks.every(c => c.passed) ? 'healthy' : 'degraded',
       checks,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
   }
 
@@ -154,7 +164,7 @@ class AgentManager {
       currentMonth: this.calculateCurrentCosts(),
       cacheHitRate: this.calculateCacheHitRate(),
       projectedSavings: this.calculateCacheSavings(),
-      budgetStatus: this.checkBudgetLimits()
+      budgetStatus: this.checkBudgetLimits(),
     };
   }
 
@@ -167,6 +177,7 @@ class AgentManager {
 ```
 
 **Expected Impact**:
+
 - **Visibility**: Full system observability
 - **Cost Control**: 50-80% savings with caching
 - **Reliability**: Proactive health monitoring
@@ -179,18 +190,21 @@ class AgentManager {
 ### 3. Campaign Agent (`core-agents/radio-promo/campaign-agent.js`)
 
 **Current Status**:
+
 - ❌ **CRITICAL**: No streaming for campaign planning
 - ❌ **HIGH**: No caching for music industry context
 - ⚠️ **LOW**: Missing extended thinking for strategy
 - ❌ **MEDIUM**: Manual campaign workflow orchestration
 
 **Why Critical**:
+
 - Core Radio Promo feature
 - Used in Liberty Music PR workflow (beta customer)
 - Campaign planning is complex (needs thinking mode)
 - Customer-facing performance
 
 **Upgrade Benefits**:
+
 1. **Extended Thinking**: Better campaign strategies
    - Strategic radio targeting decisions
    - Genre-based playlist selection
@@ -212,6 +226,7 @@ class AgentManager {
    - Fewer manual steps, smarter automation
 
 **Implementation Plan**:
+
 ```typescript
 class CampaignAgent extends StreamingAgent {
   async planCampaign(artistName, genre, budget) {
@@ -221,16 +236,18 @@ class CampaignAgent extends StreamingAgent {
       max_tokens: 16000,
       thinking: {
         type: 'enabled',
-        budget_tokens: 10000
+        budget_tokens: 10000,
       },
       system: [
         CachedContextManager.getAudioIntelContext(),
-        CachedContextManager.getUKRadioLandscapeContext()
+        CachedContextManager.getUKRadioLandscapeContext(),
       ],
-      messages: [{
-        role: 'user',
-        content: `Plan radio campaign for ${artistName} (${genre}) with £${budget} budget`
-      }]
+      messages: [
+        {
+          role: 'user',
+          content: `Plan radio campaign for ${artistName} (${genre}) with £${budget} budget`,
+        },
+      ],
     });
 
     return this.parseCampaignPlan(response);
@@ -239,6 +256,7 @@ class CampaignAgent extends StreamingAgent {
 ```
 
 **Expected Impact**:
+
 - **Quality**: 30-50% better campaign strategies
 - **Speed**: 40-60% faster campaign creation
 - **Cost**: 60-80% reduction with caching
@@ -253,17 +271,20 @@ class CampaignAgent extends StreamingAgent {
 ### 4. Content Generation Agent (`core-agents/content/content-generation-agent.js`)
 
 **Upgrade Flags**:
+
 - ❌ **CRITICAL**: No streaming for long-form content
 - ❌ **HIGH**: No brand voice caching
 - ⚠️ **LOW**: Could benefit from thinking mode for creative strategy
 
 **Why High Priority**:
+
 - Customer acquisition content creation
 - Case study generation (BBC Radio 1, Spotify)
 - Blog post automation
 - Active use in content marketing
 
 **Upgrade Benefits**:
+
 - Stream content generation for better UX
 - Cache Total Audio brand voice guidelines
 - Extended thinking for content strategy
@@ -276,17 +297,20 @@ class CampaignAgent extends StreamingAgent {
 ### 5. Newsletter Automation Agent (`core-agents/content/newsletter-automation-agent.js`)
 
 **Upgrade Flags**:
+
 - ❌ **CRITICAL**: No streaming for newsletter generation
 - ❌ **HIGH**: No caching for "The Unsigned Advantage" format
 - ❌ **MEDIUM**: Manual content assembly vs agentic generation
 
 **Why High Priority**:
+
 - "The Unsigned Advantage" newsletter (active system)
 - Weekly automated distribution
 - Customer acquisition channel (25+ subscribers target)
 - Integration with ConvertKit
 
 **Upgrade Benefits**:
+
 - Real-time newsletter generation progress
 - Cache newsletter format and style guide
 - Agentic loops for content sourcing and assembly
@@ -299,17 +323,20 @@ class CampaignAgent extends StreamingAgent {
 ### 6. Audio Intel Content Agent (`core-agents/content/audio-intel-content-agent.js`)
 
 **Upgrade Flags**:
+
 - ❌ **CRITICAL**: No streaming
 - ❌ **HIGH**: No product context caching
 - ⚠️ **LOW**: Needs thinking mode for positioning
 
 **Why High Priority**:
+
 - Product-specific marketing content
 - Customer acquisition phase requirement
 - Demo scripts, landing page copy, email campaigns
 - Directly impacts conversion rates
 
 **Upgrade Benefits**:
+
 - Cache Audio Intel product context (pricing, features, benefits)
 - Extended thinking for competitive positioning
 - Streaming for rapid content iteration
@@ -321,17 +348,20 @@ class CampaignAgent extends StreamingAgent {
 ### 7. SaaS Marketing Agent (`core-agents/business/chris-saas-marketing-agent.js`)
 
 **Upgrade Flags**:
+
 - ❌ **HIGH**: No caching for customer acquisition strategies
 - ⚠️ **LOW**: Needs extended thinking for market analysis
 - ❌ **MEDIUM**: Manual campaign orchestration
 
 **Why High Priority**:
+
 - Customer acquisition phase
 - Target: First £500/month by November 2025
 - Radio promoter outreach (85% conversion rate)
 - Strategic marketing decisions
 
 **Upgrade Benefits**:
+
 - Extended thinking for customer acquisition strategy
 - Cache market positioning and competitive analysis
 - Agentic loops for multi-channel campaign execution
@@ -372,22 +402,27 @@ class CampaignAgent extends StreamingAgent {
 ## 🟢 LOW PRIORITY AGENTS
 
 ### Radio Promo Sub-Agents (7 agents)
+
 - Timeline: Week 7+ (as needed)
 - Benefit: Incremental improvements
 
 ### Analytics Agent
+
 - Timeline: Week 7+
 - Benefit: Better reporting with extended thinking
 
 ### Music Tech Agent
+
 - Timeline: Week 8+
 - Benefit: Low usage currently
 
 ### Integration Agent
+
 - Timeline: Week 8+
 - Benefit: Utility function, not customer-facing
 
 ### Archived TDD Agents
+
 - Timeline: Only if TDD workflow reactivated
 - Benefit: Historical reference
 
@@ -396,6 +431,7 @@ class CampaignAgent extends StreamingAgent {
 ## UPGRADE IMPLEMENTATION SEQUENCE
 
 ### Week 1: Critical Foundation
+
 1. ✅ Create `BaseStreamingAgent` class (Day 1-2)
 2. ✅ Create `CachedContextManager` (Day 1-2)
 3. ✅ Upgrade Contact Agent (Day 2-4)
@@ -407,6 +443,7 @@ class CampaignAgent extends StreamingAgent {
 ---
 
 ### Week 2: Campaign Intelligence
+
 1. ✅ Upgrade Campaign Agent (Day 1-3)
 2. ✅ Create `BatchContactProcessor` (Day 2-3)
 3. ✅ Integration testing (Day 4)
@@ -417,6 +454,7 @@ class CampaignAgent extends StreamingAgent {
 ---
 
 ### Week 3-4: Content Automation
+
 1. ✅ Upgrade Content Generation Agent (Week 3, Day 1-2)
 2. ✅ Upgrade Newsletter Automation Agent (Week 3, Day 3-4)
 3. ✅ Upgrade Audio Intel Content Agent (Week 4, Day 1-2)
@@ -428,6 +466,7 @@ class CampaignAgent extends StreamingAgent {
 ---
 
 ### Week 5: Integration & Monitoring
+
 1. ✅ Build Command Centre dashboard integration (Day 1-3)
 2. ✅ Implement cost monitoring UI (Day 2-3)
 3. ✅ Add real-time agent activity stream (Day 4)
@@ -438,6 +477,7 @@ class CampaignAgent extends StreamingAgent {
 ---
 
 ### Week 6+: Remaining Agents
+
 1. ✅ Upgrade medium priority agents (Week 6)
 2. ✅ Upgrade low priority agents as needed (Week 7-8)
 3. ✅ Documentation and training (Week 8)
@@ -450,22 +490,26 @@ class CampaignAgent extends StreamingAgent {
 ## SUCCESS METRICS
 
 ### Performance Metrics
+
 - ✅ 40-60% faster perceived performance (streaming)
 - ✅ <2s response time for cached queries
 - ✅ Real-time progress visibility in Command Centre
 
 ### Cost Metrics
+
 - ✅ 70-85% cost reduction on Contact Agent (prompt caching)
 - ✅ 50-80% overall cost reduction across all agents
 - ✅ 80%+ cache hit rate for repeated context
 - ✅ 50% batch processing savings
 
 ### Quality Metrics
+
 - ✅ 30-50% better campaign strategies (extended thinking)
 - ✅ Autonomous multi-step workflows (agentic loops)
 - ✅ Higher quality enrichment data
 
 ### Business Metrics
+
 - ✅ Better demo conversion rates (real-time enrichment)
 - ✅ Faster content production (customer acquisition)
 - ✅ Lower operational costs (API savings)
@@ -488,8 +532,8 @@ class CampaignAgent extends StreamingAgent {
    - Monitor for 24-48 hours
 
 3. **Rollback Triggers**
-   - >10% performance degradation
-   - >20% increase in errors
+   - > 10% performance degradation
+   - > 20% increase in errors
    - Any data integrity issues
    - Customer-facing failures
 

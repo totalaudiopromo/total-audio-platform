@@ -33,10 +33,7 @@ export async function POST(request: NextRequest) {
 
     if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
       console.error('[CRON] ❌ Unauthorized request');
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const platformResults: Record<string, any> = {};
@@ -136,9 +133,18 @@ export async function POST(request: NextRequest) {
 
     // Calculate totals
     const totals = {
-      posted: Object.values(platformResults).reduce((sum: number, r: any) => sum + (r.posted || 0), 0),
-      skipped: Object.values(platformResults).reduce((sum: number, r: any) => sum + (r.skipped || 0), 0),
-      failed: Object.values(platformResults).reduce((sum: number, r: any) => sum + (r.failed || 0), 0),
+      posted: Object.values(platformResults).reduce(
+        (sum: number, r: any) => sum + (r.posted || 0),
+        0
+      ),
+      skipped: Object.values(platformResults).reduce(
+        (sum: number, r: any) => sum + (r.skipped || 0),
+        0
+      ),
+      failed: Object.values(platformResults).reduce(
+        (sum: number, r: any) => sum + (r.failed || 0),
+        0
+      ),
     };
 
     console.log('[CRON] 📊 Total results:');
@@ -154,11 +160,10 @@ export async function POST(request: NextRequest) {
         platforms: Object.keys(platformResults),
         totals,
         platformResults,
-        errors: errors.length > 0 ? errors : undefined
+        errors: errors.length > 0 ? errors : undefined,
       },
       { status: 200 }
     );
-
   } catch (error) {
     console.error('[CRON] ❌ Error during autonomous posting:', error);
 
@@ -166,7 +171,7 @@ export async function POST(request: NextRequest) {
       {
         success: false,
         error: error instanceof Error ? error.message : 'Unknown error',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       },
       { status: 500 }
     );
@@ -186,7 +191,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(
       {
         error: 'Manual trigger only available in development',
-        hint: 'Use POST with proper authorization in production'
+        hint: 'Use POST with proper authorization in production',
       },
       { status: 403 }
     );

@@ -20,7 +20,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'magazine',
     focus: ['electronic', 'production', 'underground', 'tutorials'],
     quality: 'high',
-    description: 'Underground electronic music culture, production tutorials, and artist features'
+    description: 'Underground electronic music culture, production tutorials, and artist features',
   },
   {
     name: 'First Floor',
@@ -29,7 +29,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'newsletter',
     focus: ['electronic', 'culture', 'industry', 'underground'],
     quality: 'high',
-    description: 'Electronic music culture and industry insights by Shawn Reynaldo'
+    description: 'Electronic music culture and industry insights by Shawn Reynaldo',
   },
   {
     name: 'Sonic Academy',
@@ -38,7 +38,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'tutorial',
     focus: ['production', 'tutorials', 'electronic', 'techniques'],
     quality: 'high',
-    description: 'Production tutorials and techniques for electronic music'
+    description: 'Production tutorials and techniques for electronic music',
   },
   {
     name: 'Future Music',
@@ -47,7 +47,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'magazine',
     focus: ['production', 'gear', 'electronic', 'techniques'],
     quality: 'high',
-    description: 'Production tips, gear reviews, and electronic music techniques'
+    description: 'Production tips, gear reviews, and electronic music techniques',
   },
   {
     name: 'Computer Music',
@@ -56,7 +56,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'magazine',
     focus: ['software', 'production', 'electronic', 'tutorials'],
     quality: 'high',
-    description: 'Software and production techniques for computer-based music'
+    description: 'Software and production techniques for computer-based music',
   },
   {
     name: 'Sound on Sound',
@@ -65,7 +65,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'magazine',
     focus: ['production', 'professional', 'techniques', 'gear'],
     quality: 'high',
-    description: 'Professional production insights and techniques'
+    description: 'Professional production insights and techniques',
   },
 
   // Independent Artist Business
@@ -76,7 +76,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'blog',
     focus: ['independent', 'business', 'marketing', 'technology'],
     quality: 'high',
-    description: 'Music industry news and insights for independent artists'
+    description: 'Music industry news and insights for independent artists',
   },
   {
     name: 'Music Ally',
@@ -85,7 +85,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'blog',
     focus: ['digital', 'business', 'streaming', 'technology'],
     quality: 'high',
-    description: 'Digital music business insights and analysis'
+    description: 'Digital music business insights and analysis',
   },
   {
     name: 'Water & Music',
@@ -94,7 +94,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'newsletter',
     focus: ['technology', 'culture', 'business', 'innovation'],
     quality: 'high',
-    description: 'Music tech and culture intersection by Cherie Hu'
+    description: 'Music tech and culture intersection by Cherie Hu',
   },
   {
     name: 'Platform & Stream',
@@ -103,7 +103,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'newsletter',
     focus: ['streaming', 'business', 'platforms', 'monetization'],
     quality: 'high',
-    description: 'Music streaming business and platform updates'
+    description: 'Music streaming business and platform updates',
   },
 
   // Underground & Independent Focus
@@ -114,7 +114,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'blog',
     focus: ['electronic', 'underground', 'events', 'culture'],
     quality: 'high',
-    description: 'Underground electronic music culture and events'
+    description: 'Underground electronic music culture and events',
   },
   {
     name: 'Mixmag',
@@ -123,7 +123,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'magazine',
     focus: ['electronic', 'culture', 'events', 'artists'],
     quality: 'medium',
-    description: 'Electronic music culture and artist features'
+    description: 'Electronic music culture and artist features',
   },
   {
     name: 'DJ Mag',
@@ -132,7 +132,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'magazine',
     focus: ['electronic', 'djs', 'events', 'culture'],
     quality: 'medium',
-    description: 'Electronic music and DJ culture'
+    description: 'Electronic music and DJ culture',
   },
 
   // UK Music Scene (for your audience)
@@ -143,7 +143,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'blog',
     focus: ['alternative', 'underground', 'culture', 'uk'],
     quality: 'high',
-    description: 'Alternative and underground music culture'
+    description: 'Alternative and underground music culture',
   },
   {
     name: 'Drowned in Sound',
@@ -152,7 +152,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'blog',
     focus: ['alternative', 'indie', 'culture', 'uk'],
     quality: 'medium',
-    description: 'Alternative and indie music culture'
+    description: 'Alternative and indie music culture',
   },
 
   // Reputable Mainstream Sources
@@ -163,7 +163,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'newsletter',
     focus: ['uk', 'mainstream', 'culture', 'business'],
     quality: 'high',
-    description: 'BBC Music news and culture coverage'
+    description: 'BBC Music news and culture coverage',
   },
   {
     name: 'BBC News - Entertainment',
@@ -172,7 +172,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'newsletter',
     focus: ['uk', 'mainstream', 'entertainment', 'business'],
     quality: 'high',
-    description: 'BBC Entertainment news including music industry'
+    description: 'BBC Entertainment news including music industry',
   },
   {
     name: 'The Guardian Music',
@@ -181,7 +181,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'blog',
     focus: ['uk', 'mainstream', 'culture', 'business'],
     quality: 'high',
-    description: 'The Guardian music section with industry coverage'
+    description: 'The Guardian music section with industry coverage',
   },
   {
     name: 'NME',
@@ -190,7 +190,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'magazine',
     focus: ['uk', 'mainstream', 'culture', 'indie'],
     quality: 'high',
-    description: 'New Musical Express - UK music magazine'
+    description: 'New Musical Express - UK music magazine',
   },
 
   // Independent Music Business
@@ -201,7 +201,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'blog',
     focus: ['independent', 'business', 'uk', 'industry'],
     quality: 'high',
-    description: 'Independent music business news and insights'
+    description: 'Independent music business news and insights',
   },
   {
     name: 'Music Business Worldwide',
@@ -210,7 +210,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'blog',
     focus: ['business', 'industry', 'streaming', 'technology'],
     quality: 'high',
-    description: 'Music industry business news and analysis'
+    description: 'Music industry business news and analysis',
   },
   {
     name: 'Complete Music Update',
@@ -219,7 +219,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'blog',
     focus: ['uk', 'business', 'industry', 'independent'],
     quality: 'high',
-    description: 'UK music industry news and updates'
+    description: 'UK music industry news and updates',
   },
 
   // AI & Technology (focused on empowerment)
@@ -230,7 +230,7 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'blog',
     focus: ['ai', 'technology', 'digital', 'innovation'],
     quality: 'high',
-    description: 'Music technology and AI insights for the industry'
+    description: 'Music technology and AI insights for the industry',
   },
   {
     name: 'Synthtopia',
@@ -239,8 +239,8 @@ export const UNDERGROUND_MUSIC_SOURCES: MusicSource[] = [
     type: 'blog',
     focus: ['technology', 'production', 'ai', 'innovation'],
     quality: 'high',
-    description: 'Music technology and synthesis news'
-  }
+    description: 'Music technology and synthesis news',
+  },
 ];
 
 // Content categories for filtering
@@ -250,44 +250,42 @@ export const CONTENT_CATEGORIES = {
   CULTURE: ['culture', 'underground', 'alternative', 'electronic', 'indie'],
   TECHNOLOGY: ['technology', 'innovation', 'digital', 'ai', 'platforms'],
   AI_EMPOWERMENT: ['ai', 'automation', 'marketing', 'tools', 'empowerment', 'independent'],
-  EVENTS: ['events', 'festivals', 'shows', 'releases', 'artists']
+  EVENTS: ['events', 'festivals', 'shows', 'releases', 'artists'],
 };
 
 // Quality scoring for content
 export const QUALITY_SCORES = {
-  'high': 100,
-  'medium': 75,
-  'underground': 90
+  high: 100,
+  medium: 75,
+  underground: 90,
 };
 
 // Get sources by focus area
 export function getSourcesByFocus(focus: string[]): MusicSource[] {
-  return UNDERGROUND_MUSIC_SOURCES.filter(source => 
-    focus.some(f => source.focus.includes(f))
-  );
+  return UNDERGROUND_MUSIC_SOURCES.filter(source => focus.some(f => source.focus.includes(f)));
 }
 
 // Get high-quality sources only
 export function getHighQualitySources(): MusicSource[] {
-  return UNDERGROUND_MUSIC_SOURCES.filter(source => 
-    source.quality === 'high'
-  );
+  return UNDERGROUND_MUSIC_SOURCES.filter(source => source.quality === 'high');
 }
 
 // Get sources for independent artists
 export function getIndependentArtistSources(): MusicSource[] {
-  return UNDERGROUND_MUSIC_SOURCES.filter(source => 
-    source.focus.includes('independent') || 
-    source.focus.includes('business') ||
-    source.focus.includes('marketing')
+  return UNDERGROUND_MUSIC_SOURCES.filter(
+    source =>
+      source.focus.includes('independent') ||
+      source.focus.includes('business') ||
+      source.focus.includes('marketing')
   );
 }
 
 // Get electronic music sources
 export function getElectronicMusicSources(): MusicSource[] {
-  return UNDERGROUND_MUSIC_SOURCES.filter(source => 
-    source.focus.includes('electronic') || 
-    source.focus.includes('production') ||
-    source.focus.includes('underground')
+  return UNDERGROUND_MUSIC_SOURCES.filter(
+    source =>
+      source.focus.includes('electronic') ||
+      source.focus.includes('production') ||
+      source.focus.includes('underground')
   );
 }

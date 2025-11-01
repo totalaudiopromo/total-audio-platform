@@ -20,7 +20,7 @@ This directory contains agents that are **dormant** - complete implementations t
 These agents are:
 
 - ✅ **Complete implementations** - Fully functional code
-- ❌ **Not orchestrator-integrated** - Not called by main workflows  
+- ❌ **Not orchestrator-integrated** - Not called by main workflows
 - ❌ **No system references** - Not used by other agents
 - 🔒 **Available for reactivation** - Can be moved back to active when needed
 
@@ -40,7 +40,7 @@ To reactivate a parked agent:
    // Uncomment the require and instantiation
    const AgentName = require('./agent-name');
    // Add to agents object
-   agentName: new AgentName()
+   agentName: new AgentName();
    ```
 
 3. **Test integration**:

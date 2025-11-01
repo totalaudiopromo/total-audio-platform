@@ -182,7 +182,7 @@ class GoogleCalendarMCP {
     }));
 
     // Handle tool calls
-    this.server.setRequestHandler('tools/call', async (request) => {
+    this.server.setRequestHandler('tools/call', async request => {
       const { name, arguments: args } = request.params;
 
       try {
@@ -221,7 +221,7 @@ class GoogleCalendarMCP {
                 dateTime: args.end,
                 timeZone: 'Europe/London',
               },
-              attendees: args.attendees?.map((email) => ({ email })),
+              attendees: args.attendees?.map(email => ({ email })),
               reminders: {
                 useDefault: false,
                 overrides: [
@@ -256,7 +256,9 @@ class GoogleCalendarMCP {
               ...event.data,
               summary: args.summary || event.data.summary,
               description: args.description || event.data.description,
-              start: args.start ? { dateTime: args.start, timeZone: 'Europe/London' } : event.data.start,
+              start: args.start
+                ? { dateTime: args.start, timeZone: 'Europe/London' }
+                : event.data.start,
               end: args.end ? { dateTime: args.end, timeZone: 'Europe/London' } : event.data.end,
             };
 

@@ -3,6 +3,7 @@
 ## VERIFIED FACTS ONLY (Never Invent Details):
 
 ### Professional Background:
+
 - 5+ years in radio promotion (NOT 10+ years)
 - Electronic music producer under the name **sadact**
 - Has pitched tracks to BBC Radio 1
@@ -11,11 +12,13 @@
 - Does NOT make commercial music - makes underground electronic music
 
 ### Experience:
+
 - Radio promotion experience: BBC Radio 1, independent radio
 - Industry role: Real insider, not content marketer or corporate speaker
 - Technical expertise: Contact research, database organisation, music promotion workflows
 
 ### Writing Voice:
+
 - British casual-professional tone
 - Direct, no BS approach
 - Uses phrases: "Right, so", "Here's the thing", "The reality is", "Your move"
@@ -25,6 +28,7 @@
 ## STRICT RULES FOR AI CONTENT GENERATION:
 
 ### ✗ NEVER INVENT:
+
 - Specific artists you like or work with
 - Specific tracks you've made or referenced
 - Specific tools/plugins/hardware you use
@@ -34,6 +38,7 @@
 - Producer names (Fred Again, etc) as personal examples
 
 ### ✓ SAFE TO REFERENCE:
+
 - "After 5+ years in radio promotion"
 - "Building Audio Intel taught me"
 - "When pitching to BBC Radio 1"
@@ -42,6 +47,7 @@
 - Generic industry patterns (no specific names)
 
 ### Tone Rules:
+
 ✓ British spelling (organised, whilst, realise)
 ✓ Conversational and direct
 ✓ Industry credibility from actual experience
@@ -57,12 +63,14 @@
 ## Newsletter Framework - "The Unsigned Advantage":
 
 ### Structure (150-200 words):
+
 1. **HOOK** (1-2 sentences): What happened this week (natural, conversational)
 2. **THE UNSIGNED ADVANTAGE** (2-3 sentences): Why this specific news benefits independent artists over major label artists
 3. **ACTIONABLE STEP** (1-2 sentences): Specific action they can take this week (30min-2hr commitment)
 4. **AUDIO INTEL MENTION** (optional): Only if genuinely relevant to contact research/organisation
 
 ### Key Principles:
+
 - Connect industry news to tangible indie advantages
 - Provide specific actions (not vague advice)
 - Stay true to underground/independent artist perspective
@@ -76,6 +84,7 @@
 - "So [news story] just dropped, and the reality is this creates an opening for indies who move fast..."
 
 ## Topics Chris Actually Cares About:
+
 - Independent artist empowerment vs major label control
 - Practical promotion strategies (not theory)
 - Contact research and relationship building

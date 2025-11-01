@@ -31,9 +31,12 @@ const LIBERTY_CAMPAIGNS = [
     genre: 'Rock',
     budget: 50000,
     status: 'active',
-    description: 'Major album re-release campaign targeting BBC Radio 1, Radio X, Kerrang! Focus on deluxe edition with bonus tracks and exclusive vinyl.',
-    goals: 'Radio airplay on BBC Radio 1 Rock Show, Kerrang! Radio A-list, Festival bookings for 2026 season',
-    notes: 'Band has strong existing relationship with BBC Radio 1. Target Annie Mac, Daniel P Carter shows. Vinyl pre-orders already exceeding expectations.',
+    description:
+      'Major album re-release campaign targeting BBC Radio 1, Radio X, Kerrang! Focus on deluxe edition with bonus tracks and exclusive vinyl.',
+    goals:
+      'Radio airplay on BBC Radio 1 Rock Show, Kerrang! Radio A-list, Festival bookings for 2026 season',
+    notes:
+      'Band has strong existing relationship with BBC Radio 1. Target Annie Mac, Daniel P Carter shows. Vinyl pre-orders already exceeding expectations.',
   },
 
   // ARCHITECTS - Festival Circuit
@@ -48,9 +51,12 @@ const LIBERTY_CAMPAIGNS = [
     genre: 'Metalcore',
     budget: 35000,
     status: 'active',
-    description: 'Festival season promotional campaign. Target: Download, Slam Dunk, 2000trees, Reading & Leeds. Radio push for new single "Gravity".',
-    goals: 'Secure headline slots at 3+ major festivals, BBC Radio 1 Rock Show rotation, Kerrang! cover feature',
-    notes: 'Band touring EU April-May. UK festival circuit June-Aug. New single drops April 1st. Strong Spotify editorial support confirmed.',
+    description:
+      'Festival season promotional campaign. Target: Download, Slam Dunk, 2000trees, Reading & Leeds. Radio push for new single "Gravity".',
+    goals:
+      'Secure headline slots at 3+ major festivals, BBC Radio 1 Rock Show rotation, Kerrang! cover feature',
+    notes:
+      'Band touring EU April-May. UK festival circuit June-Aug. New single drops April 1st. Strong Spotify editorial support confirmed.',
   },
 
   // ROLO TOMASSI - Underground Push
@@ -65,9 +71,12 @@ const LIBERTY_CAMPAIGNS = [
     genre: 'Mathcore/Experimental',
     budget: 18000,
     status: 'planning',
-    description: 'Deluxe re-issue with live recordings. Target BBC Radio 6 Music, specialist metal shows, DIY/underground press. Focus on vinyl collectors and core fanbase.',
-    goals: 'BBC Radio 6 Music daytime play, Quietus/Wire Magazine features, ArcTanGent festival headline slot',
-    notes: 'Band has cult following. Focus on tastemaker press over mainstream radio. Strong Bandcamp presence. Previous album critically acclaimed.',
+    description:
+      'Deluxe re-issue with live recordings. Target BBC Radio 6 Music, specialist metal shows, DIY/underground press. Focus on vinyl collectors and core fanbase.',
+    goals:
+      'BBC Radio 6 Music daytime play, Quietus/Wire Magazine features, ArcTanGent festival headline slot',
+    notes:
+      'Band has cult following. Focus on tastemaker press over mainstream radio. Strong Bandcamp presence. Previous album critically acclaimed.',
   },
 
   // ROYAL BLOOD - Single Campaign
@@ -82,9 +91,11 @@ const LIBERTY_CAMPAIGNS = [
     genre: 'Rock',
     budget: 15000,
     status: 'completed',
-    description: 'Lead single from deluxe album. Radio1 priority, targeting A-list rotation. Spotify UK Rock playlist confirmed.',
+    description:
+      'Lead single from deluxe album. Radio1 priority, targeting A-list rotation. Spotify UK Rock playlist confirmed.',
     goals: 'BBC Radio 1 A-list, Radio X Power Play, 1M Spotify streams in first week',
-    notes: 'COMPLETED: Achieved Radio 1 B-list (targeting A-list upgrade), 850K Spotify streams week 1, strong playlist adds across DSPs.',
+    notes:
+      'COMPLETED: Achieved Radio 1 B-list (targeting A-list upgrade), 850K Spotify streams week 1, strong playlist adds across DSPs.',
   },
 
   // ARCHITECTS - Podcast Tour
@@ -99,9 +110,12 @@ const LIBERTY_CAMPAIGNS = [
     genre: 'Metalcore',
     budget: 8000,
     status: 'active',
-    description: 'Pre-festival podcast tour. Target: Kerrang! Podcast, BBC Radio 1 Rock Show interviews, Rock Sound podcast series.',
-    goals: 'Minimum 5 major podcast features, build pre-festival hype, promote new single and tour dates',
-    notes: 'Band available for remote interviews March 1-31. Looking for authentic, long-form conversation format over quick promo spots.',
+    description:
+      'Pre-festival podcast tour. Target: Kerrang! Podcast, BBC Radio 1 Rock Show interviews, Rock Sound podcast series.',
+    goals:
+      'Minimum 5 major podcast features, build pre-festival hype, promote new single and tour dates',
+    notes:
+      'Band available for remote interviews March 1-31. Looking for authentic, long-form conversation format over quick promo spots.',
   },
 ];
 
@@ -113,7 +127,8 @@ const DEMO_CONTACTS = [
     platform: 'BBC Radio 1 Rock Show',
     role: 'Presenter',
     company: 'BBC',
-    notes: 'Royal Blood contact - strong existing relationship. Loves heavy rock, open to Architects features.',
+    notes:
+      'Royal Blood contact - strong existing relationship. Loves heavy rock, open to Architects features.',
   },
   {
     name: 'Jack Saunders',
@@ -212,7 +227,9 @@ async function createDemoData() {
     if (error) {
       console.error(`  ❌ Failed to create campaign: ${campaign.release_title}`, error.message);
     } else {
-      console.log(`  ✅ Created: ${campaign.artist_name} - ${campaign.release_title} (${campaign.status})`);
+      console.log(
+        `  ✅ Created: ${campaign.artist_name} - ${campaign.release_title} (${campaign.status})`
+      );
     }
   }
 
@@ -243,7 +260,7 @@ async function createDemoData() {
   console.log('🔗 View at: http://localhost:3001/dashboard');
   console.log('📊 Team page: http://localhost:3001/dashboard/team');
   console.log('\n📝 Business Context:');
-  console.log('   - Liberty Music PR = Dan\'s PR AGENCY (the company)');
+  console.log("   - Liberty Music PR = Dan's PR AGENCY (the company)");
   console.log('   - Royal Blood, Architects, Rolo Tomassi = Their CLIENTS (bands)');
   console.log('   - Shows how Liberty manages multiple band clients');
   console.log('\n📝 Demo talking points for Dan:');
@@ -258,7 +275,7 @@ async function createDemoData() {
 // Run the script
 createDemoData()
   .then(() => process.exit(0))
-  .catch((error) => {
+  .catch(error => {
     console.error('💥 Error creating demo data:', error);
     process.exit(1);
   });

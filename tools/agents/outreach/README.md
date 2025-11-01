@@ -28,9 +28,11 @@ cat cold-email-template.md
 ## 📁 Files in This System
 
 ### 1. `free-email-scraper.js`
+
 Main orchestration tool - manages Hunter.io, Snov.io, LinkedIn workflow
 
 **Commands:**
+
 ```bash
 node free-email-scraper.js workflow     # Show complete workflow
 node free-email-scraper.js example      # Generate example prospect file
@@ -41,9 +43,11 @@ node free-email-scraper.js stats        # Show free tier usage
 ```
 
 ### 2. `google-maps-scraper.js`
+
 Scrapes radio promoter companies from Google Maps
 
 **Commands:**
+
 ```bash
 node google-maps-scraper.js workflow    # Complete workflow
 node google-maps-scraper.js quick       # Quick start (5 min)
@@ -53,17 +57,21 @@ node google-maps-scraper.js queries     # Show recommended searches
 ```
 
 ### 3. `cold-email-template.md`
+
 5 proven email templates with 85% conversion rate
 
 **Best performers:**
+
 - Template 1: BBC Radio 1 story (85% conversion)
 - Template 2: Time savings focus (78% conversion)
 - Template 4: Mutual pain point (72% conversion)
 
 ### 4. `complete-workflow.sh`
+
 Interactive guide - walks through entire process
 
 **Usage:**
+
 ```bash
 chmod +x complete-workflow.sh
 ./complete-workflow.sh
@@ -74,20 +82,25 @@ chmod +x complete-workflow.sh
 ## 🆓 Free Tools Used
 
 ### Email Finding
+
 - **Hunter.io** - 25 searches/month (free)
 - **Snov.io** - 50 credits/month (free)
 
 ### Scraping
+
 - **Google Maps** - Unlimited (free)
 - **Puppeteer MCP** - Browser automation (free, via Claude Code)
 
 ### Verification
+
 - **LinkedIn** - Manual verification (free)
 
 ### Enrichment
+
 - **Audio Intel** - Your existing contact enrichment tool (free for your use)
 
 ### Sending
+
 - **Gmail** - Manual sending (free, <20 emails)
 - **Mailchimp** - 500 emails/month free tier
 - **Your existing Gmail Autopilot** - Auto-sorting and tracking
@@ -96,34 +109,38 @@ chmod +x complete-workflow.sh
 
 ## 📊 Expected Results (50 Emails)
 
-| Metric | Rate | Count |
-|--------|------|-------|
-| Open rate | 65% | 32 opens |
-| Click rate | 45% | 22 clicks |
-| Demo bookings | 85% | 42 demos |
-| Close rate | 10% | 4 customers |
-| **Monthly revenue** | - | **£76/month** |
+| Metric              | Rate | Count         |
+| ------------------- | ---- | ------------- |
+| Open rate           | 65%  | 32 opens      |
+| Click rate          | 45%  | 22 clicks     |
+| Demo bookings       | 85%  | 42 demos      |
+| Close rate          | 10%  | 4 customers   |
+| **Monthly revenue** | -    | **£76/month** |
 
 ---
 
 ## 🎯 Week-by-Week Plan
 
 ### Week 1: Scraping (1 hour)
+
 - Google Maps: "radio promotion UK"
 - Target: 100+ companies with websites
 - Save to: `data/google-maps-raw.json`
 
 ### Week 2: Email Finding (1 hour)
+
 - Hunter.io: 25 emails
 - Snov.io: 25 emails
 - Total: 50 qualified emails
 
 ### Week 3: Verification (30 mins)
+
 - LinkedIn: Verify each contact
 - Confirm they're real radio promoters
 - Discard non-relevant (target: 80% valid)
 
 ### Week 4: Send Emails (30 mins)
+
 - Use Template 1 (BBC Radio 1 story)
 - Personalise: first name, company name
 - Send via Gmail or Mailchimp
@@ -161,11 +178,13 @@ chmod +x complete-workflow.sh
 Once you have 2-3 paying customers (£38-57/month):
 
 ### Invest in Hunter.io Starter (£34/month)
+
 - 500 email searches/month
 - Find 10x more prospects
 - Scale to £500/month revenue
 
 ### Or Use Apollo.io Free
+
 - Set up custom domain email (chris@totalaudiopromo.com)
 - Get 10,000 emails/month for free
 - No paid plan needed
@@ -201,21 +220,25 @@ tools/agents/outreach/
 ## 🆘 Troubleshooting
 
 ### "Can't find enough emails"
+
 → Use both Hunter.io AND Snov.io (different databases)
 → Manually check company websites for contact pages
 → LinkedIn: Message directly for email
 
 ### "Low open rates"
+
 → Use Template 1 subject line: "How I researched BBC Radio 1 contacts in 15 minutes"
 → Send Tuesday-Thursday 9-11am (best open times)
 → Avoid weekends
 
 ### "No demo bookings"
+
 → Re-read Template 1 (85% conversion proven)
 → Check personalisation (first name, company name)
 → Add LinkedIn verification step (they need to be REAL promoters)
 
 ### "Not sure if it's working"
+
 → Test with 10 emails first
 → Track: opens, clicks, replies
 → Optimize before scaling to 50

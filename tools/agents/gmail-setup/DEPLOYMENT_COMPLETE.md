@@ -5,6 +5,7 @@
 ### Gmail - COMPLETE ✅
 
 **Filters Deployed:** 9 precise filters active
+
 - ✅ Otter AI → Personal Tools/Otter AI
 - ✅ Gemini → Personal Tools/Gemini
 - ✅ WARM → Marketing Junk/WARM (archived + marked read)
@@ -16,12 +17,14 @@
 - ✅ Internal Liberty → Internal Team
 
 **Bulk Fix Complete:** 116 emails re-labeled
+
 - 🦦 35 Otter AI emails moved to correct location
 - 🤖 3 Gemini emails moved to correct location
 - 📧 76 WARM emails archived to Marketing Junk
 - 🧹 2 emails removed from Station Feedback
 
 **Autopilot Active:** Runs every hour
+
 - ✅ Cron job installed
 - ✅ Will maintain organization automatically
 - ✅ Logs to: `autopilot.log`
@@ -32,12 +35,14 @@
 The Drive sync script is ready but needs Drive API permissions added to OAuth tokens.
 
 **To enable Drive sync:**
+
 ```bash
 # Use Google Drive MCP instead (already connected)
 # Or regenerate OAuth tokens with Drive scope
 ```
 
 The folder structure is designed and ready:
+
 - 🟢 Liberty Music PR/Active Campaigns
 - 🟠 Liberty Music PR/Station Feedback & Assets
 - 🔵 Liberty Music PR/Needs Action
@@ -53,12 +58,14 @@ The folder structure is designed and ready:
 The Calendar sync script is ready but needs Calendar API permissions added to OAuth tokens.
 
 **To enable Calendar sync:**
+
 ```bash
 # Regenerate OAuth tokens with Calendar scope
 # Or use Google Calendar MCP if available
 ```
 
 The calendar structure is designed and ready:
+
 - 🔴 Liberty - Campaign Deadlines
 - 🟠 Liberty - Station Follow-ups
 - 🔵 Liberty - Action Items
@@ -69,6 +76,7 @@ The calendar structure is designed and ready:
 ### In Gmail (WORKING NOW)
 
 1. **Open Gmail sidebar** - You'll see new label structure:
+
    ```
    Liberty/
      Active Campaigns
@@ -122,6 +130,7 @@ crontab -l | grep liberty-autopilot
 ```
 
 The autopilot checks every hour for:
+
 - New Otter AI emails
 - New Gemini emails
 - New WARM/Machina emails
@@ -132,6 +141,7 @@ The autopilot checks every hour for:
 ## 📊 Before vs After
 
 ### BEFORE (Your Screenshot):
+
 - ❌ Otter AI in "Station Feedback"
 - ❌ WARM Mutual in "Station Feedback"
 - ❌ Machina Account in "Station Feedback"
@@ -139,6 +149,7 @@ The autopilot checks every hour for:
 - ❌ No organization maintenance
 
 ### AFTER (Now):
+
 - ✅ Otter AI in "Personal Tools/Otter AI"
 - ✅ WARM in "Marketing Junk/WARM" (archived)
 - ✅ Machina in "Marketing Junk/Machina" (archived)
@@ -148,6 +159,7 @@ The autopilot checks every hour for:
 ## 🔧 Commands Reference
 
 ### Gmail Management
+
 ```bash
 # Test current setup
 node liberty-gmail-fix.js test
@@ -163,6 +175,7 @@ node liberty-bulk-fix.js --dry-run
 ```
 
 ### Autopilot
+
 ```bash
 # Test autopilot
 node liberty-autopilot.js test
@@ -178,6 +191,7 @@ tail -20 autopilot.log
 ```
 
 ### Drive & Calendar (When OAuth Extended)
+
 ```bash
 # Setup Drive folders
 node liberty-drive-sync.js setup
@@ -193,6 +207,7 @@ node liberty-calendar-sync.js setup
 ## 🎨 Color System (When Drive/Calendar Active)
 
 Consistent across all Google apps:
+
 - 🟢 **Green** - Active work
 - 🟠 **Orange** - Station feedback/follow-ups
 - 🔵 **Blue** - Needs action (urgent)
@@ -204,11 +219,13 @@ Consistent across all Google apps:
 ## 📝 Next Steps (Optional)
 
 ### For Drive Color Sync
+
 1. Option A: Extend OAuth tokens with Drive scope
 2. Option B: Use Google Drive MCP (already connected) to manually create folders
 3. Option C: Create folders manually in Drive and apply colors
 
 ### For Calendar Sync
+
 1. Option A: Extend OAuth tokens with Calendar scope
 2. Option B: Create calendars manually in Google Calendar
 
@@ -236,6 +253,7 @@ label:station-feedback
 ## 🌙 Overnight Behavior
 
 **Tonight and every night:**
+
 - Top of every hour: Autopilot runs
 - Checks last 2 hours of emails
 - Applies correct labels to new emails
@@ -254,6 +272,7 @@ label:station-feedback
 5. ✅ **Real testing** - Used your actual inbox patterns
 
 The key was the REAL Station Feedback filter:
+
 ```
 to:chrisschofield@libertymusicpr.com
 (subject:Re: OR subject:Fwd:)
@@ -274,12 +293,14 @@ This catches ONLY genuine station responses about campaigns.
 ## ✅ Summary
 
 **WORKING NOW:**
+
 - ✅ Gmail completely organized (116 emails fixed)
 - ✅ 9 precise filters active
 - ✅ Hourly autopilot maintaining everything
 - ✅ No more Otter/WARM/Machina in Station Feedback
 
 **READY FOR LATER:**
+
 - ⚠️ Drive sync (needs OAuth scope)
 - ⚠️ Calendar sync (needs OAuth scope)
 - 💡 Can use MCP servers as alternative
@@ -288,5 +309,5 @@ This catches ONLY genuine station responses about campaigns.
 
 ---
 
-*Deployed: 30 September 2025, 22:10*
-*Unlike CC, this actually worked on the first try.*
+_Deployed: 30 September 2025, 22:10_
+_Unlike CC, this actually worked on the first try._

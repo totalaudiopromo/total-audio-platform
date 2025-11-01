@@ -13,7 +13,9 @@ const path = require('path');
 require('dotenv').config({ path: '.env.local' });
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseServiceKey =
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseServiceKey) {
   console.error('❌ Missing Supabase credentials in .env.local');
@@ -26,7 +28,10 @@ const supabase = createClient(supabaseUrl, supabaseServiceKey);
 async function applyMigration() {
   try {
     console.log('📖 Reading migration file...');
-    const migrationPath = path.join(__dirname, '../supabase/migrations/013_integrations_system.sql');
+    const migrationPath = path.join(
+      __dirname,
+      '../supabase/migrations/013_integrations_system.sql'
+    );
     const sql = fs.readFileSync(migrationPath, 'utf8');
 
     console.log('🚀 Applying migration to Supabase...');
@@ -48,7 +53,7 @@ async function applyMigration() {
         console.log(`  Executing: ${statement.substring(0, 60)}...`);
         const { error: stmtError } = await supabase.from('_migrations').insert({
           name: '013_integrations_system',
-          sql: statement
+          sql: statement,
         });
 
         if (stmtError && !stmtError.message.includes('already exists')) {
@@ -65,7 +70,7 @@ async function applyMigration() {
       'integration_connections',
       'integration_sync_logs',
       'integration_field_mappings',
-      'gmail_tracked_emails'
+      'gmail_tracked_emails',
     ];
 
     for (const table of tables) {
@@ -78,7 +83,6 @@ async function applyMigration() {
     }
 
     console.log('\n🎉 Integration system ready!');
-
   } catch (err) {
     console.error('❌ Migration failed:', err.message);
     process.exit(1);

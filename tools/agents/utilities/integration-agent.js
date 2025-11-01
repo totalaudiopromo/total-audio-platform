@@ -2,7 +2,7 @@
 
 /**
  * Integration Agent for Total Audio Promo
- * 
+ *
  * Manages all third-party integrations including Airtable, Mailchimp, Gmail, and Claude AI
  * Handles authentication, data synchronization, and error recovery
  */
@@ -11,13 +11,17 @@
 const logger = {
   info: (msg, ...args) => console.log(`[INFO] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[ERROR] ${msg}`, ...args),
-  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args)
+  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args),
 };
 
 // Mock services for now - these would need to be properly implemented
 class MockService {
-  async initialize() { return true; }
-  async healthCheck() { return { status: 'ok', timestamp: new Date() }; }
+  async initialize() {
+    return true;
+  }
+  async healthCheck() {
+    return { status: 'ok', timestamp: new Date() };
+  }
 }
 
 const AirtableService = MockService;
@@ -32,7 +36,7 @@ class IntegrationAgent {
       airtable: new AirtableService(),
       mailchimp: new MailchimpService(),
       gmail: new GmailService(),
-      claude: new ClaudeService()
+      claude: new ClaudeService(),
     };
     this.healthStatus = {};
   }
@@ -42,7 +46,7 @@ class IntegrationAgent {
    */
   async initialize() {
     logger.info(`${this.name} initializing...`);
-    
+
     const results = {};
     for (const [name, service] of Object.entries(this.services)) {
       try {
@@ -56,7 +60,7 @@ class IntegrationAgent {
         logger.error(`${name} service initialization failed:`, error);
       }
     }
-    
+
     return results;
   }
 
@@ -65,7 +69,7 @@ class IntegrationAgent {
    */
   async healthCheck() {
     const health = {};
-    
+
     for (const [name, service] of Object.entries(this.services)) {
       try {
         if (service.healthCheck) {
@@ -74,14 +78,14 @@ class IntegrationAgent {
           health[name] = { status: 'unknown', message: 'No health check available' };
         }
       } catch (error) {
-        health[name] = { 
-          status: 'error', 
+        health[name] = {
+          status: 'error',
           message: error.message,
-          timestamp: new Date()
+          timestamp: new Date(),
         };
       }
     }
-    
+
     this.healthStatus = health;
     return health;
   }
@@ -124,12 +128,12 @@ class IntegrationAgent {
     try {
       logger.info(`Monitoring Gmail replies for campaign ${campaignId}...`);
       const replies = await this.services.gmail.getNewReplies(campaignId);
-      
+
       if (replies.length > 0) {
         logger.info(`Found ${replies.length} new replies`);
         return await this.processGmailReplies(replies, campaignId);
       }
-      
+
       return { replies: 0, processed: 0 };
     } catch (error) {
       logger.error('Gmail monitoring failed:', error);
@@ -142,27 +146,27 @@ class IntegrationAgent {
    */
   async processGmailReplies(replies, campaignId) {
     const processed = [];
-    
+
     for (const reply of replies) {
       try {
         // Analyze reply sentiment with Claude
         const analysis = await this.services.claude.analyzeEmailSentiment(reply.content);
-        
+
         const processedReply = {
           ...reply,
           campaignId,
           sentiment: analysis.sentiment,
           intent: analysis.intent,
-          processedAt: new Date()
+          processedAt: new Date(),
         };
-        
+
         processed.push(processedReply);
         logger.info(`Processed reply from ${reply.sender}: ${analysis.sentiment}`);
       } catch (error) {
         logger.error(`Failed to process reply from ${reply.sender}:`, error);
       }
     }
-    
+
     return { replies: replies.length, processed: processed.length, data: processed };
   }
 
@@ -172,13 +176,13 @@ class IntegrationAgent {
   async generateCampaignReport(campaignId) {
     try {
       logger.info(`Generating campaign report for ${campaignId}...`);
-      
+
       // Gather campaign data from all sources
       const campaignData = await this.gatherCampaignData(campaignId);
-      
+
       // Generate report with Claude
       const report = await this.services.claude.generateCampaignReport(campaignData);
-      
+
       logger.info('Campaign report generated successfully');
       return report;
     } catch (error) {
@@ -193,30 +197,29 @@ class IntegrationAgent {
   async gatherCampaignData(campaignId) {
     const data = {
       campaignId,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
-    
+
     try {
       // Get Mailchimp analytics
       if (this.services.mailchimp.getCampaignStats) {
         data.mailchimp = await this.services.mailchimp.getCampaignStats(campaignId);
       }
-      
+
       // Get Gmail engagement data
       if (this.services.gmail.getCampaignEngagement) {
         data.gmail = await this.services.gmail.getCampaignEngagement(campaignId);
       }
-      
+
       // Get Airtable contact interactions
       if (this.services.airtable.getCampaignInteractions) {
         data.airtable = await this.services.airtable.getCampaignInteractions(campaignId);
       }
-      
     } catch (error) {
       logger.error('Error gathering campaign data:', error);
       data.error = error.message;
     }
-    
+
     return data;
   }
 
@@ -225,12 +228,12 @@ class IntegrationAgent {
    */
   async autoRecover() {
     const recovered = {};
-    
+
     for (const [name, status] of Object.entries(this.healthStatus)) {
       if (status.status === 'error') {
         try {
           logger.info(`Attempting to recover ${name} integration...`);
-          
+
           if (this.services[name].reconnect) {
             await this.services[name].reconnect();
             recovered[name] = 'recovered';
@@ -244,7 +247,7 @@ class IntegrationAgent {
         }
       }
     }
-    
+
     return recovered;
   }
 
@@ -253,14 +256,14 @@ class IntegrationAgent {
    */
   async bulkSync() {
     const results = {};
-    
+
     try {
       // Sync Airtable contacts
       results.airtable = await this.syncAirtableContacts();
     } catch (error) {
       results.airtable = { error: error.message };
     }
-    
+
     try {
       // Update Mailchimp lists
       if (this.services.mailchimp.syncLists) {
@@ -269,14 +272,14 @@ class IntegrationAgent {
     } catch (error) {
       results.mailchimp = { error: error.message };
     }
-    
+
     try {
       // Process pending Gmail replies
       results.gmail = await this.monitorGmailReplies();
     } catch (error) {
       results.gmail = { error: error.message };
     }
-    
+
     return results;
   }
 
@@ -286,9 +289,9 @@ class IntegrationAgent {
   async getStatistics() {
     const stats = {
       timestamp: new Date(),
-      integrations: {}
+      integrations: {},
     };
-    
+
     for (const [name, service] of Object.entries(this.services)) {
       try {
         if (service.getStatistics) {
@@ -300,7 +303,7 @@ class IntegrationAgent {
         stats.integrations[name] = { error: error.message };
       }
     }
-    
+
     return stats;
   }
 }
@@ -318,23 +321,23 @@ if (require.main === module) {
         const health = await agent.healthCheck();
         console.log(JSON.stringify(health, null, 2));
         break;
-      
+
       case 'sync':
         const syncResults = await agent.bulkSync();
         console.log(JSON.stringify(syncResults, null, 2));
         break;
-      
+
       case 'recover':
         await agent.healthCheck(); // Update health status first
         const recovery = await agent.autoRecover();
         console.log(JSON.stringify(recovery, null, 2));
         break;
-      
+
       case 'stats':
         const stats = await agent.getStatistics();
         console.log(JSON.stringify(stats, null, 2));
         break;
-      
+
       case 'monitor':
         const campaignId = process.argv[3];
         if (!campaignId) {
@@ -344,7 +347,7 @@ if (require.main === module) {
         const monitoring = await agent.monitorGmailReplies(campaignId);
         console.log(JSON.stringify(monitoring, null, 2));
         break;
-      
+
       case 'report':
         const reportCampaignId = process.argv[3];
         if (!reportCampaignId) {
@@ -354,7 +357,7 @@ if (require.main === module) {
         const report = await agent.generateCampaignReport(reportCampaignId);
         console.log(JSON.stringify(report, null, 2));
         break;
-      
+
       default:
         console.log('Usage: node integration-agent.js [health|sync|recover|stats|monitor|report]');
     }

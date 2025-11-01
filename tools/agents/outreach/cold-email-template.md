@@ -153,16 +153,19 @@ sadact / Audio Intel founder
 ## 📊 A/B Testing Notes
 
 **Highest conversion rates:**
+
 1. Template 1 (BBC Radio 1 story) - 85% demo booking rate
 2. Template 2 (Time savings) - 78% demo booking rate
 3. Template 4 (Mutual pain) - 72% demo booking rate
 
 **Best subject lines:**
+
 1. "How I researched BBC Radio 1 contacts in 15 minutes" - 67% open rate
 2. "15 hours → 15 minutes (radio contact research)" - 61% open rate
 3. "Stop spending weekends researching radio contacts" - 58% open rate
 
 **Best CTAs:**
+
 1. "Free demo: Upload 5 contacts, watch it work" - 85% click rate
 2. "Worth 15 minutes to save 15 hours?" - 79% click rate
 3. "5-minute demo worth 15 hours saved?" - 74% click rate
@@ -185,6 +188,7 @@ sadact / Audio Intel founder
 ## 📧 Follow-up Sequence (If No Reply)
 
 **Day 3:** Quick nudge
+
 ```
 Hi {{firstName}},
 
@@ -198,6 +202,7 @@ Chris
 ```
 
 **Day 7:** Case study
+
 ```
 Hi {{firstName}},
 
@@ -215,6 +220,7 @@ Chris
 ```
 
 **Day 14:** Final follow-up
+
 ```
 Hi {{firstName}},
 

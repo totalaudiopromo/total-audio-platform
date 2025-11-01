@@ -2,7 +2,7 @@
 
 /**
  * Automated Follow-up System
- * 
+ *
  * Smart follow-up sequences that adapt based on response patterns
  * Handles different follow-up strategies for different engagement levels
  * Maintains relationships even without immediate success
@@ -17,22 +17,22 @@ class AutoFollowupSystem {
     this.contactHistory = new Map(); // contactId -> interaction history
     this.responsePatterns = new Map(); // contactId -> response patterns
     this.scheduledFollowups = new Map(); // followupId -> scheduled time
-    
+
     // Data persistence
     this.dataFile = path.join(__dirname, '..', 'data', 'followup-data.json');
     this.loadData();
-    
+
     // Follow-up templates
     this.templates = this.initializeTemplates();
-    
+
     // Timing strategies
     this.timingStrategies = {
       aggressive: [1, 3, 7, 14, 30], // days
       moderate: [3, 7, 14, 30, 60],
       gentle: [7, 14, 30, 60, 90],
-      relationship: [14, 30, 60, 90, 180]
+      relationship: [14, 30, 60, 90, 180],
     };
-    
+
     // Response types
     this.responseTypes = {
       no_response: 'no_response',
@@ -41,9 +41,9 @@ class AutoFollowupSystem {
       replied_negative: 'replied_negative',
       replied_neutral: 'replied_neutral',
       bounced: 'bounced',
-      unsubscribed: 'unsubscribed'
+      unsubscribed: 'unsubscribed',
     };
-    
+
     // Start the follow-up processor
     this.startFollowupProcessor();
   }
@@ -55,7 +55,7 @@ class AutoFollowupSystem {
     return {
       // Initial follow-up (no response)
       no_response_1: {
-        subject: "Quick follow-up on {artistName} - {trackTitle}",
+        subject: 'Quick follow-up on {artistName} - {trackTitle}',
         body: `Hi {contactName},
 
 I hope you're well! I wanted to follow up on my email about {artistName}'s new track "{trackTitle}".
@@ -66,12 +66,12 @@ Would you like me to send over the press kit and MP3?
 
 Best regards,
 {yourName}`,
-        tone: "friendly",
-        urgency: "low"
+        tone: 'friendly',
+        urgency: 'low',
       },
 
       no_response_2: {
-        subject: "Still interested in {artistName}?",
+        subject: 'Still interested in {artistName}?',
         body: `Hi {contactName},
 
 I hope this finds you well. I wanted to check if you had a chance to listen to {artistName}'s track "{trackTitle}" that I sent over?
@@ -88,12 +88,12 @@ Let me know if you'd like to hear more!
 
 Best,
 {yourName}`,
-        tone: "persistent",
-        urgency: "medium"
+        tone: 'persistent',
+        urgency: 'medium',
       },
 
       no_response_3: {
-        subject: "Last chance for {artistName} - {trackTitle}",
+        subject: 'Last chance for {artistName} - {trackTitle}',
         body: `Hi {contactName},
 
 I hope you're doing well. This is my final follow-up about {artistName}'s track "{trackTitle}".
@@ -106,13 +106,13 @@ If not, no worries - I'll keep you in mind for future releases that might be a b
 
 Thanks for your time,
 {yourName}`,
-        tone: "final",
-        urgency: "high"
+        tone: 'final',
+        urgency: 'high',
       },
 
       // Opened but no reply
       opened_no_reply_1: {
-        subject: "I see you opened my email about {artistName}",
+        subject: 'I see you opened my email about {artistName}',
         body: `Hi {contactName},
 
 I noticed you opened my email about {artistName}'s new track "{trackTitle}" - that's great!
@@ -125,13 +125,13 @@ Let me know your thoughts!
 
 Best,
 {yourName}`,
-        tone: "curious",
-        urgency: "medium"
+        tone: 'curious',
+        urgency: 'medium',
       },
 
       // Positive response
       replied_positive_1: {
-        subject: "Thanks for the interest in {artistName}!",
+        subject: 'Thanks for the interest in {artistName}!',
         body: `Hi {contactName},
 
 Fantastic! I'm so glad you're interested in {artistName}'s track "{trackTitle}".
@@ -148,13 +148,13 @@ Looking forward to hearing it on {stationName}!
 
 Best regards,
 {yourName}`,
-        tone: "enthusiastic",
-        urgency: "high"
+        tone: 'enthusiastic',
+        urgency: 'high',
       },
 
       // Negative response
       replied_negative_1: {
-        subject: "Thanks for the feedback on {artistName}",
+        subject: 'Thanks for the feedback on {artistName}',
         body: `Hi {contactName},
 
 Thanks for getting back to me about {artistName}'s track "{trackTitle}".
@@ -165,8 +165,8 @@ I'll keep you in mind for future releases that might be more suitable for your s
 
 Thanks again for your time,
 {yourName}`,
-        tone: "gracious",
-        urgency: "low"
+        tone: 'gracious',
+        urgency: 'low',
       },
 
       // Relationship building
@@ -182,9 +182,9 @@ Would you like me to send it over when it's ready?
 
 Best regards,
 {yourName}`,
-        tone: "friendly",
-        urgency: "low"
-      }
+        tone: 'friendly',
+        urgency: 'low',
+      },
     };
   }
 
@@ -193,7 +193,7 @@ Best regards,
    */
   async startFollowupSequence(campaignId, contacts, options = {}) {
     console.log(`🔄 Starting follow-up sequence for campaign: ${campaignId}`);
-    
+
     const config = {
       campaignId,
       contacts: contacts.map(contact => ({
@@ -206,7 +206,7 @@ Best regards,
         followupCount: 0,
         lastContact: Date.now(),
         nextFollowup: null,
-        status: 'active'
+        status: 'active',
       })),
       artistName: options.artistName,
       trackTitle: options.trackTitle,
@@ -215,17 +215,17 @@ Best regards,
       strategy: options.strategy || 'moderate',
       maxFollowups: options.maxFollowups || 5,
       startDate: Date.now(),
-      status: 'active'
+      status: 'active',
     };
-    
+
     this.followupSequences.set(campaignId, config);
-    
+
     // Schedule first follow-ups
     await this.scheduleNextFollowups(campaignId);
-    
+
     this.saveData();
     console.log(`✅ Follow-up sequence started for ${contacts.length} contacts`);
-    
+
     return config;
   }
 
@@ -235,19 +235,19 @@ Best regards,
   async scheduleNextFollowups(campaignId) {
     const config = this.followupSequences.get(campaignId);
     if (!config) return;
-    
+
     const timing = this.timingStrategies[config.strategy] || this.timingStrategies.moderate;
-    
+
     for (const contact of config.contacts) {
       if (contact.status !== 'active' || contact.followupCount >= config.maxFollowups) {
         continue;
       }
-      
+
       const nextFollowupDays = timing[contact.followupCount] || timing[timing.length - 1];
-      const nextFollowupTime = Date.now() + (nextFollowupDays * 24 * 60 * 60 * 1000);
-      
+      const nextFollowupTime = Date.now() + nextFollowupDays * 24 * 60 * 60 * 1000;
+
       contact.nextFollowup = nextFollowupTime;
-      
+
       // Schedule the follow-up
       const followupId = `${campaignId}-${contact.id}-${contact.followupCount + 1}`;
       this.scheduledFollowups.set(followupId, {
@@ -255,7 +255,7 @@ Best regards,
         contactId: contact.id,
         followupNumber: contact.followupCount + 1,
         scheduledTime: nextFollowupTime,
-        status: 'scheduled'
+        status: 'scheduled',
       });
     }
   }
@@ -266,14 +266,14 @@ Best regards,
   async processFollowups() {
     const now = Date.now();
     const dueFollowups = [];
-    
+
     // Find due follow-ups
     for (const [followupId, followup] of this.scheduledFollowups) {
       if (followup.status === 'scheduled' && followup.scheduledTime <= now) {
         dueFollowups.push(followup);
       }
     }
-    
+
     // Process each due follow-up
     for (const followup of dueFollowups) {
       await this.sendFollowup(followup);
@@ -286,17 +286,19 @@ Best regards,
   async sendFollowup(followup) {
     const config = this.followupSequences.get(followup.campaignId);
     if (!config) return;
-    
+
     const contact = config.contacts.find(c => c.id === followup.contactId);
     if (!contact) return;
-    
+
     // Get the appropriate template
     const template = this.getFollowupTemplate(contact, followup.followupNumber);
     if (!template) {
-      console.log(`⚠️  No template found for ${contact.responseType} follow-up ${followup.followupNumber}`);
+      console.log(
+        `⚠️  No template found for ${contact.responseType} follow-up ${followup.followupNumber}`
+      );
       return;
     }
-    
+
     // Personalize the content
     const personalizedContent = this.personalizeContent(template, {
       contactName: contact.name,
@@ -304,9 +306,9 @@ Best regards,
       trackTitle: config.trackTitle,
       genre: config.genre,
       stationName: contact.station,
-      yourName: config.yourName
+      yourName: config.yourName,
     });
-    
+
     // Send the follow-up (integrate with your email system)
     const emailData = {
       to: contact.email,
@@ -314,32 +316,34 @@ Best regards,
       body: personalizedContent.body,
       campaignId: followup.campaignId,
       followupNumber: followup.followupNumber,
-      contactId: contact.id
+      contactId: contact.id,
     };
-    
+
     try {
       // This would integrate with your email sending system
       await this.sendEmail(emailData);
-      
+
       // Update contact status
       contact.followupCount++;
       contact.lastContact = Date.now();
       contact.nextFollowup = null;
-      
+
       // Mark follow-up as sent
       followup.status = 'sent';
       followup.sentAt = Date.now();
-      
+
       // Record interaction
       this.recordInteraction(contact.id, {
         type: 'followup_sent',
         followupNumber: followup.followupNumber,
         template: template.tone,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       });
-      
-      console.log(`📧 Sent follow-up ${followup.followupNumber} to ${contact.name} (${contact.email})`);
-      
+
+      console.log(
+        `📧 Sent follow-up ${followup.followupNumber} to ${contact.name} (${contact.email})`
+      );
+
       // Schedule next follow-up if not at max
       if (contact.followupCount < config.maxFollowups) {
         await this.scheduleNextFollowup(contact, config);
@@ -347,7 +351,6 @@ Best regards,
         contact.status = 'completed';
         console.log(`✅ Completed follow-up sequence for ${contact.name}`);
       }
-      
     } catch (error) {
       console.error(`❌ Failed to send follow-up to ${contact.name}:`, error.message);
       followup.status = 'failed';
@@ -361,29 +364,29 @@ Best regards,
   getFollowupTemplate(contact, followupNumber) {
     const responseType = contact.responseType;
     const templateKey = `${responseType}_${followupNumber}`;
-    
+
     // Try specific template first
     if (this.templates[templateKey]) {
       return this.templates[templateKey];
     }
-    
+
     // Fallback to generic templates
     if (responseType === this.responseTypes.no_response) {
       return this.templates[`no_response_${Math.min(followupNumber, 3)}`];
     }
-    
+
     if (responseType === this.responseTypes.opened_no_reply) {
       return this.templates[`opened_no_reply_${Math.min(followupNumber, 2)}`];
     }
-    
+
     if (responseType === this.responseTypes.replied_positive) {
       return this.templates[`replied_positive_${Math.min(followupNumber, 2)}`];
     }
-    
+
     if (responseType === this.responseTypes.replied_negative) {
       return this.templates[`replied_negative_${Math.min(followupNumber, 2)}`];
     }
-    
+
     // Default to relationship building
     return this.templates[`relationship_${Math.min(followupNumber, 2)}`];
   }
@@ -394,14 +397,14 @@ Best regards,
   personalizeContent(template, data) {
     let subject = template.subject;
     let body = template.body;
-    
+
     // Replace placeholders
     Object.entries(data).forEach(([key, value]) => {
       const placeholder = `{${key}}`;
       subject = subject.replace(new RegExp(placeholder, 'g'), value || '');
       body = body.replace(new RegExp(placeholder, 'g'), value || '');
     });
-    
+
     return { subject, body };
   }
 
@@ -417,10 +420,10 @@ Best regards,
     console.log(`   Body: ${emailData.body.substring(0, 200)}...`);
     console.log(`   Campaign: ${emailData.campaignId}`);
     console.log(`   Follow-up: ${emailData.followupNumber}`);
-    
+
     // In real implementation, this would call your email service
     // await this.emailService.send(emailData);
-    
+
     return { success: true, messageId: 'mock-' + Date.now() };
   }
 
@@ -431,10 +434,10 @@ Best regards,
     if (!this.contactHistory.has(contactId)) {
       this.contactHistory.set(contactId, []);
     }
-    
+
     const history = this.contactHistory.get(contactId);
     history.push(interaction);
-    
+
     // Keep only last 50 interactions
     if (history.length > 50) {
       history.splice(0, history.length - 50);
@@ -447,22 +450,22 @@ Best regards,
   updateContactResponse(contactId, responseType, campaignId) {
     const config = this.followupSequences.get(campaignId);
     if (!config) return;
-    
+
     const contact = config.contacts.find(c => c.id === contactId);
     if (!contact) return;
-    
+
     contact.responseType = responseType;
-    
+
     // Record the response
     this.recordInteraction(contactId, {
       type: 'response_received',
       responseType,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     });
-    
+
     // Adjust follow-up strategy based on response
     this.adjustFollowupStrategy(contact, responseType);
-    
+
     console.log(`📝 Updated response type for ${contact.name}: ${responseType}`);
   }
 
@@ -496,11 +499,11 @@ Best regards,
   getFollowupStatus(campaignId) {
     const config = this.followupSequences.get(campaignId);
     if (!config) return null;
-    
+
     const activeContacts = config.contacts.filter(c => c.status === 'active');
     const completedContacts = config.contacts.filter(c => c.status === 'completed');
     const totalFollowups = config.contacts.reduce((sum, c) => sum + c.followupCount, 0);
-    
+
     return {
       campaignId,
       status: config.status,
@@ -510,7 +513,7 @@ Best regards,
       totalFollowups,
       averageFollowupsPerContact: totalFollowups / config.contacts.length,
       strategy: config.strategy,
-      startDate: config.startDate
+      startDate: config.startDate,
     };
   }
 
@@ -529,7 +532,7 @@ Best regards,
     setInterval(() => {
       this.processFollowups();
     }, 60 * 1000);
-    
+
     console.log('🔄 Follow-up processor started');
   }
 
@@ -556,14 +559,14 @@ Best regards,
       if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
       }
-      
+
       const data = {
         followupSequences: Array.from(this.followupSequences.entries()),
         contactHistory: Array.from(this.contactHistory.entries()),
         scheduledFollowups: Array.from(this.scheduledFollowups.entries()),
-        lastSaved: Date.now()
+        lastSaved: Date.now(),
       };
-      
+
       fs.writeFileSync(this.dataFile, JSON.stringify(data, null, 2));
     } catch (error) {
       console.error('❌ Failed to save follow-up data:', error.message);
@@ -574,18 +577,20 @@ Best regards,
    * Health check
    */
   async healthCheck() {
-    const activeCampaigns = Array.from(this.followupSequences.values())
-      .filter(config => config.status === 'active');
-    
-    const scheduledFollowups = Array.from(this.scheduledFollowups.values())
-      .filter(f => f.status === 'scheduled');
-    
+    const activeCampaigns = Array.from(this.followupSequences.values()).filter(
+      config => config.status === 'active'
+    );
+
+    const scheduledFollowups = Array.from(this.scheduledFollowups.values()).filter(
+      f => f.status === 'scheduled'
+    );
+
     return {
       status: 'healthy',
       activeCampaigns: activeCampaigns.length,
       scheduledFollowups: scheduledFollowups.length,
       totalContacts: activeCampaigns.reduce((sum, config) => sum + config.contacts.length, 0),
-      lastChecked: new Date().toISOString()
+      lastChecked: new Date().toISOString(),
     };
   }
 

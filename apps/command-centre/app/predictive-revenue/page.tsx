@@ -13,7 +13,7 @@ export default function PredictiveRevenuePage() {
     averageCLV: 1850,
     churnRisk: 12,
     opportunities: 5,
-    potentialRevenue: 8500
+    potentialRevenue: 8500,
   };
 
   const forecasts = [
@@ -22,7 +22,7 @@ export default function PredictiveRevenuePage() {
     { month: 'March 2025', revenue: 2950, confidence: 82 },
     { month: 'April 2025', revenue: 3200, confidence: 78 },
     { month: 'May 2025', revenue: 3480, confidence: 75 },
-    { month: 'June 2025', revenue: 3750, confidence: 72 }
+    { month: 'June 2025', revenue: 3750, confidence: 72 },
   ];
 
   if (isLoading) {
@@ -97,19 +97,22 @@ export default function PredictiveRevenuePage() {
       {/* Revenue Forecast */}
       <div className="postcraft-section mb-8">
         <div className="postcraft-card">
-          <h2 className="postcraft-section-title mb-6">
-            6-Month Revenue Forecast
-          </h2>
-          
+          <h2 className="postcraft-section-title mb-6">6-Month Revenue Forecast</h2>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {forecasts.map((forecast, index) => (
               <div key={index} className="postcraft-card">
                 <div className="flex justify-between items-center mb-3">
                   <h3 className="postcraft-label">{forecast.month}</h3>
-                  <span className={`px-3 py-1 rounded-full text-xs font-bold border-2 border-black ${
-                    forecast.confidence >= 80 ? 'bg-green-100 text-green-800' :
-                    forecast.confidence >= 70 ? 'bg-blue-100 text-blue-800' : 'bg-orange-100 text-orange-800'
-                  }`}>
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-bold border-2 border-black ${
+                      forecast.confidence >= 80
+                        ? 'bg-green-100 text-green-800'
+                        : forecast.confidence >= 70
+                          ? 'bg-blue-100 text-blue-800'
+                          : 'bg-orange-100 text-orange-800'
+                    }`}
+                  >
                     {forecast.confidence}% confidence
                   </span>
                 </div>
@@ -125,10 +128,8 @@ export default function PredictiveRevenuePage() {
       {/* Revenue Opportunities */}
       <div className="postcraft-section">
         <div className="postcraft-card">
-          <h2 className="postcraft-section-title mb-6">
-            Revenue Opportunities
-          </h2>
-          
+          <h2 className="postcraft-section-title mb-6">Revenue Opportunities</h2>
+
           <div className="postcraft-metrics-grid">
             <div className="postcraft-metric-card">
               <div className="postcraft-metric-icon bg-gradient-to-br from-purple-500 to-pink-500">
@@ -142,7 +143,9 @@ export default function PredictiveRevenuePage() {
               <div className="postcraft-metric-icon bg-gradient-to-br from-green-500 to-emerald-500">
                 <DollarSign className="w-6 h-6 text-white" />
               </div>
-              <div className="postcraft-metric-value">£{metrics.potentialRevenue.toLocaleString()}</div>
+              <div className="postcraft-metric-value">
+                £{metrics.potentialRevenue.toLocaleString()}
+              </div>
               <div className="postcraft-metric-label">Potential Monthly Revenue</div>
             </div>
 

@@ -119,7 +119,7 @@ I built Audio Intel to solve this properly. AI-powered contact enrichment that t
 
 Real results:
 - 95% reduction in research time
-- 300% increase in response rates  
+- 300% increase in response rates
 - 15+ hours saved weekly
 - 94% contact accuracy
 
@@ -175,7 +175,7 @@ For most artists and PR agencies, it's contact research.
 
 Wasting your weekends on:
 - Finding current contact details
-- Researching submission preferences  
+- Researching submission preferences
 - Understanding genre focus
 - Tracking social media activity
 

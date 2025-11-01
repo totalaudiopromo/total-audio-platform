@@ -9,7 +9,8 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -24,7 +25,7 @@ async function fetchAllContacts() {
       : `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
 
     const response = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
     });
 
     const data = await response.json();
@@ -102,19 +103,16 @@ function extractStationName(enrichmentNotes, currentStation, email) {
 
 async function updateStationName(recordId, newStation) {
   try {
-    const response = await fetch(
-      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          fields: { 'Station': newStation }
-        })
-      }
-    );
+    const response = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        fields: { Station: newStation },
+      }),
+    });
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -138,10 +136,11 @@ async function extractStations() {
     const station = c.fields.Station || '';
     const hasEnrichment = c.fields['Enrichment Notes'];
 
-    const isUnknown = station === 'Unknown' ||
-                     station === '' ||
-                     station.length < 3 ||
-                     station.toLowerCase().includes('unknown');
+    const isUnknown =
+      station === 'Unknown' ||
+      station === '' ||
+      station.length < 3 ||
+      station.toLowerCase().includes('unknown');
 
     return hasEnrichment && isUnknown;
   });
@@ -161,7 +160,7 @@ async function extractStations() {
   const stats = {
     total: needsStation.length,
     extracted: 0,
-    errors: 0
+    errors: 0,
   };
 
   const extractions = [];
@@ -172,7 +171,7 @@ async function extractStations() {
     const currentStation = contact.fields.Station || 'Unknown';
     const enrichmentNotes = contact.fields['Enrichment Notes'];
 
-    console.log(`[${i+1}/${needsStation.length}] ${email}`);
+    console.log(`[${i + 1}/${needsStation.length}] ${email}`);
     console.log(`   Current: "${currentStation}"`);
 
     // Extract station name
@@ -189,7 +188,7 @@ async function extractStations() {
         extractions.push({
           email,
           oldStation: currentStation,
-          newStation
+          newStation,
         });
         console.log(`   ✅ Updated in Airtable`);
       } else {
@@ -215,12 +214,15 @@ async function extractStations() {
   if (extractions.length > 0) {
     console.log('🏢 EXTRACTED STATIONS:\n');
     extractions.forEach((e, i) => {
-      console.log(`${i+1}. ${e.email}`);
+      console.log(`${i + 1}. ${e.email}`);
       console.log(`   "${e.oldStation}" → "${e.newStation}"\n`);
     });
   }
 
-  fs.writeFileSync('./STATION_EXTRACTION_REPORT.json', JSON.stringify({ stats, extractions }, null, 2));
+  fs.writeFileSync(
+    './STATION_EXTRACTION_REPORT.json',
+    JSON.stringify({ stats, extractions }, null, 2)
+  );
   console.log('💾 Report saved: STATION_EXTRACTION_REPORT.json\n');
   console.log('✅ Station extraction complete!\n');
 

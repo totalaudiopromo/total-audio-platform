@@ -1,4 +1,5 @@
 # Total Audio Promo - Design System
+
 ## Postcraft Aesthetic Standards
 
 This document defines the visual design system for all TAP mini-tools. The aesthetic is inspired by bold, clean, print-inspired design - think modern Postcraft meets music industry edge.
@@ -8,6 +9,7 @@ This document defines the visual design system for all TAP mini-tools. The aesth
 ## Core Principles
 
 ### ❌ **NEVER Use:**
+
 - Gradients (background or text)
 - Glassmorphism effects
 - Backdrop blur
@@ -17,6 +19,7 @@ This document defines the visual design system for all TAP mini-tools. The aesth
 - American spelling (use UK English throughout)
 
 ### ✅ **ALWAYS Use:**
+
 - Solid colors (white, black, and brand colours)
 - Bold black borders (`border-2`, `border-4`)
 - Hard offset shadows (`shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`)
@@ -30,6 +33,7 @@ This document defines the visual design system for all TAP mini-tools. The aesth
 ## Color System
 
 ### Base Colors
+
 ```
 White background: #FFFFFF (bg-white)
 Black borders & text: #000000 (border-black, text-black)
@@ -39,6 +43,7 @@ Dark text: #111827 (text-gray-900)
 ```
 
 ### Brand Colors (Tool-Specific Activation)
+
 Each tool gets a signature color that activates on interaction:
 
 ```
@@ -52,6 +57,7 @@ Success Predict: Gold/Yellow (#eab308 / yellow-500)
 ```
 
 ### Semantic Colors
+
 ```
 Success: #3DD68C (text-success)
 Warning: #F6BD60 (text-warning)
@@ -63,10 +69,12 @@ Danger: #F25F5C (text-danger)
 ## Typography
 
 ### Font Stack
+
 - **Primary:** Geist Sans (sans-serif)
 - **Mono:** Geist Mono (monospace)
 
 ### Text Sizes & Weights
+
 ```
 Headings: font-bold, tracking-tight
 Large Title: text-3xl to text-6xl
@@ -77,6 +85,7 @@ Small/Meta: text-xs
 ```
 
 ### Text Colors
+
 ```
 Primary heading: text-gray-900
 Body text: text-gray-600
@@ -89,6 +98,7 @@ Accent/links: text-blue-600
 ## Components
 
 ### `.glass-panel` - Primary Card Component
+
 The main container for all content sections.
 
 ```css
@@ -106,15 +116,15 @@ The main container for all content sections.
 ```
 
 **Usage:**
+
 ```tsx
-<div className="glass-panel px-8 py-10">
-  {/* Content */}
-</div>
+<div className="glass-panel px-8 py-10">{/* Content */}</div>
 ```
 
 ---
 
 ### `.cta-button` - Primary Action Button
+
 Bold, high-contrast button for main calls-to-action.
 
 ```css
@@ -137,6 +147,7 @@ Bold, high-contrast button for main calls-to-action.
 ```
 
 **Usage:**
+
 ```tsx
 <button className="cta-button">
   <Sparkles className="mr-2 h-5 w-5" />
@@ -147,6 +158,7 @@ Bold, high-contrast button for main calls-to-action.
 ---
 
 ### `.subtle-button` - Secondary Action Button
+
 White button with black border for secondary actions.
 
 ```css
@@ -168,6 +180,7 @@ White button with black border for secondary actions.
 ```
 
 **Usage:**
+
 ```tsx
 <Link href="/pitch/batch" className="subtle-button flex items-center gap-2">
   <Zap className="h-4 w-4" />
@@ -178,6 +191,7 @@ White button with black border for secondary actions.
 ---
 
 ### `.badge-postcraft` - Status Badge
+
 Yellow badge for tool identification and status indicators.
 
 ```css
@@ -196,6 +210,7 @@ Yellow badge for tool identification and status indicators.
 ```
 
 **Usage:**
+
 ```tsx
 <span className="badge-postcraft">Pitch Generator</span>
 ```
@@ -226,6 +241,7 @@ All form inputs should follow this pattern:
 ```
 
 **Key attributes:**
+
 - `rounded-xl` for soft corners
 - `border border-gray-300` - thin gray border
 - `bg-white` - solid white background
@@ -236,6 +252,7 @@ All form inputs should follow this pattern:
 ## Icon Colors
 
 Icons should match their context:
+
 ```tsx
 // Primary brand actions
 <Sparkles className="h-6 w-6 text-brand-iris" />
@@ -252,18 +269,19 @@ Icons should match their context:
 ## Layout Standards
 
 ### Container Max Width
+
 ```tsx
-<div className="mx-auto w-full max-w-6xl">
-  {/* Content */}
-</div>
+<div className="mx-auto w-full max-w-6xl">{/* Content */}</div>
 ```
 
 ### Spacing Scale
+
 - Small gaps: `gap-2` to `gap-4`
 - Medium gaps: `gap-6` to `gap-8`
 - Large gaps: `gap-10` to `gap-12`
 
 ### Grid Layouts
+
 ```tsx
 // Stats grid
 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -279,6 +297,7 @@ Icons should match their context:
 **IMPORTANT:** This TAP SaaS template is your clean starting point. To create a new mini-tool without overwriting the template:
 
 ### Option 1: Create Tool-Specific Apps (Recommended)
+
 Each tool gets its own app directory in the monorepo:
 
 ```
@@ -291,6 +310,7 @@ apps/
 ```
 
 **Steps to create a new tool:**
+
 ```bash
 # From your monorepo root
 cd apps/
@@ -303,6 +323,7 @@ cd pitch-generator
 ```
 
 ### Option 2: Multi-Tool Single App
+
 Keep all tools in one app but use clear routing:
 
 ```
@@ -316,6 +337,7 @@ app/
 ```
 
 **We recommend Option 1** - each tool as its own deployable app gives you:
+
 - Independent deployment and versioning
 - Tool-specific databases and auth
 - Cleaner codebase per tool
@@ -369,12 +391,8 @@ export default function ToolPage() {
       {/* Header */}
       <div className="glass-panel px-8 py-6">
         <span className="badge-postcraft">Tool Name</span>
-        <h1 className="mt-3 text-3xl font-bold">
-          Page Title
-        </h1>
-        <p className="mt-2 text-gray-600">
-          Clear, direct description
-        </p>
+        <h1 className="mt-3 text-3xl font-bold">Page Title</h1>
+        <p className="mt-2 text-gray-600">Clear, direct description</p>
       </div>
 
       {/* Stats Grid */}
@@ -409,4 +427,3 @@ export default function ToolPage() {
 ## Questions?
 
 This is a living document. If something doesn't fit the aesthetic, update this file and make it the standard. Keep it bold, keep it clean, keep it Postcraft.
-

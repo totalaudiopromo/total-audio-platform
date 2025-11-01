@@ -35,27 +35,27 @@ class LibertyDriveSync {
         name: 'Liberty Music PR',
         color: null,
         subfolders: [
-          { name: 'Active Campaigns', color: '#42d692' },        // Green
+          { name: 'Active Campaigns', color: '#42d692' }, // Green
           { name: 'Station Feedback & Assets', color: '#ffc8af' }, // Orange
-          { name: 'Needs Action', color: '#a0c3ff' },            // Blue
-          { name: 'Completed', color: '#fdedc1' },               // Yellow
-          { name: 'Archive', color: '#f7c0bb' },                 // Red
-          { name: 'Internal Team', color: '#c9daf8' }            // Light blue
-        ]
+          { name: 'Needs Action', color: '#a0c3ff' }, // Blue
+          { name: 'Completed', color: '#fdedc1' }, // Yellow
+          { name: 'Archive', color: '#f7c0bb' }, // Red
+          { name: 'Internal Team', color: '#c9daf8' }, // Light blue
+        ],
       },
       {
         name: 'Personal Tools',
-        color: '#b694e8',  // Purple
+        color: '#b694e8', // Purple
         subfolders: [
           { name: 'Otter AI Transcripts', color: null },
-          { name: 'Gemini Transcripts', color: null }
-        ]
+          { name: 'Gemini Transcripts', color: null },
+        ],
       },
       {
         name: 'Marketing Archive',
-        color: '#e2e2e2',  // Grey
-        subfolders: []
-      }
+        color: '#e2e2e2', // Grey
+        subfolders: [],
+      },
     ];
   }
 
@@ -72,13 +72,10 @@ class LibertyDriveSync {
       const response = await this.drive.files.list({
         q: query,
         fields: 'files(id, name)',
-        spaces: 'drive'
+        spaces: 'drive',
       });
 
-      return response.data.files && response.data.files.length > 0
-        ? response.data.files[0]
-        : null;
-
+      return response.data.files && response.data.files.length > 0 ? response.data.files[0] : null;
     } catch (error) {
       console.error(`Failed to find folder "${name}":`, error.message);
       return null;
@@ -92,7 +89,7 @@ class LibertyDriveSync {
     try {
       const metadata = {
         name: name,
-        mimeType: 'application/vnd.google-apps.folder'
+        mimeType: 'application/vnd.google-apps.folder',
       };
 
       if (parentId) {
@@ -105,12 +102,11 @@ class LibertyDriveSync {
 
       const response = await this.drive.files.create({
         requestBody: metadata,
-        fields: 'id, name, folderColorRgb'
+        fields: 'id, name, folderColorRgb',
       });
 
       console.log(`✅ Created folder: ${name}${color ? ` (${color})` : ''}`);
       return response.data;
-
     } catch (error) {
       console.error(`Failed to create folder "${name}":`, error.message);
       return null;
@@ -125,13 +121,12 @@ class LibertyDriveSync {
       await this.drive.files.update({
         fileId: folderId,
         requestBody: {
-          folderColorRgb: color
-        }
+          folderColorRgb: color,
+        },
       });
 
       console.log(`✅ Updated folder color: ${color}`);
       return true;
-
     } catch (error) {
       console.error(`Failed to update folder color:`, error.message);
       return false;
@@ -192,7 +187,6 @@ class LibertyDriveSync {
       console.log('  🟣 Personal Tools');
       console.log('  ⚫ Marketing Archive');
       console.log('\n💡 Colors match your Gmail label system!');
-
     } catch (error) {
       console.error('❌ Setup failed:', error);
       throw error;
@@ -229,7 +223,6 @@ class LibertyDriveSync {
 
         console.log('');
       }
-
     } catch (error) {
       console.error('❌ Failed to list folders:', error);
     }
@@ -244,12 +237,11 @@ class LibertyDriveSync {
     try {
       const response = await this.drive.files.list({
         pageSize: 1,
-        fields: 'files(id, name)'
+        fields: 'files(id, name)',
       });
 
       console.log('✅ Drive access OK');
       return true;
-
     } catch (error) {
       console.error('❌ Drive access failed:', error.message);
       return false;
@@ -286,7 +278,6 @@ async function main() {
         console.log('');
         console.log('Example: node liberty-drive-sync.js setup');
     }
-
   } catch (error) {
     console.error('❌ Command failed:', error.message);
     process.exit(1);

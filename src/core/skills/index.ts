@@ -24,11 +24,7 @@ export type {
   SkillCategory,
 } from './schema';
 
-export {
-  SkillValidationError,
-  SkillExecutionError,
-  SkillNotFoundError,
-} from './schema';
+export { SkillValidationError, SkillExecutionError, SkillNotFoundError } from './schema';
 
 // Built-in skills
 export {

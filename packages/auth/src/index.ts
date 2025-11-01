@@ -4,7 +4,7 @@
  */
 
 // Client utilities
-export { createClient as createBrowserClient, resetClient } from './client'
+export { createClient as createBrowserClient, resetClient } from './client';
 
 // Server utilities
 export {
@@ -12,18 +12,18 @@ export {
   getCurrentUser,
   getUserProfile,
   checkAppAccess,
-} from './server'
+} from './server';
 
 // Middleware
-export { createMiddleware, authMiddleware } from './middleware'
-export type { MiddlewareConfig } from './middleware'
+export { createMiddleware, authMiddleware } from './middleware';
+export type { MiddlewareConfig } from './middleware';
 
 // TypeScript types
-export * from './types'
-export type { Database } from './types/database'
+export * from './types';
+export type { Database } from './types/database';
 
 // React hooks
-export * from './hooks'
+export * from './hooks';
 
 // Utility functions
-export * from './utils'
+export * from './utils';

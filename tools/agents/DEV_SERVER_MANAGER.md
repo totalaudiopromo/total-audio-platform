@@ -8,6 +8,7 @@
 ## 🎯 YOUR SITUATION
 
 You're currently configured to use:
+
 - **PostgreSQL**: `localhost:5432` (NOT installed locally)
 - **Prisma**: Database ORM
 - **Apps**: Audio Intel, API, Command Centre
@@ -21,6 +22,7 @@ You're currently configured to use:
 ### Why Serverless for You?
 
 **Perfect for Solopreneurs**:
+
 - ✅ No local database to manage
 - ✅ No "is the server running?" questions
 - ✅ Works anywhere (home, postman office, travelling)
@@ -29,6 +31,7 @@ You're currently configured to use:
 - ✅ Production-ready from day 1
 
 **Your Current Phase**:
+
 - Customer acquisition (not building at scale yet)
 - 2-hour max sessions
 - Focus on first paying customers
@@ -94,6 +97,7 @@ npx prisma generate
 ### Install PostgreSQL Locally
 
 **macOS** (requires Homebrew):
+
 ```bash
 # Install Homebrew first if needed
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -116,6 +120,7 @@ npx prisma db push
 ```
 
 **Why This is Slower**:
+
 - ❌ Must remember to start service
 - ❌ Must manage updates
 - ❌ Only works on one machine
@@ -126,15 +131,15 @@ npx prisma db push
 
 ## 📊 COMPARISON
 
-| Feature | Vercel Postgres | Supabase | Local PostgreSQL |
-|---------|----------------|----------|------------------|
-| **Setup Time** | 5 minutes | 10 minutes | 30 minutes |
-| **Maintenance** | Zero | Zero | Weekly |
-| **Works Everywhere** | ✅ Yes | ✅ Yes | ❌ One machine only |
-| **Backup** | ✅ Automatic | ✅ Automatic | ❌ Manual |
-| **Cost (your scale)** | ✅ FREE | ✅ FREE | ✅ FREE |
-| **Slows You Down** | ❌ Never | ❌ Never | ✅ Often |
-| **Production Ready** | ✅ Yes | ✅ Yes | ❌ Need to migrate |
+| Feature               | Vercel Postgres | Supabase     | Local PostgreSQL    |
+| --------------------- | --------------- | ------------ | ------------------- |
+| **Setup Time**        | 5 minutes       | 10 minutes   | 30 minutes          |
+| **Maintenance**       | Zero            | Zero         | Weekly              |
+| **Works Everywhere**  | ✅ Yes          | ✅ Yes       | ❌ One machine only |
+| **Backup**            | ✅ Automatic    | ✅ Automatic | ❌ Manual           |
+| **Cost (your scale)** | ✅ FREE         | ✅ FREE      | ✅ FREE             |
+| **Slows You Down**    | ❌ Never        | ❌ Never     | ✅ Often            |
+| **Production Ready**  | ✅ Yes          | ✅ Yes       | ❌ Need to migrate  |
 
 ---
 
@@ -143,6 +148,7 @@ npx prisma db push
 ### Go Serverless with Vercel Postgres
 
 **Why**:
+
 1. You're already using Vercel for hosting
 2. Zero maintenance means more time for customer acquisition
 3. Works everywhere (home office, Postman office, travelling)
@@ -150,6 +156,7 @@ npx prisma db push
 5. FREE at your current scale
 
 **Steps**:
+
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform
 
@@ -185,6 +192,7 @@ npm run dev
 ### 1. Database Connection Helper
 
 I can create an agent that:
+
 - Checks database connection before dev session
 - Auto-restarts if needed (for local)
 - Shows connection status in Agent OS dashboard
@@ -192,11 +200,13 @@ I can create an agent that:
 ### 2. Dev Environment Checker
 
 Add to Agent OS:
+
 ```bash
 node unified-launcher.js health
 ```
 
 Shows:
+
 - ✅ Database: Connected (Vercel Postgres)
 - ✅ Audio Intel: Ready
 - ✅ API: Ready
@@ -205,6 +215,7 @@ Shows:
 ### 3. One-Command Startup
 
 Create startup script:
+
 ```bash
 # ~/start-audio-intel.sh
 #!/bin/bash
@@ -228,6 +239,7 @@ Then: `bash ~/start-audio-intel.sh`
 ### Current Issue
 
 Your `.env.local` has:
+
 ```bash
 DATABASE_URL="postgresql://postgres:devpassword@localhost:5432/total_audio_promo"
 ```
@@ -237,6 +249,7 @@ This expects local PostgreSQL (which you don't have).
 ### Solution 1: Vercel Postgres
 
 After setup, you'll have:
+
 ```bash
 DATABASE_URL="postgres://[auto-generated-by-vercel]"
 ```
@@ -244,6 +257,7 @@ DATABASE_URL="postgres://[auto-generated-by-vercel]"
 ### Solution 2: Supabase
 
 After setup:
+
 ```bash
 DATABASE_URL="postgresql://[USER]:[PASSWORD]@db.[PROJECT].supabase.co:5432/postgres"
 ```
@@ -255,6 +269,7 @@ DATABASE_URL="postgresql://[USER]:[PASSWORD]@db.[PROJECT].supabase.co:5432/postg
 ### "Please make sure your database server is running"
 
 **Quick Fix**:
+
 ```bash
 # Option 1: Use Vercel Postgres (5 min setup above)
 # Option 2: Use Supabase (10 min setup above)
@@ -264,6 +279,7 @@ DATABASE_URL="postgresql://[USER]:[PASSWORD]@db.[PROJECT].supabase.co:5432/postg
 ### "Can't connect to database"
 
 **Check**:
+
 ```bash
 # Is DATABASE_URL in .env.local?
 cat apps/audio-intel/.env.local | grep DATABASE_URL
@@ -276,6 +292,7 @@ npx prisma db push --preview-feature
 ### "Prisma schema out of sync"
 
 **Fix**:
+
 ```bash
 cd apps/api
 npx prisma generate
@@ -291,6 +308,7 @@ npx prisma db push
 **If it requires "remembering to start a service"** → Go serverless
 
 **Examples**:
+
 - Database → Vercel Postgres / Supabase (not local PostgreSQL)
 - Email → Resend / ConvertKit API (not local mail server)
 - File Storage → Vercel Blob (not local filesystem)
@@ -333,12 +351,14 @@ node unified-launcher.js health
 ### Long Term
 
 **Never Again**:
+
 - ❌ "Is the database running?"
 - ❌ "Why is my connection slow?"
 - ❌ "How do I start PostgreSQL?"
 - ❌ "Did I remember to back up?"
 
 **Always**:
+
 - ✅ Works everywhere
 - ✅ Automatic backups
 - ✅ Fast and reliable
@@ -349,16 +369,19 @@ node unified-launcher.js health
 ## 🎯 BOTTOM LINE
 
 **Your Time is Precious**:
+
 - 2-hour max sessions
 - Customer acquisition focus
 - First £500/month by November
 
 **Don't Waste Time On**:
+
 - Database server management
 - Local infrastructure setup
 - "Is the server running?" debugging
 
 **Use Serverless**:
+
 - 5 minutes setup once
 - Zero maintenance forever
 - Works everywhere

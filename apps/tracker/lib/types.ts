@@ -65,5 +65,3 @@ export type ClientStats = {
   first_campaign_date: string | null;
   last_activity_date: string;
 };
-
-

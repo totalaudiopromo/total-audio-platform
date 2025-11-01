@@ -5,22 +5,27 @@ const readline = require('readline');
 // ========================================
 // 🚨 REPLACE THESE WITH YOUR ACTUAL AIRTABLE CREDENTIALS
 // ========================================
-process.env.AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY || 'patOohG8Gg008SKWj.fd0e179e09416b65e61ae4fc97b29136a79f769809446aadbccebebcd060f6e1';
+process.env.AIRTABLE_API_KEY =
+  process.env.AIRTABLE_API_KEY ||
+  'patOohG8Gg008SKWj.fd0e179e09416b65e61ae4fc97b29136a79f769809446aadbccebebcd060f6e1';
 process.env.AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appx7uTQWRH8cIC20';
-process.env.AIRTABLE_CONTACTS_TABLE_ID = process.env.AIRTABLE_CONTACTS_TABLE_ID || 'tblcZnUsB4Swyjcip';
-process.env.AIRTABLE_CAMPAIGNS_TABLE_ID = process.env.AIRTABLE_CAMPAIGNS_TABLE_ID || 'tblvRvF1pqpFnixnK';
-process.env.AIRTABLE_INTERACTIONS_TABLE_ID = process.env.AIRTABLE_INTERACTIONS_TABLE_ID || 'tbl0bjeo3ZwpzRQyV';
+process.env.AIRTABLE_CONTACTS_TABLE_ID =
+  process.env.AIRTABLE_CONTACTS_TABLE_ID || 'tblcZnUsB4Swyjcip';
+process.env.AIRTABLE_CAMPAIGNS_TABLE_ID =
+  process.env.AIRTABLE_CAMPAIGNS_TABLE_ID || 'tblvRvF1pqpFnixnK';
+process.env.AIRTABLE_INTERACTIONS_TABLE_ID =
+  process.env.AIRTABLE_INTERACTIONS_TABLE_ID || 'tbl0bjeo3ZwpzRQyV';
 process.env.AIRTABLE_EMAILS_TABLE_ID = process.env.AIRTABLE_EMAILS_TABLE_ID || 'tblodWpE3Bh7XxPID';
 // ========================================
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 function askQuestion(question) {
-  return new Promise((resolve) => {
-    rl.question(question, (answer) => {
+  return new Promise(resolve => {
+    rl.question(question, answer => {
       resolve(answer);
     });
   });
@@ -42,7 +47,7 @@ async function liveDuplicateRemoval() {
     // Create service instance
     const removalService = AirtableDuplicateRemoval.getRemovalServiceForUser('test-user');
 
-    console.log('🔍 First, let\'s run a dry run to see what would be deleted...\n');
+    console.log("🔍 First, let's run a dry run to see what would be deleted...\n");
 
     // Run dry run first
     const dryRunResult = await removalService.removeDuplicates(true);
@@ -61,7 +66,7 @@ async function liveDuplicateRemoval() {
 
     console.log('\n📧 Sample Duplicate Groups:');
     console.log('=====================================');
-    
+
     dryRunResult.duplicateGroups.slice(0, 3).forEach((group, index) => {
       console.log(`\n${index + 1}. Email: ${group.email}`);
       console.log(`   Records: ${group.records.length}`);
@@ -78,7 +83,9 @@ async function liveDuplicateRemoval() {
     console.log('A backup file has been created with all records that would be deleted.');
     console.log('You can restore from the backup file if needed.\n');
 
-    const confirmation = await askQuestion('Are you sure you want to proceed with LIVE deletion? (yes/no): ');
+    const confirmation = await askQuestion(
+      'Are you sure you want to proceed with LIVE deletion? (yes/no): '
+    );
 
     if (confirmation.toLowerCase() !== 'yes') {
       console.log('\n❌ Operation cancelled by user.');
@@ -113,7 +120,6 @@ async function liveDuplicateRemoval() {
 
     console.log('\n💾 Backup file created with all deleted records.');
     console.log('You can use this backup to restore records if needed.');
-
   } catch (error) {
     console.error('❌ Error during live duplicate removal:', error);
     process.exit(1);
@@ -123,4 +129,4 @@ async function liveDuplicateRemoval() {
 }
 
 // Run the live removal
-liveDuplicateRemoval(); 
+liveDuplicateRemoval();

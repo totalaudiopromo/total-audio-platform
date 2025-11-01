@@ -3,6 +3,7 @@
 ## Demo Duration: 10-12 minutes
 
 ### 🎯 Demo Goals
+
 1. Show real AI-powered campaign analysis (NOT just maths)
 2. Demonstrate CSV import saving hours of manual data entry
 3. Prove industry benchmark value for UK radio/playlists
@@ -13,9 +14,11 @@
 ## PART 1: Quick Introduction (1 min)
 
 **Opening Hook:**
+
 > "I'm going to show you how Tracker transforms the way radio promoters and PR agencies analyse campaign performance. This isn't just another spreadsheet - it's got actual AI autopsy features and industry benchmarks specific to UK radio and playlisting."
 
 **Key Points:**
+
 - Built by someone who actually does radio promotion (sadact/BBC Radio 1 pitching experience)
 - Uses Anthropic Claude AI for genuine campaign analysis, not just formulas
 - UK-focused benchmarks for BBC Radio, commercial radio, playlists, blogs
@@ -51,6 +54,7 @@
    - Success: "7 campaigns imported - ready for analysis"
 
 **Value Statement:**
+
 > "That just saved you 2+ hours of manual data entry. Now let's see what the AI makes of these campaigns."
 
 ---
@@ -105,6 +109,7 @@
    - Point out: "Different perspective, same data"
 
 **Value Statements:**
+
 - "This is Anthropic Claude analysing your actual campaign data against UK industry benchmarks"
 - "Not formulas - actual AI reasoning about what worked and why"
 - "Each section is copyable for your client reports"
@@ -134,6 +139,7 @@
    - "Optimal budget: £350-£520 based on your best campaigns"
 
 **Value Statement:**
+
 > "These benchmarks come from real UK campaign data - BBC Radio, 6Music, commercial stations, editorial playlists. You're comparing to actual industry performance, not made-up numbers."
 
 ---
@@ -167,11 +173,13 @@
 ✅ **Copy & Share**: Every insight copyable for client reports
 
 **Pricing Reminder:**
+
 - FREE tier: 10 campaigns, perfect for testing
 - PRO: £19/month - unlimited campaigns, full AI features
 - AGENCY: £79/month - team access, priority support
 
 **Call to Action:**
+
 > "Try it with your actual campaign data. Import your spreadsheet right now, generate an AI autopsy, and see what Claude makes of your radio promotion or playlist pitching. Takes 5 minutes to see real value."
 
 ---
@@ -179,6 +187,7 @@
 ## 🎯 KEY DEMO TIPS
 
 ### Before the Demo
+
 - [ ] Run seed script to populate demo campaigns
 - [ ] Test AI autopsy generation (verify ANTHROPIC_API_KEY works)
 - [ ] Download the CSV template for quick import demo
@@ -186,6 +195,7 @@
 - [ ] Test on both desktop and mobile (show brutalist design)
 
 ### During the Demo
+
 - [ ] Let AI autopsy load fully (10-15 seconds) - don't rush it
 - [ ] Show at least 2 campaigns with AI analysis
 - [ ] Copy an AI section to clipboard and paste somewhere (prove it works)
@@ -195,18 +205,23 @@
 ### Common Questions
 
 **Q: How accurate are the benchmarks?**
+
 > "Built from real UK campaign data - BBC Radio 1, 6Music, commercial stations, Spotify editorial playlists. Sample sizes vary by platform, but all UK-focused."
 
 **Q: Can I import existing campaign data?**
+
 > "Yes - CSV import takes your spreadsheet format and imports everything in seconds. Just demonstrated it."
 
 **Q: How does AI autopsy work?**
+
 > "We send your campaign data and UK benchmarks to Anthropic Claude (the AI behind this conversation). It analyses performance, compares to industry standards, and gives specific recommendations. Not just formulas."
 
 **Q: What if I don't have benchmark data for my genre/platform?**
+
 > "AI still works - it analyses your data and gives insights. Benchmarks enhance it when available. As more people use Tracker, benchmark coverage expands."
 
 **Q: Can I export for client reports?**
+
 > "Every AI section has a copy button. Export campaigns as CSV anytime. Build your client reports however you want."
 
 ---
@@ -214,6 +229,7 @@
 ## 📊 SUCCESS METRICS
 
 **Demo Success = At Least 2 of These:**
+
 1. They ask about pricing/signup during demo
 2. They want to import their actual campaign data
 3. They ask follow-up questions about AI analysis
@@ -221,6 +237,7 @@
 5. They mention specific campaigns they'd track
 
 **Follow-Up Action:**
+
 - Send CSV template immediately after demo
 - Offer to import their first campaign batch together
 - Schedule follow-up after they've tested with real data

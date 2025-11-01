@@ -23,6 +23,7 @@ Copy the **ENTIRE** contents of this file and paste into Supabase SQL Editor, th
 ## After Running:
 
 You should see:
+
 - "Success. No rows returned" message
 - No errors
 
@@ -38,8 +39,8 @@ SELECT tgname FROM pg_trigger WHERE tgrelid = 'campaigns'::regclass;
 -- Should show: trigger_calculate_intelligence
 
 -- Check new columns exist
-SELECT column_name FROM information_schema.columns 
-WHERE table_name = 'campaigns' 
+SELECT column_name FROM information_schema.columns
+WHERE table_name = 'campaigns'
 AND column_name IN ('success_rate', 'cost_per_result', 'performance_score');
 -- Should return 3 rows
 ```

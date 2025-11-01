@@ -1,4 +1,5 @@
 # 🎸 LIBERTY RECORDS DEMO GUIDE
+
 **Dan Meeting - Wednesday**
 **All PR Agency Features - Ready for Demo**
 
@@ -7,12 +8,14 @@
 ## ✅ WHAT WE BUILT (ALL 3 TIER 1 FEATURES)
 
 ### 1. Multi-Client Campaign Organisation (Tracker) ✅
+
 - Excel-style client filtering
 - AI chatbot for natural language queries
 - Client fields in campaign forms
 - Real Liberty Records data: Royal Blood, Architects, Rolo Tomassi
 
 ### 2. White-Label PDF Exports (Audio Intel) ✅
+
 - Professional brutalist design with Audio Intel pink (#FF006B)
 - Custom agency branding (logo, colors, name)
 - No "Powered by Audio Intel" watermark
@@ -20,6 +23,7 @@
 - Works for both Audio Intel contacts AND Tracker campaigns
 
 ### 3. Team Member Access System (All Apps) ✅
+
 - Multi-user accounts for agencies
 - Role-based permissions (Admin/Member/Client)
 - Invite team members by email
@@ -170,6 +174,7 @@
 ### Agency Plan: £79/month
 
 **Includes:**
+
 - Unlimited team members
 - White-label PDF exports
 - Multi-client campaign management
@@ -180,12 +185,14 @@
 ### ROI Calculation for Dan:
 
 **Current Reality (Manual):**
+
 - Junior staff: 8 hours/week on spreadsheet research = £160/week (£20/hour)
 - Campaign setup: 2 hours/campaign = £40/campaign
 - Client reports: 3 hours/report = £60/report
 - **Total monthly waste: ~£1,040**
 
 **With Agency Plan:**
+
 - Research: 15 minutes (automated) = £5
 - Campaign setup: 10 minutes (templates) = £3.33
 - Client reports: 5 minutes (white-label PDF) = £1.67
@@ -300,6 +307,7 @@ A: Yes - invite them as "Client" role (read-only). They see campaign progress bu
 
 **Q: "What's the difference between Professional and Agency plans?"**
 A:
+
 - **Professional (£19/month)**: Individual use, basic features, "Powered by" watermark
 - **Agency (£79/month)**: Team access, white-label, multi-client, unlimited members
 
@@ -311,18 +319,21 @@ A: Yes - 14-day free trial on Agency plan. Cancel anytime. No credit card requir
 ## 🎯 SUCCESS METRICS TO TRACK
 
 ### Week 1:
+
 - [ ] Liberty team signed up and onboarded
 - [ ] 3+ team members added with correct roles
 - [ ] White-label branding configured
 - [ ] 1+ client campaign migrated
 
 ### Month 1:
+
 - [ ] All active campaigns in Tracker
 - [ ] 5+ white-label PDFs generated for clients
 - [ ] 20+ hours saved on research (vs manual)
 - [ ] £500+ in additional client billing justified
 
 ### Month 3:
+
 - [ ] 10+ successful campaign completions
 - [ ] 100+ enriched contacts in database
 - [ ] 50+ hours/month time savings

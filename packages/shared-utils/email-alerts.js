@@ -22,7 +22,7 @@ class EmailAlerts {
     this.thresholds = {
       dailyCostGBP: options.dailyCostThreshold || 50,
       dataQualityPercent: options.qualityThreshold || 85,
-      agentFailureCount: options.failureThreshold || 3
+      agentFailureCount: options.failureThreshold || 3,
     };
   }
 
@@ -133,15 +133,23 @@ class EmailAlerts {
       <p><strong>Time:</strong> ${new Date().toLocaleString('en-GB')}</p>
       <p><strong>Error:</strong> ${error.message || error}</p>
 
-      ${error.stack ? `
+      ${
+        error.stack
+          ? `
         <h3>Stack Trace</h3>
         <pre style="background: white; padding: 10px; border-radius: 4px; overflow-x: auto;">${error.stack}</pre>
-      ` : ''}
+      `
+          : ''
+      }
 
-      ${Object.keys(context).length > 0 ? `
+      ${
+        Object.keys(context).length > 0
+          ? `
         <h3>Context</h3>
         <pre style="background: white; padding: 10px; border-radius: 4px; overflow-x: auto;">${JSON.stringify(context, null, 2)}</pre>
-      ` : ''}
+      `
+          : ''
+      }
 
       <h3>Next Steps</h3>
       <ol>
@@ -177,13 +185,17 @@ class EmailAlerts {
           </tr>
         </thead>
         <tbody>
-          ${Object.entries(breakdown).map(([service, data]) => `
+          ${Object.entries(breakdown)
+            .map(
+              ([service, data]) => `
             <tr>
               <td style="padding: 8px;">${service}</td>
               <td style="padding: 8px; text-align: right;">${data.requests}</td>
               <td style="padding: 8px; text-align: right;">£${data.cost.toFixed(2)}</td>
             </tr>
-          `).join('')}
+          `
+            )
+            .join('')}
         </tbody>
       </table>
 
@@ -276,9 +288,13 @@ class EmailAlerts {
       <div style="margin-top: 20px;">
         <h3>Agents Run Today</h3>
         <ul>
-          ${summary.agents.map(a => `
+          ${summary.agents
+            .map(
+              a => `
             <li><strong>${a.name}:</strong> ${a.status} - ${a.itemsProcessed} items processed</li>
-          `).join('')}
+          `
+            )
+            .join('')}
         </ul>
 
         <h3>Metrics</h3>
@@ -306,11 +322,15 @@ class EmailAlerts {
         <p><strong>This Month:</strong> £${summary.monthlyCost.toFixed(2)}</p>
 
         <h3>Manual Tasks Pending</h3>
-        ${summary.pendingTasks.length > 0 ? `
+        ${
+          summary.pendingTasks.length > 0
+            ? `
           <ul>
             ${summary.pendingTasks.map(task => `<li>${task}</li>`).join('')}
           </ul>
-        ` : '<p>✅ No manual tasks pending</p>'}
+        `
+            : '<p>✅ No manual tasks pending</p>'
+        }
       </div>
     `;
 
@@ -322,10 +342,13 @@ class EmailAlerts {
    */
   getTokenRenewalInstructions(service) {
     const instructions = {
-      'WARM': '<ol><li>Visit WARM dashboard</li><li>Navigate to API settings</li><li>Generate new token</li><li>Update .env file</li></ol>',
-      'Gmail': '<ol><li>Run: <code>cd tools/agents && ./quick-oauth-setup.sh</code></li><li>Complete OAuth flow</li><li>Tokens auto-updated</li></ol>',
-      'Airtable': '<ol><li>Visit Airtable account settings</li><li>Generate new personal access token</li><li>Update AIRTABLE_API_KEY in .env</li></ol>',
-      'Anthropic': '<ol><li>Visit console.anthropic.com</li><li>Generate new API key</li><li>Update ANTHROPIC_API_KEY in .env</li></ol>'
+      WARM: '<ol><li>Visit WARM dashboard</li><li>Navigate to API settings</li><li>Generate new token</li><li>Update .env file</li></ol>',
+      Gmail:
+        '<ol><li>Run: <code>cd tools/agents && ./quick-oauth-setup.sh</code></li><li>Complete OAuth flow</li><li>Tokens auto-updated</li></ol>',
+      Airtable:
+        '<ol><li>Visit Airtable account settings</li><li>Generate new personal access token</li><li>Update AIRTABLE_API_KEY in .env</li></ol>',
+      Anthropic:
+        '<ol><li>Visit console.anthropic.com</li><li>Generate new API key</li><li>Update ANTHROPIC_API_KEY in .env</li></ol>',
     };
 
     return instructions[service] || '<p>Check service documentation for renewal instructions.</p>';
@@ -336,10 +359,10 @@ class EmailAlerts {
    */
   getAffectedAgents(service) {
     const affected = {
-      'WARM': ['station-discovery-system', 'get-real-campaign-data'],
-      'Gmail': ['liberty-autopilot', 'all Gmail integrations'],
-      'Airtable': ['enrich-all-contacts', 'clean-airtable-contacts', 'update-fields-from-enrichment'],
-      'Anthropic': ['enrich-all-contacts', 'newsletter-automation-agent', 'content-generation-agent']
+      WARM: ['station-discovery-system', 'get-real-campaign-data'],
+      Gmail: ['liberty-autopilot', 'all Gmail integrations'],
+      Airtable: ['enrich-all-contacts', 'clean-airtable-contacts', 'update-fields-from-enrichment'],
+      Anthropic: ['enrich-all-contacts', 'newsletter-automation-agent', 'content-generation-agent'],
     };
 
     const agents = affected[service] || ['Unknown'];

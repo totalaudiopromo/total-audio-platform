@@ -3,6 +3,7 @@
 ## Completed (2/8 pages - 25%)
 
 ### ✅ BBC Radio 1 Contact Enrichment
+
 - **Word count**: ~2,700 words (was ~1,200)
 - **New sections added**:
   - Understanding BBC Radio 1's Contact Structure (3 subsections)
@@ -15,6 +16,7 @@
 - **Deployed**: ✅ Live on production
 
 ### ✅ Spotify Editorial Playlist Contacts
+
 - **Word count**: ~2,800 words (was ~1,400)
 - **New sections added**:
   - Understanding Spotify's Editorial Playlist Structure (3 subsections)
@@ -33,6 +35,7 @@
 ### Tier 1 Pages (High priority - 1,000+ monthly searches)
 
 #### 🔄 BBC Radio 6 Music Contact Enrichment
+
 - **Current word count**: ~1,100 words
 - **Target**: 2,500+ words
 - **Sections to add**:
@@ -43,6 +46,7 @@
   - Getting started guide
 
 #### 🔄 BBC Radio 1Xtra Contact Enrichment
+
 - **Current word count**: ~1,000 words
 - **Target**: 2,500+ words
 - **Sections to add**:
@@ -55,6 +59,7 @@
 ### Tier 2 Pages (Medium priority - 500-1,000 monthly searches)
 
 #### 🔄 Apple Music Editorial Contacts
+
 - **Current word count**: ~1,100 words
 - **Target**: 2,500+ words
 - **Sections to add**:
@@ -65,6 +70,7 @@
   - Getting started guide
 
 #### 🔄 BBC Radio 2 Contact Enrichment
+
 - **Current word count**: ~1,000 words
 - **Target**: 2,500+ words
 - **Sections to add**:
@@ -77,6 +83,7 @@
 ### Tier 3 Pages (Lower priority - 200-500 monthly searches)
 
 #### 🔄 Kerrang Radio Contact Enrichment
+
 - **Current word count**: ~900 words
 - **Target**: 2,500+ words
 - **Sections to add**:
@@ -87,6 +94,7 @@
   - Getting started guide
 
 #### 🔄 Absolute Radio Contact Enrichment
+
 - **Current word count**: ~850 words
 - **Target**: 2,500+ words
 - **Sections to add**:
@@ -103,26 +111,31 @@
 Each page needs 5 new sections:
 
 ### 1. Understanding [Station/Platform] Structure (400-500 words)
+
 - 3 subsections explaining how the platform works
 - What makes it different from competitors
 - Internal workflow details that affect pitching
 
 ### 2. 5 Common Mistakes That Kill [Campaign Type] (400-500 words)
+
 - 5 red-bordered boxes highlighting mistakes
 - Each mistake with explanation
 - How Audio Intel prevents the mistake
 
 ### 3. Beyond [Station/Platform]: Scaling the Same Workflow (300-400 words)
+
 - 4 internal link cards to related PSEO pages
 - Each card with brief description + "Read more →" link
 - Cross-pollination across BBC stations, streaming platforms, commercial radio
 
 ### 4. FAQ Section with Schema Markup (500-600 words)
+
 - 6 collapsible FAQ items
 - JSON-LD FAQPage schema at bottom of page
 - Questions address: email requirements, accuracy, timing, formats, other platforms, who it's for
 
 ### 5. Getting Started Guide (300-400 words)
+
 - 5-step process in styled boxes
 - Step 1: Gather contacts
 - Step 2: Format CSV
@@ -139,16 +152,19 @@ Each page needs 5 new sections:
 ## Internal Linking Strategy
 
 ### BBC Network Cross-Linking
+
 - Radio 1 → Radio 2, 6 Music, 1Xtra
 - Radio 2 → Radio 1, 6 Music, commercial
 - 6 Music → Radio 1, Radio 2, 1Xtra
 - 1Xtra → Radio 1, 6 Music, local urban stations
 
 ### Streaming Platform Cross-Linking
+
 - Spotify → Apple Music, BBC Radio 1, indie curators
 - Apple Music → Spotify, BBC Radio 1, BBC 6 Music
 
 ### Commercial Radio Cross-Linking
+
 - Kerrang → Absolute, BBC Radio 1, alternative stations
 - Absolute → Kerrang, BBC Radio 2, commercial networks
 
@@ -166,6 +182,7 @@ Each page needs 5 new sections:
 - [ ] **Absolute**: Expand to 2,500+ words
 
 ### Schema Markup Status
+
 - [x] BBC Radio 1: FAQPage schema with 6 questions ✅
 - [x] Spotify Editorial: FAQPage schema with 6 questions ✅
 - [ ] BBC 6 Music: Add FAQPage schema
@@ -176,6 +193,7 @@ Each page needs 5 new sections:
 - [ ] Absolute: Add FAQPage schema
 
 ### Internal Linking Status
+
 - [x] BBC Radio 1: 4 internal links (6 Music, Spotify, 1Xtra, Kerrang) ✅
 - [x] Spotify Editorial: 4 internal links (Apple Music, Radio 1, 6 Music, Contacts) ✅
 - [ ] BBC 6 Music: Add 4 internal links
@@ -190,6 +208,7 @@ Each page needs 5 new sections:
 ## Analytics Integration Status
 
 All 8 PSEO pages wrapped with `PSEOPageWrapper` component for tracking:
+
 - Page views with metadata (topic, search volume, tier)
 - Referrer tracking (organic vs paid)
 - UTM parameter capture
@@ -216,6 +235,7 @@ Data flowing to Command Centre dashboard at `command.totalaudiopromo.com/analyti
 ## Success Metrics
 
 ### Current Progress
+
 - **Pages completed**: 2/8 (25%)
 - **Word count added**: ~3,100 words across 2 pages
 - **Schema markup added**: 2 FAQPage schemas (12 total FAQ questions)
@@ -223,6 +243,7 @@ Data flowing to Command Centre dashboard at `command.totalaudiopromo.com/analyti
 - **Deployment status**: ✅ Live on production
 
 ### Target Metrics (When All 8 Pages Complete)
+
 - **Total word count**: 20,000+ words across 8 pages
 - **Average page length**: 2,500-3,000 words
 - **FAQ questions**: 48 total (6 per page)

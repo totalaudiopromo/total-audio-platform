@@ -64,7 +64,7 @@ class LibertyAutopilot {
       const response = await this.gmail.users.messages.list({
         userId: 'me',
         q: `${query} newer_than:${hours}h`,
-        maxResults: 50
+        maxResults: 50,
       });
 
       return response.data.messages || [];
@@ -84,8 +84,8 @@ class LibertyAutopilot {
         id: messageId,
         requestBody: {
           addLabelIds,
-          removeLabelIds
-        }
+          removeLabelIds,
+        },
       });
       return true;
     } catch (error) {
@@ -159,11 +159,13 @@ class LibertyAutopilot {
 
       if (await this.modifyLabels(message.id, addLabels, removeLabels)) {
         // Mark as read
-        await this.gmail.users.messages.modify({
-          userId: 'me',
-          id: message.id,
-          requestBody: { removeLabelIds: ['UNREAD'] }
-        }).catch(() => {});
+        await this.gmail.users.messages
+          .modify({
+            userId: 'me',
+            id: message.id,
+            requestBody: { removeLabelIds: ['UNREAD'] },
+          })
+          .catch(() => {});
 
         this.actions.push('WARM: archived to Marketing Junk');
       }
@@ -191,11 +193,13 @@ class LibertyAutopilot {
 
       if (await this.modifyLabels(message.id, addLabels, removeLabels)) {
         // Mark as read
-        await this.gmail.users.messages.modify({
-          userId: 'me',
-          id: message.id,
-          requestBody: { removeLabelIds: ['UNREAD'] }
-        }).catch(() => {});
+        await this.gmail.users.messages
+          .modify({
+            userId: 'me',
+            id: message.id,
+            requestBody: { removeLabelIds: ['UNREAD'] },
+          })
+          .catch(() => {});
 
         this.actions.push('Machina: archived to Marketing Junk');
       }
@@ -206,7 +210,9 @@ class LibertyAutopilot {
    * Process other marketing junk
    */
   async processOtherMarketing() {
-    const messages = await this.searchRecentEmails('from:musicreaction OR subject:"grow your audience" -from:libertymusicpr.com');
+    const messages = await this.searchRecentEmails(
+      'from:musicreaction OR subject:"grow your audience" -from:libertymusicpr.com'
+    );
     if (messages.length === 0) return;
 
     this.log(`Found ${messages.length} new marketing emails`);
@@ -223,11 +229,13 @@ class LibertyAutopilot {
 
       if (await this.modifyLabels(message.id, addLabels, removeLabels)) {
         // Mark as read
-        await this.gmail.users.messages.modify({
-          userId: 'me',
-          id: message.id,
-          requestBody: { removeLabelIds: ['UNREAD'] }
-        }).catch(() => {});
+        await this.gmail.users.messages
+          .modify({
+            userId: 'me',
+            id: message.id,
+            requestBody: { removeLabelIds: ['UNREAD'] },
+          })
+          .catch(() => {});
 
         this.actions.push('Marketing: archived to Marketing Junk');
       }
@@ -239,7 +247,9 @@ class LibertyAutopilot {
    */
   async autoCreateCampaignLabels() {
     // Find new campaign assignments
-    const messages = await this.searchRecentEmails('cc:chrisschofield@libertymusicpr.com (subject:R4 OR subject:R6) -subject:Re:');
+    const messages = await this.searchRecentEmails(
+      'cc:chrisschofield@libertymusicpr.com (subject:R4 OR subject:R6) -subject:Re:'
+    );
 
     if (messages.length === 0) return;
 
@@ -252,7 +262,7 @@ class LibertyAutopilot {
           userId: 'me',
           id: message.id,
           format: 'metadata',
-          metadataHeaders: ['Subject']
+          metadataHeaders: ['Subject'],
         });
 
         const subject = details.data.payload.headers.find(h => h.name === 'Subject')?.value || '';
@@ -270,14 +280,15 @@ class LibertyAutopilot {
               requestBody: {
                 name: labelName,
                 labelListVisibility: 'labelShow',
-                messageListVisibility: 'show'
-              }
+                messageListVisibility: 'show',
+              },
             });
 
             this.log(`✅ Created campaign label: ${labelName}`);
             this.actions.push(`Campaign label created: ${campaignName}`);
           } catch (error) {
-            if (error.code !== 409) { // Ignore "already exists" errors
+            if (error.code !== 409) {
+              // Ignore "already exists" errors
               this.log(`⚠️  Failed to create label ${labelName}: ${error.message}`);
             }
           }
@@ -309,7 +320,6 @@ class LibertyAutopilot {
         this.log(`✅ Autopilot complete - ${this.actions.length} actions taken:`);
         this.actions.forEach(action => this.log(`  - ${action}`));
       }
-
     } catch (error) {
       this.log(`❌ Autopilot failed: ${error.message}`);
       throw error;
@@ -333,7 +343,7 @@ class LibertyAutopilot {
         'Personal Tools/Gemini',
         'Marketing Junk/WARM',
         'Marketing Junk/Machina',
-        'Liberty/Station Feedback'
+        'Liberty/Station Feedback',
       ];
 
       for (const labelName of requiredLabels) {
@@ -347,7 +357,6 @@ class LibertyAutopilot {
 
       this.log('✅ Autopilot test complete');
       return true;
-
     } catch (error) {
       this.log(`❌ Test failed: ${error.message}`);
       return false;
@@ -382,7 +391,6 @@ async function main() {
         console.log('For overnight automation, add to crontab:');
         console.log('  0 * * * * cd /path/to/gmail-setup && node liberty-autopilot.js run');
     }
-
   } catch (error) {
     console.error('❌ Command failed:', error.message);
     process.exit(1);

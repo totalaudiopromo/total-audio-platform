@@ -3,25 +3,25 @@
  * Copy this to your app and customise as needed
  */
 
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { createBrowserClient } from '@total-audio/auth'
+import { useState } from 'react';
+import { createBrowserClient } from '@total-audio/auth';
 
 export function SignUpForm() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [fullName, setFullName] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState(false)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
 
-  const supabase = createBrowserClient()
+  const supabase = createBrowserClient();
 
   const handleSignUp = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError(null)
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
 
     try {
       const { error } = await supabase.auth.signUp({
@@ -33,17 +33,17 @@ export function SignUpForm() {
           },
           emailRedirectTo: `${window.location.origin}/auth/callback`,
         },
-      })
+      });
 
-      if (error) throw error
+      if (error) throw error;
 
-      setSuccess(true)
+      setSuccess(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to sign up')
+      setError(err instanceof Error ? err.message : 'Failed to sign up');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   if (success) {
     return (
@@ -62,7 +62,7 @@ export function SignUpForm() {
           </a>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -78,7 +78,7 @@ export function SignUpForm() {
             id="fullName"
             type="text"
             value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            onChange={e => setFullName(e.target.value)}
             required
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="John Doe"
@@ -93,7 +93,7 @@ export function SignUpForm() {
             id="email"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             required
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="you@example.com"
@@ -108,15 +108,13 @@ export function SignUpForm() {
             id="password"
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             required
             minLength={8}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="••••••••"
           />
-          <p className="mt-1 text-xs text-gray-500">
-            Must be at least 8 characters
-          </p>
+          <p className="mt-1 text-xs text-gray-500">Must be at least 8 characters</p>
         </div>
 
         {error && (
@@ -141,5 +139,5 @@ export function SignUpForm() {
         </a>
       </p>
     </div>
-  )
+  );
 }

@@ -24,49 +24,50 @@ export function getUserFriendlyError(context: ErrorContext): {
           suggestions: [
             'Split your contacts into smaller files (max 1000 contacts per file)',
             'Remove any unnecessary columns to reduce file size',
-            'Try saving as CSV instead of Excel if you\'re using .xlsx'
+            "Try saving as CSV instead of Excel if you're using .xlsx",
           ],
           actionText: 'Upload Guidelines',
-          actionUrl: '/documentation#upload-limits'
+          actionUrl: '/documentation#upload-limits',
         };
-      
+
       case 'INVALID_FORMAT':
         return {
           title: 'Invalid File Format',
-          message: 'We couldn\'t read your file. Please check the format.',
+          message: "We couldn't read your file. Please check the format.",
           suggestions: [
             'Make sure your file is CSV, Excel (.xlsx), or plain text',
-            'Check that your file isn\'t corrupted',
-            'Try opening the file in Excel and saving as CSV'
+            "Check that your file isn't corrupted",
+            'Try opening the file in Excel and saving as CSV',
           ],
           actionText: 'Supported Formats',
-          actionUrl: '/documentation#supported-formats'
+          actionUrl: '/documentation#supported-formats',
         };
-      
+
       case 'NO_EMAILS_FOUND':
         return {
           title: 'No Email Addresses Found',
-          message: 'We couldn\'t find any valid email addresses in your file.',
+          message: "We couldn't find any valid email addresses in your file.",
           suggestions: [
             'Make sure your file has a column with email addresses',
             'Check that email addresses are in a column named "email" or "Email"',
-            'Verify that email addresses are properly formatted'
+            'Verify that email addresses are properly formatted',
           ],
           actionText: 'File Format Guide',
-          actionUrl: '/documentation#file-format'
+          actionUrl: '/documentation#file-format',
         };
-      
+
       case 'PARSE_ERROR':
         return {
           title: 'File Parsing Error',
-          message: 'We had trouble reading your file. This usually means the format isn\'t quite right.',
+          message:
+            "We had trouble reading your file. This usually means the format isn't quite right.",
           suggestions: [
             'Try saving your file as CSV with comma separators',
             'Make sure there are no special characters in headers',
-            'Check that all rows have the same number of columns'
+            'Check that all rows have the same number of columns',
           ],
           actionText: 'Fix Your File',
-          actionUrl: '/documentation#troubleshooting'
+          actionUrl: '/documentation#troubleshooting',
         };
     }
   }
@@ -77,40 +78,40 @@ export function getUserFriendlyError(context: ErrorContext): {
       case 'API_ERROR':
         return {
           title: 'Enrichment Service Temporarily Unavailable',
-          message: 'Our AI enrichment service is having issues. Don\'t worry, your file is safe.',
+          message: "Our AI enrichment service is having issues. Don't worry, your file is safe.",
           suggestions: [
             'Try again in a few minutes - this usually fixes itself',
             'Check our status page for service updates',
-            'Contact support if the problem persists'
+            'Contact support if the problem persists',
           ],
           actionText: 'Try Again',
-          actionUrl: undefined
+          actionUrl: undefined,
         };
-      
+
       case 'RATE_LIMITED':
         return {
           title: 'Too Many Requests',
-          message: 'You\'re processing contacts too quickly. Please slow down a bit.',
+          message: "You're processing contacts too quickly. Please slow down a bit.",
           suggestions: [
             'Wait 30 seconds before trying again',
             'Try processing smaller batches (max 50 contacts at once)',
-            'Consider upgrading to Professional for faster processing'
+            'Consider upgrading to Professional for faster processing',
           ],
           actionText: 'Upgrade for Faster Processing',
-          actionUrl: '/pricing'
+          actionUrl: '/pricing',
         };
-      
+
       case 'INVALID_EMAILS':
         return {
           title: 'Invalid Email Addresses',
-          message: 'Some email addresses in your file aren\'t valid.',
+          message: "Some email addresses in your file aren't valid.",
           suggestions: [
             'Check for typos in email addresses',
             'Remove any test or placeholder emails',
-            'Use our email validation tool to clean your list first'
+            'Use our email validation tool to clean your list first',
           ],
           actionText: 'Validate Emails First',
-          actionUrl: '/email-validation'
+          actionUrl: '/email-validation',
         };
     }
   }
@@ -121,16 +122,16 @@ export function getUserFriendlyError(context: ErrorContext): {
       case 'EXPORT_FAILED':
         return {
           title: 'Export Failed',
-          message: 'We couldn\'t create your export file. This is usually temporary.',
+          message: "We couldn't create your export file. This is usually temporary.",
           suggestions: [
             'Try exporting again in a few moments',
             'Check that you have enough disk space',
-            'Try a different export format (CSV instead of Excel)'
+            'Try a different export format (CSV instead of Excel)',
           ],
           actionText: 'Try Again',
-          actionUrl: undefined
+          actionUrl: undefined,
         };
-      
+
       case 'FILE_TOO_LARGE_EXPORT':
         return {
           title: 'Export Too Large',
@@ -138,10 +139,10 @@ export function getUserFriendlyError(context: ErrorContext): {
           suggestions: [
             'Try exporting as CSV instead of Excel',
             'Split your contacts into smaller batches',
-            'Contact support for large file exports'
+            'Contact support for large file exports',
           ],
           actionText: 'Contact Support',
-          actionUrl: 'mailto:support@totalaudiopromo.com'
+          actionUrl: 'mailto:support@totalaudiopromo.com',
         };
     }
   }
@@ -152,27 +153,27 @@ export function getUserFriendlyError(context: ErrorContext): {
       case 'NETWORK_ERROR':
         return {
           title: 'Connection Problem',
-          message: 'We can\'t connect to our servers right now. Check your internet connection.',
+          message: "We can't connect to our servers right now. Check your internet connection.",
           suggestions: [
             'Check your internet connection',
             'Try refreshing the page',
-            'Disable any VPN or proxy that might be blocking the connection'
+            'Disable any VPN or proxy that might be blocking the connection',
           ],
           actionText: 'Refresh Page',
-          actionUrl: undefined
+          actionUrl: undefined,
         };
-      
+
       case 'SERVER_ERROR':
         return {
           title: 'Server Error',
-          message: 'Something went wrong on our end. We\'re working to fix it.',
+          message: "Something went wrong on our end. We're working to fix it.",
           suggestions: [
             'Try again in a few minutes',
             'Check our status page for updates',
-            'Contact support if the problem continues'
+            'Contact support if the problem continues',
           ],
           actionText: 'Check Status',
-          actionUrl: '/status'
+          actionUrl: '/status',
         };
     }
   }
@@ -180,14 +181,14 @@ export function getUserFriendlyError(context: ErrorContext): {
   // Default error
   return {
     title: 'Something Went Wrong',
-    message: 'An unexpected error occurred. We\'re sorry for the inconvenience.',
+    message: "An unexpected error occurred. We're sorry for the inconvenience.",
     suggestions: [
       'Try refreshing the page and starting over',
       'Check that all your information is correct',
-      'Contact support if the problem persists'
+      'Contact support if the problem persists',
     ],
     actionText: 'Contact Support',
-    actionUrl: 'mailto:support@totalaudiopromo.com'
+    actionUrl: 'mailto:support@totalaudiopromo.com',
   };
 }
 

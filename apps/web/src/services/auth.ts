@@ -38,14 +38,14 @@ class AuthServiceImpl implements AuthService {
 
   async getCurrentUser(): Promise<User | null> {
     if (typeof window === 'undefined') return null;
-    
+
     const token = localStorage.getItem('token');
     if (!token) return null;
 
     try {
       const response = await fetch(`${this.baseUrl}/api/auth/me`, {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -63,14 +63,14 @@ class AuthServiceImpl implements AuthService {
 
   async refreshToken(): Promise<string> {
     if (typeof window === 'undefined') throw new Error('Cannot refresh token on server side');
-    
+
     const token = localStorage.getItem('token');
     if (!token) throw new Error('No token to refresh');
 
     const response = await fetch(`${this.baseUrl}/api/auth/refresh`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -85,4 +85,4 @@ class AuthServiceImpl implements AuthService {
   }
 }
 
-export const authService = new AuthServiceImpl(); 
+export const authService = new AuthServiceImpl();

@@ -11,7 +11,8 @@
 
 const fetch = require('node-fetch');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -27,20 +28,20 @@ async function addFields() {
         choices: [
           { name: 'High', color: 'greenBright' },
           { name: 'Medium', color: 'yellowBright' },
-          { name: 'Low', color: 'redBright' }
-        ]
-      }
+          { name: 'Low', color: 'redBright' },
+        ],
+      },
     },
     {
       name: 'Enrichment Notes',
       type: 'multilineText',
-      description: 'AI-generated intelligence: station info, best for, pitch strategy, data issues'
+      description: 'AI-generated intelligence: station info, best for, pitch strategy, data issues',
     },
     {
       name: 'Last Enriched',
       type: 'date',
-      description: 'When AI enrichment was last performed'
-    }
+      description: 'When AI enrichment was last performed',
+    },
   ];
 
   console.log('Attempting to add fields:\n');
@@ -52,14 +53,17 @@ async function addFields() {
   try {
     // Try to add fields via API
     for (const field of fieldsToAdd) {
-      const response = await fetch(`https://api.airtable.com/v0/meta/bases/${BASE_ID}/tables/${TABLE_ID}/fields`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(field)
-      });
+      const response = await fetch(
+        `https://api.airtable.com/v0/meta/bases/${BASE_ID}/tables/${TABLE_ID}/fields`,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(field),
+        }
+      );
 
       if (response.ok) {
         console.log(`   ✅ Added: ${field.name}`);

@@ -28,6 +28,7 @@ The breaking point came during a BBC Radio 1 campaign for an electronic music cl
 ### The BBC Radio 1 Campaign That Changed Everything
 
 **The Brief:**
+
 - Artist: Electronic music producer (house/techno)
 - Goal: BBC Radio placement for new single
 - Timeline: 3-week campaign window
@@ -36,24 +37,28 @@ The breaking point came during a BBC Radio 1 campaign for an electronic music cl
 **Traditional Contact Research Process:**
 
 **Friday Evening (6pm-11pm): 5 hours**
+
 - Researching current BBC Radio 1 shows
 - Finding presenter contact information
 - Understanding show format changes
 - Identifying genre-appropriate slots
 
 **Saturday Morning (9am-1pm): 4 hours**
+
 - Verifying email addresses
 - Researching submission guidelines
 - Checking social media for recent activity
 - Understanding preferred submission formats
 
 **Saturday Afternoon (2pm-6pm): 4 hours**
+
 - Tracking recent playlist additions
 - Understanding genre preferences per show
 - Researching presenter interview history
 - Identifying strategic timing windows
 
 **Sunday Morning (9am-2pm): 5 hours**
+
 - Cross-referencing all research
 - Verifying data accuracy
 - Organising findings in spreadsheet
@@ -64,6 +69,7 @@ The breaking point came during a BBC Radio 1 campaign for an electronic music cl
 **The Result:**
 
 Monday morning, I had detailed intelligence on 5 BBC Radio 1 contacts:
+
 - Annie Mac's show (electronic music focus)
 - Danny Howard's show (house/techno specialist)
 - Pete Tong's show (established electronic artists)
@@ -73,6 +79,7 @@ Monday morning, I had detailed intelligence on 5 BBC Radio 1 contacts:
 The research was solid. The pitches were personalised. We secured a placement on Danny Howard's show.
 
 **The track generated:**
+
 - 250,000+ Spotify streams
 - 1,200+ playlist adds
 - £8,500+ in streaming revenue
@@ -111,6 +118,7 @@ I rebuilt the exact same BBC Radio 1 campaign using Audio Intel.
 **Contact 1: Annie Mac (BBC Radio 1)**
 
 **Audio Intel Enrichment (24 seconds):**
+
 - Show: Annie Mac's show (Friday 7pm-9pm)
 - Submission: aniemac@bbc.co.uk (verified current)
 - Genre focus: Electronic, house, techno, UK garage
@@ -126,6 +134,7 @@ I rebuilt the exact same BBC Radio 1 campaign using Audio Intel.
 **Contact 2: Danny Howard (BBC Radio 1)**
 
 **Audio Intel Enrichment (31 seconds):**
+
 - Show: Danny Howard's show (Saturday 1am-3am)
 - Submission: danny.howard@bbc.co.uk (verified current)
 - Genre focus: House, techno, tech house
@@ -141,6 +150,7 @@ I rebuilt the exact same BBC Radio 1 campaign using Audio Intel.
 **Contact 3: Pete Tong (BBC Radio 1)**
 
 **Audio Intel Enrichment (28 seconds):**
+
 - Show: Pete Tong's show (Friday 9pm-11pm)
 - Submission: pete.tong@bbc.co.uk (verified current)
 - Genre focus: Established electronic artists
@@ -156,6 +166,7 @@ I rebuilt the exact same BBC Radio 1 campaign using Audio Intel.
 **Contact 4: BBC Introducing**
 
 **Audio Intel Enrichment (26 seconds):**
+
 - Show: BBC Introducing (various regional shows)
 - Submission: Region-specific contacts enriched
 - Genre focus: All genres, new artist focus
@@ -171,6 +182,7 @@ I rebuilt the exact same BBC Radio 1 campaign using Audio Intel.
 **Contact 5: Residency Programme**
 
 **Audio Intel Enrichment (29 seconds):**
+
 - Show: BBC Radio 1 Residency programme
 - Submission: residency@bbc.co.uk (verified current)
 - Genre focus: Electronic music specialists
@@ -204,6 +216,7 @@ Improvement: 24-34% better accuracy
 **Outcome Comparison:**
 
 **Campaign 1 (Manual Research):**
+
 - Research time: 18 hours
 - Pitch sent: Monday afternoon
 - Response rate: 20% (1 of 5)
@@ -211,6 +224,7 @@ Improvement: 24-34% better accuracy
 - Streams generated: 250,000+
 
 **Campaign 2 (Audio Intel):**
+
 - Research time: 2 minutes
 - Pitch sent: Monday morning (4 hours earlier)
 - Response rate: 40% (2 of 5)
@@ -229,24 +243,28 @@ Improvement: 24-34% better accuracy
 Let's calculate what that 18 hours actually costs:
 
 **Financial Cost:**
+
 - Radio promoter rate: £50/hour average
 - 18 hours research × £50 = £900 per campaign
 - 4 campaigns monthly = £3,600/month
 - Annual cost: £43,200
 
 **Opportunity Cost:**
+
 - 18 hours that could be spent on strategic pitching
 - 18 hours that could be spent on relationship building
 - 18 hours that could be spent on music production
 - 18 hours that could be spent on client acquisition
 
 **Quality Cost:**
+
 - 30-40% of manual research becomes outdated within 3 months
 - Wrong contact information damages sender reputation
 - Missed submission guidelines waste presenter time
 - Generic pitches from poor intelligence get ignored
 
 **Personal Cost:**
+
 - Entire weekend lost to data entry
 - No time for music creation
 - Relationship strain (girlfriend, family time)
@@ -255,10 +273,12 @@ Let's calculate what that 18 hours actually costs:
 ### Audio Intel ROI Calculation
 
 **Investment:**
+
 - Professional plan: £19/month
 - Annual cost: £228
 
 **Return:**
+
 - Time saved: 18 hours × 4 campaigns = 72 hours monthly
 - Value at £50/hour: £3,600/month = £43,200/year
 - Cost: £228/year
@@ -266,6 +286,7 @@ Let's calculate what that 18 hours actually costs:
 - ROI: 18,737%
 
 **Plus Improved Results:**
+
 - 40% better response rates
 - 24-34% better accuracy
 - 68% more streams generated
@@ -274,6 +295,7 @@ Let's calculate what that 18 hours actually costs:
 **Real-World Impact:**
 
 For one BBC Radio 1 campaign:
+
 - Cost: £0.48 (£19/month ÷ 40 campaigns)
 - Time saved: 18 hours
 - Value: £900
@@ -328,6 +350,7 @@ Automate the data entry. Focus on what actually drives placements.
 **Step 1: Gather Your Basic Contacts**
 
 Start with what you have:
+
 - Contact names
 - Email addresses (even if uncertain)
 - Radio station or show name
@@ -344,6 +367,7 @@ Don't worry about having complete information. Audio Intel fills in the gaps.
 **Step 3: Review Enriched Intelligence**
 
 Audio Intel provides:
+
 - Verified contact information
 - Show format and schedule
 - Genre preferences and recent additions
@@ -354,6 +378,7 @@ Audio Intel provides:
 **Step 4: Use Intelligence for Personalised Pitches**
 
 Take the enriched data and craft pitches that:
+
 - Reference recent playlist additions
 - Follow stated submission guidelines
 - Understand show format and audience
@@ -365,6 +390,7 @@ Take the enriched data and craft pitches that:
 Monitor your response rates and placement success. Audio Intel intelligence should improve your outcomes measurably.
 
 Average improvements users report:
+
 - 95% reduction in research time
 - 300% better response rates
 - 94% contact accuracy
@@ -372,13 +398,13 @@ Average improvements users report:
 
 ### Real Radio Promoter Feedback
 
-*"I've been promoting to UK radio for 8 years. Audio Intel is the first tool I've found that actually understands what we need. The BBC Radio 1 intelligence alone is worth £19/month."*
+_"I've been promoting to UK radio for 8 years. Audio Intel is the first tool I've found that actually understands what we need. The BBC Radio 1 intelligence alone is worth £19/month."_
 — Sarah K., Independent Radio Promoter, London
 
-*"Went from spending entire weekends on research to 5 minutes on Monday morning. The time savings are incredible. The accuracy is even better."*
+_"Went from spending entire weekends on research to 5 minutes on Monday morning. The time savings are incredible. The accuracy is even better."_
 — Mike T., PR Agency Director, Manchester
 
-*"Finally, a tool built by someone who actually does radio promotion. The submission guidelines are always current. The strategic tips are genuinely useful."*
+_"Finally, a tool built by someone who actually does radio promotion. The submission guidelines are always current. The strategic tips are genuinely useful."_
 — Emma R., Music PR Specialist, Brighton
 
 ### Conclusion: Stop Wasting Weekends on Research
@@ -408,6 +434,7 @@ Chris Schofield is a music producer (sadact) and radio promoter based in Brighto
 ---
 
 **SEO Keywords Used:**
+
 - BBC Radio 1 submission (primary)
 - radio contact research (primary)
 - UK radio promotion (secondary)
@@ -416,12 +443,14 @@ Chris Schofield is a music producer (sadact) and radio promoter based in Brighto
 - contact enrichment music industry (tertiary)
 
 **Internal Links:**
+
 - Link to Audio Intel features page
 - Link to pricing page
 - Link to free trial signup
 - Link to other case studies
 
 **External Links:**
+
 - BBC Radio 1 official submission guidelines
 - UK radio industry statistics
 - Music promotion best practices
@@ -444,6 +473,7 @@ Most radio promoters focus on BBC Radio 1 and ignore regional stations.
 Massive mistake.
 
 **UK Regional Radio Statistics:**
+
 - 300+ regional stations across UK
 - Combined reach: 35+ million listeners
 - Less competitive than national stations
@@ -460,6 +490,7 @@ Until now.
 ### The Campaign: Electronic Music Release to Regional Stations
 
 **The Brief:**
+
 - Artist: Emerging electronic music producer
 - Release: New single (house music)
 - Target: Regional UK radio stations
@@ -470,6 +501,7 @@ Until now.
 **Traditional Regional Radio Research Process:**
 
 **Week 1: Station Identification (20 hours)**
+
 - Researching 300+ UK regional stations
 - Identifying genre-appropriate targets
 - Understanding coverage areas
@@ -477,6 +509,7 @@ Until now.
 - Assessing programming formats
 
 **Week 2: Contact Research (15 hours)**
+
 - Finding station contact information
 - Identifying music directors
 - Researching presenter contacts
@@ -484,6 +517,7 @@ Until now.
 - Verifying contact accuracy
 
 **Week 3: Intelligence Gathering (12 hours)**
+
 - Understanding submission preferences
 - Researching genre compatibility
 - Tracking recent playlist additions
@@ -491,6 +525,7 @@ Until now.
 - Identifying strategic timing
 
 **Week 4: Data Organisation (8 hours)**
+
 - Compiling all research into spreadsheets
 - Cross-referencing information
 - Verifying data accuracy
@@ -500,6 +535,7 @@ Until now.
 **Total Manual Research Time: 55 hours**
 
 **The Cost:**
+
 - 55 hours × £50/hour = £2,750
 - More than the entire campaign budget
 - Nearly 2 full working weeks
@@ -531,6 +567,7 @@ I ran the exact same campaign using Audio Intel.
 **Station 1: BBC Radio Manchester**
 
 **Audio Intel Enrichment (4.2 seconds):**
+
 - Coverage: Greater Manchester, 2.8M population
 - Format: News, talk, local music
 - Submission: manchester.music@bbc.co.uk
@@ -546,6 +583,7 @@ I ran the exact same campaign using Audio Intel.
 **Station 2: Heart North West**
 
 **Audio Intel Enrichment (3.8 seconds):**
+
 - Coverage: North West England, 4.2M population
 - Format: Contemporary hit radio
 - Submission: music@heart.co.uk
@@ -561,6 +599,7 @@ I ran the exact same campaign using Audio Intel.
 **Station 3: Gaydio (Manchester)**
 
 **Audio Intel Enrichment (4.5 seconds):**
+
 - Coverage: Manchester + online streaming, 500K weekly
 - Format: Electronic, dance, pop
 - Submission: music@gaydio.co.uk
@@ -576,6 +615,7 @@ I ran the exact same campaign using Audio Intel.
 **Station 4: BBC Radio Merseyside**
 
 **Audio Intel Enrichment (4.1 seconds):**
+
 - Coverage: Merseyside, 1.4M population
 - Format: News, talk, local music focus
 - Submission: merseyside.music@bbc.co.uk
@@ -591,6 +631,7 @@ I ran the exact same campaign using Audio Intel.
 **Station 5: Capital North West**
 
 **Audio Intel Enrichment (3.9 seconds):**
+
 - Coverage: North West England, 3.8M population
 - Format: Contemporary hit radio
 - Submission: music@capitalfm.com
@@ -610,18 +651,21 @@ Armed with Audio Intel's enriched intelligence, I executed the campaign.
 **Segmentation Strategy (Based on Enriched Data):**
 
 **Tier 1: Perfect Genre Fit (12 stations)**
+
 - Gaydio (Manchester, Birmingham, London)
 - Specialist electronic shows on BBC local stations
 - Community stations with electronic programming
 - Dance-focused commercial stations
 
 **Tier 2: Good Genre Fit (18 stations)**
+
 - BBC local stations (local artist policies)
 - Regional commercial stations (mainstream electronic)
 - Community stations (open format)
 - Student stations (emerging artist focus)
 
 **Tier 3: Possible Fit (15 stations)**
+
 - Mainstream commercial (commercial crossover)
 - Talk stations (occasional music features)
 - Specialist shows on general stations
@@ -629,6 +673,7 @@ Armed with Audio Intel's enriched intelligence, I executed the campaign.
 **Personalised Pitch Strategy:**
 
 Using Audio Intel intelligence, every pitch was personalised:
+
 - Referenced recent playlist additions when relevant
 - Followed stated submission guidelines precisely
 - Emphasised local connections where applicable
@@ -638,17 +683,21 @@ Using Audio Intel intelligence, every pitch was personalised:
 **Campaign Timeline:**
 
 **Monday 9:00am-9:03am:**
+
 - Audio Intel enrichment complete
 
 **Monday 9:30am-11:30am:**
+
 - Tier 1 pitches sent (12 stations)
 - Highly personalised, genre-perfect matches
 
 **Monday 2:00pm-4:00pm:**
+
 - Tier 2 pitches sent (18 stations)
 - Personalised with local angle emphasis
 
 **Tuesday 10:00am-12:00pm:**
+
 - Tier 3 pitches sent (15 stations)
 - Personalised with commercial crossover angle
 
@@ -657,6 +706,7 @@ Using Audio Intel intelligence, every pitch was personalised:
 **Week 2-3: Follow-ups and Responses**
 
 **Response Timeline:**
+
 - Day 3: First responses (Tier 1 stations)
 - Week 1: 8 positive responses
 - Week 2: 16 total positive responses
@@ -665,15 +715,18 @@ Using Audio Intel intelligence, every pitch was personalised:
 **Final Campaign Results:**
 
 **Responses:**
+
 - 35% response rate (16 of 45 stations)
 - Industry average: 8-12% for regional
 
 **Placements:**
+
 - 24 successful placements
 - 53% placement rate (vs 15-20% industry average)
 - Mix of daytime, specialist, and evening shows
 
 **Geographic Coverage:**
+
 - North West: 12 placements
 - Midlands: 5 placements
 - South: 4 placements
@@ -681,11 +734,13 @@ Using Audio Intel intelligence, every pitch was personalised:
 - Wales: 1 placement
 
 **Listener Reach:**
+
 - Combined weekly reach: 8.5 million listeners
 - Average listeners per placement: 354,000
 - Total potential impressions: 24+ million
 
 **Streaming Impact:**
+
 - Week 1 streams: 12,000
 - Week 2 streams: 28,000
 - Week 3 streams: 45,000
@@ -693,6 +748,7 @@ Using Audio Intel intelligence, every pitch was personalised:
 - Total campaign streams: 123,000
 
 **Follow-Up Opportunities:**
+
 - 8 stations interested in future releases
 - 4 stations invited artist for interview
 - 2 stations added to regional rotation
@@ -707,6 +763,7 @@ Audio Intel: 3 minutes
 Pitch preparation: 8 hours (same for both)
 
 Total time commitment:
+
 - Manual: 63 hours
 - Audio Intel: 8 hours 3 minutes
 - Time saved: 54 hours 57 minutes (87% reduction)
@@ -718,6 +775,7 @@ Audio Intel cost: £19/month ÷ 4 campaigns = £4.75
 Savings per campaign: £2,745.25
 
 Annual savings (20 campaigns):
+
 - Manual cost: £55,000
 - Audio Intel cost: £228
 - Annual savings: £54,772
@@ -725,11 +783,13 @@ Annual savings (20 campaigns):
 **Accuracy Comparison:**
 
 Manual research accuracy: ~60%
+
 - 27 of 45 contacts accurate
 - 18 contacts outdated or wrong
 - Multiple submission guideline errors
 
 Audio Intel accuracy: 94%
+
 - 42 of 45 contacts verified current
 - 3 minor data gaps (quickly resolved)
 - Submission guidelines 100% accurate
@@ -737,11 +797,13 @@ Audio Intel accuracy: 94%
 **Outcome Comparison:**
 
 Industry average regional campaign:
+
 - Response rate: 8-12%
 - Placement rate: 15-20%
 - Time to execute: 6-8 weeks
 
 Audio Intel-powered campaign:
+
 - Response rate: 35%
 - Placement rate: 53%
 - Time to execute: 3 weeks
@@ -749,11 +811,13 @@ Audio Intel-powered campaign:
 **ROI Calculation:**
 
 **Investment:**
+
 - Audio Intel: £4.75 (monthly cost ÷ 4 campaigns)
 - Pitch time: 8 hours × £50 = £400
 - Total investment: £404.75
 
 **Return:**
+
 - Time saved: 55 hours × £50 = £2,750
 - Placements: 24 (vs 8 expected manually)
 - Streaming value: 123,000 streams × £0.004 = £492
@@ -801,6 +865,7 @@ Audio Intel removes this barrier entirely.
 **Step 1: Identify Target Regions**
 
 Consider:
+
 - Artist location/hometown
 - Touring schedule
 - Genre concentration
@@ -812,12 +877,14 @@ Audio Intel can process all UK regions or targeted subsets.
 **Step 2: Upload Contact List**
 
 Start with basic information:
+
 - Station names
 - General contact emails (even if outdated)
 - Region/location
 - Format (if known)
 
 Audio Intel enriches with:
+
 - Current verified contacts
 - Submission guidelines
 - Genre compatibility
@@ -827,6 +894,7 @@ Audio Intel enriches with:
 **Step 3: Segment by Tier**
 
 Use enriched intelligence to prioritise:
+
 - Tier 1: Perfect genre fit + local connection
 - Tier 2: Good genre fit or strong local angle
 - Tier 3: Possible fit + compelling pitch angle
@@ -834,6 +902,7 @@ Use enriched intelligence to prioritise:
 **Step 4: Personalise Pitches**
 
 Use Audio Intel intelligence to reference:
+
 - Recent playlist additions
 - Submission preferences
 - Local music policies
@@ -843,6 +912,7 @@ Use Audio Intel intelligence to reference:
 **Step 5: Execute and Track**
 
 Send pitches in waves:
+
 - Week 1: Tier 1 stations
 - Week 2: Tier 2 stations + follow-ups
 - Week 3: Tier 3 stations + ongoing follow-ups
@@ -852,13 +922,13 @@ Track response rates and placement outcomes to refine strategy.
 
 ### Real Regional Radio Campaign Feedback
 
-*"Regional radio was always too time-consuming to research properly. Audio Intel made it manageable. We now include regional campaigns for every release."*
+_"Regional radio was always too time-consuming to research properly. Audio Intel made it manageable. We now include regional campaigns for every release."_
 — Tom H., Independent Radio Promoter, Bristol
 
-*"The regional intelligence is incredibly detailed. Coverage areas, listener demographics, submission preferences - everything we need to pitch effectively."*
+_"The regional intelligence is incredibly detailed. Coverage areas, listener demographics, submission preferences - everything we need to pitch effectively."_
 — Lucy M., PR Agency Director, Leeds
 
-*"I've secured more regional placements in 3 months using Audio Intel than in 3 years doing manual research. The time savings alone are worth it."*
+_"I've secured more regional placements in 3 months using Audio Intel than in 3 years doing manual research. The time savings alone are worth it."_
 — James R., Artist Manager, Glasgow
 
 ### Conclusion: Regional Radio Is No Longer Inaccessible
@@ -894,6 +964,7 @@ Chris Schofield is a music producer (sadact) and radio promoter based in Brighto
 ---
 
 **SEO Keywords Used:**
+
 - regional radio UK (primary)
 - UK radio promotion (primary)
 - radio station contacts (secondary)
@@ -902,12 +973,14 @@ Chris Schofield is a music producer (sadact) and radio promoter based in Brighto
 - contact enrichment (tertiary)
 
 **Internal Links:**
+
 - Link to Audio Intel regional radio guide
 - Link to pricing page
 - Link to free trial signup
 - Link to BBC Radio 1 case study
 
 **External Links:**
+
 - UK radio industry statistics
 - Regional radio reach data
 - Music promotion best practices

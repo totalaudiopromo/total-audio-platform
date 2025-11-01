@@ -29,7 +29,6 @@ async function testBluesky() {
     }
 
     console.log('[TEST] ✅ Bluesky agent working correctly!');
-
   } catch (error) {
     console.error('[TEST] ❌ Error:', error instanceof Error ? error.message : error);
     console.error('Stack:', error);

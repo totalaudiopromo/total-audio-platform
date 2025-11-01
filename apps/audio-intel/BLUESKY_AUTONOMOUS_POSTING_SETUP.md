@@ -37,16 +37,19 @@ https://vercel.com/chris-projects-6ffe0e29/audio-intel/settings/environment-vari
 Add these two variables:
 
 **Variable 1:**
+
 - **Name:** `BLUESKY_IDENTIFIER`
 - **Value:** Your Bluesky handle (e.g., `yourname.bsky.social`)
 - **Environment:** Production, Preview, Development (all three)
 
 **Variable 2:**
+
 - **Name:** `BLUESKY_APP_PASSWORD`
 - **Value:** The app password from Step 1
 - **Environment:** Production, Preview, Development (all three)
 
 **Optional (Recommended):**
+
 - **Name:** `CRON_SECRET`
 - **Value:** Generate a random secret (e.g., `openssl rand -base64 32`)
 - **Environment:** Production, Preview, Development (all three)
@@ -82,6 +85,7 @@ curl http://localhost:3000/api/cron/social-posting
 ```
 
 This will:
+
 1. Check your Bluesky credentials
 2. Look for posts scheduled for "now" (within 1 hour)
 3. Post to Bluesky if found
@@ -107,11 +111,13 @@ Replace `YOUR_CRON_SECRET` with the secret you set in Step 2.
 **Content:** 35 posts across 4 weeks from your content calendar
 
 **Cron Expression:** `0 9,17 * * *`
+
 - `0` = At minute 0
 - `9,17` = At 9am and 5pm
 - `* * *` = Every day, every month, every day of week
 
 **Why these times?**
+
 - **9am** - Catch morning commute + coffee scroll
 - **5pm** - Catch end-of-work scroll + evening engagement
 
@@ -127,6 +133,7 @@ Check logs in Vercel dashboard:
 https://vercel.com/chris-projects-6ffe0e29/audio-intel/logs
 
 Look for:
+
 - `[CRON] 🤖 Autonomous social posting triggered`
 - `[BLUESKY] ✅ Posted successfully`
 
@@ -153,6 +160,7 @@ Your posts are loaded from:
 `apps/audio-intel/social-content/CONTENT_CALENDAR.json`
 
 **Current schedule:**
+
 - Week 1: Problem Awareness (8 posts)
 - Week 2: Solution Education (7 posts)
 - Week 3: Social Proof & Results (10 posts)
@@ -161,6 +169,7 @@ Your posts are loaded from:
 **Bluesky posts:** 10 posts total across 4 weeks
 
 The agent automatically:
+
 1. Reads the calendar
 2. Finds posts scheduled for "now" (within 1 hour)
 3. Gets content from `BLUESKY_THREADS_CONTENT.md`
@@ -172,21 +181,25 @@ The agent automatically:
 ## 🛠️ Troubleshooting
 
 ### "Authentication failed"
+
 - Check your `BLUESKY_IDENTIFIER` is correct (yourname.bsky.social)
 - Check your `BLUESKY_APP_PASSWORD` is the app password, not main password
 - Regenerate app password if needed
 
 ### "No content found for: [Title]"
+
 - The agent couldn't find content for that post title
 - Check `apps/audio-intel/lib/bluesky-posting-agent.ts` line 87
 - Add the missing content to the `contentMap`
 
 ### "Skipping post - not scheduled for now"
+
 - Post is scheduled for a different time
 - Agent only posts within 1 hour of scheduled time
 - Check `CONTENT_CALENDAR.json` for scheduled times
 
 ### Cron not triggering
+
 - Check Vercel dashboard for cron job status
 - Verify `vercel.json` has the cron configuration
 - Check environment variables are set in Production
@@ -196,6 +209,7 @@ The agent automatically:
 ## 📈 What's Next?
 
 Once Bluesky is working, you can add:
+
 - **X/Twitter** posting (need API credentials)
 - **LinkedIn** posting (OAuth required)
 - **Threads** posting (Instagram Graph API)
@@ -216,6 +230,7 @@ Same architecture, just add more agents to the cron endpoint.
 ## 📞 Support
 
 If something's not working:
+
 1. Check Vercel logs first
 2. Test manually in development
 3. Verify environment variables are set

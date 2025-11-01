@@ -21,34 +21,52 @@ interface SocialMediaPost {
 const CONTENT_TEMPLATES = {
   caseStudies: [
     {
-      content: "Just enriched BBC Radio 1 contacts in 15 minutes. What used to take me a full weekend of research. The time savings are incredible for radio promotion campaigns. #MusicIndustry #RadioPromotion #ContactEnrichment",
-      hashtags: ["#MusicIndustry", "#RadioPromotion", "#ContactEnrichment", "#BBC", "#IndieMusic"]
+      content:
+        'Just enriched BBC Radio 1 contacts in 15 minutes. What used to take me a full weekend of research. The time savings are incredible for radio promotion campaigns. #MusicIndustry #RadioPromotion #ContactEnrichment',
+      hashtags: ['#MusicIndustry', '#RadioPromotion', '#ContactEnrichment', '#BBC', '#IndieMusic'],
     },
     {
-      content: "Built Audio Intel because I was tired of spending 15+ hours per campaign researching radio contacts. Now it's automated. Real case study: Spotify playlist curator contacts enriched with 100% success rate. #MusicTech #PlaylistPitching",
-      hashtags: ["#MusicTech", "#PlaylistPitching", "#Spotify", "#ContactResearch", "#MusicPromotion"]
+      content:
+        "Built Audio Intel because I was tired of spending 15+ hours per campaign researching radio contacts. Now it's automated. Real case study: Spotify playlist curator contacts enriched with 100% success rate. #MusicTech #PlaylistPitching",
+      hashtags: [
+        '#MusicTech',
+        '#PlaylistPitching',
+        '#Spotify',
+        '#ContactResearch',
+        '#MusicPromotion',
+      ],
     },
     {
-      content: "The hidden cost of manual contact research in music promotion: 15+ hours per campaign. That's £300+ in time value for indie artists. Audio Intel turns this into a 15-minute process. #IndieMusic #MusicBusiness",
-      hashtags: ["#IndieMusic", "#MusicBusiness", "#ContactEnrichment", "#RadioPromotion", "#MusicIndustry"]
-    }
+      content:
+        "The hidden cost of manual contact research in music promotion: 15+ hours per campaign. That's £300+ in time value for indie artists. Audio Intel turns this into a 15-minute process. #IndieMusic #MusicBusiness",
+      hashtags: [
+        '#IndieMusic',
+        '#MusicBusiness',
+        '#ContactEnrichment',
+        '#RadioPromotion',
+        '#MusicIndustry',
+      ],
+    },
   ],
   insights: [
     {
-      content: "5+ years in radio promotion taught me: the quality of your contacts determines campaign success. Manual spreadsheet research vs organised contact intelligence = night and day difference. #RadioPromotion #MusicIndustry",
-      hashtags: ["#RadioPromotion", "#MusicIndustry", "#ContactResearch", "#MusicBusiness"]
+      content:
+        '5+ years in radio promotion taught me: the quality of your contacts determines campaign success. Manual spreadsheet research vs organised contact intelligence = night and day difference. #RadioPromotion #MusicIndustry',
+      hashtags: ['#RadioPromotion', '#MusicIndustry', '#ContactResearch', '#MusicBusiness'],
     },
     {
-      content: "Most indie artists spend weekends researching radio contacts instead of making music. There's a better way. Automate the research, focus on the creativity. #IndieMusic #MusicCreation #MusicTech",
-      hashtags: ["#IndieMusic", "#MusicCreation", "#MusicTech", "#RadioPromotion"]
-    }
+      content:
+        "Most indie artists spend weekends researching radio contacts instead of making music. There's a better way. Automate the research, focus on the creativity. #IndieMusic #MusicCreation #MusicTech",
+      hashtags: ['#IndieMusic', '#MusicCreation', '#MusicTech', '#RadioPromotion'],
+    },
   ],
   tips: [
     {
-      content: "Radio promotion tip: organised contact data is everything. One enriched contact database can serve multiple campaigns. Stop starting from scratch each time. #RadioPromotion #MusicIndustry #ContactEnrichment",
-      hashtags: ["#RadioPromotion", "#MusicIndustry", "#ContactEnrichment", "#MusicBusiness"]
-    }
-  ]
+      content:
+        'Radio promotion tip: organised contact data is everything. One enriched contact database can serve multiple campaigns. Stop starting from scratch each time. #RadioPromotion #MusicIndustry #ContactEnrichment',
+      hashtags: ['#RadioPromotion', '#MusicIndustry', '#ContactEnrichment', '#MusicBusiness'],
+    },
+  ],
 };
 
 // Generate upcoming posts for the next week
@@ -66,7 +84,12 @@ function generateUpcomingPosts(): SocialMediaPost[] {
     const templates = CONTENT_TEMPLATES[templateCategory];
     const template = templates[Math.floor(Math.random() * templates.length)];
 
-    const platforms: ('x' | 'linkedin' | 'bluesky' | 'facebook')[] = ['x', 'linkedin', 'bluesky', 'facebook'];
+    const platforms: ('x' | 'linkedin' | 'bluesky' | 'facebook')[] = [
+      'x',
+      'linkedin',
+      'bluesky',
+      'facebook',
+    ];
     const platform = platforms[i % platforms.length];
 
     posts.push({
@@ -77,7 +100,7 @@ function generateUpcomingPosts(): SocialMediaPost[] {
       status: 'scheduled',
       hashtags: template.hashtags,
       createdAt: now.toISOString(),
-      updatedAt: now.toISOString()
+      updatedAt: now.toISOString(),
     });
   }
 
@@ -91,7 +114,7 @@ export async function GET() {
     return NextResponse.json({
       success: true,
       upcomingPosts,
-      message: 'Social media posts generated successfully'
+      message: 'Social media posts generated successfully',
     });
   } catch (error) {
     console.error('Error generating social media posts:', error);
@@ -121,14 +144,11 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({
         success: true,
         message: 'Post scheduled successfully',
-        postId: `manual-${Date.now()}`
+        postId: `manual-${Date.now()}`,
       });
     }
 
-    return NextResponse.json(
-      { success: false, error: 'Invalid action' },
-      { status: 400 }
-    );
+    return NextResponse.json({ success: false, error: 'Invalid action' }, { status: 400 });
   } catch (error) {
     console.error('Error handling social media request:', error);
     return NextResponse.json(
@@ -163,13 +183,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       message: `Post published to ${platform}`,
-      postId
+      postId,
     });
   } catch (error) {
     console.error('Error posting to social media:', error);
-    return NextResponse.json(
-      { success: false, error: 'Failed to post content' },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: 'Failed to post content' }, { status: 500 });
   }
 }

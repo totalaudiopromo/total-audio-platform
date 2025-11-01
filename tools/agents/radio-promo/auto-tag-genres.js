@@ -9,7 +9,8 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -31,7 +32,7 @@ const STANDARD_GENRES = [
   'Punk',
   'Pop-Punk',
   'Techno',
-  'All'
+  'All',
 ];
 
 async function fetchAllContacts() {
@@ -45,7 +46,7 @@ async function fetchAllContacts() {
       : `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
 
     const response = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
     });
 
     const data = await response.json();
@@ -79,9 +80,7 @@ function extractGenres(enrichmentNotes) {
       const lowerExtracted = extracted.toLowerCase();
 
       // Direct match
-      const directMatch = STANDARD_GENRES.find(sg =>
-        sg.toLowerCase() === lowerExtracted
-      );
+      const directMatch = STANDARD_GENRES.find(sg => sg.toLowerCase() === lowerExtracted);
 
       if (directMatch) {
         if (!genres.includes(directMatch)) {
@@ -97,13 +96,21 @@ function extractGenres(enrichmentNotes) {
       if (lowerExtracted.includes('alternative') && !genres.includes('Alternative')) {
         genres.push('Alternative');
       }
-      if (lowerExtracted.includes('rock') && !lowerExtracted.includes('punk') && !genres.includes('Rock')) {
+      if (
+        lowerExtracted.includes('rock') &&
+        !lowerExtracted.includes('punk') &&
+        !genres.includes('Rock')
+      ) {
         genres.push('Rock');
       }
       if (lowerExtracted.includes('metal') && !genres.includes('Metal')) {
         genres.push('Metal');
       }
-      if (lowerExtracted.includes('pop') && !lowerExtracted.includes('punk') && !genres.includes('Pop')) {
+      if (
+        lowerExtracted.includes('pop') &&
+        !lowerExtracted.includes('punk') &&
+        !genres.includes('Pop')
+      ) {
         genres.push('Pop');
       }
       if (lowerExtracted.includes('electronic') && !genres.includes('Electronic')) {
@@ -112,13 +119,22 @@ function extractGenres(enrichmentNotes) {
       if (lowerExtracted.includes('dance') && !genres.includes('Dance')) {
         genres.push('Dance');
       }
-      if (lowerExtracted.includes('hip hop') || lowerExtracted.includes('hip-hop') && !genres.includes('Hip-Hop')) {
+      if (
+        lowerExtracted.includes('hip hop') ||
+        (lowerExtracted.includes('hip-hop') && !genres.includes('Hip-Hop'))
+      ) {
         genres.push('Hip-Hop');
       }
-      if ((lowerExtracted.includes('r&b') || lowerExtracted.includes('soul')) && !genres.includes('R&B / Soul')) {
+      if (
+        (lowerExtracted.includes('r&b') || lowerExtracted.includes('soul')) &&
+        !genres.includes('R&B / Soul')
+      ) {
         genres.push('R&B / Soul');
       }
-      if ((lowerExtracted.includes('jazz') || lowerExtracted.includes('funk')) && !genres.includes('Jazz / Funk')) {
+      if (
+        (lowerExtracted.includes('jazz') || lowerExtracted.includes('funk')) &&
+        !genres.includes('Jazz / Funk')
+      ) {
         genres.push('Jazz / Funk');
       }
       if (lowerExtracted.includes('folk') && !genres.includes('Folk')) {
@@ -130,10 +146,17 @@ function extractGenres(enrichmentNotes) {
       if (lowerExtracted.includes('reggae') && !genres.includes('Reggae')) {
         genres.push('Reggae');
       }
-      if (lowerExtracted.includes('punk') && !lowerExtracted.includes('pop') && !genres.includes('Punk')) {
+      if (
+        lowerExtracted.includes('punk') &&
+        !lowerExtracted.includes('pop') &&
+        !genres.includes('Punk')
+      ) {
         genres.push('Punk');
       }
-      if ((lowerExtracted.includes('pop punk') || lowerExtracted.includes('pop-punk')) && !genres.includes('Pop-Punk')) {
+      if (
+        (lowerExtracted.includes('pop punk') || lowerExtracted.includes('pop-punk')) &&
+        !genres.includes('Pop-Punk')
+      ) {
         genres.push('Pop-Punk');
       }
       if (lowerExtracted.includes('techno') && !genres.includes('Techno')) {
@@ -163,19 +186,16 @@ function extractGenres(enrichmentNotes) {
 
 async function updateGenres(recordId, newGenres) {
   try {
-    const response = await fetch(
-      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          fields: { 'Genres': newGenres }
-        })
-      }
-    );
+    const response = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        fields: { Genres: newGenres },
+      }),
+    });
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -218,7 +238,7 @@ async function autoTagGenres() {
     total: needsGenres.length,
     tagged: 0,
     errors: 0,
-    noGenresFound: 0
+    noGenresFound: 0,
   };
 
   const taggings = [];
@@ -228,7 +248,7 @@ async function autoTagGenres() {
     const email = contact.fields.Email || 'no-email';
     const enrichmentNotes = contact.fields['Enrichment Notes'];
 
-    console.log(`[${i+1}/${needsGenres.length}] ${email}`);
+    console.log(`[${i + 1}/${needsGenres.length}] ${email}`);
 
     // Extract genres
     const extractedGenres = extractGenres(enrichmentNotes);
@@ -244,7 +264,7 @@ async function autoTagGenres() {
         taggings.push({
           email,
           station: contact.fields.Station || 'Unknown',
-          genres: extractedGenres
+          genres: extractedGenres,
         });
         console.log(`   ✅ Updated in Airtable`);
       } else {

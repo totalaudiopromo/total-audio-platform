@@ -1,10 +1,11 @@
 ---
-title: "🚀 RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW"
+title: '🚀 RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW'
 notion_url: https://www.notion.so/RADIO-PROMO-AGENT-DAY-IN-THE-LIFE-WORKFLOW-2650a35b21ed81b49218c694f47a406f
 exported_at: 2025-09-26T14:33:12.701Z
 ---
 
 # 🚀 RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW
+
 _How Chris 10x's his radio promotion efficiency with complete automation_
 
 ---
@@ -90,8 +91,8 @@ _How Chris 10x's his radio promotion efficiency with complete automation_
 ```javascript
 ✅ AI generates personalized press release:
    "Hi [Station Name],
-   Hope you're well! I've got an exciting indie pop track from Sarah Jones 
-   that's perfect for your evening rotation. 'Electric Dreams' has that 
+   Hope you're well! I've got an exciting indie pop track from Sarah Jones
+   that's perfect for your evening rotation. 'Electric Dreams' has that
    dreamy 80s-influenced sound that your listeners love..."
 
 ✅ Press release automatically customized for each station type

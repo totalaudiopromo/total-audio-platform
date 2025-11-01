@@ -9,10 +9,7 @@ import { Router } from 'express';
 import { SkillEngine } from '../SkillEngine';
 import { SupabaseClient } from '@supabase/supabase-js';
 
-export function createSkillsRouter(
-  skillEngine: SkillEngine,
-  db: SupabaseClient
-): Router {
+export function createSkillsRouter(skillEngine: SkillEngine, db: SupabaseClient): Router {
   const router = Router();
 
   /**
@@ -46,7 +43,8 @@ export function createSkillsRouter(
 
       const { data: skill, error } = await db
         .from('skill')
-        .select(`
+        .select(
+          `
           id,
           key,
           name,
@@ -59,7 +57,8 @@ export function createSkillsRouter(
             manifest,
             created_at
           )
-        `)
+        `
+        )
         .eq('key', key)
         .eq('skill_version.status', 'active')
         .single();
@@ -196,7 +195,8 @@ export function createSkillsRouter(
 
       let query = db
         .from('skill_binding')
-        .select(`
+        .select(
+          `
           id,
           enabled,
           config,
@@ -208,7 +208,8 @@ export function createSkillsRouter(
           version,
           created_at,
           updated_at
-        `)
+        `
+        )
         .eq('org_id', orgId as string);
 
       if (userId) {
@@ -359,8 +360,8 @@ export function createSkillsRouter(
       // Calculate stats
       const stats = {
         totalInvocations: invocations?.length || 0,
-        successfulInvocations: invocations?.filter((i) => !i.error).length || 0,
-        failedInvocations: invocations?.filter((i) => i.error).length || 0,
+        successfulInvocations: invocations?.filter(i => !i.error).length || 0,
+        failedInvocations: invocations?.filter(i => i.error).length || 0,
         averageDuration:
           invocations?.reduce((sum, i) => sum + (i.duration_ms || 0), 0) /
             (invocations?.length || 1) || 0,
@@ -370,7 +371,7 @@ export function createSkillsRouter(
       };
 
       // Group by skill
-      invocations?.forEach((inv) => {
+      invocations?.forEach(inv => {
         stats.bySkill[inv.skill_key] = (stats.bySkill[inv.skill_key] || 0) + 1;
       });
 

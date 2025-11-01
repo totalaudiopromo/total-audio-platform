@@ -14,7 +14,8 @@ const MAILCHIMP_API_KEY = '83f53d36bd6667b4c56015e8a0d1ed66-us13';
 const MAILCHIMP_SERVER = 'us13';
 const LIST_ID = '137bcedead'; // Liberty Music PR list
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -36,7 +37,7 @@ async function fetchAllAirtableContacts() {
       : `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
 
     const response = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
     });
 
     if (!response.ok) {
@@ -48,7 +49,6 @@ async function fetchAllAirtableContacts() {
     console.log(`   Fetched ${data.records.length} records (Total: ${allRecords.length})`);
 
     offset = data.offset;
-
   } while (offset);
 
   console.log(`\n✅ Total Airtable contacts: ${allRecords.length}\n`);
@@ -65,9 +65,9 @@ async function checkMailchimpStatus(email) {
       {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${MAILCHIMP_API_KEY}`,
-          'Content-Type': 'application/json'
-        }
+          Authorization: `Bearer ${MAILCHIMP_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
       }
     );
 
@@ -84,9 +84,8 @@ async function checkMailchimpStatus(email) {
     return {
       exists: true,
       status: data.status, // subscribed, unsubscribed, cleaned, pending
-      lastChanged: data.last_changed
+      lastChanged: data.last_changed,
     };
-
   } catch (error) {
     return { exists: false, status: 'Error', error: error.message };
   }
@@ -95,22 +94,19 @@ async function checkMailchimpStatus(email) {
 // Update Airtable record with new status
 async function updateAirtableStatus(recordId, newStatus, currentStatus) {
   try {
-    const response = await fetch(
-      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-          'Content-Type': 'application/json'
+    const response = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        fields: {
+          Status: newStatus,
+          'Last Enriched': new Date().toISOString().split('T')[0],
         },
-        body: JSON.stringify({
-          fields: {
-            'Status': newStatus,
-            'Last Enriched': new Date().toISOString().split('T')[0]
-          }
-        })
-      }
-    );
+      }),
+    });
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -118,7 +114,6 @@ async function updateAirtableStatus(recordId, newStatus, currentStatus) {
     }
 
     return { success: true };
-
   } catch (error) {
     return { success: false, error: error.message };
   }
@@ -140,8 +135,8 @@ async function syncAllStatuses() {
       'Unsubscribed → Subscribed': 0,
       'Subscribed → Unsubscribed': 0,
       'New → Subscribed': 0,
-      'Any → Not in Mailchimp': 0
-    }
+      'Any → Not in Mailchimp': 0,
+    },
   };
 
   const changes = [];
@@ -153,13 +148,13 @@ async function syncAllStatuses() {
     const email = contact.fields.Email;
 
     if (!email) {
-      console.log(`[${i+1}/${contacts.length}] Skipping: No email address`);
+      console.log(`[${i + 1}/${contacts.length}] Skipping: No email address`);
       stats.errors++;
       continue;
     }
 
     const currentStatus = contact.fields.Status || 'No status';
-    console.log(`[${i+1}/${contacts.length}] ${email}`);
+    console.log(`[${i + 1}/${contacts.length}] ${email}`);
 
     // Check Mailchimp status
     const mailchimpStatus = await checkMailchimpStatus(email);
@@ -209,13 +204,12 @@ async function syncAllStatuses() {
           station: contact.fields.Station || 'Unknown',
           oldStatus: currentStatus,
           newStatus,
-          mailchimpStatus: mailchimpStatus.status
+          mailchimpStatus: mailchimpStatus.status,
         });
       } else {
         console.log(`   ❌ Update failed: ${updateResult.error}`);
         stats.errors++;
       }
-
     } else {
       console.log(`   ✅ No change needed`);
       stats.noChange++;
@@ -259,7 +253,7 @@ async function syncAllStatuses() {
     Object.entries(changesByType).forEach(([changeType, contacts]) => {
       console.log(`${changeType} (${contacts.length}):`);
       contacts.forEach((c, i) => {
-        console.log(`   ${i+1}. ${c.email} (${c.station})`);
+        console.log(`   ${i + 1}. ${c.email} (${c.station})`);
       });
       console.log('');
     });
@@ -269,7 +263,7 @@ async function syncAllStatuses() {
   const report = {
     syncDate: new Date().toISOString(),
     stats,
-    changes
+    changes,
   };
 
   fs.writeFileSync('./MAILCHIMP_SYNC_REPORT.json', JSON.stringify(report, null, 2));

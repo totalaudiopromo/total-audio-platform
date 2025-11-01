@@ -9,7 +9,7 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = (session.user).email || 'demo-user';
+    const userId = session.user.email || 'demo-user';
     const { searchParams } = new URL(req.url);
     const search = searchParams.get('search') || '';
     const limit = parseInt(searchParams.get('limit') || '50');
@@ -30,10 +30,7 @@ export async function GET(req: Request) {
 
     if (error) {
       console.error('Error fetching contacts:', error);
-      return NextResponse.json(
-        { error: 'Failed to fetch contacts' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to fetch contacts' }, { status: 500 });
     }
 
     return NextResponse.json({
@@ -50,4 +47,3 @@ export async function GET(req: Request) {
     );
   }
 }
-

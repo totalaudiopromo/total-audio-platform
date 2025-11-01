@@ -27,4 +27,4 @@ async function main(): Promise<void> {
 main().catch(err => {
   console.error('❌ Error running Perplexity Contact Research Preview:', err);
   process.exit(1);
-}); 
+});

@@ -156,7 +156,6 @@ This is a test post and will be deleted shortly.
     console.log('2. Configure content calendar scheduling');
     console.log('3. Set up Vercel cron for automated posting');
     console.log('4. Monitor posting logs and insights\n');
-
   } catch (error) {
     console.error('\n❌ Test failed with error:', error);
 

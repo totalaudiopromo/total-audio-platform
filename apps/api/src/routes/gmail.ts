@@ -20,7 +20,7 @@ const SCOPES = [
   'https://www.googleapis.com/auth/gmail.readonly',
   'https://www.googleapis.com/auth/gmail.send',
   'https://www.googleapis.com/auth/gmail.modify',
-  'https://www.googleapis.com/auth/gmail.labels'
+  'https://www.googleapis.com/auth/gmail.labels',
 ];
 
 // 1. Initiate OAuth flow
@@ -30,7 +30,7 @@ router.get('/auth', authenticateToken, async (req: any, res) => {
       access_type: 'offline',
       scope: SCOPES,
       prompt: 'consent',
-      state: req.user.id // Pass user ID in state
+      state: req.user.id, // Pass user ID in state
     });
 
     res.json({ authUrl });
@@ -52,14 +52,14 @@ router.get('/callback', async (req, res) => {
     }
 
     const { tokens } = await oauth2Client.getToken(code as string);
-    
+
     // Save integration to database
     await prisma.integration.upsert({
       where: {
         userId_type: {
           userId,
-          type: 'GMAIL'
-        }
+          type: 'GMAIL',
+        },
       },
       update: {
         config: {
@@ -67,10 +67,10 @@ router.get('/callback', async (req, res) => {
           clientSecret: process.env.GOOGLE_CLIENT_SECRET,
           accessToken: tokens.access_token,
           refreshToken: tokens.refresh_token,
-          expiryDate: tokens.expiry_date
+          expiryDate: tokens.expiry_date,
         },
         status: 'CONNECTED',
-        lastSyncAt: new Date()
+        lastSyncAt: new Date(),
       },
       create: {
         userId,
@@ -80,15 +80,15 @@ router.get('/callback', async (req, res) => {
           clientSecret: process.env.GOOGLE_CLIENT_SECRET,
           accessToken: tokens.access_token,
           refreshToken: tokens.refresh_token,
-          expiryDate: tokens.expiry_date
+          expiryDate: tokens.expiry_date,
         },
         status: 'CONNECTED',
-        lastSyncAt: new Date()
-      }
+        lastSyncAt: new Date(),
+      },
     });
 
     logger.info(`Gmail integration connected for user: ${userId}`);
-    
+
     // Redirect to frontend with success
     res.redirect(`${process.env.FRONTEND_URL}/integrations?success=gmail`);
   } catch (error) {
@@ -104,14 +104,14 @@ router.get('/status', authenticateToken, async (req: any, res) => {
       where: {
         userId_type: {
           userId: req.user.id,
-          type: 'GMAIL'
-        }
-      }
+          type: 'GMAIL',
+        },
+      },
     });
 
     res.json({
       connected: integration?.status === 'CONNECTED',
-      lastSyncAt: integration?.lastSyncAt
+      lastSyncAt: integration?.lastSyncAt,
     });
   } catch (error) {
     logger.error('Gmail status check error:', error);
@@ -126,13 +126,13 @@ router.delete('/disconnect', authenticateToken, async (req: any, res) => {
       where: {
         userId_type: {
           userId: req.user.id,
-          type: 'GMAIL'
-        }
+          type: 'GMAIL',
+        },
       },
       data: {
         status: 'DISCONNECTED',
-        lastSyncAt: new Date()
-      }
+        lastSyncAt: new Date(),
+      },
     });
 
     logger.info(`Gmail integration disconnected for user: ${req.user.id}`);
@@ -147,13 +147,13 @@ router.delete('/disconnect', authenticateToken, async (req: any, res) => {
 router.post('/track-replies/:campaignId', authenticateToken, async (req: any, res) => {
   try {
     const { campaignId } = req.params;
-    
+
     // Verify campaign belongs to user
     const campaign = await prisma.campaign.findFirst({
       where: {
         id: campaignId,
-        userId: req.user.id
-      }
+        userId: req.user.id,
+      },
     });
 
     if (!campaign) {
@@ -168,7 +168,7 @@ router.post('/track-replies/:campaignId', authenticateToken, async (req: any, re
     }
 
     await gmailService.trackReplies(campaignId);
-    
+
     res.json({ success: true, message: 'Reply tracking started' });
   } catch (error) {
     logger.error('Gmail track replies error:', error);
@@ -197,7 +197,7 @@ router.post('/send', authenticateToken, async (req: any, res) => {
     // Log the email interaction if campaignId is provided
     if (campaignId) {
       const contact = await prisma.contact.findUnique({
-        where: { email: to }
+        where: { email: to },
       });
 
       if (contact) {
@@ -208,9 +208,9 @@ router.post('/send', authenticateToken, async (req: any, res) => {
             type: 'EMAIL_SENT',
             details: {
               subject,
-              timestamp: new Date()
-            }
-          }
+              timestamp: new Date(),
+            },
+          },
         });
       }
     }
@@ -232,7 +232,10 @@ router.get('/recent-replies', authenticateToken, async (req: any, res) => {
     }
 
     // Get recent replies with default parameters
-    const replies = await gmailService.getRecentReplies('', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)); // Last 7 days
+    const replies = await gmailService.getRecentReplies(
+      '',
+      new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+    ); // Last 7 days
     res.json({ replies });
   } catch (error) {
     logger.error('Gmail recent replies error:', error);
@@ -261,13 +264,13 @@ router.post('/watch', authenticateToken, async (req: any, res) => {
 router.get('/analytics/:campaignId', authenticateToken, async (req: any, res) => {
   try {
     const { campaignId } = req.params;
-    
+
     // Verify campaign belongs to user
     const campaign = await prisma.campaign.findFirst({
       where: {
         id: campaignId,
-        userId: req.user.id
-      }
+        userId: req.user.id,
+      },
     });
 
     if (!campaign) {
@@ -285,14 +288,14 @@ router.get('/analytics/:campaignId', authenticateToken, async (req: any, res) =>
     const campaignAnalytics = await prisma.emailCampaignAnalytics.findMany({
       where: {
         emailCampaign: {
-          campaignId: campaignId
-        }
+          campaignId: campaignId,
+        },
       },
       include: {
-        emailCampaign: true
-      }
+        emailCampaign: true,
+      },
     });
-    
+
     res.json({ analytics: campaignAnalytics });
   } catch (error) {
     logger.error('Gmail analytics error:', error);
@@ -300,4 +303,4 @@ router.get('/analytics/:campaignId', authenticateToken, async (req: any, res) =>
   }
 });
 
-export default router; 
+export default router;

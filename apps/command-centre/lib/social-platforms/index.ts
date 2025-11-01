@@ -43,12 +43,17 @@ export class SocialMediaManager {
     this.platforms.set('facebook', new FacebookAPI());
   }
 
-  async verifyAllContent(content: PostContent, platformNames: string[]): Promise<{
-    platform: string;
-    valid: boolean;
-    warnings: string[];
-    duplicateDetected: boolean;
-  }[]> {
+  async verifyAllContent(
+    content: PostContent,
+    platformNames: string[]
+  ): Promise<
+    {
+      platform: string;
+      valid: boolean;
+      warnings: string[];
+      duplicateDetected: boolean;
+    }[]
+  > {
     const results = [];
 
     for (const platformName of platformNames) {
@@ -58,7 +63,7 @@ export class SocialMediaManager {
           platform: platformName,
           valid: false,
           warnings: ['Platform not found'],
-          duplicateDetected: false
+          duplicateDetected: false,
         });
         continue;
       }
@@ -71,14 +76,16 @@ export class SocialMediaManager {
           platform: platformName,
           valid: verification.valid,
           warnings: verification.warnings,
-          duplicateDetected: duplicateCheck
+          duplicateDetected: duplicateCheck,
         });
       } catch (error) {
         results.push({
           platform: platformName,
           valid: false,
-          warnings: [`Verification failed: ${error instanceof Error ? error.message : 'Unknown error'}`],
-          duplicateDetected: false
+          warnings: [
+            `Verification failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
+          ],
+          duplicateDetected: false,
         });
       }
     }
@@ -90,10 +97,12 @@ export class SocialMediaManager {
     content: PostContent,
     platformNames: string[],
     verifyFirst: boolean = true
-  ): Promise<{
-    platform: string;
-    result: PostResult;
-  }[]> {
+  ): Promise<
+    {
+      platform: string;
+      result: PostResult;
+    }[]
+  > {
     const results = [];
 
     // Verify content first if requested
@@ -113,7 +122,7 @@ export class SocialMediaManager {
       if (!platform) {
         results.push({
           platform: platformName,
-          result: { success: false, error: 'Platform not found' }
+          result: { success: false, error: 'Platform not found' },
         });
         continue;
       }
@@ -122,15 +131,15 @@ export class SocialMediaManager {
         const result = await platform.post(content);
         results.push({
           platform: platformName,
-          result
+          result,
         });
       } catch (error) {
         results.push({
           platform: platformName,
           result: {
             success: false,
-            error: error instanceof Error ? error.message : 'Unknown error'
-          }
+            error: error instanceof Error ? error.message : 'Unknown error',
+          },
         });
       }
     }

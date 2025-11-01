@@ -6,16 +6,19 @@
 ## ✅ CURRENT SETUP
 
 ### Google Tag Manager
+
 - **GTM ID**: `GTM-WZNJWDKH`
 - **Location**: `/apps/audio-intel/app/layout.tsx` (lines 123-143)
 - **Status**: ✅ Installed and active
 
 ### Internal Analytics API
+
 - **Location**: `/apps/audio-intel/app/api/analytics/route.ts`
 - **Tracking Functions**: `/apps/audio-intel/utils/analytics.ts`
 - **Status**: ✅ Built but needs database connection
 
 ### Command Centre Integration
+
 - **Dashboard**: `https://command.totalaudiopromo.com/analytics`
 - **API Endpoint**: `/apps/command-centre/app/api/audio-intel-metrics/route.ts`
 - **Status**: ⚠️ Configured for localhost:3001 (needs production URL)
@@ -23,24 +26,31 @@
 ## 🔧 FIXES NEEDED
 
 ### 1. Update Command Centre to Pull from Production
+
 **Current** (line 6 in command-centre/app/api/audio-intel-metrics/route.ts):
+
 ```typescript
 const audioIntelBaseUrl = 'http://localhost:3001';
 ```
 
 **Should be**:
+
 ```typescript
 const audioIntelBaseUrl = process.env.AUDIO_INTEL_API_URL || 'https://intel.totalaudiopromo.com';
 ```
 
 ### 2. Add Environment Variable
+
 Add to `/apps/command-centre/.env.local`:
+
 ```
 AUDIO_INTEL_API_URL=https://intel.totalaudiopromo.com
 ```
 
 ### 3. Enable Audio Intel Analytics API
+
 The `/api/analytics` endpoint exists but needs to store data. Current flow:
+
 - Page views tracked via `trackPageView()`
 - Events sent to `/api/analytics` (POST)
 - Data should be stored in database or sent to external service
@@ -48,6 +58,7 @@ The `/api/analytics` endpoint exists but needs to store data. Current flow:
 ## 📊 WHAT WE'RE TRACKING
 
 ### Page-Level Tracking (via GTM)
+
 1. **PSEO Page Views**: All `/blog/*-contact-enrichment` pages
 2. **Homepage visits**
 3. **Pricing page visits**
@@ -55,6 +66,7 @@ The `/api/analytics` endpoint exists but needs to store data. Current flow:
 5. **Demo interactions**
 
 ### Event Tracking (via analytics.ts)
+
 1. **File uploads**: `trackFileUpload()`
 2. **Enrichment starts**: `trackEnrichmentStart()`
 3. **Enrichment completions**: `trackEnrichmentComplete()`
@@ -64,6 +76,7 @@ The `/api/analytics` endpoint exists but needs to store data. Current flow:
 7. **Errors**: `trackError()`
 
 ### Conversion Funnel
+
 1. **Step 1**: PSEO page view (organic traffic)
 2. **Step 2**: Homepage/pricing page visit
 3. **Step 3**: Demo interaction or file upload
@@ -73,6 +86,7 @@ The `/api/analytics` endpoint exists but needs to store data. Current flow:
 ## 🎯 COMMAND CENTRE DASHBOARD METRICS
 
 **Currently displays** (from `/apps/command-centre/app/analytics/page.tsx`):
+
 - Total Revenue & MRR
 - User Growth
 - Contacts Enriched
@@ -82,6 +96,7 @@ The `/api/analytics` endpoint exists but needs to store data. Current flow:
 - System Uptime
 
 **What we need to add for PSEO tracking**:
+
 - Organic traffic by PSEO page
 - Top performing PSEO pages (traffic + conversions)
 - PSEO → Signup conversion rate
@@ -92,7 +107,9 @@ The `/api/analytics` endpoint exists but needs to store data. Current flow:
 ## 📈 PSEO-SPECIFIC TRACKING SETUP
 
 ### Track Organic Traffic Sources
+
 Add to each PSEO page's `page.tsx`:
+
 ```typescript
 'use client';
 import { useEffect } from 'react';
@@ -118,7 +135,9 @@ export default function PSEOPage() {
 ```
 
 ### Track PSEO → Conversion
+
 Add conversion tracking when users click CTAs from PSEO pages:
+
 ```typescript
 // On "Try Audio Intel Free" button click
 onClick={() => {
@@ -183,6 +202,7 @@ You view on mobile at command.totalaudiopromo.com
 ## 📱 MOBILE COMMAND CENTRE PRIORITY
 
 Since you need to track "on the go", prioritize:
+
 1. Mobile-responsive analytics dashboard
 2. Real-time data (no caching)
 3. Push notifications for key events (optional)
@@ -191,18 +211,21 @@ Since you need to track "on the go", prioritize:
 ## 🎯 SUCCESS METRICS TO TRACK
 
 ### Week 1 (Baseline)
+
 - Total PSEO page views
 - Unique visitors per page
 - Average time on page
 - Bounce rate
 
 ### Week 2-4 (Growth)
+
 - Organic traffic growth rate
 - Top 3 performing PSEO pages
 - PSEO → Homepage click-through rate
 - PSEO → Demo interaction rate
 
 ### Month 1+ (Revenue)
+
 - PSEO → Signup conversion rate
 - PSEO → Payment conversion rate
 - Revenue attributed to PSEO pages

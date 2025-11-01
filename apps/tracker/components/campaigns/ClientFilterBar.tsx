@@ -9,20 +9,27 @@ interface ClientFilterBarProps {
   onClientSelect: (clientName: string | null) => void;
 }
 
-export function ClientFilterBar({ campaigns, onFilterChange, onClientSelect }: ClientFilterBarProps) {
+export function ClientFilterBar({
+  campaigns,
+  onFilterChange,
+  onClientSelect,
+}: ClientFilterBarProps) {
   const [selectedClient, setSelectedClient] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
   // Extract unique clients from campaigns (Excel-style unique values)
   const clients = useMemo(() => {
-    const clientMap = new Map<string, {
-      name: string;
-      campaignCount: number;
-      activeCampaigns: number;
-      totalBudget: number;
-    }>();
+    const clientMap = new Map<
+      string,
+      {
+        name: string;
+        campaignCount: number;
+        activeCampaigns: number;
+        totalBudget: number;
+      }
+    >();
 
-    campaigns.forEach((campaign) => {
+    campaigns.forEach(campaign => {
       const clientName = campaign.client_name || 'No Client';
       const existing = clientMap.get(clientName);
 
@@ -40,7 +47,9 @@ export function ClientFilterBar({ campaigns, onFilterChange, onClientSelect }: C
       }
     });
 
-    return Array.from(clientMap.values()).sort((a, b) => b.campaignCount - a.campaignCount);
+    return Array.from(clientMap.values()).sort(
+      (a, b) => b.campaignCount - a.campaignCount
+    );
   }, [campaigns]);
 
   // Filter campaigns based on selection (Excel-style filter)
@@ -51,7 +60,7 @@ export function ClientFilterBar({ campaigns, onFilterChange, onClientSelect }: C
     if (!clientName) {
       onFilterChange(campaigns);
     } else {
-      const filtered = campaigns.filter((c) =>
+      const filtered = campaigns.filter(c =>
         clientName === 'No Client'
           ? !c.client_name
           : c.client_name === clientName
@@ -63,7 +72,7 @@ export function ClientFilterBar({ campaigns, onFilterChange, onClientSelect }: C
   // Search filter (Excel-style find)
   const filteredClients = useMemo(() => {
     if (!searchTerm) return clients;
-    return clients.filter((client) =>
+    return clients.filter(client =>
       client.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [clients, searchTerm]);
@@ -73,8 +82,18 @@ export function ClientFilterBar({ campaigns, onFilterChange, onClientSelect }: C
       {/* Excel-style filter header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <svg className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+          <svg
+            className="w-5 h-5 text-gray-700"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+            />
           </svg>
           <h3 className="text-lg font-black text-gray-900">Filter by Client</h3>
         </div>
@@ -95,7 +114,7 @@ export function ClientFilterBar({ campaigns, onFilterChange, onClientSelect }: C
           type="text"
           placeholder="Search clients... (Ctrl+F)"
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={e => setSearchTerm(e.target.value)}
           className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg font-medium focus:border-teal-500 focus:outline-none"
         />
       </div>
@@ -114,8 +133,16 @@ export function ClientFilterBar({ campaigns, onFilterChange, onClientSelect }: C
           <div className="flex items-center justify-between mb-1">
             <span className="font-black text-gray-900">All Clients</span>
             {!selectedClient && (
-              <svg className="w-4 h-4 text-teal-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              <svg
+                className="w-4 h-4 text-teal-600"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
               </svg>
             )}
           </div>
@@ -124,7 +151,7 @@ export function ClientFilterBar({ campaigns, onFilterChange, onClientSelect }: C
           </div>
         </button>
 
-        {filteredClients.map((client) => (
+        {filteredClients.map(client => (
           <button
             key={client.name}
             onClick={() => handleClientSelect(client.name)}
@@ -135,12 +162,23 @@ export function ClientFilterBar({ campaigns, onFilterChange, onClientSelect }: C
             }`}
           >
             <div className="flex items-center justify-between mb-1">
-              <span className="font-black text-gray-900 truncate" title={client.name}>
+              <span
+                className="font-black text-gray-900 truncate"
+                title={client.name}
+              >
                 {client.name}
               </span>
               {selectedClient === client.name && (
-                <svg className="w-4 h-4 text-teal-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                <svg
+                  className="w-4 h-4 text-teal-600 flex-shrink-0"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               )}
             </div>
@@ -162,9 +200,14 @@ export function ClientFilterBar({ campaigns, onFilterChange, onClientSelect }: C
               Showing: {selectedClient}
             </span>
             <span className="font-bold text-gray-600">
-              {campaigns.filter((c) =>
-                selectedClient === 'No Client' ? !c.client_name : c.client_name === selectedClient
-              ).length} of {campaigns.length} campaigns
+              {
+                campaigns.filter(c =>
+                  selectedClient === 'No Client'
+                    ? !c.client_name
+                    : c.client_name === selectedClient
+                ).length
+              }{' '}
+              of {campaigns.length} campaigns
             </span>
           </div>
         </div>

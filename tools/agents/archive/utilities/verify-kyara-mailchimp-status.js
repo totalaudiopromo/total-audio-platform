@@ -36,9 +36,9 @@ async function checkMailchimpStatus(email) {
       {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${MAILCHIMP_API_KEY}`,
-          'Content-Type': 'application/json'
-        }
+          Authorization: `Bearer ${MAILCHIMP_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
       }
     );
 
@@ -58,9 +58,8 @@ async function checkMailchimpStatus(email) {
       email: data.email_address,
       tags: data.tags ? data.tags.map(t => t.name) : [],
       lastChanged: data.last_changed,
-      memberRating: data.member_rating
+      memberRating: data.member_rating,
     };
-
   } catch (error) {
     return { exists: false, status: 'Error', error: error.message };
   }
@@ -79,14 +78,14 @@ async function verifyKYARAContacts() {
     notInMailchimp: [],
     pending: [],
     cleaned: [],
-    errors: []
+    errors: [],
   };
 
   const mismatches = [];
 
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
-    console.log(`[${i+1}/${contacts.length}] Checking: ${contact.email}`);
+    console.log(`[${i + 1}/${contacts.length}] Checking: ${contact.email}`);
 
     const mailchimpStatus = await checkMailchimpStatus(contact.email);
     const airtableStatus = contact.relationship || contact.allFields?.Status || 'No status';
@@ -106,7 +105,7 @@ async function verifyKYARAContacts() {
           email: contact.email,
           mailchimpStatus: mailchimpStatus.status,
           airtableStatus,
-          station: contact.allFields?.Station || contact.name
+          station: contact.allFields?.Station || contact.name,
         });
       } else {
         console.log(`   ✅ Status matches`);
@@ -127,7 +126,6 @@ async function verifyKYARAContacts() {
       if (mailchimpStatus.tags && mailchimpStatus.tags.length > 0) {
         console.log(`   Tags: ${mailchimpStatus.tags.join(', ')}`);
       }
-
     } else {
       console.log(`   ❌ Not in Mailchimp: ${mailchimpStatus.status}`);
       results.notInMailchimp.push({ ...contact, mailchimpStatus });
@@ -137,7 +135,7 @@ async function verifyKYARAContacts() {
           email: contact.email,
           mailchimpStatus: 'Not in Mailchimp',
           airtableStatus,
-          station: contact.allFields?.Station || contact.name
+          station: contact.allFields?.Station || contact.name,
         });
       }
     }
@@ -162,7 +160,7 @@ async function verifyKYARAContacts() {
     console.log('═══════════════════════════════════════════════════════════\n');
 
     mismatches.forEach((mismatch, i) => {
-      console.log(`${i+1}. ${mismatch.email}`);
+      console.log(`${i + 1}. ${mismatch.email}`);
       console.log(`   Station: ${mismatch.station}`);
       console.log(`   Mailchimp: ${mismatch.mailchimpStatus}`);
       console.log(`   Airtable: ${mismatch.airtableStatus}`);
@@ -175,8 +173,8 @@ async function verifyKYARAContacts() {
   }
 
   // High-value contacts that are unsubscribed
-  const valuableUnsubscribed = results.unsubscribed.filter(c =>
-    c.email.includes('bbc') || c.allFields?.['MC TAGS']?.includes('BBC')
+  const valuableUnsubscribed = results.unsubscribed.filter(
+    c => c.email.includes('bbc') || c.allFields?.['MC TAGS']?.includes('BBC')
   );
 
   if (valuableUnsubscribed.length > 0) {
@@ -184,7 +182,7 @@ async function verifyKYARAContacts() {
     console.log('═══════════════════════════════════════════════════════════\n');
 
     valuableUnsubscribed.forEach((contact, i) => {
-      console.log(`${i+1}. ${contact.email}`);
+      console.log(`${i + 1}. ${contact.email}`);
       console.log(`   Station: ${contact.allFields?.Station || 'Unknown'}`);
       console.log(`   Show: ${contact.allFields?.Show || 'N/A'}`);
       console.log(`   Tags: ${contact.allFields?.['MC TAGS'] || 'None'}`);
@@ -205,7 +203,7 @@ async function verifyKYARAContacts() {
       unsubscribed: results.unsubscribed.length,
       pending: results.pending.length,
       cleaned: results.cleaned.length,
-      notInMailchimp: results.notInMailchimp.length
+      notInMailchimp: results.notInMailchimp.length,
     },
     mismatches,
     valuableUnsubscribed: valuableUnsubscribed.map(c => ({
@@ -213,11 +211,11 @@ async function verifyKYARAContacts() {
       station: c.allFields?.Station,
       show: c.allFields?.Show,
       tags: c.allFields?.['MC TAGS'],
-      lastChanged: c.mailchimpStatus.lastChanged
+      lastChanged: c.mailchimpStatus.lastChanged,
     })),
     subscribedContacts: results.subscribed.map(c => c.email),
     unsubscribedContacts: results.unsubscribed.map(c => c.email),
-    notInMailchimpContacts: results.notInMailchimp.map(c => c.email)
+    notInMailchimpContacts: results.notInMailchimp.map(c => c.email),
   };
 
   fs.writeFileSync('./KYARA_MAILCHIMP_VERIFICATION.json', JSON.stringify(report, null, 2));

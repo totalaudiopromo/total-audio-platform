@@ -3,6 +3,7 @@
 ## 🚀 Get Up and Running in 5 Minutes
 
 ### Step 1: Install Dependencies ✅
+
 Already done! Dependencies installed.
 
 ### Step 2: Set Up Environment Variables
@@ -63,6 +64,7 @@ Open http://localhost:3000
 ## 📋 What Was Built
 
 ### ✅ Core Features
+
 - **Dashboard** - Stats, recent pitches, quick actions
 - **Pitch Generator** - AI-powered pitch creation with GPT-4
 - **Pitch Review** - Edit, copy, and manage generated pitches
@@ -72,6 +74,7 @@ Open http://localhost:3000
 - **Batch Mode** - Placeholder for future batch generation
 
 ### ✅ Pages Created
+
 - `/` - Landing page (Pitch Generator marketing)
 - `/dashboard` - Main dashboard (auth required)
 - `/pitch/generate` - Create new pitch form
@@ -82,9 +85,11 @@ Open http://localhost:3000
 - `/pitch/batch` - Coming soon placeholder
 
 ### ✅ API Routes
+
 - `/api/pitch/generate` - Generate pitch with OpenAI GPT-4
 
 ### ✅ Database Schema
+
 - `contacts` - Media contacts with genres, notes, preferences
 - `pitches` - Generated pitches with status tracking
 - `pitch_templates` - 5 system templates included
@@ -130,6 +135,7 @@ Open http://localhost:3000
 ### Getting Better AI Results
 
 The AI quality depends heavily on:
+
 1. **Good contact data** - Add notes about preferences, timing
 2. **Clear key hooks** - Be specific about what makes the track special
 3. **Contact history** - Track interactions to improve personalization
@@ -153,16 +159,19 @@ The AI quality depends heavily on:
 ## 🐛 Common Issues
 
 ### "Failed to generate pitch"
+
 - Check OpenAI API key is valid
 - Verify API credits available
 - Check browser console for errors
 
 ### "No contacts found"
+
 - Add at least one contact first
 - Check user_id matches in database
 - Verify Supabase connection
 
 ### Styling looks broken
+
 - Run `npm install` to ensure all dependencies
 - Clear Next.js cache: `rm -rf .next`
 - Restart dev server
@@ -211,4 +220,3 @@ Total build time: ~2 hours
 Lines of code: ~3,000
 Pages created: 8
 Database tables: 5
-

@@ -1,6 +1,6 @@
 # 📝 CONTENT & BRAND
 
-*Brand voice, content creation, and marketing materials*
+_Brand voice, content creation, and marketing materials_
 
 ---
 
@@ -81,9 +81,9 @@
 
 ---
 
-*Your brand and content command centre*
+_Your brand and content command centre_
 
-[Authentic Brand Strategy (Producer Credibility)](%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/Authentic%20Brand%20Strategy%20(Producer%20Credibility)%202580a35b21ed81dfaf91c61ab7eab1d6.md)
+[Authentic Brand Strategy (Producer Credibility)](<%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/Authentic%20Brand%20Strategy%20(Producer%20Credibility)%202580a35b21ed81dfaf91c61ab7eab1d6.md>)
 
 [Journal & Ideas](%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/Journal%20&%20Ideas%202230a35b21ed81febadff01f4a0adde9.md)
 
@@ -122,7 +122,7 @@ Comment BETA for free access 👇
 
 [🎨 UPDATED Total Audio Brand Guidelines - Command Centre Era](%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/%F0%9F%8E%A8%20UPDATED%20Total%20Audio%20Brand%20Guidelines%20-%20Command%20C%2025d0a35b21ed818981c0f93f53909ee6.md)
 
-[Content Bank - Authentic Voice (MASTER)](%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/Content%20Bank%20-%20Authentic%20Voice%20(MASTER)%202530a35b21ed81498091e408bf6f5ff6.md)
+[Content Bank - Authentic Voice (MASTER)](<%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/Content%20Bank%20-%20Authentic%20Voice%20(MASTER)%202530a35b21ed81498091e408bf6f5ff6.md>)
 
 [Social Media Content - User Acquisition](%F0%9F%93%9D%20CONTENT%20&%20BRAND%202660a35b21ed8162baeaf8afbf100b2e/Social%20Media%20Content%20-%20User%20Acquisition%2075c7e9291f49412ca546b4e880291455.csv)
 

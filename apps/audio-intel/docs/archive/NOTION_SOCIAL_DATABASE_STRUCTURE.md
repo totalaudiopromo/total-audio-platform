@@ -11,7 +11,7 @@
 **Platform** (Select)
 
 - Twitter
-- LinkedIn  
+- LinkedIn
 - Blue Sky
 - Reddit
 - Instagram
@@ -125,7 +125,7 @@ Create a calendar view grouped by "Scheduled Date" to see your posting schedule.
 Create a board view grouped by "Status" to manage your content pipeline:
 
 - Draft
-- Scheduled  
+- Scheduled
 - Posted
 - Archived
 

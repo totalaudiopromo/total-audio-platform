@@ -21,16 +21,16 @@ interface BlogContentProps {
 
 function getCategoryBadgeClasses(category: string) {
   switch (category) {
-    case "Playlist Tracking":
-      return "bg-teal-100 text-teal-800";
-    case "Radio Tracking":
-      return "bg-indigo-100 text-indigo-800";
-    case "PR Tracking":
-      return "bg-green-100 text-green-800";
-    case "Social Media Tracking":
-      return "bg-pink-100 text-pink-800";
+    case 'Playlist Tracking':
+      return 'bg-teal-100 text-teal-800';
+    case 'Radio Tracking':
+      return 'bg-indigo-100 text-indigo-800';
+    case 'PR Tracking':
+      return 'bg-green-100 text-green-800';
+    case 'Social Media Tracking':
+      return 'bg-pink-100 text-pink-800';
     default:
-      return "bg-gray-100 text-gray-800";
+      return 'bg-gray-100 text-gray-800';
   }
 }
 
@@ -39,8 +39,11 @@ export default function BlogContent({ posts }: BlogContentProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredPosts = posts.filter(post => {
-    const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory =
+      selectedCategory === 'all' || post.category === selectedCategory;
+    const matchesSearch = post.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -52,7 +55,11 @@ export default function BlogContent({ posts }: BlogContentProps) {
       {/* Sidebar with state handlers */}
       <div className="w-full lg:w-80 flex-shrink-0">
         <BlogSidebar
-          posts={posts.map(p => ({ slug: p.slug, title: p.title, category: p.category }))}
+          posts={posts.map(p => ({
+            slug: p.slug,
+            title: p.title,
+            category: p.category,
+          }))}
           selectedCategory={selectedCategory}
           searchQuery={searchQuery}
           onCategoryChange={setSelectedCategory}
@@ -64,7 +71,9 @@ export default function BlogContent({ posts }: BlogContentProps) {
       <div className="flex-1 min-w-0 space-y-16">
         {filteredPosts.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-xl text-gray-600">No guides found matching your filters.</p>
+            <p className="text-xl text-gray-600">
+              No guides found matching your filters.
+            </p>
             <button
               onClick={() => {
                 setSelectedCategory('all');
@@ -83,7 +92,9 @@ export default function BlogContent({ posts }: BlogContentProps) {
                 <div className="bg-white rounded-2xl border-4 border-teal-500 shadow-brutal-lg overflow-hidden">
                   <div className="p-8 md:p-12">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className={`${getCategoryBadgeClasses(featuredPost.category)} px-3 py-1 rounded-full text-sm font-bold`}>
+                      <span
+                        className={`${getCategoryBadgeClasses(featuredPost.category)} px-3 py-1 rounded-full text-sm font-bold`}
+                      >
                         {featuredPost.category}
                       </span>
                       <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-bold">
@@ -106,7 +117,9 @@ export default function BlogContent({ posts }: BlogContentProps) {
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4 text-sm text-gray-500">
-                        <span className="font-semibold">{featuredPost.author}</span>
+                        <span className="font-semibold">
+                          {featuredPost.author}
+                        </span>
                         <span>•</span>
                         <span>{featuredPost.readTime}</span>
                       </div>
@@ -127,14 +140,21 @@ export default function BlogContent({ posts }: BlogContentProps) {
             {otherPosts.length > 0 && (
               <div>
                 <h2 className="text-3xl font-black text-gray-900 mb-8">
-                  {selectedCategory !== 'all' || searchQuery ? 'Filtered Guides' : 'More Guides'}
+                  {selectedCategory !== 'all' || searchQuery
+                    ? 'Filtered Guides'
+                    : 'More Guides'}
                 </h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  {otherPosts.map((post) => (
-                    <article key={post.slug} className="bg-white rounded-xl border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all overflow-hidden">
+                  {otherPosts.map(post => (
+                    <article
+                      key={post.slug}
+                      className="bg-white rounded-xl border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all overflow-hidden"
+                    >
                       <div className="p-6">
                         <div className="flex items-center gap-2 mb-3">
-                          <span className={`${getCategoryBadgeClasses(post.category)} px-2 py-1 rounded text-xs font-semibold`}>
+                          <span
+                            className={`${getCategoryBadgeClasses(post.category)} px-2 py-1 rounded text-xs font-semibold`}
+                          >
                             {post.category}
                           </span>
                         </div>
@@ -149,7 +169,9 @@ export default function BlogContent({ posts }: BlogContentProps) {
                         </h3>
 
                         <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                          {post.excerpt.length > 120 ? `${post.excerpt.substring(0, 120)}...` : post.excerpt}
+                          {post.excerpt.length > 120
+                            ? `${post.excerpt.substring(0, 120)}...`
+                            : post.excerpt}
                         </p>
 
                         <div className="flex items-center justify-between text-xs text-gray-500">

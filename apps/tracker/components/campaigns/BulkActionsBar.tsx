@@ -2,7 +2,14 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { CheckSquare, Square, Trash2, Download, Archive, X } from 'lucide-react';
+import {
+  CheckSquare,
+  Square,
+  Trash2,
+  Download,
+  Archive,
+  X,
+} from 'lucide-react';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 
 interface BulkActionsBarProps {
@@ -146,10 +153,13 @@ export function BulkActionsBar({
             </button>
             <div className="text-white">
               <p className="text-sm font-black">
-                {selectedCount} campaign{selectedCount !== 1 ? 's' : ''} selected
+                {selectedCount} campaign{selectedCount !== 1 ? 's' : ''}{' '}
+                selected
               </p>
               <p className="text-xs font-bold opacity-90">
-                {allSelected ? 'All campaigns selected' : `${totalCount - selectedCount} remaining`}
+                {allSelected
+                  ? 'All campaigns selected'
+                  : `${totalCount - selectedCount} remaining`}
               </p>
             </div>
           </div>

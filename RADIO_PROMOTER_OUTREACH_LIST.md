@@ -1,6 +1,6 @@
 # 🎯 RADIO PROMOTER OUTREACH LIST - October 2025
 
-*UK Music PR Agencies - Priority Targets for Audio Intel*
+_UK Music PR Agencies - Priority Targets for Audio Intel_
 
 ---
 
@@ -12,6 +12,7 @@
 **Pricing**: £19/month PRO tier (UK pricing advantage)
 
 **Personal Credibility**:
+
 - 5+ years radio promotion experience
 - Pitched to BBC Radio 6 Music, Amazing Radio, regional stations
 - Producer (sadact)
@@ -27,18 +28,21 @@
 **Location**: UK-based
 
 **Why Target**:
+
 - **PERSONAL CONNECTION**: Chris used to work with Simon
 - Active in radio promotion space
 - Focuses on BBC Radio and commercial stations
 - Likely dealing with contact research challenges daily
 
 **Personalization Notes**:
+
 - Reference past working relationship with Simon
 - "I used to work with you at [context]"
 - Mention specific campaigns or artists from that time
 - Warm introduction, not cold outreach
 
 **Outreach Template**:
+
 ```
 Subject: Simon - built something that saves me 15+ hours per campaign
 
@@ -74,17 +78,20 @@ Brighton
 **Contact**: [Research needed - check website for team page]
 
 **Why Target**:
+
 - User specifically mentioned by name
 - Focuses on independent artists (ideal customer profile)
 - UK-based (£ pricing advantage)
 - Radio promotion core service
 
 **Personalization Notes**:
+
 - Research their recent campaigns/artists
 - Mention specific genre or style they work with
 - Reference their blog posts or social media content
 
 **Outreach Template**:
+
 ```
 Subject: Fellow radio promoter - 15 hours → 3 minutes
 
@@ -121,17 +128,20 @@ Brighton, UK
 **Contact**: [Research needed - check team page]
 
 **Why Target**:
+
 - Multi-location UK agency
 - Cost-effective positioning (price-conscious, might appreciate £19/month tool)
 - Wide genre coverage
 - Active in independent music scene
 
 **Personalization Notes**:
+
 - Reference their "cost-effective campaigns" positioning
 - Mention specific city office location if you have local connection
 - Reference genre work that matches your experience
 
 **Outreach Template**:
+
 ```
 Subject: Cost-effective contact research for Prescription PR
 
@@ -165,16 +175,19 @@ Brighton, UK
 **Contact**: [Research needed]
 
 **Why Target**:
+
 - UK-based radio promotion focus
 - Independent artist market
 - Likely managing large contact databases
 
 **Personalization Notes**:
+
 - Research recent campaigns or artists
 - Check social media presence
 - Look for blog posts or case studies
 
 **Outreach Template**:
+
 ```
 Subject: Radio promoter here - contact research automation
 
@@ -205,18 +218,21 @@ Brighton, UK
 **Contact**: Simon Lucas, Bee Adamic, team from training data
 
 **Why Target**:
+
 - **CRITICAL**: Chris has 39,883 messages from Liberty Google Chat
 - Deep insight into their workflow and pain points
 - Know their campaign processes intimately
 - Training data shows high volume of station communications (2,868 patterns)
 
 **Personalization Notes**:
+
 - Reference specific campaign challenges from training data
 - Mention station communication patterns
 - Show understanding of their workflow
 - Could be powerful testimonial/case study source
 
 **Outreach Template**:
+
 ```
 Subject: Contact research automation (from someone who knows Liberty's workflow)
 
@@ -249,11 +265,13 @@ Brighton, UK
 **Contact**: [Research needed]
 
 **Why Target**:
+
 - UK-based music PR
 - Radio promotion services
 - Independent artist focus
 
 **Outreach Template**:
+
 ```
 Subject: Radio contact research - 15 hours → 3 minutes
 
@@ -284,11 +302,13 @@ Brighton, UK
 **Contact**: [Research needed]
 
 **Why Target**:
+
 - UK-based music media company
 - Likely handling contact research
 - Independent music focus
 
 **Outreach Template**:
+
 ```
 Subject: Contact research automation for music PR
 
@@ -314,12 +334,14 @@ Brighton, UK
 ## 🎯 PRIORITY #8-10: ADDITIONAL PROSPECTS (Research Needed)
 
 **To Research**:
+
 - Small PR agencies in Brighton/South Coast (local connection)
 - Independent radio promoters active on LinkedIn/Twitter
 - Music management companies handling radio campaigns
 - DIY artist communities (Bandcamp, indie labels)
 
 **Where to Find Them**:
+
 - LinkedIn: "radio promoter UK" + "music PR UK"
 - Twitter/X: Follow radio promotion conversations
 - Music industry Facebook groups
@@ -330,6 +352,7 @@ Brighton, UK
 ## 📧 EMAIL SEQUENCE (If No Response to Initial Outreach)
 
 ### Follow-up 1 (3 days later):
+
 ```
 Subject: Re: [Original subject]
 
@@ -346,6 +369,7 @@ Chris
 ```
 
 ### Follow-up 2 (7 days later):
+
 ```
 Subject: Last one - contact research tool
 
@@ -371,6 +395,7 @@ Brighton, UK
 "Right, Chris here - I'm a radio promoter (5+ years, pitched to BBC Radio 6 Music, Amazing Radio, loads of regional stations) and producer as sadact. Built Audio Intel because I was wasting 15+ hours per campaign on contact research."
 
 **Demo (2 minutes)**:
+
 - Screen share: intel.totalaudiopromo.com
 - Upload 5 contacts CSV (station names only)
 - Show 30-second processing
@@ -381,6 +406,7 @@ Brighton, UK
 "Try 10 enrichments free - no card needed, no demo call. If it saves you time, upgrade to £19/month. If not, delete it and move on. Link in description."
 
 **End Screen**:
+
 - intel.totalaudiopromo.com
 - "10 Free Enrichments - No Card Required"
 
@@ -389,6 +415,7 @@ Brighton, UK
 ## 📊 SUCCESS TRACKING
 
 **Outreach Metrics**:
+
 - [ ] Emails sent: Target 10 in first week
 - [ ] Response rate: Track %
 - [ ] Loom video views: Track via Loom analytics
@@ -396,6 +423,7 @@ Brighton, UK
 - [ ] Trial → paid conversions: Track by source
 
 **Priority Actions**:
+
 1. Record 3-minute Loom video (schedule time)
 2. Research contact details for each agency (30 minutes)
 3. Send Shy Cat outreach first (personal connection = highest conversion)
@@ -408,17 +436,20 @@ Brighton, UK
 ## 🎯 KEY MESSAGING POINTS (Use in All Outreach)
 
 **Lead With**:
+
 - Time savings: "15 hours → 3 minutes"
 - No demo call needed: "3-minute Loom + free trial"
 - UK pricing advantage: "£19/month vs £500+ US tools"
 
 **Support With**:
+
 - Personal credibility: "5+ years radio promotion"
 - Real experience: "BBC Radio 6 Music pitches"
 - Producer identity: "sadact project"
 - Location: "Brighton-based"
 
 **Close With**:
+
 - Low friction: "Try 10 free, no card"
 - Async: "Watch Loom, try tool, upgrade if useful"
 - No pressure: "If not relevant, no worries"
@@ -426,6 +457,7 @@ Brighton, UK
 ---
 
 **Next Actions**:
+
 1. ✅ Outreach list complete
 2. ⏳ Schedule Loom video recording time
 3. ⏳ Research contact details for each agency
@@ -434,6 +466,6 @@ Brighton, UK
 
 ---
 
-*Created: October 1, 2025*
-*Status: Ready for execution once Loom video recorded*
-*Target: 2+ demo signups from first 10 outreaches*
+_Created: October 1, 2025_
+_Status: Ready for execution once Loom video recorded_
+_Target: 2+ demo signups from first 10 outreaches_

@@ -2,7 +2,13 @@
 
 import { AlertCircle, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import Link from 'next/link';
 
 interface UpgradePromptProps {
@@ -45,7 +51,9 @@ export function UpgradePrompt({
           </div>
           <div>
             <CardTitle className="text-xl">{title}</CardTitle>
-            <CardDescription className="text-teal-700">{message}</CardDescription>
+            <CardDescription className="text-teal-700">
+              {message}
+            </CardDescription>
           </div>
         </div>
       </CardHeader>
@@ -127,8 +135,7 @@ export function UpgradeModal({
               onClick={onClose}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
             >
-              <span className="sr-only">Close</span>
-              ✕
+              <span className="sr-only">Close</span>✕
             </button>
 
             <UpgradePrompt title={title} message={message} feature={feature} />

@@ -14,6 +14,7 @@
 - **Command Centre**: Purple `#7C3AED` (purple-600)
 
 **Universal Status Colours** (All Apps):
+
 - Success/Connected: Green (green-500/600)
 - Warning: Yellow (yellow-500/600)
 - Error: Red (red-500/600)
@@ -23,8 +24,10 @@
 ## AUDIT RESULTS
 
 ### Audio Intel ✅ COMPLIANT
+
 **Status**: 100% colour compliance
 **Files Checked**:
+
 - ✅ ExitIntentPopup.tsx - Blue gradient, borders, CTAs
 - ✅ SiteHeader.tsx - Neutral grey
 - ✅ SiteFooter.tsx - Blue accents
@@ -35,8 +38,10 @@
 ---
 
 ### Pitch Generator ✅ COMPLIANT
+
 **Status**: 100% colour compliance
 **Files Checked**:
+
 - ✅ ExitIntentPopup.tsx - Amber gradient, borders, CTAs
 - ✅ SiteHeader.tsx - Neutral grey
 - ✅ SiteFooter.tsx - Amber accents
@@ -48,19 +53,24 @@
 ---
 
 ### Tracker ✅ COMPLIANT (AFTER FIXES)
+
 **Status**: 10 violations found and FIXED
 
 **Files Modified**:
 
 #### 1. ExitIntentPopup.tsx ✅ FIXED
+
 **Changes**:
+
 - Line 120: `from-amber-50 to-blue-50` → `from-teal-50 to-teal-100`
 - Line 130: `border-amber-600` → `border-teal-600`
 - Line 131: `text-amber-600` → `text-teal-600`
 - Line 166: `bg-amber-600 hover:bg-amber-700` → `bg-teal-600 hover:bg-teal-700`
 
 #### 2. Dashboard Page (app/dashboard/page.tsx) ✅ FIXED
+
 **Changes via sed**:
+
 - `border-amber-500` → `border-teal-600`
 - `text-amber-700` → `text-teal-700`
 - `text-amber-600` → `text-teal-600`
@@ -68,7 +78,9 @@
 - `hover:bg-amber-700` → `hover:bg-teal-700`
 
 #### 3. Home Page (app/page.tsx) ✅ FIXED
+
 **Changes**:
+
 - Line 168-171: Removed orange badge logic entirely
 - All feature badges now use `bg-teal-100 text-teal-800` consistently
 - Badge labels: AI, SPEED, DATA (based on feature title)
@@ -76,8 +88,10 @@
 ---
 
 ### Total Audio Promo (Main Site) ✅ COMPLIANT
+
 **Status**: Multi-brand showcase - correctly displays all app colours
 **Files Checked**:
+
 - ✅ Footer.tsx - Neutral with purple accents
 - ✅ All sections - Proper colour separation for each product
 
@@ -87,11 +101,11 @@
 
 ### Exit Intent Popups Audited:
 
-| App | Background | Border | Badge | CTA Button | Status |
-|-----|-----------|---------|-------|------------|--------|
-| Audio Intel | `from-blue-50 to-blue-100` | `border-blue-600` | `text-blue-600` | `bg-blue-600` | ✅ |
-| Pitch Generator | `from-amber-50 to-amber-50` | `border-amber-600` | `text-amber-600` | `bg-amber-600` | ✅ |
-| Tracker | `from-teal-50 to-teal-100` | `border-teal-600` | `text-teal-600` | `bg-teal-600` | ✅ FIXED |
+| App             | Background                  | Border             | Badge            | CTA Button     | Status   |
+| --------------- | --------------------------- | ------------------ | ---------------- | -------------- | -------- |
+| Audio Intel     | `from-blue-50 to-blue-100`  | `border-blue-600`  | `text-blue-600`  | `bg-blue-600`  | ✅       |
+| Pitch Generator | `from-amber-50 to-amber-50` | `border-amber-600` | `text-amber-600` | `bg-amber-600` | ✅       |
+| Tracker         | `from-teal-50 to-teal-100`  | `border-teal-600`  | `text-teal-600`  | `bg-teal-600`  | ✅ FIXED |
 
 **Note**: All popups correctly use green checkmarks (✓) for universal success indicators.
 
@@ -100,13 +114,17 @@
 ## HEADER/FOOTER CONSISTENCY
 
 ### Headers - All Correct ✅
+
 All apps use **neutral grey** headers with no brand colour conflicts:
+
 - Audio Intel: `apps/audio-intel/components/shared/SiteHeader.tsx`
 - Pitch Generator: `apps/pitch-generator/components/shared/SiteHeader.tsx`
 - Tracker: `apps/tracker/components/shared/SiteHeader.tsx`
 
 ### Footers - All Correct ✅
+
 All footers properly configured with brand accent colours:
+
 - Audio Intel: Blue accents (`hover:text-blue-600`)
 - Pitch Generator: Amber accents (`hover:text-amber-600`)
 - Tracker: Teal accents (`hover:text-teal-600`)
@@ -116,10 +134,13 @@ All footers properly configured with brand accent colours:
 ## VIOLATIONS FOUND & FIXED
 
 ### Total Issues Found: 10
+
 ### Total Issues Fixed: 10
+
 ### Current Compliance: 100%
 
 **Breakdown**:
+
 - Tracker ExitIntentPopup: 4 violations → FIXED
 - Tracker Dashboard: 5 violations → FIXED
 - Tracker Home Page: 1 violation → FIXED
@@ -142,6 +163,7 @@ All footers properly configured with brand accent colours:
 ## DEPLOYMENT STATUS
 
 **Dev Servers Running**:
+
 - Audio Intel: http://localhost:3000 ✅
 - Tracker: http://localhost:3001 ✅
 - Total Audio Promo: http://localhost:3003 ✅

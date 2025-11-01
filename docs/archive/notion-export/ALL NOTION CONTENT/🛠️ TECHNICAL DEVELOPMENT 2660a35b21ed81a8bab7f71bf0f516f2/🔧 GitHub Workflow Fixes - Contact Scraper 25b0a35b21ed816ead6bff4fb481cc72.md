@@ -11,20 +11,20 @@
 ### Technical Problems Identified
 
 1. **Package Installation Failure**
-    - Error: `Package 'libasound2' has no installation candidate`
-    - Root Cause: Ubuntu package lists not updated before installation
-    - Solution: Add `sudo apt-get update` step before package installation
+   - Error: `Package 'libasound2' has no installation candidate`
+   - Root Cause: Ubuntu package lists not updated before installation
+   - Solution: Add `sudo apt-get update` step before package installation
 2. **GitHub Integration Permissions**
-    - Error: `HttpError: Resource not accessible by integration`
-    - Root Cause: Default GitHub token lacks `issues:write` permissions
-    - Solution: Update workflow permissions or use Personal Access Token
+   - Error: `HttpError: Resource not accessible by integration`
+   - Root Cause: Default GitHub token lacks `issues:write` permissions
+   - Solution: Update workflow permissions or use Personal Access Token
 
 ### Required Fixes
 
-- [ ]  Add `sudo apt-get update` before package installation in workflow
-- [ ]  Update workflow permissions to include `issues:write` scope
-- [ ]  Test scraper functionality after fixes applied
-- [ ]  Verify contact database refresh resumes properly
+- [ ] Add `sudo apt-get update` before package installation in workflow
+- [ ] Update workflow permissions to include `issues:write` scope
+- [ ] Test scraper functionality after fixes applied
+- [ ] Verify contact database refresh resumes properly
 
 ### Workflow File Changes Needed
 
@@ -37,7 +37,7 @@ jobs:
     steps:
       - name: Update Package Lists
         run: sudo apt-get update
-      
+
       - name: Install Dependencies
         run: sudo apt-get install -y libasound2
 ```

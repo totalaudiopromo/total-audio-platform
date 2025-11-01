@@ -14,7 +14,7 @@ import {
   AlertCircle,
   Loader2,
   Copy,
-  ExternalLink
+  ExternalLink,
 } from 'lucide-react';
 
 interface PostTemplate {
@@ -44,34 +44,34 @@ interface ScheduledPost {
 }
 
 const PLATFORMS = [
-  { 
-    id: 'twitter', 
-    name: 'X (Twitter)', 
-    icon: 'X', 
+  {
+    id: 'twitter',
+    name: 'X (Twitter)',
+    icon: 'X',
     color: 'bg-black text-white',
-    maxChars: 280 
+    maxChars: 280,
   },
-  { 
-    id: 'linkedin', 
-    name: 'LinkedIn', 
-    icon: 'in', 
+  {
+    id: 'linkedin',
+    name: 'LinkedIn',
+    icon: 'in',
     color: 'bg-blue-600 text-white',
-    maxChars: 3000 
+    maxChars: 3000,
   },
-  { 
-    id: 'bluesky', 
-    name: 'Blue Sky', 
-    icon: 'BS', 
+  {
+    id: 'bluesky',
+    name: 'Blue Sky',
+    icon: 'BS',
     color: 'bg-sky-500 text-white',
-    maxChars: 300 
+    maxChars: 300,
   },
-  { 
-    id: 'threads', 
-    name: 'Threads', 
-    icon: 'TH', 
+  {
+    id: 'threads',
+    name: 'Threads',
+    icon: 'TH',
     color: 'bg-gray-900 text-white',
-    maxChars: 500 
-  }
+    maxChars: 500,
+  },
 ];
 
 interface EnhancedSocialPostingProps {
@@ -79,8 +79,15 @@ interface EnhancedSocialPostingProps {
   fromNews?: boolean;
 }
 
-export default function EnhancedSocialPosting({ newsItem, fromNews = false }: EnhancedSocialPostingProps) {
-  const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>(['twitter', 'linkedin', 'bluesky']);
+export default function EnhancedSocialPosting({
+  newsItem,
+  fromNews = false,
+}: EnhancedSocialPostingProps) {
+  const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([
+    'twitter',
+    'linkedin',
+    'bluesky',
+  ]);
   const [content, setContent] = useState('');
   const [aiEnhancedContent, setAiEnhancedContent] = useState('');
   const [hashtags, setHashtags] = useState<string>('');
@@ -90,7 +97,9 @@ export default function EnhancedSocialPosting({ newsItem, fromNews = false }: En
   const [showSuccess, setShowSuccess] = useState(false);
   const [templates, setTemplates] = useState<PostTemplate[]>([]);
   const [selectedTemplate, setSelectedTemplate] = useState<PostTemplate | null>(null);
-  const [currentStep, setCurrentStep] = useState<'compose' | 'enhance' | 'review' | 'schedule'>('compose');
+  const [currentStep, setCurrentStep] = useState<'compose' | 'enhance' | 'review' | 'schedule'>(
+    'compose'
+  );
 
   useEffect(() => {
     if (newsItem) {
@@ -118,18 +127,18 @@ What are your thoughts on this?`);
 
   const enhanceWithAI = async () => {
     if (!content.trim()) return;
-    
+
     setIsEnhancing(true);
     try {
       // Simulate AI enhancement - replace with actual API call
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
+
       const enhanced = `${content}
 
 Key takeaway: This shows how innovation drives the music industry forward.
 
 #MusicTech #Innovation #AudioIndustry #TotalAudioPromo`;
-      
+
       setAiEnhancedContent(enhanced);
       setCurrentStep('review');
     } catch (error) {
@@ -140,10 +149,8 @@ Key takeaway: This shows how innovation drives the music industry forward.
   };
 
   const handlePlatformToggle = (platformId: string) => {
-    setSelectedPlatforms(prev => 
-      prev.includes(platformId) 
-        ? prev.filter(id => id !== platformId)
-        : [...prev, platformId]
+    setSelectedPlatforms(prev =>
+      prev.includes(platformId) ? prev.filter(id => id !== platformId) : [...prev, platformId]
     );
   };
 
@@ -163,8 +170,8 @@ Key takeaway: This shows how innovation drives the music industry forward.
           content: finalContent + (hashtags ? ` ${hashtags}` : ''),
           scheduledTime: scheduledTime || undefined,
           newsItemId: newsItem?.id,
-          fromNews
-        })
+          fromNews,
+        }),
       });
 
       const data = await response.json();
@@ -211,7 +218,8 @@ Key takeaway: This shows how innovation drives the music industry forward.
         <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
         <h2 className="mobile-heading-2 text-green-700 mb-2">Post Scheduled!</h2>
         <p className="mobile-body text-gray-600">
-          Your content will be published to {selectedPlatforms.length} platform{selectedPlatforms.length > 1 ? 's' : ''}
+          Your content will be published to {selectedPlatforms.length} platform
+          {selectedPlatforms.length > 1 ? 's' : ''}
         </p>
       </div>
     );
@@ -232,9 +240,7 @@ Key takeaway: This shows how innovation drives the music industry forward.
             </button>
           )}
           <div>
-            <h1 className="mobile-heading-1">
-              {fromNews ? 'Share News' : 'Social Posting'}
-            </h1>
+            <h1 className="mobile-heading-1">{fromNews ? 'Share News' : 'Social Posting'}</h1>
             <p className="mobile-caption">
               {newsItem ? `From: ${newsItem.source}` : 'Multi-platform publishing'}
             </p>
@@ -247,7 +253,15 @@ Key takeaway: This shows how innovation drives the music industry forward.
         <div className="flex items-center justify-between mb-4">
           <span className="text-sm font-semibold text-gray-600">Progress</span>
           <span className="text-sm text-blue-600">
-            Step {currentStep === 'compose' ? 1 : currentStep === 'enhance' ? 2 : currentStep === 'review' ? 3 : 4} of 4
+            Step{' '}
+            {currentStep === 'compose'
+              ? 1
+              : currentStep === 'enhance'
+                ? 2
+                : currentStep === 'review'
+                  ? 3
+                  : 4}{' '}
+            of 4
           </span>
         </div>
         <div className="flex space-x-2">
@@ -255,8 +269,11 @@ Key takeaway: This shows how innovation drives the music industry forward.
             <div
               key={step}
               className={`flex-1 h-2 rounded-full ${
-                currentStep === step ? 'bg-blue-600' : 
-                index < ['compose', 'enhance', 'review', 'schedule'].indexOf(currentStep) ? 'bg-green-500' : 'bg-gray-200'
+                currentStep === step
+                  ? 'bg-blue-600'
+                  : index < ['compose', 'enhance', 'review', 'schedule'].indexOf(currentStep)
+                    ? 'bg-green-500'
+                    : 'bg-gray-200'
               }`}
             />
           ))}
@@ -267,15 +284,12 @@ Key takeaway: This shows how innovation drives the music industry forward.
       <div className="mobile-card">
         <h2 className="mobile-heading-3 mb-4">Select Platforms</h2>
         <div className="grid grid-cols-2 gap-3">
-          {PLATFORMS.map((platform) => (
+          {PLATFORMS.map(platform => (
             <label
               key={platform.id}
               className={`
                 mobile-quick-action cursor-pointer transition-all
-                ${selectedPlatforms.includes(platform.id) 
-                  ? 'ring-2 ring-blue-500 bg-blue-50' 
-                  : ''
-                }
+                ${selectedPlatforms.includes(platform.id) ? 'ring-2 ring-blue-500 bg-blue-50' : ''}
               `}
             >
               <input
@@ -302,23 +316,23 @@ Key takeaway: This shows how innovation drives the music industry forward.
       {currentStep === 'compose' && (
         <div className="mobile-card">
           <h2 className="mobile-heading-3 mb-4">Compose Content</h2>
-          
+
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Post Content
-              </label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Post Content</label>
               <textarea
                 value={content}
-                onChange={(e) => setContent(e.target.value)}
+                onChange={e => setContent(e.target.value)}
                 placeholder="What's happening in the music industry?"
                 rows={6}
                 className="w-full p-4 border-2 border-gray-300 rounded-lg text-base resize-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
               />
               <div className="flex justify-between items-center mt-2">
-                <span className={`text-sm ${
-                  getCharacterCount() > getCharacterLimit() ? 'text-red-500' : 'text-gray-500'
-                }`}>
+                <span
+                  className={`text-sm ${
+                    getCharacterCount() > getCharacterLimit() ? 'text-red-500' : 'text-gray-500'
+                  }`}
+                >
                   {getCharacterCount()}/{getCharacterLimit()} characters
                 </span>
                 <button
@@ -338,7 +352,7 @@ Key takeaway: This shows how innovation drives the music industry forward.
       {currentStep === 'enhance' && (
         <div className="mobile-card">
           <h2 className="mobile-heading-3 mb-4">AI Enhancement</h2>
-          
+
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
             <h3 className="font-semibold text-gray-900 mb-2">Original Content</h3>
             <p className="text-gray-700">{content}</p>
@@ -377,7 +391,7 @@ Key takeaway: This shows how innovation drives the music industry forward.
       {currentStep === 'review' && (
         <div className="mobile-card">
           <h2 className="mobile-heading-3 mb-4">Review Content</h2>
-          
+
           <div className="space-y-4">
             {aiEnhancedContent && (
               <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-200">
@@ -422,7 +436,7 @@ Key takeaway: This shows how innovation drives the music industry forward.
         <div className="space-y-4">
           <div className="mobile-card">
             <h2 className="mobile-heading-3 mb-4">Schedule Publishing</h2>
-            
+
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -459,7 +473,7 @@ Key takeaway: This shows how innovation drives the music industry forward.
                   <input
                     type="datetime-local"
                     value={scheduledTime}
-                    onChange={(e) => setScheduledTime(e.target.value)}
+                    onChange={e => setScheduledTime(e.target.value)}
                     className="w-full p-3 border-2 border-gray-300 rounded-lg text-base focus:border-blue-500"
                   />
                 </div>
@@ -470,19 +484,14 @@ Key takeaway: This shows how innovation drives the music industry forward.
           <div className="mobile-card">
             <h3 className="font-semibold text-gray-900 mb-3">Final Preview</h3>
             <div className="bg-gray-50 p-4 rounded-lg mb-4">
-              <p className="text-gray-700 whitespace-pre-wrap">
-                {aiEnhancedContent || content}
-              </p>
+              <p className="text-gray-700 whitespace-pre-wrap">{aiEnhancedContent || content}</p>
             </div>
-            
+
             <div className="flex flex-wrap gap-2 mb-4">
               {selectedPlatforms.map(platformId => {
                 const platform = PLATFORMS.find(p => p.id === platformId);
                 return platform ? (
-                  <span
-                    key={platform.id}
-                    className={`px-2 py-1 rounded text-xs ${platform.color}`}
-                  >
+                  <span key={platform.id} className={`px-2 py-1 rounded text-xs ${platform.color}`}>
                     {platform.icon} {platform.name}
                   </span>
                 ) : null;
@@ -502,7 +511,8 @@ Key takeaway: This shows how innovation drives the music industry forward.
               ) : (
                 <>
                   <Send className="w-5 h-5 mr-2" />
-                  {scheduledTime ? 'Schedule' : 'Publish'} to {selectedPlatforms.length} Platform{selectedPlatforms.length > 1 ? 's' : ''}
+                  {scheduledTime ? 'Schedule' : 'Publish'} to {selectedPlatforms.length} Platform
+                  {selectedPlatforms.length > 1 ? 's' : ''}
                 </>
               )}
             </button>

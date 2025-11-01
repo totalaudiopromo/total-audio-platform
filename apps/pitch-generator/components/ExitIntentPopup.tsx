@@ -86,7 +86,9 @@ export function ExitIntentPopup() {
           <div className="px-8 py-10 sm:px-12 sm:py-14">
             {/* Badge */}
             <div className="mb-6 inline-flex items-center gap-2 rounded-xl border-4 border-amber-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <span className="text-sm font-black uppercase tracking-[0.2em] text-amber-600">Wait! Before You Go...</span>
+              <span className="text-sm font-black uppercase tracking-[0.2em] text-amber-600">
+                Wait! Before You Go...
+              </span>
             </div>
 
             {/* Heading */}
@@ -100,19 +102,28 @@ export function ExitIntentPopup() {
                 <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-md border-2 border-black flex items-center justify-center">
                   <span className="text-white text-sm font-black">✓</span>
                 </div>
-                <p className="text-gray-900 font-bold"><span className="font-black">No credit card required</span> - Start generating pitches immediately</p>
+                <p className="text-gray-900 font-bold">
+                  <span className="font-black">No credit card required</span> - Start generating
+                  pitches immediately
+                </p>
               </div>
               <div className="flex items-start gap-3 bg-white rounded-xl p-4 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-md border-2 border-black flex items-center justify-center">
                   <span className="text-white text-sm font-black">✓</span>
                 </div>
-                <p className="text-gray-900 font-bold"><span className="font-black">BBC Radio 1 templates</span> - 14-18% response rates vs 2% generic pitches</p>
+                <p className="text-gray-900 font-bold">
+                  <span className="font-black">BBC Radio 1 templates</span> - 14-18% response rates
+                  vs 2% generic pitches
+                </p>
               </div>
               <div className="flex items-start gap-3 bg-white rounded-xl p-4 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-md border-2 border-black flex items-center justify-center">
                   <span className="text-white text-sm font-black">✓</span>
                 </div>
-                <p className="text-gray-900 font-bold"><span className="font-black">5 pitches/month forever free</span> - Test with real contacts</p>
+                <p className="text-gray-900 font-bold">
+                  <span className="font-black">5 pitches/month forever free</span> - Test with real
+                  contacts
+                </p>
               </div>
             </div>
 

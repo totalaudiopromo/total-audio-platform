@@ -1,6 +1,6 @@
 # 🚀 AGENT OS QUICK REFERENCE CARD
 
-*Keep this handy - your go-to Agent OS commands and workflows*
+_Keep this handy - your go-to Agent OS commands and workflows_
 
 ## ⚡ ESSENTIAL COMMANDS
 
@@ -19,7 +19,7 @@
 /analyze-product
 ```
 
-*Agent OS will review Audio Intel, customer segments, and priorities*
+_Agent OS will review Audio Intel, customer segments, and priorities_
 
 **2. Plan your first improvement**
 
@@ -27,7 +27,7 @@
 /create-spec
 ```
 
-*Tell it what you want to improve (e.g., "demo booking process")*
+_Tell it what you want to improve (e.g., "demo booking process")_
 
 **3. Build it systematically**
 
@@ -35,7 +35,7 @@
 /execute-tasks
 ```
 
-*Agent OS builds following best practices and mobile-first*
+_Agent OS builds following best practices and mobile-first_
 
 ## 🔄 DAILY WORKFLOW
 

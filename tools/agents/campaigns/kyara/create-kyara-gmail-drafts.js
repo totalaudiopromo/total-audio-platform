@@ -45,7 +45,7 @@ Would love to hear your thoughts. Given she's a Sydney artist with proven Triple
 Best,
 Chris Schofield
 Liberty Music PR
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
   },
   {
     priority: 2,
@@ -79,7 +79,7 @@ Would love to get your thoughts.
 Cheers,
 Chris Schofield
 Liberty Music PR
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
   },
   {
     priority: 3,
@@ -106,7 +106,7 @@ Worth a listen if you get a sec.
 Best,
 Chris Schofield
 Liberty Music PR
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
   },
   {
     priority: 4,
@@ -129,7 +129,7 @@ Worth checking out if you're after new Australian electronic artists.
 
 Cheers,
 Chris
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
   },
   {
     priority: 5,
@@ -153,8 +153,8 @@ Worth a listen if you're after new Sydney talent.
 Best,
 Chris Schofield
 Liberty Music PR
-chrisschofield@libertymusicpr.com`
-  }
+chrisschofield@libertymusicpr.com`,
+  },
 ];
 
 async function createKyaraGmailDrafts() {
@@ -185,8 +185,12 @@ async function createKyaraGmailDrafts() {
 
   console.log('\n📊 SUMMARY\n');
   console.log(`Total Drafts to Create: ${KYARA_AUSTRALIAN_CONTACTS.length}`);
-  console.log(`Warm Contacts: ${KYARA_AUSTRALIAN_CONTACTS.filter(c => c.relationship === 'WARM').length}`);
-  console.log(`Cold Contacts: ${KYARA_AUSTRALIAN_CONTACTS.filter(c => c.relationship === 'COLD').length}`);
+  console.log(
+    `Warm Contacts: ${KYARA_AUSTRALIAN_CONTACTS.filter(c => c.relationship === 'WARM').length}`
+  );
+  console.log(
+    `Cold Contacts: ${KYARA_AUSTRALIAN_CONTACTS.filter(c => c.relationship === 'COLD').length}`
+  );
   console.log('');
 
   console.log('🎯 PRIORITY SEND ORDER:\n');
@@ -220,22 +224,29 @@ async function createKyaraGmailDrafts() {
   const path = require('path');
   const outputFile = path.join(__dirname, 'kyara-australian-drafts-reference.json');
 
-  fs.writeFileSync(outputFile, JSON.stringify({
-    campaign: 'KYARA Bloodshot Australian Radio Campaign',
-    artist: 'KYARA',
-    track: 'Bloodshot',
-    releaseDate: '2025-10-14',
-    region: 'Australia',
-    createdDate: new Date().toISOString(),
-    contacts: KYARA_AUSTRALIAN_CONTACTS.map(c => ({
-      priority: c.priority,
-      name: c.name,
-      email: c.email,
-      station: c.station,
-      relationship: c.relationship,
-      subject: c.subject
-    }))
-  }, null, 2));
+  fs.writeFileSync(
+    outputFile,
+    JSON.stringify(
+      {
+        campaign: 'KYARA Bloodshot Australian Radio Campaign',
+        artist: 'KYARA',
+        track: 'Bloodshot',
+        releaseDate: '2025-10-14',
+        region: 'Australia',
+        createdDate: new Date().toISOString(),
+        contacts: KYARA_AUSTRALIAN_CONTACTS.map(c => ({
+          priority: c.priority,
+          name: c.name,
+          email: c.email,
+          station: c.station,
+          relationship: c.relationship,
+          subject: c.subject,
+        })),
+      },
+      null,
+      2
+    )
+  );
 
   console.log(`✅ Reference data saved: ${outputFile}\n`);
 
@@ -248,7 +259,7 @@ function exportForGmailMCP() {
     action: 'create',
     to: [contact.email],
     subject: contact.subject,
-    text: contact.body
+    text: contact.body,
   }));
 }
 
@@ -268,5 +279,5 @@ if (require.main === module) {
 module.exports = {
   KYARA_AUSTRALIAN_CONTACTS,
   createKyaraGmailDrafts,
-  exportForGmailMCP
+  exportForGmailMCP,
 };

@@ -9,18 +9,13 @@ try {
   discord = require('discord.js');
 } catch (error) {
   console.error('❌ Missing dependency: discord.js');
-  console.error('➡️  Install it with `npm install discord.js @anthropic-ai/sdk` (run at the repo root).');
+  console.error(
+    '➡️  Install it with `npm install discord.js @anthropic-ai/sdk` (run at the repo root).'
+  );
   process.exit(1);
 }
 
-const {
-  Client,
-  GatewayIntentBits,
-  ActivityType,
-  REST,
-  Routes,
-  SlashCommandBuilder
-} = discord;
+const { Client, GatewayIntentBits, ActivityType, REST, Routes, SlashCommandBuilder } = discord;
 
 // Import Liberty integrations
 const GmailAPI = require('../integrations/gmail-api.js');
@@ -82,7 +77,8 @@ const EURO_INDIE_CONTACT = {
   packagePrice: 10,
   packageName: 'Formula Indie Promotion (1 Slot)',
   purchaseUrl: 'https://euroindiemusic.bigcartel.com/product/formula-indie-promotion-1-slot',
-  submissionInstructions: 'Email Alessandro with MP3 attached (filename: ArtistName-TrackName.mp3) with friendly message: "Hi Alessandro, here\'s a new track for rotation on Euro Indie Music Network. Looking forward to hearing it on air!"'
+  submissionInstructions:
+    'Email Alessandro with MP3 attached (filename: ArtistName-TrackName.mp3) with friendly message: "Hi Alessandro, here\'s a new track for rotation on Euro Indie Music Network. Looking forward to hearing it on air!"',
 };
 
 // System prompt for the Liberty Radio AI Agent
@@ -128,31 +124,34 @@ const SYSTEM_PROMPT = `You are the Liberty Music PR AI Agent, a helpful assistan
 const tools = [
   {
     name: 'search_gmail',
-    description: 'Search Liberty Music PR Gmail for campaign emails, artist communications, or any email content. Returns email subjects, snippets, and sender information.',
+    description:
+      'Search Liberty Music PR Gmail for campaign emails, artist communications, or any email content. Returns email subjects, snippets, and sender information.',
     input_schema: {
       type: 'object',
       properties: {
         query: {
           type: 'string',
-          description: 'Gmail search query (e.g., "from:artist@example.com", "subject:campaign", "label:active-campaigns")'
+          description:
+            'Gmail search query (e.g., "from:artist@example.com", "subject:campaign", "label:active-campaigns")',
         },
         max_results: {
           type: 'number',
           description: 'Maximum number of emails to return (default 10)',
-          default: 10
-        }
+          default: 10,
+        },
       },
-      required: ['query']
-    }
+      required: ['query'],
+    },
   },
   {
     name: 'get_campaign_status',
-    description: 'Get current status of radio promotion campaigns from Monday.com board (Chris Schofield board only - ID: 2443582331)',
+    description:
+      'Get current status of radio promotion campaigns from Monday.com board (Chris Schofield board only - ID: 2443582331)',
     input_schema: {
       type: 'object',
       properties: {},
-      required: []
-    }
+      required: [],
+    },
   },
   {
     name: 'get_radio_plays',
@@ -162,15 +161,15 @@ const tools = [
       properties: {
         artist_name: {
           type: 'string',
-          description: 'Name of the artist to search for'
+          description: 'Name of the artist to search for',
         },
         from_date: {
           type: 'string',
-          description: 'Start date in YYYY-MM-DD format (optional, defaults to 6 weeks ago)'
-        }
+          description: 'Start date in YYYY-MM-DD format (optional, defaults to 6 weeks ago)',
+        },
       },
-      required: ['artist_name']
-    }
+      required: ['artist_name'],
+    },
   },
   {
     name: 'list_campaigns',
@@ -178,8 +177,8 @@ const tools = [
     input_schema: {
       type: 'object',
       properties: {},
-      required: []
-    }
+      required: [],
+    },
   },
   {
     name: 'list_mailchimp_campaigns',
@@ -190,11 +189,11 @@ const tools = [
         count: {
           type: 'number',
           description: 'Number of campaigns to return (default 10)',
-          default: 10
-        }
+          default: 10,
+        },
       },
-      required: []
-    }
+      required: [],
+    },
   },
   {
     name: 'get_mailchimp_campaign',
@@ -204,11 +203,11 @@ const tools = [
       properties: {
         campaign_name: {
           type: 'string',
-          description: 'Name or partial name of the campaign to find'
-        }
+          description: 'Name or partial name of the campaign to find',
+        },
       },
-      required: ['campaign_name']
-    }
+      required: ['campaign_name'],
+    },
   },
   {
     name: 'draft_press_release',
@@ -218,110 +217,113 @@ const tools = [
       properties: {
         artist_name: {
           type: 'string',
-          description: 'Artist name'
+          description: 'Artist name',
         },
         track_title: {
           type: 'string',
-          description: 'Track title'
+          description: 'Track title',
         },
         genre: {
           type: 'string',
-          description: 'Music genre'
+          description: 'Music genre',
         },
         context: {
           type: 'string',
-          description: 'Additional context about the artist/track'
-        }
+          description: 'Additional context about the artist/track',
+        },
       },
-      required: ['artist_name', 'track_title']
-    }
+      required: ['artist_name', 'track_title'],
+    },
   },
   {
     name: 'submit_amazing_radio',
-    description: 'Submit a track to Amazing Radio portal using automated browser submission. Requires campaign data including artist name, track title, release date, bio, and audio file URL.',
+    description:
+      'Submit a track to Amazing Radio portal using automated browser submission. Requires campaign data including artist name, track title, release date, bio, and audio file URL.',
     input_schema: {
       type: 'object',
       properties: {
         artist_name: {
           type: 'string',
-          description: 'Artist name'
+          description: 'Artist name',
         },
         track_title: {
           type: 'string',
-          description: 'Track title'
+          description: 'Track title',
         },
         release_date: {
           type: 'string',
-          description: 'Release date (YYYY-MM-DD format)'
+          description: 'Release date (YYYY-MM-DD format)',
         },
         genre: {
           type: 'string',
-          description: 'Music genre'
+          description: 'Music genre',
         },
         bio: {
           type: 'string',
-          description: 'Artist bio/press release'
+          description: 'Artist bio/press release',
         },
         audio_url: {
           type: 'string',
-          description: 'URL to audio file (mp3)'
-        }
+          description: 'URL to audio file (mp3)',
+        },
       },
-      required: ['artist_name', 'track_title']
-    }
+      required: ['artist_name', 'track_title'],
+    },
   },
   {
     name: 'submit_wigwam',
-    description: 'Submit a track to Radio Wigwam portal using automated browser submission. Requires campaign data including artist name, track title, bio, and audio file URL.',
+    description:
+      'Submit a track to Radio Wigwam portal using automated browser submission. Requires campaign data including artist name, track title, bio, and audio file URL.',
     input_schema: {
       type: 'object',
       properties: {
         artist_name: {
           type: 'string',
-          description: 'Artist name'
+          description: 'Artist name',
         },
         track_title: {
           type: 'string',
-          description: 'Track title'
+          description: 'Track title',
         },
         genre: {
           type: 'string',
-          description: 'Music genre'
+          description: 'Music genre',
         },
         bio: {
           type: 'string',
-          description: 'Artist bio/press release'
+          description: 'Artist bio/press release',
         },
         audio_url: {
           type: 'string',
-          description: 'URL to audio file (mp3)'
-        }
+          description: 'URL to audio file (mp3)',
+        },
       },
-      required: ['artist_name', 'track_title']
-    }
+      required: ['artist_name', 'track_title'],
+    },
   },
   {
     name: 'request_euro_indie_package',
-    description: 'Request authorization from Chris to purchase the £10 Euro Indie Music one-song package. Sends an approval webhook and notifies Chris via email.',
+    description:
+      'Request authorization from Chris to purchase the £10 Euro Indie Music one-song package. Sends an approval webhook and notifies Chris via email.',
     input_schema: {
       type: 'object',
       properties: {
         artist_name: {
           type: 'string',
-          description: 'Artist name'
+          description: 'Artist name',
         },
         track_title: {
           type: 'string',
-          description: 'Track title'
+          description: 'Track title',
         },
         reason: {
           type: 'string',
-          description: 'Why this package is needed for the campaign'
-        }
+          description: 'Why this package is needed for the campaign',
+        },
       },
-      required: ['artist_name', 'track_title', 'reason']
-    }
-  }
+      required: ['artist_name', 'track_title', 'reason'],
+    },
+  },
 ];
 
 async function executeTool(toolName, toolInput) {
@@ -335,8 +337,8 @@ async function executeTool(toolName, toolInput) {
             subject: e.subject,
             from: e.from,
             date: e.date,
-            snippet: e.snippet
-          }))
+            snippet: e.snippet,
+          })),
         };
       }
 
@@ -349,8 +351,8 @@ async function executeTool(toolName, toolInput) {
             id: c.id,
             name: c.name,
             group: c.groupTitle,
-            status: c.column_values.find(col => col.id === 'status')?.text || 'unknown'
-          }))
+            status: c.column_values.find(col => col.id === 'status')?.text || 'unknown',
+          })),
         };
       }
 
@@ -369,8 +371,8 @@ async function executeTool(toolName, toolInput) {
           plays: plays.slice(0, 10).map(p => ({
             station: p.radioStation || p.station,
             date: p.playDateTime || p.date,
-            time: p.playDateTime || p.time
-          }))
+            time: p.playDateTime || p.time,
+          })),
         };
       }
 
@@ -383,13 +385,15 @@ async function executeTool(toolName, toolInput) {
           campaigns: campaigns.map(c => ({
             name: c.name,
             group: c.groupTitle,
-            id: c.id
-          }))
+            id: c.id,
+          })),
         };
       }
 
       case 'list_mailchimp_campaigns': {
-        const response = await mailchimp.callMailchimpAPI(`/campaigns?count=${toolInput.count || 10}`);
+        const response = await mailchimp.callMailchimpAPI(
+          `/campaigns?count=${toolInput.count || 10}`
+        );
         const campaigns = response.campaigns || [];
         return {
           success: true,
@@ -399,8 +403,8 @@ async function executeTool(toolName, toolInput) {
             name: c.settings?.subject_line || c.settings?.title || 'Untitled',
             status: c.status,
             sent_date: c.send_time,
-            type: c.type
-          }))
+            type: c.type,
+          })),
         };
       }
 
@@ -424,8 +428,8 @@ async function executeTool(toolName, toolInput) {
             subject: campaign.settings?.subject_line,
             preview_text: campaign.settings?.preview_text,
             plain_text: content.plain_text?.substring(0, 500) || 'No content',
-            html_snippet: content.html?.substring(0, 500) || 'No content'
-          }
+            html_snippet: content.html?.substring(0, 500) || 'No content',
+          },
         };
       }
 
@@ -458,7 +462,7 @@ END
 
         return {
           success: true,
-          press_release: pressRelease
+          press_release: pressRelease,
         };
       }
 
@@ -469,7 +473,7 @@ END
           releaseDate: toolInput.release_date,
           genre: toolInput.genre,
           pressRelease: toolInput.bio,
-          downloadLinks: toolInput.audio_url ? [toolInput.audio_url] : []
+          downloadLinks: toolInput.audio_url ? [toolInput.audio_url] : [],
         };
 
         const result = await radioPortal.submitToAmazingRadio(campaign);
@@ -477,7 +481,7 @@ END
         return {
           success: result.success,
           message: result.success ? 'Successfully submitted to Amazing Radio' : 'Submission failed',
-          details: result
+          details: result,
         };
       }
 
@@ -487,7 +491,7 @@ END
           trackTitle: toolInput.track_title,
           genre: toolInput.genre,
           pressRelease: toolInput.bio,
-          downloadLinks: toolInput.audio_url ? [toolInput.audio_url] : []
+          downloadLinks: toolInput.audio_url ? [toolInput.audio_url] : [],
         };
 
         const result = await radioPortal.submitToRadioWigwam(campaign);
@@ -495,7 +499,7 @@ END
         return {
           success: result.success,
           message: result.success ? 'Successfully submitted to Radio Wigwam' : 'Submission failed',
-          details: result
+          details: result,
         };
       }
 
@@ -504,43 +508,46 @@ END
         if (!euroIndieWebhook) {
           return {
             success: false,
-            error: 'Euro Indie webhook not configured. Please add EURO_INDIE_WEBHOOK_URL to .env'
+            error: 'Euro Indie webhook not configured. Please add EURO_INDIE_WEBHOOK_URL to .env',
           };
         }
 
         const approvalRequest = {
-          embeds: [{
-            title: '🎵 Euro Indie Music Package Purchase Request',
-            description: `**Artist:** ${toolInput.artist_name}\n**Track:** ${toolInput.track_title}\n**Package:** £${EURO_INDIE_CONTACT.packagePrice} ${EURO_INDIE_CONTACT.packageName}\n\n**Reason:** ${toolInput.reason}`,
-            color: 0x3498db,
-            fields: [
-              {
-                name: '📧 Contact Details',
-                value: `**Name:** ${EURO_INDIE_CONTACT.name}\n**Email:** ${EURO_INDIE_CONTACT.email}`
-              },
-              {
-                name: '🛒 Purchase Link',
-                value: EURO_INDIE_CONTACT.purchaseUrl
-              },
-              {
-                name: '📎 After Purchase',
-                value: EURO_INDIE_CONTACT.submissionInstructions
-              },
-              {
-                name: '✅ Action Required',
-                value: 'Chris: Review and purchase if approved. Then email Alessandro with MP3 attached.'
-              }
-            ],
-            timestamp: new Date().toISOString()
-          }],
-          username: 'Liberty Radio Agent'
+          embeds: [
+            {
+              title: '🎵 Euro Indie Music Package Purchase Request',
+              description: `**Artist:** ${toolInput.artist_name}\n**Track:** ${toolInput.track_title}\n**Package:** £${EURO_INDIE_CONTACT.packagePrice} ${EURO_INDIE_CONTACT.packageName}\n\n**Reason:** ${toolInput.reason}`,
+              color: 0x3498db,
+              fields: [
+                {
+                  name: '📧 Contact Details',
+                  value: `**Name:** ${EURO_INDIE_CONTACT.name}\n**Email:** ${EURO_INDIE_CONTACT.email}`,
+                },
+                {
+                  name: '🛒 Purchase Link',
+                  value: EURO_INDIE_CONTACT.purchaseUrl,
+                },
+                {
+                  name: '📎 After Purchase',
+                  value: EURO_INDIE_CONTACT.submissionInstructions,
+                },
+                {
+                  name: '✅ Action Required',
+                  value:
+                    'Chris: Review and purchase if approved. Then email Alessandro with MP3 attached.',
+                },
+              ],
+              timestamp: new Date().toISOString(),
+            },
+          ],
+          username: 'Liberty Radio Agent',
         };
 
         const fetch = require('node-fetch');
         const webhookResponse = await fetch(euroIndieWebhook, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(approvalRequest)
+          body: JSON.stringify(approvalRequest),
         });
 
         if (!webhookResponse.ok) {
@@ -555,8 +562,9 @@ END
             package: EURO_INDIE_CONTACT.packageName,
             contact: EURO_INDIE_CONTACT.email,
             purchase_url: EURO_INDIE_CONTACT.purchaseUrl,
-            instructions: 'After purchase, email Alessandro with MP3 (filename: ArtistName-TrackName.mp3)'
-          }
+            instructions:
+              'After purchase, email Alessandro with MP3 (filename: ArtistName-TrackName.mp3)',
+          },
         };
       }
 
@@ -567,7 +575,7 @@ END
     console.error(`Tool execution error (${toolName}):`, error);
     return {
       success: false,
-      error: error.message
+      error: error.message,
     };
   }
 }
@@ -587,33 +595,24 @@ const commands = [
     .setName('ask')
     .setDescription('Ask the Liberty Radio AI Agent anything')
     .addStringOption(option =>
-      option.setName('question')
-        .setDescription('Your question')
-        .setRequired(true)
+      option.setName('question').setDescription('Your question').setRequired(true)
     ),
-  new SlashCommandBuilder()
-    .setName('campaigns')
-    .setDescription('List active campaigns'),
+  new SlashCommandBuilder().setName('campaigns').setDescription('List active campaigns'),
   new SlashCommandBuilder()
     .setName('plays')
     .setDescription('Get radio play data for an artist')
     .addStringOption(option =>
-      option.setName('artist')
-        .setDescription('Artist name')
-        .setRequired(true)
+      option.setName('artist').setDescription('Artist name').setRequired(true)
     ),
   new SlashCommandBuilder()
     .setName('search')
     .setDescription('Search Liberty Gmail')
     .addStringOption(option =>
-      option.setName('query')
-        .setDescription('Search query')
-        .setRequired(true)
-    )
+      option.setName('query').setDescription('Search query').setRequired(true)
+    ),
 ].map(command => command.toJSON());
 
 async function processUserQuery(userMessage, channelId, replyFn) {
-
   // Initialize conversation history
   if (!conversations.has(channelId)) {
     conversations.set(channelId, []);
@@ -624,7 +623,7 @@ async function processUserQuery(userMessage, channelId, replyFn) {
   // Add user message to history
   history.push({
     role: 'user',
-    content: userMessage
+    content: userMessage,
   });
 
   // Keep only last 10 messages
@@ -633,13 +632,12 @@ async function processUserQuery(userMessage, channelId, replyFn) {
   }
 
   try {
-
     let response = await anthropic.messages.create({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 2048,
       system: SYSTEM_PROMPT,
       messages: history,
-      tools: tools
+      tools: tools,
     });
 
     // Handle tool use
@@ -658,7 +656,7 @@ async function processUserQuery(userMessage, channelId, replyFn) {
       // Add assistant response and tool result to history
       history.push({
         role: 'assistant',
-        content: response.content
+        content: response.content,
       });
 
       history.push({
@@ -667,9 +665,9 @@ async function processUserQuery(userMessage, channelId, replyFn) {
           {
             type: 'tool_result',
             tool_use_id: toolUse.id,
-            content: JSON.stringify(toolResult)
-          }
-        ]
+            content: JSON.stringify(toolResult),
+          },
+        ],
       });
 
       // Get next response
@@ -678,7 +676,7 @@ async function processUserQuery(userMessage, channelId, replyFn) {
         max_tokens: 2048,
         system: SYSTEM_PROMPT,
         messages: history,
-        tools: tools
+        tools: tools,
       });
     }
 
@@ -691,12 +689,11 @@ async function processUserQuery(userMessage, channelId, replyFn) {
     // Add assistant response to history
     history.push({
       role: 'assistant',
-      content: textContent
+      content: textContent,
     });
 
     // Return response
     return textContent || 'I processed your request but have no additional information to share.';
-
   } catch (error) {
     console.error('Error processing query:', error);
     throw error;
@@ -708,7 +705,10 @@ async function handleMessage(message) {
   if (message.author.bot) return;
 
   // Check if this is a reply to the bot or part of an active thread
-  const isReplyToBot = message.reference && message.channel.messages.cache.get(message.reference.messageId)?.author.id === message.client.user.id;
+  const isReplyToBot =
+    message.reference &&
+    message.channel.messages.cache.get(message.reference.messageId)?.author.id ===
+      message.client.user.id;
   const isActiveThread = activeThreads.has(message.channel.id);
 
   // Only respond in DMs, when mentioned, or in active threads
@@ -729,7 +729,7 @@ async function handleMessage(message) {
   try {
     await message.channel.sendTyping();
 
-    const response = await processUserQuery(userMessage, channelId, async (text) => {
+    const response = await processUserQuery(userMessage, channelId, async text => {
       return text;
     });
 
@@ -742,7 +742,6 @@ async function handleMessage(message) {
     } else {
       await message.reply(response);
     }
-
   } catch (error) {
     console.error('Error handling message:', error);
     await message.reply('Sorry, I encountered an error processing your request. Please try again.');
@@ -777,7 +776,7 @@ async function handleInteraction(interaction) {
         return;
     }
 
-    const response = await processUserQuery(userMessage, channelId, async (text) => {
+    const response = await processUserQuery(userMessage, channelId, async text => {
       return text;
     });
 
@@ -791,10 +790,11 @@ async function handleInteraction(interaction) {
     } else {
       await interaction.editReply(response);
     }
-
   } catch (error) {
     console.error('Error handling interaction:', error);
-    await interaction.editReply('Sorry, I encountered an error processing your request. Please try again.');
+    await interaction.editReply(
+      'Sorry, I encountered an error processing your request. Please try again.'
+    );
   }
 }
 
@@ -816,7 +816,7 @@ function computePresenceFromStatus(statusPayload) {
   if (!statusPayload) {
     return {
       activities: [{ name: 'Liberty Radio Campaigns', type: ActivityType.Watching }],
-      status: 'online'
+      status: 'online',
     };
   }
 
@@ -826,14 +826,14 @@ function computePresenceFromStatus(statusPayload) {
   if (activeCampaigns.length === 0) {
     return {
       activities: [{ name: 'Ready to help with campaigns', type: ActivityType.Playing }],
-      status: 'online'
+      status: 'online',
     };
   }
 
   const activityLabel = `${activeCampaigns.length} active campaign${activeCampaigns.length === 1 ? '' : 's'}`;
   return {
     activities: [{ name: activityLabel, type: ActivityType.Watching }],
-    status: 'online'
+    status: 'online',
   };
 }
 
@@ -883,8 +883,8 @@ async function main() {
       GatewayIntentBits.Guilds,
       GatewayIntentBits.GuildMessages,
       GatewayIntentBits.MessageContent,
-      GatewayIntentBits.DirectMessages
-    ]
+      GatewayIntentBits.DirectMessages,
+    ],
   });
 
   stopStatusWatcher = startStatusWatcher(client);
@@ -893,7 +893,9 @@ async function main() {
   client.once('clientReady', () => {
     console.log(`🤖 Liberty Radio AI Agent ready as ${client.user.tag}`);
     console.log(`🧠 Powered by Claude Sonnet 4.5`);
-    console.log(`🔧 Tools: Gmail, Monday.com (Chris board only), WARM API, Mailchimp, Amazing Radio, Wigwam`);
+    console.log(
+      `🔧 Tools: Gmail, Monday.com (Chris board only), WARM API, Mailchimp, Amazing Radio, Wigwam`
+    );
     console.log(`💰 Cost: ~$0.003 per message (Sonnet 4.5)`);
     console.log(`💬 Threads: Reply to bot messages to continue conversation without @mentions`);
     console.log(`🔒 Monday.com: Restricted to board ${ALLOWED_MONDAY_BOARD_ID}`);

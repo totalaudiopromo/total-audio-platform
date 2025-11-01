@@ -26,7 +26,7 @@ const KYARA_AUSTRALIAN_CONTACTS = [
     station: 'Triple J',
     show: 'Home & Hosed',
     relationship: 'WARM',
-    notes: 'KYARA\'s "Yearn" was played on Home & Hosed in August 2024 by Jaimee Taylor-Neilsen'
+    notes: 'KYARA\'s "Yearn" was played on Home & Hosed in August 2024 by Jaimee Taylor-Neilsen',
   },
   {
     priority: 2,
@@ -35,7 +35,7 @@ const KYARA_AUSTRALIAN_CONTACTS = [
     station: 'Triple J',
     role: 'Music Director',
     relationship: 'COLD',
-    notes: 'New Music Director 2024, KYARA has previous Home & Hosed support'
+    notes: 'New Music Director 2024, KYARA has previous Home & Hosed support',
   },
   {
     priority: 3,
@@ -43,7 +43,7 @@ const KYARA_AUSTRALIAN_CONTACTS = [
     email: 'simonw@rrr.org.au',
     station: 'Triple R Melbourne',
     relationship: 'COLD',
-    notes: 'Australian artist with Triple J support angle'
+    notes: 'Australian artist with Triple J support angle',
   },
   {
     priority: 4,
@@ -51,7 +51,7 @@ const KYARA_AUSTRALIAN_CONTACTS = [
     email: 'Firas@pbsfm.org.au',
     station: 'PBS FM',
     relationship: 'COLD',
-    notes: 'Sydney bedroom producer, Triple J support'
+    notes: 'Sydney bedroom producer, Triple J support',
   },
   {
     priority: 5,
@@ -59,8 +59,8 @@ const KYARA_AUSTRALIAN_CONTACTS = [
     email: 'music@kiis1065.com.au',
     station: 'KIIS 106.5',
     relationship: 'COLD',
-    notes: 'Crossover pop potential, Sydney local'
-  }
+    notes: 'Crossover pop potential, Sydney local',
+  },
 ];
 
 // Email templates from KYARA_BLOODSHOT_AUSTRALIAN_EMAILS.md
@@ -92,7 +92,7 @@ Would love to hear your thoughts. Given she's a Sydney artist with proven Triple
 Best,
 Chris Schofield
 Liberty Music PR
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
     };
   }
 
@@ -125,7 +125,7 @@ Would love to get your thoughts.
 Cheers,
 Chris Schofield
 Liberty Music PR
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
     };
   }
 
@@ -152,7 +152,7 @@ Worth a listen if you get a sec.
 Best,
 Chris Schofield
 Liberty Music PR
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
     };
   }
 
@@ -175,7 +175,7 @@ Worth checking out if you're after new Australian electronic artists.
 
 Cheers,
 Chris
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
     };
   }
 
@@ -199,7 +199,7 @@ Worth a listen if you're after new Sydney talent.
 Best,
 Chris Schofield
 Liberty Music PR
-chrisschofield@libertymusicpr.com`
+chrisschofield@libertymusicpr.com`,
     };
   }
 }
@@ -259,7 +259,7 @@ async function sendKyaraAustralianEmails(streamingLinks = {}, dryRun = true) {
         priority: contact.priority,
         relationship: contact.relationship,
         status: 'sent',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     } else {
       emailResults.push({
@@ -269,7 +269,7 @@ async function sendKyaraAustralianEmails(streamingLinks = {}, dryRun = true) {
         priority: contact.priority,
         relationship: contact.relationship,
         status: 'dry_run',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     }
 
@@ -287,31 +287,44 @@ async function sendKyaraAustralianEmails(streamingLinks = {}, dryRun = true) {
   console.log('');
 
   console.log('📋 Contact Breakdown:');
-  console.log(`   WARM Relationships: ${KYARA_AUSTRALIAN_CONTACTS.filter(c => c.relationship === 'WARM').length}`);
-  console.log(`   COLD Relationships: ${KYARA_AUSTRALIAN_CONTACTS.filter(c => c.relationship === 'COLD').length}`);
+  console.log(
+    `   WARM Relationships: ${KYARA_AUSTRALIAN_CONTACTS.filter(c => c.relationship === 'WARM').length}`
+  );
+  console.log(
+    `   COLD Relationships: ${KYARA_AUSTRALIAN_CONTACTS.filter(c => c.relationship === 'COLD').length}`
+  );
   console.log('');
 
   console.log('🎯 Priority Breakdown:');
   KYARA_AUSTRALIAN_CONTACTS.forEach(contact => {
     const status = dryRun ? '📋 PREVIEWED' : '✅ SENT';
-    console.log(`   ${status} - Priority ${contact.priority}: ${contact.name} (${contact.station})`);
+    console.log(
+      `   ${status} - Priority ${contact.priority}: ${contact.name} (${contact.station})`
+    );
   });
   console.log('');
 
   // Save results
   const resultsFile = path.join(__dirname, 'kyara-australian-campaign-results.json');
-  fs.writeFileSync(resultsFile, JSON.stringify({
-    campaignName: 'KYARA Bloodshot Australian Radio Campaign',
-    artist: 'KYARA',
-    track: 'Bloodshot',
-    releaseDate: '2025-10-14',
-    region: 'Australia',
-    sentDate: new Date().toISOString(),
-    mode: dryRun ? 'dry_run' : 'live',
-    streamingLinks,
-    contacts: KYARA_AUSTRALIAN_CONTACTS,
-    results: emailResults
-  }, null, 2));
+  fs.writeFileSync(
+    resultsFile,
+    JSON.stringify(
+      {
+        campaignName: 'KYARA Bloodshot Australian Radio Campaign',
+        artist: 'KYARA',
+        track: 'Bloodshot',
+        releaseDate: '2025-10-14',
+        region: 'Australia',
+        sentDate: new Date().toISOString(),
+        mode: dryRun ? 'dry_run' : 'live',
+        streamingLinks,
+        contacts: KYARA_AUSTRALIAN_CONTACTS,
+        results: emailResults,
+      },
+      null,
+      2
+    )
+  );
 
   console.log(`✅ Campaign results saved: ${resultsFile}\n`);
 
@@ -365,7 +378,7 @@ if (require.main === module) {
     spotify: spotifyIndex !== -1 ? args[spotifyIndex + 1] : null,
     wetransfer: wetransferIndex !== -1 ? args[wetransferIndex + 1] : null,
     soundcloud: soundcloudIndex !== -1 ? args[soundcloudIndex + 1] : null,
-    youtube: youtubeIndex !== -1 ? args[youtubeIndex + 1] : null
+    youtube: youtubeIndex !== -1 ? args[youtubeIndex + 1] : null,
   };
 
   sendKyaraAustralianEmails(streamingLinks, dryRun)

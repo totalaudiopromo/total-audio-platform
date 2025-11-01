@@ -9,6 +9,7 @@
 ## 🎯 CURRENT SITUATION
 
 ### What's Working ✅
+
 - Audio Intel checkout route: `/api/checkout` functional
 - Pitch Generator checkout route: `/api/checkout` functional
 - Pricing pages all correct and linked
@@ -17,12 +18,14 @@
 - Beta founder discount logic in place (50% off first year)
 
 ### What's Missing ❌
+
 - **Stripe Secret Keys** - No payment processing possible
 - **Stripe Price IDs** - Products not configured in Stripe
 - **Environment Variables** - Not set in production
 - **Webhook Configuration** - Subscription updates won't sync
 
 ### Revenue Impact
+
 **Current**: £0/month (can't process payments)
 **Potential**: £500-1,000/month within 14 days if Stripe is configured
 
@@ -31,6 +34,7 @@
 ## 📋 STRIPE SETUP CHECKLIST
 
 ### Step 1: Create Stripe Account (If Not Done)
+
 1. Go to https://stripe.com
 2. Sign up with business email (chris@totalaudiopromo.com)
 3. Verify business details
@@ -42,14 +46,16 @@
 #### Audio Intel Products
 
 **Product 1: Audio Intel Professional**
+
 - Name: "Audio Intel Professional"
 - Description: "200 contact enrichments per month, priority processing, professional exports"
 - Price: £19/month
 - Billing period: Monthly
 - Trial period: 14 days
-- **Copy Price ID**: `price_xxxxxxxxxxxxx` (starts with "price_")
+- **Copy Price ID**: `price_xxxxxxxxxxxxx` (starts with "price\_")
 
 **Product 2: Audio Intel Agency**
+
 - Name: "Audio Intel Agency"
 - Description: "Unlimited enrichments, white-label branding, instant processing, priority support"
 - Price: £79/month
@@ -62,6 +68,7 @@
 #### Pitch Generator Products
 
 **Product 1: Pitch Generator PRO**
+
 - Name: "Pitch Generator PRO"
 - Description: "Unlimited AI pitches, voice profile customisation, priority support"
 - Price: £12/month (Monthly)
@@ -70,6 +77,7 @@
 - **Copy Annual Price ID**: `price_xxxxxxxxxxxxx`
 
 **Product 2: Complete Workflow Bundle**
+
 - Name: "Complete Workflow Bundle"
 - Description: "Intel + Pitch + Tracker - Complete promotion workflow"
 - Price: £19/month (Monthly)
@@ -78,6 +86,7 @@
 - **Copy Annual Price ID**: `price_xxxxxxxxxxxxx`
 
 **Product 3: Pitch Generator Agency**
+
 - Name: "Pitch Generator Agency"
 - Description: "Complete Bundle + bulk generation, white-label, team collaboration"
 - Price: £79/month (Monthly)
@@ -90,12 +99,14 @@
 #### Tracker Products (Future - Not Urgent)
 
 **Product 1: Tracker Professional**
+
 - Name: "Tracker Professional"
 - Description: "Unlimited campaigns, professional exports, priority support"
 - Price: £19/month
 - **Copy Price ID**: `price_xxxxxxxxxxxxx`
 
 **Product 2: Tracker Agency**
+
 - Name: "Tracker Agency"
 - Description: "Multi-artist tracking, white-label, team collaboration"
 - Price: £79/month
@@ -106,6 +117,7 @@
 ### Step 3: Create Beta Founder Coupon
 
 **Coupon Details**:
+
 - Name: "Beta Founders Discount"
 - Discount: 50% off
 - Duration: 12 months
@@ -114,6 +126,7 @@
 - **Important**: Create this exact coupon ID in Stripe dashboard
 
 **How to Create**:
+
 1. Go to Stripe Dashboard → Products → Coupons
 2. Click "Create coupon"
 3. Enter coupon ID: `qa5J5GRN`
@@ -130,6 +143,7 @@
 3. Copy **Publishable Key** (starts with `pk_test_` or `pk_live_`)
 
 **IMPORTANT**:
+
 - Start with **Test Mode** keys
 - Test thoroughly on localhost
 - Switch to **Live Mode** only when ready for real payments
@@ -215,6 +229,7 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3001  # Change to https://tracker.totalaud
 ### Test Mode Testing (Do This First)
 
 #### Audio Intel Test Flow
+
 1. Navigate to http://localhost:3000/pricing
 2. Click "Skip The Queue Today" (Professional tier)
 3. Enter test email: `test@example.com`
@@ -230,6 +245,7 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3001  # Change to https://tracker.totalaud
 13. Check coupon applied (50% off for 12 months)
 
 #### Pitch Generator Test Flow
+
 1. Navigate to http://localhost:3004/pricing
 2. Select "Complete Workflow Bundle" (£19/month)
 3. Enter test email: `test2@example.com`
@@ -244,14 +260,17 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3001  # Change to https://tracker.totalaud
 ### Stripe Test Cards
 
 **Successful Payment**:
+
 - Card: `4242 4242 4242 4242`
 - Any future expiry, any CVC, any postal code
 
 **Payment Requires Authentication (3D Secure)**:
+
 - Card: `4000 0025 0000 3155`
 - Will show authentication modal
 
 **Payment Declined**:
+
 - Card: `4000 0000 0000 9995`
 - Will decline with "insufficient funds"
 
@@ -295,6 +314,7 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 ## 🔔 WEBHOOK CONFIGURATION (After Going Live)
 
 ### Setup Stripe Webhooks
+
 1. Go to Stripe Dashboard → Developers → Webhooks
 2. Click "Add endpoint"
 3. Endpoint URL: `https://intel.totalaudiopromo.com/api/webhooks/stripe`
@@ -308,6 +328,7 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 6. Add to Vercel env: `STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxx`
 
 **Repeat for Pitch Generator**:
+
 - Endpoint URL: `https://pitch.totalaudiopromo.com/api/webhooks/stripe`
 
 ---
@@ -315,6 +336,7 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 ## ⚠️ CRITICAL WARNINGS
 
 ### DO NOT Do This ❌
+
 - **Don't** use live keys in development
 - **Don't** commit API keys to git (they're in `.env.local` which is gitignored)
 - **Don't** skip test mode testing
@@ -322,6 +344,7 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 - **Don't** forget to switch URLs from localhost to production
 
 ### DO Do This ✅
+
 - **Do** test thoroughly with test cards in test mode
 - **Do** verify trial periods work correctly (14 days)
 - **Do** check beta founder discount applies automatically
@@ -334,6 +357,7 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 ## 🎯 IMMEDIATE ACTION PLAN
 
 ### Today (Critical)
+
 1. **Create Stripe account** (if not done)
 2. **Create all products** in Stripe Dashboard
 3. **Copy Price IDs** into `.env.local` files
@@ -342,6 +366,7 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 6. **Test Pitch Generator checkout** with test card
 
 ### Tomorrow (High Priority)
+
 1. **Deploy to Vercel** with test keys
 2. **Test on production URLs** (still test mode)
 3. **Switch to live keys** in Vercel
@@ -349,6 +374,7 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 5. **Final test with real card** (your own, small amount)
 
 ### This Week (Medium Priority)
+
 1. **Configure webhooks** for subscription updates
 2. **Set up Stripe billing portal** (customer self-service)
 3. **Create cancellation flow** (if not already done)
@@ -360,17 +386,20 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 ## 📊 SUCCESS METRICS
 
 ### Revenue Targets (First 14 Days)
+
 - **Goal**: 5-10 paying customers
 - **Expected Revenue**: £100-300/month
 - **Average Order Value**: £19/month (Professional tier most popular)
 
 ### Conversion Tracking
+
 - **Pricing Page Views** → Track via analytics
 - **Checkout Started** → Track via console logs
 - **Checkout Completed** → Track via Stripe Dashboard
 - **Trial to Paid Conversion** → Track after 14 days
 
 ### Key Indicators
+
 - **Checkout abandonment rate** (target: <30%)
 - **Trial start rate** (target: >50% of checkouts complete)
 - **Trial to paid conversion** (target: >40% after 14 days)
@@ -380,22 +409,27 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 ## 🆘 TROUBLESHOOTING
 
 ### "Invalid priceId configured"
+
 **Cause**: Environment variable not set or incorrect format
 **Fix**: Check `.env.local` has correct `STRIPE_PRICE_xxx` variables
 
 ### "Stripe not configured in production"
+
 **Cause**: `STRIPE_SECRET_KEY` not set in Vercel
 **Fix**: Add to Vercel environment variables, redeploy
 
 ### "Checkout failed"
+
 **Cause**: Various Stripe API errors
 **Fix**: Check Vercel logs for specific error, verify API key validity
 
 ### Redirect to `/pricing` instead of Stripe
+
 **Cause**: Checkout endpoint not receiving correct parameters
 **Fix**: Check browser console for errors, verify email is provided
 
 ### Trial not showing in Stripe
+
 **Cause**: Trial days not configured correctly
 **Fix**: Check `STRIPE_TRIAL_DAYS_PROFESSIONAL` env var or remove to use defaults
 
@@ -404,6 +438,7 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 ## 🎯 BOTTOM LINE
 
 **What You Need Right Now**:
+
 1. Stripe account with products created
 2. Price IDs copied into `.env.local` files
 3. Beta founder coupon (`qa5J5GRN`) created in Stripe
@@ -411,12 +446,14 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 5. Production deployment with live keys
 
 **Expected Time**:
+
 - Stripe setup: 30 minutes
 - Testing: 30 minutes
 - Production deployment: 15 minutes
 - **Total: ~75 minutes to start accepting payments**
 
 **Revenue Impact**:
+
 - Currently: £0/month (can't process payments)
 - After setup: £100-300/month potential within 14 days
 - After 3 months: £500-1,000/month with proper marketing
@@ -426,6 +463,7 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 ---
 
 **Next Steps**:
+
 1. Open Stripe Dashboard
 2. Create products and copy Price IDs
 3. Paste into `.env.local` files

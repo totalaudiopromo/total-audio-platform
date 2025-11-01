@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   // Verify cron secret
@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
   try {
     console.log('🤖 Starting Orchestrator - Master Agent Controller...');
-    
+
     const orchestrationResults = {
       timestamp: new Date().toISOString(),
       agents_status_checked: 0,
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       emergency_responses: [] as string[],
       daily_summary: '',
       recommendations: [] as string[],
-      next_priority_tasks: [] as string[]
+      next_priority_tasks: [] as string[],
     };
 
     // Agent Performance Check
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
       { name: 'Email Scheduler', status: 'active', performance: 88, last_run: '23 hours ago' },
       { name: 'Content Generator', status: 'active', performance: 85, last_run: '1 day ago' },
       { name: 'Competitive Intel', status: 'active', performance: 79, last_run: '12 hours ago' },
-      { name: 'Performance Reporter', status: 'active', performance: 94, last_run: '6 days ago' }
+      { name: 'Performance Reporter', status: 'active', performance: 94, last_run: '6 days ago' },
     ];
 
     orchestrationResults.agents_status_checked = agentStatuses.length;
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
       email_engagement_rate: Math.floor(Math.random() * 25) + 15,
       beta_signups_today: Math.floor(Math.random() * 8) + 2,
       content_pieces_generated: Math.floor(Math.random() * 6) + 3,
-      competitive_alerts: Math.floor(Math.random() * 3) + 1
+      competitive_alerts: Math.floor(Math.random() * 3) + 1,
     };
 
     orchestrationResults.daily_summary = `📊 Daily Intelligence: ${dailySummary.reddit_opportunities} Reddit opportunities, ${dailySummary.email_engagement_rate}% email engagement, ${dailySummary.beta_signups_today} new beta signups`;
@@ -60,15 +60,15 @@ export async function POST(request: NextRequest) {
       '🎯 Focus Reddit monitoring on WeAreTheMusicMakers (highest conversion)',
       '📧 A/B test email subject lines for Day 5 sequence (low open rate detected)',
       '🚀 Increase content generation for LinkedIn (high engagement trends)',
-      '💡 Monitor competitor pricing changes (3 alerts this week)'
+      '💡 Monitor competitor pricing changes (3 alerts this week)',
     ];
 
     // Priority Tasks for Next 24 Hours
     orchestrationResults.next_priority_tasks = [
       'Deploy improved Reddit response templates',
-      'Optimize email send times based on engagement data', 
+      'Optimize email send times based on engagement data',
       'Create competitor comparison content',
-      'Scale successful Reddit strategies to other subreddits'
+      'Scale successful Reddit strategies to other subreddits',
     ];
 
     console.log('✅ Orchestrator analysis complete:', orchestrationResults);
@@ -80,14 +80,16 @@ export async function POST(request: NextRequest) {
       orchestration_results: orchestrationResults,
       agent_network_status: 'All systems operational',
       autonomous_mode: 'ACTIVE',
-      next_coordination: 'Tomorrow at 7 AM'
+      next_coordination: 'Tomorrow at 7 AM',
     });
-
   } catch (error) {
     console.error('❌ Orchestrator failed:', error);
-    return NextResponse.json({
-      error: 'Orchestrator failed',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Orchestrator failed',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }

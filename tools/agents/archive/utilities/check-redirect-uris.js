@@ -10,21 +10,23 @@ const path = require('path');
 
 async function checkRedirectUris() {
   console.log('🔍 Checking OAuth Client Configuration...\n');
-  
+
   try {
     // Load credentials
     const credentialsPath = path.join(__dirname, 'gmail-credentials.json');
     const credentials = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
-    
+
     const { client_id, client_secret } = credentials.installed;
-    
+
     console.log('📋 Your OAuth Client ID:');
     console.log(`   ${client_id}`);
     console.log('');
-    
+
     console.log('🔧 What you need to do in Google Cloud Console:');
     console.log('');
-    console.log('1. Go to: https://console.cloud.google.com/apis/credentials?project=gleaming-realm-471715-p3');
+    console.log(
+      '1. Go to: https://console.cloud.google.com/apis/credentials?project=gleaming-realm-471715-p3'
+    );
     console.log('');
     console.log('2. Find your OAuth 2.0 Client ID (should match the one above)');
     console.log('');
@@ -44,30 +46,28 @@ async function checkRedirectUris() {
     console.log('');
     console.log('8. Try the OAuth flow again');
     console.log('');
-    
+
     // Test the exact redirect URI we're using
-    console.log('🧪 Testing the exact redirect URI we\'re using:');
+    console.log("🧪 Testing the exact redirect URI we're using:");
     const redirectUri = 'http://localhost:8080/callback';
     console.log(`   Redirect URI: ${redirectUri}`);
-    
+
     const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirectUri);
-    
+
     try {
       const authUrl = oAuth2Client.generateAuthUrl({
         access_type: 'offline',
         scope: ['https://www.googleapis.com/auth/gmail.readonly'],
-        prompt: 'consent'
+        prompt: 'consent',
       });
-      
+
       console.log('   ✅ OAuth URL generated successfully');
       console.log(`   📱 Test URL: ${authUrl}`);
       console.log('');
-      
     } catch (error) {
       console.log(`   ❌ Failed to generate OAuth URL: ${error.message}`);
       console.log('');
     }
-    
   } catch (error) {
     console.error('❌ Check failed:', error.message);
   }
@@ -75,5 +75,3 @@ async function checkRedirectUris() {
 
 // Run the check
 checkRedirectUris();
-
-

@@ -2,13 +2,13 @@
 
 /**
  * Chris Schofield Personal SaaS Marketing Agent
- * 
+ *
  * Automated marketing agent specifically for Chris's SaaS products:
  * - Audio Intel (contact enrichment tool)
  * - Playlist Pulse (playlist discovery)
  * - Command Centre (business dashboard)
  * - Voice Echo (voice content)
- * 
+ *
  * Features:
  * - Uses Chris's authentic voice from Notion
  * - Generates SEO-optimized blog content
@@ -26,7 +26,7 @@ const logger = {
   info: (msg, ...args) => console.log(`[SAAS-MARKETING] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[SAAS-MARKETING] ❌ ${msg}`, ...args),
   warn: (msg, ...args) => console.warn(`[SAAS-MARKETING] ⚠️ ${msg}`, ...args),
-  success: (msg, ...args) => console.log(`[SAAS-MARKETING] ✅ ${msg}`, ...args)
+  success: (msg, ...args) => console.log(`[SAAS-MARKETING] ✅ ${msg}`, ...args),
 };
 
 class ChrisSaaSMarketingAgent {
@@ -35,30 +35,77 @@ class ChrisSaaSMarketingAgent {
     this.products = {
       'audio-intel': {
         name: 'Audio Intel',
-        description: 'Magical spreadsheet processing and contact enrichment for music industry professionals',
+        description:
+          'Magical spreadsheet processing and contact enrichment for music industry professionals',
         url: 'https://intel.totalaudiopromo.com',
-        targetAudience: 'Music industry professionals, radio promoters, PR agencies, independent artists',
-        keyFeatures: ['Contact enrichment', 'Email validation', 'Spreadsheet automation', 'AI agents'],
-        painPoints: ['Manual contact research', 'Invalid emails', 'Time-consuming data entry', 'Inefficient workflows'],
-        benefits: ['Save 10+ hours per week', 'Increase email deliverability', 'Automate tedious tasks', 'Focus on music promotion']
+        targetAudience:
+          'Music industry professionals, radio promoters, PR agencies, independent artists',
+        keyFeatures: [
+          'Contact enrichment',
+          'Email validation',
+          'Spreadsheet automation',
+          'AI agents',
+        ],
+        painPoints: [
+          'Manual contact research',
+          'Invalid emails',
+          'Time-consuming data entry',
+          'Inefficient workflows',
+        ],
+        benefits: [
+          'Save 10+ hours per week',
+          'Increase email deliverability',
+          'Automate tedious tasks',
+          'Focus on music promotion',
+        ],
       },
       'playlist-pulse': {
         name: 'Playlist Pulse',
         description: 'Playlist curator discovery platform for independent artists',
         url: 'https://pulse.totalaudiopromo.com',
         targetAudience: 'Independent artists, music managers, small record labels',
-        keyFeatures: ['Curator discovery', 'Playlist matching', 'Outreach tools', 'Success tracking'],
-        painPoints: ['Finding relevant playlists', 'Connecting with curators', 'Playlist submission rejections', 'No feedback on submissions'],
-        benefits: ['Find perfect playlist matches', 'Build curator relationships', 'Increase streaming numbers', 'Track submission success']
+        keyFeatures: [
+          'Curator discovery',
+          'Playlist matching',
+          'Outreach tools',
+          'Success tracking',
+        ],
+        painPoints: [
+          'Finding relevant playlists',
+          'Connecting with curators',
+          'Playlist submission rejections',
+          'No feedback on submissions',
+        ],
+        benefits: [
+          'Find perfect playlist matches',
+          'Build curator relationships',
+          'Increase streaming numbers',
+          'Track submission success',
+        ],
       },
       'command-centre': {
         name: 'Command Centre',
         description: 'Business intelligence dashboard with AI agent orchestration',
         url: 'https://command.totalaudiopromo.com',
         targetAudience: 'Small business owners, SaaS founders, solopreneurs',
-        keyFeatures: ['Real-time metrics', 'AI agent automation', 'Business intelligence', 'Multi-app management'],
-        painPoints: ['Scattered business data', 'Manual reporting', 'Time-consuming admin tasks', 'No unified view'],
-        benefits: ['Centralized business view', 'Automated insights', 'Save hours on admin', 'Make data-driven decisions']
+        keyFeatures: [
+          'Real-time metrics',
+          'AI agent automation',
+          'Business intelligence',
+          'Multi-app management',
+        ],
+        painPoints: [
+          'Scattered business data',
+          'Manual reporting',
+          'Time-consuming admin tasks',
+          'No unified view',
+        ],
+        benefits: [
+          'Centralized business view',
+          'Automated insights',
+          'Save hours on admin',
+          'Make data-driven decisions',
+        ],
       },
       'voice-echo': {
         name: 'Voice Echo',
@@ -66,9 +113,19 @@ class ChrisSaaSMarketingAgent {
         url: 'https://voice.totalaudiopromo.com',
         targetAudience: 'Content creators, podcasters, voiceover artists',
         keyFeatures: ['Voice synthesis', 'Content automation', 'Audio processing', 'Voice cloning'],
-        painPoints: ['Expensive voiceover work', 'Time-consuming recording', 'Inconsistent audio quality', 'Content scaling issues'],
-        benefits: ['Reduce voiceover costs', 'Scale content creation', 'Consistent quality', 'Fast turnaround']
-      }
+        painPoints: [
+          'Expensive voiceover work',
+          'Time-consuming recording',
+          'Inconsistent audio quality',
+          'Content scaling issues',
+        ],
+        benefits: [
+          'Reduce voiceover costs',
+          'Scale content creation',
+          'Consistent quality',
+          'Fast turnaround',
+        ],
+      },
     };
 
     // Chris's authentic voice patterns from experience
@@ -80,20 +137,20 @@ class ChrisSaaSMarketingAgent {
         'I built this because I needed it myself',
         'No fluff, just practical solutions',
         'Real tools for real problems',
-        'Built by someone who actually uses it'
+        'Built by someone who actually uses it',
       ],
       storytelling: {
         background: 'Full-time postman with two small children building SaaS tools',
         experience: '10+ years in music industry promotion and radio',
         motivation: 'Solving real problems I face every day',
-        approach: 'Practical, no-nonsense solutions that actually work'
+        approach: 'Practical, no-nonsense solutions that actually work',
       },
       writing_style: {
         sentences: 'Clear and direct',
         paragraphs: 'Short and scannable',
         examples: 'Real-world scenarios',
-        tone: 'Professional but approachable'
-      }
+        tone: 'Professional but approachable',
+      },
     };
 
     this.seoKeywords = {
@@ -105,7 +162,7 @@ class ChrisSaaSMarketingAgent {
         'spreadsheet automation',
         'music contact database',
         'email verification API',
-        'music marketing tools'
+        'music marketing tools',
       ],
       'playlist-pulse': [
         'playlist submission tool',
@@ -115,7 +172,7 @@ class ChrisSaaSMarketingAgent {
         'playlist pitching service',
         'music streaming promotion',
         'spotify marketing tools',
-        'playlist placement service'
+        'playlist placement service',
       ],
       'command-centre': [
         'business dashboard software',
@@ -125,15 +182,15 @@ class ChrisSaaSMarketingAgent {
         'business metrics dashboard',
         'startup analytics',
         'solopreneur tools',
-        'business automation platform'
-      ]
+        'business automation platform',
+      ],
     };
 
     this.metrics = {
       blogPostsGenerated: 0,
       socialPostsCreated: 0,
       seoContentOptimized: 0,
-      campaignsLaunched: 0
+      campaignsLaunched: 0,
     };
 
     logger.info('Personal SaaS Marketing Agent initialized for Chris Schofield');
@@ -143,7 +200,7 @@ class ChrisSaaSMarketingAgent {
   async generateBlogPost(product, topic, targetKeywords = []) {
     try {
       logger.info(`Generating SEO blog post for ${product} on topic: ${topic}`);
-      
+
       const productInfo = this.products[product];
       if (!productInfo) {
         throw new Error(`Unknown product: ${product}`);
@@ -160,12 +217,12 @@ class ChrisSaaSMarketingAgent {
         category: this.categorizeTopic(topic),
         readingTime: this.estimateReadingTime(),
         seoOptimized: true,
-        callToAction: this.generateCTA(productInfo)
+        callToAction: this.generateCTA(productInfo),
       };
 
       this.metrics.blogPostsGenerated++;
       logger.success(`Generated SEO blog post: "${blogPost.title}"`);
-      
+
       return blogPost;
     } catch (error) {
       logger.error(`Failed to generate blog post: ${error.message}`);
@@ -180,14 +237,15 @@ class ChrisSaaSMarketingAgent {
       `The ${topic} Tool That Saved Me 10+ Hours Per Week`,
       `Why I Built ${productInfo.name}: A ${topic} Solution That Actually Works`,
       `${topic} Automation: How ${productInfo.name} Transforms Your Workflow`,
-      `From Problem to Solution: Building ${productInfo.name} for ${topic}`
+      `From Problem to Solution: Building ${productInfo.name} for ${topic}`,
     ];
-    
+
     return titles[Math.floor(Math.random() * titles.length)];
   }
 
   generateSlug(topic) {
-    return topic.toLowerCase()
+    return topic
+      .toLowerCase()
       .replace(/[^a-z0-9 -]/g, '')
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-')
@@ -248,11 +306,11 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
       'playlist promotion': 'Music Marketing',
       'business automation': 'Productivity',
       'saas marketing': 'Marketing',
-      'startup journey': 'Entrepreneurship'
+      'startup journey': 'Entrepreneurship',
     };
-    
+
     const lowerTopic = topic.toLowerCase();
-    return Object.keys(categories).find(key => lowerTopic.includes(key)) 
+    return Object.keys(categories).find(key => lowerTopic.includes(key))
       ? categories[Object.keys(categories).find(key => lowerTopic.includes(key))]
       : 'Business';
   }
@@ -266,7 +324,7 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
       primary: `Try ${productInfo.name} Free (Beta Access)`,
       secondary: 'Built by someone who actually uses it',
       url: `${productInfo.url}/beta`,
-      urgency: 'Limited beta spots available'
+      urgency: 'Limited beta spots available',
     };
   }
 
@@ -274,7 +332,7 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
   async generateSocialContent(product, platform, contentType = 'update') {
     try {
       logger.info(`Generating ${platform} content for ${product}`);
-      
+
       const productInfo = this.products[product];
       if (!productInfo) {
         throw new Error(`Unknown product: ${product}`);
@@ -288,12 +346,12 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
         callToAction: this.generateSocialCTA(productInfo),
         optimal_time: this.getOptimalPostingTime(platform),
         engagement_hooks: this.generateEngagementHooks(productInfo),
-        created_at: new Date().toISOString()
+        created_at: new Date().toISOString(),
       };
 
       this.metrics.socialPostsCreated++;
       logger.success(`Generated ${platform} content for ${productInfo.name}`);
-      
+
       return content;
     } catch (error) {
       logger.error(`Failed to generate social content: ${error.message}`);
@@ -305,15 +363,15 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
     const templates = {
       linkedin: {
         update: `Just shipped another update to ${productInfo.name} 🚀\n\nAs a full-time postman building SaaS tools, I don't have time for features that don't work.\n\nThis latest update focuses on ${productInfo.keyFeatures[0]} - the #1 request from beta users.\n\nThe result? Users are saving 10+ hours per week.\n\nSometimes the best solutions come from solving your own problems first.\n\n${productInfo.url}/beta`,
-        
-        story: `Why I built ${productInfo.name} (thread) 🧵\n\n1/ Working full-time as a postman with two kids doesn't leave much time for inefficient tools.\n\n2/ I was spending hours every week on ${productInfo.painPoints[0].toLowerCase()}.\n\n3/ Existing solutions were either too expensive or overcomplicated.\n\n4/ So I built exactly what I needed: ${productInfo.description}\n\n5/ Result: ${productInfo.benefits[0]}\n\nNow in free beta: ${productInfo.url}/beta`
+
+        story: `Why I built ${productInfo.name} (thread) 🧵\n\n1/ Working full-time as a postman with two kids doesn't leave much time for inefficient tools.\n\n2/ I was spending hours every week on ${productInfo.painPoints[0].toLowerCase()}.\n\n3/ Existing solutions were either too expensive or overcomplicated.\n\n4/ So I built exactly what I needed: ${productInfo.description}\n\n5/ Result: ${productInfo.benefits[0]}\n\nNow in free beta: ${productInfo.url}/beta`,
       },
-      
+
       twitter: {
         update: `${productInfo.name} update 🚀\n\n${productInfo.keyFeatures[0]} just got 10x better\n\nBeta users are saving 10+ hours/week\n\nBuilt by someone who actually uses it\n\n${productInfo.url}/beta`,
-        
-        thread: `Why I built ${productInfo.name} 🧵\n\n1/ Full-time postman\n2/ Two small kids\n3/ No time for inefficient tools\n4/ Built exactly what I needed\n5/ Now you can use it too\n\nFree beta: ${productInfo.url}/beta`
-      }
+
+        thread: `Why I built ${productInfo.name} 🧵\n\n1/ Full-time postman\n2/ Two small kids\n3/ No time for inefficient tools\n4/ Built exactly what I needed\n5/ Now you can use it too\n\nFree beta: ${productInfo.url}/beta`,
+      },
     };
 
     return templates[platform]?.[contentType] || templates.twitter.update;
@@ -321,21 +379,33 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
 
   generateHashtags(product, platform) {
     const hashtagSets = {
-      'audio-intel': ['#MusicTech', '#EmailValidation', '#ContactEnrichment', '#MusicIndustry', '#SaaS'],
-      'playlist-pulse': ['#PlaylistPromotion', '#IndieArtist', '#MusicMarketing', '#Spotify', '#MusicDiscovery'],
+      'audio-intel': [
+        '#MusicTech',
+        '#EmailValidation',
+        '#ContactEnrichment',
+        '#MusicIndustry',
+        '#SaaS',
+      ],
+      'playlist-pulse': [
+        '#PlaylistPromotion',
+        '#IndieArtist',
+        '#MusicMarketing',
+        '#Spotify',
+        '#MusicDiscovery',
+      ],
       'command-centre': ['#BusinessIntelligence', '#SaaS', '#Startup', '#Automation', '#Analytics'],
-      'voice-echo': ['#VoiceTech', '#ContentCreation', '#AudioProcessing', '#AI', '#Automation']
+      'voice-echo': ['#VoiceTech', '#ContentCreation', '#AudioProcessing', '#AI', '#Automation'],
     };
 
     const platformLimits = {
       twitter: 3,
       linkedin: 5,
-      instagram: 8
+      instagram: 8,
     };
 
     const tags = hashtagSets[product] || ['#SaaS', '#Startup', '#Business'];
     const limit = platformLimits[platform] || 5;
-    
+
     return tags.slice(0, limit);
   }
 
@@ -343,7 +413,7 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
     return {
       text: `Try ${productInfo.name} free`,
       url: `${productInfo.url}/beta`,
-      urgency: 'Beta spots limited'
+      urgency: 'Beta spots limited',
     };
   }
 
@@ -351,9 +421,9 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
     const times = {
       linkedin: '8:00 AM - 10:00 AM, Tuesday-Thursday',
       twitter: '12:00 PM - 3:00 PM, Wednesday-Friday',
-      instagram: '11:00 AM - 1:00 PM, Tuesday-Thursday'
+      instagram: '11:00 AM - 1:00 PM, Tuesday-Thursday',
     };
-    
+
     return times[platform] || '12:00 PM - 2:00 PM, Midweek';
   }
 
@@ -363,7 +433,7 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
       'Share a quick tip',
       'Ask for feature requests',
       'Share behind-the-scenes insight',
-      'Ask about their current tools'
+      'Ask about their current tools',
     ];
   }
 
@@ -371,10 +441,10 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
   async generateContentCalendar(product, weeks = 4) {
     try {
       logger.info(`Generating ${weeks}-week content calendar for ${product}`);
-      
+
       const productInfo = this.products[product];
       const calendar = [];
-      
+
       const contentTypes = [
         'Product update',
         'Behind the scenes',
@@ -382,15 +452,16 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
         'Problem/solution',
         'Feature spotlight',
         'Industry insight',
-        'Personal story'
+        'Personal story',
       ];
 
       for (let week = 1; week <= weeks; week++) {
-        for (let day = 1; day <= 5; day++) { // Monday to Friday
+        for (let day = 1; day <= 5; day++) {
+          // Monday to Friday
           const contentType = contentTypes[(week + day) % contentTypes.length];
           const date = new Date();
           date.setDate(date.getDate() + (week - 1) * 7 + day - 1);
-          
+
           calendar.push({
             date: date.toISOString().split('T')[0],
             week,
@@ -398,7 +469,7 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
             contentType,
             topic: this.generateTopicForType(productInfo, contentType),
             platforms: this.selectPlatformsForContent(contentType),
-            priority: this.calculateContentPriority(contentType, week)
+            priority: this.calculateContentPriority(contentType, week),
           });
         }
       }
@@ -419,9 +490,9 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
       'Problem/solution': `The ${productInfo.painPoints[0]} problem`,
       'Feature spotlight': productInfo.keyFeatures[1],
       'Industry insight': `${productInfo.targetAudience} trends`,
-      'Personal story': 'Why I built this tool'
+      'Personal story': 'Why I built this tool',
     };
-    
+
     return topics[contentType] || `${productInfo.name} insights`;
   }
 
@@ -433,9 +504,9 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
       'Problem/solution': ['linkedin', 'twitter'],
       'Feature spotlight': ['linkedin', 'twitter'],
       'Industry insight': ['linkedin'],
-      'Personal story': ['linkedin', 'twitter']
+      'Personal story': ['linkedin', 'twitter'],
     };
-    
+
     return platformMap[contentType] || ['linkedin', 'twitter'];
   }
 
@@ -447,9 +518,9 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
       'Problem/solution': 'high',
       'Feature spotlight': 'medium',
       'Industry insight': 'medium',
-      'Personal story': 'medium'
+      'Personal story': 'medium',
     };
-    
+
     return priorities[contentType] || 'medium';
   }
 
@@ -457,7 +528,7 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
   async scheduleToCommandCentre(content) {
     try {
       logger.info('Scheduling content to Command Centre');
-      
+
       // This would integrate with your existing social posting system
       const scheduleData = {
         content: content.text,
@@ -467,7 +538,7 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
         created_by: 'SaaS Marketing Agent',
         product: content.product,
         campaign: 'Organic Growth',
-        status: 'scheduled'
+        status: 'scheduled',
       };
 
       // Save to your Command Centre database/API
@@ -487,7 +558,7 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
       uptime: '99.9%',
       lastActive: new Date().toISOString(),
       productsManaged: Object.keys(this.products).length,
-      contentGenerated: this.metrics.blogPostsGenerated + this.metrics.socialPostsCreated
+      contentGenerated: this.metrics.blogPostsGenerated + this.metrics.socialPostsCreated,
     };
   }
 
@@ -502,10 +573,10 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
         'Social media content',
         'Content calendar planning',
         'Command Centre integration',
-        'Authentic voice matching'
+        'Authentic voice matching',
       ],
       metrics: this.getMetrics(),
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
   }
 }
@@ -530,7 +601,11 @@ async function run() {
         const socialProduct = args[1] || 'audio-intel';
         const platform = args[2] || 'linkedin';
         const contentType = args[3] || 'update';
-        const socialContent = await agent.generateSocialContent(socialProduct, platform, contentType);
+        const socialContent = await agent.generateSocialContent(
+          socialProduct,
+          platform,
+          contentType
+        );
         console.log(JSON.stringify(socialContent, null, 2));
         break;
 
@@ -552,7 +627,9 @@ async function run() {
         break;
 
       default:
-        console.log('Usage: node chris-saas-marketing-agent.js [blog|social|calendar|health|metrics]');
+        console.log(
+          'Usage: node chris-saas-marketing-agent.js [blog|social|calendar|health|metrics]'
+        );
         console.log('');
         console.log('Commands:');
         console.log('  blog <product> <topic> [keywords...]  - Generate SEO blog post');

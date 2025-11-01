@@ -76,7 +76,7 @@ export function ExitIntentPopup() {
         onClick={handleClose}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => {
+        onKeyDown={e => {
           if (e.key === 'Enter' || e.key === ' ') handleClose();
         }}
         aria-label="Close popup overlay"
@@ -94,7 +94,9 @@ export function ExitIntentPopup() {
 
           <div className="px-8 py-10 sm:px-12 sm:py-14">
             <div className="mb-6 inline-flex items-center gap-2 rounded-xl border-4 border-blue-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <span className="text-sm font-black uppercase tracking-[0.2em] text-blue-600">Try 10 Free Contact Enrichments</span>
+              <span className="text-sm font-black uppercase tracking-[0.2em] text-blue-600">
+                Try 10 Free Contact Enrichments
+              </span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-6 leading-tight">
@@ -106,19 +108,28 @@ export function ExitIntentPopup() {
                 <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-md border-2 border-black flex items-center justify-center">
                   <span className="text-white text-sm font-black">✓</span>
                 </div>
-                <p className="text-gray-900 font-bold"><span className="font-black">10 free enrichments/month</span> - No credit card required</p>
+                <p className="text-gray-900 font-bold">
+                  <span className="font-black">10 free enrichments/month</span> - No credit card
+                  required
+                </p>
               </div>
               <div className="flex items-start gap-3 bg-white rounded-xl p-4 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-md border-2 border-black flex items-center justify-center">
                   <span className="text-white text-sm font-black">✓</span>
                 </div>
-                <p className="text-gray-900 font-bold"><span className="font-black">100% success rate</span> - Proven with BBC Radio 1, Spotify contacts</p>
+                <p className="text-gray-900 font-bold">
+                  <span className="font-black">100% success rate</span> - Proven with BBC Radio 1,
+                  Spotify contacts
+                </p>
               </div>
               <div className="flex items-start gap-3 bg-white rounded-xl p-4 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-md border-2 border-black flex items-center justify-center">
                   <span className="text-white text-sm font-black">✓</span>
                 </div>
-                <p className="text-gray-900 font-bold"><span className="font-black">15 hours → 15 minutes</span> - Per campaign contact research time saved</p>
+                <p className="text-gray-900 font-bold">
+                  <span className="font-black">15 hours → 15 minutes</span> - Per campaign contact
+                  research time saved
+                </p>
               </div>
             </div>
 

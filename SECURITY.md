@@ -18,11 +18,13 @@ npm run security:scan
 ## 🛡️ What's Protected
 
 ### Git-Secrets (Pre-commit Hooks)
+
 - Automatically scans commits for API keys before they're committed
 - Blocks: AWS keys, Google API keys (AIza...), Stripe keys (sk-/pk-)
 - Configured in: `.git/hooks/pre-commit`
 
 ### NPM Audit
+
 - Checks for vulnerable dependencies in package.json
 - Moderate+ severity issues are flagged
 - Use `npm audit fix` for safe fixes
@@ -31,11 +33,13 @@ npm run security:scan
 ## 🚨 Current Vulnerabilities
 
 Your project has some dependency vulnerabilities (normal for active projects):
+
 - **Next.js**: Critical vulnerabilities - update to latest version
 - **axios**: High severity - consider updating
 - **xlsx**: No fix available yet - monitor for updates
 
 ### To Fix Dependencies:
+
 ```bash
 # Safe fixes only
 npm audit fix
@@ -47,7 +51,7 @@ npm audit fix --force
 ## 🔐 Best Practices
 
 1. **Before Committing**: Run `npm run security:scan`
-2. **Weekly**: Run `npm run security:check` 
+2. **Weekly**: Run `npm run security:check`
 3. **Never Commit**:
    - `.env` files (except `.env.example`)
    - API keys, tokens, passwords
@@ -78,13 +82,6 @@ npm audit fix --force
 - Never commit real API keys
 
 ---
+
 **Last Updated**: January 2025  
 **Security Status**: Protected ✅
-
-
-
-
-
-
-
-

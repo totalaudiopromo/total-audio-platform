@@ -168,16 +168,16 @@ cd apps/audio-intel && npm run dev:audio-intel  # Primary app
 
 ### Before vs After
 
-| Aspect | Before | After |
-|--------|--------|-------|
-| Root files to check | 25+ items | 3 main files |
-| Business context locations | 10+ scattered | 3 consolidated |
-| Daily orientation time | 5+ minutes | 30 seconds |
-| Git status clarity | Cluttered, slow | Clean, fast |
-| Mobile usability | Difficult | Excellent |
-| Agent access | Scattered | Unified |
-| Disk usage | High (scattered) | Optimized |
-| Professional appearance | Messy | Clean |
+| Aspect                     | Before           | After          |
+| -------------------------- | ---------------- | -------------- |
+| Root files to check        | 25+ items        | 3 main files   |
+| Business context locations | 10+ scattered    | 3 consolidated |
+| Daily orientation time     | 5+ minutes       | 30 seconds     |
+| Git status clarity         | Cluttered, slow  | Clean, fast    |
+| Mobile usability           | Difficult        | Excellent      |
+| Agent access               | Scattered        | Unified        |
+| Disk usage                 | High (scattered) | Optimized      |
+| Professional appearance    | Messy            | Clean          |
 
 ---
 

@@ -1,4 +1,5 @@
-import { createClient } from '@/lib/supabase/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 import type { User } from '@supabase/supabase-js';
 
 /**
@@ -7,8 +8,11 @@ import type { User } from '@supabase/supabase-js';
  */
 export async function getCurrentUser(): Promise<User | null> {
   try {
-    const supabase = await createClient();
-    const { data: { user }, error } = await supabase.auth.getUser();
+    const supabase = await createServerClient(cookies());
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser();
 
     if (error) {
       console.error('Error fetching user:', error);

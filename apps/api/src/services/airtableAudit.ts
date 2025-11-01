@@ -67,7 +67,7 @@ export class AirtableAuditService {
 
   async performFullAudit(): Promise<AuditResult> {
     logger.info('Starting comprehensive Airtable data audit...');
-    
+
     try {
       // Get all records from contacts table
       const records = await this.base(this.config.contactsTableId)
@@ -124,7 +124,6 @@ export class AirtableAuditService {
 
       logger.info('Audit completed successfully');
       return auditResult;
-
     } catch (error) {
       logger.error('Audit failed:', error);
       throw error;
@@ -133,17 +132,21 @@ export class AirtableAuditService {
 
   private async analyzeFields(records: any[]): Promise<AuditResult['fieldAnalysis']> {
     const fieldAnalysis: AuditResult['fieldAnalysis'] = {};
-    
+
     if (records.length === 0) return fieldAnalysis;
 
     // Get all field names from the first record
     const fieldNames = Object.keys(records[0].fields);
-    
+
     for (const fieldName of fieldNames) {
-      const values = records.map(record => record.fields[fieldName]).filter(val => val !== undefined);
+      const values = records
+        .map(record => record.fields[fieldName])
+        .filter(val => val !== undefined);
       const uniqueValues = new Set(values.map(val => String(val)));
-      const nullCount = values.filter(val => val === null || val === undefined || val === '').length;
-      
+      const nullCount = values.filter(
+        val => val === null || val === undefined || val === ''
+      ).length;
+
       fieldAnalysis[fieldName] = {
         dataTypes: this.detectDataTypes(values),
         uniqueValues: uniqueValues.size,
@@ -158,10 +161,10 @@ export class AirtableAuditService {
 
   private detectDataTypes(values: any[]): string[] {
     const types = new Set<string>();
-    
+
     for (const value of values) {
       if (value === null || value === undefined) continue;
-      
+
       if (typeof value === 'string') {
         if (this.isEmail(value)) types.add('email');
         else if (this.isDate(value)) types.add('date');
@@ -177,7 +180,7 @@ export class AirtableAuditService {
         types.add('object');
       }
     }
-    
+
     return Array.from(types);
   }
 
@@ -201,7 +204,9 @@ export class AirtableAuditService {
     return nonNullValues.slice(0, count);
   }
 
-  private async findDuplicates(records: any[]): Promise<{ duplicates: AuditResult['duplicates'], duplicateCount: number }> {
+  private async findDuplicates(
+    records: any[]
+  ): Promise<{ duplicates: AuditResult['duplicates']; duplicateCount: number }> {
     const duplicates: AuditResult['duplicates'] = [];
     const emailMap = new Map<string, any[]>();
     const nameMap = new Map<string, any[]>();
@@ -246,7 +251,7 @@ export class AirtableAuditService {
       if (records.length > 1) {
         const emails = records.map(r => r.fields.Email || '').filter(e => e);
         const uniqueEmails = new Set(emails);
-        
+
         if (uniqueEmails.size > 1) {
           duplicates.push({
             email: emails[0],
@@ -261,7 +266,9 @@ export class AirtableAuditService {
     return { duplicates, duplicateCount: duplicates.length };
   }
 
-  private async analyzeCompleteness(records: any[]): Promise<{ incomplete: AuditResult['incomplete'], incompleteCount: number }> {
+  private async analyzeCompleteness(
+    records: any[]
+  ): Promise<{ incomplete: AuditResult['incomplete']; incompleteCount: number }> {
     const incomplete: AuditResult['incomplete'] = [];
     const requiredFields = ['Email', 'Name']; // Add more as needed
     const importantFields = ['Company', 'Role', 'Genre', 'Location']; // Add more as needed
@@ -300,7 +307,9 @@ export class AirtableAuditService {
     return { incomplete, incompleteCount: incomplete.length };
   }
 
-  private async analyzeConsistency(records: any[]): Promise<{ inconsistencies: AuditResult['inconsistencies'], inconsistentCount: number }> {
+  private async analyzeConsistency(
+    records: any[]
+  ): Promise<{ inconsistencies: AuditResult['inconsistencies']; inconsistentCount: number }> {
     const inconsistencies: AuditResult['inconsistencies'] = [];
 
     for (const record of records) {
@@ -321,7 +330,10 @@ export class AirtableAuditService {
       // This would require comparing across records, so we'll focus on individual record issues
 
       // Check for unusually long or short values
-      if (record.fields.Name && (record.fields.Name.length < 2 || record.fields.Name.length > 100)) {
+      if (
+        record.fields.Name &&
+        (record.fields.Name.length < 2 || record.fields.Name.length > 100)
+      ) {
         inconsistencies.push({
           recordId: record.id,
           field: 'Name',
@@ -353,30 +365,40 @@ export class AirtableAuditService {
 
     // Duplicate recommendations
     if (auditResult.summary.duplicateCount > 0) {
-      recommendations.push(`Found ${auditResult.summary.duplicateCount} duplicate records. Review and merge or remove duplicates.`);
+      recommendations.push(
+        `Found ${auditResult.summary.duplicateCount} duplicate records. Review and merge or remove duplicates.`
+      );
     }
 
     // Completeness recommendations
     if (auditResult.summary.incompleteCount > 0) {
-      recommendations.push(`Found ${auditResult.summary.incompleteCount} incomplete records. Consider adding missing information for better data quality.`);
+      recommendations.push(
+        `Found ${auditResult.summary.incompleteCount} incomplete records. Consider adding missing information for better data quality.`
+      );
     }
 
     // Consistency recommendations
     if (auditResult.summary.inconsistentCount > 0) {
-      recommendations.push(`Found ${auditResult.summary.inconsistentCount} inconsistent records. Review and standardize data formats.`);
+      recommendations.push(
+        `Found ${auditResult.summary.inconsistentCount} inconsistent records. Review and standardize data formats.`
+      );
     }
 
     // Field coverage recommendations
     for (const [fieldName, analysis] of Object.entries(auditResult.fieldAnalysis)) {
       if (analysis.coverage < 50) {
-        recommendations.push(`Field '${fieldName}' has low coverage (${analysis.coverage.toFixed(1)}%). Consider if this field is necessary or needs better data collection.`);
+        recommendations.push(
+          `Field '${fieldName}' has low coverage (${analysis.coverage.toFixed(1)}%). Consider if this field is necessary or needs better data collection.`
+        );
       }
     }
 
     // Data type recommendations
     for (const [fieldName, analysis] of Object.entries(auditResult.fieldAnalysis)) {
       if (analysis.dataTypes.length > 1) {
-        recommendations.push(`Field '${fieldName}' contains mixed data types: ${analysis.dataTypes.join(', ')}. Consider standardizing the data type.`);
+        recommendations.push(
+          `Field '${fieldName}' contains mixed data types: ${analysis.dataTypes.join(', ')}. Consider standardizing the data type.`
+        );
       }
     }
 
@@ -405,4 +427,4 @@ export class AirtableAuditService {
       return null;
     }
   }
-} 
+}

@@ -24,7 +24,7 @@ export function SelectableCampaignCard({
       {/* Selection Checkbox Overlay */}
       {isSelectionMode && (
         <button
-          onClick={(e) => {
+          onClick={e => {
             e.stopPropagation();
             onToggleSelect(campaign.id);
           }}
@@ -44,7 +44,9 @@ export function SelectableCampaignCard({
       )}
 
       {/* Campaign Card */}
-      <div className={`transition-all ${isSelectionMode ? 'pl-16' : ''} ${isSelected ? 'ring-4 ring-amber-500 ring-offset-4' : ''}`}>
+      <div
+        className={`transition-all ${isSelectionMode ? 'pl-16' : ''} ${isSelected ? 'ring-4 ring-amber-500 ring-offset-4' : ''}`}
+      >
         <CampaignCardWithIntel
           campaign={campaign}
           integrations={integrations}

@@ -4,14 +4,20 @@ export function generateNewsletterContent(opportunity: any): string {
   const angle = opportunity.audioIntelAngle || 'Industry shift creates new opportunities';
   const source = opportunity.source?.name || 'Industry sources';
   const urgency = opportunity.urgencyLevel || 'medium';
-  
+
   // Generate different intro styles based on urgency and topic
   let intro = '';
   if (urgency === 'immediate') {
     intro = `🚨 BREAKING: While everyone's still processing this news from ${source}, here's exactly what it means for Audio Intel users...`;
-  } else if (opportunity.title.toLowerCase().includes('playlist') || opportunity.title.toLowerCase().includes('curator')) {
+  } else if (
+    opportunity.title.toLowerCase().includes('playlist') ||
+    opportunity.title.toLowerCase().includes('curator')
+  ) {
     intro = `Right, so whilst playlist curators are making moves, here's why this is massive for contact intelligence...`;
-  } else if (opportunity.title.toLowerCase().includes('platform') || opportunity.title.toLowerCase().includes('streaming')) {
+  } else if (
+    opportunity.title.toLowerCase().includes('platform') ||
+    opportunity.title.toLowerCase().includes('streaming')
+  ) {
     intro = `New platform alert: ${source} just validated everything we've been saying about contact intelligence...`;
   } else {
     intro = `Industry intel update: ${source} just confirmed what Audio Intel users already know...`;
@@ -19,12 +25,20 @@ export function generateNewsletterContent(opportunity: any): string {
 
   // Generate actionable advice based on content
   let actionableAdvice = '';
-  if (opportunity.title.toLowerCase().includes('contact') || opportunity.title.toLowerCase().includes('database')) {
-    actionableAdvice = 'This is your moment to double down on contact intelligence. While others debate, you execute.';
-  } else if (opportunity.title.toLowerCase().includes('independent') || opportunity.title.toLowerCase().includes('indie')) {
+  if (
+    opportunity.title.toLowerCase().includes('contact') ||
+    opportunity.title.toLowerCase().includes('database')
+  ) {
+    actionableAdvice =
+      'This is your moment to double down on contact intelligence. While others debate, you execute.';
+  } else if (
+    opportunity.title.toLowerCase().includes('independent') ||
+    opportunity.title.toLowerCase().includes('indie')
+  ) {
     actionableAdvice = 'The unsigned advantage is real. Major labels move slow, indies move fast.';
   } else {
-    actionableAdvice = 'First-mover advantage belongs to those with the right intelligence. That\'s you.';
+    actionableAdvice =
+      "First-mover advantage belongs to those with the right intelligence. That's you.";
   }
 
   return `${intro}
@@ -39,10 +53,11 @@ Remember: Industry changes create new gatekeepers. We find them first.`;
 }
 
 export function generateTwitterContent(opportunity: any): string[] {
-  const isHighUrgency = opportunity.urgencyLevel === 'immediate' || opportunity.urgencyLevel === 'high';
+  const isHighUrgency =
+    opportunity.urgencyLevel === 'immediate' || opportunity.urgencyLevel === 'high';
   const title = opportunity.title || 'Industry news';
   const angle = opportunity.audioIntelAngle || 'New opportunities for smart indies';
-  
+
   // Generate different thread styles based on content type and urgency
   if (isHighUrgency) {
     if (title.toLowerCase().includes('contact') || title.toLowerCase().includes('database')) {
@@ -51,44 +66,50 @@ export function generateTwitterContent(opportunity: any): string[] {
         `While major labels scramble to understand this, Audio Intel users already see the opportunity:`,
         `${angle}`,
         `This is exactly why contact intelligence beats mass marketing every single time.`,
-        `The data doesn't lie: Indies with better contacts win faster. 📊`
+        `The data doesn't lie: Indies with better contacts win faster. 📊`,
       ];
-    } else if (title.toLowerCase().includes('playlist') || title.toLowerCase().includes('curator')) {
+    } else if (
+      title.toLowerCase().includes('playlist') ||
+      title.toLowerCase().includes('curator')
+    ) {
       return [
         `🧵 PLAYLIST INTEL: ${title.substring(0, 110)}...`,
         `New curators = new opportunities. But only if you know who they are and how to reach them.`,
         `${angle}`,
-        `Audio Intel finds them. You reach them. Simple.`
+        `Audio Intel finds them. You reach them. Simple.`,
       ];
     } else {
       return [
         `🚨 BREAKING: ${title.substring(0, 120)}...`,
         `While everyone else processes this news, here's what Audio Intel users already know:`,
         `${angle}`,
-        `First-mover advantage belongs to those with the best intelligence. That's us.`
+        `First-mover advantage belongs to those with the best intelligence. That's us.`,
       ];
     }
   }
-  
+
   // Regular urgency threads
   if (title.toLowerCase().includes('independent') || title.toLowerCase().includes('indie')) {
     return [
       `🎯 Indies winning again: ${title.substring(0, 110)}...`,
       `${angle}`,
       `The unsigned advantage: Major labels take months to adapt. Indies move in days.`,
-      `Audio Intel makes sure you move first. 🚀`
+      `Audio Intel makes sure you move first. 🚀`,
     ];
-  } else if (title.toLowerCase().includes('streaming') || title.toLowerCase().includes('platform')) {
+  } else if (
+    title.toLowerCase().includes('streaming') ||
+    title.toLowerCase().includes('platform')
+  ) {
     return [
       `📡 Platform intel: ${title.substring(0, 110)}...`,
       `${angle}`,
-      `New platforms = new submission opportunities. Audio Intel users spot them first.`
+      `New platforms = new submission opportunities. Audio Intel users spot them first.`,
     ];
   } else {
     return [
       `🎵 Industry intel: ${title.substring(0, 100)}...`,
       `${angle}`,
-      `The unsigned advantage strikes again.`
+      `The unsigned advantage strikes again.`,
     ];
   }
 }
@@ -97,7 +118,7 @@ export function generateLinkedInContent(opportunity: any): string {
   const title = opportunity.title || 'Industry Development';
   const angle = opportunity.audioIntelAngle || 'New opportunities emerging for smart indies';
   const urgency = opportunity.urgencyLevel || 'medium';
-  
+
   // Generate professional but authentic LinkedIn content
   let hook = '';
   if (urgency === 'immediate') {
@@ -113,7 +134,10 @@ export function generateLinkedInContent(opportunity: any): string {
   let analysis = '';
   if (title.toLowerCase().includes('startup') || title.toLowerCase().includes('funding')) {
     analysis = `This development validates what we've been seeing in the music tech space: contact intelligence and relationship data are becoming the competitive advantage for independent artists.`;
-  } else if (title.toLowerCase().includes('platform') || title.toLowerCase().includes('streaming')) {
+  } else if (
+    title.toLowerCase().includes('platform') ||
+    title.toLowerCase().includes('streaming')
+  ) {
     analysis = `Platform changes like this create new submission opportunities - but only for artists who can identify and reach the right contacts quickly.`;
   } else {
     analysis = `Industry shifts like this separate the reactive from the proactive. Those with better intelligence move first and win bigger.`;
@@ -139,7 +163,7 @@ Every industry shift creates new gatekeepers. The question is: will you find the
 export function generateInstagramSlides(opportunity: any): string[] {
   const title = opportunity.title || 'Industry News';
   const angle = opportunity.audioIntelAngle || 'Smart indies spot opportunities first';
-  
+
   // Generate slides based on content type
   if (title.toLowerCase().includes('contact') || title.toLowerCase().includes('database')) {
     return [
@@ -149,7 +173,7 @@ export function generateInstagramSlides(opportunity: any): string[] {
       'What Audio Intel users see:',
       angle,
       'Contact intelligence = unfair advantage',
-      'Get your intelligence at AudioIntel.co'
+      'Get your intelligence at AudioIntel.co',
     ];
   } else if (title.toLowerCase().includes('playlist') || title.toLowerCase().includes('curator')) {
     return [
@@ -158,7 +182,7 @@ export function generateInstagramSlides(opportunity: any): string[] {
       'New curators = new contacts',
       'Audio Intel finds them first',
       angle,
-      'Your move, indie artist'
+      'Your move, indie artist',
     ];
   } else if (title.toLowerCase().includes('independent') || title.toLowerCase().includes('indie')) {
     return [
@@ -167,7 +191,7 @@ export function generateInstagramSlides(opportunity: any): string[] {
       'Major labels: "Let\'s wait and see"',
       'Smart indies: "Let\'s move now"',
       angle,
-      'The unsigned advantage strikes again'
+      'The unsigned advantage strikes again',
     ];
   } else {
     return [
@@ -177,7 +201,7 @@ export function generateInstagramSlides(opportunity: any): string[] {
       '"Another industry update"',
       'What Audio Intel users see:',
       angle,
-      'Intelligence = advantage'
+      'Intelligence = advantage',
     ];
   }
 }
@@ -186,13 +210,13 @@ export function generateInstagramCaption(opportunity: any): string {
   const title = opportunity.title || 'Industry development';
   const angle = opportunity.audioIntelAngle || 'New opportunities for smart indies';
   const urgency = opportunity.urgencyLevel || 'medium';
-  
+
   let emoji = '🎵';
   if (urgency === 'immediate') emoji = '⚡';
   else if (title.toLowerCase().includes('contact')) emoji = '📊';
   else if (title.toLowerCase().includes('playlist')) emoji = '🎯';
   else if (title.toLowerCase().includes('independent')) emoji = '🚀';
-  
+
   let hook = '';
   if (urgency === 'immediate') {
     hook = 'BREAKING: Industry move creates instant opportunity for indies 🚨';
@@ -201,7 +225,7 @@ export function generateInstagramCaption(opportunity: any): string {
   } else {
     hook = 'Industry intel that puts indies ahead of the game 📊';
   }
-  
+
   return `${hook}
 
 ${angle}

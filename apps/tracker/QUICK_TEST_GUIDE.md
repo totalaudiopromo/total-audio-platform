@@ -17,12 +17,14 @@ open http://localhost:3000/pricing
 ```
 
 **✅ PASS if**:
+
 - Page loads WITHOUT login redirect
 - Shows 3 pricing tiers (Free, £19, £79)
 - FAQ section visible
 - Footer links to Privacy/Terms work
 
 **❌ FAIL if**:
+
 - Redirects to /login
 - Shows 404 error
 - Missing pricing information
@@ -37,6 +39,7 @@ open http://localhost:3000
 ```
 
 **✅ PASS if**:
+
 - Banner appears at bottom after 1 second
 - "Accept All Cookies" button works
 - "Essential Only" button works
@@ -45,13 +48,15 @@ open http://localhost:3000
 - Refresh page → Banner doesn't reappear
 
 **Check localStorage**:
+
 ```javascript
 // Open browser console
-localStorage.getItem('cookieConsent')
+localStorage.getItem('cookieConsent');
 // Should return: "accepted" or "declined"
 ```
 
 **❌ FAIL if**:
+
 - Banner never appears
 - Buttons don't respond
 - Banner reappears after accepting
@@ -70,6 +75,7 @@ open http://localhost:3000/terms
 ```
 
 **✅ PASS if**:
+
 - Both pages load without login
 - Pages have 10+ sections of content
 - Footer links work
@@ -78,6 +84,7 @@ open http://localhost:3000/terms
 - ICO information visible
 
 **❌ FAIL if**:
+
 - Pages require login
 - Content is missing
 - Links are broken
@@ -88,6 +95,7 @@ open http://localhost:3000/terms
 ## 4. EMAIL VERIFICATION (2 minutes)
 
 ### Test 1: Dashboard Banner
+
 ```bash
 # Create test account or use existing unverified account
 # Go to dashboard
@@ -95,6 +103,7 @@ open http://localhost:3000/dashboard
 ```
 
 **✅ PASS if** (unverified user):
+
 - Orange/amber banner shows at top
 - Shows user's email address
 - "Resend Verification Email" button present
@@ -102,9 +111,11 @@ open http://localhost:3000/dashboard
 - Banner is dismissible with X button
 
 **✅ PASS if** (verified user):
+
 - No banner shows
 
 ### Test 2: Verification Pages
+
 ```bash
 # Navigate to verification instructions
 open http://localhost:3000/verify-email
@@ -114,24 +125,27 @@ open http://localhost:3000/verify-success
 ```
 
 **✅ PASS if**:
+
 - `/verify-email` shows:
-  * Email icon
-  * "Check Your Email" heading
-  * Troubleshooting tips
-  * "Resend" and "Go to Dashboard" buttons
+  - Email icon
+  - "Check Your Email" heading
+  - Troubleshooting tips
+  - "Resend" and "Go to Dashboard" buttons
 
 - `/verify-success` shows:
-  * Green checkmark icon
-  * "Email Verified!" heading
-  * 3-step onboarding preview
-  * "Go to Dashboard" button
+  - Green checkmark icon
+  - "Email Verified!" heading
+  - 3-step onboarding preview
+  - "Go to Dashboard" button
 
 **❌ FAIL if**:
+
 - Pages show 404 errors
 - Content is missing
 - Buttons don't link correctly
 
 ### Test 3: Resend API
+
 ```bash
 # Test API endpoint
 curl -X POST http://localhost:3000/api/auth/resend-verification \
@@ -147,6 +161,7 @@ curl -X POST http://localhost:3000/api/auth/resend-verification \
 ## 5. ONBOARDING CHECKLIST (1 minute)
 
 ### Test with New Account
+
 ```bash
 # 1. Create brand new account
 # 2. Go to dashboard immediately
@@ -154,26 +169,30 @@ open http://localhost:3000/dashboard
 ```
 
 **✅ PASS if** (new user, 0 campaigns):
+
 - Purple/blue checklist shows at top
 - Shows "0/3" or "0% Complete"
 - Sparkles icon visible
 - 3 unchecked items:
-  * Create your first campaign
-  * Import contacts
-  * Log your first result
+  - Create your first campaign
+  - Import contacts
+  - Log your first result
 - Action buttons clickable
 - Dismissible with X button
 
 **✅ PASS if** (user with campaigns):
+
 - Checklist shows "1/3" or "33% Complete"
 - First item has green checkmark + strikethrough
 - Progress bar fills to 33%
 - Encouragement message: "Great start!"
 
 **✅ PASS if** (completed user):
+
 - Checklist automatically hidden
 
 **❌ FAIL if**:
+
 - Checklist doesn't appear for new users
 - Progress doesn't update
 - Buttons don't work
@@ -197,6 +216,7 @@ open http://localhost:3000/pricing
 ```
 
 **✅ PASS if**:
+
 - Brutalist design intact (4px black borders, shadow-brutal)
 - Purple brand color (#9333ea) consistent
 - Font weights correct (font-black, font-bold)
@@ -205,6 +225,7 @@ open http://localhost:3000/pricing
 - All components aligned properly
 
 **❌ FAIL if**:
+
 - Styling looks broken
 - Colors changed unexpectedly
 - Layout broken on mobile
@@ -222,6 +243,7 @@ open http://localhost:3000/pricing
 ```
 
 **✅ PASS if**:
+
 - Cookie consent banner readable on mobile
 - Onboarding checklist stacks vertically
 - Email verification banner doesn't overflow
@@ -230,6 +252,7 @@ open http://localhost:3000/pricing
 - No horizontal scrolling
 
 **❌ FAIL if**:
+
 - Text too small to read
 - Buttons too close together
 - Content cut off or overflowing
@@ -250,6 +273,7 @@ open http://localhost:3000/pricing
 ```
 
 **✅ PASS if**:
+
 - All links go to correct pages
 - No 404 errors
 - No unexpected redirects
@@ -295,6 +319,7 @@ curl -I https://tracker.totalaudiopromo.com
    - Should show error message
 
 2. **Unauthenticated** (API endpoints):
+
    ```bash
    curl http://localhost:3000/api/auth/resend-verification
    # Expected: 401 Unauthorized
@@ -330,6 +355,7 @@ npm run build:tracker
 ```
 
 **✅ PASS if**:
+
 - All pages load in <3 seconds
 - No console errors
 - No 404s in Network tab
@@ -348,6 +374,7 @@ Test in these browsers (minimum):
 - ✅ Mobile Chrome (Android)
 
 **Common issues to watch**:
+
 - Cookie consent banner position on mobile
 - Email verification banner width on small screens
 - Onboarding checklist layout on tablets
@@ -433,5 +460,5 @@ vercel rollback
 
 ---
 
-*Last Updated: October 2025*
-*Test these before every deploy to production*
+_Last Updated: October 2025_
+_Test these before every deploy to production_

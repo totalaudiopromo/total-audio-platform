@@ -7,7 +7,7 @@ const logger = {
   info: (msg, ...args) => console.log(`[GMAIL] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[GMAIL] ${msg}`, ...args),
   warn: (msg, ...args) => console.warn(`[GMAIL] ${msg}`, ...args),
-  success: (msg, ...args) => console.log(`✅ [GMAIL] ${msg}`, ...args)
+  success: (msg, ...args) => console.log(`✅ [GMAIL] ${msg}`, ...args),
 };
 
 // Import demo mode
@@ -68,7 +68,7 @@ class GmailApiIntegration {
       'promotion',
       'liberty music',
       'onboarding',
-      'brief'
+      'brief',
     ];
   }
 
@@ -182,13 +182,12 @@ class GmailApiIntegration {
         userId: 'me',
         id: messageId,
         requestBody: {
-          addLabelIds: [agentLabel.id]
-        }
+          addLabelIds: [agentLabel.id],
+        },
       });
 
       logger.success(`Marked message ${messageId} as processed by agent`);
       return true;
-
     } catch (error) {
       logger.error('Failed to mark message as processed:', error);
       return false;
@@ -215,7 +214,7 @@ class GmailApiIntegration {
       const response = await this.callGmailAPI('messages.list', {
         userId: 'me',
         q: query,
-        maxResults: maxResults
+        maxResults: maxResults,
       });
 
       const messageIds = response.messages || [];
@@ -241,7 +240,7 @@ class GmailApiIntegration {
               to: emailDetails.to,
               date: emailDetails.date,
               snippet: emailDetails.snippet,
-              body: emailDetails.body
+              body: emailDetails.body,
             };
             emails.push(formattedEmail);
           }
@@ -252,7 +251,6 @@ class GmailApiIntegration {
 
       logger.success(`Retrieved ${emails.length} email details`);
       return emails;
-
     } catch (error) {
       logger.error('Failed to search emails:', error);
 
@@ -281,7 +279,7 @@ class GmailApiIntegration {
       const response = await this.callGmailAPI('messages.list', {
         userId: 'me',
         q: searchQuery,
-        maxResults: maxResults
+        maxResults: maxResults,
       });
 
       const messageIds = response.messages || [];
@@ -315,7 +313,7 @@ class GmailApiIntegration {
     const baseQuery = `to:${this.libertyEmail} OR cc:${this.libertyEmail}`;
     const keywordQuery = this.campaignKeywords.map(keyword => `"${keyword}"`).join(' OR ');
     const timeQuery = 'newer_than:30d'; // Last 30 days
-    
+
     return `${baseQuery} AND (${keywordQuery}) AND ${timeQuery} ${additionalQuery}`.trim();
   }
 
@@ -326,9 +324,9 @@ class GmailApiIntegration {
     try {
       const response = await this.callGmailAPI('messages.get', {
         userId: 'me',
-        id: messageId
+        id: messageId,
       });
-      
+
       // Extract headers
       const headers = {};
       if (response.payload && response.payload.headers) {
@@ -336,13 +334,13 @@ class GmailApiIntegration {
           headers[header.name.toLowerCase()] = header.value;
         });
       }
-      
+
       // Extract body content
       const body = this.extractEmailBody(response.payload);
-      
+
       // Extract artist information
       const artistInfo = this.extractArtistInfo(headers, body);
-      
+
       return {
         id: messageId,
         threadId: response.threadId,
@@ -353,7 +351,7 @@ class GmailApiIntegration {
         date: headers.date || '',
         body: body,
         artistInfo: artistInfo,
-        snippet: response.snippet || ''
+        snippet: response.snippet || '',
       };
     } catch (error) {
       logger.warn(`Failed to get message details for ${messageId}: ${error.message}`);
@@ -366,7 +364,7 @@ class GmailApiIntegration {
    */
   extractEmailBody(payload) {
     let body = '';
-    
+
     if (payload.body && payload.body.data) {
       // Simple text body
       body = Buffer.from(payload.body.data, 'base64').toString('utf-8');
@@ -381,7 +379,7 @@ class GmailApiIntegration {
         }
       }
     }
-    
+
     return body;
   }
 
@@ -396,31 +394,31 @@ class GmailApiIntegration {
       genre: '',
       releaseDate: '',
       budget: '',
-      confidence: 0
+      confidence: 0,
     };
-    
+
     // Extract from email address
     const fromEmail = headers.from || '';
     const emailMatch = fromEmail.match(/([^<]+@[^>]+)/);
     if (emailMatch) {
       artistInfo.email = emailMatch[1].trim();
     }
-    
+
     // Extract from subject line
     const subject = headers.subject || '';
     artistInfo.track = this.extractTrackFromSubject(subject);
-    
+
     // Extract from email body
     const bodyText = body.toLowerCase();
-    
+
     // Look for artist name patterns
     const artistPatterns = [
       /artist[:\s]+([^\n\r]+)/i,
       /band[:\s]+([^\n\r]+)/i,
       /musician[:\s]+([^\n\r]+)/i,
-      /name[:\s]+([^\n\r]+)/i
+      /name[:\s]+([^\n\r]+)/i,
     ];
-    
+
     for (const pattern of artistPatterns) {
       const match = body.match(pattern);
       if (match && match[1]) {
@@ -428,15 +426,15 @@ class GmailApiIntegration {
         break;
       }
     }
-    
+
     // Look for track title patterns
     const trackPatterns = [
       /track[:\s]+([^\n\r]+)/i,
       /song[:\s]+([^\n\r]+)/i,
       /single[:\s]+([^\n\r]+)/i,
-      /title[:\s]+([^\n\r]+)/i
+      /title[:\s]+([^\n\r]+)/i,
     ];
-    
+
     for (const pattern of trackPatterns) {
       const match = body.match(pattern);
       if (match && match[1]) {
@@ -444,14 +442,14 @@ class GmailApiIntegration {
         break;
       }
     }
-    
+
     // Look for genre patterns
     const genrePatterns = [
       /genre[:\s]+([^\n\r]+)/i,
       /style[:\s]+([^\n\r]+)/i,
-      /type[:\s]+([^\n\r]+)/i
+      /type[:\s]+([^\n\r]+)/i,
     ];
-    
+
     for (const pattern of genrePatterns) {
       const match = body.match(pattern);
       if (match && match[1]) {
@@ -459,14 +457,14 @@ class GmailApiIntegration {
         break;
       }
     }
-    
+
     // Look for release date patterns
     const datePatterns = [
       /release[:\s]+([^\n\r]+)/i,
       /launch[:\s]+([^\n\r]+)/i,
-      /drop[:\s]+([^\n\r]+)/i
+      /drop[:\s]+([^\n\r]+)/i,
     ];
-    
+
     for (const pattern of datePatterns) {
       const match = body.match(pattern);
       if (match && match[1]) {
@@ -474,14 +472,14 @@ class GmailApiIntegration {
         break;
       }
     }
-    
+
     // Look for budget patterns
     const budgetPatterns = [
       /budget[:\s]+([^\n\r]+)/i,
       /spend[:\s]+([^\n\r]+)/i,
-      /cost[:\s]+([^\n\r]+)/i
+      /cost[:\s]+([^\n\r]+)/i,
     ];
-    
+
     for (const pattern of budgetPatterns) {
       const match = body.match(pattern);
       if (match && match[1]) {
@@ -489,11 +487,11 @@ class GmailApiIntegration {
         break;
       }
     }
-    
+
     // Calculate confidence based on extracted fields
     const extractedFields = Object.values(artistInfo).filter(value => value && value !== '').length;
     artistInfo.confidence = (extractedFields / 7) * 100; // 7 total fields
-    
+
     return artistInfo;
   }
 
@@ -508,14 +506,14 @@ class GmailApiIntegration {
       /- ([^-]+)$/, // Dash before track title
       /: ([^:]+)$/, // Colon before track title
     ];
-    
+
     for (const pattern of patterns) {
       const match = subject.match(pattern);
       if (match && match[1]) {
         return match[1].trim();
       }
     }
-    
+
     return '';
   }
 
@@ -532,9 +530,10 @@ class GmailApiIntegration {
       logger.info('Finding campaign emails with artist information...');
 
       const campaignEmails = await this.searchCampaignEmails();
-      const emailsWithArtists = campaignEmails.filter(email =>
-        email.artistInfo &&
-        (email.artistInfo.email || email.artistInfo.name || email.artistInfo.track)
+      const emailsWithArtists = campaignEmails.filter(
+        email =>
+          email.artistInfo &&
+          (email.artistInfo.email || email.artistInfo.name || email.artistInfo.track)
       );
 
       logger.success(`Found ${emailsWithArtists.length} campaign emails with artist information`);
@@ -577,7 +576,7 @@ class GmailApiIntegration {
       return {
         artistEmails: uniqueEmails,
         campaignEmails: campaignEmails,
-        totalCampaigns: campaignEmails.length
+        totalCampaigns: campaignEmails.length,
       };
     } catch (error) {
       logger.error('Failed to get artist emails from campaigns:', error);
@@ -603,7 +602,7 @@ class GmailApiIntegration {
           service: 'gmail',
           libertyEmail: this.libertyEmail,
           usingDemo: true,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         };
       }
 
@@ -613,14 +612,14 @@ class GmailApiIntegration {
         status: 'healthy',
         service: 'gmail',
         libertyEmail: this.libertyEmail,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
     } catch (error) {
       return {
         status: 'unhealthy',
         service: 'gmail',
         error: error.message,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
     }
   }

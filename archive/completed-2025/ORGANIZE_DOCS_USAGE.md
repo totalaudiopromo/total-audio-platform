@@ -42,11 +42,13 @@ alias organize-docs-dry='bash ~/workspace/active/total-audio-platform/scripts/or
 ```
 
 Then reload your shell:
+
 ```bash
 source ~/.zshrc  # or source ~/.bashrc
 ```
 
 Now from **anywhere**:
+
 ```bash
 # Works from any directory!
 organize-docs-dry          # Preview changes
@@ -62,30 +64,30 @@ organize-docs tracker      # Organize specific app
 
 ### From Monorepo Root
 
-| Command | Description |
-|---------|-------------|
-| `npm run organize-docs` | Organize all apps |
-| `npm run organize-docs:dry-run` | Preview without moving files (safe!) |
-| `npm run organize-docs:verbose` | Show detailed output |
-| `node scripts/organize-docs.js tracker` | Organize specific app |
+| Command                                 | Description                          |
+| --------------------------------------- | ------------------------------------ |
+| `npm run organize-docs`                 | Organize all apps                    |
+| `npm run organize-docs:dry-run`         | Preview without moving files (safe!) |
+| `npm run organize-docs:verbose`         | Show detailed output                 |
+| `node scripts/organize-docs.js tracker` | Organize specific app                |
 
 ### From Any Directory
 
-| Command | Description |
-|---------|-------------|
-| `bash scripts/organize-docs-from-anywhere.sh` | Organize all apps |
-| `bash scripts/organize-docs-from-anywhere.sh --dry-run` | Preview changes |
-| `bash scripts/organize-docs-from-anywhere.sh --verbose` | Verbose output |
-| `bash scripts/organize-docs-from-anywhere.sh tracker` | Organize specific app |
+| Command                                                 | Description           |
+| ------------------------------------------------------- | --------------------- |
+| `bash scripts/organize-docs-from-anywhere.sh`           | Organize all apps     |
+| `bash scripts/organize-docs-from-anywhere.sh --dry-run` | Preview changes       |
+| `bash scripts/organize-docs-from-anywhere.sh --verbose` | Verbose output        |
+| `bash scripts/organize-docs-from-anywhere.sh tracker`   | Organize specific app |
 
 ### With Alias (After Setup)
 
-| Command | Description |
-|---------|-------------|
-| `organize-docs` | Organize all apps |
-| `organize-docs-dry` | Preview changes (safe!) |
-| `organize-docs --verbose` | Verbose output |
-| `organize-docs tracker` | Organize specific app |
+| Command                   | Description             |
+| ------------------------- | ----------------------- |
+| `organize-docs`           | Organize all apps       |
+| `organize-docs-dry`       | Preview changes (safe!) |
+| `organize-docs --verbose` | Verbose output          |
+| `organize-docs tracker`   | Organize specific app   |
 
 ---
 
@@ -178,6 +180,7 @@ If your repo is not at `~/workspace/active/total-audio-platform/`, update the pa
 **Problem:** You're in an app directory (like `apps/tracker/`) and running `npm run organize-docs`.
 
 **Solution:** Either:
+
 1. Go to monorepo root: `cd ../.. && npm run organize-docs`
 2. Use the convenience script: `bash ../../scripts/organize-docs-from-anywhere.sh`
 3. Set up the alias (recommended): `organize-docs`
@@ -193,6 +196,7 @@ If your repo is not at `~/workspace/active/total-audio-platform/`, update the pa
 **Problem:** You ran with `--dry-run` flag.
 
 **Solution:** Remove the `--dry-run` flag to actually move files:
+
 ```bash
 organize-docs  # not organize-docs-dry
 ```
@@ -301,4 +305,3 @@ organize-docs      # Apply
 ```
 
 Never worry about messy documentation again! 🎉
-

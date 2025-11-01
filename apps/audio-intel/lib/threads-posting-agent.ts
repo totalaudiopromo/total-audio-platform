@@ -19,8 +19,8 @@ export interface ThreadsPost {
 }
 
 export interface ThreadsCredentials {
-  userId: string;        // Instagram User ID
-  accessToken: string;   // Long-lived access token
+  userId: string; // Instagram User ID
+  accessToken: string; // Long-lived access token
 }
 
 export interface ThreadsApiResponse {
@@ -38,7 +38,9 @@ export class ThreadsPostingAgent {
   /**
    * Create a Threads media container (unpublished post)
    */
-  async createMediaContainer(text: string): Promise<{ success: boolean; containerId?: string; error?: string }> {
+  async createMediaContainer(
+    text: string
+  ): Promise<{ success: boolean; containerId?: string; error?: string }> {
     try {
       // Ensure text is within 500 character limit
       const sanitizedText = text.length > 500 ? text.substring(0, 497) + '...' : text;
@@ -50,8 +52,8 @@ export class ThreadsPostingAgent {
           params: {
             media_type: 'TEXT',
             text: sanitizedText,
-            access_token: this.credentials.accessToken
-          }
+            access_token: this.credentials.accessToken,
+          },
         }
       );
 
@@ -59,13 +61,13 @@ export class ThreadsPostingAgent {
 
       return {
         success: true,
-        containerId: response.data.id
+        containerId: response.data.id,
       };
     } catch (error) {
       console.error('[THREADS] ❌ Media container creation failed:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -73,7 +75,9 @@ export class ThreadsPostingAgent {
   /**
    * Publish a Threads media container
    */
-  async publishMediaContainer(containerId: string): Promise<{ success: boolean; postId?: string; error?: string }> {
+  async publishMediaContainer(
+    containerId: string
+  ): Promise<{ success: boolean; postId?: string; error?: string }> {
     try {
       const response = await axios.post<ThreadsApiResponse>(
         `${this.baseUrl}/${this.credentials.userId}/threads_publish`,
@@ -81,8 +85,8 @@ export class ThreadsPostingAgent {
         {
           params: {
             creation_id: containerId,
-            access_token: this.credentials.accessToken
-          }
+            access_token: this.credentials.accessToken,
+          },
         }
       );
 
@@ -90,13 +94,13 @@ export class ThreadsPostingAgent {
 
       return {
         success: true,
-        postId: response.data.id
+        postId: response.data.id,
       };
     } catch (error) {
       console.error('[THREADS] ❌ Post publication failed:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -112,7 +116,7 @@ export class ThreadsPostingAgent {
       if (!createResult.success || !createResult.containerId) {
         return {
           success: false,
-          error: createResult.error || 'Failed to create media container'
+          error: createResult.error || 'Failed to create media container',
         };
       }
 
@@ -122,7 +126,7 @@ export class ThreadsPostingAgent {
       if (!publishResult.success) {
         return {
           success: false,
-          error: publishResult.error || 'Failed to publish post'
+          error: publishResult.error || 'Failed to publish post',
         };
       }
 
@@ -130,13 +134,13 @@ export class ThreadsPostingAgent {
 
       return {
         success: true,
-        postId: publishResult.postId
+        postId: publishResult.postId,
       };
     } catch (error) {
       console.error('[THREADS] ❌ Post workflow failed:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -399,7 +403,7 @@ Stop wasting weekends on research that can be automated.
 
 The music industry needs tools that give you time back for what matters.
 
-https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campaign=radio_industry_truth`
+https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campaign=radio_industry_truth`,
     };
 
     return contentMap[title] || null;
@@ -419,13 +423,12 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
       posted: 0,
       skipped: 0,
       failed: 0,
-      details: [] as Array<{ title: string; status: string; postId?: string; error?: string }>
+      details: [] as Array<{ title: string; status: string; postId?: string; error?: string }>,
     };
 
     // Filter Threads posts that should be posted now
-    const threadsPosts = calendar.filter(post =>
-      post.platform === 'Threads' &&
-      post.status === 'scheduled'
+    const threadsPosts = calendar.filter(
+      post => post.platform === 'Threads' && post.status === 'scheduled'
     );
 
     console.log(`[THREADS] Found ${threadsPosts.length} Threads posts in calendar`);
@@ -452,7 +455,7 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
         results.details.push({
           title: post.title,
           status: 'failed',
-          error: 'Content not found'
+          error: 'Content not found',
         });
         continue;
       }
@@ -466,14 +469,14 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
         results.details.push({
           title: post.title,
           status: 'posted',
-          postId: result.postId
+          postId: result.postId,
         });
       } else {
         results.failed++;
         results.details.push({
           title: post.title,
           status: 'failed',
-          error: result.error
+          error: result.error,
         });
       }
 
@@ -490,26 +493,23 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
   async healthCheck(): Promise<{ healthy: boolean; error?: string }> {
     try {
       // Test API access by making a simple GET request
-      const response = await axios.get(
-        `${this.baseUrl}/${this.credentials.userId}/threads`,
-        {
-          params: {
-            fields: 'id',
-            limit: 1,
-            access_token: this.credentials.accessToken
-          }
-        }
-      );
+      const response = await axios.get(`${this.baseUrl}/${this.credentials.userId}/threads`, {
+        params: {
+          fields: 'id',
+          limit: 1,
+          access_token: this.credentials.accessToken,
+        },
+      });
 
       console.log('[THREADS] ✅ Health check passed');
       return {
-        healthy: response.status === 200
+        healthy: response.status === 200,
       };
     } catch (error) {
       console.error('[THREADS] ❌ Health check failed:', error);
       return {
         healthy: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -528,27 +528,24 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
     error?: string;
   }> {
     try {
-      const response = await axios.get(
-        `${this.baseUrl}/${this.credentials.userId}/insights`,
-        {
-          params: {
-            metric: 'views,likes,replies,followers_count',
-            access_token: this.credentials.accessToken
-          }
-        }
-      );
+      const response: any = await axios.get(`${this.baseUrl}/${this.credentials.userId}/insights`, {
+        params: {
+          metric: 'views,likes,replies,followers_count',
+          access_token: this.credentials.accessToken,
+        },
+      });
 
       console.log('[THREADS] ✅ Account insights retrieved');
 
       return {
         success: true,
-        insights: response.data
+        insights: response.data as any,
       };
     } catch (error) {
       console.error('[THREADS] ❌ Failed to retrieve insights:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -560,11 +557,13 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 export function createThreadsAgent(): ThreadsPostingAgent {
   const credentials: ThreadsCredentials = {
     userId: process.env.THREADS_USER_ID || '',
-    accessToken: process.env.THREADS_ACCESS_TOKEN || ''
+    accessToken: process.env.THREADS_ACCESS_TOKEN || '',
   };
 
   if (!credentials.userId || !credentials.accessToken) {
-    throw new Error('Threads credentials not configured. Set THREADS_USER_ID and THREADS_ACCESS_TOKEN environment variables.');
+    throw new Error(
+      'Threads credentials not configured. Set THREADS_USER_ID and THREADS_ACCESS_TOKEN environment variables.'
+    );
   }
 
   return new ThreadsPostingAgent(credentials);

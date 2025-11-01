@@ -11,12 +11,7 @@ import { SkillContext } from '../SkillEngine';
 export interface VoiceGuardInput {
   text: string;
   brandVoiceId?: string;
-  contentType:
-    | 'email_pitch'
-    | 'newsletter'
-    | 'website_copy'
-    | 'social_media'
-    | 'documentation';
+  contentType: 'email_pitch' | 'newsletter' | 'website_copy' | 'social_media' | 'documentation';
   targetAudience:
     | 'radio_promoters'
     | 'independent_artists'
@@ -65,7 +60,7 @@ const VOICE_RULES = {
     { word: 'synergy', reason: 'Corporate jargon - be direct' },
     { word: 'revolutionary', reason: 'Marketing hype - let results speak' },
     { word: 'game-changing', reason: 'Marketing hype - be authentic' },
-    { word: 'innovative', reason: 'Overused buzzword - show, don\'t tell' },
+    { word: 'innovative', reason: "Overused buzzword - show, don't tell" },
     { word: 'cutting-edge', reason: 'Marketing speak - be specific' },
     { word: 'best-in-class', reason: 'Generic claim - prove with specifics' },
     { word: 'world-class', reason: 'Meaningless superlative' },
@@ -88,10 +83,7 @@ export class VoiceGuardSkill {
   /**
    * Execute voice guard analysis and corrections
    */
-  static async execute(
-    input: VoiceGuardInput,
-    context: SkillContext
-  ): Promise<VoiceGuardOutput> {
+  static async execute(input: VoiceGuardInput, context: SkillContext): Promise<VoiceGuardOutput> {
     let text = input.text;
     const changes: VoiceGuardOutput['changes'] = [];
     const warnings: string[] = [];
@@ -123,7 +115,7 @@ export class VoiceGuardSkill {
     }
 
     // 3. Check for authentic voice markers
-    const authenticityScore = VOICE_RULES.authentic.filter((phrase) =>
+    const authenticityScore = VOICE_RULES.authentic.filter(phrase =>
       text.toLowerCase().includes(phrase.toLowerCase())
     ).length;
 
@@ -141,7 +133,7 @@ export class VoiceGuardSkill {
       const regex = new RegExp(`\\b${noun}\\b`, 'gi');
       const matches = text.match(regex);
       if (matches) {
-        matches.forEach((match) => {
+        matches.forEach(match => {
           if (match !== match.charAt(0).toUpperCase() + match.slice(1).toLowerCase()) {
             warnings.push(`Check capitalisation of "${match}" - should be proper case`);
           }
@@ -161,7 +153,7 @@ export class VoiceGuardSkill {
 
       // Should have personalisation
       if (!text.toLowerCase().includes('you') && !text.toLowerCase().includes('your')) {
-        suggestions.push('Add personalisation - reference the recipient\'s work or interests');
+        suggestions.push("Add personalisation - reference the recipient's work or interests");
       }
     }
 
@@ -179,7 +171,7 @@ export class VoiceGuardSkill {
     }
 
     // Calculate compliance score
-    const criticalIssues = changes.filter((c) => c.severity === 'critical').length;
+    const criticalIssues = changes.filter(c => c.severity === 'critical').length;
     const highIssues = warnings.length;
     const complianceScore = Math.max(0, 1 - criticalIssues * 0.2 - highIssues * 0.1);
 

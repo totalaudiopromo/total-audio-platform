@@ -10,6 +10,7 @@
 ## 📊 EXECUTIVE SUMMARY
 
 **Key Findings:**
+
 - **153 radio promotion agents** (66% of total) - highest concentration
 - **56 Airtable integrations** (contact enrichment, lead management)
 - **18 Mailchimp integrations** (email campaigns, list management)
@@ -17,11 +18,13 @@
 - **14+ MCP servers operational** (Gmail, Notion, Puppeteer, Google Drive)
 
 **Automation Readiness**:
+
 - ✅ **HIGH**: 12 agents ready for immediate automation
 - ⚠️ **MEDIUM**: 23 agents need minor configuration
 - ❌ **LOW**: Majority are experimental/single-use scripts
 
 **Revenue Impact Focus**:
+
 - **Audio Intel contact enrichment**: 8 agents (HIGH priority)
 - **Lead generation/research**: 15 agents (MEDIUM priority)
 - **Social media automation**: 4 agents (MEDIUM priority)
@@ -208,12 +211,7 @@
 
 #### **Campaign-Specific Agents** (Kyara, Bestial examples)
 
-16-22. **`create-kyara-gmail-drafts.js`, `send-kyara-australian-emails.js`, `bestial-*-strategy.js`**
-    - **Purpose**: Campaign-specific pitch automation
-    - **Status**: ✅ FUNCTIONAL - Template-based
-    - **Automation Potential**: **EVENT-TRIGGERED** (new campaign)
-    - **Revenue Impact**: 🟡 **MEDIUM** - Client campaign success
-    - **Pattern**: These demonstrate proven workflow for automating client campaigns
+16-22. **`create-kyara-gmail-drafts.js`, `send-kyara-australian-emails.js`, `bestial-*-strategy.js`** - **Purpose**: Campaign-specific pitch automation - **Status**: ✅ FUNCTIONAL - Template-based - **Automation Potential**: **EVENT-TRIGGERED** (new campaign) - **Revenue Impact**: 🟡 **MEDIUM** - Client campaign success - **Pattern**: These demonstrate proven workflow for automating client campaigns
 
 #### **Content Generation**
 
@@ -242,16 +240,19 @@
 ### **C. EXPERIMENTAL/ARCHIVED AGENTS** (Not for Automation)
 
 #### **Archive Directory** (`tools/agents/archive/`)
+
 - **oauth-fixes/**: 12 files - OAuth setup scripts (completed, historical)
 - **tests/**: 4 files - Test agents and debugging tools
 - **working/**: 8 files - TDD orchestrators, specialists (experimental)
 
 #### **Campaign-Specific Single-Use Scripts**
+
 - `find-house-pop-stations.js`, `target-bestial-stations.js`, etc.
 - **Status**: One-time research scripts for specific campaigns
 - **Automation Potential**: ❌ Not suitable
 
 #### **Parked Features** (`tools/agents/parked/`)
+
 - Future features not currently in use
 - **Automation Potential**: ❌ Not ready
 
@@ -261,30 +262,30 @@
 
 ### **TIME-BASED SCHEDULE**
 
-| Frequency | Agent | Time Savings | Priority |
-|-----------|-------|--------------|----------|
-| **Hourly** | `liberty-autopilot.js` | 2-3 hrs/week | 🔥 HIGH |
-| **Daily** | `enrich-all-contacts.js` | 5-8 hrs/week | 🔥 CRITICAL |
-| **Daily** | `get-real-campaign-data.js` | 1 hr/day | 🟡 MEDIUM |
-| **Daily** | `newsletter-automation-agent.js` (Mon) | 3-4 hrs/week | 🔥 HIGH |
-| **Daily** | `social-media-scheduler.js` (generate) | 5-8 hrs/week | 🔥 HIGH |
-| **Daily** | `newsjacking-agent.js` (morning) | 2 hrs/day | 🟡 MEDIUM |
-| **Daily** | `analytics-agent.js` (morning report) | 1-2 hrs/week | 🟡 MEDIUM |
-| **Weekly** | `clean-airtable-contacts.js` | 1 hr/week | 🟡 MEDIUM |
-| **Weekly** | `station-discovery-system.js` | 2 hrs/month | 🟡 MEDIUM |
-| **Monthly** | `liberty-label-cleanup.js` | 30min/month | 🟢 LOW |
+| Frequency   | Agent                                  | Time Savings | Priority    |
+| ----------- | -------------------------------------- | ------------ | ----------- |
+| **Hourly**  | `liberty-autopilot.js`                 | 2-3 hrs/week | 🔥 HIGH     |
+| **Daily**   | `enrich-all-contacts.js`               | 5-8 hrs/week | 🔥 CRITICAL |
+| **Daily**   | `get-real-campaign-data.js`            | 1 hr/day     | 🟡 MEDIUM   |
+| **Daily**   | `newsletter-automation-agent.js` (Mon) | 3-4 hrs/week | 🔥 HIGH     |
+| **Daily**   | `social-media-scheduler.js` (generate) | 5-8 hrs/week | 🔥 HIGH     |
+| **Daily**   | `newsjacking-agent.js` (morning)       | 2 hrs/day    | 🟡 MEDIUM   |
+| **Daily**   | `analytics-agent.js` (morning report)  | 1-2 hrs/week | 🟡 MEDIUM   |
+| **Weekly**  | `clean-airtable-contacts.js`           | 1 hr/week    | 🟡 MEDIUM   |
+| **Weekly**  | `station-discovery-system.js`          | 2 hrs/month  | 🟡 MEDIUM   |
+| **Monthly** | `liberty-label-cleanup.js`             | 30min/month  | 🟢 LOW      |
 
 **Total Time Savings Potential**: **25-35 hours/week**
 
 ### **EVENT-TRIGGERED AUTOMATION**
 
-| Trigger Event | Agent | Manual Effort | Priority |
-|---------------|-------|---------------|----------|
-| New contact imported | `enrich-kyara-contacts.js` | 15min/contact | 🔥 HIGH |
-| New contact imported | `update-fields-from-enrichment.js` | 10min/contact | 🔥 HIGH |
-| New campaign created | `add-kyara-to-mailchimp.js` | 30min/campaign | 🟡 MEDIUM |
-| New Airtable record | `auto-tag-genres.js` | 5min/record | 🟡 MEDIUM |
-| Campaign started | Campaign-specific pitch agents | 2-3 hrs/campaign | 🔥 HIGH |
+| Trigger Event        | Agent                              | Manual Effort    | Priority  |
+| -------------------- | ---------------------------------- | ---------------- | --------- |
+| New contact imported | `enrich-kyara-contacts.js`         | 15min/contact    | 🔥 HIGH   |
+| New contact imported | `update-fields-from-enrichment.js` | 10min/contact    | 🔥 HIGH   |
+| New campaign created | `add-kyara-to-mailchimp.js`        | 30min/campaign   | 🟡 MEDIUM |
+| New Airtable record  | `auto-tag-genres.js`               | 5min/record      | 🟡 MEDIUM |
+| Campaign started     | Campaign-specific pitch agents     | 2-3 hrs/campaign | 🔥 HIGH   |
 
 ---
 
@@ -295,6 +296,7 @@
 **Current Integration**: ❌ None found
 
 **Potential Agents**:
+
 - None of the existing agents directly reference tracker app
 - **Opportunity**: Build agent to sync tracker data to Command Centre
 
@@ -307,6 +309,7 @@
 **Current Integration**: ✅ STRONG (Airtable backend)
 
 **Integrated Agents**:
+
 1. `enrich-all-contacts.js` - Core enrichment pipeline
 2. `enrich-kyara-contacts.js` - Campaign-specific enrichment
 3. `update-fields-from-enrichment.js` - Field updates
@@ -317,6 +320,7 @@
 8. `airtable-audio-intel-integration.js` - Direct integration
 
 **Data Flow**:
+
 ```
 Audio Intel Upload → Airtable → Enrichment Agents → Updated Records → Audio Intel Display
 ```
@@ -330,6 +334,7 @@ Audio Intel Upload → Airtable → Enrichment Agents → Updated Records → Au
 **Current Integration**: ❌ None found
 
 **Potential Agents**:
+
 - None of the existing agents reference pitch generator
 - **Opportunity**: Campaign pitch automation using existing campaign agents
 
@@ -360,6 +365,7 @@ Audio Intel Upload → Airtable → Enrichment Agents → Updated Records → Au
    - Lead gen (new stations discovered, contacts added)
 
 **Data to Track on Command Centre**:
+
 - ✅ Contact enrichment queue (X contacts pending)
 - ✅ Daily enrichment count (automated overnight)
 - ✅ Newsletter subscriber count + last sent date
@@ -376,25 +382,26 @@ Audio Intel Upload → Airtable → Enrichment Agents → Updated Records → Au
 
 ### **External APIs & Services**
 
-| Service | API Keys Required | Usage in Agents | Rate Limits | Cost |
-|---------|-------------------|-----------------|-------------|------|
-| **Airtable** | `AIRTABLE_API_KEY` | 56 agents | 5 req/sec | Free tier |
-| **Anthropic Claude** | `ANTHROPIC_API_KEY` | 9 agents | Standard | $0.003/req |
-| **Mailchimp** | `MAILCHIMP_API_KEY` | 18 agents | 10 req/sec | Free tier |
-| **WARM API** | `WARM_API_TOKEN` | 2 agents | Unknown | Trial access |
-| **Gmail** | OAuth tokens | 12 agents | 250 quota units/user/sec | Free |
-| **Google Drive** | OAuth tokens | MCP integration | Standard | Free |
-| **Notion** | OAuth tokens | MCP integration | Standard | Free |
-| **Puppeteer** | None | MCP integration | None | Free |
-| **ConvertKit** | `CONVERTKIT_API_KEY` | 1 agent | Standard | Paid plan |
-| **NewsAPI** | `NEWS_API_KEY` | 1 agent | 100 req/day (free) | Free/Paid |
-| **Perplexity** | `PERPLEXITY_API_KEY` | Potential | Standard | Paid |
-| **Monday.com** | `MONDAY_API_KEY` | 4 agents | Standard | Paid plan |
-| **Typeform** | `TYPEFORM_API_KEY` | 1 agent | Standard | Free tier |
+| Service              | API Keys Required    | Usage in Agents | Rate Limits              | Cost         |
+| -------------------- | -------------------- | --------------- | ------------------------ | ------------ |
+| **Airtable**         | `AIRTABLE_API_KEY`   | 56 agents       | 5 req/sec                | Free tier    |
+| **Anthropic Claude** | `ANTHROPIC_API_KEY`  | 9 agents        | Standard                 | $0.003/req   |
+| **Mailchimp**        | `MAILCHIMP_API_KEY`  | 18 agents       | 10 req/sec               | Free tier    |
+| **WARM API**         | `WARM_API_TOKEN`     | 2 agents        | Unknown                  | Trial access |
+| **Gmail**            | OAuth tokens         | 12 agents       | 250 quota units/user/sec | Free         |
+| **Google Drive**     | OAuth tokens         | MCP integration | Standard                 | Free         |
+| **Notion**           | OAuth tokens         | MCP integration | Standard                 | Free         |
+| **Puppeteer**        | None                 | MCP integration | None                     | Free         |
+| **ConvertKit**       | `CONVERTKIT_API_KEY` | 1 agent         | Standard                 | Paid plan    |
+| **NewsAPI**          | `NEWS_API_KEY`       | 1 agent         | 100 req/day (free)       | Free/Paid    |
+| **Perplexity**       | `PERPLEXITY_API_KEY` | Potential       | Standard                 | Paid         |
+| **Monday.com**       | `MONDAY_API_KEY`     | 4 agents        | Standard                 | Paid plan    |
+| **Typeform**         | `TYPEFORM_API_KEY`   | 1 agent         | Standard                 | Free tier    |
 
 ### **Environment Variables Needed**
 
 **Critical (Already Set)**:
+
 ```bash
 AIRTABLE_API_KEY=pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec
 ANTHROPIC_API_KEY=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
@@ -403,6 +410,7 @@ TYPEFORM_API_KEY=tfp_FNjg2X7QkW3MkWqY5xr2pCL9ADyTjEKExmgvbhoAvrd3_3mPGrSWR3HxkHn
 ```
 
 **Needed for Full Automation**:
+
 ```bash
 WARM_API_TOKEN=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5ERXpOakZFUTBVMVJrTkVSRGN6T1RGRk1qUkNRVGsxUVROQlJrRkRSRFF6TURVMU5rRXlSZyJ9...
 MONDAY_API_KEY=your_monday_api_key
@@ -414,6 +422,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **OAuth Credentials Required**
 
 **Gmail/Google Services**:
+
 - ✅ OAuth setup complete: `tools/agents/radio-promo/gmail-token.json`
 - ✅ Client ID: `309298460159-relob8rbr4qpr6bduso8i6pr2egjfm0k.apps.googleusercontent.com`
 - ✅ Client Secret: `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`
@@ -421,6 +430,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - ⚠️ Expires: Refresh tokens valid indefinitely (but can be revoked)
 
 **MCP Servers**:
+
 - ✅ Notion: Connected
 - ✅ Puppeteer: Connected
 - ✅ Gmail: MCP integration available
@@ -429,17 +439,21 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **Rate Limit Considerations**
 
 **Airtable**: 5 requests/second
+
 - **Impact**: Enrichment agents must throttle
 - **Solution**: Batch processing with delays
 
 **Claude API**: Standard rate limits
+
 - **Impact**: Enrichment agents need retry logic
 - **Cost**: $0.003 per contact enrichment (~$3 per 1000 contacts)
 
 **Mailchimp**: 10 requests/second
+
 - **Impact**: Minimal, current usage well within limits
 
 **Gmail API**: 250 quota units/user/second
+
 - **Impact**: Autopilot hourly runs are fine
 - **Solution**: No changes needed
 
@@ -450,6 +464,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **🔥 CRITICAL PRIORITY** (Immediate Revenue Impact)
 
 **Rank 1: Contact Enrichment Pipeline**
+
 - **Agents**: `enrich-all-contacts.js`, `update-fields-from-enrichment.js`
 - **Schedule**: Daily overnight (2am UK time)
 - **Time Saved**: 5-8 hours/week
@@ -463,6 +478,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
   ```
 
 **Rank 2: Gmail Autopilot**
+
 - **Agent**: `liberty-autopilot.js`
 - **Schedule**: Hourly
 - **Time Saved**: 2-3 hours/week
@@ -476,6 +492,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
   ```
 
 **Rank 3: Newsletter Automation**
+
 - **Agent**: `newsletter-automation-agent.js`
 - **Schedule**: Weekly (Monday 9am)
 - **Time Saved**: 3-4 hours/week
@@ -489,6 +506,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **🟡 HIGH PRIORITY** (Customer Acquisition Support)
 
 **Rank 4: Social Media Content Calendar**
+
 - **Agent**: `social-media-scheduler.js`
 - **Schedule**: Weekly regeneration (Sunday evening)
 - **Time Saved**: 5-8 hours/week (if posting automated)
@@ -498,6 +516,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - **Implementation**: Generate calendar, manual posting from CSV
 
 **Rank 5: Audio Intel Content Generation**
+
 - **Agent**: `audio-intel-content-agent.js`
 - **Schedule**: Weekly (Tuesday mornings)
 - **Time Saved**: 2-3 hours/week
@@ -506,6 +525,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - **Blockers**: None
 
 **Rank 6: Real-time Campaign Data**
+
 - **Agent**: `get-real-campaign-data.js`
 - **Schedule**: Daily (morning)
 - **Time Saved**: 1 hour/day
@@ -518,6 +538,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **🟢 MEDIUM PRIORITY** (Operational Efficiency)
 
 **Rank 7: Newsjacking/Content Research**
+
 - **Agent**: `newsjacking-agent.js`
 - **Schedule**: Daily (morning)
 - **Time Saved**: 2 hours/day
@@ -526,6 +547,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - **Blockers**: None
 
 **Rank 8: Analytics Dashboard**
+
 - **Agent**: `analytics-agent.js`
 - **Schedule**: Daily (morning report)
 - **Time Saved**: 1-2 hours/week
@@ -534,6 +556,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - **Blockers**: Integration with Command Centre needed
 
 **Rank 9: Mailchimp Sync**
+
 - **Agent**: `sync-both-mailchimp-accounts.js`
 - **Schedule**: Daily
 - **Time Saved**: 30min/day
@@ -542,6 +565,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - **Blockers**: None
 
 **Rank 10: Data Quality Cleanup**
+
 - **Agent**: `clean-airtable-contacts.js`
 - **Schedule**: Weekly
 - **Time Saved**: 1 hour/week
@@ -554,6 +578,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **🟢 LOW PRIORITY** (Nice to Have)
 
 **Rank 11-15**: Station discovery, label cleanup, usage monitoring
+
 - **Time Saved**: <1 hour/week each
 - **Revenue Impact**: LOW - Maintenance tasks
 - **Automation**: Can wait until Ranks 1-10 automated
@@ -589,6 +614,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ```
 
 **Data Points**:
+
 - Total contacts in Airtable
 - Contacts enriched (with Claude intelligence)
 - Contacts pending enrichment
@@ -599,6 +625,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - Next scheduled run
 
 **Data Source**:
+
 - `enrich-all-contacts.js` writes to JSON status file
 - Command Centre polls status file every 5min
 - Webhook on completion
@@ -632,6 +659,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ```
 
 **Data Points**:
+
 - Autopilot status (running/stopped/error)
 - Last run timestamp
 - Emails processed today (by category)
@@ -641,6 +669,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - Error log (if any)
 
 **Data Source**:
+
 - Parse `autopilot.log` file
 - Real-time webhook on each run
 - Error alerts to Chris
@@ -672,6 +701,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ```
 
 **Data Points**:
+
 - Total subscribers (with weekly growth)
 - Progress to target (500 subscribers)
 - Last newsletter sent (date, time)
@@ -681,6 +711,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - Approval needed alert
 
 **Data Source**:
+
 - ConvertKit API for subscriber count
 - `newsletter-automation-agent.js` status
 - Webhook on draft generation
@@ -715,6 +746,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ```
 
 **Data Points**:
+
 - Current week theme
 - Posts scheduled by day
 - Posts published today (with timestamps)
@@ -723,6 +755,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - Calendar regeneration date
 
 **Data Source**:
+
 - `social-media-scheduler.js` calendar JSON
 - Manual posting log (CSV tracking)
 - Future: Platform API webhooks
@@ -758,6 +791,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ```
 
 **Data Points**:
+
 - New stations discovered (weekly)
 - New contacts imported (weekly)
 - High-quality leads identified
@@ -766,6 +800,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - Last discovery run timestamp
 
 **Data Source**:
+
 - `station-discovery-system.js` output
 - Airtable contact counts
 - `enrich-all-contacts.js` quality scores
@@ -797,6 +832,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ```
 
 **Data Points**:
+
 - Active campaigns
 - Total plays per campaign
 - Plays today (delta)
@@ -805,6 +841,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - Last update timestamp
 
 **Data Source**:
+
 - `get-real-campaign-data.js` daily runs
 - WARM API integration
 
@@ -836,6 +873,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ```
 
 **Data Points**:
+
 - Agent health status (green/yellow/red)
 - Last run timestamps for each agent
 - API usage counts
@@ -844,6 +882,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - Token expiration warnings
 
 **Data Source**:
+
 - `agent-os-dashboard.js` health checks
 - API response tracking
 - Cost calculation based on usage
@@ -853,6 +892,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **Alerts & Notifications**
 
 **Email/Slack Alerts** (sent to Chris):
+
 - ⚠️ Enrichment agent failed (with error details)
 - ⚠️ Gmail autopilot stopped (needs manual restart)
 - ⚠️ Newsletter draft ready for review
@@ -868,6 +908,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **A. Auto Contact Enrichment Workflows**
 
 **Current Manual Process**:
+
 1. Import contacts to Airtable (via Audio Intel or CSV)
 2. Manually run enrichment script
 3. Review enrichment results
@@ -875,6 +916,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 5. Clean up duplicates/invalid entries
 
 **Automated Workflow**:
+
 ```
 1. [EVENT] New contact imported to Airtable
    ↓
@@ -902,6 +944,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 **Blockers**: None - ready to automate
 
 **Implementation Steps**:
+
 1. Set up Airtable webhook for new records
 2. Create webhook receiver on Command Centre
 3. Trigger enrichment agent on webhook
@@ -913,6 +956,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **B. Auto Lead Gen Research Processes**
 
 **Current Manual Process**:
+
 1. Search WARM API for new stations
 2. Extract contact information
 3. Research station format/genres
@@ -920,6 +964,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 5. Categorize by quality
 
 **Automated Workflow**:
+
 ```
 1. [SCHEDULE] Weekly (Sunday 11pm)
    ↓
@@ -950,6 +995,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 **Blockers**: None - WARM API token available
 
 **Implementation Steps**:
+
 1. Schedule weekly discovery run
 2. Integrate with enrichment pipeline
 3. Auto-import to Airtable
@@ -960,10 +1006,12 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **C. Social Media Posting Agents**
 
 **Current Status**:
+
 - ✅ Calendar generation automated
 - ❌ Posting NOT automated (platform APIs needed)
 
 **Semi-Automated Workflow** (Current Best Option):
+
 ```
 1. [SCHEDULE] Weekly (Sunday 8pm)
    ↓
@@ -981,6 +1029,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ```
 
 **Future Full Automation** (needs platform APIs):
+
 ```
 1. [SCHEDULE] Weekly calendar generation
    ↓
@@ -999,12 +1048,14 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ```
 
 **Blockers**:
+
 - Twitter API costs ($100/month minimum)
 - LinkedIn API requires company page admin
 - Bluesky API available (free)
 - Threads API limited availability
 
 **Recommendation**:
+
 - **Phase 1** (NOW): Semi-automated via Buffer/Hootsuite
 - **Phase 2** (After first £500/month): Invest in platform APIs
 
@@ -1013,11 +1064,13 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **D. Reporting/Analytics Agents**
 
 **Current Agents**:
+
 1. `analytics-agent.js` - Business metrics
 2. `get-real-campaign-data.js` - WARM campaign data
 3. `agent-os-dashboard.js` - System health
 
 **Automated Reporting Workflow**:
+
 ```
 1. [SCHEDULE] Daily (8am)
    ↓
@@ -1048,6 +1101,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ```
 
 **Data to Track**:
+
 - Audio Intel signups (Free, Pro, Agency)
 - Newsletter subscriber count + growth
 - Airtable contact count + quality distribution
@@ -1070,33 +1124,39 @@ PERPLEXITY_API_KEY=your_perplexity_key
 #### **Agent-Specific Blockers**
 
 **1. Contact Enrichment Pipeline** ✅ NO BLOCKERS
+
 - Status: READY FOR AUTOMATION
 - Dependencies: All API keys present
 - Reliability: Error handling exists
 - Action: Set up cron job
 
 **2. Gmail Autopilot** ✅ NO BLOCKERS
+
 - Status: READY FOR AUTOMATION
 - Dependencies: OAuth tokens valid
 - Reliability: Logs to file, graceful failures
 - Action: Set up cron job
 
 **3. Newsletter Automation** ⚠️ MANUAL REVIEW NEEDED
+
 - Blocker: Content needs Chris approval before sending
 - Solution: Auto-generate draft, alert Chris for review
 - Workflow: Generate → Notify → Manual send
 
 **4. Social Media Calendar** ⚠️ PLATFORM APIS NEEDED
+
 - Blocker: No platform APIs integrated
 - Solution: Export to Buffer/Hootsuite for posting
 - Alternative: Build API integrations (costs $100+/month)
 
 **5. Campaign Data Fetching** ⚠️ WARM TOKEN EXPIRY
+
 - Blocker: WARM trial access expires (250 songs limit)
 - Solution: Purchase WARM subscription or find alternative
 - Workaround: Manual campaign tracking
 
 **6. Lead Gen Research** ✅ NO BLOCKERS
+
 - Status: READY FOR AUTOMATION
 - Dependencies: WARM API token available
 - Action: Schedule weekly runs
@@ -1106,6 +1166,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **System-Wide Issues**
 
 #### **1. Manual Oversight Required For**
+
 - Newsletter content approval (editorial quality)
 - Social media posting (brand voice consistency)
 - High-value contact enrichment review (BBC/major stations)
@@ -1113,6 +1174,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - Email template personalization (relationship-based)
 
 **Solution**:
+
 - Automate generation + research
 - Manual review + approval for sending
 - Alerts on draft ready
@@ -1122,12 +1184,14 @@ PERPLEXITY_API_KEY=your_perplexity_key
 #### **2. API Cost Concerns**
 
 **Current Monthly Costs**:
+
 - Claude Sonnet 4.5: ~£37/month (12,000 contacts × £0.003)
 - Airtable: FREE (under 1,200 records)
 - Mailchimp: FREE (under 500 subscribers)
 - MCP Servers: FREE (all open source)
 
 **Projected Costs at Scale**:
+
 - Claude: £150/month (50,000 contacts enriched)
 - Perplexity: £15/month (if used for enrichment)
 - Twitter API: £100/month (Enterprise tier)
@@ -1136,6 +1200,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 **Total**: ~£290/month at full automation scale
 
 **Mitigation**:
+
 - Phase automation based on revenue (£500/month first)
 - Monitor API costs daily
 - Set up cost alerts (> £50/day)
@@ -1146,26 +1211,31 @@ PERPLEXITY_API_KEY=your_perplexity_key
 #### **3. What Would Break if Run Unsupervised**
 
 **Newsletter Automation**:
+
 - **Risk**: Sends content with factual errors or poor quality
 - **Impact**: Brand damage, unsubscribes
 - **Solution**: ALWAYS manual review before send
 
 **Gmail Autopilot**:
+
 - **Risk**: Mis-categorizes important client emails
 - **Impact**: Missed campaign assignments, client issues
 - **Solution**: Log all actions, daily review of moves
 
 **Contact Enrichment**:
+
 - **Risk**: Claude hallucinates contact information
 - **Impact**: Bad data in Audio Intel, wasted outreach
 - **Solution**: Quality score confidence threshold (> 80%)
 
 **Social Media Posting** (if fully automated):
+
 - **Risk**: Posts content with tone/timing issues
 - **Impact**: Brand damage, audience confusion
 - **Solution**: Manual posting or Buffer review workflow
 
 **Campaign Pitch Automation**:
+
 - **Risk**: Generic pitches to high-value contacts (BBC, etc.)
 - **Impact**: Relationship damage, blacklisting
 - **Solution**: NEVER automate high-value relationship pitches
@@ -1175,17 +1245,20 @@ PERPLEXITY_API_KEY=your_perplexity_key
 #### **4. Manual Steps Still Required**
 
 **Daily**:
+
 - Review newsletter drafts (15min)
 - Approve social media calendar (10min)
 - Check Gmail autopilot log (5min)
 - Review high-quality enrichment results (10min)
 
 **Weekly**:
+
 - Review analytics report (30min)
 - Adjust content strategy based on performance (1hr)
 - Manual posting of social content (Buffer import: 15min)
 
 **Monthly**:
+
 - Review automation costs vs budget (30min)
 - Audit contact data quality (1hr)
 - Refresh content library (social posts, newsletter topics) (2hrs)
@@ -1201,6 +1274,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 **Goal**: Automate highest-impact, zero-blocker agents
 
 **Actions**:
+
 1. ✅ Set up cron job: `liberty-autopilot.js` (hourly)
    - Time saved: 2-3 hrs/week
    - Implementation: 30min
@@ -1227,6 +1301,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 **Goal**: Build status dashboard for automation visibility
 
 **Actions**:
+
 1. ✅ Deploy `agent-os-dashboard.js` to command.totalaudiopromo.com
    - Web service showing agent health
    - Implementation: 4hrs (Next.js API route)
@@ -1253,6 +1328,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 **Goal**: Automate content generation and lead research
 
 **Actions**:
+
 1. ✅ Set up weekly newsletter generation
    - `newsletter-automation-agent.js` (Monday 8am)
    - Generate draft → Email Chris for review
@@ -1281,6 +1357,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 **Goal**: Daily business intelligence automation
 
 **Actions**:
+
 1. ✅ Set up daily campaign data fetching
    - `get-real-campaign-data.js` (daily 8am)
    - Write to Command Centre
@@ -1308,6 +1385,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 **Goal**: Optimize, monitor, and scale automation
 
 **Actions**:
+
 1. ✅ Add error alerting (email/Slack on failures)
 2. ✅ Implement cost tracking and alerts
 3. ✅ Build retry logic for failed enrichments
@@ -1335,6 +1413,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **Key Findings**
 
 **Ready for Immediate Automation** (8 agents):
+
 1. Contact enrichment pipeline (CRITICAL - £3/day cost)
 2. Gmail autopilot (HIGH - 2hrs/week saved)
 3. Newsletter generation (HIGH - 3hrs/week, needs review)
@@ -1351,23 +1430,28 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **Recommended First Steps** (This Week)
 
 **Monday**:
+
 1. Set up cron job: `liberty-autopilot.js` (30min)
 2. Test overnight run, check log next morning (5min)
 
 **Tuesday**:
+
 1. Set up cron job: `enrich-all-contacts.js` (1hr)
 2. Run test enrichment on 10 contacts (15min)
 3. Verify Airtable updates (10min)
 
 **Wednesday**:
+
 1. Set up weekly: `clean-airtable-contacts.js` (15min)
 2. Create status JSON logging for agents (2hrs)
 
 **Thursday**:
+
 1. Build Command Centre status dashboard (4hrs)
 2. Deploy to command.totalaudiopromo.com (1hr)
 
 **Friday**:
+
 1. Test full automation workflow (1hr)
 2. Document cron jobs + failure recovery (1hr)
 3. Set up email alerts for failures (30min)
@@ -1380,17 +1464,20 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **Success Metrics**
 
 **Week 1**:
+
 - ✅ 3 agents automated (Gmail, Enrichment, Cleanup)
 - ✅ Command Centre live with basic status
 - ✅ 8-12 hours/week saved
 
 **Week 4**:
+
 - ✅ 8 agents automated
 - ✅ Full Command Centre dashboard
 - ✅ 21-25 hours/week saved
 - ✅ Daily email reports
 
 **Month 2**:
+
 - ✅ 0 agent failures without recovery
 - ✅ £3-5/day enrichment costs (predictable)
 - ✅ 85% of repetitive tasks automated
@@ -1401,17 +1488,20 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ### **Risk Mitigation**
 
 **What if automation breaks?**
+
 - Daily email summary includes health checks
 - Command Centre shows last run timestamps
 - Failure alerts via email/Slack
 - All agents log to files for debugging
 
 **What if costs spiral?**
+
 - Daily cost tracking on Command Centre
 - Alert if Claude usage > £5/day
 - Manual approval for large enrichment batches
 
 **What if data quality drops?**
+
 - Weekly data quality score on Command Centre
 - Alert if < 85% High/Medium quality
 - Monthly audit of enrichment accuracy
@@ -1421,6 +1511,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 ## 📋 APPENDIX: AGENT COMMAND REFERENCE
 
 ### **Contact Enrichment**
+
 ```bash
 # Enrich all contacts (overnight batch)
 node tools/agents/radio-promo/enrich-all-contacts.js
@@ -1436,6 +1527,7 @@ node tools/agents/radio-promo/clean-airtable-contacts.js
 ```
 
 ### **Gmail Automation**
+
 ```bash
 # Run autopilot (hourly cron)
 node tools/agents/gmail-setup/liberty-autopilot.js run
@@ -1448,6 +1540,7 @@ node tools/agents/gmail-setup/liberty-label-cleanup.js
 ```
 
 ### **Content & Newsletter**
+
 ```bash
 # Generate newsletter
 node tools/agents/core-agents/content/newsletter-automation-agent.js
@@ -1460,6 +1553,7 @@ node tools/agents/core-agents/content/newsjacking-agent.js
 ```
 
 ### **Lead Generation**
+
 ```bash
 # Discover new stations
 node tools/agents/radio-promo/station-discovery-system.js
@@ -1469,6 +1563,7 @@ node tools/agents/radio-promo/get-real-campaign-data.js
 ```
 
 ### **Analytics**
+
 ```bash
 # Business analytics
 node tools/agents/core-agents/business/analytics-agent.js

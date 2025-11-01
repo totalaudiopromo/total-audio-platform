@@ -9,6 +9,7 @@
 ## ✅ PRE-DEPLOYMENT CHECKLIST
 
 ### Code & Features Complete
+
 - [x] All 18 PSEO pages live (13,850+ monthly search volume)
 - [x] Google Analytics (GTM-WZNJWDKH) integrated
 - [x] Sitemap.ts and robots.txt configured
@@ -20,6 +21,7 @@
 - [x] Committed and pushed to GitHub
 
 ### Environment Variables Ready
+
 - [x] Supabase credentials (shared with other apps)
 - [x] Stripe live keys (ready for payments)
 - [x] Anthropic API key (for Campaign Intelligence)
@@ -160,12 +162,14 @@ Check these URLs work:
 Track these target keywords (using Ahrefs/SEMrush/manual):
 
 **Tier 1 (High Priority):**
+
 - "Spotify playlist campaign tracking" (2,800/month)
 - "music PR campaign analytics" (2,200/month)
 - "BBC Radio 1 campaign tracking" (1,500/month)
 - "Apple Music playlist analytics" (1,800/month)
 
 **Expected Timeline:**
+
 - Week 2-4: Pages indexed
 - Week 4-8: Rankings 20-50
 - Week 8-12: Rankings 10-20
@@ -173,12 +177,12 @@ Track these target keywords (using Ahrefs/SEMrush/manual):
 
 ### Traffic Targets (6 Months)
 
-| Month | Organic Visitors | Newsletter Subscribers | Free Signups | Paying Customers |
-|-------|-----------------|------------------------|--------------|------------------|
-| Month 1 | 100-200 | 50 | 5 | 1 |
-| Month 2 | 300-500 | 150 | 15 | 3 |
-| Month 3 | 600-1,000 | 300 | 30 | 6 |
-| Month 6 | 2,000-4,000 | 1,000 | 100 | 20 |
+| Month   | Organic Visitors | Newsletter Subscribers | Free Signups | Paying Customers |
+| ------- | ---------------- | ---------------------- | ------------ | ---------------- |
+| Month 1 | 100-200          | 50                     | 5            | 1                |
+| Month 2 | 300-500          | 150                    | 15           | 3                |
+| Month 3 | 600-1,000        | 300                    | 30           | 6                |
+| Month 6 | 2,000-4,000      | 1,000                  | 100          | 20               |
 
 ---
 
@@ -226,6 +230,7 @@ In Stripe Dashboard → Products:
 **Symptoms**: Pages not appearing in Google Search Console
 
 **Fix**:
+
 1. Check `sitemap.xml` includes all pages
 2. Verify `robots.txt` allows crawling (`allow: /blog/`)
 3. Manually request indexing in Search Console
@@ -236,6 +241,7 @@ In Stripe Dashboard → Products:
 **Symptoms**: No page views in GA4
 
 **Fix**:
+
 1. Verify GTM container ID is correct (GTM-WZNJWDKH)
 2. Check browser console for GTM errors
 3. Use GTM Preview mode to debug
@@ -246,6 +252,7 @@ In Stripe Dashboard → Products:
 **Symptoms**: "Stripe is not defined" error
 
 **Fix**:
+
 1. Verify `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` in Vercel env vars
 2. Check API key starts with `pk_live_`
 3. Verify webhook secret is set
@@ -269,24 +276,28 @@ After deployment, test on real devices:
 ## 🎯 SUCCESS CRITERIA
 
 **Day 1:**
+
 - [x] tracker.totalaudiopromo.com resolves correctly
 - [x] All pages load without errors
 - [x] Google Analytics tracking page views
 - [x] Sitemap submitted to Search Console
 
 **Week 1:**
+
 - [ ] 18 PSEO pages indexed by Google
 - [ ] First newsletter sent to early subscribers
 - [ ] Cross-tool integration working (Audio Intel ↔ Tracker)
 - [ ] First free trial signup
 
 **Month 1:**
+
 - [ ] 100-200 organic visitors
 - [ ] 50+ newsletter subscribers
 - [ ] 5+ free trial signups
 - [ ] First paying customer (£19 or £49)
 
 **Month 3:**
+
 - [ ] Top 10 rankings for 3+ target keywords
 - [ ] 600-1,000 monthly organic visitors
 - [ ] 30+ free trial signups
@@ -333,6 +344,7 @@ Everything is in place for tracker.totalaudiopromo.com:
 ---
 
 **Questions?** Check:
+
 - [NEWSLETTER_STRATEGY.md](./docs/NEWSLETTER_STRATEGY.md) - ConvertKit integration details
 - [PSEO_STRATEGY_TRACKER.md](./docs/reference/PSEO_STRATEGY_TRACKER.md) - Full 60-page content plan
 - [.env.local](./.env.local) - Current environment variables (copy to Vercel)

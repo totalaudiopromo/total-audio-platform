@@ -3,7 +3,7 @@
 // Bulk import campaigns from spreadsheet data
 // ============================================================================
 
-import { createServerClient } from '@total-audio/core-db/server'
+import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
@@ -40,7 +40,9 @@ function isValidDate(dateString: string | undefined): boolean {
 // ============================================================================
 export async function POST(request: Request) {
   const supabase = await createServerClient(cookies());
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
     return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
@@ -85,7 +87,9 @@ export async function POST(request: Request) {
     const validStatuses = ['planning', 'active', 'completed'];
     let status = row.status?.toLowerCase() || 'planning';
     if (!validStatuses.includes(status)) {
-      errors.push(`Row ${rowNumber}: Invalid status "${row.status}" - using "planning"`);
+      errors.push(
+        `Row ${rowNumber}: Invalid status "${row.status}" - using "planning"`
+      );
       status = 'planning';
     }
 
@@ -113,19 +117,22 @@ export async function POST(request: Request) {
     if (row.start_date && isValidDate(row.start_date)) {
       startDate = row.start_date;
     } else if (row.start_date) {
-      errors.push(`Row ${rowNumber}: Invalid start_date format - should be YYYY-MM-DD`);
+      errors.push(
+        `Row ${rowNumber}: Invalid start_date format - should be YYYY-MM-DD`
+      );
     }
 
     if (row.end_date && isValidDate(row.end_date)) {
       endDate = row.end_date;
     } else if (row.end_date) {
-      errors.push(`Row ${rowNumber}: Invalid end_date format - should be YYYY-MM-DD`);
+      errors.push(
+        `Row ${rowNumber}: Invalid end_date format - should be YYYY-MM-DD`
+      );
     }
 
     // Insert campaign
-    const { error: insertError } = await supabase
-      .from('campaigns')
-      .insert([{
+    const { error: insertError } = await supabase.from('campaigns').insert([
+      {
         user_id: user.id,
         name: row.name.trim(),
         artist_name: row.artist_name?.trim() || null,
@@ -142,7 +149,8 @@ export async function POST(request: Request) {
         cost_per_result: costPerResult,
         performance_score: 0,
         percentile_rank: 0,
-      }]);
+      },
+    ]);
 
     if (insertError) {
       errors.push(`Row ${rowNumber} (${row.name}): ${insertError.message}`);

@@ -53,7 +53,7 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
         id: '1',
         type: 'bot',
         content: "Hi! I'm here to help. Ask me anything about Audio Intel.",
-        timestamp: new Date()
+        timestamp: new Date(),
       };
       setMessages([welcomeMessage]);
     }
@@ -66,7 +66,7 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
       id: Date.now().toString(),
       type: 'user',
       content: inputValue,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
 
     setMessages(prev => [...prev, userMessage]);
@@ -83,8 +83,8 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
         body: JSON.stringify({
           message: inputValue,
           userTier,
-          conversationHistory: messages.slice(-5) // Send last 5 messages for context
-        })
+          conversationHistory: messages.slice(-5), // Send last 5 messages for context
+        }),
       });
 
       const data = await response.json();
@@ -94,7 +94,7 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
           id: (Date.now() + 1).toString(),
           type: 'bot',
           content: data.reply,
-          timestamp: new Date()
+          timestamp: new Date(),
         };
         setMessages(prev => [...prev, botMessage]);
       }
@@ -103,8 +103,9 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'bot',
-        content: "I'm sorry, I'm having trouble connecting right now. Please try again or email us at support@totalaudiopromo.com",
-        timestamp: new Date()
+        content:
+          "I'm sorry, I'm having trouble connecting right now. Please try again or email us at support@totalaudiopromo.com",
+        timestamp: new Date(),
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
@@ -128,8 +129,8 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
           userTier === 'agency'
             ? 'bg-blue-600 hover:bg-blue-700'
             : userTier === 'professional'
-            ? 'bg-blue-600 hover:bg-blue-700'
-            : 'bg-green-600 hover:bg-green-700'
+              ? 'bg-blue-600 hover:bg-blue-700'
+              : 'bg-green-600 hover:bg-green-700'
         }`}
       >
         {isOpen ? <X className="w-5 h-5" /> : <MessageCircle className="w-5 h-5" />}
@@ -138,13 +139,15 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
       {/* Chat Window */}
       {isOpen && (
         <div className="fixed bottom-20 right-4 z-40 w-[calc(100vw-2rem)] sm:w-80 max-w-sm h-[380px] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-xl bg-white flex flex-col">
-          <div className={`${
-            userTier === 'agency' 
-              ? 'bg-blue-600' 
-              : userTier === 'professional'
-              ? 'bg-blue-600'
-              : 'bg-green-600'
-          } text-white rounded-t-lg px-3 py-2 border-b-2 border-black`}>
+          <div
+            className={`${
+              userTier === 'agency'
+                ? 'bg-blue-600'
+                : userTier === 'professional'
+                  ? 'bg-blue-600'
+                  : 'bg-green-600'
+            } text-white rounded-t-lg px-3 py-2 border-b-2 border-black`}
+          >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <MessageCircle className="w-5 h-5" />
@@ -158,10 +161,10 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
               </button>
             </div>
           </div>
-          
+
           {/* Messages Area */}
           <div className="flex-1 overflow-y-auto p-3 space-y-3 bg-gray-50">
-            {messages.map((message) => (
+            {messages.map(message => (
               <div
                 key={message.id}
                 className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
@@ -193,7 +196,7 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
               <input
                 type="text"
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={e => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Type a message..."
                 className="flex-1 h-9 px-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 bg-white"
@@ -203,11 +206,11 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
                 onClick={handleSendMessage}
                 disabled={!inputValue.trim() || isLoading}
                 className={`h-9 px-3 rounded-lg font-bold text-white text-sm ${
-                  userTier === 'agency' 
-                    ? 'bg-blue-600 hover:bg-blue-700' 
-                    : userTier === 'professional'
+                  userTier === 'agency'
                     ? 'bg-blue-600 hover:bg-blue-700'
-                    : 'bg-green-600 hover:bg-green-700'
+                    : userTier === 'professional'
+                      ? 'bg-blue-600 hover:bg-blue-700'
+                      : 'bg-green-600 hover:bg-green-700'
                 } disabled:opacity-50 disabled:cursor-not-allowed transition-colors`}
               >
                 <Send className="w-4 h-4" />

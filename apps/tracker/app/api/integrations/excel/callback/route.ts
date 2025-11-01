@@ -26,7 +26,11 @@ export async function GET(request: NextRequest) {
     }
 
     const oauthHandler = new OAuthHandler();
-    const { tokens, userId } = await oauthHandler.handleCallback('excel', code, state);
+    const { tokens, userId } = await oauthHandler.handleCallback(
+      'excel',
+      code,
+      state
+    );
     await oauthHandler.saveConnection(userId, 'excel', tokens);
 
     return NextResponse.redirect(

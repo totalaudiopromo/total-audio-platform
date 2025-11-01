@@ -16,6 +16,7 @@ This skill ensures experimental work in totalaud.io never affects production Aud
 ## When to Use
 
 Use this skill when:
+
 - Working in `/Users/chrisschofield/workspace/active/totalaud.io/`
 - Creating new experimental features
 - Testing wild AI agent ideas
@@ -23,6 +24,7 @@ Use this skill when:
 - Experimenting with architecture
 
 **Especially important when:**
+
 - Using shared resources (Supabase, APIs)
 - Creating new integrations
 - Testing with real data
@@ -31,6 +33,7 @@ Use this skill when:
 ## The Two Projects
 
 ### Total Audio Platform (Production)
+
 **Location**: `~/workspace/active/total-audio-platform/`
 **Status**: Customer acquisition phase
 **Rules**: Ship fast, no experiments, customer-focused
@@ -38,6 +41,7 @@ Use this skill when:
 **Risk Tolerance**: LOW (customer-facing)
 
 ### totalaud.io (Experimental)
+
 **Location**: `~/workspace/active/totalaud.io/`
 **Status**: Learning sandbox, innovation lab
 **Rules**: Experiment freely, break things, learn
@@ -58,23 +62,27 @@ Clear separation prevents "quick experiment" from breaking customer-facing featu
 ### Before Starting Experimental Work
 
 **1. Directory Verification:**
+
 - [ ] Confirm you're in `/totalaud.io/` directory
 - [ ] NOT in `/total-audio-platform/` directory
 - [ ] Git remote is separate repository
 
 **2. Dependency Isolation:**
+
 - [ ] No imports from `total-audio-platform` code
 - [ ] No shared components (copy if needed)
 - [ ] Separate package.json dependencies
 - [ ] No shared node_modules
 
 **3. Database Isolation:**
+
 - [ ] Experimental tables have clear prefix (`exp_`, `totalaud_`)
 - [ ] No writes to production tables (`contacts`, `users`, `enrichments`)
 - [ ] No production API keys in experimental code
 - [ ] Separate Supabase projects (or careful table namespacing)
 
 **4. API Isolation:**
+
 - [ ] Separate API keys for experimental services
 - [ ] No production Anthropic API key in experiments
 - [ ] Rate limits won't affect production
@@ -112,6 +120,7 @@ radio_contacts
 ## Environment Variables
 
 ### Production (.env in total-audio-platform)
+
 ```bash
 # Production keys - NEVER use in experiments
 NEXT_PUBLIC_SUPABASE_URL=https://ucncbighzqudaszewjrv.supabase.co
@@ -122,6 +131,7 @@ STRIPE_SECRET_KEY=<prod-stripe-key>
 ```
 
 ### Experimental (.env in totalaud.io)
+
 ```bash
 # Same Supabase, but different table access
 NEXT_PUBLIC_SUPABASE_URL=https://ucncbighzqudaszewjrv.supabase.co
@@ -132,6 +142,7 @@ NEXT_PUBLIC_APP_URL=https://totalaud.io
 ```
 
 **Key Safety:**
+
 - Supabase anon key: Safe (RLS protects tables)
 - Supabase service key: DANGER (bypasses RLS, could write to prod)
 - Anthropic API key: Use separate key (rate limits, costs)
@@ -143,8 +154,8 @@ NEXT_PUBLIC_APP_URL=https://totalaud.io
 
 ```typescript
 // totalaud.io importing from production
-import { enrichContact } from '@total-audio-platform/audio-intel/enrichment'
-import { ContactSchema } from '@total-audio-platform/core/schemas'
+import { enrichContact } from '@total-audio-platform/audio-intel/enrichment';
+import { ContactSchema } from '@total-audio-platform/core/schemas';
 
 // This creates dependency on production code!
 // If you change production, experiments break (and vice versa)
@@ -156,8 +167,8 @@ import { ContactSchema } from '@total-audio-platform/core/schemas'
 // totalaud.io with independent code
 // Copy the schema if you need it, don't import
 interface ExperimentalContact {
-  id: string
-  email: string
+  id: string;
+  email: string;
   // ... copied structure, not shared code
 }
 
@@ -170,6 +181,7 @@ interface AgentManifest {
 ## Deployment Isolation
 
 ### Production Deployment (Audio Intel)
+
 - **Platform**: Vercel
 - **URL**: https://intel.totalaudiopromo.com
 - **Branch**: `main` in total-audio-platform repo
@@ -177,6 +189,7 @@ interface AgentManifest {
 - **Impact**: Customer-facing, must work
 
 ### Experimental Deployment (totalaud.io)
+
 - **Platform**: Vercel
 - **URL**: https://totalaud.io
 - **Branch**: `main` in totalaud.io repo
@@ -188,6 +201,7 @@ interface AgentManifest {
 ## Red Flags - STOP Immediately
 
 If you catch yourself:
+
 - Importing code from `../total-audio-platform/`
 - Writing to production Supabase tables
 - Using production API keys in experiments
@@ -200,6 +214,7 @@ If you catch yourself:
 ## When to Move Experimental → Production
 
 **Only move to production if:**
+
 1. Experiment is validated and stable
 2. Customer need is proven (not just "cool idea")
 3. Code is rewritten for production quality (not copied)
@@ -207,6 +222,7 @@ If you catch yourself:
 5. Customer acquisition phase allows new features (post-£500/month)
 
 **Process:**
+
 1. Rewrite from scratch in production repo (don't copy experimental code)
 2. Add proper error handling, tests, monitoring
 3. Deploy to production Supabase tables (with migration)
@@ -216,6 +232,7 @@ If you catch yourself:
 ## Success Metrics
 
 **Isolation Health Check (Weekly):**
+
 - [ ] No experimental code in production repo
 - [ ] No production code in experimental repo
 - [ ] No cross-imports between projects
@@ -223,28 +240,31 @@ If you catch yourself:
 - [ ] No production table writes from experiments
 
 **Risk Indicators (Monthly):**
-- Incidents caused by experimental code: _____ (target: 0)
-- Production data affected by experiments: _____ (target: 0)
-- Customer-facing breaks from experiments: _____ (target: 0)
+
+- Incidents caused by experimental code: **\_** (target: 0)
+- Production data affected by experiments: **\_** (target: 0)
+- Customer-facing breaks from experiments: **\_** (target: 0)
 
 ## Common Rationalizations
 
-| Excuse | Reality |
-|--------|---------|
-| "Just a quick test with prod data" | Test data exists for a reason. Use it. |
-| "Importing is easier than copying" | Coupling is expensive. Copy is cheap. |
-| "Same Supabase, no big deal" | RLS can fail. Mistakes happen. Isolate anyway. |
+| Excuse                                | Reality                                         |
+| ------------------------------------- | ----------------------------------------------- |
+| "Just a quick test with prod data"    | Test data exists for a reason. Use it.          |
+| "Importing is easier than copying"    | Coupling is expensive. Copy is cheap.           |
+| "Same Supabase, no big deal"          | RLS can fail. Mistakes happen. Isolate anyway.  |
 | "This experiment is production-ready" | Rewrite it properly. Experiments != production. |
-| "I'll be careful" | Careful isn't a strategy. Isolation is. |
+| "I'll be careful"                     | Careful isn't a strategy. Isolation is.         |
 
 ## Integration with Other Skills
 
 **When working on totalaud.io:**
+
 1. Use this skill to verify isolation
 2. DON'T use **customer-acquisition-focus** (no customers in experiments)
 3. Experiment freely, break things, learn
 
 **When working on Total Audio Platform:**
+
 1. Use **customer-acquisition-focus** to validate customer impact
 2. DON'T use experimental patterns from totalaud.io
 3. Ship fast, validate with customers
@@ -252,11 +272,12 @@ If you catch yourself:
 ## Real-World Example
 
 **Safe Experimental Work:**
+
 ```typescript
 // totalaud.io: Testing multi-agent spawning
 const manifest = await supabase
-  .from('totalaud_agent_manifests')  // ✅ Experimental table
-  .insert({ name, role, personality })
+  .from('totalaud_agent_manifests') // ✅ Experimental table
+  .insert({ name, role, personality });
 
 // Experiments with themes, onboarding, AI agents
 // If it breaks, no customers affected
@@ -264,12 +285,13 @@ const manifest = await supabase
 ```
 
 **Production Work:**
+
 ```typescript
 // total-audio-platform: Audio Intel enrichment
 const contact = await supabase
-  .from('contacts')  // Production table
+  .from('contacts') // Production table
   .select('*')
-  .eq('user_id', userId)
+  .eq('user_id', userId);
 
 // Customer-facing, must work
 // No experiments, validated patterns only
@@ -286,6 +308,7 @@ Use it! Try crazy ideas! Break things! Learn!
 Customer-facing code is sacred. Experimental code is disposable.
 
 **This skill ensures:**
+
 - Experiments stay in sandbox
 - Production stays stable
 - You can innovate without fear

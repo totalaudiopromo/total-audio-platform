@@ -2,7 +2,7 @@
 
 <aside>
 
-Quick note: 
+Quick note:
 
 </aside>
 
@@ -23,13 +23,9 @@ Quick note:
 [Pages](Journal%20&%20Ideas%202230a35b21ed81febadff01f4a0adde9/Pages%202230a35b21ed81d4b977e4d12047d9d1.csv)
 
 - Data
-    
-    [Notes](Journal%20&%20Ideas%202230a35b21ed81febadff01f4a0adde9/Notes%202230a35b21ed819d9c05cf44113382dc.csv)
-    
-    [Favorites](Journal%20&%20Ideas%202230a35b21ed81febadff01f4a0adde9/Favorites%202230a35b21ed81d1bb73eec5e018098c.md)
-    
-    [Archives](Journal%20&%20Ideas%202230a35b21ed81febadff01f4a0adde9/Archives%202230a35b21ed8175844de41a4d887566.md)
-    
+  [Notes](Journal%20&%20Ideas%202230a35b21ed81febadff01f4a0adde9/Notes%202230a35b21ed819d9c05cf44113382dc.csv)
+  [Favorites](Journal%20&%20Ideas%202230a35b21ed81febadff01f4a0adde9/Favorites%202230a35b21ed81d1bb73eec5e018098c.md)
+  [Archives](Journal%20&%20Ideas%202230a35b21ed81febadff01f4a0adde9/Archives%202230a35b21ed8175844de41a4d887566.md)
 
 ### Pages
 

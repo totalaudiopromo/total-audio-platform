@@ -88,16 +88,16 @@ function AppSwitcher() {
 ### Server-Side Authentication
 
 ```typescript
-import { createClient, getCurrentUser } from '@total-audio/auth/server'
+import { createClient, getCurrentUser } from '@total-audio/auth/server';
 
 export async function GET() {
-  const user = await getCurrentUser()
+  const user = await getCurrentUser();
 
   if (!user) {
-    return new Response('Unauthorized', { status: 401 })
+    return new Response('Unauthorized', { status: 401 });
   }
 
-  return Response.json({ user })
+  return Response.json({ user });
 }
 ```
 
@@ -106,18 +106,18 @@ export async function GET() {
 Add to your `middleware.ts`:
 
 ```typescript
-import { createMiddleware } from '@total-audio/auth/middleware'
+import { createMiddleware } from '@total-audio/auth/middleware';
 
 export const middleware = createMiddleware({
   protectedRoutes: ['/dashboard', '/settings'],
   authRoutes: ['/signin', '/signup'],
   signInPath: '/signin',
   defaultRedirect: '/dashboard',
-})
+});
 
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
-}
+};
 ```
 
 ## API Reference
@@ -130,12 +130,12 @@ Returns the current authentication state:
 
 ```typescript
 {
-  user: TotalAudioUser | null
-  profile: UserProfile | null
-  loading: boolean
-  error: Error | null
-  signOut: () => Promise<void>
-  refresh: () => Promise<void>
+  user: TotalAudioUser | null;
+  profile: UserProfile | null;
+  loading: boolean;
+  error: Error | null;
+  signOut: () => Promise<void>;
+  refresh: () => Promise<void>;
 }
 ```
 
@@ -145,9 +145,9 @@ Returns just the user profile:
 
 ```typescript
 {
-  profile: UserProfile | null
-  loading: boolean
-  error: Error | null
+  profile: UserProfile | null;
+  loading: boolean;
+  error: Error | null;
 }
 ```
 
@@ -175,19 +175,19 @@ import {
   getAccessibleApps,
   getMinimumTierForApp,
   getUpgradeRecommendation,
-} from '@total-audio/auth/utils'
+} from '@total-audio/auth/utils';
 
 // Check if tier has access to app
-const canAccess = hasAppAccess('pro', 'audio-intel') // true
+const canAccess = hasAppAccess('pro', 'audio-intel'); // true
 
 // Get all accessible apps for a tier
-const apps = getAccessibleApps('bundle') // ['audio-intel', 'tracker', 'pitch-generator', 'command-centre']
+const apps = getAccessibleApps('bundle'); // ['audio-intel', 'tracker', 'pitch-generator', 'command-centre']
 
 // Get minimum tier for an app
-const minTier = getMinimumTierForApp('tracker') // 'bundle'
+const minTier = getMinimumTierForApp('tracker'); // 'bundle'
 
 // Get upgrade recommendation
-const recommendation = getUpgradeRecommendation('free', 'tracker')
+const recommendation = getUpgradeRecommendation('free', 'tracker');
 // { needsUpgrade: true, recommendedTier: 'bundle', additionalApps: [...] }
 ```
 
@@ -199,20 +199,20 @@ import {
   getTierDisplayName,
   getTierPricing,
   getDaysUntilPeriodEnd,
-} from '@total-audio/auth/utils'
+} from '@total-audio/auth/utils';
 
 // Check if subscription is active
-const active = isSubscriptionActive('active') // true
+const active = isSubscriptionActive('active'); // true
 
 // Get display name
-const name = getTierDisplayName('bundle') // 'Total Audio Bundle'
+const name = getTierDisplayName('bundle'); // 'Total Audio Bundle'
 
 // Get pricing
-const pricing = getTierPricing('pro')
+const pricing = getTierPricing('pro');
 // { monthly: 19, annual: 190, currency: 'GBP' }
 
 // Calculate days until period end
-const days = getDaysUntilPeriodEnd('2025-11-13') // number of days
+const days = getDaysUntilPeriodEnd('2025-11-13'); // number of days
 ```
 
 ## Database Schema
@@ -260,12 +260,12 @@ See the full migration in `UNIFIED_AUTH_IMPLEMENTATION.md`.
 
 ## App Access Matrix
 
-| Tier    | Audio Intel | Tracker | Pitch Generator | Command Centre |
-| ------- | ----------- | ------- | --------------- | -------------- |
-| free    | ✅          | ❌      | ❌              | ❌             |
-| pro     | ✅          | ❌      | ❌              | ❌             |
-| agency  | ✅          | ❌      | ❌              | ❌             |
-| bundle  | ✅          | ✅      | ✅              | ✅             |
+| Tier   | Audio Intel | Tracker | Pitch Generator | Command Centre |
+| ------ | ----------- | ------- | --------------- | -------------- |
+| free   | ✅          | ❌      | ❌              | ❌             |
+| pro    | ✅          | ❌      | ❌              | ❌             |
+| agency | ✅          | ❌      | ❌              | ❌             |
+| bundle | ✅          | ✅      | ✅              | ✅             |
 
 ## TypeScript Types
 
@@ -279,7 +279,7 @@ import type {
   TotalAudioUser,
   AppPermission,
   Subscription,
-} from '@total-audio/auth/types'
+} from '@total-audio/auth/types';
 ```
 
 ## Security

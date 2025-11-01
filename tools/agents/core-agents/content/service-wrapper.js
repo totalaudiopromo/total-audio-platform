@@ -2,7 +2,7 @@
 
 /**
  * Service Wrapper for Total Audio Promo Agents
- * 
+ *
  * Provides a JavaScript interface to the TypeScript backend services
  * Works without requiring TypeScript compilation
  */
@@ -14,7 +14,7 @@ const path = require('path');
 const logger = {
   info: (msg, ...args) => console.log(`[INFO] ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[ERROR] ${msg}`, ...args),
-  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args)
+  warn: (msg, ...args) => console.warn(`[WARN] ${msg}`, ...args),
 };
 
 class ServiceWrapper {
@@ -24,7 +24,7 @@ class ServiceWrapper {
       airtable: new AirtableWrapper(),
       claude: new ClaudeWrapper(),
       gmail: new GmailWrapper(),
-      mailchimp: new MailchimpWrapper()
+      mailchimp: new MailchimpWrapper(),
     };
   }
 
@@ -53,7 +53,7 @@ class ServiceWrapper {
     for (const [name, service] of Object.entries(this.services)) {
       statuses[name] = {
         configured: service.isConfigured(),
-        status: service.isConfigured() ? 'available' : 'not_configured'
+        status: service.isConfigured() ? 'available' : 'not_configured',
       };
     }
     return statuses;
@@ -77,7 +77,7 @@ class BaseServiceWrapper {
     if (!this.isConfigured()) {
       return {
         status: 'not_configured',
-        message: `Missing required environment variables: ${this.requiredEnvVars.filter(v => !process.env[v]).join(', ')}`
+        message: `Missing required environment variables: ${this.requiredEnvVars.filter(v => !process.env[v]).join(', ')}`,
       };
     }
 
@@ -85,10 +85,10 @@ class BaseServiceWrapper {
       await this.performHealthCheck();
       return { status: 'healthy', timestamp: new Date() };
     } catch (error) {
-      return { 
-        status: 'error', 
+      return {
+        status: 'error',
         message: error.message,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
     }
   }
@@ -112,7 +112,7 @@ class AirtableWrapper extends BaseServiceWrapper {
     const Airtable = require('airtable');
     Airtable.configure({ apiKey: process.env.AIRTABLE_API_KEY });
     const base = Airtable.base(process.env.AIRTABLE_BASE_ID);
-    
+
     // Try to list tables (minimal API call)
     await base('Contacts').select({ maxRecords: 1 }).firstPage();
   }
@@ -127,19 +127,17 @@ class AirtableWrapper extends BaseServiceWrapper {
       Airtable.configure({ apiKey: process.env.AIRTABLE_API_KEY });
       const base = Airtable.base(process.env.AIRTABLE_BASE_ID);
 
-      const contacts = await base('Contacts')
-        .select({ maxRecords: 100 })
-        .all();
+      const contacts = await base('Contacts').select({ maxRecords: 100 }).all();
 
       logger.info(`Retrieved ${contacts.length} contacts from Airtable`);
-      
+
       return {
         success: true,
         count: contacts.length,
         contacts: contacts.map(record => ({
           id: record.id,
-          fields: record.fields
-        }))
+          fields: record.fields,
+        })),
       };
     } catch (error) {
       logger.error('Airtable sync failed:', error);
@@ -162,7 +160,7 @@ class AirtableWrapper extends BaseServiceWrapper {
         Artist: campaignData.artist || 'Unknown Artist',
         Status: campaignData.status || 'Active',
         'Start Date': campaignData.startDate || new Date().toISOString(),
-        Type: campaignData.type || 'Email Campaign'
+        Type: campaignData.type || 'Email Campaign',
       });
 
       logger.info(`Created Airtable campaign record: ${record.id}`);
@@ -186,12 +184,12 @@ class ClaudeWrapper extends BaseServiceWrapper {
   async performHealthCheck() {
     const Anthropic = require('@anthropic-ai/sdk');
     const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-    
+
     // Simple test message
     await anthropic.messages.create({
       model: 'claude-3-sonnet-20240229',
       max_tokens: 10,
-      messages: [{ role: 'user', content: 'Health check' }]
+      messages: [{ role: 'user', content: 'Health check' }],
     });
   }
 
@@ -207,7 +205,7 @@ class ClaudeWrapper extends BaseServiceWrapper {
       const message = await anthropic.messages.create({
         model: process.env.CLAUDE_MODEL || 'claude-3-sonnet-20240229',
         max_tokens: maxTokens,
-        messages: [{ role: 'user', content: prompt }]
+        messages: [{ role: 'user', content: prompt }],
       });
 
       return message.content[0]?.text || 'No response generated';
@@ -234,34 +232,40 @@ Keep the response concise and actionable.
 `;
 
     const response = await this.generateResponse(prompt, 2000);
-    
+
     return {
       content: response,
       insights: this.extractInsights(response),
-      recommendations: this.extractRecommendations(response)
+      recommendations: this.extractRecommendations(response),
     };
   }
 
   extractInsights(text) {
     const lines = text.split('\n');
     const insights = lines
-      .filter(line => line.includes('insight') || line.includes('performance') || line.includes('metric'))
+      .filter(
+        line => line.includes('insight') || line.includes('performance') || line.includes('metric')
+      )
       .map(line => line.trim())
       .filter(line => line.length > 10)
       .slice(0, 3);
-    
+
     return insights.length > 0 ? insights : ['Campaign data analyzed successfully'];
   }
 
   extractRecommendations(text) {
     const lines = text.split('\n');
     const recommendations = lines
-      .filter(line => line.includes('recommend') || line.includes('suggest') || line.includes('should'))
+      .filter(
+        line => line.includes('recommend') || line.includes('suggest') || line.includes('should')
+      )
       .map(line => line.trim())
       .filter(line => line.length > 10)
       .slice(0, 3);
-    
-    return recommendations.length > 0 ? recommendations : ['Continue monitoring campaign performance'];
+
+    return recommendations.length > 0
+      ? recommendations
+      : ['Continue monitoring campaign performance'];
   }
 }
 
@@ -276,7 +280,7 @@ class GmailWrapper extends BaseServiceWrapper {
 
   async performHealthCheck() {
     const { google } = require('googleapis');
-    
+
     const oauth2Client = new google.auth.OAuth2(
       process.env.GOOGLE_CLIENT_ID,
       process.env.GOOGLE_CLIENT_SECRET,
@@ -285,11 +289,11 @@ class GmailWrapper extends BaseServiceWrapper {
 
     oauth2Client.setCredentials({
       refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
-      access_token: process.env.GOOGLE_ACCESS_TOKEN
+      access_token: process.env.GOOGLE_ACCESS_TOKEN,
     });
 
     const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
-    
+
     // Test with simple profile request
     await gmail.users.getProfile({ userId: 'me' });
   }
@@ -301,7 +305,7 @@ class GmailWrapper extends BaseServiceWrapper {
 
     try {
       const { google } = require('googleapis');
-      
+
       const oauth2Client = new google.auth.OAuth2(
         process.env.GOOGLE_CLIENT_ID,
         process.env.GOOGLE_CLIENT_SECRET,
@@ -310,24 +314,24 @@ class GmailWrapper extends BaseServiceWrapper {
 
       oauth2Client.setCredentials({
         refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
-        access_token: process.env.GOOGLE_ACCESS_TOKEN
+        access_token: process.env.GOOGLE_ACCESS_TOKEN,
       });
 
       const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
-      
+
       const response = await gmail.users.messages.list({
         userId: 'me',
         q: query,
-        maxResults
+        maxResults,
       });
 
       const messages = response.data.messages || [];
       logger.info(`Found ${messages.length} emails matching query: ${query}`);
-      
+
       return {
         success: true,
         count: messages.length,
-        messages: messages.slice(0, 5) // Limit for demo
+        messages: messages.slice(0, 5), // Limit for demo
       };
     } catch (error) {
       logger.error('Gmail search failed:', error);
@@ -353,7 +357,7 @@ class MailchimpWrapper extends BaseServiceWrapper {
   async performHealthCheck() {
     const mailchimp = require('mailchimp-api-v3');
     const mc = new mailchimp(process.env.MAILCHIMP_API_KEY);
-    
+
     // Test API connection
     await mc.get('/');
   }
@@ -368,14 +372,14 @@ class MailchimpWrapper extends BaseServiceWrapper {
       const mc = new mailchimp(process.env.MAILCHIMP_API_KEY);
 
       const reports = await mc.get(`/reports/${campaignId}`);
-      
+
       return {
         opens: reports.opens.opens_total || 0,
         clicks: reports.clicks.clicks_total || 0,
         bounces: (reports.bounces.hard_bounces || 0) + (reports.bounces.soft_bounces || 0),
         unsubscribes: reports.unsubscribed.unsubscribe_count || 0,
         openRate: reports.opens.open_rate || 0,
-        clickRate: reports.clicks.click_rate || 0
+        clickRate: reports.clicks.click_rate || 0,
       };
     } catch (error) {
       // For demo purposes, return mock data if campaign not found
@@ -388,10 +392,10 @@ class MailchimpWrapper extends BaseServiceWrapper {
           unsubscribes: 0,
           openRate: 0,
           clickRate: 0,
-          note: 'Mock data - campaign not found'
+          note: 'Mock data - campaign not found',
         };
       }
-      
+
       logger.error('Mailchimp analytics failed:', error);
       throw error;
     }
@@ -407,9 +411,9 @@ class MailchimpWrapper extends BaseServiceWrapper {
       const mc = new mailchimp(process.env.MAILCHIMP_API_KEY);
 
       const response = await mc.get('/campaigns', { count });
-      
+
       logger.info(`Retrieved ${response.campaigns.length} campaigns from Mailchimp`);
-      
+
       return {
         success: true,
         count: response.campaigns.length,
@@ -417,8 +421,8 @@ class MailchimpWrapper extends BaseServiceWrapper {
           id: campaign.id,
           subject: campaign.settings.subject_line,
           status: campaign.status,
-          send_time: campaign.send_time
-        }))
+          send_time: campaign.send_time,
+        })),
       };
     } catch (error) {
       logger.error('Mailchimp campaigns retrieval failed:', error);
@@ -443,14 +447,14 @@ if (require.main === module) {
         console.log('Service Statuses:');
         console.log(JSON.stringify(statuses, null, 2));
         break;
-      
+
       case 'health':
         if (!service) {
           console.log('Usage: node service-wrapper.js health <service>');
           console.log('Available services: airtable, claude, gmail, mailchimp');
           return;
         }
-        
+
         try {
           const serviceInstance = wrapper.getService(service);
           const health = await serviceInstance.healthCheck();
@@ -459,37 +463,39 @@ if (require.main === module) {
           console.error(`Health check failed:`, error.message);
         }
         break;
-      
+
       case 'test':
         if (!service) {
           console.log('Usage: node service-wrapper.js test <service>');
           return;
         }
-        
+
         try {
           const serviceInstance = wrapper.getService(service);
-          
+
           switch (service) {
             case 'claude':
-              const response = await serviceInstance.generateResponse('Hello from the service wrapper test!');
+              const response = await serviceInstance.generateResponse(
+                'Hello from the service wrapper test!'
+              );
               console.log('Claude response:', response);
               break;
-              
+
             case 'gmail':
               const emails = await serviceInstance.searchEmails('test', 3);
               console.log('Gmail search:', JSON.stringify(emails, null, 2));
               break;
-              
+
             case 'airtable':
               const contacts = await serviceInstance.syncContacts();
               console.log('Airtable sync:', JSON.stringify(contacts, null, 2));
               break;
-              
+
             case 'mailchimp':
               const campaigns = await serviceInstance.getCampaigns(3);
               console.log('Mailchimp campaigns:', JSON.stringify(campaigns, null, 2));
               break;
-              
+
             default:
               console.log(`Test not implemented for ${service}`);
           }
@@ -497,7 +503,7 @@ if (require.main === module) {
           console.error(`Test failed:`, error.message);
         }
         break;
-      
+
       default:
         console.log('Usage: node service-wrapper.js [status|health|test] [service]');
         console.log('');

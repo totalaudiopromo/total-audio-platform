@@ -1,8 +1,8 @@
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://intel.totalaudiopromo.com'
-  const now = new Date()
+  const baseUrl = 'https://intel.totalaudiopromo.com';
+  const now = new Date();
 
   // Main pages
   const mainRoutes = [
@@ -12,14 +12,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/demo', priority: 0.8, changeFreq: 'monthly' as const },
     { path: '/case-studies', priority: 0.8, changeFreq: 'monthly' as const },
     { path: '/about', priority: 0.7, changeFreq: 'monthly' as const },
-  ]
+  ];
 
   // Legal pages
   const legalRoutes = [
     { path: '/privacy', priority: 0.5, changeFreq: 'monthly' as const },
     { path: '/cookies', priority: 0.5, changeFreq: 'monthly' as const },
     { path: '/terms', priority: 0.5, changeFreq: 'monthly' as const },
-  ]
+  ];
 
   // Blog posts (all SEO-focused case studies)
   const blogRoutes = [
@@ -36,16 +36,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/radio-promotion-tips',
     '/blog/playlist-promotion-mistakes',
     '/blog/music-industry-contacts',
-  ].map(path => ({ path, priority: 0.8, changeFreq: 'monthly' as const }))
+  ].map(path => ({ path, priority: 0.8, changeFreq: 'monthly' as const }));
 
-  const allRoutes = [...mainRoutes, ...legalRoutes, ...blogRoutes]
+  const allRoutes = [...mainRoutes, ...legalRoutes, ...blogRoutes];
 
   return allRoutes.map((route): MetadataRoute.Sitemap[0] => ({
     url: `${baseUrl}${route.path}`,
     lastModified: now,
     changeFrequency: route.changeFreq,
     priority: route.priority,
-  }))
+  }));
 }
-
-

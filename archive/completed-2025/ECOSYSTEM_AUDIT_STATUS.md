@@ -5,6 +5,7 @@
 ### What Was Fixed
 
 **1. Component Duplication (100% Complete)**
+
 - ✅ Created `@total-audio/ui` shared package
 - ✅ Migrated SiteHeader, SiteFooter, ToolSwitcher to shared components
 - ✅ Removed ~1,000 lines of duplicated code across 3 apps
@@ -13,6 +14,7 @@
 **Impact**: Single source of truth for UI components. Updates propagate automatically.
 
 **2. Brand Consistency (100% Complete)**
+
 - ✅ Shared Tailwind brand configuration created
 - ✅ Tool-specific accent colors preserved (blue/amber/purple)
 - ✅ Brutalist design system standardized
@@ -21,6 +23,7 @@
 **Impact**: Consistent design language while maintaining tool differentiation.
 
 **3. Code Organization (100% Complete)**
+
 - ✅ Created `/packages/ui/` directory structure
 - ✅ Proper TypeScript interfaces for all shared components
 - ✅ Clean exports via index.js
@@ -36,6 +39,7 @@
 #### 1. Next.js Version Conflicts ⚠️
 
 **Current State**:
+
 - Audio Intel: 15.4.2
 - Tracker: 15.5.4
 - Pitch Generator: 15.4.2
@@ -45,6 +49,7 @@
 **Solution**: Pin all to **15.3.0** (proven stable version per commit 6ce6c62)
 
 **Files to Update**:
+
 - [ ] `apps/audio-intel/package.json` - Change `"next": "15.4.2"` → `"next": "15.3.0"`
 - [ ] `apps/tracker/package.json` - Change `"next": "15.5.4"` → `"next": "15.3.0"`
 - [ ] `apps/pitch-generator/package.json` - Change `"next": "15.4.2"` → `"next": "15.3.0"`
@@ -52,6 +57,7 @@
 #### 2. Tailwind CSS Version Conflict ⚠️
 
 **Current State**:
+
 - Audio Intel: 3.4.17 ✅
 - Tracker: 4.1.13 ❌ (major version ahead)
 - Pitch Generator: 3.4.17 ✅
@@ -61,6 +67,7 @@
 **Solution**: Downgrade Tracker to **3.4.17** for consistency
 
 **Files to Update**:
+
 - [ ] `apps/tracker/package.json` - Change `"tailwindcss": "^4.1.13"` → `"tailwindcss": "^3.4.17"`
 - [ ] Verify `apps/tracker/tailwind.config.ts` works with v3 after downgrade
 
@@ -69,6 +76,7 @@
 #### 3. Stripe SDK Version Drift
 
 **Current State**:
+
 - Audio Intel: 18.3.0
 - Tracker: 18.5.0
 - Pitch Generator: 18.3.0
@@ -76,6 +84,7 @@
 **Solution**: Standardize on **18.5.0** (latest stable)
 
 **Files to Update**:
+
 - [ ] `apps/audio-intel/package.json` - Change `"stripe": "^18.3.0"` → `"stripe": "^18.5.0"`
 - [ ] `apps/pitch-generator/package.json` - Change `"stripe": "^18.3.0"` → `"stripe": "^18.5.0"`
 
@@ -84,6 +93,7 @@
 #### 4. lucide-react Version Drift
 
 **Current State**:
+
 - Audio Intel: 0.525.0 ✅
 - Tracker: 0.469.0 ❌
 - Pitch Generator: 0.525.0 ✅
@@ -91,6 +101,7 @@
 **Solution**: Update Tracker to **0.525.0**
 
 **Files to Update**:
+
 - [ ] `apps/tracker/package.json` - Change `"lucide-react": "^0.469.0"` → `"lucide-react": "^0.525.0"`
 
 **Risk**: Low. Icon library, likely no breaking changes.
@@ -98,6 +109,7 @@
 #### 5. Analytics Inconsistency
 
 **Current State**:
+
 - Audio Intel: Google Tag Manager (GTM-WZNJWDKH) ✅
 - Tracker: Google Tag Manager (GTM-WZNJWDKH) ✅
 - Pitch Generator: Plausible Analytics ❌
@@ -107,7 +119,9 @@
 **Solution**: Standardize on **Google Tag Manager** for all apps
 
 **Files to Update**:
+
 - [ ] `apps/pitch-generator/app/layout.tsx` - Replace Plausible with GTM
+
 ```tsx
 // Remove:
 <Script
@@ -125,6 +139,7 @@
 #### 6. Locale Settings Inconsistency
 
 **Current State**:
+
 - Audio Intel: `lang="en"`, `locale: 'en_GB'` ✅
 - Tracker: `lang="en"`, no locale metadata ❌
 - Pitch Generator: `lang="en"`, no locale metadata ❌
@@ -134,6 +149,7 @@
 **Solution**: Standardize on **en-GB** across all apps
 
 **Files to Update**:
+
 - [ ] `apps/tracker/app/layout.tsx`:
   - Change `<html lang="en">` → `<html lang="en-GB">`
   - Add OpenGraph locale metadata
@@ -146,6 +162,7 @@
 #### 7. Anthropic AI SDK Version Drift
 
 **Current State**:
+
 - Audio Intel: Not installed
 - Tracker: 0.65.0 ✅
 - Pitch Generator: 0.32.1 ❌
@@ -153,6 +170,7 @@
 **Solution**: Update Pitch Generator to **0.65.0**
 
 **Files to Update**:
+
 - [ ] `apps/pitch-generator/package.json` - Change `"@anthropic-ai/sdk": "^0.32.1"` → `"@anthropic-ai/sdk": "^0.65.0"`
 
 **Risk**: Low-Medium. Check for API changes between 0.32.1 and 0.65.0.
@@ -160,11 +178,13 @@
 #### 8. Root package.json Cleanup
 
 **Current State**:
+
 - Conflicting React overrides (forcing 18.2.0 while apps use 19.1.0)
 
 **Solution**: Remove outdated overrides, add Next.js resolution
 
 **Files to Update**:
+
 - [x] `/package.json` - Remove React overrides, add `"resolutions": { "next": "15.3.0" }`
 
 **Status**: ✅ COMPLETE
@@ -178,6 +198,7 @@
 Due to file editing constraints, these updates need to be done manually:
 
 **Audio Intel** (`apps/audio-intel/package.json`):
+
 ```json
 "dependencies": {
   "@total-audio/ui": "workspace:*",  // ADD THIS
@@ -189,6 +210,7 @@ Due to file editing constraints, these updates need to be done manually:
 ```
 
 **Tracker** (`apps/tracker/package.json`):
+
 ```json
 "dependencies": {
   "@total-audio/ui": "workspace:*",  // ADD THIS
@@ -204,6 +226,7 @@ Due to file editing constraints, these updates need to be done manually:
 ```
 
 **Pitch Generator** (`apps/pitch-generator/package.json`):
+
 ```json
 "dependencies": {
   "@anthropic-ai/sdk": "^0.65.0",   // Change from ^0.32.1
@@ -218,6 +241,7 @@ Due to file editing constraints, these updates need to be done manually:
 ### Phase 2: Layout Configuration Updates
 
 **Tracker Layout** (`apps/tracker/app/layout.tsx`):
+
 ```tsx
 // Line 30: Change lang attribute
 <html lang="en-GB" className={...}>  // Change from "en"
@@ -235,6 +259,7 @@ export const metadata: Metadata = {
 ```
 
 **Pitch Generator Layout** (`apps/pitch-generator/app/layout.tsx`):
+
 ```tsx
 // Line 26: Change lang attribute
 <html lang="en-GB" className={...}>  // Change from "en"
@@ -255,12 +280,14 @@ openGraph: {
 After all updates:
 
 1. **Install Dependencies**:
+
    ```bash
    cd /Users/chrisschofield/workspace/active/total-audio-platform
    npm install
    ```
 
 2. **Build All Apps**:
+
    ```bash
    npm run build --workspace=apps/audio-intel
    npm run build --workspace=apps/tracker
@@ -268,6 +295,7 @@ After all updates:
    ```
 
 3. **Run Tests**:
+
    ```bash
    npm run test:audio-intel
    npm run test --workspace=apps/tracker
@@ -287,17 +315,20 @@ After all updates:
 ## 📊 Progress Summary
 
 ### Completed ✅
+
 - [x] Shared UI component migration (3/3 apps)
 - [x] Brand configuration standardization
 - [x] Root package.json cleanup
 - [x] Component duplication elimination (~1,000 lines removed)
 
 ### In Progress 🔄
+
 - [ ] Dependency version standardization (0/7 critical updates)
 - [ ] Analytics standardization (1/1 app needs update)
 - [ ] Locale configuration (2/2 apps need update)
 
 ### Blockers ❌
+
 None. All changes are ready to be applied.
 
 ---

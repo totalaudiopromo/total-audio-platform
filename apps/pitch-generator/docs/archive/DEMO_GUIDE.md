@@ -9,11 +9,13 @@
 ## 🎯 The Honest Pitch
 
 **What it actually does:**
+
 - You add contacts + relationship notes (from research/Audio Intel)
 - AI generates personalised pitches using that context
 - Scale: 50 pitches in 25 minutes vs 16 hours manual
 
 **What it doesn't do:**
+
 - ❌ Automatically "know" contact history
 - ❌ Magic relationship tracking
 - ✅ BUT: Stores your research and reuses it perfectly across unlimited pitches
@@ -23,10 +25,13 @@
 ## 📋 4-Minute Demo Script
 
 ### 1. Homepage (30s)
+
 > "I was spending 16 hours per campaign writing personalised pitches. Built this to get those hours back. Watch..."
 
 ### 2. Add Contact + Generate (2m)
+
 **Add a real contact you know:**
+
 - Name, role, outlet
 - **Notes field:** "Previously supported [artist], plays [genre]"
 - Enter track details
@@ -35,12 +40,15 @@
 > "I documented the relationship once. Now watch the AI use that context..."
 
 ### 3. The Kicker (1m)
+
 **Show the math:**
+
 - Generate 2-3 more pitches for different contacts (90 seconds total)
 - "Three pitches, 90 seconds. Without this? 60 minutes of careful writing."
 - "Multiply by 50 contacts = 16 hours saved per campaign"
 
 ### 4. Pricing (30s)
+
 - PRO: £14/month = unlimited pitches
 - "First campaign saves 16 hours. Tool pays for itself in 15 minutes."
 
@@ -55,6 +63,7 @@
 3. A UK indie station contact
 
 **Be honest in demo:**
+
 > "This is [Contact Name] at [Station]. I know they [what you actually know]. Adding that to notes so AI can reference it..."
 
 ---
@@ -62,12 +71,14 @@
 ## 🚀 The WOW Moment
 
 **Live generation with timer visible:**
+
 1. Start timer
 2. Generate 3 pitches for different contacts
 3. Stop at ~90 seconds
 4. "Read them - they're not templates. Each one's perfectly personalised."
 
 **Then show sent emails if you have them:**
+
 > "These aren't mocks - here's the actual pitch I sent yesterday..." [Gmail]
 
 ---
@@ -108,12 +119,14 @@ ROI: 91x
 ## 🎯 For Dan's Demo Specifically
 
 **Best approach:**
+
 1. Use your actual Audio Intel contacts (show the integration)
 2. Reference real campaigns you're running
 3. Show sent emails if possible
 4. Be honest: "I document relationships, AI scales the personalisation"
 
 **His wow moment will be:**
+
 - Recognizing the contact names (BBC, Triple J, etc.)
 - Seeing the quality + speed in real-time
 - Realizing you actually use it for real work

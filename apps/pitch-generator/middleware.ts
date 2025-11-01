@@ -5,7 +5,8 @@ export async function middleware(request: NextRequest) {
   const { supabaseResponse, user } = await updateSession(request);
 
   const publicRoutes = ['/', '/auth/signin', '/auth/signup', '/pricing', '/privacy', '/terms'];
-  const isPublicRoute = publicRoutes.includes(request.nextUrl.pathname) ||
+  const isPublicRoute =
+    publicRoutes.includes(request.nextUrl.pathname) ||
     request.nextUrl.pathname.startsWith('/auth/callback') ||
     request.nextUrl.pathname.startsWith('/api/auth');
 

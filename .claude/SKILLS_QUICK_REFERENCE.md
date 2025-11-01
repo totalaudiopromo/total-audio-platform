@@ -3,6 +3,7 @@
 ## 🚀 Daily Usage Patterns
 
 ### Before Starting Work (Audio Intel)
+
 ```
 ✓ Check: Two-hour session scope fits today's goal
 ✓ Invoke: Systematic Debugging if fixing bugs
@@ -10,6 +11,7 @@
 ```
 
 ### Before Starting Work (totalaud.io)
+
 ```
 ✓ Check: Experimental sandbox guard active
 ✓ Document: What you're learning/testing
@@ -17,6 +19,7 @@
 ```
 
 ### Before Committing Code
+
 ```bash
 # Audio Intel
 1. Run: npm run test:mobile
@@ -36,12 +39,15 @@
 ## 🎯 When to Use Each Skill
 
 ### Skill Creator
+
 **Use When:**
+
 - You notice a repetitive workflow pattern
 - You want to enforce a new code standard
 - You need project-specific validation
 
 **Example:**
+
 ```
 "Use Skill Creator to build a mobile UX validator that checks all 21 standards"
 ```
@@ -49,13 +55,16 @@
 ---
 
 ### Changelog Generator
+
 **Use When:**
+
 - Preparing for customer demo calls
 - Publishing Audio Intel updates
 - Documenting experimental features
 - Investor/progress updates
 
 **Example:**
+
 ```
 "Generate customer-facing changelog from commits abc123..def456"
 ```
@@ -63,18 +72,22 @@
 ---
 
 ### Systematic Debugging
+
 **Use When:**
+
 - Stuck on a bug for >15 minutes
 - Vercel deployment fails
 - TypeScript errors are confusing
 - Mobile UX issue is hard to reproduce
 
 **Example:**
+
 ```
 "Use Systematic Debugging to investigate why Vercel can't resolve @/components"
 ```
 
 **4 Phases:**
+
 1. Root cause analysis
 2. Pattern identification
 3. Hypothesis testing
@@ -83,13 +96,16 @@
 ---
 
 ### Brainstorming
+
 **Use When:**
+
 - Planning new Audio Intel features
 - Designing customer acquisition experiments
 - Scoping 2-hour development sessions
 - Exploring totalaud.io workflows
 
 **Example:**
+
 ```
 "Brainstorm: How to improve Audio Intel conversion rate from 60% to 75%"
 ```
@@ -97,13 +113,16 @@
 ---
 
 ### Simplification Cascades
+
 **Use When:** (Deferred until post-£500/month)
+
 - Code has obvious duplication
 - Multiple components do same thing
 - Abstractions are too complex
 - Refactoring won't break customer features
 
 **Example:**
+
 ```
 "Simplify: We have 3 different contact enrichment patterns across the codebase"
 ```
@@ -113,6 +132,7 @@
 ## 🎨 Custom Skills (To Be Created)
 
 ### audio-intel-mobile-validator
+
 ```bash
 # Auto-invokes when:
 - Creating new components in apps/audio-intel/
@@ -129,6 +149,7 @@
 ---
 
 ### customer-acquisition-tracker
+
 ```bash
 # Auto-invokes when:
 - Updating CLAUDE.md with metrics
@@ -144,6 +165,7 @@
 ---
 
 ### two-hour-session-validator
+
 ```bash
 # Auto-invokes:
 - At session start
@@ -161,6 +183,7 @@
 ## ⚡ Quick Commands
 
 ### Manual Skill Invocation
+
 ```
 "Use [skill name] to [specific task]"
 
@@ -200,18 +223,21 @@ Is it a NEW WORKFLOW PATTERN?
 ## 🚨 Red Flags (When to Stop & Use Skills)
 
 ### 🔴 Use Systematic Debugging If:
+
 - "I've tried 3 different approaches and none work"
 - "This error message doesn't make sense"
 - "It works locally but fails in production"
 - "I've been debugging for >30 minutes"
 
 ### 🔴 Use Two-Hour Session Validator If:
+
 - "This is taking longer than expected"
 - "I've gone down a rabbit hole"
 - "This optimization isn't customer-facing"
 - "I'm refactoring instead of shipping"
 
 ### 🔴 Use Brainstorming If:
+
 - "I'm not sure how to approach this feature"
 - "Multiple solutions seem equally valid"
 - "This could affect customer conversion rates"
@@ -222,12 +248,14 @@ Is it a NEW WORKFLOW PATTERN?
 ## 📊 Measuring Skill Effectiveness
 
 ### Weekly Review Questions
+
 - Which skills saved time this week?
 - Which skills were invoked but not helpful?
 - What new skills should be created?
 - What skills should be archived?
 
 ### Monthly Metrics
+
 - Time saved per skill (estimated)
 - Customer acquisition impact
 - Code quality improvements
@@ -238,6 +266,7 @@ Is it a NEW WORKFLOW PATTERN?
 ## 🎪 Integration with Existing Tools
 
 ### Skills + MCP Servers
+
 ```
 Gmail MCP + Customer Tracker = Auto-track demo responses
 Notion MCP + Changelog Generator = Auto-publish releases
@@ -245,6 +274,7 @@ Puppeteer MCP + Mobile Validator = Automated UX testing
 ```
 
 ### Skills + Git Workflow
+
 ```
 Before commit:
 1. Skills validate code quality
@@ -254,6 +284,7 @@ Before commit:
 ```
 
 ### Skills + 2-Hour Sessions
+
 ```
 Session Start:
 1. Two-Hour Validator scopes work
@@ -276,6 +307,7 @@ Session End:
 ## 🔧 Troubleshooting
 
 ### "Skill Not Activating"
+
 ```bash
 # Check skill is installed
 ls -la ~/.claude/skills/[skill-name]
@@ -285,6 +317,7 @@ ls -la ~/.claude/skills/[skill-name]
 ```
 
 ### "Too Many Tokens Being Used"
+
 ```bash
 # Archive unused skills
 mv ~/.claude/skills/[unused-skill] ~/.claude/skills-archive/
@@ -294,6 +327,7 @@ mv ~/.claude/skills/[unused-skill] ~/.claude/skills-archive/
 ```
 
 ### "Skills Conflicting"
+
 ```
 Priority order:
 1. Customer acquisition skills (always)
@@ -307,6 +341,7 @@ Priority order:
 ## 📝 Notes Section
 
 ### Skill Creator Notes
+
 ```
 Custom skills created:
 - [ ] audio-intel-mobile-validator
@@ -317,6 +352,7 @@ Custom skills created:
 ```
 
 ### Effectiveness Log
+
 ```
 Date: [Date]
 Skill: [Name]

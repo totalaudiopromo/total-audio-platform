@@ -5,21 +5,25 @@
 Place these files in `/Users/chrisschofield/workspace/active/total-audio-platform/apps/tracker/public/`:
 
 ### 1. **favicon.ico** (16x16 and 32x32)
+
 - Standard browser favicon
 - Should use Total Audio Promo logo or "T" monogram
 - Generate at: https://realfavicongenerator.net/
 
 ### 2. **apple-touch-icon.png** (180x180)
+
 - iOS home screen icon
 - Should be 180x180px PNG
 - No transparency, add background color
 
 ### 3. **icon.png** (512x512)
+
 - Android/PWA icon
 - 512x512px PNG with transparency
 - Used for app manifest
 
 ### 4. **manifest.json** (Web App Manifest)
+
 ```json
 {
   "name": "Tracker - Campaign Tracking",
@@ -64,9 +68,9 @@ Place these files in `/Users/chrisschofield/workspace/active/total-audio-platfor
 2. **Generate favicons** at https://realfavicongenerator.net/:
    - Upload logo
    - Adjust settings:
-     * iOS: Add purple (#9333ea) background
-     * Android: Keep transparent
-     * Windows: Purple background
+     - iOS: Add purple (#9333ea) background
+     - Android: Keep transparent
+     - Windows: Purple background
    - Download package
 
 3. **Place files** in `/public/` directory
@@ -104,6 +108,7 @@ convert -size 32x32 -background "#9333ea" -fill white -font Arial-Bold \
 ```
 
 Or use online tool: https://favicon.io/favicon-generator/
+
 - Text: "T"
 - Background: #9333ea (purple)
 - Font: Inter Bold

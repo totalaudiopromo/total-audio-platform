@@ -31,10 +31,7 @@ Replace your current MCP config with this:
   "mcpServers": {
     "notion": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-notion"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-notion"],
       "env": {
         "NOTION_API_KEY": "secret_YOUR_INTEGRATION_TOKEN_HERE"
       }
@@ -93,10 +90,10 @@ async function testConnection() {
         }
       }
     });
-    
+
     console.log('✅ Notion connection successful!');
     console.log(`Found ${response.results.length} posts ready to post`);
-    
+
     // Show sample post
     if (response.results.length > 0) {
       const post = response.results[0] as any;
@@ -106,7 +103,7 @@ async function testConnection() {
         content: [post.properties](http://post.properties).Content?.rich_text[0]?.text?.content?.substring(0, 100) + '...' || 'No content'
       });
     }
-    
+
   } catch (error) {
     console.error('❌ Notion connection failed:', error);
   }

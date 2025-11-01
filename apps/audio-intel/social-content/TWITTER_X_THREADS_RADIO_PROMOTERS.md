@@ -167,6 +167,7 @@ But the research was killing me.
 ---
 
 Typical campaign research:
+
 - 15+ hours finding contact details
 - 12+ hours verifying information
 - 8+ hours understanding submission preferences
@@ -191,6 +192,7 @@ But those 18 hours should have been spent on strategy and relationship building,
 So I built Audio Intel.
 
 **What changed:**
+
 - Research time: 18 hours → 2 minutes
 - Contact accuracy: 60% → 94%
 - Response rates: 8% → 28%
@@ -258,6 +260,7 @@ Wednesday: Too late, deadline passed
 ---
 
 This happens constantly in radio promotion:
+
 - Festival lineup submission deadlines
 - Seasonal programming changes
 - Guest presenter opportunities
@@ -320,12 +323,14 @@ Average annual cost: £5,400-7,200
 ---
 
 These tools are designed for:
+
 - Fortune 500 companies
 - Major PR agencies
 - Corporate communications teams
 - Multi-million pound budgets
 
 Not for:
+
 - Independent radio promoters
 - Small PR firms
 - DIY artists
@@ -334,6 +339,7 @@ Not for:
 ---
 
 I spent years paying £300+/month for tools that:
+
 - Didn't understand UK music industry
 - Used outdated radio terminology
 - Focused on corporate PR, not music
@@ -350,6 +356,7 @@ So I built Audio Intel.
 **Agency**: £79/month
 
 Same intelligence:
+
 - Real-time contact enrichment
 - Submission guidelines
 - Genre preferences
@@ -403,6 +410,7 @@ Contacts: 100 UK radio stations
 Approach: Generic pitch template
 
 Results:
+
 - 3 responses received
 - 3% response rate
 - 0 successful placements
@@ -417,6 +425,7 @@ Contacts: Same 100 UK radio stations
 Approach: Personalised pitches using contact intelligence
 
 Results:
+
 - 28 responses received
 - 28% response rate
 - 12 successful placements

@@ -8,7 +8,7 @@ _Source: 🔧 AUDIO INTEL PRODUCT 2660a35b21ed81b88be8c93f227cdc50.md_
 
 # 🔧 AUDIO INTEL PRODUCT
 
-*Your main revenue generator - everything Audio Intel related*
+_Your main revenue generator - everything Audio Intel related_
 
 ---
 
@@ -61,17 +61,17 @@ _Source: 🔧 AUDIO INTEL PRODUCT 2660a35b21ed81b88be8c93f227cdc50.md_
 
 ---
 
-*Everything you need to make Audio Intel profitable*
+_Everything you need to make Audio Intel profitable_
 
 ---
 
 ## Audio Intel Master Reference
 
-_Source: 🔵 Audio Intel Business HQ 24d0a35b21ed816283e6e88d374e7534/🎯 Audio Intel Master Reference - Complete Context  25d0a35b21ed819aa616d1f3793dbf14.md_
+_Source: 🔵 Audio Intel Business HQ 24d0a35b21ed816283e6e88d374e7534/🎯 Audio Intel Master Reference - Complete Context 25d0a35b21ed819aa616d1f3793dbf14.md_
 
 # 🎯 Audio Intel Master Reference - Complete Context Summary
 
-*Single source of truth for Audio Intel contact enrichment tool development*
+_Single source of truth for Audio Intel contact enrichment tool development_
 
 ---
 
@@ -81,7 +81,7 @@ This page links to all essential Audio Intel documentation. **Always reference t
 
 ### 📄 **Primary Reference: Complete Business Context**
 
-📁 **BUSINESS_CONTEXT_[COMPLETE.md](http://COMPLETE.md)** (External Document)
+📁 **BUSINESS*CONTEXT*[COMPLETE.md](http://COMPLETE.md)** (External Document)
 
 - ✅ **Most comprehensive and current**
 - ✅ **Single source of truth for all Audio Intel development**
@@ -196,7 +196,7 @@ AGENCY: £79/month (500 enrichments)
 
 ### **For Strategic Decisions:**
 
-- Reference **BUSINESS_CONTEXT_[COMPLETE.md](http://COMPLETE.md)** as primary source
+- Reference **BUSINESS*CONTEXT*[COMPLETE.md](http://COMPLETE.md)** as primary source
 - Audio Intel competes with **manual Excel work**, not submission platforms
 - Focus on **spreadsheet chaos** pain point
 - Leverage **authentic founder story** for credibility
@@ -231,7 +231,7 @@ _Source: AI Audience Accelerator - TAP 2520a35b21ed81308060ecae12abf032.md_
 
 # AI Audience Accelerator - Total Audio Promo
 
-*Building authentic audience growth for Chris Schofield / sadact / Total Audio Promo*
+_Building authentic audience growth for Chris Schofield / sadact / Total Audio Promo_
 
 ---
 
@@ -398,8 +398,7 @@ The brand I want you to create a Content Strategy for is **Chris Schofield - dad
 
 The target audience of this brand is **My audience consists of two distinct but interconnected groups in the UK music industry. First, independent artists - bedroom producers, singer-songwriters, and emerging bands who are talented but struggling to cut through the noise without major label resources. Second, music PR agencies and industry professionals who are drowning in manual processes and burning out from repetitive tasks that should be automated. Both groups share a common frustration: they know music marketing could be more efficient, but the current tools and processes are either too expensive, too generic, or simply don't understand how the music industry actually works**, please draw context about their frustrations, fears, desires, and dreams from the previous output.
 
-- 
-    - 
+- -
 
 To create a content strategy, I want you to imagine a "Content Strategy Matrix" with an x and y axis.
 
@@ -413,7 +412,7 @@ It's beginner-friendly content that promises a "quick fix", and often appeals to
 
 When creating good growth content, you want to ask yourself: how can I position my content as the small effort that is standing between the reader and a big benefit that appeals to as many people as possible?
 
-- --
+---
 
 2 Knowledge content - to get fans
 
@@ -431,7 +430,7 @@ This content works because when you you solve people's problems, they start liki
 
 The key to creating good knowledge content is being aware of the problems and desires of the audience you're talking to, and then to produce the world's most valuable content for exactly that target audience.
 
-- --
+---
 
 3 Authority content - to get authority
 
@@ -448,7 +447,7 @@ Common ways to do this are:
 
 Authority content works well when it subtly addresses the big inner desire the reader has. It should give the reader the inner feeling of hope, and feel like "if this creator has proof that they helped someone else who's exactly like me, perhaps they can really help me"
 
-- --
+---
 
 ## on the y axis, you have my 3 content buckets, the things I have expertise in:
 
@@ -458,7 +457,7 @@ Authority content works well when it subtly addresses the big inner desire the r
 
 3 **Independent Artist Development & Success**
 
-- 
+-
 
 Now, I want you to create a Content Strategy by filling out the matrix.
 
@@ -482,7 +481,7 @@ This will create a 3x3 matrix (9 content types total) that covers every angle of
 
 ---
 
-*Ready for the next step: Running these prompts to generate your complete content strategy!*
+_Ready for the next step: Running these prompts to generate your complete content strategy!_
 
 ## Content Idea Generator Prompt - Completed for Total Audio Promo
 
@@ -500,11 +499,11 @@ Make sure the scope of each content idea fits a thread.
 
 I have two constraints for my writing:
 
-1) All content ideas need to be actionable, inspirational, or analytical
+1. All content ideas need to be actionable, inspirational, or analytical
 
-2) All content ideas need to include at least 1 number
+2. All content ideas need to include at least 1 number
 
-3) Some content ideas should question the status quo, offer a unique perspective or break down a big concept in simpler terms
+3. Some content ideas should question the status quo, offer a unique perspective or break down a big concept in simpler terms
 
 Please come up with 40 content ideas in total, out of which 15 are for the Growth content type, 15 are for the Knowledge content type, and 10 are for the Authority content type
 
@@ -717,11 +716,11 @@ _Source: 🎯 AUDIO INTEL PIVOT - CURATED INTELLIGENCE DATABAS 2590a35b21ed81898
 
 ---
 
-*Status: Ready for immediate deployment with working product*
+_Status: Ready for immediate deployment with working product_
 
-*Updated: December 2024*
+_Updated: December 2024_
 
-*Quality: Verified "wow factor" intelligence*
+_Quality: Verified "wow factor" intelligence_
 
 ---
 
@@ -731,7 +730,7 @@ _Source: 🎯 RADIO PROMO AGENT - SYSTEM ARCHITECTURE 2620a35b21ed819cbffef018e4
 
 # 🎯 RADIO PROMO AGENT - SYSTEM ARCHITECTURE
 
-*Automated radio promotion workflow for Liberty Music PR integration with Total Audio ecosystem*
+_Automated radio promotion workflow for Liberty Music PR integration with Total Audio ecosystem_
 
 ---
 
@@ -805,7 +804,7 @@ _Source: 🎯 RADIO PROMO AGENT - SYSTEM ARCHITECTURE 2620a35b21ed819cbffef018e4
 **Use Cases for Radio Promo**:
 
 1. **Amazing Radio Automation**: Browser automation for track uploads
-2. [**Warmusic.net](http://Warmusic.net) Scraping**: Automated play tracking data collection
+2. [\*\*Warmusic.net](http://Warmusic.net) Scraping\*\*: Automated play tracking data collection
 3. **Radio Station Discovery**: Scraping contact databases
 4. **European Network Integration**: Automated email submissions
 
@@ -993,7 +992,7 @@ Artist Submits Form → Webhook → Database Entry → Automation Triggers:
 
 **This system represents the perfect bridge between your current Liberty Music PR operations and the Total Audio ecosystem vision - proving automation value while building the foundation for the complete music promotion platform.**
 
-*Updated: September 2025 | Next Review: Weekly during development phase*
+_Updated: September 2025 | Next Review: Weekly during development phase_
 
 ---
 
@@ -1003,7 +1002,7 @@ _Source: 🎵 RADIO PROMO AGENT 2660a35b21ed81aab2a8f334d7870c90.md_
 
 # 🎵 RADIO PROMO AGENT
 
-*Liberty workflow integration and radio promotion automation*
+_Liberty workflow integration and radio promotion automation_
 
 ## Development
 
@@ -1025,7 +1024,7 @@ _Source: 🚀 RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW 2650a35b21ed81b49218c
 
 # 🚀 RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW
 
-*How Chris 10x's his radio promotion efficiency with complete automation*
+_How Chris 10x's his radio promotion efficiency with complete automation_
 
 ---
 
@@ -1096,8 +1095,8 @@ _Source: 🚀 RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW 2650a35b21ed81b49218c
 ```
 ✅ AI generates personalized press release:
    "Hi [Station Name],
-   Hope you're well! I've got an exciting indie pop track from Sarah Jones 
-   that's perfect for your evening rotation. 'Electric Dreams' has that 
+   Hope you're well! I've got an exciting indie pop track from Sarah Jones
+   that's perfect for your evening rotation. 'Electric Dreams' has that
    dreamy 80s-influenced sound that your listeners love..."
 
 ✅ Press release automatically customized for each station type
@@ -1352,7 +1351,7 @@ You focus on strategy, relationships, and growth.
 
 The system handles the tedious stuff.
 
-*Your clients get better results. You get your life back. Everyone wins.*
+_Your clients get better results. You get your life back. Everyone wins._
 
 ---
 
@@ -1362,7 +1361,7 @@ _Source: 🛠️ TECHNICAL DEVELOPMENT 2660a35b21ed81a8bab7f71bf0f516f2/🚀 RAD
 
 # 🚀 RADIO PROMO AGENT - COMPLETE SYSTEM (MASTER)
 
-*The ultimate radio promotion automation system - everything in one place*
+_The ultimate radio promotion automation system - everything in one place_
 
 ---
 
@@ -1382,7 +1381,7 @@ _Source: 🛠️ TECHNICAL DEVELOPMENT 2660a35b21ed81a8bab7f71bf0f516f2/🚀 RAD
 
 # 🌅 DAY-IN-THE-LIFE WORKFLOW
 
-*How Chris 10x's his radio promotion efficiency with complete automation*
+_How Chris 10x's his radio promotion efficiency with complete automation_
 
 ## 🌅 BEFORE: Your Current Liberty Workflow (4-6 Hours Per Campaign)
 
@@ -1508,7 +1507,7 @@ Your work: 45 mins setup + 2 hours monitoring
 
 # 🤖 MULTI-AGENT ARCHITECTURE
 
-*Specialized AI agents for different aspects of radio campaign automation*
+_Specialized AI agents for different aspects of radio campaign automation_
 
 ## 🎯 Agent Architecture Overview
 
@@ -1637,7 +1636,7 @@ Your work: 45 mins setup + 2 hours monitoring
 
 # 🏗️ SYSTEM ARCHITECTURE
 
-*Technical implementation and integration strategy*
+_Technical implementation and integration strategy_
 
 ## Executive Summary
 
@@ -1701,7 +1700,7 @@ Your work: 45 mins setup + 2 hours monitoring
 **Use Cases for Radio Promo**:
 
 1. **Amazing Radio Automation**: Browser automation for track uploads
-2. [**Warmusic.net](http://Warmusic.net) Scraping**: Automated play tracking data collection
+2. [\*\*Warmusic.net](http://Warmusic.net) Scraping\*\*: Automated play tracking data collection
 3. **Radio Station Discovery**: Scraping contact databases
 4. **European Network Integration**: Automated email submissions
 
@@ -1734,7 +1733,7 @@ Your work: 45 mins setup + 2 hours monitoring
 
 # 🚀 IMPLEMENTATION ROADMAP
 
-*Step-by-step development plan*
+_Step-by-step development plan_
 
 ## Phase 1: Foundation (Weeks 1-2)
 
@@ -1821,7 +1820,7 @@ You focus on strategy, relationships, and growth.
 
 The system handles the tedious stuff.
 
-*Your clients get better results. You get your life back. Everyone wins.*
+_Your clients get better results. You get your life back. Everyone wins._
 
 ---
 
@@ -1848,7 +1847,7 @@ _Source: 🤖 RADIO PROMO AGENT - MULTI-AGENT ARCHITECTURE 2650a35b21ed8103b8d1e
 
 # 🤖 RADIO PROMO AGENT - MULTI-AGENT ARCHITECTURE
 
-*Specialized AI agents for different aspects of radio campaign automation*
+_Specialized AI agents for different aspects of radio campaign automation_
 
 ---
 
@@ -2172,7 +2171,7 @@ You are a campaign performance analyst. Monitor play data, email metrics, and ca
 
 **The multi-agent architecture transforms Radio Promo Agent from a single automation tool into a coordinated team of AI specialists, each expert in their domain while working together seamlessly.**
 
-*This approach makes the system more powerful, maintainable, and scalable while providing clear separation of concerns for development and debugging.*
+_This approach makes the system more powerful, maintainable, and scalable while providing clear separation of concerns for development and debugging._
 
 ---
 
@@ -2182,7 +2181,7 @@ _Source: 🎼 TOTAL AUDIO TRANSFER (RECORD LABEL) 2660a35b21ed81ac8eb3e3caf7477b
 
 # 🎼 TOTAL AUDIO TRANSFER (RECORD LABEL)
 
-*Your separate record label business and operations*
+_Your separate record label business and operations_
 
 ## Label Operations
 
@@ -2196,17 +2195,17 @@ _Source: 🎼 TOTAL AUDIO TRANSFER (RECORD LABEL) 2660a35b21ed81ac8eb3e3caf7477b
 - Artist development
 - Label strategy
 
-[Mild Peril](%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93/Mild%20Peril%202230a35b21ed811da797f5be32d5dfae.md)
+[Mild Peril](<%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93/Mild%20Peril%202230a35b21ed811da797f5be32d5dfae.md>)
 
-[Artist Vision Board](%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93/Artist%20Vision%20Board%202230a35b21ed81d390aec51cf387aa9c.md)
+[Artist Vision Board](<%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93/Artist%20Vision%20Board%202230a35b21ed81d390aec51cf387aa9c.md>)
 
-[Release Plan](%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93/Release%20Plan%202230a35b21ed813e86a2fdcf298bf1cf.md)
+[Release Plan](<%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93/Release%20Plan%202230a35b21ed813e86a2fdcf298bf1cf.md>)
 
-[Ragga Style](%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93/Ragga%20Style%202230a35b21ed8150831cdeddddd8705f.md)
+[Ragga Style](<%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93/Ragga%20Style%202230a35b21ed8150831cdeddddd8705f.md>)
 
-[Release Plans](%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93/Release%20Plans%2023b0a35b21ed81478e82cbbc8c22e96a.md)
+[Release Plans](<%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93/Release%20Plans%2023b0a35b21ed81478e82cbbc8c22e96a.md>)
 
-[Label Operations](%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93/Label%20Operations%2023b0a35b21ed81769f0ac45cc49e77d8.md)
+[Label Operations](<%F0%9F%8E%BC%20TOTAL%20AUDIO%20TRANSFER%20(RECORD%20LABEL)%202660a35b21ed81ac8eb3e3caf7477b93/Label%20Operations%2023b0a35b21ed81769f0ac45cc49e77d8.md>)
 
 ---
 
@@ -2255,4 +2254,3 @@ Organisation rules, templates, archive, reference materials
 - 💬 Customer Feedback Template - Product impact assessment
 
 ---
-

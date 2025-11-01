@@ -1,4 +1,4 @@
-import type { PainPointsSectionData } from "@/types/case-study";
+import type { PainPointsSectionData } from '@/types/case-study';
 
 interface PainPointsSectionProps {
   data: PainPointsSectionData;
@@ -12,8 +12,7 @@ export function PainPointsSection({ data }: PainPointsSectionProps) {
       <ul className="space-y-4 text-base text-gray-700 leading-relaxed pl-4">
         {data.painPoints.map((painPoint, index) => (
           <li key={index}>
-            <strong className="text-gray-900">{painPoint.title}:</strong>{" "}
-            {painPoint.description}
+            <strong className="text-gray-900">{painPoint.title}:</strong> {painPoint.description}
           </li>
         ))}
       </ul>

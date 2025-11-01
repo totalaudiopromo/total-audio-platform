@@ -24,7 +24,7 @@ class EmailAgent {
     return {
       pressRelease: 'Generated press release content',
       emailPitches: ['Generated email pitch 1', 'Generated email pitch 2'],
-      socialContent: 'Generated social media content'
+      socialContent: 'Generated social media content',
     };
   }
 
@@ -33,7 +33,7 @@ class EmailAgent {
       status: 'healthy',
       agent: this.name,
       version: this.version,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
   }
 

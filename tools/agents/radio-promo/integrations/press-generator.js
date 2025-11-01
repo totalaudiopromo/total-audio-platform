@@ -2,7 +2,7 @@
 
 /**
  * Press Release & Media Kit Generator
- * 
+ *
  * Generates professional press materials
  * Creates press releases, media kits, and formatted content
  * Includes streaming numbers and social proof
@@ -15,11 +15,11 @@ class PressGenerator {
   constructor() {
     this.templates = new Map();
     this.generatedContent = new Map();
-    
+
     // Data persistence
     this.dataFile = path.join(__dirname, '..', 'data', 'press-generator.json');
     this.loadData();
-    
+
     // Initialize templates
     this.initializeTemplates();
   }
@@ -30,7 +30,8 @@ class PressGenerator {
   initializeTemplates() {
     // Press release templates
     this.templates.set('press_release', {
-      title: '{artistName} Releases New Single "{trackTitle}" - {genre} Track Showcases {uniqueSellingPoint}',
+      title:
+        '{artistName} Releases New Single "{trackTitle}" - {genre} Track Showcases {uniqueSellingPoint}',
       body: `FOR IMMEDIATE RELEASE
 
 {artistName} RELEASES NEW SINGLE "{trackTitle}"
@@ -70,7 +71,7 @@ Contact:
 {contactEmail}
 {contactPhone}
 {website}`,
-      format: 'text'
+      format: 'text',
     });
 
     // Media kit template
@@ -96,7 +97,7 @@ Awards & Recognition:
 {awards}
 
 Previous Releases:
-{previousReleases}`
+{previousReleases}`,
         },
         track_info: {
           title: 'Track Information',
@@ -119,7 +120,7 @@ Streaming Links:
 • Spotify: {spotifyLink}
 • Apple Music: {appleMusicLink}
 • Amazon Music: {amazonMusicLink}
-• YouTube: {youtubeLink}`
+• YouTube: {youtubeLink}`,
         },
         assets: {
           title: 'Media Assets',
@@ -143,7 +144,7 @@ Audio Files:
 Video Content:
 • Music Video: {musicVideo}
 • Behind the Scenes: {behindTheScenes}
-• Live Performance: {livePerformance}`
+• Live Performance: {livePerformance}`,
         },
         social_media: {
           title: 'Social Media',
@@ -159,7 +160,7 @@ Social Media Stats:
 • Instagram: {instagramFollowers}
 • Twitter: {twitterFollowers}
 • Facebook: {facebookFollowers}
-• YouTube: {youtubeSubscribers}`
+• YouTube: {youtubeSubscribers}`,
         },
         contact: {
           title: 'Contact Information',
@@ -182,10 +183,10 @@ Booking:
 Label:
 {labelName}
 {labelEmail}
-{labelPhone}`
-        }
+{labelPhone}`,
+        },
       },
-      format: 'structured'
+      format: 'structured',
     });
 
     // Email pitch template
@@ -224,7 +225,7 @@ Attachments:
 • Press Kit (PDF)
 • High-res photos (ZIP)
 • MP3 files (ZIP)`,
-      format: 'email'
+      format: 'email',
     });
 
     // Social media post templates
@@ -244,7 +245,7 @@ Stream it now on all platforms:
 {hashtags}
 
 #NewMusic #MusicDiscovery #{genre} #{artistName} #{trackTitle}`,
-        hashtags: ['#NewMusic', '#MusicDiscovery', '#FreshTracks', '#IndieMusic', '#NewArtist']
+        hashtags: ['#NewMusic', '#MusicDiscovery', '#FreshTracks', '#IndieMusic', '#NewArtist'],
       },
       twitter: {
         text: `🎵 NEW: {artistName} - "{trackTitle}" ({genre})
@@ -254,7 +255,7 @@ Stream it now on all platforms:
 Stream: {spotifyLink}
 
 {hashtags}`,
-        hashtags: ['#NewMusic', '#MusicDiscovery', '#FreshTracks']
+        hashtags: ['#NewMusic', '#MusicDiscovery', '#FreshTracks'],
       },
       facebook: {
         text: `🎵 Exciting news! {artistName} has just released their new single "{trackTitle}"!
@@ -269,8 +270,8 @@ Stream it now on all major platforms:
 • YouTube: {youtubeLink}
 
 {hashtags}`,
-        hashtags: ['#NewMusic', '#MusicDiscovery', '#FreshTracks', '#IndieMusic']
-      }
+        hashtags: ['#NewMusic', '#MusicDiscovery', '#FreshTracks', '#IndieMusic'],
+      },
     });
   }
 
@@ -279,7 +280,7 @@ Stream it now on all major platforms:
    */
   async generatePressRelease(campaignData, options = {}) {
     console.log(`📰 Generating press release for ${campaignData.artistName}`);
-    
+
     try {
       const template = this.templates.get('press_release');
       const content = this.personalizeContent(template, {
@@ -289,9 +290,9 @@ Stream it now on all major platforms:
         contactName: options.contactName || 'Chris',
         contactTitle: options.contactTitle || 'Music PR Specialist',
         contactEmail: options.contactEmail || 'chris@totalaudiopromo.com',
-        contactPhone: options.contactPhone || '+44 1234 567890'
+        contactPhone: options.contactPhone || '+44 1234 567890',
       });
-      
+
       const pressRelease = {
         id: `press-${campaignData.campaignId}-${Date.now()}`,
         campaignId: campaignData.campaignId,
@@ -301,17 +302,16 @@ Stream it now on all major platforms:
         body: content.body,
         format: 'press_release',
         generatedAt: Date.now(),
-        wordCount: content.body.split(' ').length
+        wordCount: content.body.split(' ').length,
       };
-      
+
       // Store generated content
       this.generatedContent.set(pressRelease.id, pressRelease);
       this.saveData();
-      
+
       console.log(`✅ Press release generated: ${pressRelease.wordCount} words`);
-      
+
       return pressRelease;
-      
     } catch (error) {
       console.error('❌ Failed to generate press release:', error.message);
       throw error;
@@ -323,7 +323,7 @@ Stream it now on all major platforms:
    */
   async generateMediaKit(campaignData, options = {}) {
     console.log(`📁 Generating media kit for ${campaignData.artistName}`);
-    
+
     try {
       const template = this.templates.get('media_kit');
       const mediaKit = {
@@ -333,28 +333,27 @@ Stream it now on all major platforms:
         trackTitle: campaignData.trackTitle,
         title: this.personalizeText(template.title, campaignData),
         sections: {},
-        generatedAt: Date.now()
+        generatedAt: Date.now(),
       };
-      
+
       // Generate each section
       for (const [sectionKey, sectionTemplate] of Object.entries(template.sections)) {
         mediaKit.sections[sectionKey] = {
           title: sectionTemplate.title,
           content: this.personalizeText(sectionTemplate.content, {
             ...campaignData,
-            ...options
-          })
+            ...options,
+          }),
         };
       }
-      
+
       // Store generated content
       this.generatedContent.set(mediaKit.id, mediaKit);
       this.saveData();
-      
+
       console.log(`✅ Media kit generated with ${Object.keys(mediaKit.sections).length} sections`);
-      
+
       return mediaKit;
-      
     } catch (error) {
       console.error('❌ Failed to generate media kit:', error.message);
       throw error;
@@ -366,7 +365,7 @@ Stream it now on all major platforms:
    */
   async generateEmailPitch(campaignData, contact, options = {}) {
     console.log(`📧 Generating email pitch for ${contact.name}`);
-    
+
     try {
       const template = this.templates.get('email_pitch');
       const content = this.personalizeContent(template, {
@@ -378,9 +377,9 @@ Stream it now on all major platforms:
         yourTitle: options.yourTitle || 'Music PR Specialist',
         yourEmail: options.yourEmail || 'chris@totalaudiopromo.com',
         yourPhone: options.yourPhone || '+44 1234 567890',
-        yourWebsite: options.yourWebsite || 'totalaudiopromo.com'
+        yourWebsite: options.yourWebsite || 'totalaudiopromo.com',
       });
-      
+
       const emailPitch = {
         id: `email-${campaignData.campaignId}-${contact.id}-${Date.now()}`,
         campaignId: campaignData.campaignId,
@@ -389,17 +388,16 @@ Stream it now on all major platforms:
         subject: content.subject,
         body: content.body,
         format: 'email_pitch',
-        generatedAt: Date.now()
+        generatedAt: Date.now(),
       };
-      
+
       // Store generated content
       this.generatedContent.set(emailPitch.id, emailPitch);
       this.saveData();
-      
+
       console.log(`✅ Email pitch generated for ${contact.name}`);
-      
+
       return emailPitch;
-      
     } catch (error) {
       console.error('❌ Failed to generate email pitch:', error.message);
       throw error;
@@ -411,11 +409,11 @@ Stream it now on all major platforms:
    */
   async generateSocialMediaPosts(campaignData, options = {}) {
     console.log(`📱 Generating social media posts for ${campaignData.artistName}`);
-    
+
     try {
       const template = this.templates.get('social_media');
       const posts = {};
-      
+
       // Generate posts for each platform
       for (const [platform, platformTemplate] of Object.entries(template)) {
         posts[platform] = {
@@ -423,30 +421,29 @@ Stream it now on all major platforms:
           content: this.personalizeText(platformTemplate.caption || platformTemplate.text, {
             ...campaignData,
             ...options,
-            hashtags: this.generateHashtags(campaignData, platformTemplate.hashtags)
+            hashtags: this.generateHashtags(campaignData, platformTemplate.hashtags),
           }),
           hashtags: this.generateHashtags(campaignData, platformTemplate.hashtags),
-          generatedAt: Date.now()
+          generatedAt: Date.now(),
         };
       }
-      
+
       const socialMediaPosts = {
         id: `social-${campaignData.campaignId}-${Date.now()}`,
         campaignId: campaignData.campaignId,
         artistName: campaignData.artistName,
         trackTitle: campaignData.trackTitle,
         posts: posts,
-        generatedAt: Date.now()
+        generatedAt: Date.now(),
       };
-      
+
       // Store generated content
       this.generatedContent.set(socialMediaPosts.id, socialMediaPosts);
       this.saveData();
-      
+
       console.log(`✅ Social media posts generated for ${Object.keys(posts).length} platforms`);
-      
+
       return socialMediaPosts;
-      
     } catch (error) {
       console.error('❌ Failed to generate social media posts:', error.message);
       throw error;
@@ -458,30 +455,30 @@ Stream it now on all major platforms:
    */
   generateHashtags(campaignData, baseHashtags = []) {
     const hashtags = [...baseHashtags];
-    
+
     // Add genre-specific hashtags
     if (campaignData.genre) {
       hashtags.push(`#${campaignData.genre}`);
     }
-    
+
     // Add artist-specific hashtags
     if (campaignData.artistName) {
       hashtags.push(`#${campaignData.artistName.replace(/\s+/g, '')}`);
     }
-    
+
     // Add track-specific hashtags
     if (campaignData.trackTitle) {
       hashtags.push(`#${campaignData.trackTitle.replace(/\s+/g, '')}`);
     }
-    
+
     // Add location hashtags
     if (campaignData.location) {
       hashtags.push(`#${campaignData.location.replace(/\s+/g, '')}`);
     }
-    
+
     // Add general music hashtags
     hashtags.push('#Music', '#NewRelease', '#FreshTracks', '#MusicDiscovery');
-    
+
     return hashtags.slice(0, 10); // Limit to 10 hashtags
   }
 
@@ -490,7 +487,7 @@ Stream it now on all major platforms:
    */
   personalizeContent(template, data) {
     const result = {};
-    
+
     for (const [key, value] of Object.entries(template)) {
       if (typeof value === 'string') {
         result[key] = this.personalizeText(value, data);
@@ -498,7 +495,7 @@ Stream it now on all major platforms:
         result[key] = value;
       }
     }
-    
+
     return result;
   }
 
@@ -507,13 +504,13 @@ Stream it now on all major platforms:
    */
   personalizeText(text, data) {
     let personalizedText = text;
-    
+
     // Replace placeholders
     Object.entries(data).forEach(([key, value]) => {
       const placeholder = `{${key}}`;
       personalizedText = personalizedText.replace(new RegExp(placeholder, 'g'), value || '');
     });
-    
+
     return personalizedText;
   }
 
@@ -525,18 +522,18 @@ Stream it now on all major platforms:
     if (!content) {
       throw new Error(`Content not found: ${contentId}`);
     }
-    
+
     const filename = `${content.artistName}-${content.trackTitle}-${content.format}.${format}`;
     const filepath = path.join(__dirname, '..', 'generated', filename);
-    
+
     // Ensure directory exists
     const dir = path.dirname(filepath);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    
+
     let fileContent = '';
-    
+
     if (content.format === 'press_release') {
       fileContent = `${content.title}\n\n${content.body}`;
     } else if (content.format === 'media_kit') {
@@ -549,15 +546,15 @@ Stream it now on all major platforms:
     } else if (content.format === 'social_media') {
       fileContent = JSON.stringify(content.posts, null, 2);
     }
-    
+
     fs.writeFileSync(filepath, fileContent);
-    
+
     console.log(`📁 Content exported to: ${filepath}`);
-    
+
     return {
       filepath,
       filename,
-      size: fileContent.length
+      size: fileContent.length,
     };
   }
 
@@ -582,36 +579,36 @@ Stream it now on all major platforms:
   getContentAnalytics() {
     const content = Array.from(this.generatedContent.values());
     const totalContent = content.length;
-    
+
     if (totalContent === 0) {
       return {
         totalContent: 0,
         contentTypes: {},
         averageWordCount: 0,
-        totalWords: 0
+        totalWords: 0,
       };
     }
-    
+
     const contentTypes = {};
     let totalWords = 0;
-    
+
     content.forEach(item => {
       const type = item.format;
       contentTypes[type] = (contentTypes[type] || 0) + 1;
-      
+
       if (item.wordCount) {
         totalWords += item.wordCount;
       }
     });
-    
+
     const averageWordCount = totalWords / totalContent;
-    
+
     return {
       totalContent,
       contentTypes,
       averageWordCount,
       totalWords,
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date().toISOString(),
     };
   }
 
@@ -636,12 +633,12 @@ Stream it now on all major platforms:
       if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
       }
-      
+
       const data = {
         generatedContent: Array.from(this.generatedContent.entries()),
-        lastSaved: Date.now()
+        lastSaved: Date.now(),
       };
-      
+
       fs.writeFileSync(this.dataFile, JSON.stringify(data, null, 2));
     } catch (error) {
       console.error('❌ Failed to save press generator data:', error.message);
@@ -653,13 +650,13 @@ Stream it now on all major platforms:
    */
   async healthCheck() {
     const analytics = this.getContentAnalytics();
-    
+
     return {
       status: 'healthy',
       totalContent: analytics.totalContent,
       contentTypes: analytics.contentTypes,
       averageWordCount: analytics.averageWordCount,
-      lastChecked: new Date().toISOString()
+      lastChecked: new Date().toISOString(),
     };
   }
 }

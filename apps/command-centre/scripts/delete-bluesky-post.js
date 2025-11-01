@@ -27,12 +27,12 @@ async function deletePost(session, postUri) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${session.accessJwt}`,
+      Authorization: `Bearer ${session.accessJwt}`,
     },
     body: JSON.stringify({
       repo: session.did,
       collection: 'app.bsky.feed.post',
-      rkey: postUri.split('/').pop()
+      rkey: postUri.split('/').pop(),
     }),
   });
 
@@ -51,7 +51,6 @@ async function main() {
     // Delete the test post
     const testPostUri = 'at://did:plc:k2a7cb2fwwxpcty6nsfkz33f/app.bsky.feed.post/3lzrcok7xsg2b';
     await deletePost(session, testPostUri);
-
   } catch (error) {
     console.error('❌ Error:', error.message);
   }

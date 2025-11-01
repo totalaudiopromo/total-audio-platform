@@ -14,7 +14,12 @@ interface CollapsibleProps {
   className?: string;
 }
 
-const Collapsible = ({ open: controlledOpen, onOpenChange, children, className = '' }: CollapsibleProps) => {
+const Collapsible = ({
+  open: controlledOpen,
+  onOpenChange,
+  children,
+  className = '',
+}: CollapsibleProps) => {
   const [internalOpen, setInternalOpen] = useState(false);
   const open = controlledOpen !== undefined ? controlledOpen : internalOpen;
   const setOpen = (newOpen: boolean) => {
@@ -26,9 +31,7 @@ const Collapsible = ({ open: controlledOpen, onOpenChange, children, className =
 
   return (
     <CollapsibleContext.Provider value={{ open, setOpen }}>
-      <div className={className}>
-        {children}
-      </div>
+      <div className={className}>{children}</div>
     </CollapsibleContext.Provider>
   );
 };
@@ -45,11 +48,7 @@ const CollapsibleTrigger = ({ children, className = '' }: CollapsibleTriggerProp
   const { open, setOpen } = context;
 
   return (
-    <button
-      type="button"
-      onClick={() => setOpen(!open)}
-      className={className}
-    >
+    <button type="button" onClick={() => setOpen(!open)} className={className}>
       {children}
     </button>
   );
@@ -70,11 +69,9 @@ const CollapsibleContent = ({ children, className = '' }: CollapsibleContentProp
 
   return (
     <div className={`overflow-hidden transition-all ${className}`}>
-      <div className="pb-4 pt-0">
-        {children}
-      </div>
+      <div className="pb-4 pt-0">{children}</div>
     </div>
   );
 };
 
-export { Collapsible, CollapsibleTrigger, CollapsibleContent }; 
+export { Collapsible, CollapsibleTrigger, CollapsibleContent };

@@ -16,6 +16,7 @@
 ## 🔧 Next Steps (Google OAuth Setup)
 
 ### Step 1: Create Google Cloud Project
+
 Open: https://console.cloud.google.com/projectcreate
 
 1. Project name: **"Tracker Integrations"**
@@ -23,6 +24,7 @@ Open: https://console.cloud.google.com/projectcreate
 3. Click **"Create"**
 
 ### Step 2: Enable APIs
+
 After project is created:
 
 1. Go to: https://console.cloud.google.com/apis/library/sheets.googleapis.com
@@ -35,6 +37,7 @@ After project is created:
    - Click **"Enable"**
 
 ### Step 3: Configure OAuth Consent Screen
+
 Go to: https://console.cloud.google.com/apis/credentials/consent
 
 1. User Type: **External**
@@ -47,6 +50,7 @@ Go to: https://console.cloud.google.com/apis/credentials/consent
 5. Click **"Back to Dashboard"**
 
 ### Step 4: Create OAuth Client ID
+
 Go to: https://console.cloud.google.com/apis/credentials
 
 1. Click **"Create Credentials"** → **"OAuth Client ID"**
@@ -61,6 +65,7 @@ Go to: https://console.cloud.google.com/apis/credentials
 6. **Copy Client ID and Client Secret** (keep modal open)
 
 ### Step 5: Update .env.local
+
 Add the credentials to your `.env.local`:
 
 ```bash
@@ -94,6 +99,7 @@ Visit: http://localhost:3004/dashboard/integrations
      ```
 
 2. Add to Vercel environment variables:
+
    ```bash
    vercel env add NEXT_PUBLIC_GOOGLE_SHEETS_CLIENT_ID production
    vercel env add GOOGLE_SHEETS_CLIENT_SECRET production
@@ -112,12 +118,14 @@ Visit: http://localhost:3004/dashboard/integrations
 ## 📊 What You'll Be Able To Do
 
 ### Google Sheets Integration
+
 - ✅ One-click OAuth connection
 - ✅ Automatic sync every 15 minutes
 - ✅ Edit campaigns in Tracker or Sheet - syncs both ways
 - ✅ Share campaign progress with clients/team
 
 ### Gmail Integration
+
 - ✅ Automatic reply detection
 - ✅ Campaign status updates when contacts respond
 - ✅ Reply snippets in campaign notes

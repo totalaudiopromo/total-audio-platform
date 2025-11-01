@@ -8,7 +8,15 @@ const anthropic = new Anthropic({
 const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL ?? 'claude-3-5-sonnet-20241022';
 
 interface AgentRequest {
-  agentType: 'music-industry-strategist' | 'music-marketing-mastermind' | 'growth-hacking-optimizer' | 'viral-content-automation' | 'radio-promo-agent' | 'social-media-agent' | 'content-generation-agent' | 'analytics-agent';
+  agentType:
+    | 'music-industry-strategist'
+    | 'music-marketing-mastermind'
+    | 'growth-hacking-optimizer'
+    | 'viral-content-automation'
+    | 'radio-promo-agent'
+    | 'social-media-agent'
+    | 'content-generation-agent'
+    | 'analytics-agent';
   query: string;
   context?: any;
 }
@@ -49,23 +57,23 @@ Format your response as:
       model: ANTHROPIC_MODEL!,
       max_tokens: 1500,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('Music Industry Strategist error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -97,23 +105,23 @@ Format your response as:
       model: ANTHROPIC_MODEL!,
       max_tokens: 1500,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('Music Marketing Mastermind error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -145,23 +153,23 @@ Format your response as:
       model: ANTHROPIC_MODEL!,
       max_tokens: 1500,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('Growth Hacking Optimizer error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -193,23 +201,23 @@ Format your response as:
       model: ANTHROPIC_MODEL!,
       max_tokens: 1500,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('Viral Content Automation error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -241,23 +249,23 @@ Format your response as:
       model: ANTHROPIC_MODEL!,
       max_tokens: 1500,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('Radio Promotion Agent error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -289,23 +297,23 @@ Format your response as:
       model: ANTHROPIC_MODEL,
       max_tokens: 1500,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('Social Media Agent error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -337,23 +345,23 @@ Format your response as:
       model: ANTHROPIC_MODEL!,
       max_tokens: 1500,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('Content Generation Agent error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -385,23 +393,23 @@ Format your response as:
       model: ANTHROPIC_MODEL!,
       max_tokens: 1500,
       temperature: 0.3,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt }],
     });
 
     const content = response.content[0].type === 'text' ? response.content[0].text : '';
-    
+
     return {
       success: true,
       response: content,
       recommendations: extractRecommendations(content),
-      nextSteps: extractNextSteps(content)
+      nextSteps: extractNextSteps(content),
     };
   } catch (error) {
     console.error('Analytics Agent error:', error);
     return {
       success: false,
       response: 'Unable to process request at this time.',
-      error: 'Agent processing failed'
+      error: 'Agent processing failed',
     };
   }
 }
@@ -410,32 +418,50 @@ Format your response as:
 function extractRecommendations(content: string): string[] {
   const recommendations: string[] = [];
   const lines = content.split('\n');
-  
+
   for (const line of lines) {
-    if (line.includes('Recommendation:') || line.includes('Strategy:') || line.includes('Tactic:') || line.includes('•')) {
-      const recommendation = line.replace(/^[•\-\*]\s*/, '').replace(/^.*?:\s*/, '').trim();
+    if (
+      line.includes('Recommendation:') ||
+      line.includes('Strategy:') ||
+      line.includes('Tactic:') ||
+      line.includes('•')
+    ) {
+      const recommendation = line
+        .replace(/^[•\-\*]\s*/, '')
+        .replace(/^.*?:\s*/, '')
+        .trim();
       if (recommendation && recommendation.length > 10) {
         recommendations.push(recommendation);
       }
     }
   }
-  
+
   return recommendations.slice(0, 5); // Limit to 5 recommendations
 }
 
 function extractNextSteps(content: string): string[] {
   const nextSteps: string[] = [];
   const lines = content.split('\n');
-  
+
   for (const line of lines) {
-    if (line.includes('Next Step:') || line.includes('Action:') || line.includes('Do:') || line.includes('1.') || line.includes('2.') || line.includes('3.')) {
-      const step = line.replace(/^\d+\.\s*/, '').replace(/^.*?:\s*/, '').trim();
+    if (
+      line.includes('Next Step:') ||
+      line.includes('Action:') ||
+      line.includes('Do:') ||
+      line.includes('1.') ||
+      line.includes('2.') ||
+      line.includes('3.')
+    ) {
+      const step = line
+        .replace(/^\d+\.\s*/, '')
+        .replace(/^.*?:\s*/, '')
+        .trim();
       if (step && step.length > 10) {
         nextSteps.push(step);
       }
     }
   }
-  
+
   return nextSteps.slice(0, 5); // Limit to 5 next steps
 }
 
@@ -445,17 +471,23 @@ export async function POST(req: NextRequest) {
     const { agentType, query, context } = body;
 
     if (!query || !query.trim()) {
-      return NextResponse.json({ 
-        success: false, 
-        error: 'Query is required' 
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Query is required',
+        },
+        { status: 400 }
+      );
     }
 
     if (!ANTHROPIC_API_KEY) {
-      return NextResponse.json({ 
-        success: false, 
-        error: 'AI Agent API not configured' 
-      }, { status: 500 });
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'AI Agent API not configured',
+        },
+        { status: 500 }
+      );
     }
 
     let response: AgentResponse;
@@ -487,27 +519,32 @@ export async function POST(req: NextRequest) {
         response = await runAnalyticsAgent(query, context);
         break;
       default:
-        return NextResponse.json({ 
-          success: false, 
-          error: 'Invalid agent type' 
-        }, { status: 400 });
+        return NextResponse.json(
+          {
+            success: false,
+            error: 'Invalid agent type',
+          },
+          { status: 400 }
+        );
     }
 
     return NextResponse.json({
       agentType,
       query,
-      ...response
+      ...response,
     });
-
   } catch (error: any) {
     console.error('AI Agent API error:', error);
-    return NextResponse.json({ 
-      success: false, 
-      error: error.message || 'Agent processing failed' 
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message || 'Agent processing failed',
+      },
+      { status: 500 }
+    );
   }
 }
 
 export async function GET() {
   return new Response('This endpoint only supports POST requests.', { status: 405 });
-} 
+}

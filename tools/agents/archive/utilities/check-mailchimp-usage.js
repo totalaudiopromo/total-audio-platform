@@ -8,30 +8,32 @@ require('dotenv').config();
 
 async function checkMailchimpUsage() {
   console.log('📊 Checking Mailchimp Usage and Free Tier Status\n');
-  
+
   try {
     const apiKey = process.env.MAILCHIMP_API_KEY;
     const serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX;
-    
+
     if (!apiKey || !serverPrefix) {
       console.log('❌ Mailchimp API credentials not found in environment variables');
-      console.log('   Please check your .env file for MAILCHIMP_API_KEY and MAILCHIMP_SERVER_PREFIX');
+      console.log(
+        '   Please check your .env file for MAILCHIMP_API_KEY and MAILCHIMP_SERVER_PREFIX'
+      );
       return;
     }
-    
+
     console.log('🔑 Mailchimp API configured');
     console.log(`   Server: ${serverPrefix}`);
     console.log(`   API Key: ${apiKey.substring(0, 10)}...`);
     console.log('');
-    
+
     // Check account info
     const accountResponse = await fetch(`https://${serverPrefix}.api.mailchimp.com/3.0/`, {
       headers: {
-        'Authorization': `Basic ${Buffer.from(`anystring:${apiKey}`).toString('base64')}`,
-        'Content-Type': 'application/json'
-      }
+        Authorization: `Basic ${Buffer.from(`anystring:${apiKey}`).toString('base64')}`,
+        'Content-Type': 'application/json',
+      },
     });
-    
+
     if (accountResponse.ok) {
       const accountData = await accountResponse.json();
       console.log('📊 Mailchimp Account Info:');
@@ -45,36 +47,39 @@ async function checkMailchimpUsage() {
       console.log(`   Status: ${accountResponse.status}`);
       console.log(`   Response: ${await accountResponse.text()}`);
     }
-    
+
     // Check audiences
-    const audiencesResponse = await fetch(`https://${serverPrefix}.api.mailchimp.com/3.0/lists?count=100`, {
-      headers: {
-        'Authorization': `Basic ${Buffer.from(`anystring:${apiKey}`).toString('base64')}`,
-        'Content-Type': 'application/json'
+    const audiencesResponse = await fetch(
+      `https://${serverPrefix}.api.mailchimp.com/3.0/lists?count=100`,
+      {
+        headers: {
+          Authorization: `Basic ${Buffer.from(`anystring:${apiKey}`).toString('base64')}`,
+          'Content-Type': 'application/json',
+        },
       }
-    });
-    
+    );
+
     if (audiencesResponse.ok) {
       const audiencesData = await audiencesResponse.json();
       console.log('📋 Mailchimp Audiences:');
-      
+
       if (audiencesData.lists && audiencesData.lists.length > 0) {
         let totalContacts = 0;
-        
+
         audiencesData.lists.forEach((audience, i) => {
           const contactCount = audience.stats?.member_count || 0;
           totalContacts += contactCount;
-          
-          console.log(`   ${i+1}. ${audience.name}`);
+
+          console.log(`   ${i + 1}. ${audience.name}`);
           console.log(`      ID: ${audience.id}`);
           console.log(`      Contacts: ${contactCount}`);
           console.log(`      Created: ${audience.date_created || 'Unknown'}`);
           console.log('');
         });
-        
+
         console.log(`📊 Total Contacts Across All Audiences: ${totalContacts}`);
         console.log('');
-        
+
         // Check free tier status
         if (totalContacts <= 2000) {
           console.log('✅ You are within Mailchimp FREE tier limits!');
@@ -97,7 +102,6 @@ async function checkMailchimpUsage() {
           console.log(`   Cost: £299/month`);
           console.log(`   Free Limit: 2,000 contacts`);
         }
-        
       } else {
         console.log('   No audiences found');
         console.log('✅ You are within Mailchimp FREE tier limits!');
@@ -105,16 +109,15 @@ async function checkMailchimpUsage() {
         console.log('   Free Limit: 2,000 contacts');
         console.log('   Remaining: 2,000 contacts');
       }
-      
     } else {
       console.log('❌ Could not fetch audiences');
       console.log(`   Status: ${audiencesResponse.status}`);
       console.log(`   Response: ${await audiencesResponse.text()}`);
     }
-    
+
     // Recommendations
     console.log('💡 RECOMMENDATIONS:\n');
-    
+
     if (totalContacts <= 2000) {
       console.log('✅ You can use Mailchimp FREE tier for radio promo');
       console.log('   • Add up to 250 radio contacts');
@@ -128,7 +131,7 @@ async function checkMailchimpUsage() {
       console.log('   • Use SendGrid (40,000 emails/month free)');
       console.log('   • Keep Mailchimp for major campaigns only');
     }
-    
+
     console.log('');
     console.log('🎯 For Radio Promo Specifically:');
     console.log('   • You only need 50-200 contacts');
@@ -136,7 +139,6 @@ async function checkMailchimpUsage() {
     console.log('   • Gmail can handle the volume');
     console.log('   • Airtable can track responses');
     console.log('   • WARM API tracks actual plays');
-    
   } catch (error) {
     console.log('❌ Error checking Mailchimp usage:', error.message);
     throw error;
@@ -149,20 +151,3 @@ if (require.main === module) {
 }
 
 module.exports = { checkMailchimpUsage };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -11,7 +11,8 @@
 const fetch = require('node-fetch');
 
 // Airtable Configuration
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -36,7 +37,7 @@ async function fetchAllAirtableContacts() {
       : `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
 
     const response = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+      headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
     });
 
     const data = await response.json();
@@ -59,7 +60,7 @@ async function getMailchimpListMembers(apiKey, server, listId, listName) {
     const url = `https://${server}.api.mailchimp.com/3.0/lists/${listId}/members?count=${count}&offset=${offset}`;
 
     const response = await fetch(url, {
-      headers: { 'Authorization': `Bearer ${apiKey}` }
+      headers: { Authorization: `Bearer ${apiKey}` },
     });
 
     if (!response.ok) {
@@ -81,17 +82,14 @@ async function getMailchimpListMembers(apiKey, server, listId, listName) {
 }
 
 async function updateAirtableContact(recordId, updates) {
-  const response = await fetch(
-    `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`,
-    {
-      method: 'PATCH',
-      headers: {
-        'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ fields: updates })
-    }
-  );
+  const response = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}/${recordId}`, {
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ fields: updates }),
+  });
 
   if (!response.ok) {
     const errorData = await response.json();
@@ -168,7 +166,7 @@ async function syncBothMailchimpAccounts() {
 
       const updates = {
         'Mailchimp Account': mailchimpAccount,
-        'Subscription Status': subscriptionStatus
+        'Subscription Status': subscriptionStatus,
       };
 
       const result = await updateAirtableContact(contact.id, updates);
@@ -196,7 +194,6 @@ async function syncBothMailchimpAccounts() {
     console.log(`   Neither account: ${noneCount}\n`);
 
     console.log('✅ Sync complete!\n');
-
   } catch (error) {
     console.error('❌ Error:', error.message);
     process.exit(1);

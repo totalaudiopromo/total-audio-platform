@@ -20,6 +20,7 @@
 5. **Pete Tong** (BBC Radio 1 Essential Selection) - Dance, House legends
 
 **Each contact shows:**
+
 - Show timing and optimal pitch windows
 - Genre preferences (Liberty's roster: house, pop, electronic)
 - Submission guidelines and requirements
@@ -28,6 +29,7 @@
 ### 2. Enhanced Demo Experience ✅
 
 **New Features:**
+
 - "Try Another →" button to cycle through examples
 - Improved result display with confidence badges
 - Real submission timing data per contact
@@ -63,6 +65,7 @@
 ### Part 1: The Problem (2 minutes)
 
 **Your setup:**
+
 > "Dan, you're managing 20+ campaigns across radio, press, and playlisting. I know from working Liberty campaigns that you're spending hours every week just keeping your contact list current. Let me show you what I built to solve that exact problem."
 
 ### Part 2: Live Demo (5 minutes)
@@ -99,6 +102,7 @@
    - Genre-tagged for artist-specific filtering
 
 **The hook:**
+
 > "Dan, this is what Audio Intel does RIGHT NOW. It solves your contact research problem today."
 
 ### Part 4: The Vision (5 minutes)
@@ -108,12 +112,14 @@
 > "But here's where this goes. Imagine this contact intelligence was just one piece of a platform that automated your entire workflow..."
 
 **Show concepts:**
+
 1. **Multi-campaign dashboard** - All 20+ campaigns visible at once
 2. **AI pitch generation** - Personalized mailouts using contact intel
 3. **Campaign timeline automation** - Press → Playlisting → Radio scheduling
 4. **Automated client reports** - Friday updates write themselves
 
 **The ask:**
+
 > "That's the vision. But first, I want to prove the foundation works. Would you be willing to pilot Audio Intel on 3-5 Liberty campaigns this month? Real campaigns, real data, real ROI measurement?"
 
 ---
@@ -121,6 +127,7 @@
 ## Key Messages for Dan
 
 ### What Works NOW:
+
 ✅ Contact enrichment (100% success rate proven)
 ✅ Email validation and verification
 ✅ Submission guidelines retrieval
@@ -128,11 +135,13 @@
 ✅ Export to CSV/Excel for team use
 
 ### What This Saves Liberty:
+
 - **20 hours/week** on contact research and validation
 - **£800-1,200/month** in junior staff time (at £10-15/hour)
 - **Mental bandwidth** for actual campaign strategy vs admin
 
 ### ROI for Liberty:
+
 - **3 campaigns/month** = 60 hours saved
 - **£19/month Pro plan** = £0.32/hour cost
 - **ROI: 187:1** (60 hours saved × £15/hour = £900 vs £19 cost)
@@ -142,6 +151,7 @@
 ## Technical Details (If Dan Asks)
 
 ### Current Stack:
+
 - Next.js 14 (production-ready)
 - AI-powered enrichment pipeline
 - Real-time validation
@@ -149,12 +159,14 @@
 - Professional export (CSV, Excel, PDF)
 
 ### Data Sources:
+
 - Public domain intelligence
 - Industry database cross-referencing
 - Social media profile verification
 - Historical campaign data
 
 ### Privacy & Security:
+
 - GDPR compliant
 - No data selling
 - User owns all enriched data
@@ -165,15 +177,19 @@
 ## Objection Handling
 
 ### "We already have a contact database"
+
 > "Great - let me enrich 10 of your existing contacts right now and show you what's missing. Submission guidelines, timing windows, genre preferences..."
 
 ### "This sounds expensive"
+
 > "£19/month. That's 90 minutes of junior staff time. It saves you 20 hours/week. The math is 187:1 ROI."
 
 ### "How do I know the data is accurate?"
+
 > "100% success rate on BBC Radio 1, Spotify, and major industry contacts. I use this for my own campaigns. If it's wrong, I'm wasting my own time."
 
 ### "What if we need more than contact enrichment?"
+
 > "That's exactly why I showed you the vision. Start with the foundation, prove it works, then we build the rest based on your actual workflow - not my assumptions."
 
 ---
@@ -181,6 +197,7 @@
 ## Next Steps After Meeting
 
 ### If Dan says YES to pilot:
+
 1. Set up Liberty Pro account (£19/month or free pilot)
 2. Choose 3-5 campaigns to test
 3. Weekly check-ins for feedback
@@ -188,12 +205,14 @@
 5. Decision point: continue, upgrade, or expand features
 
 ### If Dan says "interesting but not ready":
+
 1. Leave demo credentials
 2. Offer to enrich 10 Liberty contacts for free
 3. Follow up in 2 weeks with usage data
 4. Stay in touch, no pressure
 
 ### If Dan says "show me more features first":
+
 1. Create focused Figma mockups (2-3 hours)
 2. Schedule follow-up demo
 3. Don't build anything until he commits to pilot
@@ -229,6 +248,7 @@
 **What you have:** A working product that solves Dan's contact research problem TODAY.
 
 **What you're showing:**
+
 1. Working demo with Liberty-relevant examples (5 min)
 2. Proven case studies with real numbers (5 min)
 3. Vision of where it goes (5 min)

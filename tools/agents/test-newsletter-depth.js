@@ -9,7 +9,8 @@ const RSSParser = require('rss-parser');
 const axios = require('axios');
 const rssParser = new RSSParser();
 
-const ANTHROPIC_API_KEY = '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';
+const ANTHROPIC_API_KEY =
+  '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';
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
 const ANTHROPIC_MODEL = 'claude-3-5-sonnet-20241022';
 
@@ -85,22 +86,29 @@ Include real tactics with budgets, timings, or processes where relevant.
 
 150-200 words, British spelling:`;
 
-    const response = await axios.post(ANTHROPIC_API_URL, {
-      model: ANTHROPIC_MODEL,
-      max_tokens: 800,
-      system: CHRIS_VOICE_PROFILE,
-      messages: [{ role: 'user', content: prompt }]
-    }, {
-      headers: {
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json'
+    const response = await axios.post(
+      ANTHROPIC_API_URL,
+      {
+        model: ANTHROPIC_MODEL,
+        max_tokens: 800,
+        system: CHRIS_VOICE_PROFILE,
+        messages: [{ role: 'user', content: prompt }],
       },
-      timeout: 30000
-    });
+      {
+        headers: {
+          'x-api-key': ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01',
+          'content-type': 'application/json',
+        },
+        timeout: 30000,
+      }
+    );
 
     const content = response.data.content[0].text;
-    const cost = ((response.data.usage.input_tokens * 0.003 + response.data.usage.output_tokens * 0.015) / 1000000).toFixed(4);
+    const cost = (
+      (response.data.usage.input_tokens * 0.003 + response.data.usage.output_tokens * 0.015) /
+      1000000
+    ).toFixed(4);
 
     return { story, content, cost };
   } catch (error) {
@@ -123,12 +131,36 @@ function analyzeDepth(content) {
   };
 
   const results = [
-    { check: 'Experience phrase used', pass: checks.experiencePhrase, emoji: checks.experiencePhrase ? '✅' : '❌' },
-    { check: 'Specific numbers included', pass: checks.specificNumbers, emoji: checks.specificNumbers ? '✅' : '❌' },
-    { check: 'Tactical detail present', pass: checks.tacticalDetail, emoji: checks.tacticalDetail ? '✅' : '❌' },
-    { check: 'Avoided generic takes', pass: checks.avoidedGeneric, emoji: checks.avoidedGeneric ? '✅' : '❌' },
-    { check: 'British spelling used', pass: checks.britishSpelling, emoji: checks.britishSpelling ? '✅' : '⚠️' },
-    { check: 'Action step included', pass: checks.hasAction, emoji: checks.hasAction ? '✅' : '❌' },
+    {
+      check: 'Experience phrase used',
+      pass: checks.experiencePhrase,
+      emoji: checks.experiencePhrase ? '✅' : '❌',
+    },
+    {
+      check: 'Specific numbers included',
+      pass: checks.specificNumbers,
+      emoji: checks.specificNumbers ? '✅' : '❌',
+    },
+    {
+      check: 'Tactical detail present',
+      pass: checks.tacticalDetail,
+      emoji: checks.tacticalDetail ? '✅' : '❌',
+    },
+    {
+      check: 'Avoided generic takes',
+      pass: checks.avoidedGeneric,
+      emoji: checks.avoidedGeneric ? '✅' : '❌',
+    },
+    {
+      check: 'British spelling used',
+      pass: checks.britishSpelling,
+      emoji: checks.britishSpelling ? '✅' : '⚠️',
+    },
+    {
+      check: 'Action step included',
+      pass: checks.hasAction,
+      emoji: checks.hasAction ? '✅' : '❌',
+    },
   ];
 
   results.forEach(r => {
@@ -157,19 +189,22 @@ async function main() {
   const testStories = [
     {
       title: 'Spotify Reduces Artist Royalties Again',
-      content: 'Spotify announces another round of royalty cuts for independent artists. New payment structure affects tracks under 1000 streams per year.',
-      category: 'streaming'
+      content:
+        'Spotify announces another round of royalty cuts for independent artists. New payment structure affects tracks under 1000 streams per year.',
+      category: 'streaming',
     },
     {
       title: 'New AI Mastering Tool Promises Studio Quality',
-      content: 'Tech startup releases AI-powered mastering service claiming professional studio results. Targets independent producers with budget constraints.',
-      category: 'production'
+      content:
+        'Tech startup releases AI-powered mastering service claiming professional studio results. Targets independent producers with budget constraints.',
+      category: 'production',
     },
     {
       title: 'Major Festival Increases Indie Stage Slots',
-      content: 'UK festival announces expanded independent artist lineup for 2026. More opportunities for unsigned acts to showcase.',
-      category: 'promotion'
-    }
+      content:
+        'UK festival announces expanded independent artist lineup for 2026. More opportunities for unsigned acts to showcase.',
+      category: 'promotion',
+    },
   ];
 
   const results = [];

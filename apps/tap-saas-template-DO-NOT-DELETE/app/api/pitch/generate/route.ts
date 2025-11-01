@@ -38,10 +38,7 @@ export async function POST(req: Request) {
       .single();
 
     if (contactError || !contact) {
-      return NextResponse.json(
-        { error: 'Contact not found' },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'Contact not found' }, { status: 404 });
     }
 
     // Fetch template if provided
@@ -56,8 +53,8 @@ export async function POST(req: Request) {
     }
 
     // Generate pitch using AI
-    const userId = (session.user).id || 'demo-user';
-    
+    const userId = session.user.id || 'demo-user';
+
     const pitchResponse = await generatePitch({
       contactName: contact.name,
       contactRole: contact.role || '',
@@ -92,10 +89,7 @@ export async function POST(req: Request) {
 
     if (pitchError) {
       console.error('Error saving pitch:', pitchError);
-      return NextResponse.json(
-        { error: 'Failed to save pitch' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to save pitch' }, { status: 500 });
     }
 
     return NextResponse.json({

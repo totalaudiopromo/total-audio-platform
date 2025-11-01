@@ -56,10 +56,7 @@ export class PitchDraftSkill {
   /**
    * Execute pitch draft generation
    */
-  static async execute(
-    input: PitchDraftInput,
-    context: SkillContext
-  ): Promise<PitchDraftOutput> {
+  static async execute(input: PitchDraftInput, context: SkillContext): Promise<PitchDraftOutput> {
     if (!context.tools.llm) {
       throw new Error('LLM client required for pitch draft generation');
     }
@@ -125,8 +122,7 @@ export class PitchDraftSkill {
 
       // Calculate overall confidence
       const avgCompliance =
-        validatedDrafts.reduce((sum, d) => sum + d.voice_compliance, 0) /
-        validatedDrafts.length;
+        validatedDrafts.reduce((sum, d) => sum + d.voice_compliance, 0) / validatedDrafts.length;
 
       return {
         drafts: validatedDrafts,
@@ -298,6 +294,6 @@ TONE GUIDELINES:
       context
     );
 
-    return result.drafts.map((d) => d.subject);
+    return result.drafts.map(d => d.subject);
   }
 }

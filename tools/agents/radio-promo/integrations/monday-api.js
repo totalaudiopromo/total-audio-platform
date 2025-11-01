@@ -2,7 +2,7 @@
 
 /**
  * Monday.com API Integration for Liberty Music PR
- * 
+ *
  * CRITICAL: Only operates on https://liberty-music.monday.com/boards/2443582331
  * This is a shared workspace - extreme caution required
  */
@@ -16,12 +16,15 @@ class MondayApiIntegration {
     this.protectedBoardId = '2443582331'; // Liberty Music PR board
     this.rateLimitDelay = 1000; // 1 second between calls
     this.lastApiCall = 0;
-    
+
     // Google Drive integration (will be set by agent)
     this.driveAPI = null;
     this.campaignsFolderId = process.env.LIBERTY_CAMPAIGNS_FOLDER_ID || 'YOUR_CAMPAIGNS_FOLDER_ID';
-    this.allowedGroupKeywords = (process.env.MONDAY_ALLOWED_GROUP_KEYWORDS || "Chris's Radio").split(',').map(keyword => keyword.trim()).filter(Boolean);
-    
+    this.allowedGroupKeywords = (process.env.MONDAY_ALLOWED_GROUP_KEYWORDS || "Chris's Radio")
+      .split(',')
+      .map(keyword => keyword.trim())
+      .filter(Boolean);
+
     if (!this.apiKey) {
       throw new Error('MONDAY_API_KEY environment variable is required');
     }
@@ -33,7 +36,9 @@ class MondayApiIntegration {
     }
 
     const normalizedTitle = title.toLowerCase();
-    return this.allowedGroupKeywords.some(keyword => normalizedTitle.includes(keyword.toLowerCase()));
+    return this.allowedGroupKeywords.some(keyword =>
+      normalizedTitle.includes(keyword.toLowerCase())
+    );
   }
 
   /**
@@ -43,26 +48,26 @@ class MondayApiIntegration {
     // Rate limiting
     const now = Date.now();
     const timeSinceLastCall = now - this.lastApiCall;
-    
+
     if (timeSinceLastCall < this.rateLimitDelay) {
       const delay = this.rateLimitDelay - timeSinceLastCall;
       await new Promise(resolve => setTimeout(resolve, delay));
     }
-    
+
     try {
       this.lastApiCall = Date.now();
-      
+
       const response = await fetch(this.baseUrl, {
         method: 'POST',
         headers: {
-          'Authorization': this.apiKey,
+          Authorization: this.apiKey,
           'Content-Type': 'application/json',
-          'API-Version': '2023-10'
+          'API-Version': '2023-10',
         },
         body: JSON.stringify({
           query,
-          variables
-        })
+          variables,
+        }),
       });
 
       if (!response.ok) {
@@ -70,7 +75,7 @@ class MondayApiIntegration {
       }
 
       const data = await response.json();
-      
+
       if (data.errors && data.errors.length > 0) {
         throw new Error(`Monday.com API errors: ${JSON.stringify(data.errors)}`);
       }
@@ -106,11 +111,11 @@ class MondayApiIntegration {
       itemName: `${campaignData.artistName} - ${campaignData.trackName}`,
       columnValues: JSON.stringify({
         // Map to actual column IDs from the board
-        status8: { label: "Liberty" }, // Source column - set to Liberty
+        status8: { label: 'Liberty' }, // Source column - set to Liberty
         date4: { date: campaignData.releaseDate }, // Release Date column
-        status: { label: "Working on it" }, // Status column
-        link: campaignData.reportLink || "" // Report Link column
-      })
+        status: { label: 'Working on it' }, // Status column
+        link: campaignData.reportLink || '', // Report Link column
+      }),
     };
 
     try {
@@ -130,17 +135,20 @@ class MondayApiIntegration {
     try {
       // First, try to find existing group
       const boardStructure = await this.getLibertyBoardStructure();
-      const allowedGroups = boardStructure.groups.filter(group => this.isAllowedGroupTitle(group.title));
-      const existingGroup = allowedGroups.find(group => 
-        group.title.toLowerCase().includes(campaignTitle.toLowerCase()) ||
-        campaignTitle.toLowerCase().includes(group.title.toLowerCase())
+      const allowedGroups = boardStructure.groups.filter(group =>
+        this.isAllowedGroupTitle(group.title)
       );
-      
+      const existingGroup = allowedGroups.find(
+        group =>
+          group.title.toLowerCase().includes(campaignTitle.toLowerCase()) ||
+          campaignTitle.toLowerCase().includes(group.title.toLowerCase())
+      );
+
       if (existingGroup) {
         console.log(`✅ Found existing group: ${existingGroup.title}`);
         return existingGroup.id;
       }
-      
+
       // Create new group if not found
       const createGroupQuery = `
         mutation createGroup($boardId: ID!, $groupName: String!) {
@@ -153,15 +161,14 @@ class MondayApiIntegration {
           }
         }
       `;
-      
+
       const result = await this.callMondayAPI(createGroupQuery, {
         boardId: this.protectedBoardId,
-        groupName: this.ensureAllowedGroupName(campaignTitle)
+        groupName: this.ensureAllowedGroupName(campaignTitle),
       });
-      
+
       console.log(`✅ Created new group: ${result.create_group.title}`);
       return result.create_group.id;
-      
     } catch (error) {
       console.error('Failed to create/find campaign group:', error);
       // Return null to use default group
@@ -194,7 +201,7 @@ class MondayApiIntegration {
     `;
 
     const variables = {
-      boardId: this.protectedBoardId
+      boardId: this.protectedBoardId,
     };
 
     try {
@@ -229,7 +236,7 @@ class MondayApiIntegration {
           boardId: this.protectedBoardId,
           itemId: itemId,
           columnId: columnId,
-          value: JSON.stringify(value)
+          value: JSON.stringify(value),
         };
 
         await this.callMondayAPI(query, variables);
@@ -272,8 +279,8 @@ class MondayApiIntegration {
       columnValues: JSON.stringify({
         status: { index: statusIndex },
         date: taskData.deadline,
-        text: taskData.description || ""
-      })
+        text: taskData.description || '',
+      }),
     };
 
     try {
@@ -312,13 +319,13 @@ class MondayApiIntegration {
     `;
 
     const variables = {
-      boardId: this.protectedBoardId
+      boardId: this.protectedBoardId,
     };
 
     try {
       const result = await this.callMondayAPI(query, variables);
       const groups = result.boards[0].groups;
-      
+
       // Flatten all items from all groups and add group info
       const allItems = [];
       groups.forEach(group => {
@@ -329,11 +336,11 @@ class MondayApiIntegration {
           allItems.push({
             ...item,
             groupId: group.id,
-            groupTitle: group.title
+            groupTitle: group.title,
           });
         });
       });
-      
+
       return allItems;
     } catch (error) {
       console.error('Failed to get campaign items:', error);
@@ -346,17 +353,18 @@ class MondayApiIntegration {
    */
   async createLibertyCampaign(campaignData, warmAPI) {
     const campaignTitle = `${campaignData.artistName} - ${campaignData.trackName}`;
-    
+
     // Calculate timeline dates
-    const releaseDate = this.parseDateInput(
-      campaignData.releaseDate ||
-      campaignData.release_date ||
-      campaignData.trackReleaseDate ||
-      campaignData.track_release_date
-    ) || new Date();
+    const releaseDate =
+      this.parseDateInput(
+        campaignData.releaseDate ||
+          campaignData.release_date ||
+          campaignData.trackReleaseDate ||
+          campaignData.track_release_date
+      ) || new Date();
     const campaignStartDate = this.getCampaignStartDate(campaignData, releaseDate);
     const campaignEndDate = this.getCampaignEndDate(campaignData, releaseDate);
-    
+
     // Create Monday.com item with timeline and proper group
     const query = `
       mutation createItem($boardId: ID!, $itemName: String!, $columnValues: JSON!, $groupId: String) {
@@ -374,50 +382,50 @@ class MondayApiIntegration {
 
     // Create or find the group for this campaign
     const groupId = await this.createOrFindCampaignGroup(campaignTitle);
-    
+
     const variables = {
       boardId: this.protectedBoardId,
       itemName: campaignTitle,
       groupId: groupId, // Add the group ID
       columnValues: JSON.stringify({
-        status: { label: "Working on it" }, // Status column - "Working on it"
+        status: { label: 'Working on it' }, // Status column - "Working on it"
         timeline: {
           from: this.formatDateForMonday(campaignStartDate),
-          to: this.formatDateForMonday(campaignEndDate)
+          to: this.formatDateForMonday(campaignEndDate),
         },
-        status8: { label: "Liberty" }, // Source column - set to Liberty
+        status8: { label: 'Liberty' }, // Source column - set to Liberty
         date4: { date: this.formatDateForMonday(releaseDate) }, // Release Date column
-        link: "" // Report Link column - will be updated later
-      })
+        link: '', // Report Link column - will be updated later
+      }),
     };
 
     try {
       const result = await this.callMondayAPI(query, variables);
       const itemId = result.create_item.id;
-      
+
       console.log(`✅ Liberty campaign created: ${campaignTitle} (ID: ${itemId})`);
-      
+
       // Create Google Drive folder and get link
       let driveFolder = null;
       if (this.driveAPI) {
         driveFolder = await this.createCampaignDriveFolder(campaignData);
-        
+
         // Add file column with Drive folder link
         await this.updateCampaignProgress(itemId, {
           files: {
             url: driveFolder.url,
-            text: "Campaign Assets Folder"
-          }
+            text: 'Campaign Assets Folder',
+          },
         });
       }
-      
+
       return {
         id: itemId,
         driveFolder: driveFolder,
         campaignTitle: campaignTitle,
         startDate: campaignStartDate,
         endDate: campaignEndDate,
-        releaseDate: releaseDate
+        releaseDate: releaseDate,
       };
     } catch (error) {
       console.error('Failed to create Liberty campaign:', error);
@@ -494,7 +502,7 @@ class MondayApiIntegration {
       'kickoff_date',
       'intakeDate',
       'intake_date',
-      'submittedAt'
+      'submittedAt',
     ];
 
     for (const field of potentialFields) {
@@ -508,7 +516,8 @@ class MondayApiIntegration {
 
     // Fallback: 6-week or 4-week campaign before release
     const start = new Date(releaseDate);
-    const days = (campaignData.campaignType && campaignData.campaignType.toLowerCase().includes('6')) ? 42 : 28;
+    const days =
+      campaignData.campaignType && campaignData.campaignType.toLowerCase().includes('6') ? 42 : 28;
     start.setDate(releaseDate.getDate() - days);
     return start;
   }
@@ -520,7 +529,7 @@ class MondayApiIntegration {
       'endDate',
       'end_date',
       'wrapDate',
-      'wrap_date'
+      'wrap_date',
     ];
 
     for (const field of potentialFields) {
@@ -555,8 +564,8 @@ class MondayApiIntegration {
       await this.updateCampaignProgress(itemId, {
         link: {
           url: reportUrl,
-          text: label
-        }
+          text: label,
+        },
       });
       console.log(`✅ Monday.com report link updated for item ${itemId}`);
       return true;
@@ -576,15 +585,15 @@ class MondayApiIntegration {
     }
 
     const folderName = `${campaignData.artistName} - ${campaignData.trackName}`;
-    
+
     try {
       // Create main campaign folder
       const mainFolder = await this.driveAPI.files.create({
         requestBody: {
           name: folderName,
           mimeType: 'application/vnd.google-apps.folder',
-          parents: [this.campaignsFolderId]
-        }
+          parents: [this.campaignsFolderId],
+        },
       });
 
       // Create Weekly Reports subfolder
@@ -592,8 +601,8 @@ class MondayApiIntegration {
         requestBody: {
           name: 'Weekly WARM Reports',
           mimeType: 'application/vnd.google-apps.folder',
-          parents: [mainFolder.data.id]
-        }
+          parents: [mainFolder.data.id],
+        },
       });
 
       // Set sharing permissions
@@ -601,16 +610,16 @@ class MondayApiIntegration {
         fileId: mainFolder.data.id,
         requestBody: {
           role: 'reader',
-          type: 'anyone'
-        }
+          type: 'anyone',
+        },
       });
 
       console.log(`✅ Google Drive folders created for ${folderName}`);
-      
+
       return {
         id: mainFolder.data.id,
         url: `https://drive.google.com/drive/folders/${mainFolder.data.id}`,
-        reportsFolder: reportsFolder.data.id
+        reportsFolder: reportsFolder.data.id,
       };
     } catch (error) {
       console.error('Failed to create Google Drive folders:', error);
@@ -623,23 +632,25 @@ class MondayApiIntegration {
    */
   async updateCampaignWithWarmData(campaignId, warmData, driveReportUrl = null) {
     const playCount = warmData.totalNumberOfEntities || warmData.totalPlays || 0;
-    const stations = warmData.currentPagesEntities?.map(play => play.radioStationName) || 
-                   warmData.plays?.map(play => play.radioStation || play.station) || [];
+    const stations =
+      warmData.currentPagesEntities?.map(play => play.radioStationName) ||
+      warmData.plays?.map(play => play.radioStation || play.station) ||
+      [];
     const uniqueStations = [...new Set(stations.filter(s => s))];
 
     // Use the link column to store play data since we don't have a dedicated play count column
     let updates = {
       link: {
         url: `https://warmmusic.net/reports?plays=${playCount}&stations=${uniqueStations.length}`,
-        text: `${playCount} plays across ${uniqueStations.length} stations`
-      }
+        text: `${playCount} plays across ${uniqueStations.length} stations`,
+      },
     };
-    
+
     // If we have a weekly report, add it to files column
     if (driveReportUrl) {
       updates.files = {
         url: driveReportUrl,
-        text: "Weekly WARM Report"
+        text: 'Weekly WARM Report',
       };
     }
 
@@ -649,18 +660,20 @@ class MondayApiIntegration {
       // Update status to "Working on it" when we detect plays
       if (playCount > 0) {
         await this.updateCampaignProgress(campaignId, {
-          status: { index: 1 } // "Working on it"
+          status: { index: 1 }, // "Working on it"
         });
       }
 
-      console.log(`✅ Updated campaign ${campaignId}: ${playCount} plays, ${uniqueStations.length} stations`);
-      
+      console.log(
+        `✅ Updated campaign ${campaignId}: ${playCount} plays, ${uniqueStations.length} stations`
+      );
+
       return {
         campaignId,
         playCount,
         stationCount: uniqueStations.length,
         stations: uniqueStations,
-        statusUpdated: playCount > 0
+        statusUpdated: playCount > 0,
       };
     } catch (error) {
       console.error('Failed to update campaign with WARM data:', error);

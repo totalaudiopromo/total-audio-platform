@@ -31,7 +31,7 @@ export async function GET() {
   try {
     const currentDate = new Date();
     const currentHour = currentDate.getHours();
-    
+
     // Real agent data based on your existing agent system
     const agents: AgentStatus[] = [
       {
@@ -45,14 +45,14 @@ export async function GET() {
         performance: {
           successRate: 97.8 + Math.random() * 2,
           averageTime: 2.3 + Math.random() * 0.5,
-          errorCount: Math.floor(Math.random() * 3)
+          errorCount: Math.floor(Math.random() * 3),
         },
         capabilities: [
           'Email enrichment',
           'Social media discovery',
           'Contact validation',
-          'Industry intelligence'
-        ]
+          'Industry intelligence',
+        ],
       },
       {
         id: 'analytics-agent',
@@ -65,14 +65,14 @@ export async function GET() {
         performance: {
           successRate: 99.2 + Math.random() * 0.8,
           averageTime: 5.1 + Math.random() * 1.2,
-          errorCount: Math.floor(Math.random() * 2)
+          errorCount: Math.floor(Math.random() * 2),
         },
         capabilities: [
           'Performance tracking',
           'ROI analysis',
           'Trend detection',
-          'Report generation'
-        ]
+          'Report generation',
+        ],
       },
       {
         id: 'music-industry-strategist',
@@ -85,14 +85,14 @@ export async function GET() {
         performance: {
           successRate: 95.5 + Math.random() * 3,
           averageTime: 8.7 + Math.random() * 2.1,
-          errorCount: Math.floor(Math.random() * 2)
+          errorCount: Math.floor(Math.random() * 2),
         },
         capabilities: [
           'Market analysis',
           'Campaign strategy',
           'Industry insights',
-          'Competitive intelligence'
-        ]
+          'Competitive intelligence',
+        ],
       },
       {
         id: 'email-validation-agent',
@@ -105,14 +105,14 @@ export async function GET() {
         performance: {
           successRate: 98.9 + Math.random() * 1,
           averageTime: 0.8 + Math.random() * 0.3,
-          errorCount: Math.floor(Math.random() * 1)
+          errorCount: Math.floor(Math.random() * 1),
         },
         capabilities: [
           'SMTP validation',
           'Spam trap detection',
           'Disposable email detection',
-          'Role-based analysis'
-        ]
+          'Role-based analysis',
+        ],
       },
       {
         id: 'social-media-agent',
@@ -125,14 +125,14 @@ export async function GET() {
         performance: {
           successRate: 94.3 + Math.random() * 4,
           averageTime: 6.2 + Math.random() * 1.8,
-          errorCount: Math.floor(Math.random() * 3)
+          errorCount: Math.floor(Math.random() * 3),
         },
         capabilities: [
           'Social profile discovery',
           'Engagement analysis',
           'Influencer identification',
-          'Content optimization'
-        ]
+          'Content optimization',
+        ],
       },
       {
         id: 'competition-monitor',
@@ -145,14 +145,14 @@ export async function GET() {
         performance: {
           successRate: 96.7 + Math.random() * 2.5,
           averageTime: 12.3 + Math.random() * 3.2,
-          errorCount: Math.floor(Math.random() * 2)
+          errorCount: Math.floor(Math.random() * 2),
         },
         capabilities: [
           'Competitor tracking',
           'Price monitoring',
           'Feature analysis',
-          'Market intelligence'
-        ]
+          'Market intelligence',
+        ],
       },
       {
         id: 'campaign-agent',
@@ -165,14 +165,14 @@ export async function GET() {
         performance: {
           successRate: 93.8 + Math.random() * 4.5,
           averageTime: 15.7 + Math.random() * 5.1,
-          errorCount: Math.floor(Math.random() * 3)
+          errorCount: Math.floor(Math.random() * 3),
         },
         capabilities: [
           'Campaign planning',
           'Multi-channel coordination',
           'Timeline management',
-          'Performance optimization'
-        ]
+          'Performance optimization',
+        ],
       },
       {
         id: 'growth-optimizer',
@@ -185,25 +185,28 @@ export async function GET() {
         performance: {
           successRate: 91.2 + Math.random() * 6,
           averageTime: 9.8 + Math.random() * 2.7,
-          errorCount: Math.floor(Math.random() * 4)
+          errorCount: Math.floor(Math.random() * 4),
         },
         capabilities: [
           'Conversion optimization',
           'A/B test analysis',
           'User journey mapping',
-          'Growth strategy'
-        ]
-      }
+          'Growth strategy',
+        ],
+      },
     ];
 
     // Calculate aggregate metrics
     const metrics: AgentMetrics = {
       totalAgents: agents.length,
       activeAgents: agents.filter(a => a.status === 'active').length,
-      totalTasks: agents.reduce((sum, agent) => sum + agent.tasksCompleted + agent.tasksInProgress, 0),
+      totalTasks: agents.reduce(
+        (sum, agent) => sum + agent.tasksCompleted + agent.tasksInProgress,
+        0
+      ),
       completedTasks: agents.reduce((sum, agent) => sum + agent.tasksCompleted, 0),
       automationSavings: 15.5 + Math.random() * 3.2, // Hours saved per week
-      insights: 89 + Math.floor(Math.random() * 20)
+      insights: 89 + Math.floor(Math.random() * 20),
     };
 
     // Add autonomous orchestration data
@@ -215,20 +218,20 @@ export async function GET() {
         { name: 'Email Scheduler', nextRun: 'Tomorrow at 9 AM' },
         { name: 'Content Generator', nextRun: 'Tomorrow at 10 AM' },
         { name: 'Competitive Intel', nextRun: 'In 4 hours' },
-        { name: 'Performance Reporter', nextRun: 'Monday at 8 AM' }
+        { name: 'Performance Reporter', nextRun: 'Monday at 8 AM' },
       ],
       todaysAutomatedTasks: agents.reduce((sum, agent) => sum + agent.tasksCompleted, 0),
       estimatedDailyValue: `£${150 + Math.floor(Math.random() * 200)}`,
-      humanInterventionRequired: false
+      humanInterventionRequired: false,
     };
 
     console.log(`[${currentDate.toISOString()}] Agent system status:`, {
       activeAgents: metrics.activeAgents,
       totalTasks: metrics.totalTasks,
       completedTasks: metrics.completedTasks,
-      autonomousMode: autonomousMode.status
+      autonomousMode: autonomousMode.status,
     });
-    
+
     return NextResponse.json({
       agents,
       metrics,
@@ -237,58 +240,62 @@ export async function GET() {
         status: 'operational',
         uptime: 99.7 + Math.random() * 0.3,
         lastSync: currentDate.toISOString(),
-        nextMaintenance: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString() // 1 week
-      }
+        nextMaintenance: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(), // 1 week
+      },
     });
-    
   } catch (error) {
     console.error('Agent API error:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch agent data' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch agent data' }, { status: 500 });
   }
 }
 
 export async function POST(request: Request) {
   try {
     const { action, agentId, task } = await request.json();
-    
+
     // Handle agent commands
     switch (action) {
       case 'start':
         // Start an agent
         console.log(`Starting agent: ${agentId}`);
         return NextResponse.json({ success: true, message: `Agent ${agentId} started` });
-        
+
       case 'stop':
         // Stop an agent
         console.log(`Stopping agent: ${agentId}`);
         return NextResponse.json({ success: true, message: `Agent ${agentId} stopped` });
-        
+
       case 'assign_task':
         // Assign a task to an agent
         console.log(`Assigning task to agent ${agentId}:`, task);
         return NextResponse.json({ success: true, message: `Task assigned to agent ${agentId}` });
-        
+
       case 'get_logs':
         // Get agent logs
         const logs = [
-          { timestamp: new Date().toISOString(), level: 'info', message: `Agent ${agentId} processing task` },
-          { timestamp: new Date(Date.now() - 60000).toISOString(), level: 'success', message: `Task completed successfully` },
-          { timestamp: new Date(Date.now() - 120000).toISOString(), level: 'info', message: `Agent ${agentId} started` }
+          {
+            timestamp: new Date().toISOString(),
+            level: 'info',
+            message: `Agent ${agentId} processing task`,
+          },
+          {
+            timestamp: new Date(Date.now() - 60000).toISOString(),
+            level: 'success',
+            message: `Task completed successfully`,
+          },
+          {
+            timestamp: new Date(Date.now() - 120000).toISOString(),
+            level: 'info',
+            message: `Agent ${agentId} started`,
+          },
         ];
         return NextResponse.json({ logs });
-        
+
       default:
         return NextResponse.json({ error: 'Unknown action' }, { status: 400 });
     }
-    
   } catch (error) {
     console.error('Agent command error:', error);
-    return NextResponse.json(
-      { error: 'Failed to execute agent command' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to execute agent command' }, { status: 500 });
   }
 }

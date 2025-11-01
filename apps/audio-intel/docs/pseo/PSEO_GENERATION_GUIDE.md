@@ -33,21 +33,25 @@ apps/audio-intel/
 ## 🚀 Usage
 
 ### Generate All Planned Pages
+
 ```bash
 npm run pseo:generate -- --all
 ```
 
 ### Generate Single Page
+
 ```bash
 npm run pseo:generate -- --slug=bbc-6-music
 ```
 
 ### Generate All Tier 1 Pages
+
 ```bash
 npm run pseo:generate -- --tier=1
 ```
 
 ### Validate Without Generating
+
 ```bash
 npm run pseo:validate
 ```
@@ -57,22 +61,27 @@ npm run pseo:validate
 Before any page is generated, the system validates:
 
 ### 1. Research Data Exists
+
 - Must have a research file in `docs/pseo/research/[topic-slug]-research.md`
 - Must be parseable into structured data
 
 ### 2. Contact Verification Recency
+
 - All contacts must be verified within 6 months
 - Verification dates older than 6 months trigger errors
 
 ### 3. Confidence Scores
+
 - All contacts must have confidence scores >= 85%
 - Lower scores require re-verification before generation
 
 ### 4. Source URLs
+
 - All contacts must have source URLs for verification
 - Missing sources prevent page generation
 
 ### 5. Research Currency
+
 - Research date must be within 6 months
 - Older research requires update before generation
 
@@ -95,11 +104,13 @@ Create `docs/pseo/research/new-station-research.md`:
 # New Station Contact Research - [Current Date]
 
 ## Research Date
+
 [ISO Date: 2025-10-03]
 
 ## Current Contacts (2025)
 
 ### 1. Presenter Name
+
 - **Show**: Show Title
 - **Time**: Broadcast schedule
 - **Genre Focus**: Genre details
@@ -113,20 +124,25 @@ Create `docs/pseo/research/new-station-research.md`:
 ## Submission Process
 
 ### Primary Route
+
 Description of main submission method
 
 ### Alternative Routes
+
 - Alternative method 1
 - Alternative method 2
 
 ### Timing Requirements
+
 When to submit, deadlines, etc.
 
 ### Common Mistakes
+
 1. Mistake #1: Why it fails
 2. Mistake #2: Why it fails
 
 ## Sources
+
 - https://official-station-page.com
 - https://bbc.co.uk/schedules
 - https://presenter-social-profile
@@ -165,12 +181,14 @@ Before marking a page as "live" in CSV:
 ## 📊 Generation Statistics
 
 The system tracks:
+
 - **Total processed**: All rows attempted
 - **Generated**: Pages successfully created
 - **Skipped**: Pages without research data
 - **Errors**: Pages that failed validation
 
 Example output:
+
 ```
 📊 Generation Summary
 =====================
@@ -185,15 +203,19 @@ Total processed: 10
 Common errors and solutions:
 
 ### "No research file for [slug]"
+
 **Solution**: Create research file at `docs/pseo/research/[slug]-research.md`
 
 ### "Contact verification older than 6 months"
+
 **Solution**: Re-verify contact details and update verification dates
 
 ### "Confidence score too low"
+
 **Solution**: Improve research quality or remove low-confidence contacts
 
 ### "No source URLs provided"
+
 **Solution**: Add source URLs to research file for all claims
 
 ## 🎯 Best Practices
@@ -217,16 +239,19 @@ Track these metrics for each page:
 ## 🔄 Maintenance Schedule
 
 **Monthly**:
+
 - Review pages with most traffic
 - Update any outdated contact information
 - Check for 404 errors on source URLs
 
 **Quarterly**:
+
 - Re-verify all Tier 1 page contacts
 - Update research files with latest information
 - Regenerate pages with updated data
 
 **Annually**:
+
 - Complete audit of all 60 pages
 - Remove pages for defunct stations/platforms
 - Add new high-priority targets
@@ -257,6 +282,7 @@ Track these metrics for each page:
 ## 📞 Support
 
 For issues with the PSEO generation system:
+
 1. Check this guide first
 2. Review error messages carefully
 3. Validate research file structure

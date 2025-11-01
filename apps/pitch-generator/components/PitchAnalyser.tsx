@@ -25,7 +25,7 @@ export function PitchAnalyser({
   pitchBody,
   contactName,
   tone,
-  onApplySuggestions
+  onApplySuggestions,
 }: {
   pitchBody: string;
   contactName?: string;
@@ -160,7 +160,9 @@ export function PitchAnalyser({
                 {analysis.score}/100
               </p>
             </div>
-            <span className={`rounded-full border-2 px-4 py-2 text-sm font-semibold ${getGradeBadge(analysis.grade)}`}>
+            <span
+              className={`rounded-full border-2 px-4 py-2 text-sm font-semibold ${getGradeBadge(analysis.grade)}`}
+            >
               {analysis.grade.replace('_', ' ').toUpperCase()}
             </span>
           </div>
@@ -222,18 +224,37 @@ export function PitchAnalyser({
           {/* Tone & Length Analysis */}
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-xl border border-gray-300 bg-gray-50 px-4 py-3">
-              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-900/60">Tone Analysis</h4>
+              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-900/60">
+                Tone Analysis
+              </h4>
               <div className="space-y-1 text-sm">
-                <p><span className="font-medium">Formality:</span> {analysis.toneAnalysis.formality.replace('_', ' ')}</p>
-                <p><span className="font-medium">Enthusiasm:</span> {analysis.toneAnalysis.enthusiasm}</p>
-                <p><span className="font-medium">Personalisation:</span> {analysis.toneAnalysis.personalisation}</p>
+                <p>
+                  <span className="font-medium">Formality:</span>{' '}
+                  {analysis.toneAnalysis.formality.replace('_', ' ')}
+                </p>
+                <p>
+                  <span className="font-medium">Enthusiasm:</span>{' '}
+                  {analysis.toneAnalysis.enthusiasm}
+                </p>
+                <p>
+                  <span className="font-medium">Personalisation:</span>{' '}
+                  {analysis.toneAnalysis.personalisation}
+                </p>
               </div>
             </div>
             <div className="rounded-xl border border-gray-300 bg-gray-50 px-4 py-3">
-              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-900/60">Length Analysis</h4>
+              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-900/60">
+                Length Analysis
+              </h4>
               <div className="space-y-1 text-sm">
-                <p><span className="font-medium">Word count:</span> {analysis.lengthAnalysis.wordCount}</p>
-                <p><span className="font-medium">Optimal:</span> {analysis.lengthAnalysis.isOptimal ? 'Yes' : 'No'}</p>
+                <p>
+                  <span className="font-medium">Word count:</span>{' '}
+                  {analysis.lengthAnalysis.wordCount}
+                </p>
+                <p>
+                  <span className="font-medium">Optimal:</span>{' '}
+                  {analysis.lengthAnalysis.isOptimal ? 'Yes' : 'No'}
+                </p>
                 <p className="text-gray-900/70">{analysis.lengthAnalysis.recommendation}</p>
               </div>
             </div>
@@ -259,10 +280,7 @@ export function PitchAnalyser({
                 )}
               </button>
             )}
-            <button
-              onClick={() => setAnalysis(null)}
-              className="subtle-button flex-1 text-sm"
-            >
+            <button onClick={() => setAnalysis(null)} className="subtle-button flex-1 text-sm">
               Analyze Again
             </button>
           </div>

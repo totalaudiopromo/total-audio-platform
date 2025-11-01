@@ -19,9 +19,9 @@ async function checkMailchimpAccount() {
     const accountResponse = await fetch(`https://${MAILCHIMP_SERVER}.api.mailchimp.com/3.0/`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${MAILCHIMP_API_KEY}`,
-        'Content-Type': 'application/json'
-      }
+        Authorization: `Bearer ${MAILCHIMP_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
     });
 
     if (!accountResponse.ok) {
@@ -41,10 +41,12 @@ async function checkMailchimpAccount() {
     console.log('');
 
     // Determine which account this is
-    const isLiberty = accountData.account_name?.toLowerCase().includes('liberty') ||
-                     accountData.email?.toLowerCase().includes('liberty');
-    const isTotalAudio = accountData.account_name?.toLowerCase().includes('total') ||
-                        accountData.email?.toLowerCase().includes('total');
+    const isLiberty =
+      accountData.account_name?.toLowerCase().includes('liberty') ||
+      accountData.email?.toLowerCase().includes('liberty');
+    const isTotalAudio =
+      accountData.account_name?.toLowerCase().includes('total') ||
+      accountData.email?.toLowerCase().includes('total');
 
     console.log('🎯 ACCOUNT IDENTIFICATION:');
     if (isLiberty) {
@@ -62,13 +64,16 @@ async function checkMailchimpAccount() {
     console.log('📋 AUDIENCES/LISTS:');
     console.log('═══════════════════════════════════════════════════════════\n');
 
-    const listsResponse = await fetch(`https://${MAILCHIMP_SERVER}.api.mailchimp.com/3.0/lists?count=50`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${MAILCHIMP_API_KEY}`,
-        'Content-Type': 'application/json'
+    const listsResponse = await fetch(
+      `https://${MAILCHIMP_SERVER}.api.mailchimp.com/3.0/lists?count=50`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${MAILCHIMP_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
       }
-    });
+    );
 
     const listsData = await listsResponse.json();
 
@@ -76,7 +81,7 @@ async function checkMailchimpAccount() {
       let totalContacts = 0;
 
       listsData.lists.forEach((list, i) => {
-        console.log(`${i+1}. ${list.name}`);
+        console.log(`${i + 1}. ${list.name}`);
         console.log(`   ID: ${list.id}`);
         console.log(`   Total Contacts: ${list.stats.member_count}`);
         console.log(`   Subscribed: ${list.stats.member_count - list.stats.unsubscribe_count}`);
@@ -137,9 +142,9 @@ async function checkMailchimpAccount() {
           {
             method: 'GET',
             headers: {
-              'Authorization': `Bearer ${MAILCHIMP_API_KEY}`,
-              'Content-Type': 'application/json'
-            }
+              Authorization: `Bearer ${MAILCHIMP_API_KEY}`,
+              'Content-Type': 'application/json',
+            },
           }
         );
 
@@ -170,9 +175,8 @@ async function checkMailchimpAccount() {
       isTotalAudio,
       totalSubscribers: accountData.total_subscribers,
       pricingPlan: pricingTier,
-      lists: listsData.lists || []
+      lists: listsData.lists || [],
     };
-
   } catch (error) {
     console.error('❌ Error checking Mailchimp account:', error.message);
     return null;

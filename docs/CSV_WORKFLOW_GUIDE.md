@@ -7,16 +7,19 @@ The CSV workflow enables seamless transfer of enriched contacts from **Audio Int
 ## Business Value
 
 **For Radio Promoters (85% conversion rate)**:
+
 - Enrich 50-100 radio contacts in Audio Intel (15 min vs 15 hours manual)
 - Send directly to Tracker with all intelligence data preserved
 - Start tracking responses immediately with enriched context
 
 **For PR Agencies**:
+
 - Transform client spreadsheet chaos into organized campaigns
 - Maintain enrichment data throughout campaign lifecycle
 - Professional client deliverables with both tools
 
 **For Artists**:
+
 - Research contacts once, use data everywhere
 - Track pitch responses alongside contact intelligence
 - Single source of truth for promotion data
@@ -54,6 +57,7 @@ The CSV workflow enables seamless transfer of enriched contacts from **Audio Int
 ### CSV Format Specification
 
 **Audio Intel Export Format**:
+
 ```csv
 Name,Email,Outlet,Role,Status,Notes,Contacted Date,Response Date
 Annie Mac,annie@bbc.co.uk,BBC Radio,DJ/Presenter,pending,"Intelligence: BBC Radio 1 Future Sounds host...
@@ -81,6 +85,7 @@ Company: BBC",,,
 **Endpoint**: `POST /api/export-to-tracker`
 
 **Request**:
+
 ```json
 {
   "contacts": [
@@ -101,6 +106,7 @@ Company: BBC",,,
 ```
 
 **Response**:
+
 ```json
 {
   "success": true,
@@ -118,6 +124,7 @@ Company: BBC",,,
 **Endpoint**: `POST /api/campaigns/import`
 
 **Request**:
+
 ```json
 {
   "campaigns": [
@@ -133,6 +140,7 @@ Company: BBC",,,
 ```
 
 **Response**:
+
 ```json
 {
   "success": 40,
@@ -144,23 +152,24 @@ Company: BBC",,,
 ### Deep Linking
 
 **Audio Intel → Tracker**:
+
 ```
 https://tracker.totalaudiopromo.com/dashboard/import?source=audio-intel&contacts=42
 ```
 
 **URL Parameters**:
+
 - `source=audio-intel` - Triggers Audio Intel detection UI
 - `contacts=42` - Shows contact count in notification
 
 **Tracker Detection**:
+
 ```typescript
 useEffect(() => {
   const source = searchParams?.get('source');
   if (source === 'audio-intel') {
     const contactsCount = searchParams?.get('contacts');
-    setNotification(
-      `Ready to import ${contactsCount} enriched contacts from Audio Intel!`
-    );
+    setNotification(`Ready to import ${contactsCount} enriched contacts from Audio Intel!`);
   }
 }, [searchParams]);
 ```
@@ -244,6 +253,7 @@ Company: BBC
 ```
 
 This ensures:
+
 - ✅ No data loss during transfer
 - ✅ Campaign managers can reference intelligence
 - ✅ Follow-up context always available
@@ -251,14 +261,14 @@ This ensures:
 
 ### What Gets Mapped
 
-| Audio Intel Field | Preserved In | Tracker Usage |
-|-------------------|--------------|---------------|
-| Contact Intelligence | `Notes` | Reference during pitching |
-| Research Confidence | `Notes` | Prioritize high-confidence contacts |
-| Platform/Company | `Outlet` | Campaign segmentation |
-| Role | `Role` | Personalization |
-| Email | `Email` | Primary contact method |
-| Name | `Name` | Personalization |
+| Audio Intel Field    | Preserved In | Tracker Usage                       |
+| -------------------- | ------------ | ----------------------------------- |
+| Contact Intelligence | `Notes`      | Reference during pitching           |
+| Research Confidence  | `Notes`      | Prioritize high-confidence contacts |
+| Platform/Company     | `Outlet`     | Campaign segmentation               |
+| Role                 | `Role`       | Personalization                     |
+| Email                | `Email`      | Primary contact method              |
+| Name                 | `Name`       | Personalization                     |
 
 ### What Doesn't Transfer
 
@@ -274,18 +284,21 @@ These are intentionally separate to maintain tool-specific functionality.
 
 **Issue**: CSV won't import in Tracker
 **Solution**: Check for:
+
 - Required fields: `name`, `email`
 - Proper CSV encoding (UTF-8)
 - No malformed rows
 
 **Issue**: Deep link opens Tracker but no notification
 **Solution**:
+
 - Check URL parameters are intact
 - Verify browser didn't strip `source` param
 - Refresh page to re-trigger detection
 
 **Issue**: Enrichment data not showing in Tracker notes
 **Solution**:
+
 - Ensure `includeEnrichmentData: true` in export request
 - Check CSV `Notes` column has content
 - Re-export from Audio Intel if missing
@@ -293,6 +306,7 @@ These are intentionally separate to maintain tool-specific functionality.
 ### Troubleshooting
 
 **Export fails in Audio Intel**:
+
 ```javascript
 // Check browser console for:
 Error: Export to Tracker failed
@@ -303,6 +317,7 @@ Error: Export to Tracker failed
 ```
 
 **Import fails in Tracker**:
+
 ```javascript
 // Check response for:
 {

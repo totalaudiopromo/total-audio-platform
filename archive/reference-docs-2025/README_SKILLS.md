@@ -1,4 +1,3 @@
-
 # Skills System - Total Audio Platform
 
 The Skills System is a modular, versioned AI capability framework that enables Total Audio's agents (Audio Intel, Pitch Generator, Campaign Tracker) to leverage reusable, composable skills for intelligent automation.
@@ -6,6 +5,7 @@ The Skills System is a modular, versioned AI capability framework that enables T
 ## 🎯 What Are Skills?
 
 Skills are **self-contained, AI-powered capabilities** that can be:
+
 - **Composed**: Chain multiple skills together (e.g., VoiceGuard → PitchDraft)
 - **Versioned**: Manage multiple versions with semantic versioning
 - **Configured**: Customize behavior per organization or user
@@ -53,6 +53,7 @@ Think of skills as "AI microservices" – each one does one thing really well an
 The Skills System uses 4 core tables in Supabase:
 
 ### `skill`
+
 Registry of all available skills.
 
 ```sql
@@ -65,6 +66,7 @@ Registry of all available skills.
 ```
 
 ### `skill_version`
+
 Version history for each skill (semantic versioning).
 
 ```sql
@@ -77,6 +79,7 @@ Version history for each skill (semantic versioning).
 ```
 
 ### `skill_binding`
+
 Per-org and per-user skill enablement.
 
 ```sql
@@ -90,6 +93,7 @@ Per-org and per-user skill enablement.
 ```
 
 ### `skill_invocation`
+
 Complete audit trail of every skill execution.
 
 ```sql
@@ -126,16 +130,10 @@ import { SkillEngine } from '@/core/skills/SkillEngine';
 import { createClient } from '@supabase/supabase-js';
 
 // Create Supabase client
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
 
 // Initialize skills engine
-const skillEngine = new SkillEngine(
-  supabase,
-  process.env.ANTHROPIC_API_KEY
-);
+const skillEngine = new SkillEngine(supabase, process.env.ANTHROPIC_API_KEY);
 
 await skillEngine.initialize();
 ```
@@ -176,11 +174,13 @@ if (result.success) {
 ## 🧩 Built-in Skills
 
 ### 1. VoiceGuardSkill
+
 **Purpose**: Ensures Total Audio's authentic UK music industry voice
 **Category**: Brand Voice
 **Use Case**: Validate and correct all customer-facing content
 
 **Input**:
+
 ```typescript
 {
   text: string;
@@ -191,6 +191,7 @@ if (result.success) {
 ```
 
 **Output**:
+
 ```typescript
 {
   text: string; // Corrected text
@@ -207,12 +208,16 @@ if (result.success) {
 ```
 
 **Example**:
+
 ```typescript
-const result = await VoiceGuardSkill.execute({
-  text: 'Leverage our innovative solution to organize your music.',
-  contentType: 'website_copy',
-  targetAudience: 'independent_artists'
-}, context);
+const result = await VoiceGuardSkill.execute(
+  {
+    text: 'Leverage our innovative solution to organize your music.',
+    contentType: 'website_copy',
+    targetAudience: 'independent_artists',
+  },
+  context
+);
 
 // Result:
 // compliance_score: 0.45
@@ -221,11 +226,13 @@ const result = await VoiceGuardSkill.execute({
 ```
 
 ### 2. PitchDraftSkill
+
 **Purpose**: Generate high-quality music PR pitches
 **Category**: Pitch Generation
 **Use Case**: Create personalized email pitches for contacts
 
 **Input**:
+
 ```typescript
 {
   contact: {
@@ -257,6 +264,7 @@ const result = await VoiceGuardSkill.execute({
 ```
 
 **Output**:
+
 ```typescript
 {
   drafts: Array<{
@@ -272,6 +280,7 @@ const result = await VoiceGuardSkill.execute({
 ```
 
 **Example**:
+
 ```typescript
 const result = await skillEngine.invokeSkill({
   orgId: 'org_123',
@@ -281,15 +290,15 @@ const result = await skillEngine.invokeSkill({
       name: 'Sarah Jones',
       outlet: 'BBC Radio 6 Music',
       genre_focus: ['electronic', 'ambient'],
-      recent_activity: ['Featured UK producer spotlight']
+      recent_activity: ['Featured UK producer spotlight'],
     },
     track: {
       title: 'Midnight Drive',
       artist: 'sadact',
       genre: 'electronic/ambient',
-      key_facts: ['BBC Introducing featured', '50k Spotify streams']
-    }
-  }
+      key_facts: ['BBC Introducing featured', '50k Spotify streams'],
+    },
+  },
 });
 
 // Returns 3 drafts with different angles:
@@ -299,11 +308,13 @@ const result = await skillEngine.invokeSkill({
 ```
 
 ### 3. ContactMatcherSkill
+
 **Purpose**: Match tracks with relevant industry contacts
 **Category**: Contact Intelligence
 **Use Case**: Audio Intel contact recommendations
 
 **Input**:
+
 ```typescript
 {
   track: {
@@ -337,6 +348,7 @@ const result = await skillEngine.invokeSkill({
 ```
 
 **Output**:
+
 ```typescript
 {
   matches: Array<{
@@ -359,6 +371,7 @@ const result = await skillEngine.invokeSkill({
 ```
 
 **Example**:
+
 ```typescript
 const result = await skillEngine.invokeSkill({
   orgId: 'org_123',
@@ -368,7 +381,7 @@ const result = await skillEngine.invokeSkill({
       title: 'Midnight Drive',
       genre: 'electronic/ambient',
       subgenres: ['downtempo', 'atmospheric'],
-      mood: ['late-night', 'introspective']
+      mood: ['late-night', 'introspective'],
     },
     contacts: [
       {
@@ -376,12 +389,12 @@ const result = await skillEngine.invokeSkill({
         name: 'Sarah Jones',
         outlet: 'BBC Radio 6 Music',
         genre_focus: ['electronic', 'ambient'],
-        recent_activity: ['Featured UK ambient showcase']
+        recent_activity: ['Featured UK ambient showcase'],
       },
       // ... more contacts
     ],
-    limit: 5
-  }
+    limit: 5,
+  },
 });
 
 // Returns top 5 matched contacts with personalization hooks
@@ -496,10 +509,7 @@ export class MyNewSkill {
   /**
    * Execute the skill
    */
-  static async execute(
-    input: MyNewSkillInput,
-    context: SkillContext
-  ): Promise<MyNewSkillOutput> {
+  static async execute(input: MyNewSkillInput, context: SkillContext): Promise<MyNewSkillOutput> {
     if (!context.tools.llm) {
       throw new Error('LLM client required');
     }
@@ -573,18 +583,19 @@ import { MyNewSkill } from '../implementations/MyNewSkill';
 
 describe('MyNewSkill', () => {
   it('should handle valid input', async () => {
-    const result = await MyNewSkill.execute({
-      input1: 'test input',
-    }, mockContext);
+    const result = await MyNewSkill.execute(
+      {
+        input1: 'test input',
+      },
+      mockContext
+    );
 
     expect(result.confidence).toBeGreaterThan(0.7);
     expect(result.output1).toBeDefined();
   });
 
   it('should validate input constraints', async () => {
-    await expect(
-      MyNewSkill.execute({ input1: 'short' }, mockContext)
-    ).rejects.toThrow();
+    await expect(MyNewSkill.execute({ input1: 'short' }, mockContext)).rejects.toThrow();
   });
 });
 ```
@@ -592,11 +603,13 @@ describe('MyNewSkill', () => {
 ## 📡 API Usage
 
 ### List Available Skills
+
 ```bash
 GET /api/skills
 ```
 
 **Response**:
+
 ```json
 {
   "success": true,
@@ -612,6 +625,7 @@ GET /api/skills
 ```
 
 ### Invoke a Skill
+
 ```bash
 POST /api/skills/pitch_draft/invoke
 Content-Type: application/json
@@ -628,6 +642,7 @@ Content-Type: application/json
 ```
 
 **Response**:
+
 ```json
 {
   "success": true,
@@ -643,11 +658,13 @@ Content-Type: application/json
 ```
 
 ### Get Invocation History
+
 ```bash
 GET /api/skills/invocations?orgId=org_123&skillKey=pitch_draft&limit=50
 ```
 
 ### Manage Skill Bindings
+
 ```bash
 # Enable skill for org
 POST /api/skills/bindings
@@ -665,6 +682,7 @@ GET /api/skills/bindings?orgId=org_123
 ```
 
 ### Get Usage Stats
+
 ```bash
 GET /api/skills/stats?orgId=org_123&period=7d
 ```
@@ -789,11 +807,15 @@ await skillEngine.db.from('skill_binding').insert({
 Implement in API middleware:
 
 ```typescript
-app.post('/api/skills/:key/invoke', rateLimiter({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // 100 requests per window
-  keyGenerator: (req) => `${req.body.orgId}:${req.params.key}`,
-}), skillInvokeHandler);
+app.post(
+  '/api/skills/:key/invoke',
+  rateLimiter({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // 100 requests per window
+    keyGenerator: req => `${req.body.orgId}:${req.params.key}`,
+  }),
+  skillInvokeHandler
+);
 ```
 
 ## 📊 Monitoring & Analytics
@@ -833,18 +855,20 @@ Chain skills together for complex workflows:
 ```typescript
 // 1. Generate pitch drafts
 const pitchResult = await skillEngine.invokeSkill({
-  orgId, userId,
+  orgId,
+  userId,
   skillKey: 'pitch_draft',
-  payload: { contact, track }
+  payload: { contact, track },
 });
 
 // 2. Apply voice guard to each draft
 const validatedDrafts = await Promise.all(
   pitchResult.outputs.drafts.map(draft =>
     skillEngine.invokeSkill({
-      orgId, userId,
+      orgId,
+      userId,
       skillKey: 'voice_guard',
-      payload: { text: draft.body, contentType: 'email_pitch' }
+      payload: { text: draft.body, contentType: 'email_pitch' },
     })
   )
 );
@@ -1004,6 +1028,7 @@ describe('Skills Integration', () => {
 ### Reporting Issues
 
 Open an issue with:
+
 - Skill name and version
 - Input payload (sanitized)
 - Expected vs actual output

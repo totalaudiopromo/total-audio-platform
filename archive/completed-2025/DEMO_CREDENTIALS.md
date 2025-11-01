@@ -15,6 +15,7 @@ All three tools use the **same Supabase authentication database**, which means *
 **Password**: `2Sn00zyD0g$`
 
 **Why this account**:
+
 - ✅ Uses your actual Liberty email (authentic for demo)
 - ✅ Works across all three tools (Audio Intel, Tracker, Pitch Generator)
 - ✅ Professional context - "This is my work email, I use these tools daily"
@@ -25,16 +26,19 @@ All three tools use the **same Supabase authentication database**, which means *
 ## 📱 WHERE TO SIGN IN
 
 ### Audio Intel (http://localhost:3000)
+
 - **Sign In URL**: http://localhost:3000/signin
 - **Dashboard After Login**: http://localhost:3000/dashboard
 - **Features**: Contact enrichment, CSV upload, export
 
 ### Tracker (http://localhost:3001)
+
 - **Sign In URL**: http://localhost:3001 (login form on homepage)
 - **Dashboard After Login**: http://localhost:3001/dashboard
 - **Features**: Campaign tracking, pitch logging, client reports
 
 ### Pitch Generator (http://localhost:3002)
+
 - **Sign In URL**: http://localhost:3002 (check for auth flow)
 - **Dashboard After Login**: http://localhost:3002/dashboard (or main tool page)
 - **Features**: AI pitch writing, tone adjustment
@@ -44,6 +48,7 @@ All three tools use the **same Supabase authentication database**, which means *
 ## 🧪 TESTING YOUR CREDENTIALS (Do This Tonight)
 
 ### Test 1: Audio Intel Login
+
 1. Go to http://localhost:3000/signin
 2. Enter: `chrisschofield@libertymusicpr.com`
 3. Password: `2Sn00zyD0g$`
@@ -52,6 +57,7 @@ All three tools use the **same Supabase authentication database**, which means *
 6. **If it fails**: Account needs to be created (see below)
 
 ### Test 2: Tracker Login
+
 1. Go to http://localhost:3001
 2. Find login form (should be on homepage)
 3. Enter same credentials
@@ -60,6 +66,7 @@ All three tools use the **same Supabase authentication database**, which means *
 6. **If it fails**: Same account should work (shared Supabase)
 
 ### Test 3: Pitch Generator Login
+
 1. Go to http://localhost:3002
 2. Find sign in page
 3. Enter same credentials
@@ -72,6 +79,7 @@ All three tools use the **same Supabase authentication database**, which means *
 ## 🔧 IF ACCOUNT DOESN'T EXIST - CREATE IT NOW
 
 ### Option 1: Sign Up via Audio Intel (Easiest)
+
 1. Go to http://localhost:3000/signup
 2. **Email**: `chrisschofield@libertymusicpr.com`
 3. **Password**: `Liberty2025!Demo`
@@ -81,13 +89,16 @@ All three tools use the **same Supabase authentication database**, which means *
 7. **Done** - This account now works across all three tools
 
 ### Option 2: Sign Up via Tracker
+
 1. Go to http://localhost:3001 (look for "Sign up" link)
 2. Enter same credentials
 3. Complete signup
 4. Verify email if needed
 
 ### Option 3: Quick Supabase Dashboard Creation
+
 If you have access to Supabase dashboard:
+
 1. Go to https://ucncbighzqudaszewjrv.supabase.co
 2. Navigate to Authentication → Users
 3. Click "Add User"
@@ -101,16 +112,19 @@ If you have access to Supabase dashboard:
 ## 🎭 ALTERNATIVE DEMO ACCOUNTS (Backup)
 
 ### Option A: Founder Account
+
 **Email**: `founder@totalaudiopromo.com`
 **Password**: `buildfast`
 **Note**: This is configured in Pitch Generator env vars (see apps/pitch-generator/.env.local line 9-10)
 
 ### Option B: Simple Demo Account
+
 **Email**: `demo@totalaudiopromo.com`
 **Password**: `TotalAudio2025`
 **Note**: Generic demo account, less authentic than Liberty email
 
 ### Option C: Personal Email Backup
+
 **Email**: `chris@totalaudiopromo.com`
 **Password**: `Liberty2025!Demo`
 **Note**: If you want to keep Liberty email separate
@@ -132,19 +146,25 @@ Before the meeting with Dan:
 ## 🚨 TROUBLESHOOTING
 
 ### Problem: "Invalid login credentials"
+
 **Solution**: Account doesn't exist yet. Go to `/signup` and create it with your Liberty email.
 
 ### Problem: "Email not confirmed"
+
 **Solution**: Check `chrisschofield@libertymusicpr.com` inbox for verification email from Supabase. Click the link.
 
 ### Problem: Password doesn't work
+
 **Solution**: Use "Forgot Password" link or reset via Supabase dashboard.
 
 ### Problem: Different apps show different accounts
+
 **Solution**: This shouldn't happen - they share same database. Clear browser cookies and try again.
 
 ### Problem: Account works on one tool but not others
+
 **Solution**: All three apps share the same Supabase database. If login works on one, it MUST work on all. Check:
+
 - Are you typing the exact same email/password?
 - Clear browser cache/cookies
 - Try incognito mode
@@ -161,6 +181,7 @@ When you log in during the demo:
 > campaign tracking, and pitch writing without re-authenticating."
 
 **Why this matters for Dan**:
+
 - Shows professional integration across tools
 - Demonstrates you've built a unified ecosystem, not separate projects
 - Liberty email = authentic use case ("I actually use this daily")
@@ -172,16 +193,19 @@ When you log in during the demo:
 Once logged in with your Liberty email, you can demonstrate:
 
 ### In Audio Intel:
+
 - Upload real Liberty client contacts (e.g., Royal Blood campaign contacts)
 - Show enrichment with your actual work data
 - Export results that look like real Liberty workflow
 
 ### In Tracker:
+
 - Create campaigns for actual Liberty clients (Royal Blood, Architects, etc.)
 - Log pitches to real radio contacts you work with
 - Generate client reports that look like Liberty's actual output
 
 ### In Pitch Generator:
+
 - Use real artists you promote at Liberty
 - Target real outlets (BBC Radio 1, Kerrang, etc.)
 - Show pitches you'd actually send in your day job
