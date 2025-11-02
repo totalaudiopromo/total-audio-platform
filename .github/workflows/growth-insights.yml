@@ -206,6 +206,22 @@ jobs:
               labels: ['growth-insights', 'failure', 'automated']
             });
 
+      - name: Notify Telegram on Success
+        if: steps.insights.outputs.status == 'SUCCESS' && secrets.TELEGRAM_BOT_TOKEN != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "📈 *Weekly Growth Insights Ready*\n\nAnalyzed ${{ steps.insights.outputs.weeks }} weeks of growth data.\n\n[View Report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+        run: .github/scripts/send-telegram.sh
+
+      - name: Notify Telegram on Failure
+        if: steps.insights.outputs.status == 'FAILED' && secrets.TELEGRAM_BOT_TOKEN != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "⚠️ *Growth Insights Generation Failed*\n\nCheck workflow logs for details.\n\n[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+        run: .github/scripts/send-telegram.sh
+
       - name: Optional Slack Notification
         if: steps.insights.outputs.status == 'SUCCESS' && vars.SLACK_WEBHOOK_URL != ''
         run: |

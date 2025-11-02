@@ -1,0 +1,26 @@
+name: Telegram Notification Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Message to send'
+        required: true
+        default: 'Testing unified Total Audio Bot!'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x .github/scripts/send-telegram.sh
+
+      - name: Send Telegram Message
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: ${{ github.event.inputs.message }}
+        run: .github/scripts/send-telegram.sh

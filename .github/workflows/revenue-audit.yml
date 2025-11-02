@@ -180,6 +180,30 @@ jobs:
           echo "✅ Revenue audit passed for ${{ steps.audit.outputs.month }}"
           echo "All revenue data is in sync between Stripe and database."
 
+      - name: Notify Telegram on Failure
+        if: steps.audit.outputs.status == 'FAIL' && secrets.TELEGRAM_BOT_TOKEN != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "🚨 *Revenue Audit Failed* - ${{ steps.audit.outputs.month }}\n\nCritical revenue discrepancy detected. Review required.\n\n[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+        run: .github/scripts/send-telegram.sh
+
+      - name: Notify Telegram on Warning
+        if: steps.audit.outputs.status == 'WARNING' && secrets.TELEGRAM_BOT_TOKEN != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "⚠️ *Revenue Audit Warning* - ${{ steps.audit.outputs.month }}\n\nMinor discrepancies detected. Review recommended.\n\n[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+        run: .github/scripts/send-telegram.sh
+
+      - name: Notify Telegram on Success
+        if: steps.audit.outputs.status == 'PASS' && secrets.TELEGRAM_BOT_TOKEN != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "✅ *Revenue Audit Passed* - ${{ steps.audit.outputs.month }}\n\nAll revenue data in sync."
+        run: .github/scripts/send-telegram.sh
+
       - name: Notify Slack on Failure (Optional)
         if: steps.audit.outputs.status == 'FAIL' && vars.SLACK_WEBHOOK_URL != ''
         run: |
