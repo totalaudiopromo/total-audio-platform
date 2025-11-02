@@ -65,8 +65,7 @@ export const metadata: Metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false, // Prevents zoom on mobile inputs
+  maximumScale: 5, // Allow zoom for accessibility (Lighthouse requirement)
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#f6ab00' },
     { media: '(prefers-color-scheme: dark)', color: '#f6ab00' },
