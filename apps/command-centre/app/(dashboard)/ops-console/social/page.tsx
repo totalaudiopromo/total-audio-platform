@@ -70,9 +70,7 @@ export default function SocialPage() {
           connected: blueskyData?.connected || false,
           postsScheduled: 0,
           postsPublished: blueskyData?.posts?.length || 0,
-          lastPost: blueskyData?.lastSync
-            ? new Date(blueskyData.lastSync).toLocaleString()
-            : null,
+          lastPost: blueskyData?.lastSync ? new Date(blueskyData.lastSync).toLocaleString() : null,
           rateLimits: {
             postsPerDay: 200,
             postsPerHour: 30,
@@ -273,7 +271,9 @@ export default function SocialPage() {
         <div className="flex items-start gap-3">
           <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
           <div>
-            <h4 className="font-bold text-green-900 mb-1">Phase 9D-2A Social Integrations Active</h4>
+            <h4 className="font-bold text-green-900 mb-1">
+              Phase 9D-2A Social Integrations Active
+            </h4>
             <ul className="text-sm text-green-800 space-y-1 list-disc list-inside">
               <li>
                 <strong>X (Twitter) & LinkedIn:</strong> OAuth flows operational, tokens stored in
