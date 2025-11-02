@@ -1,0 +1,95 @@
+name: Agent Health Check
+
+on:
+  schedule:
+    # Run nightly at 02:00 UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      notify:
+        description: 'Send Telegram notification'
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  agent-health-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Agent Observability Check
+        id: health-check
+        env:
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+        run: |
+          # Run agent observability script
+          pnpm tsx scripts/agent-observability.ts --output "reports/agent-health/$(date +%Y-%m-%d).md"
+
+          # Check if health check failed
+          if [ $? -ne 0 ]; then
+            echo "status=FAILED" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          # Extract status from report
+          REPORT_PATH="reports/agent-health/$(date +%Y-%m-%d).md"
+          if grep -q "Overall Status.*FAIL" "$REPORT_PATH"; then
+            echo "status=FAIL" >> $GITHUB_OUTPUT
+          elif grep -q "Overall Status.*WARN" "$REPORT_PATH"; then
+            echo "status=WARN" >> $GITHUB_OUTPUT
+          else
+            echo "status=PASS" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload Health Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-health-$(date +%Y-%m-%d)
+          path: reports/agent-health/$(date +%Y-%m-%d).md
+          retention-days: 90
+
+      - name: Notify Telegram on Failure
+        if: steps.health-check.outputs.status == 'FAIL' && secrets.TELEGRAM_BOT_TOKEN != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "🚨 *Agent Health Check Failed*\\n\\nCritical agent performance issues detected. Review required.\\n\\n[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+        run: .github/scripts/send-telegram.sh
+
+      - name: Notify Telegram on Warning
+        if: steps.health-check.outputs.status == 'WARN' && secrets.TELEGRAM_BOT_TOKEN != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "⚠️ *Agent Health Warning*\\n\\nAgent performance degradation detected. Review recommended.\\n\\n[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+        run: .github/scripts/send-telegram.sh
+
+      - name: Notify Telegram on Success
+        if: steps.health-check.outputs.status == 'PASS' && secrets.TELEGRAM_BOT_TOKEN != '' && (github.event_name == 'workflow_dispatch' || github.event.inputs.notify == 'true')
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "✅ *Agent Health Check Passed*\\n\\nAll agents performing within normal parameters."
+        run: .github/scripts/send-telegram.sh

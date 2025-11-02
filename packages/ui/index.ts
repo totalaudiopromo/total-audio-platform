@@ -12,8 +12,10 @@
 export { SiteHeader } from './components/SiteHeader';
 export { SiteFooter } from './components/SiteFooter';
 export { ToolSwitcher } from './components/ToolSwitcher';
+export { FeedbackButton } from './src/components/FeedbackButton';
 
 // Type exports available directly from component files:
 // import type { SiteHeaderProps, SiteHeaderLink } from '@total-audio/ui/SiteHeader';
 // import type { SiteFooterProps, SiteFooterLink } from '@total-audio/ui/SiteFooter';
 // import type { ToolSwitcherProps } from '@total-audio/ui/ToolSwitcher';
+// import type { FeedbackButtonProps } from '@total-audio/ui/src/components/FeedbackButton';

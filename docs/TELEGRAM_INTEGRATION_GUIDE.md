@@ -84,6 +84,7 @@ Add these secrets to **both** repositories:
 ### Revenue Audit Notifications
 
 **Success (Daily at midnight UTC)**:
+
 ```
 🎧 [Platform] ✅ Revenue Audit Passed - 2025-11
 
@@ -92,6 +93,7 @@ All revenue data in sync.
 ```
 
 **Warning**:
+
 ```
 🎧 [Platform] ⚠️ Revenue Audit Warning - 2025-11
 
@@ -100,6 +102,7 @@ Minor discrepancies detected. Review recommended.
 ```
 
 **Failure**:
+
 ```
 🎧 [Platform] 🚨 Revenue Audit Failed - 2025-11
 
@@ -110,6 +113,7 @@ Critical revenue discrepancy detected. Review required.
 ### Growth Insights Notifications
 
 **Success (Weekly on Sundays at 9am UTC)**:
+
 ```
 🎧 [Platform] 📈 Weekly Growth Insights Ready
 
@@ -118,6 +122,7 @@ Analyzed 4 weeks of growth data.
 ```
 
 **Failure**:
+
 ```
 🎧 [Platform] ⚠️ Growth Insights Generation Failed
 
@@ -130,6 +135,7 @@ Check workflow logs for details.
 ### Script Location
 
 Both repositories use the same script:
+
 ```bash
 .github/scripts/send-telegram.sh
 ```
@@ -144,7 +150,7 @@ The script is called from GitHub Actions workflows with environment variables:
   env:
     TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
     TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-    MESSAGE: "Your notification message here"
+    MESSAGE: 'Your notification message here'
   run: .github/scripts/send-telegram.sh
 ```
 
@@ -188,6 +194,7 @@ fi
 ### Multiple repositories sending notifications?
 
 This is expected! The unified bot handles both:
+
 - `total-audio-platform` (🎧)
 - `totalaud.io` (🌌)
 

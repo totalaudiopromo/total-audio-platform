@@ -129,9 +129,7 @@ async function generateRevenueAudit(month?: string): Promise<RevenueAuditReport>
 
   summary.discrepancy = Math.abs(summary.stripeRevenue - summary.databaseRevenue);
   summary.discrepancyPercentage =
-    summary.stripeRevenue > 0
-      ? (summary.discrepancy / summary.stripeRevenue) * 100
-      : 0;
+    summary.stripeRevenue > 0 ? (summary.discrepancy / summary.stripeRevenue) * 100 : 0;
 
   const report: RevenueAuditReport = {
     month: targetMonth,
@@ -385,7 +383,9 @@ function generateRecommendations(
     recommendations.push(
       '🚨 **CRITICAL**: Revenue discrepancy detected. Run backfill script immediately.'
     );
-    recommendations.push('Review Stripe webhook configuration and ensure all events are being received.');
+    recommendations.push(
+      'Review Stripe webhook configuration and ensure all events are being received.'
+    );
   }
 
   if (validation.status === 'WARNING') {
@@ -413,15 +413,7 @@ function generateRecommendations(
 }
 
 function formatReport(report: RevenueAuditReport): string {
-  const {
-    month,
-    generatedAt,
-    summary,
-    stripe,
-    database,
-    validation,
-    recommendations,
-  } = report;
+  const { month, generatedAt, summary, stripe, database, validation, recommendations } = report;
 
   const statusEmoji = {
     PASS: '✅',
@@ -442,7 +434,7 @@ function formatReport(report: RevenueAuditReport): string {
 | Metric | Stripe | Database | Δ |
 |--------|--------|----------|---|
 | **Total Revenue** | £${(summary.stripeRevenue / 100).toFixed(2)} | £${(summary.databaseRevenue / 100).toFixed(2)} | £${(summary.discrepancy / 100).toFixed(2)} (${summary.discrepancyPercentage.toFixed(2)}%) |
-| **Payment Count** | ${stripe.paymentIntents.count + stripe.invoices.count} | ${database.payments.count} | ${Math.abs((stripe.paymentIntents.count + stripe.invoices.count) - database.payments.count)} |
+| **Payment Count** | ${stripe.paymentIntents.count + stripe.invoices.count} | ${database.payments.count} | ${Math.abs(stripe.paymentIntents.count + stripe.invoices.count - database.payments.count)} |
 | **MRR** | £${(stripe.subscriptions.totalMRR / 100).toFixed(2)} | - | - |
 
 ---
@@ -543,8 +535,7 @@ async function main() {
     const markdown = formatReport(report);
 
     // Determine output path
-    const finalOutputPath =
-      outputPath || `reports/revenue/${report.month}.md`;
+    const finalOutputPath = outputPath || `reports/revenue/${report.month}.md`;
 
     // Ensure directory exists
     const dir = path.dirname(finalOutputPath);
@@ -559,7 +550,9 @@ async function main() {
     console.log(`  Status: ${report.validation.status}`);
     console.log(`  Stripe Revenue: £${(report.summary.stripeRevenue / 100).toFixed(2)}`);
     console.log(`  Database Revenue: £${(report.summary.databaseRevenue / 100).toFixed(2)}`);
-    console.log(`  Discrepancy: £${(report.summary.discrepancy / 100).toFixed(2)} (${report.summary.discrepancyPercentage.toFixed(2)}%)`);
+    console.log(
+      `  Discrepancy: £${(report.summary.discrepancy / 100).toFixed(2)} (${report.summary.discrepancyPercentage.toFixed(2)}%)`
+    );
     console.log(`\n  Issues: ${report.validation.issues.length}`);
     console.log(`\n✅ Report saved to: ${finalOutputPath}\n`);
 

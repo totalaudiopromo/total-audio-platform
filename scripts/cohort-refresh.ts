@@ -141,8 +141,7 @@ async function calculateRetention(
     .lt('created_at', targetDateEnd.toISOString())
     .eq('status', 'succeeded');
 
-  const revenueCents =
-    revenueData?.reduce((sum, p) => sum + (p.amount_cents || 0), 0) || 0;
+  const revenueCents = revenueData?.reduce((sum, p) => sum + (p.amount_cents || 0), 0) || 0;
 
   return {
     cohort_date: cohortDate,
@@ -229,17 +228,15 @@ async function refreshCohortMetrics(options: CohortRefreshOptions = {}) {
 
   // Process each cohort
   for (const cohortData of cohorts) {
-    console.log(`🔍 Processing cohort: ${cohortData.cohort_date} (${cohortData.total_users} users)`);
+    console.log(
+      `🔍 Processing cohort: ${cohortData.cohort_date} (${cohortData.total_users} users)`
+    );
 
     for (const periodConfig of periods) {
       for (const offset of periodConfig.offsets) {
         totalCalculations++;
 
-        const metric = await calculateRetention(
-          cohortData.cohort_date,
-          periodConfig.type,
-          offset
-        );
+        const metric = await calculateRetention(cohortData.cohort_date, periodConfig.type, offset);
 
         if (metric) {
           await upsertRetentionMetric(metric, dryRun);

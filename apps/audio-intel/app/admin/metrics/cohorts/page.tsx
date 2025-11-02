@@ -65,9 +65,7 @@ export default function CohortsPage() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(
-        `/api/admin/cohorts?periodType=${periodType}&limit=12`
-      );
+      const response = await fetch(`/api/admin/cohorts?periodType=${periodType}&limit=12`);
 
       if (!response.ok) {
         throw new Error('Failed to fetch cohort data');
@@ -127,9 +125,7 @@ export default function CohortsPage() {
       (cohort.revenue.perUser / 100).toFixed(2),
     ]);
 
-    const csvContent = [headers, ...rows]
-      .map(row => row.join(','))
-      .join('\n');
+    const csvContent = [headers, ...rows].map(row => row.join(',')).join('\n');
 
     const blob = new Blob([csvContent], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
@@ -198,9 +194,7 @@ export default function CohortsPage() {
         <div className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Cohort Retention</h1>
-            <p className="text-gray-600 mt-1">
-              User retention analysis by signup cohort
-            </p>
+            <p className="text-gray-600 mt-1">User retention analysis by signup cohort</p>
           </div>
 
           <div className="flex items-center gap-4">
@@ -225,9 +219,7 @@ export default function CohortsPage() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
           <Card className="p-4">
             <div className="text-sm text-gray-600">Total Cohorts</div>
-            <div className="text-2xl font-bold text-gray-900 mt-1">
-              {data.summary.totalCohorts}
-            </div>
+            <div className="text-2xl font-bold text-gray-900 mt-1">{data.summary.totalCohorts}</div>
           </Card>
 
           <Card className="p-4">
@@ -260,63 +252,33 @@ export default function CohortsPage() {
             <table className="w-full border-collapse">
               <thead>
                 <tr>
-                  <th className="text-left p-2 border-b-2 border-gray-300 bg-gray-50">
-                    Cohort
-                  </th>
-                  <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                    Users
-                  </th>
+                  <th className="text-left p-2 border-b-2 border-gray-300 bg-gray-50">Cohort</th>
+                  <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">Users</th>
                   {periodType === 'day' || periodType === 'all' ? (
                     <>
-                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                        D1
-                      </th>
-                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                        D7
-                      </th>
-                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                        D14
-                      </th>
-                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                        D30
-                      </th>
+                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">D1</th>
+                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">D7</th>
+                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">D14</th>
+                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">D30</th>
                     </>
                   ) : null}
                   {periodType === 'week' || periodType === 'all' ? (
                     <>
-                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                        W1
-                      </th>
-                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                        W2
-                      </th>
-                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                        W4
-                      </th>
-                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                        W8
-                      </th>
+                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">W1</th>
+                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">W2</th>
+                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">W4</th>
+                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">W8</th>
                     </>
                   ) : null}
                   {periodType === 'month' || periodType === 'all' ? (
                     <>
-                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                        M1
-                      </th>
-                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                        M2
-                      </th>
-                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                        M3
-                      </th>
-                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                        M6
-                      </th>
+                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">M1</th>
+                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">M2</th>
+                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">M3</th>
+                      <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">M6</th>
                     </>
                   ) : null}
-                  <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">
-                    Revenue
-                  </th>
+                  <th className="text-center p-2 border-b-2 border-gray-300 bg-gray-50">Revenue</th>
                 </tr>
               </thead>
               <tbody>
@@ -476,9 +438,7 @@ export default function CohortsPage() {
 
           <div className="space-y-3">
             {data.cohorts.map(cohort => {
-              const maxRevenue = Math.max(
-                ...data.cohorts.map(c => c.revenue.total)
-              );
+              const maxRevenue = Math.max(...data.cohorts.map(c => c.revenue.total));
               const widthPercentage =
                 maxRevenue > 0 ? (cohort.revenue.total / maxRevenue) * 100 : 0;
 

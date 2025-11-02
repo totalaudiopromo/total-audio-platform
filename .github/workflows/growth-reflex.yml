@@ -1,0 +1,90 @@
+name: Growth Reflex Report
+
+on:
+  schedule:
+    # Run every Monday at 09:00 UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+    inputs:
+      notify:
+        description: 'Send Telegram notification'
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  growth-reflex-analysis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Growth Reflex Analysis
+        id: growth-analysis
+        env:
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+        run: |
+          # Run growth reflex script
+          pnpm tsx scripts/growth-reflex.ts --output "reports/growth-reflex/$(date +%Y-%m-%d).md"
+
+          # Check if analysis failed
+          if [ $? -ne 0 ]; then
+            echo "status=FAILED" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          echo "status=SUCCESS" >> $GITHUB_OUTPUT
+
+          # Extract key metrics for Telegram notification
+          REPORT_PATH="reports/growth-reflex/$(date +%Y-%m-%d).md"
+
+          # Extract revenue change percentage
+          REVENUE_CHANGE=$(grep "Revenue Change" "$REPORT_PATH" | grep -oP '[\+\-][\d\.]+%' || echo "N/A")
+          echo "revenue_change=$REVENUE_CHANGE" >> $GITHUB_OUTPUT
+
+          # Extract top driver count
+          TOP_DRIVERS=$(grep "^|" "$REPORT_PATH" | grep -c "🟢\|🟡\|🔴" || echo "0")
+          echo "top_drivers=$TOP_DRIVERS" >> $GITHUB_OUTPUT
+
+      - name: Upload Growth Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: growth-reflex-$(date +%Y-%m-%d)
+          path: reports/growth-reflex/$(date +%Y-%m-%d).md
+          retention-days: 90
+
+      - name: Notify Telegram on Success
+        if: steps.growth-analysis.outputs.status == 'SUCCESS' && secrets.TELEGRAM_BOT_TOKEN != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "📈 *Weekly Growth Reflex Report*\\n\\n**Revenue Change**: ${{ steps.growth-analysis.outputs.revenue_change }}\\n**Top Revenue Drivers**: ${{ steps.growth-analysis.outputs.top_drivers }} features identified\\n\\n[View Report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+        run: .github/scripts/send-telegram.sh
+
+      - name: Notify Telegram on Failure
+        if: steps.growth-analysis.outputs.status == 'FAILED' && secrets.TELEGRAM_BOT_TOKEN != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "⚠️ *Growth Reflex Analysis Failed*\\n\\nCheck workflow logs for details.\\n\\n[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+        run: .github/scripts/send-telegram.sh

@@ -120,9 +120,8 @@ async function fetchWeekMetrics(weekStart: Date, weekEnd: Date): Promise<WeeklyM
     .not('subscription_id', 'is', null)
     .lte('created_at', weekEndStr);
 
-  const activeSubscriptions = new Set(
-    subscriptions?.map((s) => s.subscription_id).filter(Boolean)
-  ).size;
+  const activeSubscriptions = new Set(subscriptions?.map(s => s.subscription_id).filter(Boolean))
+    .size;
 
   // Calculate MRR from subscriptions
   const { data: subPayments } = await supabase
@@ -134,7 +133,7 @@ async function fetchWeekMetrics(weekStart: Date, weekEnd: Date): Promise<WeeklyM
 
   let mrr = 0;
   const seenSubs = new Set<string>();
-  subPayments?.forEach((p) => {
+  subPayments?.forEach(p => {
     const subId = p.subscription_id;
     if (subId && !seenSubs.has(subId)) {
       seenSubs.add(subId);
@@ -166,7 +165,7 @@ async function fetchWeekMetrics(weekStart: Date, weekEnd: Date): Promise<WeeklyM
     .gte('created_at', weekStartStr)
     .lt('created_at', weekEndStr);
 
-  const activeUsers = new Set(activeUserEvents?.map((e) => e.user_id)).size;
+  const activeUsers = new Set(activeUserEvents?.map(e => e.user_id)).size;
 
   // Fetch engagement metrics
   const dayAgo = new Date(weekEnd);
@@ -178,7 +177,7 @@ async function fetchWeekMetrics(weekStart: Date, weekEnd: Date): Promise<WeeklyM
     .gte('created_at', dayAgo.toISOString())
     .lt('created_at', weekEndStr);
 
-  const dau = new Set(dauEvents?.map((e) => e.user_id)).size;
+  const dau = new Set(dauEvents?.map(e => e.user_id)).size;
 
   const sevenDaysAgo = new Date(weekEnd);
   sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
@@ -189,7 +188,7 @@ async function fetchWeekMetrics(weekStart: Date, weekEnd: Date): Promise<WeeklyM
     .gte('created_at', sevenDaysAgo.toISOString())
     .lt('created_at', weekEndStr);
 
-  const wau = new Set(wauEvents?.map((e) => e.user_id)).size;
+  const wau = new Set(wauEvents?.map(e => e.user_id)).size;
 
   const thirtyDaysAgo = new Date(weekEnd);
   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
@@ -200,7 +199,7 @@ async function fetchWeekMetrics(weekStart: Date, weekEnd: Date): Promise<WeeklyM
     .gte('created_at', thirtyDaysAgo.toISOString())
     .lt('created_at', weekEndStr);
 
-  const mau = new Set(mauEvents?.map((e) => e.user_id)).size;
+  const mau = new Set(mauEvents?.map(e => e.user_id)).size;
 
   const stickiness = wau > 0 ? (dau / wau) * 100 : 0;
 
@@ -214,7 +213,7 @@ async function fetchWeekMetrics(weekStart: Date, weekEnd: Date): Promise<WeeklyM
 
   const enrichments = enrichmentEvents?.length || 0;
   const successfulEnrichments =
-    enrichmentEvents?.filter((e) => e.properties?.success_count > 0).length || 0;
+    enrichmentEvents?.filter(e => e.properties?.success_count > 0).length || 0;
   const successRate = enrichments > 0 ? (successfulEnrichments / enrichments) * 100 : 0;
 
   const totalContacts = enrichmentEvents?.reduce(
@@ -577,7 +576,7 @@ function formatReport(report: GrowthInsightsReport): string {
 ## 🎯 Key Insights
 
 ${insights
-  .map((insight) => {
+  .map(insight => {
     const icon =
       insight.severity === 'positive'
         ? '✅'

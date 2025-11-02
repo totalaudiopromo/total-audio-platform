@@ -33,6 +33,25 @@ const envSchema = z.object({
     .string()
     .transform(val => val === 'true')
     .default('true'),
+
+  // Phase 9: Autonomous Revenue Ops & Feedback Loops (optional)
+  FEATURE_AGENT_OBSERVABILITY_ENABLED: z
+    .string()
+    .transform(val => val === 'true')
+    .default('false'),
+  FEATURE_GROWTH_REFLEX_ENABLED: z
+    .string()
+    .transform(val => val === 'true')
+    .default('false'),
+  FEATURE_FEEDBACK_DIGEST_ENABLED: z
+    .string()
+    .transform(val => val === 'true')
+    .default('false'),
+
+  // Observability integrations (optional)
+  ANTHROPIC_API_KEY: z.string().min(10).optional(),
+  TELEGRAM_BOT_TOKEN: z.string().min(10).optional(),
+  TELEGRAM_CHAT_ID: z.string().optional(),
 });
 
 export type Env = z.infer<typeof envSchema>;

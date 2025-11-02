@@ -1,0 +1,111 @@
+name: Feedback Digest
+
+on:
+  schedule:
+    # Run every Friday at 16:00 UTC
+    - cron: '0 16 * * 5'
+  workflow_dispatch:
+    inputs:
+      notify:
+        description: 'Send Telegram notification'
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  feedback-digest-analysis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Feedback Digest Analysis
+        id: feedback-analysis
+        env:
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          # Run feedback digest script
+          pnpm tsx scripts/feedback-digest.ts --output "reports/feedback-digest/$(date +%Y-%m-%d).md"
+
+          # Check if analysis failed
+          if [ $? -ne 0 ]; then
+            echo "status=FAILED" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          echo "status=SUCCESS" >> $GITHUB_OUTPUT
+
+          # Extract key metrics for Telegram notification
+          REPORT_PATH="reports/feedback-digest/$(date +%Y-%m-%d).md"
+
+          # Extract total feedback count
+          TOTAL_FEEDBACK=$(grep "Total Feedback" "$REPORT_PATH" | grep -oP '\d+' | head -1 || echo "0")
+          echo "total_feedback=$TOTAL_FEEDBACK" >> $GITHUB_OUTPUT
+
+          # Extract negative feedback count
+          NEGATIVE_FEEDBACK=$(grep "Negative Feedback" "$REPORT_PATH" | grep -oP '\d+' | head -1 || echo "0")
+          echo "negative_feedback=$NEGATIVE_FEEDBACK" >> $GITHUB_OUTPUT
+
+          # Extract average rating
+          AVG_RATING=$(grep "Average Rating" "$REPORT_PATH" | grep -oP '[\d\.]+' | head -1 || echo "N/A")
+          echo "avg_rating=$AVG_RATING" >> $GITHUB_OUTPUT
+
+          # Check if there are urgent issues
+          if grep -q "🚨 Urgent Issues" "$REPORT_PATH"; then
+            URGENT_COUNT=$(grep -A 10 "🚨 Urgent Issues" "$REPORT_PATH" | grep -c "^-" || echo "0")
+            echo "urgent_issues=$URGENT_COUNT" >> $GITHUB_OUTPUT
+          else
+            echo "urgent_issues=0" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload Feedback Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: feedback-digest-$(date +%Y-%m-%d)
+          path: reports/feedback-digest/$(date +%Y-%m-%d).md
+          retention-days: 90
+
+      - name: Notify Telegram with Urgent Issues
+        if: steps.feedback-analysis.outputs.status == 'SUCCESS' && steps.feedback-analysis.outputs.urgent_issues != '0' && secrets.TELEGRAM_BOT_TOKEN != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "🚨 *Weekly Feedback Digest - URGENT ISSUES*\\n\\n**Total Feedback**: ${{ steps.feedback-analysis.outputs.total_feedback }}\\n**Negative**: ${{ steps.feedback-analysis.outputs.negative_feedback }}\\n**Average Rating**: ${{ steps.feedback-analysis.outputs.avg_rating }}/5\\n**⚠️ Urgent Issues**: ${{ steps.feedback-analysis.outputs.urgent_issues }}\\n\\nClaude has identified critical issues requiring immediate attention.\\n\\n[View Full Report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+        run: .github/scripts/send-telegram.sh
+
+      - name: Notify Telegram on Success (No Urgent Issues)
+        if: steps.feedback-analysis.outputs.status == 'SUCCESS' && steps.feedback-analysis.outputs.urgent_issues == '0' && secrets.TELEGRAM_BOT_TOKEN != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "📋 *Weekly Feedback Digest*\\n\\n**Total Feedback**: ${{ steps.feedback-analysis.outputs.total_feedback }}\\n**Negative**: ${{ steps.feedback-analysis.outputs.negative_feedback }}\\n**Average Rating**: ${{ steps.feedback-analysis.outputs.avg_rating }}/5\\n\\nClaude analysis complete. No urgent issues detected.\\n\\n[View Full Report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+        run: .github/scripts/send-telegram.sh
+
+      - name: Notify Telegram on Failure
+        if: steps.feedback-analysis.outputs.status == 'FAILED' && secrets.TELEGRAM_BOT_TOKEN != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: "⚠️ *Feedback Digest Analysis Failed*\\n\\nCheck workflow logs for details.\\n\\n[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+        run: .github/scripts/send-telegram.sh

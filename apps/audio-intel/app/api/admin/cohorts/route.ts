@@ -145,18 +145,17 @@ export async function GET(request: NextRequest) {
       });
 
       // Calculate revenue data
-      const totalRevenue =
-        metrics?.reduce((sum, m) => sum + (m.revenue_cents || 0), 0) || 0;
-      const perUserRevenue =
-        cohort.total_users > 0 ? totalRevenue / cohort.total_users : 0;
+      const totalRevenue = metrics?.reduce((sum, m) => sum + (m.revenue_cents || 0), 0) || 0;
+      const perUserRevenue = cohort.total_users > 0 ? totalRevenue / cohort.total_users : 0;
 
       // Group revenue by month
-      const revenueByMonth = metrics
-        ?.filter(m => m.period_type === 'month')
-        .map(m => ({
-          month: `M${m.period_offset}`,
-          amount: m.revenue_cents || 0,
-        })) || [];
+      const revenueByMonth =
+        metrics
+          ?.filter(m => m.period_type === 'month')
+          .map(m => ({
+            month: `M${m.period_offset}`,
+            amount: m.revenue_cents || 0,
+          })) || [];
 
       return {
         cohortDate,
@@ -177,14 +176,11 @@ export async function GET(request: NextRequest) {
     const totalRevenue = cohortData.reduce((sum, c) => sum + c.revenue.total, 0);
 
     const avgDay7 =
-      cohortData.reduce((sum, c) => sum + c.retention.day7, 0) /
-      Math.max(cohortData.length, 1);
+      cohortData.reduce((sum, c) => sum + c.retention.day7, 0) / Math.max(cohortData.length, 1);
     const avgDay30 =
-      cohortData.reduce((sum, c) => sum + c.retention.day30, 0) /
-      Math.max(cohortData.length, 1);
+      cohortData.reduce((sum, c) => sum + c.retention.day30, 0) / Math.max(cohortData.length, 1);
     const avgMonth3 =
-      cohortData.reduce((sum, c) => sum + c.retention.month3, 0) /
-      Math.max(cohortData.length, 1);
+      cohortData.reduce((sum, c) => sum + c.retention.month3, 0) / Math.max(cohortData.length, 1);
 
     const response: CohortsResponse = {
       cohorts: cohortData,
