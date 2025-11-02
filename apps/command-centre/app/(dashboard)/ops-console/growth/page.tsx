@@ -25,65 +25,22 @@ export default function GrowthPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Mock data - will be replaced with Phase 9B conversion_events queries
-    const mockConversions: ConversionSummary[] = [
-      {
-        app: 'audio-intel',
-        event_name: 'trial_started',
-        event_count: 234,
-        total_revenue_impact: 0,
-        avg_revenue_impact: 0,
-      },
-      {
-        app: 'audio-intel',
-        event_name: 'upgraded_to_pro',
-        event_count: 47,
-        total_revenue_impact: 89300, // £893 in pence
-        avg_revenue_impact: 1900,
-      },
-      {
-        app: 'audio-intel',
-        event_name: 'upgraded_to_agency',
-        event_count: 12,
-        total_revenue_impact: 94800, // £948 in pence
-        avg_revenue_impact: 7900,
-      },
-      {
-        app: 'pitch-generator',
-        event_name: 'trial_started',
-        event_count: 156,
-        total_revenue_impact: 0,
-        avg_revenue_impact: 0,
-      },
-      {
-        app: 'pitch-generator',
-        event_name: 'feature_adopted',
-        event_count: 89,
-        total_revenue_impact: 0,
-        avg_revenue_impact: 0,
-      },
-      {
-        app: 'tracker',
-        event_name: 'trial_started',
-        event_count: 78,
-        total_revenue_impact: 0,
-        avg_revenue_impact: 0,
-      },
-    ];
-
-    const mockMetrics: GrowthMetrics = {
-      totalRevenue: 184100, // £1,841 in pence
-      revenueGrowth: 23.4,
-      totalConversions: 616,
-      conversionRate: 15.2,
-      avgRevenuePerUser: 298,
-    };
-
-    setTimeout(() => {
-      setConversions(mockConversions);
-      setMetrics(mockMetrics);
-      setLoading(false);
-    }, 500);
+    // Fetch real growth metrics from Phase 9B database
+    fetch('/api/ops-console/growth')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setConversions(data.conversions || []);
+          setMetrics(data.metrics || null);
+        } else {
+          console.error('Failed to fetch growth metrics:', data.error);
+        }
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching growth metrics:', error);
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {
@@ -286,14 +243,14 @@ export default function GrowthPage() {
       </div>
 
       {/* Phase 9B Notice */}
-      <div className="bg-blue-50 border-2 border-blue-600 rounded-lg p-4">
+      <div className="bg-green-50 border-2 border-green-600 rounded-lg p-4">
         <div className="flex items-start gap-3">
-          <TrendingUp className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+          <TrendingUp className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
           <div>
-            <h4 className="font-bold text-blue-900 mb-1">Phase 9B Growth Reflex Active</h4>
-            <p className="text-sm text-blue-800">
-              Conversion data from <code className="font-mono">conversion_events</code> table.
-              Weekly growth summaries automated via Telegram. AI insights powered by Phase 9B
+            <h4 className="font-bold text-green-900 mb-1">Phase 9B Growth Reflex Active</h4>
+            <p className="text-sm text-green-800">
+              Real-time conversion data from <code className="font-mono">conversion_events</code>{' '}
+              table. Weekly growth summaries available via Telegram. AI insights powered by Phase 9B
               observability layer.
             </p>
           </div>

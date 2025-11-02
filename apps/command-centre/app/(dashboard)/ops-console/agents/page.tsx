@@ -19,74 +19,21 @@ export default function AgentsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Mock data - will be replaced with Phase 9B database queries
-    const mockAgents: AgentStats[] = [
-      {
-        agent_id: 'IntelAgent',
-        app: 'audio-intel',
-        total_events: 1247,
-        successful_events: 1247,
-        failed_events: 0,
-        avg_latency_ms: 1823,
-        success_rate: 100,
-        last_run: '2 minutes ago',
-      },
-      {
-        agent_id: 'PitchAgent',
-        app: 'pitch-generator',
-        total_events: 892,
-        successful_events: 889,
-        failed_events: 3,
-        avg_latency_ms: 2145,
-        success_rate: 99.7,
-        last_run: '5 minutes ago',
-      },
-      {
-        agent_id: 'TrackerAgent',
-        app: 'tracker',
-        total_events: 543,
-        successful_events: 541,
-        failed_events: 2,
-        avg_latency_ms: 1456,
-        success_rate: 99.6,
-        last_run: '8 minutes ago',
-      },
-      {
-        agent_id: 'InsightAgent',
-        app: 'audio-intel',
-        total_events: 234,
-        successful_events: 231,
-        failed_events: 3,
-        avg_latency_ms: 3421,
-        success_rate: 98.7,
-        last_run: '12 minutes ago',
-      },
-      {
-        agent_id: 'VoiceGuardAgent',
-        app: 'pitch-generator',
-        total_events: 156,
-        successful_events: 156,
-        failed_events: 0,
-        avg_latency_ms: 987,
-        success_rate: 100,
-        last_run: '15 minutes ago',
-      },
-      {
-        agent_id: 'SocialMediaSchedulerAgent',
-        app: 'command-centre',
-        total_events: 89,
-        successful_events: 85,
-        failed_events: 4,
-        avg_latency_ms: 1234,
-        success_rate: 95.5,
-        last_run: '18 minutes ago',
-      },
-    ];
-
-    setTimeout(() => {
-      setAgents(mockAgents);
-      setLoading(false);
-    }, 500);
+    // Fetch real agent metrics from Phase 9B database
+    fetch('/api/ops-console/agents')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setAgents(data.agents);
+        } else {
+          console.error('Failed to fetch agents:', data.error);
+        }
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching agent metrics:', error);
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {
@@ -210,14 +157,14 @@ export default function AgentsPage() {
       </div>
 
       {/* Database Connection Notice */}
-      <div className="bg-blue-50 border-2 border-blue-600 rounded-lg p-4">
+      <div className="bg-green-50 border-2 border-green-600 rounded-lg p-4">
         <div className="flex items-start gap-3">
-          <Bot className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+          <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
           <div>
-            <h4 className="font-bold text-blue-900 mb-1">Phase 9B Integration Active</h4>
-            <p className="text-sm text-blue-800">
-              Agent metrics are logged to <code className="font-mono">agent_events</code> table in
-              Supabase. Real-time data will replace mock data once API endpoints are wired.
+            <h4 className="font-bold text-green-900 mb-1">Phase 9B Integration Active</h4>
+            <p className="text-sm text-green-800">
+              Real-time agent metrics from <code className="font-mono">agent_events</code> table.
+              Data updates automatically with each agent execution.
             </p>
           </div>
         </div>

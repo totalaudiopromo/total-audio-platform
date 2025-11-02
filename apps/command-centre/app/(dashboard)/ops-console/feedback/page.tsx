@@ -28,88 +28,22 @@ export default function FeedbackPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Mock data - will be replaced with Phase 9B feedback_events queries
-    const mockSummary: FeedbackSummary[] = [
-      {
-        app: 'audio-intel',
-        total_feedback: 247,
-        avg_rating: 4.6,
-        positive_feedback: 218,
-        negative_feedback: 12,
-        trend: 'up',
-      },
-      {
-        app: 'pitch-generator',
-        total_feedback: 156,
-        avg_rating: 4.4,
-        positive_feedback: 132,
-        negative_feedback: 8,
-        trend: 'stable',
-      },
-      {
-        app: 'tracker',
-        total_feedback: 89,
-        avg_rating: 4.2,
-        positive_feedback: 71,
-        negative_feedback: 6,
-        trend: 'up',
-      },
-    ];
-
-    const mockRecent: RecentFeedback[] = [
-      {
-        id: '1',
-        user_id: 'user_123',
-        app: 'audio-intel',
-        agent_id: 'IntelAgent',
-        rating: 5,
-        comment:
-          'Absolutely brilliant! Saved me hours of research. BBC Radio 6 contact was spot-on.',
-        created_at: '2 hours ago',
-      },
-      {
-        id: '2',
-        user_id: 'user_456',
-        app: 'pitch-generator',
-        agent_id: 'PitchAgent',
-        rating: 4,
-        comment: 'Great pitches but would love more genre-specific templates.',
-        created_at: '5 hours ago',
-      },
-      {
-        id: '3',
-        user_id: 'user_789',
-        app: 'audio-intel',
-        agent_id: null,
-        rating: 5,
-        comment: 'The mobile experience is perfect. Easy to use on the go.',
-        created_at: '8 hours ago',
-      },
-      {
-        id: '4',
-        user_id: 'user_321',
-        app: 'tracker',
-        agent_id: 'TrackerAgent',
-        rating: 3,
-        comment: 'Good tracking but could use better filtering options.',
-        created_at: '12 hours ago',
-      },
-      {
-        id: '5',
-        user_id: 'user_654',
-        app: 'audio-intel',
-        agent_id: 'IntelAgent',
-        rating: 5,
-        comment: 'Enrichment quality is unmatched. Worth every penny of the PRO tier.',
-        created_at: '1 day ago',
-      },
-    ];
-
-    setTimeout(() => {
-      setSummary(mockSummary);
-      setRecent(mockRecent);
-      setLoading(false);
-    }, 500);
+    // Fetch real feedback metrics from Phase 9B database
+    fetch('/api/ops-console/feedback')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setSummary(data.summaries || []);
+          setRecent(data.recent || []);
+        } else {
+          console.error('Failed to fetch feedback:', data.error);
+        }
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching feedback metrics:', error);
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {
@@ -265,14 +199,14 @@ export default function FeedbackPage() {
       </div>
 
       {/* Phase 9B Notice */}
-      <div className="bg-blue-50 border-2 border-blue-600 rounded-lg p-4">
+      <div className="bg-green-50 border-2 border-green-600 rounded-lg p-4">
         <div className="flex items-start gap-3">
-          <MessageSquare className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+          <ThumbsUp className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
           <div>
-            <h4 className="font-bold text-blue-900 mb-1">Phase 9B Feedback System Active</h4>
-            <p className="text-sm text-blue-800">
-              Feedback data from <code className="font-mono">feedback_events</code> table. Weekly
-              digest automation coming via Telegram notifications.
+            <h4 className="font-bold text-green-900 mb-1">Phase 9B Feedback System Active</h4>
+            <p className="text-sm text-green-800">
+              Real-time feedback from <code className="font-mono">feedback_events</code> table.
+              Weekly digest automation available via Telegram notifications.
             </p>
           </div>
         </div>

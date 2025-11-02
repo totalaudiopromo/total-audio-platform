@@ -20,33 +20,35 @@ interface SystemHealth {
   telegram: boolean;
 }
 
+interface RecentActivity {
+  agent_id: string;
+  app: string;
+  success: boolean;
+  created_at: string;
+}
+
 export default function OverviewPage() {
   const [health, setHealth] = useState<SystemHealth | null>(null);
+  const [recentActivity, setRecentActivity] = useState<RecentActivity[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Mock data for now - will be replaced with real API calls
-    const mockHealth: SystemHealth = {
-      status: 'healthy',
-      agents: {
-        total: 6,
-        active: 6,
-        failed: 0,
-      },
-      social: {
-        twitter: true,
-        linkedin: true,
-        bluesky: false,
-        threads: false,
-      },
-      database: true,
-      telegram: false, // Will be implemented
-    };
-
-    setTimeout(() => {
-      setHealth(mockHealth);
-      setLoading(false);
-    }, 500);
+    // Fetch real system health from Phase 9B database
+    fetch('/api/ops-console/health')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setHealth(data.health);
+          setRecentActivity(data.recentActivity || []);
+        } else {
+          console.error('Failed to fetch system health:', data.error);
+        }
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching system health:', error);
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {
@@ -161,38 +163,34 @@ export default function OverviewPage() {
       <div className="bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-lg p-6">
         <h3 className="text-lg font-bold text-gray-900 mb-4">Recent Activity</h3>
         <div className="space-y-3">
-          {[
-            { time: '2 minutes ago', event: 'IntelAgent completed enrichment', status: 'success' },
-            { time: '5 minutes ago', event: 'Social post scheduled (LinkedIn)', status: 'success' },
-            {
-              time: '12 minutes ago',
-              event: 'PitchAgent generated 3 new pitches',
-              status: 'success',
-            },
-            {
-              time: '18 minutes ago',
-              event: 'BlueSky connector status check',
-              status: 'warning',
-            },
-          ].map((activity, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-between py-3 border-b last:border-b-0 border-gray-200"
-            >
-              <div className="flex items-center gap-3">
-                {activity.status === 'success' && (
-                  <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                )}
-                {activity.status === 'warning' && (
-                  <AlertCircle className="h-4 w-4 text-yellow-600 flex-shrink-0" />
-                )}
-                <div>
-                  <div className="text-sm font-semibold text-gray-900">{activity.event}</div>
-                  <div className="text-xs text-gray-500">{activity.time}</div>
+          {recentActivity.length === 0 ? (
+            <div className="text-center py-8 text-gray-500">
+              No recent activity found. Agent events will appear here.
+            </div>
+          ) : (
+            recentActivity.map((activity, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-between py-3 border-b last:border-b-0 border-gray-200"
+              >
+                <div className="flex items-center gap-3">
+                  {activity.success ? (
+                    <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
+                  ) : (
+                    <XCircle className="h-4 w-4 text-red-600 flex-shrink-0" />
+                  )}
+                  <div>
+                    <div className="text-sm font-semibold text-gray-900">
+                      {activity.agent_id} • {activity.app}
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      {new Date(activity.created_at).toLocaleString()}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </div>
