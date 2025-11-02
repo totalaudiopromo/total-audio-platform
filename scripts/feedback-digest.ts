@@ -173,9 +173,7 @@ function analyseFeedback(feedback: FeedbackItem[]): FeedbackAnalysis {
 /**
  * Generate Claude-powered insights from negative feedback
  */
-async function generateClaudeInsights(
-  negativeFeedback: FeedbackItem[]
-): Promise<ClaudeInsight> {
+async function generateClaudeInsights(negativeFeedback: FeedbackItem[]): Promise<ClaudeInsight> {
   if (negativeFeedback.length === 0) {
     return {
       summary: 'No negative feedback to analyse',
@@ -440,9 +438,15 @@ function printReportSummary(report: FeedbackDigestReport): void {
   console.log('-'.repeat(80));
   console.log(`Total Feedback:   ${analysis.totalFeedback}`);
   console.log(`Average Rating:   ${analysis.averageRating.toFixed(2)} / 5.0`);
-  console.log(`Positive (4-5⭐):  ${analysis.positiveCount} (${((analysis.positiveCount / analysis.totalFeedback) * 100).toFixed(1)}%)`);
-  console.log(`Neutral (3⭐):     ${analysis.neutralCount} (${((analysis.neutralCount / analysis.totalFeedback) * 100).toFixed(1)}%)`);
-  console.log(`Negative (1-2⭐):  ${analysis.negativeCount} (${((analysis.negativeCount / analysis.totalFeedback) * 100).toFixed(1)}%)`);
+  console.log(
+    `Positive (4-5⭐):  ${analysis.positiveCount} (${((analysis.positiveCount / analysis.totalFeedback) * 100).toFixed(1)}%)`
+  );
+  console.log(
+    `Neutral (3⭐):     ${analysis.neutralCount} (${((analysis.neutralCount / analysis.totalFeedback) * 100).toFixed(1)}%)`
+  );
+  console.log(
+    `Negative (1-2⭐):  ${analysis.negativeCount} (${((analysis.negativeCount / analysis.totalFeedback) * 100).toFixed(1)}%)`
+  );
 
   // By app
   if (Object.keys(analysis.byApp).length > 0) {

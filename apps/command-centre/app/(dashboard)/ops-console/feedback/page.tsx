@@ -63,7 +63,8 @@ export default function FeedbackPage() {
         app: 'audio-intel',
         agent_id: 'IntelAgent',
         rating: 5,
-        comment: 'Absolutely brilliant! Saved me hours of research. BBC Radio 6 contact was spot-on.',
+        comment:
+          'Absolutely brilliant! Saved me hours of research. BBC Radio 6 contact was spot-on.',
         created_at: '2 hours ago',
       },
       {
@@ -134,7 +135,9 @@ export default function FeedbackPage() {
           <MessageSquare className="h-6 w-6 text-blue-600" />
           <h2 className="text-2xl font-black text-gray-900">Feedback Intelligence</h2>
         </div>
-        <p className="text-sm text-gray-600">User sentiment analysis from Phase 9B feedback layer</p>
+        <p className="text-sm text-gray-600">
+          User sentiment analysis from Phase 9B feedback layer
+        </p>
       </div>
 
       {/* Overall Stats */}
@@ -190,7 +193,9 @@ export default function FeedbackPage() {
             <div className="mb-4">
               <div className="flex items-center gap-2 mb-2">
                 <Star className="h-5 w-5 text-yellow-600 fill-yellow-600" />
-                <span className="text-2xl font-black text-gray-900">{app.avg_rating.toFixed(1)}</span>
+                <span className="text-2xl font-black text-gray-900">
+                  {app.avg_rating.toFixed(1)}
+                </span>
                 <span className="text-sm text-gray-500">/ 5.0</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -238,9 +243,7 @@ export default function FeedbackPage() {
                     <Star
                       key={i}
                       className={`h-3 w-3 ${
-                        i < feedback.rating
-                          ? 'text-yellow-600 fill-yellow-600'
-                          : 'text-gray-300'
+                        i < feedback.rating ? 'text-yellow-600 fill-yellow-600' : 'text-gray-300'
                       }`}
                     />
                   ))}
@@ -268,7 +271,8 @@ export default function FeedbackPage() {
           <div>
             <h4 className="font-bold text-blue-900 mb-1">Phase 9B Feedback System Active</h4>
             <p className="text-sm text-blue-800">
-              Feedback data from <code className="font-mono">feedback_events</code> table. Weekly digest automation coming via Telegram notifications.
+              Feedback data from <code className="font-mono">feedback_events</code> table. Weekly
+              digest automation coming via Telegram notifications.
             </p>
           </div>
         </div>

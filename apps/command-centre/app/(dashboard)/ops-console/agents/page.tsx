@@ -92,7 +92,9 @@ export default function AgentsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-pulse text-lg font-bold text-gray-500">Loading agent metrics...</div>
+        <div className="animate-pulse text-lg font-bold text-gray-500">
+          Loading agent metrics...
+        </div>
       </div>
     );
   }
@@ -125,10 +127,7 @@ export default function AgentsPage() {
         <div className="bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] rounded-lg p-4">
           <div className="text-sm font-bold text-gray-600 uppercase mb-1">Avg Success Rate</div>
           <div className="text-3xl font-black text-green-600">
-            {(
-              agents.reduce((sum, a) => sum + a.success_rate, 0) / agents.length
-            ).toFixed(1)}
-            %
+            {(agents.reduce((sum, a) => sum + a.success_rate, 0) / agents.length).toFixed(1)}%
           </div>
         </div>
         <div className="bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] rounded-lg p-4">
@@ -156,9 +155,7 @@ export default function AgentsPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-black text-gray-900">{agent.agent_id}</h3>
-                  <span className="text-xs font-semibold text-gray-500 uppercase">
-                    {agent.app}
-                  </span>
+                  <span className="text-xs font-semibold text-gray-500 uppercase">{agent.app}</span>
                 </div>
               </div>
               {agent.success_rate >= 99 ? (

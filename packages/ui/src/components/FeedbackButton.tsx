@@ -85,7 +85,9 @@ export function FeedbackButton({
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ error: 'Failed to submit feedback' }));
+        const errorData = await response
+          .json()
+          .catch(() => ({ error: 'Failed to submit feedback' }));
         throw new Error(errorData.error || 'Failed to submit feedback');
       }
 
@@ -160,9 +162,7 @@ export function FeedbackButton({
       )}
 
       {state === 'error' && (
-        <span className="text-xs text-red-600 dark:text-red-400">
-          Failed to submit
-        </span>
+        <span className="text-xs text-red-600 dark:text-red-400">Failed to submit</span>
       )}
     </div>
   );

@@ -122,7 +122,9 @@ export default function GrowthPage() {
             <span className="text-sm font-bold text-gray-600 uppercase">Total Revenue</span>
             <DollarSign className="h-5 w-5 text-green-600" />
           </div>
-          <div className="text-2xl font-black text-gray-900">{formatCurrency(metrics.totalRevenue)}</div>
+          <div className="text-2xl font-black text-gray-900">
+            {formatCurrency(metrics.totalRevenue)}
+          </div>
         </div>
         <div className="bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] rounded-lg p-4">
           <div className="flex items-center justify-between mb-1">
@@ -150,13 +152,17 @@ export default function GrowthPage() {
             <span className="text-sm font-bold text-gray-600 uppercase">Avg/User</span>
             <Users className="h-5 w-5 text-orange-600" />
           </div>
-          <div className="text-2xl font-black text-gray-900">{formatCurrency(metrics.avgRevenuePerUser)}</div>
+          <div className="text-2xl font-black text-gray-900">
+            {formatCurrency(metrics.avgRevenuePerUser)}
+          </div>
         </div>
       </div>
 
       {/* Conversion Events by Revenue Impact */}
       <div className="bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-lg p-6">
-        <h3 className="text-lg font-black text-gray-900 mb-4">Conversion Events by Revenue Impact</h3>
+        <h3 className="text-lg font-black text-gray-900 mb-4">
+          Conversion Events by Revenue Impact
+        </h3>
         <div className="space-y-3">
           {conversions
             .sort((a, b) => b.total_revenue_impact - a.total_revenue_impact)
@@ -170,10 +176,13 @@ export default function GrowthPage() {
                     <span className="text-sm font-bold text-gray-900">
                       {conversion.event_name.replace(/_/g, ' ').toUpperCase()}
                     </span>
-                    <span className="text-xs text-gray-500 uppercase">{conversion.app.replace('-', ' ')}</span>
+                    <span className="text-xs text-gray-500 uppercase">
+                      {conversion.app.replace('-', ' ')}
+                    </span>
                   </div>
                   <div className="text-xs text-gray-600">
-                    {conversion.event_count} events • Avg: {formatCurrency(conversion.avg_revenue_impact)}
+                    {conversion.event_count} events • Avg:{' '}
+                    {formatCurrency(conversion.avg_revenue_impact)}
                   </div>
                 </div>
                 <div className="text-right">
@@ -210,7 +219,9 @@ export default function GrowthPage() {
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-600">Revenue</span>
-                  <span className="text-xl font-black text-green-600">{formatCurrency(appRevenue)}</span>
+                  <span className="text-xl font-black text-green-600">
+                    {formatCurrency(appRevenue)}
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-600">Events</span>

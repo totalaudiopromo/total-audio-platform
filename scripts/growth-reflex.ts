@@ -215,9 +215,7 @@ function generateInsights(
 
   // Churn insight
   if (revenueChange.churnRevenue > 0) {
-    insights.push(
-      `Churn cost £${(revenueChange.churnRevenue / 100).toFixed(2)} in lost MRR`
-    );
+    insights.push(`Churn cost £${(revenueChange.churnRevenue / 100).toFixed(2)} in lost MRR`);
   }
 
   // Top driver insights

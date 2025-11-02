@@ -48,10 +48,7 @@ export async function POST(request: NextRequest) {
     // Get authenticated user from session
     const authHeader = request.headers.get('authorization');
     if (!authHeader) {
-      return NextResponse.json(
-        { error: 'Missing authorization header' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Missing authorization header' }, { status: 401 });
     }
 
     // Extract JWT token from Authorization header
@@ -72,18 +69,12 @@ export async function POST(request: NextRequest) {
 
     // Validate required fields
     if (!body.app || typeof body.rating !== 'number') {
-      return NextResponse.json(
-        { error: 'Missing required fields: app, rating' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Missing required fields: app, rating' }, { status: 400 });
     }
 
     // Validate rating is between 1-5
     if (body.rating < 1 || body.rating > 5) {
-      return NextResponse.json(
-        { error: 'Rating must be between 1 and 5' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Rating must be between 1 and 5' }, { status: 400 });
     }
 
     // Insert feedback into database
@@ -102,10 +93,7 @@ export async function POST(request: NextRequest) {
 
     if (insertError) {
       console.error('Failed to insert feedback:', insertError);
-      return NextResponse.json(
-        { error: 'Failed to submit feedback' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to submit feedback' }, { status: 500 });
     }
 
     return NextResponse.json({
@@ -114,10 +102,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Error processing feedback:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
@@ -146,10 +131,7 @@ export async function GET(request: NextRequest) {
     // Get authenticated user from session
     const authHeader = request.headers.get('authorization');
     if (!authHeader) {
-      return NextResponse.json(
-        { error: 'Missing authorization header' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Missing authorization header' }, { status: 401 });
     }
 
     // Extract JWT token from Authorization header
@@ -177,14 +159,11 @@ export async function GET(request: NextRequest) {
 
     if (fetchError) {
       console.error('Failed to fetch feedback:', fetchError);
-      return NextResponse.json(
-        { error: 'Failed to fetch feedback' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to fetch feedback' }, { status: 500 });
     }
 
     // Transform to camelCase for response
-    const transformedFeedback = (feedback || []).map((item) => ({
+    const transformedFeedback = (feedback || []).map(item => ({
       id: item.id,
       app: item.app,
       agentId: item.agent_id,
@@ -198,9 +177,6 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error('Error fetching feedback:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

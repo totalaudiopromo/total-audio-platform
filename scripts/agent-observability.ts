@@ -374,7 +374,9 @@ function printReport(report: ObservabilityReport): void {
 
     for (const [app, baseline] of Object.entries(report.baseline)) {
       console.log(
-        app.padEnd(20) + `${baseline.successRate.toFixed(1)}%`.padEnd(20) + `${baseline.avgLatency}ms`
+        app.padEnd(20) +
+          `${baseline.successRate.toFixed(1)}%`.padEnd(20) +
+          `${baseline.avgLatency}ms`
       );
     }
   }

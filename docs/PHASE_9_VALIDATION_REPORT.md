@@ -12,6 +12,7 @@
 Phase 9 adds comprehensive observability and feedback intelligence to the Total Audio Platform. All components implemented with zero user-facing changes, focusing on backend monitoring, AI-powered insights, and automated alerting via Telegram.
 
 **Key Achievements:**
+
 - 3 database tables for event tracking (agent_events, feedback_events, conversion_events)
 - 3 monitoring scripts with baseline comparison and AI analysis
 - 3 GitHub Actions workflows for automated nightly/weekly reports
@@ -29,21 +30,25 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 **File:** `packages/core-db/supabase/migrations/20251109_agent_observability.sql`
 
 **Tables Created:**
+
 - ✅ `agent_events` - Records agent executions with performance metrics
 - ✅ `feedback_events` - Captures user feedback (thumbs up/down + comments)
 - ✅ `conversion_events` - Tracks conversion events with revenue attribution
 
 **Views Created:**
+
 - ✅ `agent_event_summary` - Aggregated performance metrics by app
 - ✅ `feedback_summary` - Aggregated feedback statistics
 - ✅ `conversion_summary` - Aggregated conversion metrics
 
 **Security:**
+
 - ✅ 6 Row-Level Security (RLS) policies implemented
 - ✅ Users can only insert/read their own feedback
 - ✅ Service role required for agent_events and conversion_events
 
 **Validation:**
+
 - ✅ All CREATE TABLE IF NOT EXISTS (idempotent)
 - ✅ All CREATE OR REPLACE VIEW (safe updates)
 - ✅ No DROP or ALTER operations
@@ -56,6 +61,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 **File:** `scripts/agent-observability.ts`
 
 **Functionality:**
+
 - ✅ Fetches last 24 hours of agent events
 - ✅ Compares against 7-day baseline
 - ✅ Detects performance degradation (success rate, latency)
@@ -65,6 +71,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - ✅ Supports dry-run mode (`--dry-run`)
 
 **Thresholds:**
+
 - Success Rate WARN: <95%
 - Success Rate FAIL: <90%
 - Latency WARN: 1.5x baseline
@@ -72,6 +79,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - Minimum events for alert: 10
 
 **CLI Arguments:**
+
 - `--output <path>` - Custom report output path
 - `--dry-run` - Test mode without database writes
 - `--notify` - Send Telegram notification
@@ -83,6 +91,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 **File:** `scripts/growth-reflex.ts`
 
 **Functionality:**
+
 - ✅ Analyzes last 30 days of conversion events
 - ✅ Calculates revenue change (current vs previous month)
 - ✅ Identifies top 5 revenue-driving features
@@ -93,11 +102,13 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - ✅ Supports dry-run mode
 
 **Correlation Thresholds:**
+
 - Strong: £10+ revenue per user (🟢)
 - Moderate: £5-£10 revenue per user (🟡)
 - Weak: <£5 revenue per user (🔴)
 
 **CLI Arguments:**
+
 - `--output <path>` - Custom report output path
 - `--dry-run` - Test mode without database writes
 - `--notify` - Send Telegram notification
@@ -109,6 +120,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 **File:** `scripts/feedback-digest.ts`
 
 **Functionality:**
+
 - ✅ Fetches last 7 days of user feedback
 - ✅ Filters negative feedback (rating ≤ 2)
 - ✅ Uses Claude 3.5 Sonnet for AI analysis
@@ -118,12 +130,14 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - ✅ Supports dry-run mode
 
 **AI Analysis:**
+
 - Model: claude-3-5-sonnet-20241022
 - Max tokens: 2000
 - Temperature: 0.3 (balanced creativity/consistency)
 - Structured JSON output
 
 **CLI Arguments:**
+
 - `--output <path>` - Custom report output path
 - `--dry-run` - Test mode without database writes
 - `--notify` - Send Telegram notification
@@ -133,11 +147,13 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 ### ✅ 5. GitHub Actions Workflows
 
 **Files:**
+
 - ✅ `.github/workflows/agent-health.yml` - Nightly at 02:00 UTC
 - ✅ `.github/workflows/growth-reflex.yml` - Mondays at 09:00 UTC
 - ✅ `.github/workflows/feedback-digest.yml` - Fridays at 16:00 UTC
 
 **Features:**
+
 - ✅ Automated script execution on schedule
 - ✅ Manual workflow dispatch for testing
 - ✅ Artifact uploads (90-day retention)
@@ -146,6 +162,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - ✅ Intelligent message formatting with key metrics
 
 **Secrets Required:**
+
 - `SUPABASE_SERVICE_ROLE_KEY` - Database admin access
 - `NEXT_PUBLIC_SUPABASE_URL` - Supabase project URL
 - `ANTHROPIC_API_KEY` - Claude AI analysis (feedback-digest only)
@@ -153,6 +170,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - `TELEGRAM_CHAT_ID` - Telegram destination chat
 
 **Reuses Existing Infrastructure:**
+
 - ✅ `.github/scripts/send-telegram.sh` (from Phase 8)
 - ✅ Telegram bot from revenue audit system
 - ✅ pnpm + Node.js 20 setup
@@ -164,6 +182,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 **File:** `packages/ui/src/components/FeedbackButton.tsx`
 
 **Features:**
+
 - ✅ Thumbs up/down interface (lucide-react icons)
 - ✅ Loading states with pulse animation
 - ✅ Success confirmation message
@@ -174,6 +193,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - ✅ TypeScript strict mode
 
 **Props:**
+
 - `app` (required) - App identifier (e.g., 'audio-intel')
 - `agentId` (optional) - Agent identifier for specific feedback
 - `apiEndpoint` (optional) - Custom API endpoint (default: '/api/feedback')
@@ -182,11 +202,12 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - `onError` (optional) - Error callback
 
 **Usage Example:**
+
 ```tsx
 <FeedbackButton
   app="audio-intel"
   agentId="contact-enrichment"
-  onFeedbackSubmitted={(rating) => console.log('Feedback:', rating)}
+  onFeedbackSubmitted={rating => console.log('Feedback:', rating)}
 />
 ```
 
@@ -199,6 +220,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 **Endpoints:**
 
 **POST /api/feedback**
+
 - ✅ Requires authenticated user session (JWT)
 - ✅ Validates request body (app, rating required)
 - ✅ Rating validation (1-5 range)
@@ -206,12 +228,14 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - ✅ Returns feedback ID on success
 
 **GET /api/feedback**
+
 - ✅ Requires authenticated user session
 - ✅ Fetches user's own feedback (last 30 days)
 - ✅ Sorted by created_at descending
 - ✅ Transforms snake_case to camelCase
 
 **Security:**
+
 - ✅ JWT authentication required
 - ✅ User can only submit/read their own feedback
 - ✅ Service role key for database admin operations
@@ -224,16 +248,19 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 **File:** `packages/core-db/src/utils/env.ts`
 
 **New Feature Flags:**
+
 - ✅ `FEATURE_AGENT_OBSERVABILITY_ENABLED` (default: false)
 - ✅ `FEATURE_GROWTH_REFLEX_ENABLED` (default: false)
 - ✅ `FEATURE_FEEDBACK_DIGEST_ENABLED` (default: false)
 
 **New Integrations:**
+
 - ✅ `ANTHROPIC_API_KEY` (optional) - Claude AI analysis
 - ✅ `TELEGRAM_BOT_TOKEN` (optional) - Telegram notifications
 - ✅ `TELEGRAM_CHAT_ID` (optional) - Telegram chat ID
 
 **Validation:**
+
 - ✅ Zod schema validation
 - ✅ Optional fields with sensible defaults
 - ✅ URL validation for Supabase
@@ -244,26 +271,32 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 ## Success Criteria Validation
 
 ### Build Pass Rate
+
 - **Target:** 100%
 - **Status:** ⏳ Pending - All files created, no compilation errors yet
 
 ### Telegram Notifications
+
 - **Target:** 3 successful reports in 24h
 - **Status:** ⏳ Pending - Workflows need to be enabled
 
 ### Claude Insight Digest
+
 - **Target:** Received on Friday
 - **Status:** ⏳ Pending - First run scheduled
 
 ### Agent Events Latency
+
 - **Target:** <2s avg
 - **Status:** ⏳ Pending - No events logged yet
 
 ### User Feedback Captured
+
 - **Target:** ≥5 test events
 - **Status:** ⏳ Pending - FeedbackButton needs to be added to UI
 
 ### Revenue Correlation Detected
+
 - **Target:** ≥1 feature driver identified
 - **Status:** ⏳ Pending - Needs conversion_events data
 
@@ -274,6 +307,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 ### Pre-Deployment Testing
 
 **Database Migration:**
+
 - [ ] Run migration on staging Supabase instance
 - [ ] Verify all 3 tables created successfully
 - [ ] Verify all 3 views created successfully
@@ -282,6 +316,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - [ ] Test user cannot read other users' feedback
 
 **Agent Observability Script:**
+
 - [ ] Run with `--dry-run` flag
 - [ ] Verify baseline calculation logic
 - [ ] Verify threshold detection (mock degraded data)
@@ -289,6 +324,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - [ ] Verify Telegram notification (with `--notify`)
 
 **Growth Reflex Script:**
+
 - [ ] Run with `--dry-run` flag
 - [ ] Verify revenue change calculation
 - [ ] Verify feature correlation analysis
@@ -297,6 +333,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - [ ] Verify Telegram notification with metrics
 
 **Feedback Digest Script:**
+
 - [ ] Run with `--dry-run` flag
 - [ ] Verify feedback fetching (7-day window)
 - [ ] Verify negative feedback filtering
@@ -306,6 +343,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - [ ] Verify Telegram notification with urgency
 
 **GitHub Actions Workflows:**
+
 - [ ] Test manual workflow dispatch for agent-health.yml
 - [ ] Test manual workflow dispatch for growth-reflex.yml
 - [ ] Test manual workflow dispatch for feedback-digest.yml
@@ -314,6 +352,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - [ ] Verify conditional Telegram notifications
 
 **FeedbackButton Component:**
+
 - [ ] Add to Audio Intel dashboard
 - [ ] Test thumbs up interaction
 - [ ] Test thumbs down interaction
@@ -324,6 +363,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 - [ ] Test dark mode styling
 
 **Feedback API Route:**
+
 - [ ] Test POST with valid authenticated request
 - [ ] Test POST with missing authentication (401)
 - [ ] Test POST with invalid rating (400)
@@ -337,6 +377,7 @@ Phase 9 adds comprehensive observability and feedback intelligence to the Total 
 ## Deployment Steps
 
 ### 1. Database Migration
+
 ```bash
 # Navigate to core-db package
 cd packages/core-db
@@ -352,6 +393,7 @@ npx supabase db push --db-url <production-url>
 ```
 
 ### 2. Enable GitHub Actions
+
 ```bash
 # Verify secrets are set in repository
 gh secret list
@@ -370,6 +412,7 @@ gh workflow run feedback-digest.yml
 ```
 
 ### 3. Deploy FeedbackButton
+
 ```bash
 # Build UI package
 cd packages/ui
@@ -384,6 +427,7 @@ pnpm deploy:audio-intel
 ```
 
 ### 4. Monitor First Week
+
 - Check Telegram for nightly agent health reports (02:00 UTC)
 - Review Monday growth reflex report (09:00 UTC)
 - Review Friday feedback digest report (16:00 UTC)
@@ -413,6 +457,7 @@ FEATURE_FEEDBACK_DIGEST_ENABLED=true
 ### Vercel Environment Variables
 
 Add to Vercel project settings for audio-intel:
+
 - `ANTHROPIC_API_KEY` (sensitive)
 - `FEATURE_AGENT_OBSERVABILITY_ENABLED` (plain text)
 - `FEATURE_GROWTH_REFLEX_ENABLED` (plain text)
@@ -457,6 +502,7 @@ total-audio-platform/
 ## Dependencies
 
 **New NPM Packages:**
+
 - `@anthropic-ai/sdk` - Claude AI integration (already installed)
 - `lucide-react` - Icons for FeedbackButton (already installed)
 
@@ -467,6 +513,7 @@ total-audio-platform/
 ## Breaking Changes
 
 **None.** Phase 9 is 100% additive with zero breaking changes:
+
 - ✅ All database operations are CREATE (not ALTER/DROP)
 - ✅ All new API routes (no modifications to existing routes)
 - ✅ All new components (no modifications to existing components)
@@ -478,6 +525,7 @@ total-audio-platform/
 ## Risk Assessment
 
 ### Low Risk
+
 - ✅ Database migration is additive-only (no data loss risk)
 - ✅ Scripts have dry-run mode for safe testing
 - ✅ Feature flags allow gradual rollout
@@ -485,6 +533,7 @@ total-audio-platform/
 - ✅ Telegram notifications are informational (no critical path)
 
 ### Medium Risk
+
 - ⚠️ Anthropic API costs (Claude 3.5 Sonnet usage)
   - **Mitigation:** Weekly digest only (1 API call per week)
   - **Cost:** ~$0.50-1.00 per week for typical feedback volume
@@ -493,6 +542,7 @@ total-audio-platform/
   - **Cost:** Within free tier limits for private repos
 
 ### High Risk
+
 - ❌ None identified
 
 ---
@@ -502,6 +552,7 @@ total-audio-platform/
 If issues are discovered after deployment:
 
 ### 1. Disable GitHub Actions
+
 ```bash
 # Disable workflows via GitHub UI or CLI
 gh workflow disable agent-health.yml
@@ -510,6 +561,7 @@ gh workflow disable feedback-digest.yml
 ```
 
 ### 2. Disable Feature Flags
+
 ```bash
 # Update Vercel environment variables
 vercel env rm FEATURE_AGENT_OBSERVABILITY_ENABLED
@@ -518,6 +570,7 @@ vercel env rm FEATURE_FEEDBACK_DIGEST_ENABLED
 ```
 
 ### 3. Database Rollback (if necessary)
+
 ```sql
 -- Only if absolutely required (data loss risk)
 DROP TABLE IF EXISTS agent_events CASCADE;
@@ -537,6 +590,7 @@ DROP VIEW IF EXISTS conversion_summary;
 **Phase 10 (Future):** Agent Orchestration & Multi-Step Workflows
 
 Potential features after Phase 9 validation:
+
 - Multi-agent workflows (Intel → Pitch → Tracker)
 - Agent skill registry with versioning
 - Real-time agent collaboration UI
@@ -579,18 +633,21 @@ Potential features after Phase 9 validation:
 ## App Performance
 
 ### Audio Intel
+
 - **Events:** 842
 - **Success Rate:** 97.2% ✅
 - **Avg Latency:** 1,124ms ⚠️ (1.26x baseline)
 - **Issues:** Latency elevated but within threshold
 
 ### Pitch Generator
+
 - **Events:** 305
 - **Success Rate:** 95.1% ⚠️ (below 95% threshold)
 - **Avg Latency:** 1,456ms ⚠️ (1.63x baseline)
 - **Issues:** Success rate degradation, investigate error logs
 
 ### Tracker
+
 - **Events:** 100
 - **Success Rate:** 99.0% ✅
 - **Avg Latency:** 987ms ✅
@@ -613,21 +670,21 @@ Potential features after Phase 9 validation:
 
 ## Revenue Change
 
-| Metric | Current Month | Previous Month | Change |
-|--------|---------------|----------------|--------|
-| Revenue | £1,247 | £892 | +39.8% 📈 |
-| New Customers | 8 | 5 | +60.0% |
-| Churn | 1 | 2 | -50.0% 🎉 |
+| Metric        | Current Month | Previous Month | Change    |
+| ------------- | ------------- | -------------- | --------- |
+| Revenue       | £1,247        | £892           | +39.8% 📈 |
+| New Customers | 8             | 5              | +60.0%    |
+| Churn         | 1             | 2              | -50.0% 🎉 |
 
 ## Top Revenue Drivers
 
-| Feature | Users | Revenue Impact | Avg Per User | Strength |
-|---------|-------|----------------|--------------|----------|
-| Contact Enrichment | 12 | £1,140 | £95.00 | 🟢 Strong |
-| Pitch Generation | 8 | £684 | £85.50 | 🟢 Strong |
-| Campaign Tracking | 5 | £247 | £49.40 | 🟡 Moderate |
-| Bulk Upload | 3 | £114 | £38.00 | 🟡 Moderate |
-| CSV Export | 7 | £95 | £13.57 | 🔴 Weak |
+| Feature            | Users | Revenue Impact | Avg Per User | Strength    |
+| ------------------ | ----- | -------------- | ------------ | ----------- |
+| Contact Enrichment | 12    | £1,140         | £95.00       | 🟢 Strong   |
+| Pitch Generation   | 8     | £684           | £85.50       | 🟢 Strong   |
+| Campaign Tracking  | 5     | £247           | £49.40       | 🟡 Moderate |
+| Bulk Upload        | 3     | £114           | £38.00       | 🟡 Moderate |
+| CSV Export         | 7     | £95            | £13.57       | 🔴 Weak     |
 
 ## Insights
 
@@ -662,15 +719,18 @@ Potential features after Phase 9 validation:
 ## Claude AI Analysis
 
 ### Summary
+
 Users appreciate the contact enrichment speed but report friction with bulk upload CSV formatting. The pitch generation quality is well-received, though some users want more customisation options for templates.
 
 ### Themes
+
 1. **CSV Upload Confusion** - Users struggle with required column names
 2. **Template Customisation** - Request for more pitch template options
 3. **Mobile Experience** - Positive feedback on mobile responsiveness
 4. **Pricing Clarity** - Some confusion about PRO vs AGENCY tier limits
 
 ### Recommendations
+
 1. Add CSV template download with example data
 2. Create pitch template builder with drag-and-drop customisation
 3. Add tooltip guidance for CSV column mapping
@@ -678,6 +738,7 @@ Users appreciate the contact enrichment speed but report friction with bulk uplo
 5. Create video tutorial for bulk upload workflow
 
 ### 🚨 Urgent Issues
+
 - None identified (all feedback constructive, no critical bugs)
 
 ## Next Steps

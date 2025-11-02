@@ -169,9 +169,7 @@ export default function SocialPage() {
               {integration.status === 'active' && integration.connected && (
                 <CheckCircle className="h-6 w-6 text-green-600" />
               )}
-              {integration.status === 'stub' && (
-                <AlertCircle className="h-6 w-6 text-yellow-600" />
-              )}
+              {integration.status === 'stub' && <AlertCircle className="h-6 w-6 text-yellow-600" />}
               {integration.status === 'not_implemented' && (
                 <XCircle className="h-6 w-6 text-gray-400" />
               )}
@@ -230,7 +228,9 @@ export default function SocialPage() {
                 </div>
 
                 {integration.lastPost && (
-                  <div className="mt-4 text-xs text-gray-500">Last post: {integration.lastPost}</div>
+                  <div className="mt-4 text-xs text-gray-500">
+                    Last post: {integration.lastPost}
+                  </div>
                 )}
               </>
             ) : (

@@ -183,7 +183,11 @@ _Phase 9D Ops Console_
 /**
  * Send system alert to Telegram
  */
-export async function sendSystemAlert(alert: { title: string; message: string; level: 'info' | 'warning' | 'error' }) {
+export async function sendSystemAlert(alert: {
+  title: string;
+  message: string;
+  level: 'info' | 'warning' | 'error';
+}) {
   const emoji = {
     info: 'ℹ️',
     warning: '⚠️',

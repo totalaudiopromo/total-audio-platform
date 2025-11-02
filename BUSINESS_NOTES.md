@@ -20,26 +20,31 @@ _Capture everything here, process into actions weekly_
 **Technical Architecture:**
 
 **Database Tables:**
+
 - `agent_events`: Records every agent execution with latency/success metrics
 - `feedback_events`: Captures user thumbs up/down feedback with optional comments
 - `conversion_events`: Tracks conversion events with revenue attribution
 
 **Monitoring Scripts:**
+
 - **agent-observability.ts**: Compares 24h metrics vs 7-day baseline, alerts on degradation (PASS/WARN/FAIL)
 - **growth-reflex.ts**: Correlates feature usage with revenue impact, identifies top drivers (strong/moderate/weak)
 - **feedback-digest.ts**: Uses Claude 3.5 Sonnet to analyze negative feedback, generates insights and recommendations
 
 **Automation:**
+
 - **Nightly (02:00 UTC)**: Agent health check → Telegram notification
 - **Weekly Mondays (09:00 UTC)**: Growth reflex report → Telegram + artifact upload
 - **Weekly Fridays (16:00 UTC)**: Feedback digest with Claude analysis → Telegram with urgency detection
 
 **Feature Flags:**
+
 - `FEATURE_AGENT_OBSERVABILITY_ENABLED` (default: false)
 - `FEATURE_GROWTH_REFLEX_ENABLED` (default: false)
 - `FEATURE_FEEDBACK_DIGEST_ENABLED` (default: false)
 
 **Success Criteria Target:**
+
 - Build Pass Rate: 100%
 - Telegram Notifications: 3 successful reports in 24h
 - Claude Insight Digest: Received on Friday
@@ -50,6 +55,7 @@ _Capture everything here, process into actions weekly_
 **Git Tag:** `v2.4.0-phase9-autonomous-ops`
 
 **Philosophy:**
+
 - Zero user-facing changes (all backend observability)
 - Additive-only database migrations (no DROP/ALTER)
 - Unified Telegram notification system (reuses existing infrastructure)
@@ -57,6 +63,7 @@ _Capture everything here, process into actions weekly_
 - Baseline comparison for anomaly detection
 
 **Next Actions:**
+
 1. ⏳ Run dry-run tests for all three monitoring scripts
 2. ⏳ Deploy database migration to production Supabase
 3. ⏳ Enable GitHub Actions workflows with secrets

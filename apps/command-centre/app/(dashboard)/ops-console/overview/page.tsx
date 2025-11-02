@@ -52,7 +52,9 @@ export default function OverviewPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-pulse text-lg font-bold text-gray-500">Loading system status...</div>
+        <div className="animate-pulse text-lg font-bold text-gray-500">
+          Loading system status...
+        </div>
       </div>
     );
   }
@@ -162,7 +164,11 @@ export default function OverviewPage() {
           {[
             { time: '2 minutes ago', event: 'IntelAgent completed enrichment', status: 'success' },
             { time: '5 minutes ago', event: 'Social post scheduled (LinkedIn)', status: 'success' },
-            { time: '12 minutes ago', event: 'PitchAgent generated 3 new pitches', status: 'success' },
+            {
+              time: '12 minutes ago',
+              event: 'PitchAgent generated 3 new pitches',
+              status: 'success',
+            },
             {
               time: '18 minutes ago',
               event: 'BlueSky connector status check',
