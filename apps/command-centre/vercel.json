@@ -1,5 +1,7 @@
 {
   "framework": "nextjs",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
   "env": {
     "NEXT_PUBLIC_BASE_URL": "https://command.totalaudiopromo.com",
     "NEXT_PUBLIC_APP_NAME": "Command Centre",
