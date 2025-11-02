@@ -1,0 +1,245 @@
+name: Weekly Growth Insights
+
+on:
+  schedule:
+    # Run every Sunday at 9am UTC (10am BST / 9am GMT)
+    - cron: '0 9 * * 0'
+  workflow_dispatch:
+    inputs:
+      weeks:
+        description: 'Number of weeks to analyze'
+        required: false
+        default: '4'
+        type: string
+
+jobs:
+  growth-insights:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Growth Insights
+        id: insights
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          # Determine number of weeks to analyze
+          if [ -n "${{ github.event.inputs.weeks }}" ]; then
+            WEEKS="${{ github.event.inputs.weeks }}"
+          else
+            WEEKS="4"
+          fi
+
+          # Generate timestamp for filename
+          TIMESTAMP=$(date +%Y-%m-%d)
+          OUTPUT_FILE="reports/insights/growth-${TIMESTAMP}.md"
+
+          echo "Analyzing ${WEEKS} weeks of growth data..."
+          echo "weeks=${WEEKS}" >> $GITHUB_OUTPUT
+          echo "timestamp=${TIMESTAMP}" >> $GITHUB_OUTPUT
+          echo "output_file=${OUTPUT_FILE}" >> $GITHUB_OUTPUT
+
+          # Run growth insights script
+          pnpm tsx scripts/growth-insights.ts --weeks "${WEEKS}" --output "${OUTPUT_FILE}"
+
+          # Check if insights generated successfully
+          if [ $? -ne 0 ]; then
+            echo "status=FAILED" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          echo "status=SUCCESS" >> $GITHUB_OUTPUT
+
+          # Extract key metrics from report for summary
+          if [ -f "${OUTPUT_FILE}" ]; then
+            echo "report_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "report_exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload Insights Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: growth-insights-${{ steps.insights.outputs.timestamp }}
+          path: ${{ steps.insights.outputs.output_file }}
+          retention-days: 90
+
+      - name: Create GitHub Issue with Insights Summary
+        if: steps.insights.outputs.status == 'SUCCESS' && steps.insights.outputs.report_exists == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const outputFile = '${{ steps.insights.outputs.output_file }}';
+            const weeks = '${{ steps.insights.outputs.weeks }}';
+            const timestamp = '${{ steps.insights.outputs.timestamp }}';
+
+            // Read the insights report
+            const reportContent = fs.readFileSync(outputFile, 'utf8');
+
+            // Extract key sections from the report
+            const trendsMatch = reportContent.match(/## 📊 Weekly Trends([\\s\\S]*?)##/);
+            const insightsMatch = reportContent.match(/## 🤖 AI-Powered Insights([\\s\\S]*?)##/);
+            const recommendationsMatch = reportContent.match(/## 💡 Key Recommendations([\\s\\S]*?)##/);
+
+            // Build issue body
+            const issueBody = `## 📈 Weekly Growth Insights - ${timestamp}
+
+            **Analysis Period**: ${weeks} weeks
+
+            ### 📊 Key Trends
+            ${trendsMatch ? trendsMatch[1].trim().substring(0, 500) + '...' : 'See full report for trend details'}
+
+            ### 🤖 AI Insights Highlights
+            ${insightsMatch ? insightsMatch[1].trim().substring(0, 500) + '...' : 'See full report for AI insights'}
+
+            ### 💡 Top Recommendations
+            ${recommendationsMatch ? recommendationsMatch[1].trim().substring(0, 500) + '...' : 'See full report for recommendations'}
+
+            ---
+
+            ### 📥 Full Report
+            Download the complete growth insights report from the workflow artifacts:
+
+            **Workflow Run**: [${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+            ### 🔧 Quick Actions
+
+            \`\`\`bash
+            # Download the full report
+            gh run download ${{ github.run_id }} -n growth-insights-${timestamp}
+
+            # Run insights locally for deeper analysis
+            pnpm tsx scripts/growth-insights.ts --weeks ${weeks}
+
+            # Generate custom period insights
+            pnpm tsx scripts/growth-insights.ts --weeks 8
+            \`\`\`
+
+            ### 📅 Next Insights Report
+            The next automated insights report will be generated on **${new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}** at 9am UTC.
+
+            ---
+            *🤖 Generated automatically by Growth Insights Workflow*
+            `;
+
+            // Create issue with insights summary
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `📈 Weekly Growth Insights - ${timestamp}`,
+              body: issueBody,
+              labels: ['growth-insights', 'analytics', 'automated', 'weekly-report']
+            });
+
+      - name: Notify on Failure
+        if: steps.insights.outputs.status == 'FAILED'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const timestamp = '${{ steps.insights.outputs.timestamp }}';
+
+            const issueBody = `## ⚠️ Growth Insights Generation Failed - ${timestamp}
+
+            The automated growth insights generation failed. This may indicate:
+
+            - Database connection issues
+            - Claude API rate limits or errors
+            - Insufficient data for analysis
+            - Script execution errors
+
+            ### 🔧 Troubleshooting Steps
+
+            1. Check workflow logs for error details
+            2. Verify environment secrets are configured correctly
+            3. Check Supabase database connectivity
+            4. Verify Anthropic API key and rate limits
+            5. Run script locally to debug:
+
+            \`\`\`bash
+            # Test locally with verbose output
+            pnpm tsx scripts/growth-insights.ts --weeks 4
+
+            # Check database connectivity
+            psql $DATABASE_URL -c "SELECT COUNT(*) FROM payments;"
+
+            # Verify API credentials
+            curl https://api.anthropic.com/v1/messages \\
+              -H "x-api-key: $ANTHROPIC_API_KEY" \\
+              -H "anthropic-version: 2023-06-01"
+            \`\`\`
+
+            **Workflow Run**: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            ---
+            *🤖 Generated automatically by Growth Insights Workflow*
+            `;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `⚠️ Growth Insights Generation Failed - ${timestamp}`,
+              body: issueBody,
+              labels: ['growth-insights', 'failure', 'automated']
+            });
+
+      - name: Optional Slack Notification
+        if: steps.insights.outputs.status == 'SUCCESS' && vars.SLACK_WEBHOOK_URL != ''
+        run: |
+          curl -X POST ${{ vars.SLACK_WEBHOOK_URL }} \
+            -H 'Content-Type: application/json' \
+            -d '{
+              "text": "📈 Weekly Growth Insights Available",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "📈 Weekly Growth Insights - ${{ steps.insights.outputs.timestamp }}"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*New growth insights report is ready!*\n\nAnalyzed ${{ steps.insights.outputs.weeks }} weeks of growth data using AI-powered analysis."
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Report"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }'
