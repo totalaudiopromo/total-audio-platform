@@ -29,8 +29,9 @@ export async function GET() {
       }
 
       // Aggregate fallback data client-side
-      const { conversions: aggregatedConversions, metrics } =
-        aggregateGrowthMetrics(fallbackData || []);
+      const { conversions: aggregatedConversions, metrics } = aggregateGrowthMetrics(
+        fallbackData || []
+      );
       return NextResponse.json({
         success: true,
         conversions: aggregatedConversions,
