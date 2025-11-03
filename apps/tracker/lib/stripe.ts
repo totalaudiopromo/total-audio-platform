@@ -6,7 +6,9 @@ import { cookies } from 'next/headers';
 function getStripeClient(): Stripe {
   const apiKey = process.env.STRIPE_SECRET_KEY;
   if (!apiKey || apiKey === '') {
-    throw new Error('STRIPE_SECRET_KEY is not configured. Cannot process payments.');
+    throw new Error(
+      'STRIPE_SECRET_KEY is not configured. Cannot process payments.'
+    );
   }
   return new Stripe(apiKey, {
     apiVersion: '2025-08-27.basil',

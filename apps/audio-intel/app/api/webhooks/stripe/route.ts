@@ -204,7 +204,7 @@ async function handlePaymentIntentSucceeded(event: Stripe.Event) {
     user_id: user.id,
     payment_id: paymentIntent.id,
     subscription_id: null,
-    invoice_id: paymentIntent.invoice as string | null,
+    invoice_id: (typeof paymentIntent.invoice === 'string' ? paymentIntent.invoice : paymentIntent.invoice?.id) || null,
     customer_id: paymentIntent.customer as string,
     amount_cents: paymentIntent.amount,
     currency: paymentIntent.currency,
