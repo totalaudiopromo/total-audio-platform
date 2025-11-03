@@ -2,8 +2,22 @@ import Stripe from 'stripe';
 import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2025-08-27.basil',
+// Lazy initialize Stripe to avoid build-time errors when STRIPE_SECRET_KEY is missing
+function getStripeClient(): Stripe {
+  const apiKey = process.env.STRIPE_SECRET_KEY;
+  if (!apiKey || apiKey === '') {
+    throw new Error('STRIPE_SECRET_KEY is not configured. Cannot process payments.');
+  }
+  return new Stripe(apiKey, {
+    apiVersion: '2025-08-27.basil',
+  });
+}
+
+// Export a getter instead of the client directly
+export const stripe = new Proxy({} as Stripe, {
+  get: (target, prop) => {
+    return getStripeClient()[prop as keyof Stripe];
+  },
 });
 
 export async function getOrCreateCustomerId(

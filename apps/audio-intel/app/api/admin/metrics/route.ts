@@ -64,10 +64,7 @@ export async function GET(req: NextRequest) {
     });
   } catch (error: any) {
     console.error('Admin metrics error:', error);
-    return NextResponse.json(
-      { success: false, error: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
 
@@ -178,21 +175,20 @@ async function getEnrichmentStats(startDate: Date) {
     .eq('event_name', 'enrichment_completed')
     .gte('created_at', startDate.toISOString());
 
-  const totalContacts = enrichmentEvents?.reduce((sum, event) => {
-    return sum + (event.properties?.contact_count || 0);
-  }, 0) || 0;
+  const totalContacts =
+    enrichmentEvents?.reduce((sum, event) => {
+      return sum + (event.properties?.contact_count || 0);
+    }, 0) || 0;
 
   const avgContactsPerEnrichment =
-    totalEnrichments && totalEnrichments > 0
-      ? (totalContacts / totalEnrichments).toFixed(1)
-      : '0';
+    totalEnrichments && totalEnrichments > 0 ? (totalContacts / totalEnrichments).toFixed(1) : '0';
 
   return {
     total: totalEnrichments || 0,
     successful: successfulEnrichments || 0,
     successRate:
       totalEnrichments && totalEnrichments > 0
-        ? ((successfulEnrichments || 0) / totalEnrichments * 100).toFixed(1) + '%'
+        ? (((successfulEnrichments || 0) / totalEnrichments) * 100).toFixed(1) + '%'
         : '0%',
     avgContactsPerEnrichment,
     totalContactsEnriched: totalContacts,
@@ -213,10 +209,7 @@ async function getTopUsers(limit: number) {
 
   // Get user emails
   const userIds = usageData.map(u => u.user_id);
-  const { data: users } = await supabase
-    .from('auth.users')
-    .select('id, email')
-    .in('id', userIds);
+  const { data: users } = await supabase.from('auth.users').select('id, email').in('id', userIds);
 
   const userMap = new Map(users?.map(u => [u.id, u.email]));
 
@@ -242,10 +235,7 @@ async function getRecentPayments(limit: number) {
 
   // Get user emails
   const userIds = payments.map(p => p.user_id);
-  const { data: users } = await supabase
-    .from('auth.users')
-    .select('id, email')
-    .in('id', userIds);
+  const { data: users } = await supabase.from('auth.users').select('id, email').in('id', userIds);
 
   const userMap = new Map(users?.map(u => [u.id, u.email]));
 
