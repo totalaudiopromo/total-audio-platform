@@ -9,6 +9,7 @@
 Attempting to deploy Phase 9E Golden Deployment Pipeline via git tag `v2.5.1-golden`.
 
 **Expected Behavior**:
+
 1. Build 4 apps in parallel (audio-intel, tracker, pitch-generator, command-centre)
 2. Run health checks on each
 3. Run Lighthouse audits
@@ -20,21 +21,25 @@ Attempting to deploy Phase 9E Golden Deployment Pipeline via git tag `v2.5.1-gol
 ## Fix Attempts (Chronological)
 
 ### Attempt 1-2: Wrong Script Logic
+
 - **Issue**: `golden-check.ts` was duplicating `golden-promote.ts` logic
 - **Fix**: Completely rewrote health check script with proper `--app` argument parsing
 - **Result**: Still failed
 
 ### Attempt 3-5: Monorepo Lockfile Sync
+
 - **Issue**: `ERR_PNPM_OUTDATED_LOCKFILE` - `@total-audio/core-db` in package.json but not in lockfile (or vice versa)
 - **Fix**: Regenerated pnpm-lock.yaml, synced package.json changes
 - **Result**: Still failed
 
 ### Attempt 6: Workflow Trigger Race Condition
+
 - **Issue**: Workflow triggered on BOTH `push: branches: - main` AND `push: tags: - v*-golden`, causing simultaneous runs on different commits
 - **Fix**: Removed main branch trigger, only use tag triggers
 - **Result**: Still failed
 
 ### Attempt 7: Missing tsconfig.base.json
+
 - **Issue**: `error TS5083: Cannot read file 'tsconfig.base.json'` - file was gitignored by pattern `!tsconfig.json`
 - **Fix**: Force-added tsconfig.base.json with `git add -f`
 - **Result**: User reports "Same issue" (need exact error)
@@ -45,6 +50,7 @@ Attempting to deploy Phase 9E Golden Deployment Pipeline via git tag `v2.5.1-gol
 **Tag**: v2.5.1-golden (points to 68225ce)
 
 **Files Verified Clean**:
+
 - ✅ tsconfig.base.json committed and in git
 - ✅ No @total-audio/core-db in apps/command-centre/package.json
 - ✅ pnpm-lock.yaml synced (no core-db references for command-centre)
@@ -73,23 +79,27 @@ Attempting to deploy Phase 9E Golden Deployment Pipeline via git tag `v2.5.1-gol
 ## Diagnostic Steps Needed
 
 1. **Get exact error from GitHub Actions logs**
+
    ```bash
    # User needs to copy exact error text from:
    # https://github.com/totalaudiopromo/total-audio-platform/actions/workflows/golden-deploy.yml
    ```
 
 2. **Check for other gitignored files**
+
    ```bash
    git ls-files -o --exclude-standard | grep -E "\.json$|\.ts$|\.js$"
    ```
 
 3. **Verify build works locally**
+
    ```bash
    pnpm install --frozen-lockfile
    pnpm --filter tracker build  # Test the app that failed in logs
    ```
 
 4. **Compare local vs CI environment**
+
    ```bash
    # Check Node.js version
    node --version  # Should match GitHub Actions
@@ -101,11 +111,12 @@ Attempting to deploy Phase 9E Golden Deployment Pipeline via git tag `v2.5.1-gol
 ## Workflow File Reference
 
 `.github/workflows/golden-deploy.yml`:
+
 ```yaml
 on:
   push:
     tags:
-      - "v*-golden"
+      - 'v*-golden'
   workflow_dispatch:
 
 jobs:
@@ -138,6 +149,7 @@ jobs:
 **CRITICAL**: Need exact error message from latest GitHub Actions run to proceed. Without this, we're debugging blind.
 
 User should:
+
 1. Open https://github.com/totalaudiopromo/total-audio-platform/actions/workflows/golden-deploy.yml
 2. Click on the latest workflow run
 3. Click on any failed build job (e.g., "Build & Verify tracker")
@@ -147,6 +159,7 @@ User should:
 ## Pattern Recognition
 
 All 7 attempts have revealed **different root causes**:
+
 1. Wrong script implementation
 2. Lockfile sync issue (3 variations)
 3. Workflow trigger race condition
@@ -157,6 +170,7 @@ All 7 attempts have revealed **different root causes**:
 ---
 
 **For Codex**: Please help identify the root cause by either:
+
 - Analyzing the exact error message (once provided)
 - Suggesting what other common Next.js 15 build issues could cause this
 - Identifying other potential gitignore patterns that might hide required files

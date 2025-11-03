@@ -96,9 +96,7 @@ function collectEditableFiles(directory) {
 
     if (
       entry.isFile() &&
-      (entry.name.endsWith('.ts') ||
-        entry.name.endsWith('.tsx') ||
-        entry.name.endsWith('.css'))
+      (entry.name.endsWith('.ts') || entry.name.endsWith('.tsx') || entry.name.endsWith('.css'))
     ) {
       files.push(path.relative(ROOT_DIRECTORY, fullPath));
     }

@@ -39,7 +39,7 @@ export async function GET(req: NextRequest) {
       enrichmentStatsData,
       topUsersData,
       recentPaymentsData,
-      dau WeeklyData,
+      dauWeeklyData,
     ] = await Promise.all([
       calculateMRR(),
       getUserStats(startDate),

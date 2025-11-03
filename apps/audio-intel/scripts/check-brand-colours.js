@@ -59,10 +59,7 @@ function collectSourceFiles(directory) {
       return;
     }
 
-    if (
-      entry.isFile() &&
-      (entry.name.endsWith('.ts') || entry.name.endsWith('.tsx'))
-    ) {
+    if (entry.isFile() && (entry.name.endsWith('.ts') || entry.name.endsWith('.tsx'))) {
       files.push(path.relative(ROOT_DIRECTORY, fullPath));
     }
   });

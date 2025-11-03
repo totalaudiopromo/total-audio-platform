@@ -101,3 +101,34 @@ export async function createAdminClient(cookieStore: ReturnType<typeof cookies>)
     }
   );
 }
+
+/**
+ * Alias for createServerClient for backwards compatibility
+ * @deprecated Use createServerClient instead
+ */
+export const createClient = createServerClient;
+
+/**
+ * Get the current Supabase session for authenticated users
+ *
+ * @param cookieStore - Next.js cookies() promise
+ * @returns The user session or null if not authenticated
+ *
+ * @example
+ * ```typescript
+ * import { getSupabaseSession } from "@total-audio/core-db/server";
+ * import { cookies } from "next/headers";
+ *
+ * const session = await getSupabaseSession(cookies());
+ * if (!session) {
+ *   // User not authenticated
+ * }
+ * ```
+ */
+export async function getSupabaseSession(cookieStore: ReturnType<typeof cookies>) {
+  const supabase = await createServerClient(cookieStore);
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+  return session;
+}
