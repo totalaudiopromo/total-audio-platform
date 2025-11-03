@@ -4,7 +4,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { createAdminClient } from '@total-audio/core-db/server';
+import { createAdminClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 
 export async function GET() {
@@ -12,7 +12,7 @@ export async function GET() {
     const supabase = await createAdminClient(cookies());
 
     // Query conversion_events table with aggregation
-    const { data: conversions, error } = await supabase.rpc('get_conversion_summary');
+    const { data: conversions, error } = await (supabase.rpc as any)('get_conversion_summary');
 
     if (error) {
       console.error('Error fetching conversion summary:', error);

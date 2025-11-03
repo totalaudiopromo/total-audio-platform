@@ -10,7 +10,16 @@ export async function POST(request: NextRequest) {
   try {
     console.log('📊 Generating comprehensive weekly performance report...');
 
-    const reportData = {
+    const reportData: {
+      timestamp: string;
+      report_period: string;
+      overall_performance: number;
+      agent_performances: any;
+      key_metrics: any;
+      growth_indicators: any;
+      alert_summary: any;
+      strategic_recommendations: string[];
+    } = {
       timestamp: new Date().toISOString(),
       report_period: 'Last 7 days',
       overall_performance: 0,
@@ -18,7 +27,7 @@ export async function POST(request: NextRequest) {
       key_metrics: {},
       growth_indicators: {},
       alert_summary: {},
-      strategic_recommendations: [] as string[],
+      strategic_recommendations: [],
     };
 
     // Agent Performance Analysis

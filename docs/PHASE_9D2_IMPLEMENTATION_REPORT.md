@@ -1,4 +1,5 @@
 # Phase 9D-2 Implementation Report
+
 **Command Centre: API & Automation Integration**
 
 **Date**: 2 November 2025
@@ -27,6 +28,7 @@ Phase 9D-2 successfully integrated live data, social platforms, and automation A
 ### API Routes Created
 
 #### `/api/ops-console/agents`
+
 - **Purpose**: Agent performance metrics from Phase 9B `agent_events` table
 - **Method**: GET
 - **Features**:
@@ -35,6 +37,7 @@ Phase 9D-2 successfully integrated live data, social platforms, and automation A
   - Real-time agent health monitoring
 
 **Key Code**:
+
 ```typescript
 export async function GET() {
   const supabase = await createAdminClient(cookies());
@@ -51,7 +54,7 @@ export async function GET() {
     return NextResponse.json({
       success: true,
       agents: aggregateAgentMetrics(fallbackData || []),
-      source: 'fallback'
+      source: 'fallback',
     });
   }
 
@@ -60,16 +63,19 @@ export async function GET() {
 ```
 
 #### `/api/ops-console/feedback`
+
 - **Purpose**: Feedback sentiment analysis from `feedback_events`
 - **Features**: Aggregates by app, calculates avg rating, positive/negative counts
 - **Output**: Summary per app with trend indicators
 
 #### `/api/ops-console/growth`
+
 - **Purpose**: Revenue tracking from `conversion_events`
 - **Features**: Conversion metrics, revenue impact, user attribution
 - **Output**: Total revenue, conversion rates, growth metrics
 
 #### `/api/ops-console/health`
+
 - **Purpose**: Comprehensive system health checks
 - **Features**:
   - Database connectivity validation
@@ -96,15 +102,18 @@ export async function GET() {
 **Authentication**: App Password (BlueSky-specific approach)
 
 **Workflow**:
+
 1. `POST` to `com.atproto.server.createSession` with identifier + app password
 2. Receive `accessJwt` and `did` (decentralized identifier)
 3. Use JWT for subsequent API calls (e.g., `app.bsky.feed.getAuthorFeed`)
 
 **Endpoints**:
+
 - **GET**: Fetch recent BlueSky posts (last 10)
 - **POST**: Create new BlueSky post (behind `FEATURE_AUTOMATION` flag)
 
 **Configuration**:
+
 - `BLUESKY_IDENTIFIER` - BlueSky username/email
 - `BLUESKY_APP_PASSWORD` - App-specific password from BlueSky settings
 
@@ -119,9 +128,11 @@ export async function GET() {
 **Reason**: Threads Graph API requires Meta developer approval and whitelist access
 
 **Endpoint**:
+
 - **GET**: Returns beta status message with configuration check
 
 **Future Implementation**:
+
 - OAuth flow setup
 - Graph API endpoints for posting
 - Thread management features
@@ -144,6 +155,7 @@ export async function GET() {
 **Purpose**: AI-powered music industry newsletter generation
 
 **Workflow**:
+
 1. **GET**: Fetch recent news from RSS feeds
    - Music Business Worldwide
    - Complete Music Update
@@ -161,6 +173,7 @@ export async function GET() {
 **AI Model**: `claude-3-5-sonnet-20241022` (as specified by user)
 
 **Key Features**:
+
 - Multi-source RSS aggregation
 - AI-powered summarization with industry focus
 - Brand voice enforcement ("The Unsigned Advantage")
@@ -168,6 +181,7 @@ export async function GET() {
 - Behind `FEATURE_AUTOMATION` flag
 
 **Example Prompt**:
+
 ```typescript
 const prompt = `You are a music industry newsletter writer for "The Unsigned Advantage"...
 
@@ -208,11 +222,13 @@ Format your response as JSON: { "subject": "...", "content": "..." }`;
 **Authentication**: `api_secret` parameter (ConvertKit standard)
 
 **Configuration**:
+
 - `CONVERTKIT_API_KEY` - ConvertKit API key
 - `CONVERTKIT_API_SECRET` - ConvertKit API secret
 - `FEATURE_AUTOMATION` - Feature flag
 
 **Use Cases**:
+
 - Automated newsletter scheduling
 - Draft management from Ops Console
 - Campaign coordination with social posting
@@ -226,6 +242,7 @@ Format your response as JSON: { "subject": "...", "content": "..." }`;
 **Type**: Next.js dynamic sitemap
 
 **Routes Included**:
+
 - Home (`/`) - Priority 1.0, Daily updates
 - Ops Console (`/ops-console`) - Priority 0.9, Daily
 - Overview (`/ops-console/overview`) - Priority 0.9, Daily
@@ -239,6 +256,7 @@ Format your response as JSON: { "subject": "...", "content": "..." }`;
 ### Robots.txt (`/app/robots.ts`)
 
 **Rules**:
+
 - **Allow**: All user agents for public routes (`/`)
 - **Disallow**:
   - API routes (`/api/`)
@@ -272,6 +290,7 @@ Format your response as JSON: { "subject": "...", "content": "..." }`;
 **Configuration**: `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` environment variable
 
 **Features**:
+
 - Privacy-friendly analytics (GDPR compliant)
 - No cookies required
 - Page view tracking
@@ -286,6 +305,7 @@ Format your response as JSON: { "subject": "...", "content": "..." }`;
 All workflows verified operational with scripts in `/scripts/`:
 
 #### 1. **Agent Health Check** (`.github/workflows/agent-health.yml`)
+
 - **Schedule**: Nightly at 02:00 UTC
 - **Script**: `scripts/agent-observability.ts`
 - **Triggers**:
@@ -299,6 +319,7 @@ All workflows verified operational with scripts in `/scripts/`:
   - Failure alerts with GitHub Actions run link
 
 #### 2. **Feedback Digest** (`.github/workflows/feedback-digest.yml`)
+
 - **Schedule**: Weekly on Fridays at 16:00 UTC
 - **Script**: `scripts/feedback-digest.ts`
 - **Content**:
@@ -308,6 +329,7 @@ All workflows verified operational with scripts in `/scripts/`:
   - Trend indicators
 
 #### 3. **Growth Reflex** (`.github/workflows/growth-reflex.yml`)
+
 - **Schedule**: Weekly on Mondays at 09:00 UTC
 - **Script**: `scripts/growth-reflex.ts`
 - **Content**:
@@ -319,10 +341,12 @@ All workflows verified operational with scripts in `/scripts/`:
 ### Telegram Configuration
 
 **Environment Variables**:
+
 - `TAP_DISCORD_BOT_TOKEN` - Telegram bot token
 - `TELEGRAM_CHAT_ID` - Target chat/channel ID
 
 **Utility Functions** (`lib/telegram.ts`):
+
 - `isTelegramConfigured()` - Config validation
 - `sendTelegramMessage()` - Core message sender
 - `sendAgentHealthSummary()` - Agent metrics formatting
@@ -336,20 +360,22 @@ All workflows verified operational with scripts in `/scripts/`:
 
 ### Initial Scores (Before Optimization)
 
-| Category        | Score | Status |
-|-----------------|-------|--------|
-| Performance     | 73    | ❌ Below target |
-| Accessibility   | 88    | ❌ Below target |
-| Best Practices  | 96    | ✅ Pass |
-| SEO             | 92    | ✅ Pass |
+| Category       | Score | Status          |
+| -------------- | ----- | --------------- |
+| Performance    | 73    | ❌ Below target |
+| Accessibility  | 88    | ❌ Below target |
+| Best Practices | 96    | ✅ Pass         |
+| SEO            | 92    | ✅ Pass         |
 
 ### Issues Identified
 
 **Accessibility**:
+
 - Background/foreground color contrast insufficient
 - Viewport scaling disabled (`userScalable=false`, `maximumScale=1`)
 
 **Performance**:
+
 - Total Blocking Time: 1,390ms (very high)
 - LCP: 2.3s (acceptable but improvable)
 - Legacy JavaScript
@@ -359,6 +385,7 @@ All workflows verified operational with scripts in `/scripts/`:
 #### 1. Accessibility Fixes (`app/layout.tsx`)
 
 **Before**:
+
 ```typescript
 export const viewport = {
   width: 'device-width',
@@ -370,6 +397,7 @@ export const viewport = {
 ```
 
 **After**:
+
 ```typescript
 export const viewport = {
   width: 'device-width',
@@ -384,6 +412,7 @@ export const viewport = {
 #### 2. Performance Optimizations (`next.config.js`)
 
 **Added**:
+
 ```javascript
 // Performance optimizations for Lighthouse
 swcMinify: true, // Use SWC for faster minification
@@ -396,22 +425,24 @@ images: {
 ```
 
 **Benefits**:
+
 - Faster minification (SWC vs Terser)
 - Reduced bundle size (console.log removal)
 - Modern image formats (better compression)
 
 ### Final Scores (After Optimization)
 
-| Category        | Score | Change | Status |
-|-----------------|-------|--------|--------|
-| Performance     | 67    | -6     | ⚠️ Dev mode limitation |
-| Accessibility   | 95    | +7     | ✅ Pass |
-| Best Practices  | 96    | 0      | ✅ Pass |
-| SEO             | 92    | 0      | ✅ Pass |
+| Category       | Score | Change | Status                 |
+| -------------- | ----- | ------ | ---------------------- |
+| Performance    | 67    | -6     | ⚠️ Dev mode limitation |
+| Accessibility  | 95    | +7     | ✅ Pass                |
+| Best Practices | 96    | 0      | ✅ Pass                |
+| SEO            | 92    | 0      | ✅ Pass                |
 
 ### Performance Score Context
 
 **Why Performance is 67 in dev mode:**
+
 - Localhost environment (no CDN, no caching)
 - Unminified bundles (Next.js dev mode)
 - Source maps enabled
@@ -419,6 +450,7 @@ images: {
 - API calls to local database (network latency)
 
 **Production expectations:**
+
 - Minified bundles (SWC compression)
 - CDN delivery (Vercel Edge Network)
 - HTTP/2 server push
@@ -533,31 +565,37 @@ NEXT_PUBLIC_SUPABASE_URL="..."
 ### Manual Testing Performed
 
 ✅ **Live Data Integration**:
+
 - Verified all 4 dashboards fetch from Phase 9B tables
 - Confirmed fallback aggregation works when RPC unavailable
 - Tested error handling for API failures
 
 ✅ **Social Integrations**:
+
 - BlueSky authentication flow validated
 - Threads beta status correctly displayed
 - Live integration status updates verified
 
 ✅ **Automation APIs**:
+
 - Newsjacker RSS parsing successful for all 3 feeds
 - Claude 3.5 Sonnet newsletter generation produces quality content
 - ConvertKit broadcast creation/update/listing operational
 
 ✅ **SEO & Analytics**:
+
 - Sitemap accessible at `/sitemap.xml`
 - Robots.txt accessible at `/robots.txt`
 - Plausible script loads conditionally
 
 ✅ **Telegram Notifications**:
+
 - All 3 workflows trigger on schedule
 - Message formatting correct (Markdown support)
 - GitHub Actions run links work
 
 ✅ **Lighthouse Audit**:
+
 - Scores verified before/after optimizations
 - Accessibility improvements confirmed
 - Performance optimizations applied
@@ -565,6 +603,7 @@ NEXT_PUBLIC_SUPABASE_URL="..."
 ### TypeScript Validation
 
 **Pre-existing errors** (not introduced by Phase 9D-2):
+
 - `apps/command-centre/app/api/agents/performance-report/route.ts:123` - Type mismatch
 - `apps/command-centre/app/api/business-metrics/route.ts:87` - String literal type issue
 - `apps/command-centre/app/api/churn-prevention/route.ts:449` - Missing properties
@@ -736,6 +775,7 @@ Route (app)                              Size     First Load JS
 ### Security Headers
 
 Already configured in `middleware.ts` (Phase 9D-1):
+
 - Content-Security-Policy
 - HTTP Strict Transport Security (HSTS)
 - X-Frame-Options

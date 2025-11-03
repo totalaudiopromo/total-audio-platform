@@ -170,8 +170,8 @@ async function runGoldenCheck() {
   const duration = Date.now() - startTime;
 
   // Critical checks: Environment variables and build output must pass
-  const criticalChecks = checks.filter(c =>
-    c.name === 'Environment Variables' || c.name === 'Build Output'
+  const criticalChecks = checks.filter(
+    c => c.name === 'Environment Variables' || c.name === 'Build Output'
   );
   const criticalPassed = criticalChecks.every(c => c.status === 'pass');
 

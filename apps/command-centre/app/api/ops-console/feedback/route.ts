@@ -4,7 +4,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { createAdminClient } from '@total-audio/core-db/server';
+import { createAdminClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 
 export async function GET() {
@@ -12,7 +12,7 @@ export async function GET() {
     const supabase = await createAdminClient(cookies());
 
     // Query feedback_events table with aggregation
-    const { data: feedback, error } = await supabase.rpc('get_feedback_summary');
+    const { data: feedback, error } = await (supabase.rpc as any)('get_feedback_summary');
 
     if (error) {
       console.error('Error fetching feedback summary:', error);

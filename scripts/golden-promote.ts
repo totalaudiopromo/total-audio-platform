@@ -7,9 +7,9 @@
  * Used by the Phase 9E Golden Deployment Pipeline.
  */
 
-import fs from "fs";
-import path from "path";
-import fetch from "node-fetch";
+import fs from 'fs';
+import path from 'path';
+import fetch from 'node-fetch';
 
 interface VercelDeployment {
   uid: string;
@@ -24,16 +24,16 @@ interface PromoteResult {
   app: string;
   deploymentId: string;
   url?: string;
-  status: "success" | "fail";
+  status: 'success' | 'fail';
   message: string;
   duration: number;
 }
 
 const APP_PROJECTS: Record<string, string> = {
-  "audio-intel": "audio-intel",
-  tracker: "tracker",
-  "pitch-generator": "pitch-generator",
-  "command-centre": "command-centre",
+  'audio-intel': 'audio-intel',
+  tracker: 'tracker',
+  'pitch-generator': 'pitch-generator',
+  'command-centre': 'command-centre',
 };
 
 // === ENVIRONMENT VARIABLES ===
@@ -45,12 +45,12 @@ async function sendTelegram(message: string) {
   if (!TELEGRAM_ENABLED) return;
   try {
     await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({ chat_id: TELEGRAM_CHAT_ID!, text: message }),
     });
   } catch (err) {
-    console.error("⚠️ Telegram send failed:", (err as Error).message);
+    console.error('⚠️ Telegram send failed:', (err as Error).message);
   }
 }
 
@@ -66,9 +66,7 @@ async function getLatestPreviewDeployment(
       return null;
     }
     const data = (await res.json()) as { deployments: VercelDeployment[] };
-    const preview = data.deployments.find(
-      (d) => d.target === "preview" && d.state === "READY"
-    );
+    const preview = data.deployments.find(d => d.target === 'preview' && d.state === 'READY');
     return preview ?? null;
   } catch (err) {
     console.error(`❌ Error fetching deployments for ${projectName}:`, err);
@@ -81,17 +79,14 @@ async function promoteDeployment(
   token: string
 ): Promise<{ ok: boolean; text: string }> {
   try {
-    const res = await fetch(
-      `https://api.vercel.com/v13/deployments/${deploymentId}/promote`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ target: "production" }),
-      }
-    );
+    const res = await fetch(`https://api.vercel.com/v13/deployments/${deploymentId}/promote`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ target: 'production' }),
+    });
     const text = await res.text();
     return { ok: res.ok, text };
   } catch (err) {
@@ -102,7 +97,7 @@ async function promoteDeployment(
 // === CORE ===
 async function promoteAllApps(): Promise<PromoteResult[]> {
   if (!VERCEL_TOKEN) {
-    console.error("❌ Missing VERCEL_TOKEN");
+    console.error('❌ Missing VERCEL_TOKEN');
     process.exit(1);
   }
 
@@ -118,9 +113,9 @@ async function promoteAllApps(): Promise<PromoteResult[]> {
       await sendTelegram(`❌ ${appName}: No preview deployment found`);
       results.push({
         app: appName,
-        deploymentId: "none",
-        status: "fail",
-        message: "No preview deployment found",
+        deploymentId: 'none',
+        status: 'fail',
+        message: 'No preview deployment found',
         duration: Date.now() - appStart,
       });
       continue;
@@ -136,8 +131,8 @@ async function promoteAllApps(): Promise<PromoteResult[]> {
         app: appName,
         deploymentId: deployment.uid,
         url: deployment.url,
-        status: "success",
-        message: "Promoted successfully",
+        status: 'success',
+        message: 'Promoted successfully',
         duration: Date.now() - appStart,
       });
     } else {
@@ -147,35 +142,35 @@ async function promoteAllApps(): Promise<PromoteResult[]> {
         app: appName,
         deploymentId: deployment.uid,
         url: deployment.url,
-        status: "fail",
+        status: 'fail',
         message: text,
         duration: Date.now() - appStart,
       });
     }
 
     // prevent API rate limits
-    await new Promise((r) => setTimeout(r, 1500));
+    await new Promise(r => setTimeout(r, 1500));
   }
 
   const duration = ((Date.now() - startTime) / 1000).toFixed(1);
   console.error(`\n=== Golden Promotion Summary (Total ${duration}s) ===`);
   for (const r of results) {
-    const icon = r.status === "success" ? "✓" : "✗";
+    const icon = r.status === 'success' ? '✓' : '✗';
     console.error(`${icon} ${r.app}: ${r.message}`);
   }
 
-  const allSuccess = results.every((r) => r.status === "success");
+  const allSuccess = results.every(r => r.status === 'success');
   const finalMsg = allSuccess
-    ? "✅ Golden Deployment successful and promoted to production!"
-    : "⚠️ Golden Deployment completed with some issues.";
+    ? '✅ Golden Deployment successful and promoted to production!'
+    : '⚠️ Golden Deployment completed with some issues.';
 
   await sendTelegram(finalMsg);
 
   // Persist JSON report if running in CI
   if (process.env.GITHUB_ACTIONS) {
-    const reportDir = path.join(process.cwd(), "reports", "golden");
+    const reportDir = path.join(process.cwd(), 'reports', 'golden');
     fs.mkdirSync(reportDir, { recursive: true });
-    const filePath = path.join(reportDir, "promote.json");
+    const filePath = path.join(reportDir, 'promote.json');
     fs.writeFileSync(
       filePath,
       JSON.stringify({ results, timestamp: new Date().toISOString() }, null, 2)
@@ -187,8 +182,8 @@ async function promoteAllApps(): Promise<PromoteResult[]> {
 }
 
 // === EXECUTE ===
-promoteAllApps().catch(async (err) => {
-  console.error("❌ Fatal error in promotion:", err);
+promoteAllApps().catch(async err => {
+  console.error('❌ Fatal error in promotion:', err);
   await sendTelegram(`❌ Golden Deployment failed: ${(err as Error).message}`);
   process.exit(1);
 });

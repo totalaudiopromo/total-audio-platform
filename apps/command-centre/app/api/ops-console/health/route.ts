@@ -4,7 +4,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { createAdminClient } from '@total-audio/core-db/server';
+import { createAdminClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { isTelegramConfigured } from '@/lib/telegram';
 import { integrations } from '@/lib/env';

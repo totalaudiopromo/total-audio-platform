@@ -53,6 +53,7 @@ git push --tags
 The `golden-check.ts` script verifies:
 
 ### Database Checks
+
 - ✅ Supabase connectivity
 - ✅ `agent_events` table exists and accessible
 - ✅ `feedback_events` table exists and accessible
@@ -60,11 +61,13 @@ The `golden-check.ts` script verifies:
 - ✅ `get_agent_metrics` RPC function (optional)
 
 ### API Endpoint Checks
+
 - ✅ `/api/health` responds with 200
 - ✅ `/api/ops-console/agents` (Command Centre only)
 - ✅ `/api/ops-console/feedback` (Command Centre only)
 
 ### External Service Checks
+
 - ✅ Telegram Bot API reachable
 - ✅ Plausible Analytics reachable
 
@@ -107,6 +110,7 @@ TELEGRAM_CHAT_ID=-1001234567890  # Your chat ID
 ### How to Get Telegram Credentials
 
 1. **Create Bot**:
+
    ```
    Message @BotFather on Telegram
    Send: /newbot
@@ -124,6 +128,7 @@ TELEGRAM_CHAT_ID=-1001234567890  # Your chat ID
 ## Telegram Notification Examples
 
 ### During Build & Test
+
 ```
 Golden check for audio-intel completed with status success
 Golden check for tracker completed with status success
@@ -132,6 +137,7 @@ Golden check for command-centre completed with status success
 ```
 
 ### During Promotion
+
 ```
 ✅ audio-intel: Promoted to production (audio-intel-abc123.vercel.app)
 ✅ tracker: Promoted to production (tracker-def456.vercel.app)
@@ -140,11 +146,13 @@ Golden check for command-centre completed with status success
 ```
 
 ### Final Success
+
 ```
 ✅ Golden Deployment successful and promoted to production!
 ```
 
 ### Failure Examples
+
 ```
 ❌ audio-intel: Lighthouse score below threshold (Performance: 85)
 ❌ tracker: Health check failed - Database connectivity error
@@ -186,16 +194,19 @@ git push --tags
 ## Audit Log Retention Policy
 
 ### Lighthouse Reports
+
 - **Storage**: GitHub Actions artifacts
 - **Retention**: 90 days (GitHub default)
 - **Access**: Actions → Workflow run → Artifacts section
 
 ### Health Check Logs
+
 - **Storage**: GitHub Actions logs
 - **Retention**: 90 days (GitHub default)
 - **Access**: Actions → Workflow run → Build & Test job logs
 
 ### Vercel Deployment History
+
 - **Storage**: Vercel dashboard
 - **Retention**: Unlimited (Vercel preserves all deployments)
 - **Access**: https://vercel.com/<team>/<project>/deployments
@@ -236,8 +247,8 @@ Edit `.lighthouse/budget.json`:
 
 ```json
 {
-  "performance": 85,      // Lower threshold
-  "accessibility": 100,   // Higher threshold
+  "performance": 85, // Lower threshold
+  "accessibility": 100, // Higher threshold
   "best-practices": 95,
   "seo": 90
 }
@@ -255,26 +266,31 @@ checks.push(await checkCustomEndpoint(app));
 ## Performance Expectations
 
 ### Build Times (Parallel)
+
 - Audio Intel: ~2-3 minutes
 - Tracker: ~2-3 minutes
 - Pitch Generator: ~2-3 minutes
 - Command Centre: ~2-3 minutes
 
 ### Health Check Times
+
 - Supabase checks: ~500ms
 - API endpoint checks: ~1-2 seconds
 - External service checks: ~500ms
 - **Total**: ~3-5 seconds per app
 
 ### Lighthouse Audit Times
+
 - Per app: ~30-60 seconds
 - **Total (parallel)**: ~60 seconds
 
 ### Promotion Times
+
 - Per app: ~5-10 seconds
 - **Total (sequential)**: ~30 seconds
 
 ### End-to-End Pipeline
+
 - **Expected**: 5-8 minutes
 - **Maximum**: 15 minutes (includes retries)
 
@@ -285,6 +301,7 @@ checks.push(await checkCustomEndpoint(app));
 **Symptom**: `Supabase Connectivity: Connection failed`
 
 **Solution**:
+
 ```bash
 # Verify environment variables are set
 echo $NEXT_PUBLIC_SUPABASE_URL
@@ -300,6 +317,7 @@ curl https://ucncbighzqudaszewjrv.supabase.co/rest/v1/agent_events?limit=1 \
 **Symptom**: `Lighthouse score below threshold (Performance: 85)`
 
 **Solution**:
+
 1. Run Lighthouse locally: `npm run lighthouse`
 2. Check Vercel deployment logs for build issues
 3. Review performance recommendations
@@ -310,6 +328,7 @@ curl https://ucncbighzqudaszewjrv.supabase.co/rest/v1/agent_events?limit=1 \
 **Symptom**: `No preview deployment found`
 
 **Solution**:
+
 ```bash
 # Check if preview deployment exists
 vercel ls audio-intel
@@ -321,6 +340,7 @@ vercel deploy audio-intel
 **Symptom**: `Promotion failed`
 
 **Solution**:
+
 1. Check Vercel token is valid
 2. Verify project ID matches
 3. Check deployment is in READY state
@@ -331,6 +351,7 @@ vercel deploy audio-intel
 **Symptom**: No Telegram messages received
 
 **Solution**:
+
 ```bash
 # Test Telegram bot manually
 curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
@@ -346,6 +367,7 @@ curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
 ### Token Rotation
 
 Rotate these tokens every 90 days:
+
 - `VERCEL_TOKEN`
 - `TELEGRAM_BOT_TOKEN`
 - `SUPABASE_SERVICE_ROLE_KEY` (only if compromised)
@@ -360,7 +382,7 @@ For production deployments requiring human approval:
 ```yaml
 promote:
   needs: build-and-test
-  environment: production  # Requires GitHub environment approval
+  environment: production # Requires GitHub environment approval
   runs-on: ubuntu-latest
   # ...
 ```
