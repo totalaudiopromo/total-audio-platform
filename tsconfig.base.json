@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@total-audio/ui": ["./packages/ui/index.ts"],
+      "@total-audio/ui/*": ["./packages/ui/*"],
+      "@total-audio/auth": ["./packages/auth/index.ts"],
+      "@total-audio/auth/*": ["./packages/auth/*"],
+      "@total-audio/shared-utils": ["./packages/shared-utils/index.js"],
+      "@total-audio/shared-utils/*": ["./packages/shared-utils/*"],
+      "@total-audio/core-db": ["./packages/core-db/src/index.ts"],
+      "@total-audio/core-db/*": ["./packages/core-db/src/*"]
+    }
+  },
+  "exclude": ["node_modules", ".next", "dist", "build", "archive"]
+}
