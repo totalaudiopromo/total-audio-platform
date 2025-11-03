@@ -38,6 +38,223 @@ export type Database = {
         };
         Relationships: [];
       };
+      agent_messages: {
+        Row: {
+          content: string;
+          created_at: string | null;
+          from_agent: string;
+          id: string;
+          message_type: string | null;
+          metadata: Json | null;
+          session_id: string | null;
+          to_agent: string;
+        };
+        Insert: {
+          content: string;
+          created_at?: string | null;
+          from_agent: string;
+          id?: string;
+          message_type?: string | null;
+          metadata?: Json | null;
+          session_id?: string | null;
+          to_agent: string;
+        };
+        Update: {
+          content?: string;
+          created_at?: string | null;
+          from_agent?: string;
+          id?: string;
+          message_type?: string | null;
+          metadata?: Json | null;
+          session_id?: string | null;
+          to_agent?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'agent_messages_session_id_fkey';
+            columns: ['session_id'];
+            isOneToOne: false;
+            referencedRelation: 'agent_sessions';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
+      agent_session_steps: {
+        Row: {
+          completed_at: string | null;
+          description: string | null;
+          error_message: string | null;
+          id: string;
+          input: Json | null;
+          output: Json | null;
+          session_id: string;
+          skill_name: string | null;
+          started_at: string | null;
+          status: string | null;
+          step_number: number;
+        };
+        Insert: {
+          completed_at?: string | null;
+          description?: string | null;
+          error_message?: string | null;
+          id?: string;
+          input?: Json | null;
+          output?: Json | null;
+          session_id: string;
+          skill_name?: string | null;
+          started_at?: string | null;
+          status?: string | null;
+          step_number: number;
+        };
+        Update: {
+          completed_at?: string | null;
+          description?: string | null;
+          error_message?: string | null;
+          id?: string;
+          input?: Json | null;
+          output?: Json | null;
+          session_id?: string;
+          skill_name?: string | null;
+          started_at?: string | null;
+          status?: string | null;
+          step_number?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'agent_session_steps_session_id_fkey';
+            columns: ['session_id'];
+            isOneToOne: false;
+            referencedRelation: 'agent_sessions';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'agent_session_steps_skill_name_fkey';
+            columns: ['skill_name'];
+            isOneToOne: false;
+            referencedRelation: 'skills';
+            referencedColumns: ['name'];
+          },
+        ];
+      };
+      agent_sessions: {
+        Row: {
+          agent_name: string;
+          completed_at: string | null;
+          cost_usd: number | null;
+          created_at: string | null;
+          current_step: number | null;
+          description: string | null;
+          duration_ms: number | null;
+          final_output: Json | null;
+          id: string;
+          initial_input: Json;
+          name: string | null;
+          started_at: string | null;
+          status: string;
+          tokens_used: number | null;
+          total_steps: number | null;
+          trace: Json[] | null;
+          updated_at: string | null;
+          user_id: string;
+        };
+        Insert: {
+          agent_name: string;
+          completed_at?: string | null;
+          cost_usd?: number | null;
+          created_at?: string | null;
+          current_step?: number | null;
+          description?: string | null;
+          duration_ms?: number | null;
+          final_output?: Json | null;
+          id?: string;
+          initial_input: Json;
+          name?: string | null;
+          started_at?: string | null;
+          status?: string;
+          tokens_used?: number | null;
+          total_steps?: number | null;
+          trace?: Json[] | null;
+          updated_at?: string | null;
+          user_id: string;
+        };
+        Update: {
+          agent_name?: string;
+          completed_at?: string | null;
+          cost_usd?: number | null;
+          created_at?: string | null;
+          current_step?: number | null;
+          description?: string | null;
+          duration_ms?: number | null;
+          final_output?: Json | null;
+          id?: string;
+          initial_input?: Json;
+          name?: string | null;
+          started_at?: string | null;
+          status?: string;
+          tokens_used?: number | null;
+          total_steps?: number | null;
+          trace?: Json[] | null;
+          updated_at?: string | null;
+          user_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'agent_sessions_agent_name_fkey';
+            columns: ['agent_name'];
+            isOneToOne: false;
+            referencedRelation: 'agents';
+            referencedColumns: ['name'];
+          },
+        ];
+      };
+      agents: {
+        Row: {
+          available_skills: string[];
+          avatar_emoji: string | null;
+          color: string | null;
+          config: Json | null;
+          created_at: string | null;
+          description: string | null;
+          description_short: string | null;
+          enabled: boolean | null;
+          flow_shape: string | null;
+          name: string;
+          system_prompt: string;
+          updated_at: string | null;
+          version: string;
+        };
+        Insert: {
+          available_skills: string[];
+          avatar_emoji?: string | null;
+          color?: string | null;
+          config?: Json | null;
+          created_at?: string | null;
+          description?: string | null;
+          description_short?: string | null;
+          enabled?: boolean | null;
+          flow_shape?: string | null;
+          name: string;
+          system_prompt: string;
+          updated_at?: string | null;
+          version: string;
+        };
+        Update: {
+          available_skills?: string[];
+          avatar_emoji?: string | null;
+          color?: string | null;
+          config?: Json | null;
+          created_at?: string | null;
+          description?: string | null;
+          description_short?: string | null;
+          enabled?: boolean | null;
+          flow_shape?: string | null;
+          name?: string;
+          system_prompt?: string;
+          updated_at?: string | null;
+          version?: string;
+        };
+        Relationships: [];
+      };
       app_permissions: {
         Row: {
           app_name: string;
@@ -1245,6 +1462,69 @@ export type Database = {
           },
         ];
       };
+      skill_executions: {
+        Row: {
+          agent_session_id: string | null;
+          completed_at: string | null;
+          cost_usd: number | null;
+          duration_ms: number | null;
+          error_message: string | null;
+          id: string;
+          input: Json;
+          output: Json | null;
+          skill_name: string;
+          started_at: string | null;
+          status: string | null;
+          tokens_used: number | null;
+          user_id: string | null;
+        };
+        Insert: {
+          agent_session_id?: string | null;
+          completed_at?: string | null;
+          cost_usd?: number | null;
+          duration_ms?: number | null;
+          error_message?: string | null;
+          id?: string;
+          input: Json;
+          output?: Json | null;
+          skill_name: string;
+          started_at?: string | null;
+          status?: string | null;
+          tokens_used?: number | null;
+          user_id?: string | null;
+        };
+        Update: {
+          agent_session_id?: string | null;
+          completed_at?: string | null;
+          cost_usd?: number | null;
+          duration_ms?: number | null;
+          error_message?: string | null;
+          id?: string;
+          input?: Json;
+          output?: Json | null;
+          skill_name?: string;
+          started_at?: string | null;
+          status?: string | null;
+          tokens_used?: number | null;
+          user_id?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'skill_executions_agent_session_id_fkey';
+            columns: ['agent_session_id'];
+            isOneToOne: false;
+            referencedRelation: 'agent_sessions';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'skill_executions_skill_name_fkey';
+            columns: ['skill_name'];
+            isOneToOne: false;
+            referencedRelation: 'skills';
+            referencedColumns: ['name'];
+          },
+        ];
+      };
       skill_invocation: {
         Row: {
           confidence: number | null;
@@ -1327,6 +1607,54 @@ export type Database = {
             referencedColumns: ['id'];
           },
         ];
+      };
+      skills: {
+        Row: {
+          category: string;
+          config: Json | null;
+          created_at: string | null;
+          description: string | null;
+          enabled: boolean | null;
+          input_schema: Json;
+          is_beta: boolean | null;
+          model: string | null;
+          name: string;
+          output_schema: Json;
+          provider: string;
+          updated_at: string | null;
+          version: string;
+        };
+        Insert: {
+          category: string;
+          config?: Json | null;
+          created_at?: string | null;
+          description?: string | null;
+          enabled?: boolean | null;
+          input_schema: Json;
+          is_beta?: boolean | null;
+          model?: string | null;
+          name: string;
+          output_schema: Json;
+          provider: string;
+          updated_at?: string | null;
+          version: string;
+        };
+        Update: {
+          category?: string;
+          config?: Json | null;
+          created_at?: string | null;
+          description?: string | null;
+          enabled?: boolean | null;
+          input_schema?: Json;
+          is_beta?: boolean | null;
+          model?: string | null;
+          name?: string;
+          output_schema?: Json;
+          provider?: string;
+          updated_at?: string | null;
+          version?: string;
+        };
+        Relationships: [];
       };
       user_pitch_settings: {
         Row: {

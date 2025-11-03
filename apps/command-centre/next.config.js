@@ -24,10 +24,6 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'], // Modern image formats
   },
-  // Temporary: Allow build to succeed while Supabase types are regenerated
-  typescript: {
-    ignoreBuildErrors: true,
-  },
 };
 
 module.exports = nextConfig;
