@@ -84,8 +84,8 @@ export default function CohortsPage() {
   const getRetentionColour = (rate: number): string => {
     if (rate >= 80) return 'bg-green-500';
     if (rate >= 60) return 'bg-green-400';
-    if (rate >= 40) return 'bg-amber-400';
-    if (rate >= 20) return 'bg-amber-500';
+    if (rate >= 40) return 'bg-orange-400';
+    if (rate >= 20) return 'bg-orange-500';
     if (rate > 0) return 'bg-red-400';
     return 'bg-gray-200';
   };
@@ -418,11 +418,11 @@ export default function CohortsPage() {
               <span>60-79%</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-amber-400 rounded"></div>
+              <div className="w-6 h-6 bg-orange-400 rounded"></div>
               <span>40-59%</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-amber-500 rounded"></div>
+              <div className="w-6 h-6 bg-orange-500 rounded"></div>
               <span>20-39%</span>
             </div>
             <div className="flex items-center gap-2">

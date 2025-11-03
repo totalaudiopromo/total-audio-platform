@@ -8,7 +8,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const glob = require('glob');
 
 // Audio Intel brand colours (ALLOWED)
 const ALLOWED_COLOURS = {
@@ -37,8 +36,38 @@ const EXCEPTIONS = [
   'app/progress-dashboard/', // Internal dashboard, not customer-facing
 ];
 
+const ROOT_DIRECTORY = process.cwd();
+const IGNORED_DIRECTORIES = new Set(['node_modules', '.next', 'scripts']);
+
 function shouldCheckFile(filePath) {
   return !EXCEPTIONS.some(exception => filePath.includes(exception));
+}
+
+function collectSourceFiles(directory) {
+  const entries = fs.readdirSync(directory, { withFileTypes: true });
+  const files = [];
+
+  entries.forEach(entry => {
+    const fullPath = path.join(directory, entry.name);
+
+    if (entry.isDirectory()) {
+      if (IGNORED_DIRECTORIES.has(entry.name)) {
+        return;
+      }
+
+      files.push(...collectSourceFiles(fullPath));
+      return;
+    }
+
+    if (
+      entry.isFile() &&
+      (entry.name.endsWith('.ts') || entry.name.endsWith('.tsx'))
+    ) {
+      files.push(path.relative(ROOT_DIRECTORY, fullPath));
+    }
+  });
+
+  return files;
 }
 
 function checkFile(filePath) {
@@ -74,9 +103,7 @@ function main() {
   console.log('🎨 Checking Audio Intel brand colours...\n');
 
   // Find all TypeScript/TSX files
-  const files = glob.sync('**/*.{ts,tsx}', {
-    ignore: ['node_modules/**', '.next/**', 'scripts/**'],
-  });
+  const files = collectSourceFiles(ROOT_DIRECTORY);
 
   let allViolations = [];
 

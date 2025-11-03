@@ -158,7 +158,7 @@ export default function AdminMetricsPage() {
 
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-sm font-medium text-gray-500 uppercase">Total Revenue</h3>
-            <p className="text-3xl font-bold text-purple-600 mt-2">
+            <p className="text-3xl font-bold text-blue-500 mt-2">
               £{(parseFloat(metrics.metrics.revenue.mrr_gbp) * (days / 30)).toFixed(2)}
             </p>
             <p className="text-sm text-gray-500 mt-1">For selected period</p>
@@ -187,7 +187,7 @@ export default function AdminMetricsPage() {
 
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-sm font-medium text-gray-500 uppercase">Stickiness (DAU/WAU)</h3>
-            <p className="text-3xl font-bold text-purple-600 mt-2">
+            <p className="text-3xl font-bold text-blue-500 mt-2">
               {metrics.metrics.engagement.stickinessRatio}
             </p>
             <p className="text-sm text-gray-500 mt-1">
@@ -231,7 +231,7 @@ export default function AdminMetricsPage() {
               <h3 className="text-sm font-medium text-gray-500 uppercase">
                 Total Contacts Enriched
               </h3>
-              <p className="text-2xl font-bold text-purple-600 mt-2">
+              <p className="text-2xl font-bold text-blue-500 mt-2">
                 {metrics.metrics.enrichments.totalContactsEnriched}
               </p>
             </div>

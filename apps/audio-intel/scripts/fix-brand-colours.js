@@ -7,7 +7,7 @@
  */
 
 const fs = require('fs');
-const glob = require('glob');
+const path = require('path');
 
 // Colour replacements
 const REPLACEMENTS = [
@@ -71,8 +71,40 @@ const SKIP_FILES = [
   'app/progress-dashboard/',
 ];
 
+const ROOT_DIRECTORY = process.cwd();
+const IGNORED_DIRECTORIES = new Set(['node_modules', '.next']);
+
 function shouldFixFile(filePath) {
   return !SKIP_FILES.some(skip => filePath.includes(skip));
+}
+
+function collectEditableFiles(directory) {
+  const entries = fs.readdirSync(directory, { withFileTypes: true });
+  const files = [];
+
+  entries.forEach(entry => {
+    const fullPath = path.join(directory, entry.name);
+
+    if (entry.isDirectory()) {
+      if (IGNORED_DIRECTORIES.has(entry.name)) {
+        return;
+      }
+
+      files.push(...collectEditableFiles(fullPath));
+      return;
+    }
+
+    if (
+      entry.isFile() &&
+      (entry.name.endsWith('.ts') ||
+        entry.name.endsWith('.tsx') ||
+        entry.name.endsWith('.css'))
+    ) {
+      files.push(path.relative(ROOT_DIRECTORY, fullPath));
+    }
+  });
+
+  return files;
 }
 
 function fixFile(filePath) {
@@ -98,9 +130,7 @@ function fixFile(filePath) {
 function main() {
   console.log('🎨 Auto-fixing Audio Intel brand colours...\n');
 
-  const files = glob.sync('**/*.{ts,tsx,css}', {
-    ignore: ['node_modules/**', '.next/**'],
-  });
+  const files = collectEditableFiles(ROOT_DIRECTORY);
 
   let totalChanges = 0;
   let filesFixed = 0;
