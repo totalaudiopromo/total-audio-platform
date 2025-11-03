@@ -134,6 +134,7 @@ temp/
 **/*.exr
 
 # Test results and reports
+reports/
 test-results/
 playwright-report/
 coverage/

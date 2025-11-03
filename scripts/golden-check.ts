@@ -1,328 +1,158 @@
 #!/usr/bin/env tsx
 /**
- * Golden Deployment Health Check
- * Verifies all critical systems before promoting to production
+ * Golden Deployment Promotion Script
+ * Promotes the latest preview deployments for each app to production.
+ * Notifies Telegram and logs all actions.
+ *
+ * Total Audio Platform (intel / tracker / pitch / command-centre)
  */
 
-import { createClient } from '@supabase/supabase-js';
-import type { Database } from '../packages/core-db/src/types/database';
+import fetch from "node-fetch";
 
-interface CheckResult {
+interface VercelDeployment {
+  uid: string;
+  url: string;
+  state: string;
   name: string;
-  status: 'pass' | 'fail';
-  message: string;
-  duration: number;
+  createdAt: number;
 }
 
-interface GoldenCheckSummary {
-  app: string;
-  timestamp: string;
-  checks: CheckResult[];
-  overall: 'pass' | 'fail';
-  duration: number;
-}
-
-const APP_URLS: Record<string, string> = {
-  'audio-intel': 'https://intel.totalaudiopromo.com',
-  'tracker': 'https://tracker.totalaudiopromo.com',
-  'pitch-generator': 'https://pitch.totalaudiopromo.com',
-  'command-centre': 'https://command.totalaudiopromo.com',
+const APPS: Record<string, string> = {
+  "audio-intel": "audio-intel",
+  "tracker": "tracker",
+  "pitch-generator": "pitch-generator",
+  "command-centre": "command-centre",
 };
 
-async function measureDuration<T>(fn: () => Promise<T>): Promise<[T, number]> {
-  const start = Date.now();
-  const result = await fn();
-  const duration = Date.now() - start;
-  return [result, duration];
+// === ENVIRONMENT CONFIGURATION ===
+const {
+  VERCEL_TOKEN,
+  TELEGRAM_BOT_TOKEN,
+  TELEGRAM_CHAT_ID,
+} = process.env;
+
+if (!VERCEL_TOKEN) {
+  console.error("❌ Missing VERCEL_TOKEN environment variable");
+  process.exit(1);
 }
 
-async function checkSupabaseConnectivity(
-  supabase: ReturnType<typeof createClient<Database>>
-): Promise<CheckResult> {
+const TELEGRAM_ENABLED = TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID;
+
+// === UTILITIES ===
+async function sendTelegram(message: string) {
+  if (!TELEGRAM_ENABLED) return;
   try {
-    const [result, duration] = await measureDuration(async () => {
-      const { error } = await supabase.from('agent_events').select('id').limit(1);
-      return { error };
+    await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        chat_id: TELEGRAM_CHAT_ID!,
+        text: message,
+      }),
     });
-
-    if (result.error) {
-      return {
-        name: 'Supabase Connectivity',
-        status: 'fail',
-        message: `Connection failed: ${result.error.message}`,
-        duration,
-      };
-    }
-
-    return {
-      name: 'Supabase Connectivity',
-      status: 'pass',
-      message: 'Successfully connected to Supabase',
-      duration,
-    };
   } catch (error) {
-    return {
-      name: 'Supabase Connectivity',
-      status: 'fail',
-      message: `Connection error: ${error instanceof Error ? error.message : String(error)}`,
-      duration: 0,
-    };
+    console.error("⚠️ Telegram send failed:", (error as Error).message);
   }
 }
 
-async function checkTables(
-  supabase: ReturnType<typeof createClient<Database>>
-): Promise<CheckResult[]> {
-  const tables = ['agent_events', 'feedback_events', 'conversion_events'] as const;
-  const results: CheckResult[] = [];
-
-  for (const table of tables) {
-    try {
-      const [result, duration] = await measureDuration(async () => {
-        const { error, count } = await supabase.from(table).select('*', { count: 'exact', head: true });
-        return { error, count };
-      });
-
-      if (result.error) {
-        results.push({
-          name: `Table: ${table}`,
-          status: 'fail',
-          message: `Table check failed: ${result.error.message}`,
-          duration,
-        });
-      } else {
-        results.push({
-          name: `Table: ${table}`,
-          status: 'pass',
-          message: `Table exists with ${result.count ?? 0} rows`,
-          duration,
-        });
-      }
-    } catch (error) {
-      results.push({
-        name: `Table: ${table}`,
-        status: 'fail',
-        message: `Error: ${error instanceof Error ? error.message : String(error)}`,
-        duration: 0,
-      });
-    }
-  }
-
-  return results;
-}
-
-async function checkRPC(supabase: ReturnType<typeof createClient<Database>>): Promise<CheckResult> {
-  try {
-    const [result, duration] = await measureDuration(async () => {
-      const { error } = await supabase.rpc('get_agent_metrics' as any, {});
-      return { error };
-    });
-
-    // RPC might not exist yet, so we'll mark as pass if error is "function not found"
-    if (result.error && !result.error.message.includes('function') && !result.error.message.includes('does not exist')) {
-      return {
-        name: 'RPC: get_agent_metrics',
-        status: 'fail',
-        message: `RPC call failed: ${result.error.message}`,
-        duration,
-      };
-    }
-
-    return {
-      name: 'RPC: get_agent_metrics',
-      status: 'pass',
-      message: result.error ? 'RPC not implemented yet (expected)' : 'RPC exists and callable',
-      duration,
-    };
-  } catch (error) {
-    return {
-      name: 'RPC: get_agent_metrics',
-      status: 'pass',
-      message: 'RPC not implemented yet (expected)',
-      duration: 0,
-    };
-  }
-}
-
-async function checkAPIEndpoints(app: string): Promise<CheckResult[]> {
-  const baseURL = APP_URLS[app];
-  if (!baseURL) {
-    return [
-      {
-        name: 'API Endpoints',
-        status: 'fail',
-        message: `Unknown app: ${app}`,
-        duration: 0,
+async function getLatestPreview(app: string): Promise<VercelDeployment | null> {
+  console.error(`🔍 Fetching latest preview for ${app}...`);
+  const response = await fetch(
+    `https://api.vercel.com/v6/deployments?app=${app}&limit=10`,
+    {
+      headers: {
+        Authorization: `Bearer ${VERCEL_TOKEN}`,
       },
-    ];
-  }
-
-  const endpoints = ['/api/health'];
-
-  // Add app-specific endpoints
-  if (app === 'command-centre') {
-    endpoints.push('/api/ops-console/agents', '/api/ops-console/feedback');
-  }
-
-  const results: CheckResult[] = [];
-
-  for (const endpoint of endpoints) {
-    try {
-      const [result, duration] = await measureDuration(async () => {
-        const response = await fetch(`${baseURL}${endpoint}`, {
-          method: 'GET',
-          headers: { 'User-Agent': 'GoldenCheck/1.0' },
-        });
-        return { status: response.status, ok: response.ok };
-      });
-
-      results.push({
-        name: `API: ${endpoint}`,
-        status: result.ok ? 'pass' : 'fail',
-        message: result.ok ? `Responded with ${result.status}` : `HTTP ${result.status}`,
-        duration,
-      });
-    } catch (error) {
-      results.push({
-        name: `API: ${endpoint}`,
-        status: 'fail',
-        message: `Request failed: ${error instanceof Error ? error.message : String(error)}`,
-        duration: 0,
-      });
     }
+  );
+
+  if (!response.ok) {
+    console.error(`❌ Failed to fetch deployments for ${app}: ${response.statusText}`);
+    return null;
   }
 
-  return results;
+  const data = (await response.json()) as { deployments: VercelDeployment[] };
+  const readyDeployment = data.deployments.find((d) => d.state === "READY");
+
+  if (!readyDeployment) {
+    console.error(`⚠️ No READY preview deployment found for ${app}`);
+    return null;
+  }
+
+  console.error(`✅ Found preview deployment: ${readyDeployment.url}`);
+  return readyDeployment;
 }
 
-async function checkExternalServices(): Promise<CheckResult[]> {
-  const services = [
-    { name: 'Telegram Bot API', url: 'https://api.telegram.org' },
-    { name: 'Plausible Analytics', url: 'https://plausible.io' },
-  ];
+async function promoteToProduction(app: string, deployment: VercelDeployment): Promise<boolean> {
+  console.error(`🚀 Promoting ${app} → production (${deployment.url})`);
 
-  const results: CheckResult[] = [];
-
-  for (const service of services) {
-    try {
-      const [result, duration] = await measureDuration(async () => {
-        const response = await fetch(service.url, {
-          method: 'GET',
-          headers: { 'User-Agent': 'GoldenCheck/1.0' },
-        });
-        return { status: response.status, ok: response.ok || response.status === 404 }; // 404 is fine for service availability
-      });
-
-      results.push({
-        name: service.name,
-        status: result.ok ? 'pass' : 'fail',
-        message: result.ok ? 'Service reachable' : `HTTP ${result.status}`,
-        duration,
-      });
-    } catch (error) {
-      results.push({
-        name: service.name,
-        status: 'fail',
-        message: `Unreachable: ${error instanceof Error ? error.message : String(error)}`,
-        duration: 0,
-      });
+  const response = await fetch(
+    `https://api.vercel.com/v13/deployments/${deployment.uid}/promote`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${VERCEL_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        target: "production",
+      }),
     }
+  );
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error(`❌ Promotion failed for ${app}: ${errorText}`);
+    await sendTelegram(`❌ ${app}: Promotion failed. ${errorText}`);
+    return false;
   }
 
-  return results;
+  console.error(`✅ ${app} promoted to production.`);
+  await sendTelegram(`✅ ${app}: Promoted to production (${deployment.url})`);
+  return true;
 }
 
-async function runGoldenCheck(app: string): Promise<GoldenCheckSummary> {
+async function runGoldenPromote() {
+  console.error("🏁 Starting Golden Promotion Pipeline...");
+  const results: Record<string, string> = {};
   const startTime = Date.now();
-  const checks: CheckResult[] = [];
 
-  // Initialize Supabase client
-  const supabaseURL = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
-  const supabaseKey =
-    process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  for (const app of Object.keys(APPS)) {
+    try {
+      const deployment = await getLatestPreview(app);
+      if (!deployment) {
+        results[app] = "No ready deployment";
+        continue;
+      }
 
-  if (!supabaseURL || !supabaseKey) {
-    checks.push({
-      name: 'Environment Variables',
-      status: 'fail',
-      message: 'Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY',
-      duration: 0,
-    });
+      const success = await promoteToProduction(app, deployment);
+      results[app] = success ? "Promoted ✅" : "Failed ❌";
+    } catch (error) {
+      console.error(`❌ Error promoting ${app}:`, error);
+      results[app] = "Error ❌";
+    }
 
-    return {
-      app,
-      timestamp: new Date().toISOString(),
-      checks,
-      overall: 'fail',
-      duration: Date.now() - startTime,
-    };
+    // Delay between promotions (to avoid API rate limit)
+    await new Promise((r) => setTimeout(r, 2000));
   }
 
-  const supabase = createClient<Database>(supabaseURL, supabaseKey);
+  const duration = ((Date.now() - startTime) / 1000).toFixed(1);
+  console.error("\n=== Golden Promotion Summary ===");
+  Object.entries(results).forEach(([app, status]) => console.error(`${app}: ${status}`));
+  console.error(`Total time: ${duration}s`);
 
-  // Run all checks
-  console.error(`Running Golden Check for ${app}...`);
+  const allSuccess = Object.values(results).every((s) => s.includes("✅"));
+  const finalMsg = allSuccess
+    ? "✅ Golden Deployment successful and promoted to production!"
+    : "⚠️ Golden Deployment completed with issues (check logs).";
 
-  checks.push(await checkSupabaseConnectivity(supabase));
-  checks.push(...(await checkTables(supabase)));
-  checks.push(await checkRPC(supabase));
-  checks.push(...(await checkAPIEndpoints(app)));
-  checks.push(...(await checkExternalServices()));
-
-  const overall = checks.every((c) => c.status === 'pass') ? 'pass' : 'fail';
-  const duration = Date.now() - startTime;
-
-  return {
-    app,
-    timestamp: new Date().toISOString(),
-    checks,
-    overall,
-    duration,
-  };
+  await sendTelegram(finalMsg);
+  process.exit(allSuccess ? 0 : 1);
 }
 
-// Main execution
-async function main() {
-  const args = process.argv.slice(2);
-  const appIndex = args.indexOf('--app');
-
-  if (appIndex === -1 || !args[appIndex + 1]) {
-    console.error('Error: --app argument is required');
-    console.error('Usage: golden-check.ts --app <audio-intel|tracker|pitch-generator|command-centre>');
-    process.exit(1);
-  }
-
-  const app = args[appIndex + 1];
-  const validApps = Object.keys(APP_URLS);
-
-  if (!validApps.includes(app)) {
-    console.error(`Error: Invalid app "${app}"`);
-    console.error(`Valid apps: ${validApps.join(', ')}`);
-    process.exit(1);
-  }
-
-  const summary = await runGoldenCheck(app);
-
-  // Output JSON summary to stdout
-  console.log(JSON.stringify(summary, null, 2));
-
-  // Log human-readable summary to stderr
-  console.error('\n=== Golden Check Summary ===');
-  console.error(`App: ${summary.app}`);
-  console.error(`Overall: ${summary.overall.toUpperCase()}`);
-  console.error(`Duration: ${summary.duration}ms`);
-  console.error(`\nChecks (${summary.checks.length} total):`);
-
-  for (const check of summary.checks) {
-    const icon = check.status === 'pass' ? '✓' : '✗';
-    console.error(`  ${icon} ${check.name}: ${check.message} (${check.duration}ms)`);
-  }
-
-  // Exit with appropriate code
-  process.exit(summary.overall === 'pass' ? 0 : 1);
-}
-
-main().catch((error) => {
-  console.error('Fatal error:', error);
+// === RUN ===
+runGoldenPromote().catch((err) => {
+  console.error("❌ Fatal error in golden-promote:", err);
+  sendTelegram(`❌ Golden Deployment failed: ${err instanceof Error ? err.message : String(err)}`);
   process.exit(1);
 });

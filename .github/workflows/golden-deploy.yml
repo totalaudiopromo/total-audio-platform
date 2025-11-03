@@ -1,26 +1,40 @@
-name: 'Golden Deployment Pipeline'
+name: "Golden Deployment Pipeline"
 
 on:
   push:
+    branches:
+      - main
     tags:
-      - 'v*-golden'
+      - "v*-golden"
   workflow_dispatch:
+
+concurrency:
+  group: golden-deployment
+  cancel-in-progress: false
 
 jobs:
   build-and-test:
+    name: Build & Verify ${{ matrix.app }}
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     strategy:
+      fail-fast: false
       matrix:
         app: [audio-intel, tracker, pitch-generator, command-centre]
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: pnpm/action-setup@v4
         with:
           version: 10
+
       - name: Install dependencies
         run: pnpm install
+
       - name: Build ${{ matrix.app }}
         run: pnpm --filter ${{ matrix.app }} build
+
       - name: Run Golden Check
         run: pnpm tsx scripts/golden-check.ts --app ${{ matrix.app }}
         env:
@@ -28,34 +42,45 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+
       - name: Run Lighthouse Audit
         uses: treosh/lighthouse-ci-action@v11
         with:
           urls: https://${{ matrix.app }}.totalaudiopromo.com
-          budgetPath: .lighthouse/budget.json
+          budgetPath: ${{ github.workspace }}/.lighthouse/budget.json
           temporaryPublicStorage: true
+
       - name: Upload Audit Results
         uses: actions/upload-artifact@v4
         with:
           name: lighthouse-${{ matrix.app }}
           path: .lighthouseci/
+
       - name: Telegram Notification
         if: always()
         run: |
-          curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          sleep 5
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
           -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
           -d "text=Golden check for ${{ matrix.app }} completed with status ${{ job.status }}"
 
   promote:
+    name: Promote Preview → Production
     needs: build-and-test
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: success()
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: pnpm/action-setup@v4
         with:
           version: 10
+
       - name: Install dependencies
         run: pnpm install
+
       - name: Promote Preview → Production
         run: pnpm tsx scripts/golden-promote.ts
         env:
@@ -63,8 +88,31 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Generate Golden Report
+        if: always()
+        run: pnpm tsx .github/scripts/golden-report.ts
+
+      - name: Upload Golden Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: golden-deployment-report
+          path: reports/golden/final/
+
       - name: Telegram Final Notification
+        if: always()
         run: |
-          curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
           -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
           -d "text=✅ Golden Deployment successful and promoted to production!"
+
+  on-failure:
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Telegram Failure Notification
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -d "text=❌ Golden Deployment failed. Check GitHub Actions logs for details."
