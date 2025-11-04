@@ -133,6 +133,9 @@ export async function POST(request: NextRequest) {
  */
 export async function GET(request: NextRequest) {
   try {
+    // Initialize Supabase client at runtime (inside handler)
+    const supabase = getSupabaseAdmin();
+
     // Get authenticated user from session
     const authHeader = request.headers.get('authorization');
     if (!authHeader) {

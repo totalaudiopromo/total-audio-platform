@@ -66,23 +66,23 @@ export async function POST(req: NextRequest) {
     // Handle payment-related events
     switch (event.type) {
       case 'checkout.session.completed':
-        await handleCheckoutSessionCompleted(event);
+        await handleCheckoutSessionCompleted(event, stripe, supabase);
         break;
 
       case 'payment_intent.succeeded':
-        await handlePaymentIntentSucceeded(event);
+        await handlePaymentIntentSucceeded(event, stripe, supabase);
         break;
 
       case 'payment_intent.payment_failed':
-        await handlePaymentIntentFailed(event);
+        await handlePaymentIntentFailed(event, stripe, supabase);
         break;
 
       case 'invoice.paid':
-        await handleInvoicePaid(event);
+        await handleInvoicePaid(event, stripe, supabase);
         break;
 
       case 'invoice.payment_failed':
-        await handleInvoicePaymentFailed(event);
+        await handleInvoicePaymentFailed(event, stripe, supabase);
         break;
 
       case 'customer.subscription.created':
@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
         break;
 
       case 'charge.refunded':
-        await handleChargeRefunded(event);
+        await handleChargeRefunded(event, stripe, supabase);
         break;
 
       default:
@@ -112,7 +112,11 @@ export async function POST(req: NextRequest) {
 /**
  * Handle checkout.session.completed event
  */
-async function handleCheckoutSessionCompleted(event: Stripe.Event) {
+async function handleCheckoutSessionCompleted(
+  event: Stripe.Event,
+  stripe: Stripe,
+  supabase: ReturnType<typeof getSupabaseAdmin>
+) {
   const session = event.data.object as Stripe.Checkout.Session;
 
   console.log('💳 Processing checkout session:', session.id);
@@ -183,7 +187,11 @@ async function handleCheckoutSessionCompleted(event: Stripe.Event) {
 /**
  * Handle payment_intent.succeeded event
  */
-async function handlePaymentIntentSucceeded(event: Stripe.Event) {
+async function handlePaymentIntentSucceeded(
+  event: Stripe.Event,
+  stripe: Stripe,
+  supabase: ReturnType<typeof getSupabaseAdmin>
+) {
   const paymentIntent = event.data.object as Stripe.PaymentIntent;
 
   console.log('💳 Processing payment intent:', paymentIntent.id);
@@ -242,7 +250,11 @@ async function handlePaymentIntentSucceeded(event: Stripe.Event) {
 /**
  * Handle payment_intent.payment_failed event
  */
-async function handlePaymentIntentFailed(event: Stripe.Event) {
+async function handlePaymentIntentFailed(
+  event: Stripe.Event,
+  stripe: Stripe,
+  supabase: ReturnType<typeof getSupabaseAdmin>
+) {
   const paymentIntent = event.data.object as Stripe.PaymentIntent;
 
   console.log('❌ Payment intent failed:', paymentIntent.id);
@@ -296,7 +308,11 @@ async function handlePaymentIntentFailed(event: Stripe.Event) {
 /**
  * Handle invoice.paid event (recurring subscriptions)
  */
-async function handleInvoicePaid(event: Stripe.Event) {
+async function handleInvoicePaid(
+  event: Stripe.Event,
+  stripe: Stripe,
+  supabase: ReturnType<typeof getSupabaseAdmin>
+) {
   const invoice = event.data.object as Stripe.Invoice;
 
   console.log('📄 Processing paid invoice:', invoice.id);
@@ -365,7 +381,11 @@ async function handleInvoicePaid(event: Stripe.Event) {
 /**
  * Handle invoice.payment_failed event
  */
-async function handleInvoicePaymentFailed(event: Stripe.Event) {
+async function handleInvoicePaymentFailed(
+  event: Stripe.Event,
+  stripe: Stripe,
+  supabase: ReturnType<typeof getSupabaseAdmin>
+) {
   const invoice = event.data.object as Stripe.Invoice;
 
   console.log('❌ Invoice payment failed:', invoice.id);
@@ -446,7 +466,11 @@ async function handleSubscriptionDeleted(event: Stripe.Event) {
 /**
  * Handle charge.refunded event
  */
-async function handleChargeRefunded(event: Stripe.Event) {
+async function handleChargeRefunded(
+  event: Stripe.Event,
+  stripe: Stripe,
+  supabase: ReturnType<typeof getSupabaseAdmin>
+) {
   const charge = event.data.object as Stripe.Charge;
 
   console.log('💸 Charge refunded:', charge.id);

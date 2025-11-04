@@ -208,7 +208,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Check if Stripe is configured
-    if (!stripeSecretKey) {
+    if (!process.env.STRIPE_SECRET_KEY) {
       if (process.env.NODE_ENV !== 'production') {
         console.warn('Checkout dev fallback: redirecting to success without Stripe.');
         return NextResponse.json({ url: `${baseUrl}/success?session_id=dev_local` });

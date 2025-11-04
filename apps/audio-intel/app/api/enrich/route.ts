@@ -272,7 +272,7 @@ async function originalPerplexityHandler(req: NextRequest) {
       );
     }
 
-    if (!PERPLEXITY_API_KEY) {
+    if (!getPerplexityApiKey()) {
       return NextResponse.json(
         {
           success: false,
