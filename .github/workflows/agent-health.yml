@@ -71,25 +71,34 @@ jobs:
           retention-days: 90
 
       - name: Notify Telegram on Failure
-        if: steps.health-check.outputs.status == 'FAIL' && secrets.TELEGRAM_BOT_TOKEN != ''
+        if: steps.health-check.outputs.status == 'FAIL'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MESSAGE: "🚨 *Agent Health Check Failed*\\n\\nCritical agent performance issues detected. Review required.\\n\\n[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
-        run: .github/scripts/send-telegram.sh
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ]; then
+            .github/scripts/send-telegram.sh
+          fi
 
       - name: Notify Telegram on Warning
-        if: steps.health-check.outputs.status == 'WARN' && secrets.TELEGRAM_BOT_TOKEN != ''
+        if: steps.health-check.outputs.status == 'WARN'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MESSAGE: "⚠️ *Agent Health Warning*\\n\\nAgent performance degradation detected. Review recommended.\\n\\n[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
-        run: .github/scripts/send-telegram.sh
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ]; then
+            .github/scripts/send-telegram.sh
+          fi
 
       - name: Notify Telegram on Success
-        if: steps.health-check.outputs.status == 'PASS' && secrets.TELEGRAM_BOT_TOKEN != '' && (github.event_name == 'workflow_dispatch' || github.event.inputs.notify == 'true')
+        if: steps.health-check.outputs.status == 'PASS' && (github.event_name == 'workflow_dispatch' || github.event.inputs.notify == 'true')
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MESSAGE: "✅ *Agent Health Check Passed*\\n\\nAll agents performing within normal parameters."
-        run: .github/scripts/send-telegram.sh
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ]; then
+            .github/scripts/send-telegram.sh
+          fi

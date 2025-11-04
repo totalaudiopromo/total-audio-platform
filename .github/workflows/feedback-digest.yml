@@ -87,25 +87,34 @@ jobs:
           retention-days: 90
 
       - name: Notify Telegram with Urgent Issues
-        if: steps.feedback-analysis.outputs.status == 'SUCCESS' && steps.feedback-analysis.outputs.urgent_issues != '0' && secrets.TELEGRAM_BOT_TOKEN != ''
+        if: steps.feedback-analysis.outputs.status == 'SUCCESS' && steps.feedback-analysis.outputs.urgent_issues != '0'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MESSAGE: "🚨 *Weekly Feedback Digest - URGENT ISSUES*\\n\\n**Total Feedback**: ${{ steps.feedback-analysis.outputs.total_feedback }}\\n**Negative**: ${{ steps.feedback-analysis.outputs.negative_feedback }}\\n**Average Rating**: ${{ steps.feedback-analysis.outputs.avg_rating }}/5\\n**⚠️ Urgent Issues**: ${{ steps.feedback-analysis.outputs.urgent_issues }}\\n\\nClaude has identified critical issues requiring immediate attention.\\n\\n[View Full Report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
-        run: .github/scripts/send-telegram.sh
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ]; then
+            .github/scripts/send-telegram.sh
+          fi
 
       - name: Notify Telegram on Success (No Urgent Issues)
-        if: steps.feedback-analysis.outputs.status == 'SUCCESS' && steps.feedback-analysis.outputs.urgent_issues == '0' && secrets.TELEGRAM_BOT_TOKEN != ''
+        if: steps.feedback-analysis.outputs.status == 'SUCCESS' && steps.feedback-analysis.outputs.urgent_issues == '0'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MESSAGE: "📋 *Weekly Feedback Digest*\\n\\n**Total Feedback**: ${{ steps.feedback-analysis.outputs.total_feedback }}\\n**Negative**: ${{ steps.feedback-analysis.outputs.negative_feedback }}\\n**Average Rating**: ${{ steps.feedback-analysis.outputs.avg_rating }}/5\\n\\nClaude analysis complete. No urgent issues detected.\\n\\n[View Full Report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
-        run: .github/scripts/send-telegram.sh
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ]; then
+            .github/scripts/send-telegram.sh
+          fi
 
       - name: Notify Telegram on Failure
-        if: steps.feedback-analysis.outputs.status == 'FAILED' && secrets.TELEGRAM_BOT_TOKEN != ''
+        if: steps.feedback-analysis.outputs.status == 'FAILED'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MESSAGE: "⚠️ *Feedback Digest Analysis Failed*\\n\\nCheck workflow logs for details.\\n\\n[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
-        run: .github/scripts/send-telegram.sh
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ]; then
+            .github/scripts/send-telegram.sh
+          fi
