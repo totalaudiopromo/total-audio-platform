@@ -23,7 +23,10 @@ async function applyMigration() {
   console.log('🔧 Applying user_id type migration...\n');
 
   // Read the migration file
-  const migrationPath = path.join(__dirname, '../supabase/migrations/004_fix_user_pitch_settings_user_id.sql');
+  const migrationPath = path.join(
+    __dirname,
+    '../supabase/migrations/004_fix_user_pitch_settings_user_id.sql'
+  );
 
   if (!fs.existsSync(migrationPath)) {
     console.error('❌ Migration file not found:', migrationPath);
@@ -41,7 +44,7 @@ async function applyMigration() {
     // Execute via raw HTTP request to Supabase's SQL endpoint
     const headers: HeadersInit = {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${supabaseServiceKey}`,
+      Authorization: `Bearer ${supabaseServiceKey}`,
     };
 
     if (supabaseServiceKey) {
@@ -52,8 +55,8 @@ async function applyMigration() {
       method: 'POST',
       headers,
       body: JSON.stringify({
-        query: migrationSQL
-      })
+        query: migrationSQL,
+      }),
     });
 
     if (!response.ok) {
@@ -86,11 +89,12 @@ async function applyMigration() {
         console.log('\n⚠️  WARNING: user_id is still', data.data_type);
       }
     }
-
   } catch (error: any) {
     console.error('❌ Migration failed:', error.message);
     console.error('\n📋 Manual steps required:');
-    console.error('   1. Go to: https://supabase.com/dashboard/project/ucncbighzqudaszewjrv/editor');
+    console.error(
+      '   1. Go to: https://supabase.com/dashboard/project/ucncbighzqudaszewjrv/editor'
+    );
     console.error('   2. Click "SQL Editor" in the left sidebar');
     console.error('   3. Click "New query"');
     console.error('   4. Paste and run this SQL:\n');

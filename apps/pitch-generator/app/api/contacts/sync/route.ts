@@ -16,10 +16,7 @@ export async function POST(req: Request) {
     const userId = user.email || user.id;
 
     // Fetch contacts from Audio Intel database (intel_contacts table)
-    const queryBuilder = (supabase as any)
-      .from('intel_contacts')
-      .select('*')
-      .eq('user_id', userId);
+    const queryBuilder = (supabase as any).from('intel_contacts').select('*').eq('user_id', userId);
     const { data: intelContacts, error: fetchError } = await queryBuilder;
 
     if (fetchError) {
@@ -40,8 +37,12 @@ export async function POST(req: Request) {
       .select('email, name')
       .eq('user_id', userId) as any);
 
-    const existingEmails = new Set((existingContacts as any[])?.map((c: any) => c.email?.toLowerCase()) || []);
-    const existingNames = new Set((existingContacts as any[])?.map((c: any) => c.name?.toLowerCase()) || []);
+    const existingEmails = new Set(
+      (existingContacts as any[])?.map((c: any) => c.email?.toLowerCase()) || []
+    );
+    const existingNames = new Set(
+      (existingContacts as any[])?.map((c: any) => c.name?.toLowerCase()) || []
+    );
 
     // Filter out duplicates (match by email or name)
     const newContacts = (intelContacts as any[]).filter((contact: any) => {

@@ -66,7 +66,10 @@ export async function POST(request: Request) {
     const rows = (campaigns as any[]).map((campaign: any) => {
       const successRate =
         (campaign.target_reach || 0) > 0
-          ? (((campaign.actual_reach || 0) / campaign.target_reach) * 100).toFixed(1)
+          ? (
+              ((campaign.actual_reach || 0) / campaign.target_reach) *
+              100
+            ).toFixed(1)
           : '0';
 
       const costPerResult =

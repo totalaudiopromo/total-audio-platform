@@ -102,7 +102,9 @@ export async function POST(
   }
 
   // Build AI prompt
-  const hasResults = (campaignData.actual_reach || 0) > 0 && (campaignData.target_reach || 0) > 0;
+  const hasResults =
+    (campaignData.actual_reach || 0) > 0 &&
+    (campaignData.target_reach || 0) > 0;
 
   const prompt = `You are analyzing a UK music promotion campaign. Be brutally honest, specific, and actionable. Use UK spelling and music industry terminology.
 

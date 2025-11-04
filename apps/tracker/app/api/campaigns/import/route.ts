@@ -131,26 +131,28 @@ export async function POST(request: Request) {
     }
 
     // Insert campaign
-    const { error: insertError } = await ((supabase as any).from('campaigns').insert([
-      {
-        user_id: user.id,
-        name: row.name.trim(),
-        artist_name: row.artist_name?.trim() || null,
-        platform: row.platform?.trim() || null,
-        genre: row.genre?.trim() || null,
-        start_date: startDate,
-        end_date: endDate,
-        budget,
-        target_reach: targetReach,
-        actual_reach: actualReach,
-        status,
-        notes: row.notes?.trim() || null,
-        success_rate: successRate,
-        cost_per_result: costPerResult,
-        performance_score: 0,
-        percentile_rank: 0,
-      },
-    ]) as any);
+    const { error: insertError } = await ((supabase as any)
+      .from('campaigns')
+      .insert([
+        {
+          user_id: user.id,
+          name: row.name.trim(),
+          artist_name: row.artist_name?.trim() || null,
+          platform: row.platform?.trim() || null,
+          genre: row.genre?.trim() || null,
+          start_date: startDate,
+          end_date: endDate,
+          budget,
+          target_reach: targetReach,
+          actual_reach: actualReach,
+          status,
+          notes: row.notes?.trim() || null,
+          success_rate: successRate,
+          cost_per_result: costPerResult,
+          performance_score: 0,
+          percentile_rank: 0,
+        },
+      ]) as any);
 
     if (insertError) {
       errors.push(`Row ${rowNumber} (${row.name}): ${insertError.message}`);
