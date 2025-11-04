@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-const stripe = new Stripe(stripeSecretKey || 'sk_test_placeholder', {
-  // @ts-ignore We intentionally pin API version for stability
-  apiVersion: '2023-10-16',
-});
+// Lazy Stripe client initialization to avoid build-time errors
+function getStripeClient() {
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+  return new Stripe(stripeSecretKey || 'sk_test_placeholder', {
+    // @ts-ignore We intentionally pin API version for stability
+    apiVersion: '2023-10-16',
+  });
+}
 
 type Billing = 'monthly' | 'annual';
 type Plan = 'starter' | 'professional' | 'agency';
@@ -87,6 +90,9 @@ function isValidStripePriceId(value: string | null | undefined): boolean {
 
 export async function POST(req: NextRequest) {
   try {
+    // Initialize Stripe client at runtime (inside handler)
+    const stripe = getStripeClient();
+
     let body: any = {};
     try {
       body = await req.json();

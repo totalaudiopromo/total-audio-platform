@@ -2,9 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { formatContactIntelligence } from '@/utils/formatIntelligence';
 import axios from 'axios';
 
-const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
+// Constants - safe at module scope
 const PERPLEXITY_API_URL = 'https://api.perplexity.ai/chat/completions';
 const PERPLEXITY_MODEL = 'sonar';
+
+// Lazy env access to avoid build-time errors
+function getPerplexityApiKey() {
+  return process.env.PERPLEXITY_API_KEY;
+}
 
 // Enhanced in-memory cache with better TTL management
 const enrichmentCache = new Map<string, { result: any; timestamp: number }>();
@@ -35,7 +40,8 @@ async function runPerplexityResearch(
   cacheKey?: string,
   retries = 2 // allow a second retry with backoff
 ): Promise<{ content: string; confidence: string; error?: string }> {
-  if (!PERPLEXITY_API_KEY) {
+  const apiKey = getPerplexityApiKey();
+  if (!apiKey) {
     return { content: '', confidence: 'Low', error: 'Missing PERPLEXITY_API_KEY' };
   }
 
@@ -74,7 +80,7 @@ async function runPerplexityResearch(
         },
         {
           headers: {
-            Authorization: `Bearer ${PERPLEXITY_API_KEY}`,
+            Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
           },
           timeout: 8000, // Reduced timeout for faster processing

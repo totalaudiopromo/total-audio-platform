@@ -2,7 +2,7 @@
 // Fetches content from curated underground music sources
 
 import { NextRequest, NextResponse } from 'next/server';
-import { undergroundNewsjacker } from '../../../../utils/undergroundNewsjacker';
+import { getUndergroundNewsjacker } from '../../../../utils/undergroundNewsjacker';
 
 export async function GET(request: NextRequest) {
   try {
@@ -12,7 +12,8 @@ export async function GET(request: NextRequest) {
 
     console.log('🎵 Underground Music Newsjacker API called');
 
-    // Generate content using underground sources
+    // Generate content using underground sources (lazy initialized)
+    const undergroundNewsjacker = getUndergroundNewsjacker();
     const result = await undergroundNewsjacker.generateNewsletterContent();
 
     if (debug) {

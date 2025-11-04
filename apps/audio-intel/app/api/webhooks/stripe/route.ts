@@ -3,11 +3,17 @@ import { headers } from 'next/headers';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-08-27.basil',
-});
+// Lazy Stripe client initialization to avoid build-time errors
+function getStripeClient() {
+  return new Stripe(process.env.STRIPE_SECRET_KEY!, {
+    apiVersion: '2025-08-27.basil',
+  });
+}
 
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+// Lazy webhook secret access to avoid build-time errors
+function getWebhookSecret() {
+  return process.env.STRIPE_WEBHOOK_SECRET!;
+}
 
 // Lazy Supabase client initialization to avoid build-time errors
 function getSupabaseAdmin() {
@@ -29,8 +35,11 @@ function getSupabaseAdmin() {
  */
 export async function POST(req: NextRequest) {
   try {
-    // Initialize Supabase client at runtime (inside handler)
+    // Initialize clients and secrets at runtime (inside handler)
     const supabase = getSupabaseAdmin();
+    const stripe = getStripeClient();
+    const webhookSecret = getWebhookSecret();
+
     const body = await req.text();
     const headersList = await headers();
     const signature = headersList.get('stripe-signature');

@@ -226,5 +226,11 @@ Format as JSON:
   }
 }
 
-// Export singleton instance
-export const undergroundNewsjacker = new UndergroundNewsjacker(process.env.ANTHROPIC_API_KEY || '');
+// Lazy singleton instance to avoid build-time errors
+let _instance: UndergroundNewsjacker | null = null;
+export function getUndergroundNewsjacker() {
+  if (!_instance) {
+    _instance = new UndergroundNewsjacker(process.env.ANTHROPIC_API_KEY || '');
+  }
+  return _instance;
+}

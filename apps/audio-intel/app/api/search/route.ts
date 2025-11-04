@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
 
-const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
+// Constants - safe at module scope
 const PERPLEXITY_API_URL = 'https://api.perplexity.ai/chat/completions';
 const PERPLEXITY_MODEL = 'sonar';
+
+// Lazy env access to avoid build-time errors
+function getPerplexityApiKey() {
+  return process.env.PERPLEXITY_API_KEY;
+}
 
 interface SearchRequest {
   query: string;
@@ -39,7 +44,7 @@ async function makePerplexityRequest(
         },
         {
           headers: {
-            Authorization: `Bearer ${PERPLEXITY_API_KEY}`,
+            Authorization: `Bearer ${getPerplexityApiKey()}`,
             'Content-Type': 'application/json',
           },
           timeout: 30000, // 30 second timeout
