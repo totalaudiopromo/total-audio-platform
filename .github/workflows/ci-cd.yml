@@ -78,7 +78,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [total-audio-promo-frontend, tracker, pitch-generator]
+        app: [audio-intel, web, api]
       fail-fast: false
     
     steps:
@@ -99,7 +99,7 @@ jobs:
       run: pnpm install --frozen-lockfile
 
     - name: Build ${{ matrix.app }}
-      run: pnpm run build --filter ${{ matrix.app }}
+      run: pnpm --filter ${{ matrix.app }} build
       env:
         CI: true
 
@@ -116,7 +116,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [total-audio-promo-frontend, tracker, pitch-generator]
+        app: [audio-intel, web, api]
       fail-fast: false
     
     steps:
@@ -202,7 +202,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [total-audio-promo-frontend, tracker, pitch-generator]
+        app: [audio-intel, web, api]
       fail-fast: false
     
     steps:
