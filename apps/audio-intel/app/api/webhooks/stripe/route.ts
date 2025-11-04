@@ -204,7 +204,7 @@ async function handlePaymentIntentSucceeded(event: Stripe.Event) {
     user_id: user.id,
     payment_id: paymentIntent.id,
     subscription_id: null,
-    invoice_id: (typeof paymentIntent.invoice === 'string' ? paymentIntent.invoice : paymentIntent.invoice?.id) || null,
+    invoice_id: null, // One-time payments don't have invoice IDs
     customer_id: paymentIntent.customer as string,
     amount_cents: paymentIntent.amount,
     currency: paymentIntent.currency,
@@ -260,7 +260,7 @@ async function handlePaymentIntentFailed(event: Stripe.Event) {
     user_id: user.id,
     payment_id: paymentIntent.id,
     subscription_id: null,
-    invoice_id: paymentIntent.invoice as string | null,
+    invoice_id: null, // Failed one-time payments don't have invoice IDs
     customer_id: paymentIntent.customer as string,
     amount_cents: paymentIntent.amount,
     currency: paymentIntent.currency,
@@ -309,16 +309,18 @@ async function handleInvoicePaid(event: Stripe.Event) {
     return;
   }
 
+  // Type assertion for Stripe webhook data (TypeScript types don't match runtime structure)
+  const invoiceAny = invoice as any;
   const subscription =
-    typeof invoice.subscription === 'string'
-      ? await stripe.subscriptions.retrieve(invoice.subscription)
-      : invoice.subscription;
+    typeof invoiceAny.subscription === 'string'
+      ? await stripe.subscriptions.retrieve(invoiceAny.subscription)
+      : invoiceAny.subscription;
 
   const paymentData = {
     event_id: event.id,
     user_id: user.id,
-    payment_id: invoice.payment_intent as string,
-    subscription_id: typeof invoice.subscription === 'string' ? invoice.subscription : null,
+    payment_id: invoiceAny.payment_intent as string,
+    subscription_id: typeof invoiceAny.subscription === 'string' ? invoiceAny.subscription : null,
     invoice_id: invoice.id,
     customer_id: typeof invoice.customer === 'string' ? invoice.customer : invoice.customer?.id,
     amount_cents: invoice.amount_paid,
@@ -376,11 +378,14 @@ async function handleInvoicePaymentFailed(event: Stripe.Event) {
     return;
   }
 
+  // Type assertion for Stripe webhook data
+  const invoiceAny = invoice as any;
+
   const paymentData = {
     event_id: event.id,
     user_id: user.id,
-    payment_id: invoice.payment_intent as string | null,
-    subscription_id: typeof invoice.subscription === 'string' ? invoice.subscription : null,
+    payment_id: invoiceAny.payment_intent as string | null,
+    subscription_id: typeof invoiceAny.subscription === 'string' ? invoiceAny.subscription : null,
     invoice_id: invoice.id,
     customer_id: typeof invoice.customer === 'string' ? invoice.customer : invoice.customer?.id,
     amount_cents: invoice.amount_due,
@@ -446,12 +451,14 @@ async function handleChargeRefunded(event: Stripe.Event) {
   }
 
   // Update payment record with refund information
+  // Note: charge.refunds is an array, not a single object
+  const chargeAny = charge as any;
   const { error } = await supabase
     .from('payments')
     .update({
       refunded_at: new Date().toISOString(),
       refund_amount_cents: charge.amount_refunded,
-      refund_reason: charge.refund?.reason || 'unknown',
+      refund_reason: chargeAny.refund?.reason || 'requested_by_customer',
     })
     .eq('id', payment.id);
 
