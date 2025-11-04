@@ -74,17 +74,23 @@ jobs:
           retention-days: 90
 
       - name: Notify Telegram on Success
-        if: steps.growth-analysis.outputs.status == 'SUCCESS' && secrets.TELEGRAM_BOT_TOKEN != ''
+        if: steps.growth-analysis.outputs.status == 'SUCCESS'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MESSAGE: "📈 *Weekly Growth Reflex Report*\\n\\n**Revenue Change**: ${{ steps.growth-analysis.outputs.revenue_change }}\\n**Top Revenue Drivers**: ${{ steps.growth-analysis.outputs.top_drivers }} features identified\\n\\n[View Report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
-        run: .github/scripts/send-telegram.sh
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ]; then
+            .github/scripts/send-telegram.sh
+          fi
 
       - name: Notify Telegram on Failure
-        if: steps.growth-analysis.outputs.status == 'FAILED' && secrets.TELEGRAM_BOT_TOKEN != ''
+        if: steps.growth-analysis.outputs.status == 'FAILED'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MESSAGE: "⚠️ *Growth Reflex Analysis Failed*\\n\\nCheck workflow logs for details.\\n\\n[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
-        run: .github/scripts/send-telegram.sh
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ]; then
+            .github/scripts/send-telegram.sh
+          fi
