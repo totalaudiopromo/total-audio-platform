@@ -57,10 +57,19 @@ const envSchema = z.object({
 export type Env = z.infer<typeof envSchema>;
 
 /**
- * Validated environment variables
- * Throws error at runtime if validation fails
+ * Lazily validated environment variables
+ * Only validates when accessed, avoiding build-time failures
+ * Throws error at runtime if validation fails when accessed
  */
-export const env = envSchema.parse(process.env);
+let _env: Env | null = null;
+export const env = new Proxy({} as Env, {
+  get(target, prop) {
+    if (_env === null) {
+      _env = envSchema.parse(process.env);
+    }
+    return _env[prop as keyof Env];
+  },
+});
 
 /**
  * Safe environment access (returns undefined if validation fails)
