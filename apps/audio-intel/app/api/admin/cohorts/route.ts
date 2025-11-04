@@ -6,16 +6,19 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  }
-);
+// Lazy Supabase client initialization to avoid build-time errors
+function getSupabaseAdmin() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    }
+  );
+}
 
 export interface CohortData {
   cohortDate: string;
@@ -68,6 +71,8 @@ export async function GET(request: NextRequest) {
     const endDate = searchParams.get('endDate');
     const periodType = searchParams.get('periodType') || 'all'; // 'day', 'week', 'month', 'all'
     const limit = parseInt(searchParams.get('limit') || '12', 10);
+
+    const supabase = getSupabaseAdmin();
 
     // Fetch cohort overview
     let cohortQuery = supabase

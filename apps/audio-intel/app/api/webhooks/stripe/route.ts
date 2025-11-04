@@ -9,17 +9,19 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
-// Supabase client for server-side operations
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  }
-);
+// Lazy Supabase client initialization to avoid build-time errors
+function getSupabaseAdmin() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    }
+  );
+}
 
 /**
  * Stripe webhook handler for payment events
@@ -27,6 +29,8 @@ const supabase = createClient(
  */
 export async function POST(req: NextRequest) {
   try {
+    // Initialize Supabase client at runtime (inside handler)
+    const supabase = getSupabaseAdmin();
     const body = await req.text();
     const headersList = await headers();
     const signature = headersList.get('stripe-signature');

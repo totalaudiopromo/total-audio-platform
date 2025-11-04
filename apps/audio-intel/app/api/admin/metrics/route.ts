@@ -1,16 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  }
-);
+// Lazy Supabase client initialization to avoid build-time errors
+function getSupabaseAdmin() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    }
+  );
+}
 
 /**
  * Admin Metrics API
@@ -25,6 +28,9 @@ export async function GET(req: NextRequest) {
     // if (!session || !isAdmin(session.user)) {
     //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     // }
+
+    // Initialize Supabase client at runtime (inside handler)
+    const supabase = getSupabaseAdmin();
 
     // Get date range from query params (default: last 30 days)
     const { searchParams } = new URL(req.url);
@@ -41,12 +47,12 @@ export async function GET(req: NextRequest) {
       recentPaymentsData,
       dauWeeklyData,
     ] = await Promise.all([
-      calculateMRR(),
-      getUserStats(startDate),
-      getEnrichmentStats(startDate),
-      getTopUsers(10),
-      getRecentPayments(10),
-      getDAUAndWAU(),
+      calculateMRR(supabase),
+      getUserStats(supabase, startDate),
+      getEnrichmentStats(supabase, startDate),
+      getTopUsers(supabase, 10),
+      getRecentPayments(supabase, 10),
+      getDAUAndWAU(supabase),
     ]);
 
     return NextResponse.json({
@@ -71,7 +77,7 @@ export async function GET(req: NextRequest) {
 /**
  * Calculate Monthly Recurring Revenue (MRR)
  */
-async function calculateMRR() {
+async function calculateMRR(supabase: ReturnType<typeof getSupabaseAdmin>) {
   // Get active subscriptions (last 30 days of payments)
   const thirtyDaysAgo = new Date();
   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
@@ -120,7 +126,7 @@ async function calculateMRR() {
 /**
  * Get user statistics
  */
-async function getUserStats(startDate: Date) {
+async function getUserStats(supabase: ReturnType<typeof getSupabaseAdmin>, startDate: Date) {
   // Total users
   const { count: totalUsers } = await supabase
     .from('auth.users')
@@ -152,7 +158,7 @@ async function getUserStats(startDate: Date) {
 /**
  * Get enrichment statistics
  */
-async function getEnrichmentStats(startDate: Date) {
+async function getEnrichmentStats(supabase: ReturnType<typeof getSupabaseAdmin>, startDate: Date) {
   // Total enrichments
   const { count: totalEnrichments } = await supabase
     .from('events')
@@ -198,7 +204,7 @@ async function getEnrichmentStats(startDate: Date) {
 /**
  * Get top users by enrichment count
  */
-async function getTopUsers(limit: number) {
+async function getTopUsers(supabase: ReturnType<typeof getSupabaseAdmin>, limit: number) {
   const { data: usageData } = await supabase
     .from('usage_counters')
     .select('user_id, enrichments_count, exports_count')
@@ -224,7 +230,7 @@ async function getTopUsers(limit: number) {
 /**
  * Get recent payments
  */
-async function getRecentPayments(limit: number) {
+async function getRecentPayments(supabase: ReturnType<typeof getSupabaseAdmin>, limit: number) {
   const { data: payments } = await supabase
     .from('payments')
     .select('*')
@@ -252,7 +258,7 @@ async function getRecentPayments(limit: number) {
 /**
  * Calculate Daily Active Users (DAU) and Weekly Active Users (WAU)
  */
-async function getDAUAndWAU() {
+async function getDAUAndWAU(supabase: ReturnType<typeof getSupabaseAdmin>) {
   // DAU: Users with events in last 24 hours
   const oneDayAgo = new Date();
   oneDayAgo.setHours(oneDayAgo.getHours() - 24);

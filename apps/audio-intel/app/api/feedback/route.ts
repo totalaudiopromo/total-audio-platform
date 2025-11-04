@@ -1,20 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-// Initialize Supabase client with service role key for admin operations
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+// Lazy Supabase client initialization to avoid build-time errors
+function getSupabaseAdmin() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (!supabaseUrl || !supabaseServiceRoleKey) {
-  throw new Error('Missing required Supabase environment variables');
+  if (!supabaseUrl || !supabaseServiceRoleKey) {
+    throw new Error('Missing required Supabase environment variables');
+  }
+
+  return createClient(supabaseUrl, supabaseServiceRoleKey, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
+    },
+  });
 }
-
-const supabase = createClient(supabaseUrl, supabaseServiceRoleKey, {
-  auth: {
-    autoRefreshToken: false,
-    persistSession: false,
-  },
-});
 
 export interface FeedbackRequest {
   app: string;
@@ -45,6 +47,9 @@ export interface FeedbackRequest {
  */
 export async function POST(request: NextRequest) {
   try {
+    // Initialize Supabase client at runtime (inside handler)
+    const supabase = getSupabaseAdmin();
+
     // Get authenticated user from session
     const authHeader = request.headers.get('authorization');
     if (!authHeader) {
