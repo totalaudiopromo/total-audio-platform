@@ -18,11 +18,11 @@ export async function GET() {
       console.error('Error fetching conversion summary:', error);
 
       // Fallback query if RPC doesn't exist yet
-      const { data: fallbackData, error: fallbackError } = await supabase
+      const { data: fallbackData, error: fallbackError } = await ((supabase as any)
         .from('conversion_events')
         .select('id, user_id, app, event_name, revenue_impact, metadata, created_at')
         .order('created_at', { ascending: false })
-        .limit(1000);
+        .limit(1000));
 
       if (fallbackError) {
         throw fallbackError;

@@ -84,7 +84,7 @@ export async function GET() {
     try {
       if (process.env.STRIPE_SECRET) {
         const stripe = new Stripe(process.env.STRIPE_SECRET as string, {
-          apiVersion: '2024-06-20',
+          apiVersion: '2025-08-27.basil',
         });
         // Get active subscriptions monthly recurring amount
         const subs = await stripe.subscriptions.list({

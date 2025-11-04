@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
-import { createClient } from '@total-audio/core-db/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 
 // Usage limits by tier
 const USAGE_LIMITS = {
@@ -18,7 +19,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const supabase = createClient();
+    const supabase = await createServerClient(cookies());
 
     // Get user's subscription tier from profiles or subscriptions table
     // For now, assume free tier unless otherwise specified

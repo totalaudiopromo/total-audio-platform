@@ -46,12 +46,12 @@ export async function POST(
 
     // Fetch campaign data
     console.log('[Report Generation] Fetching campaign data...');
-    const { data: campaign, error: campaignError } = await supabase
+    const { data: campaign, error: campaignError } = await (supabase
       .from('campaigns')
       .select('*')
       .eq('id', campaignId)
       .eq('user_id', user.id)
-      .single();
+      .single() as any);
 
     if (campaignError || !campaign) {
       console.log('[Report Generation] Campaign not found:', campaignError);
@@ -60,68 +60,87 @@ export async function POST(
         { status: 404 }
       );
     }
-    console.log('[Report Generation] Campaign found:', campaign.name);
+    const campaignData = campaign as any;
+    console.log('[Report Generation] Campaign found:', campaignData.name);
 
     // Fetch campaign activities
-    const { data: activities } = await supabase
+    const { data: activities } = await (supabase
       .from('campaign_activities')
       .select('*')
       .eq('campaign_id', campaignId)
       .order('created_at', { ascending: false })
-      .limit(20);
+      .limit(20) as any);
 
     // Fetch report template (or use default)
-    let template = {
-      logo_url: undefined as string | undefined,
+    let template: {
+      logo_url: string | undefined;
+      brand_color: string;
+      company_name: string | undefined;
+      contact_email: string | undefined;
+      contact_phone: string | undefined;
+    } = {
+      logo_url: undefined,
       brand_color: '#6366f1',
-      company_name: undefined as string | undefined,
-      contact_email: undefined as string | undefined,
-      contact_phone: undefined as string | undefined,
+      company_name: undefined,
+      contact_email: undefined,
+      contact_phone: undefined,
     };
 
     if (templateId) {
-      const { data: templateData } = await supabase
+      const { data: templateData } = await (supabase
         .from('report_templates')
         .select('*')
         .eq('id', templateId)
         .eq('user_id', user.id)
-        .single();
+        .single() as any);
 
       if (templateData) {
-        template = templateData;
+        template = {
+          logo_url: templateData.logo_url || undefined,
+          brand_color: templateData.brand_color || '#6366f1',
+          company_name: templateData.company_name || undefined,
+          contact_email: templateData.contact_email || undefined,
+          contact_phone: templateData.contact_phone || undefined,
+        };
       }
     } else {
       // Try to get default template
-      const { data: defaultTemplate } = await supabase
+      const { data: defaultTemplate } = await (supabase
         .from('report_templates')
         .select('*')
         .eq('user_id', user.id)
         .eq('is_default', true)
-        .single();
+        .single() as any);
 
       if (defaultTemplate) {
-        template = defaultTemplate;
+        template = {
+          logo_url: defaultTemplate.logo_url || undefined,
+          brand_color: defaultTemplate.brand_color || '#6366f1',
+          company_name: defaultTemplate.company_name || undefined,
+          contact_email: defaultTemplate.contact_email || undefined,
+          contact_phone: defaultTemplate.contact_phone || undefined,
+        };
       }
     }
 
     // Calculate metrics
     const metrics = {
       response_rate:
-        campaign.actual_reach && campaign.target_reach
-          ? campaign.actual_reach / campaign.target_reach
+        campaignData.actual_reach && campaignData.target_reach
+          ? campaignData.actual_reach / campaignData.target_reach
           : 0,
       cost_per_result:
-        campaign.budget && campaign.actual_reach
-          ? campaign.budget / campaign.actual_reach
+        campaignData.budget && campaignData.actual_reach
+          ? campaignData.budget / campaignData.actual_reach
           : 0,
-      days_active: campaign.end_date
+      days_active: campaignData.end_date
         ? Math.ceil(
-            (new Date(campaign.end_date).getTime() -
-              new Date(campaign.start_date).getTime()) /
+            (new Date(campaignData.end_date).getTime() -
+              new Date(campaignData.start_date).getTime()) /
               (1000 * 60 * 60 * 24)
           )
         : Math.ceil(
-            (Date.now() - new Date(campaign.start_date).getTime()) /
+            (Date.now() - new Date(campaignData.start_date).getTime()) /
               (1000 * 60 * 60 * 24)
           ),
     };
@@ -144,16 +163,16 @@ export async function POST(
               role: 'user',
               content: `Generate a professional 3-paragraph executive summary for this music promotion campaign report:
 
-Campaign: ${campaign.name}
-Artist: ${campaign.artist_name}
-Platform: ${campaign.platform}
-Target Reach: ${campaign.target_reach}
-Actual Reach: ${campaign.actual_reach}
-Budget: £${campaign.budget}
+Campaign: ${campaignData.name || 'Not specified'}
+Artist: ${campaignData.artist_name || 'Not specified'}
+Platform: ${campaignData.platform || 'Not specified'}
+Target Reach: ${campaignData.target_reach || 'Not set'}
+Actual Reach: ${campaignData.actual_reach || 'Not yet measured'}
+Budget: £${campaignData.budget || 0}
 Success Rate: ${(metrics.response_rate * 100).toFixed(0)}%
 Cost Per Result: £${metrics.cost_per_result.toFixed(2)}
 Duration: ${metrics.days_active} days
-Status: ${campaign.status}
+Status: ${campaignData.status || 'Not specified'}
 
 Write it in UK English, professional but not corporate. Focus on results, insights, and recommendations. Keep it under 250 words.`,
             },
@@ -171,7 +190,7 @@ Write it in UK English, professional but not corporate. Focus on results, insigh
           aiError?.message || aiError
         );
         // Fallback to basic summary
-        executiveSummary = `This ${campaign.platform} campaign for ${campaign.artist_name} achieved ${campaign.actual_reach || 0} of ${campaign.target_reach || 0} targeted contacts (${(metrics.response_rate * 100).toFixed(0)}% success rate). The campaign ran for ${metrics.days_active} days with a total budget of £${campaign.budget || 0}, resulting in a cost per result of £${metrics.cost_per_result.toFixed(2)}.`;
+        executiveSummary = `This ${campaignData.platform || 'music promotion'} campaign for ${campaignData.artist_name || 'artist'} achieved ${campaignData.actual_reach || 0} of ${campaignData.target_reach || 0} targeted contacts (${(metrics.response_rate * 100).toFixed(0)}% success rate). The campaign ran for ${metrics.days_active} days with a total budget of £${campaignData.budget || 0}, resulting in a cost per result of £${metrics.cost_per_result.toFixed(2)}.`;
         console.log('[Report Generation] Using fallback summary');
       }
     } else {
@@ -183,11 +202,11 @@ Write it in UK English, professional but not corporate. Focus on results, insigh
     // Prepare report data
     console.log('[Report Generation] Preparing report data...');
     const reportData: ReportData = {
-      campaign,
+      campaign: campaignData,
       template,
       executiveSummary,
       activities:
-        activities?.map(a => ({
+        (activities as any[])?.map((a: any) => ({
           type: a.type,
           description: a.description,
           created_at: a.created_at,
@@ -207,7 +226,7 @@ Write it in UK English, professional but not corporate. Focus on results, insigh
     );
 
     // Generate filename
-    const filename = `campaign-report-${campaign.name.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}.pdf`;
+    const filename = `campaign-report-${(campaignData.name || 'campaign').toLowerCase().replace(/\s+/g, '-')}-${Date.now()}.pdf`;
     console.log('[Report Generation] Filename:', filename);
 
     // Save report record to database
@@ -219,10 +238,10 @@ Write it in UK English, professional but not corporate. Focus on results, insigh
         user_id: user.id,
         template_id: templateId || null,
         report_type: reportType,
-        start_date: startDate || campaign.start_date,
+        start_date: startDate || campaignData.start_date,
         end_date:
           endDate ||
-          campaign.end_date ||
+          campaignData.end_date ||
           new Date().toISOString().split('T')[0],
         pdf_filename: filename,
         executive_summary: executiveSummary,

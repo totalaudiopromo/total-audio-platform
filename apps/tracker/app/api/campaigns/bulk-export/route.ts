@@ -25,12 +25,12 @@ export async function POST(request: Request) {
     }
 
     // Fetch campaigns (only user's own campaigns)
-    const { data: campaigns, error: fetchError } = await supabase
+    const { data: campaigns, error: fetchError } = await (supabase
       .from('campaigns')
       .select('*')
       .in('id', campaignIds)
       .eq('user_id', user.id)
-      .order('created_at', { ascending: false });
+      .order('created_at', { ascending: false }) as any);
 
     if (fetchError) {
       console.error('Bulk export fetch error:', fetchError);
@@ -63,15 +63,15 @@ export async function POST(request: Request) {
       'Notes',
     ];
 
-    const rows = campaigns.map(campaign => {
+    const rows = (campaigns as any[]).map((campaign: any) => {
       const successRate =
-        campaign.target_reach > 0
-          ? ((campaign.actual_reach / campaign.target_reach) * 100).toFixed(1)
+        (campaign.target_reach || 0) > 0
+          ? (((campaign.actual_reach || 0) / campaign.target_reach) * 100).toFixed(1)
           : '0';
 
       const costPerResult =
-        campaign.actual_reach > 0
-          ? (campaign.budget / campaign.actual_reach).toFixed(2)
+        (campaign.actual_reach || 0) > 0
+          ? ((campaign.budget || 0) / campaign.actual_reach).toFixed(2)
           : '0';
 
       return [

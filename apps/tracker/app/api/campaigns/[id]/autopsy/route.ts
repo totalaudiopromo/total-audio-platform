@@ -77,12 +77,12 @@ export async function POST(
   }
 
   // Fetch campaign data
-  const { data: campaign, error: campaignError } = await supabase
+  const { data: campaign, error: campaignError } = await (supabase
     .from('campaigns')
     .select('*')
     .eq('id', resolvedParams.id)
     .eq('user_id', user.id)
-    .single();
+    .single() as any);
 
   if (campaignError || !campaign) {
     return NextResponse.json({ error: 'Campaign not found' }, { status: 404 });
@@ -90,37 +90,38 @@ export async function POST(
 
   // Fetch relevant industry benchmark
   let benchmark: any = null;
-  if (campaign.platform && campaign.genre) {
-    const { data } = await supabase
+  const campaignData = campaign as any;
+  if (campaignData.platform && campaignData.genre) {
+    const { data } = await (supabase
       .from('benchmarks')
       .select('*')
-      .eq('platform', campaign.platform)
-      .eq('genre', campaign.genre)
-      .single();
+      .eq('platform', campaignData.platform)
+      .eq('genre', campaignData.genre)
+      .single() as any);
     benchmark = data;
   }
 
   // Build AI prompt
-  const hasResults = campaign.actual_reach > 0 && campaign.target_reach > 0;
+  const hasResults = (campaignData.actual_reach || 0) > 0 && (campaignData.target_reach || 0) > 0;
 
   const prompt = `You are analyzing a UK music promotion campaign. Be brutally honest, specific, and actionable. Use UK spelling and music industry terminology.
 
 CAMPAIGN DATA:
-- Name: ${campaign.name}
-- Artist: ${campaign.artist_name || 'Not specified'}
-- Platform: ${campaign.platform || 'Not specified'}
-- Genre: ${campaign.genre || 'Not specified'}
-- Budget: £${campaign.budget || 0}
-- Target Reach: ${campaign.target_reach || 'Not set'}
-- Actual Reach: ${campaign.actual_reach || 'Not yet measured'}
-- Success Rate: ${campaign.success_rate ? Math.round(campaign.success_rate) + '%' : 'Not calculated'}
-- Cost Per Result: ${campaign.cost_per_result ? '£' + Math.round(campaign.cost_per_result) : 'TBD'}
-- Status: ${campaign.status}
-- Dates: ${campaign.start_date || 'Not set'} to ${campaign.end_date || 'ongoing'}
+- Name: ${campaignData.name || 'Not specified'}
+- Artist: ${campaignData.artist_name || 'Not specified'}
+- Platform: ${campaignData.platform || 'Not specified'}
+- Genre: ${campaignData.genre || 'Not specified'}
+- Budget: £${campaignData.budget || 0}
+- Target Reach: ${campaignData.target_reach || 'Not set'}
+- Actual Reach: ${campaignData.actual_reach || 'Not yet measured'}
+- Success Rate: ${campaignData.success_rate ? Math.round(campaignData.success_rate) + '%' : 'Not calculated'}
+- Cost Per Result: ${campaignData.cost_per_result ? '£' + Math.round(campaignData.cost_per_result) : 'TBD'}
+- Status: ${campaignData.status || 'Not specified'}
+- Dates: ${campaignData.start_date || 'Not set'} to ${campaignData.end_date || 'ongoing'}
 
 ${
   benchmark
-    ? `INDUSTRY BENCHMARKS FOR ${campaign.platform} - ${campaign.genre}:
+    ? `INDUSTRY BENCHMARKS FOR ${campaignData.platform} - ${campaignData.genre}:
 - Average Success Rate: ${benchmark.avg_success_rate}%
 - Average Cost Per Result: £${Math.round(benchmark.avg_cost_per_result)}
 - Optimal Budget Range: £${benchmark.optimal_budget_min}-£${benchmark.optimal_budget_max}
@@ -131,7 +132,7 @@ ${
 }
 
 CAMPAIGN NOTES:
-${campaign.notes || 'No additional notes provided'}
+${campaignData.notes || 'No additional notes provided'}
 
 ${
   hasResults

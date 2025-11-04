@@ -5,6 +5,8 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { OAuthHandler } from '@/lib/integrations/oauth-handler';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 
 export async function GET(request: NextRequest) {
   try {

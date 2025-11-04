@@ -42,19 +42,19 @@ export async function POST(request: Request) {
           : null;
         const cancelAtPeriodEnd = !!sub.cancel_at_period_end;
 
-        const { data: customerRow } = await supabase
+        const { data: customerRow } = await ((supabase as any)
           .from('customers')
           .select('user_id')
           .eq('stripe_customer_id', customerId)
-          .single();
-        const userId = customerRow?.user_id as string | undefined;
+          .single());
+        const userId = (customerRow as any)?.user_id as string | undefined;
         if (!userId) break;
 
-        const { data: existing } = await supabase
+        const { data: existing } = await ((supabase as any)
           .from('subscriptions')
           .select('id')
           .eq('stripe_subscription_id', stripeSubscriptionId)
-          .maybeSingle();
+          .maybeSingle());
 
         if (existing?.id) {
           await supabase

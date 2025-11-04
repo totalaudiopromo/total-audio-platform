@@ -131,7 +131,7 @@ export async function POST(request: Request) {
     }
 
     // Insert campaign
-    const { error: insertError } = await supabase.from('campaigns').insert([
+    const { error: insertError } = await ((supabase as any).from('campaigns').insert([
       {
         user_id: user.id,
         name: row.name.trim(),
@@ -150,7 +150,7 @@ export async function POST(request: Request) {
         performance_score: 0,
         percentile_rank: 0,
       },
-    ]);
+    ]) as any);
 
     if (insertError) {
       errors.push(`Row ${rowNumber} (${row.name}): ${insertError.message}`);

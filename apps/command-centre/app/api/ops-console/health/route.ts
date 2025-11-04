@@ -19,17 +19,17 @@ export async function GET() {
 
     // Check agent health (agents with events in last 24 hours)
     const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
-    const { data: recentAgents, error: agentsError } = await supabase
+    const { data: recentAgents, error: agentsError } = await (supabase
       .from('agent_events')
       .select('agent_id, success')
-      .gte('created_at', oneDayAgo);
+      .gte('created_at', oneDayAgo) as any);
 
     let agentStats = { total: 0, active: 0, failed: 0 };
     if (!agentsError && recentAgents) {
-      const uniqueAgents = new Set(recentAgents.map(a => a.agent_id));
+      const uniqueAgents = new Set((recentAgents as any[]).map((a: any) => a.agent_id));
       agentStats.total = uniqueAgents.size;
       agentStats.active = uniqueAgents.size;
-      agentStats.failed = recentAgents.filter(a => !a.success).length;
+      agentStats.failed = (recentAgents as any[]).filter((a: any) => !a.success).length;
     }
 
     // Check social integrations

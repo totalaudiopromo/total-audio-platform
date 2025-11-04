@@ -17,7 +17,7 @@ if (!supabaseUrl || !supabaseServiceKey) {
   process.exit(1);
 }
 
-const (supabase as any) = createClient(supabaseUrl, supabaseServiceKey);
+const supabase = createClient(supabaseUrl, supabaseServiceKey) as any;
 
 async function applyMigration() {
   console.log('🔧 Applying user_id type migration...\n');

@@ -18,11 +18,11 @@ export async function GET() {
       console.error('Error fetching feedback summary:', error);
 
       // Fallback query if RPC doesn't exist yet
-      const { data: fallbackData, error: fallbackError } = await supabase
+      const { data: fallbackData, error: fallbackError } = await ((supabase as any)
         .from('feedback_events')
         .select('id, user_id, app, agent_id, rating, comment, created_at')
         .order('created_at', { ascending: false })
-        .limit(500);
+        .limit(500));
 
       if (fallbackError) {
         throw fallbackError;

@@ -16,10 +16,11 @@ export async function POST(req: Request) {
     const userId = user.email || user.id;
 
     // Fetch contacts from Audio Intel database (intel_contacts table)
-    const { data: intelContacts, error: fetchError } = await supabase
+    const queryBuilder = (supabase as any)
       .from('intel_contacts')
       .select('*')
       .eq('user_id', userId);
+    const { data: intelContacts, error: fetchError } = await queryBuilder;
 
     if (fetchError) {
       console.error('Error fetching Audio Intel contacts:', fetchError);
@@ -34,16 +35,16 @@ export async function POST(req: Request) {
     }
 
     // Get existing contacts in Pitch Generator to avoid duplicates
-    const { data: existingContacts } = await supabase
+    const { data: existingContacts } = await (supabase
       .from('contacts')
       .select('email, name')
-      .eq('user_id', userId);
+      .eq('user_id', userId) as any);
 
-    const existingEmails = new Set(existingContacts?.map(c => c.email?.toLowerCase()) || []);
-    const existingNames = new Set(existingContacts?.map(c => c.name?.toLowerCase()) || []);
+    const existingEmails = new Set((existingContacts as any[])?.map((c: any) => c.email?.toLowerCase()) || []);
+    const existingNames = new Set((existingContacts as any[])?.map((c: any) => c.name?.toLowerCase()) || []);
 
     // Filter out duplicates (match by email or name)
-    const newContacts = intelContacts.filter(contact => {
+    const newContacts = (intelContacts as any[]).filter((contact: any) => {
       const emailMatch = contact.email && existingEmails.has(contact.email.toLowerCase());
       const nameMatch = contact.name && existingNames.has(contact.name.toLowerCase());
       return !emailMatch && !nameMatch;
@@ -58,7 +59,7 @@ export async function POST(req: Request) {
     }
 
     // Transform Audio Intel contacts to Pitch Generator format
-    const contactsToInsert = newContacts.map(contact => ({
+    const contactsToInsert = newContacts.map((contact: any) => ({
       user_id: userId,
       name: contact.contact_name || contact.name,
       role: contact.role || null,

@@ -38,7 +38,7 @@ export async function GET(request: Request) {
     }
 
     const csv = toCSV(
-      (data ?? []).map(campaign => ({
+      (data ?? []).map((campaign: any) => ({
         name: campaign.name,
         artist_name: campaign.artist_name,
         platform: campaign.platform,

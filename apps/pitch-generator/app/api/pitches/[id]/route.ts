@@ -14,7 +14,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = session.user.id || 'demo-user';
+    const userId = user.id || 'demo-user';
 
     const { data: pitch, error } = await supabase
       .from('pitches')
@@ -46,7 +46,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = session.user.id || 'demo-user';
+    const userId = user.id || 'demo-user';
     const body = await req.json();
     const { subject_line, body: pitchBody, status } = body;
 
@@ -86,7 +86,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = session.user.id || 'demo-user';
+    const userId = user.id || 'demo-user';
 
     const { error } = await supabase.from('pitches').delete().eq('id', id).eq('user_id', userId);
 

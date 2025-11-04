@@ -52,8 +52,8 @@ export async function GET() {
   });
 
   // Enrich campaigns with insights
-  const enrichedCampaigns = (campaigns || []).map(campaign => {
-    const typedCampaign = campaign as Campaign;
+  const enrichedCampaigns = (campaigns || []).map((campaign: any) => {
+    const typedCampaign = campaign as any;
 
     if (typedCampaign.platform && typedCampaign.genre) {
       const key = `${typedCampaign.platform}-${typedCampaign.genre}`;
@@ -193,11 +193,11 @@ export async function POST(request: Request) {
     payload.social_engagement = Number(body.social_engagement);
 
   // Insert campaign
-  const { data, error } = await supabase
+  const { data, error } = await (supabase
     .from('campaigns')
     .insert([payload])
     .select()
-    .single();
+    .single() as any);
 
   if (error) {
     console.error('Campaign creation error:', error);
@@ -207,16 +207,18 @@ export async function POST(request: Request) {
     );
   }
 
+  const campaignData = data as any;
+
   // Enrich with intelligence
-  if (data.platform && data.genre) {
-    const { data: benchmark } = await supabase
+  if (campaignData.platform && campaignData.genre) {
+    const { data: benchmark } = await (supabase
       .from('benchmarks')
       .select('*')
-      .eq('platform', data.platform)
-      .eq('genre', data.genre)
-      .single();
+      .eq('platform', campaignData.platform)
+      .eq('genre', campaignData.genre)
+      .single() as any);
 
-    const insights = generateCampaignInsights(data as Campaign, benchmark);
+    const insights = generateCampaignInsights(campaignData as any, benchmark);
 
     return NextResponse.json({
       ...data,
