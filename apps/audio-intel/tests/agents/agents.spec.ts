@@ -285,7 +285,7 @@ describe('Agent Layer', () => {
       expect(result.success).toBe(true);
       expect(result.data.passed).toBe(false);
       expect(result.data.issues.length).toBeGreaterThan(0);
-      expect(result.data.issues.some(i => i.type === 'corporate_speak')).toBe(true);
+      expect(result.data.issues.some((i: any) => i.type === 'corporate_speak')).toBe(true);
     });
 
     it('should flag AI buzzwords', async () => {
@@ -297,7 +297,7 @@ describe('Agent Layer', () => {
 
       expect(result.success).toBe(true);
       expect(result.data.passed).toBe(false);
-      expect(result.data.issues.some(i => i.type === 'ai_buzzword')).toBe(true);
+      expect(result.data.issues.some((i: any) => i.type === 'ai_buzzword')).toBe(true);
     });
 
     it('should flag inauthentic marketing speak', async () => {
@@ -308,7 +308,7 @@ describe('Agent Layer', () => {
 
       expect(result.success).toBe(true);
       expect(result.data.passed).toBe(false);
-      expect(result.data.issues.some(i => i.type === 'inauthentic')).toBe(true);
+      expect(result.data.issues.some((i: any) => i.type === 'inauthentic')).toBe(true);
     });
 
     it('should auto-fix issues when requested', async () => {

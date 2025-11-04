@@ -81,7 +81,7 @@ export async function exportEndpointExample(req: NextRequest) {
   const startTime = Date.now();
   const userId = 'user-id-from-session';
   const exportType = 'csv'; // or 'json', 'tracker'
-  const contacts = []; // Get from request
+  const contacts: any[] = []; // Get from request
 
   try {
     // Your existing export logic
