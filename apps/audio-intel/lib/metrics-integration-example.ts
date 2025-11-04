@@ -26,7 +26,7 @@ import {
 export async function enrichmentEndpointExample(req: NextRequest) {
   const startTime = Date.now();
   const userId = 'user-id-from-session'; // Get from Supabase auth session
-  const contacts = []; // Parse from request body
+  const contacts: any[] = []; // Parse from request body
 
   try {
     // Track enrichment start

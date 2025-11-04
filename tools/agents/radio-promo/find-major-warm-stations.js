@@ -246,5 +246,3 @@ if (require.main === module) {
 }
 
 module.exports = { findMajorWarmStations };
-
-
