@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+// Google Fonts disabled for build - using system fonts
+// import { Inter } from 'next/font/google'
 import './globals.css'
 import './mobile-optimizations.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = { className: '' }
 
 export const metadata: Metadata = {
   title: 'Command Centre - Total Audio Promo',

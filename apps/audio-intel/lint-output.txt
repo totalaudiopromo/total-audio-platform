@@ -1,0 +1,9 @@
+
+> audio-intel@0.1.0 lint /home/user/total-audio-platform/apps/audio-intel
+> next lint
+
+? How would you like to configure ESLint? https://nextjs.org/docs/app/api-reference/config/eslint
+[?25l❯  Strict (recommended)
+   Base
+   Cancel ⚠ If you set up ESLint yourself, we recommend adding the Next.js ESLint plugin. See https://nextjs.org/docs/app/api-reference/config/eslint#migrating-existing-config
+ ELIFECYCLE  Command failed with exit code 1.

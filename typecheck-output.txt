@@ -1,0 +1,16 @@
+
+> total-audio-promo@1.0.0 typecheck /home/user/total-audio-platform
+> npm run typecheck:audio-intel && npm run typecheck:playlist-pulse && npm run typecheck:web && npm run typecheck:backend
+
+
+> total-audio-promo@1.0.0 typecheck:audio-intel
+> cd apps/audio-intel && npm run typecheck
+
+npm error Lifecycle script `typecheck` failed with error:
+npm error workspace audio-intel@0.1.0
+npm error location /home/user/total-audio-platform/apps/audio-intel
+npm error Missing script: "typecheck"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run --workspace=audio-intel@0.1.0
+ ELIFECYCLE  Command failed with exit code 1.

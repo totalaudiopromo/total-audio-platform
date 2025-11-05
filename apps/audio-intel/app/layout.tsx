@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// Google Fonts disabled for build - using system fonts
+// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./mobile-optimizations.css";
 import "./beta-mobile.css";
@@ -7,15 +8,16 @@ import "./home-mobile.css";
 import React from 'react';
 import ClientLayout from './components/ClientLayout';
 
-const geistSans = Geist({
+// Using system fonts as fallback
+const geistSans = {
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+  className: "",
+};
 
-const geistMono = Geist_Mono({
+const geistMono = {
   variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  className: "",
+};
 
 export const metadata: Metadata = {
   title: 'Audio Intel – AI-Powered Music Industry Intelligence | Founded by Music Industry Veteran',
