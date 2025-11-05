@@ -78,7 +78,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, web, api]
+        app: [audio-intel, tracker, pitch-generator, command-centre, web]
       fail-fast: false
     
     steps:
@@ -116,7 +116,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, web, api]
+        app: [audio-intel, tracker, pitch-generator, command-centre, web]
       fail-fast: false
     
     steps:
@@ -145,13 +145,21 @@ jobs:
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID }}" >> $GITHUB_ENV
             if [ -n "${{ secrets.HEALTHCHECK_URL_AUDIO_INTEL }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_AUDIO_INTEL }}" >> $GITHUB_ENV; fi
             ;;
+          "tracker")
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_TRACKER }}" >> $GITHUB_ENV
+            if [ -n "${{ secrets.HEALTHCHECK_URL_TRACKER }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_TRACKER }}" >> $GITHUB_ENV; fi
+            ;;
+          "pitch-generator")
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV
+            if [ -n "${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR }}" >> $GITHUB_ENV; fi
+            ;;
+          "command-centre")
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" >> $GITHUB_ENV
+            if [ -n "${{ secrets.HEALTHCHECK_URL_COMMAND_CENTRE }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_COMMAND_CENTRE }}" >> $GITHUB_ENV; fi
+            ;;
           "web")
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
             if [ -n "${{ secrets.HEALTHCHECK_URL_WEB }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_WEB }}" >> $GITHUB_ENV; fi
-            ;;
-          "api")
-            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_API }}" >> $GITHUB_ENV
-            if [ -n "${{ secrets.HEALTHCHECK_URL_API }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_API }}" >> $GITHUB_ENV; fi
             ;;
           *)
             echo "Unsupported app ${{ matrix.app }}"
@@ -201,7 +209,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, web, api]
+        app: [audio-intel, tracker, pitch-generator, command-centre, web]
       fail-fast: false
     
     steps:
@@ -230,13 +238,21 @@ jobs:
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID }}" >> $GITHUB_ENV
             if [ -n "${{ secrets.HEALTHCHECK_URL_AUDIO_INTEL_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_AUDIO_INTEL_PROD }}" >> $GITHUB_ENV; fi
             ;;
+          "tracker")
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_TRACKER }}" >> $GITHUB_ENV
+            if [ -n "${{ secrets.HEALTHCHECK_URL_TRACKER_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_TRACKER_PROD }}" >> $GITHUB_ENV; fi
+            ;;
+          "pitch-generator")
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV
+            if [ -n "${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR_PROD }}" >> $GITHUB_ENV; fi
+            ;;
+          "command-centre")
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" >> $GITHUB_ENV
+            if [ -n "${{ secrets.HEALTHCHECK_URL_COMMAND_CENTRE_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_COMMAND_CENTRE_PROD }}" >> $GITHUB_ENV; fi
+            ;;
           "web")
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
             if [ -n "${{ secrets.HEALTHCHECK_URL_WEB_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_WEB_PROD }}" >> $GITHUB_ENV; fi
-            ;;
-          "api")
-            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_API }}" >> $GITHUB_ENV
-            if [ -n "${{ secrets.HEALTHCHECK_URL_API_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_API_PROD }}" >> $GITHUB_ENV; fi
             ;;
           *)
             echo "Unsupported app ${{ matrix.app }}"
