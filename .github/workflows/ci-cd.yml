@@ -98,8 +98,16 @@ jobs:
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
 
+    - name: Resolve package name
+      id: resolve
+      run: |
+        case "${{ matrix.app }}" in
+          web) echo "package=total-audio-promo-frontend" >> "$GITHUB_OUTPUT" ;;
+          *) echo "package=${{ matrix.app }}" >> "$GITHUB_OUTPUT" ;;
+        esac
+
     - name: Build ${{ matrix.app }}
-      run: pnpm --filter ${{ matrix.app }} build
+      run: pnpm --filter "${{ steps.resolve.outputs.package }}" build
       env:
         CI: true
 

@@ -30,11 +30,22 @@ interface PromoteResult {
 }
 
 const APP_PROJECTS: Record<string, string> = {
-  'audio-intel': 'audio-intel',
-  tracker: 'tracker',
-  'pitch-generator': 'pitch-generator',
-  'command-centre': 'command-centre',
+  'audio-intel': process.env.VERCEL_PROJECT_ID!,
+  'tracker': process.env.VERCEL_PROJECT_ID_TRACKER!,
+  'pitch-generator': process.env.VERCEL_PROJECT_ID_PITCH_GENERATOR!,
+  'command-centre': process.env.VERCEL_PROJECT_ID_COMMAND_CENTRE!,
+  'web': process.env.VERCEL_PROJECT_ID_WEB!,
 };
+
+// Validate all project IDs are present
+console.error('\n🔍 Validating Vercel project IDs...');
+for (const [app, projectId] of Object.entries(APP_PROJECTS)) {
+  if (!projectId || projectId === 'undefined') {
+    console.error(`❌ Missing VERCEL_PROJECT_ID for ${app}`);
+    process.exit(1);
+  }
+  console.error(`  ✅ ${app}: ${projectId}`);
+}
 
 // === ENVIRONMENT VARIABLES ===
 const { VERCEL_TOKEN, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } = process.env;

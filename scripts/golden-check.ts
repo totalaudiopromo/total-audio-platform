@@ -36,7 +36,23 @@ if (appIndex === -1 || !args[appIndex + 1]) {
 }
 
 const APP_NAME = args[appIndex + 1];
-const VALID_APPS = ['audio-intel', 'tracker', 'pitch-generator', 'command-centre'];
+const VALID_APPS = ['audio-intel', 'tracker', 'pitch-generator', 'command-centre', 'web'];
+
+const PACKAGE_NAMES: Record<string, string> = {
+  'audio-intel': 'audio-intel',
+  'tracker': 'tracker',
+  'pitch-generator': 'pitch-generator',
+  'command-centre': 'command-centre',
+  'web': 'total-audio-promo-frontend',
+};
+
+const APP_URLS: Record<string, string> = {
+  'audio-intel': 'https://intel.totalaudiopromo.com',
+  'tracker': 'https://tracker.totalaudiopromo.com',
+  'pitch-generator': 'https://pitch.totalaudiopromo.com',
+  'command-centre': 'https://command.totalaudiopromo.com',
+  'web': 'https://totalaudiopromo.com',
+};
 
 if (!VALID_APPS.includes(APP_NAME)) {
   console.error(`❌ Invalid app: ${APP_NAME}`);
@@ -100,7 +116,9 @@ async function checkDatabase(): Promise<HealthCheck> {
 async function checkBuildOutput(): Promise<HealthCheck> {
   const checkStart = Date.now();
 
-  const buildPath = path.join(process.cwd(), 'apps', APP_NAME, '.next');
+  // Use actual package folder name (web -> total-audio-promo-frontend folder is 'web')
+  const folderName = APP_NAME === 'web' ? 'web' : APP_NAME;
+  const buildPath = path.join(process.cwd(), 'apps', folderName, '.next');
 
   if (!fs.existsSync(buildPath)) {
     return {
