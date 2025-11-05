@@ -47,7 +47,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, web, playlist-pulse, command-centre]
+        app: [audio-intel, web, command-centre]
 
     steps:
     - name: Checkout code

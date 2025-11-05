@@ -51,7 +51,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, web, playlist-pulse, command-centre]
+        app: [audio-intel, web, command-centre]
 
     steps:
     - uses: actions/checkout@v4
@@ -84,7 +84,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, web, playlist-pulse, command-centre]
+        app: [audio-intel, web, command-centre]
 
     steps:
     - uses: actions/checkout@v4
@@ -112,9 +112,6 @@ jobs:
             ;;
           web)
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
-            ;;
-          playlist-pulse)
-            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PLAYLIST_PULSE }}" >> $GITHUB_ENV
             ;;
           command-centre)
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" >> $GITHUB_ENV
@@ -138,7 +135,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, web, playlist-pulse, command-centre]
+        app: [audio-intel, web, command-centre]
 
     steps:
     - uses: actions/checkout@v4
@@ -166,9 +163,6 @@ jobs:
             ;;
           web)
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
-            ;;
-          playlist-pulse)
-            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PLAYLIST_PULSE }}" >> $GITHUB_ENV
             ;;
           command-centre)
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" >> $GITHUB_ENV
