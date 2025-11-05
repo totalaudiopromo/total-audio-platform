@@ -47,7 +47,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, web, command-centre]
+        app: [audio-intel, tracker, pitch-generator, command-centre, web]
 
     steps:
     - name: Checkout code

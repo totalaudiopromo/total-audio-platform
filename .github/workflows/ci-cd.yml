@@ -51,7 +51,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, web, command-centre]
+        app: [audio-intel, tracker, pitch-generator, command-centre, web]
 
     steps:
     - uses: actions/checkout@v4
@@ -84,7 +84,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, web, command-centre]
+        app: [audio-intel, tracker, pitch-generator, command-centre, web]
 
     steps:
     - uses: actions/checkout@v4
@@ -110,11 +110,17 @@ jobs:
           audio-intel)
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_AUDIO_INTEL }}" >> $GITHUB_ENV
             ;;
-          web)
-            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
+          tracker)
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_TRACKER }}" >> $GITHUB_ENV
+            ;;
+          pitch-generator)
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV
             ;;
           command-centre)
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" >> $GITHUB_ENV
+            ;;
+          web)
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
             ;;
         esac
 
@@ -135,7 +141,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, web, command-centre]
+        app: [audio-intel, tracker, pitch-generator, command-centre, web]
 
     steps:
     - uses: actions/checkout@v4
@@ -161,11 +167,17 @@ jobs:
           audio-intel)
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_AUDIO_INTEL }}" >> $GITHUB_ENV
             ;;
-          web)
-            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
+          tracker)
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_TRACKER }}" >> $GITHUB_ENV
+            ;;
+          pitch-generator)
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV
             ;;
           command-centre)
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" >> $GITHUB_ENV
+            ;;
+          web)
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
             ;;
         esac
 
