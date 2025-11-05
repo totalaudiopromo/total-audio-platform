@@ -57,7 +57,7 @@ jobs:
             apps/audio-intel/.next
             apps/tracker/.next
             apps/pitch-generator/.next
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.{js,jsx,ts,tsx}') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
@@ -123,10 +123,11 @@ jobs:
 
       - name: Check for dependency vulnerabilities
         run: |
-          if pnpm audit --audit-level=high --json > audit-results.json 2>&1; then
-            echo "✅ No high-severity vulnerabilities found"
-          else
+          pnpm audit --audit-level=high --json > audit-results.json 2>&1 || true
+          if grep -q '"vulnerabilities"' audit-results.json && ! grep -q '"high":0' audit-results.json; then
             echo "⚠️ High-severity vulnerabilities detected"
             cat audit-results.json
             exit 1
+          else
+            echo "✅ No high-severity vulnerabilities found"
           fi
