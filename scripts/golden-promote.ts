@@ -31,10 +31,10 @@ interface PromoteResult {
 
 const APP_PROJECTS: Record<string, string> = {
   'audio-intel': process.env.VERCEL_PROJECT_ID!,
-  'tracker': process.env.VERCEL_PROJECT_ID_TRACKER!,
+  tracker: process.env.VERCEL_PROJECT_ID_TRACKER!,
   'pitch-generator': process.env.VERCEL_PROJECT_ID_PITCH_GENERATOR!,
   'command-centre': process.env.VERCEL_PROJECT_ID_COMMAND_CENTRE!,
-  'web': process.env.VERCEL_PROJECT_ID_WEB!,
+  web: process.env.VERCEL_PROJECT_ID_WEB!,
 };
 
 // Validate all project IDs are present

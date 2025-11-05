@@ -40,18 +40,18 @@ const VALID_APPS = ['audio-intel', 'tracker', 'pitch-generator', 'command-centre
 
 const PACKAGE_NAMES: Record<string, string> = {
   'audio-intel': 'audio-intel',
-  'tracker': 'tracker',
+  tracker: 'tracker',
   'pitch-generator': 'pitch-generator',
   'command-centre': 'command-centre',
-  'web': 'total-audio-promo-frontend',
+  web: 'total-audio-promo-frontend',
 };
 
 const APP_URLS: Record<string, string> = {
   'audio-intel': 'https://intel.totalaudiopromo.com',
-  'tracker': 'https://tracker.totalaudiopromo.com',
+  tracker: 'https://tracker.totalaudiopromo.com',
   'pitch-generator': 'https://pitch.totalaudiopromo.com',
   'command-centre': 'https://command.totalaudiopromo.com',
-  'web': 'https://totalaudiopromo.com',
+  web: 'https://totalaudiopromo.com',
 };
 
 if (!VALID_APPS.includes(APP_NAME)) {
