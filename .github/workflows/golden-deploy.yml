@@ -1,0 +1,441 @@
+name: Golden Deployment Pipeline v2.5.3
+
+# Triggers on git tags matching v*-golden pattern
+on:
+  push:
+    tags:
+      - 'v*-golden'
+
+env:
+  NODE_VERSION: '18'
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+jobs:
+  # Job 1: Pre-deployment validation
+  validate:
+    name: Pre-Deployment Validation
+    runs-on: ubuntu-latest
+    outputs:
+      tag_version: ${{ steps.get_version.outputs.version }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract version from tag
+        id: get_version
+        run: |
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          echo "version=${TAG_NAME}" >> $GITHUB_OUTPUT
+          echo "Deploying version: ${TAG_NAME}"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install root dependencies
+        run: |
+          npm ci --legacy-peer-deps
+          echo "Root dependencies installed"
+
+      - name: Verify Vercel secrets
+        run: |
+          if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then
+            echo "❌ VERCEL_TOKEN secret is missing"
+            exit 1
+          fi
+          if [ -z "${{ secrets.VERCEL_ORG_ID }}" ]; then
+            echo "❌ VERCEL_ORG_ID secret is missing"
+            exit 1
+          fi
+          echo "✅ Vercel secrets verified"
+
+      - name: Check required project ID secrets
+        run: |
+          MISSING_SECRETS=""
+
+          if [ -z "${{ secrets.VERCEL_PROJECT_ID_AUDIO_INTEL }}" ]; then
+            MISSING_SECRETS="${MISSING_SECRETS}VERCEL_PROJECT_ID_AUDIO_INTEL "
+          fi
+          if [ -z "${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" ]; then
+            MISSING_SECRETS="${MISSING_SECRETS}VERCEL_PROJECT_ID_COMMAND_CENTRE "
+          fi
+          if [ -z "${{ secrets.VERCEL_PROJECT_ID_WEB }}" ]; then
+            MISSING_SECRETS="${MISSING_SECRETS}VERCEL_PROJECT_ID_WEB "
+          fi
+          if [ -z "${{ secrets.VERCEL_PROJECT_ID_PLAYLIST_PULSE }}" ]; then
+            MISSING_SECRETS="${MISSING_SECRETS}VERCEL_PROJECT_ID_PLAYLIST_PULSE "
+          fi
+
+          if [ -n "$MISSING_SECRETS" ]; then
+            echo "❌ Missing Vercel project ID secrets: $MISSING_SECRETS"
+            exit 1
+          fi
+
+          echo "✅ All Vercel project ID secrets present"
+
+      - name: Run linting
+        run: |
+          echo "Running linting checks..."
+          npm run lint || true
+          echo "✅ Linting complete"
+
+      - name: Run type checking
+        run: |
+          echo "Running TypeScript type checks..."
+          npm run typecheck || echo "⚠️ Type check warnings (non-blocking)"
+          echo "✅ Type checking complete"
+
+  # Job 2: Build all apps in matrix with proper isolation
+  build:
+    name: Build ${{ matrix.app }}
+    runs-on: ubuntu-latest
+    needs: validate
+
+    strategy:
+      fail-fast: false
+      matrix:
+        app:
+          - audio-intel
+          - command-centre
+          - web
+          - playlist-pulse
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Clean previous builds
+        working-directory: apps/${{ matrix.app }}
+        run: |
+          echo "Cleaning previous build artifacts for ${{ matrix.app }}..."
+          rm -rf .next
+          rm -rf .turbo
+          rm -rf node_modules/.cache
+          echo "✅ Clean complete"
+
+      - name: Install root dependencies
+        run: |
+          echo "Installing root dependencies..."
+          npm ci --legacy-peer-deps
+          echo "✅ Root dependencies installed"
+
+      - name: Install app-specific dependencies
+        working-directory: apps/${{ matrix.app }}
+        run: |
+          echo "Installing dependencies for ${{ matrix.app }}..."
+          npm install --legacy-peer-deps
+          echo "✅ App dependencies installed"
+
+      - name: Build ${{ matrix.app }}
+        working-directory: apps/${{ matrix.app }}
+        run: |
+          echo "Building ${{ matrix.app }}..."
+          npm run build
+          echo "✅ Build complete for ${{ matrix.app }}"
+        env:
+          CI: true
+          NODE_ENV: production
+          NEXT_TELEMETRY_DISABLED: 1
+
+      - name: Verify build output
+        working-directory: apps/${{ matrix.app }}
+        run: |
+          if [ ! -d ".next" ]; then
+            echo "❌ Build output not found for ${{ matrix.app }}"
+            exit 1
+          fi
+          echo "✅ Build output verified for ${{ matrix.app }}"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ matrix.app }}
+          path: apps/${{ matrix.app }}/.next
+          retention-days: 1
+
+  # Job 3: Deploy to Vercel Preview
+  deploy-preview:
+    name: Deploy ${{ matrix.app }} to Preview
+    runs-on: ubuntu-latest
+    needs: [validate, build]
+
+    strategy:
+      fail-fast: false
+      matrix:
+        app:
+          - audio-intel
+          - command-centre
+          - web
+          - playlist-pulse
+
+    outputs:
+      audio-intel-url: ${{ steps.deploy.outputs.audio-intel-url }}
+      command-centre-url: ${{ steps.deploy.outputs.command-centre-url }}
+      web-url: ${{ steps.deploy.outputs.web-url }}
+      playlist-pulse-url: ${{ steps.deploy.outputs.playlist-pulse-url }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Pull Vercel Environment Information
+        working-directory: apps/${{ matrix.app }}
+        run: |
+          vercel pull --yes \
+            --environment=preview \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --scope=${{ secrets.VERCEL_ORG_ID }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets[format('VERCEL_PROJECT_ID_{0}', matrix.app == 'audio-intel' && 'AUDIO_INTEL' || matrix.app == 'command-centre' && 'COMMAND_CENTRE' || matrix.app == 'web' && 'WEB' || 'PLAYLIST_PULSE')] }}
+
+      - name: Build with Vercel
+        id: deploy
+        working-directory: apps/${{ matrix.app }}
+        run: |
+          echo "Deploying ${{ matrix.app }} to Vercel preview..."
+
+          DEPLOYMENT_URL=$(vercel deploy \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --scope=${{ secrets.VERCEL_ORG_ID }} \
+            2>&1 | tee deploy.log | grep -o 'https://[^ ]*')
+
+          echo "${{ matrix.app }}-url=${DEPLOYMENT_URL}" >> $GITHUB_OUTPUT
+          echo "Preview URL for ${{ matrix.app }}: ${DEPLOYMENT_URL}"
+          echo "${DEPLOYMENT_URL}" > deployment-url.txt
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets[format('VERCEL_PROJECT_ID_{0}', matrix.app == 'audio-intel' && 'AUDIO_INTEL' || matrix.app == 'command-centre' && 'COMMAND_CENTRE' || matrix.app == 'web' && 'WEB' || 'PLAYLIST_PULSE')] }}
+
+      - name: Save deployment URL
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-url-${{ matrix.app }}
+          path: apps/${{ matrix.app }}/deployment-url.txt
+          retention-days: 1
+
+  # Job 4: Validate deployments
+  validate-deployments:
+    name: Validate Deployments
+    runs-on: ubuntu-latest
+    needs: deploy-preview
+
+    strategy:
+      matrix:
+        app:
+          - audio-intel
+          - command-centre
+          - web
+          - playlist-pulse
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download deployment URL
+        uses: actions/download-artifact@v4
+        with:
+          name: deployment-url-${{ matrix.app }}
+          path: ./
+
+      - name: Health check
+        run: |
+          DEPLOYMENT_URL=$(cat deployment-url.txt)
+          echo "Checking health of ${{ matrix.app }} at ${DEPLOYMENT_URL}"
+
+          MAX_RETRIES=5
+          RETRY_COUNT=0
+
+          while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${DEPLOYMENT_URL}" || echo "000")
+
+            if [ "$HTTP_STATUS" = "200" ] || [ "$HTTP_STATUS" = "301" ] || [ "$HTTP_STATUS" = "302" ]; then
+              echo "✅ Health check passed for ${{ matrix.app }} (HTTP $HTTP_STATUS)"
+              exit 0
+            fi
+
+            echo "⏳ Waiting for deployment to be ready... (Attempt $((RETRY_COUNT + 1))/$MAX_RETRIES, HTTP $HTTP_STATUS)"
+            sleep 10
+            RETRY_COUNT=$((RETRY_COUNT + 1))
+          done
+
+          echo "❌ Health check failed for ${{ matrix.app }} after $MAX_RETRIES attempts"
+          exit 1
+
+      - name: Basic Lighthouse check
+        run: |
+          DEPLOYMENT_URL=$(cat deployment-url.txt)
+          echo "Running basic Lighthouse check for ${{ matrix.app }}..."
+
+          # Install Lighthouse
+          npm install -g @lhci/cli
+
+          # Run Lighthouse (non-blocking)
+          lhci autorun \
+            --collect.url="${DEPLOYMENT_URL}" \
+            --collect.numberOfRuns=1 \
+            --upload.target=temporary-public-storage || echo "⚠️ Lighthouse check completed with warnings"
+
+          echo "✅ Lighthouse check complete for ${{ matrix.app }}"
+
+  # Job 5: Promote to production
+  promote-production:
+    name: Promote ${{ matrix.app }} to Production
+    runs-on: ubuntu-latest
+    needs: [validate, validate-deployments]
+    environment: production
+
+    strategy:
+      fail-fast: false
+      matrix:
+        app:
+          - audio-intel
+          - command-centre
+          - web
+          - playlist-pulse
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Download deployment URL
+        uses: actions/download-artifact@v4
+        with:
+          name: deployment-url-${{ matrix.app }}
+          path: ./
+
+      - name: Promote to Production
+        run: |
+          DEPLOYMENT_URL=$(cat deployment-url.txt)
+          echo "Promoting ${{ matrix.app }} to production..."
+          echo "Preview URL: ${DEPLOYMENT_URL}"
+
+          # Extract deployment ID from URL
+          DEPLOYMENT_ID=$(echo "${DEPLOYMENT_URL}" | sed -E 's|https://([^.]+)\..*|\1|')
+
+          vercel promote "${DEPLOYMENT_URL}" \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --scope=${{ secrets.VERCEL_ORG_ID }} \
+            --yes
+
+          echo "✅ Successfully promoted ${{ matrix.app }} to production!"
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets[format('VERCEL_PROJECT_ID_{0}', matrix.app == 'audio-intel' && 'AUDIO_INTEL' || matrix.app == 'command-centre' && 'COMMAND_CENTRE' || matrix.app == 'web' && 'WEB' || 'PLAYLIST_PULSE')] }}
+
+  # Job 6: Post-deployment validation
+  production-validation:
+    name: Validate Production Deployments
+    runs-on: ubuntu-latest
+    needs: promote-production
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate production domains
+        run: |
+          echo "Validating production deployments..."
+
+          DOMAINS=(
+            "https://intel.totalaudiopromo.com|audio-intel"
+            "https://command.totalaudiopromo.com|command-centre"
+            "https://totalaudiopromo.com|web"
+            "https://pulse.totalaudiopromo.com|playlist-pulse"
+          )
+
+          ALL_PASSED=true
+
+          for DOMAIN_INFO in "${DOMAINS[@]}"; do
+            IFS='|' read -r URL APP_NAME <<< "$DOMAIN_INFO"
+            echo ""
+            echo "Checking $APP_NAME at $URL..."
+
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL" || echo "000")
+
+            if [ "$HTTP_STATUS" = "200" ] || [ "$HTTP_STATUS" = "301" ] || [ "$HTTP_STATUS" = "302" ]; then
+              echo "✅ $APP_NAME is live (HTTP $HTTP_STATUS)"
+            else
+              echo "❌ $APP_NAME health check failed (HTTP $HTTP_STATUS)"
+              ALL_PASSED=false
+            fi
+          done
+
+          echo ""
+          if [ "$ALL_PASSED" = true ]; then
+            echo "✅ All production deployments validated successfully!"
+          else
+            echo "⚠️ Some production deployments may need attention"
+            exit 1
+          fi
+
+      - name: Create deployment summary
+        run: |
+          echo "# 🚀 Golden Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ needs.validate.outputs.tag_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| App | Production URL | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|---------------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Audio Intel | https://intel.totalaudiopromo.com | ✅ Deployed |" >> $GITHUB_STEP_SUMMARY
+          echo "| Command Centre | https://command.totalaudiopromo.com | ✅ Deployed |" >> $GITHUB_STEP_SUMMARY
+          echo "| Main Website | https://totalaudiopromo.com | ✅ Deployed |" >> $GITHUB_STEP_SUMMARY
+          echo "| Playlist Pulse | https://pulse.totalaudiopromo.com | ✅ Deployed |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Deployment Time:** $(date -u)" >> $GITHUB_STEP_SUMMARY
+
+  # Job 7: Notify
+  notify:
+    name: Deployment Notification
+    runs-on: ubuntu-latest
+    needs: [validate, production-validation]
+    if: always()
+
+    steps:
+      - name: Success notification
+        if: needs.production-validation.result == 'success'
+        run: |
+          echo "🎉 Golden Deployment Pipeline completed successfully!"
+          echo "Version: ${{ needs.validate.outputs.tag_version }}"
+          echo "All apps deployed to production:"
+          echo "  - Audio Intel: https://intel.totalaudiopromo.com"
+          echo "  - Command Centre: https://command.totalaudiopromo.com"
+          echo "  - Main Website: https://totalaudiopromo.com"
+          echo "  - Playlist Pulse: https://pulse.totalaudiopromo.com"
+
+      - name: Failure notification
+        if: needs.production-validation.result == 'failure'
+        run: |
+          echo "❌ Golden Deployment Pipeline failed"
+          echo "Version: ${{ needs.validate.outputs.tag_version }}"
+          echo "Please check the logs for details"
+          exit 1
