@@ -41,15 +41,14 @@ Add Jeremy to your ConvertKit list with tag: `beta-user`
 
 **Access:**
 - Audio Intel: https://intel.totalaudiopromo.com
-- Command Centre: https://command.totalaudiopromo.com
-- Pitch Generator: [URL TBD]
+- Campaign Tracker: https://tracker.totalaudiopromo.com
+- Pitch Generator: https://pitch.totalaudiopromo.com
 
 **Features:**
 - ✅ Unlimited contact enrichment
 - ✅ Unlimited pitch generation
+- ✅ Campaign tracking & analytics
 - ✅ CSV/Excel exports
-- ✅ Campaign tracking
-- ✅ Real-time analytics
 
 ---
 
@@ -97,14 +96,14 @@ Should return:
 
 ## Tracking Jeremy's Usage
 
-View in Command Centre:
+Once tracker is deployed, view Jeremy's usage at:
 ```
-https://command.totalaudiopromo.com/beta-tracking
+https://tracker.totalaudiopromo.com/admin/beta-users
 ```
 
-Or query API:
+Or query the beta tracking API:
 ```bash
-curl https://command.totalaudiopromo.com/api/beta-tracker
+curl https://tracker.totalaudiopromo.com/api/beta-tracker
 ```
 
 ---
@@ -128,6 +127,18 @@ curl https://command.totalaudiopromo.com/api/beta-tracker
 5. ✅ Follow up after 7 days if no activity
 6. ✅ Request feedback after 30 days
 7. ✅ Conversion offer 7 days before expiry
+
+---
+
+## App Deployment Status
+
+| App | URL | Status |
+|-----|-----|--------|
+| Audio Intel | intel.totalaudiopromo.com | ✅ DEPLOYED |
+| Campaign Tracker | tracker.totalaudiopromo.com | ⏳ TO BE DEPLOYED |
+| Pitch Generator | pitch.totalaudiopromo.com | ⏳ TO BE DEPLOYED |
+
+**Note:** Jeremy can log in to Audio Intel immediately. Tracker and Pitch Generator will use the same authentication when deployed.
 
 ---
 

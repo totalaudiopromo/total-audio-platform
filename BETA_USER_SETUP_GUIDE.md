@@ -13,9 +13,9 @@ This guide provides step-by-step instructions to set up beta access for Jeremy G
 - **Database**: PostgreSQL with Prisma ORM
 - **Backend**: Express API (`apps/api`)
 - **Apps**:
-  - Audio Intel (intel.totalaudiopromo.com)
-  - Command Centre (command.totalaudiopromo.com)
-  - Voice Echo / Pitch Generator (deployment TBD)
+  - Audio Intel (intel.totalaudiopromo.com) - Contact enrichment
+  - Campaign Tracker (tracker.totalaudiopromo.com) - Campaign management
+  - Pitch Generator (pitch.totalaudiopromo.com) - AI pitch writing
 
 ### User Model Structure
 ```typescript
@@ -43,8 +43,9 @@ Subscription {
 2. Backend API validates credentials against PostgreSQL
 3. JWT token issued with 24-hour expiry
 4. Token includes: userId, email, role, agencyId
-5. Apps validate token on each request
-6. Subscription status checked at login
+5. Token valid across all three apps (single sign-on)
+6. Apps validate token on each request
+7. Subscription status checked at login
 
 ---
 
@@ -234,38 +235,44 @@ npx ts-node scripts/send-welcome-email.ts info@streamer.co.uk
 ## 🌐 App Access Configuration
 
 ### Audio Intel (intel.totalaudiopromo.com)
+- **Status:** ✅ DEPLOYED & READY
 - **Feature Access:**
   - ✅ Unlimited contact enrichment during beta
   - ✅ CSV/Excel export functionality
   - ✅ AI-powered contact intelligence
   - ✅ Batch processing
-  - ✅ API access (if needed)
+  - ✅ Multi-platform search (Reddit, Instagram, Spotify, etc.)
+  - ✅ Email validation
 
-### Command Centre (command.totalaudiopromo.com)
+### Campaign Tracker (tracker.totalaudiopromo.com)
+- **Status:** ⏳ TO BE DEPLOYED
 - **Feature Access:**
-  - ✅ Campaign tracking dashboard
+  - ✅ Campaign creation & management
+  - ✅ Contact tracking
   - ✅ Real-time analytics
-  - ✅ Beta user monitoring
-  - ✅ Multi-app coordination
-  - ✅ Usage statistics
+  - ✅ Progress monitoring
+  - ✅ ROI tracking
+  - ✅ Export & reporting
 
-### Voice Echo / Pitch Generator
-- **Status:** Deployment TBD
+### Pitch Generator (pitch.totalaudiopromo.com)
+- **Status:** ⏳ TO BE DEPLOYED
 - **Feature Access:**
-  - ✅ Unlimited pitch generation
+  - ✅ AI-powered pitch generation
   - ✅ Custom voice profiles
   - ✅ Template library
-  - ✅ Batch mode
+  - ✅ Batch pitch creation
+  - ✅ Contact personalization
+  - ✅ Style customization
 
-**Note:** All apps share the same authentication. Jeremy logs in once and can access all three apps seamlessly.
+**Note:** All apps share the same authentication. Jeremy logs in once at any app and can access all three seamlessly via single sign-on (SSO).
 
 ---
 
 ## 📊 Beta User Tracking
 
-### Automatic Tracking (Already Configured)
+### Automatic Tracking (To Be Configured in Tracker App)
 
-The Command Centre app already has beta tracking endpoints:
+Once the Campaign Tracker is deployed, it will have beta tracking endpoints:
 - `GET /api/beta-tracker` - View all beta users
 - `POST /api/beta-tracker` - Log user activity
 
@@ -273,6 +280,8 @@ The Command Centre app already has beta tracking endpoints:
 - ✅ Login/logout events
 - ✅ Features used
 - ✅ Contacts enriched
+- ✅ Pitches generated
+- ✅ Campaigns created
 - ✅ Exports generated
 - ✅ Time spent in apps
 - ✅ Last seen timestamp
@@ -280,11 +289,11 @@ The Command Centre app already has beta tracking endpoints:
 ### Viewing Jeremy's Usage
 
 ```bash
-# Option 1: View in Command Centre dashboard
-# Navigate to: https://command.totalaudiopromo.com/beta-tracking
+# Option 1: View in Campaign Tracker dashboard (once deployed)
+# Navigate to: https://tracker.totalaudiopromo.com/admin/beta-users
 
 # Option 2: Query API directly
-curl https://command.totalaudiopromo.com/api/beta-tracker
+curl https://tracker.totalaudiopromo.com/api/beta-tracker
 ```
 
 ---
@@ -595,8 +604,12 @@ const NEW_BETA_USER: BetaUserData = {
 
 ## Quick Reference
 
-**Login URL:** https://intel.totalaudiopromo.com (or command.totalaudiopromo.com)
+**Login URLs:**
+- Audio Intel: https://intel.totalaudiopromo.com
+- Campaign Tracker: https://tracker.totalaudiopromo.com (once deployed)
+- Pitch Generator: https://pitch.totalaudiopromo.com (once deployed)
+
 **Email:** info@streamer.co.uk
-**Password:** Streamer2024!BetaAccess
+**Password:** Streamer2024!BetaAccess (must change on first login)
 **Beta Expires:** 60 days from setup date
 **Support:** chris@totalaudiopromo.com

@@ -59,43 +59,52 @@ async function sendWelcomeEmail(userData: WelcomeEmailData) {
               <h3 style="color: #2538c7; margin-top: 0;">🎯 Audio Intel</h3>
               <p style="font-size: 14px; margin-bottom: 10px;">
                 <strong>URL:</strong> <a href="https://intel.totalaudiopromo.com" style="color: #f6ab00;">intel.totalaudiopromo.com</a>
+                <span style="background: #28a745; color: white; padding: 2px 8px; border-radius: 3px; font-size: 11px; margin-left: 8px;">LIVE NOW</span>
               </p>
               <p style="font-size: 14px; line-height: 1.6; color: #555;">
                 Instantly enrich music industry contacts with AI-powered insights. Get submission guidelines, contact preferences, and pitch-ready intelligence.
               </p>
               <ul style="font-size: 14px; line-height: 1.8; color: #555;">
                 <li>✅ Unlimited contact enrichment during beta</li>
+                <li>✅ Multi-platform search (Reddit, Instagram, Spotify, etc.)</li>
                 <li>✅ CSV/Excel export functionality</li>
-                <li>✅ AI-powered contact intelligence</li>
+                <li>✅ Email validation</li>
               </ul>
             </div>
 
-            <!-- Command Centre Section -->
+            <!-- Campaign Tracker Section -->
             <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin: 25px 0; border-left: 4px solid #2538c7;">
-              <h3 style="color: #2538c7; margin-top: 0;">🎛️ Command Centre</h3>
+              <h3 style="color: #2538c7; margin-top: 0;">📊 Campaign Tracker</h3>
               <p style="font-size: 14px; margin-bottom: 10px;">
-                <strong>URL:</strong> <a href="https://command.totalaudiopromo.com" style="color: #f6ab00;">command.totalaudiopromo.com</a>
+                <strong>URL:</strong> <a href="https://tracker.totalaudiopromo.com" style="color: #f6ab00;">tracker.totalaudiopromo.com</a>
+                <span style="background: #ffc107; color: #333; padding: 2px 8px; border-radius: 3px; font-size: 11px; margin-left: 8px;">COMING SOON</span>
               </p>
               <p style="font-size: 14px; line-height: 1.6; color: #555;">
-                Your central dashboard for campaign management and analytics.
+                Manage your music promotion campaigns from start to finish with real-time tracking and analytics.
               </p>
               <ul style="font-size: 14px; line-height: 1.8; color: #555;">
-                <li>✅ Campaign tracking</li>
-                <li>✅ Real-time analytics</li>
-                <li>✅ Multi-tool coordination</li>
+                <li>✅ Campaign creation & management</li>
+                <li>✅ Contact tracking & outreach history</li>
+                <li>✅ Real-time analytics & ROI tracking</li>
+                <li>✅ Progress monitoring</li>
               </ul>
             </div>
 
-            <!-- Voice Echo Section -->
+            <!-- Pitch Generator Section -->
             <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin: 25px 0; border-left: 4px solid #28a745;">
-              <h3 style="color: #2538c7; margin-top: 0;">🎙️ Pitch Generator (Voice Echo)</h3>
+              <h3 style="color: #2538c7; margin-top: 0;">✍️ Pitch Generator</h3>
+              <p style="font-size: 14px; margin-bottom: 10px;">
+                <strong>URL:</strong> <a href="https://pitch.totalaudiopromo.com" style="color: #f6ab00;">pitch.totalaudiopromo.com</a>
+                <span style="background: #ffc107; color: #333; padding: 2px 8px; border-radius: 3px; font-size: 11px; margin-left: 8px;">COMING SOON</span>
+              </p>
               <p style="font-size: 14px; line-height: 1.6; color: #555;">
-                AI-powered pitch writing with your unique voice and style.
+                AI-powered pitch writing with your unique voice and style. Create personalized outreach messages in seconds.
               </p>
               <ul style="font-size: 14px; line-height: 1.8; color: #555;">
                 <li>✅ Unlimited pitch generation</li>
                 <li>✅ Custom voice profiles</li>
                 <li>✅ Template library</li>
+                <li>✅ Batch pitch creation</li>
               </ul>
             </div>
 
@@ -130,8 +139,8 @@ async function sendWelcomeEmail(userData: WelcomeEmailData) {
                 <li>Log in to <a href="https://intel.totalaudiopromo.com" style="color: #155724; text-decoration: underline;">Audio Intel</a> with your credentials</li>
                 <li>Upload your contact list (CSV or Excel)</li>
                 <li>Let the AI enrich your contacts with submission guidelines</li>
-                <li>Use the Pitch Generator to create personalized outreach</li>
-                <li>Track everything in Command Centre</li>
+                <li>Once live: Use the Pitch Generator to create personalized outreach</li>
+                <li>Once live: Track your campaigns in the Campaign Tracker</li>
               </ol>
               <p style="font-size: 13px; color: #155724; margin-top: 15px;">
                 <strong>Pro Tip:</strong> Start with Audio Intel. Upload your Spotify playlist curator list and watch the magic happen. You'll get detailed submission guidelines for each curator in seconds - something that normally takes hours of manual research.
