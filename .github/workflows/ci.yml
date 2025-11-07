@@ -130,7 +130,7 @@ jobs:
       - name: Check for dependency vulnerabilities
         run: |
           pnpm audit --audit-level=critical --json > audit-results.json 2>&1 || true
-          if grep -q '"vulnerabilities"' audit-results.json && ! grep -q '"critical":0' audit-results.json; then
+          if grep -q '"vulnerabilities"' audit-results.json && ! grep -qE '"critical":\s*0' audit-results.json; then
             echo "⚠️ Critical vulnerabilities detected"
             cat audit-results.json
             exit 1
