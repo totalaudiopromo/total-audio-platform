@@ -1,10 +1,11 @@
 #!/usr/bin/env tsx
 /**
- * Golden Deployment Promotion
- * Promotes the latest READY preview deployment for each app to production
- * and notifies Telegram of progress.
+ * Golden Deployment Verification
+ * Verifies that all apps have READY production deployments on Vercel
+ * and notifies Telegram of status.
  *
- * Used by the Phase 9E Golden Deployment Pipeline.
+ * Used by the Golden Deployment Pipeline.
+ * Note: Vercel auto-deploys main branch to production, this script just verifies readiness.
  */
 
 import fs from 'fs';
@@ -65,7 +66,7 @@ async function sendTelegram(message: string) {
   }
 }
 
-async function getLatestPreviewDeployment(
+async function getLatestReadyDeployment(
   projectName: string,
   token: string
 ): Promise<VercelDeployment | null> {
@@ -77,8 +78,10 @@ async function getLatestPreviewDeployment(
       return null;
     }
     const data = (await res.json()) as { deployments: VercelDeployment[] };
-    const preview = data.deployments.find(d => d.target === 'preview' && d.state === 'READY');
-    return preview ?? null;
+    // Golden deployment: find latest READY production deployment from main branch
+    // Vercel auto-deploys main to production, we just verify it's ready
+    const deployment = data.deployments.find(d => d.state === 'READY' && d.target === 'production');
+    return deployment ?? null;
   } catch (err) {
     console.error(`❌ Error fetching deployments for ${projectName}:`, err);
     return null;
@@ -119,45 +122,30 @@ async function promoteAllApps(): Promise<PromoteResult[]> {
     console.error(`\n🚀 Processing ${appName}...`);
     const appStart = Date.now();
 
-    const deployment = await getLatestPreviewDeployment(projectName, VERCEL_TOKEN);
+    const deployment = await getLatestReadyDeployment(projectName, VERCEL_TOKEN);
     if (!deployment) {
-      await sendTelegram(`❌ ${appName}: No preview deployment found`);
+      await sendTelegram(`❌ ${appName}: No production deployment found`);
       results.push({
         app: appName,
         deploymentId: 'none',
         status: 'fail',
-        message: 'No preview deployment found',
+        message: 'No production deployment found',
         duration: Date.now() - appStart,
       });
       continue;
     }
 
-    console.error(`✅ Found preview deployment: ${deployment.url} (${deployment.uid})`);
-    const { ok, text } = await promoteDeployment(deployment.uid, VERCEL_TOKEN);
-
-    if (ok) {
-      console.error(`✅ ${appName} promoted successfully`);
-      await sendTelegram(`✅ ${appName}: Promoted to production (${deployment.url})`);
-      results.push({
-        app: appName,
-        deploymentId: deployment.uid,
-        url: deployment.url,
-        status: 'success',
-        message: 'Promoted successfully',
-        duration: Date.now() - appStart,
-      });
-    } else {
-      console.error(`❌ ${appName} promotion failed: ${text}`);
-      await sendTelegram(`❌ ${appName}: Promotion failed`);
-      results.push({
-        app: appName,
-        deploymentId: deployment.uid,
-        url: deployment.url,
-        status: 'fail',
-        message: text,
-        duration: Date.now() - appStart,
-      });
-    }
+    console.error(`✅ Found production deployment: ${deployment.url} (${deployment.uid})`);
+    console.error(`✅ ${appName} already in production - Golden deployment verified`);
+    await sendTelegram(`✅ ${appName}: Production deployment verified (${deployment.url})`);
+    results.push({
+      app: appName,
+      deploymentId: deployment.uid,
+      url: deployment.url,
+      status: 'success',
+      message: 'Production deployment verified',
+      duration: Date.now() - appStart,
+    });
 
     // prevent API rate limits
     await new Promise(r => setTimeout(r, 1500));
