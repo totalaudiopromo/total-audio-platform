@@ -5,15 +5,17 @@
 **Problem**: The promote step in `golden-deploy.yml` is MISSING the other 4 Vercel project IDs!
 
 Current state (WRONG):
+
 ```yaml
 env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}  # ❌ ONLY audio-intel!
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }} # ❌ ONLY audio-intel!
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 ```
 
 Required state (CORRECT):
+
 ```yaml
 env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -225,6 +227,7 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 ## Quick Checklist
 
 ### GitHub Secrets ✅
+
 - [ ] NEXT_PUBLIC_SUPABASE_URL
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY
 - [ ] SUPABASE_SERVICE_ROLE_KEY
@@ -239,6 +242,7 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 - [ ] TELEGRAM_CHAT_ID (optional)
 
 ### Vercel: audio-intel ✅
+
 - [ ] NEXT_PUBLIC_SUPABASE_URL (all 3 environments)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (all 3 environments)
 - [ ] SUPABASE_SERVICE_ROLE_KEY (all 3 environments)
@@ -249,6 +253,7 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 - [ ] NEXT_PUBLIC_BASE_URL
 
 ### Vercel: tracker ✅
+
 - [ ] NEXT_PUBLIC_SUPABASE_URL (all 3 environments)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (all 3 environments)
 - [ ] SUPABASE_SERVICE_ROLE_KEY (all 3 environments)
@@ -257,6 +262,7 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 - [ ] Google OAuth vars (if using integrations)
 
 ### Vercel: pitch-generator ✅
+
 - [ ] NEXT_PUBLIC_SUPABASE_URL (all 3 environments)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (all 3 environments)
 - [ ] SUPABASE_SERVICE_ROLE_KEY (all 3 environments)
@@ -266,12 +272,14 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 - [ ] NEXT_PUBLIC_BASE_URL
 
 ### Vercel: command-centre ✅
+
 - [ ] NEXT_PUBLIC_SUPABASE_URL (all 3 environments)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (all 3 environments)
 - [ ] SUPABASE_SERVICE_ROLE_KEY (all 3 environments)
 - [ ] Social media API tokens (BlueSky, LinkedIn, etc.)
 
 ### Vercel: web ✅
+
 - [ ] NEXT_PUBLIC_SUPABASE_URL (all 3 environments)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (all 3 environments)
 - [ ] SUPABASE_SERVICE_ROLE_KEY (all 3 environments)
@@ -287,17 +295,17 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 2. ❌ **Only checking "Production" environment in Vercel**
    - ✅ Check Production, Preview, AND Development for all Supabase vars
 
-3. ❌ **Missing VERCEL_PROJECT_ID_* secrets in GitHub**
+3. ❌ **Missing VERCEL*PROJECT_ID*\* secrets in GitHub**
    - ✅ Add all 5 project IDs to GitHub Secrets
 
 4. ❌ **Forgetting to update golden-deploy.yml promote step**
-   - ✅ Pass all 5 VERCEL_PROJECT_ID_* vars to promotion script
+   - ✅ Pass all 5 VERCEL*PROJECT_ID*\* vars to promotion script
 
 ---
 
 ## Next Steps
 
-1. **Fix golden-deploy.yml** - Add missing VERCEL_PROJECT_ID_* vars to promote step
+1. **Fix golden-deploy.yml** - Add missing VERCEL*PROJECT_ID*\* vars to promote step
 2. **Verify GitHub Secrets** - Check all 12 secrets are present
 3. **Verify Vercel Projects** - Each of 5 projects has Supabase vars in all 3 environments
 4. **Deploy** - Create new v2.5.4-golden tag to test
