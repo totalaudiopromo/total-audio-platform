@@ -205,7 +205,9 @@ export async function GET() {
     ];
 
     console.log(
-      `[${currentDate.toISOString()}] Serving competitor analysis for ${competitors.length} competitors`
+      `[${currentDate.toISOString()}] Serving competitor analysis for ${
+        competitors.length
+      } competitors`
     );
 
     return NextResponse.json({

@@ -50,9 +50,12 @@ bash ../../scripts/organize-docs-from-anywhere.sh --dry-run  # adjust ../ as nee
 
 ```css
 .glass-panel      /* Main card container */
+/* Main card container */
+/* Main card container */
+/* Main card container */
 .cta-button       /* Primary action button */
 .subtle-button    /* Secondary button */
-.badge-postcraft  /* Status badge */
+.badge-postcraft; /* Status badge */
 ```
 
 ### Design Rules

@@ -10,11 +10,13 @@
 ### **Current Functionality** (What Works Right Now):
 
 1. **Load Demo Data Button**:
+
    - Instantly loads 5 pre-enriched BBC/Spotify contacts
    - Shows: Name, Email, Company, Role, Intelligence, Confidence
    - **This is your BEST demo option** - instant results, looks professional
 
 2. **CSV Upload + Enrichment**:
+
    - Upload CSV with contacts (must have `Email` column)
    - Enriches existing contacts by analyzing email domains
    - Adds: Company (from email domain), Role (suggested), Intelligence notes, Confidence rating

@@ -467,7 +467,9 @@ Provide enhanced brief with suggestions in JSON format.
     if (options.campaignType) {
       const template = this.briefTemplates[options.campaignType];
       if (template) {
-        prompt += `\n\nThis is a ${options.campaignType} campaign. Focus on extracting: ${template.requiredFields.join(', ')}.`;
+        prompt += `\n\nThis is a ${
+          options.campaignType
+        } campaign. Focus on extracting: ${template.requiredFields.join(', ')}.`;
       }
     }
 

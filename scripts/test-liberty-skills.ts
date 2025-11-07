@@ -74,7 +74,9 @@ async function testStationMatcher() {
     result.station_recommendations.slice(0, 5).forEach((station, index) => {
       console.log(`${index + 1}. ${station.station_name} (${station.station_type})`);
       console.log(
-        `   Priority: ${station.priority} | Genre Fit: ${(station.genre_fit * 100).toFixed(0)}% | Success: ${station.success_likelihood}`
+        `   Priority: ${station.priority} | Genre Fit: ${(station.genre_fit * 100).toFixed(
+          0
+        )}% | Success: ${station.success_likelihood}`
       );
       console.log(`   Reasoning: ${station.reasoning}`);
       if (station.specific_shows.length > 0) {
@@ -149,7 +151,9 @@ async function testEmailPersonalisation(stationRecommendations: any[]) {
 
     console.log('📊 Personalisation Score:');
     console.log(
-      `  ${(result.personalisation_score * 100).toFixed(0)}% (${result.estimated_response_rate} response likelihood)\n`
+      `  ${(result.personalisation_score * 100).toFixed(0)}% (${
+        result.estimated_response_rate
+      } response likelihood)\n`
     );
 
     console.log('📧 Generated Email:\n');
@@ -203,7 +207,9 @@ async function testEmailPersonalisation(stationRecommendations: any[]) {
     console.log(`  Generated ${batchEmails.length} emails in ${batchDuration}ms\n`);
     batchEmails.forEach((email, index) => {
       console.log(
-        `  ${index + 1}. ${email.station} (${(email.email.personalisation_score * 100).toFixed(0)}% personalised)`
+        `  ${index + 1}. ${email.station} (${(email.email.personalisation_score * 100).toFixed(
+          0
+        )}% personalised)`
       );
       console.log(`     Subject: ${email.email.email_draft.subject}`);
     });
@@ -256,7 +262,9 @@ async function testVoiceGuardIntegration() {
 
     console.log('📊 Voice Compliance:');
     console.log(
-      `  Score: ${(result.voice_compliance * 100).toFixed(0)}% (${result.voice_corrections} corrections made)\n`
+      `  Score: ${(result.voice_compliance * 100).toFixed(0)}% (${
+        result.voice_corrections
+      } corrections made)\n`
     );
 
     console.log('📧 Voice-Validated Email:\n');

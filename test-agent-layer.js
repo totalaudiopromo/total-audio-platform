@@ -45,7 +45,9 @@ async function testAgentLayer() {
     const { AgentRegistry } = require('./apps/audio-intel/agents/core/AgentRegistry.ts');
     const health = await AgentRegistry.healthCheck();
     console.log(
-      `   ${health.healthy ? '✅' : '❌'} System health: ${health.healthy ? 'Healthy' : 'Unhealthy'}`
+      `   ${health.healthy ? '✅' : '❌'} System health: ${
+        health.healthy ? 'Healthy' : 'Unhealthy'
+      }`
     );
   } catch (error) {
     console.log(`   ❌ Health check error: ${error.message}`);

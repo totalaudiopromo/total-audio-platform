@@ -290,7 +290,9 @@ export class AirtableService implements IAirtableService {
       return schema.parse(data);
     } catch (parseError) {
       throw new Error(
-        `Failed to parse API response: ${parseError instanceof Error ? parseError.message : String(parseError)}`
+        `Failed to parse API response: ${
+          parseError instanceof Error ? parseError.message : String(parseError)
+        }`
       );
     }
   }

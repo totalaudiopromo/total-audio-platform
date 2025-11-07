@@ -48,7 +48,9 @@ export async function GET(request: NextRequest) {
     } else {
       return NextResponse.redirect(
         new URL(
-          `/dashboard/integrations?error=${encodeURIComponent(result.error || 'connection_failed')}`,
+          `/dashboard/integrations?error=${encodeURIComponent(
+            result.error || 'connection_failed'
+          )}`,
           request.url
         )
       );

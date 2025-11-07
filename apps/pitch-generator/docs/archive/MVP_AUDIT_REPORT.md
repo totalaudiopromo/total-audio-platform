@@ -87,14 +87,16 @@
 ```typescript
 <section className="glass-panel px-6 py-10 sm:px-10">
   <div className="text-center">
-    <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500">Built by Industry Professionals</p>
+    <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500">
+      Built by Industry Professionals
+    </p>
     <h2 className="mt-4 text-3xl font-semibold">
       Real pitches that got results at BBC Radio 1, Amazing Radio, and Spotify playlists
     </h2>
     <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-      Created by Chris Schofield – 5+ years as a radio promoter, producer (sadact),
-      and connections to Royal Blood, Architects, and Rolo Tomassi campaigns.
-      These templates are based on pitches that actually worked in the real world.
+      Created by Chris Schofield – 5+ years as a radio promoter, producer (sadact), and connections
+      to Royal Blood, Architects, and Rolo Tomassi campaigns. These templates are based on pitches
+      that actually worked in the real world.
     </p>
   </div>
 </section>
@@ -117,8 +119,8 @@
 ```typescript
 // LINE 161-163
 <p className="mt-2 max-w-xl text-sm text-gray-600">
-  Join radio promoters, independent artists, and PR agencies saving 5+ hours per campaign.
-  Start generating professional pitches in minutes.
+  Join radio promoters, independent artists, and PR agencies saving 5+ hours per campaign. Start
+  generating professional pitches in minutes.
 </p>
 ```
 
@@ -393,11 +395,7 @@ Add to **`app/layout.tsx`** (inside `<head>`):
 import Script from 'next/script';
 
 // Inside <html> tag:
-<Script
-  defer
-  data-domain="pitches.totalaudiopromo.com"
-  src="https://plausible.io/js/script.js"
-/>
+<Script defer data-domain="pitches.totalaudiopromo.com" src="https://plausible.io/js/script.js" />;
 ```
 
 **Track custom events**:
@@ -504,9 +502,7 @@ export default function DashboardPage() {
                 <Sparkles className="h-6 w-6 text-purple-600" />
               </div>
               <h3 className="mt-4 font-semibold">2. Generate Your First Pitch</h3>
-              <p className="mt-2 text-sm text-gray-600">
-                Choose a template and let AI do the work
-              </p>
+              <p className="mt-2 text-sm text-gray-600">Choose a template and let AI do the work</p>
               <Link href="/pitch" className="cta-button mt-4 w-full justify-center">
                 Create pitch →
               </Link>
@@ -518,9 +514,7 @@ export default function DashboardPage() {
                 <FileText className="h-6 w-6 text-green-600" />
               </div>
               <h3 className="mt-4 font-semibold">3. Copy & Send</h3>
-              <p className="mt-2 text-sm text-gray-600">
-                One-click copy to your email client
-              </p>
+              <p className="mt-2 text-sm text-gray-600">One-click copy to your email client</p>
               <button disabled className="subtle-button mt-4 w-full justify-center opacity-50">
                 Generate a pitch first
               </button>
@@ -531,18 +525,32 @@ export default function DashboardPage() {
           <div className="mt-8 glass-panel bg-gray-50 px-6 py-6">
             <h3 className="font-semibold">Example Pitch (BBC Radio 1 template):</h3>
             <div className="mt-4 rounded-lg border border-gray-200 bg-white p-4 text-sm">
-              <p className="font-medium">Subject: New track from [Artist] - perfect for late-night rotation</p>
+              <p className="font-medium">
+                Subject: New track from [Artist] - perfect for late-night rotation
+              </p>
               <p className="mt-3 text-gray-700">
-                Hi [DJ Name],<br/><br/>
-                Hope you're well! I wanted to share [Artist]'s new track "[Track Name]" -
-                it's got that late-night vibe I know your listeners love.<br/><br/>
-                Quick context: [Artist] has been building momentum with 50k+ Spotify streams
-                and support from Amazing Radio. This track fits perfectly with what you played
-                last week (loved that [Similar Artist] spin!).<br/><br/>
-                Stream here: [link]<br/>
-                Downloads: [link]<br/><br/>
-                Let me know if you'd like more info!<br/><br/>
-                Cheers,<br/>
+                Hi [DJ Name],
+                <br />
+                <br />
+                Hope you're well! I wanted to share [Artist]'s new track "[Track Name]" - it's got that
+                late-night vibe I know your listeners love.
+                <br />
+                <br />
+                Quick context: [Artist] has been building momentum with 50k+ Spotify streams and
+                support from Amazing Radio. This track fits perfectly with what you played last week
+                (loved that [Similar Artist] spin!).
+                <br />
+                <br />
+                Stream here: [link]
+                <br />
+                Downloads: [link]
+                <br />
+                <br />
+                Let me know if you'd like more info!
+                <br />
+                <br />
+                Cheers,
+                <br />
                 [Your Name]
               </p>
             </div>
@@ -559,9 +567,7 @@ export default function DashboardPage() {
   return (
     <div className="mx-auto max-w-6xl">
       <h1 className="text-3xl font-bold">Dashboard</h1>
-      <p className="mt-2 text-gray-600">
-        You've generated {pitchCount} pitches. Keep going!
-      </p>
+      <p className="mt-2 text-gray-600">You've generated {pitchCount} pitches. Keep going!</p>
       {/* Stats, recent pitches, quick actions */}
     </div>
   );
@@ -620,20 +626,24 @@ export default function DashboardPage() {
 ### 🔴 CRITICAL (Must fix before launch)
 
 1. **Rewrite pricing page copy** (30 min)
+
    - Remove template boilerplate
    - Add pitch-specific features
    - Show value vs time saved
 
 2. **Add complete SEO metadata** (45 min)
+
    - Create `metadata.ts` with OpenGraph + Twitter Cards
    - Generate OG image (1200x630px)
    - Create favicon set
 
 3. **Fix "free trial" inconsistency** (15 min)
+
    - Option A: Remove mention from homepage
    - Option B: Implement FREE tier (10 pitches/month)
 
 4. **Add founder credibility to homepage** (20 min)
+
    - Replace "500+ campaigns" with Chris's BBC Radio 1 story
    - Add "Built by radio promoters" credibility
 
@@ -644,19 +654,23 @@ export default function DashboardPage() {
 ### 🟡 HIGH PRIORITY (Launch week)
 
 6. **Create onboarding dashboard** (2 hours)
+
    - Welcome screen for new users
    - 3-step quick start guide
    - Example pitch preview
 
 7. **Add example pitch screenshot to homepage** (30 min)
+
    - Show real AI-generated pitch output
    - Demonstrates quality immediately
 
 8. **Mobile UX testing** (1 hour)
+
    - Run Playwright mobile test suite
    - Fix any responsive design issues
 
 9. **Create OG image and favicon set** (1 hour)
+
    - Design 1200x630px social sharing image
    - Generate all required icon sizes
 

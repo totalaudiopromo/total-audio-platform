@@ -128,7 +128,7 @@ export function CampaignFilters({
           onChange={e => {
             const [sortBy, sortOrder] = e.target.value.split('-') as [
               FilterOptions['sortBy'],
-              FilterOptions['sortOrder'],
+              FilterOptions['sortOrder']
             ];
             setFilters(prev => ({ ...prev, sortBy, sortOrder }));
           }}

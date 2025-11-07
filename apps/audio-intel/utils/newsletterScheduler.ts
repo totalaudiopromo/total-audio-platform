@@ -28,7 +28,9 @@ export class NewsletterScheduler {
 
   async scheduleWeeklyNewsletter(): Promise<void> {
     console.log(
-      `📅 Scheduling weekly newsletter for ${this.getDayName(this.config.dayOfWeek)} at ${this.config.hour}:00 ${this.config.timezone}`
+      `📅 Scheduling weekly newsletter for ${this.getDayName(this.config.dayOfWeek)} at ${
+        this.config.hour
+      }:00 ${this.config.timezone}`
     );
 
     // In a real implementation, this would use a cron job or scheduled task

@@ -45,7 +45,9 @@ export function SelectableCampaignCard({
 
       {/* Campaign Card */}
       <div
-        className={`transition-all ${isSelectionMode ? 'pl-16' : ''} ${isSelected ? 'ring-4 ring-amber-500 ring-offset-4' : ''}`}
+        className={`transition-all ${isSelectionMode ? 'pl-16' : ''} ${
+          isSelected ? 'ring-4 ring-amber-500 ring-offset-4' : ''
+        }`}
       >
         <CampaignCardWithIntel
           campaign={campaign}

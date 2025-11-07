@@ -31,7 +31,9 @@ export default function Navbar() {
           <Link
             key={link.href}
             href={link.href}
-            className={`px-3 py-1 rounded-md font-semibold transition-colors duration-200 text-gray-700 hover:text-white hover:bg-campaign-${link.color} ${router.pathname === link.href ? `bg-campaign-${link.color} text-white` : ''}`}
+            className={`px-3 py-1 rounded-md font-semibold transition-colors duration-200 text-gray-700 hover:text-white hover:bg-campaign-${
+              link.color
+            } ${router.pathname === link.href ? `bg-campaign-${link.color} text-white` : ''}`}
           >
             {link.label}
           </Link>

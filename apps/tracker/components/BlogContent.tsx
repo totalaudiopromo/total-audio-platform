@@ -93,7 +93,9 @@ export default function BlogContent({ posts }: BlogContentProps) {
                   <div className="p-8 md:p-12">
                     <div className="flex items-center gap-3 mb-4">
                       <span
-                        className={`${getCategoryBadgeClasses(featuredPost.category)} px-3 py-1 rounded-full text-sm font-bold`}
+                        className={`${getCategoryBadgeClasses(
+                          featuredPost.category
+                        )} px-3 py-1 rounded-full text-sm font-bold`}
                       >
                         {featuredPost.category}
                       </span>
@@ -153,7 +155,9 @@ export default function BlogContent({ posts }: BlogContentProps) {
                       <div className="p-6">
                         <div className="flex items-center gap-2 mb-3">
                           <span
-                            className={`${getCategoryBadgeClasses(post.category)} px-2 py-1 rounded text-xs font-semibold`}
+                            className={`${getCategoryBadgeClasses(
+                              post.category
+                            )} px-2 py-1 rounded text-xs font-semibold`}
                           >
                             {post.category}
                           </span>

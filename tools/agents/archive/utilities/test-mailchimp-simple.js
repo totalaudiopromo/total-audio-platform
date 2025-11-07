@@ -60,7 +60,9 @@ async function testMailchimpSimple() {
           .sort(([, a], [, b]) => b - a)
           .slice(0, 5);
         console.log(
-          `   Top subject words: ${topWords.map(([word, count]) => `${word} (${count})`).join(', ')}`
+          `   Top subject words: ${topWords
+            .map(([word, count]) => `${word} (${count})`)
+            .join(', ')}`
         );
       }
 

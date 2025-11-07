@@ -170,11 +170,7 @@ interface AudioCharacterProps {
 }
 
 // Usage
-<AudioCharacter
-  tool="intel"
-  state="working"
-  size="md"
-/>
+<AudioCharacter tool="intel" state="working" size="md" />;
 ```
 
 ### API Design Patterns
@@ -197,11 +193,7 @@ export const appRouter = router({
 ```typescript
 // Consistent error handling
 export class APIError extends Error {
-  constructor(
-    message: string,
-    public statusCode: number,
-    public code?: string
-  ) {
+  constructor(message: string, public statusCode: number, public code?: string) {
     super(message);
     this.name = 'APIError';
   }

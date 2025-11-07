@@ -634,7 +634,14 @@ class TrendDetectionEngine {
 
     // Twitter thread brief
     briefs.push(
-      `TWITTER THREAD: "${newsItem.title}" + Chris's automation expertise angle. Hook: "While everyone's talking about ${newsItem.title.split(' ').slice(0, 3).join(' ')}, here's what this really means for indie artists..." Include personal experience and Audio Intel soft mention.`
+      `TWITTER THREAD: "${
+        newsItem.title
+      }" + Chris's automation expertise angle. Hook: "While everyone's talking about ${newsItem.title
+        .split(' ')
+        .slice(0, 3)
+        .join(
+          ' '
+        )}, here's what this really means for indie artists..." Include personal experience and Audio Intel soft mention.`
     );
 
     // LinkedIn article brief

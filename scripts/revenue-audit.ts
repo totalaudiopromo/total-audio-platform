@@ -320,13 +320,17 @@ async function crossValidate(
     issues.push({
       severity: 'HIGH',
       type: 'REVENUE_MISMATCH',
-      message: `Revenue discrepancy ${discrepancyPct.toFixed(2)}% (£${(discrepancy / 100).toFixed(2)})`,
+      message: `Revenue discrepancy ${discrepancyPct.toFixed(2)}% (£${(discrepancy / 100).toFixed(
+        2
+      )})`,
     });
   } else if (discrepancyPct > 1) {
     issues.push({
       severity: 'MEDIUM',
       type: 'REVENUE_MISMATCH',
-      message: `Minor revenue discrepancy ${discrepancyPct.toFixed(2)}% (£${(discrepancy / 100).toFixed(2)})`,
+      message: `Minor revenue discrepancy ${discrepancyPct.toFixed(2)}% (£${(
+        discrepancy / 100
+      ).toFixed(2)})`,
     });
   }
 
@@ -357,7 +361,9 @@ async function crossValidate(
     issues.push({
       severity: 'LOW',
       type: 'REFUNDS',
-      message: `${stripeData.refunds.count} refund(s) totaling £${(stripeData.refunds.total / 100).toFixed(2)}`,
+      message: `${stripeData.refunds.count} refund(s) totaling £${(
+        stripeData.refunds.total / 100
+      ).toFixed(2)}`,
       count: stripeData.refunds.count,
     });
   }
@@ -433,8 +439,14 @@ function formatReport(report: RevenueAuditReport): string {
 
 | Metric | Stripe | Database | Δ |
 |--------|--------|----------|---|
-| **Total Revenue** | £${(summary.stripeRevenue / 100).toFixed(2)} | £${(summary.databaseRevenue / 100).toFixed(2)} | £${(summary.discrepancy / 100).toFixed(2)} (${summary.discrepancyPercentage.toFixed(2)}%) |
-| **Payment Count** | ${stripe.paymentIntents.count + stripe.invoices.count} | ${database.payments.count} | ${Math.abs(stripe.paymentIntents.count + stripe.invoices.count - database.payments.count)} |
+| **Total Revenue** | £${(summary.stripeRevenue / 100).toFixed(2)} | £${(
+    summary.databaseRevenue / 100
+  ).toFixed(2)} | £${(summary.discrepancy / 100).toFixed(
+    2
+  )} (${summary.discrepancyPercentage.toFixed(2)}%) |
+| **Payment Count** | ${stripe.paymentIntents.count + stripe.invoices.count} | ${
+    database.payments.count
+  } | ${Math.abs(stripe.paymentIntents.count + stripe.invoices.count - database.payments.count)} |
 | **MRR** | £${(stripe.subscriptions.totalMRR / 100).toFixed(2)} | - | - |
 
 ---
@@ -500,7 +512,9 @@ ${recommendations.map(r => `- ${r}`).join('\n')}
 
 ## 📌 Next Audit
 
-**Recommended**: ${new Date(new Date().setMonth(new Date().getMonth() + 1)).toLocaleDateString('en-GB')}
+**Recommended**: ${new Date(new Date().setMonth(new Date().getMonth() + 1)).toLocaleDateString(
+    'en-GB'
+  )}
 
 **Quick Commands**:
 \`\`\`bash
@@ -551,7 +565,9 @@ async function main() {
     console.log(`  Stripe Revenue: £${(report.summary.stripeRevenue / 100).toFixed(2)}`);
     console.log(`  Database Revenue: £${(report.summary.databaseRevenue / 100).toFixed(2)}`);
     console.log(
-      `  Discrepancy: £${(report.summary.discrepancy / 100).toFixed(2)} (${report.summary.discrepancyPercentage.toFixed(2)}%)`
+      `  Discrepancy: £${(report.summary.discrepancy / 100).toFixed(
+        2
+      )} (${report.summary.discrepancyPercentage.toFixed(2)}%)`
     );
     console.log(`\n  Issues: ${report.validation.issues.length}`);
     console.log(`\n✅ Report saved to: ${finalOutputPath}\n`);

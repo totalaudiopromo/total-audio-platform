@@ -48,7 +48,9 @@ async function runMigration() {
           `⚠️  Note: Cannot execute SQL directly via API. Please run this in Supabase SQL Editor:`
         );
         console.log(
-          `\nhttps://supabase.com/dashboard/project/${supabaseUrl.split('.')[0].split('//')[1]}/sql\n`
+          `\nhttps://supabase.com/dashboard/project/${
+            supabaseUrl.split('.')[0].split('//')[1]
+          }/sql\n`
         );
         console.log('Copy and paste the contents of:');
         console.log(migrationPath);

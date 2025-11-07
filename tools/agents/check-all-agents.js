@@ -160,7 +160,9 @@ class AgentHealthCheck {
 
       if (status.status === 'failed') {
         health.status = 'critical';
-        health.message = `Failed: ${status.errors[status.errors.length - 1]?.message || 'Unknown error'}`;
+        health.message = `Failed: ${
+          status.errors[status.errors.length - 1]?.message || 'Unknown error'
+        }`;
       } else if (ageHours > maxAgeHours) {
         health.status = 'warning';
         health.message = `Hasn't run in ${Math.round(ageHours)} hours (max: ${maxAgeHours}h)`;
@@ -194,7 +196,9 @@ class AgentHealthCheck {
       warnings.push({
         type: 'daily-cost',
         severity: 'warning',
-        message: `Daily cost (£${today.total.toFixed(2)}) exceeded threshold (£${this.costTracker.budgets.daily})`,
+        message: `Daily cost (£${today.total.toFixed(2)}) exceeded threshold (£${
+          this.costTracker.budgets.daily
+        })`,
       });
     }
 
@@ -209,7 +213,9 @@ class AgentHealthCheck {
       warnings.push({
         type: 'monthly-cost',
         severity: 'warning',
-        message: `Monthly budget ${summary.percentUsed.toFixed(0)}% used (£${summary.total.toFixed(2)} / £${summary.budget})`,
+        message: `Monthly budget ${summary.percentUsed.toFixed(0)}% used (£${summary.total.toFixed(
+          2
+        )} / £${summary.budget})`,
       });
     }
 
@@ -262,7 +268,9 @@ class AgentHealthCheck {
     console.log('\n💰 Costs:');
     console.log(`   Today: £${health.costs.today.toFixed(2)}`);
     console.log(
-      `   This Month: £${health.costs.month.toFixed(2)} / £${health.costs.budget} (${health.costs.percentUsed.toFixed(0)}%)`
+      `   This Month: £${health.costs.month.toFixed(2)} / £${
+        health.costs.budget
+      } (${health.costs.percentUsed.toFixed(0)}%)`
     );
 
     // Warnings

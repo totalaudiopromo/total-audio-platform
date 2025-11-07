@@ -258,7 +258,14 @@ function analyzeEpisodeForAI(
     actionableTips.push('Apply insights to your music promotion strategy');
   }
 
-  const newsletterContent = `**🎙️ ${title}**\n\n${description.substring(0, 200)}...\n\n*Why this matters:* This episode covers ${aiScore > 0 ? 'AI and ' : ''}technology that could impact your music promotion strategy.\n\n**Action Item:** ${actionableTips[0] || 'Listen to the full episode for detailed insights.'}`;
+  const newsletterContent = `**🎙️ ${title}**\n\n${description.substring(
+    0,
+    200
+  )}...\n\n*Why this matters:* This episode covers ${
+    aiScore > 0 ? 'AI and ' : ''
+  }technology that could impact your music promotion strategy.\n\n**Action Item:** ${
+    actionableTips[0] || 'Listen to the full episode for detailed insights.'
+  }`;
 
   return {
     relevance,

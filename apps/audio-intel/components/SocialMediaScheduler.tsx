@@ -179,7 +179,9 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
             <div key={post.id} className="p-3 border rounded-lg">
               <div className="flex items-center justify-between mb-2">
                 <span
-                  className={`px-2 py-1 rounded text-xs font-medium ${getPlatformColor(post.platform)}`}
+                  className={`px-2 py-1 rounded text-xs font-medium ${getPlatformColor(
+                    post.platform
+                  )}`}
                 >
                   {formatPlatform(post.platform)}
                 </span>
@@ -301,7 +303,9 @@ const SocialMediaScheduler: React.FC<SocialMediaSchedulerProps> = ({ compactMode
           <div key={post.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-3">
               <span
-                className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(post.platform)}`}
+                className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(
+                  post.platform
+                )}`}
               >
                 {formatPlatform(post.platform)}
               </span>

@@ -457,7 +457,9 @@ export class AirtableContactEnrichment {
           const stationKey: string = radioStation.name;
           summary.set(stationKey, (summary.get(stationKey) || 0) + 1);
         } catch (error: any) {
-          const errorMsg: string = `Record ${record.id}: ${error instanceof Error ? error.message : 'Unknown error'}`;
+          const errorMsg: string = `Record ${record.id}: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`;
           errors.push(errorMsg);
           logger.error(errorMsg);
         }
@@ -518,7 +520,9 @@ export class AirtableContactEnrichment {
         logger.info(`✅ Updated batch ${Math.floor(i / batchSize) + 1}: ${batch.length} records`);
       }
       logger.info(
-        `✅ Completed: Updated ${updatedCount} enriched records in ${Math.ceil(validRecords.length / batchSize)} batches`
+        `✅ Completed: Updated ${updatedCount} enriched records in ${Math.ceil(
+          validRecords.length / batchSize
+        )} batches`
       );
     }
   }

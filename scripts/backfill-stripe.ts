@@ -199,7 +199,9 @@ async function processPaymentIntent(
 
   if (dryRun) {
     console.log(
-      `🧪 Would insert: ${paymentIntent.id} for ${userEmail} (£${(paymentIntent.amount / 100).toFixed(2)})`
+      `🧪 Would insert: ${paymentIntent.id} for ${userEmail} (£${(
+        paymentIntent.amount / 100
+      ).toFixed(2)})`
     );
     return 'success';
   }
@@ -215,7 +217,9 @@ async function processPaymentIntent(
   }
 
   console.log(
-    `✅ Inserted: ${paymentIntent.id} for ${userEmail} (£${(paymentIntent.amount / 100).toFixed(2)})`
+    `✅ Inserted: ${paymentIntent.id} for ${userEmail} (£${(paymentIntent.amount / 100).toFixed(
+      2
+    )})`
   );
   return 'success';
 }
@@ -275,7 +279,9 @@ async function processInvoice(
 
   if (dryRun) {
     console.log(
-      `🧪 Would insert invoice: ${invoice.id} for ${userEmail} (£${(invoice.amount_paid / 100).toFixed(2)})`
+      `🧪 Would insert invoice: ${invoice.id} for ${userEmail} (£${(
+        invoice.amount_paid / 100
+      ).toFixed(2)})`
     );
     return 'success';
   }
@@ -290,7 +296,9 @@ async function processInvoice(
   }
 
   console.log(
-    `✅ Inserted invoice: ${invoice.id} for ${userEmail} (£${(invoice.amount_paid / 100).toFixed(2)})`
+    `✅ Inserted invoice: ${invoice.id} for ${userEmail} (£${(invoice.amount_paid / 100).toFixed(
+      2
+    )})`
   );
   return 'success';
 }

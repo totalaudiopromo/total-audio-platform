@@ -22,6 +22,7 @@ Stop spending 5+ hours writing pitches. Let Pitch Generator write personalized e
 ### MVP Features (Implemented)
 
 1. **Smart Pitch Generation**
+
    - Contact selection from database
    - Artist & track information input
    - Genre-specific customization
@@ -30,6 +31,7 @@ Stop spending 5+ hours writing pitches. Let Pitch Generator write personalized e
    - Suggested send times based on contact data
 
 2. **Intel Integration**
+
    - Contact database with rich metadata
    - Genre tags and preferences
    - Contact notes and history
@@ -37,6 +39,7 @@ Stop spending 5+ hours writing pitches. Let Pitch Generator write personalized e
    - Preferred tone settings
 
 3. **Template Library**
+
    - 5 genre-specific templates pre-loaded:
      - Indie/Alternative (BBC 6 Music style)
      - Electronic/Dance (Specialist shows)
@@ -46,6 +49,7 @@ Stop spending 5+ hours writing pitches. Let Pitch Generator write personalized e
    - Usage tracking and success metrics
 
 4. **Pitch Library**
+
    - Complete pitch history
    - Search and filtering
    - Status tracking (draft, sent, replied, success, no_reply)
@@ -53,6 +57,7 @@ Stop spending 5+ hours writing pitches. Let Pitch Generator write personalized e
    - Edit and regenerate capabilities
 
 5. **Dashboard**
+
    - Key metrics (total pitches, sent, replies, response rate)
    - Recent pitch activity
    - Quick actions

@@ -55,7 +55,9 @@ class MailchimpApiIntegration {
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(
-          `Mailchimp API error: ${response.status} ${response.statusText} - ${JSON.stringify(errorData)}`
+          `Mailchimp API error: ${response.status} ${response.statusText} - ${JSON.stringify(
+            errorData
+          )}`
         );
       }
 
@@ -591,7 +593,9 @@ class MailchimpApiIntegration {
 
     return `
       <div style="text-align: center; margin: 20px 0; padding: 15px; background-color: #f8f9fa; border-radius: 5px;">
-        <h3 style="margin-top: 0; color: #333;">Connect with ${socialLinks[0]?.platform ? 'the artist' : 'us'}</h3>
+        <h3 style="margin-top: 0; color: #333;">Connect with ${
+          socialLinks[0]?.platform ? 'the artist' : 'us'
+        }</h3>
         <p style="margin: 0;">${linksHtml}</p>
       </div>
     `;

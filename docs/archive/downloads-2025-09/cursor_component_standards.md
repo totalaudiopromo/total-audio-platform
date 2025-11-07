@@ -332,13 +332,10 @@ describe('/api/contacts/enrich', () => {
 
 ```typescript
 // Dynamic imports for tool-specific components
-const AudioIntelDashboard = dynamic(
-  () => import('@/components/audio-intel/Dashboard'),
-  {
-    loading: () => <DashboardSkeleton />,
-    ssr: false
-  }
-);
+const AudioIntelDashboard = dynamic(() => import('@/components/audio-intel/Dashboard'), {
+  loading: () => <DashboardSkeleton />,
+  ssr: false,
+});
 ```
 
 ## 🔧 Code Quality

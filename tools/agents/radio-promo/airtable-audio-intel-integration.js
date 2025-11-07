@@ -140,10 +140,14 @@ class DynamicStationSelector {
     selectedContacts.forEach((contact, index) => {
       console.log(`${index + 1}. ${contact.stationName} (${contact.name})`);
       console.log(
-        `   Score: ${contact.score.toFixed(1)} | Type: ${contact.stationType} | Status: ${contact.relationshipStatus}`
+        `   Score: ${contact.score.toFixed(1)} | Type: ${contact.stationType} | Status: ${
+          contact.relationshipStatus
+        }`
       );
       console.log(
-        `   Genre Focus: ${contact.genreFocus.join(', ')} | Response Rate: ${(contact.responseRate * 100).toFixed(0)}%`
+        `   Genre Focus: ${contact.genreFocus.join(', ')} | Response Rate: ${(
+          contact.responseRate * 100
+        ).toFixed(0)}%`
       );
       console.log(`   Enriched: ${contact.audioIntelEnriched ? 'Yes' : 'No'}\n`);
     });
@@ -334,7 +338,11 @@ async function main() {
         `   Subject: "New House Pop: ${sampleCampaign.artistName} - ${sampleCampaign.trackTitle}"`
       );
       console.log(
-        `   Message: "Hi ${contact.name}, we have a fresh house pop track that would be perfect for your ${contact.genreFocus.join(', ')} shows..."`
+        `   Message: "Hi ${
+          contact.name
+        }, we have a fresh house pop track that would be perfect for your ${contact.genreFocus.join(
+          ', '
+        )} shows..."`
       );
       console.log(
         `   Based on: ${contact.enrichmentData ? 'Audio Intel data' : 'Basic contact info'}\n`

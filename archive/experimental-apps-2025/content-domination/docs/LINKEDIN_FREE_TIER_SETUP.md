@@ -37,16 +37,19 @@ We're specifically NOT using these (which require paid subscriptions):
 ### Step 1: LinkedIn App Configuration
 
 1. **Go to LinkedIn Developer Portal**
+
    - Visit: <https://www.linkedin.com/developers/apps>
    - Click "Create app"
 
 2. **App Details**
+
    - App name: `Content Domination System`
    - LinkedIn Page: Select your company page (or personal)
    - Privacy policy URL: Your website
    - App logo: Upload your logo
 
 3. **OAuth 2.0 Settings**
+
    - Redirect URLs:
 
      ```

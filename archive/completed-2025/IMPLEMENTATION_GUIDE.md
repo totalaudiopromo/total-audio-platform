@@ -179,14 +179,14 @@ export const config = {
 Create `apps/audio-intel/app/signin/page.tsx`:
 
 ```typescript
-import { SignInForm } from '@/components/auth/SignInForm'
+import { SignInForm } from '@/components/auth/SignInForm';
 
 export default function SignInPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <SignInForm />
     </div>
-  )
+  );
 }
 ```
 
@@ -195,14 +195,14 @@ export default function SignInPage() {
 Create `apps/audio-intel/app/signup/page.tsx`:
 
 ```typescript
-import { SignUpForm } from '@/components/auth/SignUpForm'
+import { SignUpForm } from '@/components/auth/SignUpForm';
 
 export default function SignUpPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <SignUpForm />
     </div>
-  )
+  );
 }
 ```
 
@@ -240,13 +240,9 @@ export async function GET(request: Request) {
 Update `apps/audio-intel/app/layout.tsx`:
 
 ```typescript
-import { UserMenu } from '@/components/auth/UserMenu'
+import { UserMenu } from '@/components/auth/UserMenu';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
@@ -259,7 +255,7 @@ export default function RootLayout({
         <main>{children}</main>
       </body>
     </html>
-  )
+  );
 }
 ```
 

@@ -122,6 +122,7 @@ jobs:
           -d "text=✅ Golden Deployment successful and promoted to production!"
 
   on-failure:
+    needs: build-and-test
     if: failure()
     runs-on: ubuntu-latest
     steps:

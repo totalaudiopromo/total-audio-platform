@@ -94,7 +94,9 @@ export default function MobileNav() {
       {/* Slide-in menu */}
       <div
         ref={menuRef}
-        className={`fixed top-0 right-0 h-full w-full max-w-xs bg-white border-l border-gray-200 text-gray-900 shadow-2xl z-[60] transform transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'} flex flex-col overflow-x-hidden`}
+        className={`fixed top-0 right-0 h-full w-full max-w-xs bg-white border-l border-gray-200 text-gray-900 shadow-2xl z-[60] transform transition-transform duration-300 ease-in-out ${
+          open ? 'translate-x-0' : 'translate-x-full'
+        } flex flex-col overflow-x-hidden`}
         style={{ willChange: 'transform' }}
         aria-modal={open}
         role="dialog"

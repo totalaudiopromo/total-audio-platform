@@ -26,7 +26,7 @@ export async function generateStaticParams() {
   const { getAllCaseStudySlugs } = await import('@/utils/parseCaseStudyData');
   const slugs = await getAllCaseStudySlugs();
 
-  return slugs.map((slug) => ({
+  return slugs.map(slug => ({
     slug,
   }));
 }
@@ -42,9 +42,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   return (
     <article className="max-w-4xl mx-auto px-4 py-12">
       <header className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
-          {data.pageTitle}
-        </h1>
+        <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">{data.pageTitle}</h1>
 
         <div className="flex flex-wrap items-center gap-4 mb-8 text-gray-600">
           <span>Chris Schofield</span>
@@ -200,10 +198,7 @@ const metadata = generateCaseStudyMetadataSync('bbc-radio-1');
 const schema = generateCaseStudyStructuredData('bbc-radio-1');
 
 // In your page component:
-<script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-/>
+<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 ```
 
 **`generateCaseStudyBreadcrumbSchema(slug: string): object`**
@@ -239,13 +234,15 @@ const faqSchema = generateCaseStudyFAQSchema([
 const schemas = generateAllCaseStudySchemas('bbc-radio-1', faqQuestions);
 
 // Render multiple schemas:
-{schemas.map((schema, idx) => (
-  <script
-    key={idx}
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-  />
-))}
+{
+  schemas.map((schema, idx) => (
+    <script
+      key={idx}
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  ));
+}
 ```
 
 ---

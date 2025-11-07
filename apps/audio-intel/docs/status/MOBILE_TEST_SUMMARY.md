@@ -46,11 +46,13 @@ Tests run on 3 UK-focused mobile devices:
 **Tests**:
 
 1. **Homepage loads and CTA is accessible**
+
    - Page load time < 3 seconds
    - CTA button visibility
    - Touch target size (min 44px height)
 
 2. **Upload page mobile usability**
+
    - Upload UI visibility
    - File input accessibility
    - Form viewport fitting

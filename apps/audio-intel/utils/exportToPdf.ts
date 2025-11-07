@@ -604,7 +604,13 @@ export function exportContactsToPdf(
       const platform = contact.platform || extractDomainFromEmail(contact.email);
       const confidence = contact.researchConfidence || 'Low';
 
-      intelligenceText = `Platform: ${platform}\nDomain Analysis: ${domain}\nContact Type: Music Industry Professional\nResearch Confidence: ${confidence}\nRecommendation: ${confidence === 'High' ? 'Priority contact - verified music industry connection' : confidence === 'Medium' ? 'Good potential - verify before outreach' : 'Requires additional research before contact'}`;
+      intelligenceText = `Platform: ${platform}\nDomain Analysis: ${domain}\nContact Type: Music Industry Professional\nResearch Confidence: ${confidence}\nRecommendation: ${
+        confidence === 'High'
+          ? 'Priority contact - verified music industry connection'
+          : confidence === 'Medium'
+          ? 'Good potential - verify before outreach'
+          : 'Requires additional research before contact'
+      }`;
     }
 
     // Clean up and format the intelligence text

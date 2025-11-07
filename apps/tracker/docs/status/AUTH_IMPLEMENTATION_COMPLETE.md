@@ -291,21 +291,25 @@ For faster testing, disable email confirmation:
 Now that authentication is solid, you can:
 
 1. **Test Campaign Creation** ✅ Ready to go!
+
    - Authentication works
    - Protected routes secured
    - User sessions managed
 
 2. **Add Profile Management**
+
    - Update user name
    - Change email address
    - Update password (while logged in)
 
 3. **Implement Stripe Billing**
+
    - Connect Stripe customer to user
    - Handle subscription lifecycle
    - Show billing status in header
 
 4. **Add OAuth Providers**
+
    - Google login
    - GitHub login
    - Spotify login

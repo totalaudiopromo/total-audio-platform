@@ -193,11 +193,13 @@ With Phase 5 complete, the monorepo is ready for:
 ### Phase 6: Deployment Hardening
 
 1. **Staging Environment Setup**
+
    - Deploy all 3 apps to Vercel staging
    - Verify environment variables
    - Test database connections
 
 2. **Production Deployment**
+
    - Blue-green deployment strategy
    - Smoke tests for all critical paths
    - Rollback plan ready

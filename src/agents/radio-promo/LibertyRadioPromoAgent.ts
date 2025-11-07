@@ -435,7 +435,9 @@ Steps to execute:
 5. Return campaign summary
 
 Stations to contact:
-${campaignData.targetStations.map(s => `- ${s.name} (${s.type}, priority: ${s.priority})`).join('\n')}
+${campaignData.targetStations
+  .map(s => `- ${s.name} (${s.type}, priority: ${s.priority})`)
+  .join('\n')}
 
 Previous plays (social proof):
 ${campaignData.previousPlays?.join(', ') || 'None yet'}
@@ -586,16 +588,26 @@ Use your knowledge of UK radio landscape to provide actionable insights.`,
   private buildEmailTemplate(input: any): { subject: string; body: string } {
     const previousPlaysText =
       input.previous_plays?.length > 0
-        ? `The track has already received plays from ${input.previous_plays.join(', ')}, demonstrating its appeal across diverse audiences.`
+        ? `The track has already received plays from ${input.previous_plays.join(
+            ', '
+          )}, demonstrating its appeal across diverse audiences.`
         : '';
 
     return {
-      subject: `${input.station_type === 'National' && input.station_name.includes('BBC') ? 'BBC Introducing Submission: ' : ''}${input.artist_name} - ${input.track_name}`,
+      subject: `${
+        input.station_type === 'National' && input.station_name.includes('BBC')
+          ? 'BBC Introducing Submission: '
+          : ''
+      }${input.artist_name} - ${input.track_name}`,
       body: `Hi ${input.station_name},
 
-I hope you're well! I wanted to share ${input.artist_name}'s new track "${input.track_name}" with you for consideration.
+I hope you're well! I wanted to share ${input.artist_name}'s new track "${
+        input.track_name
+      }" with you for consideration.
 
-This ${input.genre} track ${input.campaign_angle ? `represents ${input.campaign_angle}` : 'showcases fresh UK talent'}.
+This ${input.genre} track ${
+        input.campaign_angle ? `represents ${input.campaign_angle}` : 'showcases fresh UK talent'
+      }.
 
 ${previousPlaysText}
 

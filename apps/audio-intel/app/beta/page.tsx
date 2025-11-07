@@ -418,7 +418,9 @@ export default function BetaAccessPage() {
                       id="firstName"
                       type="text"
                       placeholder="Phoebe"
-                      className={`beta-form-input h-12 text-base border-2 mt-2 ${fieldErrors.firstName ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                      className={`beta-form-input h-12 text-base border-2 mt-2 ${
+                        fieldErrors.firstName ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                      }`}
                       required
                       value={firstName}
                       onChange={e => setFirstName(e.target.value)}
@@ -456,7 +458,9 @@ export default function BetaAccessPage() {
                     id="email"
                     type="email"
                     placeholder="theboss@springsteen.com"
-                    className={`beta-form-input h-12 text-base border-2 mt-2 ${fieldErrors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                    className={`beta-form-input h-12 text-base border-2 mt-2 ${
+                      fieldErrors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                    }`}
                     required
                     value={email}
                     onChange={e => setEmail(e.target.value)}

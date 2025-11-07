@@ -130,7 +130,11 @@ export function BillingDashboard({
         <>
           <div className="flex items-center justify-center gap-4">
             <span
-              className={`text-sm ${billingInterval === 'monthly' ? 'font-semibold' : 'text-gray-600'}`}
+              className={`text-sm ${
+                billingInterval === 'monthly'
+                  ? 'font-semibold'
+                  : 'text-gray-600'
+              }`}
             >
               Monthly
             </span>
@@ -153,7 +157,9 @@ export function BillingDashboard({
               />
             </button>
             <span
-              className={`text-sm ${billingInterval === 'yearly' ? 'font-semibold' : 'text-gray-600'}`}
+              className={`text-sm ${
+                billingInterval === 'yearly' ? 'font-semibold' : 'text-gray-600'
+              }`}
             >
               Yearly <span className="text-green-600">(Save 20%)</span>
             </span>
@@ -176,7 +182,9 @@ export function BillingDashboard({
               return (
                 <Card
                   key={tier.id}
-                  className={`relative ${isCurrent ? 'border-2 border-black' : ''}`}
+                  className={`relative ${
+                    isCurrent ? 'border-2 border-black' : ''
+                  }`}
                 >
                   {isCurrent && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">

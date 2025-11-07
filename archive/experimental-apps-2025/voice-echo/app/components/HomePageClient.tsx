@@ -739,13 +739,21 @@ export default function HomePageClient() {
         {/* Pricing toggle */}
         <div className="flex items-center gap-2 mb-8">
           <button
-            className={`px-4 py-2 min-h-[44px] rounded-l-lg font-semibold border ${pricingMode === 'monthly' ? 'bg-[#6366f1] text-white dark:bg-gray-800 dark:text-white' : 'bg-white text-[#6366f1] border-[#6366f1] dark:bg-gray-800 dark:text-white dark:border-gray-600'}`}
+            className={`px-4 py-2 min-h-[44px] rounded-l-lg font-semibold border ${
+              pricingMode === 'monthly'
+                ? 'bg-[#6366f1] text-white dark:bg-gray-800 dark:text-white'
+                : 'bg-white text-[#6366f1] border-[#6366f1] dark:bg-gray-800 dark:text-white dark:border-gray-600'
+            }`}
             onClick={() => setPricingMode('monthly')}
           >
             Monthly
           </button>
           <button
-            className={`px-4 py-2 min-h-[44px] rounded-r-lg font-semibold border ${pricingMode === 'yearly' ? 'bg-[#6366f1] text-white dark:bg-gray-800 dark:text-white' : 'bg-white text-[#6366f1] border-[#6366f1] dark:bg-gray-800 dark:text-white dark:border-gray-600'}`}
+            className={`px-4 py-2 min-h-[44px] rounded-r-lg font-semibold border ${
+              pricingMode === 'yearly'
+                ? 'bg-[#6366f1] text-white dark:bg-gray-800 dark:text-white'
+                : 'bg-white text-[#6366f1] border-[#6366f1] dark:bg-gray-800 dark:text-white dark:border-gray-600'
+            }`}
             onClick={() => setPricingMode('yearly')}
           >
             Yearly
@@ -1148,13 +1156,21 @@ export default function HomePageClient() {
             />
             <div className="flex justify-center gap-4 mb-4">
               <button
-                className={`px-4 py-2 min-h-[44px] rounded-lg font-semibold border ${billingCycle === 'monthly' ? 'bg-[#6366f1] text-white dark:bg-gray-800 dark:text-white' : 'bg-white text-[#6366f1] border-[#6366f1] dark:bg-gray-800 dark:text-white dark:border-gray-600'}`}
+                className={`px-4 py-2 min-h-[44px] rounded-lg font-semibold border ${
+                  billingCycle === 'monthly'
+                    ? 'bg-[#6366f1] text-white dark:bg-gray-800 dark:text-white'
+                    : 'bg-white text-[#6366f1] border-[#6366f1] dark:bg-gray-800 dark:text-white dark:border-gray-600'
+                }`}
                 onClick={() => setBillingCycle('monthly')}
               >
                 Monthly
               </button>
               <button
-                className={`px-4 py-2 min-h-[44px] rounded-lg font-semibold border ${billingCycle === 'annual' ? 'bg-[#6366f1] text-white dark:bg-gray-800 dark:text-white' : 'bg-white text-[#6366f1] border-[#6366f1] dark:bg-gray-800 dark:text-white dark:border-gray-600'}`}
+                className={`px-4 py-2 min-h-[44px] rounded-lg font-semibold border ${
+                  billingCycle === 'annual'
+                    ? 'bg-[#6366f1] text-white dark:bg-gray-800 dark:text-white'
+                    : 'bg-white text-[#6366f1] border-[#6366f1] dark:bg-gray-800 dark:text-white dark:border-gray-600'
+                }`}
                 onClick={() => setBillingCycle('annual')}
               >
                 Annual
@@ -1419,7 +1435,11 @@ const PricingCard: React.FC<{
 }> = ({ title, price, features, cta, highlight, onClick, showAnnualBadge }) => {
   return (
     <div
-      className={`flex flex-col items-center rounded-2xl p-8 shadow-lg border-2 ${highlight ? 'border-[#6366f1] bg-[#ede9fe] scale-105 z-10 dark:bg-gray-800' : 'border-[#ede9fe] bg-white dark:bg-gray-800 dark:border-gray-700'} transition-transform relative`}
+      className={`flex flex-col items-center rounded-2xl p-8 shadow-lg border-2 ${
+        highlight
+          ? 'border-[#6366f1] bg-[#ede9fe] scale-105 z-10 dark:bg-gray-800'
+          : 'border-[#ede9fe] bg-white dark:bg-gray-800 dark:border-gray-700'
+      } transition-transform relative`}
     >
       {highlight && (
         <div className="mb-2 px-3 py-1 bg-[#6366f1] text-white text-xs rounded-full font-bold uppercase tracking-wider dark:bg-[#6366f1] dark:text-white">
@@ -1443,7 +1463,11 @@ const PricingCard: React.FC<{
         ))}
       </ul>
       <button
-        className={`w-full py-3 rounded-lg font-bold text-lg ${highlight ? 'bg-[#6366f1] text-white hover:bg-[#818cf8] dark:bg-brand-blue dark:text-white' : 'bg-white text-[#6366f1] border-2 border-[#6366f1] hover:bg-[#6366f1] hover:text-white dark:bg-gray-700 dark:text-white dark:border-gray-600'} shadow transition-colors mb-2`}
+        className={`w-full py-3 rounded-lg font-bold text-lg ${
+          highlight
+            ? 'bg-[#6366f1] text-white hover:bg-[#818cf8] dark:bg-brand-blue dark:text-white'
+            : 'bg-white text-[#6366f1] border-2 border-[#6366f1] hover:bg-[#6366f1] hover:text-white dark:bg-gray-700 dark:text-white dark:border-gray-600'
+        } shadow transition-colors mb-2`}
         onClick={onClick}
       >
         {cta}

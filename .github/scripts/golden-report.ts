@@ -74,9 +74,9 @@ function generateMarkdown(report: CombinedReport): string {
     const checkIcon = r.checkStatus === 'pass' ? '✅' : '❌';
     const promoteIcon = r.promoteStatus === 'success' ? '✅' : '❌';
     lines.push(
-      `| ${r.app} | ${checkIcon} ${r.checkStatus} | ${promoteIcon} ${r.promoteStatus} | ${formatDuration(
-        r.duration
-      )} | ${r.url ?? '-'} |`
+      `| ${r.app} | ${checkIcon} ${r.checkStatus} | ${promoteIcon} ${
+        r.promoteStatus
+      } | ${formatDuration(r.duration)} | ${r.url ?? '-'} |`
     );
   }
   lines.push('');

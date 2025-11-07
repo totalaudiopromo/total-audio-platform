@@ -208,7 +208,9 @@ class CoverageBookIntegration {
                 const campaignImpressions = coverageData.reduce((sum, c) => sum + c.impressions, 0);
 
                 logger.success(
-                  `Imported ${coverageData.length} entries for ${campaignName} (${campaignReach.toLocaleString()} reach)`
+                  `Imported ${
+                    coverageData.length
+                  } entries for ${campaignName} (${campaignReach.toLocaleString()} reach)`
                 );
                 return {
                   campaign: campaignName,
@@ -236,7 +238,9 @@ class CoverageBookIntegration {
                 logger.info('🏆 Top Performing Campaigns:');
                 topCampaigns.forEach((campaign, index) => {
                   logger.info(
-                    `  ${index + 1}. ${campaign.campaign}: ${campaign.reach.toLocaleString()} reach (${campaign.entries} mentions)`
+                    `  ${index + 1}. ${
+                      campaign.campaign
+                    }: ${campaign.reach.toLocaleString()} reach (${campaign.entries} mentions)`
                   );
                 });
               }
@@ -626,7 +630,10 @@ class CoverageBookIntegration {
       }));
 
       const timestamp = Date.now();
-      const filename = `coveragebook_export_${campaignName.replace(/[^a-zA-Z0-9]/g, '_')}_${timestamp}.csv`;
+      const filename = `coveragebook_export_${campaignName.replace(
+        /[^a-zA-Z0-9]/g,
+        '_'
+      )}_${timestamp}.csv`;
       const filePath = path.join(this.dataDirectory, filename);
 
       // Simple CSV generation

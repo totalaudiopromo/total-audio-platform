@@ -195,17 +195,20 @@ Follow the same process as test mode:
 Test these user flows:
 
 1. **Authentication**
+
    - [ ] Sign up new account
    - [ ] Sign in with existing account
    - [ ] Sign out
 
 2. **Contact Management**
+
    - [ ] Add new contact
    - [ ] View contacts list
    - [ ] Edit contact
    - [ ] Delete contact
 
 3. **Pitch Generation**
+
    - [ ] Generate pitch with contact
    - [ ] Review generated pitch
    - [ ] Edit pitch body
@@ -213,6 +216,7 @@ Test these user flows:
    - [ ] View pitch history
 
 4. **Pricing & Checkout**
+
    - [ ] View pricing page
    - [ ] Select PRO plan
    - [ ] Complete Stripe checkout

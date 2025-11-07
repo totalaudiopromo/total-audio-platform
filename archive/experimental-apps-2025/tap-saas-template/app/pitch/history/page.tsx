@@ -228,7 +228,9 @@ export default function PitchHistoryPage() {
                       <select
                         value={pitch.status}
                         onChange={e => handleUpdateStatus(pitch.id, e.target.value)}
-                        className={`rounded-full border-0 px-3 py-1 text-xs font-medium ${getStatusColor(pitch.status)}`}
+                        className={`rounded-full border-0 px-3 py-1 text-xs font-medium ${getStatusColor(
+                          pitch.status
+                        )}`}
                       >
                         <option value="draft" className="bg-card text-foreground">
                           Draft

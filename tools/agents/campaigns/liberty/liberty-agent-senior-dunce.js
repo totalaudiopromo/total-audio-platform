@@ -198,7 +198,9 @@ class LibertyAgentSeniorDunce {
     }
 
     console.log(
-      `\n✅ Email sending complete: ${results.filter(r => r.status === 'sent').length}/${results.length} successful`
+      `\n✅ Email sending complete: ${results.filter(r => r.status === 'sent').length}/${
+        results.length
+      } successful`
     );
     return results;
   }

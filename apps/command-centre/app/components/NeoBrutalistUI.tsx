@@ -80,8 +80,8 @@ export const NeoMetricCard: React.FC<MetricCardProps> = ({
                 changeType === 'positive'
                   ? 'text-green-600'
                   : changeType === 'negative'
-                    ? 'text-red-600'
-                    : 'text-gray-600'
+                  ? 'text-red-600'
+                  : 'text-gray-600'
               }`}
             >
               {change}
@@ -221,7 +221,9 @@ export const NeoInput: React.FC<InputProps> = ({ label, error, className = '', .
         </label>
       )}
       <input
-        className={`w-full px-4 py-2 border-2 border-black rounded-lg font-medium bg-white placeholder-gray-500 focus:outline-none focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all ${error ? 'border-red-500' : ''} ${className}`}
+        className={`w-full px-4 py-2 border-2 border-black rounded-lg font-medium bg-white placeholder-gray-500 focus:outline-none focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all ${
+          error ? 'border-red-500' : ''
+        } ${className}`}
         {...props}
       />
       {error && <p className="text-sm font-bold text-red-600">{error}</p>}

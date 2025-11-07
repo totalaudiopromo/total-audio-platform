@@ -297,12 +297,14 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 #### Automated Collection
 
 1. **Vercel Analytics**
+
    - Request volume
    - Response times (p50, p95, p99)
    - Status code distribution
    - Geographic distribution
 
 2. **Supabase Dashboard**
+
    - Database connection pool usage
    - Query execution times
    - Replication lag
@@ -316,6 +318,7 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 #### Manual Collection
 
 1. **Contact Enrichment Logs**
+
    - Review enrichment success/failure rates
    - Analyse Perplexity API performance
    - Track data quality metrics

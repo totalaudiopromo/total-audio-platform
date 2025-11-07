@@ -87,8 +87,8 @@ export function ValidatedInput({
     showErrors
       ? 'border-red-500 focus:border-red-600 focus:ring-red-200 bg-red-50'
       : showSuccess
-        ? 'border-green-500 focus:border-green-600 focus:ring-green-200 bg-green-50'
-        : 'border-gray-300 focus:border-teal-500 focus:ring-teal-200'
+      ? 'border-green-500 focus:border-green-600 focus:ring-green-200 bg-green-50'
+      : 'border-gray-300 focus:border-teal-500 focus:ring-teal-200'
   } ${disabled ? 'opacity-50 cursor-not-allowed bg-gray-100' : ''}`;
 
   const InputComponent = type === 'textarea' ? 'textarea' : 'input';

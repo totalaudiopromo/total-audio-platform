@@ -329,11 +329,13 @@ class TDDImplementationPlanner {
         const phases = plan.phases
           ? Object.keys(plan.phases).length
           : plan.quick_phases
-            ? Object.keys(plan.quick_phases).length
-            : 0;
+          ? Object.keys(plan.quick_phases).length
+          : 0;
         console.log(`   ${plan.feature} - ${plan.product}${type}`);
         console.log(
-          `     Phases: ${phases}, Agents: ${Object.keys(plan.agent_assignments || plan.key_agents || {}).length}`
+          `     Phases: ${phases}, Agents: ${
+            Object.keys(plan.agent_assignments || plan.key_agents || {}).length
+          }`
         );
       } catch (e) {
         console.log(`   ${file} (error reading)`);

@@ -33,7 +33,9 @@ async function diagnoseApiIssues() {
         // Test folder search for Senior Dunce
         const seniorDunceSearch = await agent.drive.searchFiles('name contains "Senior Dunce"');
         console.log(
-          `   ✅ Senior Dunce search works - found ${seniorDunceSearch ? seniorDunceSearch.length : 0} files`
+          `   ✅ Senior Dunce search works - found ${
+            seniorDunceSearch ? seniorDunceSearch.length : 0
+          } files`
         );
       } else {
         console.log('   ❌ Drive API instance is null/undefined');
@@ -41,7 +43,11 @@ async function diagnoseApiIssues() {
     } catch (error) {
       console.log(`   ❌ Drive API error: ${error.message}`);
       console.log(
-        `   🔧 Fix needed: ${error.message.includes('searchFiles') ? 'searchFiles method not implemented' : 'Drive API not properly initialized'}`
+        `   🔧 Fix needed: ${
+          error.message.includes('searchFiles')
+            ? 'searchFiles method not implemented'
+            : 'Drive API not properly initialized'
+        }`
       );
     }
 
@@ -61,7 +67,9 @@ async function diagnoseApiIssues() {
         // Test Senior Dunce search
         const seniorDunceSearch = await agent.gmail.searchEmails('Senior Dunce', 5);
         console.log(
-          `   ✅ Senior Dunce search works - found ${seniorDunceSearch ? seniorDunceSearch.length : 0} emails`
+          `   ✅ Senior Dunce search works - found ${
+            seniorDunceSearch ? seniorDunceSearch.length : 0
+          } emails`
         );
       } else {
         console.log('   ❌ Gmail API instance is null/undefined');
@@ -69,7 +77,11 @@ async function diagnoseApiIssues() {
     } catch (error) {
       console.log(`   ❌ Gmail API error: ${error.message}`);
       console.log(
-        `   🔧 Fix needed: ${error.message.includes('searchEmails') ? 'searchEmails method not implemented' : 'Gmail API not properly initialized'}`
+        `   🔧 Fix needed: ${
+          error.message.includes('searchEmails')
+            ? 'searchEmails method not implemented'
+            : 'Gmail API not properly initialized'
+        }`
       );
     }
 
@@ -91,7 +103,11 @@ async function diagnoseApiIssues() {
     } catch (error) {
       console.log(`   ❌ Calendar API error: ${error.message}`);
       console.log(
-        `   🔧 Fix needed: ${error.message.includes('listCalendars') ? 'listCalendars method not implemented' : 'Calendar API not properly initialized'}`
+        `   🔧 Fix needed: ${
+          error.message.includes('listCalendars')
+            ? 'listCalendars method not implemented'
+            : 'Calendar API not properly initialized'
+        }`
       );
     }
 
@@ -113,7 +129,11 @@ async function diagnoseApiIssues() {
     } catch (error) {
       console.log(`   ❌ Chat API error: ${error.message}`);
       console.log(
-        `   🔧 Fix needed: ${error.message.includes('listSpaces') ? 'listSpaces method not implemented' : 'Chat API not properly initialized'}`
+        `   🔧 Fix needed: ${
+          error.message.includes('listSpaces')
+            ? 'listSpaces method not implemented'
+            : 'Chat API not properly initialized'
+        }`
       );
     }
 
@@ -138,7 +158,9 @@ async function diagnoseApiIssues() {
           try {
             const responses = await agent.typeformApi.getFormResponses(firstForm.id, 5);
             console.log(
-              `   ✅ Form responses access works - found ${responses ? responses.length : 0} responses`
+              `   ✅ Form responses access works - found ${
+                responses ? responses.length : 0
+              } responses`
             );
 
             // Test individual response access
@@ -155,7 +177,9 @@ async function diagnoseApiIssues() {
                 );
                 console.log('   ✅ Individual response access works');
                 console.log(
-                  `   📊 Response has ${detailedResponse.answers ? detailedResponse.answers.length : 0} answers`
+                  `   📊 Response has ${
+                    detailedResponse.answers ? detailedResponse.answers.length : 0
+                  } answers`
                 );
               } catch (responseError) {
                 console.log(`   ❌ Individual response access failed: ${responseError.message}`);
@@ -172,7 +196,11 @@ async function diagnoseApiIssues() {
     } catch (error) {
       console.log(`   ❌ Typeform API error: ${error.message}`);
       console.log(
-        `   🔧 Fix needed: ${error.message.includes('getRecentForms') ? 'getRecentForms method not implemented' : 'Typeform API not properly initialized'}`
+        `   🔧 Fix needed: ${
+          error.message.includes('getRecentForms')
+            ? 'getRecentForms method not implemented'
+            : 'Typeform API not properly initialized'
+        }`
       );
     }
 
@@ -197,7 +225,9 @@ async function diagnoseApiIssues() {
           const tokenData = JSON.parse(fs.readFileSync(tokenPath, 'utf8'));
           console.log(`   ✅ ${tokenFile} exists`);
           console.log(
-            `   📊 Token expires: ${tokenData.expiry_date ? new Date(tokenData.expiry_date).toISOString() : 'Unknown'}`
+            `   📊 Token expires: ${
+              tokenData.expiry_date ? new Date(tokenData.expiry_date).toISOString() : 'Unknown'
+            }`
           );
         } else {
           console.log(`   ❌ ${tokenFile} missing`);

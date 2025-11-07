@@ -539,7 +539,9 @@ Stream it now on all major platforms:
     } else if (content.format === 'media_kit') {
       fileContent = `${content.title}\n\n`;
       for (const [sectionKey, section] of Object.entries(content.sections)) {
-        fileContent += `${section.title}\n${'='.repeat(section.title.length)}\n\n${section.content}\n\n`;
+        fileContent += `${section.title}\n${'='.repeat(section.title.length)}\n\n${
+          section.content
+        }\n\n`;
       }
     } else if (content.format === 'email_pitch') {
       fileContent = `Subject: ${content.subject}\n\n${content.body}`;

@@ -120,6 +120,7 @@ chrisschofield@libertymusicpr.com
 ### Week 1: Warm Contact (Triple J)
 
 1. **Anika Luna** (Home & Hosed) - warm follow-up
+
    - Send 2 weeks before release
    - Reference "Yearn" support
    - Offer exclusive first listen
@@ -132,14 +133,17 @@ chrisschofield@libertymusicpr.com
 ### Week 2: Cold Australian Contacts
 
 3. **Triple R Melbourne** (simonw@rrr.org.au)
+
    - Melbourne's premier indie station
    - Reference Triple J support
 
 4. **PBS FM Melbourne** (Firas@pbsfm.org.au)
+
    - Alternative/indie focus
    - Personal pitch to Firas
 
 5. **KIIS 106.5** (music@kiis1065.com.au)
+
    - Mainstream pop/dance
    - Position as crossover track
 

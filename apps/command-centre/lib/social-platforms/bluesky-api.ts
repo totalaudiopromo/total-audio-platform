@@ -141,7 +141,9 @@ export class BlueSkyAPI implements SocialPlatform {
       return {
         success: true,
         postId: result.uri,
-        url: `https://bsky.app/profile/${this.did.replace('did:plc:', '')}/post/${result.uri.split('/').pop()}`,
+        url: `https://bsky.app/profile/${this.did.replace('did:plc:', '')}/post/${result.uri
+          .split('/')
+          .pop()}`,
         verification: {
           contentHash,
           duplicateCheck: false,

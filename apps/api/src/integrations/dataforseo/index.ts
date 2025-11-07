@@ -400,8 +400,14 @@ export class DataForSEOService {
     return `${analysis.domain} has an SEO score of ${analysis.score}/100. 
     The site has ${analysis.metrics.organicKeywords} organic keywords, 
     ${analysis.metrics.organicTraffic} monthly organic traffic, 
-    ${analysis.metrics.backlinks} backlinks, and a domain authority of ${analysis.metrics.domainAuthority}. 
-    ${analysis.issues.length > 0 ? `Key issues: ${analysis.issues.join(', ')}` : 'No major issues identified.'}`;
+    ${analysis.metrics.backlinks} backlinks, and a domain authority of ${
+      analysis.metrics.domainAuthority
+    }. 
+    ${
+      analysis.issues.length > 0
+        ? `Key issues: ${analysis.issues.join(', ')}`
+        : 'No major issues identified.'
+    }`;
   }
 
   private getLocationCode(location: string): number {

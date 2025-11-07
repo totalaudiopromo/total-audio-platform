@@ -100,7 +100,9 @@ export default function AppShell({ children }: AppShellProps) {
 
         {/* Sidebar - Fixed positioning on mobile when open, z-50 to be above overlay */}
         <div
-          className={`${sidebarOpen ? 'fixed inset-y-0 left-0 z-50' : 'hidden'} lg:block lg:flex-shrink-0`}
+          className={`${
+            sidebarOpen ? 'fixed inset-y-0 left-0 z-50' : 'hidden'
+          } lg:block lg:flex-shrink-0`}
         >
           <div className="flex flex-col w-64 h-screen lg:h-auto">
             <div className="flex flex-col h-full flex-1 bg-white border-r-4 border-black shadow-[4px_0_0px_0px_rgba(0,0,0,1)] lg:shadow-none">

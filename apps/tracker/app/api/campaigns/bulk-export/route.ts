@@ -112,7 +112,9 @@ export async function POST(request: Request) {
     return new NextResponse(csvContent, {
       headers: {
         'Content-Type': 'text/csv',
-        'Content-Disposition': `attachment; filename="campaigns-export-${new Date().toISOString().split('T')[0]}.csv"`,
+        'Content-Disposition': `attachment; filename="campaigns-export-${
+          new Date().toISOString().split('T')[0]
+        }.csv"`,
       },
     });
   } catch (error) {

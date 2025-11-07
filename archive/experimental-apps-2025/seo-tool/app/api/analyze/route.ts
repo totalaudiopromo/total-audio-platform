@@ -80,7 +80,9 @@ const AUDIO_KEYWORDS = {
 async function getGoogleSuggestions(query: string): Promise<string[]> {
   try {
     const response = await fetch(
-      `https://suggestqueries.google.com/complete/search?client=firefox&q=${encodeURIComponent(query)}`
+      `https://suggestqueries.google.com/complete/search?client=firefox&q=${encodeURIComponent(
+        query
+      )}`
     );
     const data = await response.json();
     return data[1] || [];
@@ -97,7 +99,9 @@ async function getQuestionKeywords(keyword: string): Promise<string[]> {
   for (const questionWord of questionWords) {
     try {
       const response = await fetch(
-        `https://suggestqueries.google.com/complete/search?client=firefox&q=${encodeURIComponent(`${questionWord} ${keyword}`)}`
+        `https://suggestqueries.google.com/complete/search?client=firefox&q=${encodeURIComponent(
+          `${questionWord} ${keyword}`
+        )}`
       );
       const data = await response.json();
       const suggestions = data[1] || [];

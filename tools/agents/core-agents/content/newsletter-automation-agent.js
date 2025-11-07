@@ -531,7 +531,9 @@ The unsigned advantage isn't about having major label resources. It's about movi
         <p>${newsletter.footer.unsubscribe}</p>
         <p>
             <a href="https://twitter.com/${newsletter.footer.socialLinks.twitter}">Twitter</a> • 
-            <a href="https://linkedin.com/in/${newsletter.footer.socialLinks.linkedin}">LinkedIn</a> • 
+            <a href="https://linkedin.com/in/${
+              newsletter.footer.socialLinks.linkedin
+            }">LinkedIn</a> • 
             <a href="https://${newsletter.footer.socialLinks.website}">Website</a>
         </p>
     </div>
@@ -600,7 +602,9 @@ The unsigned advantage isn't about having major label resources. It's about movi
     const tweets = [];
 
     // Hook tweet
-    tweets.push(`🧵 This week's industry intel: ${newsletter.sections.find(s => s.id === 'industry_intel')?.content.slice(0, 200)}... 
+    tweets.push(`🧵 This week's industry intel: ${newsletter.sections
+      .find(s => s.id === 'industry_intel')
+      ?.content.slice(0, 200)}... 
 
 Thread 👇`);
 
@@ -631,7 +635,9 @@ Try Audio Intel free: https://intel.totalaudiopromo.com
    * Generate LinkedIn article from newsletter
    */
   async generateLinkedInArticle(newsletter) {
-    const title = `The Unsigned Advantage: ${newsletter.metadata.primaryTopics[0] || 'Industry Intel'}`;
+    const title = `The Unsigned Advantage: ${
+      newsletter.metadata.primaryTopics[0] || 'Industry Intel'
+    }`;
 
     const article = `${newsletter.sections.find(s => s.id === 'opening')?.content || ''}
 
@@ -827,7 +833,9 @@ ${newsletter.sections.find(s => s.id === 'closing')?.content.slice(0, 100)}...
       };
 
       logger.info(
-        `Newsletter automation cycle complete. Generated content for ${Object.keys(platformContent).length} platforms`
+        `Newsletter automation cycle complete. Generated content for ${
+          Object.keys(platformContent).length
+        } platforms`
       );
 
       return result;

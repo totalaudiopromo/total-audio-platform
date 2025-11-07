@@ -379,7 +379,9 @@ export default function UploadPage() {
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-4">
                         <div
-                          className={`w-12 h-12 rounded-full flex items-center justify-center text-2xl ${getPlatformColor(curator.platform)}`}
+                          className={`w-12 h-12 rounded-full flex items-center justify-center text-2xl ${getPlatformColor(
+                            curator.platform
+                          )}`}
                         >
                           {getPlatformIcon(curator.platform)}
                         </div>
@@ -429,7 +431,10 @@ export default function UploadPage() {
                           )}
                           {curator.contactInfo.instagram && (
                             <a
-                              href={`https://instagram.com/${curator.contactInfo.instagram.replace('@', '')}`}
+                              href={`https://instagram.com/${curator.contactInfo.instagram.replace(
+                                '@',
+                                ''
+                              )}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="flex items-center gap-1 text-sm font-bold text-purple-600 hover:text-purple-800"
@@ -440,7 +445,10 @@ export default function UploadPage() {
                           )}
                           {curator.contactInfo.twitter && (
                             <a
-                              href={`https://twitter.com/${curator.contactInfo.twitter.replace('@', '')}`}
+                              href={`https://twitter.com/${curator.contactInfo.twitter.replace(
+                                '@',
+                                ''
+                              )}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="flex items-center gap-1 text-sm font-bold text-blue-600 hover:text-blue-800"

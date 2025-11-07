@@ -36,7 +36,9 @@ export class PerplexityContactResearch {
     for (const contact of previewContacts) {
       processed++;
       logger.info(
-        `⏳ [${processed}/${previewContacts.length}] Researching: ${contact.fields.Name || contact.id}`
+        `⏳ [${processed}/${previewContacts.length}] Researching: ${
+          contact.fields.Name || contact.id
+        }`
       );
       try {
         const research = await this.researchContact(contact);
@@ -104,7 +106,10 @@ export class PerplexityContactResearch {
     } else {
       // Add/update the confidence and updated date line if not present
       if (!intelligence.includes('✅')) {
-        intelligence += `\n✅ Research Confidence: ${confidence} | Updated: ${format(new Date(), 'MMM yyyy')}`;
+        intelligence += `\n✅ Research Confidence: ${confidence} | Updated: ${format(
+          new Date(),
+          'MMM yyyy'
+        )}`;
       }
     }
 

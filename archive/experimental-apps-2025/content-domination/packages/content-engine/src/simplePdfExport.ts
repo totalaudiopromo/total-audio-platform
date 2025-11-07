@@ -346,15 +346,21 @@ export function downloadSimplePDF(
                   <div class="summary-label">Total Contacts</div>
                 </div>
                 <div class="summary-item">
-                  <div class="summary-number">${contacts.filter(c => c.validation?.isValid).length}</div>
+                  <div class="summary-number">${
+                    contacts.filter(c => c.validation?.isValid).length
+                  }</div>
                   <div class="summary-label">Valid Emails</div>
                 </div>
                 <div class="summary-item">
-                  <div class="summary-number">${contacts.filter(c => c.confidence === 'High').length}</div>
+                  <div class="summary-number">${
+                    contacts.filter(c => c.confidence === 'High').length
+                  }</div>
                   <div class="summary-label">High Confidence</div>
                 </div>
                 <div class="summary-item">
-                  <div class="summary-number">${Math.round(contacts.reduce((sum, c) => sum + c.enrichmentScore, 0) / contacts.length)}</div>
+                  <div class="summary-number">${Math.round(
+                    contacts.reduce((sum, c) => sum + c.enrichmentScore, 0) / contacts.length
+                  )}</div>
                   <div class="summary-label">Avg Score</div>
                 </div>
               </div>
@@ -399,13 +405,27 @@ export function downloadSimplePDF(
                     }
                     
                     <div class="metrics-row">
-                      <span class="score ${contact.enrichmentScore >= 80 ? 'score-high' : contact.enrichmentScore >= 60 ? 'score-medium' : 'score-low'}">
+                      <span class="score ${
+                        contact.enrichmentScore >= 80
+                          ? 'score-high'
+                          : contact.enrichmentScore >= 60
+                          ? 'score-medium'
+                          : 'score-low'
+                      }">
                         ${contact.enrichmentScore}/100
                       </span>
-                      <span class="confidence ${contact.confidence === 'High' ? 'confidence-high' : contact.confidence === 'Medium' ? 'confidence-medium' : 'confidence-low'}">
+                      <span class="confidence ${
+                        contact.confidence === 'High'
+                          ? 'confidence-high'
+                          : contact.confidence === 'Medium'
+                          ? 'confidence-medium'
+                          : 'confidence-low'
+                      }">
                         ${contact.confidence} Confidence
                       </span>
-                      <span class="validation-badge ${contact.validation?.isValid ? 'validation-valid' : 'validation-invalid'}">
+                      <span class="validation-badge ${
+                        contact.validation?.isValid ? 'validation-valid' : 'validation-invalid'
+                      }">
                         ${contact.validation?.isValid ? '✅ Valid Email' : '❌ Invalid Email'}
                       </span>
                     </div>

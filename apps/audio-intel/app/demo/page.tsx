@@ -229,7 +229,9 @@ export default function SimpleAudioIntelDemo() {
         contactsForExport,
         {
           format,
-          filename: `audio-intel-contacts-${new Date().toISOString().split('T')[0]}.${format === 'excel' ? 'xlsx' : format}`,
+          filename: `audio-intel-contacts-${new Date().toISOString().split('T')[0]}.${
+            format === 'excel' ? 'xlsx' : format
+          }`,
           includeMetadata: true,
         },
         'Demo User',
@@ -240,7 +242,9 @@ export default function SimpleAudioIntelDemo() {
 
       if (result.success) {
         setExportProgress(
-          `Export completed! ${contactsForExport.length} contacts exported to ${format.toUpperCase()}`
+          `Export completed! ${
+            contactsForExport.length
+          } contacts exported to ${format.toUpperCase()}`
         );
         setTimeout(() => {
           setIsExporting(false);
@@ -394,8 +398,8 @@ export default function SimpleAudioIntelDemo() {
                     activeTab === 'process'
                       ? 'bg-blue-100 border-blue-500 scale-105'
                       : hasEnrichedData
-                        ? 'bg-green-100 border-green-500'
-                        : 'bg-white border-gray-300 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
+                      ? 'bg-green-100 border-green-500'
+                      : 'bg-white border-gray-300 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
                   }`}
                 >
                   <div
@@ -403,8 +407,8 @@ export default function SimpleAudioIntelDemo() {
                       hasEnrichedData
                         ? 'bg-green-500 text-white shadow-lg'
                         : activeTab === 'process'
-                          ? 'bg-blue-500 text-white shadow-lg'
-                          : 'bg-slate-200 text-slate-600'
+                        ? 'bg-blue-500 text-white shadow-lg'
+                        : 'bg-slate-200 text-slate-600'
                     }`}
                   >
                     {hasEnrichedData ? '•' : '1'}
@@ -415,8 +419,8 @@ export default function SimpleAudioIntelDemo() {
                         activeTab === 'process'
                           ? 'text-blue-700'
                           : hasEnrichedData
-                            ? 'text-green-700'
-                            : 'text-slate-600'
+                          ? 'text-green-700'
+                          : 'text-slate-600'
                       }`}
                     >
                       Process & Enrich
@@ -453,8 +457,8 @@ export default function SimpleAudioIntelDemo() {
                     activeTab === 'analytics' && hasEnrichedData
                       ? 'bg-blue-100 border-blue-500 scale-105'
                       : hasEnrichedData
-                        ? 'bg-white border-gray-300 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] cursor-pointer'
-                        : 'bg-gray-50 border-gray-200 opacity-60'
+                      ? 'bg-white border-gray-300 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] cursor-pointer'
+                      : 'bg-gray-50 border-gray-200 opacity-60'
                   }`}
                   onClick={() => hasEnrichedData && setActiveTab('analytics')}
                   role={hasEnrichedData ? 'button' : undefined}
@@ -468,8 +472,8 @@ export default function SimpleAudioIntelDemo() {
                       activeTab === 'analytics' && hasEnrichedData
                         ? 'bg-blue-500 text-white shadow-lg'
                         : hasEnrichedData
-                          ? 'bg-slate-300 text-slate-700'
-                          : 'bg-slate-200 text-slate-500'
+                        ? 'bg-slate-300 text-slate-700'
+                        : 'bg-slate-200 text-slate-500'
                     }`}
                   >
                     <TrendingUp className="w-8 h-8" />
@@ -480,8 +484,8 @@ export default function SimpleAudioIntelDemo() {
                         activeTab === 'analytics' && hasEnrichedData
                           ? 'text-blue-700'
                           : hasEnrichedData
-                            ? 'text-slate-700'
-                            : 'text-slate-500'
+                          ? 'text-slate-700'
+                          : 'text-slate-500'
                       }`}
                     >
                       Analytics & Export
@@ -525,7 +529,9 @@ export default function SimpleAudioIntelDemo() {
                 </TabsTrigger>
                 <TabsTrigger
                   value="analytics"
-                  className={`text-xl font-bold py-4 ${!canAccessAnalytics ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  className={`text-xl font-bold py-4 ${
+                    !canAccessAnalytics ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
                   disabled={!canAccessAnalytics}
                   title={
                     !canAccessAnalytics

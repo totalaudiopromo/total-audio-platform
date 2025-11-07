@@ -73,13 +73,10 @@ export class DataQualityAgent {
     });
 
     // Check for duplicate headers
-    const headerCounts = headers.reduce(
-      (acc, header) => {
-        acc[header] = (acc[header] || 0) + 1;
-        return acc;
-      },
-      {} as Record<string, number>
-    );
+    const headerCounts = headers.reduce((acc, header) => {
+      acc[header] = (acc[header] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
 
     Object.entries(headerCounts).forEach(([header, count]) => {
       if (count > 1) {
@@ -101,7 +98,9 @@ export class DataQualityAgent {
         issues.push({
           type: 'missing_data',
           severity: 'low',
-          description: `Row ${rowIndex + 2} is mostly empty (${Math.round(emptyPercentage * 100)}% empty)`,
+          description: `Row ${rowIndex + 2} is mostly empty (${Math.round(
+            emptyPercentage * 100
+          )}% empty)`,
           row: rowIndex,
           suggestion: 'Consider removing this row',
         });

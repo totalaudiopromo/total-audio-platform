@@ -248,7 +248,9 @@ export default function UKSocialMediaHub({ compact = false }: UKSocialMediaHubPr
               <div className="flex items-center space-x-3">
                 {getStatusIcon(post.status)}
                 <span
-                  className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColour(post.platform)}`}
+                  className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColour(
+                    post.platform
+                  )}`}
                 >
                   {post.platform}
                 </span>

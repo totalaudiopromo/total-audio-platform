@@ -117,7 +117,9 @@ app.get('/api/export/:campaignId?', (req, res) => {
 
     res.set({
       'Content-Type': 'text/csv',
-      'Content-Disposition': `attachment; filename="tracking-${campaignId || 'all'}-${Date.now()}.csv"`,
+      'Content-Disposition': `attachment; filename="tracking-${
+        campaignId || 'all'
+      }-${Date.now()}.csv"`,
     });
 
     res.send(csv);

@@ -89,13 +89,19 @@ function createUsageExamples(manifest) {
 ## Available Textures
 
 ### Paper Textures (${manifest.textures.paper.length} available)
-${manifest.textures.paper.map((texture, i) => `- \`texture-paper-${i + 1}\`: ${texture.split('/').pop()}`).join('\n')}
+${manifest.textures.paper
+  .map((texture, i) => `- \`texture-paper-${i + 1}\`: ${texture.split('/').pop()}`)
+  .join('\n')}
 
 ### Grain Textures (${manifest.textures.grain.length} available)
-${manifest.textures.grain.map((texture, i) => `- \`texture-grain-${i + 1}\`: ${texture.split('/').pop()}`).join('\n')}
+${manifest.textures.grain
+  .map((texture, i) => `- \`texture-grain-${i + 1}\`: ${texture.split('/').pop()}`)
+  .join('\n')}
 
 ### Luma Textures (${manifest.textures.luma.length} available)
-${manifest.textures.luma.map((texture, i) => `- \`texture-luma-${i + 1}\`: ${texture.split('/').pop()}`).join('\n')}
+${manifest.textures.luma
+  .map((texture, i) => `- \`texture-luma-${i + 1}\`: ${texture.split('/').pop()}`)
+  .join('\n')}
 
 ## Usage Examples
 
@@ -194,7 +200,11 @@ ${manifest.textures.luma.map((texture, i) => `- \`texture-luma-${i + 1}\`: ${tex
 ## Performance Notes
 
 - Total texture files: ${Object.keys(manifest.fileSizes).length}
-- Total size: ${(Object.values(manifest.fileSizes).reduce((sum, info) => sum + info.size, 0) / 1024 / 1024).toFixed(2)}MB
+- Total size: ${(
+    Object.values(manifest.fileSizes).reduce((sum, info) => sum + info.size, 0) /
+    1024 /
+    1024
+  ).toFixed(2)}MB
 - Consider lazy loading for textures below the fold
 - Use WebP conversion for production (requires ImageMagick)
 

@@ -172,10 +172,10 @@ function generateMockCustomerJourneys(): CustomerJourney[] {
           j === numTouchPoints - 1 && status === 'converted'
             ? ['purchase']
             : touchpointType === 'trial'
-              ? ['signup', 'trial-start']
-              : touchpointType === 'consideration'
-                ? ['email-signup']
-                : [],
+            ? ['signup', 'trial-start']
+            : touchpointType === 'consideration'
+            ? ['email-signup']
+            : [],
         value:
           status === 'converted' && j === numTouchPoints - 1
             ? 15 + Math.random() * 135 // £15-150 for final conversion
@@ -494,7 +494,9 @@ export async function GET() {
       `${analytics.mostInfluentialChannels[0]?.channel} is your most influential channel with ${analytics.mostInfluentialChannels[0]?.influence}% conversion rate`,
       `Optimal journey length is ${analytics.optimalJourneyLength} days for maximum conversion probability`,
       `${analytics.dropOffPoints[1]?.dropOffRate}% of users drop off between consideration and trial phases`,
-      `Multi-channel journeys show ${Math.round(analytics.conversionRate * 1.4)}% higher conversion rates than single-channel`,
+      `Multi-channel journeys show ${Math.round(
+        analytics.conversionRate * 1.4
+      )}% higher conversion rates than single-channel`,
     ];
 
     // Generate recommendations
@@ -502,8 +504,12 @@ export async function GET() {
       `Focus on ${analytics.mostInfluentialChannels[0]?.channel} optimization - your highest converting channel`,
       `Reduce friction in trial signup to address 48% drop-off rate at consideration stage`,
       `Implement retargeting campaigns for users who abandon after ${analytics.optimalJourneyLength} days`,
-      `Create content series for ${analytics.commonPaths[0]?.path.join(' → ')} journey - your most common path`,
-      `Set up automated nurture sequences for journeys exceeding ${analytics.averageJourneyLength + 14} days`,
+      `Create content series for ${analytics.commonPaths[0]?.path.join(
+        ' → '
+      )} journey - your most common path`,
+      `Set up automated nurture sequences for journeys exceeding ${
+        analytics.averageJourneyLength + 14
+      } days`,
     ];
 
     const data: CustomerJourneyData = {

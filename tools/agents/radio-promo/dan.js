@@ -485,12 +485,9 @@ class Dan extends EventEmitter {
 
       this.timers.gmailDailyTimeout = setTimeout(() => {
         this.runDailyGmailSync();
-        this.timers.gmailDailyInterval = setInterval(
-          () => {
-            this.runDailyGmailSync();
-          },
-          24 * 60 * 60 * 1000
-        );
+        this.timers.gmailDailyInterval = setInterval(() => {
+          this.runDailyGmailSync();
+        }, 24 * 60 * 60 * 1000);
       }, delay);
     };
 

@@ -589,7 +589,7 @@ export const UploadSection: React.FC<UploadSectionProps> = ({ onUploadComplete }
 
       const response = await fetch('/api/upload', {
         method: 'POST',
-        body: formData
+        body: formData,
       });
 
       const result = await response.json();
@@ -624,7 +624,10 @@ export const UploadSection: React.FC<UploadSectionProps> = ({ onUploadComplete }
           className={`border-2 border-dashed rounded-xl p-12 transition-colors ${
             dragOver ? 'border-blue-400 bg-blue-50' : 'border-gray-300'
           }`}
-          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+          onDragOver={e => {
+            e.preventDefault();
+            setDragOver(true);
+          }}
           onDragLeave={() => setDragOver(false)}
           onDrop={handleDrop}
         >
@@ -637,7 +640,7 @@ export const UploadSection: React.FC<UploadSectionProps> = ({ onUploadComplete }
           <input
             type="file"
             accept=".mp3,.wav,.m4a"
-            onChange={(e) => e.target.files?.[0] && handleFileUpload(e.target.files[0])}
+            onChange={e => e.target.files?.[0] && handleFileUpload(e.target.files[0])}
             className="hidden"
             id="file-upload"
             disabled={uploading}
@@ -653,9 +656,7 @@ export const UploadSection: React.FC<UploadSectionProps> = ({ onUploadComplete }
             {uploading ? 'Uploading...' : 'Choose Audio File'}
           </label>
 
-          <p className="text-sm text-gray-500 mt-4">
-            Supports MP3, WAV, M4A up to 50MB
-          </p>
+          <p className="text-sm text-gray-500 mt-4">Supports MP3, WAV, M4A up to 50MB</p>
         </div>
       </div>
     </div>

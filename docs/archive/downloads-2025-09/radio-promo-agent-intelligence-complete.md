@@ -91,10 +91,12 @@ Your Google Chat exports contain a goldmine of Liberty Music PR's internal campa
 From your chat exports, I can extract:
 
 1. **Success Language Patterns**
+
    - "delighted", "stoked", "big ups to..."
    - Team celebration language indicates campaign quality
 
 2. **Relationship Strength Indicators**
+
    - Credit attribution patterns
    - Response time to success mentions
    - Follow-up conversation initiation
@@ -178,11 +180,13 @@ Your WARM reports contain:
 ## Next Steps for Development
 
 1. **Process All Chat Data:**
+
    - Extract every Success Shout Out mention
    - Map all industry relationships mentioned
    - Identify timing patterns in team communications
 
 2. **WARM API Integration:**
+
    - Connect play tracking to success pattern recognition
    - Auto-generate success amplification campaigns
    - Build predictive models for campaign outcomes

@@ -393,7 +393,9 @@ class AudioIntelContentAgent {
       };
 
       // Combine all sections
-      content.fullText = `${content.introduction}\n\n${content.sections.join('\n\n')}\n\n${content.conclusion}\n\n${content.callToAction}`;
+      content.fullText = `${content.introduction}\n\n${content.sections.join('\n\n')}\n\n${
+        content.conclusion
+      }\n\n${content.callToAction}`;
       content.actualWordCount = content.fullText.split(' ').length;
       content.seoScore = await this.calculateSEOScore(content.fullText, keywords);
       content.readabilityScore = this.calculateReadability(content.fullText);
@@ -523,7 +525,9 @@ class AudioIntelContentAgent {
 
   // Helper methods (simplified implementations)
   async generateHeadline(input) {
-    return `${input.artist?.name || 'Artist'} ${input.type === 'musicRelease' ? 'Releases New Single' : 'Makes Major Announcement'} "${input.title || 'New Project'}"`;
+    return `${input.artist?.name || 'Artist'} ${
+      input.type === 'musicRelease' ? 'Releases New Single' : 'Makes Major Announcement'
+    } "${input.title || 'New Project'}"`;
   }
 
   generateDateline(location) {
@@ -536,19 +540,29 @@ class AudioIntelContentAgent {
   }
 
   async generateLead(input) {
-    return `${input.artist?.name || 'The artist'} today announced ${input.announcement || 'their latest project'}, marking a significant milestone in their ${input.genre || 'music'} career.`;
+    return `${input.artist?.name || 'The artist'} today announced ${
+      input.announcement || 'their latest project'
+    }, marking a significant milestone in their ${input.genre || 'music'} career.`;
   }
 
   async generatePressReleaseBody(input) {
-    return `The ${input.type || 'release'} represents ${input.description || 'a new creative direction'} for ${input.artist?.name || 'the artist'}. ${input.additionalInfo || 'More details will be announced soon.'}`;
+    return `The ${input.type || 'release'} represents ${
+      input.description || 'a new creative direction'
+    } for ${input.artist?.name || 'the artist'}. ${
+      input.additionalInfo || 'More details will be announced soon.'
+    }`;
   }
 
   async generateBoilerplate(artist) {
-    return `About ${artist?.name || 'The Artist'}: ${artist?.bio || 'An innovative artist pushing the boundaries of modern music.'} For more information, visit ${artist?.website || 'www.artist.com'}.`;
+    return `About ${artist?.name || 'The Artist'}: ${
+      artist?.bio || 'An innovative artist pushing the boundaries of modern music.'
+    } For more information, visit ${artist?.website || 'www.artist.com'}.`;
   }
 
   generateContactInfo(contact) {
-    return `For media inquiries, contact:\n${contact?.name || 'Media Contact'}\n${contact?.email || 'media@totalaudiopromo.com'}\n${contact?.phone || '555-123-4567'}`;
+    return `For media inquiries, contact:\n${contact?.name || 'Media Contact'}\n${
+      contact?.email || 'media@totalaudiopromo.com'
+    }\n${contact?.phone || '555-123-4567'}`;
   }
 
   async analyzeSEO(input) {
@@ -570,9 +584,15 @@ class AudioIntelContentAgent {
 
   async generateSocialText(input, platform, contentType) {
     const templates = {
-      instagram: `🎵 ${input.title || 'New Music'} by ${input.artist?.name || 'Artist'} 🎵\n\n${input.description || 'Amazing new track!'}\n\nWhat do you think? 👇`,
-      twitter: `New drop 🔥 ${input.title || 'Track'} by ${input.artist?.name || 'Artist'} is ${['incredible', 'amazing', 'fire', 'stunning'][Math.floor(Math.random() * 4)]}!`,
-      facebook: `We're excited to share ${input.title || 'new music'} by ${input.artist?.name || 'Artist'}!\n\n${input.description || 'Check it out and let us know what you think!'}`,
+      instagram: `🎵 ${input.title || 'New Music'} by ${input.artist?.name || 'Artist'} 🎵\n\n${
+        input.description || 'Amazing new track!'
+      }\n\nWhat do you think? 👇`,
+      twitter: `New drop 🔥 ${input.title || 'Track'} by ${input.artist?.name || 'Artist'} is ${
+        ['incredible', 'amazing', 'fire', 'stunning'][Math.floor(Math.random() * 4)]
+      }!`,
+      facebook: `We're excited to share ${input.title || 'new music'} by ${
+        input.artist?.name || 'Artist'
+      }!\n\n${input.description || 'Check it out and let us know what you think!'}`,
     };
     return templates[platform] || templates.instagram;
   }
@@ -637,9 +657,15 @@ class AudioIntelContentAgent {
 
   async generateEmailSubject(input, campaignType) {
     const subjects = {
-      announcement: `🎵 New from ${input.artist?.name || 'Artist'}: ${input.title || 'Latest Release'}`,
-      newsletter: `${input.artist?.name || 'Artist'} Monthly Update - ${new Date().toLocaleDateString('en-US', { month: 'long' })}`,
-      promotional: `Don't miss: ${input.title || 'Special Offer'} from ${input.artist?.name || 'Artist'}`,
+      announcement: `🎵 New from ${input.artist?.name || 'Artist'}: ${
+        input.title || 'Latest Release'
+      }`,
+      newsletter: `${
+        input.artist?.name || 'Artist'
+      } Monthly Update - ${new Date().toLocaleDateString('en-US', { month: 'long' })}`,
+      promotional: `Don't miss: ${input.title || 'Special Offer'} from ${
+        input.artist?.name || 'Artist'
+      }`,
     };
     return subjects[campaignType] || subjects.announcement;
   }
@@ -649,11 +675,17 @@ class AudioIntelContentAgent {
   }
 
   async generateEmailBodyHTML(input, campaignType) {
-    return `<h1>${input.title || 'Update'}</h1><p>${input.description || 'We have exciting news to share!'}</p><a href="${input.link || '#'}" style="background: #007cba; color: white; padding: 10px 20px; text-decoration: none;">Listen Now</a>`;
+    return `<h1>${input.title || 'Update'}</h1><p>${
+      input.description || 'We have exciting news to share!'
+    }</p><a href="${
+      input.link || '#'
+    }" style="background: #007cba; color: white; padding: 10px 20px; text-decoration: none;">Listen Now</a>`;
   }
 
   async generateEmailBodyText(input, campaignType) {
-    return `${input.title || 'Update'}\n\n${input.description || 'We have exciting news to share!'}\n\nListen now: ${input.link || 'link-here'}`;
+    return `${input.title || 'Update'}\n\n${
+      input.description || 'We have exciting news to share!'
+    }\n\nListen now: ${input.link || 'link-here'}`;
   }
 
   getPersonalizationTokens(input) {
@@ -678,16 +710,24 @@ class AudioIntelContentAgent {
   }
 
   async generateBioHook(artistData) {
-    return `${artistData.name} is redefining ${artistData.genre || 'music'} with their unique sound.`;
+    return `${artistData.name} is redefining ${
+      artistData.genre || 'music'
+    } with their unique sound.`;
   }
   async generateBackground(artistData) {
-    return `Originally from ${artistData.location || 'their hometown'}, ${artistData.name} began their musical journey ${artistData.startYear || 'years ago'}.`;
+    return `Originally from ${artistData.location || 'their hometown'}, ${
+      artistData.name
+    } began their musical journey ${artistData.startYear || 'years ago'}.`;
   }
   async generateAchievements(artistData) {
-    return `Their work has been featured ${artistData.achievements || 'across multiple platforms'}.`;
+    return `Their work has been featured ${
+      artistData.achievements || 'across multiple platforms'
+    }.`;
   }
   async generateCurrentWork(artistData) {
-    return `Currently, ${artistData.name} is working on ${artistData.currentProject || 'new material'}.`;
+    return `Currently, ${artistData.name} is working on ${
+      artistData.currentProject || 'new material'
+    }.`;
   }
   async generateFuturePlans(artistData) {
     return `Looking ahead, fans can expect ${artistData.futurePlans || 'exciting new releases'}.`;
@@ -712,7 +752,9 @@ class AudioIntelContentAgent {
     return `${topic}: A Complete Guide to ${keywords[0] || 'Success'}`;
   }
   async generateMetaDescription(topic, keywords) {
-    return `Discover everything about ${topic}. ${keywords.join(', ')}. Expert insights and practical tips.`;
+    return `Discover everything about ${topic}. ${keywords.join(
+      ', '
+    )}. Expert insights and practical tips.`;
   }
   async generateIntroduction(topic) {
     return `In this comprehensive guide, we'll explore ${topic} and provide actionable insights.`;

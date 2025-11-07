@@ -162,7 +162,9 @@ function printAgents() {
   for (const [category, data] of Object.entries(agents)) {
     console.log(`${data.color}${colors.bright}${category}${colors.reset}`);
     console.log(
-      `${data.color}${'='.repeat(category.replace(/🤖|⚠️|🎯|🎵|🏢|🔧/g, '').length + 2)}${colors.reset}`
+      `${data.color}${'='.repeat(category.replace(/🤖|⚠️|🎯|🎵|🏢|🔧/g, '').length + 2)}${
+        colors.reset
+      }`
     );
 
     data.agents.forEach(agent => {

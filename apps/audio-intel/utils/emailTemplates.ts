@@ -271,7 +271,9 @@ export const betaEndingEmail = (data: EmailTemplateData) =>
   <div class="greeting">Hi ${data.firstName || 'there'},</div>
 
   <div class="body-text">
-    Hope Audio Intel has been useful for your contact research! The beta testing period ends in <strong>${data.betaDaysLeft || 4} days</strong>.
+    Hope Audio Intel has been useful for your contact research! The beta testing period ends in <strong>${
+      data.betaDaysLeft || 4
+    } days</strong>.
   </div>
 
   <div class="body-text">
@@ -291,7 +293,9 @@ export const betaEndingEmail = (data: EmailTemplateData) =>
   </div>
 
   <div style="text-align: center;">
-    <a href="${data.pricingUrl || 'https://intel.totalaudiopromo.com/pricing'}" class="cta-button">Claim Your 50% Discount →</a>
+    <a href="${
+      data.pricingUrl || 'https://intel.totalaudiopromo.com/pricing'
+    }" class="cta-button">Claim Your 50% Discount →</a>
     <br>
     <a href="https://intel.totalaudiopromo.com/upload" class="secondary-button">Continue Using Beta</a>
   </div>
@@ -338,7 +342,9 @@ export const betaFinalEmail = (data: EmailTemplateData) =>
   </div>
 
   <div style="text-align: center;">
-    <a href="${data.upgradeUrl || 'https://intel.totalaudiopromo.com/pricing'}" class="cta-button">Get 50% Off Forever →</a>
+    <a href="${
+      data.upgradeUrl || 'https://intel.totalaudiopromo.com/pricing'
+    }" class="cta-button">Get 50% Off Forever →</a>
   </div>
 
   <div class="body-text">

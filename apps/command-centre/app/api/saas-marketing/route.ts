@@ -17,11 +17,15 @@ export async function POST(req: NextRequest) {
     switch (action) {
       case 'generate_blog':
         const keywords = topic?.keywords || [];
-        command = `node "${agentPath}" blog ${product || 'audio-intel'} "${topic?.title || 'contact enrichment'}" ${keywords.join(' ')}`;
+        command = `node "${agentPath}" blog ${product || 'audio-intel'} "${
+          topic?.title || 'contact enrichment'
+        }" ${keywords.join(' ')}`;
         break;
 
       case 'generate_social':
-        command = `node "${agentPath}" social ${product || 'audio-intel'} ${platform || 'linkedin'} ${contentType || 'update'}`;
+        command = `node "${agentPath}" social ${product || 'audio-intel'} ${
+          platform || 'linkedin'
+        } ${contentType || 'update'}`;
         break;
 
       case 'generate_calendar':
@@ -177,7 +181,11 @@ function generateFallbackContent(
 function generateSocialPost(info: any, platform: string, contentType: string): string {
   const posts = {
     linkedin: {
-      update: `🎵 Exciting news! ${info.name} is transforming how music professionals manage their contacts.\n\n✨ ${info.benefits.join('\n✨ ')}\n\nReady to streamline your music promotion? Try ${info.name} today!`,
+      update: `🎵 Exciting news! ${
+        info.name
+      } is transforming how music professionals manage their contacts.\n\n✨ ${info.benefits.join(
+        '\n✨ '
+      )}\n\nReady to streamline your music promotion? Try ${info.name} today!`,
       announcement: `🚀 Major Update: ${info.name} just got even better!\n\nNew features:\n• Enhanced contact enrichment\n• Faster processing\n• Improved accuracy\n\nMusic industry professionals are seeing 3x better outreach results.`,
     },
     twitter: {
@@ -197,11 +205,20 @@ function generateBlogContent(info: any, topic?: any): string {
   return `
 # ${topic?.title || `How ${info.name} Transforms Music Promotion`}
 
-The music industry is evolving rapidly, and success depends on making the right connections at the right time. ${info.name} addresses this challenge by ${info.description.toLowerCase()}.
+The music industry is evolving rapidly, and success depends on making the right connections at the right time. ${
+    info.name
+  } addresses this challenge by ${info.description.toLowerCase()}.
 
 ## Key Benefits
 
-${info.benefits.map((benefit: string, index: number) => `${index + 1}. **${benefit}**: Streamline your workflow and focus on what matters most - your music.`).join('\n\n')}
+${info.benefits
+  .map(
+    (benefit: string, index: number) =>
+      `${
+        index + 1
+      }. **${benefit}**: Streamline your workflow and focus on what matters most - your music.`
+  )
+  .join('\n\n')}
 
 ## Getting Started
 
@@ -228,7 +245,9 @@ function generateCalendarContent(info: any, weeks: number) {
         },
         {
           platform: 'twitter',
-          content: `Music promotion tip: Use ${info.name} to ${info.benefits[week % info.benefits.length].toLowerCase()}`,
+          content: `Music promotion tip: Use ${info.name} to ${info.benefits[
+            week % info.benefits.length
+          ].toLowerCase()}`,
           day: 'Wednesday',
         },
       ],

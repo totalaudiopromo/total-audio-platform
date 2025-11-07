@@ -425,7 +425,9 @@ async function cleanUpContacts() {
             try {
               await updateRecord(base.id, table.name, record.id, updates);
               console.log(
-                `     ✅ Updated: ${fields['First Name'] || 'Unknown'} - ${Object.keys(updates).join(', ')}`
+                `     ✅ Updated: ${fields['First Name'] || 'Unknown'} - ${Object.keys(
+                  updates
+                ).join(', ')}`
               );
               totalCleaned++;
 

@@ -5,6 +5,7 @@
 You have **two separate Mailchimp accounts**:
 
 1. **Liberty Music PR**: `chrisschofield@libertymusicpr.com`
+
    - 498 contacts
    - List ID: `137bcedead`
    - API Key: `83f53d36bd6667b4c56015e8a0d1ed66-us13`

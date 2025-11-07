@@ -157,6 +157,7 @@ export async function GET() {
 **Workflow**:
 
 1. **GET**: Fetch recent news from RSS feeds
+
    - Music Business Worldwide
    - Complete Music Update
    - Music Week
@@ -207,10 +208,12 @@ Format your response as JSON: { "subject": "...", "content": "..." }`;
 **Endpoints**:
 
 1. **GET** - List recent broadcasts
+
    - Fetches from ConvertKit API v3
    - Returns broadcast metadata (id, subject, status)
 
 2. **POST** - Create broadcast (draft or scheduled)
+
    - Draft: `{ subject, content, public: false }`
    - Scheduled: `{ subject, content, published_at, public: true }`
    - Returns broadcast ID and status
@@ -278,13 +281,11 @@ Format your response as JSON: { "subject": "...", "content": "..." }`;
 **Implementation**: Script tag in root layout with conditional rendering
 
 ```typescript
-{plausibleDomain && (
-  <script
-    defer
-    data-domain={plausibleDomain}
-    src="https://plausible.io/js/script.js"
-  ></script>
-)}
+{
+  plausibleDomain && (
+    <script defer data-domain={plausibleDomain} src="https://plausible.io/js/script.js"></script>
+  );
+}
 ```
 
 **Configuration**: `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` environment variable
@@ -618,21 +619,25 @@ NEXT_PUBLIC_SUPABASE_URL="..."
 ### Commit History (Phase 9D-2)
 
 1. **3034d38** - `feat: connect ops-console dashboards to Phase 9B live data (Phase 9D-2)`
+
    - Created 4 API routes (agents, feedback, growth, health)
    - Updated 4 dashboard pages with live data fetching
    - Removed mock data, added green "Active" badges
 
 2. **d1b4596** - `feat: implement social integrations - BlueSky + Threads (Phase 9D-2A)`
+
    - Created BlueSky API route with App Password auth
    - Created Threads API stub (beta status)
    - Updated social dashboard with live status checks
 
 3. **f8fd347** - `feat: implement automation APIs - newsjacker + email (Phase 9D-2B)`
+
    - Created newsjacker API with RSS parsing + Claude 3.5 Sonnet
    - Created email automation API with ConvertKit CRUD
    - Both behind FEATURE_AUTOMATION flag
 
 4. **bfeb63a** - `feat: add SEO and analytics integration (Phase 9D-2C)`
+
    - Created sitemap.ts with dynamic routes
    - Created robots.txt with AI crawler blocking
    - Integrated Plausible analytics in layout
@@ -788,10 +793,12 @@ Already configured in `middleware.ts` (Phase 9D-1):
 ### Immediate (Phase 9E)
 
 1. **Resolve TypeScript Errors**:
+
    - Fix `@total-audio/core-db/server` module resolution
    - Clean up pre-existing API route type errors
 
 2. **Production Deployment**:
+
    - Deploy to Vercel with environment variables
    - Verify Lighthouse scores in production (target: Performance ≥90)
    - Test all API routes with production database
@@ -804,11 +811,13 @@ Already configured in `middleware.ts` (Phase 9D-1):
 ### Short-term (Phase 9F)
 
 4. **Threads Integration Completion**:
+
    - Apply for Meta developer program
    - Complete OAuth flow
    - Implement posting functionality
 
 5. **Newsjacker Production Hardening**:
+
    - Replace regex RSS parsing with `fast-xml-parser`
    - Add error handling for feed timeouts
    - Implement caching for article dedupe
@@ -821,6 +830,7 @@ Already configured in `middleware.ts` (Phase 9D-1):
 ### Long-term (Phase 10)
 
 7. **Automation Expansion**:
+
    - Add more social platforms (Twitter, LinkedIn)
    - Implement campaign scheduling UI
    - Build template library for newsletters

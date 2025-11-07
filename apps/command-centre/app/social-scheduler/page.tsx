@@ -333,7 +333,9 @@ export default function SocialSchedulerPage() {
                   <div className="flex items-center gap-3">
                     {getStatusIcon(post.status)}
                     <span
-                      className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(post.status)}`}
+                      className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(
+                        post.status
+                      )}`}
                     >
                       {post.status}
                     </span>
@@ -356,7 +358,9 @@ export default function SocialSchedulerPage() {
                     {post.platforms.map(platform => (
                       <span
                         key={platform}
-                        className={`px-2 py-1 rounded text-xs font-medium ${getPlatformColor(platform)}`}
+                        className={`px-2 py-1 rounded text-xs font-medium ${getPlatformColor(
+                          platform
+                        )}`}
                       >
                         {platform}
                       </span>

@@ -33,7 +33,9 @@ async function getRealCampaignData() {
         const data = await warmAPI.getCampaignPlaySummary(artist, '2025-09-01');
         if (data.totalPlays > 0) {
           console.log(
-            `  ✅ ${artist}: ${data.totalPlays} plays across ${Object.keys(data.stationBreakdown).length} stations`
+            `  ✅ ${artist}: ${data.totalPlays} plays across ${
+              Object.keys(data.stationBreakdown).length
+            } stations`
           );
         }
       } catch (err) {

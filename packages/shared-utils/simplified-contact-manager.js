@@ -217,19 +217,34 @@ class SimplifiedContactManager {
         
         <h2>Hi *|FNAME|*,</h2>
         
-        <p>Hope you're well! I wanted to share a fantastic new ${campaignData.genre} track that would be perfect for *|STATION|*.</p>
+        <p>Hope you're well! I wanted to share a fantastic new ${
+          campaignData.genre
+        } track that would be perfect for *|STATION|*.</p>
         
         <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0; color: #333;">${campaignData.artistName} - "${campaignData.trackName}"</h3>
-            <p style="margin-bottom: 0;">${campaignData.artistBio || 'Exciting new artist with a fresh sound perfect for your audience.'}</p>
+            <h3 style="margin-top: 0; color: #333;">${campaignData.artistName} - "${
+      campaignData.trackName
+    }"</h3>
+            <p style="margin-bottom: 0;">${
+              campaignData.artistBio ||
+              'Exciting new artist with a fresh sound perfect for your audience.'
+            }</p>
         </div>
         
         <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h4 style="margin-top: 0;">🎵 Listen & Download:</h4>
-            <p><strong>Listen Now:</strong> <a href="${campaignData.soundcloudUrl}" target="_blank" style="color: #1976d2;">SoundCloud Preview</a></p>
-            <p><strong>Download MP3/WAV:</strong> <a href="${assets.mp3WavDownload}" target="_blank" style="color: #1976d2;">Audio Files</a></p>
-            <p><strong>Press Release:</strong> <a href="${assets.pressReleaseDownload}" target="_blank" style="color: #1976d2;">Press Materials</a></p>
-            <p><strong>Promo Photos & Artwork:</strong> <a href="${assets.promoPhotosDownload}" target="_blank" style="color: #1976d2;">Visual Assets</a></p>
+            <p><strong>Listen Now:</strong> <a href="${
+              campaignData.soundcloudUrl
+            }" target="_blank" style="color: #1976d2;">SoundCloud Preview</a></p>
+            <p><strong>Download MP3/WAV:</strong> <a href="${
+              assets.mp3WavDownload
+            }" target="_blank" style="color: #1976d2;">Audio Files</a></p>
+            <p><strong>Press Release:</strong> <a href="${
+              assets.pressReleaseDownload
+            }" target="_blank" style="color: #1976d2;">Press Materials</a></p>
+            <p><strong>Promo Photos & Artwork:</strong> <a href="${
+              assets.promoPhotosDownload
+            }" target="_blank" style="color: #1976d2;">Visual Assets</a></p>
         </div>
         
         <p><strong>Release Date:</strong> ${campaignData.releaseDate}</p>

@@ -391,7 +391,10 @@ function normalizeId(id) {
   const clean = id.replace(/[^0-9a-fA-F]/g, '').toLowerCase();
   if (clean.length !== 32) return null;
   // Return hyphenated UUID format Notion accepts: 8-4-4-4-12
-  return `${clean.slice(0, 8)}-${clean.slice(8, 12)}-${clean.slice(12, 16)}-${clean.slice(16, 20)}-${clean.slice(20)}`;
+  return `${clean.slice(0, 8)}-${clean.slice(8, 12)}-${clean.slice(12, 16)}-${clean.slice(
+    16,
+    20
+  )}-${clean.slice(20)}`;
 }
 
 // Keep process alive

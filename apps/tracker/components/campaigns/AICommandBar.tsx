@@ -112,7 +112,9 @@ export function AICommandBar({ campaigns, onCommand }: AICommandBarProps) {
           data: {
             client_name: clientMatch ? clientMatch[1].trim() : null,
           },
-          message: `Creating new campaign${clientMatch ? ` for ${clientMatch[1].trim()}` : ''}`,
+          message: `Creating new campaign${
+            clientMatch ? ` for ${clientMatch[1].trim()}` : ''
+          }`,
         };
       }
     }
@@ -123,7 +125,9 @@ export function AICommandBar({ campaigns, onCommand }: AICommandBarProps) {
       return {
         type: 'export',
         data: { client_name: clientMatch?.[1]?.trim() },
-        message: `Exporting campaigns${clientMatch ? ` for client: ${clientMatch[1].trim()}` : ''}`,
+        message: `Exporting campaigns${
+          clientMatch ? ` for client: ${clientMatch[1].trim()}` : ''
+        }`,
       };
     }
 
@@ -133,7 +137,9 @@ export function AICommandBar({ campaigns, onCommand }: AICommandBarProps) {
       return {
         type: 'report',
         data: { client_name: clientMatch?.[1]?.trim() },
-        message: `Generating report${clientMatch ? ` for ${clientMatch[1].trim()}` : ''}`,
+        message: `Generating report${
+          clientMatch ? ` for ${clientMatch[1].trim()}` : ''
+        }`,
       };
     }
 
@@ -303,7 +309,11 @@ export function AICommandBar({ campaigns, onCommand }: AICommandBarProps) {
                 {conversationHistory.map((message, idx) => (
                   <div
                     key={idx}
-                    className={`flex gap-3 ${message.role === 'assistant' ? 'flex-row' : 'flex-row-reverse'}`}
+                    className={`flex gap-3 ${
+                      message.role === 'assistant'
+                        ? 'flex-row'
+                        : 'flex-row-reverse'
+                    }`}
                   >
                     <div
                       className={`max-w-[80%] px-4 py-2 rounded-xl font-medium ${

@@ -171,18 +171,21 @@ const costData = await costs.json();
 ### Free Tools Used
 
 1. **Google Trends API**
+
    - Keyword interest tracking
    - Related queries
    - Geographic interest
    - Related topics
 
 2. **Google Search Console API**
+
    - Performance metrics
    - Query analysis
    - Page performance
    - Historical data
 
 3. **Google Suggest API**
+
    - Keyword suggestions
    - Question-based keywords
    - Autocomplete data
@@ -301,11 +304,13 @@ The hybrid service automatically configures itself based on available credential
 ### Common Issues
 
 1. **Google Trends API Errors**
+
    - Check network connectivity
    - Verify keyword format
    - Ensure proper encoding
 
 2. **Search Console Access**
+
    - Verify Google API credentials
    - Check domain ownership
    - Ensure proper scopes
@@ -334,11 +339,13 @@ GET /api/hybrid-seo/cost-analysis
 ### Planned Features
 
 1. **Additional Free APIs**
+
    - Bing Webmaster Tools
    - Yandex Webmaster
    - DuckDuckGo API
 
 2. **Enhanced Analytics**
+
    - Performance dashboards
    - Cost tracking
    - Usage analytics
@@ -351,6 +358,7 @@ GET /api/hybrid-seo/cost-analysis
 ### Integration Opportunities
 
 1. **AI-Powered Insights**
+
    - Automated recommendations
    - Predictive analytics
    - Content optimization

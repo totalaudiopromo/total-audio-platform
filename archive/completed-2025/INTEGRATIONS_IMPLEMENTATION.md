@@ -170,7 +170,7 @@ export function IntegrationCard({
   icon,
   connection,
   onConnect,
-  onDisconnect
+  onDisconnect,
 }: IntegrationCardProps) {
   const isConnected = connection?.status === 'active';
 
@@ -181,11 +181,7 @@ export function IntegrationCard({
           <span className="text-4xl">{icon}</span>
           <div>
             <h3 className="text-xl font-black">{name}</h3>
-            {isConnected && (
-              <span className="text-sm text-green-600 font-bold">
-                🟢 Connected
-              </span>
-            )}
+            {isConnected && <span className="text-sm text-green-600 font-bold">🟢 Connected</span>}
           </div>
         </div>
       </div>
@@ -199,7 +195,7 @@ export function IntegrationCard({
           </div>
           <div className="flex gap-2">
             <button
-              onClick={() => window.location.href = `/dashboard/integrations/${type}/configure`}
+              onClick={() => (window.location.href = `/dashboard/integrations/${type}/configure`)}
               className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
             >
               Configure
@@ -248,13 +244,10 @@ export function useIntegrations() {
   async function loadConnections() {
     const { data } = await supabase.from('integration_connections').select('*');
 
-    const mapped = (data || []).reduce(
-      (acc, conn) => {
-        acc[conn.integration_type] = conn;
-        return acc;
-      },
-      {} as Record<string, any>
-    );
+    const mapped = (data || []).reduce((acc, conn) => {
+      acc[conn.integration_type] = conn;
+      return acc;
+    }, {} as Record<string, any>);
 
     setConnections(mapped);
     setLoading(false);

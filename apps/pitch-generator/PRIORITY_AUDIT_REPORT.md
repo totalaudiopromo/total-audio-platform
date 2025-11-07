@@ -61,6 +61,7 @@ HTTP/2 200
 #### ✅ COMPLETED:
 
 1. **Privacy Policy** - [app/privacy/page.tsx](app/privacy/page.tsx)
+
    - GDPR-compliant (all rights: access, erasure, portability, etc.)
    - UK ICO contact information
    - Service provider transparency (Supabase, Anthropic, Stripe, Vercel)
@@ -68,6 +69,7 @@ HTTP/2 200
    - Effort: **2 hours** ✅ DONE
 
 2. **Terms of Service** - [app/terms/page.tsx](app/terms/page.tsx)
+
    - UK law (England and Wales jurisdiction)
    - Clear pricing terms (Free, PRO, Agency, Bundle)
    - 30-day money-back guarantee
@@ -642,7 +644,9 @@ export function OnboardingChecklist() {
             )}
             <div className="flex-1">
               <p
-                className={`font-semibold ${task.completed ? 'text-gray-500 line-through' : 'text-gray-900'}`}
+                className={`font-semibold ${
+                  task.completed ? 'text-gray-500 line-through' : 'text-gray-900'
+                }`}
               >
                 {task.title}
               </p>
@@ -870,6 +874,7 @@ const hookIsValid = hookCharCount >= hookMinLength && hookCharCount <= hookMaxLe
 **Testing Protocol**:
 
 1. **Generate 5 Test Pitches** with same inputs:
+
    - Artist: "The Midnight Sons"
    - Track: "Northern Lights"
    - Genre: "indie"
@@ -877,6 +882,7 @@ const hookIsValid = hookCharCount >= hookMinLength && hookCharCount <= hookMaxLe
    - Contact: BBC Radio 1 (specialist show)
 
 2. **Check for**:
+
    - ✅ Consistency in tone
    - ✅ No repetitive phrases
    - ✅ Appropriate length (under 150 words)
@@ -945,6 +951,7 @@ This suggests **past issues with inappropriate comparisons**. Need to test if pr
 **Minor Gaps**:
 
 1. **Missing OG Image** - `/og-pitch-generator.png` referenced but doesn't exist
+
    - **Priority**: Medium
    - **Effort**: 1 hour (design 1200x630px image)
 
@@ -1157,7 +1164,9 @@ export function UsageMeter({ current, limit }: { current: number; limit: number 
 
   return (
     <div
-      className={`rounded-xl border-2 p-4 ${nearLimit ? 'border-yellow-500 bg-yellow-50' : 'border-gray-200 bg-white'}`}
+      className={`rounded-xl border-2 p-4 ${
+        nearLimit ? 'border-yellow-500 bg-yellow-50' : 'border-gray-200 bg-white'
+      }`}
     >
       <div className="flex items-center justify-between">
         <div>
@@ -1178,7 +1187,9 @@ export function UsageMeter({ current, limit }: { current: number; limit: number 
       </div>
       <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-gray-200">
         <div
-          className={`h-full transition-all duration-500 ${nearLimit ? 'bg-yellow-600' : 'bg-blue-600'}`}
+          className={`h-full transition-all duration-500 ${
+            nearLimit ? 'bg-yellow-600' : 'bg-blue-600'
+          }`}
           style={{ width: `${percentage}%` }}
         />
       </div>

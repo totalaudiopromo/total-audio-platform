@@ -86,7 +86,9 @@ async function testArtistSearchFix() {
       console.log(`   Genre: ${campaign.data.genre || 'Not found'}`);
       console.log(`   Contact Email: ${campaign.data.contactEmail || 'Not found'}`);
       console.log(
-        `   Press Bio: ${campaign.data.pressBio ? campaign.data.pressBio.substring(0, 100) + '...' : 'Not found'}`
+        `   Press Bio: ${
+          campaign.data.pressBio ? campaign.data.pressBio.substring(0, 100) + '...' : 'Not found'
+        }`
       );
       console.log(`   Social Media: ${campaign.data.socialMedia || 'Not found'}`);
       console.log(`   Press Photo: ${campaign.data.pressPhoto || 'Not found'}`);

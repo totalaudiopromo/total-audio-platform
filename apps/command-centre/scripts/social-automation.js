@@ -27,7 +27,9 @@ const usedTemplates = new Set();
 
 async function fetchTemplates(category = null) {
   try {
-    const url = `${COMMAND_CENTRE_URL}/api/social-media/templates${category ? `?category=${category}` : ''}`;
+    const url = `${COMMAND_CENTRE_URL}/api/social-media/templates${
+      category ? `?category=${category}` : ''
+    }`;
     const response = await fetch(url);
     const data = await response.json();
 

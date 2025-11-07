@@ -95,7 +95,9 @@ export default function UserManagementPage() {
             exportsDownloaded: subscriber.engagement.exportsGenerated,
           },
           tier: 'free' as const, // All beta users are on free tier
-          location: `${subscriber.location?.city || 'Unknown'}, ${subscriber.location?.country || 'UK'}`,
+          location: `${subscriber.location?.city || 'Unknown'}, ${
+            subscriber.location?.country || 'UK'
+          }`,
           userType,
         };
       });
@@ -295,7 +297,9 @@ export default function UserManagementPage() {
             >
               {status === 'all'
                 ? `All Users (${users.length})`
-                : `${status.charAt(0).toUpperCase() + status.slice(1)} (${users.filter(u => u.status === status).length})`}
+                : `${status.charAt(0).toUpperCase() + status.slice(1)} (${
+                    users.filter(u => u.status === status).length
+                  })`}
             </button>
           ))}
         </div>

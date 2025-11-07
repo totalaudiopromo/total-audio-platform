@@ -58,18 +58,21 @@ Demo Hook: [their actual contact list enrichment]
 ### UK Radio Promoter Research Sources:
 
 1. **LinkedIn Search Terms**:
+
    - "radio promotion UK"
    - "independent radio"
    - "music promotion specialist"
    - "radio campaign manager"
 
 2. **Industry Directories**:
+
    - Music Week Directory
    - Complete Music Update contacts
    - Radio Centre member listings
    - Music industry associations
 
 3. **Campaign Credits**:
+
    - Recent press releases mentioning radio promotion
    - Music blog acknowledgments
    - Social media campaign announcements
@@ -135,17 +138,20 @@ Genre-Specific Value: [how Audio Intel helps their style]
 ### Artist Discovery Sources:
 
 1. **Spotify Playlists**:
+
    - "Fresh Finds" indie discoveries
    - Genre-specific editorial playlists
    - User-generated playlists with engagement
    - Release Radar for active artists
 
 2. **SoundCloud Pro Accounts**:
+
    - Recently uploaded tracks
    - Pro account indicators (serious about music)
    - Repost activity showing promotion efforts
 
 3. **Bandcamp**:
+
    - New releases section
    - Fan funding indicators
    - Regular release activity
@@ -214,12 +220,14 @@ Budget Authority: [who controls tool spend]
 ### PR Agency Discovery Sources:
 
 1. **Industry Directories**:
+
    - Music Week Agency listings
    - Complete Music Update directory
    - LinkedIn company searches
    - Trade publication advertiser lists
 
 2. **Client Campaign Credits**:
+
    - Press release attribution
    - Music blog campaign credits
    - Social media campaign tags
@@ -283,17 +291,20 @@ Budget Authority: [who controls tool spend]
 ### Radio Promoter Demo Script (15 mins):
 
 1. **Problem Validation** (3 mins):
+
    - "Walk me through your current contact research process"
    - "How long does a typical radio campaign contact list take?"
    - "What's your biggest frustration with current tools?"
 
 2. **Audio Intel Solution** (8 mins):
+
    - Upload their actual 20-contact email list
    - Show real-time enrichment happening
    - Highlight radio-specific data (contact preferences, submission guidelines)
    - Compare: "15 hours manual work → 15 minutes with Audio Intel"
 
 3. **Value Realization** (2 mins):
+
    - Calculate time savings: "£25/hour × 15 hours = £375 per campaign"
    - Show cost comparison: "Audio Intel = £19.99/month = one hour of your time"
 
@@ -305,15 +316,18 @@ Budget Authority: [who controls tool spend]
 ### Artist/Producer Demo Script (12 mins):
 
 1. **Artist Credibility** (2 mins):
+
    - "Love your latest track [specific track name]"
    - "As a producer myself (sadact), I know the contact research pain"
 
 2. **Solution Demo** (7 mins):
+
    - Focus on playlist curator and blog contact discovery
    - Show genre-specific filtering
    - Demonstrate social media profile enrichment
 
 3. **Value for Artists** (2 mins):
+
    - "More time creating, less time researching"
    - "Find contacts your competitors don't know about"
 
@@ -324,15 +338,18 @@ Budget Authority: [who controls tool spend]
 ### PR Agency Demo Script (20 mins):
 
 1. **Agency Efficiency Focus** (5 mins):
+
    - "How much time does your team spend on contact research?"
    - "What's your cost per hour for junior staff research?"
 
 2. **Efficiency Demonstration** (10 mins):
+
    - Show bulk contact enrichment
    - Demonstrate team collaboration features
    - Calculate team time savings
 
 3. **ROI Presentation** (3 mins):
+
    - Junior staff time saved: £15/hour × 20 hours = £300/week
    - Audio Intel cost: £39.99/month
    - ROI: 8x return on investment

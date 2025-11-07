@@ -14,11 +14,13 @@ Successfully optimised Command Centre for mobile devices with comprehensive UX i
 **File**: `app/components/TotalAudioDashboard.tsx`
 
 - **Metrics Grid**: `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4`
+
   - Mobile: Single column (320px-640px)
   - Tablet: 2 columns (640px-1024px)
   - Desktop: 4 columns (1024px+)
 
 - **Quick Actions Grid**: `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`
+
   - Mobile: Single column
   - Tablet: 2 columns
   - Desktop: 3 columns
@@ -55,13 +57,15 @@ Successfully optimised Command Centre for mobile devices with comprehensive UX i
 - ✅ User-friendly error messaging
 
 ```typescript
-{error && (
-  <div className="error-banner">
-    <h3>Connection Issue</h3>
-    <p>{error}</p>
-    <button onClick={fetchDashboardData}>Retry Connection</button>
-  </div>
-)}
+{
+  error && (
+    <div className="error-banner">
+      <h3>Connection Issue</h3>
+      <p>{error}</p>
+      <button onClick={fetchDashboardData}>Retry Connection</button>
+    </div>
+  );
+}
 ```
 
 ### 4. **Touch Target Optimization**

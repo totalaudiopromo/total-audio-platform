@@ -337,16 +337,19 @@ await orchestrator.dashboard.clientDashboard.exportReport(report.id, 'pdf');
 ### **Common Issues**
 
 1. **WARM API Rate Limits**
+
    - Increase check interval to 5 minutes
    - Use API token instead of email/password
    - Implement exponential backoff
 
 2. **Email OAuth Issues**
+
    - Check redirect URIs
    - Refresh tokens regularly
    - Verify scopes
 
 3. **Monday.com API Errors**
+
    - Check API token permissions
    - Verify board structure
    - Update column mappings

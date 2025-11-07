@@ -113,7 +113,10 @@ export class GmailReplyTracker {
                   status: 'replied',
                   notes: supabase.rpc('concat_notes', {
                     current_notes: '',
-                    new_note: `\n\n✉️ Reply received: ${snippet.substring(0, 200)}`,
+                    new_note: `\n\n✉️ Reply received: ${snippet.substring(
+                      0,
+                      200
+                    )}`,
                   }),
                 })
                 .eq('id', tracked.campaign_id);
@@ -172,7 +175,9 @@ export class GmailReplyTracker {
         status: errors.length > 0 ? 'warning' : 'success',
         message:
           repliesFound > 0
-            ? `Detected ${repliesFound} new repl${repliesFound === 1 ? 'y' : 'ies'}`
+            ? `Detected ${repliesFound} new repl${
+                repliesFound === 1 ? 'y' : 'ies'
+              }`
             : 'Checked Gmail for replies',
         metadata: {
           replies_found: repliesFound,

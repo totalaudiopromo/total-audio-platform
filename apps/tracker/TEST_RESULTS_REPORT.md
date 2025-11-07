@@ -91,6 +91,7 @@ npx playwright install webkit
 The **most important validation** from these tests:
 
 1. **Zero JavaScript Errors**
+
    - All TypeScript compilation fixes are working
    - No runtime errors in browser console
    - Supabase client patterns working correctly
@@ -135,16 +136,19 @@ The test failures indicate the tests need updating to match current content:
 Tests need updating to match current application state:
 
 1. **Update Landing Page Tests**
+
    - Review current hero copy
    - Update text selectors
    - Verify CTA button text
 
 2. **Update Navigation Tests**
+
    - Check current header structure
    - Verify link text and destinations
    - Test actual user flows
 
 3. **Update Content Tests**
+
    - Footer content
    - Image alt text
    - Pricing copy

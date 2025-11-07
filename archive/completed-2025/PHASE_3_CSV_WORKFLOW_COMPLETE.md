@@ -247,12 +247,14 @@ Researched: 2025-10-13",,,
 ### New Files ✅
 
 1. **`apps/audio-intel/app/api/export-to-tracker/route.ts`** (171 lines)
+
    - New API endpoint for Tracker export
    - CSV generation with proper escaping
    - Deep link creation
    - Analytics tracking
 
 2. **`docs/CSV_WORKFLOW_GUIDE.md`** (450+ lines)
+
    - Complete user documentation
    - Technical specifications
    - 3 detailed workflows
@@ -266,6 +268,7 @@ Researched: 2025-10-13",,,
 ### Modified Files ✅
 
 1. **`apps/audio-intel/app/demo/page.tsx`**
+
    - Added [`handleSendToTracker`](apps/audio-intel/app/demo/page.tsx:254-319) function
    - Added ["Send to Tracker" UI button](apps/audio-intel/app/demo/page.tsx:714-728)
    - Tool integration section below exports
@@ -335,11 +338,13 @@ Researched: 2025-10-13",,,
 ### Current Limitations
 
 1. **Separate Authentication**: Users need to sign into both tools separately
+
    - ❌ Can't auto-login to Tracker from Audio Intel
    - ❌ Can't share user session between tools
    - 🔜 **Phase 4**: Unified SSO fixes this
 
 2. **One-Way Sync**: Audio Intel → Tracker only
+
    - ❌ Tracker updates don't sync back to Audio Intel
    - ❌ Response data stays in Tracker
    - 🔜 **Phase 5**: Bi-directional webhooks

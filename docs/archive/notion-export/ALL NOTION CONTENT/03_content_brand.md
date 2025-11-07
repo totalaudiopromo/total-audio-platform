@@ -1297,14 +1297,12 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 /* Tool-Specific Texture Overlays */
 .texture-intel {
-  background:
-    linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
     url('/assets/textures/drs-paper-light.webp');
 }
 
 .texture-pulse {
-  background:
-    linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
     url('/assets/textures/drs-paper-light.webp');
 }
 ```
@@ -1392,9 +1390,11 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 /* Audio Intel Active State */
 .intel-active {
-  background:
-    linear-gradient(135deg, rgba(59, 130, 246, var(--overlay-opacity)) 0%, transparent 50%),
-    var(--texture-paper);
+  background: linear-gradient(
+      135deg,
+      rgba(59, 130, 246, var(--overlay-opacity)) 0%,
+      transparent 50%
+    ), var(--texture-paper);
 }
 ```
 

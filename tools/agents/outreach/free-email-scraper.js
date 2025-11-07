@@ -151,7 +151,9 @@ class FreeEmailScraper {
 
     return {
       instructions: 'Manual LinkedIn verification',
-      searchUrl: `https://www.linkedin.com/search/results/all/?keywords=${encodeURIComponent(companyName + ' radio promotion')}`,
+      searchUrl: `https://www.linkedin.com/search/results/all/?keywords=${encodeURIComponent(
+        companyName + ' radio promotion'
+      )}`,
       note: 'Look for: Founder, Director, Head of Radio, Senior Plugger',
     };
   }

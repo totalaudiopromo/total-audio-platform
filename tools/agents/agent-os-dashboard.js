@@ -305,7 +305,9 @@ class AgentOSDashboard {
         console.log('');
         console.log(`${colours.bright}Description:${colours.reset} ${agent.description}`);
         console.log(
-          `${colours.bright}Status:${colours.reset} ${this.getStatusIcon(agent.status)} ${agent.status}`
+          `${colours.bright}Status:${colours.reset} ${this.getStatusIcon(agent.status)} ${
+            agent.status
+          }`
         );
         console.log(`${colours.bright}Command:${colours.reset} ${agent.command}`);
         console.log('');

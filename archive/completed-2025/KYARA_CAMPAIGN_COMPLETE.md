@@ -17,17 +17,20 @@
 #### Priority Contacts:
 
 1. **Claire Mooney** (Music Director)
+
    - Email: mooney.claire@abc.net.au
    - Pitch: General triple j consideration
    - Previous support angle emphasized
 
 2. **Anika Luna** (Home & Hosed) ⭐ KEY TARGET
+
    - Email: luna.anika@abc.net.au
    - Pitch: Follow-up to previous play
    - Context: Jaimee Taylor-Neilsen played "Yearn" on Home & Hosed (August 2024)
    - This is the show that champions independent artists
 
 3. **Abby Butler** (Presenter)
+
    - Email: butler.abby@abc.net.au
    - Pitch: Part of Abby & Tyrone duo
    - Alternative/indie programming angle
@@ -50,20 +53,24 @@ node tools/agents/radio-promo/kyara-send-emails.js
 **Relevant contacts identified:**
 
 1. **Amazing Radio** (Online) - Warm
+
    - Submission required: https://amazingradio.com/submit
    - Use SoundCloud link: https://on.soundcloud.com/1oiblSoRYCp1swzCr3
    - Previous support: triple j Home & Hosed
 
 2. **Radio Wigwam** (Community) - Warm
+
    - Submission required: https://radiowigwam.com/submit
    - Use SoundCloud link: https://on.soundcloud.com/1oiblSoRYCp1swzCr3
    - Previous support: triple j Home & Hosed
 
 3. **BBC Radio 6 Music** (National) - Cold
+
    - Email: 6music@bbc.co.uk
    - Pitch similar to triple j approach
 
 4. **NTS Radio** (Online) - Cold
+
    - Email: submissions@nts.live
    - Alternative/electronic angle
 
@@ -139,16 +146,19 @@ node tools/agents/radio-promo/kyara-send-emails.js
 ## 📁 Campaign Files Created
 
 1. **Liberty Agent Script**: `tools/agents/radio-promo/liberty-agent-kyara.js`
+
    - Full SDK-powered agent with Monday.com, Gmail, WARM API integration
    - Prompt caching, extended thinking, agentic loops
    - Currently requires additional API setup
 
 2. **Campaign Launcher**: `tools/agents/radio-promo/kyara-campaign-launcher.js`
+
    - Complete campaign orchestration
    - Airtable search, webhook submissions, Mailchimp update
    - Campaign summary generation
 
 3. **Email Generator**: `tools/agents/radio-promo/kyara-send-emails.js`
+
    - Personalized email content for each triple j contact
    - SoundCloud link included
    - Ready to copy/paste and send

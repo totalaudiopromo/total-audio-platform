@@ -221,7 +221,9 @@ export default function ContactsPage() {
             </div>
             <div className="flex gap-3">
               <label
-                className={`subtle-button flex cursor-pointer items-center gap-2 ${importing ? 'opacity-50' : ''}`}
+                className={`subtle-button flex cursor-pointer items-center gap-2 ${
+                  importing ? 'opacity-50' : ''
+                }`}
               >
                 {importing ? (
                   <>

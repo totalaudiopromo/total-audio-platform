@@ -139,7 +139,9 @@ export class GoogleSheetsSync {
         userId: connection.user_id,
         activityType: 'export',
         status: 'success',
-        message: `Exported ${rows.length} campaign${rows.length === 1 ? '' : 's'} to Google Sheet`,
+        message: `Exported ${rows.length} campaign${
+          rows.length === 1 ? '' : 's'
+        } to Google Sheet`,
         metadata: {
           spreadsheet_id,
           sheet_name,
@@ -288,7 +290,9 @@ export class GoogleSheetsSync {
         userId: connection.user_id,
         activityType: 'import',
         status: errors.length > 0 ? 'warning' : 'success',
-        message: `Imported ${updated} campaign${updated === 1 ? '' : 's'} from Google Sheet`,
+        message: `Imported ${updated} campaign${
+          updated === 1 ? '' : 's'
+        } from Google Sheet`,
         metadata: {
           spreadsheet_id,
           sheet_name,

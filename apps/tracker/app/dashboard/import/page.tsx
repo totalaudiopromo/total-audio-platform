@@ -85,7 +85,11 @@ function ImportCampaignsPage() {
                 platform: campaign.contacts?.[0]?.outlet || 'Pitch Generator',
                 status: 'active',
                 start_date: new Date().toISOString().split('T')[0],
-                notes: `Imported from Pitch Generator\nContact: ${campaign.contacts?.[0]?.name || ''}\nEmail: ${campaign.contacts?.[0]?.email || ''}\nPitch: ${campaign.contacts?.[0]?.pitchBody?.substring(0, 200) || ''}...`,
+                notes: `Imported from Pitch Generator\nContact: ${
+                  campaign.contacts?.[0]?.name || ''
+                }\nEmail: ${campaign.contacts?.[0]?.email || ''}\nPitch: ${
+                  campaign.contacts?.[0]?.pitchBody?.substring(0, 200) || ''
+                }...`,
               },
             ],
           }),

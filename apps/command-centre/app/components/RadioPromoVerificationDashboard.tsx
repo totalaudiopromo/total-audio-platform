@@ -354,7 +354,9 @@ export default function RadioPromoVerificationDashboard() {
               <div className="text-lg">{getStatusIcon(agent.status)}</div>
             </div>
             <div
-              className={`text-xs px-2 py-1 rounded-full font-medium mb-2 ${getStatusColor(agent.status)}`}
+              className={`text-xs px-2 py-1 rounded-full font-medium mb-2 ${getStatusColor(
+                agent.status
+              )}`}
             >
               {agent.status.toUpperCase()}
             </div>
@@ -385,7 +387,9 @@ export default function RadioPromoVerificationDashboard() {
                       {campaign.artistName} - {campaign.trackTitle}
                     </h3>
                     <span
-                      className={`px-2 py-1 text-xs font-medium rounded-full ${getPriorityColor(campaign.priority)}`}
+                      className={`px-2 py-1 text-xs font-medium rounded-full ${getPriorityColor(
+                        campaign.priority
+                      )}`}
                     >
                       {campaign.priority.toUpperCase()}
                     </span>
@@ -426,7 +430,10 @@ export default function RadioPromoVerificationDashboard() {
                 <div
                   className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                   style={{
-                    width: `${campaign.steps.reduce((acc, step) => acc + step.progress, 0) / campaign.steps.length}%`,
+                    width: `${
+                      campaign.steps.reduce((acc, step) => acc + step.progress, 0) /
+                      campaign.steps.length
+                    }%`,
                   }}
                 ></div>
               </div>
@@ -450,7 +457,9 @@ export default function RadioPromoVerificationDashboard() {
                           </div>
                           <div className="flex items-center space-x-3">
                             <span
-                              className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(step.status)}`}
+                              className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(
+                                step.status
+                              )}`}
                             >
                               {getStatusIcon(step.status)}{' '}
                               {step.status.replace('_', ' ').toUpperCase()}
@@ -467,12 +476,12 @@ export default function RadioPromoVerificationDashboard() {
                                 step.status === 'completed' || step.status === 'approved'
                                   ? 'bg-green-500'
                                   : step.status === 'in_progress'
-                                    ? 'bg-blue-500'
-                                    : step.status === 'requires_approval'
-                                      ? 'bg-amber-500'
-                                      : step.status === 'failed'
-                                        ? 'bg-red-500'
-                                        : 'bg-gray-400'
+                                  ? 'bg-blue-500'
+                                  : step.status === 'requires_approval'
+                                  ? 'bg-amber-500'
+                                  : step.status === 'failed'
+                                  ? 'bg-red-500'
+                                  : 'bg-gray-400'
                               }`}
                               style={{ width: `${step.progress}%` }}
                             ></div>

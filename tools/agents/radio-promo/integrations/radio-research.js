@@ -442,7 +442,9 @@ class RadioResearchIntegration {
     if (highPriorityStations.length > 0) {
       recommendations.push({
         type: 'priority_submission',
-        message: `Focus on ${highPriorityStations.length} high-priority stations: ${highPriorityStations.map(s => s.name).join(', ')}`,
+        message: `Focus on ${
+          highPriorityStations.length
+        } high-priority stations: ${highPriorityStations.map(s => s.name).join(', ')}`,
         stations: highPriorityStations.map(s => s.name),
         action: 'Submit within 24-48 hours of release',
       });

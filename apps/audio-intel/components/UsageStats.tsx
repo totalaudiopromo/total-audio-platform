@@ -141,10 +141,14 @@ export function UsageStatsDetailed() {
 
       {isNearLimit && (
         <div
-          className={`p-3 rounded-lg border-2 ${isAtLimit ? 'bg-red-50 border-red-200' : 'bg-amber-50 border-amber-200'}`}
+          className={`p-3 rounded-lg border-2 ${
+            isAtLimit ? 'bg-red-50 border-red-200' : 'bg-amber-50 border-amber-200'
+          }`}
         >
           <p
-            className={`text-sm font-semibold mb-2 ${isAtLimit ? 'text-red-800' : 'text-amber-800'}`}
+            className={`text-sm font-semibold mb-2 ${
+              isAtLimit ? 'text-red-800' : 'text-amber-800'
+            }`}
           >
             {isAtLimit ? '🚫 Limit Reached' : '⚠️ Running Low'}
           </p>
@@ -155,7 +159,9 @@ export function UsageStatsDetailed() {
           </p>
           <Link href="/pricing">
             <button
-              className={`w-full py-2 px-4 rounded-lg font-bold text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${isAtLimit ? 'bg-red-500 hover:bg-red-600' : 'bg-amber-500 hover:bg-amber-600'}`}
+              className={`w-full py-2 px-4 rounded-lg font-bold text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
+                isAtLimit ? 'bg-red-500 hover:bg-red-600' : 'bg-amber-500 hover:bg-amber-600'
+              }`}
             >
               Upgrade Now
             </button>

@@ -57,6 +57,7 @@ Week 3 high-priority optimizations focused on SEO improvements, legal page creat
 
 - **Component Created**: [components/BlogStructuredData.tsx](/components/BlogStructuredData.tsx)
 - **Implementation**: Added to 8 case study blog posts:
+
   1. **BBC Radio 1 Contact Enrichment** - BBC Radio 1 pitching workflow case study
   2. **BBC Radio 1Xtra Contact Enrichment** - Urban/grime/Afrobeats route analysis
   3. **BBC Radio 2 Contact Enrichment** - 35-54 demographic targeting strategy
@@ -180,6 +181,7 @@ Week 3 high-priority optimizations focused on SEO improvements, legal page creat
 ### Post-Deployment Testing ✅
 
 1. **Legal Pages**
+
    - [ ] Visit [intel.totalaudiopromo.com/terms](https://intel.totalaudiopromo.com/terms)
    - [ ] Verify Terms of Service renders correctly on mobile + desktop
    - [ ] Test all internal links (Privacy Policy, Cookie Policy, Contact)
@@ -190,12 +192,14 @@ Week 3 high-priority optimizations focused on SEO improvements, legal page creat
    - [ ] Test footer links appear on all pages
 
 2. **Structured Data**
+
    - [ ] Test with Google Rich Results Test: https://search.google.com/test/rich-results
    - [ ] Validate BBC Radio 1 post: `/blog/bbc-radio-1-contact-enrichment`
    - [ ] Validate Spotify post: `/blog/spotify-editorial-playlist-contacts`
    - [ ] Check schema validation with Schema.org validator
 
 3. **Canonical URLs**
+
    - [ ] View page source on blog posts
    - [ ] Verify `<link rel="canonical" href="...">` tags present
    - [ ] Confirm URLs match expected format

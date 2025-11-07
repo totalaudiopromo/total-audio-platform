@@ -448,20 +448,17 @@ class FreeEnrichmentMonitor {
    */
   private startHealthCheckInterval(): void {
     // Check system health every 5 minutes
-    setInterval(
-      () => {
-        const health = this.getSystemHealth();
+    setInterval(() => {
+      const health = this.getSystemHealth();
 
-        if (health.status === 'critical') {
-          console.error('🚨 CRITICAL: System health check failed', health);
-        } else if (health.status === 'degraded') {
-          console.warn('⚠️ DEGRADED: System performance issues detected', health);
-        } else {
-          console.log('✅ System health check passed', health);
-        }
-      },
-      5 * 60 * 1000
-    ); // 5 minutes
+      if (health.status === 'critical') {
+        console.error('🚨 CRITICAL: System health check failed', health);
+      } else if (health.status === 'degraded') {
+        console.warn('⚠️ DEGRADED: System performance issues detected', health);
+      } else {
+        console.log('✅ System health check passed', health);
+      }
+    }, 5 * 60 * 1000); // 5 minutes
   }
 }
 

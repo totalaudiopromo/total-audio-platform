@@ -126,7 +126,7 @@ class GoogleChatMCP {
               },
               filter: {
                 type: 'string',
-                description: 'Filter messages (e.g., "createTime > \"2025-09-01T00:00:00Z\"")',
+                description: 'Filter messages (e.g., "createTime > "2025-09-01T00:00:00Z"")',
               },
             },
             required: ['spaceName'],
@@ -197,7 +197,11 @@ class GoogleChatMCP {
               content: [
                 {
                   type: 'text',
-                  text: `Found ${formatted.length} spaces:\n\n${JSON.stringify(formatted, null, 2)}`,
+                  text: `Found ${formatted.length} spaces:\n\n${JSON.stringify(
+                    formatted,
+                    null,
+                    2
+                  )}`,
                 },
               ],
             };
@@ -224,7 +228,11 @@ class GoogleChatMCP {
               content: [
                 {
                   type: 'text',
-                  text: `Found ${formatted.length} messages:\n\n${JSON.stringify(formatted, null, 2)}`,
+                  text: `Found ${formatted.length} messages:\n\n${JSON.stringify(
+                    formatted,
+                    null,
+                    2
+                  )}`,
                 },
               ],
             };
@@ -275,7 +283,11 @@ class GoogleChatMCP {
               content: [
                 {
                   type: 'text',
-                  text: `Found ${formatted.length} matching messages:\n\n${JSON.stringify(formatted, null, 2)}`,
+                  text: `Found ${formatted.length} matching messages:\n\n${JSON.stringify(
+                    formatted,
+                    null,
+                    2
+                  )}`,
                 },
               ],
             };

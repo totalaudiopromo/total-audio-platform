@@ -292,8 +292,9 @@ class GmailTypeformMatcher {
   deduplicateCampaigns(campaigns) {
     const seen = new Set();
     return campaigns.filter(campaign => {
-      const key =
-        `${campaign.data?.artistName || ''}-${campaign.data?.trackTitle || ''}`.toLowerCase();
+      const key = `${campaign.data?.artistName || ''}-${
+        campaign.data?.trackTitle || ''
+      }`.toLowerCase();
       if (seen.has(key)) {
         return false;
       }

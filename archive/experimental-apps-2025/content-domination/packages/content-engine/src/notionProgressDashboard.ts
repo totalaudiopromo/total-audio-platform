@@ -396,10 +396,10 @@ export class NotionProgressDashboard {
                 milestone.category === 'revenue'
                   ? 'Revenue'
                   : milestone.category === 'product'
-                    ? 'Product'
-                    : milestone.category === 'customers'
-                      ? 'Customers'
-                      : 'Agents',
+                  ? 'Product'
+                  : milestone.category === 'customers'
+                  ? 'Customers'
+                  : 'Agents',
             },
           },
           'Target Value': { number: milestone.targetValue },
@@ -411,10 +411,10 @@ export class NotionProgressDashboard {
                 milestone.status === 'not_started'
                   ? 'Not Started'
                   : milestone.status === 'in_progress'
-                    ? 'In Progress'
-                    : milestone.status === 'completed'
-                      ? 'Completed'
-                      : 'At Risk',
+                  ? 'In Progress'
+                  : milestone.status === 'completed'
+                  ? 'Completed'
+                  : 'At Risk',
             },
           },
           Priority: { select: { name: 'High' } },
@@ -550,7 +550,9 @@ export class NotionProgressDashboard {
 
   private generateWeeklyInsights(metrics: ProgressMetrics): string {
     const insights = [
-      `MRR: ${metrics.mrr.currency}${metrics.mrr.current.toLocaleString()} (${metrics.mrr.change > 0 ? '+' : ''}${metrics.mrr.change}% change)`,
+      `MRR: ${metrics.mrr.currency}${metrics.mrr.current.toLocaleString()} (${
+        metrics.mrr.change > 0 ? '+' : ''
+      }${metrics.mrr.change}% change)`,
       `Agent Performance: ${metrics.agentPerformance.successRate}% success rate across ${metrics.agentPerformance.totalJobs} jobs`,
       `Customer Success: ${metrics.customerSuccess.totalCustomers} active customers with ${metrics.customerSuccess.satisfaction}/5 satisfaction`,
       `Development Velocity: ${metrics.development.velocityScore} points, ${metrics.development.featuresCompleted} features completed`,
@@ -601,7 +603,9 @@ Key Trends:
   private generateMonthlyActionItems(metrics: ProgressMetrics): string {
     const targetProgress = (metrics.mrr.current / metrics.mrr.target) * 100;
     const actions = [
-      `Review and optimize pricing strategy for ${targetProgress < 10 ? 'aggressive' : 'steady'} growth`,
+      `Review and optimize pricing strategy for ${
+        targetProgress < 10 ? 'aggressive' : 'steady'
+      } growth`,
       'Analyze customer feedback and implement top 3 requested features',
       'Conduct competitive analysis and adjust positioning',
       "Plan next month's agent development priorities",
@@ -617,8 +621,12 @@ Key Trends:
   private generateQuarterlyInsights(metrics: ProgressMetrics): string {
     return `Quarterly Strategic Review:
     
-🎯 Goal Progress: ${((metrics.mrr.current / metrics.mrr.target) * 100).toFixed(1)}% toward annual £100K MRR target
-🚀 Product Evolution: ${metrics.development.agentDevelopmentProgress.length} agents in development pipeline
+🎯 Goal Progress: ${((metrics.mrr.current / metrics.mrr.target) * 100).toFixed(
+      1
+    )}% toward annual £100K MRR target
+🚀 Product Evolution: ${
+      metrics.development.agentDevelopmentProgress.length
+    } agents in development pipeline
 📊 Market Position: Analyzing competitive landscape and customer feedback
 💡 Innovation Focus: AI-driven automation and customer success optimization
 

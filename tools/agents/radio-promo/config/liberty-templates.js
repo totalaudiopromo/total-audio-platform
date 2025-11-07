@@ -545,7 +545,9 @@ Bio paragraph:`,
 
     const randomDescriptor = descriptors[Math.floor(Math.random() * descriptors.length)];
 
-    return `${randomDescriptor.charAt(0).toUpperCase()}${randomDescriptor.slice(1)} new release showcases ${artistName}'s evolving artistry and distinctive sound`;
+    return `${randomDescriptor.charAt(0).toUpperCase()}${randomDescriptor.slice(
+      1
+    )} new release showcases ${artistName}'s evolving artistry and distinctive sound`;
   }
 
   /**

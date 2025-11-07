@@ -176,7 +176,9 @@ export function PitchAnalyser({ pitchBody, subjectLine, contactType }: PitchAnal
                 <div className="flex justify-between">
                   <span className="text-gray-600">Optimal Length:</span>
                   <span
-                    className={`font-semibold ${analysis.lengthAnalysis.isOptimal ? 'text-green-600' : 'text-amber-600'}`}
+                    className={`font-semibold ${
+                      analysis.lengthAnalysis.isOptimal ? 'text-green-600' : 'text-amber-600'
+                    }`}
                   >
                     {analysis.lengthAnalysis.isOptimal ? 'Yes ✓' : 'No ⚠️'}
                   </span>

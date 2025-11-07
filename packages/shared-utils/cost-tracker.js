@@ -280,7 +280,9 @@ class CostTracker {
     if (today.total > this.budgets.daily) {
       warnings.push({
         type: 'daily',
-        message: `Daily cost (£${today.total.toFixed(2)}) exceeded threshold (£${this.budgets.daily})`,
+        message: `Daily cost (£${today.total.toFixed(2)}) exceeded threshold (£${
+          this.budgets.daily
+        })`,
         severity: 'warning',
       });
     }
@@ -290,13 +292,17 @@ class CostTracker {
     if (monthlyPercent >= 100) {
       warnings.push({
         type: 'monthly',
-        message: `Monthly budget (£${this.budgets.total}) exceeded! Current: £${costs.total.toFixed(2)}`,
+        message: `Monthly budget (£${this.budgets.total}) exceeded! Current: £${costs.total.toFixed(
+          2
+        )}`,
         severity: 'critical',
       });
     } else if (monthlyPercent >= 80) {
       warnings.push({
         type: 'monthly',
-        message: `Monthly budget ${monthlyPercent.toFixed(0)}% used (£${costs.total.toFixed(2)} / £${this.budgets.total})`,
+        message: `Monthly budget ${monthlyPercent.toFixed(0)}% used (£${costs.total.toFixed(
+          2
+        )} / £${this.budgets.total})`,
         severity: 'warning',
       });
     }
@@ -305,7 +311,9 @@ class CostTracker {
     if (costs.services.anthropic.cost > this.budgets.anthropic) {
       warnings.push({
         type: 'anthropic',
-        message: `Anthropic cost (£${costs.services.anthropic.cost.toFixed(2)}) exceeded budget (£${this.budgets.anthropic})`,
+        message: `Anthropic cost (£${costs.services.anthropic.cost.toFixed(2)}) exceeded budget (£${
+          this.budgets.anthropic
+        })`,
         severity: 'warning',
       });
     }

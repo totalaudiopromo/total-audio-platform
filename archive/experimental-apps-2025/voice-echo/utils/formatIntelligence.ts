@@ -15,7 +15,9 @@ export function formatContactIntelligence(data: {
     data.contactMethod ? `📧 ${data.contactMethod}` : '',
     data.focus ? `🎧 Focus: ${data.focus}` : '',
     data.tip ? `💡 Tip: ${data.tip}` : '',
-    `✅ Research Confidence: ${data.confidence || 'High'}${data.updated ? ' | Updated: ' + data.updated : ''}`,
+    `✅ Research Confidence: ${data.confidence || 'High'}${
+      data.updated ? ' | Updated: ' + data.updated : ''
+    }`,
   ]
     .filter(Boolean)
     .join('\n');

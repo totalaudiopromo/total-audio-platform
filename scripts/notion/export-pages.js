@@ -110,7 +110,10 @@ function extractPageId(entry) {
 function normalizeId(id) {
   const clean = id.replace(/[^0-9a-fA-F]/g, '').toLowerCase();
   if (clean.length !== 32) return null;
-  return `${clean.slice(0, 8)}-${clean.slice(8, 12)}-${clean.slice(12, 16)}-${clean.slice(16, 20)}-${clean.slice(20)}`;
+  return `${clean.slice(0, 8)}-${clean.slice(8, 12)}-${clean.slice(12, 16)}-${clean.slice(
+    16,
+    20
+  )}-${clean.slice(20)}`;
 }
 
 async function fetchAllBlocks(parentId) {
@@ -194,9 +197,15 @@ function renderBlock(block, depth = 0) {
     case 'quote':
       return `${indent(depth)}> ${richTextToMarkdown(block.quote.rich_text)}\n`;
     case 'callout':
-      return `${indent(depth)}> ${richTextToMarkdown(block.callout.rich_text)}\n${renderChildren(block, depth + 1)}`;
+      return `${indent(depth)}> ${richTextToMarkdown(block.callout.rich_text)}\n${renderChildren(
+        block,
+        depth + 1
+      )}`;
     case 'toggle':
-      return `${indent(depth)}- ${richTextToMarkdown(block.toggle.rich_text)}\n${renderChildren(block, depth + 1)}`;
+      return `${indent(depth)}- ${richTextToMarkdown(block.toggle.rich_text)}\n${renderChildren(
+        block,
+        depth + 1
+      )}`;
     case 'code':
       return renderCode(block, depth);
     case 'divider':
@@ -206,7 +215,9 @@ function renderBlock(block, depth = 0) {
     case 'file':
       return renderMedia(block, depth);
     default:
-      return `${indent(depth)}<!-- unhandled ${type} -->\n${block.has_children ? renderChildren(block, depth + 1) : ''}`;
+      return `${indent(depth)}<!-- unhandled ${type} -->\n${
+        block.has_children ? renderChildren(block, depth + 1) : ''
+      }`;
   }
 }
 

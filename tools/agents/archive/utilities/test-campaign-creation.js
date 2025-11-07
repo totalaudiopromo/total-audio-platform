@@ -96,7 +96,10 @@ async function testCampaignCreation() {
     console.log('✅ Radio research completed');
     console.log(`   Stations found: ${radioResearch.stations.length}`);
     console.log(
-      `   High priority stations: ${radioResearch.stations.filter(s => s.priority === 'very_high' || s.priority === 'high').length}`
+      `   High priority stations: ${
+        radioResearch.stations.filter(s => s.priority === 'very_high' || s.priority === 'high')
+          .length
+      }`
     );
     console.log('');
 

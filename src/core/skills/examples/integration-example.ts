@@ -390,7 +390,11 @@ export async function generatePitchWithFallback(
     // Fallback to template-based generation
     const templateDraft = {
       subject: `${track.title} - ${track.artist}`,
-      body: `Hi ${contact.name},\n\nI wanted to share "${track.title}" by ${track.artist}.\n\n${track.genre} - ${track.achievements?.[0] || 'New release'}\n\nLet me know if you'd like to check it out.\n\nBest,`,
+      body: `Hi ${contact.name},\n\nI wanted to share "${track.title}" by ${track.artist}.\n\n${
+        track.genre
+      } - ${
+        track.achievements?.[0] || 'New release'
+      }\n\nLet me know if you'd like to check it out.\n\nBest,`,
       angle: 'template',
       confidence: 0.5,
       voiceCompliant: false,

@@ -519,7 +519,9 @@ export class AirtableRadioEnhancement {
       }
 
       logger.info(
-        `✅ Completed: Updated ${updatedCount} radio records in ${Math.ceil(validRecords.length / batchSize)} batches`
+        `✅ Completed: Updated ${updatedCount} radio records in ${Math.ceil(
+          validRecords.length / batchSize
+        )} batches`
       );
     }
   }

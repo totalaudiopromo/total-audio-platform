@@ -236,11 +236,20 @@ export function DynamicCaseStudyPage({ params }: PageProps) {
   // Customize content based on category
   const getIntroParagraph = () => {
     if (data.category === 'UK Radio Stations') {
-      return `Radio promotion in the UK is ruthless about pitching hygiene. Every show has its own producer flow, upload link, and timing window. Here's how we rebuilt the entire ${data.topicSlug.replace(/-/g, ' ')} contact workflow.`;
+      return `Radio promotion in the UK is ruthless about pitching hygiene. Every show has its own producer flow, upload link, and timing window. Here's how we rebuilt the entire ${data.topicSlug.replace(
+        /-/g,
+        ' '
+      )} contact workflow.`;
     } else if (data.category === 'Streaming Platforms') {
-      return `Playlist pitching is a numbers game, but only if you have the right curator contacts. Here's how we discovered and validated ${data.topicSlug.replace(/-/g, ' ')} editorial contacts in minutes instead of weeks.`;
+      return `Playlist pitching is a numbers game, but only if you have the right curator contacts. Here's how we discovered and validated ${data.topicSlug.replace(
+        /-/g,
+        ' '
+      )} editorial contacts in minutes instead of weeks.`;
     } else if (data.category === 'Music Publications') {
-      return `Getting featured on music blogs requires knowing who covers what and when. Here's how we enriched ${data.topicSlug.replace(/-/g, ' ')} editor contacts with submission preferences and coverage focus.`;
+      return `Getting featured on music blogs requires knowing who covers what and when. Here's how we enriched ${data.topicSlug.replace(
+        /-/g,
+        ' '
+      )} editor contacts with submission preferences and coverage focus.`;
     }
     return data.solutionAngle;
   };

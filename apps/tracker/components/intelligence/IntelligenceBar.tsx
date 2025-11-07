@@ -185,11 +185,15 @@ export function IntelligenceBar({ patterns }: IntelligenceBarProps) {
         {patterns.map((pattern, index) => (
           <div
             key={index}
-            className={`rounded-xl p-5 border-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all ${getPatternColor(pattern.type)}`}
+            className={`rounded-xl p-5 border-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all ${getPatternColor(
+              pattern.type
+            )}`}
           >
             <div className="flex items-start gap-3 mb-3">
               <div
-                className={`w-10 h-10 ${getIconBgColor(pattern.type)} rounded-xl flex items-center justify-center flex-shrink-0`}
+                className={`w-10 h-10 ${getIconBgColor(
+                  pattern.type
+                )} rounded-xl flex items-center justify-center flex-shrink-0`}
               >
                 {getPatternIcon(pattern.type)}
               </div>

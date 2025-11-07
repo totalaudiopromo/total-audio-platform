@@ -107,7 +107,12 @@ export default function PdfSamplesPage() {
           <button
             onClick={() => handleGenerateSample(type)}
             disabled={isGenerating === type}
-            className={`w-full flex items-center justify-center gap-2 px-4 py-2 ${bgColor.replace('bg-', 'bg-').replace('-50', '-100')} ${color} rounded-md hover:${bgColor.replace('-50', '-200')} transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
+            className={`w-full flex items-center justify-center gap-2 px-4 py-2 ${bgColor
+              .replace('bg-', 'bg-')
+              .replace('-50', '-100')} ${color} rounded-md hover:${bgColor.replace(
+              '-50',
+              '-200'
+            )} transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
           >
             {isGenerating === type ? (
               <>

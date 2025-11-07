@@ -70,8 +70,8 @@ async function getProfile(accessToken) {
   const url = wantsPosting
     ? 'https://api.linkedin.com/v2/me'
     : useOidc
-      ? 'https://api.linkedin.com/v2/userinfo'
-      : 'https://api.linkedin.com/v2/me';
+    ? 'https://api.linkedin.com/v2/userinfo'
+    : 'https://api.linkedin.com/v2/me';
   let response = await fetch(
     url + (url.endsWith('/me') ? '?projection=(id,localizedFirstName,localizedLastName)' : ''),
     {
@@ -226,7 +226,11 @@ LINKEDIN_TOKEN_EXPIRES=${Date.now() + tokenData.expires_in * 1000}
           <h1>✅ LinkedIn Authorization Successful!</h1>
           <p><strong>Profile:</strong> ${firstName} ${lastName}</p>
           <p><strong>Access Token:</strong> Saved to .env file</p>
-          <p><strong>Test Post:</strong> ${REQUESTED_SCOPES.includes('w_member_social') ? 'Created successfully' : 'Skipped (w_member_social not requested)'}</p>
+          <p><strong>Test Post:</strong> ${
+            REQUESTED_SCOPES.includes('w_member_social')
+              ? 'Created successfully'
+              : 'Skipped (w_member_social not requested)'
+          }</p>
           <h3>Next Steps:</h3>
           <ul>
             <li>✅ LinkedIn API is now configured</li>

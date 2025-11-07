@@ -424,8 +424,8 @@ The more text you provide, the better I can understand your natural writing styl
                   {analysis.metadata.formality_score <= 3
                     ? 'Very casual'
                     : analysis.metadata.formality_score <= 6
-                      ? 'Balanced'
-                      : 'Professional'}
+                    ? 'Balanced'
+                    : 'Professional'}
                 </p>
               </div>
 

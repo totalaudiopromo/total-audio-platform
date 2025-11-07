@@ -306,7 +306,9 @@ async function generateCohortReport() {
         .filter(m => m.period_type === 'month')
         .forEach(m => {
           console.log(
-            `     Month ${m.period_offset}: ${m.retention_rate}% (${m.retained_users}/${m.total_users}) - £${(m.revenue_cents / 100).toFixed(2)}`
+            `     Month ${m.period_offset}: ${m.retention_rate}% (${m.retained_users}/${
+              m.total_users
+            }) - £${(m.revenue_cents / 100).toFixed(2)}`
           );
         });
     } else {

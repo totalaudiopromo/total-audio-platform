@@ -689,7 +689,9 @@ class ClientDashboard {
 <body>
     <div class="header">
         <h1>📊 Campaign Report</h1>
-        <p>${report.campaignName} - Generated ${new Date(report.generatedAt).toLocaleDateString()}</p>
+        <p>${report.campaignName} - Generated ${new Date(
+      report.generatedAt
+    ).toLocaleDateString()}</p>
     </div>
     
     <div class="section">

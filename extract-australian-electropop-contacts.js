@@ -72,7 +72,11 @@ async function main() {
   australianContacts.forEach(c => {
     const f = c.fields;
     const notes = (f['Enrichment Notes'] || '').split('\n')[0].replace(/"/g, '""');
-    csv += `"${f.Email}","${f['First Name'] || ''}","${f['Last Name'] || ''}","${f.Station || ''}","${f.Show || ''}","${f['Enrichment Quality'] || ''}","${(f.Genres || []).join('; ')}","${notes}"\n`;
+    csv += `"${f.Email}","${f['First Name'] || ''}","${f['Last Name'] || ''}","${
+      f.Station || ''
+    }","${f.Show || ''}","${f['Enrichment Quality'] || ''}","${(f.Genres || []).join(
+      '; '
+    )}","${notes}"\n`;
   });
 
   fs.writeFileSync('australian-electropop-contacts.csv', csv);

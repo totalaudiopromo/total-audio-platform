@@ -40,7 +40,9 @@ export const metadata: Metadata = {
 export default function ${toPascalCase(pageData.slug)}() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-12">
-      {/* Data verification: ${pageData.validation.dataVerified ? '✓' : '✗'} Verified ${pageData.validation.verificationDate} */}
+      {/* Data verification: ${pageData.validation.dataVerified ? '✓' : '✗'} Verified ${
+    pageData.validation.verificationDate
+  } */}
       {/* Confidence score: ${pageData.validation.confidenceScore}% */}
       {/* Sources: ${pageData.validation.sources.length} verified */}
 
@@ -75,15 +77,23 @@ export default function ${toPascalCase(pageData.slug)}() {
           </p>
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">${pageData.campaignSnapshot.manualEffort.title}</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">${
+                pageData.campaignSnapshot.manualEffort.title
+              }</h3>
               <ul className="space-y-2 text-gray-700 text-base leading-relaxed">
-                ${pageData.campaignSnapshot.manualEffort.points.map(point => `<li>• ${point}</li>`).join('\n                ')}
+                ${pageData.campaignSnapshot.manualEffort.points
+                  .map(point => `<li>• ${point}</li>`)
+                  .join('\n                ')}
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">${pageData.campaignSnapshot.aiRun.title}</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">${
+                pageData.campaignSnapshot.aiRun.title
+              }</h3>
               <ul className="space-y-2 text-gray-700 text-base leading-relaxed">
-                ${pageData.campaignSnapshot.aiRun.points.map(point => `<li>• ${point}</li>`).join('\n                ')}
+                ${pageData.campaignSnapshot.aiRun.points
+                  .map(point => `<li>• ${point}</li>`)
+                  .join('\n                ')}
               </ul>
             </div>
           </div>
@@ -150,7 +160,11 @@ export default function ${toPascalCase(pageData.slug)}() {
               </tbody>
             </table>
           </div>
-          ${pageData.contacts.disclaimer ? `<p className="text-sm text-gray-500">${pageData.contacts.disclaimer}</p>` : ''}
+          ${
+            pageData.contacts.disclaimer
+              ? `<p className="text-sm text-gray-500">${pageData.contacts.disclaimer}</p>`
+              : ''
+          }
         </section>
 
         {/* Results */}
@@ -185,7 +199,11 @@ export default function ${toPascalCase(pageData.slug)}() {
           <blockquote className="bg-white border-l-4 border-gray-900 p-6 rounded-r-xl shadow-sm text-gray-800 text-lg leading-relaxed">
             ${pageData.testimonial.quote}
           </blockquote>
-          ${pageData.testimonial.attribution ? `<p className="text-sm text-gray-500">${pageData.testimonial.attribution}</p>` : ''}
+          ${
+            pageData.testimonial.attribution
+              ? `<p className="text-sm text-gray-500">${pageData.testimonial.attribution}</p>`
+              : ''
+          }
         </section>
 
         {/* CTA */}

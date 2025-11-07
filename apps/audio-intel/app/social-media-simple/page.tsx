@@ -241,7 +241,9 @@ export default function SocialMediaSimple() {
             >
               <div className="flex items-center justify-between mb-4">
                 <span
-                  className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(post.platform)}`}
+                  className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(
+                    post.platform
+                  )}`}
                 >
                   {formatPlatform(post.platform)}
                 </span>

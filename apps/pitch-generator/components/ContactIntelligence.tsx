@@ -127,7 +127,9 @@ export function ContactIntelligence({
           <div className="flex-1 min-w-0">
             <p className="text-xs font-medium text-gray-900/60">Preferred Tone</p>
             <span
-              className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${getToneColor(preferredTone)}`}
+              className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${getToneColor(
+                preferredTone
+              )}`}
             >
               {preferredTone.charAt(0).toUpperCase() + preferredTone.slice(1)}
             </span>

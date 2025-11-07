@@ -86,11 +86,14 @@ import { VoiceGuardSkill } from '@/core/skills';
 
 async function PitchCard({ pitch }) {
   // Check compliance
-  const result = await VoiceGuardSkill.execute({
-    text: pitch.body,
-    contentType: 'email_pitch',
-    targetAudience: 'radio_promoters'
-  }, {} as any);
+  const result = await VoiceGuardSkill.execute(
+    {
+      text: pitch.body,
+      contentType: 'email_pitch',
+      targetAudience: 'radio_promoters',
+    },
+    {} as any
+  );
 
   const score = result.compliance_score;
 
@@ -99,11 +102,11 @@ async function PitchCard({ pitch }) {
       <h3>{pitch.subject}</h3>
 
       {/* Voice compliance badge */}
-      <span className={`badge ${
-        score >= 0.8 ? 'bg-green-500' :
-        score >= 0.6 ? 'bg-yellow-500' :
-        'bg-red-500'
-      }`}>
+      <span
+        className={`badge ${
+          score >= 0.8 ? 'bg-green-500' : score >= 0.6 ? 'bg-yellow-500' : 'bg-red-500'
+        }`}
+      >
         UK Voice: {(score * 100).toFixed(0)}%
       </span>
 
@@ -179,7 +182,7 @@ export function PitchEditor() {
     const response = await fetch('/api/skills/voice-check', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text })
+      body: JSON.stringify({ text }),
     });
 
     const result = await response.json();
@@ -192,20 +195,18 @@ export function PitchEditor() {
 
   return (
     <div>
-      <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        className="pitch-editor"
-      />
+      <textarea value={text} onChange={e => setText(e.target.value)} className="pitch-editor" />
 
       {/* Live compliance indicator */}
       <div className="voice-indicator">
         <div className="progress-bar">
           <div
             className={`fill ${
-              voiceScore >= 0.8 ? 'bg-green-500' :
-              voiceScore >= 0.6 ? 'bg-yellow-500' :
-              'bg-red-500'
+              voiceScore >= 0.8
+                ? 'bg-green-500'
+                : voiceScore >= 0.6
+                ? 'bg-yellow-500'
+                : 'bg-red-500'
             }`}
             style={{ width: `${voiceScore * 100}%` }}
           />

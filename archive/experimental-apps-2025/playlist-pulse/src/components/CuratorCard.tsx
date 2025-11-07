@@ -74,7 +74,9 @@ export default function CuratorCard({ curator }: CuratorCardProps) {
           </div>
           <div className="text-right">
             <div
-              className={`text-2xl font-bold bg-gradient-to-r ${getCompatibilityColor(curator.compatibility)} bg-clip-text text-transparent`}
+              className={`text-2xl font-bold bg-gradient-to-r ${getCompatibilityColor(
+                curator.compatibility
+              )} bg-clip-text text-transparent`}
             >
               {curator.compatibility}%
             </div>
@@ -92,7 +94,9 @@ export default function CuratorCard({ curator }: CuratorCardProps) {
           <div className="relative">
             <Progress value={curator.compatibility} className="w-full h-2 bg-white/20" />
             <div
-              className={`absolute top-0 left-0 h-2 rounded-full bg-gradient-to-r ${getCompatibilityColor(curator.compatibility)} transition-all duration-500`}
+              className={`absolute top-0 left-0 h-2 rounded-full bg-gradient-to-r ${getCompatibilityColor(
+                curator.compatibility
+              )} transition-all duration-500`}
               style={{ width: `${curator.compatibility}%` }}
             />
           </div>

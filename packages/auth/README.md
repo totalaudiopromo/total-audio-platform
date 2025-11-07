@@ -46,13 +46,13 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ### Client-Side Authentication
 
 ```typescript
-import { useAuth } from '@total-audio/auth/hooks'
+import { useAuth } from '@total-audio/auth/hooks';
 
 function MyComponent() {
-  const { user, profile, loading, signOut } = useAuth()
+  const { user, profile, loading, signOut } = useAuth();
 
-  if (loading) return <div>Loading...</div>
-  if (!user) return <div>Not authenticated</div>
+  if (loading) return <div>Loading...</div>;
+  if (!user) return <div>Not authenticated</div>;
 
   return (
     <div>
@@ -60,28 +60,28 @@ function MyComponent() {
       <p>Subscription: {profile?.subscription_tier}</p>
       <button onClick={signOut}>Sign Out</button>
     </div>
-  )
+  );
 }
 ```
 
 ### Check App Permissions
 
 ```typescript
-import { usePermissions } from '@total-audio/auth/hooks'
+import { usePermissions } from '@total-audio/auth/hooks';
 
 function AppSwitcher() {
-  const { tier, checkAccess, accessibleApps } = usePermissions()
+  const { tier, checkAccess, accessibleApps } = usePermissions();
 
   return (
     <div>
       <p>Your plan: {tier}</p>
       <ul>
-        {accessibleApps.map((app) => (
+        {accessibleApps.map(app => (
           <li key={app}>{app}</li>
         ))}
       </ul>
     </div>
-  )
+  );
 }
 ```
 

@@ -24,19 +24,25 @@ This guide provides comprehensive instructions for integrating the texture pack 
 
 ```css
 .texture-base          /* Base texture container */
+/* Base texture container */
+/* Base texture container */
+/* Base texture container */
 .texture-overlay       /* Overlay blend mode */
 .texture-multiply      /* Multiply blend mode */
 .texture-soft-light    /* Soft light blend mode */
 .texture-screen        /* Screen blend mode */
-.texture-color-dodge   /* Color dodge blend mode */
+.texture-color-dodge; /* Color dodge blend mode */
 ```
 
 ### Paper Texture Classes
 
 ```css
 .texture-paper         /* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
 .texture-paper-2       /* Secondary paper texture */
-.texture-paper-3       /* Tertiary paper texture */
+.texture-paper-3; /* Tertiary paper texture */
 /* ... up to texture-paper-8 */
 ```
 
@@ -44,7 +50,10 @@ This guide provides comprehensive instructions for integrating the texture pack 
 
 ```css
 .texture-grain         /* Primary grain texture */
-.texture-grain-2       /* Secondary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
+.texture-grain-2; /* Secondary grain texture */
 /* ... up to texture-grain-6 */
 ```
 
@@ -52,7 +61,10 @@ This guide provides comprehensive instructions for integrating the texture pack 
 
 ```css
 .texture-luma          /* Primary luma gradient */
-.texture-luma-2        /* Secondary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
+.texture-luma-2; /* Secondary luma gradient */
 /* ... up to texture-luma-8 */
 ```
 
@@ -60,12 +72,15 @@ This guide provides comprehensive instructions for integrating the texture pack 
 
 ```css
 .texture-card          /* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
 .texture-pricing-card  /* Pricing card with rotation */
 .texture-feature-card  /* Feature card with hover effects */
 .texture-btn           /* Textured button */
 .texture-hero          /* Hero section with texture */
 .texture-nav           /* Navigation with subtle texture */
-.texture-footer        /* Footer with texture */
+.texture-footer; /* Footer with texture */
 ```
 
 ## React Components
@@ -396,17 +411,20 @@ export function LazyTextureCard({ texture, children, ...props }) {
 ### Common Issues
 
 1. **Textures not loading**
+
    - Check file paths in `/public/textures/`
    - Verify image file names match CSS classes
    - Clear browser cache
 
 2. **Performance issues**
+
    - Reduce texture opacity
    - Implement lazy loading
    - Optimize image sizes
    - Disable animations on mobile
 
 3. **Animation conflicts**
+
    - Check for conflicting CSS classes
    - Ensure proper z-index stacking
    - Verify animation timing

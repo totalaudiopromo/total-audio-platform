@@ -767,7 +767,9 @@ export class ProfessionalExportService {
       `Total Enrichments,${analyticsData.totalEnrichments}`,
       `Success Rate,${analyticsData.successRate.toFixed(1)}%`,
       `Average Confidence,${analyticsData.averageConfidence.toFixed(1)}%`,
-      `Average Processing Time,${analyticsData.performanceMetrics.averageProcessingTime.toFixed(2)}s`,
+      `Average Processing Time,${analyticsData.performanceMetrics.averageProcessingTime.toFixed(
+        2
+      )}s`,
       `Cache Hit Rate,${analyticsData.performanceMetrics.cacheHitRate.toFixed(1)}%`,
       `Error Rate,${analyticsData.performanceMetrics.errorRate.toFixed(1)}%`,
       '',
@@ -1186,7 +1188,9 @@ export class ProfessionalExportService {
             customMessage: data.customMessage,
             whiteLabel: data.whiteLabel,
           });
-          subject = `${data.whiteLabel.companyName || 'Audio Intel'} - Contact Export (${data.contactsCount} contacts)`;
+          subject = `${data.whiteLabel.companyName || 'Audio Intel'} - Contact Export (${
+            data.contactsCount
+          } contacts)`;
           break;
 
         case 'analytics':

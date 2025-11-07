@@ -18,9 +18,11 @@ etag: "1ccefe22c74f3f7bb6264e11fdd7ecb3"  # ← OLD etag
 ### Option 1: Clear Vercel Cache (Fastest)
 
 1. **Go to Vercel Dashboard**:
+
    - https://vercel.com/[your-account]/intel-totalaudiopromo-com/deployments
 
 2. **Find Latest Deployment**:
+
    - Should be from the last few minutes (commits 82e34f7, 94ec7f3, 84174c2)
    - Check if it's completed successfully
 
@@ -109,21 +111,23 @@ Convert `/demo` and `/dashboard` to server components with auth checks:
 
 ```typescript
 // app/demo/page.tsx
-import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
-import { DemoClient } from './DemoClient'
+import { redirect } from 'next/navigation';
+import { createClient } from '@/lib/supabase/server';
+import { DemoClient } from './DemoClient';
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic';
 
 export default async function DemoPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
-    redirect('/signin?redirectTo=/demo')
+    redirect('/signin?redirectTo=/demo');
   }
 
-  return <DemoClient />
+  return <DemoClient />;
 }
 ```
 

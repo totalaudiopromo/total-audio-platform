@@ -211,12 +211,16 @@ function analyseMetrics(
     // Check success rate
     if (metric.successRate < THRESHOLDS.SUCCESS_RATE_FAIL) {
       alerts.push(
-        `🚨 CRITICAL: ${app} success rate ${metric.successRate.toFixed(1)}% (threshold: ${THRESHOLDS.SUCCESS_RATE_FAIL}%)`
+        `🚨 CRITICAL: ${app} success rate ${metric.successRate.toFixed(1)}% (threshold: ${
+          THRESHOLDS.SUCCESS_RATE_FAIL
+        }%)`
       );
       overallStatus = 'FAIL';
     } else if (metric.successRate < THRESHOLDS.SUCCESS_RATE_WARN) {
       alerts.push(
-        `⚠️  WARNING: ${app} success rate ${metric.successRate.toFixed(1)}% (threshold: ${THRESHOLDS.SUCCESS_RATE_WARN}%)`
+        `⚠️  WARNING: ${app} success rate ${metric.successRate.toFixed(1)}% (threshold: ${
+          THRESHOLDS.SUCCESS_RATE_WARN
+        }%)`
       );
       if (overallStatus !== 'FAIL') {
         overallStatus = 'WARN';
@@ -229,12 +233,16 @@ function analyseMetrics(
 
       if (latencyIncrease >= THRESHOLDS.LATENCY_FAIL_FACTOR) {
         alerts.push(
-          `🚨 CRITICAL: ${app} latency ${metric.avgLatency}ms (${latencyIncrease.toFixed(1)}x baseline)`
+          `🚨 CRITICAL: ${app} latency ${metric.avgLatency}ms (${latencyIncrease.toFixed(
+            1
+          )}x baseline)`
         );
         overallStatus = 'FAIL';
       } else if (latencyIncrease >= THRESHOLDS.LATENCY_WARN_FACTOR) {
         alerts.push(
-          `⚠️  WARNING: ${app} latency ${metric.avgLatency}ms (${latencyIncrease.toFixed(1)}x baseline)`
+          `⚠️  WARNING: ${app} latency ${metric.avgLatency}ms (${latencyIncrease.toFixed(
+            1
+          )}x baseline)`
         );
         if (overallStatus !== 'FAIL') {
           overallStatus = 'WARN';
@@ -258,8 +266,12 @@ function analyseMetrics(
 
   const summary =
     overallStatus === 'PASS'
-      ? `✅ All agents healthy - ${totalEvents} events, ${overallSuccessRate.toFixed(1)}% success rate`
-      : `${overallStatus === 'WARN' ? '⚠️' : '🚨'} Agent health issues detected - ${alerts.length} alert(s)`;
+      ? `✅ All agents healthy - ${totalEvents} events, ${overallSuccessRate.toFixed(
+          1
+        )}% success rate`
+      : `${overallStatus === 'WARN' ? '⚠️' : '🚨'} Agent health issues detected - ${
+          alerts.length
+        } alert(s)`;
 
   return {
     status: overallStatus,
@@ -292,7 +304,9 @@ async function sendTelegramNotification(report: ObservabilityReport): Promise<vo
   if (report.metrics.length > 0) {
     message += `*Metrics (Last 24h):*\n`;
     for (const metric of report.metrics) {
-      message += `• ${metric.app}: ${metric.totalEvents} events, ${metric.successRate.toFixed(1)}% success, ${metric.avgLatency}ms avg\n`;
+      message += `• ${metric.app}: ${metric.totalEvents} events, ${metric.successRate.toFixed(
+        1
+      )}% success, ${metric.avgLatency}ms avg\n`;
     }
     message += '\n';
   }

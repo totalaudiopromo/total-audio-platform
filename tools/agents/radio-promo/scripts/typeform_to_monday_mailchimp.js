@@ -61,7 +61,10 @@ async function fetchAirtableTargets(limit = 25) {
   const apiKey = process.env.AIRTABLE_API_KEY;
   if (!base || !table || !apiKey) return [];
   const headers = { Authorization: `Bearer ${apiKey}` };
-  const url = `https://api.airtable.com/v0/${base}/${table}?view=${view}&pageSize=${Math.min(limit, 100)}`;
+  const url = `https://api.airtable.com/v0/${base}/${table}?view=${view}&pageSize=${Math.min(
+    limit,
+    100
+  )}`;
   const { status, json } = await httpGetJson(url, headers);
   if (status !== 200 || !json.records) return [];
   return json.records.map(r => r.fields);

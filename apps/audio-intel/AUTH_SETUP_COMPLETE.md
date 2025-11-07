@@ -41,6 +41,7 @@
    ```
 
 3. **Fill in the form**:
+
    - Full Name: Your Name
    - Email: your-test-email@example.com
    - Password: test1234 (at least 8 chars)
@@ -119,12 +120,12 @@
 Edit `apps/audio-intel/app/layout.tsx`:
 
 ```typescript
-import { UserMenu } from '@/components/auth/UserMenu'
+import { UserMenu } from '@/components/auth/UserMenu';
 
 // Add to header:
 <header>
   <UserMenu />
-</header>
+</header>;
 ```
 
 #### 2. Create Dashboard Page (if missing)
@@ -138,7 +139,7 @@ export default function DashboardPage() {
       <h1 className="text-2xl font-bold">Dashboard</h1>
       <p>You are signed in!</p>
     </div>
-  )
+  );
 }
 ```
 

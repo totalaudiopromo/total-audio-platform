@@ -329,7 +329,10 @@ function getFallbackResponses(userTier: string, message: string): string[] {
     baseResponses.push(
       `I'm Audio, representing the team behind this platform. As an Agency user, you get our fastest support.
 
-Your question about "${message.substring(0, 50)}..." - I want to make sure I give you the right information for your client needs.
+Your question about "${message.substring(
+        0,
+        50
+      )}..." - I want to make sure I give you the right information for your client needs.
 
 I can help with:
 • White-label intelligence reports - your branding on everything
@@ -354,7 +357,10 @@ Which part of your agency workflow are you looking to improve?`
     baseResponses.push(
       `I'm Audio, speaking for the working promoters who built this platform. Your Professional status means you get priority responses.
 
-About your question on "${message.substring(0, 50)}..." - I want to give you actionable information, not just generic answers.
+About your question on "${message.substring(
+        0,
+        50
+      )}..." - I want to give you actionable information, not just generic answers.
 
 As a Professional user, you get:
 • 60-second processing vs 2-3 minute waits
@@ -366,7 +372,10 @@ What specific campaign challenge can I help you solve?`,
 
       `Hey there! I'm Audio, representing the team that created this platform for working promoters like ourselves.
 
-Your question about "${message.substring(0, 50)}..." - I understand you're looking for real solutions, not marketing fluff.
+Your question about "${message.substring(
+        0,
+        50
+      )}..." - I understand you're looking for real solutions, not marketing fluff.
 
 Here's what matters for Professional users:
 • Skip the queue - faster processing for active campaigns
@@ -380,7 +389,10 @@ What would help your campaigns succeed right now?`
     baseResponses.push(
       `I'm Audio, the mascot for the working promoters who created this platform because we lived the struggle ourselves.
 
-Your question about "${message.substring(0, 50)}..." - I want to help you understand how Audio Intel solves real problems, not create more of them.
+Your question about "${message.substring(
+        0,
+        50
+      )}..." - I want to help you understand how Audio Intel solves real problems, not create more of them.
 
 Here's what I can explain:
 • How contact enrichment beats buying generic databases

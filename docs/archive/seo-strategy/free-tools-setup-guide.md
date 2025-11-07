@@ -99,6 +99,7 @@
 **Search your target keywords and analyze top 10 results**:
 
 1. **Identify weak spots**:
+
    - Old content (2+ years)
    - Thin content (under 1,000 words)
    - Poor user experience

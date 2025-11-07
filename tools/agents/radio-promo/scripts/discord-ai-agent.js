@@ -441,7 +441,14 @@ async function executeTool(toolName, toolInput) {
 
 ${toolInput.artist_name} Releases New ${toolInput.genre || 'Music'}: "${toolInput.track_title}"
 
-${toolInput.context || `${toolInput.artist_name} is excited to announce the release of their latest track, "${toolInput.track_title}". This ${toolInput.genre || 'genre-defining'} release showcases the artist's evolving sound and creative vision.`}
+${
+  toolInput.context ||
+  `${toolInput.artist_name} is excited to announce the release of their latest track, "${
+    toolInput.track_title
+  }". This ${
+    toolInput.genre || 'genre-defining'
+  } release showcases the artist's evolving sound and creative vision.`
+}
 
 The track is available now across all major streaming platforms.
 
@@ -455,7 +462,10 @@ Web: libertymusicpr.com
 ---
 
 *About ${toolInput.artist_name}*
-${toolInput.context || `${toolInput.artist_name} is an emerging ${toolInput.genre || 'music'} artist based in the UK.`}
+${
+  toolInput.context ||
+  `${toolInput.artist_name} is an emerging ${toolInput.genre || 'music'} artist based in the UK.`
+}
 
 END
         `.trim();
@@ -830,7 +840,9 @@ function computePresenceFromStatus(statusPayload) {
     };
   }
 
-  const activityLabel = `${activeCampaigns.length} active campaign${activeCampaigns.length === 1 ? '' : 's'}`;
+  const activityLabel = `${activeCampaigns.length} active campaign${
+    activeCampaigns.length === 1 ? '' : 's'
+  }`;
   return {
     activities: [{ name: activityLabel, type: ActivityType.Watching }],
     status: 'online',

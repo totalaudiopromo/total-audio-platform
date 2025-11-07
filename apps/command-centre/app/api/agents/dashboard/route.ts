@@ -65,7 +65,9 @@ export async function GET(request: NextRequest) {
 
       todays_achievements: [
         `🎯 ${Math.floor(Math.random() * 12) + 8} Reddit opportunities identified and engaged`,
-        `📧 ${Math.floor(Math.random() * 25) + 15} automated emails sent with ${Math.floor(Math.random() * 15) + 25}% open rate`,
+        `📧 ${Math.floor(Math.random() * 25) + 15} automated emails sent with ${
+          Math.floor(Math.random() * 15) + 25
+        }% open rate`,
         `📝 ${Math.floor(Math.random() * 8) + 5} content pieces generated across platforms`,
         `🔍 ${Math.floor(Math.random() * 3) + 2} competitive intelligence alerts processed`,
         `⚡ ${Math.floor(Math.random() * 6) + 4} optimization actions implemented autonomously`,

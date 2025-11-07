@@ -96,25 +96,37 @@ PR Campaign,Artist Name,Press,Electronic,800,100,planning`;
               </div>
 
               <div
-                className={`rounded-xl p-4 border-2 ${errorRows.length > 0 ? 'bg-red-50 border-red-500' : 'bg-gray-50 border-gray-300'}`}
+                className={`rounded-xl p-4 border-2 ${
+                  errorRows.length > 0
+                    ? 'bg-red-50 border-red-500'
+                    : 'bg-gray-50 border-gray-300'
+                }`}
               >
                 <div className="flex items-center gap-2 mb-1">
                   <AlertCircle
-                    className={`h-5 w-5 ${errorRows.length > 0 ? 'text-red-600' : 'text-gray-400'}`}
+                    className={`h-5 w-5 ${
+                      errorRows.length > 0 ? 'text-red-600' : 'text-gray-400'
+                    }`}
                   />
                   <span
-                    className={`text-sm font-black uppercase ${errorRows.length > 0 ? 'text-red-900' : 'text-gray-500'}`}
+                    className={`text-sm font-black uppercase ${
+                      errorRows.length > 0 ? 'text-red-900' : 'text-gray-500'
+                    }`}
                   >
                     Errors
                   </span>
                 </div>
                 <p
-                  className={`text-3xl font-black ${errorRows.length > 0 ? 'text-red-600' : 'text-gray-400'}`}
+                  className={`text-3xl font-black ${
+                    errorRows.length > 0 ? 'text-red-600' : 'text-gray-400'
+                  }`}
                 >
                   {errorRows.length}
                 </p>
                 <p
-                  className={`text-xs font-bold ${errorRows.length > 0 ? 'text-red-700' : 'text-gray-500'}`}
+                  className={`text-xs font-bold ${
+                    errorRows.length > 0 ? 'text-red-700' : 'text-gray-500'
+                  }`}
                 >
                   rows with issues
                 </p>
@@ -281,7 +293,9 @@ PR Campaign,Artist Name,Press,Electronic,800,100,planning`;
                     Importing...
                   </>
                 ) : (
-                  `Import ${validRows.length} Campaign${validRows.length !== 1 ? 's' : ''}`
+                  `Import ${validRows.length} Campaign${
+                    validRows.length !== 1 ? 's' : ''
+                  }`
                 )}
               </button>
             </div>

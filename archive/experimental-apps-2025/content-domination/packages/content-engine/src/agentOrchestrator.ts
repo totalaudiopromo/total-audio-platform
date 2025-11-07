@@ -625,7 +625,9 @@ class AgentOrchestrator {
   // Private helper methods
 
   private async gatherCampaignIntelligence(request: CampaignOrchestrationRequest): Promise<any> {
-    const intelligenceQuery = `Analyze market conditions for ${request.campaignType} campaign in ${request.genre.join(', ')} music genre.
+    const intelligenceQuery = `Analyze market conditions for ${
+      request.campaignType
+    } campaign in ${request.genre.join(', ')} music genre.
 
 Key analysis areas:
 1. Market size and growth potential
@@ -962,8 +964,8 @@ Key analysis areas:
               day < duration * 0.4
                 ? 'pre-release'
                 : day < duration * 0.7
-                  ? 'release'
-                  : 'post-release',
+                ? 'release'
+                : 'post-release',
             status: 'planned' as const,
           });
         }
@@ -1169,9 +1171,13 @@ Key analysis areas:
     const highCount = adjustments.filter(a => a.priority === 'high').length;
 
     if (criticalCount > 0) {
-      return `Critical optimization opportunity: Estimated +${criticalCount * 25}% performance improvement if implemented within 4 hours`;
+      return `Critical optimization opportunity: Estimated +${
+        criticalCount * 25
+      }% performance improvement if implemented within 4 hours`;
     } else if (highCount > 0) {
-      return `High-impact optimizations available: Estimated +${highCount * 15}% performance improvement if implemented this week`;
+      return `High-impact optimizations available: Estimated +${
+        highCount * 15
+      }% performance improvement if implemented this week`;
     } else {
       return `Standard optimizations identified: Estimated +10% performance improvement with consistent implementation`;
     }
@@ -1184,18 +1190,18 @@ Key analysis areas:
       size: response.includes('large market')
         ? 'large'
         : response.includes('small market')
-          ? 'small'
-          : 'medium',
+        ? 'small'
+        : 'medium',
       competition: response.includes('high competition')
         ? 'high'
         : response.includes('low competition')
-          ? 'low'
-          : 'moderate',
+        ? 'low'
+        : 'moderate',
       growth: response.includes('growing')
         ? 'growing'
         : response.includes('declining')
-          ? 'declining'
-          : 'stable',
+        ? 'declining'
+        : 'stable',
     };
   }
 
@@ -1204,8 +1210,8 @@ Key analysis areas:
       position: response.includes('leading')
         ? 'leading'
         : response.includes('follower')
-          ? 'follower'
-          : 'emerging',
+        ? 'follower'
+        : 'emerging',
       opportunities: response.match(/opportunity[^.]*playlist[^.]*/gi) || [
         'playlist growth opportunities',
       ],

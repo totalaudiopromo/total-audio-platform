@@ -82,11 +82,15 @@ export function generateCampaignInsights(
 
   if (performanceDiff > 20) {
     insights.push(
-      `🎉 Outstanding! Your campaign performed ${Math.round(performanceDiff)}% better than industry average`
+      `🎉 Outstanding! Your campaign performed ${Math.round(
+        performanceDiff
+      )}% better than industry average`
     );
   } else if (performanceDiff > 0) {
     insights.push(
-      `✨ Good work! Your campaign beat industry average by ${Math.round(performanceDiff)}%`
+      `✨ Good work! Your campaign beat industry average by ${Math.round(
+        performanceDiff
+      )}%`
     );
   } else if (performanceDiff < -20) {
     insights.push(
@@ -100,11 +104,15 @@ export function generateCampaignInsights(
       benchmark.avg_cost_per_result - campaign.cost_per_result;
     if (costSavings > 0) {
       insights.push(
-        `💰 You saved £${Math.round(costSavings)} per result vs industry average`
+        `💰 You saved £${Math.round(
+          costSavings
+        )} per result vs industry average`
       );
     } else if (costSavings < -30) {
       insights.push(
-        `📊 Cost per result is £${Math.abs(Math.round(costSavings))} above average - room for optimization`
+        `📊 Cost per result is £${Math.abs(
+          Math.round(costSavings)
+        )} above average - room for optimization`
       );
     }
   }
@@ -112,11 +120,15 @@ export function generateCampaignInsights(
   // Success rate analysis
   if (campaign.success_rate > 30) {
     insights.push(
-      `🎯 Excellent ${Math.round(campaign.success_rate)}% success rate - top 20% performance`
+      `🎯 Excellent ${Math.round(
+        campaign.success_rate
+      )}% success rate - top 20% performance`
     );
   } else if (campaign.success_rate > benchmark.avg_success_rate) {
     insights.push(
-      `👍 Solid ${Math.round(campaign.success_rate)}% success rate - above average`
+      `👍 Solid ${Math.round(
+        campaign.success_rate
+      )}% success rate - above average`
     );
   }
 
@@ -136,7 +148,9 @@ export function generateCampaignInsights(
   if (campaign.status === 'completed' && campaign.actual_reach > 0) {
     const roi = (campaign.actual_reach / campaign.budget) * 100;
     insights.push(
-      `📈 Campaign completed with ${campaign.actual_reach} results (${roi.toFixed(1)} results per £100 spent)`
+      `📈 Campaign completed with ${
+        campaign.actual_reach
+      } results (${roi.toFixed(1)} results per £100 spent)`
     );
   }
 
@@ -258,7 +272,11 @@ function analyzeGenrePerformance(campaigns: Campaign[]): Pattern | null {
 
   return {
     type: 'genre_performance',
-    message: `Your ${bestGenre.genre} tracks perform ${multiplier.toFixed(1)}x better than your average (${Math.round(bestGenre.successRate)}% success rate)`,
+    message: `Your ${bestGenre.genre} tracks perform ${multiplier.toFixed(
+      1
+    )}x better than your average (${Math.round(
+      bestGenre.successRate
+    )}% success rate)`,
     confidence: 85,
     metadata: {
       genre: bestGenre.genre,
@@ -310,7 +328,9 @@ function analyzePlatformPerformance(campaigns: Campaign[]): Pattern | null {
 
   return {
     type: 'platform_effectiveness',
-    message: `${bestPlatform.platform} campaigns show ${Math.round(bestPlatform.successRate)}% success rate - your most effective platform`,
+    message: `${bestPlatform.platform} campaigns show ${Math.round(
+      bestPlatform.successRate
+    )}% success rate - your most effective platform`,
     confidence: 90,
     metadata: {
       platform: bestPlatform.platform,
@@ -370,7 +390,9 @@ function analyzeOverallSuccess(campaigns: Campaign[]): Pattern | null {
   if (avgSuccessRate > 30) {
     return {
       type: 'success',
-      message: `Excellent overall performance! Your campaigns average ${Math.round(avgSuccessRate)}% success rate`,
+      message: `Excellent overall performance! Your campaigns average ${Math.round(
+        avgSuccessRate
+      )}% success rate`,
       confidence: 100,
       metadata: {
         successRate: Math.round(avgSuccessRate),
@@ -379,7 +401,9 @@ function analyzeOverallSuccess(campaigns: Campaign[]): Pattern | null {
   } else if (avgSuccessRate > 20) {
     return {
       type: 'pattern',
-      message: `Solid ${Math.round(avgSuccessRate)}% average success rate across your campaigns`,
+      message: `Solid ${Math.round(
+        avgSuccessRate
+      )}% average success rate across your campaigns`,
       confidence: 85,
       metadata: {
         successRate: Math.round(avgSuccessRate),
@@ -468,7 +492,9 @@ export function predictCampaignPerformance(
   // Genre-specific advice
   if (formData.genre && baseSuccessRate > 30) {
     recommendations.push(
-      `${formData.genre} music shows strong ${Math.round(baseSuccessRate)}% success rate on ${formData.platform}`
+      `${formData.genre} music shows strong ${Math.round(
+        baseSuccessRate
+      )}% success rate on ${formData.platform}`
     );
   }
 

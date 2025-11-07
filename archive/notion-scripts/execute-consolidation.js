@@ -201,7 +201,9 @@ async function executeConsolidation() {
                 rich_text: [
                   {
                     text: {
-                      content: `Last consolidated: ${new Date().toLocaleDateString()} - Merged ${businessStrategyPages.length - 1} duplicate business strategy pages into this master page.`,
+                      content: `Last consolidated: ${new Date().toLocaleDateString()} - Merged ${
+                        businessStrategyPages.length - 1
+                      } duplicate business strategy pages into this master page.`,
                     },
                   },
                 ],
@@ -234,7 +236,9 @@ async function executeConsolidation() {
                 rich_text: [
                   {
                     text: {
-                      content: `Last consolidated: ${new Date().toLocaleDateString()} - Merged ${audioIntelPages.length - 1} duplicate Audio Intel pages into this master page.`,
+                      content: `Last consolidated: ${new Date().toLocaleDateString()} - Merged ${
+                        audioIntelPages.length - 1
+                      } duplicate Audio Intel pages into this master page.`,
                     },
                   },
                 ],

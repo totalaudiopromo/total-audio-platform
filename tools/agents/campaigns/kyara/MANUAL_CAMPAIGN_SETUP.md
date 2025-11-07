@@ -101,6 +101,7 @@ MONDAY 14th OCT: Release day email blast prepared (30+ contacts)
 
 1. **Return to dashboard:** https://tracker.totalaudiopromo.com/dashboard
 2. **Check you see:**
+
    - KYARA - Bloodshot campaign card
    - Status: Active
    - Release Date: Monday 14th Oct
@@ -182,6 +183,7 @@ If you want to use the script instead of manual setup:
 ### Option A: Run Script with Your Auth Token
 
 1. **Get your Supabase auth token:**
+
    - Sign in to tracker.totalaudiopromo.com
    - Open browser DevTools (F12)
    - Go to Application → Local Storage → https://tracker.totalaudiopromo.com
@@ -205,6 +207,7 @@ node add-kyara-campaign-to-tracker.js
 If you have Supabase service role key:
 
 1. **Get service role key** from Supabase dashboard:
+
    - Visit: https://app.supabase.com/project/ucncbighzqudaszewjrv/settings/api
    - Copy "service_role" key (NOT anon key)
 

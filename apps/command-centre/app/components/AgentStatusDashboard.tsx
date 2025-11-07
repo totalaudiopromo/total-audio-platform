@@ -228,7 +228,9 @@ export default function AgentStatusDashboard() {
                 {agents.map(agent => (
                   <div
                     key={agent.name}
-                    className={`intel-card ${getCategoryColor(agent.category)} hover:shadow-md transition-shadow`}
+                    className={`intel-card ${getCategoryColor(
+                      agent.category
+                    )} hover:shadow-md transition-shadow`}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div className="text-sm font-medium truncate">

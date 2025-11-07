@@ -797,12 +797,9 @@ class ContentPerformanceAnalytics {
     console.log('Content Performance Analytics initialized');
 
     // Set up periodic data collection
-    setInterval(
-      () => {
-        this.performPeriodicAnalytics();
-      },
-      60 * 60 * 1000
-    ); // Every hour
+    setInterval(() => {
+      this.performPeriodicAnalytics();
+    }, 60 * 60 * 1000); // Every hour
   }
 
   private async performPeriodicAnalytics(): Promise<void> {

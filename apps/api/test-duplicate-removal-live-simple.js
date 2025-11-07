@@ -131,8 +131,12 @@ async function liveDuplicateRemoval() {
 
       const reason =
         recordsWithScores[0].completeness > recordsWithScores[1].completeness
-          ? `Most complete record (${Math.round(recordsWithScores[0].completeness * 100)}% vs ${Math.round(recordsWithScores[1].completeness * 100)}%)`
-          : `Most recently created (${new Date(recordsWithScores[0].created).toLocaleDateString()})`;
+          ? `Most complete record (${Math.round(
+              recordsWithScores[0].completeness * 100
+            )}% vs ${Math.round(recordsWithScores[1].completeness * 100)}%)`
+          : `Most recently created (${new Date(
+              recordsWithScores[0].created
+            ).toLocaleDateString()})`;
 
       totalRecordsToDelete += deleteRecords.length;
       allRecordsToDelete.push(...deleteRecords);

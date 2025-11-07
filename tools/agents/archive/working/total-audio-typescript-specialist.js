@@ -351,7 +351,9 @@ class TotalAudioTypeScriptSpecialist {
 
     utilities.push({
       name: `${this.toPascalCase(featureName)}DeepPartial`,
-      definition: `<T> = { [P in keyof T]?: T[P] extends object ? ${this.toPascalCase(featureName)}DeepPartial<T[P]> : T[P] }`,
+      definition: `<T> = { [P in keyof T]?: T[P] extends object ? ${this.toPascalCase(
+        featureName
+      )}DeepPartial<T[P]> : T[P] }`,
       description: `Deep partial type for ${featureName} nested objects`,
     });
 
@@ -386,7 +388,9 @@ class TotalAudioTypeScriptSpecialist {
         },
         {
           name: `${this.toPascalCase(featureName)}ListRequest`,
-          definition: `APIRequest<{ filters?: ${this.toPascalCase(featureName)}Filters; pagination?: PaginationParams; sort?: SortParams }>`,
+          definition: `APIRequest<{ filters?: ${this.toPascalCase(
+            featureName
+          )}Filters; pagination?: PaginationParams; sort?: SortParams }>`,
           description: `List request type for ${featureName}`,
         },
       ],
@@ -403,7 +407,9 @@ class TotalAudioTypeScriptSpecialist {
         },
         {
           name: `${this.toPascalCase(featureName)}ListResponse`,
-          definition: `APIResponse<{ items: ${this.toPascalCase(featureName)}Entity[]; meta: PaginationMeta }>`,
+          definition: `APIResponse<{ items: ${this.toPascalCase(
+            featureName
+          )}Entity[]; meta: PaginationMeta }>`,
           description: `List response type for ${featureName}`,
         },
       ],
@@ -465,7 +471,9 @@ class TotalAudioTypeScriptSpecialist {
         types: [
           {
             name: `${this.toPascalCase(featureName)}Handlers`,
-            definition: `{\n  onChange?: (value: any) => void;\n  onSubmit?: (data: ${this.toPascalCase(featureName)}Input) => void;\n  onError?: (error: Error) => void;\n}`,
+            definition: `{\n  onChange?: (value: any) => void;\n  onSubmit?: (data: ${this.toPascalCase(
+              featureName
+            )}Input) => void;\n  onError?: (error: Error) => void;\n}`,
             description: `Event handlers for ${featureName} component`,
           },
         ],
@@ -483,19 +491,27 @@ class TotalAudioTypeScriptSpecialist {
 
     guards.push({
       name: `is${this.toPascalCase(featureName)}Entity`,
-      definition: `(value: any): value is ${this.toPascalCase(featureName)}Entity => {\n  return value && typeof value === 'object' && typeof value.id === 'string';\n}`,
+      definition: `(value: any): value is ${this.toPascalCase(
+        featureName
+      )}Entity => {\n  return value && typeof value === 'object' && typeof value.id === 'string';\n}`,
       description: `Type guard to check if value is ${featureName} entity`,
     });
 
     guards.push({
       name: `is${this.toPascalCase(featureName)}Array`,
-      definition: `(value: any): value is ${this.toPascalCase(featureName)}Entity[] => {\n  return Array.isArray(value) && value.every(is${this.toPascalCase(featureName)}Entity);\n}`,
+      definition: `(value: any): value is ${this.toPascalCase(
+        featureName
+      )}Entity[] => {\n  return Array.isArray(value) && value.every(is${this.toPascalCase(
+        featureName
+      )}Entity);\n}`,
       description: `Type guard to check if value is array of ${featureName} entities`,
     });
 
     guards.push({
       name: `has${this.toPascalCase(featureName)}Permission`,
-      definition: `(user: User, permission: ${this.toPascalCase(featureName)}Permission): boolean => {\n  return user.permissions.includes(permission);\n}`,
+      definition: `(user: User, permission: ${this.toPascalCase(
+        featureName
+      )}Permission): boolean => {\n  return user.permissions.includes(permission);\n}`,
       description: `Type guard to check ${featureName} permissions`,
     });
 

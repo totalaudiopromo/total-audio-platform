@@ -85,10 +85,12 @@ Based on glob results, Command Centre has 18 pages that need mobile verification
 ### Immediate Actions (High Priority)
 
 1. **Fix Dev Server Performance**
+
    - Enable Next.js turbopack: `next dev --turbo`
    - Or use production build for testing: `npm run build && npm run start`
 
 2. **Add Mobile Loading States**
+
    - Implement skeleton screens for dashboard cards
    - Add retry mechanisms for failed API calls
    - Show user-friendly error messages on mobile
@@ -108,6 +110,7 @@ Based on glob results, Command Centre has 18 pages that need mobile verification
 ### Medium Priority
 
 5. **Mobile Performance Optimization**
+
    - Lazy load dashboard cards
    - Implement virtual scrolling for long lists
    - Reduce initial bundle size

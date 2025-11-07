@@ -169,7 +169,11 @@ export function generatePitchHTML(pitch: PitchData): string {
     <div class="meta-item">
       <div class="meta-label">Contact</div>
       <div class="meta-value">${pitch.contactName}</div>
-      ${pitch.contactOutlet ? `<div class="meta-value" style="color: #6b7280; font-size: 10pt;">${pitch.contactOutlet}</div>` : ''}
+      ${
+        pitch.contactOutlet
+          ? `<div class="meta-value" style="color: #6b7280; font-size: 10pt;">${pitch.contactOutlet}</div>`
+          : ''
+      }
     </div>
 
     <div class="meta-item">
@@ -256,7 +260,10 @@ export function downloadPitchAsHTML(pitch: PitchData) {
 
   const link = document.createElement('a');
   link.href = url;
-  link.download = `${pitch.artistName.replace(/\s+/g, '-')}-${pitch.trackTitle.replace(/\s+/g, '-')}-pitch.html`;
+  link.download = `${pitch.artistName.replace(/\s+/g, '-')}-${pitch.trackTitle.replace(
+    /\s+/g,
+    '-'
+  )}-pitch.html`;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

@@ -24,12 +24,14 @@
 ### Changes Made:
 
 1. **Hero Section (HeroDemo.tsx)**:
+
    - ❌ "Start free trial →"
    - ✅ "Get MY free trial →"
    - ❌ "See how it works"
    - ✅ "Show ME how it works"
 
 2. **Pricing Section (page.tsx)**:
+
    - **FREE Tier**: "Get MY free beta access"
    - **PRO Tier (£19)**: "Start MY free trial"
    - **AGENCY Tier (£79)**: "Learn more" (unchanged - not primary CTA)
@@ -52,6 +54,7 @@
 ### Changes Made:
 
 1. **Hero Section**:
+
    - ❌ "See how it works →"
    - ✅ "Show ME how it works →"
    - ❌ "Try Audio Intel free"
@@ -73,6 +76,7 @@
 ### Changes Made:
 
 1. **Hero Section**:
+
    - ❌ "Get Started"
    - ✅ "Generate MY first 50 pitches"
    - ❌ "See how it works"

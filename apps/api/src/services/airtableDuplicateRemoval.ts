@@ -127,7 +127,9 @@ export class AirtableDuplicateRemoval {
 
     const reason =
       (firstRecord?.completeness || 0) > (secondRecord?.completeness || 0)
-        ? `Most complete record (${Math.round((firstRecord?.completeness || 0) * 100)}% vs ${Math.round((secondRecord?.completeness || 0) * 100)}%)`
+        ? `Most complete record (${Math.round(
+            (firstRecord?.completeness || 0) * 100
+          )}% vs ${Math.round((secondRecord?.completeness || 0) * 100)}%)`
         : `Most recently created (${new Date(firstRecord?.created || '').toLocaleDateString()})`;
 
     return { keepRecord, deleteRecords, reason };

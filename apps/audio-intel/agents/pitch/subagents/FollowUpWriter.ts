@@ -132,7 +132,9 @@ export class FollowUpWriter {
       // First follow-up - casual and brief
       body = `${greeting}
 
-Just wanted to follow up on "${payload.release}" I sent over about ${Math.floor(payload.daysSinceOriginal / 7)} weeks ago.
+Just wanted to follow up on "${payload.release}" I sent over about ${Math.floor(
+        payload.daysSinceOriginal / 7
+      )} weeks ago.
 
 No worries if you've been busy or it's not the right fit - just thought I'd check in.
 

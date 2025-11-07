@@ -187,7 +187,11 @@ async function generateClaudeInsights(negativeFeedback: FeedbackItem[]): Promise
   const feedbackContext = negativeFeedback
     .map(
       (f, index) =>
-        `${index + 1}. [${f.app}${f.agentId ? ` - ${f.agentId}` : ''}] Rating: ${f.rating}/5\n   Comment: ${f.comment || 'No comment provided'}\n   Date: ${new Date(f.createdAt).toLocaleString('en-GB')}`
+        `${index + 1}. [${f.app}${f.agentId ? ` - ${f.agentId}` : ''}] Rating: ${
+          f.rating
+        }/5\n   Comment: ${f.comment || 'No comment provided'}\n   Date: ${new Date(
+          f.createdAt
+        ).toLocaleString('en-GB')}`
     )
     .join('\n\n');
 
@@ -265,9 +269,18 @@ function generateMarkdownReport(report: FeedbackDigestReport): string {
   markdown += `|--------|-------|\n`;
   markdown += `| Total Feedback | ${analysis.totalFeedback} |\n`;
   markdown += `| Average Rating | ${analysis.averageRating.toFixed(2)} / 5.0 |\n`;
-  markdown += `| Positive (4-5⭐) | ${analysis.positiveCount} (${((analysis.positiveCount / analysis.totalFeedback) * 100).toFixed(1)}%) |\n`;
-  markdown += `| Neutral (3⭐) | ${analysis.neutralCount} (${((analysis.neutralCount / analysis.totalFeedback) * 100).toFixed(1)}%) |\n`;
-  markdown += `| Negative (1-2⭐) | ${analysis.negativeCount} (${((analysis.negativeCount / analysis.totalFeedback) * 100).toFixed(1)}%) |\n\n`;
+  markdown += `| Positive (4-5⭐) | ${analysis.positiveCount} (${(
+    (analysis.positiveCount / analysis.totalFeedback) *
+    100
+  ).toFixed(1)}%) |\n`;
+  markdown += `| Neutral (3⭐) | ${analysis.neutralCount} (${(
+    (analysis.neutralCount / analysis.totalFeedback) *
+    100
+  ).toFixed(1)}%) |\n`;
+  markdown += `| Negative (1-2⭐) | ${analysis.negativeCount} (${(
+    (analysis.negativeCount / analysis.totalFeedback) *
+    100
+  ).toFixed(1)}%) |\n\n`;
 
   // Feedback by App Section
   if (Object.keys(analysis.byApp).length > 0) {
@@ -370,7 +383,9 @@ async function sendTelegramNotification(report: FeedbackDigestReport): Promise<v
   // Overview
   const sentimentEmoji =
     analysis.averageRating >= 4 ? '😊' : analysis.averageRating >= 3 ? '😐' : '😟';
-  message += `${sentimentEmoji} *Overall*: ${analysis.totalFeedback} responses, ${analysis.averageRating.toFixed(1)}/5 avg\n`;
+  message += `${sentimentEmoji} *Overall*: ${
+    analysis.totalFeedback
+  } responses, ${analysis.averageRating.toFixed(1)}/5 avg\n`;
   message += `👍 Positive: ${analysis.positiveCount} | 👎 Negative: ${analysis.negativeCount}\n\n`;
 
   // Claude insights
@@ -439,13 +454,22 @@ function printReportSummary(report: FeedbackDigestReport): void {
   console.log(`Total Feedback:   ${analysis.totalFeedback}`);
   console.log(`Average Rating:   ${analysis.averageRating.toFixed(2)} / 5.0`);
   console.log(
-    `Positive (4-5⭐):  ${analysis.positiveCount} (${((analysis.positiveCount / analysis.totalFeedback) * 100).toFixed(1)}%)`
+    `Positive (4-5⭐):  ${analysis.positiveCount} (${(
+      (analysis.positiveCount / analysis.totalFeedback) *
+      100
+    ).toFixed(1)}%)`
   );
   console.log(
-    `Neutral (3⭐):     ${analysis.neutralCount} (${((analysis.neutralCount / analysis.totalFeedback) * 100).toFixed(1)}%)`
+    `Neutral (3⭐):     ${analysis.neutralCount} (${(
+      (analysis.neutralCount / analysis.totalFeedback) *
+      100
+    ).toFixed(1)}%)`
   );
   console.log(
-    `Negative (1-2⭐):  ${analysis.negativeCount} (${((analysis.negativeCount / analysis.totalFeedback) * 100).toFixed(1)}%)`
+    `Negative (1-2⭐):  ${analysis.negativeCount} (${(
+      (analysis.negativeCount / analysis.totalFeedback) *
+      100
+    ).toFixed(1)}%)`
   );
 
   // By app

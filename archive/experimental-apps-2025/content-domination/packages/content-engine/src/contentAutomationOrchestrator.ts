@@ -237,37 +237,28 @@ class ContentAutomationOrchestrator {
     console.log('🔄 Starting continuous automation monitoring...');
 
     // Check for new newsletters every 30 minutes
-    setInterval(
-      async () => {
-        try {
-          await this.checkForNewNewsletters();
-        } catch (error) {
-          console.error('Newsletter check failed:', error);
-          this.status.lastError = error.message;
-        }
-      },
-      30 * 60 * 1000
-    ); // 30 minutes
+    setInterval(async () => {
+      try {
+        await this.checkForNewNewsletters();
+      } catch (error) {
+        console.error('Newsletter check failed:', error);
+        this.status.lastError = error.message;
+      }
+    }, 30 * 60 * 1000); // 30 minutes
 
     // Generate performance reports daily
-    setInterval(
-      async () => {
-        try {
-          await this.generateDailyPerformanceReport();
-        } catch (error) {
-          console.error('Daily report generation failed:', error);
-        }
-      },
-      24 * 60 * 60 * 1000
-    ); // 24 hours
+    setInterval(async () => {
+      try {
+        await this.generateDailyPerformanceReport();
+      } catch (error) {
+        console.error('Daily report generation failed:', error);
+      }
+    }, 24 * 60 * 60 * 1000); // 24 hours
 
     // System health check every 5 minutes
-    setInterval(
-      () => {
-        this.performHealthCheck();
-      },
-      5 * 60 * 1000
-    ); // 5 minutes
+    setInterval(() => {
+      this.performHealthCheck();
+    }, 5 * 60 * 1000); // 5 minutes
 
     console.log('✅ Continuous automation started successfully');
   }
@@ -366,52 +357,43 @@ class ContentAutomationOrchestrator {
     // Schedule performance data collection at different intervals
     content.forEach(piece => {
       // 1 hour tracking
-      setTimeout(
-        async () => {
-          try {
-            await this.performanceAnalytics.collectPerformanceData(
-              piece.id,
-              piece.platform,
-              '1_hour'
-            );
-          } catch (error) {
-            console.error('1-hour performance tracking failed:', error);
-          }
-        },
-        60 * 60 * 1000
-      );
+      setTimeout(async () => {
+        try {
+          await this.performanceAnalytics.collectPerformanceData(
+            piece.id,
+            piece.platform,
+            '1_hour'
+          );
+        } catch (error) {
+          console.error('1-hour performance tracking failed:', error);
+        }
+      }, 60 * 60 * 1000);
 
       // 24 hour tracking
-      setTimeout(
-        async () => {
-          try {
-            await this.performanceAnalytics.collectPerformanceData(
-              piece.id,
-              piece.platform,
-              '24_hours'
-            );
-          } catch (error) {
-            console.error('24-hour performance tracking failed:', error);
-          }
-        },
-        24 * 60 * 60 * 1000
-      );
+      setTimeout(async () => {
+        try {
+          await this.performanceAnalytics.collectPerformanceData(
+            piece.id,
+            piece.platform,
+            '24_hours'
+          );
+        } catch (error) {
+          console.error('24-hour performance tracking failed:', error);
+        }
+      }, 24 * 60 * 60 * 1000);
 
       // 7 day tracking
-      setTimeout(
-        async () => {
-          try {
-            await this.performanceAnalytics.collectPerformanceData(
-              piece.id,
-              piece.platform,
-              '7_days'
-            );
-          } catch (error) {
-            console.error('7-day performance tracking failed:', error);
-          }
-        },
-        7 * 24 * 60 * 60 * 1000
-      );
+      setTimeout(async () => {
+        try {
+          await this.performanceAnalytics.collectPerformanceData(
+            piece.id,
+            piece.platform,
+            '7_days'
+          );
+        } catch (error) {
+          console.error('7-day performance tracking failed:', error);
+        }
+      }, 7 * 24 * 60 * 60 * 1000);
     });
   }
 
@@ -433,7 +415,9 @@ class ContentAutomationOrchestrator {
 
     console.log(`📊 Daily performance report generated: ${report.reportId}`);
     console.log(
-      `📈 Summary: ${report.summary.totalContent} content, ${report.summary.averageEngagementRate.toFixed(1)}% avg engagement`
+      `📈 Summary: ${
+        report.summary.totalContent
+      } content, ${report.summary.averageEngagementRate.toFixed(1)}% avg engagement`
     );
 
     return report;

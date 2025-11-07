@@ -54,8 +54,9 @@ class ConcertaLibertyAgent {
       messaging: {
         hook: 'South Korean electronic artist bringing fresh Asian influence to European dance scene',
         credentials: 'Rising star in Seoul electronic music scene',
-        uniqueAngle: 'Cross-cultural electronic fusion - Asian production meets European dance culture',
-      }
+        uniqueAngle:
+          'Cross-cultural electronic fusion - Asian production meets European dance culture',
+      },
     };
 
     // Load contacts from our search
@@ -72,7 +73,7 @@ class ConcertaLibertyAgent {
         electronicDance: contacts.electronicDance || [],
         easternEurope: contacts.easternEurope || [],
         southKorea: contacts.southKorea || [],
-        total: contacts.allRelevant || []
+        total: contacts.allRelevant || [],
       };
 
       console.log('📊 Loaded Concerta campaign contacts:');
@@ -86,7 +87,7 @@ class ConcertaLibertyAgent {
         electronicDance: [],
         easternEurope: [],
         southKorea: [],
-        total: []
+        total: [],
       };
     }
   }
@@ -96,9 +97,12 @@ class ConcertaLibertyAgent {
 
     const assetsToCheck = [
       { path: 'Profile image/', description: 'High-res profile images (4 variants)' },
-      { path: 'consumption_artwork_final/', description: 'Track artwork (anime + futuristic city)' },
+      {
+        path: 'consumption_artwork_final/',
+        description: 'Track artwork (anime + futuristic city)',
+      },
       { path: 'consumption_video/', description: 'Music video' },
-      { path: 'SYLQ/', description: 'Label assets (SYLQ)' }
+      { path: 'SYLQ/', description: 'Label assets (SYLQ)' },
     ];
 
     const verified = [];
@@ -143,7 +147,7 @@ Would you like to check it out?
 Best regards,
 Chris Schofield
 Liberty Music PR
-chris@libertymusicpr.com`
+chris@libertymusicpr.com`,
       },
 
       // Template for UK/Global electronic specialists
@@ -168,7 +172,7 @@ Interested in hearing more?
 Best regards,
 Chris Schofield
 Liberty Music PR
-chris@libertymusicpr.com`
+chris@libertymusicpr.com`,
       },
 
       // Template for South Korean stations
@@ -191,8 +195,8 @@ Would you be interested in supporting a Korean artist making waves international
 Best regards,
 Chris Schofield
 Liberty Music PR (UK)
-chris@libertymusicpr.com`
-      }
+chris@libertymusicpr.com`,
+      },
     };
   }
 
@@ -205,25 +209,25 @@ chris@libertymusicpr.com`
         {
           name: 'Electronic/Dance Specialists',
           count: this.targetContacts.electronicDance.length,
-          priority: 'high'
+          priority: 'high',
         },
         {
           name: 'Eastern Europe Dance Stations',
           count: this.targetContacts.easternEurope.length,
-          priority: 'medium'
+          priority: 'medium',
         },
         {
           name: 'South Korean Electronic Stations',
           count: this.targetContacts.southKorea.length,
-          priority: 'medium'
-        }
+          priority: 'medium',
+        },
       ],
       totalRecipients: this.targetContacts.total.length,
       sendSchedule: {
         phase1: 'Electronic/Dance specialists (Week 1)',
         phase2: 'Eastern Europe focus (Week 2-3)',
         phase3: 'South Korea + follow-ups (Week 4)',
-      }
+      },
     };
 
     console.log('📋 MAILCHIMP CAMPAIGN PLAN:');
@@ -291,14 +295,14 @@ chris@libertymusicpr.com`
       assets: {
         verified: true,
         location: this.campaignData.assetsPath,
-        types: ['images', 'artwork', 'video', 'label-assets']
+        types: ['images', 'artwork', 'video', 'label-assets'],
       },
 
       targetContacts: {
         total: this.targetContacts.total.length,
         electronicDance: this.targetContacts.electronicDance.length,
         easternEurope: this.targetContacts.easternEurope.length,
-        southKorea: this.targetContacts.southKorea.length
+        southKorea: this.targetContacts.southKorea.length,
       },
 
       campaignStrategy: this.campaignData.strategy,
@@ -310,8 +314,8 @@ chris@libertymusicpr.com`
         '3. Create audience segments in Mailchimp',
         '4. Schedule Phase 1: Electronic/Dance specialists',
         '5. Prepare follow-up sequences',
-        '6. Set up airplay tracking system'
-      ]
+        '6. Set up airplay tracking system',
+      ],
     };
 
     console.log('✅ SETUP COMPLETE');
@@ -383,14 +387,13 @@ chris@libertymusicpr.com`
         report,
         mailchimpPlan,
         templates,
-        assetCheck
+        assetCheck,
       };
-
     } catch (error) {
       console.error('❌ Campaign setup failed:', error.message);
       return {
         success: false,
-        error: error.message
+        error: error.message,
       };
     }
   }

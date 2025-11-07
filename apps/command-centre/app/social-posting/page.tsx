@@ -328,7 +328,9 @@ export default function SocialPostingPage() {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <span
-                        className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(post.platform)}`}
+                        className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(
+                          post.platform
+                        )}`}
                       >
                         {getPlatformIcon(post.platform)} {post.platform}
                       </span>
@@ -342,7 +344,9 @@ export default function SocialPostingPage() {
 
                     <button
                       onClick={() => handleCopy(post.content, post.id)}
-                      className={`postcraft-button ${copiedId === post.id ? 'bg-green-100 text-green-800' : ''}`}
+                      className={`postcraft-button ${
+                        copiedId === post.id ? 'bg-green-100 text-green-800' : ''
+                      }`}
                     >
                       {copiedId === post.id ? (
                         <>

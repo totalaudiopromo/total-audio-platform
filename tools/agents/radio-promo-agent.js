@@ -704,7 +704,9 @@ class RadioPromoAgent {
   generateContactInfo() {
     return {
       email: `dj${Math.floor(Math.random() * 1000)}@radiostation.com`,
-      phone: `555-${Math.floor(Math.random() * 900) + 100}-${Math.floor(Math.random() * 9000) + 1000}`,
+      phone: `555-${Math.floor(Math.random() * 900) + 100}-${
+        Math.floor(Math.random() * 9000) + 1000
+      }`,
       submissionPortal: Math.random() > 0.6,
     };
   }
@@ -713,7 +715,9 @@ class RadioPromoAgent {
     const names = ['Alex', 'Jordan', 'Casey', 'Taylor', 'Morgan', 'Riley', 'Avery', 'Quinn'];
     return {
       name: `DJ ${names[Math.floor(Math.random() * names.length)]}`,
-      show: `${['Morning', 'Afternoon', 'Evening', 'Late Night'][Math.floor(Math.random() * 4)]} Mix`,
+      show: `${
+        ['Morning', 'Afternoon', 'Evening', 'Late Night'][Math.floor(Math.random() * 4)]
+      } Mix`,
       experience: Math.floor(Math.random() * 15) + 1,
     };
   }
@@ -1338,7 +1342,10 @@ class RadioPromoAgent {
     const pr = `
 FOR IMMEDIATE RELEASE
 
-${this.libertyTemplates.headline.replace('{artistName}', artistName).replace('{genre}', genre).replace('{trackTitle}', trackTitle)}
+${this.libertyTemplates.headline
+  .replace('{artistName}', artistName)
+  .replace('{genre}', genre)
+  .replace('{trackTitle}', trackTitle)}
 
 ${this.libertyTemplates.subheadline.replace('{genre}', genre)}
 
@@ -1631,7 +1638,9 @@ Generated: ${new Date().toLocaleDateString()}
       );
 
       // Save CSV to file
-      const filename = `${artistName.replace(/[^a-zA-Z0-9]/g, '_')}_play_report_${new Date().toISOString().split('T')[0]}.csv`;
+      const filename = `${artistName.replace(/[^a-zA-Z0-9]/g, '_')}_play_report_${
+        new Date().toISOString().split('T')[0]
+      }.csv`;
       const filepath = path.join(__dirname, 'reports', filename);
 
       // Ensure reports directory exists
@@ -1780,7 +1789,10 @@ Generated: ${new Date().toLocaleDateString()}
         return {
           success: true,
           reportUrl,
-          fileName: `WARM Report - ${artistName} - Week ${this.warmApi.getWeekNumber(new Date(campaignStartDate), new Date())}.csv`,
+          fileName: `WARM Report - ${artistName} - Week ${this.warmApi.getWeekNumber(
+            new Date(campaignStartDate),
+            new Date()
+          )}.csv`,
         };
       } else {
         logger.error('Failed to generate weekly WARM report');
@@ -2742,8 +2754,9 @@ if (require.main === module) {
         console.log(
           `Getting recent Liberty campaigns from Gmail+Typeform (last ${gmailDays} days)...`
         );
-        const recentGmailCampaigns =
-          await agent.gmailTypeformMatcher.getRecentLibertyCampaigns(gmailDays);
+        const recentGmailCampaigns = await agent.gmailTypeformMatcher.getRecentLibertyCampaigns(
+          gmailDays
+        );
         console.log(JSON.stringify(recentGmailCampaigns, null, 2));
         break;
 
@@ -2754,8 +2767,9 @@ if (require.main === module) {
           return;
         }
         console.log(`Finding campaigns for artist: ${gmailArtistName} (Gmail+Typeform)...`);
-        const gmailArtistCampaigns =
-          await agent.gmailTypeformMatcher.findCampaignsByArtist(gmailArtistName);
+        const gmailArtistCampaigns = await agent.gmailTypeformMatcher.findCampaignsByArtist(
+          gmailArtistName
+        );
         console.log(JSON.stringify(gmailArtistCampaigns, null, 2));
         break;
 
@@ -2772,8 +2786,9 @@ if (require.main === module) {
           return;
         }
         console.log(`Generating press release for artist: ${pressArtistName}...`);
-        const pressRelease =
-          await agent.pressReleaseGenerator.generatePressReleaseForArtist(pressArtistName);
+        const pressRelease = await agent.pressReleaseGenerator.generatePressReleaseForArtist(
+          pressArtistName
+        );
         console.log(JSON.stringify(pressRelease, null, 2));
         break;
 

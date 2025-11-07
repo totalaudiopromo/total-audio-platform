@@ -141,16 +141,19 @@
 #### Features to Look For:
 
 1. **Music Industry Specialization**
+
    - Understanding of playlist submission processes
    - Knowledge of music blog preferences
    - Radio promotion requirements
 
 2. **Data Quality & Sources**
+
    - Multiple verification methods
    - Real-time updates
    - Industry-specific databases
 
 3. **Output Customization**
+
    - Format for your workflow
    - Integration with existing tools
    - Export options

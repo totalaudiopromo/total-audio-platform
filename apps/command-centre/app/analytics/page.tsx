@@ -159,7 +159,9 @@ export default function AdvancedAnalyticsPage() {
           <button
             key={period.value}
             onClick={() => setTimeframe(period.value)}
-            className={`postcraft-button ${timeframe === period.value ? 'bg-black text-white' : ''}`}
+            className={`postcraft-button ${
+              timeframe === period.value ? 'bg-black text-white' : ''
+            }`}
           >
             {period.label}
           </button>

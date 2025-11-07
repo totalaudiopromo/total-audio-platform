@@ -278,7 +278,9 @@ class SimpleLinkedInAuth {
     } catch (error) {
       if (error.response) {
         throw new Error(
-          `LinkedIn token exchange failed: ${error.response.data.error_description || error.response.data.error || 'Unknown error'}`
+          `LinkedIn token exchange failed: ${
+            error.response.data.error_description || error.response.data.error || 'Unknown error'
+          }`
         );
       } else {
         throw new Error(`Network error during token exchange: ${error.message}`);
@@ -311,7 +313,9 @@ class SimpleLinkedInAuth {
     } catch (error) {
       if (error.response) {
         throw new Error(
-          `LinkedIn profile fetch failed: ${error.response.data.error_description || error.response.data.error || 'Unknown error'}`
+          `LinkedIn profile fetch failed: ${
+            error.response.data.error_description || error.response.data.error || 'Unknown error'
+          }`
         );
       } else {
         throw new Error(`Network error during profile fetch: ${error.message}`);

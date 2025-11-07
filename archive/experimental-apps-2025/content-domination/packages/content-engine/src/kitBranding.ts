@@ -153,7 +153,9 @@ class AudioIntelBranding {
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, ${this.brandConfig.primary_color}, ${this.brandConfig.accent_color});
+            background: linear-gradient(135deg, ${this.brandConfig.primary_color}, ${
+      this.brandConfig.accent_color
+    });
             color: #ffffff;
             box-shadow: 0 4px 15px rgba(37, 56, 199, 0.3);
         }
@@ -177,7 +179,9 @@ class AudioIntelBranding {
         }
         
         .header {
-            background: linear-gradient(135deg, ${this.brandConfig.primary_color} 0%, ${this.brandConfig.secondary_color} 100%);
+            background: linear-gradient(135deg, ${this.brandConfig.primary_color} 0%, ${
+      this.brandConfig.secondary_color
+    } 100%);
             padding: 40px 30px;
             text-align: center;
         }
@@ -283,15 +287,21 @@ class AudioIntelBranding {
                         <!-- Quick links -->
                         <div style="margin-bottom: 20px;">
                             <a href="${this.brandConfig.website_url}/help" 
-                               style="color: ${this.brandConfig.primary_color}; text-decoration: none; margin: 0 15px; font-size: 14px; font-weight: 600;">
+                               style="color: ${
+                                 this.brandConfig.primary_color
+                               }; text-decoration: none; margin: 0 15px; font-size: 14px; font-weight: 600;">
                                 Help Centre
                             </a>
                             <a href="${this.brandConfig.website_url}/case-studies" 
-                               style="color: ${this.brandConfig.primary_color}; text-decoration: none; margin: 0 15px; font-size: 14px; font-weight: 600;">
+                               style="color: ${
+                                 this.brandConfig.primary_color
+                               }; text-decoration: none; margin: 0 15px; font-size: 14px; font-weight: 600;">
                                 Success Stories
                             </a>
                             <a href="${this.brandConfig.website_url}/features" 
-                               style="color: ${this.brandConfig.primary_color}; text-decoration: none; margin: 0 15px; font-size: 14px; font-weight: 600;">
+                               style="color: ${
+                                 this.brandConfig.primary_color
+                               }; text-decoration: none; margin: 0 15px; font-size: 14px; font-weight: 600;">
                                 Features
                             </a>
                         </div>
@@ -311,14 +321,20 @@ class AudioIntelBranding {
                         
                         <!-- Company info -->
                         <p style="margin: 0 0 10px; color: #666; font-size: 13px;">
-                            ${this.brandConfig.company_name} - AI-Powered Music Industry Intelligence<br>
+                            ${
+                              this.brandConfig.company_name
+                            } - AI-Powered Music Industry Intelligence<br>
                             Specialising in UK Music Professional Contact Enrichment
                         </p>
                         
                         <!-- GDPR compliance -->
                         <p style="margin: 0; color: #888; font-size: 11px; line-height: 1.4;">
-                            You're receiving this email because you signed up for ${this.brandConfig.company_name} updates.<br>
-                            <a href="${this.brandConfig.website_url}/email-preferences?email={{email}}" 
+                            You're receiving this email because you signed up for ${
+                              this.brandConfig.company_name
+                            } updates.<br>
+                            <a href="${
+                              this.brandConfig.website_url
+                            }/email-preferences?email={{email}}" 
                                style="color: #666; text-decoration: underline;">
                                 Manage preferences
                             </a> | 
@@ -339,7 +355,9 @@ class AudioIntelBranding {
     </table>
     
     <!-- Tracking pixel -->
-    <img src="${this.brandConfig.website_url}/email-tracking/pixel.gif?campaign={{utm_campaign}}&email_id={{email_id}}&subscriber={{subscriber_id}}" 
+    <img src="${
+      this.brandConfig.website_url
+    }/email-tracking/pixel.gif?campaign={{utm_campaign}}&email_id={{email_id}}&subscriber={{subscriber_id}}" 
          alt="" style="width: 1px; height: 1px; opacity: 0;">
          
 </body>

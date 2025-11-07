@@ -36,7 +36,9 @@ async function debugDomainAnalysis() {
       console.log('Available fields:', Object.keys(records[0].fields));
       records.forEach((record, index) => {
         console.log(
-          `${index + 1}. ${record.fields.Name || record.fields.name || 'No Name'} - ${record.fields.Email || record.fields.email || 'No Email'}`
+          `${index + 1}. ${record.fields.Name || record.fields.name || 'No Name'} - ${
+            record.fields.Email || record.fields.email || 'No Email'
+          }`
         );
       });
     }

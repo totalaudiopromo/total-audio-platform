@@ -96,20 +96,21 @@ import CookieConsent from 'react-cookie-consent';
   location="bottom"
   buttonText="Accept All Cookies"
   declineButtonText="Decline"
-  enableDeclineButton  // ✅ GDPR requires opt-out
+  enableDeclineButton // ✅ GDPR requires opt-out
   cookieName="audio-intel-cookie-consent"
   expires={365}
   onAccept={() => {
     // Enable Google Analytics only with consent
-    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    gtag('consent', 'update', { analytics_storage: 'granted' });
   }}
   onDecline={() => {
     // Disable Google Analytics if declined
-    gtag('consent', 'update', { 'analytics_storage': 'denied' });
+    gtag('consent', 'update', { analytics_storage: 'denied' });
   }}
 >
-  We use cookies. <Link href="/cookies">Cookie Policy</Link> and <Link href="/privacy">Privacy Policy</Link>.
-</CookieConsent>
+  We use cookies. <Link href="/cookies">Cookie Policy</Link> and{' '}
+  <Link href="/privacy">Privacy Policy</Link>.
+</CookieConsent>;
 ```
 
 **Legal Compliance:**
@@ -300,14 +301,17 @@ import CookieConsent from 'react-cookie-consent';
 ### Immediate Actions (Do Today)
 
 1. **Review Privacy Policy content**:
+
    - Add your ICO registration number (apply at ico.org.uk if not registered)
    - Add your registered UK business address
    - Confirm DPO email address
 
 2. **Create remaining legal pages**:
+
    - I'll provide templates if you approve the privacy policy format
 
 3. **Fix broken images**:
+
    - Check `/assets/loading-states/` directory
    - Identify which 2 images are broken
    - Replace or fix paths
@@ -318,10 +322,12 @@ import CookieConsent from 'react-cookie-consent';
 ### Legal Compliance Next Steps
 
 1. **ICO Registration**:
+
    - If not registered: Apply at ico.org.uk (£40/year for small businesses)
    - Add registration number to privacy policy
 
 2. **Data Processing Agreements**:
+
    - Stripe (should already have via their ToS)
    - Anthropic Claude API (check if DPA exists)
    - Vercel (check their GDPR compliance docs)

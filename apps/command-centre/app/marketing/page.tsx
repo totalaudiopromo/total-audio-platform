@@ -158,7 +158,9 @@ export default function SaaSMarketingPage() {
           <button
             onClick={() => handleQuickAction('generate_social')}
             disabled={loading}
-            className={`postcraft-action-card postcraft-action-primary ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`postcraft-action-card postcraft-action-primary ${
+              loading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
             <div className="postcraft-action-icon" />
             <div className="postcraft-action-content">
@@ -178,7 +180,9 @@ export default function SaaSMarketingPage() {
               })
             }
             disabled={loading}
-            className={`postcraft-action-card postcraft-action-success ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`postcraft-action-card postcraft-action-success ${
+              loading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
             <div className="postcraft-action-icon" />
             <div className="postcraft-action-content">
@@ -191,7 +195,9 @@ export default function SaaSMarketingPage() {
           <button
             onClick={() => handleQuickAction('generate_calendar', { weeks: 2 })}
             disabled={loading}
-            className={`postcraft-action-card postcraft-action-orange ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`postcraft-action-card postcraft-action-orange ${
+              loading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
             <div className="postcraft-action-icon" />
             <div className="postcraft-action-content">
@@ -204,7 +210,9 @@ export default function SaaSMarketingPage() {
           <button
             onClick={() => handleQuickAction('health_check')}
             disabled={loading}
-            className={`postcraft-action-card postcraft-action-purple ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`postcraft-action-card postcraft-action-purple ${
+              loading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
             <div className="postcraft-action-icon" />
             <div className="postcraft-action-content">

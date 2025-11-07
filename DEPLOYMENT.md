@@ -145,12 +145,14 @@ FEATURE_PAYMENTS_ENABLED=true
 **Workflows:**
 
 1. **CI Workflow** (`.github/workflows/ci.yml`)
+
    - Runs on all pushes and PRs
    - Lints, typechecks, tests, and builds all apps
    - Uploads build artifacts
    - Runs security scan
 
 2. **Per-App Deployment Workflows**
+
    - `deploy-audio-intel.yml` - Audio Intel deployment
    - `deploy-tracker.yml` - Tracker deployment
    - `deploy-pitch-generator.yml` - Pitch Generator deployment

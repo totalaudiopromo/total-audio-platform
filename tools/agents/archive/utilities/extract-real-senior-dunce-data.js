@@ -290,10 +290,14 @@ async function extractRealSeniorDunceData() {
     console.log(`   Artist: ${campaignData.artistName}`);
     console.log(`   Track: ${campaignData.trackName}`);
     console.log(
-      `   Release Date: ${campaignData.releaseDate} (from ${campaignData.sources.typeform ? 'Typeform' : 'placeholder'})`
+      `   Release Date: ${campaignData.releaseDate} (from ${
+        campaignData.sources.typeform ? 'Typeform' : 'placeholder'
+      })`
     );
     console.log(
-      `   Campaign Duration: ${campaignData.campaignDuration} (from ${campaignData.sources.gmail ? 'Gmail/Transcript' : 'default'})`
+      `   Campaign Duration: ${campaignData.campaignDuration} (from ${
+        campaignData.sources.gmail ? 'Gmail/Transcript' : 'default'
+      })`
     );
     console.log(`   Campaign Start: ${campaignData.timeline.campaignStartDate}`);
     console.log('');

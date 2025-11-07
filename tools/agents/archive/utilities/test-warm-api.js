@@ -34,7 +34,9 @@ async function testWarmAPI() {
     // Show first 5 stations
     stations.slice(0, 5).forEach((station, index) => {
       console.log(
-        `   ${index + 1}. ${station.name || station.stationName || 'Unknown'} (${station.countryCode || 'GB'})`
+        `   ${index + 1}. ${station.name || station.stationName || 'Unknown'} (${
+          station.countryCode || 'GB'
+        })`
       );
     });
 

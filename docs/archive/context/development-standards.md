@@ -88,12 +88,7 @@ interface AudioCharacterProps {
 }
 
 // Usage Example
-<AudioCharacter
-  tool="intel"
-  state="working"
-  size="md"
-  position="header"
-/>
+<AudioCharacter tool="intel" state="working" size="md" position="header" />;
 ```
 
 ### Shared UI Components
@@ -242,9 +237,7 @@ module.exports = {
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings:
-      'rlig' 1,
-      'calt' 1;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 }
 
@@ -410,9 +403,7 @@ describe('AudioCharacter', () => {
   it('activates color on state change', () => {
     const { rerender } = render(<AudioCharacter {...defaultProps} />);
 
-    rerender(
-      <AudioCharacter {...defaultProps} state="working" />
-    );
+    rerender(<AudioCharacter {...defaultProps} state="working" />);
 
     const character = screen.getByTestId('audio-character');
     expect(character).toHaveClass('color-activation', 'active');
@@ -422,9 +413,7 @@ describe('AudioCharacter', () => {
     const handleClick = jest.fn();
     const user = userEvent.setup();
 
-    render(
-      <AudioCharacter {...defaultProps} onClick={handleClick} />
-    );
+    render(<AudioCharacter {...defaultProps} onClick={handleClick} />);
 
     await user.click(screen.getByTestId('audio-character'));
     expect(handleClick).toHaveBeenCalledTimes(1);
@@ -1227,10 +1216,7 @@ interface ErrorBoundaryState {
   error?: Error;
 }
 
-export class ErrorBoundary extends Component<
-  { children: React.ReactNode },
-  ErrorBoundaryState
-> {
+export class ErrorBoundary extends Component<{ children: React.ReactNode }, ErrorBoundaryState> {
   constructor(props: { children: React.ReactNode }) {
     super(props);
     this.state = { hasError: false };
@@ -1253,11 +1239,7 @@ export class ErrorBoundary extends Component<
     if (this.state.hasError) {
       return (
         <div className="flex min-h-screen flex-col items-center justify-center p-8">
-          <AudioCharacter
-            tool="audio-intel"
-            state="idle"
-            size="lg"
-          />
+          <AudioCharacter tool="audio-intel" state="idle" size="lg" />
           <h1 className="mt-6 text-2xl font-bold">Something went wrong</h1>
           <p className="mt-2 text-gray-600">
             Audio encountered an unexpected error. Please try refreshing the page.
@@ -1282,11 +1264,7 @@ export class ErrorBoundary extends Component<
 ```typescript
 // lib/api-error.ts
 export class APIError extends Error {
-  constructor(
-    message: string,
-    public statusCode: number,
-    public code?: string
-  ) {
+  constructor(message: string, public statusCode: number, public code?: string) {
     super(message);
     this.name = 'APIError';
   }
@@ -1360,21 +1338,15 @@ export function OptimizedImage({
 
 ```typescript
 // Dynamic imports for tool-specific components
-const AudioIntelDashboard = dynamic(
-  () => import('@/components/audio-intel/Dashboard'),
-  {
-    loading: () => <DashboardSkeleton />,
-    ssr: false
-  }
-);
+const AudioIntelDashboard = dynamic(() => import('@/components/audio-intel/Dashboard'), {
+  loading: () => <DashboardSkeleton />,
+  ssr: false,
+});
 
-const PlaylistPulseDashboard = dynamic(
-  () => import('@/components/playlist-pulse/Dashboard'),
-  {
-    loading: () => <DashboardSkeleton />,
-    ssr: false
-  }
-);
+const PlaylistPulseDashboard = dynamic(() => import('@/components/playlist-pulse/Dashboard'), {
+  loading: () => <DashboardSkeleton />,
+  ssr: false,
+});
 ```
 
 ---

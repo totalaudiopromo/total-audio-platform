@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 // Static paths
 export async function generateStaticParams() {
   const slugs = await getAllCaseStudySlugs();
-  return slugs.map((slug) => ({ slug }));
+  return slugs.map(slug => ({ slug }));
 }
 
 // Page
@@ -44,11 +44,11 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 import { getAllCaseStudiesSync } from '@/utils/parseCaseStudyData';
 
 export default function BlogPage() {
-  const studies = getAllCaseStudiesSync().filter((s) => s.status === 'live');
+  const studies = getAllCaseStudiesSync().filter(s => s.status === 'live');
 
   return (
     <div>
-      {studies.map((study) => (
+      {studies.map(study => (
         <Link key={study.topicSlug} href={study.pageUrl}>
           <h2>{study.pageTitle}</h2>
           <p>{study.metaDescription}</p>
@@ -117,7 +117,7 @@ const byCategory = allStudies.reduce((acc, study) => {
 Object.entries(byCategory).map(([category, studies]) => (
   <section key={category}>
     <h2>{category}</h2>
-    {studies.map((study) => (
+    {studies.map(study => (
       <CaseStudyCard key={study.topicSlug} study={study} />
     ))}
   </section>

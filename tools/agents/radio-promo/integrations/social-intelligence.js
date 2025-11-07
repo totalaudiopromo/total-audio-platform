@@ -76,28 +76,19 @@ class SocialIntelligence {
     console.log('📱 Starting social media intelligence monitoring...');
 
     // Monitor hashtags every 5 minutes
-    setInterval(
-      () => {
-        this.monitorHashtags();
-      },
-      5 * 60 * 1000
-    );
+    setInterval(() => {
+      this.monitorHashtags();
+    }, 5 * 60 * 1000);
 
     // Monitor DJs every 10 minutes
-    setInterval(
-      () => {
-        this.monitorDJs();
-      },
-      10 * 60 * 1000
-    );
+    setInterval(() => {
+      this.monitorDJs();
+    }, 10 * 60 * 1000);
 
     // Monitor curators every 15 minutes
-    setInterval(
-      () => {
-        this.monitorCurators();
-      },
-      15 * 60 * 1000
-    );
+    setInterval(() => {
+      this.monitorCurators();
+    }, 15 * 60 * 1000);
 
     console.log('✅ Social media monitoring started');
   }

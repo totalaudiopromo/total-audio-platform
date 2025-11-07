@@ -241,7 +241,9 @@ export async function getCaseStudyBySlug(slug: string): Promise<EnrichedCaseStud
 
   if (!study) {
     throw new Error(
-      `Case study not found for slug: ${slug}. Available slugs: ${allStudies.map(s => s.topicSlug).join(', ')}`
+      `Case study not found for slug: ${slug}. Available slugs: ${allStudies
+        .map(s => s.topicSlug)
+        .join(', ')}`
     );
   }
 

@@ -265,7 +265,9 @@ class NotionWorkspaceManager {
         try {
           if (dryRun) {
             console.log(
-              `🔎 [DRY-RUN] Would archive: ${page.properties?.title?.title?.[0]?.text?.content || 'Untitled'}`
+              `🔎 [DRY-RUN] Would archive: ${
+                page.properties?.title?.title?.[0]?.text?.content || 'Untitled'
+              }`
             );
           } else {
             await notion.pages.update({

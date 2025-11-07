@@ -91,7 +91,9 @@ export default function MobileNav() {
 
   return (
     <nav
-      className={`sticky top-0 left-0 w-full z-50 transition-transform duration-300 ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}
+      className={`sticky top-0 left-0 w-full z-50 transition-transform duration-300 ${
+        isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
       aria-label="Mobile Navigation"
     >
       <div className="flex items-center justify-between px-4 py-3 bg-white border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -135,7 +137,9 @@ export default function MobileNav() {
       {/* Slide-in menu */}
       <div
         ref={menuRef}
-        className={`fixed top-0 right-0 h-full w-[200px] bg-white border-l-4 border-black shadow-[-8px_0_16px_rgba(0,0,0,0.2)] z-[110] transform transition-transform duration-300 ease-in-out flex flex-col ${open ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed top-0 right-0 h-full w-[200px] bg-white border-l-4 border-black shadow-[-8px_0_16px_rgba(0,0,0,0.2)] z-[110] transform transition-transform duration-300 ease-in-out flex flex-col ${
+          open ? 'translate-x-0' : 'translate-x-full'
+        }`}
         style={{ willChange: 'transform' }}
         aria-modal={open}
         role="dialog"

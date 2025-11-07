@@ -238,8 +238,8 @@ export default function AutomationDashboard() {
                 data.costs.month.percentUsed > 90
                   ? 'bg-red-500'
                   : data.costs.month.percentUsed > 75
-                    ? 'bg-amber-500'
-                    : 'bg-green-500'
+                  ? 'bg-amber-500'
+                  : 'bg-green-500'
               }`}
               style={{ width: `${Math.min(data.costs.month.percentUsed, 100)}%` }}
             />
@@ -348,7 +348,9 @@ export default function AutomationDashboard() {
                   </div>
                 </div>
                 <div
-                  className={`px-2 py-1 rounded text-xs font-semibold uppercase ${getStatusColor(agent.status)}`}
+                  className={`px-2 py-1 rounded text-xs font-semibold uppercase ${getStatusColor(
+                    agent.status
+                  )}`}
                 >
                   {agent.status}
                 </div>

@@ -136,7 +136,9 @@ export class UndergroundNewsjacker {
       .slice(0, 8)
       .map(
         (article, index) =>
-          `${index + 1}. **${article.title}** (${article.source})\n   ${article.excerpt}\n   Tags: ${article.tags.join(', ')}`
+          `${index + 1}. **${article.title}** (${article.source})\n   ${
+            article.excerpt
+          }\n   Tags: ${article.tags.join(', ')}`
       )
       .join('\n\n');
 

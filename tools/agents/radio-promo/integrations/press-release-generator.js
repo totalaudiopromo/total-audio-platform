@@ -171,8 +171,16 @@ class PressReleaseGenerator {
         <h3>Audio Preview</h3>
         <p>Listen to "${trackTitle}" by ${artistName}:</p>
         <ul style="margin: 0; padding-left: 20px; list-style: none;">
-          ${artistData.soundcloudLink ? `<li><strong>SoundCloud:</strong> <a href="${artistData.soundcloudLink}" style="color: #3498db; text-decoration: none;">Private SoundCloud Link</a></li>` : ''}
-          ${artistData.mp3Link ? `<li><strong>Audio Files:</strong> <a href="${artistData.mp3Link}" style="color: #3498db; text-decoration: none;">MP3 & WAV Files</a></li>` : ''}
+          ${
+            artistData.soundcloudLink
+              ? `<li><strong>SoundCloud:</strong> <a href="${artistData.soundcloudLink}" style="color: #3498db; text-decoration: none;">Private SoundCloud Link</a></li>`
+              : ''
+          }
+          ${
+            artistData.mp3Link
+              ? `<li><strong>Audio Files:</strong> <a href="${artistData.mp3Link}" style="color: #3498db; text-decoration: none;">MP3 & WAV Files</a></li>`
+              : ''
+          }
         </ul>
       </div>
     `
@@ -272,8 +280,16 @@ class PressReleaseGenerator {
                                     <tr><td style="padding:8px 0;border-bottom:1px solid #d5dbdb;"><strong style="color:#2c3e50;">Track:</strong> "${trackTitle}"</td></tr>
                                     <tr><td style="padding:8px 0;border-bottom:1px solid #d5dbdb;"><strong style="color:#2c3e50;">Genre:</strong> ${genre}</td></tr>
                                     <tr><td style="padding:8px 0;border-bottom:1px solid #d5dbdb;"><strong style="color:#2c3e50;">Release Date:</strong> ${releaseDate}</td></tr>
-                                    ${labelInfo ? `<tr><td style="padding:8px 0;border-bottom:1px solid #d5dbdb;"><strong style="color:#2c3e50;">Label:</strong> ${label}</td></tr>` : ''}
-                                    ${managementInfo ? `<tr><td style="padding:8px 0;"><strong style="color:#2c3e50;">Management:</strong> ${management}</td></tr>` : ''}
+                                    ${
+                                      labelInfo
+                                        ? `<tr><td style="padding:8px 0;border-bottom:1px solid #d5dbdb;"><strong style="color:#2c3e50;">Label:</strong> ${label}</td></tr>`
+                                        : ''
+                                    }
+                                    ${
+                                      managementInfo
+                                        ? `<tr><td style="padding:8px 0;"><strong style="color:#2c3e50;">Management:</strong> ${management}</td></tr>`
+                                        : ''
+                                    }
                                   </tbody>
                                 </table>
                               </td>

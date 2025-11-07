@@ -349,7 +349,10 @@ function convertEpisodesToNewsItems(episodes: any[]): NewsItem[] {
       'Podcasters are often the first to discover and test new AI features. These insights could give you a competitive edge in music promotion.',
     newsletterContent:
       episode.newsletterContent ||
-      `**🎙️ ${episode.title}**\n\n${episode.description.substring(0, 200)}...\n\n*Why this matters:* This episode covers AI tools and technology that could impact your music promotion strategy.\n\n**Action Item:** Listen to the full episode for detailed insights and practical advice.`,
+      `**🎙️ ${episode.title}**\n\n${episode.description.substring(
+        0,
+        200
+      )}...\n\n*Why this matters:* This episode covers AI tools and technology that could impact your music promotion strategy.\n\n**Action Item:** Listen to the full episode for detailed insights and practical advice.`,
     publishedAt: episode.publishedAt,
   }));
 }

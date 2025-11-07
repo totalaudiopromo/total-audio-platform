@@ -207,7 +207,9 @@ class AudioIntelAutomation {
       }
 
       await this.log(
-        `⏰ Next optimal time: ${nextTime.hour}:${nextTime.minute.toString().padStart(2, '0')} (${nextTime.description})`
+        `⏰ Next optimal time: ${nextTime.hour}:${nextTime.minute.toString().padStart(2, '0')} (${
+          nextTime.description
+        })`
       );
 
       // For immediate posting (if run at optimal time)

@@ -241,12 +241,14 @@ If you're targeting BBC Radio 1, you might also benefit from:
 ### For Each New Section
 
 1. **Keyword Research**
+
    - Use Google "People Also Ask"
    - Check Reddit r/WeAreTheMusicMakers threads
    - Analyze competitor content
    - Review actual artist questions from inbox
 
 2. **Truthfulness Validation**
+
    - Verify all claims with official sources
    - Check dates within 6 months
    - Confidence score 85%+ required

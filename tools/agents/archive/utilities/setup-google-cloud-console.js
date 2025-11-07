@@ -194,7 +194,9 @@ async function setupGoogleCloudConsole() {
     for (const apiName of apisToEnable) {
       try {
         await page.goto(
-          `https://console.cloud.google.com/apis/library/${apiName.toLowerCase().replace(/\s+/g, '-')}?project=gleaming-realm-471715-p3`
+          `https://console.cloud.google.com/apis/library/${apiName
+            .toLowerCase()
+            .replace(/\s+/g, '-')}?project=gleaming-realm-471715-p3`
         );
         await page.waitForLoadState('networkidle');
 

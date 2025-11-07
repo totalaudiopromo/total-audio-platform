@@ -135,7 +135,9 @@ async function blockToMarkdown(block, notion) {
       return `${icon} ${richTextToMarkdown(block.callout.rich_text)}`;
 
     case 'toggle':
-      return `<details>\n<summary>${richTextToMarkdown(block.toggle.rich_text)}</summary>\n</details>`;
+      return `<details>\n<summary>${richTextToMarkdown(
+        block.toggle.rich_text
+      )}</summary>\n</details>`;
 
     default:
       return '';

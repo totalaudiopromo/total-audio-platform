@@ -90,10 +90,10 @@ export function PSEOPageWrapper({
       const ctaType = href.includes('/pricing')
         ? 'pricing'
         : href.includes('/demo')
-          ? 'demo'
-          : href.includes('/beta')
-            ? 'beta'
-            : 'other';
+        ? 'demo'
+        : href.includes('/beta')
+        ? 'beta'
+        : 'other';
 
       link.addEventListener('click', () => {
         const position = link.closest('section')?.id || 'unknown';

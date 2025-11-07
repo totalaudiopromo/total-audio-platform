@@ -208,7 +208,9 @@ function computePresenceFromStatus(statusPayload) {
     };
   }
 
-  const activityLabel = `${activeCampaigns.length} active campaign${activeCampaigns.length === 1 ? '' : 's'}`;
+  const activityLabel = `${activeCampaigns.length} active campaign${
+    activeCampaigns.length === 1 ? '' : 's'
+  }`;
   return {
     activities: [{ name: `${activityLabel} - updated ${lastUpdate}`, type: ActivityType.Watching }],
     status: 'online',

@@ -149,7 +149,9 @@ class SuccessPredictionEngine {
       this.storePrediction(campaignData.campaignId, predictions, campaignData, contacts);
 
       console.log(
-        `✅ Success prediction complete: ${Math.round(predictions.successProbability * 100)}% probability`
+        `✅ Success prediction complete: ${Math.round(
+          predictions.successProbability * 100
+        )}% probability`
       );
 
       return predictions;

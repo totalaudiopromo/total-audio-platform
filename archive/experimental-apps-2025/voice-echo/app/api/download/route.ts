@@ -268,7 +268,9 @@ export async function GET(req: NextRequest) {
         status: 200,
         headers: {
           'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-          'Content-Disposition': `attachment; filename="enriched-contacts-${new Date().toISOString().split('T')[0]}.xlsx"`,
+          'Content-Disposition': `attachment; filename="enriched-contacts-${
+            new Date().toISOString().split('T')[0]
+          }.xlsx"`,
         },
       });
     }
@@ -280,7 +282,9 @@ export async function GET(req: NextRequest) {
       status: 200,
       headers: {
         'Content-Type': 'text/csv',
-        'Content-Disposition': `attachment; filename="enriched-contacts-${new Date().toISOString().split('T')[0]}.csv"`,
+        'Content-Disposition': `attachment; filename="enriched-contacts-${
+          new Date().toISOString().split('T')[0]
+        }.csv"`,
       },
     });
   } catch (error: any) {

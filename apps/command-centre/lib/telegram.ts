@@ -93,7 +93,11 @@ export async function sendAgentHealthSummary(summary: {
 📊 Status: ${summary.activeAgents}/${summary.totalAgents} agents operational
 ✅ Success Rate: ${summary.avgSuccessRate.toFixed(1)}%
 ⚡ Avg Latency: ${summary.avgLatency}ms
-${summary.failedAgents > 0 ? `⚠️ Failed: ${summary.failedAgents} agents need attention` : '✨ All systems nominal'}
+${
+  summary.failedAgents > 0
+    ? `⚠️ Failed: ${summary.failedAgents} agents need attention`
+    : '✨ All systems nominal'
+}
 
 _Phase 9D Ops Console_
   `.trim();
@@ -143,7 +147,11 @@ Rating: ${digest.avgRating.toFixed(1)} ⭐
 Positive: ${digest.positive} 👍
 Negative: ${digest.negative} 👎
 
-${digest.negative > 0 ? `⚠️ ${digest.negative} negative responses need review` : '✨ All feedback positive'}
+${
+  digest.negative > 0
+    ? `⚠️ ${digest.negative} negative responses need review`
+    : '✨ All feedback positive'
+}
 
 _Phase 9D Ops Console_
   `.trim();

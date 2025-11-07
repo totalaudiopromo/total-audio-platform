@@ -592,7 +592,13 @@ Keep it conversational, authentic, and helpful. No sales-y language.
   }
 
   async sendCriticalAlert(opportunity) {
-    const alertMessage = `🚨 CRITICAL NEWSJACKING OPPORTUNITY DETECTED!\n\nHeadline: ${opportunity.title}\nRelevance Score: ${opportunity.relevanceScore.toFixed(2)}\nSource: ${opportunity.source}\nFirst Mover: ${opportunity.firstMover ? 'YES' : 'NO'}\n\nView in Notion for content generation.`;
+    const alertMessage = `🚨 CRITICAL NEWSJACKING OPPORTUNITY DETECTED!\n\nHeadline: ${
+      opportunity.title
+    }\nRelevance Score: ${opportunity.relevanceScore.toFixed(2)}\nSource: ${
+      opportunity.source
+    }\nFirst Mover: ${
+      opportunity.firstMover ? 'YES' : 'NO'
+    }\n\nView in Notion for content generation.`;
 
     // Send to all configured alert channels
     for (const channel of this.alertChannels) {

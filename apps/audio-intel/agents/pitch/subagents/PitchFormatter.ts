@@ -109,7 +109,9 @@ export class PitchFormatter {
     }
 
     parts.push(
-      `and I wanted to share my ${payload.releaseDate ? 'upcoming' : 'new'} release "${payload.release}" with you.`
+      `and I wanted to share my ${payload.releaseDate ? 'upcoming' : 'new'} release "${
+        payload.release
+      }" with you.`
     );
 
     return parts.join(', ');

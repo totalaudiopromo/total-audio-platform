@@ -626,6 +626,7 @@ Add to both `total-audio-platform` and `totalaud.io` repositories:
 ### ConvertKit Setup
 
 1. **Create Forms** (one for each campaign):
+
    - Trial Welcome, Trial Tips, Trial Convert
    - Active Welcome, Power Tips
    - At Risk Engagement, Help Offer, Win Back
@@ -633,9 +634,11 @@ Add to both `total-audio-platform` and `totalaud.io` repositories:
    - Reactivated Welcome Back
 
 2. **Create Tags** (one for each stage):
+
    - trial, active, at_risk, churned, reactivated
 
 3. **Configure Automations**:
+
    - Link forms to email sequences
    - Set up tag-based segmentation
    - Design email templates with brand voice
@@ -648,18 +651,21 @@ Add to both `total-audio-platform` and `totalaud.io` repositories:
 ### Telegram Bot Setup
 
 1. **Create Bot** (if not already created):
+
    - Open Telegram, search for @BotFather
    - Send `/newbot` command
    - Follow prompts to create @TotalAudioBot
    - Save bot token
 
 2. **Get Chat ID**:
+
    - Start conversation with @TotalAudioBot
    - Send test message
    - Visit `https://api.telegram.org/bot{TOKEN}/getUpdates`
    - Find `"chat":{"id":...}` in response
 
 3. **Add Secrets to Both Repos**:
+
    - `total-audio-platform`: Settings → Secrets → Actions
    - `totalaud.io`: Settings → Secrets → Actions
    - Add `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`
@@ -912,6 +918,7 @@ Phase 8 has successfully delivered a comprehensive revenue validation and growth
 ### Recommended Next Steps
 
 1. **Immediate (Next 7 Days)**:
+
    - Add GitHub secrets for revenue audit and growth insights
    - Create ConvertKit forms and tags for lifecycle campaigns
    - Set up Telegram bot in both repositories
@@ -919,6 +926,7 @@ Phase 8 has successfully delivered a comprehensive revenue validation and growth
    - Review first week of automated insights
 
 2. **Short-term (Next 30 Days)**:
+
    - Integrate lifecycle automation into user event handlers
    - Monitor cohorts dashboard for retention patterns
    - Analyse first month of automated email campaign performance

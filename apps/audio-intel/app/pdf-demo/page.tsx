@@ -295,8 +295,8 @@ export default function PdfDemoPage() {
                       contact.researchConfidence === 'High'
                         ? 'bg-green-400 text-green-900'
                         : contact.researchConfidence === 'Medium'
-                          ? 'bg-orange-400 text-orange-900'
-                          : 'bg-red-400 text-red-900'
+                        ? 'bg-orange-400 text-orange-900'
+                        : 'bg-red-400 text-red-900'
                     }`}
                   >
                     {contact.researchConfidence.toUpperCase()}

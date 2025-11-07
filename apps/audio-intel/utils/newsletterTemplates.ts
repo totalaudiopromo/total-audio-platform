@@ -307,14 +307,14 @@ const newsletterTemplate = (content: string, data: NewsletterData = {}) => `
       <div class="newsletter-subtitle">Weekly insights for independent music professionals</div>
       <div class="issue-info">
         Issue ${data.issueNumber || 1} • ${
-          data.publishDate ||
-          new Date().toLocaleDateString('en-GB', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })
-        }
+  data.publishDate ||
+  new Date().toLocaleDateString('en-GB', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+}
       </div>
     </div>
 
@@ -355,7 +355,10 @@ export const weeklyNewsletter = (data: NewsletterData) =>
 
   <div class="story-section">
     <div class="story-title">This week's industry insight</div>
-    <div class="story-content">${data.industryInsight || 'After analysing 500+ indie artist campaigns, I discovered something that shocked me: 94% of research time is spent on outdated information. Only 6% of contacts actually work, meaning artists waste 15+ hours weekly on fruitless research. The solution? AI-powered contact enrichment that transforms basic email lists into detailed industry intelligence in 2 minutes.'}</div>
+    <div class="story-content">${
+      data.industryInsight ||
+      'After analysing 500+ indie artist campaigns, I discovered something that shocked me: 94% of research time is spent on outdated information. Only 6% of contacts actually work, meaning artists waste 15+ hours weekly on fruitless research. The solution? AI-powered contact enrichment that transforms basic email lists into detailed industry intelligence in 2 minutes.'
+    }</div>
   </div>
 
   ${
@@ -375,7 +378,11 @@ export const weeklyNewsletter = (data: NewsletterData) =>
         <div class="news-excerpt">${article.excerpt || article.description}</div>
         <div class="news-meta">
           <span class="news-source">${article.source}</span>
-          ${article.url ? `<a href="${article.url}" target="_blank" class="news-link">Read more →</a>` : ''}
+          ${
+            article.url
+              ? `<a href="${article.url}" target="_blank" class="news-link">Read more →</a>`
+              : ''
+          }
         </div>
       </div>
     `
@@ -400,7 +407,10 @@ export const weeklyNewsletter = (data: NewsletterData) =>
   <div class="story-section">
     <div class="story-title">What I'm working on</div>
     <div class="story-content">
-      <p>${data.successStory || "I'm currently testing a new approach to radio promotion that combines AI-powered contact research with personalised outreach. Early results show 40% higher response rates compared to generic emails, and I'm spending 80% less time on research. I'll share the full results once I've got more data."}</p>
+      <p>${
+        data.successStory ||
+        "I'm currently testing a new approach to radio promotion that combines AI-powered contact research with personalised outreach. Early results show 40% higher response rates compared to generic emails, and I'm spending 80% less time on research. I'll share the full results once I've got more data."
+      }</p>
       <p><em>Building tools that actually work for independent artists - not just talking about it.</em></p>
     </div>
   </div>

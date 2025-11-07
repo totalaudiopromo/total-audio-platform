@@ -225,6 +225,7 @@ This runs the sync every 15 minutes.
    ```
 
 3. **Click "Connect Google Sheets"**:
+
    - Should redirect to Google OAuth
    - Authorize the app
    - Should redirect back to Tracker

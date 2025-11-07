@@ -335,11 +335,17 @@ class ContentFusionEngine {
 
     // Select hook based on news characteristics
     if (scoringResult.breakdown.urgencyBoost > 0.7) {
-      return `Right, so everyone's talking about ${newsTitle.split(' ').slice(0, 4).join(' ')}, but here's what they're missing...`;
+      return `Right, so everyone's talking about ${newsTitle
+        .split(' ')
+        .slice(0, 4)
+        .join(' ')}, but here's what they're missing...`;
     }
 
     if (scoringResult.breakdown.competitiveAdvantage > 0.6) {
-      return `While everyone's focused on ${newsTitle.split(' ').slice(0, 4).join(' ')}, smart artists are doing this instead...`;
+      return `While everyone's focused on ${newsTitle
+        .split(' ')
+        .slice(0, 4)
+        .join(' ')}, smart artists are doing this instead...`;
     }
 
     if (scoringResult.breakdown.automationRelevance > 0.8) {
@@ -395,15 +401,24 @@ class ContentFusionEngine {
     const positioningStyle = this.config.fusionStrategy.audioIntelMentioning.positioningStyle;
 
     if (subtlety === 'soft') {
-      return `P.S. If you're tired of manual ${this.extractPainPoint(newsItem)}, there are tools that can automate this entire process. Like Audio Intel, which handles the research and contact finding in seconds.`;
+      return `P.S. If you're tired of manual ${this.extractPainPoint(
+        newsItem
+      )}, there are tools that can automate this entire process. Like Audio Intel, which handles the research and contact finding in seconds.`;
     }
 
     if (subtlety === 'medium') {
-      return `This is exactly why we built Audio Intel - to automate ${this.extractPainPoint(newsItem)} so artists can focus on creating music instead of spending hours on research.`;
+      return `This is exactly why we built Audio Intel - to automate ${this.extractPainPoint(
+        newsItem
+      )} so artists can focus on creating music instead of spending hours on research.`;
     }
 
     if (subtlety === 'direct') {
-      return `Want to automate your response to ${newsItem.title.split(' ').slice(0, 4).join(' ')}? Audio Intel can handle the contact research and outreach automatically. 14-day free trial: intel.totalaudiopromo.com`;
+      return `Want to automate your response to ${newsItem.title
+        .split(' ')
+        .slice(0, 4)
+        .join(
+          ' '
+        )}? Audio Intel can handle the contact research and outreach automatically. 14-day free trial: intel.totalaudiopromo.com`;
     }
 
     return null;
@@ -485,10 +500,22 @@ class ContentFusionEngine {
    */
   private generateChrisTake(newsItem: NewsItem, scoringResult: ScoringResult): string {
     const takes = [
-      `Here's the thing nobody's mentioning about ${newsItem.title.split(' ').slice(0, 3).join(' ')}...`,
-      `I've been in music promotion for 7 years, and ${newsItem.title.split(' ').slice(0, 3).join(' ')} changes everything because...`,
-      `Right, so while everyone's excited about ${newsItem.title.split(' ').slice(0, 3).join(' ')}, the real opportunity is...`,
-      `From my experience working with 500+ artists, ${newsItem.title.split(' ').slice(0, 3).join(' ')} means...`,
+      `Here's the thing nobody's mentioning about ${newsItem.title
+        .split(' ')
+        .slice(0, 3)
+        .join(' ')}...`,
+      `I've been in music promotion for 7 years, and ${newsItem.title
+        .split(' ')
+        .slice(0, 3)
+        .join(' ')} changes everything because...`,
+      `Right, so while everyone's excited about ${newsItem.title
+        .split(' ')
+        .slice(0, 3)
+        .join(' ')}, the real opportunity is...`,
+      `From my experience working with 500+ artists, ${newsItem.title
+        .split(' ')
+        .slice(0, 3)
+        .join(' ')} means...`,
     ];
 
     return takes[Math.floor(Math.random() * takes.length)];

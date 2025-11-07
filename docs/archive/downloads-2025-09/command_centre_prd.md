@@ -86,15 +86,11 @@ The Total Audio Command Centre is the central nervous system for Total Audio Pro
 
 /* Shadows - Audio Intel Standard */
 .shadow-texture-soft {
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.08),
-    0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .shadow-texture-elevated {
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.12),
-    0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 ```
 
@@ -225,7 +221,9 @@ interface LiveUser {
         <div key={user.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
           <div className="flex items-center gap-3">
             <div
-              className={`w-3 h-3 rounded-full ${user.status === 'active' ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`}
+              className={`w-3 h-3 rounded-full ${
+                user.status === 'active' ? 'bg-green-500 animate-pulse' : 'bg-gray-400'
+              }`}
             />
             <div>
               <p className="font-medium text-sm">{user.name || user.email}</p>
@@ -297,29 +295,37 @@ const quickActions: QuickAction[] = [
     action: 'send_newsletter',
     color: 'blue',
     icon: <Mail className="h-5 w-5" />,
-    handler: async () => { /* Implementation */ }
+    handler: async () => {
+      /* Implementation */
+    },
   },
   {
     name: 'Optimize Intel',
     action: 'optimize_intel',
     color: 'purple',
     icon: <Zap className="h-5 w-5" />,
-    handler: async () => { /* Implementation */ }
+    handler: async () => {
+      /* Implementation */
+    },
   },
   {
     name: 'Export Data',
     action: 'export_data',
     color: 'green',
     icon: <Download className="h-5 w-5" />,
-    handler: async () => { /* Implementation */ }
+    handler: async () => {
+      /* Implementation */
+    },
   },
   {
     name: 'View Reports',
     action: 'view_reports',
     color: 'orange',
     icon: <BarChart3 className="h-5 w-5" />,
-    handler: async () => { /* Implementation */ }
-  }
+    handler: async () => {
+      /* Implementation */
+    },
+  },
 ];
 ```
 

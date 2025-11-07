@@ -69,7 +69,9 @@ async function testAssetFormData() {
         `   Press Bio: ${data.pressBio ? data.pressBio.substring(0, 100) + '...' : '❌ Not found'}`
       );
       console.log(
-        `   Track Description: ${data.trackDescription ? data.trackDescription.substring(0, 100) + '...' : '❌ Not found'}`
+        `   Track Description: ${
+          data.trackDescription ? data.trackDescription.substring(0, 100) + '...' : '❌ Not found'
+        }`
       );
       console.log(`   Track Quote: ${data.trackQuote || '❌ Not found'}`);
       console.log('');

@@ -140,7 +140,9 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: `Content ${action}${action === 'approve' ? 'ed' : action === 'reject' ? 'ed' : 'd'} successfully`,
+      message: `Content ${action}${
+        action === 'approve' ? 'ed' : action === 'reject' ? 'ed' : 'd'
+      } successfully`,
       item: queueItem,
     });
   } catch (error) {

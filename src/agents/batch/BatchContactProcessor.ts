@@ -173,7 +173,9 @@ Return structured JSON with enrichment data.`,
       console.log(`📊 Batch ${batchNumber}/${totalBatches} (${batchId})`);
       console.log(`   Status: ${status.processing_status}`);
       console.log(
-        `   Progress: ${status.request_counts.succeeded}/${status.request_counts.total} (${progress.percentComplete.toFixed(1)}%)`
+        `   Progress: ${status.request_counts.succeeded}/${
+          status.request_counts.total
+        } (${progress.percentComplete.toFixed(1)}%)`
       );
       console.log(`   Failed: ${status.request_counts.failed}`);
 

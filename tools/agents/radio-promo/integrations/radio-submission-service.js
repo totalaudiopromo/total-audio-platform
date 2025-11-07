@@ -311,7 +311,9 @@ class RadioSubmissionService {
 
     return {
       to: this.eimEmail,
-      subject: `European Indie Music – ${this.sanitizeText(campaign.artistName)} – ${this.sanitizeText(campaign.trackTitle)}`,
+      subject: `European Indie Music – ${this.sanitizeText(
+        campaign.artistName
+      )} – ${this.sanitizeText(campaign.trackTitle)}`,
       body: bodyLines.join('\n'),
       package: packageDetails,
       attachments,

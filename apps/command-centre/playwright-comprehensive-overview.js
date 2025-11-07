@@ -217,11 +217,17 @@ function generateHTMLReport(results) {
             <div class="stat-label">Pages Captured</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">${results.pages.reduce((acc, page) => acc + page.screenshots.length, 0)}</div>
+            <div class="stat-number">${results.pages.reduce(
+              (acc, page) => acc + page.screenshots.length,
+              0
+            )}</div>
             <div class="stat-label">Screenshots Taken</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">${results.pages.reduce((acc, page) => acc + page.errors.length, 0)}</div>
+            <div class="stat-number">${results.pages.reduce(
+              (acc, page) => acc + page.errors.length,
+              0
+            )}</div>
             <div class="stat-label">Errors</div>
         </div>
     </div>
@@ -238,7 +244,9 @@ function generateHTMLReport(results) {
                 ? `
                 <div class="error">
                     <strong>Errors:</strong>
-                    ${page.errors.map(error => `<div>${error.viewport}: ${error.error}</div>`).join('')}
+                    ${page.errors
+                      .map(error => `<div>${error.viewport}: ${error.error}</div>`)
+                      .join('')}
                 </div>
             `
                 : ''
@@ -277,7 +285,10 @@ captureScreenshots()
     console.log('\n🎉 Comprehensive overview complete!');
     console.log(`📊 Total pages: ${results.pages.length}`);
     console.log(
-      `📸 Total screenshots: ${results.pages.reduce((acc, page) => acc + page.screenshots.length, 0)}`
+      `📸 Total screenshots: ${results.pages.reduce(
+        (acc, page) => acc + page.screenshots.length,
+        0
+      )}`
     );
     console.log(
       `❌ Total errors: ${results.pages.reduce((acc, page) => acc + page.errors.length, 0)}`

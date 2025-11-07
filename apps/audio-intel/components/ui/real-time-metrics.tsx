@@ -229,8 +229,8 @@ export function RealTimeMetrics() {
                 {metric.label.includes('Time')
                   ? `${metric.value}s`
                   : metric.label.includes('Rate')
-                    ? `${metric.value}%`
-                    : metric.value.toLocaleString()}
+                  ? `${metric.value}%`
+                  : metric.value.toLocaleString()}
               </div>
               <p className="text-xs md:text-sm font-bold text-gray-600 break-words">
                 {metric.label}
@@ -261,7 +261,9 @@ export function RealTimeMetrics() {
               className="flex items-start gap-2 md:gap-3 p-2 md:p-3 rounded-lg bg-gray-50"
             >
               <div
-                className={`w-6 h-6 md:w-8 md:h-8 ${getActivityColor(activity.type)} rounded-full flex items-center justify-center text-white flex-shrink-0`}
+                className={`w-6 h-6 md:w-8 md:h-8 ${getActivityColor(
+                  activity.type
+                )} rounded-full flex items-center justify-center text-white flex-shrink-0`}
               >
                 {getActivityIcon(activity.type)}
               </div>

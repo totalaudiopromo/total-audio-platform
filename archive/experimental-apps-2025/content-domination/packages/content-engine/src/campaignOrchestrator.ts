@@ -227,14 +227,14 @@ Generate a detailed 6-8 week campaign plan optimized with intelligence insights.
     const competitiveLevel = intelResponse.includes('high competition')
       ? 'High'
       : intelResponse.includes('low competition')
-        ? 'Low'
-        : 'Medium';
+      ? 'Low'
+      : 'Medium';
 
     const optimalTiming = intelResponse.includes('immediate release')
       ? 'Fast track'
       : intelResponse.includes('delayed release')
-        ? 'Extended timeline'
-        : 'Standard';
+      ? 'Extended timeline'
+      : 'Standard';
 
     return { competitiveLevel, optimalTiming };
   }
@@ -246,14 +246,14 @@ Generate a detailed 6-8 week campaign plan optimized with intelligence insights.
     const primaryTargets = intelResponse.includes('playlist curators')
       ? 'Playlist curators'
       : intelResponse.includes('radio DJs')
-        ? 'Radio contacts'
-        : 'Genre curators';
+      ? 'Radio contacts'
+      : 'Genre curators';
 
     const outreachTiming = intelResponse.includes('early outreach')
       ? '8 weeks pre-release'
       : intelResponse.includes('late outreach')
-        ? '2 weeks pre-release'
-        : 'Pre-release';
+      ? '2 weeks pre-release'
+      : 'Pre-release';
 
     return { primaryTargets, outreachTiming };
   }

@@ -161,7 +161,9 @@ export function PitchAnalyser({
               </p>
             </div>
             <span
-              className={`rounded-full border-2 px-4 py-2 text-sm font-semibold ${getGradeBadge(analysis.grade)}`}
+              className={`rounded-full border-2 px-4 py-2 text-sm font-semibold ${getGradeBadge(
+                analysis.grade
+              )}`}
             >
               {analysis.grade.replace('_', ' ').toUpperCase()}
             </span>

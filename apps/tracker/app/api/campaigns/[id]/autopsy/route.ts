@@ -116,17 +116,29 @@ CAMPAIGN DATA:
 - Budget: £${campaignData.budget || 0}
 - Target Reach: ${campaignData.target_reach || 'Not set'}
 - Actual Reach: ${campaignData.actual_reach || 'Not yet measured'}
-- Success Rate: ${campaignData.success_rate ? Math.round(campaignData.success_rate) + '%' : 'Not calculated'}
-- Cost Per Result: ${campaignData.cost_per_result ? '£' + Math.round(campaignData.cost_per_result) : 'TBD'}
+- Success Rate: ${
+    campaignData.success_rate
+      ? Math.round(campaignData.success_rate) + '%'
+      : 'Not calculated'
+  }
+- Cost Per Result: ${
+    campaignData.cost_per_result
+      ? '£' + Math.round(campaignData.cost_per_result)
+      : 'TBD'
+  }
 - Status: ${campaignData.status || 'Not specified'}
-- Dates: ${campaignData.start_date || 'Not set'} to ${campaignData.end_date || 'ongoing'}
+- Dates: ${campaignData.start_date || 'Not set'} to ${
+    campaignData.end_date || 'ongoing'
+  }
 
 ${
   benchmark
     ? `INDUSTRY BENCHMARKS FOR ${campaignData.platform} - ${campaignData.genre}:
 - Average Success Rate: ${benchmark.avg_success_rate}%
 - Average Cost Per Result: £${Math.round(benchmark.avg_cost_per_result)}
-- Optimal Budget Range: £${benchmark.optimal_budget_min}-£${benchmark.optimal_budget_max}
+- Optimal Budget Range: £${benchmark.optimal_budget_min}-£${
+        benchmark.optimal_budget_max
+      }
 - Best Submission Day: ${benchmark.best_day}
 - Best Month: ${benchmark.best_month}
 - Sample Size: ${benchmark.sample_size} campaigns`

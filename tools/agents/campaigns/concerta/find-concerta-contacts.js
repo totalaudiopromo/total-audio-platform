@@ -15,7 +15,8 @@
 // Use native fetch or fallback
 const fetch = globalThis.fetch || require('node-fetch');
 
-const AIRTABLE_API_KEY = 'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
+const AIRTABLE_API_KEY =
+  'pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec';
 const BASE_ID = 'appx7uTQWRH8cIC20';
 const TABLE_ID = 'tblcZnUsB4Swyjcip';
 
@@ -56,20 +57,44 @@ function findRelevantContacts(records) {
     easternEurope: [],
     southKorea: [],
     electronicDance: [],
-    allRelevant: []
+    allRelevant: [],
   };
 
   // Eastern European countries
   const easternEuropeCountries = [
-    'poland', 'czech', 'slovakia', 'hungary', 'romania', 'bulgaria',
-    'ukraine', 'belarus', 'lithuania', 'latvia', 'estonia', 'slovenia',
-    'croatia', 'serbia', 'bosnia', 'montenegro', 'albania', 'macedonia'
+    'poland',
+    'czech',
+    'slovakia',
+    'hungary',
+    'romania',
+    'bulgaria',
+    'ukraine',
+    'belarus',
+    'lithuania',
+    'latvia',
+    'estonia',
+    'slovenia',
+    'croatia',
+    'serbia',
+    'bosnia',
+    'montenegro',
+    'albania',
+    'macedonia',
   ];
 
   // Electronic/Dance genre keywords
   const electronicGenres = [
-    'electronic', 'dance', 'edm', 'house', 'techno', 'trance',
-    'dnb', 'drum and bass', 'dubstep', 'electro', 'synth'
+    'electronic',
+    'dance',
+    'edm',
+    'house',
+    'techno',
+    'trance',
+    'dnb',
+    'drum and bass',
+    'dubstep',
+    'electro',
+    'synth',
   ];
 
   records.forEach(record => {
@@ -94,13 +119,12 @@ function findRelevantContacts(records) {
       country: fields.Country,
       genres: fields.Genres,
       status: fields.Status,
-      notes: fields.Notes
+      notes: fields.Notes,
     };
 
     // Check for Eastern Europe
-    const isEasternEurope = easternEuropeCountries.some(country =>
-      (fields.Country || '').toLowerCase().includes(country) ||
-      station.includes(country)
+    const isEasternEurope = easternEuropeCountries.some(
+      country => (fields.Country || '').toLowerCase().includes(country) || station.includes(country)
     );
 
     if (isEasternEurope) {
@@ -115,9 +139,7 @@ function findRelevantContacts(records) {
     }
 
     // Check for Electronic/Dance genres
-    const isElectronicDance = electronicGenres.some(genre =>
-      genres.includes(genre)
-    );
+    const isElectronicDance = electronicGenres.some(genre => genres.includes(genre));
 
     if (isElectronicDance && !isEasternEurope && !country.includes('korea')) {
       relevantContacts.electronicDance.push(contactData);
@@ -145,7 +167,11 @@ function displayResults(relevantContacts) {
       console.log(`${i + 1}. ${contact.station || 'Unknown Station'}`);
       console.log(`   📍 ${contact.country || 'Unknown Country'}`);
       console.log(`   📧 ${contact.email}`);
-      console.log(`   🎵 Genres: ${Array.isArray(contact.genres) ? contact.genres.join(', ') : contact.genres || 'None'}`);
+      console.log(
+        `   🎵 Genres: ${
+          Array.isArray(contact.genres) ? contact.genres.join(', ') : contact.genres || 'None'
+        }`
+      );
       console.log('');
     });
   }
@@ -156,7 +182,11 @@ function displayResults(relevantContacts) {
     relevantContacts.southKorea.forEach((contact, i) => {
       console.log(`${i + 1}. ${contact.station || 'Unknown Station'}`);
       console.log(`   📧 ${contact.email}`);
-      console.log(`   🎵 Genres: ${Array.isArray(contact.genres) ? contact.genres.join(', ') : contact.genres || 'None'}`);
+      console.log(
+        `   🎵 Genres: ${
+          Array.isArray(contact.genres) ? contact.genres.join(', ') : contact.genres || 'None'
+        }`
+      );
       console.log('');
     });
   }
@@ -168,7 +198,11 @@ function displayResults(relevantContacts) {
       console.log(`${i + 1}. ${contact.station || 'Unknown Station'}`);
       console.log(`   📍 ${contact.country || 'Unknown Country'}`);
       console.log(`   📧 ${contact.email}`);
-      console.log(`   🎵 Genres: ${Array.isArray(contact.genres) ? contact.genres.join(', ') : contact.genres || 'None'}`);
+      console.log(
+        `   🎵 Genres: ${
+          Array.isArray(contact.genres) ? contact.genres.join(', ') : contact.genres || 'None'
+        }`
+      );
       console.log('');
     });
   }
@@ -182,7 +216,8 @@ async function findConcertaContacts() {
 
     // Save to file
     const fs = require('fs');
-    const outputPath = '/Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/campaigns/concerta/concerta-contacts.json';
+    const outputPath =
+      '/Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/campaigns/concerta/concerta-contacts.json';
     fs.writeFileSync(outputPath, JSON.stringify(relevantContacts, null, 2));
     console.log(`\n💾 Full contact list saved to: ${outputPath}\n`);
 

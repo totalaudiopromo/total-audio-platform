@@ -90,7 +90,9 @@ export function BulkActionsBar({
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `campaigns-export-${new Date().toISOString().split('T')[0]}.csv`;
+      a.download = `campaigns-export-${
+        new Date().toISOString().split('T')[0]
+      }.csv`;
       a.click();
       URL.revokeObjectURL(url);
 

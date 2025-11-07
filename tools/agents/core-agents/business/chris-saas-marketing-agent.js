@@ -266,7 +266,9 @@ As a full-time postman with two small children, I don't have time for inefficien
 
 ${productInfo.description}
 
-The truth is, I built ${productInfo.name} because I needed it myself. After years in the music industry, I was tired of:
+The truth is, I built ${
+      productInfo.name
+    } because I needed it myself. After years in the music industry, I was tired of:
 
 ${productInfo.painPoints.map(point => `- ${point}`).join('\n')}
 
@@ -274,7 +276,12 @@ ${productInfo.painPoints.map(point => `- ${point}`).join('\n')}
 
 Here's what ${productInfo.name} actually does:
 
-${productInfo.keyFeatures.map(feature => `### ${feature}\n\nReal-world explanation of how this feature works and why it matters.\n`).join('\n')}
+${productInfo.keyFeatures
+  .map(
+    feature =>
+      `### ${feature}\n\nReal-world explanation of how this feature works and why it matters.\n`
+  )
+  .join('\n')}
 
 ## Real Results
 
@@ -284,7 +291,9 @@ ${productInfo.benefits.map(benefit => `- ${benefit}`).join('\n')}
 
 ## Try It Yourself (Free Beta)
 
-I'm currently running a free beta for ${productInfo.name}. No payment required - just real feedback from real users.
+I'm currently running a free beta for ${
+      productInfo.name
+    }. No payment required - just real feedback from real users.
 
 **What you get:**
 - Full access to all features
@@ -293,7 +302,9 @@ I'm currently running a free beta for ${productInfo.name}. No payment required -
 
 ## The Bottom Line
 
-${productInfo.name} isn't for everyone. It's built for professionals who value their time and need tools that actually work. If that sounds like you, give it a try.
+${
+  productInfo.name
+} isn't for everyone. It's built for professionals who value their time and need tools that actually work. If that sounds like you, give it a try.
 
 *Built by someone who actually uses it every day.*
     `.trim();
@@ -364,7 +375,11 @@ ${productInfo.name} isn't for everyone. It's built for professionals who value t
       linkedin: {
         update: `Just shipped another update to ${productInfo.name} 🚀\n\nAs a full-time postman building SaaS tools, I don't have time for features that don't work.\n\nThis latest update focuses on ${productInfo.keyFeatures[0]} - the #1 request from beta users.\n\nThe result? Users are saving 10+ hours per week.\n\nSometimes the best solutions come from solving your own problems first.\n\n${productInfo.url}/beta`,
 
-        story: `Why I built ${productInfo.name} (thread) 🧵\n\n1/ Working full-time as a postman with two kids doesn't leave much time for inefficient tools.\n\n2/ I was spending hours every week on ${productInfo.painPoints[0].toLowerCase()}.\n\n3/ Existing solutions were either too expensive or overcomplicated.\n\n4/ So I built exactly what I needed: ${productInfo.description}\n\n5/ Result: ${productInfo.benefits[0]}\n\nNow in free beta: ${productInfo.url}/beta`,
+        story: `Why I built ${
+          productInfo.name
+        } (thread) 🧵\n\n1/ Working full-time as a postman with two kids doesn't leave much time for inefficient tools.\n\n2/ I was spending hours every week on ${productInfo.painPoints[0].toLowerCase()}.\n\n3/ Existing solutions were either too expensive or overcomplicated.\n\n4/ So I built exactly what I needed: ${
+          productInfo.description
+        }\n\n5/ Result: ${productInfo.benefits[0]}\n\nNow in free beta: ${productInfo.url}/beta`,
       },
 
       twitter: {

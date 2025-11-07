@@ -170,7 +170,9 @@ export class TwitterPostingAgent {
           console.error(`[TWITTER] ❌ Failed to post tweet ${i + 1}/${tweets.length}:`, error);
           return {
             success: false,
-            error: `Failed at tweet ${i + 1}: ${error instanceof Error ? error.message : 'Unknown error'}`,
+            error: `Failed at tweet ${i + 1}: ${
+              error instanceof Error ? error.message : 'Unknown error'
+            }`,
             ids: tweetIds,
             count: tweetIds.length,
           };

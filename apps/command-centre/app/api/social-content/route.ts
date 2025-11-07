@@ -49,17 +49,29 @@ async function getRealMetrics() {
 function generateProgressUpdate(metrics: any): SocialPost[] {
   const updates = [
     {
-      content: `Audio Intel beta update:\n\n• ${metrics.emailsValidated.toLocaleString()} emails validated\n• ${metrics.contactsEnriched.toLocaleString()} contacts enriched\n• 97.4% delivery rate\n• ${metrics.customers} paying beta customers\n\nBuilding in public means sharing real numbers.\n\nPre-launch but already proving product-market fit.`,
+      content: `Audio Intel beta update:\n\n• ${metrics.emailsValidated.toLocaleString()} emails validated\n• ${metrics.contactsEnriched.toLocaleString()} contacts enriched\n• 97.4% delivery rate\n• ${
+        metrics.customers
+      } paying beta customers\n\nBuilding in public means sharing real numbers.\n\nPre-launch but already proving product-market fit.`,
       platform: 'twitter' as const,
       engagement_score: 91,
     },
     {
-      content: `Weekly Audio Intel progress:\n\nThis week we processed ${(metrics.emailsValidated / 7).toFixed(0)} emails and enriched ${(metrics.contactsEnriched / 7).toFixed(0)} contacts for our ${metrics.customers} beta customers.\n\n97.4% email delivery rate proves the contact quality is there.\n\nBeta revenue: £${metrics.customers * 45}/month\nFull launch target: £10k MRR by Q1\n\nTransparency builds trust. What are you building?`,
+      content: `Weekly Audio Intel progress:\n\nThis week we processed ${(
+        metrics.emailsValidated / 7
+      ).toFixed(0)} emails and enriched ${(metrics.contactsEnriched / 7).toFixed(
+        0
+      )} contacts for our ${
+        metrics.customers
+      } beta customers.\n\n97.4% email delivery rate proves the contact quality is there.\n\nBeta revenue: £${
+        metrics.customers * 45
+      }/month\nFull launch target: £10k MRR by Q1\n\nTransparency builds trust. What are you building?`,
       platform: 'linkedin' as const,
       engagement_score: 89,
     },
     {
-      content: `Real talk: Audio Intel beta numbers\n\n✅ ${metrics.emailsValidated.toLocaleString()} emails validated\n✅ ${metrics.contactsEnriched.toLocaleString()} contacts enriched  \n✅ ${metrics.customers} customers paying £45/month\n✅ 97% delivery rate\n\nNo vanity metrics, just honest founder updates.`,
+      content: `Real talk: Audio Intel beta numbers\n\n✅ ${metrics.emailsValidated.toLocaleString()} emails validated\n✅ ${metrics.contactsEnriched.toLocaleString()} contacts enriched  \n✅ ${
+        metrics.customers
+      } customers paying £45/month\n✅ 97% delivery rate\n\nNo vanity metrics, just honest founder updates.`,
       platform: 'bluesky' as const,
       engagement_score: 88,
     },
@@ -79,7 +91,9 @@ function generateProgressUpdate(metrics: any): SocialPost[] {
 function generateFounderStory(metrics: any): SocialPost[] {
   const stories = [
     {
-      content: `Built Audio Intel to solve my own problem: music PR is broken.\n\nSpent years manually enriching contacts, validating emails, writing pitches.\n\nNow it takes 30 seconds instead of 30 minutes.\n\nBeta users are processing ${(metrics.emailsValidated / metrics.customers).toFixed(0)}+ contacts/day.\n\nPR agencies are paying £200-500 for what we do for £45.`,
+      content: `Built Audio Intel to solve my own problem: music PR is broken.\n\nSpent years manually enriching contacts, validating emails, writing pitches.\n\nNow it takes 30 seconds instead of 30 minutes.\n\nBeta users are processing ${(
+        metrics.emailsValidated / metrics.customers
+      ).toFixed(0)}+ contacts/day.\n\nPR agencies are paying £200-500 for what we do for £45.`,
       platform: 'twitter' as const,
       engagement_score: 94,
     },
@@ -134,12 +148,18 @@ function generateIndustryInsights(): SocialPost[] {
 function generateBuildingInPublic(metrics: any): SocialPost[] {
   const posts = [
     {
-      content: `Why I'm building Total Audio Promo in public:\n\n1. Accountability - can't fake progress when everyone's watching\n2. Feedback loops - customers tell me what they actually need\n3. Authenticity - no marketing BS, just real founder updates\n4. Community - other music tech founders share their experiences\n\nTransparency isn't a marketing strategy. It's how you build trust.\n\nCurrent metrics: ${metrics.customers} beta customers, ${metrics.emailsValidated.toLocaleString()} emails validated.\n\nWhat are you building? Let's connect.`,
+      content: `Why I'm building Total Audio Promo in public:\n\n1. Accountability - can't fake progress when everyone's watching\n2. Feedback loops - customers tell me what they actually need\n3. Authenticity - no marketing BS, just real founder updates\n4. Community - other music tech founders share their experiences\n\nTransparency isn't a marketing strategy. It's how you build trust.\n\nCurrent metrics: ${
+        metrics.customers
+      } beta customers, ${metrics.emailsValidated.toLocaleString()} emails validated.\n\nWhat are you building? Let's connect.`,
       platform: 'linkedin' as const,
       engagement_score: 88,
     },
     {
-      content: `Building in public update:\n\n📊 ${metrics.customers} beta customers\n📧 ${metrics.emailsValidated.toLocaleString()} emails validated\n🎯 97.4% delivery rate\n💰 £${metrics.customers * 45} MRR\n\nSharing real numbers, real progress, real challenges.\n\nTransparency > marketing fluff`,
+      content: `Building in public update:\n\n📊 ${
+        metrics.customers
+      } beta customers\n📧 ${metrics.emailsValidated.toLocaleString()} emails validated\n🎯 97.4% delivery rate\n💰 £${
+        metrics.customers * 45
+      } MRR\n\nSharing real numbers, real progress, real challenges.\n\nTransparency > marketing fluff`,
       platform: 'twitter' as const,
       engagement_score: 86,
     },

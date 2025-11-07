@@ -288,10 +288,14 @@ async function sendKyaraAustralianEmails(streamingLinks = {}, dryRun = true) {
 
   console.log('📋 Contact Breakdown:');
   console.log(
-    `   WARM Relationships: ${KYARA_AUSTRALIAN_CONTACTS.filter(c => c.relationship === 'WARM').length}`
+    `   WARM Relationships: ${
+      KYARA_AUSTRALIAN_CONTACTS.filter(c => c.relationship === 'WARM').length
+    }`
   );
   console.log(
-    `   COLD Relationships: ${KYARA_AUSTRALIAN_CONTACTS.filter(c => c.relationship === 'COLD').length}`
+    `   COLD Relationships: ${
+      KYARA_AUSTRALIAN_CONTACTS.filter(c => c.relationship === 'COLD').length
+    }`
   );
   console.log('');
 

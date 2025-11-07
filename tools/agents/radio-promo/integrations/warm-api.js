@@ -312,7 +312,10 @@ class WarmusicAPI {
       const csvData = await this.generateCSVReport(artistName, fromDate, untilDate);
 
       // Save to Google Drive
-      const fileName = `WARM Report - ${artistName} - Week ${this.getWeekNumber(startDate, endDate)}.csv`;
+      const fileName = `WARM Report - ${artistName} - Week ${this.getWeekNumber(
+        startDate,
+        endDate
+      )}.csv`;
 
       const file = await driveAPI.files.create({
         requestBody: {
@@ -639,7 +642,10 @@ class MockWarmusicAPI {
     await this.ensureValidToken();
 
     const csvData = await this.generateCSVReport(artistName, campaignStartDate, new Date());
-    const fileName = `MOCK WARM Report - ${artistName} - Week ${this.getWeekNumber(new Date(campaignStartDate), new Date())}.csv`;
+    const fileName = `MOCK WARM Report - ${artistName} - Week ${this.getWeekNumber(
+      new Date(campaignStartDate),
+      new Date()
+    )}.csv`;
 
     console.log(`📊 MOCK WARM: Generated weekly report for ${artistName}`);
     console.log(`📁 MOCK WARM: Would save to Google Drive as: ${fileName}`);

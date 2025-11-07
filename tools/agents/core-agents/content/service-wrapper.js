@@ -77,7 +77,9 @@ class BaseServiceWrapper {
     if (!this.isConfigured()) {
       return {
         status: 'not_configured',
-        message: `Missing required environment variables: ${this.requiredEnvVars.filter(v => !process.env[v]).join(', ')}`,
+        message: `Missing required environment variables: ${this.requiredEnvVars
+          .filter(v => !process.env[v])
+          .join(', ')}`,
       };
     }
 

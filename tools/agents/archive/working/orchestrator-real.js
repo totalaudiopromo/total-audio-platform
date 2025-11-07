@@ -362,7 +362,11 @@ class RealAgentOrchestrator {
       if (this.agents.integration.isServiceAvailable('claude')) {
         try {
           const claudeService = this.agents.integration.getService('claude');
-          const recommendationPrompt = `Based on this system status data, provide 3-5 specific recommendations for improving the Total Audio Promo platform: ${JSON.stringify(report, null, 2)}`;
+          const recommendationPrompt = `Based on this system status data, provide 3-5 specific recommendations for improving the Total Audio Promo platform: ${JSON.stringify(
+            report,
+            null,
+            2
+          )}`;
           const aiRecommendations = await claudeService.generateResponse(recommendationPrompt);
           report.recommendations = this.parseRecommendations(aiRecommendations);
         } catch (error) {

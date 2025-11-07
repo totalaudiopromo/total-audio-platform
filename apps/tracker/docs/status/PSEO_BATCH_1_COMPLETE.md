@@ -176,22 +176,27 @@ Each page includes:
 Create by end of Week 2:
 
 1. **BBC Radio 6 Music Campaign Analytics** (900/month)
+
    - Similar to Radio 1 but alternative/indie focus
    - Benchmarks: 8-14% specialist, older demographic
 
 2. **BBC Introducing Campaign Tracking** (700/month)
+
    - Unsigned artist pathway
    - Benchmarks: 8-12% success, regional differences
 
 3. **Community Radio Promotion Tracking** (800/month)
+
    - Local radio focus
    - Benchmarks: 18-24% success (much higher than nationals)
 
 4. **Commercial Radio Campaign Tracking** (650/month)
+
    - Capital, Kiss, Absolute, Kerrang
    - Benchmarks: 5-9% success, centralized playlisting
 
 5. **Blog Campaign Analytics for Musicians** (1,900/month)
+
    - Expansion of PR tracking
    - Focus on individual blog outreach vs PR agencies
 

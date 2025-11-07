@@ -37,7 +37,9 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
             )}
           </div>
           <span
-            className={`px-3 py-1 rounded-full text-xs font-medium ${statusColors[campaign.status]}`}
+            className={`px-3 py-1 rounded-full text-xs font-medium ${
+              statusColors[campaign.status]
+            }`}
           >
             {campaign.status}
           </span>
@@ -60,7 +62,9 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
           <div>
             <p className="text-xs text-gray-500 mb-1">Success Rate</p>
             <p
-              className={`text-lg font-bold ${performanceColor(campaign.success_rate)}`}
+              className={`text-lg font-bold ${performanceColor(
+                campaign.success_rate
+              )}`}
             >
               {Math.round(campaign.success_rate)}%
             </p>
@@ -76,7 +80,9 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
           <div>
             <p className="text-xs text-gray-500 mb-1">Performance</p>
             <p
-              className={`text-lg font-bold ${performanceColor(campaign.performance_score)}`}
+              className={`text-lg font-bold ${performanceColor(
+                campaign.performance_score
+              )}`}
             >
               {campaign.performance_score}/100
             </p>
@@ -95,7 +101,10 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
               <div
                 className="h-full bg-teal-600 rounded-full transition-all"
                 style={{
-                  width: `${Math.min(100, (campaign.actual_reach / campaign.target_reach) * 100)}%`,
+                  width: `${Math.min(
+                    100,
+                    (campaign.actual_reach / campaign.target_reach) * 100
+                  )}%`,
                 }}
               />
             </div>

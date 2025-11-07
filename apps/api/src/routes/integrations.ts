@@ -33,7 +33,9 @@ router.get('/airtable/connect', async (req, res) => {
   const scopes = 'data.records:read data.records:write'; // adjust scopes as needed
   const state = typeof req.query.state === 'string' ? req.query.state : '';
 
-  const oauthUrl = `https://airtable.com/oauth2/v1/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}&state=${encodeURIComponent(state)}`;
+  const oauthUrl = `https://airtable.com/oauth2/v1/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(
+    redirectUri
+  )}&scope=${encodeURIComponent(scopes)}&state=${encodeURIComponent(state)}`;
   return res.redirect(oauthUrl);
 });
 
@@ -101,7 +103,11 @@ router.get('/google/connect', async (req, res) => {
   ];
   const state = typeof req.query.state === 'string' ? req.query.state : '';
 
-  const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes.join(' '))}&access_type=offline&prompt=consent&state=${encodeURIComponent(state)}`;
+  const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(
+    redirectUri
+  )}&scope=${encodeURIComponent(
+    scopes.join(' ')
+  )}&access_type=offline&prompt=consent&state=${encodeURIComponent(state)}`;
   return res.redirect(oauthUrl);
 });
 

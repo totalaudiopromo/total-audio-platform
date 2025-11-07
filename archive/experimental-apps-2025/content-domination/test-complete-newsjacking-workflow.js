@@ -283,7 +283,9 @@ const NEWSJACKING_TEST_CASES = [
       }
 
       console.log(
-        `✅ Generated ${totalContentPieces} content pieces with ${avgVoiceConsistency.toFixed(1)}/10 voice consistency`
+        `✅ Generated ${totalContentPieces} content pieces with ${avgVoiceConsistency.toFixed(
+          1
+        )}/10 voice consistency`
       );
 
       return {
@@ -349,7 +351,9 @@ const NEWSJACKING_TEST_CASES = [
       }
 
       console.log(
-        `✅ Average pipeline time: ${averagePipelineTime.toFixed(1)}s (${withinTimeLimitCount}/${pipelineResults.length} within limit)`
+        `✅ Average pipeline time: ${averagePipelineTime.toFixed(1)}s (${withinTimeLimitCount}/${
+          pipelineResults.length
+        } within limit)`
       );
 
       return {
@@ -454,7 +458,9 @@ const NEWSJACKING_TEST_CASES = [
         integrationResults.length;
 
       console.log(
-        `✅ ${strongPositioning} strong positioning opportunities, avg strength: ${averageStrength.toFixed(2)}`
+        `✅ ${strongPositioning} strong positioning opportunities, avg strength: ${averageStrength.toFixed(
+          2
+        )}`
       );
 
       return {
@@ -512,7 +518,9 @@ const NEWSJACKING_TEST_CASES = [
       const perfectMatches = platformResults.filter(r => r.platformMatch).length;
 
       console.log(
-        `✅ Average ${avgPlatformsPerNews.toFixed(1)} platforms per news item, ${perfectMatches} perfect matches`
+        `✅ Average ${avgPlatformsPerNews.toFixed(
+          1
+        )} platforms per news item, ${perfectMatches} perfect matches`
       );
 
       return {
@@ -571,7 +579,9 @@ const NEWSJACKING_TEST_CASES = [
       }
 
       console.log(
-        `✅ Average voice consistency: ${avgVoiceScore.toFixed(1)}/10 (${passThresholdCount}/${voiceResults.length} pass threshold)`
+        `✅ Average voice consistency: ${avgVoiceScore.toFixed(1)}/10 (${passThresholdCount}/${
+          voiceResults.length
+        } pass threshold)`
       );
 
       return {
@@ -782,21 +792,30 @@ function calculateCTARelevance(news) {
 function mockPlatformContent(news, platform) {
   const content = {
     twitter: {
-      text: `🧵 Thread: ${news.title.substring(0, 50)}... Here's what this really means for indie artists... 1/7`,
+      text: `🧵 Thread: ${news.title.substring(
+        0,
+        50
+      )}... Here's what this really means for indie artists... 1/7`,
       hashtags: ['#MusicMarketing', '#IndieArtist', '#AudioIntel'],
       engagementScore: 8.5,
       voiceScore: 9.0,
       platformScore: 8.8,
     },
     linkedin: {
-      text: `The Hidden Truth About ${news.title.split(' ').slice(0, 5).join(' ')} That's Costing Independent Artists Thousands`,
+      text: `The Hidden Truth About ${news.title
+        .split(' ')
+        .slice(0, 5)
+        .join(' ')} That's Costing Independent Artists Thousands`,
       hashtags: ['#MusicIndustry', '#Automation', '#IndependentArtists'],
       engagementScore: 7.8,
       voiceScore: 8.7,
       platformScore: 9.1,
     },
     instagram: {
-      text: `Swipe to see how ${news.title.split(' ').slice(0, 4).join(' ')} changes everything for music marketing ➡️`,
+      text: `Swipe to see how ${news.title
+        .split(' ')
+        .slice(0, 4)
+        .join(' ')} changes everything for music marketing ➡️`,
       hashtags: ['#MusicTips', '#IndieMusic', '#MusicMarketing'],
       engagementScore: 8.9,
       voiceScore: 8.3,
@@ -929,8 +948,8 @@ async function runCompleteNewsjackingTests() {
     results.failed === 0
       ? 'production-ready'
       : results.failed <= 2
-        ? 'needs-minor-fixes'
-        : 'needs-major-work';
+      ? 'needs-minor-fixes'
+      : 'needs-major-work';
 
   // Display comprehensive summary
   console.log('='.repeat(80));

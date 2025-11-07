@@ -177,7 +177,9 @@ export function IntegrationActivityFeed() {
             >
               {/* Icon */}
               <div
-                className={`flex-shrink-0 p-2 rounded-lg border-2 ${getStatusColor(activity.status)}`}
+                className={`flex-shrink-0 p-2 rounded-lg border-2 ${getStatusColor(
+                  activity.status
+                )}`}
               >
                 {getIcon(activity.activity_type, activity.integration_type)}
               </div>
@@ -189,7 +191,9 @@ export function IntegrationActivityFeed() {
                     {activity.message}
                   </p>
                   <div
-                    className={`flex items-center gap-1 px-2 py-1 rounded-lg border ${getStatusColor(activity.status)}`}
+                    className={`flex items-center gap-1 px-2 py-1 rounded-lg border ${getStatusColor(
+                      activity.status
+                    )}`}
                   >
                     {getStatusIcon(activity.status)}
                   </div>

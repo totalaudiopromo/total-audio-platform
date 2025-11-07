@@ -238,7 +238,9 @@ class RealTimeMonitor {
       message += `   ${index + 1}. ${station} - ${time} (${date})\n`;
     });
 
-    message += `\n⏰ Alert Time: ${new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' })}`;
+    message += `\n⏰ Alert Time: ${new Date().toLocaleString('en-GB', {
+      timeZone: 'Europe/London',
+    })}`;
 
     return message;
   }

@@ -56,7 +56,10 @@ export async function generatePitch(params: GeneratePitchParams) {
   // Build context string
   let contextString = '';
   if (lastContact) {
-    contextString += `- Last interaction: ${new Date(lastContact).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}\n`;
+    contextString += `- Last interaction: ${new Date(lastContact).toLocaleDateString('en-GB', {
+      month: 'long',
+      year: 'numeric',
+    })}\n`;
   }
   if (contactGenreTags && contactGenreTags.length > 0) {
     contextString += `- Contact's genre preferences: ${contactGenreTags.join(', ')}\n`;
@@ -68,7 +71,9 @@ export async function generatePitch(params: GeneratePitchParams) {
     contextString += `- Contact's preferred style: ${preferredTone}\n`;
   }
 
-  const prompt = `You are a music PR professional writing a pitch email to ${contactName}${contactOutlet ? ` at ${contactOutlet}` : ''}${contactRole ? ` (${contactRole})` : ''}.
+  const prompt = `You are a music PR professional writing a pitch email to ${contactName}${
+    contactOutlet ? ` at ${contactOutlet}` : ''
+  }${contactRole ? ` (${contactRole})` : ''}.
 
 CONTEXT ABOUT CONTACT:
 ${contextString || 'No additional context available.'}
@@ -80,7 +85,25 @@ ${
     voiceProfile.voice_typical_opener ||
     voiceProfile.voice_approach)
     ? `VOICE PROFILE (Match this writing style):
-${voiceProfile.voice_background ? `- Background: ${voiceProfile.voice_background}\n` : ''}${voiceProfile.voice_style ? `- Writing Style: ${voiceProfile.voice_style}\n` : ''}${voiceProfile.voice_typical_opener ? `- Typical Opener: ${voiceProfile.voice_typical_opener}\n` : ''}${voiceProfile.voice_approach ? `- Approach: ${voiceProfile.voice_approach}\n` : ''}${voiceProfile.voice_differentiator ? `- What Makes Me Different: ${voiceProfile.voice_differentiator}\n` : ''}${voiceProfile.voice_achievements ? `- Key Achievements to Reference: ${voiceProfile.voice_achievements}\n` : ''}${voiceProfile.voice_context_notes ? `- Context Notes: ${voiceProfile.voice_context_notes}\n` : ''}
+${voiceProfile.voice_background ? `- Background: ${voiceProfile.voice_background}\n` : ''}${
+        voiceProfile.voice_style ? `- Writing Style: ${voiceProfile.voice_style}\n` : ''
+      }${
+        voiceProfile.voice_typical_opener
+          ? `- Typical Opener: ${voiceProfile.voice_typical_opener}\n`
+          : ''
+      }${voiceProfile.voice_approach ? `- Approach: ${voiceProfile.voice_approach}\n` : ''}${
+        voiceProfile.voice_differentiator
+          ? `- What Makes Me Different: ${voiceProfile.voice_differentiator}\n`
+          : ''
+      }${
+        voiceProfile.voice_achievements
+          ? `- Key Achievements to Reference: ${voiceProfile.voice_achievements}\n`
+          : ''
+      }${
+        voiceProfile.voice_context_notes
+          ? `- Context Notes: ${voiceProfile.voice_context_notes}\n`
+          : ''
+      }
 IMPORTANT: Write in this person's natural voice while maintaining professionalism and the UK music industry tone.
 
 `
@@ -90,7 +113,15 @@ IMPORTANT: Write in this person's natural voice while maintaining professionalis
 - Track: "${trackTitle}"
 - Genre: ${genre}
 - Key Hook: ${keyHook}
-${releaseDate ? `- Release Date: ${new Date(releaseDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}` : ''}
+${
+  releaseDate
+    ? `- Release Date: ${new Date(releaseDate).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      })}`
+    : ''
+}
 ${trackLink ? `- Track Link: ${trackLink}` : ''}
 
 TONE REQUESTED: ${tone}

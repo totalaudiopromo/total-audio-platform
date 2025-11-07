@@ -150,7 +150,9 @@ CRITICAL RULES:
 - ALWAYS stay under ${maxLength} words for optimal response rates
 
 YOUR MISSION:
-Generate ${input.constraints?.mode === 'subject_only' ? 'subject lines' : '3 different pitch drafts'} that get opened and responded to because they're:
+Generate ${
+      input.constraints?.mode === 'subject_only' ? 'subject lines' : '3 different pitch drafts'
+    } that get opened and responded to because they're:
 - Concise (under ${maxLength} words)
 - Authentic (no bullshit or hype)
 - Personalised (reference the contact's actual work)
@@ -176,7 +178,9 @@ TONE GUIDELINES:
    * Build user prompt with track and contact details
    */
   private static buildUserPrompt(input: PitchDraftInput): string {
-    let prompt = `Generate pitch ${input.constraints?.mode === 'subject_only' ? 'subject lines' : 'emails'} for this track and contact:\n\n`;
+    let prompt = `Generate pitch ${
+      input.constraints?.mode === 'subject_only' ? 'subject lines' : 'emails'
+    } for this track and contact:\n\n`;
 
     // Track information
     prompt += `TRACK INFO:\n`;
@@ -230,7 +234,9 @@ TONE GUIDELINES:
   "drafts": [
     {
       "subject": "Email subject (5-8 words, specific not generic)",
-      "body": "Email body (max ${input.constraints?.max_length || 150} words, personalised, authentic)",
+      "body": "Email body (max ${
+        input.constraints?.max_length || 150
+      } words, personalised, authentic)",
       "rationale": "Why this angle works for this contact",
       "angle": "story|data|emotion|industry"
     }

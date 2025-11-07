@@ -8,7 +8,9 @@ export async function POST(request: NextRequest) {
 
     const baseUrl =
       process.env.NEXT_PUBLIC_BASE_URL || process.env.VERCEL_URL || 'http://localhost:3000';
-    const url = `${String(baseUrl).startsWith('http') ? baseUrl : `https://${baseUrl}`}/api/newsletter/weekly-agent`;
+    const url = `${
+      String(baseUrl).startsWith('http') ? baseUrl : `https://${baseUrl}`
+    }/api/newsletter/weekly-agent`;
 
     const results: any[] = [];
     for (let i = 0; i < Number(count); i++) {

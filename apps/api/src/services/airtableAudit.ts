@@ -388,7 +388,9 @@ export class AirtableAuditService {
     for (const [fieldName, analysis] of Object.entries(auditResult.fieldAnalysis)) {
       if (analysis.coverage < 50) {
         recommendations.push(
-          `Field '${fieldName}' has low coverage (${analysis.coverage.toFixed(1)}%). Consider if this field is necessary or needs better data collection.`
+          `Field '${fieldName}' has low coverage (${analysis.coverage.toFixed(
+            1
+          )}%). Consider if this field is necessary or needs better data collection.`
         );
       }
     }
@@ -397,7 +399,9 @@ export class AirtableAuditService {
     for (const [fieldName, analysis] of Object.entries(auditResult.fieldAnalysis)) {
       if (analysis.dataTypes.length > 1) {
         recommendations.push(
-          `Field '${fieldName}' contains mixed data types: ${analysis.dataTypes.join(', ')}. Consider standardizing the data type.`
+          `Field '${fieldName}' contains mixed data types: ${analysis.dataTypes.join(
+            ', '
+          )}. Consider standardizing the data type.`
         );
       }
     }

@@ -448,10 +448,12 @@ dataLayer.push({ event: 'page_view', page_path: '/terms' });
    ```
 
 3. **Set redirect URL**:
+
    - Site URL: `https://tracker.totalaudiopromo.com`
    - Redirect URL: `https://tracker.totalaudiopromo.com/verify-success`
 
 4. **Auth Settings**:
+
    - Go to: Authentication → Settings
    - Enable: "Confirm email" ✅
    - Email rate limit: 4 per hour (default)
@@ -490,13 +492,15 @@ git push origin main --force
 
 ```typescript
 // In app/dashboard/page.tsx
-const ENABLE_EMAIL_VERIFICATION = false;  // Disable feature
-const ENABLE_ONBOARDING = false;         // Disable feature
+const ENABLE_EMAIL_VERIFICATION = false; // Disable feature
+const ENABLE_ONBOARDING = false; // Disable feature
 
 // Wrap features in conditionals
-{ENABLE_EMAIL_VERIFICATION && !isEmailVerified && (
-  <EmailVerificationBanner email={user.email} />
-)}
+{
+  ENABLE_EMAIL_VERIFICATION && !isEmailVerified && (
+    <EmailVerificationBanner email={user.email} />
+  );
+}
 ```
 
 ---

@@ -146,7 +146,11 @@ class EmailAlerts {
         Object.keys(context).length > 0
           ? `
         <h3>Context</h3>
-        <pre style="background: white; padding: 10px; border-radius: 4px; overflow-x: auto;">${JSON.stringify(context, null, 2)}</pre>
+        <pre style="background: white; padding: 10px; border-radius: 4px; overflow-x: auto;">${JSON.stringify(
+          context,
+          null,
+          2
+        )}</pre>
       `
           : ''
       }
@@ -167,7 +171,9 @@ class EmailAlerts {
    * Alert: Cost threshold exceeded
    */
   async alertCostThreshold(dailyCost, breakdown) {
-    const subject = `💰 Cost Alert: £${dailyCost.toFixed(2)}/day (threshold: £${this.thresholds.dailyCostGBP})`;
+    const subject = `💰 Cost Alert: £${dailyCost.toFixed(2)}/day (threshold: £${
+      this.thresholds.dailyCostGBP
+    })`;
 
     const htmlBody = `
       <h2>Daily Cost Exceeded Threshold</h2>
@@ -277,12 +283,19 @@ class EmailAlerts {
    * Alert: Daily summary (success - green checkmark)
    */
   async alertDailySummary(summary) {
-    const subject = `✅ Daily Summary: ${summary.agentsRun} agents, £${summary.totalCost.toFixed(2)} cost`;
+    const subject = `✅ Daily Summary: ${summary.agentsRun} agents, £${summary.totalCost.toFixed(
+      2
+    )} cost`;
 
     const htmlBody = `
       <div style="background: #4caf50; color: white; padding: 20px; border-radius: 8px;">
         <h2>✅ All Systems Operational</h2>
-        <p>${new Date().toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <p>${new Date().toLocaleDateString('en-GB', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}</p>
       </div>
 
       <div style="margin-top: 20px;">

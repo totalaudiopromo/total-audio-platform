@@ -242,6 +242,7 @@ Agent OS is Anthropic's framework for building reliable, scalable AI agent syste
 #### ✅ **Already Agent OS-Aligned**:
 
 1. **LibertyRadioPromoAgent (TypeScript)** - `src/agents/radio-promo/LibertyRadioPromoAgent.ts`
+
    - ✅ Uses Anthropic SDK correctly
    - ✅ Implements tool calling properly
    - ✅ Has prompt caching setup (CachedContextManager)
@@ -258,6 +259,7 @@ Agent OS is Anthropic's framework for building reliable, scalable AI agent syste
 #### ⚠️ **Needs Agent OS Upgrade**:
 
 3. **JavaScript Orchestrator** - `tools/agents/radio-promo/orchestrator.js`
+
    - ❌ No prompt caching
    - ❌ No Anthropic SDK usage (direct API calls?)
    - ❌ No extended thinking
@@ -266,6 +268,7 @@ Agent OS is Anthropic's framework for building reliable, scalable AI agent syste
    - **RECOMMENDATION**: Port to TypeScript, use StreamingAgent as base
 
 4. **All 6 Sub-Agents** (intelligence, project, email, radio, analytics, coverage)
+
    - ❌ JavaScript-based (not using Anthropic SDK)
    - ❌ No prompt caching
    - ❌ Custom implementations (not standardized)
@@ -357,11 +360,13 @@ Maestro (TS, extends StreamingAgent)
 ## 📝 Questions to Answer
 
 1. **Orchestrator Name Preference?**
+
    - "Maestro" (professional, memorable)
    - "Liberty" (personal, client-friendly)
    - Something else?
 
 2. **Migration Priority?**
+
    - Focus on Liberty/radio promo agents only? (customer acquisition phase)
    - Upgrade all 32 agents? (future-proofing)
 

@@ -286,7 +286,9 @@ class NewsjackerEngine {
       const processingTime = Date.now() - startTime;
       console.log(`✅ Newsjacking opportunity processed in ${processingTime}ms: ${opportunity.id}`);
       console.log(
-        `🎯 Score: ${scoringResult.totalScore.toFixed(2)}, Content pieces: ${fusedContent.length}, Alert: ${alertLevel}`
+        `🎯 Score: ${scoringResult.totalScore.toFixed(2)}, Content pieces: ${
+          fusedContent.length
+        }, Alert: ${alertLevel}`
       );
 
       // Auto-execute if configured
@@ -333,12 +335,9 @@ class NewsjackerEngine {
         this.pipeline.performance.successfulExecutions++;
 
         // Start performance tracking
-        setTimeout(
-          () => {
-            this.trackOpportunityPerformance(opportunityId);
-          },
-          60 * 60 * 1000
-        ); // 1 hour delay for initial metrics
+        setTimeout(() => {
+          this.trackOpportunityPerformance(opportunityId);
+        }, 60 * 60 * 1000); // 1 hour delay for initial metrics
 
         console.log(`✅ Successfully executed opportunity: ${opportunityId}`);
         return true;
@@ -361,37 +360,31 @@ class NewsjackerEngine {
    */
   private startPipelineProcessing(): void {
     // Check for new trends every 5 minutes
-    setInterval(
-      async () => {
-        if (!this.isRunning) return;
+    setInterval(async () => {
+      if (!this.isRunning) return;
 
-        try {
-          const activeTrends = await this.trendDetection.getActiveTrends();
-          const newTrends = activeTrends.filter(
-            trend => !this.pipeline.opportunities.has(`newsjack_${trend.id}_*`)
-          );
+      try {
+        const activeTrends = await this.trendDetection.getActiveTrends();
+        const newTrends = activeTrends.filter(
+          trend => !this.pipeline.opportunities.has(`newsjack_${trend.id}_*`)
+        );
 
-          if (newTrends.length > 0) {
-            console.log(`🔥 Found ${newTrends.length} new trends to process`);
+        if (newTrends.length > 0) {
+          console.log(`🔥 Found ${newTrends.length} new trends to process`);
 
-            for (const trend of newTrends) {
-              await this.processNewsOpportunity(trend);
-            }
+          for (const trend of newTrends) {
+            await this.processNewsOpportunity(trend);
           }
-        } catch (error) {
-          console.error('Pipeline processing error:', error);
         }
-      },
-      5 * 60 * 1000
-    ); // 5 minutes
+      } catch (error) {
+        console.error('Pipeline processing error:', error);
+      }
+    }, 5 * 60 * 1000); // 5 minutes
 
     // Cleanup expired opportunities every hour
-    setInterval(
-      () => {
-        this.cleanupExpiredOpportunities();
-      },
-      60 * 60 * 1000
-    ); // 1 hour
+    setInterval(() => {
+      this.cleanupExpiredOpportunities();
+    }, 60 * 60 * 1000); // 1 hour
   }
 
   /**

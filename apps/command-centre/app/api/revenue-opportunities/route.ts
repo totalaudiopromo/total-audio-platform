@@ -645,8 +645,12 @@ function analyseOpportunityPortfolio(opportunities: RevenueOpportunity[]): Oppor
   // Generate actionable intelligence
   const actionableIntelligence = {
     immediateActions: [
-      `Launch ${quickWins[0]?.title || 'highest-scoring quick win'} - £${quickWins[0]?.revenueImpact.annual || 0} potential with minimal risk`,
-      `Begin planning ${bigBets[0]?.title || 'top big bet'} - highest revenue potential at £${bigBets[0]?.revenueImpact.annual || 0}`,
+      `Launch ${quickWins[0]?.title || 'highest-scoring quick win'} - £${
+        quickWins[0]?.revenueImpact.annual || 0
+      } potential with minimal risk`,
+      `Begin planning ${bigBets[0]?.title || 'top big bet'} - highest revenue potential at £${
+        bigBets[0]?.revenueImpact.annual || 0
+      }`,
       'Conduct customer validation interviews for top 3 opportunities',
     ],
     next30Days: [

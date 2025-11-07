@@ -117,7 +117,9 @@ export function ImprovedMobileNav({ userName, onSignOut }: MobileNavProps) {
                       onClick={() => setIsOpen(false)}
                     >
                       <Icon
-                        className={`h-5 w-5 ${isActive ? 'text-white' : 'text-gray-600'}`}
+                        className={`h-5 w-5 ${
+                          isActive ? 'text-white' : 'text-gray-600'
+                        }`}
                       />
                       <span>{item.label}</span>
                     </Link>

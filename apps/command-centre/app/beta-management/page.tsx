@@ -200,7 +200,9 @@ export default function BetaManagementPage() {
     const subject = `Audio Intel Beta - How's your experience going?`;
     const body = `Hi ${user.name || user.email.split('@')[0]},
 
-I hope you're enjoying Audio Intel! I noticed you've enriched ${user.engagement.contactsEnriched} contacts so far.
+I hope you're enjoying Audio Intel! I noticed you've enriched ${
+      user.engagement.contactsEnriched
+    } contacts so far.
 
 Is there anything I can help you with to get even more value from the platform?
 
@@ -295,7 +297,9 @@ Total Audio Promo`;
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key as any)}
-              className={`postcraft-button flex items-center gap-2 ${activeTab === tab.key ? 'bg-black text-white' : ''}`}
+              className={`postcraft-button flex items-center gap-2 ${
+                activeTab === tab.key ? 'bg-black text-white' : ''
+              }`}
             >
               <tab.icon size={16} />
               {tab.label}
@@ -394,8 +398,8 @@ Total Audio Promo`;
                             user.status === 'active'
                               ? 'bg-green-500'
                               : user.status === 'idle'
-                                ? 'bg-yellow-500'
-                                : 'bg-gray-400'
+                              ? 'bg-yellow-500'
+                              : 'bg-gray-400'
                           }`}
                         ></div>
                         <span className="text-xs font-bold uppercase">{user.status}</span>
@@ -605,8 +609,8 @@ Total Audio Promo`;
                             user.status === 'active'
                               ? 'bg-green-50'
                               : user.status === 'idle'
-                                ? 'bg-yellow-50'
-                                : 'bg-gray-50'
+                              ? 'bg-yellow-50'
+                              : 'bg-gray-50'
                           }`}
                         >
                           <div className="flex justify-between items-start mb-4">
@@ -621,8 +625,8 @@ Total Audio Promo`;
                                     user.status === 'active'
                                       ? 'bg-green-500'
                                       : user.status === 'idle'
-                                        ? 'bg-yellow-500'
-                                        : 'bg-gray-400'
+                                      ? 'bg-yellow-500'
+                                      : 'bg-gray-400'
                                   }`}
                                 ></div>
                                 <span className="text-xs font-bold uppercase">{user.status}</span>

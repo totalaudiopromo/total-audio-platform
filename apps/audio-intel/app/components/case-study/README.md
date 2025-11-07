@@ -101,19 +101,19 @@ Two-button call-to-action section (primary + secondary).
 ## Usage Example
 
 ```typescript
-import type { CaseStudyData } from "@/types/case-study";
-import { CaseStudyHero, CampaignSnapshot, /* ... */ } from "@/app/components/case-study";
+import type { CaseStudyData } from '@/types/case-study';
+import { CaseStudyHero, CampaignSnapshot /* ... */ } from '@/app/components/case-study';
 
 const myData: CaseStudyData = {
   hero: {
-    title: "Your Case Study Title",
+    title: 'Your Case Study Title',
     byline: {
-      author: "Chris Schofield",
-      role: "Radio promoter",
-      format: "Case study format",
-      readTime: "10 min read"
+      author: 'Chris Schofield',
+      role: 'Radio promoter',
+      format: 'Case study format',
+      readTime: '10 min read',
     },
-    introCallout: "Your compelling intro paragraph..."
+    introCallout: 'Your compelling intro paragraph...',
   },
   // ... other sections
 };

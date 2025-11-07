@@ -223,7 +223,9 @@ export async function POST(request: NextRequest) {
         analyticsData.recentActivity.unshift({
           timestamp: new Date().toISOString(),
           action: 'Export Download',
-          details: `Downloaded ${custom_parameters?.enriched_count || 0} contacts as ${custom_parameters?.export_format || 'CSV'}`,
+          details: `Downloaded ${custom_parameters?.enriched_count || 0} contacts as ${
+            custom_parameters?.export_format || 'CSV'
+          }`,
         });
         break;
 
@@ -239,7 +241,9 @@ export async function POST(request: NextRequest) {
         analyticsData.recentActivity.unshift({
           timestamp: new Date().toISOString(),
           action: 'Platform Search',
-          details: `Searched ${custom_parameters?.platforms?.join(', ') || 'all platforms'} for "${custom_parameters?.query || ''}"`,
+          details: `Searched ${custom_parameters?.platforms?.join(', ') || 'all platforms'} for "${
+            custom_parameters?.query || ''
+          }"`,
         });
         break;
 

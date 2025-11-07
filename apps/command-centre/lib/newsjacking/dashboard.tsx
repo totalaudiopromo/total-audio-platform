@@ -152,8 +152,8 @@ export function NewsjackingDashboard() {
             item.unsignedAngle.urgency === 'immediate'
               ? 'immediate'
               : item.unsignedAngle.urgency === 'high'
-                ? 'same_day'
-                : ('this_week' as 'immediate' | 'same_day' | 'this_week'),
+              ? 'same_day'
+              : ('this_week' as 'immediate' | 'same_day' | 'this_week'),
           feedback: undefined,
         }));
         setPendingContent(parsedContent);
@@ -368,7 +368,9 @@ function ContentCard({
           {content.status.charAt(0).toUpperCase() + content.status.slice(1)}
         </span>
         <span
-          className={`px-2 py-1 rounded-full text-xs font-medium ${getUrgencyColor(content.urgency)}`}
+          className={`px-2 py-1 rounded-full text-xs font-medium ${getUrgencyColor(
+            content.urgency
+          )}`}
         >
           {content.urgency.replace('_', ' ')}
         </span>

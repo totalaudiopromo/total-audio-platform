@@ -190,7 +190,19 @@ Write it in UK English, professional but not corporate. Focus on results, insigh
           aiError?.message || aiError
         );
         // Fallback to basic summary
-        executiveSummary = `This ${campaignData.platform || 'music promotion'} campaign for ${campaignData.artist_name || 'artist'} achieved ${campaignData.actual_reach || 0} of ${campaignData.target_reach || 0} targeted contacts (${(metrics.response_rate * 100).toFixed(0)}% success rate). The campaign ran for ${metrics.days_active} days with a total budget of £${campaignData.budget || 0}, resulting in a cost per result of £${metrics.cost_per_result.toFixed(2)}.`;
+        executiveSummary = `This ${
+          campaignData.platform || 'music promotion'
+        } campaign for ${campaignData.artist_name || 'artist'} achieved ${
+          campaignData.actual_reach || 0
+        } of ${campaignData.target_reach || 0} targeted contacts (${(
+          metrics.response_rate * 100
+        ).toFixed(0)}% success rate). The campaign ran for ${
+          metrics.days_active
+        } days with a total budget of £${
+          campaignData.budget || 0
+        }, resulting in a cost per result of £${metrics.cost_per_result.toFixed(
+          2
+        )}.`;
         console.log('[Report Generation] Using fallback summary');
       }
     } else {
@@ -226,7 +238,9 @@ Write it in UK English, professional but not corporate. Focus on results, insigh
     );
 
     // Generate filename
-    const filename = `campaign-report-${(campaignData.name || 'campaign').toLowerCase().replace(/\s+/g, '-')}-${Date.now()}.pdf`;
+    const filename = `campaign-report-${(campaignData.name || 'campaign')
+      .toLowerCase()
+      .replace(/\s+/g, '-')}-${Date.now()}.pdf`;
     console.log('[Report Generation] Filename:', filename);
 
     // Save report record to database

@@ -373,21 +373,25 @@ const response = await anthropic.messages.create({
 ### Current Challenges
 
 1. **No Centralized Base Class**
+
    - Each agent implements own patterns
    - Duplicate code across agents
    - Hard to add system-wide features
 
 2. **No Monitoring Infrastructure**
+
    - Can't track agent performance
    - No cost visibility
    - No cache hit rates
 
 3. **No Event System**
+
    - Agents run in isolation
    - No real-time progress updates
    - Command Centre can't show activity
 
 4. **Limited Error Handling**
+
    - No retry logic
    - No exponential backoff
    - Poor error reporting
@@ -400,16 +404,19 @@ const response = await anthropic.messages.create({
 ### Upgrade Blockers
 
 1. **Database Integration Complexity**
+
    - Many agents tightly coupled to Prisma
    - Need to preserve database logic
    - Can't break existing workflows
 
 2. **External API Dependencies**
+
    - Monday.com, Mailchimp, Gmail integrations
    - Must maintain compatibility
    - Can't introduce breaking changes
 
 3. **Active Production Use**
+
    - Liberty Music PR using radio promo agents
    - Newsletter system running weekly
    - Can't have downtime

@@ -243,7 +243,9 @@ class SocialMediaAgent {
 
     const connectedPlatforms = Object.values(this.platforms).filter(p => p.connected).length;
     logger.info(
-      `Platform connections complete: ${connectedPlatforms}/${Object.keys(this.platforms).length} platforms connected`
+      `Platform connections complete: ${connectedPlatforms}/${
+        Object.keys(this.platforms).length
+      } platforms connected`
     );
   }
 
@@ -945,9 +947,17 @@ class SocialMediaAgent {
 
   async generateCaption(campaignData, platform, contentType) {
     const templates = {
-      instagram: `🎵 ${campaignData.title || 'New Music'} by ${campaignData.artist?.name || 'Artist'} 🎵\n\n${contentType === 'teaser' ? 'Coming soon...' : 'Out now!'} What do you think? 👇`,
-      twitter: `New ${campaignData.genre || 'music'} alert! 🔥 ${campaignData.title || 'Track'} by ${campaignData.artist?.name || 'Artist'} is ${['incredible', 'amazing', 'fire'][Math.floor(Math.random() * 3)]}!`,
-      tiktok: `${campaignData.title || 'New track'} vibes 🎶 @${campaignData.artist?.name || 'artist'}`,
+      instagram: `🎵 ${campaignData.title || 'New Music'} by ${
+        campaignData.artist?.name || 'Artist'
+      } 🎵\n\n${contentType === 'teaser' ? 'Coming soon...' : 'Out now!'} What do you think? 👇`,
+      twitter: `New ${campaignData.genre || 'music'} alert! 🔥 ${
+        campaignData.title || 'Track'
+      } by ${campaignData.artist?.name || 'Artist'} is ${
+        ['incredible', 'amazing', 'fire'][Math.floor(Math.random() * 3)]
+      }!`,
+      tiktok: `${campaignData.title || 'New track'} vibes 🎶 @${
+        campaignData.artist?.name || 'artist'
+      }`,
     };
     return templates[platform] || templates.instagram;
   }

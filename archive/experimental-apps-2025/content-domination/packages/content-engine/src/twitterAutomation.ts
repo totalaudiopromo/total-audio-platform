@@ -674,17 +674,14 @@ class TwitterAutomation {
 
   private initializeRateLimitTracking(): void {
     // Clean up expired rate limit entries every hour
-    setInterval(
-      () => {
-        const now = new Date();
-        for (const [key, limit] of this.rateLimitTracker.entries()) {
-          if (limit.resetTime < now) {
-            this.rateLimitTracker.delete(key);
-          }
+    setInterval(() => {
+      const now = new Date();
+      for (const [key, limit] of this.rateLimitTracker.entries()) {
+        if (limit.resetTime < now) {
+          this.rateLimitTracker.delete(key);
         }
-      },
-      60 * 60 * 1000
-    ); // Every hour
+      }
+    }, 60 * 60 * 1000); // Every hour
   }
 
   private scheduleThreadPosting(thread: TwitterThread): Promise<void> {

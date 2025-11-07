@@ -82,7 +82,9 @@ const AgentDashboardPage: React.FC = () => {
                     }`}
                   >
                     <Bot
-                      className={`w-6 h-6 ${agent.status === 'active' ? 'text-green-600' : 'text-gray-600'}`}
+                      className={`w-6 h-6 ${
+                        agent.status === 'active' ? 'text-green-600' : 'text-gray-600'
+                      }`}
                     />
                   </div>
                   <div className="flex-1">

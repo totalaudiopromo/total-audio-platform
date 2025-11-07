@@ -221,13 +221,17 @@ export function validatePageData(
 
     if (verifiedDate < sixMonthsAgo) {
       errors.push(
-        `Contact ${index + 1} (${contact.name}) verification is older than 6 months - requires re-verification`
+        `Contact ${index + 1} (${
+          contact.name
+        }) verification is older than 6 months - requires re-verification`
       );
     }
 
     if (contact.confidence_score < 85) {
       errors.push(
-        `Contact ${index + 1} (${contact.name}) confidence score too low: ${contact.confidence_score}% (minimum 85%)`
+        `Contact ${index + 1} (${contact.name}) confidence score too low: ${
+          contact.confidence_score
+        }% (minimum 85%)`
       );
     }
 
@@ -393,7 +397,9 @@ function generateContactsHeading(row: PSEORowData): string {
 }
 
 function generateContactsDisclaimer(research: ResearchData): string {
-  return `Contact information verified as of ${new Date(research.current_as_of).toLocaleDateString('en-GB')}. Sources: ${research.sources.length} verified.`;
+  return `Contact information verified as of ${new Date(research.current_as_of).toLocaleDateString(
+    'en-GB'
+  )}. Sources: ${research.sources.length} verified.`;
 }
 
 function generateResults(row: PSEORowData, research: ResearchData) {

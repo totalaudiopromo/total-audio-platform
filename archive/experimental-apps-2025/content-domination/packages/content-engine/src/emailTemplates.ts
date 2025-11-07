@@ -49,7 +49,9 @@ export function generateContactExportEmail(data: EmailTemplateData): string {
             
             <div class="stats">
                 <h3>📊 Export Summary</h3>
-                <p><strong>Contacts Processed:</strong> ${contactsCount?.toLocaleString() || 'N/A'}</p>
+                <p><strong>Contacts Processed:</strong> ${
+                  contactsCount?.toLocaleString() || 'N/A'
+                }</p>
                 <p><strong>Export Type:</strong> Enriched Contact Intelligence</p>
                 <p><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
             </div>
@@ -126,10 +128,18 @@ export function generateAnalyticsExportEmail(data: EmailTemplateData): string {
             
             <div class="stats">
                 <h3>📈 Key Performance Metrics</h3>
-                <p><strong>Total Contacts:</strong> ${analyticsData?.totalContacts?.toLocaleString() || 'N/A'}</p>
-                <p><strong>Success Rate:</strong> ${analyticsData?.successRate?.toFixed(1) || 'N/A'}%</p>
-                <p><strong>Average Confidence:</strong> ${analyticsData?.averageConfidence?.toFixed(1) || 'N/A'}%</p>
-                <p><strong>Processing Time:</strong> ${analyticsData?.performanceMetrics?.averageProcessingTime?.toFixed(2) || 'N/A'}s</p>
+                <p><strong>Total Contacts:</strong> ${
+                  analyticsData?.totalContacts?.toLocaleString() || 'N/A'
+                }</p>
+                <p><strong>Success Rate:</strong> ${
+                  analyticsData?.successRate?.toFixed(1) || 'N/A'
+                }%</p>
+                <p><strong>Average Confidence:</strong> ${
+                  analyticsData?.averageConfidence?.toFixed(1) || 'N/A'
+                }%</p>
+                <p><strong>Processing Time:</strong> ${
+                  analyticsData?.performanceMetrics?.averageProcessingTime?.toFixed(2) || 'N/A'
+                }s</p>
             </div>
             
             ${customMessage ? `<p><em>${customMessage}</em></p>` : ''}
@@ -282,7 +292,11 @@ export function generateAIAgentReportEmail(data: EmailTemplateData): string {
             
             <div class="agent-info">
                 <h3>🤖 AI Agent Analysis</h3>
-                <p><strong>Agent Type:</strong> ${agentData?.agentType?.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()) || 'N/A'}</p>
+                <p><strong>Agent Type:</strong> ${
+                  agentData?.agentType
+                    ?.replace(/-/g, ' ')
+                    .replace(/\b\w/g, (l: string) => l.toUpperCase()) || 'N/A'
+                }</p>
                 <p><strong>Query:</strong> "${agentData?.query || 'N/A'}"</p>
                 <p><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
             </div>

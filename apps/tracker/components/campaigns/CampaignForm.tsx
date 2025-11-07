@@ -77,15 +77,17 @@ export function CampaignForm({
                 s === step
                   ? 'bg-teal-600 text-white'
                   : s < step
-                    ? 'bg-green-600 text-white'
-                    : 'bg-slate-200 text-slate-600'
+                  ? 'bg-green-600 text-white'
+                  : 'bg-slate-200 text-slate-600'
               }`}
             >
               {s < step ? '✓' : s}
             </div>
             {s < 3 && (
               <div
-                className={`flex-1 h-1 mx-2 ${s < step ? 'bg-green-600' : 'bg-slate-200'}`}
+                className={`flex-1 h-1 mx-2 ${
+                  s < step ? 'bg-green-600' : 'bg-slate-200'
+                }`}
               />
             )}
           </div>

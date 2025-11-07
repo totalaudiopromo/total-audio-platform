@@ -234,7 +234,12 @@ function analyzeEpisodeFallback(episode: PodcastEpisode): PodcastEpisode {
 
   const newsletterContent =
     relevance !== 'Low'
-      ? `**🎙️ Podcast Intel: ${episode.title}**\n\n${episode.description.substring(0, 200)}...\n\n*Why this matters:* This episode covers ${hasAI ? 'AI tools' : 'technology'} that could impact your music promotion strategy.\n\n**Action Item:** Listen to the full episode for detailed insights and practical advice.`
+      ? `**🎙️ Podcast Intel: ${episode.title}**\n\n${episode.description.substring(
+          0,
+          200
+        )}...\n\n*Why this matters:* This episode covers ${
+          hasAI ? 'AI tools' : 'technology'
+        } that could impact your music promotion strategy.\n\n**Action Item:** Listen to the full episode for detailed insights and practical advice.`
       : '';
 
   return {
@@ -361,7 +366,9 @@ export async function POST(request: NextRequest) {
       feedUrls.map(async (feedUrl: string) => {
         try {
           const response = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001'}/api/podcast-monitor?feedUrl=${encodeURIComponent(feedUrl)}`
+            `${
+              process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001'
+            }/api/podcast-monitor?feedUrl=${encodeURIComponent(feedUrl)}`
           );
           return await response.json();
         } catch (error) {

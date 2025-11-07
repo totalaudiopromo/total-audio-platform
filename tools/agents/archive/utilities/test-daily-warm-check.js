@@ -78,7 +78,11 @@ async function testDailyWarmCheck() {
     const today = new Date();
     const isFriday = today.getDay() === 5;
     console.log(
-      `\n📅 Today is ${['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][today.getDay()]}`
+      `\n📅 Today is ${
+        ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][
+          today.getDay()
+        ]
+      }`
     );
 
     if (isFriday) {

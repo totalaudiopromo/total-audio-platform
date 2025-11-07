@@ -11,17 +11,20 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 ### Step-by-Step Workflow
 
 1. **Access Spotify for Artists Dashboard**
+
    - Log in via desktop computer (mobile not supported for pitching)
    - Navigate to "Music" section → "Upcoming" to see unreleased tracks
    - Source: [Spotify for Artists Support](https://support.spotify.com/us/artists/article/pitching-music-to-playlist-editors/)
 
 2. **Select Track to Pitch**
+
    - For albums/EPs: Choose ONE track to submit
    - Track must be unreleased (option disappears once live)
    - Can only pitch one song at a time
    - Source: [Hypebot Guide](https://www.hypebot.com/hypebot/2025/07/guide-to-get-on-spotify-editorial-playlist-in-2025.html)
 
 3. **Complete Submission Form**
+
    - Genre selection: Choose up to 3 genres
    - Mood and instrumentation tags
    - Language and culture tags
@@ -31,6 +34,7 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
    - Source: [Ditto Music Guide](https://dittomusic.com/en/blog/how-to-submit-music-to-spotify-playlists-directly)
 
 4. **Timing Requirements (CRITICAL UPDATE FOR 2025)**
+
    - Minimum: 7 days before release (gets song into Release Radar)
    - **New recommendation for independent artists: 28 days minimum**
    - Industry standard: 2-4 weeks for serious consideration

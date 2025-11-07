@@ -651,10 +651,10 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
             lastProgress < 30
               ? 'Processing first batch...'
               : lastProgress < 60
-                ? 'Enriching with Total Audio Promo AI...'
-                : lastProgress < 90
-                  ? 'Finalizing confidence scores...'
-                  : 'Almost ready...';
+              ? 'Enriching with Total Audio Promo AI...'
+              : lastProgress < 90
+              ? 'Finalizing confidence scores...'
+              : 'Almost ready...';
 
           setState(prev => ({
             ...prev,

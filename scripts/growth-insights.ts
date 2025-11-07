@@ -348,7 +348,9 @@ async function generateAIInsights(
 Weekly Growth Data Analysis
 
 Period: ${weeklyData.length} weeks
-Latest Week: ${weeklyData[weeklyData.length - 1].weekStart} to ${weeklyData[weeklyData.length - 1].weekEnd}
+Latest Week: ${weeklyData[weeklyData.length - 1].weekStart} to ${
+    weeklyData[weeklyData.length - 1].weekEnd
+  }
 
 Key Metrics (Latest Week):
 - MRR: £${(weeklyData[weeklyData.length - 1].revenue.mrr / 100).toFixed(2)}
@@ -356,7 +358,9 @@ Key Metrics (Latest Week):
 - Total Users: ${weeklyData[weeklyData.length - 1].users.total}
 - New Users: ${weeklyData[weeklyData.length - 1].users.new}
 - Active Users: ${weeklyData[weeklyData.length - 1].users.active}
-- DAU/WAU/MAU: ${weeklyData[weeklyData.length - 1].engagement.dau}/${weeklyData[weeklyData.length - 1].engagement.wau}/${weeklyData[weeklyData.length - 1].engagement.mau}
+- DAU/WAU/MAU: ${weeklyData[weeklyData.length - 1].engagement.dau}/${
+    weeklyData[weeklyData.length - 1].engagement.wau
+  }/${weeklyData[weeklyData.length - 1].engagement.mau}
 - Stickiness: ${weeklyData[weeklyData.length - 1].engagement.stickiness}%
 - Enrichments: ${weeklyData[weeklyData.length - 1].product.enrichments}
 - Success Rate: ${weeklyData[weeklyData.length - 1].product.successRate}%
@@ -563,13 +567,23 @@ function formatReport(report: GrowthInsightsReport): string {
 
 | Metric | Value | Trend |
 |--------|-------|-------|
-| **MRR** | £${(latest.revenue.mrr / 100).toFixed(2)} | ${trends.revenue.mrrTrend === 'up' ? '📈' : trends.revenue.mrrTrend === 'down' ? '📉' : '➡️'} ${trends.revenue.mrrGrowth}% |
+| **MRR** | £${(latest.revenue.mrr / 100).toFixed(2)} | ${
+    trends.revenue.mrrTrend === 'up' ? '📈' : trends.revenue.mrrTrend === 'down' ? '📉' : '➡️'
+  } ${trends.revenue.mrrGrowth}% |
 | **Active Subs** | ${latest.revenue.activeSubscriptions} | - |
-| **Total Users** | ${latest.users.total} | ${trends.users.userGrowth > 0 ? '📈' : '📉'} ${trends.users.userGrowth}% |
+| **Total Users** | ${latest.users.total} | ${trends.users.userGrowth > 0 ? '📈' : '📉'} ${
+    trends.users.userGrowth
+  }% |
 | **Active Users** | ${latest.users.active} | Activation: ${trends.users.activationRate}% |
-| **Stickiness** | ${latest.engagement.stickiness}% | ${trends.engagement.stickinessChange > 0 ? '📈' : '📉'} ${trends.engagement.stickinessChange}% |
-| **Enrichments** | ${latest.product.enrichments} | ${trends.product.enrichmentGrowth > 0 ? '📈' : '📉'} ${trends.product.enrichmentGrowth}% |
-| **Success Rate** | ${latest.product.successRate}% | ${trends.product.successRateChange > 0 ? '📈' : '📉'} ${trends.product.successRateChange}% |
+| **Stickiness** | ${latest.engagement.stickiness}% | ${
+    trends.engagement.stickinessChange > 0 ? '📈' : '📉'
+  } ${trends.engagement.stickinessChange}% |
+| **Enrichments** | ${latest.product.enrichments} | ${
+    trends.product.enrichmentGrowth > 0 ? '📈' : '📉'
+  } ${trends.product.enrichmentGrowth}% |
+| **Success Rate** | ${latest.product.successRate}% | ${
+    trends.product.successRateChange > 0 ? '📈' : '📉'
+  } ${trends.product.successRateChange}% |
 
 ---
 
@@ -581,10 +595,10 @@ ${insights
       insight.severity === 'positive'
         ? '✅'
         : insight.severity === 'critical'
-          ? '🚨'
-          : insight.severity === 'high'
-            ? '⚠️'
-            : 'ℹ️';
+        ? '🚨'
+        : insight.severity === 'high'
+        ? '⚠️'
+        : 'ℹ️';
     return `### ${icon} ${insight.title}
 
 **${insight.description}**
@@ -610,10 +624,16 @@ ${weeklyData
   .map(
     (week, index) => `### Week ${weeklyData.length - index} (${week.weekStart} to ${week.weekEnd})
 
-- MRR: £${(week.revenue.mrr / 100).toFixed(2)} | New Revenue: £${(week.revenue.newRevenue / 100).toFixed(2)}
+- MRR: £${(week.revenue.mrr / 100).toFixed(2)} | New Revenue: £${(
+      week.revenue.newRevenue / 100
+    ).toFixed(2)}
 - Users: ${week.users.total} total, ${week.users.new} new, ${week.users.active} active
-- Engagement: DAU ${week.engagement.dau} | WAU ${week.engagement.wau} | Stickiness ${week.engagement.stickiness}%
-- Product: ${week.product.enrichments} enrichments (${week.product.successRate}% success) | ${week.product.exports} exports
+- Engagement: DAU ${week.engagement.dau} | WAU ${week.engagement.wau} | Stickiness ${
+      week.engagement.stickiness
+    }%
+- Product: ${week.product.enrichments} enrichments (${week.product.successRate}% success) | ${
+      week.product.exports
+    } exports
 `
   )
   .join('\n')}
@@ -624,14 +644,26 @@ ${weeklyData
 
 Based on the analysis above, prioritize:
 
-1. **Revenue Growth**: ${trends.revenue.mrrGrowth > 0 ? 'Continue current strategy' : 'Accelerate customer acquisition'}
-2. **User Activation**: ${trends.users.activationRate > 50 ? 'Maintain onboarding quality' : 'Improve onboarding flow'}
-3. **Engagement**: ${trends.engagement.engagementTrend === 'improving' ? 'Sustain momentum' : 'Address engagement decline'}
-4. **Product Quality**: ${latest.product.successRate > 90 ? 'Excellent' : 'Improve enrichment accuracy'}
+1. **Revenue Growth**: ${
+    trends.revenue.mrrGrowth > 0 ? 'Continue current strategy' : 'Accelerate customer acquisition'
+  }
+2. **User Activation**: ${
+    trends.users.activationRate > 50 ? 'Maintain onboarding quality' : 'Improve onboarding flow'
+  }
+3. **Engagement**: ${
+    trends.engagement.engagementTrend === 'improving'
+      ? 'Sustain momentum'
+      : 'Address engagement decline'
+  }
+4. **Product Quality**: ${
+    latest.product.successRate > 90 ? 'Excellent' : 'Improve enrichment accuracy'
+  }
 
 ---
 
-**Next Report**: ${new Date(new Date().setDate(new Date().getDate() + 7)).toLocaleDateString('en-GB')}
+**Next Report**: ${new Date(new Date().setDate(new Date().getDate() + 7)).toLocaleDateString(
+    'en-GB'
+  )}
   `.trim();
 }
 

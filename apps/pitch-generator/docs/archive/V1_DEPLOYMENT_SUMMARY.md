@@ -146,12 +146,14 @@ Before deploying to production:
 Track these after deployment:
 
 1. **Technical**:
+
    - [ ] Zero 500 errors in first 24 hours
    - [ ] Dashboard loads < 2 seconds
    - [ ] Pitch generation < 7 seconds
    - [ ] Mobile responsive confirmed
 
 2. **User Experience**:
+
    - [ ] 5 beta testers successfully generate pitches
    - [ ] No reported AI genre mismatches
    - [ ] Stripe checkout completes successfully

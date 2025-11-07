@@ -203,11 +203,17 @@ function generateInsights(
   // Revenue trend insight
   if (revenueChange.netChange > 0) {
     insights.push(
-      `Revenue increased by £${(revenueChange.netChange / 100).toFixed(2)} (${((revenueChange.netChange / (revenueChange.totalRevenue - revenueChange.netChange)) * 100).toFixed(1)}% growth)`
+      `Revenue increased by £${(revenueChange.netChange / 100).toFixed(2)} (${(
+        (revenueChange.netChange / (revenueChange.totalRevenue - revenueChange.netChange)) *
+        100
+      ).toFixed(1)}% growth)`
     );
   } else if (revenueChange.netChange < 0) {
     insights.push(
-      `Revenue decreased by £${(Math.abs(revenueChange.netChange) / 100).toFixed(2)} (${((Math.abs(revenueChange.netChange) / revenueChange.totalRevenue) * 100).toFixed(1)}% decline)`
+      `Revenue decreased by £${(Math.abs(revenueChange.netChange) / 100).toFixed(2)} (${(
+        (Math.abs(revenueChange.netChange) / revenueChange.totalRevenue) *
+        100
+      ).toFixed(1)}% decline)`
     );
   } else {
     insights.push('Revenue remained flat month-over-month');
@@ -222,14 +228,18 @@ function generateInsights(
   if (topDrivers.length > 0) {
     const topDriver = topDrivers[0];
     insights.push(
-      `Strongest revenue driver: "${topDriver.eventName}" (£${(topDriver.totalRevenueImpact / 100).toFixed(2)} total impact)`
+      `Strongest revenue driver: "${topDriver.eventName}" (£${(
+        topDriver.totalRevenueImpact / 100
+      ).toFixed(2)} total impact)`
     );
 
     // Strong correlation alert
     const strongDrivers = topDrivers.filter(d => d.correlationStrength === 'strong');
     if (strongDrivers.length > 0) {
       insights.push(
-        `${strongDrivers.length} feature(s) with strong revenue correlation (£${CORRELATION_THRESHOLDS.STRONG / 100}+ per user)`
+        `${strongDrivers.length} feature(s) with strong revenue correlation (£${
+          CORRELATION_THRESHOLDS.STRONG / 100
+        }+ per user)`
       );
     }
 
@@ -277,9 +287,13 @@ function generateMarkdownReport(report: GrowthReflexReport): string {
         driver.correlationStrength === 'strong'
           ? '🟢'
           : driver.correlationStrength === 'moderate'
-            ? '🟡'
-            : '🔴';
-      markdown += `| ${driver.eventName} | ${driver.totalOccurrences} | ${driver.uniqueUsers} | £${(driver.totalRevenueImpact / 100).toFixed(2)} | £${(driver.avgRevenuePerUser / 100).toFixed(2)} | ${strengthEmoji} ${driver.correlationStrength} |\n`;
+          ? '🟡'
+          : '🔴';
+      markdown += `| ${driver.eventName} | ${driver.totalOccurrences} | ${driver.uniqueUsers} | £${(
+        driver.totalRevenueImpact / 100
+      ).toFixed(2)} | £${(driver.avgRevenuePerUser / 100).toFixed(2)} | ${strengthEmoji} ${
+        driver.correlationStrength
+      } |\n`;
     }
     markdown += `\n`;
   } else {
@@ -303,7 +317,9 @@ function generateMarkdownReport(report: GrowthReflexReport): string {
     if (strongDrivers.length > 0) {
       markdown += `### 🟢 Double Down on Strong Drivers\n\n`;
       for (const driver of strongDrivers) {
-        markdown += `- **${driver.eventName}**: Strong £${(driver.avgRevenuePerUser / 100).toFixed(2)}/user impact - increase adoption and visibility\n`;
+        markdown += `- **${driver.eventName}**: Strong £${(driver.avgRevenuePerUser / 100).toFixed(
+          2
+        )}/user impact - increase adoption and visibility\n`;
       }
       markdown += `\n`;
     }
@@ -311,7 +327,9 @@ function generateMarkdownReport(report: GrowthReflexReport): string {
     if (weakDrivers.length > 0) {
       markdown += `### 🔴 Investigate Weak Correlations\n\n`;
       for (const driver of weakDrivers) {
-        markdown += `- **${driver.eventName}**: Low revenue impact (£${(driver.avgRevenuePerUser / 100).toFixed(2)}/user) - improve feature value or remove friction\n`;
+        markdown += `- **${driver.eventName}**: Low revenue impact (£${(
+          driver.avgRevenuePerUser / 100
+        ).toFixed(2)}/user) - improve feature value or remove friction\n`;
       }
       markdown += `\n`;
     }
@@ -361,14 +379,18 @@ async function sendTelegramNotification(report: GrowthReflexReport): Promise<voi
 
   // Revenue change
   const changeEmoji = report.revenueChange.netChange >= 0 ? '📈' : '📉';
-  message += `${changeEmoji} Revenue: £${(report.revenueChange.totalRevenue / 100).toFixed(2)} (${report.revenueChange.netChange >= 0 ? '+' : ''}£${(report.revenueChange.netChange / 100).toFixed(2)})\n\n`;
+  message += `${changeEmoji} Revenue: £${(report.revenueChange.totalRevenue / 100).toFixed(2)} (${
+    report.revenueChange.netChange >= 0 ? '+' : ''
+  }£${(report.revenueChange.netChange / 100).toFixed(2)})\n\n`;
 
   // Top drivers
   if (report.topDrivers.length > 0) {
     message += `*Top Revenue Drivers:*\n`;
     for (let i = 0; i < Math.min(3, report.topDrivers.length); i++) {
       const driver = report.topDrivers[i];
-      message += `${i + 1}. ${driver.eventName}: £${(driver.totalRevenueImpact / 100).toFixed(2)}\n`;
+      message += `${i + 1}. ${driver.eventName}: £${(driver.totalRevenueImpact / 100).toFixed(
+        2
+      )}\n`;
     }
     message += `\n`;
   }

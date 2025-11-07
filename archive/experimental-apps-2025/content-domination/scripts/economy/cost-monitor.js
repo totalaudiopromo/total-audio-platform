@@ -116,7 +116,10 @@ class CostMonitor {
     if (usage.totalCost > this.costThresholds.monthly_budget * this.warningThresholds.warning) {
       alerts.push({
         type: 'cost_warning',
-        message: `Monthly cost at ${((usage.totalCost / this.costThresholds.monthly_budget) * 100).toFixed(1)}% of budget`,
+        message: `Monthly cost at ${(
+          (usage.totalCost / this.costThresholds.monthly_budget) *
+          100
+        ).toFixed(1)}% of budget`,
         current: usage.totalCost,
         limit: this.costThresholds.monthly_budget,
         severity:
@@ -133,7 +136,9 @@ class CostMonitor {
         alerts.push({
           type: 'service_limit_warning',
           service,
-          message: `${service} at ${((serviceUsage.calls / limit) * 100).toFixed(1)}% of monthly limit`,
+          message: `${service} at ${((serviceUsage.calls / limit) * 100).toFixed(
+            1
+          )}% of monthly limit`,
           current: serviceUsage.calls,
           limit: limit,
           severity:
@@ -265,8 +270,8 @@ class CostMonitor {
         projectedMonthEnd > this.costThresholds.monthly_budget
           ? 'high'
           : projectedMonthEnd > this.costThresholds.monthly_budget * 0.8
-            ? 'medium'
-            : 'low',
+          ? 'medium'
+          : 'low',
     };
   }
 
@@ -523,10 +528,14 @@ if (require.main === module) {
         console.log('\n📊 COST MONITORING DASHBOARD');
         console.log('='.repeat(50));
         console.log(
-          `💰 Current Spend: £${data.currentUsage.totalCost.toFixed(2)} / £${data.budgetRemaining + data.currentUsage.totalCost}`
+          `💰 Current Spend: £${data.currentUsage.totalCost.toFixed(2)} / £${
+            data.budgetRemaining + data.currentUsage.totalCost
+          }`
         );
         console.log(
-          `📈 Projected: £${data.projectedCosts.projected.toFixed(2)} (${data.projectedCosts.budgetRisk} risk)`
+          `📈 Projected: £${data.projectedCosts.projected.toFixed(2)} (${
+            data.projectedCosts.budgetRisk
+          } risk)`
         );
         console.log(`🏥 Health Score: ${data.healthScore}/100`);
         console.log(`⚠️  Alerts: ${data.alerts.length}`);

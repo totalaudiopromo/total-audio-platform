@@ -111,7 +111,11 @@ class UniversalEmailTracker {
     console.log(`   Open Rate: ${engagement.openRate.toFixed(1)}%`);
     console.log(`   Click Rate: ${engagement.clickRate.toFixed(1)}%`);
     console.log(
-      `   Last Engagement: ${engagement.lastEngagement ? new Date(engagement.lastEngagement.timestamp).toLocaleString() : 'Never'}`
+      `   Last Engagement: ${
+        engagement.lastEngagement
+          ? new Date(engagement.lastEngagement.timestamp).toLocaleString()
+          : 'Never'
+      }`
     );
 
     return engagement;

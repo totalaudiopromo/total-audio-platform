@@ -709,7 +709,11 @@ export class FreeSEOToolsService {
     ${analysis.metrics.topKeywords} top keywords, 
     ${analysis.metrics.contentGaps} content gap opportunities, and 
     ${analysis.metrics.linkOpportunities} link building opportunities. 
-    ${analysis.issues.length > 0 ? `Key issues: ${analysis.issues.join(', ')}` : 'No major issues identified.'}`;
+    ${
+      analysis.issues.length > 0
+        ? `Key issues: ${analysis.issues.join(', ')}`
+        : 'No major issues identified.'
+    }`;
   }
 
   private generateComprehensiveRecommendations(

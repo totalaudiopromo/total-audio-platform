@@ -138,7 +138,9 @@ These contacts have the highest match score (60+) based on enrichment quality, g
     const genres = (c.Genres || []).join(', ');
     const notes = (c['Enrichment Notes'] || '').split('\n')[0].substring(0, 80);
 
-    markdown += `| ${idx + 1} | ${c.Email} | ${c.Station || 'Unknown'} | ${c['Enrichment Quality'] || 'N/A'} | ${genres} | ${c['Region / Country'] || 'N/A'} | ${item.score} | ${notes}... |\n`;
+    markdown += `| ${idx + 1} | ${c.Email} | ${c.Station || 'Unknown'} | ${
+      c['Enrichment Quality'] || 'N/A'
+    } | ${genres} | ${c['Region / Country'] || 'N/A'} | ${item.score} | ${notes}... |\n`;
   });
 
   markdown += `\n---\n\n## Tier 2: Medium Priority (${tier2.length} contacts)\n\nGood potential contacts with moderate match scores (40-59).\n\n`;
@@ -150,7 +152,9 @@ These contacts have the highest match score (60+) based on enrichment quality, g
     const c = item.contact;
     const genres = (c.Genres || []).join(', ');
 
-    markdown += `| ${idx + 1} | ${c.Email} | ${c.Station || 'Unknown'} | ${c['Enrichment Quality'] || 'N/A'} | ${genres} | ${c['Region / Country'] || 'N/A'} | ${item.score} |\n`;
+    markdown += `| ${idx + 1} | ${c.Email} | ${c.Station || 'Unknown'} | ${
+      c['Enrichment Quality'] || 'N/A'
+    } | ${genres} | ${c['Region / Country'] || 'N/A'} | ${item.score} |\n`;
   });
 
   markdown += `\n---\n\n## Tier 3: Low Priority (${tier3.length} contacts)\n\nConsider these if Tier 1 & 2 are exhausted.\n\n`;

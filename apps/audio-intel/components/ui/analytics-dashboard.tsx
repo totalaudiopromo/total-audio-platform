@@ -227,7 +227,9 @@ export function AnalyticsDashboard() {
           <CardContent>
             <div className="flex items-center space-x-2">
               <span
-                className={`text-2xl font-bold ${metrics.weeklyGrowth >= 0 ? 'text-green-600' : 'text-red-600'}`}
+                className={`text-2xl font-bold ${
+                  metrics.weeklyGrowth >= 0 ? 'text-green-600' : 'text-red-600'
+                }`}
               >
                 {metrics.weeklyGrowth >= 0 ? '+' : ''}
                 {metrics.weeklyGrowth.toFixed(1)}%

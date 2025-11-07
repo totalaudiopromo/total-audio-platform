@@ -35,7 +35,9 @@ async function testApiFixes() {
           'Bestial'
         );
         console.log(
-          `   ✅ Senior Dunce folder search works - found ${seniorDunceFolders ? seniorDunceFolders.length : 0} folders`
+          `   ✅ Senior Dunce folder search works - found ${
+            seniorDunceFolders ? seniorDunceFolders.length : 0
+          } folders`
         );
       } else {
         console.log('   ❌ Drive API instance is still null/undefined');
@@ -60,7 +62,9 @@ async function testApiFixes() {
         // Test Senior Dunce search
         const seniorDunceSearch = await agent.gmail.searchEmails('Senior Dunce', 5);
         console.log(
-          `   ✅ Senior Dunce search works - found ${seniorDunceSearch ? seniorDunceSearch.length : 0} emails`
+          `   ✅ Senior Dunce search works - found ${
+            seniorDunceSearch ? seniorDunceSearch.length : 0
+          } emails`
         );
       } else {
         console.log('   ❌ Gmail API instance is still null/undefined');
@@ -149,7 +153,9 @@ async function testApiFixes() {
                   );
                   console.log('   ✅ Individual response access works!');
                   console.log(
-                    `   📊 Response has ${detailedResponse.answers ? detailedResponse.answers.length : 0} answers`
+                    `   📊 Response has ${
+                      detailedResponse.answers ? detailedResponse.answers.length : 0
+                    } answers`
                   );
                   seniorDunceFound = true;
                   break;

@@ -300,28 +300,44 @@ export default function CohortsPage() {
                       <>
                         <td className="p-2 border-b border-gray-200">
                           <div
-                            className={`${getRetentionColour(cohort.retention.day1)} ${getRetentionTextColour(cohort.retention.day1)} px-2 py-1 rounded text-center font-semibold`}
+                            className={`${getRetentionColour(
+                              cohort.retention.day1
+                            )} ${getRetentionTextColour(
+                              cohort.retention.day1
+                            )} px-2 py-1 rounded text-center font-semibold`}
                           >
                             {cohort.retention.day1.toFixed(0)}%
                           </div>
                         </td>
                         <td className="p-2 border-b border-gray-200">
                           <div
-                            className={`${getRetentionColour(cohort.retention.day7)} ${getRetentionTextColour(cohort.retention.day7)} px-2 py-1 rounded text-center font-semibold`}
+                            className={`${getRetentionColour(
+                              cohort.retention.day7
+                            )} ${getRetentionTextColour(
+                              cohort.retention.day7
+                            )} px-2 py-1 rounded text-center font-semibold`}
                           >
                             {cohort.retention.day7.toFixed(0)}%
                           </div>
                         </td>
                         <td className="p-2 border-b border-gray-200">
                           <div
-                            className={`${getRetentionColour(cohort.retention.day14)} ${getRetentionTextColour(cohort.retention.day14)} px-2 py-1 rounded text-center font-semibold`}
+                            className={`${getRetentionColour(
+                              cohort.retention.day14
+                            )} ${getRetentionTextColour(
+                              cohort.retention.day14
+                            )} px-2 py-1 rounded text-center font-semibold`}
                           >
                             {cohort.retention.day14.toFixed(0)}%
                           </div>
                         </td>
                         <td className="p-2 border-b border-gray-200">
                           <div
-                            className={`${getRetentionColour(cohort.retention.day30)} ${getRetentionTextColour(cohort.retention.day30)} px-2 py-1 rounded text-center font-semibold`}
+                            className={`${getRetentionColour(
+                              cohort.retention.day30
+                            )} ${getRetentionTextColour(
+                              cohort.retention.day30
+                            )} px-2 py-1 rounded text-center font-semibold`}
                           >
                             {cohort.retention.day30.toFixed(0)}%
                           </div>
@@ -334,28 +350,44 @@ export default function CohortsPage() {
                       <>
                         <td className="p-2 border-b border-gray-200">
                           <div
-                            className={`${getRetentionColour(cohort.retention.week1)} ${getRetentionTextColour(cohort.retention.week1)} px-2 py-1 rounded text-center font-semibold`}
+                            className={`${getRetentionColour(
+                              cohort.retention.week1
+                            )} ${getRetentionTextColour(
+                              cohort.retention.week1
+                            )} px-2 py-1 rounded text-center font-semibold`}
                           >
                             {cohort.retention.week1.toFixed(0)}%
                           </div>
                         </td>
                         <td className="p-2 border-b border-gray-200">
                           <div
-                            className={`${getRetentionColour(cohort.retention.week2)} ${getRetentionTextColour(cohort.retention.week2)} px-2 py-1 rounded text-center font-semibold`}
+                            className={`${getRetentionColour(
+                              cohort.retention.week2
+                            )} ${getRetentionTextColour(
+                              cohort.retention.week2
+                            )} px-2 py-1 rounded text-center font-semibold`}
                           >
                             {cohort.retention.week2.toFixed(0)}%
                           </div>
                         </td>
                         <td className="p-2 border-b border-gray-200">
                           <div
-                            className={`${getRetentionColour(cohort.retention.week4)} ${getRetentionTextColour(cohort.retention.week4)} px-2 py-1 rounded text-center font-semibold`}
+                            className={`${getRetentionColour(
+                              cohort.retention.week4
+                            )} ${getRetentionTextColour(
+                              cohort.retention.week4
+                            )} px-2 py-1 rounded text-center font-semibold`}
                           >
                             {cohort.retention.week4.toFixed(0)}%
                           </div>
                         </td>
                         <td className="p-2 border-b border-gray-200">
                           <div
-                            className={`${getRetentionColour(cohort.retention.week8)} ${getRetentionTextColour(cohort.retention.week8)} px-2 py-1 rounded text-center font-semibold`}
+                            className={`${getRetentionColour(
+                              cohort.retention.week8
+                            )} ${getRetentionTextColour(
+                              cohort.retention.week8
+                            )} px-2 py-1 rounded text-center font-semibold`}
                           >
                             {cohort.retention.week8.toFixed(0)}%
                           </div>
@@ -368,28 +400,44 @@ export default function CohortsPage() {
                       <>
                         <td className="p-2 border-b border-gray-200">
                           <div
-                            className={`${getRetentionColour(cohort.retention.month1)} ${getRetentionTextColour(cohort.retention.month1)} px-2 py-1 rounded text-center font-semibold`}
+                            className={`${getRetentionColour(
+                              cohort.retention.month1
+                            )} ${getRetentionTextColour(
+                              cohort.retention.month1
+                            )} px-2 py-1 rounded text-center font-semibold`}
                           >
                             {cohort.retention.month1.toFixed(0)}%
                           </div>
                         </td>
                         <td className="p-2 border-b border-gray-200">
                           <div
-                            className={`${getRetentionColour(cohort.retention.month2)} ${getRetentionTextColour(cohort.retention.month2)} px-2 py-1 rounded text-center font-semibold`}
+                            className={`${getRetentionColour(
+                              cohort.retention.month2
+                            )} ${getRetentionTextColour(
+                              cohort.retention.month2
+                            )} px-2 py-1 rounded text-center font-semibold`}
                           >
                             {cohort.retention.month2.toFixed(0)}%
                           </div>
                         </td>
                         <td className="p-2 border-b border-gray-200">
                           <div
-                            className={`${getRetentionColour(cohort.retention.month3)} ${getRetentionTextColour(cohort.retention.month3)} px-2 py-1 rounded text-center font-semibold`}
+                            className={`${getRetentionColour(
+                              cohort.retention.month3
+                            )} ${getRetentionTextColour(
+                              cohort.retention.month3
+                            )} px-2 py-1 rounded text-center font-semibold`}
                           >
                             {cohort.retention.month3.toFixed(0)}%
                           </div>
                         </td>
                         <td className="p-2 border-b border-gray-200">
                           <div
-                            className={`${getRetentionColour(cohort.retention.month6)} ${getRetentionTextColour(cohort.retention.month6)} px-2 py-1 rounded text-center font-semibold`}
+                            className={`${getRetentionColour(
+                              cohort.retention.month6
+                            )} ${getRetentionTextColour(
+                              cohort.retention.month6
+                            )} px-2 py-1 rounded text-center font-semibold`}
                           >
                             {cohort.retention.month6.toFixed(0)}%
                           </div>

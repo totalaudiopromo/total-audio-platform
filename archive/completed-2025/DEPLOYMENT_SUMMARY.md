@@ -100,12 +100,14 @@
 ### Immediate Actions
 
 1. **Visit production URLs** and verify:
+
    - [ ] Headers display correctly (4px border, proper text)
    - [ ] Colors match design (teal for Tracker)
    - [ ] Mobile responsiveness on actual devices
    - [ ] Newsletter section wraps properly on mobile
 
 2. **Test Critical Flows**:
+
    - [ ] Tracker: Sign in → Create campaign
    - [ ] Pitch: Generate pitch → View history
    - [ ] Intel: Upload CSV → View enrichment

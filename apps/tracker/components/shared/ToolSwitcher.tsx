@@ -79,7 +79,9 @@ export function ToolSwitcher({
       >
         <span>{activeTool?.name || currentTool}</span>
         <ChevronDown
-          className={`h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className={`h-4 w-4 transition-transform ${
+            isOpen ? 'rotate-180' : ''
+          }`}
         />
       </button>
 

@@ -305,7 +305,11 @@ export async function GET() {
       `Social media content driving 89% conversion increase - expand investment immediately`,
       `Video content quality score of 92 suggests premium pricing opportunity`,
       `Trial-to-paid conversion improving 8.9% monthly - optimise trial experience further`,
-      `Market seasonality indicates ${Math.max(...marketTrends.map(t => t.seasonalityFactor)) > 1.2 ? 'December revenue boost' : 'Q2 growth acceleration'} opportunity`,
+      `Market seasonality indicates ${
+        Math.max(...marketTrends.map(t => t.seasonalityFactor)) > 1.2
+          ? 'December revenue boost'
+          : 'Q2 growth acceleration'
+      } opportunity`,
     ];
 
     // Generate automated actions

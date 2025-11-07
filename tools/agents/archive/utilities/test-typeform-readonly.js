@@ -33,7 +33,9 @@ async function testTypeformReadOnly() {
       console.log('   Recent campaigns:');
       allCampaigns.slice(0, 5).forEach((campaign, index) => {
         console.log(
-          `     ${index + 1}. ${campaign.data.artistName || 'Unknown Artist'} - ${campaign.data.trackTitle || 'Unknown Track'}`
+          `     ${index + 1}. ${campaign.data.artistName || 'Unknown Artist'} - ${
+            campaign.data.trackTitle || 'Unknown Track'
+          }`
         );
         console.log(`        Form: ${campaign.formTitle}`);
         console.log(`        Submitted: ${campaign.submittedAt}`);
@@ -51,7 +53,9 @@ async function testTypeformReadOnly() {
       console.log('   Recent campaign details:');
       recentCampaigns.forEach((campaign, index) => {
         console.log(
-          `     ${index + 1}. ${campaign.data.artistName || 'Unknown Artist'} - ${campaign.data.trackTitle || 'Unknown Track'}`
+          `     ${index + 1}. ${campaign.data.artistName || 'Unknown Artist'} - ${
+            campaign.data.trackTitle || 'Unknown Track'
+          }`
         );
         console.log(`        Genre: ${campaign.data.genre || 'Unknown'}`);
         console.log(`        Budget: ${campaign.data.budget || 'Not specified'}`);

@@ -44,7 +44,10 @@ export async function generatePitch(params: GeneratePitchParams) {
   // Build context string
   let contextString = '';
   if (lastContact) {
-    contextString += `- Last interaction: ${new Date(lastContact).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}\n`;
+    contextString += `- Last interaction: ${new Date(lastContact).toLocaleDateString('en-GB', {
+      month: 'long',
+      year: 'numeric',
+    })}\n`;
   }
   if (contactGenreTags && contactGenreTags.length > 0) {
     contextString += `- Contact's genre preferences: ${contactGenreTags.join(', ')}\n`;
@@ -56,7 +59,9 @@ export async function generatePitch(params: GeneratePitchParams) {
     contextString += `- Contact's preferred style: ${preferredTone}\n`;
   }
 
-  const prompt = `You are a music PR professional writing a pitch email to ${contactName}${contactOutlet ? ` at ${contactOutlet}` : ''}${contactRole ? ` (${contactRole})` : ''}.
+  const prompt = `You are a music PR professional writing a pitch email to ${contactName}${
+    contactOutlet ? ` at ${contactOutlet}` : ''
+  }${contactRole ? ` (${contactRole})` : ''}.
 
 CONTEXT ABOUT CONTACT:
 ${contextString || 'No additional context available.'}
@@ -66,7 +71,15 @@ ARTIST INFORMATION:
 - Track: "${trackTitle}"
 - Genre: ${genre}
 - Key Hook: ${keyHook}
-${releaseDate ? `- Release Date: ${new Date(releaseDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}` : ''}
+${
+  releaseDate
+    ? `- Release Date: ${new Date(releaseDate).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      })}`
+    : ''
+}
 ${trackLink ? `- Track Link: ${trackLink}` : ''}
 
 TONE REQUESTED: ${tone}

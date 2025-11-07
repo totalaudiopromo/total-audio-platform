@@ -54,7 +54,9 @@ async function testLibertyIntelligence() {
 
     campaignDiscussions.extractedInsights.forEach((insight, index) => {
       console.log(
-        `   ${index + 1}. ${insight.type}: ${insight.insight} (${Math.round(insight.confidence * 100)}% confidence)`
+        `   ${index + 1}. ${insight.type}: ${insight.insight} (${Math.round(
+          insight.confidence * 100
+        )}% confidence)`
       );
     });
     console.log(`   ✅ Campaigns intelligence gathered\n`);

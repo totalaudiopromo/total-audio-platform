@@ -244,7 +244,9 @@ function generateRecommendations(content: ContentPiece[], insights: any): string
   if (insights.highROIContent.length > 0) {
     const bestContent = insights.highROIContent[0];
     recommendations.push(
-      `Double down on "${bestContent.type}" content - your highest ROI format at ${calculateContentROI(bestContent)}% return`
+      `Double down on "${
+        bestContent.type
+      }" content - your highest ROI format at ${calculateContentROI(bestContent)}% return`
     );
   }
 

@@ -95,7 +95,9 @@ const AgentActivityMonitor: React.FC<AgentActivityMonitorProps> = ({
                 {activeAgents.length}
               </div>
               <span
-                className={`text-sm transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+                className={`text-sm transition-transform duration-200 ${
+                  isExpanded ? 'rotate-180' : ''
+                }`}
               >
                 ▼
               </span>

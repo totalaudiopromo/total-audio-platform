@@ -13,7 +13,9 @@ export async function GET(request: NextRequest) {
     // Call the weekly-agent endpoint internally to generate content and create a draft/preview
     const baseUrl =
       process.env.NEXT_PUBLIC_BASE_URL || process.env.VERCEL_URL || 'http://localhost:3000';
-    const url = `${String(baseUrl).startsWith('http') ? baseUrl : `https://${baseUrl}`}/api/newsletter/weekly-agent`;
+    const url = `${
+      String(baseUrl).startsWith('http') ? baseUrl : `https://${baseUrl}`
+    }/api/newsletter/weekly-agent`;
 
     const res = await fetch(url, {
       method: 'POST',

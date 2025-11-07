@@ -41,8 +41,8 @@ class RadioPortalAutomation {
         Array.isArray(options.discordLevels) && options.discordLevels.length > 0
           ? options.discordLevels.map(level => String(level).toLowerCase())
           : envLevels.length > 0
-            ? envLevels
-            : ['error', 'warn'],
+          ? envLevels
+          : ['error', 'warn'],
     };
 
     this.launchOptions = options.launchOptions || {

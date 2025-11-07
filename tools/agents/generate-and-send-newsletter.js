@@ -351,7 +351,9 @@ Cheers,
 The Unsigned Advantage Bot 🤖`;
 
     try {
-      const mailCommand = `echo "${emailBody.replace(/"/g, '\\"').replace(/\n/g, '\\n')}" | mail -s "${emailSubject}" promo@totalaudiopromo.com`;
+      const mailCommand = `echo "${emailBody
+        .replace(/"/g, '\\"')
+        .replace(/\n/g, '\\n')}" | mail -s "${emailSubject}" promo@totalaudiopromo.com`;
       await execPromise(mailCommand);
       console.log('✅ Email sent to promo@totalaudiopromo.com\n');
     } catch (error) {

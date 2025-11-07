@@ -161,7 +161,9 @@ export class ClaudeService {
       reportType === 'WEEKLY' ? 'week' : reportType === 'MONTHLY' ? 'month' : 'entire campaign';
 
     return `
-You are a music promotion analytics expert. Generate a comprehensive ${reportType.toLowerCase().replace('_', ' ')} report for the following campaign data:
+You are a music promotion analytics expert. Generate a comprehensive ${reportType
+      .toLowerCase()
+      .replace('_', ' ')} report for the following campaign data:
 
 Campaign: ${campaignData.name}
 Artist: ${campaignData.artist}
