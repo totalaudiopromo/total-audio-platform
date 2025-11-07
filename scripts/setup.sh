@@ -18,13 +18,14 @@ echo ""
 
 # Install dependencies
 echo "📦 Installing dependencies..."
+echo "   (This will regenerate pnpm-lock.yaml to match .npmrc settings)"
 pnpm install
 
 echo ""
 echo "🔐 Setting up environment variables..."
 
 # Copy environment files for active apps
-for app in audio-intel pitch-generator tracker command-centre web api; do
+for app in audio-intel pitch-generator tracker web api; do
   if [ -f "apps/$app/.env.example" ] && [ ! -f "apps/$app/.env.local" ]; then
     cp "apps/$app/.env.example" "apps/$app/.env.local"
     echo "  ✓ Created apps/$app/.env.local"
@@ -62,7 +63,6 @@ echo "🚀 Quick start commands:"
 echo "   pnpm --filter audio-intel dev       # Start Audio Intel (port 3000)"
 echo "   pnpm --filter pitch-generator dev   # Start Pitch Generator (port 3004)"
 echo "   pnpm --filter tracker dev           # Start Tracker (port 3001)"
-echo "   pnpm --filter command-centre dev    # Start Command Centre"
 echo ""
 echo "📚 Documentation:"
 echo "   WEEKLY_FOCUS.md         - Current week priorities"

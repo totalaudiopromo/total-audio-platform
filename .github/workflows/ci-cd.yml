@@ -47,6 +47,9 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'pnpm'
 
+    - name: Validate lockfile configuration
+      run: node scripts/validate-lockfile-config.js
+
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
 
@@ -97,6 +100,9 @@ jobs:
 
     - name: Install Vercel CLI
       run: npm install -g vercel
+
+    - name: Validate lockfile configuration
+      run: node scripts/validate-lockfile-config.js
 
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
@@ -230,10 +236,6 @@ jobs:
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV
             if [ -n "${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR }}" >> $GITHUB_ENV; fi
             ;;
-          "command-centre")
-            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" >> $GITHUB_ENV
-            if [ -n "${{ secrets.HEALTHCHECK_URL_COMMAND_CENTRE }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_COMMAND_CENTRE }}" >> $GITHUB_ENV; fi
-            ;;
           "web")
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
             if [ -n "${{ secrets.HEALTHCHECK_URL_WEB }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_WEB }}" >> $GITHUB_ENV; fi
@@ -327,10 +329,6 @@ jobs:
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV
             if [ -n "${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR_PROD }}" >> $GITHUB_ENV; fi
             ;;
-          "command-centre")
-            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_COMMAND_CENTRE }}" >> $GITHUB_ENV
-            if [ -n "${{ secrets.HEALTHCHECK_URL_COMMAND_CENTRE_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_COMMAND_CENTRE_PROD }}" >> $GITHUB_ENV; fi
-            ;;
           "web")
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
             if [ -n "${{ secrets.HEALTHCHECK_URL_WEB_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_WEB_PROD }}" >> $GITHUB_ENV; fi
@@ -392,6 +390,9 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y libasound2 || sudo apt-get install -y libasound2t64
+
+    - name: Validate lockfile configuration
+      run: node scripts/validate-lockfile-config.js
 
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
