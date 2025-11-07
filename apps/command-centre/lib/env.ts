@@ -5,11 +5,19 @@ import { z } from 'zod';
  * Ensures all required env vars are present and valid at build time
  */
 
+// Check if we're in a build environment without full env vars (GitHub Actions CI)
+const isBuildTime = process.env.CI === 'true' || process.env.NEXT_PHASE === 'phase-production-build';
+
 const envSchema = z.object({
   // Database (optional during build, required at runtime)
   DATABASE_URL: z.string().url('DATABASE_URL must be a valid URL').optional(),
-  NEXT_PUBLIC_SUPABASE_URL: z.string().url('NEXT_PUBLIC_SUPABASE_URL must be a valid URL'),
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1, 'NEXT_PUBLIC_SUPABASE_ANON_KEY is required'),
+  // Make Supabase vars optional during CI builds, required otherwise
+  NEXT_PUBLIC_SUPABASE_URL: isBuildTime
+    ? z.string().url('NEXT_PUBLIC_SUPABASE_URL must be a valid URL').optional()
+    : z.string().url('NEXT_PUBLIC_SUPABASE_URL must be a valid URL'),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: isBuildTime
+    ? z.string().optional()
+    : z.string().min(1, 'NEXT_PUBLIC_SUPABASE_ANON_KEY is required'),
 
   // AI/Automation (optional during build, required at runtime for automation features)
   ANTHROPIC_API_KEY: z.string().min(1, 'ANTHROPIC_API_KEY is required').optional(),
@@ -78,6 +86,8 @@ export function validateEnv(): Env {
 /**
  * Safe env access - returns validated env or throws error
  * Use this instead of direct process.env access
+ *
+ * Schema automatically relaxes validation during CI builds
  */
 export const env = validateEnv();
 

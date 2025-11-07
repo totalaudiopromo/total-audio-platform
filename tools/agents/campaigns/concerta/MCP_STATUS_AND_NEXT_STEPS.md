@@ -11,7 +11,6 @@
 ### Working MCPs
 
 1. **Gmail MCP** ✅
-
    - Status: HEALTHY
    - Authentication: Connected
    - Rate Limiting: NORMAL
@@ -19,17 +18,14 @@
    - Ready for: Campaign email monitoring, response tracking
 
 2. **Google Drive MCP** ✅
-
    - Status: Connected
    - Ready for: Asset management, press kit distribution
 
 3. **YouTube Transcript MCP** ✅
-
    - Status: Connected
    - Ready for: Video content extraction, caption generation
 
 4. **Notion MCP** ✅
-
    - Status: Connected
    - Ready for: Campaign tracking, task management
 
@@ -142,21 +138,18 @@ This document includes:
 The Liberty Radio Promo agent system can:
 
 1. **Email Campaign Management**
-
    - Automated sends via Gmail API
    - Personalized templates
    - Response tracking
    - Follow-up automation
 
 2. **Contact Intelligence**
-
    - Airtable integration (517 total contacts)
    - Genre-based filtering
    - Geographic targeting
    - Opt-in/opt-out management
 
 3. **Airplay Tracking**
-
    - WARM API integration
    - Real-time play monitoring
    - Weekly reporting
@@ -240,19 +233,16 @@ The Liberty Radio Promo agent system can:
 ### For Concerta (Deadline: Sunday Evening)
 
 1. **Streaming Links** (CRITICAL)
-
    - Spotify URL for "Consumption"
    - Apple Music URL
    - Any other streaming platforms
 
 2. **Social Media**
-
    - Instagram handle confirmation
    - TikTok (if applicable)
    - Any other artist socials
 
 3. **Campaign Approval**
-
    - Review CONCERTA_DRAFT_MAILOUT.md
    - Approve or request changes to email copy
    - Confirm Monday send date
@@ -266,14 +256,12 @@ The Liberty Radio Promo agent system can:
 ### For Liberty (Before Monday)
 
 1. **Mailchimp Setup**
-
    - Create campaign
    - Upload assets
    - Import 132 contacts
    - Test send
 
 2. **Links Integration**
-
    - Add streaming URLs to template
    - Update artist socials
    - Include press materials

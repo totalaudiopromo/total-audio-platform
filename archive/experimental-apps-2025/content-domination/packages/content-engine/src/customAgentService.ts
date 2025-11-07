@@ -291,10 +291,13 @@ export class CustomAgentService {
 
     // Analyze common query patterns
     const queryWords = interactions.map(i => i.query.toLowerCase().split(' ')).flat();
-    const wordFreq = queryWords.reduce((freq, word) => {
-      freq[word] = (freq[word] || 0) + 1;
-      return freq;
-    }, {} as Record<string, number>);
+    const wordFreq = queryWords.reduce(
+      (freq, word) => {
+        freq[word] = (freq[word] || 0) + 1;
+        return freq;
+      },
+      {} as Record<string, number>
+    );
 
     const commonQueries = Object.entries(wordFreq)
       .sort(([, a], [, b]) => b - a)

@@ -47,13 +47,16 @@ export default function BlogPage() {
   const liveStudies = allStudies.filter(s => s.status === 'live');
 
   // Group by category
-  const studiesByCategory = liveStudies.reduce((acc, study) => {
-    if (!acc[study.category]) {
-      acc[study.category] = [];
-    }
-    acc[study.category].push(study);
-    return acc;
-  }, {} as Record<string, EnrichedCaseStudyData[]>);
+  const studiesByCategory = liveStudies.reduce(
+    (acc, study) => {
+      if (!acc[study.category]) {
+        acc[study.category] = [];
+      }
+      acc[study.category].push(study);
+      return acc;
+    },
+    {} as Record<string, EnrichedCaseStudyData[]>
+  );
 
   // Sort categories by priority (tier 1 categories first)
   const sortedCategories = Object.entries(studiesByCategory).sort((a, b) => {
@@ -275,14 +278,17 @@ export function SearchIntentBlogPage() {
   const allStudies = getAllCaseStudiesSync().filter(s => s.status === 'live');
 
   // Group by primary keyword (first search intent)
-  const byKeyword = allStudies.reduce((acc, study) => {
-    const keyword = study.primaryKeyword;
-    if (!acc[keyword]) {
-      acc[keyword] = [];
-    }
-    acc[keyword].push(study);
-    return acc;
-  }, {} as Record<string, EnrichedCaseStudyData[]>);
+  const byKeyword = allStudies.reduce(
+    (acc, study) => {
+      const keyword = study.primaryKeyword;
+      if (!acc[keyword]) {
+        acc[keyword] = [];
+      }
+      acc[keyword].push(study);
+      return acc;
+    },
+    {} as Record<string, EnrichedCaseStudyData[]>
+  );
 
   // Sort by total monthly searches
   const sortedKeywords = Object.entries(byKeyword).sort((a, b) => {

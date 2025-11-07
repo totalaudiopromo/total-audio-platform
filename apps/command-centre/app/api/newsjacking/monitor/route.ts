@@ -317,8 +317,10 @@ function calculateRelevanceScore(item: any, source: NewsSource): number {
   // Recency bonus (newer = higher score)
   const publishedAt = new Date(item.pubDate || item.isoDate);
   const hoursOld = (Date.now() - publishedAt.getTime()) / (1000 * 60 * 60);
-  if (hoursOld < 1) score += 0.25; // Very recent
-  else if (hoursOld < 6) score += 0.15; // Recent
+  if (hoursOld < 1)
+    score += 0.25; // Very recent
+  else if (hoursOld < 6)
+    score += 0.15; // Recent
   else if (hoursOld < 24) score += 0.1; // Today
 
   // Trending/viral indicators

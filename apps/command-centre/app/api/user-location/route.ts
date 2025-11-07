@@ -72,39 +72,42 @@ export async function GET(request: NextRequest) {
     const locations = Array.from(userLocations.values());
 
     // Group by location for clustering
-    const locationClusters = locations.reduce((acc, userLoc) => {
-      if (!userLoc.location.city) return acc;
+    const locationClusters = locations.reduce(
+      (acc, userLoc) => {
+        if (!userLoc.location.city) return acc;
 
-      const key = `${userLoc.location.lat}-${userLoc.location.lon}`;
-      if (!acc[key]) {
-        acc[key] = {
-          location: {
-            country: userLoc.location.country,
-            city: userLoc.location.city,
-            countryCode: userLoc.location.countryCode,
-            coordinates: {
-              lat: userLoc.location.lat || 0,
-              lng: userLoc.location.lon || 0,
+        const key = `${userLoc.location.lat}-${userLoc.location.lon}`;
+        if (!acc[key]) {
+          acc[key] = {
+            location: {
+              country: userLoc.location.country,
+              city: userLoc.location.city,
+              countryCode: userLoc.location.countryCode,
+              coordinates: {
+                lat: userLoc.location.lat || 0,
+                lng: userLoc.location.lon || 0,
+              },
             },
-          },
-          users: [],
-          lastUpdated: userLoc.timestamp,
-        };
-      }
+            users: [],
+            lastUpdated: userLoc.timestamp,
+          };
+        }
 
-      acc[key].users.push({
-        email: userLoc.email,
-        source: userLoc.source,
-        timestamp: userLoc.timestamp,
-      });
+        acc[key].users.push({
+          email: userLoc.email,
+          source: userLoc.source,
+          timestamp: userLoc.timestamp,
+        });
 
-      // Update last updated time if this is more recent
-      if (new Date(userLoc.timestamp) > new Date(acc[key].lastUpdated)) {
-        acc[key].lastUpdated = userLoc.timestamp;
-      }
+        // Update last updated time if this is more recent
+        if (new Date(userLoc.timestamp) > new Date(acc[key].lastUpdated)) {
+          acc[key].lastUpdated = userLoc.timestamp;
+        }
 
-      return acc;
-    }, {} as Record<string, any>);
+        return acc;
+      },
+      {} as Record<string, any>
+    );
 
     return NextResponse.json({
       success: true,

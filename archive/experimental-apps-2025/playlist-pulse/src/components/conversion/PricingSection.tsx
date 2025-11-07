@@ -313,8 +313,8 @@ export default function PricingSection({ className }: PricingSectionProps) {
                 {plan.id === 'starter'
                   ? 'Start Free Trial'
                   : plan.id === 'professional'
-                  ? 'Get Professional'
-                  : 'Contact Sales'}
+                    ? 'Get Professional'
+                    : 'Contact Sales'}
               </Button>
 
               {/* Features */}

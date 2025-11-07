@@ -101,8 +101,8 @@ class DriveHelper {
       buffer instanceof fs.ReadStream
         ? buffer
         : Buffer.isBuffer(buffer)
-        ? Readable.from(buffer)
-        : Readable.from(Buffer.from(buffer));
+          ? Readable.from(buffer)
+          : Readable.from(Buffer.from(buffer));
 
     const media = {
       mimeType: mimeType || 'application/octet-stream',

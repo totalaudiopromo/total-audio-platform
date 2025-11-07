@@ -64,7 +64,6 @@
    ```
 
 3. **Test the demo**:
-
    - Visit: <http://localhost:3000>
    - Click "Try Demo" → <http://localhost:3000/demo>
    - Test all three features

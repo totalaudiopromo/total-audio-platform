@@ -199,17 +199,14 @@ Radio Momentum:
 ### Liberty Music PR's Current Pain Points:
 
 1. **20+ campaigns running simultaneously**
-
    - Hard to track status of each campaign at a glance
    - Spreadsheets everywhere, no single source of truth
 
 2. **Manual email tracking**
-
    - Gmail inbox chaos (sent, drafts, responses mixed together)
    - No easy way to see who responded, who needs follow-up
 
 3. **Client reporting overhead**
-
    - Manually compiling stats from WARM, Mailchimp, Gmail
    - Takes 2-3 hours per client report
 
@@ -266,25 +263,21 @@ Radio Momentum:
 ### Before Friday, Take Screenshots of:
 
 1. **Dashboard Overview**
-
    - All campaigns list (create dummy if needed)
    - KYARA campaign card highlighted
    - Quick stats visible (85 plays, 3 adds, 15 contacts)
 
 2. **Campaign Detail View**
-
    - KYARA campaign expanded
    - Activity timeline showing week-by-week progress
    - Integration status (Gmail, Mailchimp, WARM all connected)
 
 3. **Analytics Charts**
-
    - Email performance (opens, clicks, responses)
    - WARM play growth chart (85 plays over time)
    - Geographic spread (9 countries visual map)
 
 4. **Next Actions Panel**
-
    - AI-suggested follow-ups
    - Priority contacts highlighted (Anika Luna, Amazing Radio)
    - Monday release day tasks listed

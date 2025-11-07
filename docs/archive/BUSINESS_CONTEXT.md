@@ -26,7 +26,6 @@
 #### **Subscription Tiers**
 
 1. **Artist Plan**: £45/month + £200 setup fee
-
    - Individual artist campaigns
    - Basic analytics and reporting
    - Standard support

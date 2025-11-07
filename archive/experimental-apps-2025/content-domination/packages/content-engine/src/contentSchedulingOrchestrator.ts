@@ -773,9 +773,12 @@ class ContentSchedulingOrchestrator {
     console.log('Content Scheduling Orchestrator initialized');
 
     // Set up periodic cleanup of completed content
-    setInterval(() => {
-      this.cleanupCompletedContent();
-    }, 60 * 60 * 1000); // Every hour
+    setInterval(
+      () => {
+        this.cleanupCompletedContent();
+      },
+      60 * 60 * 1000
+    ); // Every hour
   }
 
   private cleanupCompletedContent(): void {

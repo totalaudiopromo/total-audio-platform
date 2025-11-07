@@ -117,8 +117,8 @@ async function generateOGImage(appKey, appConfig) {
       appKey === 'audio-intel'
         ? 'og-image.jpg'
         : appKey === 'pitch-generator'
-        ? 'og-pitch-generator.png'
-        : 'og-tracker.png';
+          ? 'og-pitch-generator.png'
+          : 'og-tracker.png';
 
     const outputPath = path.join(outputDir, ogImageName);
 
@@ -153,8 +153,8 @@ async function validateExistingAssets(appKey, appConfig) {
     appKey === 'audio-intel'
       ? 'og-image.jpg'
       : appKey === 'pitch-generator'
-      ? 'og-pitch-generator.png'
-      : 'og-tracker.png',
+        ? 'og-pitch-generator.png'
+        : 'og-tracker.png',
   ];
 
   const missingAssets = [];

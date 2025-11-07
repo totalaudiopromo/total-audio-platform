@@ -503,10 +503,13 @@ export async function validateEmailListAdvanced(emails: string[]): Promise<{
   const valid = results.filter(r => r.isValid);
   const invalid = results.filter(r => !r.isValid);
 
-  const reputationBreakdown = results.reduce((acc, result) => {
-    acc[result.reputation] = (acc[result.reputation] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
+  const reputationBreakdown = results.reduce(
+    (acc, result) => {
+      acc[result.reputation] = (acc[result.reputation] || 0) + 1;
+      return acc;
+    },
+    {} as Record<string, number>
+  );
 
   const summary = {
     total: results.length,

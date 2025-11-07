@@ -5,10 +5,10 @@ packages:
   - 'apps/tracker'
   - 'apps/command-centre'
   - 'apps/web'
-  - 'apps/api'
-  # Removed mobile and tap-saas-template to eliminate security vulnerabilities
-  # - 'apps/mobile'
-  # - 'apps/tap-saas-template-DO-NOT-DELETE'
+  # Removed apps with build errors or unused
+  # - 'apps/api'  # Has TypeScript errors, not in production
+  # - 'apps/mobile'  # Security vulnerabilities
+  # - 'apps/tap-saas-template-DO-NOT-DELETE'  # Unused template
 
   # Shared packages
   - 'packages/*'

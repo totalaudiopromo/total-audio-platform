@@ -18,11 +18,9 @@ etag: "1ccefe22c74f3f7bb6264e11fdd7ecb3"  # ← OLD etag
 ### Option 1: Clear Vercel Cache (Fastest)
 
 1. **Go to Vercel Dashboard**:
-
    - https://vercel.com/[your-account]/intel-totalaudiopromo-com/deployments
 
 2. **Find Latest Deployment**:
-
    - Should be from the last few minutes (commits 82e34f7, 94ec7f3, 84174c2)
    - Check if it's completed successfully
 

@@ -411,20 +411,17 @@ export function LazyTextureCard({ texture, children, ...props }) {
 ### Common Issues
 
 1. **Textures not loading**
-
    - Check file paths in `/public/textures/`
    - Verify image file names match CSS classes
    - Clear browser cache
 
 2. **Performance issues**
-
    - Reduce texture opacity
    - Implement lazy loading
    - Optimize image sizes
    - Disable animations on mobile
 
 3. **Animation conflicts**
-
    - Check for conflicting CSS classes
    - Ensure proper z-index stacking
    - Verify animation timing

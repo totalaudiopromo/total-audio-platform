@@ -608,8 +608,8 @@ export function exportContactsToPdf(
         confidence === 'High'
           ? 'Priority contact - verified music industry connection'
           : confidence === 'Medium'
-          ? 'Good potential - verify before outreach'
-          : 'Requires additional research before contact'
+            ? 'Good potential - verify before outreach'
+            : 'Requires additional research before contact'
       }`;
     }
 

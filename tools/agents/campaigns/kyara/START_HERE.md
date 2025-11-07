@@ -68,11 +68,9 @@
 ### 🔥 **MUST READ:**
 
 1. **[`START_HERE.md`](./START_HERE.md)** ← You are here
-
    - This summary document
 
 2. **[`QUICK_START_NOW.md`](./QUICK_START_NOW.md)** ⭐ **READ NEXT**
-
    - 5-minute guide to add KYARA campaign to tracker
    - Step-by-step with copy/paste data
    - Troubleshooting tips
@@ -85,7 +83,6 @@
 ### 📋 **FOR DEMO:**
 
 4. **[`KYARA_CAMPAIGN_SHOWCASE_FOR_DAN_DEMO.md`](./KYARA_CAMPAIGN_SHOWCASE_FOR_DAN_DEMO.md)**
-
    - Detailed 7-minute demo script
    - Killer demo moments
    - Objection handling
@@ -99,14 +96,12 @@
 ### 📧 **FOR KYARA CAMPAIGN:**
 
 6. **[`KYARA_MONDAY_RELEASE_BLAST.md`](./KYARA_MONDAY_RELEASE_BLAST.md)**
-
    - Monday release day email templates
    - 4 variations (WARM, non-responders, new contacts, Amazing Radio)
    - Send timing strategy
    - 30-40 recipient list
 
 7. **[`KYARA_BLOODSHOT_FOLLOWUP_TEMPLATES.md`](./KYARA_BLOODSHOT_FOLLOWUP_TEMPLATES.md)**
-
    - 5 follow-up email templates
    - For contacts who don't respond
    - Timing strategy (when to send)

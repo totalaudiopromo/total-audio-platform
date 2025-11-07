@@ -117,21 +117,32 @@ export interface SkillRegistry {
  * Skill validation error types
  */
 export class SkillValidationError extends Error {
-  constructor(public field: string, public constraint: string, message: string) {
+  constructor(
+    public field: string,
+    public constraint: string,
+    message: string
+  ) {
     super(message);
     this.name = 'SkillValidationError';
   }
 }
 
 export class SkillExecutionError extends Error {
-  constructor(public skillName: string, public context: string, message: string) {
+  constructor(
+    public skillName: string,
+    public context: string,
+    message: string
+  ) {
     super(message);
     this.name = 'SkillExecutionError';
   }
 }
 
 export class SkillNotFoundError extends Error {
-  constructor(public skillName: string, public version?: string) {
+  constructor(
+    public skillName: string,
+    public version?: string
+  ) {
     super(`Skill "${skillName}"${version ? `@${version}` : ''} not found in registry`);
     this.name = 'SkillNotFoundError';
   }

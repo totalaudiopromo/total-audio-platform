@@ -220,8 +220,8 @@ export default async function HomePage() {
               {feature.title.includes('AI')
                 ? 'AI'
                 : feature.title.includes('Real-time')
-                ? 'SPEED'
-                : 'DATA'}
+                  ? 'SPEED'
+                  : 'DATA'}
             </div>
             <h3 className="mt-4 text-xl font-semibold">{feature.title}</h3>
             <p className="mt-3 text-sm text-gray-600">{feature.description}</p>

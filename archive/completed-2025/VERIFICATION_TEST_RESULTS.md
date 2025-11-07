@@ -109,7 +109,6 @@
    - Create pitches and check history
    - Upload CSV and test enrichment
 2. **Mobile Testing**: Use Chrome DevTools responsive mode to test:
-
    - 320px (iPhone SE)
    - 375px (iPhone 12/13)
    - 428px (iPhone 14 Pro Max)

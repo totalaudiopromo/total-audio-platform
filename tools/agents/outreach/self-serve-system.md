@@ -442,19 +442,16 @@ Chris
 ## ✅ Action Items (This Weekend)
 
 1. **Record Loom video** (15 mins)
-
    - Show real BBC Radio 1 enrichment
    - 60 seconds max
    - Upload to YouTube (unlisted)
 
 2. **Set up ConvertKit drip** (30 mins)
-
    - 4 emails (Day 0, 2, 5, 9)
    - Trigger: On Audio Intel signup
    - Test with your own email
 
 3. **Update cold email template** (5 mins)
-
    - Add Loom video link
    - Change CTA from "demo" to "try free"
    - Emphasize "no card required"

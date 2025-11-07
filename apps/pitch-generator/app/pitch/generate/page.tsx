@@ -504,8 +504,8 @@ export default function GeneratePitchPage() {
                 hookCharCount === 0
                   ? 'border-gray-300 focus:border-amber-500 focus:ring-amber-500/50'
                   : hookIsValid
-                  ? 'border-green-500 focus:border-green-500 focus:ring-green-500/50'
-                  : 'border-yellow-500 focus:border-yellow-500 focus:ring-yellow-500/50'
+                    ? 'border-green-500 focus:border-green-500 focus:ring-green-500/50'
+                    : 'border-yellow-500 focus:border-yellow-500 focus:ring-yellow-500/50'
               }`}
             />
             <div className="mt-2 flex items-center justify-between">

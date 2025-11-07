@@ -115,10 +115,13 @@ export async function POST(request: NextRequest) {
     }
 
     // Platform distribution
-    const platformCounts = posts.reduce((acc, post) => {
-      acc[post.platform] = (acc[post.platform] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const platformCounts = posts.reduce(
+      (acc, post) => {
+        acc[post.platform] = (acc[post.platform] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     results.performance_metrics.platform_distribution = {
       x: platformCounts.x || 0,

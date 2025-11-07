@@ -64,7 +64,6 @@ Each template includes:
 **SEO Case Studies**: 2
 
 1. BBC Radio 1 Contact Enrichment (~2,500 words)
-
    - 18 hours → 2 minutes transformation
    - Real campaign data
    - Step-by-step breakdown
@@ -276,35 +275,30 @@ Examples:
 ### Content Themes
 
 1. **BBC Radio 1 Case Study** (Credibility)
-
    - Real enrichment examples
    - Current show information
    - Submission guidelines accuracy
    - 100% verified data
 
 2. **Time Savings** (Primary Benefit)
-
    - 15 hours → 2 minutes
    - 780 hours annually
    - 32+ days of work
    - Focus on music instead
 
 3. **Pricing Comparison** (Value Proposition)
-
    - US alternatives: £400-600/month
    - Audio Intel: £19/month
    - 95% cost savings
    - Realistic for independents
 
 4. **Regional Radio** (Underutilised Opportunity)
-
    - 300+ stations
    - 35M+ combined reach
    - 35% response rates
    - Less competitive
 
 5. **Founder Story** (Authenticity)
-
    - Brighton producer (sadact)
    - 2AM development reality
    - pitches to BBC Radio 6 Music and regional stations
@@ -323,13 +317,11 @@ Examples:
 ### Immediate Actions (Week 1)
 
 1. **Review Content Calendar**
-
    - Open `CONTENT_CALENDAR.md`
    - Review 4-week schedule
    - Identify any conflicts with existing content
 
 2. **Schedule Social Posts**
-
    - Use platform native scheduling:
      - LinkedIn: Creator Mode scheduling
      - Twitter/X: TweetDeck or Buffer
@@ -338,7 +330,6 @@ Examples:
    - Or import `CONTENT_CALENDAR.csv` to scheduling tool
 
 3. **Prepare Email Outreach**
-
    - Review 5 email templates in `COLD_OUTREACH_EMAIL_TEMPLATES.md`
    - Identify target segments (radio promoters priority)
    - Build email lists by segment
@@ -353,21 +344,18 @@ Examples:
 ### Ongoing Management (Weeks 2-4)
 
 1. **Monitor Social Engagement**
-
    - Track which posts get highest engagement
    - Double down on winning content themes
    - Respond to all comments within 2 hours
    - Engage with radio promoter community
 
 2. **Track Email Performance**
-
    - Open rates (target: 35-45%)
    - Reply rates (target: 15-20% for radio promoters)
    - Demo booking rate (target: 8-12%)
    - Adjust subject lines and messaging
 
 3. **Analyse Blog Traffic**
-
    - Google Analytics: Track /blog/\* traffic
    - Identify high-performing keywords
    - Monitor conversion from blog to trial signup
@@ -382,14 +370,12 @@ Examples:
 ### Programmatic SEO Implementation (Month 2+)
 
 1. **Generate First 10 pSEO Pages**
-
    - Use templates in `PROGRAMMATIC_SEO_TEMPLATES.md`
    - Focus on top 5 genres + top 5 cities
    - Populate variables from data sources
    - Publish one per week
 
 2. **Build Internal Linking Structure**
-
    - Link genre pages to location pages
    - Link all pSEO pages to case studies
    - Create hub pages for topics
@@ -541,35 +527,30 @@ Examples:
 ### Proof Points (Always Include)
 
 1. **BBC Radio 1 Credibility**
-
    - Real enrichment case study
    - 100% verified submission guidelines
    - Current show information
    - 2-minute processing time
 
 2. **Time Savings**
-
    - 15 hours → 2 minutes
    - 780 hours saved annually
    - 32+ days of work eliminated
    - Focus on relationship building
 
 3. **Cost Savings**
-
    - £19/month vs £400-600/month US tools
    - 95% cost reduction
    - £750 saved per campaign
    - ROI: 18,837% per campaign
 
 4. **Response Rate Improvement**
-
    - Generic pitches: 8% response
    - Personalised (Audio Intel): 28% response
    - 300% better results
    - Real campaign data
 
 5. **Founder Authenticity**
-
    - Brighton producer (sadact)
    - 5+ years radio promotion experience
    - BBC Radio 1 pitch experience

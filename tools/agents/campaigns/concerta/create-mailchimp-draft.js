@@ -27,11 +27,11 @@ class ConcertaMailchimpCampaign {
     try {
       const response = await fetch(`${this.baseUrl}${endpoint}`, {
         headers: {
-          'Authorization': `apikey ${this.apiKey}`,
+          Authorization: `apikey ${this.apiKey}`,
           'Content-Type': 'application/json',
-          ...options.headers
+          ...options.headers,
         },
-        ...options
+        ...options,
       });
 
       if (!response.ok) {
@@ -69,10 +69,10 @@ class ConcertaMailchimpCampaign {
       }
 
       // Use first audience or create new one
-      const targetAudience = audiences.find(a =>
-        a.name.toLowerCase().includes('liberty') ||
-        a.name.toLowerCase().includes('radio')
-      ) || audiences[0];
+      const targetAudience =
+        audiences.find(
+          a => a.name.toLowerCase().includes('liberty') || a.name.toLowerCase().includes('radio')
+        ) || audiences[0];
 
       if (!targetAudience) {
         throw new Error('No Mailchimp audience found. Please create one first.');
@@ -84,20 +84,21 @@ class ConcertaMailchimpCampaign {
       const campaignData = {
         type: 'regular',
         recipients: {
-          list_id: targetAudience.id
+          list_id: targetAudience.id,
         },
         settings: {
           subject_line: 'Fresh Electronic Sound: Concerta (South Korea) - Consumption',
-          preview_text: 'South Korean electronic artist bringing fresh Asian influence to European dance scene',
+          preview_text:
+            'South Korean electronic artist bringing fresh Asian influence to European dance scene',
           title: 'Concerta - Consumption (Dance/Electronic Radio Campaign)',
           from_name: 'Liberty Music PR',
-          reply_to: 'chris@libertymusicpr.com'
-        }
+          reply_to: 'chris@libertymusicpr.com',
+        },
       };
 
       const campaign = await this.callMailchimpAPI('/campaigns', {
         method: 'POST',
-        body: JSON.stringify(campaignData)
+        body: JSON.stringify(campaignData),
       });
 
       console.log('✅ Campaign draft created successfully!\n');
@@ -107,11 +108,12 @@ class ConcertaMailchimpCampaign {
       console.log(`Preview Text: ${campaign.settings.preview_text}`);
       console.log(`Web ID: ${campaign.web_id}`);
       console.log('');
-      console.log(`🔗 Edit in Mailchimp: https://us13.admin.mailchimp.com/campaigns/edit?id=${campaign.web_id}`);
+      console.log(
+        `🔗 Edit in Mailchimp: https://us13.admin.mailchimp.com/campaigns/edit?id=${campaign.web_id}`
+      );
       console.log('');
 
       return campaign;
-
     } catch (error) {
       console.error('❌ Failed to create campaign draft:', error.message);
       throw error;
@@ -124,8 +126,8 @@ class ConcertaMailchimpCampaign {
     const response = await this.callMailchimpAPI(`/campaigns/${campaignId}/content`, {
       method: 'PUT',
       body: JSON.stringify({
-        html: htmlContent
-      })
+        html: htmlContent,
+      }),
     });
 
     console.log('✅ Campaign content updated\n');
@@ -226,7 +228,6 @@ async function createConcertaCampaignDraft() {
     console.log('');
 
     return draftCampaign;
-
   } catch (error) {
     console.error('❌ Campaign creation failed:', error.message);
     throw error;

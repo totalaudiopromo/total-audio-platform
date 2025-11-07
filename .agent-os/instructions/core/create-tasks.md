@@ -43,7 +43,6 @@ Use the file-creator subagent to create file: tasks.md inside of the current fea
 ## Tasks
 
 - [ ] 1. [MAJOR_TASK_DESCRIPTION]
-
   - [ ] 1.1 Write tests for [COMPONENT]
   - [ ] 1.2 [IMPLEMENTATION_STEP]
   - [ ] 1.3 [IMPLEMENTATION_STEP]

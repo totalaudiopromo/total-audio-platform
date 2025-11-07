@@ -362,17 +362,14 @@ This is used for canonical URLs and OpenGraph metadata.
    ```
 
 2. **Create Your First Programmatic Page**:
-
    - Copy `utils/EXAMPLE_CASE_STUDY_PAGE.tsx` to `app/blog/[slug]/page.tsx`
    - Test with existing BBC Radio 1 slug: `/blog/bbc-radio-1`
 
 3. **Add More Case Studies to CSV**:
-
    - Follow the column format in `programmatic-pages.csv`
    - Run validation: `validateCaseStudy(data)`
 
 4. **Generate OpenGraph Images**:
-
    - Create images for each case study: `/images/case-studies/{slug}-og.png`
    - Size: 1200x630px
 

@@ -476,12 +476,12 @@ export default function RadioPromoVerificationDashboard() {
                                 step.status === 'completed' || step.status === 'approved'
                                   ? 'bg-green-500'
                                   : step.status === 'in_progress'
-                                  ? 'bg-blue-500'
-                                  : step.status === 'requires_approval'
-                                  ? 'bg-amber-500'
-                                  : step.status === 'failed'
-                                  ? 'bg-red-500'
-                                  : 'bg-gray-400'
+                                    ? 'bg-blue-500'
+                                    : step.status === 'requires_approval'
+                                      ? 'bg-amber-500'
+                                      : step.status === 'failed'
+                                        ? 'bg-red-500'
+                                        : 'bg-gray-400'
                               }`}
                               style={{ width: `${step.progress}%` }}
                             ></div>

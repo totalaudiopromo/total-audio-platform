@@ -14,7 +14,6 @@ The Threads API uses Instagram's Graph API infrastructure. You'll need:
 ## Prerequisites
 
 1. **Instagram Professional Account**
-
    - Convert your personal Instagram to a Professional account (Creator or Business)
    - Settings → Account → Switch to Professional Account
 
@@ -47,7 +46,6 @@ The Threads API uses Instagram's Graph API infrastructure. You'll need:
 
 1. Navigate to **App Settings → Basic**
 2. Add your domain:
-
    - **App Domains**: `totalaudiopromo.com`
    - **Privacy Policy URL**: `https://intel.totalaudiopromo.com/privacy`
    - **Terms of Service URL**: `https://intel.totalaudiopromo.com/terms`
@@ -365,17 +363,14 @@ curl -X GET "https://graph.threads.net/v1.0/{USER_ID}/threads" \
 ## Security Best Practices
 
 1. **Never commit tokens**
-
    - Add `.env.local` to `.gitignore`
    - Use environment variables only
 
 2. **Rotate tokens regularly**
-
    - Refresh long-lived tokens before expiration
    - Revoke old tokens
 
 3. **Limit token scope**
-
    - Only request needed permissions
    - Use separate tokens for different environments
 

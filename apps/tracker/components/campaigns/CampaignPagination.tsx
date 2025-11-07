@@ -130,8 +130,8 @@ export function CampaignPagination({
                 page === currentPage
                   ? 'bg-teal-600 text-white border-teal-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
                   : page === '...'
-                  ? 'border-transparent cursor-default'
-                  : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                    ? 'border-transparent cursor-default'
+                    : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400 hover:bg-gray-50'
               }`}
             >
               {page}

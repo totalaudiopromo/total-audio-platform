@@ -77,8 +77,8 @@ export function CampaignForm({
                 s === step
                   ? 'bg-teal-600 text-white'
                   : s < step
-                  ? 'bg-green-600 text-white'
-                  : 'bg-slate-200 text-slate-600'
+                    ? 'bg-green-600 text-white'
+                    : 'bg-slate-200 text-slate-600'
               }`}
             >
               {s < step ? '✓' : s}

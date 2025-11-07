@@ -162,24 +162,20 @@ enum LifecycleStage {
 Automated email campaigns triggered by lifecycle transitions:
 
 - **Trial Stage**:
-
   - Welcome Email (immediate)
   - Day 3 Getting Started Tips
   - Day 7 Upgrade to Pro
 
 - **Active Stage**:
-
   - Welcome to Pro (immediate)
   - Power User Tips (day 14)
 
 - **At-Risk Stage**:
-
   - Re-engagement Email (day 1)
   - Support Offer (day 5)
   - Win-back Offer (day 10)
 
 - **Churned Stage**:
-
   - Exit Survey (day 2)
   - Quarterly Check-in (day 90)
 

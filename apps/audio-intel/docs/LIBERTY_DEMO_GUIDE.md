@@ -42,13 +42,11 @@
 **Created:** `/case-studies` - 3 detailed case studies
 
 1. **BBC Radio 1 Campaign** (sadact electronic launch)
-
    - 15 hours → 15 minutes research time
    - 47 contacts enriched
    - 100% validation success
 
 2. **Spotify Editorial** (House music playlist push)
-
    - 10 hours → 20 minutes research time
    - 34 playlist contacts discovered
    - Strategic submission vs desperate submission
@@ -75,13 +73,11 @@
 **Show homepage live enrichment:**
 
 1. **Start with Danny Howard** (Liberty-relevant)
-
    - Click "Enrich Contact"
    - Show the real-time enrichment (2 seconds)
    - **Highlight:** "BBC Radio 1 Dance, Friday 7-9pm, house and techno focus, submissions via BBC Music Introducing"
 
 2. **Click "Try Another →"** to cycle to Pete Tong
-
    - Show different contact, different submission requirements
    - **Highlight:** "Essential Selection, very selective, only your best work"
 
@@ -93,12 +89,10 @@
 **Navigate to Case Studies page:**
 
 1. **Show BBC Radio 1 case study**
-
    - Before: 3 Excel files, 15 hours research, 60% accuracy
    - After: 15 minutes, 100% validated, submission guidelines included
 
 2. **Show Spotify Editorial case study**
-
    - Before: Generic submissions, no curator data
    - After: 34 targeted contacts, 4-week lead time intelligence
 
@@ -237,7 +231,6 @@
 ## Files Changed (For Reference)
 
 1. **apps/audio-intel/app/page.tsx**
-
    - Added 5 Liberty-relevant demo contacts
    - Enhanced live demo UI with "Try Another" button
    - Improved result display with timing/genre data

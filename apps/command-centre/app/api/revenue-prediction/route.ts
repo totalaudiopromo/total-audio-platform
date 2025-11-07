@@ -290,10 +290,13 @@ export async function GET() {
 
     // Top conversion factors
     const allFactors = predictions.flatMap(p => p.topFactors);
-    const factorCounts = allFactors.reduce((acc, factor) => {
-      acc[factor] = (acc[factor] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const factorCounts = allFactors.reduce(
+      (acc, factor) => {
+        acc[factor] = (acc[factor] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     const topConversionFactors = Object.entries(factorCounts)
       .sort(([, a], [, b]) => b - a)

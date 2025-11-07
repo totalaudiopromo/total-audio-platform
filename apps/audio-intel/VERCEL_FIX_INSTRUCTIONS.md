@@ -19,7 +19,6 @@ Module not found: Can't resolve '@total-audio/ui'
 ### Option 1: Via Vercel Dashboard (RECOMMENDED)
 
 1. **Go to Vercel Project Settings:**
-
    - https://vercel.com/chris-projects-6ffe0e29/audio-intel/settings
 
 2. **Click "General" tab**
@@ -27,25 +26,20 @@ Module not found: Can't resolve '@total-audio/ui'
 3. **Scroll to "Build & Development Settings"**
 
 4. **Set Root Directory:**
-
    - Click "Edit" next to "Root Directory"
    - Change from `.` to: `apps/audio-intel`
    - ✅ Check "Include source files outside of the Root Directory in the Build Step"
 
 5. **Framework Preset:**
-
    - Should auto-detect as "Next.js"
 
 6. **Build Command:**
-
    - Leave as default: `next build` (or `npm run build`)
 
 7. **Output Directory:**
-
    - Leave as default: `.next`
 
 8. **Install Command:**
-
    - IMPORTANT: Change to: `npm install`
    - (This runs at monorepo root before cd'ing to apps/audio-intel)
 

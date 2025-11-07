@@ -118,7 +118,6 @@ curl -X GET "https://graph.threads.net/v1.0/me" \
   ```
 
 - [ ] Verify all checks pass:
-
   - [x] Environment variables loaded
   - [x] Agent created successfully
   - [x] Health check passed
@@ -207,13 +206,11 @@ openssl rand -base64 32
 ### 5. Verify Deployment
 
 - [ ] Check Vercel deployment logs
-
   - Deployment succeeded
   - No build errors
   - Environment variables loaded
 
 - [ ] Verify cron job scheduled
-
   - Vercel dashboard → Project → Cron Jobs
   - Confirm schedule: "0 \* \* \* \*" (hourly)
 
@@ -233,19 +230,16 @@ openssl rand -base64 32
 ### Week 1: Daily Checks
 
 - [ ] **Day 1**: Monitor first 24 hours of posting
-
   - Check Vercel cron logs
   - Verify posts appearing on Threads
   - Review error rates
 
 - [ ] **Day 2**: Validate scheduling accuracy
-
   - Compare posted times vs calendar
   - Check skipped posts (not in window)
   - Review content accuracy
 
 - [ ] **Day 3**: Review engagement metrics
-
   - Check account insights
   - Views, likes, replies
   - Identify top-performing posts
@@ -258,13 +252,11 @@ openssl rand -base64 32
 ### Week 2: Optimisation
 
 - [ ] Analyse posting patterns
-
   - Best performing times
   - Content engagement rates
   - Response rate tracking
 
 - [ ] Adjust schedule if needed
-
   - Update CONTENT_CALENDAR.json
   - Test new posting times
   - Monitor impact
@@ -277,13 +269,11 @@ openssl rand -base64 32
 ### Month 1: Long-term Health
 
 - [ ] Token refresh planning
-
   - Track token expiration (60 days)
   - Set calendar reminder (55 days)
   - Test refresh process
 
 - [ ] Performance review
-
   - Total posts published
   - Success rate %
   - Engagement trends

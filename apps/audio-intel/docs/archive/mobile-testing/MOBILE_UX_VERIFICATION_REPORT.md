@@ -248,7 +248,9 @@ Lines 1047-1107 in mobile.css @media (max-width: 768px) {
     background: #10b981;
     color: white;
     border: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
   /* Hide chat text on mobile */

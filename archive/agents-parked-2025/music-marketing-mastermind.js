@@ -337,10 +337,10 @@ class MusicMarketingMastermind {
           week === -4
             ? 'announcement'
             : week === -3
-            ? 'behind_scenes'
-            : week === -2
-            ? 'anticipation'
-            : 'final_push',
+              ? 'behind_scenes'
+              : week === -2
+                ? 'anticipation'
+                : 'final_push',
         content: this.generateWeeklyContent(week, 'pre-release', campaignData),
         platforms: ['instagram', 'tiktok', 'twitter', 'youtube'],
         date: weekDate.toISOString().split('T')[0],
@@ -367,10 +367,10 @@ class MusicMarketingMastermind {
           week <= 2
             ? 'momentum'
             : week <= 4
-            ? 'playlist_push'
-            : week <= 6
-            ? 'community_building'
-            : 'analysis_planning',
+              ? 'playlist_push'
+              : week <= 6
+                ? 'community_building'
+                : 'analysis_planning',
         content: this.generateWeeklyContent(week, 'post-release', campaignData),
         platforms: ['spotify', 'instagram', 'tiktok', 'youtube'],
         date: weekDate.toISOString().split('T')[0],
@@ -416,14 +416,14 @@ class MusicMarketingMastermind {
       phase === 'release'
         ? '0'
         : phase === 'pre-release'
-        ? week.toString()
-        : week <= 2
-        ? week.toString()
-        : week <= 4
-        ? '3-4'
-        : week <= 6
-        ? '5-6'
-        : '7-8';
+          ? week.toString()
+          : week <= 2
+            ? week.toString()
+            : week <= 4
+              ? '3-4'
+              : week <= 6
+                ? '5-6'
+                : '7-8';
 
     return contentTemplates[phase]?.[weekKey] || ['General promotional content'];
   }

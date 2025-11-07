@@ -34,25 +34,21 @@ Fixed the entire color system in the Tracker app to match the Total Audio Promo 
 Replaced ALL purple color references with amber across:
 
 - **Layout Components**:
-
   - `Header.tsx` - Amber gradient branding
   - `Sidebar.tsx` - Amber navigation active states
   - Navigation elements use amber highlights
 
 - **Analytics Components**:
-
   - `OverviewStats.tsx` - Amber metric cards
   - `EnhancedAnalytics.tsx` - Amber ROI cards and tabs
   - All analytics visualizations use amber accents
 
 - **Campaign Components**:
-
   - `CampaignCardWithIntel.tsx` - Amber hover states
   - `CampaignFilters.tsx` - Amber badges
   - `StatusBadge.tsx` - Consistent color scheme
 
 - **Auth & Billing Components**:
-
   - `EmailVerificationBanner.tsx` - Amber notification
   - `UpgradePrompt.tsx` - Amber upgrade UI
   - All CTAs use amber brand color

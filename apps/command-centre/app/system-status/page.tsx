@@ -182,16 +182,16 @@ export default function SystemStatusPage() {
               overallStatus === 'operational'
                 ? 'bg-green-500'
                 : overallStatus === 'degraded'
-                ? 'bg-yellow-500'
-                : 'bg-red-500'
+                  ? 'bg-yellow-500'
+                  : 'bg-red-500'
             }`}
           ></div>
           <span>
             {overallStatus === 'operational'
               ? 'All Systems Operational'
               : overallStatus === 'degraded'
-              ? 'Some Services Degraded'
-              : 'System Issues Detected'}
+                ? 'Some Services Degraded'
+                : 'System Issues Detected'}
           </span>
         </div>
       </div>

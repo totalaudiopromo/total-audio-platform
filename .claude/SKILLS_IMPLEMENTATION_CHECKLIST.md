@@ -5,7 +5,6 @@
 ### Day 1: Enable & Install Core Skills
 
 - [ ] **Enable Skills in Claude Code**
-
   - Open Claude Code settings (⌘,)
   - Navigate to Capabilities
   - Toggle "Skills" to ON
@@ -13,14 +12,12 @@
   - Verify skills capability is active
 
 - [ ] **Install Skill Creator**
-
   - Method 1: `/plugin` → Add marketplace → Install
   - Method 2: Manual git clone from obra/superpowers
   - Location: `~/.claude/skills/skill-creator/`
   - Test: Ask Claude to "Use Skill Creator to..."
 
 - [ ] **Install Changelog Generator**
-
   - Source: ComposioHQ/awesome-claude-skills
   - Location: `~/.claude/skills/changelog-generator/`
   - Test: Generate changelog from recent commits
@@ -158,21 +155,18 @@
 ### Skill Effectiveness Testing
 
 - [ ] **Test Skill Creator**
-
   - Successfully created 5 custom skills
   - Skills activate when expected
   - Skills provide actionable feedback
   - Token usage is reasonable
 
 - [ ] **Test Changelog Generator**
-
   - Generate Audio Intel changelog
   - Generate totalaud.io changelog
   - Customer-facing vs developer-facing versions
   - Accurate commit attribution
 
 - [ ] **Test Systematic Debugging**
-
   - Use on real bug/issue
   - 4-phase framework followed
   - Root cause identified correctly
@@ -200,7 +194,6 @@
   ```
 
 - [ ] **MCP + Skills Integration**
-
   - Gmail MCP + Customer Tracker: Auto-track responses
   - Notion MCP + Changelog Generator: Auto-publish
   - Puppeteer MCP + Mobile Validator: Automated testing
@@ -217,13 +210,11 @@
 ### Token Usage Optimization
 
 - [ ] **Measure Skill Token Usage**
-
   - Track token consumption per skill
   - Identify heavy consumers
   - Optimize or archive if needed
 
 - [ ] **Archive Unused Skills**
-
   - Move Simplification Cascades to archive (defer until post-revenue)
   - Move any custom skills not being used
   - Keep only customer acquisition focused skills
@@ -238,13 +229,11 @@
 ### Skill Refinement
 
 - [ ] **Refine audio-intel-mobile-validator**
-
   - Add checks for new UX standards discovered
   - Remove checks that are never violated
   - Improve feedback messages
 
 - [ ] **Refine customer-acquisition-tracker**
-
   - Add metrics based on actual customer feedback
   - Integrate with real demo call data
   - Add forecasting based on trends
@@ -261,7 +250,6 @@
 ### Weekly Reviews
 
 - [ ] **Week 1 Review**
-
   - Date: \***\*\_\*\***
   - Skills used this week: \***\*\_\*\***
   - Time saved estimate: \***\*\_\*\***
@@ -269,7 +257,6 @@
   - Adjustments needed: \***\*\_\*\***
 
 - [ ] **Week 2 Review**
-
   - Date: \***\*\_\*\***
   - Skills used this week: \***\*\_\*\***
   - Time saved estimate: \***\*\_\*\***
@@ -277,7 +264,6 @@
   - Adjustments needed: \***\*\_\*\***
 
 - [ ] **Week 3 Review**
-
   - Date: \***\*\_\*\***
   - Skills used this week: \***\*\_\*\***
   - Time saved estimate: \***\*\_\*\***

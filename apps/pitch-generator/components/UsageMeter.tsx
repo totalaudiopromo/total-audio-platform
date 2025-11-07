@@ -104,8 +104,8 @@ export function UsageMeter({ userId, className = '' }: UsageMeterProps) {
                 isAtLimit
                   ? 'bg-red-600'
                   : isNearLimit
-                  ? 'bg-yellow-500'
-                  : 'bg-gradient-to-r from-amber-600 to-amber-600'
+                    ? 'bg-yellow-500'
+                    : 'bg-gradient-to-r from-amber-600 to-amber-600'
               }`}
               style={{ width: `${Math.min(percentageUsed, 100)}%` }}
             />

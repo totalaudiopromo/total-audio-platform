@@ -31,16 +31,16 @@ export default function StepIndicator() {
       return state.uploadComplete
         ? 'completed'
         : state.currentStep === 'upload'
-        ? 'current'
-        : 'upcoming';
+          ? 'current'
+          : 'upcoming';
     }
     if (stepId === 'customize') {
       if (state.showResults) return 'completed';
       return state.currentStep === 'customize'
         ? 'current'
         : state.uploadComplete
-        ? 'upcoming'
-        : 'disabled';
+          ? 'upcoming'
+          : 'disabled';
     }
     if (stepId === 'results') {
       return state.showResults ? 'current' : 'upcoming';
@@ -75,10 +75,10 @@ export default function StepIndicator() {
                   status === 'completed'
                     ? 'bg-gradient-to-r from-purple-500 to-blue-500 border-purple-500 text-white'
                     : status === 'current'
-                    ? 'bg-white/10 border-purple-400 text-white backdrop-blur-xl'
-                    : status === 'upcoming'
-                    ? 'bg-white/5 border-white/30 text-white/60'
-                    : 'bg-white/5 border-white/20 text-white/40'
+                      ? 'bg-white/10 border-purple-400 text-white backdrop-blur-xl'
+                      : status === 'upcoming'
+                        ? 'bg-white/5 border-white/30 text-white/60'
+                        : 'bg-white/5 border-white/20 text-white/40'
                 }
               `}
               >
@@ -94,8 +94,8 @@ export default function StepIndicator() {
                     status === 'completed' || status === 'current'
                       ? 'text-white'
                       : status === 'upcoming'
-                      ? 'text-white/70'
-                      : 'text-white/50'
+                        ? 'text-white/70'
+                        : 'text-white/50'
                   }
                 `}
                 >

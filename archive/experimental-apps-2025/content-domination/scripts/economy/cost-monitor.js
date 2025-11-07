@@ -270,8 +270,8 @@ class CostMonitor {
         projectedMonthEnd > this.costThresholds.monthly_budget
           ? 'high'
           : projectedMonthEnd > this.costThresholds.monthly_budget * 0.8
-          ? 'medium'
-          : 'low',
+            ? 'medium'
+            : 'low',
     };
   }
 

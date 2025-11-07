@@ -344,8 +344,8 @@ export function CampaignModal({
               {loading
                 ? 'Saving...'
                 : campaign
-                ? 'Update Campaign'
-                : 'Create Campaign'}
+                  ? 'Update Campaign'
+                  : 'Create Campaign'}
             </button>
           </div>
         </form>

@@ -83,19 +83,16 @@ STRIPE_WEBHOOK_SECRET=whsec_... (copy from Audio Intel)
 ### Step 3: Test Core Flow Locally (10 mins)
 
 1. **Login** with confirmed user:
-
    - http://localhost:3001/login
    - Email: test@tracker.com
    - Password: password123
 
 2. **Create Campaign**:
-
    - Click "Add Campaign" button
    - Fill in: Name, Platform, Genre, Budget, Target Reach
    - Submit and verify it saves
 
 3. **Verify Intelligence**:
-
    - Check if campaign shows benchmark comparison
    - Verify "X% above/below industry average" appears
    - Check pattern recognition in dashboard
@@ -126,13 +123,11 @@ git push origin main
 ### Step 5: Deploy on Vercel (10 mins)
 
 1. **Import Project**:
-
    - Go to https://vercel.com/new
    - Import from GitHub: `total-audio-platform`
    - Select `apps/tracker` as root directory
 
 2. **Configure Domain**:
-
    - Custom domain: `tracker.totalaudiopromo.com`
    - Add DNS record (Vercel will show you)
 

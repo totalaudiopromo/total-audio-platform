@@ -138,10 +138,10 @@ function generateCustomerProfiles(): CustomerProfile[] {
       currentTier === 'enterprise'
         ? 150 + Math.random() * 200
         : currentTier === 'professional'
-        ? 45 + Math.random() * 55
-        : currentTier === 'basic'
-        ? 15 + Math.random() * 15
-        : 0;
+          ? 45 + Math.random() * 55
+          : currentTier === 'basic'
+            ? 15 + Math.random() * 15
+            : 0;
 
     // User type influences behavior
     const agencyMultiplier = userType === 'pr_agency' ? 2.5 : 1;
@@ -160,8 +160,8 @@ function generateCustomerProfiles(): CustomerProfile[] {
           userType === 'pr_agency'
             ? Math.floor(Math.random() * 15) + 2
             : userType === 'record_label'
-            ? Math.floor(Math.random() * 25) + 5
-            : 1,
+              ? Math.floor(Math.random() * 25) + 5
+              : 1,
         industryExperience: `${Math.floor(Math.random() * 15) + 1}`,
       },
       behavioralMetrics: {
@@ -267,14 +267,14 @@ function calculateCLVPrediction(customer: CustomerProfile): CLVPrediction {
     customer.currentTier === 'free'
       ? 80
       : customer.behavioralMetrics.supportInteractions > 3
-      ? 60
-      : 30;
+        ? 60
+        : 30;
   const pricesensitivity =
     customer.monthlyRevenue < 50
       ? 70
       : customer.financialHistory.upgradeHistory.length > 0
-      ? 30
-      : 50;
+        ? 30
+        : 50;
   const supportDependency = customer.behavioralMetrics.supportInteractions > 2 ? 70 : 30;
 
   // Growth opportunities
@@ -282,11 +282,11 @@ function calculateCLVPrediction(customer: CustomerProfile): CLVPrediction {
     customer.currentTier === 'free' && customer.behavioralMetrics.engagementScore > 70
       ? 80
       : customer.currentTier === 'basic' &&
-        customer.behavioralMetrics.featureUsage.emailValidation > 300
-      ? 65
-      : customer.currentTier === 'professional' && customer.demographics.userType === 'pr_agency'
-      ? 45
-      : 20;
+          customer.behavioralMetrics.featureUsage.emailValidation > 300
+        ? 65
+        : customer.currentTier === 'professional' && customer.demographics.userType === 'pr_agency'
+          ? 45
+          : 20;
 
   const crossSellPotential = [];
   if (customer.behavioralMetrics.featureUsage.analytics < 10)
@@ -300,25 +300,25 @@ function calculateCLVPrediction(customer: CustomerProfile): CLVPrediction {
     customer.networkValue.influenceScore > 60
       ? 75
       : customer.behavioralMetrics.engagementScore > 80
-      ? 60
-      : 35;
+        ? 60
+        : 35;
 
   const partnershipReadiness =
     customer.demographics.userType === 'pr_agency' && customer.demographics.teamSize > 5
       ? 85
       : customer.networkValue.partnershipPotential > 70
-      ? 60
-      : 20;
+        ? 60
+        : 20;
 
   // Retention strategy priority
   const priority =
     predictedCLV > 3000
       ? 'critical'
       : predictedCLV > 1500
-      ? 'high'
-      : predictedCLV > 500
-      ? 'medium'
-      : 'low';
+        ? 'high'
+        : predictedCLV > 500
+          ? 'medium'
+          : 'low';
 
   // Generate personalised recommendations
   const recommendedActions = [];

@@ -19,13 +19,11 @@
 **Top 3 Stories (>0.3 relevance score):**
 
 1. **"BandLab enjoys global viral hit as Tkandz' Now Or Never makes splash on Spotify"**
-
    - Source: Music Business Worldwide
    - Relevance Score: 0.32
    - Why relevant: Mentions Spotify, streaming, viral success (medium relevance keywords)
 
 2. **"3 things you might have missed about Daniel Ek's decision to step back as Spotify CEO"**
-
    - Source: Music Business Worldwide
    - Relevance Score: 0.32
    - Why relevant: Platform changes, streaming (medium relevance keywords)

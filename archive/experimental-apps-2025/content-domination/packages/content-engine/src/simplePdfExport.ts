@@ -409,8 +409,8 @@ export function downloadSimplePDF(
                         contact.enrichmentScore >= 80
                           ? 'score-high'
                           : contact.enrichmentScore >= 60
-                          ? 'score-medium'
-                          : 'score-low'
+                            ? 'score-medium'
+                            : 'score-low'
                       }">
                         ${contact.enrichmentScore}/100
                       </span>
@@ -418,8 +418,8 @@ export function downloadSimplePDF(
                         contact.confidence === 'High'
                           ? 'confidence-high'
                           : contact.confidence === 'Medium'
-                          ? 'confidence-medium'
-                          : 'confidence-low'
+                            ? 'confidence-medium'
+                            : 'confidence-low'
                       }">
                         ${contact.confidence} Confidence
                       </span>

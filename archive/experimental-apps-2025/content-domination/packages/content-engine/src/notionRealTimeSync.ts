@@ -173,9 +173,12 @@ export class NotionRealTimeSync {
 
         // Retry failed events with exponential backoff
         if (event.retries < 3) {
-          setTimeout(() => {
-            this.syncQueue.push(event);
-          }, Math.pow(2, event.retries) * 1000);
+          setTimeout(
+            () => {
+              this.syncQueue.push(event);
+            },
+            Math.pow(2, event.retries) * 1000
+          );
         }
       }
     }

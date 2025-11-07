@@ -73,10 +73,13 @@ export class DataQualityAgent {
     });
 
     // Check for duplicate headers
-    const headerCounts = headers.reduce((acc, header) => {
-      acc[header] = (acc[header] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const headerCounts = headers.reduce(
+      (acc, header) => {
+        acc[header] = (acc[header] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     Object.entries(headerCounts).forEach(([header, count]) => {
       if (count > 1) {

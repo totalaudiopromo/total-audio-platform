@@ -54,8 +54,8 @@ export const TextureOverlay: React.FC<TextureOverlayProps> = ({
     textureType === 'paper'
       ? 'texture-paper-css'
       : textureType === 'grain'
-      ? 'texture-grain-css'
-      : 'texture-luma-css';
+        ? 'texture-grain-css'
+        : 'texture-luma-css';
 
   return (
     <div className={`relative ${className}`}>
@@ -97,8 +97,8 @@ export const TextureBackground: React.FC<TextureOverlayProps> = ({
     textureType === 'paper'
       ? 'texture-paper-css'
       : textureType === 'grain'
-      ? 'texture-grain-css'
-      : 'texture-luma-css';
+        ? 'texture-grain-css'
+        : 'texture-luma-css';
 
   return (
     <div
@@ -153,16 +153,16 @@ export const TextureCard: React.FC<{
   const animationClasses = floating
     ? 'animate-texture-float'
     : entrance
-    ? 'animate-texture-entrance'
-    : '';
+      ? 'animate-texture-entrance'
+      : '';
 
   // CSS-only texture fallback classes
   const cssTextureClass =
     textureType === 'paper'
       ? 'texture-paper-css'
       : textureType === 'grain'
-      ? 'texture-grain-css'
-      : 'texture-luma-css';
+        ? 'texture-grain-css'
+        : 'texture-luma-css';
 
   return (
     <div

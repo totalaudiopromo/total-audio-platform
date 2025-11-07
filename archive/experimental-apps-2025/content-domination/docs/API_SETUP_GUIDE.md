@@ -23,13 +23,11 @@ cp .env.example .env
 ### Step-by-Step Configuration
 
 1. **Create a Twitter Developer Account**
-
    - Go to <https://developer.twitter.com>
    - Apply for developer access
    - Select "Professional" or "Academic" based on your use case
 
 2. **Create a New App**
-
    - Navigate to <https://developer.twitter.com/en/portal/dashboard>
    - Click "Create Project"
    - Name it: "Total Audio Promo Content System"
@@ -42,7 +40,6 @@ cp .env.example .env
      - API Secret → `TWITTER_API_SECRET`
      - Bearer Token → `TWITTER_BEARER_TOKEN`
 4. **Generate Access Tokens**
-
    - Under "Authentication Tokens"
    - Generate Access Token & Secret with Read & Write permissions
    - Save:
@@ -78,7 +75,6 @@ cp .env.example .env
 ### Step-by-Step Configuration
 
 1. **Create LinkedIn App**
-
    - Go to <https://www.linkedin.com/developers/apps>
    - Click "Create app"
    - App name: "Total Audio Promo Automation"
@@ -87,7 +83,6 @@ cp .env.example .env
    - App logo: Upload your logo
 
 2. **Configure OAuth 2.0**
-
    - In app settings, go to "Auth" tab
    - Add redirect URLs:
 
@@ -101,7 +96,6 @@ cp .env.example .env
      - Client Secret → `LINKEDIN_CLIENT_SECRET`
 
 3. **Request API Access**
-
    - Go to "Products" tab
    - Request access to:
      - Share on LinkedIn
@@ -148,7 +142,6 @@ cp .env.example .env
 ### Step-by-Step Configuration
 
 1. **Create Notion Integration**
-
    - Go to <https://www.notion.so/my-integrations>
    - Click "New integration"
    - Name: "Content Domination System"
@@ -159,7 +152,6 @@ cp .env.example .env
      - Insert content
 
 2. **Copy Integration Token**
-
    - Copy the "Internal Integration Token"
    - Save as `NOTION_API_TOKEN`
 
@@ -168,7 +160,6 @@ cp .env.example .env
    Create these databases in your Notion workspace:
 
    a. **Voice Examples Database**
-
    - Properties:
      - Content (Text)
      - Platform (Select: Twitter, LinkedIn, Newsletter)
@@ -176,7 +167,6 @@ cp .env.example .env
      - Performance (Number: engagement rate)
 
    b. **Content Templates Database**
-
    - Properties:
      - Template Name (Title)
      - Platform (Select)
@@ -184,7 +174,6 @@ cp .env.example .env
      - Variables (Multi-select)
 
    c. **Industry Terms Database**
-
    - Properties:
      - Term (Title)
      - Definition (Text)
@@ -192,7 +181,6 @@ cp .env.example .env
      - British Equivalent (Text)
 
    d. **Performance Analytics Database**
-
    - Properties:
      - Date (Date)
      - Platform (Select)
@@ -201,7 +189,6 @@ cp .env.example .env
      - Conversions (Number)
 
    e. **Newsjacking Opportunities Database**
-
    - Properties:
      - Headline (Title)
      - Source (URL)
@@ -210,7 +197,6 @@ cp .env.example .env
      - Content (Text)
 
    f. **Content Calendar Database**
-
    - Properties:
      - Title (Title)
      - Date (Date)
@@ -219,7 +205,6 @@ cp .env.example .env
      - Content (Text)
 
 4. **Share Databases with Integration**
-
    - Open each database
    - Click "Share" button
    - Invite your integration
@@ -248,19 +233,16 @@ cp .env.example .env
 ### Step-by-Step Configuration
 
 1. **Create Anthropic Account**
-
    - Go to <https://console.anthropic.com>
    - Sign up with email
    - Verify email address
 
 2. **Add Payment Method**
-
    - Go to Billing section
    - Add credit card
    - Set usage limits (recommended: $100/month initially)
 
 3. **Generate API Key**
-
    - Navigate to <https://console.anthropic.com/account/keys>
    - Click "Create Key"
    - Name: "Content Domination System"
@@ -291,7 +273,6 @@ cp .env.example .env
 ### Step-by-Step Configuration
 
 1. **Get API Credentials**
-
    - Log into <https://app.kit.com>
    - Go to Settings → Advanced → API
    - Or direct link: <https://app.kit.com/account_settings/developer>
@@ -300,14 +281,12 @@ cp .env.example .env
      - API Secret → `KIT_API_SECRET`
 
 2. **Get Form ID**
-
    - Go to Landing Pages & Forms
    - Select your newsletter signup form
    - Copy the Form ID from URL or form settings
    - Save as `KIT_NEWSLETTER_FORM_ID`
 
 3. **Get Sequence ID**
-
    - Go to Sequences
    - Select your "94 Audio Solutions" sequence
    - Copy Sequence ID from URL
@@ -352,7 +331,6 @@ HYPEBOT_RSS_URL=https://www.hypebot.com/feed
 ### Spotify for Artists API
 
 1. **Create Spotify App**
-
    - Go to <https://developer.spotify.com/dashboard>
    - Create app: "Content Automation"
    - Note credentials:
@@ -448,24 +426,20 @@ This will check:
 ### Common Issues
 
 1. **Twitter API: "Unauthorized"**
-
    - Ensure you have Elevated access
    - Regenerate tokens if needed
    - Check Read/Write permissions
 
 2. **LinkedIn: "No permission to publish"**
-
    - Verify Share on LinkedIn product is approved
    - Check OAuth scopes include w_member_social
 
 3. **Notion: "Database not found"**
-
    - Ensure integration is shared with database
    - Verify database IDs are correct
    - Check integration has edit permissions
 
 4. **Claude: "Rate limit exceeded"**
-
    - Check usage in Anthropic console
    - Increase billing limits
    - Implement retry logic with exponential backoff

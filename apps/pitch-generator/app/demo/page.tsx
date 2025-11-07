@@ -126,8 +126,8 @@ export default function PublicSkillsDemo() {
                                 result.complianceScore >= 0.8
                                   ? 'bg-gradient-to-r from-green-500 to-green-600'
                                   : result.complianceScore >= 0.6
-                                  ? 'bg-gradient-to-r from-yellow-500 to-orange-500'
-                                  : 'bg-gradient-to-r from-red-500 to-red-600'
+                                    ? 'bg-gradient-to-r from-yellow-500 to-orange-500'
+                                    : 'bg-gradient-to-r from-red-500 to-red-600'
                               }`}
                               style={{
                                 width: `${result.complianceScore * 100}%`,
@@ -143,8 +143,8 @@ export default function PublicSkillsDemo() {
                         {result.complianceScore >= 0.8
                           ? '✅ Excellent! Authentic UK music industry voice.'
                           : result.complianceScore >= 0.6
-                          ? '⚠️ Good, but needs some improvements.'
-                          : '❌ Needs work - too corporate or US spelling.'}
+                            ? '⚠️ Good, but needs some improvements.'
+                            : '❌ Needs work - too corporate or US spelling.'}
                       </p>
                     </div>
 

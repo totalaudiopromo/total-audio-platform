@@ -325,8 +325,8 @@ export default function ExportButtons({
                 !format.available
                   ? 'bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed'
                   : exportFormat === format.value
-                  ? 'bg-blue-100 text-blue-700 border border-blue-300'
-                  : 'bg-gray-50 text-gray-600 border border-gray-200 hover:bg-gray-100'
+                    ? 'bg-blue-100 text-blue-700 border border-blue-300'
+                    : 'bg-gray-50 text-gray-600 border border-gray-200 hover:bg-gray-100'
               }`}
             >
               <format.icon className="w-4 h-4" />

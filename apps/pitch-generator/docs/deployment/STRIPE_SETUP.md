@@ -38,7 +38,6 @@
 1. Go to https://dashboard.stripe.com/test/products
 2. Click "Add product"
 3. For **PRO tier**:
-
    - Name: "Pitch Generator PRO"
    - Description: "Unlimited AI-powered pitch generation"
    - Pricing: Recurring, Monthly, £14.00 GBP
@@ -46,7 +45,6 @@
    - **Copy the Price ID** (starts with `price_`)
 
 4. For **AGENCY tier**:
-
    - Name: "Pitch Generator AGENCY"
    - Description: "Unlimited pitch generation with team features"
    - Pricing: Recurring, Monthly, £49.00 GBP

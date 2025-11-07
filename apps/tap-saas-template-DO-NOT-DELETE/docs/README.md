@@ -47,19 +47,16 @@ For getting started, see the root-level documentation:
 When adding new documentation:
 
 1. **Setup guides** → `/docs/setup/`
-
    - Configuration files
    - Environment setup
    - Integration guides
 
 2. **How-to guides** → `/docs/guides/`
-
    - Step-by-step tutorials
    - Feature usage guides
    - Best practices
 
 3. **Reference docs** → `/docs/reference/`
-
    - API documentation
    - Technical specifications
    - Architecture decisions

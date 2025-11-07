@@ -280,25 +280,21 @@
 ### Primary Sources:
 
 1. **BBC Radio 6 Music Schedule Information**
-
    - Rolling Stone UK: https://www.rollingstone.co.uk/music/bbc-radio-6-music-details-new-2025-schedule-46651/
    - NME: https://www.nme.com/news/music/bbc-radio-6-music-new-daytime-schedule-nick-grimshaw-lauren-laverne-3827464
    - RadioToday: https://radiotoday.co.uk/2025/05/tom-ravenscroft-to-exit-bbc-radio-6-music-as-mary-anne-hobbs-returns/
 
 2. **BBC Introducing Submission Process**
-
    - PRS for Music: https://www.prsformusic.com/m-magazine/how-to/how-to-get-played-on-the-radio-in-2025
    - Ditto Music: https://dittomusic.com/en/blog/how-to-get-your-music-played-on-bbc-introducing/
    - ICMP: https://www.icmp.ac.uk/blog/inside-bbc-music-introducing
 
 3. **Presenter-Specific Information**
-
    - Steve Lamacq: Music Week - https://www.musicweek.com/media/read/steve-lamacq-steps-back-from-weekday-bbc-6-music-show-after-18-years/088452
    - Mary Anne Hobbs: Wikipedia - https://en.wikipedia.org/wiki/Mary_Anne_Hobbs
    - Marc Riley: RadioToday - https://radiotoday.co.uk/2023/04/riley-coe-cut-back-as-part-of-schedule-changes-at-bbc-radio-6-music/
 
 4. **Submission Tips & Common Mistakes**
-
    - RouteNote: https://routenote.com/blog/how-to-get-your-music-featured-on-bbc-radio-6-music/
    - The Unsigned Guide: https://www.theunsignedguide.com/blog/718-bbc-introducing-share-advice-on-getting-radio-airplay-for-your-music
    - Music Gateway: https://www.musicgateway.com/music-promotion/radio-station/bbc-radio-6-music

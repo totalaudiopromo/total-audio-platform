@@ -13,19 +13,16 @@
 ### Critical Issues to Address:
 
 1. **Missing Genres** (409/517 = 79.1%)
-
    - Most contacts have no genre tags
    - **Impact**: Can't effectively target contacts for campaigns
    - **Solution**: AI enrichment will add genres based on station type and contact info
 
 2. **Missing Station Names** (60/517 = 11.6%)
-
    - 60 contacts show empty or "Unknown" station
    - **Impact**: Can't identify which station to pitch
    - **Solution**: Extract from enrichment notes or domain analysis
 
 3. **Invalid Email** (1 contact)
-
    - `jkhjksdhfmnm@gmail.com` - Gibberish test data
    - **Impact**: Unusable contact, wastes enrichment credits
    - **Solution**: Delete or mark as Test Mode

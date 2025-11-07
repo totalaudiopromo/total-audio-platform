@@ -13,14 +13,12 @@
 ### Priority 1: Triple J Network (Not Yet Contacted)
 
 1. **Bridget Hustwaite** - Triple J Presenter
-
    - Email: hustwaite.bridget@abc.net.au
    - Show: Various Triple J shows
    - Angle: Sydney artist with Home & Hosed support
    - Best time: Weekday mornings
 
 2. **Tyrone Pynor** - Triple J
-
    - Email: pynor.tyrone@abc.net.au
    - Show: Abby & Tyrone duo
    - Angle: Electronic music specialist, previous Triple J support
@@ -35,14 +33,12 @@
 ### Priority 2: Community Radio - Sydney
 
 4. **FBi Radio Music Team**
-
    - Email: music@fbiradio.com
    - Station: FBi Radio 94.5 (Sydney community)
    - Angle: LOCAL Sydney artist, bedroom producer
    - Genre: Perfect fit for independent electronic
 
 5. **2SER Music Director**
-
    - Email: musicdirector@2ser.com
    - Station: 2SER 107.3 (Sydney community)
    - Angle: Sydney-based, Triple J-supported artist
@@ -57,14 +53,12 @@
 ### Priority 3: Community Radio - Melbourne
 
 7. **Simon Winkler** - Triple R (Already listed but worth emphasis)
-
    - Email: simonw@rrr.org.au
    - Station: Triple R Melbourne
    - Angle: Melbourne community support for Sydney independent
    - Genre: Electronic specialist shows
 
 8. **PBS FM Music Director**
-
    - Email: musicdirector@pbsfm.org.au
    - Station: PBS FM Melbourne
    - Angle: Interstate support, Triple J crossover
@@ -79,7 +73,6 @@
 ### Priority 4: Community Radio - Brisbane/Gold Coast
 
 10. **4ZZZ Music Coordinator**
-
     - Email: music@4zzz.org.au
     - Station: 4ZZZ Brisbane
     - Angle: Queensland support for Sydney artist
@@ -94,21 +87,18 @@
 ### Priority 5: Digital/Online Australian
 
 12. **Unearthed Digital**
-
     - Email: unearthed@abc.net.au
     - Station: Triple J Unearthed
     - Angle: Previous Triple J support, emerging artist
     - Genre: Digital-first electronic showcase
 
 13. **Community Broadcaster Association**
-
     - Email: info@cbaa.org.au
     - Station: National community radio network
     - Angle: Independent artist championing
     - Genre: Broad community reach
 
 14. **Australian Music Radio Airplay Project (Amrap)**
-
     - Email: info@amrap.org.au
     - Station: National community radio distribution
     - Angle: Community radio network distribution
@@ -127,21 +117,18 @@
 ### Priority 1: BBC Specialist Electronic
 
 16. **Danny Howard** - BBC Radio 1 Dance
-
     - Email: danny.howard@bbc.co.uk
     - Show: Radio 1 Dance (Friday 7-9pm)
     - Angle: Australian electronic artist, international reach
     - Genre: House/techno specialist
 
 17. **Pete Tong** - BBC Radio 1 Essential Selection
-
     - Email: pete.tong@bbc.co.uk
     - Show: Essential Selection (Friday evening)
     - Angle: International electronic prestige
     - Genre: Electronic legends platform
 
 18. **Jaguar** - BBC Radio 1 Residency
-
     - Email: jaguar@bbc.co.uk
     - Show: Radio 1 Residency
     - Angle: Female electronic artist supporting female artist
@@ -156,14 +143,12 @@
 ### Priority 2: BBC 6 Music Evening Shows
 
 20. **Tom Ravenscroft** - BBC 6 Music
-
     - Email: tom.ravenscroft@bbc.co.uk
     - Show: 6 Music Evening (Monday-Thursday)
     - Angle: Independent electronic, international artist focus
     - Genre: Alternative/electronic specialist
 
 21. **Mary Anne Hobbs** - BBC 6 Music
-
     - Email: maryanne.hobbs@bbc.co.uk
     - Show: 6 Music (Tuesday evening)
     - Angle: Championing female electronic artists
@@ -186,28 +171,24 @@
 ### Priority 4: UK Community/Digital
 
 24. **Rinse FM Music**
-
     - Email: info@rinse.fm
     - Station: Rinse FM London
     - Angle: Underground electronic credibility
     - Genre: Bass/electronic specialist
 
 25. **NTS Radio Music**
-
     - Email: music@nts.live
     - Station: NTS Radio London
     - Angle: International artist showcase, bedroom production aesthetic
     - Genre: Eclectic electronic/experimental
 
 26. **Threads Radio**
-
     - Email: info@threadsradio.com
     - Station: Threads Radio (online)
     - Angle: Emerging electronic artists
     - Genre: Electronic/indie online platform
 
 27. **Soho Radio Music**
-
     - Email: music@sohoradio.com
     - Station: Soho Radio London
     - Angle: Independent artist focus, international reach
@@ -222,7 +203,6 @@
 ### Priority 5: Regional BBC Electronic Specialists
 
 29. **BBC Radio Scotland - Vic Galloway**
-
     - Email: vic.galloway@bbc.co.uk
     - Show: BBC Radio Scotland
     - Angle: International indie/electronic support

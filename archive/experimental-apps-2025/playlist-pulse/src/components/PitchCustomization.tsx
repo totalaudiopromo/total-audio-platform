@@ -247,8 +247,8 @@ export default function PitchCustomization() {
                   {state.pitchSettings.professionalism[0] > 70
                     ? 'Very Professional'
                     : state.pitchSettings.professionalism[0] > 40
-                    ? 'Balanced'
-                    : 'Casual & Friendly'}
+                      ? 'Balanced'
+                      : 'Casual & Friendly'}
                 </div>
               </div>
               <div className="bg-white/5 rounded-lg p-4 border border-white/10">

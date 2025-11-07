@@ -179,11 +179,14 @@ function testFilterFunctions() {
     const allStudies = getAllCaseStudiesSync();
 
     // Group by status
-    const statusGroups = allStudies.reduce((acc, study) => {
-      if (!acc[study.status]) acc[study.status] = [];
-      acc[study.status].push(study);
-      return acc;
-    }, {} as Record<string, EnrichedCaseStudyData[]>);
+    const statusGroups = allStudies.reduce(
+      (acc, study) => {
+        if (!acc[study.status]) acc[study.status] = [];
+        acc[study.status].push(study);
+        return acc;
+      },
+      {} as Record<string, EnrichedCaseStudyData[]>
+    );
 
     console.log('\nBy Status:');
     Object.entries(statusGroups).forEach(([status, studies]) => {
@@ -191,11 +194,14 @@ function testFilterFunctions() {
     });
 
     // Group by category
-    const categoryGroups = allStudies.reduce((acc, study) => {
-      if (!acc[study.category]) acc[study.category] = [];
-      acc[study.category].push(study);
-      return acc;
-    }, {} as Record<string, EnrichedCaseStudyData[]>);
+    const categoryGroups = allStudies.reduce(
+      (acc, study) => {
+        if (!acc[study.category]) acc[study.category] = [];
+        acc[study.category].push(study);
+        return acc;
+      },
+      {} as Record<string, EnrichedCaseStudyData[]>
+    );
 
     console.log('\nBy Category:');
     Object.entries(categoryGroups).forEach(([category, studies]) => {
@@ -203,11 +209,14 @@ function testFilterFunctions() {
     });
 
     // Group by tier
-    const tierGroups = allStudies.reduce((acc, study) => {
-      if (!acc[study.tier]) acc[study.tier] = [];
-      acc[study.tier].push(study);
-      return acc;
-    }, {} as Record<number, EnrichedCaseStudyData[]>);
+    const tierGroups = allStudies.reduce(
+      (acc, study) => {
+        if (!acc[study.tier]) acc[study.tier] = [];
+        acc[study.tier].push(study);
+        return acc;
+      },
+      {} as Record<number, EnrichedCaseStudyData[]>
+    );
 
     console.log('\nBy Tier:');
     Object.entries(tierGroups).forEach(([tier, studies]) => {

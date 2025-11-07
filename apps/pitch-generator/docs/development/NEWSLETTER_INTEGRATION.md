@@ -13,7 +13,6 @@
 ### Integration Points
 
 1. **Dashboard** (`app/dashboard/page.tsx`)
-
    - Added newsletter signup card between recent pitches and quick links
    - Encourages newsletter signup from logged-in users
    - Full description with benefits

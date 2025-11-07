@@ -123,7 +123,6 @@ Agent OS is Anthropic's architecture pattern (NOT a product) for building reliab
 #### ✅ **PERFECT Agent OS Implementation**:
 
 1. **LibertyRadioPromoAgent.ts** (TypeScript SDK agent)
-
    - Full Anthropic SDK integration
    - Prompt caching with CachedContextManager
    - Extended thinking configured
@@ -139,14 +138,12 @@ Agent OS is Anthropic's architecture pattern (NOT a product) for building reliab
 #### ⚠️ **Needs Agent OS Upgrade**:
 
 1. **JavaScript Orchestrator** (`orchestrator.js`)
-
    - No prompt caching
    - No Anthropic SDK (custom implementation)
    - No extended thinking
    - ✅ Has event system (good!)
 
 2. **6 Sub-Agents** (intelligence, project, email, radio, analytics, coverage)
-
    - JavaScript-based (not using Anthropic SDK)
    - No prompt caching
    - Custom implementations
@@ -227,22 +224,18 @@ class Maestro extends EventEmitter {
 #### **Recommended New Skills**:
 
 1. **Transcript Summariser Skill** (Intelligence Agent)
-
    - Extract campaign brief from Google Meet transcripts
    - Impact: 5 mins → 10 seconds
 
 2. **WARM Play Reporter Skill** (Analytics Agent)
-
    - Format WARM API data into client reports
    - Impact: 2 hours → 5 mins per weekly report
 
 3. **Follow-up Sequencing Skill** (Email Agent)
-
    - Generate follow-up email sequences
    - Impact: 30 mins → 2 mins per campaign
 
 4. **Response Classifier Skill** (Email Agent)
-
    - Auto-classify email responses (positive/negative/inquiry)
    - Impact: 1 hour → instant per campaign
 

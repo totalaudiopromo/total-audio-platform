@@ -948,8 +948,8 @@ async function runCompleteNewsjackingTests() {
     results.failed === 0
       ? 'production-ready'
       : results.failed <= 2
-      ? 'needs-minor-fixes'
-      : 'needs-major-work';
+        ? 'needs-minor-fixes'
+        : 'needs-major-work';
 
   // Display comprehensive summary
   console.log('='.repeat(80));

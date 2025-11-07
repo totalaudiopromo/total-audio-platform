@@ -8,7 +8,6 @@
 ## 🚀 Step 1: Enable Skills (5 minutes)
 
 1. Open Claude Code settings:
-
    - Press `⌘,` (Command + Comma)
    - Or click the gear icon
 

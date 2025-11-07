@@ -84,7 +84,6 @@ node ../radio-promo-agent.js analyze-mailchimp
    ```
 
 2. **Add to Claude Desktop**:
-
    - Open Claude Desktop settings
    - Go to Model Context Protocol servers
    - Add Google Services MCP server

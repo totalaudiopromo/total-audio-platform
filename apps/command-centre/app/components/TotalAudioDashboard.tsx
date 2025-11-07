@@ -324,8 +324,8 @@ export default function TotalAudioDashboard() {
                           metric.changeType === 'positive'
                             ? 'text-green-600'
                             : metric.changeType === 'negative'
-                            ? 'text-red-600'
-                            : 'text-gray-600'
+                              ? 'text-red-600'
+                              : 'text-gray-600'
                         }`}
                       >
                         {metric.changeType === 'positive' && (
@@ -375,10 +375,10 @@ export default function TotalAudioDashboard() {
                               card.status === 'active'
                                 ? 'bg-green-500'
                                 : card.status === 'warning'
-                                ? 'bg-yellow-500'
-                                : card.status === 'error'
-                                ? 'bg-red-500'
-                                : 'bg-gray-500'
+                                  ? 'bg-yellow-500'
+                                  : card.status === 'error'
+                                    ? 'bg-red-500'
+                                    : 'bg-gray-500'
                             }`}
                           ></div>
                           <span className="capitalize">{card.status}</span>

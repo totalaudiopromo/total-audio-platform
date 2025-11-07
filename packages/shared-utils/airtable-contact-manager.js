@@ -192,9 +192,12 @@ class AirtableContactManager {
       const campaignId = await this.createMailchimpCampaign(campaignData, mailchimpContacts);
 
       // Schedule automatic removal after campaign
-      setTimeout(() => {
-        this.removeTemporaryContacts(campaignData.artistName);
-      }, 7 * 24 * 60 * 60 * 1000); // Remove after 7 days
+      setTimeout(
+        () => {
+          this.removeTemporaryContacts(campaignData.artistName);
+        },
+        7 * 24 * 60 * 60 * 1000
+      ); // Remove after 7 days
 
       return campaignId;
     } catch (error) {

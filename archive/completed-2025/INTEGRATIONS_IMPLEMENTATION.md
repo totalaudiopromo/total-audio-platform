@@ -244,10 +244,13 @@ export function useIntegrations() {
   async function loadConnections() {
     const { data } = await supabase.from('integration_connections').select('*');
 
-    const mapped = (data || []).reduce((acc, conn) => {
-      acc[conn.integration_type] = conn;
-      return acc;
-    }, {} as Record<string, any>);
+    const mapped = (data || []).reduce(
+      (acc, conn) => {
+        acc[conn.integration_type] = conn;
+        return acc;
+      },
+      {} as Record<string, any>
+    );
 
     setConnections(mapped);
     setLoading(false);
