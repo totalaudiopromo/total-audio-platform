@@ -82,7 +82,7 @@
     "@changesets/cli": "^2.29.7",
     "@types/dotenv": "^8.2.3",
     "@types/node": "^24.10.0",
-    "node-fetch": "^3.3.2",
+    "node-fetch": "^2.7.0",
     "sharp": "^0.34.4",
     "tsx": "^4.20.6"
   }
