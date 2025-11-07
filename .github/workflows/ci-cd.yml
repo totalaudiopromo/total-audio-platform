@@ -182,14 +182,12 @@ jobs:
 
     - name: Build preview bundle for ${{ matrix.app }}
       run: |
-        cd apps/$APP_PATH
-        vercel pull --yes --environment=preview --token ${{ secrets.VERCEL_TOKEN }}
-        vercel build --token ${{ secrets.VERCEL_TOKEN }}
+        vercel pull --yes --environment=preview --token ${{ secrets.VERCEL_TOKEN }} --cwd "apps/$APP_PATH"
+        vercel build --token ${{ secrets.VERCEL_TOKEN }} --cwd "apps/$APP_PATH"
 
     - name: Deploy ${{ matrix.app }} to staging
       run: |
-        cd apps/$APP_PATH
-        vercel deploy --prebuilt --token ${{ secrets.VERCEL_TOKEN }} --yes
+        vercel deploy --prebuilt --token ${{ secrets.VERCEL_TOKEN }} --yes --cwd "apps/$APP_PATH"
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     
@@ -275,14 +273,12 @@ jobs:
 
     - name: Build production bundle for ${{ matrix.app }}
       run: |
-        cd apps/$APP_PATH
-        vercel pull --yes --environment=production --token ${{ secrets.VERCEL_TOKEN }}
-        vercel build --prod --token ${{ secrets.VERCEL_TOKEN }}
+        vercel pull --yes --environment=production --token ${{ secrets.VERCEL_TOKEN }} --cwd "apps/$APP_PATH"
+        vercel build --prod --token ${{ secrets.VERCEL_TOKEN }} --cwd "apps/$APP_PATH"
 
     - name: Deploy ${{ matrix.app }} to production
       run: |
-        cd apps/$APP_PATH
-        vercel deploy --prebuilt --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
+        vercel deploy --prebuilt --prod --token ${{ secrets.VERCEL_TOKEN }} --yes --cwd "apps/$APP_PATH"
       env:
         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     
