@@ -1,7 +1,7 @@
 {
   "framework": "nextjs",
-  "buildCommand": "npm run build",
-  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "pnpm --filter total-audio-promo-frontend build",
+  "installCommand": "pnpm install --frozen-lockfile",
   "env": {
     "NEXT_PUBLIC_BASE_URL": "https://totalaudiopromo.com"
   },

@@ -1,7 +1,7 @@
 {
   "framework": "nextjs",
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
+  "buildCommand": "pnpm --filter pitch-generator build",
+  "installCommand": "pnpm install --frozen-lockfile",
   "env": {
     "NEXT_PUBLIC_BASE_URL": "https://pitch.totalaudiopromo.com"
   },
