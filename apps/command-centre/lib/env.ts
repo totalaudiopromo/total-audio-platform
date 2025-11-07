@@ -6,7 +6,8 @@ import { z } from 'zod';
  */
 
 // Check if we're in a build environment without full env vars (GitHub Actions CI)
-const isBuildTime = process.env.CI === 'true' || process.env.NEXT_PHASE === 'phase-production-build';
+const isBuildTime =
+  process.env.CI === 'true' || process.env.NEXT_PHASE === 'phase-production-build';
 
 const envSchema = z.object({
   // Database (optional during build, required at runtime)
