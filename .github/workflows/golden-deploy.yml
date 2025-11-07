@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        app: [audio-intel, tracker, pitch-generator, command-centre, web]
+        app: [audio-intel, tracker, pitch-generator, web]
 
     steps:
       - uses: actions/checkout@v4
