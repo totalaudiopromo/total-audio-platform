@@ -6,8 +6,9 @@ packages:
   - 'apps/command-centre'
   - 'apps/web'
   - 'apps/api'
-  - 'apps/mobile'
-  - 'apps/tap-saas-template-DO-NOT-DELETE'
+  # Removed mobile and tap-saas-template to eliminate security vulnerabilities
+  # - 'apps/mobile'
+  # - 'apps/tap-saas-template-DO-NOT-DELETE'
 
   # Shared packages
   - 'packages/*'
