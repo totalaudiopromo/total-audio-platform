@@ -79,7 +79,7 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    if: success()
+    if: false  # Disabled - Vercel auto-deploys main branch to production
 
     steps:
       - uses: actions/checkout@v4
