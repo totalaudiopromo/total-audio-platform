@@ -148,9 +148,9 @@ jobs:
         ORG_ID="${{ secrets.VERCEL_ORG_ID }}"
         rm -rf .vercel
         mkdir -p .vercel
-        cat <<EOF > .vercel/project.json
-{"projectId":"$PROJECT_ID","orgId":"$ORG_ID"}
-EOF
+        cat > .vercel/project.json <<EOF
+        {"projectId":"$PROJECT_ID","orgId":"$ORG_ID"}
+        EOF
         if [ "${{ github.ref }}" = "refs/heads/main" ]; then
           ENVIRONMENT=production
           ARTIFACT_SUFFIX=production
