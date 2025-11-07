@@ -95,6 +95,9 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'pnpm'
 
+    - name: Install Vercel CLI
+      run: npm install -g vercel
+
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
 
@@ -111,6 +114,43 @@ jobs:
       env:
         CI: true
 
+    - name: Create Vercel prebuilt artifact
+      id: vercel-build
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging'
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      run: |
+        APP_PATH="${{ matrix.app }}"
+        rm -rf .vercel
+        mkdir -p .vercel
+        cp "apps/$APP_PATH/.vercel/project.json" .vercel/project.json
+        if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+          ENVIRONMENT=production
+          ARTIFACT_SUFFIX=production
+          BUILD_FLAG="--prod"
+        else
+          ENVIRONMENT=preview
+          ARTIFACT_SUFFIX=staging
+          BUILD_FLAG=""
+        fi
+        echo "artifact_suffix=$ARTIFACT_SUFFIX" >> "$GITHUB_OUTPUT"
+        echo "environment=$ENVIRONMENT" >> "$GITHUB_OUTPUT"
+        vercel pull --yes --environment="$ENVIRONMENT" --token "$VERCEL_TOKEN"
+        if [ -n "$BUILD_FLAG" ]; then
+          vercel build $BUILD_FLAG --token "$VERCEL_TOKEN"
+        else
+          vercel build --token "$VERCEL_TOKEN"
+        fi
+        tar -czf "vercel-${{ matrix.app }}-$ARTIFACT_SUFFIX.tar.gz" -C .vercel output
+
+    - name: Upload Vercel artifact
+      if: steps.vercel-build.outcome == 'success'
+      uses: actions/upload-artifact@v4
+      with:
+        name: vercel-output-${{ matrix.app }}-${{ steps.vercel-build.outputs.artifact_suffix }}
+        path: vercel-${{ matrix.app }}-${{ steps.vercel-build.outputs.artifact_suffix }}.tar.gz
+        retention-days: 1
+
   deploy-staging:
     name: Deploy to Staging
     runs-on: ubuntu-latest
@@ -121,6 +161,8 @@ jobs:
       NEXT_PUBLIC_SUPABASE_ANON_KEY: 'supabase-anon-placeholder'
       SUPABASE_SERVICE_ROLE_KEY: 'service-role-placeholder'
       STRIPE_SECRET_KEY: 'sk_test_placeholder'
+      HUSKY: '0'
+      CI: '1'
 
     strategy:
       matrix:
@@ -176,14 +218,20 @@ jobs:
         esac
         echo "APP_PATH=$APP_PATH" >> $GITHUB_ENV
         echo "VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }}" >> $GITHUB_ENV
+        printf 'VERCEL_PROJECT_SETTINGS_OVERRIDE={"rootDirectory":"apps/%s"}\n' "$APP_PATH" >> $GITHUB_ENV
 
-    - name: Install dependencies
-      run: pnpm install --frozen-lockfile
+    - name: Download prebuilt artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: vercel-output-${{ matrix.app }}-staging
+        path: .vercel/artifacts
 
-    - name: Build preview bundle for ${{ matrix.app }}
+    - name: Restore Vercel build output
       run: |
-        vercel pull --yes --environment=preview --token ${{ secrets.VERCEL_TOKEN }}
-        vercel build --token ${{ secrets.VERCEL_TOKEN }}
+        rm -rf .vercel
+        mkdir -p .vercel
+        tar -xzf ".vercel/artifacts/vercel-${{ matrix.app }}-staging.tar.gz" -C .vercel
+        cp "apps/$APP_PATH/.vercel/project.json" .vercel/project.json
 
     - name: Deploy ${{ matrix.app }} to staging
       run: |
@@ -212,6 +260,8 @@ jobs:
       NEXT_PUBLIC_SUPABASE_ANON_KEY: 'supabase-anon-placeholder'
       SUPABASE_SERVICE_ROLE_KEY: 'service-role-placeholder'
       STRIPE_SECRET_KEY: 'sk_test_placeholder'
+      HUSKY: '0'
+      CI: '1'
 
     strategy:
       matrix:
@@ -267,14 +317,20 @@ jobs:
         esac
         echo "APP_PATH=$APP_PATH" >> $GITHUB_ENV
         echo "VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }}" >> $GITHUB_ENV
+        printf 'VERCEL_PROJECT_SETTINGS_OVERRIDE={"rootDirectory":"apps/%s"}\n' "$APP_PATH" >> $GITHUB_ENV
 
-    - name: Install dependencies
-      run: pnpm install --frozen-lockfile
+    - name: Download prebuilt artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: vercel-output-${{ matrix.app }}-production
+        path: .vercel/artifacts
 
-    - name: Build production bundle for ${{ matrix.app }}
+    - name: Restore Vercel build output
       run: |
-        vercel pull --yes --environment=production --token ${{ secrets.VERCEL_TOKEN }}
-        vercel build --prod --token ${{ secrets.VERCEL_TOKEN }}
+        rm -rf .vercel
+        mkdir -p .vercel
+        tar -xzf ".vercel/artifacts/vercel-${{ matrix.app }}-production.tar.gz" -C .vercel
+        cp "apps/$APP_PATH/.vercel/project.json" .vercel/project.json
 
     - name: Deploy ${{ matrix.app }} to production
       run: |
