@@ -16,14 +16,14 @@ function readNpmrc() {
   if (!fs.existsSync(NPMRC_PATH)) {
     return {};
   }
-  
+
   const content = fs.readFileSync(NPMRC_PATH, 'utf-8');
   const config = {};
-  
+
   for (const line of content.split('\n')) {
     const trimmed = line.trim();
     if (!trimmed || trimmed.startsWith('#')) continue;
-    
+
     const match = trimmed.match(/^([^=]+)=(.*)$/);
     if (match) {
       const key = match[1].trim();
@@ -31,7 +31,7 @@ function readNpmrc() {
       config[key] = value === 'true' ? true : value === 'false' ? false : value;
     }
   }
-  
+
   return config;
 }
 
@@ -39,17 +39,17 @@ function readLockfileSettings() {
   if (!fs.existsSync(LOCKFILE_PATH)) {
     return null;
   }
-  
+
   const content = fs.readFileSync(LOCKFILE_PATH, 'utf-8');
   const settingsMatch = content.match(/^settings:\s*\n((?:  .+:\s*.+\n?)+)/m);
-  
+
   if (!settingsMatch) {
     return null;
   }
-  
+
   const settings = {};
   const settingsBlock = settingsMatch[1];
-  
+
   for (const line of settingsBlock.split('\n')) {
     const match = line.match(/^\s+(\w+):\s*(.+)$/);
     if (match) {
@@ -58,25 +58,25 @@ function readLockfileSettings() {
       settings[key] = value === 'true' ? true : value === 'false' ? false : value;
     }
   }
-  
+
   return settings;
 }
 
 function main() {
   console.log('🔍 Validating pnpm lockfile configuration...\n');
-  
+
   const npmrc = readNpmrc();
   const lockfileSettings = readLockfileSettings();
-  
+
   if (!lockfileSettings) {
     console.error('❌ Could not read settings from pnpm-lock.yaml');
     process.exit(1);
   }
-  
+
   // Check auto-install-peers setting
   const npmrcAutoInstall = npmrc['auto-install-peers'];
   const lockfileAutoInstall = lockfileSettings.autoInstallPeers;
-  
+
   if (npmrcAutoInstall !== undefined) {
     if (npmrcAutoInstall !== lockfileAutoInstall) {
       console.error('❌ Lockfile configuration mismatch detected!\n');
@@ -86,11 +86,10 @@ function main() {
       process.exit(1);
     }
   }
-  
+
   console.log('✅ Lockfile configuration matches .npmrc settings');
   console.log(`   auto-install-peers: ${lockfileAutoInstall}`);
   process.exit(0);
 }
 
 main();
-
