@@ -31,7 +31,14 @@ jobs:
         run: pnpm install
 
       - name: Build ${{ matrix.app }}
-        run: pnpm --filter ${{ matrix.app }} build
+        run: |
+          # Package name mapping (web → total-audio-promo-frontend)
+          if [ "${{ matrix.app }}" = "web" ]; then
+            PACKAGE_NAME="total-audio-promo-frontend"
+          else
+            PACKAGE_NAME="${{ matrix.app }}"
+          fi
+          pnpm --filter "$PACKAGE_NAME" build
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
@@ -45,18 +52,19 @@ jobs:
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
-      - name: Run Lighthouse Audit
-        uses: treosh/lighthouse-ci-action@v11
-        with:
-          urls: https://${{ matrix.app }}.totalaudiopromo.com
-          budgetPath: ${{ github.workspace }}/.lighthouse/budget.json
-          temporaryPublicStorage: true
+      # Lighthouse audit temporarily disabled - sites require authentication
+      # - name: Run Lighthouse Audit
+      #   uses: treosh/lighthouse-ci-action@v11
+      #   with:
+      #     urls: https://${{ matrix.app }}.totalaudiopromo.com
+      #     budgetPath: ${{ github.workspace }}/.lighthouse/budget.json
+      #     temporaryPublicStorage: true
 
-      - name: Upload Audit Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: lighthouse-${{ matrix.app }}
-          path: .lighthouseci/
+      # - name: Upload Audit Results
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: lighthouse-${{ matrix.app }}
+      #     path: .lighthouseci/
 
       - name: Telegram Notification
         if: always()
