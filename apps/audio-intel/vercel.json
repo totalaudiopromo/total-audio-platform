@@ -1,5 +1,8 @@
 {
   "framework": "nextjs",
+  "buildCommand": "pnpm --filter audio-intel build",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "outputDirectory": "apps/audio-intel/.next",
   "env": {
     "NEXT_PUBLIC_BASE_URL": "https://intel.totalaudiopromo.com"
   },
