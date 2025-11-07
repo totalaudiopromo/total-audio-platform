@@ -73,14 +73,14 @@
   }
 
   /* Intelligent Parsing Section - FORCE CENTER ALIGNMENT */
-  section .grid.lg\\:grid-cols-2 {
+  section .grid.lg\:grid-cols-2 {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     gap: 2rem !important;
   }
 
-  section .grid.lg\\:grid-cols-2 > div {
+  section .grid.lg\:grid-cols-2 > div {
     width: 100% !important;
     max-width: calc(100vw - 2rem) !important;
     margin-left: auto !important;
