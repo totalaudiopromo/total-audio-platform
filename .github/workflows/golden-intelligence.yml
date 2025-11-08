@@ -1,0 +1,97 @@
+name: "Golden Intelligence (Post-Check + Rollback)"
+
+on:
+  workflow_run:
+    workflows: ["Golden Deployment Pipeline"]
+    types:
+      - completed
+
+concurrency:
+  group: golden-intelligence
+  cancel-in-progress: false
+
+jobs:
+  postcheck:
+    name: Post-Deployment Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run Post-Check
+        run: pnpm tsx scripts/golden-postcheck.ts
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Upload Post-Check Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: golden-postcheck-reports
+          path: reports/golden/postcheck/
+          retention-days: 30
+
+  rollback:
+    name: Auto-Rollback
+    needs: postcheck
+    if: failure()
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run Rollback
+        run: pnpm tsx scripts/golden-rollback.ts
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID_AUDIO_INTEL: ${{ secrets.VERCEL_PROJECT_ID_AUDIO_INTEL }}
+          VERCEL_PROJECT_ID_TRACKER: ${{ secrets.VERCEL_PROJECT_ID_TRACKER }}
+          VERCEL_PROJECT_ID_PITCH_GENERATOR: ${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_REF: ${{ github.ref }}
+
+      - name: Upload Rollback Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: golden-rollback-reports
+          path: reports/golden/rollback/
+          retention-days: 30
+
+  notify:
+    name: Final Notification
+    needs: [postcheck, rollback]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Telegram Final Status
+        run: |
+          if [ "${{ needs.postcheck.result }}" == "failure" ]; then
+            curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d "text=⚠️ Golden Intelligence (3-app scope): Post-check failed. Rollback ${{ needs.rollback.result == 'success' && 'succeeded' || 'failed' }}."
+          else
+            curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d "text=✅ Golden Intelligence (3-app scope): All checks passed. No rollback needed."
+          fi
+

@@ -1,0 +1,65 @@
+name: Documentation Cleanup
+
+on:
+  schedule:
+    # Run every Monday at 2am UTC
+    - cron: '0 2 * * 1'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  cleanup-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to commit changes
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Organize documentation
+        run: node scripts/organize-docs.js
+
+      - name: Check for changes
+        id: check-changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.check-changes.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/ apps/*/docs/
+          git commit -m "chore(docs): auto-organised docs/ structure"
+          git push
+
+      - name: Summary
+        if: steps.check-changes.outputs.has_changes == 'true'
+        run: |
+          echo "✅ Documentation organized and committed"
+
+      - name: Summary (no changes)
+        if: steps.check-changes.outputs.has_changes == 'false'
+        run: |
+          echo "✨ No changes needed - documentation already organized"
+

@@ -30,12 +30,11 @@ interface PromoteResult {
   duration: number;
 }
 
+// === GOLDEN PIPELINE SCOPE (Phase 10A - 2025-11-08) ===
 const APP_PROJECTS: Record<string, string> = {
   'audio-intel': process.env.VERCEL_PROJECT_ID!,
   tracker: process.env.VERCEL_PROJECT_ID_TRACKER!,
   'pitch-generator': process.env.VERCEL_PROJECT_ID_PITCH_GENERATOR!,
-  'command-centre': process.env.VERCEL_PROJECT_ID_COMMAND_CENTRE!,
-  web: process.env.VERCEL_PROJECT_ID_WEB!,
 };
 
 // Validate all project IDs are present
@@ -160,7 +159,7 @@ async function promoteAllApps(): Promise<PromoteResult[]> {
 
   const allSuccess = results.every(r => r.status === 'success');
   const finalMsg = allSuccess
-    ? '✅ Golden Deployment successful and promoted to production!'
+    ? '✅ Golden Deployment (3-app scope) successful:\n- audio-intel\n- tracker\n- pitch-generator'
     : '⚠️ Golden Deployment completed with some issues.';
 
   await sendTelegram(finalMsg);

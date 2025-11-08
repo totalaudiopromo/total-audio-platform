@@ -81,7 +81,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, tracker, pitch-generator, web]
+        app: [audio-intel, tracker, pitch-generator]
       fail-fast: false
     
     steps:
@@ -107,10 +107,7 @@ jobs:
     - name: Resolve package name
       id: resolve
       run: |
-        case "${{ matrix.app }}" in
-          web) echo "package=total-audio-promo-frontend" >> "$GITHUB_OUTPUT" ;;
-          *) echo "package=${{ matrix.app }}" >> "$GITHUB_OUTPUT" ;;
-        esac
+        echo "package=${{ matrix.app }}" >> "$GITHUB_OUTPUT"
 
     - name: Resolve Vercel project
       id: vercel-project
@@ -124,9 +121,6 @@ jobs:
             ;;
           "pitch-generator")
             echo "project_id=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> "$GITHUB_OUTPUT"
-            ;;
-          "web")
-            echo "project_id=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> "$GITHUB_OUTPUT"
             ;;
           *)
             echo "Unsupported app ${{ matrix.app }}"
@@ -199,7 +193,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, tracker, pitch-generator, web]
+        app: [audio-intel, tracker, pitch-generator]
       fail-fast: false
     
     steps:
@@ -235,10 +229,6 @@ jobs:
           "pitch-generator")
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV
             if [ -n "${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR }}" >> $GITHUB_ENV; fi
-            ;;
-          "web")
-            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
-            if [ -n "${{ secrets.HEALTHCHECK_URL_WEB }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_WEB }}" >> $GITHUB_ENV; fi
             ;;
           *)
             echo "Unsupported app ${{ matrix.app }}"
@@ -292,7 +282,7 @@ jobs:
 
     strategy:
       matrix:
-        app: [audio-intel, tracker, pitch-generator, web]
+        app: [audio-intel, tracker, pitch-generator]
       fail-fast: false
     
     steps:
@@ -328,10 +318,6 @@ jobs:
           "pitch-generator")
             echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}" >> $GITHUB_ENV
             if [ -n "${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_PITCH_GENERATOR_PROD }}" >> $GITHUB_ENV; fi
-            ;;
-          "web")
-            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_WEB }}" >> $GITHUB_ENV
-            if [ -n "${{ secrets.HEALTHCHECK_URL_WEB_PROD }}" ]; then echo "HEALTHCHECK_URL=${{ secrets.HEALTHCHECK_URL_WEB_PROD }}" >> $GITHUB_ENV; fi
             ;;
           *)
             echo "Unsupported app ${{ matrix.app }}"

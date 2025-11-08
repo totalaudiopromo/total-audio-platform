@@ -36,22 +36,35 @@ if (appIndex === -1 || !args[appIndex + 1]) {
 }
 
 const APP_NAME = args[appIndex + 1];
-const VALID_APPS = ['audio-intel', 'tracker', 'pitch-generator', 'command-centre', 'web'];
+
+// === GOLDEN PIPELINE SCOPE GUARD (Phase 10A - 2025-11-08) ===
+const ALLOWED_APPS = ['audio-intel', 'tracker', 'pitch-generator'] as const;
+type AllowedApp = typeof ALLOWED_APPS[number];
+
+function validateAppScope(app: string): asserts app is AllowedApp {
+  if (!ALLOWED_APPS.includes(app as AllowedApp)) {
+    throw new Error(
+      `"${app}" is not part of the Golden pipeline scope. ` +
+      `Allowed apps: ${ALLOWED_APPS.join(', ')}`
+    );
+  }
+}
+
+// Validate app scope before processing
+validateAppScope(APP_NAME);
+
+const VALID_APPS = ALLOWED_APPS.slice(); // Use allowed apps list
 
 const PACKAGE_NAMES: Record<string, string> = {
   'audio-intel': 'audio-intel',
   tracker: 'tracker',
   'pitch-generator': 'pitch-generator',
-  'command-centre': 'command-centre',
-  web: 'total-audio-promo-frontend',
 };
 
 const APP_URLS: Record<string, string> = {
   'audio-intel': 'https://intel.totalaudiopromo.com',
   tracker: 'https://tracker.totalaudiopromo.com',
   'pitch-generator': 'https://pitch.totalaudiopromo.com',
-  'command-centre': 'https://command.totalaudiopromo.com',
-  web: 'https://totalaudiopromo.com',
 };
 
 if (!VALID_APPS.includes(APP_NAME)) {
@@ -116,9 +129,7 @@ async function checkDatabase(): Promise<HealthCheck> {
 async function checkBuildOutput(): Promise<HealthCheck> {
   const checkStart = Date.now();
 
-  // Use actual package folder name (web -> total-audio-promo-frontend folder is 'web')
-  const folderName = APP_NAME === 'web' ? 'web' : APP_NAME;
-  const buildPath = path.join(process.cwd(), 'apps', folderName, '.next');
+  const buildPath = path.join(process.cwd(), 'apps', APP_NAME, '.next');
 
   if (!fs.existsSync(buildPath)) {
     return {
