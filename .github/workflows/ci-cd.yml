@@ -149,9 +149,10 @@ jobs:
         APP_PATH="${{ matrix.app }}"
         PROJECT_ID="${{ steps.vercel-project.outputs.project_id }}"
         ORG_ID="${{ secrets.VERCEL_ORG_ID }}"
-        rm -rf .vercel
-        mkdir -p .vercel
-        cat > .vercel/project.json <<EOF
+        APP_DIR="apps/$APP_PATH"
+        rm -rf "$APP_DIR/.vercel"
+        mkdir -p "$APP_DIR/.vercel"
+        cat > "$APP_DIR/.vercel/project.json" <<EOF
         {"projectId":"$PROJECT_ID","orgId":"$ORG_ID"}
         EOF
         if [ "${{ github.ref }}" = "refs/heads/main" ]; then
@@ -165,14 +166,15 @@ jobs:
         fi
         echo "artifact_suffix=$ARTIFACT_SUFFIX" >> "$GITHUB_OUTPUT"
         echo "environment=$ENVIRONMENT" >> "$GITHUB_OUTPUT"
-        export VERCEL_PROJECT_SETTINGS_OVERRIDE="{\"rootDirectory\":\"apps/$APP_PATH\"}"
+        pushd "$APP_DIR" > /dev/null
         vercel pull --yes --environment="$ENVIRONMENT" --token "$VERCEL_TOKEN"
         if [ -n "$BUILD_FLAG" ]; then
-          vercel build $BUILD_FLAG --token "$VERCEL_TOKEN" --cwd "apps/$APP_PATH"
+          vercel build $BUILD_FLAG --token "$VERCEL_TOKEN"
         else
-          vercel build --token "$VERCEL_TOKEN" --cwd "apps/$APP_PATH"
+          vercel build --token "$VERCEL_TOKEN"
         fi
-        tar -czf "vercel-${{ matrix.app }}-$ARTIFACT_SUFFIX.tar.gz" .vercel
+        popd > /dev/null
+        tar -czf "vercel-${{ matrix.app }}-$ARTIFACT_SUFFIX.tar.gz" -C "$APP_DIR" .vercel
 
     - name: Upload Vercel artifact
       if: steps.vercel-build.outcome == 'success'
