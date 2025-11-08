@@ -1,10 +1,27 @@
 #!/usr/bin/env tsx
 /**
- * Golden Deployment Rollback
- * Automatically rolls back to the previous production deployment if post-check fails.
- * Uses Vercel REST API v13 to find and promote the previous READY deployment.
+ * Golden Deployment Rollback (Manual Trigger Only - Phase 10B)
+ *
+ * 🟡 MANUAL INVOCATION REQUIRED
+ * This script is NOT automatically triggered by CI/CD workflows.
+ * Run manually when post-deployment health checks fail.
  *
  * Usage: pnpm tsx scripts/golden-rollback.ts
+ *
+ * Required environment variables:
+ *   - VERCEL_TOKEN
+ *   - VERCEL_PROJECT_ID_AUDIO_INTEL
+ *   - VERCEL_PROJECT_ID_TRACKER
+ *   - VERCEL_PROJECT_ID_PITCH_GENERATOR
+ *   - (Optional) TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+ *
+ * Emergency procedure:
+ *   1. Identify failed deployment via golden-postcheck.ts reports
+ *   2. Set required environment variables
+ *   3. Run this script to rollback to previous READY deployment
+ *   4. Verify rollback via health endpoints
+ *
+ * Uses Vercel REST API v13 to find and promote the previous READY deployment.
  */
 
 import fs from 'fs';

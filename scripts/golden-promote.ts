@@ -1,11 +1,17 @@
 #!/usr/bin/env tsx
 /**
- * Golden Deployment Verification
- * Verifies that all apps have READY production deployments on Vercel
- * and notifies Telegram of status.
+ * ⚠️ DEPRECATED (Phase 10B - 2025-11-08)
  *
- * Used by the Golden Deployment Pipeline.
- * Note: Vercel auto-deploys main branch to production, this script just verifies readiness.
+ * This script is no longer used in the Golden Pipeline.
+ * Vercel Git integration now handles all production deployments automatically.
+ *
+ * Kept for historical reference only. Do not run or import.
+ *
+ * For emergency manual deployment, use Vercel dashboard or CLI directly.
+ * For rollback, use: pnpm tsx scripts/golden-rollback.ts
+ *
+ * Original purpose: Verified that all apps have READY production deployments on Vercel
+ * and notified Telegram of status.
  */
 
 import fs from 'fs';

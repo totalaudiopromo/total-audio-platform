@@ -1,10 +1,12 @@
-name: "Golden Deployment Pipeline"
+name: "Golden Verification Pipeline"
 
 on:
   push:
     tags:
       - "v*-golden"
   workflow_dispatch:
+  repository_dispatch:
+    types: [vercel-deployment-complete]
 
 env:
   GOLDEN_SCOPE: "audio-intel,tracker,pitch-generator"
@@ -83,58 +85,3 @@ jobs:
           -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
           -d "text=Golden check (3-app scope) for ${{ matrix.app }} completed with status ${{ job.status }}"
 
-  promote:
-    name: Promote Preview → Production
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    if: false  # Disabled - Vercel auto-deploys main branch to production
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Promote Preview → Production
-        run: pnpm tsx scripts/golden-promote.ts
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_PROJECT_ID_TRACKER: ${{ secrets.VERCEL_PROJECT_ID_TRACKER }}
-          VERCEL_PROJECT_ID_PITCH_GENERATOR: ${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-
-      - name: Generate Golden Report
-        if: always()
-        run: pnpm tsx .github/scripts/golden-report.ts
-
-      - name: Upload Golden Report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: golden-deployment-report
-          path: reports/golden/final/
-
-      - name: Telegram Final Notification
-        if: always()
-        run: |
-          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
-          -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
-          -d "text=✅ Golden Deployment (3-app scope) successful: audio-intel, tracker, pitch-generator"
-
-  on-failure:
-    needs: build-and-test
-    if: failure()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Telegram Failure Notification
-        run: |
-          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
-          -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
-          -d "text=❌ Golden Deployment failed. Check GitHub Actions logs for details."
