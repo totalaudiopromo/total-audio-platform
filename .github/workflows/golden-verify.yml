@@ -85,3 +85,51 @@ jobs:
           -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
           -d "text=Golden check (3-app scope) for ${{ matrix.app }} completed with status ${{ job.status }}"
 
+  # Phase 10C - Autonomous Post-Deployment Verification
+  verify-deployment:
+    name: Golden Post-Deployment Verification
+    runs-on: ubuntu-latest
+    needs: validate-scope
+    timeout-minutes: 10
+    # Only run when triggered by Vercel webhook
+    if: github.event_name == 'repository_dispatch'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Golden Post-Deployment Checks
+        id: postcheck
+        run: pnpm tsx scripts/golden-postcheck.ts
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Auto-Rollback if Health Check Fails
+        if: failure()
+        run: pnpm tsx scripts/golden-rollback.ts
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID_AUDIO_INTEL: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_PROJECT_ID_TRACKER: ${{ secrets.VERCEL_PROJECT_ID_TRACKER }}
+          VERCEL_PROJECT_ID_PITCH_GENERATOR: ${{ secrets.VERCEL_PROJECT_ID_PITCH_GENERATOR }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Upload Verification Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: golden-verify-report-${{ github.run_number }}
+          path: reports/golden/history/
+          retention-days: 30
+

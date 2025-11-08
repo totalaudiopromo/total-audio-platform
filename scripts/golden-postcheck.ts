@@ -231,23 +231,46 @@ async function runPostCheck() {
   fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
   console.error(`📝 Post-check report saved: ${reportPath}`);
 
-  // Send Telegram notification
+  // Phase 10C: Append to history markdown file
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  const historyDir = path.join(process.cwd(), 'reports', 'golden', 'history');
+  fs.mkdirSync(historyDir, { recursive: true });
+  const historyPath = path.join(historyDir, `${today}.md`);
+
+  const statusIcon = overall === 'pass' ? '✅' : '❌';
+  const statusLine = `${timestamp} | ${statusIcon} ${overall.toUpperCase()} | ${duration}ms | ${healthChecks.filter(c => c.status === 'pass').length}/${healthChecks.length} apps healthy\n`;
+
+  // Create file with header if it doesn't exist
+  if (!fs.existsSync(historyPath)) {
+    const header = `# Golden Verify History - ${today}\n\n`;
+    fs.writeFileSync(historyPath, header);
+  }
+
+  // Append status line
+  fs.appendFileSync(historyPath, statusLine);
+  console.error(`📜 History appended to: ${historyPath}`);
+
+  // Send Telegram notification (Phase 10C: Enhanced with timestamp details)
+  const timestampFormatted = new Date().toISOString();
+
   if (overall === 'pass') {
     await sendTelegram(
-      `✅ Golden Post-Check PASSED (3-app scope)\n\n` +
+      `✅ Golden Verify: All apps healthy at ${timestampFormatted}\n\n` +
         `Apps checked: ${healthChecks.length}/3\n` +
         `- audio-intel ✓\n` +
         `- tracker ✓\n` +
         `- pitch-generator ✓\n\n` +
-        `Duration: ${(duration / 1000).toFixed(1)}s`
+        `Duration: ${(duration / 1000).toFixed(1)}s\n` +
+        `History: reports/golden/history/${today}.md`
     );
   } else {
     const failedApps = healthChecks.filter(c => c.status === 'fail').map(c => c.app);
     await sendTelegram(
-      `❌ Golden Post-Check FAILED (3-app scope)\n\n` +
+      `❌ Golden Verify: Detected issues (${overall}) at ${timestampFormatted}\n\n` +
         `Failed apps: ${failedApps.join(', ')}\n` +
         `Duration: ${(duration / 1000).toFixed(1)}s\n` +
-        `Rollback will be triggered automatically.`
+        `Auto-rollback will be triggered if this persists.\n` +
+        `History: reports/golden/history/${today}.md`
     );
   }
 

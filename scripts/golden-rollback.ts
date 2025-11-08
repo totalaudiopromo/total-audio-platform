@@ -1,12 +1,13 @@
 #!/usr/bin/env tsx
 /**
- * Golden Deployment Rollback (Manual Trigger Only - Phase 10B)
+ * Golden Deployment Rollback (Phase 10C - Smart Auto-Rollback)
  *
- * 🟡 MANUAL INVOCATION REQUIRED
- * This script is NOT automatically triggered by CI/CD workflows.
- * Run manually when post-deployment health checks fail.
+ * 🤖 AUTO-TRIGGERED after 2 consecutive health check failures (Phase 10C)
+ * 🟡 Can also be run manually for emergency rollback
  *
- * Usage: pnpm tsx scripts/golden-rollback.ts
+ * Usage:
+ *   Auto: Triggered by CI when golden-postcheck.ts fails twice
+ *   Manual: pnpm tsx scripts/golden-rollback.ts
  *
  * Required environment variables:
  *   - VERCEL_TOKEN
@@ -15,7 +16,12 @@
  *   - VERCEL_PROJECT_ID_PITCH_GENERATOR
  *   - (Optional) TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
  *
- * Emergency procedure:
+ * Smart Rollback Logic (Phase 10C):
+ *   - Tracks consecutive failures in reports/golden/failure-count.json
+ *   - Triggers automatic rollback after 2 failures
+ *   - Resets failure count after successful rollback
+ *
+ * Emergency Manual Procedure:
  *   1. Identify failed deployment via golden-postcheck.ts reports
  *   2. Set required environment variables
  *   3. Run this script to rollback to previous READY deployment
@@ -84,6 +90,48 @@ for (const [app, projectId] of Object.entries(APP_PROJECTS)) {
     process.exit(1);
   }
   console.error(`  ✅ ${app}: ${projectId}`);
+}
+
+// === PHASE 10C: SMART AUTO-ROLLBACK LOGIC ===
+interface FailureTracker {
+  count: number;
+  lastFailure?: string;
+  consecutiveFailures: boolean;
+}
+
+const FAILURE_COUNT_PATH = path.join(process.cwd(), 'reports', 'golden', 'failure-count.json');
+
+function loadFailureCount(): FailureTracker {
+  try {
+    if (fs.existsSync(FAILURE_COUNT_PATH)) {
+      return JSON.parse(fs.readFileSync(FAILURE_COUNT_PATH, 'utf8'));
+    }
+  } catch (err) {
+    console.error('⚠️ Could not load failure count, starting fresh:', (err as Error).message);
+  }
+  return { count: 0, consecutiveFailures: false };
+}
+
+function saveFailureCount(tracker: FailureTracker): void {
+  const dir = path.dirname(FAILURE_COUNT_PATH);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(FAILURE_COUNT_PATH, JSON.stringify(tracker, null, 2));
+}
+
+function incrementFailureCount(): FailureTracker {
+  const tracker = loadFailureCount();
+  tracker.count += 1;
+  tracker.lastFailure = new Date().toISOString();
+  tracker.consecutiveFailures = tracker.count >= 2;
+  saveFailureCount(tracker);
+  console.error(`\n🔢 Failure count: ${tracker.count}/2 (consecutive failures)`);
+  return tracker;
+}
+
+function resetFailureCount(): void {
+  const tracker: FailureTracker = { count: 0, consecutiveFailures: false };
+  saveFailureCount(tracker);
+  console.error('\n✅ Failure count reset after successful rollback');
 }
 
 // === UTILS ===
@@ -242,6 +290,32 @@ async function runRollback() {
   console.error('\n🔄 Starting Golden Deployment Rollback...');
   console.error(`⏰ Started at: ${new Date().toISOString()}\n`);
 
+  // Phase 10C: Check if this is a manual invocation or automatic trigger
+  const isManualInvocation = !process.env.CI;
+
+  if (!isManualInvocation) {
+    // Automatic CI trigger - check failure count
+    const tracker = incrementFailureCount();
+
+    if (!tracker.consecutiveFailures) {
+      console.error('🟡 First failure detected - waiting for confirmation before rollback');
+      await sendTelegram(
+        `⚠️ Golden Deploy Health Check Failed (1/2)\n\n` +
+          `One failure recorded. Will auto-rollback if next deployment also fails.\n` +
+          `Time: ${new Date().toISOString()}`
+      );
+      process.exit(0); // Exit without rolling back
+    }
+
+    console.error('⚠️ Two consecutive failures detected - initiating automatic rollback');
+    await sendTelegram(
+      `🚨 Golden Deploy Auto-Rollback Triggered (2/2 failures)\n\n` +
+        `Initiating automatic rollback to previous deployment...`
+    );
+  } else {
+    console.error('🟡 Manual invocation detected - proceeding with rollback');
+  }
+
   const startTime = Date.now();
   const results: RollbackResult[] = [];
 
@@ -297,6 +371,11 @@ async function runRollback() {
   const previousVersion = versionInfo.replace(/\.(\d+)$/, (_, n) => `.${parseInt(n) - 1}`);
 
   if (overall === 'success') {
+    // Phase 10C: Reset failure count after successful rollback
+    if (!isManualInvocation) {
+      resetFailureCount();
+    }
+
     await sendTelegram(
       `✅ Golden Deploy Rollback Complete (3-app scope)\n\n` +
         `Version: ${versionInfo} → ${previousVersion}\n` +
@@ -304,7 +383,8 @@ async function runRollback() {
         `- audio-intel\n` +
         `- tracker\n` +
         `- pitch-generator\n\n` +
-        `Duration: ${(duration / 1000).toFixed(1)}s`
+        `Duration: ${(duration / 1000).toFixed(1)}s` +
+        (!isManualInvocation ? '\n\n🔄 Failure count reset' : '')
     );
   } else if (overall === 'partial') {
     await sendTelegram(
