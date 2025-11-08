@@ -165,11 +165,12 @@ jobs:
         fi
         echo "artifact_suffix=$ARTIFACT_SUFFIX" >> "$GITHUB_OUTPUT"
         echo "environment=$ENVIRONMENT" >> "$GITHUB_OUTPUT"
+        export VERCEL_PROJECT_SETTINGS_OVERRIDE="{\"rootDirectory\":\"apps/$APP_PATH\"}"
         vercel pull --yes --environment="$ENVIRONMENT" --token "$VERCEL_TOKEN"
         if [ -n "$BUILD_FLAG" ]; then
-          vercel build $BUILD_FLAG --token "$VERCEL_TOKEN"
+          vercel build $BUILD_FLAG --token "$VERCEL_TOKEN" --cwd "apps/$APP_PATH"
         else
-          vercel build --token "$VERCEL_TOKEN"
+          vercel build --token "$VERCEL_TOKEN" --cwd "apps/$APP_PATH"
         fi
         tar -czf "vercel-${{ matrix.app }}-$ARTIFACT_SUFFIX.tar.gz" .vercel
 
