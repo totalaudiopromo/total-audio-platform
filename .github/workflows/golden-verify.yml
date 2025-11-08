@@ -7,6 +7,9 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [vercel-deployment-complete]
+  schedule:
+    # Run health checks every 15 minutes (Phase 10C scheduled alternative)
+    - cron: '*/15 * * * *'
 
 env:
   GOLDEN_SCOPE: "audio-intel,tracker,pitch-generator"
@@ -91,8 +94,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: validate-scope
     timeout-minutes: 10
-    # Only run when triggered by Vercel webhook
-    if: github.event_name == 'repository_dispatch'
+    # Run when triggered by webhook or scheduled health checks
+    if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
 
     steps:
       - uses: actions/checkout@v4
