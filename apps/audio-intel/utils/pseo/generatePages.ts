@@ -41,8 +41,8 @@ export default function ${toPascalCase(pageData.slug)}() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-12">
       {/* Data verification: ${pageData.validation.dataVerified ? '✓' : '✗'} Verified ${
-        pageData.validation.verificationDate
-      } */}
+    pageData.validation.verificationDate
+  } */}
       {/* Confidence score: ${pageData.validation.confidenceScore}% */}
       {/* Sources: ${pageData.validation.sources.length} verified */}
 

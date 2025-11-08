@@ -195,17 +195,20 @@ www.libertymusicpr.com
 ### Available Now ✅
 
 1. **Profile Images** (4 high-res variants)
+
    - CONCERTA_High-res_1.jpg
    - CONCERTA_High-res_2.jpg
    - CONCERTA_High-res_3.jpg
    - CONCERTA_High-res_4.jpg
 
 2. **Track Artwork** (Multiple variants)
+
    - Anime-inspired artwork (4 versions)
    - Futuristic city artwork (4 versions)
    - Typography layouts included
 
 3. **Music Video**
+
    - CONCERTA_city_03.mp4
    - Professional quality
 

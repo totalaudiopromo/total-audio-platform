@@ -126,6 +126,7 @@ Smart insights:
 ### Immediate (You Can Do Now):
 
 - [ ] **Supabase**: Disable email confirmation
+
   - Go to: https://supabase.com/dashboard/project/ucncbighzqudaszewjrv/auth/providers
   - Email provider → Toggle OFF "Confirm email"
 

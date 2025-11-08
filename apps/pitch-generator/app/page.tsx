@@ -77,7 +77,7 @@ export default function HomePage() {
               </span>
               <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
                 Write 50 personalised pitches in
-                <span className="block text-brand-amber">20 minutes</span>
+                <span className="block text-brand-amber-dark font-black">20 minutes</span>
               </h1>
               <p className="max-w-xl text-base text-gray-600 sm:text-lg">
                 Pitch Generator uses AI + your contact data to write professional music PR pitches
@@ -117,7 +117,7 @@ export default function HomePage() {
                     </li>
                   </ul>
                   <div className="mt-6 rounded-lg border border-brand-amber/30 bg-brand-amber/10 px-4 py-3">
-                    <p className="text-sm font-medium text-brand-amber">
+                    <p className="text-sm font-medium text-brand-amber-dark">
                       Pitch Generator fixes all of this in 30 seconds per pitch.
                     </p>
                   </div>
@@ -130,9 +130,9 @@ export default function HomePage() {
         {/* AI Features Hero Section */}
         <section className="glass-panel overflow-hidden bg-gradient-to-br from-amber-50 to-yellow-50 px-6 py-12 sm:px-10">
           <div className="text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-amber-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-amber-800 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <span className="text-2xl">⚡</span>
-              <span className="text-sm font-bold uppercase tracking-wider text-amber-600">
+              <span className="text-sm font-bold uppercase tracking-wider text-amber-800">
                 The Features That Actually Matter
               </span>
             </div>
@@ -145,7 +145,7 @@ export default function HomePage() {
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               <div className="rounded-xl border-2 border-black bg-white p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-                <Zap className="mx-auto h-8 w-8 text-brand-amber" />
+                <Zap className="mx-auto h-8 w-8 text-brand-amber-dark" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">
                   Batch Generation
                 </p>
@@ -154,7 +154,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="rounded-xl border-2 border-black bg-white p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-                <Clock className="mx-auto h-8 w-8 text-brand-amber" />
+                <Clock className="mx-auto h-8 w-8 text-brand-amber-dark" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">
                   Smart Timing
                 </p>
@@ -163,7 +163,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="rounded-xl border-2 border-black bg-white p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-                <Copy className="mx-auto h-8 w-8 text-brand-amber" />
+                <Copy className="mx-auto h-8 w-8 text-brand-amber-dark" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">
                   Copy All
                 </p>
@@ -181,7 +181,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="rounded-xl border-2 border-black bg-white p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-                <Brain className="mx-auto h-8 w-8 text-amber-600" />
+                <Brain className="mx-auto h-8 w-8 text-amber-800" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-wider text-gray-900">
                   CSV Import
                 </p>
@@ -248,9 +248,9 @@ export default function HomePage() {
         {/* Results Section */}
         <section className="glass-panel overflow-hidden bg-gradient-to-br from-amber-50 to-yellow-50 px-6 py-12 sm:px-10">
           <div className="text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-amber-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-amber-800 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <span className="text-2xl">📈</span>
-              <span className="text-sm font-bold uppercase tracking-wider text-amber-600">
+              <span className="text-sm font-bold uppercase tracking-wider text-amber-800">
                 Real Results from Real Campaigns
               </span>
             </div>
@@ -263,14 +263,14 @@ export default function HomePage() {
             </p>
             <div className="grid gap-6 sm:grid-cols-3">
               <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <div className="text-4xl font-black text-amber-600">15 hours → 15 min</div>
+                <div className="text-4xl font-black text-amber-800">15 hours → 15 min</div>
                 <p className="mt-2 text-sm font-semibold text-gray-900">Time saved per campaign</p>
                 <p className="mt-2 text-xs text-gray-600">
                   Measured: 50 personalised pitches, 6 campaigns avg
                 </p>
               </div>
               <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <div className="text-4xl font-black text-amber-600">14-18%</div>
+                <div className="text-4xl font-black text-amber-800">14-18%</div>
                 <p className="mt-2 text-sm font-semibold text-gray-900">
                   BBC Radio 1 response rate
                 </p>
@@ -279,7 +279,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="rounded-xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <div className="text-4xl font-black text-amber-600">18-28%</div>
+                <div className="text-4xl font-black text-amber-800">18-28%</div>
                 <p className="mt-2 text-sm font-semibold text-gray-900">Playlist placement rate</p>
                 <p className="mt-2 text-xs text-gray-600">
                   Sample: 85 Spotify curator pitches (electronic/indie focus)
@@ -362,7 +362,7 @@ export default function HomePage() {
                 for every campaign I run.
               </p>
               <div className="mt-6 rounded-lg border border-brand-amber/30 bg-brand-amber/10 px-4 py-3">
-                <p className="text-sm font-medium text-brand-amber">
+                <p className="text-sm font-medium text-brand-amber-dark">
                   If you hate writing pitches as much as I did, this tool will save you hours every
                   week.
                 </p>

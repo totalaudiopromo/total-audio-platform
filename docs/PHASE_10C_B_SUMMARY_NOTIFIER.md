@@ -92,7 +92,7 @@ async function postToNotion(summary: string): Promise<void> {
   await fetch('https://api.notion.com/v1/blocks', {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${NOTION_TOKEN}`,
+      Authorization: `Bearer ${NOTION_TOKEN}`,
       'Content-Type': 'application/json',
       'Notion-Version': '2022-06-28',
     },
@@ -113,12 +113,14 @@ async function postToNotion(summary: string): Promise<void> {
 ```
 
 **Environment Variables**:
+
 - `TELEGRAM_BOT_TOKEN` (required)
 - `TELEGRAM_CHAT_ID` (required)
 - `NOTION_TOKEN` (optional)
 - `NOTION_PAGE_ID` (optional)
 
 **Error Handling**:
+
 - Graceful degradation if history file doesn't exist
 - Notion integration optional (skips if credentials missing)
 - Script exits with code 1 on fatal errors
@@ -141,6 +143,7 @@ async function postToNotion(summary: string): Promise<void> {
 ```
 
 **Execution Conditions**:
+
 - Only runs after successful `golden-postcheck.ts` execution
 - Conditional: `if: success()`
 - Requires: pnpm dependencies already installed
@@ -163,6 +166,7 @@ async function postToNotion(summary: string): Promise<void> {
 Same content as Telegram, posted as paragraph block to configured Notion page.
 
 **Components**:
+
 1. **Header**: Timestamp of summary generation
 2. **Health Status**: Last verification result from history file
 3. **Overall Assessment**: Single-line deployment health statement
@@ -172,6 +176,7 @@ Same content as Telegram, posted as paragraph block to configured Notion page.
 ### Required Secrets
 
 Already configured in Phase 10C:
+
 - `TELEGRAM_BOT_TOKEN` - Telegram Bot API token
 - `TELEGRAM_CHAT_ID` - Target chat for notifications
 
@@ -270,7 +275,7 @@ No report history found for today.
 # Golden Verify History - 2025-11-08
 
 2025-11-08T10-15-23-456Z | ✅ PASS | 2341ms | 3/3 apps healthy
-2025-11-08T11-42-18-789Z | ✅ PASS | 1876ms | 3/3 apps healthy  ← Latest (used in summary)
+2025-11-08T11-42-18-789Z | ✅ PASS | 1876ms | 3/3 apps healthy ← Latest (used in summary)
 ```
 
 ## Local Testing
@@ -330,20 +335,25 @@ pnpm tsx scripts/golden-summary.ts
 **Solutions**:
 
 1. **Check GitHub Secrets**:
+
    ```bash
    gh secret list
    ```
+
    Ensure `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` are set
 
 2. **Check Workflow Logs**:
+
    - Navigate to Actions → Golden Verification Pipeline
    - Click latest run → "Send AI Summary Report" step
    - Look for error messages
 
 3. **Check History File**:
+
    ```bash
    cat reports/golden/history/$(date +%Y-%m-%d).md
    ```
+
    Ensure file exists with recent entries
 
 4. **Test Telegram Credentials**:
@@ -360,19 +370,23 @@ pnpm tsx scripts/golden-summary.ts
 **Solutions**:
 
 1. **Verify Notion Integration**:
+
    - Visit: https://www.notion.so/my-integrations
    - Ensure integration exists and has "Insert content" capability
 
 2. **Verify Page Connection**:
+
    - Open target Notion page
    - Click "..." → "Connections"
    - Ensure your integration is listed
 
 3. **Verify Page ID**:
+
    - Check URL format: `notion.so/workspace/[PAGE_ID]?v=...`
    - Ensure you copied the 32-character Page ID (not workspace ID)
 
 4. **Check Notion API Version**:
+
    - Script uses `Notion-Version: 2022-06-28`
    - Ensure your integration supports this version
 
@@ -401,10 +415,12 @@ pnpm tsx scripts/golden-summary.ts
 **Solutions**:
 
 1. **Check if postcheck ran**:
+
    - Verify `golden-postcheck.ts` executed successfully
    - Check for `reports/golden/history/YYYY-MM-DD.md` file
 
 2. **Check file permissions**:
+
    ```bash
    ls -la reports/golden/history/
    ```
@@ -415,13 +431,13 @@ pnpm tsx scripts/golden-summary.ts
 
 ## Performance Metrics
 
-| Metric | Target | Actual |
-|--------|--------|--------|
-| Summary Generation Time | <2s | ~500ms |
-| Telegram API Call | <1s | ~300ms |
-| Notion API Call | <2s | ~800ms |
-| Total Overhead | <5s | ~1.5s |
-| Failure Rate | 0% | TBD (after monitoring) |
+| Metric                  | Target | Actual                 |
+| ----------------------- | ------ | ---------------------- |
+| Summary Generation Time | <2s    | ~500ms                 |
+| Telegram API Call       | <1s    | ~300ms                 |
+| Notion API Call         | <2s    | ~800ms                 |
+| Total Overhead          | <5s    | ~1.5s                  |
+| Failure Rate            | 0%     | TBD (after monitoring) |
 
 **Measurement Period**: First 30 days of Phase 10C-B operation
 
@@ -452,7 +468,7 @@ if (!NOTION_TOKEN || !NOTION_PAGE_ID) {
 
 ```yaml
 - name: Send AI Summary Report
-  if: success()  # Only run if previous steps passed
+  if: success() # Only run if previous steps passed
 ```
 
 Ensures summaries only sent for genuinely successful deployments.
@@ -470,6 +486,7 @@ Ensures summaries only sent for genuinely successful deployments.
 **Goal**: Use Claude Haiku to generate contextual insights from health check data
 
 **Example Enhancement**:
+
 ```typescript
 // Instead of template:
 const summary = `✅ Deployment verified and healthy across all apps.`;
@@ -480,6 +497,7 @@ const aiInsight = await generateInsight(lastReport, historicalTrend);
 ```
 
 **Benefits**:
+
 - Contextual insights (compare to historical trends)
 - Anomaly detection ("slower than usual but still healthy")
 - Proactive recommendations ("Consider scaling if traffic increases")
@@ -489,6 +507,7 @@ const aiInsight = await generateInsight(lastReport, historicalTrend);
 **Goal**: Support more notification channels
 
 **Candidates**:
+
 - Slack webhooks
 - Discord webhooks
 - Email digests (daily/weekly rollups)
@@ -499,6 +518,7 @@ const aiInsight = await generateInsight(lastReport, historicalTrend);
 **Goal**: Per-team customizable summary formats
 
 **Example**:
+
 ```typescript
 // Engineering team: Technical details
 const engineeringSummary = `
@@ -520,6 +540,7 @@ const managementSummary = `
 **Goal**: Weekly/monthly deployment health summaries
 
 **Example Weekly Summary**:
+
 ```
 📊 Weekly Deployment Summary (Nov 1-8, 2025)
 
@@ -537,13 +558,13 @@ Trend: ↗️ 5% improvement vs last week
 **Goal**: Single numeric score for quick assessment
 
 **Calculation**:
+
 ```typescript
-const healthScore = (
+const healthScore =
   (successfulHealthChecks / totalHealthChecks) * 40 +
-  (responseTimeScore) * 30 +
-  (uptimeScore) * 20 +
-  (rollbackFrequency) * 10
-);
+  responseTimeScore * 30 +
+  uptimeScore * 20 +
+  rollbackFrequency * 10;
 
 // Output: 98/100 ⭐
 ```
@@ -553,6 +574,7 @@ const healthScore = (
 **Goal**: Context-aware notification urgency
 
 **Rules**:
+
 - First failure: Telegram summary (low urgency)
 - Second consecutive failure: Telegram + Email (medium urgency)
 - Third failure: Telegram + Email + SMS (high urgency)

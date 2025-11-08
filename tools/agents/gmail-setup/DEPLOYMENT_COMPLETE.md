@@ -98,15 +98,18 @@ The calendar structure is designed and ready:
    ```
 
 2. **Search for Otter AI:** `from:otter.ai`
+
    - All 35 emails now in "Personal Tools/Otter AI"
    - NOT in Station Feedback anymore ✅
 
 3. **Search for WARM:** `from:WARM`
+
    - All 76 emails now in "Marketing Junk/WARM"
    - Archived and marked as read
    - NOT in Station Feedback anymore ✅
 
 4. **Check Station Feedback:** `label:station-feedback`
+
    - Should now contain ONLY real station responses
    - No Otter, no Gemini, no WARM, no Machina ✅
 

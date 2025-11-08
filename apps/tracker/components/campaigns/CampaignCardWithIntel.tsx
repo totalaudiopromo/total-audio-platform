@@ -97,15 +97,15 @@ export function CampaignCardWithIntel({
           integration.status === 'error'
             ? 'Error'
             : integration.sync_enabled
-              ? 'Live'
-              : 'Paused';
+            ? 'Live'
+            : 'Paused';
 
         const statusBadgeClass =
           integration.status === 'error'
             ? 'border-red-600 bg-red-50 text-red-700'
             : integration.sync_enabled
-              ? meta.badgeClass
-              : 'border-gray-500 bg-gray-100 text-gray-700';
+            ? meta.badgeClass
+            : 'border-gray-500 bg-gray-100 text-gray-700';
 
         const lastSynced = integration.last_sync_at
           ? `Last sync ${formatDistanceToNow(
@@ -130,32 +130,32 @@ export function CampaignCardWithIntel({
     <>
       <div
         onClick={() => router.push(`/campaigns/${campaign.id}`)}
-        className="bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-teal-500 hover:shadow-lg transition-all cursor-pointer group"
+        className="bg-white border-4 border-black rounded-2xl p-6 shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 transition-all cursor-pointer group"
       >
         {/* Campaign Header */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
           <div className="flex-1">
-            <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-teal-600 transition-colors">
-              {campaign.name}
+            <h3 className="text-xl font-black text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
+              {campaign.name || campaign.artist_name || 'Untitled Campaign'}
             </h3>
             <div className="flex flex-wrap items-center gap-2">
               {campaign.platform && (
-                <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-black bg-teal-100 text-teal-800 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                   {campaign.platform}
                 </span>
               )}
               {campaign.genre && (
-                <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-teal-50 text-teal-700 border border-teal-200">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-black bg-teal-100 text-teal-800 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                   {campaign.genre}
                 </span>
               )}
               <span
-                className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium ${
+                className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
                   campaign.status === 'active'
-                    ? 'bg-green-50 text-green-700 border border-green-200'
+                    ? 'bg-green-100 text-green-800'
                     : campaign.status === 'completed'
-                      ? 'bg-slate-50 text-slate-700 border border-slate-200'
-                      : 'bg-teal-50 text-teal-700 border border-teal-200'
+                    ? 'bg-gray-100 text-gray-800'
+                    : 'bg-teal-100 text-teal-800'
                 }`}
               >
                 {campaign.status}
@@ -163,10 +163,10 @@ export function CampaignCardWithIntel({
             </div>
           </div>
           <div className="text-left md:text-right">
-            <div className="text-sm font-medium text-slate-500 mb-1">
+            <div className="text-sm font-black text-gray-600 mb-1 uppercase tracking-wider">
               Budget
             </div>
-            <div className="text-2xl font-bold text-slate-900">
+            <div className="text-2xl font-black text-gray-900">
               £{campaign.budget}
             </div>
           </div>
@@ -194,17 +194,17 @@ export function CampaignCardWithIntel({
         )}
 
         {/* Results Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 pb-6 border-b-2 border-gray-200">
-          <div className="bg-gray-50 rounded-xl p-4 border-2 border-gray-200">
-            <div className="text-xs font-black text-gray-500 uppercase tracking-wider mb-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 pb-6 border-b-4 border-black">
+          <div className="bg-gray-50 rounded-xl p-4 border-4 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            <div className="text-xs font-black text-gray-600 uppercase tracking-wider mb-2">
               Target
             </div>
             <div className="text-2xl font-black text-gray-900">
               {campaign.target_reach}
             </div>
           </div>
-          <div className="bg-gray-50 rounded-xl p-4 border-2 border-gray-200">
-            <div className="text-xs font-black text-gray-500 uppercase tracking-wider mb-2">
+          <div className="bg-gray-50 rounded-xl p-4 border-4 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            <div className="text-xs font-black text-gray-600 uppercase tracking-wider mb-2">
               Actual
             </div>
             <div className="text-2xl font-black text-gray-900">
@@ -214,10 +214,10 @@ export function CampaignCardWithIntel({
           {hasResults && (
             <>
               <div
-                className={`rounded-xl p-4 border-2 ${
+                className={`rounded-xl p-4 border-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
                   campaign.success_rate > 25
-                    ? 'bg-green-50 border-green-500'
-                    : 'bg-orange-50 border-orange-500'
+                    ? 'bg-green-100 border-black'
+                    : 'bg-orange-100 border-black'
                 }`}
               >
                 <div className="text-xs font-black uppercase tracking-wider mb-2 text-gray-700">
@@ -226,15 +226,15 @@ export function CampaignCardWithIntel({
                 <div
                   className={`text-2xl font-black ${
                     campaign.success_rate > 25
-                      ? 'text-green-600'
-                      : 'text-orange-600'
+                      ? 'text-green-700'
+                      : 'text-orange-700'
                   }`}
                 >
                   {Math.round(campaign.success_rate)}%
                 </div>
               </div>
-              <div className="bg-gray-50 rounded-xl p-4 border-2 border-gray-200">
-                <div className="text-xs font-black text-gray-500 uppercase tracking-wider mb-2">
+              <div className="bg-gray-50 rounded-xl p-4 border-4 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <div className="text-xs font-black text-gray-600 uppercase tracking-wider mb-2">
                   Cost/Result
                 </div>
                 <div className="text-2xl font-black text-gray-900">
@@ -251,10 +251,10 @@ export function CampaignCardWithIntel({
             {/* Performance Badge */}
             {campaign.performance_score > 0 && (
               <div
-                className={`rounded-xl p-4 border-4 ${
+                className={`rounded-xl p-4 border-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
                   isPerformingWell
-                    ? 'bg-gradient-to-br from-green-50 to-green-100 border-green-500'
-                    : 'bg-gradient-to-br from-orange-50 to-orange-100 border-orange-500'
+                    ? 'bg-green-100 border-black'
+                    : 'bg-orange-100 border-black'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
@@ -285,7 +285,7 @@ export function CampaignCardWithIntel({
 
             {/* Insights */}
             {hasInsights && (
-              <div className="bg-blue-50 rounded-xl p-6 border-4 border-teal-500">
+              <div className="bg-teal-50 rounded-xl p-6 border-4 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center">
                     <svg
@@ -350,14 +350,16 @@ export function CampaignCardWithIntel({
           <div className="mt-6">
             <CampaignIntelligence
               campaignId={campaign.id}
-              campaignName={campaign.name}
+              campaignName={
+                campaign.name || campaign.artist_name || 'Untitled Campaign'
+              }
             />
           </div>
         )}
 
         {/* Quick hint */}
-        <div className="mt-6 pt-4 border-t border-slate-200">
-          <p className="text-sm text-slate-500 group-hover:text-teal-600 transition-colors font-medium">
+        <div className="mt-6 pt-4 border-t-2 border-black">
+          <p className="text-sm text-gray-700 group-hover:text-teal-600 transition-colors font-black">
             Click to view timeline and add activities →
           </p>
         </div>

@@ -246,11 +246,13 @@ Most agents exist as files but need their workflow methods implemented:
 ### Medium Term (Expand Functionality)
 
 3. **Implement Social Media Agent**
+
    - Connect to Twitter/LinkedIn/BlueSky APIs
    - Implement scheduling logic
    - Test social-content-week workflow
 
 4. **Implement Contact Enrichment**
+
    - Connect to Perplexity or enrichment APIs
    - Implement database updates
    - Test contact-enrichment-batch workflow
@@ -263,11 +265,13 @@ Most agents exist as files but need their workflow methods implemented:
 ### Long Term (Advanced Features)
 
 6. **Scheduled Workflows**
+
    - Add cron-like scheduling
    - Weekly newsletter auto-generation
    - Daily metrics tracking
 
 7. **Web Dashboard**
+
    - Create UI for Dan dashboard
    - Real-time workflow progress
    - Agent health visualization

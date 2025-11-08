@@ -7,12 +7,14 @@
 ### 1. Database Schema (`010_tracker_prd_schema.sql`)
 
 - **Campaigns Table**: Enhanced with intelligence fields
+
   - Performance metrics (success_rate, cost_per_result, performance_score, percentile_rank)
   - Auto-calculated triggers for intelligence
   - Platform and genre tracking
   - Target/actual reach tracking
 
 - **Benchmarks Table**: Industry intelligence data
+
   - BBC Radio, Commercial Radio, Playlists, Blogs, Social platforms
   - Genre-specific data (Electronic, Indie, Jazz, Pop, Rock, Hip-Hop, R&B, etc.)
   - Optimal budget ranges, success rates, response times
@@ -24,6 +26,7 @@
 
 - **Performance Scoring**: 0-100 score vs industry benchmarks
 - **Pattern Recognition**: Identifies what works across campaigns
+
   - Genre performance analysis
   - Platform effectiveness
   - Budget optimization
@@ -42,6 +45,7 @@
 ### 4. API Routes
 
 - **`/api/campaigns`**:
+
   - GET: List campaigns with intelligence and patterns
   - POST: Create campaigns with auto-enrichment
 
@@ -127,6 +131,7 @@ PORT=3001 npm run dev
    ```
 
 4. **Verify Intelligence**:
+
    - Success rate should calculate (30%)
    - Cost per result (£66.67)
    - Performance score vs benchmark

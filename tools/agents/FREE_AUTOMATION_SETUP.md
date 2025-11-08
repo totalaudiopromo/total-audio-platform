@@ -177,10 +177,12 @@ You're right to question the costs. Here's what **actually** costs money vs what
 ### Week 1: Core Free Automation
 
 1. **Enable Gmail Autopilot** (every 2 hours)
+
    - Auto-sort emails by colour
    - **Saves 6h/day**
 
 2. **Enable Social Media Scheduler** (Sunday 8pm)
+
    - Pre-schedule week's content
    - **Saves 8h/week**
 
@@ -194,10 +196,12 @@ You're right to question the costs. Here's what **actually** costs money vs what
 ### Week 2: Manual Content Workflow
 
 1. **Write newsletter manually** (30 min)
+
    - Monday morning routine
    - No AI costs
 
 2. **Batch social media content** (1 hour)
+
    - Sunday afternoon
    - Schedule for week
 

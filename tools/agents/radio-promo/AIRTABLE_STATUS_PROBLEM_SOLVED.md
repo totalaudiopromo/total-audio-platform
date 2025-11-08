@@ -27,11 +27,13 @@ But Airtable shows:
 ### High-Value Contacts Incorrectly Marked "Unsubscribed" in Airtable:
 
 1. **radio.devon@bbc.co.uk** - BBC Radio Devon
+
    - Airtable: Unsubscribed ❌
    - Mailchimp: Subscribed ✅
    - **Impact**: You might skip pitching BBC Radio Devon because Airtable says "unsubscribed"
 
 2. **sam.davies@audioalways.com** - Producer for Chris Hawkins (BBC 6 Music)
+
    - Airtable: Unsubscribed ❌
    - Mailchimp: Subscribed ✅
    - Tags: BBC Radio 6 Music Contacts, Indie Alliance

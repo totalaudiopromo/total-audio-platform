@@ -31,14 +31,17 @@
 **Demo Flow:**
 
 1. **Navigate to Dashboard**
+
    - Click "Import CSV" button (purple button, top right)
 
 2. **Show Template**
+
    - Click "Download CSV Template"
    - Open in Excel/Google Sheets
    - Point out: "This is your existing spreadsheet format - name, artist, platform, genre, dates, budget, results"
 
 3. **Upload Sample Data**
+
    - Use the pre-populated template with 7 UK campaigns:
      - BBC Radio 1 - Future Sounds
      - Spotify UK Editorial Playlists
@@ -64,14 +67,17 @@
 **Demo Flow:**
 
 1. **Navigate to Campaign Dashboard**
+
    - Show the imported campaigns with their stats
    - Point out: Performance scores, success rates, cost per result
 
 2. **Select Completed Campaign**
+
    - Click on "BBC Radio 1 - Future Sounds Pitch"
    - Show campaign details: £550 budget, 18/25 targets hit, 72% success rate
 
 3. **Generate AI Autopsy**
+
    - Scroll to "Campaign Intelligence AI" section
    - Click "Analyse This Campaign"
    - **IMPORTANT**: This calls Claude API - takes 10-15 seconds
@@ -80,26 +86,31 @@
 4. **Review AI Results (4 sections)**
 
    **Campaign Autopsy:**
+
    - AI explanation of what worked/didn't work
    - Compares to industry benchmarks
    - References specific numbers and UK radio context
 
    **Your Next Move:**
+
    - Specific actionable task for this week
    - Often includes draft pitch template for radio/press
    - Tailored to campaign type (BBC Radio, playlists, blogs)
 
    **Brutal Honesty:**
+
    - Reality check with no corporate BS
    - Timeline expectations
    - What should have been done differently
 
    **Quick Wins:**
+
    - 3 specific tasks for THIS WEEK
    - Actionable, not generic advice
    - Based on campaign performance and benchmarks
 
 5. **Copy to Clipboard**
+
    - Click "Copy" on any section
    - "Use this in your client reports or team briefings"
 
@@ -122,11 +133,13 @@
 **Demo Flow:**
 
 1. **Show Multiple Campaigns**
+
    - Navigate back to dashboard
    - Scroll through the imported campaigns
    - Point out performance scores vs benchmarks
 
 2. **Explain Benchmark System**
+
    - BBC Radio vs Commercial Radio costs
    - Playlist success rates by genre
    - Blog outreach benchmarks
@@ -149,11 +162,13 @@
 **Quick Tour:**
 
 1. **Create New Campaign**
+
    - Click "+ New Campaign"
    - Show form: Simple, quick entry
    - "Add results as they come in"
 
 2. **Export Data**
+
    - Click "Export CSV"
    - "Take your data anywhere - client reports, backup, analysis"
 

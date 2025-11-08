@@ -226,6 +226,192 @@ Cheers,
     success_rate: 31.0,
     times_used: 142,
   },
+  {
+    name: 'BBC Introducing Shows',
+    genre: 'All Genres',
+    description:
+      'Perfect for BBC Introducing shows - emphasis on discovery, local talent, and emerging artist support',
+    opening_lines: [
+      "Hope you're well.",
+      'Reaching out about an emerging artist I think Introducing would love.',
+      'Got something fresh for you.',
+    ],
+    hook_structure:
+      "Discovery-focused. Emphasise emerging talent, local connection, fresh sound. Show you understand Introducing's mission.",
+    closing_ctas: [
+      'Would love to get this in front of Introducing.',
+      'Think this could be perfect for your show.',
+      'Happy to provide more background if helpful.',
+    ],
+    template_body: `Hi {{contact_name}},
+
+Hope you're well. Reaching out about {{artist_name}} – {{key_hook}}.
+
+{{local_connection}} {{artist_background}}
+
+{{track_title}} feels like exactly the kind of fresh talent Introducing champions. {{discovery_angle}}
+
+{{track_link}}
+
+{{emerging_artist_story}}
+
+Think this could be perfect for your show. Would love to get this in front of Introducing.
+
+Best,
+{{sender_name}}`,
+    is_system: true,
+    success_rate: 24.0,
+    times_used: 98,
+  },
+  {
+    name: 'Spotify Independent Playlists',
+    genre: 'All Genres',
+    description:
+      'For independent Spotify playlist curators - personal, authentic, less corporate than editorial pitches',
+    opening_lines: [
+      "Hope you're well.",
+      'Been following {{playlist_name}} and thought this might fit.',
+      'Reaching out about a track that matches your vibe.',
+    ],
+    hook_structure:
+      'Personal and authentic. Show you actually listen to their playlist. Less corporate, more genuine connection.',
+    closing_ctas: [
+      'Would love to hear your thoughts.',
+      'Let me know if this fits {{playlist_name}}.',
+      'Happy to chat more about the project.',
+    ],
+    template_body: `Hi {{contact_name}},
+
+Hope you're well. Been following {{playlist_name}} and thought {{track_title}} by {{artist_name}} might fit your vibe.
+
+{{key_hook}}
+
+{{playlist_fit}} The energy reminds me of {{similar_artist_reference}} you featured recently, but with {{unique_angle}}.
+
+{{track_link}}
+
+{{artist_background}}
+
+Would love to hear your thoughts if this fits {{playlist_name}}.
+
+Cheers,
+{{sender_name}}`,
+    is_system: true,
+    success_rate: 26.0,
+    times_used: 134,
+  },
+  {
+    name: 'UK Music Blogs (DIY, The Line of Best Fit, etc.)',
+    genre: 'Alternative/Indie',
+    description: 'For UK music blogs - story-driven, offer exclusives, show you read their content',
+    opening_lines: [
+      "Hope you're well.",
+      'Been reading {{outlet_name}} and thought this might interest you.',
+      'Reaching out about something I think {{outlet_name}} readers would love.',
+    ],
+    hook_structure:
+      'Show you actually read their blog. Reference their coverage style. Offer exclusive/premiere. Story over stats.',
+    closing_ctas: [
+      'Would this interest {{outlet_name}} readers?',
+      'Happy to offer an exclusive premiere if that works.',
+      "Let me know if you'd like more info.",
+    ],
+    template_body: `Hi {{contact_name}},
+
+Hope you're well. Been reading {{outlet_name}} and thought {{artist_name}} might interest you.
+
+{{track_title}}: {{key_hook}}
+
+{{blog_fit}} Reminds me of {{similar_artist_reference}} you covered recently, but with {{unique_angle}}.
+
+{{track_link}}
+
+{{artist_story}}
+
+{{exclusive_offer}}
+
+Would this interest {{outlet_name}} readers?
+
+Best,
+{{sender_name}}`,
+    is_system: true,
+    success_rate: 29.0,
+    times_used: 167,
+  },
+  {
+    name: 'Radio 1Xtra / Urban/Electronic',
+    genre: 'Hip-Hop/Urban/Electronic',
+    description:
+      'For Radio 1Xtra shows - emphasis on UK sound, cultural relevance, and fresh production',
+    opening_lines: [
+      "Hope you're well.",
+      'Got something fresh for 1Xtra.',
+      "Reaching out about a track that's got that UK energy.",
+    ],
+    hook_structure:
+      "UK-focused. Cultural relevance. Fresh production. Show you understand 1Xtra's audience and sound.",
+    closing_ctas: [
+      'Would love to get this on 1Xtra.',
+      'Think this could work for your show.',
+      'Let me know what you think.',
+    ],
+    template_body: `Hi {{contact_name}},
+
+Hope you're well. Got {{track_title}} by {{artist_name}} – {{key_hook}}.
+
+{{uk_cultural_angle}} The production has that fresh UK sound that works on 1Xtra, especially {{show_context}}.
+
+{{track_link}}
+
+{{artist_background}}
+
+{{cultural_relevance}}
+
+Think this could work for your show. Would love to get this on 1Xtra.
+
+Best,
+{{sender_name}}`,
+    is_system: true,
+    success_rate: 18.0,
+    times_used: 89,
+  },
+  {
+    name: 'Follow-Up / Second Touch',
+    genre: 'All Genres',
+    description:
+      'For following up on previous pitches - respectful, not pushy, add new angle or information',
+    opening_lines: [
+      "Hope you're well.",
+      'Following up on {{previous_pitch_reference}}.',
+      'Quick update on {{artist_name}}.',
+    ],
+    hook_structure:
+      'Acknowledge previous contact. Add new information or angle. Keep it brief. No pressure.',
+    closing_ctas: [
+      'No pressure, just wanted to share the update.',
+      'Happy to chat if this changes anything.',
+      'Thanks for your time either way.',
+    ],
+    template_body: `Hi {{contact_name}},
+
+Hope you're well. Following up on {{previous_pitch_reference}}.
+
+{{new_angle_or_update}}
+
+{{track_link}}
+
+{{update_details}}
+
+No pressure, just wanted to share the update in case it changes anything.
+
+Thanks for your time either way.
+
+Best,
+{{sender_name}}`,
+    is_system: true,
+    success_rate: 12.0,
+    times_used: 76,
+  },
 ];
 
 async function seedTemplates() {

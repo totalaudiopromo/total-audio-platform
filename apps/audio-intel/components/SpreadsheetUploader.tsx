@@ -288,10 +288,10 @@ export default function SpreadsheetUploader({
           </div>
 
           <div>
-            <h3 className="text-3xl font-black text-gray-900 mb-3">Drop your chaos here</h3>
-            <p className="text-xl text-gray-600 max-w-lg mx-auto leading-relaxed">
-              Upload any messy spreadsheets. We'll automatically organise everything into clean,
-              ready-to-use contacts.
+            <h3 className="text-3xl font-black text-gray-900 mb-3">Contact Enrichment</h3>
+            <p className="text-xl font-bold text-gray-700 max-w-lg mx-auto leading-relaxed">
+              Upload your contact spreadsheets. We'll automatically process and enrich them with
+              music industry intelligence.
             </p>
           </div>
 
@@ -375,8 +375,8 @@ export default function SpreadsheetUploader({
             </div>
           </div>
 
-          <div className="text-gray-500 text-lg font-medium">
-            Transforming chaos into organised contacts...
+          <div className="text-gray-700 text-lg font-bold">
+            Processing and enriching contacts...
           </div>
         </div>
       </CardContent>
@@ -405,8 +405,8 @@ export default function SpreadsheetUploader({
             <CardTitle className="text-3xl font-black text-gray-900 mb-2">
               Your data is ready!
             </CardTitle>
-            <CardDescription className="text-lg text-gray-600 font-medium">
-              We've transformed your chaos into organised, clean contacts
+            <CardDescription className="text-lg text-gray-700 font-bold">
+              Your contacts have been processed and enriched with music industry intelligence
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -556,7 +556,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
       ...prev,
       isProcessing: true,
       progress: 0,
-      magicStep: 'Reading your chaotic spreadsheets...',
+      magicStep: 'Reading your contact spreadsheets...',
       results: undefined,
       error: undefined,
     }));
@@ -651,10 +651,10 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
             lastProgress < 30
               ? 'Processing first batch...'
               : lastProgress < 60
-                ? 'Enriching with Total Audio Promo AI...'
-                : lastProgress < 90
-                  ? 'Finalizing confidence scores...'
-                  : 'Almost ready...';
+              ? 'Enriching with Total Audio Promo AI...'
+              : lastProgress < 90
+              ? 'Finalizing confidence scores...'
+              : 'Almost ready...';
 
           setState(prev => ({
             ...prev,
@@ -743,10 +743,10 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
           </div>
 
           <div>
-            <h3 className="text-4xl font-black text-gray-900 mb-4">Drop Your Chaos Here</h3>
-            <p className="text-xl text-gray-600 max-w-lg mx-auto leading-relaxed mb-6">
-              Upload any messy spreadsheets. We'll automatically clean, organise, and enrich
-              everything with the same powerful AI that runs the homepage demo.
+            <h3 className="text-4xl font-black text-gray-900 mb-4">Contact Enrichment</h3>
+            <p className="text-xl font-bold text-gray-700 max-w-lg mx-auto leading-relaxed mb-6">
+              Upload your contact spreadsheets. We'll automatically process, clean, and enrich them
+              with music industry intelligence using our powerful AI pipeline.
             </p>
           </div>
 
@@ -759,7 +759,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
               <div className="mb-4">
                 <img
                   src="/assets/loading-states/chaos-overwhelmed.png"
-                  alt="CHAOS: Total Audio Promo mascot overwhelmed by messy spreadsheets"
+                  alt="RAW DATA: Contact lists ready for processing"
                   className="w-48 h-48 mx-auto rounded-xl object-contain"
                   style={{
                     filter: 'drop-shadow(0 6px 12px rgba(0,0,0,0.15))',
@@ -771,8 +771,8 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
                   }}
                 />
               </div>
-              <p className="text-lg font-bold text-gray-800 mb-1">CHAOS</p>
-              <p className="text-sm text-gray-600">Spreadsheet Overwhelm</p>
+              <p className="text-lg font-bold text-gray-800 mb-1">RAW DATA</p>
+              <p className="text-sm text-gray-600">Contact Lists</p>
             </div>
 
             <div className="flex flex-col items-center">
@@ -847,7 +847,7 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
               variant="secondary"
               className="bg-blue-100 text-blue-800 px-4 py-2 text-base font-bold"
             >
-              Chaos to Organisation
+              Data to Intelligence
             </Badge>
           </div>
 

@@ -1,16 +1,45 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { updateSession } from '@total-audio/core-db/middleware';
+
+// Try to import updateSession, but handle gracefully if not available
+let updateSession:
+  | ((request: NextRequest) => Promise<{ supabaseResponse: NextResponse; user: any }>)
+  | null = null;
+
+try {
+  const coreDb = require('@total-audio/core-db/middleware');
+  updateSession = coreDb.updateSession;
+} catch (error) {
+  console.warn('Could not load @total-audio/core-db/middleware, using fallback');
+  // Fallback: create a simple updateSession function
+  updateSession = async (request: NextRequest) => {
+    return {
+      supabaseResponse: NextResponse.next(),
+      user: null,
+    };
+  };
+}
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const userAgent = request.headers.get('user-agent')?.toLowerCase() || '';
 
-  // Update Supabase session
-  const { supabaseResponse, user } = await updateSession(request);
+  // Update Supabase session (with fallback)
+  let supabaseResponse = NextResponse.next();
+  let user = null;
+
+  if (updateSession) {
+    try {
+      const result = await updateSession(request);
+      supabaseResponse = result.supabaseResponse;
+      user = result.user;
+    } catch (error) {
+      console.warn('Session update failed, continuing without auth:', error);
+    }
+  }
 
   // Protected routes that require authentication
-  const protectedPaths = ['/demo', '/dashboard'];
+  const protectedPaths = ['/dashboard'];
 
   // Protected API routes
   const protectedAPIPaths = ['/api/enrich', '/api/enrich-claude', '/api/usage', '/api/checkout'];
@@ -41,6 +70,7 @@ export async function middleware(request: NextRequest) {
     '/social-media-simple',
     '/uk-social-mobile',
     '/export-demo',
+    '/brutalist-pdf-test',
     '/progress-dashboard',
     '/user-acquisition-dashboard',
     '/newsletter-dashboard',

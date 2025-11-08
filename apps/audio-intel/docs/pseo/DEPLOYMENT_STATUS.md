@@ -33,6 +33,7 @@
 ### ✅ Built Components
 
 1. **CSV Parser** (`utils/pseo/csvParser.ts`)
+
    - Parses programmatic-pages.csv
    - Validates research data for truthfulness
    - Enforces 6-month verification requirements
@@ -40,12 +41,14 @@
    - Requires source URLs for all claims
 
 2. **Page Generator** (`utils/pseo/generatePages.ts`)
+
    - Generates Next.js page.tsx files from validated data
    - Includes data verification metadata
    - Creates React components with proper TypeScript
    - Supports batch generation and single-page generation
 
 3. **npm Scripts**
+
    - `npm run pseo:generate -- --all` - Generate all planned pages
    - `npm run pseo:generate -- --slug=bbc-6-music` - Generate single page
    - `npm run pseo:generate -- --tier=1` - Generate all Tier 1 pages
@@ -63,31 +66,37 @@
 ### Ready for Research (7 remaining Tier 1 pages)
 
 4. **Apple Music Editorial Contacts** (1500 searches/month)
+
    - Status: Research needed
    - File: `research/apple-music-editorial-research.md`
    - Priority: HIGH
 
 5. **BBC Radio 1Xtra** (600 searches/month)
+
    - Status: Research needed
    - File: `research/bbc-radio-1xtra-research.md`
    - Priority: HIGH
 
 6. **BBC Radio 2** (500 searches/month)
+
    - Status: Research needed
    - File: `research/bbc-radio-2-research.md`
    - Priority: MEDIUM
 
 7. **KISS FM** (400 searches/month)
+
    - Status: Research needed
    - File: `research/kiss-fm-research.md`
    - Priority: MEDIUM
 
 8. **Capital FM** (400 searches/month)
+
    - Status: Research needed
    - File: `research/capital-fm-research.md`
    - Priority: MEDIUM
 
 9. **Kerrang Radio** (350 searches/month)
+
    - Status: Research needed
    - File: `research/kerrang-radio-research.md`
    - Priority: MEDIUM

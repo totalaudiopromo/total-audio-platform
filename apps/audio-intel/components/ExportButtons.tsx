@@ -234,24 +234,26 @@ export default function ExportButtons({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div className="bg-white rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+          <h3 className="text-xl font-black text-gray-900 flex items-center gap-2">
             <Download className="w-5 h-5 text-blue-600" />
             Professional Export System
           </h3>
-          <p className="text-sm text-gray-600 mt-1">
+          <p className="text-sm text-gray-700 font-bold mt-1">
             Export your data in multiple formats with optional email delivery
           </p>
           {getDataTypes().length > 0 && (
-            <p className="text-xs text-gray-500 mt-1">Available: {getDataTypes().join(', ')}</p>
+            <p className="text-xs text-gray-600 mt-1 font-medium">
+              Available: {getDataTypes().join(', ')}
+            </p>
           )}
         </div>
         <div className="text-right">
-          <div className="text-2xl font-bold text-blue-600">{getDataCount()}</div>
-          <div className="text-xs text-gray-500">Items Available</div>
+          <div className="text-2xl font-black text-blue-600">{getDataCount()}</div>
+          <div className="text-xs text-gray-600 font-bold">Items Available</div>
         </div>
       </div>
 
@@ -280,30 +282,28 @@ export default function ExportButtons({
       {/* Export Status */}
       {lastExportResult && !exportProgress && (
         <div
-          className={`mb-4 p-3 rounded-md flex items-center gap-2 ${
-            lastExportResult.success
-              ? 'bg-green-50 border border-green-200 text-green-800'
-              : 'bg-red-50 border border-red-200 text-red-800'
+          className={`mb-4 p-4 rounded-xl flex items-center gap-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
+            lastExportResult.success ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
           }`}
         >
           {lastExportResult.success ? (
-            <CheckCircle className="w-4 h-4" />
+            <CheckCircle className="w-5 h-5" />
           ) : (
-            <AlertCircle className="w-4 h-4" />
+            <AlertCircle className="w-5 h-5" />
           )}
-          <span className="text-sm font-medium">{lastExportResult.message}</span>
+          <span className="text-sm font-bold">{lastExportResult.message}</span>
         </div>
       )}
 
       {/* Format Selection */}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-black text-gray-900 mb-2">
           Export Format
           {userTier === 'free' && (
-            <span className="text-xs text-gray-500 ml-2">(CSV only for Free tier)</span>
+            <span className="text-xs text-gray-600 ml-2 font-medium">(CSV only for Free tier)</span>
           )}
         </label>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           {[
             {
               value: 'csv',
@@ -331,18 +331,20 @@ export default function ExportButtons({
               key={format.value}
               onClick={() => format.available && setExportFormat(format.value as any)}
               disabled={!format.available}
-              className={`flex flex-col items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`flex flex-col items-center gap-1 px-4 py-3 rounded-xl text-sm font-black transition-all border-2 ${
                 !format.available
-                  ? 'bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed'
+                  ? 'bg-gray-100 text-gray-400 border-gray-300 cursor-not-allowed'
                   : exportFormat === format.value
-                    ? 'bg-blue-100 text-blue-700 border border-blue-300'
-                    : 'bg-gray-50 text-gray-600 border border-gray-200 hover:bg-gray-100'
+                  ? 'bg-cyan-500 text-white border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
+                  : 'bg-white text-gray-700 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5'
               }`}
             >
-              <format.icon className="w-4 h-4" />
+              <format.icon className="w-5 h-5" />
               <span>{format.label}</span>
-              <span className="text-xs opacity-75">{format.description}</span>
-              {!format.available && <span className="text-xs text-red-500">Upgrade required</span>}
+              <span className="text-xs opacity-75 font-medium">{format.description}</span>
+              {!format.available && (
+                <span className="text-xs text-red-500 font-bold">Upgrade required</span>
+              )}
             </button>
           ))}
         </div>
@@ -502,17 +504,17 @@ export default function ExportButtons({
       )}
 
       {/* Export Buttons */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         {/* Individual Export Buttons */}
         {contacts && contacts.length > 0 && (
           <button
             onClick={() => handleExport('contacts')}
             disabled={isExporting || !hasData}
-            className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex flex-col items-center gap-2 p-4 bg-cyan-500 hover:bg-cyan-600 text-white font-black border-2 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Users className="w-6 h-6 text-blue-600" />
-            <span className="font-medium text-blue-900">Export Contacts</span>
-            <span className="text-xs text-blue-700">{contacts.length} contacts</span>
+            <Users className="w-6 h-6" />
+            <span className="font-black">Export Contacts</span>
+            <span className="text-xs font-bold">{contacts.length} contacts</span>
           </button>
         )}
 
@@ -520,11 +522,11 @@ export default function ExportButtons({
           <button
             onClick={() => handleExport('analytics')}
             disabled={isExporting || !hasData}
-            className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-lg hover:from-green-100 hover:to-green-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex flex-col items-center gap-2 p-4 bg-teal-500 hover:bg-teal-600 text-white font-black border-2 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <BarChart3 className="w-6 h-6 text-green-600" />
-            <span className="font-medium text-green-900">Export Analytics</span>
-            <span className="text-xs text-green-700">Performance report</span>
+            <BarChart3 className="w-6 h-6" />
+            <span className="font-black">Export Analytics</span>
+            <span className="text-xs font-bold">Performance report</span>
           </button>
         )}
 
@@ -532,11 +534,11 @@ export default function ExportButtons({
           <button
             onClick={() => handleExport('search-results')}
             disabled={isExporting || !hasData}
-            className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex flex-col items-center gap-2 p-4 bg-purple-500 hover:bg-purple-600 text-white font-black border-2 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Search className="w-6 h-6 text-blue-600" />
-            <span className="font-medium text-blue-900">Export Search Results</span>
-            <span className="text-xs text-blue-700">{searchResults.results.length} results</span>
+            <Search className="w-6 h-6" />
+            <span className="font-black">Export Search Results</span>
+            <span className="text-xs font-bold">{searchResults.results.length} results</span>
           </button>
         )}
 
@@ -544,11 +546,11 @@ export default function ExportButtons({
           <button
             onClick={() => handleExport('ai-agent-report')}
             disabled={isExporting || !hasData}
-            className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 rounded-lg hover:from-orange-100 hover:to-orange-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex flex-col items-center gap-2 p-4 bg-orange-500 hover:bg-orange-600 text-white font-black border-2 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Brain className="w-6 h-6 text-orange-600" />
-            <span className="font-medium text-orange-900">Export AI Report</span>
-            <span className="text-xs text-orange-700">Strategic analysis</span>
+            <Brain className="w-6 h-6" />
+            <span className="font-black">Export AI Report</span>
+            <span className="text-xs font-bold">Strategic analysis</span>
           </button>
         )}
 
@@ -557,11 +559,11 @@ export default function ExportButtons({
           <button
             onClick={() => handleExport('batch')}
             disabled={isExporting}
-            className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex flex-col items-center gap-2 p-4 bg-blue-600 hover:bg-blue-700 text-white font-black border-2 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Download className="w-6 h-6 text-blue-600" />
-            <span className="font-medium text-blue-900">Batch Export All</span>
-            <span className="text-xs text-blue-700">{getDataCount()} items</span>
+            <Download className="w-6 h-6" />
+            <span className="font-black">Batch Export All</span>
+            <span className="text-xs font-bold">{getDataCount()} items</span>
           </button>
         )}
       </div>

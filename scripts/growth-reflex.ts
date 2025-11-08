@@ -287,8 +287,8 @@ function generateMarkdownReport(report: GrowthReflexReport): string {
         driver.correlationStrength === 'strong'
           ? '🟢'
           : driver.correlationStrength === 'moderate'
-            ? '🟡'
-            : '🔴';
+          ? '🟡'
+          : '🔴';
       markdown += `| ${driver.eventName} | ${driver.totalOccurrences} | ${driver.uniqueUsers} | £${(
         driver.totalRevenueImpact / 100
       ).toFixed(2)} | £${(driver.avgRevenuePerUser / 100).toFixed(2)} | ${strengthEmoji} ${

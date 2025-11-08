@@ -99,11 +99,13 @@ Users choose their setup preference:
 ### From AI Audience Accelerator:
 
 1. **Frustration-Driven Questions**
+
    - "What makes your approach different?" → Addresses frustration with generic pitches
    - "What's your biggest win?" → Builds credibility from achievements
    - "How would you describe your style?" → Ensures authentic voice
 
 2. **Paired Opposites Method**
+
    - Frustration: Generic AI pitches get ignored
    - Desire: Pitches that sound personally written get responses
    - Dream: Build genuine relationships with contacts

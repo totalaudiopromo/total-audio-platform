@@ -230,7 +230,7 @@ export default function PricingPage() {
             onChange={event => setEmail(event.target.value)}
             placeholder="you@example.com"
             required
-            className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+            className="w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-4 focus:ring-cyan-400 transition"
           />
           <p className="text-xs text-gray-500">
             Prefilled with the signed-in account when available.

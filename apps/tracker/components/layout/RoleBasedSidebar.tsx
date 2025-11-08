@@ -51,8 +51,8 @@ export function RoleBasedSidebar({ userType }: RoleBasedSidebarProps) {
     userType === 'artist'
       ? artistNavItems
       : userType === 'agency'
-        ? agencyNavItems
-        : bothNavItems;
+      ? agencyNavItems
+      : bothNavItems;
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';

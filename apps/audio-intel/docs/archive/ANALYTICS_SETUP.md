@@ -175,20 +175,24 @@ You view on mobile at command.totalaudiopromo.com
 ## ⚡ IMMEDIATE ACTIONS REQUIRED
 
 1. **Fix Command Centre API URL** (5 minutes)
+
    - Update `audioIntelBaseUrl` to production URL
    - Add environment variable
    - Redeploy Command Centre
 
 2. **Add Database for Analytics Storage** (30 minutes)
+
    - Use existing Supabase/PostgreSQL
    - Create `analytics_events` table
    - Update `/api/analytics/route.ts` to store events
 
 3. **Add PSEO Page Tracking** (15 minutes per page)
+
    - Add `useEffect` with `trackPageView()` to all 8 PSEO pages
    - Include metadata (topic, search volume, referrer)
 
 4. **Test Full Pipeline** (10 minutes)
+
    - Visit PSEO page
    - Check GTM fires in browser dev tools
    - Verify data appears in `/api/analytics`

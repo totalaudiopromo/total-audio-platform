@@ -1,0 +1,122 @@
+
+> total-audio-platform@1.0.0 test:smoke /Users/chrisschofield/workspace/active/total-audio-platform
+> playwright test tests/demo-scenarios/liberty-workflow.spec.ts --grep 'Quick Demo Smoke Test'
+
+[WebServer] 
+[WebServer] > audio-intel@0.1.0 dev
+[WebServer] > next dev
+[WebServer] 
+[WebServer]    [1m[38;2;173;127;168m▲ Next.js 15.3.0[39m[22m
+[WebServer]    - Local:        http://localhost:3000
+[WebServer]    - Network:      http://192.168.1.234:3000
+[WebServer]    - Environments: .env.local
+[WebServer] 
+[WebServer]  [32m[1m✓[22m[39m Starting...
+[WebServer]  [32m[1m✓[22m[39m Ready in 2.1s
+[WebServer]  [32m[1m✓[22m[39m Compiled /middleware in 252ms (193 modules)
+[WebServer]  [37m[1m○[22m[39m Compiling / ...
+[WebServer] <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (128kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+[WebServer] <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (118kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+[WebServer]  [32m[1m✓[22m[39m Compiled / in 3.9s (1108 modules)
+[WebServer]  GET / [32m200[39m in 4609ms
+[WebServer]  [32m[1m✓[22m[39m Compiled in 712ms (478 modules)
+[WebServer] 
+[WebServer] > pitch-generator@0.1.0 dev
+[WebServer] > next dev
+[WebServer] 
+[WebServer]    [1m[38;2;173;127;168m▲ Next.js 15.3.0[39m[22m
+[WebServer]    - Local:        http://localhost:3001
+[WebServer]    - Network:      http://192.168.1.234:3001
+[WebServer]    - Environments: .env.local
+[WebServer] 
+[WebServer]  [32m[1m✓[22m[39m Starting...
+[WebServer]  [32m[1m✓[22m[39m Ready in 2s
+[WebServer]  [37m[1m○[22m[39m Compiling /middleware ...
+[WebServer]  [32m[1m✓[22m[39m Compiled /middleware in 1144ms (193 modules)
+[WebServer]  [37m[1m○[22m[39m Compiling / ...
+[WebServer] <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (128kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+[WebServer] <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (118kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+[WebServer]  [32m[1m✓[22m[39m Compiled / in 4.5s (1103 modules)
+[WebServer]  GET / [32m200[39m in 4957ms
+[WebServer]  [32m[1m✓[22m[39m Compiled in 5.3s (671 modules)
+[WebServer]  [32m[1m✓[22m[39m Compiled in 833ms (478 modules)
+[WebServer]  [32m[1m✓[22m[39m Compiled in 962ms (478 modules)
+[WebServer]  [32m[1m✓[22m[39m Compiled in 498ms (671 modules)
+[WebServer]  [32m[1m✓[22m[39m Compiled in 714ms (478 modules)
+[WebServer]  [37m[1m○[22m[39m Compiling /_error ...
+[WebServer]  [32m[1m✓[22m[39m Compiled /_error in 1118ms (820 modules)
+[WebServer]  GET /brutalist-pdf-test [33m404[39m in 2ms
+[WebServer]  [37m[1m○[22m[39m Compiling /_not-found ...
+[WebServer]  [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+[WebServer]  [32m[1m✓[22m[39m Compiled /_not-found in 1941ms (1413 modules)
+[WebServer]  GET /brutalist-pdf-test [33m404[39m in 1ms
+[WebServer]  [31m[1m⨯[22m[39m A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+[WebServer]  GET /favicon.ico [31m500[39m in 243ms
+[WebServer]  [32m[1m✓[22m[39m Compiled in 234ms (193 modules)
+[WebServer]  [37m[1m○[22m[39m Compiling /brutalist-pdf-test ...
+[WebServer]  [32m[1m✓[22m[39m Compiled /brutalist-pdf-test in 1423ms (1428 modules)
+[WebServer]  [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+[WebServer]  GET /brutalist-pdf-test [32m200[39m in 2153ms
+[WebServer]  GET /brutalist-pdf-test [32m200[39m in 104ms
+[WebServer]  GET /_next/static/css/app/layout.css?v=1762637943543 [33m404[39m in 177ms
+[WebServer]  GET /_next/static/chunks/main-app.js?v=1762637943543 [33m404[39m in 236ms
+[WebServer]  GET /_next/static/chunks/app-pages-internals.js [33m404[39m in 120ms
+[WebServer]  GET /_next/static/chunks/app/page.js [33m404[39m in 99ms
+[WebServer]  [31m[1m⨯[22m[39m A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+[WebServer]  GET /favicon.ico [31m500[39m in 253ms
+[WebServer]  [32m[1m✓[22m[39m Compiled in 85ms (193 modules)
+[WebServer] [?25h
+[WebServer] [?25h
+[WebServer] 
+[WebServer] > tracker@0.1.0 dev
+[WebServer] > next dev
+[WebServer] 
+[WebServer]    [1m[38;2;173;127;168m▲ Next.js 15.3.0[39m[22m
+[WebServer]    - Local:        http://localhost:3004
+[WebServer]    - Network:      http://192.168.1.234:3004
+[WebServer]    - Environments: .env.local
+[WebServer] 
+[WebServer]  [32m[1m✓[22m[39m Starting...
+[WebServer]  [32m[1m✓[22m[39m Ready in 2.3s
+[WebServer]  [32m[1m✓[22m[39m Compiled /middleware in 364ms (181 modules)
+[WebServer]  [37m[1m○[22m[39m Compiling / ...
+[WebServer] <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (118kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+[WebServer]  [32m[1m✓[22m[39m Compiled / in 3.9s (1029 modules)
+[WebServer]  GET / [32m200[39m in 4362ms
+Error: Playwright Test did not expect test.describe() to be called here.
+Most common reasons include:
+- You are calling test.describe() in a configuration file.
+- You are calling test.describe() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+
+   at demo-scenarios/liberty-workflow.spec.ts:16
+
+  14 |  */
+  15 |
+> 16 | test.describe('Liberty Demo Workflow - Agency Use Case', () => {
+     |      ^
+  17 |   test('complete agency workflow: enrich → pitch → track', async ({ page, context }) => {
+  18 |     console.log('\n🎯 Starting Liberty Music PR Demo Workflow...\n');
+  19 |
+    at TestTypeImpl._currentSuite (/Users/chrisschofield/workspace/active/total-audio-platform/node_modules/.pnpm/playwright@1.56.1/node_modules/playwright/lib/common/testType.js:74:13)
+    at TestTypeImpl._describe (/Users/chrisschofield/workspace/active/total-audio-platform/node_modules/.pnpm/playwright@1.56.1/node_modules/playwright/lib/common/testType.js:114:24)
+    at Function.describe (/Users/chrisschofield/workspace/active/total-audio-platform/node_modules/.pnpm/playwright@1.56.1/node_modules/playwright/lib/transform/transform.js:275:12)
+    at Object.<anonymous> (/Users/chrisschofield/workspace/active/total-audio-platform/tests/demo-scenarios/liberty-workflow.spec.ts:16:6)
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+Configuration Error: HTML reporter output folder clashes with the tests output folder:
+
+    html reporter folder: /Users/chrisschofield/workspace/active/total-audio-platform/test-results/html
+    test results folder: /Users/chrisschofield/workspace/active/total-audio-platform/test-results
+
+HTML reporter will clear its output directory prior to being generated, which will lead to the artifact loss.
+
+
+
+To open last HTML report run:
+
+  pnpm exec playwright show-report test-results/html
+
+ ELIFECYCLE  Command failed with exit code 1.

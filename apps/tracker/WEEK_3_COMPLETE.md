@@ -77,17 +77,20 @@ All Week 3 medium-priority enhancement tasks have been successfully implemented.
 **Features**:
 
 - ✅ **Overview View**:
+
   - ROI calculation (with trending indicator)
   - Cost per result metric
   - Total budget and reach stats
   - Platform performance breakdown (pie chart + table)
 
 - ✅ **Trends View**:
+
   - Budget trend line chart (by month)
   - Reach trend bar chart (by month)
   - Time-series analysis
 
 - ✅ **Comparison View**:
+
   - Platform comparison bar chart
   - Budget vs reach comparison
   - Campaign count by platform

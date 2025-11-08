@@ -102,21 +102,25 @@ Open http://localhost:3000
 ### Before Launch Checklist
 
 1. **Authentication**
+
    - [ ] Configure OAuth providers (Google, GitHub, etc.)
    - [ ] Set up proper user management
    - [ ] Implement user_id properly (not using email)
 
 2. **Database**
+
    - [ ] Review and enable Row Level Security (RLS)
    - [ ] Set up database backups
    - [ ] Add indexes for performance
 
 3. **AI Configuration**
+
    - [ ] Monitor OpenAI costs
    - [ ] Implement rate limiting
    - [ ] Add error handling for API failures
 
 4. **Testing**
+
    - [ ] Test all user flows end-to-end
    - [ ] Test mobile responsiveness
    - [ ] Verify AI quality across genres

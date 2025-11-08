@@ -172,10 +172,10 @@ function generateMockCustomerJourneys(): CustomerJourney[] {
           j === numTouchPoints - 1 && status === 'converted'
             ? ['purchase']
             : touchpointType === 'trial'
-              ? ['signup', 'trial-start']
-              : touchpointType === 'consideration'
-                ? ['email-signup']
-                : [],
+            ? ['signup', 'trial-start']
+            : touchpointType === 'consideration'
+            ? ['email-signup']
+            : [],
         value:
           status === 'converted' && j === numTouchPoints - 1
             ? 15 + Math.random() * 135 // £15-150 for final conversion

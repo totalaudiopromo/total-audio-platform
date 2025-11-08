@@ -7,17 +7,20 @@ Based on your comprehensive PRD, I've transformed your basic tracker into an **i
 ### Core Intelligence Features ✅
 
 1. **Performance Scoring** (0-100 vs industry)
+
    - Automatic calculation on every campaign
    - Compares to 30+ industry benchmarks
    - Shows percentile ranking (Top 10%, Top 30%, etc.)
 
 2. **Pattern Recognition**
+
    - Identifies your best-performing genres
    - Shows most effective platforms
    - Recommends optimal budget ranges
    - Tracks success trends over time
 
 3. **Industry Benchmarking**
+
    - BBC Radio: 20-26% avg success, £80-130 cost/result
    - Commercial Radio: 13-25% avg success, £90-190 cost/result
    - Playlists: 28-48% avg success, £36-63 cost/result
@@ -25,6 +28,7 @@ Based on your comprehensive PRD, I've transformed your basic tracker into an **i
    - Social: 35-50% avg success, £42-60 cost/result
 
 4. **Smart Insights**
+
    - "🎉 Outstanding! Your campaign performed 23% better than industry average"
    - "💰 You saved £34 per result vs industry average"
    - "🎯 Excellent 35% success rate - top 20% performance"

@@ -257,10 +257,10 @@ Key takeaway: This shows how innovation drives the music industry forward.
             {currentStep === 'compose'
               ? 1
               : currentStep === 'enhance'
-                ? 2
-                : currentStep === 'review'
-                  ? 3
-                  : 4}{' '}
+              ? 2
+              : currentStep === 'review'
+              ? 3
+              : 4}{' '}
             of 4
           </span>
         </div>
@@ -272,8 +272,8 @@ Key takeaway: This shows how innovation drives the music industry forward.
                 currentStep === step
                   ? 'bg-blue-600'
                   : index < ['compose', 'enhance', 'review', 'schedule'].indexOf(currentStep)
-                    ? 'bg-green-500'
-                    : 'bg-gray-200'
+                  ? 'bg-green-500'
+                  : 'bg-gray-200'
               }`}
             />
           ))}

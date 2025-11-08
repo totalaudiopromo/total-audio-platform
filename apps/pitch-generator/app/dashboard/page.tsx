@@ -106,17 +106,17 @@ export default function DashboardPage() {
   function getStatusColor(status: string) {
     switch (status) {
       case 'draft':
-        return 'bg-gray-100 text-gray-600';
+        return 'bg-gray-100 text-gray-900';
       case 'sent':
-        return 'bg-brand-amber/20 text-brand-amber';
+        return 'bg-brand-amber/20 text-brand-amber-dark';
       case 'replied':
-        return 'bg-success/20 text-success';
+        return 'bg-green-100 text-green-800';
       case 'success':
-        return 'bg-success/30 text-success';
+        return 'bg-green-200 text-green-900';
       case 'no_reply':
-        return 'bg-gray-50 text-gray-400';
+        return 'bg-gray-50 text-gray-600';
       default:
-        return 'bg-gray-100 text-gray-600';
+        return 'bg-gray-100 text-gray-900';
     }
   }
 
@@ -136,7 +136,7 @@ export default function DashboardPage() {
   if (loading || !user) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber-dark" />
       </div>
     );
   }
@@ -152,7 +152,7 @@ export default function DashboardPage() {
             </span>
             <h1 className="mt-3 text-3xl font-bold">
               Welcome back,{' '}
-              <span className="text-brand-amber">
+              <span className="text-brand-amber-dark font-black">
                 {user.user_metadata?.name || user.email?.split('@')[0] || 'there'}
               </span>
             </h1>
@@ -205,17 +205,17 @@ export default function DashboardPage() {
               </Link>
             </div>
             <div className="mt-8 grid gap-4 text-left sm:grid-cols-3">
-              <div className="rounded-xl border border-white/10 bg-gray-50 px-4 py-4">
-                <div className="text-2xl font-bold text-brand-amber">6</div>
+              <div className="rounded-xl border-2 border-black bg-white px-4 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <div className="text-2xl font-bold text-brand-amber-dark">6</div>
                 <p className="mt-1 text-xs text-gray-900/60">
                   Proven templates from real campaigns
                 </p>
               </div>
-              <div className="rounded-xl border border-white/10 bg-gray-50 px-4 py-4">
-                <div className="text-2xl font-bold text-brand-amber">3</div>
+              <div className="rounded-xl border-2 border-black bg-white px-4 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <div className="text-2xl font-bold text-brand-amber-dark">3</div>
                 <p className="mt-1 text-xs text-gray-900/60">Subject line variations per pitch</p>
               </div>
-              <div className="rounded-xl border border-white/10 bg-gray-50 px-4 py-4">
+              <div className="rounded-xl border-2 border-black bg-white px-4 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <div className="text-2xl font-bold text-success">2min</div>
                 <p className="mt-1 text-xs text-gray-900/60">Average time to generate a pitch</p>
               </div>
@@ -235,7 +235,7 @@ export default function DashboardPage() {
                   <p className="mt-3 text-3xl font-bold">{stats.totalPitches}</p>
                 </div>
                 <div className="rounded-full bg-brand-amber/20 p-3">
-                  <Zap className="h-5 w-5 text-brand-amber" />
+                  <Zap className="h-5 w-5 text-brand-amber-dark" />
                 </div>
               </div>
             </div>
@@ -249,7 +249,7 @@ export default function DashboardPage() {
                   <p className="mt-3 text-3xl font-bold">{stats.sentPitches}</p>
                 </div>
                 <div className="rounded-full bg-brand-amber/20 p-3">
-                  <Send className="h-5 w-5 text-brand-amber" />
+                  <Send className="h-5 w-5 text-brand-amber-dark" />
                 </div>
               </div>
             </div>
@@ -277,7 +277,7 @@ export default function DashboardPage() {
                   <p className="mt-3 text-3xl font-bold">{(stats.successRate || 0).toFixed(1)}%</p>
                 </div>
                 <div className="rounded-full bg-brand-amber/20 p-3">
-                  <TrendingUp className="h-5 w-5 text-brand-amber" />
+                  <TrendingUp className="h-5 w-5 text-brand-amber-dark" />
                 </div>
               </div>
             </div>
@@ -298,7 +298,7 @@ export default function DashboardPage() {
         </div>
 
         {recentPitches.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-8 py-12 text-center">
+          <div className="rounded-2xl border-4 border-black bg-white px-8 py-12 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <Zap className="mx-auto h-12 w-12 text-gray-900/30" />
             <h3 className="mt-4 text-lg font-semibold text-gray-900/70">No pitches yet</h3>
             <p className="mt-2 text-sm text-gray-900/50">
@@ -314,7 +314,7 @@ export default function DashboardPage() {
             {recentPitches.map(pitch => (
               <div
                 key={pitch.id}
-                className="group rounded-2xl border border-white/10 bg-gray-50 px-6 py-5 transition hover:border-gray-300 hover:bg-white/[0.07]"
+                className="group rounded-2xl border-4 border-black bg-white px-6 py-5 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0 flex-1">
@@ -333,7 +333,11 @@ export default function DashboardPage() {
                       "{pitch.track_title}" by {pitch.artist_name}
                     </p>
                     <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-gray-900/50">
-                      <span className={`rounded-full px-3 py-1 ${getStatusColor(pitch.status)}`}>
+                      <span
+                        className={`rounded-full border-2 border-black px-3 py-1 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${getStatusColor(
+                          pitch.status
+                        )}`}
+                      >
                         {pitch.status.replace('_', ' ')}
                       </span>
                       <span>{getTimeAgo(pitch.created_at!)}</span>
@@ -377,7 +381,7 @@ export default function DashboardPage() {
           <p className="mt-2 text-sm text-gray-900/60 break-words">
             Browse genre-specific templates from 500+ successful campaigns
           </p>
-          <span className="mt-4 inline-flex text-sm font-medium text-brand-amber transition group-hover:gap-2">
+          <span className="mt-4 inline-flex text-sm font-medium text-brand-amber-dark transition group-hover:gap-2">
             Browse templates →
           </span>
         </Link>
@@ -390,7 +394,7 @@ export default function DashboardPage() {
           <p className="mt-2 text-sm text-gray-900/60 break-words">
             Add and organize your media contacts for personalized pitches
           </p>
-          <span className="mt-4 inline-flex text-sm font-medium text-brand-amber transition group-hover:gap-2">
+          <span className="mt-4 inline-flex text-sm font-medium text-brand-amber-dark transition group-hover:gap-2">
             View contacts →
           </span>
         </Link>

@@ -544,22 +544,19 @@ class SocialMediaTracker {
       this.alertCallbacks.set(platform, callback);
 
       // Start monitoring interval
-      setInterval(
-        async () => {
-          try {
-            const alerts = await this.detectViralOpportunities(platform);
+      setInterval(async () => {
+        try {
+          const alerts = await this.detectViralOpportunities(platform);
 
-            for (const alert of alerts) {
-              if (alert.severity === 'critical' || alert.severity === 'high') {
-                callback(alert);
-              }
+          for (const alert of alerts) {
+            if (alert.severity === 'critical' || alert.severity === 'high') {
+              callback(alert);
             }
-          } catch (error) {
-            console.error('Error in viral alert monitoring:', error);
           }
-        },
-        10 * 60 * 1000
-      ); // Check every 10 minutes
+        } catch (error) {
+          console.error('Error in viral alert monitoring:', error);
+        }
+      }, 10 * 60 * 1000); // Check every 10 minutes
     } catch (error) {
       console.error('Failed to setup viral alerts:', error);
       throw error;
@@ -581,17 +578,14 @@ class SocialMediaTracker {
     console.log(`Starting ${platform} tracking with ${config.refreshInterval} minute intervals`);
 
     // Set up tracking interval
-    setInterval(
-      async () => {
-        try {
-          await this.getPlatformMetrics(platform);
-          await this.detectViralOpportunities(platform);
-        } catch (error) {
-          console.error(`Error tracking ${platform}:`, error);
-        }
-      },
-      config.refreshInterval * 60 * 1000
-    );
+    setInterval(async () => {
+      try {
+        await this.getPlatformMetrics(platform);
+        await this.detectViralOpportunities(platform);
+      } catch (error) {
+        console.error(`Error tracking ${platform}:`, error);
+      }
+    }, config.refreshInterval * 60 * 1000);
   }
 
   private async collectPlatformData(config: SocialPlatformConfig): Promise<SocialMetrics> {

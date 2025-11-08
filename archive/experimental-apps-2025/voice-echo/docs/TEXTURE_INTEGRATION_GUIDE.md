@@ -27,6 +27,18 @@ This guide provides comprehensive instructions for integrating the texture pack 
 /* Base texture container */
 /* Base texture container */
 /* Base texture container */
+/* Base texture container */
+/* Base texture container */
+/* Base texture container */
+/* Base texture container */
+/* Base texture container */
+/* Base texture container */
+/* Base texture container */
+/* Base texture container */
+/* Base texture container */
+/* Base texture container */
+/* Base texture container */
+/* Base texture container */
 .texture-overlay       /* Overlay blend mode */
 .texture-multiply      /* Multiply blend mode */
 .texture-soft-light    /* Soft light blend mode */
@@ -38,6 +50,18 @@ This guide provides comprehensive instructions for integrating the texture pack 
 
 ```css
 .texture-paper         /* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
+/* Primary paper texture */
 /* Primary paper texture */
 /* Primary paper texture */
 /* Primary paper texture */
@@ -53,6 +77,18 @@ This guide provides comprehensive instructions for integrating the texture pack 
 /* Primary grain texture */
 /* Primary grain texture */
 /* Primary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
+/* Primary grain texture */
 .texture-grain-2; /* Secondary grain texture */
 /* ... up to texture-grain-6 */
 ```
@@ -64,6 +100,18 @@ This guide provides comprehensive instructions for integrating the texture pack 
 /* Primary luma gradient */
 /* Primary luma gradient */
 /* Primary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
+/* Primary luma gradient */
 .texture-luma-2; /* Secondary luma gradient */
 /* ... up to texture-luma-8 */
 ```
@@ -72,6 +120,18 @@ This guide provides comprehensive instructions for integrating the texture pack 
 
 ```css
 .texture-card          /* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
+/* Basic textured card */
 /* Basic textured card */
 /* Basic textured card */
 /* Basic textured card */
@@ -411,17 +471,20 @@ export function LazyTextureCard({ texture, children, ...props }) {
 ### Common Issues
 
 1. **Textures not loading**
+
    - Check file paths in `/public/textures/`
    - Verify image file names match CSS classes
    - Clear browser cache
 
 2. **Performance issues**
+
    - Reduce texture opacity
    - Implement lazy loading
    - Optimize image sizes
    - Disable animations on mobile
 
 3. **Animation conflicts**
+
    - Check for conflicting CSS classes
    - Ensure proper z-index stacking
    - Verify animation timing

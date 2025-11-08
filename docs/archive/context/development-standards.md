@@ -237,9 +237,7 @@ module.exports = {
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings:
-      'rlig' 1,
-      'calt' 1;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 }
 
@@ -1266,11 +1264,7 @@ export class ErrorBoundary extends Component<{ children: React.ReactNode }, Erro
 ```typescript
 // lib/api-error.ts
 export class APIError extends Error {
-  constructor(
-    message: string,
-    public statusCode: number,
-    public code?: string
-  ) {
+  constructor(message: string, public statusCode: number, public code?: string) {
     super(message);
     this.name = 'APIError';
   }

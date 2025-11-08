@@ -231,11 +231,13 @@ Audio Intel is **fully production-ready**. No more technical work needed. Time t
 ### Immediate Actions (This Week)
 
 1. **Book Demo Calls**
+
    - Radio promoters (85% conversion rate)
    - Use BBC Radio 1 case study as hook
    - Demonstrate real-time enrichment
 
 2. **Test User Journey**
+
    - Complete signup → upload → enrichment → export
    - Gather feedback from real users
    - Document pain points
@@ -248,11 +250,13 @@ Audio Intel is **fully production-ready**. No more technical work needed. Time t
 ### Short-Term (This Month)
 
 1. **Convert First Customer**
+
    - Focus on radio promoter segment (highest conversion)
    - Use "15 hours → 15 minutes" time savings
    - Offer Free Beta to reduce friction
 
 2. **Gather Feedback**
+
    - Customer interviews after first enrichment
    - Identify real workflow issues
    - Document feature requests
@@ -265,6 +269,7 @@ Audio Intel is **fully production-ready**. No more technical work needed. Time t
 ### Long-Term (Next Quarter)
 
 1. **Scale to £500/month MRR**
+
    - 25+ paying customers (mix of £19 and £79 plans)
    - Build referral system
    - Create customer success stories

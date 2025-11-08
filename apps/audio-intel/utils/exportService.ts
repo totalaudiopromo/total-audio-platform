@@ -234,7 +234,16 @@ export class ProfessionalExportService {
           break;
 
         case 'pdf':
-          // Map ContactData to the format expected by exportContactsToPdf
+          // Use brutalist PDF generation via API
+          onProgress?.({
+            current: validContacts.length,
+            total: validContacts.length,
+            percentage: 60,
+            stage: 'formatting',
+            message: 'Generating brutalist PDF report...',
+          });
+
+          // Map ContactData to the format expected by brutalist PDF
           const pdfContacts = validContacts.map(contact => ({
             name: contact.name,
             email: contact.email,
@@ -249,15 +258,57 @@ export class ProfessionalExportService {
             company: contact.company,
           }));
 
-          exportContactsToPdf(
-            pdfContacts as any,
-            options.filename || 'audio-intel-contacts.pdf',
-            options.whiteLabel
-          );
-          result = {
-            success: true,
-            message: `Successfully exported ${validContacts.length} contacts to PDF with intelligence data`,
-          };
+          // Call brutalist PDF API
+          try {
+            const pdfResponse = await fetch('/api/export/brutalist-pdf', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                contacts: pdfContacts,
+                whiteLabel: options.whiteLabel || this.whiteLabelConfig,
+                filename: options.filename || 'audio-intel-contacts.pdf',
+              }),
+            });
+
+            if (!pdfResponse.ok) {
+              throw new Error('PDF generation failed');
+            }
+
+            const pdfData = await pdfResponse.json();
+
+            if (!pdfData.success) {
+              throw new Error(pdfData.error || 'PDF generation failed');
+            }
+
+            // Trigger download
+            const link = document.createElement('a');
+            link.href = pdfData.downloadUrl;
+            link.download = pdfData.filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            result = {
+              success: true,
+              downloadUrl: pdfData.downloadUrl,
+              message: `Successfully exported ${validContacts.length} contacts to brutalist PDF`,
+            };
+          } catch (pdfError) {
+            console.error('Brutalist PDF generation error:', pdfError);
+            // Fallback to old PDF export if brutalist fails
+            const { exportContactsToPdf } = await import('./exportToPdf');
+            exportContactsToPdf(
+              pdfContacts as any,
+              options.filename || 'audio-intel-contacts.pdf',
+              options.whiteLabel
+            );
+            result = {
+              success: true,
+              message: `Successfully exported ${validContacts.length} contacts to PDF (fallback mode)`,
+            };
+          }
           break;
 
         default:

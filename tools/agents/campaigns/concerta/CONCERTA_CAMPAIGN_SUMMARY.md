@@ -75,17 +75,20 @@ The 132 electronic/dance contacts include:
 ### Available Assets
 
 1. **Profile Images** ✅
+
    - 4 high-resolution variants
    - Location: `Profile image/`
    - Files: CONCERTA_High-res_1.jpg through CONCERTA_High_res_4.jpg
 
 2. **Track Artwork** ✅
+
    - Anime-inspired artwork (4 variants)
    - Futuristic city artwork (4 variants)
    - Location: `consumption_artwork_final/`
    - Includes typography layouts
 
 3. **Music Video** ✅
+
    - Location: `consumption_video/`
    - File: CONCERTA_city_03.mp4
 
@@ -148,16 +151,19 @@ The 132 electronic/dance contacts include:
 ### Immediate Actions Required
 
 1. **Review & Approve Email Templates**
+
    - Customise messaging based on Concerta's preferences
    - Add any press release information
    - Include streaming links when available
 
 2. **Additional Contact Research**
+
    - Find Eastern European dance/electronic stations
    - Research South Korean electronic music stations
    - Expand global electronic specialist list
 
 3. **Mailchimp Campaign Setup**
+
    - Create campaign in Mailchimp
    - Upload campaign assets (artwork, images)
    - Create audience segments:
@@ -166,6 +172,7 @@ The 132 electronic/dance contacts include:
      - Segment 3: South Korea (TBD)
 
 4. **Campaign Schedule**
+
    - **Week 1**: Global electronic/dance specialists (132 contacts)
    - **Week 2-3**: Eastern European focus (pending contact research)
    - **Week 4**: South Korean stations + follow-ups
@@ -198,6 +205,7 @@ All campaign files are located in:
 ### Contact Research Needed
 
 1. **Eastern European Dance Stations**
+
    - Target countries: Poland, Czech Republic, Hungary, Romania, Bulgaria
    - Focus on electronic/dance programming
    - Research online dance music platforms in Eastern Europe

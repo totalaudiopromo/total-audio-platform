@@ -835,8 +835,8 @@ class PerformanceReportGenerator {
           report.reportType.charAt(0).toUpperCase() + report.reportType.slice(1)
         } Performance Report</h2>
         <p>Period: ${new Date(report.reportPeriod.start).toDateString()} - ${new Date(
-          report.reportPeriod.end
-        ).toDateString()}</p>
+      report.reportPeriod.end
+    ).toDateString()}</p>
       </div>
       
       <div class="metric">

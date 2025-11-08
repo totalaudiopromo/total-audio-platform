@@ -118,6 +118,7 @@ Create either a global (`~/.cursor/mcp.json`) or project-specific (`.cursor/mcp.
 ### Tools
 
 - **list_records**
+
   - Lists records from a specified Airtable table
   - Input parameters:
     - `baseId` (string, required): The ID of the Airtable base
@@ -126,6 +127,7 @@ Create either a global (`~/.cursor/mcp.json`) or project-specific (`.cursor/mcp.
     - `filterByFormula` (string, optional): Airtable formula to filter records
 
 - **search_records**
+
   - Search for records containing specific text
   - Input parameters:
     - `baseId` (string, required): The ID of the Airtable base
@@ -135,11 +137,13 @@ Create either a global (`~/.cursor/mcp.json`) or project-specific (`.cursor/mcp.
     - `maxRecords` (number, optional): Maximum number of records to return. Defaults to 100.
 
 - **list_bases**
+
   - Lists all accessible Airtable bases
   - No input parameters required
   - Returns base ID, name, and permission level
 
 - **list_tables**
+
   - Lists all tables in a specific base
   - Input parameters:
     - `baseId` (string, required): The ID of the Airtable base
@@ -147,6 +151,7 @@ Create either a global (`~/.cursor/mcp.json`) or project-specific (`.cursor/mcp.
   - Returns table ID, name, description, fields, and views (to the given `detailLevel`)
 
 - **describe_table**
+
   - Gets detailed information about a specific table
   - Input parameters:
     - `baseId` (string, required): The ID of the Airtable base
@@ -156,6 +161,7 @@ Create either a global (`~/.cursor/mcp.json`) or project-specific (`.cursor/mcp.
   - Useful for getting details about a specific table without fetching information about all tables in the base
 
 - **get_record**
+
   - Gets a specific record by ID
   - Input parameters:
     - `baseId` (string, required): The ID of the Airtable base
@@ -163,6 +169,7 @@ Create either a global (`~/.cursor/mcp.json`) or project-specific (`.cursor/mcp.
     - `recordId` (string, required): The ID of the record to retrieve
 
 - **create_record**
+
   - Creates a new record in a table
   - Input parameters:
     - `baseId` (string, required): The ID of the Airtable base
@@ -170,6 +177,7 @@ Create either a global (`~/.cursor/mcp.json`) or project-specific (`.cursor/mcp.
     - `fields` (object, required): The fields and values for the new record
 
 - **update_records**
+
   - Updates one or more records in a table
   - Input parameters:
     - `baseId` (string, required): The ID of the Airtable base
@@ -177,6 +185,7 @@ Create either a global (`~/.cursor/mcp.json`) or project-specific (`.cursor/mcp.
     - `records` (array, required): Array of objects containing record ID and fields to update
 
 - **delete_records**
+
   - Deletes one or more records from a table
   - Input parameters:
     - `baseId` (string, required): The ID of the Airtable base
@@ -184,6 +193,7 @@ Create either a global (`~/.cursor/mcp.json`) or project-specific (`.cursor/mcp.
     - `recordIds` (array, required): Array of record IDs to delete
 
 - **create_table**
+
   - Creates a new table in a base
   - Input parameters:
     - `baseId` (string, required): The ID of the Airtable base
@@ -192,6 +202,7 @@ Create either a global (`~/.cursor/mcp.json`) or project-specific (`.cursor/mcp.
     - `fields` (array, required): Array of field definitions (name, type, description, options)
 
 - **update_table**
+
   - Updates a table's name or description
   - Input parameters:
     - `baseId` (string, required): The ID of the Airtable base
@@ -200,6 +211,7 @@ Create either a global (`~/.cursor/mcp.json`) or project-specific (`.cursor/mcp.
     - `description` (string, optional): New description for the table
 
 - **create_field**
+
   - Creates a new field in a table
   - Input parameters:
     - `baseId` (string, required): The ID of the Airtable base

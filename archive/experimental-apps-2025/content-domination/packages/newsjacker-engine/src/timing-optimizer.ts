@@ -458,12 +458,9 @@ class TimingOptimizer {
     const immediateContent = plan.contentPieces.filter(cp => cp.priority === 'immediate');
     for (const contentPiece of immediateContent) {
       if (!contentPiece.approvalRequired) {
-        setTimeout(
-          () => {
-            this.executeContentPublication(contentPiece, plan.id);
-          },
-          Math.max(0, contentPiece.scheduledTime.getTime() - Date.now())
-        );
+        setTimeout(() => {
+          this.executeContentPublication(contentPiece, plan.id);
+        }, Math.max(0, contentPiece.scheduledTime.getTime() - Date.now()));
       }
     }
 
@@ -471,12 +468,9 @@ class TimingOptimizer {
     const highPriorityContent = plan.contentPieces.filter(cp => cp.priority === 'high');
     for (const contentPiece of highPriorityContent) {
       if (!contentPiece.approvalRequired) {
-        setTimeout(
-          () => {
-            this.executeContentPublication(contentPiece, plan.id);
-          },
-          Math.max(0, contentPiece.scheduledTime.getTime() - Date.now())
-        );
+        setTimeout(() => {
+          this.executeContentPublication(contentPiece, plan.id);
+        }, Math.max(0, contentPiece.scheduledTime.getTime() - Date.now()));
       }
     }
 
@@ -498,12 +492,9 @@ class TimingOptimizer {
       this.recordExecution(planId, contentPiece, true);
 
       // Monitor immediate performance
-      setTimeout(
-        () => {
-          this.monitorImmediatePerformance(contentPiece);
-        },
-        15 * 60 * 1000
-      ); // 15 minutes
+      setTimeout(() => {
+        this.monitorImmediatePerformance(contentPiece);
+      }, 15 * 60 * 1000); // 15 minutes
     } catch (error) {
       console.error(`Failed to publish ${contentPiece.platform} content:`, error);
       this.recordExecution(planId, contentPiece, false, error.message);
@@ -541,12 +532,9 @@ class TimingOptimizer {
     );
 
     for (const window of applicableWindows) {
-      setTimeout(
-        () => {
-          this.executeFollowUpAction(window, contentPiece, performance);
-        },
-        window.delay * 60 * 1000
-      );
+      setTimeout(() => {
+        this.executeFollowUpAction(window, contentPiece, performance);
+      }, window.delay * 60 * 1000);
     }
   }
 
@@ -588,12 +576,9 @@ class TimingOptimizer {
 
     // Overall plan completion check
     const lastContentTime = Math.max(...plan.contentPieces.map(cp => cp.scheduledTime.getTime()));
-    setTimeout(
-      () => {
-        this.completePlanExecution(plan.id);
-      },
-      lastContentTime - Date.now() + 60 * 60 * 1000
-    ); // 1 hour after last content
+    setTimeout(() => {
+      this.completePlanExecution(plan.id);
+    }, lastContentTime - Date.now() + 60 * 60 * 1000); // 1 hour after last content
   }
 
   /**

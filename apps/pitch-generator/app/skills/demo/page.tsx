@@ -81,8 +81,8 @@ export default function SkillsDemo() {
                                 result.complianceScore >= 0.8
                                   ? 'bg-green-500'
                                   : result.complianceScore >= 0.6
-                                    ? 'bg-yellow-500'
-                                    : 'bg-red-500'
+                                  ? 'bg-yellow-500'
+                                  : 'bg-red-500'
                               }`}
                               style={{
                                 width: `${result.complianceScore * 100}%`,

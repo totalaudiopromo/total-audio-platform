@@ -152,18 +152,15 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
       // If orchestrator is commanding sub-agents, show system messages
       if (agentType === 'orchestrator' && data.subAgentCommands) {
         data.subAgentCommands.forEach((command: any, index: number) => {
-          setTimeout(
-            () => {
-              const systemMessage: ChatMessage = {
-                id: (Date.now() + index + 2).toString(),
-                role: 'system',
-                content: `🤖 ${command.agent} Agent: ${command.action}`,
-                timestamp: new Date(),
-              };
-              setMessages(prev => [...prev, systemMessage]);
-            },
-            (index + 1) * 1000
-          );
+          setTimeout(() => {
+            const systemMessage: ChatMessage = {
+              id: (Date.now() + index + 2).toString(),
+              role: 'system',
+              content: `🤖 ${command.agent} Agent: ${command.action}`,
+              timestamp: new Date(),
+            };
+            setMessages(prev => [...prev, systemMessage]);
+          }, (index + 1) * 1000);
         });
       }
     } catch (error) {
@@ -234,8 +231,8 @@ const AgentChatInterface: React.FC<AgentChatProps> = ({ agentType }) => {
                   message.role === 'user'
                     ? 'bg-blue-600 text-white'
                     : message.role === 'system'
-                      ? 'bg-gray-100 text-gray-700 text-sm'
-                      : `${personality.bgColor} ${personality.color}`
+                    ? 'bg-gray-100 text-gray-700 text-sm'
+                    : `${personality.bgColor} ${personality.color}`
                 }`}
               >
                 <div className="whitespace-pre-wrap">{message.content}</div>

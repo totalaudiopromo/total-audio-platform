@@ -262,8 +262,8 @@ export default function HybridSEOIntegration({ className }: HybridSEOIntegration
                             keyword.difficulty === 'low'
                               ? 'default'
                               : keyword.difficulty === 'medium'
-                                ? 'secondary'
-                                : 'destructive'
+                              ? 'secondary'
+                              : 'destructive'
                           }
                         >
                           {keyword.difficulty}

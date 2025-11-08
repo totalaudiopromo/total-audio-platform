@@ -257,24 +257,29 @@ team."
 ### Primary Locations
 
 1. **Audio Intel Homepage** (above the fold)
+
    - Autoplay (muted)
    - "Watch demo" button
    - Unmutes on click
 
 2. **Cold Email** (as link)
+
    - "Watch 60-second demo: [link]"
    - Track clicks via bit.ly or similar
 
 3. **Landing Page** (/demo or /watch)
+
    - Dedicated demo page
    - Video + CTA below
    - "Try it free" button
 
 4. **Email Signature**
+
    - "See Audio Intel in action: [link]"
    - Passive marketing
 
 5. **LinkedIn Profile**
+
    - Featured section
    - "Audio Intel Demo"
 

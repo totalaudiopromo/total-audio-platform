@@ -27,7 +27,7 @@ export default function NotFound() {
 
           <Link
             href="/pitch/generate"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white text-gray-900 font-black text-lg px-8 py-4 border-2 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white text-gray-900 font-black text-lg px-8 py-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
           >
             <Sparkles className="w-5 h-5" />
             Generate Pitch

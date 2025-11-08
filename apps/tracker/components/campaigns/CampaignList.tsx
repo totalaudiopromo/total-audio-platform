@@ -72,7 +72,9 @@ export function CampaignList({ campaigns }: { campaigns: Campaign[] }) {
             >
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="font-bold text-slate-900">{campaign.name}</h3>
+                  <h3 className="font-bold text-slate-900">
+                    {campaign.name || 'Untitled Campaign'}
+                  </h3>
                   <span className="px-2 py-1 bg-blue-100 text-teal-700 rounded-lg text-xs font-semibold uppercase">
                     {campaign.platform}
                   </span>

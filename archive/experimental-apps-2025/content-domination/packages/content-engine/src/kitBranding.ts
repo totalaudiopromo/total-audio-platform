@@ -154,8 +154,8 @@ class AudioIntelBranding {
         
         .btn-primary {
             background: linear-gradient(135deg, ${this.brandConfig.primary_color}, ${
-              this.brandConfig.accent_color
-            });
+      this.brandConfig.accent_color
+    });
             color: #ffffff;
             box-shadow: 0 4px 15px rgba(37, 56, 199, 0.3);
         }
@@ -180,8 +180,8 @@ class AudioIntelBranding {
         
         .header {
             background: linear-gradient(135deg, ${this.brandConfig.primary_color} 0%, ${
-              this.brandConfig.secondary_color
-            } 100%);
+      this.brandConfig.secondary_color
+    } 100%);
             padding: 40px 30px;
             text-align: center;
         }

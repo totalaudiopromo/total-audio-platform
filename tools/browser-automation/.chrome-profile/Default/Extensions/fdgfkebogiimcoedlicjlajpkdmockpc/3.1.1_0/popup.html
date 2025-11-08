@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <base target="_blank">
+    <style>
+      .hoverPointer:hover {
+        cursor: pointer;
+      }
+
+      .hoverLink:hover {
+        text-decoration: underline;
+        color: #5d7dae;
+        cursor: pointer;
+      }
+
+      .hoverLink:visted {
+        color: #5d7dae;
+      }
+    </style><title>Meta Pixel Helper</title>
+  </head>
+  <body tabindex="1">
+    <script type="text/javascript" src="popup.js"></script>
+    <div><div class="panel">
+      <!-- Pixel helper header -->
+      <div class="panelHeader">
+        <div style="clear: both; content: ''; display: table;"></div>
+        <div class="panelHeaderLogo"><img src="img/pixel_blue_icon.png" style="width: 45px;"></div>
+        <div class="panelHeaderContent">
+          <span style="font-size: 14px; font-weight: bold;">
+            <span>Meta Pixel Helper</span>
+          </span><br>
+          <a class="hoverLink" href="https://developers.facebook.com/docs/ads-for-websites/pixel-troubleshooting">
+            <span>Learn More</span>
+          </a>
+        </div>
+        <div class="hoverPointer popoutButton"><img src="img/popout_button.jpg"></div></div>
+        <div class="content"><span id="overview">No pixel found on .
+          Make sure your pixel code is properly implemented and ad blockers are turned off.
+          You can review Meta Pixel implementation with your developer.
+          <a href="https://www.facebook.com/business/help/952192354843755?id=1205376682832142" style="color: rgb(93, 125, 174); margin-left: 4px; text-decoration: none;">
+            <span>Learn more</span>
+          </a></span></span>
+        </div>
+        <!-- Pixel Details -->
+        <div id = "pixelDisplay"></div>
+      </div>
+    </div>
+  </body>
+</html>

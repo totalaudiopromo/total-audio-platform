@@ -272,6 +272,7 @@ Visit `/export-demo` to see the complete export system in action with sample dat
    ```
 
 2. **Custom Email Templates**:
+
    - Templates automatically use your branding
    - Custom colors and logos
    - Agency-specific messaging
@@ -309,11 +310,13 @@ The export system includes comprehensive error handling:
 ### Common Issues
 
 1. **Email Not Sending**:
+
    - Check RESEND_API_KEY configuration
    - Verify recipient email format
    - Check email service status
 
 2. **Export Fails**:
+
    - Ensure data is properly formatted
    - Check browser console for errors
    - Verify file permissions

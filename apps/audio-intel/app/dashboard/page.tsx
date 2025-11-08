@@ -52,7 +52,7 @@ export default function DashboardPage() {
   const displayName = user.user_metadata?.full_name || user.email?.split('@')[0] || 'there';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-white via-white to-white">
       {/* Header with User Menu */}
       <header className="bg-white border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
@@ -79,8 +79,8 @@ export default function DashboardPage() {
           {/* Start Enrichment Card */}
           <Link href="/demo" className="group">
             <div className="bg-white rounded-2xl border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-xl border-4 border-blue-600 bg-blue-50 px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <span className="text-sm font-black uppercase tracking-wider text-blue-600">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-xl border-4 border-blue-600 bg-blue-600 px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <span className="text-sm font-black uppercase tracking-wider text-white">
                   Start Here
                 </span>
               </div>
@@ -97,7 +97,7 @@ export default function DashboardPage() {
 
           {/* Upgrade Card */}
           <Link href="/pricing" className="group">
-            <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
+            <div className="bg-white rounded-2xl border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
               <div className="mb-6 inline-flex items-center gap-2 rounded-xl border-4 border-blue-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <span className="text-sm font-black uppercase tracking-wider text-blue-600">
                   Upgrade

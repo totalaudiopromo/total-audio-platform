@@ -350,8 +350,8 @@ function drawIntelligenceSection(doc: jsPDF, contact: EnrichedContact, y: number
       confidence === 'High'
         ? 'Priority contact - verified music industry connection. Ready for outreach.'
         : confidence === 'Medium'
-          ? 'Good potential contact. Verify details before outreach.'
-          : 'Requires additional research before contact. Cross-reference with LinkedIn.'
+        ? 'Good potential contact. Verify details before outreach.'
+        : 'Requires additional research before contact. Cross-reference with LinkedIn.'
     }`;
   }
 

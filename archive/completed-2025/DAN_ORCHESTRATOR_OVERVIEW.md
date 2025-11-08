@@ -155,17 +155,20 @@ Professional client deliverables:
 Dan currently only manages Liberty client agents. He needs to orchestrate:
 
 1. **Newsletter Workflow**
+
    - Trigger `newsletter-automation-agent.js`
    - Fetch industry news via `newsjacking-agent.js`
    - Generate content via `content-generation-agent.js`
    - Distribute via ConvertKit
 
 2. **Audio Intel Content Workflow**
+
    - Monitor customer acquisition metrics via `analytics-agent.js`
    - Generate case study content via `audio-intel-content-agent.js`
    - Schedule social posts via `social-media-agent.js`
 
 3. **Contact Enrichment Workflow**
+
    - Bulk contact processing via `contact-agent.js`
    - Database updates via `database-agent.js`
    - Quality metrics via `analytics-agent.js`

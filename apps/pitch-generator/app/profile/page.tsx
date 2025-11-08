@@ -107,7 +107,7 @@ export default function ProfilePage() {
             </div>
           ) : (
             <div className="mt-4 space-y-3">
-              <div className="flex items-center gap-2 text-sm text-brand-amber">
+              <div className="flex items-center gap-2 text-sm text-brand-amber-dark">
                 <Sparkles className="h-5 w-5" />
                 <span className="font-semibold">Voice profile not set up</span>
               </div>
@@ -118,8 +118,8 @@ export default function ProfilePage() {
                 href="/profile/voice"
                 className="block rounded-2xl bg-brand-amber/10 px-4 py-3 text-sm transition hover:bg-brand-amber/20 border-2 border-brand-amber/30"
               >
-                <span className="font-semibold text-brand-amber">Set up voice profile</span> · Takes
-                2-5 minutes
+                <span className="font-semibold text-brand-amber-dark">Set up voice profile</span> ·
+                Takes 2-5 minutes
               </a>
             </div>
           )}

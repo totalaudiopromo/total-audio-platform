@@ -1,0 +1,14 @@
+2025/11/07-22:08:49.321 11219 Reusing MANIFEST /Users/chrisschofield/workspace/active/total-audio-platform/tools/browser-automation/.chrome-profile/Default/IndexedDB/chrome-extension_idgadaccgipmpannjkmfddolnnhmeklj_0.indexeddb.leveldb/MANIFEST-000001
+2025/11/07-22:08:49.321 11219 Recovering log #684
+2025/11/07-22:08:49.321 11219 Reusing old log /Users/chrisschofield/workspace/active/total-audio-platform/tools/browser-automation/.chrome-profile/Default/IndexedDB/chrome-extension_idgadaccgipmpannjkmfddolnnhmeklj_0.indexeddb.leveldb/000684.log 
+2025/11/07-22:08:49.321 11219 Delete type=2 #682
+2025/11/07-22:08:49.336 11227 Level-0 table #689: started
+2025/11/07-22:08:49.337 11227 Level-0 table #689: 984 bytes OK
+2025/11/07-22:08:49.338 11227 Delete type=0 #684
+2025/11/07-22:08:49.339 11227 Manual compaction at level-0 from '\x00\xfa\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\xfb\x00\x00\x00' @ 0 : 0; will stop at '\x00\xfa\x00\x00\x05' @ 8696 : 1
+2025/11/07-22:08:49.339 11227 Compacting 1@0 + 1@1 files
+2025/11/07-22:08:49.340 11227 Generated table #690@0: 30 keys, 1282 bytes
+2025/11/07-22:08:49.340 11227 Compacted 1@0 + 1@1 files => 1282 bytes
+2025/11/07-22:08:49.342 11227 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/11/07-22:08:49.342 11227 Delete type=2 #689
+2025/11/07-22:08:49.342 11227 Manual compaction at level-0 from '\x00\xfa\x00\x00\x05' @ 8696 : 1 .. '\x00\xfb\x00\x00\x00' @ 0 : 0; will stop at (end)

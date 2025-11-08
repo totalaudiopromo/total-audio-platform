@@ -453,20 +453,14 @@ class CampaignScheduler {
     console.log('⏰ Starting campaign scheduler...');
 
     // Check for overdue items every hour
-    setInterval(
-      () => {
-        this.checkOverdueItems();
-      },
-      60 * 60 * 1000
-    );
+    setInterval(() => {
+      this.checkOverdueItems();
+    }, 60 * 60 * 1000);
 
     // Check for upcoming deadlines every 6 hours
-    setInterval(
-      () => {
-        this.checkUpcomingDeadlines();
-      },
-      6 * 60 * 60 * 1000
-    );
+    setInterval(() => {
+      this.checkUpcomingDeadlines();
+    }, 6 * 60 * 60 * 1000);
 
     console.log('✅ Campaign scheduler started');
   }

@@ -153,16 +153,19 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 ### How It Works
 
 1. **Registration**
+
    - Go to BBC Introducing Uploader platform
    - Register with your postcode (connects you to regional BBC team)
    - Complete your artist profile with detailed biography
 
 2. **Upload Allowance**
+
    - **Maximum**: 2 tracks per month
    - **Guarantee**: BBC Introducing team will listen within 6 months
    - **Strategy**: Submit most radio-ready single first, then demonstrate breadth with second upload
 
 3. **Regional Review Process**
+
    - Dedicated regional teams review submissions first
    - Best tracks played on local BBC shows
    - Exceptional tracks forwarded to national stations (Radio 1, 1Xtra, 6 Music, etc.)

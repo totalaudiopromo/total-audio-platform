@@ -151,16 +151,19 @@ All changes are documented in [ECOSYSTEM_AUDIT_STATUS.md](./ECOSYSTEM_AUDIT_STAT
 ## 📄 Documentation Created
 
 1. **[SHARED_UI_MIGRATION.md](./SHARED_UI_MIGRATION.md)** - Complete guide to shared UI components
+
    - Component API documentation
    - Usage examples
    - Migration details
 
 2. **[DEPENDENCY_STANDARDIZATION.md](./DEPENDENCY_STANDARDIZATION.MD)** - Detailed standardization plan
+
    - Version comparison tables
    - Breaking changes analysis
    - Implementation order
 
 3. **[ECOSYSTEM_AUDIT_STATUS.md](./ECOSYSTEM_AUDIT_STATUS.md)** - Current status & next steps
+
    - Exact file changes needed
    - Line-by-line update instructions
    - Testing checklist
@@ -176,15 +179,18 @@ All changes are documented in [ECOSYSTEM_AUDIT_STATUS.md](./ECOSYSTEM_AUDIT_STAT
 ### Immediate (Phase 2 - Dependency Standardization)
 
 1. **Review [ECOSYSTEM_AUDIT_STATUS.md](./ECOSYSTEM_AUDIT_STATUS.md)**
+
    - Understand all proposed changes
    - Note the Tailwind v4 → v3 downgrade (Tracker)
 
 2. **Update package.json files** (3 files):
+
    - `apps/audio-intel/package.json`
    - `apps/tracker/package.json` (⚠️ Tailwind major version downgrade)
    - `apps/pitch-generator/package.json`
 
 3. **Update layout.tsx files** (2 files):
+
    - `apps/tracker/app/layout.tsx` (locale + metadata)
    - `apps/pitch-generator/app/layout.tsx` (Plausible → GTM + locale)
 

@@ -84,11 +84,13 @@
 ### Package.json Changes (3 files)
 
 1. **`apps/audio-intel/package.json`**:
+
    - next: 15.4.2 → 15.3.0
    - stripe: ^18.3.0 → ^18.5.0
    - Added: @total-audio/ui
 
 2. **`apps/tracker/package.json`**:
+
    - next: 15.5.4 → 15.3.0
    - lucide-react: ^0.469.0 → ^0.525.0
    - tailwindcss: ^4.1.13 → ^3.4.17 (⚠️ Major downgrade)
@@ -106,6 +108,7 @@
 ### Layout Changes (2 files)
 
 4. **`apps/tracker/app/layout.tsx`**:
+
    - Changed HTML lang: "en" → "en-GB"
    - Added metadataBase URL
    - Added OpenGraph metadata with locale: 'en_GB'
@@ -188,11 +191,13 @@ Upgraded from 0.32.1 → 0.65.0 (33 minor versions)
 Now that dependencies are standardized, we can build cross-tool workflows:
 
 1. **Audio Intel Export**:
+
    - Add CSV export button after enrichment
    - Include all enriched contact data
    - Format for Tracker import
 
 2. **Tracker Import**:
+
    - Add "Import from Audio Intel" flow
    - Parse CSV with enriched data
    - Create contacts + campaign automatically

@@ -86,15 +86,11 @@ The Total Audio Command Centre is the central nervous system for Total Audio Pro
 
 /* Shadows - Audio Intel Standard */
 .shadow-texture-soft {
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.08),
-    0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .shadow-texture-elevated {
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.12),
-    0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 ```
 

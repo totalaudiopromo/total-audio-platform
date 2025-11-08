@@ -164,10 +164,12 @@ This gets users to the action faster.
 ## 💡 Quick Wins (15 mins each)
 
 1. **Remove duplicate heading** - 2 minutes
+
    - File: `/app/demo/page.tsx` line 324
    - Action: Delete the heading, keep component version
 
 2. **Fix mobile workflow diagram** - 15 minutes
+
    - File: `/components/SpreadsheetUploader.tsx`
    - Action: Add responsive classes for vertical/horizontal text
 
@@ -224,10 +226,12 @@ This gets users to the action faster.
 ## 🎯 Recommended Launch Sequence
 
 1. **NOW** (30 mins):
+
    - Remove duplicate heading
    - Fix mobile workflow diagram text
 
 2. **Before First Demo Call** (1 hour):
+
    - Test complete CSV upload → enrichment → export flow
    - Verify Stripe checkout works with test card
    - Check ConvertKit email sequence triggers

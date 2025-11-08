@@ -595,10 +595,10 @@ ${insights
       insight.severity === 'positive'
         ? '✅'
         : insight.severity === 'critical'
-          ? '🚨'
-          : insight.severity === 'high'
-            ? '⚠️'
-            : 'ℹ️';
+        ? '🚨'
+        : insight.severity === 'high'
+        ? '⚠️'
+        : 'ℹ️';
     return `### ${icon} ${insight.title}
 
 **${insight.description}**

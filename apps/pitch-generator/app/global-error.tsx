@@ -51,7 +51,7 @@ export default function GlobalError({
 
           <a
             href="/"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white text-gray-900 font-black text-lg px-8 py-4 border-2 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white text-gray-900 font-black text-lg px-8 py-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
           >
             <Home className="w-5 h-5" />
             Go Home
@@ -59,7 +59,7 @@ export default function GlobalError({
         </div>
 
         {/* Support Contact */}
-        <div className="border-2 border-gray-300 rounded-xl p-8 bg-gray-50">
+        <div className="border-4 border-black rounded-xl p-8 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <h3 className="text-2xl font-black text-gray-900 mb-4">Need Help?</h3>
           <p className="text-gray-700 mb-4">
             If refreshing doesn't work, please contact our support team with the error ID above.

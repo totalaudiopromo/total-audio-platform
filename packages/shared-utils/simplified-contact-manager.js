@@ -223,8 +223,8 @@ class SimplifiedContactManager {
         
         <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="margin-top: 0; color: #333;">${campaignData.artistName} - "${
-              campaignData.trackName
-            }"</h3>
+      campaignData.trackName
+    }"</h3>
             <p style="margin-bottom: 0;">${
               campaignData.artistBio ||
               'Exciting new artist with a fresh sound perfect for your audience.'

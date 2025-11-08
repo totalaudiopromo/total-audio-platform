@@ -71,7 +71,7 @@ export default function SettingsPage() {
           {notifications.map(option => (
             <label
               key={option.id}
-              className="flex items-start gap-3 rounded-2xl border border-white/15 bg-gray-50 px-5 py-4 text-sm text-gray-900/70 transition hover:border-white/25"
+              className="flex items-start gap-3 rounded-2xl border-2 border-black bg-white px-5 py-4 text-sm text-gray-900/70 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5"
             >
               <input
                 type="checkbox"

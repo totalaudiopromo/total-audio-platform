@@ -303,7 +303,7 @@ export default function ReviewPitchPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber-dark" />
       </div>
     );
   }
@@ -376,10 +376,10 @@ export default function ReviewPitchPage() {
                 key={key}
                 type="button"
                 onClick={() => setSelectedSubject(key)}
-                className={`w-full rounded-xl border px-4 py-3 text-left transition ${
+                className={`w-full rounded-xl border-4 border-black px-4 py-3 text-left font-bold transition shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
                   selectedSubject === key
-                    ? 'border-brand-amber bg-brand-amber/10 text-gray-900'
-                    : 'border-gray-300 bg-gray-50 text-gray-900/70 hover:border-white/30'
+                    ? 'bg-brand-amber text-black'
+                    : 'bg-white text-gray-900 hover:bg-gray-50'
                 }`}
               >
                 {value}
@@ -406,10 +406,10 @@ export default function ReviewPitchPage() {
               value={editedBody}
               onChange={e => setEditedBody(e.target.value)}
               rows={12}
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-4 font-mono text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+              className="w-full rounded-xl border-4 border-black bg-white px-4 py-4 font-bold text-sm text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400 min-h-[300px]"
             />
           ) : (
-            <div className="rounded-xl border border-gray-300 bg-gray-50 px-6 py-6">
+            <div className="rounded-xl border-4 border-black bg-white px-6 py-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-gray-900/90">
                 {pitch.pitch_body}
               </pre>
@@ -430,9 +430,9 @@ export default function ReviewPitchPage() {
         {/* Suggested Send Time */}
         {pitch.suggested_send_time && (
           <div className="mt-6 flex items-center gap-3 rounded-xl border border-brand-amber/30 bg-brand-amber/10 px-4 py-3">
-            <Clock className="h-5 w-5 text-brand-amber" />
+            <Clock className="h-5 w-5 text-brand-amber-dark" />
             <div>
-              <p className="text-sm font-medium text-brand-amber">Best time to send</p>
+              <p className="text-sm font-medium text-brand-amber-dark">Best time to send</p>
               <p className="text-sm text-gray-900/70">{pitch.suggested_send_time}</p>
             </div>
           </div>
@@ -524,10 +524,10 @@ export default function ReviewPitchPage() {
               <button
                 onClick={handleSendToTracker}
                 disabled={sentToTracker}
-                className={`font-black px-4 py-2 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex items-center gap-2 ${
+                className={`font-black px-6 py-3 rounded-xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex items-center gap-2 disabled:cursor-not-allowed disabled:opacity-50 ${
                   sentToTracker
-                    ? 'bg-green-500 text-white cursor-default'
-                    : 'bg-yellow-500 hover:bg-yellow-600 text-black'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-purple-500 hover:bg-purple-600 text-white'
                 }`}
               >
                 {sentToTracker ? (
@@ -551,19 +551,19 @@ export default function ReviewPitchPage() {
         <h3 className="text-lg font-semibold">What's next?</h3>
         <ul className="mt-4 space-y-3 text-sm text-gray-900/70">
           <li className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber">
+            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber-dark">
               1
             </span>
             <span>Copy this pitch and paste it into your email client</span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber">
+            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber-dark">
               2
             </span>
             <span>Send it at the suggested time for best response rates</span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber">
+            <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-amber/20 text-xs font-semibold text-brand-amber-dark">
               3
             </span>
             <span>Click "Track Campaign" to monitor results in Campaign Tracker</span>

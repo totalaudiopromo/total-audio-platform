@@ -274,12 +274,14 @@ Your subscription system is working correctly when:
 ## Next Steps After Testing
 
 1. **Production Stripe Setup**
+
    - Switch to Live Mode in Stripe Dashboard
    - Create production products
    - Update environment variables with live keys
    - Update Price IDs in database
 
 2. **User Communication**
+
    - Draft emails for:
      - Payment failed
      - Subscription cancelled
@@ -287,6 +289,7 @@ Your subscription system is working correctly when:
      - Welcome to Pro
 
 3. **Monitoring**
+
    - Set up Stripe webhook monitoring
    - Alert on failed payments
    - Track conversion rates

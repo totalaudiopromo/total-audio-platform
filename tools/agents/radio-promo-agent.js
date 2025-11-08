@@ -2754,8 +2754,9 @@ if (require.main === module) {
         console.log(
           `Getting recent Liberty campaigns from Gmail+Typeform (last ${gmailDays} days)...`
         );
-        const recentGmailCampaigns =
-          await agent.gmailTypeformMatcher.getRecentLibertyCampaigns(gmailDays);
+        const recentGmailCampaigns = await agent.gmailTypeformMatcher.getRecentLibertyCampaigns(
+          gmailDays
+        );
         console.log(JSON.stringify(recentGmailCampaigns, null, 2));
         break;
 
@@ -2766,8 +2767,9 @@ if (require.main === module) {
           return;
         }
         console.log(`Finding campaigns for artist: ${gmailArtistName} (Gmail+Typeform)...`);
-        const gmailArtistCampaigns =
-          await agent.gmailTypeformMatcher.findCampaignsByArtist(gmailArtistName);
+        const gmailArtistCampaigns = await agent.gmailTypeformMatcher.findCampaignsByArtist(
+          gmailArtistName
+        );
         console.log(JSON.stringify(gmailArtistCampaigns, null, 2));
         break;
 
@@ -2784,8 +2786,9 @@ if (require.main === module) {
           return;
         }
         console.log(`Generating press release for artist: ${pressArtistName}...`);
-        const pressRelease =
-          await agent.pressReleaseGenerator.generatePressReleaseForArtist(pressArtistName);
+        const pressRelease = await agent.pressReleaseGenerator.generatePressReleaseForArtist(
+          pressArtistName
+        );
         console.log(JSON.stringify(pressRelease, null, 2));
         break;
 

@@ -39,13 +39,13 @@ const APP_NAME = args[appIndex + 1];
 
 // === GOLDEN PIPELINE SCOPE GUARD (Phase 10A - 2025-11-08) ===
 const ALLOWED_APPS = ['audio-intel', 'tracker', 'pitch-generator'] as const;
-type AllowedApp = typeof ALLOWED_APPS[number];
+type AllowedApp = (typeof ALLOWED_APPS)[number];
 
 function validateAppScope(app: string): asserts app is AllowedApp {
   if (!ALLOWED_APPS.includes(app as AllowedApp)) {
     throw new Error(
       `"${app}" is not part of the Golden pipeline scope. ` +
-      `Allowed apps: ${ALLOWED_APPS.join(', ')}`
+        `Allowed apps: ${ALLOWED_APPS.join(', ')}`
     );
   }
 }

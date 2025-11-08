@@ -448,10 +448,12 @@ dataLayer.push({ event: 'page_view', page_path: '/terms' });
    ```
 
 3. **Set redirect URL**:
+
    - Site URL: `https://tracker.totalaudiopromo.com`
    - Redirect URL: `https://tracker.totalaudiopromo.com/verify-success`
 
 4. **Auth Settings**:
+
    - Go to: Authentication → Settings
    - Enable: "Confirm email" ✅
    - Email rate limit: 4 per hour (default)

@@ -6,8 +6,10 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Loader2, Sparkles } from 'lucide-react';
 import { createClient } from '@total-audio/core-db/client';
-import type { Contact } from '@/lib/types';
+import type { Contact } from '@/lib/db';
 import { trackPitchGenerated, trackContactAdded, trackFormValidationError } from '@/lib/analytics';
+
+const supabase = createClient();
 
 interface FormData {
   contactId: string;
@@ -144,11 +146,14 @@ export default function GeneratePitchPage() {
         await loadContacts();
 
         // Auto-select the imported contact
-        setSelectedContact(newContact);
+        setSelectedContact(newContact as Contact);
         setFormData(prev => ({
           ...prev,
           contactId: newContact.id,
-          tone: newContact.preferred_tone || 'professional',
+          tone: (newContact.preferred_tone || 'professional') as
+            | 'casual'
+            | 'professional'
+            | 'enthusiastic',
         }));
 
         // Track contact import
@@ -182,7 +187,7 @@ export default function GeneratePitchPage() {
         .order('name');
 
       if (error) throw error;
-      setContacts(data || []);
+      setContacts((data || []) as Contact[]);
     } catch (error) {
       console.error('Error loading contacts:', error);
     }
@@ -266,7 +271,7 @@ export default function GeneratePitchPage() {
   if (status === 'loading') {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber-dark" />
       </div>
     );
   }
@@ -336,7 +341,7 @@ export default function GeneratePitchPage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="rounded-full bg-brand-amber/20 p-3">
-                <Sparkles className="h-6 w-6 text-brand-amber" />
+                <Sparkles className="h-6 w-6 text-brand-amber-dark" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold">Generate Pitch</h1>
@@ -368,7 +373,7 @@ export default function GeneratePitchPage() {
               required
               value={formData.contactId}
               onChange={e => handleContactChange(e.target.value)}
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             >
               <option value="">Select a contact...</option>
               {contacts.map(contact => (
@@ -380,13 +385,16 @@ export default function GeneratePitchPage() {
             {contacts.length === 0 && (
               <p className="mt-2 text-xs text-gray-500">
                 No contacts yet.{' '}
-                <Link href="/pitch/contacts" className="text-amber-600 hover:underline">
+                <Link
+                  href="/pitch/contacts"
+                  className="text-amber-800 hover:text-amber-900 hover:underline font-semibold"
+                >
                   Add your first contact
                 </Link>
               </p>
             )}
             {selectedContact && (
-              <div className="mt-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm">
+              <div className="mt-3 rounded-xl border-2 border-black bg-brand-amber/10 px-4 py-3 text-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 <p className="text-gray-600">
                   {selectedContact.role && (
                     <span className="font-medium">{selectedContact.role}</span>
@@ -397,10 +405,10 @@ export default function GeneratePitchPage() {
                 </p>
                 {selectedContact.genre_tags && selectedContact.genre_tags.length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-2">
-                    {selectedContact.genre_tags.map(tag => (
+                    {selectedContact.genre_tags.map((tag: string) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-brand-amber/20 px-3 py-1 text-xs text-brand-amber"
+                        className="rounded-full border-2 border-black bg-brand-amber/20 px-3 py-1 text-xs font-bold text-brand-amber-dark shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                       >
                         {tag}
                       </span>
@@ -422,7 +430,7 @@ export default function GeneratePitchPage() {
               value={formData.artistName}
               onChange={e => setFormData({ ...formData, artistName: e.target.value })}
               placeholder="e.g. The Midnight Sons"
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             />
           </div>
 
@@ -437,7 +445,7 @@ export default function GeneratePitchPage() {
               value={formData.trackTitle}
               onChange={e => setFormData({ ...formData, trackTitle: e.target.value })}
               placeholder="e.g. Northern Lights"
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             />
           </div>
 
@@ -456,7 +464,7 @@ export default function GeneratePitchPage() {
               required
               value={formData.genre}
               onChange={e => setFormData({ ...formData, genre: e.target.value })}
-              className="mt-2 w-full rounded-xl border-2 border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             >
               {GENRES.map(genre => (
                 <option key={genre} value={genre} className="bg-white text-gray-900">
@@ -476,7 +484,7 @@ export default function GeneratePitchPage() {
               required
               value={formData.releaseDate}
               onChange={e => setFormData({ ...formData, releaseDate: e.target.value })}
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             />
           </div>
 
@@ -500,12 +508,12 @@ export default function GeneratePitchPage() {
               }
               rows={4}
               placeholder="e.g. Intimate indie-folk about finding home after years of touring. Think Laura Marling meets Phoebe Bridgers - sparse production, honest lyrics, gorgeous harmonies."
-              className={`mt-2 w-full rounded-xl border-2 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-2 ${
+              className={`mt-2 w-full rounded-xl border-4 bg-white px-4 py-3 font-bold text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 min-h-[150px] ${
                 hookCharCount === 0
-                  ? 'border-gray-300 focus:border-amber-500 focus:ring-amber-500/50'
+                  ? 'border-black focus:ring-cyan-400'
                   : hookIsValid
-                    ? 'border-green-500 focus:border-green-500 focus:ring-green-500/50'
-                    : 'border-yellow-500 focus:border-yellow-500 focus:ring-yellow-500/50'
+                  ? 'border-black focus:ring-green-400'
+                  : 'border-black focus:ring-yellow-400'
               }`}
             />
             <div className="mt-2 flex items-center justify-between">
@@ -557,7 +565,7 @@ export default function GeneratePitchPage() {
               value={formData.trackLink}
               onChange={e => setFormData({ ...formData, trackLink: e.target.value })}
               placeholder="https://open.spotify.com/track/..."
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             />
           </div>
 
@@ -570,10 +578,10 @@ export default function GeneratePitchPage() {
                   key={tone}
                   type="button"
                   onClick={() => setFormData({ ...formData, tone })}
-                  className={`flex-1 rounded-xl border px-4 py-3 text-sm font-medium transition ${
+                  className={`flex-1 rounded-xl border-4 px-4 py-3 text-sm font-bold transition ${
                     formData.tone === tone
-                      ? 'border-brand-amber bg-brand-amber/20 text-brand-amber'
-                      : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
+                      ? 'border-black bg-brand-amber text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
+                      : 'border-black bg-white text-gray-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-50'
                   }`}
                 >
                   {tone.charAt(0).toUpperCase() + tone.slice(1)}

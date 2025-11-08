@@ -1,0 +1,6 @@
+2025/11/04-19:46:28.544 4c4f94 Reusing MANIFEST /Users/chrisschofield/Library/Application Support/Google/Chrome/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/11/04-19:46:28.544 4c4f94 Recovering log #51
+2025/11/04-19:46:28.545 4c4f94 Reusing old log /Users/chrisschofield/Library/Application Support/Google/Chrome/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/000051.log 
+2025/11/04-19:58:52.314 4c4f94 Level-0 table #57: started
+2025/11/04-19:58:52.332 4c4f94 Level-0 table #57: 3155754 bytes OK
+2025/11/04-19:58:52.336 4c4f94 Delete type=0 #51

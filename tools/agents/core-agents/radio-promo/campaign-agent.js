@@ -332,8 +332,9 @@ class CampaignAgent {
    */
   async optimizeSubjectLine(campaignId) {
     // Generate alternative subject lines with Claude AI
-    const alternatives =
-      await this.integrationAgent.services.claude.generateSubjectLines(campaignId);
+    const alternatives = await this.integrationAgent.services.claude.generateSubjectLines(
+      campaignId
+    );
 
     // Set up A/B test
     await this.setupABTest(campaignId, 'subject_line', alternatives);
@@ -349,8 +350,9 @@ class CampaignAgent {
     const analysis = await this.integrationAgent.services.claude.analyzeCampaignContent(campaignId);
 
     // Generate improved content suggestions
-    const suggestions =
-      await this.integrationAgent.services.claude.generateContentSuggestions(analysis);
+    const suggestions = await this.integrationAgent.services.claude.generateContentSuggestions(
+      analysis
+    );
 
     return suggestions;
   }

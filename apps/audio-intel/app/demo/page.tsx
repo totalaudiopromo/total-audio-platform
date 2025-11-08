@@ -381,140 +381,101 @@ export default function SimpleAudioIntelDemo() {
         {(!betaTrialStatus || !betaTrialStatus.hasExpired) && (
           <>
             {/* Enhanced Workflow Progress Dashboard */}
-            <div className="mb-8 bg-white rounded-2xl border-4 border-gray-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8">
+            <div className="mb-8 bg-white rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 md:p-8">
               <div className="text-center mb-6">
-                <h2 className="text-3xl font-black text-gray-900 mb-2">
+                <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-2">
                   Your Audio Intel Workflow
                 </h2>
-                <p className="text-gray-600 font-bold">
+                <p className="text-sm md:text-base text-gray-600 font-bold">
                   Professional contact intelligence in two simple steps
                 </p>
               </div>
 
-              <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-12">
-                {/* Step 1: Process & Enrich */}
-                <div
-                  className={`flex flex-col lg:flex-row items-center gap-4 p-6 rounded-xl transition-all duration-300 border-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
-                    activeTab === 'process'
-                      ? 'bg-blue-100 border-blue-500 scale-105'
-                      : hasEnrichedData
-                        ? 'bg-green-100 border-green-500'
-                        : 'bg-white border-gray-300 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
-                  }`}
-                >
-                  <div
-                    className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold transition-all duration-300 ${
-                      hasEnrichedData
-                        ? 'bg-green-500 text-white shadow-lg'
-                        : activeTab === 'process'
-                          ? 'bg-blue-500 text-white shadow-lg'
-                          : 'bg-slate-200 text-slate-600'
-                    }`}
-                  >
-                    {hasEnrichedData ? '•' : '1'}
-                  </div>
-                  <div className="text-center lg:text-left">
-                    <div
-                      className={`font-bold text-lg ${
-                        activeTab === 'process'
-                          ? 'text-blue-700'
-                          : hasEnrichedData
-                            ? 'text-green-700'
-                            : 'text-slate-600'
-                      }`}
-                    >
-                      Process & Enrich
-                    </div>
-                    <div className="text-sm text-slate-600 max-w-xs">
-                      Upload spreadsheets → Automatic cleaning & enrichment
-                    </div>
-                  </div>
-                </div>
-
-                {/* Progress Arrow */}
-                <div className="hidden lg:block">
-                  <div
-                    className={`text-3xl font-bold transition-colors duration-300 ${
-                      hasEnrichedData ? 'text-green-400' : 'text-slate-300'
-                    }`}
-                  >
-                    →
-                  </div>
-                </div>
-                <div className="lg:hidden">
-                  <div
-                    className={`text-2xl font-bold rotate-90 transition-colors duration-300 ${
-                      hasEnrichedData ? 'text-green-400' : 'text-slate-300'
-                    }`}
-                  >
-                    →
-                  </div>
-                </div>
-
-                {/* Step 2: Analytics & Export */}
-                <div
-                  className={`flex flex-col lg:flex-row items-center gap-4 p-6 rounded-xl transition-all duration-300 border-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
-                    activeTab === 'analytics' && hasEnrichedData
-                      ? 'bg-blue-100 border-blue-500 scale-105'
-                      : hasEnrichedData
-                        ? 'bg-white border-gray-300 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] cursor-pointer'
-                        : 'bg-gray-50 border-gray-200 opacity-60'
-                  }`}
-                  onClick={() => hasEnrichedData && setActiveTab('analytics')}
-                  role={hasEnrichedData ? 'button' : undefined}
-                  tabIndex={hasEnrichedData ? 0 : undefined}
-                  onKeyPress={e =>
-                    hasEnrichedData && e.key === 'Enter' && setActiveTab('analytics')
-                  }
-                >
-                  <div
-                    className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold transition-all duration-300 ${
-                      activeTab === 'analytics' && hasEnrichedData
-                        ? 'bg-blue-500 text-white shadow-lg'
+              {/* Progress Bar */}
+              <div className="mb-6">
+                <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-4">
+                  <button
+                    onClick={() => setActiveTab('process')}
+                    className={`flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 rounded-xl border-4 transition-all ${
+                      activeTab === 'process'
+                        ? 'bg-blue-600 text-white border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
                         : hasEnrichedData
-                          ? 'bg-slate-300 text-slate-700'
-                          : 'bg-slate-200 text-slate-500'
+                        ? 'bg-white text-gray-900 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5'
+                        : 'bg-white text-gray-600 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
                     }`}
                   >
-                    <TrendingUp className="w-8 h-8" />
-                  </div>
-                  <div className="text-center lg:text-left">
                     <div
-                      className={`font-bold text-lg ${
-                        activeTab === 'analytics' && hasEnrichedData
-                          ? 'text-blue-700'
+                      className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
+                        activeTab === 'process'
+                          ? 'bg-white text-blue-600'
                           : hasEnrichedData
-                            ? 'text-slate-700'
-                            : 'text-slate-500'
+                          ? 'bg-green-500 text-white'
+                          : 'bg-gray-200 text-gray-600'
                       }`}
                     >
-                      Analytics & Export
+                      {hasEnrichedData ? '✓' : '1'}
                     </div>
-                    <div className="text-sm text-slate-600 max-w-xs">
-                      Review insights → Professional export formats
+                    <div className="text-left">
+                      <div className="font-black text-sm md:text-lg">Process & Enrich</div>
+                      <div className="text-xs font-bold opacity-80 hidden md:block">
+                        Upload → Clean → Enrich
+                      </div>
                     </div>
+                  </button>
+
+                  <div className="hidden md:flex flex-1 mx-4 h-2 bg-gray-200 border-2 border-black rounded-full overflow-hidden">
+                    <div
+                      className={`h-full transition-all duration-500 ${
+                        hasEnrichedData ? 'bg-green-500 border-r-2 border-black' : 'bg-blue-600'
+                      }`}
+                      style={{ width: hasEnrichedData ? '100%' : '50%' }}
+                    />
                   </div>
+
+                  <button
+                    onClick={() => hasEnrichedData && setActiveTab('analytics')}
+                    disabled={!hasEnrichedData}
+                    className={`flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 rounded-xl border-4 transition-all ${
+                      activeTab === 'analytics' && hasEnrichedData
+                        ? 'bg-purple-500 text-white border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
+                        : hasEnrichedData
+                        ? 'bg-white text-gray-900 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 cursor-pointer'
+                        : 'bg-gray-50 text-gray-400 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-not-allowed opacity-60'
+                    }`}
+                  >
+                    <div
+                      className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
+                        activeTab === 'analytics' && hasEnrichedData
+                          ? 'bg-white text-purple-500'
+                          : hasEnrichedData
+                          ? 'bg-gray-300 text-gray-700'
+                          : 'bg-gray-200 text-gray-400'
+                      }`}
+                    >
+                      <TrendingUp className="w-4 h-4 md:w-5 md:h-5" />
+                    </div>
+                    <div className="text-left">
+                      <div className="font-black text-sm md:text-lg">Analytics & Export</div>
+                      <div className="text-xs font-bold opacity-80 hidden md:block">
+                        Review → Export
+                      </div>
+                    </div>
+                  </button>
                 </div>
               </div>
 
               {/* Status Indicators */}
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <div className="flex flex-wrap justify-center gap-3">
                 {hasEnrichedData && (
-                  <div className="flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="flex items-center gap-2 px-4 py-2 bg-green-100 text-green-900 rounded-full text-xs md:text-sm font-black border-2 border-green-500 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                     Data Ready for Analysis
                   </div>
                 )}
-                {activeTab === 'process' && (
-                  <div className="flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                    Processing Active
-                  </div>
-                )}
-                {!hasEnrichedData && activeTab !== 'process' && (
-                  <div className="flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-600 rounded-full text-sm font-medium">
-                    <div className="w-2 h-2 bg-slate-400 rounded-full"></div>
-                    Ready to Begin
+                {activeTab === 'process' && !hasEnrichedData && (
+                  <div className="flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-900 rounded-full text-xs md:text-sm font-black border-2 border-blue-500 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
+                    Ready to Process
                   </div>
                 )}
               </div>
@@ -522,14 +483,18 @@ export default function SimpleAudioIntelDemo() {
 
             {/* Main Tabs */}
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-2 mb-8">
-                <TabsTrigger value="process" className="text-xl font-bold py-4">
-                  <FileSpreadsheet className="w-6 h-6 mr-2" />
-                  1. Process & Enrich
+              <TabsList className="grid w-full grid-cols-2 gap-3 mb-6 md:mb-8 bg-transparent p-0">
+                <TabsTrigger
+                  value="process"
+                  className="text-sm md:text-xl font-black py-4 md:py-6 border-4 border-black rounded-lg data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] data-[state=inactive]:bg-gray-100 data-[state=inactive]:text-gray-700 data-[state=inactive]:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1"
+                >
+                  <FileSpreadsheet className="w-5 h-5 md:w-6 md:h-6 mr-1.5 md:mr-2" />
+                  <span className="hidden sm:inline">1. Process & Enrich</span>
+                  <span className="sm:hidden">Process</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="analytics"
-                  className={`text-xl font-bold py-4 ${
+                  className={`text-sm md:text-xl font-black py-4 md:py-6 border-4 border-black rounded-lg data-[state=active]:bg-purple-600 data-[state=active]:text-white data-[state=active]:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] data-[state=inactive]:bg-gray-100 data-[state=inactive]:text-gray-700 data-[state=inactive]:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 ${
                     !canAccessAnalytics ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                   disabled={!canAccessAnalytics}
@@ -539,35 +504,36 @@ export default function SimpleAudioIntelDemo() {
                       : 'Ready for analytics and export'
                   }
                 >
-                  <TrendingUp className="w-6 h-6 mr-2" />
-                  2. Analytics & Export
+                  <TrendingUp className="w-5 h-5 md:w-6 md:h-6 mr-1.5 md:mr-2" />
+                  <span className="hidden sm:inline">2. Analytics & Export</span>
+                  <span className="sm:hidden">Analytics</span>
                 </TabsTrigger>
               </TabsList>
 
               {/* Combined Processing & Enrichment Tab */}
               <TabsContent value="process" className="space-y-8">
-                <div className="bg-white p-8 rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
+                <div className="bg-white p-8 rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
                   <div className="text-center pb-8">
                     <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight">
-                      Drop Your Chaos Here
+                      Contact Enrichment
                     </h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                      Transform unorganised spreadsheets into actionable music industry intelligence
-                      with our automated processing pipeline.
+                    <p className="text-xl font-bold text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                      Transform your contact lists into actionable music industry intelligence with
+                      automated processing and AI-powered enrichment.
                     </p>
 
                     <div className="grid md:grid-cols-2 gap-4 mt-8 max-w-4xl mx-auto">
-                      <div className="bg-gray-50 border-2 border-gray-300 rounded-xl p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                        <div className="text-gray-900 font-black mb-2">
-                          • Intelligent Processing
+                      <div className="bg-white border-4 border-black rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                        <div className="text-gray-900 font-black mb-2 text-lg">
+                          Intelligent Processing Pipeline
                         </div>
                         <p className="text-sm text-gray-700 font-bold">
                           Upload → Clean → Deduplicate → Enrich → Export
                         </p>
                       </div>
-                      <div className="bg-gray-50 border-2 border-gray-300 rounded-xl p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                        <div className="text-gray-900 font-black mb-2">
-                          <Target className="w-4 h-4 inline mr-2" />
+                      <div className="bg-white border-4 border-black rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                        <div className="text-gray-900 font-black mb-2 text-lg flex items-center justify-center gap-2">
+                          <Target className="w-5 h-5" />
                           Cost-Effective Intelligence
                         </div>
                         <p className="text-sm text-gray-700 font-bold">
@@ -579,13 +545,13 @@ export default function SimpleAudioIntelDemo() {
                 </div>
 
                 {/* Demo Data Loader */}
-                <div className="bg-gradient-to-r from-blue-50 to-blue-50 border-4 border-blue-500 rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-6">
+                <div className="bg-white border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-6">
                   <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex-1">
-                      <h3 className="text-xl font-black text-blue-900 mb-2">
+                      <h3 className="text-xl font-black text-gray-900 mb-2">
                         🎯 Quick Demo: Real Industry Contacts
                       </h3>
-                      <p className="text-sm text-blue-800 font-medium">
+                      <p className="text-sm text-gray-700 font-bold">
                         Load 5 pre-enriched contacts from BBC Radio 1 and Spotify instantly to see
                         Audio Intel in action. Real emails, real enrichment data.
                       </p>
@@ -593,7 +559,7 @@ export default function SimpleAudioIntelDemo() {
                     <Button
                       onClick={loadLibertyDemoData}
                       disabled={isLoadingDemo}
-                      className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                     >
                       {isLoadingDemo ? (
                         <>
@@ -642,14 +608,14 @@ export default function SimpleAudioIntelDemo() {
                     <div className="text-center">
                       <Button
                         onClick={() => setActiveTab('process')}
-                        className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-bold px-6 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
                       >
                         Go to Process & Enrich
                       </Button>
                     </div>
                   </div>
                 ) : (
-                  <div className="bg-white rounded-2xl border-4 border-blue-500 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8">
+                  <div className="bg-white rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8">
                     <div className="text-center mb-8">
                       <h3 className="text-3xl font-black text-gray-900 mb-4">
                         Contact Intelligence Analytics
@@ -660,34 +626,34 @@ export default function SimpleAudioIntelDemo() {
                     </div>
                     <div>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                        <div className="text-center p-6 bg-blue-50 rounded-lg">
+                        <div className="text-center p-6 bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                           <div className="text-3xl font-black text-blue-600 mb-2">
                             {enrichmentResults.length}
                           </div>
-                          <div className="text-sm text-gray-600 font-medium">Total Contacts</div>
+                          <div className="text-sm text-gray-700 font-bold">Total Contacts</div>
                         </div>
-                        <div className="text-center p-6 bg-green-50 rounded-lg">
+                        <div className="text-center p-6 bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                           <div className="text-3xl font-black text-green-600 mb-2">
                             {enrichmentResults.filter(c => c.confidence === 'High').length}
                           </div>
-                          <div className="text-sm text-gray-600 font-medium">High Confidence</div>
+                          <div className="text-sm text-gray-700 font-bold">High Confidence</div>
                         </div>
-                        <div className="text-center p-6 bg-yellow-50 rounded-lg">
+                        <div className="text-center p-6 bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                           <div className="text-3xl font-black text-yellow-600 mb-2">
                             {enrichmentResults.filter(c => c.confidence === 'Medium').length}
                           </div>
-                          <div className="text-sm text-gray-600 font-medium">Medium Confidence</div>
+                          <div className="text-sm text-gray-700 font-bold">Medium Confidence</div>
                         </div>
-                        <div className="text-center p-6 bg-red-50 rounded-lg">
+                        <div className="text-center p-6 bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                           <div className="text-3xl font-black text-red-600 mb-2">
                             {enrichmentResults.filter(c => c.confidence === 'Low').length}
                           </div>
-                          <div className="text-sm text-gray-600 font-medium">Low Confidence</div>
+                          <div className="text-sm text-gray-700 font-bold">Low Confidence</div>
                         </div>
                       </div>
 
                       {/* Professional Export Section */}
-                      <div className="bg-gray-50 rounded-2xl border-4 border-green-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-8">
+                      <div className="bg-white rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-8">
                         <h3 className="text-2xl font-black text-gray-900 mb-4">
                           Professional Export Options
                         </h3>
@@ -710,51 +676,57 @@ export default function SimpleAudioIntelDemo() {
                           <Button
                             onClick={() => handleExport('csv')}
                             disabled={isExporting}
-                            className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                            className="bg-blue-600 hover:bg-blue-700 text-white font-black py-4 px-6 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                           >
                             <FileSpreadsheet className="w-5 h-5" />
                             Export CSV
-                            <Badge className="bg-green-500 text-white ml-2">Universal</Badge>
+                            <Badge className="bg-blue-700 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ml-2 font-bold">
+                              Universal
+                            </Badge>
                           </Button>
 
                           <Button
                             onClick={() => handleExport('excel')}
                             disabled={isExporting}
-                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                            className="bg-teal-500 hover:bg-teal-600 text-white font-black py-4 px-6 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                           >
                             <FileSpreadsheet className="w-5 h-5" />
                             Export Excel
-                            <Badge className="bg-blue-500 text-white ml-2">Advanced</Badge>
+                            <Badge className="bg-teal-600 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ml-2 font-bold">
+                              Advanced
+                            </Badge>
                           </Button>
 
                           <Button
                             onClick={() => handleExport('pdf')}
                             disabled={isExporting}
-                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                            className="bg-purple-500 hover:bg-purple-600 text-white font-black py-4 px-6 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                           >
                             <FileSpreadsheet className="w-5 h-5" />
                             Export PDF
-                            <Badge className="bg-blue-500 text-white ml-2">Professional</Badge>
+                            <Badge className="bg-purple-600 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ml-2 font-bold">
+                              Professional
+                            </Badge>
                           </Button>
                         </div>
 
-                        <div className="mt-4 text-sm text-gray-600 space-y-1">
+                        <div className="mt-4 text-sm text-gray-600 space-y-1 font-medium">
                           <p>
-                            <strong>CSV:</strong> Universal format for any CRM, email platform, or
-                            spreadsheet software
+                            <strong className="font-black">CSV:</strong> Universal format for any
+                            CRM, email platform, or spreadsheet software
                           </p>
                           <p>
-                            <strong>Excel:</strong> Multi-sheet workbook with platform summaries and
-                            analytics
+                            <strong className="font-black">Excel:</strong> Multi-sheet workbook with
+                            platform summaries and analytics
                           </p>
                           <p>
-                            <strong>PDF:</strong> Professional report with Audio Intel branding for
-                            client deliverables
+                            <strong className="font-black">PDF:</strong> Professional report with
+                            Audio Intel branding for client deliverables
                           </p>
                         </div>
 
                         {/* Tool Integration - Send to Tracker */}
-                        <div className="mt-6 pt-6 border-t-2 border-gray-200">
+                        <div className="mt-6 pt-6 border-t-4 border-black">
                           <h4 className="text-lg font-black text-gray-900 mb-3">
                             🚀 Tool Integration
                           </h4>
@@ -764,7 +736,7 @@ export default function SimpleAudioIntelDemo() {
                           <Button
                             onClick={handleSendToTracker}
                             disabled={isExporting}
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 px-6 rounded-lg flex items-center justify-center gap-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-lg"
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 px-6 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3 text-lg"
                           >
                             <svg
                               className="w-6 h-6"
@@ -780,9 +752,11 @@ export default function SimpleAudioIntelDemo() {
                               />
                             </svg>
                             Send {enrichmentResults.length} Contacts to Tracker
-                            <Badge className="bg-blue-500 text-white ml-2">Direct Import</Badge>
+                            <Badge className="bg-blue-500 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ml-2 font-bold">
+                              Direct Import
+                            </Badge>
                           </Button>
-                          <p className="text-xs text-gray-500 mt-2 text-center">
+                          <p className="text-xs text-gray-500 mt-2 text-center font-medium">
                             Automatically opens Tracker import page with your enriched contacts
                             ready to import
                           </p>
@@ -792,22 +766,22 @@ export default function SimpleAudioIntelDemo() {
                       {/* Results Display */}
                       {enrichmentResults.length > 0 && (
                         <div className="space-y-6">
-                          <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                            <h4 className="font-bold text-green-800 mb-2">
+                          <div className="bg-white border-4 border-green-500 rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-6">
+                            <h4 className="font-black text-green-800 mb-3 text-lg">
                               Current Demo Capabilities
                             </h4>
-                            <ul className="text-sm text-green-700 space-y-1">
+                            <ul className="text-sm text-green-700 space-y-2 font-bold">
                               <li>• Email domain analysis and company identification</li>
                               <li>• Username pattern recognition for role suggestions</li>
                               <li>• Basic email validation and formatting</li>
                             </ul>
                           </div>
 
-                          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                            <h4 className="font-bold text-blue-800 mb-2">
+                          <div className="bg-white border-4 border-blue-500 rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-6">
+                            <h4 className="font-black text-blue-800 mb-3 text-lg">
                               Production Enrichment Includes
                             </h4>
-                            <ul className="text-sm text-blue-700 space-y-1">
+                            <ul className="text-sm text-blue-700 space-y-2 font-bold">
                               <li>
                                 • LinkedIn API integration for current employment verification
                               </li>
@@ -831,24 +805,32 @@ export default function SimpleAudioIntelDemo() {
                                 {enrichmentResults.filter(c => c.confidence === 'High').length}{' '}
                                 contacts)
                               </h4>
-                              <div className="space-y-3">
+                              <div className="space-y-4">
                                 {enrichmentResults
                                   .filter(c => c.confidence === 'High')
                                   .map((contact, index) => (
-                                    <Card key={index} className="border-l-4 border-l-green-500">
-                                      <CardContent className="p-4">
-                                        <div className="grid grid-cols-1 gap-3">
+                                    <Card
+                                      key={index}
+                                      className="bg-white border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+                                    >
+                                      <CardContent className="p-6">
+                                        <div className="grid grid-cols-1 gap-4">
                                           <div className="flex justify-between items-start">
-                                            <div>
-                                              <div className="font-bold text-gray-900">
+                                            <div className="flex-1">
+                                              <div className="text-xl font-black text-gray-900 mb-1">
                                                 {contact.name}
                                               </div>
-                                              <div className="text-blue-600 font-medium">
+                                              <div className="text-blue-600 font-bold text-sm">
                                                 {contact.email}
                                               </div>
+                                              {contact.company && (
+                                                <div className="text-gray-600 font-medium text-sm mt-1">
+                                                  {contact.company}
+                                                </div>
+                                              )}
                                             </div>
-                                            <div className="flex items-center gap-2">
-                                              <Badge className="bg-green-500 text-white">
+                                            <div className="flex items-center gap-3">
+                                              <Badge className="bg-green-500 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold px-3 py-1">
                                                 High Confidence
                                               </Badge>
                                               <Button
@@ -860,8 +842,10 @@ export default function SimpleAudioIntelDemo() {
                                               </Button>
                                             </div>
                                           </div>
-                                          <div className="text-sm text-gray-700">
-                                            {contact.intelligence}
+                                          <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                                            <div className="text-sm text-gray-700 font-medium whitespace-pre-line">
+                                              {contact.intelligence}
+                                            </div>
                                           </div>
                                         </div>
                                       </CardContent>
@@ -879,27 +863,32 @@ export default function SimpleAudioIntelDemo() {
                                 {enrichmentResults.filter(c => c.confidence === 'Medium').length}{' '}
                                 contacts)
                               </h4>
-                              <div className="space-y-3">
+                              <div className="space-y-4">
                                 {enrichmentResults
                                   .filter(c => c.confidence === 'Medium')
                                   .map((contact, index) => (
-                                    <Card key={index} className="border-l-4 border-l-yellow-500">
-                                      <CardContent className="p-4">
-                                        <div className="grid grid-cols-1 gap-3">
+                                    <Card
+                                      key={index}
+                                      className="bg-white border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+                                    >
+                                      <CardContent className="p-6">
+                                        <div className="grid grid-cols-1 gap-4">
                                           <div className="flex justify-between items-start">
-                                            <div>
-                                              <div className="font-bold text-gray-900">
+                                            <div className="flex-1">
+                                              <div className="text-xl font-black text-gray-900 mb-1">
                                                 {contact.name}
                                               </div>
-                                              <div className="text-blue-600 font-medium">
+                                              <div className="text-blue-600 font-bold text-sm">
                                                 {contact.email}
                                               </div>
+                                              {contact.company && (
+                                                <div className="text-gray-600 font-medium text-sm mt-1">
+                                                  {contact.company}
+                                                </div>
+                                              )}
                                             </div>
-                                            <div className="flex items-center gap-2">
-                                              <Badge
-                                                variant="outline"
-                                                className="border-yellow-500 text-yellow-700"
-                                              >
+                                            <div className="flex items-center gap-3">
+                                              <Badge className="bg-yellow-500 text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold px-3 py-1">
                                                 Medium Confidence
                                               </Badge>
                                               <Button
@@ -911,8 +900,10 @@ export default function SimpleAudioIntelDemo() {
                                               </Button>
                                             </div>
                                           </div>
-                                          <div className="text-sm text-gray-700">
-                                            {contact.intelligence}
+                                          <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                                            <div className="text-sm text-gray-700 font-medium whitespace-pre-line">
+                                              {contact.intelligence}
+                                            </div>
                                           </div>
                                         </div>
                                       </CardContent>
@@ -930,34 +921,39 @@ export default function SimpleAudioIntelDemo() {
                                 {enrichmentResults.filter(c => c.confidence === 'Low').length}{' '}
                                 contacts) - Requires Manual Research
                               </h4>
-                              <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+                              <div className="bg-red-50 border-4 border-red-500 rounded-xl p-4 mb-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                                 <p className="text-sm text-red-800 font-bold">
                                   <strong>Cost-Saving Tip:</strong> These contacts need manual
                                   research or paid API enrichment. Focus your budget on High and
                                   Medium confidence contacts first for better ROI.
                                 </p>
                               </div>
-                              <div className="space-y-3 max-h-64 overflow-y-auto">
+                              <div className="space-y-4 max-h-64 overflow-y-auto">
                                 {enrichmentResults
                                   .filter(c => c.confidence === 'Low')
                                   .map((contact, index) => (
-                                    <Card key={index} className="border-l-4 border-l-red-500">
-                                      <CardContent className="p-4">
-                                        <div className="grid grid-cols-1 gap-3">
+                                    <Card
+                                      key={index}
+                                      className="bg-white border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+                                    >
+                                      <CardContent className="p-6">
+                                        <div className="grid grid-cols-1 gap-4">
                                           <div className="flex justify-between items-start">
-                                            <div>
-                                              <div className="font-bold text-gray-900">
+                                            <div className="flex-1">
+                                              <div className="text-xl font-black text-gray-900 mb-1">
                                                 {contact.name}
                                               </div>
-                                              <div className="text-blue-600 font-medium">
+                                              <div className="text-blue-600 font-bold text-sm">
                                                 {contact.email}
                                               </div>
+                                              {contact.company && (
+                                                <div className="text-gray-600 font-medium text-sm mt-1">
+                                                  {contact.company}
+                                                </div>
+                                              )}
                                             </div>
-                                            <div className="flex items-center gap-2">
-                                              <Badge
-                                                variant="outline"
-                                                className="border-red-500 text-red-700"
-                                              >
+                                            <div className="flex items-center gap-3">
+                                              <Badge className="bg-red-500 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold px-3 py-1">
                                                 Needs Research
                                               </Badge>
                                               <Button
@@ -969,8 +965,10 @@ export default function SimpleAudioIntelDemo() {
                                               </Button>
                                             </div>
                                           </div>
-                                          <div className="text-sm text-gray-600">
-                                            {contact.intelligence}
+                                          <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                                            <div className="text-sm text-gray-600 font-medium whitespace-pre-line">
+                                              {contact.intelligence}
+                                            </div>
                                           </div>
                                         </div>
                                       </CardContent>

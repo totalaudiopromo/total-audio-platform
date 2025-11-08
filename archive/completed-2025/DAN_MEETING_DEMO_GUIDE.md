@@ -39,11 +39,13 @@
 **Location**: [http://localhost:3001/dashboard](http://localhost:3001/dashboard)
 
 1. **Show Dashboard with Liberty branding**
+
    - Point out teal color scheme (Tracker brand)
    - Show stats cards with active campaigns
    - Highlight "+ New Campaign" button
 
 2. **Demo AI Command Bar** (⌘K or click "Ask AI Assistant")
+
    - Type: "Show me all Royal Blood campaigns"
    - Type: "What campaigns do I have for Architects?"
    - Type: "Show me active campaigns"
@@ -51,6 +53,7 @@
    - **Key Point**: "Natural language, no learning curve for junior staff"
 
 3. **Demo Client Filter Bar**
+
    - Click client dropdown
    - Show campaign counts per client
    - Filter by Royal Blood
@@ -71,6 +74,7 @@
 **Location**: [http://localhost:3000/pdf-demo](http://localhost:3000/pdf-demo)
 
 1. **Show White-Label Configuration**
+
    - Change agency name to "Liberty Promotions"
    - Upload Liberty logo (if you have one)
    - Change primary color to Liberty brand color
@@ -79,6 +83,7 @@
    - **Key Point**: "Your branding, not ours. Client-ready deliverables."
 
 2. **Generate White-Label PDF**
+
    - Click "Export White-Label PDF"
    - Open the PDF that downloads
    - Point out:
@@ -98,11 +103,13 @@
 **Location**: [http://localhost:3001/dashboard/team](http://localhost:3001/dashboard/team)
 
 1. **Show Team Members Tab**
+
    - View existing team members
    - Show role badges (Admin/Member/Client)
    - **Key Point**: "Junior staff do the work, you review, clients get read-only"
 
 2. **Invite Team Member**
+
    - Click "Invite Member"
    - Enter email: junior@liberty-records.co.uk
    - Select role: "Member - Full access"
@@ -110,6 +117,7 @@
    - **Key Point**: "Email invitation, 7-day expiry, trackable"
 
 3. **Show White-Label Settings Tab**
+
    - Click "White-Label Settings" tab
    - Show branding configuration
    - Point out Agency plan requirement
@@ -130,24 +138,28 @@
 ### Liberty Records Campaigns (5 total)
 
 1. **Royal Blood - Typhoons Deluxe Edition**
+
    - Status: Active
    - Budget: £50,000
    - Target: BBC Radio 1, Radio X, Kerrang!
    - Notes: Album re-release, vinyl pre-orders strong
 
 2. **Architects - Summer Festival Circuit 2025**
+
    - Status: Active
    - Budget: £35,000
    - Target: Download, Slam Dunk, Reading & Leeds
    - Notes: New single "Gravity" drops April 1st
 
 3. **Rolo Tomassi - Where Myth Becomes Memory Deluxe**
+
    - Status: Planning
    - Budget: £18,000
    - Target: BBC Radio 6 Music, DIY/underground press
    - Notes: Cult following, focus on tastemakers
 
 4. **Royal Blood - Mountains at Midnight (Single)**
+
    - Status: Completed
    - Budget: £15,000
    - Results: Radio 1 B-list, 850K Spotify streams week 1
@@ -243,11 +255,13 @@
 ### Immediate (This Week):
 
 1. **Set up Liberty Records account**
+
    - Sign up at: http://localhost:3001/auth/signup
    - Email: dan@liberty-records.co.uk
    - Upgrade to Agency plan
 
 2. **Import existing contact database**
+
    - CSV upload for contacts
    - Auto-enrichment of BBC/Spotify/Kerrang! contacts
    - White-label PDF export
@@ -260,11 +274,13 @@
 ### Medium Term (Next 2 Weeks):
 
 4. **Migrate active campaigns to Tracker**
+
    - Royal Blood, Architects, Rolo Tomassi campaigns
    - Use AI chatbot for quick filtering
    - Export white-label reports for clients
 
 5. **Train team on workflow**
+
    - 30-min onboarding call
    - Demo AI chatbot commands
    - Show client filtering
@@ -277,6 +293,7 @@
 ### Long Term (Next Month):
 
 7. **Expand to Pitch Generator**
+
    - Personalized pitch templates
    - Scale outreach to 100+ contacts/campaign
    - AI-powered pitch optimization

@@ -146,34 +146,31 @@ export async function GET(request: NextRequest) {
   // Return aggregated location data for analytics
   const sessions = Array.from(userSessions.values());
 
-  const locationStats = sessions.reduce(
-    (acc, session) => {
-      if (!session.location?.city) return acc;
+  const locationStats = sessions.reduce((acc, session) => {
+    if (!session.location?.city) return acc;
 
-      const key = `${session.location.city}, ${session.location.country}`;
-      if (!acc[key]) {
-        acc[key] = {
-          city: session.location.city,
-          country: session.location.country,
-          countryCode: session.location.countryCode,
-          coordinates: {
-            lat: session.location.lat || 0,
-            lng: session.location.lon || 0,
-          },
-          users: [],
-          count: 0,
-        };
-      }
+    const key = `${session.location.city}, ${session.location.country}`;
+    if (!acc[key]) {
+      acc[key] = {
+        city: session.location.city,
+        country: session.location.country,
+        countryCode: session.location.countryCode,
+        coordinates: {
+          lat: session.location.lat || 0,
+          lng: session.location.lon || 0,
+        },
+        users: [],
+        count: 0,
+      };
+    }
 
-      acc[key].count++;
-      if (session.email && !acc[key].users.includes(session.email)) {
-        acc[key].users.push(session.email);
-      }
+    acc[key].count++;
+    if (session.email && !acc[key].users.includes(session.email)) {
+      acc[key].users.push(session.email);
+    }
 
-      return acc;
-    },
-    {} as Record<string, any>
-  );
+    return acc;
+  }, {} as Record<string, any>);
 
   return NextResponse.json({
     totalSessions: sessions.length,

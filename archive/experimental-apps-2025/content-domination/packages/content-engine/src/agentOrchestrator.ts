@@ -964,8 +964,8 @@ Key analysis areas:
               day < duration * 0.4
                 ? 'pre-release'
                 : day < duration * 0.7
-                  ? 'release'
-                  : 'post-release',
+                ? 'release'
+                : 'post-release',
             status: 'planned' as const,
           });
         }
@@ -1190,18 +1190,18 @@ Key analysis areas:
       size: response.includes('large market')
         ? 'large'
         : response.includes('small market')
-          ? 'small'
-          : 'medium',
+        ? 'small'
+        : 'medium',
       competition: response.includes('high competition')
         ? 'high'
         : response.includes('low competition')
-          ? 'low'
-          : 'moderate',
+        ? 'low'
+        : 'moderate',
       growth: response.includes('growing')
         ? 'growing'
         : response.includes('declining')
-          ? 'declining'
-          : 'stable',
+        ? 'declining'
+        : 'stable',
     };
   }
 
@@ -1210,8 +1210,8 @@ Key analysis areas:
       position: response.includes('leading')
         ? 'leading'
         : response.includes('follower')
-          ? 'follower'
-          : 'emerging',
+        ? 'follower'
+        : 'emerging',
       opportunities: response.match(/opportunity[^.]*playlist[^.]*/gi) || [
         'playlist growth opportunities',
       ],

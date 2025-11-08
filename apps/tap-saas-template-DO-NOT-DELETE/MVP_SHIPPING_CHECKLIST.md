@@ -83,10 +83,12 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your-stripe-key"
 ## 🚀 **TO SHIP MVP:**
 
 1. **Add API Keys** (5 min)
+
    - Copy your Anthropic API key
    - Copy your Stripe keys from other apps
 
 2. **Test Core Flow** (10 min)
+
    - Generate a pitch
    - Save it to database
    - Check it appears in history

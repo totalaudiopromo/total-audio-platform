@@ -73,16 +73,19 @@ tracker/
 When adding new documentation:
 
 1. **Setup guides** → `/docs/setup/`
+
    - Deployment instructions
    - Configuration guides
    - Integration setup
 
 2. **How-to guides** → `/docs/guides/`
+
    - Feature tutorials
    - Usage examples
    - Best practices
 
 3. **Reference docs** → `/docs/reference/`
+
    - Technical specs
    - Architecture docs
    - Strategy documents

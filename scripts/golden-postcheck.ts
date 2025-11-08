@@ -199,8 +199,8 @@ async function runPostCheck() {
     lighthouseValidation.status === 'pass'
       ? '✅'
       : lighthouseValidation.status === 'skipped'
-        ? '⚠️'
-        : '❌';
+      ? '⚠️'
+      : '❌';
   console.error(`${lighthouseIcon} Lighthouse: ${lighthouseValidation.message}`);
 
   const duration = Date.now() - startTime;
@@ -238,7 +238,9 @@ async function runPostCheck() {
   const historyPath = path.join(historyDir, `${today}.md`);
 
   const statusIcon = overall === 'pass' ? '✅' : '❌';
-  const statusLine = `${timestamp} | ${statusIcon} ${overall.toUpperCase()} | ${duration}ms | ${healthChecks.filter(c => c.status === 'pass').length}/${healthChecks.length} apps healthy\n`;
+  const statusLine = `${timestamp} | ${statusIcon} ${overall.toUpperCase()} | ${duration}ms | ${
+    healthChecks.filter(c => c.status === 'pass').length
+  }/${healthChecks.length} apps healthy\n`;
 
   // Create file with header if it doesn't exist
   if (!fs.existsSync(historyPath)) {

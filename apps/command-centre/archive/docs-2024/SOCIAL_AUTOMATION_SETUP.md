@@ -151,16 +151,19 @@ Ready-to-post templates include:
 Before any post goes live:
 
 1. **Content Analysis**
+
    - Character count validation
    - Platform-specific optimization
    - Audio Intel branding check
 
 2. **Duplicate Detection**
+
    - Cross-platform content tracking
    - Hash-based duplicate prevention
    - Recent history verification
 
 3. **Quality Control**
+
    - Manual approval for sensitive content
    - Warning system for potential issues
    - Detailed verification logs

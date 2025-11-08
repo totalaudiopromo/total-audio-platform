@@ -31,16 +31,16 @@ export default async function OverviewStats() {
         responsePct >= 30
           ? 'from-green-500 to-green-600'
           : responsePct >= 10
-            ? 'from-yellow-500 to-yellow-600'
-            : 'from-red-500 to-red-600',
+          ? 'from-yellow-500 to-yellow-600'
+          : 'from-red-500 to-red-600',
       showProgress: true,
       progress: responsePct,
       progressColor:
         responsePct >= 30
           ? 'bg-green-500'
           : responsePct >= 10
-            ? 'bg-yellow-500'
-            : 'bg-red-500',
+          ? 'bg-yellow-500'
+          : 'bg-red-500',
     },
     {
       label: 'Budget Utilisation',

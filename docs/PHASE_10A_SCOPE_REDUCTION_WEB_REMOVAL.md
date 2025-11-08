@@ -17,6 +17,7 @@ Separation avoids CI/CD instability and allows the 3 production apps to deploy r
 ## Deployment Strategy
 
 ### Golden Pipeline (3-App Scope)
+
 - Automated health checks
 - Rollback capability
 - Telegram notifications
@@ -25,6 +26,7 @@ Separation avoids CI/CD instability and allows the 3 production apps to deploy r
 **Apps**: `audio-intel`, `tracker`, `pitch-generator`
 
 ### Web (Independent)
+
 - Deploys via standard Vercel GitHub integration
 - Automatic on push to main
 - No Golden pipeline dependency
@@ -32,10 +34,12 @@ Separation avoids CI/CD instability and allows the 3 production apps to deploy r
 ## Safety Guards Added
 
 1. **Scope Validation in `golden-check.ts`**
+
    - TypeScript guard prevents invalid app names
    - Fails fast with clear error message
 
 2. **Workflow Validation in `golden-deploy.yml`**
+
    - Pre-build job verifies `GOLDEN_SCOPE` env var
    - Prevents accidental scope changes
 
@@ -55,16 +59,19 @@ Separation avoids CI/CD instability and allows the 3 production apps to deploy r
 ## Technical Details
 
 ### Error Pattern (Before Fix)
+
 - Vercel CLI path resolution: `apps/web/apps/web/.next/routes-manifest.json` (incorrect)
 - Expected path: `apps/web/.next/routes-manifest.json`
 - Result: Build failure after 13-14 minutes
 
 ### Root Cause
+
 - Custom `buildCommand` in `apps/web/vercel.json`
 - Pages Router structure (`src/pages/`) vs App Router (`app/`)
 - Workflow directory handling conflict
 
 ### Working Apps Pattern
+
 - App Router structure without custom buildCommand
 - Standard `.next` output paths
 - Clean Vercel CLI detection
@@ -72,11 +79,13 @@ Separation avoids CI/CD instability and allows the 3 production apps to deploy r
 ## Files Modified
 
 ### Workflows
+
 - `.github/workflows/ci-cd.yml` (3 matrix updates)
 - `.github/workflows/golden-deploy.yml` (matrix + validation job)
 - `.github/workflows/golden-intelligence.yml` (app array updates)
 
 ### Scripts
+
 - `scripts/golden-check.ts` (scope guard + app array)
 - `scripts/golden-promote.ts` (app array + notifications)
 - `scripts/golden-postcheck.ts` (health checks + notifications)
@@ -84,41 +93,47 @@ Separation avoids CI/CD instability and allows the 3 production apps to deploy r
 - `scripts/rollback-latest.sh` (new emergency rollback tool)
 
 ### Documentation
+
 - `docs/PHASE_10A_SCOPE_REDUCTION_WEB_REMOVAL.md` (this file)
 
 ### GitHub Secrets
+
 - Deleted: `VERCEL_PROJECT_ID_WEB` (should be removed manually)
 - Retained: intel/tracker/pitch project IDs
 
 ## Performance Improvement
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| Build Time | 13-14 min (failure) | ~5-7 min (success) | 50%+ faster |
-| Success Rate | 75% (3/4) | 100% (3/3) | +25% |
-| CI/CD Stability | Blocked by web failures | Unblocked, reliable | Critical |
-| Deployment Speed | Delayed by retries | Immediate | Unblocked |
+| Metric           | Before                  | After               | Improvement |
+| ---------------- | ----------------------- | ------------------- | ----------- |
+| Build Time       | 13-14 min (failure)     | ~5-7 min (success)  | 50%+ faster |
+| Success Rate     | 75% (3/4)               | 100% (3/3)          | +25%        |
+| CI/CD Stability  | Blocked by web failures | Unblocked, reliable | Critical    |
+| Deployment Speed | Delayed by retries      | Immediate           | Unblocked   |
 
 ## Future Re-Integration (Optional)
 
 To re-add `web` to Golden pipeline (if needed):
 
 1. **Migrate to App Router structure**
+
    - Move from `src/pages/` to `app/` directory
    - Update all routes and API endpoints
    - Test locally before committing
 
 2. **Remove custom buildCommand**
+
    - Update `apps/web/vercel.json`
    - Remove `buildCommand` and `installCommand` overrides
    - Align with intel/tracker/pitch patterns
 
 3. **Align build output paths**
+
    - Verify `.next` directory structure
    - Test with `vercel build --prod` locally
    - Confirm no path resolution issues
 
 4. **Test via staging tag**
+
    - Deploy to staging environment first
    - Run full health checks
    - Verify no regression in other apps
@@ -148,6 +163,7 @@ To re-add `web` to Golden pipeline (if needed):
 ## Emergency Procedures
 
 ### If Golden Pipeline Fails
+
 ```bash
 # Check deployment status
 pnpm tsx scripts/golden-check.ts --app audio-intel
@@ -160,6 +176,7 @@ open https://vercel.com/chris-projects-6ffe0e29
 ```
 
 ### If Web App Issues
+
 - Web deploys independently via Vercel
 - Check: https://vercel.com/chris-projects-6ffe0e29/web
 - No impact on Golden pipeline

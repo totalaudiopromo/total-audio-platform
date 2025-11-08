@@ -193,7 +193,7 @@ export default function VoiceProfilePage() {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="text-center">
-          <Sparkles className="mx-auto h-8 w-8 animate-spin text-brand-amber" />
+          <Sparkles className="mx-auto h-8 w-8 animate-spin text-brand-amber-dark" />
           <p className="mt-2 text-sm text-gray-600">Loading your voice profile...</p>
         </div>
       </div>
@@ -217,7 +217,7 @@ export default function VoiceProfilePage() {
 
         <div className="glass-panel px-8 py-10">
           <div className="mb-8 text-center">
-            <Sparkles className="mx-auto h-12 w-12 text-brand-amber" />
+            <Sparkles className="mx-auto h-12 w-12 text-brand-amber-dark" />
             <h1 className="mt-4 text-3xl font-bold">Create Your Voice Profile</h1>
             <p className="mt-3 text-gray-900/60 max-w-2xl mx-auto">
               Help AI write pitches that sound exactly like you. Choose how you'd like to set up
@@ -229,15 +229,15 @@ export default function VoiceProfilePage() {
             {/* Quick Setup */}
             <button
               onClick={() => setCurrentStep('quick')}
-              className="group rounded-2xl border-2 border-white/10 bg-gray-50 p-6 text-left transition hover:border-brand-amber hover:bg-white/[0.07]"
+              className="group rounded-2xl border-4 border-black bg-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all text-left"
             >
-              <Zap className="h-8 w-8 text-brand-amber" />
+              <Zap className="h-8 w-8 text-brand-amber-dark" />
               <h3 className="mt-4 text-xl font-bold">Quick Setup</h3>
               <p className="mt-2 text-sm text-gray-900/60">
                 Paste a pitch or email you've written. AI analyses your style and auto-fills your
                 profile.
               </p>
-              <div className="mt-4 flex items-center gap-2 text-sm text-brand-amber">
+              <div className="mt-4 flex items-center gap-2 text-sm text-brand-amber-dark">
                 <span className="font-semibold">~2 minutes</span>
                 <span className="text-gray-900/30">•</span>
                 <span>Recommended</span>
@@ -247,14 +247,14 @@ export default function VoiceProfilePage() {
             {/* Guided Setup */}
             <button
               onClick={() => setCurrentStep('guided')}
-              className="group rounded-2xl border-2 border-white/10 bg-gray-50 p-6 text-left transition hover:border-brand-amber hover:bg-white/[0.07]"
+              className="group rounded-2xl border-4 border-black bg-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all text-left"
             >
-              <FileText className="h-8 w-8 text-brand-amber" />
+              <FileText className="h-8 w-8 text-brand-amber-dark" />
               <h3 className="mt-4 text-xl font-bold">Guided Setup</h3>
               <p className="mt-2 text-sm text-gray-900/60">
                 Answer 7 strategic questions about your background, style, and approach.
               </p>
-              <div className="mt-4 flex items-center gap-2 text-sm text-brand-amber">
+              <div className="mt-4 flex items-center gap-2 text-sm text-brand-amber-dark">
                 <span className="font-semibold">~5 minutes</span>
                 <span className="text-gray-900/30">•</span>
                 <span>More detailed</span>
@@ -264,7 +264,7 @@ export default function VoiceProfilePage() {
 
           {/* Stats */}
           <div className="mt-8 rounded-xl border border-brand-amber/30 bg-brand-amber/5 p-6 max-w-3xl mx-auto">
-            <h4 className="font-semibold text-brand-amber text-center">
+            <h4 className="font-semibold text-brand-amber-dark text-center">
               Why Voice Profiles Matter
             </h4>
             <div className="mt-4 grid gap-4 sm:grid-cols-3 text-center">
@@ -281,7 +281,7 @@ export default function VoiceProfilePage() {
                 </p>
               </div>
               <div>
-                <div className="text-2xl font-bold text-brand-amber">4x</div>
+                <div className="text-2xl font-bold text-brand-amber-dark">4x</div>
                 <p className="mt-1 text-xs text-gray-900/60">Improvement in engagement</p>
               </div>
             </div>
@@ -314,7 +314,7 @@ export default function VoiceProfilePage() {
                   Paste a pitch or email you've written - AI will analyse your writing style
                 </p>
               </div>
-              <Zap className="h-8 w-8 text-brand-amber" />
+              <Zap className="h-8 w-8 text-brand-amber-dark" />
             </div>
           </div>
 
@@ -337,7 +337,7 @@ Hi Sarah,
 Hope you've been well since we last spoke! I wanted to send you a new track from my project sadact that I think would really suit your show...
 
 The more text you provide, the better I can understand your natural writing style and voice."
-                className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                className="w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
               />
               <p className="mt-2 text-xs text-gray-900/50">
                 {sampleText.length} characters{' '}
@@ -345,7 +345,7 @@ The more text you provide, the better I can understand your natural writing styl
               </p>
             </div>
 
-            <div className="rounded-xl border border-white/10 bg-gray-50 p-4">
+            <div className="rounded-xl border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <h4 className="text-sm font-semibold">What AI Will Analyse:</h4>
               <ul className="mt-2 space-y-1 text-xs text-gray-900/70">
                 <li>• Writing style (formal vs casual, sentence structure)</li>
@@ -409,7 +409,7 @@ The more text you provide, the better I can understand your natural writing styl
             {/* Voice Insights */}
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               {/* Formality Score */}
-              <div className="rounded-xl border border-white/10 bg-gray-50 p-4">
+              <div className="rounded-xl border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <p className="text-xs text-gray-900/60">Formality Level</p>
                 <div className="mt-2 flex items-center gap-3">
                   <div className="flex-1 h-2 rounded-full bg-gray-200 overflow-hidden">
@@ -424,13 +424,13 @@ The more text you provide, the better I can understand your natural writing styl
                   {analysis.metadata.formality_score <= 3
                     ? 'Very casual'
                     : analysis.metadata.formality_score <= 6
-                      ? 'Balanced'
-                      : 'Professional'}
+                    ? 'Balanced'
+                    : 'Professional'}
                 </p>
               </div>
 
               {/* Tone Preference */}
-              <div className="rounded-xl border border-white/10 bg-gray-50 p-4">
+              <div className="rounded-xl border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <p className="text-xs text-gray-900/60">Tone Preference</p>
                 <p className="mt-2 text-lg font-bold capitalize">
                   {analysis.metadata.tone_preference}
@@ -438,13 +438,13 @@ The more text you provide, the better I can understand your natural writing styl
               </div>
 
               {/* Personality Traits */}
-              <div className="rounded-xl border border-white/10 bg-gray-50 p-4">
+              <div className="rounded-xl border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <p className="text-xs text-gray-900/60">Personality Traits</p>
                 <div className="mt-2 flex flex-wrap gap-1">
                   {analysis.metadata.personality_traits.slice(0, 3).map((trait, i) => (
                     <span
                       key={i}
-                      className="rounded-full bg-brand-amber/20 px-2 py-0.5 text-xs text-brand-amber"
+                      className="rounded-full bg-brand-amber/20 px-2 py-0.5 text-xs text-brand-amber-dark"
                     >
                       {trait}
                     </span>
@@ -471,7 +471,7 @@ The more text you provide, the better I can understand your natural writing styl
                 )}
                 {analysis.metadata.suggestions.length > 0 && (
                   <div className="rounded-xl border border-brand-amber/30 bg-brand-amber/5 p-4">
-                    <p className="text-xs font-semibold text-brand-amber">Suggestions</p>
+                    <p className="text-xs font-semibold text-brand-amber-dark">Suggestions</p>
                     <ul className="mt-2 space-y-1">
                       {analysis.metadata.suggestions.map((suggestion, i) => (
                         <li key={i} className="text-xs text-gray-900/70">
@@ -499,7 +499,7 @@ The more text you provide, the better I can understand your natural writing styl
                   value={profile.voice_background}
                   onChange={e => setProfile({ ...profile, voice_background: e.target.value })}
                   rows={3}
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                  className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
                 />
               </div>
 
@@ -512,7 +512,7 @@ The more text you provide, the better I can understand your natural writing styl
                   value={profile.voice_style}
                   onChange={e => setProfile({ ...profile, voice_style: e.target.value })}
                   rows={2}
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                  className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
                 />
               </div>
 
@@ -525,7 +525,7 @@ The more text you provide, the better I can understand your natural writing styl
                   value={profile.voice_achievements}
                   onChange={e => setProfile({ ...profile, voice_achievements: e.target.value })}
                   rows={2}
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                  className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
                 />
               </div>
 
@@ -538,7 +538,7 @@ The more text you provide, the better I can understand your natural writing styl
                   value={profile.voice_approach}
                   onChange={e => setProfile({ ...profile, voice_approach: e.target.value })}
                   rows={2}
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                  className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
                 />
               </div>
 
@@ -551,7 +551,7 @@ The more text you provide, the better I can understand your natural writing styl
                   value={profile.voice_differentiator}
                   onChange={e => setProfile({ ...profile, voice_differentiator: e.target.value })}
                   rows={2}
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                  className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
                 />
               </div>
 
@@ -564,7 +564,7 @@ The more text you provide, the better I can understand your natural writing styl
                   value={profile.voice_typical_opener}
                   onChange={e => setProfile({ ...profile, voice_typical_opener: e.target.value })}
                   rows={2}
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                  className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
                 />
               </div>
 
@@ -578,7 +578,7 @@ The more text you provide, the better I can understand your natural writing styl
                   onChange={e => setProfile({ ...profile, voice_context_notes: e.target.value })}
                   rows={2}
                   placeholder="Any other context about you that might help..."
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                  className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400 min-h-[100px]"
                 />
               </div>
             </div>
@@ -641,13 +641,13 @@ The more text you provide, the better I can understand your natural writing styl
                 effective
               </p>
             </div>
-            <Sparkles className="h-8 w-8 text-brand-amber" />
+            <Sparkles className="h-8 w-8 text-brand-amber-dark" />
           </div>
         </div>
 
         {/* Why This Matters */}
         <div className="mb-8 rounded-2xl border border-brand-amber/30 bg-brand-amber/5 p-6">
-          <h3 className="font-semibold text-brand-amber">Why This Matters</h3>
+          <h3 className="font-semibold text-brand-amber-dark">Why This Matters</h3>
           <p className="mt-2 text-sm text-gray-900/70">
             Generic AI pitches get ignored. Pitches that sound like they came from a real person
             with real experience get responses. This profile teaches our AI to write in{' '}
@@ -671,7 +671,7 @@ The more text you provide, the better I can understand your natural writing styl
               onChange={e => setProfile({ ...profile, voice_background: e.target.value })}
               rows={3}
               placeholder="I'm a producer who's been making electronic music for 5 years. I've pitched tracks to BBC Radio 1, 6 Music, and worked with several indie labels on radio campaigns..."
-              className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+              className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400 min-h-[100px]"
             />
           </div>
 
@@ -689,7 +689,7 @@ The more text you provide, the better I can understand your natural writing styl
               onChange={e => setProfile({ ...profile, voice_style: e.target.value })}
               rows={2}
               placeholder="I keep it direct but friendly. No corporate speak or forced formality. I write like I'm talking to someone at a gig, not sending a press release..."
-              className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+              className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400 min-h-[100px]"
             />
           </div>
 
@@ -707,7 +707,7 @@ The more text you provide, the better I can understand your natural writing styl
               onChange={e => setProfile({ ...profile, voice_achievements: e.target.value })}
               rows={2}
               placeholder="My last track got played on BBC 6 Music three times and featured on several indie blogs. I've built genuine relationships with radio producers over the years..."
-              className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+              className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400 min-h-[100px]"
             />
           </div>
 
@@ -725,7 +725,7 @@ The more text you provide, the better I can understand your natural writing styl
               onChange={e => setProfile({ ...profile, voice_approach: e.target.value })}
               rows={2}
               placeholder="I don't do mass emails. I research every contact, understand what they actually play, and only pitch tracks that genuinely fit their vibe..."
-              className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+              className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400 min-h-[100px]"
             />
           </div>
 
@@ -743,7 +743,7 @@ The more text you provide, the better I can understand your natural writing styl
               onChange={e => setProfile({ ...profile, voice_differentiator: e.target.value })}
               rows={2}
               placeholder="I'm a producer myself (sadact), so I understand both the creative and promotion sides. I test everything in my own campaigns before recommending it..."
-              className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+              className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400 min-h-[100px]"
             />
           </div>
 
@@ -761,7 +761,7 @@ The more text you provide, the better I can understand your natural writing styl
               onChange={e => setProfile({ ...profile, voice_typical_opener: e.target.value })}
               rows={2}
               placeholder="I usually start with something personal like 'Hope you have been well' or reference something specific I heard them play recently. Makes it feel less like a pitch..."
-              className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+              className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400 min-h-[100px]"
             />
           </div>
 
@@ -779,7 +779,7 @@ The more text you provide, the better I can understand your natural writing styl
               onChange={e => setProfile({ ...profile, voice_context_notes: e.target.value })}
               rows={2}
               placeholder="Dad of two based in Brighton. I focus on electronic music and run campaigns while working a day job, so I pitch mostly in the evenings..."
-              className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+              className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400 min-h-[100px]"
             />
           </div>
         </div>

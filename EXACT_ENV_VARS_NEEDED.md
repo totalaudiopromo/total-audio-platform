@@ -290,12 +290,15 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 ## Common Mistakes to Avoid
 
 1. ❌ **Only setting env vars in audio-intel Vercel project**
+
    - ✅ Set Supabase vars in ALL 5 Vercel projects
 
 2. ❌ **Only checking "Production" environment in Vercel**
+
    - ✅ Check Production, Preview, AND Development for all Supabase vars
 
 3. ❌ **Missing VERCEL*PROJECT_ID*\* secrets in GitHub**
+
    - ✅ Add all 5 project IDs to GitHub Secrets
 
 4. ❌ **Forgetting to update golden-deploy.yml promote step**

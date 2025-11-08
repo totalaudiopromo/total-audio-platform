@@ -7,14 +7,17 @@
 ## Step 1: Enable Skills (2 minutes)
 
 1. **Open Claude Code Settings:**
+
    - Press `⌘,` (Command + Comma)
    - OR click the gear/settings icon
 
 2. **Navigate to Capabilities:**
+
    - Look for "Capabilities" section in sidebar
    - OR search for "skills" in settings search bar
 
 3. **Enable Skills Toggle:**
+
    - Find "Skills" option
    - Toggle it to **ON** (should turn blue/green)
 

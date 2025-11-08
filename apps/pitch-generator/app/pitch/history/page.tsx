@@ -87,7 +87,7 @@ export default function PitchHistoryPage() {
       case 'draft':
         return 'bg-gray-100 text-gray-600';
       case 'sent':
-        return 'bg-brand-amber/20 text-brand-amber';
+        return 'bg-brand-amber/20 text-brand-amber-dark';
       case 'replied':
         return 'bg-success/20 text-success';
       case 'success':
@@ -102,7 +102,7 @@ export default function PitchHistoryPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber-dark" />
       </div>
     );
   }
@@ -137,7 +137,7 @@ export default function PitchHistoryPage() {
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               placeholder="Search by contact, artist, or track..."
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 py-2.5 pl-11 pr-4 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+              className="w-full rounded-xl border-4 border-black bg-white py-2.5 pl-11 pr-4 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             />
           </div>
 
@@ -147,7 +147,7 @@ export default function PitchHistoryPage() {
             <select
               value={statusFilter}
               onChange={e => setStatusFilter(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+              className="rounded-xl border-4 border-black bg-white px-4 py-2.5 font-bold text-sm text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             >
               <option value="all" className="bg-card text-foreground">
                 All Status
@@ -178,7 +178,7 @@ export default function PitchHistoryPage() {
 
         {/* Pitches List */}
         {filteredPitches.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-8 py-12 text-center">
+          <div className="rounded-2xl border-4 border-black bg-white px-8 py-12 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <p className="text-gray-900/60">No pitches found</p>
             <Link href="/pitch/generate" className="cta-button mt-6 inline-flex">
               Generate Your First Pitch
@@ -189,7 +189,7 @@ export default function PitchHistoryPage() {
             {filteredPitches.map(pitch => (
               <div
                 key={pitch.id}
-                className="group rounded-2xl border border-white/10 bg-gray-50 px-6 py-5 transition hover:border-gray-300 hover:bg-white/[0.07]"
+                className="group rounded-2xl border-4 border-black bg-white px-6 py-5 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0 flex-1">

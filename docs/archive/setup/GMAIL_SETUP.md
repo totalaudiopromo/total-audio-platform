@@ -170,12 +170,15 @@ The Gmail integration includes a React component (`GmailIntegration.tsx`) that p
 ### Common Issues
 
 1. **OAuth Error**: "redirect_uri_mismatch"
+
    - Solution: Ensure the redirect URI in Google Cloud Console matches your backend URL
 
 2. **Token Expired**: "invalid_grant"
+
    - Solution: Re-authenticate by disconnecting and reconnecting Gmail
 
 3. **Permission Denied**: "insufficient_permission"
+
    - Solution: Ensure the Gmail API is enabled in Google Cloud Console
 
 4. **Rate Limiting**: "quota_exceeded"

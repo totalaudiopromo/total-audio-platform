@@ -284,6 +284,7 @@ apps/pitch-generator/          ✅ Uses @total-audio/core-db
    ```
 
 2. **Remove Type Assertions**:
+
    - Search for `as any` in all API routes
    - Replace with proper typed queries
    - Verify builds still pass
@@ -309,10 +310,12 @@ apps/pitch-generator/          ✅ Uses @total-audio/core-db
 ### Optional (Future Improvements)
 
 1. **Consolidate Pitch Generator Types**:
+
    - Move `Contact`, `Pitch`, `PitchTemplate` types to `@total-audio/core-db/types`
    - Share types across all apps
 
 2. **Standardize Middleware**:
+
    - Align Audio Intel middleware with Tracker/Pitch Generator pattern
    - Use single `updateSession()` pattern everywhere
 

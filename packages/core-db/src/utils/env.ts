@@ -60,12 +60,52 @@ export type Env = z.infer<typeof envSchema>;
  * Lazily validated environment variables
  * Only validates when accessed, avoiding build-time failures
  * Throws error at runtime if validation fails when accessed
+ *
+ * In browser/client-side: Only validates NEXT_PUBLIC_* vars that are actually set
  */
 let _env: Env | null = null;
 export const env = new Proxy({} as Env, {
   get(target, prop) {
     if (_env === null) {
-      _env = envSchema.parse(process.env);
+      // In browser/client-side, process.env only contains NEXT_PUBLIC_* vars
+      // Use safeParse and provide defaults for missing optional vars
+      const result = envSchema.safeParse(process.env);
+      if (result.success) {
+        _env = result.data;
+      } else {
+        // If validation fails, try to extract what we can and provide defaults
+        // This handles cases where some vars might not be available in browser
+        const partialEnv = {
+          NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+          SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
+          NODE_ENV:
+            (process.env.NODE_ENV as 'development' | 'production' | 'test') || 'development',
+          NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
+          FEATURE_METRICS_ENABLED: process.env.FEATURE_METRICS_ENABLED === 'true' || false,
+          FEATURE_ANALYTICS_ENABLED: process.env.FEATURE_ANALYTICS_ENABLED === 'true' || false,
+          FEATURE_PAYMENTS_ENABLED: process.env.FEATURE_PAYMENTS_ENABLED !== 'false',
+          FEATURE_AGENT_OBSERVABILITY_ENABLED:
+            process.env.FEATURE_AGENT_OBSERVABILITY_ENABLED === 'true' || false,
+          FEATURE_GROWTH_REFLEX_ENABLED:
+            process.env.FEATURE_GROWTH_REFLEX_ENABLED === 'true' || false,
+          FEATURE_FEEDBACK_DIGEST_ENABLED:
+            process.env.FEATURE_FEEDBACK_DIGEST_ENABLED === 'true' || false,
+          ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
+          TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN,
+          TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID,
+        };
+
+        // Validate required fields only
+        if (!partialEnv.NEXT_PUBLIC_SUPABASE_URL || !partialEnv.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+          throw new Error(
+            `Missing required environment variables: NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY must be set. ` +
+              `Check your .env.local file and ensure Next.js is exposing these variables.`
+          );
+        }
+
+        _env = partialEnv as Env;
+      }
     }
     return _env[prop as keyof Env];
   },

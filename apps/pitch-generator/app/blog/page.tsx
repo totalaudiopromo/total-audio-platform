@@ -217,7 +217,7 @@ export default function BlogIndex() {
             {otherPosts.map(post => (
               <article
                 key={post.slug}
-                className="bg-white rounded-xl border-2 border-gray-200 hover:border-amber-500 hover:shadow-lg transition-all overflow-hidden"
+                className="bg-white rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all overflow-hidden"
               >
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">

@@ -501,22 +501,187 @@ export function exportContactsToPdf(
   // Add premium header
   addPremiumHeader(
     doc,
-    'Enriched Contact Intelligence',
-    `${contacts.length} Contacts Analyzed`,
+    'Contact Intelligence Report',
+    `${contacts.length} Contacts Enriched`,
     whiteLabel
   );
 
-  // Summary section
-  doc.setFontSize(12);
+  // Calculate summary metrics
+  const confidenceBreakdown = {
+    High: contacts.filter(c => (c.researchConfidence || 'Low').toLowerCase().includes('high'))
+      .length,
+    Medium: contacts.filter(c => (c.researchConfidence || 'Low').toLowerCase().includes('medium'))
+      .length,
+    Low: contacts.filter(c => (c.researchConfidence || 'Low').toLowerCase().includes('low')).length,
+  };
+
+  const platformBreakdown: Record<string, number> = {};
+  contacts.forEach(contact => {
+    const platform = contact.platform || extractDomainFromEmail(contact.email);
+    platformBreakdown[platform] = (platformBreakdown[platform] || 0) + 1;
+  });
+
+  const topPlatforms = Object.entries(platformBreakdown)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, 5)
+    .map(([platform, count]) => ({
+      platform,
+      count,
+      percentage: Math.round((count / contacts.length) * 100),
+    }));
+
+  let currentY = 80;
+
+  // Summary Metrics Section - Professional Agency Report Style
+  doc.setFontSize(16);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(0, 0, 0);
+  doc.text('Summary Metrics', 20, currentY);
+
+  currentY += 10;
+
+  // Summary metrics boxes with brutalist borders
+  const metricsBoxWidth = 55;
+  const metricsBoxHeight = 25;
+  const metricsStartX = 20;
+  const metricsGap = 5;
+
+  // Total Contacts
+  doc.setFillColor(255, 255, 255);
+  doc.rect(metricsStartX, currentY, metricsBoxWidth, metricsBoxHeight, 'F');
+  doc.setDrawColor(0, 0, 0);
+  doc.setLineWidth(2);
+  doc.rect(metricsStartX, currentY, metricsBoxWidth, metricsBoxHeight, 'S');
+
+  doc.setFontSize(20);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(0, 0, 0);
+  doc.text(contacts.length.toString(), metricsStartX + metricsBoxWidth / 2, currentY + 12, {
+    align: 'center',
+  });
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(100, 100, 100);
+  doc.text('Total Contacts', metricsStartX + metricsBoxWidth / 2, currentY + 20, {
+    align: 'center',
+  });
+
+  // High Confidence
+  const highConfX = metricsStartX + metricsBoxWidth + metricsGap;
+  doc.setFillColor(255, 255, 255);
+  doc.rect(highConfX, currentY, metricsBoxWidth, metricsBoxHeight, 'F');
+  doc.setDrawColor(0, 0, 0);
+  doc.setLineWidth(2);
+  doc.rect(highConfX, currentY, metricsBoxWidth, metricsBoxHeight, 'S');
+
+  doc.setFontSize(20);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(DESIGN.successColor[0], DESIGN.successColor[1], DESIGN.successColor[2]);
+  doc.text(confidenceBreakdown.High.toString(), highConfX + metricsBoxWidth / 2, currentY + 12, {
+    align: 'center',
+  });
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(100, 100, 100);
+  doc.text('High Confidence', highConfX + metricsBoxWidth / 2, currentY + 20, {
+    align: 'center',
+  });
+
+  // Medium Confidence
+  const medConfX = highConfX + metricsBoxWidth + metricsGap;
+  doc.setFillColor(255, 255, 255);
+  doc.rect(medConfX, currentY, metricsBoxWidth, metricsBoxHeight, 'F');
+  doc.setDrawColor(0, 0, 0);
+  doc.setLineWidth(2);
+  doc.rect(medConfX, currentY, metricsBoxWidth, metricsBoxHeight, 'S');
+
+  doc.setFontSize(20);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(DESIGN.warningColor[0], DESIGN.warningColor[1], DESIGN.warningColor[2]);
+  doc.text(confidenceBreakdown.Medium.toString(), medConfX + metricsBoxWidth / 2, currentY + 12, {
+    align: 'center',
+  });
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(100, 100, 100);
+  doc.text('Medium Confidence', medConfX + metricsBoxWidth / 2, currentY + 20, {
+    align: 'center',
+  });
+
+  // Low Confidence
+  const lowConfX = medConfX + metricsBoxWidth + metricsGap;
+  doc.setFillColor(255, 255, 255);
+  doc.rect(lowConfX, currentY, metricsBoxWidth, metricsBoxHeight, 'F');
+  doc.setDrawColor(0, 0, 0);
+  doc.setLineWidth(2);
+  doc.rect(lowConfX, currentY, metricsBoxWidth, metricsBoxHeight, 'S');
+
+  doc.setFontSize(20);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(DESIGN.dangerColor[0], DESIGN.dangerColor[1], DESIGN.dangerColor[2]);
+  doc.text(confidenceBreakdown.Low.toString(), lowConfX + metricsBoxWidth / 2, currentY + 12, {
+    align: 'center',
+  });
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(100, 100, 100);
+  doc.text('Low Confidence', lowConfX + metricsBoxWidth / 2, currentY + 20, {
+    align: 'center',
+  });
+
+  currentY += metricsBoxHeight + 15;
+
+  // Platform Breakdown Section
+  if (topPlatforms.length > 0) {
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(0, 0, 0);
+    doc.text('Top Platforms', 20, currentY);
+
+    currentY += 8;
+
+    // Platform breakdown table
+    const platformData = topPlatforms.map(p => [
+      p.platform,
+      p.count.toString(),
+      `${p.percentage}%`,
+    ]);
+
+    const platformTableY = createPremiumTable(
+      doc,
+      platformData,
+      ['Platform', 'Contacts', 'Percentage'],
+      currentY,
+      whiteLabel
+    );
+
+    currentY = platformTableY + 15;
+  }
+
+  // Generated date
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(DESIGN.textLight[0], DESIGN.textLight[1], DESIGN.textLight[2]);
   doc.text(
-    `Generated on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`,
+    `Generated: ${new Date().toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    })} at ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}`,
     20,
-    60
+    currentY
   );
 
+  currentY += 15;
+
   // Contacts summary table with premium styling
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(0, 0, 0);
+  doc.text('Contact Details', 20, currentY);
+
+  currentY += 10;
+
   const contactsData = contacts.map(contact => [
     getDisplayName(contact),
     contact.email,
@@ -529,12 +694,12 @@ export function exportContactsToPdf(
     doc,
     contactsData,
     ['Name', 'Email', 'Confidence', 'Platform', 'Company'],
-    75,
+    currentY,
     whiteLabel
   );
 
   // Detailed intelligence section
-  let currentY = finalY + 20;
+  currentY = finalY + 20;
 
   contacts.forEach((contact, index) => {
     if (currentY > 245) {
@@ -608,8 +773,8 @@ export function exportContactsToPdf(
         confidence === 'High'
           ? 'Priority contact - verified music industry connection'
           : confidence === 'Medium'
-            ? 'Good potential - verify before outreach'
-            : 'Requires additional research before contact'
+          ? 'Good potential - verify before outreach'
+          : 'Requires additional research before contact'
       }`;
     }
 

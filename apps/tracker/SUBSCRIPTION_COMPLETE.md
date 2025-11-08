@@ -126,16 +126,19 @@ await hasActiveSubscription(userId);
 ## 📖 Documentation Files
 
 1. **SUBSCRIPTION_SETUP_GUIDE.md** - Start here!
+
    - Complete setup instructions
    - Stripe configuration
    - SQL queries for every step
 
 2. **TEST_SUBSCRIPTION.md** - Testing guide
+
    - Step-by-step test scenarios
    - Expected results for each test
    - Debugging queries
 
 3. **SUBSCRIPTION_IMPLEMENTATION.md** - Technical docs
+
    - Architecture overview
    - Database schema details
    - API integration patterns
@@ -354,16 +357,19 @@ Your subscription system is working when:
 **What to do now:**
 
 1. **Apply Migration** (5 min)
+
    - Open Supabase Dashboard SQL Editor
    - Copy migration file contents
    - Click Run
 
 2. **Mark Yourself Beta** (2 min)
+
    - Find your user ID in database
    - Run UPDATE query
    - Verify flag set
 
 3. **Test Everything** (15 min)
+
    - Follow TEST_SUBSCRIPTION.md
    - Verify all scenarios pass
    - Document any issues

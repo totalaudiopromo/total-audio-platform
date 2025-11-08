@@ -181,8 +181,8 @@ export default function FreeSEOToolsIntegration({ className }: FreeSEOToolsInteg
                         keyword.difficulty === 'low'
                           ? 'default'
                           : keyword.difficulty === 'medium'
-                            ? 'secondary'
-                            : 'destructive'
+                          ? 'secondary'
+                          : 'destructive'
                       }
                     >
                       {keyword.difficulty}

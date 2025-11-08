@@ -66,6 +66,7 @@ Place these files in `/Users/chrisschofield/workspace/active/total-audio-platfor
 1. **Use existing logo** from `/public/images/total_audio_promo_logo_trans.png`
 
 2. **Generate favicons** at https://realfavicongenerator.net/:
+
    - Upload logo
    - Adjust settings:
      - iOS: Add purple (#9333ea) background

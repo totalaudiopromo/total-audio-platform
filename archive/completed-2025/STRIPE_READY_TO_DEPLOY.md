@@ -280,23 +280,27 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 ### Before Deploying to Production
 
 1. **Verify Stripe Products Exist**:
+
    - Go to Stripe Dashboard → Products
    - Confirm all price IDs exist in LIVE mode
    - Verify prices match (£19, £79, £12, etc.)
    - Check trial periods configured
 
 2. **Check Beta Founder Coupon**:
+
    - Go to Stripe Dashboard → Coupons
    - Verify coupon `qa5J5GRN` exists
    - Check: 50% off, 12 months duration
    - Ensure it applies to all products
 
 3. **Verify Base URLs**:
+
    - Audio Intel: `https://intel.totalaudiopromo.com`
    - Pitch Generator: `https://pitch.totalaudiopromo.com`
    - Tracker: `https://tracker.totalaudiopromo.com`
 
 4. **Test in Stripe Test Mode First**:
+
    - Use test keys initially
    - Verify full checkout flow
    - Check webhooks working

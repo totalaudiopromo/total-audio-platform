@@ -1,0 +1,331 @@
+
+> total-audio-platform@1.0.0 test:smoke /Users/chrisschofield/workspace/active/total-audio-platform
+> playwright test tests/demo-scenarios/liberty-workflow.spec.ts --grep 'Quick Demo Smoke Test'
+
+[WebServer] 
+[WebServer] > audio-intel@0.1.0 dev
+[WebServer] > next dev
+[WebServer] 
+[WebServer]    [1m[38;2;173;127;168m▲ Next.js 15.3.0[39m[22m
+[WebServer]    - Local:        http://localhost:3000
+[WebServer]    - Network:      http://192.168.1.234:3000
+[WebServer]    - Environments: .env.local
+[WebServer] 
+[WebServer]  [32m[1m✓[22m[39m Starting...
+[WebServer]  [32m[1m✓[22m[39m Ready in 1722ms
+[WebServer]  [32m[1m✓[22m[39m Compiled /middleware in 315ms (193 modules)
+[WebServer]  [37m[1m○[22m[39m Compiling / ...
+[WebServer] <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (128kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+[WebServer] <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (118kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+[WebServer]  [32m[1m✓[22m[39m Compiled /brutalist-pdf-test in 5.7s (1113 modules)
+[WebServer]  [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+[WebServer]  GET / [32m200[39m in 6316ms
+[WebServer]  GET /_next/static/webpack/196b7995a937cab3.webpack.hot-update.json [33m404[39m in 2571ms
+[WebServer]  GET /brutalist-pdf-test [32m200[39m in 2383ms
+[WebServer]  GET /.well-known/appspecific/com.chrome.devtools.json [33m404[39m in 109ms
+[WebServer] 
+[WebServer] > pitch-generator@0.1.0 dev
+[WebServer] > next dev
+[WebServer] 
+[WebServer]  [32m[1m✓[22m[39m Compiled /api/usage in 471ms (658 modules)
+[WebServer]    [1m[38;2;173;127;168m▲ Next.js 15.3.0[39m[22m
+[WebServer]    - Local:        http://localhost:3001
+[WebServer]    - Network:      http://192.168.1.234:3001
+[WebServer]    - Environments: .env.local
+[WebServer] 
+[WebServer]  [32m[1m✓[22m[39m Starting...
+[WebServer]  [32m[1m✓[22m[39m Compiled in 410ms (471 modules)
+[WebServer]  GET /icon.png?6ae6df2434c63ed1 [32m200[39m in 1499ms
+[WebServer]  GET /api/usage [32m200[39m in 1292ms
+[WebServer]  GET /api/usage [32m200[39m in 110ms
+[WebServer]  [32m[1m✓[22m[39m Ready in 1677ms
+[WebServer]  [32m[1m✓[22m[39m Compiled /middleware in 213ms (193 modules)
+[WebServer]  [37m[1m○[22m[39m Compiling / ...
+[WebServer]  [37m[1m○[22m[39m Compiling /api/export/brutalist-pdf ...
+[WebServer]  [31m[1m⨯[22m[39m ./lib/pdf-render-server.ts
+[WebServer] Error:   [31mx[0m You're importing a component that imports react-dom/server. To fix it, render or return the content directly as a Server Component instead for perf and security.
+[WebServer]   [31m|[0m Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[WebServer]    ,-[[36;1;4m/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/lib/pdf-render-server.ts[0m:3:1]
+[WebServer]  [2m1[0m | import 'server-only';
+[WebServer]  [2m2[0m | 
+[WebServer]  [2m3[0m | import { renderToStaticMarkup } from 'react-dom/server';
+[WebServer]    : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[WebServer]  [2m4[0m | import React from 'react';
+[WebServer]  [2m5[0m | 
+[WebServer]  [2m6[0m | // Dynamically import the template component to avoid client bundling
+[WebServer]    `----
+[WebServer] 
+[WebServer] Import trace for requested module:
+[WebServer] ./lib/pdf-render-server.ts
+[WebServer] ./lib/generate-brutalist-pdf.ts
+[WebServer] ./app/api/export/brutalist-pdf/route.ts
+[WebServer]  [32m[1m✓[22m[39m Compiled / in 3.8s (1085 modules)
+[WebServer]  GET / [32m200[39m in 4406ms
+[WebServer]  [31m[1m⨯[22m[39m ./lib/pdf-render-server.ts
+[WebServer] Error:   [31mx[0m You're importing a component that imports react-dom/server. To fix it, render or return the content directly as a Server Component instead for perf and security.
+[WebServer]   [31m|[0m Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[WebServer]    ,-[[36;1;4m/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/lib/pdf-render-server.ts[0m:3:1]
+[WebServer]  [2m1[0m | import 'server-only';
+[WebServer]  [2m2[0m | 
+[WebServer]  [2m3[0m | import { renderToStaticMarkup } from 'react-dom/server';
+[WebServer]    : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[WebServer]  [2m4[0m | import React from 'react';
+[WebServer]  [2m5[0m | 
+[WebServer]  [2m6[0m | // Dynamically import the template component to avoid client bundling
+[WebServer]    `----
+[WebServer] 
+[WebServer] Import trace for requested module:
+[WebServer] ./lib/pdf-render-server.ts
+[WebServer] ./lib/generate-brutalist-pdf.ts
+[WebServer] ./app/api/export/brutalist-pdf/route.ts
+[WebServer] 
+[WebServer] > tracker@0.1.0 dev
+[WebServer] > next dev
+[WebServer] 
+[WebServer]  [31m[1m⨯[22m[39m ./lib/pdf-render-server.ts
+[WebServer] Error:   [31mx[0m You're importing a component that imports react-dom/server. To fix it, render or return the content directly as a Server Component instead for perf and security.
+[WebServer]   [31m|[0m Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[WebServer]    ,-[[36;1;4m/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/lib/pdf-render-server.ts[0m:3:1]
+[WebServer]  [2m1[0m | import 'server-only';
+[WebServer]  [2m2[0m | 
+[WebServer]  [2m3[0m | import { renderToStaticMarkup } from 'react-dom/server';
+[WebServer]    : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[WebServer]  [2m4[0m | import React from 'react';
+[WebServer]  [2m5[0m | 
+[WebServer]  [2m6[0m | // Dynamically import the template component to avoid client bundling
+[WebServer]    `----
+[WebServer] 
+[WebServer] Import trace for requested module:
+[WebServer] ./lib/pdf-render-server.ts
+[WebServer] ./lib/generate-brutalist-pdf.ts
+[WebServer] ./app/api/export/brutalist-pdf/route.ts
+[WebServer]  POST /api/export/brutalist-pdf [31m500[39m in 5384ms
+[WebServer]  GET /brutalist-pdf-test [31m500[39m in 1870ms
+[WebServer]  GET /brutalist-pdf-test [31m500[39m in 14ms
+[WebServer]  GET /brutalist-pdf-test [31m500[39m in 18ms
+[WebServer]  GET /.well-known/appspecific/com.chrome.devtools.json [31m500[39m in 7ms
+[WebServer]  [31m[1m⨯[22m[39m A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+[WebServer]  GET /favicon.ico [31m500[39m in 45ms
+[WebServer]    [1m[38;2;173;127;168m▲ Next.js 15.3.0[39m[22m
+[WebServer]    - Local:        http://localhost:3004
+[WebServer]    - Network:      http://192.168.1.234:3004
+[WebServer]    - Environments: .env.local
+[WebServer] 
+[WebServer]  [32m[1m✓[22m[39m Starting...
+[WebServer]  [32m[1m✓[22m[39m Ready in 1656ms
+[WebServer]  [32m[1m✓[22m[39m Compiled /middleware in 183ms (181 modules)
+[WebServer]  [37m[1m○[22m[39m Compiling / ...
+[WebServer]  [32m[1m✓[22m[39m Compiled / in 4s (1047 modules)
+[WebServer]  GET / [32m200[39m in 4483ms
+
+Running 1 test using 1 worker
+
+[WebServer]  [32m[1m✓[22m[39m Compiled in 767ms (449 modules)
+
+🚀 Quick smoke test of all three apps...
+
+1️⃣  Testing Audio Intel...
+[WebServer]  [31m[1m⨯[22m[39m ./lib/pdf-render-server.ts
+[WebServer] Error:   [31mx[0m You're importing a component that imports react-dom/server. To fix it, render or return the content directly as a Server Component instead for perf and security.
+[WebServer]   [31m|[0m Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[WebServer]    ,-[[36;1;4m/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/lib/pdf-render-server.ts[0m:3:1]
+[WebServer]  [2m1[0m | import 'server-only';
+[WebServer]  [2m2[0m | 
+[WebServer]  [2m3[0m | import { renderToStaticMarkup } from 'react-dom/server';
+[WebServer]    : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[WebServer]  [2m4[0m | import React from 'react';
+[WebServer]  [2m5[0m | 
+[WebServer]  [2m6[0m | // Dynamically import the template component to avoid client bundling
+[WebServer]    `----
+[WebServer] 
+[WebServer] Import trace for requested module:
+[WebServer] ./lib/pdf-render-server.ts
+[WebServer] ./app/api/export/brutalist-pdf/route.ts
+[WebServer]  GET /_next/static/webpack/196b7995a937cab3.webpack.hot-update.json [31m500[39m in 1429ms
+[WebServer]  GET /demo [31m500[39m in 1185ms
+[WebServer]  [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+[WebServer]  GET /brutalist-pdf-test [31m500[39m in 24ms
+[WebServer]  GET /.well-known/appspecific/com.chrome.devtools.json [31m500[39m in 34ms
+   ✅ Audio Intel loaded
+
+2️⃣  Testing Pitch Generator...
+[WebServer]  [31m[1m⨯[22m[39m ./lib/pdf-render-server.ts
+[WebServer] Error:   [31mx[0m You're importing a component that imports react-dom/server. To fix it, render or return the content directly as a Server Component instead for perf and security.
+[WebServer]   [31m|[0m Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[WebServer]    ,-[[36;1;4m/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/lib/pdf-render-server.ts[0m:3:1]
+[WebServer]  [2m1[0m | import 'server-only';
+[WebServer]  [2m2[0m | 
+[WebServer]  [2m3[0m | import { renderToStaticMarkup } from 'react-dom/server';
+[WebServer]    : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[WebServer]  [2m4[0m | import React from 'react';
+[WebServer]  [2m5[0m | 
+[WebServer]  [2m6[0m | // Dynamically import the template component to avoid client bundling
+[WebServer]    `----
+[WebServer] 
+[WebServer] Import trace for requested module:
+[WebServer] ./lib/pdf-render-server.ts
+[WebServer] ./app/api/export/brutalist-pdf/route.ts
+[WebServer]  [31m[1m⨯[22m[39m A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+[WebServer]  GET /favicon.ico [31m500[39m in 64ms
+[WebServer]  [37m[1m○[22m[39m Compiling /auth/signin ...
+[WebServer]  [31m[1m⨯[22m[39m ./lib/pdf-render-server.ts
+[WebServer] Error:   [31mx[0m You're importing a component that imports react-dom/server. To fix it, render or return the content directly as a Server Component instead for perf and security.
+[WebServer]   [31m|[0m Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[WebServer]    ,-[[36;1;4m/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/lib/pdf-render-server.ts[0m:3:1]
+[WebServer]  [2m1[0m | import 'server-only';
+[WebServer]  [2m2[0m | 
+[WebServer]  [2m3[0m | import { renderToStaticMarkup } from 'react-dom/server';
+[WebServer]    : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[WebServer]  [2m4[0m | import React from 'react';
+[WebServer]  [2m5[0m | 
+[WebServer]  [2m6[0m | // Dynamically import the template component to avoid client bundling
+[WebServer]    `----
+[WebServer] 
+[WebServer] Import trace for requested module:
+[WebServer] ./lib/pdf-render-server.ts
+[WebServer] ./app/api/export/brutalist-pdf/route.ts
+[WebServer]  [32m[1m✓[22m[39m Compiled /auth/signin in 3.2s (1093 modules)
+[WebServer]  [31m[1m⨯[22m[39m ./lib/pdf-render-server.ts
+[WebServer] Error:   [31mx[0m You're importing a component that imports react-dom/server. To fix it, render or return the content directly as a Server Component instead for perf and security.
+[WebServer]   [31m|[0m Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[WebServer]    ,-[[36;1;4m/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/lib/pdf-render-server.ts[0m:3:1]
+[WebServer]  [2m1[0m | import 'server-only';
+[WebServer]  [2m2[0m | 
+[WebServer]  [2m3[0m | import { renderToStaticMarkup } from 'react-dom/server';
+[WebServer]    : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[WebServer]  [2m4[0m | import React from 'react';
+[WebServer]  [2m5[0m | 
+[WebServer]  [2m6[0m | // Dynamically import the template component to avoid client bundling
+[WebServer]    `----
+[WebServer] 
+[WebServer] Import trace for requested module:
+[WebServer] ./lib/pdf-render-server.ts
+[WebServer] ./app/api/export/brutalist-pdf/route.ts
+[WebServer]  GET /_next/static/webpack/196b7995a937cab3.webpack.hot-update.json [31m500[39m in 1850ms
+[WebServer]  GET /_next/static/webpack/196b7995a937cab3.webpack.hot-update.json [31m500[39m in 1827ms
+[WebServer]  [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+[WebServer]  [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[WebServer]  GET /auth/signin?redirectedFrom=%2Fdemo [32m200[39m in 3598ms
+[WebServer]  [31m[1m⨯[22m[39m ./lib/pdf-render-server.ts
+[WebServer] Error:   [31mx[0m You're importing a component that imports react-dom/server. To fix it, render or return the content directly as a Server Component instead for perf and security.
+[WebServer]   [31m|[0m Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[WebServer]    ,-[[36;1;4m/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/lib/pdf-render-server.ts[0m:3:1]
+[WebServer]  [2m1[0m | import 'server-only';
+[WebServer]  [2m2[0m | 
+[WebServer]  [2m3[0m | import { renderToStaticMarkup } from 'react-dom/server';
+[WebServer]    : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[WebServer]  [2m4[0m | import React from 'react';
+[WebServer]  [2m5[0m | 
+[WebServer]  [2m6[0m | // Dynamically import the template component to avoid client bundling
+[WebServer]    `----
+[WebServer] 
+[WebServer] Import trace for requested module:
+[WebServer] ./lib/pdf-render-server.ts
+[WebServer] ./app/api/export/brutalist-pdf/route.ts
+[WebServer]  GET /brutalist-pdf-test [31m500[39m in 2860ms
+[WebServer]  GET /demo [31m500[39m in 3194ms
+[WebServer]  GET /.well-known/appspecific/com.chrome.devtools.json [31m500[39m in 21ms
+[WebServer]  [31m[1m⨯[22m[39m A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+[WebServer]  GET /favicon.ico [31m500[39m in 41ms
+  ✘  1 [demo-tests] › tests/demo-scenarios/liberty-workflow.spec.ts:170:7 › Quick Demo Smoke Test › all three apps load without crashing (10.5s)
+[WebServer]  [31m[1m⨯[22m[39m ./lib/pdf-render-server.ts
+[WebServer] Error: Failed to read source code from /Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/lib/pdf-render-server.ts
+[WebServer] 
+[WebServer] Caused by:
+[WebServer]     No such file or directory (os error 2)
+[WebServer] 
+[WebServer] Import trace for requested module:
+[WebServer] ./lib/pdf-render-server.ts
+[WebServer] ./app/api/export/brutalist-pdf/route.ts
+[WebServer]  [31m[1m⨯[22m[39m ./lib/pdf-render-server.ts
+[WebServer] Error: Failed to read source code from /Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/lib/pdf-render-server.ts
+[WebServer] 
+[WebServer] Caused by:
+[WebServer]     No such file or directory (os error 2)
+[WebServer] 
+[WebServer] Import trace for requested module:
+[WebServer] ./lib/pdf-render-server.ts
+[WebServer] ./app/api/export/brutalist-pdf/route.ts
+[WebServer]  GET /_next/static/webpack/196b7995a937cab3.webpack.hot-update.json [31m500[39m in 534ms
+[WebServer]  [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[WebServer]  GET /brutalist-pdf-test [31m500[39m in 16ms
+
+🚀 Quick smoke test of all three apps...
+
+1️⃣  Testing Audio Intel...
+[WebServer]  [31m[1m⨯[22m[39m ./lib/pdf-render.server.ts
+[WebServer] Error:   [31mx[0m You're importing a component that imports react-dom/server. To fix it, render or return the content directly as a Server Component instead for perf and security.
+[WebServer]   [31m|[0m Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[WebServer]    ,-[[36;1;4m/Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel/lib/pdf-render.server.ts[0m:3:1]
+[WebServer]  [2m1[0m | import 'server-only';
+[WebServer]  [2m2[0m | 
+[WebServer]  [2m3[0m | import { renderToStaticMarkup } from 'react-dom/server';
+[WebServer]    : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[WebServer]  [2m4[0m | import React from 'react';
+[WebServer]  [2m5[0m | 
+[WebServer]  [2m6[0m | // Dynamically import the template component to avoid client bundling
+[WebServer]    `----
+[WebServer] 
+[WebServer] Import trace for requested module:
+[WebServer] ./lib/pdf-render.server.ts
+[WebServer] ./app/api/export/brutalist-pdf/route.ts
+[WebServer]  GET /.well-known/appspecific/com.chrome.devtools.json [31m500[39m in 1336ms
+[WebServer]  GET /demo [31m500[39m in 1214ms
+[WebServer]  [31m[1m⨯[22m[39m A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+[WebServer]  GET /favicon.ico [31m500[39m in 16ms
+   ✅ Audio Intel loaded
+
+2️⃣  Testing Pitch Generator...
+[WebServer]  GET /auth/signin?redirectedFrom=%2Fdemo [32m200[39m in 124ms
+   ✅ Pitch Generator loaded
+
+3️⃣  Testing Campaign Tracker...
+[WebServer]  [37m[1m○[22m[39m Compiling /login ...
+[WebServer]  [32m[1m✓[22m[39m Compiled /login in 2s (1290 modules)
+[WebServer]  GET /login?redirectedFrom=%2Fdashboard [32m200[39m in 2728ms
+   ✅ Campaign Tracker loaded
+
+✅ All three apps ready for Liberty demo!
+
+  ✓  2 [demo-tests] › tests/demo-scenarios/liberty-workflow.spec.ts:170:7 › Quick Demo Smoke Test › all three apps load without crashing (retry #1) (6.7s)
+
+
+  1) [demo-tests] › tests/demo-scenarios/liberty-workflow.spec.ts:170:7 › Quick Demo Smoke Test › all three apps load without crashing 
+
+    Error: page.goto: net::ERR_ABORTED at http://localhost:3001/demo
+    Call log:
+    [2m  - navigating to "http://localhost:3001/demo", waiting until "load"[22m
+
+
+      182 |     // Pitch Generator
+      183 |     console.log('2️⃣  Testing Pitch Generator...');
+    > 184 |     await page.goto('http://localhost:3001/demo');
+          |                ^
+      185 |     await page.waitForLoadState('domcontentloaded');
+      186 |     body = await page.textContent('body');
+      187 |     expect(body).toBeTruthy();
+        at /Users/chrisschofield/workspace/active/total-audio-platform/tests/demo-scenarios/liberty-workflow.spec.ts:184:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/demo-scenarios-liberty-wor-42f0f--apps-load-without-crashing-demo-tests/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/demo-scenarios-liberty-wor-42f0f--apps-load-without-crashing-demo-tests/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/demo-scenarios-liberty-wor-42f0f--apps-load-without-crashing-demo-tests/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/demo-scenarios-liberty-wor-42f0f--apps-load-without-crashing-demo-tests/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 flaky
+    [demo-tests] › tests/demo-scenarios/liberty-workflow.spec.ts:170:7 › Quick Demo Smoke Test › all three apps load without crashing 
+
+To open last HTML report run:
+
+  pnpm exec playwright show-report
+

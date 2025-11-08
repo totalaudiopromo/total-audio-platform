@@ -46,20 +46,24 @@
 **Error Categories**:
 
 1. **Supabase Client Issues** (26 errors)
+
    - Missing `.from()` method on client (Promise not awaited)
    - Missing `.raw` property on client
    - Files affected: `lib/integrations/gmail-reply-tracker.ts`, `lib/integrations/google-sheets-sync.ts`
 
 2. **Missing UI Components** (2 errors)
+
    - Cannot find `@/components/ui/card`
    - Cannot find `@/components/ui/badge`
    - Files: `components/billing/BillingDashboard.tsx`, `components/billing/UpgradePrompt.tsx`
 
 3. **Date Handling Issues** (3 errors)
+
    - Undefined dates passed to `new Date()`
    - File: `components/analytics/EnhancedAnalytics.tsx`
 
 4. **Next.js 15 Async Params** (1 error)
+
    - Page params must be awaited in Next.js 15
    - File: `.next/types/app/campaigns/[id]/page.ts`
 
@@ -213,11 +217,13 @@ Audio Intel has comprehensive vercel.json with:
 ### Priority 1: BUILD BLOCKERS (Must fix to deploy)
 
 1. **Fix TypeScript errors** (38 errors)
+
    - Estimated time: 2-3 hours
    - Impact: CRITICAL - prevents deployment
    - Files: Supabase integrations, billing components, analytics
 
 2. **Fix missing dependencies**
+
    - Install `synckit` for linting
    - Create/install missing UI components (`card`, `badge`)
    - Estimated time: 30 minutes
@@ -232,6 +238,7 @@ Audio Intel has comprehensive vercel.json with:
 ### Priority 2: DEPLOYMENT OPTIMISATION
 
 4. **Improve vercel.json**
+
    - Add framework preset
    - Add build configuration
    - Document environment variables
@@ -246,6 +253,7 @@ Audio Intel has comprehensive vercel.json with:
 ### Priority 3: CODE QUALITY
 
 6. **Run full linting pass** (after fixing dependencies)
+
    - Fix any remaining lint errors
    - Ensure prettier formatting
    - Estimated time: 1 hour

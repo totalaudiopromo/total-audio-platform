@@ -7,23 +7,28 @@
 The radio promo agent currently uses a **tiered targeting system** based on:
 
 1. **Tier 1 Commercial** (Critical Priority)
+
    - BBC Radio 1, BBC Radio 2, Capital FM, Heart, Absolute Radio
    - National reach, 100% importance
    - Immediate notifications
 
 2. **Tier 2 Commercial** (High Priority)
+
    - Kiss FM, Magic, Classic FM, Smooth, LBC
    - National reach, 80% importance
 
 3. **Specialist Shows** (High Priority)
+
    - BBC 6 Music, BBC Radio 1Xtra, Kerrang! Radio
    - 90% importance, specialist audience
 
 4. **Regional Commercial** (Medium Priority)
+
    - Regional stations like Key 103, Radio City, Clyde 1
    - 60% importance, regional reach
 
 5. **Online Stations** (Medium Priority)
+
    - Amazing Radio, Boom Radio, Union JACK
    - 50% importance, online reach
 

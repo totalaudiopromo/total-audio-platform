@@ -53,11 +53,7 @@ const caseStudies = [
       },
       { label: 'Campaign Confidence', before: 'Low', after: 'High', improvement: 'Game changer' },
     ],
-    quote: {
-      text: 'I was spending entire weekends researching BBC Radio 1 contacts. Audio Intel gave me back my weekends and delivered better data than I could manually compile.',
-      author: 'Chris Schofield',
-      role: 'Radio Promoter / Producer (sadact)',
-    },
+    quote: null,
     contacts: [
       {
         name: 'Greg James',
@@ -69,15 +65,15 @@ const caseStudies = [
       {
         name: 'Danny Howard',
         platform: 'BBC Radio 1',
-        show: 'Dance',
-        timing: 'Friday 7-9pm',
+        show: 'Dance Anthems',
+        timing: 'Saturday 4-7pm',
         genre: 'House, Techno',
       },
       {
         name: 'Pete Tong',
         platform: 'BBC Radio 1',
-        show: 'Essential Selection',
-        timing: 'Friday 8-10pm',
+        show: 'Essential Mix',
+        timing: 'Friday 1-3am',
         genre: 'Dance, Electronic',
       },
     ],
@@ -134,11 +130,7 @@ const caseStudies = [
         improvement: 'Confidence boost',
       },
     ],
-    quote: {
-      text: 'Spotify editorial was a black box. Audio Intel gave me the intelligence to submit strategically, not desperately.',
-      author: 'Chris Schofield',
-      role: 'Electronic Music Promoter',
-    },
+    quote: null,
     contacts: [
       {
         name: 'Spotify Editorial',
@@ -215,11 +207,7 @@ const caseStudies = [
         improvement: 'Game changer',
       },
     ],
-    quote: {
-      text: 'We were spending a day per week just keeping our contact list current. Audio Intel turned that into a 20-minute weekly task.',
-      author: 'Dan McCarthy',
-      role: 'Founder, Liberty Music PR',
-    },
+    quote: null,
     contacts: [
       {
         name: 'BBC Radio 1',
@@ -404,14 +392,16 @@ export default function CaseStudiesPage() {
               </div>
 
               {/* Quote */}
-              <div className="glass-panel bg-gradient-to-br from-blue-100 to-blue-100 p-8 text-center">
-                <div className="text-6xl text-blue-600 mb-4">"</div>
-                <p className="text-xl font-bold text-gray-900 mb-6 max-w-3xl mx-auto leading-relaxed">
-                  {study.quote.text}
-                </p>
-                <div className="font-bold text-gray-900">{study.quote.author}</div>
-                <div className="text-sm text-gray-600">{study.quote.role}</div>
-              </div>
+              {study.quote && (
+                <div className="glass-panel bg-gradient-to-br from-blue-100 to-blue-100 p-8 text-center">
+                  <div className="text-6xl text-blue-600 mb-4">"</div>
+                  <p className="text-xl font-bold text-gray-900 mb-6 max-w-3xl mx-auto leading-relaxed">
+                    {study.quote.text}
+                  </p>
+                  <div className="font-bold text-gray-900">{study.quote.author}</div>
+                  <div className="text-sm text-gray-600">{study.quote.role}</div>
+                </div>
+              )}
             </div>
           ))}
         </div>

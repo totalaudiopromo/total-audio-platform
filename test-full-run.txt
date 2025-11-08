@@ -1,0 +1,636 @@
+
+> total-audio-platform@1.0.0 test /Users/chrisschofield/workspace/active/total-audio-platform
+> playwright test
+
+[WebServer] 
+[WebServer] > audio-intel@0.1.0 dev
+[WebServer] > next dev
+[WebServer] 
+[WebServer]    [1m[38;2;173;127;168m▲ Next.js 15.3.0[39m[22m
+[WebServer]    - Local:        http://localhost:3000
+[WebServer]    - Network:      http://192.168.1.234:3000
+[WebServer]    - Environments: .env.local
+[WebServer] 
+[WebServer]  [32m[1m✓[22m[39m Starting...
+[WebServer]  [32m[1m✓[22m[39m Ready in 2.6s
+[WebServer]  [32m[1m✓[22m[39m Compiled /middleware in 383ms (193 modules)
+[WebServer]  [37m[1m○[22m[39m Compiling / ...
+[WebServer]  [32m[1m✓[22m[39m Compiled / in 5.3s (1108 modules)
+[WebServer]  GET / [32m200[39m in 5788ms
+[WebServer]  [32m[1m✓[22m[39m Compiled in 774ms (478 modules)
+[WebServer] 
+[WebServer] > pitch-generator@0.1.0 dev
+[WebServer] > next dev
+[WebServer] 
+[WebServer]    [1m[38;2;173;127;168m▲ Next.js 15.3.0[39m[22m
+[WebServer]    - Local:        http://localhost:3001
+[WebServer]    - Network:      http://192.168.1.234:3001
+[WebServer]    - Environments: .env.local
+[WebServer] 
+[WebServer]  [32m[1m✓[22m[39m Starting...
+[WebServer]  [32m[1m✓[22m[39m Ready in 1999ms
+[WebServer]  [32m[1m✓[22m[39m Compiled /middleware in 262ms (193 modules)
+[WebServer]  [37m[1m○[22m[39m Compiling / ...
+[WebServer]  [32m[1m✓[22m[39m Compiled / in 2.9s (1085 modules)
+[WebServer]  GET / [32m200[39m in 3327ms
+[WebServer] 
+[WebServer] > tracker@0.1.0 dev
+[WebServer] > next dev
+[WebServer] 
+[WebServer]    [1m[38;2;173;127;168m▲ Next.js 15.3.0[39m[22m
+[WebServer]    - Local:        http://localhost:3004
+[WebServer]    - Network:      http://192.168.1.234:3004
+[WebServer]    - Environments: .env.local
+[WebServer] 
+[WebServer]  [32m[1m✓[22m[39m Starting...
+[WebServer]  [32m[1m✓[22m[39m Ready in 1638ms
+[WebServer]  [32m[1m✓[22m[39m Compiled /middleware in 182ms (181 modules)
+[WebServer]  [37m[1m○[22m[39m Compiling / ...
+[WebServer]  [32m[1m✓[22m[39m Compiled / in 2.4s (1029 modules)
+[WebServer]  GET / [32m200[39m in 2839ms
+
+Running 26 tests using 1 worker
+
+[WebServer]  [32m[1m✓[22m[39m Compiled in 570ms (449 modules)
+[WebServer]  [37m[1m○[22m[39m Compiling /demo ...
+[WebServer]  [32m[1m✓[22m[39m Compiled /demo in 1689ms (1581 modules)
+[WebServer]  GET /demo [32m200[39m in 2239ms
+✅ Demo page loaded successfully
+  ✓   1 [demo-tests] › tests/audio-intel/enrichment.spec.ts:22:7 › Audio Intel - Contact Enrichment › should load demo page successfully (3.7s)
+[WebServer]  [37m[1m○[22m[39m Compiling /api/analytics ...
+[WebServer]  [32m[1m✓[22m[39m Compiled /api/analytics in 619ms (1600 modules)
+[WebServer] Analytics API error: SyntaxError: Unexpected end of JSON input
+[WebServer]     at JSON.parse (<anonymous>)
+[WebServer]     at POST (app/api/analytics/route.ts:153:31)
+[WebServer] [0m [90m 151 |[39m [36mexport[39m [36masync[39m [36mfunction[39m [33mPOST[39m(request[33m:[39m [33mNextRequest[39m) {[0m
+[WebServer] [0m [90m 152 |[39m   [36mtry[39m {[0m
+[WebServer] [0m[31m[1m>[22m[39m[90m 153 |[39m     [36mconst[39m body [33m=[39m [36mawait[39m request[33m.[39mjson()[33m;[39m[0m
+[WebServer] [0m [90m     |[39m                               [31m[1m^[22m[39m[0m
+[WebServer] [0m [90m 154 |[39m     [36mconst[39m { event[33m,[39m category[33m,[39m action[33m,[39m label[33m,[39m value[33m,[39m custom_parameters[33m,[39m timestamp } [33m=[39m body[33m;[39m[0m
+[WebServer] [0m [90m 155 |[39m[0m
+[WebServer] [0m [90m 156 |[39m     [90m// Store the event[39m[0m
+[WebServer]  GET /demo [32m200[39m in 780ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:26:04.591Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 16ms
+✅ Clicked load demo button
+Found 0 contact elements
+⚠️  No contact elements found - check selector or page structure
+  ✓   2 [demo-tests] › tests/audio-intel/enrichment.spec.ts:35:7 › Audio Intel - Contact Enrichment › should enrich contacts with intelligence data (4.4s)
+[WebServer]  GET /demo [32m200[39m in 84ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:26:08.337Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 61ms
+✅ Contact intelligence includes 3 data types
+  ✓   3 [demo-tests] › tests/audio-intel/enrichment.spec.ts:88:7 › Audio Intel - Contact Enrichment › should display contact intelligence details (3.8s)
+[WebServer]  GET /demo [32m200[39m in 87ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:26:12.009Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 17ms
+✅ Enrichment completed with 0 failed requests
+  ✓   4 [demo-tests] › tests/audio-intel/enrichment.spec.ts:114:7 › Audio Intel - Contact Enrichment › should handle enrichment without errors (1.6s)
+[WebServer]  GET /demo [32m200[39m in 84ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:26:13.585Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 13ms
+✅ Demo page is ready for presentation
+  ✓   5 [demo-tests] › tests/audio-intel/enrichment.spec.ts:146:7 › Audio Intel - Demo Readiness › demo page loads without crashes (1.0s)
+[WebServer]  GET /demo [32m200[39m in 83ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:26:14.624Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 19ms
+[WebServer]  [32m[1m✓[22m[39m Compiled /api/export/brutalist-pdf in 479ms (1617 modules)
+[WebServer] [Brutalist PDF] Request received: {
+[WebServer]   contactsCount: [33m5[39m,
+[WebServer]   hasWhiteLabel: [33mtrue[39m,
+[WebServer]   filename: [32m'audio-intel-contacts-2025-11-08.pdf'[39m
+[WebServer] }
+[WebServer] [Brutalist PDF] Calculating metrics...
+[WebServer] [Brutalist PDF] Metrics calculated: {
+[WebServer]   total: [33m5[39m,
+[WebServer]   high: [33m4[39m,
+[WebServer]   medium: [33m1[39m,
+[WebServer]   low: [33m0[39m,
+[WebServer]   platforms: [
+[WebServer]     { name: [32m'bbc'[39m, count: [33m4[39m, percentage: [33m80[39m },
+[WebServer]     { name: [32m'spotify'[39m, count: [33m1[39m, percentage: [33m20[39m }
+[WebServer]   ]
+[WebServer] }
+[WebServer] [Brutalist PDF] Starting PDF generation...
+[WebServer] [PDF Generator] Starting PDF generation for [33m5[39m contacts
+[WebServer] [PDF Generator] Rendering React component to HTML...
+[WebServer] [PDF Generator] HTML rendered, length: [33m9506[39m
+[WebServer] [PDF Generator] Launching Playwright browser...
+[WebServer] [PDF Generator] Browser launched successfully
+[WebServer] [PDF Generator] Creating new page...
+[WebServer] [PDF Generator] Setting page content...
+[WebServer] [PDF Generator] Waiting for Tailwind to render...
+[WebServer] [PDF Generator] Generating PDF...
+[WebServer] [PDF Generator] PDF generated successfully, size: [33m381380[39m bytes
+[WebServer] [PDF Generator] Closing browser...
+[WebServer] [Brutalist PDF] PDF generated, size: [33m381380[39m bytes
+[WebServer]  POST /api/export/brutalist-pdf [32m200[39m in 2952ms
+Downloaded file: audio-intel-contacts-2025-11-08.pdf
+✅ PDF export successful (381380 bytes)
+  ✓   6 [demo-tests] › tests/audio-intel/export.spec.ts:26:7 › Audio Intel - Export Functions › should export contacts as PDF (6.7s)
+[WebServer]  GET /demo [32m200[39m in 258ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:26:21.568Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 16ms
+Downloaded file: audio-intel-contacts-2025-11-08.csv
+✅ CSV export successful (1799 bytes)
+CSV has 31 lines
+  ✓   7 [demo-tests] › tests/audio-intel/export.spec.ts:60:7 › Audio Intel - Export Functions › should export contacts as CSV (4.0s)
+[WebServer]  GET /demo [32m200[39m in 107ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:26:25.397Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 15ms
+  ✘   8 [demo-tests] › tests/audio-intel/export.spec.ts:100:7 › Audio Intel - Export Functions › should export contacts as Excel (19.7s)
+[WebServer]  GET /demo [32m200[39m in 145ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:26:46.764Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 44ms
+  ✘   9 [demo-tests] › tests/audio-intel/export.spec.ts:100:7 › Audio Intel - Export Functions › should export contacts as Excel (retry #1) (19.8s)
+[WebServer]  GET /demo [32m200[39m in 126ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:27:07.779Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 23ms
+✅ Found 5 export options
+  ✓  10 [demo-tests] › tests/audio-intel/export.spec.ts:136:7 › Audio Intel - Export Functions › export buttons are visible and functional (3.8s)
+
+🎯 Starting Liberty Music PR Demo Workflow...
+
+📊 STEP 1: Enrich 45 BBC Radio contacts in Audio Intel
+[WebServer]  GET /demo [32m200[39m in 95ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:27:11.421Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 15ms
+  → Loading demo contact data...
+  ✅ Enriched 0 contacts
+  ✘  11 [demo-tests] › tests/demo-scenarios/liberty-workflow.spec.ts:17:7 › Liberty Demo Workflow - Agency Use Case › complete agency workflow: enrich → pitch → track (4.1s)
+
+🎯 Starting Liberty Music PR Demo Workflow...
+
+📊 STEP 1: Enrich 45 BBC Radio contacts in Audio Intel
+[WebServer]  GET /demo [32m200[39m in 95ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:27:16.679Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 20ms
+  → Loading demo contact data...
+  ✅ Enriched 0 contacts
+  ✘  12 [demo-tests] › tests/demo-scenarios/liberty-workflow.spec.ts:17:7 › Liberty Demo Workflow - Agency Use Case › complete agency workflow: enrich → pitch → track (retry #1) (4.3s)
+
+📄 Testing export functionality for client reports...
+
+[WebServer]  GET /demo [32m200[39m in 211ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:27:23.340Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 22ms
+  → Testing PDF export for client reporting...
+[WebServer] [Brutalist PDF] Request received: {
+[WebServer]   contactsCount: [33m5[39m,
+[WebServer]   hasWhiteLabel: [33mtrue[39m,
+[WebServer]   filename: [32m'audio-intel-contacts-2025-11-08.pdf'[39m
+[WebServer] }
+[WebServer] [Brutalist PDF] Calculating metrics...
+[WebServer] [Brutalist PDF] Metrics calculated: {
+[WebServer]   total: [33m5[39m,
+[WebServer]   high: [33m4[39m,
+[WebServer]   medium: [33m1[39m,
+[WebServer]   low: [33m0[39m,
+[WebServer]   platforms: [
+[WebServer]     { name: [32m'bbc'[39m, count: [33m4[39m, percentage: [33m80[39m },
+[WebServer]     { name: [32m'spotify'[39m, count: [33m1[39m, percentage: [33m20[39m }
+[WebServer]   ]
+[WebServer] }
+[WebServer] [Brutalist PDF] Starting PDF generation...
+[WebServer] [PDF Generator] Starting PDF generation for [33m5[39m contacts
+[WebServer] [PDF Generator] Rendering React component to HTML...
+[WebServer] [PDF Generator] HTML rendered, length: [33m9506[39m
+[WebServer] [PDF Generator] Launching Playwright browser...
+[WebServer] [PDF Generator] Browser launched successfully
+[WebServer] [PDF Generator] Creating new page...
+[WebServer] [PDF Generator] Setting page content...
+[WebServer] [PDF Generator] Waiting for Tailwind to render...
+[WebServer] [PDF Generator] Generating PDF...
+[WebServer] [PDF Generator] PDF generated successfully, size: [33m380703[39m bytes
+[WebServer] [PDF Generator] Closing browser...
+[WebServer] [Brutalist PDF] PDF generated, size: [33m380703[39m bytes
+[WebServer]  POST /api/export/brutalist-pdf [32m200[39m in 1828ms
+  ✅ PDF export successful: audio-intel-contacts-2025-11-08.pdf
+  ✓  13 [demo-tests] › tests/demo-scenarios/liberty-workflow.spec.ts:129:7 › Liberty Demo Workflow - Agency Use Case › export enriched data for Liberty client reporting (6.0s)
+
+🚀 Quick smoke test of all three apps...
+
+1️⃣  Testing Audio Intel...
+[WebServer]  GET /demo [32m200[39m in 103ms
+[WebServer] Analytics Event: {
+[WebServer]   event: [32m'page_view'[39m,
+[WebServer]   category: [32m'engagement'[39m,
+[WebServer]   action: [32m'view'[39m,
+[WebServer]   label: [32m'demo'[39m,
+[WebServer]   value: [90mundefined[39m,
+[WebServer]   timestamp: [32m'2025-11-08T22:27:29.063Z'[39m,
+[WebServer]   custom_parameters: {
+[WebServer]     page_title: [32m'Audio Intel – 15 Hours to 15 Minutes | Contact Enrichment for Music Promotion'[39m,
+[WebServer]     page_url: [32m'http://localhost:3000/demo'[39m
+[WebServer]   }
+[WebServer] }
+[WebServer]  POST /api/analytics [32m200[39m in 24ms
+   ✅ Audio Intel loaded
+
+2️⃣  Testing Pitch Generator...
+[WebServer]  [37m[1m○[22m[39m Compiling /auth/signin ...
+[WebServer]  [32m[1m✓[22m[39m Compiled /auth/signin in 840ms (1070 modules)
+[WebServer]  GET /auth/signin?redirectedFrom=%2Fdemo [32m200[39m in 1235ms
+   ✅ Pitch Generator loaded
+
+3️⃣  Testing Campaign Tracker...
+[WebServer]  [37m[1m○[22m[39m Compiling /login ...
+[WebServer]  [32m[1m✓[22m[39m Compiled /login in 933ms (1275 modules)
+[WebServer]  GET /login?redirectedFrom=%2Fdashboard [32m200[39m in 1471ms
+   ✅ Campaign Tracker loaded
+
+✅ All three apps ready for Liberty demo!
+
+  ✓  14 [demo-tests] › tests/demo-scenarios/liberty-workflow.spec.ts:170:7 › Quick Demo Smoke Test › all three apps load without crashing (5.4s)
+[WebServer]  GET /auth/signin?redirectedFrom=%2Fdemo [32m200[39m in 88ms
+✅ Pitch Generator demo page loaded
+  ✓  15 [demo-tests] › tests/pitch-generator/generation.spec.ts:11:7 › Pitch Generator - Pitch Generation › should load pitch generation page (789ms)
+[WebServer]  GET /auth/signin?redirectedFrom=%2Fdemo [32m200[39m in 64ms
+✅ Clicked generate pitch button
+⚠️  Generated pitch element not found - check selectors
+  ✓  16 [demo-tests] › tests/pitch-generator/generation.spec.ts:24:7 › Pitch Generator - Pitch Generation › should generate a personalized pitch (3.9s)
+[WebServer]  GET /auth/signin?redirectedFrom=%2Fdemo [32m200[39m in 61ms
+⚠️  Copy button not found
+  ✓  17 [demo-tests] › tests/pitch-generator/generation.spec.ts:105:7 › Pitch Generator - Pitch Generation › should have copy to clipboard functionality (5.9s)
+[WebServer]  GET /auth/signin?redirectedFrom=%2Fdemo [32m200[39m in 92ms
+✅ Pitch generation completed with 0 total console messages
+  ✓  18 [demo-tests] › tests/pitch-generator/generation.spec.ts:140:7 › Pitch Generator - Pitch Generation › should handle pitch generation without crashing (10.9s)
+[WebServer]  GET /auth/signin?redirectedFrom=%2Fdemo [32m200[39m in 95ms
+✅ Pitch Generator demo ready for presentation
+  ✓  19 [demo-tests] › tests/pitch-generator/generation.spec.ts:172:7 › Pitch Generator - Demo Readiness › demo page loads without crashes (893ms)
+[WebServer]  GET /auth/signin?redirectedFrom=%2Fdemo [32m200[39m in 67ms
+✅ Pitch generation interface present
+  ✓  20 [demo-tests] › tests/pitch-generator/generation.spec.ts:184:7 › Pitch Generator - Demo Readiness › page contains pitch generation interface (940ms)
+[WebServer]  GET /login?redirectedFrom=%2Fdashboard [32m200[39m in 100ms
+✅ Campaign Tracker dashboard loaded
+  ✓  21 [demo-tests] › tests/tracker/dashboard.spec.ts:11:7 › Campaign Tracker - Dashboard › should load dashboard successfully (1.2s)
+[WebServer]  GET /login?redirectedFrom=%2Fdashboard [32m200[39m in 74ms
+Found 0 campaign elements
+✅ Campaign interface present (may be empty)
+  ✓  22 [demo-tests] › tests/tracker/dashboard.spec.ts:23:7 › Campaign Tracker - Dashboard › should display campaign overview (1.1s)
+[WebServer]  GET /login?redirectedFrom=%2Fdashboard [32m200[39m in 72ms
+  ✘  23 [demo-tests] › tests/tracker/dashboard.spec.ts:50:7 › Campaign Tracker - Dashboard › should display stats or metrics (1.2s)
+[WebServer]  GET /login?redirectedFrom=%2Fdashboard [32m200[39m in 78ms
+  ✘  24 [demo-tests] › tests/tracker/dashboard.spec.ts:50:7 › Campaign Tracker - Dashboard › should display stats or metrics (retry #1) (1.2s)
+[WebServer]  [32m[1m✓[22m[39m Compiled /demo in 316ms (1280 modules)
+[WebServer]  GET /demo [32m200[39m in 536ms
+⚠️  No dedicated demo page - using dashboard instead
+[WebServer]  GET /login?redirectedFrom=%2Fdashboard [32m200[39m in 238ms
+⚠️  No demo button found - may have pre-loaded data
+  ✓  25 [demo-tests] › tests/tracker/dashboard.spec.ts:70:7 › Campaign Tracker - Dashboard › should have demo data or demo loading option (2.1s)
+[WebServer]  GET /login?redirectedFrom=%2Fdashboard [32m200[39m in 66ms
+⚠️  No campaign links found to test navigation
+  ✓  26 [demo-tests] › tests/tracker/dashboard.spec.ts:97:7 › Campaign Tracker - Dashboard › should navigate to campaign detail (1.1s)
+[WebServer]  GET /login?redirectedFrom=%2Fcampaigns [32m200[39m in 72ms
+⚠️  /campaigns route not found - using dashboard instead
+  -  27 [demo-tests] › tests/tracker/dashboard.spec.ts:130:7 › Campaign Tracker - Campaign Detail › should load campaigns page
+[WebServer]  GET /login?redirectedFrom=%2Fdashboard [32m200[39m in 60ms
+✅ Campaign Tracker ready for demo
+  ✓  28 [demo-tests] › tests/tracker/dashboard.spec.ts:153:7 › Campaign Tracker - Demo Readiness › dashboard loads without crashes (866ms)
+[WebServer]  GET /login?redirectedFrom=%2Fdashboard [32m200[39m in 61ms
+✅ Campaign tracking interface present
+  ✓  29 [demo-tests] › tests/tracker/dashboard.spec.ts:179:7 › Campaign Tracker - Demo Readiness › has campaign tracking interface (902ms)
+
+
+  1) [demo-tests] › tests/audio-intel/export.spec.ts:100:7 › Audio Intel - Export Functions › should export contacts as Excel 
+
+    TimeoutError: page.waitForEvent: Timeout 15000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+      113 |
+      114 |     // Listen for download
+    > 115 |     const downloadPromise = page.waitForEvent('download', { timeout: 15000 });
+          |                                  ^
+      116 |
+      117 |     await excelButton.click();
+      118 |
+        at /Users/chrisschofield/workspace/active/total-audio-platform/tests/audio-intel/export.spec.ts:115:34
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audio-intel-export-Audio-I-55e80-ld-export-contacts-as-Excel-demo-tests/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/audio-intel-export-Audio-I-55e80-ld-export-contacts-as-Excel-demo-tests/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audio-intel-export-Audio-I-55e80-ld-export-contacts-as-Excel-demo-tests/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audio-intel-export-Audio-I-55e80-ld-export-contacts-as-Excel-demo-tests/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/audio-intel-export-Audio-I-55e80-ld-export-contacts-as-Excel-demo-tests/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForEvent: Timeout 15000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+      113 |
+      114 |     // Listen for download
+    > 115 |     const downloadPromise = page.waitForEvent('download', { timeout: 15000 });
+          |                                  ^
+      116 |
+      117 |     await excelButton.click();
+      118 |
+        at /Users/chrisschofield/workspace/active/total-audio-platform/tests/audio-intel/export.spec.ts:115:34
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audio-intel-export-Audio-I-55e80-ld-export-contacts-as-Excel-demo-tests-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/audio-intel-export-Audio-I-55e80-ld-export-contacts-as-Excel-demo-tests-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audio-intel-export-Audio-I-55e80-ld-export-contacts-as-Excel-demo-tests-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audio-intel-export-Audio-I-55e80-ld-export-contacts-as-Excel-demo-tests-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/audio-intel-export-Audio-I-55e80-ld-export-contacts-as-Excel-demo-tests-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [demo-tests] › tests/demo-scenarios/liberty-workflow.spec.ts:17:7 › Liberty Demo Workflow - Agency Use Case › complete agency workflow: enrich → pitch → track 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      46 |
+      47 |     console.log(`  ✅ Enriched ${enrichedCount} contacts`);
+    > 48 |     expect(enrichedCount).toBeGreaterThan(0);
+         |                           ^
+      49 |
+      50 |     // ===== STEP 2: PITCH GENERATOR - CREATE PERSONALIZED PITCHES =====
+      51 |     console.log('\n✍️  STEP 2: Generate personalized pitches for key contacts');
+        at /Users/chrisschofield/workspace/active/total-audio-platform/tests/demo-scenarios/liberty-workflow.spec.ts:48:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/demo-scenarios-liberty-wor-7c77e-flow-enrich-→-pitch-→-track-demo-tests/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/demo-scenarios-liberty-wor-7c77e-flow-enrich-→-pitch-→-track-demo-tests/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/demo-scenarios-liberty-wor-7c77e-flow-enrich-→-pitch-→-track-demo-tests/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/demo-scenarios-liberty-wor-7c77e-flow-enrich-→-pitch-→-track-demo-tests/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/demo-scenarios-liberty-wor-7c77e-flow-enrich-→-pitch-→-track-demo-tests/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      46 |
+      47 |     console.log(`  ✅ Enriched ${enrichedCount} contacts`);
+    > 48 |     expect(enrichedCount).toBeGreaterThan(0);
+         |                           ^
+      49 |
+      50 |     // ===== STEP 2: PITCH GENERATOR - CREATE PERSONALIZED PITCHES =====
+      51 |     console.log('\n✍️  STEP 2: Generate personalized pitches for key contacts');
+        at /Users/chrisschofield/workspace/active/total-audio-platform/tests/demo-scenarios/liberty-workflow.spec.ts:48:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/demo-scenarios-liberty-wor-7c77e-flow-enrich-→-pitch-→-track-demo-tests-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/demo-scenarios-liberty-wor-7c77e-flow-enrich-→-pitch-→-track-demo-tests-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/demo-scenarios-liberty-wor-7c77e-flow-enrich-→-pitch-→-track-demo-tests-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/demo-scenarios-liberty-wor-7c77e-flow-enrich-→-pitch-→-track-demo-tests-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/demo-scenarios-liberty-wor-7c77e-flow-enrich-→-pitch-→-track-demo-tests-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [demo-tests] › tests/tracker/dashboard.spec.ts:50:7 › Campaign Tracker - Dashboard › should display stats or metrics 
+
+    Error: locator.count: Unexpected token "=" while parsing css selector "[data-testid*="stat"], .stat-card, .metric, text=/total/i, text=/active/i, text=/pending/i, text=/completed/i". Did you mean to CSS.escape it?
+
+      58 |     );
+      59 |
+    > 60 |     const count = await statsElements.count();
+         |                                       ^
+      61 |     console.log(`Found ${count} stat elements`);
+      62 |
+      63 |     if (count > 0) {
+        at /Users/chrisschofield/workspace/active/total-audio-platform/tests/tracker/dashboard.spec.ts:60:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/tracker-dashboard-Campaign-9f85c-ld-display-stats-or-metrics-demo-tests/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/tracker-dashboard-Campaign-9f85c-ld-display-stats-or-metrics-demo-tests/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/tracker-dashboard-Campaign-9f85c-ld-display-stats-or-metrics-demo-tests/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/tracker-dashboard-Campaign-9f85c-ld-display-stats-or-metrics-demo-tests/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/tracker-dashboard-Campaign-9f85c-ld-display-stats-or-metrics-demo-tests/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: locator.count: Unexpected token "=" while parsing css selector "[data-testid*="stat"], .stat-card, .metric, text=/total/i, text=/active/i, text=/pending/i, text=/completed/i". Did you mean to CSS.escape it?
+
+      58 |     );
+      59 |
+    > 60 |     const count = await statsElements.count();
+         |                                       ^
+      61 |     console.log(`Found ${count} stat elements`);
+      62 |
+      63 |     if (count > 0) {
+        at /Users/chrisschofield/workspace/active/total-audio-platform/tests/tracker/dashboard.spec.ts:60:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/tracker-dashboard-Campaign-9f85c-ld-display-stats-or-metrics-demo-tests-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/tracker-dashboard-Campaign-9f85c-ld-display-stats-or-metrics-demo-tests-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/tracker-dashboard-Campaign-9f85c-ld-display-stats-or-metrics-demo-tests-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/tracker-dashboard-Campaign-9f85c-ld-display-stats-or-metrics-demo-tests-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/tracker-dashboard-Campaign-9f85c-ld-display-stats-or-metrics-demo-tests-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [demo-tests] › tests/audio-intel/export.spec.ts:100:7 › Audio Intel - Export Functions › should export contacts as Excel 
+    [demo-tests] › tests/demo-scenarios/liberty-workflow.spec.ts:17:7 › Liberty Demo Workflow - Agency Use Case › complete agency workflow: enrich → pitch → track 
+    [demo-tests] › tests/tracker/dashboard.spec.ts:50:7 › Campaign Tracker - Dashboard › should display stats or metrics 
+  1 skipped
+  22 passed (2.6m)
+
+To open last HTML report run:
+
+  pnpm exec playwright show-report
+
+ ELIFECYCLE  Test failed. See above for more details.

@@ -298,6 +298,7 @@ test.describe('Chat Widget Mobile Experience', () => {
 ### Current Test Files
 
 1. **`mobile-user-journey.test.js`**
+
    - ✅ Tests touch target sizes (includes chat widget button)
    - ✅ Tests gesture conflicts
    - ✅ Validates scroll behavior
@@ -358,15 +359,18 @@ npm run test:mobile:headed
 ## Recommendations for Chris
 
 1. **Current Tests Are Sufficient for Basic Validation**
+
    - Existing tests validate touch targets, scroll behavior, and z-index
    - Chat widget button is included in general button accessibility tests
 
 2. **Consider Adding Dedicated Chat Widget Tests**
+
    - If chat widget is a critical revenue path feature
    - If you're seeing specific chat widget mobile issues
    - Use the test template provided above
 
 3. **Monitor Chat Widget Behavior**
+
    - Watch for user reports of chat issues on mobile
    - Check analytics for chat widget engagement on mobile vs desktop
    - Add specific tests based on actual user pain points

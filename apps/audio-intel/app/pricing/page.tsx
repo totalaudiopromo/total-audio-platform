@@ -167,7 +167,9 @@ function PricingContent() {
                 </div>
                 <div>
                   <span className="font-black text-lg block">All AI research features</span>
-                  <span className="text-sm text-gray-600">We're not holding anything back</span>
+                  <span className="text-sm text-gray-600">
+                    Full access to all research capabilities
+                  </span>
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -177,7 +179,7 @@ function PricingContent() {
                 <div>
                   <span className="font-black text-lg block">Email validation included</span>
                   <span className="text-sm text-gray-600">
-                    Stops you looking daft with bounced emails
+                    Prevents bounced emails and ensures deliverability
                   </span>
                 </div>
               </li>
@@ -187,7 +189,9 @@ function PricingContent() {
                 </div>
                 <div>
                   <span className="font-black text-lg block">Results in 2-3 minutes</span>
-                  <span className="text-sm text-gray-600">Time for a brew whilst it works</span>
+                  <span className="text-sm text-gray-600">
+                    Fast processing for immediate results
+                  </span>
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -197,7 +201,7 @@ function PricingContent() {
                 <div>
                   <span className="font-black text-lg block">Audio chatbot support</span>
                   <span className="text-sm text-gray-600">
-                    Our mascot knows the product inside out
+                    Comprehensive product knowledge and support
                   </span>
                 </div>
               </li>
@@ -208,15 +212,15 @@ function PricingContent() {
                 <div>
                   <span className="font-black text-lg block">Help us get it right</span>
                   <span className="text-sm text-gray-600">
-                    Your feedback shapes the final product
+                    Your feedback directly influences product development
                   </span>
                 </div>
               </li>
             </ul>
 
             <div className="bg-green-100 p-4 rounded-lg mb-6 border-2 border-green-200">
-              <p className="text-sm font-bold text-green-800 text-center italic">
-                "Proper beta access - test everything whilst we polish the rough edges"
+              <p className="text-sm font-bold text-green-800 text-center">
+                Full beta access with all features available during development
               </p>
             </div>
 
@@ -254,7 +258,7 @@ function PricingContent() {
                 </div>
                 <div>
                   <span className="font-black text-lg block">200 contact enrichments</span>
-                  <span className="text-sm text-gray-600">Scale up without the stress</span>
+                  <span className="text-gray-600">Scale your campaigns efficiently</span>
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -285,7 +289,9 @@ function PricingContent() {
                 </div>
                 <div>
                   <span className="font-black text-lg block">Better analytics</span>
-                  <span className="text-sm text-gray-600">See which campaigns actually work</span>
+                  <span className="text-sm text-gray-600">
+                    Track campaign performance and results
+                  </span>
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -295,7 +301,7 @@ function PricingContent() {
                 <div>
                   <span className="font-black text-lg block">Batch uploads</span>
                   <span className="text-sm text-gray-600">
-                    Chuck multiple files at it simultaneously
+                    Process multiple files simultaneously
                   </span>
                 </div>
               </li>
@@ -306,7 +312,7 @@ function PricingContent() {
                 <div>
                   <span className="font-black text-lg block">Priority Audio chat</span>
                   <span className="text-sm text-gray-600">
-                    Faster responses for urgent questions
+                    Priority support for time-sensitive inquiries
                   </span>
                 </div>
               </li>
@@ -317,8 +323,8 @@ function PricingContent() {
                 <strong>Perfect for:</strong> Independent artists and small labels who need results
                 yesterday
               </p>
-              <p className="text-xs text-blue-700 text-center mt-2 italic">
-                "Stop waiting around when you could be pitching"
+              <p className="text-xs text-blue-700 text-center mt-2">
+                Accelerate your campaign workflow with priority processing
               </p>
             </div>
 
@@ -366,7 +372,7 @@ function PricingContent() {
                 <div>
                   <span className="font-black text-lg block">Instant processing</span>
                   <span className="text-sm text-gray-600">
-                    No waiting around for urgent campaigns
+                    Immediate processing for time-sensitive campaigns
                   </span>
                 </div>
               </li>
@@ -377,7 +383,7 @@ function PricingContent() {
                 <div>
                   <span className="font-black text-lg block">Your branding on everything</span>
                   <span className="text-sm text-gray-600">
-                    Clients think you're the intelligence source
+                    White-label branding for professional presentation
                   </span>
                 </div>
               </li>
@@ -388,7 +394,7 @@ function PricingContent() {
                 <div>
                   <span className="font-black text-lg block">Client-ready reports</span>
                   <span className="text-sm text-gray-600">
-                    They'll actually want to keep these PDFs
+                    Professional reports ready for client presentation
                   </span>
                 </div>
               </li>
@@ -407,9 +413,7 @@ function PricingContent() {
                 </div>
                 <div>
                   <span className="font-black text-lg block">Priority Audio support</span>
-                  <span className="text-sm text-gray-600">
-                    Fastest responses when you need answers quickly
-                  </span>
+                  <span className="text-sm text-gray-600">Expedited support response times</span>
                 </div>
               </li>
             </ul>
@@ -418,9 +422,8 @@ function PricingContent() {
               <p className="text-sm font-bold text-gray-800 text-center">
                 <strong>Perfect for:</strong> PR agencies and labels juggling multiple artists
               </p>
-              <p className="text-xs text-gray-700 text-center mt-2 italic">
-                "Clients pay you premium rates for 'insider knowledge' - we won't tell them it's
-                just better tools"
+              <p className="text-xs text-gray-700 text-center mt-2">
+                White-label intelligence that enhances your professional reputation
               </p>
             </div>
 
@@ -464,8 +467,8 @@ function PricingContent() {
                 Honest Beta Service
               </h3>
               <p className="text-lg font-bold text-gray-700 text-center">
-                We're in beta, so if something breaks, we'll fix it fast. No corporate runaround -
-                just honest service from people who use this tool daily.
+                Beta service with rapid response times. We prioritise fixes and improvements based
+                on real-world usage.
               </p>
             </div>
           </div>
@@ -559,7 +562,7 @@ function PricingContent() {
               Frequently Asked Questions
             </h2>
             <p className="text-lg font-bold text-gray-700 max-w-3xl mx-auto">
-              Straight answers in plain English. No corporate waffle.
+              Clear answers to common questions about Audio Intel.
             </p>
           </div>
 
@@ -599,7 +602,7 @@ function PricingContent() {
               <h3 className="text-2xl font-black text-gray-900 mb-3">Who is Audio Intel for?</h3>
               <p className="text-lg font-bold text-gray-700">
                 Independent artists, small PR agencies, and labels who need reliable music industry
-                contact intelligence without the £500+/mo enterprise nonsense.
+                contact intelligence at accessible pricing.
               </p>
             </div>
           </div>
@@ -612,15 +615,6 @@ function PricingContent() {
 export default function PricingPage() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      {/* Metadata for Pricing page */}
-      <head>
-        <title>Pricing | Audio Intel – Contact Enrichment for Music Promotion</title>
-        <meta
-          name="description"
-          content="Simple pricing in £GBP for independent artists, PR agencies, and labels. Free beta, Professional £19.99/mo, Agency £39.99/mo."
-        />
-        <meta property="og:url" content="https://intel.totalaudiopromo.com/pricing" />
-      </head>
       {/* JSON-LD: SoftwareApplication/Product for Audio Intel */}
       <script
         type="application/ld+json"

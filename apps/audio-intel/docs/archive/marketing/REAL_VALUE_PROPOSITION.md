@@ -19,6 +19,7 @@
 ### User Journey (TRUTHFUL)
 
 1. **User finds basic contact emails** via:
+
    - Google searches (e.g., "BBC Radio 1 contact email")
    - Station websites (general info@ emails)
    - LinkedIn searches for presenters
@@ -26,11 +27,13 @@
    - Old spreadsheets from previous campaigns
 
 2. **User uploads CSV** containing:
+
    - Contact names
    - **Email addresses (REQUIRED)**
    - Optional: station/platform names, genres, notes
 
 3. **Audio Intel enriches** by researching:
+
    - Current presenter assignments (people change shows frequently)
    - Verified submission routes (email vs. web form vs. BBC Introducing Uploader)
    - Submission requirements (clean versions, link format, timing)

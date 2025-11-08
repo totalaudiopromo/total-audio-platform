@@ -211,28 +211,34 @@ await incrementUsageCounter({
 **Report Sections**:
 
 1. **Revenue Metrics**
+
    - MRR, ARR, active subscriptions
    - New revenue vs total revenue
    - Progress to £500/month goal
 
 2. **User Growth**
+
    - Total, new, active users
    - Activation rate calculation
 
 3. **Engagement Metrics**
+
    - DAU, WAU, MAU
    - Stickiness ratio analysis
 
 4. **Product Metrics**
+
    - Enrichment volume and success rate
    - Export activity
    - Average contacts per enrichment
 
 5. **Conversion Funnel**
+
    - Three-stage funnel tracking
    - Conversion rate optimization insights
 
 6. **Key Insights** (Auto-generated)
+
    - Revenue growth trends
    - User acquisition velocity
    - Retention quality
@@ -513,11 +519,13 @@ PHASE_7_COMPLETE.md                    # ✅ This completion report
 ### Technical (Phase 7 Deployment)
 
 1. **Deploy Phase 7 to Production**
+
    - Apply database migrations
    - Deploy webhook handler
    - Configure Stripe production webhook
 
 2. **Run Backfill Script**
+
    - Backfill last 90 days of Stripe data
    - Verify data integrity
 
@@ -528,14 +536,17 @@ PHASE_7_COMPLETE.md                    # ✅ This completion report
 ### Business (Revenue Focus)
 
 1. **Radio Promoter Outreach** (85% conversion segment)
+
    - Track demo calls with new metrics
    - Monitor signup → enrichment conversion
 
 2. **Demo Call Optimization**
+
    - Track enrichment success rates live
    - Use admin dashboard during demos
 
 3. **Newsletter Growth** ("The Unsigned Advantage")
+
    - Track subscriber acquisition
    - Monitor engagement metrics
 

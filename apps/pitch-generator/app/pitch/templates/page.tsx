@@ -50,7 +50,7 @@ export default function TemplatesPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber-dark" />
       </div>
     );
   }
@@ -82,10 +82,10 @@ export default function TemplatesPage() {
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setSelectedGenre('all')}
-              className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
+              className={`rounded-xl border-4 border-black px-4 py-2 text-sm font-bold transition shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
                 selectedGenre === 'all'
-                  ? 'bg-brand-amber text-white'
-                  : 'bg-gray-100 text-gray-900/70 hover:bg-gray-200'
+                  ? 'bg-brand-amber text-black'
+                  : 'bg-white text-gray-900 hover:bg-gray-50'
               }`}
             >
               All Genres
@@ -94,10 +94,10 @@ export default function TemplatesPage() {
               <button
                 key={genre}
                 onClick={() => setSelectedGenre(genre)}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
+                className={`rounded-xl border-4 border-black px-4 py-2 text-sm font-bold transition shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
                   selectedGenre === genre
-                    ? 'bg-brand-amber text-white'
-                    : 'bg-gray-100 text-gray-900/70 hover:bg-gray-200'
+                    ? 'bg-brand-amber text-black'
+                    : 'bg-white text-gray-900 hover:bg-gray-50'
                 }`}
               >
                 {genre.charAt(0).toUpperCase() + genre.slice(1)}
@@ -108,7 +108,7 @@ export default function TemplatesPage() {
 
         {/* Templates Grid */}
         {filteredTemplates.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-8 py-12 text-center">
+          <div className="rounded-2xl border-4 border-black bg-white px-8 py-12 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <Music className="mx-auto h-12 w-12 text-gray-900/30" />
             <h3 className="mt-4 text-lg font-semibold text-gray-900/70">No templates found</h3>
             <p className="mt-2 text-sm text-gray-900/50">Try selecting a different genre</p>
@@ -118,17 +118,17 @@ export default function TemplatesPage() {
             {filteredTemplates.map(template => (
               <div
                 key={template.id}
-                className="rounded-2xl border border-gray-200 bg-gray-50 p-6 transition hover:border-brand-amber/50"
+                className="rounded-2xl border-4 border-black bg-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
                       <h3 className="text-xl font-semibold">{template.name}</h3>
-                      <span className="rounded-full bg-brand-amber/20 px-3 py-1 text-xs font-medium text-brand-amber">
+                      <span className="rounded-full border-2 border-black bg-brand-amber/20 px-3 py-1 text-xs font-bold text-brand-amber-dark shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                         {template.genre}
                       </span>
                       {template.is_system && (
-                        <span className="rounded-full bg-success/20 px-3 py-1 text-xs font-medium text-success">
+                        <span className="rounded-full border-2 border-black bg-green-100 px-3 py-1 text-xs font-bold text-green-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                           System
                         </span>
                       )}
@@ -138,7 +138,7 @@ export default function TemplatesPage() {
                     {/* Stats */}
                     <div className="mt-4 flex items-center gap-6">
                       <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-brand-amber" />
+                        <Star className="h-4 w-4 text-brand-amber-dark" />
                         <span className="text-sm font-medium">
                           {(template.success_rate || 0).toFixed(0)}% success rate
                         </span>
@@ -153,7 +153,7 @@ export default function TemplatesPage() {
 
                     {/* Template Preview */}
                     <details className="mt-4">
-                      <summary className="cursor-pointer text-sm font-medium text-brand-amber hover:underline">
+                      <summary className="cursor-pointer text-sm font-medium text-brand-amber-dark hover:text-brand-amber-dark/80 hover:underline">
                         View Template Structure
                       </summary>
                       <div className="mt-3 space-y-4 rounded-xl bg-white/50 p-4">

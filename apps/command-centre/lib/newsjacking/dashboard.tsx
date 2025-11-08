@@ -152,8 +152,8 @@ export function NewsjackingDashboard() {
             item.unsignedAngle.urgency === 'immediate'
               ? 'immediate'
               : item.unsignedAngle.urgency === 'high'
-                ? 'same_day'
-                : ('this_week' as 'immediate' | 'same_day' | 'this_week'),
+              ? 'same_day'
+              : ('this_week' as 'immediate' | 'same_day' | 'this_week'),
           feedback: undefined,
         }));
         setPendingContent(parsedContent);

@@ -65,19 +65,16 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
       totalBudget > 0 ? ((totalValue - totalBudget) / totalBudget) * 100 : 0;
 
     // Platform breakdown
-    const platformStats = campaigns.reduce(
-      (acc, campaign) => {
-        const platform = campaign.platform || 'Unknown';
-        if (!acc[platform]) {
-          acc[platform] = { count: 0, budget: 0, reach: 0 };
-        }
-        acc[platform].count++;
-        acc[platform].budget += campaign.budget || 0;
-        acc[platform].reach += campaign.actual_reach || 0;
-        return acc;
-      },
-      {} as Record<string, { count: number; budget: number; reach: number }>
-    );
+    const platformStats = campaigns.reduce((acc, campaign) => {
+      const platform = campaign.platform || 'Unknown';
+      if (!acc[platform]) {
+        acc[platform] = { count: 0, budget: 0, reach: 0 };
+      }
+      acc[platform].count++;
+      acc[platform].budget += campaign.budget || 0;
+      acc[platform].reach += campaign.actual_reach || 0;
+      return acc;
+    }, {} as Record<string, { count: number; budget: number; reach: number }>);
 
     // Trend data (last 90 days)
     const trendData = campaigns

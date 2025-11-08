@@ -161,11 +161,13 @@ These are **nice-to-haves** but not blocking:
 ### High Impact (If You Have Time)
 
 1. **Add BlogStructuredData to each blog post** (1 hour)
+
    - Import component in each blog page
    - Pass metadata from `blogStructuredData.ts`
    - Impact: 10-15% CTR boost in search
 
 2. **Create Terms of Service page** (1 hour)
+
    - Similar to Privacy/Cookie pages
    - Legal protection for business
 
@@ -176,6 +178,7 @@ These are **nice-to-haves** but not blocking:
 ### Medium Impact
 
 4. **Fix ESLint image warnings** (1 hour)
+
    - Convert `<img>` tags to Next.js `<Image>`
    - Better performance, automatic optimization
 
@@ -186,6 +189,7 @@ These are **nice-to-haves** but not blocking:
 ### Low Priority
 
 6. **Implement lazy loading** (2 hours)
+
    - Lazy load heavy components
    - 30% faster initial page load
 

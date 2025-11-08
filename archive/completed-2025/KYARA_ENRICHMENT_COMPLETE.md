@@ -132,30 +132,37 @@ To complete the enrichment, add these fields to your Airtable "Contacts" table:
 ### New Fields to Create:
 
 1. **AI Enrichment Confidence**
+
    - Type: Single Select
    - Options: LOW (red), MEDIUM (yellow), HIGH (green)
 
 2. **AI Enrichment Notes**
+
    - Type: Long Text
    - Purpose: AI-generated intelligence about the contact
 
 3. **AI Contact Quality**
+
    - Type: Single Line Text
    - Purpose: Overall assessment of contact usefulness
 
 4. **AI Best For**
+
    - Type: Single Line Text
    - Purpose: What type of artists/music this contact suits
 
 5. **AI Pitch Strategy**
+
    - Type: Long Text
    - Purpose: Recommended approach for pitching this contact
 
 6. **Enrichment Status**
+
    - Type: Single Select
    - Options: Not Enriched (gray), Enriched (green), Failed (red)
 
 7. **Last Enriched**
+
    - Type: Date
    - Purpose: Track when enrichment was performed
 
@@ -170,10 +177,12 @@ To complete the enrichment, add these fields to your Airtable "Contacts" table:
 ### Priority 1 (Do First):
 
 1. **Remove Invalid Contacts**:
+
    - `nimoysucks@gmail.com` - unprofessional
    - `jkhjksdhfmnm@gmail.com` - appears invalid
 
 2. **Verify Unsubscribed Contacts**:
+
    - Check why these contacts unsubscribed
    - Determine if re-engagement is appropriate
    - Document unsubscribe reasons
@@ -186,11 +195,13 @@ To complete the enrichment, add these fields to your Airtable "Contacts" table:
 ### Priority 2 (Do Next):
 
 4. **Add Contact Names**:
+
    - Research presenters/music directors
    - Populate First Name and Last Name fields
    - Add job titles/roles
 
 5. **Verify Email Addresses**:
+
    - Test deliverability of suspicious addresses
    - Update any bounced emails
    - Remove invalid addresses

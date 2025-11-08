@@ -49,6 +49,7 @@ GitHub Actions CI/CD
 ```
 
 **Problems:**
+
 - Deployment failures blocked entire pipeline
 - Complex artifact management
 - 13-14 minute build times
@@ -72,6 +73,7 @@ GitHub Actions CI/CD          Vercel Git Integration
 ```
 
 **Benefits:**
+
 - 100% CI success rate (only validation)
 - Faster deployments (Vercel optimised)
 - Clear separation of concerns
@@ -82,6 +84,7 @@ GitHub Actions CI/CD          Vercel Git Integration
 ### 1. CI/CD Workflow Changes ([ci-cd.yml](.github/workflows/ci-cd.yml))
 
 **Removed:**
+
 - All Vercel CLI installation steps
 - Artifact creation and upload logic
 - `deploy-staging` job (87 lines)
@@ -89,6 +92,7 @@ GitHub Actions CI/CD          Vercel Git Integration
 - `notify` job (deployment notifications)
 
 **Kept:**
+
 - `test` job: lint, typecheck, unit tests
 - `build` job: validates apps build successfully
 - `security` job: pnpm audit checks
@@ -98,6 +102,7 @@ GitHub Actions CI/CD          Vercel Git Integration
 ### 2. Golden Verify Workflow ([golden-verify.yml](.github/workflows/golden-verify.yml))
 
 **Changes:**
+
 - Renamed from `golden-deploy.yml`
 - Updated name: "Golden Verification Pipeline"
 - Added webhook trigger: `repository_dispatch: [vercel-deployment-complete]`
@@ -105,6 +110,7 @@ GitHub Actions CI/CD          Vercel Git Integration
 - Removed `on-failure` job
 
 **Kept:**
+
 - `validate-scope`: Ensures GOLDEN_SCOPE is correct
 - `build-and-test`: Runs `golden-check.ts` for each app
 - Telegram notifications on validation completion
@@ -116,6 +122,7 @@ GitHub Actions CI/CD          Vercel Git Integration
 #### [golden-promote.ts](scripts/golden-promote.ts) - DEPRECATED
 
 Added deprecation header:
+
 ```typescript
 /**
  * ⚠️ DEPRECATED (Phase 10B - 2025-11-08)
@@ -130,6 +137,7 @@ Added deprecation header:
 #### [golden-rollback.ts](scripts/golden-rollback.ts) - MANUAL TRIGGER ONLY
 
 Updated header to clarify manual invocation:
+
 ```typescript
 /**
  * Golden Deployment Rollback (Manual Trigger Only - Phase 10B)
@@ -141,6 +149,7 @@ Updated header to clarify manual invocation:
 ```
 
 **Emergency Procedure:**
+
 1. Identify failed deployment via `golden-postcheck.ts` reports
 2. Set required environment variables (VERCEL_TOKEN, PROJECT_IDs)
 3. Run: `pnpm tsx scripts/golden-rollback.ts`
@@ -149,6 +158,7 @@ Updated header to clarify manual invocation:
 #### [golden-check.ts](scripts/golden-check.ts) - NO CHANGES
 
 Continues to validate:
+
 - Build output (.next directory structure)
 - Environment variables
 - Database connectivity (informational)
@@ -156,6 +166,7 @@ Continues to validate:
 #### [golden-postcheck.ts](scripts/golden-postcheck.ts) - NO CHANGES
 
 Continues to perform:
+
 - Health endpoint validation
 - Lighthouse performance checks
 - Telegram notifications
@@ -182,17 +193,20 @@ Continues to perform:
 ### Emergency Rollback
 
 1. **Identify issue:**
+
    - Health check failures
    - User reports
    - Monitoring alerts
 
 2. **Verify current deployment:**
+
    ```bash
    # Check deployment status
    pnpm tsx scripts/golden-check.ts --app audio-intel
    ```
 
 3. **Execute rollback:**
+
    ```bash
    # Set environment variables
    export VERCEL_TOKEN="your-token"
@@ -211,13 +225,13 @@ Continues to perform:
 
 ## Performance Improvements
 
-| Metric                  | Phase 10A (Deploy)      | Phase 10B (Validate)    | Improvement  |
-| ----------------------- | ----------------------- | ----------------------- | ------------ |
-| CI Validation Time      | 5-7 min                 | 3-5 min                 | 40% faster   |
-| CI Success Rate         | 75% (deploy failures)   | 100% (validation only)  | +25%         |
-| Deployment Time         | 13-14 min (w/ retries)  | 2-3 min (Vercel native) | 80% faster   |
-| Deployment Success Rate | 75%                     | ~95%                    | +20%         |
-| Pipeline Complexity     | 418 lines               | 140 lines               | 66% simpler  |
+| Metric                  | Phase 10A (Deploy)     | Phase 10B (Validate)    | Improvement |
+| ----------------------- | ---------------------- | ----------------------- | ----------- |
+| CI Validation Time      | 5-7 min                | 3-5 min                 | 40% faster  |
+| CI Success Rate         | 75% (deploy failures)  | 100% (validation only)  | +25%        |
+| Deployment Time         | 13-14 min (w/ retries) | 2-3 min (Vercel native) | 80% faster  |
+| Deployment Success Rate | 75%                    | ~95%                    | +20%        |
+| Pipeline Complexity     | 418 lines              | 140 lines               | 66% simpler |
 
 ## Vercel Configuration
 
@@ -226,18 +240,21 @@ Continues to perform:
 All 3 apps configured with:
 
 **Build Settings:**
+
 - Framework Preset: `Next.js`
 - Build Command: `cd ../.. && pnpm --filter "$APP_NAME" build`
 - Output Directory: `apps/$APP_NAME/.next`
 - Install Command: `pnpm install`
 
 **Git Integration:**
+
 - Production Branch: `main`
 - Preview Branches: All branches
 - Auto-deploy: Enabled
 
 **Environment Variables:**
 All apps require:
+
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
@@ -246,11 +263,11 @@ All apps require:
 
 ### Domain Configuration
 
-| App               | Production Domain                   | Vercel Project ID          |
-| ----------------- | ----------------------------------- | -------------------------- |
-| audio-intel       | https://intel.totalaudiopromo.com   | `VERCEL_PROJECT_ID`        |
-| tracker           | https://tracker.totalaudiopromo.com | `VERCEL_PROJECT_ID_TRACKER` |
-| pitch-generator   | https://pitch.totalaudiopromo.com   | `VERCEL_PROJECT_ID_PITCH_GENERATOR` |
+| App             | Production Domain                   | Vercel Project ID                   |
+| --------------- | ----------------------------------- | ----------------------------------- |
+| audio-intel     | https://intel.totalaudiopromo.com   | `VERCEL_PROJECT_ID`                 |
+| tracker         | https://tracker.totalaudiopromo.com | `VERCEL_PROJECT_ID_TRACKER`         |
+| pitch-generator | https://pitch.totalaudiopromo.com   | `VERCEL_PROJECT_ID_PITCH_GENERATOR` |
 
 ## Future Enhancements (Phase 10C)
 
@@ -259,6 +276,7 @@ All apps require:
 **Goal:** Automatic post-deployment health checks
 
 **Implementation:**
+
 1. Configure Vercel webhook for deployment events
 2. Webhook triggers `golden-verify.yml` via `repository_dispatch`
 3. `golden-postcheck.ts` runs health checks
@@ -271,6 +289,7 @@ All apps require:
 **Goal:** Gradual traffic migration for safer deployments
 
 **Implementation:**
+
 1. Deploy to preview URL first
 2. Run comprehensive health checks
 3. Gradually shift traffic from old to new deployment
@@ -284,6 +303,7 @@ All apps require:
 **Goal:** Detect performance degradation automatically
 
 **Implementation:**
+
 1. Lighthouse audits on every deployment
 2. Compare metrics against previous deployment
 3. Flag regressions >10% in key metrics
@@ -296,6 +316,7 @@ All apps require:
 ### 1. Scope Validation
 
 All workflows validate `GOLDEN_SCOPE` environment variable:
+
 ```bash
 if [[ "$GOLDEN_SCOPE" != *"audio-intel"* ||
       "$GOLDEN_SCOPE" != *"tracker"* ||
@@ -308,6 +329,7 @@ fi
 ### 2. TypeScript Type Guards
 
 `golden-check.ts` includes runtime validation:
+
 ```typescript
 const ALLOWED_APPS = ['audio-intel', 'tracker', 'pitch-generator'] as const;
 type AllowedApp = (typeof ALLOWED_APPS)[number];
@@ -322,6 +344,7 @@ function validateAppScope(app: string): asserts app is AllowedApp {
 ### 3. Manual Rollback Safety
 
 Rollback script requires explicit environment variables:
+
 - Prevents accidental execution
 - Validates all project IDs present
 - Confirms previous deployment exists before rolling back
@@ -330,6 +353,7 @@ Rollback script requires explicit environment variables:
 ### 4. Vercel Protection
 
 All production apps configured with:
+
 - Deployment protection enabled
 - Only main branch auto-deploys to production
 - Preview deployments for all other branches
@@ -341,6 +365,7 @@ All production apps configured with:
 **Symptom:** GitHub Actions workflow fails on lint/typecheck/test/build
 
 **Solution:**
+
 1. Check workflow logs for specific error
 2. Run locally: `pnpm run lint`, `pnpm run typecheck`, `pnpm run test`
 3. Fix issues and push again
@@ -351,6 +376,7 @@ All production apps configured with:
 **Symptom:** Vercel deployment shows error status
 
 **Solution:**
+
 1. Check Vercel dashboard: https://vercel.com/chris-projects-6ffe0e29
 2. Review build logs for specific error
 3. Verify environment variables are set correctly
@@ -362,6 +388,7 @@ All production apps configured with:
 **Symptom:** `golden-postcheck.ts` reports unhealthy endpoint
 
 **Solution:**
+
 1. Verify app is accessible: `curl https://intel.totalaudiopromo.com/api/health`
 2. Check Vercel deployment logs for runtime errors
 3. Verify environment variables in production
@@ -375,6 +402,7 @@ All production apps configured with:
 **Symptom:** `golden-rollback.ts` exits with error
 
 **Solution:**
+
 1. Verify all environment variables are set
 2. Check Vercel token has correct permissions
 3. Ensure previous deployment exists and is READY
@@ -406,6 +434,7 @@ If all 3 apps fail to deploy:
 2. **Verify GitHub Connection**: Ensure Vercel can access repo
 3. **Check Environment Variables**: Verify all secrets are set
 4. **Manual Deployment**:
+
    ```bash
    # Install Vercel CLI
    npm install -g vercel
@@ -447,7 +476,7 @@ If CI validation is blocking all merges:
 2. **Temporarily disable failing job** (if non-critical):
    ```yaml
    job-name:
-     if: false  # Temporarily disabled
+     if: false # Temporarily disabled
    ```
 3. **Push fix to unblock pipeline**
 4. **Re-enable job after fix**

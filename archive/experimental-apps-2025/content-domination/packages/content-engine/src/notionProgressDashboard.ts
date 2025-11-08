@@ -396,10 +396,10 @@ export class NotionProgressDashboard {
                 milestone.category === 'revenue'
                   ? 'Revenue'
                   : milestone.category === 'product'
-                    ? 'Product'
-                    : milestone.category === 'customers'
-                      ? 'Customers'
-                      : 'Agents',
+                  ? 'Product'
+                  : milestone.category === 'customers'
+                  ? 'Customers'
+                  : 'Agents',
             },
           },
           'Target Value': { number: milestone.targetValue },
@@ -411,10 +411,10 @@ export class NotionProgressDashboard {
                 milestone.status === 'not_started'
                   ? 'Not Started'
                   : milestone.status === 'in_progress'
-                    ? 'In Progress'
-                    : milestone.status === 'completed'
-                      ? 'Completed'
-                      : 'At Risk',
+                  ? 'In Progress'
+                  : milestone.status === 'completed'
+                  ? 'Completed'
+                  : 'At Risk',
             },
           },
           Priority: { select: { name: 'High' } },

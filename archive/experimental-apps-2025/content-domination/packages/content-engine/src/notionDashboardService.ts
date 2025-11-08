@@ -212,27 +212,24 @@ export class NotionDashboardService {
     }
 
     // Sync every hour during business hours
-    this.syncInterval = setInterval(
-      async () => {
-        const now = new Date();
-        const hour = now.getHours();
+    this.syncInterval = setInterval(async () => {
+      const now = new Date();
+      const hour = now.getHours();
 
-        // Only sync during business hours (9 AM - 6 PM UK time)
-        if (hour >= 9 && hour <= 18) {
-          try {
-            // Fetch current metrics from the real dashboard
-            const response = await fetch('/api/analytics');
-            if (response.ok) {
-              const metrics = await response.json();
-              await this.syncDashboardMetrics(metrics.data);
-            }
-          } catch (error) {
-            console.error('❌ Auto-sync failed:', error);
+      // Only sync during business hours (9 AM - 6 PM UK time)
+      if (hour >= 9 && hour <= 18) {
+        try {
+          // Fetch current metrics from the real dashboard
+          const response = await fetch('/api/analytics');
+          if (response.ok) {
+            const metrics = await response.json();
+            await this.syncDashboardMetrics(metrics.data);
           }
+        } catch (error) {
+          console.error('❌ Auto-sync failed:', error);
         }
-      },
-      60 * 60 * 1000
-    ); // 1 hour
+      }
+    }, 60 * 60 * 1000); // 1 hour
 
     console.log('🔄 Auto-sync started - hourly updates during business hours');
   }

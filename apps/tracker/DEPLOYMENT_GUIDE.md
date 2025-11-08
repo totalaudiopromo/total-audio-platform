@@ -193,12 +193,14 @@ Track these target keywords (using Ahrefs/SEMrush/manual):
 In Stripe Dashboard → Products:
 
 1. **Free Starter**
+
    - Product name: "Tracker Free Starter"
    - Price: £0/month
    - Features: 3 campaigns, all AI features
    - Save price ID → Update `.env` as `STRIPE_PRICE_FREE_MONTHLY`
 
 2. **Professional**
+
    - Product name: "Tracker Professional"
    - Price: £19/month
    - Features: Unlimited campaigns, exports, priority support

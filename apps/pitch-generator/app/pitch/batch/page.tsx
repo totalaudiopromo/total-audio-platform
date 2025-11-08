@@ -197,7 +197,7 @@ ${p.pitchBody}
   if (status === 'loading') {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-amber" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber-dark" />
       </div>
     );
   }
@@ -239,7 +239,7 @@ ${p.pitchBody}
                     value={formData.artistName}
                     onChange={e => setFormData({ ...formData, artistName: e.target.value })}
                     placeholder="e.g. The Midnight Hearts"
-                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                    className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
                   />
                 </div>
                 <div>
@@ -252,7 +252,7 @@ ${p.pitchBody}
                     value={formData.trackTitle}
                     onChange={e => setFormData({ ...formData, trackTitle: e.target.value })}
                     placeholder="e.g. Neon Dreams"
-                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                    className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
                   />
                 </div>
                 <div>
@@ -263,7 +263,7 @@ ${p.pitchBody}
                     required
                     value={formData.genre}
                     onChange={e => setFormData({ ...formData, genre: e.target.value })}
-                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                    className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
                   >
                     {GENRES.map(genre => (
                       <option key={genre} value={genre}>
@@ -278,7 +278,7 @@ ${p.pitchBody}
                     type="date"
                     value={formData.releaseDate}
                     onChange={e => setFormData({ ...formData, releaseDate: e.target.value })}
-                    className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                    className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
                   />
                 </div>
               </div>
@@ -289,7 +289,7 @@ ${p.pitchBody}
                   value={formData.trackLink}
                   onChange={e => setFormData({ ...formData, trackLink: e.target.value })}
                   placeholder="https://soundcloud.com/..."
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                  className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
                 />
               </div>
               <div>
@@ -302,7 +302,7 @@ ${p.pitchBody}
                   onChange={e => setFormData({ ...formData, keyHook: e.target.value })}
                   rows={3}
                   placeholder="What makes this track special? Why should they care?"
-                  className="mt-1.5 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900/30 transition focus:border-brand-amber focus:outline-none focus:ring-2 focus:ring-brand-amber/50"
+                  className="mt-1.5 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-sm text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
                 />
               </div>
             </div>
@@ -324,10 +324,13 @@ ${p.pitchBody}
               </div>
 
               {contacts.length === 0 ? (
-                <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-8 py-12 text-center">
+                <div className="rounded-2xl border-4 border-black bg-white px-8 py-12 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                   <p className="text-sm text-gray-900/50">
                     No contacts found.{' '}
-                    <Link href="/pitch/contacts" className="text-brand-amber underline">
+                    <Link
+                      href="/pitch/contacts"
+                      className="text-brand-amber-dark underline font-semibold"
+                    >
                       Add contacts first
                     </Link>
                   </p>
@@ -337,10 +340,10 @@ ${p.pitchBody}
                   {contacts.map(contact => (
                     <label
                       key={contact.id}
-                      className={`cursor-pointer rounded-2xl border-2 bg-gray-50 px-4 py-3 transition ${
+                      className={`cursor-pointer rounded-2xl border-4 border-black bg-white px-4 py-3 transition shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
                         selectedContactIds.includes(contact.id)
-                          ? 'border-brand-amber bg-brand-amber/5'
-                          : 'border-gray-200 hover:border-gray-300'
+                          ? 'bg-brand-amber/20 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
+                          : 'hover:bg-gray-50'
                       }`}
                     >
                       <div className="flex items-start gap-3">
@@ -358,7 +361,7 @@ ${p.pitchBody}
                             </p>
                           )}
                           {contact.preferred_tone && (
-                            <p className="mt-1 text-xs text-brand-amber/80">
+                            <p className="mt-1 text-xs text-brand-amber-dark/90">
                               Prefers: {contact.preferred_tone}
                             </p>
                           )}
@@ -434,14 +437,14 @@ ${p.pitchBody}
               {generatedPitches.map((pitch, index) => (
                 <div
                   key={pitch.contactId}
-                  className="rounded-2xl border border-gray-200 bg-gray-50 p-6"
+                  className="rounded-2xl border-4 border-black bg-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
                 >
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
                       <h3 className="font-semibold text-lg">{pitch.contactName}</h3>
                       <p className="text-sm text-gray-900/60">{pitch.contactOutlet}</p>
                       {pitch.suggestedSendTime && (
-                        <p className="mt-2 flex items-center gap-1.5 text-xs text-brand-amber">
+                        <p className="mt-2 flex items-center gap-1.5 text-xs text-brand-amber-dark">
                           <Clock className="h-3 w-3" />
                           Best send time: {pitch.suggestedSendTime}
                         </p>
