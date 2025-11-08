@@ -5,7 +5,7 @@
  */
 
 import { LifecycleStage, LifecycleTransition } from './stages';
-import { EngagementScore, predictChurnRisk } from './scoring';
+import { EngagementScore, predictChurnRisk, getEngagementTrend } from './scoring';
 
 export interface EmailTrigger {
   id: string;
@@ -248,9 +248,7 @@ export class ConvertKitClient {
         return { success: false, error };
       }
 
-      const data = (await response.json()) as {
-        subscription: { subscriber: { id: string } };
-      };
+      const data = await response.json();
       return { success: true, subscriberId: data.subscription.subscriber.id };
     } catch (error: any) {
       return { success: false, error: error.message };
