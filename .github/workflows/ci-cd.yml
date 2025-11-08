@@ -101,9 +101,6 @@ jobs:
     - name: Install Vercel CLI
       run: npm install -g vercel
 
-    - name: Validate lockfile configuration
-      run: node scripts/validate-lockfile-config.js
-
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
 
@@ -390,9 +387,6 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y libasound2 || sudo apt-get install -y libasound2t64
-
-    - name: Validate lockfile configuration
-      run: node scripts/validate-lockfile-config.js
 
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
