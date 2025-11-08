@@ -79,7 +79,7 @@ function calculateActivityScore(metrics: EngagementMetrics): number {
  * Based on consistency of usage over time
  */
 function calculateFrequencyScore(metrics: EngagementMetrics): number {
-  const { consecutiveDaysActive, enrichmentCount, loginCount } = metrics;
+  const { consecutiveDaysActive, enrichmentCount } = metrics;
 
   let score = 0;
 
@@ -275,7 +275,7 @@ export function predictChurnRisk(
  */
 export function generateEngagementInsights(
   score: EngagementScore,
-  trend: 'improving' | 'stable' | 'declining',
+  _trend: 'improving' | 'stable' | 'declining',
   churnRisk: 'high' | 'medium' | 'low'
 ): {
   summary: string;
