@@ -25,6 +25,7 @@ export default function ReviewPitchPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const params = useParams();
+  const supabase = createClient();
   const pitchId = params.id as string;
 
   const [pitch, setPitch] = useState<Pitch | null>(null);

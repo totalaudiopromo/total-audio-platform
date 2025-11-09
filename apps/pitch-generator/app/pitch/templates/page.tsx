@@ -9,6 +9,7 @@ import { createClient } from '@total-audio/core-db/client';
 import type { PitchTemplate } from '@/lib/types';
 
 export default function TemplatesPage() {
+  const supabase = createClient();
   const { data: session, status } = useSession();
   const router = useRouter();
   const [templates, setTemplates] = useState<PitchTemplate[]>([]);

@@ -1,5 +1,6 @@
-import { createClient } from '@total-audio/core-db/server';
+import { createServerClient } from '@total-audio/core-db/server';
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
@@ -7,7 +8,8 @@ export async function GET(request: Request) {
   const next = requestUrl.searchParams.get('next') || '/dashboard';
 
   if (code) {
-    const supabase = await createClient();
+    const cookieStore = cookies();
+    const supabase = await createServerClient(await cookieStore);
     const { error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (!error) {

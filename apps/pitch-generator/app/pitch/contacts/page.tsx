@@ -11,6 +11,7 @@ import type { Contact } from '@/lib/types';
 export default function ContactsPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const supabase = createClient();
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);

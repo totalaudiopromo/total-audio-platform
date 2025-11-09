@@ -48,6 +48,7 @@ const GENRES = [
 export default function BatchGeneratePage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const supabase = createClient();
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [selectedContactIds, setSelectedContactIds] = useState<string[]>([]);
