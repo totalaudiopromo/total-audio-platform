@@ -534,7 +534,7 @@ export default function ExportButtons({
           <button
             onClick={() => handleExport('search-results')}
             disabled={isExporting || !hasData}
-            className="flex flex-col items-center gap-2 p-4 bg-purple-500 hover:bg-purple-600 text-white font-black border-2 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex flex-col items-center gap-2 p-4 bg-blue-500 hover:bg-blue-600 text-white font-black border-2 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Search className="w-6 h-6" />
             <span className="font-black">Export Search Results</span>

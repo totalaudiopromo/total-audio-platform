@@ -437,7 +437,7 @@ export default function SimpleAudioIntelDemo() {
                     disabled={!hasEnrichedData}
                     className={`flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 rounded-xl border-4 transition-all ${
                       activeTab === 'analytics' && hasEnrichedData
-                        ? 'bg-purple-500 text-white border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
+                        ? 'bg-blue-500 text-white border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
                         : hasEnrichedData
                         ? 'bg-white text-gray-900 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 cursor-pointer'
                         : 'bg-gray-50 text-gray-400 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-not-allowed opacity-60'
@@ -446,7 +446,7 @@ export default function SimpleAudioIntelDemo() {
                     <div
                       className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
                         activeTab === 'analytics' && hasEnrichedData
-                          ? 'bg-white text-purple-500'
+                          ? 'bg-white text-blue-500'
                           : hasEnrichedData
                           ? 'bg-gray-300 text-gray-700'
                           : 'bg-gray-200 text-gray-400'
@@ -494,7 +494,7 @@ export default function SimpleAudioIntelDemo() {
                 </TabsTrigger>
                 <TabsTrigger
                   value="analytics"
-                  className={`text-sm md:text-xl font-black py-4 md:py-6 border-4 border-black rounded-lg data-[state=active]:bg-purple-600 data-[state=active]:text-white data-[state=active]:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] data-[state=inactive]:bg-gray-100 data-[state=inactive]:text-gray-700 data-[state=inactive]:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 ${
+                  className={`text-sm md:text-xl font-black py-4 md:py-6 border-4 border-black rounded-lg data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] data-[state=inactive]:bg-gray-100 data-[state=inactive]:text-gray-700 data-[state=inactive]:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 ${
                     !canAccessAnalytics ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                   disabled={!canAccessAnalytics}
@@ -700,11 +700,11 @@ export default function SimpleAudioIntelDemo() {
                           <Button
                             onClick={() => handleExport('pdf')}
                             disabled={isExporting}
-                            className="bg-purple-500 hover:bg-purple-600 text-white font-black py-4 px-6 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            className="bg-blue-500 hover:bg-blue-600 text-white font-black py-4 px-6 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                           >
                             <FileSpreadsheet className="w-5 h-5" />
                             Export PDF
-                            <Badge className="bg-purple-600 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ml-2 font-bold">
+                            <Badge className="bg-blue-600 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ml-2 font-bold">
                               Professional
                             </Badge>
                           </Button>
