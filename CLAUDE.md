@@ -300,6 +300,202 @@ docker-compose down
 - Social media automation
 - Music industry expertise and strategy
 
+## 🚨 AGENT DELEGATION SYSTEM (MANDATORY FOR CLAUDE CODE)
+
+### Critical: How to Invoke the Orchestrator
+
+**Claude Code sessions MUST use the Bash tool to invoke the orchestrator for all music industry tasks.**
+
+#### Invocation Mechanism:
+
+```bash
+# Method 1: Execute predefined workflow (RECOMMENDED)
+cd tools/agents && node orchestrator.js execute <workflow-name>
+
+# Method 2: Execute custom parallel operations
+cd tools/agents && node -e "
+const Orchestrator = require('./orchestrator.js');
+const orch = new Orchestrator();
+orch.initialize().then(() => {
+  return orch.executeCustomOperation([
+    { agent: 'campaign', action: 'createCampaign', parameters: {}, parallel: true },
+    { agent: 'socialMedia', action: 'createSocialCampaign', parameters: {}, parallel: true },
+    { agent: 'radioPromo', action: 'generateRadioCampaign', parameters: {}, parallel: true }
+  ]);
+}).then(result => console.log(JSON.stringify(result, null, 2)));
+"
+
+# Method 3: Check available workflows
+cd tools/agents && node orchestrator.js workflows
+
+# Method 4: System health check
+cd tools/agents && node orchestrator.js health
+```
+
+### 🎯 DELEGATION TRIGGERS (MANDATORY)
+
+When the user's request contains ANY of these keywords/intents, IMMEDIATELY delegate to the orchestrator:
+
+#### Campaign & Launch Triggers:
+- **Keywords**: "campaign", "launch", "release", "promote", "promotion"
+- **Action**: Use 'campaign-launch' or 'music-release-campaign' workflow
+- **Agents**: campaign + integration + socialMedia + radioPromo (parallel)
+- **Example**: "Launch my new single" → `node orchestrator.js execute music-release-campaign`
+
+#### Content Creation Triggers:
+- **Keywords**: "press release", "bio", "content", "write", "blog", "email campaign"
+- **Action**: Delegate to contentGeneration + socialMedia (parallel)
+- **Example**: "Create a press release" → Use contentGeneration agent
+
+#### Radio Promotion Triggers:
+- **Keywords**: "radio", "stations", "airplay", "DJ", "playlist pitching"
+- **Action**: Use 'radio-promotion' workflow
+- **Agents**: radioPromo + contentGeneration + analytics
+- **Example**: "Get my track on radio" → `node orchestrator.js execute radio-promotion`
+
+#### Social Media Triggers:
+- **Keywords**: "social media", "Instagram", "TikTok", "viral", "influencer", "engagement"
+- **Action**: Use 'social-growth' or delegate to socialMedia + viralContentAutomation
+- **Example**: "Grow my Instagram" → `node orchestrator.js execute social-growth`
+
+#### Analytics Triggers:
+- **Keywords**: "analytics", "performance", "metrics", "report", "insights", "optimize"
+- **Action**: Use 'analytics-optimization' workflow
+- **Example**: "Analyze my campaign" → `node orchestrator.js execute analytics-optimization`
+
+#### Music Industry Strategy Triggers:
+- **Keywords**: "strategy", "partnerships", "industry", "market analysis", "competitive"
+- **Action**: Use musicIndustryStrategist + musicMarketingMastermind (parallel)
+- **Example**: "Develop industry strategy" → Delegate to both strategy agents
+
+#### Multi-Platform Triggers:
+- **Keywords**: "multi-platform", "all platforms", "everywhere", "comprehensive"
+- **Action**: Use 'multi-platform-launch' workflow (10 agents coordinated)
+- **Example**: "Launch everywhere" → `node orchestrator.js execute multi-platform-launch`
+
+#### Growth & Optimization Triggers:
+- **Keywords**: "growth", "conversion", "A/B test", "retention", "acquisition"
+- **Action**: Delegate to growthHackingOptimizer + analytics (parallel)
+- **Example**: "Improve conversion" → Delegate to growth optimizer
+
+### 🔄 Parallel vs Sequential Execution
+
+**ALWAYS use parallel execution when operations are independent:**
+
+```javascript
+// CORRECT: Parallel execution (operations don't depend on each other)
+executeCustomOperation([
+  { agent: 'campaign', action: 'createCampaign', parallel: true },
+  { agent: 'socialMedia', action: 'createSocialCampaign', parallel: true },
+  { agent: 'radioPromo', action: 'generateRadioCampaign', parallel: true }
+])
+
+// CORRECT: Sequential execution (later operations need earlier results)
+executeCustomOperation([
+  { agent: 'analytics', action: 'analyzeCampaignPerformance' },  // No parallel
+  { agent: 'contentGeneration', action: 'generateCustomReport' }  // Needs analytics data
+])
+```
+
+**Default to parallel unless explicit dependencies exist.**
+
+### 📋 Available Workflows (orchestrator.js)
+
+1. **agency-onboarding**: Complete agency setup (4 agents sequential)
+2. **campaign-launch**: Multi-platform campaign launch (5 agents)
+3. **music-release-campaign**: Full release cycle (8 agents: audio → content → social → radio → analytics)
+4. **multi-platform-launch**: Coordinated launch across all platforms (10 agents)
+5. **radio-promotion**: Targeted radio campaign with tracking (5 agents)
+6. **social-growth**: Social media growth acceleration (5 agents)
+7. **content-marketing**: Comprehensive content campaign (5 agents)
+8. **influencer-marketing**: Influencer outreach and collaboration (4 agents)
+9. **crisis-management**: Social media crisis response (4 agents)
+10. **analytics-optimization**: Deep analytics with recommendations (5 agents)
+11. **artist-branding**: Complete artist brand development (5 agents)
+12. **contact-enrichment**: Bulk contact processing (4 agents)
+13. **daily-maintenance**: System health and maintenance (5 agents)
+14. **performance-optimization**: Campaign and system optimization (5 agents)
+15. **music-analysis**: Music analysis and platform integration (5 agents)
+16. **tech-recommendations**: Technical architecture recommendations (3 agents)
+
+### ⚡ Delegation Decision Tree
+
+**BEFORE responding to music industry tasks, use this decision tree:**
+
+1. **Does this task match ANY specialized agent capabilities?**
+   - YES → Proceed to step 2
+   - NO → Handle directly with standard tools
+
+2. **Does this task require MULTIPLE agent specializations?**
+   - YES → MUST use orchestrator with parallel execution
+   - NO → Proceed to step 3
+
+3. **Is there a predefined workflow that matches this task?**
+   - YES → Use `node orchestrator.js execute <workflow-name>`
+   - NO → Use executeCustomOperation with relevant agents
+
+4. **ALWAYS delegate when:**
+   - Task involves campaign management
+   - Task requires content generation for music/artists
+   - Task involves radio promotion or playlist pitching
+   - Task requires social media strategy
+   - Task needs analytics or performance tracking
+   - Task involves music industry strategy
+   - Task requires growth hacking or optimization
+
+5. **NEVER handle these directly (MUST delegate):**
+   - Campaign launches
+   - Press release writing
+   - Radio station outreach
+   - Social media campaign planning
+   - Music release coordination
+   - Multi-platform promotions
+   - Industry strategy development
+   - Viral content strategies
+
+### 📊 Agent Response Pattern
+
+**BAD** (Generic advice, no delegation):
+```
+User: "Launch my campaign"
+Assistant: Here's how to launch a campaign: [generic advice]
+```
+
+**GOOD** (Delegates to specialized agents):
+```
+User: "Launch my campaign"
+Assistant: Delegating to campaign-agent, integration-agent, and social-media-agent in parallel...
+
+[Uses Bash tool to execute:]
+cd tools/agents && node orchestrator.js execute campaign-launch
+
+[Reports results from all agents, synthesizes recommendations]
+```
+
+### 🔍 TodoWrite Tracking for Agent Workflows
+
+When delegating to multiple agents, use TodoWrite to track progress:
+
+```
+Todos:
+1. Delegating to campaign-agent (in parallel) ✓
+2. Delegating to social-media-agent (in parallel) ✓
+3. Delegating to radio-promo-agent (in parallel) ✓
+4. Collecting results from all agents
+5. Synthesizing final recommendations
+```
+
+### 🚫 When NOT to Delegate
+
+**Handle directly (don't delegate) when:**
+- Simple technical questions ("What audio format is best?")
+- Code debugging or development tasks
+- File operations or codebase navigation
+- Generic music industry knowledge questions
+- Tasks explicitly outside agent capabilities
+
+**Rule of thumb**: If it requires music industry ACTION (campaign, content, promotion, strategy), delegate. If it requires INFORMATION only, handle directly.
+
 ## Role-Based Access Control
 
 ### User Roles
