@@ -158,6 +158,7 @@ coverage/
 !next.config.js
 !tailwind.config.js
 !postcss.config.js
+!.changeset/config.json
 
 # Ignore npm lock files (using pnpm)
 package-lock.json
