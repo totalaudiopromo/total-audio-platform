@@ -1,0 +1,918 @@
+# Total Audio Platform: Dev Agent Acceleration Plan
+
+**Created**: 2025-11-09
+**Purpose**: Accelerate development velocity with specialized dev-focused agents
+**Status**: Implementation Ready
+
+---
+
+## 🎯 Goal
+
+**Transform Total Audio Platform development** from manual, sequential workflows to **automated, parallel agent-driven development** using specialized dev agents inspired by leading Claude Code agent repositories.
+
+**Target**: 3-5x development velocity increase through intelligent agent orchestration.
+
+---
+
+## 📊 Research Findings: Top Claude Code Agent Repos
+
+### 1. **VoltAgent/awesome-claude-code-subagents** (100+ agents)
+**Key Insights**:
+- 10 major categories (Core Dev, Language Specialists, Infrastructure, Quality, etc.)
+- Production-ready agents for full-stack development
+- Modular, single-purpose agents
+
+### 2. **wshobson/agents** (85 agents + 15 orchestrators)
+**Key Insights**:
+- Hybrid orchestration: Sonnet (planning) → Haiku (execution) → Sonnet (review)
+- 15 multi-agent workflow orchestrators
+- Cost optimization: 47 Haiku agents for speed, 97 Sonnet for complexity
+- Progressive disclosure architecture (load context only when needed)
+
+**Example Workflow**:
+```
+Full-Stack Feature Development:
+backend-architect → database-architect → frontend-developer
+→ test-automator → security-auditor → deployment-engineer
+→ observability-engineer
+```
+
+### 3. **0ldh/claude-code-agents-orchestra** (47 agents in 10 teams)
+**Key Insights**:
+- Professional team structure (Orchestration, Architecture, Development, QA, DevOps, etc.)
+- Two operational modes: Direct calls & Multi-agent orchestration
+- Approval-based execution with human oversight
+- Cross-agent continuity via Context Manager
+
+---
+
+## 🏗️ Total Audio Platform Tech Stack Analysis
+
+### Current Infrastructure:
+- **Monorepo**: 8 apps (audio-intel, command-centre, playlist-pulse, web, api, mobile, seo-tool, voice-echo)
+- **Frontend**: Next.js 15 + TypeScript + React + Tailwind CSS
+- **Backend**: Node.js + Express + Prisma ORM + PostgreSQL
+- **Deployment**: Vercel (multi-domain setup)
+- **Testing**: Jest/Vitest (incomplete coverage)
+- **CI/CD**: GitHub Actions (basic)
+- **Music Agents**: 18+ specialized music industry agents (existing)
+
+### Current Pain Points:
+1. ❌ **Manual code reviews** - No automated quality checks
+2. ❌ **Slow testing** - Manual test writing, gaps in coverage
+3. ❌ **TypeScript errors** - Frequent type issues across apps
+4. ❌ **Database migrations** - Manual Prisma migration management
+5. ❌ **Deployment coordination** - 8 apps, manual deployment tracking
+6. ❌ **No performance monitoring** - No automated perf analysis
+7. ❌ **Documentation lag** - Code changes not reflected in docs
+8. ❌ **Monorepo complexity** - Hard to coordinate changes across apps
+
+---
+
+## 🤖 Proposed Dev Agent System (22 Agents in 6 Teams)
+
+### Team 1: **Orchestration & Planning** (3 agents)
+
+#### 1. **dev-orchestrator**
+**Role**: Mission control for all dev workflows
+**Capabilities**:
+- Analyzes user requests and delegates to appropriate dev agents
+- Coordinates multi-agent workflows (e.g., feature development across frontend/backend)
+- Tracks progress across all active dev tasks
+- Provides status updates and handles failures gracefully
+
+**Example**:
+```
+User: "Add authentication to Audio Intel app"
+Dev Orchestrator:
+  → backend-architect (API design)
+  → database-optimizer (Prisma schema)
+  → frontend-specialist (UI components)
+  → test-automator (E2E tests)
+  → security-auditor (auth review)
+```
+
+#### 2. **context-manager**
+**Role**: Maintains cross-agent continuity
+**Capabilities**:
+- Tracks codebase changes across agents
+- Manages shared context (file changes, dependencies, env vars)
+- Prevents conflicting changes between parallel agents
+- Maintains memory between sessions
+
+#### 3. **code-archaeologist**
+**Role**: Deep codebase analysis
+**Capabilities**:
+- Maps entire codebase structure and dependencies
+- Finds patterns, anti-patterns, and technical debt
+- Locates related code across monorepo apps
+- Generates architectural diagrams and documentation
+
+---
+
+### Team 2: **Architecture & Design** (4 agents)
+
+#### 4. **fullstack-architect**
+**Role**: End-to-end feature architecture
+**Capabilities**:
+- Designs features spanning frontend/backend/database
+- Creates technical specs and implementation plans
+- Ensures consistency across 8 apps in monorepo
+- Reviews architectural decisions
+
+**Focus Areas**:
+- Multi-tenant architecture patterns
+- Next.js app router best practices
+- Prisma schema design
+- API design (REST + future GraphQL)
+
+#### 5. **database-optimizer**
+**Role**: Prisma + PostgreSQL specialist
+**Capabilities**:
+- Generates Prisma migrations safely
+- Optimizes database queries and indexes
+- Manages multi-tenant data isolation
+- Reviews schema changes for performance
+
+**Commands**:
+```bash
+# Auto-generated by agent
+npm run db:migrate    # Safe migrations
+npm run db:seed       # Test data
+npm run db:optimize   # Index optimization
+```
+
+#### 6. **api-architect**
+**Role**: Backend API design
+**Capabilities**:
+- Designs RESTful endpoints
+- Creates OpenAPI/Swagger specs
+- Implements authentication/authorization
+- Rate limiting and caching strategies
+
+**Specialization**: Express + Prisma + multi-tenant patterns
+
+#### 7. **frontend-architect**
+**Role**: Next.js + React specialist
+**Capabilities**:
+- Component architecture (App Router)
+- State management (React Query)
+- Performance optimization (bundle size, lazy loading)
+- Mobile-first responsive design
+
+---
+
+### Team 3: **Development Specialists** (5 agents)
+
+#### 8. **nextjs-specialist**
+**Role**: Next.js 15 expert
+**Capabilities**:
+- App Router patterns
+- Server Components vs Client Components
+- Route handlers and middleware
+- Image/font optimization
+- SEO implementation
+
+**Commands**:
+```bash
+npm run dev:audio-intel      # Monitors for issues
+npm run build:audio-intel    # Optimizes build
+```
+
+#### 9. **typescript-expert**
+**Role**: TypeScript type safety
+**Capabilities**:
+- Fixes type errors across monorepo
+- Generates proper type definitions
+- Implements advanced TypeScript patterns
+- Creates shared type packages
+
+**Auto-runs**:
+```bash
+npm run typecheck    # Before every commit
+```
+
+#### 10. **prisma-specialist**
+**Role**: ORM and database operations
+**Capabilities**:
+- Writes complex Prisma queries
+- Optimizes N+1 queries
+- Implements soft deletes, audit logs
+- Multi-tenant query patterns
+
+#### 11. **react-specialist**
+**Role**: Modern React patterns
+**Capabilities**:
+- Hooks optimization (useMemo, useCallback)
+- Component composition patterns
+- Performance profiling
+- Accessibility implementation
+
+#### 12. **tailwind-specialist**
+**Role**: UI/UX and styling
+**Capabilities**:
+- Responsive design (mobile-first)
+- Component styling patterns
+- Dark mode implementation
+- Design system consistency
+
+---
+
+### Team 4: **Quality Assurance** (5 agents)
+
+#### 13. **test-automator**
+**Role**: Automated test generation
+**Capabilities**:
+- Generates unit tests (Jest/Vitest)
+- Creates E2E tests (Playwright/Cypress)
+- Integration test suites
+- Test coverage analysis (target: 80%+)
+
+**Auto-generates**:
+```typescript
+// For every new component/function
+describe('UserAuth', () => {
+  it('should authenticate user with valid credentials', () => {
+    // Generated by test-automator
+  });
+});
+```
+
+#### 14. **security-auditor**
+**Role**: Security analysis
+**Capabilities**:
+- OWASP Top 10 checks
+- Dependency vulnerability scanning
+- Authentication/authorization review
+- SQL injection prevention (Prisma safety)
+- XSS/CSRF protection
+
+**Commands**:
+```bash
+npm audit fix           # Auto-fix vulnerabilities
+npm run security:scan   # Deep security analysis
+```
+
+#### 15. **code-reviewer**
+**Role**: Automated code review
+**Capabilities**:
+- Reviews PRs before human review
+- Checks coding standards
+- Identifies potential bugs
+- Performance red flags
+- Suggests improvements
+
+**GitHub Integration**: Comments on PRs automatically
+
+#### 16. **performance-optimizer**
+**Role**: Performance analysis
+**Capabilities**:
+- Lighthouse score optimization
+- Bundle size analysis
+- Database query performance
+- API response time monitoring
+- Memory leak detection
+
+**Metrics**:
+- Lighthouse score: 90+ (all apps)
+- Bundle size: <200KB (JS)
+- API response: <100ms (p95)
+
+#### 17. **accessibility-auditor**
+**Role**: A11y compliance
+**Capabilities**:
+- WCAG 2.1 AA compliance
+- Screen reader testing
+- Keyboard navigation
+- Color contrast checks
+- ARIA implementation
+
+---
+
+### Team 5: **DevOps & Infrastructure** (4 agents)
+
+#### 18. **vercel-deployment-engineer**
+**Role**: Deployment automation
+**Capabilities**:
+- Manages 8-app Vercel deployments
+- Environment variable management
+- Domain configuration (intel., command., pulse., etc.)
+- Preview deployment orchestration
+- Deployment rollback strategies
+
+**Monitors**:
+```
+intel.totalaudiopromo.com      → Audio Intel
+command.totalaudiopromo.com    → Command Centre
+pulse.totalaudiopromo.com      → Playlist Pulse
+totalaudiopromo.com            → Main landing
+```
+
+#### 19. **ci-cd-specialist**
+**Role**: GitHub Actions automation
+**Capabilities**:
+- Optimizes CI/CD pipelines
+- Parallel test execution
+- Build caching strategies
+- Deployment automation
+- Failure notifications
+
+**Workflows**:
+- Lint → Typecheck → Test → Build → Deploy
+- Matrix builds for all apps
+- Automatic PR checks
+
+#### 20. **monitoring-agent**
+**Role**: Observability and alerting
+**Capabilities**:
+- Application performance monitoring
+- Error tracking (Sentry integration)
+- User analytics
+- Database performance metrics
+- Deployment health checks
+
+#### 21. **dependency-manager**
+**Role**: Package management
+**Capabilities**:
+- Automated dependency updates
+- Security patch management
+- Version compatibility checks
+- Monorepo workspace optimization
+- Bundle size impact analysis
+
+**Auto-creates PRs**: Weekly dependency updates with impact analysis
+
+---
+
+### Team 6: **Documentation & Knowledge** (1 agent)
+
+#### 22. **documentation-generator**
+**Role**: Auto-documentation
+**Capabilities**:
+- Generates API documentation (OpenAPI)
+- Creates component documentation (Storybook)
+- Updates README files
+- Generates architecture diagrams
+- Keeps CLAUDE.md in sync
+
+**Auto-updates**:
+- Function/component docstrings
+- API endpoint documentation
+- Database schema docs
+- Deployment guides
+
+---
+
+## 🔄 Multi-Agent Workflows
+
+### Workflow 1: **Full-Stack Feature Development**
+
+**Trigger**: "Add user profile management to Audio Intel"
+
+**Agent Coordination** (8 agents, ~30min automated):
+```
+1. dev-orchestrator          [Planning]
+   ↓ Creates execution plan
+
+2. fullstack-architect       [Design] (parallel)
+   ↓ Technical spec
+
+3. database-optimizer        [Schema] (parallel)
+   ├─ Prisma schema updates
+   └─ Migration generation
+
+4. api-architect             [Backend]
+   ├─ REST endpoints
+   └─ Validation logic
+
+5. nextjs-specialist         [Frontend] (after API)
+   ├─ UI components
+   ├─ API integration
+   └─ Form handling
+
+6. test-automator           [Testing] (parallel)
+   ├─ Unit tests
+   ├─ Integration tests
+   └─ E2E tests
+
+7. security-auditor         [Security]
+   ├─ Auth checks
+   └─ Input validation
+
+8. documentation-generator  [Docs]
+   ├─ API docs
+   └─ Component docs
+```
+
+**Output**: Complete feature with tests, docs, and security review
+
+---
+
+### Workflow 2: **Bug Fix + Deploy**
+
+**Trigger**: "Fix TypeScript errors in Command Centre"
+
+**Agent Coordination** (5 agents, ~10min):
+```
+1. code-archaeologist        [Analysis]
+   ↓ Locates all type errors
+
+2. typescript-expert         [Fix]
+   ↓ Fixes type errors
+
+3. test-automator           [Validation]
+   ↓ Runs affected tests
+
+4. code-reviewer            [Review]
+   ↓ Quality check
+
+5. vercel-deployment-engineer [Deploy]
+   ↓ Preview deployment
+```
+
+---
+
+### Workflow 3: **Performance Optimization**
+
+**Trigger**: "Optimize Audio Intel loading speed"
+
+**Agent Coordination** (6 agents):
+```
+1. performance-optimizer     [Analysis]
+   ↓ Lighthouse + bundle analysis
+
+2. nextjs-specialist        [Optimization] (parallel)
+   ├─ Code splitting
+   ├─ Image optimization
+   └─ Font loading
+
+3. database-optimizer       [Queries] (parallel)
+   ├─ Index optimization
+   └─ Query analysis
+
+4. tailwind-specialist      [CSS] (parallel)
+   └─ Purge unused styles
+
+5. test-automator          [Testing]
+   └─ Performance regression tests
+
+6. monitoring-agent        [Tracking]
+   └─ Deploy performance tracking
+```
+
+---
+
+### Workflow 4: **Security Audit + Fixes**
+
+**Trigger**: "Security review before production"
+
+**Agent Coordination** (4 agents):
+```
+1. security-auditor         [Scan]
+   ├─ OWASP checks
+   ├─ Dependency scan
+   └─ Authentication review
+
+2. typescript-expert        [Fixes] (parallel)
+   └─ Type safety improvements
+
+3. prisma-specialist       [Database] (parallel)
+   ├─ SQL injection prevention
+   └─ Data isolation check
+
+4. test-automator         [Security Tests]
+   └─ Penetration tests
+```
+
+---
+
+### Workflow 5: **Monorepo Sync**
+
+**Trigger**: "Update shared dependencies across all apps"
+
+**Agent Coordination** (3 agents):
+```
+1. dependency-manager       [Updates]
+   ├─ Checks compatibility
+   └─ Updates package.json (all apps)
+
+2. ci-cd-specialist        [Testing] (parallel)
+   ├─ Runs all app tests
+   └─ Build validation
+
+3. documentation-generator [Changelog]
+   └─ Updates CHANGELOG.md
+```
+
+---
+
+## 📋 Implementation Plan
+
+### Phase 1: **Core Infrastructure** (Week 1-2)
+
+**Priority Agents** (6 agents):
+1. ✅ dev-orchestrator
+2. ✅ context-manager
+3. ✅ typescript-expert
+4. ✅ test-automator
+5. ✅ code-reviewer
+6. ✅ vercel-deployment-engineer
+
+**Deliverables**:
+- Basic orchestration working
+- TypeScript error auto-fixing
+- Automated test generation
+- PR review automation
+- Vercel deployment coordination
+
+**Success Metric**: 50% reduction in manual TypeScript fixes
+
+---
+
+### Phase 2: **Architecture & Quality** (Week 3-4)
+
+**Priority Agents** (8 agents):
+7. ✅ fullstack-architect
+8. ✅ database-optimizer
+9. ✅ nextjs-specialist
+10. ✅ prisma-specialist
+11. ✅ security-auditor
+12. ✅ performance-optimizer
+13. ✅ ci-cd-specialist
+14. ✅ monitoring-agent
+
+**Deliverables**:
+- Architectural decision automation
+- Database optimization automation
+- Security scanning pipeline
+- Performance monitoring
+
+**Success Metric**: 80% test coverage, 90+ Lighthouse scores
+
+---
+
+### Phase 3: **Specialization & Polish** (Week 5-6)
+
+**Remaining Agents** (8 agents):
+15. ✅ code-archaeologist
+16. ✅ api-architect
+17. ✅ frontend-architect
+18. ✅ react-specialist
+19. ✅ tailwind-specialist
+20. ✅ accessibility-auditor
+21. ✅ dependency-manager
+22. ✅ documentation-generator
+
+**Deliverables**:
+- Complete workflow automation
+- Auto-documentation
+- Accessibility compliance
+- Dependency management
+
+**Success Metric**: Full-stack features completed 3x faster
+
+---
+
+### Phase 4: **Integration & Optimization** (Week 7-8)
+
+**Focus**:
+- Refine multi-agent workflows
+- Optimize agent coordination
+- Cost optimization (Haiku vs Sonnet)
+- Performance tuning
+
+**Deliverables**:
+- 5+ predefined dev workflows
+- Agent performance dashboard
+- Cost analysis report
+
+**Success Metric**: 3-5x development velocity increase
+
+---
+
+## 🎯 Expected Impact
+
+### Development Velocity:
+- **Before**: 1 feature = 2-3 days (manual)
+- **After**: 1 feature = 4-8 hours (automated)
+- **Multiplier**: 3-5x faster
+
+### Code Quality:
+- **Test Coverage**: 30% → 80%+
+- **TypeScript Errors**: Frequent → Rare
+- **Security Issues**: Manual detection → Automated prevention
+- **Performance**: Inconsistent → Lighthouse 90+
+
+### Developer Experience:
+- **Context Switching**: High → Low (agents handle details)
+- **Documentation**: Always outdated → Auto-updated
+- **Deployment**: Manual tracking → Fully automated
+- **Code Review**: 100% manual → 80% automated
+
+---
+
+## 💰 Cost Optimization Strategy
+
+### Hybrid Model (from wshobson/agents):
+- **Haiku agents** (fast, cheap): 12 agents for deterministic tasks
+  - typescript-expert
+  - test-automator
+  - code-reviewer
+  - dependency-manager
+  - documentation-generator
+  - tailwind-specialist
+  - prisma-specialist
+  - accessibility-auditor
+  - ci-cd-specialist
+  - monitoring-agent
+  - vercel-deployment-engineer
+  - react-specialist
+
+- **Sonnet agents** (complex, powerful): 10 agents for reasoning
+  - dev-orchestrator
+  - context-manager
+  - code-archaeologist
+  - fullstack-architect
+  - database-optimizer
+  - api-architect
+  - frontend-architect
+  - nextjs-specialist
+  - security-auditor
+  - performance-optimizer
+
+**Estimated Cost Savings**: 40-60% vs all-Sonnet approach
+
+---
+
+## 🔧 Agent Creation Template
+
+Based on research, each agent should have:
+
+```javascript
+// tools/dev-agents/[agent-name].js
+
+class AgentName {
+  constructor() {
+    this.name = 'AgentName';
+    this.model = 'haiku'; // or 'sonnet' for complex agents
+    this.capabilities = [
+      'capability_1',
+      'capability_2',
+      'capability_3'
+    ];
+    this.skills = []; // Loaded on demand (progressive disclosure)
+  }
+
+  async initialize() {
+    // Setup
+  }
+
+  async executeAction(parameters) {
+    // Main action
+  }
+
+  async healthCheck() {
+    // Health status
+  }
+
+  getStatistics() {
+    // Performance metrics
+  }
+}
+
+module.exports = AgentName;
+```
+
+**Skills System** (progressive disclosure):
+```javascript
+// tools/dev-agents/skills/typescript-debugging.js
+module.exports = {
+  name: 'typescript-debugging',
+  instructions: '...',  // Loaded only when needed
+  examples: [],
+  tools: []
+};
+```
+
+---
+
+## 📂 File Structure
+
+```
+total-audio-platform/
+├── tools/
+│   ├── agents/                    # Music industry agents (existing)
+│   │   ├── orchestrator.js
+│   │   ├── campaign-agent.js
+│   │   ├── content-generation-agent.js
+│   │   └── ... (18+ agents)
+│   │
+│   └── dev-agents/               # NEW: Development agents
+│       ├── orchestrator/
+│       │   ├── dev-orchestrator.js
+│       │   ├── context-manager.js
+│       │   └── code-archaeologist.js
+│       │
+│       ├── architecture/
+│       │   ├── fullstack-architect.js
+│       │   ├── database-optimizer.js
+│       │   ├── api-architect.js
+│       │   └── frontend-architect.js
+│       │
+│       ├── specialists/
+│       │   ├── nextjs-specialist.js
+│       │   ├── typescript-expert.js
+│       │   ├── prisma-specialist.js
+│       │   ├── react-specialist.js
+│       │   └── tailwind-specialist.js
+│       │
+│       ├── quality/
+│       │   ├── test-automator.js
+│       │   ├── security-auditor.js
+│       │   ├── code-reviewer.js
+│       │   ├── performance-optimizer.js
+│       │   └── accessibility-auditor.js
+│       │
+│       ├── devops/
+│       │   ├── vercel-deployment-engineer.js
+│       │   ├── ci-cd-specialist.js
+│       │   ├── monitoring-agent.js
+│       │   └── dependency-manager.js
+│       │
+│       ├── documentation/
+│       │   └── documentation-generator.js
+│       │
+│       ├── skills/                # Progressive disclosure
+│       │   ├── typescript-debugging.js
+│       │   ├── nextjs-optimization.js
+│       │   ├── prisma-patterns.js
+│       │   └── ... (skill modules)
+│       │
+│       ├── workflows/             # Predefined workflows
+│       │   ├── fullstack-feature.js
+│       │   ├── bug-fix-deploy.js
+│       │   ├── performance-optimization.js
+│       │   ├── security-audit.js
+│       │   └── monorepo-sync.js
+│       │
+│       └── dev-orchestrator-main.js  # Main coordinator
+│
+├── .claude/
+│   ├── agents/                   # Agent configs (auto-loaded)
+│   └── commands/                 # Custom slash commands
+│
+└── CLAUDE.md                     # Updated with dev agent triggers
+```
+
+---
+
+## 🚀 Quick Start Commands
+
+### Install Dev Agents:
+```bash
+# Phase 1 agents
+npm run dev-agents:install:core
+
+# All agents
+npm run dev-agents:install:all
+```
+
+### Use Dev Agents:
+```bash
+# Via orchestrator
+npm run dev:orchestrate "Add user authentication"
+
+# Direct agent call
+npm run dev:typescript-fix
+
+# Workflow execution
+npm run dev:workflow fullstack-feature "user profile management"
+```
+
+### Monitor Agent Performance:
+```bash
+npm run dev-agents:dashboard   # Live dashboard
+npm run dev-agents:stats      # Performance metrics
+```
+
+---
+
+## 📊 Success Metrics Dashboard
+
+Track agent impact:
+
+```
+┌─────────────────────────────────────────────┐
+│  Dev Agent Performance Dashboard            │
+├─────────────────────────────────────────────┤
+│  Features Completed:     12 (↑ 300%)       │
+│  Avg Feature Time:       6 hours (↓ 75%)   │
+│  Test Coverage:          82% (↑ 52%)       │
+│  TypeScript Errors:      3 (↓ 94%)         │
+│  Deployment Success:     98% (↑ 23%)       │
+│  Lighthouse Score:       92 (↑ 15 points)  │
+│  Security Issues:        0 (↓ 100%)        │
+│  Documentation Sync:     100% (↑ 100%)     │
+└─────────────────────────────────────────────┘
+
+Top Performing Agents:
+1. typescript-expert      (47 fixes, 0 failures)
+2. test-automator        (234 tests generated)
+3. code-reviewer         (89 PRs reviewed)
+4. vercel-deployment     (45 deployments, 0 failures)
+5. security-auditor      (12 vulnerabilities prevented)
+
+Agent Efficiency:
+- Haiku agents: 94% success rate, avg 12s execution
+- Sonnet agents: 89% success rate, avg 45s execution
+- Cost per task: $0.003 (avg)
+```
+
+---
+
+## 🎓 Integration with Existing Music Agents
+
+**Seamless Coexistence**:
+- Music agents (`tools/agents/`) → Business logic
+- Dev agents (`tools/dev-agents/`) → Development automation
+- Both share orchestration patterns
+- Cross-domain workflows possible
+
+**Example**: Full product feature
+```
+User: "Add viral TikTok campaign feature to Audio Intel"
+
+1. dev-orchestrator           [Delegates to music agents]
+   ↓
+2. music-marketing-mastermind [Strategy]
+3. viral-content-automation   [Content patterns]
+   ↓ [Back to dev agents]
+4. fullstack-architect        [Technical design]
+5. database-optimizer         [Schema]
+6. nextjs-specialist         [Implementation]
+7. test-automator           [Testing]
+   ↓ [Back to music agents]
+8. social-media-agent        [Integration validation]
+9. analytics-agent          [Tracking setup]
+```
+
+---
+
+## 🎯 Next Steps
+
+### Immediate (This Week):
+1. **Review this plan** - Approve agent list and workflows
+2. **Choose starting point** - Phase 1 (6 core agents) or specific agent?
+3. **Set up dev-agents directory** - File structure
+4. **Create first agent** - Recommendation: typescript-expert (high ROI)
+
+### Short-term (Next 2 Weeks):
+5. Implement Phase 1 agents (orchestrator, typescript, tests, review, deployment)
+6. Test first multi-agent workflow (bug fix + deploy)
+7. Measure impact (metrics dashboard)
+
+### Medium-term (Next 2 Months):
+8. Complete all 22 agents
+9. Refine workflows based on usage patterns
+10. Optimize costs (Haiku vs Sonnet balance)
+11. Build agent performance dashboard
+
+---
+
+## ❓ Decision Points
+
+**For You to Decide**:
+
+1. **Start with which agents?**
+   - Option A: All Phase 1 (6 agents) at once
+   - Option B: One agent at a time (recommend: typescript-expert)
+   - Option C: Specific workflow (recommend: fullstack-feature)
+
+2. **Use existing repos as base?**
+   - Fork VoltAgent/awesome-claude-code-subagents?
+   - Adapt wshobson/agents patterns?
+   - Build from scratch using patterns?
+
+3. **Cost optimization priority?**
+   - Maximize speed (all Sonnet)
+   - Maximize savings (Haiku where possible)
+   - Balanced (recommended hybrid)
+
+4. **Integration approach?**
+   - Separate dev-agents directory (recommended)
+   - Merge into existing tools/agents/
+   - New monorepo package
+
+---
+
+## 📚 References
+
+- **VoltAgent repo**: https://github.com/VoltAgent/awesome-claude-code-subagents
+- **wshobson repo**: https://github.com/wshobson/agents
+- **0ldh repo**: https://github.com/0ldh/claude-code-agents-orchestra
+- **Hybrid orchestration**: Sonnet planning → Haiku execution → Sonnet review
+- **Progressive disclosure**: Load agent skills only when needed
+
+---
+
+**Ready to accelerate Total Audio Platform development? Let's pick a starting point!** 🚀
