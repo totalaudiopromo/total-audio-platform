@@ -4,8 +4,59 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Check, Clock, Target, TrendingUp, Users, Zap } from 'lucide-react';
 
+// Type Definitions
+interface Quote {
+  text: string;
+  author: string;
+  role: string;
+}
+
+interface Contact {
+  name: string;
+  platform: string;
+  show: string;
+  timing: string;
+  genre: string;
+}
+
+interface Metric {
+  label: string;
+  before: string;
+  after: string;
+  improvement: string;
+}
+
+interface Problem {
+  title: string;
+  points: string[];
+}
+
+interface Solution {
+  title: string;
+  timeSaved: string;
+  contactsEnriched: number;
+  successRate: string;
+  results: string[];
+}
+
+interface CaseStudy {
+  id: string;
+  title: string;
+  artist: string;
+  genre: string;
+  campaignType: string;
+  timeline: string;
+  beforeImage: string;
+  afterImage: string;
+  problem: Problem;
+  solution: Solution;
+  metrics: Metric[];
+  quote: Quote | null;
+  contacts: Contact[];
+}
+
 // Case Study Data
-const caseStudies = [
+const caseStudies: CaseStudy[] = [
   {
     id: 'bbc-radio-1',
     title: 'BBC Radio 1 Campaign: Electronic Artist Launch',
@@ -396,10 +447,10 @@ export default function CaseStudiesPage() {
                 <div className="glass-panel bg-gradient-to-br from-blue-100 to-blue-100 p-8 text-center">
                   <div className="text-6xl text-blue-600 mb-4">"</div>
                   <p className="text-xl font-bold text-gray-900 mb-6 max-w-3xl mx-auto leading-relaxed">
-                    {study.quote.text}
+                    {study.quote?.text}
                   </p>
-                  <div className="font-bold text-gray-900">{study.quote.author}</div>
-                  <div className="text-sm text-gray-600">{study.quote.role}</div>
+                  <div className="font-bold text-gray-900">{study.quote?.author}</div>
+                  <div className="text-sm text-gray-600">{study.quote?.role}</div>
                 </div>
               )}
             </div>
