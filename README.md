@@ -1,6 +1,6 @@
 # 🎵 Total Audio Platform
 
-> Audio Intel contact enrichment SaaS - Customer acquisition phase
+> AI-powered music promotion tools for UK industry professionals - Customer acquisition phase
 
 ## 🎯 Quick Start
 
@@ -10,12 +10,18 @@
 
 **Quick capture:** `code BUSINESS_NOTES.md` - Running log of ideas and feedback
 
-## 🚀 Current Focus
+## 🚀 Live Applications
 
-- **Phase**: Customer Acquisition (Technical foundation complete)
-- **Target**: First £500/month by November 2025
+- **[Audio Intel](https://intel.totalaudiopromo.com)** - Contact enrichment & validation (PRIMARY REVENUE FOCUS)
+- **[Pitch Generator](https://pitch.totalaudiopromo.com)** - AI-powered personalised pitch writing
+- **[Campaign Tracker](https://tracker.totalaudiopromo.com)** - Radio promotion campaign management
+
+## 🎯 Current Focus (November 2025)
+
+- **Phase**: Customer Acquisition (All apps production-ready)
+- **Target**: First £500/month recurring revenue
 - **Priority**: Radio promoter outreach (85% conversion rate)
-- **Product**: Audio Intel - "15 hours → 15 minutes" contact research
+- **Key Product**: Audio Intel - "15 hours → 15 minutes" contact research
 
 ## 🤖 Automated Documentation
 
@@ -41,10 +47,12 @@ total-audio-platform/
 ├── AUDIO_INTEL_CONTEXT.md       # Complete business context
 ├── BUSINESS_NOTES.md            # Running log and ideas
 │
-├── apps/                        # Active applications
-│   ├── audio-intel/            # Primary revenue app
-│   ├── command-centre/         # Personal dashboard
-│   └── web/                    # Marketing site
+├── apps/                        # Live production applications
+│   ├── audio-intel/            # PRIMARY: Contact enrichment SaaS
+│   ├── pitch-generator/        # AI pitch generation tool
+│   ├── tracker/                # Campaign management CRM
+│   ├── command-centre/         # Internal ops dashboard
+│   └── web/                    # Marketing website
 │
 ├── tools/                       # Development tools
 │   ├── agents/                 # AI agents (31+ active)
@@ -61,17 +69,22 @@ total-audio-platform/
 ## 🔧 Development Commands
 
 ```bash
-# Audio Intel (Primary)
-npm run dev:audio-intel         # Development server
-npm run test:mobile             # Mobile testing
+# Audio Intel (PRIMARY REVENUE FOCUS)
+npm run dev:audio-intel         # Development server (port 3000)
+npm run test:mobile             # Mobile testing suite
 npm run build:audio-intel       # Production build
 
-# Newsletter System
-npm run dev:newsletter          # Newsletter dashboard
+# Pitch Generator
+npm run dev:pitch-generator     # Development server (port 3004)
+npm run build:pitch-generator   # Production build
 
-# Testing
+# Campaign Tracker
+npm run dev:tracker             # Development server (port 3001)
+npm run build:tracker           # Production build
+
+# Testing & Quality
 npm run test:audio-intel        # Full test suite
-npm run typecheck:audio-intel   # Type checking
+npm run typecheck:audio-intel   # TypeScript validation
 ```
 
 ## 🤖 AI Agents & Automation
@@ -80,12 +93,14 @@ npm run typecheck:audio-intel   # Type checking
 - **31+ Active Agents**: Customer acquisition and development support (`/tools/agents/`)
 - **MCP Integration**: 14+ servers for workflow automation
 
-## 📊 Business Status
+## 📊 Production Status (November 2025)
 
-- **Customers**: 0 paying → Target: 1 by October 2025
-- **Proven Success**: 100% contact enrichment (BBC Radio 1, Spotify)
-- **Mobile Ready**: 21 UX issues resolved, professional experience
+- **Live Apps**: 3 production deployments (Audio Intel, Pitch Generator, Tracker)
+- **Infrastructure**: Vercel + Supabase, hourly health checks, auto-rollback
+- **Quality**: 100% contact enrichment success rate (BBC Radio 1, Spotify validated)
+- **Mobile**: Professional UX across all apps, comprehensive test coverage
 - **Revenue Model**: FREE/PRO(£19)/AGENCY(£79) validated pricing
+- **CI/CD**: Automated Golden Verification Pipeline with Telegram notifications
 
 ## 🎯 Customer Segments
 
@@ -93,6 +108,21 @@ npm run typecheck:audio-intel   # Type checking
 2. **Solo Artists** - 60% conversion
 3. **PR Agencies** - 70% conversion
 
+## 🔄 CI/CD & Monitoring
+
+- **Automated Deployments**: Vercel integration with GitHub Actions
+- **Health Checks**: Hourly verification, failure-only notifications
+- **Daily Summary**: 8am GMT consolidated status report
+- **Auto-Rollback**: Automatic rollback on health check failures
+- **Monitoring**: Telegram notifications for all critical events
+
+## 🎯 Next Milestones
+
+1. **First Paying Customer** - Radio promoter segment (highest conversion)
+2. **£500/month MRR** - Sustainable revenue validation
+3. **Case Study Distribution** - BBC Radio 1 & Spotify success stories
+4. **Newsletter Growth** - "The Unsigned Advantage" subscriber expansion
+
 ---
 
-**Built by Chris Schofield** | [Audio Intel](https://intel.totalaudiopromo.com) | Customer acquisition focused
+**Built by Chris Schofield** | 5+ years radio promotion experience | [Audio Intel](https://intel.totalaudiopromo.com) · [Pitch Generator](https://pitch.totalaudiopromo.com) · [Tracker](https://tracker.totalaudiopromo.com)
