@@ -171,18 +171,19 @@ jobs:
           fi
 
           # Send consolidated message
+          AUDIO_RESULT="${{ needs.build-and-test.result }}"
           MESSAGE="$STATUS_ICON <b>Daily Health Summary (8:00 GMT)</b>
 
-<b>Total Audio Platform Status:</b>
-• Audio Intel: ${{ needs.build-and-test.result }}
-• Tracker: ${{ needs.build-and-test.result }}
-• Pitch Generator: ${{ needs.build-and-test.result }}
+          <b>Total Audio Platform Status:</b>
+          • Audio Intel: $AUDIO_RESULT
+          • Tracker: $AUDIO_RESULT
+          • Pitch Generator: $AUDIO_RESULT
 
-<i>Overall Status: $STATUS_TEXT</i>
-<i>Next check: 9:00 GMT (hourly)</i>"
+          <i>Overall Status: $STATUS_TEXT</i>
+          <i>Next check: 9:00 GMT (hourly)</i>"
 
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
-          -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
-          -d "text=$MESSAGE" \
-          -d "parse_mode=HTML"
+            -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d "text=$MESSAGE" \
+            -d "parse_mode=HTML"
 
