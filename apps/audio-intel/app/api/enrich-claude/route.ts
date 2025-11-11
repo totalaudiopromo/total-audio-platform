@@ -1,14 +1,20 @@
 /**
- * Claude API Enrichment Endpoint - Production-Ready
+ * Claude API Enrichment Endpoint - Production-Ready v2.1.0
  * Uses IntelAgent with ClaudeEnrichmentService for contact enrichment
  *
  * Features:
  * - API key validation
- * - Rate limit handling
+ * - Rate limit handling with automatic retry
  * - Cost tracking and metrics
- * - Proper error handling
+ * - Comprehensive error recovery:
+ *   - Graceful degradation (fallback intelligence for failed contacts)
+ *   - Retry logic (1 retry with exponential backoff)
+ *   - Timeout protection (10s per contact)
+ *   - Partial success responses (never fail entire batch)
+ *   - Rate limit detection and handling
  * - CORS support for demo pages
  * - Request/response timing
+ * - Detailed error tracking and logging
  */
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -19,6 +25,11 @@ const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 // Rate limit configuration
 const RATE_LIMIT_MAX_REQUESTS = 100;
 const RATE_LIMIT_WINDOW_MS = 60000; // 1 minute
+
+// Error recovery configuration
+const MAX_RETRIES = 1; // Retry failed contacts once
+const RETRY_DELAY_MS = 1000; // 1 second exponential backoff base
+const CONTACT_TIMEOUT_MS = 10000; // 10 second timeout per contact
 
 // In-memory rate limiting (replace with Redis in production)
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -51,6 +62,100 @@ function addCorsHeaders(response: NextResponse): NextResponse {
   response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   return response;
+}
+
+/**
+ * Sleep utility for retry delays
+ */
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/**
+ * Execute function with timeout protection
+ */
+async function withTimeout<T>(
+  promise: Promise<T>,
+  timeoutMs: number,
+  timeoutError: string = 'Operation timed out'
+): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<T>((_, reject) => setTimeout(() => reject(new Error(timeoutError)), timeoutMs)),
+  ]);
+}
+
+/**
+ * Check if error is a rate limit error (429)
+ */
+function isRateLimitError(error: any): boolean {
+  if (error?.status === 429) return true;
+  if (error?.message?.includes('429')) return true;
+  if (error?.message?.toLowerCase().includes('rate limit')) return true;
+  return false;
+}
+
+/**
+ * Enrich a single contact with retry logic and timeout protection
+ */
+async function enrichContactWithRetry(
+  contact: any,
+  attempt: number = 0
+): Promise<{
+  success: boolean;
+  data?: any;
+  error?: string;
+  retried?: boolean;
+  timedOut?: boolean;
+}> {
+  try {
+    // Use email as the primary identifier, fallback to name
+    const contactIdentifier = contact.email || contact.name || 'Unknown';
+
+    // Wrap IntelAgent.execute() with timeout protection
+    const result = await withTimeout(
+      Agents.intel.execute({
+        artist: contactIdentifier,
+        genre: contact.genre,
+        region: contact.region || 'UK',
+        includeLabels: false,
+        contactEmail: contact.email,
+      }),
+      CONTACT_TIMEOUT_MS,
+      `Contact enrichment timed out after ${CONTACT_TIMEOUT_MS}ms`
+    );
+
+    return { success: true, data: result };
+  } catch (error: any) {
+    const isTimeout = error.message?.includes('timed out');
+    const isRateLimit = isRateLimitError(error);
+
+    // Retry logic: retry once with exponential backoff
+    if (attempt < MAX_RETRIES && !isTimeout) {
+      const delay = RETRY_DELAY_MS * Math.pow(2, attempt);
+
+      console.log(
+        `[Enrichment API] Retrying ${contact.name} (attempt ${attempt + 1}/${MAX_RETRIES}) after ${delay}ms delay`
+      );
+
+      // If rate limit, wait longer
+      if (isRateLimit) {
+        await sleep(delay * 2);
+      } else {
+        await sleep(delay);
+      }
+
+      // Retry the request
+      const retryResult = await enrichContactWithRetry(contact, attempt + 1);
+      return { ...retryResult, retried: true };
+    }
+
+    return {
+      success: false,
+      error: error.message || 'Unknown error',
+      timedOut: isTimeout,
+    };
+  }
 }
 
 export async function OPTIONS() {
@@ -148,34 +253,34 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 5. Process contacts through IntelAgent
+    // 5. Process contacts through IntelAgent with error recovery (PARALLEL BATCHES)
     console.log(`[Enrichment API] Processing ${contacts.length} contacts for ${ip}`);
 
-    const results = [];
+    const enrichedResults: any[] = [];
+    const failedResults: any[] = [];
     let successCount = 0;
     let failedCount = 0;
+    let retriedCount = 0;
+    let timedOutCount = 0;
     let totalCost = 0;
     const enrichmentStart = Date.now();
 
-    for (const contact of contacts) {
+    const BATCH_SIZE = 5;
+    const BATCH_DELAY_MS = 500;
+
+    /**
+     * Process a single contact through IntelAgent with retry logic
+     */
+    async function processContact(contact: any) {
       const contactStart = Date.now();
 
       try {
-        // Use email as the primary identifier, fallback to name
-        const contactIdentifier = contact.email || contact.name || 'Unknown';
-
-        const result = await Agents.intel.execute({
-          artist: contactIdentifier,
-          genre: contact.genre,
-          region: contact.region || 'UK',
-          includeLabels: false, // Just contacts for now
-          contactEmail: contact.email, // Pass email explicitly for enrichment
-        });
-
+        // Use retry-enabled enrichment function
+        const enrichmentResult = await enrichContactWithRetry(contact);
         const contactElapsed = Date.now() - contactStart;
 
-        if (result.success) {
-          successCount++;
+        if (enrichmentResult.success && enrichmentResult.data) {
+          const result = enrichmentResult.data;
 
           // Extract contact intelligence from IntelAgent response
           const contactData = result.data?.contacts?.[0];
@@ -221,7 +326,7 @@ export async function POST(req: NextRequest) {
             lastResearched: new Date().toISOString(),
             // Include enriched fields if available
             platform: contactData?.platform,
-            role: contactData?.role, // Add role field
+            role: contactData?.role,
             format: contactData?.format,
             coverage: contactData?.coverage,
             genres: contactData?.genres,
@@ -232,44 +337,65 @@ export async function POST(req: NextRequest) {
             reasoning: contactData?.reasoning,
             source: contactData?.source || 'claude',
             processingTime: contactElapsed,
+            retried: enrichmentResult.retried || false,
           };
-
-          results.push(enrichedContact);
 
           // Estimate cost (Sonnet: $3/1M input, $15/1M output, ~500 tokens avg)
           const estimatedCost = 0.003; // ~$0.003 per contact
-          totalCost += estimatedCost;
 
           console.log(
-            `[Enrichment API] Enriched ${contact.name} (${contactElapsed}ms, $${estimatedCost.toFixed(4)})`
+            `[Enrichment API] Enriched ${contact.name} (${contactElapsed}ms, $${estimatedCost.toFixed(4)}${enrichmentResult.retried ? ', retried' : ''})`
           );
-        } else {
-          failedCount++;
 
-          // Fallback for failed enrichment
-          results.push({
+          return {
+            enriched: enrichedContact,
+            failed: null,
+            success: true,
+            cost: estimatedCost,
+            retried: enrichmentResult.retried || false,
+            timedOut: false,
+          };
+        } else {
+          // Graceful degradation: return fallback intelligence
+          const fallbackReason = enrichmentResult.timedOut
+            ? 'Enrichment timed out - contact research service temporarily unavailable'
+            : 'Enrichment failed - manual research required';
+
+          const fallbackContact = {
             ...contact,
-            intelligence: 'Enrichment failed - manual research required',
-            contactIntelligence: 'Enrichment failed - manual research required',
+            intelligence: fallbackReason,
+            contactIntelligence: fallbackReason,
             confidence: 'Low',
             researchConfidence: 'Low',
             lastResearched: new Date().toISOString(),
-            error: result.error,
+            error: enrichmentResult.error,
             source: 'fallback',
             processingTime: contactElapsed,
-          });
+            timedOut: enrichmentResult.timedOut || false,
+          };
 
           console.warn(
-            `[Enrichment API] Failed to enrich ${contact.name}: ${result.error} (${contactElapsed}ms)`
+            `[Enrichment API] Failed to enrich ${contact.name}: ${enrichmentResult.error} (${contactElapsed}ms${enrichmentResult.timedOut ? ', timed out' : ''})`
           );
+
+          return {
+            enriched: null,
+            failed: fallbackContact,
+            success: false,
+            cost: 0,
+            retried: false,
+            timedOut: enrichmentResult.timedOut || false,
+          };
         }
       } catch (contactError) {
-        failedCount++;
+        // Final safety net: catch any unexpected errors
         const contactElapsed = Date.now() - contactStart;
+        console.error(
+          `[Enrichment API] Unexpected error processing ${contact.name}:`,
+          contactError
+        );
 
-        console.error(`[Enrichment API] Error processing ${contact.name}:`, contactError);
-
-        results.push({
+        const errorContact = {
           ...contact,
           intelligence: 'Processing error - manual research required',
           contactIntelligence: 'Processing error - manual research required',
@@ -279,22 +405,73 @@ export async function POST(req: NextRequest) {
           error: contactError instanceof Error ? contactError.message : 'Unknown error',
           source: 'error',
           processingTime: contactElapsed,
-        });
+        };
+
+        return {
+          enriched: null,
+          failed: errorContact,
+          success: false,
+          cost: 0,
+          retried: false,
+          timedOut: false,
+        };
       }
     }
+
+    // Process contacts in parallel batches
+    for (let i = 0; i < contacts.length; i += BATCH_SIZE) {
+      const batch = contacts.slice(i, i + BATCH_SIZE);
+      const batchStart = Date.now();
+
+      console.log(
+        `[Enrichment API] Processing batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(contacts.length / BATCH_SIZE)} (${batch.length} contacts)`
+      );
+
+      // Process batch in parallel
+      const batchResults = await Promise.all(batch.map(contact => processContact(contact)));
+
+      // Aggregate results
+      for (const result of batchResults) {
+        if (result.success && result.enriched) {
+          successCount++;
+          enrichedResults.push(result.enriched);
+          totalCost += result.cost;
+          if (result.retried) retriedCount++;
+        } else if (result.failed) {
+          failedCount++;
+          failedResults.push(result.failed);
+          if (result.timedOut) timedOutCount++;
+        }
+      }
+
+      const batchElapsed = Date.now() - batchStart;
+      console.log(
+        `[Enrichment API] Batch completed in ${batchElapsed}ms (${(batchElapsed / batch.length).toFixed(0)}ms avg per contact)`
+      );
+
+      // Add delay between batches to respect rate limits (except for last batch)
+      if (i + BATCH_SIZE < contacts.length) {
+        await sleep(BATCH_DELAY_MS);
+      }
+    }
+
+    // Combine enriched and failed results for partial success response
+    const allResults = [...enrichedResults, ...failedResults];
 
     const enrichmentElapsed = Date.now() - enrichmentStart;
     const totalElapsed = ((Date.now() - start) / 1000).toFixed(2);
     const successRate = Math.round((successCount / contacts.length) * 100);
 
-    // 6. Build comprehensive response
+    // 6. Build comprehensive response with error recovery metrics
     const response = {
-      success: true,
-      enriched: results,
+      success: true, // Always true for partial success
+      enriched: allResults, // All contacts returned (successful or fallback)
       summary: {
         total: contacts.length,
         enriched: successCount,
         failed: failedCount,
+        retried: retriedCount,
+        timedOut: timedOutCount,
         cost: parseFloat(totalCost.toFixed(4)),
       },
       metrics: {
@@ -302,17 +479,26 @@ export async function POST(req: NextRequest) {
         enrichmentTime: `${(enrichmentElapsed / 1000).toFixed(2)}s`,
         averageTimePerContact: `${(enrichmentElapsed / contacts.length).toFixed(0)}ms`,
         successRate: `${successRate}%`,
+        retryRate: successCount > 0 ? `${Math.round((retriedCount / successCount) * 100)}%` : '0%',
+        timeoutRate: `${Math.round((timedOutCount / contacts.length) * 100)}%`,
         contactsPerSecond: parseFloat((contacts.length / parseFloat(totalElapsed)).toFixed(2)),
+      },
+      errorRecovery: {
+        enabled: true,
+        maxRetries: MAX_RETRIES,
+        retryDelay: `${RETRY_DELAY_MS}ms`,
+        timeout: `${CONTACT_TIMEOUT_MS}ms`,
+        gracefulDegradation: true,
       },
       provider: {
         name: 'IntelAgent',
         model: 'Claude 3.5 Sonnet',
-        version: '1.0.0',
+        version: '2.0.0',
       },
     };
 
     console.log(
-      `[Enrichment API] Completed: ${successCount}/${contacts.length} enriched (${totalElapsed}s, $${totalCost.toFixed(4)})`
+      `[Enrichment API] Completed: ${successCount}/${contacts.length} enriched (${totalElapsed}s, $${totalCost.toFixed(4)}, ${retriedCount} retried, ${timedOutCount} timed out)`
     );
 
     return addCorsHeaders(NextResponse.json(response));
@@ -367,12 +553,12 @@ export async function GET() {
   return addCorsHeaders(
     NextResponse.json({
       service: 'Audio Intel Contact Enrichment API',
-      version: '2.0.0',
+      version: '2.1.0',
       status: ANTHROPIC_API_KEY ? 'operational' : 'degraded',
       provider: {
         name: 'IntelAgent',
         model: ANTHROPIC_API_KEY ? 'Claude 3.5 Sonnet' : 'Fallback Mode',
-        version: '1.0.0',
+        version: '2.0.0',
       },
       pricing: {
         costPerContact: ANTHROPIC_API_KEY ? '$0.003' : '$0.000',
@@ -390,7 +576,11 @@ export async function GET() {
         'Rate limiting protection',
         'CORS support for demo pages',
         'Batch and single contact processing',
-        'Automatic fallback for failures',
+        'Automatic retry with exponential backoff',
+        'Timeout protection (10s per contact)',
+        'Graceful degradation with fallback intelligence',
+        'Partial success responses',
+        'Rate limit detection and handling',
         'Detailed logging and debugging',
       ],
       endpoints: {
@@ -412,12 +602,14 @@ export async function GET() {
         },
       },
       responseFormat: {
-        success: 'boolean',
-        enriched: 'EnrichedContact[]',
+        success: 'boolean (always true for partial success)',
+        enriched: 'EnrichedContact[] (includes successful and fallback contacts)',
         summary: {
           total: 'number',
-          enriched: 'number',
-          failed: 'number',
+          enriched: 'number (successfully enriched)',
+          failed: 'number (returned with fallback intelligence)',
+          retried: 'number (contacts retried)',
+          timedOut: 'number (contacts that timed out)',
           cost: 'number (in USD)',
         },
         metrics: {
@@ -425,7 +617,16 @@ export async function GET() {
           enrichmentTime: 'string (seconds)',
           averageTimePerContact: 'string (milliseconds)',
           successRate: 'string (percentage)',
+          retryRate: 'string (percentage of successful that were retried)',
+          timeoutRate: 'string (percentage that timed out)',
           contactsPerSecond: 'number',
+        },
+        errorRecovery: {
+          enabled: 'boolean',
+          maxRetries: 'number',
+          retryDelay: 'string (milliseconds)',
+          timeout: 'string (milliseconds)',
+          gracefulDegradation: 'boolean',
         },
       },
       documentation: 'https://intel.totalaudiopromo.com/documentation',
