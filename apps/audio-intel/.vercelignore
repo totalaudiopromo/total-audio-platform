@@ -1,0 +1,50 @@
+# Vercel Monorepo Configuration
+# This file tells Vercel what to EXCLUDE from the deployment
+
+# Development files
+node_modules
+.git
+.github
+
+# Test files
+*.test.js
+*.test.ts
+*.test.tsx
+*.spec.js
+*.spec.ts
+*.spec.tsx
+playwright-report
+test-results
+reports
+
+# Build artifacts
+.next/cache
+dist
+coverage
+
+# Environment files (use Vercel dashboard for env vars)
+.env.local
+.env.development
+.env.test
+
+# Documentation
+*.md
+!README.md
+
+# Editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
