@@ -120,6 +120,8 @@ jobs:
       run: pnpm --filter "${{ matrix.app }}" build
       env:
         CI: true
+        NEXT_TELEMETRY_DISABLED: 1
+        SKIP_ENV_VALIDATION: true
 
   security:
     name: Security Audit

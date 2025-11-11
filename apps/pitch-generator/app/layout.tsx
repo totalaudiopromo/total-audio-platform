@@ -1,13 +1,10 @@
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/components/AuthProvider';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { ExitIntentPopup, CookieBanner } from '@/components/ClientOnlyComponents';
 import { defaultMetadata } from './metadata';
-
-const geistSans = Geist({ subsets: ['latin'], variable: '--font-sans' });
-const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' });
+import { geistSans, geistMono } from '@/lib/fonts';
 
 export const metadata = defaultMetadata;
 
