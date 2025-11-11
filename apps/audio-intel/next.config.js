@@ -8,6 +8,17 @@ const nextConfig = {
     // Disable TypeScript errors during build (matching tracker config)
     ignoreBuildErrors: true,
   },
+  images: {
+    // Configure image optimization
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'intel.totalaudiopromo.com',
+      },
+    ],
+    // Ensure local images are optimized correctly
+    unoptimized: false,
+  },
 };
 
 module.exports = nextConfig;
