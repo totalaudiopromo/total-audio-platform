@@ -1,0 +1,37 @@
+{
+  "name": "@total-audio/testing",
+  "version": "1.0.0",
+  "description": "Shared testing utilities for Total Audio Platform",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./config": "./dist/config/index.js",
+    "./validators": "./dist/validators/index.js",
+    "./helpers": "./dist/helpers/index.js",
+    "./agents": "./dist/agents/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.56.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.2"
+  },
+  "keywords": [
+    "testing",
+    "playwright",
+    "mobile",
+    "accessibility",
+    "wcag",
+    "performance"
+  ],
+  "author": "Total Audio",
+  "license": "MIT"
+}

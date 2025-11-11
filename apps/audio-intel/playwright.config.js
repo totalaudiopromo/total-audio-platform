@@ -22,15 +22,24 @@ export default defineConfig({
   projects: [
     {
       name: 'Mobile Safari',
-      use: { ...devices['iPhone 13'] },
+      use: {
+        ...devices['iPhone 13'],
+        hasTouch: true,
+      },
     },
     {
       name: 'Mobile Chrome',
-      use: { ...devices['Galaxy S9+'] },
+      use: {
+        ...devices['Galaxy S9+'],
+        hasTouch: true,
+      },
     },
     {
       name: 'Mobile Safari iPad',
-      use: { ...devices['iPad Pro'] },
+      use: {
+        ...devices['iPad Pro'],
+        hasTouch: true,
+      },
     },
   ],
 

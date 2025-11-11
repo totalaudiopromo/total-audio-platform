@@ -1,40 +1,33 @@
-// Tracker Testing Configuration
-import { defineConfig, devices } from '@playwright/test';
+/**
+ * Campaign Tracker Playwright Configuration
+ *
+ * Uses shared configuration from @total-audio/testing for consistency across apps.
+ * UK market devices: iPhone 13, Galaxy S9+, iPad Pro
+ */
+import { defineConfig } from '@playwright/test';
+import { basePlaywrightConfig, ukMarketDevices } from '@total-audio/testing';
 
 export default defineConfig({
+  ...basePlaywrightConfig,
+
   testDir: './tests',
-  fullyParallel: false,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: 1,
-  reporter: [
-    ['html', { outputFolder: './reports' }],
-    ['json', { outputFile: './reports/results.json' }],
-    ['list'],
-  ],
-  use: {
-    baseURL: 'http://localhost:3000',
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
-  },
 
-  // Test on multiple devices
+  /* Tracker specific: mobile tests in separate directory */
   projects: [
-    {
-      name: 'Desktop Chrome',
-      use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 13'] },
-    },
-    {
-      name: 'Mobile Chrome',
-      use: { ...devices['Galaxy S9+'] },
-    },
+    ...ukMarketDevices.map(device => ({
+      ...device,
+      testDir: './tests/mobile',
+      testMatch: '**/*.test.js',
+    })),
   ],
 
-  // Don't start the server - assumes dev server is already running
-  timeout: 30000,
+  /* Run local dev server before starting tests */
+  webServer: process.env.TEST_URL
+    ? undefined
+    : {
+        command: 'npm run dev',
+        url: 'http://localhost:3001',
+        reuseExistingServer: !process.env.CI,
+        timeout: 120 * 1000,
+      },
 });
