@@ -1,9 +1,10 @@
-import dns from 'dns';
-import { promisify } from 'util';
-import net from 'net';
+// Conditionally import Node.js modules only on server
+const dns = typeof window === 'undefined' ? require('dns') : null;
+const net = typeof window === 'undefined' ? require('net') : null;
+const { promisify } = typeof window === 'undefined' ? require('util') : { promisify: null };
 
-const resolveMx = promisify(dns.resolveMx);
-const resolveTxt = promisify(dns.resolveTxt);
+const resolveMx = dns && promisify ? promisify(dns.resolveMx) : null;
+const resolveTxt = dns && promisify ? promisify(dns.resolveTxt) : null;
 
 export interface AdvancedEmailValidationResult {
   email: string;
@@ -302,8 +303,10 @@ const SPAM_TRAP_PATTERNS = [
 const EMAIL_REGEX =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
-// SMTP connection test
+// SMTP connection test (server-side only)
 async function testSMTPConnection(domain: string, mxRecord: string): Promise<boolean> {
+  if (!net) return false; // Client-side: skip SMTP test
+
   return new Promise(resolve => {
     const socket = net.createConnection(25, mxRecord);
     const timeout = setTimeout(() => {
@@ -427,30 +430,36 @@ export async function validateEmailAdvanced(email: string): Promise<AdvancedEmai
     result.issues.push('Potential spam trap detected');
   }
 
-  // 7. DNS MX record validation
-  try {
-    const mxRecords = await resolveMx(domain);
-    result.mxRecords = mxRecords.length > 0;
-    result.details.mxRecords = result.mxRecords;
+  // 7. DNS MX record validation (server-side only)
+  if (resolveMx) {
+    try {
+      const mxRecords = await resolveMx(domain);
+      result.mxRecords = mxRecords.length > 0;
+      result.details.mxRecords = result.mxRecords;
+      result.domainValid = true;
+      result.details.domain = true;
+
+      if (mxRecords.length === 0) {
+        result.issues.push('Domain has no MX records');
+      } else {
+        // 8. SMTP connection test (simplified)
+        const primaryMx = mxRecords[0].exchange;
+        result.smtpConnectable = await testSMTPConnection(domain, primaryMx);
+        result.details.smtpTest = result.smtpConnectable;
+
+        if (!result.smtpConnectable) {
+          result.warnings.push('SMTP connection test failed');
+        }
+      }
+    } catch (error) {
+      result.issues.push('Domain has no MX records');
+      result.domainValid = false;
+      result.details.domain = false;
+    }
+  } else {
+    // Client-side: skip DNS checks
     result.domainValid = true;
     result.details.domain = true;
-
-    if (mxRecords.length === 0) {
-      result.issues.push('Domain has no MX records');
-    } else {
-      // 8. SMTP connection test (simplified)
-      const primaryMx = mxRecords[0].exchange;
-      result.smtpConnectable = await testSMTPConnection(domain, primaryMx);
-      result.details.smtpTest = result.smtpConnectable;
-
-      if (!result.smtpConnectable) {
-        result.warnings.push('SMTP connection test failed');
-      }
-    }
-  } catch (error) {
-    result.issues.push('Domain has no MX records');
-    result.domainValid = false;
-    result.details.domain = false;
   }
 
   // 9. Catch-all detection (simplified)
