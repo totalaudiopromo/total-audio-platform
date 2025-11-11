@@ -429,26 +429,133 @@ claude mcp remove [name]         # Remove MCP server
 
 ---
 
-## 🚨 CRITICAL DEPLOYMENT ISSUE (October 2025)
+## 🚨 CRITICAL: CI/CD PIPELINE ARCHITECTURE (DO NOT BREAK)
 
-### Vercel Deployment Problem
+**Last Fixed**: 2025-11-11 (Phase 10C - Golden Pipeline Reset)
+**Verified Working**: Test deployment passed with green ticks ✅
 
-- **Status**: Deployments failing since ~4 days ago
-- **Symptom**: Build errors after 13-14 minutes (previously successful in ~55s)
-- **Root Cause**: Workspace package `@total-audio/ui` dependency issue
-- **Location**: `apps/audio-intel/package.json` line 35: `"@total-audio/ui": "file:../../packages/ui"`
+### The Problem That Was Fixed
 
-### What Happened
+**ALL GitHub Actions workflows were failing** with `ERR_PNPM_OUTDATED_LOCKFILE`.
 
-- When shared components were extracted to `packages/ui` (commit `b598cd3`), a workspace dependency was created
-- This works locally but Vercel's build process struggles with monorepo workspace packages
+**Root Cause**: `pnpm-lock.yaml` was out of sync with `apps/tracker/package.json` because the `@total-audio/testing` workspace package was added to package.json but the lockfile wasn't regenerated.
 
-### Next Steps to Fix
+**User initially thought**: "need to remove web from auto deploy with vercel cli"
+**Actual issue**: Lockfile synchronization blocking CI, not Vercel configuration
 
-1. Check if `packages/ui` builds properly in isolation
-2. Review what components are imported from `@total-audio/ui`
-3. Either fix Vercel build process or inline the shared components
-4. Consider whether the shared package is necessary for deployment
+### Correct Architecture (Current and Working)
+
+```
+Developer Push to main
+           ↓
+┌──────────────────────────┐
+│  GitHub Actions: ci.yml  │  ✅ Lint, typecheck, test, build
+│  (validation ONLY)       │
+└──────────┬───────────────┘
+           │ (CI must pass)
+           ↓
+┌──────────────────────────┐
+│  Vercel GitHub App       │  ✅ Auto-deploys all 3 apps
+│  (deployment ONLY)       │     (audio-intel, tracker, pitch-generator)
+└──────────┬───────────────┘
+           │ (after deployment)
+           ↓
+┌────────────────────────────┐
+│  golden-verify.yml         │  ✅ Post-deployment health checks
+│  (verification ONLY)       │
+└────────────────────────────┘
+```
+
+### Critical Rules to Prevent Breakage
+
+1. **NEVER modify workflows without regenerating lockfile**
+   - After ANY package.json change, run: `pnpm install`
+   - Commit the updated `pnpm-lock.yaml`
+   - CI uses `--frozen-lockfile` which REQUIRES exact sync
+
+2. **Workflow files MUST be in `.github/workflows/` directory ONLY**
+   - GitHub Actions scans ALL subdirectories of `.github/workflows/`
+   - To archive workflows, move them OUTSIDE `.github/workflows/` entirely
+   - Example: `archive/github-workflows-2025/` is correct location
+   - `.github/workflows/archive/` is WRONG - workflows still execute
+
+3. **Active workflows** (keep these ONLY):
+   - `.github/workflows/ci.yml` - Validation (lint, typecheck, test, build)
+   - `.github/workflows/golden-verify.yml` - Post-deployment health checks
+
+4. **Archived workflows** (must stay archived):
+   - `archive/github-workflows-2025/ci-cd.yml` - Legacy duplicate
+   - `archive/github-workflows-2025/release.yml` - Legacy NPM publishing
+
+### Responsibilities of Each Layer
+
+**ci.yml** (GitHub Actions):
+- Runs on: Every push to `main`, every PR
+- Purpose: Validate code quality BEFORE deployment
+- Actions: Lint, typecheck, test, build (to verify it compiles)
+- **Does NOT deploy** - that's Vercel's job
+
+**Vercel** (GitHub App Integration):
+- Trigger: Automatic on push to `main`
+- Purpose: Build and deploy apps to production
+- Configuration: Per-app `vercel.json` files + Dashboard settings
+- No CLI commands needed - fully automatic
+
+**golden-verify.yml** (GitHub Actions):
+- Runs on: After Vercel deploys, hourly health checks, scheduled summaries
+- Purpose: Verify deployed sites are healthy
+- Actions: Health checks, reports, Telegram notifications (failures only)
+- **Does NOT build or test** - those happened in ci.yml
+
+### Verification Checklist (How to Test Pipeline is Working)
+
+1. **Check GitHub Actions**: https://github.com/totalaudiopromo/total-audio-platform/actions
+   - Should see ONLY "CI" and "Golden Verification Pipeline" workflows
+   - CI workflow should pass (green checkmark) ✅
+   - NO "CI/CD Pipeline" or "Release" workflows running
+
+2. **Check Vercel Deployments**:
+   - Audio Intel: https://vercel.com/chris-projects-6ffe0e29/audio-intel
+   - Tracker: https://vercel.com/chris-projects-6ffe0e29/tracker-fresh
+   - Pitch Generator: https://vercel.com/chris-projects-6ffe0e29/pitch-generator
+   - All should auto-deploy on `main` push ✅
+
+3. **Test with small commit**:
+   ```bash
+   echo "test" > test-pipeline.txt
+   git add test-pipeline.txt
+   git commit -m "test: verify pipeline"
+   git push origin main
+   ```
+   - Watch CI run and pass
+   - Watch Vercel auto-deploy
+   - Watch Golden Verify run post-checks
+
+### Troubleshooting
+
+**If CI fails with lockfile error**:
+```bash
+pnpm install  # Regenerate lockfile
+git add pnpm-lock.yaml
+git commit -m "fix(ci): Regenerate pnpm-lock.yaml"
+git push origin main
+```
+
+**If old workflows appear**:
+- Check `.github/workflows/` directory
+- Move ANY non-active workflows to `archive/github-workflows-2025/`
+- GitHub scans ALL subdirectories, so archival MUST be outside `.github/workflows/`
+
+**If Vercel doesn't auto-deploy**:
+- Check Vercel Dashboard → Project → Settings → Git
+- Verify "Production Branch" is set to `main`
+- Verify GitHub App integration is connected
+
+### Reference Documentation
+
+- Full details: [docs/PHASE_10C_CLEANUP_AND_REBASE.md](docs/PHASE_10C_CLEANUP_AND_REBASE.md)
+- Golden Verify workflow: [.github/workflows/golden-verify.yml](.github/workflows/golden-verify.yml)
+- CI workflow: [.github/workflows/ci.yml](.github/workflows/ci.yml)
 
 ---
 
