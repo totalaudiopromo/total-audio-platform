@@ -53,6 +53,14 @@ jobs:
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
 
+    - name: Verify dependencies are installed
+      run: |
+        echo "Verifying critical dependencies..."
+        pnpm list styled-jsx --depth=0 || echo "Warning: styled-jsx not found"
+        pnpm list react --depth=0 || echo "Warning: react not found"
+        pnpm list next --depth=0 || echo "Warning: next not found"
+        echo "Dependency verification complete"
+
     - name: Run linting
       run: pnpm run lint
       continue-on-error: true
@@ -100,6 +108,13 @@ jobs:
 
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
+
+    - name: Verify dependencies for ${{ matrix.app }}
+      run: |
+        echo "Verifying dependencies for ${{ matrix.app }}..."
+        cd apps/${{ matrix.app }}
+        pnpm list --depth=0 || echo "Dependency check completed with warnings"
+        echo "Verification complete"
 
     - name: Build ${{ matrix.app }}
       run: pnpm --filter "${{ matrix.app }}" build
