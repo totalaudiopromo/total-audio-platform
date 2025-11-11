@@ -57,8 +57,8 @@
       'object' == typeof window && window && window.Math == Math
         ? window
         : 'object' == typeof self && self && self.Math == Math
-        ? self
-        : Function('return this')(),
+          ? self
+          : Function('return this')(),
     v = d.document,
     g = r(v) && r(v.createElement),
     b = function (t) {
@@ -107,8 +107,8 @@
   'undefined' != typeof window
     ? window
     : 'undefined' != typeof global
-    ? global
-    : 'undefined' != typeof self && self;
+      ? global
+      : 'undefined' != typeof self && self;
   function S() {
     throw new Error('Dynamic requires are not currently supported by rollup-plugin-commonjs');
   }
@@ -116,7 +116,7 @@
     return t && t.__esModule && Object.prototype.hasOwnProperty.call(t, 'default') ? t.default : t;
   }
   function R(t, e) {
-    return t((e = { exports: {} }), e.exports), e.exports;
+    return (t((e = { exports: {} }), e.exports), e.exports);
   }
   var L,
     j,
@@ -450,14 +450,14 @@
       return void 0 === t
         ? 'Undefined'
         : null === t
-        ? 'Null'
-        : 'string' == typeof (r = Gt((n = Object(t)), Ut))
-        ? r
-        : Bt
-        ? e(n)
-        : 'Object' == (o = e(n)) && 'function' == typeof n.callee
-        ? 'Arguments'
-        : o;
+          ? 'Null'
+          : 'string' == typeof (r = Gt((n = Object(t)), Ut))
+            ? r
+            : Bt
+              ? e(n)
+              : 'Object' == (o = e(n)) && 'function' == typeof n.callee
+                ? 'Arguments'
+                : o;
     },
     Yt = {};
   Yt[q('toStringTag')] = 'z';
@@ -944,16 +944,16 @@
           ? ''
           : void 0
         : (r = u.charCodeAt(s)) < 55296 ||
-          r > 56319 ||
-          s + 1 === a ||
-          (i = u.charCodeAt(s + 1)) < 56320 ||
-          i > 57343
-        ? n
-          ? u.charAt(s)
-          : r
-        : n
-        ? u.slice(s, s + 2)
-        : i - 56320 + ((r - 55296) << 10) + 65536;
+            r > 56319 ||
+            s + 1 === a ||
+            (i = u.charCodeAt(s + 1)) < 56320 ||
+            i > 57343
+          ? n
+            ? u.charAt(s)
+            : r
+          : n
+            ? u.slice(s, s + 2)
+            : i - 56320 + ((r - 55296) << 10) + 65536;
     },
     On = !h(function () {
       function t() {}
@@ -969,10 +969,10 @@
           return X(t, En)
             ? t[En]
             : 'function' == typeof t.constructor && t instanceof t.constructor
-            ? t.constructor.prototype
-            : t instanceof Object
-            ? Sn
-            : null;
+              ? t.constructor.prototype
+              : t instanceof Object
+                ? Sn
+                : null;
         },
     Rn = q('iterator'),
     Ln = !1,
@@ -1187,8 +1187,8 @@
         return 'keys' == n
           ? { value: r, done: !1 }
           : 'values' == n
-          ? { value: e[r], done: !1 }
-          : { value: [r, e[r]], done: !1 };
+            ? { value: e[r], done: !1 }
+            : { value: [r, e[r]], done: !1 };
       },
       'values'
     );
@@ -1540,8 +1540,8 @@
                     r === n.promise
                       ? f(po('Promise-chain cycle'))
                       : (u = Ao(r))
-                      ? u.call(r, a, f)
-                      : a(r);
+                        ? u.call(r, a, f)
+                        : a(r);
                   } else f(o);
                 } catch (t) {
                   l && !s && l.exit();
@@ -2190,10 +2190,10 @@
       return 9 == e.nodeType && e != t
         ? o(e)
         : n && 11 == n.nodeType && n.host
-        ? n.host
-        : n && n.assignedSlot
-        ? n.assignedSlot.parentNode
-        : n;
+          ? n.host
+          : n && n.assignedSlot
+            ? n.assignedSlot.parentNode
+            : n;
     }
   })();
   var Vo = R(function (t) {
@@ -2342,8 +2342,8 @@
               return void 0 === t
                 ? "Failed to construct 'ResizeObserver': 1 argument required, but only 0 present."
                 : 'function' != typeof t
-                ? "Failed to construct 'ResizeObserver': The callback provided as parameter 1 is not a function."
-                : void 0;
+                  ? "Failed to construct 'ResizeObserver': The callback provided as parameter 1 is not a function."
+                  : void 0;
             }
             function f(t, e) {
               return void 0 === e
@@ -2351,10 +2351,10 @@
                     t +
                     "' on 'ResizeObserver': 1 argument required, but only 0 present."
                 : e && e.nodeType === window.Node.ELEMENT_NODE
-                ? void 0
-                : "Failed to execute '" +
-                  t +
-                  "' on 'ResizeObserver': parameter 1 is not of type 'Element'.";
+                  ? void 0
+                  : "Failed to execute '" +
+                    t +
+                    "' on 'ResizeObserver': parameter 1 is not of type 'Element'.";
             }
             function l(t, e) {
               for (var n = 0; n < t.length; n += 1) if (t[n].target === e) return n;
@@ -2498,8 +2498,8 @@ var globalRoot,
       'undefined' != typeof window && null !== window
         ? window
         : 'undefined' != typeof global && null !== global
-        ? global
-        : this).hns =
+          ? global
+          : this).hns =
     globalRoot.hns2 =
       function (t, e) {
         var n,

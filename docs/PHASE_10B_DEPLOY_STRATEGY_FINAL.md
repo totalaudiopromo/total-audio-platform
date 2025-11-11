@@ -193,7 +193,6 @@ Continues to perform:
 ### Emergency Rollback
 
 1. **Identify issue:**
-
    - Health check failures
    - User reports
    - Monitoring alerts

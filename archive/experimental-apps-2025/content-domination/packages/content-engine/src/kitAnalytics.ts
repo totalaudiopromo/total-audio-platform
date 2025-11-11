@@ -285,8 +285,8 @@ class KitAnalytics {
         test.status === 'completed'
           ? 'completed'
           : test.status === 'running' && winner.statistical_significance > 95
-          ? 'completed'
-          : 'running';
+            ? 'completed'
+            : 'running';
 
       return {
         test_id: testId,

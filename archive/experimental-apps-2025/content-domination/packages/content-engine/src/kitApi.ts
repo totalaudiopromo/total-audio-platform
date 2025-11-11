@@ -172,14 +172,17 @@ class KitApi {
     const queryString = params
       ? '?' +
         new URLSearchParams(
-          Object.entries(params).reduce((acc, [key, value]) => {
-            if (Array.isArray(value)) {
-              acc[key] = value.join(',');
-            } else if (value !== undefined) {
-              acc[key] = String(value);
-            }
-            return acc;
-          }, {} as Record<string, string>)
+          Object.entries(params).reduce(
+            (acc, [key, value]) => {
+              if (Array.isArray(value)) {
+                acc[key] = value.join(',');
+              } else if (value !== undefined) {
+                acc[key] = String(value);
+              }
+              return acc;
+            },
+            {} as Record<string, string>
+          )
         ).toString()
       : '';
 

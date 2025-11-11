@@ -129,12 +129,10 @@
 Generate pitches with these Key Hooks and verify AI respects genre:
 
 1. **UK Garage**: "Sounds like 1999 UK garage from So Solid Crew era"
-
    - Should mention: UK garage artists (Artful Dodger, Craig David era)
    - Should NOT mention: Aphex Twin, techno artists
 
 2. **Techno**: "Detroit techno influenced by Derrick May and Carl Craig"
-
    - Should mention: Detroit techno artists
    - Should NOT mention: UK garage, drum & bass
 

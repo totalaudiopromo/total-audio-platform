@@ -1,3 +1,5 @@
+import { parseIntelligenceFields, formatForCSV } from './intelligenceFormatter';
+
 type ExportCsvColumn = { key: string; header: string };
 type ExportCsvOptions = {
   fields?: string[]; // legacy: list of headers using default mapping
@@ -12,11 +14,18 @@ export function exportToCsv(data: Array<Record<string, any>>, opts: ExportCsvOpt
     fields = [
       'Name',
       'Email',
-      'Contact Intelligence',
-      'Research Confidence',
-      'Last Researched',
       'Platform',
       'Role',
+      'Format',
+      'Coverage',
+      'Genres',
+      'Contact Method',
+      'Best Timing',
+      'Submission Guidelines',
+      'Pitch Tips',
+      'Notes',
+      'Research Confidence',
+      'Last Researched',
       'Company',
     ],
     columns,
@@ -36,7 +45,21 @@ export function exportToCsv(data: Array<Record<string, any>>, opts: ExportCsvOpt
     columns ?? fields.map(label => ({ key: labelToKey(label), header: label }));
 
   const headerLine = includeHeaders ? effectiveColumns.map(c => c.header).join(delimiter) : null;
-  const lines = data.map(row =>
+
+  // Process data to extract intelligence fields using formatter
+  const processedData = data.map(row => {
+    // If contact has intelligence string, parse it into separate fields
+    if (row.contactIntelligence && typeof row.contactIntelligence === 'string') {
+      const intelligenceFields = parseIntelligenceFields(row.contactIntelligence);
+      const csvFields = formatForCSV(intelligenceFields);
+
+      // Merge parsed intelligence fields with existing row data
+      return { ...row, ...csvFields };
+    }
+    return row;
+  });
+
+  const lines = processedData.map(row =>
     effectiveColumns.map(col => escape(row[col.key] ?? '')).join(delimiter)
   );
 
@@ -49,18 +72,34 @@ function labelToKey(label: string): string {
       return 'name';
     case 'Email':
       return 'email';
-    case 'Contact Intelligence':
-      return 'contactIntelligence';
-    case 'Research Confidence':
-      return 'researchConfidence';
-    case 'Last Researched':
-      return 'lastResearched';
     case 'Platform':
       return 'platform';
     case 'Role':
       return 'role';
+    case 'Format':
+      return 'format';
+    case 'Coverage':
+      return 'coverage';
+    case 'Genres':
+      return 'genres';
+    case 'Contact Method':
+      return 'contactMethod';
+    case 'Best Timing':
+      return 'bestTiming';
+    case 'Submission Guidelines':
+      return 'submissionGuidelines';
+    case 'Pitch Tips':
+      return 'pitchTips';
+    case 'Notes':
+      return 'notes';
+    case 'Research Confidence':
+      return 'researchConfidence';
+    case 'Last Researched':
+      return 'lastResearched';
     case 'Company':
       return 'company';
+    case 'Contact Intelligence':
+      return 'contactIntelligence';
     default:
       return label;
   }

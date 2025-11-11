@@ -5,7 +5,11 @@
  */
 
 const { test, expect } = require('@playwright/test');
-const { validatePerformance, measureAllMetrics, measureCLS } = require('@total-audio/testing');
+const {
+  validatePerformance,
+  measureAllMetrics,
+  measureCLS,
+} = require('@total-audio/testing');
 
 test.describe('Performance Metrics', () => {
   test('Homepage meets Core Web Vitals', async ({ page }) => {
@@ -54,7 +58,9 @@ test.describe('Performance Metrics', () => {
     console.log('\n📊 Campaign Tracker Performance Report:');
     console.log('─'.repeat(60));
     report.forEach(({ page: p, cls, lcp, fcp }) => {
-      console.log(`${p.padEnd(20)} CLS: ${cls.toFixed(3)}  LCP: ${lcp}ms  FCP: ${fcp}ms`);
+      console.log(
+        `${p.padEnd(20)} CLS: ${cls.toFixed(3)}  LCP: ${lcp}ms  FCP: ${fcp}ms`
+      );
     });
     console.log('─'.repeat(60));
 
@@ -88,8 +94,13 @@ test.describe('Performance Metrics', () => {
     await page.goto('/campaigns');
 
     // Wait for campaign cards to load
-    const campaignCards = page.locator('[data-campaign], [class*="campaign-card"]');
-    await campaignCards.first().waitFor({ timeout: 5000 }).catch(() => {});
+    const campaignCards = page.locator(
+      '[data-campaign], [class*="campaign-card"]'
+    );
+    await campaignCards
+      .first()
+      .waitFor({ timeout: 5000 })
+      .catch(() => {});
 
     const loadTime = Date.now() - startTime;
     console.log(`⏱️ Campaign list load time: ${loadTime}ms`);

@@ -88,7 +88,7 @@ export async function validateHorizontalScroll(element: Locator): Promise<{
   clientWidth: number;
   hasScroll: boolean;
 }> {
-  const scrollInfo = await element.evaluate((el) => ({
+  const scrollInfo = await element.evaluate(el => ({
     scrollWidth: el.scrollWidth,
     clientWidth: el.clientWidth,
     hasScroll: el.scrollWidth > el.clientWidth,

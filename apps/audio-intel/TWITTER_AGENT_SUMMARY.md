@@ -74,31 +74,26 @@ Content extracted from **`social-content/TWITTER_X_THREADS_RADIO_PROMOTERS.md`**
 ### 6 Pre-configured Threads
 
 1. **The 2AM Reality** (7 tweets)
-
    - Origin story and problem awareness
    - Time savings demonstration
    - Founder credibility
 
 2. **The Contact Intelligence Reality** (7 tweets)
-
    - Feature demonstration
    - Manual vs automated comparison
    - Response rate improvements
 
 3. **The Brighton Producer Story** (8 tweets)
-
    - Authentic founder background
    - Real campaign examples
    - Music industry credibility
 
 4. **The Submission Window Problem** (7 tweets)
-
    - Urgency and time-sensitive opportunities
    - Real-world failure example
    - Speed advantage demonstration
 
 5. **The Cost Reality** (7 tweets)
-
    - Pricing comparison (Muck Rack, Cision vs Audio Intel)
    - UK market positioning
    - Value proposition

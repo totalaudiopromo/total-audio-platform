@@ -8,13 +8,11 @@
 ## ✅ Completed
 
 1. **All 3 apps migrated to `@total-audio/core-db`**
-
    - Audio Intel: 9 imports → 108 routes ✅
    - Tracker: 52 imports → 65 routes ✅
    - Pitch Generator: 37 imports → 42 routes ✅
 
 2. **Legacy code cleanup**
-
    - Deleted 6 Supabase directories ✅
    - Deleted 2 standalone files ✅
 

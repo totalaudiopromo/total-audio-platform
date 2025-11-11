@@ -10,7 +10,6 @@
 ### 1. Legal Pages
 
 - [ ] **Terms of Service**: Visit https://intel.totalaudiopromo.com/terms
-
   - Page loads without errors
   - Neo-brutalist design renders correctly
   - Related legal links work (Privacy, Cookies, Contact)

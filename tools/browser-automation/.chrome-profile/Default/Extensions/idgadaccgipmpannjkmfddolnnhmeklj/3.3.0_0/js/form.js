@@ -9,14 +9,14 @@
   function o(e, n = 'offscreen') {
     return new Promise(o => {
       const r = Math.random().toString();
-      (t[r] = o), window.parent.postMessage({ type: n, msg: e, waitingKey: r }, '*');
+      ((t[r] = o), window.parent.postMessage({ type: n, msg: e, waitingKey: r }, '*'));
     });
   }
-  e.setupErrorLogging({ sendMessageFn: n }),
+  (e.setupErrorLogging({ sendMessageFn: n }),
     (window.TB_preferencesStore = {
       getItem: e => o({ key: e, subType: 'get' }, 'localStorage'),
       setItem: (e, t) => o({ key: e, value: t, subType: 'set' }, 'localStorage'),
-    });
+    }));
   const r = e.makeConfigMaker(
     'EXTENSION',
     function (e) {
@@ -51,7 +51,7 @@
       onAccept: async function (e, t) {
         const { res: o, snippetConfig: r } = await a(e),
           i = { ...r, ...t };
-        s && (await s), n({ request: 'formSubmit', replacement: o, config: i });
+        (s && (await s), n({ request: 'formSubmit', replacement: o, config: i }));
       },
       onReject: function () {
         o({ request: 'closeWindow' });
@@ -63,11 +63,11 @@
   !(async function () {
     console.log(Date.now(), 'Requested form data');
     const e = await n({ request: 'nextForm' });
-    console.log(Date.now(), 'Received form data', e),
+    (console.log(Date.now(), 'Received form data', e),
       e
         ? c(e)
         : (document.body.innerText =
-            'Form failed to load, please contact us at support@blaze.today to troubleshoot');
+            'Form failed to load, please contact us at support@blaze.today to troubleshoot'));
   })();
   let u = l();
   function l() {
@@ -78,7 +78,7 @@
       height: window.outerHeight,
     };
   }
-  setInterval(() => {
+  (setInterval(() => {
     const e = l();
     (u.left === e.left && u.top === e.top && u.width === e.width && u.height === e.height) ||
       ((u = e), n({ request: 'savePosition', position: e }));
@@ -93,11 +93,11 @@
       const { msg: r, waitingKey: s } = o;
       if (s && t[s]) {
         const e = t[s];
-        return delete t[s], e(r.response), { handled: !0 };
+        return (delete t[s], e(r.response), { handled: !0 });
       }
       return 'backgroundResponse' === r.type
         ? { handled: !0 }
         : { handled: !1, msg: r, waitingKey: s };
     }),
-    window.clearMessageBuffer();
+    window.clearMessageBuffer());
 })();

@@ -343,7 +343,6 @@ pnpm tsx scripts/golden-summary.ts
    Ensure `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` are set
 
 2. **Check Workflow Logs**:
-
    - Navigate to Actions → Golden Verification Pipeline
    - Click latest run → "Send AI Summary Report" step
    - Look for error messages
@@ -370,23 +369,19 @@ pnpm tsx scripts/golden-summary.ts
 **Solutions**:
 
 1. **Verify Notion Integration**:
-
    - Visit: https://www.notion.so/my-integrations
    - Ensure integration exists and has "Insert content" capability
 
 2. **Verify Page Connection**:
-
    - Open target Notion page
    - Click "..." → "Connections"
    - Ensure your integration is listed
 
 3. **Verify Page ID**:
-
    - Check URL format: `notion.so/workspace/[PAGE_ID]?v=...`
    - Ensure you copied the 32-character Page ID (not workspace ID)
 
 4. **Check Notion API Version**:
-
    - Script uses `Notion-Version: 2022-06-28`
    - Ensure your integration supports this version
 
@@ -415,7 +410,6 @@ pnpm tsx scripts/golden-summary.ts
 **Solutions**:
 
 1. **Check if postcheck ran**:
-
    - Verify `golden-postcheck.ts` executed successfully
    - Check for `reports/golden/history/YYYY-MM-DD.md` file
 

@@ -111,14 +111,12 @@ git push origin main
 ### Day 1 - Immediate Checks (15 mins)
 
 1. **Cookie Banner**:
-
    - Visit intel.totalaudiopromo.com in incognito
    - Cookie banner appears at bottom
    - Click "Decline" → Banner disappears
    - Refresh page → Banner stays hidden (remembered)
 
 2. **Exit Popup**:
-
    - Visit homepage (not incognito)
    - Browse for 30+ seconds
    - Move mouse to top of screen
@@ -126,19 +124,16 @@ git push origin main
    - Press ESC → Popup closes
 
 3. **Mobile Test**:
-
    - Open site on phone
    - Exit popup should NEVER appear
    - Cookie banner should be readable
 
 4. **Test Pages Protected**:
-
    - Try visiting intel.totalaudiopromo.com/test
    - Should redirect to homepage
    - Try /debug-content, /notion-test - all redirect
 
 5. **Legal Pages**:
-
    - Click "Privacy Policy" in footer → Page loads
    - Click "Cookie Policy" in footer → Page loads
    - All links work correctly
@@ -199,12 +194,10 @@ These are **nice-to-haves** if you have extra time:
 ### High Priority (2-3 hours)
 
 1. **Terms of Service page** (1 hour)
-
    - Legal protection for business
    - Similar to Privacy/Cookie pages
 
 2. **Contact/Support page** (30 mins)
-
    - Support email and response times
    - FAQ or contact form
 
@@ -216,12 +209,10 @@ These are **nice-to-haves** if you have extra time:
 ### Medium Priority (2-3 hours)
 
 4. **Fix image warnings** (1 hour)
-
    - Convert `<img>` to Next.js `<Image>`
    - Automatic optimization
 
 5. **Add canonical URLs** (30 mins)
-
    - Prevent duplicate content
    - Better SEO
 

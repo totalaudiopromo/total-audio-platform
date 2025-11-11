@@ -173,8 +173,8 @@ export function BrutalistPDFTemplate({ contacts, metrics, whiteLabel }: Brutalis
                         isHigh
                           ? 'bg-green-500 text-white'
                           : isMedium
-                          ? 'bg-orange-500 text-white'
-                          : 'bg-gray-500 text-white'
+                            ? 'bg-orange-500 text-white'
+                            : 'bg-gray-500 text-white'
                       }
                     `}
                   >

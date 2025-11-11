@@ -109,16 +109,22 @@ export async function GET() {
       .slice(0, 5);
 
     // Device breakdown
-    const deviceBreakdown = betaUsers.reduce((acc, user) => {
-      acc[user.device.type] = (acc[user.device.type] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const deviceBreakdown = betaUsers.reduce(
+      (acc, user) => {
+        acc[user.device.type] = (acc[user.device.type] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     // App usage
-    const appUsage = betaUsers.reduce((acc, user) => {
-      acc[user.app] = (acc[user.app] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const appUsage = betaUsers.reduce(
+      (acc, user) => {
+        acc[user.app] = (acc[user.app] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     // Engagement metrics
     const totalSessionTime = betaUsers.reduce((acc, user) => acc + user.engagement.timeSpent, 0);

@@ -107,8 +107,8 @@ export default async function HomePage() {
               <Link href="/signup" className="cta-button">
                 Start my free trial →
               </Link>
-              <Link href="#how-it-works" className="subtle-button">
-                Show me how it works
+              <Link href="/demo" className="subtle-button">
+                View live demo
               </Link>
             </div>
             <p className="text-sm text-gray-500">
@@ -220,8 +220,8 @@ export default async function HomePage() {
               {feature.title.includes('AI')
                 ? 'AI'
                 : feature.title.includes('Real-time')
-                ? 'SPEED'
-                : 'DATA'}
+                  ? 'SPEED'
+                  : 'DATA'}
             </div>
             <h3 className="mt-4 text-xl font-semibold">{feature.title}</h3>
             <p className="mt-3 text-sm text-gray-600">{feature.description}</p>

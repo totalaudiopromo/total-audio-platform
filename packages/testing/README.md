@@ -114,24 +114,28 @@ export default defineConfig({
 ### Validators
 
 #### Touch Targets
+
 - `validateTouchTargetSize(element, minSize)` - Validate single element
 - `validateAllTouchTargets(page, selector, minSize)` - Validate all interactive elements
 - `validateTouchTargetSpacing(elements, minSpacing)` - Check spacing between elements
 - `validateGestureConflicts(element)` - Detect tap/swipe conflicts
 
 #### Responsive
+
 - `validateBreakpoints(page, breakpoints, criticalSelector)` - Test multiple breakpoints
 - `validateViewportFit(element, viewport)` - Check element fits viewport
 - `validateHorizontalScroll(element)` - Detect unintended scrolling
 - `validateMobileLayout(page)` - Mobile-specific validations
 
 #### Accessibility
+
 - `validateAccessibility(page)` - Comprehensive A11y audit
 - `validateAriaLabels(page)` - ARIA implementation validation
 - `validateKeyboardNavigation(page)` - Keyboard accessibility
 - `validateColorContrast(element)` - WCAG 2.2 contrast ratios
 
 #### Performance
+
 - `validatePerformance(page, thresholds)` - Core Web Vitals validation
 - `measureAllMetrics(page)` - All performance metrics
 - `measureCLS(page, duration)` - Cumulative Layout Shift
@@ -142,19 +146,23 @@ export default defineConfig({
 ### Configurations
 
 #### Devices
+
 - `ukMarketDevices` - iPhone 13, Galaxy S9+, iPad Pro
 - `extendedDevices` - Additional mobile devices
 - `desktopDevices` - Desktop Chrome, Firefox, Safari
 
 #### Breakpoints
+
 - `commonBreakpoints` - Standard mobile/tablet/desktop sizes
 
 #### Environments
+
 - `getBaseURL(app, environment)` - Get app URL for environment
 
 ## UK Market Focus
 
 All mobile configurations target UK market devices:
+
 - iPhone 13 (Mobile Safari)
 - Samsung Galaxy S9+ (Mobile Chrome)
 - iPad Pro (Mobile Safari)
@@ -164,6 +172,7 @@ Performance thresholds account for UK mobile networks.
 ## WCAG 2.2 Level AA Compliance
 
 All validators enforce WCAG 2.2 Level AA standards:
+
 - Touch targets: 44x44px minimum
 - Color contrast: 4.5:1 (normal text), 3:1 (large text)
 - Keyboard navigation: Full support required
@@ -172,6 +181,7 @@ All validators enforce WCAG 2.2 Level AA standards:
 ## Core Web Vitals Thresholds
 
 Performance validators use Google's Core Web Vitals thresholds:
+
 - CLS (Cumulative Layout Shift): < 0.1 (good)
 - LCP (Largest Contentful Paint): < 2500ms (good)
 - FID (First Input Delay): < 100ms (good)

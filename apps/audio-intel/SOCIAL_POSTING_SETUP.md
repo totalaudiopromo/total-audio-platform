@@ -51,7 +51,6 @@ npx tsx scripts/test-bluesky.ts
    ```
 
 2. **Follow the OAuth flow**:
-
    - Script will give you an authorization URL
    - Visit the URL in your browser
    - Authorize the app
@@ -92,14 +91,12 @@ npx tsx scripts/test-bluesky.ts
 **Setup steps**:
 
 1. **Create Facebook App**:
-
    - Go to https://developers.facebook.com/apps
    - Create new app (type: Business)
    - Add "Threads API" product
    - Request permissions: `threads_basic`, `threads_content_publish`
 
 2. **Get App Credentials**:
-
    - Note your App ID and App Secret
    - Add to .env.local:
      ```bash
@@ -114,7 +111,6 @@ npx tsx scripts/test-bluesky.ts
    ```
 
 4. **Follow the OAuth flow**:
-
    - Script will give you an authorization URL
    - Visit the URL in your browser
    - Authorize with your Instagram business account
@@ -263,7 +259,6 @@ Platform-specific issues:
    ```
 
 2. Check cron logs in Vercel dashboard:
-
    - Go to project > Deployments > Latest deployment
    - Check "Functions" tab for cron execution logs
 

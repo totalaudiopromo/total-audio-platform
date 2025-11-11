@@ -16,7 +16,7 @@
                 const e = arguments;
                 return (
                   queueMicrotask(() => {
-                    n(...e), (document.body.dataset.__TB_execCommand_finished = '1');
+                    (n(...e), (document.body.dataset.__TB_execCommand_finished = '1'));
                   }),
                   !0
                 );
@@ -40,14 +40,14 @@
           function c(e) {
             if (document.body.dataset.__TB_execCommand) {
               const t = e.clipboardData;
-              (t.__is_TB_overridden = !0), (t[s('types')] = e.clipboardData[n.types].slice());
+              ((t.__is_TB_overridden = !0), (t[s('types')] = e.clipboardData[n.types].slice()));
               const o = new DataTransfer(),
                 r = Object.create(null);
               for (const e of t[s('types')]) {
                 const s = t[n.getData](e);
-                (r[e] = s), o.setData(e, s);
+                ((r[e] = s), o.setData(e, s));
               }
-              (t[s('items')] = o[n.items]),
+              ((t[s('items')] = o[n.items]),
                 (t[s('getData')] = function (e) {
                   if (
                     this.__is_TB_overridden &&
@@ -56,7 +56,7 @@
                     return r[e];
                   }
                   return this[n.getData](...arguments);
-                });
+                }));
             }
           }
           return (
@@ -64,7 +64,7 @@
               const o = Object.getOwnPropertyDescriptor(e, t),
                 c = Symbol('__' + t);
               let i;
-              (n[t] = c),
+              ((n[t] = c),
                 (r[t] = o),
                 Object.defineProperty(e, c, o),
                 (i =
@@ -80,16 +80,16 @@
                         },
                         writable: !0,
                       }),
-                Object.defineProperty(e, t, i);
+                Object.defineProperty(e, t, i));
             }),
             document.addEventListener('paste', c, !0),
             () => {
               document.removeEventListener('paste', c, !0);
               for (const o of t) {
                 const t = n[o];
-                Object.defineProperty(e, o, r[o]), delete e[t];
+                (Object.defineProperty(e, o, r[o]), delete e[t]);
               }
-              for (const e in n) delete n[e], delete r[e];
+              for (const e in n) (delete n[e], delete r[e]);
             }
           );
         },
@@ -169,12 +169,12 @@
               },
               c = { detail: 0, isPrimary: !0, pointerType: 'mouse' },
               i = new PointerEvent('pointerdown', { ...s, ...c, buttons: 1, pressure: 0.5 });
-            t.dispatchEvent(i),
+            (t.dispatchEvent(i),
               i.defaultPrevented ||
                 t.dispatchEvent(new MouseEvent('mousedown', { ...s, buttons: 1 })),
               t.dispatchEvent(new PointerEvent('pointerup', { ...s, ...c, pressure: 0 })),
               i.defaultPrevented || t.dispatchEvent(new MouseEvent('mouseup', s)),
-              t.click();
+              t.click());
           };
           return (
             document.addEventListener('TB_customClick', e),
@@ -194,22 +194,22 @@
             const e = document
               .getElementById('__TB_pdf_iframe')
               .contentDocument.getElementsByTagName('embed')[0];
-            e.postMessage({ type: 'selectAll' }, '*'),
-              e.postMessage({ type: 'getSelectedText' }, '*');
+            (e.postMessage({ type: 'selectAll' }, '*'),
+              e.postMessage({ type: 'getSelectedText' }, '*'));
           }
           function n() {
             const e = document.getElementsByTagName('embed')[0];
-            e.postMessage({ type: 'selectAll' }, '*'),
-              e.postMessage({ type: 'getSelectedText' }, '*');
+            (e.postMessage({ type: 'selectAll' }, '*'),
+              e.postMessage({ type: 'getSelectedText' }, '*'));
           }
           return (
             document.addEventListener('TB_PDF_GetSelectedText', e),
             document.addEventListener('TB_PDF_GetAllText', t),
             document.addEventListener('TB_PDF_GetAllTextFromOriginalPdf', n),
             () => {
-              document.removeEventListener('TB_PDF_GetSelectedText', e),
+              (document.removeEventListener('TB_PDF_GetSelectedText', e),
                 document.removeEventListener('TB_PDF_GetAllText', t),
-                document.removeEventListener('TB_PDF_GetAllTextFromOriginalPdf', n);
+                document.removeEventListener('TB_PDF_GetAllTextFromOriginalPdf', n));
             }
           );
         },
@@ -232,14 +232,14 @@
     }
     return;
   }
-  Object.defineProperty(o, n, { value: !0, enumerable: !1, configurable: !1, writable: !1 }),
+  (Object.defineProperty(o, n, { value: !0, enumerable: !1, configurable: !1, writable: !1 }),
     window.__tb_configs ||
       Object.defineProperty(window, e, {
         enumerable: !1,
         writable: !1,
         configurable: !1,
         value: { remaps: Object.create(null) },
-      });
+      }));
   const r = window.__tb_configs;
   for (const e in t) {
     const { fn: n, version: o } = t[e],

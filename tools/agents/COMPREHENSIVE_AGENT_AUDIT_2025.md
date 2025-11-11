@@ -39,7 +39,6 @@
 #### **Contact Enrichment & Audio Intel Revenue Drivers**
 
 1. **`enrich-all-contacts.js`**
-
    - **Purpose**: Enrich all Airtable contacts using Claude Sonnet 4.5
    - **Status**: ✅ FUNCTIONAL - Production ready
    - **Last Modified**: October 4, 2025
@@ -54,7 +53,6 @@
    - **Cost**: $0.003/contact (Claude Sonnet 4.5)
 
 2. **`enrich-kyara-contacts.js`**
-
    - **Purpose**: Targeted enrichment for Kyara campaign contacts
    - **Status**: ✅ FUNCTIONAL - Campaign-specific
    - **Last Modified**: October 3, 2025
@@ -63,7 +61,6 @@
    - **Dependencies**: Same as `enrich-all-contacts.js`
 
 3. **`update-fields-from-enrichment.js`**
-
    - **Purpose**: Update Airtable contact fields with enrichment data
    - **Status**: ✅ FUNCTIONAL
    - **Last Modified**: October 3, 2025
@@ -82,7 +79,6 @@
 #### **Gmail Automation - Time Savings**
 
 5. **`liberty-autopilot.js`**
-
    - **Purpose**: Automated Gmail organization (Otter AI, Gemini, WARM, Machina marketing)
    - **Status**: ✅ FUNCTIONAL - Production ready
    - **Last Modified**: September 2025
@@ -110,7 +106,6 @@
 #### **Social Media Content Automation**
 
 7. **`social-media-scheduler.js`**
-
    - **Purpose**: Generate 4-week content calendar across Twitter, LinkedIn, Bluesky, Threads
    - **Status**: ✅ FUNCTIONAL - Content library based
    - **Last Modified**: September 29, 2025
@@ -149,7 +144,6 @@
 #### **Lead Generation & Research Automation**
 
 9. **`station-discovery-system.js`**
-
    - **Purpose**: Discover new radio stations from WARM API
    - **Status**: ✅ FUNCTIONAL
    - **Last Modified**: October 6, 2025
@@ -174,7 +168,6 @@
 #### **Analytics & Reporting**
 
 11. **`analytics-agent.js`**
-
     - **Purpose**: Business analytics and performance tracking
     - **Status**: ✅ FUNCTIONAL
     - **Last Modified**: August 27, 2025
@@ -198,14 +191,12 @@
 #### **Mailchimp Campaign Management**
 
 13. **`add-kyara-to-mailchimp.js`**
-
     - **Purpose**: Sync Airtable contacts to Mailchimp
     - **Status**: ⚠️ FUNCTIONAL - Needs config update
     - **Automation Potential**: **EVENT-TRIGGERED** (new campaign)
     - **Dependencies**: Mailchimp API key, Airtable API
 
 14. **`sync-both-mailchimp-accounts.js`**
-
     - **Purpose**: Dual Mailchimp account synchronization
     - **Status**: ⚠️ FUNCTIONAL - Liberty + TAP accounts
     - **Automation Potential**: **DAILY SCHEDULE**
@@ -225,7 +216,6 @@
 #### **Content Generation**
 
 23. **`newsjacking-agent.js`**
-
     - **Purpose**: AI-powered news analysis for content
     - **Status**: ✅ FUNCTIONAL
     - **Last Modified**: September 1, 2025
@@ -234,7 +224,6 @@
     - **Revenue Impact**: 🟡 **MEDIUM** - Newsletter/social content
 
 24. **`content-generation-agent.js`**
-
     - **Purpose**: General content generation
     - **Status**: ✅ FUNCTIONAL
     - **Automation Potential**: **ON-DEMAND** (API endpoint)
@@ -360,12 +349,10 @@ Audio Intel Upload → Airtable → Enrichment Agents → Updated Records → Au
 **Perfect Agents for Command Centre**:
 
 1. **`agent-os-dashboard.js`** - Central status dashboard
-
    - Already monitors agent health
    - Could be web service on command.totalaudiopromo.com
 
 2. **`analytics-agent.js`** - Business metrics
-
    - Revenue tracking
    - Customer acquisition metrics
    - Conversion rates
@@ -1289,13 +1276,11 @@ PERPLEXITY_API_KEY=your_perplexity_key
 **Actions**:
 
 1. ✅ Set up cron job: `liberty-autopilot.js` (hourly)
-
    - Time saved: 2-3 hrs/week
    - Implementation: 30min
    - Command: `0 * * * * cd tools/agents/gmail-setup && node liberty-autopilot.js run`
 
 2. ✅ Set up cron job: `enrich-all-contacts.js` (daily 2am)
-
    - Time saved: 5-8 hrs/week
    - Implementation: 1hr (includes logging setup)
    - Command: `0 2 * * * cd tools/agents/radio-promo && node enrich-all-contacts.js`
@@ -1318,12 +1303,10 @@ PERPLEXITY_API_KEY=your_perplexity_key
 **Actions**:
 
 1. ✅ Deploy `agent-os-dashboard.js` to command.totalaudiopromo.com
-
    - Web service showing agent health
    - Implementation: 4hrs (Next.js API route)
 
 2. ✅ Create status JSON files for each agent
-
    - Enrichment: `/tmp/enrich-status.json`
    - Gmail: `/tmp/gmail-autopilot-status.json`
    - Newsletter: `/tmp/newsletter-status.json`
@@ -1347,14 +1330,12 @@ PERPLEXITY_API_KEY=your_perplexity_key
 **Actions**:
 
 1. ✅ Set up weekly newsletter generation
-
    - `newsletter-automation-agent.js` (Monday 8am)
    - Generate draft → Email Chris for review
    - Command: `0 8 * * 1 cd tools/agents/core-agents/content && node newsletter-automation-agent.js`
    - Implementation: 2hrs (approval workflow)
 
 2. ✅ Set up weekly social calendar generation
-
    - `social-media-scheduler.js` (Sunday 8pm)
    - Export to CSV → Buffer import
    - Command: `0 20 * * 0 cd tools/agents/active && node social-media-scheduler.js`
@@ -1378,14 +1359,12 @@ PERPLEXITY_API_KEY=your_perplexity_key
 **Actions**:
 
 1. ✅ Set up daily campaign data fetching
-
    - `get-real-campaign-data.js` (daily 8am)
    - Write to Command Centre
    - Command: `0 8 * * * cd tools/agents/radio-promo && node get-real-campaign-data.js`
    - Implementation: 2hrs
 
 2. ✅ Build daily summary report generator
-
    - `analytics-agent.js` (daily 8am)
    - Email Chris with key metrics
    - Implementation: 6hrs (report template + email integration)

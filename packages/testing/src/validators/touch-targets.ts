@@ -20,7 +20,7 @@ export async function validateTouchTargetSize(
   minSize: number = 44
 ): Promise<TouchTargetValidationResult> {
   const box = await element.boundingBox();
-  const selector = await element.evaluate((el) => {
+  const selector = await element.evaluate(el => {
     const tag = el.tagName.toLowerCase();
     const id = el.id ? `#${el.id}` : '';
     const classes = el.className ? `.${el.className.split(' ').join('.')}` : '';
@@ -102,8 +102,8 @@ export async function validateTouchTargetSpacing(
       const spacing = Math.min(horizontalDistance, verticalDistance);
 
       if (spacing < minSpacing && spacing > 0) {
-        const selector1 = await elements[i].evaluate((el) => el.tagName);
-        const selector2 = await elements[j].evaluate((el) => el.tagName);
+        const selector1 = await elements[i].evaluate(el => el.tagName);
+        const selector2 = await elements[j].evaluate(el => el.tagName);
 
         results.push({
           passed: false,
@@ -156,7 +156,7 @@ export async function validateGestureConflicts(element: Locator): Promise<{
 }> {
   const conflicts: string[] = [];
 
-  const hasClickHandler = await element.evaluate((el) => {
+  const hasClickHandler = await element.evaluate(el => {
     return !!(
       el.onclick ||
       el.getAttribute('onclick') ||
@@ -165,7 +165,7 @@ export async function validateGestureConflicts(element: Locator): Promise<{
     );
   });
 
-  const isScrollable = await element.evaluate((el) => {
+  const isScrollable = await element.evaluate(el => {
     const style = window.getComputedStyle(el);
     return (
       style.overflowX === 'scroll' ||
@@ -176,10 +176,12 @@ export async function validateGestureConflicts(element: Locator): Promise<{
   });
 
   if (hasClickHandler && isScrollable) {
-    conflicts.push('Element has both click handler and scrollable overflow - potential tap/swipe conflict');
+    conflicts.push(
+      'Element has both click handler and scrollable overflow - potential tap/swipe conflict'
+    );
   }
 
-  const hasTouchHandlers = await element.evaluate((el) => {
+  const hasTouchHandlers = await element.evaluate(el => {
     return !!(
       el.ontouchstart ||
       el.ontouchmove ||

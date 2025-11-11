@@ -38,37 +38,37 @@ else {
     const c = {},
       p = 'notification-progress-bar';
     function m(e) {
-      clearTimeout(c[e.dataset.uniqueKey]?.timeout), e.querySelector('.' + p)?.remove();
+      (clearTimeout(c[e.dataset.uniqueKey]?.timeout), e.querySelector('.' + p)?.remove());
     }
     function u(e) {
-      m(e), e.removeEventListener('pointerenter', f), e.removeEventListener('pointerleave', h);
+      (m(e), e.removeEventListener('pointerenter', f), e.removeEventListener('pointerleave', h));
     }
     function f(e) {
       m(e.target);
     }
     function h(n) {
       const t = n.target;
-      t.appendChild(
+      (t.appendChild(
         (function () {
           const e = document.createElement('div');
-          return e.classList.add(p), e;
+          return (e.classList.add(p), e);
         })()
       ),
         (c[t.dataset.uniqueKey] = {
           timeout: window.setTimeout(() => {
-            e || w(t), u(t);
+            (e || w(t), u(t));
           }, 6e3),
-        });
+        }));
     }
     function g(e) {
-      u(e),
+      (u(e),
         d.classList.add(s),
         e.classList.add(s),
         (function (e) {
-          e.addEventListener('pointerenter', f),
+          (e.addEventListener('pointerenter', f),
             e.addEventListener('pointerleave', h),
-            h({ target: e });
-        })(e);
+            h({ target: e }));
+        })(e));
     }
     function w(e) {
       for (const n of [...e.querySelectorAll('button')])
@@ -80,7 +80,7 @@ else {
     const v = { x: 0, y: 0 };
     return (
       window.addEventListener('pointerdown', function (e) {
-        (v.x = e.pageX - window.scrollX), (v.y = e.pageY - window.scrollY);
+        ((v.x = e.pageX - window.scrollX), (v.y = e.pageY - window.scrollY));
       }),
       {
         showInPageNotification: async function (e, t = !1) {
@@ -88,33 +88,33 @@ else {
             return new Promise((t, o) => {
               if (d) return void t();
               const a = document.createElement('link');
-              (a.rel = 'stylesheet'), (a.href = n.runtime.getURL('css/notifier.css'));
+              ((a.rel = 'stylesheet'), (a.href = n.runtime.getURL('css/notifier.css')));
               const c = `\n.text-container .title {\n    font-size: 18px;\n}\n\n.text-container .message {\n    font-size: 14px;\n}\n\n.button-container {\n  min-width: 75px;\n  position: fixed !important;\n  bottom: 0px;\n  right: 0px;\n  width: 100%;\n}\n\n.button-container button {\n  font-size: 15px;\n  border: none;\n}\n\n.logo-image {\n  width: 48px;\n  height: 48px;\n}\n\n.tb-tb-notifier-inner {\n  width: 100%;\n  height: 100%;\n  border: none;\n}\n\n#${r} {\n  height: 100%;\n}\n`;
               {
                 const n = e
                     ? `\n#${i} {\n  top: 0; left: 0;\n  /* disable the positioning animation, as\n    we will position the window itself */\n  animation: initial !important;\n  /**\n   * Occupy all the available space in the window \n   * We open a window of reasonably large size\n   * and avoid changing its size after opening it\n   * (to avoid sudden flickers when user is using it)\n   */ \n  width: 100%;\n  height: 100%;\n  /**\n   * Put position relative so overflowing content in the window correctly\n   * gets a scrollbar for itself\n   */\n  position: relative !important;\n  overflow-y: auto;\n  overflow-x: hidden;\n}`
                     : '',
                   t = document.createElement('style');
-                (t.innerHTML = `\n#${i} {\n  /* do not inherit styles from elements on the page */\n  all: initial;\n\n  /* set base style */\n  z-index: 2147483647;\n  display: none;\n  background: transparent;\n  position: fixed;\n  top: min(5%, 100px);\n\n  width: fit-content;\n}\n\n#${i}.${s} {\n  display: block;\n  animation: slidein 0.1s ease forwards;\n}\n\n.tb-tb-notifier-inner {\n  display: none;\n}\n\n.tb-tb-notifier-inner.${s} {\n  display: block;\n}\n\n@keyframes slidein {\n  from {\n    right: 0px;\n    transform: scale(0.5);\n  }\n  to {\n    right: min(5%, 100px);\n    transform: scale(1);\n  }\n}\n\n@media (max-width: 720px) {\n  @keyframes slidein {\n    from {\n      right: 0px;\n    }\n    to {\n      right: 10px;\n    }\n  }\n}\n\n${n}\n`),
-                  document.head.appendChild(t);
+                ((t.innerHTML = `\n#${i} {\n  /* do not inherit styles from elements on the page */\n  all: initial;\n\n  /* set base style */\n  z-index: 2147483647;\n  display: none;\n  background: transparent;\n  position: fixed;\n  top: min(5%, 100px);\n\n  width: fit-content;\n}\n\n#${i}.${s} {\n  display: block;\n  animation: slidein 0.1s ease forwards;\n}\n\n.tb-tb-notifier-inner {\n  display: none;\n}\n\n.tb-tb-notifier-inner.${s} {\n  display: block;\n}\n\n@keyframes slidein {\n  from {\n    right: 0px;\n    transform: scale(0.5);\n  }\n  to {\n    right: min(5%, 100px);\n    transform: scale(1);\n  }\n}\n\n@media (max-width: 720px) {\n  @keyframes slidein {\n    from {\n      right: 0px;\n    }\n    to {\n      right: 10px;\n    }\n  }\n}\n\n${n}\n`),
+                  document.head.appendChild(t));
               }
-              (d = document.createElement('div')),
+              ((d = document.createElement('div')),
                 (d.id = i),
                 document.body.appendChild(d),
                 (l = document.createElement('div')),
-                (l.id = r);
+                (l.id = r));
               const p = d.attachShadow({ mode: 'closed' });
-              a.addEventListener('load', () => {
+              (a.addEventListener('load', () => {
                 if (e) {
                   const e = document.createElement('style');
-                  (e.innerHTML = c), p.appendChild(e);
+                  ((e.innerHTML = c), p.appendChild(e));
                 }
-                p.appendChild(l), t();
+                (p.appendChild(l), t());
               }),
                 a.addEventListener('error', e => {
-                  console.warn('Stylesheet failed to load', e), o();
+                  (console.warn('Stylesheet failed to load', e), o());
                 }),
-                p.appendChild(a);
+                p.appendChild(a));
             });
           })(t);
           const c = (function ({ title: e, message: t, buttons: i = [] }) {
@@ -122,35 +122,35 @@ else {
             const s = document.createElement('div');
             s.classList.add(o);
             const r = document.createElement('div');
-            r.classList.add('top-container'), s.appendChild(r);
+            (r.classList.add('top-container'), s.appendChild(r));
             {
               const e = n.runtime.getURL('images/icon_128.png'),
                 t = document.createElement('div');
               t.classList.add('image-container');
               const i = document.createElement('img');
-              (i.src = e),
+              ((i.src = e),
                 (i.draggable = !1),
                 i.classList.add('logo-image'),
                 t.appendChild(i),
-                r.appendChild(t);
+                r.appendChild(t));
             }
             {
               const n = document.createElement('div');
               if ((n.classList.add('text-container'), e)) {
                 const t = document.createElement('p');
-                t.classList.add('title'), (t.innerText = e), n.appendChild(t);
+                (t.classList.add('title'), (t.innerText = e), n.appendChild(t));
               }
               const i = document.createElement('p');
-              i.classList.add('message'), (i.innerText = t), n.appendChild(i);
+              (i.classList.add('message'), (i.innerText = t), n.appendChild(i));
               const o = document.createElement('div');
-              o.classList.add('gradient'), n.appendChild(o), r.appendChild(n), r.appendChild(o);
+              (o.classList.add('gradient'), n.appendChild(o), r.appendChild(n), r.appendChild(o));
             }
             {
               const e = document.createElement('div');
               e.classList.add('button-container');
               for (const n of i) {
                 const t = document.createElement('button');
-                (t.value = (n.identifier || '').toString()),
+                ((t.value = (n.identifier || '').toString()),
                   (t.innerText = n.message),
                   t.addEventListener(
                     'mousedown',
@@ -167,14 +167,14 @@ else {
                     },
                     !0
                   ),
-                  e.appendChild(t);
+                  e.appendChild(t));
               }
-              i.length > 0 &&
+              (i.length > 0 &&
                 (e.children[i.length - 1].classList.add('primary'),
                 2 === i.length && e.children[0].classList.add('secondary')),
-                s.appendChild(e);
+                s.appendChild(e));
               const n = document.createElement('div');
-              n.classList.add('close-button'),
+              (n.classList.add('close-button'),
                 n.setAttribute('role', 'button'),
                 (n.title = 'Dismiss notification'),
                 (n.innerText = '✕'),
@@ -185,7 +185,7 @@ else {
                   },
                   !0
                 ),
-                s.appendChild(n);
+                s.appendChild(n));
             }
             return (
               l.insertBefore(s, l.children?.[0] || null),
@@ -193,10 +193,10 @@ else {
               s
             );
           })(e);
-          g(c),
+          (g(c),
             await (async function (e, n = !1) {
               function t() {
-                delete d.style.top, delete d.style.left;
+                (delete d.style.top, delete d.style.left);
               }
               if (n) return;
               if (!a)
@@ -218,11 +218,11 @@ else {
               const i = d.offsetHeight,
                 o = d.offsetWidth,
                 { height: s, width: r } = getWindowBorders();
-              (a.top = Math.min(a.top, s - i)),
+              ((a.top = Math.min(a.top, s - i)),
                 (a.left = Math.min(a.left, r - o)),
                 (d.style.top = a.top + 'px'),
-                (d.style.left = a.left + 'px');
-            })(e, t);
+                (d.style.left = a.left + 'px'));
+            })(e, t));
           const p = c.querySelector('.text-container');
           p.clientHeight < p.scrollHeight && c.querySelector('.gradient').classList.add('shown');
         },

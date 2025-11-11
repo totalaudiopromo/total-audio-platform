@@ -334,13 +334,16 @@ class ProjectAgent extends EventEmitter {
    */
   async setupCampaignMonitoring() {
     // Monitor campaign progress every 15 minutes
-    this.monitoringInterval = setInterval(async () => {
-      try {
-        await this.monitorActiveCampaigns();
-      } catch (error) {
-        this.logger('⚠️  Campaign monitoring error:', error.message);
-      }
-    }, 15 * 60 * 1000); // 15 minutes
+    this.monitoringInterval = setInterval(
+      async () => {
+        try {
+          await this.monitorActiveCampaigns();
+        } catch (error) {
+          this.logger('⚠️  Campaign monitoring error:', error.message);
+        }
+      },
+      15 * 60 * 1000
+    ); // 15 minutes
 
     this.logger('📊 Campaign monitoring started');
   }

@@ -201,13 +201,11 @@ Each track must include at least one role from each of three groups:
 **Step-by-Step Process**:
 
 1. **Choose a Distributor with Apple Music Pitch Access**
-
    - Contact your current distributor and ask directly: "Do you have access to Apple Music Pitch?"
    - If not, consider switching to a verified preferred partner (see list above)
    - **Timing**: Do this BEFORE your release is scheduled
 
 2. **Prepare Your Release (10+ Days in Advance)**
-
    - Finalise mastered audio files
    - Create required metadata (see section 3)
    - Prepare contributor credits (mandatory as of January 2025)
@@ -216,14 +214,12 @@ Each track must include at least one role from each of three groups:
    - Prepare Dolby Atmos version (if available)
 
 3. **Provide Promotional Context to Your Distributor**
-
    - Write compelling artist story and track background
    - Share marketing plans and media coverage
    - Provide press photos and listening links
    - Highlight any unique aspects of the release
 
 4. **Distributor Submits Pitch**
-
    - Your distributor submits via Apple Music Pitch tool
    - They include all provided metadata and promotional context
    - Submission goes to Apple Music's global editorial team
@@ -591,25 +587,21 @@ Each track must include at least one role from each of three groups:
 ### Questions for Follow-Up Research
 
 1. **Specific UK Regional Playlists**
-
    - Need complete list of UK-specific editorial playlists
    - UK curator team structure and regional focus
    - Brexit implications for UK artists using EU distributors
 
 2. **Distributor Pitch Access Confirmation**
-
    - DistroKid's current Apple Music Pitch access status
    - CD Baby's Apple Music Pitch capabilities
    - RouteNote and other UK-popular distributors
 
 3. **Success Rates and Benchmarks**
-
    - Typical Apple Music editorial playlist acceptance rates
    - Average streams needed to attract editorial attention
    - Case studies of independent artist playlist success
 
 4. **UnitedMasters Claims Verification**
-
    - Verify claims of direct Apple Music editorial team access
    - Understand their specific submission process
    - Compare with other distributor relationships

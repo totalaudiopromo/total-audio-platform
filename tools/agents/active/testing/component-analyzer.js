@@ -174,7 +174,11 @@ class ComponentAnalyzer {
     const issues = [];
 
     // Check for buttons without accessible names
-    if (content.match(/<button[^>]*>(?:\s*<(?:svg|icon|image)[^>]*>(?:<[^>]+>)*<\/(?:svg|icon|image)>\s*)<\/button>/gi)) {
+    if (
+      content.match(
+        /<button[^>]*>(?:\s*<(?:svg|icon|image)[^>]*>(?:<[^>]+>)*<\/(?:svg|icon|image)>\s*)<\/button>/gi
+      )
+    ) {
       issues.push({
         type: 'ICON_BUTTON_NO_LABEL',
         line: 'multiple',
@@ -224,7 +228,11 @@ class ComponentAnalyzer {
     }
 
     // Check for overflow issues
-    if (!content.includes('overflow-') && content.includes('flex') && !content.includes('flex-wrap')) {
+    if (
+      !content.includes('overflow-') &&
+      content.includes('flex') &&
+      !content.includes('flex-wrap')
+    ) {
       issues.push({
         type: 'POTENTIAL_OVERFLOW',
         line: 'multiple',
@@ -277,9 +285,13 @@ class ComponentAnalyzer {
    * Generate analysis report
    */
   generateReport() {
-    console.log(`\n${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`);
+    console.log(
+      `\n${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`
+    );
     console.log(`${colors.cyan}${colors.bright}📊 COMPONENT ANALYSIS REPORT${colors.reset}`);
-    console.log(`${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}\n`);
+    console.log(
+      `${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}\n`
+    );
 
     const categories = [
       { key: 'touchTargets', label: '👆 Touch Target Issues', color: colors.red },
@@ -313,9 +325,15 @@ class ComponentAnalyzer {
       }
     }
 
-    console.log(`${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`);
-    console.log(`${colors.bright}Total issues: ${totalIssues} files with potential problems${colors.reset}`);
-    console.log(`${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}\n`);
+    console.log(
+      `${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`
+    );
+    console.log(
+      `${colors.bright}Total issues: ${totalIssues} files with potential problems${colors.reset}`
+    );
+    console.log(
+      `${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}\n`
+    );
 
     if (totalIssues === 0) {
       console.log(`${colors.green}✅ No issues found! Components look good.${colors.reset}\n`);

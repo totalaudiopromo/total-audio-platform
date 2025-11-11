@@ -385,7 +385,6 @@ Session End:
 ### Must Do Before Skills Work:
 
 1. **Enable Skills in Claude Code:**
-
    - Open settings (⌘,)
    - Go to Capabilities
    - Toggle "Skills" ON

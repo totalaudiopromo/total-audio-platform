@@ -1927,16 +1927,20 @@ var loadWasmTtsBindings = (() => {
             return node;
           };
           mnt.node_ops.rmdir = (...args) => (
-            IDBFS.queuePersist(mnt.mount), memfs_node_ops.rmdir(...args)
+            IDBFS.queuePersist(mnt.mount),
+            memfs_node_ops.rmdir(...args)
           );
           mnt.node_ops.symlink = (...args) => (
-            IDBFS.queuePersist(mnt.mount), memfs_node_ops.symlink(...args)
+            IDBFS.queuePersist(mnt.mount),
+            memfs_node_ops.symlink(...args)
           );
           mnt.node_ops.unlink = (...args) => (
-            IDBFS.queuePersist(mnt.mount), memfs_node_ops.unlink(...args)
+            IDBFS.queuePersist(mnt.mount),
+            memfs_node_ops.unlink(...args)
           );
           mnt.node_ops.rename = (...args) => (
-            IDBFS.queuePersist(mnt.mount), memfs_node_ops.rename(...args)
+            IDBFS.queuePersist(mnt.mount),
+            memfs_node_ops.rename(...args)
           );
         }
         return mnt;
@@ -3890,7 +3894,7 @@ var loadWasmTtsBindings = (() => {
         HEAPU32[(buf + 12) >> 2] = stat.uid;
         HEAPU32[(buf + 16) >> 2] = stat.gid;
         HEAPU32[(buf + 20) >> 2] = stat.rdev;
-        (tempI64 = [
+        ((tempI64 = [
           stat.size >>> 0,
           ((tempDouble = stat.size),
           +Math.abs(tempDouble) >= 1
@@ -3900,13 +3904,13 @@ var loadWasmTtsBindings = (() => {
             : 0),
         ]),
           (HEAP32[(buf + 24) >> 2] = tempI64[0]),
-          (HEAP32[(buf + 28) >> 2] = tempI64[1]);
+          (HEAP32[(buf + 28) >> 2] = tempI64[1]));
         HEAP32[(buf + 32) >> 2] = 4096;
         HEAP32[(buf + 36) >> 2] = stat.blocks;
         var atime = stat.atime.getTime();
         var mtime = stat.mtime.getTime();
         var ctime = stat.ctime.getTime();
-        (tempI64 = [
+        ((tempI64 = [
           Math.floor(atime / 1e3) >>> 0,
           ((tempDouble = Math.floor(atime / 1e3)),
           +Math.abs(tempDouble) >= 1
@@ -3916,9 +3920,9 @@ var loadWasmTtsBindings = (() => {
             : 0),
         ]),
           (HEAP32[(buf + 40) >> 2] = tempI64[0]),
-          (HEAP32[(buf + 44) >> 2] = tempI64[1]);
+          (HEAP32[(buf + 44) >> 2] = tempI64[1]));
         HEAPU32[(buf + 48) >> 2] = (atime % 1e3) * 1e3 * 1e3;
-        (tempI64 = [
+        ((tempI64 = [
           Math.floor(mtime / 1e3) >>> 0,
           ((tempDouble = Math.floor(mtime / 1e3)),
           +Math.abs(tempDouble) >= 1
@@ -3928,9 +3932,9 @@ var loadWasmTtsBindings = (() => {
             : 0),
         ]),
           (HEAP32[(buf + 56) >> 2] = tempI64[0]),
-          (HEAP32[(buf + 60) >> 2] = tempI64[1]);
+          (HEAP32[(buf + 60) >> 2] = tempI64[1]));
         HEAPU32[(buf + 64) >> 2] = (mtime % 1e3) * 1e3 * 1e3;
-        (tempI64 = [
+        ((tempI64 = [
           Math.floor(ctime / 1e3) >>> 0,
           ((tempDouble = Math.floor(ctime / 1e3)),
           +Math.abs(tempDouble) >= 1
@@ -3940,9 +3944,9 @@ var loadWasmTtsBindings = (() => {
             : 0),
         ]),
           (HEAP32[(buf + 72) >> 2] = tempI64[0]),
-          (HEAP32[(buf + 76) >> 2] = tempI64[1]);
+          (HEAP32[(buf + 76) >> 2] = tempI64[1]));
         HEAPU32[(buf + 80) >> 2] = (ctime % 1e3) * 1e3 * 1e3;
-        (tempI64 = [
+        ((tempI64 = [
           stat.ino >>> 0,
           ((tempDouble = stat.ino),
           +Math.abs(tempDouble) >= 1
@@ -3952,13 +3956,13 @@ var loadWasmTtsBindings = (() => {
             : 0),
         ]),
           (HEAP32[(buf + 88) >> 2] = tempI64[0]),
-          (HEAP32[(buf + 92) >> 2] = tempI64[1]);
+          (HEAP32[(buf + 92) >> 2] = tempI64[1]));
         return 0;
       },
       writeStatFs(buf, stats) {
         HEAPU32[(buf + 4) >> 2] = stats.bsize;
         HEAPU32[(buf + 60) >> 2] = stats.bsize;
-        (tempI64 = [
+        ((tempI64 = [
           stats.blocks >>> 0,
           ((tempDouble = stats.blocks),
           +Math.abs(tempDouble) >= 1
@@ -3968,8 +3972,8 @@ var loadWasmTtsBindings = (() => {
             : 0),
         ]),
           (HEAP32[(buf + 8) >> 2] = tempI64[0]),
-          (HEAP32[(buf + 12) >> 2] = tempI64[1]);
-        (tempI64 = [
+          (HEAP32[(buf + 12) >> 2] = tempI64[1]));
+        ((tempI64 = [
           stats.bfree >>> 0,
           ((tempDouble = stats.bfree),
           +Math.abs(tempDouble) >= 1
@@ -3979,8 +3983,8 @@ var loadWasmTtsBindings = (() => {
             : 0),
         ]),
           (HEAP32[(buf + 16) >> 2] = tempI64[0]),
-          (HEAP32[(buf + 20) >> 2] = tempI64[1]);
-        (tempI64 = [
+          (HEAP32[(buf + 20) >> 2] = tempI64[1]));
+        ((tempI64 = [
           stats.bavail >>> 0,
           ((tempDouble = stats.bavail),
           +Math.abs(tempDouble) >= 1
@@ -3990,8 +3994,8 @@ var loadWasmTtsBindings = (() => {
             : 0),
         ]),
           (HEAP32[(buf + 24) >> 2] = tempI64[0]),
-          (HEAP32[(buf + 28) >> 2] = tempI64[1]);
-        (tempI64 = [
+          (HEAP32[(buf + 28) >> 2] = tempI64[1]));
+        ((tempI64 = [
           stats.files >>> 0,
           ((tempDouble = stats.files),
           +Math.abs(tempDouble) >= 1
@@ -4001,8 +4005,8 @@ var loadWasmTtsBindings = (() => {
             : 0),
         ]),
           (HEAP32[(buf + 32) >> 2] = tempI64[0]),
-          (HEAP32[(buf + 36) >> 2] = tempI64[1]);
-        (tempI64 = [
+          (HEAP32[(buf + 36) >> 2] = tempI64[1]));
+        ((tempI64 = [
           stats.ffree >>> 0,
           ((tempDouble = stats.ffree),
           +Math.abs(tempDouble) >= 1
@@ -4012,7 +4016,7 @@ var loadWasmTtsBindings = (() => {
             : 0),
         ]),
           (HEAP32[(buf + 40) >> 2] = tempI64[0]),
-          (HEAP32[(buf + 44) >> 2] = tempI64[1]);
+          (HEAP32[(buf + 44) >> 2] = tempI64[1]));
         HEAPU32[(buf + 48) >> 2] = stats.fsid;
         HEAPU32[(buf + 64) >> 2] = stats.flags;
         HEAPU32[(buf + 56) >> 2] = stats.namelen;
@@ -4193,13 +4197,13 @@ var loadWasmTtsBindings = (() => {
             type = FS.isChrdev(child.mode)
               ? 2
               : FS.isDir(child.mode)
-              ? 4
-              : FS.isLink(child.mode)
-              ? 10
-              : 8;
+                ? 4
+                : FS.isLink(child.mode)
+                  ? 10
+                  : 8;
           }
           assert(id);
-          (tempI64 = [
+          ((tempI64 = [
             id >>> 0,
             ((tempDouble = id),
             +Math.abs(tempDouble) >= 1
@@ -4209,8 +4213,8 @@ var loadWasmTtsBindings = (() => {
               : 0),
           ]),
             (HEAP32[(dirp + pos) >> 2] = tempI64[0]),
-            (HEAP32[(dirp + pos + 4) >> 2] = tempI64[1]);
-          (tempI64 = [
+            (HEAP32[(dirp + pos + 4) >> 2] = tempI64[1]));
+          ((tempI64 = [
             ((idx + 1) * struct_size) >>> 0,
             ((tempDouble = (idx + 1) * struct_size),
             +Math.abs(tempDouble) >= 1
@@ -4220,7 +4224,7 @@ var loadWasmTtsBindings = (() => {
               : 0),
           ]),
             (HEAP32[(dirp + pos + 8) >> 2] = tempI64[0]),
-            (HEAP32[(dirp + pos + 12) >> 2] = tempI64[1]);
+            (HEAP32[(dirp + pos + 12) >> 2] = tempI64[1]));
           HEAP16[(dirp + pos + 16) >> 1] = 280;
           HEAP8[dirp + pos + 18] = type;
           stringToUTF8(name, dirp + pos + 19, 256);
@@ -5094,7 +5098,7 @@ var loadWasmTtsBindings = (() => {
         return 52;
       }
       var nsec = Math.round(now * 1e3 * 1e3);
-      (tempI64 = [
+      ((tempI64 = [
         nsec >>> 0,
         ((tempDouble = nsec),
         +Math.abs(tempDouble) >= 1
@@ -5104,7 +5108,7 @@ var loadWasmTtsBindings = (() => {
           : 0),
       ]),
         (HEAP32[ptime >> 2] = tempI64[0]),
-        (HEAP32[(ptime + 4) >> 2] = tempI64[1]);
+        (HEAP32[(ptime + 4) >> 2] = tempI64[1]));
       return 0;
     }
     var _emscripten_check_blocking_allowed = () => {
@@ -5313,7 +5317,7 @@ var loadWasmTtsBindings = (() => {
         if (isNaN(offset)) return 61;
         var stream = SYSCALLS.getStreamFromFD(fd);
         FS.llseek(stream, offset, whence);
-        (tempI64 = [
+        ((tempI64 = [
           stream.position >>> 0,
           ((tempDouble = stream.position),
           +Math.abs(tempDouble) >= 1
@@ -5323,7 +5327,7 @@ var loadWasmTtsBindings = (() => {
             : 0),
         ]),
           (HEAP32[newOffset >> 2] = tempI64[0]),
-          (HEAP32[(newOffset + 4) >> 2] = tempI64[1]);
+          (HEAP32[(newOffset + 4) >> 2] = tempI64[1]));
         if (stream.getdents && offset === 0 && whence === 0) stream.getdents = null;
         return 0;
       } catch (e) {
@@ -6277,9 +6281,8 @@ var loadWasmTtsBindings = (() => {
     var _kVersionStampCitcWorkspaceIdStr = (Module['_kVersionStampCitcWorkspaceIdStr'] = 1495264);
     var _kVersionStampSourceUriStr = (Module['_kVersionStampSourceUriStr'] = 1495776);
     var _kVersionStampBuildClientStr = (Module['_kVersionStampBuildClientStr'] = 1496288);
-    var _kVersionStampBuildClientMintStatusStr = (Module[
-      '_kVersionStampBuildClientMintStatusStr'
-    ] = 1496800);
+    var _kVersionStampBuildClientMintStatusStr = (Module['_kVersionStampBuildClientMintStatusStr'] =
+      1496800);
     var _kVersionStampBuildCompilerStr = (Module['_kVersionStampBuildCompilerStr'] = 1496832);
     var _kVersionStampBuildDateTimePstStr = (Module['_kVersionStampBuildDateTimePstStr'] = 1497344);
     var _kVersionStampBuildDepotPathStr = (Module['_kVersionStampBuildDepotPathStr'] = 1497376);
@@ -6296,32 +6299,27 @@ var loadWasmTtsBindings = (() => {
       '_kVersionStampBuildBaselineChangelistStr'
     ] = 1501056);
     var _kVersionStampBuildLtoTypeStr = (Module['_kVersionStampBuildLtoTypeStr'] = 1501088);
-    var _kVersionStampBuildPropellerTypeStr = (Module[
-      '_kVersionStampBuildPropellerTypeStr'
-    ] = 1501120);
+    var _kVersionStampBuildPropellerTypeStr = (Module['_kVersionStampBuildPropellerTypeStr'] =
+      1501120);
     var _kVersionStampBuildPghoTypeStr = (Module['_kVersionStampBuildPghoTypeStr'] = 1501152);
     var _kVersionStampBuildUsernameStr = (Module['_kVersionStampBuildUsernameStr'] = 1501184);
     var _kVersionStampBuildHostnameStr = (Module['_kVersionStampBuildHostnameStr'] = 1501696);
     var _kVersionStampBuildDirectoryStr = (Module['_kVersionStampBuildDirectoryStr'] = 1502208);
     var _kVersionStampBuildChangelistInt = (Module['_kVersionStampBuildChangelistInt'] = 1502720);
     var _kVersionStampCitcSnapshotInt = (Module['_kVersionStampCitcSnapshotInt'] = 1502728);
-    var _kVersionStampBuildClientMintStatusInt = (Module[
-      '_kVersionStampBuildClientMintStatusInt'
-    ] = 1502732);
+    var _kVersionStampBuildClientMintStatusInt = (Module['_kVersionStampBuildClientMintStatusInt'] =
+      1502732);
     var _kVersionStampBuildTimestampInt = (Module['_kVersionStampBuildTimestampInt'] = 1502736);
     var _kVersionStampVerifiableInt = (Module['_kVersionStampVerifiableInt'] = 1502744);
-    var _kVersionStampBuildCoverageEnabledInt = (Module[
-      '_kVersionStampBuildCoverageEnabledInt'
-    ] = 1502748);
+    var _kVersionStampBuildCoverageEnabledInt = (Module['_kVersionStampBuildCoverageEnabledInt'] =
+      1502748);
     var _kVersionStampBuildBaselineChangelistInt = (Module[
       '_kVersionStampBuildBaselineChangelistInt'
     ] = 1502752);
-    var _kVersionStampPrecookedTimestampStr = (Module[
-      '_kVersionStampPrecookedTimestampStr'
-    ] = 1502768);
-    var _kVersionStampPrecookedClientInfoStr = (Module[
-      '_kVersionStampPrecookedClientInfoStr'
-    ] = 1503280);
+    var _kVersionStampPrecookedTimestampStr = (Module['_kVersionStampPrecookedTimestampStr'] =
+      1502768);
+    var _kVersionStampPrecookedClientInfoStr = (Module['_kVersionStampPrecookedClientInfoStr'] =
+      1503280);
     var wasmImports;
     function assignWasmImports() {
       wasmImports = {

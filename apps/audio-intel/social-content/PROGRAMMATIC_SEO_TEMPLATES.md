@@ -492,7 +492,6 @@ Chris Schofield is a Brighton-based music producer (sadact) and radio promoter w
 ### Key {{CITY}} Stations
 
 1. **[STATION_1]**
-
    - Format: [TYPE]
    - Reach: [LISTENERS]
    - Submission: [PROCESS]

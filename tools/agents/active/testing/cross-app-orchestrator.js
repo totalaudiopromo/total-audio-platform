@@ -49,10 +49,18 @@ class CrossAppOrchestrator {
    * Run complete testing orchestration
    */
   async orchestrate() {
-    console.log(`${colors.cyan}${colors.bright}╔══════════════════════════════════════════════════════════════╗${colors.reset}`);
-    console.log(`${colors.cyan}${colors.bright}║  🎯 CROSS-APP TESTING ORCHESTRATOR                          ║${colors.reset}`);
-    console.log(`${colors.cyan}${colors.bright}║  Total Audio Platform Intelligent Testing System            ║${colors.reset}`);
-    console.log(`${colors.cyan}${colors.bright}╚══════════════════════════════════════════════════════════════╝${colors.reset}\n`);
+    console.log(
+      `${colors.cyan}${colors.bright}╔══════════════════════════════════════════════════════════════╗${colors.reset}`
+    );
+    console.log(
+      `${colors.cyan}${colors.bright}║  🎯 CROSS-APP TESTING ORCHESTRATOR                          ║${colors.reset}`
+    );
+    console.log(
+      `${colors.cyan}${colors.bright}║  Total Audio Platform Intelligent Testing System            ║${colors.reset}`
+    );
+    console.log(
+      `${colors.cyan}${colors.bright}╚══════════════════════════════════════════════════════════════╝${colors.reset}\n`
+    );
 
     const startTime = Date.now();
 
@@ -70,7 +78,9 @@ class CrossAppOrchestrator {
       await this.generateCrossAppReport();
 
       const duration = ((Date.now() - startTime) / 1000).toFixed(2);
-      console.log(`\n${colors.green}${colors.bright}✅ Orchestration complete in ${duration}s${colors.reset}\n`);
+      console.log(
+        `\n${colors.green}${colors.bright}✅ Orchestration complete in ${duration}s${colors.reset}\n`
+      );
     } catch (error) {
       console.error(`${colors.red}❌ Orchestration failed:${colors.reset}`, error.message);
       process.exit(1);
@@ -81,7 +91,9 @@ class CrossAppOrchestrator {
    * Phase 1: Run component analysis
    */
   async runComponentAnalysis() {
-    console.log(`${colors.magenta}${colors.bright}━━━ PHASE 1: COMPONENT ANALYSIS ━━━${colors.reset}\n`);
+    console.log(
+      `${colors.magenta}${colors.bright}━━━ PHASE 1: COMPONENT ANALYSIS ━━━${colors.reset}\n`
+    );
 
     const analyzerPath = path.join(__dirname, 'component-analyzer.js');
     await this.runScript(analyzerPath, 'Component Analyzer');
@@ -90,7 +102,9 @@ class CrossAppOrchestrator {
     const reportPath = path.join(this.rootDir, 'reports', 'component-analysis.json');
     if (fs.existsSync(reportPath)) {
       this.results.analysis = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
-      console.log(`${colors.green}✅ Analysis complete - ${this.results.analysis.summary.total} issues found${colors.reset}\n`);
+      console.log(
+        `${colors.green}✅ Analysis complete - ${this.results.analysis.summary.total} issues found${colors.reset}\n`
+      );
     }
   }
 
@@ -98,7 +112,9 @@ class CrossAppOrchestrator {
    * Phase 2: Run test generation
    */
   async runTestGeneration() {
-    console.log(`${colors.magenta}${colors.bright}━━━ PHASE 2: TEST GENERATION ━━━${colors.reset}\n`);
+    console.log(
+      `${colors.magenta}${colors.bright}━━━ PHASE 2: TEST GENERATION ━━━${colors.reset}\n`
+    );
 
     const generatorPath = path.join(__dirname, 'test-generator.js');
     await this.runScript(generatorPath, 'Test Generator');
@@ -115,7 +131,9 @@ class CrossAppOrchestrator {
    * Phase 3: Run mobile tests in parallel
    */
   async runMobileTests() {
-    console.log(`${colors.magenta}${colors.bright}━━━ PHASE 3: MOBILE TESTING (PARALLEL) ━━━${colors.reset}\n`);
+    console.log(
+      `${colors.magenta}${colors.bright}━━━ PHASE 3: MOBILE TESTING (PARALLEL) ━━━${colors.reset}\n`
+    );
 
     const testPromises = this.apps.map(app => this.runAppTests(app));
 
@@ -181,7 +199,9 @@ class CrossAppOrchestrator {
    * Phase 4: Generate cross-app report
    */
   async generateCrossAppReport() {
-    console.log(`${colors.magenta}${colors.bright}━━━ PHASE 4: CROSS-APP REPORT ━━━${colors.reset}\n`);
+    console.log(
+      `${colors.magenta}${colors.bright}━━━ PHASE 4: CROSS-APP REPORT ━━━${colors.reset}\n`
+    );
 
     const report = {
       timestamp: new Date().toISOString(),
@@ -227,9 +247,15 @@ class CrossAppOrchestrator {
    * Display summary
    */
   displaySummary(report) {
-    console.log(`${colors.cyan}${colors.bright}╔══════════════════════════════════════════════════════════════╗${colors.reset}`);
-    console.log(`${colors.cyan}${colors.bright}║  📊 CROSS-APP TESTING SUMMARY                               ║${colors.reset}`);
-    console.log(`${colors.cyan}${colors.bright}╚══════════════════════════════════════════════════════════════╝${colors.reset}\n`);
+    console.log(
+      `${colors.cyan}${colors.bright}╔══════════════════════════════════════════════════════════════╗${colors.reset}`
+    );
+    console.log(
+      `${colors.cyan}${colors.bright}║  📊 CROSS-APP TESTING SUMMARY                               ║${colors.reset}`
+    );
+    console.log(
+      `${colors.cyan}${colors.bright}╚══════════════════════════════════════════════════════════════╝${colors.reset}\n`
+    );
 
     console.log(`${colors.bright}Apps Tested:${colors.reset} ${report.summary.appsTotal}`);
     console.log(`${colors.green}Apps Passed:${colors.reset} ${report.summary.appsPassed}`);
@@ -238,7 +264,9 @@ class CrossAppOrchestrator {
 
     console.log(`${colors.bright}Per-App Results:${colors.reset}`);
     Object.entries(report.testResults).forEach(([app, result]) => {
-      const status = result.passed ? `${colors.green}✅ PASS${colors.reset}` : `${colors.red}❌ FAIL${colors.reset}`;
+      const status = result.passed
+        ? `${colors.green}✅ PASS${colors.reset}`
+        : `${colors.red}❌ FAIL${colors.reset}`;
       console.log(`  ${app.padEnd(20)} ${status}`);
     });
 

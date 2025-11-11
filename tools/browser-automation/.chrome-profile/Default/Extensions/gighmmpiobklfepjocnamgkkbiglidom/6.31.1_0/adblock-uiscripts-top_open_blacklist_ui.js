@@ -197,13 +197,13 @@ function topOpenBlacklistUI(options) {
           <p>${translate(
             'blacklisternotsure_part_I'
           )} <span class="non-advanced-user-text">${translate(
-      'blacklisternotsure_part_II'
-    )}</span></p>
+            'blacklisternotsure_part_II'
+          )}</span></p>
           <p id="countRow"><span id="count"></span>&nbsp;${translate(
             'hiddenelementmessagecount'
           )} <i id="helpIcon" class="material-icons md-18" role="img" aria-label="${translate(
-      'learn_more_without_period'
-    )}">live_help</i></p>
+            'learn_more_without_period'
+          )}">live_help</i></p>
           <div class="buttonRow" ><button class='primary confirm adblock-default-button'>${translate(
             'buttonconfirm'
           )}</button></div>

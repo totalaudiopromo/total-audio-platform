@@ -9,7 +9,6 @@ The application requires Supabase environment variables to function. Without the
 ## Step 1: Get Supabase Credentials
 
 1. **Go to your Supabase Dashboard**
-
    - Visit: https://app.supabase.com
    - Select your project (or create a new one)
 
@@ -80,7 +79,6 @@ The application requires Supabase environment variables to function. Without the
 If you want Liberty demo data for testing:
 
 1. **Create a user account first:**
-
    - Visit: http://localhost:3000/signup
    - Create an account
    - Note your user ID (from Supabase auth.users table)
@@ -103,13 +101,11 @@ If you want Liberty demo data for testing:
 ## Step 5: Verify Everything Works
 
 1. **Test Landing Page:**
-
    - ✅ No error overlay
    - ✅ Page loads completely
    - ✅ Console has no red errors
 
 2. **Test Authentication:**
-
    - Visit: http://localhost:3000/login
    - Should see login form (not error)
    - Try signing in with your account

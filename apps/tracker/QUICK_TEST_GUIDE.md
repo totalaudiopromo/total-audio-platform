@@ -127,7 +127,6 @@ open http://localhost:3000/verify-success
 **✅ PASS if**:
 
 - `/verify-email` shows:
-
   - Email icon
   - "Check Your Email" heading
   - Troubleshooting tips
@@ -315,7 +314,6 @@ curl -I https://tracker.totalaudiopromo.com
 ### Test Error Handling
 
 1. **Network Failure** (resend verification):
-
    - Disconnect internet
    - Click "Resend Verification Email"
    - Should show error message
@@ -328,7 +326,6 @@ curl -I https://tracker.totalaudiopromo.com
    ```
 
 3. **Already Verified** (edge case):
-
    - Verified user visits `/verify-email`
    - Should still show page (not error)
    - Resend button should return "already verified"

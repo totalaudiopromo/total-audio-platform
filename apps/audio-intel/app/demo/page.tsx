@@ -18,6 +18,7 @@ import ContactLoadingState from '../components/ContactLoadingState';
 import BetaTrialStatus from '@/components/BetaTrialStatus';
 import { trackPageView } from '@/utils/analytics';
 import { SiteHeader } from '../components/SiteHeader';
+import { CondensedIntelligenceCard } from '@/components/CondensedIntelligenceCard';
 
 interface Contact {
   name: string;
@@ -400,8 +401,8 @@ export default function SimpleAudioIntelDemo() {
                       activeTab === 'process'
                         ? 'bg-blue-600 text-white border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
                         : hasEnrichedData
-                        ? 'bg-white text-gray-900 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5'
-                        : 'bg-white text-gray-600 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
+                          ? 'bg-white text-gray-900 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5'
+                          : 'bg-white text-gray-600 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
                     }`}
                   >
                     <div
@@ -409,8 +410,8 @@ export default function SimpleAudioIntelDemo() {
                         activeTab === 'process'
                           ? 'bg-white text-blue-600'
                           : hasEnrichedData
-                          ? 'bg-green-500 text-white'
-                          : 'bg-gray-200 text-gray-600'
+                            ? 'bg-green-500 text-white'
+                            : 'bg-gray-200 text-gray-600'
                       }`}
                     >
                       {hasEnrichedData ? '✓' : '1'}
@@ -439,8 +440,8 @@ export default function SimpleAudioIntelDemo() {
                       activeTab === 'analytics' && hasEnrichedData
                         ? 'bg-blue-500 text-white border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
                         : hasEnrichedData
-                        ? 'bg-white text-gray-900 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 cursor-pointer'
-                        : 'bg-gray-50 text-gray-400 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-not-allowed opacity-60'
+                          ? 'bg-white text-gray-900 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 cursor-pointer'
+                          : 'bg-gray-50 text-gray-400 border-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-not-allowed opacity-60'
                     }`}
                   >
                     <div
@@ -448,8 +449,8 @@ export default function SimpleAudioIntelDemo() {
                         activeTab === 'analytics' && hasEnrichedData
                           ? 'bg-white text-blue-500'
                           : hasEnrichedData
-                          ? 'bg-gray-300 text-gray-700'
-                          : 'bg-gray-200 text-gray-400'
+                            ? 'bg-gray-300 text-gray-700'
+                            : 'bg-gray-200 text-gray-400'
                       }`}
                     >
                       <TrendingUp className="w-4 h-4 md:w-5 md:h-5" />
@@ -842,11 +843,10 @@ export default function SimpleAudioIntelDemo() {
                                               </Button>
                                             </div>
                                           </div>
-                                          <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
-                                            <div className="text-sm text-gray-700 font-medium whitespace-pre-line">
-                                              {contact.intelligence}
-                                            </div>
-                                          </div>
+                                          <CondensedIntelligenceCard
+                                            intelligence={contact.intelligence}
+                                            confidence={contact.confidence}
+                                          />
                                         </div>
                                       </CardContent>
                                     </Card>
@@ -900,11 +900,10 @@ export default function SimpleAudioIntelDemo() {
                                               </Button>
                                             </div>
                                           </div>
-                                          <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
-                                            <div className="text-sm text-gray-700 font-medium whitespace-pre-line">
-                                              {contact.intelligence}
-                                            </div>
-                                          </div>
+                                          <CondensedIntelligenceCard
+                                            intelligence={contact.intelligence}
+                                            confidence={contact.confidence}
+                                          />
                                         </div>
                                       </CardContent>
                                     </Card>
@@ -965,11 +964,10 @@ export default function SimpleAudioIntelDemo() {
                                               </Button>
                                             </div>
                                           </div>
-                                          <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
-                                            <div className="text-sm text-gray-600 font-medium whitespace-pre-line">
-                                              {contact.intelligence}
-                                            </div>
-                                          </div>
+                                          <CondensedIntelligenceCard
+                                            intelligence={contact.intelligence}
+                                            confidence={contact.confidence}
+                                          />
                                         </div>
                                       </CardContent>
                                     </Card>

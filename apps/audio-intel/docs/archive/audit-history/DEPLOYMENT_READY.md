@@ -86,12 +86,10 @@
 ### High Priority (Complete Before Deploy)
 
 1. **Create Terms of Service page** (1 hour)
-
    - File: `app/terms/page.tsx`
    - Template ready, needs your review
 
 2. **Create Contact/Support page** (30 mins)
-
    - File: `app/contact/page.tsx`
    - Add support email and response time info
 
@@ -103,7 +101,6 @@
 ### Nice-to-Have (Can Deploy Without)
 
 4. **Add metadataBase** (5 mins)
-
    - Fix OG image warning in build
    - File: `app/layout.tsx`
 
@@ -254,13 +251,11 @@ git push origin main
 ### Immediate (Day 1)
 
 1. **Monitor Analytics**:
-
    - Check Google Analytics for bounce rate changes
    - Track conversion rate improvements
    - Monitor time-on-site metrics
 
 2. **Test Live Site**:
-
    - Cookie banner functionality
    - Exit popup timing (wait 30s, move mouse to top)
    - Legal pages load correctly
@@ -274,12 +269,10 @@ git push origin main
 ### Week 1 Post-Deployment
 
 1. **Add ICO Registration Number**:
-
    - Apply at ico.org.uk (£40/year for small businesses)
    - Update privacy policy with registration number
 
 2. **Data Protection Agreements**:
-
    - Verify Stripe DPA exists
    - Check Anthropic Claude API DPA
    - Confirm Vercel GDPR compliance

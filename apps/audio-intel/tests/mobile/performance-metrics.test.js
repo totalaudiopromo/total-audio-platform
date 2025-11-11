@@ -138,7 +138,9 @@ test.describe('Performance Metrics Summary', () => {
     console.log('\n📊 Performance Metrics Report:');
     console.log('─'.repeat(60));
     report.forEach(({ page: p, cls, lcp, fcp, ttfb, tti }) => {
-      console.log(`${p.padEnd(20)} CLS: ${cls.toFixed(3)}  LCP: ${lcp}ms  FCP: ${fcp}ms  TTI: ${tti}ms`);
+      console.log(
+        `${p.padEnd(20)} CLS: ${cls.toFixed(3)}  LCP: ${lcp}ms  FCP: ${fcp}ms  TTI: ${tti}ms`
+      );
     });
     console.log('─'.repeat(60));
 

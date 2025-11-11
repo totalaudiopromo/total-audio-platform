@@ -183,12 +183,10 @@ git push origin main
 **D. Configure Custom Domain**
 
 1. **In Vercel Project Settings**:
-
    - Go to "Domains"
    - Add: `tracker.totalaudiopromo.com`
 
 2. **In Your DNS Provider** (wherever totalaudiopromo.com is hosted):
-
    - Type: `CNAME`
    - Name: `tracker`
    - Value: `cname.vercel-dns.com`

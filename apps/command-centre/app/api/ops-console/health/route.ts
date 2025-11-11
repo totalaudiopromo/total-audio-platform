@@ -48,8 +48,8 @@ export async function GET() {
       databaseHealthy && agentStats.failed === 0 && telegramHealthy
         ? 'healthy'
         : agentStats.failed > 0
-        ? 'degraded'
-        : 'down';
+          ? 'degraded'
+          : 'down';
 
     // Recent activity (last 10 agent events)
     const { data: recentActivity } = await supabase

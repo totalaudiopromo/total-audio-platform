@@ -330,19 +330,16 @@ if (overall === 'pass') {
 ### Setup Steps
 
 1. **Navigate to Vercel Project Settings**
-
    - For each project (audio-intel, tracker, pitch-generator):
    - Go to Settings → Git → Deploy Hooks
 
 2. **Create Deployment Webhook**
-
    - Click "Create Hook"
    - Name: `Golden Verify Trigger`
    - Branch: `main` (production deployments only)
    - Enable: "Trigger on Deployments"
 
 3. **Configure GitHub Integration**
-
    - Webhook URL Format:
      ```
      https://api.github.com/repos/OWNER/REPO/dispatches
@@ -369,7 +366,6 @@ if (overall === 'pass') {
      ```
 
 4. **GitHub Personal Access Token Requirements**
-
    - Scope: `repo` (full repository access)
    - Permissions: `public_repo` or `repo` for private repositories
    - Create at: https://github.com/settings/tokens
@@ -662,12 +658,10 @@ Before considering Phase 10C complete:
 If Golden Verify workflow is completely broken:
 
 1. **Disable webhook temporarily**
-
    - Remove webhook from Vercel project settings
    - Deployments continue normally without verification
 
 2. **Investigate workflow logs**
-
    - Check GitHub Actions logs for specific error
    - Review golden-postcheck.ts output
    - Verify all secrets are configured correctly

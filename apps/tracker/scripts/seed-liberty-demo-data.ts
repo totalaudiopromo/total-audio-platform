@@ -232,8 +232,8 @@ function generateActivitiesForCampaign(
         index < campaign.actual_reach * 0.4
           ? 'response_received'
           : index < campaign.actual_reach * 0.7
-          ? 'playlist_add'
-          : 'radio_play';
+            ? 'playlist_add'
+            : 'radio_play';
 
       activities.push({
         campaign_id: campaignId,
@@ -242,8 +242,8 @@ function generateActivitiesForCampaign(
           responseType === 'playlist_add'
             ? `Added to playlist by ${contact.name}`
             : responseType === 'radio_play'
-            ? `Radio play confirmed by ${contact.name}`
-            : `Response received from ${contact.name}`,
+              ? `Radio play confirmed by ${contact.name}`
+              : `Response received from ${contact.name}`,
         activity_date: responseDate.toISOString().split('T')[0],
         contact_name: contact.name,
         contact_org: contact.org,

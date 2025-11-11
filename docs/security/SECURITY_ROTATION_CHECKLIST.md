@@ -58,7 +58,6 @@ These keys were exposed in git history and need immediate replacement:
 ### ✅ What's Been Set Up:
 
 1. **Master Vault**: `.env.vault` (chmod 600) - Organized by business
-
    - 🎵 **Total Audio Promo** (TAP\_\* prefix)
    - 🎭 **Liberty Music PR** (LIBERTY\_\* prefix)
    - 💰 **AI Investment Advisor** (AI*ADVISOR*\* prefix)

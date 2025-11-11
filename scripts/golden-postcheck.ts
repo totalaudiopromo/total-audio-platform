@@ -199,8 +199,8 @@ async function runPostCheck() {
     lighthouseValidation.status === 'pass'
       ? '✅'
       : lighthouseValidation.status === 'skipped'
-      ? '⚠️'
-      : '❌';
+        ? '⚠️'
+        : '❌';
   console.error(`${lighthouseIcon} Lighthouse: ${lighthouseValidation.message}`);
 
   const duration = Date.now() - startTime;

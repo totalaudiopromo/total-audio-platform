@@ -43,20 +43,17 @@
 **Upgrade Benefits**:
 
 1. **Streaming**: Real-time progress for demo demonstrations
-
    - Show contact enrichment happening live
    - 40-60% faster perceived performance
    - Better UX for prospects
 
 2. **Prompt Caching**: Massive token savings
-
    - Cache UK music industry context
    - Cache 515 contact database schema
    - Estimated 80-90% cache hit rate
    - 70-85% cost reduction
 
 3. **Agentic Loops**: Autonomous multi-step enrichment
-
    - Find social profiles → Validate email → Enrich database
    - Fewer API calls, smarter execution
    - Better quality results
@@ -123,19 +120,16 @@ class ContactEnrichmentAgent extends StreamingAgent {
 **Upgrade Benefits**:
 
 1. **SDK Health Checks**: System reliability
-
    - Monitor API connectivity
    - Track rate limits
    - Alert on failures
 
 2. **Cost Monitoring Dashboard**: Financial visibility
-
    - Real-time API cost tracking
    - Cache hit rate monitoring
    - Budget alerts and projections
 
 3. **Event System**: Real-time agent activity
-
    - Agent start/stop events
    - Progress updates
    - Error notifications
@@ -212,20 +206,17 @@ class AgentManager {
 **Upgrade Benefits**:
 
 1. **Extended Thinking**: Better campaign strategies
-
    - Strategic radio targeting decisions
    - Genre-based playlist selection
    - DJ relationship prioritisation
    - Budget allocation optimisation
 
 2. **Streaming**: Real-time campaign creation
-
    - Show campaign building progress
    - Better UX for agency clients
    - Progress visibility for stakeholders
 
 3. **Prompt Caching**: Industry knowledge efficiency
-
    - Cache UK radio landscape data
    - Cache genre-based targeting rules
    - Cache DJ relationship best practices
@@ -531,19 +522,16 @@ class CampaignAgent extends StreamingAgent {
 ### For Each Agent Upgrade
 
 1. **Pre-Upgrade Backup**
-
    - Create `.backup` copy of original agent
    - Document current metrics (performance, cost)
    - Capture current behaviour with test cases
 
 2. **Gradual Rollout**
-
    - Deploy to staging first
    - Run parallel with old agent (A/B test)
    - Monitor for 24-48 hours
 
 3. **Rollback Triggers**
-
    - > 10% performance degradation
    - > 20% increase in errors
    - Any data integrity issues
@@ -562,17 +550,14 @@ class CampaignAgent extends StreamingAgent {
 ### High Risk Areas
 
 1. **Contact Agent Database Integration**
-
    - **Risk**: Breaking Prisma queries
    - **Mitigation**: Preserve all database logic, test extensively
 
 2. **Radio Promo Agent Complexity**
-
    - **Risk**: 113KB file, many integrations
    - **Mitigation**: Upgrade in phases, maintain backward compatibility
 
 3. **Production Newsletter System**
-
    - **Risk**: Breaking weekly "The Unsigned Advantage" delivery
    - **Mitigation**: Extensive testing, gradual rollout
 

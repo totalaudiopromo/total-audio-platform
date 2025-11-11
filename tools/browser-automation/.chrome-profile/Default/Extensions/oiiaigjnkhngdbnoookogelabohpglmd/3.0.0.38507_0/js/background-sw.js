@@ -58,8 +58,8 @@
       'object' == typeof window && window && window.Math == Math
         ? window
         : 'object' == typeof self && self && self.Math == Math
-        ? self
-        : Function('return this')(),
+          ? self
+          : Function('return this')(),
     m = d.document,
     g = n(m) && n(m.createElement),
     y = function (e) {
@@ -108,8 +108,8 @@
   'undefined' != typeof window
     ? window
     : 'undefined' != typeof global
-    ? global
-    : 'undefined' != typeof self && self;
+      ? global
+      : 'undefined' != typeof self && self;
   function A() {
     throw new Error('Dynamic requires are not currently supported by rollup-plugin-commonjs');
   }
@@ -117,7 +117,7 @@
     return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, 'default') ? e.default : e;
   }
   function O(e, t) {
-    return e((t = { exports: {} }), t.exports), t.exports;
+    return (e((t = { exports: {} }), t.exports), t.exports);
   }
   var T,
     x,
@@ -451,14 +451,14 @@
       return void 0 === e
         ? 'Undefined'
         : null === e
-        ? 'Null'
-        : 'string' == typeof (n = Ve((r = Object(e)), $e))
-        ? n
-        : We
-        ? t(r)
-        : 'Object' == (i = t(r)) && 'function' == typeof r.callee
-        ? 'Arguments'
-        : i;
+          ? 'Null'
+          : 'string' == typeof (n = Ve((r = Object(e)), $e))
+            ? n
+            : We
+              ? t(r)
+              : 'Object' == (i = t(r)) && 'function' == typeof r.callee
+                ? 'Arguments'
+                : i;
     },
     Ye = {};
   Ye[z('toStringTag')] = 'z';
@@ -945,16 +945,16 @@
           ? ''
           : void 0
         : (n = a.charCodeAt(s)) < 55296 ||
-          n > 56319 ||
-          s + 1 === u ||
-          (o = a.charCodeAt(s + 1)) < 56320 ||
-          o > 57343
-        ? r
-          ? a.charAt(s)
-          : n
-        : r
-        ? a.slice(s, s + 2)
-        : o - 56320 + ((n - 55296) << 10) + 65536;
+            n > 56319 ||
+            s + 1 === u ||
+            (o = a.charCodeAt(s + 1)) < 56320 ||
+            o > 57343
+          ? r
+            ? a.charAt(s)
+            : n
+          : r
+            ? a.slice(s, s + 2)
+            : o - 56320 + ((n - 55296) << 10) + 65536;
     },
     wr = !p(function () {
       function e() {}
@@ -970,10 +970,10 @@
           return X(e, Sr)
             ? e[Sr]
             : 'function' == typeof e.constructor && e instanceof e.constructor
-            ? e.constructor.prototype
-            : e instanceof Object
-            ? Er
-            : null;
+              ? e.constructor.prototype
+              : e instanceof Object
+                ? Er
+                : null;
         },
     kr = z('iterator'),
     Or = !1,
@@ -1188,8 +1188,8 @@
         return 'keys' == r
           ? { value: n, done: !1 }
           : 'values' == r
-          ? { value: t[n], done: !1 }
-          : { value: [n, t[n]], done: !1 };
+            ? { value: t[n], done: !1 }
+            : { value: [n, t[n]], done: !1 };
       },
       'values'
     );
@@ -1541,8 +1541,8 @@
                     n === r.promise
                       ? l(hi('Promise-chain cycle'))
                       : (a = Di(n))
-                      ? a.call(n, u, l)
-                      : u(n);
+                        ? a.call(n, u, l)
+                        : u(n);
                   } else l(i);
                 } catch (e) {
                   f && !s && f.exit();
@@ -2191,10 +2191,10 @@
       return 9 == t.nodeType && t != e
         ? i(t)
         : r && 11 == r.nodeType && r.host
-        ? r.host
-        : r && r.assignedSlot
-        ? r.assignedSlot.parentNode
-        : r;
+          ? r.host
+          : r && r.assignedSlot
+            ? r.assignedSlot.parentNode
+            : r;
     }
   })();
   var Ui = O(function (e) {
@@ -2343,8 +2343,8 @@
               return void 0 === e
                 ? "Failed to construct 'ResizeObserver': 1 argument required, but only 0 present."
                 : 'function' != typeof e
-                ? "Failed to construct 'ResizeObserver': The callback provided as parameter 1 is not a function."
-                : void 0;
+                  ? "Failed to construct 'ResizeObserver': The callback provided as parameter 1 is not a function."
+                  : void 0;
             }
             function l(e, t) {
               return void 0 === t
@@ -2352,10 +2352,10 @@
                     e +
                     "' on 'ResizeObserver': 1 argument required, but only 0 present."
                 : t && t.nodeType === window.Node.ELEMENT_NODE
-                ? void 0
-                : "Failed to execute '" +
-                  e +
-                  "' on 'ResizeObserver': parameter 1 is not of type 'Element'.";
+                  ? void 0
+                  : "Failed to execute '" +
+                    e +
+                    "' on 'ResizeObserver': parameter 1 is not of type 'Element'.";
             }
             function f(e, t) {
               for (var r = 0; r < e.length; r += 1) if (e[r].target === t) return r;
@@ -2499,8 +2499,8 @@ var globalRoot,
       'undefined' != typeof window && null !== window
         ? window
         : 'undefined' != typeof global && null !== global
-        ? global
-        : this).hns =
+          ? global
+          : this).hns =
     globalRoot.hns2 =
       function (e, t) {
         var r,
@@ -3783,8 +3783,8 @@ hubspot.define = hubspot.defineLazy;
           'use strict';
           if (e.exports) e.exports = s(r(7));
           else {
-            (i = [r(7)]),
-              void 0 !== (o = 'function' == typeof (n = s) ? n.apply(t, i) : n) && (e.exports = o);
+            ((i = [r(7)]),
+              void 0 !== (o = 'function' == typeof (n = s) ? n.apply(t, i) : n) && (e.exports = o));
           }
         })(0, function (e) {
           'use strict';
@@ -3937,8 +3937,8 @@ hubspot.define = hubspot.defineLazy;
                     ? r.join('')
                     : void 0
                   : (r = t.match(/[A-Z]{3,5}/g))
-                  ? r[0]
-                  : void 0) && (r = void 0);
+                    ? r[0]
+                    : void 0) && (r = void 0);
             this.at = +e;
             this.abbr = r;
             this.offset = e.getTimezoneOffset();
@@ -3984,10 +3984,10 @@ hubspot.define = hubspot.defineLazy;
             return e.offsetScore !== t.offsetScore
               ? e.offsetScore - t.offsetScore
               : e.abbrScore !== t.abbrScore
-              ? e.abbrScore - t.abbrScore
-              : e.zone.population !== t.zone.population
-              ? t.zone.population - e.zone.population
-              : t.zone.name.localeCompare(e.zone.name);
+                ? e.abbrScore - t.abbrScore
+                : e.zone.population !== t.zone.population
+                  ? t.zone.population - e.zone.population
+                  : t.zone.name.localeCompare(e.zone.name);
           }
           function k(e, t) {
             var r, n;
@@ -4264,7 +4264,7 @@ hubspot.define = hubspot.defineLazy;
         e.exports = r(8);
       },
       8: function (e) {
-        (t = function () {
+        ((t = function () {
           'use strict';
           var e, t;
           function r() {
@@ -4851,8 +4851,8 @@ hubspot.define = hubspot.defineLazy;
                     e.month()
                   ]
               : i(this._months)
-              ? this._months
-              : this._months.standalone;
+                ? this._months
+                : this._months.standalone;
           }
           var at = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
           function st(e, t) {
@@ -4861,8 +4861,8 @@ hubspot.define = hubspot.defineLazy;
                 ? this._monthsShort[e.month()]
                 : this._monthsShort[nt.test(t) ? 'format' : 'standalone'][e.month()]
               : i(this._monthsShort)
-              ? this._monthsShort
-              : this._monthsShort.standalone;
+                ? this._monthsShort
+                : this._monthsShort.standalone;
           }
           function ct(e, t, r) {
             var n,
@@ -4885,17 +4885,17 @@ hubspot.define = hubspot.defineLazy;
                   ? i
                   : null
                 : -1 !== (i = Ge.call(this._longMonthsParse, a))
-                ? i
-                : null
+                  ? i
+                  : null
               : 'MMM' === t
-              ? -1 !== (i = Ge.call(this._shortMonthsParse, a)) ||
-                -1 !== (i = Ge.call(this._longMonthsParse, a))
-                ? i
-                : null
-              : -1 !== (i = Ge.call(this._longMonthsParse, a)) ||
-                -1 !== (i = Ge.call(this._shortMonthsParse, a))
-              ? i
-              : null;
+                ? -1 !== (i = Ge.call(this._shortMonthsParse, a)) ||
+                  -1 !== (i = Ge.call(this._longMonthsParse, a))
+                  ? i
+                  : null
+                : -1 !== (i = Ge.call(this._longMonthsParse, a)) ||
+                    -1 !== (i = Ge.call(this._shortMonthsParse, a))
+                  ? i
+                  : null;
           }
           function ut(e, t, r) {
             var n, i, o;
@@ -5124,10 +5124,10 @@ hubspot.define = hubspot.defineLazy;
             return 'string' != typeof e
               ? e
               : isNaN(e)
-              ? 'number' == typeof (e = t.weekdaysParse(e))
-                ? e
-                : null
-              : parseInt(e, 10);
+                ? 'number' == typeof (e = t.weekdaysParse(e))
+                  ? e
+                  : null
+                : parseInt(e, 10);
           }
           function Pt(e, t) {
             return 'string' == typeof e ? t.weekdaysParse(e) % 7 || 7 : isNaN(e) ? null : e;
@@ -5149,16 +5149,16 @@ hubspot.define = hubspot.defineLazy;
             return !0 === e
               ? Dt(this._weekdaysShort, this._week.dow)
               : e
-              ? this._weekdaysShort[e.day()]
-              : this._weekdaysShort;
+                ? this._weekdaysShort[e.day()]
+                : this._weekdaysShort;
           }
           var Lt = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
           function qt(e) {
             return !0 === e
               ? Dt(this._weekdaysMin, this._week.dow)
               : e
-              ? this._weekdaysMin[e.day()]
-              : this._weekdaysMin;
+                ? this._weekdaysMin[e.day()]
+                : this._weekdaysMin;
           }
           function Ft(e, t, r) {
             var n,
@@ -5182,29 +5182,29 @@ hubspot.define = hubspot.defineLazy;
                   ? i
                   : null
                 : 'ddd' === t
-                ? -1 !== (i = Ge.call(this._shortWeekdaysParse, a))
+                  ? -1 !== (i = Ge.call(this._shortWeekdaysParse, a))
+                    ? i
+                    : null
+                  : -1 !== (i = Ge.call(this._minWeekdaysParse, a))
+                    ? i
+                    : null
+              : 'dddd' === t
+                ? -1 !== (i = Ge.call(this._weekdaysParse, a)) ||
+                  -1 !== (i = Ge.call(this._shortWeekdaysParse, a)) ||
+                  -1 !== (i = Ge.call(this._minWeekdaysParse, a))
                   ? i
                   : null
-                : -1 !== (i = Ge.call(this._minWeekdaysParse, a))
-                ? i
-                : null
-              : 'dddd' === t
-              ? -1 !== (i = Ge.call(this._weekdaysParse, a)) ||
-                -1 !== (i = Ge.call(this._shortWeekdaysParse, a)) ||
-                -1 !== (i = Ge.call(this._minWeekdaysParse, a))
-                ? i
-                : null
-              : 'ddd' === t
-              ? -1 !== (i = Ge.call(this._shortWeekdaysParse, a)) ||
-                -1 !== (i = Ge.call(this._weekdaysParse, a)) ||
-                -1 !== (i = Ge.call(this._minWeekdaysParse, a))
-                ? i
-                : null
-              : -1 !== (i = Ge.call(this._minWeekdaysParse, a)) ||
-                -1 !== (i = Ge.call(this._weekdaysParse, a)) ||
-                -1 !== (i = Ge.call(this._shortWeekdaysParse, a))
-              ? i
-              : null;
+                : 'ddd' === t
+                  ? -1 !== (i = Ge.call(this._shortWeekdaysParse, a)) ||
+                    -1 !== (i = Ge.call(this._weekdaysParse, a)) ||
+                    -1 !== (i = Ge.call(this._minWeekdaysParse, a))
+                    ? i
+                    : null
+                  : -1 !== (i = Ge.call(this._minWeekdaysParse, a)) ||
+                      -1 !== (i = Ge.call(this._weekdaysParse, a)) ||
+                      -1 !== (i = Ge.call(this._shortWeekdaysParse, a))
+                    ? i
+                    : null;
           }
           function zt(e, t, r) {
             var n, i, o;
@@ -5549,18 +5549,18 @@ hubspot.define = hubspot.defineLazy;
                 r[Le] < 0 || r[Le] > 11
                   ? Le
                   : r[qe] < 1 || r[qe] > rt(r[je], r[Le])
-                  ? qe
-                  : r[Fe] < 0 ||
-                    r[Fe] > 24 ||
-                    (24 === r[Fe] && (0 !== r[ze] || 0 !== r[Ue] || 0 !== r[Be]))
-                  ? Fe
-                  : r[ze] < 0 || r[ze] > 59
-                  ? ze
-                  : r[Ue] < 0 || r[Ue] > 59
-                  ? Ue
-                  : r[Be] < 0 || r[Be] > 999
-                  ? Be
-                  : -1;
+                    ? qe
+                    : r[Fe] < 0 ||
+                        r[Fe] > 24 ||
+                        (24 === r[Fe] && (0 !== r[ze] || 0 !== r[Ue] || 0 !== r[Be]))
+                      ? Fe
+                      : r[ze] < 0 || r[ze] > 59
+                        ? ze
+                        : r[Ue] < 0 || r[Ue] > 59
+                          ? Ue
+                          : r[Be] < 0 || r[Be] > 999
+                            ? Be
+                            : -1;
               m(e)._overflowDayOfYear && (t < je || t > qe) && (t = qe);
               m(e)._overflowWeeks && -1 === t && (t = He);
               m(e)._overflowWeekday && -1 === t && (t = $e);
@@ -6236,16 +6236,16 @@ hubspot.define = hubspot.defineLazy;
             return r < -6
               ? 'sameElse'
               : r < -1
-              ? 'lastWeek'
-              : r < 0
-              ? 'lastDay'
-              : r < 1
-              ? 'sameDay'
-              : r < 2
-              ? 'nextDay'
-              : r < 7
-              ? 'nextWeek'
-              : 'sameElse';
+                ? 'lastWeek'
+                : r < 0
+                  ? 'lastDay'
+                  : r < 1
+                    ? 'sameDay'
+                    : r < 2
+                      ? 'nextDay'
+                      : r < 7
+                        ? 'nextWeek'
+                        : 'sameElse';
           }
           function Rn(e, t) {
             var n = e || Vr(),
@@ -6358,12 +6358,12 @@ hubspot.define = hubspot.defineLazy;
             return r.year() < 0 || r.year() > 9999
               ? ce(r, t ? 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]' : 'YYYYYY-MM-DD[T]HH:mm:ss.SSSZ')
               : P(Date.prototype.toISOString)
-              ? t
-                ? this.toDate().toISOString()
-                : new Date(this.valueOf() + 60 * this.utcOffset() * 1e3)
-                    .toISOString()
-                    .replace('Z', ce(r, 'Z'))
-              : ce(r, t ? 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]' : 'YYYY-MM-DD[T]HH:mm:ss.SSSZ');
+                ? t
+                  ? this.toDate().toISOString()
+                  : new Date(this.valueOf() + 60 * this.utcOffset() * 1e3)
+                      .toISOString()
+                      .replace('Z', ce(r, 'Z'))
+                : ce(r, t ? 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]' : 'YYYY-MM-DD[T]HH:mm:ss.SSSZ');
           }
           function Vn() {
             if (!this.isValid()) return 'moment.invalid(/* ' + this._i + ' */)';
@@ -6909,12 +6909,12 @@ hubspot.define = hubspot.defineLazy;
                 (1 === A((e % 100) / 10)
                   ? 'th'
                   : 1 === t
-                  ? 'st'
-                  : 2 === t
-                  ? 'nd'
-                  : 3 === t
-                  ? 'rd'
-                  : 'th')
+                    ? 'st'
+                    : 2 === t
+                      ? 'nd'
+                      : 3 === t
+                        ? 'rd'
+                        : 'th')
               );
             },
           });
@@ -7248,7 +7248,7 @@ hubspot.define = hubspot.defineLazy;
           };
           return r;
         }),
-          (e.exports = t());
+          (e.exports = t()));
         var t;
       },
       9: function (e, t, r) {
@@ -7257,8 +7257,8 @@ hubspot.define = hubspot.defineLazy;
           'use strict';
           if (e.exports) e.exports = s(r(7));
           else {
-            (i = [r(7)]),
-              void 0 !== (o = 'function' == typeof (n = s) ? n.apply(t, i) : n) && (e.exports = o);
+            ((i = [r(7)]),
+              void 0 !== (o = 'function' == typeof (n = s) ? n.apply(t, i) : n) && (e.exports = o));
           }
         })(0, function (e) {
           'use strict';
@@ -7411,8 +7411,8 @@ hubspot.define = hubspot.defineLazy;
                     ? r.join('')
                     : void 0
                   : (r = t.match(/[A-Z]{3,5}/g))
-                  ? r[0]
-                  : void 0) && (r = void 0);
+                    ? r[0]
+                    : void 0) && (r = void 0);
             this.at = +e;
             this.abbr = r;
             this.offset = e.getTimezoneOffset();
@@ -7458,10 +7458,10 @@ hubspot.define = hubspot.defineLazy;
             return e.offsetScore !== t.offsetScore
               ? e.offsetScore - t.offsetScore
               : e.abbrScore !== t.abbrScore
-              ? e.abbrScore - t.abbrScore
-              : e.zone.population !== t.zone.population
-              ? t.zone.population - e.zone.population
-              : t.zone.name.localeCompare(e.zone.name);
+                ? e.abbrScore - t.abbrScore
+                : e.zone.population !== t.zone.population
+                  ? t.zone.population - e.zone.population
+                  : t.zone.name.localeCompare(e.zone.name);
           }
           function k(e, t) {
             var r, n;
@@ -8727,8 +8727,8 @@ hubspot.define = hubspot.defineLazy;
                   ? e(r)
                   : void 0
                 : 'function' == typeof t
-                ? t(r)
-                : void 0;
+                  ? t(r)
+                  : void 0;
             }
             return {
               createEnviro: e,
@@ -8789,10 +8789,10 @@ hubspot.define = hubspot.defineLazy;
             'undefined' != typeof window
               ? window
               : void 0 !== r.g
-              ? r.g
-              : 'undefined' != typeof self
-              ? self
-              : {},
+                ? r.g
+                : 'undefined' != typeof self
+                  ? self
+                  : {},
           o = i.Raven,
           a = new n();
         a.noConflict = function () {
@@ -8921,10 +8921,10 @@ hubspot.define = hubspot.defineLazy;
             'undefined' != typeof window
               ? window
               : void 0 !== r.g
-              ? r.g
-              : 'undefined' != typeof self
-              ? self
-              : {},
+                ? r.g
+                : 'undefined' != typeof self
+                  ? self
+                  : {},
           q = L.document,
           F = L.navigator;
         function z(e, t) {
@@ -9966,8 +9966,8 @@ hubspot.define = hubspot.defineLazy;
                 (this._shouldBackoff()
                   ? this._logDebug('warn', 'Raven dropped error due to backoff: ', e)
                   : 'number' == typeof t.sampleRate
-                  ? Math.random() < t.sampleRate && this._sendProcessedPayload(e)
-                  : this._sendProcessedPayload(e)));
+                    ? Math.random() < t.sampleRate && this._sendProcessedPayload(e)
+                    : this._sendProcessedPayload(e)));
           },
           _getUuid: function () {
             return x();
@@ -10082,10 +10082,10 @@ hubspot.define = hubspot.defineLazy;
           'undefined' != typeof window
             ? window
             : void 0 !== r.g
-            ? r.g
-            : 'undefined' != typeof self
-            ? self
-            : {};
+              ? r.g
+              : 'undefined' != typeof self
+                ? self
+                : {};
         function i(e) {
           return 'object' == typeof e && null !== e;
         }
@@ -10290,10 +10290,10 @@ hubspot.define = hubspot.defineLazy;
             'undefined' != typeof window
               ? window
               : void 0 !== r.g
-              ? r.g
-              : 'undefined' != typeof self
-              ? self
-              : {},
+                ? r.g
+                : 'undefined' != typeof self
+                  ? self
+                  : {},
           a = [].slice,
           s = '?',
           c =
@@ -10710,12 +10710,12 @@ hubspot.define = hubspot.defineLazy;
               return y.iteratee !== v
                 ? y.iteratee(e, t)
                 : null == e
-                ? y.identity
-                : y.isFunction(e)
-                ? b(e, t, r)
-                : y.isObject(e) && !y.isArray(e)
-                ? y.matcher(e)
-                : y.property(e);
+                  ? y.identity
+                  : y.isFunction(e)
+                    ? b(e, t, r)
+                    : y.isObject(e) && !y.isArray(e)
+                      ? y.matcher(e)
+                      : y.property(e);
             };
           y.iteratee = v = function (e, t) {
             return _(e, t, 1 / 0);
@@ -10976,10 +10976,10 @@ hubspot.define = hubspot.defineLazy;
               ? y.isArray(e)
                 ? l.call(e)
                 : y.isString(e)
-                ? e.match(P)
-                : x(e)
-                ? y.map(e, y.identity)
-                : y.values(e)
+                  ? e.match(P)
+                  : x(e)
+                    ? y.map(e, y.identity)
+                    : y.values(e)
               : [];
           };
           y.size = function (e) {
@@ -10997,8 +10997,8 @@ hubspot.define = hubspot.defineLazy;
                     ? void 0
                     : []
                   : null == t || r
-                  ? e[0]
-                  : y.initial(e, e.length - t);
+                    ? e[0]
+                    : y.initial(e, e.length - t);
               };
           y.initial = function (e, t, r) {
             return l.call(e, 0, Math.max(0, e.length - (null == t || r ? 1 : t)));
@@ -11009,8 +11009,8 @@ hubspot.define = hubspot.defineLazy;
                 ? void 0
                 : []
               : null == t || r
-              ? e[e.length - 1]
-              : y.rest(e, Math.max(0, e.length - t));
+                ? e[e.length - 1]
+                : y.rest(e, Math.max(0, e.length - t));
           };
           y.rest =
             y.tail =
@@ -11689,8 +11689,8 @@ hubspot.define = hubspot.defineLazy;
               r
                 ? (a += "'+\n((__t=(" + r + "))==null?'':_.escape(__t))+\n'")
                 : n
-                ? (a += "'+\n((__t=(" + n + "))==null?'':__t)+\n'")
-                : i && (a += "';\n" + i + "\n__p+='");
+                  ? (a += "'+\n((__t=(" + n + "))==null?'':__t)+\n'")
+                  : i && (a += "';\n" + i + "\n__p+='");
               return t;
             });
             a += "';\n";
@@ -11761,7 +11761,7 @@ hubspot.define = hubspot.defineLazy;
         })();
       },
       75: function (e) {
-        (t = function () {
+        ((t = function () {
           'use strict';
           var e = Array.prototype.slice;
           function t(e, t) {
@@ -11861,10 +11861,10 @@ hubspot.define = hubspot.defineLazy;
             return void 0 === e
               ? r
               : e < 0
-              ? Math.max(0, t + e)
-              : void 0 === t
-              ? e
-              : Math.min(t, e);
+                ? Math.max(0, t + e)
+                : void 0 === t
+                  ? e
+                  : Math.min(t, e);
           }
           var M = 0,
             R = 1,
@@ -11943,10 +11943,10 @@ hubspot.define = hubspot.defineLazy;
             return null == e
               ? ae().toKeyedSeq()
               : a(e)
-              ? s(e)
-                ? e.toSeq()
-                : e.fromEntrySeq()
-              : se(e);
+                ? s(e)
+                  ? e.toSeq()
+                  : e.fromEntrySeq()
+                : se(e);
           }
           Y.prototype.toKeyedSeq = function () {
             return this;
@@ -12103,12 +12103,12 @@ hubspot.define = hubspot.defineLazy;
             var t = Array.isArray(e)
               ? new te(e).fromEntrySeq()
               : H(e)
-              ? new ie(e).fromEntrySeq()
-              : B(e)
-              ? new ne(e).fromEntrySeq()
-              : 'object' == typeof e
-              ? new re(e)
-              : void 0;
+                ? new ie(e).fromEntrySeq()
+                : B(e)
+                  ? new ne(e).fromEntrySeq()
+                  : 'object' == typeof e
+                    ? new re(e)
+                    : void 0;
             if (!t)
               throw new TypeError(
                 'Expected Array or iterable object of [k, v] entries, or keyed object: ' + e
@@ -12167,14 +12167,14 @@ hubspot.define = hubspot.defineLazy;
                   })
                 )
               : ge(t)
-              ? e.call(
-                  n,
-                  r,
-                  Y(t).map(function (r, n) {
-                    return de(e, r, n, t);
-                  })
-                )
-              : t;
+                ? e.call(
+                    n,
+                    r,
+                    Y(t).map(function (r, n) {
+                      return de(e, r, n, t);
+                    })
+                  )
+                : t;
           }
           function me(e) {
             return Array.isArray(e) ? K(e).map(me).toList() : ge(e) ? Y(e).map(me).toMap() : e;
@@ -12500,14 +12500,14 @@ hubspot.define = hubspot.defineLazy;
             return null == e
               ? it()
               : We(e) && !l(e)
-              ? e
-              : it().withMutations(function (t) {
-                  var r = n(e);
-                  He(r.size);
-                  r.forEach(function (e, r) {
-                    return t.set(r, e);
+                ? e
+                : it().withMutations(function (t) {
+                    var r = n(e);
+                    He(r.size);
+                    r.forEach(function (e, r) {
+                      return t.set(r, e);
+                    });
                   });
-                });
           }
           $e.of = function () {
             var t = e.call(arguments, 0);
@@ -12966,24 +12966,24 @@ hubspot.define = hubspot.defineLazy;
               })).length
               ? e
               : 0 !== e.size || e.__ownerID || 1 !== r.length
-              ? e.withMutations(function (e) {
-                  for (
-                    var n = t
-                        ? function (r, n) {
-                            e.update(n, b, function (e) {
-                              return e === b ? r : t(e, r, n);
-                            });
-                          }
-                        : function (t, r) {
-                            e.set(r, t);
-                          },
-                      i = 0;
-                    i < r.length;
-                    i++
-                  )
-                    r[i].forEach(n);
-                })
-              : e.constructor(r[0]);
+                ? e.withMutations(function (e) {
+                    for (
+                      var n = t
+                          ? function (r, n) {
+                              e.update(n, b, function (e) {
+                                return e === b ? r : t(e, r, n);
+                              });
+                            }
+                          : function (t, r) {
+                              e.set(r, t);
+                            },
+                        i = 0;
+                      i < r.length;
+                      i++
+                    )
+                      r[i].forEach(n);
+                  })
+                : e.constructor(r[0]);
           }
           function gt(e, t, r, n) {
             var i = e === b,
@@ -13079,8 +13079,8 @@ hubspot.define = hubspot.defineLazy;
               ? 0 === e
                 ? this.shift()
                 : e === this.size - 1
-                ? this.pop()
-                : this.splice(e, 1)
+                  ? this.pop()
+                  : this.splice(e, 1)
               : this;
           };
           At.prototype.insert = function (e, t) {
@@ -13424,14 +13424,14 @@ hubspot.define = hubspot.defineLazy;
             return null == e
               ? Wt()
               : Ht(e)
-              ? e
-              : Wt().withMutations(function (t) {
-                  var r = n(e);
-                  He(r.size);
-                  r.forEach(function (e, r) {
-                    return t.set(r, e);
+                ? e
+                : Wt().withMutations(function (t) {
+                    var r = n(e);
+                    He(r.size);
+                    r.forEach(function (e, r) {
+                      return t.set(r, e);
+                    });
                   });
-                });
           }
           Bt.of = function () {
             return this(arguments);
@@ -13843,7 +13843,7 @@ hubspot.define = hubspot.defineLazy;
               i = (l(e) ? Bt() : $e()).asMutable();
             e.__iterate(function (o, a) {
               i.update(t.call(r, o, a, e), function (e) {
-                return (e = e || []).push(n ? [a, o] : o), e;
+                return ((e = e || []).push(n ? [a, o] : o), e);
               });
             });
             var o = yr(e);
@@ -14056,8 +14056,8 @@ hubspot.define = hubspot.defineLazy;
                 return (!i || a % 2) && (i = o.next()).done
                   ? i
                   : a % 2
-                  ? z(r, a++, t)
-                  : z(r, a++, i.value, i);
+                    ? z(r, a++, t)
+                    : z(r, a++, i.value, i);
               });
             };
             return r;
@@ -14123,7 +14123,7 @@ hubspot.define = hubspot.defineLazy;
             };
             i.__iteratorUncached = function (e, i) {
               var o = n.map(function (e) {
-                  return (e = r(e)), $(i ? e.reverse() : e);
+                  return ((e = r(e)), $(i ? e.reverse() : e));
                 }),
                 a = 0,
                 s = !1;
@@ -14313,14 +14313,14 @@ hubspot.define = hubspot.defineLazy;
             return null == e
               ? Nr()
               : Cr(e) && !l(e)
-              ? e
-              : Nr().withMutations(function (t) {
-                  var r = o(e);
-                  He(r.size);
-                  r.forEach(function (e) {
-                    return t.add(e);
+                ? e
+                : Nr().withMutations(function (t) {
+                    var r = o(e);
+                    He(r.size);
+                    r.forEach(function (e) {
+                      return t.add(e);
+                    });
                   });
-                });
           }
           xr.of = function () {
             return this(arguments);
@@ -14351,13 +14351,13 @@ hubspot.define = hubspot.defineLazy;
               })).length
               ? this
               : 0 !== this.size || this.__ownerID || 1 !== t.length
-              ? this.withMutations(function (e) {
-                  for (var r = 0; r < t.length; r++)
-                    o(t[r]).forEach(function (t) {
-                      return e.add(t);
-                    });
-                })
-              : this.constructor(t[0]);
+                ? this.withMutations(function (e) {
+                    for (var r = 0; r < t.length; r++)
+                      o(t[r]).forEach(function (t) {
+                        return e.add(t);
+                      });
+                  })
+                : this.constructor(t[0]);
           };
           xr.prototype.intersect = function () {
             var t = e.call(arguments, 0);
@@ -14467,14 +14467,14 @@ hubspot.define = hubspot.defineLazy;
             return null == e
               ? Ur()
               : Lr(e)
-              ? e
-              : Ur().withMutations(function (t) {
-                  var r = o(e);
-                  He(r.size);
-                  r.forEach(function (e) {
-                    return t.add(e);
+                ? e
+                : Ur().withMutations(function (t) {
+                    var r = o(e);
+                    He(r.size);
+                    r.forEach(function (e) {
+                      return t.add(e);
+                    });
                   });
-                });
           }
           jr.of = function () {
             return this(arguments);
@@ -15168,12 +15168,12 @@ hubspot.define = hubspot.defineLazy;
                         n = (n + cn(xe(e), xe(t))) | 0;
                       }
                   : t
-                  ? function (e) {
-                      n = (31 * n + xe(e)) | 0;
-                    }
-                  : function (e) {
-                      n = (n + xe(e)) | 0;
-                    }
+                    ? function (e) {
+                        n = (31 * n + xe(e)) | 0;
+                      }
+                    : function (e) {
+                        n = (n + xe(e)) | 0;
+                      }
               ),
               n
             );
@@ -15215,7 +15215,7 @@ hubspot.define = hubspot.defineLazy;
           })();
           return un;
         }),
-          (e.exports = t());
+          (e.exports = t()));
         var t;
       },
       99: function (e, t, r) {
@@ -15241,8 +15241,8 @@ hubspot.define = hubspot.defineLazy;
           return null === e || 'object' != typeof e
             ? null
             : 'function' == typeof (e = (h && e[h]) || e['@@iterator'])
-            ? e
-            : null;
+              ? e
+              : null;
         }
         var m = {
             isMounted: function () {
@@ -15385,14 +15385,14 @@ hubspot.define = hubspot.defineLazy;
               c += D((s = s.value), t, i, (l = o + P(s, u++)), a);
           else if ('object' === s)
             throw (
-              ((t = String(e)),
+              (t = String(e)),
               Error(
                 'Objects are not valid as a React child (found: ' +
                   ('[object Object]' === t
                     ? 'object with keys {' + Object.keys(e).join(', ') + '}'
                     : t) +
                   '). If you meant to render a collection of children, use an array instead.'
-              ))
+              )
             );
           return c;
         }
@@ -16719,8 +16719,8 @@ hubspot.define = hubspot.defineLazy;
               ? `Error: ${e.message}\n${e.stack}`
               : e.stack
             : e.sourceURL
-            ? `${e.message}\n${e.sourceURL}:${e.line}`
-            : e
+              ? `${e.message}\n${e.sourceURL}:${e.line}`
+              : e
           : e;
       }
     }
@@ -17040,18 +17040,18 @@ hubspot.define = hubspot.defineLazy;
                 },
               })
             : sessionStorage.storageError
-            ? sessionStorage.storageError > Ee
-              ? be({
-                  error: t,
-                  fingerprint: ['chrome runtime/storage is undefined'],
-                  tags: { storageUndefined: e },
-                  extraData: {
-                    storageUndefined: e,
-                    messageString: 'SafeStorage chrome.storage is undefined',
-                  },
-                })
-              : (sessionStorage.runtimeError = parseInt(sessionStorage.runtimeError, 10) + 1)
-            : (sessionStorage.storageError = 1);
+              ? sessionStorage.storageError > Ee
+                ? be({
+                    error: t,
+                    fingerprint: ['chrome runtime/storage is undefined'],
+                    tags: { storageUndefined: e },
+                    extraData: {
+                      storageUndefined: e,
+                      messageString: 'SafeStorage chrome.storage is undefined',
+                    },
+                  })
+                : (sessionStorage.runtimeError = parseInt(sessionStorage.runtimeError, 10) + 1)
+              : (sessionStorage.storageError = 1);
           return null;
         }
       };
@@ -17161,8 +17161,8 @@ hubspot.define = hubspot.defineLazy;
               ? `Error: ${e.message}\n${e.stack}`
               : e.stack
             : e.sourceURL
-            ? `${e.message}\n${e.sourceURL}:${e.line}`
-            : e
+              ? `${e.message}\n${e.sourceURL}:${e.line}`
+              : e
           : e;
       }
     }
@@ -17348,8 +17348,8 @@ hubspot.define = hubspot.defineLazy;
         null === e
           ? 'Null'
           : void 0 === e
-          ? 'Undefined'
-          : Object.prototype.toString.call(e).slice(8, -1),
+            ? 'Undefined'
+            : Object.prototype.toString.call(e).slice(8, -1),
       mr = e => {
         const t = r(18),
           n = {
@@ -17449,7 +17449,7 @@ hubspot.define = hubspot.defineLazy;
           1 === e.length ? Cr(e[0], t)(r) : Cr(e[0], Dr(e.slice(1), t)(r[e[0]]))(r),
       Mr = (e, t) => ('function' == typeof e ? e(t) : e),
       Rr = e => ('function' == typeof e ? e() : e),
-      Nr = (e, t, r) => n => Mr(e, n) ? Cr(t, Rr(r))(n) : n,
+      Nr = (e, t, r) => n => (Mr(e, n) ? Cr(t, Rr(r))(n) : n),
       jr = Symbol('responseHandlers'),
       Lr = e => e[jr],
       qr = e => Ir(jr, e),
@@ -17603,14 +17603,14 @@ hubspot.define = hubspot.defineLazy;
           ('ABORT' === e.errorCode
             ? Qr(e.options[an], e.options.url, 'aborted', { status: e.status })
             : 'TIMEOUT' === e.errorCode
-            ? Qr(e.options[an], e.options.url, 'timedOut', { status: e.status })
-            : Qr(e.options[an], e.options.url, 'failed', {
-                status: e.status,
-                statusText: e.statusText,
-                willBeRetried: t,
-                retryReason: r,
-                retryAttempt: n,
-              }));
+              ? Qr(e.options[an], e.options.url, 'timedOut', { status: e.status })
+              : Qr(e.options[an], e.options.url, 'failed', {
+                  status: e.status,
+                  statusText: e.statusText,
+                  willBeRetried: t,
+                  retryReason: r,
+                  retryAttempt: n,
+                }));
         return e;
       },
       un = (e, t) => {
@@ -17706,14 +17706,16 @@ hubspot.define = hubspot.defineLazy;
         null == e
           ? ''
           : 'string' == typeof e || e instanceof String
-          ? e
-          : Object.keys(e)
-              .reduce((t, r) => {
-                const n = e[r];
-                Array.isArray(n) ? n.length > 0 && t.push(bn(r, n)) : null != n && t.push(vn(r, n));
-                return t;
-              }, [])
-              .join('&'),
+            ? e
+            : Object.keys(e)
+                .reduce((t, r) => {
+                  const n = e[r];
+                  Array.isArray(n)
+                    ? n.length > 0 && t.push(bn(r, n))
+                    : null != n && t.push(vn(r, n));
+                  return t;
+                }, [])
+                .join('&'),
       wn = e =>
         null == e || '' === e.trim()
           ? {}
@@ -17875,8 +17877,8 @@ hubspot.define = hubspot.defineLazy;
         const r = t && t._input ? t._input : t;
         return void 0 !== r[e] ? r[e] : void 0;
       },
-      Wn = (e, t) => r => void 0 === $n(e, r) ? Cr(e, t)(r) : r,
-      Vn = (e, t, r) => n => r || void 0 === Sn(e, n) ? En(e, t, n) : n,
+      Wn = (e, t) => r => (void 0 === $n(e, r) ? Cr(e, t)(r) : r),
+      Vn = (e, t, r) => n => (r || void 0 === Sn(e, n) ? En(e, t, n) : n),
       Gn = Symbol('initialQuery'),
       Yn = Symbol('noOverrideQuery'),
       Kn = Symbol('overrideQuery'),
@@ -19392,16 +19394,16 @@ hubspot.define = hubspot.defineLazy;
       return r
         ? qs(e) + a
         : n
-        ? `/chirp-frontend-${e}-na1-proxy/v1/gateway${a}`
-        : 'app' === e && o
-        ? `/chirp-frontend-app-stream/v1/gateway${a}`
-        : 'internal' === e && o
-        ? `/chirp-frontend-internal-stream/v1/gateway${a}`
-        : 'external' === e && o
-        ? '/chirp-frontend-external-stream/v1/gateway'
-        : 'app' === e && t && t > 5e3
-        ? `/chirp-frontend-app-slow/v1/gateway${a}`
-        : `/chirp-frontend-${e}/v1/gateway${a}`;
+          ? `/chirp-frontend-${e}-na1-proxy/v1/gateway${a}`
+          : 'app' === e && o
+            ? `/chirp-frontend-app-stream/v1/gateway${a}`
+            : 'internal' === e && o
+              ? `/chirp-frontend-internal-stream/v1/gateway${a}`
+              : 'external' === e && o
+                ? '/chirp-frontend-external-stream/v1/gateway'
+                : 'app' === e && t && t > 5e3
+                  ? `/chirp-frontend-app-slow/v1/gateway${a}`
+                  : `/chirp-frontend-${e}/v1/gateway${a}`;
     }
     function qs(e) {
       return `https://local.${
@@ -20211,8 +20213,8 @@ hubspot.define = hubspot.defineLazy;
                   2 & o[0]
                     ? n.return
                     : o[0]
-                    ? n.throw || ((i = n.return) && i.call(n), 0)
-                    : n.next) &&
+                      ? n.throw || ((i = n.return) && i.call(n), 0)
+                      : n.next) &&
                 !(i = i.call(n, o[1])).done)
             )
               return i;
@@ -20434,8 +20436,8 @@ hubspot.define = hubspot.defineLazy;
         return 'Map' === r || 'Set' === r
           ? Array.from(e)
           : 'Arguments' === r || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)
-          ? au(e, t)
-          : void 0;
+            ? au(e, t)
+            : void 0;
       }
     }
     function au(e, t) {
@@ -21793,8 +21795,8 @@ hubspot.define = hubspot.defineLazy;
               ? void 0
               : d.leave
             : null === (m = n.get(f.kind)) || void 0 === m
-            ? void 0
-            : m.enter;
+              ? void 0
+              : m.enter;
           v = null == r ? void 0 : r.call(t, f, o, a, p, h);
           if (v === Zl) break;
           if (!1 === v) {
@@ -21833,8 +21835,8 @@ hubspot.define = hubspot.defineLazy;
       return 'object' == typeof r
         ? r
         : 'function' == typeof r
-        ? { enter: r, leave: void 0 }
-        : { enter: e.enter, leave: e.leave };
+          ? { enter: r, leave: void 0 }
+          : { enter: e.enter, leave: e.leave };
     }
     function rf(e, t) {
       var r = e.directives;
@@ -22213,14 +22215,14 @@ hubspot.define = hubspot.defineLazy;
             case 1:
               return u ? [4, c.next()] : [3, 3];
             case 2:
-              (l = O.sent()), (f = l.value), (p = l.done);
+              ((l = O.sent()), (f = l.value), (p = l.done));
               h = 'string' == typeof f ? f : r.decode(f);
               d = s.length - a.length + 1;
               u = !p;
               m = (s += h).indexOf(a, d);
               for (; m > -1; ) {
                 g = void 0;
-                (E = [s.slice(0, m), s.slice(m + a.length)]), (g = E[0]), (s = E[1]);
+                ((E = [s.slice(0, m), s.slice(m + a.length)]), (g = E[0]), (s = E[1]));
                 y = g.indexOf('\r\n\r\n');
                 v = Gf(g.slice(0, y));
                 if ((b = v['content-type']) && -1 === b.toLowerCase().indexOf('application/json'))
@@ -25217,8 +25219,8 @@ hubspot.define = hubspot.defineLazy;
               'string' == typeof e
                 ? n.set(e, !1)
                 : el(e)
-                ? n.set(t.transform(e), !1)
-                : Cu(e) && e.query && i.add(e);
+                  ? n.set(t.transform(e), !1)
+                  : Cu(e) && e.query && i.add(e);
             });
           this.queries.forEach(function (t, i) {
             var o = t.observableQuery,
@@ -25584,8 +25586,8 @@ hubspot.define = hubspot.defineLazy;
                       return s(e.data || void 0);
                     })
                 : 'none' === c && r === Yh.refetch && Array.isArray(t.missing)
-                ? s(void 0)
-                : s(a);
+                  ? s(void 0)
+                  : s(a);
             },
             m = 'no-cache' === a ? 0 : r === Yh.refetch && 'merge' !== s ? 1 : 2,
             g = function () {
@@ -25604,8 +25606,8 @@ hubspot.define = hubspot.defineLazy;
               return (v = h()).complete
                 ? { fromLink: !1, sources: [d(v, e.markReady())] }
                 : u || y
-                ? { fromLink: !0, sources: [d(v), g()] }
-                : { fromLink: !0, sources: [g()] };
+                  ? { fromLink: !0, sources: [d(v), g()] }
+                  : { fromLink: !0, sources: [g()] };
             case 'cache-and-network':
               var v;
               return (v = h()).complete || u || y
@@ -25865,7 +25867,7 @@ hubspot.define = hubspot.defineLazy;
             u = this.collectSelectionsToResolve(a, c);
             l = a.operation;
             f = l ? l.charAt(0).toUpperCase() + l.slice(1) : 'Query';
-            (h = (p = this).cache), (d = p.client);
+            ((h = (p = this).cache), (d = p.client));
             m = {
               fragmentMap: c,
               context: Dc(Dc({}, r), { cache: h, client: d }),
@@ -25895,7 +25897,7 @@ hubspot.define = hubspot.defineLazy;
             c,
             u = this;
           return Nc(this, function (l) {
-            (i = n.fragmentMap), (o = n.context), (a = n.variables);
+            ((i = n.fragmentMap), (o = n.context), (a = n.variables));
             s = [r];
             c = function (e) {
               return Rc(u, void 0, void 0, function () {
@@ -26002,8 +26004,8 @@ hubspot.define = hubspot.defineLazy;
                 return Array.isArray(r)
                   ? h.resolveSubSelectedArray(e, t || a, r, n)
                   : e.selectionSet
-                  ? h.resolveSelectionSet(e.selectionSet, t || a, r, n)
-                  : void 0;
+                    ? h.resolveSelectionSet(e.selectionSet, t || a, r, n)
+                    : void 0;
               }),
             ];
           });
@@ -26016,10 +26018,10 @@ hubspot.define = hubspot.defineLazy;
             return null === r
               ? null
               : Array.isArray(r)
-              ? i.resolveSubSelectedArray(e, t, r, n)
-              : e.selectionSet
-              ? i.resolveSelectionSet(e.selectionSet, t, r, n)
-              : void 0;
+                ? i.resolveSubSelectedArray(e, t, r, n)
+                : e.selectionSet
+                  ? i.resolveSelectionSet(e.selectionSet, t, r, n)
+                  : void 0;
           })
         );
       };
@@ -26566,18 +26568,18 @@ hubspot.define = hubspot.defineLazy;
           return '__typename' === t && Md.call(this.policies.rootTypenamesById, e)
             ? this.policies.rootTypenamesById[e]
             : this instanceof Xd
-            ? this.parent.get(e, t)
-            : void 0;
+              ? this.parent.get(e, t)
+              : void 0;
         };
         e.prototype.lookup = function (e, t) {
           t && this.group.depend(e, '__exists');
           return Md.call(this.data, e)
             ? this.data[e]
             : this instanceof Xd
-            ? this.parent.lookup(e, t)
-            : this.policies.rootTypenamesById[e]
-            ? Object.create(null)
-            : void 0;
+              ? this.parent.lookup(e, t)
+              : this.policies.rootTypenamesById[e]
+                ? Object.create(null)
+                : void 0;
         };
         e.prototype.merge = function (e, t) {
           var r,
@@ -27139,28 +27141,28 @@ hubspot.define = hubspot.defineLazy;
                     r)
                   ))
                 : Mf(m)
-                ? m.length > 0 &&
-                  (m = p(
-                    t.executeSubSelectedArray({
-                      field: e,
-                      array: m,
-                      enclosingRef: i,
-                      context: o,
-                    }),
-                    g
-                  ))
-                : e.selectionSet
-                ? null != m &&
-                  (m = p(
-                    t.executeSelectionSet({
-                      selectionSet: e.selectionSet,
-                      objectOrReference: m,
-                      enclosingRef: Zu(m) ? m : i,
-                      context: o,
-                    }),
-                    g
-                  ))
-                : o.canonizeResults && (m = t.canon.pass(m));
+                  ? m.length > 0 &&
+                    (m = p(
+                      t.executeSubSelectedArray({
+                        field: e,
+                        array: m,
+                        enclosingRef: i,
+                        context: o,
+                      }),
+                      g
+                    ))
+                  : e.selectionSet
+                    ? null != m &&
+                      (m = p(
+                        t.executeSelectionSet({
+                          selectionSet: e.selectionSet,
+                          objectOrReference: m,
+                          enclosingRef: Zu(m) ? m : i,
+                          context: o,
+                        }),
+                        g
+                      ))
+                    : o.canonizeResults && (m = t.canon.pass(m));
               void 0 !== m && l.push((((d = {})[g] = m), d));
             } else {
               var y = Du(e, o.lookupFragment);
@@ -28213,8 +28215,8 @@ hubspot.define = hubspot.defineLazy;
         'string' == typeof o
           ? (this.optimisticData = this.optimisticData.addLayer(o, c))
           : !1 === o
-          ? c(this.data)
-          : c();
+            ? c(this.data)
+            : c();
         'string' == typeof a && (this.optimisticData = this.optimisticData.removeLayer(a));
         if (s && u.size) {
           this.broadcastWatches(
@@ -28265,7 +28267,7 @@ hubspot.define = hubspot.defineLazy;
       return t;
     })(Id);
     0;
-    Cc['useSyncExternalStore'], hf && Symbol.for('__APOLLO_CONTEXT__');
+    (Cc['useSyncExternalStore'], hf && Symbol.for('__APOLLO_CONTEXT__'));
     var Mm, Rm;
     !(function (e) {
       e[(e.Query = 0)] = 'Query';
@@ -28318,8 +28320,8 @@ hubspot.define = hubspot.defineLazy;
     Symbol.for('apollo.hook.wrappers');
     Object.prototype.hasOwnProperty;
     Symbol();
-    Dd({ loading: !0, data: void 0, error: void 0, networkStatus: Yh.loading }),
-      Dd({ loading: !1, data: void 0, error: void 0, networkStatus: Yh.ready });
+    (Dd({ loading: !0, data: void 0, error: void 0, networkStatus: Yh.loading }),
+      Dd({ loading: !1, data: void 0, error: void 0, networkStatus: Yh.ready }));
     mf ? Cc.useLayoutEffect : Cc.useEffect;
     function jm(e) {
       var t = Promise.resolve(e);
@@ -28360,7 +28362,7 @@ hubspot.define = hubspot.defineLazy;
       return e;
     }
     Cc['use'];
-    Symbol(), Symbol();
+    (Symbol(), Symbol());
     var zm = [
         'canonizeResults',
         'context',
@@ -28574,7 +28576,7 @@ hubspot.define = hubspot.defineLazy;
         };
         return e;
       })();
-    (function () {
+    ((function () {
       function e(e) {
         void 0 === e && (e = Object.create(null));
         this.queryRefs = new Bp(ff);
@@ -28595,7 +28597,7 @@ hubspot.define = hubspot.defineLazy;
         this.queryRefs.lookupArray(e).current = t;
       };
     })(),
-      Symbol.for('apollo.suspenseCache');
+      Symbol.for('apollo.suspenseCache'));
     Symbol.for('apollo.skipToken');
     r(101);
     Symbol.for('__DATA_FETCHING_CLIENT_CONTEXT__');
@@ -28935,12 +28937,12 @@ hubspot.define = hubspot.defineLazy;
         null != u && u.stack
           ? Object.defineProperty(this, 'stack', { value: u.stack, writable: !0, configurable: !0 })
           : Error.captureStackTrace
-          ? Error.captureStackTrace(this, fg)
-          : Object.defineProperty(this, 'stack', {
-              value: Error().stack,
-              writable: !0,
-              configurable: !0,
-            });
+            ? Error.captureStackTrace(this, fg)
+            : Object.defineProperty(this, 'stack', {
+                value: Error().stack,
+                writable: !0,
+                configurable: !0,
+              });
       }
       get [Symbol.toStringTag]() {
         return 'GraphQLError';
@@ -29155,8 +29157,8 @@ hubspot.define = hubspot.defineLazy;
           39 === t
             ? 'Unexpected single quote character (\'), did you mean to use a double quote (")?'
             : vg(t) || bg(r, i)
-            ? `Unexpected character: ${Sg(e, i)}.`
-            : `Invalid character: ${Sg(e, i)}.`
+              ? `Unexpected character: ${Sg(e, i)}.`
+              : `Invalid character: ${Sg(e, i)}.`
         );
       }
       return Eg(e, mg.EOF, n, n);
@@ -29284,10 +29286,10 @@ hubspot.define = hubspot.defineLazy;
       return e >= 48 && e <= 57
         ? e - 48
         : e >= 65 && e <= 70
-        ? e - 55
-        : e >= 97 && e <= 102
-        ? e - 87
-        : -1;
+          ? e - 55
+          : e >= 97 && e <= 102
+            ? e - 87
+            : -1;
     }
     function Mg(e, t) {
       const r = e.source.body;
@@ -29382,8 +29384,8 @@ hubspot.define = hubspot.defineLazy;
                 (Symbol.toStringTag in e
                   ? e[Symbol.toStringTag]
                   : null === (r = e.constructor) || void 0 === r
-                  ? void 0
-                  : r.name)
+                    ? void 0
+                    : r.name)
               ) {
                 const t = Fl(e);
                 throw new Error(
@@ -30440,15 +30442,18 @@ hubspot.define = hubspot.defineLazy;
         const e = { errorCode: r, httpStatus: n, errorMessage: i };
         if (
           t.disableGlobalErrorReportingForMatches.find(t =>
-            Object.keys(t).reduce((r, n) => {
-              if (!r) return !1;
-              const i = t[n],
-                o = e[n];
-              return (
-                i === o ||
-                ('string' == typeof o && 'string' == typeof i && i.length > 0 && o.includes(i))
-              );
-            }, Object.keys(t).length > 0)
+            Object.keys(t).reduce(
+              (r, n) => {
+                if (!r) return !1;
+                const i = t[n],
+                  o = e[n];
+                return (
+                  i === o ||
+                  ('string' == typeof o && 'string' == typeof i && i.length > 0 && o.includes(i))
+                );
+              },
+              Object.keys(t).length > 0
+            )
           )
         )
           return !1;
@@ -31373,10 +31378,10 @@ hubspot.define = hubspot.defineLazy;
             return 'name' === e
               ? gb(t)
               : null === t
-              ? null
-              : 'number' == typeof t
-              ? Math.round(t)
-              : t;
+                ? null
+                : 'number' == typeof t
+                  ? Math.round(t)
+                  : t;
           }),
         ]);
       },
@@ -31935,12 +31940,12 @@ hubspot.define = hubspot.defineLazy;
         e > 1280
           ? 'xlarge (> 1280)'
           : e >= 1024
-          ? 'large (1024 - 1280)'
-          : e >= 680
-          ? 'medium (680 - 1024)'
-          : e > 0
-          ? 'small (< 680)'
-          : 'unknown',
+            ? 'large (1024 - 1280)'
+            : e >= 680
+              ? 'medium (680 - 1024)'
+              : e > 0
+                ? 'small (< 680)'
+                : 'unknown',
       J_ = 53,
       X_ = 'USAGE_TRACKER_JS',
       Z_ = '__hstc',
@@ -32719,8 +32724,8 @@ hubspot.define = hubspot.defineLazy;
         r
           ? (s = `EMAIL:::${r}:::${J_}`)
           : t
-          ? (a = o ? `TEMP_ID:::${t}:::${J_}` : `VISITOR:::${t}:::${J_}`)
-          : e && (a = `TEMP_ID:::${e}:::${J_}`);
+            ? (a = o ? `TEMP_ID:::${t}:::${J_}` : `VISITOR:::${t}:::${J_}`)
+            : e && (a = `TEMP_ID:::${e}:::${J_}`);
         if (!s && !i)
           throw Uw(
             'Could not identify an authenticated user. Please specify an email address (email).'

@@ -194,7 +194,6 @@ For realistic Dan demo, create:
 **Liberty Records Campaigns**:
 
 1. Royal Blood - BBC Radio 1 Campaign (Active)
-
    - Budget: £450
    - Platform: BBC Radio
    - Target: 25 stations
@@ -203,7 +202,6 @@ For realistic Dan demo, create:
    - Billing: "RB-2024-Q4"
 
 2. Architects - Playlist Push (Active)
-
    - Budget: £350
    - Platform: Playlists
    - Target: 15 playlists
@@ -212,7 +210,6 @@ For realistic Dan demo, create:
    - Billing: "ARCH-2024-Q4"
 
 3. Rolo Tomassi - Press Campaign (Completed)
-
    - Budget: £280
    - Platform: Blogs
    - Actual: 8 features
@@ -244,14 +241,12 @@ For realistic Dan demo, create:
 After Dan demo, implement:
 
 1. **Client-Ready Campaign Reports** (TIER 2):
-
    - One-click PDF generation per client
    - Branded with agency logo (white-label)
    - Invoice-ready format with time breakdown
    - "Generate Client Report" button on dashboard
 
 2. **Team Member Access** (TIER 1):
-
    - Invite junior staff to account
    - Role-based permissions (Admin/Editor/Viewer)
    - Activity log per team member

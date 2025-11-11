@@ -27,27 +27,29 @@ Navigate to **General** → **Build & Development Settings**
 
 Set these values:
 
-| Setting | Value | Why |
-|---------|-------|-----|
-| **Root Directory** | `apps/audio-intel` | Deploy only this app from monorepo |
-| **Include files outside root** | ✅ **ENABLED** | Critical for pnpm workspace access |
-| **Framework Preset** | Next.js | Auto-detected |
-| **Build Command** | `pnpm build` | From vercel.json |
-| **Install Command** | `pnpm install --frozen-lockfile` | From vercel.json |
-| **Output Directory** | `.next` | Next.js default |
-| **Node.js Version** | 18.x | Default (18.x or 20.x work) |
+| Setting                        | Value                            | Why                                |
+| ------------------------------ | -------------------------------- | ---------------------------------- |
+| **Root Directory**             | `apps/audio-intel`               | Deploy only this app from monorepo |
+| **Include files outside root** | ✅ **ENABLED**                   | Critical for pnpm workspace access |
+| **Framework Preset**           | Next.js                          | Auto-detected                      |
+| **Build Command**              | `pnpm build`                     | From vercel.json                   |
+| **Install Command**            | `pnpm install --frozen-lockfile` | From vercel.json                   |
+| **Output Directory**           | `.next`                          | Next.js default                    |
+| **Node.js Version**            | 18.x                             | Default (18.x or 20.x work)        |
 
 ### Step 3: Verify Environment Variables
 
 Ensure these are set in **Environment Variables** section:
 
 #### Required for App Function
+
 - `NEXT_PUBLIC_BASE_URL` = `https://intel.totalaudiopromo.com`
 - `NEXT_PUBLIC_SUPABASE_URL` = Your Supabase project URL
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` = Your Supabase anon key
 - `SUPABASE_SERVICE_ROLE_KEY` = Your Supabase service role key
 
 #### Required for Features
+
 - `PERPLEXITY_API_KEY` = For contact enrichment
 - `STRIPE_SECRET_KEY` = For payment processing
 - `STRIPE_WEBHOOK_SECRET` = For Stripe webhooks
@@ -55,6 +57,7 @@ Ensure these are set in **Environment Variables** section:
 - `RESEND_API_KEY` = For transactional emails
 
 #### Optional (Social Media Features)
+
 - `TWITTER_API_KEY` = Twitter posting
 - `TWITTER_API_SECRET` = Twitter posting
 - `TWITTER_ACCESS_TOKEN` = Twitter posting
@@ -75,6 +78,7 @@ Ensure these are set in **Environment Variables** section:
 After deployment completes:
 
 ### 1. Check Build Logs
+
 ```
 ✓ Installing dependencies
   Running "pnpm install --frozen-lockfile"
@@ -93,6 +97,7 @@ After deployment completes:
 **Expected build time**: 55-90 seconds (NOT 13-14 minutes)
 
 ### 2. Test Site Access
+
 ```bash
 # Homepage should load
 curl -I https://intel.totalaudiopromo.com
@@ -108,6 +113,7 @@ curl -I https://intel.totalaudiopromo.com/api/health
 ```
 
 ### 3. Browser Testing
+
 - Visit https://intel.totalaudiopromo.com
 - Should see landing page
 - Click "Try Demo" - should redirect to login
@@ -125,6 +131,7 @@ curl -I https://intel.totalaudiopromo.com/api/health
 
 **Cause**: Wrong build command or Root Directory misconfigured
 **Fix**:
+
 1. Ensure Root Directory = `apps/audio-intel`
 2. Ensure Build Command = `pnpm build` (not `pnpm --filter audio-intel build`)
 
@@ -170,12 +177,14 @@ git push origin main
 ```
 
 Vercel will automatically:
+
 1. Detect the push
 2. Start a new build
 3. Deploy if build succeeds
 4. Make it live
 
 For manual redeploy (no code changes):
+
 1. Go to Vercel Dashboard → Deployments
 2. Click "..." on any deployment
 3. Click "Redeploy"
@@ -200,6 +209,7 @@ For manual redeploy (no code changes):
 4. **Output Directory = `.next`**: Standard Next.js output (relative to Root Directory)
 
 ### Monorepo Structure
+
 ```
 total-audio-platform/          ← Repository root
 ├── pnpm-workspace.yaml        ← Defines monorepo packages

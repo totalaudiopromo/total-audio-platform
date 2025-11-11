@@ -74,7 +74,6 @@ Activate this skill when:
 **For Monorepo Deployment Issues:**
 
 1. **Verify vercel.json Configuration**
-
    - Each app needs: `buildCommand`, `installCommand`, `outputDirectory`
    - Example for monorepo:
      ```json
@@ -88,7 +87,6 @@ Activate this skill when:
      ```
 
 2. **Check Root Directory in Vercel**
-
    - Navigate to: Vercel Project → Settings → General
    - Root Directory should be: `apps/{app-name}` for monorepo
    - NEVER leave blank for monorepo apps
@@ -108,7 +106,6 @@ Activate this skill when:
    ```
 
 2. **If missing, reconnect Git in Vercel:**
-
    - Go to Project Settings → Git tab
    - Click "Disconnect" (if needed)
    - Click "Connect Git Repository"
@@ -116,9 +113,11 @@ Activate this skill when:
    - Vercel will recreate webhook
 
 3. **Verify webhook was created:**
+
    ```bash
    gh api repos/{owner}/{repo}/hooks --jq '.[].config.url'
    ```
+
    - Should show Vercel webhook URL
 
 **For GitHub Default Branch Issues:**
@@ -144,7 +143,6 @@ Activate this skill when:
 **After making fixes, verify:**
 
 1. **Test Manual Deployment First**
-
    - Go to Vercel dashboard
    - Click "Deployments" → Select any deployment → "Redeploy"
    - Uncheck "Use existing Build Cache"
@@ -152,7 +150,6 @@ Activate this skill when:
    - **If this succeeds**, Root Directory and build config are correct
 
 2. **Test Automatic Deployments**
-
    - Make trivial commit (e.g., bump package version)
    - Push to main branch
    - Wait 30-60 seconds
@@ -160,9 +157,11 @@ Activate this skill when:
    - **If no new deployment appears**, webhook issue persists
 
 3. **Monitor Deployment Progress**
+
    ```bash
    vercel ls {project-name} 2>&1 | head -15
    ```
+
    - New deployments should appear within 1-2 minutes of push
    - Check Status column for "Building" or "Ready"
 
@@ -192,6 +191,7 @@ Activate this skill when:
 **IMPORTANT**: When diagnosing "GitHub Actions failing", ALWAYS check ALL three failure types:
 
 ### 1. Vercel Deployment Failures
+
 - **Symptom**: Vercel deployments show "Error" status
 - **Common Causes**:
   - Missing Root Directory setting in Vercel UI
@@ -200,14 +200,16 @@ Activate this skill when:
 - **Fix Location**: Vercel dashboard settings + vercel.json files
 
 ### 2. GitHub Actions CI/CD Failures
+
 - **Symptom**: GitHub Actions runs show red X
 - **Common Causes**:
   - TypeScript compilation errors (strict null checks)
   - Missing environment variables in GitHub Secrets
   - Test failures due to invalid configuration
-- **Fix Location**: Source code + .github/workflows/*.yml
+- **Fix Location**: Source code + .github/workflows/\*.yml
 
 ### 3. Golden Verification Pipeline Failures
+
 - **Symptom**: "Invalid Lighthouse budget structure" error
 - **Common Causes**:
   - Wrong budget.json format (score thresholds vs. budget format)
@@ -216,6 +218,7 @@ Activate this skill when:
 - **Fix Location**: .lighthouse/budget.json + scripts/golden-postcheck.ts
 
 **Diagnostic Protocol**:
+
 1. Run `gh run list --limit 5` to see which workflows are failing
 2. Run `gh run view [run-id] --log-failed` for each failed workflow
 3. Check Vercel dashboard for deployment status
@@ -245,19 +248,16 @@ Activate this skill when:
 **When diagnosing deployment issues, provide:**
 
 1. **Current Status Summary**
-
    - What's failing
    - Last successful deployment time
    - Error patterns observed
 
 2. **Root Cause Analysis**
-
    - Primary issue identified
    - Contributing factors
    - Why it's failing
 
 3. **Step-by-Step Resolution**
-
    - Exact commands to run
    - Exact settings to change in Vercel UI
    - Expected outcomes at each step

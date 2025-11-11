@@ -6,6 +6,7 @@ import {
   trackPdfConversion,
   PDF_CONVERSION_EVENTS,
 } from './pdfWatermark';
+import { parseIntelligenceFields, formatForPDF, hasIntelligence } from './intelligenceFormatter';
 
 export interface AnalyticsData {
   totalContacts: number;
@@ -752,19 +753,27 @@ export function exportContactsToPdf(
 
     currentY += 18;
 
-    // Intelligence content with better formatting
+    // Intelligence content with better formatting using intelligence formatter
     doc.setFontSize(10);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(DESIGN.textDark[0], DESIGN.textDark[1], DESIGN.textDark[2]);
 
-    let intelligenceText = contact.contactIntelligence;
+    let intelligenceText: string;
 
-    // If no specific intelligence, create basic analysis from available data
-    if (
-      !intelligenceText ||
-      intelligenceText.trim() === '' ||
-      intelligenceText === 'No intelligence available for this contact.'
-    ) {
+    // Use intelligence formatter if intelligence data exists
+    if (hasIntelligence(contact.contactIntelligence)) {
+      // Parse intelligence fields and format for PDF
+      const intelligenceFields = parseIntelligenceFields(contact.contactIntelligence);
+      intelligenceText = formatForPDF(
+        intelligenceFields,
+        {
+          name: getDisplayName(contact),
+          email: contact.email,
+        },
+        contact.researchConfidence || 'Low'
+      );
+    } else {
+      // Fallback: create basic analysis from available data
       const domain = contact.email ? contact.email.split('@')[1] : '';
       const platform = contact.platform || extractDomainFromEmail(contact.email);
       const confidence = contact.researchConfidence || 'Low';
@@ -773,8 +782,8 @@ export function exportContactsToPdf(
         confidence === 'High'
           ? 'Priority contact - verified music industry connection'
           : confidence === 'Medium'
-          ? 'Good potential - verify before outreach'
-          : 'Requires additional research before contact'
+            ? 'Good potential - verify before outreach'
+            : 'Requires additional research before contact'
       }`;
     }
 

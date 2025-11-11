@@ -12,7 +12,6 @@
 ### Changes Made:
 
 1. **Contact Cards Updated:**
-
    - Changed from `border-l-4` (left border only) to `border-4 border-black` (full brutalist border)
    - Added `shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]` for offset shadow
    - Added hover states: `hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1`
@@ -22,14 +21,12 @@
    - Intelligence data now in bordered container with better formatting
 
 2. **Confidence Badges Updated:**
-
    - High Confidence: `bg-green-500 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold`
    - Medium Confidence: `bg-yellow-500 text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold`
    - Low Confidence: `bg-red-500 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold`
    - All badges now match Campaign Tracker StatusBadge style
 
 3. **Info Cards Updated:**
-
    - "Current Demo Capabilities" card: `border-4 border-green-500 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`
    - "Production Enrichment Includes" card: `border-4 border-blue-500 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`
    - Headings changed to `font-black`
@@ -58,12 +55,10 @@
 ### Changes Made:
 
 1. **Export Buttons Container:**
-
    - Changed from `bg-white rounded-lg shadow-sm border border-gray-200` to `bg-white rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]`
    - Matches Campaign Tracker card style exactly
 
 2. **Individual Export Buttons:**
-
    - CSV Export: `bg-cyan-500 hover:bg-cyan-600` (cyan accent)
    - Excel Export: `bg-teal-500 hover:bg-teal-600` (teal accent)
    - PDF Export: `bg-purple-500 hover:bg-purple-600` (purple accent)
@@ -73,14 +68,12 @@
    - Badges updated with brutalist styling
 
 3. **Format Selection Buttons:**
-
    - Active state: `bg-cyan-500 text-white border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`
    - Inactive state: `bg-white text-gray-700 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`
    - Hover states added
    - Changed from `font-medium` to `font-black`
 
 4. **Status Messages:**
-
    - Updated to `border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`
    - Changed text to `font-bold`
 

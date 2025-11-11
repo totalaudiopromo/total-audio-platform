@@ -5,7 +5,11 @@
  */
 
 const { test, expect } = require('@playwright/test');
-const { validateBreakpoints, validateMobileLayout, commonBreakpoints } = require('@total-audio/testing');
+const {
+  validateBreakpoints,
+  validateMobileLayout,
+  commonBreakpoints,
+} = require('@total-audio/testing');
 
 test.describe('Responsive Breakpoints', () => {
   test('Homepage responsive across all breakpoints', async ({ page }) => {
@@ -24,9 +28,10 @@ test.describe('Responsive Breakpoints', () => {
   test('Pitch form responsive', async ({ page }) => {
     await page.goto('/pitch/new');
 
-    const results = await validateBreakpoints(page, commonBreakpoints.filter(bp =>
-      bp.name.includes('mobile') || bp.name.includes('tablet')
-    ));
+    const results = await validateBreakpoints(
+      page,
+      commonBreakpoints.filter(bp => bp.name.includes('mobile') || bp.name.includes('tablet'))
+    );
 
     const failures = results.filter(r => !r.passed);
     expect(failures).toHaveLength(0);

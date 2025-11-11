@@ -29,11 +29,11 @@ export interface PerformanceValidationResult {
  * @returns CLS score
  */
 export async function measureCLS(page: Page, duration: number = 5000): Promise<number> {
-  return await page.evaluate((measureDuration) => {
-    return new Promise<number>((resolve) => {
+  return await page.evaluate(measureDuration => {
+    return new Promise<number>(resolve => {
       let cls = 0;
 
-      const observer = new PerformanceObserver((list) => {
+      const observer = new PerformanceObserver(list => {
         for (const entry of list.getEntries()) {
           const layoutShift = entry as any;
           if (!layoutShift.hadRecentInput) {
@@ -60,8 +60,8 @@ export async function measureCLS(page: Page, duration: number = 5000): Promise<n
  */
 export async function measureLCP(page: Page): Promise<number> {
   return await page.evaluate(() => {
-    return new Promise<number>((resolve) => {
-      const observer = new PerformanceObserver((list) => {
+    return new Promise<number>(resolve => {
+      const observer = new PerformanceObserver(list => {
         const entries = list.getEntries();
         const lastEntry = entries[entries.length - 1] as any;
         resolve(lastEntry.renderTime || lastEntry.loadTime);
@@ -88,7 +88,7 @@ export async function measureLCP(page: Page): Promise<number> {
 export async function measureFCP(page: Page): Promise<number> {
   return await page.evaluate(() => {
     const paintEntries = performance.getEntriesByType('paint');
-    const fcpEntry = paintEntries.find((entry) => entry.name === 'first-contentful-paint');
+    const fcpEntry = paintEntries.find(entry => entry.name === 'first-contentful-paint');
     return fcpEntry ? fcpEntry.startTime : 0;
   });
 }
@@ -101,7 +101,9 @@ export async function measureFCP(page: Page): Promise<number> {
  */
 export async function measureTTFB(page: Page): Promise<number> {
   return await page.evaluate(() => {
-    const navigationEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+    const navigationEntry = performance.getEntriesByType(
+      'navigation'
+    )[0] as PerformanceNavigationTiming;
     return navigationEntry ? navigationEntry.responseStart - navigationEntry.requestStart : 0;
   });
 }
@@ -114,7 +116,7 @@ export async function measureTTFB(page: Page): Promise<number> {
  */
 export async function measureTTI(page: Page): Promise<number> {
   return await page.evaluate(() => {
-    return new Promise<number>((resolve) => {
+    return new Promise<number>(resolve => {
       // Simplified TTI measurement
       // Wait for network idle and long tasks to complete
       const startTime = performance.now();
@@ -124,9 +126,7 @@ export async function measureTTI(page: Page): Promise<number> {
 
         // Check if no long tasks in the last 5 seconds
         const longTasks = performance.getEntriesByType('longtask') as any[];
-        const recentLongTasks = longTasks.filter(
-          (task) => task.startTime > now - 5000
-        );
+        const recentLongTasks = longTasks.filter(task => task.startTime > now - 5000);
 
         if (recentLongTasks.length === 0) {
           resolve(now - startTime);
@@ -239,9 +239,7 @@ export async function validatePerformance(
   };
 
   if (!fidCheck.passed) {
-    issues.push(
-      `FID ${metrics.fid}ms exceeds threshold ${thresholds.fid}ms (Poor: interactivity)`
-    );
+    issues.push(`FID ${metrics.fid}ms exceeds threshold ${thresholds.fid}ms (Poor: interactivity)`);
   }
 
   const ttiCheck = {
@@ -278,7 +276,9 @@ export async function validatePerformance(
  */
 export async function measurePageLoadTime(page: Page): Promise<number> {
   return await page.evaluate(() => {
-    const navigationEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+    const navigationEntry = performance.getEntriesByType(
+      'navigation'
+    )[0] as PerformanceNavigationTiming;
     return navigationEntry ? navigationEntry.loadEventEnd - navigationEntry.fetchStart : 0;
   });
 }
@@ -305,7 +305,7 @@ export async function measureResourceLoading(page: Page): Promise<{
     let slowestResource: { name: string; duration: number; size: number } | null = null;
     const byType: Record<string, { count: number; totalSize: number; totalDuration: number }> = {};
 
-    resources.forEach((resource) => {
+    resources.forEach(resource => {
       const size = resource.transferSize || 0;
       const duration = resource.duration;
       const type = resource.initiatorType || 'other';
@@ -331,7 +331,10 @@ export async function measureResourceLoading(page: Page): Promise<{
     });
 
     // Calculate averages
-    const resourcesByType: Record<string, { count: number; totalSize: number; avgDuration: number }> = {};
+    const resourcesByType: Record<
+      string,
+      { count: number; totalSize: number; avgDuration: number }
+    > = {};
     for (const [type, stats] of Object.entries(byType)) {
       resourcesByType[type] = {
         count: stats.count,

@@ -173,19 +173,16 @@ node radio-promo-agent.js personal-workflow otter:TRANSCRIPT_ID
 ### Common Issues
 
 1. **Monday.com Access Denied**
-
    - Check API key permissions
    - Verify board ID is correct
    - Ensure you have access to the Liberty board
 
 2. **Google Chat Not Working**
-
    - Verify webhook URL is correct
    - Check webhook is enabled in space
    - Test with simple message first
 
 3. **Otter.ai API Errors**
-
    - Check API key is valid
    - Verify transcript ID exists
    - Check rate limits
@@ -214,14 +211,12 @@ If you encounter issues:
 ## 🎯 Next Steps
 
 1. **Set up API keys** (priority order):
-
    - Monday.com (critical)
    - Google Chat (critical)
    - Otter.ai (for existing transcripts)
    - Typeform (for client intake)
 
 2. **Test with existing data**:
-
    - Process an Otter.ai transcript
    - Create a test campaign
    - Verify Monday.com integration

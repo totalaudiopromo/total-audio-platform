@@ -5,7 +5,10 @@
  */
 
 const { test, expect } = require('@playwright/test');
-const { validateAccessibility, validateKeyboardNavigation } = require('@total-audio/testing');
+const {
+  validateAccessibility,
+  validateKeyboardNavigation,
+} = require('@total-audio/testing');
 
 test.describe('Accessibility Compliance', () => {
   test('Homepage accessibility audit', async ({ page }) => {
@@ -18,7 +21,9 @@ test.describe('Accessibility Compliance', () => {
       console.error('Critical:', results.summary.critical);
       console.error('Serious:', results.summary.serious);
       results.ariaValidation.issues.forEach(issue => {
-        console.error(`  ${issue.severity}: ${issue.message} (${issue.element})`);
+        console.error(
+          `  ${issue.severity}: ${issue.message} (${issue.element})`
+        );
       });
     }
 
@@ -74,7 +79,9 @@ test.describe('Accessibility Compliance', () => {
         expect(ariaLabel || ariaLabelledby).toBeTruthy();
 
         // Modal should have accessible close button
-        const closeButton = modal.getByRole('button', { name: /close|cancel/i }).first();
+        const closeButton = modal
+          .getByRole('button', { name: /close|cancel/i })
+          .first();
         await expect(closeButton).toBeVisible();
       }
     }
@@ -110,8 +117,8 @@ test.describe('Accessibility Compliance', () => {
     const results = await validateAccessibility(page);
 
     // Check for colour contrast issues specifically
-    const contrastIssues = results.ariaValidation.issues.filter(
-      issue => issue.message.toLowerCase().includes('contrast')
+    const contrastIssues = results.ariaValidation.issues.filter(issue =>
+      issue.message.toLowerCase().includes('contrast')
     );
 
     if (contrastIssues.length > 0) {

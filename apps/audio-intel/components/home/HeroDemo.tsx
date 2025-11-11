@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Loader2 } from 'lucide-react';
+import WebSearchEnrichmentIndicator from '../WebSearchEnrichmentIndicator';
 
 type DemoContact = {
   email: string;
@@ -15,13 +16,13 @@ type DemoContact = {
 
 const libertyDemoContacts: DemoContact[] = [
   {
-    email: 'greg.james@bbc.co.uk',
-    name: 'Greg James',
-    role: 'Radio Presenter',
-    platform: 'BBC Radio 1',
+    email: 'annie.mac@bbc.co.uk',
+    name: 'Annie Mac',
+    role: 'Radio Presenter / DJ',
+    platform: 'BBC Radio 2 (formerly Radio 1)',
     confidence: 'High',
     notes:
-      'BBC Radio 1 Breakfast Show host. Covers house, pop, and electronic music. Peak listening time 6:30-10am. Accepts submissions via official BBC form with 3-week lead time.',
+      'Legendary BBC Radio 1 dance music presenter, now hosting on Radio 2. Known for championing underground house and electronic music. Peak listening 7-9pm Fridays. Submit via BBC Music Introducing or management. Highly selective - only quality electronic productions.',
   },
   {
     email: 'danny.howard@bbc.co.uk',
@@ -66,17 +67,167 @@ export function HeroDemo() {
   const [demoEmail, setDemoEmail] = useState(libertyDemoContacts[0].email);
   const [demoLoading, setDemoLoading] = useState(false);
   const [demoResult, setDemoResult] = useState<DemoContact | null>(null);
+  const [enrichmentTime, setEnrichmentTime] = useState<string | null>(null);
+  const [isSearching, setIsSearching] = useState(false);
+  const [webSearchUsed, setWebSearchUsed] = useState(false);
+  const [confidenceImproved, setConfidenceImproved] = useState<
+    { before: 'Low' | 'Medium' | 'High'; after: 'Low' | 'Medium' | 'High' } | undefined
+  >();
 
-  const handleDemoEnrich = () => {
+  const handleDemoEnrich = async () => {
     setDemoLoading(true);
     setDemoResult(null);
+    setEnrichmentTime(null);
+    setIsSearching(false);
+    setWebSearchUsed(false);
+    setConfidenceImproved(undefined);
 
-    const contact = libertyDemoContacts.find(c => c.email === demoEmail) ?? libertyDemoContacts[0];
+    const startTime = Date.now();
 
-    setTimeout(() => {
-      setDemoResult(contact);
+    // Find the demo contact or extract name from email
+    const demoContact = libertyDemoContacts.find(c => c.email === demoEmail);
+
+    // Extract name from email if not in demo contacts
+    const extractNameFromEmail = (email: string): string => {
+      if (!email || !email.includes('@')) return email;
+      const localPart = email.split('@')[0];
+      return localPart
+        .replace(/[._]/g, ' ')
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+    };
+
+    const contactName = demoContact?.name || extractNameFromEmail(demoEmail);
+
+    try {
+      // Call the real Claude enrichment API
+      const response = await fetch('/api/enrich-claude', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contacts: [
+            {
+              email: demoEmail,
+              name: contactName,
+              genre: 'electronic', // Default genre for demo
+              region: 'UK',
+            },
+          ],
+        }),
+      });
+
+      const data = await response.json();
+      const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+
+      console.log('Enrichment API Response:', data);
+      console.log(`Enrichment completed in ${elapsed}s`);
+
+      if (data.success && data.enriched && data.enriched.length > 0) {
+        const enrichedContact = data.enriched[0];
+
+        // If enrichment returned empty data, use fallback
+        if (
+          !enrichedContact.intelligence ||
+          enrichedContact.intelligence.trim() === '' ||
+          enrichedContact.intelligence.includes('No intelligence found')
+        ) {
+          console.warn('Empty enrichment data, using fallback');
+          if (demoContact) {
+            setDemoResult(demoContact);
+          } else {
+            // Show minimal result if no demo contact available
+            setDemoResult({
+              email: demoEmail,
+              name: contactName,
+              role: 'Unknown',
+              platform: 'Unknown',
+              confidence: 'Low',
+              notes: 'No intelligence found for this contact',
+            });
+          }
+          setEnrichmentTime(elapsed);
+          return;
+        }
+
+        // Check if web search was used
+        if (enrichedContact.source === 'claude-with-search') {
+          setWebSearchUsed(true);
+          // If we have the original confidence, show improvement
+          if (data.originalConfidence) {
+            setConfidenceImproved({
+              before: data.originalConfidence as 'Low' | 'Medium' | 'High',
+              after: enrichedContact.confidence as 'Low' | 'Medium' | 'High',
+            });
+          }
+        }
+
+        // Transform API response to display format
+        const result: DemoContact = {
+          email: demoEmail,
+          name: enrichedContact.name || contactName,
+          role: extractRole(enrichedContact.intelligence) || enrichedContact.role || 'Unknown',
+          platform:
+            extractPlatform(enrichedContact.intelligence) || enrichedContact.platform || 'Unknown',
+          confidence: enrichedContact.confidence || 'Medium',
+          notes: enrichedContact.intelligence || 'No intelligence available',
+        };
+
+        setDemoResult(result);
+        setEnrichmentTime(elapsed);
+      } else {
+        // Fallback if API fails silently
+        console.warn('API enrichment failed, showing minimal result');
+        if (demoContact) {
+          setDemoResult(demoContact);
+        } else {
+          setDemoResult({
+            email: demoEmail,
+            name: contactName,
+            role: 'Unknown',
+            platform: 'Unknown',
+            confidence: 'Low',
+            notes: 'Enrichment failed - please try again',
+          });
+        }
+        setEnrichmentTime(elapsed);
+      }
+    } catch (error) {
+      // Silent fallback on error
+      console.error('Enrichment API error:', error);
+      const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+      if (demoContact) {
+        setDemoResult(demoContact);
+      } else {
+        setDemoResult({
+          email: demoEmail,
+          name: contactName,
+          role: 'Unknown',
+          platform: 'Unknown',
+          confidence: 'Low',
+          notes: 'API error - please try again',
+        });
+      }
+      setEnrichmentTime(elapsed);
+    } finally {
       setDemoLoading(false);
-    }, 2000);
+    }
+  };
+
+  // Helper function to extract role from intelligence text
+  const extractRole = (intelligence: string): string | null => {
+    if (!intelligence) return null;
+    const roleMatch = intelligence.match(/(?:Role|Position|Title):\s*([^\n.]+)/i);
+    return roleMatch ? roleMatch[1].trim() : null;
+  };
+
+  // Helper function to extract platform from intelligence text
+  const extractPlatform = (intelligence: string): string | null => {
+    if (!intelligence) return null;
+    const platformMatch = intelligence.match(/(?:Platform|Station|Network):\s*([^\n.]+)/i);
+    return platformMatch ? platformMatch[1].trim() : null;
   };
 
   const cycleDemo = () => {
@@ -84,6 +235,7 @@ export function HeroDemo() {
     setCurrentDemoIndex(nextIndex);
     setDemoEmail(libertyDemoContacts[nextIndex].email);
     setDemoResult(null);
+    setEnrichmentTime(null);
   };
 
   return (
@@ -137,39 +289,124 @@ export function HeroDemo() {
                     type="button"
                     onClick={handleDemoEnrich}
                     disabled={demoLoading}
-                    className="cta-button flex-1"
+                    className="cta-button flex-1 disabled:opacity-50"
                   >
-                    {demoLoading ? 'Enriching...' : 'Enrich Contact'}
+                    {demoLoading ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        Enriching...
+                      </span>
+                    ) : (
+                      'Enrich Contact'
+                    )}
                   </button>
                   <button
                     type="button"
                     onClick={cycleDemo}
                     disabled={demoLoading}
-                    className="subtle-button flex-1 sm:flex-initial"
+                    className="subtle-button flex-1 sm:flex-initial disabled:opacity-50"
                     title="Try different example"
                   >
                     Try Another →
                   </button>
                 </div>
-                {demoResult && (
-                  <div className="mt-4 rounded-lg border-2 border-green-500 bg-green-50 p-4 text-sm">
-                    <div className="mb-2 flex items-start justify-between">
-                      <p className="font-bold text-green-900">{demoResult.name}</p>
-                      <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-bold text-white">
-                        {demoResult.confidence} Confidence
+
+                {/* Web Search Enrichment Indicator */}
+                {(isSearching || webSearchUsed) && (
+                  <div className="mt-4">
+                    <WebSearchEnrichmentIndicator
+                      isSearching={isSearching}
+                      searchQuota={{
+                        used: 0,
+                        limit: 100,
+                        remaining: 100,
+                      }}
+                      recentSearches={webSearchUsed ? 1 : 0}
+                      confidenceImproved={confidenceImproved}
+                    />
+                  </div>
+                )}
+
+                {demoLoading && (
+                  <div className="mt-4 rounded-lg border-2 border-blue-300 bg-blue-50 p-4 text-sm">
+                    <div className="flex items-center gap-2">
+                      <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
+                      <p className="font-medium text-blue-900">Enriching contact...</p>
+                    </div>
+                  </div>
+                )}
+                {demoResult && !demoLoading && (
+                  <div className="mt-4 rounded-lg border-2 border-green-500 bg-green-50 p-5 text-sm">
+                    <div className="mb-3 flex items-start justify-between">
+                      <div>
+                        <p className="text-lg font-bold text-green-900">{demoResult.name}</p>
+                        <p className="mt-0.5 text-sm font-semibold text-gray-700">
+                          {demoResult.role} · {demoResult.platform}
+                        </p>
+                      </div>
+                      <span
+                        className={`rounded-full px-3 py-1 text-xs font-bold text-white ${
+                          demoResult.confidence === 'High'
+                            ? 'bg-green-500'
+                            : demoResult.confidence === 'Medium'
+                              ? 'bg-yellow-500'
+                              : 'bg-red-500'
+                        }`}
+                      >
+                        {demoResult.confidence}
                       </span>
                     </div>
-                    <p className="font-medium text-gray-700">
-                      {demoResult.role} · {demoResult.platform}
-                    </p>
-                    <p className="mt-3 text-xs leading-relaxed text-gray-600">{demoResult.notes}</p>
+
+                    {/* Condensed Key Intelligence */}
+                    <div className="mt-3 space-y-2 border-t border-green-200 pt-3">
+                      {demoResult.notes &&
+                        (() => {
+                          const lines = demoResult.notes.split('\n').filter(line => line.trim());
+                          const keyFields = [
+                            'Platform:',
+                            'Role:',
+                            'Format:',
+                            'Contact Method:',
+                            'Best Timing:',
+                            'Genres:',
+                          ];
+                          const keyLines = lines
+                            .filter(line => keyFields.some(field => line.startsWith(field)))
+                            .slice(0, 6); // Show max 6 key fields
+
+                          return keyLines.length > 0 ? (
+                            <div className="grid gap-1.5">
+                              {keyLines.map((line, idx) => {
+                                const [label, ...valueParts] = line.split(':');
+                                const value = valueParts.join(':').trim();
+                                return (
+                                  <div key={idx} className="flex text-xs">
+                                    <span className="font-semibold text-green-800 min-w-[80px] sm:min-w-[100px]">
+                                      {label}:
+                                    </span>
+                                    <span className="text-gray-700 flex-1">{value}</span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          ) : (
+                            <p className="text-xs text-gray-600">No additional details available</p>
+                          );
+                        })()}
+                    </div>
+
+                    {enrichmentTime && (
+                      <p className="mt-3 border-t border-green-200 pt-2 text-xs text-gray-500">
+                        ✓ Enriched in {enrichmentTime}s using AI
+                      </p>
+                    )}
                   </div>
                 )}
               </div>
               <div className="mt-6 rounded-lg border border-blue-600/30 bg-blue-600/10 px-4 py-3">
                 <p className="text-sm font-medium text-blue-900">
-                  <strong>Real data from radio campaigns.</strong> Try BBC Radio 1 DJs, Spotify
-                  curators, or your own contacts.
+                  <strong>Try it yourself:</strong> Enter any music industry contact email above
+                  (BBC Radio 1 DJs, Spotify curators, independent labels, etc.)
                 </p>
               </div>
             </div>

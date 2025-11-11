@@ -626,24 +626,20 @@ export default function DashboardPage() {
 ### 🔴 CRITICAL (Must fix before launch)
 
 1. **Rewrite pricing page copy** (30 min)
-
    - Remove template boilerplate
    - Add pitch-specific features
    - Show value vs time saved
 
 2. **Add complete SEO metadata** (45 min)
-
    - Create `metadata.ts` with OpenGraph + Twitter Cards
    - Generate OG image (1200x630px)
    - Create favicon set
 
 3. **Fix "free trial" inconsistency** (15 min)
-
    - Option A: Remove mention from homepage
    - Option B: Implement FREE tier (10 pitches/month)
 
 4. **Add founder credibility to homepage** (20 min)
-
    - Replace "500+ campaigns" with Chris's BBC Radio 1 story
    - Add "Built by radio promoters" credibility
 
@@ -654,23 +650,19 @@ export default function DashboardPage() {
 ### 🟡 HIGH PRIORITY (Launch week)
 
 6. **Create onboarding dashboard** (2 hours)
-
    - Welcome screen for new users
    - 3-step quick start guide
    - Example pitch preview
 
 7. **Add example pitch screenshot to homepage** (30 min)
-
    - Show real AI-generated pitch output
    - Demonstrates quality immediately
 
 8. **Mobile UX testing** (1 hour)
-
    - Run Playwright mobile test suite
    - Fix any responsive design issues
 
 9. **Create OG image and favicon set** (1 hour)
-
    - Design 1200x630px social sharing image
    - Generate all required icon sizes
 

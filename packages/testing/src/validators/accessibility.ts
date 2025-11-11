@@ -22,7 +22,7 @@ export async function validateColorContrast(element: Locator): Promise<{
   foreground: string;
   background: string;
 }> {
-  const contrastInfo = await element.evaluate((el) => {
+  const contrastInfo = await element.evaluate(el => {
     const style = window.getComputedStyle(el);
     const fg = style.color;
     const bg = style.backgroundColor;
@@ -36,7 +36,7 @@ export async function validateColorContrast(element: Locator): Promise<{
 
     // Calculate relative luminance
     const getLuminance = (rgb: [number, number, number]): number => {
-      const [r, g, b] = rgb.map((val) => {
+      const [r, g, b] = rgb.map(val => {
         val = val / 255;
         return val <= 0.03928 ? val / 12.92 : Math.pow((val + 0.055) / 1.055, 2.4);
       });
@@ -53,13 +53,12 @@ export async function validateColorContrast(element: Locator): Promise<{
     const fgLum = getLuminance(fgRGB);
     const bgLum = getLuminance(bgRGB);
 
-    const ratio =
-      (Math.max(fgLum, bgLum) + 0.05) / (Math.min(fgLum, bgLum) + 0.05);
+    const ratio = (Math.max(fgLum, bgLum) + 0.05) / (Math.min(fgLum, bgLum) + 0.05);
 
     return { ratio, fg, bg };
   });
 
-  const fontSize = await element.evaluate((el) => {
+  const fontSize = await element.evaluate(el => {
     return parseFloat(window.getComputedStyle(el).fontSize);
   });
 
@@ -90,7 +89,7 @@ export async function validateAriaLabels(page: Page): Promise<AccessibilityValid
     const buttons = Array.from(document.querySelectorAll('button, [role="button"]'));
     const violations: Array<{ element: string; message: string }> = [];
 
-    buttons.forEach((button) => {
+    buttons.forEach(button => {
       const hasAccessibleName =
         button.textContent?.trim() ||
         button.getAttribute('aria-label') ||
@@ -108,7 +107,7 @@ export async function validateAriaLabels(page: Page): Promise<AccessibilityValid
     return violations;
   });
 
-  buttonsWithoutLabels.forEach((violation) => {
+  buttonsWithoutLabels.forEach(violation => {
     issues.push({
       type: 'missing-accessible-name',
       severity: 'critical',
@@ -122,9 +121,10 @@ export async function validateAriaLabels(page: Page): Promise<AccessibilityValid
     const images = Array.from(document.querySelectorAll('img'));
     const violations: Array<{ element: string; message: string }> = [];
 
-    images.forEach((img) => {
+    images.forEach(img => {
       const hasAlt = img.hasAttribute('alt');
-      const isDecorative = img.getAttribute('role') === 'presentation' || img.getAttribute('aria-hidden') === 'true';
+      const isDecorative =
+        img.getAttribute('role') === 'presentation' || img.getAttribute('aria-hidden') === 'true';
 
       if (!hasAlt && !isDecorative) {
         violations.push({
@@ -137,7 +137,7 @@ export async function validateAriaLabels(page: Page): Promise<AccessibilityValid
     return violations;
   });
 
-  imagesWithoutAlt.forEach((violation) => {
+  imagesWithoutAlt.forEach(violation => {
     issues.push({
       type: 'missing-alt-text',
       severity: 'critical',
@@ -148,14 +148,16 @@ export async function validateAriaLabels(page: Page): Promise<AccessibilityValid
 
   // Check for form inputs without labels
   const inputsWithoutLabels = await page.evaluate(() => {
-    const inputs = Array.from(document.querySelectorAll('input:not([type="hidden"]), textarea, select'));
+    const inputs = Array.from(
+      document.querySelectorAll('input:not([type="hidden"]), textarea, select')
+    );
     const violations: Array<{ element: string; message: string }> = [];
 
-    inputs.forEach((input) => {
+    inputs.forEach(input => {
       const hasLabel =
         input.getAttribute('aria-label') ||
         input.getAttribute('aria-labelledby') ||
-        input.id && document.querySelector(`label[for="${input.id}"]`);
+        (input.id && document.querySelector(`label[for="${input.id}"]`));
 
       if (!hasLabel) {
         violations.push({
@@ -168,7 +170,7 @@ export async function validateAriaLabels(page: Page): Promise<AccessibilityValid
     return violations;
   });
 
-  inputsWithoutLabels.forEach((violation) => {
+  inputsWithoutLabels.forEach(violation => {
     issues.push({
       type: 'missing-form-label',
       severity: 'critical',
@@ -180,22 +182,80 @@ export async function validateAriaLabels(page: Page): Promise<AccessibilityValid
   // Check for invalid ARIA roles
   const invalidAriaRoles = await page.evaluate(() => {
     const validRoles = [
-      'alert', 'alertdialog', 'application', 'article', 'banner', 'button', 'checkbox',
-      'columnheader', 'combobox', 'complementary', 'contentinfo', 'definition', 'dialog',
-      'directory', 'document', 'feed', 'figure', 'form', 'grid', 'gridcell', 'group',
-      'heading', 'img', 'link', 'list', 'listbox', 'listitem', 'log', 'main', 'marquee',
-      'math', 'menu', 'menubar', 'menuitem', 'menuitemcheckbox', 'menuitemradio',
-      'navigation', 'none', 'note', 'option', 'presentation', 'progressbar', 'radio',
-      'radiogroup', 'region', 'row', 'rowgroup', 'rowheader', 'scrollbar', 'search',
-      'searchbox', 'separator', 'slider', 'spinbutton', 'status', 'switch', 'tab',
-      'table', 'tablist', 'tabpanel', 'term', 'textbox', 'timer', 'toolbar', 'tooltip',
-      'tree', 'treegrid', 'treeitem'
+      'alert',
+      'alertdialog',
+      'application',
+      'article',
+      'banner',
+      'button',
+      'checkbox',
+      'columnheader',
+      'combobox',
+      'complementary',
+      'contentinfo',
+      'definition',
+      'dialog',
+      'directory',
+      'document',
+      'feed',
+      'figure',
+      'form',
+      'grid',
+      'gridcell',
+      'group',
+      'heading',
+      'img',
+      'link',
+      'list',
+      'listbox',
+      'listitem',
+      'log',
+      'main',
+      'marquee',
+      'math',
+      'menu',
+      'menubar',
+      'menuitem',
+      'menuitemcheckbox',
+      'menuitemradio',
+      'navigation',
+      'none',
+      'note',
+      'option',
+      'presentation',
+      'progressbar',
+      'radio',
+      'radiogroup',
+      'region',
+      'row',
+      'rowgroup',
+      'rowheader',
+      'scrollbar',
+      'search',
+      'searchbox',
+      'separator',
+      'slider',
+      'spinbutton',
+      'status',
+      'switch',
+      'tab',
+      'table',
+      'tablist',
+      'tabpanel',
+      'term',
+      'textbox',
+      'timer',
+      'toolbar',
+      'tooltip',
+      'tree',
+      'treegrid',
+      'treeitem',
     ];
 
     const elementsWithRoles = Array.from(document.querySelectorAll('[role]'));
     const violations: Array<{ element: string; message: string }> = [];
 
-    elementsWithRoles.forEach((el) => {
+    elementsWithRoles.forEach(el => {
       const role = el.getAttribute('role');
       if (role && !validRoles.includes(role)) {
         violations.push({
@@ -208,7 +268,7 @@ export async function validateAriaLabels(page: Page): Promise<AccessibilityValid
     return violations;
   });
 
-  invalidAriaRoles.forEach((violation) => {
+  invalidAriaRoles.forEach(violation => {
     issues.push({
       type: 'invalid-aria-role',
       severity: 'serious',
@@ -244,7 +304,7 @@ export async function validateKeyboardNavigation(page: Page): Promise<{
       )
     );
 
-    const elements = focusable.map((el) => {
+    const elements = focusable.map(el => {
       const tag = el.tagName.toLowerCase();
       const id = el.id ? `#${el.id}` : '';
       const tabindex = el.getAttribute('tabindex');
@@ -267,19 +327,21 @@ export async function validateKeyboardNavigation(page: Page): Promise<{
       document.querySelectorAll('button, a[href], input, select, textarea')
     );
 
-    return interactive.filter((el) => {
+    return interactive.filter(el => {
       const tabindex = el.getAttribute('tabindex');
       return tabindex === '-1';
     }).length;
   });
 
   if (negativeTabindex > 0) {
-    issues.push(`${negativeTabindex} interactive elements have tabindex="-1" (not keyboard accessible)`);
+    issues.push(
+      `${negativeTabindex} interactive elements have tabindex="-1" (not keyboard accessible)`
+    );
   }
 
   // Check for skip links
   const hasSkipLink = await page.evaluate(() => {
-    const skipLinks = Array.from(document.querySelectorAll('a[href^="#"]')).filter((link) => {
+    const skipLinks = Array.from(document.querySelectorAll('a[href^="#"]')).filter(link => {
       const text = link.textContent?.toLowerCase() || '';
       return text.includes('skip') && text.includes('content');
     });
@@ -340,10 +402,10 @@ export async function validateAccessibility(page: Page): Promise<{
   const keyboardNavigation = await validateKeyboardNavigation(page);
 
   const summary = {
-    critical: ariaValidation.issues.filter((i) => i.severity === 'critical').length,
-    serious: ariaValidation.issues.filter((i) => i.severity === 'serious').length,
-    moderate: ariaValidation.issues.filter((i) => i.severity === 'moderate').length,
-    minor: ariaValidation.issues.filter((i) => i.severity === 'minor').length,
+    critical: ariaValidation.issues.filter(i => i.severity === 'critical').length,
+    serious: ariaValidation.issues.filter(i => i.severity === 'serious').length,
+    moderate: ariaValidation.issues.filter(i => i.severity === 'moderate').length,
+    minor: ariaValidation.issues.filter(i => i.severity === 'minor').length,
   };
 
   const passed = summary.critical === 0 && summary.serious === 0 && keyboardNavigation.passed;

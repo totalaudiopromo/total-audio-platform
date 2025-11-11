@@ -88,8 +88,8 @@ export default function OverviewPage() {
               health.status === 'healthy'
                 ? 'bg-green-100 text-green-800'
                 : health.status === 'degraded'
-                ? 'bg-yellow-100 text-yellow-800'
-                : 'bg-red-100 text-red-800'
+                  ? 'bg-yellow-100 text-yellow-800'
+                  : 'bg-red-100 text-red-800'
             }`}
           >
             {health.status === 'healthy' && <CheckCircle className="h-5 w-5" />}

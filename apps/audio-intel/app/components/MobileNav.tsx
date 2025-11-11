@@ -117,7 +117,7 @@ export default function MobileNav() {
           <button
             aria-label="Open menu"
             className="text-white bg-blue-600 hover:bg-blue-700 focus:outline-none flex items-center justify-center border-2 border-black rounded-lg p-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all"
-            style={{ minWidth: 40, minHeight: 40 }}
+            style={{ minWidth: 44, minHeight: 44 }}
             onClick={() => setOpen(true)}
           >
             <Menu className="w-5 h-5" />

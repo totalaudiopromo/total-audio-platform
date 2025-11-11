@@ -1087,14 +1087,14 @@ intel.totalaudiopromo.com`,
                               template.category === 'announcement'
                                 ? 'bg-blue-500 text-white'
                                 : template.category === 'insight'
-                                ? 'bg-green-500 text-white'
-                                : template.category === 'personal'
-                                ? 'bg-orange-500 text-white'
-                                : template.category === 'news'
-                                ? 'bg-purple-500 text-white'
-                                : template.category === 'feature'
-                                ? 'bg-cyan-500 text-white'
-                                : 'bg-blue-500 text-white'
+                                  ? 'bg-green-500 text-white'
+                                  : template.category === 'personal'
+                                    ? 'bg-orange-500 text-white'
+                                    : template.category === 'news'
+                                      ? 'bg-purple-500 text-white'
+                                      : template.category === 'feature'
+                                        ? 'bg-cyan-500 text-white'
+                                        : 'bg-blue-500 text-white'
                             }`}
                           >
                             {template.category}
@@ -1202,10 +1202,10 @@ intel.totalaudiopromo.com`,
                         post.status === 'scheduled'
                           ? 'bg-blue-500 text-white'
                           : post.status === 'published'
-                          ? 'bg-green-500 text-white'
-                          : post.status === 'failed'
-                          ? 'bg-red-500 text-white'
-                          : 'bg-orange-500 text-white'
+                            ? 'bg-green-500 text-white'
+                            : post.status === 'failed'
+                              ? 'bg-red-500 text-white'
+                              : 'bg-orange-500 text-white'
                       }`}
                     >
                       {post.status}
@@ -1331,8 +1331,8 @@ intel.totalaudiopromo.com`,
                         template.category === 'insight'
                           ? 'bg-green-500 text-white'
                           : template.category === 'personal'
-                          ? 'bg-orange-500 text-white'
-                          : 'bg-blue-500 text-white'
+                            ? 'bg-orange-500 text-white'
+                            : 'bg-blue-500 text-white'
                       }`}
                     >
                       {template.category}

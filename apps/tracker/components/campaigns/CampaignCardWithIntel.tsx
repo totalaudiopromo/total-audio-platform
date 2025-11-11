@@ -97,15 +97,15 @@ export function CampaignCardWithIntel({
           integration.status === 'error'
             ? 'Error'
             : integration.sync_enabled
-            ? 'Live'
-            : 'Paused';
+              ? 'Live'
+              : 'Paused';
 
         const statusBadgeClass =
           integration.status === 'error'
             ? 'border-red-600 bg-red-50 text-red-700'
             : integration.sync_enabled
-            ? meta.badgeClass
-            : 'border-gray-500 bg-gray-100 text-gray-700';
+              ? meta.badgeClass
+              : 'border-gray-500 bg-gray-100 text-gray-700';
 
         const lastSynced = integration.last_sync_at
           ? `Last sync ${formatDistanceToNow(
@@ -154,8 +154,8 @@ export function CampaignCardWithIntel({
                   campaign.status === 'active'
                     ? 'bg-green-100 text-green-800'
                     : campaign.status === 'completed'
-                    ? 'bg-gray-100 text-gray-800'
-                    : 'bg-teal-100 text-teal-800'
+                      ? 'bg-gray-100 text-gray-800'
+                      : 'bg-teal-100 text-teal-800'
                 }`}
               >
                 {campaign.status}

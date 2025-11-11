@@ -198,13 +198,11 @@ The agent registry includes **visual system metadata** for Command Centre:
 ### Immediate (Week 1)
 
 1. **Update `check-all-agents.js`**
-
    - Read agents from `agent-registry.json` instead of hardcoded list
    - Monitor all 22 agents, not just 6
    - Add category to status output
 
 2. **Update Command Centre Dashboard**
-
    - Show 22 agents instead of 6
    - Implement category badges (Blue/Green/Orange/Red)
    - Add status badges with emojis

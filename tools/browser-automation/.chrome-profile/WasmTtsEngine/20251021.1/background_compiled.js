@@ -108,10 +108,10 @@ function H(a, b, f, g) {
   try {
     var k = b.call(a.g.i, f);
     if (!(k instanceof Object)) throw new TypeError('Iterator result ' + k + ' is not an object');
-    if (!k.done) return (a.g.m = !1), k;
+    if (!k.done) return ((a.g.m = !1), k);
     var m = k.value;
   } catch (e) {
-    return (a.g.i = null), C(a.g, e), I(a);
+    return ((a.g.i = null), C(a.g, e), I(a));
   }
   a.g.i = null;
   g.call(a.g, m);
@@ -121,9 +121,9 @@ function I(a) {
   for (; a.g.g; )
     try {
       var b = a.h(a.g);
-      if (b) return (a.g.m = !1), { value: b.value, done: !1 };
+      if (b) return ((a.g.m = !1), { value: b.value, done: !1 });
     } catch (f) {
-      (a.g.h = void 0), C(a.g, f);
+      ((a.g.h = void 0), C(a.g, f));
     }
   a.g.m = !1;
   if (a.g.j) {
@@ -333,9 +333,9 @@ z('Promise', function (a) {
     typeof e === 'function'
       ? (e = new e('unhandledrejection', { cancelable: !0 }))
       : typeof c === 'function'
-      ? (e = new c('unhandledrejection', { cancelable: !0 }))
-      : ((e = x.document.createEvent('CustomEvent')),
-        e.initCustomEvent('unhandledrejection', !1, !0, e));
+        ? (e = new c('unhandledrejection', { cancelable: !0 }))
+        : ((e = x.document.createEvent('CustomEvent')),
+          e.initCustomEvent('unhandledrejection', !1, !0, e));
     e.promise = this;
     e.reason = this.i;
     return d(e);
@@ -426,7 +426,7 @@ z('Promise', function (a) {
           }
           var p = [],
             t = 0;
-          do p.push(void 0), t++, g(d.value).v(r(p.length - 1), l), (d = c.next());
+          do (p.push(void 0), t++, g(d.value).v(r(p.length - 1), l), (d = c.next()));
           while (!d.done);
         });
   };
@@ -440,7 +440,7 @@ z('WeakMap', function (a) {
     this.g = (c += Math.random() + 1).toString();
     if (d) {
       d = q(d);
-      for (var h; !(h = d.next()).done; ) (h = h.value), this.set(h[0], h[1]);
+      for (var h; !(h = d.next()).done; ) ((h = h.value), this.set(h[0], h[1]));
     }
   }
   function f() {}
@@ -516,7 +516,7 @@ z('Map', function (a) {
     return M(function () {
       if (h) {
         for (; h.head != c[1]; ) h = h.previous;
-        for (; h.next != h.head; ) return (h = h.next), { done: !1, value: d(h) };
+        for (; h.next != h.head; ) return ((h = h.next), { done: !1, value: d(h) });
         h = null;
       }
       return { done: !0, value: void 0 };
@@ -544,7 +544,7 @@ z('Map', function (a) {
     this.size = 0;
     if (c) {
       c = q(c);
-      for (var d; !(d = c.next()).done; ) (d = d.value), this.set(d[0], d[1]);
+      for (var d; !(d = c.next()).done; ) ((d = d.value), this.set(d[0], d[1]));
     }
   }
   if (
@@ -627,7 +627,7 @@ z('Map', function (a) {
   };
   k.prototype.forEach = function (c, d) {
     for (var h = this.entries(), l; !(l = h.next()).done; )
-      (l = l.value), c.call(d, l[1], l[0], this);
+      ((l = l.value), c.call(d, l[1], l[0], this));
   };
   k.prototype[Symbol.iterator] = k.prototype.entries;
   var e = 0;
@@ -699,13 +699,13 @@ function W(a) {
           5
         );
       case 5:
-        return (b = { type: 'init' }), D(g, a.g.runtime.sendMessage(b), 6);
+        return ((b = { type: 'init' }), D(g, a.g.runtime.sendMessage(b), 6));
       case 6:
         g.g = 4;
         g.l = 0;
         break;
       case 3:
-        (f = E(g)), console.error('Failed to create offscreen document:', f);
+        ((f = E(g)), console.error('Failed to create offscreen document:', f));
       case 4:
         return D(g, ca(a.h), 0);
     }
@@ -714,7 +714,7 @@ function W(a) {
 function U(a) {
   var b;
   return L(function (f) {
-    if (f.g == 1) return (f.l = 2), D(f, W(a), 4);
+    if (f.g == 1) return ((f.l = 2), D(f, W(a), 4));
     if (f.g != 2) return f.return(!0);
     b = E(f);
     console.error('Error ensuring offscreen document is ready:', b);
@@ -729,7 +729,7 @@ function ea(a, b) {
   var f, g, k;
   return L(function (m) {
     if (m.g == 1)
-      return (f = { type: 'getLanguageStatus', lang: b }), D(m, a.g.runtime.sendMessage(f), 2);
+      return ((f = { type: 'getLanguageStatus', lang: b }), D(m, a.g.runtime.sendMessage(f), 2));
     g = m.h;
     k = { lang: g.lang, installStatus: g.status };
     a.g.ttsEngine.updateLanguage(k);
@@ -766,8 +766,8 @@ function fa(a) {
         !p.done;
         p = r.next()
       )
-        (t = p.value),
-          f.push({ lang: h, voiceName: t, eventTypes: ['start', 'end', 'error', 'word'] });
+        ((t = p.value),
+          f.push({ lang: h, voiceName: t, eventTypes: ['start', 'end', 'error', 'word'] }));
     b.g.ttsEngine.updateVoices(f);
     y.g = 0;
   });
@@ -777,7 +777,7 @@ function T(a) {
     f,
     g;
   return L(function (k) {
-    if (k.g == 1) return b.h.get(a) === 'uninstallLanguage' && b.h.delete(a), D(k, X(b), 2);
+    if (k.g == 1) return (b.h.get(a) === 'uninstallLanguage' && b.h.delete(a), D(k, X(b), 2));
     f = k.h;
     f[a] = Date.now();
     g = {};
@@ -800,7 +800,7 @@ function ca(a) {
         m = k.next();
       case 4:
         if (m.done)
-          return (d = {}), D(l, a.g.storage.local.set(((d.installedTimestamps = b), d)), 8);
+          return ((d = {}), D(l, a.g.storage.local.set(((d.installedTimestamps = b), d)), 8));
         e = m.value;
         c = { type: 'removeUnusedLanguage', lang: e };
         return D(l, a.g.runtime.sendMessage(c), 7);
@@ -811,7 +811,7 @@ function ca(a) {
         l.g = 4;
         break;
       case 8:
-        return (h = {}), D(l, a.g.storage.local.set(((h.lastUsedTimestamps = f), h)), 0);
+        return ((h = {}), D(l, a.g.storage.local.set(((h.lastUsedTimestamps = f), h)), 0));
     }
   });
 }
@@ -882,7 +882,7 @@ function ja(a, b) {
     if (c.g == 1) return D(c, Y(a), 2);
     f = c.h;
     g = q(b);
-    for (k = g.next(); !k.done; k = g.next()) (m = k.value), delete f[m];
+    for (k = g.next(); !k.done; k = g.next()) ((m = k.value), delete f[m]);
     e = {};
     return D(c, a.g.storage.local.set(((e.installedTimestamps = f), e)), 0);
   });
@@ -890,7 +890,7 @@ function ja(a, b) {
 function ka(a, b) {
   var f, g, k;
   return L(function (m) {
-    if (m.g == 1) return (f = Date.now()), D(m, Y(a), 2);
+    if (m.g == 1) return ((f = Date.now()), D(m, Y(a), 2));
     g = m.h;
     b.forEach(function (e) {
       g[e] = f;
@@ -928,7 +928,10 @@ var V = new (function () {
           return D(d, U(b), 2);
         case 2:
           if (!d.h)
-            return k({ type: 'error', errorMessage: 'Offscreen document not ready.' }), d.return();
+            return (
+              k({ type: 'error', errorMessage: 'Offscreen document not ready.' }),
+              d.return()
+            );
           b.j = k;
           m = { type: 'speak', utterance: f, options: g };
           d.l = 3;
@@ -938,10 +941,10 @@ var V = new (function () {
           d.l = 0;
           break;
         case 3:
-          (e = E(d)),
+          ((e = E(d)),
             (c = e instanceof Error ? e.message : 'Error while trying to speak.'),
             k({ type: 'error', errorMessage: c }),
-            (d.g = 0);
+            (d.g = 0));
       }
     });
   };
@@ -1041,7 +1044,7 @@ chrome.runtime.onMessage.addListener(function (a) {
   a.type === 'offscreenVoicesResponse'
     ? fa(a.voices)
     : a.type === 'offscreenTtsEventResponse'
-    ? aa(a.event)
-    : a.type === 'languageUsed' && S(a.language);
+      ? aa(a.event)
+      : a.type === 'languageUsed' && S(a.language);
   return !0;
 });

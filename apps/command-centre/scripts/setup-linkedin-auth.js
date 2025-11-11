@@ -70,8 +70,8 @@ async function getProfile(accessToken) {
   const url = wantsPosting
     ? 'https://api.linkedin.com/v2/me'
     : useOidc
-    ? 'https://api.linkedin.com/v2/userinfo'
-    : 'https://api.linkedin.com/v2/me';
+      ? 'https://api.linkedin.com/v2/userinfo'
+      : 'https://api.linkedin.com/v2/me';
   let response = await fetch(
     url + (url.endsWith('/me') ? '?projection=(id,localizedFirstName,localizedLastName)' : ''),
     {

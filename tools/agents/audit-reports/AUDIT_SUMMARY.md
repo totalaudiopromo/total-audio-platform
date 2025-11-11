@@ -10,21 +10,18 @@
 ### What We've Done
 
 1. **✅ Agent Discovery & Inventory** (`agent-inventory.md`)
-
    - Catalogued 40+ JavaScript agents across Total Audio ecosystem
    - Identified current SDK usage (only 4 agents using SDK)
    - Categorized by function and priority
    - Documented all file locations and purposes
 
 2. **✅ SDK Usage Analysis** (`upgrade-priorities.md`)
-
    - Analyzed current implementation patterns
    - Identified missing features (streaming, caching, agentic loops)
    - Classified upgrade priorities (🔴 Critical, 🟠 High, 🟡 Medium, 🟢 Low)
    - Created detailed upgrade roadmap
 
 3. **✅ Cost & Performance Analysis** (`cost-analysis.md`)
-
    - Estimated current monthly costs: £37.60
    - Projected costs after upgrade: £17.92 (52% reduction)
    - Calculated ROI: 105-173% over 3 years
@@ -75,13 +72,11 @@
 ### 🔴 CRITICAL PRIORITY (Week 1-2)
 
 1. **Contact Agent** (`core-agents/technical/contact-agent.js`)
-
    - **Why**: Revenue-critical (Audio Intel core feature)
    - **Benefits**: Streaming for demos, caching for 515 UK contacts, batch processing
    - **Impact**: 70-85% cost reduction, 40-60% faster, better demo conversion
 
 2. **Agent Manager** (`core-agents/technical/agent-manager.js`)
-
    - **Why**: System observability and cost control
    - **Benefits**: Health monitoring, cost tracking dashboard, event system
    - **Impact**: Full visibility, proactive optimization
@@ -94,7 +89,6 @@
 ### 🟠 HIGH PRIORITY (Week 3-4)
 
 4. **Liberty Radio Promo Agent** (`radio-promo/liberty-agent-senior-dunce.js`)
-
    - **Why**: Beta customer workflow (NEWLY REQUESTED)
    - **Benefits**: Better campaign execution, real-time updates, cost efficiency
    - **Impact**: Better results for Liberty Music PR partnership
@@ -394,12 +388,10 @@ await processor.enrichContactsBatch(['contact-1', 'contact-2', ...]);
 ### High Risks
 
 1. **Database Integration Complexity**
-
    - **Risk**: Breaking Prisma queries
    - **Mitigation**: Preserve database logic, extensive testing
 
 2. **Production Workflow Impact**
-
    - **Risk**: Breaking Liberty Music PR workflow
    - **Mitigation**: Test with non-critical campaigns first
 

@@ -99,12 +99,10 @@ pnpm test:demo           # 5-7 min - Full Liberty workflow
 ### ⚠️ Non-Blocking (Won't Affect Demo)
 
 1. **Auth Redirects on Demo Pages** - Expected behavior
-
    - Demo pages redirect to login
    - Solution: Use authenticated sessions
 
 2. **React-dom/server Warning** - Audio Intel PDF export
-
    - Warning only, functionality works
    - No impact on demo
 

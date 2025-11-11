@@ -103,9 +103,12 @@ class AutoTriggerSystem {
     console.log('📅 Starting calendar monitoring...');
 
     // Check every 10 minutes for recently completed meetings
-    setInterval(async () => {
-      await this.checkRecentMeetings();
-    }, 10 * 60 * 1000);
+    setInterval(
+      async () => {
+        await this.checkRecentMeetings();
+      },
+      10 * 60 * 1000
+    );
   }
 
   async checkRecentMeetings() {

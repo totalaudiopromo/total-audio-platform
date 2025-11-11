@@ -73,35 +73,27 @@
 ### For Liberty Music PR Demo:
 
 1. **Homepage:** `http://localhost:3010/`
-
    - Shows value proposition and features
 
 2. **Sign In:** `http://localhost:3010/auth/signin`
-
    - Demo login
 
 3. **Dashboard:** `http://localhost:3010/dashboard`
-
    - Overview of pitches and stats
 
 4. **Generate Pitch:** `http://localhost:3010/pitch/generate`
-
    - Main pitch generation form (brutalist styling ✅)
 
 5. **Pitch Review:** `http://localhost:3010/pitch/review/[id]`
-
    - Review generated pitch (brutalist styling ✅)
 
 6. **Templates:** `http://localhost:3010/pitch/templates`
-
    - Browse template library (brutalist styling ✅)
 
 7. **Batch Generate:** `http://localhost:3010/pitch/batch`
-
    - Generate multiple pitches at once (brutalist styling ✅)
 
 8. **Contacts:** `http://localhost:3010/pitch/contacts`
-
    - Manage contacts (brutalist styling ✅)
 
 9. **History:** `http://localhost:3010/pitch/history`
@@ -122,7 +114,6 @@
 ### Test Integration Flow:
 
 1. **Audio Intel → Pitch Generator:**
-
    - From Audio Intel, copy contact data
    - Go to: `http://localhost:3010/pitch/generate?import=clipboard`
    - Contact should auto-import

@@ -182,15 +182,15 @@ export default function DemoPage() {
                     {demoStep === 1
                       ? 'Input Your Music News'
                       : demoStep === 2
-                      ? 'Generate Content'
-                      : 'View Results'}
+                        ? 'Generate Content'
+                        : 'View Results'}
                   </CardTitle>
                   <CardDescription className="text-lg font-bold">
                     {demoStep === 1
                       ? "Tell us what's happening with your music"
                       : demoStep === 2
-                      ? 'Choose platforms and generate content'
-                      : 'See your platform-optimized content'}
+                        ? 'Choose platforms and generate content'
+                        : 'See your platform-optimized content'}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">

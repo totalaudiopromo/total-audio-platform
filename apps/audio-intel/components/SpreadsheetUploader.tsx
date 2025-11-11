@@ -19,7 +19,12 @@ import {
   Download,
   Merge,
   Sparkles,
+  Mail,
+  MailWarning,
+  Shield,
+  AlertCircle,
 } from 'lucide-react';
+import WebSearchEnrichmentIndicator from './WebSearchEnrichmentIndicator';
 import {
   SpreadsheetProcessingPipeline,
   ProcessedContact,
@@ -35,9 +40,20 @@ interface UploadState {
   results?: {
     processedContacts: ProcessedContact[];
     summary: any;
+    validationSummary?: {
+      totalEmails: number;
+      validEmails: number;
+      invalidEmails: number;
+      disposableEmails: number;
+      businessEmails: number;
+      roleBasedEmails: number;
+    };
     fileAnalysis: SpreadsheetFile[];
   };
   error?: string;
+  showValidEmails?: boolean;
+  showInvalidEmails?: boolean;
+  showBusinessEmails?: boolean;
 }
 
 interface SpreadsheetUploaderProps {
@@ -386,7 +402,67 @@ export default function SpreadsheetUploader({
   const renderResults = () => {
     if (!state.results) return null;
 
-    const { processedContacts, summary, fileAnalysis } = state.results;
+    const { processedContacts, summary, validationSummary, fileAnalysis } = state.results;
+
+    // Helper to get email validation badge
+    const getEmailValidationBadge = (contact: ProcessedContact) => {
+      if (!contact.emailValidation) return null;
+
+      const { isValid, isDisposable, isSpamTrap, isRoleBased, reputation } =
+        contact.emailValidation;
+
+      if (!isValid) {
+        return (
+          <Badge variant="destructive" className="ml-2">
+            <XCircle className="w-3 h-3 mr-1" />
+            Invalid
+          </Badge>
+        );
+      }
+
+      if (isSpamTrap) {
+        return (
+          <Badge className="ml-2 bg-red-100 text-red-800">
+            <AlertCircle className="w-3 h-3 mr-1" />
+            Spam Trap
+          </Badge>
+        );
+      }
+
+      if (isDisposable) {
+        return (
+          <Badge className="ml-2 bg-orange-100 text-orange-800">
+            <MailWarning className="w-3 h-3 mr-1" />
+            Disposable
+          </Badge>
+        );
+      }
+
+      if (isRoleBased) {
+        return (
+          <Badge className="ml-2 bg-yellow-100 text-yellow-800">
+            <AlertTriangle className="w-3 h-3 mr-1" />
+            Role-based
+          </Badge>
+        );
+      }
+
+      if (reputation === 'excellent') {
+        return (
+          <Badge className="ml-2 bg-green-100 text-green-800">
+            <CheckCircle className="w-3 h-3 mr-1" />
+            Valid
+          </Badge>
+        );
+      }
+
+      return (
+        <Badge variant="secondary" className="ml-2">
+          <Mail className="w-3 h-3 mr-1" />
+          Valid
+        </Badge>
+      );
+    };
 
     return (
       <div className="space-y-6">
@@ -410,15 +486,15 @@ export default function SpreadsheetUploader({
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 gap-6 max-w-md mx-auto">
-              <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-                <div className="text-4xl font-black text-green-600 mb-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-md mx-auto">
+              <div className="text-center p-4 sm:p-6 bg-white rounded-xl shadow-lg">
+                <div className="text-3xl sm:text-4xl font-black text-green-600 mb-2">
                   {summary.totalContacts}
                 </div>
                 <div className="text-sm text-gray-600 font-medium">Ready contacts</div>
               </div>
-              <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-                <div className="text-4xl font-black text-blue-600 mb-2">
+              <div className="text-center p-4 sm:p-6 bg-white rounded-xl shadow-lg">
+                <div className="text-3xl sm:text-4xl font-black text-blue-600 mb-2">
                   {summary.duplicatesRemoved}
                 </div>
                 <div className="text-sm text-gray-600 font-medium">Duplicates cleaned</div>
@@ -443,6 +519,230 @@ export default function SpreadsheetUploader({
             </div>
           </CardContent>
         </Card>
+
+        {/* Email Validation Summary */}
+        {validationSummary && validationSummary.totalEmails > 0 && (
+          <Card className="border-2 border-blue-500">
+            <CardHeader>
+              <CardTitle className="text-2xl font-black flex items-center gap-2">
+                <Shield className="w-6 h-6 text-blue-600" />
+                Email Validation Results
+              </CardTitle>
+              <CardDescription className="text-base font-medium">
+                Professional email quality analysis for better deliverability
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-6">
+                <div className="p-4 bg-green-50 rounded-lg border-2 border-green-200">
+                  <div className="flex items-center gap-2 mb-2">
+                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <div className="text-sm font-bold text-gray-600">Valid Emails</div>
+                  </div>
+                  <div className="text-3xl font-black text-green-600">
+                    {validationSummary.validEmails}
+                  </div>
+                  <div className="text-xs text-gray-600 mt-1">
+                    {Math.round(
+                      (validationSummary.validEmails / validationSummary.totalEmails) * 100
+                    )}
+                    % of total
+                  </div>
+                </div>
+
+                <div className="p-4 bg-red-50 rounded-lg border-2 border-red-200">
+                  <div className="flex items-center gap-2 mb-2">
+                    <XCircle className="w-5 h-5 text-red-600" />
+                    <div className="text-sm font-bold text-gray-600">Invalid</div>
+                  </div>
+                  <div className="text-3xl font-black text-red-600">
+                    {validationSummary.invalidEmails}
+                  </div>
+                  <div className="text-xs text-gray-600 mt-1">Should be removed</div>
+                </div>
+
+                <div className="p-4 bg-blue-50 rounded-lg border-2 border-blue-200">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Mail className="w-5 h-5 text-blue-600" />
+                    <div className="text-sm font-bold text-gray-600">Business</div>
+                  </div>
+                  <div className="text-3xl font-black text-blue-600">
+                    {validationSummary.businessEmails}
+                  </div>
+                  <div className="text-xs text-gray-600 mt-1">Professional domains</div>
+                </div>
+
+                <div className="p-4 bg-orange-50 rounded-lg border-2 border-orange-200">
+                  <div className="flex items-center gap-2 mb-2">
+                    <MailWarning className="w-5 h-5 text-orange-600" />
+                    <div className="text-sm font-bold text-gray-600">Disposable</div>
+                  </div>
+                  <div className="text-3xl font-black text-orange-600">
+                    {validationSummary.disposableEmails}
+                  </div>
+                  <div className="text-xs text-gray-600 mt-1">Temporary emails</div>
+                </div>
+
+                <div className="p-4 bg-yellow-50 rounded-lg border-2 border-yellow-200">
+                  <div className="flex items-center gap-2 mb-2">
+                    <AlertTriangle className="w-5 h-5 text-yellow-600" />
+                    <div className="text-sm font-bold text-gray-600">Role-based</div>
+                  </div>
+                  <div className="text-3xl font-black text-yellow-600">
+                    {validationSummary.roleBasedEmails}
+                  </div>
+                  <div className="text-xs text-gray-600 mt-1">Generic addresses</div>
+                </div>
+
+                <div className="p-4 bg-gray-50 rounded-lg border-2 border-gray-200">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Mail className="w-5 h-5 text-gray-600" />
+                    <div className="text-sm font-bold text-gray-600">Total</div>
+                  </div>
+                  <div className="text-3xl font-black text-gray-900">
+                    {validationSummary.totalEmails}
+                  </div>
+                  <div className="text-xs text-gray-600 mt-1">Emails processed</div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
+                  <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                    <Shield className="w-4 h-4 text-blue-600" />
+                    Why Email Validation Matters
+                  </h4>
+                  <ul className="text-sm text-gray-700 space-y-1">
+                    <li>
+                      • <strong>Valid emails</strong> improve deliverability and campaign success
+                      rates
+                    </li>
+                    <li>
+                      • <strong>Business emails</strong> indicate professional contacts with higher
+                      engagement
+                    </li>
+                    <li>
+                      • <strong>Disposable emails</strong> should be removed to avoid wasted
+                      outreach
+                    </li>
+                    <li>
+                      • <strong>Role-based emails</strong> (info@, contact@) may have lower response
+                      rates
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                  <h4 className="font-bold text-gray-900 mb-2">Validation Badge Guide</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center gap-2">
+                      <Badge className="bg-green-100 text-green-800">
+                        <CheckCircle className="w-3 h-3 mr-1" />
+                        Valid
+                      </Badge>
+                      <span className="text-gray-600">RFC-compliant, safe to use</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="destructive">
+                        <XCircle className="w-3 h-3 mr-1" />
+                        Invalid
+                      </Badge>
+                      <span className="text-gray-600">Remove from list</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge className="bg-orange-100 text-orange-800">
+                        <MailWarning className="w-3 h-3 mr-1" />
+                        Disposable
+                      </Badge>
+                      <span className="text-gray-600">Temporary email service</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge className="bg-yellow-100 text-yellow-800">
+                        <AlertTriangle className="w-3 h-3 mr-1" />
+                        Role-based
+                      </Badge>
+                      <span className="text-gray-600">Generic address (info@, etc.)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge className="bg-red-100 text-red-800">
+                        <AlertCircle className="w-3 h-3 mr-1" />
+                        Spam Trap
+                      </Badge>
+                      <span className="text-gray-600">High risk, remove immediately</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Contact Preview with Email Validation Badges */}
+        {processedContacts.length > 0 && (
+          <Card className="border-gray-200">
+            <CardHeader>
+              <CardTitle className="text-xl font-black">Contact Preview</CardTitle>
+              <CardDescription>
+                First {Math.min(10, processedContacts.length)} contacts with validation status
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {processedContacts.slice(0, 10).map((contact, index) => (
+                  <div
+                    key={index}
+                    className="p-3 sm:p-4 bg-white rounded-lg border-2 border-gray-200 hover:border-blue-300 transition-colors"
+                  >
+                    <div className="flex-1">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-1">
+                        <h4 className="font-bold text-gray-900 text-sm sm:text-base">
+                          {contact.name || 'Unknown Name'}
+                        </h4>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          {contact.confidence === 'high' && (
+                            <Badge className="bg-green-100 text-green-800 text-xs">
+                              High Quality
+                            </Badge>
+                          )}
+                          {contact.confidence === 'medium' && (
+                            <Badge className="bg-blue-100 text-blue-800 text-xs">
+                              Good Quality
+                            </Badge>
+                          )}
+                          {contact.confidence === 'low' && (
+                            <Badge className="bg-yellow-100 text-yellow-800 text-xs">
+                              Needs Review
+                            </Badge>
+                          )}
+                        </div>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-xs sm:text-sm text-gray-600">
+                        <span className="break-all">{contact.email || 'No email'}</span>
+                        {getEmailValidationBadge(contact)}
+                      </div>
+                      {contact.company && (
+                        <div className="text-xs sm:text-sm text-gray-500 mt-1">
+                          {contact.company}
+                        </div>
+                      )}
+                      {contact.issues && contact.issues.length > 0 && (
+                        <div className="text-xs text-orange-600 mt-2 flex items-start gap-1">
+                          <AlertCircle className="w-3 h-3 flex-shrink-0 mt-0.5" />
+                          <span>{contact.issues.join(', ')}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {processedContacts.length > 10 && (
+                <div className="text-center mt-4 text-sm text-gray-600">
+                  + {processedContacts.length - 10} more contacts
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
 
         {/* Optional: Simple quality overview - can be collapsed/hidden by default */}
         <Card className="border-gray-200">
@@ -518,6 +818,15 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
     magicStep: '',
   });
   const fileInputId = useId();
+  const [webSearchStats, setWebSearchStats] = useState<{
+    isSearching: boolean;
+    searchesUsed: number;
+    totalLowConfidence: number;
+  }>({
+    isSearching: false,
+    searchesUsed: 0,
+    totalLowConfidence: 0,
+  });
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -651,10 +960,10 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
             lastProgress < 30
               ? 'Processing first batch...'
               : lastProgress < 60
-              ? 'Enriching with Total Audio Promo AI...'
-              : lastProgress < 90
-              ? 'Finalizing confidence scores...'
-              : 'Almost ready...';
+                ? 'Enriching with Total Audio Promo AI...'
+                : lastProgress < 90
+                  ? 'Finalizing confidence scores...'
+                  : 'Almost ready...';
 
           setState(prev => ({
             ...prev,
@@ -674,6 +983,20 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
 
         if (enrichmentData.success) {
           enrichedContacts = enrichmentData.enriched;
+
+          // Track web search usage
+          const withWebSearch = enrichedContacts.filter(
+            (c: any) => c.source === 'claude-with-search'
+          ).length;
+          if (withWebSearch > 0) {
+            setWebSearchStats({
+              isSearching: false,
+              searchesUsed: withWebSearch,
+              totalLowConfidence: enrichedContacts.filter((c: any) => c.confidence === 'Low')
+                .length,
+            });
+          }
+
           setState(prev => ({
             ...prev,
             progress: 100,
@@ -1008,6 +1331,20 @@ export function EnhancedSpreadsheetUploader({ onDataEnriched }: EnhancedSpreadsh
     <div className="space-y-8">
       {state.error && renderError()}
       {state.isProcessing && renderProcessingStatus()}
+
+      {/* Web Search Enrichment Indicator */}
+      {(webSearchStats.isSearching || webSearchStats.searchesUsed > 0) && (
+        <WebSearchEnrichmentIndicator
+          isSearching={webSearchStats.isSearching}
+          searchQuota={{
+            used: webSearchStats.searchesUsed,
+            limit: 100,
+            remaining: 100 - webSearchStats.searchesUsed,
+          }}
+          recentSearches={webSearchStats.searchesUsed}
+        />
+      )}
+
       {state.results && renderResults()}
       {!state.isProcessing && !state.results && !state.error && renderUploadZone()}
     </div>

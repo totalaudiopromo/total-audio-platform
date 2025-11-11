@@ -1822,14 +1822,14 @@
               (startsWithExtendedAnchor
                 ? location[index] != '/' && extendedAnchorRegExp.test(location.substring(0, index))
                 : startsWithAnchor
-                ? index == 0
-                : true) &&
+                  ? index == 0
+                  : true) &&
               (endsWithSeparator
                 ? !location[index + pattern.length] ||
                   separatorRegExp.test(location[index + pattern.length])
                 : endsWithAnchor
-                ? index == location.length - pattern.length
-                : true)
+                  ? index == location.length - pattern.length
+                  : true)
             ) {
               return true;
             }

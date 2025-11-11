@@ -398,8 +398,8 @@ Total Audio Promo`;
                             user.status === 'active'
                               ? 'bg-green-500'
                               : user.status === 'idle'
-                              ? 'bg-yellow-500'
-                              : 'bg-gray-400'
+                                ? 'bg-yellow-500'
+                                : 'bg-gray-400'
                           }`}
                         ></div>
                         <span className="text-xs font-bold uppercase">{user.status}</span>
@@ -609,8 +609,8 @@ Total Audio Promo`;
                             user.status === 'active'
                               ? 'bg-green-50'
                               : user.status === 'idle'
-                              ? 'bg-yellow-50'
-                              : 'bg-gray-50'
+                                ? 'bg-yellow-50'
+                                : 'bg-gray-50'
                           }`}
                         >
                           <div className="flex justify-between items-start mb-4">
@@ -625,8 +625,8 @@ Total Audio Promo`;
                                     user.status === 'active'
                                       ? 'bg-green-500'
                                       : user.status === 'idle'
-                                      ? 'bg-yellow-500'
-                                      : 'bg-gray-400'
+                                        ? 'bg-yellow-500'
+                                        : 'bg-gray-400'
                                   }`}
                                 ></div>
                                 <span className="text-xs font-bold uppercase">{user.status}</span>

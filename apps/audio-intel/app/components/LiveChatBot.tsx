@@ -129,8 +129,8 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
           userTier === 'agency'
             ? 'bg-blue-600 hover:bg-blue-700'
             : userTier === 'professional'
-            ? 'bg-blue-600 hover:bg-blue-700'
-            : 'bg-green-600 hover:bg-green-700'
+              ? 'bg-blue-600 hover:bg-blue-700'
+              : 'bg-green-600 hover:bg-green-700'
         }`}
       >
         {isOpen ? <X className="w-5 h-5" /> : <MessageCircle className="w-5 h-5" />}
@@ -144,8 +144,8 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
               userTier === 'agency'
                 ? 'bg-blue-600'
                 : userTier === 'professional'
-                ? 'bg-blue-600'
-                : 'bg-green-600'
+                  ? 'bg-blue-600'
+                  : 'bg-green-600'
             } text-white rounded-t-lg px-3 py-2 border-b-2 border-black`}
           >
             <div className="flex items-center justify-between">
@@ -209,8 +209,8 @@ export default function LiveChatBot({ userTier = 'free' }: LiveChatBotProps) {
                   userTier === 'agency'
                     ? 'bg-blue-600 hover:bg-blue-700'
                     : userTier === 'professional'
-                    ? 'bg-blue-600 hover:bg-blue-700'
-                    : 'bg-green-600 hover:bg-green-700'
+                      ? 'bg-blue-600 hover:bg-blue-700'
+                      : 'bg-green-600 hover:bg-green-700'
                 } disabled:opacity-50 disabled:cursor-not-allowed transition-colors`}
               >
                 <Send className="w-4 h-4" />

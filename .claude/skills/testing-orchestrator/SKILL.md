@@ -1,9 +1,11 @@
 # Testing Orchestrator Skill
 
 ## Purpose
+
 Intelligent test orchestration across Audio Intel, Pitch Generator, Tracker, and TotalAud.io using code execution and parallel agent coordination.
 
 ## When to Use This Skill
+
 - When the user asks to run mobile tests
 - When validating UX across multiple apps
 - When checking for accessibility or performance issues
@@ -11,6 +13,7 @@ Intelligent test orchestration across Audio Intel, Pitch Generator, Tracker, and
 - After making changes that affect multiple apps
 
 ## Triggers
+
 - "Run mobile tests"
 - "Test all apps"
 - "Validate touch targets"
@@ -22,24 +25,28 @@ Intelligent test orchestration across Audio Intel, Pitch Generator, Tracker, and
 ## Capabilities
 
 ### 1. Code Execution
+
 - Run Playwright tests via Bash/code execution MCP
 - Execute TypeScript compilation validation
 - Run build scripts to validate production readiness
 - Execute agent scripts for intelligent test generation
 
 ### 2. Parallel Execution
+
 - Use task-orchestrator patterns for 3-5x speed improvement
 - Spawn parallel test agents (one per app)
 - Coordinate results aggregation
 - Generate unified cross-app reports
 
 ### 3. Visual Validation
+
 - Browser automation for screenshot comparison
 - Touch target size verification
 - Gesture conflict detection
 - Responsive breakpoint visual testing
 
 ### 4. Intelligent Reporting
+
 - Structured test results with pass/fail status
 - Performance metrics (CLS, LCP, FID, TTI)
 - Accessibility compliance scores
@@ -47,6 +54,7 @@ Intelligent test orchestration across Audio Intel, Pitch Generator, Tracker, and
 - Cross-app consistency analysis
 
 ### 5. Cross-App Consistency
+
 - Validate UX patterns match across all apps
 - Ensure design system compliance
 - Check motion grammar adherence (Slate Cyan #3AA9BE, 240ms ease-out)
@@ -80,6 +88,7 @@ Intelligent test orchestration across Audio Intel, Pitch Generator, Tracker, and
 ## Usage Examples
 
 ### Run Touch Target Tests
+
 ```
 User: "Run touch target tests on Audio Intel and Pitch Generator"
 
@@ -91,6 +100,7 @@ Response:
 ```
 
 ### Validate Mobile UX Across All Apps
+
 ```
 User: "Validate mobile UX across all apps"
 
@@ -106,6 +116,7 @@ Response:
 ```
 
 ### Check If Latest Changes Broke Tests
+
 ```
 User: "Check if latest changes broke any tests"
 
@@ -117,6 +128,7 @@ Response:
 ```
 
 ### Generate Performance Report
+
 ```
 User: "Generate performance report for all apps"
 
@@ -131,6 +143,7 @@ Response:
 ## Integration
 
 ### Uses
+
 - `@total-audio/testing` package for validators
 - `task-orchestrator` skill for parallel execution
 - `browser-automation` skill for visual testing
@@ -138,6 +151,7 @@ Response:
 - Notion MCP for dashboard updates (optional)
 
 ### Coordinates With
+
 - `systematic-debugging` skill for failure analysis
 - `customer-acquisition-focus` skill to ensure tests don't block revenue work
 - `mobile-first-validator` skill for mobile-specific patterns
@@ -145,18 +159,21 @@ Response:
 ## Test Types Supported
 
 ### Mobile Testing
+
 - Touch target validation (WCAG 2.2 Level AA)
 - Responsive breakpoint testing
 - Gesture conflict detection
 - Mobile layout validation
 
 ### Accessibility Testing
+
 - ARIA labels and roles
 - Color contrast validation (WCAG 2.2)
 - Keyboard navigation
 - Screen reader compatibility
 
 ### Performance Testing
+
 - Cumulative Layout Shift (CLS)
 - Largest Contentful Paint (LCP)
 - First Input Delay (FID)
@@ -165,6 +182,7 @@ Response:
 - Resource loading analysis
 
 ### Visual Regression
+
 - Screenshot comparison
 - Layout consistency
 - Motion grammar compliance

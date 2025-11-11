@@ -16,15 +16,15 @@ function s(e) {
   return 'get' === e.subType
     ? localStorage.getItem(e.key)
     : 'set' === e.subType
-    ? localStorage.setItem(e.key, e.value)
-    : void 0;
+      ? localStorage.setItem(e.key, e.value)
+      : void 0;
 }
 let c;
 n.setupErrorLogging({ sendMessageFn: i });
 const d = {};
 function l(e, t) {
   const n = Math.random();
-  (d[n] = t), c.contentWindow.postMessage({ waitingKey: n, msg: e }, '*');
+  ((d[n] = t), c.contentWindow.postMessage({ waitingKey: n, msg: e }, '*'));
 }
 const {
     getClipboard: u,
@@ -35,26 +35,26 @@ const {
   } = (() => {
     let e;
     const t = function () {
-      document.activeElement &&
+      (document.activeElement &&
         document.activeElement instanceof HTMLElement &&
         document.activeElement.blur(),
         (c = !0),
-        document.execCommand('paste', !1);
+        document.execCommand('paste', !1));
       const e = { text: i, html: s };
-      return (i = void 0), (s = void 0), e;
+      return ((i = void 0), (s = void 0), e);
     };
     let o,
       a,
       r = null;
     document.getElementById('clip-write').addEventListener('copy', function (e) {
-      void 0 !== o && e.clipboardData.setData('text/plain', o),
+      (void 0 !== o && e.clipboardData.setData('text/plain', o),
         void 0 !== a &&
           (r && r.isCKE4 && (a = n.joinConsecutiveParagraphTagsForCKE4(a)),
           e.clipboardData.setData('text/html', a)),
         e.preventDefault(),
         (o = void 0),
         (a = void 0),
-        (r = null);
+        (r = null));
     });
     let i,
       s,
@@ -63,7 +63,7 @@ const {
       if (c) {
         const t = e.clipboardData,
           n = t.types;
-        n.includes('text/plain') && (i = t.getData('text/plain')),
+        (n.includes('text/plain') && (i = t.getData('text/plain')),
           n.includes('text/html') &&
             ((s = t.getData('text/html')),
             (s = (function (e) {
@@ -86,7 +86,7 @@ const {
             (i = t.getData('text/uri-list') || t.getData('text/csv'))),
           e.stopPropagation(),
           e.preventDefault(),
-          (c = !1);
+          (c = !1));
       }
     });
     const d = function ({ data: e, options: t }) {
@@ -108,17 +108,18 @@ const {
         e = t();
         const { contents: a, styles: r, targetTag: i, options: s } = o.set;
         return (
-          a.html && (a.html = n.applyContextualStyles(a.html, r, i)), d({ data: a, options: s })
+          a.html && (a.html = n.applyContextualStyles(a.html, r, i)),
+          d({ data: a, options: s })
         );
       },
       setClipboardWithCache: async function () {
-        if (null === e) return console.warn('No cache to set.'), 'failed';
+        if (null === e) return (console.warn('No cache to set.'), 'failed');
         if (void 0 === e)
           return void n.captureException(
             new Error('Missing cached clipboard value when restoring')
           );
         const t = d({ data: e });
-        return (e = null), t;
+        return ((e = null), t);
       },
       clearTmpCacheClipboard: function () {
         e = null;
@@ -134,17 +135,17 @@ const {
     return function (t, o) {
       const a = e[t];
       try {
-        (a.volume = o),
+        ((a.volume = o),
           a.play().catch(e => {
             n.captureException(e);
-          });
+          }));
       } catch (e) {
         n.captureException(e);
       }
     };
   })();
 var f, h;
-(window.forwardMessage = (e, t, o) => {
+((window.forwardMessage = (e, t, o) => {
   if ('offscreen' === e.target)
     switch (e.type) {
       case 'isAlive':
@@ -153,11 +154,11 @@ var f, h;
       case 'getClipboard':
         return o(u());
       case 'setClipboard':
-        return p({ data: e.data }).then(e => o('done')), !0;
+        return (p({ data: e.data }).then(e => o('done')), !0);
       case 'getAndSetClipboard':
-        return m(e).then(() => o('done')), !0;
+        return (m(e).then(() => o('done')), !0);
       case 'setClipboardWithCache':
-        return g().then(e => o(e || 'done')), !0;
+        return (g().then(e => o(e || 'done')), !0);
       case 'localStorage':
         o(s(e));
         break;
@@ -168,9 +169,9 @@ var f, h;
         alert(e.msg);
         break;
       case 'sandbox':
-        return l(e.message, o), !0;
+        return (l(e.message, o), !0);
       case 'updateLoggerDetails':
-        return n.handleDetailsUpdate(e), l(e, o), !1;
+        return (n.handleDetailsUpdate(e), l(e, o), !1);
       default:
         throw new Error('Undefined message type' + e.type);
     }
@@ -194,8 +195,8 @@ var f, h;
             'background' === o || 'offscreen' === o
               ? r.request
               : 'localStorage' === o
-              ? `${r.subType}|${r.key}`
-              : '',
+                ? `${r.subType}|${r.key}`
+                : '',
         },
       }),
       o)
@@ -219,7 +220,7 @@ var f, h;
         t(s(r));
         break;
       default:
-        console.warn('Invalid type', r), n.captureException(new Error('Invalid type: ' + o));
+        (console.warn('Invalid type', r), n.captureException(new Error('Invalid type: ' + o)));
     }
   }),
   ((h = r.runtime.getURL('./html/sandbox.html')),
@@ -227,11 +228,11 @@ var f, h;
   (c.src = h),
   (c.id = 'sandboxFrame'),
   new Promise(e => {
-    document.body.appendChild(c),
+    (document.body.appendChild(c),
       c.contentWindow.addEventListener('load', () => {
         e();
-      });
+      }));
   })).then(() => {
     window.clearMessageBuffer();
   }),
-  console.log(Date.now(), 'Offscreen document script complete');
+  console.log(Date.now(), 'Offscreen document script complete'));

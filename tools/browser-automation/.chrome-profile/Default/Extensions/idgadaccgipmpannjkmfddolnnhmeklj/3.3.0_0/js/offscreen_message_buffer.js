@@ -1,7 +1,7 @@
 let messageBuffer = [];
-chrome.runtime.onMessage.addListener((...e) =>
+(chrome.runtime.onMessage.addListener((...e) =>
   window.forwardMessage ? window.forwardMessage(...e) : (messageBuffer.push(e), !0)
 ),
   (window.clearMessageBuffer = () => {
     for (; messageBuffer.length; ) window.forwardMessage(...messageBuffer.shift());
-  });
+  }));

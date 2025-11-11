@@ -160,8 +160,8 @@ export function PricingCards({
                 {isCurrentPlan
                   ? 'Current Plan'
                   : price === 0
-                  ? 'Get Started Free'
-                  : `Subscribe to ${tier.name}`}
+                    ? 'Get Started Free'
+                    : `Subscribe to ${tier.name}`}
               </Button>
 
               {tier.limits && (

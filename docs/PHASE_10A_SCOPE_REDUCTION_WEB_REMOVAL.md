@@ -34,12 +34,10 @@ Separation avoids CI/CD instability and allows the 3 production apps to deploy r
 ## Safety Guards Added
 
 1. **Scope Validation in `golden-check.ts`**
-
    - TypeScript guard prevents invalid app names
    - Fails fast with clear error message
 
 2. **Workflow Validation in `golden-deploy.yml`**
-
    - Pre-build job verifies `GOLDEN_SCOPE` env var
    - Prevents accidental scope changes
 
@@ -115,25 +113,21 @@ Separation avoids CI/CD instability and allows the 3 production apps to deploy r
 To re-add `web` to Golden pipeline (if needed):
 
 1. **Migrate to App Router structure**
-
    - Move from `src/pages/` to `app/` directory
    - Update all routes and API endpoints
    - Test locally before committing
 
 2. **Remove custom buildCommand**
-
    - Update `apps/web/vercel.json`
    - Remove `buildCommand` and `installCommand` overrides
    - Align with intel/tracker/pitch patterns
 
 3. **Align build output paths**
-
    - Verify `.next` directory structure
    - Test with `vercel build --prod` locally
    - Confirm no path resolution issues
 
 4. **Test via staging tag**
-
    - Deploy to staging environment first
    - Run full health checks
    - Verify no regression in other apps

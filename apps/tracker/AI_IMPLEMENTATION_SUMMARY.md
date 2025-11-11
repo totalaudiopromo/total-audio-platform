@@ -286,7 +286,6 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=...         # ✅ Already configured
 ### User Workflow (After Migration Applied)
 
 1. **Import Campaigns**
-
    - Click "Import CSV" button on dashboard
    - Download template or use existing spreadsheet
    - Upload CSV file
@@ -295,7 +294,6 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=...         # ✅ Already configured
    - See success/failed counts
 
 2. **Generate AI Autopsy**
-
    - Navigate to campaign with results (`actual_reach > 0`)
    - Scroll to "Campaign Intelligence AI" section
    - Click "Analyse This Campaign"
@@ -451,19 +449,16 @@ npm run seed-demo
 ### Current Limitations
 
 1. **Database Migration Not Applied**
-
    - Impact: AI autopsy will fail on first attempt
    - Fix: Apply migration via Supabase dashboard
    - Time: 2 minutes
 
 2. **No Activity Tracking (Phase 3)**
-
    - Impact: Can't log campaign touchpoints
    - Fix: Build Phase 3 if needed
    - Priority: Low (not core value prop)
 
 3. **Claude API Rate Limits**
-
    - Impact: Too many simultaneous autopsies could hit rate limits
    - Mitigation: User-initiated (not automatic), unlikely to hit limits
    - Future: Add rate limiting/queueing if needed

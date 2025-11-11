@@ -41,7 +41,6 @@
    ```
 
 3. **Fill in the form**:
-
    - Full Name: Your Name
    - Email: your-test-email@example.com
    - Password: test1234 (at least 8 chars)

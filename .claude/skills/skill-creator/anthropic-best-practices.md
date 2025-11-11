@@ -721,7 +721,6 @@ Guide Claude through decision points:
    **Editing existing content?** → Follow "Editing workflow" below
 
 2. Creation workflow:
-
    - Use docx-js library
    - Build document from scratch
    - Export to .docx format

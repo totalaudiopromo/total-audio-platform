@@ -154,8 +154,8 @@ export default function PricingPage() {
                   plan.badgeColor === 'green'
                     ? 'bg-green-500 text-white'
                     : plan.badgeColor === 'purple'
-                    ? 'bg-teal-600 text-white'
-                    : 'bg-gray-900 text-white'
+                      ? 'bg-teal-600 text-white'
+                      : 'bg-gray-900 text-white'
                 }`}
               >
                 {plan.badge}

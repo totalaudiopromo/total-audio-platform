@@ -358,7 +358,6 @@ GOOGLE_CHAT_WEBHOOK=xxx
 ### Medium Term (Workflow Development)
 
 4. **Test Each Workflow**
-
    - Start with `weekly-newsletter`
    - Add real agent method implementations
    - Test end-to-end

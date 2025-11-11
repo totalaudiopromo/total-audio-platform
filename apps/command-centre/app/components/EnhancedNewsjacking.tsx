@@ -77,8 +77,8 @@ export default function EnhancedNewsjacking() {
             item.unsignedAngle?.urgency === 'immediate'
               ? 'immediate'
               : item.unsignedAngle?.urgency === 'high'
-              ? 'same_day'
-              : 'this_week',
+                ? 'same_day'
+                : 'this_week',
           voiceScore: item.voiceScore,
           estimatedReach: 25000,
           generatedAt: new Date(item.createdAt),

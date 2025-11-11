@@ -7,18 +7,18 @@ async function n(e) {
 function a(e, n = 'offscreen') {
   return new Promise(a => {
     const o = Math.random().toString();
-    (t[o] = a), window.parent.postMessage({ type: n, msg: e, waitingKey: o }, '*');
+    ((t[o] = a), window.parent.postMessage({ type: n, msg: e, waitingKey: o }, '*'));
   });
 }
 async function o(e) {
   const t = await n({ request: 'getSnippetsByShortcut', snippet: e.toLocaleLowerCase() });
   if (t.length) return { delta: new Uint8Array(Object.values(t[0].delta)) };
 }
-e.setupErrorLogging({ sendMessageFn: n }),
+(e.setupErrorLogging({ sendMessageFn: n }),
   (window.TB_preferencesStore = {
     getItem: e => a({ key: e, subType: 'get' }, 'localStorage'),
     setItem: (e, t) => a({ key: e, value: t, subType: 'set' }, 'localStorage'),
-  });
+  }));
 const r = e.makeConfigMaker(
   'EXTENSION',
   function (e) {
@@ -87,7 +87,7 @@ async function l(t) {
         }
       })(t);
     case 'setLocale':
-      return e.setLocale(t.code), 'ack';
+      return (e.setLocale(t.code), 'ack');
     case 'addAddonAttributes': {
       const n = t.data;
       if (t.deltaWithOps || t.deltaArray) {
@@ -97,7 +97,7 @@ async function l(t) {
       return e.addAddonAttributes(t.addonNamespace, n);
     }
     case 'updateLoggerDetails':
-      t.id || a({ request: 'clearTmpCacheClipboard' }, 'offscreen'), e.handleDetailsUpdate(t);
+      (t.id || a({ request: 'clearTmpCacheClipboard' }, 'offscreen'), e.handleDetailsUpdate(t));
       break;
     case 'updateAddons':
       s = t.cleanedActiveAddons;
@@ -107,7 +107,7 @@ async function l(t) {
   }
   var n, l;
 }
-(window.forwardMessage = n => {
+((window.forwardMessage = n => {
   const a = (function (n) {
     const a = n.data;
     if (null === a)
@@ -118,7 +118,7 @@ async function l(t) {
     const { msg: o, waitingKey: r } = a;
     if (r && t[r]) {
       const e = t[r];
-      return delete t[r], e(o.response), { handled: !0 };
+      return (delete t[r], e(o.response), { handled: !0 });
     }
     return 'backgroundResponse' === o.type
       ? { handled: !0 }
@@ -132,4 +132,4 @@ async function l(t) {
 }),
   window.clearMessageBuffer(),
   console.log(Date.now(), 'Sandbox document loaded'),
-  n({ request: 'offscreenInitialized' });
+  n({ request: 'offscreenInitialized' }));

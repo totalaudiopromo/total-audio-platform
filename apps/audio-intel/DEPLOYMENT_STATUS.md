@@ -15,6 +15,7 @@
 **Vercel was trying to use pnpm monorepo filters without proper monorepo context.**
 
 The original `vercel.json` had:
+
 ```json
 "buildCommand": "pnpm --filter audio-intel build"
 ```
@@ -24,12 +25,14 @@ This assumes Vercel is running from the monorepo root, but Vercel's Root Directo
 ### The Solution Applied
 
 **Updated `vercel.json` to use simple commands:**
+
 ```json
 "buildCommand": "pnpm build",
 "installCommand": "pnpm install --frozen-lockfile"
 ```
 
 **And configured Vercel Dashboard to:**
+
 1. **Root Directory**: `apps/audio-intel` (deploy this specific app)
 2. **Enable**: "Include source files outside of the Root Directory in the Build Step"
 3. This allows pnpm to see the monorepo workspace at `../../pnpm-workspace.yaml`
@@ -37,7 +40,9 @@ This assumes Vercel is running from the monorepo root, but Vercel's Root Directo
 ## ✅ FIXES APPLIED (November 11, 2025)
 
 ### 1. Updated vercel.json
+
 Changed from pnpm filter commands to simple build commands:
+
 ```json
 {
   "buildCommand": "pnpm build",
@@ -46,6 +51,7 @@ Changed from pnpm filter commands to simple build commands:
 ```
 
 ### 2. Added .vercelignore
+
 Created proper ignore file to exclude test files and documentation while including necessary monorepo files.
 
 ### 3. Vercel Dashboard Configuration Required
@@ -79,6 +85,7 @@ Created proper ignore file to exclude test files and documentation while includi
 After updating Vercel settings and redeploying:
 
 1. **Check build logs** - Should show:
+
    ```
    Installing dependencies...
    Running "pnpm install --frozen-lockfile"
@@ -92,6 +99,7 @@ After updating Vercel settings and redeploying:
 2. **Build time** - Should complete in ~55-90 seconds (not 13-14 minutes)
 
 3. **Test deployment**:
+
    ```bash
    curl -I https://intel.totalaudiopromo.com
    # Should return 200 OK

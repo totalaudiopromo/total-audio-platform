@@ -7,16 +7,19 @@ Code execution capability allows Claude Code to run tests, validate builds, and 
 ## What Code Execution Enables
 
 1. **Automated Test Running**
+
    ```bash
    npx playwright test apps/audio-intel/tests/mobile/
    ```
 
 2. **TypeScript Validation**
+
    ```bash
    npx tsc --noEmit
    ```
 
 3. **Build Validation**
+
    ```bash
    npm run build:audio-intel
    npm run build:pitch-generator
@@ -159,6 +162,7 @@ cat apps/audio-intel/reports/results.json | jq '.metrics'
 ### Code Execution Agent (Phase 4)
 
 Planned intelligent agent that:
+
 - Automatically selects relevant tests based on changes
 - Optimises execution order
 - Predicts test failures
@@ -167,6 +171,7 @@ Planned intelligent agent that:
 ### Real-Time Streaming
 
 Future integration with TotalAud.io:
+
 - SSE/WebSocket streaming of test results
 - Visual progress indicators in Agent Canvas
 - Real-time failure analysis
@@ -174,6 +179,7 @@ Future integration with TotalAud.io:
 ### Smart Test Selection
 
 AI-powered test selection:
+
 - Analyse code changes
 - Predict affected test files
 - Run only necessary tests
@@ -226,6 +232,7 @@ pnpm build
 ## Status
 
 ✅ **Phase 1 Complete**: Foundation implemented
+
 - @total-audio/testing package built and ready
 - Testing Orchestrator skill created
 - Code execution patterns documented

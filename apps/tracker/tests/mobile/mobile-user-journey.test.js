@@ -25,7 +25,9 @@ test.describe('Campaign Tracker Mobile Journey', () => {
 
     // 2. NAVIGATION TO CAMPAIGNS
     await test.step('Navigate to campaigns', async () => {
-      const campaignsLink = page.getByRole('link', { name: /campaigns|dashboard/i }).first();
+      const campaignsLink = page
+        .getByRole('link', { name: /campaigns|dashboard/i })
+        .first();
 
       if (await campaignsLink.isVisible()) {
         await validateTouchTargetSize(campaignsLink, 44);
@@ -39,7 +41,9 @@ test.describe('Campaign Tracker Mobile Journey', () => {
 
     // 3. CREATE NEW CAMPAIGN
     await test.step('Create new campaign on mobile', async () => {
-      const createButton = page.getByRole('button', { name: /new campaign|create|add/i }).first();
+      const createButton = page
+        .getByRole('button', { name: /new campaign|create|add/i })
+        .first();
 
       if (await createButton.isVisible()) {
         await validateTouchTargetSize(createButton, 44);
@@ -49,14 +53,18 @@ test.describe('Campaign Tracker Mobile Journey', () => {
       }
 
       // Test campaign name input
-      const nameInput = page.locator('input[name*="name"], input[placeholder*="campaign"]').first();
+      const nameInput = page
+        .locator('input[name*="name"], input[placeholder*="campaign"]')
+        .first();
       if (await nameInput.isVisible()) {
         await validateTouchTargetSize(nameInput, 44);
         await nameInput.fill('Test Mobile Campaign');
       }
 
       // Test artist input
-      const artistInput = page.locator('input[name*="artist"], input[placeholder*="artist"]').first();
+      const artistInput = page
+        .locator('input[name*="artist"], input[placeholder*="artist"]')
+        .first();
       if (await artistInput.isVisible()) {
         await validateTouchTargetSize(artistInput, 44);
       }
@@ -64,7 +72,9 @@ test.describe('Campaign Tracker Mobile Journey', () => {
 
     // 4. SUBMISSION TRACKING
     await test.step('Add submission on mobile', async () => {
-      const addSubmissionButton = page.getByRole('button', { name: /add submission|log|track/i }).first();
+      const addSubmissionButton = page
+        .getByRole('button', { name: /add submission|log|track/i })
+        .first();
 
       if (await addSubmissionButton.isVisible()) {
         await validateTouchTargetSize(addSubmissionButton, 44);
@@ -82,7 +92,9 @@ test.describe('Campaign Tracker Mobile Journey', () => {
     await page.goto('/campaigns');
 
     // Test campaign cards on mobile
-    const campaignCards = page.locator('[data-campaign], [class*="campaign-card"]');
+    const campaignCards = page.locator(
+      '[data-campaign], [class*="campaign-card"]'
+    );
 
     if ((await campaignCards.count()) > 0) {
       const firstCard = campaignCards.first();
@@ -103,13 +115,17 @@ test.describe('Campaign Tracker Mobile Journey', () => {
     await page.goto('/campaigns');
 
     // Open first campaign
-    const firstCampaign = page.locator('[data-campaign], [class*="campaign"]').first();
+    const firstCampaign = page
+      .locator('[data-campaign], [class*="campaign"]')
+      .first();
 
     if (await firstCampaign.isVisible()) {
       await firstCampaign.tap();
 
       // Test modal submission form
-      const modalForm = page.locator('[role="dialog"], [class*="modal"]').first();
+      const modalForm = page
+        .locator('[role="dialog"], [class*="modal"]')
+        .first();
 
       if (await modalForm.isVisible()) {
         // Verify modal fits viewport
@@ -121,7 +137,9 @@ test.describe('Campaign Tracker Mobile Journey', () => {
         }
 
         // Test close button
-        const closeButton = modalForm.getByRole('button', { name: /close|cancel/i }).first();
+        const closeButton = modalForm
+          .getByRole('button', { name: /close|cancel/i })
+          .first();
         if (await closeButton.isVisible()) {
           await validateTouchTargetSize(closeButton, 44);
         }

@@ -229,8 +229,8 @@ export function RealTimeMetrics() {
                 {metric.label.includes('Time')
                   ? `${metric.value}s`
                   : metric.label.includes('Rate')
-                  ? `${metric.value}%`
-                  : metric.value.toLocaleString()}
+                    ? `${metric.value}%`
+                    : metric.value.toLocaleString()}
               </div>
               <p className="text-xs md:text-sm font-bold text-gray-600 break-words">
                 {metric.label}

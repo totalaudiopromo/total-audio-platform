@@ -303,12 +303,14 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 /* Tool-Specific Texture Overlays */
 .texture-intel {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+  background:
+    linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
     url('/assets/textures/drs-paper-light.webp');
 }
 
 .texture-pulse {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
     url('/assets/textures/drs-paper-light.webp');
 }
 ```
@@ -395,11 +397,9 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 /* Audio Intel Active State */
 .intel-active {
-  background: linear-gradient(
-      135deg,
-      rgba(59, 130, 246, var(--overlay-opacity)) 0%,
-      transparent 50%
-    ), var(--texture-paper);
+  background:
+    linear-gradient(135deg, rgba(59, 130, 246, var(--overlay-opacity)) 0%, transparent 50%),
+    var(--texture-paper);
 }
 ```
 
@@ -1293,19 +1293,19 @@ From your Social Media Content database:
 ### **Step 2: CSV Structure**
 
 ```javascript
-title, content, platform, contentType, scheduledTime, utmTracking;
-'94% Automation Thread',
+(title, content, platform, contentType, scheduledTime, utmTracking);
+('94% Automation Thread',
   'Right, so this whole music marketing...',
   'Twitter/X|LinkedIn|Threads',
   'Thread',
   '2025-09-16 09:00',
-  '?utm_source=social&utm_campaign=beta';
-'Personal Story',
+  '?utm_source=social&utm_campaign=beta');
+('Personal Story',
   "Right, so I've been coding at 2am...",
   'LinkedIn',
   'LinkedIn Post',
   '2025-09-18 09:00',
-  '?utm_source=social&utm_campaign=beta';
+  '?utm_source=social&utm_campaign=beta');
 ```
 
 ### **Step 3: Cursor Automation Script**

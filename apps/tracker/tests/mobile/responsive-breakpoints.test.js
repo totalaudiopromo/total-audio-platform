@@ -5,7 +5,11 @@
  */
 
 const { test, expect } = require('@playwright/test');
-const { validateBreakpoints, validateMobileLayout, commonBreakpoints } = require('@total-audio/testing');
+const {
+  validateBreakpoints,
+  validateMobileLayout,
+  commonBreakpoints,
+} = require('@total-audio/testing');
 
 test.describe('Responsive Breakpoints', () => {
   test('Homepage responsive across all breakpoints', async ({ page }) => {
@@ -24,9 +28,12 @@ test.describe('Responsive Breakpoints', () => {
   test('Campaign list responsive', async ({ page }) => {
     await page.goto('/campaigns');
 
-    const results = await validateBreakpoints(page, commonBreakpoints.filter(bp =>
-      bp.name.includes('mobile') || bp.name.includes('tablet')
-    ));
+    const results = await validateBreakpoints(
+      page,
+      commonBreakpoints.filter(
+        bp => bp.name.includes('mobile') || bp.name.includes('tablet')
+      )
+    );
 
     const failures = results.filter(r => !r.passed);
     expect(failures).toHaveLength(0);
@@ -35,9 +42,12 @@ test.describe('Responsive Breakpoints', () => {
   test('Campaign creation form responsive', async ({ page }) => {
     await page.goto('/campaigns/new');
 
-    const results = await validateBreakpoints(page, commonBreakpoints.filter(bp =>
-      bp.name.includes('mobile') || bp.name.includes('tablet')
-    ));
+    const results = await validateBreakpoints(
+      page,
+      commonBreakpoints.filter(
+        bp => bp.name.includes('mobile') || bp.name.includes('tablet')
+      )
+    );
 
     const failures = results.filter(r => !r.passed);
     expect(failures).toHaveLength(0);
@@ -61,7 +71,9 @@ test.describe('Responsive Breakpoints', () => {
     await page.goto('/campaigns');
 
     const viewport = page.viewportSize();
-    const campaignCards = page.locator('[data-campaign], [class*="campaign-card"]');
+    const campaignCards = page.locator(
+      '[data-campaign], [class*="campaign-card"]'
+    );
 
     if ((await campaignCards.count()) > 1) {
       const firstCard = campaignCards.first();

@@ -16,7 +16,7 @@ let i;
 n.setupErrorLogging({ sendMessageFn: a });
 const c = {};
 var d, l;
-(d = async e => {
+((d = async e => {
   if ('setTitle' === e.request) document.title = e.title;
   else if ('closeWindow' === e.request) window.close();
   else if ('getClipboard' === e.request)
@@ -39,8 +39,8 @@ var d, l;
             'background' === r || 'offscreen' === r
               ? s.request
               : 'localStorage' === r
-              ? `${s.subType}|${s.key}`
-              : '',
+                ? `${s.subType}|${s.key}`
+                : '',
         },
       }),
       r)
@@ -65,13 +65,13 @@ var d, l;
           return 'get' === e.subType
             ? localStorage.getItem(e.key)
             : 'set' === e.subType
-            ? localStorage.setItem(e.key, e.value)
-            : void 0;
+              ? localStorage.setItem(e.key, e.value)
+              : void 0;
         })(s);
         t(g);
         break;
       default:
-        console.warn('Invalid type', s), n.captureException(new Error('Invalid type: ' + r));
+        (console.warn('Invalid type', s), n.captureException(new Error('Invalid type: ' + r)));
     }
   }),
   (l = s.runtime.getURL('./html/formLoader.html')),
@@ -79,8 +79,8 @@ var d, l;
   (i.src = l),
   (i.id = 'sandboxFrame'),
   new Promise(e => {
-    document.body.appendChild(i),
+    (document.body.appendChild(i),
       i.contentWindow.addEventListener('load', () => {
         e();
-      });
-  });
+      }));
+  }));

@@ -21,35 +21,40 @@ test.describe('Critical Mobile Issues Check', () => {
       console.warn(`⚠️ SLOW MOBILE LOAD: ${loadTime}ms (target: <3000ms)`);
     }
 
-    // Find main CTA button
+    // Find main CTA button (updated selector for actual button text)
     const ctaButton = page
-      .locator('button')
-      .filter({ hasText: /try|demo|start|get started/i })
+      .locator('a.cta-button, a')
+      .filter({ hasText: /get my free trial/i })
       .first();
     await expect(ctaButton).toBeVisible();
 
     // Check button size is touch-friendly
     const buttonBox = await ctaButton.boundingBox();
-    expect(buttonBox.height).toBeGreaterThan(44, 'CTA button too small for mobile');
+    expect(buttonBox.height).toBeGreaterThanOrEqual(44, 'CTA button too small for mobile');
   });
 
-  test('Upload page mobile usability', async ({ page }) => {
-    await page.goto('/upload');
+  test('Demo page mobile usability', async ({ page }) => {
+    await page.goto('/demo');
 
-    // Check upload UI is visible
-    await expect(page.getByText('Upload Contacts')).toBeVisible();
+    // Check demo page loads and has enrichment functionality
+    await expect(
+      page.getByText(/contact enrichment|see it in action|enrich contact/i).first()
+    ).toBeVisible();
 
-    // Test file input accessibility
-    const fileInput = page.locator('input[type="file"]');
-    await expect(fileInput).toBeVisible();
+    // Test email input accessibility
+    const emailInput = page.locator('input[type="email"]').first();
+    await expect(emailInput).toBeVisible();
 
-    // Check form fits mobile viewport
-    const form = page.locator('form').first();
-    if (await form.isVisible()) {
-      const formBox = await form.boundingBox();
-      const viewport = page.viewportSize();
-      expect(formBox.width).toBeLessThanOrEqual(viewport.width);
-    }
+    // Check enrich button is visible and accessible
+    const enrichButton = page
+      .locator('button')
+      .filter({ hasText: /enrich contact/i })
+      .first();
+    await expect(enrichButton).toBeVisible();
+
+    // Verify button meets touch target size
+    const buttonBox = await enrichButton.boundingBox();
+    expect(buttonBox.height).toBeGreaterThanOrEqual(44, 'Enrich button too small for mobile');
   });
 
   test('Critical errors and console logs', async ({ page }) => {

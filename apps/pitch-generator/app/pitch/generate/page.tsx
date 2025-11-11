@@ -512,8 +512,8 @@ export default function GeneratePitchPage() {
                 hookCharCount === 0
                   ? 'border-black focus:ring-cyan-400'
                   : hookIsValid
-                  ? 'border-black focus:ring-green-400'
-                  : 'border-black focus:ring-yellow-400'
+                    ? 'border-black focus:ring-green-400'
+                    : 'border-black focus:ring-yellow-400'
               }`}
             />
             <div className="mt-2 flex items-center justify-between">

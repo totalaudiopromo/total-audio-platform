@@ -1,7 +1,18 @@
 // 🟢 DATA PROCESSING: Multi-Agent Spreadsheet Cleanup System
 // Inspired by OneRedOak workflow automation patterns
+//
+// Pipeline Flow:
+// 1. Agent 1: Data Quality Analysis - Identifies issues in raw data
+// 2. Agent 2: Column Mapping Intelligence - Detects column types and structure
+// 3. Agent 3: Data Normalisation - Cleans and standardises contact data
+// 4. Agent 4: Email Validation - Advanced RFC-compliant email validation with reputation scoring
+// 5. Agent 5: Deduplication Intelligence - Identifies and merges duplicate contacts
 
 import * as XLSX from 'xlsx';
+import {
+  validateEmailListAdvanced,
+  type AdvancedEmailValidationResult,
+} from './advancedEmailValidation';
 
 export interface SpreadsheetFile {
   name: string;
@@ -51,6 +62,27 @@ export interface ProcessedContact {
   source: string;
   confidence: 'high' | 'medium' | 'low';
   issues: string[];
+  emailValid?: boolean;
+  emailValidation?: {
+    isValid: boolean;
+    reputation: string;
+    isDisposable: boolean;
+    isRoleBased: boolean;
+    isSpamTrap: boolean;
+  };
+  // Contact enrichment fields (from Claude/Google Search)
+  contactIntelligence?: string; // Full intelligence string
+  researchConfidence?: 'High' | 'Medium' | 'Low'; // Enrichment confidence level
+  platform?: string; // e.g., "BBC Radio 6 Music", "Liberty Music PR"
+  format?: string; // e.g., "Radio station", "PR agency"
+  coverage?: string; // e.g., "UK nationwide", "London-based"
+  genres?: string[]; // e.g., ["electronic", "house", "techno"]
+  contactMethod?: string; // e.g., "Email submissions via website"
+  bestTiming?: string; // e.g., "Tues-Thurs, 10am-4pm"
+  submissionGuidelines?: string; // Specific submission instructions
+  pitchTips?: string[]; // Array of pitch tips
+  enrichedAt?: string; // ISO timestamp of enrichment
+  enrichmentSource?: 'claude' | 'claude-with-search' | 'cache' | 'fallback'; // How data was enriched
 }
 
 // 🤖 AGENT 1: Data Quality Analysis Agent
@@ -73,10 +105,13 @@ export class DataQualityAgent {
     });
 
     // Check for duplicate headers
-    const headerCounts = headers.reduce((acc, header) => {
-      acc[header] = (acc[header] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const headerCounts = headers.reduce(
+      (acc, header) => {
+        acc[header] = (acc[header] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     Object.entries(headerCounts).forEach(([header, count]) => {
       if (count > 1) {
@@ -338,7 +373,144 @@ export class DataNormalisationAgent {
   }
 }
 
-// 🤖 AGENT 4: Deduplication Intelligence Agent
+// 🤖 AGENT 4: Email Validation Agent
+export class EmailValidationAgent {
+  static async validateContacts(contacts: ProcessedContact[]): Promise<{
+    enhancedContacts: ProcessedContact[];
+    validationSummary: {
+      totalEmails: number;
+      validEmails: number;
+      invalidEmails: number;
+      disposableEmails: number;
+      businessEmails: number;
+      roleBasedEmails: number;
+    };
+  }> {
+    console.log('🟡 Agent 4: Email Validation Agent processing', contacts.length, 'contacts');
+
+    // Extract emails from contacts
+    const emailsToValidate = contacts
+      .filter(contact => contact.email)
+      .map(contact => contact.email!);
+
+    if (emailsToValidate.length === 0) {
+      console.log('⚠️ No emails found for validation');
+      return {
+        enhancedContacts: contacts,
+        validationSummary: {
+          totalEmails: 0,
+          validEmails: 0,
+          invalidEmails: 0,
+          disposableEmails: 0,
+          businessEmails: 0,
+          roleBasedEmails: 0,
+        },
+      };
+    }
+
+    console.log('📧 Validating', emailsToValidate.length, 'email addresses...');
+
+    // Run batch validation
+    const validationResults = await validateEmailListAdvanced(emailsToValidate);
+
+    // Create email-to-result map for efficient lookup
+    const emailValidationMap = new Map(
+      validationResults.valid
+        .concat(validationResults.invalid)
+        .map(result => [result.email.toLowerCase(), result])
+    );
+
+    // Enhance contacts with validation data
+    const enhancedContacts = contacts.map(contact => {
+      if (!contact.email) return contact;
+
+      const validation = emailValidationMap.get(contact.email.toLowerCase());
+      if (!validation) return contact;
+
+      // Add validation data
+      const enhanced = {
+        ...contact,
+        emailValid: validation.isValid,
+        emailValidation: {
+          isValid: validation.isValid,
+          reputation: validation.reputation,
+          isDisposable: validation.disposable,
+          isRoleBased: validation.roleBased,
+          isSpamTrap: validation.spamTrap,
+        },
+      };
+
+      // Update confidence score based on validation
+      enhanced.confidence = this.adjustConfidenceScore(contact, validation);
+
+      // Add validation issues
+      if (!validation.isValid) {
+        enhanced.issues.push('Email validation failed');
+      }
+      if (validation.disposable) {
+        enhanced.issues.push('Disposable email address');
+      }
+      if (validation.spamTrap) {
+        enhanced.issues.push('Potential spam trap');
+      }
+
+      // Add validation warnings
+      if (validation.roleBased) {
+        enhanced.issues.push('Role-based email (may have lower engagement)');
+      }
+
+      return enhanced;
+    });
+
+    // Calculate validation summary
+    const validationSummary = {
+      totalEmails: emailsToValidate.length,
+      validEmails: validationResults.valid.length,
+      invalidEmails: validationResults.invalid.length,
+      disposableEmails: validationResults.summary.disposable,
+      businessEmails: validationResults.summary.businessEmails,
+      roleBasedEmails: validationResults.summary.roleBased,
+    };
+
+    console.log('✅ Email validation complete:', validationSummary);
+
+    return {
+      enhancedContacts,
+      validationSummary,
+    };
+  }
+
+  private static adjustConfidenceScore(
+    contact: ProcessedContact,
+    validation: AdvancedEmailValidationResult
+  ): 'high' | 'medium' | 'low' {
+    // Calculate current confidence score
+    let score = 0;
+
+    if (contact.email && contact.email.includes('@')) score += 3;
+    if (contact.name && contact.name.length > 2) score += 2;
+    if (contact.company && contact.company.length > 2) score += 2;
+    if (contact.phone) score += 1;
+    if (contact.website) score += 1;
+    if (contact.role) score += 1;
+
+    // Adjust score based on email validation
+    if (!validation.isValid) {
+      score -= 2; // Invalid email = reduce confidence by 2 points
+    } else if (validation.disposable || validation.spamTrap) {
+      score -= 1; // Disposable/spam trap = reduce confidence by 1 point
+    } else if (!validation.freeEmail && validation.reputation === 'excellent') {
+      score += 1; // Valid business email with excellent reputation = add 1 point
+    }
+
+    // Map score to confidence level
+    if (score >= 6) return 'high';
+    if (score >= 4) return 'medium';
+    return 'low';
+  }
+}
+
+// 🤖 AGENT 5: Deduplication Intelligence Agent
 export class DeduplicationAgent {
   static findDuplicates(contacts: ProcessedContact[]): Map<number, number[]> {
     const duplicates = new Map<number, number[]>();
@@ -492,17 +664,29 @@ export class SpreadsheetProcessingPipeline {
       issuesFound: DataIssue[];
       confidence: { high: number; medium: number; low: number };
     };
+    validationSummary: {
+      totalEmails: number;
+      validEmails: number;
+      invalidEmails: number;
+      disposableEmails: number;
+      businessEmails: number;
+      roleBasedEmails: number;
+    };
     fileAnalysis: SpreadsheetFile[];
   }> {
     const fileAnalysis: SpreadsheetFile[] = [];
     let allContacts: ProcessedContact[] = [];
     let allIssues: DataIssue[] = [];
 
+    console.log('🚀 Starting multi-agent spreadsheet processing pipeline');
+    console.log('📊 Processing', files.length, 'file(s)');
+
     // 🟣 Process each file through the agent pipeline
     for (const file of files) {
       const fileData = await this.parseFile(file);
 
       // Agent 1: Data Quality Analysis
+      console.log('🟡 Agent 1: Data Quality Analysis for', file.name);
       const issues = DataQualityAgent.analyseSpreadsheet(
         fileData.data,
         fileData.headers,
@@ -511,9 +695,11 @@ export class SpreadsheetProcessingPipeline {
       allIssues.push(...issues);
 
       // Agent 2: Column Mapping
+      console.log('🟡 Agent 2: Column Mapping Intelligence');
       const columnMapping = ColumnMappingAgent.detectColumns(fileData.headers, fileData.data);
 
       // Agent 3: Data Normalisation
+      console.log('🟡 Agent 3: Data Normalisation');
       const contacts = fileData.data
         .map(row => DataNormalisationAgent.normaliseContact(row, columnMapping, file.name))
         .filter(contact => contact.email || contact.name); // Only keep contacts with basic info
@@ -530,13 +716,20 @@ export class SpreadsheetProcessingPipeline {
       });
     }
 
-    // Agent 4: Deduplication
-    const duplicateMap = DeduplicationAgent.findDuplicates(allContacts);
+    // Agent 4: Email Validation (NEW)
+    console.log('🟡 Agent 4: Email Validation Agent');
+    const { enhancedContacts, validationSummary } =
+      await EmailValidationAgent.validateContacts(allContacts);
+
+    // Agent 5: Deduplication
+    console.log('🟡 Agent 5: Deduplication Intelligence Agent');
+    const duplicateMap = DeduplicationAgent.findDuplicates(enhancedContacts);
     const duplicatesFound = Array.from(duplicateMap.values()).reduce(
       (sum, dups) => sum + dups.length,
       0
     );
-    const mergedContacts = DeduplicationAgent.mergeDuplicates(allContacts, duplicateMap);
+    console.log('🔍 Found', duplicatesFound, 'duplicate(s)');
+    const mergedContacts = DeduplicationAgent.mergeDuplicates(enhancedContacts, duplicateMap);
 
     // Calculate summary statistics
     const confidence = mergedContacts.reduce(
@@ -546,6 +739,15 @@ export class SpreadsheetProcessingPipeline {
       },
       { high: 0, medium: 0, low: 0 }
     );
+
+    console.log('✅ Multi-agent processing pipeline complete');
+    console.log('📈 Final results:', {
+      totalContacts: mergedContacts.length,
+      duplicatesRemoved: allContacts.length - mergedContacts.length,
+      validEmails: validationSummary.validEmails,
+      invalidEmails: validationSummary.invalidEmails,
+      confidence,
+    });
 
     return {
       processedContacts: mergedContacts,
@@ -557,6 +759,7 @@ export class SpreadsheetProcessingPipeline {
         issuesFound: allIssues,
         confidence,
       },
+      validationSummary,
       fileAnalysis,
     };
   }

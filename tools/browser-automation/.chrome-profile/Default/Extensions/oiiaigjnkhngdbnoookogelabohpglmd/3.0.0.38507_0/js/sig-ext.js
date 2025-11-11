@@ -1113,8 +1113,8 @@
                   ? t(r)
                   : void 0
                 : 'function' == typeof e
-                ? e(r)
-                : void 0;
+                  ? e(r)
+                  : void 0;
             }
             return {
               createEnviro: t,
@@ -1175,10 +1175,10 @@
             'undefined' != typeof window
               ? window
               : void 0 !== r.g
-              ? r.g
-              : 'undefined' != typeof self
-              ? self
-              : {},
+                ? r.g
+                : 'undefined' != typeof self
+                  ? self
+                  : {},
           s = n.Raven,
           a = new i();
         a.noConflict = function () {
@@ -1307,10 +1307,10 @@
             'undefined' != typeof window
               ? window
               : void 0 !== r.g
-              ? r.g
-              : 'undefined' != typeof self
-              ? self
-              : {},
+                ? r.g
+                : 'undefined' != typeof self
+                  ? self
+                  : {},
           U = T.document,
           A = T.navigator;
         function P(t, e) {
@@ -2352,8 +2352,8 @@
                 (this._shouldBackoff()
                   ? this._logDebug('warn', 'Raven dropped error due to backoff: ', t)
                   : 'number' == typeof e.sampleRate
-                  ? Math.random() < e.sampleRate && this._sendProcessedPayload(t)
-                  : this._sendProcessedPayload(t)));
+                    ? Math.random() < e.sampleRate && this._sendProcessedPayload(t)
+                    : this._sendProcessedPayload(t)));
           },
           _getUuid: function () {
             return C();
@@ -2468,10 +2468,10 @@
           'undefined' != typeof window
             ? window
             : void 0 !== r.g
-            ? r.g
-            : 'undefined' != typeof self
-            ? self
-            : {};
+              ? r.g
+              : 'undefined' != typeof self
+                ? self
+                : {};
         function n(t) {
           return 'object' == typeof t && null !== t;
         }
@@ -2676,10 +2676,10 @@
             'undefined' != typeof window
               ? window
               : void 0 !== r.g
-              ? r.g
-              : 'undefined' != typeof self
-              ? self
-              : {},
+                ? r.g
+                : 'undefined' != typeof self
+                  ? self
+                  : {},
           a = [].slice,
           o = '?',
           c =
@@ -3040,7 +3040,7 @@
         t.exports = { wrapMethod: e };
       },
       75: function (t) {
-        (e = function () {
+        ((e = function () {
           'use strict';
           var t = Array.prototype.slice;
           function e(t, e) {
@@ -3140,10 +3140,10 @@
             return void 0 === t
               ? r
               : t < 0
-              ? Math.max(0, e + t)
-              : void 0 === e
-              ? t
-              : Math.min(e, t);
+                ? Math.max(0, e + t)
+                : void 0 === e
+                  ? t
+                  : Math.min(e, t);
           }
           var q = 0,
             j = 1,
@@ -3222,10 +3222,10 @@
             return null == t
               ? at().toKeyedSeq()
               : a(t)
-              ? o(t)
-                ? t.toSeq()
-                : t.fromEntrySeq()
-              : ot(t);
+                ? o(t)
+                  ? t.toSeq()
+                  : t.fromEntrySeq()
+                : ot(t);
           }
           G.prototype.toKeyedSeq = function () {
             return this;
@@ -3382,12 +3382,12 @@
             var e = Array.isArray(t)
               ? new et(t).fromEntrySeq()
               : B(t)
-              ? new nt(t).fromEntrySeq()
-              : H(t)
-              ? new it(t).fromEntrySeq()
-              : 'object' == typeof t
-              ? new rt(t)
-              : void 0;
+                ? new nt(t).fromEntrySeq()
+                : H(t)
+                  ? new it(t).fromEntrySeq()
+                  : 'object' == typeof t
+                    ? new rt(t)
+                    : void 0;
             if (!e)
               throw new TypeError(
                 'Expected Array or iterable object of [k, v] entries, or keyed object: ' + t
@@ -3446,14 +3446,14 @@
                   })
                 )
               : gt(e)
-              ? t.call(
-                  i,
-                  r,
-                  G(e).map(function (r, i) {
-                    return dt(t, r, i, e);
-                  })
-                )
-              : e;
+                ? t.call(
+                    i,
+                    r,
+                    G(e).map(function (r, i) {
+                      return dt(t, r, i, e);
+                    })
+                  )
+                : e;
           }
           function mt(t) {
             return Array.isArray(t) ? J(t).map(mt).toList() : gt(t) ? G(t).map(mt).toMap() : t;
@@ -3779,14 +3779,14 @@
             return null == t
               ? ne()
               : Wt(t) && !l(t)
-              ? t
-              : ne().withMutations(function (e) {
-                  var r = i(t);
-                  Bt(r.size);
-                  r.forEach(function (t, r) {
-                    return e.set(r, t);
+                ? t
+                : ne().withMutations(function (e) {
+                    var r = i(t);
+                    Bt(r.size);
+                    r.forEach(function (t, r) {
+                      return e.set(r, t);
+                    });
                   });
-                });
           }
           $t.of = function () {
             var e = t.call(arguments, 0);
@@ -4245,24 +4245,24 @@
               })).length
               ? t
               : 0 !== t.size || t.__ownerID || 1 !== r.length
-              ? t.withMutations(function (t) {
-                  for (
-                    var i = e
-                        ? function (r, i) {
-                            t.update(i, b, function (t) {
-                              return t === b ? r : e(t, r, i);
-                            });
-                          }
-                        : function (e, r) {
-                            t.set(r, e);
-                          },
-                      n = 0;
-                    n < r.length;
-                    n++
-                  )
-                    r[n].forEach(i);
-                })
-              : t.constructor(r[0]);
+                ? t.withMutations(function (t) {
+                    for (
+                      var i = e
+                          ? function (r, i) {
+                              t.update(i, b, function (t) {
+                                return t === b ? r : e(t, r, i);
+                              });
+                            }
+                          : function (e, r) {
+                              t.set(r, e);
+                            },
+                        n = 0;
+                      n < r.length;
+                      n++
+                    )
+                      r[n].forEach(i);
+                  })
+                : t.constructor(r[0]);
           }
           function ge(t, e, r, i) {
             var n = t === b,
@@ -4358,8 +4358,8 @@
               ? 0 === t
                 ? this.shift()
                 : t === this.size - 1
-                ? this.pop()
-                : this.splice(t, 1)
+                  ? this.pop()
+                  : this.splice(t, 1)
               : this;
           };
           xe.prototype.insert = function (t, e) {
@@ -4703,14 +4703,14 @@
             return null == t
               ? We()
               : Be(t)
-              ? t
-              : We().withMutations(function (e) {
-                  var r = i(t);
-                  Bt(r.size);
-                  r.forEach(function (t, r) {
-                    return e.set(r, t);
+                ? t
+                : We().withMutations(function (e) {
+                    var r = i(t);
+                    Bt(r.size);
+                    r.forEach(function (t, r) {
+                      return e.set(r, t);
+                    });
                   });
-                });
           }
           He.of = function () {
             return this(arguments);
@@ -5122,7 +5122,7 @@
               n = (l(t) ? He() : $t()).asMutable();
             t.__iterate(function (s, a) {
               n.update(e.call(r, s, a, t), function (t) {
-                return (t = t || []).push(i ? [a, s] : s), t;
+                return ((t = t || []).push(i ? [a, s] : s), t);
               });
             });
             var s = _r(t);
@@ -5335,8 +5335,8 @@
                 return (!n || a % 2) && (n = s.next()).done
                   ? n
                   : a % 2
-                  ? P(r, a++, e)
-                  : P(r, a++, n.value, n);
+                    ? P(r, a++, e)
+                    : P(r, a++, n.value, n);
               });
             };
             return r;
@@ -5402,7 +5402,7 @@
             };
             n.__iteratorUncached = function (t, n) {
               var s = i.map(function (t) {
-                  return (t = r(t)), $(n ? t.reverse() : t);
+                  return ((t = r(t)), $(n ? t.reverse() : t));
                 }),
                 a = 0,
                 o = !1;
@@ -5592,14 +5592,14 @@
             return null == t
               ? Mr()
               : Rr(t) && !l(t)
-              ? t
-              : Mr().withMutations(function (e) {
-                  var r = s(t);
-                  Bt(r.size);
-                  r.forEach(function (t) {
-                    return e.add(t);
+                ? t
+                : Mr().withMutations(function (e) {
+                    var r = s(t);
+                    Bt(r.size);
+                    r.forEach(function (t) {
+                      return e.add(t);
+                    });
                   });
-                });
           }
           Cr.of = function () {
             return this(arguments);
@@ -5630,13 +5630,13 @@
               })).length
               ? this
               : 0 !== this.size || this.__ownerID || 1 !== e.length
-              ? this.withMutations(function (t) {
-                  for (var r = 0; r < e.length; r++)
-                    s(e[r]).forEach(function (e) {
-                      return t.add(e);
-                    });
-                })
-              : this.constructor(e[0]);
+                ? this.withMutations(function (t) {
+                    for (var r = 0; r < e.length; r++)
+                      s(e[r]).forEach(function (e) {
+                        return t.add(e);
+                      });
+                  })
+                : this.constructor(e[0]);
           };
           Cr.prototype.intersect = function () {
             var e = t.call(arguments, 0);
@@ -5746,14 +5746,14 @@
             return null == t
               ? Fr()
               : Tr(t)
-              ? t
-              : Fr().withMutations(function (e) {
-                  var r = s(t);
-                  Bt(r.size);
-                  r.forEach(function (t) {
-                    return e.add(t);
+                ? t
+                : Fr().withMutations(function (e) {
+                    var r = s(t);
+                    Bt(r.size);
+                    r.forEach(function (t) {
+                      return e.add(t);
+                    });
                   });
-                });
           }
           Nr.of = function () {
             return this(arguments);
@@ -6447,12 +6447,12 @@
                         i = (i + oi(Ct(t), Ct(e))) | 0;
                       }
                   : e
-                  ? function (t) {
-                      i = (31 * i + Ct(t)) | 0;
-                    }
-                  : function (t) {
-                      i = (i + Ct(t)) | 0;
-                    }
+                    ? function (t) {
+                        i = (31 * i + Ct(t)) | 0;
+                      }
+                    : function (t) {
+                        i = (i + Ct(t)) | 0;
+                      }
               ),
               i
             );
@@ -6494,7 +6494,7 @@
           })();
           return ci;
         }),
-          (t.exports = e());
+          (t.exports = e()));
         var e;
       },
     },
@@ -6649,8 +6649,8 @@
               ? `Error: ${t.message}\n${t.stack}`
               : t.stack
             : t.sourceURL
-            ? `${t.message}\n${t.sourceURL}:${t.line}`
-            : t
+              ? `${t.message}\n${t.sourceURL}:${t.line}`
+              : t
           : t;
       }
     }
@@ -6909,18 +6909,18 @@
                 },
               })
             : sessionStorage.storageError
-            ? sessionStorage.storageError > E
-              ? y({
-                  error: e,
-                  fingerprint: ['chrome runtime/storage is undefined'],
-                  tags: { storageUndefined: t },
-                  extraData: {
-                    storageUndefined: t,
-                    messageString: 'SafeStorage chrome.storage is undefined',
-                  },
-                })
-              : (sessionStorage.runtimeError = parseInt(sessionStorage.runtimeError, 10) + 1)
-            : (sessionStorage.storageError = 1);
+              ? sessionStorage.storageError > E
+                ? y({
+                    error: e,
+                    fingerprint: ['chrome runtime/storage is undefined'],
+                    tags: { storageUndefined: t },
+                    extraData: {
+                      storageUndefined: t,
+                      messageString: 'SafeStorage chrome.storage is undefined',
+                    },
+                  })
+                : (sessionStorage.runtimeError = parseInt(sessionStorage.runtimeError, 10) + 1)
+              : (sessionStorage.storageError = 1);
           return null;
         }
       };
@@ -7033,8 +7033,8 @@
               ? `Error: ${t.message}\n${t.stack}`
               : t.stack
             : t.sourceURL
-            ? `${t.message}\n${t.sourceURL}:${t.line}`
-            : t
+              ? `${t.message}\n${t.sourceURL}:${t.line}`
+              : t
           : t;
       }
     }

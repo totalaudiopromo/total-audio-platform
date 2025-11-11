@@ -15,7 +15,7 @@ else {
       n++,
       e - t > i
         ? new Promise(n => {
-            (t = e), setTimeout(n, 0);
+            ((t = e), setTimeout(n, 0));
           })
         : Promise.resolve()
     );
@@ -866,7 +866,7 @@ else {
           return 1 / (1 + Math.exp(-t));
         })(o),
         m = Math.max(0.1, h);
-      return (r[e] = m), m;
+      return ((r[e] = m), m);
     }
     function c(e) {
       return 'A' <= e && e <= 'Z';
@@ -899,7 +899,7 @@ else {
             s = 0;
           for (const e of n) 0 !== e.length && ((o *= l(e)), (s += 1));
           let r = Math.pow(o, 1 / s);
-          return (r = Math.max(0, r)), (r = Math.min(1, r)), r;
+          return ((r = Math.max(0, r)), (r = Math.min(1, r)), r);
         },
       }
     );
@@ -968,10 +968,10 @@ else {
             this.selString in s)
           ) {
             const e = s[this.selString];
-            (this.typeStability = e.typeStability),
+            ((this.typeStability = e.typeStability),
               (this.engStability = e.engStability),
               (this.hiddenElementStability = e.hiddenElementStability),
-              (r = e.textSelector);
+              (r = e.textSelector));
           } else {
             let e;
             if (void 0 === o || 0 === o.length)
@@ -980,8 +980,8 @@ else {
               const t = 0;
               e = t * EnglishNLP.stabilityScore(n) + (1 - t) * EnglishNLP.stabilityScore(o);
             }
-            (this.typeStability = t.CATEGORY_STABILITY[i]),
-              (this.engStability = this.getEngStabilityWithPenalty(e));
+            ((this.typeStability = t.CATEGORY_STABILITY[i]),
+              (this.engStability = this.getEngStabilityWithPenalty(e)));
             for (const e of [...document.querySelectorAll(this.selString)]) {
               const t = getComputedStyle(e),
                 n = e.getBoundingClientRect();
@@ -994,13 +994,13 @@ else {
                 break;
               }
             }
-            (r = cleanString(this.selString)),
+            ((r = cleanString(this.selString)),
               (s[this.selString] = {
                 typeStability: this.typeStability,
                 engStability: this.engStability,
                 hiddenElementStability: this.hiddenElementStability,
                 textSelector: r,
-              });
+              }));
           }
           const a = cleanString(this.element.textContent);
           r.length >= 5 && a.length >= 5 && (this.textContainStability = r.includes(a) ? 1 : 0);
@@ -1011,7 +1011,7 @@ else {
             0.2 * this.engStability +
             0.4 * this.textContainStability +
             0.2 * this.hiddenElementStability;
-          return (e = Math.max(e, 0.01)), e;
+          return ((e = Math.max(e, 0.01)), e);
         }
         getSelectorString() {
           if (this.isTagName() || this.isPseudoSel()) return this.key;
@@ -1021,10 +1021,10 @@ else {
             (e = this.isClass()
               ? `.${t}`
               : this.isId()
-              ? `#${t}`
-              : this.value.length > 0
-              ? `[${CSS.escape(this.key)}="${t}"]`
-              : `[${CSS.escape(this.key)}]`),
+                ? `#${t}`
+                : this.value.length > 0
+                  ? `[${CSS.escape(this.key)}="${t}"]`
+                  : `[${CSS.escape(this.key)}]`),
             e
           );
         }
@@ -1034,13 +1034,13 @@ else {
         clone() {
           const e = new t(null, null, null);
           for (const t of Object.keys(this)) e[t] = this[t];
-          return (e.isUsed = !1), e;
+          return ((e.isUsed = !1), e);
         }
       }
       const i = Object.freeze({ PARENT: 0, GENERAL_SIBLING: 1, IMMEDIATE_SIBLING: 2 });
       class o {
         constructor(e = 0) {
-          (this.relativePosition = e), (this.list = []);
+          ((this.relativePosition = e), (this.list = []));
         }
         get length() {
           return this.list.length;
@@ -1059,7 +1059,7 @@ else {
         }
         get score() {
           let e = Math.max(...this.list.map(e => e.finalScore));
-          return (e *= (this.list.length - 1) ** 2 / 30 + 1), (e = Math.min(1, e)), e;
+          return ((e *= (this.list.length - 1) ** 2 / 30 + 1), (e = Math.min(1, e)), e);
         }
         clone() {
           const e = new o();
@@ -1082,13 +1082,13 @@ else {
           for (let t = 0; t < this.list.length; t++) {
             const n = this.list[t];
             let o = !0;
-            0 === n.length
+            (0 === n.length
               ? (o = !1)
               : (n.relativePosition !== i.IMMEDIATE_SIBLING &&
                   n.relativePosition !== i.GENERAL_SIBLING) ||
                 e[t - 1] ||
                 (o = !1),
-              e.push(o);
+              e.push(o));
           }
           return e;
         }
@@ -1102,10 +1102,10 @@ else {
             o.relativePosition === i.PARENT
               ? ((e += s), t[n - 1] && (e += '> '))
               : o.relativePosition === i.IMMEDIATE_SIBLING ||
-                o.relativePosition === i.GENERAL_SIBLING
-              ? t[n - 1] &&
-                ((e += s), o.relativePosition === i.IMMEDIATE_SIBLING ? (e += '+ ') : (e += '~ '))
-              : console.error("There's a bug in the code. Please fix :'(");
+                  o.relativePosition === i.GENERAL_SIBLING
+                ? t[n - 1] &&
+                  ((e += s), o.relativePosition === i.IMMEDIATE_SIBLING ? (e += '+ ') : (e += '~ '))
+                : console.error("There's a bug in the code. Please fix :'(");
           }
           return e;
         }
@@ -1169,14 +1169,14 @@ else {
           const t = this._computeInclusionList();
           let n = 0;
           for (let o = 0; o < t.length; o++)
-            this.list[o].relativePosition !== i.PARENT && t[o] && e++, t[o] && n++;
+            (this.list[o].relativePosition !== i.PARENT && t[o] && e++, t[o] && n++);
           let o = Math.max(...this.list.map((e, n) => (t[n] ? e.score : 0)));
           if (e) {
             const t = 10;
             o = Math.min(1, o * (1 + e / t));
           }
           const s = (n - 1) ** 2 + 1;
-          return (o = Math.min(1, o * s)), o;
+          return ((o = Math.min(1, o * s)), o);
         }
         get length() {
           return this.list.length;
@@ -1189,9 +1189,9 @@ else {
         static SOFT_TIME_LIMIT_MS = 1e3;
         static HARD_TIME_LIMIT_MS = 2e3;
         constructor() {
-          (this.includedTargets = new Set([])),
+          ((this.includedTargets = new Set([])),
             (this.excludedTargets = new Set([])),
-            (this.currentSelector = null);
+            (this.currentSelector = null));
         }
         getFirstTarget() {
           return this.includedTargets.values().next().value;
@@ -1248,7 +1248,11 @@ else {
           for (const e of n.classList)
             e && !e.startsWith('tb-tb-') && s.addSelector(new t(n, 'class', t.CATEGORY.CLASS, e));
           return (
-            this.insertPseudoSelector(n, s), this.insertTagSelector(n, s), s.sort(), e.set(n, s), s
+            this.insertPseudoSelector(n, s),
+            this.insertTagSelector(n, s),
+            s.sort(),
+            e.set(n, s),
+            s
           );
         }
         async getMultiTargetSelector() {
@@ -1336,11 +1340,11 @@ else {
           )
             return null;
           const n = await this.getMultiTargetSelector();
-          return (this.currentSelector = n[0]), n;
+          return ((this.currentSelector = n[0]), n);
         }
         async getSelector(e, t = !0) {
           const i = 'Generating selector';
-          (n = 0), window.debugSelector && console.time(i);
+          ((n = 0), window.debugSelector && console.time(i));
           const [o, a] = await this.generateUniqueSingleSelector(e);
           let l = o.trim();
           if (
@@ -1370,8 +1374,8 @@ else {
                 a.innerText === c.innerText &&
                 a.contains(c)
               ) {
-                (l = n.trim()),
-                  window.debugSelector && console.log('Found smallest match', n, a.innerText);
+                ((l = n.trim()),
+                  window.debugSelector && console.log('Found smallest match', n, a.innerText));
                 break;
               }
             }
@@ -1398,7 +1402,7 @@ else {
       function g() {
         const e = getBrowser()?.runtime.getURL('images/icon_128_white_bottom.png');
         r = document.createElement('div');
-        (r.innerHTML = `\n<div class="drag-handle">\n</div>\n<div class="header">\n  <img class="logo" alt="Text Blaze logo" draggable=false src="${e}">\n  <span class="header-text"></span>\n</div>\n\n<div class="actions">\n  <div class="menu-dots-with-badge">\n    <button popovertarget="popover" popovertargetaction="toggle" class="menu-dots" id="menuButton">⋯</button>\n    <span class="count-badge"></span>\n  </div>\n  <div style="flex: 1 1 0%;"></div>\n  <button class="btn btn-cancel">\n    <span class="btn-icon">✕</span> Cancel\n  </button>\n  <button class="btn btn-save" id="saveButton">\n    <span class="btn-icon">✓</span>\n    Save\n  </button>\n</div>\n\n<div class="tooltip" id="tooltip">Select an element in the page first</div>\n`),
+        ((r.innerHTML = `\n<div class="drag-handle">\n</div>\n<div class="header">\n  <img class="logo" alt="Text Blaze logo" draggable=false src="${e}">\n  <span class="header-text"></span>\n</div>\n\n<div class="actions">\n  <div class="menu-dots-with-badge">\n    <button popovertarget="popover" popovertargetaction="toggle" class="menu-dots" id="menuButton">⋯</button>\n    <span class="count-badge"></span>\n  </div>\n  <div style="flex: 1 1 0%;"></div>\n  <button class="btn btn-cancel">\n    <span class="btn-icon">✕</span> Cancel\n  </button>\n  <button class="btn btn-save" id="saveButton">\n    <span class="btn-icon">✓</span>\n    Save\n  </button>\n</div>\n\n<div class="tooltip" id="tooltip">Select an element in the page first</div>\n`),
           (f = r.querySelector('.btn-cancel')),
           (c = r.querySelector('#saveButton')),
           (d = r.querySelector('.drag-handle')),
@@ -1417,7 +1421,7 @@ else {
               Picker.updateClickAllNodes('all' === t);
             })
           ),
-          (h = m.querySelector('.checkbox-section'));
+          (h = m.querySelector('.checkbox-section')));
         const i = m.querySelector('.checkbox-section input');
         function o(e) {
           const t = r.querySelector('.header-text');
@@ -1426,9 +1430,9 @@ else {
               (t.innerText = 'Click an item to select it, and shift-click an item to deselect it.'))
             : (r.classList.remove('multiple'), (t.innerText = 'Click an item to select it.'));
         }
-        i.addEventListener('change', () => {
+        (i.addEventListener('change', () => {
           const e = i.checked;
-          o(e), (t = e ? 'multiple' : 'single'), Picker.updateGenerationMode(t);
+          (o(e), (t = e ? 'multiple' : 'single'), Picker.updateGenerationMode(t));
           promiseSendMessage({
             request: 'picker',
             subType: 'updateConfig',
@@ -1444,7 +1448,7 @@ else {
               e.error && alert(e.error);
             })();
           }),
-          o('multiple' === t);
+          o('multiple' === t));
         const g = 'multiple' === t;
         if (
           ((i.checked = g),
@@ -1462,24 +1466,24 @@ else {
               t.push(e + '/' + n);
             }
           for (let e = 0; e < t.length; e++) t[e] += '/*';
-          t.push(''), (u = m.querySelector('.hostname-select'));
+          (t.push(''), (u = m.querySelector('.hostname-select')));
           let n = !0;
           for (const e of t) {
             const t = document.createElement('option');
-            (t.value = e),
+            ((t.value = e),
               n && (t.selected = !0),
               (t.innerText = e || 'any page'),
               u.appendChild(t),
-              (n = !1);
+              (n = !1));
           }
         } else {
-          (m.querySelector('.hostname-menu').style.display = 'none'), (h.style.display = 'none');
+          ((m.querySelector('.hostname-menu').style.display = 'none'), (h.style.display = 'none'));
         }
       }
       let b,
         y = !1;
       function w() {
-        (a.innerText = 'No part of website selected'),
+        ((a.innerText = 'No part of website selected'),
           (c.disabled = !0),
           Picker.startPickMode(
             () => {},
@@ -1499,50 +1503,50 @@ else {
                     (n.innerText = ` (matches ${t} element${t > 1 ? 's' : ''})`));
               })(e || { selector: '', matchCount: 0 });
             }
-          );
+          ));
       }
       function v() {
         if (!y) {
-          (y = !0), g();
+          ((y = !0), g());
           const l = document.createElement('link');
-          (l.rel = 'stylesheet'),
+          ((l.rel = 'stylesheet'),
             (l.href = getBrowser()?.runtime.getURL('css/picker.css')),
             (b = document.createElement('div')),
             (b.id = e),
-            document.body.appendChild(b);
+            document.body.appendChild(b));
           const h = b.attachShadow({ mode: 'closed' });
-          h.appendChild(l),
+          (h.appendChild(l),
             h.appendChild(r),
             Picker.initialize(r, {
               generationMode: t,
               needsClick: i,
               supportsCrossIframe: o,
               isPersistentMatcher: !1,
-            });
+            }));
           const m = document.createElement('style');
-          (m.innerHTML =
+          ((m.innerHTML =
             '\n        #tb-tb-container {\n          all: initial;\n          position: fixed;\n          left: 10%;\n          top: calc(min(80%, 100% - 200px));\n          height: 100px;\n          z-index: 100000000000000;\n        }\n        '),
             document.body.appendChild(m),
             (function () {
               function e() {
-                promiseSendMessage({ request: 'picker', subType: 'stop' }), k();
+                (promiseSendMessage({ request: 'picker', subType: 'stop' }), k());
               }
-              c.addEventListener('click', () => {
+              (c.addEventListener('click', () => {
                 const e = a.value === s ? '' : a.value,
                   t = n ? u.value : void 0;
-                promiseSendMessage({
+                (promiseSendMessage({
                   request: 'picker',
                   subType: 'stop',
                   selector: e,
                   pageMatched: t,
                 }),
-                  k();
+                  k());
               }),
                 f.addEventListener('click', e),
                 document.body.addEventListener('keydown', function (t) {
                   const n = 27;
                   t.keyCode === n && e();
-                });
+                }));
               {
                 let i = [0, 0];
                 const o = e => {
@@ -1552,29 +1556,29 @@ else {
                   i = t;
                   let o = b.offsetTop - n[1],
                     s = b.offsetLeft - n[0];
-                  s < 0 && (s = 0),
+                  (s < 0 && (s = 0),
                     o < 0 && (o = 0),
                     s + b.offsetWidth > window.innerWidth &&
                       (s = window.innerWidth - b.offsetWidth),
                     o + b.offsetHeight > window.innerHeight &&
                       (o = window.innerHeight - b.offsetHeight),
                     (b.style.top = o + 'px'),
-                    (b.style.left = s + 'px');
+                    (b.style.left = s + 'px'));
                 };
                 function t() {
-                  disableDraggerOverlay(),
+                  (disableDraggerOverlay(),
                     document.removeEventListener('mouseup', t),
-                    document.removeEventListener('mousemove', o);
+                    document.removeEventListener('mousemove', o));
                 }
                 d.addEventListener('mousedown', function (e) {
-                  enableDraggerOverlay(),
+                  (enableDraggerOverlay(),
                     (i = [e.clientX, e.clientY]),
                     document.addEventListener('mouseup', t),
-                    document.addEventListener('mousemove', o);
+                    document.addEventListener('mousemove', o));
                 });
               }
             })(),
-            w();
+            w());
         }
       }
       function k() {
@@ -1588,11 +1592,11 @@ else {
         0 === S
           ? (function (e) {
               if (!e) throw new Error('No config provided!');
-              (t = void 0 !== e.generationMode ? e.generationMode : 'single'),
+              ((t = void 0 !== e.generationMode ? e.generationMode : 'single'),
                 (n = void 0 !== e.supportsPage && e.supportsPage),
                 (i = void 0 !== e.needsClick && e.needsClick),
                 (o = void 0 === e.supportsCrossIframe || e.supportsCrossIframe),
-                v();
+                v());
             })(e)
           : Picker.enablePickerInInnerFrame();
       }
@@ -1645,8 +1649,8 @@ else {
               })
             )
           : 'undefined' == typeof process || 'test' !== process.env?.NODE_ENV
-          ? Promise.reject('Content script is unloaded')
-          : void 0;
+            ? Promise.reject('Content script is unloaded')
+            : void 0;
       }
       function v(t) {
         return 'undefined' != typeof process ? t.shadowRoot : e.dom.openOrClosedShadowRoot(t);
@@ -1658,10 +1662,10 @@ else {
       const S = (function () {
           let e = null;
           return () => {
-            e && clearTimeout(e),
+            (e && clearTimeout(e),
               (e = setTimeout(() => {
                 l.onMutationFn({ matchCount: q(h.currentSelector) });
-              }, 50));
+              }, 50)));
           };
         })(),
         E = new MutationObserver(e => {
@@ -1679,8 +1683,8 @@ else {
           E.observe(e instanceof ShadowRoot ? e : document.body, { subtree: !0, childList: !0 });
       }
       function T(e, t) {
-        (l = { ...l, onStart: e, onEnd: t }),
-          c || ((h = new SelectorGenerator()), F(document), B(), (c = !0), x());
+        ((l = { ...l, onStart: e, onEnd: t }),
+          c || ((h = new SelectorGenerator()), F(document), B(), (c = !0), x()));
       }
       function L() {
         c &&
@@ -1689,9 +1693,9 @@ else {
           (function () {
             for (; b.length > 0; ) {
               const e = b.pop();
-              e.removeEventListener('pointerover', R),
+              (e.removeEventListener('pointerover', R),
                 e.removeEventListener('pointerout', G),
-                e.removeEventListener('pointerdown', D, !0);
+                e.removeEventListener('pointerdown', D, !0));
             }
           })(),
           0 === y && g && w({ request: 'picker', subType: 'togglePickAllFrames', enable: !1 }),
@@ -1711,13 +1715,13 @@ else {
         for (const e of b) for (const t of [...e.querySelectorAll('.' + o)]) t.classList.remove(o);
       }
       function q(e) {
-        C(), (h.currentSelector = e);
+        (C(), (h.currentSelector = e));
         const t = z(e);
         for (const e of t) e.classList.add(o);
         return t.length;
       }
       function M(e) {
-        e.preventDefault(), e.stopImmediatePropagation(), e.stopPropagation();
+        (e.preventDefault(), e.stopImmediatePropagation(), e.stopPropagation());
       }
       function I(e) {
         const {
@@ -1795,14 +1799,14 @@ else {
           if (_(s)) return !0;
           if ((M(e), u)) return !0;
           if (e.shiftKey)
-            if (r) s.classList.add(n), s.classList.add(t);
+            if (r) (s.classList.add(n), s.classList.add(t));
             else {
               const e = N(s);
               e
                 ? (e.classList.add(n), e.classList.add(t))
                 : (s.classList.add(i), s.classList.add(t));
             }
-          else s.classList.add(i), s.classList.add(t);
+          else (s.classList.add(i), s.classList.add(t));
         }
       }
       function G(e) {
@@ -1853,14 +1857,14 @@ else {
       }
       async function H(e, t, n = null) {
         let i;
-        0 !== y && window.focus(),
+        (0 !== y && window.focus(),
           w({ request: 'picker', subType: 'focusedFrame' }),
           (u = !0),
-          l.onStart();
+          l.onStart());
         try {
           if ('multiple' === m) {
             let a, l;
-            t
+            (t
               ? (({ target: a, destination: l } = (function e(t) {
                   if (t === document.body) return { target: null, destination: 'none' };
                   if (t.classList.contains(o))
@@ -1890,16 +1894,16 @@ else {
                   t && t.target.classList.add(o);
                 }
                 return { selector: n, isHighQuality: s, matchCount: a.length };
-              })(a, l));
+              })(a, l)));
           } else {
-            j(), e.classList.add(s);
+            (j(), e.classList.add(s));
             i = { ...(await h.getSelector(e)), matchCount: 1 };
           }
         } catch (e) {
           reportToErrorMonitoring(e);
         }
         const a = await Y(e, i);
-        l.onEnd(a), (u = !1);
+        (l.onEnd(a), (u = !1));
       }
       function D(e) {
         const t = P(e.target);
@@ -1908,7 +1912,7 @@ else {
         if (_(n)) return !0;
         if (!n.nodeType || n.nodeType !== Node.ELEMENT_NODE) return !0;
         if ((M(e), O(n), u)) return !0;
-        return H(n, e.shiftKey, i), !1;
+        return (H(n, e.shiftKey, i), !1);
       }
       async function U(e, t) {
         const n = { selector: '', isHighQuality: !1, matchCount: 0 };
@@ -1931,25 +1935,25 @@ else {
           d = !0;
           for (const e of b) {
             const t = document.createElement('style');
-            (t.innerHTML = `\n  .${o} {\n    background-color: yellow !important;\n    outline: none !important;\n  }\n\n  .${s} {\n    background-color: cyan !important;\n    outline: 1px solid black !important;\n  }\n\n  .${r} {\n    background-color: pink !important;\n    outline: 1px solid black !important;\n  }\n\n  .tb-tb-hover-not-matching {\n    background-color: yellow !important;\n    outline: 1px solid blue !important;\n  }\n\n  .tb-tb-hover-matching {\n    background-color: yellow !important;\n    outline: 1px solid red !important;\n  }\n        `),
-              e instanceof Document ? e.body.appendChild(t) : e.appendChild(t);
+            ((t.innerHTML = `\n  .${o} {\n    background-color: yellow !important;\n    outline: none !important;\n  }\n\n  .${s} {\n    background-color: cyan !important;\n    outline: 1px solid black !important;\n  }\n\n  .${r} {\n    background-color: pink !important;\n    outline: 1px solid black !important;\n  }\n\n  .tb-tb-hover-not-matching {\n    background-color: yellow !important;\n    outline: 1px solid blue !important;\n  }\n\n  .tb-tb-hover-matching {\n    background-color: yellow !important;\n    outline: 1px solid red !important;\n  }\n        `),
+              e instanceof Document ? e.body.appendChild(t) : e.appendChild(t));
           }
         }
       }
       function F(e) {
         const t = e.getRootNode();
-        b.push(t),
+        (b.push(t),
           t.addEventListener('pointerover', R),
           t.addEventListener('pointerout', G),
           t.addEventListener('pointerdown', D, !0),
-          W(t instanceof Document ? t.body : t);
+          W(t instanceof Document ? t.body : t));
       }
       function W(e) {
         if (e instanceof window.HTMLElement) {
           if (e.getAttribute('id')?.startsWith('tb-tb-')) return;
           v(e) && F(v(e));
         }
-        for (e = e.firstChild; e; ) W(e), (e = e.nextSibling);
+        for (e = e.firstChild; e; ) (W(e), (e = e.nextSibling));
       }
       const $ = '|>';
       function Q() {
@@ -1962,7 +1966,7 @@ else {
       }
       return {
         initialize: function (e, t) {
-          (l = { uiParent: e, onStart: null, onEnd: null, onMutationFn: null }),
+          ((l = { uiParent: e, onStart: null, onEnd: null, onMutationFn: null }),
             (c = !1),
             (d = !1),
             (h = new SelectorGenerator()),
@@ -1970,7 +1974,7 @@ else {
             (p = t.isPersistentMatcher),
             (f = t.needsClick),
             (g = t.supportsCrossIframe),
-            p && x();
+            p && x());
         },
         highlightMatches: q,
         enableWatch: function (e) {
@@ -2002,7 +2006,7 @@ else {
               const t = k();
               if (isFrameElement(t))
                 U(t, e.selector).then(async e => {
-                  e.matchCount && (e = await Y(t, e)), l.onEnd(e);
+                  (e.matchCount && (e = await Y(t, e)), l.onEnd(e));
                 });
               else if ('undefined' != typeof reportToErrorMonitoring) {
                 const e = t.tagName;

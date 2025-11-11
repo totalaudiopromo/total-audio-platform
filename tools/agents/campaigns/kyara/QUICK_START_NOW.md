@@ -97,23 +97,18 @@ MONDAY 14th: Release blast ready (30 contacts)
 **After campaign created, add these activities:**
 
 1. **Oct 7** - Email Sent
-
    - "Initial pitch to 15 Australian radio contacts"
 
 2. **Oct 8** - Email Sent
-
    - "5 Gmail drafts auto-created (Liberty inbox)"
 
 3. **Oct 9** - Response
-
    - "Amazing Radio UK confirmed support - ADDED TO ROTATION"
 
 4. **Oct 10** - Milestone
-
    - "WARM: 85 plays across 9 countries (pre-release)"
 
 5. **Oct 10** - Email Sent
-
    - "Mailchimp campaign to 20 UK contacts (BBC specialists)"
 
 6. **Oct 11** - Scheduled
@@ -187,12 +182,10 @@ MONDAY 14th: Release blast ready (30 contacts)
 **After adding campaign:**
 
 1. **Review these files:**
-
    - `FRIDAY_DEMO_PREP_COMPLETE.md` (main prep guide)
    - `KYARA_CAMPAIGN_SHOWCASE_FOR_DAN_DEMO.md` (detailed demo script)
 
 2. **Practice demo flow (5 min):**
-
    - "This is the KYARA campaign I'm running right now..."
    - Show dashboard → campaign card → timeline
    - Highlight integrations (Gmail, Mailchimp, WARM)

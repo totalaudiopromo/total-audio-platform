@@ -69,15 +69,12 @@ Click "+" next to "Other calendars" → "Create new calendar"
 Create these 4 calendars:
 
 1. **Liberty - Campaign Deadlines**
-
    - Description: "Radio campaign deadlines and release dates"
 
 2. **Liberty - Station Follow-ups**
-
    - Description: "Station response follow-ups and callbacks"
 
 3. **Liberty - Action Items**
-
    - Description: "Tasks requiring immediate attention"
 
 4. **Liberty - Team Meetings**

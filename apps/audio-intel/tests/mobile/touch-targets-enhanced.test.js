@@ -24,7 +24,10 @@ test.describe('Touch Target Accessibility (Enhanced)', () => {
     if (failures.length > 0) {
       console.error('❌ Touch target failures:');
       failures.forEach(failure => {
-        console.error(`   ${failure.element}: ${failure.width}x${failure.height}px`, failure.issues);
+        console.error(
+          `   ${failure.element}: ${failure.width}x${failure.height}px`,
+          failure.issues
+        );
       });
     }
 
@@ -162,12 +165,7 @@ test.describe('Specific Component Touch Targets', () => {
 });
 
 test.describe('Cross-Page Touch Target Consistency', () => {
-  const pages = [
-    '/',
-    '/upload',
-    '/pricing',
-    '/about',
-  ];
+  const pages = ['/', '/upload', '/pricing', '/about'];
 
   for (const pagePath of pages) {
     test(`${pagePath} - All touch targets compliant`, async ({ page }) => {

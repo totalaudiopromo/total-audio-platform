@@ -29,7 +29,6 @@ EURO_INDIE_WEBHOOK_URL=https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEB
 When someone asks the bot to purchase a Euro Indie Music package:
 
 1. Bot sends an embedded message to your approval channel with:
-
    - Artist name
    - Track title
    - Reason for purchase
@@ -37,7 +36,6 @@ When someone asks the bot to purchase a Euro Indie Music package:
    - Euro Indie Music contact information
 
 2. Chris receives notification and can:
-
    - Approve: Contact Euro Indie Music directly and complete purchase
    - Reject: Respond in Discord explaining why
 

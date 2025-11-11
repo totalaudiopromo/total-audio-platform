@@ -176,14 +176,12 @@ _"Hi [Name], I've been watching [Agency Name]'s great work with [recent client].
 **Target**: 15 high-priority radio promoters
 
 1. **Research & Identify**:
-
    - LinkedIn search: "radio promotion UK"
    - Music industry directories
    - Recent campaign credits on releases
    - Social media activity around radio work
 
 2. **Qualify & Score**:
-
    - Campaign frequency (monthly releases = higher score)
    - Team size (1-5 people = higher conversion)
    - Current tools mentioned (SubmitHub users = good prospects)
@@ -200,7 +198,6 @@ _"Hi [Name], I've been watching [Agency Name]'s great work with [recent client].
 **Target**: 25 active independent artists/producers
 
 1. **Identify Through**:
-
    - Spotify playlists (electronic, indie, UK artists)
    - Bandcamp discoveries
    - SoundCloud pro accounts
@@ -217,7 +214,6 @@ _"Hi [Name], I've been watching [Agency Name]'s great work with [recent client].
 **Target**: 10 boutique music PR agencies
 
 1. **Research Sources**:
-
    - Music industry directories
    - Recent campaign credits
    - LinkedIn company searches

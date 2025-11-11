@@ -7,22 +7,18 @@
 ### Best-Practice Strategy
 
 1. **Deploy From Monorepo Root**
-
    - Run `vercel deploy apps/tracker --prod --yes` (note the path argument) or update the root script `deploy:tracker` to do the same.
    - This uploads the whole repository while still building the Tracker app, so Vercel can install `@total-audio/ui` via the `file:` workspace link.
 
 2. **Prefer Git-Based Deployments**
-
    - Connect the repository to Vercel and set the project’s root directory to `apps/tracker`.
    - Git deployments automatically include every workspace package, avoid CLI packaging drift, and keep environment variables in sync.
 
 3. **Lockfile & Workspace Hygiene**
-
    - Use one lockfile at the repo root, commit it, and avoid running `npm install` inside subpackages.
    - When dependencies change, run installs from the root so `packages/ui` stays in the dependency graph for every app.
 
 4. **Preflight Checks**
-
    - Add CI or a pre-deploy script that runs:
      ```bash
      npm run build --workspace=apps/tracker

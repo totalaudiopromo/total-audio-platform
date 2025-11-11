@@ -62,7 +62,6 @@ Your agent can now:
 Add these filters manually in Gmail Settings → Filters:
 
 1. **Auto-Complete Filter**:
-
    - Has the words: `older_than:14d label:active-campaigns`
    - Apply label: "Completed"
    - Remove label: "Active Campaigns"

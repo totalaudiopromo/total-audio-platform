@@ -335,8 +335,8 @@ export default function ExportButtons({
                 !format.available
                   ? 'bg-gray-100 text-gray-400 border-gray-300 cursor-not-allowed'
                   : exportFormat === format.value
-                  ? 'bg-cyan-500 text-white border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
-                  : 'bg-white text-gray-700 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5'
+                    ? 'bg-cyan-500 text-white border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
+                    : 'bg-white text-gray-700 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5'
               }`}
             >
               <format.icon className="w-5 h-5" />

@@ -150,8 +150,8 @@ export function CampaignDetailClient({
                     campaign.status === 'active'
                       ? 'bg-green-100 text-green-800'
                       : campaign.status === 'completed'
-                      ? 'bg-gray-100 text-gray-800'
-                      : 'bg-teal-100 text-teal-800'
+                        ? 'bg-gray-100 text-gray-800'
+                        : 'bg-teal-100 text-teal-800'
                   }`}
                 >
                   {campaign.status}

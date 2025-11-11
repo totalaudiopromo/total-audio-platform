@@ -76,16 +76,16 @@ else {
     getCaretPosition: g,
   } = (() => {
     function e(e) {
-      e.preventDefault(), e.stopImmediatePropagation();
+      (e.preventDefault(), e.stopImmediatePropagation());
     }
     function t(e, t) {
       for (const n of ['top', 'left', 'right', 'bottom'])
         if (n in t) {
           let o = t[n];
-          'bottom' === n
+          ('bottom' === n
             ? (o = window.innerHeight - o)
             : 'right' === n && (o = window.innerWidth - o),
-            (e.style[n] = o + 'px');
+            (e.style[n] = o + 'px'));
         } else e.style.removeProperty(n);
     }
     const n = 'updateMarkerPosition';
@@ -136,11 +136,11 @@ else {
         const i = win(n),
           s = i.document,
           r = document.createElement('div');
-        (r.id = 'input-textarea-caret-position-mirror-div'), s.body.appendChild(r);
+        ((r.id = 'input-textarea-caret-position-mirror-div'), s.body.appendChild(r));
         const a = r.style,
           c = i.getComputedStyle(n),
           l = 'INPUT' === n.nodeName;
-        l || ((a.whiteSpace = 'pre-wrap'), (a.wordWrap = 'break-word')),
+        (l || ((a.whiteSpace = 'pre-wrap'), (a.wordWrap = 'break-word')),
           (a.position = 'absolute'),
           (a.visibility = 'hidden'),
           (a.top = '0'),
@@ -160,7 +160,7 @@ else {
             else a[e] = c[e];
           }),
           'content-box' === a.boxSizing && (a.overflow = 'hidden'),
-          l && (a.whiteSpace = 'pre');
+          l && (a.whiteSpace = 'pre'));
         let d = 'number' == typeof o ? o : o.start,
           u = 'number' == typeof o ? o : o.end,
           p = document.createElement('span');
@@ -168,7 +168,7 @@ else {
         let g = document.createElement('span');
         g.textContent = n.value.substring(d, u);
         let m = document.createElement('span');
-        (m.textContent = n.value.substring(u) + '.'),
+        ((m.textContent = n.value.substring(u) + '.'),
           l &&
             ((p.textContent = p.textContent.replace(/\s/g, ' ')),
             (g.textContent = g.textContent.replace(/\s/g, ' ')),
@@ -177,7 +177,7 @@ else {
           debugWidgetPosition &&
             (console.log('[MIRROR DIV]', m.offsetParent),
             console.log('[SPAN OFFSETS]', m.offsetTop, m.offsetLeft, m.offsetHeight, m.offsetWidth),
-            console.log('[ELEMENT OFFSETS]', n.scrollTop, n.scrollLeft));
+            console.log('[ELEMENT OFFSETS]', n.scrollTop, n.scrollLeft)));
         const { top: f, left: h } = n.getBoundingClientRect();
         if ('number' == typeof o) {
           const e = parseInt(c.borderTopWidth),
@@ -190,7 +190,7 @@ else {
           const l = f + i + e,
             d = h + a + o,
             u = { top: l, left: d, bottom: l + t(c), right: d + 2 };
-          return s.body.removeChild(r), u;
+          return (s.body.removeChild(r), u);
         }
         {
           let e = r.getBoundingClientRect(),
@@ -217,7 +217,7 @@ else {
       let t = win(e).getSelection();
       const i = e.getRootNode();
       if ((i instanceof ShadowRoot && (t = i.getSelection()), 0 === t.rangeCount))
-        return reportToErrorMonitoring('Widget: no cursor range exists.'), null;
+        return (reportToErrorMonitoring('Widget: no cursor range exists.'), null);
       console.assert(e.isContentEditable);
       const s = t.getRangeAt(0);
       let r = s.getBoundingClientRect(),
@@ -239,13 +239,13 @@ else {
           n.appendChild(t.createTextNode('​'));
           s.cloneRange().insertNode(n);
           const o = n.getClientRects()[0];
-          (a = o.top), (c = o.left), (d = o.right), (l = o.bottom);
+          ((a = o.top), (c = o.left), (d = o.right), (l = o.bottom));
           const i = n.parentNode;
-          i.removeChild(n), i.normalize();
+          (i.removeChild(n), i.normalize());
         }
       }
       const u = { top: a, left: c, bottom: l, right: d };
-      return window[n](u), u;
+      return (window[n](u), u);
     }
     function s(e, t) {
       if (extensionActive()) return promiseSendMessage({ request: 'widgetRoute', type: e, msg: t });
@@ -267,7 +267,7 @@ else {
       static ROUTE_RESET_KEY = 'resetWidget';
       static ROUTE_LISTENER_KEY = 'listenerWidget';
       constructor() {
-        (this.widgetContainer = null),
+        ((this.widgetContainer = null),
           (this.widget = null),
           (this.widgetList = null),
           (this.attachedWindowListener = !1),
@@ -277,7 +277,7 @@ else {
             expandedDimensions: { width: 0, height: 0 },
           }),
           (this.requestTimer = {}),
-          this.resetAllRunningValues();
+          this.resetAllRunningValues());
       }
       routeRequestToCorrectFrame(e, t) {
         if (extensionActive())
@@ -292,10 +292,10 @@ else {
                 null !== o
                   ? (debug('[WIDGET ROUTE]', e, document),
                     s(e, o).then(() => {
-                      e === r.ROUTE_HIDE_KEY
+                      (e === r.ROUTE_HIDE_KEY
                         ? this.hideWidget()
                         : e === r.ROUTE_RESET_KEY && this.resetWidget(),
-                        n();
+                        n());
                     }))
                   : debug('[WIDGET] cancel as target changed');
               }, r.WIDGET_DEBOUNCE_THRESHOLD_MS);
@@ -311,12 +311,12 @@ else {
       async insertSnippetByElement(e, t) {
         let n;
         const { targetNode: o, shortcutText: i } = this.logicMetadata;
-        'click' === t
+        ('click' === t
           ? (n = restoreFocusAndSelection(r.SAVED_FOCUS_ID, !0).set)
           : ((n = !0), o.focus()),
           n
             ? await insertSnippetByID(o, e, { insertionType: 'widget', typedShortcutText: i })
-            : console.error('[FAILED TO FOCUS]', o, document);
+            : console.error('[FAILED TO FOCUS]', o, document));
       }
       itemClickListener(t) {
         const n = t.target;
@@ -330,7 +330,7 @@ else {
       insertWidget() {
         return new Promise((e, t) => {
           const n = document.createElement('link');
-          (n.rel = 'stylesheet'),
+          ((n.rel = 'stylesheet'),
             (n.href = T.runtime.getURL('css/widget.css')),
             (this.widgetContainer = document.createElement('div')),
             (this.widgetContainer.id = r.CONTAINER_ID),
@@ -343,31 +343,31 @@ else {
             (this.widget = document.createElement('div')),
             (this.widget.id = r.WIDGET_ID),
             (this.widgetList = document.createElement('div')),
-            (this.widgetList.id = r.WIDGET_LIST_ID);
+            (this.widgetList.id = r.WIDGET_LIST_ID));
           const o = document.createElement('div');
-          (o.id = r.WIDGET_FOOTER_ID),
+          ((o.id = r.WIDGET_FOOTER_ID),
             this.widget.appendChild(this.widgetList),
-            this.widget.appendChild(o);
+            this.widget.appendChild(o));
           const i = this.widgetContainer.attachShadow({ mode: 'closed' });
-          n.addEventListener('load', () => {
-            i.appendChild(this.widget), e();
+          (n.addEventListener('load', () => {
+            (i.appendChild(this.widget), e());
           }),
             n.addEventListener('error', e => {
-              console.warn('Stylesheet failed to load', e), t();
+              (console.warn('Stylesheet failed to load', e), t());
             }),
-            i.appendChild(n);
+            i.appendChild(n));
         });
       }
       expandWidget() {
         const { height: e, width: t } = this.orchestrationMetadata.expandedDimensions;
-        e && (this.widgetContainer.style.height = `${e}px`),
+        (e && (this.widgetContainer.style.height = `${e}px`),
           t && (this.widgetContainer.style.width = `${t}px`),
-          this.widget.classList.add(r.WIDGET_EXPANDED_CLASS);
+          this.widget.classList.add(r.WIDGET_EXPANDED_CLASS));
       }
       collapseWidget() {
-        this.widgetContainer.style.removeProperty('height'),
+        (this.widgetContainer.style.removeProperty('height'),
           this.widgetContainer.style.removeProperty('width'),
-          this.widget.classList.remove(r.WIDGET_EXPANDED_CLASS);
+          this.widget.classList.remove(r.WIDGET_EXPANDED_CLASS));
       }
       updateWidget(e, t, n = 1) {
         this.widgetList.innerHTML = '';
@@ -377,7 +377,7 @@ else {
           a = t.length;
         for (const { id: t, shortcut: s, body: c } of e.slice(0, 8)) {
           const e = document.createElement('p');
-          (e.dataset.snipid = t), e.classList.add(r.WIDGET_ITEM_CLASS);
+          ((e.dataset.snipid = t), e.classList.add(r.WIDGET_ITEM_CLASS));
           const l = document.createElement('span');
           o > 1 && l.classList.add('chip-outer');
           const d = document.createElement('span');
@@ -387,13 +387,13 @@ else {
           const p = document.createElement('b');
           p.innerText = s.slice(0, a);
           const g = document.createElement('span');
-          (g.innerText = s.slice(a)), u.append(p), u.append(g), d.appendChild(u);
+          ((g.innerText = s.slice(a)), u.append(p), u.append(g), d.appendChild(u));
           const m = document.createElement('span');
-          (m.innerText = '-'), m.classList.add('separator'), d.appendChild(m);
+          ((m.innerText = '-'), m.classList.add('separator'), d.appendChild(m));
           const f = document.createElement('span');
           if (((f.innerText = c), f.classList.add('shortcut-name'), d.appendChild(f), 0 === o)) {
             const e = document.createElement('img');
-            (e.src = i), e.classList.add('logo-image-small', 'logo-embedded'), d.appendChild(e);
+            ((e.src = i), e.classList.add('logo-image-small', 'logo-embedded'), d.appendChild(e));
           }
           if (
             (l.appendChild(d),
@@ -406,70 +406,70 @@ else {
             const o = document.createElement('span');
             o.classList.add('snippet-shortcut', 'chip', 'logo-separate-chip');
             const s = document.createElement('img');
-            (s.src = i),
+            ((s.src = i),
               s.classList.add('logo-image-small'),
               o.appendChild(s),
               t.append(o),
               t.addEventListener('click', () => {
                 let e = '';
-                n < 0.1
+                (n < 0.1
                   ? (e = 'We are currently testing this feature for selected users')
                   : n < 1 && (e = 'We are gradually rolling this out to all users'),
                   alert(
                     `This is the new Instant Assistant! ${e} - Team Text Blaze Chrome Extension`
-                  );
-              });
+                  ));
+              }));
             const r = document.createElement('button');
-            r.classList.add('dismiss-button'),
+            (r.classList.add('dismiss-button'),
               (r.innerText = '×'),
               r.setAttribute('title', 'Dismiss suggestions'),
               r.addEventListener('click', () => {
-                this.hideWidget(), promiseSendMessage({ request: 'dismissWidget' });
+                (this.hideWidget(), promiseSendMessage({ request: 'dismissWidget' }));
               }),
               e.appendChild(t),
-              e.appendChild(r);
+              e.appendChild(r));
           }
-          this.widgetList.appendChild(e), o++;
+          (this.widgetList.appendChild(e), o++);
         }
         if (s) {
           const e = document.createElement('p');
           e.classList.add('chip-outer', 'widget-item');
           const t = document.createElement('a');
-          t.classList.add('has-more'),
+          (t.classList.add('has-more'),
             t.setAttribute('target', '_blank'),
             t.setAttribute('href', 'http://dashboard.blaze.today'),
             (t.innerHTML =
               'More…<kbd class="key" style="margin-left: 8px" title="Control-Shift-Space">Ctrl-⇧-⎵</kbd>'),
             t.classList.add('chip'),
             e.appendChild(t),
-            this.widgetList.appendChild(e);
+            this.widgetList.appendChild(e));
         }
-        this.widget.addEventListener('mousemove', () => {
+        (this.widget.addEventListener('mousemove', () => {
           this.expandWidget();
         }),
           this.widget.addEventListener('mouseleave', () => {
             this.collapseWidget();
-          });
+          }));
       }
       async positionWidget(e = !1) {
         const o = this.widget.classList.contains(r.WIDGET_EXPANDED_CLASS);
-        this.collapseWidget(),
+        (this.collapseWidget(),
           this.widget.classList.remove('vertical-flip', 'horizontal-flip'),
           this.widgetContainer.style.removeProperty('top'),
           this.widgetContainer.style.removeProperty('bottom'),
           this.widgetContainer.style.removeProperty('left'),
           this.widgetContainer.style.removeProperty('right'),
-          this.widget.classList.add(r.WIDGET_EXPANDED_CLASS);
+          this.widget.classList.add(r.WIDGET_EXPANDED_CLASS));
         const { top: i, left: s, bottom: a, right: c } = this.absoluteCaretPos,
           { width: l, height: d } = this.widget.getBoundingClientRect();
-        window[n](this.absoluteCaretPos, 'blueviolet'),
+        (window[n](this.absoluteCaretPos, 'blueviolet'),
           this.widget.classList.remove(r.WIDGET_EXPANDED_CLASS),
           (this.orchestrationMetadata.expandedDimensions = { width: l, height: d }),
           debugWidgetPosition &&
             debug('[CARET POSITION]', { caretBottom: a, caretLeft: s, caretRight: c, caretTop: i }),
           e &&
             ((this.orchestrationMetadata.startingPosition.left = s),
-            (this.orchestrationMetadata.startingPosition.top = i));
+            (this.orchestrationMetadata.startingPosition.top = i)));
         let u = i,
           p = c;
         const { border: g, height: m, width: f, scrollX: h, scrollY: E } = getWindowBorders();
@@ -491,26 +491,26 @@ else {
             t
           );
         })({ top: u, left: p });
-        debugWidgetPosition &&
+        (debugWidgetPosition &&
           (debug('[WINDOW WIDTH/HEIGHT]', { windowWidth: f, windowHeight: m }),
           debug('[INITIAL POSITION]', T)),
-          t(this.widgetContainer, T);
+          t(this.widgetContainer, T));
         const w = {},
           S = this.widgetContainer.getBoundingClientRect();
         for (const e of ['left', 'right', 'bottom', 'top']) w[e] = S[e];
-        (w.left += h),
+        ((w.left += h),
           (w.right += h),
           (w.top += E),
           (w.bottom += E),
-          debugWidgetPosition && debug('[OBSERVED POSITION]', w);
+          debugWidgetPosition && debug('[OBSERVED POSITION]', w));
         const C = {};
         for (const e in T) {
           const t = T[e] - w[e];
           C[e] = T[e] + t;
         }
-        debugWidgetPosition && debug('[ASSIGNEE UPDATED]', C),
+        (debugWidgetPosition && debug('[ASSIGNEE UPDATED]', C),
           o && this.widget.classList.add(r.WIDGET_EXPANDED_CLASS),
-          t(this.widgetContainer, C);
+          t(this.widgetContainer, C));
       }
       hideWidgetRouted() {
         this.routeRequestToCorrectFrame(r.ROUTE_HIDE_KEY);
@@ -522,7 +522,7 @@ else {
         this.routeRequestToCorrectFrame(r.ROUTE_RESET_KEY);
       }
       resetWidget() {
-        this.hideWidget(), this.resetAllRunningValues();
+        (this.hideWidget(), this.resetAllRunningValues());
       }
       unhideWidget() {
         this.widgetContainer && (this.widgetContainer.style.display = 'block');
@@ -539,7 +539,7 @@ else {
       displayWidgetRouted(e, t, n, o) {
         this.routeRequestToCorrectFrame(r.ROUTE_DISPLAY_KEY, () => {
           if (!this.isValidTarget(e)) return null;
-          (this.logicMetadata.targetNode = e), (this.logicMetadata.shortcutText = t);
+          ((this.logicMetadata.targetNode = e), (this.logicMetadata.shortcutText = t));
           const s = i(e);
           return s
             ? (debugWidgetPosition && debug('[INNER CARET POSITION]', s),
@@ -552,25 +552,25 @@ else {
         const i = 1 === e.length;
         this.logicMetadata.shortcutText = e;
         try {
-          this.widgetContainer || (await this.insertWidget()),
+          (this.widgetContainer || (await this.insertWidget()),
             (function (e) {
               const t = window.scrollY,
                 n = window.scrollX;
-              (e.top += t), (e.bottom += t), (e.left += n), (e.right += n);
+              ((e.top += t), (e.bottom += t), (e.left += n), (e.right += n));
             })(o),
             (this.absoluteCaretPos = o),
             this.routeRequestToCorrectFrame(r.ROUTE_LISTENER_KEY),
             this.updateWidget(t, e, n),
             this.unhideWidget(),
-            this.positionWidget(i);
+            this.positionWidget(i));
         } catch (e) {
           console.warn('Non-blocking widget error', e);
         }
       }
       attachWindowListener() {
         if (this.attachedWindowListener) return;
-        debug('[WIDGET] Attached window listener', document), (this.attachedWindowListener = !0);
-        window.addEventListener(
+        (debug('[WIDGET] Attached window listener', document), (this.attachedWindowListener = !0));
+        (window.addEventListener(
           'mousedown',
           t => {
             if (this.isDisplayedInThisFrame()) {
@@ -592,15 +592,15 @@ else {
             ((e, t) => {
               let n = -1;
               return () => {
-                -1 !== n && clearTimeout(n),
+                (-1 !== n && clearTimeout(n),
                   (n = window.setTimeout(() => {
-                    (n = -1), e();
-                  }, t));
+                    ((n = -1), e());
+                  }, t)));
               };
             })(() => {
               this.isDisplayedInThisFrame() && this.positionWidget();
             }, 200)
-          );
+          ));
       }
     }
     return {
@@ -706,22 +706,22 @@ else {
   for (const Ce of h) f[Ce] = `content jump: ${Ce}`;
   class E {
     constructor() {
-      (this.stream = []),
+      ((this.stream = []),
         (this.baseResetTimeout = 2e3),
         (this.resetTimeout = this.baseResetTimeout),
         (this.timer = null),
-        (this.previousTarget = null);
+        (this.previousTarget = null));
     }
     setResetTimeout(e) {
-      (this.resetTimeout = Math.max(e || this.baseResetTimeout, 800)),
-        (u.streamTimeout = this.resetTimeout);
+      ((this.resetTimeout = Math.max(e || this.baseResetTimeout, 800)),
+        (u.streamTimeout = this.resetTimeout));
     }
     resetTimer() {
-      this.timer && clearTimeout(this.timer),
+      (this.timer && clearTimeout(this.timer),
         (this.timer = setTimeout(
           () => this.empty('timeout ' + this.resetTimeout),
           this.resetTimeout
-        ));
+        )));
     }
     add(e, t, n = !1) {
       if ((this.checkTarget(e), this.resetTimer(), !n && (this.stream.push(t), isEditable(e))))
@@ -800,7 +800,7 @@ else {
   const L = Date.now();
   let A = !1;
   function addGlobalListener(e) {
-    e({ document: document, window: window }), I.push(e);
+    (e({ document: document, window: window }), I.push(e));
   }
   addGlobalListener(({ document: e }) =>
     e.addEventListener('selectionchange', () => {
@@ -825,13 +825,13 @@ else {
       for (let t = 0; t < e.length; t++) {
         const n = e[t];
         if ('childList' === n.type && R)
-          if (Date.now() - L >= 2e3) (R = !1), (I.length = 0);
+          if (Date.now() - L >= 2e3) ((R = !1), (I.length = 0));
           else
             for (let e = 0; e < n.removedNodes.length; e++) {
               const t = n.removedNodes[e];
               if ('tagName' in t && 'HTML' === t.tagName) {
                 for (const e of I) e({ document: document, window: window });
-                (R = !1), (I.length = 0);
+                ((R = !1), (I.length = 0));
               }
             }
         if ('childList' === n.type && n.addedNodes.length)
@@ -845,7 +845,7 @@ else {
                 });
                 continue;
               }
-              e.matches(S) ? registerElement(e) : registerElement(e.querySelectorAll(S)),
+              (e.matches(S) ? registerElement(e) : registerElement(e.querySelectorAll(S)),
                 e instanceof HTMLIFrameElement && e.matches(C)
                   ? checkIFrames(e)
                   : checkIFrames(e.querySelectorAll(C)),
@@ -856,7 +856,7 @@ else {
                 e.querySelectorAll(y).forEach(e => {
                   addExtensionActiveWebComponent(e);
                 }),
-                e.matches(y) && addExtensionActiveWebComponent(e);
+                e.matches(y) && addExtensionActiveWebComponent(e));
             }
           }
         else if (
@@ -892,12 +892,12 @@ else {
   async function replacementRequestHandler({ target: e, typedShortcutText: t, request: n }) {
     let o = e;
     const s = [...window.location.ancestorOrigins];
-    (n.ancestorOrigins = s.some(e => e?.match(/^chrome.*?:\/\//)) ? s : []),
-      (n.editorData = getEditorData(o));
+    ((n.ancestorOrigins = s.some(e => e?.match(/^chrome.*?:\/\//)) ? s : []),
+      (n.editorData = getEditorData(o)));
     const r = await promiseSendMessage(n);
     debug('[GET REPLACEMENT - RESULT]', t, r);
     let a = !1;
-    r &&
+    (r &&
       ('form' === r.type
         ? (r.aiData &&
             r.aiData.shortcutToClear &&
@@ -913,7 +913,7 @@ else {
           ((a = !0), u.displayWidgetRouted(o, t, r.matchingSnippets, r.widgetDeployPercent)),
       ('replacement' !== r.type && 'form' !== r.type) ||
         promiseSendMessage({ request: 'replacementHandlerFinished' })),
-      a || u.hideWidgetRouted();
+      a || u.hideWidgetRouted());
   }
   function getEditorData(e) {
     return 'DIV' === e.tagName &&
@@ -921,12 +921,12 @@ else {
       'docs-texteventtarget-descendant' === e.nextElementSibling.id
       ? { isDocs: !0 }
       : 'DIV' === e.tagName && 'true' === e.getAttribute('data-lexical-editor')
-      ? { isLexical: !0 }
-      : 'DIV' === e.tagName &&
-        e.classList.contains('public-DraftEditor-content') &&
-        e.parentElement.classList.contains('DraftEditor-editorContainer')
-      ? { isDraftJS: !0 }
-      : {};
+        ? { isLexical: !0 }
+        : 'DIV' === e.tagName &&
+            e.classList.contains('public-DraftEditor-content') &&
+            e.parentElement.classList.contains('DraftEditor-editorContainer')
+          ? { isDraftJS: !0 }
+          : {};
   }
   function insertSnippetByID(e, t, n) {
     return replacementRequestHandler({
@@ -974,8 +974,8 @@ else {
         (debug('[KEYDOWN]', e.keyCode, e),
         ('Process' === e.key || 'Unidentified' === e.key) && 229 === t)
       )
-        return debug('[IME/Composition event]', e), void (O = !0);
-      (O = !1),
+        return (debug('[IME/Composition event]', e), void (O = !0));
+      ((O = !1),
         (t === m.space && !o) || void 0 === n
           ? t === m.backspace
             ? e.ctrlKey || e.metaKey || e.altKey
@@ -984,13 +984,13 @@ else {
             : (65 !== t && 86 !== t) ||
               !((b && e.metaKey) || e.ctrlKey) ||
               v.empty(65 === t ? 'selecting all' : 'pasting')
-          : v.empty(n);
+          : v.empty(n));
     }
   }
   function keyPressEventListener(e) {
     if (!e.isComposing && e.isTrusted && !e.blazeHandled) {
       const t = e.key;
-      (e.blazeHandled = !0), debug('[KEYPRESS]', t, e), debug('[IS COMPOSING FALSE]'), (F = !1);
+      ((e.blazeHandled = !0), debug('[KEYPRESS]', t, e), debug('[IS COMPOSING FALSE]'), (F = !1));
       const n = e.target;
       if (!allowedToInsert(n)) return;
       if ('Enter' === t) return void v.empty('enter');
@@ -1004,7 +1004,7 @@ else {
       (e.isComposing || O) &&
       e.inputType.startsWith('insert')
     ) {
-      (e.blazeHandled = !0), debug('[BEFORE INPUT]', e);
+      ((e.blazeHandled = !0), debug('[BEFORE INPUT]', e));
       const t = e.target,
         n = e.inputType;
       if (
@@ -1037,7 +1037,7 @@ else {
   }
   function compositionEndEventListener(e) {
     if (!e.blazeHandled && !e.isBlazeGenerated && !P) {
-      (e.blazeHandled = !0), (F = !1), (O = !1), debug('[COMPOSITION END]', e);
+      ((e.blazeHandled = !0), (F = !1), (O = !1), debug('[COMPOSITION END]', e));
       let t = e.target;
       if (
         (window.EditContext &&
@@ -1086,8 +1086,8 @@ else {
     return i
       ? e(o)
       : window.location.host
-      ? `https://www.google.com/s2/favicons?domain=${window.location.host}&sz=44`
-      : '';
+        ? `https://www.google.com/s2/favicons?domain=${window.location.host}&sz=44`
+        : '';
   }
   async function sendSubframeMessageViaFocusChange(e, t) {
     const n = promiseSendMessage({ request: 'frameMessage', subType: 'focusChange', message: t });
@@ -1110,10 +1110,11 @@ else {
         height: o,
       }),
       s = e.getAttribute('style');
-    (e.style.flex = 'none'), (e.style.minHeight = 'auto'), (e.style.height = o + 'px');
+    ((e.style.flex = 'none'), (e.style.minHeight = 'auto'), (e.style.height = o + 'px'));
     const r = await i;
     return (
-      null !== s ? e.setAttribute('style', s) : e.attributes.removeNamedItem('style'), r || null
+      null !== s ? e.setAttribute('style', s) : e.attributes.removeNamedItem('style'),
+      r || null
     );
   }
   function sendSubframeMessage(e, t, n) {
@@ -1130,8 +1131,8 @@ else {
       'string' == typeof n && n.startsWith('TB: ')
         ? { error: n.substring('TB: '.length) }
         : e.selector
-        ? { error: 'Invalid selector "' + e.selector + '"' }
-        : { error: 'Invalid XPath "' + e.xpath + '"' }
+          ? { error: 'Invalid selector "' + e.selector + '"' }
+          : { error: 'Invalid XPath "' + e.xpath + '"' }
     );
   }
   async function getDataFromSelectorInner(
@@ -1235,7 +1236,7 @@ else {
     function i() {
       return Date.now() - o;
     }
-    for (; !document.hasFocus() && i() < t; ) await promiseDelay(n), (n *= 1.5);
+    for (; !document.hasFocus() && i() < t; ) (await promiseDelay(n), (n *= 1.5));
     debug('[RESTORING FOCUS FOR FORM] document focused');
     const s = e.formId;
     let r;
@@ -1246,7 +1247,7 @@ else {
       function a() {
         return r && d && !isEditable(r);
       }
-      for (; a() && i() < t; ) await promiseDelay(n), (n *= 1.5);
+      for (; a() && i() < t; ) (await promiseDelay(n), (n *= 1.5));
       if (
         (debug('[RESTORING FOCUS FOR FORM] old element editable check finished'),
         i() >= t && console.warn('Max insertion delay'),
@@ -1267,11 +1268,11 @@ else {
           const p = `[FORM SUBMIT] exceeded editable delay. Active element: ${
             l ? l.tagName : null
           }. Prior focused element: ${r ? r.tagName : null}`;
-          console.error(p, { elementToUse: l, priorFocused: r }), (c = p);
+          (console.error(p, { elementToUse: l, priorFocused: r }), (c = p));
         }
         break;
       }
-      await promiseDelay(n), (n *= 1.5), (l = documentActive());
+      (await promiseDelay(n), (n *= 1.5), (l = documentActive()));
     }
     if (
       (debug('[RESTORE FOCUS FOR FORM] chosen element', l),
@@ -1311,7 +1312,7 @@ else {
       );
     }
     const t = getFocusedSelectionObjectAcrossShadowDOM(document);
-    if (!t) return debug('[SIDEBAR FRAME DATA] exit as no selection'), null;
+    if (!t) return (debug('[SIDEBAR FRAME DATA] exit as no selection'), null);
     const n = t.toString();
     let o = null;
     if (t.rangeCount > 0 && 'Range' === t.type) {
@@ -1329,30 +1330,30 @@ else {
     );
   }
   const _ = document.createElement('span');
-  _.classList.add('tooltip', 'close-button-tooltip-text'), (_.textContent = 'Disable this tab');
+  (_.classList.add('tooltip', 'close-button-tooltip-text'), (_.textContent = 'Disable this tab'));
   const W = document.createElement('div');
   W.id = 'restore-container';
   const B = document.createElement('span');
-  B.classList.add('tooltip', 'restore-tooltip'),
-    (B.innerText = 'Restore your last chat from this session');
+  (B.classList.add('tooltip', 'restore-tooltip'),
+    (B.innerText = 'Restore your last chat from this session'));
   const U = document.createElement('div');
-  (U.id = 'restore-icon'),
+  ((U.id = 'restore-icon'),
     W.append(U),
     (U.innerHTML = `<img src="${T.runtime.getURL(
       'images/icon_128_white_bottom.png'
-    )}" alt="Icon" style="fill: rgb(0 0 0); border-radius: 100%; width:100%; height:100%">`);
+    )}" alt="Icon" style="fill: rgb(0 0 0); border-radius: 100%; width:100%; height:100%">`));
   let q = { top: 'initial', bottom: '50px' };
   const z = 25,
     K = 45;
   function getDocumentOrItsShadowRoot() {
     let e = document,
       t = getShadowRoot(document.body);
-    return t && (e = t), e;
+    return (t && (e = t), e);
   }
   function getDocumentBodyOrItsShadowRoot() {
     let e = document.body,
       t = getShadowRoot(document.body);
-    return t && (e = t), e;
+    return (t && (e = t), e);
   }
   const G = 'text-blaze-dragger-overlay',
     X = 1e9;
@@ -1360,7 +1361,7 @@ else {
   function enableDraggerOverlay() {
     if (getDocumentOrItsShadowRoot().getElementById(G)) return;
     const e = document.createElement('div');
-    e.setAttribute(
+    (e.setAttribute(
       'style',
       `display: block; background: transparent; z-index: ${
         X - 1
@@ -1368,7 +1369,7 @@ else {
     ),
       (e.id = G),
       e.addEventListener('mousedown', disableDraggerOverlay),
-      getDocumentBodyOrItsShadowRoot().appendChild(e);
+      getDocumentBodyOrItsShadowRoot().appendChild(e));
   }
   function disableDraggerOverlay() {
     getDocumentOrItsShadowRoot().getElementById(G)?.remove();
@@ -1410,8 +1411,8 @@ else {
       n = e.endContainer,
       o = e.startOffset,
       i = e.endOffset;
-    t.nodeType !== Node.TEXT_NODE && ((t = t.childNodes[e.startOffset]), (o = 0)),
-      n.nodeType !== Node.TEXT_NODE && ((n = n.childNodes[e.endOffset]), (i = 0));
+    (t.nodeType !== Node.TEXT_NODE && ((t = t.childNodes[e.startOffset]), (o = 0)),
+      n.nodeType !== Node.TEXT_NODE && ((n = n.childNodes[e.endOffset]), (i = 0)));
     const s = document.createTreeWalker(e.commonAncestorContainer, NodeFilter.SHOW_ALL);
     let r = '',
       a = s.currentNode;
@@ -1427,7 +1428,7 @@ else {
         continue;
       }
       if (a !== t && a !== n) {
-        c(a) && (r += a.textContent), (a = s.nextNode());
+        (c(a) && (r += a.textContent), (a = s.nextNode()));
         continue;
       }
       const e = document.createRange();
@@ -1469,9 +1470,9 @@ else {
           i = n.endOffset,
           s = n.startContainer,
           r = n.startOffset;
-        n.setStart(o, i), n.setEnd(e, e.childNodes.length);
+        (n.setStart(o, i), n.setEnd(e, e.childNodes.length));
         let a = getVisibleTextFromRange(n);
-        n.setStart(e, 0), n.setEnd(s, r);
+        (n.setStart(e, 0), n.setEnd(s, r));
         let c = getVisibleTextFromRange(n);
         return (
           '' === e.innerText && ((a = ''), (c = '')),
@@ -1492,10 +1493,10 @@ else {
     function t(e, t) {
       let n = null;
       return function (...o) {
-        n && clearTimeout(n),
+        (n && clearTimeout(n),
           (n = setTimeout(() => {
-            (n = null), e(...o);
-          }, t));
+            ((n = null), e(...o));
+          }, t)));
       };
     }
     const n = 'text-blaze-ai-chat',
@@ -1516,12 +1517,12 @@ else {
       const [n, o] = t,
         i = window.getComputedStyle(l);
       let r = parseFloat(i.left) + n;
-      (r = Math.min(r, window.innerWidth - e)), (r = Math.max(r, e - parseFloat(i.width)));
+      ((r = Math.min(r, window.innerWidth - e)), (r = Math.max(r, e - parseFloat(i.width))));
       let a = Math.max(parseFloat(i.top) + o, 0);
       a = Math.min(a, window.innerHeight - e);
       const c = r + 'px',
         d = a + 'px';
-      (l.style.left = c), (l.style.top = d), writeToExtensionStorage(s, { left: c, top: d });
+      ((l.style.left = c), (l.style.top = d), writeToExtensionStorage(s, { left: c, top: d }));
     }, 10);
     const T =
       ((w = 'position'),
@@ -1542,19 +1543,19 @@ else {
       x = null,
       v = null;
     function I() {
-      C && (clearTimeout(C), (C = null)), (B.style.opacity = '1'), L();
+      (C && (clearTimeout(C), (C = null)), (B.style.opacity = '1'), L());
     }
     function R() {
-      (B.style.opacity = '0'), k();
+      ((B.style.opacity = '0'), k());
     }
     function L() {
-      x && (x.cancel(), (x = null)), v && (v.cancel(), (v = null));
+      (x && (x.cancel(), (x = null)), v && (v.cancel(), (v = null)));
     }
     function A() {
-      L(), W.removeEventListener('pointerenter', I), W.removeEventListener('pointerleave', R);
+      (L(), W.removeEventListener('pointerenter', I), W.removeEventListener('pointerleave', R));
     }
     function k() {
-      L(),
+      (L(),
         (v = U.animate(
           [
             {
@@ -1586,12 +1587,12 @@ else {
           { duration: 1e4, easing: 'ease' }
         )),
         (x.onfinish = () => {
-          F(), (x = null), (v = null);
-        });
+          (F(), (x = null), (v = null));
+        }));
     }
     async function D() {
       if ('none' === E.style.display || 'none' === l.style.display) return;
-      debug('[HIDE CHAT IFRAME]'), (E.style.display = 'none');
+      (debug('[HIDE CHAT IFRAME]'), (E.style.display = 'none'));
       const { right: e, bottom: t } = l.getBoundingClientRect(),
         n = {
           left: l.style.left,
@@ -1605,7 +1606,7 @@ else {
           minHeight: l.style.minHeight,
           minWidth: l.style.minWidth,
         };
-      l.style.removeProperty('left'),
+      (l.style.removeProperty('left'),
         l.style.removeProperty('top'),
         l.style.removeProperty('min-height'),
         l.style.removeProperty('min-width'),
@@ -1615,7 +1616,7 @@ else {
         (l.style.borderRight = 'none'),
         (l.style.boxShadow = 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px'),
         (l.style.pointerEvents = 'none'),
-        (l.style.position = 'fixed');
+        (l.style.position = 'fixed'));
       let o = {
         bottom: 'initial',
         top: 'initial',
@@ -1633,14 +1634,14 @@ else {
           borderRadius: n.borderRadius,
         },
         s = window.innerHeight - t + 'px';
-      (o.bottom = q.bottom), (o.top = q.top), (i.bottom = s);
+      ((o.bottom = q.bottom), (o.top = q.top), (i.bottom = s));
       const r = Math.min(parseFloat(i.width), parseFloat(i.height)) * (1 - 0.8) + 'px';
       l.animate([i, { width: r, height: r, borderRadius: n.borderRadius, offset: 0.8 }, o], {
         duration: 200,
         easing: 'ease-out',
       }).onfinish = () => {
         for (const e in o) l.style[e] = o[e];
-        (l.style.display = 'none'),
+        ((l.style.display = 'none'),
           (W.style.display = 'flex'),
           (E.style.display = 'block'),
           k(),
@@ -1649,12 +1650,12 @@ else {
             B.style.opacity = '0';
           }, 1e3)),
           W.addEventListener('pointerenter', I),
-          W.addEventListener('pointerleave', R);
+          W.addEventListener('pointerleave', R));
         for (const e in n) l.style[e] = n[e];
       };
     }
     function N() {
-      debug('[UNHIDE CHAT IFRAME]'),
+      (debug('[UNHIDE CHAT IFRAME]'),
         A(),
         u.contentWindow.postMessage({ type: 'restoreScrollTop' }, '*'),
         (l.style.resize = 'both'),
@@ -1666,7 +1667,7 @@ else {
         $(),
         promiseSendMessage({ request: 'aiChat', type: 'attachListeners' }),
         a && a.observe(l),
-        P();
+        P());
     }
     function M() {
       p &&
@@ -1694,9 +1695,9 @@ else {
       let t = parseFloat(l.style.left),
         n = parseFloat(l.style.top),
         o = !1;
-      t > window.innerWidth - e && ((t = window.innerWidth - e), (o = !0)),
+      (t > window.innerWidth - e && ((t = window.innerWidth - e), (o = !0)),
         n > window.innerHeight - e && ((n = window.innerHeight - e), (o = !0)),
-        o && ((l.style.top = n + 'px'), (l.style.left = t + 'px'));
+        o && ((l.style.top = n + 'px'), (l.style.left = t + 'px')));
     }
     function H(e) {
       if (!1 === m.isDragging) return;
@@ -1706,7 +1707,7 @@ else {
         [i, s] = [t[0] - n, t[1] - o];
       m.previousCoordinates = t;
       const r = m.queue;
-      (r[0] += i), (r[1] += s), (m.queue = r), y(r);
+      ((r[0] += i), (r[1] += s), (m.queue = r), y(r));
     }
     function _(e) {
       m.isDragging &&
@@ -1722,14 +1723,14 @@ else {
       T();
     }
     function $() {
-      debug('[CHAT] has already attached listeners', p, document),
+      (debug('[CHAT] has already attached listeners', p, document),
         p ||
           isAIChatIframe() ||
           ((p = !0),
           window.addEventListener('mousemove', H, !0),
           window.addEventListener('mouseup', _, !0),
           window.addEventListener('keydown', G, !0),
-          window.addEventListener('resize', Y));
+          window.addEventListener('resize', Y)));
     }
     function j({ isPreloading: e }) {
       if (
@@ -1738,9 +1739,9 @@ else {
       )
         return;
       if (l && e) return;
-      (m = { isDragging: !1 }), A(), O(), (W.style.display = 'none');
+      ((m = { isDragging: !1 }), A(), O(), (W.style.display = 'none'));
       const t = getDocumentOrItsShadowRoot().getElementById(n);
-      t && t.remove(),
+      (t && t.remove(),
         (l = document.createElement('div')),
         (l.dataset.tbTbUniqueId = b),
         (l.id = n),
@@ -1751,25 +1752,25 @@ else {
         (l.style.display = 'none'),
         (l.dataset.isBaseIframe = 'true'),
         (u = document.createElement('iframe')),
-        u.setAttribute('allowTransparency', 'true');
+        u.setAttribute('allowTransparency', 'true'));
       const i = c;
-      (u.src = i),
+      ((u.src = i),
         (u.id = 'tb-tb-chat-iframe'),
         u.setAttribute(
           'style',
           'all: initial; height: 0; width: 0; position: absolute; top: 0; left: 0; background: transparent; z-index: 10;'
-        );
+        ));
       const s = document.createElement('style');
       s.innerHTML =
         '\n\n#shown-container {\n  background: rgb(255, 249, 255);\n  width: 100%;\n  height: 100%;\n}\n\n#drag-handler {\n  position: absolute;\n  top: 0px;\n  /* space for close button in the iframe\n  (we cannot handle this using z-index) \n  so that we can center the drag handle */\n  --close-button-width: 34px;\n  left: var(--close-button-width);\n  right: var(--close-button-width);\n  text-align: center;\n\n  cursor: grab;\n  background: transparent;\n  height: 20px;\n  opacity: 1;\n  transition: 0.25s ease;\n  z-index: 10000000;\n  user-select: none;\n}\n\n#shown-container {\n  height: 100%;\n  width: 100%;\n  font-family: Roboto, Helvetica, Arial, sans-serif;\n}\n\n#close-button {\n  position: absolute;\n  /* align with close button iframe */\n  top: -1px;\n  right: 5px;\n  color: grey;\n  cursor: pointer;\n  /* align this button closely with the one in iframe */\n  padding: 6px 10px;\n  font-size: 20px;\n  font-family: Arial;\n  margin: 0;\n}\n      ';
       const r = document.createElement('div');
       r.id = 'drag-handler';
       const a = document.createElement('span');
-      (a.textContent = '  ='),
+      ((a.textContent = '  ='),
         r.addEventListener('pointerdown', e => {
-          (m = { isDragging: !0, previousCoordinates: [e.screenX, e.screenY], queue: [0, 0] }),
+          ((m = { isDragging: !0, previousCoordinates: [e.screenX, e.screenY], queue: [0, 0] }),
             (u.style.pointerEvents = 'none'),
-            enableDraggerOverlay();
+            enableDraggerOverlay());
         }),
         r.appendChild(a),
         (f = document.createElement('p')),
@@ -1777,27 +1778,27 @@ else {
         (f.innerHTML = d()),
         (f.id = 'close-button'),
         f.addEventListener('click', function (e) {
-          F(), e.preventDefault(), e.stopPropagation();
+          (F(), e.preventDefault(), e.stopPropagation());
         }),
         (E = document.createElement('div')),
         (E.id = o),
         E.append(u, r, f),
         E.appendChild(s),
-        E.appendChild(createBackgroundElement(o, 120, 150));
-      l.attachShadow({ mode: 'closed' }).append(E),
+        E.appendChild(createBackgroundElement(o, 120, 150)));
+      (l.attachShadow({ mode: 'closed' }).append(E),
         getDocumentBodyOrItsShadowRoot().appendChild(l),
         (h = document.createElement('div')),
-        (h.id = 'tb-tb-restore-container');
+        (h.id = 'tb-tb-restore-container'));
       const p = h.attachShadow({ mode: 'closed' });
       W.addEventListener('click', () => {
         N();
       });
       const g = document.createElement('style');
-      (g.textContent = `\n        #restore-container {\n          position: fixed;\n          bottom: 50px;\n          right: 10px;\n          display: none;\n          align-items: center;\n          justify-content: center;\n          width: 40px;\n          height: 40px;\n          background-color: rgb(250, 250, 250);\n          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);\n          border-radius: 100%;\n          transition: opacity 1s ease, box-shadow 1s ease;\n          cursor: pointer;\n          pointer-events: all;\n          display: none;\n          z-index: ${X};\n        }\n        #restore-icon {\n          border-radius: 100%;\n          width: 100%;\n          height: 100%;\n          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);\n        }\n        .restore-tooltip {\n          position: absolute;\n          top: 100%;\n          right: 0;\n          background-color: rgba(97, 97, 97, 0.92);\n          color: rgb(255, 255, 255);\n          padding: 4px 8px;\n          border-radius: 4px;\n          margin: 9px;\n          font-weight: 500;\n          font-size: 0.6875rem;\n          font-family: Helvetica, Arial, sans-serif;\n          transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1), transform 133ms cubic-bezier(0.4, 0, 0.2, 1);\n          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n          white-space: nowrap;\n          opacity: 0;\n          z-index: 1000000000;\n          pointer-events: none;\n        }\n      `),
+      ((g.textContent = `\n        #restore-container {\n          position: fixed;\n          bottom: 50px;\n          right: 10px;\n          display: none;\n          align-items: center;\n          justify-content: center;\n          width: 40px;\n          height: 40px;\n          background-color: rgb(250, 250, 250);\n          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);\n          border-radius: 100%;\n          transition: opacity 1s ease, box-shadow 1s ease;\n          cursor: pointer;\n          pointer-events: all;\n          display: none;\n          z-index: ${X};\n        }\n        #restore-icon {\n          border-radius: 100%;\n          width: 100%;\n          height: 100%;\n          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);\n        }\n        .restore-tooltip {\n          position: absolute;\n          top: 100%;\n          right: 0;\n          background-color: rgba(97, 97, 97, 0.92);\n          color: rgb(255, 255, 255);\n          padding: 4px 8px;\n          border-radius: 4px;\n          margin: 9px;\n          font-weight: 500;\n          font-size: 0.6875rem;\n          font-family: Helvetica, Arial, sans-serif;\n          transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1), transform 133ms cubic-bezier(0.4, 0, 0.2, 1);\n          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n          white-space: nowrap;\n          opacity: 0;\n          z-index: 1000000000;\n          pointer-events: none;\n        }\n      `),
         p.appendChild(g),
         W.append(B),
         p.appendChild(W),
-        document.body.appendChild(h);
+        document.body.appendChild(h));
     }
     return {
       handleAIChatRequest: async function (e) {
@@ -1805,16 +1806,16 @@ else {
           if ('none' === f.style.display) return;
           clearTimeout(g);
           let e = E.querySelector('#slow-loading');
-          e && e.remove(),
+          (e && e.remove(),
             (u.style.height = '100%'),
             (u.style.width = '100%'),
             setTimeout(() => {
               f.style.display = 'none';
-            }, 100);
+            }, 100));
         } else if ('createBaseIframe' === e.subType) j({ isPreloading: !0 });
         else if ('showEmbed' === e.subType)
           !(async function ({ height: e, width: t }) {
-            j({ isPreloading: !1 }), u.contentWindow.postMessage({ type: 'requestData' }, '*');
+            (j({ isPreloading: !1 }), u.contentWindow.postMessage({ type: 'requestData' }, '*'));
             const n = 0.75 * window.innerHeight,
               o = 0.8 * n,
               i = Math.min(e || n, window.innerHeight - 48),
@@ -1825,16 +1826,16 @@ else {
             if (p) {
               let e = parseFloat(p.left),
                 t = parseFloat(p.top);
-              (t = Math.max(t, 0)),
+              ((t = Math.max(t, 0)),
                 (t = Math.min(t, window.innerHeight - 180)),
                 (e = Math.max(e, 180 - r)),
                 (e = Math.min(e, window.innerWidth - 180)),
                 (c = e + 'px'),
-                (d = t + 'px');
+                (d = t + 'px'));
             } else
-              (c = `calc(50vw - ${Math.floor(r / 2)}px)`),
-                (d = `calc(50vh - ${Math.floor(i / 2)}px)`);
-            debug('[CHAT] iframe added with position', { left: c, top: d }),
+              ((c = `calc(50vw - ${Math.floor(r / 2)}px)`),
+                (d = `calc(50vh - ${Math.floor(i / 2)}px)`));
+            (debug('[CHAT] iframe added with position', { left: c, top: d }),
               (l.style.left = c),
               (l.style.top = d),
               (l.style.height = `${i}px`),
@@ -1842,13 +1843,13 @@ else {
               (l.style.display = 'block'),
               (l.dataset.isBaseIframe = 'false'),
               (a = new ResizeObserver(() => {
-                (u.style.pointerEvents = 'none'),
+                ((u.style.pointerEvents = 'none'),
                   clearTimeout(V),
                   enableDraggerOverlay(),
                   (V = setTimeout(() => {
                     disableDraggerOverlay();
                   }, 50)),
-                  S();
+                  S());
               })),
               a.observe(l),
               $(),
@@ -1856,7 +1857,7 @@ else {
               clearTimeout(g),
               (g = setTimeout(() => {
                 const e = document.createElement('div');
-                e.setAttribute('id', 'slow-loading'),
+                (e.setAttribute('id', 'slow-loading'),
                   e.setAttribute(
                     'style',
                     'margin: 0 auto; text-align: center; top: 40%; display: block; font-family: Arial; z-index: 10000000001; position: relative;'
@@ -1864,8 +1865,8 @@ else {
                   (e.innerHTML =
                     '\n            <div style="padding: 20px;">\n              Loading is taking longer than usual...\n            </div>\n            <div class="progress-container">\n              <div class="progress-bar">\n                <div class="progress"></div>\n              </div>\n            </div>\n            <style>\n              .progress-container {\n                width: 100%;\n                box-sizing: border-box;\n              }\n\n              .progress-bar {\n                width: 100%;\n                height: 4px;\n                background-color: #e0e0e0;\n                overflow: hidden;\n              }\n\n              .progress {\n                width: 40%;\n                height: 100%;\n                background-color: #54b5bc;\n                transform-origin: left;\n                animation: \n                  fast-progress 5s cubic-bezier(0.4, 0, 0.2, 1) forwards,\n                  slow-progress 20s 5s ease-out forwards;\n              }\n\n              @keyframes fast-progress {\n                to { transform: scaleX(2.25); }\n              }\n\n              @keyframes slow-progress {\n                from { transform: scaleX(2.25); }\n                to { transform: scaleX(2.4875); }\n              }\n            </style>\n          '),
                   reportToErrorMonitoring('Could not load AI Chat within 4000ms'),
-                  E.appendChild(e);
-              }, 4e3));
+                  E.appendChild(e));
+              }, 4e3)));
           })(e.size);
         else if ('close' === e.subType) {
           F(...(Array.isArray(e.data) ? e.data : [e.data]));
@@ -1902,11 +1903,11 @@ else {
     t.id = 'text-blaze-confetti';
     const n = t.getContext('2d');
     let o, i, s, r, a;
-    (t.width = 0),
+    ((t.width = 0),
       (t.height = 0),
       (t.style.position = 'absolute'),
       (t.style.zIndex = '2147483647'),
-      (t.style.pointerEvents = 'none');
+      (t.style.pointerEvents = 'none'));
     let c = [],
       l = [];
     const d = [
@@ -1926,7 +1927,7 @@ else {
       const r = i,
         a = Math.sqrt(Math.abs(0.8 * r));
       let c;
-      return (c = s <= a ? s : p(0, a)), { x: n, y: -c };
+      return ((c = s <= a ? s : p(0, a)), { x: n, y: -c });
     }
     function m() {
       const e = Math.max(Math.min(200, o), 150),
@@ -1945,23 +1946,23 @@ else {
           scale: { x: 1, y: 1 },
           velocity: g([-9, 9], [6, 11]),
           update: function (e) {
-            (this.velocity.x -= 0.075 * this.velocity.x * e),
+            ((this.velocity.x -= 0.075 * this.velocity.x * e),
               (this.velocity.y = Math.min(this.velocity.y + 0.4 * e, 5)),
               (this.velocity.x += (Math.random() > 0.5 ? Math.random() : -Math.random()) * e),
               (this.position.x += this.velocity.x * e),
               (this.position.y += this.velocity.y * e),
-              (this.scale.y = Math.cos(0.09 * (this.position.y + this.randomModifier)));
+              (this.scale.y = Math.cos(0.09 * (this.position.y + this.randomModifier))));
           },
           render: function (e) {
             const o = this.dimensions.x * this.scale.x,
               s = this.dimensions.y * this.scale.y;
-            n.translate(this.position.x, this.position.y),
+            (n.translate(this.position.x, this.position.y),
               n.rotate(this.rotation),
               this.update(e),
               (n.fillStyle = this.scale.y > 0 ? this.color.front : this.color.back),
               n.fillRect(-o / 2, -s / 2, o, s),
               n.setTransform(1, 0, 0, 1, 0, 0),
-              this.velocity.y < 0 && n.clearRect(0, i, t.width, t.height);
+              this.velocity.y < 0 && n.clearRect(0, i, t.width, t.height));
           },
         });
       for (let e = 0; e < 7; e++)
@@ -1971,20 +1972,20 @@ else {
           position: m(),
           velocity: g([-6, 6], [8, 12]),
           update: function (e) {
-            (this.velocity.x -= 0.02 * this.velocity.x * e),
+            ((this.velocity.x -= 0.02 * this.velocity.x * e),
               (this.velocity.y = this.velocity.y + 0.55 * e),
               (this.position.x += this.velocity.x * e),
-              (this.position.y += this.velocity.y * e);
+              (this.position.y += this.velocity.y * e));
           },
           render: function (e) {
-            n.translate(this.position.x, this.position.y),
+            (n.translate(this.position.x, this.position.y),
               this.update(e),
               (n.fillStyle = this.color),
               n.beginPath(),
               n.arc(0, 0, this.radius, 0, 2 * Math.PI),
               n.fill(),
               n.setTransform(1, 0, 0, 1, 0, 0),
-              this.velocity.y < 0 && n.clearRect(0, i, t.width, t.height);
+              this.velocity.y < 0 && n.clearRect(0, i, t.width, t.height));
           },
         });
     }
@@ -1995,8 +1996,8 @@ else {
         ? ((i = 0), (s = 0))
         : (r || (r = o), a || (a = o), (i = o - r), (r = o), (s = o - a));
       const d = 0.05 * i;
-      n.clearRect(0, 0, t.width, t.height),
-        (n.globalAlpha = s < e ? 1 : s < 1500 ? 1 - (s - e) / 250 : 0);
+      (n.clearRect(0, 0, t.width, t.height),
+        (n.globalAlpha = s < e ? 1 : s < 1500 ? 1 - (s - e) / 250 : 0));
       for (const e of c) e.render(d);
       for (const e of l) e.render(d);
       const p = 0 === c.length && 0 === l.length,
@@ -2006,25 +2007,25 @@ else {
         for (; l.length; ) l.pop();
         t.remove();
       } else
-        (c = c.filter(e => e.position.y <= t.height)),
+        ((c = c.filter(e => e.position.y <= t.height)),
           (l = l.filter(e => e.position.y <= t.height)),
           u++,
-          window.requestAnimationFrame(E);
+          window.requestAnimationFrame(E));
     }
     function b(e) {
       return new Promise(t => {
         new IntersectionObserver(function (n, o) {
-          n.forEach(n => {
+          (n.forEach(n => {
             if (n.target === e) {
               const o = e.getBoundingClientRect();
               let i;
-              (i = !!n.isIntersecting
+              ((i = !!n.isIntersecting
                 ? { width: o.width, right: o.right, bottom: o.bottom, left: o.left, top: o.top }
                 : {}),
-                t(i);
+                t(i));
             }
           }),
-            o.disconnect();
+            o.disconnect());
         }).observe(e);
       });
     }
@@ -2032,7 +2033,7 @@ else {
       void 0 === e &&
         ((e = window.innerWidth), (n = window.innerWidth), (r = window.innerHeight), (a = 0));
       const c = Math.min(e, n, window.innerWidth);
-      (o = c),
+      ((o = c),
         (i = Math.min(r, window.innerHeight)),
         (s = Math.max(a, 0)),
         (u = 0),
@@ -2041,7 +2042,7 @@ else {
         (t.style.top = window.scrollY + 'px'),
         (t.style.left = window.scrollX + 'px'),
         f(),
-        h || ((h = !0), E(void 0));
+        h || ((h = !0), E(void 0)));
     }
     return {
       handleConfettiRequest: function (e) {
@@ -2134,11 +2135,11 @@ else {
         case 'insert_snippet_embed': {
           be.focus();
           let t = documentActive(document, !1) || document.body;
-          isElementManagedByBlaze(t) &&
+          (isElementManagedByBlaze(t) &&
             (t.blur(), (t = documentActive(document, !1) || document.body)),
-            debug('[FOCUSED ELEMENT]', t);
+            debug('[FOCUSED ELEMENT]', t));
           let n = e.fieldTexts;
-          !n && e.precedingText && (n = { precedingText: e.precedingText, afterText: '' }),
+          (!n && e.precedingText && (n = { precedingText: e.precedingText, afterText: '' }),
             e.details
               ? insertSnippetByText(
                   t,
@@ -2152,14 +2153,14 @@ else {
                   insertionType: 'sidebar',
                   fieldTexts: n,
                   selectedContent: e.selectedContent,
-                });
+                }));
           break;
         }
         case 'insert_snippet_separate_context':
           handleInsertSnippetSeparateContext(e);
           break;
         case 'replacementComplete':
-          v.empty('insert finished'), j();
+          (v.empty('insert finished'), j());
           break;
         case 'insertReplacement':
           return (
@@ -2170,12 +2171,12 @@ else {
               })
               .catch(e => {
                 let t = { message: 'Replacement failed' };
-                (t =
+                ((t =
                   e instanceof Error
                     ? { stack: e.stack, name: e.name, message: e.message }
                     : { message: e }),
                   console.error(t),
-                  s({ success: !1, error: t });
+                  s({ success: !1, error: t }));
               }),
             !0
           );
@@ -2184,34 +2185,34 @@ else {
             window.focus(),
             restoreFocusForForm(e.data)
               .then(e => {
-                'error' in e && console.error(e.error), s(e);
+                ('error' in e && console.error(e.error), s(e));
               })
               .catch(e => {
-                console.error(e),
-                  s({ success: !1, error: `[FORM RESTORE]: ${e.message}`, shouldLog: !0 });
+                (console.error(e),
+                  s({ success: !1, error: `[FORM RESTORE]: ${e.message}`, shouldLog: !0 }));
               }),
             !0
           );
         case 'editable_check_focused':
-          return debug('[EDITABLE CHECK FOCUSED]'), getSidebarFrameSelectionData().then(s), !0;
+          return (debug('[EDITABLE CHECK FOCUSED]'), getSidebarFrameSelectionData().then(s), !0);
         case 'editable_check':
           let t, r;
           const a = Ee?.deref();
-          a && isEditable(a)
+          (a && isEditable(a)
             ? ((t = a), (r = !0), debug('[EDITABLE CHECK]', 'Using last focused element', t))
             : ((t = documentActive(document, !1)), (r = isEditable(t))),
             r
               ? (s({ hasSelection: isUncollapsedSelection(t), editable: !0 }),
                 saveFocusAndSelection(n, t, !0))
-              : delete he[n];
+              : delete he[n]);
           break;
         case 'picker':
           if ('stopPicker' === e.subType)
-            'undefined' == typeof PickerComponent ||
+            ('undefined' == typeof PickerComponent ||
               PickerComponent.hasStopped() ||
               PickerComponent.removeFromPage(),
               null !== document.getElementById('tb-tb-container') &&
-                reportToErrorMonitoring('Failed to clear picker from page');
+                reportToErrorMonitoring('Failed to clear picker from page'));
           else if ('restartPicker' === e.subType) {
             if ('undefined' == typeof PickerComponent)
               return void promiseSendMessage({ request: 'picker', subType: 'install' });
@@ -2224,10 +2225,10 @@ else {
           let { top: d, left: p } = l;
           if (isFrameElement(c)) {
             const e = getComputedStyle(c);
-            (d += parseInt(e.paddingTop)),
+            ((d += parseInt(e.paddingTop)),
               (d += parseInt(e.borderTopWidth)),
               (p += parseInt(e.paddingLeft)),
-              (p += parseInt(e.borderLeftWidth));
+              (p += parseInt(e.borderLeftWidth)));
           }
           s({ top: d, left: p });
           break;
@@ -2239,11 +2240,11 @@ else {
               e.widgetDeployPercent,
               e.caretPosition
             ).then(() => s('ack'));
-          else if ('resetWidget' === e.subType) u.resetWidget(), s('ack');
-          else if ('hideWidget' === e.subType) u.hideWidget(), s('ack');
-          else if ('listenerWidget' === e.subType) u.attachWindowListener(), s('ack');
+          else if ('resetWidget' === e.subType) (u.resetWidget(), s('ack'));
+          else if ('hideWidget' === e.subType) (u.hideWidget(), s('ack'));
+          else if ('listenerWidget' === e.subType) (u.attachWindowListener(), s('ack'));
           else if ('insertSnippet' === e.subType)
-            return u.insertSnippetByElement(e.snipId, e.eventType).then(() => s('ack')), !0;
+            return (u.insertSnippetByElement(e.snipId, e.eventType).then(() => s('ack')), !0);
           break;
         case 'doHaveFocus': {
           const e = null !== document.activeElement && document.hasFocus();
@@ -2270,7 +2271,7 @@ else {
           debugblaze = !0;
           break;
         case 'inPageNotification':
-          createInPageNotification(e.data), s('ack');
+          (createInPageNotification(e.data), s('ack'));
           break;
         case 'getDocBody':
           try {
@@ -2289,7 +2290,7 @@ else {
             s({ pageContent: t });
             break;
           } catch (e) {
-            reportToErrorMonitoring(e), s({ pageContent: '' });
+            (reportToErrorMonitoring(e), s({ pageContent: '' }));
             break;
           }
         case 'getDataFromSelectorMsg':
@@ -2300,7 +2301,7 @@ else {
             !0
           );
         case 'saveFrameFocus':
-          saveFocusAndSelection(n, null, !0), s('done');
+          (saveFocusAndSelection(n, null, !0), s('done'));
           break;
         case 'restoreFrameFocus':
           if ((window.focus(), e.focusFrameOnly)) {
@@ -2334,7 +2335,7 @@ else {
           );
         }
         case 'aiChat':
-          return Y(e).then(s), !0;
+          return (Y(e).then(s), !0);
         case 'confetti': {
           const t = $(e);
           if (t)
@@ -2495,17 +2496,17 @@ else {
             y.includes('```') || ((e = '`'), y.pop());
             break;
           case 'pre':
-            (e = '\n```\n'), y.pop();
+            ((e = '\n```\n'), y.pop());
             break;
           case 'blockquote':
           case 'li':
             e = '\n';
             break;
           case 'ol':
-            E.pop(), b--, (e = '\n');
+            (E.pop(), b--, (e = '\n'));
             break;
           case 'ul':
-            b--, (e = '\n');
+            (b--, (e = '\n'));
             break;
           case 'p':
           case 'div':
@@ -2539,23 +2540,24 @@ else {
         const i = t => {
           let n = e.parentElement;
           return (
-            'a' === (n ? n.tagName.toLowerCase() : '') && (t = (t = t.trim()).replace(Q, '\\$1')), t
+            'a' === (n ? n.tagName.toLowerCase() : '') && (t = (t = t.trim()).replace(Q, '\\$1')),
+            t
           );
         };
         if (a && d && s) {
           const { startContainer: r, startOffset: a, endContainer: c, endOffset: l } = s;
           if (r === e) {
             const e = s.cloneRange();
-            e.setStart(r, 0),
+            (e.setStart(r, 0),
               e.setEnd(r, a),
               (t = i(e.toString()) + u),
-              isEditableInner(o) || (d = !1);
+              isEditableInner(o) || (d = !1));
           }
           if (c === e) {
             const n = s.cloneRange();
-            n.setStart(c, l),
+            (n.setStart(c, l),
               n.setEnd(c, c.textContent.length),
-              r === e ? (t += i(n.toString())) : (t = i(n.toString()));
+              r === e ? (t += i(n.toString())) : (t = i(n.toString())));
           }
           if (n) {
             if (((d = !1), g.push(ae), (m += ae.length), p && m >= p && !d)) {
@@ -2605,24 +2607,24 @@ else {
           break;
         case 'strong':
         case 'b':
-          (S = '**'), y.push('**');
+          ((S = '**'), y.push('**'));
           break;
         case 'em':
         case 'i':
-          (S = '*'), y.push('*');
+          ((S = '*'), y.push('*'));
           break;
         case 'u':
-          (S = '__'), y.push('__');
+          ((S = '__'), y.push('__'));
           break;
         case 'del':
         case 's':
-          (S = '~~'), y.push('~~');
+          ((S = '~~'), y.push('~~'));
           break;
         case 'sup':
-          (S = '^('), y.push(')');
+          ((S = '^('), y.push(')'));
           break;
         case 'sub':
-          (S = '~('), y.push(')');
+          ((S = '~('), y.push(')'));
           break;
         case 'a':
           S = '[';
@@ -2632,7 +2634,7 @@ else {
             ((S = '`'), y.push('`'));
           break;
         case 'pre':
-          (S = '```\n'), y.push('```');
+          ((S = '```\n'), y.push('```'));
           break;
         case 'li': {
           let t = e.parentElement ? e.parentElement.tagName.toLowerCase() : '',
@@ -2643,10 +2645,10 @@ else {
           break;
         }
         case 'ol':
-          b++, E.push(0), (S = '');
+          (b++, E.push(0), (S = ''));
           break;
         case 'ul':
-          b++, (S = '');
+          (b++, (S = ''));
           break;
         case 'blockquote':
           S = '> ';
@@ -2661,7 +2663,7 @@ else {
           let t = e.getAttribute('alt') || '';
           if (t) {
             let e = `![${t}]()`;
-            g.push(e), (m += e.length);
+            (g.push(e), (m += e.length));
           }
           break;
         }
@@ -2704,7 +2706,7 @@ else {
             o = e.selectionEnd,
             i = t.substring(0, n),
             s = t.substring(o);
-          (u = ie + a + se), (t = re + i + u + s + ae);
+          ((u = ie + a + se), (t = re + i + u + s + ae));
         }
         if ((g.push(t), (m += t.length), p && m >= p && !d)) {
           g.push('...');
@@ -2712,7 +2714,7 @@ else {
         }
         continue;
       }
-      (h = Z.has(w)), f.push({ node: e, isClosing: !0 });
+      ((h = Z.has(w)), f.push({ node: e, isClosing: !0 }));
       let C = e.childNodes;
       a &&
         e === o &&
@@ -2776,7 +2778,7 @@ else {
       for (let n = 0; n < e.frames.length; n++) t += getIframesCount(e.frames[n]);
       return t;
     } catch (e) {
-      return reportToErrorMonitoring(e), 0;
+      return (reportToErrorMonitoring(e), 0);
     }
   }
   async function lookupShortcuts(e, t) {
@@ -2803,7 +2805,7 @@ else {
   }
   function doesElementMatchSelector(e, { classes: t = [], tagName: n = null, id: o = null }) {
     let i = !n || e.tagName === n;
-    return (i = i && (!o || e.id === o)), (i = i && t.every(t => e.classList.contains(t))), i;
+    return ((i = i && (!o || e.id === o)), (i = i && t.every(t => e.classList.contains(t))), i);
   }
   const de = {
     isCkEditor4: function (e) {
@@ -2844,20 +2846,20 @@ else {
   }
   async function clearTextPrecedingCursor(e) {
     if (!isEditableInner(e))
-      return console.warn('Invalid target', e, 'for clearing text before cursor'), !1;
+      return (console.warn('Invalid target', e, 'for clearing text before cursor'), !1);
     if (
       (debug('[CLEARING TEXT PRECEDING CURSOR]', e),
       e instanceof HTMLInputElement || e instanceof HTMLTextAreaElement)
     )
-      (e.value = e.value.substring(e.selectionEnd)),
+      ((e.value = e.value.substring(e.selectionEnd)),
         (e.selectionStart = e.selectionEnd = 0),
-        debug('[CLEARED TEXT PRECEDING CURSOR] plain text');
+        debug('[CLEARED TEXT PRECEDING CURSOR] plain text'));
     else {
       const t = selectionForElement(e);
       if (t.rangeCount) {
         const n = t.getRangeAt(0).cloneRange(),
           o = n.endContainer;
-        n.setStart(e, 0), n.setEnd(o, n.endOffset);
+        (n.setStart(e, 0), n.setEnd(o, n.endOffset));
         !n.collapsed &&
           (t.removeAllRanges(),
           t.addRange(n),
@@ -2873,9 +2875,9 @@ else {
       i = win(e).document;
     if (n) {
       const n = o.getSelection();
-      n.getRangeAt(0).selectNodeContents(e),
+      (n.getRangeAt(0).selectNodeContents(e),
         t && n.collapseToEnd(),
-        i.dispatchEvent(new Event('selectionchange'));
+        i.dispatchEvent(new Event('selectionchange')));
     } else if ((i.execCommand('selectAll', !1), t)) {
       o.getSelection().collapseToEnd();
     }
@@ -2884,25 +2886,25 @@ else {
     for (; e.parentElement && isEditable(e.parentElement); ) e = e.parentElement;
     const t = e.getBoundingClientRect(),
       n = document.createElement('div');
-    (n.id = 'text-blaze-animater'),
+    ((n.id = 'text-blaze-animater'),
       (n.style.background = 'rgb(255 255 80 / 50%)'),
       (n.style.position = 'absolute'),
-      (n.style.boxSizing = 'border-box');
+      (n.style.boxSizing = 'border-box'));
     const o = t.top + window.scrollY,
       i = t.left + window.scrollX,
       s = t.height,
       r = t.width,
       a = e => e + 'px';
-    (n.style.top = a(o)),
+    ((n.style.top = a(o)),
       (n.style.left = a(i)),
       (n.style.height = a(s)),
       (n.style.width = a(r)),
       (n.style.zIndex = '100000000000'),
       (n.style.pointerEvents = 'none'),
-      (n.inert = !0);
+      (n.inert = !0));
     const c = e.ownerDocument.body;
     if (e === c) return;
-    c.appendChild(n), n.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    (c.appendChild(n), n.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' }));
     n.animate(
       [
         { opacity: 0.5 },
@@ -2941,14 +2943,14 @@ else {
     if (!(a && a instanceof win(a).HTMLElement))
       return { success: !1, error: (t || e) + ' did not match any interactive element' };
     const c = a;
-    return c.focus(), showContainerAroundElement(c), triggerClickOnElement(c), { success: !0 };
+    return (c.focus(), showContainerAroundElement(c), triggerClickOnElement(c), { success: !0 });
   }
   function triggerClickOnElement(e) {
-    emulateClickOnElement(e),
+    (emulateClickOnElement(e),
       isEditable(e) &&
         (e instanceof HTMLInputElement || e instanceof HTMLTextAreaElement
           ? (e.selectionEnd = e.selectionStart = e.value.length)
-          : emulateSelectAllOrClickEnd(e, !0));
+          : emulateSelectAllOrClickEnd(e, !0)));
   }
   async function placeFocus({ rootNode: e, selector: t, xpath: n }) {
     let o;
@@ -2978,7 +2980,7 @@ else {
         }
       );
     } catch (e) {
-      return reportToErrorMonitoring(e), { success: !1, error: e.message };
+      return (reportToErrorMonitoring(e), { success: !1, error: e.message });
     }
   }
   async function placeFocusWithTimeout({ timeoutMs: e, rootNode: t, selector: n, xpath: o }) {
@@ -2986,10 +2988,10 @@ else {
     let s = await placeFocus({ rootNode: t, selector: n, xpath: o }),
       r = i - Date.now();
     for (; !s.success && r > 0; )
-      promiseSendMessage({ request: 'clickFailed' }),
+      (promiseSendMessage({ request: 'clickFailed' }),
         await promiseDelay(Math.min(r, 100)),
         (s = await placeFocus({ rootNode: t, selector: n, xpath: o })),
-        (r = i - Date.now());
+        (r = i - Date.now()));
     return (
       !1 === s.success &&
         s.element &&
@@ -3033,7 +3035,7 @@ else {
       const n = e.previousNode(),
         o = !(i = n) || i === t;
       var i;
-      return o && debug('[CURSORPOS] bailing on node', n), o;
+      return (o && debug('[CURSORPOS] bailing on node', n), o);
     }
     async function u() {
       if (null !== e.cursorEndOffset) return e.cursorEndOffset;
@@ -3043,7 +3045,7 @@ else {
           type: 'getHTMLInsertionStats',
           args: [n, le],
         });
-      return (e.cursorEndOffset = o), o;
+      return ((e.cursorEndOffset = o), o);
     }
     if (
       (debug('[DOING CURSOR]'),
@@ -3057,15 +3059,15 @@ else {
         f = g.anchorOffset;
       const h = document.createElement('div'),
         E = new DocumentFragment();
-      (h.contentEditable = 'true'),
+      ((h.contentEditable = 'true'),
         E.appendChild(h),
         i.htmlStr
           ? (h.innerHTML = insertCursorPlaceholderAtPosition(i.htmlStr, e.cursorEndOffsetHTML, !0))
           : i.textStr
-          ? (h.innerText = insertCursorPlaceholderAtPosition(i.textStr, e.cursorEndOffset, !0))
-          : console.error(
-              'Replacement data neither has textStr nor htmlStr set, this should NEVER happen.'
-            );
+            ? (h.innerText = insertCursorPlaceholderAtPosition(i.textStr, e.cursorEndOffset, !0))
+            : console.error(
+                'Replacement data neither has textStr nor htmlStr set, this should NEVER happen.'
+              ));
       const b = document.createTreeWalker(
           document.body,
           NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT
@@ -3092,13 +3094,13 @@ else {
         let i = !0;
         for (; n > 0 && o > 0; )
           if ((i && !l(e[o - 1]) && (i = !1), e[o - 1] !== t[n - 1]))
-            if (l(e[o - 1]) && l(t[n - 1])) n--, o--;
+            if (l(e[o - 1]) && l(t[n - 1])) (n--, o--);
             else {
               if (!i || !l(e[o - 1])) break;
               if (t.substring(n - le.length, n) === le) break;
               o--;
             }
-          else n--, o--;
+          else (n--, o--);
         T = [b.currentNode, o];
       }
       for (;;) {
@@ -3149,7 +3151,7 @@ else {
             if ((debug("[CURSORPOS] skip new node that's empty"), d(y))) break;
           } else {
             if (v.includes(le)) {
-              debug('[CURSORPOS] assign cursor pos in the correct textnode'), p(C, v);
+              (debug('[CURSORPOS] assign cursor pos in the correct textnode'), p(C, v));
               break;
             }
             if (v.endsWith(C) && C.length > 0 && v !== C) {
@@ -3163,10 +3165,10 @@ else {
       if ((debug('[CURSORPOS] positioning over'), E.removeChild(h), T[0])) {
         const N = document.createRange(),
           [M, O] = T;
-        N.setStart(M, O), N.setEnd(M, O), g.removeAllRanges(), g.addRange(N);
+        (N.setStart(M, O), N.setEnd(M, O), g.removeAllRanges(), g.addRange(N));
       } else
-        console.error('[ERROR - CURSOR] No position found!'), moveCursorBackwards(n, await u());
-    } else debug('[USING CURSOR EMULATION]'), moveCursorBackwards(n, await u());
+        (console.error('[ERROR - CURSOR] No position found!'), moveCursorBackwards(n, await u()));
+    } else (debug('[USING CURSOR EMULATION]'), moveCursorBackwards(n, await u()));
   }
   async function insertReplacement(e) {
     const { isFirst: t, replacement: n, snippetType: o, isForm: i } = e;
@@ -3226,7 +3228,7 @@ else {
         m,
         f = null;
       if (n.htmlStrArr) {
-        (d.htmlStr = ''), (p = l(n.htmlStrArr));
+        ((d.htmlStr = ''), (p = l(n.htmlStrArr)));
         for (const y of p.cleanedParts) d.htmlStr += y;
         if (null !== p.lastCursorIndex) {
           f = 0;
@@ -3256,12 +3258,12 @@ else {
           const A = '​';
           x ? (u.cleanedParts[S + 1] = A + u.cleanedParts[S + 1]) : u.cleanedParts.push(A);
           const k = d.textStr.length - E;
-          (d.textStr = d.textStr.substr(0, k) + A + d.textStr.substr(k)), (E += A.length);
+          ((d.textStr = d.textStr.substr(0, k) + A + d.textStr.substr(k)), (E += A.length));
         }
       }
       if (s || g) {
-        debug('[INSERTING]', s, d.textStr || d.htmlStr, d, a, m),
-          (d.textStr = d.textStr.replace(new RegExp(String.fromCharCode(160), 'g'), ' '));
+        (debug('[INSERTING]', s, d.textStr || d.htmlStr, d, a, m),
+          (d.textStr = d.textStr.replace(new RegExp(String.fromCharCode(160), 'g'), ' ')));
         try {
           'INPUT' === insertionMode(a, s)
             ? await insertInputTextarea(a, s, d.textStr, E)
@@ -3291,12 +3293,12 @@ else {
         ? 'action_start' === n.info.type
           ? saveFocusAndSelection(w + n.info.savedFocusCount)
           : 'action_end' === n.info.type
-          ? (restoreFocusAndSelection(w + n.info.savedFocusCount), (c = 120))
-          : console.log('Unknown form type: ', n.type, n.tag, n.info.type)
+            ? (restoreFocusAndSelection(w + n.info.savedFocusCount), (c = 120))
+            : console.log('Unknown form type: ', n.type, n.tag, n.info.type)
         : 'wait' === n.tag
-        ? (c = 1e3 * n.info.delay)
-        : console.log('Unknown action type: ', n.type, n.tag);
-    return debug('[INSERTED]', { type: n.type, skipTimeMs: c }), { success: !0, skipTimeMs: c };
+          ? (c = 1e3 * n.info.delay)
+          : console.log('Unknown action type: ', n.type, n.tag);
+    return (debug('[INSERTED]', { type: n.type, skipTimeMs: c }), { success: !0, skipTimeMs: c });
   }
   function insertionMode(e, t) {
     return ((e instanceof win(e).HTMLInputElement && isInputEditable(e)) ||
@@ -3310,8 +3312,8 @@ else {
     e.dispatchEvent(o);
   }
   async function insertInputTextarea(e, t, n, o) {
-    debug('[INPUT/TEXTAREA INSERT]', n),
-      e instanceof HTMLInputElement && (n = n.replace(/\r\n?|\n/g, ' '));
+    (debug('[INPUT/TEXTAREA INSERT]', n),
+      e instanceof HTMLInputElement && (n = n.replace(/\r\n?|\n/g, ' ')));
     const i = getCursorLocation(e);
     let s, r;
     i && 'textarea' === i.type
@@ -3322,14 +3324,14 @@ else {
     const a = isProxyEditor(e),
       c = 0 === n.length;
     if (a)
-      debug('[EMULATION CLEAR SHORTCUT INPUT/TEXTAREA]'),
-        await clearShortcut(t, e, c, window.getSelection());
+      (debug('[EMULATION CLEAR SHORTCUT INPUT/TEXTAREA]'),
+        await clearShortcut(t, e, c, window.getSelection()));
     else {
       debug('[DIRECT CLEAR SHORTCUT INPUT/TEXTAREA]');
       const t = e.value,
         n = t.slice(0, s),
         o = t.slice(r);
-      (e.value = n + o), moveCursorInputTextarea(e, s);
+      ((e.value = n + o), moveCursorInputTextarea(e, s));
     }
     if ((win(e).document.execCommand('insertText', !1, n), 0 !== o)) {
       const t = s + n.length;
@@ -3345,11 +3347,11 @@ else {
       if (e !== o);
       else {
         if (!(e > 0)) return;
-        (o = e), e--;
+        ((o = e), e--);
       }
       const i = e,
         s = e;
-      n.updateText(e, o, ''), n.updateSelection(i, s);
+      (n.updateText(e, o, ''), n.updateSelection(i, s));
       const r = new (win(t).TextUpdateEvent)('textupdate', {
         text: '',
         selectionStart: i,
@@ -3360,16 +3362,16 @@ else {
       n.dispatchEvent(r);
     } else e.execCommand('delete');
   }
-  addGlobalListener(({ document: e }) =>
+  (addGlobalListener(({ document: e }) =>
     e.addEventListener('__TB_registerElementEvent', e => {
       registerElement(e.target);
     })
   ),
     addGlobalListener(({ document: e }) =>
       e.addEventListener('__TB_triggerPasteElementEvent', t => {
-        e.execCommand('paste', !1), t.stopImmediatePropagation();
+        (e.execCommand('paste', !1), t.stopImmediatePropagation());
       })
-    );
+    ));
   const ue = Math.random().toString(36).substring(7);
   let pe = 0;
   const ge = { previousKeyTarget: null, keysSoFar: '' };
@@ -3403,14 +3405,14 @@ else {
       }
       if (s === m.backspace) {
         if ('input' === o) return void emulateBackspace(n, t);
-        (r.inputType = 'deleteContentBackward'), (i = new (win(t).InputEvent)(o, r));
+        ((r.inputType = 'deleteContentBackward'), (i = new (win(t).InputEvent)(o, r)));
       } else if (1 === e.key.length || e.keyCode === m.space) {
         const s = e.keyCode === m.space ? ' ' : e.key,
           a = t instanceof HTMLSelectElement;
         if ('input' !== o || a)
-          'textInput' === o || a || (r.inputType = 'insertText'),
+          ('textInput' === o || a || (r.inputType = 'insertText'),
             (r.data = s),
-            (i = new (win(t).InputEvent)(o, r));
+            (i = new (win(t).InputEvent)(o, r)));
         else {
           const e = t.editContext;
           if (e) {
@@ -3418,7 +3420,7 @@ else {
               o = e.selectionEnd,
               i = n + 1,
               r = n + 1;
-            e.updateText(n, o, s), e.updateSelection(i, r);
+            (e.updateText(n, o, s), e.updateSelection(i, r));
             const a = new (win(t).TextUpdateEvent)('textupdate', {
               text: s,
               selectionStart: i,
@@ -3435,10 +3437,10 @@ else {
             ? 'beforeinput' === o &&
               ((r.inputType = 'insertLineBreak'), (i = new (win(t).InputEvent)(o, r)))
             : 'input' === o
-            ? n.execCommand('insertParagraph')
-            : 'beforeinput' === o
-            ? ((r.inputType = 'insertParagraph'), (i = new (win(t).InputEvent)(o, r)))
-            : ((r.data = '\n'), (i = new (win(t).InputEvent)(o, r))));
+              ? n.execCommand('insertParagraph')
+              : 'beforeinput' === o
+                ? ((r.inputType = 'insertParagraph'), (i = new (win(t).InputEvent)(o, r)))
+                : ((r.data = '\n'), (i = new (win(t).InputEvent)(o, r))));
       if (i)
         return (
           debug('[INPUT EVENT]', { type: i.type, inputType: i.inputType }, i),
@@ -3512,7 +3514,7 @@ else {
           '-]': 'BracketRight',
           "-'": 'Quote',
         }['-' + e.key.toLowerCase()];
-        (i.key = e.key), t && (i.code = t);
+        ((i.key = e.key), t && (i.code = t));
       } else {
         const t = {
           backspace: 'Backspace',
@@ -3528,41 +3530,41 @@ else {
         }[e.key];
         t && ((i.code = t), 'space' === e.key ? (i.key = ' ') : (i.key = t));
       }
-      (i.charCode = 'keypress' === n ? o : 0), debug('[KEY EVENT]', n, i);
+      ((i.charCode = 'keypress' === n ? o : 0), debug('[KEY EVENT]', n, i));
       const s = new (win(t).KeyboardEvent)(n, i);
-      return t.dispatchEvent(s), s.defaultPrevented;
+      return (t.dispatchEvent(s), s.defaultPrevented);
     }
     function a() {
       if ((r('keyup'), i)) {
         const n = new (win(t).CompositionEvent)('compositionend', { data: e.key });
-        (n.isBlazeGenerated = !0),
-          t.editContext ? t.editContext.dispatchEvent(n) : t.dispatchEvent(n);
+        ((n.isBlazeGenerated = !0),
+          t.editContext ? t.editContext.dispatchEvent(n) : t.dispatchEvent(n));
       }
     }
-    (t === ge.previousKeyTarget && isSingleLetterKey(e)) || (ge.keysSoFar = ''),
-      (ge.previousKeyTarget = t);
+    ((t === ge.previousKeyTarget && isSingleLetterKey(e)) || (ge.keysSoFar = ''),
+      (ge.previousKeyTarget = t));
     const c = e.key.toLowerCase();
     if (
       ((e.keyCode =
         'escape' === c
           ? m.escape
           : 'tab' === c
-          ? m.tab
-          : 'backspace' === c
-          ? m.backspace
-          : 'enter' === c || 'return' === c
-          ? m.return
-          : 'leftarrow' === c
-          ? m.left
-          : 'rightarrow' === c
-          ? m.right
-          : 'uparrow' === c
-          ? m.up
-          : 'downarrow' === c
-          ? m.down
-          : 'space' === c || ' ' === c
-          ? m.space
-          : c.toUpperCase().charCodeAt(0)),
+            ? m.tab
+            : 'backspace' === c
+              ? m.backspace
+              : 'enter' === c || 'return' === c
+                ? m.return
+                : 'leftarrow' === c
+                  ? m.left
+                  : 'rightarrow' === c
+                    ? m.right
+                    : 'uparrow' === c
+                      ? m.up
+                      : 'downarrow' === c
+                        ? m.down
+                        : 'space' === c || ' ' === c
+                          ? m.space
+                          : c.toUpperCase().charCodeAt(0)),
       debug('[SEND KEY]', e.keyCode, e, t),
       (function (o, c) {
         let l;
@@ -3577,7 +3579,7 @@ else {
           const e = new (win(t).CompositionEvent)('compositionstart');
           t.editContext ? t.editContext.dispatchEvent(e) : t.dispatchEvent(e);
         }
-        r('keydown') && (l = 'keydown'),
+        (r('keydown') && (l = 'keydown'),
           !l && f && (('A' === t.nodeName && d) || (r('keypress') && (l = 'keypress'))),
           (['SELECT', 'INPUT', 'TEXTAREA'].includes(t.nodeName) ||
             'yes' === n.designMode.toLowerCase() ||
@@ -3597,15 +3599,15 @@ else {
               !l && E && s('textInput') && (l = 'textInput'),
               !l && h && s('input') && (l = 'input'))),
           d || a(),
-          l && (n.body.dataset[o] = l);
+          l && (n.body.dataset[o] = l));
       })(o, F),
       (t = documentActive()),
       (n = t && t.ownerDocument),
       e.keyCode === m.tab && 'keydown' !== n.body.dataset[o])
     )
-      e.shift ? tabPrev() : tabNext(),
+      (e.shift ? tabPrev() : tabNext(),
         (t = documentActive()),
-        t && t instanceof win(t).HTMLInputElement && t.select();
+        t && t instanceof win(t).HTMLInputElement && t.select());
     else if (t instanceof HTMLSelectElement && 'keydown' !== n.body.dataset[o])
       if (isUpDownArrowKey(e)) {
         const n = t.selectedIndex,
@@ -3626,7 +3628,7 @@ else {
               try {
                 return [...i.segment(e)].map(e => e.segment);
               } catch (t) {
-                return reportToErrorMonitoring(t), [...e];
+                return (reportToErrorMonitoring(t), [...e]);
               }
             }
             const r = t.trim(),
@@ -3691,11 +3693,11 @@ else {
     const n = t.anchorNode;
     if (!n) return void debug('[MISSING ANCHOR NODE]');
     let o = n.textContent;
-    if (null != o) return (o = o.slice(0, t.anchorOffset)), o.toLowerCase();
+    if (null != o) return ((o = o.slice(0, t.anchorOffset)), o.toLowerCase());
     debug('[MISSING ANCHOR NODE TEXT]');
   }
   async function pasteWithExecCommand(e) {
-    (e.body.dataset.__TB_execCommand = '1'),
+    ((e.body.dataset.__TB_execCommand = '1'),
       delete e.body.dataset.__TB_execCommand_pending,
       delete e.body.dataset.__TB_execCommand_finished,
       window.addEventListener('paste', pasteListenerForBeforeInput, !1),
@@ -3706,7 +3708,7 @@ else {
         (debug('[WAITING FOR EXEC]'), await execCommandFinished(e)),
       delete e.body.dataset.__TB_execCommand,
       delete e.body.dataset.__TB_execCommand_pending,
-      delete e.body.dataset.__TB_execCommand_finished;
+      delete e.body.dataset.__TB_execCommand_finished);
   }
   function pasteWithEvent(e, t) {
     const n = getDataTransferFromReplacementData(t),
@@ -3795,7 +3797,7 @@ else {
     if (l) {
       for (; !(l instanceof win(l).HTMLElement) && l.parentElement; ) l = l.parentElement;
       if (l instanceof win(l).HTMLElement) {
-        debug('[GET STYLES] styleEl', l),
+        (debug('[GET STYLES] styleEl', l),
           (u = (function (t) {
             for (; t; ) {
               const n = r.find(e => e === t.tagName);
@@ -3804,7 +3806,7 @@ else {
               t = t.parentElement;
             }
             return null;
-          })(l));
+          })(l)));
         const n = window.getComputedStyle(l);
         if (((a = n.direction), !N.has(e) || !0 === N.get(e)))
           for (const o of t) {
@@ -3822,7 +3824,7 @@ else {
       }
     }
     const p = { sel: c, direction: a, styles: d, targetTag: u };
-    return debug('[GET STYLES] styles', p), p;
+    return (debug('[GET STYLES] styles', p), p);
   }
   function isEmptyInsert(e, t) {
     if ('html' === e) {
@@ -3832,7 +3834,7 @@ else {
         (e.innerHTML = t.htmlStr),
         /^\s*$/.test(e.innerText) && !e.querySelector('img') && !e.querySelector('table'))
       )
-        return e.remove(), !0;
+        return (e.remove(), !0);
       e.remove();
     } else if ('text' === e && '' === t.textStr) return !0;
     return !1;
@@ -3844,7 +3846,7 @@ else {
       debug('[TEXT 0]', () => (i ? t.value : t.textContent));
       const s = getAnchorText(t),
         r = e.length;
-      for (let e = 0; e < r; e++) sendKey({ key: 'backspace' }), await promiseDelay(1);
+      for (let e = 0; e < r; e++) (sendKey({ key: 'backspace' }), await promiseDelay(1));
       if (void 0 !== s && !n) {
         const n = e.toLowerCase();
         if (
@@ -3871,7 +3873,7 @@ else {
   }
   async function setClipboard(e, t, n, o, i) {
     const s = de.isCkEditor4(o);
-    debug('[SETTING CLIPBOARD]', {
+    (debug('[SETTING CLIPBOARD]', {
       type: e,
       replacementData: n,
       styles: t,
@@ -3888,14 +3890,14 @@ else {
           options: { isCKE4: s },
         },
       }),
-      debug('[CLIPBOARD SET]');
+      debug('[CLIPBOARD SET]'));
   }
   function getDataTransferFromReplacementData(e) {
     const t = new DataTransfer();
     if ((t.setData('text/plain', e.textStr), e.htmlStr)) {
       const n = "<meta charset='utf-8'>";
       let o = e.htmlStr;
-      o.startsWith(n) || (o = n + o), t.setData('text/html', o);
+      (o.startsWith(n) || (o = n + o), t.setData('text/html', o));
     }
     return t;
   }
@@ -3910,7 +3912,7 @@ else {
         composed: !0,
         isComposing: !1,
       });
-    return e.dispatchEvent(n), n.defaultPrevented;
+    return (e.dispatchEvent(n), n.defaultPrevented);
   }
   function pasteListenerForBeforeInput(e) {
     e.defaultPrevented ||
@@ -3936,7 +3938,7 @@ else {
         reportToErrorMonitoring(new Error('Paste failed'));
     else {
       const t = e.textContent;
-      debug('[EXEC_PASTE 1]'),
+      (debug('[EXEC_PASTE 1]'),
         debug('[TEXT 1]', () => e.textContent),
         await pasteWithExecCommand(o),
         debug('[TEXT 2]', () => e.textContent),
@@ -3944,7 +3946,7 @@ else {
           (debug('[CHECKING PASTE]'),
           await promiseDelay(1),
           await new Promise(e => requestAnimationFrame(e)),
-          t === e.textContent && (debug('[EXEC_PASTE 2]'), await pasteWithExecCommand(o)));
+          t === e.textContent && (debug('[EXEC_PASTE 2]'), await pasteWithExecCommand(o))));
     }
     fe = { target: null, pasteData: null, defaultPrevented: !1 };
   }
@@ -3958,8 +3960,8 @@ else {
     const n = selectionForElement(e),
       o = n.anchorNode;
     if (!n.isCollapsed)
-      return console.warn('isIntegratedEditor called with uncollapsed selection'), !0;
-    if (!o) return reportToErrorMonitoring('anchorNode is null in isIntegratedEditor'), !0;
+      return (console.warn('isIntegratedEditor called with uncollapsed selection'), !0);
+    if (!o) return (reportToErrorMonitoring('anchorNode is null in isIntegratedEditor'), !0);
     const i = o.textContent,
       s = n.anchorOffset;
     return i.substring(s - t.length, s).toLocaleLowerCase() === t.toLocaleLowerCase();
@@ -3969,7 +3971,7 @@ else {
     const { direction: s, styles: r, sel: a, targetTag: c } = await getStylesAndDirection(e),
       l = isEmptyInsert(o, n),
       d = isIntegratedEditor(e, t);
-    await clearShortcut(t, e, l, a),
+    (await clearShortcut(t, e, l, a),
       l
         ? debug('[EMPTY INSERT]')
         : (await setClipboard(o, r, n, e, c),
@@ -3978,7 +3980,7 @@ else {
             (await moveCursor(i, e, s, d, n)),
           debug('[FINISHING]'),
           await sendToOffscreenDocument({ type: 'setClipboardWithCache' }),
-          debug('[RESTORED CLIPBOARD]'));
+          debug('[RESTORED CLIPBOARD]')));
   }
   const he = {};
   function saveFocusAndSelection(e, t = null, n = !1) {
@@ -3988,11 +3990,11 @@ else {
         focusedElement: o,
         isVisible: isElementVisible(o),
       };
-    debug('[SAVED FOCUS AND SELECTION]', { savedId: e, saved: i }),
+    (debug('[SAVED FOCUS AND SELECTION]', { savedId: e, saved: i }),
       (he[e] = i),
       n &&
         !isEditable(o) &&
-        reportToErrorMonitoring(`Element ${o.tagName} with save focus is not editable`);
+        reportToErrorMonitoring(`Element ${o.tagName} with save focus is not editable`));
   }
   function restoreFocusAndSelection(e, t = !1, n = !1) {
     const o = he[e];
@@ -4020,8 +4022,8 @@ else {
               if ('ce' === o.cursorLocation.type) {
                 const e = selectionForElement(o.focusedElement);
                 let n;
-                debug('[RESTORE FOCUS AND SELECTION] existing range count', e.rangeCount),
-                  (n = e.rangeCount ? e.getRangeAt(0) : document.createRange());
+                (debug('[RESTORE FOCUS AND SELECTION] existing range count', e.rangeCount),
+                  (n = e.rangeCount ? e.getRangeAt(0) : document.createRange()));
                 const {
                     startContainer: i,
                     endContainer: s,
@@ -4054,7 +4056,7 @@ else {
                 (t || n) &&
                   moveCursorInputTextarea(e, o.cursorLocation.start, o.cursorLocation.end);
               }
-              (i.set = !0), (i.changed = r);
+              ((i.set = !0), (i.changed = r));
             } catch (e) {
               console.error(e);
             }
@@ -4062,7 +4064,7 @@ else {
       else i.found = !1;
       n || delete he[e];
     }
-    return debug('[RESTORE RESULT]', i), i;
+    return (debug('[RESTORE RESULT]', i), i);
   }
   function getCursorLocation(e) {
     if (
@@ -4125,11 +4127,11 @@ else {
     if (e instanceof NodeList) return void e.forEach(e => registerElement(e));
     if (!ye.has(e)) {
       if ((ye.add(e), 'function' != typeof e.addEventListener)) return;
-      e.addEventListener('mousedown', () => v.empty('mousedown')),
+      (e.addEventListener('mousedown', () => v.empty('mousedown')),
         e.addEventListener('keydown', keyDownEventListener),
         e.addEventListener('keypress', keyPressEventListener),
         e.addEventListener('beforeinput', beforeInputEventListener),
-        e.addEventListener('compositionend', compositionEndEventListener);
+        e.addEventListener('compositionend', compositionEndEventListener));
     }
     const t = e.editContext;
     t &&
@@ -4180,20 +4182,20 @@ else {
       return void (o[a] || (t.dataset.content = JSON.stringify({ ...o, [a]: !0 })));
     }
     const o = document.createElement(s);
-    o.setAttribute('style', 'display: contents !important;'), o.setAttribute('role', 'none');
+    (o.setAttribute('style', 'display: contents !important;'), o.setAttribute('role', 'none'));
     const i = o.attachShadow({ mode: 'closed' }),
       r = document.createElement('style');
-    (r.textContent =
+    ((r.textContent =
       '\n      div:before {\n        content: attr(data-content);\n      }\n      div {\n        all: initial;\n        position: absolute;\n        border: 0;\n        margin: -1px;\n        padding: 0;\n        width: 0.1px;\n        height: 0.1px;\n        user-select: none;\n        overflow: hidden;\n        font-size: 0px;\n        clip: rect(0, 0, 0, 0);\n        white-space: nowrap;\n        pointer-events: none;\n      }\n      @media print {\n        * {\n          display: none !important;\n        }\n      }\n      '),
-      i.appendChild(r);
+      i.appendChild(r));
     const c = document.createElement('div');
-    (c.ariaLabel = 'text-blaze-integration'),
+    ((c.ariaLabel = 'text-blaze-integration'),
       c.setAttribute('role', 'group'),
       (c.tabIndex = -1),
       (c.dataset.content = JSON.stringify({ extensionEnabled: !0, [a]: !0 })),
       i.appendChild(c),
       c.setAttribute('dir', 'ltr'),
-      e.appendChild(o);
+      e.appendChild(o));
   }
   function onLoaded(e) {
     if (
@@ -4205,7 +4207,7 @@ else {
       const n = () => {
         t || ((t = !0), e());
       };
-      document.addEventListener('DOMContentLoaded', n), setTimeout(n, 200);
+      (document.addEventListener('DOMContentLoaded', n), setTimeout(n, 200));
     }
   }
   function getIframeDepth(e) {
@@ -4226,16 +4228,16 @@ else {
     }
   }
   function initializeDesktopIntegration(e) {
-    0 === e && addExtensionActiveWebComponent(document.documentElement),
+    (0 === e && addExtensionActiveWebComponent(document.documentElement),
       document.querySelectorAll(y).forEach(e => {
         addExtensionActiveWebComponent(e);
-      });
+      }));
   }
   function removeDesktopIntegration() {
     for (const e of document.querySelectorAll(s)) {
       const t = getShadowRoot(e).lastElementChild,
         n = JSON.parse(t.dataset.content);
-      delete n[a], (t.dataset.content = JSON.stringify(n));
+      (delete n[a], (t.dataset.content = JSON.stringify(n)));
     }
   }
   function isElementManagedByBlaze(e) {
@@ -4254,7 +4256,7 @@ else {
         break;
       }
       try {
-        (t = window.parent), (n = t.document);
+        ((t = window.parent), (n = t.document));
       } catch (e) {
         break;
       }
@@ -4269,14 +4271,14 @@ else {
     const e = tabbable(rootDocument().body);
     if (e.length) {
       let t = e.indexOf(documentActive());
-      t--, t < 0 && (t = e.length - 1), e[t].focus();
+      (t--, t < 0 && (t = e.length - 1), e[t].focus());
     }
   }
   function tabNext() {
     const e = tabbable(rootDocument().body);
     if (e.length) {
       let t = e.indexOf(documentActive());
-      t++, t >= e.length && (t = 0), e[t].focus();
+      (t++, t >= e.length && (t = 0), e[t].focus());
     }
   }
   function tabbable(e) {
@@ -4286,7 +4288,7 @@ else {
         if (t instanceof win(t).HTMLElement)
           if (getShadowRoot(t)) {
             const o = [];
-            n.push({ type: 'CONTAINER', element: t, candidates: o }), e(getShadowRoot(t), o);
+            (n.push({ type: 'CONTAINER', element: t, candidates: o }), e(getShadowRoot(t), o));
           } else if (t instanceof win(t).HTMLIFrameElement) {
             const o = [];
             n.push({ type: 'CONTAINER', element: t, candidates: o });
@@ -4296,21 +4298,21 @@ else {
               n.pop();
             }
           } else t.matches(we) && n.push({ type: 'ELEMENT', element: t });
-        for (t = t.firstChild; t; ) e(t, n), (t = t.nextSibling);
+        for (t = t.firstChild; t; ) (e(t, n), (t = t.nextSibling));
       })(e, t),
       (function e(t) {
         const n = [],
           o = [];
         let i, s;
         for (let e = 0; e < t.length; e++)
-          (i = t[e]),
+          ((i = t[e]),
             ('ELEMENT' !== i.type || isNodeMatchingSelectorTabbable(i.element)) &&
               ('CONTAINER' !== i.type || i.candidates.length) &&
               ((s = getTabindex(i.element)),
               'CONTAINER' === i.type && s < 0 && (s = 0),
               0 === s
                 ? n.push({ candidate: i })
-                : o.push({ documentOrder: e, tabIndex: s, candidate: i }));
+                : o.push({ documentOrder: e, tabIndex: s, candidate: i })));
         let r = o.sort(sortOrderedTabbables);
         r = r.concat(n);
         let a = [];
@@ -4328,10 +4330,10 @@ else {
       i = o.indexOf(e),
       s = t ? 1 : -1;
     for (let e = i + s; e !== i; e += s) {
-      -1 === e && (e = o.length - 1), e === o.length && (e = 0);
+      (-1 === e && (e = o.length - 1), e === o.length && (e = 0));
       const t = o[e];
       if (isNodeMatchingSelectorFocusable(t))
-        return (t.checked = !0), t.focus(), void dispatchInputAndChangeEvents(t);
+        return ((t.checked = !0), t.focus(), void dispatchInputAndChangeEvents(t));
     }
     reportToErrorMonitoring('Could not find next visible radio button');
   }
@@ -4342,10 +4344,10 @@ else {
       e && e.nodeType === Node.ELEMENT_NODE && e.matches(S) && (Ee = new WeakRef(e));
     }
     function n() {
-      debug('[FOCUSED WINDOW]', document.location.href),
-        promiseSendMessage({ request: 'frameUpdate', subType: 'focusChange' });
+      (debug('[FOCUSED WINDOW]', document.location.href),
+        promiseSendMessage({ request: 'frameUpdate', subType: 'focusChange' }));
     }
-    (e.src = T.runtime.getURL('js/tbremapper.js')),
+    ((e.src = T.runtime.getURL('js/tbremapper.js')),
       e.addEventListener('load', function () {
         this.remove();
       }),
@@ -4370,10 +4372,10 @@ else {
       }),
       isAIChatIframe() ||
         addGlobalListener(({ window: e }) => {
-          isCurrentFrameFocused() && (n(), t()),
+          (isCurrentFrameFocused() && (n(), t()),
             e.addEventListener('focus', () => {
               n();
-            });
+            }));
         }),
       addGlobalListener(({ document: e }) =>
         e.addEventListener(
@@ -4383,7 +4385,7 @@ else {
           },
           !0
         )
-      );
+      ));
   });
   const we = [
     'input',
@@ -4502,22 +4504,22 @@ else {
       const t = getShadowRoot(e);
       return !!JSON.parse(t.querySelector('div').dataset.content).ai;
     } catch (e) {
-      return reportToErrorMonitoring(e), !1;
+      return (reportToErrorMonitoring(e), !1);
     }
   }
   function reportToErrorMonitoring(e, t) {
     try {
       if (!extensionActive()) return;
       let n = null;
-      (n = 'string' == typeof e ? new Error(e) : e), console.error(n);
+      ((n = 'string' == typeof e ? new Error(e) : e), console.error(n));
       const o = { request: 'reportError', message: 'Error report' };
-      (o.message = n.message),
+      ((o.message = n.message),
         (o.stack = n.stack),
         (o.name = n.name),
         (o.extraData = t),
         promiseSendMessage(o).catch(e => {
           console.warn('sendMessage failed', e);
-        });
+        }));
     } catch (e) {
       console.warn('Recursive exception while reporting error', e);
     }
@@ -4528,12 +4530,12 @@ else {
       const n = { type: e.type };
       let o;
       function t(e) {
-        (n.message = e.message),
+        ((n.message = e.message),
           (n.stack = e.stack),
           (n.name = e.name),
           (o = new Error(e.message)),
           (o.name = e.name),
-          (o.stack = e.stack);
+          (o.stack = e.stack));
       }
       if (e instanceof PromiseRejectionEvent)
         'object' != typeof e.reason ? (o = e.reason) : t(e.reason);
@@ -4543,7 +4545,7 @@ else {
       }
       reportToErrorMonitoring(o, n);
     } catch (i) {
-      return console.warn('Exception while reporting error', i), void reportToErrorMonitoring(i);
+      return (console.warn('Exception while reporting error', i), void reportToErrorMonitoring(i));
     }
   }
   function throttle(e, t) {
@@ -4551,7 +4553,7 @@ else {
       o = 0,
       i = [];
     function s() {
-      (o = Date.now()), n && (clearTimeout(n), (n = null)), e(...i), (i = []);
+      ((o = Date.now()), n && (clearTimeout(n), (n = null)), e(...i), (i = []));
     }
     return (...e) => {
       i = e;
@@ -4567,6 +4569,6 @@ else {
       }
     };
   }
-  addGlobalListener(({ window: e }) => e.addEventListener('unhandledrejection', errorHandler)),
-    addGlobalListener(({ window: e }) => e.addEventListener('error', errorHandler));
+  (addGlobalListener(({ window: e }) => e.addEventListener('unhandledrejection', errorHandler)),
+    addGlobalListener(({ window: e }) => e.addEventListener('error', errorHandler)));
 }

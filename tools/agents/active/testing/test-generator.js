@@ -30,7 +30,8 @@ const colors = {
 class TestGenerator {
   constructor(options = {}) {
     this.rootDir = options.rootDir || process.cwd();
-    this.reportPath = options.reportPath || path.join(this.rootDir, 'reports', 'component-analysis.json');
+    this.reportPath =
+      options.reportPath || path.join(this.rootDir, 'reports', 'component-analysis.json');
     this.generatedTests = [];
   }
 
@@ -42,12 +43,16 @@ class TestGenerator {
 
     // Load component analysis report
     if (!fs.existsSync(this.reportPath)) {
-      console.log(`${colors.yellow}⚠️  No analysis report found. Run component-analyzer.js first.${colors.reset}`);
+      console.log(
+        `${colors.yellow}⚠️  No analysis report found. Run component-analyzer.js first.${colors.reset}`
+      );
       process.exit(1);
     }
 
     const report = JSON.parse(fs.readFileSync(this.reportPath, 'utf-8'));
-    console.log(`${colors.blue}📊 Loaded analysis report from ${new Date(report.timestamp).toLocaleString()}${colors.reset}\n`);
+    console.log(
+      `${colors.blue}📊 Loaded analysis report from ${new Date(report.timestamp).toLocaleString()}${colors.reset}\n`
+    );
 
     // Generate tests for each category
     this.generateTouchTargetTests(report.issues.touchTargets);
@@ -358,11 +363,17 @@ test.describe('${componentName} - Performance', () => {
    * Generate summary
    */
   generateSummary() {
-    console.log(`\n${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`);
+    console.log(
+      `\n${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`
+    );
     console.log(`${colors.cyan}${colors.bright}📝 TEST GENERATION SUMMARY${colors.reset}`);
-    console.log(`${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}\n`);
+    console.log(
+      `${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}\n`
+    );
 
-    console.log(`${colors.green}✅ Generated ${this.generatedTests.length} test files${colors.reset}\n`);
+    console.log(
+      `${colors.green}✅ Generated ${this.generatedTests.length} test files${colors.reset}\n`
+    );
 
     const byType = this.generatedTests.reduce((acc, test) => {
       acc[test.type] = (acc[test.type] || 0) + 1;
@@ -373,16 +384,25 @@ test.describe('${componentName} - Performance', () => {
       console.log(`  ${type}: ${count} tests`);
     });
 
-    console.log(`\n${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}\n`);
+    console.log(
+      `\n${colors.cyan}${colors.bright}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}\n`
+    );
 
     // Save summary
     const summaryPath = path.join(this.rootDir, 'reports', 'test-generation-summary.json');
-    fs.writeFileSync(summaryPath, JSON.stringify({
-      timestamp: new Date().toISOString(),
-      testsGenerated: this.generatedTests.length,
-      byType,
-      tests: this.generatedTests,
-    }, null, 2));
+    fs.writeFileSync(
+      summaryPath,
+      JSON.stringify(
+        {
+          timestamp: new Date().toISOString(),
+          testsGenerated: this.generatedTests.length,
+          byType,
+          tests: this.generatedTests,
+        },
+        null,
+        2
+      )
+    );
 
     console.log(`${colors.green}✅ Summary saved to: ${summaryPath}${colors.reset}\n`);
   }

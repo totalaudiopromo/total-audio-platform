@@ -534,19 +534,22 @@ Use machine learning patterns to identify:
       this.alertCallbacks.set(campaignId, callback);
 
       // Start monitoring interval
-      setInterval(async () => {
-        try {
-          const opportunities = await this.detectViralOpportunities(campaignId);
+      setInterval(
+        async () => {
+          try {
+            const opportunities = await this.detectViralOpportunities(campaignId);
 
-          for (const opportunity of opportunities) {
-            if (opportunity.urgency === 'critical' || opportunity.urgency === 'high') {
-              callback(opportunity);
+            for (const opportunity of opportunities) {
+              if (opportunity.urgency === 'critical' || opportunity.urgency === 'high') {
+                callback(opportunity);
+              }
             }
+          } catch (error) {
+            console.error('Error in real-time alert monitoring:', error);
           }
-        } catch (error) {
-          console.error('Error in real-time alert monitoring:', error);
-        }
-      }, 5 * 60 * 1000); // Check every 5 minutes
+        },
+        5 * 60 * 1000
+      ); // Check every 5 minutes
     } catch (error) {
       console.error('Failed to setup real-time alerts:', error);
       throw error;
@@ -582,14 +585,17 @@ Use machine learning patterns to identify:
     console.log(`Starting real-time monitoring for campaign ${campaignId}`);
 
     // Set up continuous monitoring interval
-    setInterval(async () => {
-      try {
-        await this.getCampaignPerformance(campaignId);
-        await this.detectViralOpportunities(campaignId);
-      } catch (error) {
-        console.error('Real-time monitoring error:', error);
-      }
-    }, 15 * 60 * 1000); // Every 15 minutes for real-time
+    setInterval(
+      async () => {
+        try {
+          await this.getCampaignPerformance(campaignId);
+          await this.detectViralOpportunities(campaignId);
+        } catch (error) {
+          console.error('Real-time monitoring error:', error);
+        }
+      },
+      15 * 60 * 1000
+    ); // Every 15 minutes for real-time
   }
 
   private async collectPlatformMetrics(

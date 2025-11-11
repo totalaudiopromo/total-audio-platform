@@ -53,7 +53,6 @@ npm audit fix --force
 1. **Before Committing**: Run `npm run security:scan`
 2. **Weekly**: Run `npm run security:check`
 3. **Never Commit**:
-
    - `.env` files (except `.env.example`)
    - API keys, tokens, passwords
    - `*credentials.json` files
@@ -66,7 +65,6 @@ npm audit fix --force
 ## 📋 If Security Check Fails
 
 1. **Git-Secrets Error**: You tried to commit a secret
-
    - Remove the secret from your files
    - Add to `.env.local` instead
    - Use environment variable in code

@@ -40,7 +40,9 @@ test.describe('Pitch Generator Mobile Journey', () => {
     // 3. FORM INTERACTION
     await test.step('Fill pitch form on mobile', async () => {
       // Test artist name input
-      const artistInput = page.locator('input[name*="artist"], input[placeholder*="artist"]').first();
+      const artistInput = page
+        .locator('input[name*="artist"], input[placeholder*="artist"]')
+        .first();
       if (await artistInput.isVisible()) {
         await validateTouchTargetSize(artistInput, 44);
         await artistInput.fill('Test Artist');

@@ -164,7 +164,6 @@ curl http://localhost:3000/api/agents/stats?name=intel
 ## Files Changed
 
 1. **apps/audio-intel/app/api/enrich-claude/route.ts**
-
    - Before: 514 lines
    - After: 115 lines
    - Reduction: 78%

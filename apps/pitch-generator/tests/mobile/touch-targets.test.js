@@ -36,7 +36,10 @@ test.describe('Pitch Generator Touch Targets', () => {
   test('Navigation elements - Touch-friendly', async ({ page }) => {
     await page.goto('/');
 
-    const navResults = await validateAllTouchTargets(page, 'nav a, nav button, header a, header button');
+    const navResults = await validateAllTouchTargets(
+      page,
+      'nav a, nav button, header a, header button'
+    );
     const failures = navResults.filter(r => !r.passed);
 
     expect(failures).toHaveLength(0);

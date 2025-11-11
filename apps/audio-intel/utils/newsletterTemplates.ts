@@ -307,14 +307,14 @@ const newsletterTemplate = (content: string, data: NewsletterData = {}) => `
       <div class="newsletter-subtitle">Weekly insights for independent music professionals</div>
       <div class="issue-info">
         Issue ${data.issueNumber || 1} • ${
-  data.publishDate ||
-  new Date().toLocaleDateString('en-GB', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
-}
+          data.publishDate ||
+          new Date().toLocaleDateString('en-GB', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+        }
       </div>
     </div>
 

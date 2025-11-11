@@ -5,14 +5,19 @@
  */
 
 const { test, expect } = require('@playwright/test');
-const { validateTouchTargetSize, validateAllTouchTargets } = require('@total-audio/testing');
+const {
+  validateTouchTargetSize,
+  validateAllTouchTargets,
+} = require('@total-audio/testing');
 
 test.describe('Modal Interactions on Mobile', () => {
   test('Submission modal opens and closes correctly', async ({ page }) => {
     await page.goto('/campaigns');
 
     // Find and open submission modal
-    const addSubmissionButton = page.getByRole('button', { name: /add submission|log|track/i }).first();
+    const addSubmissionButton = page
+      .getByRole('button', { name: /add submission|log|track/i })
+      .first();
 
     if (await addSubmissionButton.isVisible()) {
       await validateTouchTargetSize(addSubmissionButton, 44);
@@ -23,7 +28,9 @@ test.describe('Modal Interactions on Mobile', () => {
       await expect(modal).toBeVisible({ timeout: 3000 });
 
       // Test close button
-      const closeButton = modal.getByRole('button', { name: /close|cancel/i }).first();
+      const closeButton = modal
+        .getByRole('button', { name: /close|cancel/i })
+        .first();
       if (await closeButton.isVisible()) {
         await validateTouchTargetSize(closeButton, 44);
         await closeButton.tap();
@@ -37,7 +44,9 @@ test.describe('Modal Interactions on Mobile', () => {
   test('Modal fits mobile viewport', async ({ page }) => {
     await page.goto('/campaigns');
 
-    const addButton = page.getByRole('button', { name: /add|new|create/i }).first();
+    const addButton = page
+      .getByRole('button', { name: /add|new|create/i })
+      .first();
 
     if (await addButton.isVisible()) {
       await addButton.tap();
@@ -99,7 +108,9 @@ test.describe('Modal Interactions on Mobile', () => {
 
       if (await modal.isVisible()) {
         // Try tapping backdrop (outside modal content)
-        const backdrop = page.locator('[class*="backdrop"], [class*="overlay"]').first();
+        const backdrop = page
+          .locator('[class*="backdrop"], [class*="overlay"]')
+          .first();
 
         if (await backdrop.isVisible()) {
           await backdrop.tap();
@@ -115,7 +126,9 @@ test.describe('Modal Interactions on Mobile', () => {
     await page.goto('/campaigns');
 
     // Find status dropdown
-    const statusDropdown = page.locator('select[name*="status"], [role="combobox"]').first();
+    const statusDropdown = page
+      .locator('select[name*="status"], [role="combobox"]')
+      .first();
 
     if (await statusDropdown.isVisible()) {
       await validateTouchTargetSize(statusDropdown, 44);
@@ -131,22 +144,32 @@ test.describe('Modal Interactions on Mobile', () => {
     }
   });
 
-  test('Delete confirmation modal prevents accidental deletion', async ({ page }) => {
+  test('Delete confirmation modal prevents accidental deletion', async ({
+    page,
+  }) => {
     await page.goto('/campaigns');
 
-    const deleteButton = page.getByRole('button', { name: /delete|remove/i }).first();
+    const deleteButton = page
+      .getByRole('button', { name: /delete|remove/i })
+      .first();
 
     if (await deleteButton.isVisible()) {
       await validateTouchTargetSize(deleteButton, 44);
       await deleteButton.tap();
 
       // Confirmation modal should appear
-      const confirmModal = page.locator('[role="alertdialog"], [role="dialog"]').last();
+      const confirmModal = page
+        .locator('[role="alertdialog"], [role="dialog"]')
+        .last();
 
       if (await confirmModal.isVisible()) {
         // Test both confirm and cancel buttons are touch-friendly
-        const confirmButton = confirmModal.getByRole('button', { name: /confirm|delete|yes/i }).first();
-        const cancelButton = confirmModal.getByRole('button', { name: /cancel|no/i }).first();
+        const confirmButton = confirmModal
+          .getByRole('button', { name: /confirm|delete|yes/i })
+          .first();
+        const cancelButton = confirmModal
+          .getByRole('button', { name: /cancel|no/i })
+          .first();
 
         if (await confirmButton.isVisible()) {
           await validateTouchTargetSize(confirmButton, 44);

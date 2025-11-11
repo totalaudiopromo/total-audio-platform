@@ -30,7 +30,6 @@ This directory contains Claude Code skills for the Total Audio projects.
 ## How to Install Skills
 
 1. **Enable Skills in Claude Code:**
-
    - Settings → Capabilities → Enable "Skills"
    - Restart Claude Code
 

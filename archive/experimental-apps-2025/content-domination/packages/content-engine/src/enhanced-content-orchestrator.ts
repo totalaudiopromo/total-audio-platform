@@ -341,41 +341,50 @@ class EnhancedContentOrchestrator {
    */
   private startEnhancedMonitoring(): void {
     // Monitor newsjacking opportunities every 5 minutes
-    setInterval(async () => {
-      if (!this.isRunning) return;
+    setInterval(
+      async () => {
+        if (!this.isRunning) return;
 
-      const activeOpportunities = await this.newsjackerEngine.getActiveOpportunities();
-      const criticalAlerts = activeOpportunities.filter(
-        opp => opp.competitiveContext.firstMover && opp.scoringResult.totalScore > 0.8
-      );
+        const activeOpportunities = await this.newsjackerEngine.getActiveOpportunities();
+        const criticalAlerts = activeOpportunities.filter(
+          opp => opp.competitiveContext.firstMover && opp.scoringResult.totalScore > 0.8
+        );
 
-      if (criticalAlerts.length > 0) {
-        console.log(`🚨 ${criticalAlerts.length} critical newsjacking opportunities detected!`);
+        if (criticalAlerts.length > 0) {
+          console.log(`🚨 ${criticalAlerts.length} critical newsjacking opportunities detected!`);
 
-        // Auto-execute if configured
-        if (this.config.integration.prioritizeNewsjacking) {
-          for (const alert of criticalAlerts) {
-            await this.newsjackerEngine.approveOpportunity(alert.id);
+          // Auto-execute if configured
+          if (this.config.integration.prioritizeNewsjacking) {
+            for (const alert of criticalAlerts) {
+              await this.newsjackerEngine.approveOpportunity(alert.id);
+            }
           }
         }
-      }
-    }, 5 * 60 * 1000); // 5 minutes
+      },
+      5 * 60 * 1000
+    ); // 5 minutes
 
     // Check for new newsletter content every 30 minutes
-    setInterval(async () => {
-      if (!this.isRunning) return;
+    setInterval(
+      async () => {
+        if (!this.isRunning) return;
 
-      // Check if we should process newsletter content
-      const shouldProcess = this.shouldProcessNewsletter();
-      if (shouldProcess) {
-        await this.processNewsletterWithNewsjacking();
-      }
-    }, 30 * 60 * 1000); // 30 minutes
+        // Check if we should process newsletter content
+        const shouldProcess = this.shouldProcessNewsletter();
+        if (shouldProcess) {
+          await this.processNewsletterWithNewsjacking();
+        }
+      },
+      30 * 60 * 1000
+    ); // 30 minutes
 
     // Generate performance reports daily
-    setInterval(async () => {
-      await this.generateDailyPerformanceReport();
-    }, 24 * 60 * 60 * 1000); // 24 hours
+    setInterval(
+      async () => {
+        await this.generateDailyPerformanceReport();
+      },
+      24 * 60 * 60 * 1000
+    ); // 24 hours
   }
 
   /**
@@ -492,16 +501,19 @@ class EnhancedContentOrchestrator {
 
   private scheduleDailyReset(): void {
     // Reset daily content counter at midnight UK time
-    setInterval(() => {
-      const ukTime = new Date().toLocaleString('en-US', { timeZone: 'Europe/London' });
-      const hour = new Date(ukTime).getHours();
+    setInterval(
+      () => {
+        const ukTime = new Date().toLocaleString('en-US', { timeZone: 'Europe/London' });
+        const hour = new Date(ukTime).getHours();
 
-      if (hour === 0) {
-        // Midnight UK time
-        this.dailyContentCount = 0;
-        console.log('🌅 Daily content counter reset');
-      }
-    }, 60 * 60 * 1000); // Check every hour
+        if (hour === 0) {
+          // Midnight UK time
+          this.dailyContentCount = 0;
+          console.log('🌅 Daily content counter reset');
+        }
+      },
+      60 * 60 * 1000
+    ); // Check every hour
   }
 
   private checkTimingConflict(

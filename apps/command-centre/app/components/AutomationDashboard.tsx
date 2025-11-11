@@ -238,8 +238,8 @@ export default function AutomationDashboard() {
                 data.costs.month.percentUsed > 90
                   ? 'bg-red-500'
                   : data.costs.month.percentUsed > 75
-                  ? 'bg-amber-500'
-                  : 'bg-green-500'
+                    ? 'bg-amber-500'
+                    : 'bg-green-500'
               }`}
               style={{ width: `${Math.min(data.costs.month.percentUsed, 100)}%` }}
             />

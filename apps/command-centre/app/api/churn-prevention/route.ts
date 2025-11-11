@@ -273,10 +273,10 @@ function calculateChurnRisk(
     daysActive < 30
       ? 1.4 // New customers higher risk
       : daysActive < 90
-      ? 1.1
-      : daysActive > 365
-      ? 0.8
-      : 1.0; // Loyal customers lower risk
+        ? 1.1
+        : daysActive > 365
+          ? 0.8
+          : 1.0; // Loyal customers lower risk
 
   riskScore *= lifecycleAdjustment;
 
@@ -289,10 +289,10 @@ function calculateChurnRisk(
     riskScore > 80
       ? 7 + Math.random() * 14 // 7-21 days
       : riskScore > 60
-      ? 14 + Math.random() * 21 // 14-35 days
-      : riskScore > 40
-      ? 21 + Math.random() * 30 // 21-51 days
-      : 60 + Math.random() * 30; // 60-90 days
+        ? 14 + Math.random() * 21 // 14-35 days
+        : riskScore > 40
+          ? 21 + Math.random() * 30 // 21-51 days
+          : 60 + Math.random() * 30; // 60-90 days
 
   const riskCategory =
     riskScore > 80 ? 'critical' : riskScore > 60 ? 'high' : riskScore > 40 ? 'medium' : 'low';
@@ -314,10 +314,10 @@ function generateInterventionPlan(
     customer.riskScore > 80
       ? 'immediate'
       : customer.riskScore > 60
-      ? 'within_week'
-      : customer.riskScore > 40
-      ? 'within_month'
-      : 'monitor';
+        ? 'within_week'
+        : customer.riskScore > 40
+          ? 'within_month'
+          : 'monitor';
 
   const recommendedActions: string[] = [];
   const automatedInterventions: string[] = [];
@@ -368,19 +368,19 @@ function generateInterventionPlan(
     urgency === 'immediate'
       ? 150
       : urgency === 'within_week'
-      ? 100
-      : urgency === 'within_month'
-      ? 50
-      : 25;
+        ? 100
+        : urgency === 'within_month'
+          ? 50
+          : 25;
 
   const successProbability =
     customer.riskScore > 80
       ? 45 // High risk, lower success
       : customer.riskScore > 60
-      ? 65
-      : customer.riskScore > 40
-      ? 80
-      : 90;
+        ? 65
+        : customer.riskScore > 40
+          ? 80
+          : 90;
 
   return {
     urgency,
@@ -403,10 +403,10 @@ function generateAtRiskCustomers(): CustomerRiskProfile[] {
       tier === 'enterprise'
         ? 150 + Math.random() * 200
         : tier === 'professional'
-        ? 45 + Math.random() * 55
-        : tier === 'basic'
-        ? 15 + Math.random() * 15
-        : 0;
+          ? 45 + Math.random() * 55
+          : tier === 'basic'
+            ? 15 + Math.random() * 15
+            : 0;
 
     const daysActive = Math.floor(Math.random() * 730) + 30; // 30-760 days
     const baseEngagement = 30 + Math.random() * 60; // Base engagement 30-90%
@@ -427,8 +427,8 @@ function generateAtRiskCustomers(): CustomerRiskProfile[] {
       tier === 'enterprise'
         ? 90 + Math.random() * 10
         : monthlyRevenue > 100
-        ? 70 + Math.random() * 20
-        : Math.random() * 50 + 25;
+          ? 70 + Math.random() * 20
+          : Math.random() * 50 + 25;
 
     const customer: CustomerRiskProfile = {
       userId: `customer_${i + 1}`,
@@ -494,14 +494,17 @@ export async function GET() {
 
     // Analyse churn factors
     const allSignals = atRiskCustomers.flatMap(c => c.churnSignals);
-    const signalCounts = allSignals.reduce((acc, signal) => {
-      const key = signal.metric;
-      if (!acc[key]) acc[key] = { count: 0, totalWeight: 0, totalSeverity: 0 };
-      acc[key].count++;
-      acc[key].totalWeight += signal.weight;
-      acc[key].totalSeverity += { low: 1, medium: 2, high: 3, critical: 4 }[signal.severity];
-      return acc;
-    }, {} as Record<string, { count: number; totalWeight: number; totalSeverity: number }>);
+    const signalCounts = allSignals.reduce(
+      (acc, signal) => {
+        const key = signal.metric;
+        if (!acc[key]) acc[key] = { count: 0, totalWeight: 0, totalSeverity: 0 };
+        acc[key].count++;
+        acc[key].totalWeight += signal.weight;
+        acc[key].totalSeverity += { low: 1, medium: 2, high: 3, critical: 4 }[signal.severity];
+        return acc;
+      },
+      {} as Record<string, { count: number; totalWeight: number; totalSeverity: number }>
+    );
 
     const topChurnFactors = Object.entries(signalCounts)
       .map(([factor, data]) => ({

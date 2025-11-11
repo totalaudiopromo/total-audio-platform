@@ -71,7 +71,6 @@ app-name/
 ### Combined Standards
 
 1. **Visual Standards** ✅
-
    - Postcraft aesthetic (bold borders, offset shadows)
    - UK spelling throughout
    - No gradients or glassmorphism

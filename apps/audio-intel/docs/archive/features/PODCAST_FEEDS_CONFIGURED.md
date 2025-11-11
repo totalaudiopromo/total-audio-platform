@@ -7,13 +7,11 @@ Based on your request, here are the RSS feeds for the podcasts you want to monit
 ### **✅ Confirmed RSS Feeds**
 
 1. **A New Vibe - Riley Brown**
-
    - RSS: `https://rss.com/podcasts/a-new-vibe/`
    - Focus: AI and technology innovation
    - Relevance: High (AI/tech content)
 
 2. **Marketing Against the Grain - HubSpot**
-
    - RSS: `https://blog.hubspot.com/podcasts/marketing-against-the-grain`
    - Focus: Marketing strategies and AI tools
    - Relevance: High (marketing + AI)
@@ -26,25 +24,21 @@ Based on your request, here are the RSS feeds for the podcasts you want to monit
 ### **🔍 Need to Find RSS Feeds**
 
 4. **Music Tectonics**
-
    - Status: Need to find RSS feed
    - Focus: Music + technology intersection
    - Relevance: High (music industry specific)
 
 5. **My First Million - Sam Parr & Shaan Puri**
-
    - Status: Need to find RSS feed
    - Focus: Business ideas and trends
    - Relevance: Medium (business + tech)
 
 6. **The New Music Business Podcast - Ari Herstand**
-
    - Status: Need to find RSS feed
    - Focus: Music business advice
    - Relevance: High (music industry specific)
 
 7. **Startups for the Rest of Us**
-
    - Status: Need to find RSS feed
    - Focus: Startup advice and trends
    - Relevance: Medium (startup + tech)

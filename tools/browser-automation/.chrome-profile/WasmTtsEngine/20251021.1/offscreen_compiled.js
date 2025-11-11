@@ -157,10 +157,10 @@ function ta(a, b, c, d) {
   try {
     var e = b.call(a.g.l, c);
     if (!(e instanceof Object)) throw new TypeError('Iterator result ' + e + ' is not an object');
-    if (!e.done) return (a.g.o = !1), e;
+    if (!e.done) return ((a.g.o = !1), e);
     var f = e.value;
   } catch (g) {
-    return (a.g.l = null), oa(a.g, g), ua(a);
+    return ((a.g.l = null), oa(a.g, g), ua(a));
   }
   a.g.l = null;
   d.call(a.g, f);
@@ -170,9 +170,9 @@ function ua(a) {
   for (; a.g.g; )
     try {
       var b = a.h(a.g);
-      if (b) return (a.g.o = !1), { value: b.value, done: !1 };
+      if (b) return ((a.g.o = !1), { value: b.value, done: !1 });
     } catch (c) {
-      (a.g.h = void 0), oa(a.g, c);
+      ((a.g.h = void 0), oa(a.g, c));
     }
   a.g.o = !1;
   if (a.g.m) {
@@ -222,14 +222,14 @@ l('Reflect.setPrototypeOf', function (a) {
   return a
     ? a
     : ka
-    ? function (b, c) {
-        try {
-          return ka(b, c), !0;
-        } catch (d) {
-          return !1;
+      ? function (b, c) {
+          try {
+            return (ka(b, c), !0);
+          } catch (d) {
+            return !1;
+          }
         }
-      }
-    : null;
+      : null;
 });
 l('Symbol', function (a) {
   function b(f) {
@@ -395,9 +395,9 @@ l('Promise', function (a) {
     typeof g === 'function'
       ? (g = new g('unhandledrejection', { cancelable: !0 }))
       : typeof h === 'function'
-      ? (g = new h('unhandledrejection', { cancelable: !0 }))
-      : ((g = ea.document.createEvent('CustomEvent')),
-        g.initCustomEvent('unhandledrejection', !1, !0, g));
+        ? (g = new h('unhandledrejection', { cancelable: !0 }))
+        : ((g = ea.document.createEvent('CustomEvent')),
+          g.initCustomEvent('unhandledrejection', !1, !0, g));
     g.promise = this;
     g.reason = this.i;
     return k(g);
@@ -488,7 +488,7 @@ l('Promise', function (a) {
           }
           var x = [],
             z = 0;
-          do x.push(void 0), z++, d(k.value).K(w(x.length - 1), n), (k = h.next());
+          do (x.push(void 0), z++, d(k.value).K(w(x.length - 1), n), (k = h.next()));
           while (!k.done);
         });
   };
@@ -520,7 +520,7 @@ l('WeakMap', function (a) {
     this.g = (h += Math.random() + 1).toString();
     if (k) {
       k = q(k);
-      for (var m; !(m = k.next()).done; ) (m = m.value), this.set(m[0], m[1]);
+      for (var m; !(m = k.next()).done; ) ((m = m.value), this.set(m[0], m[1]));
     }
   }
   function c() {}
@@ -596,7 +596,7 @@ l('Map', function (a) {
     return xa(function () {
       if (m) {
         for (; m.head != h[1]; ) m = m.previous;
-        for (; m.next != m.head; ) return (m = m.next), { done: !1, value: k(m) };
+        for (; m.next != m.head; ) return ((m = m.next), { done: !1, value: k(m) });
         m = null;
       }
       return { done: !0, value: void 0 };
@@ -624,7 +624,7 @@ l('Map', function (a) {
     this.size = 0;
     if (h) {
       h = q(h);
-      for (var k; !(k = h.next()).done; ) (k = k.value), this.set(k[0], k[1]);
+      for (var k; !(k = h.next()).done; ) ((k = k.value), this.set(k[0], k[1]));
     }
   }
   if (
@@ -707,7 +707,7 @@ l('Map', function (a) {
   };
   e.prototype.forEach = function (h, k) {
     for (var m = this.entries(), n; !(n = m.next()).done; )
-      (n = n.value), h.call(k, n[1], n[0], this);
+      ((n = n.value), h.call(k, n[1], n[0], this));
   };
   e.prototype[Symbol.iterator] = e.prototype.entries;
   var g = 0;
@@ -976,17 +976,17 @@ function Wa(a) {
 function Xa(a) {
   if (a.length < 16) Pa(Number(a));
   else if (Fa())
-    (a = BigInt(a)),
+    ((a = BigInt(a)),
       (v = Number(a & BigInt(4294967295)) >>> 0),
-      (y = Number((a >> BigInt(32)) & BigInt(4294967295)));
+      (y = Number((a >> BigInt(32)) & BigInt(4294967295))));
   else {
     var b = +(a[0] === '-');
     y = v = 0;
     for (var c = a.length, d = b, e = ((c - b) % 6) + b; e <= c; d = e, e += 6)
-      (d = Number(a.slice(d, e))),
+      ((d = Number(a.slice(d, e))),
         (y *= 1e6),
         (v = v * 1e6 + d),
-        v >= 4294967296 && ((y += Math.trunc(v / 4294967296)), (y >>>= 0), (v >>>= 0));
+        v >= 4294967296 && ((y += Math.trunc(v / 4294967296)), (y >>>= 0), (v >>>= 0)));
     b && ((b = q(Qa(v, y))), (a = b.next().value), (b = b.next().value), (v = a), (y = b));
   }
 }
@@ -1186,8 +1186,8 @@ function Jb(a) {
     b == null || (yb && b != null && b instanceof Uint8Array)
       ? b
       : typeof b === 'string'
-      ? Db(b)
-      : null;
+        ? Db(b)
+        : null;
   return b == null ? b : (a.g = b);
 }
 var Ib;
@@ -1203,8 +1203,8 @@ function Lb(a, b) {
   if (typeof a === 'string') return new Kb(Db(a), b);
   if (Array.isArray(a)) return new Kb(new Uint8Array(a), b);
   if (a.constructor === Uint8Array) return new Kb(a, !1);
-  if (a.constructor === ArrayBuffer) return (a = new Uint8Array(a)), new Kb(a, !1);
-  if (a.constructor === Fb) return (b = Jb(a) || new Uint8Array(0)), new Kb(b, !0, a);
+  if (a.constructor === ArrayBuffer) return ((a = new Uint8Array(a)), new Kb(a, !1));
+  if (a.constructor === Fb) return ((b = Jb(a) || new Uint8Array(0)), new Kb(b, !0, a));
   if (a instanceof Uint8Array)
     return (
       (a = a.constructor === Uint8Array ? a : new Uint8Array(a.buffer, a.byteOffset, a.byteLength)),
@@ -1250,7 +1250,8 @@ function Ob(a, b) {
     e += 7;
   } while (e < 32 && h & 128);
   if (e > 32)
-    for (d |= (h & 127) >> 4, e = 3; e < 32 && h & 128; e += 7) (h = f[g++]), (d |= (h & 127) << e);
+    for (d |= (h & 127) >> 4, e = 3; e < 32 && h & 128; e += 7)
+      ((h = f[g++]), (d |= (h & 127) << e));
   Pb(a, g);
   if (!(h & 128)) return b(c >>> 0, d >>> 0);
   throw Error();
@@ -1318,8 +1319,8 @@ function Vb(a) {
       ? NaN
       : a * Infinity
     : c == 0
-    ? a * 1.401298464324817e-45 * b
-    : a * Math.pow(2, c - 150) * (b + 8388608);
+      ? a * 1.401298464324817e-45 * b
+      : a * Math.pow(2, c - 150) * (b + 8388608);
 }
 function Wb(a) {
   var b = Ub(a),
@@ -1332,14 +1333,14 @@ function Wb(a) {
       ? NaN
       : a * Infinity
     : d == 0
-    ? a * 4.9e-324 * b
-    : a * Math.pow(2, d - 1075) * (b + 4503599627370496);
+      ? a * 4.9e-324 * b
+      : a * Math.pow(2, d - 1075) * (b + 4503599627370496);
 }
 function Xb(a) {
   for (var b = 0, c = a.g, d = c + 10, e = a.h; c < d; ) {
     var f = e[c++];
     b |= f;
-    if ((f & 128) === 0) return Pb(a, c), !!(b & 127);
+    if ((f & 128) === 0) return (Pb(a, c), !!(b & 127));
   }
   throw Error();
 }
@@ -1379,17 +1380,17 @@ cc.prototype.end = function () {
 };
 function dc(a, b, c) {
   for (; c > 0 || b > 127; )
-    a.g.push((b & 127) | 128), (b = ((b >>> 7) | (c << 25)) >>> 0), (c >>>= 7);
+    (a.g.push((b & 127) | 128), (b = ((b >>> 7) | (c << 25)) >>> 0), (c >>>= 7));
   a.g.push(b);
 }
 function ec(a, b) {
-  for (; b > 127; ) a.g.push((b & 127) | 128), (b >>>= 7);
+  for (; b > 127; ) (a.g.push((b & 127) | 128), (b >>>= 7));
   a.g.push(b);
 }
 function fc(a, b) {
   if (b >= 0) ec(a, b);
   else {
-    for (var c = 0; c < 9; c++) a.g.push((b & 127) | 128), (b >>= 7);
+    for (var c = 0; c < 9; c++) (a.g.push((b & 127) | 128), (b >>= 7));
     a.g.push(1);
   }
 }
@@ -1508,7 +1509,7 @@ function oc(a) {
           e.decode(new Uint8Array([128]));
         } catch (n) {}
         try {
-          e.decode(new Uint8Array([97])), (ib = !0);
+          (e.decode(new Uint8Array([97])), (ib = !0));
         } catch (n) {
           ib = !1;
         }
@@ -1521,38 +1522,38 @@ function oc(a) {
     b = f + b;
     c = [];
     for (var g = null, h, k; f < b; )
-      (h = a[f++]),
+      ((h = a[f++]),
         h < 128
           ? c.push(h)
           : h < 224
-          ? f >= b
-            ? gb()
-            : ((k = a[f++]),
-              h < 194 || (k & 192) !== 128 ? (f--, gb()) : c.push(((h & 31) << 6) | (k & 63)))
-          : h < 240
-          ? f >= b - 1
-            ? gb()
-            : ((k = a[f++]),
-              (k & 192) !== 128 ||
-              (h === 224 && k < 160) ||
-              (h === 237 && k >= 160) ||
-              ((e = a[f++]) & 192) !== 128
-                ? (f--, gb())
-                : c.push(((h & 15) << 12) | ((k & 63) << 6) | (e & 63)))
-          : h <= 244
-          ? f >= b - 2
-            ? gb()
-            : ((k = a[f++]),
-              (k & 192) !== 128 ||
-              ((h << 28) + (k - 144)) >> 30 !== 0 ||
-              ((e = a[f++]) & 192) !== 128 ||
-              ((d = a[f++]) & 192) !== 128
-                ? (f--, gb())
-                : ((h = ((h & 7) << 18) | ((k & 63) << 12) | ((e & 63) << 6) | (d & 63)),
-                  (h -= 65536),
-                  c.push(((h >> 10) & 1023) + 55296, (h & 1023) + 56320)))
-          : gb(),
-        c.length >= 8192 && ((g = hb(g, c)), (c.length = 0));
+            ? f >= b
+              ? gb()
+              : ((k = a[f++]),
+                h < 194 || (k & 192) !== 128 ? (f--, gb()) : c.push(((h & 31) << 6) | (k & 63)))
+            : h < 240
+              ? f >= b - 1
+                ? gb()
+                : ((k = a[f++]),
+                  (k & 192) !== 128 ||
+                  (h === 224 && k < 160) ||
+                  (h === 237 && k >= 160) ||
+                  ((e = a[f++]) & 192) !== 128
+                    ? (f--, gb())
+                    : c.push(((h & 15) << 12) | ((k & 63) << 6) | (e & 63)))
+              : h <= 244
+                ? f >= b - 2
+                  ? gb()
+                  : ((k = a[f++]),
+                    (k & 192) !== 128 ||
+                    ((h << 28) + (k - 144)) >> 30 !== 0 ||
+                    ((e = a[f++]) & 192) !== 128 ||
+                    ((d = a[f++]) & 192) !== 128
+                      ? (f--, gb())
+                      : ((h = ((h & 7) << 18) | ((k & 63) << 12) | ((e & 63) << 6) | (d & 63)),
+                        (h -= 65536),
+                        c.push(((h >> 10) & 1023) + 55296, (h & 1023) + 56320)))
+                : gb(),
+        c.length >= 8192 && ((g = hb(g, c)), (c.length = 0)));
     f = hb(g, c);
   }
   return f;
@@ -1583,7 +1584,7 @@ function tc(a, b) {
 }
 function uc(a, b) {
   var c = b.pop();
-  for (c = a.h + a.g.length() - c; c > 127; ) b.push((c & 127) | 128), (c >>>= 7), a.h++;
+  for (c = a.h + a.g.length() - c; c > 127; ) (b.push((c & 127) | 128), (c >>>= 7), a.h++);
   b.push(c);
   a.h++;
 }
@@ -1614,8 +1615,8 @@ function Ac(a, b, c) {
     ? (c === void 0 ? 0 : c) && Symbol.for && a
       ? Symbol.for(a)
       : a != null
-      ? Symbol(a)
-      : Symbol()
+        ? Symbol(a)
+        : Symbol()
     : b;
 }
 var Bc = Ac('jas', void 0, !0),
@@ -1654,7 +1655,7 @@ function Rc(a, b, c) {
     e = a.length,
     f;
   if ((f = !!e))
-    (f = a[e - 1]), (f = f != null && typeof f === 'object' && f.constructor === Object);
+    ((f = a[e - 1]), (f = f != null && typeof f === 'object' && f.constructor === Object));
   var g = e + (f ? -1 : 0);
   for (b = b & 128 ? 1 : 0; b < g; b++) c(b - d, a[b]);
   if (f) {
@@ -1758,7 +1759,7 @@ function nd(a) {
                 : (a = Ua(a, b)))),
         a
       );
-    if (b === 'number') return (a = bd(a)), $c(a) || (Pa(a), (a = Va(v, y))), a;
+    if (b === 'number') return ((a = bd(a)), $c(a) || (Pa(a), (a = Va(v, y))), a);
   }
 }
 function od(a) {
@@ -1779,7 +1780,7 @@ function od(a) {
             b || (Xa(a), (a = Ua(v, y)))),
         a
       );
-    if (b === 'number') return (a = bd(a)), (a >= 0 && $c(a)) || (Pa(a), (a = Ta(v, y))), a;
+    if (b === 'number') return ((a = bd(a)), (a >= 0 && $c(a)) || (Pa(a), (a = Ta(v, y))), a);
   }
 }
 function pd(a) {
@@ -1844,14 +1845,14 @@ function xd(a, b, c, d) {
   }
   if (w)
     for (var T in w)
-      (h = w[T]),
+      ((h = w[T]),
         h != null &&
           (h = c(h, d)) != null &&
           ((x = +T),
           (z = void 0),
           m && !Number.isNaN(x) && (z = x + n) < g
             ? (f[z] = h)
-            : ((x = void 0), (((x = b) != null ? x : (b = {}))[T] = h)));
+            : ((x = void 0), (((x = b) != null ? x : (b = {}))[T] = h))));
   b && (k ? f.push(b) : (f[g] = b));
   e && Ca(Dc) && (a = sd(a)) && a instanceof td && (f[Dc] = vd(a));
   return f;
@@ -1900,9 +1901,9 @@ function zd(a) {
             m = e;
             switch (b.length - f) {
               case 2:
-                (n = b[f + 1]), (m = c[(n & 15) << 2] || e);
+                ((n = b[f + 1]), (m = c[(n & 15) << 2] || e));
               case 1:
-                (b = b[f]), (d[g] = c[b >> 2] + c[((b & 3) << 4) | (n >> 4)] + m + e);
+                ((b = b[f]), (d[g] = c[b >> 2] + c[((b & 3) << 4) | (n >> 4)] + m + e));
             }
             b = d.join('');
           }
@@ -1947,7 +1948,7 @@ function F(a, b, c, d) {
     if (Ea && 1 & e) throw Error('rfarr');
     2048 & e && !(2 & e) && Fd();
     if (e & 256) throw Error('farr');
-    if (e & 64) return (e | d) !== e && E(a, e | d), a;
+    if (e & 64) return ((e | d) !== e && E(a, e | d), a);
     if (c && ((e |= 128), c !== a[0])) throw Error('mid');
     a: {
       c = a;
@@ -1960,7 +1961,7 @@ function F(a, b, c, d) {
           b = e & 128 ? 0 : -1;
           g -= b;
           if (g >= 1024) throw Error('pvtlmt');
-          for (var k in h) (f = +k), f < g && ((c[f + b] = h[k]), delete h[k]);
+          for (var k in h) ((f = +k), f < g && ((c[f + b] = h[k]), delete h[k]));
           e = (e & -16760833) | ((g & 1023) << 14);
           break a;
         }
@@ -1992,7 +1993,7 @@ function Gd(a, b) {
     return a;
   }
   if (a != null && a[Hc] === Oc)
-    return (b = a.j), (c = b[D] | 0), Pc(a, c) ? a : Id(a, b, c) ? Jd(a, b) : Hd(b, c);
+    return ((b = a.j), (c = b[D] | 0), Pc(a, c) ? a : Id(a, b, c) ? Jd(a, b) : Hd(b, c));
   if (a instanceof Fb) return a;
 }
 function Jd(a, b, c) {
@@ -2050,7 +2051,7 @@ function Od(a, b, c, d) {
     if (d && c != null) {
       d = d(c);
       if (d == null) return d;
-      if (!Object.is(d, c)) return h ? (g[b] = d) : (a[e] = d), d;
+      if (!Object.is(d, c)) return (h ? (g[b] = d) : (a[e] = d), d);
     }
     return c;
   }
@@ -2066,9 +2067,9 @@ function H(a, b, c, d, e) {
     g = a.length - 1;
   if (g >= 1 + (e ? 0 : -1) && f >= g) {
     var h = a[g];
-    if (h != null && typeof h === 'object' && h.constructor === Object) return (h[c] = d), b;
+    if (h != null && typeof h === 'object' && h.constructor === Object) return ((h[c] = d), b);
   }
-  if (f <= g) return (a[f] = d), b;
+  if (f <= g) return ((a[f] = d), b);
   if (d !== void 0) {
     var k;
     g = (((k = b) != null ? k : (b = a[D] | 0)) >> 14) & 1023 || 536870912;
@@ -2086,16 +2087,16 @@ function Td(a) {
   return a == null
     ? a
     : typeof a === 'string'
-    ? a
-      ? new Fb(a, Eb)
-      : Hb()
-    : a.constructor === Fb
-    ? a
-    : yb && a != null && a instanceof Uint8Array
-    ? a.length
-      ? new Fb(new Uint8Array(a), Eb)
-      : Hb()
-    : void 0;
+      ? a
+        ? new Fb(a, Eb)
+        : Hb()
+      : a.constructor === Fb
+        ? a
+        : yb && a != null && a instanceof Uint8Array
+          ? a.length
+            ? new Fb(new Uint8Array(a), Eb)
+            : Hb()
+          : void 0;
 }
 function Rd(a, b, c) {
   if (b & 2) throw Error();
@@ -2107,7 +2108,7 @@ function Rd(a, b, c) {
   2 & b && (g |= 2);
   g |= 1;
   if (2 & g || Sd(g) || 16 & g)
-    g === f || Sd(g) || E(e, g), (e = Xc(e)), (f = 0), (g = Ud(g, b)), H(a, b, c, e, d);
+    (g === f || Sd(g) || E(e, g), (e = Xc(e)), (f = 0), (g = Ud(g, b)), H(a, b, c, e, d));
   g &= -13;
   g !== f && E(e, g);
   return e;
@@ -2161,7 +2162,7 @@ function $d(a, b, c) {
     e = Tc(d),
     f = Od(a, c, e);
   if (f != null && f[Hc] === Oc) {
-    if (!Pc(f)) return Kd(f), f.j;
+    if (!Pc(f)) return (Kd(f), f.j);
     var g = f.j;
   } else Array.isArray(f) && (g = f);
   if (g) {
@@ -2187,7 +2188,7 @@ function ae(a, b) {
       d = g !== f && g != null;
       return g;
     });
-  if (e != null) return d && !Pc(e) && Md(a, b), e;
+  if (e != null) return (d && !Pc(e) && Md(a, b), e);
 }
 function ce(a) {
   var b = a.j,
@@ -2218,7 +2219,7 @@ function fe(a, b) {
   Ld(a);
   var c = a.j,
     d = c[D] | 0;
-  if (b == null) return H(c, d, 1), a;
+  if (b == null) return (H(c, d, 1), a);
   for (
     var e = b === Kc ? 7 : b[D] | 0,
       f = e,
@@ -2323,7 +2324,7 @@ function De(a, b, c, d) {
     typeof f === 'number' && ((k += f), (f = d[++g]));
     var m = void 0;
     if (f instanceof qe) var n = f;
-    else (n = ue), g--;
+    else ((n = ue), g--);
     f = void 0;
     if ((f = n) == null ? 0 : f.i) {
       f = d[++g];
@@ -2422,7 +2423,7 @@ function Je(a, b, c, d) {
             for (G = q(T), C = G.next(); !C.done; C = G.next()) {
               C = ic(C.value);
               try {
-                (k = !0), f(g, C);
+                ((k = !0), f(g, C));
               } finally {
                 kc(C);
               }
@@ -2615,7 +2616,7 @@ function Se(a, b, c) {
           dc(a.g, c.h, c.g);
           break;
         default:
-          (c = eb(b)), dc(a.g, c.h, c.g);
+          ((c = eb(b)), dc(a.g, c.h, c.g));
       }
   }
 }
@@ -2638,7 +2639,7 @@ function Te(a, b, c) {
           dc(a.g, c.h, c.g);
           break;
         default:
-          (c = ab(b)), dc(a.g, c.h, c.g);
+          ((c = ab(b)), dc(a.g, c.h, c.g));
       }
   }
 }
@@ -2774,7 +2775,7 @@ var bf = L(
               dc(a.g, e.h, e.g);
               break;
             default:
-              (e = eb(e)), dc(a.g, e.h, e.g);
+              ((e = eb(e)), dc(a.g, e.h, e.g));
           }
         }
         uc(a, c);
@@ -3082,10 +3083,10 @@ var Bf = [
             A(a, b);
             break;
           default:
-            (c = b.length && b[0] === '-' ? Za(ab(b.substring(1))) : ab(b)),
+            ((c = b.length && b[0] === '-' ? Za(ab(b.substring(1))) : ab(b)),
               (b = c.g),
               A(a, c.h),
-              A(a, b);
+              A(a, b));
         }
     },
     J()
@@ -3818,7 +3819,7 @@ aa.init = function (a) {
         b.extensionId = a;
         return r(c, loadWasmTtsBindings(), 2);
       case 2:
-        return (b.g = c.h), r(c, Tg(b), 3);
+        return ((b.g = c.h), r(c, Tg(b), 3));
       case 3:
         return r(c, Ug(b), 4);
       case 4:
@@ -3834,8 +3835,8 @@ aa.onLanguageStatusRequest = function (a) {
     return e.g == 1
       ? (b.h ? ((e.g = 2), (e = void 0)) : (e = r(e, b.init(b.extensionId), 2)), e)
       : e.g != 4
-      ? ((c = 'offscreenLanguageStatusResponse'), (d = a), r(e, Wg(b, a), 4))
-      : e.return({ type: c, lang: d, status: e.h });
+        ? ((c = 'offscreenLanguageStatusResponse'), (d = a), r(e, Wg(b, a), 4))
+        : e.return({ type: c, lang: d, status: e.h });
   });
 };
 aa.onInstallLanguageRequest = function (a) {
@@ -3846,15 +3847,16 @@ aa.onInstallLanguageRequest = function (a) {
     return e.g == 1
       ? (b.h ? ((e.g = 2), (e = void 0)) : (e = r(e, b.init(b.extensionId), 2)), e)
       : e.g != 4
-      ? ((c = 'offscreenLanguageStatusResponse'), (d = a), r(e, Xg(b, a), 4))
-      : e.return({ type: c, lang: d, status: e.h });
+        ? ((c = 'offscreenLanguageStatusResponse'), (d = a), r(e, Xg(b, a), 4))
+        : e.return({ type: c, lang: d, status: e.h });
   });
 };
 aa.onUninstallLanguageRequest = function (a) {
   var b = this,
     c;
   return t(function (d) {
-    if (d.g == 1) return b.h ? ((d.g = 2), (d = void 0)) : (d = r(d, b.init(b.extensionId), 2)), d;
+    if (d.g == 1)
+      return (b.h ? ((d.g = 2), (d = void 0)) : (d = r(d, b.init(b.extensionId), 2)), d);
     if (d.g != 4) return r(d, Yg(b, a), 4);
     (c = d.h) && Zg(b);
     return d.return({ type: 'offscreenLanguageStatusResponse', lang: a, status: 'notInstalled' });
@@ -3865,7 +3867,7 @@ function Yg(a, b) {
   return t(function (k) {
     switch (k.g) {
       case 1:
-        (c = $g(a, b)), (d = !1), (e = q(c)), (f = e.next());
+        ((c = $g(a, b)), (d = !1), (e = q(c)), (f = e.next()));
       case 2:
         if (f.done) {
           k.g = 4;
@@ -3949,7 +3951,7 @@ aa.onSpeak = function (a, b) {
   return t(function (k) {
     switch (k.g) {
       case 1:
-        return (c.u = !1), r(k, c.init(c.extensionId), 2);
+        return ((c.u = !1), r(k, c.init(c.extensionId), 2));
       case 2:
         if (!c.g) throw Error('WASM module not initialized.');
         return b.voiceName ? r(k, c.onStop(!1), 3) : k.return();
@@ -3979,7 +3981,7 @@ aa.onSpeak = function (a, b) {
         pa(k, 4);
         break;
       case 5:
-        return qa(k), k.return(Promise.reject(Error('Voice is not available')));
+        return (qa(k), k.return(Promise.reject(Error('Voice is not available'))));
       case 4:
         c.V = d;
         var x = b.lang;
@@ -4060,7 +4062,7 @@ function eh(a) {
     a.G = !0;
     var c = a.g,
       d = c._GoogleTtsReadBuffered();
-    if (d === -1) jh(a, { type: 'error' }), ch(a);
+    if (d === -1) (jh(a, { type: 'error' }), ch(a));
     else {
       for (var e = c._GoogleTtsGetTimepointsCount(), f = 0; f < e; f++)
         kh(a, {
@@ -4136,11 +4138,11 @@ function mh(a, b) {
   b && a.N.push(b);
   if (a.m)
     for (; (b = a.N.shift()); )
-      a.m.port.postMessage({ command: 'addBuffer', buffer: b }), a.D || a.u || fh(a);
+      (a.m.port.postMessage({ command: 'addBuffer', buffer: b }), a.D || a.u || fh(a));
 }
 function fh(a) {
   return t(function (b) {
-    if (b.g == 1) return a.m.connect(a.F), r(b, a.i.resume(), 2);
+    if (b.g == 1) return (a.m.connect(a.F), r(b, a.i.resume(), 2));
     a.l = !0;
     a.D = !0;
     jh(a, { type: 'start', charIndex: 0 });
@@ -4177,7 +4179,7 @@ function oh(a, b, c) {
         pa(g, 3);
         break;
       case 2:
-        qa(g), (f = c ? 'failed' : 'notInstalled');
+        (qa(g), (f = c ? 'failed' : 'notInstalled'));
       case 3:
         return g.return(f);
     }
@@ -4231,7 +4233,7 @@ function hh(a, b, c) {
         pa(m, 3);
         break;
       case 2:
-        return (d = qa(m)), m.return(Promise.reject(Error('' + d)));
+        return ((d = qa(m)), m.return(Promise.reject(Error('' + d))));
       case 3:
         e = a.C[b];
         if (!e) return m.return(Promise.reject(Error('Invalid voice name: ' + b)));
@@ -4319,7 +4321,7 @@ function Ug(a) {
   return t(function (e) {
     switch (e.g) {
       case 1:
-        return (e.i = 2), r(e, fetch('voices.json'), 4);
+        return ((e.i = 2), r(e, fetch('voices.json'), 4));
       case 4:
         b = e.h;
         if (!b.ok)
@@ -4364,7 +4366,7 @@ function Zg(a) {
 }
 function ah(a, b) {
   try {
-    a.g.FS.stat(['/voices', b.fileId].join('/')), (b.unloaded = !1);
+    (a.g.FS.stat(['/voices', b.fileId].join('/')), (b.unloaded = !1));
   } catch (c) {
     b.unloaded = !0;
   }
@@ -4405,9 +4407,9 @@ function Dh(a) {
     b = f.h;
     c = '';
     for (d = 0; d < b.byteLength; d++)
-      (e = new Uint8Array(b)[d]),
+      ((e = new Uint8Array(b)[d]),
         (c += Number(e >> 4).toString(16)),
-        (c += Number(e & 15).toString(16));
+        (c += Number(e & 15).toString(16)));
     return f.return(c);
   });
 }
@@ -4457,7 +4459,7 @@ chrome.runtime.onMessage.addListener(function (a, b, c) {
         c({ result: 'Paused speech' });
         break;
       case 'resume':
-        Eh.onResume(), c({ result: 'Resumed speech' });
+        (Eh.onResume(), c({ result: 'Resumed speech' }));
     }
   });
   return !0;

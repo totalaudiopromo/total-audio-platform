@@ -48,7 +48,10 @@ test.describe('Campaign Tracker Touch Targets', () => {
   test('Navigation elements - Touch-friendly', async ({ page }) => {
     await page.goto('/');
 
-    const navResults = await validateAllTouchTargets(page, 'nav a, nav button, header a, header button');
+    const navResults = await validateAllTouchTargets(
+      page,
+      'nav a, nav button, header a, header button'
+    );
     const failures = navResults.filter(r => !r.passed);
 
     expect(failures).toHaveLength(0);
@@ -58,10 +61,15 @@ test.describe('Campaign Tracker Touch Targets', () => {
     await page.goto('/campaigns');
 
     // Test modal interactions
-    const modalTriggers = page.locator('[data-modal-trigger], [class*="add-submission"]');
+    const modalTriggers = page.locator(
+      '[data-modal-trigger], [class*="add-submission"]'
+    );
 
     if ((await modalTriggers.count()) > 0) {
-      const results = await validateAllTouchTargets(page, '[data-modal-trigger], [class*="add-submission"]');
+      const results = await validateAllTouchTargets(
+        page,
+        '[data-modal-trigger], [class*="add-submission"]'
+      );
       const failures = results.filter(r => !r.passed);
 
       expect(failures).toHaveLength(0);

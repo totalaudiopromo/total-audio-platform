@@ -186,19 +186,16 @@ See [`apps/tap-saas-template/DESIGN_SYSTEM.md`](./apps/tap-saas-template/DESIGN_
    ```
 
 2. **Customise branding:**
-
    - Update `package.json` name
    - Change brand colour throughout
    - Update metadata in `app/layout.tsx`
 
 3. **Develop features:**
-
    - Add tool-specific routes
    - Create feature components
    - Build API endpoints
 
 4. **Keep docs organized:**
-
    - Run `npm run organize-docs` periodically
    - Or install git hooks for automation
 

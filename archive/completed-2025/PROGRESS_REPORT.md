@@ -263,13 +263,11 @@ function handleCSVImport(file: File) {
 ### Critical Tests
 
 1. **Tailwind Downgrade (Tracker)**:
-
    - ⚠️ Major version change (v4 → v3)
    - Test all pages for visual regressions
    - Check custom utilities still work
 
 2. **Anthropic SDK Update (Pitch Generator)**:
-
    - Test pitch generation functionality
    - Verify API compatibility (0.32.1 → 0.65.0)
 
