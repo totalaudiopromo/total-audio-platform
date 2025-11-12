@@ -14,7 +14,10 @@
     "test:report": "playwright show-report reports",
     "check:tailwind": "node scripts/check-tailwind.js",
     "check:colours": "node scripts/check-brand-colours.js",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "import:liberty": "tsx scripts/import-liberty-campaigns.ts",
+    "check:schema": "node check-schema.js",
+    "migrate": "node apply-migration.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.65.0",

@@ -74,10 +74,10 @@ echo "🚀 Step 3: Starting development server..."
 echo ""
 
 # Start the dev server
-npm run dev
+pnpm dev
 
 echo ""
 echo "✨ Setup complete!"
 echo ""
-echo "Open your browser to: http://localhost:3001/dashboard/liberty"
+echo "Open your browser to: http://localhost:3000/dashboard/liberty"
 echo ""

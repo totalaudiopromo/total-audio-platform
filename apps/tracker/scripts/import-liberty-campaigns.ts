@@ -22,7 +22,7 @@ async function main() {
   console.log('🎵 Importing Liberty Music PR Campaigns...\n');
 
   // Get or create Liberty user ID
-  const libertUser = await getOrCreateLibertyUser();
+  const libertyUser = await getOrCreateLibertyUser();
   console.log(`✅ Liberty user: ${libertyUser.email}\n`);
 
   // Import campaigns
