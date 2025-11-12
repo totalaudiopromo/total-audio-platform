@@ -126,6 +126,9 @@ temp/
 **/*.jpg
 **/*.jpeg
 **/*.png
+# Exception: Allow loading state images for Audio Intel and Tracker
+!apps/audio-intel/public/assets/loading-states/*.png
+!apps/tracker/public/assets/loading-states/*.png
 **/*.gif
 **/*.bmp
 **/*.tiff
