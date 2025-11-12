@@ -16,6 +16,9 @@ You're building what Liberty will actually USE daily:
 - Real Typeform submissions → campaign creation
 - Real WARM reports uploaded → automatic play tracking
 - Real Google Drive integration for asset storage
+- Real Airtable contacts imported and synced
+- Real Google Sheets for live client reporting
+- Real Excel parsing and exports
 
 **Demo is a byproduct. The tool is the product.**
 
@@ -99,12 +102,58 @@ You're building what Liberty will actually USE daily:
 - Store PDFs, artwork, press assets
 - "Open Drive Folder" button
 
-### 🆕 WARM Report Parser (NEW)
+### ✅ Airtable Integration
+**Location:** Liberty agent Airtable config
+**Status:** Operational (you built this!)
+**Capabilities:**
+- Read bases and tables
+- Filter records by criteria
+- Update records
+- Sync data bi-directionally
+
+**For Tracker:**
+- Import contacts from Airtable bases
+- Filter by genre/region
+- Sync contact status back to Airtable
+- Link campaigns to Airtable records
+
+### ✅ Google Sheets Integration
+**Location:** Google Sheets API setup
+**Status:** Operational (you built this!)
+**Capabilities:**
+- Create spreadsheets
+- Write data to sheets
+- Format cells and charts
+- Share with clients
+
+**For Tracker:**
+- Generate live client reports
+- Auto-update sheets as campaign progresses
+- Share read-only with clients
+- Export formatted reports
+
+### ✅ Excel Integration
+**Location:** Excel parsing libraries
+**Status:** Operational (you built this!)
+**Capabilities:**
+- Parse .xlsx files
+- Read multiple sheets
+- Extract data with formulas
+- Generate Excel exports
+
+**For Tracker:**
+- Parse WARM Excel reports
+- Handle multi-sheet reports
+- Export campaign data as Excel
+- Generate formatted Excel reports
+
+### 🆕 WARM Report Parser (ENHANCED)
 **Need to Build:**
 - Upload CSV/Excel WARM report
 - Parse play data (station, date, show)
 - Auto-create campaign_activities entries
 - Update metrics (total plays, countries, stations)
+- Handle Excel multi-sheet format
 
 ---
 
@@ -131,6 +180,10 @@ CREATE TABLE campaigns (
   mailchimp_campaign_id TEXT, -- Link to Mailchimp campaign
   monday_board_id TEXT, -- Link to Monday.com board
   drive_folder_id TEXT, -- Google Drive folder for assets
+  airtable_base_id TEXT, -- Airtable base for contacts
+  airtable_table_id TEXT, -- Airtable table name
+  sheets_report_id TEXT, -- Google Sheet ID for live client report
+  excel_export_path TEXT, -- Drive path to Excel exports
 
   -- Status
   status TEXT DEFAULT 'active', -- active, completed, paused
@@ -164,6 +217,8 @@ CREATE TABLE campaign_contacts (
   gmail_message_ids TEXT[], -- Array of message IDs
   mailchimp_subscriber_id TEXT, -- Link to Mailchimp subscriber
   monday_item_id TEXT, -- Link to Monday.com item
+  airtable_record_id TEXT, -- Link to Airtable contact record
+  synced_to_airtable BOOLEAN DEFAULT FALSE, -- Track sync status
 
   -- Intelligence (from Audio Intel)
   intelligence JSONB, -- Show times, genres, submission guidelines
@@ -359,7 +414,7 @@ export async function getMailchimpStats(campaignId: string) {
 }
 ```
 
-#### Hour 4: Monday.com & Typeform Integration Setup
+#### Hour 4: Monday.com, Typeform, Airtable, Sheets Integration Setup
 **Tasks:**
 1. Create Monday.com wrapper: `apps/tracker/lib/integrations/monday.ts`
    - `createMondayBoard(campaignId)` - Create board
@@ -370,6 +425,16 @@ export async function getMailchimpStats(campaignId: string) {
    - `fetchTypeformResponse(responseId)` - Get submission data
    - `importCampaignFromTypeform(responseId)` - Auto-create campaign
    - `parseTypeformAssets(responseId)` - Extract URLs
+
+3. Create Airtable wrapper: `apps/tracker/lib/integrations/airtable.ts`
+   - `importContactsFromAirtable(baseId, tableId, filters)` - Import filtered contacts
+   - `syncContactToAirtable(contactId)` - Update Airtable record
+   - `linkCampaignToAirtable(campaignId, baseId)` - Link campaign
+
+4. Create Google Sheets wrapper: `apps/tracker/lib/integrations/google-sheets.ts`
+   - `createLiveSheetReport(campaignId)` - Create client report sheet
+   - `updateSheetMetrics(campaignId)` - Update metrics in real-time
+   - `shareSheetWithClient(sheetId, clientEmail)` - Share read-only
 
 **Example Typeform Import:**
 ```typescript
@@ -462,14 +527,16 @@ export function WARMReportUploader({ campaignId }: { campaignId: string }) {
 }
 ```
 
-#### Hour 7-8: WARM Report Parser
+#### Hour 7-8: WARM Report Parser (CSV + Excel)
 **Tasks:**
 1. Create parser API: `apps/tracker/app/api/warm-reports/[id]/parse/route.ts`
 2. Parse CSV/Excel:
+   - Detect file format (.csv or .xlsx)
+   - Handle Excel multi-sheet workbooks
    - Extract play data (station, date, show, country)
    - Create `campaign_activities` entries for each play
    - Update `campaign_metrics` (total plays, countries, stations)
-3. Handle different WARM CSV formats
+3. Handle different WARM formats (CSV single-sheet, Excel multi-sheet)
 
 **Parser Logic:**
 ```typescript
@@ -487,19 +554,30 @@ export async function POST(req: Request, { params }: { params: { id: string } })
   // Download from Google Drive
   const fileContent = await downloadFromGoogleDrive(report.drive_file_id);
 
-  // Parse CSV (adjust based on actual WARM format)
-  const records = parse(fileContent, {
-    columns: true,
-    skip_empty_lines: true
-  });
+  let plays: any[] = [];
 
-  // Expected WARM CSV columns: Station, Date, Show, Country, Time
-  const plays = records.map(row => ({
-    station: row.Station || row.station,
-    date: parseDate(row.Date || row.date),
-    show: row.Show || row.show || row.Programme,
-    country: row.Country || row.country,
-    time: row.Time || row.time
+  // Detect format and parse accordingly
+  if (report.filename.endsWith('.csv')) {
+    // Parse CSV
+    const records = parse(fileContent, {
+      columns: true,
+      skip_empty_lines: true
+    });
+    plays = records;
+  } else if (report.filename.endsWith('.xlsx') || report.filename.endsWith('.xls')) {
+    // Parse Excel (handle multi-sheet workbooks)
+    const workbook = read(fileContent);
+    const playDataSheet = workbook.Sheets['Play Data'] || workbook.Sheets[workbook.SheetNames[0]];
+    plays = utils.sheet_to_json(playDataSheet);
+  }
+
+  // Normalize play data (handle various column names)
+  const normalizedPlays = plays.map(row => ({
+    station: row.Station || row.station || row['Station Name'],
+    date: parseDate(row.Date || row.date || row['Play Date']),
+    show: row.Show || row.show || row.Programme || row['Show Name'],
+    country: row.Country || row.country || row.Territory,
+    time: row.Time || row.time || row['Play Time']
   }));
 
   // Create activities for each play
@@ -551,21 +629,24 @@ export async function POST(req: Request, { params }: { params: { id: string } })
 
 ### PHASE 3: Dashboard with Real Integrations (Hours 9-14)
 
-#### Hour 9-10: Campaign Creation from Typeform
+#### Hour 9-10: Campaign Creation from Typeform + Airtable
 **Tasks:**
 1. Create campaign creation page: `apps/tracker/app/campaigns/new/page.tsx`
 2. Add "Import from Typeform" button
-3. Show Typeform response selector
-4. Auto-populate form fields
-5. Create campaign with all integration links
+3. Add "Import Contacts from Airtable" button
+4. Show Typeform response selector
+5. Show Airtable base/table selector
+6. Auto-populate form fields
+7. Create campaign with all integration links
 
 **Flow:**
 ```
 User clicks "New Campaign"
   ↓
-Page shows two options:
+Page shows three options:
   1. "Import from Typeform Response" (button)
-  2. "Create Manually" (form)
+  2. "Import Contacts from Airtable" (button)
+  3. "Create Manually" (form)
   ↓
 User clicks "Import from Typeform"
   ↓
@@ -581,6 +662,14 @@ Auto-populate:
   - Release Date: 14 Oct 2025
   - Assets: [links from Typeform]
   ↓
+User clicks "Import Contacts from Airtable"
+  ↓
+Select base: "Liberty Radio Contacts"
+  ↓
+Filter: Genre = "Electronic", Region = "Australia"
+  ↓
+Returns: 47 contacts → user selects 15
+  ↓
 User clicks "Create Campaign"
   ↓
 System:
@@ -588,7 +677,10 @@ System:
   2. Creates Gmail label: "Campaign: KYARA"
   3. Creates Google Drive folder: "KYARA - Bloodshot"
   4. Creates Monday.com board (optional)
-  5. Links Typeform response ID
+  5. Creates Google Sheet client report (live)
+  6. Links Typeform response ID
+  7. Links Airtable base/table
+  8. Imports 15 contacts from Airtable
   ↓
 Campaign created → redirect to dashboard
 ```
@@ -622,6 +714,8 @@ Campaign created → redirect to dashboard
     <Badge icon={<Send />} status="active" tooltip="Mailchimp sent" />
     <Badge icon={<Folder />} status="active" tooltip="Drive folder" />
     <Badge icon={<Trello />} status="active" tooltip="Monday.com board" />
+    <Badge icon={<Database />} status="active" tooltip="Airtable synced" />
+    <Badge icon={<FileSpreadsheet />} status="active" tooltip="Live Google Sheet" />
   </IntegrationBadges>
 
   <RecentActivity>
@@ -665,6 +759,15 @@ Campaign created → redirect to dashboard
       </Button>
       <Button onClick={() => openMonday(campaign.monday_board_id)}>
         <Trello /> View Monday
+      </Button>
+      <Button onClick={() => openAirtable(campaign.airtable_base_id, campaign.airtable_table_id)}>
+        <Database /> View Airtable
+      </Button>
+      <Button onClick={() => openSheets(campaign.sheets_report_id)}>
+        <FileSpreadsheet /> Open Live Report
+      </Button>
+      <Button onClick={() => exportToExcel(campaign.id)}>
+        <Download /> Export Excel
       </Button>
     </IntegrationActions>
   </CampaignHeader>
@@ -1094,6 +1197,8 @@ async function invokeAgent(action: string, campaignId: string) {
      csv-parse xlsx \
      @google-cloud/storage \
      @mailchimp/mailchimp_marketing \
+     airtable \
+     googleapis \
      date-fns
    ```
 
