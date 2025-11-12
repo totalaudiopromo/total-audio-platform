@@ -54,7 +54,7 @@ jobs:
           retention-days: 30
 
       - name: Send AI Summary Report
-        if: success()
+        if: success() && github.event.schedule == '0 8 * * *'
         run: pnpm tsx scripts/golden-summary.ts
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
