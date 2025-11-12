@@ -15,6 +15,8 @@ import {
   Search,
   Menu,
   X,
+  Zap,
+  TestTube,
 } from 'lucide-react';
 
 interface AppShellProps {
@@ -28,6 +30,8 @@ const navItems = [
   { label: 'Business Reports', href: '/reports', icon: FileText },
   { label: 'Social Media Hub', href: '/social-media-hub', icon: Share2 },
   { label: 'Industry Intelligence', href: '/newsjacking', icon: Newspaper },
+  { label: 'Golden Verify', href: '/golden-verify', icon: Zap },
+  { label: 'Testing Results', href: '/testing-results', icon: TestTube },
   { label: 'Beta Users', href: '/beta-management', icon: Users },
   { label: 'System Status', href: '/system-status', icon: Settings },
 ];
