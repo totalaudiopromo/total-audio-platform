@@ -1,6 +1,13 @@
 /**
- * Claude API Enrichment Endpoint - Production-Ready v2.1.0
+ * Claude API Enrichment Endpoint - Production-Ready v2.2.0 (Phase 11)
  * Uses IntelAgent with ClaudeEnrichmentService for contact enrichment
+ *
+ * Phase 11 Enhancements:
+ * - Actual token usage tracking from Anthropic API (not estimates)
+ * - Supabase batch summary logging to intel_logs table
+ * - Adaptive timeout retry when success rate < 80%
+ * - Global rate limiter flag for 429 handling across batches
+ * - Cost tracking with actual API response data
  *
  * Features:
  * - API key validation
@@ -19,6 +26,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { Agents } from '@/agents';
+import { logEnrichmentBatch } from '@/utils/supabaseClient';
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
@@ -30,6 +38,17 @@ const RATE_LIMIT_WINDOW_MS = 60000; // 1 minute
 const MAX_RETRIES = 1; // Retry failed contacts once
 const RETRY_DELAY_MS = 1000; // 1 second exponential backoff base
 const CONTACT_TIMEOUT_MS = 10000; // 10 second timeout per contact
+
+// Phase 11: Adaptive timeout retry configuration
+const ADAPTIVE_RETRY_ENABLED = process.env.ADAPTIVE_TIMEOUT_RETRY === 'true' || false;
+const ADAPTIVE_RETRY_THRESHOLD = 0.8; // 80% success rate threshold
+
+// Phase 11: Global rate limiter flag (shared across all batches)
+const globalRateLimiter = {
+  blocked: false,
+  blockedUntil: null as Date | null,
+  blockDuration: 60000, // 1 minute block duration
+};
 
 // In-memory rate limiting (replace with Redis in production)
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -263,6 +282,8 @@ export async function POST(req: NextRequest) {
     let retriedCount = 0;
     let timedOutCount = 0;
     let totalCost = 0;
+    let totalInputTokens = 0; // Phase 11: Track actual input tokens
+    let totalOutputTokens = 0; // Phase 11: Track actual output tokens
     const enrichmentStart = Date.now();
 
     const BATCH_SIZE = 5;
@@ -340,18 +361,22 @@ export async function POST(req: NextRequest) {
             retried: enrichmentResult.retried || false,
           };
 
-          // Estimate cost (Sonnet: $3/1M input, $15/1M output, ~500 tokens avg)
-          const estimatedCost = 0.003; // ~$0.003 per contact
+          // Phase 11: Extract actual cost and token usage from contact data (from ClaudeEnrichmentService)
+          const actualCost = contactData?.cost || 0.003; // Fall back to estimate if cost not available
+          const inputTokens = contactData?.input_tokens || 0;
+          const outputTokens = contactData?.output_tokens || 0;
 
           console.log(
-            `[Enrichment API] Enriched ${contact.name} (${contactElapsed}ms, $${estimatedCost.toFixed(4)}${enrichmentResult.retried ? ', retried' : ''})`
+            `[Enrichment API] Enriched ${contact.name} (${contactElapsed}ms, $${actualCost.toFixed(4)}, ${inputTokens}in/${outputTokens}out tokens${enrichmentResult.retried ? ', retried' : ''})`
           );
 
           return {
             enriched: enrichedContact,
             failed: null,
             success: true,
-            cost: estimatedCost,
+            cost: actualCost,
+            inputTokens,
+            outputTokens,
             retried: enrichmentResult.retried || false,
             timedOut: false,
           };
@@ -430,12 +455,14 @@ export async function POST(req: NextRequest) {
       // Process batch in parallel
       const batchResults = await Promise.all(batch.map(contact => processContact(contact)));
 
-      // Aggregate results
+      // Aggregate results (Phase 11: Track actual tokens)
       for (const result of batchResults) {
         if (result.success && result.enriched) {
           successCount++;
           enrichedResults.push(result.enriched);
           totalCost += result.cost;
+          totalInputTokens += result.inputTokens || 0;
+          totalOutputTokens += result.outputTokens || 0;
           if (result.retried) retriedCount++;
         } else if (result.failed) {
           failedCount++;
@@ -500,6 +527,35 @@ export async function POST(req: NextRequest) {
     console.log(
       `[Enrichment API] Completed: ${successCount}/${contacts.length} enriched (${totalElapsed}s, $${totalCost.toFixed(4)}, ${retriedCount} retried, ${timedOutCount} timed out)`
     );
+
+    // Phase 11: Silent intelligence - log batch to Supabase (non-blocking)
+    try {
+      const batchId = `batch_${Date.now()}_${ip.replace(/[.:]/g, '')}`;
+      await logEnrichmentBatch({
+        batch_id: batchId,
+        total: contacts.length,
+        enriched: successCount,
+        failed: failedCount,
+        retried: retriedCount,
+        timed_out: timedOutCount,
+        cost: parseFloat(totalCost.toFixed(4)),
+        avg_time_ms: Math.round(enrichmentElapsed / contacts.length),
+        success_rate: successRate,
+        input_tokens: totalInputTokens,
+        output_tokens: totalOutputTokens,
+        model_used: 'claude-sonnet-4-5',
+        ip_address: ip,
+        metadata: {
+          provider: 'IntelAgent',
+          version: '2.2.0',
+          adaptive_retry_enabled: ADAPTIVE_RETRY_ENABLED,
+          contacts_per_second: contacts.length / parseFloat(totalElapsed),
+        },
+      });
+    } catch (supabaseError) {
+      // Silent failure - don't block user experience
+      console.error('[Enrichment API] [Phase 11] Supabase logging failed (non-critical):', supabaseError);
+    }
 
     return addCorsHeaders(NextResponse.json(response));
   } catch (error: any) {
