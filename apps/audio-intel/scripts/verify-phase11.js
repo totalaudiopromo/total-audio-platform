@@ -64,7 +64,9 @@ async function verifyPhase11() {
       });
     } else {
       console.log('3️⃣  No enrichment logs yet (table is empty)\n');
-      console.log('   ℹ️  This is expected if you haven\'t run any enrichments since Phase 11 deployment\n');
+      console.log(
+        "   ℹ️  This is expected if you haven't run any enrichments since Phase 11 deployment\n"
+      );
     }
 
     // Step 4: Verify table structure

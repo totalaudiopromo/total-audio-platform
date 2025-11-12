@@ -11,11 +11,15 @@ import {
   Users,
   Settings,
   ShieldCheck,
+  Zap,
+  TestTube,
 } from 'lucide-react';
 
 const opsNavItems = [
   { label: 'Overview', href: '/ops-console/overview', icon: Activity },
   { label: 'Agents', href: '/ops-console/agents', icon: Bot },
+  { label: 'Golden Verify', href: '/ops-console/golden', icon: Zap },
+  { label: 'Testing', href: '/ops-console/testing', icon: TestTube },
   { label: 'Social', href: '/ops-console/social', icon: Share2 },
   { label: 'Feedback', href: '/ops-console/feedback', icon: MessageSquare },
   { label: 'Growth', href: '/ops-console/growth', icon: TrendingUp },

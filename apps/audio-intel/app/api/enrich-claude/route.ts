@@ -554,7 +554,10 @@ export async function POST(req: NextRequest) {
       });
     } catch (supabaseError) {
       // Silent failure - don't block user experience
-      console.error('[Enrichment API] [Phase 11] Supabase logging failed (non-critical):', supabaseError);
+      console.error(
+        '[Enrichment API] [Phase 11] Supabase logging failed (non-critical):',
+        supabaseError
+      );
     }
 
     return addCorsHeaders(NextResponse.json(response));

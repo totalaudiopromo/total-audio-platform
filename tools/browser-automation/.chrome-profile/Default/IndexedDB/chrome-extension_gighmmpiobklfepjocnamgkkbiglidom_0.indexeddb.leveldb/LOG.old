@@ -1,15 +1,3 @@
-2025/11/10-08:20:38.315 11227 Reusing MANIFEST /Users/chrisschofield/workspace/active/total-audio-platform/tools/browser-automation/.chrome-profile/Default/IndexedDB/chrome-extension_gighmmpiobklfepjocnamgkkbiglidom_0.indexeddb.leveldb/MANIFEST-000001
-2025/11/10-08:20:38.316 11227 Recovering log #131
-2025/11/10-08:20:38.318 11227 Reusing old log /Users/chrisschofield/workspace/active/total-audio-platform/tools/browser-automation/.chrome-profile/Default/IndexedDB/chrome-extension_gighmmpiobklfepjocnamgkkbiglidom_0.indexeddb.leveldb/000131.log 
-2025/11/10-08:21:13.116 1121b Level-0 table #136: started
-2025/11/10-08:21:13.119 1121b Level-0 table #136: 52184 bytes OK
-2025/11/10-08:21:13.122 1121b Delete type=0 #131
-2025/11/10-08:21:13.123 1121b Manual compaction at level-0 from (begin) .. (end); will stop at (end)
-2025/11/10-08:21:13.123 1121b Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x02\x03\x03\x00\x00\x00\x00\x80(\xd6@' @ 1055802 : 1
-2025/11/10-08:21:13.123 1121b Compacting 1@1 + 1@2 files
-2025/11/10-08:21:13.126 1121b Generated table #137@1: 35 keys, 911 bytes
-2025/11/10-08:21:13.126 1121b Compacted 1@1 + 1@2 files => 911 bytes
-2025/11/10-08:21:13.127 1121b compacted to: files[ 0 0 1 0 0 0 0 ]
-2025/11/10-08:21:13.128 1121b Delete type=2 #136
-2025/11/10-08:21:13.128 1121b Delete type=2 #133
-2025/11/10-08:21:13.128 1121b Manual compaction at level-1 from '\x00\x01\x02\x03\x03\x00\x00\x00\x00\x80(\xd6@' @ 1055802 : 1 .. (end); will stop at (end)
+2025/11/12-08:20:38.343 11227 Reusing MANIFEST /Users/chrisschofield/workspace/active/total-audio-platform/tools/browser-automation/.chrome-profile/Default/IndexedDB/chrome-extension_gighmmpiobklfepjocnamgkkbiglidom_0.indexeddb.leveldb/MANIFEST-000001
+2025/11/12-08:20:38.344 11227 Recovering log #135
+2025/11/12-08:20:38.344 11227 Reusing old log /Users/chrisschofield/workspace/active/total-audio-platform/tools/browser-automation/.chrome-profile/Default/IndexedDB/chrome-extension_gighmmpiobklfepjocnamgkkbiglidom_0.indexeddb.leveldb/000135.log 

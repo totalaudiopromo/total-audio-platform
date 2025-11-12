@@ -27,6 +27,7 @@ Audio Intel was 175 commits behind production due to **dual-repository architect
 #### 1. Updated `apps/audio-intel/vercel.json`
 
 **Before:**
+
 ```json
 {
   "buildCommand": "pnpm build"
@@ -34,6 +35,7 @@ Audio Intel was 175 commits behind production due to **dual-repository architect
 ```
 
 **After:**
+
 ```json
 {
   "buildCommand": "pnpm --filter audio-intel build"
@@ -41,6 +43,7 @@ Audio Intel was 175 commits behind production due to **dual-repository architect
 ```
 
 **Reason:** Matches the working pattern used by Tracker and Pitch Generator:
+
 - Tracker: `"buildCommand": "pnpm --filter tracker build"` ✅
 - Pitch Generator: `"buildCommand": "pnpm --filter pitch-generator build"` ✅
 - Audio Intel: Now matches this pattern ✅
@@ -75,11 +78,11 @@ golden-verify.yml (post-deployment checks)
 
 ### All Apps Now Use Same Pattern
 
-| App              | Build Command                       | Root Directory         | Status |
-| ---------------- | ----------------------------------- | ---------------------- | ------ |
-| Audio Intel      | `pnpm --filter audio-intel build`   | `apps/audio-intel`     | ✅     |
-| Tracker          | `pnpm --filter tracker build`       | `apps/tracker`         | ✅     |
-| Pitch Generator  | `pnpm --filter pitch-generator build` | `apps/pitch-generator` | ✅     |
+| App             | Build Command                         | Root Directory         | Status |
+| --------------- | ------------------------------------- | ---------------------- | ------ |
+| Audio Intel     | `pnpm --filter audio-intel build`     | `apps/audio-intel`     | ✅     |
+| Tracker         | `pnpm --filter tracker build`         | `apps/tracker`         | ✅     |
+| Pitch Generator | `pnpm --filter pitch-generator build` | `apps/pitch-generator` | ✅     |
 
 ## Verification Status
 
@@ -157,6 +160,7 @@ Once Vercel deployment completes:
 Unknown - user stated: "shouldnt intel be in the monorepo? i dunno why i did it this way tbh"
 
 Likely reasons:
+
 - Early experimentation with deployment patterns
 - Separate repository for "production" vs "development"
 - Confusion about monorepo deployment capabilities
@@ -178,5 +182,6 @@ Likely reasons:
 **Last Updated:** 2025-11-11 21:30 GMT
 **Next Action:** Wait for Vercel automatic deployment, then verify live site
 **Related Docs:**
+
 - [docs/PHASE_10C_CLEANUP_AND_REBASE.md](./PHASE_10C_CLEANUP_AND_REBASE.md) - Golden Pipeline Reset
 - [.claude/CLAUDE.md](../.claude/CLAUDE.md) - CI/CD Pipeline Architecture
