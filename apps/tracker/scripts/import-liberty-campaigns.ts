@@ -34,16 +34,19 @@ async function main() {
 }
 
 async function getOrCreateLibertyUser() {
-  // Check if demo user exists
-  const { data: user } = await supabase.auth.admin.getUserById(
-    'liberty-demo-user'
-  );
+  // Check if demo user exists by listing users
+  const { data: users, error: listError } = await supabase.auth.admin.listUsers();
 
-  if (user) {
-    return user.user;
+  if (!listError && users?.users) {
+    const existingUser = users.users.find(u => u.email === 'demo@libertymusicpr.com');
+    if (existingUser) {
+      console.log('  ✅ Found existing Liberty demo user');
+      return existingUser;
+    }
   }
 
   // Create demo user
+  console.log('  📝 Creating Liberty demo user...');
   const { data: newUser, error } = await supabase.auth.admin.createUser({
     email: 'demo@libertymusicpr.com',
     email_confirm: true,
@@ -57,6 +60,7 @@ async function getOrCreateLibertyUser() {
     throw new Error(`Failed to create Liberty user: ${error?.message}`);
   }
 
+  console.log('  ✅ Created new Liberty demo user');
   return newUser.user;
 }
 
