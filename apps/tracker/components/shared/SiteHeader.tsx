@@ -54,6 +54,8 @@ export function SiteHeader({
               width={40}
               height={40}
               className="h-10 w-auto flex-shrink-0"
+              priority
+              unoptimized
             />
             <div className="flex flex-col min-w-0">
               <span className="text-lg font-bold leading-tight tracking-tight text-black truncate">

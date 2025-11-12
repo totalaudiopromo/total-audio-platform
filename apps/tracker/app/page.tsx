@@ -239,6 +239,8 @@ export default async function HomePage() {
               width={200}
               height={200}
               className="rounded-2xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+              priority
+              unoptimized
             />
           </div>
           <div className="flex-1">
