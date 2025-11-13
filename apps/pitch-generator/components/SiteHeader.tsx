@@ -96,7 +96,7 @@ export function SiteHeader() {
     <SharedSiteHeader
       toolName="Pitch Generator"
       links={availableLinks}
-      toolSwitcher={<ToolSwitcher currentTool="Pitch Generator" accentColor="purple" />}
+      toolSwitcher={<ToolSwitcher currentTool="Pitch Generator" accentColor="amber" />}
       authComponent={<AuthComponent />}
       logoPath="/total_audio_promo_logo_trans.png"
     />

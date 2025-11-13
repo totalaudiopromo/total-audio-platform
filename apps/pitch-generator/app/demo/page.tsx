@@ -1,305 +1,355 @@
 'use client';
 
-/**
- * Public Skills Demo - No Login Required
- * Test VoiceGuardSkill with Haiku
- */
-
 import { useState } from 'react';
+import Link from 'next/link';
+import { SiteHeader } from '@/components/SiteHeader';
+import { FileText, Copy, Send, Sparkles, Loader2, CheckCircle2 } from 'lucide-react';
 
-export default function PublicSkillsDemo() {
-  const [text, setText] = useState(
-    'Leverage our innovative solution to organize your music promotion workflow!'
-  );
-  const [result, setResult] = useState<any>(null);
-  const [loading, setLoading] = useState(false);
+interface DemoPitch {
+  id: number;
+  contactName: string;
+  contactEmail: string;
+  contactRole: string;
+  contactPlatform: string;
+  trackTitle: string;
+  artistName: string;
+  pitch: string;
+  status: 'draft' | 'ready' | 'sent';
+  generatedAt: string;
+}
 
-  const checkVoice = async () => {
-    setLoading(true);
+const demoPitches: DemoPitch[] = [
+  {
+    id: 1,
+    contactName: 'Jack Saunders',
+    contactEmail: 'jack.saunders@bbc.co.uk',
+    contactRole: 'Presenter',
+    contactPlatform: 'BBC Radio 1',
+    trackTitle: 'Maybe (i)',
+    artistName: 'sadact',
+    pitch: `Hi Jack,
+
+Hope you're well! I'm reaching out about "Maybe (i)" by sadact - a track I think would fit perfectly with your New Music show.
+
+sadact is a producer I've been working with for a while, and this track has that alternative electronic sound you champion. It's got that early evening energy - moody but still accessible, with production that's clean but not over-polished.
+
+The track's already getting support from BBC 6 Music and has been added to a few Spotify editorial playlists. I've attached the stream below - would love to know what you think.
+
+Best,
+Chris`,
+    status: 'ready',
+    generatedAt: '2025-01-15T10:30:00Z',
+  },
+  {
+    id: 2,
+    contactName: 'Annie Mac',
+    contactEmail: 'annie.mac@bbc.co.uk',
+    contactRole: 'Presenter',
+    contactPlatform: 'BBC Radio 1',
+    trackTitle: 'Maybe (i)',
+    artistName: 'sadact',
+    pitch: `Hi Annie,
+
+Quick one - "Maybe (i)" by sadact. I know you're always looking for tracks that bridge electronic and indie, and this hits that sweet spot.
+
+sadact's been building momentum with BBC 6 Music support, and this track has that late-night Radio 1 energy. It's got depth but still feels immediate - exactly the kind of thing that works on Future Sounds.
+
+Stream below. Let me know if you want the full EP.
+
+Cheers,
+Chris`,
+    status: 'ready',
+    generatedAt: '2025-01-15T10:32:00Z',
+  },
+  {
+    id: 3,
+    contactName: 'Spotify Editorial',
+    contactEmail: 'editorial@spotify.com',
+    contactRole: 'Playlist Curators',
+    contactPlatform: 'Spotify',
+    trackTitle: 'Maybe (i)',
+    artistName: 'sadact',
+    pitch: `Hi Spotify Editorial Team,
+
+Submitting "Maybe (i)" by sadact for your consideration. This track sits in that alternative electronic space - think Four Tet meets Caribou, but with its own UK identity.
+
+The track's already getting BBC 6 Music support and has been performing well on independent playlists. It's got that crossover appeal that works across multiple genres.
+
+Streaming link and press assets attached. Would love to see this on New Music Friday UK or any of your electronic-focused playlists.
+
+Thanks,
+Chris`,
+    status: 'draft',
+    generatedAt: '2025-01-15T10:35:00Z',
+  },
+];
+
+export default function PitchGeneratorDemo() {
+  const [selectedPitch, setSelectedPitch] = useState<DemoPitch | null>(null);
+  const [copiedId, setCopiedId] = useState<number | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const handleCopyPitch = async (pitch: DemoPitch) => {
     try {
-      const response = await fetch('/api/skills/voice-check', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text }),
-      });
-
-      const data = await response.json();
-      setResult(data);
-    } catch (error: any) {
-      console.error('Error:', error);
-      setResult({ error: error.message });
-    } finally {
-      setLoading(false);
+      await navigator.clipboard.writeText(pitch.pitch);
+      setCopiedId(pitch.id);
+      setTimeout(() => setCopiedId(null), 2000);
+    } catch (error) {
+      console.error('Failed to copy:', error);
     }
   };
 
+  const handleGenerateDemo = () => {
+    setIsGenerating(true);
+    setTimeout(() => {
+      setIsGenerating(false);
+      setSelectedPitch(demoPitches[0]);
+    }, 1500);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 p-4 md:p-8">
-      <div className="max-w-5xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-10">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-3 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              Skills System Demo
-            </h1>
-            <p className="text-lg text-gray-600 mb-2">
-              VoiceGuardSkill - UK Voice Enforcement with Claude 3.5 Haiku
-            </p>
-            <div className="flex items-center justify-center gap-3 text-sm text-gray-500">
-              <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">
-                73% Cheaper
-              </span>
-              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">
-                3-5x Faster
-              </span>
-              <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-medium">
-                No Login Required
-              </span>
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-amber-50">
+      {/* Navigation Header */}
+      <SiteHeader />
+
+      {/* Demo Content */}
+      <main className="max-w-7xl mx-auto px-4 py-8 sm:py-12">
+        {/* Header */}
+        <div className="text-center mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-amber-100 border-2 border-amber-600 rounded-full">
+            <span className="text-sm font-bold text-amber-800">DEMO DATA</span>
           </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
+            Pitch Generator in Action
+          </h1>
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+            See how Pitch Generator writes personalised music PR pitches in seconds. No more
+            copy-pasting templates or staring at blank emails.
+          </p>
+          <p className="text-sm text-gray-500 mb-6">
+            Click any pitch below to see the full personalised email, or generate a new one
+          </p>
+        </div>
 
-          <div className="space-y-6">
-            {/* Input */}
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-3">
-                Text to Check:
-              </label>
-              <textarea
-                value={text}
-                onChange={e => setText(e.target.value)}
-                className="w-full p-4 border-2 border-gray-200 rounded-xl h-32 font-mono text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all"
-                placeholder="Enter text to check UK voice compliance..."
-              />
-            </div>
-
-            {/* Check Button */}
-            <button
-              onClick={checkVoice}
-              disabled={loading || !text}
-              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 px-8 rounded-xl font-semibold text-lg hover:from-purple-700 hover:to-blue-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg"
-            >
-              {loading ? (
-                <span className="flex items-center justify-center gap-2">
-                  <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                      fill="none"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    />
-                  </svg>
-                  Checking Voice...
-                </span>
-              ) : (
-                '🎵 Check UK Voice Compliance'
-              )}
-            </button>
-
-            {/* Results */}
-            {result && (
-              <div className="mt-8 space-y-6 animate-in fade-in duration-500">
-                {result.error ? (
-                  <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6">
-                    <p className="text-red-800 font-semibold text-lg mb-2">Error:</p>
-                    <p className="text-red-600">{result.error}</p>
-                  </div>
+        {/* Quick Generate Demo */}
+        {!selectedPitch && (
+          <div className="bg-white border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-8">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex-1">
+                <h3 className="text-xl font-black text-gray-900 mb-2">
+                  🎯 Quick Demo: Generate a Pitch
+                </h3>
+                <p className="text-sm text-gray-700 font-bold">
+                  Generate a personalised pitch for BBC Radio 1's Jack Saunders instantly. Real
+                  contact, real AI-generated pitch.
+                </p>
+              </div>
+              <button
+                onClick={handleGenerateDemo}
+                disabled={isGenerating}
+                className="bg-amber-500 hover:bg-amber-600 text-black font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap flex items-center gap-2"
+              >
+                {isGenerating ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Generating...
+                  </>
                 ) : (
                   <>
-                    {/* Compliance Score */}
-                    <div className="bg-gradient-to-r from-purple-50 to-blue-50 border-2 border-purple-200 rounded-xl p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="font-semibold text-gray-700 text-lg">
-                          Compliance Score:
-                        </span>
-                        <div className="flex items-center gap-3">
-                          <div className="w-64 bg-gray-200 rounded-full h-6">
-                            <div
-                              className={`h-6 rounded-full transition-all duration-1000 ${
-                                result.complianceScore >= 0.8
-                                  ? 'bg-gradient-to-r from-green-500 to-green-600'
-                                  : result.complianceScore >= 0.6
-                                    ? 'bg-gradient-to-r from-yellow-500 to-orange-500'
-                                    : 'bg-gradient-to-r from-red-500 to-red-600'
-                              }`}
-                              style={{
-                                width: `${result.complianceScore * 100}%`,
-                              }}
-                            />
-                          </div>
-                          <span className="font-bold text-2xl">
-                            {(result.complianceScore * 100).toFixed(0)}%
-                          </span>
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-600">
-                        {result.complianceScore >= 0.8
-                          ? '✅ Excellent! Authentic UK music industry voice.'
-                          : result.complianceScore >= 0.6
-                            ? '⚠️ Good, but needs some improvements.'
-                            : '❌ Needs work - too corporate or US spelling.'}
-                      </p>
-                    </div>
-
-                    {/* Original vs Corrected */}
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="bg-red-50 border-2 border-red-200 rounded-xl p-5">
-                        <p className="font-semibold text-red-800 mb-3 flex items-center gap-2">
-                          <span className="text-xl">❌</span> Original:
-                        </p>
-                        <p className="text-sm text-gray-700 font-mono leading-relaxed">
-                          {result.original}
-                        </p>
-                      </div>
-                      <div className="bg-green-50 border-2 border-green-200 rounded-xl p-5">
-                        <p className="font-semibold text-green-800 mb-3 flex items-center gap-2">
-                          <span className="text-xl">✅</span> Corrected:
-                        </p>
-                        <p className="text-sm text-gray-700 font-mono leading-relaxed">
-                          {result.corrected}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Changes */}
-                    {result.changes && result.changes.length > 0 && (
-                      <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6">
-                        <p className="font-semibold text-blue-800 mb-4 text-lg">
-                          📝 Changes Made ({result.changes.length}):
-                        </p>
-                        <div className="space-y-3">
-                          {result.changes.map((change: any, i: number) => (
-                            <div
-                              key={i}
-                              className="bg-white rounded-lg p-4 flex items-center gap-3 border border-blue-100"
-                            >
-                              <span className="font-mono bg-red-100 text-red-800 px-3 py-1.5 rounded-lg font-semibold">
-                                {change.from}
-                              </span>
-                              <span className="text-blue-500 text-xl">→</span>
-                              <span className="font-mono bg-green-100 text-green-800 px-3 py-1.5 rounded-lg font-semibold">
-                                {change.to}
-                              </span>
-                              <span className="text-gray-600 text-sm flex-1">{change.reason}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Warnings */}
-                    {result.warnings && result.warnings.length > 0 && (
-                      <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6">
-                        <p className="font-semibold text-yellow-800 mb-4 text-lg">
-                          ⚠️ Warnings ({result.warnings.length}):
-                        </p>
-                        <ul className="space-y-2">
-                          {result.warnings.map((warning: string, i: number) => (
-                            <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
-                              <span className="text-yellow-600 mt-0.5">⚠️</span>
-                              <span>{warning}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {/* Suggestions */}
-                    {result.suggestions && result.suggestions.length > 0 && (
-                      <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-6">
-                        <p className="font-semibold text-purple-800 mb-4 text-lg">
-                          💡 Suggestions:
-                        </p>
-                        <ul className="space-y-2">
-                          {result.suggestions.map((suggestion: string, i: number) => (
-                            <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
-                              <span className="text-purple-600 mt-0.5">💡</span>
-                              <span>{suggestion}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                    <Sparkles className="w-4 h-4" />
+                    Generate Demo Pitch
                   </>
                 )}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Pitches Grid */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+          {demoPitches.map(pitch => (
+            <button
+              key={pitch.id}
+              onClick={() => setSelectedPitch(pitch)}
+              className={`text-left bg-white border-4 border-black rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all ${
+                selectedPitch?.id === pitch.id ? 'ring-4 ring-amber-500' : ''
+              }`}
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">{pitch.contactName}</h3>
+                  <p className="text-sm text-gray-600">{pitch.contactPlatform}</p>
+                </div>
+                <span
+                  className={`px-2 py-1 rounded text-xs font-bold border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
+                    pitch.status === 'ready'
+                      ? 'bg-green-500 text-white'
+                      : pitch.status === 'sent'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-amber-100 text-amber-800'
+                  }`}
+                >
+                  {pitch.status}
+                </span>
               </div>
-            )}
-          </div>
 
-          {/* Example Texts */}
-          <div className="mt-10 pt-8 border-t-2 border-gray-200">
-            <p className="text-sm font-semibold text-gray-700 mb-4 flex items-center gap-2">
-              <span className="text-xl">🎯</span> Try these examples:
-            </p>
-            <div className="grid gap-3">
+              <div className="mb-4">
+                <span className="inline-block px-2 py-1 bg-amber-100 text-amber-800 rounded text-xs font-medium border border-amber-300">
+                  {pitch.trackTitle} by {pitch.artistName}
+                </span>
+              </div>
+
+              <div className="text-xs text-gray-500 mb-3">
+                <p className="font-medium">Generated: {new Date(pitch.generatedAt).toLocaleDateString()}</p>
+              </div>
+
+              <div className="flex items-center gap-2 text-xs text-gray-600">
+                <FileText className="w-4 h-4" />
+                <span>{pitch.pitch.length} characters</span>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* Pitch Detail View */}
+        {selectedPitch && (
+          <div className="bg-white border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 sm:p-8 mb-8">
+            <div className="flex flex-col sm:flex-row items-start justify-between mb-6 gap-4">
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">
+                  {selectedPitch.contactName}
+                </h2>
+                <p className="text-lg text-gray-600 mb-1">{selectedPitch.contactPlatform}</p>
+                <p className="text-sm text-gray-500">{selectedPitch.contactEmail}</p>
+              </div>
               <button
-                onClick={() =>
-                  setText(
-                    'Leverage our innovative solution to organize your music promotion workflow!'
-                  )
-                }
-                className="text-left text-sm bg-gradient-to-r from-red-50 to-orange-50 hover:from-red-100 hover:to-orange-100 p-4 rounded-xl transition-all border-2 border-red-200 hover:border-red-300"
+                onClick={() => setSelectedPitch(null)}
+                className="text-gray-500 hover:text-gray-700 font-bold text-sm"
               >
-                <span className="font-semibold text-red-700 block mb-1">
-                  🔴 Bad Example (Corporate + US Spelling)
-                </span>
-                <span className="text-gray-600">
-                  &ldquo;Leverage our innovative solution to organize...&rdquo;
-                </span>
+                Close ✕
               </button>
-              <button
-                onClick={() =>
-                  setText(
-                    'Built by someone with 5+ years of BBC Radio 1 promotion experience. We organise your contacts and save you 15 hours.'
-                  )
-                }
-                className="text-left text-sm bg-gradient-to-r from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 p-4 rounded-xl transition-all border-2 border-green-200 hover:border-green-300"
-              >
-                <span className="font-semibold text-green-700 block mb-1">
-                  🟢 Good Example (Authentic UK Voice)
-                </span>
-                <span className="text-gray-600">
-                  &ldquo;Built by someone with 5+ years of BBC Radio 1...&rdquo;
-                </span>
+            </div>
+
+            {/* Track Info */}
+            <div className="bg-amber-50 border-2 border-amber-300 rounded-xl p-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="flex-1">
+                  <p className="text-xs text-amber-700 font-bold mb-1">TRACK</p>
+                  <p className="text-lg font-black text-gray-900">{selectedPitch.trackTitle}</p>
+                  <p className="text-sm text-gray-600">by {selectedPitch.artistName}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-xs text-amber-700 font-bold mb-1">STATUS</p>
+                  <span
+                    className={`px-3 py-1 rounded text-sm font-bold border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
+                      selectedPitch.status === 'ready'
+                        ? 'bg-green-500 text-white'
+                        : selectedPitch.status === 'sent'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-amber-100 text-amber-800'
+                    }`}
+                  >
+                    {selectedPitch.status}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Generated Pitch */}
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-black text-gray-900">Generated Pitch</h3>
+                <button
+                  onClick={() => handleCopyPitch(selectedPitch)}
+                  className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-black font-black px-4 py-2 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-sm"
+                >
+                  {copiedId === selectedPitch.id ? (
+                    <>
+                      <CheckCircle2 className="w-4 h-4" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4" />
+                      Copy Pitch
+                    </>
+                  )}
+                </button>
+              </div>
+              <div className="bg-gray-50 border-2 border-gray-300 rounded-xl p-6 font-mono text-sm leading-relaxed whitespace-pre-wrap">
+                {selectedPitch.pitch}
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex flex-wrap gap-4">
+              <button className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-black font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                <Send className="w-5 h-5" />
+                Open in Gmail
               </button>
-              <button
-                onClick={() => setText('We analyze and organize your data to optimize results.')}
-                className="text-left text-sm bg-gradient-to-r from-yellow-50 to-amber-50 hover:from-yellow-100 hover:to-amber-100 p-4 rounded-xl transition-all border-2 border-yellow-200 hover:border-yellow-300"
-              >
-                <span className="font-semibold text-yellow-700 block mb-1">
-                  🟡 Medium Example (Just Spelling Issues)
-                </span>
-                <span className="text-gray-600">
-                  &ldquo;We analyze and organize your data...&rdquo;
-                </span>
+              <button className="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-900 font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                <FileText className="w-5 h-5" />
+                Regenerate Pitch
               </button>
+            </div>
+          </div>
+        )}
+
+        {/* Features Showcase */}
+        <div className="bg-white border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 sm:p-8 mb-8">
+          <h2 className="text-2xl font-black text-gray-900 mb-6">What You're Seeing</h2>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div>
+              <h3 className="font-bold text-gray-900 mb-2">AI-Powered Personalisation</h3>
+              <p className="text-sm text-gray-600">
+                Each pitch is tailored to the specific contact using their platform, role, and
+                preferences. No generic templates - every email sounds like you wrote it personally.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-gray-900 mb-2">Contact Intelligence Integration</h3>
+              <p className="text-sm text-gray-600">
+                Pitch Generator uses enriched contact data from Audio Intel to write pitches that
+                reference the contact's actual preferences and submission guidelines.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-gray-900 mb-2">Batch Generation</h3>
+              <p className="text-sm text-gray-600">
+                Generate 10-50 personalised pitches in 2 minutes instead of spending hours
+                copy-pasting and editing templates.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-gray-900 mb-2">One-Click Copy</h3>
+              <p className="text-sm text-gray-600">
+                Copy individual pitches or entire batches ready to paste into Gmail. No formatting
+                issues, no manual cleanup needed.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-8 text-center">
-          <div className="inline-block bg-white rounded-xl shadow-lg px-6 py-4">
-            <p className="text-sm text-gray-600 mb-2">
-              Powered by <span className="font-semibold text-purple-600">Claude 3.5 Haiku</span>
-            </p>
-            <div className="flex items-center justify-center gap-4 text-xs text-gray-500">
-              <span>73% cheaper than Sonnet</span>
-              <span>•</span>
-              <span>3-5x faster responses</span>
-              <span>•</span>
-              <span>~$0.0006 per check</span>
-            </div>
-          </div>
+        {/* CTA */}
+        <div className="text-center bg-gradient-to-br from-amber-50 to-orange-50 border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8">
+          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-4">
+            Ready to stop wasting hours on pitches?
+          </h2>
+          <p className="text-base sm:text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
+            This demo shows example pitches. Start generating personalised pitches for your real
+            campaigns, save 5+ hours per campaign, and get better response rates.
+          </p>
+          <Link
+            href="/auth/signin"
+            className="inline-block bg-amber-500 text-black px-8 py-4 rounded-xl font-black text-lg border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all"
+          >
+            Start Generating Pitches →
+          </Link>
+          <p className="text-sm text-gray-500 mt-4">
+            No credit card required. 10 free pitches per month.
+          </p>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
