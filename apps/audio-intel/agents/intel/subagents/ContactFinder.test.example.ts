@@ -132,15 +132,15 @@ async function example4_ConfidenceScoring() {
     const contacts = result.data?.contacts || [];
 
     // Filter high-confidence contacts
-    const highConfidence = contacts.filter(c => c.confidence >= 0.8);
+    const highConfidence = contacts.filter((c: Contact) => c.confidence >= 0.8);
     console.log(`High confidence contacts: ${highConfidence.length}`);
 
     // Filter medium-confidence contacts
-    const mediumConfidence = contacts.filter(c => c.confidence >= 0.6 && c.confidence < 0.8);
+    const mediumConfidence = contacts.filter((c: Contact) => c.confidence >= 0.6 && c.confidence < 0.8);
     console.log(`Medium confidence contacts: ${mediumConfidence.length}`);
 
     // Filter low-confidence contacts
-    const lowConfidence = contacts.filter(c => c.confidence < 0.6);
+    const lowConfidence = contacts.filter((c: Contact) => c.confidence < 0.6);
     console.log(`Low confidence contacts: ${lowConfidence.length}`);
   }
 }
@@ -165,9 +165,9 @@ async function example5_ErrorHandling() {
     const contacts = result.data?.contacts || [];
 
     // Check which contacts used fallback enrichment
-    const fallbackContacts = contacts.filter(c => c.source === 'fallback');
-    const claudeContacts = contacts.filter(c => c.source === 'claude');
-    const cachedContacts = contacts.filter(c => c.source === 'cache');
+    const fallbackContacts = contacts.filter((c: Contact) => c.source === 'fallback');
+    const claudeContacts = contacts.filter((c: Contact) => c.source === 'claude');
+    const cachedContacts = contacts.filter((c: Contact) => c.source === 'cache');
 
     console.log(`
       Claude-enriched: ${claudeContacts.length}
