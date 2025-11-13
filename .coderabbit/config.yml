@@ -1,0 +1,227 @@
+# CodeRabbit Configuration for Total Audio Platform
+# Purpose: Enforce architecture rules, validate changes, stay silent unless needed
+
+# Language and tone
+language: "en-GB"
+tone_instructions: "Be concise and direct. Focus on critical issues only. Use British English."
+
+# Review behavior
+reviews:
+  # Only review pull requests (never runtime code)
+  auto_review:
+    enabled: true
+    drafts: false
+
+  # Focus areas - only comment on actual issues
+  path_filters:
+    # Include: Apps and packages only
+    - "apps/**"
+    - "packages/**"
+    - ".github/workflows/**"
+    - "scripts/**"
+
+    # Exclude: Generated files, dependencies, archives
+    - "!**/node_modules/**"
+    - "!**/.next/**"
+    - "!**/dist/**"
+    - "!**/build/**"
+    - "!archive/**"
+    - "!**/*.lock"
+    - "!pnpm-lock.yaml"
+
+  # Auto-approve when all checks pass
+  auto_approve:
+    enabled: true
+    conditions:
+      - "no_critical_issues"
+      - "all_checks_passed"
+      - "no_security_vulnerabilities"
+
+  # Request changes only for critical issues
+  request_changes_workflow:
+    enabled: true
+    conditions:
+      - "has_critical_issues"
+      - "has_security_vulnerabilities"
+      - "breaks_architecture_rules"
+
+# What to check
+checks:
+  # Architecture enforcement
+  architecture:
+    enabled: true
+    rules:
+      # Golden Verify Architecture (Phase 10B)
+      - name: "No deployment in CI"
+        pattern: "vercel deploy|vercel --prod"
+        files: ".github/workflows/ci.yml"
+        severity: "critical"
+        message: "CI must only validate. Vercel deploys automatically via GitHub App."
+
+      # Monorepo boundaries
+      - name: "No cross-app imports"
+        pattern: 'from ["\'].*\/apps\/(?!audio-intel|tracker|pitch-generator|web)'
+        files: "apps/**/*.{ts,tsx}"
+        severity: "error"
+        message: "Apps must not import from other apps. Use shared packages instead."
+
+      # Environment variables
+      - name: "No hardcoded secrets"
+        pattern: "(sk_live_|sk_test_|postgres://|mongodb://)"
+        files: "**/*.{ts,tsx,js,jsx}"
+        severity: "critical"
+        message: "Never hardcode secrets. Use environment variables."
+
+      # Testing architecture
+      - name: "Use shared testing validators"
+        pattern: "(validateTouchTargets|validateAccessibility)"
+        files: "apps/**/tests/**/*.spec.ts"
+        severity: "warning"
+        message: "Consider using @total-audio/testing validators for consistency."
+
+  # Supabase migrations
+  supabase:
+    enabled: true
+    validate_migrations: true
+    check_rollback_safety: true
+    require_down_migrations: false
+
+  # Security
+  security:
+    enabled: true
+    scan_dependencies: true
+    check_env_vars: true
+    validate_auth: true
+
+  # Performance
+  performance:
+    enabled: true
+    check_bundle_size: false  # Vercel handles this
+    validate_images: true
+    check_async_patterns: true
+
+  # TypeScript
+  typescript:
+    enabled: true
+    strict_mode: true
+    check_types: true
+    prefer_interfaces: false
+
+  # Code quality (minimal - don't be noisy)
+  code_quality:
+    enabled: true
+    max_complexity: 20
+    max_lines_per_file: 500
+    check_naming: false  # Don't be pedantic
+    enforce_jsdoc: false  # Not required
+
+# Custom rules for Total Audio Platform
+custom_rules:
+  # Golden Verify scope validation
+  - name: "Golden scope must include 3 apps"
+    files: ".github/workflows/golden-verify.yml"
+    pattern: 'GOLDEN_SCOPE.*audio-intel.*tracker.*pitch-generator'
+    severity: "error"
+    message: "Golden scope must include: audio-intel, tracker, pitch-generator"
+
+  # No .md file sprawl
+  - name: "Prevent .md file sprawl"
+    files: "*.md"
+    exclude:
+      - "README.md"
+      - "SECURITY.md"
+      - "WEEKLY_FOCUS.md"
+      - "AUDIO_INTEL_CONTEXT.md"
+      - "BUSINESS_NOTES.md"
+      - ".claude/**/*.md"
+      - "apps/**/README.md"
+      - "packages/**/README.md"
+      - "docs/**/*.md"
+      - "archive/**/*.md"
+    severity: "warning"
+    message: "Avoid creating new .md files in root. Update existing documentation instead."
+
+  # Lockfile sync
+  - name: "Lockfile must be synced"
+    files: "pnpm-lock.yaml"
+    requires_package_json_change: true
+    severity: "critical"
+    message: "pnpm-lock.yaml changed without package.json. Run: pnpm install"
+
+  # Health endpoint validation
+  - name: "Apps must have health endpoints"
+    files: "apps/*/vercel.json"
+    requires: "apps/*/app/api/health/route.ts"
+    severity: "error"
+    message: "All apps must have /api/health endpoints for Golden Verify"
+
+# Comment behavior
+comments:
+  # Be quiet unless there's a real issue
+  auto_reply: false
+  collapse_resolved: true
+  minimize_noise: true
+
+  # Only comment on substantive issues
+  skip_patterns:
+    - "style"
+    - "formatting"
+    - "prefer const"
+    - "prefer let"
+    - "missing semicolon"
+
+  # Helpful suggestions only
+  provide_suggestions: true
+  suggest_fixes: true
+  link_to_docs: true
+
+# Learning and adaptation
+learning:
+  enabled: true
+  learn_from_approvals: true
+  learn_from_rejections: true
+  adapt_to_codebase: true
+
+# Integration with other tools
+integrations:
+  # CI checks
+  github_actions:
+    wait_for_checks: true
+    required_checks:
+      - "ci"
+      - "security-scan"
+
+  # Vercel
+  vercel:
+    wait_for_preview: false  # Don't wait for Vercel builds
+    check_deployment: false   # Golden Verify handles this
+
+# Notifications
+notifications:
+  # Only notify on critical issues
+  critical_issues: true
+  blocking_issues: true
+  security_issues: true
+
+  # Don't spam
+  minor_issues: false
+  suggestions: false
+  completed_reviews: false
+
+# Performance
+performance:
+  # Fast reviews
+  parallel_reviews: true
+  cache_results: true
+  skip_unchanged_files: true
+
+  # Reasonable timeouts
+  max_review_time: "5m"
+  max_file_size: "1mb"
+
+# Summary format
+summary:
+  format: "concise"
+  include_metrics: false
+  include_suggestions: true
+  group_by_severity: true
