@@ -57,9 +57,13 @@ async function checkLibertyCampaigns() {
       console.log('⚠️  No campaigns found in database');
       console.log('   This could mean:');
       console.log('   1. No campaigns exist yet');
-      console.log('   2. RLS policies require authentication (try logging in via UI first)');
+      console.log(
+        '   2. RLS policies require authentication (try logging in via UI first)'
+      );
       console.log('   3. Campaigns exist but for a different user\n');
-      console.log('   💡 Try checking via the UI: http://localhost:3000/dashboard\n');
+      console.log(
+        '   💡 Try checking via the UI: http://localhost:3000/dashboard\n'
+      );
       return;
     }
 

@@ -51,6 +51,6 @@ class ListenerSupport {
    * @param {...*}   [args]
    */
   emit(...args) {
-    this.listeners.forEach((listener) => listener(...args));
+    this.listeners.forEach(listener => listener(...args));
   }
 }

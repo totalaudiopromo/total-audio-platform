@@ -1,5 +1,5 @@
 /**
- * VoiceGuardAgent - Brand Voice Enforcement
+ * VoiceGuard™ Agent - Brand Voice Enforcement
  * Ensures all outbound content matches Total Audio's authentic "honest maker" tone
  * Standalone agent that can be used across all content generation
  */

@@ -4,6 +4,7 @@ import './globals.css';
 import './mobile.css';
 import React from 'react';
 import ClientLayout from './components/ClientLayout';
+import { WorkspaceProvider } from '@total-audio/core-db/contexts/workspace-context';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -141,7 +142,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
-        <ClientLayout>{children}</ClientLayout>
+        <WorkspaceProvider>
+          <ClientLayout>{children}</ClientLayout>
+        </WorkspaceProvider>
       </body>
     </html>
   );

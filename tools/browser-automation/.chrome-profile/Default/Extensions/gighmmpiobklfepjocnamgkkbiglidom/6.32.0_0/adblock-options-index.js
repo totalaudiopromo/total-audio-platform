@@ -28,10 +28,10 @@
     */
 
 const PREMIUM_FILTER_URL_LIST = [
-  "https://easylist-downloads.adblockplus.org/adblock_premium.txt",
-  "https://easylist-downloads.adblockplus.org/v3/full/adblock_premium.txt",
-  "https://easylist-downloads.adblockplus.org/cookie-filter-list.txt",
-  "https://easylist-downloads.adblockplus.org/v3/full/cookie-filter-list.txt",
+  'https://easylist-downloads.adblockplus.org/adblock_premium.txt',
+  'https://easylist-downloads.adblockplus.org/v3/full/adblock_premium.txt',
+  'https://easylist-downloads.adblockplus.org/cookie-filter-list.txt',
+  'https://easylist-downloads.adblockplus.org/v3/full/cookie-filter-list.txt',
 ];
 
 /* eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars */
@@ -60,7 +60,7 @@ const isSelectorFilter = function (text) {
 };
 
 /* eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars */
-const premiumFiltersCtaKey = "premium-filters-cta-clicked";
+const premiumFiltersCtaKey = 'premium-filters-cta-clicked';
 
 const info = {};
 let autoReloadingPage;
@@ -75,8 +75,8 @@ window.initializeProxies = () => {
   if (initializedProxies) {
     return initializedProxies;
   }
-  const getApp = new Promise((resolve) => {
-    sendTypeMessage("app.get", { what: "application" }).then((application) => {
+  const getApp = new Promise(resolve => {
+    sendTypeMessage('app.get', { what: 'application' }).then(application => {
       info.application = application;
       resolve();
     });
@@ -97,19 +97,19 @@ window.initializeProxies = () => {
 
 function displayVersionNumber() {
   const currentVersion = browser.runtime.getManifest().version;
-  $("#extension_version_number").text(`v${currentVersion}`);
+  $('#extension_version_number').text(`v${currentVersion}`);
 }
 
 function displayTranslationCredit() {
-  if (language === "en" || language.startsWith("en")) {
+  if (language === 'en' || language.startsWith('en')) {
     return;
   }
   const translators = [];
 
-  $.getJSON(browser.runtime.getURL("translators.json"), (response) => {
+  $.getJSON(browser.runtime.getURL('translators.json'), response => {
     let matchFound = false;
     const langSubstring = language.substring(0, 2);
-    let langEnd = "";
+    let langEnd = '';
     if (language.length >= 5) {
       langEnd = language.substring(3, 5).toLowerCase();
     }
@@ -139,29 +139,29 @@ function displayTranslationCredit() {
       }
     }
 
-    const $translatorsCreditBubble = $(".translation_credits");
+    const $translatorsCreditBubble = $('.translation_credits');
     if (translators.length > 0) {
-      const $translatorCreditDiv = $("<div></div>");
-      const $translatorNamesDiv = $("<div></div>");
+      const $translatorCreditDiv = $('<div></div>');
+      const $translatorNamesDiv = $('<div></div>');
 
-      $translatorCreditDiv.addClass("speech-bubble-content").text(translate("translator_credit2"));
-      $translatorNamesDiv.addClass("speech-bubble-content").text(translators.toString());
+      $translatorCreditDiv.addClass('speech-bubble-content').text(translate('translator_credit2'));
+      $translatorNamesDiv.addClass('speech-bubble-content').text(translators.toString());
       $translatorsCreditBubble
         .empty()
-        .addClass("speech-bubble")
-        .removeClass("do-not-display")
+        .addClass('speech-bubble')
+        .removeClass('do-not-display')
         .append($translatorCreditDiv)
         .append($translatorNamesDiv);
     } else {
-      $translatorsCreditBubble.addClass("do-not-display").empty();
+      $translatorsCreditBubble.addClass('do-not-display').empty();
     }
   });
 }
 
 function startSubscriptionSelection(title, url) {
-  const list = document.getElementById("language_select");
-  const noFilterListUtil = typeof FilterListUtil === "undefined" || FilterListUtil === null;
-  const customFilterUtilUndefined = typeof CustomFilterListUploadUtil === "undefined";
+  const list = document.getElementById('language_select');
+  const noFilterListUtil = typeof FilterListUtil === 'undefined' || FilterListUtil === null;
+  const customFilterUtilUndefined = typeof CustomFilterListUploadUtil === 'undefined';
 
   let noCustomFilterListUploadUtil;
   if (customFilterUtilUndefined) {
@@ -171,12 +171,12 @@ function startSubscriptionSelection(title, url) {
   }
 
   if (!list || noFilterListUtil || noCustomFilterListUploadUtil) {
-    activateTab("#filters");
+    activateTab('#filters');
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     delayedSubscriptionSelection = [title, url];
     return;
   }
-  const translatedMsg = translate("subscribeconfirm", title);
+  const translatedMsg = translate('subscribeconfirm', title);
   // eslint-disable-next-line no-alert
   if (window.confirm(translatedMsg)) {
     const existingFilterList = FilterListUtil.checkUrlForExistingFilterList(url);
@@ -187,30 +187,30 @@ function startSubscriptionSelection(title, url) {
       CustomFilterListUploadUtil.performUpload(url, `url:${url}`, title);
     } else {
       // eslint-disable-next-line no-alert
-      alert(translate("failedtofetchfilter"));
+      alert(translate('failedtofetchfilter'));
     }
     // show the link icon for the new filter list, if the advance setting is set and the
     // show links button has been clicked (not visible)
-    if (settings.show_advanced_options && $("#btnShowLinks").is(":visible") === false) {
-      $(".filter-list-link").fadeIn("slow");
+    if (settings.show_advanced_options && $('#btnShowLinks').is(':visible') === false) {
+      $('.filter-list-link').fadeIn('slow');
     }
   }
 }
 
 function setSelectedThemeColor() {
-  let optionsTheme = "default_theme";
+  let optionsTheme = 'default_theme';
   if (settings && settings.color_themes && settings.color_themes.options_page) {
     optionsTheme = settings.color_themes.options_page;
   }
 
   // default_theme applied in html and does not need to be set
-  if (optionsTheme !== "default_theme") {
-    const body = document.querySelector("body");
+  if (optionsTheme !== 'default_theme') {
+    const body = document.querySelector('body');
     body.id = optionsTheme;
-    body.dataset.theme = optionsTheme.replace("_theme", "");
+    body.dataset.theme = optionsTheme.replace('_theme', '');
   }
 
-  $("#sidebar-adblock-logo").attr("src", `icons/${optionsTheme}/logo.svg`);
+  $('#sidebar-adblock-logo').attr('src', `icons/${optionsTheme}/logo.svg`);
 }
 
 // Update Acceptable Ads UI in the General tab. To be called
@@ -218,28 +218,28 @@ function setSelectedThemeColor() {
 // Inputs: - checkAA: Bool, true if we must check AA
 //         - checkAAprivacy: Bool, true if we must check AA privacy
 const updateAcceptableAdsUIFN = function (checkAA, checkAAprivacy) {
-  const $aaInput = $("input#acceptable_ads");
-  const $aaPrivacyInput = $("input#acceptable_ads_privacy");
-  const $aaPrivacyHelper = $("#aa-privacy-helper");
-  const $aaYellowBanner = $("#acceptable_ads_info");
+  const $aaInput = $('input#acceptable_ads');
+  const $aaPrivacyInput = $('input#acceptable_ads_privacy');
+  const $aaPrivacyHelper = $('#aa-privacy-helper');
+  const $aaYellowBanner = $('#acceptable_ads_info');
 
   if (!checkAA && !checkAAprivacy) {
-    $aaInput.prop("checked", false);
-    $aaPrivacyInput.prop("checked", false);
+    $aaInput.prop('checked', false);
+    $aaPrivacyInput.prop('checked', false);
     $aaYellowBanner.slideDown();
     $aaPrivacyHelper.slideUp();
   } else if (checkAA && checkAAprivacy) {
-    $aaInput.removeClass("feature").prop("checked", true).addClass("feature");
-    $aaPrivacyInput.prop("checked", true);
+    $aaInput.removeClass('feature').prop('checked', true).addClass('feature');
+    $aaPrivacyInput.prop('checked', true);
     $aaYellowBanner.slideUp();
-    if (navigator.doNotTrack === "1") {
+    if (navigator.doNotTrack === '1') {
       $aaPrivacyHelper.slideUp();
     } else {
       $aaPrivacyHelper.slideDown();
     }
   } else if (checkAA && !checkAAprivacy) {
-    $aaInput.prop("checked", true);
-    $aaPrivacyInput.prop("checked", false);
+    $aaInput.prop('checked', true);
+    $aaPrivacyInput.prop('checked', false);
     $aaYellowBanner.slideUp();
     $aaPrivacyHelper.slideUp();
   }
@@ -255,13 +255,11 @@ const updateAcceptableAdsUI = debounced(debounceWaitTime, updateAcceptableAdsUIF
  * Will set an according class name to the `<body>` element.
  */
 async function updateSocialIconsVisibility() {
-  const socialIconsStateClassName = "no-social-icons";
-  const antiSocialListIds = ["antisocial", "annoyances", "fb_notifications"];
+  const socialIconsStateClassName = 'no-social-icons';
+  const antiSocialListIds = ['antisocial', 'annoyances', 'fb_notifications'];
 
   const lists = await SubscriptionAdapter.getSubscriptionsMinusText();
-  const hasAntiSocialSubscriptions = Object.keys(lists).some((id) =>
-    antiSocialListIds.includes(id),
-  );
+  const hasAntiSocialSubscriptions = Object.keys(lists).some(id => antiSocialListIds.includes(id));
 
   document.body.classList.toggle(socialIconsStateClassName, hasAntiSocialSubscriptions);
 }
@@ -271,20 +269,20 @@ async function updateSocialIconsVisibility() {
  */
 async function displayUserAccount() {
   const user = await ewe.account.getProfile();
-  const loginBtn = $("#user-account-login");
-  const manageBtn = $("#user-account-manage");
+  const loginBtn = $('#user-account-login');
+  const manageBtn = $('#user-account-manage');
 
   // Dynamically update the login URL to include the premium status.
   // This is used to determine if the user should see the successful activation page
-  const loginUrl = await sendTypeMessage("app.get", {
-    what: "ctalink",
-    link: "premium-manage",
+  const loginUrl = await sendTypeMessage('app.get', {
+    what: 'ctalink',
+    link: 'premium-manage',
     queryParams: {
-      source: "options",
+      source: 'options',
     },
   });
-  loginBtn.attr("href", loginUrl);
-  manageBtn.attr("href", loginUrl);
+  loginBtn.attr('href', loginUrl);
+  manageBtn.attr('href', loginUrl);
 
   if (user && user.email) {
     loginBtn.hide();
@@ -301,17 +299,17 @@ $(async () => {
   storageSet(License.pageReloadedOnSettingChangeKey, false);
 
   const onSettingsChanged = function (name, currentValue) {
-    if (name === "color_themes") {
+    if (name === 'color_themes') {
       const optionsTheme = currentValue.options_page;
-      const body = document.querySelector("body");
+      const body = document.querySelector('body');
       body.id = optionsTheme;
-      body.dataset.theme = optionsTheme.replace("_theme", "");
-      $("#sidebar-adblock-logo").attr("src", `icons/${currentValue.options_page}/logo.svg`);
+      body.dataset.theme = optionsTheme.replace('_theme', '');
+      $('#sidebar-adblock-logo').attr('src', `icons/${currentValue.options_page}/logo.svg`);
     }
   };
 
-  settingsNotifier.on("settings.changed", onSettingsChanged);
-  licenseNotifier.on("license.updated", () => {
+  settingsNotifier.on('settings.changed', onSettingsChanged);
+  licenseNotifier.on('license.updated', () => {
     displayUserAccount();
   });
 
@@ -330,8 +328,8 @@ window.onbeforeunload = function leavingOptionsPage() {
   storageSet(License.userSawSyncCTAKey, true);
 };
 
-document.addEventListener("readystatechange", () => {
-  if (document.readyState === "complete" && typeof setLangAndDirAttributes === "function") {
+document.addEventListener('readystatechange', () => {
+  if (document.readyState === 'complete' && typeof setLangAndDirAttributes === 'function') {
     setLangAndDirAttributes();
   }
 });
@@ -341,15 +339,15 @@ document.addEventListener("readystatechange", () => {
 // when the options page is already open
 window.setTimeout(() => {
   connectUIPort(({ addUIListener, postUIMessage }) => {
-    addUIListener((message) => {
-      if (message.type === "app.respond" && message.action === "addSubscription") {
+    addUIListener(message => {
+      if (message.type === 'app.respond' && message.action === 'addSubscription') {
         const subscription = message.args[0];
         startSubscriptionSelection(subscription.title, subscription.url);
       }
     });
     postUIMessage({
-      type: "app.listen",
-      filter: ["addSubscription"],
+      type: 'app.listen',
+      filter: ['addSubscription'],
     });
   });
 }, 250);

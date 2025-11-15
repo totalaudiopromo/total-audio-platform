@@ -39,9 +39,10 @@ bash ../../scripts/organize-docs-from-anywhere.sh --dry-run  # adjust ../ as nee
 
 ### Color Palette
 
-- **Audio Intel / Pitch Generator:** Electric Blue (`#3b82f6`)
+- **Audio Intel:** Electric Blue (`#2563EB` - from live site)
+- **Tracker:** Teal/Cyan (`#14B8A6` - from live site)
+- **Pitch Generator:** Amber (`#F59E0B` - from live site)
 - **Playlist Pulse:** Neon Green (`#22c55e`)
-- **Release Radar:** Orange/Amber (`#f59e0b`)
 - **Trend Track:** Purple/Magenta (`#a855f7`)
 - **Content Clone:** Hot Pink (`#ec4899`)
 - **Success Predict:** Gold/Yellow (`#eab308`)

@@ -2,9 +2,9 @@
  * Shared Tailwind brand configuration for Total Audio Promo platform
  *
  * Brutalist design system with tool-specific accent colors:
- * - Audio Intel: Blue (#3B82F6) - intelligence/data
- * - Tracker: Amber (#F59E0B) - activity/tracking
- * - Pitch Generator: Purple (#9333EA) - creativity/writing
+ * - Audio Intel: Blue (#2563EB) - intelligence/data
+ * - Tracker: Teal/Cyan (#14B8A6) - activity/tracking
+ * - Pitch Generator: Amber (#F59E0B) - creativity/writing
  */
 
 /**
@@ -15,22 +15,22 @@
 export function getBrandConfig(tool = 'audio-intel') {
   const brandColors = {
     'audio-intel': {
-      primary: '#3B82F6', // blue-500
-      primaryHover: '#2563EB', // blue-600
+      primary: '#2563EB', // blue-600 (from live site)
+      primaryHover: '#1D4ED8', // blue-700
       primaryLight: '#DBEAFE', // blue-50
-      gradient: 'rgba(59, 130, 246, 0.06)', // blue radial gradient
+      gradient: 'rgba(37, 99, 235, 0.06)', // blue radial gradient
     },
     tracker: {
-      primary: '#F59E0B', // amber-500
+      primary: '#14B8A6', // teal-500 (from live site)
+      primaryHover: '#0D9488', // teal-600
+      primaryLight: '#CCFBF1', // teal-50
+      gradient: 'rgba(20, 184, 166, 0.06)', // teal radial gradient
+    },
+    'pitch-generator': {
+      primary: '#F59E0B', // amber-500 (from live site)
       primaryHover: '#D97706', // amber-600
       primaryLight: '#FEF3C7', // amber-50
       gradient: 'rgba(245, 158, 11, 0.06)', // amber radial gradient
-    },
-    'pitch-generator': {
-      primary: '#9333EA', // purple-600
-      primaryHover: '#7C3AED', // purple-700
-      primaryLight: '#F3E8FF', // purple-50
-      gradient: 'rgba(147, 51, 234, 0.06)', // purple radial gradient
     },
   };
 
@@ -102,19 +102,19 @@ export const sharedComponents = `
 export function getToolCustomProperties(tool = 'audio-intel') {
   const brandColors = {
     'audio-intel': {
-      '--glow-color': 'rgba(59, 130, 246, 0.06)',
-      '--accent-color': '#3B82F6',
-      '--accent-hover': '#2563EB',
+      '--glow-color': 'rgba(37, 99, 235, 0.06)',
+      '--accent-color': '#2563EB',
+      '--accent-hover': '#1D4ED8',
     },
     tracker: {
+      '--glow-color': 'rgba(20, 184, 166, 0.06)',
+      '--accent-color': '#14B8A6',
+      '--accent-hover': '#0D9488',
+    },
+    'pitch-generator': {
       '--glow-color': 'rgba(245, 158, 11, 0.06)',
       '--accent-color': '#F59E0B',
       '--accent-hover': '#D97706',
-    },
-    'pitch-generator': {
-      '--glow-color': 'rgba(147, 51, 234, 0.06)',
-      '--accent-color': '#9333EA',
-      '--accent-hover': '#7C3AED',
     },
   };
 

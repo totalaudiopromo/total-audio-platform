@@ -33,8 +33,8 @@
 // this either needs to be removed or expanded to the React code
 // It is not currently being called.
 try {
-  if (parseUri.parseSearch(window.location.search).aadisabled === "true") {
-    $("#acceptable_ads_info").show();
+  if (parseUri.parseSearch(window.location.search).aadisabled === 'true') {
+    $('#acceptable_ads_info').show();
   }
 } catch (ex) {
   // do nothing
@@ -42,9 +42,9 @@ try {
 
 function setDataCollectionOptionsVisibility(visibility) {
   if (visibility) {
-    $(".data-collection-option-container").show(200);
+    $('.data-collection-option-container').show(200);
   } else {
-    $(".data-collection-option-container").hide(200);
+    $('.data-collection-option-container').hide(200);
   }
 }
 
@@ -76,16 +76,16 @@ const initialize = async function init() {
 
   // if the user is currently subscribed to AA
   // then 'check' the acceptable ads button.
-  if ("acceptable_ads" in subs && subs.acceptable_ads.subscribed) {
+  if ('acceptable_ads' in subs && subs.acceptable_ads.subscribed) {
     updateAcceptableAdsUIFN(true, false);
   }
 
-  if ("acceptable_ads_privacy" in subs && subs.acceptable_ads_privacy.subscribed) {
+  if ('acceptable_ads_privacy' in subs && subs.acceptable_ads_privacy.subscribed) {
     updateAcceptableAdsUIFN(true, true);
   }
 
   for (const name in settings) {
-    $(`#enable_${name}`).prop("checked", settings[name]);
+    $(`#enable_${name}`).prop('checked', settings[name]);
   }
 
   for (const inx in abpPrefPropertyNames) {
@@ -124,18 +124,18 @@ const initialize = async function init() {
     }
   };
 
-  $("input.feature[type='checkbox']").on("change", async function onOptionSelectionChange() {
-    let isEnabled = $(this).is(":checked");
+  $("input.feature[type='checkbox']").on('change', async function onOptionSelectionChange() {
+    let isEnabled = $(this).is(':checked');
     const isInverted = $(this).is("[data-pref-transform='invert']");
     if (isInverted) {
       isEnabled = !isEnabled;
     }
 
-    if (this.id === "acceptable_ads") {
+    if (this.id === 'acceptable_ads') {
       acceptableAdsClicked(isEnabled);
       return;
     }
-    if (this.id === "acceptable_ads_privacy") {
+    if (this.id === 'acceptable_ads_privacy') {
       acceptableAdsPrivacyClicked(isEnabled);
       return;
     }
@@ -143,22 +143,22 @@ const initialize = async function init() {
     const name = this.id.substring(7); // TODO: hack
     // if the user enables/disables the context menu
     // update the pages
-    if (name === "shouldShowBlockElementMenu") {
-      send("updateButtonUIAndContextMenus");
+    if (name === 'shouldShowBlockElementMenu') {
+      send('updateButtonUIAndContextMenus');
     }
 
     // need to check for opt-out here before we set the pref
     // in order to send goodbye message before we shutdown channels
-    if (name === "data_collection_opt_out") {
+    if (name === 'data_collection_opt_out') {
       toggleDataCollectionOptPref(isEnabled);
       if (isEnabled) {
-        await send("dataCollectionOptOut");
+        await send('dataCollectionOptOut');
       }
     }
 
     // send goodbye message
-    if (name === "marketing_opt_out" && isEnabled) {
-      await send("marketingOptOut");
+    if (name === 'marketing_opt_out' && isEnabled) {
+      await send('marketingOptOut');
     }
 
     if (abpPrefPropertyNames.indexOf(name) >= 0) {
@@ -169,7 +169,7 @@ const initialize = async function init() {
 
     // if the user enables/disable data collection
     // start or end the data collection process
-    if (name === "data_collection_v2") {
+    if (name === 'data_collection_v2') {
       if (isEnabled) {
         DataCollectionV2.start();
       } else {
@@ -180,14 +180,14 @@ const initialize = async function init() {
 };
 
 const showSeparators = function () {
-  const $allGeneralOptions = $("#general-option-list li");
-  const $lastVisibleOption = $("#general-option-list li:visible:last");
-  $allGeneralOptions.addClass("bottom-line");
-  $lastVisibleOption.removeClass("bottom-line");
+  const $allGeneralOptions = $('#general-option-list li');
+  const $lastVisibleOption = $('#general-option-list li:visible:last');
+  $allGeneralOptions.addClass('bottom-line');
+  $lastVisibleOption.removeClass('bottom-line');
 };
 
 function addUIChangeListeners() {
-  $("#enable_show_advanced_options").on("change", function onAdvancedOptionsChange() {
+  $('#enable_show_advanced_options').on('change', function onAdvancedOptionsChange() {
     // Reload the page to show or hide the advanced options on the
     // options page -- after a moment so we have time to save the option.
     // Also, disable all advanced options, so that non-advanced users will
@@ -203,17 +203,17 @@ function addUIChangeListeners() {
       window.location.reload();
     }, 50);
   });
-  $("#prefs__data_collection_opt_out").on("change", function onDataCollectionOptionChange() {
+  $('#prefs__data_collection_opt_out').on('change', function onDataCollectionOptionChange() {
     setDataCollectionOptionsVisibility(!this.checked);
   });
 }
 
 const onSettingsChanged = function (name, currentValue, previousValue) {
   const checkBoxElement = $(`#enable_${name}`);
-  if (checkBoxElement.length === 1 && checkBoxElement.is(":checked") === previousValue) {
-    $(`#enable_${name}`).prop("checked", currentValue);
-    if (name === "show_advanced_options") {
-      $(".advanced").toggle(currentValue);
+  if (checkBoxElement.length === 1 && checkBoxElement.is(':checked') === previousValue) {
+    $(`#enable_${name}`).prop('checked', currentValue);
+    if (name === 'show_advanced_options') {
+      $('.advanced').toggle(currentValue);
     }
   }
 };
@@ -221,9 +221,9 @@ const onSettingsChanged = function (name, currentValue, previousValue) {
 const onPrefsChanged = function (name, currentValue) {
   const checkbox = $(`#prefs__${name}`);
   const isInverted = checkbox.is("[data-pref-transform='invert']");
-  checkbox.prop("checked", isInverted ? !currentValue : currentValue);
+  checkbox.prop('checked', isInverted ? !currentValue : currentValue);
 
-  if (name === "data_collection_opt_out") {
+  if (name === 'data_collection_opt_out') {
     setDataCollectionOptionsVisibility(!currentValue);
   }
 };
@@ -265,8 +265,8 @@ const onSubRemoved = async function (items) {
 };
 
 const addDataListeners = () => {
-  settingsNotifier.on("settings.changed", onSettingsChanged);
-  prefsNotifier.on("prefs.changed", onPrefsChanged);
+  settingsNotifier.on('settings.changed', onSettingsChanged);
+  prefsNotifier.on('prefs.changed', onPrefsChanged);
   SubscriptionsProxy.onAdded.addListener(onSubAdded);
   SubscriptionsProxy.onRemoved.addListener(onSubRemoved);
 };
@@ -275,7 +275,7 @@ const handlePremiumEnrollmentCTAs = async () => {
   if (!License || $.isEmptyObject(License) || !MABPayment) {
     return;
   }
-  const payInfo = MABPayment.initialize("general");
+  const payInfo = MABPayment.initialize('general');
   if (await License.shouldShowMyAdBlockEnrollment()) {
     MABPayment.freeUserLogic(payInfo);
   } else if (await License.isActiveLicense()) {
@@ -283,9 +283,9 @@ const handlePremiumEnrollmentCTAs = async () => {
   }
 
   await MABPayment.displayUpsellCTA();
-  $(".upsell-cta #get-it-now-general").on("click", MABPayment.userClickedUpsellCTA);
-  $("a.link-to-tab").on("click", (event) => {
-    activateTab($(event.target).attr("href"));
+  $('.upsell-cta #get-it-now-general').on('click', MABPayment.userClickedUpsellCTA);
+  $('a.link-to-tab').on('click', event => {
+    activateTab($(event.target).attr('href'));
   });
 };
 
@@ -293,7 +293,7 @@ $(async () => {
   await initializeProxies(); // still needed for MAB callouts, regardless of list UI
 
   const url = new URL(window.top.location.href);
-  const showNewUI = url.searchParams.has("newUi");
+  const showNewUI = url.searchParams.has('newUi');
 
   // TODO(newUi): Delete calls and listeners when transition complete
   if (!showNewUI) {

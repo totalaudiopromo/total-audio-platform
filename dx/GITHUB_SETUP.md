@@ -79,12 +79,7 @@ When a PR is created:
 2. **CI runs** → lint, typecheck, test, build
 3. **Security scan runs** → Checks dependencies
 
-When all pass:
-4. **CodeRabbit auto-approves** (if configured to do so)
-5. **PR auto-merges** (if auto-merge enabled on PR)
-6. **Branch auto-deletes**
-7. **Vercel auto-deploys**
-8. **Golden Verify runs** post-deployment checks
+When all pass: 4. **CodeRabbit auto-approves** (if configured to do so) 5. **PR auto-merges** (if auto-merge enabled on PR) 6. **Branch auto-deletes** 7. **Vercel auto-deploys** 8. **Golden Verify runs** post-deployment checks
 
 ## CodeRabbit Integration
 
@@ -103,6 +98,7 @@ When all pass:
 Configuration already exists in `.coderabbit/config.yml`.
 
 **Key settings**:
+
 - Auto-review enabled for all PRs (not drafts)
 - Auto-approve when no critical issues
 - Request changes only for critical issues
@@ -211,12 +207,14 @@ gh pr create --title "Test: Verify Branch Protection" --body "Testing auto-merge
 ### 2. Enable Auto-Merge on PR
 
 In the PR page:
+
 1. Click "Enable auto-merge" button
 2. Select "Squash and merge" (or your preferred merge method)
 
 ### 3. Verify Workflow
 
 Check that:
+
 1. ✅ CodeRabbit comments appear (or auto-approves if no issues)
 2. ✅ CI workflow runs and passes
 3. ✅ Security scan runs and passes
@@ -245,6 +243,7 @@ git push origin main
 ### PR Not Auto-Merging
 
 **Possible causes**:
+
 1. Auto-merge not enabled on PR (click "Enable auto-merge" button)
 2. Required checks not passing (view PR checks tab)
 3. CodeRabbit requesting changes (address issues)
@@ -255,6 +254,7 @@ git push origin main
 ### CodeRabbit Not Reviewing
 
 **Possible causes**:
+
 1. CodeRabbit GitHub App not installed
 2. PR marked as draft (CodeRabbit skips drafts)
 3. No substantive changes (only formatting)
@@ -264,6 +264,7 @@ git push origin main
 ### Vercel Not Deploying
 
 **Possible causes**:
+
 1. Vercel GitHub App not connected
 2. Production branch not set to `main`
 3. Ignored Build Step blocking deployment
@@ -273,6 +274,7 @@ git push origin main
 ### Golden Verify Failing
 
 **Possible causes**:
+
 1. Health endpoints not responding
 2. App deployment failed on Vercel
 3. Environment variables missing
@@ -284,12 +286,14 @@ git push origin main
 ### Regular Checks
 
 **Monthly**:
+
 - Review failed PR auto-merges (if any)
 - Audit branch protection rules still correct
 - Verify all required secrets still valid
 - Check CodeRabbit review quality
 
 **Quarterly**:
+
 - Review auto-merge success rate
 - Adjust CodeRabbit rules if too strict/lenient
 - Update required status checks if workflows change
@@ -297,12 +301,14 @@ git push origin main
 ## Summary
 
 **Proper setup enables**:
+
 - ✅ Frictionless PRs (code → review → merge → deploy)
 - ✅ Automated quality gates (CodeRabbit + CI)
 - ✅ Protection from accidents (branch protection)
 - ✅ Zero deployment failures (Golden Verify)
 
 **Expected behavior**:
+
 1. Developer creates PR
 2. CodeRabbit reviews automatically
 3. CI validates automatically

@@ -15,7 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-"use strict";
+'use strict';
 
 // This code is running in the global scope, so we need to encapsulate it
 // to avoid unexpected interference with code in other files
@@ -25,7 +25,7 @@
   let Page = (ext.Page = class Page {
     constructor(tab) {
       this.id = tab.id;
-      this._url = new URL(tab.url || "about:blank");
+      this._url = new URL(tab.url || 'about:blank');
     }
 
     get url() {
@@ -46,7 +46,7 @@
     }
   });
 
-  ext.getPage = (id) => new Page({ id: parseInt(id, 10) });
+  ext.getPage = id => new Page({ id: parseInt(id, 10) });
 
   ext.pages = {
     onActivated: new ext._EventTarget(),
@@ -56,8 +56,8 @@
   };
 
   browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    if (changeInfo.status === "loading") ext.pages.onLoading._dispatch(new Page(tab));
-    else if (changeInfo.status === "complete") ext.pages.onLoaded._dispatch(new Page(tab));
+    if (changeInfo.status === 'loading') ext.pages.onLoading._dispatch(new Page(tab));
+    else if (changeInfo.status === 'complete') ext.pages.onLoaded._dispatch(new Page(tab));
   });
 
   function createFrame(tabId, frameId) {
@@ -82,7 +82,7 @@
     if (frameId == 0) {
       let page = new Page({ id: tabId, url });
 
-      browser.tabs.get(tabId).catch((error) => {
+      browser.tabs.get(tabId).catch(error => {
         // If the tab is prerendered, browser.tabs.get() sets
         // browser.runtime.lastError and we have to dispatch the onLoading
         // event, since the onUpdated event isn't dispatched for prerendered
@@ -109,7 +109,7 @@
   }
 
   browser.webRequest.onHeadersReceived.addListener(
-    (details) => {
+    details => {
       // We have to update the frame structure when switching to a new
       // document, so that we process any further requests made by that
       // document in the right context. Unfortunately, we cannot rely
@@ -133,7 +133,7 @@
         // a non-empty value and a known redirect status code.
         // https://chromium.googlesource.com/chromium/src/+/39a7d96/net/http/http_response_headers.cc#929
         if (
-          headerName == "location" &&
+          headerName == 'location' &&
           header.value &&
           (details.statusCode == 301 ||
             details.statusCode == 302 ||
@@ -150,10 +150,10 @@
         // https://chromium.googlesource.com/chromium/src/+/02d3f50b/content/browser/loader/mime_sniffing_resource_handler.cc#534
         // https://chromium.googlesource.com/chromium/src/+/02d3f50b/net/http/http_content_disposition.cc#374
         // https://chromium.googlesource.com/chromium/src/+/16e2688e/net/http/http_util.cc#431
-        if (headerName == "content-disposition") {
-          let disposition = header.value.split(";")[0].replace(/[ \t]+$/, "");
+        if (headerName == 'content-disposition') {
+          let disposition = header.value.split(';')[0].replace(/[ \t]+$/, '');
           if (
-            disposition.toLowerCase() != "inline" &&
+            disposition.toLowerCase() != 'inline' &&
             /^[\x21-\x7E]+$/.test(disposition) &&
             !/[()<>@,;:\\"/[\]?={}]/.test(disposition)
           )
@@ -168,18 +168,18 @@
         // header is missing, invalid or unknown.
         // https://chromium.googlesource.com/chromium/src/+/99f41af9/net/http/http_util.cc#66
         // https://chromium.googlesource.com/chromium/src/+/3130418a/net/base/mime_sniffer.cc#667
-        if (headerName == "content-type") {
+        if (headerName == 'content-type') {
           let mediaType = header.value.split(/[ \t;(]/)[0].toLowerCase();
           if (
-            mediaType.includes("/") &&
-            mediaType != "*/*" &&
-            mediaType != "application/unknown" &&
-            mediaType != "unknown/unknown" &&
-            mediaType != "text/html" &&
-            mediaType != "text/xml" &&
-            mediaType != "application/xml" &&
-            mediaType != "application/xhtml+xml" &&
-            mediaType != "image/svg+xml"
+            mediaType.includes('/') &&
+            mediaType != '*/*' &&
+            mediaType != 'application/unknown' &&
+            mediaType != 'unknown/unknown' &&
+            mediaType != 'text/html' &&
+            mediaType != 'text/xml' &&
+            mediaType != 'application/xml' &&
+            mediaType != 'application/xhtml+xml' &&
+            mediaType != 'image/svg+xml'
           )
             return;
         }
@@ -187,28 +187,28 @@
 
       updatePageFrameStructure(details.frameId, details.tabId, details.url, details.parentFrameId);
     },
-    { types: ["main_frame", "sub_frame"], urls: ["http://*/*", "https://*/*"] },
-    ["responseHeaders"],
+    { types: ['main_frame', 'sub_frame'], urls: ['http://*/*', 'https://*/*'] },
+    ['responseHeaders']
   );
 
-  browser.webNavigation.onBeforeNavigate.addListener((details) => {
+  browser.webNavigation.onBeforeNavigate.addListener(details => {
     // Requests can be made by about:blank frames before the frame's
     // onCommitted event has fired; besides, the parent frame's ID is not
     // always available in onCommitted, nor is the onHeadersReceived event fired
     // for about: and data: frames; so we update the frame structure for such
     // frames here.
-    if (details.url.startsWith("about:") || details.url.startsWith("data:")) {
+    if (details.url.startsWith('about:') || details.url.startsWith('data:')) {
       updatePageFrameStructure(details.frameId, details.tabId, details.url, details.parentFrameId);
     }
   });
 
-  browser.webNavigation.onCommitted.addListener((details) => {
+  browser.webNavigation.onCommitted.addListener(details => {
     // Chrome <74 doesn't provide the parent frame ID in the onCommitted
     // event[1]. So, unless the navigation is for a top-level frame, we assume
     // its parent frame is the top-level frame.
     // [1] - https://bugs.chromium.org/p/chromium/issues/detail?id=908380
     let { frameId, tabId, parentFrameId, url } = details;
-    if (typeof parentFrameId == "undefined") parentFrameId = frameId == 0 ? -1 : 0;
+    if (typeof parentFrameId == 'undefined') parentFrameId = frameId == 0 ? -1 : 0;
 
     // We have to update the frame structure for documents that weren't
     // loaded over HTTP (including documents cached by Service Workers),
@@ -221,7 +221,7 @@
   });
 
   browser.webRequest.onBeforeRequest.addListener(
-    (details) => {
+    details => {
       // Chromium fails to fire webNavigation events for anonymous iframes in
       // certain edge cases[1]. As a workaround, we keep track of the originating
       // frame for requests where the frame was previously unknown.
@@ -229,14 +229,14 @@
       let { tabId, frameId, parentFrameId } = details;
 
       if (frameId > 0 && !ext.getFrame(tabId, frameId))
-        updatePageFrameStructure(frameId, tabId, "about:blank", parentFrameId);
+        updatePageFrameStructure(frameId, tabId, 'about:blank', parentFrameId);
     },
     {
       types: Object.values(browser.webRequest.ResourceType).filter(
-        (type) => type != "main_frame" && type != "sub_frame",
+        type => type != 'main_frame' && type != 'sub_frame'
       ),
-      urls: ["<all_urls>"],
-    },
+      urls: ['<all_urls>'],
+    }
   );
 
   function forgetTab(tabId) {
@@ -251,7 +251,7 @@
 
   browser.tabs.onRemoved.addListener(forgetTab);
 
-  browser.tabs.onActivated.addListener((details) => {
+  browser.tabs.onActivated.addListener(details => {
     ext.pages.onActivated._dispatch(new Page({ id: details.tabId }));
   });
 
@@ -264,7 +264,7 @@
     return frames && frames.get(frameId);
   };
 
-  browser.tabs.query({}).then(async (tabs) => {
+  browser.tabs.query({}).then(async tabs => {
     for (let tab of tabs) {
       let details = await browser.webNavigation.getAllFrames({ tabId: tab.id });
       if (details && details.length > 0) {
@@ -279,7 +279,7 @@
             // We need to record the frame regardless of whether we are able to
             // determine its URL. For debugging purposes, we still want to log
             // the error though, but don't need to report it to Sentry.
-            console.error("Invalid frame URL", detail.url);
+            console.error('Invalid frame URL', detail.url);
           }
 
           let frame = { url, state: Object.create(null) };
@@ -299,7 +299,7 @@
 
   /* Message passing */
 
-  const selfOrigin = new URL(browser.runtime.getURL("")).origin;
+  const selfOrigin = new URL(browser.runtime.getURL('')).origin;
   const trustedTypesByOrigin = new Map();
 
   /**
@@ -327,14 +327,14 @@
     return new URL(sender.url).origin;
   }
 
-  ext.isTrustedSender = (sender) => getSenderOrigin(sender) === selfOrigin;
+  ext.isTrustedSender = sender => getSenderOrigin(sender) === selfOrigin;
 
   browser.runtime.onMessage.addListener((message, rawSender) => {
     // Ignore invalid messages
-    if (typeof message !== "object" || !message.type) return;
+    if (typeof message !== 'object' || !message.type) return;
 
     // Ignore messages from EWE & ML content scripts
-    if (message.type.startsWith("ewe:") || message.type.startsWith("ML:")) return;
+    if (message.type.startsWith('ewe:') || message.type.startsWith('ML:')) return;
 
     // Ignore messages from content scripts, unless we listed them as
     // safe to use in the context they're running in
@@ -343,7 +343,7 @@
       !isTrustedMessageType(getSenderOrigin(rawSender), message.type) &&
       !isTrustedMessageType(null, message.type)
     ) {
-      console.warn("Untrusted message received", message.type, rawSender.url);
+      console.warn('Untrusted message received', message.type, rawSender.url);
       return;
     }
 
@@ -351,7 +351,7 @@
 
     // Add "page" and "frame" if the message was sent by a content script.
     // If sent by popup or the background page itself, there is no "tab".
-    if ("tab" in rawSender) {
+    if ('tab' in rawSender) {
       sender.page = new Page(rawSender.tab);
       sender.tab = rawSender.tab;
       sender.frameId = rawSender.frameId;

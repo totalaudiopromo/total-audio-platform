@@ -326,10 +326,8 @@ export type Database = {
       };
       campaign_activities: {
         Row: {
-          activity_date: string | null;
           activity_type: string;
           campaign_id: string;
-          contact_email: string | null;
           contact_name: string | null;
           contact_org: string | null;
           created_at: string | null;
@@ -338,21 +336,13 @@ export type Database = {
           importance: string | null;
           metadata: Json | null;
           metric: string | null;
-          notes: string | null;
           platform: string | null;
-          response_at: string | null;
-          status: string | null;
-          submitted_at: string | null;
           timestamp: string | null;
-          type: string | null;
-          updated_at: string | null;
           value: number | null;
         };
         Insert: {
-          activity_date?: string | null;
           activity_type: string;
           campaign_id: string;
-          contact_email?: string | null;
           contact_name?: string | null;
           contact_org?: string | null;
           created_at?: string | null;
@@ -361,21 +351,13 @@ export type Database = {
           importance?: string | null;
           metadata?: Json | null;
           metric?: string | null;
-          notes?: string | null;
           platform?: string | null;
-          response_at?: string | null;
-          status?: string | null;
-          submitted_at?: string | null;
           timestamp?: string | null;
-          type?: string | null;
-          updated_at?: string | null;
           value?: number | null;
         };
         Update: {
-          activity_date?: string | null;
           activity_type?: string;
           campaign_id?: string;
-          contact_email?: string | null;
           contact_name?: string | null;
           contact_org?: string | null;
           created_at?: string | null;
@@ -384,17 +366,19 @@ export type Database = {
           importance?: string | null;
           metadata?: Json | null;
           metric?: string | null;
-          notes?: string | null;
           platform?: string | null;
-          response_at?: string | null;
-          status?: string | null;
-          submitted_at?: string | null;
           timestamp?: string | null;
-          type?: string | null;
-          updated_at?: string | null;
           value?: number | null;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: 'campaign_activities_campaign_id_fkey';
+            columns: ['campaign_id'];
+            isOneToOne: false;
+            referencedRelation: 'campaigns';
+            referencedColumns: ['id'];
+          },
+        ];
       };
       campaign_collaborators: {
         Row: {
@@ -430,6 +414,48 @@ export type Database = {
             referencedColumns: ['id'];
           },
         ];
+      };
+      campaign_dashboard_metrics: {
+        Row: {
+          campaign_id: string;
+          created_at: string;
+          downloads: number;
+          engagement_score: number;
+          id: string;
+          period_end: string;
+          period_start: string;
+          shares: number;
+          updated_at: string;
+          user_id: string;
+          views: number;
+        };
+        Insert: {
+          campaign_id: string;
+          created_at?: string;
+          downloads?: number;
+          engagement_score?: number;
+          id?: string;
+          period_end: string;
+          period_start: string;
+          shares?: number;
+          updated_at?: string;
+          user_id: string;
+          views?: number;
+        };
+        Update: {
+          campaign_id?: string;
+          created_at?: string;
+          downloads?: number;
+          engagement_score?: number;
+          id?: string;
+          period_end?: string;
+          period_start?: string;
+          shares?: number;
+          updated_at?: string;
+          user_id?: string;
+          views?: number;
+        };
+        Relationships: [];
       };
       campaign_events: {
         Row: {
@@ -471,41 +497,36 @@ export type Database = {
       };
       campaign_insights: {
         Row: {
-          campaign_id: string;
-          created_at: string;
+          confidence: number | null;
+          expires_at: string | null;
+          generated_at: string | null;
           id: string;
-          key: string;
-          metric: string;
-          trend: string;
-          value: string;
+          insight_type: string;
+          message: string;
+          metadata: Json | null;
+          user_id: string;
         };
         Insert: {
-          campaign_id: string;
-          created_at?: string;
+          confidence?: number | null;
+          expires_at?: string | null;
+          generated_at?: string | null;
           id?: string;
-          key: string;
-          metric: string;
-          trend: string;
-          value: string;
+          insight_type: string;
+          message: string;
+          metadata?: Json | null;
+          user_id: string;
         };
         Update: {
-          campaign_id?: string;
-          created_at?: string;
+          confidence?: number | null;
+          expires_at?: string | null;
+          generated_at?: string | null;
           id?: string;
-          key?: string;
-          metric?: string;
-          trend?: string;
-          value?: string;
+          insight_type?: string;
+          message?: string;
+          metadata?: Json | null;
+          user_id?: string;
         };
-        Relationships: [
-          {
-            foreignKeyName: 'campaign_insights_campaign_id_fkey';
-            columns: ['campaign_id'];
-            isOneToOne: false;
-            referencedRelation: 'campaigns';
-            referencedColumns: ['id'];
-          },
-        ];
+        Relationships: [];
       };
       campaign_intelligence: {
         Row: {
@@ -590,6 +611,48 @@ export type Database = {
           },
         ];
       };
+      campaign_outreach_logs: {
+        Row: {
+          asset_ids: string[] | null;
+          campaign_id: string;
+          contact_id: string | null;
+          contact_name: string;
+          created_at: string;
+          id: string;
+          message_preview: string;
+          sent_at: string;
+          status: string;
+          updated_at: string;
+          user_id: string;
+        };
+        Insert: {
+          asset_ids?: string[] | null;
+          campaign_id: string;
+          contact_id?: string | null;
+          contact_name: string;
+          created_at?: string;
+          id?: string;
+          message_preview: string;
+          sent_at?: string;
+          status?: string;
+          updated_at?: string;
+          user_id: string;
+        };
+        Update: {
+          asset_ids?: string[] | null;
+          campaign_id?: string;
+          contact_id?: string | null;
+          contact_name?: string;
+          created_at?: string;
+          id?: string;
+          message_preview?: string;
+          sent_at?: string;
+          status?: string;
+          updated_at?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
       campaign_reports: {
         Row: {
           campaign_id: string | null;
@@ -651,33 +714,101 @@ export type Database = {
       };
       campaigns: {
         Row: {
+          actual_reach: number | null;
+          artist_name: string | null;
+          budget: number | null;
+          cost_per_result: number | null;
           created_at: string;
+          end_date: string | null;
+          genre: string | null;
           goal_total: number | null;
           id: string;
+          name: string | null;
+          notes: string | null;
+          percentile_rank: number | null;
+          performance_score: number | null;
+          platform: string | null;
           release_date: string | null;
+          saves: number | null;
+          social_engagement: number | null;
+          spent: number | null;
+          start_date: string | null;
+          status: string | null;
+          streams: number | null;
+          success_rate: number | null;
+          target_reach: number | null;
           title: string;
           updated_at: string;
           user_id: string;
+          workspace_id: string | null;
         };
         Insert: {
+          actual_reach?: number | null;
+          artist_name?: string | null;
+          budget?: number | null;
+          cost_per_result?: number | null;
           created_at?: string;
+          end_date?: string | null;
+          genre?: string | null;
           goal_total?: number | null;
           id?: string;
+          name?: string | null;
+          notes?: string | null;
+          percentile_rank?: number | null;
+          performance_score?: number | null;
+          platform?: string | null;
           release_date?: string | null;
+          saves?: number | null;
+          social_engagement?: number | null;
+          spent?: number | null;
+          start_date?: string | null;
+          status?: string | null;
+          streams?: number | null;
+          success_rate?: number | null;
+          target_reach?: number | null;
           title: string;
           updated_at?: string;
           user_id: string;
+          workspace_id?: string | null;
         };
         Update: {
+          actual_reach?: number | null;
+          artist_name?: string | null;
+          budget?: number | null;
+          cost_per_result?: number | null;
           created_at?: string;
+          end_date?: string | null;
+          genre?: string | null;
           goal_total?: number | null;
           id?: string;
+          name?: string | null;
+          notes?: string | null;
+          percentile_rank?: number | null;
+          performance_score?: number | null;
+          platform?: string | null;
           release_date?: string | null;
+          saves?: number | null;
+          social_engagement?: number | null;
+          spent?: number | null;
+          start_date?: string | null;
+          status?: string | null;
+          streams?: number | null;
+          success_rate?: number | null;
+          target_reach?: number | null;
           title?: string;
           updated_at?: string;
           user_id?: string;
+          workspace_id?: string | null;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: 'campaigns_team_id_fkey';
+            columns: ['workspace_id'];
+            isOneToOne: false;
+            referencedRelation: 'workspaces';
+            referencedColumns: ['id'];
+          },
+        ];
       };
       canvas_scenes: {
         Row: {
@@ -750,6 +881,7 @@ export type Database = {
       contacts: {
         Row: {
           created_at: string | null;
+          created_by: string | null;
           email: string | null;
           genre_tags: string[] | null;
           id: string;
@@ -763,9 +895,11 @@ export type Database = {
           total_interactions: number | null;
           updated_at: string | null;
           user_id: string;
+          workspace_id: string | null;
         };
         Insert: {
           created_at?: string | null;
+          created_by?: string | null;
           email?: string | null;
           genre_tags?: string[] | null;
           id?: string;
@@ -779,9 +913,11 @@ export type Database = {
           total_interactions?: number | null;
           updated_at?: string | null;
           user_id: string;
+          workspace_id?: string | null;
         };
         Update: {
           created_at?: string | null;
+          created_by?: string | null;
           email?: string | null;
           genre_tags?: string[] | null;
           id?: string;
@@ -795,8 +931,17 @@ export type Database = {
           total_interactions?: number | null;
           updated_at?: string | null;
           user_id?: string;
+          workspace_id?: string | null;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: 'contacts_workspace_id_fkey';
+            columns: ['workspace_id'];
+            isOneToOne: false;
+            referencedRelation: 'workspaces';
+            referencedColumns: ['id'];
+          },
+        ];
       };
       conversion_events: {
         Row: {
@@ -868,6 +1013,51 @@ export type Database = {
             referencedColumns: ['id'];
           },
         ];
+      };
+      epk_analytics: {
+        Row: {
+          asset_id: string | null;
+          created_at: string;
+          device: string | null;
+          downloads: number;
+          epk_id: string;
+          event_type: string;
+          id: string;
+          metadata: Json | null;
+          region: string | null;
+          timestamp: string;
+          user_id: string;
+          views: number;
+        };
+        Insert: {
+          asset_id?: string | null;
+          created_at?: string;
+          device?: string | null;
+          downloads?: number;
+          epk_id: string;
+          event_type: string;
+          id?: string;
+          metadata?: Json | null;
+          region?: string | null;
+          timestamp?: string;
+          user_id: string;
+          views?: number;
+        };
+        Update: {
+          asset_id?: string | null;
+          created_at?: string;
+          device?: string | null;
+          downloads?: number;
+          epk_id?: string;
+          event_type?: string;
+          id?: string;
+          metadata?: Json | null;
+          region?: string | null;
+          timestamp?: string;
+          user_id?: string;
+          views?: number;
+        };
+        Relationships: [];
       };
       feedback_events: {
         Row: {
@@ -958,6 +1148,69 @@ export type Database = {
           },
         ];
       };
+      golden_history: {
+        Row: {
+          app: string;
+          avg_response_time_ms: number | null;
+          created_at: string | null;
+          deployed_at: string | null;
+          deployment_id: string | null;
+          environment: string;
+          health_checks: Json | null;
+          health_status: string;
+          id: string;
+          lighthouse_accessibility: number | null;
+          lighthouse_best_practices: number | null;
+          lighthouse_performance: number | null;
+          lighthouse_seo: number | null;
+          metadata: Json | null;
+          p95_response_time_ms: number | null;
+          tests_failed: number;
+          tests_passed: number;
+          uptime_percent: number | null;
+        };
+        Insert: {
+          app: string;
+          avg_response_time_ms?: number | null;
+          created_at?: string | null;
+          deployed_at?: string | null;
+          deployment_id?: string | null;
+          environment?: string;
+          health_checks?: Json | null;
+          health_status: string;
+          id?: string;
+          lighthouse_accessibility?: number | null;
+          lighthouse_best_practices?: number | null;
+          lighthouse_performance?: number | null;
+          lighthouse_seo?: number | null;
+          metadata?: Json | null;
+          p95_response_time_ms?: number | null;
+          tests_failed?: number;
+          tests_passed?: number;
+          uptime_percent?: number | null;
+        };
+        Update: {
+          app?: string;
+          avg_response_time_ms?: number | null;
+          created_at?: string | null;
+          deployed_at?: string | null;
+          deployment_id?: string | null;
+          environment?: string;
+          health_checks?: Json | null;
+          health_status?: string;
+          id?: string;
+          lighthouse_accessibility?: number | null;
+          lighthouse_best_practices?: number | null;
+          lighthouse_performance?: number | null;
+          lighthouse_seo?: number | null;
+          metadata?: Json | null;
+          p95_response_time_ms?: number | null;
+          tests_failed?: number;
+          tests_passed?: number;
+          uptime_percent?: number | null;
+        };
+        Relationships: [];
+      };
       integration_activity_log: {
         Row: {
           activity_type: string;
@@ -1017,6 +1270,7 @@ export type Database = {
           sync_frequency_minutes: number | null;
           updated_at: string | null;
           user_id: string | null;
+          workspace_id: string | null;
         };
         Insert: {
           created_at?: string | null;
@@ -1032,6 +1286,7 @@ export type Database = {
           sync_frequency_minutes?: number | null;
           updated_at?: string | null;
           user_id?: string | null;
+          workspace_id?: string | null;
         };
         Update: {
           created_at?: string | null;
@@ -1047,8 +1302,17 @@ export type Database = {
           sync_frequency_minutes?: number | null;
           updated_at?: string | null;
           user_id?: string | null;
+          workspace_id?: string | null;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: 'integration_connections_workspace_id_fkey';
+            columns: ['workspace_id'];
+            isOneToOne: false;
+            referencedRelation: 'workspaces';
+            referencedColumns: ['id'];
+          },
+        ];
       };
       integration_field_mappings: {
         Row: {
@@ -1141,6 +1405,164 @@ export type Database = {
           },
         ];
       };
+      intel_contacts: {
+        Row: {
+          created_at: string | null;
+          created_by: string;
+          email: string | null;
+          enrichment_confidence: number | null;
+          enrichment_date: string | null;
+          enrichment_source: string | null;
+          genre_tags: string[] | null;
+          id: string;
+          instagram: string | null;
+          last_contacted: string | null;
+          last_response: string | null;
+          last_verified: string | null;
+          location_city: string | null;
+          location_country: string | null;
+          name: string;
+          notes: string | null;
+          outlet: string | null;
+          outlet_reach: string | null;
+          outlet_type: string | null;
+          phone: string | null;
+          response_rate: number | null;
+          role: string | null;
+          status: string | null;
+          tags: string[] | null;
+          twitter: string | null;
+          updated_at: string | null;
+          website: string | null;
+          workspace_id: string;
+        };
+        Insert: {
+          created_at?: string | null;
+          created_by: string;
+          email?: string | null;
+          enrichment_confidence?: number | null;
+          enrichment_date?: string | null;
+          enrichment_source?: string | null;
+          genre_tags?: string[] | null;
+          id?: string;
+          instagram?: string | null;
+          last_contacted?: string | null;
+          last_response?: string | null;
+          last_verified?: string | null;
+          location_city?: string | null;
+          location_country?: string | null;
+          name: string;
+          notes?: string | null;
+          outlet?: string | null;
+          outlet_reach?: string | null;
+          outlet_type?: string | null;
+          phone?: string | null;
+          response_rate?: number | null;
+          role?: string | null;
+          status?: string | null;
+          tags?: string[] | null;
+          twitter?: string | null;
+          updated_at?: string | null;
+          website?: string | null;
+          workspace_id: string;
+        };
+        Update: {
+          created_at?: string | null;
+          created_by?: string;
+          email?: string | null;
+          enrichment_confidence?: number | null;
+          enrichment_date?: string | null;
+          enrichment_source?: string | null;
+          genre_tags?: string[] | null;
+          id?: string;
+          instagram?: string | null;
+          last_contacted?: string | null;
+          last_response?: string | null;
+          last_verified?: string | null;
+          location_city?: string | null;
+          location_country?: string | null;
+          name?: string;
+          notes?: string | null;
+          outlet?: string | null;
+          outlet_reach?: string | null;
+          outlet_type?: string | null;
+          phone?: string | null;
+          response_rate?: number | null;
+          role?: string | null;
+          status?: string | null;
+          tags?: string[] | null;
+          twitter?: string | null;
+          updated_at?: string | null;
+          website?: string | null;
+          workspace_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'intel_contacts_workspace_id_fkey';
+            columns: ['workspace_id'];
+            isOneToOne: false;
+            referencedRelation: 'workspaces';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
+      intel_logs: {
+        Row: {
+          avg_time_ms: number;
+          batch_id: string;
+          cost: number;
+          created_at: string | null;
+          enriched: number;
+          failed: number;
+          id: string;
+          input_tokens: number | null;
+          ip_address: string | null;
+          metadata: Json | null;
+          model_used: string | null;
+          output_tokens: number | null;
+          retried: number;
+          success_rate: number | null;
+          timed_out: number;
+          total: number;
+        };
+        Insert: {
+          avg_time_ms: number;
+          batch_id: string;
+          cost: number;
+          created_at?: string | null;
+          enriched: number;
+          failed: number;
+          id?: string;
+          input_tokens?: number | null;
+          ip_address?: string | null;
+          metadata?: Json | null;
+          model_used?: string | null;
+          output_tokens?: number | null;
+          retried?: number;
+          success_rate?: number | null;
+          timed_out?: number;
+          total: number;
+        };
+        Update: {
+          avg_time_ms?: number;
+          batch_id?: string;
+          cost?: number;
+          created_at?: string | null;
+          enriched?: number;
+          failed?: number;
+          id?: string;
+          input_tokens?: number | null;
+          ip_address?: string | null;
+          metadata?: Json | null;
+          model_used?: string | null;
+          output_tokens?: number | null;
+          retried?: number;
+          success_rate?: number | null;
+          timed_out?: number;
+          total?: number;
+        };
+        Relationships: [];
+      };
       oauth_states: {
         Row: {
           code_verifier: string | null;
@@ -1170,6 +1592,98 @@ export type Database = {
           user_id?: string | null;
         };
         Relationships: [];
+      };
+      pitch_email_tracking: {
+        Row: {
+          contact_id: string;
+          created_at: string | null;
+          gmail_message_id: string;
+          gmail_thread_id: string;
+          has_reply: boolean | null;
+          id: string;
+          integration_connection_id: string | null;
+          last_checked_at: string | null;
+          pitch_id: string;
+          recipient_email: string;
+          replied_at: string | null;
+          reply_message_id: string | null;
+          reply_snippet: string | null;
+          sent_at: string;
+          status: string | null;
+          subject: string;
+          updated_at: string | null;
+          workspace_id: string;
+        };
+        Insert: {
+          contact_id: string;
+          created_at?: string | null;
+          gmail_message_id: string;
+          gmail_thread_id: string;
+          has_reply?: boolean | null;
+          id?: string;
+          integration_connection_id?: string | null;
+          last_checked_at?: string | null;
+          pitch_id: string;
+          recipient_email: string;
+          replied_at?: string | null;
+          reply_message_id?: string | null;
+          reply_snippet?: string | null;
+          sent_at?: string;
+          status?: string | null;
+          subject: string;
+          updated_at?: string | null;
+          workspace_id: string;
+        };
+        Update: {
+          contact_id?: string;
+          created_at?: string | null;
+          gmail_message_id?: string;
+          gmail_thread_id?: string;
+          has_reply?: boolean | null;
+          id?: string;
+          integration_connection_id?: string | null;
+          last_checked_at?: string | null;
+          pitch_id?: string;
+          recipient_email?: string;
+          replied_at?: string | null;
+          reply_message_id?: string | null;
+          reply_snippet?: string | null;
+          sent_at?: string;
+          status?: string | null;
+          subject?: string;
+          updated_at?: string | null;
+          workspace_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'pitch_email_tracking_contact_id_fkey';
+            columns: ['contact_id'];
+            isOneToOne: false;
+            referencedRelation: 'contacts';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'pitch_email_tracking_integration_connection_id_fkey';
+            columns: ['integration_connection_id'];
+            isOneToOne: false;
+            referencedRelation: 'integration_connections';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'pitch_email_tracking_pitch_id_fkey';
+            columns: ['pitch_id'];
+            isOneToOne: false;
+            referencedRelation: 'pitches';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'pitch_email_tracking_workspace_id_fkey';
+            columns: ['workspace_id'];
+            isOneToOne: false;
+            referencedRelation: 'workspaces';
+            referencedColumns: ['id'];
+          },
+        ];
       };
       pitch_performance: {
         Row: {
@@ -1229,6 +1743,7 @@ export type Database = {
         Row: {
           closing_ctas: Json | null;
           created_at: string | null;
+          created_by: string | null;
           description: string | null;
           genre: string;
           hook_structure: string | null;
@@ -1241,10 +1756,12 @@ export type Database = {
           times_used: number | null;
           updated_at: string | null;
           user_id: string | null;
+          workspace_id: string | null;
         };
         Insert: {
           closing_ctas?: Json | null;
           created_at?: string | null;
+          created_by?: string | null;
           description?: string | null;
           genre: string;
           hook_structure?: string | null;
@@ -1257,10 +1774,12 @@ export type Database = {
           times_used?: number | null;
           updated_at?: string | null;
           user_id?: string | null;
+          workspace_id?: string | null;
         };
         Update: {
           closing_ctas?: Json | null;
           created_at?: string | null;
+          created_by?: string | null;
           description?: string | null;
           genre?: string;
           hook_structure?: string | null;
@@ -1273,8 +1792,17 @@ export type Database = {
           times_used?: number | null;
           updated_at?: string | null;
           user_id?: string | null;
+          workspace_id?: string | null;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: 'pitch_templates_workspace_id_fkey';
+            columns: ['workspace_id'];
+            isOneToOne: false;
+            referencedRelation: 'workspaces';
+            referencedColumns: ['id'];
+          },
+        ];
       };
       pitches: {
         Row: {
@@ -1283,6 +1811,7 @@ export type Database = {
           contact_name: string;
           contact_outlet: string | null;
           created_at: string | null;
+          created_by: string | null;
           genre: string;
           id: string;
           key_hook: string;
@@ -1300,6 +1829,7 @@ export type Database = {
           track_title: string;
           updated_at: string | null;
           user_id: string;
+          workspace_id: string | null;
         };
         Insert: {
           artist_name: string;
@@ -1307,6 +1837,7 @@ export type Database = {
           contact_name: string;
           contact_outlet?: string | null;
           created_at?: string | null;
+          created_by?: string | null;
           genre: string;
           id?: string;
           key_hook: string;
@@ -1324,6 +1855,7 @@ export type Database = {
           track_title: string;
           updated_at?: string | null;
           user_id: string;
+          workspace_id?: string | null;
         };
         Update: {
           artist_name?: string;
@@ -1331,6 +1863,7 @@ export type Database = {
           contact_name?: string;
           contact_outlet?: string | null;
           created_at?: string | null;
+          created_by?: string | null;
           genre?: string;
           id?: string;
           key_hook?: string;
@@ -1348,6 +1881,7 @@ export type Database = {
           track_title?: string;
           updated_at?: string | null;
           user_id?: string;
+          workspace_id?: string | null;
         };
         Relationships: [
           {
@@ -1355,6 +1889,13 @@ export type Database = {
             columns: ['contact_id'];
             isOneToOne: false;
             referencedRelation: 'contacts';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'pitches_workspace_id_fkey';
+            columns: ['workspace_id'];
+            isOneToOne: false;
+            referencedRelation: 'workspaces';
             referencedColumns: ['id'];
           },
         ];
@@ -1716,6 +2257,72 @@ export type Database = {
         };
         Relationships: [];
       };
+      testing_results: {
+        Row: {
+          app: string;
+          browser: string | null;
+          component: string | null;
+          created_at: string | null;
+          duration_ms: number | null;
+          error_message: string | null;
+          executed_at: string | null;
+          file_path: string | null;
+          id: string;
+          issues_data: Json | null;
+          issues_fixed: number;
+          issues_found: number;
+          passed: boolean;
+          playwright_config: Json | null;
+          stack_trace: string | null;
+          test_output: Json | null;
+          test_suite: string;
+          test_type: string;
+          viewport: string | null;
+        };
+        Insert: {
+          app: string;
+          browser?: string | null;
+          component?: string | null;
+          created_at?: string | null;
+          duration_ms?: number | null;
+          error_message?: string | null;
+          executed_at?: string | null;
+          file_path?: string | null;
+          id?: string;
+          issues_data?: Json | null;
+          issues_fixed?: number;
+          issues_found?: number;
+          passed: boolean;
+          playwright_config?: Json | null;
+          stack_trace?: string | null;
+          test_output?: Json | null;
+          test_suite: string;
+          test_type: string;
+          viewport?: string | null;
+        };
+        Update: {
+          app?: string;
+          browser?: string | null;
+          component?: string | null;
+          created_at?: string | null;
+          duration_ms?: number | null;
+          error_message?: string | null;
+          executed_at?: string | null;
+          file_path?: string | null;
+          id?: string;
+          issues_data?: Json | null;
+          issues_fixed?: number;
+          issues_found?: number;
+          passed?: boolean;
+          playwright_config?: Json | null;
+          stack_trace?: string | null;
+          test_output?: Json | null;
+          test_suite?: string;
+          test_type?: string;
+          viewport?: string | null;
+        };
+        Relationships: [];
+      };
       user_pitch_settings: {
         Row: {
           batch_limit: number | null;
@@ -1893,6 +2500,250 @@ export type Database = {
         };
         Relationships: [];
       };
+      workspace_activity_log: {
+        Row: {
+          action: string;
+          created_at: string | null;
+          id: string;
+          metadata: Json | null;
+          resource_id: string | null;
+          resource_type: string | null;
+          user_id: string | null;
+          workspace_id: string;
+        };
+        Insert: {
+          action: string;
+          created_at?: string | null;
+          id?: string;
+          metadata?: Json | null;
+          resource_id?: string | null;
+          resource_type?: string | null;
+          user_id?: string | null;
+          workspace_id: string;
+        };
+        Update: {
+          action?: string;
+          created_at?: string | null;
+          id?: string;
+          metadata?: Json | null;
+          resource_id?: string | null;
+          resource_type?: string | null;
+          user_id?: string | null;
+          workspace_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'team_activity_log_team_id_fkey';
+            columns: ['workspace_id'];
+            isOneToOne: false;
+            referencedRelation: 'workspaces';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
+      workspace_contacts_registry: {
+        Row: {
+          canonical_name: string | null;
+          created_at: string | null;
+          email: string;
+          id: string;
+          intel_contact_id: string | null;
+          last_contacted: string | null;
+          last_enriched: string | null;
+          last_synced: string | null;
+          pitch_contact_id: string | null;
+          sync_status: string | null;
+          total_campaigns: number | null;
+          total_pitches_sent: number | null;
+          tracker_contact_id: string | null;
+          updated_at: string | null;
+          workspace_id: string;
+        };
+        Insert: {
+          canonical_name?: string | null;
+          created_at?: string | null;
+          email: string;
+          id?: string;
+          intel_contact_id?: string | null;
+          last_contacted?: string | null;
+          last_enriched?: string | null;
+          last_synced?: string | null;
+          pitch_contact_id?: string | null;
+          sync_status?: string | null;
+          total_campaigns?: number | null;
+          total_pitches_sent?: number | null;
+          tracker_contact_id?: string | null;
+          updated_at?: string | null;
+          workspace_id: string;
+        };
+        Update: {
+          canonical_name?: string | null;
+          created_at?: string | null;
+          email?: string;
+          id?: string;
+          intel_contact_id?: string | null;
+          last_contacted?: string | null;
+          last_enriched?: string | null;
+          last_synced?: string | null;
+          pitch_contact_id?: string | null;
+          sync_status?: string | null;
+          total_campaigns?: number | null;
+          total_pitches_sent?: number | null;
+          tracker_contact_id?: string | null;
+          updated_at?: string | null;
+          workspace_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'workspace_contacts_registry_intel_contact_id_fkey';
+            columns: ['intel_contact_id'];
+            isOneToOne: false;
+            referencedRelation: 'intel_contacts';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'workspace_contacts_registry_pitch_contact_id_fkey';
+            columns: ['pitch_contact_id'];
+            isOneToOne: false;
+            referencedRelation: 'contacts';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'workspace_contacts_registry_workspace_id_fkey';
+            columns: ['workspace_id'];
+            isOneToOne: false;
+            referencedRelation: 'workspaces';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
+      workspace_invitations: {
+        Row: {
+          accepted_at: string | null;
+          created_at: string | null;
+          email: string;
+          expires_at: string;
+          id: string;
+          invited_by: string;
+          role: string;
+          token: string;
+          workspace_id: string;
+        };
+        Insert: {
+          accepted_at?: string | null;
+          created_at?: string | null;
+          email: string;
+          expires_at: string;
+          id?: string;
+          invited_by: string;
+          role?: string;
+          token: string;
+          workspace_id: string;
+        };
+        Update: {
+          accepted_at?: string | null;
+          created_at?: string | null;
+          email?: string;
+          expires_at?: string;
+          id?: string;
+          invited_by?: string;
+          role?: string;
+          token?: string;
+          workspace_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'team_invitations_team_id_fkey';
+            columns: ['workspace_id'];
+            isOneToOne: false;
+            referencedRelation: 'workspaces';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
+      workspace_members: {
+        Row: {
+          id: string;
+          invited_by: string | null;
+          joined_at: string | null;
+          permissions: Json | null;
+          role: string;
+          user_id: string;
+          workspace_id: string;
+        };
+        Insert: {
+          id?: string;
+          invited_by?: string | null;
+          joined_at?: string | null;
+          permissions?: Json | null;
+          role?: string;
+          user_id: string;
+          workspace_id: string;
+        };
+        Update: {
+          id?: string;
+          invited_by?: string | null;
+          joined_at?: string | null;
+          permissions?: Json | null;
+          role?: string;
+          user_id?: string;
+          workspace_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'team_members_team_id_fkey';
+            columns: ['workspace_id'];
+            isOneToOne: false;
+            referencedRelation: 'workspaces';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
+      workspaces: {
+        Row: {
+          app_permissions: Json | null;
+          apps_enabled: string[] | null;
+          created_at: string | null;
+          custom_branding: Json | null;
+          id: string;
+          name: string;
+          owner_id: string;
+          plan_tier: string | null;
+          settings: Json | null;
+          slug: string;
+          updated_at: string | null;
+          workspace_type: string | null;
+        };
+        Insert: {
+          app_permissions?: Json | null;
+          apps_enabled?: string[] | null;
+          created_at?: string | null;
+          custom_branding?: Json | null;
+          id?: string;
+          name: string;
+          owner_id: string;
+          plan_tier?: string | null;
+          settings?: Json | null;
+          slug: string;
+          updated_at?: string | null;
+          workspace_type?: string | null;
+        };
+        Update: {
+          app_permissions?: Json | null;
+          apps_enabled?: string[] | null;
+          created_at?: string | null;
+          custom_branding?: Json | null;
+          id?: string;
+          name?: string;
+          owner_id?: string;
+          plan_tier?: string | null;
+          settings?: Json | null;
+          slug?: string;
+          updated_at?: string | null;
+          workspace_type?: string | null;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       conversion_summary: {
@@ -1915,11 +2766,78 @@ export type Database = {
         };
         Relationships: [];
       };
+      golden_summary: {
+        Row: {
+          app: string | null;
+          avg_accessibility_score: number | null;
+          avg_performance_score: number | null;
+          avg_tests_failed: number | null;
+          avg_tests_passed: number | null;
+          degraded_deployments: number | null;
+          environment: string | null;
+          failed_deployments: number | null;
+          healthy_deployments: number | null;
+          last_deployment: string | null;
+          total_deployments: number | null;
+        };
+        Relationships: [];
+      };
+      testing_summary: {
+        Row: {
+          app: string | null;
+          avg_duration_ms: number | null;
+          last_execution: string | null;
+          pass_rate: number | null;
+          test_suite: string | null;
+          test_type: string | null;
+          tests_failed: number | null;
+          tests_passed: number | null;
+          total_issues_fixed: number | null;
+          total_issues_found: number | null;
+          total_tests: number | null;
+        };
+        Relationships: [];
+      };
     };
     Functions: {
+      aggregate_epk_metrics: {
+        Args: { p_epk_id: string; p_period_end: string; p_period_start: string };
+        Returns: {
+          total_downloads: number;
+          total_shares: number;
+          total_views: number;
+          unique_devices: number;
+          unique_regions: number;
+        }[];
+      };
+      calculate_engagement_score: {
+        Args: { p_downloads: number; p_shares: number; p_views: number };
+        Returns: number;
+      };
       can_create_campaign: { Args: { user_id_param: string }; Returns: boolean };
       cleanup_expired_invites: { Args: never; Returns: undefined };
       delete_expired_oauth_states: { Args: never; Returns: undefined };
+      get_intel_contact_stats: {
+        Args: { p_workspace_id: string };
+        Returns: {
+          active_contacts: number;
+          avg_response_rate: number;
+          contacts_this_month: number;
+          enriched_contacts: number;
+          total_contacts: number;
+        }[];
+      };
+      get_latest_golden_status: {
+        Args: never;
+        Returns: {
+          app: string;
+          deployed_at: string;
+          health_status: string;
+          lighthouse_performance: number;
+          tests_failed: number;
+          tests_passed: number;
+        }[];
+      };
       get_latest_scene: {
         Args: { p_user_id: string };
         Returns: {
@@ -1927,6 +2845,72 @@ export type Database = {
           id: string;
           scene_data: Json;
           updated_at: string;
+        }[];
+      };
+      get_testing_pass_rate: {
+        Args: { p_app?: string; p_days?: number };
+        Returns: {
+          app: string;
+          pass_rate: number;
+          tests_failed: number;
+          tests_passed: number;
+          total_tests: number;
+        }[];
+      };
+      get_unified_contacts: {
+        Args: { p_workspace_id: string };
+        Returns: {
+          email: string;
+          has_intel_data: boolean;
+          has_pitch_data: boolean;
+          has_tracker_data: boolean;
+          last_activity: string;
+          name: string;
+          registry_id: string;
+          total_campaigns: number;
+          total_pitches: number;
+        }[];
+      };
+      get_workspace_integration: {
+        Args: { p_integration_type: string; p_workspace_id: string };
+        Returns: string;
+      };
+      has_workspace_permission: {
+        Args: {
+          p_required_role?: string;
+          p_user_id: string;
+          p_workspace_id: string;
+        };
+        Returns: boolean;
+      };
+      log_workspace_activity: {
+        Args: {
+          p_action: string;
+          p_metadata?: Json;
+          p_resource_id?: string;
+          p_resource_type?: string;
+          p_user_id: string;
+          p_workspace_id: string;
+        };
+        Returns: string;
+      };
+      mark_pitch_email_replied: {
+        Args: {
+          p_gmail_message_id: string;
+          p_reply_message_id: string;
+          p_reply_snippet: string;
+        };
+        Returns: undefined;
+      };
+      migrate_pitch_to_workspaces: {
+        Args: never;
+        Returns: {
+          auth_user_id: string;
+          contacts_migrated: number;
+          new_workspace_id: string;
+          pitches_migrated: number;
+          templates_migrated: number;
+          user_email: string;
         }[];
       };
     };

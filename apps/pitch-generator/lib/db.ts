@@ -10,7 +10,9 @@ export type * from '@total-audio/core-db/types';
 // Type definitions for Pitch Generator
 export interface Contact {
   id: string;
-  user_id: string;
+  user_id: string; // Legacy: email address (kept for backward compatibility)
+  workspace_id: string; // UUID: workspace that owns this contact
+  created_by: string; // UUID: user who created this contact
   name: string;
   role?: string;
   outlet?: string;
@@ -27,7 +29,9 @@ export interface Contact {
 
 export interface Pitch {
   id: string;
-  user_id: string;
+  user_id: string; // Legacy: email address (kept for backward compatibility)
+  workspace_id: string; // UUID: workspace that owns this pitch
+  created_by: string; // UUID: user who created this pitch
   contact_id?: string;
   contact_name: string;
   contact_outlet?: string;
@@ -57,7 +61,9 @@ export interface Pitch {
 
 export interface PitchTemplate {
   id: string;
-  user_id?: string;
+  user_id?: string; // Legacy: email address (optional for backward compatibility)
+  workspace_id?: string; // UUID: workspace that owns this template
+  created_by?: string; // UUID: user who created this template
   name: string;
   genre: string;
   description?: string;

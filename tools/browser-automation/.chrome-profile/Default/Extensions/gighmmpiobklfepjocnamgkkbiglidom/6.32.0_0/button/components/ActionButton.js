@@ -26,10 +26,10 @@ import {
   closePopup,
   returnToIndex,
   sendMessageWithNoResponse,
-} from "../utils.js";
+} from '../utils.js';
 
 async function pauseOnDomain() {
-  sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "domain_pause_clicked" });
+  sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'domain_pause_clicked' });
 
   if (!this.pageInfo.url) {
     return;
@@ -38,7 +38,7 @@ async function pauseOnDomain() {
   const pageUrl = new URL(this.pageInfo.url);
   const { href } = pageUrl;
   await browser.runtime.sendMessage({
-    command: "allowlistTab",
+    command: 'allowlistTab',
     url: href,
   });
   browser.tabs.reload();
@@ -46,11 +46,11 @@ async function pauseOnDomain() {
 }
 
 async function resumeThisPage() {
-  sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "enable_adblock_clicked" });
+  sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'enable_adblock_clicked' });
   const { id } = this.pageInfo;
 
   const response = await browser.runtime.sendMessage({
-    command: "removeAllAllowlistRulesForTab",
+    command: 'removeAllAllowlistRulesForTab',
     tabId: id,
   });
 
@@ -61,21 +61,21 @@ async function resumeThisPage() {
 }
 
 async function undoAllowlist() {
-  sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "undo_clicked" });
+  sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'undo_clicked' });
 
   const pageUrl = new URL(this.pageInfo.url);
   const { host } = pageUrl;
-  await browser.runtime.sendMessage({ command: "removeCustomFilterForHost", host });
+  await browser.runtime.sendMessage({ command: 'removeCustomFilterForHost', host });
   browser.tabs.reload(this.pageInfo.id);
   returnToIndex();
 }
 
 async function addSubscription(id) {
   await sendMessageWithNoResponse({
-    command: "recordGeneralMessage",
+    command: 'recordGeneralMessage',
     msg: `popup_sub_clicked_${id}`,
   });
-  await browser.runtime.sendMessage({ command: "subscribe", id });
+  await browser.runtime.sendMessage({ command: 'subscribe', id });
   returnToIndex();
 }
 
@@ -106,7 +106,7 @@ const pauseIconTemplate = `
 `;
 
 const icons = {
-  none: "",
+  none: '',
   play: playIconTemplate,
   pause: pauseIconTemplate,
 };
@@ -118,14 +118,14 @@ export default class ActionButton extends HTMLElement {
   async connectedCallback() {
     this.pageInfo = sessionStorageGet(PAGE_INFO_KEY);
 
-    const { action, label, icon = "none", text = "ok", type = "primary" } = this.dataset;
+    const { action, label, icon = 'none', text = 'ok', type = 'primary' } = this.dataset;
 
     const buttonLabel = label ? translate(label) : translate(text);
 
-    const actionButton = document.createElement("button");
+    const actionButton = document.createElement('button');
     actionButton.ariaLabel = buttonLabel;
     actionButton.classList.add(`${type}-action`);
-    actionButton.addEventListener("click", actionHandlers[action].bind(this));
+    actionButton.addEventListener('click', actionHandlers[action].bind(this));
     actionButton.innerHTML = DOMPurify.sanitize(generateIconButton(text, icon));
 
     this.appendChild(actionButton);

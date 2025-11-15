@@ -54,8 +54,8 @@ let processingIntervalId = null;
 function isAuthRequestEvent(event) {
   return (
     event.detail &&
-    typeof event.detail.signature === "string" &&
-    typeof event.detail.timestamp === "number"
+    typeof event.detail.signature === 'string' &&
+    typeof event.detail.timestamp === 'number'
   );
 }
 
@@ -69,7 +69,7 @@ function isAuthRequestEvent(event) {
 function isTrustedEvent(event) {
   return (
     Object.getPrototypeOf(event) === CustomEvent.prototype &&
-    !Object.hasOwnProperty.call(event, "detail")
+    !Object.hasOwnProperty.call(event, 'detail')
   );
 }
 
@@ -82,7 +82,7 @@ function isTrustedEvent(event) {
  */
 async function getPayloadAndExtras(event) {
   return browser.runtime.sendMessage({
-    command: "users.isPaying",
+    command: 'users.isPaying',
     timestamp: event.detail.timestamp,
     signature: event.detail.signature,
   });
@@ -114,16 +114,16 @@ async function processNextEvent() {
       const { extensionInfo } = await getPayloadAndExtras(event);
 
       if (extensionInfo === null) {
-        throw new Error("Premium request rejected");
+        throw new Error('Premium request rejected');
       }
 
       let detail = { detail: { extensionInfo } };
-      if (typeof cloneInto === "function") {
+      if (typeof cloneInto === 'function') {
         // Firefox requires content scripts to clone objects
         // that are passed to the document
         detail = cloneInto(detail, document.defaultView);
       }
-      document.dispatchEvent(new CustomEvent("flattr-payload", detail));
+      document.dispatchEvent(new CustomEvent('flattr-payload', detail));
       stop();
     } catch {
       errorCount += 1;
@@ -162,14 +162,14 @@ function stopProcessingInterval() {
  * Initializes module
  */
 function start() {
-  document.addEventListener("flattr-request-payload", handleFlattrRequestPayloadEvent, true);
+  document.addEventListener('flattr-request-payload', handleFlattrRequestPayloadEvent, true);
 }
 
 /**
  * Uninitializes module
  */
 function stop() {
-  document.removeEventListener("flattr-request-payload", handleFlattrRequestPayloadEvent, true);
+  document.removeEventListener('flattr-request-payload', handleFlattrRequestPayloadEvent, true);
   eventQueue.length = 0;
   stopProcessingInterval();
 }

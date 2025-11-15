@@ -4,9 +4,9 @@
 
 Each app in the Total Audio ecosystem has its own distinct brand colour to maintain visual identity and prevent confusion.
 
-### Audio Intel - BLUE (`#1E88E5`)
+### Audio Intel - BLUE (`#2563EB`)
 
-- **Primary**: `blue-600`, `blue-500`, `blue-700`
+- **Primary**: `blue-600` (#2563EB - from live site)
 - **Accent**: Blue gradients
 - **Use Case**: Contact enrichment, database management
 - **Scripts**:
@@ -27,10 +27,10 @@ Each app in the Total Audio ecosystem has its own distinct brand colour to maint
   npm run check-colours
   ```
 
-### Tracker - PURPLE (`#7C3AED`)
+### Tracker - TEAL/CYAN (`#14B8A6`)
 
-- **Primary**: `purple-600`, `purple-500`, `purple-700`
-- **Accent**: Purple/indigo gradients
+- **Primary**: `teal-500` (#14B8A6 - from live site)
+- **Accent**: Teal/cyan gradients
 - **Use Case**: Campaign tracking and analytics
 - **Scripts**:
   ```bash
@@ -104,12 +104,12 @@ When copying components between apps:
 
 ## 🎯 Quick Reference
 
-| App                 | Brand Colour | Hex       | Tailwind     | Forbidden     |
-| ------------------- | ------------ | --------- | ------------ | ------------- |
-| **Audio Intel**     | Blue         | `#1E88E5` | `blue-600`   | purple, amber |
-| **Pitch Generator** | Amber        | `#F59E0B` | `amber-500`  | blue, purple  |
-| **Tracker**         | Purple       | `#7C3AED` | `purple-600` | blue, amber   |
-| **Command Centre**  | Purple       | `#7C3AED` | `purple-600` | blue, amber   |
+| App                 | Brand Colour | Hex       | Tailwind     | Forbidden           |
+| ------------------- | ------------ | --------- | ------------ | ------------------- |
+| **Audio Intel**     | Blue         | `#2563EB` | `blue-600`   | purple, amber, teal |
+| **Pitch Generator** | Amber        | `#F59E0B` | `amber-500`  | blue, purple, teal  |
+| **Tracker**         | Teal/Cyan    | `#14B8A6` | `teal-500`   | blue, amber, purple |
+| **Command Centre**  | Purple       | `#7C3AED` | `purple-600` | blue, amber, teal   |
 
 ---
 

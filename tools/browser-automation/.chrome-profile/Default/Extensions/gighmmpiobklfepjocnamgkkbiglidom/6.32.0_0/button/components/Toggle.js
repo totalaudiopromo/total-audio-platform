@@ -15,22 +15,22 @@
  * along with AdBlock.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-const createLabel = (name) => {
-  const label = document.createElement("label");
+const createLabel = name => {
+  const label = document.createElement('label');
   label.htmlFor = name;
   return label;
 };
 
-const createCheckbox = (name) => {
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
+const createCheckbox = name => {
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
   checkbox.id = name;
   return checkbox;
 };
 
 const createSlider = () => {
-  const slider = document.createElement("span");
-  slider.classList.add("slider", "round");
+  const slider = document.createElement('span');
+  slider.classList.add('slider', 'round');
   return slider;
 };
 

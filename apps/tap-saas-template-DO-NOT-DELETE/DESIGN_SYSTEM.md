@@ -47,10 +47,10 @@ Dark text: #111827 (text-gray-900)
 Each tool gets a signature color that activates on interaction:
 
 ```
-Audio Intel: Electric Blue (#3b82f6 / blue-500)
-Pitch Generator: Electric Blue (#3b82f6 / blue-500)
+Audio Intel: Electric Blue (#2563EB / blue-600 - from live site)
+Tracker: Teal/Cyan (#14B8A6 / teal-500 - from live site)
+Pitch Generator: Amber (#F59E0B / amber-500 - from live site)
 Playlist Pulse: Neon Green (#22c55e / green-500)
-Release Radar: Orange/Amber (#f59e0b / amber-500)
 Trend Track: Purple/Magenta (#a855f7 / purple-500)
 Content Clone: Hot Pink (#ec4899 / pink-500)
 Success Predict: Gold/Yellow (#eab308 / yellow-500)

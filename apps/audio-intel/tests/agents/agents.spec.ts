@@ -264,7 +264,7 @@ describe('Agent Layer', () => {
     });
   });
 
-  describe('VoiceGuardAgent', () => {
+  describe('VoiceGuard™ Agent', () => {
     it('should pass clean text', async () => {
       const agent = new VoiceGuardAgent();
       const result = await agent.execute({

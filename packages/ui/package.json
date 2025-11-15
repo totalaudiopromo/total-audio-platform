@@ -8,6 +8,8 @@
     "./SiteHeader": "./components/SiteHeader.tsx",
     "./SiteFooter": "./components/SiteFooter.tsx",
     "./ToolSwitcher": "./components/ToolSwitcher.tsx",
+    "./WorkspaceSwitcher": "./components/WorkspaceSwitcher.tsx",
+    "./WorkspaceManagement": "./components/WorkspaceManagement.tsx",
     "./tailwind-brand": "./tailwind/brand-config.js"
   },
   "scripts": {

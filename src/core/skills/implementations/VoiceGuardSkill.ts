@@ -1,5 +1,5 @@
 /**
- * Voice Guard Skill - Brand Voice Enforcement
+ * VoiceGuard™ Skill - Brand Voice Enforcement
  * Total Audio Platform
  *
  * Ensures all content matches Total Audio's authentic UK music industry voice.
@@ -34,7 +34,7 @@ export interface VoiceGuardOutput {
 }
 
 /**
- * Voice Guard rules - UK music industry authenticity
+ * VoiceGuard™ rules - UK music industry authenticity
  */
 const VOICE_RULES = {
   // UK vs US spelling corrections
@@ -81,7 +81,7 @@ const VOICE_RULES = {
 
 export class VoiceGuardSkill {
   /**
-   * Execute voice guard analysis and corrections
+   * Execute VoiceGuard™ analysis and corrections
    */
   static async execute(input: VoiceGuardInput, context: SkillContext): Promise<VoiceGuardOutput> {
     let text = input.text;
@@ -185,7 +185,7 @@ export class VoiceGuardSkill {
   }
 
   /**
-   * Quick validation - returns true if text passes voice guard
+   * Quick validation - returns true if text passes VoiceGuard™
    */
   static async validate(
     text: string,

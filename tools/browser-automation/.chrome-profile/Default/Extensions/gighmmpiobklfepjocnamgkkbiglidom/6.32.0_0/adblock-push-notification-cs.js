@@ -1,19 +1,19 @@
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
+/******/ (() => {
+  // webpackBootstrap
+  /******/ 'use strict';
 
-const addDenyPushNotificationScript = function () {
+  const addDenyPushNotificationScript = function () {
     try {
-        const scriptElem = document.createElement("script");
-        scriptElem.type = "module";
-        scriptElem.src = browser.runtime.getURL("adblock-deny-push-notifications-requests.js");
-        (document.head || document.documentElement).appendChild(scriptElem);
+      const scriptElem = document.createElement('script');
+      scriptElem.type = 'module';
+      scriptElem.src = browser.runtime.getURL('adblock-deny-push-notifications-requests.js');
+      (document.head || document.documentElement).appendChild(scriptElem);
+    } catch (err) {
+      console.error(err);
     }
-    catch (err) {
-        console.error(err);
-    }
-};
-addDenyPushNotificationScript();
+  };
+  addDenyPushNotificationScript();
 
-/******/ })()
-;
+  /******/
+})();
 //# sourceMappingURL=adblock-push-notification-cs.js.map

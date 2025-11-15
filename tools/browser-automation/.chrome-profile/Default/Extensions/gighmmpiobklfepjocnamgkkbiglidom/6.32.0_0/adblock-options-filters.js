@@ -26,13 +26,13 @@
    translate, updateAcceptableAdsUI, updateSocialIconsVisibility
    */
 
-const FANBOY_ANNOYANCE_URL = "https://fanboy.co.nz/fanboy-annoyance.txt";
+const FANBOY_ANNOYANCE_URL = 'https://fanboy.co.nz/fanboy-annoyance.txt';
 
 function fixFanboyFilter(item, adblockId) {
   if (item && item.url === FANBOY_ANNOYANCE_URL) {
     // eslint-disable-next-line no-param-reassign
-    item.adblockId = "annoyances";
-    return { item, adblockId: "annoyances" };
+    item.adblockId = 'annoyances';
+    return { item, adblockId: 'annoyances' };
   }
   return { item, adblockId };
 }
@@ -41,14 +41,14 @@ function isAcceptableAds(filterList) {
   if (!filterList) {
     return undefined;
   }
-  return filterList.adblockId === "acceptable_ads";
+  return filterList.adblockId === 'acceptable_ads';
 }
 
 function isAcceptableAdsPrivacy(filterList) {
   if (!filterList) {
     return undefined;
   }
-  return filterList.adblockId === "acceptable_ads_privacy";
+  return filterList.adblockId === 'acceptable_ads_privacy';
 }
 
 function replaceAnnoyances(subsList) {
@@ -63,9 +63,9 @@ function replaceAnnoyances(subsList) {
 
     // Remove duplicate subs if they exist, then add the updated old annoyances
     const subslistFiltered = subsList.filter(
-      ([adblockId]) => !(adblockId === `url:${FANBOY_ANNOYANCE_URL}` || adblockId === "annoyances"),
+      ([adblockId]) => !(adblockId === `url:${FANBOY_ANNOYANCE_URL}` || adblockId === 'annoyances')
     );
-    subslistFiltered.push(["annoyances", item]);
+    subslistFiltered.push(['annoyances', item]);
 
     return subslistFiltered;
   }
@@ -110,38 +110,38 @@ function addFiltersToArray(sectionedList, subsArray) {
 let filterListSections = {
   adblockFilterList: {
     array: [],
-    $container: $("#ad_blocking_list"),
+    $container: $('#ad_blocking_list'),
   },
   languageFilterList: {
     array: [],
-    $container: $("#language_list"),
+    $container: $('#language_list'),
   },
   otherFilterList: {
     array: [],
-    $container: $("#other_filter_lists"),
+    $container: $('#other_filter_lists'),
   },
   customFilterList: {
     array: [],
-    $container: $("#custom_filter_lists"),
+    $container: $('#custom_filter_lists'),
   },
 };
 
 function translateIDs(id) {
-  const idsWith2 = ["warning_removal", "annoyances", "antisocial"];
+  const idsWith2 = ['warning_removal', 'annoyances', 'antisocial'];
   if (idsWith2.includes(id)) {
     const translatedMsg = translate(`filter_${id}2`).trim();
-    if (translatedMsg !== "" && translatedMsg.length > 0) {
+    if (translatedMsg !== '' && translatedMsg.length > 0) {
       return translatedMsg;
     }
     return translate(`filter${id}2`);
   }
 
-  if (id.endsWith("_old")) {
+  if (id.endsWith('_old')) {
     const trimmedID = id.split(/_old$/)[0];
     return translate(`filter${trimmedID}`);
   }
   const translatedMsg = translate(`filter_${id}`).trim();
-  if (translatedMsg !== "" && translatedMsg.length > 0) {
+  if (translatedMsg !== '' && translatedMsg.length > 0) {
     return translatedMsg;
   }
   return translate(`filter${id}`);
@@ -153,22 +153,22 @@ function translateIDs(id) {
 //   section:string -- should be 'all' (apply to all 3 sections), 'other_filters'
 //                     'ads_and_languages' or 'custom_filters'
 const removeBottomLine = function (section) {
-  const classToRemove = "bottom-line";
+  const classToRemove = 'bottom-line';
 
-  if (section === "all" || section === "ads_and_languages") {
-    const $adBlockingFilters = $("#ad_blocking_list > div:visible").not(".no-bottom-line");
-    const $languageFilters = $("#language_list > div:visible");
+  if (section === 'all' || section === 'ads_and_languages') {
+    const $adBlockingFilters = $('#ad_blocking_list > div:visible').not('.no-bottom-line');
+    const $languageFilters = $('#language_list > div:visible');
     const $sectionFilters = $adBlockingFilters.add($languageFilters);
     $sectionFilters.addClass(classToRemove).last().removeClass(classToRemove);
   }
 
-  if (section === "all" || section === "other_filters") {
-    const $otherFilters = $("#other_filter_lists > div:visible");
+  if (section === 'all' || section === 'other_filters') {
+    const $otherFilters = $('#other_filter_lists > div:visible');
     $otherFilters.addClass(classToRemove).last().removeClass(classToRemove);
   }
 
-  if (section === "all" || section === "custom_filters") {
-    const $customFilters = $("#custom_filter_lists > div:visible");
+  if (section === 'all' || section === 'custom_filters') {
+    const $customFilters = $('#custom_filter_lists > div:visible');
     $customFilters.addClass(classToRemove).last().removeClass(classToRemove);
   }
 };
@@ -176,17 +176,17 @@ const removeBottomLine = function (section) {
 // Utility class for filter lists.
 function FilterListUtil() {}
 
-FilterListUtil.sortFilterListArrays = (newFilters) => {
+FilterListUtil.sortFilterListArrays = newFilters => {
   // Sort alphabetically
   for (const filterList in filterListSections) {
     filterListSections[filterList].array.sort((a, b) => (a.label > b.label ? 1 : -1));
   }
   // Move AA privacy after AA
   const aaSection = filterListSections.adblockFilterList.array;
-  const aaPrivacyIndex = aaSection.findIndex((list) => isAcceptableAdsPrivacy(list));
+  const aaPrivacyIndex = aaSection.findIndex(list => isAcceptableAdsPrivacy(list));
   if (aaPrivacyIndex > -1) {
     const aaPrivacyFilter = aaSection.splice(aaPrivacyIndex, 1)[0];
-    let aaIndex = aaSection.findIndex((filterList) => isAcceptableAds(filterList));
+    let aaIndex = aaSection.findIndex(filterList => isAcceptableAds(filterList));
     if (aaIndex > -1) {
       aaSection.splice((aaIndex += 1), 0, aaPrivacyFilter);
     }
@@ -195,7 +195,7 @@ FilterListUtil.sortFilterListArrays = (newFilters) => {
   // Move new filters to top of Other Filters section
   const otherSection = filterListSections.otherFilterList.array;
   const newFilterArray = newFilters
-    .map((filterId) => otherSection.find(({ adblockId }) => adblockId === filterId))
+    .map(filterId => otherSection.find(({ adblockId }) => adblockId === filterId))
     .filter(Boolean);
   const filteredSection = otherSection.filter(({ adblockId }) => !newFilters.includes(adblockId));
 
@@ -205,32 +205,32 @@ FilterListUtil.sortFilterListArrays = (newFilters) => {
 // Prepare filterListSections.
 // Inputs:
 //    subs:object - Map for subscription lists taken from the background.
-FilterListUtil.getFilterListType = (filterList) => {
+FilterListUtil.getFilterListType = filterList => {
   const { adblockId } = filterList;
-  const adblockFilters = ["easylist", "anticircumvent", "acceptable_ads", "acceptable_ads_privacy"];
+  const adblockFilters = ['easylist', 'anticircumvent', 'acceptable_ads', 'acceptable_ads_privacy'];
   const otherFilters = [
-    "annoyances",
-    "antisocial",
-    "bitcoin_mining_protection",
-    "easyprivacy",
-    "fb_notifications",
-    "free_distraction_control",
-    "warning_removal",
+    'annoyances',
+    'antisocial',
+    'bitcoin_mining_protection',
+    'easyprivacy',
+    'fb_notifications',
+    'free_distraction_control',
+    'warning_removal',
   ];
 
   if (adblockFilters.includes(adblockId)) {
-    return "adblockFilterList";
+    return 'adblockFilterList';
   }
 
   if (otherFilters.includes(adblockId)) {
-    return "otherFilterList";
+    return 'otherFilterList';
   }
 
   if (filterList.language === true) {
-    return "languageFilterList";
+    return 'languageFilterList';
   }
 
-  return "customFilterList";
+  return 'customFilterList';
 };
 
 // Prepare Subscriptions
@@ -260,7 +260,7 @@ FilterListUtil.prepareSubscriptions = (subs, toHighlight) => {
 // or undefined if that custom filter list does not exist.
 // Inputs:
 //   url:string - Url for uploaded custom filter list.
-FilterListUtil.checkUrlForExistingFilterList = (url) => {
+FilterListUtil.checkUrlForExistingFilterList = url => {
   const { cachedSubscriptions } = FilterListUtil;
   for (const adblockId in cachedSubscriptions) {
     if (url === cachedSubscriptions[adblockId].url) {
@@ -278,52 +278,52 @@ FilterListUtil.updateSubscriptionInfoAll = () => {
   }
 };
 
-const mv3SubscriptionText = (sub) => {
+const mv3SubscriptionText = sub => {
   // In this case, the subscription has been added or removed and re-added
   // in this session and we want to reflect that action
-  if (!Object.hasOwn(sub, "updatable") || sub._lastDownload < 0) {
-    return translate("subscribedlabel");
+  if (!Object.hasOwn(sub, 'updatable') || sub._lastDownload < 0) {
+    return translate('subscribedlabel');
   }
 
   // Otherwise, it is an existing bundled subscription
-  return translate("bundledlabel");
+  return translate('bundledlabel');
 };
 
 // Updates info text for a specific filter list.
-FilterListUtil.updateSubscriptionInfoForId = (adblockId) => {
+FilterListUtil.updateSubscriptionInfoForId = adblockId => {
   let $div = $(`[name='${adblockId}']`);
   const subscription = FilterListUtil.cachedSubscriptions[adblockId];
   if (subscription.subscribed === false) {
     return;
   }
   if (isAcceptableAdsPrivacy(subscription)) {
-    $div = $("[name=acceptable_ads]");
+    $div = $('[name=acceptable_ads]');
   }
-  const $infoLabel = $(".subscription_info", $div);
-  const $timestampLabel = $(".timestamp_info", $div);
+  const $infoLabel = $('.subscription_info', $div);
+  const $timestampLabel = $('.timestamp_info', $div);
   let text = $infoLabel.text();
-  let timestamp = "";
+  let timestamp = '';
   const lastUpdate = subscription.lastDownload || subscription.lastModified;
   // If filter list is invalid, skip it.
-  if ($infoLabel.text() === translate("invalidListUrl")) {
+  if ($infoLabel.text() === translate('invalidListUrl')) {
     return;
   }
-  if (subscription.downloadStatus && subscription.downloadStatus !== "synchronize_ok") {
+  if (subscription.downloadStatus && subscription.downloadStatus !== 'synchronize_ok') {
     const map = {
-      synchronize_invalid_url: translate("ab_filters_subscription_lastDownload_invalidURL"),
+      synchronize_invalid_url: translate('ab_filters_subscription_lastDownload_invalidURL'),
       synchronize_connection_error: translate(
-        "ab_filters_subscription_lastDownload_connectionError",
+        'ab_filters_subscription_lastDownload_connectionError'
       ),
-      synchronize_invalid_data: translate("ab_filters_subscription_lastDownload_invalidData"),
+      synchronize_invalid_data: translate('ab_filters_subscription_lastDownload_invalidData'),
       synchronize_checksum_mismatch: translate(
-        "ab_filters_subscription_lastDownload_checksumMismatch",
+        'ab_filters_subscription_lastDownload_checksumMismatch'
       ),
-      synchronize_diff_error: translate("ab_filters_subscription_lastDownload_diffError"),
+      synchronize_diff_error: translate('ab_filters_subscription_lastDownload_diffError'),
       synchronize_diff_too_many_filters: translate(
-        "ab_filters_subscription_lastDownload_diffTooManyFilters",
+        'ab_filters_subscription_lastDownload_diffTooManyFilters'
       ),
-      synchronize_diff_too_old: translate("ab_filters_subscription_diff_too_old"),
-      synchronize_dnr_error: translate("ab_filters_subscription_dnr_error"),
+      synchronize_diff_too_old: translate('ab_filters_subscription_diff_too_old'),
+      synchronize_dnr_error: translate('ab_filters_subscription_dnr_error'),
     };
     if (subscription.downloadStatus in map) {
       text = map[subscription.downloadStatus];
@@ -331,28 +331,28 @@ FilterListUtil.updateSubscriptionInfoForId = (adblockId) => {
       text = subscription.downloadStatus;
     }
   } else if (lastUpdate > 0) {
-    timestamp = translate("updatedtimestamp", [new Date(lastUpdate * 1000).toLocaleString()]);
+    timestamp = translate('updatedtimestamp', [new Date(lastUpdate * 1000).toLocaleString()]);
     const howLongAgo = Date.now() - lastUpdate * 1000;
     const seconds = Math.round(howLongAgo / 1000);
     const minutes = Math.round(seconds / 60);
     const hours = Math.round(minutes / 60);
     const days = Math.round(hours / 24);
     if (seconds < 10) {
-      text = translate("updatedrightnow");
+      text = translate('updatedrightnow');
     } else if (seconds < 60) {
-      text = translate("updatedsecondsago", [seconds]);
+      text = translate('updatedsecondsago', [seconds]);
     } else if (minutes === 1) {
-      text = translate("updatedminuteago");
+      text = translate('updatedminuteago');
     } else if (minutes < 60) {
-      text = translate("updatedminutesago", [minutes]);
+      text = translate('updatedminutesago', [minutes]);
     } else if (hours === 1) {
-      text = translate("updatedhourago");
+      text = translate('updatedhourago');
     } else if (hours < 24) {
-      text = translate("updatedhoursago", [hours]);
+      text = translate('updatedhoursago', [hours]);
     } else if (days === 1) {
-      text = translate("updateddayago");
+      text = translate('updateddayago');
     } else {
-      text = translate("updateddaysago", [days]);
+      text = translate('updateddaysago', [days]);
     }
     // Applies to subscriptions that are bundled in MV3
   } else if (!subscription.updatable && subscription.subscribed) {
@@ -370,32 +370,32 @@ FilterListUtil.updateSubscriptionInfoForId = (adblockId) => {
 //                       name of the containing div in display.
 FilterListUtil.updateCheckbox = (filterList, adblockId) => {
   const $containingDiv = $(`div[name='${adblockId}']`);
-  const $checkbox = $($containingDiv).find("input");
-  const $filterLink = $($containingDiv).find("a.filter-list-link");
+  const $checkbox = $($containingDiv).find('input');
+  const $filterLink = $($containingDiv).find('a.filter-list-link');
   const aaPrivacy = FilterListUtil.cachedSubscriptions.acceptable_ads_privacy;
   const isAcceptableAdsVal = isAcceptableAds(filterList);
 
   // Keep AA checkbox selected when AA Privacy is subscribed
   // and assign the AA Privacy filter URL to the AA link icon
   if (isAcceptableAdsVal && aaPrivacy.subscribed) {
-    $checkbox.prop("checked", true);
-    $filterLink.attr("href", aaPrivacy.url);
+    $checkbox.prop('checked', true);
+    $filterLink.attr('href', aaPrivacy.url);
     return;
   }
 
   // Re-assign the AA filter URL to the AA link icon if AA Privacy unsubscribed
   if (isAcceptableAdsVal) {
-    $filterLink.attr("href", filterList.url);
+    $filterLink.attr('href', filterList.url);
   }
 
   // Check if subscribed and checkbox staus is equal, if not, update checkbox status
   // according to subscribed status.
-  if ($checkbox.is(":checked") !== filterList.subscribed) {
-    $checkbox.prop("checked", filterList.subscribed ? true : null);
+  if ($checkbox.is(':checked') !== filterList.subscribed) {
+    $checkbox.prop('checked', filterList.subscribed ? true : null);
 
     // Force update current info label since status is already updated in the background.
-    $(".subscription_info", $containingDiv).text(
-      filterList.subscribed ? translate("fetchinglabel") : translate("unsubscribedlabel"),
+    $('.subscription_info', $containingDiv).text(
+      filterList.subscribed ? translate('fetchinglabel') : translate('unsubscribedlabel')
     );
   }
 };
@@ -405,9 +405,9 @@ function SubscriptionUtil() {}
 
 // Returns true if the user knows what they are doing, subscribing to many
 // filter lists.
-SubscriptionUtil.validateOverSubscription = (clicked) => {
-  const totalSelected = $(".subscription :checked").length;
-  const aaSelected = $("[name=acceptable_ads] :checked").length;
+SubscriptionUtil.validateOverSubscription = clicked => {
+  const totalSelected = $('.subscription :checked').length;
+  const aaSelected = $('[name=acceptable_ads] :checked').length;
   const aaPrivacyClicked = isAcceptableAdsPrivacy(clicked);
 
   if (totalSelected <= 6) {
@@ -423,22 +423,22 @@ SubscriptionUtil.validateOverSubscription = (clicked) => {
   if (settings && settings.show_advanced_options) {
     // In case of an advanced user, only warn once every 30 minutes, even
     // if the options page wasn't open all the time. 30 minutes = 1/48 day
-    if (getStorageCookie("noOversubscriptionWarning")) {
+    if (getStorageCookie('noOversubscriptionWarning')) {
       return true;
     }
-    setStorageCookie("noOversubscriptionWarning", "true", THIRTY_MINUTES_IN_MILLISECONDS);
+    setStorageCookie('noOversubscriptionWarning', 'true', THIRTY_MINUTES_IN_MILLISECONDS);
   }
 
   // eslint-disable-next-line no-alert
-  return window.confirm(translate("you_know_thats_a_bad_idea_right"));
+  return window.confirm(translate('you_know_thats_a_bad_idea_right'));
 };
 
 // Returns true if the user knows what they are doing, unsubscribing from
 // all filter lists.
-SubscriptionUtil.validateUnderSubscription = (clicked) => {
-  const totalSelected = $(".subscription :checked").length;
+SubscriptionUtil.validateUnderSubscription = clicked => {
+  const totalSelected = $('.subscription :checked').length;
   const aaClicked = isAcceptableAds(clicked);
-  const aaPrivacySelected = $("[name=acceptable_ads_privacy] :checked").length;
+  const aaPrivacySelected = $('[name=acceptable_ads_privacy] :checked').length;
 
   // If the user unsubscribe to AA while the only other selection is AA Privacy
   // we want to show the dialog window because we're going to force the
@@ -452,14 +452,14 @@ SubscriptionUtil.validateUnderSubscription = (clicked) => {
   if (settings && settings.show_advanced_options) {
     // In case of an advanced user, only warn once every 30 minutes, even
     // if the options page wasn't open all the time. 30 minutes = 1/48 day
-    if (getStorageCookie("noUnderSubscriptionWarning")) {
+    if (getStorageCookie('noUnderSubscriptionWarning')) {
       return true;
     }
-    setStorageCookie("noUnderSubscriptionWarning", "true", THIRTY_MINUTES_IN_MILLISECONDS);
+    setStorageCookie('noUnderSubscriptionWarning', 'true', THIRTY_MINUTES_IN_MILLISECONDS);
   }
 
   // eslint-disable-next-line no-alert
-  return window.confirm(translate("unsubscribe_from_all_confirmation"));
+  return window.confirm(translate('unsubscribe_from_all_confirmation'));
 };
 
 // Subscribe to the filter list with the given |id|.
@@ -499,8 +499,8 @@ SubscriptionUtil.subscribe = async (adblockId, title) => {
     updateAcceptableAdsUI(true, true);
   }
 
-  if (adblockId === "easylist") {
-    $("#easylist_info").slideUp();
+  if (adblockId === 'easylist') {
+    $('#easylist_info').slideUp();
   }
 };
 
@@ -508,7 +508,7 @@ SubscriptionUtil.subscribe = async (adblockId, title) => {
 // Input:
 //   adblockId:string - adblockId of the filter list to unsubscribe
 //   del:boolean - Flag to indicate if filter list should be deleted in the background.
-SubscriptionUtil.unsubscribe = (adblockId) => {
+SubscriptionUtil.unsubscribe = adblockId => {
   SubscriptionUtil.updateCacheValue(adblockId);
   const cachedSubscription = FilterListUtil.cachedSubscriptions[adblockId];
   setTimeout(async () => {
@@ -528,23 +528,23 @@ SubscriptionUtil.unsubscribe = (adblockId) => {
   }
 
   if (isAcceptableAdsPrivacy(cachedSubscription)) {
-    SubscriptionUtil.subscribe("acceptable_ads");
+    SubscriptionUtil.subscribe('acceptable_ads');
     FilterListUtil.cachedSubscriptions.acceptable_ads.subscribed = true;
     updateAcceptableAdsUI(true, false);
   }
 
-  if (adblockId === "easylist") {
-    $("#easylist_info").slideDown();
+  if (adblockId === 'easylist') {
+    $('#easylist_info').slideDown();
   }
 };
 
 // Update the given filter list in the cached list.
 // Input:
 //   adblockId:string - adblockId of the filter list to be updated.
-SubscriptionUtil.updateCacheValue = (adblockId) => {
+SubscriptionUtil.updateCacheValue = adblockId => {
   const sub = FilterListUtil.cachedSubscriptions[adblockId];
   if (sub) {
-    const properties = ["downloadStatus", "label", "lastDownload", "_downloadStatus"];
+    const properties = ['downloadStatus', 'label', 'lastDownload', '_downloadStatus'];
     for (let i = 0; i < properties.length; i++) {
       if (sub[properties[i]]) {
         delete sub[properties[i]];
@@ -555,7 +555,7 @@ SubscriptionUtil.updateCacheValue = (adblockId) => {
 
 function getDefaultFilterUI(filterList, checkboxID, filterListType) {
   const isAcceptableAdsVal = isAcceptableAds(filterList);
-  const isLanguageFilter = filterListType === "languageFilterList";
+  const isLanguageFilter = filterListType === 'languageFilterList';
   const aaPrivacy = FilterListUtil.cachedSubscriptions.acceptable_ads_privacy;
   const testId = `filters_${filterList.adblockId}`;
   let isSelected = filterList.subscribed;
@@ -566,101 +566,101 @@ function getDefaultFilterUI(filterList, checkboxID, filterListType) {
     filterListUrl = aaPrivacy.url;
   }
 
-  const $filterListIcon = $("<i>")
-    .addClass("material-icons")
-    .addClass("md-24")
-    .attr("role", "img")
-    .attr("aria-label", translate("filterviewsource"))
-    .text("format_list_bulleted");
+  const $filterListIcon = $('<i>')
+    .addClass('material-icons')
+    .addClass('md-24')
+    .attr('role', 'img')
+    .attr('aria-label', translate('filterviewsource'))
+    .text('format_list_bulleted');
 
-  const $checkBox = $("<input>")
-    .attr("type", "checkbox")
-    .attr("adblockId", checkboxID)
-    .attr("id", checkboxID)
-    .attr("data-testid", testId)
-    .prop("checked", isSelected);
+  const $checkBox = $('<input>')
+    .attr('type', 'checkbox')
+    .attr('adblockId', checkboxID)
+    .attr('id', checkboxID)
+    .attr('data-testid', testId)
+    .prop('checked', isSelected);
 
   const $checkBoxIcons = $(`
     <i role="img" aria-hidden="true" class="unchecked material-icons">lens</i>
     <i role="img" aria-hidden="true" class="checked material-icons circle-icon-bg-24 checkbox-icon">check_circle</i>'`);
 
-  const $checkBoxWrapper = $("<span>")
-    .addClass("checkbox")
-    .addClass("md-stack")
-    .addClass("mt-1")
+  const $checkBoxWrapper = $('<span>')
+    .addClass('checkbox')
+    .addClass('md-stack')
+    .addClass('mt-1')
     .append($checkBox)
     .append($checkBoxIcons);
 
-  const $filterTitle = $("<h1>").text(
+  const $filterTitle = $('<h1>').text(
     filterList.label ||
       filterList.title ||
       filterList._title ||
-      `${filterList.url.substr(0, 40)}...`,
+      `${filterList.url.substr(0, 40)}...`
   );
 
-  const $link = $("<a>")
-    .addClass("filter-list-link")
-    .css("display", $("#btnShowLinks").prop("disabled") ? "inline" : "none")
-    .attr("target", "_blank")
-    .attr("href", filterListUrl)
+  const $link = $('<a>')
+    .addClass('filter-list-link')
+    .css('display', $('#btnShowLinks').prop('disabled') ? 'inline' : 'none')
+    .attr('target', '_blank')
+    .attr('href', filterListUrl)
     .append($filterListIcon);
 
-  const $filterHeader = $("<div>").append($filterTitle).append($link);
+  const $filterHeader = $('<div>').append($filterTitle).append($link);
 
-  const $infoSpan = $("<span>").addClass("subscription_info").attr("aria-hidden", true);
+  const $infoSpan = $('<span>').addClass('subscription_info').attr('aria-hidden', true);
 
-  const $timestampSpan = $("<span>").addClass("timestamp_info");
+  const $timestampSpan = $('<span>').addClass('timestamp_info');
 
-  const $infoSection = $("<div>").append($infoSpan).append($timestampSpan);
+  const $infoSection = $('<div>').append($infoSpan).append($timestampSpan);
 
-  const $extraInformation = $("<div>")
-    .addClass("extra-info")
-    .addClass("italic")
-    .addClass("lowercase")
+  const $extraInformation = $('<div>')
+    .addClass('extra-info')
+    .addClass('italic')
+    .addClass('lowercase')
     .text(translate(`filter_${filterList.adblockId}_explained`));
 
-  const $filterInfo = $("<div>").append($filterHeader).append($extraInformation);
+  const $filterInfo = $('<div>').append($filterHeader).append($extraInformation);
 
-  const $label = $("<label>")
-    .attr("title", filterList.correctedURL)
-    .attr("for", checkboxID)
+  const $label = $('<label>')
+    .attr('title', filterList.correctedURL)
+    .attr('for', checkboxID)
     .append($filterInfo)
     .append($infoSection);
 
   const $removeFilterListLabel = filterList.userSubmitted
-    ? $("<a>")
-        .addClass("remove_filterList")
-        .css("font-size", "10px")
-        .css("display", filterList.subscribed ? "none" : "inline")
-        .attr("href", "#")
-        .text(translate("removefromlist"))
-        .on("click", function removeThisFilterList(event) {
+    ? $('<a>')
+        .addClass('remove_filterList')
+        .css('font-size', '10px')
+        .css('display', filterList.subscribed ? 'none' : 'inline')
+        .attr('href', '#')
+        .text(translate('removefromlist'))
+        .on('click', function removeThisFilterList(event) {
           event.preventDefault();
-          const $subscription = $(this).closest(".subscription");
-          const $subscriptionWrapper = $subscription.closest(".filter-subscription-wrapper");
-          const subscriptionId = $subscription.attr("name");
+          const $subscription = $(this).closest('.subscription');
+          const $subscriptionWrapper = $subscription.closest('.filter-subscription-wrapper');
+          const subscriptionId = $subscription.attr('name');
           SubscriptionUtil.unsubscribe(subscriptionId, filterList, true);
           $subscriptionWrapper.remove();
-          removeBottomLine("custom_filters");
+          removeBottomLine('custom_filters');
         })
     : null;
 
-  const $checkboxHeaderLine = $("<div>")
-    .addClass("subscription")
+  const $checkboxHeaderLine = $('<div>')
+    .addClass('subscription')
     .addClass(filterListType)
-    .addClass("add-space-between")
-    .addClass(isAcceptableAds ? "section-padding" : "")
-    .addClass(isAcceptableAds ? "bottom-line" : "")
-    .attr("name", filterList.adblockId)
+    .addClass('add-space-between')
+    .addClass(isAcceptableAds ? 'section-padding' : '')
+    .addClass(isAcceptableAds ? 'bottom-line' : '')
+    .attr('name', filterList.adblockId)
     .append($checkBoxWrapper)
     .append($label)
     .append($removeFilterListLabel);
 
-  const $filterWrapper = $("<div>")
-    .addClass("filter-subscription-wrapper")
-    .addClass(isAcceptableAds ? "" : "section-padding")
-    .addClass(isAcceptableAds ? "no-bottom-line" : "bottom-line")
-    .css("display", isLanguageFilter && !filterList.subscribed ? "none" : "block")
+  const $filterWrapper = $('<div>')
+    .addClass('filter-subscription-wrapper')
+    .addClass(isAcceptableAds ? '' : 'section-padding')
+    .addClass(isAcceptableAds ? 'no-bottom-line' : 'bottom-line')
+    .css('display', isLanguageFilter && !filterList.subscribed ? 'none' : 'block')
     .append($checkboxHeaderLine);
 
   return {
@@ -670,31 +670,31 @@ function getDefaultFilterUI(filterList, checkboxID, filterListType) {
 }
 
 function getToggleFilterUI(filterList, checkboxID) {
-  const $checkBox = $("<input>")
-    .attr("type", "checkbox")
-    .attr("adblockId", checkboxID)
-    .attr("id", checkboxID)
-    .attr("data-testid", `filters_${filterList.adblockId}`)
-    .prop("checked", !!filterList.subscribed);
+  const $checkBox = $('<input>')
+    .attr('type', 'checkbox')
+    .attr('adblockId', checkboxID)
+    .attr('id', checkboxID)
+    .attr('data-testid', `filters_${filterList.adblockId}`)
+    .prop('checked', !!filterList.subscribed);
 
-  const $spanSlider = $("<span>").addClass("slider").addClass("round");
+  const $spanSlider = $('<span>').addClass('slider').addClass('round');
 
-  const $spanText = $("<span>").text(translate("acceptable_ads_privacy"));
+  const $spanText = $('<span>').text(translate('acceptable_ads_privacy'));
 
-  const $label = $("<label>")
-    .addClass("switch")
-    .attr("title", filterList.correctedURL)
-    .attr("for", checkboxID)
+  const $label = $('<label>')
+    .addClass('switch')
+    .attr('title', filterList.correctedURL)
+    .attr('for', checkboxID)
     .append($checkBox)
     .append($spanSlider)
     .append($spanText);
 
-  const $toggleItem = $("<div>")
-    .addClass("filter-toggle-indentation")
-    .addClass("section-padding")
-    .addClass("subscription")
-    .addClass("bottom-line")
-    .attr("name", filterList.adblockId)
+  const $toggleItem = $('<div>')
+    .addClass('filter-toggle-indentation')
+    .addClass('section-padding')
+    .addClass('subscription')
+    .addClass('bottom-line')
+    .attr('name', filterList.adblockId)
     .append($label);
 
   return {
@@ -737,11 +737,11 @@ function LanguageSelectUtil() {}
 //   filterList:object - An entry from a filterListSections array.
 //   index:int - The position in the language select where this option should appear.
 function OptionForFilterList(filterList, index) {
-  this.optionTag = $("<option>", {
+  this.optionTag = $('<option>', {
     value: filterList.adblockId,
     text: filterList.label || filterList.title,
     hidden: filterList.hidden,
-  }).data("index", index);
+  }).data('index', index);
 }
 
 OptionForFilterList.prototype = {
@@ -757,54 +757,54 @@ CheckboxForFilterList.prototype = {
 
   bindActions() {
     const that = this;
-    this.checkBox.on("change", function filterListSelectionChanged(event) {
-      const $subscription = $(this).closest(".subscription");
-      const $subscriptionWrapper = $subscription.closest(".filter-subscription-wrapper");
-      const checked = $(this).is(":checked");
-      const adblockId = $subscription.attr("name");
+    this.checkBox.on('change', function filterListSelectionChanged(event) {
+      const $subscription = $(this).closest('.subscription');
+      const $subscriptionWrapper = $subscription.closest('.filter-subscription-wrapper');
+      const checked = $(this).is(':checked');
+      const adblockId = $subscription.attr('name');
       if (checked) {
         if (
           !event.addedViaBackground &&
           !SubscriptionUtil.validateOverSubscription(that.filterList)
         ) {
-          $(this).prop("checked", false);
+          $(this).prop('checked', false);
           return;
         }
         if (isAcceptableAdsPrivacy(that.filterList)) {
-          $(".subscription_info", "[name=acceptable_ads]").text(translate("fetchinglabel"));
+          $('.subscription_info', '[name=acceptable_ads]').text(translate('fetchinglabel'));
         } else {
-          $(".subscription_info", $subscription).text(translate("fetchinglabel"));
+          $('.subscription_info', $subscription).text(translate('fetchinglabel'));
         }
         SubscriptionUtil.subscribe(adblockId);
         FilterListUtil.cachedSubscriptions[adblockId].subscribed = true;
       } else {
         if (!SubscriptionUtil.validateUnderSubscription(that.filterList)) {
-          $(this).prop("checked", true);
+          $(this).prop('checked', true);
           return;
         }
         SubscriptionUtil.unsubscribe(adblockId, false);
-        $(".subscription_info", $subscription).text(translate("unsubscribedlabel"));
+        $('.subscription_info', $subscription).text(translate('unsubscribedlabel'));
         FilterListUtil.cachedSubscriptions[adblockId].subscribed = false;
         FilterListUtil.cachedSubscriptions[adblockId].lastDownload = -1;
         FilterListUtil.cachedSubscriptions[adblockId]._lastDownload = -1;
       }
-      $(".remove_filterList", $subscription).css("display", checked ? "none" : "inline");
+      $('.remove_filterList', $subscription).css('display', checked ? 'none' : 'inline');
 
-      if ($subscription.attr("class").indexOf("languageFilterList") > -1) {
+      if ($subscription.attr('class').indexOf('languageFilterList') > -1) {
         $subscriptionWrapper.toggle({
           duration: 500,
           start() {
-            $(this).closest(".filter-subscription-wrapper").removeClass("bottom-line");
+            $(this).closest('.filter-subscription-wrapper').removeClass('bottom-line');
           },
           complete() {
-            removeBottomLine("ads_and_languages");
+            removeBottomLine('ads_and_languages');
           },
         });
         if (!checked) {
           const $this = $(this);
-          const index = $this.attr("adblockId").split("_")[1];
+          const index = $this.attr('adblockId').split('_')[1];
           const entry = filterListSections.languageFilterList.array[index];
-          if (!Object.prototype.hasOwnProperty.call(entry, "label")) {
+          if (!Object.prototype.hasOwnProperty.call(entry, 'label')) {
             entry.label = translateIDs(adblockId);
           }
 
@@ -823,8 +823,8 @@ CheckboxForFilterList.prototype = {
     this.bindActions();
 
     if (isChecked) {
-      this.checkBox.prop("checked", true);
-      this.checkBox.trigger("change");
+      this.checkBox.prop('checked', true);
+      this.checkBox.trigger('change');
     }
   },
 };
@@ -861,11 +861,11 @@ SectionHandler.prototype = {
 //   option:OptionForFilterList - Option to be inserted.
 //   index:int - Where to insert the option.
 LanguageSelectUtil.insertOption = (option, index) => {
-  const $languageSelect = $("#language_select");
-  const options = $languageSelect.find("option");
+  const $languageSelect = $('#language_select');
+  const options = $languageSelect.find('option');
   let i;
   for (i = 0; i < options.length; i++) {
-    const listOptionIndex = options.eq(i).data("index");
+    const listOptionIndex = options.eq(i).data('index');
     if (listOptionIndex && parseInt(listOptionIndex, 10) > parseInt(index, 10)) {
       break;
     }
@@ -891,17 +891,17 @@ LanguageSelectUtil.init = () => {
     }
   }
 
-  $("#language_select").on("change", function aLanguageSelectionChanged(event) {
+  $('#language_select').on('change', function aLanguageSelectionChanged(event) {
     const $this = $(this);
-    const selectedOption = $this.find(":selected");
-    const index = $(selectedOption).data("index");
+    const selectedOption = $this.find(':selected');
+    const index = $(selectedOption).data('index');
     const entry = languageFilterListArr[index];
     if (entry) {
-      $this.find("option:first").prop("selected", true);
+      $this.find('option:first').prop('selected', true);
       selectedOption.remove();
-      const $checkbox = $(`[name='${entry.adblockId}']`).find("input");
-      $checkbox.prop("checked", true);
-      const newChangeEvent = jQuery.Event("change");
+      const $checkbox = $(`[name='${entry.adblockId}']`).find('input');
+      $checkbox.prop('checked', true);
+      const newChangeEvent = jQuery.Event('change');
       newChangeEvent.addedViaBackground = event.addedViaBackground;
       $checkbox.trigger(newChangeEvent);
     }
@@ -911,10 +911,10 @@ LanguageSelectUtil.init = () => {
 // Trigger change event to language select using one of the entries.
 // Input:
 //   filterList:object - Filter list to select.
-LanguageSelectUtil.triggerChange = (filterList) => {
-  const $languageSelect = $("#language_select");
+LanguageSelectUtil.triggerChange = filterList => {
+  const $languageSelect = $('#language_select');
   $languageSelect.val(filterList.adblockId);
-  $languageSelect.trigger("change");
+  $languageSelect.trigger('change');
 };
 
 // Utility class for custom filter list upload box.
@@ -931,7 +931,7 @@ CustomFilterListUploadUtil.performUpload = (url, subscribeTo, title) => {
     correctedURL: url,
     subscribed: false,
     userSubmitted: true,
-    label: "",
+    label: '',
     title,
   };
   FilterListUtil.cachedSubscriptions[entry.adblockId] = entry;
@@ -939,19 +939,19 @@ CustomFilterListUploadUtil.performUpload = (url, subscribeTo, title) => {
   customFilterLists.array.push(entry);
   const checkbox = new CheckboxForFilterList(
     entry,
-    "customFilterList",
+    'customFilterList',
     customFilterLists.array.length,
-    customFilterLists.$container,
+    customFilterLists.$container
   );
   checkbox.createCheckbox(true);
-  removeBottomLine("custom_filters");
+  removeBottomLine('custom_filters');
 };
 
 // When a user enters a URL in the custom filter list textbox for a known filter list,
 // this method clicks the correct filter list checkbox/select option for him instead.
 // Input:
 //   existingFilterList:object - Filter list whose URL was entered by the user.
-CustomFilterListUploadUtil.updateExistingFilterList = (existingFilterList) => {
+CustomFilterListUploadUtil.updateExistingFilterList = existingFilterList => {
   let $containingDiv = $(`div[name='${existingFilterList.adblockId}']`);
   if ($containingDiv.length < 1) {
     // If the checkbox does not exist but there is an existing filter list,
@@ -967,28 +967,28 @@ CustomFilterListUploadUtil.updateExistingFilterList = (existingFilterList) => {
       existingFilterList,
       filterListType,
       index,
-      filterListSections[filterListType].$container,
+      filterListSections[filterListType].$container
     );
     checkboxForFilterList.createCheckbox();
     $containingDiv = $(`div[name='${existingFilterList.adblockId}']`);
   }
 
-  const checkbox = $($containingDiv).find("input");
-  if (!checkbox.is(":checked")) {
-    if (checkbox.attr("adblockId").indexOf("languageFilterList") >= 0) {
+  const checkbox = $($containingDiv).find('input');
+  if (!checkbox.is(':checked')) {
+    if (checkbox.attr('adblockId').indexOf('languageFilterList') >= 0) {
       LanguageSelectUtil.triggerChange(existingFilterList);
     } else {
-      checkbox.prop("checked", true);
-      checkbox.trigger("change");
+      checkbox.prop('checked', true);
+      checkbox.trigger('change');
     }
   }
-  removeBottomLine("custom_filters");
+  removeBottomLine('custom_filters');
 };
 
 // Binds events for key press 'enter' and click for upload box.
 CustomFilterListUploadUtil.bindControls = () => {
-  $("#btnNewSubscriptionUrl").on("click", () => {
-    let url = $("#txtNewSubscriptionUrl").val();
+  $('#btnNewSubscriptionUrl').on('click', () => {
+    let url = $('#txtNewSubscriptionUrl').val();
     const abpRegex = /^abp.*\Wlocation=([^&]+)/i;
     if (abpRegex.test(url)) {
       [, url] = url.match(abpRegex); // The part after 'location='.
@@ -1008,16 +1008,16 @@ CustomFilterListUploadUtil.bindControls = () => {
       CustomFilterListUploadUtil.performUpload(url, subscribeTo);
     } else {
       // eslint-disable-next-line no-alert
-      alert(translate("failedtofetchfilter"));
+      alert(translate('failedtofetchfilter'));
     }
-    $("#txtNewSubscriptionUrl").val("");
+    $('#txtNewSubscriptionUrl').val('');
   });
 
   // Pressing enter will add the list too.
-  $("#txtNewSubscriptionUrl").on("keypress", (event) => {
+  $('#txtNewSubscriptionUrl').on('keypress', event => {
     if (event.keyCode === 13) {
       event.preventDefault();
-      $("#btnNewSubscriptionUrl").trigger("click");
+      $('#btnNewSubscriptionUrl').trigger('click');
     }
   });
 };
@@ -1035,52 +1035,52 @@ async function onFilterChangeHandler(action, items) {
     const entry = entryToUpdate;
     if (entry) {
       // copy / update relevant properties to the cached entry
-      const properties = ["downloadStatus", "label", "lastDownload", "_downloadStatus", "language"];
+      const properties = ['downloadStatus', 'label', 'lastDownload', '_downloadStatus', 'language'];
       for (let i = 0; i < properties.length; i++) {
         if (entry[properties[i]]) {
           FilterListUtil.cachedSubscriptions[entry.adblockId][properties[i]] = entry[properties[i]];
         }
       }
       entry.language = await SubscriptionAdapter.isLanguageSpecific(entry.adblockId);
-      if (eventAction && eventAction === "subscription.added") {
+      if (eventAction && eventAction === 'subscription.added') {
         FilterListUtil.cachedSubscriptions[entry.adblockId].subscribed = true;
         if (
           entry.language &&
           $(`#language_select option[value='${entry.adblockId}']`).length === 1
         ) {
-          const changeEvent = jQuery.Event("change");
+          const changeEvent = jQuery.Event('change');
           changeEvent.addedViaBackground = true;
           $(`#language_select option[value='${entry.adblockId}']`)
-            .prop("selected", true)
+            .prop('selected', true)
             .trigger(changeEvent);
         }
         if (isAcceptableAdsPrivacy(entryToUpdate)) {
           $(`label[title="${SubscriptionsProxy.ACCEPTABLE_ADS_URL}"]`)
             .prev()
-            .find("input")
-            .prop("checked", true);
+            .find('input')
+            .prop('checked', true);
         }
       }
-      if (eventAction && eventAction === "subscription.removed") {
+      if (eventAction && eventAction === 'subscription.removed') {
         FilterListUtil.cachedSubscriptions[entry.adblockId].subscribed = false;
         if (
           entry.language &&
           $(`#language_select option[value='${entry.adblockId}']`).length === 0
         ) {
-          $(`div[name='${entry.adblockId}']`).find("input").trigger("click");
+          $(`div[name='${entry.adblockId}']`).find('input').trigger('click');
         }
         if (isAcceptableAdsPrivacy(entryToUpdate)) {
           $(`label[title="${SubscriptionsProxy.ACCEPTABLE_ADS_URL}"]`)
             .prev()
-            .find("input")
-            .prop("checked", false);
+            .find('input')
+            .prop('checked', false);
         }
       }
 
       // Update checkbox according to the value of the subscribed field
       FilterListUtil.updateCheckbox(
         FilterListUtil.cachedSubscriptions[entry.adblockId],
-        entry.adblockId,
+        entry.adblockId
       );
 
       // If sub is subscribed, update lastUpdate_failed_at or lastUpdate field
@@ -1112,14 +1112,14 @@ async function onFilterChangeHandler(action, items) {
       return;
     }
     if (
-      action === "subscription.added" &&
-      !FilterListUtil.cachedSubscriptions["url:"] &&
-      !item.url.startsWith("~user~")
+      action === 'subscription.added' &&
+      !FilterListUtil.cachedSubscriptions['url:'] &&
+      !item.url.startsWith('~user~')
     ) {
       CustomFilterListUploadUtil.performUpload(item.url, `url:${item.url}`, item.title);
       return;
     }
-    if (action === "subscription.title" && param1) {
+    if (action === 'subscription.title' && param1) {
       // or if the URL changed due to a redirect, we may not be able to determine
       // the correct adblockId, but should be able to using one of the params
       adblockId = await SubscriptionAdapter.getIdFromURL(param1);
@@ -1147,14 +1147,14 @@ async function onFilterChangeHandler(action, items) {
 async function initPremiumFiltersCTA() {
   const userClosedpremiumFiltersCTA = storageGet(premiumFiltersCtaKey);
   if (!userClosedpremiumFiltersCTA) {
-    ServerMessages.recordGeneralMessage("premium_filter_list_cta_clicked");
-    $("#premium-filter-list-cta").fadeIn(1000);
-    $("#btnPremiumFilterLearnMore").on("click", () => {
+    ServerMessages.recordGeneralMessage('premium_filter_list_cta_clicked');
+    $('#premium-filter-list-cta').fadeIn(1000);
+    $('#btnPremiumFilterLearnMore').on('click', () => {
       storageSet(premiumFiltersCtaKey, true);
-      $("#premium-filter-list-cta").fadeOut(1000);
-      activateTab("#mab");
+      $('#premium-filter-list-cta').fadeOut(1000);
+      activateTab('#mab');
     });
-    ServerMessages.recordGeneralMessage("premium_filter_list_cta_seen");
+    ServerMessages.recordGeneralMessage('premium_filter_list_cta_seen');
   }
 }
 
@@ -1164,7 +1164,7 @@ $(async () => {
   // Initialize page using subscriptions from the background.
   // Copy from update subscription list + setsubscriptionlist
   // Move highlighted filters to top of Other Filters section
-  const otherFiltersToHightlight = ["free_distraction_control"];
+  const otherFiltersToHightlight = ['free_distraction_control'];
   FilterListUtil.prepareSubscriptions(subs, otherFiltersToHightlight);
 
   for (const adblockId in filterListSections) {
@@ -1177,34 +1177,34 @@ $(async () => {
 
   const onSubAdded = function (item) {
     updateSocialIconsVisibility();
-    onFilterChangeHandler("subscription.added", item);
+    onFilterChangeHandler('subscription.added', item);
   };
   SubscriptionsProxy.onAdded.addListener(onSubAdded);
 
   const onSubRemoved = function (item) {
     updateSocialIconsVisibility();
-    onFilterChangeHandler("subscription.removed", item);
+    onFilterChangeHandler('subscription.removed', item);
   };
   SubscriptionsProxy.onRemoved.addListener(onSubRemoved);
 
   const onSubUpdated = function (item) {
-    onFilterChangeHandler("subscription.updated", item);
+    onFilterChangeHandler('subscription.updated', item);
   };
   SubscriptionsProxy.onChanged.addListener(onSubUpdated);
 
   connectUIPort(({ addUIListener, postUIMessage }) => {
-    addUIListener((message) => {
-      if (message.type === "subscriptions.respond" && message.args && message.args.length) {
-        if (message.action === "added") {
-          onFilterChangeHandler("subscription.added", message.args[0]);
-        } else if (message.action === "removed") {
-          onFilterChangeHandler("subscription.removed", message.args[0]);
+    addUIListener(message => {
+      if (message.type === 'subscriptions.respond' && message.args && message.args.length) {
+        if (message.action === 'added') {
+          onFilterChangeHandler('subscription.added', message.args[0]);
+        } else if (message.action === 'removed') {
+          onFilterChangeHandler('subscription.removed', message.args[0]);
         }
       }
     });
     postUIMessage({
-      type: "subscriptions.listen",
-      filter: ["added", "removed"],
+      type: 'subscriptions.listen',
+      filter: ['added', 'removed'],
     });
   });
 
@@ -1214,19 +1214,19 @@ $(async () => {
     FilterListUtil.updateSubscriptionInfoAll();
   }, 10000);
 
-  $("#btnUpdateNow").on("click", function updateFilterListsNow() {
-    $(this).prop("disabled", true);
-    send("updateFilterLists");
+  $('#btnUpdateNow').on('click', function updateFilterListsNow() {
+    $(this).prop('disabled', true);
+    send('updateFilterLists');
     setTimeout(() => {
-      $("#btnUpdateNow").prop("disabled", false);
+      $('#btnUpdateNow').prop('disabled', false);
     }, 300000); // Re-enable update button after 5 minutes.
   });
 
-  selected("#btnShowLinks", (e) => {
+  selected('#btnShowLinks', e => {
     e.stopImmediatePropagation();
     e.preventDefault();
-    $(".filter-list-link").fadeIn("slow");
-    $("#btnShowLinks").remove();
+    $('.filter-list-link').fadeIn('slow');
+    $('#btnShowLinks').remove();
   });
 
   if (delayedSubscriptionSelection) {
@@ -1236,14 +1236,14 @@ $(async () => {
 
 $(async () => {
   await initializeProxies();
-  const $txtInputCustomURL = $("#txtNewSubscriptionUrl");
-  $txtInputCustomURL.attr("placeholder", translate("enter_url"));
-  removeBottomLine("all");
+  const $txtInputCustomURL = $('#txtNewSubscriptionUrl');
+  $txtInputCustomURL.attr('placeholder', translate('enter_url'));
+  removeBottomLine('all');
 
   if (!License || $.isEmptyObject(License) || !MABPayment) {
     return;
   }
-  const payInfo = MABPayment.initialize("filters");
+  const payInfo = MABPayment.initialize('filters');
   if (await License.shouldShowMyAdBlockEnrollment()) {
     MABPayment.freeUserLogic(payInfo);
   } else if (await License.isActiveLicense()) {
@@ -1251,9 +1251,9 @@ $(async () => {
   }
 
   await MABPayment.displayUpsellCTA();
-  $(".upsell-cta #get-it-now-filters").on("click", MABPayment.userClickedUpsellCTA);
-  $("a.link-to-tab").on("click", (event) => {
-    activateTab($(event.target).attr("href"));
+  $('.upsell-cta #get-it-now-filters').on('click', MABPayment.userClickedUpsellCTA);
+  $('a.link-to-tab').on('click', event => {
+    activateTab($(event.target).attr('href'));
   });
   initPremiumFiltersCTA();
 });

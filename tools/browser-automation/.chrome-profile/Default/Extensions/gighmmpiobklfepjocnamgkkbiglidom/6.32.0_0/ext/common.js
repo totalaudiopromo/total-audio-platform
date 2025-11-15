@@ -15,7 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-"use strict";
+'use strict';
 
 self.ext = {};
 
@@ -41,9 +41,9 @@ ext._EventTarget = class EventTarget {
 
 // We only support a single response for message listeners. Therefore we need to
 // identify the first valid one, so that we can then return it.
-ext.getMessageResponse = (responses) => {
+ext.getMessageResponse = responses => {
   for (let response of responses) {
-    if (typeof response !== "undefined") return response;
+    if (typeof response !== 'undefined') return response;
   }
 };
 

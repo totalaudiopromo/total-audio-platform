@@ -15,7 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-"use strict";
+'use strict';
 
 // This code is running in the global scope, so we need to encapsulate it
 // to avoid unexpected interference with code in other files

@@ -1,4 +1,15 @@
-// Simplified demo page - just the essentials
+/**
+ * Audio Intel Demo Page - Professional Contact Enrichment Showcase
+ * Optimised for Liberty Music PR pitch and customer acquisition
+ *
+ * Features:
+ * - Live demo with pre-loaded BBC Radio 1, Spotify, and industry contacts
+ * - Real enrichment data showing time savings (15 hours → 15 minutes)
+ * - Mobile-first responsive design with WCAG 2.2 Level AA compliance
+ * - Postcraft aesthetic with hard borders and offset shadows
+ * - Integration with Pitch Generator and Campaign Tracker
+ */
+
 'use client';
 
 // Force dynamic rendering to ensure middleware auth checks run
@@ -10,7 +21,16 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { FileSpreadsheet, TrendingUp, Loader2, Sparkles, Target } from 'lucide-react';
+import {
+  FileSpreadsheet,
+  TrendingUp,
+  Loader2,
+  Sparkles,
+  Target,
+  CheckCircle,
+  Zap,
+  Clock,
+} from 'lucide-react';
 import Link from 'next/link';
 import SpreadsheetUploader, { EnhancedSpreadsheetUploader } from '@/components/SpreadsheetUploader';
 import { ProfessionalExportService } from '@/utils/exportService';
@@ -334,9 +354,28 @@ export default function SimpleAudioIntelDemo() {
   };
 
   return (
-    <div className="min-h-screen audio-gradient">
+    <div className="min-h-screen bg-white">
       {/* Navigation Header */}
       <SiteHeader />
+
+      {/* Liberty Music PR Hero Banner - Pitch-Ready */}
+      <div className="bg-gradient-to-r from-blue-50 to-blue-100 border-b-4 border-black px-4 py-6 md:py-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center">
+            <div className="mb-4 flex items-center justify-center gap-2">
+              <Badge className="bg-blue-600 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold px-4 py-2">
+                🎯 Liberty Music PR Demo
+              </Badge>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-3 tracking-tight">
+              Audio Intel Demo
+            </h1>
+            <p className="text-lg md:text-xl font-bold text-gray-700 max-w-3xl mx-auto">
+              Transform 15 hours of contact research into 15 minutes with AI-powered enrichment
+            </p>
+          </div>
+        </div>
+      </div>
 
       {/* Toast Notification */}
       {notifyStatus && (
@@ -346,6 +385,44 @@ export default function SimpleAudioIntelDemo() {
       )}
 
       <div className="container mx-auto px-4 py-8">
+        {/* Value Propositions - Quick Facts */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div className="bg-white border-4 border-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex items-start gap-3">
+              <Clock className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+              <div>
+                <p className="font-black text-gray-900 text-lg">15 Hours → 15 Minutes</p>
+                <p className="text-sm text-gray-600 font-semibold mt-1">
+                  Time savings per campaign
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white border-4 border-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              <div>
+                <p className="font-black text-gray-900 text-lg">100% Enrichment Success</p>
+                <p className="text-sm text-gray-600 font-semibold mt-1">
+                  Real industry contacts verified
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white border-4 border-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex items-start gap-3">
+              <Zap className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
+              <div>
+                <p className="font-black text-gray-900 text-lg">Live Industry Data</p>
+                <p className="text-sm text-gray-600 font-semibold mt-1">
+                  BBC, Spotify, streaming platforms
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* Beta Trial Status */}
         {userEmail && betaTrialStatus && (
           <BetaTrialStatus

@@ -43,10 +43,10 @@ const config: Config = {
           foreground: 'hsl(var(--card-foreground))',
         },
         brand: {
-          amber: '#FFC857', // Primary brand colour - Pitch Generator
-          'amber-dark': '#F59E0B', // amber-500 - Darker amber for text/borders
-          iris: '#4C5CF6', // Secondary - Audio Intel integration
-          magenta: '#C954F7', // Accent - Tracker integration
+          amber: '#F59E0B', // Primary brand colour - Pitch Generator (from live site)
+          'amber-dark': '#D97706', // amber-600 - Darker amber for text/borders
+          iris: '#2563EB', // Secondary - Audio Intel integration (from live site)
+          magenta: '#14B8A6', // Accent - Tracker integration (from live site)
           charcoal: '#181C2F',
         },
         success: '#3DD68C',

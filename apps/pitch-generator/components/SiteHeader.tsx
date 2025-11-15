@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { SiteHeader as SharedSiteHeader } from './SharedSiteHeader';
 import { ToolSwitcher } from './SharedToolSwitcher';
+import { WorkspaceSwitcher } from '@total-audio/ui/WorkspaceSwitcher';
 import { createClient } from '@total-audio/core-db/client';
 import type { User } from '@supabase/supabase-js';
 
@@ -96,7 +97,12 @@ export function SiteHeader() {
     <SharedSiteHeader
       toolName="Pitch Generator"
       links={availableLinks}
-      toolSwitcher={<ToolSwitcher currentTool="Pitch Generator" accentColor="amber" />}
+      toolSwitcher={
+        <div className="flex items-center gap-3">
+          <ToolSwitcher currentTool="Pitch Generator" accentColor="amber" />
+          {user && <WorkspaceSwitcher accentColor="#F59E0B" />}
+        </div>
+      }
       authComponent={<AuthComponent />}
       logoPath="/total_audio_promo_logo_trans.png"
     />

@@ -53,21 +53,21 @@ const config = {
           foreground: 'hsl(var(--card-foreground))',
         },
         brand: {
-          blue: '#3B4AC6',
+          blue: '#2563EB', // Primary brand color (from live site)
           yellow: '#FFD700',
         },
         // Tool-specific colors for Audio brand system
         'audio-intel': {
-          50: '#E3F2FD',
-          100: '#BBDEFB',
-          200: '#90CAF9',
-          300: '#64B5F6',
-          400: '#42A5F5',
-          500: '#1E88E5',
-          600: '#1976D2',
-          700: '#1565C0',
-          800: '#0D47A1',
-          900: '#0A3D91',
+          50: '#EFF6FF',
+          100: '#DBEAFE',
+          200: '#BFDBFE',
+          300: '#93C5FD',
+          400: '#60A5FA',
+          500: '#3B82F6',
+          600: '#2563EB', // Primary (from live site)
+          700: '#1D4ED8',
+          800: '#1E40AF',
+          900: '#1E3A8A',
         },
         'playlist-pulse': {
           50: '#E8F5E8',

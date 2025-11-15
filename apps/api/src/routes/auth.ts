@@ -6,48 +6,57 @@ import { PrismaClient } from '@prisma/client';
 const router = express.Router();
 const prisma = new PrismaClient();
 
-// Mock user for MVP - replace with real database
-const MOCK_USER = {
-  id: '1',
-  email: 'demo@totalaudiopromo.com',
-  password: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // 'password'
-  name: 'Demo User',
-  role: 'artist',
-};
-
 // Login endpoint
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // For MVP, use mock user
-    if (email === MOCK_USER.email) {
-      const isValidPassword = await bcrypt.compare(password, MOCK_USER.password);
-
-      if (isValidPassword || password === 'password') {
-        // Allow plain password for demo
-        const token = jwt.sign(
-          { userId: MOCK_USER.id, email: MOCK_USER.email, role: MOCK_USER.role },
-          process.env.JWT_SECRET || 'your-secret-key',
-          { expiresIn: '24h' }
-        );
-
-        res.json({
-          success: true,
-          token,
-          user: {
-            id: MOCK_USER.id,
-            email: MOCK_USER.email,
-            name: MOCK_USER.name,
-            role: MOCK_USER.role,
-          },
-        });
-      } else {
-        res.status(401).json({ success: false, message: 'Invalid credentials' });
-      }
-    } else {
-      res.status(401).json({ success: false, message: 'Invalid credentials' });
+    if (!email || !password) {
+      return res.status(400).json({ success: false, message: 'Email and password are required' });
     }
+
+    // Find user in database
+    const user = await prisma.user.findUnique({
+      where: { email },
+      include: { subscription: true },
+    });
+
+    if (!user) {
+      return res.status(401).json({ success: false, message: 'Invalid credentials' });
+    }
+
+    // Verify password
+    const isValidPassword = await bcrypt.compare(password, user.passwordHash);
+
+    if (!isValidPassword) {
+      return res.status(401).json({ success: false, message: 'Invalid credentials' });
+    }
+
+    // Generate JWT token
+    const token = jwt.sign(
+      { userId: user.id, email: user.email, role: user.role },
+      process.env.JWT_SECRET || 'your-secret-key',
+      { expiresIn: '24h' }
+    );
+
+    res.json({
+      success: true,
+      token,
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        role: user.role,
+        subscription: user.subscription
+          ? {
+              tier: user.subscription.tier,
+              status: user.subscription.status,
+              monthlyPrice: user.subscription.monthlyPrice.toString(),
+              currentPeriodEnd: user.subscription.currentPeriodEnd.toISOString(),
+            }
+          : null,
+      },
+    });
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ success: false, message: 'Internal server error' });
@@ -59,11 +68,42 @@ router.post('/register', async (req, res) => {
   try {
     const { email, password, name } = req.body;
 
-    // For MVP, just return success
+    if (!email || !password || !name) {
+      return res.status(400).json({
+        success: false,
+        message: 'Email, password, and name are required',
+      });
+    }
+
+    // Check if user already exists
+    const existingUser = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (existingUser) {
+      return res.status(409).json({
+        success: false,
+        message: 'User with this email already exists',
+      });
+    }
+
+    // Hash password
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    // Create user
+    const user = await prisma.user.create({
+      data: {
+        email,
+        name,
+        passwordHash,
+        role: 'ARTIST',
+      },
+    });
+
     res.json({
       success: true,
       message: 'Registration successful. Please login.',
-      user: { email, name },
+      user: { id: user.id, email: user.email, name: user.name },
     });
   } catch (error) {
     console.error('Register error:', error);
@@ -80,14 +120,37 @@ router.get('/verify', async (req, res) => {
       return res.status(401).json({ success: false, message: 'No token provided' });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key') as any;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key') as {
+      userId: string;
+      email: string;
+      role: string;
+    };
+
+    // Verify user still exists in database
+    const user = await prisma.user.findUnique({
+      where: { id: decoded.userId },
+      include: { subscription: true },
+    });
+
+    if (!user) {
+      return res.status(401).json({ success: false, message: 'User not found' });
+    }
 
     return res.json({
       success: true,
       user: {
-        id: decoded.userId,
-        email: decoded.email,
-        role: decoded.role,
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        role: user.role,
+        subscription: user.subscription
+          ? {
+              tier: user.subscription.tier,
+              status: user.subscription.status,
+              monthlyPrice: user.subscription.monthlyPrice.toString(),
+              currentPeriodEnd: user.subscription.currentPeriodEnd.toISOString(),
+            }
+          : null,
       },
     });
   } catch (error) {

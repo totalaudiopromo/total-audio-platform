@@ -25,15 +25,15 @@ let originalCustomFilters = [];
 async function cleanCustomFilter(filtersArg) {
   let filters = filtersArg;
   // Remove the global pause white-list item if adblock is paused
-  const isPaused = await send("adblockIsPaused");
+  const isPaused = await send('adblockIsPaused');
   if (isPaused) {
-    const pausedFilterText = await send("getPausedFilterText");
+    const pausedFilterText = await send('getPausedFilterText');
     filters = filters.filter(
-      (element) =>
+      element =>
         !(
           element.text === pausedFilterText.pausedFilterText1 ||
           element.text === pausedFilterText.pausedFilterText2
-        ),
+        )
     );
   }
   return filters;
@@ -43,8 +43,8 @@ async function showCustomRules() {
   const userFilters = await FiltersProxy.getUserFilters();
   if (userFilters && userFilters.length) {
     originalCustomFilters = await cleanCustomFilter(userFilters);
-    originalCustomFilters = originalCustomFilters.map((filter) => filter.text);
-    $("#txtFiltersAdvanced").val(originalCustomFilters.join("\n"));
+    originalCustomFilters = originalCustomFilters.map(filter => filter.text);
+    $('#txtFiltersAdvanced').val(originalCustomFilters.join('\n'));
   }
 }
 
@@ -52,33 +52,33 @@ async function onFilterChange() {
   const userFilters = await FiltersProxy.getUserFilters();
   if (userFilters && userFilters.length) {
     originalCustomFilters = await cleanCustomFilter(userFilters);
-    originalCustomFilters = originalCustomFilters.map((filter) => filter.text);
-    $("#txtFiltersAdvanced").val(originalCustomFilters.join("\n"));
+    originalCustomFilters = originalCustomFilters.map(filter => filter.text);
+    $('#txtFiltersAdvanced').val(originalCustomFilters.join('\n'));
   } else {
-    $("#txtFiltersAdvanced").val("");
+    $('#txtFiltersAdvanced').val('');
   }
 }
 
-const excludeFiltersKey = "exclude_filters";
+const excludeFiltersKey = 'exclude_filters';
 
 $(async () => {
   await initializeProxies();
 
-  const doclinks = await sendTypeMessage("app.get", { what: "doclink", link: "filterdoc" });
-  $("#tutorlink").attr("href", doclinks);
+  const doclinks = await sendTypeMessage('app.get', { what: 'doclink', link: 'filterdoc' });
+  $('#tutorlink').attr('href', doclinks);
 
   const getExcludeFilters = function () {
-    browser.storage.local.get(excludeFiltersKey).then((response) => {
+    browser.storage.local.get(excludeFiltersKey).then(response => {
       if (response[excludeFiltersKey]) {
-        $("#txtExcludeFiltersAdvanced").val(response[excludeFiltersKey]);
-        $("#divExcludeFilters").show();
+        $('#txtExcludeFiltersAdvanced').val(response[excludeFiltersKey]);
+        $('#divExcludeFilters').show();
       }
     });
   };
   getExcludeFilters();
   function storageChangeHandler(changes, area) {
     const changedItems = Object.keys(changes);
-    if (area === "local" && changedItems.includes(excludeFiltersKey)) {
+    if (area === 'local' && changedItems.includes(excludeFiltersKey)) {
       getExcludeFilters();
     }
   }
@@ -86,13 +86,13 @@ $(async () => {
   browser.storage.onChanged.addListener(storageChangeHandler);
 
   // Display any migration error messages to the user
-  browser.storage.local.get("custom_filters_errors").then((response) => {
+  browser.storage.local.get('custom_filters_errors').then(response => {
     if (response.custom_filters_errors) {
-      $("#txtMigrationErrorMessage").val(response.custom_filters_errors);
-      $("#migrationErrorMessageDiv").show();
-      $("#btnDeleteMigrationErrorMessage").on("click", () => {
-        browser.storage.local.remove("custom_filters_errors");
-        $("#migrationErrorMessageDiv").hide();
+      $('#txtMigrationErrorMessage').val(response.custom_filters_errors);
+      $('#migrationErrorMessageDiv').show();
+      $('#btnDeleteMigrationErrorMessage').on('click', () => {
+        browser.storage.local.remove('custom_filters_errors');
+        $('#migrationErrorMessageDiv').hide();
       });
     }
   });
@@ -101,20 +101,20 @@ $(async () => {
   // Inputs: customFiltersText:string - string representation of the custom filters
   // delimited by new line.
   function updateCustomFiltersCount(customFiltersText) {
-    const customFiltersArray = customFiltersText.split("\n");
+    const customFiltersArray = customFiltersText.split('\n');
     const newCount = {};
     const tempFilterTracker = [];
     for (let i = 0; i < customFiltersArray.length; i++) {
       const filter = customFiltersArray[i];
 
       // Check if filter is a duplicate and that it is a hiding filter.
-      if (tempFilterTracker.indexOf(filter) < 0 && filter.indexOf("##") > -1) {
+      if (tempFilterTracker.indexOf(filter) < 0 && filter.indexOf('##') > -1) {
         tempFilterTracker.push(filter);
-        const host = filter.split("##")[0];
+        const host = filter.split('##')[0];
         newCount[host] = (newCount[host] || 0) + 1;
       }
     }
-    send("updateCustomFilterCountMap", { countMap: newCount });
+    send('updateCustomFilterCountMap', { countMap: newCount });
   }
 
   /**
@@ -148,15 +148,15 @@ $(async () => {
    * @param {string} filterErrorMessage The error message to the user
    */
   function showErrorMessage(filterErrorMessage) {
-    $("#messagecustom").html(DOMPurify.sanitize(filterErrorMessage, { SAFE_FOR_JQUERY: true }));
-    $("#messagecustom").removeClass("do-not-display");
+    $('#messagecustom').html(DOMPurify.sanitize(filterErrorMessage, { SAFE_FOR_JQUERY: true }));
+    $('#messagecustom').removeClass('do-not-display');
   }
 
   async function saveFilters() {
-    const customFiltersText = $("#txtFiltersAdvanced").val();
-    const customFiltersArray = customFiltersText.split("\n");
-    let filterErrorMessage = "";
-    $("#messagecustom").html(DOMPurify.sanitize(filterErrorMessage, { SAFE_FOR_JQUERY: true }));
+    const customFiltersText = $('#txtFiltersAdvanced').val();
+    const customFiltersArray = customFiltersText.split('\n');
+    let filterErrorMessage = '';
+    $('#messagecustom').html(DOMPurify.sanitize(filterErrorMessage, { SAFE_FOR_JQUERY: true }));
 
     // Since we might be processing a large number of changes at once,
     // remove the filter change handler, so we don't cause a race condition
@@ -166,7 +166,7 @@ $(async () => {
     // remove duplicates
     /* eslint-disable-next-line max-len  */
     const uniqCustomFilters = customFiltersArray.filter(
-      (item, inx) => customFiltersArray.indexOf(item) === inx,
+      (item, inx) => customFiltersArray.indexOf(item) === inx
     );
     const newFiltersToAdd = [];
     // only add 'new' filters
@@ -176,9 +176,9 @@ $(async () => {
       filterToAdd = await FiltersProxy.normalize(filterToAdd);
       if (!originalCustomFilters.includes(filterToAdd) && filterToAdd) {
         if (filterToAdd && isSelectorFilter(filterToAdd) && !hasValidQueryString(filterToAdd)) {
-          filterErrorMessage = translate("customfilterserrormessage", [
+          filterErrorMessage = translate('customfilterserrormessage', [
             filterToAdd,
-            translate("filter_invalid_css"),
+            translate('filter_invalid_css'),
           ]);
         }
         newFiltersToAdd.push(filterToAdd);
@@ -191,19 +191,19 @@ $(async () => {
 
     if (newFiltersToAdd.length) {
       const errors = await FiltersProxy.add(
-        newFiltersToAdd.join("\n"),
-        modulesAsGlobal.filters.FilterOrigin.customize,
+        newFiltersToAdd.join('\n'),
+        modulesAsGlobal.filters.FilterOrigin.customize
       );
       if (errors) {
         const { filter, reason, type } = errors;
         // if multiple errors are returned, only show the first one.
         if (filter) {
-          filterErrorMessage = translate("customfilterserrormessage", [
+          filterErrorMessage = translate('customfilterserrormessage', [
             filter,
-            translate(reason || type) || translate("filter_invalid"),
+            translate(reason || type) || translate('filter_invalid'),
           ]);
         } else {
-          filterErrorMessage = translate(reason || type) || translate("filter_invalid");
+          filterErrorMessage = translate(reason || type) || translate('filter_invalid');
         }
         showErrorMessage(filterErrorMessage);
         return;
@@ -230,10 +230,10 @@ $(async () => {
     originalCustomFilters = customFiltersArray || [];
     updateCustomFiltersCount(customFiltersText);
     await showCustomRules();
-    $("#divAddNewFilter").slideDown();
-    $("#txtFiltersAdvanced").prop("disabled", true);
-    $("#spanSaveButton").hide();
-    $("#btnEditAdvancedFilters").show();
+    $('#divAddNewFilter').slideDown();
+    $('#txtFiltersAdvanced').prop('disabled', true);
+    $('#spanSaveButton').hide();
+    $('#btnEditAdvancedFilters').show();
     FiltersProxy.onAdded.addListener(onFilterChange);
     FiltersProxy.onChanged.addListener(onFilterChange);
     FiltersProxy.onRemoved.addListener(onFilterChange);
@@ -241,68 +241,68 @@ $(async () => {
 
   // Add a custom filter to the list
   function appendCustomFilter(filter) {
-    const $customFilter = $("#txtFiltersAdvanced");
-    $customFilter.val(`${filter}\n${$("#txtFiltersAdvanced").val()}`);
+    const $customFilter = $('#txtFiltersAdvanced');
+    $customFilter.val(`${filter}\n${$('#txtFiltersAdvanced').val()}`);
     saveFilters();
-    $(".addControls").slideUp();
+    $('.addControls').slideUp();
   }
 
   // Convert a messy list of domains to ~domain1.com|~domain2.com format
   function toTildePipeFormat(inputDomainList) {
-    let domainList = inputDomainList.trim().replace(/[ ,;|]+~?/g, "|~");
-    if (domainList && domainList[0] !== "~") {
+    let domainList = inputDomainList.trim().replace(/[ ,;|]+~?/g, '|~');
+    if (domainList && domainList[0] !== '~') {
       domainList = `~${domainList}`;
     }
     return domainList;
   }
 
-  $("#txtBlacklist").on("focus", function BlacklistTextFocused() {
+  $('#txtBlacklist').on('focus', function BlacklistTextFocused() {
     // Find the blacklist entry in the user's filters, and put it
     // into the blacklist input.
-    const customFilterText = $("#txtFiltersAdvanced").val();
+    const customFilterText = $('#txtFiltersAdvanced').val();
     const match = customFilterText.match(/^@@\*\$document,domain=(~.*)$/m);
-    if (match && $(this).val() === "") {
+    if (match && $(this).val() === '') {
       $(this).val(match[1]);
     }
   });
 
   // The add_filter functions
-  $("#btnAddUserFilter").on("click", (event) => {
-    const blockCss = $("#txtUserFilterCss").val().trim();
-    const blockDomain = $("#txtUserFilterDomain").val().trim();
+  $('#btnAddUserFilter').on('click', event => {
+    const blockCss = $('#txtUserFilterCss').val().trim();
+    const blockDomain = $('#txtUserFilterDomain').val().trim();
 
-    if (blockDomain === ".*" || blockDomain === "*" || blockDomain === "") {
+    if (blockDomain === '.*' || blockDomain === '*' || blockDomain === '') {
       appendCustomFilter(`##${blockCss}`);
     } else {
       appendCustomFilter(`${blockDomain}##${blockCss}`);
     }
 
-    $(event.target).closest(".customize-entry-table").find("input[type='text']").val("");
-    $(event.target).prop("disabled", true);
+    $(event.target).closest('.customize-entry-table').find("input[type='text']").val('');
+    $(event.target).prop('disabled', true);
   });
 
-  $("#btnAddExcludeFilter").on("click", (event) => {
-    let excludeUrl = $("#txtUnblock").val().trim();
+  $('#btnAddExcludeFilter').on('click', event => {
+    let excludeUrl = $('#txtUnblock').val().trim();
 
     // prevent regexes
     if (/^\/.*\/$/.test(excludeUrl)) {
-      excludeUrl += "*";
+      excludeUrl += '*';
     }
 
     appendCustomFilter(`@@${excludeUrl}$document`);
 
-    $(event.target).closest(".customize-entry-table").find("input[type='text']").val("");
-    $(event.target).prop("disabled", true);
+    $(event.target).closest('.customize-entry-table').find("input[type='text']").val('');
+    $(event.target).prop('disabled', true);
   });
 
-  $("#btnAddBlacklist").on("click", () => {
-    const blacklist = toTildePipeFormat($("#txtBlacklist").val());
+  $('#btnAddBlacklist').on('click', () => {
+    const blacklist = toTildePipeFormat($('#txtBlacklist').val());
 
-    let filters = `${$("#txtFiltersAdvanced").val().trim()}\n`;
+    let filters = `${$('#txtFiltersAdvanced').val().trim()}\n`;
 
     // Delete the first likely line
-    filters = filters.replace(/^@@\*\$document,domain=~.*\n/m, "").trim();
-    $("#txtFiltersAdvanced").val(filters);
+    filters = filters.replace(/^@@\*\$document,domain=~.*\n/m, '').trim();
+    $('#txtFiltersAdvanced').val(filters);
 
     // Add our line in its place, or if it was empty, remove the filter
     if (blacklist) {
@@ -311,171 +311,171 @@ $(async () => {
       saveFilters();
     } // just record the deletion
 
-    $("#btnAddBlacklist").prop("disabled", true);
+    $('#btnAddBlacklist').prop('disabled', true);
   });
 
-  $("#btnAddUrlBlock").on("click", (event) => {
-    let blockUrl = $("#txtBlockUrl").val().trim();
-    let blockDomain = $("#txtBlockUrlDomain").val().trim();
-    if (blockDomain === "*") {
-      blockDomain = "";
+  $('#btnAddUrlBlock').on('click', event => {
+    let blockUrl = $('#txtBlockUrl').val().trim();
+    let blockDomain = $('#txtBlockUrlDomain').val().trim();
+    if (blockDomain === '*') {
+      blockDomain = '';
     }
 
     // prevent regexes
     if (/^\/.*\/$/.test(blockUrl)) {
-      blockUrl += "*";
+      blockUrl += '*';
     }
 
-    if (blockDomain === "") {
+    if (blockDomain === '') {
       appendCustomFilter(blockUrl);
     } else {
       appendCustomFilter(`${blockUrl}$domain=${blockDomain}`);
     }
 
-    $(event.target).closest(".customize-entry-table").find("input[type='text']").val("");
-    $(event.target).prop("disabled", true);
+    $(event.target).closest('.customize-entry-table').find("input[type='text']").val('');
+    $(event.target).prop('disabled', true);
   });
 
   // The validation functions
-  $("#txtBlacklist").on("input", async () => {
-    let blacklist = toTildePipeFormat($("#txtBlacklist").val());
+  $('#txtBlacklist').on('input', async () => {
+    let blacklist = toTildePipeFormat($('#txtBlacklist').val());
 
     if (blacklist) {
       blacklist = `@@*$document,domain=${blacklist}`;
     }
 
-    let filterErrorMessage = "";
-    $("#messageBlacklist").text(filterErrorMessage);
-    $("#messageBlacklist").hide();
+    let filterErrorMessage = '';
+    $('#messageBlacklist').text(filterErrorMessage);
+    $('#messageBlacklist').hide();
     const result = await FiltersProxy.validate(blacklist);
 
     if (result && result.length > 0) {
-      $("#btnAddBlacklist").prop("disabled", true);
-      filterErrorMessage = translate("customfilterserrormessage", [
-        $("#txtBlacklist").val(),
+      $('#btnAddBlacklist').prop('disabled', true);
+      filterErrorMessage = translate('customfilterserrormessage', [
+        $('#txtBlacklist').val(),
         translate(result.type || result.reason),
       ]);
-      $("#messageBlacklist").text(filterErrorMessage);
-      $("#messageBlacklist").show();
+      $('#messageBlacklist').text(filterErrorMessage);
+      $('#messageBlacklist').show();
       return;
     }
 
-    $("#btnAddBlacklist").prop("disabled", false);
+    $('#btnAddBlacklist').prop('disabled', false);
   });
 
-  $("#divUrlBlock input[type='text']").on("input", async () => {
-    const blockUrl = $("#txtBlockUrl").val().trim();
-    let blockDomain = $("#txtBlockUrlDomain").val().trim();
-    if (blockDomain === "*") {
-      blockDomain = "";
+  $("#divUrlBlock input[type='text']").on('input', async () => {
+    const blockUrl = $('#txtBlockUrl').val().trim();
+    let blockDomain = $('#txtBlockUrlDomain').val().trim();
+    if (blockDomain === '*') {
+      blockDomain = '';
     }
 
     if (blockDomain) {
       blockDomain = `$domain=${blockDomain}`;
     }
     const result = await FiltersProxy.validate(blockUrl + blockDomain);
-    $("#btnAddUrlBlock").prop("disabled", result && result.length === 0 ? null : true);
+    $('#btnAddUrlBlock').prop('disabled', result && result.length === 0 ? null : true);
   });
 
-  $("#divCssBlock input[type='text']").on("input", async () => {
-    const blockCss = $("#txtUserFilterCss").val().trim();
-    let blockDomain = $("#txtUserFilterDomain").val().trim();
-    if (blockDomain === "*") {
-      blockDomain = "";
+  $("#divCssBlock input[type='text']").on('input', async () => {
+    const blockCss = $('#txtUserFilterCss').val().trim();
+    let blockDomain = $('#txtUserFilterDomain').val().trim();
+    if (blockDomain === '*') {
+      blockDomain = '';
     }
 
     const result = await FiltersProxy.validate(`${blockDomain}##${blockCss}`);
-    $("#btnAddUserFilter").prop("disabled", result && result.length === 0 ? null : true);
+    $('#btnAddUserFilter').prop('disabled', result && result.length === 0 ? null : true);
   });
 
-  $("#divExcludeBlock input[type='text']").on("input", async () => {
-    const unblockUrl = $("#txtUnblock").val().trim();
+  $("#divExcludeBlock input[type='text']").on('input', async () => {
+    const unblockUrl = $('#txtUnblock').val().trim();
     let result = await FiltersProxy.validate(`@@${unblockUrl}$document`);
     if (!unblockUrl || isSelectorFilter(unblockUrl)) {
       result = true;
     }
 
-    $("#btnAddExcludeFilter").prop("disabled", result && result.length === 0 ? null : true);
+    $('#btnAddExcludeFilter').prop('disabled', result && result.length === 0 ? null : true);
   });
 
   // When one presses 'Enter', pretend it was a click on the 'add' button
-  $(".customize-entry-table input[type='text']").on("keypress", (event) => {
+  $(".customize-entry-table input[type='text']").on('keypress', event => {
     const submitButton = $(event.target)
-      .closest(".customize-entry-table")
+      .closest('.customize-entry-table')
       .find("input[type='button']");
-    if (event.keyCode === 13 && !submitButton.prop("disabled")) {
+    if (event.keyCode === 13 && !submitButton.prop('disabled')) {
       event.preventDefault();
-      submitButton.trigger("click");
+      submitButton.trigger('click');
     }
   });
 
-  $("a.controlsLink").on("click", (event) => {
+  $('a.controlsLink').on('click', event => {
     event.preventDefault();
-    const $myControls = $(event.target).parent("div").find(".addControls");
-    $(".addControls")
+    const $myControls = $(event.target).parent('div').find('.addControls');
+    $('.addControls')
       .not($myControls)
       .slideUp({
         complete() {
-          $(event.target).parent("div").find(".accordion-icon").removeClass("upward");
+          $(event.target).parent('div').find('.accordion-icon').removeClass('upward');
         },
       });
     $myControls.slideToggle({
       complete() {
-        const $icon = $(event.target).parent("div").find(".accordion-icon");
-        const isExpanded = $(event.target).css("display") !== "none";
+        const $icon = $(event.target).parent('div').find('.accordion-icon');
+        const isExpanded = $(event.target).css('display') !== 'none';
 
         if (isExpanded) {
-          $icon.addClass("upward");
+          $icon.addClass('upward');
         } else {
-          $icon.removeClass("upward");
+          $icon.removeClass('upward');
         }
       },
     });
   });
 
-  $("#btnEditAdvancedFilters").on("click", (event) => {
-    const headerOffset = $("#header").height() ? $("#header").height() + 10 : 0;
-    $("body, html").animate(
+  $('#btnEditAdvancedFilters').on('click', event => {
+    const headerOffset = $('#header').height() ? $('#header').height() + 10 : 0;
+    $('body, html').animate(
       {
         scrollTop: $(event.target).offset().top - headerOffset,
       },
-      1000,
+      1000
     );
-    $("#txtFiltersAdvanced").prop("disabled", false);
-    $("#spanSaveButton").show();
-    $("#btnEditAdvancedFilters").hide();
-    $("#txtFiltersAdvanced").trigger("focus");
+    $('#txtFiltersAdvanced').prop('disabled', false);
+    $('#spanSaveButton').show();
+    $('#btnEditAdvancedFilters').hide();
+    $('#txtFiltersAdvanced').trigger('focus');
   });
 
-  $("#btnEditExcludeAdvancedFilters").on("click", (event) => {
-    const headerOffset = $("#header").height() ? $("#header").height() + 10 : 0;
-    $("body, html").animate(
+  $('#btnEditExcludeAdvancedFilters').on('click', event => {
+    const headerOffset = $('#header').height() ? $('#header').height() + 10 : 0;
+    $('body, html').animate(
       {
         scrollTop: $(event.target).offset().top - headerOffset,
       },
-      1000,
+      1000
     );
-    $("#txtExcludeFiltersAdvanced").prop("disabled", false);
-    $("#spanSaveExcludeButton").show();
-    $("#btnEditExcludeAdvancedFilters").hide();
-    $("#txtExcludeFiltersAdvanced").trigger("focus");
+    $('#txtExcludeFiltersAdvanced').prop('disabled', false);
+    $('#spanSaveExcludeButton').show();
+    $('#btnEditExcludeAdvancedFilters').hide();
+    $('#txtExcludeFiltersAdvanced').trigger('focus');
   });
 
-  $("#btnSaveAdvancedFilters").on("click", saveFilters);
+  $('#btnSaveAdvancedFilters').on('click', saveFilters);
 
-  $("#btnSaveExcludeAdvancedFilters").on("click", () => {
-    const excludeFiltersText = $("#txtExcludeFiltersAdvanced").val();
-    send("ExcludeFilter.setExcludeFilters", { filters: excludeFiltersText });
-    $("#divAddNewFilter").slideDown();
-    $("#txtExcludeFiltersAdvanced").attr("disabled", "disabled");
-    $("#spanSaveExcludeButton").hide();
-    $("#btnEditExcludeAdvancedFilters").show();
+  $('#btnSaveExcludeAdvancedFilters').on('click', () => {
+    const excludeFiltersText = $('#txtExcludeFiltersAdvanced').val();
+    send('ExcludeFilter.setExcludeFilters', { filters: excludeFiltersText });
+    $('#divAddNewFilter').slideDown();
+    $('#txtExcludeFiltersAdvanced').attr('disabled', 'disabled');
+    $('#spanSaveExcludeButton').hide();
+    $('#btnEditExcludeAdvancedFilters').show();
   });
 
   showCustomRules();
 
   if (settings && settings.show_advanced_options) {
-    $("#divExcludeFilters").show();
+    $('#divExcludeFilters').show();
   }
 
   FiltersProxy.onAdded.addListener(onFilterChange);
@@ -485,7 +485,7 @@ $(async () => {
   if (!License || $.isEmptyObject(License) || !MABPayment) {
     return;
   }
-  const payInfo = MABPayment.initialize("customize");
+  const payInfo = MABPayment.initialize('customize');
   if (await License.shouldShowMyAdBlockEnrollment()) {
     MABPayment.freeUserLogic(payInfo);
   } else if (await License.isActiveLicense()) {
@@ -493,8 +493,8 @@ $(async () => {
   }
 
   await MABPayment.displayUpsellCTA();
-  $(".upsell-cta #get-it-now-customize").on("click", MABPayment.userClickedUpsellCTA);
-  $("a.link-to-tab").on("click", (event) => {
-    activateTab($(event.target).attr("href"));
+  $('.upsell-cta #get-it-now-customize').on('click', MABPayment.userClickedUpsellCTA);
+  $('a.link-to-tab').on('click', event => {
+    activateTab($(event.target).attr('href'));
   });
 });

@@ -16,12 +16,12 @@
  */ /* eslint-disable */
 
 (function () {
-  "use strict";
+  'use strict';
   function __rest(s, e) {
     var t = {};
     for (var p in s)
       if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+    if (s != null && typeof Object.getOwnPropertySymbols === 'function')
       for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
         if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
           t[p[i]] = s[p[i]];
@@ -46,7 +46,7 @@
       }
       function rejected(value) {
         try {
-          step(generator["throw"](value));
+          step(generator['throw'](value));
         } catch (e) {
           reject(e);
         }
@@ -76,22 +76,22 @@
       return port;
     }
     try {
-      port = browser.runtime.connect({ name: "ui" });
+      port = browser.runtime.connect({ name: 'ui' });
     } catch (ex) {
       port = null;
-      disconnectListeners.forEach((listener) => listener());
+      disconnectListeners.forEach(listener => listener());
       return port;
     }
-    port.onMessage.addListener((message) => {
+    port.onMessage.addListener(message => {
       onMessage(message);
     });
     port.onDisconnect.addListener(onDisconnect);
-    connectListeners.forEach((listener) => listener());
+    connectListeners.forEach(listener => listener());
     return port;
   };
   function listen(_a) {
     var { type, filter } = _a,
-      options = __rest(_a, ["type", "filter"]);
+      options = __rest(_a, ['type', 'filter']);
     addConnectListener(() => {
       if (port) {
         port.postMessage(Object.assign({ type: `${type}.listen`, filter }, options));
@@ -103,29 +103,29 @@
     setTimeout(() => connect(), 100);
   }
   function onMessage(message) {
-    if (!message.type.endsWith(".respond")) {
+    if (!message.type.endsWith('.respond')) {
       return;
     }
-    messageListeners.forEach((listener) => listener(message));
+    messageListeners.forEach(listener => listener(message));
   }
   function removeDisconnectListener(listener) {
     disconnectListeners.delete(listener);
   }
   const platformToStore = {
-    chromium: "chrome",
-    edgehtml: "edge",
-    gecko: "firefox",
+    chromium: 'chrome',
+    edgehtml: 'edge',
+    gecko: 'firefox',
   };
   const app = {
-    get: (what) => send("app.get", { what }),
+    get: what => send('app.get', { what }),
     getInfo: () =>
       __awaiter(void 0, void 0, void 0, function* () {
-        return Promise.all([app.get("application"), app.get("platform")]).then(
+        return Promise.all([app.get('application'), app.get('platform')]).then(
           ([application, rawPlatform]) => {
             const platform = rawPlatform;
             let store;
-            if (application !== "edge" && application !== "opera") {
-              store = platformToStore[platform] || "chrome";
+            if (application !== 'edge' && application !== 'opera') {
+              store = platformToStore[platform] || 'chrome';
             } else {
               store = application;
             }
@@ -134,51 +134,51 @@
               platform,
               store,
             };
-          },
+          }
         );
       }),
-    listen: (filter) => listen({ type: "app", filter }),
-    open: (what) => send("app.open", { what }),
+    listen: filter => listen({ type: 'app', filter }),
+    open: what => send('app.open', { what }),
   };
   const ctalinks = {
-    get: (link, queryParams = {}) => send("app.get", { what: "ctalink", link, queryParams }),
+    get: (link, queryParams = {}) => send('app.get', { what: 'ctalink', link, queryParams }),
   };
   const doclinks = {
-    get: (link) => send("app.get", { what: "doclink", link }),
+    get: link => send('app.get', { what: 'doclink', link }),
   };
   const filters = {
-    get: () => send("filters.get"),
-    listen: (filter) => listen({ type: "filters", filter }),
+    get: () => send('filters.get'),
+    listen: filter => listen({ type: 'filters', filter }),
   };
   const notifications = {
-    get: (displayMethod) => send("notifications.get", { displayMethod }),
-    seen: () => send("notifications.seen"),
+    get: displayMethod => send('notifications.get', { displayMethod }),
+    seen: () => send('notifications.seen'),
   };
   const prefs = {
-    get: (key) => send("prefs.get", { key }),
-    listen: (filter) => listen({ type: "prefs", filter }),
+    get: key => send('prefs.get', { key }),
+    listen: filter => listen({ type: 'prefs', filter }),
   };
   const premium = {
-    activate: (userId) => send("premium.activate", { userId }),
-    get: () => send("premium.get"),
-    listen: (filter) => listen({ type: "premium", filter }),
+    activate: userId => send('premium.activate', { userId }),
+    get: () => send('premium.get'),
+    listen: filter => listen({ type: 'premium', filter }),
   };
   const requests = {
-    listen: (filter, tabId) => listen({ type: "requests", filter, tabId }),
+    listen: (filter, tabId) => listen({ type: 'requests', filter, tabId }),
   };
   function send(sendType, rawArgs = {}) {
     const args = Object.assign(Object.assign({}, rawArgs), { type: sendType });
     return browser.runtime.sendMessage(args);
   }
   const stats = {
-    getBlockedPerPage: (tab) => send("stats.getBlockedPerPage", { tab }),
-    getBlockedTotal: () => send("stats.getBlockedTotal"),
-    listen: (filter) => listen({ type: "stats", filter }),
+    getBlockedPerPage: tab => send('stats.getBlockedPerPage', { tab }),
+    getBlockedTotal: () => send('stats.getBlockedTotal'),
+    listen: filter => listen({ type: 'stats', filter }),
   };
   const subscriptions = {
-    get: (options) => send("subscriptions.get", options),
-    getInitIssues: () => send("subscriptions.getInitIssues"),
-    listen: (filter) => listen({ type: "subscriptions", filter }),
+    get: options => send('subscriptions.get', options),
+    getInitIssues: () => send('subscriptions.getInitIssues'),
+    listen: filter => listen({ type: 'subscriptions', filter }),
   };
   const api = {
     addDisconnectListener,
@@ -196,21 +196,21 @@
     stats,
   };
   connect();
-  const i18nAttributes = ["alt", "placeholder", "title", "value"];
+  const i18nAttributes = ['alt', 'placeholder', 'title', 'value'];
   function setElementText(element, stringName, args, children = []) {
     function processString(str, currentElement) {
       const match = /^(.*?)<(a|em|slot|strong)(\d)?>(.*?)<\/\2\3>(.*)$/.exec(str);
       if (match) {
         const [, before, name, index, innerText, after] = match;
         processString(before, currentElement);
-        if (name == "slot") {
+        if (name == 'slot') {
           const e = children[index];
           if (e) {
             currentElement.appendChild(e);
           }
         } else {
           const e = document.createElement(name);
-          if (typeof index != "undefined") {
+          if (typeof index != 'undefined') {
             e.dataset.i18nIndex = index;
           }
           processString(innerText, e);
@@ -225,7 +225,7 @@
   function loadI18nStrings() {
     function resolveStringNames(container) {
       {
-        const elements = container.querySelectorAll("[data-i18n]");
+        const elements = container.querySelectorAll('[data-i18n]');
         for (const element of elements) {
           const children = Array.from(element.children);
           setElementText(element, element.dataset.i18n, null, children);
@@ -240,16 +240,16 @@
       }
     }
     resolveStringNames(document);
-    for (const template of document.querySelectorAll("template"))
+    for (const template of document.querySelectorAll('template'))
       resolveStringNames(template.content);
   }
   function initI18n() {
     browser.runtime
       .sendMessage({
-        type: "app.get",
-        what: "localeInfo",
+        type: 'app.get',
+        what: 'localeInfo',
       })
-      .then((localeInfo) => {
+      .then(localeInfo => {
         document.documentElement.lang = localeInfo.locale;
         document.documentElement.dir = localeInfo.bidiDir;
       });
@@ -276,14 +276,14 @@
         index: i,
         initialize: true,
         request: oldRecord.target,
-        type: "update",
+        type: 'update',
       });
     }
     if (!matchesAny) {
       changes.push({
         filter: newRecord.filter,
         request: newRecord.target,
-        type: "add",
+        type: 'add',
       });
       records.push(newRecord);
     }
@@ -305,7 +305,7 @@
       if (subscriptionTitle) break;
     }
     return {
-      allowlisted: filter.type == "allowing" || filter.type == "elemhideexception",
+      allowlisted: filter.type == 'allowing' || filter.type == 'elemhideexception',
       csp: filter.csp,
       selector: filter.selector,
       subscription: subscriptionTitle,
@@ -316,7 +316,7 @@
   function hasRecord(newRecord, oldRecord) {
     if (oldRecord.target.url !== newRecord.target.url) return false;
     if (oldRecord.target.docDomain !== newRecord.target.docDomain) return false;
-    if (oldRecord.target.type === "DOCUMENT") {
+    if (oldRecord.target.type === 'DOCUMENT') {
       if (!newRecord.target.isFrame) return false;
     } else if (oldRecord.target.type !== newRecord.target.type) {
       return false;
@@ -336,16 +336,16 @@
   const { getMessage } = browser.i18n;
   initI18n();
   const onFilterChangedByRow = new WeakMap();
-  const promisedPlatform = api.app.get("platform");
+  const promisedPlatform = api.app.get('platform');
   const maxTitleLength = 1000;
   let lastFilterQuery = null;
-  browser.runtime.sendMessage({ type: "types.get" }).then((filterTypes) => {
-    const filterTypesElem = document.getElementById("filter-type");
-    const filterStyleElem = document.createElement("style");
+  browser.runtime.sendMessage({ type: 'types.get' }).then(filterTypes => {
+    const filterTypesElem = document.getElementById('filter-type');
+    const filterStyleElem = document.createElement('style');
     for (const type of filterTypes) {
       filterStyleElem.innerHTML +=
-        `#items[data-filter-type=${type}] tr:not([data-type=${type}])` + "{display: none;}";
-      const optionNode = document.createElement("option");
+        `#items[data-filter-type=${type}] tr:not([data-type=${type}])` + '{display: none;}';
+      const optionNode = document.createElement('option');
       optionNode.appendChild(document.createTextNode(type));
       filterTypesElem.appendChild(optionNode);
     }
@@ -353,16 +353,16 @@
   });
   function generateFilter(request, options) {
     let { allowlisted = false, domainSpecific = false } = options;
-    let filterText = request.url.replace(/^[\w-]+:\/+(?:www\.)?/, "||");
+    let filterText = request.url.replace(/^[\w-]+:\/+(?:www\.)?/, '||');
     const filterOptions = [];
-    if (request.type == "POPUP") {
-      filterOptions.push("popup");
-      if (request.url == "about:blank") domainSpecific = true;
+    if (request.type == 'POPUP') {
+      filterOptions.push('popup');
+      if (request.url == 'about:blank') domainSpecific = true;
     }
-    if (request.type == "CSP") filterOptions.push("csp");
-    if (domainSpecific) filterOptions.push("domain=" + request.docDomain);
-    if (filterOptions.length > 0) filterText += "$" + filterOptions.join(",");
-    if (allowlisted) filterText = "@@" + filterText;
+    if (request.type == 'CSP') filterOptions.push('csp');
+    if (domainSpecific) filterOptions.push('domain=' + request.docDomain);
+    if (filterOptions.length > 0) filterText += '$' + filterOptions.join(',');
+    if (allowlisted) filterText = '@@' + filterText;
     return {
       allowlisted,
       subscription: null,
@@ -371,41 +371,41 @@
     };
   }
   function createActionButton(action, stringId, filter, callback) {
-    const button = document.createElement("span");
+    const button = document.createElement('span');
     button.textContent = getMessage(stringId);
-    button.classList.add("action");
+    button.classList.add('action');
     button.addEventListener(
-      "click",
+      'click',
       async () => {
         await browser.runtime.sendMessage({
-          type: action === "add" ? "filters.add" : "filters.remove",
+          type: action === 'add' ? 'filters.add' : 'filters.remove',
           text: filter.text,
           origin: modulesAsGlobal.filters.FilterOrigin.devtools,
         });
         callback(filter);
       },
-      false,
+      false
     );
     return button;
   }
   function onUrlClick(event) {
     if (event.button != 0) return;
-    if (!("openResource" in browser.devtools.panels)) return;
+    if (!('openResource' in browser.devtools.panels)) return;
     browser.devtools.panels.openResource(event.target.href);
     event.preventDefault();
   }
   function getTitleText(str) {
-    return promisedPlatform.then((platform) => {
-      if (platform === "gecko") {
+    return promisedPlatform.then(platform => {
+      if (platform === 'gecko') {
         const maxLineCount = maxTitleLength / 50;
         let lines = str.match(/.{1,50}/g);
         if (lines.length > maxLineCount) {
-          lines = [...lines.slice(0, maxLineCount / 2), "…", ...lines.slice(-(maxLineCount / 2))];
+          lines = [...lines.slice(0, maxLineCount / 2), '…', ...lines.slice(-(maxLineCount / 2))];
         }
-        return lines.join("\n");
+        return lines.join('\n');
       }
       if (str.length < maxTitleLength + 3) return str;
-      return [str.slice(0, maxTitleLength / 2), "…", str.slice(-(maxTitleLength / 2))].join("\n");
+      return [str.slice(0, maxTitleLength / 2), '…', str.slice(-(maxTitleLength / 2))].join('\n');
     });
   }
   function onFilterRemoved(oldFilter) {
@@ -417,108 +417,108 @@
   }
   function createRow(request, filter, options = {}) {
     const { hasChanged = false, initialFilter = null } = options;
-    const template = document.querySelector("template").content.firstElementChild;
+    const template = document.querySelector('template').content.firstElementChild;
     const row = document.importNode(template, true);
     row.dataset.type = request.type;
-    row.classList.toggle("changed", hasChanged);
-    row.querySelector(".domain").textContent = request.docDomain;
-    row.querySelector(".type").textContent = request.type;
-    const urlElement = row.querySelector(".url");
-    const actionWrapper = row.querySelector(".action-wrapper");
-    const onFilterChanged = (newFilter) => {
+    row.classList.toggle('changed', hasChanged);
+    row.querySelector('.domain').textContent = request.docDomain;
+    row.querySelector('.type').textContent = request.type;
+    const urlElement = row.querySelector('.url');
+    const actionWrapper = row.querySelector('.action-wrapper');
+    const onFilterChanged = newFilter => {
       const newRow = createRow(request, newFilter || initialFilter, {
         hasChanged: !!newFilter,
         initialFilter: newFilter ? initialFilter || filter : null,
       });
       row.parentNode.replaceChild(newRow, row);
-      const container = document.getElementById("items");
-      container.classList.add("has-changes");
+      const container = document.getElementById('items');
+      container.classList.add('has-changes');
     };
     onFilterChangedByRow.set(row, onFilterChanged);
     if (request.url) {
-      setElementText(urlElement, "devtools_request_url", [request.url, request.rewrittenUrl]);
+      setElementText(urlElement, 'devtools_request_url', [request.url, request.rewrittenUrl]);
       const originalUrl = urlElement.querySelector("[data-i18n-index='0']");
-      originalUrl.classList.add("url");
-      getTitleText(request.url).then((title) => {
-        originalUrl.setAttribute("title", title);
+      originalUrl.classList.add('url');
+      getTitleText(request.url).then(title => {
+        originalUrl.setAttribute('title', title);
       });
-      originalUrl.setAttribute("href", request.url);
-      originalUrl.setAttribute("target", "_blank");
-      if (request.type != "POPUP") {
-        originalUrl.addEventListener("click", onUrlClick);
+      originalUrl.setAttribute('href', request.url);
+      originalUrl.setAttribute('target', '_blank');
+      if (request.type != 'POPUP') {
+        originalUrl.addEventListener('click', onUrlClick);
       }
       if (request.rewrittenUrl) {
         const rewrittenUrl = urlElement.querySelector("[data-i18n-index='1'");
-        rewrittenUrl.classList.add("url-rewritten");
-        getTitleText(request.rewrittenUrl).then((title) => {
-          rewrittenUrl.setAttribute("title", title);
+        rewrittenUrl.classList.add('url-rewritten');
+        getTitleText(request.rewrittenUrl).then(title => {
+          rewrittenUrl.setAttribute('title', title);
         });
-        rewrittenUrl.setAttribute("href", request.rewrittenUrl);
-        rewrittenUrl.setAttribute("target", "_blank");
-        rewrittenUrl.addEventListener("click", onUrlClick);
+        rewrittenUrl.setAttribute('href', request.rewrittenUrl);
+        rewrittenUrl.setAttribute('target', '_blank');
+        rewrittenUrl.addEventListener('click', onUrlClick);
       } else {
-        urlElement.innerHTML = "";
+        urlElement.innerHTML = '';
         urlElement.appendChild(originalUrl);
       }
     } else {
-      urlElement.innerHTML = "&nbsp;";
+      urlElement.innerHTML = '&nbsp;';
     }
     if (filter) {
-      const filterElement = row.querySelector(".filter");
-      const originElement = row.querySelector(".origin");
-      getTitleText(filter.text).then((title) => {
-        filterElement.setAttribute("title", title);
+      const filterElement = row.querySelector('.filter');
+      const originElement = row.querySelector('.origin');
+      getTitleText(filter.text).then(title => {
+        filterElement.setAttribute('title', title);
       });
       filterElement.textContent = filter.text;
-      row.dataset.state = filter.allowlisted ? "allowlisted" : "blocked";
+      row.dataset.state = filter.allowlisted ? 'allowlisted' : 'blocked';
       row.dataset.filter = filter.text;
       if (filter.subscription) originElement.textContent = filter.subscription;
       else {
         if (filter.userDefined)
-          originElement.textContent = getMessage("devtools_filter_origin_custom");
-        else originElement.textContent = getMessage("devtools_filter_origin_none");
-        originElement.classList.add("unnamed");
+          originElement.textContent = getMessage('devtools_filter_origin_custom');
+        else originElement.textContent = getMessage('devtools_filter_origin_none');
+        originElement.classList.add('unnamed');
       }
       if (
         !filter.allowlisted &&
-        request.type != "ELEMHIDE" &&
-        request.type != "SNIPPET" &&
+        request.type != 'ELEMHIDE' &&
+        request.type != 'SNIPPET' &&
         !hasChanged
       ) {
         actionWrapper.appendChild(
           createActionButton(
-            "add",
-            "devtools_action_unblock",
+            'add',
+            'devtools_action_unblock',
             generateFilter(request, { allowlisted: true }),
-            onFilterChanged,
-          ),
+            onFilterChanged
+          )
         );
       }
       if (filter.userDefined) {
         actionWrapper.appendChild(
-          createActionButton("remove", "devtools_action_remove", filter, onFilterRemoved),
+          createActionButton('remove', 'devtools_action_remove', filter, onFilterRemoved)
         );
       }
-    } else if (request.type !== "DOCUMENT") {
+    } else if (request.type !== 'DOCUMENT') {
       actionWrapper.appendChild(
         createActionButton(
-          "add",
-          "devtools_action_block",
+          'add',
+          'devtools_action_block',
           generateFilter(request, { domainSpecific: request.specificOnly }),
-          onFilterChanged,
-        ),
+          onFilterChanged
+        )
       );
     }
     if (lastFilterQuery && shouldFilterRow(row, lastFilterQuery))
-      row.classList.add("filtered-by-search");
+      row.classList.add('filtered-by-search');
     return row;
   }
   function shouldFilterRow(row, query) {
     const elementsToSearch = [
-      row.getElementsByClassName("filter"),
-      row.getElementsByClassName("origin"),
-      row.getElementsByClassName("type"),
-      row.getElementsByClassName("url"),
+      row.getElementsByClassName('filter'),
+      row.getElementsByClassName('origin'),
+      row.getElementsByClassName('type'),
+      row.getElementsByClassName('url'),
     ];
     for (const elements of elementsToSearch) {
       for (const element of elements) {
@@ -529,82 +529,82 @@
   }
   function performSearch(table, query) {
     for (const row of table.rows) {
-      if (shouldFilterRow(row, query)) row.classList.add("filtered-by-search");
-      else row.classList.remove("filtered-by-search");
+      if (shouldFilterRow(row, query)) row.classList.add('filtered-by-search');
+      else row.classList.remove('filtered-by-search');
     }
   }
   function cancelSearch(table) {
-    for (const row of table.rows) row.classList.remove("filtered-by-search");
+    for (const row of table.rows) row.classList.remove('filtered-by-search');
   }
   document.addEventListener(
-    "DOMContentLoaded",
+    'DOMContentLoaded',
     () => {
-      const container = document.getElementById("items");
-      const table = container.querySelector("tbody");
+      const container = document.getElementById('items');
+      const table = container.querySelector('tbody');
       document.querySelector("[data-i18n='devtools_footer'] > a").addEventListener(
-        "click",
+        'click',
         () => {
           browser.devtools.inspectedWindow.reload();
         },
-        false,
+        false
       );
-      document.getElementById("filter-state").addEventListener(
-        "change",
-        (event) => {
+      document.getElementById('filter-state').addEventListener(
+        'change',
+        event => {
           container.dataset.filterState = event.target.value;
         },
-        false,
+        false
       );
-      document.getElementById("filter-type").addEventListener(
-        "change",
-        (event) => {
+      document.getElementById('filter-type').addEventListener(
+        'change',
+        event => {
           container.dataset.filterType = event.target.value;
         },
-        false,
+        false
       );
-      api.addListener((message) => {
-        if (message.type !== "requests.respond") return;
+      api.addListener(message => {
+        if (message.type !== 'requests.respond') return;
         switch (message.action) {
-          case "hits":
+          case 'hits':
             const [target, filter, subscriptions] = message.args;
             const changes = recordManager.add(target, filter, subscriptions);
             for (const change of changes) {
               switch (change.type) {
-                case "add":
+                case 'add':
                   const row = createRow(change.request, change.filter);
                   table.appendChild(row);
                   break;
-                case "update":
-                  const oldRow = table.getElementsByTagName("tr")[change.index];
+                case 'update':
+                  const oldRow = table.getElementsByTagName('tr')[change.index];
                   const newRow = createRow(change.request, change.filter);
                   oldRow.parentNode.replaceChild(newRow, oldRow);
                   break;
               }
             }
             break;
-          case "reset":
+          case 'reset':
             recordManager.clear();
-            table.innerHTML = "";
-            container.classList.remove("has-changes");
+            table.innerHTML = '';
+            container.classList.remove('has-changes');
             break;
         }
       });
-      api.requests.listen(["hits", "reset"], browser.devtools.inspectedWindow.tabId);
-      window.addEventListener("message", (event) => {
+      api.requests.listen(['hits', 'reset'], browser.devtools.inspectedWindow.tabId);
+      window.addEventListener('message', event => {
         switch (event.data.type) {
-          case "performSearch":
+          case 'performSearch':
             performSearch(table, event.data.queryString);
             lastFilterQuery = event.data.queryString;
             break;
-          case "cancelSearch":
+          case 'cancelSearch':
             cancelSearch(table);
             lastFilterQuery = null;
             break;
         }
       });
-      const theme = browser.devtools.panels.themeName || "default";
+      const theme = browser.devtools.panels.themeName || 'default';
       document.body.classList.add(theme);
     },
-    false,
+    false
   );
 })();

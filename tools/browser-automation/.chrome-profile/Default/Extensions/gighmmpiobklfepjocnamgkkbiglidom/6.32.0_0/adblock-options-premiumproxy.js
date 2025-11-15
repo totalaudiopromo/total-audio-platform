@@ -32,26 +32,26 @@ let localLicense = {};
 /* eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars */
 async function initializeLicense() {
   const returnPropertiesAsFunctions = [
-    "shouldShowMyAdBlockEnrollment",
-    "isActiveLicense",
-    "shouldShowPremiumCTA",
-    "getFormattedActiveSinceDate",
-    "isLicenseCodeValid",
+    'shouldShowMyAdBlockEnrollment',
+    'isActiveLicense',
+    'shouldShowPremiumCTA',
+    'getFormattedActiveSinceDate',
+    'isLicenseCodeValid',
   ];
-  localLicense = await modulesAsGlobal.messaging.send("adblock:getLicenseConfig");
+  localLicense = await modulesAsGlobal.messaging.send('adblock:getLicenseConfig');
   /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   License = new Proxy(localLicense, {
     get(obj, prop) {
       if (returnPropertiesAsFunctions.includes(prop)) {
         return () => obj[prop];
       }
-      if (prop === "get") {
+      if (prop === 'get') {
         return () => obj;
       }
       // The 'activate' function is here as a special case for testers to
       // enable premium (temporarily)
-      if (prop === "activate") {
-        return () => modulesAsGlobal.messaging.send("adblock:activate");
+      if (prop === 'activate') {
+        return () => modulesAsGlobal.messaging.send('adblock:activate');
       }
       return Reflect.get(obj, prop);
     },
@@ -63,38 +63,38 @@ const channelsNotifier = new EventEmitter();
 
 /* eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars */
 class channels {
-  static getIdByName = (name) =>
-    modulesAsGlobal.messaging.send("adblock:channels.getIdByName", { name });
+  static getIdByName = name =>
+    modulesAsGlobal.messaging.send('adblock:channels.getIdByName', { name });
 
-  static getGuide = () => modulesAsGlobal.messaging.send("adblock:channels.getGuide");
+  static getGuide = () => modulesAsGlobal.messaging.send('adblock:channels.getGuide');
 
-  static isAnyEnabled = () => modulesAsGlobal.messaging.send("adblock:channels.isAnyEnabled");
+  static isAnyEnabled = () => modulesAsGlobal.messaging.send('adblock:channels.isAnyEnabled');
 
   static isCustomChannelEnabled = () =>
-    modulesAsGlobal.messaging.send("adblock:channels.isCustomChannelEnabled");
+    modulesAsGlobal.messaging.send('adblock:channels.isCustomChannelEnabled');
 
   static initializeListeners = () =>
-    modulesAsGlobal.messaging.send("adblock:channels.initializeListeners");
+    modulesAsGlobal.messaging.send('adblock:channels.initializeListeners');
 
   static disableAllChannels = () =>
-    modulesAsGlobal.messaging.send("adblock:channels.disableAllChannels");
+    modulesAsGlobal.messaging.send('adblock:channels.disableAllChannels');
 
   static setEnabled = (channelId, enabled) =>
-    modulesAsGlobal.messaging.send("adblock:channels.setEnabled", { channelId, enabled });
+    modulesAsGlobal.messaging.send('adblock:channels.setEnabled', { channelId, enabled });
 }
 
 /* eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars */
 class customChannel {
   static isMaximumAllowedImages = () =>
-    modulesAsGlobal.messaging.send("adblock:customchannel.isMaximumAllowedImages");
+    modulesAsGlobal.messaging.send('adblock:customchannel.isMaximumAllowedImages');
 
-  static getListings = () => modulesAsGlobal.messaging.send("adblock:customchannel.getListings");
+  static getListings = () => modulesAsGlobal.messaging.send('adblock:customchannel.getListings');
 
-  static addCustomImage = (imageInfo) =>
-    modulesAsGlobal.messaging.send("adblock:customchannel.addCustomImage", { imageInfo });
+  static addCustomImage = imageInfo =>
+    modulesAsGlobal.messaging.send('adblock:customchannel.addCustomImage', { imageInfo });
 
-  static removeListingByURL = (url) =>
-    modulesAsGlobal.messaging.send("adblock:customchannel.removeListingByURL", { url });
+  static removeListingByURL = url =>
+    modulesAsGlobal.messaging.send('adblock:customchannel.removeListingByURL', { url });
 }
 
 /* eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars */
@@ -104,27 +104,27 @@ async function initializeChannels() {
 
 /* eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars */
 async function initializePremiumPort() {
-  const premiumPort = browser.runtime.connect({ name: "premium" });
-  premiumPort.onMessage.addListener(async (message) => {
-    if (message.type === "channels.respond") {
+  const premiumPort = browser.runtime.connect({ name: 'premium' });
+  premiumPort.onMessage.addListener(async message => {
+    if (message.type === 'channels.respond') {
       channels.channelGuide = await channels.getGuide();
       if (message.args) {
         channelsNotifier.emit(`channels.${message.action}`, ...message.args);
       }
     }
-    if (message.type === "license.respond") {
-      localLicense = await modulesAsGlobal.messaging.send("adblock:getLicenseConfig");
+    if (message.type === 'license.respond') {
+      localLicense = await modulesAsGlobal.messaging.send('adblock:getLicenseConfig');
       if (message.args) {
         licenseNotifier.emit(`license.${message.action}`, ...message.args);
       }
     }
   });
   premiumPort.postMessage({
-    type: "channels.listen",
-    filter: ["changed"],
+    type: 'channels.listen',
+    filter: ['changed'],
   });
   premiumPort.postMessage({
-    type: "license.listen",
-    filter: ["updated", "updated.error", "expired"],
+    type: 'license.listen',
+    filter: ['updated', 'updated.error', 'expired'],
   });
 }

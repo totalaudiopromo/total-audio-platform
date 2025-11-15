@@ -22,30 +22,30 @@
 let errorOccurred = false;
 
 const useFlexDisplayElements = [
-  "allowlisted_subsection",
-  "disabled_site_title",
-  "domain_paused_subsection",
-  "hostname",
-  "pause_subsection",
+  'allowlisted_subsection',
+  'disabled_site_title',
+  'domain_paused_subsection',
+  'hostname',
+  'pause_subsection',
 ];
 
-const betaExtId = "pljaalgmajnlogcgiohkhdmgpomjcihk";
+const betaExtId = 'pljaalgmajnlogcgiohkhdmgpomjcihk';
 
 const processError = function (err, stack, message) {
   const errorPayload = {
-    u: "unknown",
-    f: "e",
-    o: "unknown",
-    l: "unknown",
-    t: "error",
-    st: "popupmenu",
+    u: 'unknown',
+    f: 'e',
+    o: 'unknown',
+    l: 'unknown',
+    t: 'error',
+    st: 'popupmenu',
   };
 
   const sendErrorPayload = function () {
-    const payload = { event: "error", payload: errorPayload };
+    const payload = { event: 'error', payload: errorPayload };
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://log.getadblock.com/v2/record_log.php", true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.open('POST', 'https://log.getadblock.com/v2/record_log.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     xhr.send(JSON.stringify(payload));
   };
 
@@ -54,31 +54,31 @@ const processError = function (err, stack, message) {
   const translateErrorMsg = function (key) {
     const text = {
       error_msg_header: {
-        en: "Oops!",
+        en: 'Oops!',
       },
       error_msg_partI: {
         en: "We're sorry, the AdBlock menu had trouble loading.",
       },
       error_msg_help_us_partI: {
-        en: "Help us resolve this problem ",
+        en: 'Help us resolve this problem ',
       },
       error_msg_help_us_partII: {
-        en: " by sending us some debug data.",
+        en: ' by sending us some debug data.',
       },
       error_msg_thank_you: {
-        en: "Thank you",
+        en: 'Thank you',
       },
       error_msg_reload_partI: {
-        en: "Next, try reloading the extension by ",
+        en: 'Next, try reloading the extension by ',
       },
       error_msg_reload_partII: {
-        en: "clicking here.",
+        en: 'clicking here.',
       },
       error_msg_help_partI: {
-        en: "If that doesn’t work, ",
+        en: 'If that doesn’t work, ',
       },
       error_msg_help_partII: {
-        en: "check here for more help.",
+        en: 'check here for more help.',
       },
     };
     const locale = navigator.language.substring(0, 2);
@@ -87,65 +87,65 @@ const processError = function (err, stack, message) {
   };
 
   errorOccurred = true;
-  errorPayload.msg = err.message || message || "no message";
-  errorPayload.src = err.source || stack || "no source";
-  errorPayload.line = err.lineno || "anywhere";
-  errorPayload.col = err.colno || "anywhere";
-  errorPayload.err = err.error || "no error";
-  if (typeof err === "string") {
+  errorPayload.msg = err.message || message || 'no message';
+  errorPayload.src = err.source || stack || 'no source';
+  errorPayload.line = err.lineno || 'anywhere';
+  errorPayload.col = err.colno || 'anywhere';
+  errorPayload.err = err.error || 'no error';
+  if (typeof err === 'string') {
     errorPayload.msg = err;
   }
-  const errorMsgDiv = document.getElementById("div_status_error");
+  const errorMsgDiv = document.getElementById('div_status_error');
   if (errorMsgDiv) {
-    selectedOnce(document.getElementById("errorreport"), () => {
+    selectedOnce(document.getElementById('errorreport'), () => {
       sendErrorPayload();
-      const firstMsg = document.getElementById("first_msg");
-      firstMsg.style.display = "none";
-      const secondMsg = document.getElementById("second_msg");
-      secondMsg.style.display = "block";
+      const firstMsg = document.getElementById('first_msg');
+      firstMsg.style.display = 'none';
+      const secondMsg = document.getElementById('second_msg');
+      secondMsg.style.display = 'block';
     });
 
-    const reloadAnchor = document.getElementById("reload");
+    const reloadAnchor = document.getElementById('reload');
     if (browser && browser.runtime && browser.runtime.reload) {
       selectedOnce(reloadAnchor, () => {
         try {
           browser.runtime.reload();
         } catch (e) {
-          const reloadMsg = document.getElementById("reload_msg");
+          const reloadMsg = document.getElementById('reload_msg');
           if (reloadMsg) {
-            reloadMsg.style.display = "none";
+            reloadMsg.style.display = 'none';
           }
-          const thirdMsg = document.getElementById("third_msg");
+          const thirdMsg = document.getElementById('third_msg');
           if (thirdMsg) {
-            thirdMsg.style.display = "block";
+            thirdMsg.style.display = 'block';
           }
         }
       });
     } else {
-      reloadAnchor.style.display = "none";
+      reloadAnchor.style.display = 'none';
     }
 
-    document.querySelectorAll(".separator").forEach((el) => {
+    document.querySelectorAll('.separator').forEach(el => {
       const elem = el;
-      elem.style.display = "none";
+      elem.style.display = 'none';
     });
 
-    const headerIconsDiv = document.getElementById("header-icons");
+    const headerIconsDiv = document.getElementById('header-icons');
     if (headerIconsDiv) {
-      headerIconsDiv.style.display = "none";
+      headerIconsDiv.style.display = 'none';
     }
 
-    const divSlideoutDiv = document.getElementById("div_slideout");
+    const divSlideoutDiv = document.getElementById('div_slideout');
     if (divSlideoutDiv) {
-      divSlideoutDiv.style.display = "none";
+      divSlideoutDiv.style.display = 'none';
     }
 
-    document.querySelectorAll("*[i18n_error^='error_msg']").forEach((el) => {
+    document.querySelectorAll("*[i18n_error^='error_msg']").forEach(el => {
       const elem = el;
-      elem.innerText = translateErrorMsg(elem.getAttribute("i18n_error"));
+      elem.innerText = translateErrorMsg(elem.getAttribute('i18n_error'));
     });
 
-    errorMsgDiv.style.display = "block";
+    errorMsgDiv.style.display = 'block';
   }
 };
 
@@ -153,14 +153,14 @@ const processError = function (err, stack, message) {
 // the current tab
 let pageInfo = null;
 
-const popupMenuCtaClosedKey = "popup_menu_cta_closed";
-const showPopupMenuThemesCtaKey = "popup_menu_themes_cta";
-const popupMenuFreeDCCtaClosedKey = "popup_menu_free_dc_cta_closed";
-const popupMenuDCCtaClosedKey = "popup_menu_dc_cta_closed";
-const popupMenuVPNCtaClosedKey = "popup_menu_vpn_cta_closed";
+const popupMenuCtaClosedKey = 'popup_menu_cta_closed';
+const showPopupMenuThemesCtaKey = 'popup_menu_themes_cta';
+const popupMenuFreeDCCtaClosedKey = 'popup_menu_free_dc_cta_closed';
+const popupMenuDCCtaClosedKey = 'popup_menu_dc_cta_closed';
+const popupMenuVPNCtaClosedKey = 'popup_menu_vpn_cta_closed';
 
 const shown = {};
-const themeCTA = "";
+const themeCTA = '';
 let itemClicked = false;
 
 const sendMessageWithNoResponse = function (message) {
@@ -168,7 +168,7 @@ const sendMessageWithNoResponse = function (message) {
 };
 
 const show = function (elementIds) {
-  elementIds.forEach((elementId) => {
+  elementIds.forEach(elementId => {
     shown[elementId] = true;
   });
 };
@@ -183,7 +183,7 @@ const closePopup = function () {
 // the help page to use subpages and links instead of mini-SPA. See button/header.js
 // for call
 const checkAndEnableHelp = function () {
-  if (document.location.search && document.location.search.includes("showHelp")) {
+  if (document.location.search && document.location.search.includes('showHelp')) {
     showHelpSetupPage();
   }
 };
@@ -195,15 +195,15 @@ const checkAndEnableHelp = function () {
 const getNewBadgeText = () => {
   const isFirefox = navigator.userAgent.match(/(?:Firefox)\/([\d.]+)/);
   if (isFirefox) {
-    return "💥";
+    return '💥';
   }
 
-  const text = browser.i18n.getMessage("new_badge");
+  const text = browser.i18n.getMessage('new_badge');
   if (text.length < 5) {
     return text.toUpperCase();
   }
 
-  return "New".toUpperCase();
+  return 'New'.toUpperCase();
 };
 
 const start = async function () {
@@ -213,8 +213,8 @@ const start = async function () {
   const userClosedDCCta = storageGet(popupMenuDCCtaClosedKey);
   const userClosedVPNCta = storageGet(popupMenuVPNCtaClosedKey);
 
-  document.addEventListener("readystatechange", () => {
-    if (document.readyState === "complete" && typeof setLangAndDirAttributes === "function") {
+  document.addEventListener('readystatechange', () => {
+    if (document.readyState === 'complete' && typeof setLangAndDirAttributes === 'function') {
       setLangAndDirAttributes();
     }
   });
@@ -222,21 +222,21 @@ const start = async function () {
   localizePage();
 
   // Set menu entries appropriately for the selected tab.
-  $(".premium-cta, .separator").hide();
+  $('.premium-cta, .separator').hide();
 
   let tabId;
-  if (document.location.search && document.location.search.indexOf("tabId") > 0) {
+  if (document.location.search && document.location.search.indexOf('tabId') > 0) {
     const params = new URLSearchParams(document.location.search);
-    tabId = params.get("tabId");
-    if (tabId === "error") {
+    tabId = params.get('tabId');
+    if (tabId === 'error') {
       // allows testing of the error handling logic
-      throw new Error("anError");
+      throw new Error('anError');
     }
   }
 
-  const info = await browser.runtime.sendMessage({ command: "getCurrentTabInfo", tabId });
+  const info = await browser.runtime.sendMessage({ command: 'getCurrentTabInfo', tabId });
 
-  let popupMenuTheme = "default_theme";
+  let popupMenuTheme = 'default_theme';
   if (info.settings && info.settings.color_themes && info.settings.color_themes.popup_menu) {
     popupMenuTheme = info.settings.color_themes.popup_menu;
   }
@@ -247,80 +247,80 @@ const start = async function () {
     let { newBadgeTextReason } = info;
     const isBadgeTextNew = currentBadgeText === newBadgeText;
     if (!isBadgeTextNew) {
-      newBadgeTextReason = "";
+      newBadgeTextReason = '';
     }
 
     const genMsgData = {
-      command: "recordGeneralMessage",
-      msg: "popup_opened",
+      command: 'recordGeneralMessage',
+      msg: 'popup_opened',
       additionalParams: { isBadgeTextNew, reason: newBadgeTextReason },
     };
     sendMessageWithNoResponse(genMsgData);
-    sendMessageWithNoResponse({ command: "resetBadgeText" });
-    void modulesAsGlobal.messaging.send("adblock:cleanUpSevenDayAlarm");
+    sendMessageWithNoResponse({ command: 'resetBadgeText' });
+    void modulesAsGlobal.messaging.send('adblock:cleanUpSevenDayAlarm');
 
     if (info && info.errorStr) {
       processError(info.errorStr, info.stack, info.message);
       return;
     }
-    $(window).on("beforeunload", () => {
+    $(window).on('beforeunload', () => {
       if (!itemClicked) {
-        sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "popup_closed" });
+        sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'popup_closed' });
       }
     });
 
     // Cache response object for later use
     pageInfo = info;
-    let parsedHostname = "";
+    let parsedHostname = '';
     try {
       pageInfo.url = new URL(info.url);
-      parsedHostname = pageInfo.url.hostname.replace(/^www\./, "");
+      parsedHostname = pageInfo.url.hostname.replace(/^www\./, '');
     } catch (err) {
       pageInfo.url = null;
     }
 
-    show(["svg_options"]);
+    show(['svg_options']);
     if (info.paused) {
-      parsedHostname = translate("disabled");
+      parsedHostname = translate('disabled');
       show([
-        "hostname",
-        "primary_section",
-        "div_all_paused_msg",
-        "all_paused_subsection",
-        "svg_options",
-        "help_link",
+        'hostname',
+        'primary_section',
+        'div_all_paused_msg',
+        'all_paused_subsection',
+        'svg_options',
+        'help_link',
       ]);
     } else if (info.domainPaused) {
       show([
-        "hostname",
-        "primary_section",
-        "div_domain_paused_msg",
-        "domain_paused_subsection",
-        "svg_options",
-        "help_link",
+        'hostname',
+        'primary_section',
+        'div_domain_paused_msg',
+        'domain_paused_subsection',
+        'svg_options',
+        'help_link',
       ]);
     } else if (info.disabledSite) {
       show([
-        "disabled_site_title",
-        "disabled_site_separator",
-        "disabled_site_section",
-        "svg_options",
-        "help_link",
+        'disabled_site_title',
+        'disabled_site_separator',
+        'disabled_site_section',
+        'svg_options',
+        'help_link',
       ]);
     } else if (info.whitelisted) {
       show([
-        "hostname",
-        "primary_section",
-        "div_domain_allowlisted_msg",
-        "allowlisted_subsection",
-        "svg_options",
-        "help_link",
+        'hostname',
+        'primary_section',
+        'div_domain_allowlisted_msg',
+        'allowlisted_subsection',
+        'svg_options',
+        'help_link',
       ]);
     } else {
-      show(["hostname", "primary_section", "popup_sections", "pause_subsection"]);
+      show(['hostname', 'primary_section', 'popup_sections', 'pause_subsection']);
     }
     if (parsedHostname) {
-      $("#hostname").text(parsedHostname);
+      $('#hostname').text(parsedHostname);
     }
 
     checkAndEnableHelp();
@@ -334,11 +334,11 @@ const start = async function () {
       // The 'undo' functionality is only available in MV2 extensions
       // until issue #305 is implemented
     ) {
-      show(["div_undo"]);
+      show(['div_undo']);
     }
 
     if (popupMenuTheme && browser.runtime && browser.runtime.id === betaExtId) {
-      $(".header-logo").attr("src", `icons/${popupMenuTheme}/beta_logo.svg`);
+      $('.header-logo').attr('src', `icons/${popupMenuTheme}/beta_logo.svg`);
     }
 
     // CTAs
@@ -347,8 +347,8 @@ const start = async function () {
       !info.disabledSite &&
       !info.whitelisted
     ) {
-      show(["div_vpn_cta"]);
-      sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "vpn_cta_seen" });
+      show(['div_vpn_cta']);
+      sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'vpn_cta_seen' });
     } else if (
       // Premium CTAs
       info.showMABEnrollment &&
@@ -356,25 +356,25 @@ const start = async function () {
       showThemesCTA &&
       userClosedFreeDCCta
     ) {
-      show(["div_premium_themes_cta"]);
-      $("#div_premium_themes_cta").attr("data-theme-cta", info.popupMenuThemeCTA);
+      show(['div_premium_themes_cta']);
+      $('#div_premium_themes_cta').attr('data-theme-cta', info.popupMenuThemeCTA);
       sendMessageWithNoResponse({
-        command: "recordGeneralMessage",
-        msg: "premium_themes_cta_seen",
-        additionalParams: { theme: info.popupMenuThemeCTA.replace("_theme", "") },
+        command: 'recordGeneralMessage',
+        msg: 'premium_themes_cta_seen',
+        additionalParams: { theme: info.popupMenuThemeCTA.replace('_theme', '') },
       });
     } else if (info.showMABEnrollment && !userClosedCta && userClosedFreeDCCta) {
-      show(["div_myadblock_enrollment_v2"]);
+      show(['div_myadblock_enrollment_v2']);
     } else if (info.showMABEnrollment && !userClosedFreeDCCta) {
-      show(["div_free_dc_cta"]);
-      sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "free_dc_cta_seen" });
+      show(['div_free_dc_cta']);
+      sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'free_dc_cta_seen' });
     } else if (info.showDcCTA && !userClosedDCCta && !info.disabledSite) {
-      show(["div_premium_dc_cta"]);
-      sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "premium_dc_cta_seen" });
+      show(['div_premium_dc_cta']);
+      sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'premium_dc_cta_seen' });
     }
 
     if (info.activeLicense === true) {
-      $("#premium_status_msg").css("display", "inline-flex");
+      $('#premium_status_msg').css('display', 'inline-flex');
     }
 
     if (errorOccurred) {
@@ -385,191 +385,191 @@ const start = async function () {
         if (!useFlexDisplayElements.includes(div)) {
           $(`#${div}`).show();
         } else if (shown[div] && useFlexDisplayElements.includes(div)) {
-          $(`#${div}`).css("display", "flex");
+          $(`#${div}`).css('display', 'flex');
         }
       }
     }
 
     if (info.paused || info.domainPaused || info.disabledSite || info.whitelisted) {
-      $("#popup_sections").hide();
+      $('#popup_sections').hide();
     }
   }
 
   // Click handlers
-  selected("#btn_unpause_all", async () => {
-    sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "unpause_clicked" });
-    await browser.runtime.sendMessage({ command: "adblockIsPaused", newValue: false });
-    await browser.runtime.sendMessage({ command: "updateButtonUIAndContextMenus" });
+  selected('#btn_unpause_all', async () => {
+    sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'unpause_clicked' });
+    await browser.runtime.sendMessage({ command: 'adblockIsPaused', newValue: false });
+    await browser.runtime.sendMessage({ command: 'updateButtonUIAndContextMenus' });
     closePopup();
   });
 
-  selected("#btn_unpause_once", async () => {
-    sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "domain_unpause_clicked" });
+  selected('#btn_unpause_once', async () => {
+    sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'domain_unpause_clicked' });
     if (pageInfo.url) {
       await browser.runtime.sendMessage({
-        command: "removeAllAllowlistRulesForTab",
+        command: 'removeAllAllowlistRulesForTab',
         tabId: pageInfo.id,
       });
-      await browser.runtime.sendMessage({ command: "updateButtonUIAndContextMenus" });
+      await browser.runtime.sendMessage({ command: 'updateButtonUIAndContextMenus' });
       closePopup();
     }
   });
 
-  selected("#div_myadblock_enrollment_v2", async () => {
-    sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "myadblock_cta_clicked" });
-    await browser.runtime.sendMessage({ command: "openTab", urlToOpen: pageInfo.premiumPayURL });
+  selected('#div_myadblock_enrollment_v2', async () => {
+    sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'myadblock_cta_clicked' });
+    await browser.runtime.sendMessage({ command: 'openTab', urlToOpen: pageInfo.premiumPayURL });
     closePopup();
   });
 
-  selected("#mab_new_cta_close", (event) => {
+  selected('#mab_new_cta_close', event => {
     event.stopPropagation();
-    sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "myadblock_cta_closed" });
-    $("#div_myadblock_enrollment_v2").slideUp();
+    sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'myadblock_cta_closed' });
+    $('#div_myadblock_enrollment_v2').slideUp();
     storageSet(popupMenuCtaClosedKey, true);
     storageSet(showPopupMenuThemesCtaKey, true);
   });
 
-  selected("#div_free_dc_cta", async () => {
+  selected('#div_free_dc_cta', async () => {
     storageSet(popupMenuFreeDCCtaClosedKey, true);
-    sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "free_dc_cta_clicked" });
+    sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'free_dc_cta_clicked' });
     await browser.runtime.sendMessage({
-      command: "openTab",
-      urlToOpen: "https://getadblock.com/premium/enrollment/distraction-control/",
+      command: 'openTab',
+      urlToOpen: 'https://getadblock.com/premium/enrollment/distraction-control/',
     });
     closePopup();
   });
 
-  selected("#div_free_dc_cta_close", (event) => {
+  selected('#div_free_dc_cta_close', event => {
     event.stopPropagation();
-    sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "free_dc_cta_closed" });
-    $("#div_free_dc_cta").slideUp();
+    sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'free_dc_cta_closed' });
+    $('#div_free_dc_cta').slideUp();
     storageSet(popupMenuFreeDCCtaClosedKey, true);
   });
 
-  selected("#div_vpn_cta", async (event) => {
+  selected('#div_vpn_cta', async event => {
     event.stopPropagation();
     storageSet(popupMenuVPNCtaClosedKey, true);
-    sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "vpn_cta_clicked" });
+    sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'vpn_cta_clicked' });
     await browser.runtime.sendMessage({
-      command: "openTab",
-      urlToOpen: "https://vpn.getadblock.com/?s=ap1",
+      command: 'openTab',
+      urlToOpen: 'https://vpn.getadblock.com/?s=ap1',
     });
     closePopup();
   });
 
-  selected("#vpn_cta_close", (event) => {
+  selected('#vpn_cta_close', event => {
     event.stopPropagation();
-    sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "vpn_cta_closed" });
-    $("#div_vpn_cta").slideUp();
+    sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'vpn_cta_closed' });
+    $('#div_vpn_cta').slideUp();
     storageSet(popupMenuVPNCtaClosedKey, true);
   });
 
-  selected("#div_premium_themes_cta", async (event) => {
+  selected('#div_premium_themes_cta', async event => {
     event.stopPropagation();
-    const theme = themeCTA ? themeCTA.replace("_theme", "") : "";
+    const theme = themeCTA ? themeCTA.replace('_theme', '') : '';
     sendMessageWithNoResponse({
-      command: "recordGeneralMessage",
-      msg: "premium_themes_cta_clicked",
+      command: 'recordGeneralMessage',
+      msg: 'premium_themes_cta_clicked',
       additionalParams: { theme },
     });
     await browser.runtime.sendMessage({
-      command: "openTab",
-      urlToOpen: browser.runtime.getURL("options.html#mab-themes"),
+      command: 'openTab',
+      urlToOpen: browser.runtime.getURL('options.html#mab-themes'),
     });
     closePopup();
   });
 
-  selected("#close-themes-cta", (event) => {
+  selected('#close-themes-cta', event => {
     event.stopPropagation();
-    const theme = themeCTA ? themeCTA.replace("_theme", "") : "";
+    const theme = themeCTA ? themeCTA.replace('_theme', '') : '';
     sendMessageWithNoResponse({
-      command: "recordGeneralMessage",
-      msg: "premium_themes_cta_closed",
+      command: 'recordGeneralMessage',
+      msg: 'premium_themes_cta_closed',
       additionalParams: { theme },
     });
-    $("#div_premium_themes_cta").slideUp();
+    $('#div_premium_themes_cta').slideUp();
     storageSet(showPopupMenuThemesCtaKey, false);
   });
 
-  selected("#div_premium_dc_cta", async (event) => {
+  selected('#div_premium_dc_cta', async event => {
     event.stopPropagation();
     storageSet(popupMenuDCCtaClosedKey, true);
-    sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "premium_dc_cta_clicked" });
+    sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'premium_dc_cta_clicked' });
     await browser.runtime.sendMessage({
-      command: "openTab",
-      urlToOpen: browser.runtime.getURL("options.html#premiumfilters"),
+      command: 'openTab',
+      urlToOpen: browser.runtime.getURL('options.html#premiumfilters'),
     });
     closePopup();
   });
 
-  selected("#close-premium-dc-cta", (event) => {
+  selected('#close-premium-dc-cta', event => {
     event.stopPropagation();
     storageSet(popupMenuDCCtaClosedKey, true);
-    sendMessageWithNoResponse({ command: "recordGeneralMessage", msg: "premium_dc_cta_closed" });
-    $("#div_premium_dc_cta").slideUp();
+    sendMessageWithNoResponse({ command: 'recordGeneralMessage', msg: 'premium_dc_cta_closed' });
+    $('#div_premium_dc_cta').slideUp();
   });
 
-  $("#div_vpn_cta")
-    .on("mouseenter", () => {
-      $("#vpn_cta").text(translate("vpn_cta_msg_hover"));
+  $('#div_vpn_cta')
+    .on('mouseenter', () => {
+      $('#vpn_cta').text(translate('vpn_cta_msg_hover'));
     })
-    .on("mouseleave", () => {
-      $("#vpn_cta").text(translate("vpn_cta_msg"));
+    .on('mouseleave', () => {
+      $('#vpn_cta').text(translate('vpn_cta_msg'));
     });
 
-  $("#div_myadblock_enrollment_v2")
-    .on("mouseenter", () => {
-      $("#mab_new_cta_text").text(translate("new_cta_hovered_text"));
+  $('#div_myadblock_enrollment_v2')
+    .on('mouseenter', () => {
+      $('#mab_new_cta_text').text(translate('new_cta_hovered_text'));
     })
-    .on("mouseleave", () => {
-      $("#mab_new_cta_text").text(translate("new_cta_default_text"));
+    .on('mouseleave', () => {
+      $('#mab_new_cta_text').text(translate('new_cta_default_text'));
     });
 
-  $("#div_premium_dc_cta")
-    .on("mouseenter", () => {
-      $("#dc-cta-text").text(translate("check_out_dc"));
+  $('#div_premium_dc_cta')
+    .on('mouseenter', () => {
+      $('#dc-cta-text').text(translate('check_out_dc'));
     })
-    .on("mouseleave", () => {
-      $("#dc-cta-text").text(translate("new_premium_feature"));
+    .on('mouseleave', () => {
+      $('#dc-cta-text').text(translate('new_premium_feature'));
     });
 
-  $("#div_free_dc_cta")
-    .on("mouseenter", () => {
-      $("#free-dc-cta-text").text(translate("get_distractioncontrol"));
+  $('#div_free_dc_cta')
+    .on('mouseenter', () => {
+      $('#free-dc-cta-text').text(translate('get_distractioncontrol'));
     })
-    .on("mouseleave", () => {
-      $("#free-dc-cta-text").text(translate("block_floating_videos"));
+    .on('mouseleave', () => {
+      $('#free-dc-cta-text').text(translate('block_floating_videos'));
     });
 
-  $("#div_premium_themes_cta")
-    .on("mouseenter", function handleIn() {
-      $("#themes-cta-text").text(translate("check_out_themes"));
-      const currentThemeCTA = $(this).attr("data-theme-cta");
-      const body = document.querySelector("body");
+  $('#div_premium_themes_cta')
+    .on('mouseenter', function handleIn() {
+      $('#themes-cta-text').text(translate('check_out_themes'));
+      const currentThemeCTA = $(this).attr('data-theme-cta');
+      const body = document.querySelector('body');
       body.id = currentThemeCTA;
       body.dataset.theme = currentThemeCTA;
 
-      let logoFileName = "logo.svg";
+      let logoFileName = 'logo.svg';
       if (browser.runtime && browser.runtime.id === betaExtId) {
-        logoFileName = "beta_logo.svg";
+        logoFileName = 'beta_logo.svg';
       }
-      $(".header-logo").attr("src", `icons/${currentThemeCTA}/${logoFileName}`);
+      $('.header-logo').attr('src', `icons/${currentThemeCTA}/${logoFileName}`);
       // eslint-disable-next-line prefer-arrow-callback
     })
-    .on("mouseleave", function handleOut() {
-      $("#themes-cta-text").text(translate("adblock_looked_like_this"));
-      const body = document.querySelector("body");
+    .on('mouseleave', function handleOut() {
+      $('#themes-cta-text').text(translate('adblock_looked_like_this'));
+      const body = document.querySelector('body');
       body.id = popupMenuTheme;
       body.dataset.theme = popupMenuTheme;
 
-      let logoFileName = "logo.svg";
+      let logoFileName = 'logo.svg';
       if (browser.runtime && browser.runtime.id === betaExtId) {
-        logoFileName = "beta_logo.svg";
+        logoFileName = 'beta_logo.svg';
       }
-      $(".header-logo").attr("src", `icons/${popupMenuTheme}/${logoFileName}`);
+      $('.header-logo').attr('src', `icons/${popupMenuTheme}/${logoFileName}`);
     });
 }; // end of start
 
-start().catch((err) => {
+start().catch(err => {
   processError(err);
 });

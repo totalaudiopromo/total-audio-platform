@@ -38,7 +38,7 @@ const MABPayment = (function mabPayment() {
     freeUserLogic(payInfo) {
       const $paySection = $(`#${payInfo.id}`);
       const $payLink = $(`#${payInfo.linkId}`);
-      $payLink.attr("href", payInfo.url);
+      $payLink.attr('href', payInfo.url);
       $paySection.show();
     },
     // Called if the user is active and Premium is unlocked
@@ -47,9 +47,9 @@ const MABPayment = (function mabPayment() {
     paidUserLogic(payInfo) {
       const $paySection = $(`#${payInfo.id}`);
       $paySection.hide();
-      $(".mab-feature.locked").removeClass("locked").addClass("hover-shadow");
-      $(".theme-wrapper.locked").removeClass("locked");
-      $(".overlay-icon").text("check");
+      $('.mab-feature.locked').removeClass('locked').addClass('hover-shadow');
+      $('.theme-wrapper.locked').removeClass('locked');
+      $('.overlay-icon').text('check');
     },
     // When the Options page loads we show the premium upsell on the
     // General, Filter Lists and Customize tabs if the user is not premium
@@ -58,15 +58,15 @@ const MABPayment = (function mabPayment() {
         return;
       }
 
-      $(".upsell-cta").show();
-      ServerMessages.recordGeneralMessage("options_page_upsell_seen");
+      $('.upsell-cta').show();
+      ServerMessages.recordGeneralMessage('options_page_upsell_seen');
     },
     userClickedUpsellCTA: () => {
-      ServerMessages.recordGeneralMessage("options_page_upsell_clicked");
+      ServerMessages.recordGeneralMessage('options_page_upsell_clicked');
     },
     userClickedPremiumCTA: () => {
       ServerMessages.recordGeneralMessage(
-        `options_page_premium_cta_clicked_${getFormattedTabName()}`,
+        `options_page_premium_cta_clicked_${getFormattedTabName()}`
       );
     },
   };

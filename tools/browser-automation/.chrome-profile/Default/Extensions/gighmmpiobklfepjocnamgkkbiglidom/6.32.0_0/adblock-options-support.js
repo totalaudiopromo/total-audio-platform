@@ -27,31 +27,31 @@ $(async () => {
    *
    * @param {any} data the debug data for the extension
    */
-  const downloadDebugData = (data) => {
+  const downloadDebugData = data => {
     const myBlob = new Blob([JSON.stringify(data, null, 4)], {
-      type: "text/plain",
+      type: 'text/plain',
     });
     const blobURL = URL.createObjectURL(myBlob);
-    const a = document.createElement("a");
-    a.setAttribute("href", blobURL);
+    const a = document.createElement('a');
+    a.setAttribute('href', blobURL);
     // use the current date & time (without seconds or the timezone) to create
     // a unique file name for the user
     const currentLocalTimeNoSpecialChars = new Date()
       .toISOString()
-      .split(".")[0]
+      .split('.')[0]
       .slice(0, -2)
-      .replace(/[-T:]/g, "");
-    a.setAttribute("download", `adblock-data-${currentLocalTimeNoSpecialChars}.txt`);
-    a.style.display = "none";
+      .replace(/[-T:]/g, '');
+    a.setAttribute('download', `adblock-data-${currentLocalTimeNoSpecialChars}.txt`);
+    a.style.display = 'none';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(blobURL);
   };
 
-  $("#debuginfo_link").click(async () => {
-    const granted = await browser.permissions.request({ permissions: ["management"] });
-    const debugData = await send("getDebugInfo");
+  $('#debuginfo_link').click(async () => {
+    const granted = await browser.permissions.request({ permissions: ['management'] });
+    const debugData = await send('getDebugInfo');
 
     if (granted) {
       // We augment the debug data with a list of all installed extensions here
@@ -68,33 +68,33 @@ $(async () => {
           enabled,
           installType,
           type,
-        }),
+        })
       );
     }
 
     downloadDebugData(debugData);
   });
 
-  selected("#whatsnew_link", () => {
-    fetch(browser.runtime.getURL("RELEASE_NOTES.md"))
-      .then((response) => response.text())
-      .then((text) => {
-        const unreleasedSection = "# Unreleased";
+  selected('#whatsnew_link', () => {
+    fetch(browser.runtime.getURL('RELEASE_NOTES.md'))
+      .then(response => response.text())
+      .then(text => {
+        const unreleasedSection = '# Unreleased';
         let cleanedText = text;
 
         if (text.startsWith(unreleasedSection)) {
-          const firstReleaseIndex = text.indexOf("#", unreleasedSection.length);
+          const firstReleaseIndex = text.indexOf('#', unreleasedSection.length);
           if (firstReleaseIndex !== -1) {
             cleanedText = text.slice(firstReleaseIndex);
           }
         }
 
-        $("#changes").text(cleanedText).fadeIn();
-        $("body, html").animate(
+        $('#changes').text(cleanedText).fadeIn();
+        $('body, html').animate(
           {
-            scrollTop: $("#changes").offset().top,
+            scrollTop: $('#changes').offset().top,
           },
-          1000,
+          1000
         );
       });
   });

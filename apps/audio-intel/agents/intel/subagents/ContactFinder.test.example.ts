@@ -136,7 +136,9 @@ async function example4_ConfidenceScoring() {
     console.log(`High confidence contacts: ${highConfidence.length}`);
 
     // Filter medium-confidence contacts
-    const mediumConfidence = contacts.filter((c: Contact) => c.confidence >= 0.6 && c.confidence < 0.8);
+    const mediumConfidence = contacts.filter(
+      (c: Contact) => c.confidence >= 0.6 && c.confidence < 0.8
+    );
     console.log(`Medium confidence contacts: ${mediumConfidence.length}`);
 
     // Filter low-confidence contacts

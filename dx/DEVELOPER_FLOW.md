@@ -24,21 +24,25 @@ This guide explains the complete developer workflow for Total Audio Platform, fr
 ### Primary Tools
 
 **Cursor** (or VS Code with Claude integration)
+
 - Primary code editor
 - AI-powered code completion
 - Integrated terminal
 
 **Claude Code**
+
 - AI development assistant
 - Project-aware context
 - Task automation via `.claude/` configuration
 
 **Playwright**
+
 - End-to-end testing
 - Mobile testing suite
 - Component validation
 
 **pnpm**
+
 - Package manager
 - Monorepo workspace management
 - Fast, efficient installs
@@ -140,6 +144,7 @@ chore: update dependencies to latest versions
 **Format**: `<type>: <description>`
 
 **Types**:
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `refactor`: Code improvement without functionality change
@@ -152,6 +157,7 @@ chore: update dependencies to latest versions
 ### Monorepo Structure
 
 **Apps** (independent applications):
+
 ```
 apps/
 ├── audio-intel/         # Contact enrichment (primary revenue)
@@ -161,6 +167,7 @@ apps/
 ```
 
 **Packages** (shared code):
+
 ```
 packages/
 ├── ui/                  # Shared UI components
@@ -169,11 +176,13 @@ packages/
 ```
 
 **Important Rules**:
+
 - ❌ Apps MUST NOT import from other apps
 - ✅ Apps CAN import from packages
 - ✅ Shared code goes in packages
 
 **Example**:
+
 ```typescript
 // ❌ WRONG - cross-app import
 import { UserProfile } from '../../../tracker/components/UserProfile';
@@ -218,6 +227,7 @@ Brief description of changes
 ### PR Template
 
 The template includes sections for:
+
 - Summary and motivation
 - Type of change
 - Apps/packages affected
@@ -232,6 +242,7 @@ The template includes sections for:
 ### Enabling Auto-Merge
 
 After creating PR:
+
 1. Click "Enable auto-merge" button
 2. Select merge method:
    - **Squash and merge** (recommended for feature branches)
@@ -276,6 +287,7 @@ After creating PR:
 ```
 
 **You only intervene if**:
+
 - CodeRabbit finds issues (fix and push again)
 - CI checks fail (fix and push again)
 - Security vulnerabilities found (update dependencies)
@@ -295,6 +307,7 @@ Developer Push → CI (Validate) → Vercel (Deploy) → Golden Verify (Check)
 **File**: `.github/workflows/ci.yml`
 
 **What it does**:
+
 - ✅ Lint all packages
 - ✅ Typecheck all packages
 - ✅ Run all tests
@@ -302,12 +315,14 @@ Developer Push → CI (Validate) → Vercel (Deploy) → Golden Verify (Check)
 - ❌ Does NOT deploy (that's Vercel's job)
 
 **Triggers**:
+
 - Push to `main` branch
 - Pull request to `main` branch
 
 ### Vercel Deployment (Automatic)
 
 **How it works**:
+
 - Vercel GitHub App monitors `main` branch
 - Automatic deployment on merge
 - Deploys all 3 apps in parallel:
@@ -322,12 +337,14 @@ Developer Push → CI (Validate) → Vercel (Deploy) → Golden Verify (Check)
 **File**: `.github/workflows/golden-verify.yml`
 
 **What it does**:
+
 - ✅ Health checks for all 3 apps
 - ✅ Validates deployments succeeded
 - ✅ Ingests metrics to Command Centre dashboard
 - ✅ Sends Telegram notifications (failures only)
 
 **Triggers**:
+
 - After Vercel deployment completes
 - Hourly health checks (scheduled)
 - Daily summary reports (scheduled)
@@ -361,6 +378,7 @@ vercel --prod
 **Access**: https://command.totalaudiopromo.com (when deployed)
 
 **Metrics available**:
+
 - Deployment health status
 - Test results across apps
 - Component analysis findings
@@ -372,6 +390,7 @@ vercel --prod
 **Setup**: Telegram bot sends notifications to configured chat.
 
 **Notification triggers** (failures only):
+
 - ❌ Golden Verify health check failed
 - ❌ CI workflow failed
 - ❌ Revenue audit failed
@@ -382,11 +401,13 @@ vercel --prod
 ### Vercel Logs
 
 **Per-app dashboards**:
+
 - Audio Intel: https://vercel.com/chris-projects-6ffe0e29/audio-intel
 - Tracker: https://vercel.com/chris-projects-6ffe0e29/tracker-fresh
 - Pitch Generator: https://vercel.com/chris-projects-6ffe0e29/pitch-generator
 
 **What to check**:
+
 - Build logs (if deployment failed)
 - Runtime logs (if app errors occur)
 - Analytics (traffic and performance)
@@ -408,6 +429,7 @@ curl https://pitch.totalaudiopromo.com/api/health
 ```
 
 **Expected response**:
+
 ```json
 {
   "status": "healthy",
@@ -525,6 +547,7 @@ npx supabase db reset
 ### Environment Variables
 
 **Local development**:
+
 ```bash
 # Copy example env files
 cp apps/audio-intel/.env.example apps/audio-intel/.env.local
@@ -536,6 +559,7 @@ nano apps/audio-intel/.env.local
 ```
 
 **Production**:
+
 - Set in Vercel dashboard per project
 - Set GitHub secrets for CI workflows
 - Never commit `.env.local` files (gitignored)
@@ -547,23 +571,27 @@ nano apps/audio-intel/.env.local
 ### CI Failing
 
 **Lint errors**:
+
 ```bash
 pnpm run lint:fix  # Auto-fix issues
 ```
 
 **Type errors**:
+
 ```bash
 pnpm run typecheck  # See all errors
 # Fix manually, TypeScript can't auto-fix
 ```
 
 **Test failures**:
+
 ```bash
 pnpm run test:audio-intel --reporter=verbose  # See detailed output
 # Fix failing tests
 ```
 
 **Build errors**:
+
 ```bash
 pnpm run build:audio-intel  # Build locally to debug
 # Check error messages, usually missing env vars or type errors
@@ -574,11 +602,13 @@ pnpm run build:audio-intel  # Build locally to debug
 **View comments**: Check PR "Files changed" tab for inline comments
 
 **Address issues**:
+
 1. Fix the issues CodeRabbit identified
 2. Commit and push changes
 3. CodeRabbit re-reviews automatically
 
 **Override (if false positive)**:
+
 ```markdown
 @coderabbit ignore [rule-name]
 
@@ -590,12 +620,14 @@ Reason: [explain why this is a false positive]
 ### PR Not Auto-Merging
 
 **Check**:
+
 1. Auto-merge enabled? (click "Enable auto-merge" button)
 2. All checks passing? (view "Checks" tab)
 3. Conversations resolved? (resolve all comment threads)
 4. Branch up to date? (update branch if needed)
 
 **Update branch**:
+
 ```bash
 git checkout feature/your-branch
 git fetch origin
@@ -606,16 +638,19 @@ git push --force-with-lease
 ### Vercel Deployment Failed
 
 **Check Vercel logs**:
+
 1. Go to Vercel dashboard for the app
 2. Click on failed deployment
 3. View build logs
 
 **Common issues**:
+
 - Missing environment variables
 - Build errors (fix locally first)
 - Memory limit exceeded (contact Vercel support)
 
 **Fix**:
+
 1. Identify issue from logs
 2. Fix in code or Vercel settings
 3. Push again or trigger manual deployment
@@ -623,6 +658,7 @@ git push --force-with-lease
 ### Golden Verify Failing
 
 **Check health endpoints**:
+
 ```bash
 curl https://intel.totalaudiopromo.com/api/health
 curl https://tracker.totalaudiopromo.com/api/health
@@ -630,12 +666,14 @@ curl https://pitch.totalaudiopromo.com/api/health
 ```
 
 **If app not responding**:
+
 1. Check Vercel deployment status
 2. Check Vercel runtime logs
 3. Verify environment variables set
 4. Check Supabase connection
 
 **View Golden Verify logs**:
+
 - GitHub Actions: https://github.com/totalaudiopromo/total-audio-platform/actions/workflows/golden-verify.yml
 
 ### Lockfile Out of Sync
@@ -643,6 +681,7 @@ curl https://pitch.totalaudiopromo.com/api/health
 **Error**: `ERR_PNPM_OUTDATED_LOCKFILE`
 
 **Fix**:
+
 ```bash
 # Regenerate lockfile
 pnpm install
@@ -662,6 +701,7 @@ git push
 ### Code Quality
 
 1. **Run checks before pushing**
+
    ```bash
    pnpm run lint && pnpm run typecheck && pnpm run test
    ```
@@ -690,6 +730,7 @@ git push
    - Check `.gitignore` includes `.env.local`
 
 2. **Validate user input**
+
    ```typescript
    // Always validate and sanitize
    const email = z.string().email().parse(input.email);
@@ -702,6 +743,7 @@ git push
 ### Performance
 
 1. **Use Next.js Image component**
+
    ```typescript
    // ✅ Correct
    import Image from 'next/image';
@@ -746,6 +788,7 @@ git push
 5. **Deploy**: Automatic after merge
 
 **The system handles**:
+
 - ✅ Code review (CodeRabbit)
 - ✅ Validation (CI)
 - ✅ Deployment (Vercel)
@@ -753,6 +796,7 @@ git push
 - ✅ Monitoring (Command Centre)
 
 **You only act when**:
+
 - ❌ CodeRabbit finds issues
 - ❌ CI checks fail
 - ❌ Telegram alerts you

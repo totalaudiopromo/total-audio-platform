@@ -11,7 +11,7 @@ import { VoiceGuardSkill } from '../src/core/skills/implementations/VoiceGuardSk
 import { SkillContext } from '../src/core/skills/SkillEngine';
 
 async function testVoiceGuard() {
-  console.log('🧪 Testing VoiceGuardSkill...\n');
+  console.log('🧪 Testing VoiceGuard™ Skill...\n');
 
   // Test 1: US spelling correction
   console.log('Test 1: UK Spelling Correction');

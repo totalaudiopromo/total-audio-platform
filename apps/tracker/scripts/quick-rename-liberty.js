@@ -58,7 +58,8 @@ const libertyCampaigns = [
     target_reach: 38,
     actual_reach: 12,
     status: 'active',
-    notes: 'Electronic/Experimental track campaign targeting community radio stations.',
+    notes:
+      'Electronic/Experimental track campaign targeting community radio stations.',
   },
   {
     name: 'Concerta - Consumption',
@@ -71,7 +72,8 @@ const libertyCampaigns = [
     target_reach: 52,
     actual_reach: 10,
     status: 'active',
-    notes: 'Electronic playlist campaign targeting Spotify editorial and indie playlists.',
+    notes:
+      'Electronic playlist campaign targeting Spotify editorial and indie playlists.',
   },
 ];
 
@@ -106,7 +108,9 @@ async function generateRenameSQL() {
     console.log(`  status = '${campaign.status}',`);
     console.log(`  notes = '${campaign.notes.replace(/'/g, "''")}'`);
     console.log("WHERE user_id = 'YOUR_USER_ID'");
-    console.log("  AND (name IS NULL OR name = '' OR name = 'Untitled Campaign')");
+    console.log(
+      "  AND (name IS NULL OR name = '' OR name = 'Untitled Campaign')"
+    );
     console.log('LIMIT 1;');
     console.log('');
   });
@@ -114,9 +118,10 @@ async function generateRenameSQL() {
   console.log('─'.repeat(60));
   console.log('');
   console.log('✅ Copy the SQL above and run it in Supabase SQL Editor');
-  console.log('   URL: https://supabase.com/dashboard/project/mjfhegawkusjlkcgfevp/sql');
+  console.log(
+    '   URL: https://supabase.com/dashboard/project/mjfhegawkusjlkcgfevp/sql'
+  );
   console.log('');
 }
 
 generateRenameSQL().catch(console.error);
-

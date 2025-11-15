@@ -642,7 +642,6 @@ This release contains only minor updates and under-the-hood changes.
   - the AdBlock Options page to use message passing
   - created a new common utilies module for use within a service worker
 - Updated several dependencies used within AdBlock:
-
   - snippets to 0.6.0
   - adblockplusui to 3.16
   - web ext SDK to 0.7.2
@@ -669,7 +668,6 @@ This release contains only minor updates and under-the-hood changes.
 - Added a backup IP address telemetry process that will be used in case of a network issue
 - Updated the eyeo web ext SDK to version 0.5.0
 - In preparation for Manifest V3, the following changes where made:
-
   - converted modules that use the setTimeout & setInterval function to use the Alarm API
   - removed references to local storage, and instead use the extension storage API
   - removed any reference to jQuery in background scripts
@@ -738,7 +736,6 @@ This release contains only minor updates and under-the-hood changes.
 
 - Removed the logic to show the "New" badge text on extension update
 - In preparation for manifest V3, and to help us better understand how our users use AdBlock, we've added
-
   - AdBlock Options Page Telemetry
   - filter list subscription information to the ping data
 

@@ -17,35 +17,35 @@
 /* global browser, sessionStorageSet,  ewe, translate */
 
 /* eslint-disable import/extensions */
-import MenuLink from "./components/MenuLink.js";
-import MenuLinkButton from "./components/MenuLinkButton.js";
-import SubNav from "./components/SubNav.js";
+import MenuLink from './components/MenuLink.js';
+import MenuLinkButton from './components/MenuLinkButton.js';
+import SubNav from './components/SubNav.js';
 
-import { PAGE_INFO_KEY, getTabId, setupBehaviorListeners, translatePageTitle } from "./utils.js";
+import { PAGE_INFO_KEY, getTabId, setupBehaviorListeners, translatePageTitle } from './utils.js';
 
 const initializeAndAddElements = () => {
   const tabId = getTabId();
-  browser.runtime.sendMessage({ command: "getCurrentTabInfo", tabId }).then((pageInfo) => {
+  browser.runtime.sendMessage({ command: 'getCurrentTabInfo', tabId }).then(pageInfo => {
     sessionStorageSet(PAGE_INFO_KEY, pageInfo);
-    customElements.define("menu-link-button", MenuLinkButton);
-    customElements.define("menu-link", MenuLink);
-    customElements.define("subsection-navigation", SubNav);
+    customElements.define('menu-link-button', MenuLinkButton);
+    customElements.define('menu-link', MenuLink);
+    customElements.define('subsection-navigation', SubNav);
   });
 };
 
 const updateAccountButton = async () => {
-  const btn = document.getElementById("popup-account-button");
+  const btn = document.getElementById('popup-account-button');
   const user = await ewe.account.getProfile();
   btn.href = await browser.runtime.sendMessage({
-    type: "app.get",
-    what: "ctalink",
-    link: "premium-manage",
+    type: 'app.get',
+    what: 'ctalink',
+    link: 'premium-manage',
     queryParams: {
-      source: "popup",
+      source: 'popup',
     },
   });
   btn.textContent =
-    user && user.email ? translate("user_account_manage_account") : translate("user_account_login");
+    user && user.email ? translate('user_account_manage_account') : translate('user_account_login');
 };
 
 const start = () => {

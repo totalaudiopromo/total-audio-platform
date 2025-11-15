@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/components/AuthProvider';
+import { WorkspaceProvider } from '@total-audio/core-db/contexts/workspace-context';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { ExitIntentPopup, CookieBanner } from '@/components/ClientOnlyComponents';
@@ -39,13 +40,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           ></iframe>
         </noscript>
         <AuthProvider>
-          <div className="flex min-h-screen flex-col bg-white">
-            <SiteHeader />
-            <main className="flex-1 px-4 pb-16 pt-10 sm:px-8 lg:px-12 xl:px-16">{children}</main>
-            <SiteFooter />
-            <ExitIntentPopup />
-            <CookieBanner />
-          </div>
+          <WorkspaceProvider>
+            <div className="flex min-h-screen flex-col bg-white">
+              <SiteHeader />
+              <main className="flex-1 px-4 pb-16 pt-10 sm:px-8 lg:px-12 xl:px-16">{children}</main>
+              <SiteFooter />
+              <ExitIntentPopup />
+              <CookieBanner />
+            </div>
+          </WorkspaceProvider>
         </AuthProvider>
       </body>
     </html>

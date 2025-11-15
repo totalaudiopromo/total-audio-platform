@@ -2,7 +2,7 @@
 
 /**
  * Skills Demo Page
- * Quick test of VoiceGuardSkill integration
+ * Quick test of VoiceGuard™ Skill integration
  */
 
 import { useState } from 'react';
@@ -39,7 +39,7 @@ export default function SkillsDemo() {
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h1 className="text-3xl font-bold mb-2">🎵 Skills System Demo</h1>
           <p className="text-gray-600 mb-6">
-            Test VoiceGuardSkill - UK voice enforcement with Haiku
+            Test VoiceGuard™ Skill - UK voice enforcement with Haiku
           </p>
 
           <div className="space-y-4">

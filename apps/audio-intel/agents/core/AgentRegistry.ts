@@ -191,7 +191,7 @@ export class AgentRegistry {
     });
 
     this.manifests.set('voiceguard', {
-      name: 'VoiceGuardAgent',
+      name: 'VoiceGuard™ Agent',
       version: '1.0.0',
       description: "Brand voice enforcement - ensures authentic 'honest maker' tone",
       capabilities: [

@@ -86,7 +86,7 @@ class EventEmitter {
    * @returns {boolean}
    */
   hasListeners(name) {
-    return this.listeners.size > 0 && (typeof name === "undefined" || this.listeners.has(name));
+    return this.listeners.size > 0 && (typeof name === 'undefined' || this.listeners.has(name));
   }
 
   /**

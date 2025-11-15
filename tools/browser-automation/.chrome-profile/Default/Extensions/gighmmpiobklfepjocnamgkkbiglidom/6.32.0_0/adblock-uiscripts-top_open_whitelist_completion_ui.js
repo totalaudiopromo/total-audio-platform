@@ -20,7 +20,7 @@
    processReplacementChildrenInContent, setLangAndDirAttributes, loadWizardResources */
 
 // Global lock so we can't open more than once on a tab.
-if (typeof window.mayOpenDialogUi === "undefined") {
+if (typeof window.mayOpenDialogUi === 'undefined') {
   window.mayOpenDialogUi = true;
 }
 
@@ -39,21 +39,21 @@ function topOpenWhitelistCompletionUI(options) {
   mayOpenDialogUi = false;
 
   // Get Flash objects out of the way of our UI
-  browser.runtime.sendMessage({ command: "sendContentToBack" });
+  browser.runtime.sendMessage({ command: 'sendContentToBack' });
 
   // A empty base <div> is appended to the page's DOM and then a shadow is hosted in it.
   // The shadow protects our dialog from outside CSS "leaking" in.
   // Existing page styles are reset in the shadow at the top of `adblock-wizard.css`
   // using `:host` to select our base and the CCS rule `all:initial;` to perform the reset.
-  const base = document.createElement("div");
-  const $base = $(base.attachShadow({ mode: "open" }));
+  const base = document.createElement('div');
+  const $base = $(base.attachShadow({ mode: 'open' }));
 
   loadWizardResources($base, () => {
     // check if we're running on website with a frameset, if so, tell
     // the user we can't run on it.
-    if ($("frameset").length >= 1) {
+    if ($('frameset').length >= 1) {
       // eslint-disable-next-line no-alert
-      alert(translate("wizardcantrunonframesets"));
+      alert(translate('wizardcantrunonframesets'));
       mayOpenDialogUi = true;
       return;
     }
@@ -61,44 +61,44 @@ function topOpenWhitelistCompletionUI(options) {
     const html = `
     <div id="wizard">
       <header >
-        <img aria-hidden="true" src="${browser.runtime.getURL("/icons/icon24.png")}">
-        <h1 >${translate("whitelistertitle2")}</h1>
+        <img aria-hidden="true" src="${browser.runtime.getURL('/icons/icon24.png')}">
+        <h1 >${translate('whitelistertitle2')}</h1>
       </header>
       <section>
         <div class='messageWithLink' i18n_replacement_el='settings-link'>
-          ${i18nJoin("successfully_whitelisted", "future_show_ads", "change_behavior_settings")}
+          ${i18nJoin('successfully_whitelisted', 'future_show_ads', 'change_behavior_settings')}
           <a id='settings-link' class='link' href='#'></a>
         </div>
       </section>
       <section >
-        <div>${translate("adblock_wont_run_on_pages_matching")}</div>
+        <div>${translate('adblock_wont_run_on_pages_matching')}</div>
         <div dir="ltr" id="adblock-rule"></div>
       </section>
       <section class='body-button'>
-        <button class='cancel'>${translate("done")}</button>
+        <button class='cancel'>${translate('done')}</button>
       </section>
     </div>
     `;
 
     const $dialog = $(html);
-    const $adblockRule = $dialog.find("#adblock-rule");
-    const $doneBtn = $dialog.find("button.cancel");
-    const $settingsLink = $dialog.find("#settings-link");
+    const $adblockRule = $dialog.find('#adblock-rule');
+    const $doneBtn = $dialog.find('button.cancel');
+    const $settingsLink = $dialog.find('#settings-link');
 
-    $adblockRule.text(options.rule || "");
+    $adblockRule.text(options.rule || '');
 
-    $doneBtn.on("click", () => {
+    $doneBtn.on('click', () => {
       mayOpenDialogUi = true;
       (document.body || document.documentElement).removeChild(base);
     });
-    $settingsLink.on("click", () => {
+    $settingsLink.on('click', () => {
       browser.runtime.sendMessage({
-        command: "openTab",
-        urlToOpen: browser.runtime.getURL("options.html#customize"),
+        command: 'openTab',
+        urlToOpen: browser.runtime.getURL('options.html#customize'),
       });
     });
 
-    $dialog.find(".messageWithLink").each(function replaceLinks() {
+    $dialog.find('.messageWithLink').each(function replaceLinks() {
       processReplacementChildrenInContent($(this));
     });
 
@@ -113,6 +113,6 @@ function topOpenWhitelistCompletionUI(options) {
 
 // required return value for tabs.executeScript
 /* eslint-disable-next-line no-unused-expressions */
-("");
+('');
 
 //# sourceURL=/uiscripts/top_open_whitelist_ui.js

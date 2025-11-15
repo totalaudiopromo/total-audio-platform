@@ -1,5 +1,5 @@
 /**
- * Voice Guard Skill Tests
+ * VoiceGuard™ Skill Tests
  * Total Audio Platform
  */
 
@@ -7,7 +7,7 @@ import { describe, it, expect, beforeAll } from '@jest/globals';
 import { VoiceGuardSkill } from '../implementations/VoiceGuardSkill';
 import { SkillContext } from '../SkillEngine';
 
-describe('VoiceGuardSkill', () => {
+describe('VoiceGuard™ Skill', () => {
   let mockContext: SkillContext;
 
   beforeAll(() => {

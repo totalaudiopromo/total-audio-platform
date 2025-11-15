@@ -28,24 +28,24 @@ const popupMenuHelpActionMap = {
   // when updating is complete or after 6 seconds
   okCheckWhitelistAction() {
     if (pageInfo.whitelisted) {
-      transitionTo("seeAdOnWhitelist", false);
+      transitionTo('seeAdOnWhitelist', false);
     } else {
-      transitionTo("seeAdNotOnWhitelist", false);
-      $("button").prop("disabled", true);
-      browser.runtime.sendMessage({ command: "updateFilterLists" });
+      transitionTo('seeAdNotOnWhitelist', false);
+      $('button').prop('disabled', true);
+      browser.runtime.sendMessage({ command: 'updateFilterLists' });
       setTimeout(() => {
-        browser.runtime.sendMessage({ command: "checkUpdateProgress" }).then((progress) => {
+        browser.runtime.sendMessage({ command: 'checkUpdateProgress' }).then(progress => {
           if (progress.inProgress) {
             setTimeout(() => {
-              browser.runtime.sendMessage({ command: "checkUpdateProgress" }).then((progress2) => {
+              browser.runtime.sendMessage({ command: 'checkUpdateProgress' }).then(progress2 => {
                 if (progress2.inProgress || progress2.filterError) {
                   filterUpdateError = true;
                 }
-                $("button").prop("disabled", false);
+                $('button').prop('disabled', false);
               });
             }, 5000); // wait five seconds and check again
           } else {
-            $("button").prop("disabled", false);
+            $('button').prop('disabled', false);
           }
           if (progress.filterError && !progress.inProgress) {
             filterUpdateError = true;
@@ -56,24 +56,24 @@ const popupMenuHelpActionMap = {
   },
   okCheckWhitelistDistractionsAction() {
     if (pageInfo.whitelisted) {
-      transitionTo("seeDistractionOnWhitelist", false);
+      transitionTo('seeDistractionOnWhitelist', false);
     } else {
-      transitionTo("seeDistractionNotOnWhitelist", false);
-      $("button").prop("disabled", true);
-      browser.runtime.sendMessage({ command: "updateFilterLists" });
+      transitionTo('seeDistractionNotOnWhitelist', false);
+      $('button').prop('disabled', true);
+      browser.runtime.sendMessage({ command: 'updateFilterLists' });
       setTimeout(() => {
-        browser.runtime.sendMessage({ command: "checkUpdateProgress" }).then((progress) => {
+        browser.runtime.sendMessage({ command: 'checkUpdateProgress' }).then(progress => {
           if (progress.inProgress) {
             setTimeout(() => {
-              browser.runtime.sendMessage({ command: "checkUpdateProgress" }).then((progress2) => {
+              browser.runtime.sendMessage({ command: 'checkUpdateProgress' }).then(progress2 => {
                 if (progress2.inProgress || progress2.filterError) {
                   filterUpdateError = true;
                 }
-                $("button").prop("disabled", false);
+                $('button').prop('disabled', false);
               });
             }, 5000); // wait five seconds and check again
           } else {
-            $("button").prop("disabled", false);
+            $('button').prop('disabled', false);
           }
           if (progress.filterError && !progress.inProgress) {
             filterUpdateError = true;
@@ -83,217 +83,217 @@ const popupMenuHelpActionMap = {
     }
   },
   dontRemoveWhitelistAction() {
-    transitionTo("dontRemoveWhitelist", false);
+    transitionTo('dontRemoveWhitelist', false);
   },
   removeWhitelistAction() {
     if (pageInfo.url) {
       browser.runtime.sendMessage({
-        command: "removeAllAllowlistRulesForTab",
+        command: 'removeAllAllowlistRulesForTab',
         tabId: pageInfo.id,
       });
     }
-    transitionTo("removeWhitelist", false);
+    transitionTo('removeWhitelist', false);
   },
   dontRemoveWhitelistDistractionAction() {
-    transitionTo("dontRemoveWhitelistDistraction", false);
+    transitionTo('dontRemoveWhitelistDistraction', false);
   },
   removeWhitelistDistractionAction() {
     if (pageInfo.url) {
       browser.runtime.sendMessage({
-        command: "removeAllAllowlistRulesForTab",
+        command: 'removeAllAllowlistRulesForTab',
         tabId: pageInfo.id,
       });
     }
-    transitionTo("removeWhitelistDistraction", false);
+    transitionTo('removeWhitelistDistraction', false);
   },
   finishFlowAction() {
-    logHelpFlowResults("finishFlow");
+    logHelpFlowResults('finishFlow');
     window.close();
   },
   reloadFinishFlowAction() {
     browser.tabs.reload(pageInfo.id);
-    logHelpFlowResults("reloadFinishFlow");
+    logHelpFlowResults('reloadFinishFlow');
     window.close();
   },
   reloadCheckAction() {
     browser.tabs.reload(pageInfo.id);
-    transitionTo("checkedBasics", false);
+    transitionTo('checkedBasics', false);
   },
   reloadCheckDistractionAction() {
     browser.tabs.reload(pageInfo.id);
-    transitionTo("checkedDistractionBasics", false);
+    transitionTo('checkedDistractionBasics', false);
   },
   stillSeeAdAction() {
     if (filterUpdateError) {
-      transitionTo("seeAdFilterError", false);
+      transitionTo('seeAdFilterError', false);
     } else {
-      transitionTo("seeAdFiltersGood", false);
+      transitionTo('seeAdFiltersGood', false);
     }
   },
   stillSeeDistractionAction() {
     if (filterUpdateError) {
-      transitionTo("seeDistractionFilterError", false);
+      transitionTo('seeDistractionFilterError', false);
     } else if (
       pageInfo &&
       pageInfo.subscriptions &&
-      pageInfo.subscriptions["distraction-control"]
+      pageInfo.subscriptions['distraction-control']
     ) {
-      transitionTo("requestDCSubmission", false);
+      transitionTo('requestDCSubmission', false);
     } else {
       savedData = {};
       savedData.subURL =
         browser.runtime.getManifest().manifest_version === 2
-          ? "https://easylist-downloads.adblockplus.org/adblock_premium.txt"
-          : "https://easylist-downloads.adblockplus.org/v3/full/adblock_premium.txt";
-      transitionTo("enableDCFeature", false);
+          ? 'https://easylist-downloads.adblockplus.org/adblock_premium.txt'
+          : 'https://easylist-downloads.adblockplus.org/v3/full/adblock_premium.txt';
+      transitionTo('enableDCFeature', false);
     }
   },
   problemSolvedAction() {
-    transitionTo("problemSolved", false);
+    transitionTo('problemSolved', false);
   },
   seeAdEnglishSiteAction() {
-    transitionTo("seeAdEnglishSite", false);
+    transitionTo('seeAdEnglishSite', false);
   },
   seeAdNotEnglishSiteAction() {
-    transitionTo("seeAdNotEnglishSite", false);
+    transitionTo('seeAdNotEnglishSite', false);
   },
   // Unpauses and reloads the page
   unpauseAndReloadAction() {
     if (pageInfo.paused) {
-      browser.runtime.sendMessage({ command: "adblockIsPaused", newValue: false }).then(() => {
+      browser.runtime.sendMessage({ command: 'adblockIsPaused', newValue: false }).then(() => {
         browser.tabs.reload(pageInfo.id);
-        transitionTo("unpauseAndReload", false);
+        transitionTo('unpauseAndReload', false);
       });
     } else if (pageInfo.url) {
       browser.runtime
         .sendMessage({
-          command: "removeAllAllowlistRulesForTab",
+          command: 'removeAllAllowlistRulesForTab',
           tabId: pageInfo.id,
         })
         .then(() => {
           browser.tabs.reload(pageInfo.id);
-          transitionTo("unpauseAndReload", false);
+          transitionTo('unpauseAndReload', false);
         });
     } else {
       browser.tabs.reload(pageInfo.id);
-      transitionTo("unpauseAndReload", false);
+      transitionTo('unpauseAndReload', false);
     }
   },
   // Unpauses and reloads the page
   unpauseAndReloadActionDistraction() {
     if (pageInfo.paused) {
-      browser.runtime.sendMessage({ command: "adblockIsPaused", newValue: false }).then(() => {
+      browser.runtime.sendMessage({ command: 'adblockIsPaused', newValue: false }).then(() => {
         browser.tabs.reload(pageInfo.id);
         browser.runtime
-          .sendMessage({ command: "getCurrentTabInfo", tabId: pageInfo.id })
-          .then((info) => {
+          .sendMessage({ command: 'getCurrentTabInfo', tabId: pageInfo.id })
+          .then(info => {
             // eslint-disable-next-line no-global-assign
             pageInfo = info;
-            transitionTo("unpauseAndReloadDistraction", false);
+            transitionTo('unpauseAndReloadDistraction', false);
           });
       });
     } else if (pageInfo.url) {
       browser.runtime
         .sendMessage({
-          command: "removeAllAllowlistRulesForTab",
+          command: 'removeAllAllowlistRulesForTab',
           tabId: pageInfo.id,
         })
         .then(() => {
           browser.tabs.reload(pageInfo.id);
           browser.runtime
-            .sendMessage({ command: "getCurrentTabInfo", tabId: pageInfo.id })
-            .then((info) => {
+            .sendMessage({ command: 'getCurrentTabInfo', tabId: pageInfo.id })
+            .then(info => {
               // eslint-disable-next-line no-global-assign
               pageInfo = info;
-              transitionTo("unpauseAndReloadDistraction", false);
+              transitionTo('unpauseAndReloadDistraction', false);
             });
         });
     } else {
       browser.tabs.reload(pageInfo.id);
       browser.runtime
-        .sendMessage({ command: "getCurrentTabInfo", tabId: pageInfo.id })
-        .then((info) => {
+        .sendMessage({ command: 'getCurrentTabInfo', tabId: pageInfo.id })
+        .then(info => {
           // eslint-disable-next-line no-global-assign
           pageInfo = info;
-          transitionTo("unpauseAndReloadDistraction", false);
+          transitionTo('unpauseAndReloadDistraction', false);
         });
     }
   },
   dontChangeSeeAdsAction() {
-    transitionTo("dontChangeSeeAds", false);
+    transitionTo('dontChangeSeeAds', false);
   },
   dontChangeSeeDistractionAction() {
-    transitionTo("dontChangeSeeDistraction", false);
+    transitionTo('dontChangeSeeDistraction', false);
   },
   seeAdsUnpausedAction() {
-    transitionTo("seeAdFiltersGood", false);
+    transitionTo('seeAdFiltersGood', false);
   },
   // Pauses and reloads the page
   reloadStillBrokenAction() {
-    browser.runtime.sendMessage({ command: "adblockIsPaused", newValue: true }).then(() => {
+    browser.runtime.sendMessage({ command: 'adblockIsPaused', newValue: true }).then(() => {
       browser.tabs.reload(pageInfo.id);
-      transitionTo("reloadStillBroken", false);
+      transitionTo('reloadStillBroken', false);
     });
   },
   stillBrokenNotAdBlockAction() {
-    transitionTo("stillBrokenNotAdBlock", false);
+    transitionTo('stillBrokenNotAdBlock', false);
   },
   stillBrokenAdBlockAction() {
-    transitionTo("stillBrokenAdBlock", false);
+    transitionTo('stillBrokenAdBlock', false);
   },
   reportRecievedAction() {
     const msg = {
-      command: "sendDCReport",
+      command: 'sendDCReport',
       url: pageInfo.url.origin + pageInfo.url.pathname,
-      type: "distraction",
-      id: "distraction-control",
+      type: 'distraction',
+      id: 'distraction-control',
     };
     browser.runtime.sendMessage(msg).then(() => {
-      transitionTo("finishDCSubmission", false);
+      transitionTo('finishDCSubmission', false);
     });
   },
   distractionControlFeatureDisabled() {
-    transitionTo("distractionControlFeatureDisabled", false);
+    transitionTo('distractionControlFeatureDisabled', false);
   },
   requestDCSubmission() {
-    transitionTo("requestDCSubmission", false);
+    transitionTo('requestDCSubmission', false);
   },
   showDCHelpPanel() {
-    transitionTo("showDCHelpPanel", false);
+    transitionTo('showDCHelpPanel', false);
   },
   subscribeToFilterList() {
-    transitionTo("waitToRefreshPage", false);
+    transitionTo('waitToRefreshPage', false);
     connectUIPort(({ addUIListener, postUIMessage, disconnectUI }) => {
-      addUIListener((message) => {
-        if (message && message.type === "subscriptions.respond" && message.action) {
+      addUIListener(message => {
+        if (message && message.type === 'subscriptions.respond' && message.action) {
           setTimeout(() => {
             // wait at least 2 seconds for the user to see the button / icon change
             disconnectUI();
-            $("#help_content button.button[disabled]")
-              .text(translate("reload_the_page"))
-              .attr("disabled", false);
+            $('#help_content button.button[disabled]')
+              .text(translate('reload_the_page'))
+              .attr('disabled', false);
           }, 2000);
         }
       });
       postUIMessage({
-        type: "subscriptions.listen",
-        filter: ["added", "changed"],
+        type: 'subscriptions.listen',
+        filter: ['added', 'changed'],
       });
     });
-    browser.runtime.sendMessage({ type: "subscriptions.add", url: savedData.subURL });
+    browser.runtime.sendMessage({ type: 'subscriptions.add', url: savedData.subURL });
   },
   reloadcheckedDistractions() {
     browser.tabs.reload(pageInfo.id);
-    transitionTo("checkedDistractions", false);
+    transitionTo('checkedDistractions', false);
   },
   distractionsProblemSolvedAction() {
-    transitionTo("seeingDistractionsProblemSolved", false);
+    transitionTo('seeingDistractionsProblemSolved', false);
   },
   whichDistractionsAction() {
-    if (pageInfo && pageInfo.subscriptions && pageInfo.subscriptions["distraction-control"]) {
-      transitionTo("requestDCSubmission", false);
+    if (pageInfo && pageInfo.subscriptions && pageInfo.subscriptions['distraction-control']) {
+      transitionTo('requestDCSubmission', false);
     } else {
-      transitionTo("seeDistraction", false);
+      transitionTo('seeDistraction', false);
     }
   },
 };

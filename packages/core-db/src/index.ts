@@ -35,7 +35,30 @@
  */
 
 // Re-export utility functions
-export { isAdmin, ownsResource, getSubscriptionTier } from './utils';
+export {
+  isAdmin,
+  ownsResource,
+  getSubscriptionTier,
+  ErrorLogger,
+  createErrorLogger,
+  errorLogger,
+} from './utils';
+export type { ErrorCategory, ErrorLogEntry } from './utils';
+
+// Re-export workspace queries
+export { WorkspaceQueries, createWorkspaceQueries } from './workspace/queries';
+
+// Re-export integration sync system
+export { BaseIntegrationSync, GmailSyncService, AirtableSyncService } from './integrations';
+export type {
+  IntegrationConfig,
+  IntegrationName,
+  SyncResult,
+  WorkspaceContact,
+  OAuthTokenResponse,
+  SendPitchParams,
+  SendPitchResult,
+} from './integrations';
 
 // Re-export types for convenience
 export type { Database, Json } from './types';

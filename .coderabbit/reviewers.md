@@ -7,12 +7,14 @@ CodeRabbit acts as an automated senior reviewer for the Total Audio Platform. Th
 ## Philosophy
 
 **Silent unless needed.** CodeRabbit only comments on substantive issues that could:
+
 - Break the Golden Verify architecture
 - Introduce security vulnerabilities
 - Violate monorepo boundaries
 - Cause production failures
 
 **Not a style cop.** CodeRabbit doesn't enforce:
+
 - Code formatting (Prettier handles this)
 - Naming conventions (trust developer judgment)
 - Minor stylistic preferences
@@ -25,6 +27,7 @@ CodeRabbit acts as an automated senior reviewer for the Total Audio Platform. Th
 **Rule**: CI validates, Vercel deploys, Golden Verify checks post-deployment.
 
 **What CodeRabbit checks**:
+
 - ❌ No `vercel deploy` commands in `.github/workflows/ci.yml`
 - ✅ `ci.yml` only runs: lint, typecheck, test, build
 - ✅ `golden-verify.yml` includes all 3 apps: audio-intel, tracker, pitch-generator
@@ -37,6 +40,7 @@ CodeRabbit acts as an automated senior reviewer for the Total Audio Platform. Th
 **Rule**: Apps don't import from other apps. Use shared packages.
 
 **What CodeRabbit checks**:
+
 - ❌ No `import { X } from '../../../apps/other-app'`
 - ✅ Apps can import from `packages/ui`, `packages/testing`, etc.
 - ✅ Shared logic lives in `packages/` directory
@@ -48,6 +52,7 @@ CodeRabbit acts as an automated senior reviewer for the Total Audio Platform. Th
 **Rule**: Never hardcode secrets. Always use environment variables.
 
 **What CodeRabbit checks**:
+
 - ❌ No hardcoded `sk_live_*`, `sk_test_*`, connection strings
 - ✅ Secrets accessed via `process.env.SECRET_NAME`
 - ✅ Environment variables documented in `.env.example`
@@ -59,6 +64,7 @@ CodeRabbit acts as an automated senior reviewer for the Total Audio Platform. Th
 **Rule**: All database changes must use Supabase migrations.
 
 **What CodeRabbit checks**:
+
 - ✅ Migration files follow naming convention: `YYYYMMDDHHMMSS_description.sql`
 - ✅ Migrations are idempotent (safe to run multiple times)
 - ✅ Breaking changes include rollback strategy
@@ -70,6 +76,7 @@ CodeRabbit acts as an automated senior reviewer for the Total Audio Platform. Th
 ### Dependency Vulnerabilities
 
 CodeRabbit scans for:
+
 - Critical CVEs in dependencies
 - Outdated packages with known exploits
 - Suspicious package additions
@@ -79,6 +86,7 @@ CodeRabbit scans for:
 ### Auth & Authorization
 
 CodeRabbit validates:
+
 - ✅ API routes check authentication
 - ✅ Row Level Security (RLS) enabled for Supabase tables
 - ✅ User input is validated/sanitized
@@ -90,6 +98,7 @@ CodeRabbit validates:
 ### Async Patterns
 
 CodeRabbit checks for:
+
 - ❌ Unhandled promise rejections
 - ❌ Missing `await` keywords
 - ❌ Blocking synchronous operations in API routes
@@ -99,6 +108,7 @@ CodeRabbit checks for:
 ### Image Optimization
 
 CodeRabbit validates:
+
 - ✅ Next.js `<Image>` component used instead of `<img>`
 - ✅ Images have proper width/height attributes
 - ✅ Large images are optimized
@@ -108,6 +118,7 @@ CodeRabbit validates:
 ## TypeScript Checks
 
 CodeRabbit enforces:
+
 - ✅ Strict mode enabled
 - ✅ No `any` types (use `unknown` or proper types)
 - ✅ Explicit return types for exported functions
@@ -151,6 +162,7 @@ export async function GET() {
 **Rule**: Avoid creating new `.md` files in root directory.
 
 **Approved locations**:
+
 - `README.md`, `SECURITY.md` (standard)
 - `WEEKLY_FOCUS.md`, `AUDIO_INTEL_CONTEXT.md`, `BUSINESS_NOTES.md` (business)
 - `.claude/**/*.md` (Claude Code configuration)
@@ -167,6 +179,7 @@ export async function GET() {
 **Rule**: Lockfile must stay in sync with `package.json` files.
 
 **What CodeRabbit checks**:
+
 - ❌ `pnpm-lock.yaml` changed without corresponding `package.json` change
 - ✅ Both lockfile and `package.json` updated together
 
@@ -177,6 +190,7 @@ export async function GET() {
 ## Auto-Approval Conditions
 
 CodeRabbit will auto-approve PRs when:
+
 1. ✅ All CI checks pass (lint, typecheck, test, build)
 2. ✅ No critical issues detected
 3. ✅ No security vulnerabilities found
@@ -185,6 +199,7 @@ CodeRabbit will auto-approve PRs when:
 ## When CodeRabbit Requests Changes
 
 CodeRabbit will block merging when:
+
 1. ❌ Critical architecture rule violated
 2. ❌ Security vulnerability introduced
 3. ❌ Required health endpoints missing
@@ -222,6 +237,7 @@ Developer → PR → CodeRabbit Review → CI Checks → Auto-Merge (if approved
 ### When to Override
 
 You can override CodeRabbit (with review approval) when:
+
 - False positive detection
 - Edge case not covered by rules
 - Urgent hotfix required
@@ -229,6 +245,7 @@ You can override CodeRabbit (with review approval) when:
 ### How to Override
 
 Add comment in PR:
+
 ```
 @coderabbit ignore [rule-name]
 
@@ -245,11 +262,11 @@ Edit `.coderabbit/config.yml`:
 
 ```yaml
 custom_rules:
-  - name: "Your rule name"
-    files: "path/to/files/**/*.ts"
+  - name: 'Your rule name'
+    files: 'path/to/files/**/*.ts'
     pattern: 'regex-pattern'
-    severity: "error|warning|critical"
-    message: "Explanation for developers"
+    severity: 'error|warning|critical'
+    message: 'Explanation for developers'
 ```
 
 ### Adjusting Sensitivity
@@ -259,8 +276,8 @@ To make CodeRabbit more/less strict:
 ```yaml
 checks:
   code_quality:
-    max_complexity: 20  # Increase for less strictness
-    max_lines_per_file: 500  # Adjust as needed
+    max_complexity: 20 # Increase for less strictness
+    max_lines_per_file: 500 # Adjust as needed
 ```
 
 ### Disabling Specific Checks
@@ -268,7 +285,7 @@ checks:
 ```yaml
 checks:
   architecture:
-    enabled: false  # Disable architecture checks
+    enabled: false # Disable architecture checks
 ```
 
 **Warning**: Only disable checks with team consensus.
@@ -278,6 +295,7 @@ checks:
 ### CodeRabbit Not Commenting
 
 **Possible causes**:
+
 1. No substantive issues found (working as intended!)
 2. PR only changes excluded files (node_modules, .next, etc.)
 3. Changes are style-only (Prettier formatting)
@@ -287,11 +305,13 @@ checks:
 ### CodeRabbit Blocking Valid PR
 
 **Possible causes**:
+
 1. False positive from pattern matching
 2. Rule needs refinement
 3. Edge case not handled
 
 **Action**:
+
 1. Review CodeRabbit comment for explanation
 2. If false positive, add `@coderabbit ignore` comment with reason
 3. Get human review approval
@@ -300,11 +320,13 @@ checks:
 ### CodeRabbit Too Noisy
 
 **Possible causes**:
+
 1. Code quality thresholds too strict
 2. Too many warnings enabled
 3. Learning period (CodeRabbit adapts over time)
 
 **Action**:
+
 1. Review `.coderabbit/config.yml` settings
 2. Adjust `max_complexity` and `max_lines_per_file`
 3. Disable style checks if enabled
@@ -329,6 +351,7 @@ checks:
 ## Summary
 
 **CodeRabbit is your automated senior reviewer:**
+
 - ✅ Enforces critical architecture rules
 - ✅ Catches security vulnerabilities
 - ✅ Validates monorepo boundaries
