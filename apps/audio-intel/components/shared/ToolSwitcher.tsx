@@ -70,7 +70,19 @@ export function ToolSwitcher({ currentTool, accentColor = 'purple' }: ToolSwitch
 
       {isOpen && (
         <>
-          <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
+          <div
+            role="button"
+            tabIndex={0}
+            aria-label="Close tool switcher"
+            className="fixed inset-0 z-40"
+            onClick={() => setIsOpen(false)}
+            onKeyDown={e => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setIsOpen(false);
+              }
+            }}
+          />
           <div className="absolute right-0 top-full z-50 mt-2 w-80 rounded-xl border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <div className="p-4">
               <p className="mb-4 text-xs font-bold uppercase tracking-wider text-gray-500">

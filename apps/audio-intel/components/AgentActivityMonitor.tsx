@@ -67,8 +67,18 @@ const AgentActivityMonitor: React.FC<AgentActivityMonitorProps> = ({
     >
       {/* Header */}
       <div
+        role="button"
+        tabIndex={0}
+        aria-label={isExpanded ? 'Collapse agent activity' : 'Expand agent activity'}
+        aria-expanded={isExpanded}
         className="p-3 cursor-pointer transition-colors duration-200 hover:bg-gray-50"
         onClick={() => setIsExpanded(!isExpanded)}
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setIsExpanded(!isExpanded);
+          }
+        }}
         style={{ borderBottom: isExpanded ? '2px solid #E5E7EB' : 'none' }}
       >
         <div className="flex items-center justify-between">

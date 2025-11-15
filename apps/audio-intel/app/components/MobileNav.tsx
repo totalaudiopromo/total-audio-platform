@@ -129,8 +129,16 @@ export default function MobileNav() {
       {open && (
         <div
           className="fixed inset-0 bg-black/40 z-[100] backdrop-blur-sm transition-opacity animate-in fade-in duration-300"
-          aria-hidden
+          role="button"
+          tabIndex={0}
+          aria-label="Close menu"
           onClick={() => setOpen(false)}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setOpen(false);
+            }
+          }}
         />
       )}
 

@@ -290,6 +290,10 @@ const AgentVisualizationDashboard: React.FC = () => {
           return (
             <div
               key={category}
+              role="button"
+              tabIndex={0}
+              aria-label={`${selectedCategory === category ? 'Deselect' : 'Select'} ${category} category`}
+              aria-pressed={selectedCategory === category}
               className={`p-4 rounded-xl cursor-pointer transition-all duration-300 ${
                 selectedCategory === category
                   ? 'ring-4 ring-blue-500 transform scale-105'
@@ -300,6 +304,12 @@ const AgentVisualizationDashboard: React.FC = () => {
                 border: `2px solid ${config.color}`,
               }}
               onClick={() => setSelectedCategory(selectedCategory === category ? null : category)}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedCategory(selectedCategory === category ? null : category);
+                }
+              }}
             >
               <div className="flex items-center space-x-3 mb-2">
                 <span className="text-2xl">{config.icon}</span>

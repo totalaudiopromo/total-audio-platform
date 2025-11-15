@@ -75,7 +75,19 @@ export function UserMenu() {
 
       {menuOpen && (
         <>
-          <div className="fixed inset-0 z-10" onClick={() => setMenuOpen(false)} />
+          <div
+            role="button"
+            tabIndex={0}
+            aria-label="Close user menu"
+            className="fixed inset-0 z-10"
+            onClick={() => setMenuOpen(false)}
+            onKeyDown={e => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setMenuOpen(false);
+              }
+            }}
+          />
           <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-20 border border-gray-200">
             <div className="px-4 py-3 border-b border-gray-200">
               <p className="text-sm font-medium">{displayName}</p>

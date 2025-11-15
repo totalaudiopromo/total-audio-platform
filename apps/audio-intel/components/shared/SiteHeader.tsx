@@ -126,7 +126,19 @@ export function SiteHeader({
             {/* Auth Component on Mobile */}
             {authComponent && (
               <div className="border-t border-gray-200 pt-3 mt-2">
-                <div onClick={() => setMobileOpen(false)} className="w-full">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Close mobile navigation"
+                  onClick={() => setMobileOpen(false)}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setMobileOpen(false);
+                    }
+                  }}
+                  className="w-full"
+                >
                   {authComponent}
                 </div>
               </div>
