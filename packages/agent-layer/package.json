@@ -1,0 +1,33 @@
+{
+  "name": "@total-audio/agent-layer",
+  "version": "1.0.0",
+  "description": "Agent Layer & Skills Registry for Total Audio Platform",
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./skills": "./src/skills/index.ts",
+    "./registry": "./src/registry/index.ts",
+    "./types": "./src/types/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "test": "jest"
+  },
+  "keywords": [
+    "total-audio",
+    "agent",
+    "skills",
+    "ai"
+  ],
+  "author": "Total Audio Promo",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.1",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.2"
+  }
+}
