@@ -113,23 +113,37 @@ dist
 tmp/
 temp/
 
-# Large media files (exclude all DRS textures and large assets)
+# Large media files (selective ignore - only specific directories, not all images)
+# Ignore large texture/gradient libraries
 **/public/assets/DRS*
 **/public/assets/Luma Gradients/
 **/public/assets/Magazine Textures/
 **/public/assets/LOGOS/
+
+# Ignore videos (always large)
 **/*.mp4
 **/*.mov
 **/*.avi
 **/*.mkv
 **/*.webm
-**/*.jpg
-**/*.jpeg
-**/*.png
-# Exception: Allow loading state images for Audio Intel and Tracker
-!apps/audio-intel/public/assets/loading-states/*.png
-!apps/tracker/public/assets/loading-states/*.png
-**/*.gif
+
+# Ignore images in upload/temp/cache directories only (not production assets)
+**/uploads/**/*.jpg
+**/uploads/**/*.jpeg
+**/uploads/**/*.png
+**/uploads/**/*.gif
+**/temp/**/*.jpg
+**/temp/**/*.jpeg
+**/temp/**/*.png
+**/temp/**/*.gif
+**/cache/**/*.jpg
+**/cache/**/*.jpeg
+**/cache/**/*.png
+**/cache/**/*.gif
+**/.chrome-profile/**/*.png
+**/.chrome-profile/**/*.jpg
+
+# Ignore other large binary formats
 **/*.bmp
 **/*.tiff
 **/*.tga
