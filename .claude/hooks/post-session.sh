@@ -35,3 +35,12 @@ else
 fi
 
 echo ""
+
+# Auto-tidy directory (optional - only if enabled)
+if [ -f ".claude/auto-tidy-daemon.sh" ]; then
+  echo "🧹 Running directory cleanup..."
+  bash .claude/auto-tidy-daemon.sh once > /dev/null 2>&1 || true
+  echo "✅ Directory tidied"
+fi
+
+echo ""

@@ -1,0 +1,107 @@
+{
+  "description": "Auto-tidy rules for Total Audio Platform directory cleanup",
+  "version": "1.0.0",
+  "rules": [
+    {
+      "name": "Archive completion files",
+      "pattern": "*_COMPLETE.md",
+      "destination": "archive/completed-tasks/{year}/",
+      "reason": "Task completion documentation - keep for history"
+    },
+    {
+      "name": "Archive summary files",
+      "pattern": "*_SUMMARY.md",
+      "destination": "archive/summaries/{year}/",
+      "reason": "Session/phase summaries - historical reference"
+    },
+    {
+      "name": "Archive phase completion files",
+      "pattern": "PHASE_*.md",
+      "destination": "archive/phases/{year}/",
+      "reason": "Development phase documentation - completed"
+    },
+    {
+      "name": "Archive status files",
+      "pattern": "*_STATUS.md",
+      "destination": "archive/status-reports/{year}/",
+      "reason": "Status snapshots - historical"
+    },
+    {
+      "name": "Archive test output files",
+      "pattern": "test-*.txt",
+      "destination": "archive/test-outputs/{year}/{month}/",
+      "reason": "Test run outputs - keep for debugging history"
+    },
+    {
+      "name": "Archive deployment debug files",
+      "pattern": "*DEPLOY*.md",
+      "destination": "archive/deployment/{year}/",
+      "reason": "Deployment debugging - resolved issues"
+    },
+    {
+      "name": "Archive demo/audit files",
+      "pattern": "*DEMO*.md",
+      "destination": "archive/demos/{year}/",
+      "reason": "Demo preparation documentation - event-specific"
+    },
+    {
+      "name": "Archive audit files",
+      "pattern": "*AUDIT*.md",
+      "destination": "archive/audits/{year}/",
+      "reason": "Audit reports - compliance/historical"
+    },
+    {
+      "name": "Archive migration files",
+      "pattern": "MIGRATION*.md",
+      "destination": "archive/migrations/{year}/",
+      "reason": "Migration documentation - completed"
+    },
+    {
+      "name": "Archive fix tracking files",
+      "pattern": "FIX_*.md",
+      "destination": "archive/fixes/{year}/{month}/",
+      "reason": "Issue fix tracking - resolved"
+    },
+    {
+      "name": "Move scattered scripts to scripts/",
+      "pattern": "*.sh",
+      "exclude_paths": [".claude/", "scripts/", ".git/"],
+      "destination": "scripts/utilities/",
+      "reason": "Consolidate shell scripts"
+    },
+    {
+      "name": "Archive old logs",
+      "pattern": "*.log",
+      "age_days": 30,
+      "destination": "archive/logs/{year}/{month}/",
+      "reason": "Log files older than 30 days"
+    }
+  ],
+  "protected_files": [
+    "README.md",
+    "SECURITY.md",
+    "CHANGELOG.md",
+    "AUDIO_INTEL_CONTEXT.md",
+    "BUSINESS_NOTES.md",
+    "WEEKLY_FOCUS.md",
+    "DEPLOYMENT.md",
+    "INCIDENTS.md",
+    "LICENSE"
+  ],
+  "protected_directories": [
+    ".git",
+    "node_modules",
+    "apps",
+    "packages",
+    "tools",
+    "scripts",
+    ".claude",
+    ".github"
+  ],
+  "auto_run": {
+    "enabled": true,
+    "interval_minutes": 30,
+    "notify_on_changes": true,
+    "dry_run_first": false
+  }
+}
