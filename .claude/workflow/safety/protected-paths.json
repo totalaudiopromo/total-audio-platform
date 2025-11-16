@@ -1,0 +1,29 @@
+{
+  "paths": [
+    "/",
+    "/home",
+    "/etc",
+    "/var",
+    "/usr",
+    "/bin",
+    "/sbin",
+    "/lib",
+    "/opt",
+    ".git",
+    "node_modules"
+  ],
+  "criticalFiles": [
+    "package.json",
+    "pnpm-lock.yaml",
+    "tsconfig.json",
+    ".env",
+    ".env.local",
+    ".env.production",
+    "vercel.json",
+    ".github/workflows/ci.yml",
+    ".github/workflows/golden-verify.yml",
+    ".claude/CLAUDE.md",
+    "AUDIO_INTEL_CONTEXT.md",
+    "BUSINESS_NOTES.md"
+  ]
+}

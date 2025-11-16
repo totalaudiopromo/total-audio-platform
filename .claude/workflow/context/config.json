@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "thresholds": {
+    "maxFileReads": 50,
+    "maxFileWrites": 30,
+    "maxSessionMinutes": 120
+  },
+  "reminderFile": ".claude/CONTEXT_RESET_RECOMMENDED.md"
+}

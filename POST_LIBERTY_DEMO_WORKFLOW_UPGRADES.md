@@ -457,30 +457,56 @@ This checklist is complete when:
 **Add notes here after each upgrade:**
 
 ### Upgrade 1: Context Reset Automation
-**Installed:** [DATE]
-**Status:** [SUCCESS/ISSUES]
+**Installed:** 2025-11-15
+**Status:** ✅ SUCCESS
 **Notes:**
+- Tracks file reads, writes, and session duration automatically
+- Triggers at 50 reads, 30 writes, or 120 minutes
+- Creates `.claude/CONTEXT_RESET_RECOMMENDED.md` when thresholds exceeded
+- Integrated with post-session hook for automatic checking
+- CLI tool available: `pnpm tsx .claude/workflow/context/check-context.ts`
+- Configuration: `.claude/workflow/context/config.json`
+- All functionality tested and working correctly
 
 ---
 
 ### Upgrade 2: Pre-Tool-Use Safety Hooks
-**Installed:** [DATE]
-**Status:** [SUCCESS/ISSUES]
+**Installed:** 2025-11-15
+**Status:** ✅ SUCCESS
 **Notes:**
+- 15+ safety rules implemented (destructive, security, production, data categories)
+- Automatically validates every tool use before execution
+- Blocks dangerous patterns: rm -rf /, fork bombs, disk ops, force git operations
+- Protects critical paths and files
+- Warnings for critical file modifications
+- Configuration: `.claude/workflow/safety/protected-paths.json`
+- Hook configured in `.claude/settings.json`
+- All safety rules tested with simulated dangerous commands
 
 ---
 
 ### Upgrade 3: Drop Zone Workflows
-**Installed:** [DATE]
-**Status:** [SUCCESS/ISSUES]
+**Installed:** [NOT IMPLEMENTED - Deferred to Batch 3]
+**Status:** ⏸️ SKIPPED (Batch 1)
 **Notes:**
+- Requires external dependencies (fswatch/inotify-tools)
+- Deferred to Batch 3 for separate implementation
+- Core automation complete without this feature
 
 ---
 
 ### Upgrade 4: Tool Execution Audit Trail
-**Installed:** [DATE]
-**Status:** [SUCCESS/ISSUES]
+**Installed:** 2025-11-15
+**Status:** ✅ SUCCESS
 **Notes:**
+- Logs all tool executions to `.claude/audit-logs/YYYY-MM-DD.jsonl`
+- Automatic sensitive data scrubbing (API keys, passwords, tokens)
+- JSONL format for easy parsing and analysis
+- CLI viewer: `pnpm tsx .claude/workflow/audit/view.ts`
+- CLI summary generator: `pnpm tsx .claude/workflow/audit/summarize.ts`
+- Filtering by date, tool, session supported
+- Integrated with post-tool-use hook
+- Privacy-safe logging confirmed
 
 ---
 

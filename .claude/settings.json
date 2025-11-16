@@ -1,0 +1,19 @@
+{
+  "hooks": {
+    "pre-tool-use": ".claude/hooks/pre-tool-use.ts",
+    "post-tool-use": ".claude/hooks/post-tool-use.ts"
+  },
+  "workflow": {
+    "context": {
+      "enabled": true,
+      "checkOnPostTool": true
+    },
+    "safety": {
+      "enabled": true
+    },
+    "audit": {
+      "enabled": true,
+      "scrubSensitive": true
+    }
+  }
+}

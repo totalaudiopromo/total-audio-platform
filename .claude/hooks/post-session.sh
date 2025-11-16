@@ -43,4 +43,10 @@ if [ -f ".claude/auto-tidy-daemon.sh" ]; then
   echo "✅ Directory tidied"
 fi
 
+# Check context and suggest reset if needed
+if [ -f ".claude/workflow/context/check-context.ts" ]; then
+  echo "🔍 Checking context usage..."
+  npx tsx .claude/workflow/context/check-context.ts 2>/dev/null || true
+fi
+
 echo ""
