@@ -511,16 +511,36 @@ This checklist is complete when:
 ---
 
 ### Upgrade 5: Session History Tracker
-**Installed:** [DATE]
-**Status:** [SUCCESS/ISSUES]
+**Installed:** 2025-11-16
+**Status:** ✅ SUCCESS
 **Notes:**
+- Decision logging system with JSONL format (`.claude/decisions/YYYY-MM-DD.jsonl`)
+- Session ID tracking for grouping related decisions
+- CLI tools: record-decision, list-decisions, summarize-decisions
+- Records: title, type, description, impact, session context
+- Command: `npx tsx .claude/workflow/sessions/record-decision.ts`
+- Command: `npx tsx .claude/workflow/sessions/list-decisions.ts`
+- Command: `npx tsx .claude/workflow/sessions/summarize-decisions.ts`
+- All three tools tested and working correctly
+- Helps answer "why did we do it this way?" questions
 
 ---
 
 ### Upgrade 6: Git Worktree Parallelization
-**Installed:** [DATE]
-**Status:** [SUCCESS/ISSUES]
+**Installed:** 2025-11-16
+**Status:** ✅ SUCCESS
 **Notes:**
+- IndyDevDan's signature technique for 3-5x faster multi-feature development
+- Main script: `bash .claude/scripts/git/wt.sh "task description"`
+- Creates isolated worktrees in `../worktrees/` directory
+- Auto-generates feature branch names
+- Copies .claude configuration to each worktree
+- Creates TASK.md with context and quick commands
+- Auto-opens new terminal window (platform-specific)
+- Utility scripts: list-worktrees.sh, cleanup-worktree.sh
+- Comprehensive README with usage patterns and examples
+- Enables parallel Claude instances on different branches
+- All scripts tested and operational
 
 ---
 

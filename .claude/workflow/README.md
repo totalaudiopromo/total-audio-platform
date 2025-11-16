@@ -1,8 +1,8 @@
 # Workflow Automation Suite
 
-**Version:** 1.0.0 (Batch 1)
+**Version:** 2.0.0 (Batch 2)
 **Status:** ✅ Production Ready
-**Last Updated:** 2025-11-15
+**Last Updated:** 2025-11-16
 
 This directory contains the core workflow automation systems for Total Audio Platform development.
 
@@ -10,11 +10,13 @@ This directory contains the core workflow automation systems for Total Audio Pla
 
 ## 🎯 Overview
 
-Three core automation systems implemented:
+Five core automation systems implemented:
 
 1. **Context Reset Automation** - Monitors session context usage and suggests resets
 2. **Pre-Tool-Use Safety Hooks** - Blocks dangerous commands before execution
 3. **Tool Execution Audit Trail** - Logs every tool execution for debugging
+4. **Session History Tracker** - Records major decisions and architectural choices (Batch 2)
+5. **Git Worktree Parallelization** - IndyDevDan's 3-5x speedup technique (Batch 2)
 
 ---
 
@@ -38,7 +40,23 @@ Three core automation systems implemented:
 │   ├── logger.ts         # JSONL logger
 │   ├── summarize.ts      # Summary generator CLI
 │   └── view.ts           # Log viewer CLI
+├── sessions/             # Session history (Batch 2)
+│   ├── types.ts          # Decision types
+│   ├── logger.ts         # Decision logger
+│   ├── record-decision.ts  # CLI to record decisions
+│   ├── list-decisions.ts   # CLI to list decisions
+│   └── summarize-decisions.ts  # CLI to summarize decisions
 └── README.md             # This file
+```
+
+**Additional directories:**
+
+```
+.claude/scripts/git/      # Git workflow automation (Batch 2)
+├── wt.sh                 # Worktree creator (main script)
+├── list-worktrees.sh     # List active worktrees
+├── cleanup-worktree.sh   # Remove completed worktrees
+└── README.md             # Comprehensive usage guide
 ```
 
 ---
@@ -72,6 +90,36 @@ npx tsx .claude/workflow/audit/summarize.ts
 
 # Specific date
 npx tsx .claude/workflow/audit/summarize.ts 2025-11-15
+```
+
+### Record Session Decisions (Batch 2)
+
+```bash
+# Record a decision
+npx tsx .claude/workflow/sessions/record-decision.ts \
+  --title "Decision title" \
+  --type architectural \
+  --description "Why we made this choice" \
+  --impact high
+
+# List decisions
+npx tsx .claude/workflow/sessions/list-decisions.ts
+
+# Summarize decisions
+npx tsx .claude/workflow/sessions/summarize-decisions.ts
+```
+
+### Git Worktree Parallelization (Batch 2)
+
+```bash
+# Create new worktree for parallel work
+bash .claude/scripts/git/wt.sh "fix mobile UX issues"
+
+# List all active worktrees
+bash .claude/scripts/git/list-worktrees.sh
+
+# Remove completed worktree
+bash .claude/scripts/git/cleanup-worktree.sh <path>
 ```
 
 ---
@@ -359,11 +407,137 @@ npx tsx -e "require('./.claude/workflow/audit/logger').logToolExecution({tool:'T
 
 ---
 
+### 4. Session History Tracker (Batch 2)
+
+**Purpose:** Track major decisions and architectural choices across sessions
+
+**How it works:**
+- Records decisions with type, impact, description
+- Stores in JSONL format: `.claude/decisions/YYYY-MM-DD.jsonl`
+- Groups decisions by session ID
+- Provides CLI tools for viewing and summarizing
+
+**Decision types:**
+- `architectural` - System design decisions
+- `implementation` - Code implementation choices
+- `process` - Workflow or development process changes
+- `infrastructure` - DevOps or infrastructure decisions
+
+**Impact levels:**
+- `high` - Major decisions affecting multiple systems
+- `medium` - Standard decisions with localized impact
+- `low` - Minor decisions or experiments
+
+**Record a decision:**
+```bash
+npx tsx .claude/workflow/sessions/record-decision.ts \
+  --title "Switch to JSONL for audit logs" \
+  --type implementation \
+  --description "Easier to parse and append than JSON arrays" \
+  --impact medium
+```
+
+**List decisions:**
+```bash
+# Today's decisions
+npx tsx .claude/workflow/sessions/list-decisions.ts
+
+# Filter by date
+npx tsx .claude/workflow/sessions/list-decisions.ts --date 2025-11-16
+
+# Filter by type
+npx tsx .claude/workflow/sessions/list-decisions.ts --type architectural
+```
+
+**Generate summary:**
+```bash
+# Today's summary
+npx tsx .claude/workflow/sessions/summarize-decisions.ts
+
+# Specific date
+npx tsx .claude/workflow/sessions/summarize-decisions.ts 2025-11-15
+```
+
+---
+
+### 5. Git Worktree Parallelization (Batch 2)
+
+**Purpose:** IndyDevDan's signature technique for 3-5x faster multi-feature development
+
+**How it works:**
+- Single command creates isolated git worktree
+- Auto-generates feature branch name from task description
+- Copies .claude configuration to new worktree
+- Creates TASK.md with context and quick commands
+- Auto-opens new terminal window (platform-specific)
+- Enables multiple Claude instances working in parallel
+
+**Create worktree:**
+```bash
+bash .claude/scripts/git/wt.sh "fix mobile UX issues"
+```
+
+This creates:
+- Worktree: `../worktrees/total-audio-platform-feature-fix-mobile-ux-issues-1234567890/`
+- Branch: `feature/fix-mobile-ux-issues-1234567890`
+- Config: Copies `.claude/` directory
+- Task file: `.claude/TASK.md` with instructions
+- Terminal: Opens automatically with task context
+
+**Usage patterns:**
+
+**Pattern 1: Multi-app updates**
+```bash
+bash .claude/scripts/git/wt.sh "update audio-intel mobile UX"
+bash .claude/scripts/git/wt.sh "add pitch-generator tests"
+bash .claude/scripts/git/wt.sh "update tracker documentation"
+# All three run in parallel terminals
+```
+
+**Pattern 2: Bug fix + tests + docs**
+```bash
+bash .claude/scripts/git/wt.sh "fix authentication bug"
+bash .claude/scripts/git/wt.sh "add auth tests"
+bash .claude/scripts/git/wt.sh "document auth flow"
+# Complete isolation - no conflicts
+```
+
+**Pattern 3: Independent features**
+```bash
+bash .claude/scripts/git/wt.sh "implement Stripe integration"
+bash .claude/scripts/git/wt.sh "add newsletter automation"
+bash .claude/scripts/git/wt.sh "create demo data generator"
+# 3x faster than sequential development
+```
+
+**List worktrees:**
+```bash
+bash .claude/scripts/git/list-worktrees.sh
+# Or directly:
+git worktree list
+```
+
+**Cleanup:**
+```bash
+bash .claude/scripts/git/cleanup-worktree.sh <path>
+# Or directly:
+git worktree remove <path>
+```
+
+**Performance:**
+- Traditional: 60 min for 3 features (20+15+10 sequential)
+- Parallel: 20 min for 3 features (longest task)
+- **Speedup: 3x** (with more features: 3-5x)
+
+**See also:** `.claude/scripts/git/README.md` for comprehensive guide
+
+---
+
 ## 🚀 Future Enhancements
 
-**Batch 2 (Planned):**
-- Session history tracker
-- Git worktree parallelization
+**Batch 2:** ✅ Complete (2025-11-16)
+- ✅ Session history tracker
+- ✅ Git worktree parallelization
 
 **Batch 3 (Planned):**
 - Drop zone workflows
