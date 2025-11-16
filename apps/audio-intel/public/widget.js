@@ -37,22 +37,35 @@
     }
 
     getOrCreateSessionId() {
-      let sessionId = localStorage.getItem('audio_intel_widget_session');
-      if (!sessionId) {
-        sessionId = 'widget_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-        localStorage.setItem('audio_intel_widget_session', sessionId);
+      try {
+        let sessionId = localStorage.getItem('audio_intel_widget_session');
+        if (!sessionId) {
+          sessionId = 'widget_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+          localStorage.setItem('audio_intel_widget_session', sessionId);
+        }
+        return sessionId;
+      } catch (e) {
+        // Fallback if localStorage is not available (private browsing, etc.)
+        return 'widget_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
       }
-      return sessionId;
     }
 
     getEnrichmentsUsed() {
-      const used = localStorage.getItem('audio_intel_widget_enrichments_used');
-      return used ? parseInt(used) : 0;
+      try {
+        const used = localStorage.getItem('audio_intel_widget_enrichments_used');
+        return used ? parseInt(used) : 0;
+      } catch (e) {
+        return 0;
+      }
     }
 
     setEnrichmentsUsed(count) {
       this.enrichmentsUsed = count;
-      localStorage.setItem('audio_intel_widget_enrichments_used', count.toString());
+      try {
+        localStorage.setItem('audio_intel_widget_enrichments_used', count.toString());
+      } catch (e) {
+        // Silently fail if localStorage is not available
+      }
       this.updateEnrichmentCounter();
     }
 
