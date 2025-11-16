@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Badge } from '@total-audio/ui/components/badge';
+import { Badge } from '@/components/ui/badge';
 import { Loader2 } from 'lucide-react';
 
 interface ContactConfidence {
@@ -75,11 +75,16 @@ export function ContactConfidenceBadge({
     );
   }
 
-  const { confidence_level, overall_score, requires_reverification, high_risk_contact } = confidence;
+  const { confidence_level, overall_score, requires_reverification, high_risk_contact } =
+    confidence;
 
   // Traffic light colors
   const badgeVariant =
-    confidence_level === 'high' ? 'default' : confidence_level === 'medium' ? 'secondary' : 'destructive';
+    confidence_level === 'high'
+      ? 'default'
+      : confidence_level === 'medium'
+        ? 'secondary'
+        : 'destructive';
 
   const scoreColor =
     confidence_level === 'high'

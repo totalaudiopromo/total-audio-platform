@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Card } from '@total-audio/ui/components/card';
-import { Badge } from '@total-audio/ui/components/badge';
-import { Button } from '@total-audio/ui/components/button';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Loader2, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface EnrichmentAuditLog {
@@ -120,9 +120,7 @@ export function EnrichmentAuditTrail({
     };
 
     return (
-      <span className={`rounded px-2 py-0.5 text-xs font-medium ${colors[source]}`}>
-        {source}
-      </span>
+      <span className={`rounded px-2 py-0.5 text-xs font-medium ${colors[source]}`}>{source}</span>
     );
   }
 
@@ -180,15 +178,13 @@ export function EnrichmentAuditTrail({
           <p className="text-center text-sm text-gray-500">No audit logs found</p>
         ) : (
           <div className="space-y-3">
-            {logs.map((log) => (
+            {logs.map(log => (
               <div key={log.id} className="rounded-lg border p-3">
                 {/* Header Row */}
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="mb-1 flex items-center gap-2">
-                      <span className="font-medium">
-                        {log.contact_name || log.contact_email}
-                      </span>
+                      <span className="font-medium">{log.contact_name || log.contact_email}</span>
                       {getStatusBadge(log.status)}
                       {getSourceBadge(log.enrichment_source)}
                     </div>
@@ -200,11 +196,7 @@ export function EnrichmentAuditTrail({
                     </div>
                   </div>
 
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => toggleExpanded(log.id)}
-                  >
+                  <Button variant="ghost" size="sm" onClick={() => toggleExpanded(log.id)}>
                     {expandedIds.has(log.id) ? (
                       <ChevronUp className="h-4 w-4" />
                     ) : (
@@ -234,7 +226,7 @@ export function EnrichmentAuditTrail({
                       <div>
                         <div className="mb-1 text-gray-600">Fields Enriched:</div>
                         <div className="flex flex-wrap gap-1">
-                          {log.fields_enriched.map((field) => (
+                          {log.fields_enriched.map(field => (
                             <span
                               key={field}
                               className="rounded bg-blue-50 px-2 py-0.5 text-blue-700"
@@ -250,7 +242,7 @@ export function EnrichmentAuditTrail({
                       <div>
                         <div className="mb-1 text-gray-600">Changes Detected:</div>
                         <div className="flex flex-wrap gap-1">
-                          {log.changes_detected.map((change) => (
+                          {log.changes_detected.map(change => (
                             <span
                               key={change}
                               className="rounded bg-green-50 px-2 py-0.5 text-green-700"
@@ -265,9 +257,7 @@ export function EnrichmentAuditTrail({
                     {log.sources_used && log.sources_used.length > 0 && (
                       <div>
                         <div className="mb-1 text-gray-600">Sources:</div>
-                        <div className="text-gray-700">
-                          {log.sources_used.join(', ')}
-                        </div>
+                        <div className="text-gray-700">{log.sources_used.join(', ')}</div>
                       </div>
                     )}
 

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@total-audio/ui/components/button';
-import { Card } from '@total-audio/ui/components/card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { Loader2, Users, TrendingUp } from 'lucide-react';
 
 interface SimilarContact {
@@ -88,9 +88,7 @@ export function SimilarContactsSidebar({
         )}
       </Button>
 
-      {error && (
-        <div className="mt-2 rounded bg-red-50 p-2 text-sm text-red-600">{error}</div>
-      )}
+      {error && <div className="mt-2 rounded bg-red-50 p-2 text-sm text-red-600">{error}</div>}
 
       {isOpen && similar.length > 0 && (
         <Card className="mt-4 p-4">

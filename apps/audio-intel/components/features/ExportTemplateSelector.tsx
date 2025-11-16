@@ -1,9 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Button } from '@total-audio/ui/components/button';
-import { Card } from '@total-audio/ui/components/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@total-audio/ui/components/select';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { Loader2, Download, FileText, Radio, Music, BarChart } from 'lucide-react';
 
 interface ExportTemplate {
@@ -26,7 +32,7 @@ const templateIcons = {
   'radio-plan': Radio,
   'playlist-pack': Music,
   'client-report': BarChart,
-  'custom': FileText,
+  custom: FileText,
 };
 
 export function ExportTemplateSelector({
@@ -123,7 +129,8 @@ export function ExportTemplateSelector({
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = exportData.fileName || `${templateName}_${Date.now()}.${exportData.mimeType.split('/')[1]}`;
+      a.download =
+        exportData.fileName || `${templateName}_${Date.now()}.${exportData.mimeType.split('/')[1]}`;
       a.click();
       URL.revokeObjectURL(url);
     } else if (exportData.files) {
@@ -160,22 +167,18 @@ export function ExportTemplateSelector({
         <p className="text-sm text-gray-500">Choose a template and export format</p>
       </div>
 
-      {error && (
-        <div className="mb-4 rounded bg-red-50 p-3 text-sm text-red-600">{error}</div>
-      )}
+      {error && <div className="mb-4 rounded bg-red-50 p-3 text-sm text-red-600">{error}</div>}
 
       <div className="space-y-4">
         {/* Template Selection */}
         <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
-            Export Template
-          </label>
+          <label className="mb-2 block text-sm font-medium text-gray-700">Export Template</label>
           <Select value={selectedTemplate} onValueChange={setSelectedTemplate}>
             <SelectTrigger>
               <SelectValue placeholder="Select a template" />
             </SelectTrigger>
             <SelectContent>
-              {templates.map((template) => {
+              {templates.map(template => {
                 const Icon = templateIcons[template.template_type] || FileText;
                 return (
                   <SelectItem key={template.id} value={template.id}>
@@ -206,11 +209,7 @@ export function ExportTemplateSelector({
         )}
 
         {/* Export Button */}
-        <Button
-          onClick={handleExport}
-          disabled={exporting || !selectedTemplate}
-          className="w-full"
-        >
+        <Button onClick={handleExport} disabled={exporting || !selectedTemplate} className="w-full">
           {exporting ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />

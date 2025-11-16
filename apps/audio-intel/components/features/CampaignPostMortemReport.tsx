@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Button } from '@total-audio/ui/components/button';
-import { Card } from '@total-audio/ui/components/card';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { Loader2, FileText, Download, TrendingUp, Lightbulb, Target } from 'lucide-react';
 
 interface CampaignPostMortem {
@@ -239,17 +239,13 @@ ${pm.generation_model ? `\nGenerated using: ${pm.generation_model}` : ''}
             {postMortem.response_rate !== null && (
               <div className="rounded-lg bg-green-50 p-4">
                 <div className="text-sm text-green-600">Response Rate</div>
-                <div className="text-2xl font-bold text-green-900">
-                  {postMortem.response_rate}%
-                </div>
+                <div className="text-2xl font-bold text-green-900">{postMortem.response_rate}%</div>
               </div>
             )}
             {postMortem.success_rate !== null && (
               <div className="rounded-lg bg-purple-50 p-4">
                 <div className="text-sm text-purple-600">Success Rate</div>
-                <div className="text-2xl font-bold text-purple-900">
-                  {postMortem.success_rate}%
-                </div>
+                <div className="text-2xl font-bold text-purple-900">{postMortem.success_rate}%</div>
               </div>
             )}
           </div>

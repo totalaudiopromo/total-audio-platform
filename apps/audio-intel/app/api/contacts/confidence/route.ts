@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { createClient } from '@total-audio/core-db/server';
 import { z } from 'zod';
 
@@ -6,13 +7,15 @@ import { z } from 'zod';
 const CalculateConfidenceSchema = z.object({
   contactId: z.string().uuid(),
   contactEmail: z.string().email(),
-  enrichmentData: z.object({
-    emailValid: z.boolean().optional(),
-    dataAge: z.number().optional(), // days since last update
-    sourceQuality: z.enum(['high', 'medium', 'low']).optional(),
-    fieldsEnriched: z.array(z.string()).optional(),
-    verificationStatus: z.enum(['verified', 'unverified', 'bounced']).optional(),
-  }).optional(),
+  enrichmentData: z
+    .object({
+      emailValid: z.boolean().optional(),
+      dataAge: z.number().optional(), // days since last update
+      sourceQuality: z.enum(['high', 'medium', 'low']).optional(),
+      fieldsEnriched: z.array(z.string()).optional(),
+      verificationStatus: z.enum(['verified', 'unverified', 'bounced']).optional(),
+    })
+    .optional(),
 });
 
 const GetConfidenceSchema = z.object({
@@ -27,7 +30,7 @@ type CalculateConfidenceInput = z.infer<typeof CalculateConfidenceSchema>;
  */
 export async function POST(req: NextRequest) {
   try {
-    const supabase = await createClient();
+    const supabase = await createClient(cookies());
 
     // Get authenticated user
     const {
@@ -140,7 +143,7 @@ export async function POST(req: NextRequest) {
  */
 export async function GET(req: NextRequest) {
   try {
-    const supabase = await createClient();
+    const supabase = await createClient(cookies());
 
     // Get authenticated user
     const {

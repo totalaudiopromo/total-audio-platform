@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@total-audio/ui/components/button';
-import { Card } from '@total-audio/ui/components/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@total-audio/ui/components/tabs';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Loader2, Copy, Check, Sparkles } from 'lucide-react';
 
 interface PitchVariation {
@@ -107,9 +107,7 @@ export function PitchVariationsViewer({
           </p>
         </div>
 
-        {error && (
-          <div className="mb-4 rounded bg-red-50 p-3 text-sm text-red-600">{error}</div>
-        )}
+        {error && <div className="mb-4 rounded bg-red-50 p-3 text-sm text-red-600">{error}</div>}
 
         <Tabs defaultValue="formal" className="w-full">
           <TabsList className="grid w-full grid-cols-5">
@@ -151,7 +149,9 @@ export function PitchVariationsViewer({
                       <Button
                         variant="ghost"
                         size="sm"
-                        onClick={() => copyToClipboard(variations[type].subjectLine, `subject-${type}`)}
+                        onClick={() =>
+                          copyToClipboard(variations[type].subjectLine, `subject-${type}`)
+                        }
                       >
                         {copiedId === `subject-${type}` ? (
                           <>

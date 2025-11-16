@@ -7,7 +7,13 @@ import { z } from 'zod';
 const GenerateExportSchema = z.object({
   templateId: z.string().uuid().optional(),
   templateType: z
-    .enum(['press-kit', 'radio-plan', 'playlist-pack', 'client-report', 'custom'])
+    .enum([
+      'press-kit',
+      'radio-plan',
+      'playlist-pack',
+      'client-report',
+      'custom',
+    ])
     .optional(),
   data: z.record(z.any()),
   outputFormat: z.enum(['pdf', 'csv', 'zip', 'docx', 'excel']).optional(),
@@ -60,7 +66,10 @@ export async function POST(
         .single();
 
       if (templateError || !templateData) {
-        return NextResponse.json({ error: 'Template not found' }, { status: 404 });
+        return NextResponse.json(
+          { error: 'Template not found' },
+          { status: 404 }
+        );
       }
 
       template = templateData;
@@ -99,7 +108,11 @@ export async function POST(
         exportResult = await generateCSV(template, input.data);
         break;
       case 'pdf':
-        exportResult = await generatePDF(template, input.data, input.customBranding);
+        exportResult = await generatePDF(
+          template,
+          input.data,
+          input.customBranding
+        );
         break;
       case 'zip':
         exportResult = await generateZIP(template, input.data);
@@ -112,19 +125,21 @@ export async function POST(
     }
 
     // Log export to history
-    const { error: historyError } = await supabase.from('export_history').insert({
-      user_id: user.id,
-      template_id: template.id,
-      export_type: template.template_type,
-      file_name: exportResult.fileName,
-      file_size_bytes: exportResult.fileSize,
-      records_exported: exportResult.recordsExported,
-      data_snapshot: {
-        templateType: template.template_type,
-        recordCount: exportResult.recordsExported,
-      },
-      generation_time_ms: Date.now() - startTime,
-    });
+    const { error: historyError } = await supabase
+      .from('export_history')
+      .insert({
+        user_id: user.id,
+        template_id: template.id,
+        export_type: template.template_type,
+        file_name: exportResult.fileName,
+        file_size_bytes: exportResult.fileSize,
+        records_exported: exportResult.recordsExported,
+        data_snapshot: {
+          templateType: template.template_type,
+          recordCount: exportResult.recordsExported,
+        },
+        generation_time_ms: Date.now() - startTime,
+      });
 
     if (historyError) {
       console.error('Error logging export history:', historyError);
@@ -308,7 +323,10 @@ async function generateZIP(template: any, data: any) {
  * GET /api/export/[template]/generate
  * Get export template info
  */
-export async function GET(req: NextRequest, { params }: { params: Promise<{ template: string }> }) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: Promise<{ template: string }> }
+) {
   try {
     const supabase = await createClient(cookies());
 
@@ -331,7 +349,10 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ temp
       .single();
 
     if (error || !templateData) {
-      return NextResponse.json({ error: 'Template not found' }, { status: 404 });
+      return NextResponse.json(
+        { error: 'Template not found' },
+        { status: 404 }
+      );
     }
 
     return NextResponse.json({

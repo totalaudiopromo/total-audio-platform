@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { createClient } from '@total-audio/core-db/server';
 import { z } from 'zod';
 
@@ -17,7 +18,7 @@ type FindSimilarInput = z.infer<typeof FindSimilarSchema>;
  */
 export async function POST(req: NextRequest) {
   try {
-    const supabase = await createClient();
+    const supabase = await createClient(cookies());
 
     // Get authenticated user
     const {
@@ -149,7 +150,7 @@ export async function POST(req: NextRequest) {
  */
 export async function GET(req: NextRequest) {
   try {
-    const supabase = await createClient();
+    const supabase = await createClient(cookies());
 
     // Get authenticated user
     const {
@@ -322,10 +323,7 @@ function calculateRoleSimilarity(role1: string, role2: string): number {
   if (!role1 || !role2) return 0;
   if (role1.toLowerCase() === role2.toLowerCase()) return 100;
   // Radio and playlist are somewhat similar (both play music)
-  if (
-    (role1 === 'radio' && role2 === 'playlist') ||
-    (role1 === 'playlist' && role2 === 'radio')
-  ) {
+  if ((role1 === 'radio' && role2 === 'playlist') || (role1 === 'playlist' && role2 === 'radio')) {
     return 60;
   }
   return 0;

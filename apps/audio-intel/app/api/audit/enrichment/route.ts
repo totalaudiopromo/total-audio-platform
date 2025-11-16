@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { createClient } from '@total-audio/core-db/server';
 import { z } from 'zod';
 
@@ -48,7 +49,7 @@ type GetAuditLogsInput = z.infer<typeof GetAuditLogsSchema>;
  */
 export async function POST(req: NextRequest) {
   try {
-    const supabase = await createClient();
+    const supabase = await createClient(cookies());
 
     // Get authenticated user
     const {
@@ -139,7 +140,7 @@ export async function POST(req: NextRequest) {
  */
 export async function GET(req: NextRequest) {
   try {
-    const supabase = await createClient();
+    const supabase = await createClient(cookies());
 
     // Get authenticated user
     const {
@@ -278,10 +279,7 @@ function calculateAuditSummary(logs: any[]) {
     0
   );
 
-  const totalCostCents = logs.reduce(
-    (sum: number, log: any) => sum + (log.api_cost_cents || 0),
-    0
-  );
+  const totalCostCents = logs.reduce((sum: number, log: any) => sum + (log.api_cost_cents || 0), 0);
 
   return {
     totalEnrichments,

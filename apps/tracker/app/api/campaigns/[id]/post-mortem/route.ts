@@ -28,7 +28,10 @@ type GeneratePostMortemInput = z.infer<typeof GeneratePostMortemSchema>;
  * POST /api/campaigns/[id]/post-mortem
  * Generate AI-powered campaign post-mortem analysis
  */
-export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function POST(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   const startTime = Date.now();
 
   try {
@@ -51,7 +54,10 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
     // Initialize Anthropic client
     const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ error: 'ANTHROPIC_API_KEY not configured' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'ANTHROPIC_API_KEY not configured' },
+        { status: 500 }
+      );
     }
 
     const anthropic = new Anthropic({ apiKey });
@@ -97,7 +103,8 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
         total_contacts_reached: input.campaignData.totalContactsReached || null,
         response_rate: input.campaignData.responseRate || null,
         success_rate: input.campaignData.successRate || null,
-        avg_response_time_hours: input.campaignData.avgResponseTimeHours || null,
+        avg_response_time_hours:
+          input.campaignData.avgResponseTimeHours || null,
         performance_by_channel: input.campaignData.performanceByChannel || null,
         performance_by_genre: input.campaignData.performanceByGenre || null,
         top_performing_pitches: input.campaignData.topPerformingPitches || null,
@@ -110,7 +117,10 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
 
     if (dbError) {
       console.error('Error saving post-mortem:', dbError);
-      return NextResponse.json({ error: 'Failed to save post-mortem' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Failed to save post-mortem' },
+        { status: 500 }
+      );
     }
 
     const duration = Date.now() - startTime;
@@ -150,7 +160,10 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
  * GET /api/campaigns/[id]/post-mortem
  * Retrieve campaign post-mortem
  */
-export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
     const supabase = await createClient(cookies());
 
@@ -184,7 +197,10 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
       }
 
       console.error('Error fetching post-mortem:', error);
-      return NextResponse.json({ error: 'Failed to fetch post-mortem' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Failed to fetch post-mortem' },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({
@@ -277,7 +293,8 @@ function parsePostMortemResponse(text: string): {
 } {
   const lines = text.split('\n');
 
-  let section: 'summary' | 'wins' | 'learnings' | 'recommendations' | null = null;
+  let section: 'summary' | 'wins' | 'learnings' | 'recommendations' | null =
+    null;
   let executiveSummary = '';
   const keyWins: string[] = [];
   const keyLearnings: string[] = [];
@@ -308,12 +325,16 @@ function parsePostMortemResponse(text: string): {
         break;
       case 'wins':
         if (trimmed.startsWith('-') || trimmed.match(/^\d+\./)) {
-          keyWins.push(trimmed.replace(/^[-•*]\s*/, '').replace(/^\d+\.\s*/, ''));
+          keyWins.push(
+            trimmed.replace(/^[-•*]\s*/, '').replace(/^\d+\.\s*/, '')
+          );
         }
         break;
       case 'learnings':
         if (trimmed.startsWith('-') || trimmed.match(/^\d+\./)) {
-          keyLearnings.push(trimmed.replace(/^[-•*]\s*/, '').replace(/^\d+\.\s*/, ''));
+          keyLearnings.push(
+            trimmed.replace(/^[-•*]\s*/, '').replace(/^\d+\.\s*/, '')
+          );
         }
         break;
       case 'recommendations':

@@ -86,7 +86,8 @@ export async function GET(req: NextRequest) {
     const totalSessions = widgetData?.length || 0;
     const totalEnrichments = widgetData?.reduce((sum, w) => sum + w.enrichments_used, 0) || 0;
     const conversions = widgetData?.filter(w => w.converted_to_signup).length || 0;
-    const conversionRate = totalSessions > 0 ? ((conversions / totalSessions) * 100).toFixed(2) : '0';
+    const conversionRate =
+      totalSessions > 0 ? ((conversions / totalSessions) * 100).toFixed(2) : '0';
 
     return NextResponse.json({
       success: true,
