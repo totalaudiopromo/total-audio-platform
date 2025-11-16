@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@total-audio/ui/components/button';
 import { Card } from '@total-audio/ui/components/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@total-audio/ui/components/select';

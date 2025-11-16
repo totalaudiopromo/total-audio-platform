@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@total-audio/ui/components/button';
 import { Card } from '@total-audio/ui/components/card';
 import { Loader2, Users, TrendingUp } from 'lucide-react';
